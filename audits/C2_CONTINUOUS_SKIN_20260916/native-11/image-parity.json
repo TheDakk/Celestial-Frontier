@@ -1,0 +1,157 @@
+{
+  "scope": "Exact named native pose images before/after compiled sweep; not human motion acceptance.",
+  "compared": 30,
+  "identical": 30,
+  "rows": [
+    {
+      "file": "civet-anticipation.png",
+      "beforeSha256": "e85ca29e048f4f50add60a55bf4c1d7faa860eac1e38974875ce21e826c37c83",
+      "afterSha256": "e85ca29e048f4f50add60a55bf4c1d7faa860eac1e38974875ce21e826c37c83"
+    },
+    {
+      "file": "civet-approach-quarter.png",
+      "beforeSha256": "589714d3e7fcc455c57599be60c061f4b0effc1d72278d4edb45f8c0073f4b8e",
+      "afterSha256": "589714d3e7fcc455c57599be60c061f4b0effc1d72278d4edb45f8c0073f4b8e"
+    },
+    {
+      "file": "civet-approach-three-quarter.png",
+      "beforeSha256": "abc2fdd59a58de467a6a6efbb6e16ca21bd5e7c3b6220a537efaa744506ba28c",
+      "afterSha256": "abc2fdd59a58de467a6a6efbb6e16ca21bd5e7c3b6220a537efaa744506ba28c"
+    },
+    {
+      "file": "civet-hit-peak.png",
+      "beforeSha256": "0529296f06da63dd14fa0497976f404be5040cff04907114a75a15542998d3e2",
+      "afterSha256": "0529296f06da63dd14fa0497976f404be5040cff04907114a75a15542998d3e2"
+    },
+    {
+      "file": "civet-hit-recoil.png",
+      "beforeSha256": "ec0675d9386b1066db2edb55ae1c2f0909f351affa5ad8d98ff898baf9f9901d",
+      "afterSha256": "ec0675d9386b1066db2edb55ae1c2f0909f351affa5ad8d98ff898baf9f9901d"
+    },
+    {
+      "file": "civet-idle.png",
+      "beforeSha256": "1b3189930957c3468ffe259ba6ef98c1da4db77f5b43e27e4bdbbe9dcf7c7e52",
+      "afterSha256": "1b3189930957c3468ffe259ba6ef98c1da4db77f5b43e27e4bdbbe9dcf7c7e52"
+    },
+    {
+      "file": "civet-impact-hold.png",
+      "beforeSha256": "981b44c2ae6b82d6cb0dda572c0f8f14297215817e2f16da820819dd37444d66",
+      "afterSha256": "981b44c2ae6b82d6cb0dda572c0f8f14297215817e2f16da820819dd37444d66"
+    },
+    {
+      "file": "civet-rest.png",
+      "beforeSha256": "1b46280553d4e705187168a7a6b1a2893466c989f5cfa573f5757c2c3a176350",
+      "afterSha256": "1b46280553d4e705187168a7a6b1a2893466c989f5cfa573f5757c2c3a176350"
+    },
+    {
+      "file": "civet-return-end.png",
+      "beforeSha256": "6db5b27a73e009ebfa065353c0abab72ad5f234d330543d3fd7527c6feb73580",
+      "afterSha256": "6db5b27a73e009ebfa065353c0abab72ad5f234d330543d3fd7527c6feb73580"
+    },
+    {
+      "file": "civet-strike.png",
+      "beforeSha256": "f6a60bf371f3e35cf453b1cbf773a077e20ec2f7370f211677e518805df174f3",
+      "afterSha256": "f6a60bf371f3e35cf453b1cbf773a077e20ec2f7370f211677e518805df174f3"
+    },
+    {
+      "file": "fox-anticipation.png",
+      "beforeSha256": "6f1f523adbc1c788275eecbc6966a0c34ea89b584eed977b889f4e833005c739",
+      "afterSha256": "6f1f523adbc1c788275eecbc6966a0c34ea89b584eed977b889f4e833005c739"
+    },
+    {
+      "file": "fox-approach-quarter.png",
+      "beforeSha256": "007a596b5962b0182100199dd2f50101a5602a37074023ac9d55303ccc74f54e",
+      "afterSha256": "007a596b5962b0182100199dd2f50101a5602a37074023ac9d55303ccc74f54e"
+    },
+    {
+      "file": "fox-approach-three-quarter.png",
+      "beforeSha256": "d893d0a100b45af3196a4f76506c88f4671c40fd666a86093b00ced3c5239c75",
+      "afterSha256": "d893d0a100b45af3196a4f76506c88f4671c40fd666a86093b00ced3c5239c75"
+    },
+    {
+      "file": "fox-hit-peak.png",
+      "beforeSha256": "bd629f162602ce947ff9a6c3c40520bef624095a61c142eff6ead6089461e1f1",
+      "afterSha256": "bd629f162602ce947ff9a6c3c40520bef624095a61c142eff6ead6089461e1f1"
+    },
+    {
+      "file": "fox-hit-recoil.png",
+      "beforeSha256": "602611f150a5b83e8e58eed9e2a350103fa506e69c5d087ab4ccfeaac304fc80",
+      "afterSha256": "602611f150a5b83e8e58eed9e2a350103fa506e69c5d087ab4ccfeaac304fc80"
+    },
+    {
+      "file": "fox-idle.png",
+      "beforeSha256": "26f1ac08fa1e38ebd4743ec941d3db6a26abbe577864c588c4777c88228029ce",
+      "afterSha256": "26f1ac08fa1e38ebd4743ec941d3db6a26abbe577864c588c4777c88228029ce"
+    },
+    {
+      "file": "fox-impact-hold.png",
+      "beforeSha256": "ff3a91b5b5dc221aa7bd12d4ee52321f2ae5d2c93a7a86835975b26b32dadcf9",
+      "afterSha256": "ff3a91b5b5dc221aa7bd12d4ee52321f2ae5d2c93a7a86835975b26b32dadcf9"
+    },
+    {
+      "file": "fox-rest.png",
+      "beforeSha256": "71d2183e3d92f2775cb3db92b85576c719312f071ece68bc37ecce6778b9647e",
+      "afterSha256": "71d2183e3d92f2775cb3db92b85576c719312f071ece68bc37ecce6778b9647e"
+    },
+    {
+      "file": "fox-return-end.png",
+      "beforeSha256": "be9ba24938ba196275418ee96086d1ebe97f887c5a7cae93836748efb9c40510",
+      "afterSha256": "be9ba24938ba196275418ee96086d1ebe97f887c5a7cae93836748efb9c40510"
+    },
+    {
+      "file": "fox-strike.png",
+      "beforeSha256": "cec79461bfd43cc36d415f4f458e413c01f020e27c4a78378e640033c16d21e0",
+      "afterSha256": "cec79461bfd43cc36d415f4f458e413c01f020e27c4a78378e640033c16d21e0"
+    },
+    {
+      "file": "procedural-anticipation.png",
+      "beforeSha256": "c07ad14556a14dda5255c1ffee818b82ac086723b9bd01046b9da0c1de5ea3b8",
+      "afterSha256": "c07ad14556a14dda5255c1ffee818b82ac086723b9bd01046b9da0c1de5ea3b8"
+    },
+    {
+      "file": "procedural-approach-quarter.png",
+      "beforeSha256": "917a93b212bcd31a49c2b95e5e763fa37eb5f7ac233674765bd2c38ced802438",
+      "afterSha256": "917a93b212bcd31a49c2b95e5e763fa37eb5f7ac233674765bd2c38ced802438"
+    },
+    {
+      "file": "procedural-approach-three-quarter.png",
+      "beforeSha256": "50abd14edff1023b020dfcdd6a57bbbb2190173a829b256899105607db97b66b",
+      "afterSha256": "50abd14edff1023b020dfcdd6a57bbbb2190173a829b256899105607db97b66b"
+    },
+    {
+      "file": "procedural-hit-peak.png",
+      "beforeSha256": "2e1e1b5c16e1b71816ada865b110f768baeba720d6afae7959ec432a77a82304",
+      "afterSha256": "2e1e1b5c16e1b71816ada865b110f768baeba720d6afae7959ec432a77a82304"
+    },
+    {
+      "file": "procedural-hit-recoil.png",
+      "beforeSha256": "a1ef161197e22933f45877c787d43e847720aa0d6c82048872670d6600082054",
+      "afterSha256": "a1ef161197e22933f45877c787d43e847720aa0d6c82048872670d6600082054"
+    },
+    {
+      "file": "procedural-idle.png",
+      "beforeSha256": "be256cb02ce2cbff3f51ff237d048d215fa3315d7de553577df8884cb2294405",
+      "afterSha256": "be256cb02ce2cbff3f51ff237d048d215fa3315d7de553577df8884cb2294405"
+    },
+    {
+      "file": "procedural-impact-hold.png",
+      "beforeSha256": "d88826e22123256c114fec99f215e7199e30eab6ded9587a5a867e14d913dfc0",
+      "afterSha256": "d88826e22123256c114fec99f215e7199e30eab6ded9587a5a867e14d913dfc0"
+    },
+    {
+      "file": "procedural-rest.png",
+      "beforeSha256": "9e86766c9470301a298b16ae96e32eca501ae6eeea02c13f733a99a7cc687ac8",
+      "afterSha256": "9e86766c9470301a298b16ae96e32eca501ae6eeea02c13f733a99a7cc687ac8"
+    },
+    {
+      "file": "procedural-return-end.png",
+      "beforeSha256": "edaafa4cf737ed58105f00531126fbc4b14a219546c132cc852f3e0ed16ebf77",
+      "afterSha256": "edaafa4cf737ed58105f00531126fbc4b14a219546c132cc852f3e0ed16ebf77"
+    },
+    {
+      "file": "procedural-strike.png",
+      "beforeSha256": "fc163fc103aad3beacf39ac1db1b9019bc8905c06487af9dc9a418149dccaf88",
+      "afterSha256": "fc163fc103aad3beacf39ac1db1b9019bc8905c06487af9dc9a418149dccaf88"
+    }
+  ]
+}

@@ -1,14 +1,234 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-Tooling configuration updated 2026-09-12: [UI_TOOLCHAIN.md](UI_TOOLCHAIN.md) records the exact
-GSAP/emitter and atlas pins, optional PNG CLI probes, and deterministic creature-atlas command.
-These additions do not establish runtime parts-rig or effects integration.
+[Current bounded diagnosis and film review](audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md),
+matches code as of September 19, 2026 (unchanged producer6a58e40e). Eight actual Mud/Vent failure
+samples prove rotation of the painted-support offset causes the contact drift; endpoint pins
+alone cannot fix it. Persimmon84/209 folds are reproduced and isolated to coupled rigid foliage
+and collars, chiefly groups3/4; diagnostic pin removal is not an accepted repair. All three
+numerically passing crab films have a42–57px approach→pinch travel reset; Crab/Coconut pinch
+readability and edge streaks remain concerns. Film sampling review is complete, not Nick’s
+visual acceptance. No code, native rerun, timing qualification, phone or battle integration.
+Original eight-subject/Civet findings and strict thresholds remain; Civet18/20 and plant CPU
+failures are open. Source/evidence signatures6a58e40e/d0437436 verified; no signing blocker.
+R3 →R4 →R9 and the remaining gates still require their scoped next direction. D1 retained
+finished-PNG/painter fallback phone delivery, D2 guardian, D3 biome arenas, D4 E1 owner and
+Q1–Q5 remain unchanged. [Full fresh handoff](audits/ANATOMY_COMPLETION_20260917/NEW_SESSION_PROMPT_20260919_REVIEW.md).
 
-Civet animation proof status, September12: exact named viverrid anatomy export and a4E
-turnaround exist. Two private Blender tokens fail visual review (projection/shape drift).
-The larger shape/UV correction awaits approval; no local texture-finisher pass, rendered
-clips, staged browser turn, gene-driven family coverage or animation acceptance yet.
-Evidence audits/CIVET_ANIMATION_PROOF_20260912. Rain E remains active without inference.
+[Approved R1/R2 repairs](audits/ANATOMY_COMPLETION_20260917/r1-r2-static-01/README.md), matches
+code as of September 17, 2026: one shared record-relative amplitude profile and timeline owner
+now cover ordinary/editor motion, including source-pincer signs/scales and seeded sway. Woody
+and herb roots remain anchored by Nick's explicit library amendment; grow/recoil act above the
+root and foliage is secondary-only. Finer observed plant ownership now has 11/10/11 branch groups
+in Persimmon/Cranberry/Devil's Club, preserving accepted paint and exact rest pixels.
+
+Shared graph-validated contact chains drive stance/swing through the performance update owner
+in native capture. Reach and joint limits are not relaxed; existing quadruped compatibility and
+its 8% compression bound remain. Source crab hit/faint now recoil/lower the body over planted
+contacts. Published contact paint and bone endpoints are measured independently. The signed
+6b11407d producer completed the [eight-subject review](audits/ANATOMY_COMPLETION_20260917/r1-r2-native-01/README.md):
+Crab, Coconut, Freshwater and Cranberry pass numeric gates; Mud/Vent fail painted-foot drift,
+Persimmon refuses a132-triangle fold, and Devil's Club fails per-clip CPU. Four films exist;
+failed subjects stop before dependent films. Visual concerns remain on passing rows. R1/R2
+are not accepted as complete; no visual, phone or production combat qualification is claimed.
+R3–R8 and further implementation remain behind Nick's review stop.
+
+Coverage remains 12 observed / 5 bound / 0 newly qualified of the 58 targets; 53 lack bindings.
+All eleven accepted masters have binding artifacts; the flora still need native/visual and CPU
+qualification. Preserve all prior failures, including the refused devils-club-05 intake. The
+1,250-case census remains 1,237 nonblank/parity passes, 13 explicit fallthroughs and 53 topology
+emissions (quadruped observation separate). Prior implementation and approved plan signatures
+are verified. No GitHub writes, source painting, kits or admission certificate changes.
+
+[Full catalogue and anatomy pass](audits/FAUNA_FULL_PASS_20260916/README.md), matches code as of
+September 17, 2026: existing Skink/Beetle painted fits retain full-action native diagnostics
+(60 fps; 1.2/1.6 ms rig-update p95; exact rest). Twelve specialized structure/curve candidates
+share intake and motion. Five actual crab variants now pass 44-joint admission against their
+source-rendered alpha, including named Freshwater/Mud/Vent owners and Mud Crab foot paddles.
+Topology callbacks carry the padded raster frame; compilers must project source coordinates
+through it. Root/Knee/Foot leg slack is measured. The census accounts for 1,010 Earth organisms
+and 240 procedural samples: 1,237 nonblank/parity passes, 13 explicit legacy fallthroughs.
+This is raster/geometry evidence, not universal animation. All 58 missing-body names still need
+qualified painted fits, contacts and visual review. Current evidence-based ledger:
+audits/FAUNA_FULL_PASS_20260916/coverage-final.json. Original accepted masters are unchanged.
+
+[Count-preserving anatomy](audits/COUNTED_ANATOMY_20260916/README.md), matches code as of
+September 16, 2026: radial and cephalopod records can declare actual arm/tentacle counts in
+`cf.anatomy-presence/v2`. One shared expander feeds motion and rig admission; no missing
+landmarks are synthesized. The painters publish ten radial arms or eight cephalopod arms
+plus the squid's two feeding tentacles, with unchanged drawing commands. Repeated motion
+uses shared family curves, and cephalopod impact follows the appendage that actually lashes.
+The 64-joint and 40-part/2048px atlas budgets remain. All94 supported count combinations
+pass1,222 clips/147,862 synthetic pose samples;20 oversized combinations refuse. This closes
+a count/curve contract gap, not painted fitting or phone qualification. Complete masks/body
+landmarks, other variable topologies and the58 unmatched named-species structures remain.
+
+[Animation library and shared deformation review](audits/ANIMATION_COMPLETION_20260916/README.md),
+matches code as of September 16, 2026: 169 family actions now have complete-clip limit,
+determinism and GSAP parity checks (40,729 synthetic samples). Eight additional physical
+motions bring the anatomy selector to32 rows, including actual hoof kicks, body strikes
+and fish tail sweeps. Explicit anatomical absence is shared by compiler and rig intake.
+All631 named fauna still have exact profiles:573 have candidate moves;58 require new body
+structures. A candidate is not a fitted or visually accepted species. Broad marine/crust/
+sessile labels no longer silently borrow fish/spider/radial bones.
+
+The shared skin solver retains its established fast projection and invokes a bounded
+active-set repair only for unresolved folds. No creature-specific motion attenuation or
+solver setting was added. Whole-library painted checks exposed fish cast/dodge/victory
+folds and the difference between pure and Float32-rendered geometry; failed controls are
+retained. Native films, per-action frames, source hashes and timing limitations are in the
+review folder. Some timings exceed the2ms goal; this is not universal or phone qualification.
+Originals, approved artwork, kits, combat results and seeded generation are unchanged.
+
+[Seeded painted biome encounter](audits/PAINTED_BIOME_ENCOUNTER_20260916/README.md),
+matches code September 16: three painted quadrupeds now share an 18-second, three-turn
+clearing study. The encounter seed selects scenery placement and turn order over the accepted
+Earth temperate FAR/MID/NEAR template and compiled Earth card. All three bodies animate;
+shared hitstop freezes them together. Native-02 passes 3,243 source-join/body-frame samples,
+replay and mouth-contact checks; 60 fps, 0.8/1.0/0.9 ms creature-update p95 on this Mac.
+The ground band now describes space above the registered floor, and mirrored contact uses
+the same source jaw before screen reflection. Negative controls retain the old failures.
+This is seeded painted-template composition, not newly inferred biome art. Damage is scripted
+presentation data, not the combat resolver. Automatic fitting, planted-paw contact, sound,
+ordinary-game squad wiring, other painted families/biomes and physical-phone qualification
+remain separate. No new painting, model run, kit change or original-asset edit.
+
+[Painted variation motion review](audits/PAINTED_VARIATION_MOTION_20260916/README.md) now
+animates the approved seed10271 painting, a second10271 painting and crystalline10032.
+Independent hash-bound authored observations feed one shared quadruped template; no creature
+clip overrides. All three pass exact rest/final rest,484individual and601blended pose samples,
+full-motion framing and36connected leg parts. Native captures run about60fps at1.3/1.6/1.7ms
+rig-update p95 on this Mac. Alpha-preserving intake, frame clipping and wrong-limb paint islands
+are repaired with negative controls;12focused tests and root validation pass. New candidate
+art still needs kit intake/visual acceptance. This does not establish automatic fitting,
+planted contact, hidden views, other painted families, ordinary gameplay or phone qualification.
+Kit, accepted originals and the source genomes remain unchanged. Preview uses one player,
+visible still/error fallback and a loopback server with byte-range support.
+
+Matches code as of 2026-09-16. The actual rig now uses a family-neutral joint evaluator
+(`skeleton-pose.mjs`) with a supplied joint graph, exact landmark inventory and body axis.
+It snapshots the owner data, inherits local rotations/offsets, applies root translation once,
+and rejects malformed poses before publication. Quadruped hash/asset/shape admission remains
+unchanged. The loader and parts intake now admit all fourteen closed family contracts through
+`family-record.mjs`; unknown/mismatched inventories still refuse. The legacy seam-bridge owner
+remains quadruped-only. See [family intake evidence](audits/UNIVERSAL_FAMILIES_20260916/README.md):
+910 bound comparisons, fourteen deterministic atlas controls, 137 tool tests and 45 focused
+tests. Calibration geometry is not painted-family qualification. Four actual painter owners
+now expose partial drawn topology, preserving real appendage counts and visible/absent parts.
+Count-aware motion and completed painter masks/landmarks remain required.
+
+[Procedural motion iteration](audits/PROCEDURAL_BATTLE_ITERATION_20260916/README.md) adds
+three real generated genomes (10032,10052,10271), with painter-emitted landmarks/masks/materials,
+zero observation drift and one lossless atlas each. Shared genome-aware body cards and smooth
+review transitions pass484 individual plus601 assembled native samples per creature, exact rest
+and final rest, and separated-mesh negative controls. All three recorded about60fps/0.4ms rig
+update p95. This covers only current four-leg/banded-tail observation support, not every family.
+The habitat diagnostic now subtracts compiled hitstop from locomotion, poses and body travel;
+both turn roles freeze identically and1,202 source-join/medium-containment samples pass. Its
+latest fish/bird updates are0.9/0.6ms p95.36 focused tests,typecheck/root validation pass. These
+remain diagnostic tools; normal gameplay is not yet wired. Fine silhouette aliasing, source
+shadow deformation, planted contact, other painter owners and phone qualification remain open.
+
+[Habitat battle and Frog repair](audits/HABITAT_BATTLE_20260916/README.md) now adds a local
+source-hashed motion snapshot under Nick's September16 repair instruction. Explicit absence
+admits the actual23-joint adult Frog without tail/ears; missing mandatory anatomy still refuses.
+Authored fish resolves aquatic/swim. Smooth skin has an explicit material mapping. Frontal
+bird wings use a source-derived rotation basis; actual source masks, shared curves and root-only
+offsets remain authoritative. A new open-wing bird candidate is not accepted art.
+The mixed water/air scene passes1,200 source-join/full-body containment samples and records a
+10.101600-second/606-frame film at about60fps, fish/bird update p951.1/0.6ms. Final bird and
+Frog native proofs preserve exact rest/final rest and pass484 sampled poses each. Frog update
+p951.6ms; final bird0.5ms. The physical-habitat compiler uses source capabilities, liquid chemistry
+and seeded home/visitor rules, refusing unsupported habitats rather than substituting a biome.
+All43 biome routing controls are not43 qualified art scenes. Opponent-facing flight, Frog ground
+contact, variable-count procedural records, independent fish accessory fins, ordinary-game wiring
+and phone qualification remain open. No accepted master, kit, sibling worktree or GitHub change.
+
+[Facing study](audits/BATTLE_FACING_20260916/README.md) adds an opt-in two-combatant diagnostic:
+the Platypus uses a hash-bound 17-part continuous-skin rig and right-side shared turn/contact
+sampling. The [throat repair](audits/BATTLE_THROAT_JOIN_20260916/README.md) corrects the remaining
+chin notch with a lower source-view fit into preserved neck/chest paint. Seventeen hash-bound
+attachment ribbons follow published head/body triangles and pass native alpha coverage at 601
+times; the previous image fails the same coverage evaluator. Original visible joins on Civet,
+fox and procedural quadruped, plus the Platypus in each pairing, pass the dense motion scan.
+Head replacement suppresses only head-subtree parts. Ear/jaw details remain on shared tracks;
+front/profile transitions and a painted open-mouth interior remain unsupported. Captured stills
+now replay the action after recording cleanup; the old reset-order discrepancy is retained.
+The generic attachment evaluator has synthetic controls for all fourteen family vocabularies,
+not full painted-family coverage. No ordinary-game promotion, phone or final visual acceptance.
+Selected-left-rig timing still excludes the added head/right rig; use whole-frame evidence and
+separate future inclusive per-creature qualification.
+[Impact polish](audits/BATTLE_IMPACT_POLISH_20260916/README.md) projects the existing flash envelope
+onto the receiving rig with a pooled brightness filter and a softer scene flash. Target selection
+is side-based, independent of anatomy. Twelve non-flash pose PNGs and all three turn plans retain
+exact bytes; native wrong-actor and arena-contrast controls pass. The neutral filter is disabled.
+This is diagnostic presentation only, with unchanged head fit, motion and original artwork.
+The quadruped observer also refuses extra leg pairs instead of overwriting fore/hind records;
+ordinary six/eight-legged painting remains available.
+
+[Universal animation evidence](audits/UNIVERSAL_ANIMATION_20260916/README.md) covers all 14 actual
+motion templates, 161 action entries and 4,644 sampled poses. Thirteen family records are
+synthetic fixtures, not painted-family coverage. 121 tool tests, 20 focused rig/observer tests,
+both TypeScript checks and root validation pass. The new native regression retains exact
+rest/final-rest equality and all 30 prior C2 pose PNG bytes. Ten-second diagnostics capture
+Civet/fox/procedural at 60.003/60.002/59.903 fps, with inclusive CPU p95 1.4/1.7/0.9 ms.
+Clean signed-source qualification and Nick's whole-motion acceptance remain pending.
+
+Continuous source-painted skin, separate limb surfaces, shared body attachments, painted-paw
+constraints and the bounded shape solver remain the C2 foundation. The
+[prior C2 audit](audits/C2_CONTINUOUS_SKIN_20260916/README.md) retains its exact source snapshots,
+failed controls and six review ZIPs. The universal batch is an addendum to that snapshot.
+
+Current audio production: AUDIO.md, audio-production/README.md and audits/AUDIO_FAUNA_BIOMES_20260915.
+The latest fauna continuation adds 90 source entries: 63 individually CC BY 4.0 iNaturalist,
+23 CC0 OpenGameArt animal recordings and four public-domain US FWS recordings. Nick explicitly
+approved CC BY with attribution; exact per-recording attribution, license URL, source URL and
+modifications survive into the audition catalogue and RECORDING_CREDITS.md. No NC/ND/SA license
+is admitted. Originals are unchanged. Wikimedia returned HTTP429 after four acquisitions;
+that source remains blocked and was not retried. Tortoise has no eligible sound in the bounded
+query and remains missing. No imitation or generic fictional voice fills an authentic row.
+
+There are now 1,669 source entries / 1,665 unique originals; 1,662 fully decode and the same
+three damaged originals remain quarantined. The 83 new REAPER excerpts bring totals to 1,617
+validated WAV/Opus pairs, 1,396 distinct decoded PCM treatments and 44 successful editable
+production projects. Seven lossy ZIP alternates were retained as originals but not rendered as
+extra performances. There are still 102 loop derivatives and 49 instrument stems. $0 spent.
+
+Identified reference coverage is 203 / 631 fauna; 428 remain missing. Broader labels retain the
+actual narrower taxon, age and recording context. References do not establish per-behavior calls
+or listening acceptance. All 1,010 Earth identities retain their existing ordinary-game owner;
+379 non-fauna identities remain fictional sonification. All 43 biome profiles retain explicit
+recipes: 486 audited routes, 484 rendered plans and two airless silences, with zero missing
+components. Current evidence: audits/AUDIO_FAUNA_CONTINUATION_20260915/README.md.
+
+The DEV-only bounded review uses the existing owner and hash-bound body records. No listening
+approval, ordinary-game promotion, kit edit or accepted asset replacement.
+
+Current animation implementation and family gaps are in CREATURE_ANIMATION.md. Explicit-time
+whole-action playback and source-bound in-view aim have independent and actual-producer controls.
+September 16 replaces seam strips with source-painted continuous skin, anatomical surface separation,
+actual face provenance, shared body attachments and source-contour pins. Native12 passes all three
+records' exact-rest and dense diagnostic gates with the actual Kernel05 Wasm normal-pass leaf.
+Unprofiled Motion06 delivers all three ten-second diagnostic films at 60 fps, with Civet / fox /
+procedural update p95 1.6 / 1.7 / 0.9 ms. Clean signed-source qualification and human visual review
+remain pending. Actual gaze/view declarations and ordinary battle integration remain separate work.
+The approved kit is
+v4.3; Motion/Sound v1 supplied bytes are retained unchanged. C1 mechanical intake is complete, with
+final Wild image acceptance owned by Nick. The accepted arena remains template v1. GSAP and Pixi 8
+use one renderer; the incompatible emitter package is removed. Source ownership is in CONTRACTS.md.
+
+The [universal animation plan](audits/C2_CONTINUOUS_SKIN_20260916/UNIVERSAL_ANIMATION_PLAN.md)
+records the shared runtime, anatomy-specific family templates and actual winning-painter record
+boundary. Per-family proofs include extreme supported proportions and generated variants; the
+current Civet/fox/procedural quadruped proof is one qualification step, not universal coverage.
+
+C3 has voice and theme/battle/first-bed export plus closed weather intake. Bound sample-loop
+declarations render deterministic overlap/seeded-phase derivatives; original WAVs remain protected.
+Nick authorized the supplied free-audio handoff: actual permitted recordings and derived review
+voices now exist. Listening, source gaps and final gameplay promotion remain open. C4 has ordered
+review-batch and seeded arena intake; these checks do not establish new visual acceptance.
+AUDIO.md and tools/asset-intake/README.md define the current boundaries.
+Ordinary PNG hashing is asynchronous native SHA-256 with a yielding compatibility path; storage
+schema, IDs, retention, integrity and quotas are unchanged. One identity key is computed per operation.
 
 **Rain E accepted, September 12:** Nick selected droplets3x/specular3x/rain2x. The compiler
 emits these settings only for rain/storm; the post-finisher worker consumes them. Exact canonical
@@ -6449,20 +6669,144 @@ helppop outside-tap closer. `resetMemoryState` now clears the engineer's track
 *Generated for continuity. If the source and this document disagree, trust the source —
 then update this file.*
 
-## Quadruped 2D proof — matches code as of 2026-09-12
+## C2 anatomy and painter ownership — matches code as of 2026-09-16
 
 `port/v2/packages/art/src/quadruped-anatomy.ts` defines a draw-time observation boundary.
-`resolveProceduralCanvas` optionally exposes the selected generic quadruped owner's actual
-limb, body, head, ear and banded-tail coordinates with its ink canvas. Existing drawing is
-unchanged; other routes do not falsely emit this template. Authored master landmarks live in
-`audits/CIVET_2D_PROOF_20260912`, hash-bound to the accepted Civet/fox PNGs. The specialized Civet
-painter's drawn proportions take precedence over the ignored generic QUAD2 dimensions.
-`port/v2/tools/creature-animation/quadruped-template.mjs` owns bounded graph admission,
-alpha-driven conforming triangulation, two depth index sets, inherited affine skinning and
-shared finite clips. `port/v2/tools/quadruped-proof` is an isolated Pixi review/capture tool,
-not a game route. Native exact-rest checks pass on all three, but triangle-extreme shape checks fail;
-review staging uses the explicit whole-portrait fallback. Encoded-duration verification rejected
-short initial recordings. Sourcefb008d58 now supplies three independently verified ten-second
-fallback captures at60fps; this is not mesh-performance or visual acceptance. The articulated
-proof remains unfinished and Nick reviews these captures before another batch. Blender projection is
-abandoned for this browser proof; original canid/turnaround assets remain for the engine port.
+The supported generic quadruped owner supplies its actual body/limb/head/ear/tail geometry;
+unsupported winning painters do not falsely emit the template. Authored Civet/fox records are
+hash-bound to their accepted masters. The specialized Civet painter's drawn proportions remain
+authoritative over unused generic QUAD2 values. The procedural record reports the actual painted
+material, including the retained translucent proof; no genes override named Earth anatomy.
+
+`painter-part-capture.ts` observes RGBA ownership at semantic draw stages on a separate seeded
+replay. The ordinary portrait comes from the first invocation. Replay anatomy/material parity and
+complete original-alpha reconstruction are required before using its masks. Native masks bypass
+the magenta keyer. `part-masks.mjs` and `verify-parts.mjs` validate source ownership and all packed
+RGBA channels; originals are never optimized or rewritten. Each creature retains one deterministic
+atlas, existing depth ordering and the approved resource limits.
+
+The Civet, fox and one painter-observed procedural quadruped are the current proof inventory.
+The fourteen motion templates are not fourteen integrated winning painters. Unsupported anatomy
+refuses or receives an explicitly labelled portrait fallback. The source record and exact skin
+candidate must be qualified together before articulated footage can count as evidence.
+
+## September 13 C-lane audit boundary
+
+Matches code as of 2026-09-13. Current local-AI behavior is refreshed in LOCAL_AI_GENERATION.md;
+ART_KIT.md remains unchanged at4.3. Ordinary rain E remains accepted/active; the separate
+six-variant weather-details ladder has no inference and awaits Nick's pick. Notification
+recording now checks activePersist before mutating the in-memory checkpoint overlay.
+
+Parts authoring verifies all source/packed RGBA channels including hidden underlaps before
+native motion evidence. The unchanged seam ruler has a reproduced rigid-translation false
+positive; C2 remains unaccepted. C3/C4 have read-only source/master intake tooling, not newly
+accepted sound/library content. Vitest and Node tool tests have separate owners; release
+oracles now bind the actual85-bullet draft, with stale OPFS-variant advertising removed.
+See audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md for measured fixes and remaining holds.
+
+
+### September 14 C-lane failure repairs — matches code as of 2026-09-14
+
+The current Compendium measurement/producer bindings match the independently built
+checkout again. No collector/evaluator, fixed ruler, ceiling or historical sample changed;
+current native certification remains separate. `run-unit-tests.mjs` owns the locked build
+before Vitest starts. Tests only read and validate its source/dist receipt, including the
+kit plugin's installed runtime bytes, without taking the checkout lock. Use npm test with
+the port/v2 prefix for focused or full runs. The dated cut-seam diagnostic and its Civet
+head--ear-far failures remain in audits/C_LANE_REPAIRS_20260914. They are historical controls,
+not restart instructions or qualification for the current continuous-skin candidate.
+
+## C2 continuous source-painted skin — matches code as of 2026-09-16
+
+The active repair is documented in [CREATURE_ANIMATION.md](CREATURE_ANIMATION.md) and the
+[C2 September 16 audit](audits/C2_CONTINUOUS_SKIN_20260916/README.md). Before the shared-skeleton
+extraction, Candidate10 passes the three
+source-bound Native12 diagnostic gates with the actual Kernel05 Wasm normal-pass leaf, 1,201
+poses per subject and zero changed rest/final-rest channels. Normal passes total 4,844 / 4,840 /
+4,840 for Civet / fox / procedural, with zero robust fallbacks. Unprofiled Motion06 delivers all
+three ten-second diagnostic films at 60 fps and update p95 1.6 / 1.7 / 0.9 ms; each meets the
+strict <2 ms limit. Kernel05 has 117 Node tests, 15 runtime tests and game typecheck green.
+Kernel05 root validation also passes with the unchanged 50-probe deterministic fingerprint. No further
+optimization loop is planned. Clean signed-source qualification remains blocked by three signing
+refusals; whole-motion review and C2 acceptance remain pending. Earlier
+strip/junction coverage and signing reports remain historical evidence for their exact source;
+their old restart instructions do not govern this run.
+
+### Authoring and topology
+
+`build-paint-skin.mjs` builds a conforming alpha-adaptive deformation field while keeping each
+part's original atlas UVs. Each rendered triangle records its actual originating field triangle;
+reused interpolation vertices alone cannot reconstruct all faces. Degenerate source faces refuse.
+`split-skin-branches.mjs` separates distal anatomical limb surfaces so overlapping near/far feet
+can move independently. Body attachment supports are shared at proximal axial/upper-limb
+skin boundaries, including sibling bones, derived from hash-bound source ownership. A coincident image coordinate is
+not sufficient to weld unrelated surfaces. The original part order, atlas and source paint stay
+unchanged; supporting-face reindexing must preserve exact source interpolation.
+
+`paw-contact-pins.mjs` finds the lowest nontransparent texel in every original paw column and
+binds all field supports of the covering triangle to that paw's transform. The inventory includes
+fringe and preserves the authored perspective/raised-paw offset. Conflicting paw owners refuse.
+Sparse weights diffuse on the anatomical topology without moving those contact constraints.
+`prepare-continuous-skin.mjs` produces immutable candidate bindings/receipts and retained-pose
+regressions. An offline PASS establishes neither native rest parity nor whole-motion acceptance.
+
+### Runtime and fixed solver profile
+
+`compiled-skin-field.mjs` privately clones normalized rest positions and sparse weights at load.
+Each frame rereads every required matrix/component once, evaluates at destination precision and
+publishes only after finite checks. Matrix identity caching cannot hide an in-place input change.
+`arap-skin.mjs` starts from the current target and uses four local passes, four symmetric global
+sweeps per pass and target weight 0.35. Orientation projection has a 64-pass budget and 0.12
+area-ratio target; unresolved flips refuse. These mechanism settings are not an art-quality score.
+The asset solver declaration is closed to extra tuning fields. Rest/rigid handling still checks
+orientation; thin nonzero triangles have no blanket exemption. Pins retain their exact targets.
+
+`creature-rig.ts` applies the inherited record-named transforms, compiled field, shape solve and
+per-part checks before publishing the frame's geometry. No previous-frame deformation state,
+clock, new RNG draw, per-creature curve adjustment or repainted pixel is introduced.
+`seam-sampling-guard.mjs` builds a disposable one-texel internal sampling guard at decode time.
+It independently derives source-owner adjacency and requires identical shared skin-field bases;
+only opaque neighbors at sewn joins can supply their exact original RGBA. The default decoder
+draws the original bitmap once and writes guard runs into transparent filter space or available
+packing padding. It never round-trips all translucent pixels through ImageData, changes an owned
+texel, alters original PNG bytes/atlas layout, or bridges separate limbs and external silhouettes.
+The original ownership masks remain the qualification input. Native12 preserves full native rest
+RGBA exactly for all three records; the retained same-pose procedural control changes two internal
+cut alphas from 192/191 to 255/255 without changing the source geometry.
+`creature-rig-frame.ts` collects complete PoseTarget samples, discards partial/failed samples and
+resets omitted joints. `creature-rig-performance.ts` supplies explicit-time playback. The isolated
+arena study consumes the pinned read-only GSAP producer through that complete-frame owner; offsets
+remain body-length units and displacement remains root-only. The study's support owner blends
+the admitted contact correction through the existing approach/return windows, with exact
+fully-grounded contacts and the unchanged 8% compression refusal. One seeded idle continues
+across attacker/target roles and pauses during both explicit hitstop intervals; role changes
+do not restart its phase. This changes support/playback composition, not the producer's curves
+or turn timings. Ordinary battle integration is a separate boundary. The study's Platypus
+opponent remains portrait staging, not a second qualified rig.
+
+### Native evidence and captures
+
+The native skin gate compares full rendered RGBA at rest before and after motion, evaluates the
+current producer densely across the ten-second timeline, checks posed faces and actual painted paw
+contours as well as their bones, and measures complete creature update cost (producer sampling,
+support/contact solving and geometry publication). Rig-only timing remains a separate metric.
+The p95 budget is strictly <2 ms; all three unprofiled Motion06 captures meet it at 1.6 / 1.7 /
+0.9 ms for Civet / fox / procedural. The earlier Fox Motion05 failure remains retained. Source-join
+and full-shape inspection remain necessary: independent positive triangle areas do not prove a
+continuous animal.
+`deformation-quality.mjs` reports signed area, edge stretch and singular-value anisotropy only as
+diagnostics; alpha exclusion requires an empty source-texel footprint, not a convenient centroid.
+
+The ten-second capture uses live frame timing and independently decoded media duration/frame
+counts, records both battle roles and choreography phases, and observes head/jaw/ear/tail movement.
+Before opening the browser, capture admission matches the candidate manifest, complete source
+inventory, generated program bytes and served asset names/paths/hashes against the qualifying gate.
+All three records must have exact-rest, dense-motion, rendered-contact and update-budget admission.
+Dirty diagnostic evidence cannot substitute for a clean committed qualification. Source-preserving
+retries produce new receipts; prior failures remain intact. Numeric checks do not grant Nick's
+visual acceptance or a phone-performance claim.
+
+Historical strip/socket mechanisms and labelled fallback captures remain in
+`audits/C2_DEFORMING_SEAMS_20260914`, `audits/C2_PARTS_MOTION_20260913` and earlier C2 audits.
+Signing failures recorded there are historical, not a current request to unlock 1Password.
+The live audit owns the current candidate, measured failures and eventual reviewed films.

@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-14",
+  "signer": "/Applications/1Password.app/Contents/MacOS/op-ssh-sign",
+  "attempts": [
+    {
+      "attempt": 1,
+      "exitCode": 128,
+      "error": "1Password: agent returned an error; fatal: failed to write commit object"
+    },
+    {
+      "attempt": 2,
+      "after": "ssh-add -l successfully exposed expected public key",
+      "exitCode": 128,
+      "error": "1Password: agent returned an error; fatal: failed to write commit object"
+    }
+  ],
+  "publicAgentCheck": {
+    "exitCode": 0,
+    "fingerprint": "SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk"
+  },
+  "commitCreated": false,
+  "signerBypassed": false,
+  "cause": "Unknown; public-key enumeration does not prove signing approval"
+}

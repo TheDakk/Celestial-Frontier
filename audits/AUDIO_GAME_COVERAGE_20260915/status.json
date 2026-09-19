@@ -1,0 +1,50 @@
+{
+  "schema": "cf.audio-game-coverage-batch/v1",
+  "head": "b95c4dc03259dc85f1e345a60e241c01154da069",
+  "sourceAcquisition": {
+    "unique": 1089,
+    "entries": 1092,
+    "newDownloadsThisBatch": 0
+  },
+  "production": {
+    "candidates": 1175,
+    "newCandidates": 385,
+    "uniquePcm": 961,
+    "productionProjects": 35,
+    "stems": 49,
+    "newStems": 28,
+    "loopCopiesRetained": 102
+  },
+  "functionalCoverage": {
+    "earth": 1010,
+    "faunaAuthenticMissing": 618,
+    "routes": 486,
+    "renderedRecipes": 484,
+    "explicitSilences": 2,
+    "gaps": 0,
+    "locomotion": 27,
+    "materials": 13,
+    "listeningAccepted": 0,
+    "gameplayPromotions": 0
+  },
+  "checks": {
+    "unitFiles": 377,
+    "unitPassed": 4372,
+    "unitSkipped": 1,
+    "typecheck": "PASS",
+    "rootValidate": "PASS",
+    "rootSmoke": "PASS"
+  },
+  "nativeEvidence": "native-03/report.json",
+  "acceptedAssetsChanged": 0,
+  "listeningApprovals": 0,
+  "spendUsd": 0,
+  "githubWrites": 0,
+  "limitations": [
+    "618 Earth fauna authentic source gaps",
+    "actual source behavior/context and artistic listening unreviewed",
+    "physical phone/Safari/offline audio untested",
+    "C2 visual deformation failure remains",
+    "no release/admission chain run"
+  ]
+}

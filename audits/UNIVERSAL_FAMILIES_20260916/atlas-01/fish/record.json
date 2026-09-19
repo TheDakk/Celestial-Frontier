@@ -1,0 +1,116 @@
+{
+  "kind": "fish",
+  "identity": {
+    "speciesVisualKey": "synthetic:fish",
+    "seed": 659714,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "fish",
+    "version": 1
+  },
+  "family": "fish",
+  "geometry": {
+    "cutoutAssetHash": "eef7fd5fbbcd8763e4b09ffc3afce7dfa969e801d1094625326c3858f08afdde",
+    "width": 128,
+    "height": 128,
+    "groundLineY": 0.92,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.52,
+      0.5
+    ],
+    "head": [
+      0.66,
+      0.5
+    ],
+    "jaw": [
+      0.74,
+      0.54
+    ],
+    "spine0": [
+      0.46,
+      0.5
+    ],
+    "spine1": [
+      0.4,
+      0.5
+    ],
+    "spine2": [
+      0.34,
+      0.5
+    ],
+    "spine3": [
+      0.28,
+      0.5
+    ],
+    "spine4": [
+      0.22,
+      0.5
+    ],
+    "spine5": [
+      0.16,
+      0.5
+    ],
+    "caudal": [
+      0.06,
+      0.5
+    ],
+    "dorsal": [
+      0.4,
+      0.36
+    ],
+    "pectoralFar": [
+      0.56,
+      0.6
+    ],
+    "pectoralNear": [
+      0.58,
+      0.62
+    ]
+  },
+  "materials": {
+    "surface": "scaled",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "fish-aquatic-v1",
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.14,
+      "jaw": 0.08944271909999156,
+      "spine0": 0.06,
+      "spine1": 0.06,
+      "spine2": 0.06,
+      "spine3": 0.06,
+      "spine4": 0.060000000000000026,
+      "spine5": 0.06,
+      "caudal": 0.1,
+      "dorsal": 0.14,
+      "pectoralFar": 0.10770329614269007,
+      "pectoralNear": 0.13416407864998736
+    },
+    "measures": {
+      "body": 0.30000000000000004,
+      "bone-min": 0.06,
+      "bone-max": 0.14,
+      "caudal/body": 0.3333333333333333,
+      "head/body": 0.4666666666666666
+    }
+  },
+  "recipeHash": "8df0dc52c59acef3c71b3af76e474f81b66c0e98515de71eb357399b0f31012c"
+}

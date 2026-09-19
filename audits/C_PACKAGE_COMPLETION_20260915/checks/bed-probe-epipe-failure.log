@@ -1,0 +1,27 @@
+✔ real codec export is deterministic, preserves decoded duration and source bytes, and measures both peaks (296.050208ms)
+✔ sample-safe intersample clipping is rejected by real true-peak measurement (48.103334ms)
+✔ missing metrics, false encoded peak, wrong channels, duration and unsupported profiles refuse (3.231208ms)
+✔ complete voice export preserves source hashes and refuses existing output or changed manifest before publication (3339.582375ms)
+✖ theme, battle and overlapped bed exports preserve source/sidecar bytes and fit exact budgets (3488.682167ms)
+✔ loop derivative joins the exact declared samples, preserves channels and source; seed changes phase only (4.417625ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7289.361042
+
+✖ failing tests:
+
+test at port/v2/tools/asset-intake/audio-export.test.mjs:50:1
+✖ theme, battle and overlapped bed exports preserve source/sidecar bytes and fit exact budgets (3488.682167ms)
+  Error: Audio export: ffprobe failed: spawnSync ffprobe EPIPE
+      at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/asset-intake/audio-export.mjs:8:36)
+      at command (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/asset-intake/audio-export.mjs:18:2)
+      at exportAudioBytes (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/asset-intake/audio-export.mjs:48:25)
+      at exportSoundSet (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/asset-intake/audio-export.mjs:92:18)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/asset-intake/audio-export.test.mjs:63:45)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

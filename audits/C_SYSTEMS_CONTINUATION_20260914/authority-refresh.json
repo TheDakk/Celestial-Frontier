@@ -1,0 +1,64 @@
+{
+  "kind": "producer-only binding refresh",
+  "oldProducer": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "ed8823bcaec0e22f47fe1d6554fc06c282fb30edda2e61de393fea620cd129c8",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "02d4100d417bcda3a66990927dcd377176e5992383364902da5f530cb1f5822a"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-rhsfOKDj.js",
+        "sha256": "86ac176ed49ae0777307b1ab37812d94e88f2f2d7095eebc7f026988913195cb"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-oT5j4xm4.js",
+        "sha256": "38a31b7fa16395ae68ad564df925a96033af0306ab7d88c5149fb8c829294401"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-oT5j4xm4.js",
+        "sha256": "38a31b7fa16395ae68ad564df925a96033af0306ab7d88c5149fb8c829294401"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "38b52dd80c0a2c34f419ae632e58aa2c9ea8972733efcc708d4e1299ad82e7c2"
+      }
+    }
+  },
+  "newProducer": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "357ad8db3729ad3252b9c67bcf4a629328cd9e90cb35c1e88d6ed7476cb00ece",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "b9ab29d9f75148a73db07d623fb69bca1e3c6d1ce616faa34e1b89fcb7dfdec8"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-rhsfOKDj.js",
+        "sha256": "86ac176ed49ae0777307b1ab37812d94e88f2f2d7095eebc7f026988913195cb"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-oT5j4xm4.js",
+        "sha256": "38a31b7fa16395ae68ad564df925a96033af0306ab7d88c5149fb8c829294401"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-oT5j4xm4.js",
+        "sha256": "38a31b7fa16395ae68ad564df925a96033af0306ab7d88c5149fb8c829294401"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "e265a1b0e98614bf26ab697c02c7ee66e615e1e23d43cb037ab50f92f9edda5e"
+      }
+    }
+  },
+  "preserved": {
+    "measurement": "80e15e5aa653963fdf4017bef9790ae60f00f0e40e1d8829b2c84e4b0f346b65",
+    "ruler": "5a09637a0c05d7bd394b2292550583baa4e2221eeceb31417fa7f58af2dbf708",
+    "ceilings": "a5f05be521eb127f3e74306bd69538bdb6d3b564875ed921f2c7f3c0904def83",
+    "candidateSamples": "0b2eae3d6ddb164b1c372950528b66571017737ec0e445ce9b01ea4166d60d44",
+    "pairedBaseline": "db736317ace77f84726dd95c560e8163d27ed699d3abe12012f8abc5cca3e3a5",
+    "browserPolicy": "4c533a8c5d996d0aef3d35c255f9f9623d42b196cd29115ba6d5448cc03b6193"
+  },
+  "nativeCertificate": false
+}

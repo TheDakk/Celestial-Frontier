@@ -1,0 +1,125 @@
+{
+  "status": "OFFLINE_DIAGNOSTIC",
+  "rows": [
+    {
+      "id": "civet",
+      "frames": [
+        {
+          "name": "rest",
+          "inverted": 0,
+          "count": 27511,
+          "minRatio": 0.9998564771654515,
+          "maxRatio": 1.0001554549548644
+        },
+        {
+          "name": "hit-recoil",
+          "inverted": 753,
+          "count": 27511,
+          "minRatio": -30.386748759293752,
+          "maxRatio": 17.478500944395204
+        },
+        {
+          "name": "strike",
+          "inverted": 1237,
+          "count": 27511,
+          "minRatio": -54.05773686275852,
+          "maxRatio": 42.12483612736148
+        },
+        {
+          "name": "approach-quarter",
+          "inverted": 724,
+          "count": 27511,
+          "minRatio": -21.89283866352158,
+          "maxRatio": 23.64337641086693
+        },
+        {
+          "name": "approach-three-quarter",
+          "inverted": 768,
+          "count": 27511,
+          "minRatio": -27.707463224679962,
+          "maxRatio": 17.97906937134789
+        }
+      ]
+    },
+    {
+      "id": "fox",
+      "frames": [
+        {
+          "name": "rest",
+          "inverted": 0,
+          "count": 31332,
+          "minRatio": 0.9998564771654515,
+          "maxRatio": 1.0000807049208902
+        },
+        {
+          "name": "hit-recoil",
+          "inverted": 823,
+          "count": 31332,
+          "minRatio": -37.57437265030869,
+          "maxRatio": 35.76053899622748
+        },
+        {
+          "name": "strike",
+          "inverted": 1716,
+          "count": 31332,
+          "minRatio": -72.1663475424646,
+          "maxRatio": 58.90241419214931
+        },
+        {
+          "name": "approach-quarter",
+          "inverted": 898,
+          "count": 31332,
+          "minRatio": -31.62545517890081,
+          "maxRatio": 52.95894934442951
+        },
+        {
+          "name": "approach-three-quarter",
+          "inverted": 1316,
+          "count": 31332,
+          "minRatio": -104.71040984326537,
+          "maxRatio": 31.128752513933552
+        }
+      ]
+    },
+    {
+      "id": "procedural",
+      "frames": [
+        {
+          "name": "rest",
+          "inverted": 0,
+          "count": 4036,
+          "minRatio": 0.9999456406148965,
+          "maxRatio": 1.0001029994782584
+        },
+        {
+          "name": "hit-recoil",
+          "inverted": 64,
+          "count": 4036,
+          "minRatio": -4.2836305093162865,
+          "maxRatio": 7.1349822135570795
+        },
+        {
+          "name": "strike",
+          "inverted": 213,
+          "count": 4036,
+          "minRatio": -11.298238552829043,
+          "maxRatio": 18.51372284744403
+        },
+        {
+          "name": "approach-quarter",
+          "inverted": 128,
+          "count": 4036,
+          "minRatio": -18.09975940914228,
+          "maxRatio": 18.591607610083884
+        },
+        {
+          "name": "approach-three-quarter",
+          "inverted": 149,
+          "count": 4036,
+          "minRatio": -15.154219548477954,
+          "maxRatio": 20.05539539407678
+        }
+      ]
+    }
+  ]
+}

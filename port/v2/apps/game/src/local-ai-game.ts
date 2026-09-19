@@ -10,6 +10,7 @@ import { createAiLandfallOriginalStoreV1, type AiLandfallInputV1, type AiLandfal
 import { createLocalModelDeliveryV1, probeLocalModelCapabilitiesV1 } from './local-model-delivery.js';
 import { PINNED_LOCAL_MODEL_MANIFEST_V1 } from './local-model-manifest.js';
 import { LocalModelSha256V1 } from './local-model-sha256.js';
+import {hashLandfallBufferV1} from './landfall-content-hash.js';
 import { createLandfallViewerV1, captureLandfallFocusReturnV1, type LandfallViewerV1 } from './landfall-viewer.js';
 import type { BiomeVistaRenderRequestV1 } from './biome-vista-protocol.js';
 import type { CanonicalWorldRoster } from './world-roster.js';
@@ -72,7 +73,7 @@ export async function createLocalAiGameV1(options: LocalAiGameOptionsV1): Promis
     compositePromise ??= (async () => {
       const response = await fetch(baseline.composite.url); if (!response.ok) throw Error('Earth composite unavailable');
       const bytes = await response.arrayBuffer();
-      if (bytes.byteLength > 16 * 1024 * 1024 || new LocalModelSha256V1().update(new Uint8Array(bytes)).digestHex() !== baseline.composite.sha256) throw Error('Earth composite changed');
+      if (bytes.byteLength > 16 * 1024 * 1024 || await hashLandfallBufferV1(bytes) !== baseline.composite.sha256) throw Error('Earth composite changed');
       return new Blob([bytes], { type: 'image/png' });
     })().catch(error => { compositePromise = null; throw error; });
     return compositePromise;
@@ -87,7 +88,7 @@ export async function createLocalAiGameV1(options: LocalAiGameOptionsV1): Promis
         const response = await fetch(baseline.acceptedPainting.url, { signal });
         if (!response.ok) throw Error('Accepted Earth painting unavailable');
         const bytes = await response.arrayBuffer();
-        if (bytes.byteLength > 16 * 1024 * 1024 || new LocalModelSha256V1().update(new Uint8Array(bytes)).digestHex() !== baseline.acceptedPainting.sha256) throw Error('Accepted Earth painting changed');
+        if (bytes.byteLength > 16 * 1024 * 1024 || await hashLandfallBufferV1(bytes) !== baseline.acceptedPainting.sha256) throw Error('Accepted Earth painting changed');
         return { blob: new Blob([bytes], { type: 'image/png' }), width: baseline.settings.width, height: baseline.settings.height };
       }
       if (!capability.supported || !modelFiles) throw Error('Local finisher is unavailable; the painter stays visible');

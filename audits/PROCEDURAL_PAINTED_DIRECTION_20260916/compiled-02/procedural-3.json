@@ -1,0 +1,76 @@
+{
+  "schema": "cf.art.procedural-quadruped-proof.v1",
+  "qualityAccepted": false,
+  "animationReady": false,
+  "source": {
+    "genome": {
+      "seed": 10271,
+      "kingdom": "fauna",
+      "color": 14,
+      "form": 3,
+      "body": 13,
+      "loco": 0,
+      "trait": 9,
+      "size": 4,
+      "diet": 0,
+      "head": 3,
+      "limbs": 4,
+      "skin": 6,
+      "tail": 6,
+      "pattern": 5,
+      "eyes": 1,
+      "behavior": 4,
+      "habitat": 9,
+      "detail": 0,
+      "accent": 14,
+      "temper": 4,
+      "sense": 9,
+      "repro": 4,
+      "life": 1,
+      "metab": 4,
+      "lumin": false,
+      "gen": 0,
+      "heat": 1
+    },
+    "identity": {
+      "speciesVisualKey": "[\"object\",[[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"10271\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]",
+      "seed": 10271,
+      "ownerId": "resolveProceduralCanvas:quad/faunaQuadruped",
+      "earthName": null
+    },
+    "material": "fur",
+    "palette": {
+      "base": "rgb(95,191,138)",
+      "lit": "rgb(133,255,193)",
+      "dark": "rgb(39,80,57)"
+    },
+    "plan": {
+      "kind": "quad",
+      "spec": {
+        "legs": 0.075,
+        "depth": 0.145,
+        "len": 0.292,
+        "neck": 0.134,
+        "back": "level",
+        "muzzle": 0.46,
+        "jaw": "barrel",
+        "ears": "large",
+        "tail": "banded",
+        "coat": "rosettes",
+        "alien": {
+          "legPairs": 2,
+          "eyes": "normal",
+          "tendrils": false,
+          "lumin": false,
+          "sail": false,
+          "armor": false
+        }
+      }
+    }
+  },
+  "systemCard": "SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2\n  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.\n         Light: near-neutral yellow-white, natural diffuse fill.\n  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.\n  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.\n  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.\n  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.\n  Fauna adaptation: authoring comparison visitor, procedural seed 10271; not an Earth resident or claimed home world; fur; base pigment rgb(95,191,138), illuminated pigment rgb(133,255,193), dark pigment rgb(39,80,57); rosettes body markings and a banded tail; body length 0.292, torso depth 0.145, leg length 0.075, neck length 0.134, in the same source coordinate units; preserve their ratios; level back; barrel jaw, muzzle ratio 0.46, large ears; no horns; no dorsal sail; no bioluminescence.\n  One signature: no biome hazard in source; no added hazard motif.",
+  "subject": "One procedural quadruped, seed 10271; source size class massive (relative metre scale is not supplied by this adapter; no scale prop); one head, exactly one head; four legs, two fore and two hind, exactly four legs; two ears, exactly two ears; two eyes, exactly two eyes; one tail, exactly one tail; fur; base pigment rgb(95,191,138), illuminated pigment rgb(133,255,193), dark pigment rgb(39,80,57); rosettes body markings and a banded tail; body length 0.292, torso depth 0.145, leg length 0.075, neck length 0.134, in the same source coordinate units; preserve their ratios; level back; barrel jaw, muzzle ratio 0.46, large ears; land locomotion on four paws, weight supported by connected shoulder, pelvis and jointed limbs; natural mouth and paws, no invented ability weapons; no horns; no dorsal sail; no bioluminescence; no armour, no harness, no gear; alert animal expression, readable brow, closed natural mouth. The source silhouette is anatomy evidence only: render organic volume, convincing muscle and surface detail in the frozen painted style, not the source canvas's flat ellipses, graphic shading or toy face.",
+  "prompt": "Paste in every prompt. Attach the ONE reference the class calls for, never both.\n\nFor cut-out classes (orbital planets, flora, fauna, ships, landmarks, items,\nemblems, Effects; inactive people excluded; Arena MID/NEAR use the rule below):\n  Match the exact visual language of the attached approved Discovery Atlas,\n  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,\n  style_id \"frontier\". Do not redesign or reinterpret the style. The atlas is\n  a reference only: never crop artwork out of it. Its background, lettering\n  and divided layout are not the output layout; use this class's own layout.\n  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62\n\nFor scene classes (universe, stars, planet biomes, Arena FAR), and Arena\nMID/NEAR key-painted terrain so all arena layers match the same biome hand:\n  Match the exact visual language of the attached approved Living Worlds\n  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,\n  style_id \"frontier\". Do not redesign or reinterpret the style. The triptych\n  is a reference only: never crop artwork out of it. Its lettering and panel\n  divisions are not the output layout; use this class's own layout.\n  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38\n\nThe four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the\nart direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,\n03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas\nand triptych above are the production reference locks; do not paint new locks.\nVerify their original bytes against these SHA-256 values before use.\nThe local model's current riverbank output is a gap to close, not a reference.\n\nPaste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.\nChanges to the paragraph require a new kit version; never revise it at send time.\n\n  Rich natural-history fantasy painting, one hand across every subject,\n  tactile directional brushwork, believable connected anatomy, weathered rock,\n  individual but grouped foliage, deep atmospheric layers, readable silhouettes,\n  selective high detail, soft natural light shared by every subject, honest\n  ground and water contact, subtle foreground occlusion, premium painted\n  science-fiction with discovery and character; Earth species keep real\n  anatomy, fur, feather and botany; alien life keeps its data-driven form and\n  palette in the same hand; not plastic CGI, not photography, not cartoon,\n  not oversharpened, no glowing outlines.\n\nThe scene-contact and occlusion language governs composed scenes. A cut-out\nretains the same hand and anatomy while obeying its no-ground/no-shadow layout;\ncontact and shared atmosphere are resolved when composed and finished on a plate.\nThe companion rule in section 4E is retained for companion-flagged game data;\nit does not change counts or the underlying genome.\n\nSYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2\n  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.\n         Light: near-neutral yellow-white, natural diffuse fill.\n  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.\n  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.\n  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.\n  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.\n  Fauna adaptation: authoring comparison visitor, procedural seed 10271; not an Earth resident or claimed home world; fur; base pigment rgb(95,191,138), illuminated pigment rgb(133,255,193), dark pigment rgb(39,80,57); rosettes body markings and a banded tail; body length 0.292, torso depth 0.145, leg length 0.075, neck length 0.134, in the same source coordinate units; preserve their ratios; level back; barrel jaw, muzzle ratio 0.46, large ears; no horns; no dorsal sail; no bioluminescence.\n  One signature: no biome hazard in source; no added hazard motif.\n\nSUBJECT\nOne procedural quadruped, seed 10271; source size class massive (relative metre scale is not supplied by this adapter; no scale prop); one head, exactly one head; four legs, two fore and two hind, exactly four legs; two ears, exactly two ears; two eyes, exactly two eyes; one tail, exactly one tail; fur; base pigment rgb(95,191,138), illuminated pigment rgb(133,255,193), dark pigment rgb(39,80,57); rosettes body markings and a banded tail; body length 0.292, torso depth 0.145, leg length 0.075, neck length 0.134, in the same source coordinate units; preserve their ratios; level back; barrel jaw, muzzle ratio 0.46, large ears; land locomotion on four paws, weight supported by connected shoulder, pelvis and jointed limbs; natural mouth and paws, no invented ability weapons; no horns; no dorsal sail; no bioluminescence; no armour, no harness, no gear; alert animal expression, readable brow, closed natural mouth. The source silhouette is anatomy evidence only: render organic volume, convincing muscle and surface detail in the frozen painted style, not the source canvas's flat ellipses, graphic shading or toy face.\n\nACCURACY\n  Anatomy/count constraints: one head, exactly one head; four legs, two fore and two hind, exactly four legs; two ears, exactly two ears; two eyes, exactly two eyes; one tail, exactly one tail.\n  Must include: the complete creature from head to tail or feet; every limb\n  described.\n  Must exclude: ground; floor plane; cast shadow; base; scenery; text; a second\n  creature; a companion unless described; extra or missing limbs; top-down view.\n  Scale relationship: source size class massive (relative metre scale is not supplied by this adapter; no scale prop).\n\nLAYOUT\n  One isolated standing full-body creature, centred, weighty and readable,\n  shown front-to-three-quarter in a clear action-ready pose. Entire anatomy\n  and any carried equipment visible. No floor plane.\n  Default facing: south/front with slight three-quarter turn.\n  Framing target: 80 percent. Safe margin: at least 8 percent on every side.\n\nTECHNICAL OUTPUT\n  Create a square 1024 x 1024 PNG. Every pixel that is not the subject is one\n  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,\n  noise, checkerboard or transparency pattern, and no ground, base, frame,\n  scenery or cast shadow. The subject's outline is crisp and fully opaque\n  against the magenta, with no glow, haze, smoke or soft feathering bleeding\n  into it, and nothing on the subject is magenta or pink. The magenta is keyed\n  out afterwards to produce the transparent asset.\n\nNEGATIVE\n  No text, letters, numbers, watermark, signature, border, frame, grid, UI\n  element, health bar, minimap, waypoint, token ring, base, pedestal,\n  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy\n  sheen, airbrushed gradients, duplicate subject, unintended companion, extra\n  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet\n  layout. No lens flare, no chromatic aberration, no holographic UI\n  projections, no glowing outlines or rim light used as an effect.\n  No scenery, no floor plane, no cast shadow, no drop shadow, no white\n  background, no checkered background, no baked transparency pattern.\n  Background must be one flat uniform magenta fill and nothing else.\n  No default bipedal humanoid stance unless named, no armour plating the brief did\n  not ask for, no human eyes, no weapons held in hands unless named, no rider,\n  no second creature.\n  Do not add a blanket oversized-head ban that would fight a data-owned\n  companion brief.",
+  "scope": "authoring comparison under canonical Earth light; not runtime generation or a home-world claim",
+  "needs": "new painting hash, fitted landmarks and masks; canvas masks must not be reused"
+}

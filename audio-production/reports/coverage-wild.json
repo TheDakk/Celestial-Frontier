@@ -1,0 +1,545 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "v2.ability.wild.cast.1",
+      "group": "coverage-wild",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/4cd96dc630bed984-knifeSlice.ogg",
+          "sha256": "4cd96dc630bed9840c15f1dd2306da2cc56a4da26a5d3f1a03c5a7265ac5e54f",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.599542
+        },
+        {
+          "path": "source-audio/kenney_impacts/2d7c719c05999e05-impactPunch_medium_003.ogg",
+          "sha256": "2d7c719c05999e0532f4384e1018e04cd916db715140bf16dee2dff3f820e908",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.455261
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ability.wild.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "wild",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 0,
+      "master": "masters/coverage-wild/v2.ability.wild.cast.1.wav",
+      "masterSha256": "e0fcfca49149834a16b47067185820be996193035a871fb2080b242232438f0f",
+      "opus": "masters/coverage-wild/v2.ability.wild.cast.1.opus",
+      "opusSha256": "5f0f6e403760e05d3b87001cc31698111ca4d00130746b4eba39d5922fe2066d",
+      "previewSha256": "0227b7895053efe02a9c62efedc77273295bdd9e5eb75f0974b398e4848955c8",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.wild.cast.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.8
+    },
+    {
+      "id": "v2.ability.wild.cast.2",
+      "group": "coverage-wild",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/6c2064d0ef988d1e-knifeSlice2.ogg",
+          "sha256": "6c2064d0ef988d1ec3d56868e823ea8823a5cac00f2742560052633529407def",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.568792
+        },
+        {
+          "path": "source-audio/kenney_impacts/486988aa2d6440ff-impactPunch_medium_000.ogg",
+          "sha256": "486988aa2d6440ffc4c62a0e8ccf3c23673ba84424bd4723378d451b7255eb5c",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.430544
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ability.wild.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "wild",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 1.65,
+      "master": "masters/coverage-wild/v2.ability.wild.cast.2.wav",
+      "masterSha256": "b457a35f304e33574968d68dbe163dec8d5d3fc257059b7017e59186c20d4866",
+      "opus": "masters/coverage-wild/v2.ability.wild.cast.2.opus",
+      "opusSha256": "09d5fb1c518686548d0f8870cb2b24c23e1f0bec8ce2926dc579230d2b54e4b7",
+      "previewSha256": "e5a7fe47f9bd7fc146b17bedbb72a185e337e929b89eef61307ba37109cc0f6f",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.wild.cast.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.6,
+      "opusDbTP": -10.7
+    },
+    {
+      "id": "v2.ability.wild.cast.3",
+      "group": "coverage-wild",
+      "kind": "synthetic_fictional",
+      "duration": 0.65,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/8a7451193c38bc05-cloth2.ogg",
+          "sha256": "8a7451193c38bc05483aec25dd193e163a15d44cf7fff04ac7912573231b0201",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.415063
+        },
+        {
+          "path": "source-audio/kenney_impacts/4a256878a3afb994-impactPunch_medium_004.ogg",
+          "sha256": "4a256878a3afb994ec9a4399336687748e68c7c136872c08c9c797d8c4e2464a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.542925
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ability.wild.cast"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "wild",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 3.3,
+      "master": "masters/coverage-wild/v2.ability.wild.cast.3.wav",
+      "masterSha256": "fb294a33a29d55e97b6bd1db56e5820806115a23196c3c5739bed1dd807046bb",
+      "opus": "masters/coverage-wild/v2.ability.wild.cast.3.opus",
+      "opusSha256": "2053caa83e1a97a68f967154cc151dd7a71f3d80914b209ed238df272fff991b",
+      "previewSha256": "9a357c221e38ce8e2d3de84c98c3433f49d0a50cd73ab969bf010e06b8a85143",
+      "previewBytes": 62514,
+      "previewUrl": "/__cf-audio-review/v2.ability.wild.cast.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -19.7,
+      "opusDbTP": -20.1
+    },
+    {
+      "id": "v2.ability.wild.impact.1",
+      "group": "coverage-wild",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/a48632d17a4f1416-cloth3.ogg",
+          "sha256": "a48632d17a4f1416541d261a32a31612e01267144c407fa3ecab3ff410f0085b",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.476563
+        },
+        {
+          "path": "source-audio/kenney_impacts/486988aa2d6440ff-impactPunch_medium_000.ogg",
+          "sha256": "486988aa2d6440ffc4c62a0e8ccf3c23673ba84424bd4723378d451b7255eb5c",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.430544
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ability.wild.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "wild",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 4.949999999999999,
+      "master": "masters/coverage-wild/v2.ability.wild.impact.1.wav",
+      "masterSha256": "acbcd88fb6f760f67d24c46b931bada18a95ccc390f4aa12727988825ec082e8",
+      "opus": "masters/coverage-wild/v2.ability.wild.impact.1.opus",
+      "opusSha256": "5a5bafd437120c231e1984d89f9d38eda9fd297d9b95bd2b0d42ac9c1d1ab6d8",
+      "previewSha256": "dcdf70d48ac6523c5e4c814d56d0e41cbf60e7d17b8c754c48aeb7e2d058e670",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.wild.impact.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -20.4,
+      "opusDbTP": -20.1
+    },
+    {
+      "id": "v2.ability.wild.impact.2",
+      "group": "coverage-wild",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/ddb93a3671233f95-cloth1.ogg",
+          "sha256": "ddb93a3671233f95da0e0b10367f082f7eb42fa6caaddcf776410aa8833c747d",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.661042
+        },
+        {
+          "path": "source-audio/kenney_impacts/4a256878a3afb994-impactPunch_medium_004.ogg",
+          "sha256": "4a256878a3afb994ec9a4399336687748e68c7c136872c08c9c797d8c4e2464a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.542925
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ability.wild.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "wild",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 7.1499999999999995,
+      "master": "masters/coverage-wild/v2.ability.wild.impact.2.wav",
+      "masterSha256": "7f1f00098c150cae0647b73992c1b5d76ad63e7c83b44fe4a3752528687c135b",
+      "opus": "masters/coverage-wild/v2.ability.wild.impact.2.opus",
+      "opusSha256": "5095e7d8411fcac0dac6048fb02a06f1e76aaddd5a96ecbcb9ffcc60a0bfc4e9",
+      "previewSha256": "ce1e6504a966cf554ae519cdf902465517c38c67fc9d38434bf3108814008ea9",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.wild.impact.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.2,
+      "opusDbTP": -15.3
+    },
+    {
+      "id": "v2.ability.wild.impact.3",
+      "group": "coverage-wild",
+      "kind": "synthetic_fictional",
+      "duration": 1.2,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/e7ab9a6c4466dea8-cloth4.ogg",
+          "sha256": "e7ab9a6c4466dea874196c61f59bf1da05cfe58748f42fadd695d441a154a99b",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.384333
+        },
+        {
+          "path": "source-audio/kenney_impacts/6492f9ccbc8d24dc-impactPunch_medium_002.ogg",
+          "sha256": "6492f9ccbc8d24dcef607bb1b48790b7870961474561f7fe5601e1c73a3018ef",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.541406
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ability.wild.impact"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "wild",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 9.35,
+      "master": "masters/coverage-wild/v2.ability.wild.impact.3.wav",
+      "masterSha256": "87eab83973cdf1edf0f3c7610160310cf4b04ebe0e39012848036bc5910eaebb",
+      "opus": "masters/coverage-wild/v2.ability.wild.impact.3.opus",
+      "opusSha256": "b5a367c08235a6820df8c66513b8acd2a31ba01bba3e1aba1745c09daf7fc8cf",
+      "previewSha256": "62fb49a6f39f1c6ff9427750a728558631aaa8c387eeaf0b17914769d1027022",
+      "previewBytes": 115314,
+      "previewUrl": "/__cf-audio-review/v2.ability.wild.impact.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -22.8,
+      "opusDbTP": -22.8
+    },
+    {
+      "id": "v2.ability.wild.sustain.1",
+      "group": "coverage-wild",
+      "kind": "synthetic_fictional",
+      "duration": 4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/4cd96dc630bed984-knifeSlice.ogg",
+          "sha256": "4cd96dc630bed9840c15f1dd2306da2cc56a4da26a5d3f1a03c5a7265ac5e54f",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.599542
+        },
+        {
+          "path": "source-audio/kenney_impacts/4a256878a3afb994-impactPunch_medium_004.ogg",
+          "sha256": "4a256878a3afb994ec9a4399336687748e68c7c136872c08c9c797d8c4e2464a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.542925
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ability.wild.sustain"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "wild",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 11.55,
+      "master": "masters/coverage-wild/v2.ability.wild.sustain.1.wav",
+      "masterSha256": "1dcd39f39e64a2b1d38212518707823043a30dde35459bfee60c4a6719ab1d8b",
+      "opus": "masters/coverage-wild/v2.ability.wild.sustain.1.opus",
+      "opusSha256": "30f2a81712a2d96f115e2aae668c20904f42ded93c6ddf9288cadba37ebe00c0",
+      "previewSha256": "29d8e1238718fcda3a5f84705267b927140797ff901ce91ec9d811e3e8797df1",
+      "previewBytes": 384114,
+      "previewUrl": "/__cf-audio-review/v2.ability.wild.sustain.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.8,
+      "opusDbTP": -13.9
+    },
+    {
+      "id": "v2.ability.wild.release.1",
+      "group": "coverage-wild",
+      "kind": "synthetic_fictional",
+      "duration": 0.9,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/4cd96dc630bed984-knifeSlice.ogg",
+          "sha256": "4cd96dc630bed9840c15f1dd2306da2cc56a4da26a5d3f1a03c5a7265ac5e54f",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.599542
+        },
+        {
+          "path": "source-audio/kenney_impacts/6492f9ccbc8d24dc-impactPunch_medium_002.ogg",
+          "sha256": "6492f9ccbc8d24dcef607bb1b48790b7870961474561f7fe5601e1c73a3018ef",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.541406
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ability.wild.release"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "wild",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 16.55,
+      "master": "masters/coverage-wild/v2.ability.wild.release.1.wav",
+      "masterSha256": "725410161814d5eb322e5aba5ef9343db55e6158a330290277b7fdde81109364",
+      "opus": "masters/coverage-wild/v2.ability.wild.release.1.opus",
+      "opusSha256": "76fbcdd66558b3e2590c81940eb8a92acee7ce9917d5f03352b00cd9398902fb",
+      "previewSha256": "bf58f82f724feb1b88985eaa517b92a33a8170d7c8549ccd3dc37a6fd631dfa2",
+      "previewBytes": 86514,
+      "previewUrl": "/__cf-audio-review/v2.ability.wild.release.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.8
+    },
+    {
+      "id": "v2.ability.wild.shield.1",
+      "group": "coverage-wild",
+      "kind": "synthetic_fictional",
+      "duration": 1.4,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/4cd96dc630bed984-knifeSlice.ogg",
+          "sha256": "4cd96dc630bed9840c15f1dd2306da2cc56a4da26a5d3f1a03c5a7265ac5e54f",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.599542
+        },
+        {
+          "path": "source-audio/kenney_impacts/e71d23abcc3f10d9-impactPunch_medium_001.ogg",
+          "sha256": "e71d23abcc3f10d9d6bc9615b2a431fff70b12333a5fcdd9964457564ace4349",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.404603
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ability.wild.shield"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "wild",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 18.45,
+      "master": "masters/coverage-wild/v2.ability.wild.shield.1.wav",
+      "masterSha256": "e20e6ec2add30382f035253807b401515c973e38dc8b9bdc98f8cafd2ebd2fb5",
+      "opus": "masters/coverage-wild/v2.ability.wild.shield.1.opus",
+      "opusSha256": "f8864851ccd3aedd1e0b1d12aee67de477ab75a257b05f291fae61986ce160e0",
+      "previewSha256": "237341f506a7e205fdbae983d6a048c89f2baf8abeef1e9a6fbde41fb860f719",
+      "previewBytes": 134514,
+      "previewUrl": "/__cf-audio-review/v2.ability.wild.shield.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.8,
+      "opusDbTP": -13.8
+    },
+    {
+      "id": "v2.ability.wild.heal.1",
+      "group": "coverage-wild",
+      "kind": "synthetic_fictional",
+      "duration": 1.8,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/4cd96dc630bed984-knifeSlice.ogg",
+          "sha256": "4cd96dc630bed9840c15f1dd2306da2cc56a4da26a5d3f1a03c5a7265ac5e54f",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.599542
+        },
+        {
+          "path": "source-audio/kenney_impacts/2d7c719c05999e05-impactPunch_medium_003.ogg",
+          "sha256": "2d7c719c05999e0532f4384e1018e04cd916db715140bf16dee2dff3f820e908",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.455261
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ability.wild.heal"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "wild",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 20.849999999999998,
+      "master": "masters/coverage-wild/v2.ability.wild.heal.1.wav",
+      "masterSha256": "f70c9ce5e8eb454ee23c86d4aa066ce79a7cc00430c9108a517fd9950b46c237",
+      "opus": "masters/coverage-wild/v2.ability.wild.heal.1.opus",
+      "opusSha256": "30745220bcc776b48588da81c8fbb463644de144ce2d215eaf3fc858b27c1022",
+      "previewSha256": "a3e8e4b9ef9247866c81e4821c0253d250dc7028f4a6a9ca9cf3a5796243948f",
+      "previewBytes": 172914,
+      "previewUrl": "/__cf-audio-review/v2.ability.wild.heal.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.7,
+      "opusDbTP": -13.8
+    },
+    {
+      "id": "v2.ability.wild.tick.1",
+      "group": "coverage-wild",
+      "kind": "synthetic_fictional",
+      "duration": 0.45,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/4cd96dc630bed984-knifeSlice.ogg",
+          "sha256": "4cd96dc630bed9840c15f1dd2306da2cc56a4da26a5d3f1a03c5a7265ac5e54f",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.35,
+          "delay": 0.0,
+          "duration": 0.599542
+        },
+        {
+          "path": "source-audio/kenney_impacts/486988aa2d6440ff-impactPunch_medium_000.ogg",
+          "sha256": "486988aa2d6440ffc4c62a0e8ccf3c23673ba84424bd4723378d451b7255eb5c",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.1,
+          "delay": 0.035,
+          "duration": 0.430544
+        }
+      ],
+      "synthNote": null,
+      "midi": [],
+      "requirements": [
+        "ability.wild.tick"
+      ],
+      "notes": "Version 2 phase-specific design. Independent primary takes for cast/impact; shield, healing and tick roles have separate timing. Not accepted.",
+      "synthProfile": "wild",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "recipeVersion": 2,
+      "start": 23.65,
+      "master": "masters/coverage-wild/v2.ability.wild.tick.1.wav",
+      "masterSha256": "df16ae9fc1a3f5d3426edd293dc9c4c6ffe8e573e2f8620c4fc4e75dcadc7da0",
+      "opus": "masters/coverage-wild/v2.ability.wild.tick.1.opus",
+      "opusSha256": "643e7e42e0680a67d14a305291802721843412f2e7438672c5d9b3164b647897",
+      "previewSha256": "12630ca3f443765826f1d0be154b348c99e0cd40b2e5d1b90e7da78e7b64c6d4",
+      "previewBytes": 43314,
+      "previewUrl": "/__cf-audio-review/v2.ability.wild.tick.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.8,
+      "opusDbTP": -13.8
+    }
+  ],
+  "listeningAccepted": false
+}

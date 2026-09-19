@@ -30,8 +30,10 @@ describe('motion templates: contracts with Codex-owned vocabularies', () => {
   });
   it('labels unknown templates as the whole-portrait fallback', () => {
     // A11/B3: every kit §4 name now has a library; a non-kit name still falls to the labelled fallback.
-    const f = resolveTemplate('gastropod');
-    expect(isMotionFallback(f) && f.reason).toMatch(/gastropod/);
+    const f = resolveTemplate('plasma');
+    expect(isMotionFallback(f) && f.reason).toMatch(/plasma/);
+    // gastropod is a Codex specialized roster template since 6a58e40e: a library, not a fallback.
+    expect(isMotionFallback(resolveTemplate('gastropod'))).toBe(false);
     expect(isMotionFallback(resolveTemplate('quadruped', 2))).toBe(true);
     expect(isMotionFallback(resolveTemplate('quadruped'))).toBe(false);
   });
@@ -102,11 +104,13 @@ describe('compileBodyCard', () => {
     expect(civet.notes.some((n) => /record surface .* wins over genome skin "translucent"/.test(n))).toBe(true);
   });
   it('refuses an unsupported template with a labelled fallback', () => {
-    const r = { ...civetRecord(), kind: 'gastropod', template: { id: 'gastropod', version: 1 } };
+    const r = { ...civetRecord(), kind: 'plasma', template: { id: 'plasma', version: 1 } };
     const e = refusal(() => compileBodyCard(r));
     expect(e.reason).toBe('unsupported-template');
-    expect(e.fallback).toMatchObject({ kind: 'whole-portrait', templateId: 'gastropod' });
+    expect(e.fallback).toMatchObject({ kind: 'whole-portrait', templateId: 'plasma' });
     expect(compileBodyCardOrFallback(r)).toMatchObject({ kind: 'whole-portrait' });
+    // A specialized template (gastropod) is known: a quadruped record under it refuses on landmarks, never falls back.
+    expect(refusal(() => compileBodyCard({ ...civetRecord(), kind: 'gastropod', template: { id: 'gastropod', version: 1 } })).reason).toBe('missing-landmarks');
     expect(refusal(() => compileBodyCard({ ...civetRecord(), kind: 'monotreme' })).reason).toBe('unsupported-template');
   });
   it('refuses missing or malformed landmarks by name', () => {

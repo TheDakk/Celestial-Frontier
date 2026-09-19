@@ -1,0 +1,27 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-contact-family.test.ts (13 tests | 1 failed) 319ms
+   × keeps vent-crab grounded through dodge, scuttle and mirrored replay without freezing swings 10ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-contact-family.test.ts > keeps vent-crab grounded through dodge, scuttle and mirrored replay without freezing swings
+Error: Contact: approach:scuttle@101.5 leg0Near RangeError: target outside two-bone reach
+ ❯ Object.resolve apps/game/src/creature-rig-contact.ts:92:73
+     90|    const target={x:c.endPoint.x+(gait?direction*stride*(completed+step…
+     91|    const parent=matrices[c.hip]!,root=transformPoint(parent,c.root);
+     92|    let solved;try{solved=c.chain.solve(root,target);}catch(error){thro…
+       |                                                                         ^
+     93|    const upper=wrapped(angle(solved.root,solved.joint)-angle(c.root,c.…
+     94|    const lower=wrapped(angle(solved.joint,solved.end)-angle(c.joint,c.…
+ ❯ apps/game/src/creature-rig-contact-family.test.ts:29:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 16 passed (17)
+   Start at  20:00:49
+   Duration  568ms (transform 217ms, setup 0ms, import 309ms, tests 438ms, environment 0ms)
+

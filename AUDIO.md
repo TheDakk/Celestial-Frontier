@@ -1,11 +1,92 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
-**Proposed Sound Kit v1 retained, September 12:** [SOUND_KIT.md](SOUND_KIT.md) is committed
-verbatim, with no new sources, derivation or wiring. Recording waits for Nick's approval of
-the frozen paragraphs. Then only §8b: quadruped voice archetype, Wild theme set, battle set,
-temperate rain bed and fur impacts. Derive Civet, fox and the procedural control from the
-one archetype, present all three side by side for listening, and wire the arena proof for
-sound. No wider library approval is implied. [Receipt and scope](audits/MOTION_SOUND_KITS_20260912/ADOPTION.md).
+## September 15 audio production — matches code as of 2026-09-15
+
+The supplied handoff is now present verbatim in celestial-frontier-audio-handoff/. Nick's direct
+request authorizes approved CC0/public-domain acquisitions, the explicit CC BY attribution
+exception, and existing REAPER/Surge/stock
+workflow with $0 additional spend. No kit wording changed. The old missing-input and
+original/commissioned-only execution stops are superseded for this task.
+
+Actual game inventory: 631 fauna, 332 flora, 27 fungi, 20 microbes; 43 biome profiles,
+29 weather defaults, 11 themes and source-bound movement/material/event vocabulary.
+
+The latest fauna continuation adds 90 source entries: 63 individually CC BY 4.0 iNaturalist,
+23 CC0 OpenGameArt animal recordings and four public-domain US FWS recordings. Nick explicitly
+approved CC BY with attribution; exact per-recording attribution, license URL, source URL and
+modifications survive into the audition catalogue and RECORDING_CREDITS.md. No NC/ND/SA license
+is admitted. Originals are unchanged. Wikimedia returned HTTP429 after four acquisitions;
+that source remains blocked and was not retried. Tortoise has no eligible sound in the bounded
+query and remains missing. No imitation or generic fictional voice fills an authentic row.
+
+There are now 1,669 source entries / 1,665 unique originals; 1,662 fully decode and the same
+three damaged originals remain quarantined. The 83 new REAPER excerpts bring totals to 1,617
+validated WAV/Opus pairs, 1,396 distinct decoded PCM treatments and 44 successful editable
+production projects. Seven lossy ZIP alternates were retained as originals but not rendered as
+extra performances. There are still 102 loop derivatives and 49 instrument stems. $0 spent.
+
+Identified reference coverage is 203 / 631 fauna; 428 remain missing. Broader labels retain the
+actual narrower taxon, age and recording context. References do not establish per-behavior calls
+or listening acceptance. All 1,010 Earth identities retain their existing ordinary-game owner;
+379 non-fauna identities remain fictional sonification. All 43 biome profiles retain explicit
+recipes: 486 audited routes, 484 rendered plans and two airless silences, with zero missing
+components. Current evidence: audits/AUDIO_FAUNA_CONTINUATION_20260915/README.md.
+
+Resolved sound plans use the painter record's family and material. The hash-bound adapter was
+exercised on the real Civet, candidate-01 fox and native-painter-parts-03 procedural records;
+materials are furred/furred/translucent, with corrupt-record refusal. Existing records lack
+kingdom, acoustic size and propagation medium. These remain explicit caller context; the proof's
+medium/size values are diagnostic declarations, not inferred biological measurements. Named Earth
+voice requests stay exact species/behavior requirements and refuse unrelated family substitutions.
+
+The in-game DEV-only Sound review now auditions layered contact, environment, ability and music
+plans. Independent component selection, bounded sequential loading, source-preserving loop blends,
+linear rate conversion and complementary musical fades create one bounded PCM preview through
+the existing audio owner. Missing components refuse playback. Maximum24s stereo output9.216MB;
+no full-library cache, new AudioContext, third-party playback URL or player-pack change.
+
+Current evidence: [fauna and biome audit](audits/AUDIO_FAUNA_BIOMES_20260915/README.md),
+[audio production](audio-production/README.md), [review prompt](audio-production/REVIEW_PROMPT.md).
+
+**Sound Kit v1 approved — matches code as of 2026-09-15:** [SOUND_KIT.md](SOUND_KIT.md)
+was replaced with the supplied bytes verbatim in8a2dfdc0. The supplied PROPOSED labels do not
+withdraw Nick's approval of v1/frozen paragraphs; do not ask again. Hashes and source paths:
+[audits/LONG_SESSION_20260913/supplied-kits-receipt.json](audits/LONG_SESSION_20260913/supplied-kits-receipt.json).
+C3 sources: quadruped voice archetype, Wild theme set, battle set, temperate rain bed, fur
+impacts; the original kit asks for original/commissioned sources, while Nick's September15
+direct task also authorizes manifest-approved free sources. Record rights,48kHz24-bit masters
+and Opus. Derive
+Civet/fox/procedural voices from one archetype for side-by-side listening, then wire the proof's
+approach/strike/hitstop/impact/hurt/damage ticks/victory. The new source-based candidates
+exist for listening; the strict first-source naming/dry-source and arena acceptance gates remain.
+C1 wording and mechanical intake are complete; first sounds of a new class stop for review.
+Claude owns soundkit/ and its tests. The read-only voice intake CLI is
+`node port/v2/tools/asset-intake/inspect.mjs voice manifest.json`: eight canonical cues and
+four to six numbered footfalls, hash-bound dry 48kHz/24-bit mono PCM and declared redistribution
+rights. It rejects bad RIFF data, silence, sample clipping, wrong sizes/names and missing rights.
+It does not prove true peak, loudness, legal ownership, dry sound or listening quality; those
+are explicit pending results. No source recording, derived voice or Opus is accepted by this tool.
+
+The `export-audio.mjs` CLI exports complete supplied voice, ability, battle and first temperate
+bed sets to new Opus directories, preserving masters and checking source/encoded true peak,
+decoded frames, channel/rate and byte budgets. The receipt binds manifests, sources, tool version,
+encoder arguments and output hashes. Real codec tests prove repeat bytes on this installed
+toolchain and reject intersample clipping. Short-term mix loudness, dry-source/rights review,
+listening, derived voices and arena wiring remain pending.
+
+`inspect.mjs sound-set` checks the eleven theme inventories, sixteen battle cues, first stereo
+temperate bed and mono/stereo rain layer. Hash-bound loop JSON records exclusive sample end,
+overlap and source bytes. `audio-loop.mjs` renders the selected loop with a convex tail/head
+crossfade and seeded cyclic phase. It preserves the original and records the exact shortened
+output length; beds below 24 seconds after overlap refuse. A technically rendered boundary is
+not an inaudible-loop verdict. Source/selected bed intervals remain 24–40 seconds; output must
+also satisfy the profile. Unspecified cue durations are not invented. Weather export still has
+no approved technical profile; fur naming and source production remain open.
+
+Nick's supplied free-audio handoff and explicit CC BY approval supersede the old
+original/commissioned-only execution stop. Kit bytes remain unchanged; the older rights-sentence
+proposal is retained as history, not a request to repeat approval. Candidate quality, source
+context, dry-source suitability and listening acceptance remain separate from permitted rights.
 
 ## Canonical Explorer Chronicle repair — 2026-09-08
 

@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ packages/art/test/earth-resident-layer.test.ts (6 tests | 1 failed) 164ms
+   × the actual procedural dispatcher publishes the winning topology once and preserves ordinary ink commands 63ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/art/test/earth-resident-layer.test.ts > the actual procedural dispatcher publishes the winning topology once and preserves ordinary ink commands
+AssertionError: expected undefined to be 'faunaBird' // Object.is equality
+
+- Expected:
+"faunaBird"
+
++ Received:
+undefined
+
+ ❯ packages/art/test/earth-resident-layer.test.ts:187:79
+    185|     const picture=resolveProceduralCanvas(genome,undefined,false,(valu…
+    186|     const ordinary=resolveProceduralCanvas(genome);
+    187|     expect(count).toBe(1);expect((observed as PainterTopology|null)?.o…
+       |                                                                               ^
+    188|     expect(record(picture!).trace).toEqual(record(ordinary!).trace);
+    189|     expect(record(observedInk!).trace).toEqual(record(ordinary!).draws…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 8 passed (9)
+      Tests  1 failed | 44 passed (45)
+   Start at  09:04:36
+   Duration  1.04s (transform 1.97s, setup 0ms, import 3.08s, tests 597ms, environment 1ms)
+

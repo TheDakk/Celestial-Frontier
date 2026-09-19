@@ -426,3 +426,14 @@ describe('K22: notification timestamps between append, checkpoint, export and im
     expect(importedT(7)).toBe(7);
   });
 });
+
+it('the actual recording admission refuses a live checkpoint without mutating its notice overlay',()=>{
+ const main=readFileSync(new URL('../apps/game/src/main.ts',import.meta.url),'utf8');
+ const start=main.indexOf('  mayRecord: () =>'),end=main.indexOf('\n  deferRecord:',start);
+ expect(start).toBeGreaterThan(0);expect(end).toBeGreaterThan(start);
+ const expression=main.slice(start+'  mayRecord: '.length,end).trim().replace(/,$/,'');
+ const admit=(source:string,activePersist:unknown)=>new Function('activePersist',`const save={},playerMutationsBlocked=()=>false,trainingActive=()=>false,trainingCheckpointWriteHeld=false,replacementTransaction=false,replacementReloadPending=false,importWriteInFlight=false,persistHold=false;return (${source})();`)(activePersist);
+ const check=(source:string)=>{const h=harness();h.setRecordable(admit(source,Promise.resolve()));const before=h.history();h.controller.record('During checkpoint','must not mutate',NOW);expect(h.history()).toEqual(before);};
+ expect(()=>check(expression)).not.toThrow();expect(()=>check(expression.replace('activePersist === null && ',''))).toThrow();
+ expect(admit(expression,null)).toBe(true);
+});

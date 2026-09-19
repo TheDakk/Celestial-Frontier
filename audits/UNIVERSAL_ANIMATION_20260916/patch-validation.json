@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "files": 7,
+  "scope": "Patch applied to isolated copies of the recorded staged base, all outputs match current source bytes."
+}

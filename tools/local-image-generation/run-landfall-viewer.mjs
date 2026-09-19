@@ -27,6 +27,7 @@ const receipt={schema:'cf.native-retained-landfall-viewer.v1',status:'FAIL',star
   sources:[],observations:[],clicks:[],screenshots:[],browserEvents:[],targetEvents:[],cleanup:{}};
 await writeJson('start.json',receipt);
 let preview,cdp,targetId,sessionId,originalJob,releaseWorkspace;
+let eventFault=null;
 const bindingPath=path.join(root,'audits/AI_GAME_INTEGRATION_20260909/platypus-reference-binding.json');
 const sourceNames=[
   'port/v2/apps/game/src/main.ts','port/v2/apps/game/index.html','port/v2/apps/game/vite.config.ts',
@@ -73,13 +74,14 @@ try{
   receipt.preview={url:preview.url,config:preview.config,modelFiles:preview.modelFiles,runtimeFiles:preview.runtimeFiles};
   await writeJson('verified-preview.json',receipt.preview);
   const inferenceTargets=new Set();
+
   cdp=await openChromiumCdp({label:'CF native retained painting viewer',userDataPrefix:'cf-game-local-ai-',commandTimeoutMs:45000,
     onEvent:event=>{
       if(['Runtime.exceptionThrown','Log.entryAdded','Inspector.targetCrashed'].includes(event.method)){
-        if(receipt.browserEvents.length>=300)throw Error('Browser event evidence overflow');receipt.browserEvents.push(event);
+        if(receipt.browserEvents.length>=300){eventFault??=Error('Browser event evidence overflow');return;}receipt.browserEvents.push(event);
       }
       if(['Target.targetCreated','Target.targetInfoChanged','Target.targetDestroyed','Target.targetCrashed'].includes(event.method)){
-        if(receipt.targetEvents.length>=300)throw Error('Target event evidence overflow');receipt.targetEvents.push(event);
+        if(receipt.targetEvents.length>=300){eventFault??=Error('Target event evidence overflow');return;}receipt.targetEvents.push(event);
         const info=event.params?.targetInfo;if(info?.type==='worker'&&info.url?.includes('/__local_ai/stage-worker.mjs'))inferenceTargets.add(info.targetId);
       }
     }});
@@ -90,7 +92,9 @@ try{
   await cdp.send('Runtime.enable',{},sessionId);await cdp.send('Log.enable',{},sessionId);await cdp.send('Page.enable',{},sessionId);
   await cdp.send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false},sessionId);
   const evaluate=async expression=>{
+    if(eventFault)throw eventFault;
     const value=await cdp.send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true},sessionId);
+    if(eventFault)throw eventFault;
     if(value.exceptionDetails)throw Error(value.exceptionDetails.exception?.description??value.exceptionDetails.text);return value.result.value;
   };
   async function until(label,expression,timeout=15000){
@@ -260,9 +264,11 @@ try{
   need(workerRequests().length===0&&modelRequests().length===0&&inferenceTargets.size===0,'Viewer/reload triggered model work');
   receipt.noInferenceOrModelRequests=true;receipt.original={sha256:pixelHash};
   need(receipt.browserEvents.every(event=>event.method!=='Runtime.exceptionThrown'&&event.method!=='Inspector.targetCrashed'),'Native viewer game exception/crash');
+  if(eventFault)throw eventFault;
   receipt.status='PASS';
 }catch(error){receipt.error=String(error.stack??error);process.exitCode=1;}
 finally{
+  if(eventFault){receipt.status='FAIL';receipt.error??=String(eventFault);process.exitCode=1;}
   // Always retain final requests and source-integrity failures, including an
   // early browser/worker failure. A red attempt never starts another inference.
   if(preview)receipt.requests=preview.requests.map(row=>({...row}));
@@ -282,6 +288,7 @@ finally{
   if(!receipt.sourceIntegrity.unchanged){receipt.status='FAIL';process.exitCode=1;}
   try{releaseWorkspace?.();receipt.cleanup.workspaceReleased=Boolean(releaseWorkspace);}
   catch(error){receipt.cleanup.workspaceError=String(error);receipt.status='FAIL';process.exitCode=1;}
+  if(eventFault){receipt.status='FAIL';receipt.error??=String(eventFault);process.exitCode=1;}
   receipt.finishedAt=new Date().toISOString();await writeJson('result.json',receipt);
   console.log(JSON.stringify({status:receipt.status,error:receipt.error??null,observations:receipt.observations.length,
     clicks:receipt.clicks.length,generationToReadyMs:receipt.generationToReadyMs??null,original:receipt.original?.sha256??null,

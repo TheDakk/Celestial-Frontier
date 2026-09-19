@@ -1,0 +1,11 @@
+file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:6
+const need=(ok,reason)=>{if(!ok)throw Error('Family admission: '+reason);};
+                                      ^
+
+Error: Family admission: proportion bound: branch/trunk:branch2
+    at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:6:39)
+    at checkFamilyGeometry (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:26:76)
+    at sealFamilyRecord (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:40:36)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/family-review/prepare-flora.mjs:19:20
+
+Node.js v26.8.2

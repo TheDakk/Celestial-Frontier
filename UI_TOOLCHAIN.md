@@ -1,6 +1,63 @@
 # Celestial Frontier — development toolchain
 
-## September 12 parts-rig tooling additions — matches configuration 2026-09-12
+**September 19 startup — current:** official check under shared lock; idle FFmpeg9.0.1_1 →9.0.2,
+libvmaf3.2.0 →3.2.1 and xz5.8.3 →5.8.4 installed; Homebrew7.0.3 unchanged. All seven CLI capability
+checks PASS. Standard FFmpeg9.0.2 lacks `drawtext`; retained-film decoding works and ImageMagick
+supplies annotations with an explicit font. No ffmpeg-full installation. Managed Node26.9.0 was
+available, but automatic approval review rejected its update as a locked-runtime change; Node26.8.2
+remains in use pending Nick’s clarification. Project dependency locks and sealed inputs unchanged.
+REAPER’s metadata suffix is current per scoped brew outdated. No app was launched; Blender unused.
+[Receipt and diagnostic review](audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md).
+
+**September 17 startup — current:** official metadata/idle-process check and shared lock;
+Homebrew 7.0.3, gh 2.101.0, Blender 5.2.2. Only the two eligible idle authoring tools upgraded.
+Seven capability checks pass; game/runtime/test pins unchanged. No Blender use this batch;
+its bounded synthetic render is still required before future use. Receipts and retained initial
+outdated-command nonzero: audits/ANATOMY_COMPLETION_20260917/toolchain-*. No hosted authority.
+
+**September 15 actual audio host qualification:** installed REAPER 7.80 / Surge XT 1.3.4
+plus stock ReaEQ/ReaComp saved and restored a MIDI/plugin-state project and produced two
+48 kHz/24-bit stereo WAVs with identical PCM. Explicit oscillator retrigger/zero drift removes
+the retained initial replay difference. Preparation/render/replay exit zero without UI input;
+REAPER may create a window, so this is scoped unattended CLI qualification, not a universal
+windowless guarantee. No license/key changes or purchases. See
+audits/AUDIO_PRODUCTION_20260915/reaper-qualification-03/qualification.json and
+port/v2/tools/audio-production/LOCAL_RUN.md. Other projects/plugins still require their own checks.
+
+**September15 source production — current:** the supplied manifest has been acquired and the
+installed REAPER/Surge/stock path produced 1,534 validated candidate pairs, 102 retained loop copies
+and 49 actual instrument stems. 42 successful production projects save source/MIDI/state; the later score
+uses four independently rendered tracks per state. Parameter writes are checked against the
+installed Surge names and read back. Current evidence: audits/AUDIO_FAUNA_BIOMES_20260915. Three damaged originals are quarantined;
+new reference excerpts use measured input attenuation and verified float WAV media before REAPER.
+Two failed render projects remain as diagnostic evidence. Projects use relative source media and save actual plugin state.
+`port/v2/tools/audio-production/LOCAL_RUN.md` owns the commands. Native Edge local audition and
+WAV/Opus decoding passed; physical phone/listening approval remain open. No software was added
+or updated during the asset jobs, and the shared toolchain lock covered each render/export run.
+
+**September 15 startup — current:** official metadata check and active-process inventory under
+the shared maintenance lock completed; REAPER 7.79 → 7.80 and Homebrew → 7.0.1. No runtime/test
+or sealed-input pin changed. Tool capabilities verified; GUI-free REAPER rendering remains open.
+Receipts: audits/C_PACKAGE_COMPLETION_20260915/toolchain-check.json and toolchain-verify.json.
+Offline codec tests exercise installed FFmpeg 9.0.1/libopus and ffprobe; original media unchanged.
+
+**September 14 continuation:** the uninterrupted September 12 startup receipt is reused.
+Offline C3 export exercises the installed FFmpeg 9.0.1/libopus and ffprobe with private test
+signals; no tool or dependency upgrade. Receipts record the encoder version/arguments;
+repeat-byte checks are scoped to this installed codec toolchain. These signals are not C3
+masters or listening deliverables. See audits/C_SYSTEMS_CONTINUATION_20260914.
+
+## September 12 particle emitter correction — current configuration
+
+Nick removed @pixi/particle-emitter5.0.10 because its peers are Pixi<8. Its37 unused transitive
+packages are removed; game Pixi stays8.19.0, with no peer overrides or second renderer.
+The small seeded-battle-emitter.ts uses Pixi8 ParticleContainer/Particle and absolute elapsed
+recipe time, with a200-particle cap, seeded coefficients and caller-owned textures. Three
+Node tests exercise real Pixi objects, frame-rate replay, budgets and cleanup; browser GPU
+rendering and timing remain for the parts-rig proof. GSAP3.15.0 and atlas core0.3.9/CLI0.3.0
+pins remain. pngquant/oxipng idle policy unchanged. Earlier installation notes below are history.
+
+## September 12 parts-rig tooling additions — original configuration
 
 Nick authorized exact game-app dependencies GSAP 3.15.0 and @pixi/particle-emitter 5.0.10,
 and port/v2 dev dependencies free-tex-packer-core 0.3.9 / free-tex-packer-cli 0.3.0.
@@ -31,13 +88,21 @@ master bytes first: the kit reference binds those originals. pngquant is lossy; 
 lossless for decoded pixels but still changes bytes. Neither runs on a master path, including
 a master that has already been hashed. No production pack build or master optimization ran.
 
+## September 14 continued coding session
+
+The September 12 startup receipt continues within the same uninterrupted session. No
+maintenance, dependency installation, image generation or native capture was performed.
+The unit runner now builds under its standalone lease before starting Vitest; unit tests
+remain read-only and do not take the checkout lock. C-lane repair evidence is in
+audits/C_LANE_REPAIRS_20260914. Pinned authoring/runtime dependencies are unchanged.
+
 ## September 12 startup — current session
 
 Official stable metadata check passed at 2026-09-12T14:20:30Z. Managed Node was idle; Homebrew metadata refreshed and Node alone upgraded 26.8.1 → 26.8.2 under the shared maintenance lock, with cleanup/analytics disabled. No dependency upgrades. REAPER build suffix resolved as current by brew outdated. All seven synthetic capability checks passed; [receipt](audits/ART_KIT_ADOPTION_20260912/toolchain-verify.json). Runtime/test locks unchanged.
 
 ## Paused local continuation — historical September 9, 2026
 
-Nick paused development. The [complete checkpoint](audits/AI_PORTABLE_CLOSURE_20260909/PAUSED_CHECKPOINT.md) owns the current implementation and exact evidence boundary. The portable six-reference first-step diagnostic completed (85.013s execution,0.275ms readback); this is not a full image or a repair of the older normal-game600s failure. New browser block32 derivation, transactional OPFS storage, explicit Prepare/Verify controls, bounded original lookup and pinned-plan runtime/mobile integration exist in the **uncommitted working copy and are not yet integration-tested**. Parent model6.23GiB plus optional336MiB derived storage remain separate from painting cache/GPU RAM. Final integrated checks, new package/native run, exact art review and physical-phone qualification are pending. The V2 draft release note records the optional action; no production version or accepted base control placement changed. Earlier verified-scope descriptions below must not be read as verification of this later integration.
+The September 9 pause is historical and does not authorize a restart. Ordinary Land now uses the accepted kit composite/finisher path; the game OPFS variant layer and six-reference generator were removed. [LOCAL_AI_GENERATION.md](LOCAL_AI_GENERATION.md) describes current engine and phone boundaries. The active painting is rain E; no Klein phone probe or delivery engineering is next. Native C2 motion remains under review.
 
 Signing succeeded using configured1Password `op-ssh-sign`; do not replace the signing helper with `ssh-keygen`. Independent verification still uses `ssh-keygen`. No persistent security setting changed. Startup receipt reuse applies only within the uninterrupted session; fresh sessions follow the runbook.
 
@@ -215,13 +280,13 @@ Preserve the earlier enumeration-only and CPU-render provenance.
 | oxipng | 10.2.1, Homebrew; CLI version observed September 12 | Lossless optimization of PNG copies only; original bytes stay immutable. |
 | FFmpeg / ffprobe | 9.0.1, Homebrew ffmpeg 9.0.1_1 | Audio/video conversion, file inspection, PCM export, loudness/true-peak measurement and later motion proof clips. It is not a synthesizer host. |
 | Surge XT | 1.3.4 app, VST3 and AU | Original synth patches; /Library/Audio/Plug-Ins/VST3/Surge XT.vst3 and matching AU exist. The installed Surge CLI is not proven as an offline WAV renderer. |
-| REAPER | 7.79.0_06dd787u | Existing .rpp, embedded MIDI/plugin state and reference renders. Desktop process/dialogs remain possible; a license file exists, validity/recognition unverified. Never print/read its key for inventory. |
+| REAPER | 7.80 | Existing .rpp, embedded MIDI/plugin state and reference renders. Desktop process/dialogs remain possible; a license file exists, validity/recognition unverified. Never print/read its key for inventory. |
 | Python | Homebrew python@3.12 3.12.14 | Isolated scripting runtime at tools/audio-render/.venv; standard library only for now. Apple Python 3.9.6 remains separate. |
 | GSAP | Exact 3.15.0 in tools/ui-motion and port/v2 game app | Paused timelines selected for parts-rig tweening; runtime wiring pending. Preserve reduced motion and native focus/click owners. |
-| @pixi/particle-emitter | Exact 5.0.10 in port/v2 game app | Selected travel/impact simulation; Pixi 6/7 peer boundary must be resolved for Pixi 8.19.0 before use. |
+| Seeded battle emitter | Repository implementation on Pixi 8.19.0 | Replaces removed @pixi/particle-emitter; recipe-seeded travel/impact particles, awaiting browser proof. |
 | free-tex-packer core / CLI | Exact 0.3.9 / 0.3.0 in port/v2 devDependencies | Deterministic one-atlas-per-creature command; synthetic repeat/pixel tests pass. |
-| Node / npm | 26.8.1 / 11.19.0 | Managed Node updated while idle at the 2026-09-07 startup; CLI capability verified. Bundled app Node processes remain separate. |
-| Homebrew | 6.0.22 | Official formula/cask installation and scoped stable updates. |
+| Node / npm | 26.8.2 / 11.19.0 | Managed Node updated while idle at the 2026-09-12 startup; CLI capability verified. Bundled app Node processes remain separate. |
+| Homebrew | 7.0.1 | Official formula/cask installation and scoped stable updates. |
 | GitHub CLI | 2.100.0 (updated from 2.97.0) | Repository metadata and separately authorized GitHub operations; maintenance does not authorize hosted work. |
 | Apple Git | 2.50.1 | Signed source history and normal agent-branch workflow. Apple/Xcode owns its updates; do not replace it with another Git installation automatically. |
 
@@ -395,3 +460,9 @@ records the compiler's known virtual runtime helper by byte count/hash; the firs
 blanket-rejection failure remains retained. All3V2 TS/entryTS and33 focused tests
 pass; corrected export/native preflight/7refusal controls pass. It provides real
 canonical appearance inputs to the proof, no image or player-model qualification.
+
+## Cross-package intake — September 14
+
+No installation or dependency change. Existing PNG/PCM tooling now checks closed sound inventories,
+hash-bound loop declarations and accepted arena triplets. The uninterrupted startup receipt remains
+in force. Synthetic test inputs are private and removed; no new image or sound authoring took place.

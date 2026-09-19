@@ -1,0 +1,139 @@
+{
+  "kind": "hopper",
+  "identity": {
+    "speciesVisualKey": "{\"seed\":1193089256,\"kingdom\":\"fauna\",\"color\":0,\"form\":12,\"body\":10,\"loco\":11,\"trait\":19,\"size\":0,\"diet\":5,\"head\":9,\"limbs\":4,\"skin\":3,\"tail\":1,\"pattern\":4,\"eyes\":1,\"behavior\":0,\"habitat\":17,\"detail\":7,\"accent\":4,\"temper\":8,\"sense\":5,\"repro\":5,\"life\":0,\"metab\":2,\"lumin\":false,\"gen\":0,\"heat\":1,\"_earthName\":\"Frog\",\"_cradle\":1}",
+    "seed": 1193089256,
+    "ownerId": "authored:Frog/accepted-master",
+    "earthName": "Frog"
+  },
+  "template": {
+    "id": "hopper",
+    "version": 1
+  },
+  "geometry": {
+    "cutoutAssetHash": "fb229a4a7bd86507af68da9561a5e31282d594da27901d7f30ddc11cd3c84779",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.84,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.48,
+      0.46
+    ],
+    "pelvis": [
+      0.33,
+      0.45
+    ],
+    "spine": [
+      0.46,
+      0.41
+    ],
+    "chest": [
+      0.62,
+      0.43
+    ],
+    "neck": [
+      0.68,
+      0.4
+    ],
+    "head": [
+      0.74,
+      0.3
+    ],
+    "jaw": [
+      0.82,
+      0.38
+    ],
+    "hindNearRoot": [
+      0.32,
+      0.49
+    ],
+    "hindNearKnee": [
+      0.17,
+      0.48
+    ],
+    "hindNearAnkle": [
+      0.15,
+      0.68
+    ],
+    "hindNearPaw": [
+      0.25,
+      0.74
+    ],
+    "hindFarRoot": [
+      0.42,
+      0.46
+    ],
+    "hindFarKnee": [
+      0.5,
+      0.54
+    ],
+    "hindFarAnkle": [
+      0.62,
+      0.63
+    ],
+    "hindFarPaw": [
+      0.69,
+      0.665
+    ],
+    "foreNearRoot": [
+      0.55,
+      0.445
+    ],
+    "foreNearKnee": [
+      0.44,
+      0.59
+    ],
+    "foreNearAnkle": [
+      0.5,
+      0.73
+    ],
+    "foreNearPaw": [
+      0.595,
+      0.785
+    ],
+    "foreFarRoot": [
+      0.725,
+      0.45
+    ],
+    "foreFarKnee": [
+      0.79,
+      0.57
+    ],
+    "foreFarAnkle": [
+      0.825,
+      0.68
+    ],
+    "foreFarPaw": [
+      0.88,
+      0.73
+    ]
+  },
+  "materials": {
+    "surface": "smooth skin"
+  },
+  "clipSetId": "hopper-land-v1",
+  "source": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/frog.png",
+  "anatomyObservation": {
+    "absent": [
+      "tail",
+      "external ears"
+    ],
+    "visibility": {
+      "hindFar": "partly occluded; landmarks provisional"
+    },
+    "status": "draft, not admitted animation asset"
+  },
+  "recipeHash": "b60f7af9fbf89a7898c08253bcde55219b5924dfe93d2abe6389492c6a55e396"
+}

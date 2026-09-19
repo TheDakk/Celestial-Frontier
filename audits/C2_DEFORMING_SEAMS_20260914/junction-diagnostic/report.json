@@ -1,0 +1,1567 @@
+[
+  {
+    "id": "civet",
+    "junctions": 18,
+    "frames": [
+      {
+        "frame": "rest",
+        "missing": 0,
+        "junctions": []
+      },
+      {
+        "frame": "hit-recoil",
+        "missing": 262,
+        "junctions": [
+          {
+            "point": [
+              643,
+              705
+            ],
+            "parts": [
+              "hind-near-upper",
+              "hind-far-upper",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 112,
+            "samples": [
+              [
+                1224,
+                1331
+              ],
+              [
+                1225,
+                1331
+              ],
+              [
+                1224,
+                1332
+              ]
+            ]
+          },
+          {
+            "point": [
+              1024,
+              734
+            ],
+            "parts": [
+              "fore-near-upper",
+              "fore-far-upper",
+              "chest"
+            ],
+            "ancestor": "chest",
+            "pixels": 111,
+            "samples": [
+              [
+                1599,
+                1375
+              ],
+              [
+                1599,
+                1376
+              ],
+              [
+                1600,
+                1376
+              ]
+            ]
+          },
+          {
+            "point": [
+              293,
+              861
+            ],
+            "parts": [
+              "tail-middle",
+              "tail-root",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 39,
+            "samples": [
+              [
+                798,
+                1416
+              ],
+              [
+                800,
+                1418
+              ],
+              [
+                801,
+                1419
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "frame": "strike",
+        "missing": 839,
+        "junctions": [
+          {
+            "point": [
+              452,
+              577
+            ],
+            "parts": [
+              "torso",
+              "hind-near-upper",
+              "tail-root"
+            ],
+            "ancestor": "torso",
+            "pixels": 315,
+            "samples": [
+              [
+                1229,
+                1172
+              ],
+              [
+                1230,
+                1172
+              ],
+              [
+                1231,
+                1172
+              ]
+            ]
+          },
+          {
+            "point": [
+              653,
+              613
+            ],
+            "parts": [
+              "torso",
+              "hind-far-upper",
+              "hind-near-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 100,
+            "samples": [
+              [
+                1425,
+                1194
+              ],
+              [
+                1426,
+                1194
+              ],
+              [
+                1427,
+                1194
+              ]
+            ]
+          },
+          {
+            "point": [
+              1024,
+              734
+            ],
+            "parts": [
+              "fore-near-upper",
+              "fore-far-upper",
+              "chest"
+            ],
+            "ancestor": "chest",
+            "pixels": 375,
+            "samples": [
+              [
+                1792,
+                1265
+              ],
+              [
+                1793,
+                1265
+              ],
+              [
+                1792,
+                1266
+              ]
+            ]
+          },
+          {
+            "point": [
+              227,
+              767
+            ],
+            "parts": [
+              "torso",
+              "tail-root",
+              "tail-middle"
+            ],
+            "ancestor": "torso",
+            "pixels": 49,
+            "samples": [
+              [
+                1013,
+                1426
+              ],
+              [
+                1014,
+                1427
+              ],
+              [
+                1015,
+                1428
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "frame": "approach-quarter",
+        "missing": 310,
+        "junctions": [
+          {
+            "point": [
+              752,
+              609
+            ],
+            "parts": [
+              "torso",
+              "chest",
+              "hind-far-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 3,
+            "samples": [
+              [
+                1380,
+                1226
+              ],
+              [
+                1381,
+                1227
+              ],
+              [
+                1382,
+                1228
+              ]
+            ]
+          },
+          {
+            "point": [
+              917,
+              610
+            ],
+            "parts": [
+              "chest",
+              "neck",
+              "fore-near-upper"
+            ],
+            "ancestor": "chest",
+            "pixels": 3,
+            "samples": [
+              [
+                1546,
+                1219
+              ],
+              [
+                1548,
+                1220
+              ],
+              [
+                1555,
+                1224
+              ]
+            ]
+          },
+          {
+            "point": [
+              454,
+              678
+            ],
+            "parts": [
+              "tail-root",
+              "hind-near-upper",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 7,
+            "samples": [
+              [
+                1083,
+                1304
+              ],
+              [
+                1083,
+                1305
+              ],
+              [
+                1084,
+                1307
+              ]
+            ]
+          },
+          {
+            "point": [
+              1024,
+              734
+            ],
+            "parts": [
+              "fore-near-upper",
+              "fore-far-upper",
+              "chest"
+            ],
+            "ancestor": "chest",
+            "pixels": 13,
+            "samples": [
+              [
+                1644,
+                1366
+              ],
+              [
+                1643,
+                1367
+              ],
+              [
+                1642,
+                1368
+              ]
+            ]
+          },
+          {
+            "point": [
+              1054,
+              800
+            ],
+            "parts": [
+              "chest",
+              "fore-far-upper",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 84,
+            "samples": [
+              [
+                1724,
+                1391
+              ],
+              [
+                1721,
+                1392
+              ],
+              [
+                1718,
+                1393
+              ]
+            ]
+          },
+          {
+            "point": [
+              723,
+              817
+            ],
+            "parts": [
+              "hind-far-lower",
+              "hind-far-upper",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 200,
+            "samples": [
+              [
+                1302,
+                1425
+              ],
+              [
+                1301,
+                1426
+              ],
+              [
+                1302,
+                1426
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "frame": "approach-three-quarter",
+        "missing": 291,
+        "junctions": [
+          {
+            "point": [
+              452,
+              577
+            ],
+            "parts": [
+              "torso",
+              "hind-near-upper",
+              "tail-root"
+            ],
+            "ancestor": "torso",
+            "pixels": 25,
+            "samples": [
+              [
+                1098,
+                1178
+              ],
+              [
+                1097,
+                1179
+              ],
+              [
+                1096,
+                1180
+              ]
+            ]
+          },
+          {
+            "point": [
+              227,
+              767
+            ],
+            "parts": [
+              "torso",
+              "tail-root",
+              "tail-middle"
+            ],
+            "ancestor": "torso",
+            "pixels": 1,
+            "samples": [
+              [
+                862,
+                1406
+              ]
+            ]
+          },
+          {
+            "point": [
+              529,
+              835
+            ],
+            "parts": [
+              "hind-near-lower",
+              "hind-near-upper",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 265,
+            "samples": [
+              [
+                1103,
+                1440
+              ],
+              [
+                1104,
+                1440
+              ],
+              [
+                1105,
+                1440
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fox",
+    "junctions": 25,
+    "frames": [
+      {
+        "frame": "rest",
+        "missing": 0,
+        "junctions": []
+      },
+      {
+        "frame": "hit-recoil",
+        "missing": 367,
+        "junctions": [
+          {
+            "point": [
+              1135,
+              482
+            ],
+            "parts": [
+              "head",
+              "torso",
+              "neck"
+            ],
+            "ancestor": "torso",
+            "pixels": 171,
+            "samples": [
+              [
+                1695,
+                1079
+              ],
+              [
+                1695,
+                1080
+              ],
+              [
+                1695,
+                1081
+              ]
+            ]
+          },
+          {
+            "point": [
+              945,
+              679
+            ],
+            "parts": [
+              "fore-near-upper",
+              "neck",
+              "chest"
+            ],
+            "ancestor": "chest",
+            "pixels": 24,
+            "samples": [
+              [
+                1518,
+                1320
+              ],
+              [
+                1518,
+                1321
+              ],
+              [
+                1519,
+                1321
+              ]
+            ]
+          },
+          {
+            "point": [
+              1073,
+              705
+            ],
+            "parts": [
+              "neck",
+              "torso",
+              "fore-far-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 20,
+            "samples": [
+              [
+                1653,
+                1339
+              ],
+              [
+                1652,
+                1341
+              ],
+              [
+                1652,
+                1342
+              ]
+            ]
+          },
+          {
+            "point": [
+              968,
+              773
+            ],
+            "parts": [
+              "chest",
+              "fore-far-upper",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 9,
+            "samples": [
+              [
+                1540,
+                1421
+              ],
+              [
+                1540,
+                1422
+              ],
+              [
+                1541,
+                1422
+              ]
+            ]
+          },
+          {
+            "point": [
+              445,
+              799
+            ],
+            "parts": [
+              "tail-root",
+              "torso",
+              "hind-near-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 34,
+            "samples": [
+              [
+                999,
+                1425
+              ],
+              [
+                1001,
+                1426
+              ],
+              [
+                1002,
+                1426
+              ]
+            ]
+          },
+          {
+            "point": [
+              445,
+              801
+            ],
+            "parts": [
+              "tail-root",
+              "hind-near-upper",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 4,
+            "samples": [
+              [
+                1010,
+                1432
+              ],
+              [
+                1012,
+                1433
+              ],
+              [
+                1014,
+                1434
+              ]
+            ]
+          },
+          {
+            "point": [
+              444,
+              802
+            ],
+            "parts": [
+              "tail-root",
+              "torso",
+              "hind-near-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 33,
+            "samples": [
+              [
+                998,
+                1428
+              ],
+              [
+                1000,
+                1429
+              ],
+              [
+                1001,
+                1429
+              ]
+            ]
+          },
+          {
+            "point": [
+              578,
+              820
+            ],
+            "parts": [
+              "hind-near-upper",
+              "hind-far-upper",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 43,
+            "samples": [
+              [
+                1159,
+                1452
+              ],
+              [
+                1159,
+                1453
+              ],
+              [
+                1160,
+                1453
+              ]
+            ]
+          },
+          {
+            "point": [
+              417,
+              878
+            ],
+            "parts": [
+              "tail-middle",
+              "tail-root",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 18,
+            "samples": [
+              [
+                956,
+                1499
+              ],
+              [
+                957,
+                1499
+              ],
+              [
+                956,
+                1500
+              ]
+            ]
+          },
+          {
+            "point": [
+              561,
+              942
+            ],
+            "parts": [
+              "hind-far-upper",
+              "hind-far-lower",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 15,
+            "samples": [
+              [
+                1140,
+                1580
+              ],
+              [
+                1145,
+                1581
+              ],
+              [
+                1146,
+                1581
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "frame": "strike",
+        "missing": 1326,
+        "junctions": [
+          {
+            "point": [
+              1135,
+              482
+            ],
+            "parts": [
+              "head",
+              "torso",
+              "neck"
+            ],
+            "ancestor": "torso",
+            "pixels": 141,
+            "samples": [
+              [
+                1831,
+                967
+              ],
+              [
+                1832,
+                968
+              ],
+              [
+                1832,
+                969
+              ]
+            ]
+          },
+          {
+            "point": [
+              456,
+              554
+            ],
+            "parts": [
+              "torso",
+              "hind-near-upper",
+              "tail-root"
+            ],
+            "ancestor": "torso",
+            "pixels": 521,
+            "samples": [
+              [
+                1239,
+                1169
+              ],
+              [
+                1240,
+                1169
+              ],
+              [
+                1241,
+                1169
+              ]
+            ]
+          },
+          {
+            "point": [
+              614,
+              676
+            ],
+            "parts": [
+              "torso",
+              "hind-far-upper",
+              "hind-near-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 166,
+            "samples": [
+              [
+                1403,
+                1277
+              ],
+              [
+                1404,
+                1277
+              ],
+              [
+                1405,
+                1277
+              ]
+            ]
+          },
+          {
+            "point": [
+              945,
+              679
+            ],
+            "parts": [
+              "fore-near-upper",
+              "neck",
+              "chest"
+            ],
+            "ancestor": "chest",
+            "pixels": 202,
+            "samples": [
+              [
+                1688,
+                1216
+              ],
+              [
+                1689,
+                1216
+              ],
+              [
+                1690,
+                1216
+              ]
+            ]
+          },
+          {
+            "point": [
+              1073,
+              705
+            ],
+            "parts": [
+              "neck",
+              "torso",
+              "fore-far-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 279,
+            "samples": [
+              [
+                1822,
+                1216
+              ],
+              [
+                1823,
+                1216
+              ],
+              [
+                1824,
+                1216
+              ]
+            ]
+          },
+          {
+            "point": [
+              913,
+              908
+            ],
+            "parts": [
+              "fore-near-lower",
+              "fore-near-upper",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 7,
+            "samples": [
+              [
+                1722,
+                1456
+              ],
+              [
+                1721,
+                1457
+              ],
+              [
+                1722,
+                1457
+              ]
+            ]
+          },
+          {
+            "point": [
+              561,
+              942
+            ],
+            "parts": [
+              "hind-far-upper",
+              "hind-far-lower",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 10,
+            "samples": [
+              [
+                1304,
+                1520
+              ],
+              [
+                1305,
+                1521
+              ],
+              [
+                1306,
+                1521
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "frame": "approach-quarter",
+        "missing": 715,
+        "junctions": [
+          {
+            "point": [
+              894,
+              184
+            ],
+            "parts": [
+              "torso",
+              "head",
+              "ear-far"
+            ],
+            "ancestor": "torso",
+            "pixels": 9,
+            "samples": [
+              [
+                1416,
+                770
+              ],
+              [
+                1417,
+                770
+              ],
+              [
+                1418,
+                770
+              ]
+            ]
+          },
+          {
+            "point": [
+              1135,
+              482
+            ],
+            "parts": [
+              "head",
+              "torso",
+              "neck"
+            ],
+            "ancestor": "torso",
+            "pixels": 3,
+            "samples": [
+              [
+                1722,
+                1013
+              ],
+              [
+                1723,
+                1014
+              ],
+              [
+                1725,
+                1017
+              ]
+            ]
+          },
+          {
+            "point": [
+              910,
+              659
+            ],
+            "parts": [
+              "chest",
+              "neck",
+              "fore-near-upper"
+            ],
+            "ancestor": "chest",
+            "pixels": 57,
+            "samples": [
+              [
+                1540,
+                1233
+              ],
+              [
+                1541,
+                1233
+              ],
+              [
+                1539,
+                1234
+              ]
+            ]
+          },
+          {
+            "point": [
+              1073,
+              705
+            ],
+            "parts": [
+              "neck",
+              "torso",
+              "fore-far-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 189,
+            "samples": [
+              [
+                1696,
+                1232
+              ],
+              [
+                1696,
+                1233
+              ],
+              [
+                1697,
+                1233
+              ]
+            ]
+          },
+          {
+            "point": [
+              968,
+              773
+            ],
+            "parts": [
+              "chest",
+              "fore-far-upper",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 160,
+            "samples": [
+              [
+                1610,
+                1341
+              ],
+              [
+                1611,
+                1341
+              ],
+              [
+                1612,
+                1341
+              ]
+            ]
+          },
+          {
+            "point": [
+              446,
+              797
+            ],
+            "parts": [
+              "tail-root",
+              "torso",
+              "hind-near-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 16,
+            "samples": [
+              [
+                1080,
+                1418
+              ],
+              [
+                1081,
+                1419
+              ],
+              [
+                1082,
+                1419
+              ]
+            ]
+          },
+          {
+            "point": [
+              445,
+              799
+            ],
+            "parts": [
+              "tail-root",
+              "torso",
+              "hind-near-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 46,
+            "samples": [
+              [
+                1073,
+                1415
+              ],
+              [
+                1075,
+                1416
+              ],
+              [
+                1076,
+                1416
+              ]
+            ]
+          },
+          {
+            "point": [
+              445,
+              801
+            ],
+            "parts": [
+              "tail-root",
+              "hind-near-upper",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 29,
+            "samples": [
+              [
+                1077,
+                1420
+              ],
+              [
+                1078,
+                1421
+              ],
+              [
+                1079,
+                1421
+              ]
+            ]
+          },
+          {
+            "point": [
+              444,
+              802
+            ],
+            "parts": [
+              "tail-root",
+              "torso",
+              "hind-near-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 71,
+            "samples": [
+              [
+                1073,
+                1418
+              ],
+              [
+                1074,
+                1419
+              ],
+              [
+                1075,
+                1419
+              ]
+            ]
+          },
+          {
+            "point": [
+              634,
+              930
+            ],
+            "parts": [
+              "hind-far-upper",
+              "torso",
+              "hind-far-lower"
+            ],
+            "ancestor": "torso",
+            "pixels": 184,
+            "samples": [
+              [
+                1221,
+                1526
+              ],
+              [
+                1222,
+                1527
+              ],
+              [
+                1223,
+                1527
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "frame": "approach-three-quarter",
+        "missing": 383,
+        "junctions": [
+          {
+            "point": [
+              894,
+              184
+            ],
+            "parts": [
+              "torso",
+              "head",
+              "ear-far"
+            ],
+            "ancestor": "torso",
+            "pixels": 7,
+            "samples": [
+              [
+                1421,
+                772
+              ],
+              [
+                1422,
+                772
+              ],
+              [
+                1423,
+                772
+              ]
+            ]
+          },
+          {
+            "point": [
+              1135,
+              482
+            ],
+            "parts": [
+              "head",
+              "torso",
+              "neck"
+            ],
+            "ancestor": "torso",
+            "pixels": 1,
+            "samples": [
+              [
+                1725,
+                1019
+              ]
+            ]
+          },
+          {
+            "point": [
+              945,
+              679
+            ],
+            "parts": [
+              "fore-near-upper",
+              "neck",
+              "chest"
+            ],
+            "ancestor": "chest",
+            "pixels": 128,
+            "samples": [
+              [
+                1558,
+                1232
+              ],
+              [
+                1559,
+                1232
+              ],
+              [
+                1560,
+                1232
+              ]
+            ]
+          },
+          {
+            "point": [
+              556,
+              927
+            ],
+            "parts": [
+              "torso",
+              "hind-far-lower",
+              "hind-far-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 247,
+            "samples": [
+              [
+                1208,
+                1540
+              ],
+              [
+                1211,
+                1541
+              ],
+              [
+                1212,
+                1541
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "procedural",
+    "junctions": 21,
+    "frames": [
+      {
+        "frame": "rest",
+        "missing": 0,
+        "junctions": []
+      },
+      {
+        "frame": "hit-recoil",
+        "missing": 0,
+        "junctions": []
+      },
+      {
+        "frame": "strike",
+        "missing": 22,
+        "junctions": [
+          {
+            "point": [
+              544,
+              438
+            ],
+            "parts": [
+              "torso",
+              "neck",
+              "fore-near-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 2,
+            "samples": [
+              [
+                1034,
+                848
+              ],
+              [
+                1035,
+                849
+              ]
+            ]
+          },
+          {
+            "point": [
+              528,
+              452
+            ],
+            "parts": [
+              "torso",
+              "fore-near-upper",
+              "neck"
+            ],
+            "ancestor": "torso",
+            "pixels": 2,
+            "samples": [
+              [
+                1018,
+                861
+              ],
+              [
+                1019,
+                862
+              ]
+            ]
+          },
+          {
+            "point": [
+              370,
+              575
+            ],
+            "parts": [
+              "hind-near-paw",
+              "torso",
+              "hind-far-paw"
+            ],
+            "ancestor": "torso",
+            "pixels": 14,
+            "samples": [
+              [
+                847,
+                1000
+              ],
+              [
+                848,
+                1000
+              ],
+              [
+                849,
+                1000
+              ]
+            ]
+          },
+          {
+            "point": [
+              516,
+              575
+            ],
+            "parts": [
+              "fore-far-paw",
+              "fore-near-paw",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 4,
+            "samples": [
+              [
+                1051,
+                974
+              ],
+              [
+                1049,
+                975
+              ],
+              [
+                1047,
+                976
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "frame": "approach-quarter",
+        "missing": 13,
+        "junctions": [
+          {
+            "point": [
+              520,
+              430
+            ],
+            "parts": [
+              "torso",
+              "neck",
+              "fore-near-upper"
+            ],
+            "ancestor": "torso",
+            "pixels": 5,
+            "samples": [
+              [
+                962,
+                861
+              ],
+              [
+                963,
+                861
+              ],
+              [
+                964,
+                861
+              ]
+            ]
+          },
+          {
+            "point": [
+              370,
+              575
+            ],
+            "parts": [
+              "hind-near-paw",
+              "torso",
+              "hind-far-paw"
+            ],
+            "ancestor": "torso",
+            "pixels": 8,
+            "samples": [
+              [
+                805,
+                1011
+              ],
+              [
+                806,
+                1011
+              ],
+              [
+                807,
+                1011
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "frame": "approach-three-quarter",
+        "missing": 130,
+        "junctions": [
+          {
+            "point": [
+              509,
+              436
+            ],
+            "parts": [
+              "torso",
+              "fore-near-upper",
+              "neck"
+            ],
+            "ancestor": "torso",
+            "pixels": 5,
+            "samples": [
+              [
+                946,
+                869
+              ],
+              [
+                947,
+                869
+              ],
+              [
+                946,
+                870
+              ]
+            ]
+          },
+          {
+            "point": [
+              516,
+              575
+            ],
+            "parts": [
+              "fore-far-paw",
+              "fore-near-paw",
+              "torso"
+            ],
+            "ancestor": "torso",
+            "pixels": 125,
+            "samples": [
+              [
+                974,
+                1002
+              ],
+              [
+                975,
+                1002
+              ],
+              [
+                976,
+                1002
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

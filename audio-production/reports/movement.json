@@ -1,0 +1,2707 @@
+{
+  "schema": "cf.audio-render/v1",
+  "outputs": [
+    {
+      "id": "movement.surface.grass.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.7493,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/0546e1d8ab2def71-footstep_grass_003.ogg",
+          "sha256": "0546e1d8ab2def714425701a18bd34c5ee2794b12e858e5b595aabcf38a34137",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.66932
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.grass"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 0,
+      "master": "masters/movement/movement.surface.grass.1.wav",
+      "masterSha256": "70dfe9aeb8f9ec39cd21b9e5df4a9752b36dada7fe8205c0673aa0caa1f15946",
+      "opus": "masters/movement/movement.surface.grass.1.opus",
+      "opusSha256": "fedd4371eb304676048fe8bff5d273a7c2c5158473b0896045f811aebfc4d24c",
+      "previewSha256": "47a055613f910188b29c53a11046143960d9bbd312d85de26351160613b70845",
+      "previewBytes": 72046,
+      "previewUrl": "/__cf-audio-review/movement.surface.grass.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.3,
+      "opusDbTP": -14.5
+    },
+    {
+      "id": "movement.surface.grass.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.6702,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/086fd4ab3546a507-footstep_grass_004.ogg",
+          "sha256": "086fd4ab3546a507ea5f5c759a9a10e535c95ade13705c238bc0eeffd7d4e8ba",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.590227
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.grass"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 1.7492999999999999,
+      "master": "masters/movement/movement.surface.grass.2.wav",
+      "masterSha256": "090ae3a57617f81a4f9d5f7f1640127f59ce7b0aa8ded71704cfebd01305e246",
+      "opus": "masters/movement/movement.surface.grass.2.opus",
+      "opusSha256": "81393beb75ec959298bc0d589bb8cb66d5b99f39f25cccf789049b3d1d6ea947",
+      "previewSha256": "002401f16ebc0acabd1fc1f18589ce86204e04372e5a9cccfadfe7a65ecbec88",
+      "previewBytes": 64454,
+      "previewUrl": "/__cf-audio-review/movement.surface.grass.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.9,
+      "opusDbTP": -14.1
+    },
+    {
+      "id": "movement.surface.grass.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.7724,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/73a520139f5be716-footstep_grass_002.ogg",
+          "sha256": "73a520139f5be716a403bfe9c80e0e94d1e61d8e9de04a354b336392164b53dc",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.692449
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.grass"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 3.4194999999999998,
+      "master": "masters/movement/movement.surface.grass.3.wav",
+      "masterSha256": "7154d5fcf307361936a19bda0709a3d3591a907e0eb2ccd94fb6b20c2e84b592",
+      "opus": "masters/movement/movement.surface.grass.3.opus",
+      "opusSha256": "20291cd84be4e3346acb52f233344059f1873c0f5ee8e236e492139b6662fd89",
+      "previewSha256": "07ced8513b7b935b2c2e324fa94324f8a9e4180612e83a5381cd83675affa5b5",
+      "previewBytes": 74264,
+      "previewUrl": "/__cf-audio-review/movement.surface.grass.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.8,
+      "opusDbTP": -13.8
+    },
+    {
+      "id": "movement.surface.grass.4",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.8576,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/9d49497777405d78-footstep_grass_000.ogg",
+          "sha256": "9d49497777405d78d7cf7f2888e28277f3a23192300cfd1d79d54876b20f479f",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.777574
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.grass"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 5.1918999999999995,
+      "master": "masters/movement/movement.surface.grass.4.wav",
+      "masterSha256": "4efcf7227da7c993d48da59a847a3d958ee3a836536d0c13d91afb544412cfd3",
+      "opus": "masters/movement/movement.surface.grass.4.opus",
+      "opusSha256": "635cd45f8cf290ac62260be731f8fea36684cd43ac02633e2b0da50a3abe2cdf",
+      "previewSha256": "d035dca92a6afc5ff3d53692fe5e7a1906e1c1594ce1458b22842365d1ac2229",
+      "previewBytes": 82444,
+      "previewUrl": "/__cf-audio-review/movement.surface.grass.4.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.5,
+      "opusDbTP": -14.6
+    },
+    {
+      "id": "movement.surface.grass.5",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.7536,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/fb28781bd22b2eef-footstep_grass_001.ogg",
+          "sha256": "fb28781bd22b2eefdc14077f1adf5c94d7fe9c3a130194633b55f3e0d39d9f04",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.673605
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.grass"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 7.0495,
+      "master": "masters/movement/movement.surface.grass.5.wav",
+      "masterSha256": "db69b84c6481b7bfcb2444a2964032bf5d23e29c0496004b8bba9533fd575909",
+      "opus": "masters/movement/movement.surface.grass.5.opus",
+      "opusSha256": "14e7c9aedad010c4874d79b073bc595792fbe1700456edf6a3d9665bec24fd82",
+      "previewSha256": "8f4be4889967a1a14206cd549468d63039fcadafff2da59d8a98fa983c2d4df7",
+      "previewBytes": 72460,
+      "previewUrl": "/__cf-audio-review/movement.surface.grass.5.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.4,
+      "opusDbTP": -13.9
+    },
+    {
+      "id": "movement.surface.snow.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4542,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/68272e3f1cabcabd-footstep_snow_003.ogg",
+          "sha256": "68272e3f1cabcabd02d328fd344454d7c04cb58b5a86972fcdd858f845e3d007",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.374218
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.snow"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 8.8031,
+      "master": "masters/movement/movement.surface.snow.1.wav",
+      "masterSha256": "8b19fc8d06c51e3616889f6be623aaebabcd2c0ae6df0f8808d242ecc00eb31e",
+      "opus": "masters/movement/movement.surface.snow.1.opus",
+      "opusSha256": "b7cbe91f5ec06a5259ffd66bf9999aa4938a11eb04bb1b70436a0b4b6ebfef78",
+      "previewSha256": "edd90ceb37f362206fa28d90658de049aebbf7f730c101fc9a0e4a45d11c22b6",
+      "previewBytes": 43718,
+      "previewUrl": "/__cf-audio-review/movement.surface.snow.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.0,
+      "opusDbTP": -7.1
+    },
+    {
+      "id": "movement.surface.snow.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4542,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/7fe9ce5f5732aaa0-footstep_snow_004.ogg",
+          "sha256": "7fe9ce5f5732aaa0a50ef02bb1ac162c27f6bd85214e86aaea6e13e7a41dbc00",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.374218
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.snow"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 10.2573,
+      "master": "masters/movement/movement.surface.snow.2.wav",
+      "masterSha256": "0d3fe9c1385816e41d24103ee513791477ea04c2f1ac041976112f17f20c66d2",
+      "opus": "masters/movement/movement.surface.snow.2.opus",
+      "opusSha256": "6eb0091ff08a590fddb1d09933895d31a41cb67428cc0d9e78c728a78c43ddd1",
+      "previewSha256": "7ba832b70900005095f83c64d1f57cd2507955d3bd1abc5473ac12c967bbac5e",
+      "previewBytes": 43718,
+      "previewUrl": "/__cf-audio-review/movement.surface.snow.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.1,
+      "opusDbTP": -6.2
+    },
+    {
+      "id": "movement.surface.snow.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4542,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/980fb9a1c9227aed-footstep_snow_001.ogg",
+          "sha256": "980fb9a1c9227aed7995067b0357f373053337f2416316db8ea0438418542fb4",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.374218
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.snow"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 11.711500000000001,
+      "master": "masters/movement/movement.surface.snow.3.wav",
+      "masterSha256": "91e65557c120957fd61754d8e724c885688ef6c4be3a9e0875f3badb85aa657f",
+      "opus": "masters/movement/movement.surface.snow.3.opus",
+      "opusSha256": "dc0700eab11ae8481c22a298cc58bc6b0c9e852f70d6a2428b4fb6d141277c22",
+      "previewSha256": "c7b427ec1a6bd254f2cbd7d115f2b69c2476293c8438a1d9b8535c2cd33fff21",
+      "previewBytes": 43718,
+      "previewUrl": "/__cf-audio-review/movement.surface.snow.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "movement.surface.snow.4",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4542,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/c05fa4a9dc9a7aab-footstep_snow_000.ogg",
+          "sha256": "c05fa4a9dc9a7aabc04996466fb589537e49af76de9998d8f9e6270ec92dcef7",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.374218
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.snow"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 13.165700000000001,
+      "master": "masters/movement/movement.surface.snow.4.wav",
+      "masterSha256": "bf05bb67cc5e692d9aa67e8f48fdfbb9c8476a642c9cb989e126aa5ea7f04e28",
+      "opus": "masters/movement/movement.surface.snow.4.opus",
+      "opusSha256": "2a3f894f78804ee509b1a23bb82ddbcaf666fa39e26d911d8b242f4918fd4920",
+      "previewSha256": "8435a754c2f0a621c858429916aa78b439a9c8b182f1f5db3344ab86a3238df4",
+      "previewBytes": 43718,
+      "previewUrl": "/__cf-audio-review/movement.surface.snow.4.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "movement.surface.snow.5",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4542,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/db52bafdc66304f3-footstep_snow_002.ogg",
+          "sha256": "db52bafdc66304f3b999f2c29227826c65993916e630ac2ffbca17d07b263178",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.374218
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.snow"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 14.619900000000001,
+      "master": "masters/movement/movement.surface.snow.5.wav",
+      "masterSha256": "44b0ee7a8b15b00721d2246bb76b972ad1f373df703938997ee2397f09fff12e",
+      "opus": "masters/movement/movement.surface.snow.5.opus",
+      "opusSha256": "89d4b171fefe7f3f4545ae25bc57a55046c4b428aaae55138a2d10a9756f05a6",
+      "previewSha256": "0aea84ad98703ccecc5ff64a2e2ef044df12003f839926a51797280826a78712",
+      "previewBytes": 43718,
+      "previewUrl": "/__cf-audio-review/movement.surface.snow.5.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.2
+    },
+    {
+      "id": "movement.surface.wood.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.3315,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/2a68a083daa9eda0-footstep_wood_003.ogg",
+          "sha256": "2a68a083daa9eda08fed0ea5da5280dfbe0de226196c576be02f95259dd139d9",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.251519
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.wood"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 16.0741,
+      "master": "masters/movement/movement.surface.wood.1.wav",
+      "masterSha256": "30dbf9d90d87d233190d7d25b56671314fb4404f2c864bd64e0edc09391316cd",
+      "opus": "masters/movement/movement.surface.wood.1.opus",
+      "opusSha256": "f59c9066420e152195529ae9cb7dc4f327372006180a243b30c1d834e143439f",
+      "previewSha256": "d70151852d1a4e5dbc14255c1879700f79f8b07f5b4a63f6d0a41b6a8e4afb2a",
+      "previewBytes": 31938,
+      "previewUrl": "/__cf-audio-review/movement.surface.wood.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -8.8,
+      "opusDbTP": -9.1
+    },
+    {
+      "id": "movement.surface.wood.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.3296,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/5f1c252942a220d6-footstep_wood_000.ogg",
+          "sha256": "5f1c252942a220d658121bd9417448cd19649ded9fff2ff15f6e50899373ce8e",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.249592
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.wood"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 17.4056,
+      "master": "masters/movement/movement.surface.wood.2.wav",
+      "masterSha256": "127251cccf39c36f9da0ae8497756cb70d30fcf7b4305749e8d243cc0a39bdcd",
+      "opus": "masters/movement/movement.surface.wood.2.opus",
+      "opusSha256": "386a33dd95a5b3dfac7ff8473cb74c339d676cde1694bca049f719bc1da98343",
+      "previewSha256": "ce98e99341a37f118cad82e7955ede8836e8f060077bf2da5edb0928ab0173ff",
+      "previewBytes": 31756,
+      "previewUrl": "/__cf-audio-review/movement.surface.wood.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -8.0,
+      "opusDbTP": -8.2
+    },
+    {
+      "id": "movement.surface.wood.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.3314,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/9ff095b05cee5eec-footstep_wood_002.ogg",
+          "sha256": "9ff095b05cee5eec40b081defe3f0eef7232bb16d4865ce03b9f6dbab875cfdd",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.251383
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.wood"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 18.7352,
+      "master": "masters/movement/movement.surface.wood.3.wav",
+      "masterSha256": "8793a6adbe98e155289412b766462beb06fb5dce4513404999b72f4123a869f0",
+      "opus": "masters/movement/movement.surface.wood.3.opus",
+      "opusSha256": "95ca66550162b244f60858a85b45e551329c08ed4380201ab195537808b9f245",
+      "previewSha256": "1b1f9fcbdd9ed54775c28345698cb50c1c0e4aac090b02fb24cdc0831a20ea48",
+      "previewBytes": 31928,
+      "previewUrl": "/__cf-audio-review/movement.surface.wood.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.9,
+      "opusDbTP": -7.2
+    },
+    {
+      "id": "movement.surface.wood.4",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.3279,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/b33e0854e2b3f6b6-footstep_wood_004.ogg",
+          "sha256": "b33e0854e2b3f6b6492e25c25ef8f90447a332f7c6bb25dd02edced9581d3441",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.247914
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.wood"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 20.066599999999998,
+      "master": "masters/movement/movement.surface.wood.4.wav",
+      "masterSha256": "4e4d58816d340ae09e7bc584b642585ddb27490763845b8b37c705d9bea9c722",
+      "opus": "masters/movement/movement.surface.wood.4.opus",
+      "opusSha256": "4a296a101f98deb2c6289b75604501c5819f62fd2711fd7d98ad3c2d1c965e53",
+      "previewSha256": "532ea65e52693009a05ccfe22cc74e7cc240c131459065ae7a28d3c8269b6a76",
+      "previewBytes": 31592,
+      "previewUrl": "/__cf-audio-review/movement.surface.wood.4.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.8,
+      "opusDbTP": -7.1
+    },
+    {
+      "id": "movement.surface.wood.5",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.3316,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/e4f68e1c9fd55b4d-footstep_wood_001.ogg",
+          "sha256": "e4f68e1c9fd55b4dc8ca89ed2bbab6f200171bc54bdc18aa96b80d8e7336f462",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.251565
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.wood"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 21.394499999999997,
+      "master": "masters/movement/movement.surface.wood.5.wav",
+      "masterSha256": "1f9144ac551a73b04235897f8b961e305507f5f168b074ea4a7b45711037f7ee",
+      "opus": "masters/movement/movement.surface.wood.5.opus",
+      "opusSha256": "f4cec46ed9e828c1542691dd9519865c62c153e037401fa41c06dcb2ce615c43",
+      "previewSha256": "7f15cf9eeb9677279eacc70d93e39aeee0e55dd2cd9b5f49279f1e0fbd50c119",
+      "previewBytes": 31948,
+      "previewUrl": "/__cf-audio-review/movement.surface.wood.5.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.5,
+      "opusDbTP": -7.8
+    },
+    {
+      "id": "movement.surface.concrete.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.1944,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/24dd8db2413e5b81-footstep_concrete_004.ogg",
+          "sha256": "24dd8db2413e5b81ad181e1205c12a1c7801da5f85715d471b92a4b2f632e45e",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.114354
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.concrete"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 22.726099999999995,
+      "master": "masters/movement/movement.surface.concrete.1.wav",
+      "masterSha256": "2a40de28b6383b11132dd7eb2a1f4893c775da68bd60430a1dbb9903a481038f",
+      "opus": "masters/movement/movement.surface.concrete.1.opus",
+      "opusSha256": "a51291ccbcdfb2591ab855cc41f99195d6e1671e5d120d818de8666c401533ab",
+      "previewSha256": "366aedbe285897c6e688f93917ce6fb3d941c764311f2ba687d6b42b7dd46960",
+      "previewBytes": 18776,
+      "previewUrl": "/__cf-audio-review/movement.surface.concrete.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.5,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "movement.surface.concrete.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.1876,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/507a75eb19b89708-footstep_concrete_001.ogg",
+          "sha256": "507a75eb19b897087855a3be3cf11a12d7fa37d143ad535eeebe0b8031c7325d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.107642
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.concrete"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 23.920499999999997,
+      "master": "masters/movement/movement.surface.concrete.2.wav",
+      "masterSha256": "6f8cd40776268d15bcdc29357081896c2b9b9adc25be18703a5f0bab9692c537",
+      "opus": "masters/movement/movement.surface.concrete.2.opus",
+      "opusSha256": "064d646d3961c76d99145dba8ce629d629fb0401ed1089ee94cefd7b11fc87d9",
+      "previewSha256": "c1725a711304ca6ca03f66e151ef59f368df04d0737b2c394df787fc791f9e31",
+      "previewBytes": 18124,
+      "previewUrl": "/__cf-audio-review/movement.surface.concrete.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.6,
+      "opusDbTP": -14.6
+    },
+    {
+      "id": "movement.surface.concrete.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.1905,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/8b513c2f03163240-footstep_concrete_003.ogg",
+          "sha256": "8b513c2f0316324060b9174b8f28df6c2147418c506e6a53b77f18e149a5547b",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.110499
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.concrete"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 25.108099999999997,
+      "master": "masters/movement/movement.surface.concrete.3.wav",
+      "masterSha256": "bfe311e67397c1b411be4ece093b442e351c4e034ff3bc3e1e92e681af776c0b",
+      "opus": "masters/movement/movement.surface.concrete.3.opus",
+      "opusSha256": "8d4d44630598c4cdf01cdc1255728fee770a729fa4100a65cf7eb3e657deb588",
+      "previewSha256": "3a96fda1511cebfe17056c15a63cc20d2284358741edcab82579efb9500ba72f",
+      "previewBytes": 18402,
+      "previewUrl": "/__cf-audio-review/movement.surface.concrete.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.1,
+      "opusDbTP": -14.1
+    },
+    {
+      "id": "movement.surface.concrete.4",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.1928,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/b21fa546d7494119-footstep_concrete_002.ogg",
+          "sha256": "b21fa546d74941196b25da8a20b7010abd8c05c4fcf93545d1f344e66a664e13",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.112789
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.concrete"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 26.298599999999997,
+      "master": "masters/movement/movement.surface.concrete.4.wav",
+      "masterSha256": "98d4f430fa3fc2340bae185951cff9064d027560b7ffb763f4910d5738ed0553",
+      "opus": "masters/movement/movement.surface.concrete.4.opus",
+      "opusSha256": "a815aba7cad092dbaa71e484098947a8969f8bd6fab4c1d0354033de4e6b3ecb",
+      "previewSha256": "cdb6d74eaced1eacab427f5d3757ba210c84d4112619b5b583897e95df65ffa0",
+      "previewBytes": 18622,
+      "previewUrl": "/__cf-audio-review/movement.surface.concrete.4.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.0,
+      "opusDbTP": -14.1
+    },
+    {
+      "id": "movement.surface.concrete.5",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.1859,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/d7267e183067757c-footstep_concrete_000.ogg",
+          "sha256": "d7267e183067757c92c169de2a379abea592cfca6b39bb2e8feea15221ad79fe",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.105918
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.concrete"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 27.4914,
+      "master": "masters/movement/movement.surface.concrete.5.wav",
+      "masterSha256": "d25daefe8031c8b41a7a62bb0d7486baaaf0154a664dc441f9e846ff3a580ab3",
+      "opus": "masters/movement/movement.surface.concrete.5.opus",
+      "opusSha256": "59282eac010a31349acb1fa60651ad6ce56906d18e7dbc4ac11dc756becc5784",
+      "previewSha256": "6e6316e65975c584e20f951aebba8c62fe04e3905bc1649af28befdc044d7e35",
+      "previewBytes": 17960,
+      "previewUrl": "/__cf-audio-review/movement.surface.concrete.5.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.5,
+      "opusDbTP": -13.7
+    },
+    {
+      "id": "movement.surface.carpet.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.2248,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/4ae7454338d57c7d-footstep_carpet_003.ogg",
+          "sha256": "4ae7454338d57c7d102145919ae653c7d010eb542797c4f25a1c7470be3a7e4c",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.144785
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.carpet"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 28.6773,
+      "master": "masters/movement/movement.surface.carpet.1.wav",
+      "masterSha256": "430498e1e91e6c29204f1618ff3ec447549e754019ab7eb32fbc9b4c79f928da",
+      "opus": "masters/movement/movement.surface.carpet.1.opus",
+      "opusSha256": "67c9d336a9491b6daf9882048b501c1de2af6c1983c7b74a213ab49ce960a8bb",
+      "previewSha256": "2f603d77f670beb98df3741c081f3b6ada430cc1d018f7ce0fbea1593671796d",
+      "previewBytes": 21694,
+      "previewUrl": "/__cf-audio-review/movement.surface.carpet.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.2,
+      "opusDbTP": -6.3
+    },
+    {
+      "id": "movement.surface.carpet.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.2248,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/4ae7454338d57c7d-footstep_carpet_004.ogg",
+          "sha256": "4ae7454338d57c7d102145919ae653c7d010eb542797c4f25a1c7470be3a7e4c",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.144785
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.carpet"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 29.902099999999997,
+      "master": "masters/movement/movement.surface.carpet.2.wav",
+      "masterSha256": "e249241a04e816413f5fd32a76fe1403022a67fb07429f039b8299d21b584f6e",
+      "opus": "masters/movement/movement.surface.carpet.2.opus",
+      "opusSha256": "6a1b10bf4d38525d32e32ad61ec81daaed1ee498b955c79dff674126fe56db14",
+      "previewSha256": "9b8a146bce3dac7c2d4f8821ae5e68c4eda2154bfac653333378ed24c2c50d1b",
+      "previewBytes": 21694,
+      "previewUrl": "/__cf-audio-review/movement.surface.carpet.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.2,
+      "opusDbTP": -6.3
+    },
+    {
+      "id": "movement.surface.carpet.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.2248,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/9af3c3f767051073-footstep_carpet_001.ogg",
+          "sha256": "9af3c3f76705107339e72036e4053bdca3eaa50ad31c8c929f42ce8d40e5d781",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.144785
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.carpet"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 31.1269,
+      "master": "masters/movement/movement.surface.carpet.3.wav",
+      "masterSha256": "fa5e8f832cf4461156cce45f6ef07a2af60b0e98e9a8b091ed28d99575c4867e",
+      "opus": "masters/movement/movement.surface.carpet.3.opus",
+      "opusSha256": "aeacf257e848800ea1c0f46c83a3266a23b683034235713725d3908acb191082",
+      "previewSha256": "3a194a515f01e89eef7e3bbf01b4f005f451435300cefe31c1c7a2e51c5002c3",
+      "previewBytes": 21694,
+      "previewUrl": "/__cf-audio-review/movement.surface.carpet.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.8,
+      "opusDbTP": -7.9
+    },
+    {
+      "id": "movement.surface.carpet.4",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.2248,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/9af3c3f767051073-footstep_carpet_002.ogg",
+          "sha256": "9af3c3f76705107339e72036e4053bdca3eaa50ad31c8c929f42ce8d40e5d781",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.144785
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.carpet"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 32.3517,
+      "master": "masters/movement/movement.surface.carpet.4.wav",
+      "masterSha256": "2cc41a5177fee80199baddce52bee45632929089125d46ce1d3559fa9fcdc42c",
+      "opus": "masters/movement/movement.surface.carpet.4.opus",
+      "opusSha256": "88308cd13600200007eaea83af4c74c3663a273ae75c7fecc3235456ce83ea8c",
+      "previewSha256": "30ab6bd6279f53c32bbc385be3ff6acd5786787d15710ac9b7c80ae7a7dbf959",
+      "previewBytes": 21694,
+      "previewUrl": "/__cf-audio-review/movement.surface.carpet.4.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.7,
+      "opusDbTP": -7.8
+    },
+    {
+      "id": "movement.surface.carpet.5",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.2248,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/b9524658b52a99a2-footstep_carpet_000.ogg",
+          "sha256": "b9524658b52a99a20590f8feefc103088637fd13ea8ec35811aee785e1f2f330",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.144785
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.surface.carpet"
+      ],
+      "notes": "Contact ingredient, not anatomy-specific footsteps.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 33.5765,
+      "master": "masters/movement/movement.surface.carpet.5.wav",
+      "masterSha256": "f9a3ba6d8f4a024dce555d6897d3796ce9ecc4b89360a8655a2f43f4cfb5019f",
+      "opus": "masters/movement/movement.surface.carpet.5.opus",
+      "opusSha256": "8e3279a95e430b3e5cefd6723455442991da95fe10ff35cf3fb6d2a2d5cca1b2",
+      "previewSha256": "26a8012ccac6b7b25e087d3b43406c7f4cc6740b58fc3e39b29f307ec2d13c7f",
+      "previewBytes": 21694,
+      "previewUrl": "/__cf-audio-review/movement.surface.carpet.5.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.1,
+      "opusDbTP": -6.2
+    },
+    {
+      "id": "material.furred.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4951,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/8a7451193c38bc05-cloth2.ogg",
+          "sha256": "8a7451193c38bc05483aec25dd193e163a15d44cf7fff04ac7912573231b0201",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.415063
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.furred"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 34.801300000000005,
+      "master": "masters/movement/material.furred.1.wav",
+      "masterSha256": "0c2552d46fc84b47f187c0087790b4919b989998e686c70666d45afcbfe273ee",
+      "opus": "masters/movement/material.furred.1.opus",
+      "opusSha256": "921e13aa83404d232e6368ecdb675add1d938859adf2fb20af93aa3986d242f3",
+      "previewSha256": "81d797b7c0aaa21eb0d7d7954a252469f019ccb8d8a90d89ac69b59e10a5d102",
+      "previewBytes": 47644,
+      "previewUrl": "/__cf-audio-review/material.furred.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.4,
+      "opusDbTP": -15.3
+    },
+    {
+      "id": "material.furred.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.5566,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/a48632d17a4f1416-cloth3.ogg",
+          "sha256": "a48632d17a4f1416541d261a32a31612e01267144c407fa3ecab3ff410f0085b",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.476563
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.furred"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 36.296400000000006,
+      "master": "masters/movement/material.furred.2.wav",
+      "masterSha256": "acd67cc86ab0f5c93facfb16cd88124ffbb86093d7d922467e2665809fa91ea9",
+      "opus": "masters/movement/material.furred.2.opus",
+      "opusSha256": "384bdcb2455da5c5aa34eca4de28722752583e1556d91ba73dfbe37dc8e69994",
+      "previewSha256": "c1289f2eb6696eae58f03ae0b2a68811108e44a7d77922999f6ac71b166a6298",
+      "previewBytes": 53548,
+      "previewUrl": "/__cf-audio-review/material.furred.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.7,
+      "opusDbTP": -16.6
+    },
+    {
+      "id": "material.furred.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.8333,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/d545b1d9f20e6188-clothBelt2.ogg",
+          "sha256": "d545b1d9f20e6188140aaf551a96f1e82fe0d15f7ca066fac8b065e1231e0038",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.753292
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.furred"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 37.85300000000001,
+      "master": "masters/movement/material.furred.3.wav",
+      "masterSha256": "d5a8d824b5f2dbd509373035350cc08e8fbf4f8e07b698a51c05468c0bb330d8",
+      "opus": "masters/movement/material.furred.3.opus",
+      "opusSha256": "39c8df67b9506b7ef46bacddb014fc3cf806ace2f6a45b575edf411b4cf75e26",
+      "previewSha256": "4cf10b1cd63cdfbb03884828d9a602bb86fe088c1f84295f282fdc622ec29987",
+      "previewBytes": 80110,
+      "previewUrl": "/__cf-audio-review/material.furred.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "material.chitinous.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.3456,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/4b76bf3ccc8e60d1-impactWood_light_001.ogg",
+          "sha256": "4b76bf3ccc8e60d19188f3165b778a7817786faa6887c55d9049bcbeef3b425f",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.265601
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.chitinous"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 39.68630000000001,
+      "master": "masters/movement/material.chitinous.1.wav",
+      "masterSha256": "2a972b8d5eaaa27949a80926538a23c2386b5de7405a60675dfc3359d59e0e3e",
+      "opus": "masters/movement/material.chitinous.1.opus",
+      "opusSha256": "705cf8a48e806ffab813950e2fd3b092bce3819df577d1da0bf167a990f5badb",
+      "previewSha256": "4236c42b438658b82db4e94bc72e5ef34bee761375b14d6fba9b367a964c84e6",
+      "previewBytes": 33292,
+      "previewUrl": "/__cf-audio-review/material.chitinous.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.2,
+      "opusDbTP": -11.3
+    },
+    {
+      "id": "material.chitinous.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.3456,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/b183cf7a5bd78381-impactWood_light_002.ogg",
+          "sha256": "b183cf7a5bd783817e0e4b82af34ac6658fa1927049089dadc8b15c2ecc771dc",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.265601
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.chitinous"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 41.03190000000001,
+      "master": "masters/movement/material.chitinous.2.wav",
+      "masterSha256": "8f65d307ce2cb152297a83e4eb3d4c6692c1b259170cd911140006d74c214576",
+      "opus": "masters/movement/material.chitinous.2.opus",
+      "opusSha256": "4a826c98ca921613a75ab33e4291ec8477c37d050976e147196f6482a50bf468",
+      "previewSha256": "d264c91d28f6bb370a9c9ab273f1871826532615c1a62a569813db6abcbd8ce1",
+      "previewBytes": 33292,
+      "previewUrl": "/__cf-audio-review/material.chitinous.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -8.0,
+      "opusDbTP": -8.1
+    },
+    {
+      "id": "material.chitinous.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.3456,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/cdfbe8af2fe7ff9e-impactWood_light_003.ogg",
+          "sha256": "cdfbe8af2fe7ff9ee28f337a0a989deee0f327620da456c8413644880e9d0004",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.265601
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.chitinous"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 42.377500000000005,
+      "master": "masters/movement/material.chitinous.3.wav",
+      "masterSha256": "80001fad65ac2af586541d23be27a4f255bbf6df1f47e4b3571635348f2327a7",
+      "opus": "masters/movement/material.chitinous.3.opus",
+      "opusSha256": "354c6e1d8e345128e4ad3bb9dbec849420fd2a41dcded0f85f215b3c16b57415",
+      "previewSha256": "5bf0cd6c449eab0828a5a6a5d8f8a392df24df398cd9d08997a2f82b591c3f16",
+      "previewBytes": 33292,
+      "previewUrl": "/__cf-audio-review/material.chitinous.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.5,
+      "opusDbTP": -12.5
+    },
+    {
+      "id": "material.slick-and-wet.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.6174,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.slick and wet"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 43.7231,
+      "master": "masters/movement/material.slick-and-wet.1.wav",
+      "masterSha256": "43b6fb0a802f5f089ceda0c8a72d03ca91ec900fd2b7168109854ba6a0e3d249",
+      "opus": "masters/movement/material.slick-and-wet.1.opus",
+      "opusSha256": "81be573d93535cb05b76fefdd5ecd70f783cbc2ff3d96dad083d0c9668503ba3",
+      "previewSha256": "eb291e3acbf5c216ca087dcb43fcf9b0cd3e2d6c2a3689061c73d781eb446aef",
+      "previewBytes": 59384,
+      "previewUrl": "/__cf-audio-review/material.slick-and-wet.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.8,
+      "opusDbTP": -5.8
+    },
+    {
+      "id": "material.slick-and-wet.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4559,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/687cd1feb815f9e2-slime_07.ogg",
+          "sha256": "687cd1feb815f9e214b20f16000ec5fd52174b03ec0b4da18d1abb20c2c4cbe2",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.375854
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.slick and wet"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 45.340500000000006,
+      "master": "masters/movement/material.slick-and-wet.2.wav",
+      "masterSha256": "103bdb424d93d62ece717d59881483b072ff0762fccf966eea22c0a9528d82e1",
+      "opus": "masters/movement/material.slick-and-wet.2.opus",
+      "opusSha256": "e504b02f44d7c8d49892a44143a8db777df7034b13f82b665fc50be0ab959c8d",
+      "previewSha256": "b147d3a08906912fecd18415875aefb40253eed00eec3433433094b6a25796c2",
+      "previewBytes": 43880,
+      "previewUrl": "/__cf-audio-review/material.slick-and-wet.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -8.7,
+      "opusDbTP": -8.7
+    },
+    {
+      "id": "material.slick-and-wet.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.6144,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/7879b8931d025c99-slime_02.ogg",
+          "sha256": "7879b8931d025c991999d075b020349b6a0ab2a441518b08294c542cf20fa71f",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.534354
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.slick and wet"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 46.796400000000006,
+      "master": "masters/movement/material.slick-and-wet.3.wav",
+      "masterSha256": "8d956e2d832070596150f5b13cf25bba85c7afe9530069a1fdb6e6aa48d341a5",
+      "opus": "masters/movement/material.slick-and-wet.3.opus",
+      "opusSha256": "4489a70d58dee9ef9378536d91f976549dba9aefd98c036fc49f181989fb53d3",
+      "previewSha256": "dfdd143a65305d02d8396f671b577291a9091578a782d59ba8fb2c650fb9c9b1",
+      "previewBytes": 59096,
+      "previewUrl": "/__cf-audio-review/material.slick-and-wet.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.9
+    },
+    {
+      "id": "material.plated.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.3158,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/25a96f90a9a1f88a-impactMetal_light_002.ogg",
+          "sha256": "25a96f90a9a1f88a531e824e126f0519504625e5635e65a72e4f31611428db29",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.235782
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.plated"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 48.41080000000001,
+      "master": "masters/movement/material.plated.1.wav",
+      "masterSha256": "9255723b2fc2b9d410771cc125afdfde74285acaae59b09899379b14627f6e82",
+      "opus": "masters/movement/material.plated.1.opus",
+      "opusSha256": "4bd89682628d374730b5e75d185c4884ee6e0c229d68a1ea64a1f53be9daab94",
+      "previewSha256": "c7d3c26224b2070e78610b695e3464c74b42129b7eb242620494d8ecb1878a50",
+      "previewBytes": 30430,
+      "previewUrl": "/__cf-audio-review/material.plated.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.6,
+      "opusDbTP": -7.6
+    },
+    {
+      "id": "material.plated.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4315,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/33b5e6e37c6e9d54-impactMetal_light_000.ogg",
+          "sha256": "33b5e6e37c6e9d54e07bf5a89b12c76e879f40c1ea83cdd82714df1d6f9fec6d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.351474
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.plated"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 49.72660000000001,
+      "master": "masters/movement/material.plated.2.wav",
+      "masterSha256": "181f1fce2c957fd3407583af118489d1d2e139227cd8004631396e60dee8cc53",
+      "opus": "masters/movement/material.plated.2.opus",
+      "opusSha256": "f84621b12b4c23baf0cfb2cf0f27aa8b602d0be75640b33dde9ef511e62b2f60",
+      "previewSha256": "77813d2e44199b6c78421766fc8f83df445ae88f1ecb9c1a6149a87a5da7813f",
+      "previewBytes": 41538,
+      "previewUrl": "/__cf-audio-review/material.plated.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.3,
+      "opusDbTP": -7.3
+    },
+    {
+      "id": "material.plated.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.562,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/92d5db6bfc672d9d-impactMetal_light_003.ogg",
+          "sha256": "92d5db6bfc672d9dc1b4f390b2900504f013187fa36335472554fafefa9050b1",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.482041
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.plated"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 51.15810000000001,
+      "master": "masters/movement/material.plated.3.wav",
+      "masterSha256": "cfdb3d8c6d4e5a320b72cbd0cc467cc71371a6d9e269275b9e0c75404558cc51",
+      "opus": "masters/movement/material.plated.3.opus",
+      "opusSha256": "5d5c35abac04be0ad463ec6fee95c8b7b1c1603ecf84ee2e05d28e1e142dbfb8",
+      "previewSha256": "6003e064933d6d0a6ff140b1e0edee3f410bb834917783821c55cce823fbd1a5",
+      "previewBytes": 54066,
+      "previewUrl": "/__cf-audio-review/material.plated.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.4,
+      "opusDbTP": -7.4
+    },
+    {
+      "id": "material.warty.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.6174,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.warty"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 52.72010000000001,
+      "master": "masters/movement/material.warty.1.wav",
+      "masterSha256": "43b6fb0a802f5f089ceda0c8a72d03ca91ec900fd2b7168109854ba6a0e3d249",
+      "opus": "masters/movement/material.warty.1.opus",
+      "opusSha256": "fb8563da1debbd4c6f7b6e27f0fdb0efb34c3b142f9e48532f8b540df2feea26",
+      "previewSha256": "eb291e3acbf5c216ca087dcb43fcf9b0cd3e2d6c2a3689061c73d781eb446aef",
+      "previewBytes": 59384,
+      "previewUrl": "/__cf-audio-review/material.warty.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.8,
+      "opusDbTP": -5.8
+    },
+    {
+      "id": "material.warty.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4559,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/687cd1feb815f9e2-slime_07.ogg",
+          "sha256": "687cd1feb815f9e214b20f16000ec5fd52174b03ec0b4da18d1abb20c2c4cbe2",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.375854
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.warty"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 54.337500000000006,
+      "master": "masters/movement/material.warty.2.wav",
+      "masterSha256": "103bdb424d93d62ece717d59881483b072ff0762fccf966eea22c0a9528d82e1",
+      "opus": "masters/movement/material.warty.2.opus",
+      "opusSha256": "2a535fc9c9de5218f279cc265a631ec5ac0dee3573100a668899d1436ab5304b",
+      "previewSha256": "b147d3a08906912fecd18415875aefb40253eed00eec3433433094b6a25796c2",
+      "previewBytes": 43880,
+      "previewUrl": "/__cf-audio-review/material.warty.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -8.7,
+      "opusDbTP": -8.7
+    },
+    {
+      "id": "material.warty.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.6144,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/7879b8931d025c99-slime_02.ogg",
+          "sha256": "7879b8931d025c991999d075b020349b6a0ab2a441518b08294c542cf20fa71f",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.534354
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.warty"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 55.793400000000005,
+      "master": "masters/movement/material.warty.3.wav",
+      "masterSha256": "8d956e2d832070596150f5b13cf25bba85c7afe9530069a1fdb6e6aa48d341a5",
+      "opus": "masters/movement/material.warty.3.opus",
+      "opusSha256": "dfb0e256dd57ccb9eb7046a88e7b4bd515e58f9e22c3af3aaae987a3e92b626e",
+      "previewSha256": "dfdd143a65305d02d8396f671b577291a9091578a782d59ba8fb2c650fb9c9b1",
+      "previewBytes": 59096,
+      "previewUrl": "/__cf-audio-review/material.warty.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.9
+    },
+    {
+      "id": "material.feathered.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4951,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/8a7451193c38bc05-cloth2.ogg",
+          "sha256": "8a7451193c38bc05483aec25dd193e163a15d44cf7fff04ac7912573231b0201",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.415063
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.feathered"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 57.40780000000001,
+      "master": "masters/movement/material.feathered.1.wav",
+      "masterSha256": "0c2552d46fc84b47f187c0087790b4919b989998e686c70666d45afcbfe273ee",
+      "opus": "masters/movement/material.feathered.1.opus",
+      "opusSha256": "d5d306d497fa1e20b770bb94124da3563c3af436208b82f97d7fef0e5d2663b5",
+      "previewSha256": "81d797b7c0aaa21eb0d7d7954a252469f019ccb8d8a90d89ac69b59e10a5d102",
+      "previewBytes": 47644,
+      "previewUrl": "/__cf-audio-review/material.feathered.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.4,
+      "opusDbTP": -15.3
+    },
+    {
+      "id": "material.feathered.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.5566,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/a48632d17a4f1416-cloth3.ogg",
+          "sha256": "a48632d17a4f1416541d261a32a31612e01267144c407fa3ecab3ff410f0085b",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.476563
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.feathered"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 58.90290000000001,
+      "master": "masters/movement/material.feathered.2.wav",
+      "masterSha256": "acd67cc86ab0f5c93facfb16cd88124ffbb86093d7d922467e2665809fa91ea9",
+      "opus": "masters/movement/material.feathered.2.opus",
+      "opusSha256": "356489697d04983fd1bc8b5fb35a107b24fb08f303f0047662a3a729bf6aca6f",
+      "previewSha256": "c1289f2eb6696eae58f03ae0b2a68811108e44a7d77922999f6ac71b166a6298",
+      "previewBytes": 53548,
+      "previewUrl": "/__cf-audio-review/material.feathered.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.7,
+      "opusDbTP": -16.6
+    },
+    {
+      "id": "material.feathered.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.8333,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/d545b1d9f20e6188-clothBelt2.ogg",
+          "sha256": "d545b1d9f20e6188140aaf551a96f1e82fe0d15f7ca066fac8b065e1231e0038",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.753292
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.feathered"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 60.45950000000001,
+      "master": "masters/movement/material.feathered.3.wav",
+      "masterSha256": "d5a8d824b5f2dbd509373035350cc08e8fbf4f8e07b698a51c05468c0bb330d8",
+      "opus": "masters/movement/material.feathered.3.opus",
+      "opusSha256": "f6d207267a8b19ebece890fda077d025aef4105006c242437695a2cba90a8321",
+      "previewSha256": "4cf10b1cd63cdfbb03884828d9a602bb86fe088c1f84295f282fdc622ec29987",
+      "previewBytes": 80110,
+      "previewUrl": "/__cf-audio-review/material.feathered.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -12.0,
+      "opusDbTP": -12.0
+    },
+    {
+      "id": "material.translucent.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.6174,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.translucent"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 62.292800000000014,
+      "master": "masters/movement/material.translucent.1.wav",
+      "masterSha256": "8f8c687ee3794fb51a26baaf9bf5f0d288393ef0fed45e380851db1284d9fa99",
+      "opus": "masters/movement/material.translucent.1.opus",
+      "opusSha256": "1e16fceed3200f1e99e092df327e4bd10ecad2f34a11e36bd9bd88e461529747",
+      "previewSha256": "0ed743f7be683ebe251c917bcac57f61e9d9926a953f98efaa48ff5e5b5b2e3f",
+      "previewBytes": 59384,
+      "previewUrl": "/__cf-audio-review/material.translucent.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.8,
+      "opusDbTP": -5.8
+    },
+    {
+      "id": "material.translucent.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4559,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/687cd1feb815f9e2-slime_07.ogg",
+          "sha256": "687cd1feb815f9e214b20f16000ec5fd52174b03ec0b4da18d1abb20c2c4cbe2",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.375854
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.translucent"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 63.91020000000002,
+      "master": "masters/movement/material.translucent.2.wav",
+      "masterSha256": "103bdb424d93d62ece717d59881483b072ff0762fccf966eea22c0a9528d82e1",
+      "opus": "masters/movement/material.translucent.2.opus",
+      "opusSha256": "6e97f92b6c3ff9f68682ebe00b1374f3d4fa264e205d91b902f1f1a32b92ec68",
+      "previewSha256": "b147d3a08906912fecd18415875aefb40253eed00eec3433433094b6a25796c2",
+      "previewBytes": 43880,
+      "previewUrl": "/__cf-audio-review/material.translucent.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -8.7,
+      "opusDbTP": -8.7
+    },
+    {
+      "id": "material.translucent.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.6144,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/7879b8931d025c99-slime_02.ogg",
+          "sha256": "7879b8931d025c991999d075b020349b6a0ab2a441518b08294c542cf20fa71f",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.534354
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.translucent"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 65.36610000000002,
+      "master": "masters/movement/material.translucent.3.wav",
+      "masterSha256": "2b004ff59d0b87372005def49d6bc7423af0026c1be5ad44c944113b9b6c0c3a",
+      "opus": "masters/movement/material.translucent.3.opus",
+      "opusSha256": "1b71f96962e26208923e6a863f76b0a95ee54f5cc5d4722c2f16d05a99fbe4b3",
+      "previewSha256": "dfdd143a65305d02d8396f671b577291a9091578a782d59ba8fb2c650fb9c9b1",
+      "previewBytes": 59096,
+      "previewUrl": "/__cf-audio-review/material.translucent.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.9,
+      "opusDbTP": -5.9
+    },
+    {
+      "id": "material.crystalline.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.2896,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/05e513fbd4282906-impactGlass_light_001.ogg",
+          "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.crystalline"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 66.98050000000002,
+      "master": "masters/movement/material.crystalline.1.wav",
+      "masterSha256": "cf4ee2dfde0c1003bef5f778452c915ddf6ed33aace70b9df133857bb76e5913",
+      "opus": "masters/movement/material.crystalline.1.opus",
+      "opusSha256": "6b33d3ec5d0401df5f63507ef0a0a17b643c1f8f1f2c4ae65af64288c1e7644f",
+      "previewSha256": "faf9d281d1d29ec83ddbafbbd519f81313813e928c6e0a49279f5130515e7656",
+      "previewBytes": 27916,
+      "previewUrl": "/__cf-audio-review/material.crystalline.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.2,
+      "opusDbTP": -9.1
+    },
+    {
+      "id": "material.crystalline.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.2896,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/710db7451bb7857b-impactGlass_light_002.ogg",
+          "sha256": "710db7451bb7857b9140dfe6afe4621ea2188ad65eda3919c569d1bb285b933d",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.crystalline"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 68.27010000000001,
+      "master": "masters/movement/material.crystalline.2.wav",
+      "masterSha256": "a17d0fbad0319e3175c5c8e8fa62d767e71c5c19e1ec50c5f6bdc04b96e35391",
+      "opus": "masters/movement/material.crystalline.2.opus",
+      "opusSha256": "53d9c944572f61d6f4e4b24ce81d3810a2081329b20f928da20083cfefe2af3c",
+      "previewSha256": "bad30f66df1221973900cb3e44130dab5c44efae3f515b07456a163d0f8faae8",
+      "previewBytes": 27916,
+      "previewUrl": "/__cf-audio-review/material.crystalline.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.7,
+      "opusDbTP": -7.7
+    },
+    {
+      "id": "material.crystalline.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.2896,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/765290ce32fa108c-impactGlass_light_003.ogg",
+          "sha256": "765290ce32fa108c939a0dbd6fbacbcd05abde622b57b708eb8a64058ef4225a",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.209592
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "material.crystalline"
+      ],
+      "notes": "Material design candidate; cloth is an approximation, not a feather or fur recording.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 69.55970000000002,
+      "master": "masters/movement/material.crystalline.3.wav",
+      "masterSha256": "848267c3ca2a50527d5c466d1d30d13e4bf8d6ac395f2cbbd5437432d5993d6e",
+      "opus": "masters/movement/material.crystalline.3.opus",
+      "opusSha256": "3dfefe410ab8c2940e27048909000487c0dea6b0ee8273eca505fd0eb72666bd",
+      "previewSha256": "ea28a1c4d78b7a92f0aca7990fe58784281db8c60008bcc14bd9d3acfe12934a",
+      "previewBytes": 27916,
+      "previewUrl": "/__cf-audio-review/material.crystalline.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -8.6,
+      "opusDbTP": -8.6
+    },
+    {
+      "id": "movement.contact.paw.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.7493,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/0546e1d8ab2def71-footstep_grass_003.ogg",
+          "sha256": "0546e1d8ab2def714425701a18bd34c5ee2794b12e858e5b595aabcf38a34137",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.66932
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.paw"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 70.84930000000003,
+      "master": "masters/movement/movement.contact.paw.1.wav",
+      "masterSha256": "ca0ce96c2603e9d2cbf931ae35355932fbcd73c57179f05b33129ccf91597134",
+      "opus": "masters/movement/movement.contact.paw.1.opus",
+      "opusSha256": "3f0876a8678563d218f9798fb1186f76ee1689830b253535874ed1da04115e82",
+      "previewSha256": "648fc0fafb673ca0f92d73b0ac7f9d31d9e5141646458109ec416cc75d46125a",
+      "previewBytes": 72046,
+      "previewUrl": "/__cf-audio-review/movement.contact.paw.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -14.4,
+      "opusDbTP": -14.5
+    },
+    {
+      "id": "movement.contact.paw.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.6702,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/086fd4ab3546a507-footstep_grass_004.ogg",
+          "sha256": "086fd4ab3546a507ea5f5c759a9a10e535c95ade13705c238bc0eeffd7d4e8ba",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.590227
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.paw"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 72.59860000000003,
+      "master": "masters/movement/movement.contact.paw.2.wav",
+      "masterSha256": "6480f24d29d8fd07d449a72560beab96f40052af55ffb8934dff341eceeb6d61",
+      "opus": "masters/movement/movement.contact.paw.2.opus",
+      "opusSha256": "4f15bd36ca84f3f4b62462228081b747a956c175f7e8270f0350303a8ceeb50a",
+      "previewSha256": "28cb60edcdbcc763087195c7322e0d51a5b2c4ad4c1f21a514eca888784af37f",
+      "previewBytes": 64454,
+      "previewUrl": "/__cf-audio-review/movement.contact.paw.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.9,
+      "opusDbTP": -14.0
+    },
+    {
+      "id": "movement.contact.paw.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.7724,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/73a520139f5be716-footstep_grass_002.ogg",
+          "sha256": "73a520139f5be716a403bfe9c80e0e94d1e61d8e9de04a354b336392164b53dc",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.692449
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.paw"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 74.26880000000003,
+      "master": "masters/movement/movement.contact.paw.3.wav",
+      "masterSha256": "a49d04592574cf7b9dfaa5d572726c4bc701f6b4d8eeb1ce4584c8c57d45d11b",
+      "opus": "masters/movement/movement.contact.paw.3.opus",
+      "opusSha256": "8c89916dd27a7c2453b9225eea25a23979a2c681cd96740e7e0ca7f2a4663501",
+      "previewSha256": "f7137ce649047a5e89acda2de292cd9b0db8e0c51a96dc94fcc814aa94bae1bf",
+      "previewBytes": 74264,
+      "previewUrl": "/__cf-audio-review/movement.contact.paw.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -13.8,
+      "opusDbTP": -13.9
+    },
+    {
+      "id": "movement.contact.hoof.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4127,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/15271dbe8e2872db-impactWood_medium_001.ogg",
+          "sha256": "15271dbe8e2872dbb0ff1aeb7b12b2d2b92b7c1951c88532b9ab9158c36dfc73",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.hoof"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 76.04120000000003,
+      "master": "masters/movement/movement.contact.hoof.1.wav",
+      "masterSha256": "182d406b69f82fdce27e513802103e115880f86f7a6bf11df77d63b5002f35c2",
+      "opus": "masters/movement/movement.contact.hoof.1.opus",
+      "opusSha256": "d1cc87cb5b6477caf4991807e80c273a11df1c6503cedd1fffb0a5b9178b1b8e",
+      "previewSha256": "286f80cad1bc9d61a9455be98929fcc2aba35e584153a6d39faa1afbc13a35d8",
+      "previewBytes": 39734,
+      "previewUrl": "/__cf-audio-review/movement.contact.hoof.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.8,
+      "opusDbTP": -10.8
+    },
+    {
+      "id": "movement.contact.hoof.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4127,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/1723a9fd25103ed4-impactWood_medium_000.ogg",
+          "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.hoof"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 77.45390000000003,
+      "master": "masters/movement/movement.contact.hoof.2.wav",
+      "masterSha256": "592ce49f5f407180147f469a409b65751dd611ba68d8056edec17190b7fc486d",
+      "opus": "masters/movement/movement.contact.hoof.2.opus",
+      "opusSha256": "15d46ebaa99fa9e3db8ba1aafe78178894c0dafef320948c307cb3e1102fdb84",
+      "previewSha256": "22b1f11d3f2d012e24aade7f822291fec5b0ac9c15f89dc7d5965c0194c4bfb8",
+      "previewBytes": 39734,
+      "previewUrl": "/__cf-audio-review/movement.contact.hoof.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.0,
+      "opusDbTP": -11.1
+    },
+    {
+      "id": "movement.contact.hoof.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4127,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_impacts/3f3f1917428b828f-impactWood_medium_002.ogg",
+          "sha256": "3f3f1917428b828f733a963167833c707bf88296ff158e1559c57c5cb813d799",
+          "sourceId": "kenney_impacts",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.332676
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.hoof"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 78.86660000000003,
+      "master": "masters/movement/movement.contact.hoof.3.wav",
+      "masterSha256": "ecfd91f1f8abd39055811b56288bd138453ce147889da8fff2e3286e93fd2401",
+      "opus": "masters/movement/movement.contact.hoof.3.opus",
+      "opusSha256": "1e9f844351944a1cf16feca5323a98db55fe676427ae218d141143dd0c07e35a",
+      "previewSha256": "45bde88dcffcaa2ab870c3ec06b6ba9b198ba494197d718b22979205bb92b735",
+      "previewBytes": 39734,
+      "previewUrl": "/__cf-audio-review/movement.contact.hoof.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -11.1,
+      "opusDbTP": -11.0
+    },
+    {
+      "id": "movement.contact.claw.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 4.4993,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/23d2cc7234c2710b-scrape3.wav",
+          "sha256": "23d2cc7234c2710b1683d39f061d9c18056f64d368ff7b90e5c33672d928bddb",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 4.41932
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.claw"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 80.27930000000003,
+      "master": "masters/movement/movement.contact.claw.1.wav",
+      "masterSha256": "2fd060f6f81b2ce57660a276324f52827ca4dbfac2fd7c89fd5880a81b276105",
+      "opus": "masters/movement/movement.contact.claw.1.opus",
+      "opusSha256": "34471bfedf7a1b92d23e047d1ea78f05c4d134455f91d19f5a9ff8e6e381f762",
+      "previewSha256": "fb71a4c3d222c33456c6718b9a34fe3f81ad5c372b1616d74031f230c5f7eec1",
+      "previewBytes": 432046,
+      "previewUrl": "/__cf-audio-review/movement.contact.claw.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -31.9,
+      "opusDbTP": -31.7
+    },
+    {
+      "id": "movement.contact.claw.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 1.1017,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/923ab149cb912995-scrape2.wav",
+          "sha256": "923ab149cb912995bc140370f20c99275c92687a160c767a3d122261cf6a8821",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 1.021678
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.claw"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 85.77860000000004,
+      "master": "masters/movement/movement.contact.claw.2.wav",
+      "masterSha256": "fdacd87de9d7be6e16d85fc973519f63ec7f5c758321bac752a8d8c2a3f33ef4",
+      "opus": "masters/movement/movement.contact.claw.2.opus",
+      "opusSha256": "5cbf77d64c1822e8066c1123bd6b4805bd895388906632d68d9c38b376319983",
+      "previewSha256": "99152a8c76b90fd455fb552161d067ce2eb723bd0f3e846fdaa47c3dada87fb8",
+      "previewBytes": 105878,
+      "previewUrl": "/__cf-audio-review/movement.contact.claw.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -21.1,
+      "opusDbTP": -20.8
+    },
+    {
+      "id": "movement.contact.claw.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.6969,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/dca8c2c544f1645b-scrape1.wav",
+          "sha256": "dca8c2c544f1645be419d528575a33d3452a1e2d5a0c5fbad46a881b9c5d3e04",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.616893
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.claw"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 87.88030000000003,
+      "master": "masters/movement/movement.contact.claw.3.wav",
+      "masterSha256": "b402066ed9a2b5df72cecfe9cbff05b2928c86d7cc323f61387d4376f35883c9",
+      "opus": "masters/movement/movement.contact.claw.3.opus",
+      "opusSha256": "ed5160e70824f11a4fea48a1dfba82821ba7509b45b4d212ed8cdac823456b80",
+      "previewSha256": "0f9ad8394b545af074a8741e3ba11e30a25fb3b6448882249b6c35a52e0652c1",
+      "previewBytes": 67016,
+      "previewUrl": "/__cf-audio-review/movement.contact.claw.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -28.5,
+      "opusDbTP": -28.5
+    },
+    {
+      "id": "movement.contact.fin.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.6394,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/018984c8e03488b6-splash_14.ogg",
+          "sha256": "018984c8e03488b65d4c2dd6e08a9c2115b395ded80cf7209f893e7e664c5d0e",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.559354
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.fin"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 89.57720000000003,
+      "master": "masters/movement/movement.contact.fin.1.wav",
+      "masterSha256": "8dce9d2859566096d5b4d999787b701072d363c58e5bb202d76cd78de2dc8c36",
+      "opus": "masters/movement/movement.contact.fin.1.opus",
+      "opusSha256": "d5b01087ce85177e714b57aa07f69a89cdac0f0371d9c4925fae62d75a48e5dd",
+      "previewSha256": "727ed6a0f7624c8507c46120d0e9144f992f86f5f7dfa586dd61775c50351325",
+      "previewBytes": 61496,
+      "previewUrl": "/__cf-audio-review/movement.contact.fin.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.8,
+      "opusDbTP": -6.7
+    },
+    {
+      "id": "movement.contact.fin.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.8435,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/10bf42f906ea0366-splash_13.ogg",
+          "sha256": "10bf42f906ea0366c2091405b7d355e74a496b1fe1c4bd40d8965d703c0db2d7",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.763542
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.fin"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 91.21660000000003,
+      "master": "masters/movement/movement.contact.fin.2.wav",
+      "masterSha256": "20ee25a010887639f2a233acbb6dfd2fb628c8328013c46ef1ba04c0351a0682",
+      "opus": "masters/movement/movement.contact.fin.2.opus",
+      "opusSha256": "82a570d8d5a135a132992e485c0ee57b0b9a4d541a78576e812732efe141b410",
+      "previewSha256": "4f688a4c0d30d1bf4d9a8253f78e3f31b85cb5f0dab9f64655b3f56f0e870895",
+      "previewBytes": 81090,
+      "previewUrl": "/__cf-audio-review/movement.contact.fin.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -7.8,
+      "opusDbTP": -7.8
+    },
+    {
+      "id": "movement.contact.fin.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4396,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_water/123f78e6bef82b5d-splash_09.ogg",
+          "sha256": "123f78e6bef82b5dfb24f0a93f759b309bd12b21d05905ab401756fc588a31dc",
+          "sourceId": "oga_water",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.359563
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.fin"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 93.06010000000003,
+      "master": "masters/movement/movement.contact.fin.3.wav",
+      "masterSha256": "e09b94605df5e34ba0bdf88e0839713aeb9c5b714a21ef79b01ca0c4386169c4",
+      "opus": "masters/movement/movement.contact.fin.3.opus",
+      "opusSha256": "d6b7edc828588b3803a4d3abc79dc3c895071d477ffd8261df385f95dcf7586c",
+      "previewSha256": "c1ece5350b45db49cf04598d4edf3aa14f2566c3b5c8547aa381c064a9940d69",
+      "previewBytes": 42316,
+      "previewUrl": "/__cf-audio-review/movement.contact.fin.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -10.3,
+      "opusDbTP": -10.3
+    },
+    {
+      "id": "movement.contact.tentacle.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.58,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/480ee82b690136ea-slime_000.ogg",
+          "sha256": "480ee82b690136ea9db6966a3c3033356b8274752795c4e37afd6b6defcfacff",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.5
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.tentacle"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 94.49970000000003,
+      "master": "masters/movement/movement.contact.tentacle.1.wav",
+      "masterSha256": "3ee96a941ed8567749b9c463e153be1935e7b53c8b038c285835a5713bc81312",
+      "opus": "masters/movement/movement.contact.tentacle.1.opus",
+      "opusSha256": "eec97348932a533b98511817bd2c5d38e7731a05db49014d32765e050f872653",
+      "previewSha256": "742309d73a0f2986bd9eeb4776af0a304279045ba99118c67b01e669561b8028",
+      "previewBytes": 55794,
+      "previewUrl": "/__cf-audio-review/movement.contact.tentacle.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "movement.contact.tentacle.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 4.7898,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_scifi/822ca475d71e18ef-slime_001.ogg",
+          "sha256": "822ca475d71e18ef6bba707dbe6bff2bd493d3457b2552f7473d23022c1257ca",
+          "sourceId": "kenney_scifi",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 4.709841
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.tentacle"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 96.07970000000003,
+      "master": "masters/movement/movement.contact.tentacle.2.wav",
+      "masterSha256": "3f16a65347d16b265564cec868b7b5e5a727b908a26b257facb9de440a707f27",
+      "opus": "masters/movement/movement.contact.tentacle.2.opus",
+      "opusSha256": "709245b1edcfa5e3887ec5256322919c636e4cd7a92ff7481cf534ea010edd05",
+      "previewSha256": "d65b5df65655676a62c8a519bb4315990ad96cfe00eebc645eece7b091be0b1f",
+      "previewBytes": 459934,
+      "previewUrl": "/__cf-audio-review/movement.contact.tentacle.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -6.0,
+      "opusDbTP": -6.0
+    },
+    {
+      "id": "movement.contact.tentacle.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.6174,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_2/2297601433546a94-slime_04.ogg",
+          "sha256": "2297601433546a946faadbdada9db4c19fb80dfcf8c0e3cd14e2481e463965b4",
+          "sourceId": "oga_creatures_2",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.537375
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.tentacle"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 101.86950000000003,
+      "master": "masters/movement/movement.contact.tentacle.3.wav",
+      "masterSha256": "ec56794767d68c8fe7eb16627cf6e5b2d8d468ae36ff2dcbb70f0f2d30fbb774",
+      "opus": "masters/movement/movement.contact.tentacle.3.opus",
+      "opusSha256": "7eb77cf6d6527286c0bc7887f810f1dd7ddb0f77ff32d83d23888c29c4352c1d",
+      "previewSha256": "7ee79d910653d4bbe62039bc20aa093620ec7175658975cdd40ebb4ae2bd693f",
+      "previewBytes": 59384,
+      "previewUrl": "/__cf-audio-review/movement.contact.tentacle.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.8,
+      "opusDbTP": -5.8
+    },
+    {
+      "id": "movement.contact.wing-feather.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4951,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/8a7451193c38bc05-cloth2.ogg",
+          "sha256": "8a7451193c38bc05483aec25dd193e163a15d44cf7fff04ac7912573231b0201",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.415063
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.wing-feather"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 103.48690000000003,
+      "master": "masters/movement/movement.contact.wing-feather.1.wav",
+      "masterSha256": "d6e08c03cf5c18e9c4b234d32ce0284498773b63219ded9019691f98ef32ea08",
+      "opus": "masters/movement/movement.contact.wing-feather.1.opus",
+      "opusSha256": "909797ca143b590e7aa833b578f78a23387d09cf8b74cc8f32c21650ca08ff88",
+      "previewSha256": "81d797b7c0aaa21eb0d7d7954a252469f019ccb8d8a90d89ac69b59e10a5d102",
+      "previewBytes": 47644,
+      "previewUrl": "/__cf-audio-review/movement.contact.wing-feather.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -15.4,
+      "opusDbTP": -15.3
+    },
+    {
+      "id": "movement.contact.wing-feather.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.5566,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/a48632d17a4f1416-cloth3.ogg",
+          "sha256": "a48632d17a4f1416541d261a32a31612e01267144c407fa3ecab3ff410f0085b",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.476563
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.wing-feather"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 104.98200000000003,
+      "master": "masters/movement/movement.contact.wing-feather.2.wav",
+      "masterSha256": "84e640564f05e06071f010962bd4e31d3e62ad8f5c4aa1976847c24e795a9d34",
+      "opus": "masters/movement/movement.contact.wing-feather.2.opus",
+      "opusSha256": "e63296685d07dc54ddae57ef6dc7b5a855619979629ea9de8c7c48b939a864e4",
+      "previewSha256": "537131e2dc52ab117f545d8ddaa99da7e109b93bee139aebfa11a3de97a5ea61",
+      "previewBytes": 53548,
+      "previewUrl": "/__cf-audio-review/movement.contact.wing-feather.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -16.7,
+      "opusDbTP": -16.6
+    },
+    {
+      "id": "movement.contact.wing-feather.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.741,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/kenney_rpg/ddb93a3671233f95-cloth1.ogg",
+          "sha256": "ddb93a3671233f95da0e0b10367f082f7eb42fa6caaddcf776410aa8833c747d",
+          "sourceId": "kenney_rpg",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.661042
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.wing-feather"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 106.53860000000003,
+      "master": "masters/movement/movement.contact.wing-feather.3.wav",
+      "masterSha256": "80ef84dd4cd1d0948074f00170c11651016dbd9c01041a0cc0f88eae012b7ba6",
+      "opus": "masters/movement/movement.contact.wing-feather.3.opus",
+      "opusSha256": "54c5cb71257fa474d0b5ce7b73a54f67cca77aaef1e785368c362617758554b9",
+      "previewSha256": "d2cbc529dc79e4188c07bd3d7fea2b6403def0100a1086b75901aa8da9228072",
+      "previewBytes": 71250,
+      "previewUrl": "/__cf-audio-review/movement.contact.wing-feather.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -9.0,
+      "opusDbTP": -9.1
+    },
+    {
+      "id": "movement.contact.wing-membrane.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 3.2417,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/0efaa7a0397061cd-320141__owlstorm__blanket-movement-3.wav",
+          "sha256": "0efaa7a0397061cd1aa38a66bfed01fd7d8cee31c2f07d572a08d4143d5bfcab",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 3.161655
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.wing-membrane"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 108.27960000000003,
+      "master": "masters/movement/movement.contact.wing-membrane.1.wav",
+      "masterSha256": "69902b6d83932708cb690df638b161881f815d0ca0af3653bfc1a5d012d02b80",
+      "opus": "masters/movement/movement.contact.wing-membrane.1.opus",
+      "opusSha256": "79124acb29229c1e582759e592fa3b735095d223e263e94f1f757675a4420bec",
+      "previewSha256": "fa3e1203a98269dc69b3a15028015c8fe37389dd9cb4c383b2893e2840e001a2",
+      "previewBytes": 311318,
+      "previewUrl": "/__cf-audio-review/movement.contact.wing-membrane.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -25.8,
+      "opusDbTP": -25.6
+    },
+    {
+      "id": "movement.contact.wing-membrane.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 5.08,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/163e1968d3f6d18a-320143__owlstorm__blanket-movement-5.wav",
+          "sha256": "163e1968d3f6d18ab7859be6922a7584a36a95128be9fbc7c5db4c6cb33e603d",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 5.0
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.wing-membrane"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 112.52130000000002,
+      "master": "masters/movement/movement.contact.wing-membrane.2.wav",
+      "masterSha256": "a20287d1dae06c9986cc614838ae59df59714c6a55a5a96dccf99e80de75ee1e",
+      "opus": "masters/movement/movement.contact.wing-membrane.2.opus",
+      "opusSha256": "2219fca07791b856f3ae6fae0d195e8bfb99d3577afb173e05464e24a10393a0",
+      "previewSha256": "180cb53a98f6c0eb6356482204cdc110cff8955fbdd758fb00238b52d56490cf",
+      "previewBytes": 487794,
+      "previewUrl": "/__cf-audio-review/movement.contact.wing-membrane.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -23.9,
+      "opusDbTP": -24.2
+    },
+    {
+      "id": "movement.contact.wing-membrane.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 10.0258,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_foley/681391cdd2422eee-320137__owlstorm__blanket-movement-1.wav",
+          "sha256": "681391cdd2422eeebc5c230492ea3c6d2e045fafcb993b0854dc6a182db92b1a",
+          "sourceId": "oga_foley",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 9.94576
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.wing-membrane"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 118.60130000000002,
+      "master": "masters/movement/movement.contact.wing-membrane.3.wav",
+      "masterSha256": "9e903953a075f5363721f07b9928f387781411ee96ef7a47d1e71ca1e8f13ed4",
+      "opus": "masters/movement/movement.contact.wing-membrane.3.opus",
+      "opusSha256": "ef1f30509217d59cec9d9f56a80e6f05250aa4db8831794da516d9a5bf1bfd4f",
+      "previewSha256": "e584eed2e5906c86d2fa1c178aaf5cdc60c81e2981a41032659dfb7d401723cf",
+      "previewBytes": 962590,
+      "previewUrl": "/__cf-audio-review/movement.contact.wing-membrane.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -27.8,
+      "opusDbTP": -28.0
+    },
+    {
+      "id": "movement.contact.wing-insect.1",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.5251,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_1/478418f0d7066710-bug_04.ogg",
+          "sha256": "478418f0d70667109145ca10d82e918c5eeb95c594be40186681179a883d64be",
+          "sourceId": "oga_creatures_1",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.445083
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.wing-insect"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 129.6271,
+      "master": "masters/movement/movement.contact.wing-insect.1.wav",
+      "masterSha256": "8b4b41a6ab3203d8e7b5aa3e8a9f95d6c6f604b4307bdd70bf248f75e2670255",
+      "opus": "masters/movement/movement.contact.wing-insect.1.opus",
+      "opusSha256": "1e89021cf7728dc3613e0e0a8593acbdcf5aad6ee19c06f0e328778337ce704e",
+      "previewSha256": "a51215b7b534835a02648eec681bdcfb1e66d00e4ffded5b8ad679eabeadbdc3",
+      "previewBytes": 50524,
+      "previewUrl": "/__cf-audio-review/movement.contact.wing-insect.1.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -1.9,
+      "opusDbTP": -1.8
+    },
+    {
+      "id": "movement.contact.wing-insect.2",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.6542,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_1/7993707dcb082c4f-bug_02.ogg",
+          "sha256": "7993707dcb082c4f9f297bec44f8aa276988d848f4cf10ea6046c1c45daee518",
+          "sourceId": "oga_creatures_1",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.574229
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.wing-insect"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 131.15220000000002,
+      "master": "masters/movement/movement.contact.wing-insect.2.wav",
+      "masterSha256": "aa50f0904c766fd87acfc16190bf0c5bf4a16446000b59b41d6e550e9ca693d1",
+      "opus": "masters/movement/movement.contact.wing-insect.2.opus",
+      "opusSha256": "5075f913e3a2a61c11ce56121256908c131efbbbce876352c98b8a5c22cce49f",
+      "previewSha256": "54847d76c7b35be447999f9fb5ff102b168a5d4fa767134d3349ff6824108ce7",
+      "previewBytes": 62918,
+      "previewUrl": "/__cf-audio-review/movement.contact.wing-insect.2.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.0,
+      "opusDbTP": -5.0
+    },
+    {
+      "id": "movement.contact.wing-insect.3",
+      "group": "movement",
+      "kind": "designed",
+      "duration": 0.4338,
+      "channels": 1,
+      "layers": [
+        {
+          "path": "source-audio/oga_creatures_1/947dad474b93a278-bug_03.ogg",
+          "sha256": "947dad474b93a2786455b1772184f79f4881cf8bf212353638a42f662c808b7b",
+          "sourceId": "oga_creatures_1",
+          "rate": 1,
+          "gain": 0.7,
+          "delay": 0,
+          "duration": 0.353771
+        }
+      ],
+      "synthNote": null,
+      "requirements": [
+        "movement.contact.wing-insect"
+      ],
+      "notes": "Contact/wing design ingredient; biological authenticity unverified. Feather cloth and membrane blanket are labelled approximations.",
+      "listeningStatus": "not_reviewed",
+      "approved": false,
+      "start": 132.80640000000002,
+      "master": "masters/movement/movement.contact.wing-insect.3.wav",
+      "masterSha256": "adbf4b0275672339bd214efd8ce71e21420fe39c48a909c43d97a52e9c3c2322",
+      "opus": "masters/movement/movement.contact.wing-insect.3.opus",
+      "opusSha256": "9521b1678b680d0b091dd90a75b1f7b7c571618b117bb64c550fcf1284881508",
+      "previewSha256": "f18ae6b4d2acbcf6f044c1af6bab38147ff2c51eceaa02923052c4577458eab8",
+      "previewBytes": 41758,
+      "previewUrl": "/__cf-audio-review/movement.contact.wing-insect.3.wav",
+      "renderStatus": "validated",
+      "integrationStatus": "developer_audition",
+      "masterDbTP": -5.7,
+      "opusDbTP": -5.6
+    }
+  ],
+  "listeningAccepted": false
+}

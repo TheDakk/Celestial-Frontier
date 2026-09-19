@@ -1,0 +1,30 @@
+✖ shared joint angles move only their authored head support, leave the attachment still and preserve rest (1.183125ms)
+✔ head follows actual pose but source neck remains attached to chest; rigid old transform fails (0.782458ms)
+✔ actual triangle fold is refused, including the reflected profile view (0.078417ms)
+✔ head replacement cannot cut away the neck or chest; original bad declaration is refused (0.096458ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 73.929916
+
+✖ failing tests:
+
+test at port/v2/tools/battle-facing/head-details.test.mjs:2:1
+✖ shared joint angles move only their authored head support, leave the attachment still and preserve rest (1.183125ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 5
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle-facing/head-details.test.mjs:9:33)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 5,
+    expected: 5,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }

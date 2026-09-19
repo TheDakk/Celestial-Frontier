@@ -1,0 +1,105 @@
+{
+  "status": "SOURCE_BINDING_ONLY",
+  "oldMeasurement": {
+    "schema": "cf-v2-compendium-measurement-authority/v1",
+    "sha256": "4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12",
+    "inputs": {
+      "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
+      "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+      "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
+      "budgetSchema": "9601a25a6193bc19b2b7ab09ff68a819bdc0e87241c041d90f0bfb1d9d02620f",
+      "outcomeContract": "1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692",
+      "collector": "3ce7ed13c57f7feabc2653b9f7ce5eb323bc3305a19646f2cd93af5032d2dc5e",
+      "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
+      "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
+      "workspaceLock": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606",
+      "package": "cf6298a7a72720952ab8bfe7a2fdcf0dde2c135e537e1ce5190303c6a06aa3a7",
+      "packageLock": "53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d",
+      "appPackage": "11dde72861c2a687f5d238a412946956f1ecb4a4bec7adafa6096c9dcc04329d",
+      "baselineSaveFixtures": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+      "speciesArtBuildGraph": "e591551391f3ed31a494c94d7e1f659633daa460f0571b973bc81cd6888a9c66",
+      "outcomeInventory": "bd4f8a9ef37538b09582c316837dae05b1bc682cf6cb5f6df0fee4a2621929b0"
+    }
+  },
+  "currentMeasurement": {
+    "schema": "cf-v2-compendium-measurement-authority/v1",
+    "sha256": "6a829fb18eab4c171afaace0f49ad2a987cfcdc520d33dbc05337c379df85ee2",
+    "inputs": {
+      "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
+      "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+      "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
+      "budgetSchema": "9601a25a6193bc19b2b7ab09ff68a819bdc0e87241c041d90f0bfb1d9d02620f",
+      "outcomeContract": "1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692",
+      "collector": "3ce7ed13c57f7feabc2653b9f7ce5eb323bc3305a19646f2cd93af5032d2dc5e",
+      "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
+      "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
+      "workspaceLock": "ceb20c120f1c2a889124f5e90050cf0df44768cd9c5a61cb1558ca5373371ae8",
+      "package": "c55abed7f6669694d53e2e756e6f743ecf9a88228eb8a1702d19e9ebc732efc0",
+      "packageLock": "744f7c5079d0892fee85d6d2af20c343955ff0d47bda9cce8368d9babd6d1402",
+      "appPackage": "282354469f5a4b5bfac27bd33b0d6d1605ff15c3309c09f0b3d25a794cbb1513",
+      "baselineSaveFixtures": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+      "speciesArtBuildGraph": "e591551391f3ed31a494c94d7e1f659633daa460f0571b973bc81cd6888a9c66",
+      "outcomeInventory": "bd4f8a9ef37538b09582c316837dae05b1bc682cf6cb5f6df0fee4a2621929b0"
+    }
+  },
+  "oldProducer": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "2083bac2808da830f9d8b5c67386c9e1c6816ba4ee56317e121169817fc9f9cb",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "e9175902cbb316b600ffd566c17af7bf9763e66a518492a3759afe8133271b6d"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-ge6_npOg.js",
+        "sha256": "b7ea401cfbc3b49363d52515e7e7e59dfcbb63973741d82044c7ad0f20b58ed7"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "e1aeca0a865d08174ec76799f9e54c7c751d9182e09d1b44d0f5bc961e6553e8"
+      }
+    }
+  },
+  "currentProducer": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "ed8823bcaec0e22f47fe1d6554fc06c282fb30edda2e61de393fea620cd129c8",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "02d4100d417bcda3a66990927dcd377176e5992383364902da5f530cb1f5822a"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-rhsfOKDj.js",
+        "sha256": "86ac176ed49ae0777307b1ab37812d94e88f2f2d7095eebc7f026988913195cb"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-oT5j4xm4.js",
+        "sha256": "38a31b7fa16395ae68ad564df925a96033af0306ab7d88c5149fb8c829294401"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-oT5j4xm4.js",
+        "sha256": "38a31b7fa16395ae68ad564df925a96033af0306ab7d88c5149fb8c829294401"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "38b52dd80c0a2c34f419ae632e58aa2c9ea8972733efcc708d4e1299ad82e7c2"
+      }
+    }
+  },
+  "preserved": {
+    "ceilings": "a5f05be521eb127f3e74306bd69538bdb6d3b564875ed921f2c7f3c0904def83",
+    "rulerAuthority": "5a09637a0c05d7bd394b2292550583baa4e2221eeceb31417fa7f58af2dbf708",
+    "candidateSamples": "0b2eae3d6ddb164b1c372950528b66571017737ec0e445ce9b01ea4166d60d44",
+    "pairedBrokenBaseline": "db736317ace77f84726dd95c560e8163d27ed699d3abe12012f8abc5cca3e3a5",
+    "browserAuthority": "4c533a8c5d996d0aef3d35c255f9f9623d42b196cd29115ba6d5448cc03b6193"
+  },
+  "nativeCertificate": false
+}

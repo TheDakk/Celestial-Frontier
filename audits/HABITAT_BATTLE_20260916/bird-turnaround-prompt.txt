@@ -1,0 +1,46 @@
+REFERENCE LOCK
+The Discovery Atlas is the sole STYLE reference; never copy its panels, backgrounds or lettering. Match its frontier visual language exactly. The second supplied image is the approved Pheasant SUBJECT/IDENTITY reference, not another style. Preserve its feather colours, head, neck ring, tail and body character. Produce an animator turnaround candidate; do not overwrite or redesign the token.
+
+FROZEN STYLE
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.; family-reference exemplar only, not an Earth landing resident: Pheasant, bird, land; ochre and chestnut feathers (#c28a46, #8a4525), dark green head (#164f43), red cheek (#bd3c36), cream neck ring (#f1e9d6).
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+The same approved Earth Pheasant, a fraction of human height: one head, exactly one head; two legs, exactly two legs; two wings, exactly two wings; one long barred feathered tail, exactly one tail. Same chestnut/ochre feather groups, dark green head, red cheek, cream neck ring, golden eyes, horn bill. No armour, no harness, no gear. For the front and back turnaround views, neutrally extend the two wings away from the body so the complete primaries, secondaries and under-wing/over-wing surfaces can be authored into the rig. Legs straight neutral, wings symmetrically spread, NOT flapping. Keep the torso fully visible and the feather groups anatomically connected. Side view faces left with the near wing separated sufficiently to see its shape, preserving a true side body.
+
+ACCURACY
+Exactly three views of ONE identical subject. In each view exactly two wings and exactly two legs, one head and one tail. Complete anatomy, no ground or shadow, no labels. No missing, duplicated or fused feathers/limbs.
+
+LAYOUT, TURNAROUND
+  The same creature three times in one row on the same baseline: front view,
+  true side view facing left, back view. Neutral standing pose, limbs
+  separated and not overlapping the body, mouth closed, no motion. Identical
+  scale in all three. No labels, no arrows, no numbers.
+  Output: a 2:1 image, 2048 x 1024, on the key colour.
+  Add to the negative: no action pose, no overlapping limbs, no three-quarter
+  view, no fourth figure.
+
+
+TECHNICAL OUTPUT
+Create a 2:1 2048 x 1024 PNG. Every non-subject pixel is flat pure #FF00FF, no gradient, texture, checkerboard, frame, floor, cast shadow, scenery or transparency. Subject edges crisp, opaque, no magenta or pink on the subject. At least 8 percent safe margin, all three equally scaled, one row.
+
+NEGATIVE
+No text, labels, arrows, numbers, watermark, borders, panels, UI, photorealism, plastic CGI, cartoons, glowing outlines, extra anatomy, missing anatomy, cropped feathers, armour, scenery or fourth figure. No action pose, no overlapping limbs, no three-quarter view. The three-view turnaround is intentional, not three different creatures.

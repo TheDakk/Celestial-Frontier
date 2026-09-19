@@ -1,0 +1,13 @@
+✔ mirroring uses the same published mouth, not the opposite body end (0.389583ms)
+✔ three-turn capture admits full film and rejects truncated, 30 Hz and over-budget controls (0.139625ms)
+✔ same encounter replays exactly; distinct seeds alter composition and every actor has a turn (1.321292ms)
+✔ dry fish, foreign biome templates, duplicate actors and missing cards refuse (0.12625ms)
+✔ run-up and return are bounded, return to home, and seek matches frame playback (0.155958ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 43.477208

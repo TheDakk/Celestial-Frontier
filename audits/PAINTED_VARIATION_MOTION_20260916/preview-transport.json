@@ -1,0 +1,22 @@
+{
+  "before": {
+    "status": 200,
+    "requested": "bytes=0-1",
+    "returnedBytes": 460276,
+    "server": "Python SimpleHTTP"
+  },
+  "after": {
+    "status": 206,
+    "requested": "bytes=0-1",
+    "returnedBytes": 2,
+    "contentRange": "bytes 0-1/460276"
+  },
+  "verification": "Embedded tab reloaded; new review Play button produced playing status and visible video. Initial sandbox curl failure was not a server outage.",
+  "acceptedRoot": "127.0.0.1:49816",
+  "newURL": "http://127.0.0.1:49816/painted-motion/",
+  "playbackVerified": [
+    "approved",
+    "broad",
+    "crystalline"
+  ]
+}

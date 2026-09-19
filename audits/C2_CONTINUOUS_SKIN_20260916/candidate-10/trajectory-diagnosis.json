@@ -1,0 +1,645 @@
+{
+  "schema": "cf.continuous-skin-trajectory-diagnosis/v1",
+  "scope": "Largest consecutive120Hz field-vertex steps compared with raw current-pose targets; no visual or timing acceptance",
+  "poseExportSha256": "c26a00e96a19a812648d4e4ca38d8617bec9f6e27e1f5803ce4170a36564eeb4",
+  "rows": [
+    {
+      "id": "civet",
+      "samples": 1201,
+      "bad": [],
+      "min": 0.11999994403798185,
+      "maxProjection": 6.6032969387063165,
+      "worst": {
+        "atMs": 2083.3333333333335,
+        "priorMs": 2075,
+        "phase": "impact",
+        "priorPhase": "impact",
+        "role": "attacker",
+        "priorRole": "attacker",
+        "vertex": 106,
+        "source": {
+          "x": 1214,
+          "y": 214,
+          "weights": [
+            [
+              "earNearTip",
+              0.9555360215312997
+            ],
+            [
+              "head",
+              0.04420850739121524
+            ],
+            [
+              "earFarTip",
+              0.0002546068313045276
+            ],
+            [
+              "neck",
+              4.4490906733737516e-7
+            ],
+            [
+              "jaw",
+              4.1495217458387955e-7
+            ],
+            [
+              "chest",
+              4.3849385691866995e-9
+            ]
+          ]
+        },
+        "step": 183.30135911821108,
+        "targetStep": 183.3013564075458,
+        "changed": [
+          {
+            "joint": "head",
+            "before": {
+              "rotation": 0.014247,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": 0.196873,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": 0.18262599999999998,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "neck",
+            "before": {
+              "rotation": -0.068784,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": 0.093549,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": 0.162333,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "jaw",
+            "before": {
+              "rotation": -0.273672,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.42586,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.152188,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "foreNearKnee",
+            "before": {
+              "rotation": -0.589692,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.69115,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.10145800000000005,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "root",
+            "before": {
+              "rotation": 0,
+              "dx": 0.368903,
+              "dy": -0.037975
+            },
+            "after": {
+              "rotation": 0,
+              "dx": 0.3923,
+              "dy": -0.01465
+            },
+            "rotationDelta": 0,
+            "dxDelta": 0.023397,
+            "dyDelta": 0.023325000000000002
+          },
+          {
+            "joint": "spine",
+            "before": {
+              "rotation": -0.078283,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.037699,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": 0.040584,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "tail1",
+            "before": {
+              "rotation": -0.11522315301818764,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.11893849332756563,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.003715340309377993,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "tail2",
+            "before": {
+              "rotation": -0.0549060054206454,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.05677936857308634,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.0018733631524409378,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "tail0",
+            "before": {
+              "rotation": -0.2553469878365035,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.2536916036689708,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": 0.001655384167532692,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "tail3",
+            "before": {
+              "rotation": -0.02632169594124914,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.027255555050621216,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.0009338591093720761,
+            "dxDelta": 0,
+            "dyDelta": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "fox",
+      "samples": 1201,
+      "bad": [],
+      "min": 0.11783342094776737,
+      "maxProjection": 9.784911768292258,
+      "worst": {
+        "atMs": 2191.6666666666665,
+        "priorMs": 2183.3333333333335,
+        "phase": "impact",
+        "priorPhase": "impact",
+        "role": "attacker",
+        "priorRole": "attacker",
+        "vertex": 152,
+        "source": {
+          "x": 1057,
+          "y": 97,
+          "weights": [
+            [
+              "earNearTip",
+              0.9837651411477112
+            ],
+            [
+              "head",
+              0.015616122219327983
+            ],
+            [
+              "spine",
+              0.0003261949985868141
+            ],
+            [
+              "earFarTip",
+              0.0002924736179940623
+            ],
+            [
+              "jaw",
+              6.495746915192171e-8
+            ],
+            [
+              "neck",
+              3.0589106805874172e-9
+            ]
+          ]
+        },
+        "step": 188.21696397148781,
+        "targetStep": 188.2385561075461,
+        "changed": [
+          {
+            "joint": "head",
+            "before": {
+              "rotation": 0.008376,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": 0.181165,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": 0.172789,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "neck",
+            "before": {
+              "rotation": -0.074003,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": 0.079587,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": 0.15359,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "jaw",
+            "before": {
+              "rotation": -0.26878,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.41277,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.14399,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "foreNearKnee",
+            "before": {
+              "rotation": -0.58643,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.682424,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.09599400000000002,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "root",
+            "before": {
+              "rotation": 0,
+              "dx": 0.366422,
+              "dy": -0.039589
+            },
+            "after": {
+              "rotation": 0,
+              "dx": 0.38843999999999995,
+              "dy": -0.01758
+            },
+            "rotationDelta": 0,
+            "dxDelta": 0.022017999999999927,
+            "dyDelta": 0.022009
+          },
+          {
+            "joint": "spine",
+            "before": {
+              "rotation": -0.079587,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.04119,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": 0.03839700000000001,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "tail0",
+            "before": {
+              "rotation": -0.2652879653469638,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.25795091444310736,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": 0.007337050903856446,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "tail1",
+            "before": {
+              "rotation": -0.12231156225332512,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.1278100956242562,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.0054985333709310635,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "tail2",
+            "before": {
+              "rotation": -0.05221524055831074,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.05453314662659332,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.0023179060682825825,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "tail3",
+            "before": {
+              "rotation": -0.0225562226748547,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.023641990061588097,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.0010857673867333967,
+            "dxDelta": 0,
+            "dyDelta": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "procedural",
+      "samples": 1201,
+      "bad": [],
+      "min": 0.47646477611311083,
+      "maxProjection": 0,
+      "worst": {
+        "atMs": 2391.6666666666665,
+        "priorMs": 2383.3333333333335,
+        "phase": "impact",
+        "priorPhase": "impact",
+        "role": "attacker",
+        "priorRole": "attacker",
+        "vertex": 598,
+        "source": {
+          "x": 605,
+          "y": 330,
+          "weights": [
+            [
+              "head",
+              0.6951869592241778
+            ],
+            [
+              "neck",
+              0.2137408849455919
+            ],
+            [
+              "jaw",
+              0.046144146505780234
+            ],
+            [
+              "earFarTip",
+              0.03253413086176684
+            ],
+            [
+              "earNearTip",
+              0.008830949364710112
+            ],
+            [
+              "spine",
+              0.003502842910994528
+            ],
+            [
+              "foreNearKnee",
+              0.000060085897426551195
+            ],
+            [
+              "foreFarKnee",
+              2.8955200579738747e-10
+            ]
+          ]
+        },
+        "step": 99.29448927592338,
+        "targetStep": 100.15631363076395,
+        "changed": [
+          {
+            "joint": "head",
+            "before": {
+              "rotation": 0.191543,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.273978,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.46552099999999996,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "neck",
+            "before": {
+              "rotation": 0.11104399999999999,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.268905,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.379949,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "root",
+            "before": {
+              "rotation": 0,
+              "dx": 0.367143,
+              "dy": -0.047352
+            },
+            "after": {
+              "rotation": 0,
+              "dx": 0.386419,
+              "dy": -0.027866000000000002
+            },
+            "rotationDelta": 0,
+            "dxDelta": 0.019276000000000015,
+            "dyDelta": 0.019485999999999996
+          },
+          {
+            "joint": "spine",
+            "before": {
+              "rotation": -0.10596699999999999,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.071641,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": 0.034325999999999995,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "tail0",
+            "before": {
+              "rotation": -0.23276852770062295,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.22839395463196352,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": 0.004374573068659432,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "tail1",
+            "before": {
+              "rotation": -0.0745467044778981,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.07865058444621117,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.004103879968313073,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "tail2",
+            "before": {
+              "rotation": -0.024582836717045895,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.025961349423513337,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.001378512706467442,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "tail3",
+            "before": {
+              "rotation": -0.009038492244274582,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.009618107018281656,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.0005796147740070746,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "chest",
+            "before": {
+              "rotation": -0.019769,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.019281,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": 0.00048799999999999885,
+            "dxDelta": 0,
+            "dyDelta": 0
+          },
+          {
+            "joint": "pelvis",
+            "before": {
+              "rotation": -0.007569,
+              "dx": 0,
+              "dy": 0
+            },
+            "after": {
+              "rotation": -0.007813,
+              "dx": 0,
+              "dy": 0
+            },
+            "rotationDelta": -0.0002440000000000003,
+            "dxDelta": 0,
+            "dyDelta": 0
+          }
+        ]
+      }
+    }
+  ]
+}

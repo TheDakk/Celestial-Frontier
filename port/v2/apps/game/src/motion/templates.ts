@@ -9,6 +9,8 @@
  * shoulder). Positive = clockwise on screen for a right-facing body, so a positive
  * `spine` dips the front and a positive `head` pitches nose-down. `root` is the
  * whole-body rotation about the root landmark; root offsets are in body lengths. */
+import {specializedTemplate,type SpecializedTemplateId} from '../../../../tools/creature-animation/specialized-templates.mjs';
+import {measureFamilyBounds} from '../../../../tools/creature-animation/family-record.mjs';
 import { FAMILY_TEMPLATES, type FamilyTemplateId } from './family-templates.js';
 export type JointName = string;
 export type Vec2 = readonly [number, number];
@@ -20,7 +22,7 @@ export interface ProportionBound {
 }
 export interface SecondaryChain { readonly id: string; readonly driver: JointName; readonly joints: readonly JointName[]; /** A11 chain kind for §6 rules; absent on the quadruped chains (tail/ear by name). */ readonly kind?: string; }
 export interface MotionTemplate {
-  readonly id: 'quadruped' | FamilyTemplateId;
+  readonly id: 'quadruped' | FamilyTemplateId | SpecializedTemplateId;
   readonly version: 1;
   readonly clipSetId: string;
   /** [child, parent] pairs, parents first — root is implicit. */
@@ -88,7 +90,8 @@ const REGISTRY: Readonly<Record<string, MotionTemplate>> = Object.freeze({ quadr
 export const KNOWN_TEMPLATE_IDS = Object.freeze(Object.keys(REGISTRY));
 /** Kit §3: an unsupported template compiles to the labelled whole-portrait fallback. */
 export function resolveTemplate(id: string, version = 1): MotionTemplate | MotionFallback {
-  const t = REGISTRY[id];
+  const specialty=specializedTemplate(id);
+  const t:MotionTemplate|undefined = REGISTRY[id] ?? (specialty?{...specialty,proportions:specialty.bounds.map(b=>({...b,measure:(landmarks,bones)=>b.kind==='bone-min'?Math.min(...Object.values(bones)):b.kind==='bone-max'?Math.max(...Object.values(bones)):measureFamilyBounds({...specialty,graph:specialty.graph.filter(([j])=>Object.hasOwn(landmarks,j)),bounds:[b]},landmarks).measures[b.id]!}))}:undefined);
   if (!t) return { kind: 'whole-portrait', templateId: id, reason: `template "${id}" has no motion library (known: ${KNOWN_TEMPLATE_IDS.join(', ')})` };
   if (t.version !== version) return { kind: 'whole-portrait', templateId: id, reason: `template "${id}" v${version} is not v${t.version}` };
   return t;

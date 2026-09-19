@@ -1,0 +1,45 @@
+✔ quadruped: exact family anatomy, immutable contract and hostile-record controls (5.639708ms)
+✖ hopper: exact family anatomy, immutable contract and hostile-record controls (0.250542ms)
+✔ biped-bird: exact family anatomy, immutable contract and hostile-record controls (2.077ms)
+✖ fish: exact family anatomy, immutable contract and hostile-record controls (0.22675ms)
+✔ insect: exact family anatomy, immutable contract and hostile-record controls (1.162083ms)
+✔ serpent: exact family anatomy, immutable contract and hostile-record controls (0.937375ms)
+✔ arachnid: exact family anatomy, immutable contract and hostile-record controls (2.213209ms)
+✔ radial: exact family anatomy, immutable contract and hostile-record controls (1.174958ms)
+✔ plant-woody: exact family anatomy, immutable contract and hostile-record controls (1.002792ms)
+✔ plant-herb: exact family anatomy, immutable contract and hostile-record controls (1.187833ms)
+✔ myriapod: exact family anatomy, immutable contract and hostile-record controls (1.147625ms)
+✔ cephalopod: exact family anatomy, immutable contract and hostile-record controls (1.197166ms)
+✔ flyer-membrane: exact family anatomy, immutable contract and hostile-record controls (0.845708ms)
+✔ primate: exact family anatomy, immutable contract and hostile-record controls (0.985958ms)
+✔ unknown template never defaults to quadruped and all contracted inventories are closed (0.1435ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 13
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 95.056333
+
+✖ failing tests:
+
+test at port/v2/tools/creature-animation/family-record.test.mjs:7:40
+✖ hopper: exact family anatomy, immutable contract and hostile-record controls (0.250542ms)
+  Error: Family admission: shared clip set required
+      at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:6:39)
+      at checkFamilyGeometry (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:19:2)
+      at sealFamilyRecord (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:40:36)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.test.mjs:9:21)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at port/v2/tools/creature-animation/family-record.test.mjs:7:40
+✖ fish: exact family anatomy, immutable contract and hostile-record controls (0.22675ms)
+  Error: Family admission: shared clip set required
+      at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:6:39)
+      at checkFamilyGeometry (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:19:2)
+      at sealFamilyRecord (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:40:36)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.test.mjs:9:21)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

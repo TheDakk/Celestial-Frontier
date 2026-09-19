@@ -1,0 +1,390 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "2b824f9cad9383d8fcbb3fd5d41ebdec2d5ecbc9128e33a5388bc21d7cb0a859",
+  "atlasSha256": "cc3d0f54c0c8dda0fccba3791a016c8c558ffa6d23b41c4823c9cc4989fae8d0",
+  "atlasSize": {
+    "width": 543,
+    "height": 261
+  },
+  "parts": [
+    {
+      "id": "torso",
+      "joint": "spine",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 261,
+        "height": 170
+      },
+      "cutout": {
+        "x": 321,
+        "y": 422,
+        "width": 261,
+        "height": 170
+      }
+    },
+    {
+      "id": "hind-far-upper",
+      "joint": "hindFarKnee",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 332,
+        "y": 145,
+        "width": 41,
+        "height": 96
+      },
+      "cutout": {
+        "x": 324,
+        "y": 438,
+        "width": 41,
+        "height": 96
+      }
+    },
+    {
+      "id": "hind-far-lower",
+      "joint": "hindFarAnkle",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 212,
+        "y": 185,
+        "width": 26,
+        "height": 27
+      },
+      "cutout": {
+        "x": 327,
+        "y": 530,
+        "width": 26,
+        "height": 27
+      }
+    },
+    {
+      "id": "hind-far-paw",
+      "joint": "hindFarPaw",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 282,
+        "y": 226,
+        "width": 22,
+        "height": 23
+      },
+      "cutout": {
+        "x": 348,
+        "y": 554,
+        "width": 22,
+        "height": 23
+      }
+    },
+    {
+      "id": "fore-far-upper",
+      "joint": "foreFarKnee",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 90,
+        "y": 225,
+        "width": 19,
+        "height": 21
+      },
+      "cutout": {
+        "x": 503,
+        "y": 504,
+        "width": 19,
+        "height": 21
+      }
+    },
+    {
+      "id": "fore-far-lower",
+      "joint": "foreFarAnkle",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 248,
+        "y": 185,
+        "width": 17,
+        "height": 27
+      },
+      "cutout": {
+        "x": 505,
+        "y": 525,
+        "width": 17,
+        "height": 27
+      }
+    },
+    {
+      "id": "fore-far-paw",
+      "joint": "foreFarPaw",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 248,
+        "y": 226,
+        "width": 24,
+        "height": 30
+      },
+      "cutout": {
+        "x": 494,
+        "y": 547,
+        "width": 24,
+        "height": 30
+      }
+    },
+    {
+      "id": "hind-near-upper",
+      "joint": "hindNearKnee",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 485,
+        "y": 5,
+        "width": 53,
+        "height": 94
+      },
+      "cutout": {
+        "x": 339,
+        "y": 440,
+        "width": 53,
+        "height": 94
+      }
+    },
+    {
+      "id": "hind-near-lower",
+      "joint": "hindNearAnkle",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 276,
+        "y": 183,
+        "width": 40,
+        "height": 33
+      },
+      "cutout": {
+        "x": 341,
+        "y": 525,
+        "width": 40,
+        "height": 33
+      }
+    },
+    {
+      "id": "hind-near-paw",
+      "joint": "hindNearPaw",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 48,
+        "y": 185,
+        "width": 32,
+        "height": 31
+      },
+      "cutout": {
+        "x": 362,
+        "y": 546,
+        "width": 32,
+        "height": 31
+      }
+    },
+    {
+      "id": "fore-near-upper",
+      "joint": "foreNearKnee",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 404,
+        "y": 61,
+        "width": 51,
+        "height": 97
+      },
+      "cutout": {
+        "x": 503,
+        "y": 429,
+        "width": 51,
+        "height": 97
+      }
+    },
+    {
+      "id": "fore-near-lower",
+      "joint": "foreNearAnkle",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 185,
+        "width": 33,
+        "height": 34
+      },
+      "cutout": {
+        "x": 520,
+        "y": 525,
+        "width": 33,
+        "height": 34
+      }
+    },
+    {
+      "id": "fore-near-paw",
+      "joint": "foreNearPaw",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 90,
+        "y": 185,
+        "width": 32,
+        "height": 30
+      },
+      "cutout": {
+        "x": 509,
+        "y": 547,
+        "width": 32,
+        "height": 30
+      }
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 276,
+        "y": 5,
+        "width": 118,
+        "height": 130
+      },
+      "cutout": {
+        "x": 487,
+        "y": 361,
+        "width": 118,
+        "height": 130
+      }
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 212,
+        "y": 222,
+        "width": 26,
+        "height": 5
+      },
+      "cutout": {
+        "x": 598,
+        "y": 372,
+        "width": 26,
+        "height": 5
+      }
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 404,
+        "y": 5,
+        "width": 71,
+        "height": 46
+      },
+      "cutout": {
+        "x": 556,
+        "y": 336,
+        "width": 71,
+        "height": 46
+      }
+    },
+    {
+      "id": "ear-far",
+      "joint": "earFarTip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 465,
+        "y": 61,
+        "width": 10,
+        "height": 14
+      },
+      "cutout": {
+        "x": 571,
+        "y": 347,
+        "width": 10,
+        "height": 14
+      }
+    },
+    {
+      "id": "ear-near",
+      "joint": "earNearTip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 465,
+        "y": 85,
+        "width": 10,
+        "height": 7
+      },
+      "cutout": {
+        "x": 581,
+        "y": 346,
+        "width": 10,
+        "height": 7
+      }
+    },
+    {
+      "id": "tail-root",
+      "joint": "tail1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 276,
+        "y": 145,
+        "width": 46,
+        "height": 28
+      },
+      "cutout": {
+        "x": 295,
+        "y": 457,
+        "width": 46,
+        "height": 28
+      }
+    },
+    {
+      "id": "tail-middle",
+      "joint": "tail2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 132,
+        "y": 185,
+        "width": 32,
+        "height": 30
+      },
+      "cutout": {
+        "x": 270,
+        "y": 466,
+        "width": 32,
+        "height": 30
+      }
+    },
+    {
+      "id": "tail-tip",
+      "joint": "tail3",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 174,
+        "y": 185,
+        "width": 28,
+        "height": 37
+      },
+      "cutout": {
+        "x": 254,
+        "y": 483,
+        "width": 28,
+        "height": 37
+      }
+    }
+  ],
+  "bindingHash": "670ba85a9137101158ffb2193453ced451388b7409ba3d8f7f4f82d87decbb4f"
+}

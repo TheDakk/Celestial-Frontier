@@ -1,0 +1,22 @@
+{
+  "attemptedStagedDiffSha256": "5a2514844b0eabb2e31f335cc1f33101ee11818e2074f22eb72ea2f0d6013fc3",
+  "status": "BLOCKED_SIGNING",
+  "date": "2026-09-19",
+  "head": "6a58e40eeb552e925c94e0173d6298c4b05303e3",
+  "branch": "openai/mac",
+  "cachedAhead": {
+    "origin/openai/mac": 132,
+    "origin/develop": 243
+  },
+  "attempt": {
+    "command": "git commit -S --quiet -m 'Record R1b R2b native failures and complete session handoff'",
+    "exitCode": 128,
+    "stderr": "error: 1Password: failed to fill whole buffer\n\nfatal: failed to write commit object\n"
+  },
+  "stagedDiffSha256": "de5528e86c4562793bb045e879d92eea9abe81373542c8fbe35ee49d20e4d5af",
+  "postAttemptChanges": "Only three documentation files updated to report signing pending; no source or evidence artifact changed. Current staged hash identifies the truthful retry batch.",
+  "stagedFileCount": 151,
+  "nativeOutcome": "All eight subjects plus Civet completed; 3 primary numeric passes, 5 primary failures, Civet FAIL. No rerun needed.",
+  "next": "Retry prepared signed evidence/handoff commit when configured 1Password signer is available; independently verify signature. Then STOP for Nick review, no R3/R4/R9 implementation or native retry.",
+  "receiptState": "This failure receipt is deliberately unstaged so the prepared staged-diff hash is self-independent; preserve it in the next documentation checkpoint."
+}

@@ -1,0 +1,984 @@
+{
+  "scope": "actual source, pure producer sampling; not native visual acceptance",
+  "status": "PASS",
+  "card": {
+    "kind": "body-card",
+    "projectionSigns": {},
+    "identity": {
+      "speciesVisualKey": "[\"object\",[[\"accent\",[\"number\",\"14\"]],[\"behavior\",[\"number\",\"4\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"9\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"10271\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"6\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"9\"]]]]",
+      "seed": 10271,
+      "ownerId": "authored:painted-procedural/broad-rosette",
+      "earthName": null
+    },
+    "recipeHash": "7bed26da9f56502062f2f2c96ac5c93ec6d04969d31d293d2037d42b90e30fb5",
+    "template": {
+      "id": "quadruped",
+      "version": 1,
+      "clipSetId": "quadruped-land-v1"
+    },
+    "massClass": {
+      "name": "huge",
+      "multiplier": 1.4
+    },
+    "locomotion": {
+      "loco": "grazers",
+      "gait": "walk",
+      "templateGait": "walk"
+    },
+    "realm": "land",
+    "materials": {
+      "body": "furred",
+      "head": "furred",
+      "legs": "furred",
+      "tail": "furred",
+      "ears": "furred",
+      "wings": "furred",
+      "fins": "furred",
+      "antennae": "furred",
+      "fronds": "furred",
+      "arms": "furred"
+    },
+    "parts": [
+      {
+        "joint": "pelvis",
+        "parent": "root",
+        "group": "body",
+        "pivot": [
+          0.53,
+          0.49
+        ],
+        "tip": [
+          0.37,
+          0.48
+        ],
+        "boneLength": 0.16031219541881403
+      },
+      {
+        "joint": "spine",
+        "parent": "pelvis",
+        "group": "body",
+        "pivot": [
+          0.37,
+          0.48
+        ],
+        "tip": [
+          0.53,
+          0.44
+        ],
+        "boneLength": 0.16492422502470647
+      },
+      {
+        "joint": "chest",
+        "parent": "spine",
+        "group": "body",
+        "pivot": [
+          0.53,
+          0.44
+        ],
+        "tip": [
+          0.705,
+          0.5
+        ],
+        "boneLength": 0.18499999999999994
+      },
+      {
+        "joint": "neck",
+        "parent": "chest",
+        "group": "head",
+        "pivot": [
+          0.705,
+          0.5
+        ],
+        "tip": [
+          0.771,
+          0.322
+        ],
+        "boneLength": 0.1898420396013486
+      },
+      {
+        "joint": "head",
+        "parent": "neck",
+        "group": "head",
+        "pivot": [
+          0.771,
+          0.322
+        ],
+        "tip": [
+          0.836,
+          0.245
+        ],
+        "boneLength": 0.10076705810928488
+      },
+      {
+        "joint": "jaw",
+        "parent": "head",
+        "group": "head",
+        "pivot": [
+          0.836,
+          0.245
+        ],
+        "tip": [
+          0.901,
+          0.286
+        ],
+        "boneLength": 0.07685050422736343
+      },
+      {
+        "joint": "hindFarRoot",
+        "parent": "pelvis",
+        "group": "legs",
+        "pivot": [
+          0.37,
+          0.48
+        ],
+        "tip": [
+          0.486,
+          0.555
+        ],
+        "boneLength": 0.13813399291991818
+      },
+      {
+        "joint": "hindFarKnee",
+        "parent": "hindFarRoot",
+        "group": "legs",
+        "pivot": [
+          0.486,
+          0.555
+        ],
+        "tip": [
+          0.467,
+          0.691
+        ],
+        "boneLength": 0.13732079230764718
+      },
+      {
+        "joint": "hindFarAnkle",
+        "parent": "hindFarKnee",
+        "group": "legs",
+        "pivot": [
+          0.467,
+          0.691
+        ],
+        "tip": [
+          0.49,
+          0.762
+        ],
+        "boneLength": 0.07463243262818121
+      },
+      {
+        "joint": "hindFarPaw",
+        "parent": "hindFarAnkle",
+        "group": "legs",
+        "pivot": [
+          0.49,
+          0.762
+        ],
+        "tip": [
+          0.52,
+          0.803
+        ],
+        "boneLength": 0.050803543183522204
+      },
+      {
+        "joint": "foreFarRoot",
+        "parent": "chest",
+        "group": "legs",
+        "pivot": [
+          0.705,
+          0.5
+        ],
+        "tip": [
+          0.788,
+          0.547
+        ],
+        "boneLength": 0.09538343671728344
+      },
+      {
+        "joint": "foreFarKnee",
+        "parent": "foreFarRoot",
+        "group": "legs",
+        "pivot": [
+          0.788,
+          0.547
+        ],
+        "tip": [
+          0.811,
+          0.651
+        ],
+        "boneLength": 0.1065129100156408
+      },
+      {
+        "joint": "foreFarAnkle",
+        "parent": "foreFarKnee",
+        "group": "legs",
+        "pivot": [
+          0.811,
+          0.651
+        ],
+        "tip": [
+          0.849,
+          0.787
+        ],
+        "boneLength": 0.1412090648648308
+      },
+      {
+        "joint": "foreFarPaw",
+        "parent": "foreFarAnkle",
+        "group": "legs",
+        "pivot": [
+          0.849,
+          0.787
+        ],
+        "tip": [
+          0.88,
+          0.829
+        ],
+        "boneLength": 0.0522015325445527
+      },
+      {
+        "joint": "hindNearRoot",
+        "parent": "pelvis",
+        "group": "legs",
+        "pivot": [
+          0.37,
+          0.48
+        ],
+        "tip": [
+          0.34,
+          0.526
+        ],
+        "boneLength": 0.054918120870983946
+      },
+      {
+        "joint": "hindNearKnee",
+        "parent": "hindNearRoot",
+        "group": "legs",
+        "pivot": [
+          0.34,
+          0.526
+        ],
+        "tip": [
+          0.315,
+          0.624
+        ],
+        "boneLength": 0.10113851887386921
+      },
+      {
+        "joint": "hindNearAnkle",
+        "parent": "hindNearKnee",
+        "group": "legs",
+        "pivot": [
+          0.315,
+          0.624
+        ],
+        "tip": [
+          0.249,
+          0.77
+        ],
+        "boneLength": 0.16022484201895787
+      },
+      {
+        "joint": "hindNearPaw",
+        "parent": "hindNearAnkle",
+        "group": "legs",
+        "pivot": [
+          0.249,
+          0.77
+        ],
+        "tip": [
+          0.259,
+          0.815
+        ],
+        "boneLength": 0.04609772228646437
+      },
+      {
+        "joint": "foreNearRoot",
+        "parent": "chest",
+        "group": "legs",
+        "pivot": [
+          0.705,
+          0.5
+        ],
+        "tip": [
+          0.612,
+          0.53
+        ],
+        "boneLength": 0.09771898484941398
+      },
+      {
+        "joint": "foreNearKnee",
+        "parent": "foreNearRoot",
+        "group": "legs",
+        "pivot": [
+          0.612,
+          0.53
+        ],
+        "tip": [
+          0.604,
+          0.681
+        ],
+        "boneLength": 0.15121177202850314
+      },
+      {
+        "joint": "foreNearAnkle",
+        "parent": "foreNearKnee",
+        "group": "legs",
+        "pivot": [
+          0.604,
+          0.681
+        ],
+        "tip": [
+          0.632,
+          0.818
+        ],
+        "boneLength": 0.13983204210766564
+      },
+      {
+        "joint": "foreNearPaw",
+        "parent": "foreNearAnkle",
+        "group": "legs",
+        "pivot": [
+          0.632,
+          0.818
+        ],
+        "tip": [
+          0.665,
+          0.861
+        ],
+        "boneLength": 0.054203320931470664
+      },
+      {
+        "joint": "tail0",
+        "parent": "pelvis",
+        "group": "tail",
+        "pivot": [
+          0.37,
+          0.48
+        ],
+        "tip": [
+          0.266,
+          0.482
+        ],
+        "boneLength": 0.10401922899156672
+      },
+      {
+        "joint": "tail1",
+        "parent": "tail0",
+        "group": "tail",
+        "pivot": [
+          0.266,
+          0.482
+        ],
+        "tip": [
+          0.181,
+          0.6
+        ],
+        "boneLength": 0.14542695761102892
+      },
+      {
+        "joint": "tail2",
+        "parent": "tail1",
+        "group": "tail",
+        "pivot": [
+          0.181,
+          0.6
+        ],
+        "tip": [
+          0.078,
+          0.631
+        ],
+        "boneLength": 0.10756393447619884
+      },
+      {
+        "joint": "tail3",
+        "parent": "tail2",
+        "group": "tail",
+        "pivot": [
+          0.078,
+          0.631
+        ],
+        "tip": [
+          0.073,
+          0.502
+        ],
+        "boneLength": 0.12909686285886268
+      },
+      {
+        "joint": "earFarRoot",
+        "parent": "head",
+        "group": "ears",
+        "pivot": [
+          0.836,
+          0.245
+        ],
+        "tip": [
+          0.87,
+          0.159
+        ],
+        "boneLength": 0.09247702417357515
+      },
+      {
+        "joint": "earFarTip",
+        "parent": "earFarRoot",
+        "group": "ears",
+        "pivot": [
+          0.87,
+          0.159
+        ],
+        "tip": [
+          0.9,
+          0.092
+        ],
+        "boneLength": 0.07340980860893183
+      },
+      {
+        "joint": "earNearRoot",
+        "parent": "head",
+        "group": "ears",
+        "pivot": [
+          0.836,
+          0.245
+        ],
+        "tip": [
+          0.746,
+          0.187
+        ],
+        "boneLength": 0.10707007051459337
+      },
+      {
+        "joint": "earNearTip",
+        "parent": "earNearRoot",
+        "group": "ears",
+        "pivot": [
+          0.746,
+          0.187
+        ],
+        "tip": [
+          0.752,
+          0.098
+        ],
+        "boneLength": 0.08920201791439474
+      }
+    ],
+    "secondaryParts": [
+      {
+        "id": "tail",
+        "driver": "pelvis",
+        "joints": [
+          "tail0",
+          "tail1",
+          "tail2",
+          "tail3"
+        ],
+        "lagOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "material": "furred"
+      },
+      {
+        "id": "earFar",
+        "driver": "head",
+        "joints": [
+          "earFarRoot",
+          "earFarTip"
+        ],
+        "lagOrder": [
+          0,
+          1
+        ],
+        "material": "furred"
+      },
+      {
+        "id": "earNear",
+        "driver": "head",
+        "joints": [
+          "earNearRoot",
+          "earNearTip"
+        ],
+        "lagOrder": [
+          0,
+          1
+        ],
+        "material": "furred"
+      }
+    ],
+    "weapons": [
+      "bite",
+      "sting",
+      "claw"
+    ],
+    "luminous": false,
+    "bodyLength": 0.33559648389099667,
+    "groundLineY": 0.881,
+    "landmarks": {
+      "root": [
+        0.53,
+        0.49
+      ],
+      "pelvis": [
+        0.37,
+        0.48
+      ],
+      "spine": [
+        0.53,
+        0.44
+      ],
+      "chest": [
+        0.705,
+        0.5
+      ],
+      "neck": [
+        0.771,
+        0.322
+      ],
+      "head": [
+        0.836,
+        0.245
+      ],
+      "jaw": [
+        0.901,
+        0.286
+      ],
+      "hindFarRoot": [
+        0.486,
+        0.555
+      ],
+      "hindFarKnee": [
+        0.467,
+        0.691
+      ],
+      "hindFarAnkle": [
+        0.49,
+        0.762
+      ],
+      "hindFarPaw": [
+        0.52,
+        0.803
+      ],
+      "foreFarRoot": [
+        0.788,
+        0.547
+      ],
+      "foreFarKnee": [
+        0.811,
+        0.651
+      ],
+      "foreFarAnkle": [
+        0.849,
+        0.787
+      ],
+      "foreFarPaw": [
+        0.88,
+        0.829
+      ],
+      "hindNearRoot": [
+        0.34,
+        0.526
+      ],
+      "hindNearKnee": [
+        0.315,
+        0.624
+      ],
+      "hindNearAnkle": [
+        0.249,
+        0.77
+      ],
+      "hindNearPaw": [
+        0.259,
+        0.815
+      ],
+      "foreNearRoot": [
+        0.612,
+        0.53
+      ],
+      "foreNearKnee": [
+        0.604,
+        0.681
+      ],
+      "foreNearAnkle": [
+        0.632,
+        0.818
+      ],
+      "foreNearPaw": [
+        0.665,
+        0.861
+      ],
+      "tail0": [
+        0.266,
+        0.482
+      ],
+      "tail1": [
+        0.181,
+        0.6
+      ],
+      "tail2": [
+        0.078,
+        0.631
+      ],
+      "tail3": [
+        0.073,
+        0.502
+      ],
+      "earFarRoot": [
+        0.87,
+        0.159
+      ],
+      "earFarTip": [
+        0.9,
+        0.092
+      ],
+      "earNearRoot": [
+        0.746,
+        0.187
+      ],
+      "earNearTip": [
+        0.752,
+        0.098
+      ]
+    },
+    "bounds": {
+      "inside": true,
+      "clamped": [],
+      "limitsDeg": {
+        "root": {
+          "min": -15,
+          "max": 15
+        },
+        "pelvis": {
+          "min": -20,
+          "max": 20
+        },
+        "spine": {
+          "min": -25,
+          "max": 25
+        },
+        "chest": {
+          "min": -20,
+          "max": 20
+        },
+        "neck": {
+          "min": -35,
+          "max": 35
+        },
+        "head": {
+          "min": -35,
+          "max": 35
+        },
+        "jaw": {
+          "min": -30,
+          "max": 5
+        },
+        "hindFarRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "hindFarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "hindFarAnkle": {
+          "min": -60,
+          "max": 60
+        },
+        "hindFarPaw": {
+          "min": -40,
+          "max": 40
+        },
+        "foreFarRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "foreFarKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "foreFarAnkle": {
+          "min": -60,
+          "max": 60
+        },
+        "foreFarPaw": {
+          "min": -40,
+          "max": 40
+        },
+        "hindNearRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "hindNearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "hindNearAnkle": {
+          "min": -60,
+          "max": 60
+        },
+        "hindNearPaw": {
+          "min": -40,
+          "max": 40
+        },
+        "foreNearRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "foreNearKnee": {
+          "min": -75,
+          "max": 75
+        },
+        "foreNearAnkle": {
+          "min": -60,
+          "max": 60
+        },
+        "foreNearPaw": {
+          "min": -40,
+          "max": 40
+        },
+        "tail0": {
+          "min": -40,
+          "max": 40
+        },
+        "tail1": {
+          "min": -50,
+          "max": 50
+        },
+        "tail2": {
+          "min": -50,
+          "max": 50
+        },
+        "tail3": {
+          "min": -50,
+          "max": 50
+        },
+        "earFarRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "earFarTip": {
+          "min": -40,
+          "max": 40
+        },
+        "earNearRoot": {
+          "min": -60,
+          "max": 60
+        },
+        "earNearTip": {
+          "min": -40,
+          "max": 40
+        }
+      },
+      "legSlack": {
+        "hindFar": 0.014646987181496101,
+        "foreFar": 0.000280396163035094,
+        "hindNear": 0.003008997015168558,
+        "foreNear": 0.007019797045933116
+      }
+    },
+    "notes": [
+      "physical realm: source genome habitat/locomotion + resolved anatomy",
+      "materials: record surface \"fur\" wins over genome skin \"feathered\" (observer disagreement)",
+      "leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): hindFar 1.5%, foreFar 0.0%, hindNear 0.3%, foreNear 0.7%"
+    ]
+  },
+  "guard": {
+    "schema": "cf.opaque-seam-sampling-guard/v1",
+    "sourceAtlasSha256": "1292d2be28b392eafebef0acbffcb24f3b52b855012ca5f116d89caa5840c489",
+    "bindingHash": "163abd2c7dfc67ca59bdd9b42cf9f3cd44a4cc424de0f2a89b70aeb09314aa82",
+    "guardTexels": 8662,
+    "opaqueEdges": 4314,
+    "joins": [
+      {
+        "name": "chest--forefar-upper",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 149,
+        "maxBasisDifference": 7.882583474838611e-15
+      },
+      {
+        "name": "chest--forenear-upper",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 225,
+        "maxBasisDifference": 6.8833827526759706e-15
+      },
+      {
+        "name": "chest--neck",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 203,
+        "maxBasisDifference": 1.1546319456101628e-14
+      },
+      {
+        "name": "forefar-lower--forefar-paw",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 120,
+        "maxBasisDifference": 1.1102230246251565e-16
+      },
+      {
+        "name": "forefar-upper--forefar-lower",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 113,
+        "maxBasisDifference": 6.994405055138486e-15
+      },
+      {
+        "name": "forenear-lower--forenear-paw",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 117,
+        "maxBasisDifference": 6.661338147750939e-16
+      },
+      {
+        "name": "forenear-upper--forenear-lower",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 185,
+        "maxBasisDifference": 7.16093850883226e-15
+      },
+      {
+        "name": "head--earfar-ear",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 140,
+        "maxBasisDifference": 5.689893001203927e-15
+      },
+      {
+        "name": "head--earnear-ear",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 211,
+        "maxBasisDifference": 3.552713678800501e-15
+      },
+      {
+        "name": "head--jaw",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 287,
+        "maxBasisDifference": 6.0645932720149176e-15
+      },
+      {
+        "name": "hindfar-lower--hindfar-paw",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 123,
+        "maxBasisDifference": 1.6653345369377348e-16
+      },
+      {
+        "name": "hindfar-upper--hindfar-lower",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 189,
+        "maxBasisDifference": 5.398459457239824e-15
+      },
+      {
+        "name": "hindnear-lower--hindnear-paw",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 104,
+        "maxBasisDifference": 5.88418203051333e-15
+      },
+      {
+        "name": "hindnear-upper--hindnear-lower",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 124,
+        "maxBasisDifference": 6.036837696399289e-15
+      },
+      {
+        "name": "neck--forefar-upper",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 51,
+        "maxBasisDifference": 1.199040866595169e-14
+      },
+      {
+        "name": "neck--forenear-upper",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 114,
+        "maxBasisDifference": 1.0436096431476471e-14
+      },
+      {
+        "name": "neck--head",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 70,
+        "maxBasisDifference": 2.220446049250313e-16
+      },
+      {
+        "name": "tail-1--hindnear-upper",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 276,
+        "maxBasisDifference": 1.1102230246251565e-16
+      },
+      {
+        "name": "tail-1--tail-2",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 166,
+        "maxBasisDifference": 2.220446049250313e-16
+      },
+      {
+        "name": "tail-2--tail-3",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 164,
+        "maxBasisDifference": 5.662137425588298e-15
+      },
+      {
+        "name": "torso--chest",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 141,
+        "maxBasisDifference": 8.215650382226158e-15
+      },
+      {
+        "name": "torso--forefar-upper",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 65,
+        "maxBasisDifference": 1.1102230246251565e-16
+      },
+      {
+        "name": "torso--forenear-upper",
+        "rule": "proximal body-skin attachment",
+        "opaqueEdges": 235,
+        "maxBasisDifference": 5.689893001203927e-16
+      },
+      {
+        "name": "torso--hindfar-upper",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 123,
+        "maxBasisDifference": 3.3306690738754696e-16
+      },
+      {
+        "name": "torso--hindnear-upper",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 485,
+        "maxBasisDifference": 2.275957200481571e-15
+      },
+      {
+        "name": "torso--tail-1",
+        "rule": "nearest anatomical attachment",
+        "opaqueEdges": 134,
+        "maxBasisDifference": 1.1102230246251565e-16
+      }
+    ],
+    "policy": "Decode-time copies of exact opaque adjacent-owner RGBA in a one-texel ring at independently enumerated shared-field skin joins; original bytes, geometry, silhouettes, nonopaque pixels and distinct-limb/depth boundaries remain unchanged."
+  },
+  "rows": [
+    {
+      "action": "idle",
+      "resolved": "idle",
+      "durationMs": 4621.727001257241,
+      "samples": 121,
+      "status": "PASS",
+      "maximumGap": 0.0000906036823876412
+    },
+    {
+      "action": "approach",
+      "resolved": "approach:walk",
+      "durationMs": 1100,
+      "samples": 121,
+      "status": "PASS",
+      "maximumGap": 0.00008663530504739201
+    },
+    {
+      "action": "melee",
+      "resolved": "melee:bite",
+      "durationMs": 1221.3333333333333,
+      "samples": 121,
+      "status": "PASS",
+      "maximumGap": 0.00013586481216366545
+    },
+    {
+      "action": "hit",
+      "resolved": "hit",
+      "durationMs": 1142,
+      "samples": 121,
+      "status": "PASS",
+      "maximumGap": 0.00008131099693003855
+    }
+  ]
+}

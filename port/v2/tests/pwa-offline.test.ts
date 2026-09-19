@@ -2,6 +2,8 @@ import { webcrypto } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import { describe, expect, it } from 'vitest';
+import { resolveConfig } from 'vite';
+import { audioProductionAssets } from '../apps/game/audio-production-assets.js';
 import {
   CF_PWA_SCHEMA,
   __pwaBuildTestOnly,
@@ -1151,11 +1153,22 @@ function ordered(source: string, needles: readonly string[]): boolean {
 }
 
 describe('PWA production wiring', () => {
+  it('excludes local audio acquisition assets from the actual Vite build plugin graph', async () => {
+    const plugin = audioProductionAssets();
+    const includes = async (command: 'serve' | 'build', candidate = plugin): Promise<boolean> => {
+      const config = await resolveConfig({ configFile: false, logLevel: 'silent', plugins: [candidate] }, command);
+      return config.plugins.some(p => p.name === plugin.name);
+    };
+    expect(await includes('serve')).toBe(true);
+    expect(await includes('build')).toBe(false);
+    // The same Vite resolution exposes a wrongly build-enabled endpoint.
+    expect(await includes('build', { ...plugin, apply: 'build' })).toBe(true);
+  });
   it('wires only emitted builds into Settings and crosses the owned replacement boundary on reload', () => {
     const main = readFileSync(new URL('../apps/game/src/main.ts', import.meta.url), 'utf8');
     const config = readFileSync(new URL('../apps/game/vite.config.ts', import.meta.url), 'utf8');
     expect(config).toContain("import { celestialFrontierPwaPlugin } from './pwa-build.js';");
-    expect(config).toContain('plugins: [celestialFrontierPwaPlugin()]');
+    expect(config).toMatch(/plugins:\s*\[celestialFrontierPwaPlugin\(\),\s*kitRuntimeAssets\(\),\s*audioProductionAssets\(\)\]/);
     expect(main).toContain("type ReplacementReloadReason = 'training-restart' | 'training-complete' | 'training-recovery' | 'save-import' | 'storage-retry' | 'pwa-update';");
     expect(main).toContain('if (pwaUpdateControl) el.append(pwaUpdateControl.element);');
     expect(ordered(main, [

@@ -1,0 +1,63 @@
+{
+  "schema": "cf.local-checks/v1",
+  "scope": "candidate structures and two painted-fit diagnostics; not universal or visual acceptance",
+  "checks": [
+    {
+      "name": "focused-existing-and-initial-structures",
+      "path": "focused-verified.log",
+      "result": "27 tests PASS"
+    },
+    {
+      "name": "final-compact-crab-and-specialized-contracts",
+      "path": "compact-crab-tests.log",
+      "result": "12 tests PASS"
+    },
+    {
+      "name": "existing-rig-admission-and-skeleton",
+      "path": "rig-tests.log",
+      "result": "20 tests PASS"
+    },
+    {
+      "name": "typecheck",
+      "path": "typecheck-03.log",
+      "result": "PASS"
+    },
+    {
+      "name": "root-validation",
+      "path": "validate-final.log",
+      "result": "1010 render successes; 50-probe fingerprint MATCH; zero boot errors"
+    },
+    {
+      "name": "skink-full-action-geometry",
+      "path": "skink-skin-01.json",
+      "result": "19 actions x 121 samples PASS"
+    },
+    {
+      "name": "beetle-full-action-geometry",
+      "path": "beetle-skin-01.json",
+      "result": "13 actions x 121 samples PASS"
+    },
+    {
+      "name": "skink-native",
+      "path": "skink-native-01/report.json",
+      "result": "DIAGNOSTIC_PASS; exact source snapshot"
+    },
+    {
+      "name": "beetle-native",
+      "path": "beetle-native-01/report.json",
+      "result": "DIAGNOSTIC_PASS; exact source snapshot"
+    },
+    {
+      "name": "observed-crab-motion-interop",
+      "path": "crab-motion-interop.log",
+      "result": "8 tests PASS; actual source geometry drives all compact-crab clips"
+    }
+  ],
+  "reviewRequired": [
+    "actual visual and contact acceptance",
+    "hidden and out-of-plane surfaces",
+    "all 58 missing species painted fits",
+    "three flora master fits",
+    "phone qualification"
+  ]
+}

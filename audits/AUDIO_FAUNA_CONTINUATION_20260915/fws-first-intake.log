@@ -1,0 +1,22 @@
+Alligator
+Alligator
+Stork
+Pelican
+Traceback (most recent call last):
+  File "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-production/animal-supplement.py", line 90, in <module>
+    if __name__=='__main__':main()
+  File "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-production/animal-supplement.py", line 62, in main
+    d=a.fetch(info['url'],'source-audio/'+SID,16*1024**2)
+  File "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-production/acquire.py", line 111, in fetch
+    with self.opener.open(req,timeout=120) as response:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 523, in open
+    response = meth(req, response)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 632, in http_response
+    response = self.parent.error(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 561, in error
+    return self._call_chain(*args)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 494, in _call_chain
+    result = func(*args)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 641, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)

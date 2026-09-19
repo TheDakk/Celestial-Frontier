@@ -1,0 +1,110 @@
+{
+  "schema": "cf.reaper-host-qualification/v1",
+  "status": "PASS",
+  "spend": 0,
+  "assetClass": "technical-synth-diagnostic",
+  "listeningAccepted": false,
+  "sources": {
+    "script": "8254b50873875fb1f9ab6e6d07824adb77cd7dfb79b0a08be36c3e7c971a4044",
+    "runner": "5764c9c381756730f6a0efd9ca0e1392fa21fe79f651afb9b65d6ebdc1765124"
+  },
+  "stages": [
+    {
+      "name": "prepare",
+      "exit": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "name": "render",
+      "exit": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "name": "replay",
+      "exit": 0,
+      "signal": null,
+      "error": null
+    }
+  ],
+  "audio": {
+    "first": {
+      "sha256": "7381c5a71982038dc7f512d50b7a164184eb961a9b4a393b2e6f25c572f8a2fa",
+      "frames": 144000,
+      "durationSeconds": 3,
+      "samplePeakDb": -33.4632511507353,
+      "format": {
+        "pcm": 1,
+        "channels": 2,
+        "rate": 48000,
+        "byteRate": 288000,
+        "align": 6,
+        "bits": 24
+      },
+      "measurement": {
+        "truePeakDbTP": -33.45,
+        "integratedLufs": -41.06,
+        "shortTermLufs": null,
+        "shortTermReason": "Kit short-term cue loudness requires a playback/mix observation; integrated LUFS is not substituted.",
+        "instrument": "FFmpeg loudnorm input measurements",
+        "raw": {
+          "input_i": "-41.06",
+          "input_tp": "-33.45",
+          "input_lra": "0.20",
+          "input_thresh": "-51.31",
+          "output_i": "-11.49",
+          "output_tp": "-4.01",
+          "output_lra": "0.00",
+          "output_thresh": "-21.74",
+          "normalization_type": "dynamic",
+          "target_offset": "-2.51"
+        }
+      }
+    },
+    "replay": {
+      "sha256": "96a87bb581b635e7ccf8c7c31cb38b9649a388b4a286cdf7c527dab5169f62e0",
+      "frames": 144000,
+      "durationSeconds": 3,
+      "samplePeakDb": -33.4632511507353,
+      "format": {
+        "pcm": 1,
+        "channels": 2,
+        "rate": 48000,
+        "byteRate": 288000,
+        "align": 6,
+        "bits": 24
+      },
+      "measurement": {
+        "truePeakDbTP": -33.45,
+        "integratedLufs": -41.06,
+        "shortTermLufs": null,
+        "shortTermReason": "Kit short-term cue loudness requires a playback/mix observation; integrated LUFS is not substituted.",
+        "instrument": "FFmpeg loudnorm input measurements",
+        "raw": {
+          "input_i": "-41.06",
+          "input_tp": "-33.45",
+          "input_lra": "0.20",
+          "input_thresh": "-51.31",
+          "output_i": "-11.49",
+          "output_tp": "-4.01",
+          "output_lra": "0.00",
+          "output_thresh": "-21.74",
+          "normalization_type": "dynamic",
+          "target_offset": "-2.51"
+        }
+      }
+    },
+    "identicalPcm": true,
+    "changedSamples": 0,
+    "maxSampleDelta": 0,
+    "changedPcmControlRejected": true
+  },
+  "projectSha256": "2205df3e96af889bdc5380b5a36b9f33749f096607af242cfb1ecd7fdedccbe7",
+  "limits": [
+    "This diagnostic is not an animal voice or a music-state asset.",
+    "Only the measured installed instrument/settings are qualified; no universal preset determinism claim.",
+    "No listening approval, download, game integration or species coverage is implied."
+  ],
+  "sourceUnchanged": true
+}

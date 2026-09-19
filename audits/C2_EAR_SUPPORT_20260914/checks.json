@@ -1,0 +1,105 @@
+{
+  "startingCommit": "88a7b535",
+  "result": "C2_REPAIR_NOT_CLOSED",
+  "supportSamples": 6,
+  "unsupportedSamples": 6,
+  "nodeToolsPassed": 30,
+  "nodeToolsSkipped": 0,
+  "rootFingerprintProbes": 50,
+  "rootFingerprint": "MATCH",
+  "nativeRuns": 0,
+  "checks": [
+    {
+      "command": "npm --prefix port/v2 run test:tools",
+      "exitCode": 0,
+      "path": "audits/C2_EAR_SUPPORT_20260914/checks/tools.log.gz",
+      "sha256": "d4a8e06379096e3f794fcced6385e583620f7ce1b14f4a6eebc998fe063c7d7c",
+      "uncompressedSha256": "71ade844b70d19f9c807d1b698cfd315ca72043dd941e43260c4551335957be0"
+    },
+    {
+      "command": "node --test port/v2/tools/creature-animation/underlap-support.test.mjs",
+      "exitCode": 0,
+      "path": "audits/C2_EAR_SUPPORT_20260914/checks/support-controls.log.gz",
+      "sha256": "536fc59f8b0315a9bbb88c462a25b26d410a7e8f4804eab199878aeb465db515",
+      "uncompressedSha256": "242724552c624148b480d41457dcb894d753b4eb2ea52a5862ce08e6ce5d7a07"
+    },
+    {
+      "command": "node tools/validate.js",
+      "exitCode": 0,
+      "path": "audits/C2_EAR_SUPPORT_20260914/checks/validate.log.gz",
+      "sha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736",
+      "uncompressedSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    }
+  ],
+  "methods": [
+    {
+      "path": "port/v2/tools/creature-animation/underlap-support.mjs",
+      "sha256": "e57fc2f3956a62342e69f3ad53f38be42c1e5994603e3f4f04150fa78380d99d"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/underlap-support.test.mjs",
+      "sha256": "e9a7d32faa261c5fb15a2f79953206f39be9ad10e2f7072cee63ea2fb927cde0"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/audit-ear-support.mjs",
+      "sha256": "276d4559cacf893364b032951d76ca5095076b6994c4590ca8e90cacd9febc62"
+    }
+  ],
+  "protected": [
+    {
+      "path": "ART_KIT.md",
+      "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+      "unchangedFrom": "88a7b535"
+    },
+    {
+      "path": "MOTION_KIT.md",
+      "sha256": "a2f1b55fcbcb82d15d8b6667137892aa42bb44338da2d04519ebcf34a6e0829e",
+      "unchangedFrom": "88a7b535"
+    },
+    {
+      "path": "SOUND_KIT.md",
+      "sha256": "f74514cb967ea474b994a0c69ca0437cd7b35b6bc595523b54dc625fdeb0f5b0",
+      "unchangedFrom": "88a7b535"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "sha256": "5fa81666fc5a9e9b13bb9e834b0439864e66212853ba6d0b6b7a1e5709998c31",
+      "unchangedFrom": "88a7b535"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-rig.ts",
+      "sha256": "d760290f2caaa557b3053cf47e5468a06528d5f7cda56202197239d991b3d98b",
+      "unchangedFrom": "88a7b535"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/civet/declaration.json",
+      "sha256": "af22c6a27cfd4f87750db2edde1a1a7d4b8d3f4dd2b99c014603c379e81e85e9",
+      "unchangedFrom": "88a7b535"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/civet/binding.json",
+      "sha256": "73be4bf88a5442d5aa8bb6c0cfb8d8d62adb3eb0056e87cbf078a1ddc41d42cb",
+      "unchangedFrom": "88a7b535"
+    },
+    {
+      "path": "audits/C2_PAIR_BANDS_20260913/civet/atlas/civet.png",
+      "sha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79",
+      "unchangedFrom": "88a7b535"
+    },
+    {
+      "path": "audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8",
+      "unchangedFrom": "88a7b535"
+    },
+    {
+      "path": "audits/C2_PARTS_ATLAS_20260913/civet.part-masks-v2.json",
+      "sha256": "43f5b4fbb2c6d845bdf5e5257103d038826d007d445f27d9b53d4196056b04d5",
+      "unchangedFrom": "88a7b535"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+      "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+      "unchangedFrom": "88a7b535"
+    }
+  ]
+}

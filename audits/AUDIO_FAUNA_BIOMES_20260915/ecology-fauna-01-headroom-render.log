@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-production/produce.py", line 245, in <module>
+    elif a.command=='render':render(a.group,a.recipe)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-production/produce.py", line 208, in render
+    export_group(out,regions)
+  File "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-production/produce.py", line 227, in export_group
+    peaks={'masterDbTP':measure(master),'opusDbTP':measure(opus)}
+                        ^^^^^^^^^^^^^^^
+  File "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/audio-production/produce.py", line 225, in measure
+    if not math.isfinite(peak) or peak> -1: raise ValueError(f'Silent or over-ceiling output: {p}, {peak}')
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Silent or over-ceiling output: /Users/nick/Projects/celestial-frontier-openai-mac/audio-production/masters/ecology-fauna-01-headroom/v4.reference.lily-leaf-beetle.273b5f7af19b.wav, -inf

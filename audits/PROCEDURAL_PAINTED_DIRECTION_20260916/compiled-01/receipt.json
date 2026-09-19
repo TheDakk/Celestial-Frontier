@@ -1,0 +1,29 @@
+{
+  "rows": [
+    {
+      "seed": 10032,
+      "sourceMaster": "audits/PROCEDURAL_BATTLE_ITERATION_20260916/painter-01/procedural-1/master.png",
+      "sourceHash": "3d3cf975862f6dd2155a4e6bd68c6a3390bef75d4dcf17052e28e80bf0b90cbc",
+      "promptHash": "b4fa7f886e41f069941ecaebc48490fb7277cb15701e08527d24405941be06fa",
+      "kitHash": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+      "qualityAccepted": false
+    },
+    {
+      "seed": 10052,
+      "sourceMaster": "audits/PROCEDURAL_BATTLE_ITERATION_20260916/painter-01/procedural-2/master.png",
+      "sourceHash": "f4389be3fab67d91bcba54e20d1c94f7a6d1476a3c98766227e74d0d22d437d0",
+      "promptHash": "2e45424ef6aaad598023222be2be92f782e336e00ed793030994054e5bcb6883",
+      "kitHash": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+      "qualityAccepted": false
+    },
+    {
+      "seed": 10271,
+      "sourceMaster": "audits/PROCEDURAL_BATTLE_ITERATION_20260916/painter-01/procedural-3/master.png",
+      "sourceHash": "fe0a2cc11e6782a0519db7bae0861f719163d0485dcb472aaa35865dd0324e6b",
+      "promptHash": "8f6e646e5b18c61d6201931b3ba9eb41b7e720bb044ec831935c5ce7455180a3",
+      "kitHash": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+      "qualityAccepted": false
+    }
+  ],
+  "scope": "authoring proof only; no local inference, production wiring or painted-rig qualification"
+}

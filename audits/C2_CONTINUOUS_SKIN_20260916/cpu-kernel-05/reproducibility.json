@@ -1,0 +1,41 @@
+{
+  "schema": "cf.arap-wasm-rebuild/v1",
+  "status": "PASS",
+  "files": [
+    {
+      "name": "arap-sweep.wasm",
+      "source": "cd438afc7be683430cf468d51e1195a4f85a5c3cd0b71d64a1f6788c4b1b8c0e",
+      "rebuild": "cd438afc7be683430cf468d51e1195a4f85a5c3cd0b71d64a1f6788c4b1b8c0e"
+    },
+    {
+      "name": "arap-sweep-bytes.mjs",
+      "source": "aa430e622b613af414da991a1b464e434be5b26a5efe96f5d07e63756f8b72db",
+      "rebuild": "aa430e622b613af414da991a1b464e434be5b26a5efe96f5d07e63756f8b72db"
+    },
+    {
+      "name": "arap-sweep-build.json",
+      "source": "7c021213e22153135121739be5b85adb07e99ed9d01bb41a565f980f175e67ce",
+      "rebuild": "7c021213e22153135121739be5b85adb07e99ed9d01bb41a565f980f175e67ce"
+    }
+  ],
+  "receipt": {
+    "schema": "cf.arap-wasm-leaf/v1",
+    "abi": "pass(i32 x 13) -> i32; 1 normal pass, 0 position-untouched robust fallback",
+    "sourceSha256": "df3eae55747455894b92ce81d30a3f105fb632519e57db8aaa2b7d563f2f62f6",
+    "objectSha256": "d24771cfd2de229a546fd0044f9f554009973b567da6935fbbda0ba433c52268",
+    "moduleSha256": "cd438afc7be683430cf468d51e1195a4f85a5c3cd0b71d64a1f6788c4b1b8c0e",
+    "moduleBytes": 2019,
+    "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin",
+    "flags": [
+      "--target=wasm32-unknown-unknown",
+      "-O3",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-fno-math-errno",
+      "-fno-builtin",
+      "-nostdlib",
+      "-c"
+    ],
+    "sections": "type; memory-only import; one function; one added export; code. All custom metadata removed; relocations/globals/data/tables/imported functions refused."
+  }
+}

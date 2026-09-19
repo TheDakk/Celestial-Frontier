@@ -88,6 +88,10 @@ export function syntheticRecordOf(id: string): ResolvedAnatomyRecord {
     template: { id, version: 1 }, family: s.family,
     geometry: { cutoutAssetHash: 'synthetic-no-cutout', width: 1024, height: 1024, groundLineY: s.ground, depthLayers: [{ id: 'far', order: 0 }, { id: 'near', order: 1 }] },
     landmarks: s.lm(), materials: { surface: s.surface, sheenTier: 'painted', paletteSource: 'synthetic' }, clipSetId: id + '-v1',
+    // A source habitat declaration is the intended path (battle-habitat.ts): non-fauna records require one, and the
+    // genome inference reads habitat/locomotion genes the synthetic genomes do not carry (a 'drifters' jelly would
+    // resolve aerial). Every synthetic record therefore declares the realm its table row names.
+    habitat: { realm: s.realm as 'land' | 'aerial' | 'aquatic' | 'amphibious' | 'gas-giant', source: 'synthetic A11 fixture (not painter output)' },
   };
 }
 export function syntheticGenomeOf(id: string): MotionGenomeFields {

@@ -110,5 +110,9 @@
     "sheenTier": "painted",
     "paletteSource": "synthetic"
   },
-  "clipSetId": "biped-bird-v1"
+  "clipSetId": "biped-bird-v1",
+  "habitat": {
+    "realm": "aerial",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
 }

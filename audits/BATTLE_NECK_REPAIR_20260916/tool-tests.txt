@@ -1,0 +1,22 @@
+✔ shared joint angles move only their authored head support, leave the attachment still and preserve rest (0.996541ms)
+✔ real Civet source supports pass all ear/jaw envelope combinations and retain the neck-removal failure control (111.939041ms)
+✔ head follows actual pose but source neck remains attached to chest; rigid old transform fails (1.04675ms)
+✔ actual triangle fold is refused, including the reflected profile view (0.118125ms)
+✔ head replacement cannot cut away the neck or chest; original bad declaration is refused (0.1325ms)
+✔ Platypus intake preserves every atlas channel and binds named Earth anatomy; old straight chains fail 3% slack (111.072708ms)
+✔ head views bind the unchanged accepted turnaround and record, and have real source pixels (36.340708ms)
+✔ planning is taken from the native owner; duplicate or missing declarations refuse (0.952625ms)
+✔ changed producer is refused before exporting any evidence; existing output is protected (1.237583ms)
+✔ actual current producer exports 1201 resolved poses each, deterministically and source-bound (1422.039292ms)
+✔ one idle clip continues across roles and pauses in both existing hitstops (1.019541ms)
+✔ support releases and reacquires continuously without changing grounded solves or admitting a refused endpoint (0.658625ms)
+✔ actual current producer has continuous support/role boundaries, exact grounded contacts and frame-rate-independent seeks (1011.823208ms)
+✔ right combatant keeps its own idle and releases support only during its own attack (0.563542ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1619.07625

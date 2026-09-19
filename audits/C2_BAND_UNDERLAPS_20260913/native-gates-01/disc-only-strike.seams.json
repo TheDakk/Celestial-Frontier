@@ -1,0 +1,244 @@
+{
+  "schema": "cf.seam-oracle/v1",
+  "render": "disc-only-strike.png",
+  "record": "civet.landmarks.json",
+  "size": {
+    "width": 1254,
+    "height": 1254
+  },
+  "opaquePixels": 434821,
+  "closeRadiusPx": 25.08,
+  "discRadiusPx": 125.4,
+  "gapPixelsInsideEnvelope": 70977,
+  "perJoint": {
+    "earFarTip": {
+      "pivot": [
+        974,
+        296
+      ],
+      "seamPixels": 2518,
+      "bounds": {
+        "x": 853,
+        "y": 182,
+        "width": 118,
+        "height": 101
+      }
+    },
+    "earNearTip": {
+      "pivot": [
+        1136,
+        307
+      ],
+      "seamPixels": 324,
+      "bounds": {
+        "x": 1056,
+        "y": 373,
+        "width": 76,
+        "height": 39
+      }
+    },
+    "chest": {
+      "pivot": [
+        740,
+        539
+      ],
+      "seamPixels": 1097,
+      "bounds": {
+        "x": 712,
+        "y": 528,
+        "width": 150,
+        "height": 54
+      }
+    },
+    "head": {
+      "pivot": [
+        1003,
+        502
+      ],
+      "seamPixels": 2010,
+      "bounds": {
+        "x": 899,
+        "y": 397,
+        "width": 223,
+        "height": 207
+      }
+    },
+    "jaw": {
+      "pivot": [
+        1061,
+        396
+      ],
+      "seamPixels": 718,
+      "bounds": {
+        "x": 1051,
+        "y": 373,
+        "width": 131,
+        "height": 76
+      }
+    },
+    "neck": {
+      "pivot": [
+        915,
+        589
+      ],
+      "seamPixels": 5069,
+      "bounds": {
+        "x": 791,
+        "y": 557,
+        "width": 206,
+        "height": 158
+      }
+    },
+    "foreNearKnee": {
+      "pivot": [
+        890,
+        677
+      ],
+      "seamPixels": 7001,
+      "bounds": {
+        "x": 811,
+        "y": 567,
+        "width": 204,
+        "height": 233
+      }
+    },
+    "foreFarKnee": {
+      "pivot": [
+        1041,
+        677
+      ],
+      "seamPixels": 8478,
+      "bounds": {
+        "x": 918,
+        "y": 568,
+        "width": 248,
+        "height": 234
+      }
+    },
+    "tail2": {
+      "pivot": [
+        332,
+        746
+      ],
+      "seamPixels": 2989,
+      "bounds": {
+        "x": 283,
+        "y": 667,
+        "width": 172,
+        "height": 160
+      }
+    },
+    "hindFarAnkle": {
+      "pivot": [
+        667,
+        829
+      ],
+      "seamPixels": 11024,
+      "bounds": {
+        "x": 560,
+        "y": 741,
+        "width": 233,
+        "height": 165
+      }
+    },
+    "hindNearAnkle": {
+      "pivot": [
+        466,
+        840
+      ],
+      "seamPixels": 3303,
+      "bounds": {
+        "x": 354,
+        "y": 715,
+        "width": 236,
+        "height": 234
+      }
+    },
+    "foreFarAnkle": {
+      "pivot": [
+        1135,
+        830
+      ],
+      "seamPixels": 9635,
+      "bounds": {
+        "x": 1036,
+        "y": 709,
+        "width": 213,
+        "height": 182
+      }
+    },
+    "foreNearAnkle": {
+      "pivot": [
+        927,
+        864
+      ],
+      "seamPixels": 3542,
+      "bounds": {
+        "x": 803,
+        "y": 739,
+        "width": 240,
+        "height": 177
+      }
+    },
+    "hindFarPaw": {
+      "pivot": [
+        696,
+        897
+      ],
+      "seamPixels": 8058,
+      "bounds": {
+        "x": 571,
+        "y": 772,
+        "width": 250,
+        "height": 140
+      }
+    },
+    "tail3": {
+      "pivot": [
+        189,
+        853
+      ],
+      "seamPixels": 607,
+      "bounds": {
+        "x": 266,
+        "y": 772,
+        "width": 40,
+        "height": 176
+      }
+    },
+    "foreFarPaw": {
+      "pivot": [
+        1136,
+        903
+      ],
+      "seamPixels": 6405,
+      "bounds": {
+        "x": 1045,
+        "y": 778,
+        "width": 209,
+        "height": 130
+      }
+    },
+    "hindNearPaw": {
+      "pivot": [
+        484,
+        941
+      ],
+      "seamPixels": 3972,
+      "bounds": {
+        "x": 372,
+        "y": 828,
+        "width": 225,
+        "height": 238
+      }
+    },
+    "foreNearPaw": {
+      "pivot": [
+        971,
+        999
+      ],
+      "seamPixels": 0,
+      "bounds": null
+    }
+  }
+}

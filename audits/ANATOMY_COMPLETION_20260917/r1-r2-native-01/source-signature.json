@@ -1,0 +1,6 @@
+{
+  "source": "6b11407d9fd57a8f8d049b21b80e4188ea402d69",
+  "verification": "Good \"git\" signature for cf-configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n",
+  "status": "VERIFIED",
+  "retry": "Original staged diff verified unchanged against R1_R2_SIGNING_BLOCKER_01.json; configured 1Password signer succeeded after Nick unlocked it."
+}

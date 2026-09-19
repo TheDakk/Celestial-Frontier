@@ -1,0 +1,102 @@
+{
+  "zipSha256": "0144ac15765cc154a5172ff19134a6c502e6eaf9e32181c89323e0c21da6eb9f",
+  "source": "/Users/nick/Downloads/codex-pack-5-20260913.zip",
+  "previousLog": "LOG-CODEX-PRE-PACK5.md",
+  "files": [
+    {
+      "path": "audits/LONG_SESSION_20260913/CONTRACTS.md",
+      "bytes": 4905,
+      "sha256": "b705bc5d452196150ad7ff2172497732ad0f342dd7d5805c3a1a991739286044"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG.md",
+      "bytes": 4632,
+      "sha256": "53212e9f8bd511f218320e4e1ec3a05eb2e61a5f714408607124e70c6f94dc88"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A3.md",
+      "bytes": 9920,
+      "sha256": "707d00fa9415cc18ba12dfb7fb5e8d0d0ceb0b10125d763d9067ddca7f415f42"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A6-defects.md",
+      "bytes": 12330,
+      "sha256": "9b06011a0527ce4dd20b390117d1eda59395afe66e69cdf929b809363e043e3a"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A6-wiring.md",
+      "bytes": 11301,
+      "sha256": "31dd8e5ec16c4ad1306c31e625f6a371e789657b73cf9cea9e0701d55eca15c7"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A7.md",
+      "bytes": 7090,
+      "sha256": "65449b3d52230bf1067291e7141168e1e712d2101e7c8f2235dd0a4e1de3eadf"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-A11.md",
+      "bytes": 11797,
+      "sha256": "7a517d00381eae73dcc82a93d9ac471e8618cb940cf5e9a74f676aeff79ad533"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/LOG-B.md",
+      "bytes": 13038,
+      "sha256": "26f80b5ef4588f66ab6f545df9e51fb7b22f9d0e3f06c199d065ad922cae65e9"
+    },
+    {
+      "path": "audits/WILD_V43_PROOF_20260913/WILD_V43_REVIEW_RESPONSE_20260913.md",
+      "bytes": 6007,
+      "sha256": "6fad31b4f433067f529addf952330e8f1bd8b464ec87088fcda4b49fad3dad37"
+    },
+    {
+      "path": "audits/WILD_V43_PROOF_20260913/second-pass/WILD_V43_SECOND_INTAKE_REVIEW_RESPONSE_20260913.md",
+      "bytes": 5678,
+      "sha256": "7ddc73c27c8807c004a4def08582f1cd88d728ee003f0dab0825847fbb6d7a5b"
+    },
+    {
+      "path": "audits/WILD_V43_PROOF_20260913/targeted-pass/WILD_V43_TARGETED_PASS_REVIEW_RESPONSE_20260913.md",
+      "bytes": 3667,
+      "sha256": "2eed61dca142f65f895124f66da5e4936cf9b2a5130d91909ff7280f3c249fca"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b3-family-sheets/cephalopod.pose-sheet.png",
+      "bytes": 367424,
+      "sha256": "91947f51ec74e6250fc0616428aad0dccd5c86a4b6f6ec0db3b7308469476a1f"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b3-family-sheets/flyer-membrane.pose-sheet.png",
+      "bytes": 290133,
+      "sha256": "30ca65eb0f6d9ee77b0f32c3cd98bbb6afdc0cdf0908427d97044ca728a905cf"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b3-family-sheets/myriapod.pose-sheet.png",
+      "bytes": 272117,
+      "sha256": "aa4138dfba1ef28925452283d7a9810c3d3a3d6846efa767f5884cde06ee8af5"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b3-family-sheets/primate.pose-sheet.png",
+      "bytes": 263664,
+      "sha256": "358688de92353f7c2031b78bd4b0665ab6874f77c615e554a13c0d8524012c31"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/report.json",
+      "bytes": 15671,
+      "sha256": "7910f587189199a7a16b144ddca356f4ce777389eb0175b35234410d2abd536d"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/mp4-frame-turn1-wild-impact+190.png",
+      "bytes": 637792,
+      "sha256": "7b0527c67875a8bc7a848ca2f66ff4521c39c329fe8c159ac83789b6e3e2c0d5"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/mp4-frame-turn2-tide-impact+180.png",
+      "bytes": 568147,
+      "sha256": "7a7b290f8958c7236144ed17201a05c27b513a8103899cbbfa8307c8975ed8cd"
+    },
+    {
+      "path": "audits/LONG_SESSION_20260913/b-batch-capture/proof-run-01/mp4-frame-turn2-tide-launch+80.png",
+      "bytes": 1011110,
+      "sha256": "44cfbce5296f8808976ed2a2e100c2bc3c695c15c27b4453ae9b5b414d08626b"
+    }
+  ]
+}

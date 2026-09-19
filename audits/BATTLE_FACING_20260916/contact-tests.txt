@@ -1,0 +1,12 @@
+✔ one idle clip continues across roles and pauses in both existing hitstops (0.9275ms)
+✔ support releases and reacquires continuously without changing grounded solves or admitting a refused endpoint (0.516084ms)
+✔ actual current producer has continuous support/role boundaries, exact grounded contacts and frame-rate-independent seeks (974.627125ms)
+✔ right combatant keeps its own idle and releases support only during its own attack (0.628084ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1178.018

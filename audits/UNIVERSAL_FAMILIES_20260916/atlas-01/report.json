@@ -1,0 +1,245 @@
+{
+  "schema": "cf.family-atlas-proof/v1",
+  "status": "PASS",
+  "scope": "Synthetic calibration stripes for the real painter-label intake and pinned packer; NOT art, painter observation or animation acceptance.",
+  "families": [
+    {
+      "id": "quadruped",
+      "parts": 31,
+      "atlasSize": {
+        "width": 43,
+        "height": 1932
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "859703eb483e91458696114ca7256a7db106a9df78164f303339d3c90ec89157",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    },
+    {
+      "id": "hopper",
+      "parts": 31,
+      "atlasSize": {
+        "width": 43,
+        "height": 1932
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "859703eb483e91458696114ca7256a7db106a9df78164f303339d3c90ec89157",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    },
+    {
+      "id": "biped-bird",
+      "parts": 19,
+      "atlasSize": {
+        "width": 33,
+        "height": 1932
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "dfadfd7dab91b7561f4c0e6a334150d4946e20ca842addc86b4e6dff710b3291",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    },
+    {
+      "id": "fish",
+      "parts": 13,
+      "atlasSize": {
+        "width": 20,
+        "height": 1794
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "0ddf7a71aa2b4f93fea2991bb695fe8d8030b7a830d9a00afb8d1ad5abdc356b",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    },
+    {
+      "id": "insect",
+      "parts": 21,
+      "atlasSize": {
+        "width": 33,
+        "height": 1932
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "1f834bdcbaf4560cbaf167985ae2efd742b7ebe8ed5ce365a616c859ad3b1822",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    },
+    {
+      "id": "serpent",
+      "parts": 13,
+      "atlasSize": {
+        "width": 20,
+        "height": 1794
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "0ddf7a71aa2b4f93fea2991bb695fe8d8030b7a830d9a00afb8d1ad5abdc356b",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    },
+    {
+      "id": "arachnid",
+      "parts": 22,
+      "atlasSize": {
+        "width": 32,
+        "height": 1932
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "89711cc70fd35cb491f695067fb9f395cfcb3c5cf0733a7dfbf236d71ae5370a",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    },
+    {
+      "id": "radial",
+      "parts": 21,
+      "atlasSize": {
+        "width": 33,
+        "height": 1932
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "1f834bdcbaf4560cbaf167985ae2efd742b7ebe8ed5ce365a616c859ad3b1822",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    },
+    {
+      "id": "plant-woody",
+      "parts": 11,
+      "atlasSize": {
+        "width": 22,
+        "height": 1518
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "77789a50d1137f7878c3d52c8d8274be481be980f966d4864bef4180d3846776",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    },
+    {
+      "id": "plant-herb",
+      "parts": 17,
+      "atlasSize": {
+        "width": 34,
+        "height": 1932
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "9347971c3dae24da58010651fcb815f20726d06ca25de628afc25339eb93c815",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    },
+    {
+      "id": "myriapod",
+      "parts": 29,
+      "atlasSize": {
+        "width": 42,
+        "height": 1932
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "3ec3cacc45d1a3f769adfee7c371373bb9de7c7ac1b0338c9e60083d22cf2df4",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    },
+    {
+      "id": "cephalopod",
+      "parts": 32,
+      "atlasSize": {
+        "width": 42,
+        "height": 1932
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "6ba360540e075f652752b740116fd1ecde1a95a6204c5bd3db8c1fb661423094",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    },
+    {
+      "id": "flyer-membrane",
+      "parts": 22,
+      "atlasSize": {
+        "width": 32,
+        "height": 1932
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "89711cc70fd35cb491f695067fb9f395cfcb3c5cf0733a7dfbf236d71ae5370a",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    },
+    {
+      "id": "primate",
+      "parts": 22,
+      "atlasSize": {
+        "width": 32,
+        "height": 1932
+      },
+      "restDifferentChannels": 0,
+      "atlasDifferentChannels": 0,
+      "atlasSha256": "89711cc70fd35cb491f695067fb9f395cfcb3c5cf0733a7dfbf236d71ae5370a",
+      "deterministicRepack": true,
+      "negativeControls": [
+        "missing visible label",
+        "foreign family joint"
+      ],
+      "runtimeRecord": "calibration only"
+    }
+  ]
+}

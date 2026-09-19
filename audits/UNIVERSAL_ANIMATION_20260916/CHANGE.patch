@@ -1,0 +1,333 @@
+diff --git a/port/v2/apps/game/src/creature-rig.ts b/port/v2/apps/game/src/creature-rig.ts
+index 055fe1f2..14d71396 100644
+--- a/port/v2/apps/game/src/creature-rig.ts
++++ b/port/v2/apps/game/src/creature-rig.ts
+@@ -5,7 +5,7 @@ import {createArapScratch,solveArapSkin} from '../../../tools/creature-animation
+ import {createCompiledSkinField,applyCompiledSkinField} from '../../../tools/creature-animation/compiled-skin-field.mjs';
+ import {createOpaqueSeamSamplingGuard} from '../../../tools/creature-animation/seam-sampling-guard.mjs';
+ import {GRAPH, admitRecord, hashBytes, hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
+-import {composeAffine, rotationAround, IDENTITY_AFFINE, type Affine2} from '../../../tools/creature-animation/kinematics.js';
++import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
+ 
+ export type CreaturePoseV1 = Readonly<Record<string, {rotation:number; dx?:number; dy?:number}>>;
+ export interface CreatureRigV1 {
+@@ -48,7 +48,7 @@ export interface CreaturePartsBindingV1 {
+ }
+ const requireValue=(ok:unknown,reason:string):void=>{if(!ok)throw Error('Creature rig: '+reason);};
+ const joints=['root',...GRAPH.map(([child])=>child)];
+-const parentOf=new Map(GRAPH);
++
+ const validBox=(box:Box,w:number,h:number)=>box&&[box.x,box.y,box.width,box.height].every(Number.isInteger)
+   &&box.x>=0&&box.y>=0&&box.width>0&&box.height>0&&box.x+box.width<=w&&box.y+box.height<=h;
+ const shaPattern=/^[a-f0-9]{64}$/;
+@@ -91,6 +91,7 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
+   requireValue(shaPattern.test(bindingHash)&&await hashJSON(body)===bindingHash,'corrupted part binding');
+   requireValue(binding.recordRecipeHash===record.recipeHash,'parts belong to another record');
+   requireValue(shaPattern.test(binding.atlasSha256)&&await hashBytes(atlasBytes)===binding.atlasSha256,'mismatched atlas hash');
++  const skeleton=createSkeletonPoseProgram({graph:GRAPH,bodyAxis:['pelvis','chest']},record.landmarks);
+   const {width:w,height:h}=record.geometry,{width:aw,height:ah}=binding.atlasSize;
+   requireValue([aw,ah].every(n=>Number.isInteger(n)&&n>0&&n<=2048),'atlas budget');
+   requireValue(binding.parts.length>0&&binding.parts.length<=40,'part budget');
+@@ -138,28 +139,16 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
+     textures.push(texture);const sprite=new Sprite(texture),display=new Container();
+     sprite.position.set(box.x/w,box.y/h);sprite.scale.set(box.width/w/frame.width,box.height/h/frame.height);
+     display.addChild(sprite);(part.layer==='far'?far:near).addChild(display);
+-    const pivot=record.landmarks[parentOf.get(part.joint)??'root']!;
+-    return {part,display,pivot:Object.freeze({x:pivot[0],y:pivot[1]})};
++    return {part,display,pivot:skeleton.pivot(part.joint)};
+   });
+-  const length=Math.hypot(record.landmarks.chest![0]-record.landmarks.pelvis![0],record.landmarks.chest![1]-record.landmarks.pelvis![1]);
+   let disposed=false;
+-  const parts=Object.freeze([...skins.map(({source,display})=>Object.freeze({id:source.id,display,pivot:{x:record.landmarks[parentOf.get(source.joint)??'root']![0],y:record.landmarks[parentOf.get(source.joint)??'root']![1]},layer:source.layer})),...entries.map(({part,display,pivot})=>Object.freeze({id:part.id,display,pivot,layer:part.layer})),
+-    ...bridges.map(({group,display})=>Object.freeze({id:group.id,display,pivot:{x:record.landmarks[parentOf.get(group.ancestorJoint)??'root']![0],y:record.landmarks[parentOf.get(group.ancestorJoint)??'root']![1]},layer:group.layer}))]);
++  const parts=Object.freeze([...skins.map(({source,display})=>Object.freeze({id:source.id,display,pivot:skeleton.pivot(source.joint),layer:source.layer})),...entries.map(({part,display,pivot})=>Object.freeze({id:part.id,display,pivot,layer:part.layer})),
++    ...bridges.map(({group,display})=>Object.freeze({id:group.id,display,pivot:skeleton.pivot(group.ancestorJoint),layer:group.layer}))]);
+   const rig=Object.freeze({recipeHash:record.recipeHash,templateId:record.template.id,root,parts,
+     bounds:Object.freeze({width:1,height:1,groundLineY:record.geometry.groundLineY}),
+     applyPose(pose:CreaturePoseV1){
+-      requireValue(!disposed,'disposed');requireValue(pose&&typeof pose==='object'&&!Array.isArray(pose),'invalid pose');
+-      // Validate the whole pose before mutating any display object. Missing keys reset to rest.
+-      for(const [joint,key] of Object.entries(pose)){
+-        requireValue(joints.includes(joint),'unknown pose joint: '+joint);
+-        requireValue(key&&Number.isFinite(key.rotation)&&Number.isFinite(key.dx??0)&&Number.isFinite(key.dy??0),'nonfinite pose');
+-      }
+-      const matrices:Record<string,Affine2>={};
+-      for(const joint of joints){
+-        const parent=parentOf.get(joint),pivot=record.landmarks[parent??'root']!,key=pose[joint];
+-        const local=key?rotationAround({x:pivot[0],y:pivot[1]},key.rotation,{x:(key.dx??0)*length,y:(key.dy??0)*length}):IDENTITY_AFFINE;
+-        matrices[joint]=parent?composeAffine(matrices[parent]!,local):local;
+-      }
++      requireValue(!disposed,'disposed');
++      const matrices=skeleton.evaluate(pose);
+       if(skin&&field&&compiledField){applyCompiledSkinField(compiledField,matrices,target??field);if(shape&&target)solveArapSkin(shape,target,field);for(const entry of skins){applyPaintPart(entry.part,field,entry.pending);assertPaintPartShape(entry.part,skin,entry.pending,w,h,entry.areas);}}
+       // All spans are admitted into private scratch before any visible state changes.
+       for(const bridge of bridges)writeSeamPose(bridge.group,matrices,w,h,bridge.buffers.pending,bridge.part.cutout);
+diff --git a/port/v2/packages/art/src/quadrupedoverrides.ts b/port/v2/packages/art/src/quadrupedoverrides.ts
+index 8319d166..3db1ca16 100644
+--- a/port/v2/packages/art/src/quadrupedoverrides.ts
++++ b/port/v2/packages/art/src/quadrupedoverrides.ts
+@@ -2804,6 +2804,11 @@ function faunaMammalC(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNullable<Q
+ }
+ 
+ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '', observeAnatomy?: QuadrupedAnatomyObserver, captureParts = false): void {
++  // Extra leg pairs draw successfully, but cannot be represented by this
++  // four-leg observer. Refuse before ink instead of overwriting fore/hind keys.
++  if (observeAnatomy && (spec.alien?.legPairs ?? 2) !== 2) {
++    throw Error('Quadruped anatomy observer cannot represent extra leg pairs');
++  }
+   if (captureParts && (!observeAnatomy || spec.mammalEPlan || spec.mammalDPlan || spec.mammalCPlan || spec.mammalBPlan || spec.pinnipedPose || spec.gliderPlan || (spec.alien?.legPairs ?? 2) !== 2 || spec.tail !== 'banded')) {
+     throw Error('Quadruped part capture requires the observed four-legged banded-tail painter');
+   }
+diff --git a/port/v2/packages/art/test/quadruped-material-observer.test.ts b/port/v2/packages/art/test/quadruped-material-observer.test.ts
+index 51280ca6..7423f426 100644
+--- a/port/v2/packages/art/test/quadruped-material-observer.test.ts
++++ b/port/v2/packages/art/test/quadruped-material-observer.test.ts
+@@ -53,3 +53,17 @@ it('retains the actual coat fallback and does not let a raw gene override named
+  const g={...genome,skin:1},plan=planFor(g);if(plan?.kind!=='quad')throw Error('fixture route');
+  expect(draw(g,plan.spec,'proc:fur-control').observed?.materials.surface).toBe('fur');
+ });
++
++it('refuses extra-legged observer requests before paint, preserving ordinary procedural drawing',()=>{
++ const plan=planFor(genome);if(plan?.kind!=='quad'||!plan.spec.alien)throw Error('procedural quadruped fixture');
++ const ordinary=draw(genome,plan.spec,'proc:anatomy-control',false);
++ expect(draw(genome,plan.spec,'proc:anatomy-control').drawDigest).toBe(ordinary.drawDigest);
++ for(const legPairs of [3,4] as const){
++  const spec={...plan.spec,alien:{...plan.spec.alien,legPairs}};
++  // This used to return four overwritten fore/hind chains for six/eight legs.
++  expect(()=>draw(genome,spec,'proc:anatomy-control')).toThrow('cannot represent extra leg pairs');
++  const extra=draw(genome,spec,'proc:anatomy-control',false);
++  expect(extra.drawDigest).not.toBe(ordinary.drawDigest);
++  expect(draw(genome,spec,'proc:anatomy-control',false).drawDigest).toBe(extra.drawDigest);
++ }
++});
+diff --git a/port/v2/tools/creature-animation/skeleton-pose.mjs b/port/v2/tools/creature-animation/skeleton-pose.mjs
+new file mode 100644
+--- /dev/null
++++ b/port/v2/tools/creature-animation/skeleton-pose.mjs
+@@ -0,0 +1,57 @@
++/** Family-neutral inherited pose evaluation. Template owners supply the graph
++ * and body axis; painter/authored records supply actual normalized landmarks.
++ * This does not infer anatomy, admit assets, choose clips or qualify a family. */
++import {composeAffine, rotationAround, IDENTITY_AFFINE} from './kinematics.ts';
++export const MAX_SKELETON_JOINTS = 64;
++const need = (ok, reason) => { if (!ok) throw Error('Skeleton pose: ' + reason); };
++const nameIsSafe = name => typeof name === 'string' && /^[A-Za-z][A-Za-z0-9]*$/.test(name)
++  && !['constructor', 'prototype', '__proto__'].includes(name);
++export function createSkeletonPoseProgram(definition, landmarks) {
++  need(definition && Array.isArray(definition.graph) && definition.graph.length > 0
++    && definition.graph.length < MAX_SKELETON_JOINTS, 'joint budget');
++  const names = ['root'], seen = new Set(names), parents = [undefined];
++  for (const pair of definition.graph) {
++    need(Array.isArray(pair) && pair.length === 2, 'graph pair');
++    const [child, parent] = pair;
++    need(nameIsSafe(child) && nameIsSafe(parent), 'joint name');
++    need(!seen.has(child), 'duplicate joint: ' + child);
++    need(seen.has(parent), 'parent must precede child: ' + child);
++    names.push(child); parents.push(parent); seen.add(child);
++  }
++  need(landmarks && typeof landmarks === 'object' && !Array.isArray(landmarks)
++    && Object.keys(landmarks).length === names.length, 'exact landmark inventory');
++  const points = Object.create(null);
++  for (const name of names) {
++    const p = Object.hasOwn(landmarks, name) ? landmarks[name] : undefined;
++    need(Array.isArray(p) && p.length === 2 && p.every(v => Number.isFinite(v) && v >= 0 && v <= 1),
++      'normalized landmark: ' + name);
++    points[name] = Object.freeze({x: p[0], y: p[1]});
++  }
++  const axis = definition.bodyAxis;
++  need(Array.isArray(axis) && axis.length === 2 && axis.every(n => seen.has(n)), 'explicit body axis');
++  const a = points[axis[0]], b = points[axis[1]], bodyLength = Math.hypot(b.x - a.x, b.y - a.y);
++  need(bodyLength >= .000001, 'degenerate body axis');
++  const pivots = names.map((_, i) => points[parents[i] ?? 'root']);
++  const index = new Map(names.map((n, i) => [n, i]));
++  return Object.freeze({
++    jointNames: Object.freeze(names), bodyLength,
++    pivot(name) { need(index.has(name), 'unknown pivot joint: ' + name); return pivots[index.get(name)]; },
++    evaluate(pose) {
++      need(pose && typeof pose === 'object' && !Array.isArray(pose), 'invalid pose');
++      // Validate all supplied keys before calculating or returning any frame.
++      for (const [name, key] of Object.entries(pose)) {
++        need(seen.has(name), 'unknown pose joint: ' + name);
++        need(key && Number.isFinite(key.rotation) && Number.isFinite(key.dx ?? 0)
++          && Number.isFinite(key.dy ?? 0), 'nonfinite pose');
++      }
++      const matrices = Object.create(null);
++      for (let i = 0; i < names.length; i++) {
++        const name = names[i], parent = parents[i], key = Object.hasOwn(pose, name) ? pose[name] : undefined;
++        const local = key ? rotationAround(pivots[i], key.rotation,
++          {x: (key.dx ?? 0) * bodyLength, y: (key.dy ?? 0) * bodyLength}) : IDENTITY_AFFINE;
++        matrices[name] = parent ? composeAffine(matrices[parent], local) : local;
++      }
++      return matrices;
++    },
++  });
++}
+diff --git a/port/v2/tools/creature-animation/skeleton-pose.d.mts b/port/v2/tools/creature-animation/skeleton-pose.d.mts
+new file mode 100644
+--- /dev/null
++++ b/port/v2/tools/creature-animation/skeleton-pose.d.mts
+@@ -0,0 +1,15 @@
++import type {Affine2, Point2} from './kinematics.js';
++export const MAX_SKELETON_JOINTS: number;
++export interface SkeletonDefinition {
++  readonly graph: ReadonlyArray<readonly [string, string]>;
++  readonly bodyAxis: readonly [string, string];
++}
++export type SkeletonPose = Readonly<Record<string, {readonly rotation: number; readonly dx?: number; readonly dy?: number}>>;
++export interface SkeletonPoseProgram {
++  readonly jointNames: readonly string[];
++  readonly bodyLength: number;
++  pivot(name: string): Point2;
++  evaluate(pose: SkeletonPose): Record<string, Affine2>;
++}
++export function createSkeletonPoseProgram(definition: SkeletonDefinition,
++  landmarks: Readonly<Record<string, readonly [number, number]>>): SkeletonPoseProgram;
+diff --git a/port/v2/tools/creature-animation/skeleton-pose.test.mjs b/port/v2/tools/creature-animation/skeleton-pose.test.mjs
+new file mode 100644
+--- /dev/null
++++ b/port/v2/tools/creature-animation/skeleton-pose.test.mjs
+@@ -0,0 +1,55 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import {readFileSync} from 'node:fs';
++import {createSkeletonPoseProgram} from './skeleton-pose.mjs';
++import {GRAPH} from './quadruped-template.mjs';
++import {composeAffine, rotationAround, IDENTITY_AFFINE, transformPoint} from './kinematics.ts';
++const definition = () => ({graph:[['body','root'],['wing','body'],['tip','wing'],['fin','body']],bodyAxis:['body','wing']});
++const landmarks = () => ({root:[.2,.4],body:[.3,.4],wing:[.7,.4],tip:[.9,.4],fin:[.3,.8]});
++const close=(a,b)=>assert.ok(Math.abs(a-b)<1e-12, `${a} != ${b}`);
++test('uses the owner body axis and parent pivot; root displacement applies exactly once',()=>{
++ const lm=landmarks(),p=createSkeletonPoseProgram(definition(),lm);
++ close(p.bodyLength,.4);
++ const translated=p.evaluate({root:{rotation:0,dx:.5,dy:-.25}});
++ for(const [name,point]of Object.entries(lm)){const t=transformPoint(translated[name],{x:point[0],y:point[1]});close(t.x,point[0]+.2);close(t.y,point[1]-.1);}
++ // The old producer's broadcast translation would multiply motion by depth.
++ const broadcast=p.evaluate(Object.fromEntries(p.jointNames.map(n=>[n,{rotation:0,dx:.5,dy:-.25}])));
++ assert.ok(Math.abs(broadcast.tip[4]-translated.tip[4])>.5);
++ const turned=p.evaluate({wing:{rotation:Math.PI/2}}),tip=transformPoint(turned.tip,{x:.9,y:.4});
++ close(tip.x,.3);close(tip.y,1);assert.deepEqual(turned.fin,IDENTITY_AFFINE);
++ assert.deepEqual(p.evaluate({}).tip,IDENTITY_AFFINE);
++});
++test('snapshots template and landmarks; failed frames cannot poison subsequent poses',()=>{
++ const def=definition(),lm=landmarks(),p=createSkeletonPoseProgram(def,lm),pose={tip:{rotation:.4}};
++ const before=p.evaluate(pose);def.graph[0][1]='missing';lm.wing[0]=.1;lm.tip=[0,0];
++ assert.deepEqual(p.evaluate(pose),before);assert.throws(()=>{p.jointNames.push('fake');});
++ for(const invalid of [{bad:{rotation:0}},{wing:{rotation:NaN}},{wing:{rotation:0,dx:Infinity}},{tip:{rotation:0,dx:1e40}},null,[]]){
++  assert.throws(()=>p.evaluate(invalid));assert.deepEqual(p.evaluate(pose),before);
++ }
++ const inherited=Object.create({tip:{rotation:1}});assert.deepEqual(p.evaluate(inherited),p.evaluate({}));
++ assert.throws(()=>p.evaluate(JSON.parse('{"__proto__":{"rotation":0}}')),/unknown pose joint/);
++});
++test('refuses malformed topology, ambiguous inventories, hidden prototype joints and bad body axes',()=>{
++ for(const graph of [[['body','missing']], [['body','root'],['body','root']], [['root','root']], [['a','b'],['b','a']], [['constructor','root']],[]]){
++  assert.throws(()=>createSkeletonPoseProgram({graph,bodyAxis:['root','body']},landmarks()));
++ }
++ const lm=landmarks();delete lm.tip;assert.throws(()=>createSkeletonPoseProgram(definition(),lm),/inventory/);
++ assert.throws(()=>createSkeletonPoseProgram(definition(),{...landmarks(),extra:[.5,.5]}),/inventory/);
++ assert.throws(()=>createSkeletonPoseProgram(definition(),{...landmarks(),wing:[NaN,.4]}),/normalized/);
++ for(const bodyAxis of [undefined,['root','unknown'],['root','root']])assert.throws(()=>createSkeletonPoseProgram({...definition(),bodyAxis},landmarks()));
++ const inherited=Object.create({tip:[.9,.4]});Object.assign(inherited,landmarks());delete inherited.tip;inherited.fake=[.9,.4];
++ assert.throws(()=>createSkeletonPoseProgram(definition(),inherited),/normalized landmark/);
++});
++test('matches the previous quadruped evaluator exactly for all three real records',()=>{
++ const root=new URL('../../../../',import.meta.url),manifest=JSON.parse(readFileSync(new URL('audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/manifest.json',root)));
++ for(const entry of manifest.results){
++  const record=JSON.parse(readFileSync(new URL(entry.record,root))),lm=record.landmarks,names=['root',...GRAPH.map(([n])=>n)],parents=new Map(GRAPH);
++  const length=Math.hypot(lm.chest[0]-lm.pelvis[0],lm.chest[1]-lm.pelvis[1]);
++  const program=createSkeletonPoseProgram({graph:GRAPH,bodyAxis:['pelvis','chest']},lm);
++  for(let step=0;step<40;step++){
++   const pose=Object.fromEntries(names.filter((_,i)=>i%3!==step%3).map((n,i)=>[n,{rotation:Math.sin(i+step)*.2,dx:n==='root'?.07:0,dy:n==='root'?-.03:0}]));
++   const expected={};for(const joint of names){const parent=parents.get(joint),pivot=lm[parent??'root'],key=pose[joint];const local=key?rotationAround({x:pivot[0],y:pivot[1]},key.rotation,{x:(key.dx??0)*length,y:(key.dy??0)*length}):IDENTITY_AFFINE;expected[joint]=parent?composeAffine(expected[parent],local):local;}
++   const actual=program.evaluate(pose);for(const name of names)assert.deepEqual(actual[name],expected[name],entry.id+':'+name);
++  }
++ }
++});
+diff --git a/port/v2/tools/creature-animation/family-pose-probe.mjs b/port/v2/tools/creature-animation/family-pose-probe.mjs
+new file mode 100644
+--- /dev/null
++++ b/port/v2/tools/creature-animation/family-pose-probe.mjs
+@@ -0,0 +1,84 @@
++/** Read-only producer interoperability. Real motion templates/actions plus
++ * labelled synthetic family landmarks; NOT painted-family coverage. */
++import fs from 'node:fs';
++import path from 'node:path';
++import os from 'node:os';
++import assert from 'node:assert/strict';
++import {createHash} from 'node:crypto';
++import {pathToFileURL} from 'node:url';
++import {rolldown} from 'rolldown';
++import {createSkeletonPoseProgram} from './skeleton-pose.mjs';
++const [motionArg, outputArg] = process.argv.slice(2);
++if (!motionArg || !outputArg) throw Error('Usage: family-pose-probe.mjs PRODUCER_MOTION_DIR NEW_OUTPUT_DIR');
++const motion = path.resolve(motionArg), output = path.resolve(outputArg), root = path.resolve(import.meta.dirname, '../../../..');
++if (fs.existsSync(output)) throw Error('New evidence directory required');
++const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-family-pose-')), sources = new Map();
++const sha = b => createHash('sha256').update(b).digest('hex');
++const readJSON = file => { const bytes = fs.readFileSync(file); sources.set(file, sha(bytes)); return JSON.parse(bytes); };
++const report = {schema:'cf.family-pose-interop/v1',status:'RUNNING',scope:'Shared pose evaluation and actual GSAP producer contract only. Thirteen family records are synthetic; no new painted assets, masks, contact solvers, runtime admission or visual qualification.',rows:[],controls:[]};
++fs.mkdirSync(output, {recursive:true});
++function expectedPositions(graph, landmarks, pose, length) {
++  const positions = Object.create(null), angles = Object.create(null), rootKey = pose.root ?? {rotation:0};
++  positions.root = [landmarks.root[0] + (rootKey.dx ?? 0) * length, landmarks.root[1] + (rootKey.dy ?? 0) * length];
++  angles.root = rootKey.rotation;
++  for (const [child,parent] of graph) {
++    const k = pose[child] ?? {rotation:0}, angle = angles[parent] + k.rotation;
++    const x = landmarks[child][0] - landmarks[parent][0], y = landmarks[child][1] - landmarks[parent][1];
++    const dx = (k.dx ?? 0) * length, dy = (k.dy ?? 0) * length;
++    positions[child] = [positions[parent][0] + x*Math.cos(angle)-y*Math.sin(angle) + dx*Math.cos(angles[parent])-dy*Math.sin(angles[parent]),
++      positions[parent][1] + x*Math.sin(angle)+y*Math.cos(angle) + dx*Math.sin(angles[parent])+dy*Math.cos(angles[parent])];
++    angles[child] = angle;
++  }
++  return positions;
++}
++try {
++  const entry = path.join(scratch,'entry.mjs');
++  fs.writeFileSync(entry, `export * from ${JSON.stringify(path.join(motion,'index.ts'))};\nexport {createCreatureRigFrameTarget} from ${JSON.stringify(path.join(root,'port/v2/apps/game/src/creature-rig-frame.ts'))};\n`);
++  const bundle = await rolldown({input:entry,platform:'node',plugins:[{name:'sources',transform(_,id){if(path.isAbsolute(id)&&!id.startsWith(scratch)&&fs.existsSync(id)&&fs.statSync(id).isFile()) sources.set(id,sha(fs.readFileSync(id)));}}]});
++  try { await bundle.write({dir:scratch,entryFileNames:'producer.mjs',chunkFileNames:'chunk-[hash].mjs',format:'es'}); } finally { await bundle.close(); }
++  const producer = await import(pathToFileURL(path.join(scratch,'producer.mjs')));
++  const {KNOWN_TEMPLATE_IDS,resolveTemplate,compileBodyCard,actionsFor,buildTimeline,createGsapPlayer,createCreatureRigFrameTarget} = producer;
++  const expectedIds = ['quadruped','hopper','biped-bird','fish','insect','serpent','arachnid','radial','plant-woody','plant-herb','myriapod','cephalopod','flyer-membrane','primate'];
++  assert.deepEqual([...KNOWN_TEMPLATE_IDS].sort(),expectedIds.sort(),'producer inventory changed; review scope explicitly');
++  const adapter = path.join(motion,'gsap-adapter.ts');
++  assert.equal(sha(fs.readFileSync(adapter)),'6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74','unexpected producer');
++  for (const name of ['skeleton-pose.mjs','kinematics.ts','family-pose-probe.mjs']) {const file=path.join(import.meta.dirname,name);sources.set(file,sha(fs.readFileSync(file)));}
++  for (const id of KNOWN_TEMPLATE_IDS) {
++    const template=resolveTemplate(id), fixtureDir=path.resolve(motion,'../../../../tools/motion-proof/fixtures');
++    const record=id==='quadruped'?readJSON(path.join(root,'audits/CIVET_2D_PROOF_20260912/civet.landmarks.json')):readJSON(path.join(fixtureDir,id+'.synthetic.landmarks.json'));
++    const genome=id==='quadruped'?undefined:readJSON(path.join(fixtureDir,id+'.synthetic.genome.json'));
++    const card=compileBodyCard(record,genome), def={graph:template.graph,bodyAxis:template.bodyAxis??['pelvis','chest']};
++    const program=createSkeletonPoseProgram(def,record.landmarks);
++    assert.equal(program.bodyLength,card.bodyLength,'body-length units disagree');
++    let count=0,pose,matrices,maximumPositionError=0;
++    const target=createCreatureRigFrameTarget({applyPose(next){const evaluated=program.evaluate(next);pose=structuredClone(next);matrices=evaluated;count++;}});
++    const row={id,landmarkOwner:record.identity.ownerId,synthetic:id!=='quadruped',jointCount:program.jointNames.length,actions:[],samples:0,maximumPositionError:0};
++    for (const action of Object.keys(actionsFor(id))) {
++      const timeline=buildTimeline(card,action,record.identity.seed), player=createGsapPlayer(timeline,target,{now:()=>0});
++      const samples=Math.max(2,Math.ceil(timeline.durationMs/1000*30));
++      try {
++        for(let i=0;i<=samples;i++) {
++          const before=count;target.sample(()=>player.seek(i*timeline.durationMs/samples));assert.equal(count,before+1,'more than one pose publication per frame');
++          const expected=expectedPositions(template.graph,record.landmarks,pose,program.bodyLength);
++          for(const name of program.jointNames) {const m=matrices[name],p=record.landmarks[name],x=m[0]*p[0]+m[2]*p[1]+m[4],y=m[1]*p[0]+m[3]*p[1]+m[5];
++            const error=Math.hypot(x-expected[name][0],y-expected[name][1]);assert.ok(error<1e-12,id+':'+action+':'+name);maximumPositionError=Math.max(maximumPositionError,error);}
++          row.samples++;
++        }
++        const middle=timeline.durationMs*.437;target.sample(()=>player.seek(middle));const first=JSON.stringify(matrices);
++        target.sample(()=>player.seek(0));target.sample(()=>player.seek(timeline.durationMs));target.sample(()=>player.seek(middle));
++        assert.equal(JSON.stringify(matrices),first,'seek history changed pose');
++        row.actions.push({id:action,timelineHash:timeline.hash,samples:samples+1});
++      } finally { player.stop(); }
++    }
++    const before=count;assert.throws(()=>target.sample(()=>target.setJoint('foreignJoint',0)),/unknown pose joint/);assert.equal(count,before);
++    target.sample(()=>target.setJoint('root',0,.2,-.1));const good=matrices;
++    const bad=program.evaluate(Object.fromEntries(program.jointNames.map(name=>[name,{rotation:0,dx:.2,dy:-.1}])));
++    assert.ok(program.jointNames.some(name=>Math.abs(bad[name][4]-good[name][4])>1e-6),'old broadcast mutant undetected');
++    target.reset();for(const m of Object.values(matrices))assert.deepEqual(m,[1,0,0,1,0,0]);target.dispose();
++    row.maximumPositionError=maximumPositionError;report.rows.push(row);report.controls.push(id+': foreign joint refused, broadcast displacement rejected, exact rest, history-independent seek, one publication per frame');
++  }
++  for(const [file,hash]of sources)assert.equal(sha(fs.readFileSync(file)),hash,'source changed during proof');
++  report.status='PASS';
++} catch(error) {report.status='FAIL';report.error=String(error.stack??error);process.exitCode=1;}
++finally {report.sources=[...sources].map(([path,sha256])=>({path,sha256}));fs.writeFileSync(path.join(output,'report.json'),JSON.stringify(report,null,2)+'\n');fs.rmSync(scratch,{recursive:true,force:true});}
++console.log(JSON.stringify({status:report.status,families:report.rows.length,samples:report.rows.reduce((n,r)=>n+r.samples,0),error:report.error}));

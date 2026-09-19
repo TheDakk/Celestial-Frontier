@@ -1,0 +1,565 @@
+{
+  "status": "OFFLINE_PASS_NATIVE_PENDING",
+  "sourcePoseReports": [
+    "audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/report.json",
+    "audits/C2_CONTINUOUS_SKIN_20260916/native-04/report.json"
+  ],
+  "scope": "retained actual poses plus native04 complete named-pose regressions; this does not establish native rest parity, dense temporal shape, frame time or visual acceptance",
+  "diagnostics": [
+    {
+      "id": "civet",
+      "frames": [
+        {
+          "name": "rest",
+          "atMs": null,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.0000536969038814283,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": true,
+          "maximumTargetErrorPx": 0,
+          "rmsTargetErrorPx": 0,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 1,
+          "orientationPasses": 0
+        },
+        {
+          "name": "hit-recoil",
+          "atMs": 7400,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00006267493783421785,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 3.5571153160680207,
+          "rmsTargetErrorPx": 0.44641548610218185,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.38090643640900856,
+          "orientationPasses": 1
+        },
+        {
+          "name": "strike",
+          "atMs": 2012.5,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00011250495613966537,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 5.1362226079622335,
+          "rmsTargetErrorPx": 0.8029257314045974,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.20638885788923453,
+          "orientationPasses": 1
+        },
+        {
+          "name": "approach-quarter",
+          "atMs": 1496.665420023015,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00006267493763084866,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 3.3461725109728158,
+          "rmsTargetErrorPx": 0.437234764247169,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.2803450668706251,
+          "orientationPasses": 1
+        },
+        {
+          "name": "approach-three-quarter",
+          "atMs": 1569.9962600690449,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00007927822156665926,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 3.2144852077500223,
+          "rmsTargetErrorPx": 0.4444987642643927,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.5554471574864409,
+          "orientationPasses": 1
+        },
+        {
+          "name": "idle",
+          "atMs": 500,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.000055711055417653975,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 1.294242188292891,
+          "rmsTargetErrorPx": 0.13744595444737515,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.9055243157303104,
+          "orientationPasses": 1
+        },
+        {
+          "name": "anticipation",
+          "atMs": 1877,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00007046953079060356,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 2.8333814577549292,
+          "rmsTargetErrorPx": 0.26597117043932705,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.8137831404988767,
+          "orientationPasses": 1
+        },
+        {
+          "name": "impact-hold",
+          "atMs": 2242,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00006543599287124696,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 3.0391053795100498,
+          "rmsTargetErrorPx": 0.23961207267352186,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.7958058909837472,
+          "orientationPasses": 1
+        },
+        {
+          "name": "hit-peak",
+          "atMs": 7313.875,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00006750297359410805,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 5.496021759390129,
+          "rmsTargetErrorPx": 0.4472337341644269,
+          "maximumProjectionPx": 1.3481766585069836,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.12000000013505246,
+          "orientationPasses": 3
+        },
+        {
+          "name": "return-end",
+          "atMs": 3142.1666666666665,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00006499623158328151,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 1.8102899146596683,
+          "rmsTargetErrorPx": 0.17413996686064184,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.8753552096960485,
+          "orientationPasses": 1
+        }
+      ]
+    },
+    {
+      "id": "fox",
+      "frames": [
+        {
+          "name": "rest",
+          "atMs": null,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.000053566694077744614,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": true,
+          "maximumTargetErrorPx": 0,
+          "rmsTargetErrorPx": 0,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 1,
+          "orientationPasses": 0
+        },
+        {
+          "name": "hit-recoil",
+          "atMs": 7400,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00007134496230014225,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 2.8573472786008427,
+          "rmsTargetErrorPx": 0.3961607931614979,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.41972904023055735,
+          "orientationPasses": 1
+        },
+        {
+          "name": "strike",
+          "atMs": 2110,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00006653915419450912,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 14.387097671062838,
+          "rmsTargetErrorPx": 1.1162445048154068,
+          "maximumProjectionPx": 9.766441716144117,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11888282144761093,
+          "orientationPasses": 24
+        },
+        {
+          "name": "approach-quarter",
+          "atMs": 1507.3175965665237,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00004890608907836223,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 5.082071078628824,
+          "rmsTargetErrorPx": 0.7138348638477627,
+          "maximumProjectionPx": 3.5608773494442323,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.11999999999999608,
+          "orientationPasses": 24
+        },
+        {
+          "name": "approach-three-quarter",
+          "atMs": 1601.9527896995708,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00006026072037874419,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 6.540534826264332,
+          "rmsTargetErrorPx": 0.7561986002789535,
+          "maximumProjectionPx": 0.9511479149866013,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.12000000042951423,
+          "orientationPasses": 3
+        },
+        {
+          "name": "idle",
+          "atMs": 500,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00006848407400160162,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 1.3258173994289035,
+          "rmsTargetErrorPx": 0.16022239095141064,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.9010323156247653,
+          "orientationPasses": 1
+        },
+        {
+          "name": "anticipation",
+          "atMs": 1940,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00006695635601085182,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 2.2992611336309423,
+          "rmsTargetErrorPx": 0.257953563027924,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.6235284510369454,
+          "orientationPasses": 1
+        },
+        {
+          "name": "impact-hold",
+          "atMs": 2350,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00006371823006600169,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 4.607023791618218,
+          "rmsTargetErrorPx": 0.4718652416413959,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.2671875871772087,
+          "orientationPasses": 1
+        },
+        {
+          "name": "hit-peak",
+          "atMs": 7337.5,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00005680890952557017,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 4.00301887272683,
+          "rmsTargetErrorPx": 0.433072629628319,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.13892614748324073,
+          "orientationPasses": 1
+        },
+        {
+          "name": "return-end",
+          "atMs": 3348.6666666666665,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00007834840036932096,
+            "epsilonNativePx": 0.0011959075927734375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 1.2937517504903413,
+          "rmsTargetErrorPx": 0.1556972035959433,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.9037757935347283,
+          "orientationPasses": 1
+        }
+      ]
+    },
+    {
+      "id": "procedural",
+      "frames": [
+        {
+          "name": "rest",
+          "atMs": null,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.000055633840034380124,
+            "epsilonNativePx": 0.0008392333984375
+          },
+          "rigid": true,
+          "maximumTargetErrorPx": 0,
+          "rmsTargetErrorPx": 0,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 1,
+          "orientationPasses": 0
+        },
+        {
+          "name": "hit-recoil",
+          "atMs": 7400,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.000055633840034380124,
+            "epsilonNativePx": 0.0008392333984375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 1.8419104230312824,
+          "rmsTargetErrorPx": 0.3062553999513368,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.8275107695245445,
+          "orientationPasses": 1
+        },
+        {
+          "name": "strike",
+          "atMs": 2282,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.000055633840034380124,
+            "epsilonNativePx": 0.0008392333984375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 3.539702139264268,
+          "rmsTargetErrorPx": 0.6417583797277963,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.4822057424784004,
+          "orientationPasses": 1
+        },
+        {
+          "name": "approach-quarter",
+          "atMs": 1514.203539823009,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00004727967265856729,
+            "epsilonNativePx": 0.0008392333984375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 2.8636648863166374,
+          "rmsTargetErrorPx": 0.36574461463368485,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.7473140290708707,
+          "orientationPasses": 1
+        },
+        {
+          "name": "approach-three-quarter",
+          "atMs": 1622.6106194690265,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.000055633840034380124,
+            "epsilonNativePx": 0.0008392333984375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 2.5592724080930194,
+          "rmsTargetErrorPx": 0.3788719197678618,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.7390545646568607,
+          "orientationPasses": 1
+        },
+        {
+          "name": "idle",
+          "atMs": 500,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00004727967265856729,
+            "epsilonNativePx": 0.0008392333984375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 0.18973260452466123,
+          "rmsTargetErrorPx": 0.028327977426530544,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.9829056966741279,
+          "orientationPasses": 1
+        },
+        {
+          "name": "anticipation",
+          "atMs": 2020,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.000055633840034380124,
+            "epsilonNativePx": 0.0008392333984375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 0.23121700726213518,
+          "rmsTargetErrorPx": 0.04762268345746579,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.9487289635331563,
+          "orientationPasses": 1
+        },
+        {
+          "name": "impact-hold",
+          "atMs": 2550,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.00004727967265856729,
+            "epsilonNativePx": 0.0008392333984375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 1.0142545304586568,
+          "rmsTargetErrorPx": 0.14245749432769478,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.7607375223791566,
+          "orientationPasses": 1
+        },
+        {
+          "name": "hit-peak",
+          "atMs": 7400.5,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.000055633840034380124,
+            "epsilonNativePx": 0.0008392333984375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 1.8362465998918156,
+          "rmsTargetErrorPx": 0.30605949516108555,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.8278816728374444,
+          "orientationPasses": 1
+        },
+        {
+          "name": "return-end",
+          "atMs": 4035.333333333333,
+          "status": "PASS",
+          "error": null,
+          "sourceJoin": {
+            "status": "PASS",
+            "maxGapPx": 0.000055633840034380124,
+            "epsilonNativePx": 0.0008392333984375
+          },
+          "rigid": false,
+          "maximumTargetErrorPx": 0.03231348936275605,
+          "rmsTargetErrorPx": 0.005533675237054229,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.9972763395520053,
+          "orientationPasses": 1
+        }
+      ]
+    }
+  ]
+}

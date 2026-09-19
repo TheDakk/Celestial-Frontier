@@ -1,0 +1,103 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "persimmon",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "a90bc3d2bd8f2981c2af3be9240cd834ed40eef01a8522dba5e5694beef14402",
+    "pngSha256": "1b3af8e5411173240eca7156eef6ca0bf4b00200447572b69f3874d6ae87f46d"
+  },
+  "parts": [
+    {
+      "name": "branch-0-foliage.png",
+      "sha256": "057d24fba10c2a62e8fbb54d9e448f90e95e5b37ff4fcd75b61cf206a09102df"
+    },
+    {
+      "name": "branch-0-wood.png",
+      "sha256": "50e137b4ea6be4d3747941d7695579c7273d77ecb80e57b17d7c944ce1e9360f"
+    },
+    {
+      "name": "branch-1-foliage.png",
+      "sha256": "7a64b0ee8cd4cb7f4f4d94e1019c952fbbc55471f93f8ecfd43c7cd7adce9001"
+    },
+    {
+      "name": "branch-1-wood.png",
+      "sha256": "0df769848f64daf9492566ee95ddb498e5afbd88161f9308d3982bd57ecba7ce"
+    },
+    {
+      "name": "branch-2-foliage.png",
+      "sha256": "891240f0bb32457de8dfd831ba79c7a46161c98fb2ba28068172e3e1d0eae73b"
+    },
+    {
+      "name": "branch-2-wood.png",
+      "sha256": "408c925e0f0260ae59e2fb37bcdaa682e852b980355451eca72fe553aa224c69"
+    },
+    {
+      "name": "branch-3-foliage.png",
+      "sha256": "ff50f00b0c38ac170a11ec882322d61b547cb1bdc8da224d4eb7e4fbc9e9361b"
+    },
+    {
+      "name": "branch-3-wood.png",
+      "sha256": "db811009b5b2a6bc02b1b09ae4073c04c0c99c21981bce024e96b7c7826989e5"
+    },
+    {
+      "name": "branch-4-foliage.png",
+      "sha256": "9e96d441e7f1aaad6bdf7998a41b41fcfdf9643a6a9bc411e517a3144fa02227"
+    },
+    {
+      "name": "branch-4-wood.png",
+      "sha256": "89004c749b5250cd520d1133d5b2783cecf8141915b3c9ab8b05a9f740ac318b"
+    },
+    {
+      "name": "branch-5-foliage.png",
+      "sha256": "e980e467d5553d00261146fa1eb0ef41ac1cdd468b93095b076cf4d298c7f8d3"
+    },
+    {
+      "name": "branch-5-wood.png",
+      "sha256": "e43d36c6f34cae2421625595d8559cb913eedc8ea4d7c1f4badc847767474d2a"
+    },
+    {
+      "name": "branch-6-foliage.png",
+      "sha256": "a7b0accbfe8a38f450a7eea7f29e5ef97bc8d5d43703e8b475a3ebd0063eeb22"
+    },
+    {
+      "name": "branch-6-wood.png",
+      "sha256": "7a6bb16fd7595693b38724c7dc2031f687c746de58e2c8df400bd5fbbf765c7a"
+    },
+    {
+      "name": "branch-7-foliage.png",
+      "sha256": "a00dcc6d0e4764547b551ae5788f3974bd165b56c9b06c77135f614bceb41ce5"
+    },
+    {
+      "name": "branch-7-wood.png",
+      "sha256": "639e6fe6d83d29eab84f2a1612d914606d38f317a144c4f6d7561d4cf074fa90"
+    },
+    {
+      "name": "root.png",
+      "sha256": "e8529b90cbe9d5d41b8c784bd5beb7d7aee692a949f43027d349dc9990ec6601"
+    },
+    {
+      "name": "trunk.png",
+      "sha256": "159fdf93b4950e5da27a2592f320a2d90ff0bfede368fc8f4c5a36f2cdd3c791"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

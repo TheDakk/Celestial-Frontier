@@ -1,0 +1,8 @@
+[
+  {
+    "id": "procedural",
+    "before": "c95f464ac06191628a5a0195b35e354228cf91be58df16661e2b3654a4eccd62",
+    "after": "03fac0147c7c0cd2afe0cb1a4d21a3a6747afd5e4c5705b74c7cba4b5d937656",
+    "reason": "Require fully opaque touching descendant source; same geometry, original ink and poses"
+  }
+]

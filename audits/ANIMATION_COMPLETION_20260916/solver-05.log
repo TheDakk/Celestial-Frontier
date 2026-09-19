@@ -1,0 +1,39 @@
+✔ ARAP retains exact rest and rigid rotation/translation, independently of prior seeks (2.028583ms)
+✔ ARAP reduces a discontinuous skin target while preserving hard authored contact handles (0.88875ms)
+✔ ARAP refuses invalid topology/targets atomically and never mutates rest or input (0.726875ms)
+✔ orientation projection repairs a reflected skin triangle with fixed joint targets; contradictory fixed triangle refuses without publication (0.26225ms)
+✔ distinct surfaces at the same source coordinates remain free to cross without welding their contact targets (0.176208ms)
+✔ a thin reflected triangle cannot pass the approximate rigid identity shortcut (0.123375ms)
+✖ exact no-progress projection stops redundant sweeps without accepting a contradictory pinned fold (0.556916ms)
+✔ active-set projection closes the real cast fold that 64 forward sweeps leave inverted, without changing targets or pins (21.819042ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 63.244708
+
+✖ failing tests:
+
+test at port/v2/tools/creature-animation/arap-skin.test.mjs:10:1
+✖ exact no-progress projection stops redundant sweeps without accepting a contradictory pinned fold (0.556916ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-skin.test.mjs:10:831)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

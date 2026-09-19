@@ -1,0 +1,19 @@
+{
+  "signedBase": "b79fd32e347eccc0be1c9621aabe46bd53100de0",
+  "branch": "openai/mac",
+  "sourceState": "staged C2 plus universal follow-up; uncommitted diagnostic evidence",
+  "qualification": "No clean-source certificate or visual acceptance",
+  "strictMaximumZipBytes": 30000000,
+  "parts": [
+    {
+      "path": "/private/tmp/cf-universal-animation-20260916-code-review.zip",
+      "bytes": 810424,
+      "sha256": "b2dcc36aea6257bc26a753a605bee86d3613e38d3be9626ef2f597f41464c796"
+    },
+    {
+      "path": "/private/tmp/cf-universal-animation-20260916-diagnostic-films.zip",
+      "bytes": 26861242,
+      "sha256": "cff2f3c4a9e9252a10511ad3b38756fdacbb748cffde3c20892d3d8976f4de86"
+    }
+  ]
+}

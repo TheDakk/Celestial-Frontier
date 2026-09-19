@@ -1,0 +1,3 @@
+# Preserve the exact saved REAPER state bytes bound by qualification receipts.
+*.rpp -text
+*.trackchunk -text

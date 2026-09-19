@@ -1,0 +1,107 @@
+{
+  "schema": "cf.c-systems-continuation-checks/v1",
+  "date": "2026-09-14",
+  "startingCommit": "f36cb38db6d518f3625269c2a6ecd842bb671716",
+  "checks": [
+    {
+      "name": "unit",
+      "command": "npm --prefix port/v2 test -- --reporter=dot",
+      "exitCode": 0,
+      "path": "audits/C_SYSTEMS_CONTINUATION_20260914/checks/unit.log.gz",
+      "sha256": "1afa7c9737bb8bd45cf45caecf2bd43f11cfbcd475bfa081eeb681e4d5fec5ae",
+      "uncompressedSha256": "efdd2f171e56bf50c4a657c24f936bf379024809fedaa97dba301664f3e40169"
+    },
+    {
+      "name": "typecheck",
+      "command": "npm --prefix port/v2 run typecheck",
+      "exitCode": 0,
+      "path": "audits/C_SYSTEMS_CONTINUATION_20260914/checks/typecheck.log.gz",
+      "sha256": "105817915165cb6dbf0b1ea09c40e622ba93a0b6facea18e2e368450cd7316a8",
+      "uncompressedSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "name": "root-validate",
+      "command": "node tools/validate.js",
+      "exitCode": 0,
+      "path": "audits/C_SYSTEMS_CONTINUATION_20260914/checks/root-validate.log.gz",
+      "sha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736",
+      "uncompressedSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "name": "codec-focused",
+      "command": "node --test port/v2/tools/asset-intake/audio-export.test.mjs",
+      "exitCode": 0,
+      "path": "audits/C_SYSTEMS_CONTINUATION_20260914/checks/codec-focused.log.gz",
+      "sha256": "6b116467c1e5ebcc111c638781932d8f25d0e0b319ba9f82794c38409ccd4d2c",
+      "uncompressedSha256": "ff5a93fc605efc3bdfbeacd28c977fe46696b91aa010a89f23ea236542951724"
+    }
+  ],
+  "unit": {
+    "filesPassed": 370,
+    "passed": 4347,
+    "skipped": 1,
+    "failed": 0
+  },
+  "nodeTools": {
+    "passed": 27,
+    "skipped": 0,
+    "failed": 0
+  },
+  "root": {
+    "fingerprintProbes": 50,
+    "fingerprint": "MATCH",
+    "renderedEarthSpecies": 1010,
+    "renderErrors": 0,
+    "bootErrors": 0
+  },
+  "artReadback": {
+    "masters": 12,
+    "report": "art-batch-report.json",
+    "unchanged": true,
+    "newArt": false
+  },
+  "protected": [
+    {
+      "path": "ART_KIT.md",
+      "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+      "unchangedFrom": "f36cb38db6d518f3625269c2a6ecd842bb671716"
+    },
+    {
+      "path": "MOTION_KIT.md",
+      "sha256": "a2f1b55fcbcb82d15d8b6667137892aa42bb44338da2d04519ebcf34a6e0829e",
+      "unchangedFrom": "f36cb38db6d518f3625269c2a6ecd842bb671716"
+    },
+    {
+      "path": "SOUND_KIT.md",
+      "sha256": "f74514cb967ea474b994a0c69ca0437cd7b35b6bc595523b54dc625fdeb0f5b0",
+      "unchangedFrom": "f36cb38db6d518f3625269c2a6ecd842bb671716"
+    },
+    {
+      "path": "celestial-frontier.html",
+      "sha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746",
+      "unchangedFrom": "f36cb38db6d518f3625269c2a6ecd842bb671716"
+    },
+    {
+      "path": "port/v2/apps/game/src/main.ts",
+      "sha256": "5fa81666fc5a9e9b13bb9e834b0439864e66212853ba6d0b6b7a1e5709998c31",
+      "unchangedFrom": "f36cb38db6d518f3625269c2a6ecd842bb671716"
+    }
+  ],
+  "claudeOwnedPathsModified": false,
+  "mainTsHunks": 0,
+  "initialAsyncTestFailure": {
+    "test": "local-ai-game.test.ts: ordinary accepted Earth loads and retains E without a GPU",
+    "observed": "retain expected once, received zero after two setImmediate ticks",
+    "repair": "wait for actual ready/failed state; retain exact-pixel, no-inference and corruption assertions"
+  },
+  "limitations": [
+    "No new native browser/capture/performance certificate",
+    "C2 head--ear-far still fails saved stride observations",
+    "C3 real source recordings, rights, short-term mix/loudness and listening remain",
+    "Codec repeat bytes scoped to installed FFmpeg/libopus; tools present and all codec tests ran",
+    "Blob hashing now uses a bounded whole buffer; fallback copies it; browser peak memory unmeasured",
+    "C4 new sheets and human review remain",
+    "Weather choice and smaller-phone-finisher qualification remain",
+    "No GitHub/history operation"
+  ]
+}

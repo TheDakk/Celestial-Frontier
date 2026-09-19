@@ -19,6 +19,7 @@
  *  cephalopod  root mantle head eyeFar eyeNear siphon finFar finNear · arm{0..7}Seg{0,1,2} (from head; 0..3 hang left, 4..7 right)
  *  flyer-membrane root pelvis spine chest neck head jaw · wing{Far,Near}{Root,Elbow,Wrist,Tip} · leg{Far,Near}{Knee,Foot} · ear{Far,Near}Tip · tail0
  *  primate     root pelvis spine chest neck head jaw · arm{Far,Near}{Shoulder,Elbow,Hand} · leg{Far,Near}{Hip,Knee,Foot} · tail0..2   */
+import {specializedTemplate,type SpecializedTemplateId} from '../../../../tools/creature-animation/specialized-templates.mjs';
 import type { JointLimitDeg, JointName, MotionTemplate, ProportionBound, SecondaryChain, Vec2 } from './templates.js';
 
 type Pair = readonly [JointName, JointName];
@@ -209,14 +210,16 @@ export const FAMILY_TEMPLATES: Readonly<Record<FamilyTemplateId, MotionTemplate>
   hopper: HOPPER, 'biped-bird': BIRD, fish: FISH, insect: INSECT, serpent: SERPENT, arachnid: ARACHNID, radial: RADIAL, 'plant-woody': WOODY, 'plant-herb': HERB,
   myriapod: MYRIAPOD, cephalopod: CEPHALOPOD, 'flyer-membrane': FLYER, primate: PRIMATE,
 });
-/** Painter family / rig family / flora architecture → template. Unlisted families have no motion library (whole-portrait fallback). */
+/** Painter family / rig family / flora architecture → template. Unlisted families have no motion library (whole-portrait fallback).
+ * Broad marine, crust and sessile labels are not anatomical inventories. They
+ * require a resolved body plan rather than silently borrowing fish/spider/bell bones. */
 export const TEMPLATE_BY_FAMILY: Readonly<Record<string, FamilyTemplateId | 'quadruped'>> = F({
   mammal: 'quadruped', reptile: 'quadruped', amphibian: 'quadruped', turtle: 'quadruped', quadruped: 'quadruped',
   frog: 'hopper', hopper: 'hopper', leaper: 'hopper',
-  bird: 'biped-bird', fish: 'fish', marine: 'fish', insect: 'insect', arachnid: 'arachnid', crust: 'arachnid', snake: 'serpent', serpent: 'serpent',
-  jelly: 'radial', sessile: 'radial', radial: 'radial',
+  bird: 'biped-bird', fish: 'fish', insect: 'insect', arachnid: 'arachnid', snake: 'serpent', serpent: 'serpent',
+  jelly: 'radial', radial: 'radial',
   myriapod: 'myriapod', centipede: 'myriapod', millipede: 'myriapod', ceph: 'cephalopod', cephalopod: 'cephalopod', bat: 'flyer-membrane', 'flyer-membrane': 'flyer-membrane', primate: 'primate',
   tree: 'plant-woody', shrub: 'plant-woody', vine: 'plant-woody', cane: 'plant-woody',
   fern: 'plant-herb', grass: 'plant-herb', rosette: 'plant-herb', seaweed: 'plant-herb', fungal: 'plant-herb',
 });
-export const templateIdForFamily = (family: string): FamilyTemplateId | 'quadruped' | null => TEMPLATE_BY_FAMILY[family.toLowerCase()] ?? null;
+export const templateIdForFamily = (family: string): FamilyTemplateId | SpecializedTemplateId | 'quadruped' | null => TEMPLATE_BY_FAMILY[family.toLowerCase()] ?? specializedTemplate(family.toLowerCase())?.id ?? null;

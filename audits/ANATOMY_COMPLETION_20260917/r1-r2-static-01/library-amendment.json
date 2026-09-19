@@ -1,0 +1,9 @@
+{
+  "schema": "cf.approved-library-amendment/v1",
+  "approval": "Nick, 2026-09-17 Q2 and Q5; anchored woody/herb roots, above-root grow/recoil, secondary-only foliage",
+  "canonicalization": "JSON.stringify with recursively sorted object keys; array order preserved; ACTIONS_BY_TEMPLATE includes ADDITIONAL_ACTIONS",
+  "templates": 14,
+  "actions": 169,
+  "sha256": "33c73842581781c2a75cb1ff0f25f7f582ff966e46d9ad1377b487d8c23975e9",
+  "familyActionsSourceSha256": "acc4606ceb1e0af31137ad8946a65d7287e5c1a3602461a6823c718983b394a9"
+}

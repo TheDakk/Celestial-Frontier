@@ -208,6 +208,7 @@ describe('explicit evidence-build runtime isolation', () => {
         f4Runtime: { setAnswerable: () => { trace.push('answerable'); } }, f4RuntimeMayAnswer: () => true,
         speciesArtLoader: { activate: () => { trace.push('art'); } },
         startAudiovisualPilot: () => { trace.push('pilot'); },
+        startLocalAiPreview: () => { trace.push('local-ai'); },
         window: Object.defineProperty({}, '__cfSliceReadyWitness', { get: getter }),
       });
     ready();
@@ -218,7 +219,7 @@ describe('explicit evidence-build runtime isolation', () => {
     expect(trace).toEqual([]);
     expect(tasks).toHaveLength(1);
     tasks.shift()!();
-    expect(trace).toEqual(['answerable', 'art', 'pilot']);
+    expect(trace).toEqual(['answerable', 'art', 'pilot', 'local-ai']);
     expect(getter).toHaveBeenCalledTimes(mode ? 1 : 0);
   });
 });

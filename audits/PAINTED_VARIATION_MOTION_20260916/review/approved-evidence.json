@@ -1,0 +1,60 @@
+{
+  "description": "Seed 10271 · original candidate, now fitted and animated",
+  "native": "native-approved-05",
+  "rig": "rig-approved-05",
+  "rest": 0,
+  "finalRest": 0,
+  "presentation": {
+    "samples": 601,
+    "maxGapPx": 0.0001162114714909935,
+    "status": "PASS"
+  },
+  "framing": {
+    "samples": 602,
+    "fullMotionBox": {
+      "minX": -0.03520626947283745,
+      "minY": 0.07145684212446213,
+      "maxX": 1.14040207862854,
+      "maxY": 0.9039753079414368
+    },
+    "view": {
+      "x": 745,
+      "y": 90,
+      "width": 610,
+      "height": 540
+    },
+    "fit": {
+      "scale": 518.8802894987585,
+      "x": 763.2678392962372,
+      "y": 52.922453071792006
+    },
+    "inside": true,
+    "oldRestOnlyInside": false
+  },
+  "capture": {
+    "rigUpdateP95Ms": 1.300000011920929,
+    "frames": 602,
+    "fps": 60.002795471336434,
+    "wholeFrameCpuP95Ms": 1.5,
+    "encodedMedia": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1400,
+          "height": 800,
+          "nb_read_frames": "606"
+        }
+      ],
+      "format": {
+        "duration": "10.099035"
+      }
+    },
+    "encodedFrames": {
+      "frames": 606,
+      "width": 1400,
+      "height": 800
+    }
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "schema": "cf.weather-details-ladder/v1",
+  "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_KIT_WEATHER_MAT_20260912/native-01/finisher-before-weather.png",
+  "sourceSha256": "6122041b8a113c883078415305fbe7b0f8203852b8caa2f35231008d37cafa59",
+  "baselineSha256": "4b776b03194acdf9a5facfb22c2e564e43a683e4e31cf4be932615acefbf6d26",
+  "modelRuns": 0,
+  "compilerDefaultChanged": false,
+  "variants": [
+    {
+      "id": "S",
+      "file": "S.png",
+      "sha256": "27b05593c0ab44768f6597b177f19d984c6a63ea8da012d7451445da8373dcea",
+      "schema": "cf.weather-details-review/v1",
+      "seed": 133,
+      "levers": {
+        "sheen": true,
+        "wetContrast": false,
+        "foregroundRain": false
+      },
+      "baseline": {
+        "dropletCount": 3,
+        "specularStrength": 3,
+        "precipitationDensity": 2
+      },
+      "sheenPixels": 17122,
+      "compressedPixels": 0,
+      "foregroundStrokes": 0,
+      "foregroundDensity": 0.0036,
+      "qualityAccepted": false,
+      "geometryChanged": false,
+      "modelRuns": 0
+    },
+    {
+      "id": "V",
+      "file": "V.png",
+      "sha256": "548452ec962d1859827a2ee48ee2e5bb20c757b849fad65bcd6f4c7b789d5ead",
+      "schema": "cf.weather-details-review/v1",
+      "seed": 133,
+      "levers": {
+        "sheen": false,
+        "wetContrast": true,
+        "foregroundRain": false
+      },
+      "baseline": {
+        "dropletCount": 3,
+        "specularStrength": 3,
+        "precipitationDensity": 2
+      },
+      "sheenPixels": 0,
+      "compressedPixels": 28691,
+      "foregroundStrokes": 0,
+      "foregroundDensity": 0.0036,
+      "qualityAccepted": false,
+      "geometryChanged": false,
+      "modelRuns": 0
+    },
+    {
+      "id": "P",
+      "file": "P.png",
+      "sha256": "f9beea29a7e54c9ab7cc96f8b7c814d0c9f41baeafe0490330866ed0e4cb11d3",
+      "schema": "cf.weather-details-review/v1",
+      "seed": 133,
+      "levers": {
+        "sheen": false,
+        "wetContrast": false,
+        "foregroundRain": true
+      },
+      "baseline": {
+        "dropletCount": 3,
+        "specularStrength": 3,
+        "precipitationDensity": 2
+      },
+      "sheenPixels": 0,
+      "compressedPixels": 0,
+      "foregroundStrokes": 1320,
+      "foregroundDensity": 0.0036,
+      "qualityAccepted": false,
+      "geometryChanged": false,
+      "modelRuns": 0
+    },
+    {
+      "id": "SV",
+      "file": "SV.png",
+      "sha256": "2854820dce4c02fa6b92cba2efa76431968407dd0f1e655d10bca392bcbb2637",
+      "schema": "cf.weather-details-review/v1",
+      "seed": 133,
+      "levers": {
+        "sheen": true,
+        "wetContrast": true,
+        "foregroundRain": false
+      },
+      "baseline": {
+        "dropletCount": 3,
+        "specularStrength": 3,
+        "precipitationDensity": 2
+      },
+      "sheenPixels": 17122,
+      "compressedPixels": 28691,
+      "foregroundStrokes": 0,
+      "foregroundDensity": 0.0036,
+      "qualityAccepted": false,
+      "geometryChanged": false,
+      "modelRuns": 0
+    },
+    {
+      "id": "SP",
+      "file": "SP.png",
+      "sha256": "74b1649d94358c96adc297886cafcecfcf03cbc390c56a8bcd494d1a37cf84e9",
+      "schema": "cf.weather-details-review/v1",
+      "seed": 133,
+      "levers": {
+        "sheen": true,
+        "wetContrast": false,
+        "foregroundRain": true
+      },
+      "baseline": {
+        "dropletCount": 3,
+        "specularStrength": 3,
+        "precipitationDensity": 2
+      },
+      "sheenPixels": 17122,
+      "compressedPixels": 0,
+      "foregroundStrokes": 1320,
+      "foregroundDensity": 0.0036,
+      "qualityAccepted": false,
+      "geometryChanged": false,
+      "modelRuns": 0
+    },
+    {
+      "id": "SVP",
+      "file": "SVP.png",
+      "sha256": "85e2367fb5fe75930f46dc2cd50af389d96a1965c38d04674970b83cde5e6d59",
+      "schema": "cf.weather-details-review/v1",
+      "seed": 133,
+      "levers": {
+        "sheen": true,
+        "wetContrast": true,
+        "foregroundRain": true
+      },
+      "baseline": {
+        "dropletCount": 3,
+        "specularStrength": 3,
+        "precipitationDensity": 2
+      },
+      "sheenPixels": 17122,
+      "compressedPixels": 28691,
+      "foregroundStrokes": 1320,
+      "foregroundDensity": 0.0036,
+      "qualityAccepted": false,
+      "geometryChanged": false,
+      "modelRuns": 0
+    }
+  ],
+  "controls": {
+    "baselineEExact": true,
+    "sourceAndMasksUnchanged": true,
+    "replayExact": true,
+    "alphaUnchanged": true,
+    "pngEncodingHasNoClockMetadata": true
+  }
+}

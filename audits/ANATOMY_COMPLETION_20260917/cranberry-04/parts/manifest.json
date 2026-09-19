@@ -1,0 +1,80 @@
+{
+  "creatureId": "cranberry",
+  "parts": [
+    {
+      "name": "branch-0-foliage.png",
+      "path": "parts/branch-0-foliage.png",
+      "sha256": "5e19c9084e427eeb3290d69a500dfda4cf7c79277b293d42f7a86c0e7175ffa2"
+    },
+    {
+      "name": "branch-0-wood.png",
+      "path": "parts/branch-0-wood.png",
+      "sha256": "efd015d61dfd9788daddff854e2a8219f3bbdc6c3e790dab5fbb806cf1512cc6"
+    },
+    {
+      "name": "branch-1-foliage.png",
+      "path": "parts/branch-1-foliage.png",
+      "sha256": "ca78a72a1759d0e725d2f7f7884ef7ffa75500447879d364d1850b65bc3120a6"
+    },
+    {
+      "name": "branch-1-wood.png",
+      "path": "parts/branch-1-wood.png",
+      "sha256": "8d67d9715b85e52a901fc02e8eb3ae264632edce707b27d939370c71dbc54b56"
+    },
+    {
+      "name": "branch-2-foliage.png",
+      "path": "parts/branch-2-foliage.png",
+      "sha256": "29a179561014cad60f42817197d55ff1cee7842fe2d431ba65bc2212dbda1641"
+    },
+    {
+      "name": "branch-2-wood.png",
+      "path": "parts/branch-2-wood.png",
+      "sha256": "baebe3cc0aa1e9b8c7f3f0a72cd8cd8c83f20df8fa13fc6047bd8ef374a83317"
+    },
+    {
+      "name": "branch-3-foliage.png",
+      "path": "parts/branch-3-foliage.png",
+      "sha256": "88cecbde65ceef17b5670c9c3ade051946e6663fd6ae730d07fee602e5a49838"
+    },
+    {
+      "name": "branch-4-foliage.png",
+      "path": "parts/branch-4-foliage.png",
+      "sha256": "5685187b4d2252bf4420cc01ce14c2f210f1316714bd480039336d651c851d39"
+    },
+    {
+      "name": "branch-4-wood.png",
+      "path": "parts/branch-4-wood.png",
+      "sha256": "618580c41382bf235bde249423a6f6fc5332abc678ace1a60b97cd0000ca20c4"
+    },
+    {
+      "name": "branch-5-foliage.png",
+      "path": "parts/branch-5-foliage.png",
+      "sha256": "ae9fd44cb776205f0c37d2f02406fe23d5806e9f81b65045fc62dc868cd38665"
+    },
+    {
+      "name": "branch-5-wood.png",
+      "path": "parts/branch-5-wood.png",
+      "sha256": "8aab81ba45a71b3652c976dcf391230bdff7189c8add7b4577cf5b7a95fabc19"
+    },
+    {
+      "name": "branch-6-foliage.png",
+      "path": "parts/branch-6-foliage.png",
+      "sha256": "1538b32e82959b0eca8609fd4351968119b3b436602e29ee30b5d19deb7df310"
+    },
+    {
+      "name": "branch-6-wood.png",
+      "path": "parts/branch-6-wood.png",
+      "sha256": "e9e08137b536175620ff314bbacd1de5e3b3d326b5e0bf064718ab906d9c39dd"
+    },
+    {
+      "name": "root.png",
+      "path": "parts/root.png",
+      "sha256": "de19efdaea27942466353eb2aaf7791f624d902d3623e62a3c35e17f434e478d"
+    },
+    {
+      "name": "trunk.png",
+      "path": "parts/trunk.png",
+      "sha256": "5fd4d08ef300edd207358e48f2750faa113d8351c8b2b36aa1330d0b88c389ed"
+    }
+  ]
+}

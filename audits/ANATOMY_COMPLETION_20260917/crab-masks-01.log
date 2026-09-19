@@ -1,0 +1,2 @@
+{"status":"BOOTING"}
+{"status":"FAIL","error":"Error: Error: Readback altered ordinary painting: Crab 1634\n    at need (http://127.0.0.1:50932/bundle.js:62694:17)\n    at http://127.0.0.1:50932/bundle.js:62716:3\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/fauna-coverage/native-runner.mjs:32:35"}

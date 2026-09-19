@@ -1,0 +1,16 @@
+{
+  "reviewPath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_R1R2_REVIEW.md",
+  "reviewSha256": "53c5bae6231ad15890c7486d3690b82724df4865bf16031638d53fd3b3dfb3a2",
+  "approval": "Nick: Direction block is here; Q4 is approved.",
+  "scope": [
+    "N1",
+    "N2",
+    "N3",
+    "N4",
+    "N6",
+    "approved Q4 paragraph only"
+  ],
+  "pending": "N1: preserve observed pivots and bound declared scale span versus raising the old body-axis floor and refusing incompatible records",
+  "head": "57dfe112cf5a584193afa17ae91d779da694f0e7",
+  "sourceState": "uncommitted prepared correction; no native capture"
+}

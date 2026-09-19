@@ -12,6 +12,8 @@
    structural families) and take their PALETTE from the genome, so a corrected
    species still belongs to its rarity/color roll — bodies, not recolors. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import {observePainterTopology,type PainterTopology} from './painter-topology.js';
+import {recordPainterPrefixes} from './painter-prefix-replay.js';
 import { speciesHue } from './surface.js';
 import { SP_COLOR, SP_HEX } from '@cf/domain-speciestraits';
 import { FLORA_ICONIC, FLORA_DUPES, floraLadder, type Pal } from './floraoverrides.js';
@@ -1674,7 +1676,25 @@ function applyReviewedFaunaLineageDrift(c: Ctx, g: G, name: string): void {
   c.restore();
 }
 
-export function resolveOverrideCanvas(g: G): ArtCanvas | null {
+/** Preserve ordinary pixels: stage readbacks can change Canvas2D backend selection.
+ * Capture ownership on a separate deterministic render, as the quadruped owner does. */
+export function resolveOverrideCanvas(g:G,observeTopology?:PainterTopologyObserver):ArtCanvas|null{
+  if(!observeTopology?.captureParts)return paintOverrideCanvas(g,observeTopology);
+  let primary:{topology:PainterTopology;ink:ArtCanvas}|undefined,captured:PainterTopology|undefined;
+  const normal=paintOverrideCanvas(g,(topology,ink)=>{if(topology)primary={topology,ink};});
+  if(!normal||!primary)throw Error('Topology masks: missing winning owner');
+  const capture:PainterTopologyObserver=topology=>{if(topology)captured=topology;};capture.captureParts=true;
+  paintOverrideCanvas(g,capture);
+  if(!captured?.partMasks)throw Error('Topology masks: owner has no source masks');
+  const {partMasks,...geometry}=captured;
+  if(JSON.stringify(geometry)!==JSON.stringify(primary.topology))throw Error('Topology masks: replay changed anatomy');
+  if(partMasks.width!==primary.ink.width||partMasks.height!==primary.ink.height)throw Error('Topology masks: replay dimensions');
+  const rgba=primary.ink.getContext('2d')!.getImageData(0,0,partMasks.width,partMasks.height).data,labels=partMasks.labels.slice();
+  for(let i=0;i<labels.length;i++){if(!rgba[i*4+3])labels[i]=0;else if(!labels[i])throw Error('Topology masks: replay missed visible ink');}
+  observeTopology({...primary.topology,partMasks:{...partMasks,labels}},primary.ink);
+  return normal;
+}
+function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {
   /* normalize the curly apostrophe (U+2019) to ASCII — the roster uses it
      (Lion's Mane), which is exactly the mojibake Nick's audit caught */
   const earthName = String((g as { _earthName?: string })._earthName || '').replace(/[’‘]/g, "'");
@@ -1695,7 +1715,7 @@ export function resolveOverrideCanvas(g: G): ArtCanvas | null {
      kingdom-qualified lookup prevents duplicate names crossing ownership. */
   const name = earthName || (kingdom === 'flora' || kingdom === 'fungi' || kingdom === 'microbe' || reviewedFaunaBlend ? blend : '');
   if (!name && blend) return null;
-  if (!name) return resolveProceduralCanvas(g);
+  if (!name) return resolveProceduralCanvas(g,undefined,false,observeTopology);
   /* ★ WAVE 18 — CANONICAL + CROSS-KINGDOM audit blockers. Four organisms live
      in TWO kingdoms each (the 1,014-vs-1,010 count delta), and a few iconic
      species need a bespoke painter regardless of which family the kingdom
@@ -1707,7 +1727,7 @@ export function resolveOverrideCanvas(g: G): ArtCanvas | null {
     vignette(c, kingdom === 'fungi');
     floorFade(c);
     const ink = newInk();
-    canon(ink.c, g, palette(g) as Pal);
+    paintWithTopology(ink,()=>canon(ink.c, g, palette(g) as Pal),observeTopology);
     applyReviewedFaunaLineageDrift(ink.c, g, name);
     fitInk(ink.cv, c, kingdom + ':' + name);
     return cv;
@@ -1724,7 +1744,7 @@ export function resolveOverrideCanvas(g: G): ArtCanvas | null {
     vignette(c, false);
     floorFade(c);
     const ink = newInk();
-    (iconic || floraLadder)(ink.c, g, palette(g) as Pal, name);
+    paintWithTopology(ink,()=>(iconic || floraLadder)(ink.c, g, palette(g) as Pal, name),observeTopology);
     fitInk(ink.cv, c, 'flora:' + name);
     return cv;
   }
@@ -1737,8 +1757,8 @@ export function resolveOverrideCanvas(g: G): ArtCanvas | null {
     vignette(c, false);
     floorFade(c);
     const ink = newInk();
-    if (fp) fp(ink.c, g, palette(g) as Pal, name);
-    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);
+    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);
+    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);},observeTopology);
     applyReviewedFaunaLineageDrift(ink.c, g, name);
     fitInk(ink.cv, c, 'fauna:' + name);
     return cv;
@@ -1749,7 +1769,7 @@ export function resolveOverrideCanvas(g: G): ArtCanvas | null {
   vignette(c, kingdom === 'fungi');
   floorFade(c);
   const ink = newInk();
-  painter(ink.c, g, palette(g));
+  paintWithTopology(ink,()=>painter(ink.c, g, palette(g)),observeTopology);
   fitInk(ink.cv, c, kingdom + ':' + name);
   return cv;
 }
@@ -1798,7 +1818,43 @@ const R2_MICROBE_COLONY_SEEDS: ReadonlySet<number> = new Set([
   1077367562, 4135221025, 753721544, 3287574574, 1224906226, 2757882450, 1718796946,
 ]);
 
-export function resolveProceduralCanvas(g: G, observeAnatomy?: (geometry: import('./quadruped-anatomy.js').QuadrupedDrawnGeometry, ink: ArtCanvas) => void): ArtCanvas | null {
+export type PainterTopologyObserver=((topology:PainterTopology|null,ink:ArtCanvas)=>void)&{captureParts?:boolean};
+function paintWithTopology(ink:{c:Ctx;cv:ArtCanvas},paint:()=>void,observe?:PainterTopologyObserver):void{
+  if(observe){
+    const original=ink.c,replay=observe.captureParts?recordPainterPrefixes(original):undefined;
+    if(replay)ink.c=replay.context;
+    try{const topology=observePainterTopology(ink.c,paint,{captureParts:observe.captureParts??false});
+      observe(topology?{...topology,rasterFrame:{width:ink.cv.width,height:ink.cv.height,origin:[INK_OFF,INK_OFF],scale:1}}:null,ink.cv);
+    }finally{ink.c=original;replay?.close();}
+  }else paint();
+}
+
+type DrawnObserver = (geometry: import('./quadruped-anatomy.js').QuadrupedDrawnGeometry, ink: ArtCanvas) => void;
+/** Ordinary paint is completed without stage readbacks. Optional authoring masks
+ * are observed from a second deterministic invocation of the same winning owner.
+ * That readback render is never substituted for the ordinary cut-out or portrait. */
+export function resolveProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, captureParts = false, observeTopology?:PainterTopologyObserver): ArtCanvas | null {
+  if (!captureParts) return paintProceduralCanvas(g, observeAnatomy,false,observeTopology);
+  if (!observeAnatomy) throw Error('Painter mask capture requires an anatomy consumer');
+  let primary: {geometry: import('./quadruped-anatomy.js').QuadrupedDrawnGeometry; ink: ArtCanvas} | undefined;
+  const normal = paintProceduralCanvas(g, (geometry, ink) => { primary = {geometry, ink}; },false,observeTopology);
+  if (!normal || !primary) throw Error('No winning anatomy observer for part capture');
+  let captured: import('./painter-part-capture.js').PaintedPartMasks | undefined;
+  paintProceduralCanvas(g, geometry => {
+    if (JSON.stringify(geometry.landmarks) !== JSON.stringify(primary!.geometry.landmarks) || JSON.stringify(geometry.materials) !== JSON.stringify(primary!.geometry.materials) || JSON.stringify(geometry.weapons) !== JSON.stringify(primary!.geometry.weapons)) throw Error('Painter mask replay changed resolved anatomy');
+    captured = geometry.partMasks;
+  }, true);
+  if (!captured || captured.width !== primary.ink.width || captured.height !== primary.ink.height) throw Error('Painter mask replay dimensions');
+  const rgba = primary.ink.getContext('2d')!.getImageData(0, 0, captured.width, captured.height).data;
+  const labels = captured.labels.slice();
+  for (let i = 0; i < labels.length; i++) {
+    if (!rgba[i * 4 + 3]) labels[i] = 0;
+    else if (!labels[i]) throw Error('Painter mask replay missed ordinary visible ink');
+  }
+  observeAnatomy({...primary.geometry, partMasks: {...captured, labels}}, primary.ink);
+  return normal;
+}
+function paintProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, captureParts = false, observeTopology?:PainterTopologyObserver): ArtCanvas | null {
   /* ★ WAVE 17 — THE LAST MONO-TEMPLATE (Nick's audit §12/§13, for the
      PROCEDURAL spread). Wave 1 gave the NAMED fungi and microbes structural
      families, but every procedural genome in those two kingdoms still fell
@@ -1861,7 +1917,7 @@ export function resolveProceduralCanvas(g: G, observeAnatomy?: (geometry: import
     vignette(c, kingdom === 'fungi');
     floorFade(c);
     const ink = newInk();
-    painter(ink.c, g, pal);
+    paintWithTopology(ink,()=>painter(ink.c, g, pal),observeTopology);
     fitInk(ink.cv, c, 'proc:' + kingdom + ':' + String(g.seed));
     const haloAllowed = Boolean(g.lumin)
       && !(kingdom === 'fungi' && (familyIndex === 1 || familyIndex === 4))
@@ -1891,8 +1947,9 @@ export function resolveProceduralCanvas(g: G, observeAnatomy?: (geometry: import
   /* the label is the plan, not a species — it keeps fitInk's clip reporting
      actionable without pretending a procedural creature has a name */
   const who = 'proc:' + plan.kind + ':' + String(g.seed);
-  switch (plan.kind) {
-    case 'quad': faunaQuadruped(ink.c, g, pal, plan.spec, who, observeAnatomy ? geometry => observeAnatomy(geometry, ink.cv) : undefined); break;
+  if (captureParts && plan.kind !== 'quad') throw Error('Part capture has no observer for this painter family');
+  paintWithTopology(ink,()=>{switch (plan.kind) {
+    case 'quad': faunaQuadruped(ink.c, g, pal, plan.spec, who, observeAnatomy ? geometry => observeAnatomy(geometry, ink.cv) : undefined, captureParts); break;
     case 'fish': fishBody(ink.c, g, pal, plan.spec, who); break;
     case 'insect': insectBody(ink.c, g, pal, plan.spec, who); break;
     case 'bird': faunaBird(ink.c, g, pal, plan.spec, who); break;
@@ -1906,7 +1963,7 @@ export function resolveProceduralCanvas(g: G, observeAnatomy?: (geometry: import
     case 'plant': plantBody(ink.c, g, pal, plan.spec, who); break;
     case 'alienPlant': proceduralAlienFlora(ink.c, g, pal, plan.architecture); break;
     case 'radial': proceduralRadialFauna(ink.c, g, pal); break;
-  }
+  }},observeTopology);
   fitInk(ink.cv, c, who);
   return cv;
 }

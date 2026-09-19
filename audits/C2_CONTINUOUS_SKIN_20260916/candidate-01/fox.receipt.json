@@ -1,0 +1,21 @@
+{
+  "schema": "cf.paint-skin-intake/v1",
+  "sourceBindingHash": "12416bf72d4de1d105ac2d3c01ba790ac1fa6ca1cc71fb5306477cf522a91cda",
+  "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+  "packedPixels": {
+    "schema": "cf.parts-byte-verification/v1",
+    "bindingHash": "12416bf72d4de1d105ac2d3c01ba790ac1fa6ca1cc71fb5306477cf522a91cda",
+    "atlasSha256": "0dff6383d7825fa73ec0aa8f231e4e0e32dcb2f9f26d3872515192955416ac5c",
+    "parts": 38,
+    "comparedChannels": 13632700,
+    "changedChannels": 0
+  },
+  "vertices": 2559,
+  "partVertices": 4124,
+  "parts": 22,
+  "leaves": 1124,
+  "triangles": 4736,
+  "originalInkOnly": true,
+  "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+  "nativeAcceptance": false
+}

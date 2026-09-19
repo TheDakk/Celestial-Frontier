@@ -1,0 +1,5 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/motion/repeated-anatomy.test.ts(76,114): error TS2367: This comparison appears to be unintentional because the types 'PartGroup' and '"eyes"' have no overlap.

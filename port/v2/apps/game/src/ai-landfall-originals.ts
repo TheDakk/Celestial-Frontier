@@ -1,10 +1,11 @@
 /* Origin-local exact originals, separate from game persistence and disposable
  * image variants. IDB retention is not an outside-origin backup or art acceptance.
  * No delete/evict/overwrite-original API exists. Inputs are detached recipe data,
- * never navigation or gameplay authority. Matches code as of 2026-09-09. */
+ * never navigation or gameplay authority. Matches code as of 2026-09-14. */
 import { LocalModelSha256V1 } from './local-model-sha256.js';
+import {hashLandfallBlobV1, LANDFALL_HASH_MAX_BYTES_V1} from './landfall-content-hash.js';
 
-export const AI_LANDFALL_ORIGINAL_MAX_BYTES_V1 = 16 * 1024 * 1024;
+export const AI_LANDFALL_ORIGINAL_MAX_BYTES_V1 = LANDFALL_HASH_MAX_BYTES_V1;
 export const AI_LANDFALL_ORIGINAL_DATABASE_V1 = 'cf-ai-landfall-originals-v1';
 const ORIGINALS = 'originals';
 const LATEST = 'latest';
@@ -71,26 +72,8 @@ function generatedShape(value: AiLandfallGeneratedV1): void {
     throw new TypeError('Invalid or oversized landfall original');
   }
 }
-async function blobDigest(blob: Blob): Promise<string> {
-  const hasher = new LocalModelSha256V1();
-  const reader = blob.stream().getReader();
-  let bytes = 0;
-  try {
-    while (true) {
-      const next = await reader.read();
-      if (next.done) break;
-      bytes += next.value.byteLength;
-      if (bytes > blob.size || bytes > AI_LANDFALL_ORIGINAL_MAX_BYTES_V1) {
-        throw new Error('Landfall original stream exceeded its declared size');
-      }
-      hasher.update(next.value);
-    }
-  } finally { reader.releaseLock(); }
-  if (bytes !== blob.size) throw new Error('Landfall original stream was truncated');
-  return hasher.digestHex();
-}
 async function verifyOriginal(
-  input: AiLandfallInputV1, originalId: string, candidate: unknown,
+  input: AiLandfallInputV1, inputKey: string, originalId: string, candidate: unknown,
 ): Promise<AiLandfallOriginalV1> {
   if (!candidate || typeof candidate !== 'object') throw new Error('Missing landfall original record');
   const row = candidate as AiLandfallOriginalV1;
@@ -98,8 +81,8 @@ async function verifyOriginal(
   if (row.schema !== SCHEMA || row.originalId !== originalId
     || typeof row.sha256 !== 'string' || !/^[a-f0-9]{64}$/u.test(row.sha256)
     || inputJson(row.input) !== inputJson(input)
-    || originalId !== `${aiLandfallInputKeyV1(input)}:${row.sha256}`
-    || await blobDigest(row.blob) !== row.sha256) {
+    || originalId !== `${inputKey}:${row.sha256}`
+    || await hashLandfallBlobV1(row.blob) !== row.sha256) {
     throw new Error('Landfall original identity or content verification failed');
   }
   return Object.freeze({ schema: SCHEMA, originalId, input: copyAiLandfallInputV1(input),
@@ -148,8 +131,9 @@ export function createAiLandfallOriginalStoreV1(options: {
     opening = opening.catch(error => { opening = null; throw error; });
     return opening;
   };
-  const fetchRecord = async (input: AiLandfallInputV1, id: string | null): Promise<AiLandfallOriginalV1 | null> => {
+  const fetchRecord = async (input: AiLandfallInputV1, id: string | null, retainedInputKey?: string): Promise<AiLandfallOriginalV1 | null> => {
     const identity = copyAiLandfallInputV1(input);
+    const inputKey = retainedInputKey ?? aiLandfallInputKeyV1(identity);
     const db = await open();
     const result = await new Promise<{ id: string; row: unknown } | null>((resolve, reject) => {
       const transaction = db.transaction([ORIGINALS, LATEST], 'readonly');
@@ -161,7 +145,7 @@ export function createAiLandfallOriginalStoreV1(options: {
       };
       if (id !== null) getOriginal(id);
       else {
-        const request = transaction.objectStore(LATEST).get(aiLandfallInputKeyV1(identity));
+        const request = transaction.objectStore(LATEST).get(inputKey);
         request.onsuccess = () => {
           if (request.result !== undefined) {
             if (typeof request.result !== 'string') { transaction.abort(); return; }
@@ -177,14 +161,14 @@ export function createAiLandfallOriginalStoreV1(options: {
       transaction.onerror = () => reject(transaction.error ?? new Error('Landfall original read failed'));
       transaction.onabort = () => reject(transaction.error ?? new Error('Landfall original read aborted'));
     });
-    return result === null ? null : verifyOriginal(identity, result.id, result.row);
+    return result === null ? null : verifyOriginal(identity, inputKey, result.id, result.row);
   };
   return Object.freeze({
     async retain(input: AiLandfallInputV1, generated: AiLandfallGeneratedV1): Promise<AiLandfallOriginalV1> {
       const identity = copyAiLandfallInputV1(input);
       const rendered = Object.freeze({ blob: generated.blob, width: generated.width, height: generated.height });
       generatedShape(rendered);
-      const sha256 = await blobDigest(rendered.blob);
+      const sha256 = await hashLandfallBlobV1(rendered.blob);
       const inputKey = aiLandfallInputKeyV1(identity);
       const originalId = `${inputKey}:${sha256}`;
       const candidate: AiLandfallOriginalV1 = Object.freeze({ schema: SCHEMA, originalId,
@@ -202,7 +186,7 @@ export function createAiLandfallOriginalStoreV1(options: {
         transaction.onerror = () => reject(transaction.error ?? new Error('Landfall original retention failed'));
         transaction.onabort = () => reject(transaction.error ?? new Error('Landfall original retention aborted'));
       });
-      const retained = await fetchRecord(identity, originalId);
+      const retained = await fetchRecord(identity, originalId, inputKey);
       if (retained === null) throw new Error('Committed landfall original is missing');
       return retained;
     },

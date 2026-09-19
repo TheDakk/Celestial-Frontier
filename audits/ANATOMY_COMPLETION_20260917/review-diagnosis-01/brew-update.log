@@ -1,0 +1,34 @@
+==> Updating Homebrew...
+Updated 2 taps (homebrew/core and homebrew/cask).
+==> New Formulae
+bashka: Static verification of installation bash scripts
+bend: Language that blocks AI mistakes via proof
+fastplong: Ultra-fast preprocessing and quality control for long-read sequencing data
+go-arch-lint: Architecture linter for Go projects
+smbclient-ng: Fast and user friendly way to interact with SMB shares
+taoup: Tao of Unix Programming with Ruby-powered ANSI-colored fortunes
+termaid: Render Mermaid diagrams in the terminal
+workmux: Git worktrees + tmux windows for zero-friction parallel dev
+==> New Casks
+colamd: Markdown editor
+incy: Proxy client
+kaku: Terminal optimised for AI coding
+muse: AI assistant for managing tasks, projects, and long-term goals
+openplc-editor: IDE for creating programs for the OpenPLC Runtime
+saega: Dictation app for Swedish and Norwegian
+tapmap: Visualise network connections on an interactive world map
+tencent-yingyongbao: Tencent application store
+==> Outdated Formulae
+ffmpeg
+libde265
+libheif
+libvmaf
+merve
+node
+readline
+simdutf
+xz
+
+You have 9 outdated formulae installed.
+You can upgrade them with brew upgrade
+or list them with brew outdated.

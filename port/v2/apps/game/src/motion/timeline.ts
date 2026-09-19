@@ -21,6 +21,7 @@ export interface MotionTimeline {
   readonly secondary: readonly SecondaryTrack[];
   readonly deform: { readonly squash: number; readonly stretch: number };
   readonly hitstopMs: number; readonly luminousPulseMs: number;
+  readonly limitsRad: Readonly<Record<string, {readonly min:number;readonly max:number}>>;
   readonly clamped: readonly string[]; readonly notes: readonly string[];
   readonly hash: string;
 }
@@ -39,8 +40,8 @@ export function resolveActionId(card: BodyCard, actionId: string): { id: string;
   if (actionId === 'melee') {
     const verbs = templateMelees(card.template.id), alias = MELEE_ALIAS[card.template.id] ?? {};
     const w = card.weapons.map((x: Weapon) => alias[x] ?? x).find((x) => verbs.includes(x));
-    const first = verbs[0] ?? 'bite';
-    return w ? { id: 'melee:' + w, note: null } : { id: 'melee:' + first, note: `no ${card.template.id} melee for weapons [${card.weapons.join(',')}]; ${first} used` };
+    if(!w)throw Error(`motion: no admitted ${card.template.id} melee for weapons [${card.weapons.join(',')}]`);
+    return { id: 'melee:' + w, note: null };
   }
   return { id: actionId, note: null };
 }
@@ -65,10 +66,13 @@ const CHAIN_ATTENUATION = 0.6;
 
 export function buildTimeline(card: BodyCard, actionId: string, seed: number): MotionTimeline {
   const resolved = resolveActionId(card, actionId);
-  const action: MotionAction | undefined = actionsFor(card.template.id)?.[resolved.id];
+  const action: MotionAction | undefined = actionsFor(card.template.id,card.anatomy)?.[resolved.id];
   if (!action) throw new Error(`motion: ${card.template.id} has no action "${resolved.id}"`);
-  const mass = card.massClass.multiplier, notes: string[] = [...card.notes];
-  if (resolved.note) notes.push(resolved.note);
+  return buildActionTimeline(card,action,seed,resolved.note?[...card.notes,resolved.note]:card.notes);
+}
+/** Shared constructor for ordinary playback and reviewed editor overlays. */
+export function buildActionTimeline(card:BodyCard,action:MotionAction,seed:number,notesIn:readonly string[]=card.notes):MotionTimeline {
+  const mass=card.massClass.multiplier,notes=[...notesIn];
   const phases = action.family === 'idle' || action.family === 'sway' ? [['period', idlePeriodMs(seed, mass)] as const] : phaseDurations(action.family, mass);
   const bodyMs = phases.reduce((s, [, ms]) => s + ms, 0);
   const clamped: string[] = [];
@@ -77,12 +81,12 @@ export function buildTimeline(card: BodyCard, actionId: string, seed: number): M
   for (const joint of joints) {
     const lim = card.bounds.limitsDeg[joint];
     tracks[joint] = [REST_KEY, ...action.poses.map((pose) => {
-      let deg = pose.joints[joint] ?? 0;
+      let deg = (pose.joints[joint] ?? 0) * (card.amplitudeProfile?.scales[joint] ?? 1) * (card.projectionScales?.[joint] ?? 1);
       if (lim && (deg < lim.min || deg > lim.max)) { clamped.push(`${action.id}/${joint}@${pose.t.toFixed(3)}:${deg}`); deg = Math.min(lim.max, Math.max(lim.min, deg)); }
-      return { ms: pose.t * bodyMs, t: pose.t, value: deg * DEG, ease: pose.ease };
+      return { ms: pose.t * bodyMs, t: pose.t, value: deg * DEG * (card.projectionSigns?.[joint] ?? 1), ease: pose.ease };
     })];
   }
-  const rootKeys = (pick: 'dx' | 'dy'): Keyframe[] => [REST_KEY, ...action.poses.map((p) => ({ ms: p.t * bodyMs, t: p.t, value: p.root[pick], ease: p.ease }))];
+  const rootKeys = (pick: 'dx' | 'dy'): Keyframe[] => [REST_KEY, ...action.poses.map((p) => ({ ms: p.t * bodyMs, t: p.t, value: p.root[pick] * (action.rootUnit==='motion-scale'?card.scaleLength/card.bodyLength:1), ease: p.ease }))];
   // Secondary: the authored joint track arrives lagMs late, overshoots by the material's fraction, then settles.
   const secondary: SecondaryTrack[] = [];
   let maxLag = 0;
@@ -106,7 +110,8 @@ export function buildTimeline(card: BodyCard, actionId: string, seed: number): M
   }
   const rule = secondary[0];
   const body: Omit<MotionTimeline, 'hash'> = {
-    kind: 'motion-timeline', actionId: resolved.id, family: action.family, loop: action.loop, seed, recipeHash: card.recipeHash, massClass: card.massClass.name,
+    kind: 'motion-timeline', actionId: action.id, family: action.family, loop: action.loop, seed, recipeHash: card.recipeHash, massClass: card.massClass.name,
+    limitsRad: Object.fromEntries(Object.entries(card.bounds.limitsDeg).map(([j,l])=>[j,card.projectionSigns?.[j]===-1?{min:-l.max*DEG,max:-l.min*DEG}:{min:l.min*DEG,max:l.max*DEG}])),
     bodyMs, durationMs: action.loop ? bodyMs : bodyMs + maxLag, phases, tracks, root: { dx: rootKeys('dx'), dy: rootKeys('dy') }, secondary,
     deform: { squash: rule?.squash ?? 0, stretch: rule?.stretch ?? 0 },
     hitstopMs: action.family === 'melee' ? hitstopMs(mass) : 0, luminousPulseMs: card.luminous ? 1800 : 0, clamped, notes,
@@ -114,6 +119,11 @@ export function buildTimeline(card: BodyCard, actionId: string, seed: number): M
   return { ...body, hash: fnv1a(JSON.stringify(body)) };
 }
 const wrap = (tl: MotionTimeline, ms: number): number => tl.loop ? ((ms % tl.bodyMs) + tl.bodyMs) % tl.bodyMs : Math.min(Math.max(ms, 0), tl.durationMs);
+/** Limits apply after easing and material overshoot, in the projected joint basis. */
+export function boundedJoint(tl:MotionTimeline,joint:string,value:number):number{
+ const l=tl.limitsRad[joint];if(!l||!Number.isFinite(value))throw Error('motion: invalid joint sample '+joint);
+ return Math.max(l.min,Math.min(l.max,value));
+}
 export function sampleTimeline(tl: MotionTimeline, ms: number): MotionPose {
   const at = wrap(tl, ms), joints: Record<string, number> = {};
   for (const [joint, keys] of Object.entries(tl.tracks)) joints[joint] = sampleKeys(keys, at);
@@ -122,6 +132,7 @@ export function sampleTimeline(tl: MotionTimeline, ms: number): MotionPose {
     const t = tl.loop ? ((at - s.lagMs) % tl.bodyMs + tl.bodyMs) % tl.bodyMs + s.lagMs : at;
     joints[s.joint] = s.rigid ? sampleKeys(tl.tracks[s.joint] ?? [], at) : sampleKeys(s.keys, t);
   }
+  for(const j of Object.keys(joints))joints[j]=boundedJoint(tl,j,joints[j]!);
   const dx = sampleKeys(tl.root.dx, at), dy = sampleKeys(tl.root.dy, at);
   const vx = sampleKeys(tl.root.dx, Math.min(at + 1, tl.durationMs)) - dx, vy = dy - sampleKeys(tl.root.dy, Math.max(at - 1, 0));
   const launch = Math.min(1, Math.max(0, vx / 0.004)), land = dy >= -0.001 ? Math.min(1, Math.max(0, vy / 0.001)) : 0;

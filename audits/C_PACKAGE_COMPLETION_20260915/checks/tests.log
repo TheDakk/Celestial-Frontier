@@ -1,0 +1,173 @@
+
+> cf-v2@0.0.0 test
+> npm run test:tools && node tools/run-unit-tests.mjs
+
+
+> cf-v2@0.0.0 test:tools
+> node tools/test-node-tools.mjs
+
+✔ arena intake binds full compiler card, context, ground, dimensions and keyed copies; mutations refuse (444.913375ms)
+✔ closed twelve-at-a-time inventory retains original bytes and refuses missing, duplicate, reordered and stale inputs (100.372208ms)
+✔ real codec export is deterministic, preserves decoded duration and source bytes, and measures both peaks (343.791458ms)
+✔ sample-safe intersample clipping is rejected by real true-peak measurement (51.027792ms)
+✔ missing metrics, false encoded peak, wrong channels, duration and unsupported profiles refuse (3.218791ms)
+✔ complete voice export preserves source hashes and refuses existing output or changed manifest before publication (3177.451291ms)
+✔ theme, battle and overlapped bed exports preserve source/sidecar bytes and fit exact budgets (6177.651875ms)
+✔ loop derivative joins the exact declared samples, preserves channels and source; seed changes phase only (10.696667ms)
+✔ WAV intake refuses malformed, silent, clipped and wrong-format masters (1.415667ms)
+✔ runtime minimum admits large masters without resampling and refuses undersize or corrupt PNG (91.697292ms)
+✔ voice inventory, rights, dry source and hashes fail closed; source bytes stay unchanged (3.786208ms)
+✔ all closed ability/battle inventories pass; missing, extra, renamed, wet and unlicensed cues refuse (27.300875ms)
+✔ bed inventory binds a stereo source and exact loop sidecar; malformed or stale loops refuse (104.793083ms)
+✔ loop discontinuity is measured per channel without claiming it is inaudible (0.385875ms)
+✔ depth is pivot-distance and cumulative-limit driven, with fixed floor/cap (0.93425ms)
+✔ bands duplicate only own descendant opaque ink and attach to ancestor in descendant layer (0.783917ms)
+✔ unowned hips and tail root resolve to torso; true siblings do not become ancestors (0.141292ms)
+✔ descendant size cap prevents whole small appendage duplication (0.084333ms)
+✔ civet complete contact inventory passes; formerly green missing pairs refuse (25.094875ms)
+✔ fox complete contact inventory passes; formerly green missing pairs refuse (25.718958ms)
+✔ procedural complete contact inventory passes; formerly green missing pairs refuse (11.4155ms)
+✔ intact rest and rigid motion preserve the authored notch; real separation fails (6.217541ms)
+✔ a covered rotated cut passes and removing its support fails on the same geometry (1.326333ms)
+✔ empty, overlapping, malformed and clipped observations refuse rather than pass (1.3525ms)
+✔ transparent diagnostic padding preserves the true gap count and detects canvas escape (1.672209ms)
+✔ joint underlap never introduces a rest-visible pixel outside opaque base coverage (0.833209ms)
+✔ excluded crop corner key is ignored but retained key ink refuses (0.258167ms)
+✔ only real multi-owner interior vertices with a painted ancestor qualify (0.655416ms)
+✔ three copies of one point expose a native hole that pair-only geometry misses (1.209709ms)
+✔ socket triangle has zero rest area, uses only descendant texel and validates all owners (0.928667ms)
+✔ both source parts share exact deformation; rest reconstructs authored positions without patches (0.972875ms)
+✔ foreign joints, missing source ownership, extrapolated UVs and corrupt indices refuse (0.2395ms)
+✔ a foldover fails on the actual posed triangle, while rest and rigid translation pass (0.284959ms)
+✔ authored mask ownership reconstructs visible pixels; drops, duplicates and changed colours fail (321.817584ms)
+✔ corruption, wrong master, wrong record and unknown joint refuse before output (132.261292ms)
+✔ painter labels reconstruct actual alpha and refuse dropped, unknown or rehashed foreign owners (390.798791ms)
+✔ hash-bound master, corruption, swapped cut-out and unsupported serpent controls (6.901875ms)
+✔ alpha topology refines at silhouette, skips empty regions and shares edges (2.945792ms)
+✔ template finite endpoints restore exact rest; curves move jaw, ears, tail and release feet only in attack (54.487416ms)
+✔ one CLI atlas is byte-stable across input order; original pixels and hashes survive (730.916458ms)
+✔ strip is exactly zero-area at rest, covers moving edge separation, samples only original descendant pixel (0.977416ms)
+✔ source caps, foreign pixels, bad ownership, malformed geometry and nonfinite motion refuse (0.333833ms)
+✔ subpixel overlap closes the captured strike raster crack; exact-edge control opens it (0.739583ms)
+✔ ancestral contacts resolve pelvis ink to torso and refuse independent siblings (0.283375ms)
+✔ source walk stops before a transparent hole and never exceeds the original depth cap (0.902125ms)
+✔ textured hinge omits the duplicate silhouette, maps the source interior, and refuses foreign UVs (0.453792ms)
+✔ complete descendant support distinguishes a missing band from absent source ink (0.509791ms)
+✔ inverse mapping follows translation and rotation rather than the rest image coordinate (0.345667ms)
+✔ invalid matrices, geometry, data and targets refuse instead of reporting no ink (0.442292ms)
+✔ verifies the hidden band against packed bytes and refuses a resealed pixel or dimension mismatch (8.130167ms)
+✔ independent media duration rejects first short recordings and missing/overlong evidence (0.955334ms)
+✔ startup feeds frames before acknowledgment and refuses a recorder that never starts (0.571291ms)
+ℹ tests 52
+ℹ suites 0
+ℹ pass 52
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9917.174333
+
+> @cf/game@0.0.0 build
+> vite build --mode evidence
+
+vite v8.2.0 building client environment for evidence...
+[2Ktransforming...✓ 1041 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/manifest.webmanifest                                                                    0.72 kB
+dist/audit.html                                                                              0.86 kB │ gzip:     0.42 kB
+dist/hybrid-matrix.html                                                                      0.95 kB │ gzip:     0.44 kB
+dist/__local_ai/kit-stage-worker.mjs                                                         1.07 kB
+dist/icons/celestial-frontier-maskable.svg                                                   1.13 kB │ gzip:     0.53 kB
+dist/icons/celestial-frontier.svg                                                            1.13 kB │ gzip:     0.53 kB
+dist/audiovisual-pilot.html                                                                  1.13 kB │ gzip:     0.45 kB
+dist/__local_ai/denoiser-shapes.mjs                                                          2.37 kB
+dist/__local_ai/kit-worker-expansion.mjs                                                     3.92 kB
+dist/assets/Inter-LICENSE-CkXC2-KD.txt                                                       4.38 kB │ gzip:     1.97 kB
+dist/__local_ai/kit-weather-math.mjs                                                         4.43 kB
+dist/__local_ai/kit-contact-math.mjs                                                         6.19 kB
+dist/assets/planet-surface-turn.worker-jKUKmrS4.js                                           6.45 kB
+dist/__local_ai/kit-engine-math.mjs                                                          7.03 kB
+dist/__local_ai/gpu-profile.mjs                                                              9.72 kB
+dist/__local_ai/pipeline-math.mjs                                                           10.22 kB
+dist/assets/scout-chemical-132-Dt4gyYnA.webp                                                12.53 kB
+dist/__local_ai/kit-worker-engine.mjs                                                       16.13 kB
+dist/service-worker.js                                                                      24.15 kB
+dist/assets/cf-pilot-ui-nav-bMnbTxA8.wav                                                    26.92 kB
+dist/assets/cf-pilot-combat-contact-DHZD2lYd.wav                                            33.64 kB
+dist/assets/scout-chemical-300-CxcU_kic.webp                                                40.66 kB
+dist/assets/cf-pilot-ui-refusal-CMon7hko.wav                                                43.24 kB
+dist/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs       51.40 kB
+dist/__local_ai/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs                        66.34 kB
+dist/assets/cf-pilot-ui-settlement-uF_X4Ois.wav                                             67.24 kB
+dist/index.html                                                                             69.13 kB │ gzip:    15.18 kB
+dist/assets/scout-chemical-512-DcNawgH5.webp                                                92.89 kB
+dist/__local_ai/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs                    98.93 kB
+dist/assets/mars-dunesea-v1-cFwkRNdy.webp                                                  127.08 kB
+dist/assets/earth-riverbank-v1-C4EQQH_D.webp                                               130.30 kB
+dist/assets/cf-pilot-scout-landing-D1k5tYuE.wav                                            134.44 kB
+dist/__local_ai/browser-variant-plan.json                                                  142.91 kB │ gzip:    13.70 kB
+dist/assets/biome-vista.worker-D3XRSJZJ.js                                                 220.68 kB
+dist/assets/cf-pilot-scout-approach-Be38_iqZ.wav                                           230.44 kB
+dist/assets/earth-rainy-phone-DFt5murF.webp                                                343.07 kB
+dist/assets/InterVariable-DiVDrmQJ.woff2                                                   352.24 kB
+dist/assets/earth-civet-landing-v1-DxWosWSp.webp                                           600.75 kB
+dist/assets/earth-rainy-landscape-DPgApIAi.webp                                            765.31 kB
+dist/assets/earth-resident.worker-Db3VCLVs.js                                              963.01 kB
+dist/assets/species-art.worker-oT5j4xm4.js                                               1,317.91 kB
+dist/assets/cf-pilot-exploration-music-CMF8UCKw.wav                                      4,608.04 kB
+dist/assets/cf-pilot-temperate-bed-C_jKRyj6.wav                                          4,608.04 kB
+dist/__local_ai/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm  25,749.87 kB │ gzip: 6,442.00 kB
+dist/assets/webworkerAll-Bz2JnXQB.js                                                         0.05 kB │ gzip:     0.06 kB
+dist/assets/release-identity-CIuedefi.js                                                     0.13 kB │ gzip:     0.13 kB │ map:     0.78 kB
+dist/assets/getTextureBatchBindGroup-DkbnCTGz.js                                             0.40 kB │ gzip:     0.31 kB │ map:     1.79 kB
+dist/assets/getPo2TextureFromSource-BTcd7Ah1.js                                              0.47 kB │ gzip:     0.32 kB │ map:     1.69 kB
+dist/assets/modulepreload-polyfill-P2Xu9kJm.js                                               0.67 kB │ gzip:     0.38 kB
+dist/assets/CanvasPool-BewL5izq.js                                                           0.80 kB │ gzip:     0.45 kB │ map:     3.52 kB
+dist/assets/speciesidentity-Dv9PKGDT.js                                                      1.33 kB │ gzip:     0.54 kB │ map:     5.04 kB
+dist/assets/surface-polish-CBmmi-Kj.js                                                       4.73 kB │ gzip:     1.69 kB │ map:    18.75 kB
+dist/assets/src-PpYgFp_O.js                                                                  5.14 kB │ gzip:     2.47 kB │ map:    22.65 kB
+dist/assets/lib-BHX2vzcH.js                                                                  5.80 kB │ gzip:     2.25 kB │ map:    66.45 kB
+dist/assets/canvasUtils-CWV5icuA.js                                                          6.07 kB │ gzip:     2.07 kB │ map:    21.93 kB
+dist/assets/src-aprXGpsF.js                                                                  8.12 kB │ gzip:     2.68 kB │ map:    22.39 kB
+dist/assets/BufferResource-CBxAIQXt.js                                                      10.57 kB │ gzip:     2.81 kB │ map:    25.66 kB
+dist/assets/planet-surface-turn-view-DxZP3AEj.js                                            13.84 kB │ gzip:     5.29 kB │ map:    41.99 kB
+dist/assets/init-Cw2CTxAB.js                                                                15.30 kB │ gzip:     4.81 kB │ map:    53.39 kB
+dist/assets/pilot-sound-player-Dr91TUsg.js                                                  16.19 kB │ gzip:     6.22 kB │ map:    40.33 kB
+dist/assets/earth-layered-recipe-DTHL9JNN.js                                                16.50 kB │ gzip:     4.36 kB │ map:    34.64 kB
+dist/assets/audit-Byddldzc.js                                                               16.61 kB │ gzip:     6.53 kB │ map:    68.44 kB
+dist/assets/audiovisualPilot-uZ4O2awW.js                                                    19.17 kB │ gzip:     7.32 kB │ map:    43.75 kB
+dist/assets/init-DzCRp0mF.js                                                                24.71 kB │ gzip:     8.52 kB │ map:   105.91 kB
+dist/assets/audiovisual-pilot-Bc-cgTyq.js                                                   25.13 kB │ gzip:     6.53 kB │ map:    39.91 kB
+dist/assets/world-roster-CWd9xqjn.js                                                        29.21 kB │ gzip:     9.34 kB │ map:   138.90 kB
+dist/assets/hybridMatrix-I0bqDMvt.js                                                        33.88 kB │ gzip:    11.04 kB │ map:    97.55 kB
+dist/assets/WebGPURenderer-9hw_QH6b.js                                                      38.53 kB │ gzip:    10.79 kB │ map:   123.97 kB
+dist/assets/browserAll-CZbsrlbl.js                                                          42.63 kB │ gzip:    11.12 kB │ map:   156.69 kB
+dist/assets/WebGLRenderer-DYlUTdA1.js                                                       68.03 kB │ gzip:    18.70 kB │ map:   215.94 kB
+dist/assets/RenderTargetSystem-Cjin1jYB.js                                                  71.14 kB │ gzip:    20.24 kB │ map:   262.67 kB
+dist/assets/CanvasRenderer-D2F2hEh-.js                                                      87.43 kB │ gzip:    27.48 kB │ map:   463.49 kB
+dist/assets/Geometry-C5FtorEc.js                                                           101.66 kB │ gzip:    31.17 kB │ map:   500.48 kB
+dist/assets/local-ai-game-BqXCYaKG.js                                                      110.30 kB │ gzip:    42.13 kB │ map:   178.58 kB
+dist/assets/visual-effect-policy-DzQ0Y-Og.js                                               117.30 kB │ gzip:    31.44 kB │ map:   450.71 kB
+dist/assets/src-Dnz4NGr2.js                                                                129.34 kB │ gzip:    50.72 kB │ map:   405.75 kB
+dist/assets/guide-content-Cy7MxzST.js                                                      130.92 kB │ gzip:    44.31 kB │ map:   148.58 kB
+dist/assets/release-content-DZKrHmGX.js                                                    151.35 kB │ gzip:    58.13 kB │ map:   172.19 kB
+dist/assets/tame-greeting-audio-rhsfOKDj.js                                                231.99 kB │ gzip:    64.16 kB │ map:   824.91 kB
+dist/assets/speciesart-CLiNXW0T.js                                                       1,271.73 kB │ gzip:   356.88 kB │ map: 4,453.01 kB
+dist/assets/main-DvWTk4UJ.js                                                             1,491.76 kB │ gzip:   392.32 kB │ map: 5,269.47 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1.94s
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+
+ Test Files  373 passed (373)
+      Tests  4357 passed | 1 skipped (4358)
+   Start at  00:45:26
+   Duration  24.94s (transform 21.32s, setup 0ms, import 107.78s, tests 123.78s, environment 248ms)
+

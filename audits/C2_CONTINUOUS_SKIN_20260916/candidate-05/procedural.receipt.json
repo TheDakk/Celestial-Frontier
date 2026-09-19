@@ -1,0 +1,84 @@
+{
+  "schema": "cf.anatomical-surface-intake/v1",
+  "sourceBindingHash": "ebf633a4b3254010b1f03d1f4955b8b43fc06297c516425c89f9477952b0463b",
+  "recordRecipeHash": "2b824f9cad9383d8fcbb3fd5d41ebdec2d5ecbc9128e33a5388bc21d7cb0a859",
+  "atlasSha256": "805f61adf50cb922d14e8cec081725da480de528d7558fe5dbb736353aa300ac",
+  "sourceVertices": 550,
+  "vertices": 694,
+  "triangles": 694,
+  "surfaces": {
+    "axial": 468,
+    "hindFar": 52,
+    "foreFar": 35,
+    "hindNear": 72,
+    "foreNear": 67
+  },
+  "pins": 22,
+  "diffusionIterations": 32,
+  "maxDiscardedWeight": 5.333473521718091e-7,
+  "sourceInterpolationDifferentCoordinates": 0,
+  "unchangedPartCount": 21,
+  "nativeAcceptance": false,
+  "sourceRecordSha256": "9d0ae1874739d971383b50301a9153785f1b4f4f119244466b4b26aac74634be",
+  "sourceMasterSha256": "4d75af529dfc9aedd6cc078fe35373c435dcfde3abfe305e03ead60e46ba1e27",
+  "producerReference": {
+    "directory": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src",
+    "readOnly": true,
+    "gsapAdapterSha256": "6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74"
+  },
+  "coarse": {
+    "schema": "cf.paint-skin-intake/v1",
+    "sourceBindingHash": "5cc9a2ff26302be16ec7fb043d88426042b201c59dd930053d7a8037b9b699b4",
+    "recordRecipeHash": "2b824f9cad9383d8fcbb3fd5d41ebdec2d5ecbc9128e33a5388bc21d7cb0a859",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "5cc9a2ff26302be16ec7fb043d88426042b201c59dd930053d7a8037b9b699b4",
+      "atlasSha256": "805f61adf50cb922d14e8cec081725da480de528d7558fe5dbb736353aa300ac",
+      "parts": 35,
+      "comparedChannels": 709716,
+      "changedChannels": 0
+    },
+    "vertices": 550,
+    "partVertices": 1217,
+    "parts": 21,
+    "leaves": 239,
+    "triangles": 970,
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "profile": {
+    "boundaryStep": 24,
+    "interiorStep": 64,
+    "diffusionIterations": 32,
+    "solver": {
+      "iterations": 4,
+      "globalIterations": 4,
+      "targetWeight": 0.35,
+      "pins": [
+        384,
+        387,
+        388,
+        394,
+        415,
+        419,
+        420,
+        426,
+        427,
+        429,
+        487,
+        488,
+        492,
+        493,
+        496,
+        498,
+        499,
+        501,
+        558,
+        562,
+        563,
+        566
+      ]
+    }
+  }
+}

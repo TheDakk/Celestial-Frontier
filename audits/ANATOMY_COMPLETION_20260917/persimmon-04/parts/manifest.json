@@ -1,0 +1,110 @@
+{
+  "creatureId": "persimmon",
+  "parts": [
+    {
+      "name": "branch-0-foliage.png",
+      "path": "parts/branch-0-foliage.png",
+      "sha256": "5a3ba92e02e75c4f8dabb690958988aa4b83066934527612d6da2a9927626014"
+    },
+    {
+      "name": "branch-1-foliage.png",
+      "path": "parts/branch-1-foliage.png",
+      "sha256": "11074c85a62b941615769cc7d290b7d3144062bb4718698b93697c70e0864238"
+    },
+    {
+      "name": "branch-2-foliage.png",
+      "path": "parts/branch-2-foliage.png",
+      "sha256": "e8c55a49cab5055647192d1aded77cb51fa92dccaa0b64b5993e1909b6ef9551"
+    },
+    {
+      "name": "branch-3-foliage.png",
+      "path": "parts/branch-3-foliage.png",
+      "sha256": "3cc18bfb4baa05db34670e120d1a414553013048d475275cd3f83683550c2347"
+    },
+    {
+      "name": "branch-3-wood.png",
+      "path": "parts/branch-3-wood.png",
+      "sha256": "50e137b4ea6be4d3747941d7695579c7273d77ecb80e57b17d7c944ce1e9360f"
+    },
+    {
+      "name": "branch-4-foliage.png",
+      "path": "parts/branch-4-foliage.png",
+      "sha256": "7a64b0ee8cd4cb7f4f4d94e1019c952fbbc55471f93f8ecfd43c7cd7adce9001"
+    },
+    {
+      "name": "branch-4-wood.png",
+      "path": "parts/branch-4-wood.png",
+      "sha256": "6ca7f3c2dc6a94b6ec0fc7933a94d3110623f0f78907ddb8d1aa99126370eea3"
+    },
+    {
+      "name": "branch-5-foliage.png",
+      "path": "parts/branch-5-foliage.png",
+      "sha256": "891240f0bb32457de8dfd831ba79c7a46161c98fb2ba28068172e3e1d0eae73b"
+    },
+    {
+      "name": "branch-5-wood.png",
+      "path": "parts/branch-5-wood.png",
+      "sha256": "408c925e0f0260ae59e2fb37bcdaa682e852b980355451eca72fe553aa224c69"
+    },
+    {
+      "name": "branch-6-foliage.png",
+      "path": "parts/branch-6-foliage.png",
+      "sha256": "ff50f00b0c38ac170a11ec882322d61b547cb1bdc8da224d4eb7e4fbc9e9361b"
+    },
+    {
+      "name": "branch-6-wood.png",
+      "path": "parts/branch-6-wood.png",
+      "sha256": "db811009b5b2a6bc02b1b09ae4073c04c0c99c21981bce024e96b7c7826989e5"
+    },
+    {
+      "name": "branch-7-foliage.png",
+      "path": "parts/branch-7-foliage.png",
+      "sha256": "9e96d441e7f1aaad6bdf7998a41b41fcfdf9643a6a9bc411e517a3144fa02227"
+    },
+    {
+      "name": "branch-7-wood.png",
+      "path": "parts/branch-7-wood.png",
+      "sha256": "89004c749b5250cd520d1133d5b2783cecf8141915b3c9ab8b05a9f740ac318b"
+    },
+    {
+      "name": "branch-8-foliage.png",
+      "path": "parts/branch-8-foliage.png",
+      "sha256": "e980e467d5553d00261146fa1eb0ef41ac1cdd468b93095b076cf4d298c7f8d3"
+    },
+    {
+      "name": "branch-8-wood.png",
+      "path": "parts/branch-8-wood.png",
+      "sha256": "eec5c311f6fd69dfd3ce24e18e27588dfbb015a7a05d4e876db9d52d3d212686"
+    },
+    {
+      "name": "branch-9-foliage.png",
+      "path": "parts/branch-9-foliage.png",
+      "sha256": "a7b0accbfe8a38f450a7eea7f29e5ef97bc8d5d43703e8b475a3ebd0063eeb22"
+    },
+    {
+      "name": "branch-9-wood.png",
+      "path": "parts/branch-9-wood.png",
+      "sha256": "7a6bb16fd7595693b38724c7dc2031f687c746de58e2c8df400bd5fbbf765c7a"
+    },
+    {
+      "name": "branch-10-foliage.png",
+      "path": "parts/branch-10-foliage.png",
+      "sha256": "880e287333be87c01cc81ca501b4185d49bc01e163d201d57640559da849dee9"
+    },
+    {
+      "name": "branch-10-wood.png",
+      "path": "parts/branch-10-wood.png",
+      "sha256": "639e6fe6d83d29eab84f2a1612d914606d38f317a144c4f6d7561d4cf074fa90"
+    },
+    {
+      "name": "root.png",
+      "path": "parts/root.png",
+      "sha256": "e8529b90cbe9d5d41b8c784bd5beb7d7aee692a949f43027d349dc9990ec6601"
+    },
+    {
+      "name": "trunk.png",
+      "path": "parts/trunk.png",
+      "sha256": "d5a7616ca7f276fd89770853412b3d4c31fa094001dcbe8503d9ab55a6d82126"
+    }
+  ]
+}

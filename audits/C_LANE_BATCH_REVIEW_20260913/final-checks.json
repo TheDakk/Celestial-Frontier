@@ -1,0 +1,46 @@
+{
+  "schema": "cf.c-lane-checks/v1",
+  "baseCommit": "b50668b0",
+  "vitest": {
+    "command": "vitest run",
+    "exit": 1,
+    "total": 4342,
+    "passed": 4338,
+    "failed": 3,
+    "skipped": 1,
+    "failedFiles": [
+      "tests/compendium-budget.test.ts (2)",
+      "tests/current-producer-authorities.test.ts (1)"
+    ],
+    "note": "Final full suite after code fixes. Subsequent package-script ordering was checked separately with npm test -- --help; no runtime or test assertions changed."
+  },
+  "nodeTools": {
+    "passed": 19,
+    "failed": 0,
+    "exit": 0
+  },
+  "workerWeatherControls": {
+    "passed": 6,
+    "failed": 0,
+    "exit": 0
+  },
+  "typecheck": {
+    "exit": 0
+  },
+  "rootValidate": {
+    "exit": 0,
+    "fingerprintProbes": 50,
+    "baselineUnchanged": true
+  },
+  "rootSmoke": {
+    "exit": 0,
+    "passedLines": 553
+  },
+  "nativeCaptures": 0,
+  "modelRuns": 0,
+  "githubWrites": 0,
+  "historyRewrites": 0,
+  "kitEdits": 0,
+  "protectedLaneEdits": 0,
+  "admission": "BLOCKED: memory authorities remain red; C2 native motion not accepted"
+}

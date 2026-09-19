@@ -1,0 +1,15 @@
+{
+  "status": "SIGNED_CHECKPOINT_VERIFIED",
+  "commit": "423afd6223dbbc93070deff79598fc1b0bc71106",
+  "signature": "Good SSH git signature, verified using a temporary allowed-signers file from the configured public key; no signing configuration changed",
+  "cachedAhead": {
+    "origin/openai/mac": 124,
+    "origin/develop": 235
+  },
+  "checkpointFiles": 224,
+  "checkpointInsertions": 276095,
+  "checkpointDeletions": 57,
+  "cachedDevelopAuditLinesAdded": 17493384,
+  "githubWrites": false,
+  "supersedes": "audits/PAINTED_FITS_AND_58_20260916/checkpoint.json (historical failed attempts retained)"
+}

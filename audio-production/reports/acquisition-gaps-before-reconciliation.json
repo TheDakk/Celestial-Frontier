@@ -1,0 +1,138 @@
+{
+  "schema": "cf.audio-gap-history/v1",
+  "gaps": [
+    {
+      "sourceId": "kenney_scifi",
+      "url": "https://kenney.nl/media/pages/assets/sci-fi-sounds/6b296f9ecf-1677589334/kenney_sci-fi-sounds.zip",
+      "reason": "Archive member not extracted (unsupported/non-audio): Audio/desktop.ini",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "nps_yellowstone",
+      "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-nutcracker.htm",
+      "reason": "No official audio source element on detail page",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "nps_yellowstone",
+      "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-mountainlion.htm",
+      "reason": "No official audio source element on detail page",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "nps_natural_sounds",
+      "url": "https://www.nps.gov/subjects/sound/singing-sands.htm",
+      "reason": "No official audio source element on detail page",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "oga_foley",
+      "url": "https://opengameart.org/sites/default/files/Owlish%20Media%20Sound%20Effects.zip",
+      "reason": "Archive member not extracted (unsupported/non-audio): Cloth, Rustle/320137__owlstorm__blanket-movement-1.pkf",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "43577",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "410834",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "339907",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "43459",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "851014",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "41964",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "43335",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "41976",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "9083",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "30746",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "4144",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "4134",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "43617",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    },
+    {
+      "sourceId": "inat_cc0",
+      "url": "883485",
+      "reason": "No eligible unflagged non-obscured CC0 audio in first five observations",
+      "status": "unresolved",
+      "retry": "explicit future fetch; no access bypass"
+    }
+  ]
+}

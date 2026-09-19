@@ -1,0 +1,201 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "recordRecipeHash": "14e9b9c4a4f7a708e2fc63f1665641d6e1c3730c6f0cdc9c334c11da7fb73c1e",
+  "declarationHash": "47a97981998241af020d731d2bfbf73dbb7ddca3a7e68a4f6eace410e9e768cc",
+  "paintedPixels": 354435,
+  "parts": [
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 596,
+        "y": 1062,
+        "width": 221,
+        "height": 104
+      },
+      "pixels": 6634
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 857,
+        "y": 1023,
+        "width": 217,
+        "height": 116
+      },
+      "pixels": 7777
+    },
+    {
+      "id": "beak",
+      "joint": "beak",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 1056,
+        "y": 128,
+        "width": 92,
+        "height": 84
+      },
+      "pixels": 4220
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 906,
+        "y": 99,
+        "width": 186,
+        "height": 139
+      },
+      "pixels": 19049
+    },
+    {
+      "id": "neck-upper",
+      "joint": "neck1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 903,
+        "y": 238,
+        "width": 201,
+        "height": 113
+      },
+      "pixels": 18275
+    },
+    {
+      "id": "neck-lower",
+      "joint": "neck0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 897,
+        "y": 351,
+        "width": 251,
+        "height": 151
+      },
+      "pixels": 35138
+    },
+    {
+      "id": "near-wing",
+      "joint": "wingNearTip",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 518,
+        "y": 404,
+        "width": 416,
+        "height": 424
+      },
+      "pixels": 107299
+    },
+    {
+      "id": "tail",
+      "joint": "tailFan",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 55,
+        "y": 529,
+        "width": 502,
+        "height": 197
+      },
+      "pixels": 43280
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearAnkle",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 657,
+        "y": 928,
+        "width": 62,
+        "height": 137
+      },
+      "pixels": 3946
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearKnee",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 602,
+        "y": 778,
+        "width": 188,
+        "height": 152
+      },
+      "pixels": 12960
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarAnkle",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 852,
+        "y": 903,
+        "width": 80,
+        "height": 121
+      },
+      "pixels": 4286
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarKnee",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 815,
+        "y": 727,
+        "width": 226,
+        "height": 176
+      },
+      "pixels": 27973
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 904,
+        "y": 502,
+        "width": 248,
+        "height": 277
+      },
+      "pixels": 50029
+    },
+    {
+      "id": "torso",
+      "joint": "spine",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 457,
+        "y": 358,
+        "width": 454,
+        "height": 509
+      },
+      "pixels": 13569
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "erodedPixels": 8326,
+    "despilledPixels": 942,
+    "unresolvedEdgePixels": 55
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "1e538078a1d64ee605122a8bb0c1fe7f0e26bfac9a34508d85ab4daf1112aef6",
+  "masterUnchanged": true,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

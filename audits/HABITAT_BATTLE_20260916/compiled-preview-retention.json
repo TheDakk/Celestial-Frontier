@@ -1,0 +1,380 @@
+[
+  {
+    "run": "native-battle-02",
+    "localPreview": "/private/tmp/cf-habitat-native-battle-02-preview",
+    "files": [
+      {
+        "name": "BufferResource-CikKkPIW.js",
+        "sha256": "8b98f121c3459db990ef10e0a39328737f17eca1425c0ae23bcf41d886fc454a"
+      },
+      {
+        "name": "CanvasPool-DiGLMfnB.js",
+        "sha256": "95c4db4bcae00a7a808c914ff629762398b9b0c2bcd2ada1e3cd8a42742146de"
+      },
+      {
+        "name": "CanvasRenderer-Bw_Fhk5K.js",
+        "sha256": "c86b56d4b9ac47465647279b300ba6de49afa8312c17c32415e059fdb6b9ffab"
+      },
+      {
+        "name": "CanvasRenderer-C_LQYfmj.js",
+        "sha256": "346ad1c7bcf767af83ae3f712b2e118c469b0a02cbb89f72fb8afa82861cb701"
+      },
+      {
+        "name": "Geometry-P-yRC1RG.js",
+        "sha256": "7cacb47a03f1d8241365b1bf3888550fb9737ac6797faae3a6d8ccef9728ef3b"
+      },
+      {
+        "name": "RenderTargetSystem-D2_-Q3rU.js",
+        "sha256": "d3545925c330cf62e8ea276f61163889f3fbd3b0ace00a17eb52f6c56891b756"
+      },
+      {
+        "name": "WebGLRenderer-CsO0VDGN.js",
+        "sha256": "38056f2131fe803920c326f6d8877fb148e6d80693584bb088ba18922d481809"
+      },
+      {
+        "name": "WebGLRenderer-DrilAfou.js",
+        "sha256": "a4cc59a780ee5e4752ed5ba1e3e04f05b01481bc0c51939d165041cdac429866"
+      },
+      {
+        "name": "WebGPURenderer-CRgcgkuU.js",
+        "sha256": "b5554b3b0479ff021f1794ba19d834e888ddbc5410d6d254b9fdc43e3aca05db"
+      },
+      {
+        "name": "WebGPURenderer-Cg7DGI12.js",
+        "sha256": "fd12008d4bd088d80597ff2984105a8d19fd2d0c6ec015f1c9afb4f78c155254"
+      },
+      {
+        "name": "bird-atlas.png",
+        "sha256": "51b1f8abe34602e8ff6910712a97f0d6f6162fe949828a11b948f66de4c02672"
+      },
+      {
+        "name": "bird-binding.json",
+        "sha256": "a05361bda9c278c0fa289397da2106c175f287aca46be6a3e7dfbfa70f1294f0"
+      },
+      {
+        "name": "bird-keyed.png",
+        "sha256": "161eab43c6cdcf3a549d7f57e6f5071d79c2f642e9b213fe5fcbfbafbe53bbc9"
+      },
+      {
+        "name": "bird-master.png",
+        "sha256": "125ebf56496358792bacf040197a809278bd1e948f1a91442533f2482165dd73"
+      },
+      {
+        "name": "bird-record.json",
+        "sha256": "501542a64dcaa16b6372b0e521c3de399ab2cfee1b184b77dc2be4adb89029c7"
+      },
+      {
+        "name": "browserAll-D3No-vVf.js",
+        "sha256": "17107184b52e5f92b7e8930284d796c2fd35c68069076196c0eff1d3cd0edd47"
+      },
+      {
+        "name": "bundle.js",
+        "sha256": "0c0ee1003c0606b05c25e026927aee4ddced9db2141c0c97adbe527493325f95"
+      },
+      {
+        "name": "canvasUtils-Cd0S7jt0.js",
+        "sha256": "cb49dd69c8c403d442284ae35f3d8ab5130706b0a3511b79dbae554e56272920"
+      },
+      {
+        "name": "far.png",
+        "sha256": "c0738eb03f60aa43e367d93ba03e79153c281d4ac5e9acfb7e655573b37807e2"
+      },
+      {
+        "name": "fish-atlas.png",
+        "sha256": "4e31bd471bd1e242e4eb492a5beb6d666426711c5c27473ed1458fb368c06227"
+      },
+      {
+        "name": "fish-binding.json",
+        "sha256": "2ac4559af530c7ba1cff18921a27ef70ea9347ca2f19779443238898bc2b0edb"
+      },
+      {
+        "name": "fish-keyed.png",
+        "sha256": "5d20402d3bae7bf1cfe6e4b4e8f6581ccb3c11b95c9907f2b3448a96fa43f286"
+      },
+      {
+        "name": "fish-master.png",
+        "sha256": "1997f036417384af559f5127b9eb98d4871a9cae5cec57cffa645b857a3adc22"
+      },
+      {
+        "name": "fish-record.json",
+        "sha256": "abc3ba0a9ef4fe7cded9f74c71164a3e4d6dc50cc2cebfb7d0e0145125e6786d"
+      },
+      {
+        "name": "getPo2TextureFromSource-DMIUa6T9.js",
+        "sha256": "caa9816c9d72dc77e4e60741a30cf5543df80c80b5e1f5304cdfc3bd02f451ad"
+      },
+      {
+        "name": "getTextureBatchBindGroup-LGRwYUBZ.js",
+        "sha256": "d9b23f813b61e0ae6b92e11536cb02dcc7990465ae044860b4ecdcbd51017e95"
+      },
+      {
+        "name": "index.html",
+        "sha256": "13d6ec7cca7bc3ce88f074c0b1a0fec679b00b8b9d6a30e4a4001931de8bc32b"
+      },
+      {
+        "name": "init-DOz9RkoB.js",
+        "sha256": "8f89adf5688d572153d34e9a69ddda5067675fb33ea7d2b6c5087ae223f7645b"
+      },
+      {
+        "name": "webworkerAll-eBtI5Ph6.js",
+        "sha256": "fdc38d39129ebbeb1c6c6f3b9ab0afb786dff9c44e550c954a538904d8ceafb1"
+      },
+      {
+        "name": "world.json",
+        "sha256": "97057d17cecd34c0da3e556fdcb3533c62818ba550e418a48ba0e9c1e7b986f2"
+      }
+    ]
+  },
+  {
+    "run": "native-battle-03",
+    "localPreview": "/private/tmp/cf-habitat-native-battle-03-preview",
+    "files": [
+      {
+        "name": "BufferResource-CikKkPIW.js",
+        "sha256": "8b98f121c3459db990ef10e0a39328737f17eca1425c0ae23bcf41d886fc454a"
+      },
+      {
+        "name": "CanvasPool-DiGLMfnB.js",
+        "sha256": "95c4db4bcae00a7a808c914ff629762398b9b0c2bcd2ada1e3cd8a42742146de"
+      },
+      {
+        "name": "CanvasRenderer-Bw_Fhk5K.js",
+        "sha256": "c86b56d4b9ac47465647279b300ba6de49afa8312c17c32415e059fdb6b9ffab"
+      },
+      {
+        "name": "CanvasRenderer-C_LQYfmj.js",
+        "sha256": "346ad1c7bcf767af83ae3f712b2e118c469b0a02cbb89f72fb8afa82861cb701"
+      },
+      {
+        "name": "Geometry-P-yRC1RG.js",
+        "sha256": "7cacb47a03f1d8241365b1bf3888550fb9737ac6797faae3a6d8ccef9728ef3b"
+      },
+      {
+        "name": "RenderTargetSystem-D2_-Q3rU.js",
+        "sha256": "d3545925c330cf62e8ea276f61163889f3fbd3b0ace00a17eb52f6c56891b756"
+      },
+      {
+        "name": "WebGLRenderer-CsO0VDGN.js",
+        "sha256": "38056f2131fe803920c326f6d8877fb148e6d80693584bb088ba18922d481809"
+      },
+      {
+        "name": "WebGLRenderer-DrilAfou.js",
+        "sha256": "a4cc59a780ee5e4752ed5ba1e3e04f05b01481bc0c51939d165041cdac429866"
+      },
+      {
+        "name": "WebGPURenderer-CRgcgkuU.js",
+        "sha256": "b5554b3b0479ff021f1794ba19d834e888ddbc5410d6d254b9fdc43e3aca05db"
+      },
+      {
+        "name": "WebGPURenderer-Cg7DGI12.js",
+        "sha256": "fd12008d4bd088d80597ff2984105a8d19fd2d0c6ec015f1c9afb4f78c155254"
+      },
+      {
+        "name": "bird-atlas.png",
+        "sha256": "51b1f8abe34602e8ff6910712a97f0d6f6162fe949828a11b948f66de4c02672"
+      },
+      {
+        "name": "bird-binding.json",
+        "sha256": "a05361bda9c278c0fa289397da2106c175f287aca46be6a3e7dfbfa70f1294f0"
+      },
+      {
+        "name": "bird-keyed.png",
+        "sha256": "161eab43c6cdcf3a549d7f57e6f5071d79c2f642e9b213fe5fcbfbafbe53bbc9"
+      },
+      {
+        "name": "bird-master.png",
+        "sha256": "125ebf56496358792bacf040197a809278bd1e948f1a91442533f2482165dd73"
+      },
+      {
+        "name": "bird-record.json",
+        "sha256": "501542a64dcaa16b6372b0e521c3de399ab2cfee1b184b77dc2be4adb89029c7"
+      },
+      {
+        "name": "browserAll-D3No-vVf.js",
+        "sha256": "17107184b52e5f92b7e8930284d796c2fd35c68069076196c0eff1d3cd0edd47"
+      },
+      {
+        "name": "bundle.js",
+        "sha256": "382370e121f405ccd4489a17e0b8c6a03eceb5dd8f6342321e308e985b4062dd"
+      },
+      {
+        "name": "canvasUtils-Cd0S7jt0.js",
+        "sha256": "cb49dd69c8c403d442284ae35f3d8ab5130706b0a3511b79dbae554e56272920"
+      },
+      {
+        "name": "far.png",
+        "sha256": "c0738eb03f60aa43e367d93ba03e79153c281d4ac5e9acfb7e655573b37807e2"
+      },
+      {
+        "name": "fish-atlas.png",
+        "sha256": "4e31bd471bd1e242e4eb492a5beb6d666426711c5c27473ed1458fb368c06227"
+      },
+      {
+        "name": "fish-binding.json",
+        "sha256": "2ac4559af530c7ba1cff18921a27ef70ea9347ca2f19779443238898bc2b0edb"
+      },
+      {
+        "name": "fish-keyed.png",
+        "sha256": "5d20402d3bae7bf1cfe6e4b4e8f6581ccb3c11b95c9907f2b3448a96fa43f286"
+      },
+      {
+        "name": "fish-master.png",
+        "sha256": "1997f036417384af559f5127b9eb98d4871a9cae5cec57cffa645b857a3adc22"
+      },
+      {
+        "name": "fish-record.json",
+        "sha256": "abc3ba0a9ef4fe7cded9f74c71164a3e4d6dc50cc2cebfb7d0e0145125e6786d"
+      },
+      {
+        "name": "getPo2TextureFromSource-DMIUa6T9.js",
+        "sha256": "caa9816c9d72dc77e4e60741a30cf5543df80c80b5e1f5304cdfc3bd02f451ad"
+      },
+      {
+        "name": "getTextureBatchBindGroup-LGRwYUBZ.js",
+        "sha256": "d9b23f813b61e0ae6b92e11536cb02dcc7990465ae044860b4ecdcbd51017e95"
+      },
+      {
+        "name": "index.html",
+        "sha256": "13d6ec7cca7bc3ce88f074c0b1a0fec679b00b8b9d6a30e4a4001931de8bc32b"
+      },
+      {
+        "name": "init-DOz9RkoB.js",
+        "sha256": "8f89adf5688d572153d34e9a69ddda5067675fb33ea7d2b6c5087ae223f7645b"
+      },
+      {
+        "name": "webworkerAll-eBtI5Ph6.js",
+        "sha256": "fdc38d39129ebbeb1c6c6f3b9ab0afb786dff9c44e550c954a538904d8ceafb1"
+      },
+      {
+        "name": "world.json",
+        "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
+      }
+    ]
+  },
+  {
+    "run": "native-battle-04",
+    "localPreview": "/private/tmp/cf-habitat-native-battle-04-preview",
+    "files": [
+      {
+        "name": "BufferResource-CikKkPIW.js",
+        "sha256": "8b98f121c3459db990ef10e0a39328737f17eca1425c0ae23bcf41d886fc454a"
+      },
+      {
+        "name": "CanvasPool-DiGLMfnB.js",
+        "sha256": "95c4db4bcae00a7a808c914ff629762398b9b0c2bcd2ada1e3cd8a42742146de"
+      },
+      {
+        "name": "CanvasRenderer-Bw_Fhk5K.js",
+        "sha256": "c86b56d4b9ac47465647279b300ba6de49afa8312c17c32415e059fdb6b9ffab"
+      },
+      {
+        "name": "CanvasRenderer-C_LQYfmj.js",
+        "sha256": "346ad1c7bcf767af83ae3f712b2e118c469b0a02cbb89f72fb8afa82861cb701"
+      },
+      {
+        "name": "Geometry-P-yRC1RG.js",
+        "sha256": "7cacb47a03f1d8241365b1bf3888550fb9737ac6797faae3a6d8ccef9728ef3b"
+      },
+      {
+        "name": "RenderTargetSystem-D2_-Q3rU.js",
+        "sha256": "d3545925c330cf62e8ea276f61163889f3fbd3b0ace00a17eb52f6c56891b756"
+      },
+      {
+        "name": "WebGLRenderer-CsO0VDGN.js",
+        "sha256": "38056f2131fe803920c326f6d8877fb148e6d80693584bb088ba18922d481809"
+      },
+      {
+        "name": "WebGLRenderer-DrilAfou.js",
+        "sha256": "a4cc59a780ee5e4752ed5ba1e3e04f05b01481bc0c51939d165041cdac429866"
+      },
+      {
+        "name": "WebGPURenderer-CRgcgkuU.js",
+        "sha256": "b5554b3b0479ff021f1794ba19d834e888ddbc5410d6d254b9fdc43e3aca05db"
+      },
+      {
+        "name": "WebGPURenderer-Cg7DGI12.js",
+        "sha256": "fd12008d4bd088d80597ff2984105a8d19fd2d0c6ec015f1c9afb4f78c155254"
+      },
+      {
+        "name": "bird-atlas.png",
+        "sha256": "51b1f8abe34602e8ff6910712a97f0d6f6162fe949828a11b948f66de4c02672"
+      },
+      {
+        "name": "bird-binding.json",
+        "sha256": "3ffb21c44f0104e693f469eeb7b2064f7990a754f7f1a0229a6f9f34d19eb71b"
+      },
+      {
+        "name": "bird-keyed.png",
+        "sha256": "161eab43c6cdcf3a549d7f57e6f5071d79c2f642e9b213fe5fcbfbafbe53bbc9"
+      },
+      {
+        "name": "bird-master.png",
+        "sha256": "125ebf56496358792bacf040197a809278bd1e948f1a91442533f2482165dd73"
+      },
+      {
+        "name": "bird-record.json",
+        "sha256": "501542a64dcaa16b6372b0e521c3de399ab2cfee1b184b77dc2be4adb89029c7"
+      },
+      {
+        "name": "browserAll-D3No-vVf.js",
+        "sha256": "17107184b52e5f92b7e8930284d796c2fd35c68069076196c0eff1d3cd0edd47"
+      },
+      {
+        "name": "bundle.js",
+        "sha256": "be2dce0c685c96046835f24b931b19e197e765a494dad838af704cbc71162a25"
+      },
+      {
+        "name": "canvasUtils-Cd0S7jt0.js",
+        "sha256": "cb49dd69c8c403d442284ae35f3d8ab5130706b0a3511b79dbae554e56272920"
+      },
+      {
+        "name": "far.png",
+        "sha256": "c0738eb03f60aa43e367d93ba03e79153c281d4ac5e9acfb7e655573b37807e2"
+      },
+      {
+        "name": "fish-atlas.png",
+        "sha256": "4e31bd471bd1e242e4eb492a5beb6d666426711c5c27473ed1458fb368c06227"
+      },
+      {
+        "name": "fish-binding.json",
+        "sha256": "2ac4559af530c7ba1cff18921a27ef70ea9347ca2f19779443238898bc2b0edb"
+      },
+      {
+        "name": "fish-keyed.png",
+        "sha256": "5d20402d3bae7bf1cfe6e4b4e8f6581ccb3c11b95c9907f2b3448a96fa43f286"
+      },
+      {
+        "name": "fish-master.png",
+        "sha256": "1997f036417384af559f5127b9eb98d4871a9cae5cec57cffa645b857a3adc22"
+      },
+      {
+        "name": "fish-record.json",
+        "sha256": "abc3ba0a9ef4fe7cded9f74c71164a3e4d6dc50cc2cebfb7d0e0145125e6786d"
+      },
+      {
+        "name": "getPo2TextureFromSource-DMIUa6T9.js",
+        "sha256": "caa9816c9d72dc77e4e60741a30cf5543df80c80b5e1f5304cdfc3bd02f451ad"
+      },
+      {
+        "name": "getTextureBatchBindGroup-LGRwYUBZ.js",
+        "sha256": "d9b23f813b61e0ae6b92e11536cb02dcc7990465ae044860b4ecdcbd51017e95"
+      },
+      {
+        "name": "index.html",
+        "sha256": "13d6ec7cca7bc3ce88f074c0b1a0fec679b00b8b9d6a30e4a4001931de8bc32b"
+      },
+      {
+        "name": "init-DOz9RkoB.js",
+        "sha256": "8f89adf5688d572153d34e9a69ddda5067675fb33ea7d2b6c5087ae223f7645b"
+      },
+      {
+        "name": "webworkerAll-eBtI5Ph6.js",
+        "sha256": "fdc38d39129ebbeb1c6c6f3b9ab0afb786dff9c44e550c954a538904d8ceafb1"
+      },
+      {
+        "name": "world.json",
+        "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
+      }
+    ]
+  }
+]

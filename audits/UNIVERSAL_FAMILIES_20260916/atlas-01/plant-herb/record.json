@@ -1,0 +1,138 @@
+{
+  "kind": "plant-herb",
+  "identity": {
+    "speciesVisualKey": "synthetic:plant-herb",
+    "seed": 659720,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "plant-herb",
+    "version": 1
+  },
+  "family": "fern",
+  "geometry": {
+    "cutoutAssetHash": "7cd8f93b2b88f1df27fd87789dd9274329cd54747a049670ce9e690f0e525b24",
+    "width": 128,
+    "height": 128,
+    "groundLineY": 0.9,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5,
+      0.9
+    ],
+    "stem0Seg0": [
+      0.54,
+      0.74
+    ],
+    "stem0Seg1": [
+      0.6,
+      0.58
+    ],
+    "stem0Seg2": [
+      0.68,
+      0.44
+    ],
+    "frond0": [
+      0.78,
+      0.36
+    ],
+    "stem1Seg0": [
+      0.46,
+      0.74
+    ],
+    "stem1Seg1": [
+      0.4,
+      0.58
+    ],
+    "stem1Seg2": [
+      0.32,
+      0.44
+    ],
+    "frond1": [
+      0.22,
+      0.36
+    ],
+    "stem2Seg0": [
+      0.52,
+      0.72
+    ],
+    "stem2Seg1": [
+      0.55,
+      0.54
+    ],
+    "stem2Seg2": [
+      0.58,
+      0.36
+    ],
+    "frond2": [
+      0.62,
+      0.24
+    ],
+    "stem3Seg0": [
+      0.48,
+      0.72
+    ],
+    "stem3Seg1": [
+      0.45,
+      0.54
+    ],
+    "stem3Seg2": [
+      0.42,
+      0.36
+    ],
+    "frond3": [
+      0.38,
+      0.24
+    ]
+  },
+  "materials": {
+    "surface": "slick and wet",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "plant-herb-v1",
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "stem0Seg0": 0.16492422502470647,
+      "stem0Seg1": 0.17088007490635065,
+      "stem0Seg2": 0.161245154965971,
+      "frond0": 0.12806248474865697,
+      "stem1Seg0": 0.16492422502470647,
+      "stem1Seg1": 0.17088007490635065,
+      "stem1Seg2": 0.16124515496597097,
+      "frond1": 0.12806248474865697,
+      "stem2Seg0": 0.18110770276274837,
+      "stem2Seg1": 0.18248287590894655,
+      "stem2Seg2": 0.18248287590894663,
+      "frond2": 0.12649110640673517,
+      "stem3Seg0": 0.18110770276274837,
+      "stem3Seg1": 0.1824828759089465,
+      "stem3Seg2": 0.18248287590894666,
+      "frond3": 0.12649110640673514
+    },
+    "measures": {
+      "body": 0.33105890714493696,
+      "bone-min": 0.12649110640673514,
+      "bone-max": 0.18248287590894666,
+      "stem/stem0:stem0": 1.0032209455911658,
+      "stem/stem0:stem1": 1.0032209455911658,
+      "stem/stem0:stem2": 1.1024193699102371,
+      "stem/stem0:stem3": 1.1024193699102371
+    }
+  },
+  "recipeHash": "292ee13b6fc0bf8ac804b29a2207b73a7f3a1ccdc41f3ac0814cbf8a9e8d50c2"
+}

@@ -1,0 +1,339 @@
+{
+  "scope": "Decoded still-frame inspection of procedural motion-06 only; no source changes, inference or human acceptance",
+  "sourceFiles": [
+    {
+      "file": "../procedural-10s.webm",
+      "sha256": "c78643f53e3a8fbd69df39bbd5cb464357b4c5c59fa965b2a56e7dde95b21f5b"
+    },
+    {
+      "file": "../procedural-plans.json",
+      "sha256": "9084d86cdf004c65022b40332f24e629aa373606dcfb03d603d580b762accf18"
+    },
+    {
+      "file": "../report.json",
+      "sha256": "7a17b2e2c06bed701919e43a9d4df36c8a562a26f639b6bd414c437a479a082b"
+    }
+  ],
+  "extraction": {
+    "toolVersion": "ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers",
+    "commands": [
+      [
+        "ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "audits/C2_CONTINUOUS_SKIN_20260916/motion-06/procedural-10s.webm",
+        "-an",
+        "-vf",
+        "select=eq(n\\,30)+eq(n\\,86)+eq(n\\,89)+eq(n\\,102)+eq(n\\,116)+eq(n\\,123)+eq(n\\,132)+eq(n\\,138)+eq(n\\,145)+eq(n\\,165)+eq(n\\,192)+eq(n\\,211)+eq(n\\,215)+eq(n\\,240)+eq(n\\,245)+eq(n\\,298)+eq(n\\,304)+eq(n\\,417)+eq(n\\,427)+eq(n\\,434)+eq(n\\,445)+eq(n\\,468)+eq(n\\,516)+eq(n\\,565),crop=620:310:80:210",
+        "-fps_mode",
+        "vfr",
+        "audits/C2_CONTINUOUS_SKIN_20260916/motion-06/visual-inspection/procedural-%02d.png"
+      ],
+      [
+        "ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-framerate",
+        "1",
+        "-i",
+        "audits/C2_CONTINUOUS_SKIN_20260916/motion-06/visual-inspection/procedural-%02d.png",
+        "-vf",
+        "tile=4x3:nb_frames=12:padding=4:margin=4:color=0x142024",
+        "-frames:v",
+        "2",
+        "audits/C2_CONTINUOUS_SKIN_20260916/motion-06/visual-inspection/procedural-sheet-%02d.png"
+      ]
+    ],
+    "crop": {
+      "x": 80,
+      "y": 210,
+      "width": 620,
+      "height": 310
+    },
+    "sourceDimensions": {
+      "width": 1536,
+      "height": 740
+    },
+    "frames": [
+      {
+        "ordinal": 1,
+        "requestedMediaSeconds": 0.5,
+        "sourceFrameIndex": 30,
+        "file": "procedural-01.png",
+        "decodedMediaSeconds": 0.509
+      },
+      {
+        "ordinal": 2,
+        "requestedMediaSeconds": 1.43,
+        "sourceFrameIndex": 86,
+        "file": "procedural-02.png",
+        "decodedMediaSeconds": 1.442
+      },
+      {
+        "ordinal": 3,
+        "requestedMediaSeconds": 1.48,
+        "sourceFrameIndex": 89,
+        "file": "procedural-03.png",
+        "decodedMediaSeconds": 1.491
+      },
+      {
+        "ordinal": 4,
+        "requestedMediaSeconds": 1.7,
+        "sourceFrameIndex": 102,
+        "file": "procedural-04.png",
+        "decodedMediaSeconds": 1.709
+      },
+      {
+        "ordinal": 5,
+        "requestedMediaSeconds": 1.94,
+        "sourceFrameIndex": 116,
+        "file": "procedural-05.png",
+        "decodedMediaSeconds": 1.944
+      },
+      {
+        "ordinal": 6,
+        "requestedMediaSeconds": 2.05,
+        "sourceFrameIndex": 123,
+        "file": "procedural-06.png",
+        "decodedMediaSeconds": 2.06
+      },
+      {
+        "ordinal": 7,
+        "requestedMediaSeconds": 2.2,
+        "sourceFrameIndex": 132,
+        "file": "procedural-07.png",
+        "decodedMediaSeconds": 2.209
+      },
+      {
+        "ordinal": 8,
+        "requestedMediaSeconds": 2.3,
+        "sourceFrameIndex": 138,
+        "file": "procedural-08.png",
+        "decodedMediaSeconds": 2.31
+      },
+      {
+        "ordinal": 9,
+        "requestedMediaSeconds": 2.42,
+        "sourceFrameIndex": 145,
+        "file": "procedural-09.png",
+        "decodedMediaSeconds": 2.426
+      },
+      {
+        "ordinal": 10,
+        "requestedMediaSeconds": 2.75,
+        "sourceFrameIndex": 165,
+        "file": "procedural-10.png",
+        "decodedMediaSeconds": 2.76
+      },
+      {
+        "ordinal": 11,
+        "requestedMediaSeconds": 3.2,
+        "sourceFrameIndex": 192,
+        "file": "procedural-11.png",
+        "decodedMediaSeconds": 3.21
+      },
+      {
+        "ordinal": 12,
+        "requestedMediaSeconds": 3.52,
+        "sourceFrameIndex": 211,
+        "file": "procedural-12.png",
+        "decodedMediaSeconds": 3.527
+      },
+      {
+        "ordinal": 13,
+        "requestedMediaSeconds": 3.58,
+        "sourceFrameIndex": 215,
+        "file": "procedural-13.png",
+        "decodedMediaSeconds": 3.593
+      },
+      {
+        "ordinal": 14,
+        "requestedMediaSeconds": 4.0,
+        "sourceFrameIndex": 240,
+        "file": "procedural-14.png",
+        "decodedMediaSeconds": 4.01
+      },
+      {
+        "ordinal": 15,
+        "requestedMediaSeconds": 4.08,
+        "sourceFrameIndex": 245,
+        "file": "procedural-15.png",
+        "decodedMediaSeconds": 4.093
+      },
+      {
+        "ordinal": 16,
+        "requestedMediaSeconds": 4.97,
+        "sourceFrameIndex": 298,
+        "file": "procedural-16.png",
+        "decodedMediaSeconds": 4.976
+      },
+      {
+        "ordinal": 17,
+        "requestedMediaSeconds": 5.07,
+        "sourceFrameIndex": 304,
+        "file": "procedural-17.png",
+        "decodedMediaSeconds": 5.077
+      },
+      {
+        "ordinal": 18,
+        "requestedMediaSeconds": 6.96,
+        "sourceFrameIndex": 417,
+        "file": "procedural-18.png",
+        "decodedMediaSeconds": 6.96
+      },
+      {
+        "ordinal": 19,
+        "requestedMediaSeconds": 7.12,
+        "sourceFrameIndex": 427,
+        "file": "procedural-19.png",
+        "decodedMediaSeconds": 7.126
+      },
+      {
+        "ordinal": 20,
+        "requestedMediaSeconds": 7.23,
+        "sourceFrameIndex": 434,
+        "file": "procedural-20.png",
+        "decodedMediaSeconds": 7.243
+      },
+      {
+        "ordinal": 21,
+        "requestedMediaSeconds": 7.42,
+        "sourceFrameIndex": 445,
+        "file": "procedural-21.png",
+        "decodedMediaSeconds": 7.426
+      },
+      {
+        "ordinal": 22,
+        "requestedMediaSeconds": 7.8,
+        "sourceFrameIndex": 468,
+        "file": "procedural-22.png",
+        "decodedMediaSeconds": 7.809
+      },
+      {
+        "ordinal": 23,
+        "requestedMediaSeconds": 8.6,
+        "sourceFrameIndex": 516,
+        "file": "procedural-23.png",
+        "decodedMediaSeconds": 8.61
+      },
+      {
+        "ordinal": 24,
+        "requestedMediaSeconds": 9.42,
+        "sourceFrameIndex": 565,
+        "file": "procedural-24.png",
+        "decodedMediaSeconds": 9.428
+      }
+    ],
+    "sheet": "Two sheets, each 4 columns by 3 rows, chronological row-major at native crop size; 4 pixel margin and gap",
+    "timingCaveat": "Actual selected decoded media PTS are recorded; they are not an assertion of exact compiler time because recorder startup and sampling are distinct."
+  },
+  "artifacts": [
+    {
+      "file": "procedural-01.png",
+      "sha256": "b63c6bab216567582c810a3d2fe411aa0defc1cfdf34ce52dd25dd9e9c490e57"
+    },
+    {
+      "file": "procedural-02.png",
+      "sha256": "d6b5aeaea8b891ca7455a0ad35e9bfcdb93b962593b9f48715d1b7870d53f64a"
+    },
+    {
+      "file": "procedural-03.png",
+      "sha256": "9deb0d2432388686d1838948f42fc757641ddd1d9fbd94b41884af89334c5abe"
+    },
+    {
+      "file": "procedural-04.png",
+      "sha256": "b38dc1a24d579d2b595eac7ba9b3447636bd592f6ab50c059dcbc44bd9ad0228"
+    },
+    {
+      "file": "procedural-05.png",
+      "sha256": "9051f59e4d9828eca0000c2a4fe5580949d9b13ba96891ae014cf607fc9defb9"
+    },
+    {
+      "file": "procedural-06.png",
+      "sha256": "e6d0103e260b2c762b2c6194eec6def19c00f8ee1a868c82d17baabdaf43c42e"
+    },
+    {
+      "file": "procedural-07.png",
+      "sha256": "8e511ebcf87cb14b45bf032273acb5c304b938652ae147a32e1fdbaf6bc61429"
+    },
+    {
+      "file": "procedural-08.png",
+      "sha256": "9acdd0de7a07262993d1028270078dedfe8a390896982ae685e4cd4eaaa2cf1b"
+    },
+    {
+      "file": "procedural-09.png",
+      "sha256": "3c4cdd4546abb12612c63d1df06421ba697004e4f0d1ef032e019bd3e910487f"
+    },
+    {
+      "file": "procedural-10.png",
+      "sha256": "bd5f30ff316d611ca0b3daa173bb98724b81dda76e308b84a00633f27501f050"
+    },
+    {
+      "file": "procedural-11.png",
+      "sha256": "7cdb057164f6406a5f0a2314c28cc891536a6d25961a6a494a2dbbfddea37127"
+    },
+    {
+      "file": "procedural-12.png",
+      "sha256": "5f2549c8700e55c9cf6e58718f2d238665458d932c31d29bbc8f697b74aceacf"
+    },
+    {
+      "file": "procedural-13.png",
+      "sha256": "2740d75f6852743b497eb160f0fc2b22937c60e48c848b218533217eb78c289a"
+    },
+    {
+      "file": "procedural-14.png",
+      "sha256": "1242b4175bc2a23a57adbf0f3f10ee41419d5326bd26a263bac6e5f10e96047d"
+    },
+    {
+      "file": "procedural-15.png",
+      "sha256": "5e652490b840a4d68fac55872bc25c06c2ee2d9ee2996679ac55fe17a781d38b"
+    },
+    {
+      "file": "procedural-16.png",
+      "sha256": "73f20990aa7cc98b66572e016def222d61ce6b90b104aefd46c11db26eff6431"
+    },
+    {
+      "file": "procedural-17.png",
+      "sha256": "98188bbc5ccad600253d97e06967d59df391ed48c62b096cccddb579de3bc57a"
+    },
+    {
+      "file": "procedural-18.png",
+      "sha256": "5b6ad4247c20ee595a189f13a9c16d3f3e384c8c2ea2f174741bd0b3e6e681ca"
+    },
+    {
+      "file": "procedural-19.png",
+      "sha256": "83531957022bdeabbef79fbfdec77b4bb4699a96c40fe07d50fac11d8466d3c0"
+    },
+    {
+      "file": "procedural-20.png",
+      "sha256": "c6a3fabc4f3f89dfc449fcbbd6ef32441c75ff00900e8071d2f6d0fa606f8b72"
+    },
+    {
+      "file": "procedural-21.png",
+      "sha256": "d3b75bff3e77ea64c9a9acfd437e0812ddb4782beeeb431cbef75192af1ead59"
+    },
+    {
+      "file": "procedural-22.png",
+      "sha256": "2ffce3fae45e3cbf8114b6c81205cfd7655c503b1ed46bc4d5c66c4705a1ae1b"
+    },
+    {
+      "file": "procedural-23.png",
+      "sha256": "11a0de62d9c9868174fb12bf33f85c1610f4bea10dfe412cf4baec957d0b18d0"
+    },
+    {
+      "file": "procedural-24.png",
+      "sha256": "4f0028105c13bd8ed3f097effc510cd97082a2a899b63a27cc06d42d9baf7465"
+    },
+    {
+      "file": "procedural-sheet-01.png",
+      "sha256": "96637538c5755750135cd15b86e8433eb1edf8e100954dde54b97dacb5be9951"
+    },
+    {
+      "file": "procedural-sheet-02.png",
+      "sha256": "f0f5ae4fbeebeefab9d4348f9c33397a6fa585dddd3f129b08c91b81822c1bdd"
+    }
+  ]
+}

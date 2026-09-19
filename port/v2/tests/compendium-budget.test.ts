@@ -234,7 +234,7 @@ const RULER_MEASUREMENT_AUTHORITY =
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  '4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12';
+  '6a829fb18eab4c171afaace0f49ad2a987cfcdc520d33dbc05337c379df85ee2';
 const EXPECTED_OUTCOME_CONTRACT_AUTHORITY =
   '1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692';
 const EXPECTED_COLLECTOR_AUTHORITY =
@@ -310,30 +310,30 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
 /* Refreshed once, after the final app build. Historical samples continue to
    bind their explicit historical producer authorities rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
-  '2083bac2808da830f9d8b5c67386c9e1c6816ba4ee56317e121169817fc9f9cb';
+  '357ad8db3729ad3252b9c67bcf4a629328cd9e90cb35c1e88d6ed7476cb00ece';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v2',
   sha256: EXPECTED_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
-      sha256: 'e9175902cbb316b600ffd566c17af7bf9763e66a518492a3759afe8133271b6d',
+      sha256: 'b9ab29d9f75148a73db07d623fb69bca1e3c6d1ce616faa34e1b89fcb7dfdec8',
     }),
     owner: Object.freeze({
-      relativePath: 'assets/tame-greeting-audio-ge6_npOg.js',
-      sha256: 'b7ea401cfbc3b49363d52515e7e7e59dfcbb63973741d82044c7ad0f20b58ed7',
+      relativePath: 'assets/tame-greeting-audio-rhsfOKDj.js',
+      sha256: '86ac176ed49ae0777307b1ab37812d94e88f2f2d7095eebc7f026988913195cb',
     }),
     worker: Object.freeze({
-      relativePath: 'assets/species-art.worker-DnnSDKMy.js',
-      sha256: '25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172',
+      relativePath: 'assets/species-art.worker-oT5j4xm4.js',
+      sha256: '38a31b7fa16395ae68ad564df925a96033af0306ab7d88c5149fb8c829294401',
     }),
     painter: Object.freeze({
-      relativePath: 'assets/species-art.worker-DnnSDKMy.js',
-      sha256: '25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172',
+      relativePath: 'assets/species-art.worker-oT5j4xm4.js',
+      sha256: '38a31b7fa16395ae68ad564df925a96033af0306ab7d88c5149fb8c829294401',
     }),
     serviceWorker: Object.freeze({
       relativePath: 'service-worker.js',
-      sha256: 'e1aeca0a865d08174ec76799f9e54c7c751d9182e09d1b44d0f5bc961e6553e8',
+      sha256: 'e265a1b0e98614bf26ab697c02c7ee66e615e1e23d43cb037ab50f92f9edda5e',
     }),
   }),
 });

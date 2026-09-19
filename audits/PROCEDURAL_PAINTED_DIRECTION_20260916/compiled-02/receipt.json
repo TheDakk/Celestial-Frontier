@@ -1,0 +1,27 @@
+{
+  "rows": [
+    {
+      "seed": 10032,
+      "sourceMaster": "audits/PROCEDURAL_BATTLE_ITERATION_20260916/painter-01/procedural-1/master.png",
+      "sourceHash": "3d3cf975862f6dd2155a4e6bd68c6a3390bef75d4dcf17052e28e80bf0b90cbc",
+      "promptHash": "7ce41ed3a834af65b0a21ba18287d3d029c4cae6036af3522a6bcfb1cee44024",
+      "kitHash": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+      "qualityAccepted": false
+    },
+    {
+      "seed": 10052,
+      "status": "REFUSED",
+      "reason": "Error: Procedural proof pigment conflicts with magenta key; preserve genome and refuse",
+      "genomeUnchanged": true
+    },
+    {
+      "seed": 10271,
+      "sourceMaster": "audits/PROCEDURAL_BATTLE_ITERATION_20260916/painter-01/procedural-3/master.png",
+      "sourceHash": "fe0a2cc11e6782a0519db7bae0861f719163d0485dcb472aaa35865dd0324e6b",
+      "promptHash": "920ac11e8cc81d8db5ccd87ece1385f183a1d5d26ecf6c861e20abdfacae4543",
+      "kitHash": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+      "qualityAccepted": false
+    }
+  ],
+  "scope": "authoring proof only; no local inference, production wiring or painted-rig qualification"
+}

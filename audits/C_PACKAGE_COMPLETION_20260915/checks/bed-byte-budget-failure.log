@@ -1,0 +1,26 @@
+✔ real codec export is deterministic, preserves decoded duration and source bytes, and measures both peaks (282.677667ms)
+✔ sample-safe intersample clipping is rejected by real true-peak measurement (47.976875ms)
+✔ missing metrics, false encoded peak, wrong channels, duration and unsupported profiles refuse (3.406167ms)
+✔ complete voice export preserves source hashes and refuses existing output or changed manifest before publication (3350.806541ms)
+✖ theme, battle and overlapped bed exports preserve source/sidecar bytes and fit exact budgets (3542.302792ms)
+✔ loop derivative joins the exact declared samples, preserves channels and source; seed changes phase only (3.819959ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7327.138917
+
+✖ failing tests:
+
+test at port/v2/tools/asset-intake/audio-export.test.mjs:50:1
+✖ theme, battle and overlapped bed exports preserve source/sidecar bytes and fit exact budgets (3542.302792ms)
+  Error: Audio export: Opus byte budget exceeded
+      at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/asset-intake/audio-export.mjs:8:36)
+      at exportAudioBytes (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/asset-intake/audio-export.mjs:47:51)
+      at exportSoundSet (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/asset-intake/audio-export.mjs:92:18)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/asset-intake/audio-export.test.mjs:63:45)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

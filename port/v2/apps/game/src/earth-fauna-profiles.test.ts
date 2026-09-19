@@ -1,0 +1,67 @@
+import {it,expect} from 'vitest';
+import {_EARTH_NAMES} from '@cf/domain-descriptors';
+import {EARTH_FAUNA_PROFILES,auditEarthFaunaProfiles,earthFaunaProfile} from './earth-fauna-profiles.js';
+import {resolvePhysicalHabitat} from './battle-habitat.js';
+import {compileBodyCard} from './motion/body-card.js';
+import {attackRepertoire} from './anatomy-attacks.js';
+import {observeQuadrupedWeapons} from '../../../packages/art/src/quadruped-anatomy.js';
+import fs from 'node:fs';
+const fixtures=JSON.parse(fs.readFileSync(new URL('../../../tools/creature-animation/test-fixtures/family-records.json',import.meta.url),'utf8')).records;
+const card=(family:string,name:string)=>compileBodyCard({...fixtures[family],identity:{...fixtures[family].identity,earthName:name},recipeHash:'synthetic-control'});
+it('exactly covers the live fauna catalogue; missing, obsolete and duplicated names fail independently',()=>{
+ const names=_EARTH_NAMES.fauna;
+ expect(auditEarthFaunaProfiles(names)).toMatchObject({status:'PASS',species:631,missing:[],obsolete:[],duplicates:[]});
+ expect(auditEarthFaunaProfiles([...names,'Invented animal']).missing).toEqual(['Invented animal']);
+ expect(auditEarthFaunaProfiles(names.slice(1)).obsolete).toEqual([names[0]]);
+ expect(auditEarthFaunaProfiles([...names,names[0]!]).duplicates).toEqual([names[0]]);
+ expect(earthFaunaProfile('__proto__')).toBeUndefined();
+});
+it('every named species has explicit deterministic habitat intent; missing templates stay missing',()=>{
+ for(const p of EARTH_FAUNA_PROFILES)for(const name of p.names){
+  const r={template:{id:p.candidateTemplates[0]??'unsupported'},identity:{earthName:name}};
+  const h=resolvePhysicalHabitat(r,{habitat:0,loco:0});expect(h.allowed).toEqual(p.media);expect(h).toEqual(resolvePhysicalHabitat(r));
+ }
+ expect(earthFaunaProfile('Clam')?.candidateTemplates).toEqual([]);
+ expect(earthFaunaProfile('Butterfly')?.intendedMoves).not.toContain('mandible');
+ expect(earthFaunaProfile('Coconut Crab')?.media).toEqual(['ground']);
+});
+it('no hoof claws, whale walk, penguin flight, spider tail sting, or filter-shark predatory bite',()=>{
+ const horse=card('quadruped','Horse');expect(horse.weapons).not.toContain('claw');
+ expect(attackRepertoire(horse,'ground').attacks.map(a=>a.verb)).not.toContain('claw');
+ const whale=card('fish','Blue Whale');expect(whale.realm).toBe('aquatic');expect(whale.locomotion.gait).toBe('swim');expect(attackRepertoire(whale,'water').attacks.map(a=>a.verb)).toEqual(['body','tail']);
+ expect(()=>attackRepertoire(card('biped-bird','Penguin'),'air')).toThrow('medium');
+ expect(attackRepertoire(card('arachnid','Spider'),'ground').attacks.map(a=>a.verb)).toEqual(['bite']);
+ expect(attackRepertoire(card('fish','Whale Shark'),'water').attacks.map(a=>a.verb)).toEqual(['body']);
+ expect(()=>attackRepertoire(card('quadruped','Trout'),'ground')).toThrow('medium');
+ expect(()=>attackRepertoire(card('quadruped','Butterfly'),'air')).toThrow('mismatch');
+});
+it('conditional horns require a matching record declaration; species name does not grant them',()=>{
+ const c=card('quadruped','Rhinoceros');expect(attackRepertoire(c,'ground').attacks.map(a=>a.verb)).not.toContain('gore');
+ expect(attackRepertoire(c,'ground',{recordHash:'stale',source:'observation',weapons:['gore']}).attacks.map(a=>a.verb)).not.toContain('gore');
+});
+it('drawn foot branch observes claws only where painted; missing joints and hoof/flipper are negative controls',()=>{
+ const points={jaw:[.5,.2],foreNearPaw:[.6,.8]} as const;
+ for(const foot of ['paw','plantigrade','claw'])expect(observeQuadrupedWeapons(foot,points).map(w=>w.kind)).toEqual(['bite','claw']);
+ for(const foot of ['pad','flipper'])expect(observeQuadrupedWeapons(foot,points).map(w=>w.kind)).toEqual(['bite']);
+ for(const foot of ['hoof','cloven'])expect(observeQuadrupedWeapons(foot,points).map(w=>w.kind)).toEqual(['bite','kick']);
+ expect(observeQuadrupedWeapons('claw',{})).toEqual([]);
+});
+it('all catalogue intent rows filter synthetic template cards without borrowing another species weapons',()=>{
+ // Deliberately synthetic geometry: this proves routing, not any of the 631 painted fits.
+ for(const p of EARTH_FAUNA_PROFILES)for(const name of p.names)for(const template of p.candidateTemplates){
+  const c=card(template,name),medium=c.realm==='aerial'?'air':c.realm==='aquatic'?'water':'ground';
+  const r=attackRepertoire(c,medium);
+  for(const a of r.attacks){expect(p.intendedMoves).toContain(a.verb);expect(a.family).toBe(template);expect(a.joints.every(j=>c.parts.some(part=>part.joint===j))).toBe(true);}
+ }
+});
+it('native painter-emitted weapon receipts are record-bound and preserve ordinary paint',()=>{
+ const base=new URL('../../../../../audits/FULL_SPECIES_ATTACKS_20260916/painter-01/',import.meta.url);
+ const report=JSON.parse(fs.readFileSync(new URL('report.json',base),'utf8'));expect(report.status).toBe('PASS');
+ for(const id of ['procedural-1','procedural-2','procedural-3']){
+  const r=JSON.parse(fs.readFileSync(new URL(id+'/record.json',base),'utf8')),d=JSON.parse(fs.readFileSync(new URL(id+'/weapons.json',base),'utf8'));
+  expect(report.rows.find((row:{id:string})=>row.id===id).normalPainterChangedChannels).toBe(0);
+  expect(d.recordHash).toBe(r.recipeHash);expect(d.weapons).toEqual(r.weapons.map((w:{kind:string})=>w.kind));
+  const c=compileBodyCard(r,r.genome);expect(attackRepertoire(c,'ground',d).status).toBe('READY');
+  expect(()=>attackRepertoire(c,'ground',{...d,recordHash:'wrong'})).toThrow('declaration');
+ }
+});

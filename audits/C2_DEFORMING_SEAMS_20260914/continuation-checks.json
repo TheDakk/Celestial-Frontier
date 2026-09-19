@@ -1,0 +1,35 @@
+{
+  "status": "STATIC_PASS_C2_VISUAL_UNACCEPTED",
+  "toolTests": 37,
+  "vitest": {
+    "files": 371,
+    "passed": 4351,
+    "skipped": 1
+  },
+  "typecheck": "PASS",
+  "rootValidate": "PASS",
+  "nativeCuts": {
+    "source": "71e96f97",
+    "report": "native-gates-03/report.json",
+    "pairs": 62,
+    "restChangedChannels": 0,
+    "updateP95Ms": [
+      0.6,
+      0.6,
+      0.3
+    ],
+    "visualAccepted": false
+  },
+  "continuousField": {
+    "candidate": "candidate-04",
+    "status": "REJECTED_OFFLINE_FOLDOVERS"
+  },
+  "signing": {
+    "currentSignedHead": "71e96f97",
+    "aheadUpstream": 110,
+    "behindUpstream": 0,
+    "aheadCachedDevelop": 221,
+    "behindCachedDevelop": 0,
+    "pendingBatchSigned": false
+  }
+}

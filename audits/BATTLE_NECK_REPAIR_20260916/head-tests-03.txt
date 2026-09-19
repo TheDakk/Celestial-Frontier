@@ -1,0 +1,12 @@
+✔ shared joint angles move only their authored head support, leave the attachment still and preserve rest (0.797291ms)
+✔ head follows actual pose but source neck remains attached to chest; rigid old transform fails (0.788ms)
+✔ actual triangle fold is refused, including the reflected profile view (0.082917ms)
+✔ head replacement cannot cut away the neck or chest; original bad declaration is refused (0.102333ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 71.95025

@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 /** @module battle2-wiring [app] — the flag-gated adapter that binds the A3 battle stage v2 to the
  * live game (WORK_ORDER: one adapter file per module, one guarded call in main.ts). Nothing here runs
- * unless `?battle2=1` is in the URL: main.ts only `import()`s this file inside that gate, so the
+ * unless `?battle2=1` is in the URL: main.ts only imports this file dynamically inside that gate, so the
  * default Chronicle battle path (`combat-battle-scene.ts`) is untouched.
  *
  * What it does: builds the structural `BattleStageFactory` from the pixi.js classes main.ts already
@@ -15,9 +15,9 @@
  * Assets are a DEV-ONLY FETCH: the audit directory is located from a `?url` import of the 3 KB
  * `arena-recipe.json` (Vite dev serves it at `/@fs/<repo>/audits/…`, so its siblings are fetchable);
  * a production build inlines that JSON as a data: URL and the study reports "assets unavailable"
- * instead of shipping 15 MB of proof plates. The keyer is Codex's `kit-contact-math.mjs`, loaded at
- * runtime from the kit runtime route (`/__local_ai/`) exactly as the landfall painter loads its
- * workers. Everything pixi/DOM/asset-shaped is injectable so the tests drive the module with fakes.
+ * instead of shipping 15 MB of proof plates. The keyer is Codex's `kit-contact-math.mjs`, imported
+ * statically (Arc 4 law: no computed dynamic imports in production source; the runtime-route load it
+ * replaced was one). Everything pixi/DOM/asset-shaped is injectable so the tests drive the module with fakes.
  *
  * The stage never changes HP or rewards; the Chronicle log stays the accessible owner of the outcome.
  * Batch 2: each combatant stages its own ability theme (Wild painted, the other ten as the labelled
@@ -26,6 +26,7 @@
  * admits decorative requests only while the owner is live, visible and answerable). Not yet done here: synchronising turns to the Chronicle
  * cue cadence (the study plays the transcript through at its own pace), arena selection beyond the one
  * accepted temperate arena, and the C2 parts rig (fixture rig until it lands). */
+import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-contact-math.mjs';
 import arenaRecipeUrl from '../../../../../audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json?url';
 import { speciesVisualKey } from '@cf/art/species-identity';
 import { BattleStage, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, turnPlanInputFromTranscriptEvent,
@@ -53,7 +54,6 @@ export const BATTLE2_ASSETS = Object.freeze({
   far: 'arena-far.png', mid: 'keyed/arena-mid.png', near: 'keyed/arena-near.png',
   civetRecord: '../CIVET_2D_PROOF_20260912/civet.landmarks.json', civetMaster: '../ART_KIT_ENGINE_FIRST_20260912/masters/civet.png',
 });
-export const BATTLE2_KEYER_URL = '/__local_ai/kit-contact-math.mjs' as const;
 export const PLAYER_PLACEHOLDER_LABEL = 'player champion placeholder (nameplate; no creature art)' as const;
 
 /** The gate main.ts tests in source text; kept here so the wiring and its test agree on the spelling. */
@@ -177,12 +177,6 @@ export function devAssetSource(recipeUrl: string = arenaRecipeUrl, base: string 
     },
   };
 }
-async function runtimeKeyer(): Promise<Battle2Keyer> {
-  const url: string = BATTLE2_KEYER_URL;
-  const mod = (await import(/* @vite-ignore */ url)) as { keyAndDespill?: (rgba: Uint8ClampedArray, w: number, h: number) => Battle2Keyed };
-  if (typeof mod.keyAndDespill !== 'function') throw new Error('battle2 keyer unavailable: kit-contact-math.mjs exports no keyAndDespill');
-  return (rgba, w, h) => mod.keyAndDespill!(rgba, w, h);
-}
 function placeholderImage(raster: Battle2Raster, width = 132, height = 132): Battle2Image {
   // A deterministic flat tile (no text rendering, no clock): the player champion has no creature art.
   const rgba = new Uint8ClampedArray(width * height * 4);
@@ -238,7 +232,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   };
   const build = async (): Promise<Battle2Status> => {
     const assets = input.assets ?? devAssetSource();
-    const keyer: Battle2Keyer = input.keyer ?? await runtimeKeyer();
+    const keyer: Battle2Keyer = input.keyer ?? ((rgba, w, h) => keyAndDespill(rgba, w, h));
     const [recipeRaw, anchorsRaw, far, mid, near] = await Promise.all([assets.json(BATTLE2_ASSETS.recipe), assets.json(BATTLE2_ASSETS.anchors), assets.image(BATTLE2_ASSETS.far), assets.image(BATTLE2_ASSETS.mid), assets.image(BATTLE2_ASSETS.near)]);
     const recipe = recipeRaw as { groundLineNormalized: number; seed: number; systemCard: string; battleContext?: { worldKey?: string } };
     if (typeof recipe.groundLineNormalized !== 'number' || typeof recipe.seed !== 'number' || typeof recipe.systemCard !== 'string') throw new Error('battle2 arena recipe lacks groundLineNormalized/seed/systemCard');

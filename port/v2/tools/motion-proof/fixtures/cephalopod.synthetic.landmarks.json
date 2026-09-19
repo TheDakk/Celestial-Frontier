@@ -162,5 +162,9 @@
     "sheenTier": "painted",
     "paletteSource": "synthetic"
   },
-  "clipSetId": "cephalopod-v1"
+  "clipSetId": "cephalopod-v1",
+  "habitat": {
+    "realm": "aquatic",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
 }

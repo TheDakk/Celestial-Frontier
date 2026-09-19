@@ -1,0 +1,120 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "08f78e9447ae6f942fbaa150ea8ae0f4d221d37cccd53ebbb6025069080b9329",
+  "cutoutSha256": "29e66081d0886722efe4cd553a231121f47466b82a9aa988da01f162d3074ed7",
+  "labelsFile": "labels.png",
+  "labelsSha256": "51f1018f09e1719b81cfc29e017f7fdf679470c3c78c6ff822242a057e4a5ebf",
+  "parts": [
+    {
+      "id": "part-00",
+      "joint": "root",
+      "layer": "far"
+    },
+    {
+      "id": "part-01",
+      "joint": "cephalothorax",
+      "layer": "near"
+    },
+    {
+      "id": "part-02",
+      "joint": "abdomen",
+      "layer": "far"
+    },
+    {
+      "id": "part-03",
+      "joint": "sting",
+      "layer": "near"
+    },
+    {
+      "id": "part-04",
+      "joint": "cheliceraFar",
+      "layer": "far"
+    },
+    {
+      "id": "part-05",
+      "joint": "cheliceraNear",
+      "layer": "near"
+    },
+    {
+      "id": "part-06",
+      "joint": "leg1FarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "part-07",
+      "joint": "leg1FarFoot",
+      "layer": "near"
+    },
+    {
+      "id": "part-08",
+      "joint": "leg1NearKnee",
+      "layer": "far"
+    },
+    {
+      "id": "part-09",
+      "joint": "leg1NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "part-10",
+      "joint": "leg2FarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "part-11",
+      "joint": "leg2FarFoot",
+      "layer": "near"
+    },
+    {
+      "id": "part-12",
+      "joint": "leg2NearKnee",
+      "layer": "far"
+    },
+    {
+      "id": "part-13",
+      "joint": "leg2NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "part-14",
+      "joint": "leg3FarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "part-15",
+      "joint": "leg3FarFoot",
+      "layer": "near"
+    },
+    {
+      "id": "part-16",
+      "joint": "leg3NearKnee",
+      "layer": "far"
+    },
+    {
+      "id": "part-17",
+      "joint": "leg3NearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "part-18",
+      "joint": "leg4FarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "part-19",
+      "joint": "leg4FarFoot",
+      "layer": "near"
+    },
+    {
+      "id": "part-20",
+      "joint": "leg4NearKnee",
+      "layer": "far"
+    },
+    {
+      "id": "part-21",
+      "joint": "leg4NearFoot",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "e81c4436be6fc1f46acd0a1c3e815f8166cfd1fd40d09554212f57a5fe5facde"
+}

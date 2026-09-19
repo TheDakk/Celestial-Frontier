@@ -1,0 +1,168 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "authored:pheasant-frontal-flight-candidate",
+    "seed": 424242,
+    "ownerId": "authored:turnaround-candidate-02",
+    "earthName": "Pheasant"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "projection": "frontal-wings",
+  "habitat": {
+    "realm": "aerial",
+    "gait": "fly",
+    "source": "Pheasant flight anatomy; source-bound open-wing turnaround"
+  },
+  "geometry": {
+    "cutoutAssetHash": "125ebf56496358792bacf040197a809278bd1e948f1a91442533f2482165dd73",
+    "width": 768,
+    "height": 768,
+    "groundLineY": 0.8,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5104166666666666,
+      0.51953125
+    ],
+    "pelvis": [
+      0.5104166666666666,
+      0.5390625
+    ],
+    "spine": [
+      0.5104166666666666,
+      0.4583333333333333
+    ],
+    "chest": [
+      0.5104166666666666,
+      0.36328125
+    ],
+    "neck0": [
+      0.5104166666666666,
+      0.3033854166666667
+    ],
+    "neck1": [
+      0.5104166666666666,
+      0.2578125
+    ],
+    "head": [
+      0.5104166666666666,
+      0.20182291666666666
+    ],
+    "beak": [
+      0.5104166666666666,
+      0.22916666666666666
+    ],
+    "legNearKnee": [
+      0.5559895833333334,
+      0.61328125
+    ],
+    "legNearAnkle": [
+      0.55859375,
+      0.7161458333333334
+    ],
+    "legNearFoot": [
+      0.5911458333333334,
+      0.7604166666666666
+    ],
+    "legFarKnee": [
+      0.4596354166666667,
+      0.6171875
+    ],
+    "legFarAnkle": [
+      0.4479166666666667,
+      0.7174479166666666
+    ],
+    "legFarFoot": [
+      0.40625,
+      0.76171875
+    ],
+    "wingNearRoot": [
+      0.6080729166666666,
+      0.3528645833333333
+    ],
+    "wingNearTip": [
+      0.81640625,
+      0.4348958333333333
+    ],
+    "wingFarRoot": [
+      0.40234375,
+      0.3528645833333333
+    ],
+    "wingFarTip": [
+      0.19401041666666666,
+      0.4348958333333333
+    ],
+    "tailFan": [
+      0.5234375,
+      0.5807291666666666
+    ]
+  },
+  "materials": {
+    "surface": "feathers"
+  },
+  "clipSetId": "biped-bird-v1",
+  "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/HABITAT_BATTLE_20260916/airbird-01/master.png",
+  "sourceDerivation": {
+    "parent": "audits/HABITAT_BATTLE_20260916/bird-turnaround-candidate-02.png",
+    "parentSha256": "814ce5e11021fedff025b0482940ae31be8f82759f34ce5221caf9bcc814fab3",
+    "crop": [
+      0,
+      100,
+      640,
+      680
+    ],
+    "padding": [
+      64,
+      44,
+      64,
+      44
+    ]
+  },
+  "qualityAccepted": false,
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.01953125,
+      "spine": 0.08072916666666669,
+      "chest": 0.09505208333333331,
+      "neck0": 0.059895833333333315,
+      "neck1": 0.045572916666666685,
+      "head": 0.05598958333333334,
+      "beak": 0.02734375,
+      "legFarKnee": 0.09317859720216062,
+      "legFarAnkle": 0.10094295543392863,
+      "legFarFoot": 0.060794882968378955,
+      "legNearKnee": 0.0870937057718263,
+      "legNearAnkle": 0.10289754218817894,
+      "legNearFoot": 0.0549503850156489,
+      "wingFarRoot": 0.10857376414808835,
+      "wingFarTip": 0.22390154924506506,
+      "wingNearRoot": 0.09821023423506811,
+      "wingNearTip": 0.22390154924506508,
+      "tailFan": 0.043653788057917184
+    },
+    "measures": {
+      "body": 0.17578125,
+      "bone-min": 0.01953125,
+      "bone-max": 0.22390154924506508,
+      "leg/torso:legFar": 1.4501912781054191,
+      "leg/torso:legNear": 1.393445734261499,
+      "wing/torso": 1.8914151161921615
+    }
+  },
+  "recipeHash": "2d50a9f3646700efa020aab8e5db81c9d254b065831d484e4eaf4c1a1b93712a"
+}

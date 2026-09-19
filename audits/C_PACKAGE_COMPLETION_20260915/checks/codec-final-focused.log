@@ -1,0 +1,14 @@
+✔ real codec export is deterministic, preserves decoded duration and source bytes, and measures both peaks (290.62175ms)
+✔ sample-safe intersample clipping is rejected by real true-peak measurement (46.303875ms)
+✔ missing metrics, false encoded peak, wrong channels, duration and unsupported profiles refuse (3.215833ms)
+✔ complete voice export preserves source hashes and refuses existing output or changed manifest before publication (3300.489709ms)
+✔ theme, battle and overlapped bed exports preserve source/sidecar bytes and fit exact budgets (6531.547042ms)
+✔ loop derivative joins the exact declared samples, preserves channels and source; seed changes phase only (4.326958ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10282.187125

@@ -1,0 +1,11 @@
+✔ joint underlap never introduces a rest-visible pixel outside opaque base coverage (0.735791ms)
+✔ authored mask ownership reconstructs visible pixels; drops, duplicates and changed colours fail (295.721ms)
+✔ corruption, wrong master, wrong record and unknown joint refuse before output (127.742917ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 514.521833

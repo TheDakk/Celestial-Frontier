@@ -60,6 +60,7 @@ function fixture(source = owners) {
     app: { stage, screen: { height: 844 } }, world,
     EARTH_LAYERED_SCENE_ID: PAIR, PAINTED_EARTH_LANDING_ID: STILL,
     LOCAL_AI_LANDFALL_ID: 'cf-local-ai-landfall-v1',
+    cancelAiCrossfade: null as (() => void) | null,
     mountedLocalAiOriginal: null, localAiGame: null, refreshLocalAiPresentation: vi.fn(),
     PAINTED_MARS_VISTA_ID: 'painted-mars-dunesea-v1',
     currentEarthLayeredLayout: () => ({ scale: .4, centerX: 195, centerY: 280 }),
@@ -263,4 +264,12 @@ describe('actual main Earth mount and retirement transactions', () => {
     const display = omitted.state.surfaceVistaSprite!; omitted.api.release();
     expect(() => assertRetired(omitted, [other], [display])).toThrow('Earth owner did not retire');
   });
+});
+
+it('retires a pending crossfade through the actual scene release owner exactly once',()=>{
+ const f=fixture(),cancel=vi.fn();f.state.cancelAiCrossfade=cancel;
+ f.api.release();expect(cancel).toHaveBeenCalledOnce();expect(f.state.cancelAiCrossfade).toBeNull();
+ f.api.release();expect(cancel).toHaveBeenCalledOnce();
+ const mutant=fixture(owners.replace('  cancelAiCrossfade?.(); cancelAiCrossfade = null;','  cancelAiCrossfade = null;'));
+ const missed=vi.fn();mutant.state.cancelAiCrossfade=missed;mutant.api.release();expect(missed).not.toHaveBeenCalled();
 });

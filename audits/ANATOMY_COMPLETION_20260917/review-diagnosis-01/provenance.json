@@ -1,0 +1,323 @@
+{
+  "schema": "cf.bounded-review-provenance/v1",
+  "codeProducer": "6a58e40eeb552e925c94e0173d6298c4b05303e3",
+  "startingEvidenceHead": "d04374362aaa0a357c5dc2791213fe277b0f4915",
+  "signatures": [
+    {
+      "commit": "6a58e40eeb552e925c94e0173d6298c4b05303e3",
+      "verification": "Good \"git\" signature for cf-configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    },
+    {
+      "commit": "d04374362aaa0a357c5dc2791213fe277b0f4915",
+      "verification": "Good \"git\" signature for cf-configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n"
+    }
+  ],
+  "sharedNativeImportedSources": 42,
+  "sharedSourceHashMismatches": 0,
+  "diagnosticInputHashes": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/record.json",
+      "sha256": "f16b43760db43c41a65f0272af1ec60e5c9817b3b3943caa88934f5e5a981408"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/binding.json",
+      "sha256": "f87614a4fb9745f5d265ebaa2bc2203332ab2ecfd019d6368af66ac335619788"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/mud-crab-native-04/report.json",
+      "sha256": "cd18c85368655b20fac3618eeff4eae2656b22dfc1b8d9e86fa371c10c8ef506"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/record.json",
+      "sha256": "6ed9989d14132ea998b1601da1b86838e61f87c7d973f7a1ddac00a8fd5b2f5c"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/binding.json",
+      "sha256": "ff30f7d588fcdcb73f3320ced63d6c1d9d37548be09f07c9103f6215daa8837b"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/vent-crab-native-04/report.json",
+      "sha256": "c8a8e9ad538702e6e5996e8e5dfdbcd4470927f8a6a0be63a28c6f2b25bc96d8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/persimmon-04/record.json",
+      "sha256": "a7523b8214c525af3e076a1b6f915ca13b5de499ca6b6275a95970a426337c44"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/persimmon-04/binding.json",
+      "sha256": "98469ded21b9c98613fdc3a22cd341cffa2b2f25e0fb5dfdc36bc5d14d654871"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-native-04/melee-pinch-50.png",
+      "sha256": "5faafc4920224dfdeff072d27bf6d0c6e47a933b75aefede0b320688e747fb3c"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-04/melee-pinch-50.png",
+      "sha256": "1baa2ac58cb0cdb88398a630707968e466d759bf635852c2c00d3aa0855e31ef"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-04/melee-pinch-50.png",
+      "sha256": "5ca19ce407d19bc8f8176ea357d6ebe998e3ea43687b9f637bdaffe2cdc35e61"
+    }
+  ],
+  "originalFilmHashesVerifiedAgainstManifest": [
+    {
+      "subject": "crab",
+      "source": "audits/ANATOMY_COMPLETION_20260917/crab-native-04/family-10s.webm",
+      "sourceSha256": "3d93a406179e96660ab28238d860cfe61c3ca9a3f781105fb5f04ddeab5ee670",
+      "decodedFrames": 607
+    },
+    {
+      "subject": "coconut-crab",
+      "source": "audits/ANATOMY_COMPLETION_20260917/coconut-crab-native-04/family-10s.webm",
+      "sourceSha256": "b2cc7b960dd131a727e5735bc4b231010113ba66bc440fcbfae4dbf3b2617000",
+      "decodedFrames": 607
+    },
+    {
+      "subject": "freshwater-crab",
+      "source": "audits/ANATOMY_COMPLETION_20260917/freshwater-crab-native-04/family-10s.webm",
+      "sourceSha256": "1624b89a13f7b28ee5dc8304d039a8cd14a3fd2253e8699fba9b90e34692b186",
+      "decodedFrames": 607
+    }
+  ],
+  "checks": {
+    "offlineReplay": "8 exact contact failures,84/209 fold reproduction,rest and preceding-frame controls,7 bounded foliage ablations",
+    "legacyValidation": "PASS;1010 renders,zero errors,50 baseline probes identical",
+    "nativeReruns": 0,
+    "githubWrites": 0,
+    "qualificationPromoted": 0
+  },
+  "scope": "Diagnostic and documentation successor only; original films/reports/input assets unchanged",
+  "artifacts": [
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/PREPARATION_FAILURES.md",
+      "sha256": "020955f101060d44eafdc619726a8d25b717c9455febfec28f75a1542c5985b6",
+      "bytes": 1920
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md",
+      "sha256": "5553693ba1e405fb7ec7abf060ba98719a3a1fbbda785a17cd6a73e6cf4a051c",
+      "bytes": 12389
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/active-tools-preinstall.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/active-tools.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/brew-outdated.json",
+      "sha256": "f2f477ce3f2d7d458dc194af50144634f8fe2aa33592d04f3f6cb71d723dbc01",
+      "bytes": 396
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/brew-update.log",
+      "sha256": "5534bf7fef5d2ed6601d3fda16b293cb6103e204ce68fc40344869f5bfcfefb7",
+      "bytes": 1181
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/coconut-crab-review-01.png",
+      "sha256": "8d4bbe7d2d7390b176f0902b979c4925b3e61a34f2ed48c8e579424b7920d99e",
+      "bytes": 289591
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/coconut-crab-review-02.png",
+      "sha256": "bf0854395d31e7b3eb665578b96642ede25cca09194a555cb89c2c65d36934a7",
+      "bytes": 166528
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/coconut-crab-review-03.png",
+      "sha256": "7ea86b703eb122c85c8a6151832e47035012386b88fe4ffe2fc96070162177fe",
+      "bytes": 164905
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/coconut-crab-review-04.png",
+      "sha256": "944d8d99650e32f1e9abb1b0c0f161df08429e64edc7e18e74dc1e8f64d7cb2a",
+      "bytes": 20014
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/coconut-crab-transition.png",
+      "sha256": "f3da8c5211a99557158257fdbd111b2c1a37ac5241e5808c30496bc68ae36088",
+      "bytes": 171026
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/crab-film-01.png",
+      "sha256": "1cc0c45be599981176185e0dbe2abbc9353e03c9747a9d5f227d8134453b0abf",
+      "bytes": 433587
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/crab-review-01.png",
+      "sha256": "1cc0c45be599981176185e0dbe2abbc9353e03c9747a9d5f227d8134453b0abf",
+      "bytes": 433587
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/crab-review-02.png",
+      "sha256": "d2c5db0eb8e5aecf59e95d11bdf1c2796c21ae1f041e6f35af16eab4048857b7",
+      "bytes": 234543
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/crab-review-03.png",
+      "sha256": "34105155951b5705caf48744588413fd97f9cb08123499db699cd563bc194b52",
+      "bytes": 237094
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/crab-review-04.png",
+      "sha256": "e2833e327f43e735ed78f8242a0cf16320f4c5a0baa03c9e8d472a0addf20338",
+      "bytes": 27511
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/crab-transition.png",
+      "sha256": "6ee2422145b40c375415cafe26c5a1a2d7fa3aa33bf7e9dd17e7d438eb1f4345",
+      "bytes": 288485
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/diagnose-instrument-01.ts",
+      "sha256": "8872db3a37267b6addad9a7840461d5166f2e6df42c3f50155c7fc2cf04da0d7",
+      "bytes": 9701
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/diagnose.ts",
+      "sha256": "b0344dffba64829d3c3eac9c0f7791cb01b103d0aa8fb9e0751a2dd809ca6669",
+      "bytes": 11203
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/diagnosis-02.json",
+      "sha256": "3c9c3314b1c181fe6b324e986ef0ac6173f76d48178d82aabb4b1797333fc8a4",
+      "bytes": 1049540
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/diagnosis-02.log",
+      "sha256": "e897ce74e4b5559ae9fc09f048e7462376d6d320e3c580ff9e3c862e3723bfae",
+      "bytes": 11652
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/diagnosis-instrument-01.json.gz",
+      "sha256": "b606eef6b9c8be17700c0ba5925447c67df0234e29a2b87ec5cabe451cde5883",
+      "bytes": 1150815
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/diagnosis.log",
+      "sha256": "86282f9b74be0ad5cf6fa9555a720dc73170aaf06577a79756d63157d16e76e6",
+      "bytes": 8573
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/diagnostic-source-hashes-02.json",
+      "sha256": "83abde7ec26087d564a87b22161202986c2a09684046cd569cc1084fa7558484",
+      "bytes": 8830
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/diagnostic-source-hashes.json",
+      "sha256": "96a42d42c4102ca1ec92f7f06872446e4d12526871512f31c976d5275a6c4da1",
+      "bytes": 8830
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/film-extraction-02.log",
+      "sha256": "18170fa4cf2e7dbfe3a1b8f67d7b043d0c8bf4c71311077ea70b3c435c6c859a",
+      "bytes": 6481
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/film-extraction.log",
+      "sha256": "80226b27a2d43079c4842c5f085c6acbd21b9e642ed4b690b4aca4ebca76f789",
+      "bytes": 2792
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/film-review-inputs.json",
+      "sha256": "18170fa4cf2e7dbfe3a1b8f67d7b043d0c8bf4c71311077ea70b3c435c6c859a",
+      "bytes": 6481
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/fold-locations.json",
+      "sha256": "e01298f944a0dd1bc8e65e5805f7cee254e741d9143633c42c0cfef46499d85c",
+      "bytes": 729
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/freshwater-crab-review-01.png",
+      "sha256": "f9a0bc5985486894b193d10cd288ff902fd2eddf60e6ba83f8c5474c81df4ef9",
+      "bytes": 450441
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/freshwater-crab-review-02.png",
+      "sha256": "94e7263b55ec50fd50164741fa54845559ccd2a2d1ad151c7b8de6689d206025",
+      "bytes": 241742
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/freshwater-crab-review-03.png",
+      "sha256": "bc05712d05cb6107f0c1a25b0a3dae7cb05bf4fd87212dcf2cd4cf79529efc83",
+      "bytes": 225289
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/freshwater-crab-review-04.png",
+      "sha256": "a6581a84da13040b91d8902599604039e689c4b91f75c52b20a85e0d5c76289b",
+      "bytes": 29491
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/freshwater-crab-transition.png",
+      "sha256": "7a1c0d9fa42a05e694964056aaa062fb619f90e6896b229a8dfcf6d63cb186db",
+      "bytes": 288828
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/inspect-transition.py",
+      "sha256": "0be1e991e4e85338112ac01acbbd7b19e6a0713f721ed52ad6e4864615f27d9f",
+      "bytes": 2276
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/instrument-01-retention.json",
+      "sha256": "d8eef61726924e537e0573a4d7c0ff5bf3bf14892f42461ab069e4c507ae43c2",
+      "bytes": 337
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/review-films-instrument-01.py",
+      "sha256": "68677a7e9faf5cad0040480ecf56cb2c5a21a080c67ed3540ebf4f1b3b1d13fe",
+      "bytes": 2103
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/review-films-instrument-02.py",
+      "sha256": "73cae6301976f243476f36546a84e68fe7a975f3701764744c4e4909d68f251a",
+      "bytes": 2617
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/review-films.py",
+      "sha256": "0e8b40d96b59803a1285d479a3f30f657066cf9a5f316ccc621239c7e4d5c767",
+      "bytes": 2663
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/root-validate.log",
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+      "bytes": 1093
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/run-diagnosis.mjs",
+      "sha256": "ff500bf31087ea29e063b19f2f13f4611930e70ca6ecdebda610c35b05aaf2f7",
+      "bytes": 1286
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/toolchain-check.json",
+      "sha256": "4329e0b1625a3703257ddc453a2470f5a9446b644eba1943b7088af748bb31fd",
+      "bytes": 6905
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/toolchain-install.log",
+      "sha256": "ea53cb6bfa2cc75e0aa39e1fe0fcdd2a0dc7e5f4eea13e0a87b4c09350ea3657",
+      "bytes": 1051
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/toolchain-verify.json",
+      "sha256": "ff954f790b12d75cf1d4e305252c2c59bf59a945f9cd6cd5ef8326e5665e7f38",
+      "bytes": 10033
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/transition.json",
+      "sha256": "33519af9a36047eece2195e9006a1d87ca44e814a29c47dea51bf0993debeb9a",
+      "bytes": 2118
+    },
+    {
+      "path": "audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/transition.log",
+      "sha256": "33519af9a36047eece2195e9006a1d87ca44e814a29c47dea51bf0993debeb9a",
+      "bytes": 2118
+    }
+  ]
+}
