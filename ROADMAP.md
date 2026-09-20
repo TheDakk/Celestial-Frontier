@@ -36,3 +36,9 @@ Nick authorized stage travel/gait-phase extension and shared pin-conflict repair
 zeros solver root dx, stored keys unchanged. New civet-input-01 releases9non-contact pins
 around contact supports; weights/topology/atlas identical.36app/8split tests pass. Next signed
 extension producer, full report-all ledger and native rest, then measured contact limits.
+
+R3-S extension producer4c2f282f signature verified. Native rest0. Corrected travel-scope-03
+clears all classes except raw limits; stage selection now melee-only, gaits solver-owned.
+Measured contact limits Knee100/Ankle105/Paw95, raw limits unchanged. Nick approved x15
+negative control (x3 insensitive retained), then all remaining implementation choices within
+the run; existing S2/gates/local-only boundaries stay.39app tests pass; final AFTER pending.

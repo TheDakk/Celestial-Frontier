@@ -4,6 +4,7 @@ export interface FamilyContract extends SkeletonDefinition {
  readonly legs:readonly string[];
  readonly contactStance?:{readonly default:'all'|'hind'|'none';readonly gaits?:Readonly<Record<string,'alternating'|'bounding'>>;readonly actions:Readonly<Record<string,'all'|'hind'|'none'>>};
  readonly limitsDeg:Readonly<Record<string,{min:number;max:number}>>;
+ readonly contactLimitsDeg?:Readonly<Record<string,{min:number;max:number}>>;
  readonly bounds:ReadonlyArray<{id:string;min:number;max:number;kind:string;axis?:readonly [string,string];bones?:readonly string[]}>;
 }
 export const FAMILY_CONTRACTS:readonly FamilyContract[];

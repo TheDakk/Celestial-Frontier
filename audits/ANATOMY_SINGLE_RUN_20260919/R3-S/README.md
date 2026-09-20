@@ -22,3 +22,14 @@ Civet faint had a fully pinned reversed triangle849. Shared contact conflict rep
 9adjacent non-contact pins, preserves every contact lock, all weights/topology/atlas/record.
 New input civet-input-01; old bindings retained.36app tests and8split tests pass.
 Full ledger/native rest pending; contactLimitsDeg still not derived or added.
+
+## Contact-limit producer
+
+4c2f282f signature verified. Native-rest-01:0 pixels changed. stance-02 clears reach,
+compression and publication but retains gait drift caused by the harness applying stage
+mode beyond authorized melee. travel-scope-03 restores solver-owned gait translation and
+clears all non-limit classes; all five crabs remain bit-identical. Measured contact limits:
+Knee±100°, Ankle±105°, Paw±95° (measurement JSON records the formula and witnesses).
+Raw limits unchanged. Nick authorized x15 crouch rejection after x3 became insensitive;
+original failures retained in contact-controls-01..03 logs and diagnosis JSON. Stage-mode
+all-four bite still rejects compression.39app tests pass. Final signed AFTER sweep pending.

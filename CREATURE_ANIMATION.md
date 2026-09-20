@@ -9,7 +9,16 @@ ContactPhase.travel='stage' zeros solver root dx without editing stored clip key
 stance and bounding hind support leave lifted keys raw. The shared split optionally releases
 non-contact pins adjacent to incompatible contact owners. Civet input01 releases9pins with
 zero weight/topology/atlas changes; previous bindings retained.36app/8split tests pass.
-Contact limits still raw pending new full measurement. Compression/paint/rest gates unchanged.
+Measured planted-fold maxima (travel-scope-03 ledger) are Knee86.5368918°, Ankle94.1469004°,
+Paw80.5685150°. Shared quadruped contactLimitsDeg applies ±100°/±105°/±95° respectively:
+ceil((max absolute +10°)/5°)×5°. Raw limitsDeg and the169-action raw battery are unchanged;
+absent contactLimitsDeg falls back to raw limits. Stage mode is selected for melee only in
+capture/sweep consumers; gait travel retains its paired solver root/stance targets.
+Native regenerated-binding exact rest passes0 changed pixels. All six subjects' corrected
+measurement ledger clears reach/compression/publication/drift; remaining raw limit events
+are the measured input to these contact limits. Nick authorized x15 crouch rejection after
+x3 became insensitive under hind-only stance; x3 evidence remains. All-four bite compression
+still fails with stage travel active. Compression/paint/rest gates unchanged.
 [Current packet](audits/ANATOMY_SINGLE_RUN_20260919/R3-S/README.md).
 
 **Single-run measurement update — matches code September19,2026.** R1c Civet adapter
