@@ -390,3 +390,31 @@ the elbow valley is 46–131 px from the record's elbow, the "base" valley still
 (3) P7 body-outline seeds (`outlineBand`, boundary pixels near the thick region whose neighbourhood DT exceeds a
 limb cross-section): no effect at any band 0.3–1.0 R — the test never fires at a boundary pixel (DT ≈ 1 there);
 kept as an option at 0, the outline needs the DT of the nearest RIDGE, not of the pixel. Not pursued further now.
+
+## Slice 21 — interior-edge stage built and measured; the "no candidate" finding CORRECTED, 2026-09-21
+**Correction of slice 19's design finding.** The freshwater folded leg DOES have a main-graph candidate at its tip
+(`end 136,439`, 1 px from the record): it is misclassified as a claw finger by the thick-terminal rule because its
+terminal ridge merges with the carapace outline (termDt 15 vs the leg's own 8). The crab's folded leg is a loop
+candidate at 68 px. So an alpha-only graph does see these limbs; what it gets wrong is their RIDGE THICKNESS and
+therefore their class. Nick's decision item in the ROADMAP is withdrawn.
+**Interior-edge stage (`interiorEdges`, `edgeBlur`, `edgeMinLen`, `interiorTipMax`; all off by default):** working-
+scale luminance, box blur at `edgeBlur` × rest leg thickness × R, Sobel, strong = ≥ `interiorEdges` × the mask's
+median magnitude, connected runs ≥ `edgeMinLen` × leg length are cut from the working mask; a second ridge graph on
+the cut mask supplies extra `interior` candidates (kind treated as an endpoint) — the main graph is untouched.
+- global cut (first form): at threshold 2, blur 1 the freshwater folded leg is found at **8 px**, but the body
+  fragments (named 5/43); at ≥ 6 nothing is cut (0 px) — raw Sobel cannot separate limb contour from paint texture.
+- second pass, candidate-only: thr 2–3 × blur 1 × tip-inside 0.1–2.0 R: at best 25/39 (= unchanged), typically
+  18–23 (false interior candidates); the folded leg is rejected by the dedupe/upgrade gate because the main graph
+  already has that tip.
+- upgrade rules (replace a spine-short or thicker main candidate at the same tip by the cleaner interior chain):
+  freshwater `leg0Far` **8 px**, but the far side then over-fills (false touch 88 px and a false endpoint 239 px take
+  the freed slots, the hidden set breaks) and the vent crab collapses (0/8): 15–19/43. Rejected as default.
+- the same gain without any edge stage: `thickMaxLen` (a thick single terminal is a finger only when finger-short,
+  ≤ f × rest leg): f = 0.3/0.5/0.7/1.0 → 21/44, 20/43, 24/41, 25/40 with the freshwater leg at 8 px for f ≤ 0.7 —
+  and the same over-fill on that side. Default off.
+**Where this leaves the bottleneck, precisely:** on the freshwater far side the true legs are all in the pool; the
+naming fails because two FALSE candidates (a touching tip at 88 px, an endpoint at 239 px) are cheaper to place than
+to leave unused (unused cost 1.0 for endpoints, 0.5 for resting tips) and the empty-slot prior only makes the claw
+end cheap. The next change is the unused/empty economics: an empty slot must be as cheap as leaving a weak candidate
+unused, and a candidate's placement cost must include how well its terminal thickness matches the side's other legs
+(the false endpoint at 239 px is claw-thick). Nothing here is a gate.

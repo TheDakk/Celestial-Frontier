@@ -14,12 +14,27 @@ import {alphaOf,detectTips} from './tips.mjs';
 import {ridgeGraph} from './ridge.mjs';
 import {limbChains,separationPoints} from './chains.mjs';
 import {templateRest} from './template-rest.mjs';
+import {distanceTransform} from './thickness.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 /** Backwards-compatible descriptor view: legs per side and slot naming per template (from the contract). */
 export const TEMPLATES=new Proxy({},{get:(_,id)=>{if(typeof id!=='string')return undefined;const r=templateRest(id);return {legsPerSide:r.legsPerSide,slotName:(k,side)=>r.slots[side][k].terminal,rest:r};}});
-export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2}={}){
+export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=1e9}={}){
   const T=templateRest(template),legsPerSide=T.legsPerSide,slotName=(k,side)=>T.slots[side][k].terminal;
-  const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128}),{mask,dt,working:{width:W,height:H,scale,box}}=det;
+  const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128}),{working:{width:W,height:H,scale,box}}=det;let {mask,dt}=det;let interiorPass=null;
+  // INTERIOR-EDGE STAGE (README slice 21): a limb painted over the body is inside the silhouette; its contour is a
+  // strong luminance edge. Strong interior contours (Sobel ≥ interiorEdges × the mask's median magnitude, in
+  // connected runs ≥ edgeMinLen × rest leg length) are cut out of the working mask before the distance transform,
+  // so the folded limb becomes its own thin ridge for the same graph, chains and matcher. 0 = off.
+  if(interiorEdges>0){const lum=new Float32Array(W*H);const r=Math.max(1,Math.round(0.5/scale));for(let y=0;y<H;y++)for(let x=0;x<W;x++){const mx=box.x+(x-2)/scale,my=box.y+(y-2)/scale;let sum=0,n=0;for(let yy=Math.round(my-r);yy<=Math.round(my+r);yy++)for(let xx=Math.round(mx-r);xx<=Math.round(mx+r);xx++){if(xx<0||yy<0||xx>=w||yy>=h)continue;const i=(yy*w+xx)*4;if(rgba[i+3]<128)continue;sum+=0.299*rgba[i]+0.587*rgba[i+1]+0.114*rgba[i+2];n++;}lum[y*W+x]=n?sum/n:0;}
+    // limb-scale blur (edgeBlur × rest leg thickness × R, box, mask-aware) so paint texture averages out before the gradient
+    if(edgeBlur>0){let m=0;for(let i=0;i<W*H;i++)if(dt[i]>m)m=dt[i];const rb=Math.max(1,Math.round(edgeBlur*templateRest(template).legThickness*m));const out=new Float32Array(W*H);for(let y=0;y<H;y++)for(let x=0;x<W;x++){const i=y*W+x;if(!mask[i])continue;let sum=0,n=0;for(let yy=y-rb;yy<=y+rb;yy++)for(let xx=x-rb;xx<=x+rb;xx++){if(xx<0||yy<0||xx>=W||yy>=H)continue;const j=yy*W+xx;if(!mask[j])continue;sum+=lum[j];n++;}out[i]=n?sum/n:0;}lum.set(out);}
+    const mag=new Float32Array(W*H);const vals=[];for(let y=1;y<H-1;y++)for(let x=1;x<W-1;x++){const i=y*W+x;if(!mask[i]||dt[i]<2)continue;const gx=lum[i+1]-lum[i-1]+0.5*(lum[i-W+1]-lum[i-W-1]+lum[i+W+1]-lum[i+W-1]),gy=lum[i+W]-lum[i-W]+0.5*(lum[i+W-1]-lum[i-W-1]+lum[i+W+1]-lum[i-W+1]);mag[i]=Math.hypot(gx,gy);vals.push(mag[i]);}
+    vals.sort((a,b)=>a-b);const med=vals[Math.floor(vals.length/2)]||1;const thr=interiorEdges*med;const strong=new Uint8Array(W*H);for(let i=0;i<W*H;i++)if(mag[i]>=thr)strong[i]=1;
+    // keep connected runs of strong pixels whose extent is at least edgeMinLen × leg length
+    const minLen=edgeMinLen*templateRest(template).legLength*(()=>{let m=0;for(let i=0;i<W*H;i++)if(dt[i]>m)m=dt[i];return m;})();const seen=new Uint8Array(W*H);const cut=new Uint8Array(W*H);
+    for(let i=0;i<W*H;i++){if(!strong[i]||seen[i])continue;const comp=[i];seen[i]=1;const st=[i];let minx=1e9,maxx=-1,miny=1e9,maxy=-1;while(st.length){const c=st.pop();const x=c%W,y=(c-x)/W;if(x<minx)minx=x;if(x>maxx)maxx=x;if(y<miny)miny=y;if(y>maxy)maxy=y;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const nx=x+dx,ny=y+dy;if(nx<0||ny<0||nx>=W||ny>=H)continue;const j=ny*W+nx;if(strong[j]&&!seen[j]){seen[j]=1;comp.push(j);st.push(j);}}}
+      if(Math.hypot(maxx-minx,maxy-miny)>=minLen)for(const j of comp)cut[j]=1;}
+    const m2=new Uint8Array(mask);let ncut=0;for(let i=0;i<W*H;i++)if(cut[i]&&m2[i]){m2[i]=0;ncut++;}interiorPass={mask:m2,dt:distanceTransform(m2,W,H)};if(process.env.ASSIGN_DEBUG)console.log('interior edges: median',med.toFixed(1),'thr',thr.toFixed(1),'cut px',ncut,'minLen',minLen.toFixed(0));}
   const g=ridgeGraph(mask,dt,W,H,{spurFactor:1.5,spurFloor:8});
   // body/limb split: the geometric mean of the body radius and the rest proximal leg thickness (P3 note), unless a
   // fraction is passed explicitly for measurement
@@ -91,15 +106,31 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
   // mid-leg crossing) is interior to that limb and is dropped in favour of the chain's own endpoint
   {const interior=new Set();for(const c of cands){if(c.kind!=='end')continue;let node=c.chain.rootNode.id;const es=c.chain.edges;for(let k=0;k<es.length;k++){const e=es[k];node=(e.a===node)?e.b:e.a;let beyond=0;for(let m=k+1;m<es.length;m++)beyond+=es[m].length;if(beyond>=minLimbTerm)interior.add(node);}} // a junction is interior only when the limb continues a limb's worth beyond it
     for(const c of cands)if(c.kind==='touch')c.diag.interior=interior.has(c.nodeId);if(touchInterior)for(let i=cands.length-1;i>=0;i--)if(cands[i].kind==='touch'&&interior.has(cands[i].nodeId))cands.splice(i,1);}
+  // INTERIOR PASS: the same graph on the contour-cut mask; a thin terminal chain whose TIP lies inside the original
+  // thick region (bodyDist 0 on the uncut mask) is a limb painted over the body. Added as kind 'interior' with the
+  // same attributes; the main graph is untouched.
+  if(interiorPass){const g2=ridgeGraph(interiorPass.mask,interiorPass.dt,W,H,{spurFactor:1.5,spurFloor:8});const lc2=limbChains(g2,interiorPass.dt,W,{bodyFraction:frac});const seps2=separationPoints(lc2.chains,g2.nodes,centre);let added=0;
+    for(const c of lc2.chains){const last=c.edges[c.edges.length-1];const ti=Math.round(c.endNode.y)*W+Math.round(c.endNode.x);if(process.env.INTERIOR_DEBUG){const tm=toM([c.endNode.x,c.endNode.y]).map(Math.round);const tp=process.env.INTERIOR_DEBUG.split(',').map(Number);console.log('  g2 chain tip',tm.join(','),'d→target',Math.round(Math.hypot(tm[0]-tp[0],tm[1]-tp[1])),'term',last.length,'termDt',last.meanDt,'endDt',c.endDt,'endMax',endMax.toFixed(1),'bodyDist/R',(bodyDist[ti]/R).toFixed(2),'len',c.length,'near existing',cands.some(o=>Math.hypot(o.x-c.endNode.x,o.y-c.endNode.y)<=0.25*R));}
+      if(last.length<Math.max(minLimbTerm,termFactor*last.meanDt)||c.endDt>endMax)continue;
+      // (a) UPGRADE: a main-graph candidate at the same tip whose terminal edge is spine-short (chopped by the body
+      //     outline's junctions) is replaced by this chain; (b) otherwise the chain's path must run THROUGH the
+      //     original thick region for at least interiorTipMax × R of its length (a limb over the body)
+      const near=cands.findIndex(o=>Math.hypot(o.x-c.endNode.x,o.y-c.endNode.y)<=0.25*R);if(process.env.INTERIOR_DEBUG&&near>=0){const o=cands[near];console.log('   near cand',o.kind,'tip',toM([o.x,o.y]).map(Math.round).join(','),'term',o.term,'termDt',o.termDt,'minLimbTerm',minLimbTerm.toFixed(1));}
+      if(near>=0){const o=cands[near];const cleaner=o.kind==='end'&&last.meanDt<0.8*o.termDt;if(!(o.kind==='end'&&o.term<minLimbTerm)&&!cleaner)continue;} // spine-short OR a thinner (cleaner) ridge than the outline-merged main chain
+      else{let inside=0,node=c.rootNode.id;for(const e of c.edges){for(const i of e.path)if(bodyDist[i]===0)inside++;node=(e.a===node)?e.b:e.a;}if(inside<interiorTipMax*R)continue;}
+      const sp=seps2.get(c);const cand={kind:'interior',x:c.endNode.x,y:c.endNode.y,termDt:last.meanDt,term:last.length,len:c.length,attach:[sp.node.x,sp.node.y],chain:c,graph:g2};if(near>=0)cands[near]=cand;else cands.push(cand);added++;}
+    if(process.env.ASSIGN_DEBUG)console.log('interior candidates added',added);}
   // two candidates within a quarter body radius are one tip (adjacent tuft junctions, a toe beside its pad): keep the
   // one with the longer limb
-  {cands.sort((a,b)=>b.len-a.len);for(let i=cands.length-1;i>=0;i--){for(let j=0;j<i;j++)if(Math.hypot(cands[i].x-cands[j].x,cands[i].y-cands[j].y)<=0.25*R){cands.splice(i,1);break;}}}
+  {cands.sort((a,b)=>b.len-a.len);for(let i=cands.length-1;i>=0;i--){for(let j=0;j<i;j++)if(Math.hypot(cands[i].x-cands[j].x,cands[i].y-cands[j].y)<=0.25*R){if(process.env.INTERIOR_DEBUG){const tp=process.env.INTERIOR_DEBUG.split(',').map(Number);const tm=toM([cands[i].x,cands[i].y]);if(Math.hypot(tm[0]-tp[0],tm[1]-tp[1])<60)console.log('   dedupe removed',cands[i].kind,'tip',tm.map(Math.round).join(','),'len',cands[i].len.toFixed(0),'kept',cands[j].kind,'tip',toM([cands[j].x,cands[j].y]).map(Math.round).join(','),'len',cands[j].len.toFixed(0));}cands.splice(i,1);break;}}}
   // generic classes
-  const pool=cands.filter(c=>c.term>=minLimbTerm||c.kind!=='end');
+  const pool=cands.filter(c=>c.term>=minLimbTerm||(c.kind!=='end'&&c.kind!=='interior'));
   const forkOf=new Map();for(let i=0;i<pool.length;i++)for(let j=i+1;j<pool.length;j++){const a=pool[i],b=pool[j];if(!a.attach||!b.attach||a.kind!=='end'||b.kind!=='end')continue; // fingers are endpoints; a touching/loop point never forks
     if(Math.hypot(a.x-b.x,a.y-b.y)<=forkTipMax&&Math.hypot(a.attach[0]-b.attach[0],a.attach[1]-b.attach[1])<=forkSepMax){forkOf.set(a,b);forkOf.set(b,a);}}
   const thinTerms=pool.filter(c=>c.kind==='end').map(c=>c.termDt).sort((a,b)=>a-b),thinRefT=thinTerms[Math.floor(thinTerms.length/3)]??thinRef;
-  const isClaw=c=>forkOf.has(c)||(thickFinger&&c.kind==='end'&&c.termDt>=1.6*thinRefT);
+  // a thick single terminal is a finger only when it is finger-SHORT (len ≤ thickMaxLen × rest leg length); a long
+  // thick terminal is a leg whose ridge merged with the body outline (the freshwater folded leg, README slice 21)
+  const isClaw=c=>forkOf.has(c)||(thickFinger&&c.kind==='end'&&c.termDt>=1.6*thinRefT&&c.len<=thickMaxLen*legLen);
   const legs=pool.filter(c=>!isClaw(c)),clawList=pool.filter(isClaw);
   // --- side rule by view ---
   // front view: side by the SEPARATION point's x about the centre (tips of forward limbs cross the midline)
@@ -110,12 +141,12 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
   const restLen=T.legLength*R;
   const unitCost=(c,thin,medLen)=>costMode==='median'?Math.abs(Math.log(c.termDt/thin))*0.8+Math.max(0,1-c.term/medLen)*1.0+(c.kind==='touch'?0.5:c.kind==='loop'?0.3:0)
     :Math.abs(Math.log(c.termDt/thin))*0.4+Math.abs(Math.log(Math.max(1,c.len)/restLen))*0.5+(c.kind==='touch'?0.5:c.kind==='loop'?0.3:0);
-  const unusedCostOf=c=>costMode==='median'?0.7:(c.kind==='end'?1.0:0.5);
+  const unusedCostOf=c=>costMode==='median'?0.7:(c.kind==='end'||c.kind==='interior'?1.0:0.5);
   // P6 (tip): the skeleton endpoint sits about one end-radius inside the painted tip; the foot landmark is the tip
   // itself, so push the endpoint outward along the terminal edge's end direction by the end radius until the mask ends
-  const refineTip=c=>{if(c.kind!=='end'||refine==='none')return [c.x,c.y];
+  const refineTip=c=>{if((c.kind!=='end'&&c.kind!=='interior')||refine==='none')return [c.x,c.y];
     if(refine==='far'){ // the terminal landmark = the tip-region pixel farthest from the limb's separation point
-      const r=Math.max(3,2.5*c.chain.endDt),sp=c.attach??[c.x,c.y];let best=[c.x,c.y],bd=-1;for(let y=Math.max(0,Math.round(c.y-r));y<=Math.min(H-1,Math.round(c.y+r));y++)for(let x=Math.max(0,Math.round(c.x-r));x<=Math.min(W-1,Math.round(c.x+r));x++){if(!mask[y*W+x]||Math.hypot(x-c.x,y-c.y)>r)continue;const d=Math.hypot(x-sp[0],y-sp[1]);if(d>bd){bd=d;best=[x,y];}}return best;}const e=c.chain.edges[c.chain.edges.length-1];const path=(g.nodes[e.b].id===c.chain.endNode.id)?e.path:[...e.path].reverse();const r=Math.max(2,Math.round(c.chain.endDt));const back=path[Math.max(0,path.length-1-Math.min(path.length-1,3*r))];const tip=path[path.length-1];
+      const r=Math.max(3,2.5*c.chain.endDt),sp=c.attach??[c.x,c.y];let best=[c.x,c.y],bd=-1;for(let y=Math.max(0,Math.round(c.y-r));y<=Math.min(H-1,Math.round(c.y+r));y++)for(let x=Math.max(0,Math.round(c.x-r));x<=Math.min(W-1,Math.round(c.x+r));x++){if(!mask[y*W+x]||Math.hypot(x-c.x,y-c.y)>r)continue;const d=Math.hypot(x-sp[0],y-sp[1]);if(d>bd){bd=d;best=[x,y];}}return best;}const e=c.chain.edges[c.chain.edges.length-1];const path=(e.b===c.chain.endNode.id)?e.path:[...e.path].reverse();const r=Math.max(2,Math.round(c.chain.endDt));const back=path[Math.max(0,path.length-1-Math.min(path.length-1,3*r))];const tip=path[path.length-1];
     let dx=tip%W-back%W,dy=Math.floor(tip/W)-Math.floor(back/W);const L=Math.hypot(dx,dy)||1;dx/=L;dy/=L;let x=c.x,y=c.y;for(let s=0;s<=r+1;s++){const nx=Math.round(c.x+dx*s),ny=Math.round(c.y+dy*s);if(nx<0||ny<0||nx>=W||ny>=H||!mask[ny*W+nx])break;x=nx;y=ny;}return [x,y];};
   const place=(name,c)=>{const t=refineTip(c);assigned[name]={master:toM(t).map(Math.round),kind:c.kind,attach:toM(c.attach??[c.x,c.y]).map(Math.round),_c:c};};
   if(T.view==='front'){
@@ -184,7 +215,7 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
   // measured from the limb's exit from the body to its tip along the ridge path (no straight-line guess) ---
   const pathOf=c=>{if(c.kind==='touch'){const e=c.edge;const path=(e.a===c.fromBody)?e.path:[...e.path].reverse();const pts=[];let out=false;for(const i of path){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}return pts.length>1?pts:null;}
     if(c.kind==='loop'){const e=c.edge;const k=c.farIndex;if(k<0)return null;const seg=k>=e.path.length/2?e.path.slice(0,k+1):[...e.path].reverse().slice(0,e.path.length-k);const pts=[];let out=false;for(const i of seg){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}return pts.length>1?pts:null;}
-    if(c.kind!=='end')return null;let node=c.chain.rootNode.id;const pts=[];let out=false;for(const e of c.chain.edges){const path=(e.a===node)?e.path:[...e.path].reverse();for(const i of path){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}node=(e.a===node)?e.b:e.a;}return pts.length>1?pts:null;};
+    if(c.kind!=='end'&&c.kind!=='interior')return null;let node=c.chain.rootNode.id;const pts=[];let out=false;for(const e of c.chain.edges){const path=(e.a===node)?e.path:[...e.path].reverse();for(const i of path){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}node=(e.a===node)?e.b:e.a;}return pts.length>1?pts:null;};
   const joints={};const slotByTerminal=new Map();for(const side of ['Far','Near'])for(const sl of T.slots[side])slotByTerminal.set(sl.terminal,{sl,side});
   for(const [name,a] of Object.entries(assigned)){const e=slotByTerminal.get(name);if(!e||!a._c)continue;const {sl}=e;const c=a._c;const pts=pathOf(c);const tipM=a.master;
     const chainNames=sl.chain;joints[chainNames[chainNames.length-1]]=tipM;
