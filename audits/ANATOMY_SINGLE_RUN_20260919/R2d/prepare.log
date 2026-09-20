@@ -1,0 +1,8 @@
+file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/family-review/prepare-parent-foliage.mjs:5
+for(const part of binding.paintSkin.parts){const owner=binding.parts.find(p=>p.id===part.id);if(record.materials?.joints?.[owner.joint]!=='foliage')continue;const parentJoint=parents.get(owner.joint),tip=record.landmarks[parentJoint],candidates=probe.joins.filter(j=>j.descendantPart===part.id).flatMap(j=>j.samples.map(s=>({join:j,s,distance:Math.hypot(s.source[0]-tip[0]*record.geometry.width,s.source[1]-tip[1]*record.geometry.height)}))).sort((a,b)=>a.distance-b.distance);if(!candidates.length)throw Error('Foliage has no observed parent attachment: '+part.id);const best=candidates[0];part.rigidParentFrame={parentJoint,parentPart:best.join.ancestorPart,anchor:best.s.ancestor};leafJoints.add(owner.joint);groups.push({part:part.id,...part.rigidParentFrame,sourceAnchor:best.s.source});}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+
+Error: Foliage has no observed parent attachment: branch-0-foliage
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/family-review/prepare-parent-foliage.mjs:5:506
+
+Node.js v26.9.0

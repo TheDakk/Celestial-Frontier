@@ -21,6 +21,12 @@ x3 became insensitive under hind-only stance; x3 evidence remains. All-four bite
 still fails with stage travel active. Compression/paint/rest gates unchanged.
 [Current packet](audits/ANATOMY_SINGLE_RUN_20260919/R3-S/README.md).
 
+**R2d — matches code September19,2026.** Optional rigidParentFrame painted groups
+follow an observed published parent attachment and preserve local authored rotation/shape.
+Missing parent/source anchors refuse; current Persimmon-04 refuses at branch-0-foliage.
+No regenerated foliage binding was admitted. Existing source/CPU reds remain; this leaf red
+does not stop R3. [Evidence](audits/ANATOMY_SINGLE_RUN_20260919/R2d/README.md).
+
 **Single-run measurement update — matches code September19,2026.** R1c Civet adapter
 hashes match candidate10. Five retained planted poses reproduce its painted-paw contour
 numbers; current alert/walk/dodge all exceed upper reach without the compatibility solver's
