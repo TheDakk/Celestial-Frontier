@@ -109,3 +109,16 @@ from the confidently matched feet (≥ 3 per side), predict every remaining guid
 it, then refine each prediction locally on the painting's ridge (nearest thin/thick structure within a radius scaled by
 the transform). Hidden = a predicted landmark whose refinement finds no paint. Rank order is replaced by proximity to the
 prediction, which survives gaps. Scored the same way, on all five painted crabs, before any writer is touched.
+
+## Slice 9 — `guidefit.mjs` (guide → painting similarity from feet), 2026-09-20: measured and rejected
+A global similarity fitted on foot correspondences has residuals of 180–200 px on both painted crabs: the painter
+guide splays its legs straight while the painting folds them, so feet do not relate to the guide by any rigid or
+similar transform, and every landmark predicted through it is 200–400 px off. Keep the least-squares similarity
+(`fitSimilarity`) and the gap-tolerant assignment; change the ANCHOR. Next cut, root-anchored: fit the transform on the
+carapace (thick-core box/centroid ↔ guide carapace box), which is what the painting does preserve; predict only the
+body-attached joints through it (leg roots, claw bases, eye roots); assign each found foot to the leg whose predicted
+root is nearest in angle about the centre; place knees along the foot→root ridge path at the guide's segment ratio;
+grow claws outward from the predicted base along the ridge into the thick palm and its two thin finger tips; grow rear
+legs outward from their predicted roots until the thin path ends (this finds the tips that rest against the carapace).
+Hidden = a root whose outward growth finds no thin path. Every step is a local search from a predicted anchor, never a
+global pose assumption.
