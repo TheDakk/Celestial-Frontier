@@ -88,3 +88,7 @@ R9 evidence36489e9 signed/verified after 1Password unlock. R5/R6/R7 producer pre
 owned current fixtures, RGBA/initial replay state, mark counts, honest split receipts,
 Fiddler six-leg source stages, compiler outcomes and exact recording attribution.21app/11tool
 tests pass; native six-owner parity/census and rendered-root controls next after signing.
+
+R5–R7 signed c1a985b7 verified. Native six-owner source parity PASS; 1,250 census complete
+with five compiler admissions, Fiddler incomplete and48unsupported observations. Root control
+input omitted rotation; instrument-only key corrected, fresh proof02 next. No shared S2 red.

@@ -10,3 +10,5 @@ Producer preparation complete. Native proofs pending. No visual qualification or
 - `typecheck-01.log` retains the initial strict test-index typing miss, corrected before the passing typecheck-02 run.
 
 Native source parity/census, moving-root controls and current compilation outcomes follow the signed producer. Existing flora/Civet/CPU leaf reds remain in the preceding packets.
+
+Native c1a985b7: six source owners have zero changed RGBA channels; Fiddler emits its masks and explicitly refuses the unsupported complete crab compiler. Full census: 1,250 cases, 1,237 raster passes, 13 legacy fallthroughs, 54 topology emissions; compiler outcomes are five PASS, one incomplete and 48 unsupported families. Root-proof-01 retains a test-input instrument error: the root translation key omitted required rotation. Corrected to explicit zero rotation; fresh root-proof-02 follows. No production gate or input changed.
