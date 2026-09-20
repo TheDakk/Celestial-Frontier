@@ -78,3 +78,8 @@ passing; signed producer and five-crab native inference next. Evidence R9/README
 R9 producer0cae378e verified. All five native finishes PASS conservation/immutable retention;
 Crab repeated inference byte-identical and seed+1 different/discarded. New PNG originals
 in R9/finish-01. Rebinding and native equality next; Q1 candidate-only source projection ready.
+
+R9 finished: five native numeric identities PASS, all exact rest0 and zero refusals;
+Coconut finished film2.00ms is CPU leaf red. Combined review-sheet.png includes all five
+painter/finished pairs, both Q1 painted candidates and accepted arena composite. No visual
+acceptance implied. Next R5/R6/R7 integrity batch, R8 D1, full roster, local split.

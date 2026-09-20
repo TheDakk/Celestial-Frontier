@@ -561,3 +561,8 @@ They explain the repairs; they do not override the live candidate and qualificat
 ## R9 texture class — matches code as of 2026-09-19
 
 Desktop finishing uses the existing kit worker at strength 0.35, one step, a shared prompt and recipe-derived seed. Four-pixel alpha/ownership bands and outside pixels are protected; alpha is copied exactly. Conservation reports per-label components, boundary gradient (minimum ratio 0.95), CIE76 and luminance SSIM. Finished rebind copies no geometry changes and independently recompiles painter/finished skin for equality. Original painter records and files remain immutable. Numeric/native and visual evidence is pending in the R9 packet.
+
+R9 evidence now complete: five conserved finishes reproduce native painter geometry rows
+exactly; normal refusals0/restChanged0. The combined sheet and per-part color metrics are
+in audits/ANATOMY_SINGLE_RUN_20260919/R9/. Coconut’s finished-film 2.00ms remains a CPU
+leaf red; textures and Q1 art candidates await the single final visual review.
