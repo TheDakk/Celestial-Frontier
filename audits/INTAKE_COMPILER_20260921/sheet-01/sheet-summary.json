@@ -1,0 +1,76 @@
+{
+ "generated": "2026-09-20",
+ "legend": "cyan ring endpoint candidate · magenta loop · white resting tip · orange interior · yellow square + label = assigned slot (F/N side, digit station; H/F hind/fore; T tail) · yellow ring = inferred hidden · amber squares = knees/ankles · blue rings = record landmarks (comparison only) · red = body ridge · green = leg ridges · orange = claw ridges · white cross = wrist · white line = spine axis",
+ "rows": [
+  {
+   "id": "coconut-crab",
+   "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/coconut-crab.png",
+   "score": {
+    "pos": "5/6",
+    "named": "4/6",
+    "hiddenOk": true
+   },
+   "hidden": [
+    "leg3Far",
+    "leg3Near"
+   ]
+  },
+  {
+   "id": "crab",
+   "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/crab.png",
+   "score": {
+    "pos": "6/7",
+    "named": "5/6",
+    "hiddenOk": false
+   },
+   "hidden": [
+    "leg3Far",
+    "leg3Near"
+   ]
+  },
+  {
+   "id": "freshwater-crab",
+   "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/freshwater-crab.png",
+   "score": {
+    "pos": "6/7",
+    "named": "5/7",
+    "hiddenOk": true
+   },
+   "hidden": [
+    "leg3Far"
+   ]
+  },
+  {
+   "id": "mud-crab",
+   "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/mud-crab.png",
+   "score": {
+    "pos": "6/7",
+    "named": "6/7",
+    "hiddenOk": true
+   },
+   "hidden": [
+    "leg3Far"
+   ]
+  },
+  {
+   "id": "vent-crab",
+   "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/vent-crab.png",
+   "score": {
+    "pos": "7/8",
+    "named": "4/8",
+    "hiddenOk": true
+   },
+   "hidden": []
+  },
+  {
+   "id": "civet",
+   "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/civet.png",
+   "score": {
+    "pos": "0/4",
+    "named": "3/5",
+    "hiddenOk": true
+   },
+   "hidden": []
+  }
+ ]
+}
