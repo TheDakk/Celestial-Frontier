@@ -17,32 +17,35 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — consolidated painted-crab intake and CPU series underway
+## SESSION HANDOFF — P1 CPU table complete; measured root guard; intake compiler next
 
-Authority: Nick September20 consolidated direction; sibling VISION_PROGRAM_20260920
-review addenda read-only, no sync. All five paintings accepted, no repaint. Roster holds.
-Current packet: audits/VISION_P1_CONSOLIDATED_20260920/README.md.
+Producer63b13bff signed/verified exactly as staged after retained1Password refusal.
+Packet: audits/VISION_P1_CONSOLIDATED_20260920/README.md. Node26.9.0 receipt reused.
+Shared controls ran once: five painter crabs bit-identical R2c′; Civet0.165257px; exact rest.
+Native CPU table complete:30 requested entries /17 distinct bindings, aliases retained.
+Boundary48 full-film p95: Coconut1.3 / Crab1.7 / Freshwater1.2 / Mud1.3ms. Vent boundary48
+refuses painted-support convergence; no film timing, no retry or forced green. All rest0/0.
+Freshwater coarse drift0.227328px remains near0.25px. Nick has NOT chosen painted-tier gate.
+Current accepted fits unchanged: Coconut hidden-01fit04; intake-02 Crab01/Freshwater03/Mud01;
+intake-01 Vent01. Earlier masks/failures remain. All static intakes pass.
 
-All four painted intakes now pass static rows and presentation. Current fits: intake-02
-Crab01 / Freshwater03 / Mud01, intake-01 Vent01; Coconut hidden-01 fit04 unchanged.
-Nick-declared hidden chain: Crab leg3Near; Freshwater/Mud leg3Far. No hidden paint/contact.
-Mud facial orbs remain T2 body paint. Freshwater mask-fringe repair resolves pose folds;
-earlier masks and failed pin-only repair retained. Expanded measured contact ranges are
-Knee75° / Foot105°, raw35° unchanged. Eighteen targeted runtime tests pass.
+Root ledger: all12 native rows on five painter crabs + painted Coconut at60Hz, including
+transitions. Coconut reproduces9.10409679px exactly. Shared brachyuran non-gait bound is
+measured max+10%, rounded up1e-6 =0.017603 anatomical motion-scale units. Gaits keep stride
+on both sides of transitions; other templates keep old behavior. All six normal traces
+pass; all six actual doubled faint-recovery keys refuse.6 guard/R3 tests pass; validation
+fingerprint unchanged. Signed guard producer and native confirmation receipts in packet.
 
-Signing currently blocked: 1Password returned "agent returned an error"; no commit written.
-All producer/evidence changes staged. Last signed HEAD4f575f84. Nick has been asked to unlock
-the signing agent. No native measurement or signed-producer shared sweep has started.
+NEXT DELIVERABLE: intake compiler, per Nick and read-only sibling PROGRAM.md§5. Claude
+owns IC-1 registration/hidden inference and IC-2 geodesic labels; Codex keeps IC-3 shared
+record/mask/atlas/split/binding writers stable. IC3_HANDOFF.md indexes the existing contracts.
+Five accepted paintings are regression truth; they were manually authored, so automatic
+intake is NOT yet accepted. Any hand step is a compiler defect to fix generically.
+No further painting, P2, archetypes or roster until compiler regression/mutant controls pass.
+Final four native delivery films/sheets also await Nick’s painted-tier CPU decision.
 
-CPU candidates prepared: boundary24 interior56/80/128/256; boundary32/48 interior56.
-Identical bindings alias; measure each unique native path once. Producer must be signed and
-six-subject painter/Civet regression controls must pass before timing. After the table,
-Nick chooses painted-tier gate; no threshold change authorized by the measurement request.
-Next independent work: full native-schedule root-step ledger for five painter crabs plus
-Coconut, split gait/non-gait guard and doubled faint-recovery rejection control. Four final
-films/sheets and P2 assembly follow the actual CPU decision and continuity guard.
-
-Node26.9.0 continuous-session receipt reused. Signed commits only; verify every signature.
-No fetch/sync/push/PR/merge/release/deploy. PR42 parked. Pre-existing .DS_Store untouched.
-OpenAI/Codex continues locally; Anthropic/Claude reviews completed packet read-only. Nick
-need not switch apps for Git; no cross-lane synchronization is authorized.
+No fetch/sync/push/PR/merge/release/deploy; PR42 parked. Signed commits only, verify each.
+Pre-existing .DS_Store untouched. OpenAI/Codex owns this worktree openai/mac; Claude reads
+packet and implements its compiler inputs on anthropic/mac. No Git app switch or sync is
+needed; Nick can relay writer contract paths. No automatic inference from missing anatomy
+in the writer: explicit generated declarations must arrive from the reviewed compiler.

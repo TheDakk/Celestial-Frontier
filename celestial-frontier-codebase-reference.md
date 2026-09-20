@@ -40,8 +40,20 @@ outside its observed body outline; all existing limb labels, master channels and
 landmarks stay unchanged. Earlier masks and failed pin-repair diagnostic remain evidence.
 The tessellator nearest-ink search now covers the requested cell diagonal, preserving
 the first-found result for existing meshes and enabling boundary48 candidates.
-CPU series measures distinct bindings once; boundary32 and interior128 aliases are explicit.
-No painted-tier CPU gate is selected. Packet: audits/VISION_P1_CONSOLIDATED_20260920/README.md.
+CPU series completed30 requested entries /17 distinct bindings. Boundary48 gives full-film
+p95 of1.3/1.7/1.2/1.3ms for Coconut/Crab/Freshwater/Mud; Vent boundary48 refuses painted
+support convergence, so no film CPU exists. No painted-tier gate is selected.
+The complete six-subject60Hz native root ledger measures non-gait maximum0.0160022634
+anatomical motion-scale units per sample; +10%, rounded upward1e-6 yields0.017603.
+The shared root guard uses this scaled bound for brachyuran non-gait rows, stride for gait
+rows including both transition edges, and unchanged stride behavior for other templates.
+All six normal traces pass; all six actual doubled faint-recovery keys refuse. No production
+key/clip/solver change. Historical native continuity reds above are now diagnosed by this
+split guard; original films/reports are retained. CPU remains Nick’s decision.
+Next: intake compiler before further painting/P2/roster. Claude owns registration/labels,
+Codex shared writers. The five accepted paintings are regression truth, not proof of
+automatic intake. Every required hand step is a compiler bug.
+Packet: audits/VISION_P1_CONSOLIDATED_20260920/README.md.
 
 D1 delivery owner (2026-09-19): `port/v2/apps/game/src/creature-delivery.ts` verifies retained PNG identity/hash or returns the verified painter without inference. Browser proof: `port/v2/tools/painted-creature/delivery-proof.mjs`; evidence R8.
 

@@ -1,0 +1,237 @@
+{
+  "status": "PASS",
+  "sampleHz": 60,
+  "boundPerMotionScale": 0.017603,
+  "subjects": [
+    {
+      "id": "painter-crab",
+      "maximumStepPx": 1.3187622517210684,
+      "nonGaitBoundPx": 1.4521763096091205,
+      "stridePx": 4.101727616745986,
+      "guard": {
+        "status": "PASS",
+        "maximumStep": 0.0014985934678648505,
+        "stride": 0.00466105410993862,
+        "worst": 578,
+        "nonGaitStep": 0.001650200351828546,
+        "scaleLength": 0.09374540429634415,
+        "worstViolation": null
+      }
+    },
+    {
+      "id": "painter-coconut-crab",
+      "maximumStepPx": 1.7291066660723367,
+      "nonGaitBoundPx": 1.91606101302725,
+      "stridePx": 7.586604533859787,
+      "guard": {
+        "status": "PASS",
+        "maximumStep": 0.0019648939387185644,
+        "stride": 0.008621141515749758,
+        "worst": 607,
+        "nonGaitStep": 0.0021773420602582386,
+        "scaleLength": 0.12369153327604604,
+        "worstViolation": null
+      }
+    },
+    {
+      "id": "painter-freshwater-crab",
+      "maximumStepPx": 1.7209843199999995,
+      "nonGaitBoundPx": 1.8976034,
+      "stridePx": 3.955974734632852,
+      "guard": {
+        "status": "PASS",
+        "maximumStep": 0.0019556639999999993,
+        "stride": 0.0044954258348100596,
+        "worst": 583,
+        "nonGaitStep": 0.0021563675,
+        "scaleLength": 0.1225,
+        "worstViolation": null
+      }
+    },
+    {
+      "id": "painter-mud-crab",
+      "maximumStepPx": 2.0207658239999993,
+      "nonGaitBoundPx": 2.22290684,
+      "stridePx": 4.04322282566238,
+      "guard": {
+        "status": "PASS",
+        "maximumStep": 0.002296324799999999,
+        "stride": 0.00459457139279816,
+        "worst": 605,
+        "nonGaitStep": 0.0025260304999999996,
+        "scaleLength": 0.14349999999999996,
+        "worstViolation": null
+      }
+    },
+    {
+      "id": "painter-vent-crab",
+      "maximumStepPx": 1.422390816000001,
+      "nonGaitBoundPx": 1.572299959999999,
+      "stridePx": 5.419929325117999,
+      "guard": {
+        "status": "PASS",
+        "maximumStep": 0.001616353200000001,
+        "stride": 0.006159010596724999,
+        "worst": 553,
+        "nonGaitStep": 0.0017867044999999987,
+        "scaleLength": 0.10149999999999992,
+        "worstViolation": null
+      }
+    },
+    {
+      "id": "painted-coconut-crab",
+      "maximumStepPx": 9.104096789712312,
+      "nonGaitBoundPx": 10.088239216313667,
+      "stridePx": 8.095049955053229,
+      "guard": {
+        "status": "PASS",
+        "maximumStep": 0.007260045286851924,
+        "stride": 0.0064553827392768975,
+        "worst": 607,
+        "nonGaitStep": 0.008044847859899257,
+        "scaleLength": 0.45701572799518586,
+        "worstViolation": null
+      }
+    }
+  ],
+  "controls": [
+    {
+      "id": "painter-crab",
+      "maximumStepPx": 2.637487918920493,
+      "nonGaitBoundPx": 1.4521763096091205,
+      "stridePx": 4.101727616745986,
+      "guard": {
+        "status": "FAIL",
+        "maximumStep": 0.0029971453624096514,
+        "stride": 0.00466105410993862,
+        "worst": 578,
+        "nonGaitStep": 0.001650200351828546,
+        "scaleLength": 0.09374540429634415,
+        "worstViolation": {
+          "index": 578,
+          "ms": 9633.333333333334,
+          "action": "faint",
+          "fromAction": "faint",
+          "step": 0.0029971453624096514,
+          "bound": 0.001650200351828546,
+          "kind": "non-gait"
+        }
+      }
+    },
+    {
+      "id": "painter-coconut-crab",
+      "maximumStepPx": 3.4582650228763727,
+      "nonGaitBoundPx": 1.91606101302725,
+      "stridePx": 7.586604533859787,
+      "guard": {
+        "status": "FAIL",
+        "maximumStep": 0.003929846616904969,
+        "stride": 0.008621141515749758,
+        "worst": 607,
+        "nonGaitStep": 0.0021773420602582386,
+        "scaleLength": 0.12369153327604604,
+        "worstViolation": {
+          "index": 607,
+          "ms": 10116.666666666666,
+          "action": "faint",
+          "fromAction": "faint",
+          "step": 0.003929846616904969,
+          "bound": 0.0021773420602582386,
+          "kind": "non-gait"
+        }
+      }
+    },
+    {
+      "id": "painter-freshwater-crab",
+      "maximumStepPx": 3.441968639999997,
+      "nonGaitBoundPx": 1.8976034,
+      "stridePx": 3.955974734632852,
+      "guard": {
+        "status": "FAIL",
+        "maximumStep": 0.003911327999999997,
+        "stride": 0.0044954258348100596,
+        "worst": 583,
+        "nonGaitStep": 0.0021563675,
+        "scaleLength": 0.1225,
+        "worstViolation": {
+          "index": 583,
+          "ms": 9716.666666666666,
+          "action": "faint",
+          "fromAction": "faint",
+          "step": 0.003911327999999997,
+          "bound": 0.0021563675,
+          "kind": "non-gait"
+        }
+      }
+    },
+    {
+      "id": "painter-mud-crab",
+      "maximumStepPx": 4.041487295999999,
+      "nonGaitBoundPx": 2.22290684,
+      "stridePx": 4.04322282566238,
+      "guard": {
+        "status": "FAIL",
+        "maximumStep": 0.0045925991999999985,
+        "stride": 0.00459457139279816,
+        "worst": 605,
+        "nonGaitStep": 0.0025260304999999996,
+        "scaleLength": 0.14349999999999996,
+        "worstViolation": {
+          "index": 605,
+          "ms": 10083.333333333334,
+          "action": "faint",
+          "fromAction": "faint",
+          "step": 0.0045925991999999985,
+          "bound": 0.0025260304999999996,
+          "kind": "non-gait"
+        }
+      }
+    },
+    {
+      "id": "painter-vent-crab",
+      "maximumStepPx": 2.8447409760000024,
+      "nonGaitBoundPx": 1.572299959999999,
+      "stridePx": 5.419929325117999,
+      "guard": {
+        "status": "FAIL",
+        "maximumStep": 0.0032326602000000027,
+        "stride": 0.006159010596724999,
+        "worst": 553,
+        "nonGaitStep": 0.0017867044999999987,
+        "scaleLength": 0.10149999999999992,
+        "worstViolation": {
+          "index": 553,
+          "ms": 9216.666666666666,
+          "action": "faint",
+          "fromAction": "faint",
+          "step": 0.0032326602000000027,
+          "bound": 0.0017867044999999987,
+          "kind": "non-gait"
+        }
+      }
+    },
+    {
+      "id": "painted-coconut-crab",
+      "maximumStepPx": 18.208193579424623,
+      "nonGaitBoundPx": 10.088239216313667,
+      "stridePx": 8.095049955053229,
+      "guard": {
+        "status": "FAIL",
+        "maximumStep": 0.014520090573703848,
+        "stride": 0.0064553827392768975,
+        "worst": 607,
+        "nonGaitStep": 0.008044847859899257,
+        "scaleLength": 0.45701572799518586,
+        "worstViolation": {
+          "index": 607,
+          "ms": 10116.666666666666,
+          "action": "faint",
+          "fromAction": "faint",
+          "step": 0.014520090573703848,
+          "bound": 0.008044847859899257,
+          "kind": "non-gait"
+        }
+      }
+    }
+  ]
+}

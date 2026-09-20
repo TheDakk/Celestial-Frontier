@@ -1,0 +1,10 @@
+[
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/VISION_P1_CONSOLIDATED_20260920/root-guard-results.ts",
+    "sha256": "c7790467a0beb1db2654860dd9f593fc200a52a219343c15351631f68b1f72a8"
+  },
+  {
+    "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-stage-travel.ts",
+    "sha256": "1101a3d72d79d7a61d7e857931f6a0a5f9bcb5b6d76f24efdda1508ced8973e3"
+  }
+]
