@@ -1,0 +1,29 @@
+{
+  "schema": "cf.creature-finished-original.v1",
+  "creatureId": "mud-crab",
+  "recordRecipeHash": "cc71ff2d73f5482f16278a77a2bbff2d7e4d0888fb88883b57b21a5822f0cd35",
+  "cutoutAssetHash": "c08d616382e86c4dfa21fd895a25f4eda1dd3ee9efa8ed9751ea978bc9ae3379",
+  "finishedSha256": "e49bbdac83e142578e68cc9a2b0cafc8b54e132435647926c0570578e27716cb",
+  "seed": 3880536292,
+  "finisherStrength": 0.35,
+  "finisherSteps": 1,
+  "interiorErosionPixels": 4,
+  "backgroundGrey": 128,
+  "promptSha256": "66369ae13a8a7ebe861a1cabdb356656822830100bfb6ac691ecece2e993804b",
+  "model": {
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "manifestSha256": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef"
+  },
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "triptych": null,
+  "head": "8b901e6c8a94ed5b45b62f341e08200fefeb37f7",
+  "dirtyDiagnostic": false,
+  "conservation": {
+    "alpha": "PASS",
+    "counts": "PASS",
+    "gradient": "PASS",
+    "gradientRatio": 0.9380256320896377
+  },
+  "qualityAccepted": false
+}

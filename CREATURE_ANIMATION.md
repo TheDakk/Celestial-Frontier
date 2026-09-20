@@ -475,6 +475,14 @@ for richer underlying painting or unify all species into one body. Review both c
 actual phone/landscape scale. The supplied sheets remain the quality reference, not proof that
 an extracted texture or rendered bone solver has reached that quality.
 
+### Finished textures (R9) — matches code as of 2026-09-19
+A finished texture is a new retained original whose alpha equals the painter master byte for byte;
+`build-authored-parts.mjs` accepts it as `textureFile` (RGB only; admission, labels and geometry keep
+reading the painter master; differing alpha refuses) and `prepare-observed-crabs.mjs --finished=DIR`
+rebuilds fits whose `parts` and `paintSkin` are byte-identical to the painter fits (only
+`atlasSha256`/`bindingHash` differ). First evidence and the full contract:
+`audits/ANATOMY_COMPLETION_20260917/crab-finish-01/README.md`; engine side in `LOCAL_AI_GENERATION.md`.
+
 ## Existing conflicts that must not be silently repaired
 
 Modern `planFor` uses raw locomotion modulo 18, including for extremophiles whose descriptors use
