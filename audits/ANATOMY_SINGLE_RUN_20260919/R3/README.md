@@ -18,3 +18,5 @@ world-root traces: all five crabs PASS, retained solver-travel reset FAIL. Civet
 root-step LEAF RED:0.017142585 normalized at6700ms versus0.00804873 stride. Planted-foot
 checks remain green; no S2 condition. Retain this visible transition defect in native
 review; no blend attenuation or gate change. R4 continues.
+
+Original R3 E2 habitat study attempted on be0e551f. Coconut/Freshwater/ Cranberry native rest passes; Cranberry grow extends the painted body to0.871851 beyond the unchanged ground band0.86 (~9.48screen px at the first failing sample), while the root remains fixed. This is a habitat leaf, not S2. Initial tool threw before retaining the complete row ledger/film. Updated tool records all medium reds and captures the labelled leaf; it still throws on contact/rest/root/programming errors. No inputs, geometry, limits, containment bands or root placements changed between study01 and02.
