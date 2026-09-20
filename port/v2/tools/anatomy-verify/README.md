@@ -418,3 +418,24 @@ to leave unused (unused cost 1.0 for endpoints, 0.5 for resting tips) and the em
 end cheap. The next change is the unused/empty economics: an empty slot must be as cheap as leaving a weak candidate
 unused, and a candidate's placement cost must include how well its terminal thickness matches the side's other legs
 (the false endpoint at 239 px is claw-thick). Nothing here is a gate.
+Addendum — naming economics grid (thinness weight 0.4/0.8/1.2 × empty-slot scale 1.0/0.5 × unused-endpoint cost
+1.0/0.6, with and without `thickMaxLen` 0.7): the current defaults (0.4 / 1.0 / 1.0, finger bound off) are the best
+cell at 25/39; every other cell is 13–24. The cost model is at a local optimum on these six subjects; further gains
+need candidate precision (a family-free test that separates the freshwater far side's two false candidates from its
+legs), not weights. Recorded; defaults unchanged.
+Addendum — contact terminals (`contactRefine`, default on): a slot whose contract chain has a terminal joint beyond
+its end (quadruped Paw) is a GROUND CONTACT, so its landmark is the lowest mask pixel of the tip blob (within 2.5
+end radii of the skeleton end), family-free through the contract. Civet paws 55/30/49/20 → 18/31/24/21 px, named
+1/5 → 3/5; crabs unchanged (no contact terminals). Total named 25/39 → 27/39.
+IC-4 state after slice 21 (strict verdict, contact refine, appendage-slot candidates counted as used): positives
+ADMIT 4/6 (crab: `leg3Far` taken as a claw finger; mud: Far side on loops), wrong-template REFUSE 6/6, erased 7/10,
+duplicated 8/10. The Civet is ADMIT with tail + four paws.
+`thickNeedsFork` (a lone thick terminal is a finger only when it separates beside a real fork): erased mutants
+REFUSE 10/10 and duplicated 9/10, but naming 27/39 → 23/44 and positives 4/6 → 2/6. Rejected as default (kept as
+an option): the verdict must not be bought with names.
+**Review sheet (`sheet.mjs`, PROGRAM §5 "a person looks only at the sheet"):** `node sheet.mjs [outDir] [subject…]`
+renders one PNG per subject (labels as part colours, body/leg/claw ridges, every candidate ring by kind, assigned
+slots as yellow squares with F/N side + station letters, knees/ankles, inferred hidden as yellow rings, wrists, the
+spine axis, and the record's landmarks as blue rings for comparison only) plus `sheet-summary.json` with the legend
+and per-subject scores. First sheet: `audits/INTAKE_COMPILER_20260921/sheet-01/` (six subjects at the current
+defaults: crabs 30/35 positions, 24/34 named; Civet 3/5 named, tail + four paws in slot).

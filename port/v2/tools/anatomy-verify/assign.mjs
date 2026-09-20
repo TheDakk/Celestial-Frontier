@@ -18,7 +18,7 @@ import {distanceTransform} from './thickness.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 /** Backwards-compatible descriptor view: legs per side and slot naming per template (from the contract). */
 export const TEMPLATES=new Proxy({},{get:(_,id)=>{if(typeof id!=='string')return undefined;const r=templateRest(id);return {legsPerSide:r.legsPerSide,slotName:(k,side)=>r.slots[side][k].terminal,rest:r};}});
-export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=1e9}={}){
+export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=1e9,thinWeight=0.4,emptyScale=1.0,unusedEnd=1.0,contactRefine=true,thickNeedsFork=false}={}){
   const T=templateRest(template),legsPerSide=T.legsPerSide,slotName=(k,side)=>T.slots[side][k].terminal;
   const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128}),{working:{width:W,height:H,scale,box}}=det;let {mask,dt}=det;let interiorPass=null;
   // INTERIOR-EDGE STAGE (README slice 21): a limb painted over the body is inside the silhouette; its contour is a
@@ -130,32 +130,39 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
   const thinTerms=pool.filter(c=>c.kind==='end').map(c=>c.termDt).sort((a,b)=>a-b),thinRefT=thinTerms[Math.floor(thinTerms.length/3)]??thinRef;
   // a thick single terminal is a finger only when it is finger-SHORT (len ≤ thickMaxLen × rest leg length); a long
   // thick terminal is a leg whose ridge merged with the body outline (the freshwater folded leg, README slice 21)
-  const isClaw=c=>forkOf.has(c)||(thickFinger&&c.kind==='end'&&c.termDt>=1.6*thinRefT&&c.len<=thickMaxLen*legLen);
+  // a lone thick terminal (its twin merged into a stub) is a finger only when it separates beside a real fork
+  // (`thickNeedsFork`): a thick leg behind the claw (the crab's leg3Far) has no fork within forkSepMax of its separation
+  const besideFork=c=>[...forkOf.keys()].some(f=>f!==c&&Math.hypot(f.attach[0]-c.attach[0],f.attach[1]-c.attach[1])<=forkSepMax*2);
+  const isClaw=c=>forkOf.has(c)||(thickFinger&&c.kind==='end'&&c.termDt>=1.6*thinRefT&&c.len<=thickMaxLen*legLen&&(!thickNeedsFork||besideFork(c)));
   const legs=pool.filter(c=>!isClaw(c)),clawList=pool.filter(isClaw);
   // --- side rule by view ---
   // front view: side by the SEPARATION point's x about the centre (tips of forward limbs cross the midline)
   // side view: depth is not an x split; it is decided inside the station assignment below (Near = the lower tip)
   const sideFront=c=>((c.attach?c.attach[0]:c.x)<centre[0]?'Far':'Near');
-  const assigned={},hidden=[];const feet={Far:[],Near:[]},claws={Far:[],Near:[]};
+  const assigned={},hidden=[];const feet={Far:[],Near:[]},claws={Far:[],Near:[]};const usedApp=[]; // candidates placed in appendage slots (tail…) count as used
   const thinOf=cs=>[...cs.map(c=>c.termDt)].sort((a,b)=>a-b)[Math.floor(cs.length/2)]||1,medLenOf=cs=>{const l=[...cs.map(c=>c.term)].sort((a,b)=>a-b);return l[Math.floor(l.length/2)]||1;};
   const restLen=T.legLength*R;
   const unitCost=(c,thin,medLen)=>costMode==='median'?Math.abs(Math.log(c.termDt/thin))*0.8+Math.max(0,1-c.term/medLen)*1.0+(c.kind==='touch'?0.5:c.kind==='loop'?0.3:0)
-    :Math.abs(Math.log(c.termDt/thin))*0.4+Math.abs(Math.log(Math.max(1,c.len)/restLen))*0.5+(c.kind==='touch'?0.5:c.kind==='loop'?0.3:0);
-  const unusedCostOf=c=>costMode==='median'?0.7:(c.kind==='end'||c.kind==='interior'?1.0:0.5);
+    :Math.abs(Math.log(c.termDt/thin))*thinWeight+Math.abs(Math.log(Math.max(1,c.len)/restLen))*0.5+(c.kind==='touch'?0.5:c.kind==='loop'?0.3:0);
+  const unusedCostOf=c=>costMode==='median'?0.7:(c.kind==='end'||c.kind==='interior'?unusedEnd:0.5);
   // P6 (tip): the skeleton endpoint sits about one end-radius inside the painted tip; the foot landmark is the tip
   // itself, so push the endpoint outward along the terminal edge's end direction by the end radius until the mask ends
   const refineTip=c=>{if((c.kind!=='end'&&c.kind!=='interior')||refine==='none')return [c.x,c.y];
     if(refine==='far'){ // the terminal landmark = the tip-region pixel farthest from the limb's separation point
       const r=Math.max(3,2.5*c.chain.endDt),sp=c.attach??[c.x,c.y];let best=[c.x,c.y],bd=-1;for(let y=Math.max(0,Math.round(c.y-r));y<=Math.min(H-1,Math.round(c.y+r));y++)for(let x=Math.max(0,Math.round(c.x-r));x<=Math.min(W-1,Math.round(c.x+r));x++){if(!mask[y*W+x]||Math.hypot(x-c.x,y-c.y)>r)continue;const d=Math.hypot(x-sp[0],y-sp[1]);if(d>bd){bd=d;best=[x,y];}}return best;}const e=c.chain.edges[c.chain.edges.length-1];const path=(e.b===c.chain.endNode.id)?e.path:[...e.path].reverse();const r=Math.max(2,Math.round(c.chain.endDt));const back=path[Math.max(0,path.length-1-Math.min(path.length-1,3*r))];const tip=path[path.length-1];
     let dx=tip%W-back%W,dy=Math.floor(tip/W)-Math.floor(back/W);const L=Math.hypot(dx,dy)||1;dx/=L;dy/=L;let x=c.x,y=c.y;for(let s=0;s<=r+1;s++){const nx=Math.round(c.x+dx*s),ny=Math.round(c.y+dy*s);if(nx<0||ny<0||nx>=W||ny>=H||!mask[ny*W+nx])break;x=nx;y=ny;}return [x,y];};
-  const place=(name,c)=>{const t=refineTip(c);assigned[name]={master:toM(t).map(Math.round),kind:c.kind,attach:toM(c.attach??[c.x,c.y]).map(Math.round),_c:c};};
+  // contact terminals (a slot whose contract chain has a terminal beyond its end joint: Paw): the landmark is the
+  // ground contact = the lowest mask pixel of the tip blob (within 2.5 end radii of the skeleton end), family-free
+  const contactSlot=new Set();for(const side of ['Far','Near'])for(const sl of T.slots[side])if(sl.chain.length>=4)contactSlot.add(sl.terminal);
+  const refineContact=c=>{const r=Math.max(3,2.5*c.chain.endDt);let best=[c.x,c.y],by=-1;for(let y=Math.max(0,Math.round(c.y-r));y<=Math.min(H-1,Math.round(c.y+r));y++)for(let x=Math.max(0,Math.round(c.x-r));x<=Math.min(W-1,Math.round(c.x+r));x++){if(!mask[y*W+x]||Math.hypot(x-c.x,y-c.y)>r)continue;if(y>by||(y===by&&Math.abs(x-c.x)<Math.abs(best[0]-c.x))){by=y;best=[x,y];}}return best;};
+  const place=(name,c)=>{const t=(contactRefine&&contactSlot.has(name)&&c.chain)?refineContact(c):refineTip(c);assigned[name]={master:toM(t).map(Math.round),kind:c.kind,attach:toM(c.attach??[c.x,c.y]).map(Math.round),_c:c};};
   if(T.view==='front'){
     for(const c of clawList)claws[sideFront(c)].push(c);
     const sides={Far:[],Near:[]};for(const c of legs)sides[sideFront(c)].push(c);
     for(const side of ['Far','Near']){
       const list=sides[side].map(f=>({f,a:ang(f.attach??[f.x,f.y],centre)}));const key=o=>side==='Near'?(o.a<-Math.PI/2?o.a+2*Math.PI:o.a):(o.a>Math.PI/2?-(o.a-2*Math.PI):-o.a);
       const cs=list.sort((p,q)=>key(p)-key(q)).map(o=>o.f);if(!cs.length){for(let k=0;k<legsPerSide;k++)hidden.push(T.slots[side][k].id);continue;}
-      const thin=thinOf(cs),medLen=medLenOf(cs);const emptyCost=k=>k===legsPerSide-1?0.3:k===legsPerSide-2?1.0:1.8,unusedCost=0.7;
+      const thin=thinOf(cs),medLen=medLenOf(cs);const emptyCost=k=>emptyScale*(k===legsPerSide-1?0.3:k===legsPerSide-2?1.0:1.8),unusedCost=0.7;
       // rest ORDER prior: the template reference's hip angle per slot about the axis midpoint; a candidate pays for
       // the angular distance between its separation point and the slot's rest hip (in units of 45°)
       const angDiff=(a,b)=>{let d=Math.abs(a-b)%(2*Math.PI);return d>Math.PI?2*Math.PI-d:d;};
@@ -206,7 +213,7 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
     rec(0,0,[],0);
     if(process.env.ASSIGN_DEBUG)console.log('side-view cs',cs.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),u:+u(c).toFixed(0),y:+c.y.toFixed(0),len:+c.len.toFixed(0),termDt:c.termDt,legCost:+legCost(c).toFixed(2),tailCost:rearApp.length?+(lenCost(c,rearApp[0].length)*2).toFixed(2):null})),'best',best.cost.toFixed(2),'yLow',yLow);
     const others={};
-    best.acc.forEach((slot,si)=>{const st=stations[si];if(st.app){if(slot[0]){others[st.app.id]=toM([slot[0].x,slot[0].y]).map(Math.round);}return;}
+    best.acc.forEach((slot,si)=>{const st=stations[si];if(st.app){if(slot[0]){others[st.app.id]=toM([slot[0].x,slot[0].y]).map(Math.round);usedApp.push(slot[0]);}return;}
       [['Far',slot[0]],['Near',slot[1]]].forEach(([side,c])=>{if(c){place(slotName(st.k,side),c);feet[side].push(c);}else hidden.push(T.slots[side][st.k].id);});});
     Object.assign(assigned,Object.fromEntries(Object.entries(others).map(([k,v])=>[k,{master:v,kind:'appendage'}])));
     for(const c of clawList)claws[c.y>=yLow?'Near':'Far'].push(c);
@@ -252,6 +259,6 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
       const wi=valleys.length?valleys[Math.min(valleys.length,wristCuts)-1]:0;if(!wi)continue;const arm=px.slice(0,wi);c.wrist=[px[wi]%W,Math.floor(px[wi]/W)];c.elbow=valleys.length?[px[valleys[0]]%W,Math.floor(px[valleys[0]]/W)]:null;c.armPath=arm.map(i=>[i%W,Math.floor(i/W)]);for(const i of arm)armPixels.set(i,c);}}
   const bodyRidge=[];for(const e of g.edges){if(e.meanDt<lc.bodyDt||clawEdgeSet.has(e))continue;for(const i of e.path){if(armPixels.has(i))continue;bodyRidge.push([i%W,Math.floor(i/W)]);}}
   const clawPaths=clawList.map(c=>({tip:[c.x,c.y],side:T.view==='front'?sideFront(c):null,path:pathOf(c),fullPath:[...(c.armPath??[]).reverse(),...fullPath(c)],wrist:c.wrist?toM(c.wrist).map(Math.round):null,elbow:c.elbow?toM(c.elbow).map(Math.round):null}));
-  const usedSet=new Set([...feet.Far,...feet.Near]);
+  const usedSet=new Set([...feet.Far,...feet.Near,...usedApp]);
   return {working:{W,H,scale,box,mask,dt,bodyDt:lc.bodyDt,bodyDist},clawPaths,bodyRidge,legsBySide:T.view==='front'?{Far:legs.filter(c=>sideFront(c)==='Far').map(c=>c.kind),Near:legs.filter(c=>sideFront(c)==='Near').map(c=>c.kind)}:null,joints,inferred,pool:pool.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),sep:c.attach?toM(c.attach).map(Math.round):null,term:c.term,len:+c.len.toFixed(1),termDt:c.termDt,fork:forkOf.has(c),claw:isClaw(c),used:usedSet.has(c),diag:c.diag})),assigned,hidden,claws:{Far:claws.Far.map(c=>toM([c.x,c.y]).map(Math.round)),Near:claws.Near.map(c=>toM([c.x,c.y]).map(Math.round))},centre:toM(centre).map(Math.round),axis:axis.map(v=>+v.toFixed(3)),spine:spine?{a:toM([g.nodes[spine.a].x,g.nodes[spine.a].y]).map(Math.round),b:toM([g.nodes[spine.b].x,g.nodes[spine.b].y]).map(Math.round),len:spine.length,minDt:spine.minDt,meanDt:spine.meanDt}:null,bodyDt:lc.bodyDt,R,feetFound:feet.Far.length+feet.Near.length};
 }
