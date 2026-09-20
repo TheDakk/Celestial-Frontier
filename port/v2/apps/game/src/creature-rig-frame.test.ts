@@ -14,3 +14,5 @@ it('failed sampling publishes nothing, failed application does not leak queued j
  target.sample(()=>target.setJoint('jaw',.1));expect(applyPose.mock.calls.at(-1)![0]).toEqual({jaw:{rotation:.1,dx:0,dy:0}});
  target.reset();expect(applyPose.mock.calls.at(-1)![0]).toEqual({});target.dispose();expect(()=>target.flush()).toThrow('disposed');
 });
+
+it('44 and 62 joint collectors publish once, with no per-joint publication',()=>{for(const count of[44,62]){const applyPose=vi.fn(),target=createCreatureRigFrameTarget({applyPose}as unknown as CreatureRigV1);for(let i=0;i<count;i++)target.setJoint('joint'+i,.01*i);expect(applyPose).toHaveBeenCalledTimes(0);target.flush();expect(applyPose).toHaveBeenCalledTimes(1);expect(Object.keys(applyPose.mock.calls[0]![0])).toHaveLength(count);}});

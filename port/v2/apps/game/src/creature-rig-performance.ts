@@ -1,3 +1,4 @@
+import {RecoverablePoseError} from '../../../tools/creature-animation/pose-refusal.mjs';
 import type {CreaturePoseV1,CreatureRigRecordV1,CreatureRigV1} from './creature-rig.js';
 /** A template's compiled player supplies all body/appendage curves. This owner
  * changes actions and publishes one complete pose; it never authors species clips. */
@@ -11,7 +12,10 @@ const smooth=(x:number)=>{const t=Math.max(0,Math.min(1,x));return t*t*(3-2*t);}
 /** Explicit elapsed time only. A new action samples the old action at the actual
  * transition instant, not its last rendered frame; 30/60/120 Hz stay equivalent.
  * A view change belongs to a source-bound view rig, not a negative sprite scale. */
-export function createCreatureRigPerformance(record:CreatureRigRecordV1,rig:CreatureRigV1,players:ReadonlyArray<CreatureActionPlayer>){
+export function createCreatureRigPerformance(record:CreatureRigRecordV1,rig:CreatureRigV1,players:ReadonlyArray<CreatureActionPlayer>,options:{refusal?:'strict'|'hold'}={}){
+ need(options.refusal===undefined||options.refusal==='strict'||options.refusal==='hold','refusal mode');
+ type Refusal={actionId:string;ms:number;code:string;reason:string};
+ let lastValid:CreaturePoseV1={},refusedFrames=0,firstRefusal:Refusal|null=null,lastRefusal:Refusal|null=null;
  need(record.recipeHash===rig.recipeHash&&record.template.id===rig.templateId,'record/rig identity mismatch');
  const joints=new Set(Object.keys(record.landmarks)),actions=new Map<string,CreatureActionPlayer>();
  need(joints.has('root')&&joints.size<=256,'joint inventory');
@@ -44,11 +48,14 @@ export function createCreatureRigPerformance(record:CreatureRigRecordV1,rig:Crea
   },
   sample:evaluate,
   update(ms:number,resolve?:(pose:CreaturePoseV1,context:{actionId:string;elapsedMs:number;durationMs:number;loop:boolean})=>CreaturePoseV1){
-   const pose=evaluate(ms),resolved=resolve?resolve(pose,{actionId:current?.player.id??'rest',elapsedMs:current?ms-current.start:0,durationMs:current?.player.durationMs??1,loop:current?.player.loop??false}):pose;
-   // The existing rig validates the complete final pose before changing any display.
-   rig.applyPose(resolved);return resolved;
+   const pose=evaluate(ms);
+   try{const resolved=resolve?resolve(pose,{actionId:current?.player.id??'rest',elapsedMs:current?ms-current.start:0,durationMs:current?.player.durationMs??1,loop:current?.player.loop??false}):pose;
+    // The rig validates every pending span before publishing any visible buffer.
+    rig.applyPose(resolved);lastValid=Object.freeze(Object.fromEntries(Object.entries(resolved).map(([j,k])=>[j,Object.freeze({...k})])));return resolved;
+   }catch(error){if(!(error instanceof RecoverablePoseError))throw error;const refusal={actionId:current?.player.id??'rest',ms,code:error.code,reason:error.message};refusedFrames=Math.min(65535,refusedFrames+1);firstRefusal??=refusal;lastRefusal=refusal;if(options.refusal!=='hold')throw error;return lastValid;}
   },
-  reset(){alive();rig.applyPose({});current=null;},
+  get diagnostics(){return {refusedFrames,saturated:refusedFrames===65535,firstRefusal:firstRefusal?{...firstRefusal}:null,lastRefusal:lastRefusal?{...lastRefusal}:null};},
+  reset(){alive();rig.applyPose({});lastValid={};current=null;},
   dispose(){if(disposed)return;disposed=true;current=null;for(const p of actions.values())p.dispose();},
  };
 }

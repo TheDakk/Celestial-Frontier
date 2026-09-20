@@ -21,6 +21,14 @@ x3 became insensitive under hind-only stance; x3 evidence remains. All-four bite
 still fails with stage travel active. Compression/paint/rest gates unchanged.
 [Current packet](audits/ANATOMY_SINGLE_RUN_20260919/R3-S/README.md).
 
+**R4 — matches code September19,2026.** Typed posed-fold errors support explicit
+refusal:hold presentation with retained first/last/count diagnostics and continued action
+time; strict evidence remains default. Other errors propagate. Legacy PoseTarget now needs
+sample/flush and delegates to the existing frame collector. Native reviews schedule every
+full row including faint. CPU/T1/held-flora films remain labelled leaf reds, never admission.
+Actual R3 T1 traces pass for all five crabs; Civet retains a vertical21.5px root-step leaf red
+(0.017142585 image units versus0.00804873 stride), despite green planted-foot checks.
+
 **R3 — matches code September19,2026.** Five admitted crab profiles select pinch through
 the generic melee alias and expose contactJoint/contactPhase=strike. Unbound crustaceans
 remain unsupported; Coconut remains ground-only. Explicit stage travel holds completed
