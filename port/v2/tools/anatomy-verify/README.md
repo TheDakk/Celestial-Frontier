@@ -37,3 +37,25 @@ threshold problem. The robust verifier is template-aware: it fits the family's l
 
 `silhouette.mjs` and `skeleton.mjs` stay as retained calibration code with their measured failures; they are inputs
 to step 2/3, not shortcuts around them.
+
+## Slice 4 — `tips.mjs` (multi-scale tip detector), 2026-09-20, after the P1 painting existed
+A limb tip is a boundary pixel whose (2R+1)² window is mostly empty (fill < 0.22), taken over R ∈ {8,14,22,32} at a
+512 px working scale and clustered; direction = tip minus the local mass centre; classification is still naive
+(down-pointing = foot). `calibrate.mjs` runs it over the six masters and Codex's painted coconut crab:
+
+| Subject | expected feet | found feet | note |
+|---|---:|---:|---|
+| crab (painter) | 8 | **8** | claws not classified (0 of 2–4 tips) |
+| coconut-crab (painter) | 8 | **8** | ADMIT on the naive classifier |
+| freshwater-crab (painter) | 8 | **8** | claw tips over-counted (6) |
+| mud-crab (painter) | 8 | 3 | the painter plants near and far leg pairs on the SAME tip: two limbs, one tip — a genuine silhouette ambiguity; the merged tip is twice as thick, which the distance transform can see |
+| vent-crab (painter) | 8 | 7 | hairy edges spawn tips; one pair merges |
+| civet (keyed) | 4 | 0 | limbs thicker than the largest window; needs R ≈ 48–64 at this scale and a length measure that does not stop at the first junction |
+| **P1 painted coconut crab** | 6 visible | **6** | the model's painting is the cleanest subject; claw tips (two per claw) land in feet/other |
+
+What works: tip detection itself (exact on 4 of 7 including the painted master). What is next, in order: (1) tip
+thickness from the distance transform to split merged tips and to size the window per limb; (2) classification by
+geometry from the template's rest landmarks (attachment side, direction band, protrusion length measured along the
+limb, not by the first junction); (3) the positives battery: every named painter canvas via `speciesstrip.mjs` with
+its template; (4) mutants from the crab label maps; (5) only then a verdict. Hidden pairs are declared by the record
+(P1 verdict law 2) and never inferred here.
