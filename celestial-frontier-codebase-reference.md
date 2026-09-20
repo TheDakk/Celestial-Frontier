@@ -1,14 +1,12 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-**R2c-L — matches code September19,2026; measurement S2 STOP, no runtime limit change.**
-Nick authorized tool-only post-IK limit reporting before measured contactLimitsDeg. Signed
-measurement producer1523b0b5 reports limits only in a temporary audit bundle; production
-solver/contracts/limitsDeg/raw169-action battery remain identical to c7b4fdfd. Five crabs
-complete all rows/presentation, zero exceedances and R2c′bit identity. Civet bite157.111111ms
-exceeds the unchanged8%scale-compression bound before full measurement. contactLimitsDeg was
-not added; no new range adopted. Bounds/paint/rest/CPU gates unchanged, no retry/variant.
-[Current packet and partial joint table](audits/ANATOMY_SINGLE_RUN_20260919/R2c-L/README.md).
-Prior R2c‴ native rest/unpinned proof remains retained; it does not clear this compression red.
+**R3-S — matches code September19,2026; acceptance in progress.** Shared per-template/action
+stance selects quadruped all/hind/none exactly per Nick's§13. Only selected chains enter IK;
+lifted legs preserve authored keys with the raw-clip guard. Brachyuran remains all; absent
+contracts retain historical all-chain behavior. BEFORE report-all ledger is committed7d39716a.
+Contact limits still raw pending planted-fold measurement; no clip/root/input/compression
+change.34tests including unchanged169-action battery pass; full measurement/acceptance pending.
+[Current packet](audits/ANATOMY_SINGLE_RUN_20260919/R3-S/README.md).
 
 **Single-run measurement update — matches code September19,2026.** R1c Civet adapter
 hashes match candidate10. Five retained planted poses reproduce its painted-paw contour

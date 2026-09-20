@@ -28,3 +28,6 @@ controls. Fix/retain reds within1–5, no stop. Then R2d→R3interfaces→remain
 planted drift afterstep4/exactrest/crabnonidentity/or throw class AFTER said empty.
 Raw clips/root keys/input/compression bound unchanged. Node26.9.0 startup reused. Signed
 commits only; no fetch/push/PR/merge. Claude read-only/no app switch/sync; PR42parked.
+
+Stance implementation prepared:34tests including raw169-action battery pass. Test-only TS
+index error corrected. Next signed stance producer and report-all planted-fold ledger.
