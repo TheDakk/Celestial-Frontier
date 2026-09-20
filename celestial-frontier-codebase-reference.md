@@ -1,11 +1,34 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+**Declared hidden anatomy — matches code September 20, 2026.** Nick accepted P1 Coconut
+Crab generation01; its six visible legs are correct under the species count law. The final
+walking pair is present but hidden, not absent. `cf.anatomy-presence/v2.hidden` explicitly
+names brachyuran `leg3Far`/`leg3Near`; no missing landmark creates a declaration. All joints
+remain in the exact inventory. Offline inference mirrors pair2 vectors about the body axis
+through a root extrapolated by pair2−pair1 root spacing, preserving pair2 segment lengths
+1:1. Admission checks those inferred coordinates and flags six hidden joints; only their
+paint-alpha proximity checks are exempt. Ordinary coordinate/bone bounds remain unchanged.
+Hidden joints own no part/atlas entry and no positive skin weight. Intake and runtime reject
+hidden paint ownership; six visible chains enter contact solving. No declaration preserves
+the old eight-contact graph and arithmetic. This is ownership validation, not an automatic
+silhouette verifier capable of discovering undeclared hidden limbs.
+
+P1 master stays 1254 square with delivered RGBA unchanged; source art and margins are accepted.
+Current fit02 has21 visible parts and exact atlas/rest reconstruction. Nick authorized
+measured brachyuran contact limits after faint required−50.0539666° versus the old−35°.
+All five painter crabs plus P1, every row and presentation (12,318 samples), measure maximum
+absolute Knee17.1176319° and Foot50.0539666°. The approved ceil((max+10°)/5°)×5° rule gives
+contactLimitsDeg ±30° Knee / ±65° Foot, across the family. Raw limitsDeg stays ±35° and
+raw clips are unchanged. No contact/geometry/CPU gate, painted landmark or source pixel moves.
+The old faint red and full measurement ledger remain evidence; native acceptance is pending.
+Evidence: `audits/VISION_P1_COCONUT_20260920/hidden-01/README.md`.
+
 D1 delivery owner (2026-09-19): `port/v2/apps/game/src/creature-delivery.ts` verifies retained PNG identity/hash or returns the verified painter without inference. Browser proof: `port/v2/tools/painted-creature/delivery-proof.mjs`; evidence R8.
 
 **R3-S — matches code September19,2026; accepted strict/static; visual/CPU leaves retained.** Shared per-template/action
 stance selects quadruped all/hind/none exactly per Nick's§13. Only selected chains enter IK;
-lifted legs preserve authored keys with the raw-clip guard. Brachyuran remains all; absent
-contracts retain historical all-chain behavior. BEFORE report-all ledger is committed7d39716a.
+lifted legs preserve authored keys with the raw-clip guard. Brachyuran remains all visible; absent
+stance contracts retain historical all-chain behavior. BEFORE report-all ledger is committed7d39716a.
 Nick subsequently authorized stage-owned travel/gait phases and shared pin-conflict repair.
 ContactPhase.travel='stage' zeros solver root dx without editing stored clip keys; diagonal
 stance and bounding hind support leave lifted keys raw. The shared split optionally releases

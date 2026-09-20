@@ -1,3 +1,4 @@
+import {requireVisiblePaintOwner} from '../../../tools/creature-animation/hidden-anatomy.mjs';
 import{createCreatureRigFrameTarget}from'./creature-rig-frame.js';
 import {compileRigidParentFrames,applyRigidParentFrames} from '../../../tools/creature-animation/rigid-parent-frame.mjs';
 import {Container, Matrix, Rectangle, Sprite, Texture, Mesh, MeshGeometry} from 'pixi.js';
@@ -104,12 +105,13 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
   for(const part of binding.parts){
     requireValue(typeof part.id==='string'&&part.id.length>0&&!ids.has(part.id),'duplicate or empty part id');ids.add(part.id);
     requireValue(joints.includes(part.joint),'unknown part joint: '+part.joint);
+    requireVisiblePaintOwner(template,part.joint);
     requireValue(part.layer==='far'||part.layer==='near','unknown depth layer');
     requireValue(part.kind==='part'||part.kind==='joint-patch','unknown part kind');
     requireValue(validBox(part.frame,aw,ah)&&validBox(part.cutout,w,h),'part rectangle outside image');
   }
   requireValue(!(binding.paintSkin&&binding.seamBridges),'one deformation owner');
-  if(binding.paintSkin){requireValue(binding.parts.every(p=>p.frame.width===p.cutout.width&&p.frame.height===p.cutout.height),'paint skin requires native source frames');validatePaintSkin(binding.paintSkin,binding.parts,w,h,joints);}
+  if(binding.paintSkin){requireValue(binding.parts.every(p=>p.frame.width===p.cutout.width&&p.frame.height===p.cutout.height),'paint skin requires native source frames');validatePaintSkin(binding.paintSkin,binding.parts,w,h,joints);for(const v of binding.paintSkin.vertices)for(const [joint,weight] of v.weights)if(weight>0)requireVisiblePaintOwner(template,joint);}
   if(binding.seamBridges!==undefined){
     requireValue(template.id==='quadruped','legacy seam bridge ownership is quadruped-only; use family paint skin');
     requireValue(binding.seamBridges?.schema==='cf.seam-bridges/v1','seam bridge schema');

@@ -1,18 +1,42 @@
 # Creature animation — shared anatomy and motion contract
 
+**Declared hidden anatomy — matches code September 20, 2026.** Nick accepted P1 Coconut
+Crab generation01; its six visible legs are correct under the species count law. The final
+walking pair is present but hidden, not absent. `cf.anatomy-presence/v2.hidden` explicitly
+names brachyuran `leg3Far`/`leg3Near`; no missing landmark creates a declaration. All joints
+remain in the exact inventory. Offline inference mirrors pair2 vectors about the body axis
+through a root extrapolated by pair2−pair1 root spacing, preserving pair2 segment lengths
+1:1. Admission checks those inferred coordinates and flags six hidden joints; only their
+paint-alpha proximity checks are exempt. Ordinary coordinate/bone bounds remain unchanged.
+Hidden joints own no part/atlas entry and no positive skin weight. Intake and runtime reject
+hidden paint ownership; six visible chains enter contact solving. No declaration preserves
+the old eight-contact graph and arithmetic. This is ownership validation, not an automatic
+silhouette verifier capable of discovering undeclared hidden limbs.
+
+P1 master stays 1254 square with delivered RGBA unchanged; source art and margins are accepted.
+Current fit02 has21 visible parts and exact atlas/rest reconstruction. Nick authorized
+measured brachyuran contact limits after faint required−50.0539666° versus the old−35°.
+All five painter crabs plus P1, every row and presentation (12,318 samples), measure maximum
+absolute Knee17.1176319° and Foot50.0539666°. The approved ceil((max+10°)/5°)×5° rule gives
+contactLimitsDeg ±30° Knee / ±65° Foot, across the family. Raw limitsDeg stays ±35° and
+raw clips are unchanged. No contact/geometry/CPU gate, painted landmark or source pixel moves.
+The old faint red and full measurement ledger remain evidence; native acceptance is pending.
+Evidence: `audits/VISION_P1_COCONUT_20260920/hidden-01/README.md`.
+
 > Matches D1 delivery code, 2026-09-19: `creature-delivery.ts` reads retained PNG originals by full identity and expected hash, otherwise returns the verified painter. It has no inference, worker, GPU or rig dependency. Selection of a finish is explicit; proof usage does not adopt artwork into production. Evidence: `audits/ANATOMY_SINGLE_RUN_20260919/R8/README.md`.
 
 **Current stance/contact contract — matches code September 19, 2026. R3-S accepted.**
 Shared per-template/action stances select all, hind or no quadruped contacts; only planted
 chains enter IK. Lifted legs retain authored keys and the raw-clip guard. Brachyuran keeps
-all contacts; absent contracts retain historical behavior. Stage travel zeros solver root
+all visible contacts; undeclared presence retains historical behavior. Stage travel zeros solver root
 dx without changing stored clip keys. Gaits retain paired solver root/stance travel with
 explicit lift phases. Civet’s regenerated binding releases nine conflicting non-contact
 pins while preserving weights, topology and atlas. Candidate-10 and earlier bindings remain.
 
 Measured planted-fold maxima are Knee 86.5368918°, Ankle 94.1469004°, Paw 80.5685150°.
 Quadruped contactLimitsDeg is ±100°/±105°/±95° respectively: ceil((max absolute + 10°)/5°)×5°.
-Other templates default to limitsDeg; the raw 169-action library and limits are unchanged.
+Brachyuran uses the measured contact ranges above; other templates default to limitsDeg.
+The raw 169-action library and limits are unchanged.
 The final 13,286-sample six-subject strict sweep has zero throw classes; five crabs are
 bit-identical to R2c′ and Civet’s maximum planted drift is 0.165257 px. Native rest changes
 zero RGBA channels. Crouch ×15 rejects on limits, ×3 remains a documented insensitive

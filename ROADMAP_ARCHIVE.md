@@ -1,3 +1,39 @@
+## September20 — P1 initial count refusal (superseded verdict; verbatim)
+
+## SESSION HANDOFF — P1 generation 01 refused; roster held
+
+P1 was painted once using Claude's supplied compiled prompt verbatim, the read-only anatomy
+guide, and the prompt-required Atlas style reference. Signed evidence is in
+[audits/VISION_P1_COCONUT_20260920/README.md](audits/VISION_P1_COCONUT_20260920/README.md).
+The original PNG hash is `7954331dc3ce80bf3b4e2e3759bd0b5c576d659ff5fcb4d01b8efc536bba8890`.
+Built-in image_gen.imagegen; no exposed seed/model version; no retry or finisher.
+
+**P1 remains incomplete, with a retained anatomy finding:** six visible walking-leg tips,
+eight required. Two chains unresolved; claw pose and stance differ. Existing pixel intake
+preserves all RGBA channels. New diagnostic region masks retain visible paint exactly; they
+are not a complete joint mask set. The current family acceptor refuses incomplete landmark
+inventory. No admitted split/binding, native rows or film. No hidden anatomy invented,
+no masterIntakeAccepted or animationReady. Comparison sheet beside Civet and painter is
+retained for Nick/Claude; it is not visual acceptance. See packet for technical-output
+findings, actual refusal, tests and every blocked downstream stage.
+
+The previous anatomy run remains completed history at a94535aa:
+[audits/ANATOMY_SINGLE_RUN_20260919/README.md](audits/ANATOMY_SINGLE_RUN_20260919/README.md).
+Its 15 films/16 sheets, five retained fits/53 refusals are not new P1 output. R4 is complete;
+**hold further roster work**. Codex R9 is canonical at a separately authorized future
+re-merge; PR42 stays parked. No P2/P3/P4 is begun.
+
+Authority remains the read-only vision program and compiled packet under
+`/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/VISION_PROGRAM_20260920/`.
+No sibling edits or sync. No fetch, push, PR, merge, release, deployment, new branches or
+history rewrite. Commit signed and verify; no unsigned fallback. Branch openai/mac;
+pre-existing untracked .DS_Store untouched. Reuse this uninterrupted Node26.9.0 receipt.
+
+Codex next: retain generation 01 and wait for the review disposition; no changed-prompt
+retry, invented anatomy or roster resumption. Claude next: inspect the P1 packet read-only
+for its Track T finding and Nick's sheet verdict. Nick need not switch apps for Git or sync.
+No PR is needed. Report local HEAD/ahead against cached origin/openai/mac only.
+
 ## September20 — P1 queued handoff (verbatim)
 
 ## SESSION HANDOFF — vision P1 next; further roster work held
