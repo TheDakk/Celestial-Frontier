@@ -31,3 +31,8 @@ commits only; no fetch/push/PR/merge. Claude read-only/no app switch/sync; PR42p
 
 Stance implementation prepared:34tests including raw169-action battery pass. Test-only TS
 index error corrected. Next signed stance producer and report-all planted-fold ledger.
+
+Nick authorized stage travel/gait-phase extension and shared pin-conflict repair. Stage mode
+zeros solver root dx, stored keys unchanged. New civet-input-01 releases9non-contact pins
+around contact supports; weights/topology/atlas identical.36app/8split tests pass. Next signed
+extension producer, full report-all ledger and native rest, then measured contact limits.

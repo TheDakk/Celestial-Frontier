@@ -78,7 +78,7 @@ export function observedContactSupports(record:CreatureRigRecordV1,binding:Creat
   if(!best)throw Error('Contact: empty painted surface '+chain.end);supports[chain.end]=best;
  }return Object.freeze(supports);
 }
-export interface ContactPhase {readonly actionId:string;readonly elapsedMs:number;readonly durationMs:number;readonly realm?:string;readonly weight?:number;}
+export interface ContactPhase {readonly actionId:string;readonly elapsedMs:number;readonly durationMs:number;readonly realm?:string;readonly weight?:number;readonly travel?:'solver'|'stage';}
 /** Source graph contacts for stance and alternating support. Elapsed phase is
  * explicit and replayable; rendering cadence is not solver state. */
 export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupports:Readonly<Record<string,ContactSupport>>={}){
@@ -102,8 +102,15 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
  const hasOffset=chains.some(c=>c.offset.x!==0||c.offset.y!==0||!c.endpointOnly);
  return {chains,scaleLength,stride,resolve(input:CreaturePoseV1,phase:ContactPhase){
   if(!Number.isFinite(phase.elapsedMs)||phase.elapsedMs<0||!Number.isFinite(phase.durationMs)||phase.durationMs<=0)throw Error('Contact: invalid phase');
+  if(phase.travel!==undefined&&phase.travel!=='solver'&&phase.travel!=='stage')throw Error('Contact: invalid travel owner');
+  if(phase.travel==='stage')input={...input,root:{rotation:0,...input.root,dx:0}};
   const free=/:(flight|fly|swim|jet|hop|leap|climb)$/.test(phase.actionId)||phase.actionId==='melee:kick'||phase.realm==='aquatic'||phase.realm==='aerial'||phase.realm==='gas-giant';
-  const stance=contactStanceForAction(template,phase.actionId),activeChains=free||stance==='none'?[]:chains.filter(c=>stance==='all'||c.id.startsWith('hind'));
+  const stance=contactStanceForAction(template,phase.actionId),selected=free||stance==='none'?[]:chains.filter(c=>stance==='all'||c.id.startsWith('hind'));
+  const gaitPolicy=template.contactStance?.gaits?.[phase.actionId],cycleAt=(phase.elapsedMs/phase.durationMs)%1;
+  // Bounding lifts the forequarters during the authored upward spine stroke.
+  // Other gait phases retain the established diagonal stance group. Lifted
+  // limbs keep their authored keys rather than a second synthetic swing owner.
+  const activeChains=!gaitPolicy?selected:gaitPolicy==='bounding'&&(input.spine?.rotation??0)<0?selected.filter(c=>c.id.startsWith('hind')):selected.filter(c=>!(c.group===1?cycleAt<.5:cycleAt>=.5));
   // A lifted leg keeps the authored pose and its original raw-clip guard.
   if(template.contactStance)for(const c of chains)if(!activeChains.includes(c))for(const j of [c.hip,c.knee,c.end,...c.terminal?[c.terminal]:[]]){const v=input[j];if(!v)continue;const l=template.limitsDeg[j]!,deg=v.rotation*180/Math.PI;if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: raw clip joint limit '+j+' '+phase.actionId+'@'+phase.elapsedMs+': '+deg);}
   if(!activeChains.length)return {pose:input,contacts:[],maxError:0};
@@ -115,9 +122,9 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   for(const c of activeChains)if(template.legs.some(id=>c.hip===id+'Root'))pose[c.hip]={rotation:0};
   const progress=phase.elapsedMs/phase.durationMs,cycle=progress%1,completed=Math.floor(progress);
   const smooth=(v:number)=>v*v*(3-2*v);
-  if(gait)pose.root={rotation:0,...pose.root,dx:direction*stride*progress/program.bodyLength};
+  if(gait)pose.root={rotation:0,...pose.root,dx:phase.travel==='stage'?0:direction*stride*progress/program.bodyLength};
   const contacts=activeChains.map(c=>{
-   const swing=gait&&(c.group===1?cycle<.5:cycle>=.5),at=swing?(c.group===1?cycle*2:(cycle-.5)*2):0;
+   const swing=gait&&!gaitPolicy&&(c.group===1?cycle<.5:cycle>=.5),at=swing?(c.group===1?cycle*2:(cycle-.5)*2):0;
    const step=c.group===1?(cycle<.5?smooth(cycle*2):1):(cycle<.5?0:smooth((cycle-.5)*2));
    const lift=c.chain.lengths.lower*.15*weight;
    const target={x:c.endPoint.x+(gait?direction*stride*(completed+step):0)-(swing?Math.sign(c.endPoint.x-c.root.x)*c.chain.lengths.lower*.10*Math.sin(Math.PI*at)**2*weight:0),y:c.endPoint.y-(swing?Math.sin(Math.PI*at)**2*lift:0)};

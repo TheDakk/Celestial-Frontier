@@ -10,3 +10,15 @@ continuation is tool-only and not admission. The ledger is committed before stan
 Nick's read-only reviewer§13 is authority. Steps1–5 retain and fix reds without a stop;
 then the restricted S2 rule and full§8 order apply. No input/clip/root/compression changes.
 Node26.9.0 uninterrupted startup retained. No fetch/push/PR/merge. PR42parked.
+
+## Authorized extensions and current candidate
+
+Nick explicitly authorized stage travel/gait phases and shared pin-conflict repair in this
+task. Reach diagnosis shows the hind-near raw bite needs at least54.98px correction versus
+28.11px; changing IK iteration cannot clear it. Stage mode leaves stored root keys intact
+and zeros solver root dx. Quadruped gait support uses authored upward spine stroke for
+bounding hind support, otherwise the existing diagonal stance phase; lifted keys stay raw.
+Civet faint had a fully pinned reversed triangle849. Shared contact conflict repair releases
+9adjacent non-contact pins, preserves every contact lock, all weights/topology/atlas/record.
+New input civet-input-01; old bindings retained.36app tests and8split tests pass.
+Full ledger/native rest pending; contactLimitsDeg still not derived or added.

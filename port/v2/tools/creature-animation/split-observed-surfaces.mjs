@@ -12,7 +12,7 @@ function observedContactPins(input,record,skin,contactEndpoints){
   contactPins.push({joint,part:part.id,vertex:best.index,distancePx:best.distance,supports});
  }return contactPins;
 }
-export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['root'],shapeJoints=[],preservePaintBoundaries=false,contactEndpoints=[],preserveExistingWeights=false}={}){
+export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['root'],shapeJoints=[],preservePaintBoundaries=false,contactEndpoints=[],preserveExistingWeights=false,releaseContactConflicts=false}={}){
  const {recipeHash,...recipe}=record;need(await hashJSON(recipe)===recipeHash,'record hash');
  const {bindingHash,...body}=input;need(await hashJSON(body)===bindingHash,'binding hash');
  need(input.recordRecipeHash===recipeHash,'record binding');
@@ -27,9 +27,12 @@ export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['ro
   need(skin.parts.every(p=>p.fieldTriangles?.length===p.indices.length),'part/face provenance');
   const result=structuredClone(skin),contactPins=observedContactPins(input,record,result,contactEndpoints),locks=new Map(),pins=new Set(result.solver.pins);
   for(const {joint,supports}of contactPins)for(const i of supports){need(!locks.has(i)||locks.get(i)===joint,'conflicting contact owners');locks.set(i,joint);result.vertices[i].weights=[[joint,1]];pins.add(i);}
+  const releasedContactPins=[];
+  if(releaseContactConflicts){const conflicts=new Map();for(let k=0;k<result.triangles.length;k+=3){const triangle=result.triangles.slice(k,k+3),contactOwners=new Set(triangle.filter(i=>locks.has(i)).map(i=>locks.get(i)));if(!contactOwners.size)continue;for(const i of triangle)if(pins.has(i)&&!locks.has(i)&&result.vertices[i].weights.some(([j])=>!contactOwners.has(j)))conflicts.set(i,{vertex:i,contactOwners:[...contactOwners],weights:result.vertices[i].weights});}for(const [i,reason]of conflicts){pins.delete(i);releasedContactPins.push(reason);}}
   result.solver={...result.solver,pins:[...pins].sort((a,b)=>a-b)};
-  const output={...body,paintSkin:result};return {binding:{...output,bindingHash:await hashJSON(output)},receipt:{schema:'cf.observed-surface-split/v1',mode:'preserve-existing-field-contact-locks',contactPins,sourceBindingHash:bindingHash,sourceVertices:source.length,vertices:result.vertices.length,pins:pins.size,sourceCoordinateChanges:0,topologyChanges:0,nonContactWeightChanges:0}};
+  const output={...body,paintSkin:result};return {binding:{...output,bindingHash:await hashJSON(output)},receipt:{schema:'cf.observed-surface-split/v1',mode:'preserve-existing-field-contact-locks',releasedContactPins,contactPins,sourceBindingHash:bindingHash,sourceVertices:source.length,vertices:result.vertices.length,pins:pins.size,sourceCoordinateChanges:0,topologyChanges:0,nonContactWeightChanges:0}};
  }
+ need(!releaseContactConflicts,'contact conflict release requires existing-field preservation');
  const ids=new Map(),keys=[],parent=[],rawOwners=[];
  function index(part,old){need(Number.isInteger(old)&&source[old],'field reference');const key=part+':'+old;if(!ids.has(key)){ids.set(key,keys.length);keys.push({part,old});parent.push(parent.length);rawOwners.push(owners.get(part).joint);}return ids.get(key);}
  for(const p of skin.parts){need(owners.has(p.id)&&p.fieldTriangles?.length===p.indices.length,'part/face provenance');for(const v of p.vertices)for(const i of v.triangle)index(p.id,i);for(const i of p.fieldTriangles)index(p.id,i);}

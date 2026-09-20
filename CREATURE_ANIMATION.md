@@ -4,8 +4,12 @@
 stance selects quadruped all/hind/none exactly per Nick's§13. Only selected chains enter IK;
 lifted legs preserve authored keys with the raw-clip guard. Brachyuran remains all; absent
 contracts retain historical all-chain behavior. BEFORE report-all ledger is committed7d39716a.
-Contact limits still raw pending planted-fold measurement; no clip/root/input/compression
-change.34tests including unchanged169-action battery pass; full measurement/acceptance pending.
+Nick subsequently authorized stage-owned travel/gait phases and shared pin-conflict repair.
+ContactPhase.travel='stage' zeros solver root dx without editing stored clip keys; diagonal
+stance and bounding hind support leave lifted keys raw. The shared split optionally releases
+non-contact pins adjacent to incompatible contact owners. Civet input01 releases9pins with
+zero weight/topology/atlas changes; previous bindings retained.36app/8split tests pass.
+Contact limits still raw pending new full measurement. Compression/paint/rest gates unchanged.
 [Current packet](audits/ANATOMY_SINGLE_RUN_20260919/R3-S/README.md).
 
 **Single-run measurement update — matches code September19,2026.** R1c Civet adapter
