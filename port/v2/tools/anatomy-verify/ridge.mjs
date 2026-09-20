@@ -25,7 +25,8 @@ export function graphFromSkeleton(skelIn,mask,dt,W,H,{spurFactor=1.5,junctionRad
   const junction0=new Uint8Array(W*H);for(let i=0;i<W*H;i++)if(original[i]&&cross0(i)>=3)junction0[i]=1;
   for(let pass=0;pass<2;pass++){for(let i=0;i<W*H;i++){if(!skel[i]||cross(i)!==1)continue;const path=[i];let cur=i,prev=-1,hit=false;
       const nearJ=(i)=>{const x=i%W,y=(i-x)/W;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const nx=x+dx,ny=y+dy;if(nx>=0&&ny>=0&&nx<W&&ny<H&&junction0[ny*W+nx])return ny*W+nx;}return -1;};
-      for(let s=0;s<400;s++){const n=nb(cur).filter(j=>j!==prev&&!path.includes(j));if(!n.length)break;prev=cur;cur=n[0];path.push(cur);const jn=nearJ(cur);if(jn>=0){if(jn!==cur)path.push(jn);cur=jn;hit=true;break;}}
+      for(let s=0;s<400;s++){const n=nb(cur).filter(j=>j!==prev&&!path.includes(j));if(!n.length)break;if(n.length>=2){hit=true;break;} // a fork the crossing number missed: stop here
+        prev=cur;cur=n[0];path.push(cur);const jn=nearJ(cur);if(jn>=0){if(jn!==cur)path.push(jn);cur=jn;hit=true;break;}}
       // artefact iff the spur's tip never leaves its junction's own disc (a real limb or finger reaches far beyond it)
       if(hit){const j=cur,tip=path[0],reach=Math.hypot(tip%W-j%W,Math.floor(tip/W)-Math.floor(j/W));if(reach<=dt[j]*spurFactor+2||path.length-1<spurFloor){for(const k of path.slice(0,-1))skel[k]=0;}}}}
   // drop skeleton components shorter than the spur floor (thinning fragments along boundaries)
