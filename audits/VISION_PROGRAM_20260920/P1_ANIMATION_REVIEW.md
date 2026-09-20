@@ -59,3 +59,17 @@ still refuse. In parallel, PAINT the other four crabs from the packets in
 exactly as generation 01 (one generation each, exact prompt, retained); intake and rigs wait for (1)/(2).
 Signed commits; no fetch, push, PR, merge.
 ```
+
+## Addendum 2026-09-20 — CPU lever corrected, and the three chains
+Codex's measurement (`/Users/nick/Projects/celestial-frontier-openai-mac/audits/VISION_P1_ANIMATION_20260920/`) shows
+interior coarsening is not the lever: the adaptive compiler subdivides every cell that contains an alpha boundary or a
+part-ownership cut at `boundaryStep`, so interiorStep 56 → 256 removes 51 of 3,838 vertices (1.3 %). The vertex count
+is boundary-driven. **Amended direction:** keep the interior series as recorded (measure the 80/256 candidates once,
+since 128 aliases 80), and add a boundary series at `boundaryStep` 24 (baseline) / 32 / 48 with interiorStep 56,
+reporting field vertices, approach and full-film p95, seam `maxGapPx` and planted drift for each — the seam gap is
+the thing that will move. A part-count series (merging the two claw-finger parts into one per claw) is the third lever
+if boundary 48 still exceeds 2 ms; that changes the rig's part inventory and is Nick's call after the numbers.
+
+The three unresolved chains in `VISION_P1_FOUR_CRABS_20260920/intake-01` are the legs nearest the claws (Codex's
+leg3Near/leg3Far, the vent crab's landmarks confirm leg3 roots sit beside the claw bases). They are occluded behind the
+claws, not missing — see `P1-four-crabs-review/README.md` addendum: declare `hidden` per law 2, seed points given.
