@@ -1,6 +1,6 @@
 # R9 — finished textures and Q1 review
 
-In progress, no visual acceptance. Same accepted local model/interpreter, masked strength 0.35, one step. Shared prompt/settings, no species overrides. Desktop only. Original painter bytes and records remain history.
+Complete evidence, no visual acceptance. Same accepted local model/interpreter, masked strength 0.35, one step. Shared prompt/settings, no species overrides. Desktop only. Original painter bytes and records remain history.
 
 Static controls: math-tests-01.log, conservation-tests-03.log, app-tests-01.log (20 tests), typecheck-01.log, validate-01.log. The identity control independently rebuilds both paint skins and requires unchanged binding hashes; initial path-resolution instrument miss retained in identity-control-01.json. Native determinism, retention, conservation, films and the combined sheet follow the signed producer.
 
@@ -20,4 +20,4 @@ Producer `0cae378e` signed/verified. [Native finisher receipt](finish-01/result.
 
 All five native geometry rows, contact samples, seam gaps, root continuity, fold passes and exact-rest RGBA results reproduce their painter controls bit-for-bit. Normal refusals: zero. The final Coconut film measures exactly 2.00 ms and therefore remains a CPU leaf red under <2 ms. All other finished-film rig tails pass. [Atlas control](atlas-control-01.log) proves the actual Crab binding rejects the finished Coconut atlas before decoding and admits its own hash.
 
-Sheet inspected: conserved edges and pincer silhouettes remain visible, finish changes are subtle. Thin source/rig edge streaks, low-readability original pinch, flora folds/CPU and Civet T1/CPU remain separate open findings; this sheet is not visual acceptance. Q1 source candidates are displayed, with 3× pincer crops, for the final single review. Continue R5/R6/R7 → R8 D1 → roster → local split.
+Sheet inspected: conserved edges and pincer silhouettes remain visible, finish changes are subtle. Thin source/rig edge streaks, low-readability original pinch, flora folds/CPU and Civet T1/CPU remain separate open findings; this sheet is not visual acceptance. Q1 source candidates are displayed, with 3× pincer crops, for the final single review. R5/R6/R7, D1 delivery and the ordered roster now have successor packets in the accumulated index.

@@ -2,7 +2,7 @@
 
 D1 delivery owner (2026-09-19): `port/v2/apps/game/src/creature-delivery.ts` verifies retained PNG identity/hash or returns the verified painter without inference. Browser proof: `port/v2/tools/painted-creature/delivery-proof.mjs`; evidence R8.
 
-**R3-S — matches code September19,2026; acceptance in progress.** Shared per-template/action
+**R3-S — matches code September19,2026; accepted strict/static; visual/CPU leaves retained.** Shared per-template/action
 stance selects quadruped all/hind/none exactly per Nick's§13. Only selected chains enter IK;
 lifted legs preserve authored keys with the raw-clip guard. Brachyuran remains all; absent
 contracts retain historical all-chain behavior. BEFORE report-all ledger is committed7d39716a.
@@ -17,8 +17,8 @@ ceil((max absolute +10°)/5°)×5°. Raw limitsDeg and the169-action raw battery
 absent contactLimitsDeg falls back to raw limits. Stage mode is selected for melee only in
 capture/sweep consumers; gait travel retains its paired solver root/stance targets.
 Native regenerated-binding exact rest passes0 changed pixels. All six subjects' corrected
-measurement ledger clears reach/compression/publication/drift; remaining raw limit events
-are the measured input to these contact limits. Nick authorized x15 crouch rejection after
+final13,286-sample strict ledger clears every throw class, with five crabs bit-identical
+to R2c′. The measured planted folds determine the contact limits. Nick authorized x15 crouch rejection after
 x3 became insensitive under hind-only stance; x3 evidence remains. All-four bite compression
 still fails with stage travel active. Compression/paint/rest gates unchanged.
 [Current packet](audits/ANATOMY_SINGLE_RUN_20260919/R3-S/README.md).
@@ -53,56 +53,36 @@ per-sample normal passes. R1c CPU switches exist only in an isolated diagnostic 
 shipped BodyCard ignores them. No solver/clip/threshold change in R1c. Current run order and
 stop conditions supersede the older bounded-review handoff below; see the single-run ledger.
 
-[Current bounded diagnosis and film review](audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md),
-matches code as of September 19, 2026 (unchanged producer6a58e40e). Eight actual Mud/Vent failure
-samples prove rotation of the painted-support offset causes the contact drift; endpoint pins
-alone cannot fix it. Persimmon84/209 folds are reproduced and isolated to coupled rigid foliage
-and collars, chiefly groups3/4; diagnostic pin removal is not an accepted repair. All three
-numerically passing crab films have a42–57px approach→pinch travel reset; Crab/Coconut pinch
-readability and edge streaks remain concerns. Film sampling review is complete, not Nick’s
-visual acceptance. No code, native rerun, timing qualification, phone or battle integration.
-Original eight-subject/Civet findings and strict thresholds remain; Civet18/20 and plant CPU
-failures are open. Source/evidence signatures6a58e40e/d0437436 verified; no signing blocker.
-R3 →R4 →R9 and the remaining gates still require their scoped next direction. D1 retained
-finished-PNG/painter fallback phone delivery, D2 guardian, D3 biome arenas, D4 E1 owner and
-Q1–Q5 remain unchanged. [Full fresh handoff](audits/ANATOMY_COMPLETION_20260917/NEW_SESSION_PROMPT_20260919_REVIEW.md).
+Current September19 evidence is [the accumulated anatomy packet](audits/ANATOMY_SINGLE_RUN_20260919/README.md).
+The R3-S six-subject strict sweep passes13,286samples, exact rest and five-crab R2c′ identity;
+Civet worst planted drift is0.165257px. Root continuity is separate: Civet still steps36.15px
+in the full presentation. Five crabs preserve source perspective contacts, and selector melee
+reaches pinch/contactJoint with strike contact. R4 native refusals hold only typed pose-folds.
 
-[Approved R1/R2 repairs](audits/ANATOMY_COMPLETION_20260917/r1-r2-static-01/README.md), matches
-code as of September 17, 2026: one shared record-relative amplitude profile and timeline owner
-now cover ordinary/editor motion, including source-pincer signs/scales and seeded sway. Woody
-and herb roots remain anchored by Nick's explicit library amendment; grow/recoil act above the
-root and foliage is secondary-only. Finer observed plant ownership now has 11/10/11 branch groups
-in Persimmon/Cranberry/Devil's Club, preserving accepted paint and exact rest pixels.
+The one nine-subject full-row capture and five finished-crab equality films are complete.
+The existing accepted model finishes at masked0.35/one step; originals remain immutable,
+conservation and texture-only rebind controls pass. Q1 has two separate painted open-gape
+candidates on the review sheet. No numeric result is visual acceptance. Film and per-clip
+CPU tails are separate: Civet/Coconut and all three plants retain CPU leaves. Persimmon still
+has84disturb folds and169presentation folds;13held samples are retained in native review.
+R2d parent-frame groups exist, but its missing observed parent attachment refuses regeneration.
 
-Shared graph-validated contact chains drive stance/swing through the performance update owner
-in native capture. Reach and joint limits are not relaxed; existing quadruped compatibility and
-its 8% compression bound remain. Source crab hit/faint now recoil/lower the body over planted
-contacts. Published contact paint and bone endpoints are measured independently. The signed
-6b11407d producer completed the [eight-subject review](audits/ANATOMY_COMPLETION_20260917/r1-r2-native-01/README.md):
-Crab, Coconut, Freshwater and Cranberry pass numeric gates; Mud/Vent fail painted-foot drift,
-Persimmon refuses a132-triangle fold, and Devil's Club fails per-clip CPU. Four films exist;
-failed subjects stop before dependent films. Visual concerns remain on passing rows. R1/R2
-are not accepted as complete; no visual, phone or production combat qualification is claimed.
-R3–R8 and further implementation remain behind Nick's review stop.
+R5–R7 current fixtures are hash-verified and independent of historical audits; ordinary/capture
+RGBA parity and prefix initial-state admission are strict. Marks do not add structures;
+Pyrosome is one tube with190marks. Fiddler exposes six real quadratic legs and asymmetric
+claws but no fabricated fourth pair/elbows. Split receipts distinguish observed/welded/independent
+boundaries. Rendered root controls pass for trunk-only motion and reject actual root translation.
+Exact recording attribution remains separate from creator profile names, including legacy reads.
 
-Coverage remains 12 observed / 5 bound / 0 newly qualified of the 58 targets; 53 lack bindings.
-All eleven accepted masters have binding artifacts; the flora still need native/visual and CPU
-qualification. Preserve all prior failures, including the refused devils-club-05 intake. The
-1,250-case census remains 1,237 nonblank/parity passes, 13 explicit fallthroughs and 53 topology
-emissions (quadruped observation separate). Prior implementation and approved plan signatures
-are verified. No GitHub writes, source painting, kits or admission certificate changes.
-
-[Full catalogue and anatomy pass](audits/FAUNA_FULL_PASS_20260916/README.md), matches code as of
-September 17, 2026: existing Skink/Beetle painted fits retain full-action native diagnostics
-(60 fps; 1.2/1.6 ms rig-update p95; exact rest). Twelve specialized structure/curve candidates
-share intake and motion. Five actual crab variants now pass 44-joint admission against their
-source-rendered alpha, including named Freshwater/Mud/Vent owners and Mud Crab foot paddles.
-Topology callbacks carry the padded raster frame; compilers must project source coordinates
-through it. Root/Knee/Foot leg slack is measured. The census accounts for 1,010 Earth organisms
-and 240 procedural samples: 1,237 nonblank/parity passes, 13 explicit legacy fallthroughs.
-This is raster/geometry evidence, not universal animation. All 58 missing-body names still need
-qualified painted fits, contacts and visual review. Current evidence-based ledger:
-audits/FAUNA_FULL_PASS_20260916/coverage-final.json. Original accepted masters are unchanged.
+The census contains1,250cases:1,237raster passes,13legacy fallthroughs,54topology emissions;
+compiler outcomes5complete,1incomplete and48unsupported. Current missing profiles number53
+(8observed). The requested historical58 roster is exhausted:5existing crab fit/bind/films,
+53explicit source-fit refusals,15family sheets,0new visual qualifications. Source/fit outcomes:
+[roster ledger](audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json).
+D1 native retained-PNG/painter-fallback delivery passes for five crabs with zero inference,
+workers or GPU access. Both phone Glass canaries retain instrument reds; no physical phone
+qualification is claimed. Raw169-action limits, source pixels, kits and admission thresholds
+remain unchanged except the explicitly authorized planted-only contact limits above.
 
 [Count-preserving anatomy](audits/COUNTED_ANATOMY_20260916/README.md), matches code as of
 September 16, 2026: radial and cephalopod records can declare actual arm/tentacle counts in
@@ -120,7 +100,7 @@ matches code as of September 16, 2026: 169 family actions now have complete-clip
 determinism and GSAP parity checks (40,729 synthetic samples). Eight additional physical
 motions bring the anatomy selector to32 rows, including actual hoof kicks, body strikes
 and fish tail sweeps. Explicit anatomical absence is shared by compiler and rig intake.
-All631 named fauna still have exact profiles:573 have candidate moves;58 require new body
+All631 named fauna still have exact profiles:578 have candidate moves;53 require new body
 structures. A candidate is not a fitted or visually accepted species. Broad marine/crust/
 sessile labels no longer silently borrow fish/spider/radial bones.
 
