@@ -34,7 +34,8 @@ transitions. Coconut reproduces9.10409679px exactly. Shared brachyuran non-gait 
 measured max+10%, rounded up1e-6 =0.017603 anatomical motion-scale units. Gaits keep stride
 on both sides of transitions; other templates keep old behavior. All six normal traces
 pass; all six actual doubled faint-recovery keys refuse.6 guard/R3 tests pass; validation
-fingerprint unchanged. Signed guard producer and native confirmation receipts in packet.
+fingerprint unchanged. Signed guard producer ea998874; native Coconut confirmation passes continuity with
+exact pixel rest0/0 and zero refused frames. Dense-rig CPU leaf retained. Receipts in packet.
 
 NEXT DELIVERABLE: intake compiler, per Nick and read-only sibling PROGRAM.md§5. Claude
 owns IC-1 registration/hidden inference and IC-2 geodesic labels; Codex keeps IC-3 shared

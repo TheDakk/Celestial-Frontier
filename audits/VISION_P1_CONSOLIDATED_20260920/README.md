@@ -1,4 +1,8 @@
-# Consolidated P1 — measurement producer staged; signing blocked
+# Consolidated P1 — native CPU table and continuity guard complete
+
+Current: producer63b13bff and guard/evidence ea998874 signed and verified. Native guard
+confirmation PASS; exact pixel rest0/0; no refused frames. CPU decision and automatic
+intake acceptance remain open. Original signing refusal follows as retained history.
 
 Signing attempt returned `1Password: agent returned an error`; no commit object was written.
 Producer and evidence are staged, not signed. Last signed HEAD remains4f575f84638f1f0a478e8e756471938ca667a654.
@@ -62,3 +66,18 @@ Codex keeps the shared record, mask, atlas, observed-split and binding writers s
 See [writer handoff](IC3_HANDOFF.md). These five manually authored accepted fits are the
 regression truth, NOT evidence that automatic intake already works. A required hand step
 is a compiler defect, never an ongoing per-creature procedure. No gate is auto-admitted.
+
+## Final native guard confirmation
+
+Guard producer **ea998874**, signature verified in guard-producer-signature.txt.
+root-guard-native-01/summary.json: actual full native presentation continuity PASS,
+maximum9.10409679px against measured non-gait10.08823922px; unchanged stride applies to
+all gait transitions. Exact pixel rest0/0, no contact/fold/seam failure or refused frames.
+The retained dense Coconut CPU leaf remains; this changed-guard validation is NOT another
+sample in CPU_TABLE and does not select a painted-tier gate. Raw report/log losslessly
+compressed, film/stills retained. No unchanged retry. Root key and clip bytes untouched.
+
+OpenAI next: preserve IC-3 writer contracts and consume reviewed registration/label outputs.
+Claude next: IC-1/IC-2 on its own lane, using IC3_HANDOFF.md and the five accepted fits as
+comparison truth, never input labels. Nick need not switch apps for Git. No synchronization
+or hosted operation is authorized. Roster, further painting, P2 and final delivery hold.
