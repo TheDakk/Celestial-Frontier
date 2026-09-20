@@ -10,7 +10,10 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../.
 const {readPng}=await import(root+'port/v2/tools/painted-creature/finish-conservation.mjs');
 const {assignLegs}=await import('./assign.mjs');const {alphaOf,detectTips,classifyTips}=await import('./tips.mjs');const {templateRest}=await import('./template-rest.mjs');const {SUBJECTS,truthOf,scoreSubject}=await import('./score.mjs');
 export function verdict(res,template,declaredHidden){const T=templateRest(template);const reasons=[];
-  for(const side of ['Far','Near'])for(const sl of T.slots[side]){const filled=!!res.assigned[sl.terminal],hid=declaredHidden.includes(sl.id);if(hid&&filled)reasons.push(`declared hidden ${sl.id} was found`);if(!hid&&!filled)reasons.push(`visible ${sl.id} not found`);}
+  // evidence per slot: an endpoint or a resting tip counts; a LOOP-filled slot is weak evidence (12 false : 1 true in
+  // slice 19's table) and does not count as found when `strict` is set
+  const strict=process.env.IC4_STRICT!=='0';
+  for(const side of ['Far','Near'])for(const sl of T.slots[side]){const a=res.assigned[sl.terminal];const filled=!!a&&(!strict||a.kind!=='loop'),hid=declaredHidden.includes(sl.id);if(hid&&filled)reasons.push(`declared hidden ${sl.id} was found`);if(!hid&&!filled)reasons.push(`visible ${sl.id} not found`);}
   const unusedStrong=res.pool.filter(c=>c.kind==='end'&&!c.fork&&!c.used&&!c.claw).length;if(unusedStrong>res.unusedAllowance)reasons.push(`${unusedStrong} unused endpoint leg candidates`);
   return {verdict:reasons.length?'REFUSE':'ADMIT',reasons,unusedStrong};}
 const legPartIds=(decl,legId)=>{const key=legId.toLowerCase();return decl.parts.map((p,i)=>({p,i})).filter(({p})=>p.id.startsWith(key+'-')).map(({i})=>i+1);};

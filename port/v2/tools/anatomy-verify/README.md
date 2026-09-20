@@ -380,3 +380,13 @@ body ridge and join the appendage's ridge. Label IoU (P7): claws coconut 0.48/0.
 The DT minimum lands at the record's ELBOW, not its base (crab near 48 px, freshwater near 45, vent near 9, coconut
 far 73 px): the arm is two thick lobes (base→elbow, elbow→palm) and the valley between them is the elbow. The base
 needs the next valley toward the spine — a second cut, same walk. Naming and positions unchanged (30/39, 25/39).
+Addendum — verdict evidence and the second cut: (1) `ic4.mjs` strict verdict (a LOOP-filled slot does not count as
+found; endpoint or resting tip only): positives 4/6 → 3/6 (the mud crab's Far side runs on loops), erased mutants
+REFUSE 5/10 → 7/10, duplicated 6/10 → 8/10, wrong-template 6/6. Precision-first, so strict is the default
+(`IC4_STRICT=0` restores the lenient count). (2) `wristCuts` 2 (base = the second DT valley toward the spine, on a
+±3 px smoothed profile): claws crab near 0.58 → 0.66, mud far 0.55 → 0.58, coconut far 0.55 → 0.61; body +0.01–0.03;
+the elbow valley is 46–131 px from the record's elbow, the "base" valley still 72–200 px from the record's base
+(the arm has more than two lobes on these paintings). Default 2.
+(3) P7 body-outline seeds (`outlineBand`, boundary pixels near the thick region whose neighbourhood DT exceeds a
+limb cross-section): no effect at any band 0.3–1.0 R — the test never fires at a boundary pixel (DT ≈ 1 there);
+kept as an option at 0, the outline needs the DT of the nearest RIDGE, not of the pixel. Not pursued further now.

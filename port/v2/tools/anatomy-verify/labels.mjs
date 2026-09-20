@@ -5,13 +5,17 @@
  * same vocabulary as Codex's declarations, so the two label maps compare part by part (IoU at master scale). Nothing
  * here writes a fit; `scoreLabels` is comparison against Codex's hand labels, never an input. */
 import {templateRest} from './template-rest.mjs';
-export function labelParts(res,template,{bodyBand=0,seedMode='ridge',legSeedFrom=0}={}){const T=templateRest(template);const {W,H,mask,bodyDist}=res.working;
+export function labelParts(res,template,{bodyBand=0,seedMode='ridge',legSeedFrom=0,outlineBand=0}={}){const T=templateRest(template);const {W,H,mask,bodyDist}=res.working;
   const parts=[];const src=new Int32Array(W*H).fill(-1),srcIdx=new Int32Array(W*H).fill(-1),dist=new Float32Array(W*H).fill(1e9);const q=[];
   const seed=(pid,pts)=>{const id=parts.length;parts.push(pid);for(let k=0;k<pts.length;k++){const [x,y]=pts[k].map(Math.round);const i=y*W+x;if(i<0||i>=W*H||!mask[i])continue;if(dist[i]>0){dist[i]=0;src[i]=id;srcIdx[i]=k;q.push(i);}}return id;};
   // body: the thick region
   // body seed: the thick region plus a band around it (bodyBand × R) so the carapace rim is not cut by leg paths
   if(seedMode==='region'){const R=res.R;const pts=[];for(let i=0;i<W*H;i++)if(mask[i]&&bodyDist[i]<=bodyBand*R)pts.push([i%W,Math.floor(i/W)]);seed('body',pts);}
-  else seed('body',res.bodyRidge); // 'ridge': the body's own ridge pixels (thick edges not on a claw chain), so the claw arm/palm — as thick as the carapace — is claimed by the claw ridge, not the body
+  else{const pts=res.bodyRidge.slice();
+    // P3 body outline: mask boundary pixels within `outlineBand` × R of the thick region whose local DT is above every
+    // limb's cross-section (DT ≥ 1.5 × rest leg thickness × R) also seed the body, so the carapace rim is body
+    if(outlineBand>0){const R=res.R,dt=res.working.dt,limbT=1.5*T.legThickness*R;for(let y=1;y<H-1;y++)for(let x=1;x<W-1;x++){const i=y*W+x;if(!mask[i])continue;if(mask[i-1]&&mask[i+1]&&mask[i-W]&&mask[i+W])continue;if(bodyDist[i]<=outlineBand*R){let ok=false;for(let dy=-2;dy<=2&&!ok;dy++)for(let dx=-2;dx<=2;dx++){const j=(y+dy)*W+x+dx;if(mask[j]&&dt[j]>=limbT){ok=true;break;}}if(ok)pts.push([x,y]);}}}
+    seed('body',pts);} // 'ridge': the body's own ridge pixels (thick edges not on a claw chain), so the claw arm/palm — as thick as the carapace — is claimed by the claw ridge, not the body
   // legs seed from `legSeedFrom` × R outside the thick region so the carapace rim near a leg root stays body
   const legPaths={};for(const side of ['Far','Near'])for(const sl of T.slots[side]){const a=res.assigned[sl.terminal];if(!a||!a.path)continue;legPaths[sl.id]=a.path;const R=res.R;const pts=a.path.filter(([x,y])=>bodyDist[Math.round(y)*W+Math.round(x)]>=legSeedFrom*R);seed(sl.id,pts.length>1?pts:a.path);}
   res.clawPaths.forEach((c,k)=>{const p=seedMode==='ridge'?(c.fullPath??c.path):c.path;if(p)seed('claw'+(c.side??k),p);});

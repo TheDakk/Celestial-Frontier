@@ -17,7 +17,7 @@ import {templateRest} from './template-rest.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 /** Backwards-compatible descriptor view: legs per side and slot naming per template (from the contract). */
 export const TEMPLATES=new Proxy({},{get:(_,id)=>{if(typeof id!=='string')return undefined;const r=templateRest(id);return {legsPerSide:r.legsPerSide,slotName:(k,side)=>r.slots[side][k].terminal,rest:r};}});
-export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true}={}){
+export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2}={}){
   const T=templateRest(template),legsPerSide=T.legsPerSide,slotName=(k,side)=>T.slots[side][k].terminal;
   const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128}),{mask,dt,working:{width:W,height:H,scale,box}}=det;
   const g=ridgeGraph(mask,dt,W,H,{spurFactor:1.5,spurFloor:8});
@@ -215,9 +215,12 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
       if(hit===null)continue;const edges=[];let cur=hit;while(via.get(cur)){edges.unshift(via.get(cur).e);cur=via.get(cur).from;}
       // pixels from the root outward along the walk; wrist = DT minimum (excluding the first/last 2 px)
       let node=start;const px=[];for(const e of edges){const path=(e.a===node)?e.path:[...e.path].reverse();px.push(...path);node=(e.a===node)?e.b:e.a;}
-      let wi=0;for(let i=2;i<px.length-2;i++)if(dt[px[i]]<dt[px[wi]]||wi===0&&i===2)wi=i;const arm=px.slice(0,wi);c.wrist=[px[wi]%W,Math.floor(px[wi]/W)];c.armPath=arm.map(i=>[i%W,Math.floor(i/W)]);for(const i of arm)armPixels.set(i,c);}}
+      // valleys along the walk (local minima of DT smoothed over ±3 px), root → spine: the first is the elbow, the
+      // second the base; `wristCuts` selects how many lobes leave the body (1 = elbow cut, 2 = base cut)
+      const sm=px.map((_,i)=>{let a=0,n=0;for(let k=-3;k<=3;k++){const j=i+k;if(j>=0&&j<px.length){a+=dt[px[j]];n++;}}return a/n;});const valleys=[];for(let i=3;i<px.length-3;i++)if(sm[i]<sm[i-1]&&sm[i]<=sm[i+1]&&sm[i]<0.97*Math.max(...sm.slice(Math.max(0,i-30),i)))valleys.push(i);
+      const wi=valleys.length?valleys[Math.min(valleys.length,wristCuts)-1]:0;if(!wi)continue;const arm=px.slice(0,wi);c.wrist=[px[wi]%W,Math.floor(px[wi]/W)];c.elbow=valleys.length?[px[valleys[0]]%W,Math.floor(px[valleys[0]]/W)]:null;c.armPath=arm.map(i=>[i%W,Math.floor(i/W)]);for(const i of arm)armPixels.set(i,c);}}
   const bodyRidge=[];for(const e of g.edges){if(e.meanDt<lc.bodyDt||clawEdgeSet.has(e))continue;for(const i of e.path){if(armPixels.has(i))continue;bodyRidge.push([i%W,Math.floor(i/W)]);}}
-  const clawPaths=clawList.map(c=>({tip:[c.x,c.y],side:T.view==='front'?sideFront(c):null,path:pathOf(c),fullPath:[...(c.armPath??[]).reverse(),...fullPath(c)],wrist:c.wrist?toM(c.wrist).map(Math.round):null}));
+  const clawPaths=clawList.map(c=>({tip:[c.x,c.y],side:T.view==='front'?sideFront(c):null,path:pathOf(c),fullPath:[...(c.armPath??[]).reverse(),...fullPath(c)],wrist:c.wrist?toM(c.wrist).map(Math.round):null,elbow:c.elbow?toM(c.elbow).map(Math.round):null}));
   const usedSet=new Set([...feet.Far,...feet.Near]);
   return {working:{W,H,scale,box,mask,dt,bodyDt:lc.bodyDt,bodyDist},clawPaths,bodyRidge,legsBySide:T.view==='front'?{Far:legs.filter(c=>sideFront(c)==='Far').map(c=>c.kind),Near:legs.filter(c=>sideFront(c)==='Near').map(c=>c.kind)}:null,joints,inferred,pool:pool.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),sep:c.attach?toM(c.attach).map(Math.round):null,term:c.term,len:+c.len.toFixed(1),termDt:c.termDt,fork:forkOf.has(c),claw:isClaw(c),used:usedSet.has(c),diag:c.diag})),assigned,hidden,claws:{Far:claws.Far.map(c=>toM([c.x,c.y]).map(Math.round)),Near:claws.Near.map(c=>toM([c.x,c.y]).map(Math.round))},centre:toM(centre).map(Math.round),axis:axis.map(v=>+v.toFixed(3)),spine:spine?{a:toM([g.nodes[spine.a].x,g.nodes[spine.a].y]).map(Math.round),b:toM([g.nodes[spine.b].x,g.nodes[spine.b].y]).map(Math.round),len:spine.length,minDt:spine.minDt,meanDt:spine.meanDt}:null,bodyDt:lc.bodyDt,R,feetFound:feet.Far.length+feet.Near.length};
 }
