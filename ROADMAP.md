@@ -74,3 +74,7 @@ then R5–R8, roster families and local PR42 split; no intermediate review stop.
 R9 shared finisher/immutable retention/conservation/texture-only rebind implemented. Fixed
 0.35 one-step existing model; geometry independently rebuilt and compared. Static controls
 passing; signed producer and five-crab native inference next. Evidence R9/README.md.
+
+R9 producer0cae378e verified. All five native finishes PASS conservation/immutable retention;
+Crab repeated inference byte-identical and seed+1 different/discarded. New PNG originals
+in R9/finish-01. Rebinding and native equality next; Q1 candidate-only source projection ready.
