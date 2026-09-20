@@ -7,7 +7,7 @@
  * by best match, so a hidden leg simply leaves its slot empty. Scored against hand landmarks; not a writer. */
 import {alphaOf,detectTips} from './tips.mjs';
 import {ridgeGraph} from './ridge.mjs';
-import {limbChains} from './chains.mjs';
+import {limbChains,separationPoints} from './chains.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 const angDiff=(a,b)=>{let d=Math.abs(a-b)%(2*Math.PI);return d>Math.PI?2*Math.PI-d:d;};
 export function assignLegs(rgba,w,h,guide,{legsPerSide=4,thinSpread=1.8,minTerm=16,termFactor=3,loopMinLen=60}={}){
@@ -20,7 +20,8 @@ export function assignLegs(rgba,w,h,guide,{legsPerSide=4,thinSpread=1.8,minTerm=
   // attachment = where the limb leaves the thick region: first pixel along the chain (body → tip) with DT < bodyDt
   const exitPoint=(edges,fromBodyNodeId)=>{let node=fromBodyNodeId;for(const e of edges){const path=(e.a===node)?e.path:[...e.path].reverse();for(const i of path){if(dt[i]<lc.bodyDt)return [i%W,Math.floor(i/W)];}node=(e.a===node)?e.b:e.a;}const last=edges[edges.length-1];const i=last.path[last.path.length-1];return [i%W,Math.floor(i/W)];};
   // (a) terminal-branch candidates
-  const cands=[];for(const c of lc.chains){const last=c.edges[c.edges.length-1];if(last.length>=Math.max(minTerm,termFactor*last.meanDt)&&c.endDt<=6)cands.push({kind:'end',x:c.endNode.x,y:c.endNode.y,termDt:last.meanDt,term:last.length,attach:exitPoint(c.edges,c.rootNode.id)});}
+  const seps=separationPoints(lc.chains,g.nodes,centre);
+  const cands=[];for(const c of lc.chains){const last=c.edges[c.edges.length-1];if(last.length>=Math.max(minTerm,termFactor*last.meanDt)&&c.endDt<=6){const sp=seps.get(c);cands.push({kind:'end',x:c.endNode.x,y:c.endNode.y,termDt:last.meanDt,term:last.length,attach:[sp.node.x,sp.node.y]});}}
   // (b) loop limbs
   for(const e of g.edges){if(e.meanDt>=lc.bodyDt||e.length<loopMinLen)continue;if(!bodyIds.has(e.a)||!bodyIds.has(e.b))continue;let far=null,fd=-1;for(const i of e.path){const p=[i%W,Math.floor(i/W)],d=Math.hypot(p[0]-centre[0],p[1]-centre[1]);if(d>fd){fd=d;far=p;}}
     if(far&&!cands.some(c=>Math.hypot(c.x-far[0],c.y-far[1])<20)){cands.push({kind:'loop',x:far[0],y:far[1],termDt:e.meanDt,term:e.length,attach:exitPoint([e],e.a)});}}

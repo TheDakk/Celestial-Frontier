@@ -36,3 +36,13 @@ export function classifyChains(chains,{minTerm=16,termFactor=3,thickRatio=1.7}={
     else out.stubs.push(r);}
   return out;
 }
+/** Separation point of a chain: the last node it shares with ANY other chain walking from the body outward (the
+ * point where the limb becomes its own), so neighbouring legs that share trunk edges beside the body still order
+ * correctly along the body outline. Returns per chain: the separation node and its angle about `centre`. */
+export function separationPoints(chains,nodes,centre){
+  const out=new Map();
+  for(const c of chains){let sepNode=c.rootNode;let node=c.rootNode.id;
+    for(const e of c.edges){const shared=chains.some(o=>o!==c&&o.edges.includes(e));const next=(e.a===node)?e.b:e.a;if(!shared)break;node=next;sepNode=nodes[node];}
+    out.set(c,{node:sepNode,angle:Math.atan2(sepNode.y-centre[1],sepNode.x-centre[0])});}
+  return out;
+}
