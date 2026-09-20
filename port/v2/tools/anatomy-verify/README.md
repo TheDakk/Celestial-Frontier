@@ -93,3 +93,19 @@ DT < 1.6× thin) and the entry point (DT ≥ 3× thin). On the painted crab, wal
 thin runs of 18–72; the claw palms on the painted coconut show as tips of thickness 38–40 that enter after a short
 thin run (7–17); its eye stalk is the one tip entering from above (y 16 → 52). These are the features step 3 matches
 against the template's rest proportions; the matching itself is next.
+
+## Slice 8 — `register.mjs` (IC-1 first cut: feet → template legs), 2026-09-20
+Feet = thin tips whose ridge walk-back runs thin before entering the body; assigned per side by angular order about the
+thick-core centroid; unmatched template legs reported as hidden candidates. Scored against Codex's hand-authored
+landmarks: **painted coconut crab, far side: 3 of 3 feet within 8 px; painted vent crab: 6 of 8 feet coincide with the
+hand landmarks (≤ 15 px)** with zero hand work. What fails, with the reason measured:
+- the two rear legs whose tips rest against the carapace are not silhouette tips (the window is full of carapace);
+  re-detecting on a limbs-only mask (thick core removed) explodes to 100+ false ends at every segment joint — not usable;
+- the two claws: their finger pairs are thin tips, and the palm cannot be separated from the carapace by any thickness
+  threshold (one blob from 3× to 7× thin), so "same palm" never fires;
+- the near-side leg order is inverted once a tip is missing (order by rank cannot survive a gap).
+Next (IC-1 second cut, the way the guide was meant to be used): estimate the guide → painting similarity transform
+from the confidently matched feet (≥ 3 per side), predict every remaining guide landmark (claws, rear legs, eyes) through
+it, then refine each prediction locally on the painting's ridge (nearest thin/thick structure within a radius scaled by
+the transform). Hidden = a predicted landmark whose refinement finds no paint. Rank order is replaced by proximity to the
+prediction, which survives gaps. Scored the same way, on all five painted crabs, before any writer is touched.
