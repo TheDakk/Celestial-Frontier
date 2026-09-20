@@ -61,3 +61,7 @@ step leaf red0.017142585>stride0.00804873 retained. R4 typed pose refusal/hold a
 frame publication implemented; unit/typecheck pass. Full-row capture tooling includes faint
 and holds/refusal diagnostics. Next signed R4 producer, sentinels, ONE nine-subject native
 recapture; shared Civet/crab geometry/contact/rest red remains the only halt.
+
+Full-row media has its own encoded-duration check against the complete schedule (same
+750ms recorder-padding allowance). Original ten-second certificate unchanged. Output is
+family-full-rows.webm; truncated ten-second and excessive-padding controls fail.
