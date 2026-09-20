@@ -66,3 +66,15 @@ binding and gates out; a person looks only at the sheet.**
 Law: if a creature needs a hand step, that is a compiler bug and is fixed in the compiler, never on the creature.
 Order: CPU table + continuity guard first (they finish the regression set), then IC-1/IC-2 here while Codex keeps
 IC-3 stable, then archetypes and the roster only through the compiler. Morph-tier creatures never enter intake.
+
+## 6. Decisions 2026-09-20 night (Nick)
+- **Painted-tier CPU gate: 3.5 ms full-film rig p95 on desktop; boundary 24 / interior 56 stays canonical.** Basis:
+  Codex's five-subject table (`openai-mac/audits/VISION_P1_CONSOLIDATED_20260920/CPU_TABLE.md`): boundary 48 halves
+  vertices but refuses the vent crab on contact and pushes the freshwater crab to 0.227 px drift; interior coarsening
+  is a no-op. The 2 ms gate remains the phone/painter-tier gate; phones never load painted masters (D1).
+- Compiler acceptance bar (IC-4), fixed now: every accepted crab fit reproduced with landmark error inside a recorded
+  bound, identical hidden set, static rows green, zero hand edits; erased-leg, duplicated-leg and wrong-template-guide
+  mutants refused. Until it passes: no new species enters intake, Codex's writers stay frozen, no roster painting.
+- One early exception: one painted quadruped through the same path (the Civet guide/master exist), so the graph rules
+  are proven not crab-shaped.
+- Trust battery runs unattended once IC-4 passes; the runtime-generation decision is then made on its two numbers.
