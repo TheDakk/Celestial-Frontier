@@ -10,7 +10,13 @@ import {ridgeGraph} from './ridge.mjs';
 import {limbChains,separationPoints} from './chains.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 const angDiff=(a,b)=>{let d=Math.abs(a-b)%(2*Math.PI);return d>Math.PI?2*Math.PI-d:d;};
-export function assignLegs(rgba,w,h,guide,{legsPerSide=4,thinSpread=1.8,minTerm=16,termFactor=3,loopMinLen=60}={}){
+/** Template descriptor: how many leg slots per side and how each slot is named, rear first. Crab (brachyuran):
+ * 4 per side, leg0..leg3 + 'Foot'. Quadruped: 2 per side, hind then fore, + 'Paw'. Nothing else differs. */
+export const TEMPLATES={
+  brachyuran:{legsPerSide:4,slotName:(k,side)=>'leg'+k+side+'Foot'},
+  quadruped:{legsPerSide:2,slotName:(k,side)=>(k===0?'hind':'fore')+side+'Paw'},
+};
+export function assignLegs(rgba,w,h,guide,{template='brachyuran',legsPerSide=TEMPLATES[template].legsPerSide,slotName=TEMPLATES[template].slotName,thinSpread=1.8,minTerm=16,termFactor=3,loopMinLen=60}={}){
   const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128}),{mask,dt,working:{width:W,height:H,scale,box}}=det;
   const g=ridgeGraph(mask,dt,W,H,{spurFactor:1.5,spurFloor:8}),lc=limbChains(g,dt,W);
   const toM=p=>[box.x+(p[0]-2)/scale,box.y+(p[1]-2)/scale];
@@ -61,7 +67,7 @@ export function assignLegs(rgba,w,h,guide,{legsPerSide=4,thinSpread=1.8,minTerm=
   const assigned={},hidden=[];const chainLen=c=>c.term+(c.kind==='end'?0:0);
   for(const side of ['Far','Near']){
     const list=sides[side].map(f=>({f,a:ang(f.attach??[f.x,f.y],centre)}));const key=o=>side==='Near'?(o.a<-Math.PI/2?o.a+2*Math.PI:o.a):(o.a>Math.PI/2?-(o.a-2*Math.PI):-o.a);
-    const cs=list.sort((p,q)=>key(p)-key(q)).map(o=>o.f);if(!cs.length){for(let k=0;k<legsPerSide;k++)hidden.push('leg'+k+side);continue;}
+    const cs=list.sort((p,q)=>key(p)-key(q)).map(o=>o.f);if(!cs.length){for(let k=0;k<legsPerSide;k++)hidden.push(slotName(k,side).replace(/Foot$|Paw$/,''));continue;}
     const thin=[...cs.map(c=>c.termDt)].sort((a,b)=>a-b)[Math.floor(cs.length/2)]||1,lens=[...cs.map(c=>c.term)].sort((a,b)=>a-b),medLen=lens[Math.floor(lens.length/2)]||1;
     const unit=c=>Math.abs(Math.log(c.termDt/thin))*0.8+Math.max(0,1-c.term/medLen)*1.0+(c.kind==='touch'?0.5:c.kind==='loop'?0.3:0);
     const emptyCost=k=>k===legsPerSide-1?0.3:k===legsPerSide-2?1.0:1.8,unusedCost=0.7;
@@ -72,7 +78,7 @@ export function assignLegs(rgba,w,h,guide,{legsPerSide=4,thinSpread=1.8,minTerm=
       // take candidate j ≥ i (monotone)
       for(let j=i;j<cs.length;j++){rec(k+1,j+1,used+1,acc.concat([cs[j]]),cost+unit(cs[j]));}};
     rec(0,0,0,[],0);
-    best.acc.forEach((c,k)=>{const name='leg'+k+side+'Foot';if(c)assigned[name]={master:toM([c.x,c.y]).map(Math.round),kind:c.kind,attach:toM(c.attach??[c.x,c.y]).map(Math.round)};else hidden.push('leg'+k+side);});
+    best.acc.forEach((c,k)=>{const name=slotName(k,side);if(c)assigned[name]={master:toM([c.x,c.y]).map(Math.round),kind:c.kind,attach:toM(c.attach??[c.x,c.y]).map(Math.round)};else hidden.push(name.replace(/Foot$|Paw$/,''));});
     feet[side]=best.acc.filter(Boolean);}
   return {pool:pool.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),sep:c.attach?toM(c.attach).map(Math.round):null,term:c.term,termDt:c.termDt,fork:forkOf.has(c)})),assigned,hidden,claws:{Far:claws.Far.map(c=>toM([c.x,c.y]).map(Math.round)),Near:claws.Near.map(c=>toM([c.x,c.y]).map(Math.round))},centre:toM(centre).map(Math.round),feetFound:feet.Far.length+feet.Near.length};
 }

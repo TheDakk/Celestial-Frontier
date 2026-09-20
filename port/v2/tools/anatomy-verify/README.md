@@ -218,3 +218,20 @@ positions 20 of 35, but slots that were correctly filled from touching tips on t
 Both variants are retained in git; the profile test stays on (a wrong foot in a rig is worse than an empty slot that
 the hidden-inference step fills by the template rule). Next: the Civet through the identical code as the second
 family, before any further crab tuning — the program's rule.
+
+## Slice 17 — the Civet through the identical code (second family), 2026-09-21 early
+`assign.mjs` now takes a template descriptor (`TEMPLATES`: legs per side and slot naming; crab 4×leg0..3+Foot,
+quadruped 2×hind/fore+Paw) and nothing else changes between families. First Civet run (keyed opaque master, truth =
+the sentinel record's paws): only 2 candidates, both on the "Near" side, best paw error 26 px, the rest wrong. Three
+genericity gaps exposed, exactly what the second family was for:
+1. **Side is a template property, not x.** Crabs are painted front-on, so Far/Near split by x about the centre;
+   quadrupeds are painted side-on, so Far/Near is depth: far legs sit higher and behind, near legs lower and in front.
+   The descriptor needs `view: 'front' | 'side'` and the side rule follows it (side view: split by the attachment's y
+   and occlusion order).
+2. **Thresholds must be in body units.** The candidate rule "terminal ≥ 3× its thickness" and the 30 px spine floor
+   are working-pixel constants tuned on thin crab legs; a civet's lower leg is thick and its paw short, so real legs
+   are rejected. Express every length as a ratio of the template's rest limb length mapped through the body size.
+3. **Body centre must be the template's body axis**, not the thick-region centroid: on the Civet the thick region
+   includes the head and the centroid lands at the neck, so every angle is skewed. Use the midpoint of the two thickest
+   ridge nodes along the longest thick edge (the spine) as the body axis.
+These are the next three changes; each is scored on the five crabs and the Civet together.
