@@ -70,7 +70,7 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
     // over the top of the body is nearer the centre at its tip than at its root)
     let far=null,fd=-1;for(const i of e.path){const d=loopMode==='body'?Math.hypot(i%W-centre[0],Math.floor(i/W)-centre[1]):bodyDist[i];if(d>fd){fd=d;far=[i%W,Math.floor(i/W)];}}
     if(loopMode!=='body'&&fd<0.5*loopMinLen)continue; // must protrude from the body by a limb's worth
-    if(far&&!cands.some(c=>Math.hypot(c.x-far[0],c.y-far[1])<20)){cands.push({kind:'loop',x:far[0],y:far[1],termDt:e.meanDt,term:e.length,len:e.length/2,attach:exitPoint([e],e.a)});}}
+    if(far&&!cands.some(c=>Math.hypot(c.x-far[0],c.y-far[1])<20)){cands.push({kind:'loop',x:far[0],y:far[1],termDt:e.meanDt,term:e.length,len:e.length/2,attach:exitPoint([e],e.a),edge:e,farIndex:e.path.indexOf(far[1]*W+far[0])});}}
   // (c) touching limbs
   const thinAll=cands.map(c=>c.termDt).sort((a,b)=>a-b),thinRef=thinAll[Math.floor(thinAll.length/4)]??(T.legThickness*R);
   for(const e of g.edges){if(e.meanDt>=lc.bodyDt||e.length<loopMinLen)continue;const aBody=bodyIds.has(e.a),bBody=bodyIds.has(e.b);if(aBody===bBody)continue;const farId=aBody?e.b:e.a,far=g.nodes[farId];if(far.kind!=='junction'||far.dt>2*thinRef)continue;
@@ -82,7 +82,7 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
     // carapace/torso), and the junction itself is at least leg-thin (a hair meeting the body is not a limb end); a
     // junction among only limb-thick edges is a crossing of two legs, which is not a tip
     if(touchAgainstBody&&(diag.otherMaxDt<lc.bodyDt||far.dt<thinRef))continue;
-    cands.push({kind:'touch',x:far.x,y:far.y,termDt:far.dt,term:e.length,len:e.length,attach:exitPoint([e],aBody?e.a:e.b),nodeId:farId,diag});}
+    cands.push({kind:'touch',x:far.x,y:far.y,termDt:far.dt,term:e.length,len:e.length,attach:exitPoint([e],aBody?e.a:e.b),nodeId:farId,diag,edge:e,fromBody:aBody?e.a:e.b});}
   // a touching tip must be a limb END: a junction that another candidate's chain passes through (an ankle fork, a
   // mid-leg crossing) is interior to that limb and is dropped in favour of the chain's own endpoint
   {const interior=new Set();for(const c of cands){if(c.kind!=='end')continue;let node=c.chain.rootNode.id;const es=c.chain.edges;for(let k=0;k<es.length;k++){const e=es[k];node=(e.a===node)?e.b:e.a;let beyond=0;for(let m=k+1;m<es.length;m++)beyond+=es[m].length;if(beyond>=minLimbTerm)interior.add(node);}} // a junction is interior only when the limb continues a limb's worth beyond it
@@ -161,7 +161,9 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
   }
   // --- P6 joints: every interior joint of a slot (knee, ankle …) at the template's rest fraction of the limb's path,
   // measured from the limb's exit from the body to its tip along the ridge path (no straight-line guess) ---
-  const pathOf=c=>{if(c.kind!=='end')return null;let node=c.chain.rootNode.id;const pts=[];let out=false;for(const e of c.chain.edges){const path=(e.a===node)?e.path:[...e.path].reverse();for(const i of path){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}node=(e.a===node)?e.b:e.a;}return pts.length>1?pts:null;};
+  const pathOf=c=>{if(c.kind==='touch'){const e=c.edge;const path=(e.a===c.fromBody)?e.path:[...e.path].reverse();const pts=[];let out=false;for(const i of path){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}return pts.length>1?pts:null;}
+    if(c.kind==='loop'){const e=c.edge;const k=c.farIndex;if(k<0)return null;const seg=k>=e.path.length/2?e.path.slice(0,k+1):[...e.path].reverse().slice(0,e.path.length-k);const pts=[];let out=false;for(const i of seg){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}return pts.length>1?pts:null;}
+    if(c.kind!=='end')return null;let node=c.chain.rootNode.id;const pts=[];let out=false;for(const e of c.chain.edges){const path=(e.a===node)?e.path:[...e.path].reverse();for(const i of path){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}node=(e.a===node)?e.b:e.a;}return pts.length>1?pts:null;};
   const joints={};const slotByTerminal=new Map();for(const side of ['Far','Near'])for(const sl of T.slots[side])slotByTerminal.set(sl.terminal,{sl,side});
   for(const [name,a] of Object.entries(assigned)){const e=slotByTerminal.get(name);if(!e||!a._c)continue;const {sl}=e;const c=a._c;const pts=pathOf(c);const tipM=a.master;
     const chainNames=sl.chain;joints[chainNames[chainNames.length-1]]=tipM;
@@ -176,7 +178,11 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
       if(vis.length>=2){const nb=[...vis].sort((a,b)=>Math.abs(a.k-k)-Math.abs(b.k-k)).slice(0,2).sort((a,b)=>a.k-b.k);const [a,b]=nb;const step=[(b.p[0]-a.p[0])/(b.k-a.k),(b.p[1]-a.p[1])/(b.k-a.k)];p=[Math.round(a.p[0]+step[0]*(k-a.k)),Math.round(a.p[1]+step[1]*(k-a.k))];}
       else{const twin=T.slots[side==='Far'?'Near':'Far'][k];const t=assigned[twin?.terminal];if(t){const cM=toM(centre),ax=axis;const d=[t.master[0]-cM[0],t.master[1]-cM[1]];const along=d[0]*ax[0]+d[1]*ax[1];const perp=[d[0]-along*ax[0],d[1]-along*ax[1]];p=T.view==='front'?[Math.round(cM[0]-d[0]),Math.round(t.master[1])]:[Math.round(cM[0]+along*ax[0]-perp[0]*0+d[0]-2*along*ax[0]*0),Math.round(t.master[1])];if(T.view==='front')p=[Math.round(2*cM[0]-t.master[0]),t.master[1]];else p=[t.master[0],t.master[1]-Math.round(0.1*R/scale)];}}
       if(p)inferred[sl[k].terminal]=p;}}
-  for(const a of Object.values(assigned))delete a._c;
+  for(const a of Object.values(assigned)){if(a._c){a.path=pathOf(a._c);a.side=undefined;}delete a._c;}
+  const fullPath=c=>{if(c.kind!=='end')return pathOf(c);let node=c.chain.rootNode.id;const pts=[];for(const e of c.chain.edges){const path=(e.a===node)?e.path:[...e.path].reverse();for(const i of path)pts.push([i%W,Math.floor(i/W)]);node=(e.a===node)?e.b:e.a;}return pts;};
+  const clawPaths=clawList.map(c=>({tip:[c.x,c.y],side:T.view==='front'?sideFront(c):null,path:pathOf(c),fullPath:fullPath(c)}));
+  const clawEdgeSet=new Set();for(const c of clawList)if(c.kind==='end')for(const e of c.chain.edges)clawEdgeSet.add(e);
+  const bodyRidge=[];for(const e of g.edges){if(e.meanDt<lc.bodyDt||clawEdgeSet.has(e))continue;for(const i of e.path)bodyRidge.push([i%W,Math.floor(i/W)]);}
   const usedSet=new Set([...feet.Far,...feet.Near]);
-  return {joints,inferred,pool:pool.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),sep:c.attach?toM(c.attach).map(Math.round):null,term:c.term,len:+c.len.toFixed(1),termDt:c.termDt,fork:forkOf.has(c),claw:isClaw(c),used:usedSet.has(c),diag:c.diag})),assigned,hidden,claws:{Far:claws.Far.map(c=>toM([c.x,c.y]).map(Math.round)),Near:claws.Near.map(c=>toM([c.x,c.y]).map(Math.round))},centre:toM(centre).map(Math.round),axis:axis.map(v=>+v.toFixed(3)),spine:spine?{a:toM([g.nodes[spine.a].x,g.nodes[spine.a].y]).map(Math.round),b:toM([g.nodes[spine.b].x,g.nodes[spine.b].y]).map(Math.round),len:spine.length,minDt:spine.minDt,meanDt:spine.meanDt}:null,bodyDt:lc.bodyDt,R,feetFound:feet.Far.length+feet.Near.length};
+  return {working:{W,H,scale,box,mask,dt,bodyDt:lc.bodyDt,bodyDist},clawPaths,bodyRidge,legsBySide:T.view==='front'?{Far:legs.filter(c=>sideFront(c)==='Far').map(c=>c.kind),Near:legs.filter(c=>sideFront(c)==='Near').map(c=>c.kind)}:null,joints,inferred,pool:pool.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),sep:c.attach?toM(c.attach).map(Math.round):null,term:c.term,len:+c.len.toFixed(1),termDt:c.termDt,fork:forkOf.has(c),claw:isClaw(c),used:usedSet.has(c),diag:c.diag})),assigned,hidden,claws:{Far:claws.Far.map(c=>toM([c.x,c.y]).map(Math.round)),Near:claws.Near.map(c=>toM([c.x,c.y]).map(Math.round))},centre:toM(centre).map(Math.round),axis:axis.map(v=>+v.toFixed(3)),spine:spine?{a:toM([g.nodes[spine.a].x,g.nodes[spine.a].y]).map(Math.round),b:toM([g.nodes[spine.b].x,g.nodes[spine.b].y]).map(Math.round),len:spine.length,minDt:spine.minDt,meanDt:spine.meanDt}:null,bodyDt:lc.bodyDt,R,feetFound:feet.Far.length+feet.Near.length};
 }
