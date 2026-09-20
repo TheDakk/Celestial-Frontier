@@ -1,0 +1,58 @@
+{
+  "schema": "cf.painted-master-result/v1",
+  "species": "Wolf",
+  "generation": 1,
+  "tool": "image_gen.imagegen",
+  "model": "not exposed",
+  "seed": null,
+  "sourceImage": "/Users/nick/.codex/generated_images/01a0bab7-303d-74b2-9084-ec26ea52e7e8/exec-8aadfde0-5c69-430a-bcac-0f6ff8761068.png",
+  "master": "wolf-master.png",
+  "sha256": "12ff561839c191bb726b967eef420f418063a8ab14548ab8901486d460f51773",
+  "bytes": 1137742,
+  "requestedSize": [
+    1024,
+    1024
+  ],
+  "actualSize": [
+    1254,
+    1254
+  ],
+  "format": "PNG",
+  "mode": "RGBA",
+  "alpha": {
+    "transparentPixels": 1147766,
+    "opaquePixels": 248,
+    "partialPixels": 424502,
+    "bounds": [
+      0,
+      19,
+      1236,
+      1190
+    ]
+  },
+  "requestedBackground": "#FF00FF",
+  "actualBackground": "transparent RGBA, as delivered by image tool",
+  "postprocessing": {
+    "resized": false,
+    "alphaChanged": false,
+    "rgbChanged": false,
+    "keyed": false,
+    "despilled": false
+  },
+  "visualReview": {
+    "visibleLegCount": 4,
+    "visiblePaws": 4,
+    "facing": "right",
+    "hiddenLegs": [],
+    "countFinding": null,
+    "formatFinding": "Tool returned 1254-square RGBA transparency instead of requested 1024-square magenta; original bytes retained, matching the five P1 crab outputs.",
+    "framingFinding": "Horizontal extent exceeds requested 80% framing and 8% margin; whole nose and tail remain in frame.",
+    "artAcceptance": "not claimed"
+  },
+  "intakePerformed": false,
+  "fitPerformed": false,
+  "rigPerformed": false,
+  "handLandmarks": false,
+  "ic3Writers": "FROZEN",
+  "inspectionInstrument": "Bundled Pillow, read-only; local sharp and system Pillow were unavailable; no pixel edits"
+}
