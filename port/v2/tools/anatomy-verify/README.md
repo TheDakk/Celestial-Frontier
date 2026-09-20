@@ -497,3 +497,19 @@ at 37.7°), and the foot's own angle orders both correctly — but `orderBy:'tip
 a far-side loss) with no IC-4 change. Rejected as default; both primitives are recorded. The right primitive is
 probably the ROOT along the body outline (neither the separation nor the tip), which the compiler does not yet
 estimate independently of the chain — a P6 item.
+
+## Slice 25 — ordering primitives measured side by side, 2026-09-21
+Four ordering points for the front-view per-side order, all as options in `assign.mjs` (`orderBy`, `rootMode`):
+- `sep` (separation node, slice 15; default): named 29/38.
+- `tip` (the foot's own angle): 28/38 — orders both failing NEAR sides correctly (vent 21°/40°/74°, coconut
+  28°/49°/63°, matching the record's monotone root and foot angles) but crosses on the far side (vent −1).
+- `label` root (centroid of a candidate's geodesic-label border with the body, computed before naming): 28/38 —
+  trunk-sharing legs do get distinct roots, but the vent far side loses one.
+- `mid` (the point at a fraction 0.3–0.85 of the limb's ridge path): 29/38 at every fraction — fixes the coconut
+  near side (4/6 → 5/6), loses one on the vent.
+- `depth` (far layer by separation, near layer by mid — a front view's far layer is foreshortened and its limbs
+  cross): 29/38, coconut 5/6, vent 4/7. On the vent near side the order is then right except a 2° swap between the
+  folded rear leg (a loop) and its neighbour, after which the loop's length cost (|ln(42/200)|) makes the assignment
+  shift and leave the front slot empty — the loop-evidence economics of slice 22, not the primitive.
+Verdict: no primitive changes IC-4 (3/7 · 7/7 · 7/10 · 9/10); `sep` stays the default. The two near-side errors
+that remain are one candidate-order swap (coconut) and one loop-evidence shift (vent); the far sides are right.

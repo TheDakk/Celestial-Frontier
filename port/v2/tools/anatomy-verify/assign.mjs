@@ -18,7 +18,7 @@ import {distanceTransform} from './thickness.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 /** Backwards-compatible descriptor view: legs per side and slot naming per template (from the contract). */
 export const TEMPLATES=new Proxy({},{get:(_,id)=>{if(typeof id!=='string')return undefined;const r=templateRest(id);return {legsPerSide:r.legsPerSide,slotName:(k,side)=>r.slots[side][k].terminal,rest:r};}});
-export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=0.7,thinWeight=0.4,emptyScale=1.0,unusedEnd=1.0,contactRefine=true,thickNeedsFork=false,touchNotSep=true,loopThinFrac=0,declaredHidden=[],orderBy='sep'}={}){
+export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=0.7,thinWeight=0.4,emptyScale=1.0,unusedEnd=1.0,contactRefine=true,thickNeedsFork=false,touchNotSep=true,loopThinFrac=0,declaredHidden=[],orderBy='sep',rootMode='none',orderFrac=0.5}={}){
   const T=templateRest(template),legsPerSide=T.legsPerSide,slotName=(k,side)=>T.slots[side][k].terminal;
   const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128}),{working:{width:W,height:H,scale,box}}=det;let {mask,dt}=det;let interiorPass=null;
   // INTERIOR-EDGE STAGE (README slice 21): a limb painted over the body is inside the silhouette; its contour is a
@@ -147,6 +147,24 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
   const besideFork=c=>[...forkOf.keys()].some(f=>f!==c&&Math.hypot(f.attach[0]-c.attach[0],f.attach[1]-c.attach[1])<=forkSepMax*2);
   const isClaw=c=>forkOf.has(c)||(thickFinger&&c.kind==='end'&&c.termDt>=1.6*thinRefT&&c.len<=thickMaxLen*legLen&&(!thickNeedsFork||besideFork(c)));
   const legs=pool.filter(c=>!isClaw(c)),clawList=pool.filter(isClaw);
+  const pathOf=c=>{if(c.kind==='touch'){const e=c.edge;const path=(e.a===c.fromBody)?e.path:[...e.path].reverse();const pts=[];let out=false;for(const i of path){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}return pts.length>1?pts:null;}
+    if(c.kind==='loop'){const e=c.edge;const k=c.farIndex;if(k<0)return null;const seg=k>=e.path.length/2?e.path.slice(0,k+1):[...e.path].reverse().slice(0,e.path.length-k);const pts=[];let out=false;for(const i of seg){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}return pts.length>1?pts:null;}
+    if(c.kind!=='end'&&c.kind!=='interior')return null;let node=c.chain.rootNode.id;const pts=[];let out=false;for(const e of c.chain.edges){const path=(e.a===node)?e.path:[...e.path].reverse();for(const i of path){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}node=(e.a===node)?e.b:e.a;}return pts.length>1?pts:null;};
+  // --- P6 ROOT ESTIMATE (rootMode 'label'): geodesic partition of the mask (chamfer Dijkstra) with seeds = the body's
+  // ridge and every leg candidate's own ridge path; a candidate's root is the centroid of its region's border with
+  // the body region — legs that share a trunk still get distinct roots, because the pixels at each leg's real
+  // emergence are geodesically nearest to that leg's path. Used as the ordering point when rootMode is 'label'.
+  if(rootMode==='label'){const legsC=pool.filter(c=>!isClaw(c));const src=new Int32Array(W*H).fill(-1),dist=new Float32Array(W*H).fill(1e9);const buckets=new Map();const push=(d,i)=>{const b=Math.round(d*2);if(!buckets.has(b))buckets.set(b,[]);buckets.get(b).push(i);};
+    const seedPts=(id,pts)=>{for(const [x,y] of pts){const i=Math.round(y)*W+Math.round(x);if(i<0||i>=W*H||!mask[i]||dist[i]===0)continue;dist[i]=0;src[i]=id;push(0,i);}};
+    const bodyRidgePts=[];for(const e of g.edges){if(e.meanDt<lc.bodyDt)continue;for(const i of e.path)bodyRidgePts.push([i%W,Math.floor(i/W)]);}seedPts(0,bodyRidgePts);
+    const paths=legsC.map(c=>pathOf(c));legsC.forEach((c,k)=>{if(paths[k])seedPts(k+1,paths[k]);});
+    let bmax=0;for(const b of buckets.keys())bmax=Math.max(bmax,b);for(let b=0;b<=bmax;b++){const list=buckets.get(b);if(!list)continue;for(let n=0;n<list.length;n++){const i=list[n];const d=dist[i];if(Math.round(d*2)!==b)continue;const x=i%W,y=(i-x)/W;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){if(!dx&&!dy)continue;const nx=x+dx,ny=y+dy;if(nx<0||ny<0||nx>=W||ny>=H)continue;const j=ny*W+nx;if(!mask[j])continue;const nd=d+(dx&&dy?1.4142:1);if(nd<dist[j]-1e-6){dist[j]=nd;src[j]=src[i];const nb=Math.round(nd*2);if(nb>bmax)bmax=nb;push(nd,j);}}}}
+    const acc=legsC.map(()=>[0,0,0]);for(let y=1;y<H-1;y++)for(let x=1;x<W-1;x++){const i=y*W+x;const k=src[i];if(k<=0)continue;if(src[i-1]===0||src[i+1]===0||src[i-W]===0||src[i+W]===0){acc[k-1][0]+=x;acc[k-1][1]+=y;acc[k-1][2]++;}}
+    legsC.forEach((c,k)=>{const a=acc[k];if(a[2]>0)c.root=[a[0]/a[2],a[1]/a[2]];});}
+  // 'mid': the point at orderFrac of the limb's ridge path from its exit to its tip (between separation and tip —
+  // near-side tips order legs right, far-side tips cross; the separation mis-orders trunk-sharing chains)
+  const midPt=f=>{const pts=pathOf(f);if(!pts)return null;let cum=[0];for(let i=1;i<pts.length;i++)cum.push(cum[i-1]+Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]));const d=orderFrac*cum[cum.length-1];let i=0;while(i<cum.length-1&&cum[i+1]<d)i++;return pts[i];};
+  const orderPt=f=>orderBy==='tip'?[f.x,f.y]:orderBy==='mid'?(midPt(f)??(f.attach??[f.x,f.y])):(rootMode==='label'&&f.root)?f.root:(f.attach??[f.x,f.y]);
   // --- side rule by view ---
   // front view: side by the SEPARATION point's x about the centre (tips of forward limbs cross the midline)
   // side view: depth is not an x split; it is decided inside the station assignment below (Near = the lower tip)
@@ -174,8 +192,10 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
     for(const side of ['Far','Near']){
       // ORDER within a side: 'sep' = separation-point angle (slice 15); 'tip' = the foot's own angle about the centre —
       // a chain that shares its trunk with the claw separates far back (vent leg3Near at 18.8° vs its foot at 74°)
-      const list=sides[side].map(f=>({f,a:ang(orderBy==='tip'?[f.x,f.y]:(f.attach??[f.x,f.y]),centre)}));const key=o=>side==='Near'?(o.a<-Math.PI/2?o.a+2*Math.PI:o.a):(o.a>Math.PI/2?-(o.a-2*Math.PI):-o.a);
-      const cs=list.sort((p,q)=>key(p)-key(q)).map(o=>o.f);if(!cs.length){for(let k=0;k<legsPerSide;k++)hidden.push(T.slots[side][k].id);continue;}
+      // 'depth': the far layer (foreshortened, limbs cross) orders by separation, the near layer by the mid-limb point
+      const orderPtSide=f=>orderBy==='depth'?(side==='Far'?(f.attach??[f.x,f.y]):(midPt(f)??(f.attach??[f.x,f.y]))):orderPt(f);
+      const list=sides[side].map(f=>({f,a:ang(orderPtSide(f),centre)}));const key=o=>side==='Near'?(o.a<-Math.PI/2?o.a+2*Math.PI:o.a):(o.a>Math.PI/2?-(o.a-2*Math.PI):-o.a);
+      const cs=list.sort((p,q)=>key(p)-key(q)).map(o=>o.f);if(process.env.ASSIGN_DEBUG)console.log('front',side,cs.map(f=>({kind:f.kind,tip:toM([f.x,f.y]).map(Math.round),ang:Math.round(ang(orderPtSide(f),centre)*180/Math.PI),len:Math.round(f.len),termDt:f.termDt})));if(!cs.length){for(let k=0;k<legsPerSide;k++)hidden.push(T.slots[side][k].id);continue;}
       const thin=thinOf(cs),medLen=medLenOf(cs);const emptyCost=k=>emptyScale*(k===legsPerSide-1?0.3:k===legsPerSide-2?1.0:1.8),unusedCost=0.7;
       // rest ORDER prior: the template reference's hip angle per slot about the axis midpoint; a candidate pays for
       // the angular distance between its separation point and the slot's rest hip (in units of 45°)
@@ -239,10 +259,7 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
   }
   // --- P6 joints: every interior joint of a slot (knee, ankle …) at the template's rest fraction of the limb's path,
   // measured from the limb's exit from the body to its tip along the ridge path (no straight-line guess) ---
-  const pathOf=c=>{if(c.kind==='touch'){const e=c.edge;const path=(e.a===c.fromBody)?e.path:[...e.path].reverse();const pts=[];let out=false;for(const i of path){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}return pts.length>1?pts:null;}
-    if(c.kind==='loop'){const e=c.edge;const k=c.farIndex;if(k<0)return null;const seg=k>=e.path.length/2?e.path.slice(0,k+1):[...e.path].reverse().slice(0,e.path.length-k);const pts=[];let out=false;for(const i of seg){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}return pts.length>1?pts:null;}
-    if(c.kind!=='end'&&c.kind!=='interior')return null;let node=c.chain.rootNode.id;const pts=[];let out=false;for(const e of c.chain.edges){const path=(e.a===node)?e.path:[...e.path].reverse();for(const i of path){if(!out&&dt[i]<lc.bodyDt)out=true;if(out)pts.push([i%W,Math.floor(i/W)]);}node=(e.a===node)?e.b:e.a;}return pts.length>1?pts:null;};
-  const joints={};const slotByTerminal=new Map();for(const side of ['Far','Near'])for(const sl of T.slots[side])slotByTerminal.set(sl.terminal,{sl,side});
+    const joints={};const slotByTerminal=new Map();for(const side of ['Far','Near'])for(const sl of T.slots[side])slotByTerminal.set(sl.terminal,{sl,side});
   for(const [name,a] of Object.entries(assigned)){const e=slotByTerminal.get(name);if(!e||!a._c)continue;const {sl}=e;const c=a._c;const pts=pathOf(c);const tipM=a.master;
     const chainNames=sl.chain;joints[chainNames[chainNames.length-1]]=tipM;
     let cum=[0];if(pts)for(let i=1;i<pts.length;i++)cum.push(cum[i-1]+Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]));const total=pts?cum[cum.length-1]:0;
