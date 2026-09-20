@@ -1,5 +1,7 @@
 # Creature animation — shared anatomy and motion contract
 
+> Matches D1 delivery code, 2026-09-19: `creature-delivery.ts` reads retained PNG originals by full identity and expected hash, otherwise returns the verified painter. It has no inference, worker, GPU or rig dependency. Selection of a finish is explicit; proof usage does not adopt artwork into production. Evidence: `audits/ANATOMY_SINGLE_RUN_20260919/R8/README.md`.
+
 **Current stance/contact contract — matches code September 19, 2026. R3-S accepted.**
 Shared per-template/action stances select all, hind or no quadruped contacts; only planted
 chains enter IK. Lifted legs retain authored keys and the raw-clip guard. Brachyuran keeps
