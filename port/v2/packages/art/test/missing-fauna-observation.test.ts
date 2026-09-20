@@ -1,6 +1,7 @@
 import {expect,it} from 'vitest';import {createHash} from 'node:crypto';
-import {observePainterTopology} from '../src/painter-topology.js';import type {ArtContext2D} from '../src/speciescanvas.js';
+import {observePainterTopology,structuralBodyCount} from '../src/painter-topology.js';import type {ArtContext2D} from '../src/speciescanvas.js';
 import {tardigrade} from '../src/fungioverrides2.js';import {isopodBody} from '../src/invertoverrides.js';
+import {faunaFiddler} from '../src/faunaoverrides.js';
 import {faunaPyrosome,faunaSalp} from '../src/faunaoverrides4.js';import {faunaHorseshoeCrab,faunaSeaSquirt} from '../src/faunaoverrides5.js';
 const p={base:'#aa8877',cr:170,cg:136,cb:119,lit:'#ddbb99',dark:'#554433'};
 function draw(paint:(c:ArtContext2D)=>void,observe=true){
@@ -26,7 +27,7 @@ it.each(['Isopod','Giant Isopod'])('%s retains seven actual leg pairs and source
 });
 it('colonial and attached tunicates retain distinct source body counts without fabricated joints',()=>{
  const g={seed:16};for(const painter of [faunaPyrosome,faunaSalp,faunaSeaSquirt]){const paint=(c:ArtContext2D)=>painter(c,g,p);expect(draw(paint).digest).toBe(draw(paint,false).digest);}
- const pyro=draw(c=>faunaPyrosome(c,g,p)).topology!.features;expect(pyro.filter(f=>f.id.startsWith('zooid'))).toHaveLength(190);expect(pyro.filter(f=>f.id==='aperture')).toHaveLength(1);expect(pyro.some(f=>f.id.startsWith('segment'))).toBe(false);
+ const pyro=draw(c=>faunaPyrosome(c,g,p)).topology!.features;expect(pyro.filter(f=>f.id.startsWith('zooid'))).toHaveLength(190);expect(pyro.filter(f=>f.kind==='mark')).toHaveLength(190);expect(structuralBodyCount(pyro)).toBe(1);expect(structuralBodyCount(pyro.map(f=>f.kind==='mark'?{...f,kind:'body'}:f))).not.toBe(1);expect(pyro.filter(f=>f.id==='aperture')).toHaveLength(1);expect(pyro.some(f=>f.id.startsWith('segment'))).toBe(false);
  const salp=draw(c=>faunaSalp(c,g,p)).topology!.features;expect(salp.filter(f=>/^barrel\d$/.test(f.id))).toHaveLength(4);expect(salp.filter(f=>f.id.includes('Aperture'))).toHaveLength(8);
  const squirt=draw(c=>faunaSeaSquirt(c,g,p)).topology!.features;expect(squirt.filter(f=>f.id.includes('Siphon'))).toHaveLength(4);expect(squirt.filter(f=>f.id.endsWith('Left'))).toHaveLength(2);expect(squirt.some(f=>f.id.includes('rock'))).toBe(false);
 });
@@ -35,3 +36,5 @@ it('top-view Horseshoe Crab has rigid shell outlines and twelve spines, never in
  expect(a.digest).toBe(draw(paint,false).digest);expect(f.filter(v=>v.kind==='leg')).toHaveLength(0);expect(f.filter(v=>v.id.startsWith('spine'))).toHaveLength(12);expect(f.find(v=>v.id==='telson')!.points).toHaveLength(4);
  for(const outline of f.filter(v=>v.id.startsWith('prosoma')))expect(a.commands).toContainEqual(['bezierCurveTo',...outline.points[1]!,...outline.points[2]!,...outline.points[3]!]);
 });
+
+it('Fiddler observes six actual curved legs and asymmetric source claws without fabricated elbows',()=>{const paint=(c:ArtContext2D)=>faunaFiddler(c,{seed:42},p),a=draw(paint),f=a.topology!.features;expect(a.digest).toBe(draw(paint,false).digest);const legs=f.filter(v=>v.kind==='leg');expect(legs).toHaveLength(6);expect(legs).not.toHaveLength(8);for(const leg of legs)expect(a.commands).toContainEqual(['quadraticCurveTo',...leg.points[1]!,...leg.points[2]!]);expect(f.some(v=>/elbow/i.test(v.id))).toBe(false);expect(f.find(v=>v.id==='palmFar')!.widths![0]).toBeGreaterThan(f.find(v=>v.id==='palmNear')!.widths![0]!);});

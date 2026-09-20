@@ -6865,3 +6865,13 @@ The live audit owns the current candidate, measured failures and eventual review
 ### Creature texture finishing (matches code as of 2026-09-19)
 
 The shared kit worker exposes the desktop creature texture class; landfall composition remains unchanged. `port/v2/tools/painted-creature/` owns conservation, native finishing and geometry-preserving atlas replacement; `prepare-observed-crabs.mjs --finished=DIR` treats its first argument as the existing five-crab binding directory. `creature-originals.ts` retains full-identity immutable originals and supplies phone painter fallback. R9 evidence records qualification separately from code availability.
+
+### Anatomy source integrity (matches code as of 2026-09-19)
+
+CREATURE_ANIMATION.md is the current limits/stance/coverage reference. Motion tests own exact
+hash-verified current source records. Capture compares full RGBA and validates initial
+replay state. Painter topology distinguishes marks/openings from structural body groups.
+Fiddler exposes six visible leg curves and pincer masks while mandatory binding anatomy
+remains incomplete. Source census compiler outcomes separate admission from unsupported
+families and incomplete observations. Audio acquisition stores creatorProfileName; recording
+credits retain exact sound attribution, including legacy manifests.

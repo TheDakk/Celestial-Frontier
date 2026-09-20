@@ -6,7 +6,8 @@ import {createTopologyPartCapture} from './topology-part-capture.js';
  * explicit. A compiler must qualify it before producing a rig/part binding. */
 export interface DrawnFeature {
  readonly id:string;
- readonly kind:'body'|'arm'|'tentacle'|'leg'|'wing'|'antenna'|'head'|'neck';
+ readonly kind:'body'|'arm'|'tentacle'|'leg'|'wing'|'antenna'|'head'|'neck'|'mark'|'opening';
+ readonly structureId?:string;
  readonly points:ReadonlyArray<readonly [number,number]>;
  readonly widths?:readonly number[];
  readonly curve?:'polyline'|'quadratic'|'cubic'|'ellipse';
@@ -25,6 +26,7 @@ export interface PainterTopology {
  readonly features:readonly DrawnFeature[];
  readonly unresolved:readonly string[];
 }
+export function structuralBodyCount(features:readonly DrawnFeature[]):number{return new Set(features.filter(f=>f.kind==='body').map(f=>f.structureId??f.id)).size;}
 const sessions=new WeakMap<ArtContext2D,{value?:PainterTopology;captureParts?:boolean}>();
 export function startTopologyPartCapture(context:ArtContext2D){return sessions.get(context)?.captureParts?createTopologyPartCapture(context):undefined;}
 export function isObservingPainterTopology(context:ArtContext2D):boolean{return sessions.has(context);}
@@ -34,7 +36,7 @@ export function emitPainterTopology(context:ArtContext2D,value:PainterTopology):
  if(value.schema!=='cf.painter-topology/v1'||!value.ownerId||!value.family||!Number.isFinite(value.coordinateSize)||value.coordinateSize<=0||!value.materials.surface)throw Error('Painter topology: owner/space/material');
  const ids=new Set<string>();
  for(const f of value.features){
-  if(!f.id||ids.has(f.id)||!['far','near'].includes(f.layer)||!f.points.length||f.points.some(p=>p.length!==2||!p.every(Number.isFinite))||f.widths?.some(w=>!Number.isFinite(w)||w<=0))throw Error('Painter topology: feature geometry');
+  if(!['body','arm','tentacle','leg','wing','antenna','head','neck','mark','opening'].includes(f.kind)||f.structureId!==undefined&&(!f.structureId||f.kind==='mark')||!f.id||ids.has(f.id)||!['far','near'].includes(f.layer)||!f.points.length||f.points.some(p=>p.length!==2||!p.every(Number.isFinite))||f.widths?.some(w=>!Number.isFinite(w)||w<=0))throw Error('Painter topology: feature geometry');
   ids.add(f.id);
  }
  const counts=appendageCounts(value.family,value.anatomy);

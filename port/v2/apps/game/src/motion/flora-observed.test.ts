@@ -1,5 +1,5 @@
 import {it,expect} from 'vitest';
-import fs from 'node:fs';
+import {readAnatomyFixture} from './fixtures/anatomy/read.js';
 import {compileBodyCard} from './body-card.js';
 import {buildTimeline,sampleTimeline} from './timeline.js';
 import {actionsFor} from './family-actions.js';
@@ -7,7 +7,7 @@ import {secondaryParams} from './secondary.js';
 import {familyContractForRecord} from '../../../../tools/creature-animation/family-contracts.mjs';
 import {resolveAnatomyInventory} from '../../../../tools/creature-animation/anatomy-inventory.mjs';
 import {resolveTemplate} from './templates.js';
-const read=(name:string)=>JSON.parse(fs.readFileSync(new URL('../../../../../../audits/ANATOMY_COMPLETION_20260917/'+name+(name==='persimmon'?'-02':name==='cranberry'?'-04':'-03')+'/record.json',import.meta.url),'utf8'));
+const read=readAnatomyFixture;
 it.each(['persimmon','cranberry','devils-club'])('preserves %s observed branches, materials and anchored actions',(id)=>{
  const r=read(id),c=compileBodyCard(r,{skin:0,head:0,loco:4}),contract=familyContractForRecord(r);
  expect(c.parts.map(p=>[p.joint,p.parent])).toEqual(contract.graph);expect(c.weapons).toEqual([]);expect(c.materials.body).toBe('bark');

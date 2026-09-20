@@ -7,7 +7,7 @@ import {hashInt} from '../../packages/domain/rand/src/index.ts';
 import {compileCrabObservationRecord} from '../creature-animation/crab-observation-record.mjs';
 import {admitFamilyRecord} from '../creature-animation/family-record.mjs';
 import {hashBytes,hashJSON} from '../creature-animation/quadruped-template.mjs';
-const names=['Crab','Coconut Crab','Freshwater Crab','Mud Crab','Vent Crab'];
+const names=['Crab','Coconut Crab','Freshwater Crab','Mud Crab','Vent Crab','Fiddler Crab'];
 const state={status:'RUNNING',completed:0,total:names.length};window.cfFaunaCensus={state};
 const b64=bytes=>{let s='';for(let i=0;i<bytes.length;i+=8192)s+=String.fromCharCode(...bytes.subarray(i,i+8192));return btoa(s);},png=async c=>new Uint8Array(await(await c.convertToBlob({type:'image/png'})).arrayBuffer());
 const need=(ok,m)=>{if(!ok)throw Error(m);};
@@ -21,6 +21,13 @@ try{
   const a=rendered.getContext('2d').getImageData(0,0,rendered.width,rendered.height).data,b=plain.getContext('2d').getImageData(0,0,plain.width,plain.height).data;
   need(a.length===b.length,'parity dimensions');let changed=0;for(let k=0;k<a.length;k++)if(a[k]!==b[k])changed++;need(changed===0,'Readback altered ordinary painting: '+name+' '+changed);
   const master=await png(ink),rgba=ink.getContext('2d').getImageData(0,0,ink.width,ink.height).data,alpha=Uint8Array.from({length:ink.width*ink.height},(_,k)=>rgba[k*4+3]);
+  if(name==='Fiddler Crab'){
+   const {partMasks,...geometry}=topology;let refusal='';try{await compileCrabObservationRecord(geometry,{identity:{speciesVisualKey:speciesVisualKey(genome),seed:genome.seed,ownerId:topology.ownerId,earthName:name},cutoutAssetHash:await hashBytes(master),width:ink.width,height:ink.height});}catch(e){refusal=String(e);}need(refusal.length>0,'Fiddler incomplete source must refuse binding');
+   let owned=0;for(let k=0;k<alpha.length;k++){need(!!alpha[k]===!!partMasks.labels[k],'Fiddler ownership');if(alpha[k])owned++;}need(geometry.features.filter(f=>f.kind==='leg').length===6,'Fiddler visible leg count');
+   const labelCanvas=new OffscreenCanvas(ink.width,ink.height),data=new Uint8ClampedArray(alpha.length*4);for(let k=0;k<alpha.length;k++)data.set([partMasks.labels[k],0,0,255],k*4);labelCanvas.getContext('2d').putImageData(new ImageData(data,ink.width,ink.height),0,0);
+   artifacts[id+'-master.png']=b64(master);artifacts[id+'-labels.png']=b64(await png(labelCanvas));artifacts[id+'-topology.json']=b64(new TextEncoder().encode(JSON.stringify(geometry,null,2)+'\n'));artifacts[id+'-source-parts.json']=b64(new TextEncoder().encode(JSON.stringify({parts:partMasks.parts,replay:partMasks.replay,genome,refusal},null,2)+'\n'));
+   rows.push({name,owner:topology.ownerId,changedChannels:changed,ownedPixels:owned,parts:partMasks.parts.length,replay:partMasks.replay,qualification:'SOURCE_MASKS_ONLY',compilerStatus:'INCOMPLETE_OBSERVATION',refusal});state.completed++;continue;
+  }
   const{partMasks,...geometry}=topology;need(partMasks.replay?.differentChannels===0&&partMasks.replay?.prefixReads>1,'Exact prefix replay proof missing');const record=await compileCrabObservationRecord(geometry,{identity:{speciesVisualKey:speciesVisualKey(genome),seed:genome.seed,ownerId:topology.ownerId,earthName:name},cutoutAssetHash:await hashBytes(master),width:ink.width,height:ink.height});
   await admitFamilyRecord(record,master,alpha);need(partMasks.parts.length<=40&&partMasks.width===ink.width&&partMasks.height===ink.height,'mask limits');
   const joints=new Set(Object.keys(record.landmarks));need(partMasks.parts.every(p=>joints.has(p.joint)),'mask joint absent');

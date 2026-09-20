@@ -472,3 +472,9 @@ canonical appearance inputs to the proof, no image or player-model qualification
 No installation or dependency change. Existing PNG/PCM tooling now checks closed sound inventories,
 hash-bound loop declarations and accepted arena triplets. The uninterrupted startup receipt remains
 in force. Synthetic test inputs are private and removed; no new image or sound authoring took place.
+
+**Current anatomy integrity tools, September 19:** startup receipt is reused within this
+uninterrupted Node 26.9.0 run. Full-row native films, finished texture proofs and source
+captures use isolated native browsers. The accumulated packet separates static clip tails
+from real-time film rig and whole-frame CPU. Phone D1 is retained PNG delivery with painter
+fallback; desktop mobile viewports never claim physical-device animation qualification.
