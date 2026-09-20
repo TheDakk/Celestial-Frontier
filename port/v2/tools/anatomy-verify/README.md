@@ -164,3 +164,15 @@ per side instead of a global threshold; (b) rear legs whose tips rest against th
 "loop limbs", thin edges between two body-adjacent junctions, and their foot is the edge point farthest from the body;
 (c) eyes: short knob chains from the carapace top, not yet emitted by the graph because the eye stalk merges with the
 carapace loop. All three are graph queries, not new thresholds.
+
+## Slice 13 — `assign.mjs` (candidates → named template legs), 2026-09-20 late night
+Three candidate kinds now feed naming: terminal-branch endpoints, loop limbs, and **touching limbs** — a rear leg whose
+tip rests against the carapace forms a thin junction at the far end of a long edge from the body; on the painted vent
+crab both rear feet appear this way within 10–23 px of the hand landmarks. Naming by order from the rear with gaps at
+the claw end. Score on the five painted crabs: positions within 25 px 17 of 40 (the earlier chain-only run reached
+19 of 35 before per-side count filtering), named within 25 px 11 of 28. Two measured defects to fix next, both in
+the per-side selection, not in the graph: (1) `thinSpread × thinnest` drops legs when one terminal branch is unusually
+thin (freshwater: 4 feet kept of 7 found); select by expected count with a tolerance band around the median instead;
+(2) claw-finger candidates still enter the thin cluster on the mud crab. The naming rule (gaps at the claw end) is
+right for all five paintings and should stay until a counter-example appears. Every number above is reproducible with
+the runner in the commit body; nothing here is a gate.
