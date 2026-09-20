@@ -122,3 +122,19 @@ grow claws outward from the predicted base along the ridge into the thick palm a
 legs outward from their predicted roots until the thin path ends (this finds the tips that rest against the carapace).
 Hidden = a root whose outward growth finds no thin path. Every step is a local search from a predicted anchor, never a
 global pose assumption.
+
+## Slice 10 — `rootfit.mjs` (root-anchored: carapace transform + outward ridge walks), 2026-09-20: measured, not enough
+Results against the hand landmarks: roots median 167–212 px, feet median 336–349 px (with a few exact hits: vent
+leg3Far 5 px, claw dactyl tip 14 px, coconut eye tip 16 px), claws and eyes 190–320 px. Two measured causes:
+(1) no thickness threshold isolates the carapace on these paintings — the claw palms are as thick as the body, so the
+"core box" spans 750–870 px of a 1254 px canvas at every fraction of the maximum thickness; (2) even the guide's own
+carapace box does not map the roots: the painter guide draws roots on the carapace's side edge while the painting shows
+them at their visible emergence under a perspective the guide does not have. So the guide gives **counts, order and
+rough directions**, not geometry, and box/similarity anchoring of any kind is the wrong primitive.
+Conclusion for IC-1 (recorded, not tuned further): the compiler must build the painting's OWN structure first — the
+ridge graph (medial axis with radii, junctions clustered, branches with length/thickness/attachment) — and match that
+graph to the template graph topologically (leg chains = long thin branches attached to the body in order along each
+side; claws = thick branches ending in a pincer pair; eyes = short thin branches from the carapace top), using the
+guide only to break ties. Codex's mask authoring already works this way by hand; IC-1 automates that reading. What
+exists and is sound for it: keying, downscale, distance transform, multi-scale tip detection with same-toe merge,
+per-tip walk-back, the eleven-subject battery and Codex's hand landmarks as the score. Nothing here is a gate.
