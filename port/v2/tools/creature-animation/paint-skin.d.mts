@@ -1,4 +1,4 @@
-export interface PaintSkinPart {id:string;vertices:Array<{triangle:[number,number,number];barycentric:[number,number,number]}>;indices:number[];}
+export interface PaintSkinPart {rigidParentFrame?:{parentJoint:string;parentPart:string;anchor:{triangle:[number,number,number];weights:[number,number,number]}};id:string;vertices:Array<{triangle:[number,number,number];barycentric:[number,number,number]}>;indices:number[];}
 export interface PaintSkin {schema:'cf.paint-skin/v1';triangles?:number[];solver?:{iterations:number;globalIterations:number;targetWeight:number;pins:number[]};vertices:Array<{x:number;y:number;weights:Array<[string,number]>}>;parts:PaintSkinPart[];}
 export function applyPaintSkin(skin:PaintSkin,matrices:Readonly<Record<string,readonly number[]>>,width:number,height:number,output:Float32Array):void;
 export function applyPaintPart(part:PaintSkinPart,field:Float32Array,output:Float32Array):void;

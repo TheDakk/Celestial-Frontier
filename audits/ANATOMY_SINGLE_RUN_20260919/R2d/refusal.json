@@ -1,0 +1,16 @@
+{
+  "status": "LEAF_RED",
+  "subject": "persimmon",
+  "stage": "parent-frame binding intake",
+  "reason": "branch-0-foliage has no observed nearest painted-parent source attachment; do not invent an anchor",
+  "candidateWritten": false,
+  "oldBinding": "audits/ANATOMY_COMPLETION_20260917/persimmon-04",
+  "unrun": [
+    "67.166667ms gate on candidate",
+    "four full actions on candidate",
+    "native candidate rest and shape film"
+  ],
+  "sharedCode": "rigid-parent-frame.mjs",
+  "controls": "2 passing rigid-shape/parent-anchor controls",
+  "continue": "R3; foliage shape is still required, no admission claimed"
+}

@@ -46,3 +46,8 @@ the run; existing S2/gates/local-only boundaries stay.39app tests pass; final AF
 R3-S signed4b969894 accepted:13,286 strict samples, six subjects zero classes, native rest0,
 Civet worst drift0.165257px, unpinned/diffused negatives fail, crab bit identity. Next R2d
 parent-frame rigid foliage (leaf reds retained) then R3 interfaces and remaining§8.
+
+R2d shared parent-frame part code implemented; two controls/typecheck pass. Persimmon
+leaf red: branch-0-foliage lacks observed nearest painted-parent attachment; no candidate
+written, no invented anchor. Candidate motion proof unrun. Continue R3 after signed
+producer/static sentinel checks. Packet R2d/README.md.

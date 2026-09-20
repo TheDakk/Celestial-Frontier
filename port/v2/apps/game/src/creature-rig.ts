@@ -1,3 +1,4 @@
+import {compileRigidParentFrames,applyRigidParentFrames} from '../../../tools/creature-animation/rigid-parent-frame.mjs';
 import {Container, Matrix, Rectangle, Sprite, Texture, Mesh, MeshGeometry} from 'pixi.js';
 import {applyPaintPart,paintPartAreas,assertPaintPartShape,validatePaintSkin,type PaintSkin} from '../../../tools/creature-animation/paint-skin.mjs';
 import {validateSeamBridges,createSeamGeometry,writeSeamPose} from '../../../tools/creature-animation/seam-bridge.mjs';
@@ -117,6 +118,7 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
   const shape=skin?.solver?createArapScratch(skin.vertices,skin.triangles!,w,h,skin.solver):null;
   const target=shape&&field?field.slice():null;
   const compiledField=skin?createCompiledSkinField(skin,w,h):null;
+  const rigidParents=skin?compileRigidParentFrames(skin,binding.parts,template,w,h):[];
   const decoded=decodeAtlas===decodeAtlasPng&&skin?await decodeGuardedAtlasPng(atlasBytes.slice(),record,binding):{texture:await decodeAtlas(atlasBytes.slice()),samplingGuard:undefined};
   const atlas=decoded.texture;
   if(atlas.width!==aw||atlas.height!==ah){atlas.destroy(true);throw Error('Creature rig: decoded atlas dimensions');}
@@ -153,7 +155,7 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
     applyPose(pose:CreaturePoseV1){
       requireValue(!disposed,'disposed');
       const matrices=skeleton.evaluate(pose);
-      if(skin&&field&&compiledField){applyCompiledSkinField(compiledField,matrices,target??field);if(shape&&target)solveArapSkin(shape,target,field);for(const entry of skins){applyPaintPart(entry.part,field,entry.pending);assertPaintPartShape(entry.part,skin,entry.pending,w,h,entry.areas);}}
+      if(skin&&field&&compiledField){applyCompiledSkinField(compiledField,matrices,target??field);if(shape&&target)solveArapSkin(shape,target,field);for(const entry of skins)applyPaintPart(entry.part,field,entry.pending);if(rigidParents.length)applyRigidParentFrames(rigidParents,matrices,Object.fromEntries(skins.map(e=>[e.part.id,e.pending])));for(const entry of skins)assertPaintPartShape(entry.part,skin,entry.pending,w,h,entry.areas);}
       // All spans are admitted into private scratch before any visible state changes.
       for(const bridge of bridges)writeSeamPose(bridge.group,matrices,w,h,bridge.buffers.pending,bridge.part.cutout);
       for(const entry of skins){entry.positions.set(entry.pending);entry.geometry.getBuffer('aPosition').update();}
