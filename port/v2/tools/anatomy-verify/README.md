@@ -348,3 +348,9 @@ can replace an absent candidate. The compiler needs an INTERIOR-EDGE stage for l
 evidence inside the mask — the P0 key already yields RGBA; Codex's label maps show these legs as painted regions
 with a visible contour). Until then, precision-first: a folded leg is an empty slot, and IC-4's erased-leg mutant
 on such a leg is undetectable by construction (the erase removes pixels the graph never saw).
+Interior-edge probe (same session, scratch only, not committed as code): a box-filtered luminance Sobel inside the
+working mask on the freshwater and crab masters. The folded leg's contour over the carapace IS present as a strong
+continuous line (the leg-segment boundaries read as the strongest interior edges), but at a plain magnitude threshold
+the painted texture fires everywhere; an interior-edge stage would need a threshold set from the texture level,
+hysteresis and long-contour tracking, then the same ridge/graph treatment on the contour-bounded region. Design
+item for the program; the alpha-only compiler stays precision-first until it exists.
