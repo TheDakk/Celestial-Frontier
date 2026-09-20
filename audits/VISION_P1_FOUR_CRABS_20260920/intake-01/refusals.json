@@ -1,0 +1,23 @@
+[
+  {
+    "id": "crab",
+    "exitCode": 1,
+    "status": "REFUSED_INCOMPLETE_OBSERVED_INVENTORY",
+    "missingChain": "leg3Near",
+    "log": "crab-intake-refusal.log"
+  },
+  {
+    "id": "freshwater-crab",
+    "exitCode": 1,
+    "status": "REFUSED_INCOMPLETE_OBSERVED_INVENTORY",
+    "missingChain": "leg3Far",
+    "log": "freshwater-crab-intake-refusal.log"
+  },
+  {
+    "id": "mud-crab",
+    "exitCode": 1,
+    "status": "REFUSED_INCOMPLETE_OBSERVED_INVENTORY",
+    "missingChain": "leg3Far",
+    "log": "mud-crab-intake-refusal.log"
+  }
+]
