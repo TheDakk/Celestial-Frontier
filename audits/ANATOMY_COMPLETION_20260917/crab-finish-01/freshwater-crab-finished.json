@@ -1,0 +1,29 @@
+{
+  "schema": "cf.creature-finished-original.v1",
+  "creatureId": "freshwater-crab",
+  "recordRecipeHash": "ffb9a6786ed27e1cf9fd98d9a653111e2f69f0856bbd5b70ccad71dffca5419f",
+  "cutoutAssetHash": "65cd0220488bbdda7cd220c67a33817c8155e7fec87087692d02279f6df11a57",
+  "finishedSha256": "9df9fbc60d685ff291d335f6bc9403f1d12a1007bc2cf63fa3639039b0ab590a",
+  "seed": 2141152818,
+  "finisherStrength": 0.35,
+  "finisherSteps": 1,
+  "interiorErosionPixels": 4,
+  "backgroundGrey": 128,
+  "promptSha256": "f1096f47b5754896f9ccb73472ed0a5d475e388a36616c3fac18bf4324a3b6dd",
+  "model": {
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "manifestSha256": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef"
+  },
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "triptych": null,
+  "head": "8b901e6c8a94ed5b45b62f341e08200fefeb37f7",
+  "dirtyDiagnostic": false,
+  "conservation": {
+    "alpha": "PASS",
+    "counts": "PASS",
+    "gradient": "PASS",
+    "gradientRatio": 0.9547836256294921
+  },
+  "qualityAccepted": false
+}

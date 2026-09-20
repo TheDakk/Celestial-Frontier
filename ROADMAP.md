@@ -105,7 +105,7 @@ Self-contained. Either lane can resume from this block alone. Earlier handoffs o
 | Lane | HEAD | Note |
 |---|---|---|
 | `openai/mac` (Codex) | `ddb51313` local (origin at `7dd884f0`): R2c-L step 1 ran (crabs zero exceedances, bit-identical) and stopped S2 at the 8 % compression bound on the Civet bite lunge (157 ms). Review §13 maps the whole conflict (every body-moving quadruped row breaks the all-feet-planted solve: lunge/rear-up/hop need 70–297 px of compression vs 28 px; faint needs ±92° elbow) and issues **R3-S** as ONE run without internal stops: report-all ledger → per-template per-action stance contract (quadruped hind-only for melee/cast/victory, none for dodge/kick, all otherwise; brachyuran all) → contactLimitsDeg from planted folds → after ledger → controls → rest of §8 | awaiting the §13 paste + Nick's authorization line |
-| `anthropic/mac` (Claude) | this commit = `origin/anthropic/mac` after `a0441a44` | E1.1–E1.5 coded and filmed; two TypeSafe batteries; tree clean apart from `.DS_Store` |
+| `anthropic/mac` (Claude) | this commit = `origin/anthropic/mac`: **R9 finished textures delivered** (tooling `8b901e6c`; evidence `audits/ANATOMY_COMPLETION_20260917/crab-finish-01/`, five crabs PASS on every gate, bindings byte-identical in `crab-fits-finished-01/`, offline rebind test 5 PASS; quality not accepted — see the README's findings for Nick: the accepted 0.35 × 1-step finish is subtle; strength/steps study needs Nick's word; coconut-crab at 1×; Civet needs its ownership map; native rebind rows at the R3 re-merge). E1.1–E1.5 coded and filmed; two TypeSafe batteries; tree clean apart from `.DS_Store` |
 
 Pushed as plain branch pushes only (no workflow runs on a branch push per `GITHUB_ACTIONS_BUDGET.md`; `origin/openai/mac` = 140 commits, `origin/anthropic/mac` = 72 first-parent commits, pushed in fast-forward chunks along the first-parent chain — pushing a `rev-list --reverse` order without `--first-parent` rejects at the merge's side commits, which is what the first attempt hit). PR42 parked, no PR opened, no merge to develop, no release. Lanes still read each other by absolute path.
 
@@ -152,6 +152,7 @@ branch push of both lanes Nick then authorized is done (see Lane state), so orig
 
 
 ### What Claude owes next
+-1. **R9 follow-ups (this lane, after Codex's read-only review of `crab-finish-01`):** (a) if Nick authorizes it, a bounded strength/steps study on one crab (0.35/1 · 0.5/2 · 0.65/4) on the same tool; (b) coconut-crab rerun with `workCanvasMax` 1088; (c) the Civet as the sixth subject with its ownership map from the parts build; (d) route `creature-originals.ts` behind a desktop-only load path so the finished atlas replaces the painter atlas as texture source; (e) native rebind rows on Codex's harness at the re-merge.
 0. **Self-finding (review §12):** the E1.5 films used the compat solver, which has no joint-limit check; they are contact/cadence evidence only. The parts rig moves to the family solver at the R3 re-merge (already planned) and the films are re-shot then.
 1. **Re-merge at Codex's signed R2c′/R3 producers**; pass `observedContactSupports(record, binding)` to the parts rig's family solver; then flip the three pins: `ContactPhase.travel:'stage'` in the parts-rig
    context (drop the interim stride double-count note), crab attacks through the stage, pinch selection; re-run

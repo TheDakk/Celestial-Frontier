@@ -2,7 +2,7 @@
 
 Author: Claude (anthropic lane), the bounded addendum the approved plan reserved for R9
 (`CODEX_REPAIR_PLAN.md` §2, queue R3 → R4 → R9). Format follows the plan's register rows. Status:
-**proposed for Nick's approval; not an authorization.** Desktop only per decision D1 (phones receive
+**implemented on the anthropic lane 2026-09-19 night under Nick's "I want to build it" (tooling `8b901e6c`, evidence `audits/ANATOMY_COMPLETION_20260917/crab-finish-01/`); deviations from the row below are recorded in that README (work canvas, solid-alpha interior, interior-only restoration, triptych off by default, native rebind rows deferred to the R3 re-merge).** Desktop only per decision D1 (phones receive
 retained originals with painter-only fallback; no on-device inference). Path shorthand as in the plan:
 G = `port/v2/apps/game/src/`, T = `port/v2/tools/`, D = `audits/ANATOMY_COMPLETION_20260917/`.
 

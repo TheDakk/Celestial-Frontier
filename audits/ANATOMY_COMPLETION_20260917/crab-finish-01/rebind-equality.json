@@ -1,0 +1,112 @@
+{
+  "schema": "cf.creature-finish-rebind-equality/v1",
+  "painterFits": "crab-fits-03",
+  "finishedFits": "crab-fits-finished-01",
+  "rows": [
+    {
+      "id": "crab",
+      "binding": {
+        "status": "PASS",
+        "identicalBytes": true,
+        "painterBytes": 469905,
+        "finishedBytes": 469905,
+        "atlasSha256Differs": true,
+        "bindingHashDiffers": true
+      },
+      "parts": {
+        "status": "PASS",
+        "identicalBytes": true,
+        "painterBytes": 4648,
+        "finishedBytes": 4648,
+        "atlasSha256Differs": true,
+        "bindingHashDiffers": true
+      },
+      "textureSource": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/crab-finished.png",
+      "recordSame": true
+    },
+    {
+      "id": "coconut-crab",
+      "binding": {
+        "status": "PASS",
+        "identicalBytes": true,
+        "painterBytes": 788988,
+        "finishedBytes": 788988,
+        "atlasSha256Differs": true,
+        "bindingHashDiffers": true
+      },
+      "parts": {
+        "status": "PASS",
+        "identicalBytes": true,
+        "painterBytes": 4671,
+        "finishedBytes": 4671,
+        "atlasSha256Differs": true,
+        "bindingHashDiffers": true
+      },
+      "textureSource": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/coconut-crab-finished.png",
+      "recordSame": true
+    },
+    {
+      "id": "freshwater-crab",
+      "binding": {
+        "status": "PASS",
+        "identicalBytes": true,
+        "painterBytes": 569864,
+        "finishedBytes": 569864,
+        "atlasSha256Differs": true,
+        "bindingHashDiffers": true
+      },
+      "parts": {
+        "status": "PASS",
+        "identicalBytes": true,
+        "painterBytes": 4617,
+        "finishedBytes": 4617,
+        "atlasSha256Differs": true,
+        "bindingHashDiffers": true
+      },
+      "textureSource": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/freshwater-crab-finished.png",
+      "recordSame": true
+    },
+    {
+      "id": "mud-crab",
+      "binding": {
+        "status": "PASS",
+        "identicalBytes": true,
+        "painterBytes": 623812,
+        "finishedBytes": 623812,
+        "atlasSha256Differs": true,
+        "bindingHashDiffers": true
+      },
+      "parts": {
+        "status": "PASS",
+        "identicalBytes": true,
+        "painterBytes": 4617,
+        "finishedBytes": 4617,
+        "atlasSha256Differs": true,
+        "bindingHashDiffers": true
+      },
+      "textureSource": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/mud-crab-finished.png",
+      "recordSame": true
+    },
+    {
+      "id": "vent-crab",
+      "binding": {
+        "status": "PASS",
+        "identicalBytes": true,
+        "painterBytes": 547927,
+        "finishedBytes": 547927,
+        "atlasSha256Differs": true,
+        "bindingHashDiffers": true
+      },
+      "parts": {
+        "status": "PASS",
+        "identicalBytes": true,
+        "painterBytes": 4613,
+        "finishedBytes": 4613,
+        "atlasSha256Differs": true,
+        "bindingHashDiffers": true
+      },
+      "textureSource": "audits/ANATOMY_COMPLETION_20260917/crab-finish-01/vent-crab-finished.png",
+      "recordSame": true
+    }
+  ]
+}

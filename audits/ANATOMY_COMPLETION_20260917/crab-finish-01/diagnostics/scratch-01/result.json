@@ -1,0 +1,1869 @@
+{
+  "schema": "cf.creature-finish-run.v1",
+  "status": "FAIL",
+  "startedAt": "2026-09-20T02:01:40.366Z",
+  "head": "5baa9d565f9f0c72d1c508e3ce93c3d4fc22807e",
+  "dirtyDiagnostic": true,
+  "subjects": [
+    {
+      "id": "crab",
+      "fit": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab",
+      "master": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/crab-master.png",
+      "masterSha256": "dd419ae94d47663e22cc7ca598247d5c2d539b78dff24bb2b881bf16ecae5655",
+      "width": 880,
+      "height": 880,
+      "padded": {
+        "width": 880,
+        "height": 880
+      },
+      "recordRecipeHash": "0d2a7af8811a91ab1524cd22f42b5046eec86aba797493a19f7a7f766f51cf60",
+      "seed": 1484491178,
+      "promptSha256": "e48ddb8b672154ebdd933873b77a6b06bae6ec5c38c147dc9effca74da1aebe1",
+      "promptTokens": 388,
+      "status": "PREPARED"
+    }
+  ],
+  "sources": [
+    {
+      "url": "/recipes.json",
+      "file": "../../../../private/tmp/claude-501/-Users-nick-Projects-celestial-frontier-anthropic-mac/665bdfdc-be92-4a3b-b457-614c4389c84c/scratchpad/r9-native-01/recipes.json",
+      "bytes": 2712,
+      "sha256": "363d1460401671d7378f46846314f391707da08ca69ec8cc3ec566d5533840f2"
+    },
+    {
+      "url": "/creature-finish-client.mjs",
+      "file": "tools/local-image-generation/creature-finish-client.mjs",
+      "bytes": 2187,
+      "sha256": "f879429f4ab0bc29c71e420ac2bfb034f54e2031102c704cd17abe11d35644bc"
+    },
+    {
+      "url": "/stage-worker.mjs",
+      "file": "tools/local-image-generation/creature-stage-worker.mjs",
+      "bytes": 1165,
+      "sha256": "009f4e49a9f30e7b564304a9f591721fe1bb6519e0578f3ef585709adf86653e"
+    },
+    {
+      "url": "/kit-worker-engine.mjs",
+      "file": "tools/local-image-generation/kit-worker-engine.mjs",
+      "bytes": 19261,
+      "sha256": "778625da5485be5c59737d809045590d8fadebcec8a93917cbdd3b4a7bbc1cd4"
+    },
+    {
+      "url": "/kit-worker-expansion.mjs",
+      "file": "tools/local-image-generation/kit-worker-expansion.mjs",
+      "bytes": 3925,
+      "sha256": "35adfcf3a4bbcd81229e0ec56a14f21e003b20ead43c18eb698da94987caef32"
+    },
+    {
+      "url": "/kit-engine-math.mjs",
+      "file": "tools/local-image-generation/kit-engine-math.mjs",
+      "bytes": 8873,
+      "sha256": "870912a5555494185fa1d3a746f6654e55330c05501154c50c52dd1bccbc45dd"
+    },
+    {
+      "url": "/kit-contact-math.mjs",
+      "file": "tools/local-image-generation/kit-contact-math.mjs",
+      "bytes": 7586,
+      "sha256": "86ac6a9cad806f9e4fd611bb408aa7ccdb2daf72786efeee574848e3366f9152"
+    },
+    {
+      "url": "/kit-weather-math.mjs",
+      "file": "tools/local-image-generation/kit-weather-math.mjs",
+      "bytes": 4434,
+      "sha256": "abd3202a2da4cf242f8f031b9a7dd1038e192aed0c28969b3c470780e11f8fbd"
+    },
+    {
+      "url": "/pipeline-math.mjs",
+      "file": "tools/local-image-generation/pipeline-math.mjs",
+      "bytes": 10225,
+      "sha256": "1659c91311ef8b8160c7d8e55c171940f6599dd92581c3c8876aaf12859815c5"
+    },
+    {
+      "url": "/gpu-profile.mjs",
+      "file": "tools/local-image-generation/gpu-profile.mjs",
+      "bytes": 9725,
+      "sha256": "4a02596d6a885a88b894c4a285bd93be07437e856107c34489231c7191d2dbf1"
+    },
+    {
+      "url": "/denoiser-shapes.mjs",
+      "file": "tools/local-image-generation/denoiser-shapes.mjs",
+      "bytes": 2370,
+      "sha256": "c66850a4d3564e6336a2d5891152c2120d2847dcef87782d5197aae102e8f6d6"
+    },
+    {
+      "url": "/browser-variant-plan.json",
+      "file": "tools/local-image-generation/browser-variant-plan.json",
+      "bytes": 142918,
+      "sha256": "26263980f6dce7f3578a904aa9fe64649530e43797bfc94a0ddb8b2a3aaace81"
+    },
+    {
+      "url": "/inputs/crab.rgba",
+      "file": "../../../../private/tmp/claude-501/-Users-nick-Projects-celestial-frontier-anthropic-mac/665bdfdc-be92-4a3b-b457-614c4389c84c/scratchpad/r9-native-01/inputs/crab.rgba",
+      "bytes": 3097600,
+      "sha256": "2783e2114a5cc0ed6a9e61064becd542bd82c6966a7c32904397cb34a8a5c015"
+    },
+    {
+      "url": "/inputs/triptych.rgba",
+      "file": "../../../../private/tmp/claude-501/-Users-nick-Projects-celestial-frontier-anthropic-mac/665bdfdc-be92-4a3b-b457-614c4389c84c/scratchpad/r9-native-01/inputs/triptych.rgba",
+      "bytes": 6230016,
+      "sha256": "80579ba20f1aa2f1c90f6a1ab32d2de1362ae5c111d71a4dbb4d8bff2e32fbd4"
+    }
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/creature-finish-client.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/stage-worker.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/favicon.ico",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/@huggingface/tokenizers/dist/tokenizers.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-engine-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-worker-engine.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/pipeline-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-worker-expansion.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-weather-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/kit-contact-math.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/recipes.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_encoder.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_encoder.onnx.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4-00000.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/text_encoder_q4-00001.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/browser-variant-plan.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981239808-981245951"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981252096-981255167"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=963477504-963846143"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971956224-972140543"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972140544-972287999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978038784-978112511"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972288000-972435455"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978112512-978186239"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972435456-972582911"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978186240-978259967"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972582912-972730367"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978259968-978333695"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972730368-972877823"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978333696-978407423"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=972877824-973025279"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978407424-978481151"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973025280-973172735"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978481152-978554879"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973172736-973320191"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978554880-978628607"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=919928832-920813567"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=953843712-954286079"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=954286080-954728447"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969744384-969965567"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=920813568-921698303"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=954728448-955170815"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=955170816-955613183"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969965568-970186751"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973320192-973467647"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978628608-978702335"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973467648-973615103"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978702336-978776063"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973615104-973762559"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978776064-978849791"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973762560-973910015"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978849792-978923519"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=973910016-974057471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978923520-978997247"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974057472-974204927"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=978997248-979070975"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974204928-974352383"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979070976-979144703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974352384-974499839"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979144704-979218431"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=921698304-922583039"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=955613184-956055551"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=956055552-956497919"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970186752-970407935"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=922583040-923467775"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=956497920-956940287"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=956940288-957382655"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970407936-970629119"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974499840-974647295"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979218432-979292159"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974647296-974794751"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979292160-979365887"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974794752-974942207"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979365888-979439615"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=974942208-975089663"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979439616-979513343"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975089664-975237119"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979513344-979587071"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975237120-975384575"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979587072-979660799"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975384576-975532031"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979660800-979734527"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975532032-975679487"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979734528-979808255"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=923467776-924352511"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=957382656-957825023"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=957825024-958267391"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970629120-970850303"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=924352512-925237247"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=958267392-958709759"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=958709760-959152127"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=970850304-971071487"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975679488-975826943"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979808256-979881983"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975826944-975974399"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979881984-979955711"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=975974400-976121855"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=979955712-980029439"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976121856-976269311"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980029440-980103167"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976269312-976416767"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980103168-980176895"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976416768-976564223"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980176896-980250623"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976564224-976711679"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980250624-980324351"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976711680-976859135"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980324352-980398079"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=925237248-926121983"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=959152128-959594495"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=959594496-960036863"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971071488-971292671"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=926121984-927006719"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=960036864-960479231"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=960479232-960921599"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971292672-971513855"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=976859136-977006591"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980398080-980471807"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977006592-977154047"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980471808-980545535"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977154048-977301503"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980545536-980619263"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977301504-977448959"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980619264-980692991"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977448960-977596415"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980692992-980766719"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977596416-977743871"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980766720-980840447"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977743872-977891327"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980840448-980914175"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=977891328-978038783"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=980914176-980987903"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=927006720-927891455"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=960921600-961363967"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=961363968-961806335"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971513856-971735039"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=927891456-928776191"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=961806336-962248703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=962248704-962691071"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=971735040-971956223"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=893386752-894713855"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=928776192-929439743"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=942047232-942637055"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=963846144-964141055"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=894713856-896040959"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=929439744-930103295"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=942637056-943226879"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=964141056-964435967"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=896040960-897368063"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=930103296-930766847"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=943226880-943816703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=964435968-964730879"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=897368064-898695167"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=930766848-931430399"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=943816704-944406527"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=964730880-965025791"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=898695168-900022271"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=931430400-932093951"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=944406528-944996351"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965025792-965320703"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=900022272-901349375"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=932093952-932757503"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=944996352-945586175"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965320704-965615615"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=901349376-902676479"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=932757504-933421055"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=945586176-946175999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965615616-965910527"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=902676480-904003583"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=933421056-934084607"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=946176000-946765823"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=965910528-966205439"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=904003584-905330687"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=934084608-934748159"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=946765824-947355647"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=966205440-966500351"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=905330688-906657791"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=934748160-935411711"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=947355648-947945471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=966500352-966795263"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=906657792-907984895"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=935411712-936075263"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=947945472-948535295"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=966795264-967090175"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=907984896-909311999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=936075264-936738815"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=948535296-949125119"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967090176-967385087"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=909312000-910639103"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=936738816-937402367"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=949125120-949714943"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967385088-967679999"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=910639104-911966207"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=937402368-938065919"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=949714944-950304767"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967680000-967974911"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=911966208-913293311"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=938065920-938729471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=950304768-950894591"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=967974912-968269823"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=913293312-914620415"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=938729472-939393023"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=950894592-951484415"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=968269824-968564735"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=914620416-915947519"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=939393024-940056575"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=951484416-952074239"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=968564736-968859647"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=915947520-917274623"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=940056576-940720127"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=952074240-952664063"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=968859648-969154559"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=917274624-918601727"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=940720128-941383679"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=952664064-953253887"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969154560-969449471"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=918601728-919928831"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=941383680-942047231"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=953253888-953843711"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=969449472-969744383"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981245952-981252095"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": "bytes=981255168-981258239"
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00000.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00001.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/transformer_q8-00002.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_decoder.onnx",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/vae_decoder.onnx.data",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/crab.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/inputs/triptych.rgba",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/tokenizer/tokenizer.json",
+      "range": null
+    },
+    {
+      "method": "GET",
+      "path": "/model/tokenizer/tokenizer_config.json",
+      "range": null
+    }
+  ],
+  "events": [],
+  "qualityAccepted": false,
+  "dirtyFiles": [
+    "M port/v2/apps/game/src/landfall-conditioning.ts",
+    " M port/v2/tools/creature-animation/build-authored-parts.mjs",
+    " M port/v2/tools/family-review/prepare-observed-crabs.mjs",
+    " M port/v2/tools/landfall-snapshot/kit-entry.ts",
+    " M tools/local-image-generation/kit-contact-math.mjs",
+    " M tools/local-image-generation/kit-engine-math.mjs",
+    " M tools/local-image-generation/kit-worker-engine.mjs"
+  ],
+  "model": {
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "manifestSha256": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef"
+  },
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "triptych": {
+    "file": "audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png",
+    "url": "/inputs/triptych.rgba",
+    "sha256": "80579ba20f1aa2f1c90f6a1ab32d2de1362ae5c111d71a4dbb4d8bff2e32fbd4",
+    "width": 1872,
+    "height": 832
+  },
+  "modelVerification": {
+    "schema": "cf.local-image-download-receipt.v1",
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "manifestSha256": "8b79b92782d198497cd02149eda5df17f278a34d60795084755b8d66bd8dd74e",
+    "startedAt": "2026-09-20T02:01:40.760Z",
+    "finishedAt": "2026-09-20T02:01:43.928Z",
+    "status": "complete",
+    "fileCount": 21,
+    "totalBytes": 6691028208,
+    "timeoutMs": 600000,
+    "verifyOnly": true,
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 7792,
+        "sha256": "4cfe7c534c2f259155b0ec282168bdffeb11241899fa48b4d22f7bda1483f26f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00000.data",
+        "bytes": 1599733760,
+        "sha256": "ed37b81331f4eda3bc150448f2d360b4e42951c57dcb9874ec8d0c7c78fa6f6d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4-00001.data",
+        "bytes": 594170880,
+        "sha256": "89040c34be052e09698afad17bfea3e1158306369612ae347655dfbd4cfa0f3f",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.manifest.json",
+        "bytes": 285,
+        "sha256": "fd22d7819467151ead49d2f25b0d576bcb65134111e5219c264cc605cb62e5b7",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "text_encoder_q4.onnx",
+        "bytes": 5341471,
+        "sha256": "e1670f1d203cf2e5cadecce4b2c13d436eefa228a66b7bc6bc629074e9dc0a1b",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/added_tokens.json",
+        "bytes": 707,
+        "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/chat_template.jinja",
+        "bytes": 4168,
+        "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/merges.txt",
+        "bytes": 1671853,
+        "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/special_tokens_map.json",
+        "bytes": 613,
+        "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer.json",
+        "bytes": 11422654,
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/tokenizer_config.json",
+        "bytes": 5404,
+        "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "tokenizer/vocab.json",
+        "bytes": 2776833,
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00000.data",
+        "bytes": 1585446912,
+        "sha256": "80aa4b75cdab0395f4374c51eecb59e005a6f81b3e573dddd9826a865bcd11be",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00001.data",
+        "bytes": 1566572544,
+        "sha256": "32576185e1f0ab3937141b0c57acad1f37f298c5e7951b3367096c129e5eca28",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8-00002.data",
+        "bytes": 981258240,
+        "sha256": "5062b615c62206a2dad22ce01fec6f674b0421336179cadec93fec77d1b2b455",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.manifest.json",
+        "bytes": 368,
+        "sha256": "9cf98a614ffe690a297a286b11642b0611f67f64e80edaaf592645f32e727f29",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "transformer_q8.onnx",
+        "bytes": 4991601,
+        "sha256": "1c56c0b6ce5ce474a5ae5cc126ec3201516540e7f743de308dc07c9e72fb6102",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx",
+        "bytes": 760826,
+        "sha256": "05f3f6de75b760d5f3b6cbd6efa40ddc8bb7bc4dad58c1dabc85e96383871a7d",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_decoder.onnx.data",
+        "bytes": 198508544,
+        "sha256": "357f7da253bfb9e3d5762a4f64fd126eae53b8b79466b7da2da2784d5fce89ae",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx",
+        "bytes": 596081,
+        "sha256": "f7cc93e70cc3a9555cb7bf1b02d2eaab83d706cf0a4ddf6da86dffb56daf05f9",
+        "disposition": "verified-reused"
+      },
+      {
+        "path": "vae_encoder.onnx.data",
+        "bytes": 137756672,
+        "sha256": "9ac7e0847f5b1a6a077ad38688042a53bc004e986d15dc8c0e37a962aad68671",
+        "disposition": "verified-reused"
+      }
+    ],
+    "failure": null
+  },
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.48",
+    "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.7",
+    "protocol_version": "1.3"
+  },
+  "browserPid": 83604,
+  "page": {
+    "status": "failed",
+    "error": "Error: Error: failed to call OrtRun(). ERROR_CODE: 1, ERROR_MESSAGE: /mnt/azure_nvme_temp/_work/1/s/onnxruntime/core/common/safeint.h:17 static void SafeIntExceptionHandler<onnxruntime::OnnxRuntimeException>::SafeIntOnOverflow() Integer overflow\n\n    at S (http://127.0.0.1:56659/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs:6:26300)\n    at Ne (http://127.0.0.1:56659/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs:7:27998)\n    at async Ke.run (http://127.0.0.1:56659/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs:7:35537)\n    at async t.run (http://127.0.0.1:56659/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs:6:18304)\n    at async run (http://127.0.0.1:56659/kit-worker-engine.mjs:43:15)\n    at async paintPass (http://127.0.0.1:56659/kit-worker-engine.mjs:86:18)\n    at async Object.finishCreature (http://127.0.0.1:56659/kit-worker-engine.mjs:171:22)\n    at async onmessage (http://127.0.0.1:56659/stage-worker.mjs:14:16)\n    at worker.onmessage (http://127.0.0.1:56659/creature-finish-client.mjs:16:134)",
+    "events": [
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 186,
+        "total": 206,
+        "sourceBytes": 74437632,
+        "expandedBytes": 297750528,
+        "atMs": 2776.4550000429153,
+        "sequence": 192
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 187,
+        "total": 206,
+        "sourceBytes": 75027456,
+        "expandedBytes": 300109824,
+        "atMs": 2779.985000014305,
+        "sequence": 193
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 188,
+        "total": 206,
+        "sourceBytes": 75322368,
+        "expandedBytes": 301289472,
+        "atMs": 2782.445000052452,
+        "sequence": 194
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 189,
+        "total": 206,
+        "sourceBytes": 76649472,
+        "expandedBytes": 306597888,
+        "atMs": 2789.685000002384,
+        "sequence": 195
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 190,
+        "total": 206,
+        "sourceBytes": 77313024,
+        "expandedBytes": 309252096,
+        "atMs": 2795.4150000214577,
+        "sequence": 196
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 191,
+        "total": 206,
+        "sourceBytes": 77902848,
+        "expandedBytes": 311611392,
+        "atMs": 2798.9550000429153,
+        "sequence": 197
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 192,
+        "total": 206,
+        "sourceBytes": 78197760,
+        "expandedBytes": 312791040,
+        "atMs": 2801.550000011921,
+        "sequence": 198
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 193,
+        "total": 206,
+        "sourceBytes": 79524864,
+        "expandedBytes": 318099456,
+        "atMs": 2808.675000011921,
+        "sequence": 199
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 194,
+        "total": 206,
+        "sourceBytes": 80188416,
+        "expandedBytes": 320753664,
+        "atMs": 2813.8300000429153,
+        "sequence": 200
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 195,
+        "total": 206,
+        "sourceBytes": 80778240,
+        "expandedBytes": 323112960,
+        "atMs": 2817.520000040531,
+        "sequence": 201
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 196,
+        "total": 206,
+        "sourceBytes": 81073152,
+        "expandedBytes": 324292608,
+        "atMs": 2820.035000026226,
+        "sequence": 202
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 197,
+        "total": 206,
+        "sourceBytes": 82400256,
+        "expandedBytes": 329601024,
+        "atMs": 2827.210000038147,
+        "sequence": 203
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 198,
+        "total": 206,
+        "sourceBytes": 83063808,
+        "expandedBytes": 332255232,
+        "atMs": 2832.260000050068,
+        "sequence": 204
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 199,
+        "total": 206,
+        "sourceBytes": 83653632,
+        "expandedBytes": 334614528,
+        "atMs": 2835.770000040531,
+        "sequence": 205
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 200,
+        "total": 206,
+        "sourceBytes": 83948544,
+        "expandedBytes": 335794176,
+        "atMs": 2838.675000011921,
+        "sequence": 206
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 201,
+        "total": 206,
+        "sourceBytes": 85275648,
+        "expandedBytes": 341102592,
+        "atMs": 2845.895000040531,
+        "sequence": 207
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 202,
+        "total": 206,
+        "sourceBytes": 85939200,
+        "expandedBytes": 343756800,
+        "atMs": 2851.985000014305,
+        "sequence": 208
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 203,
+        "total": 206,
+        "sourceBytes": 86529024,
+        "expandedBytes": 346116096,
+        "atMs": 2856.085000038147,
+        "sequence": 209
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 204,
+        "total": 206,
+        "sourceBytes": 86823936,
+        "expandedBytes": 347295744,
+        "atMs": 2859.2800000309944,
+        "sequence": 210
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 205,
+        "total": 206,
+        "sourceBytes": 86830080,
+        "expandedBytes": 347320320,
+        "atMs": 2860.010000050068,
+        "sequence": 211
+      },
+      {
+        "type": "progress",
+        "phase": "expansion",
+        "completed": 206,
+        "total": 206,
+        "sourceBytes": 86833152,
+        "expandedBytes": 347332608,
+        "atMs": 2860.4950000047684,
+        "sequence": 212
+      },
+      {
+        "type": "progress",
+        "phase": "loaded",
+        "stage": "denoise",
+        "elapsedMs": 4060.4900000095367,
+        "creates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 0
+        },
+        "memory": null,
+        "atMs": 6192.430000007153,
+        "sequence": 213
+      },
+      {
+        "type": "progress",
+        "phase": "loading",
+        "stage": "decode",
+        "memory": null,
+        "atMs": 6192.570000052452,
+        "sequence": 214
+      },
+      {
+        "type": "progress",
+        "phase": "loaded",
+        "stage": "decode",
+        "elapsedMs": 239.17500001192093,
+        "creates": {
+          "text": 1,
+          "encode": 1,
+          "denoise": 1,
+          "decode": 1
+        },
+        "memory": null,
+        "atMs": 6431.545000016689,
+        "sequence": 215
+      },
+      {
+        "type": "progress",
+        "phase": "creature-mask",
+        "editableTokens": 38,
+        "protectedTokens": 2987,
+        "atMs": 6544.700000047684,
+        "sequence": 216
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "encode",
+        "atMs": 6573.085000038147,
+        "sequence": 217
+      },
+      {
+        "type": "progress",
+        "phase": "inference-start",
+        "stage": "encode",
+        "outputShape": [
+          1,
+          128,
+          55,
+          55
+        ],
+        "atMs": 6573.1400000452995,
+        "sequence": 218
+      },
+      {
+        "type": "progress",
+        "phase": "inference-complete",
+        "stage": "encode",
+        "elapsedMs": 1935.2049999833107,
+        "atMs": 8508.310000002384,
+        "sequence": 219
+      },
+      {
+        "type": "progress",
+        "phase": "readback-complete",
+        "stage": "encode",
+        "atMs": 8508.675000011921,
+        "sequence": 220
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "encode",
+        "atMs": 8528.705000042915,
+        "sequence": 221
+      },
+      {
+        "type": "progress",
+        "phase": "inference-start",
+        "stage": "encode",
+        "outputShape": [
+          1,
+          128,
+          52,
+          117
+        ],
+        "atMs": 8528.735000014305,
+        "sequence": 222
+      },
+      {
+        "type": "progress",
+        "phase": "inference-complete",
+        "stage": "encode",
+        "elapsedMs": 4349.525000035763,
+        "atMs": 12886.900000035763,
+        "sequence": 223
+      },
+      {
+        "type": "progress",
+        "phase": "readback-complete",
+        "stage": "encode",
+        "atMs": 12901.445000052452,
+        "sequence": 224
+      },
+      {
+        "type": "progress",
+        "phase": "finisher-start",
+        "editableTokens": 38,
+        "atMs": 12949.465000033379,
+        "sequence": 225
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "text",
+        "atMs": 13154.504999995232,
+        "sequence": 226
+      },
+      {
+        "type": "progress",
+        "phase": "inference-start",
+        "stage": "text",
+        "outputShape": [
+          1,
+          400,
+          7680
+        ],
+        "atMs": 13154.535000026226,
+        "sequence": 227
+      },
+      {
+        "type": "progress",
+        "phase": "inference-complete",
+        "stage": "text",
+        "elapsedMs": 7485.160000026226,
+        "atMs": 20639.695000052452,
+        "sequence": 228
+      },
+      {
+        "type": "progress",
+        "phase": "readback-complete",
+        "stage": "text",
+        "atMs": 20639.735000014305,
+        "sequence": 229
+      },
+      {
+        "type": "progress",
+        "phase": "session-reused",
+        "stage": "denoise",
+        "atMs": 20705.985000014305,
+        "sequence": 230
+      },
+      {
+        "type": "progress",
+        "phase": "inference-start",
+        "stage": "denoise",
+        "outputShape": [
+          1,
+          9109,
+          128
+        ],
+        "atMs": 20706.025000035763,
+        "sequence": 231
+      }
+    ],
+    "results": []
+  },
+  "error": "Error: Finish page failed: Error: Error: failed to call OrtRun(). ERROR_CODE: 1, ERROR_MESSAGE: /mnt/azure_nvme_temp/_work/1/s/onnxruntime/core/common/safeint.h:17 static void SafeIntExceptionHandler<onnxruntime::OnnxRuntimeException>::SafeIntOnOverflow() Integer overflow\n\n    at S (http://127.0.0.1:56659/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs:6:26300)\n    at Ne (http://127.0.0.1:56659/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs:7:27998)\n    at async Ke.run (http://127.0.0.1:56659/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs:7:35537)\n    at async t.run (http://127.0.0.1:56659/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs:6:18304)\n    at async run (http://127.0.0.1:56659/kit-worker-engine.mjs:43:15)\n    at async paintPass (http://127.0.0.1:56659/kit-worker-engine.mjs:86:18)\n    at async Object.finishCreature (http://127.0.0.1:56659/kit-worker-engine.mjs:171:22)\n    at async onmessage (http://127.0.0.1:56659/stage-worker.mjs:14:16)\n    at worker.onmessage (http://127.0.0.1:56659/creature-finish-client.mjs:16:134)\n    at file:///Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/painted-creature/finish-master.mjs:103:38",
+  "finishedAt": "2026-09-20T02:02:06.305Z"
+}
