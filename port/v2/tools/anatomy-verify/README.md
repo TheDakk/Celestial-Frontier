@@ -213,3 +213,8 @@ thick-terminal rule. Five painted crabs: named feet within 25 px **14 of 31**, p
 touching-tip candidates (junctions along legs that pass the thin test) filling slots ahead of true legs; the fix is
 to score a touching tip by whether the arriving edge's own terminal segment is thin all the way to the junction
 (DT profile monotone decreasing), which a mid-leg junction fails. That is the next change. Not a gate.
+Addendum: the DT-profile test for touching tips trades recall for precision — named feet 13 of 25 assigned (52 %),
+positions 20 of 35, but slots that were correctly filled from touching tips on the freshwater crab are now empty.
+Both variants are retained in git; the profile test stays on (a wrong foot in a rig is worse than an empty slot that
+the hidden-inference step fills by the template rule). Next: the Civet through the identical code as the second
+family, before any further crab tuning — the program's rule.

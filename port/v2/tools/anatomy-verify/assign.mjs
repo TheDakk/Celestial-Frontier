@@ -32,6 +32,9 @@ export function assignLegs(rgba,w,h,guide,{legsPerSide=4,thinSpread=1.8,minTerm=
     const d=Math.hypot(far.x-centre[0],far.y-centre[1]);if(d<lc.bodyDt*2)continue;
     // the arriving edge must itself be a limb (thin), not an arm/palm; the tip may rest on the carapace OR on another leg
     if(e.minDt>1.3*thinRef)continue; // the arriving edge must get thin somewhere (a leg), even if its upper segment is thick
+    // DT profile toward the junction: the last quarter of the arriving edge must be thin and not thicken again (a leg tapering
+    // to its tip); a mid-leg junction (spine, crossing) sits on a segment that is still thick or thickens beyond it
+    {const path=(e.a===farId)?[...e.path].reverse():e.path;const tail=path.slice(Math.floor(path.length*.75));const tailMax=Math.max(...tail.map(i=>dt[i]));const head=path.slice(0,Math.floor(path.length*.5));const headMean=head.reduce((a,i)=>a+dt[i],0)/Math.max(1,head.length);if(tailMax>1.6*thinRef||tailMax>headMean)continue;}
     if(cands.some(c=>Math.hypot(c.x-far.x,c.y-far.y)<20))continue;cands.push({kind:'touch',x:far.x,y:far.y,termDt:far.dt,term:e.length,attach:exitPoint([e],aBody?e.a:e.b)});}
   // Generic appendage classes on the candidates (no family knowledge):
   //  spine  = terminal branch shorter than minLimbTerm (hairs, serrations) → dropped;
