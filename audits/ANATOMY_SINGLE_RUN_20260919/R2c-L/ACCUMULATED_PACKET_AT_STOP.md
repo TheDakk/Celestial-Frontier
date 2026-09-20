@@ -1,15 +1,14 @@
-# Anatomy single-run review packet — R3-S accepted, run continuing
+# Anatomy single-run review packet — R2c-L S2 STOP
 
-[Current packet: R3-S](R3-S/README.md). Signed producer4b969894 and independently verified
-signature. BEFORE committed before runtime changes. AFTER report-all and strict production
-sweeps pass all six subjects:13,286 samples, zero classes, exact rest geometry, covariance0,
-five crabs bit-identical. Native Civet rest0 changed pixels. Civet worst planted drift0.165257px;
-unpinned candidate10 still fails0.255262px, diffused control fails2.647942px.39application tests
-including the unchanged169-action battery pass. Contact limits100/105/95° follow measured
-planted folds; raw limits unchanged. Nick authorized stage melee travel, gait phases, shared
-pin-conflict repair and x15 crouch control after x3 became insensitive. No further approval
-stops within the run; S2/gates/local-only boundaries unchanged. Next R2d→R3→remaining§8.
-[Earlier accumulated S2 packet](R2c-L/ACCUMULATED_PACKET_AT_STOP.md) remains immutable history.
+[Latest packet: R2c-L](R2c-L/README.md). Reporting-only measurement clears the known joint-limit
+throw in a temporary audit bundle; production source remains unchanged. Five crabs complete
+all rows/presentation with zero exceedances and R2c′bit identity. **Civet bite157.111111ms
+exceeds the unchanged8%compression bound.** No further variant or retry.
+
+Measurement is incomplete; contactLimitsDeg was not added and no new joint range was chosen.
+[Compression diagnosis](R2c-L/compression-diagnosis.json), [partial joint table and every
+exceedance](R2c-L/measure/limits.json).10,527published sample records retained.
+Earlier rest/unpinned/covariance proofs remain historical evidence, not clearance of this red.
 
 | Item | Current outcome | Evidence |
 | --- | --- | --- |
@@ -22,8 +21,7 @@ stops within the run; S2/gates/local-only boundaries unchanged. Next R2d→R3→
 | Portability/toolchain | Signed dd7909b4; Blender20PASS, pose5PASS/2leaf reds (reserved modules absent) | [Tooling evidence](R2c-double-prime/toolchain/README.md) |
 | R2c‴ | Rest/unpinned control/five-crab bit identity pass; Civet ankle-limit S2 | [Current signed-producer packet](R2c-triple-prime/README.md) |
 | R2c-L | Reporting sweep hits Civet compression S2; no runtime range changes | [Current packet](R2c-L/README.md), [summary](R2c-L/summary.json) |
-| R3-S | All six strict/static PASS; corrected controls PASS | [AFTER ledger](R3-S/after/ledger.json), [strict sweep](R3-S/static-01/static.json) |
-| Remaining §8 | Run continuing with R2d | [Current packet](R3-S/README.md) |
+| Remaining §8 | Unrun because S2 fired | [Current summary](R2c-L/summary.json), [retained leaf diagnoses](R2c-triple-prime/summary.json) |
 
 The earlier instrument schema failure and signing refusals are retained in the original stop
 packet. Signing is now resolved; both halted evidence and correction producer are signed and
@@ -31,8 +29,8 @@ independently verified. No numerical result constitutes visual acceptance.
 
 ## Films and sheets
 
-**New films:0. New sheets:0.** R3-S has cleared; the single native recapture,
-R9/Q1 finishing, arena composite and roster sheets are still ahead. No faint-inclusive/full-row film exists
+**New films:0. New sheets:0.** S2 occurred before the one authorized native recapture,
+R9/Q1 finishing, arena composite and roster sheets. No faint-inclusive/full-row film exists
 from this run. These earlier artifacts are indexed only as retained background evidence:
 
 - [crab prior10second film](../ANATOMY_COMPLETION_20260917/crab-native-04/family-10s.webm).
@@ -58,7 +56,7 @@ from this run. These earlier artifacts are indexed only as retained background e
 ## Unrun items and refusal accounting
 
 R2d → R3/T1/travel/contactJoint/pinch → R4 → native recapture → R9/Q1 → R5/R6/R7 →
-R8 phone delivery → roster → PR42split are **pending**, with R3-S cleared and the run continuing.
+R8 phone delivery → roster → PR42split are **not run**, because S2 forbids advancing.
 Phone-tier proof: absent; no phone qualification or canary claim. Roster:0attempted,
 0fit refusals,58remaining. Those zero counts mean unrun, not acceptance.
 No finished-crab or open-gape candidate was painted and no review verdict is inferred.
@@ -72,7 +70,7 @@ This verdict receives a separate signed evidence successor; use local git log fo
 No fetch/sync/push, PR mutation, hosted attempt, merge, release, deployment or history change.
 Pre-existing `.DS_Store` untouched. No signing configuration or private-key change.
 
-Codex: continue R2d and the remaining ordered run. Claude: read-only
-review if requested; no app switch or sync required. R3 interfaces remain in progress. PR42 stays parked;
+Codex: stopped at S2; no retry or continued repair without a new direction. Claude: read-only
+review if requested; no app switch or sync required. R3 does not exist here. PR42 stays parked;
 no PR is ready and the local split was not reached. Future authorized integration targets
 `develop`, never directly `main`.

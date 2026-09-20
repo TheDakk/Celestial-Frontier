@@ -1,0 +1,3290 @@
+{
+  "status": "REPORT_COMPLETE",
+  "producer": "4b9698945b66846157bf7f62201eea818e821a0a",
+  "runtime": "v26.9.0",
+  "subjects": [
+    {
+      "subject": "crab",
+      "rows": [
+        {
+          "id": "idle",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000028752924860229564,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00005245208740234375
+        },
+        {
+          "id": "approach",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00005832824102037696,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.0000593427627033388
+        },
+        {
+          "id": "melee:pinch",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000028752924860229564,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00003534514317724271
+        },
+        {
+          "id": "hit",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000062718136032873,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.00005245208740234375
+        },
+        {
+          "id": "alert",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000028752924860229564,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00005245208736823769
+        },
+        {
+          "id": "approach:scuttle",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00005832824102037696,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.0000593427627033388
+        },
+        {
+          "id": "cast",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000028752924860229564,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00004707718921812226
+        },
+        {
+          "id": "dodge",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00006139914932236826,
+          "maxEndpointError": 3.3306690738754696e-16,
+          "maxGapPx": 0.0000593427627033388
+        },
+        {
+          "id": "faint",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00006139914932236826,
+          "maxEndpointError": 2.482534153247273e-16,
+          "maxGapPx": 0.00005245208740234375
+        },
+        {
+          "id": "victory",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000028752924860229564,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00005245208740234375
+        },
+        {
+          "id": "tame",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000028752924860229564,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.0000469145731973604
+        },
+        {
+          "id": "feed",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000028752924860229564,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.0000469145731973604
+        }
+      ],
+      "maxCovariancePx": 0,
+      "maxArapPublicationPx": 0.00006276939388843613,
+      "presentation": {
+        "samples": 601,
+        "maxEndpointError": 4.0029660424867215e-16,
+        "maxGapPx": 0.0000593427627033388,
+        "maxPaintDriftPx": 0.00005832824102037696
+      },
+      "bitIdentical": true,
+      "classes": {}
+    },
+    {
+      "subject": "coconut-crab",
+      "rows": [
+        {
+          "id": "idle",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000025177724369878116,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00004228822480034731
+        },
+        {
+          "id": "approach",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000056789684025662956,
+          "maxEndpointError": 3.376611507232129e-16,
+          "maxGapPx": 0.000052984609613973016
+        },
+        {
+          "id": "melee:pinch",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000025177724369878116,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00004378868020758932
+        },
+        {
+          "id": "hit",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000056789684025662956,
+          "maxEndpointError": 4.0029660424867215e-16,
+          "maxGapPx": 0.00004945230227957858
+        },
+        {
+          "id": "alert",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000025177724369878116,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00004210711808893367
+        },
+        {
+          "id": "approach:scuttle",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000056789684025662956,
+          "maxEndpointError": 3.376611507232129e-16,
+          "maxGapPx": 0.000052984609613973016
+        },
+        {
+          "id": "cast",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000025177724369878116,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00004304942919455368
+        },
+        {
+          "id": "dodge",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000056789684025662956,
+          "maxEndpointError": 3.342213888644167e-16,
+          "maxGapPx": 0.00005298460949338992
+        },
+        {
+          "id": "faint",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000056789684025662956,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.000044951299420093425
+        },
+        {
+          "id": "victory",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000025177724369878116,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000041467015929579454
+        },
+        {
+          "id": "tame",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000025177724369878116,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00004146701598350586
+        },
+        {
+          "id": "feed",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000025177724369878116,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00004347339767441965
+        }
+      ],
+      "maxCovariancePx": 0,
+      "maxArapPublicationPx": 0.00005993264480081748,
+      "presentation": {
+        "samples": 601,
+        "maxEndpointError": 3.376611507232129e-16,
+        "maxGapPx": 0.00004945230227957858,
+        "maxPaintDriftPx": 0.000059935218556380115
+      },
+      "bitIdentical": true,
+      "classes": {}
+    },
+    {
+      "subject": "freshwater-crab",
+      "rows": [
+        {
+          "id": "idle",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000023282157132130812,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000043982412372525375
+        },
+        {
+          "id": "approach",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00003140645853198839,
+          "maxEndpointError": 3.3306690738754696e-16,
+          "maxGapPx": 0.00004457570289526527
+        },
+        {
+          "id": "melee:pinch",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000023282157132130812,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00002932160824835025
+        },
+        {
+          "id": "hit",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000023282157132130812,
+          "maxEndpointError": 4.577566798522237e-16,
+          "maxGapPx": 0.000045565395122793643
+        },
+        {
+          "id": "alert",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000023282157132130812,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000043982412372525375
+        },
+        {
+          "id": "approach:scuttle",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00003140645853198839,
+          "maxEndpointError": 3.3306690738754696e-16,
+          "maxGapPx": 0.00004457570289526527
+        },
+        {
+          "id": "cast",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000023282157132130812,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000043982412372525375
+        },
+        {
+          "id": "dodge",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000023282157132130812,
+          "maxEndpointError": 3.1401849173675503e-16,
+          "maxGapPx": 0.000043982412372525375
+        },
+        {
+          "id": "faint",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000023282157132130812,
+          "maxEndpointError": 3.3306690738754696e-16,
+          "maxGapPx": 0.000043982412372525375
+        },
+        {
+          "id": "victory",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000023282157132130812,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000043982412372525375
+        },
+        {
+          "id": "tame",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000023282157132130812,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000043982412372525375
+        },
+        {
+          "id": "feed",
+          "samples": 121,
+          "maxPaintDriftPx": 0.000023282157132130812,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000043982412372525375
+        }
+      ],
+      "maxCovariancePx": 0,
+      "maxArapPublicationPx": 0.000036562824795921747,
+      "presentation": {
+        "samples": 601,
+        "maxEndpointError": 3.3306690738754696e-16,
+        "maxGapPx": 0.000043982412372525375,
+        "maxPaintDriftPx": 0.00003140645853198839
+      },
+      "bitIdentical": true,
+      "classes": {}
+    },
+    {
+      "subject": "mud-crab",
+      "rows": [
+        {
+          "id": "idle",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00001907348631036143,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.0000399830037212616
+        },
+        {
+          "id": "approach",
+          "samples": 121,
+          "maxPaintDriftPx": 0.0001062532734833519,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.000050688485206292394
+        },
+        {
+          "id": "melee:pinch",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00001907348631036143,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000040062160087028476
+        },
+        {
+          "id": "hit",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00038152336698686834,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.00005331201499700045
+        },
+        {
+          "id": "alert",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00001907348631036143,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000043982412372525375
+        },
+        {
+          "id": "approach:scuttle",
+          "samples": 121,
+          "maxPaintDriftPx": 0.0001062532734833519,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.000050688485206292394
+        },
+        {
+          "id": "cast",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00001907348631036143,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000043982412372525375
+        },
+        {
+          "id": "dodge",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00038152336698686834,
+          "maxEndpointError": 4.0029660424867215e-16,
+          "maxGapPx": 0.00005157782471843704
+        },
+        {
+          "id": "faint",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00010024927160716545,
+          "maxEndpointError": 3.1401849173675503e-16,
+          "maxGapPx": 0.00004821599485724024
+        },
+        {
+          "id": "victory",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00001907348631036143,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000043982412372525375
+        },
+        {
+          "id": "tame",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00001907348631036143,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000040007376285557426
+        },
+        {
+          "id": "feed",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00001907348631036143,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00003820774541046395
+        }
+      ],
+      "maxCovariancePx": 0,
+      "maxArapPublicationPx": 0.000035179319644834035,
+      "presentation": {
+        "samples": 601,
+        "maxEndpointError": 3.3306690738754696e-16,
+        "maxGapPx": 0.00005331201499700045,
+        "maxPaintDriftPx": 0.00038152336698686834
+      },
+      "bitIdentical": true,
+      "classes": {}
+    },
+    {
+      "subject": "vent-crab",
+      "rows": [
+        {
+          "id": "idle",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00002517772439023162,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00003708922668958675
+        },
+        {
+          "id": "approach",
+          "samples": 121,
+          "maxPaintDriftPx": 0.0015910992976464586,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.00005245208740234375
+        },
+        {
+          "id": "melee:pinch",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00002517772439023162,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000031790765728189446
+        },
+        {
+          "id": "hit",
+          "samples": 121,
+          "maxPaintDriftPx": 0.0056921396945123865,
+          "maxEndpointError": 3.376611507232129e-16,
+          "maxGapPx": 0.0000445070720275041
+        },
+        {
+          "id": "alert",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00002517772439023162,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000043005025447861136
+        },
+        {
+          "id": "approach:scuttle",
+          "samples": 121,
+          "maxPaintDriftPx": 0.0015910992976464586,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.00005245208740234375
+        },
+        {
+          "id": "cast",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00002517772439023162,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00004300502547328228
+        },
+        {
+          "id": "dodge",
+          "samples": 121,
+          "maxPaintDriftPx": 0.009359584649786994,
+          "maxEndpointError": 3.376611507232129e-16,
+          "maxGapPx": 0.00005245208740234375
+        },
+        {
+          "id": "faint",
+          "samples": 121,
+          "maxPaintDriftPx": 0.0001344985115905292,
+          "maxEndpointError": 3.1401849173675503e-16,
+          "maxGapPx": 0.00004945230231977294
+        },
+        {
+          "id": "victory",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00002517772439023162,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00004300502547328228
+        },
+        {
+          "id": "tame",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00002517772439023162,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00003708922668958675
+        },
+        {
+          "id": "feed",
+          "samples": 121,
+          "maxPaintDriftPx": 0.00002517772439023162,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.000043005025447861136
+        }
+      ],
+      "maxCovariancePx": 0,
+      "maxArapPublicationPx": 0.000048010389749683695,
+      "presentation": {
+        "samples": 601,
+        "maxEndpointError": 3.510833468576701e-16,
+        "maxGapPx": 0.00005245208740234375,
+        "maxPaintDriftPx": 0.005386975333611804
+      },
+      "bitIdentical": true,
+      "classes": {}
+    },
+    {
+      "subject": "civet",
+      "rows": [
+        {
+          "id": "idle",
+          "samples": 121,
+          "maxPaintDriftPx": 0.16525637288346104,
+          "maxEndpointError": 4.577566798522237e-16,
+          "maxGapPx": 0.00008221445262923185
+        },
+        {
+          "id": "approach",
+          "samples": 121,
+          "maxPaintDriftPx": 0.1513991118449841,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.00008447410891380827
+        },
+        {
+          "id": "melee:bite",
+          "samples": 121,
+          "maxPaintDriftPx": 0.019049705975938587,
+          "maxEndpointError": 2.482534153247273e-16,
+          "maxGapPx": 0.00011984712923396503
+        },
+        {
+          "id": "hit",
+          "samples": 121,
+          "maxPaintDriftPx": 0.12550837485554944,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.00008221445262923185
+        },
+        {
+          "id": "alert",
+          "samples": 121,
+          "maxPaintDriftPx": 0.14848632908400375,
+          "maxEndpointError": 4.0029660424867215e-16,
+          "maxGapPx": 0.00008221445238806566
+        },
+        {
+          "id": "approach:walk",
+          "samples": 121,
+          "maxPaintDriftPx": 0.1513991118449841,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.00008447410891380827
+        },
+        {
+          "id": "approach:trot",
+          "samples": 121,
+          "maxPaintDriftPx": 0.15012830266168245,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.00012534987526169732
+        },
+        {
+          "id": "approach:gallop",
+          "samples": 121,
+          "maxPaintDriftPx": 0.16158345431137297,
+          "maxEndpointError": 3.510833468576701e-16,
+          "maxGapPx": 0.00012534987577012032
+        },
+        {
+          "id": "approach:hop",
+          "samples": 121,
+          "maxPaintDriftPx": 0,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00012818924390391127
+        },
+        {
+          "id": "melee:claw",
+          "samples": 121,
+          "maxPaintDriftPx": 0.019049705975938587,
+          "maxEndpointError": 2.482534153247273e-16,
+          "maxGapPx": 0.00011984712923396503
+        },
+        {
+          "id": "melee:gore",
+          "samples": 121,
+          "maxPaintDriftPx": 0.019049705975938587,
+          "maxEndpointError": 2.482534153247273e-16,
+          "maxGapPx": 0.00011984712923396503
+        },
+        {
+          "id": "melee:tail",
+          "samples": 121,
+          "maxPaintDriftPx": 0.14290329814059713,
+          "maxEndpointError": 3.376611507232129e-16,
+          "maxGapPx": 0.00012018592459056611
+        },
+        {
+          "id": "melee:headbutt",
+          "samples": 121,
+          "maxPaintDriftPx": 0.019049705975938587,
+          "maxEndpointError": 2.482534153247273e-16,
+          "maxGapPx": 0.00011984712923396503
+        },
+        {
+          "id": "cast",
+          "samples": 121,
+          "maxPaintDriftPx": 0.1468100554274374,
+          "maxEndpointError": 3.3306690738754696e-16,
+          "maxGapPx": 0.00012387969816941548
+        },
+        {
+          "id": "dodge",
+          "samples": 121,
+          "maxPaintDriftPx": 0,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00008221445246845438
+        },
+        {
+          "id": "faint",
+          "samples": 121,
+          "maxPaintDriftPx": 0.007730024962211032,
+          "maxEndpointError": 5.9787339602818175e-16,
+          "maxGapPx": 0.00009355267484402958
+        },
+        {
+          "id": "victory",
+          "samples": 121,
+          "maxPaintDriftPx": 0.14283787952503224,
+          "maxEndpointError": 4.0029660424867215e-16,
+          "maxGapPx": 0.00012459310336062157
+        },
+        {
+          "id": "tame",
+          "samples": 121,
+          "maxPaintDriftPx": 0.017696811786390862,
+          "maxEndpointError": 4.0029660424867215e-16,
+          "maxGapPx": 0.00008975182489727262
+        },
+        {
+          "id": "feed",
+          "samples": 121,
+          "maxPaintDriftPx": 0.09770455872347944,
+          "maxEndpointError": 3.1401849173675503e-16,
+          "maxGapPx": 0.00008424552929827542
+        },
+        {
+          "id": "melee:kick",
+          "samples": 121,
+          "maxPaintDriftPx": 0,
+          "maxEndpointError": 0,
+          "maxGapPx": 0.00008368256771838011
+        }
+      ],
+      "maxCovariancePx": 0,
+      "maxArapPublicationPx": 0.00014252713528909897,
+      "presentation": {
+        "samples": 601,
+        "maxEndpointError": 4.0029660424867215e-16,
+        "maxGapPx": 0.00013371942901654278,
+        "maxPaintDriftPx": 0.16525637288346104
+      },
+      "classes": {}
+    }
+  ],
+  "scope": "Tool-only report-all; all attempted samples retained, terminal unsolvable samples have no publication. Not admission.",
+  "events": [],
+  "maxima": [
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 1316.6666666666667,
+      "kind": "joint",
+      "joint": "leg0FarKnee",
+      "deg": 12.829969990074531,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.08453226311111546,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 3000,
+      "kind": "joint",
+      "joint": "leg0FarFoot",
+      "deg": -12.937133418294284,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.533887977543887,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 2783.3333333333335,
+      "kind": "joint",
+      "joint": "leg0NearKnee",
+      "deg": -12.829519706425309,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.4760501133099659,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 3200,
+      "kind": "joint",
+      "joint": "leg0NearFoot",
+      "deg": 12.935475627760919,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.5872767752982757,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "kind": "joint",
+      "joint": "leg1FarKnee",
+      "deg": 12.752129571132349,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.36482345132165606,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 1950,
+      "kind": "joint",
+      "joint": "leg1FarFoot",
+      "deg": -17.153617776359052,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.25359678933334634,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "kind": "joint",
+      "joint": "leg1NearKnee",
+      "deg": -13.051903021013084,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.1957589250994252,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 2150,
+      "kind": "joint",
+      "joint": "leg1NearFoot",
+      "deg": 17.21436923778202,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.306985587087735,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 1316.6666666666667,
+      "kind": "joint",
+      "joint": "leg2FarKnee",
+      "deg": 11.025163882840987,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.08453226311111546,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "approach",
+      "ms": 318.5,
+      "kind": "joint",
+      "joint": "leg2FarFoot",
+      "deg": -15.320543406169795,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.085021660423864,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 2783.3333333333335,
+      "kind": "joint",
+      "joint": "leg2NearKnee",
+      "deg": -10.888995593019295,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.4760501133099659,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "approach",
+      "ms": 101.5,
+      "kind": "joint",
+      "joint": "leg2NearFoot",
+      "deg": 15.054403674352915,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.027094814860352263,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "kind": "joint",
+      "joint": "leg3FarKnee",
+      "deg": 10.239965025410424,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.36482345132165606,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "approach",
+      "ms": 108.5,
+      "kind": "joint",
+      "joint": "leg3FarFoot",
+      "deg": -18.005727587457812,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.028963422781755874,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "kind": "joint",
+      "joint": "leg3NearKnee",
+      "deg": -10.565753796716884,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.1957589250994252,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "approach",
+      "ms": 311.5,
+      "kind": "joint",
+      "joint": "leg3NearFoot",
+      "deg": 18.36818326750481,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.0831530525024604,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "approach",
+      "ms": 318.5,
+      "kind": "joint",
+      "joint": "leg0FarKnee",
+      "deg": 10.877771390941161,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.1112999355148369,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 3000,
+      "kind": "joint",
+      "joint": "leg0FarFoot",
+      "deg": -12.308556600962717,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.6989006939707183,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "approach",
+      "ms": 101.5,
+      "kind": "joint",
+      "joint": "leg0NearKnee",
+      "deg": -10.932384411922659,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.035469210219013954,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 3200,
+      "kind": "joint",
+      "joint": "leg0NearFoot",
+      "deg": 12.390474870849914,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.7687907633677902,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "kind": "joint",
+      "joint": "leg1FarKnee",
+      "deg": 11.09701290269619,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.4775821408799908,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 1950,
+      "kind": "joint",
+      "joint": "leg1FarFoot",
+      "deg": -16.287527651975235,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.33197782963609124,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "kind": "joint",
+      "joint": "leg1NearKnee",
+      "deg": -11.305414310373578,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.25626358778926334,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 2150,
+      "kind": "joint",
+      "joint": "leg1NearFoot",
+      "deg": 16.629404479202844,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.401867899033163,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 1316.6666666666667,
+      "kind": "joint",
+      "joint": "leg2FarKnee",
+      "deg": 9.23163246787531,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.11065927654536377,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 3000,
+      "kind": "joint",
+      "joint": "leg2FarFoot",
+      "deg": -13.75036724843127,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.6989006939707183,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 2783.3333333333335,
+      "kind": "joint",
+      "joint": "leg2NearKnee",
+      "deg": -9.231632467875302,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.6231864521238905,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 3200,
+      "kind": "joint",
+      "joint": "leg2NearFoot",
+      "deg": 13.750367248431221,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.7687907633677902,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "kind": "joint",
+      "joint": "leg3FarKnee",
+      "deg": 9.083656851820443,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.4775821408799908,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 1950,
+      "kind": "joint",
+      "joint": "leg3FarFoot",
+      "deg": -16.961741982276518,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.33197782963609124,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "kind": "joint",
+      "joint": "leg3NearKnee",
+      "deg": -9.11223952583798,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.25626358778926334,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 2150,
+      "kind": "joint",
+      "joint": "leg3NearFoot",
+      "deg": 17.07432110160197,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.401867899033163,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "hit",
+      "ms": 270,
+      "kind": "joint",
+      "joint": "leg0FarKnee",
+      "deg": 12.196604370879342,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": -0.05236,
+        "dx": 0,
+        "dy": 0.060494
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": -0.05236,
+        "dx": 0,
+        "dy": 0.060494
+      },
+      "hip": "leg0FarRoot",
+      "hipDropPx": 6.160751693055397
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "dodge",
+      "ms": 140,
+      "kind": "joint",
+      "joint": "leg0FarFoot",
+      "deg": -11.389381540355425,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 3200,
+      "kind": "joint",
+      "joint": "leg0NearKnee",
+      "deg": -10.060911422280299,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.38761265281529045,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "dodge",
+      "ms": 140,
+      "kind": "joint",
+      "joint": "leg0NearFoot",
+      "deg": -15.053650253595029,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "approach",
+      "ms": 108.5,
+      "kind": "joint",
+      "joint": "leg1FarKnee",
+      "deg": 12.426492354827602,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.01911635128657228,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 1950,
+      "kind": "joint",
+      "joint": "leg1FarFoot",
+      "deg": -16.329300942584922,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.16737819098842086,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "approach",
+      "ms": 311.5,
+      "kind": "joint",
+      "joint": "leg1NearKnee",
+      "deg": -12.377364858055023,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.0548824278872559,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 2150,
+      "kind": "joint",
+      "joint": "leg1NearFoot",
+      "deg": 16.31352449791954,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.20261570488072,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 1316.6666666666667,
+      "kind": "joint",
+      "joint": "leg2FarKnee",
+      "deg": 11.340309930327367,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.05579273032947364,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "approach",
+      "ms": 318.5,
+      "kind": "joint",
+      "joint": "leg2FarFoot",
+      "deg": -14.568748290980674,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.056115740873486364,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 2783.3333333333335,
+      "kind": "joint",
+      "joint": "leg2NearKnee",
+      "deg": -11.299193515828051,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.31420116553966726,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "approach",
+      "ms": 101.5,
+      "kind": "joint",
+      "joint": "leg2NearFoot",
+      "deg": 14.543479317888357,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.01788303830034181,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "kind": "joint",
+      "joint": "leg3FarKnee",
+      "deg": 12.536096799142266,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.24078967826404404,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "approach",
+      "ms": 108.5,
+      "kind": "joint",
+      "joint": "leg3FarFoot",
+      "deg": -18.07044735615025,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.01911635128657228,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "kind": "joint",
+      "joint": "leg3NearKnee",
+      "deg": -12.503509014455073,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.12920421760509682,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "approach",
+      "ms": 311.5,
+      "kind": "joint",
+      "joint": "leg3NearFoot",
+      "deg": 18.047546523332382,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.0548824278872559,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "hit",
+      "ms": 270,
+      "kind": "joint",
+      "joint": "leg0FarKnee",
+      "deg": 12.002968233625468,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": -0.05236,
+        "dx": 0,
+        "dy": 0.085417
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": -0.05236,
+        "dx": 0,
+        "dy": 0.085417
+      },
+      "hip": "leg0FarRoot",
+      "hipDropPx": 7.182642301552069
+    },
+    {
+      "subject": "mud-crab",
+      "row": "dodge",
+      "ms": 140,
+      "kind": "joint",
+      "joint": "leg0FarFoot",
+      "deg": -11.20303700152696,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "hit",
+      "ms": 270,
+      "kind": "joint",
+      "joint": "leg0NearKnee",
+      "deg": 10.528318927852853,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": -0.05236,
+        "dx": 0,
+        "dy": 0.085417
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": -0.05236,
+        "dx": 0,
+        "dy": 0.085417
+      },
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0.573642306638269
+    },
+    {
+      "subject": "mud-crab",
+      "row": "dodge",
+      "ms": 140,
+      "kind": "joint",
+      "joint": "leg0NearFoot",
+      "deg": -16.423608866634662,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 108.5,
+      "kind": "joint",
+      "joint": "leg1FarKnee",
+      "deg": 12.358520268188743,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.02355021712578422,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 112,
+      "kind": "joint",
+      "joint": "leg1FarFoot",
+      "deg": -17.850137179473982,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.02430990154919661,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 311.5,
+      "kind": "joint",
+      "joint": "leg1NearKnee",
+      "deg": -12.35852026818881,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.06761191368370308,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 308,
+      "kind": "joint",
+      "joint": "leg1NearFoot",
+      "deg": 17.8501371794739,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.06685222926029068,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "presentation",
+      "ms": 3416.6666666666665,
+      "kind": "joint",
+      "joint": "leg2FarKnee",
+      "deg": 11.038136744150622,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.5245440066418913,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 318.5,
+      "kind": "joint",
+      "joint": "leg2FarFoot",
+      "deg": -15.590390232917605,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.06913128253052786,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "presentation",
+      "ms": 2783.3333333333335,
+      "kind": "joint",
+      "joint": "leg2NearKnee",
+      "deg": -10.98257158722609,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.3870773014529818,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 101.5,
+      "kind": "joint",
+      "joint": "leg2NearFoot",
+      "deg": 15.55347142213724,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.02203084827895943,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "kind": "joint",
+      "joint": "leg3FarKnee",
+      "deg": 11.815801513295169,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.2966386796181729,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 108.5,
+      "kind": "joint",
+      "joint": "leg3FarFoot",
+      "deg": -18.665315891180157,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.02355021712578422,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "kind": "joint",
+      "joint": "leg3NearKnee",
+      "deg": -11.737558855713036,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.15917197442926354,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 311.5,
+      "kind": "joint",
+      "joint": "leg3NearFoot",
+      "deg": 18.603769140496645,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.06761191368370308,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 322,
+      "kind": "joint",
+      "joint": "leg0FarKnee",
+      "deg": 11.070078192948937,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.1022058035531565,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 213.5,
+      "kind": "joint",
+      "joint": "leg0FarFoot",
+      "deg": 16.81386013927475,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.06776689148633203,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 98,
+      "kind": "joint",
+      "joint": "leg0NearKnee",
+      "deg": -10.870500229673201,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.031106114124873716,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "dodge",
+      "ms": 140,
+      "kind": "joint",
+      "joint": "leg0NearFoot",
+      "deg": -16.8149175261109,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 108.5,
+      "kind": "joint",
+      "joint": "leg1FarKnee",
+      "deg": 12.93214617633425,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.03443891206682448,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 112,
+      "kind": "joint",
+      "joint": "leg1FarFoot",
+      "deg": -20.79183203853272,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.035549844714141396,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 311.5,
+      "kind": "joint",
+      "joint": "leg1NearKnee",
+      "deg": -12.952819094900082,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.09887300561120574,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 308,
+      "kind": "joint",
+      "joint": "leg1NearFoot",
+      "deg": 20.90524523643113,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.09776207296388882,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 318.5,
+      "kind": "joint",
+      "joint": "leg2FarKnee",
+      "deg": 10.435779603727806,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.10109487090583959,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "presentation",
+      "ms": 3000,
+      "kind": "joint",
+      "joint": "leg2FarFoot",
+      "deg": -16.48719881237518,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.6348186556096677,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 101.5,
+      "kind": "joint",
+      "joint": "leg2NearKnee",
+      "deg": -10.382514788681076,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.03221704677219064,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "presentation",
+      "ms": 3200,
+      "kind": "joint",
+      "joint": "leg2NearFoot",
+      "deg": 16.45218548300665,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.6983005211706345,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "kind": "joint",
+      "joint": "leg3FarKnee",
+      "deg": 10.797252305307884,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.43379274799993955,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 108.5,
+      "kind": "joint",
+      "joint": "leg3FarFoot",
+      "deg": -19.352529924945564,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.03443891206682448,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "kind": "joint",
+      "joint": "leg3NearKnee",
+      "deg": -11.16129453145267,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.23276684039021145,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 311.5,
+      "kind": "joint",
+      "joint": "leg3NearFoot",
+      "deg": 20.066259394389014,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.09887300561120574,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "civet",
+      "row": "melee:tail",
+      "ms": 117.83333333333333,
+      "kind": "joint",
+      "joint": "hindFarKnee",
+      "deg": 12.625852806694246,
+      "limit": {
+        "min": -100,
+        "max": 100
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0.029415
+      },
+      "spine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0.029415
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 9.748130034738711
+    },
+    {
+      "subject": "civet",
+      "row": "faint",
+      "ms": 445.2,
+      "kind": "joint",
+      "joint": "hindFarAnkle",
+      "deg": -76.76561726494194,
+      "limit": {
+        "min": -105,
+        "max": 105
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 76.34309388590637
+    },
+    {
+      "subject": "civet",
+      "row": "faint",
+      "ms": 445.2,
+      "kind": "joint",
+      "joint": "hindFarPaw",
+      "deg": 69.70053834289912,
+      "limit": {
+        "min": -95,
+        "max": 95
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 76.34309388590637
+    },
+    {
+      "subject": "civet",
+      "row": "faint",
+      "ms": 445.2,
+      "kind": "joint",
+      "joint": "foreFarKnee",
+      "deg": -86.53689176514563,
+      "limit": {
+        "min": -100,
+        "max": 100
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 189.34312836341144
+    },
+    {
+      "subject": "civet",
+      "row": "faint",
+      "ms": 270.3,
+      "kind": "joint",
+      "joint": "foreFarAnkle",
+      "deg": 94.14690036930628,
+      "limit": {
+        "min": -105,
+        "max": 105
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.087467,
+        "dx": -0.010023,
+        "dy": 0.160138
+      },
+      "spine": {
+        "rotation": 0.174453,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.087467,
+        "dx": -0.010023,
+        "dy": 0.160138
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 160.9418189963634
+    },
+    {
+      "subject": "civet",
+      "row": "tame",
+      "ms": 387.2,
+      "kind": "joint",
+      "joint": "foreFarPaw",
+      "deg": -48.168280588852525,
+      "limit": {
+        "min": -95,
+        "max": 95
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.12,
+        "dy": 0.019986
+      },
+      "spine": {
+        "rotation": 0.052334,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.12,
+        "dy": 0.019986
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 31.81142467450074
+    },
+    {
+      "subject": "civet",
+      "row": "melee:tail",
+      "ms": 117.83333333333333,
+      "kind": "joint",
+      "joint": "hindNearKnee",
+      "deg": 19.898121166763506,
+      "limit": {
+        "min": -100,
+        "max": 100
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0.029415
+      },
+      "spine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0.029415
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 33.707639033027434
+    },
+    {
+      "subject": "civet",
+      "row": "faint",
+      "ms": 445.2,
+      "kind": "joint",
+      "joint": "hindNearAnkle",
+      "deg": -43.80633172441893,
+      "limit": {
+        "min": -105,
+        "max": 105
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 45.857406882216985
+    },
+    {
+      "subject": "civet",
+      "row": "tame",
+      "ms": 228.8,
+      "kind": "joint",
+      "joint": "hindNearPaw",
+      "deg": -33.341270594002445,
+      "limit": {
+        "min": -95,
+        "max": 95
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.12,
+        "dy": 0.0010181963457570392
+      },
+      "spine": {
+        "rotation": 0.004695,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.12,
+        "dy": -0.00549
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 0.3577370315165864
+    },
+    {
+      "subject": "civet",
+      "row": "tame",
+      "ms": 387.2,
+      "kind": "joint",
+      "joint": "foreNearKnee",
+      "deg": 20.06515347586836,
+      "limit": {
+        "min": -100,
+        "max": 100
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0,
+        "dx": 0.12,
+        "dy": 0.019986
+      },
+      "spine": {
+        "rotation": 0.052334,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.12,
+        "dy": 0.019986
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 23.939798700234945
+    },
+    {
+      "subject": "civet",
+      "row": "faint",
+      "ms": 445.2,
+      "kind": "joint",
+      "joint": "foreNearAnkle",
+      "deg": -90.7626456723172,
+      "limit": {
+        "min": -105,
+        "max": 105
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 142.8422890267172
+    },
+    {
+      "subject": "civet",
+      "row": "faint",
+      "ms": 445.2,
+      "kind": "joint",
+      "joint": "foreNearPaw",
+      "deg": 80.56851495806845,
+      "limit": {
+        "min": -95,
+        "max": 95
+      },
+      "exceeded": false,
+      "root": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "spine": {
+        "rotation": 0.139626,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0.174533,
+        "dx": -0.02,
+        "dy": 0.22
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 142.8422890267172
+    }
+  ],
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/record.json",
+      "sha256": "625309b27b17aff36a12ed6eedc4b882c14e1b4dd93c9e94e90c603dc021f2b4"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/binding.json",
+      "sha256": "227ec4b53559c38424ed8b243d88b2caf664e2804ba7f65986afb69f8482009b"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/record.json",
+      "sha256": "65a117c20f6de4bea7c7074d7b1214abebc42813e57f4b95818723d5bd0ff5ef"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/binding.json",
+      "sha256": "7ac8b5345f1155a97acb9de087b0c3ba0b34320d73419bad673752e04e9e34f7"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/record.json",
+      "sha256": "3ed3407e87adf664775629811a7845f1a3c3b2b94bad402fadb2262f4edf6202"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/binding.json",
+      "sha256": "075341dac4101bf8b0d641424cb7a7514277f9044a71b96a2b546228850a5f40"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/record.json",
+      "sha256": "f16b43760db43c41a65f0272af1ec60e5c9817b3b3943caa88934f5e5a981408"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/binding.json",
+      "sha256": "f87614a4fb9745f5d265ebaa2bc2203332ab2ecfd019d6368af66ac335619788"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/record.json",
+      "sha256": "6ed9989d14132ea998b1601da1b86838e61f87c7d973f7a1ddac00a8fd5b2f5c"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/binding.json",
+      "sha256": "ff30f7d588fcdcb73f3320ced63d6c1d9d37548be09f07c9103f6215daa8837b"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/record.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/binding.json",
+      "sha256": "d8e0035d35d3cdaf853da64de308bee06819ef92b43fd9985ac2b54756538909"
+    }
+  ]
+}

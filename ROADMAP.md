@@ -42,3 +42,7 @@ clears all classes except raw limits; stage selection now melee-only, gaits solv
 Measured contact limits Knee100/Ankle105/Paw95, raw limits unchanged. Nick approved x15
 negative control (x3 insensitive retained), then all remaining implementation choices within
 the run; existing S2/gates/local-only boundaries stay.39app tests pass; final AFTER pending.
+
+R3-S signed4b969894 accepted:13,286 strict samples, six subjects zero classes, native rest0,
+Civet worst drift0.165257px, unpinned/diffused negatives fail, crab bit identity. Next R2d
+parent-frame rigid foliage (leaf reds retained) then R3 interfaces and remaining§8.

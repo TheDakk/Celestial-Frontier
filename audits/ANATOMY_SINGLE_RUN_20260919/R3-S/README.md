@@ -33,3 +33,15 @@ Knee±100°, Ankle±105°, Paw±95° (measurement JSON records the formula and w
 Raw limits unchanged. Nick authorized x15 crouch rejection after x3 became insensitive;
 original failures retained in contact-controls-01..03 logs and diagnosis JSON. Stage-mode
 all-four bite still rejects compression.39app tests pass. Final signed AFTER sweep pending.
+
+## R3-S acceptance
+
+Signed/verified producer4b969894. AFTER report-all: all six subjects, zero classes. Strict
+production-throw sweep:13,286 published samples, all rows + presentation, covariance0, exact
+rest geometry, five crabs bit-identical. Civet maximum planted drift0.165256373px. Native
+rest-02:0changed pixels. Original unpinned candidate10 still fails at hindFarAnkle0.255262px
+in bite117.833333ms. Diffused mutant2.647942px fails; rigid positive0.00002521px passes.
+Both controls keep exact-triangle prediction; original inputs retained.39app tests include
+x15 limit rejection, all-four compression rejection, absent contracts and raw169-action
+battery. This is contact/static acceptance; CPU and full native visual films remain their
+separate later gates. R2d next; no review stop.
