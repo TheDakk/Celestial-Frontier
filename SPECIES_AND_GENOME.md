@@ -1,5 +1,7 @@
 # Celestial Frontier — Species & Genome System
 
+> Current roster intake, 2026-09-19: the historical58 inventory is explicit in `tools/fauna-coverage/roster-inventory.json`. Five admitted crabs retain existing fit/bind/film evidence; the remaining53 are attempted in source-family order and incomplete source fits refuse. Current missing-profile census counts53/8observed, not the historical58/13. Partial source features do not grant animation qualification. Evidence: `audits/ANATOMY_SINGLE_RUN_20260919/roster/README.md`.
+
 Current anatomy implementation — matches code as of September 19, 2026. The canonical
 contract and live limits are in [CREATURE_ANIMATION.md](CREATURE_ANIMATION.md); the current
 [accumulated review packet](audits/ANATOMY_SINGLE_RUN_20260919/README.md) separates source

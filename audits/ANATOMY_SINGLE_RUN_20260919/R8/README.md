@@ -1,3 +1,7 @@
 # R8 — D1 retained PNG delivery
 
 Read-only delivery chooses the exact retained four-hash identity and expected PNG hash, or the unchanged painter fallback. Rejected/missing/corrupt finishes never invoke inference. Native proof and two independent phone viewport Glass canaries follow the signed producer. This is not physical phone qualification or finished-art acceptance.
+
+Signed producer **7572a5cb**, signature verified. Unit2/2, typecheck and root validation pass. [Native delivery](delivery-01/report.json) passes on all five: identical decoded retained/fallback pixels, rejected/missing/wrong-hash fallback, zero workers/GPU access/inference. The retained PNG originals remain in R9. Five paired native delivery stills in delivery-01.
+
+Both local phone Glass canaries ran once. **Neither is a passing phone qualification**. Small320×568: floating-trail control instrument red, then terminal evidence publication refused because the run log inside this worktree changed the source fingerprint; the running sentinel and full log are retained, not treated as terminal PASS. Large412×915: terminal instrument-fail, floating-trail fallback control `tightPolicyObserved:false`; injected collision and restoration pass, required yield policy does not. The large log was external during execution. Both began dirty-diagnostic due untracked evidence and the pre-existing .DS_Store, despite unchanged committed product source. No threshold, hidden-baseline rule or source verifier changed; no retry. Desktop D1 proof is the §8 fallback, not physical iPhone qualification.

@@ -94,3 +94,5 @@ with five compiler admissions, Fiddler incomplete and48unsupported observations.
 input omitted rotation; instrument-only key corrected, fresh proof02 next. No shared S2 red.
 
 R5–R7 root-proof-02 PASS on verified e750bf00. D1 read-only PNG delivery prepared; next signed native retained/fallback proof and both local phone canaries, then roster and local split.
+
+D1 desktop native PASS, five exact retained/fallback pairs, zero inference/workers/GPU. Both local phone Glass attempts retain floating-trail instrument reds; small also has a changing-log source fingerprint. No retry or phone qualification. Roster58 intake producer prepared, including five completed crabs reused.
