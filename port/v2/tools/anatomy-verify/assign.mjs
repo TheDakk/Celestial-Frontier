@@ -17,7 +17,7 @@ import {templateRest} from './template-rest.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 /** Backwards-compatible descriptor view: legs per side and slot naming per template (from the contract). */
 export const TEMPLATES=new Proxy({},{get:(_,id)=>{if(typeof id!=='string')return undefined;const r=templateRest(id);return {legsPerSide:r.legsPerSide,slotName:(k,side)=>r.slots[side][k].terminal,rest:r};}});
-export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0}={}){
+export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0}={}){
   const T=templateRest(template),legsPerSide=T.legsPerSide,slotName=(k,side)=>T.slots[side][k].terminal;
   const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128}),{mask,dt,working:{width:W,height:H,scale,box}}=det;
   const g=ridgeGraph(mask,dt,W,H,{spurFactor:1.5,spurFloor:8});
@@ -139,7 +139,14 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
       const r0=unwrap(Math.atan2(up[1],up[0])),r1=unwrap(frontAng);const span=r1-r0;const expected=k=>r0+span*(k+0.5)/legsPerSide;
       if(process.env.ASSIGN_DEBUG)console.log('spacing',side,{r0:+r0.toFixed(2),r1:+r1.toFixed(2),span:+span.toFixed(2),up:up.map(v=>+v.toFixed(2)),expected:Array.from({length:legsPerSide},(_,k)=>+expected(k).toFixed(2)),cands:cs.map(c=>+unwrap(ang(c.attach??[c.x,c.y],centre)).toFixed(2))});
       const slotCost=(c,k)=>{const sl=T.slots[side][k];let v=0;if(spacingWeight&&Math.abs(span)>1e-6){const a=unwrap(ang(c.attach??[c.x,c.y],centre));v+=spacingWeight*Math.abs(a-expected(k))/Math.abs(span/legsPerSide);}if(sl.restAngle!==undefined&&angleWeight)v+=angleWeight*angDiff(ang(c.attach??[c.x,c.y],centre),sl.restAngle)/(Math.PI/4);if(sl.restLength&&slotLenWeight)v+=slotLenWeight*Math.abs(Math.log(Math.max(1,c.len)/(sl.restLength*R)));return v;};
-      let best=null;const rec=(k,i,used,acc,cost)=>{if(k===legsPerSide){let total=cost;const usedSet=new Set(acc.filter(Boolean));for(const c of cs)if(!usedSet.has(c))total+=unusedCostOf(c);if(!best||total<best.cost)best={cost:total,acc:acc.slice()};return;}
+      // GAP CONSISTENCY (painting-internal): with pitch = the median angular gap between consecutive candidates on the
+      // side, an assignment pays |gap/(Δslot) − pitch|/pitch for every consecutive filled pair (an empty slot between
+      // two candidates must show as a double gap), and pays when the FRONT slot is left empty although the last
+      // candidate separates within one pitch of the claw (the front slot is then visibly occupied)
+      const angs=cs.map(c=>unwrap(ang(c.attach??[c.x,c.y],centre)));const gaps=angs.slice(1).map((a,i)=>a-angs[i]).filter(g=>g>1e-3).sort((a,b)=>a-b);const pitch=gaps.length?gaps[Math.floor(gaps.length/2)]:0;
+      const gapCost=acc=>{if(!gapWeight||!pitch)return 0;let v=0,prevK=-1,prevJ=-1;acc.forEach((c,k)=>{if(!c)return;const j=cs.indexOf(c);if(prevK>=0){const g=(angs[j]-angs[prevJ])/(k-prevK);v+=Math.abs(g-pitch)/pitch;}prevK=k;prevJ=j;});
+        if(!acc[legsPerSide-1]&&prevJ>=0&&fronts.length){const gf=(r1-angs[prevJ])/pitch;v+=Math.max(0,1-gf);}return gapWeight*v;};
+      let best=null;const rec=(k,i,used,acc,cost)=>{if(k===legsPerSide){let total=cost+gapCost(acc);const usedSet=new Set(acc.filter(Boolean));for(const c of cs)if(!usedSet.has(c))total+=unusedCostOf(c);if(!best||total<best.cost)best={cost:total,acc:acc.slice()};return;}
         rec(k+1,i,used,acc.concat([null]),cost+emptyCost(k));for(let j=i;j<cs.length;j++)rec(k+1,j+1,used+1,acc.concat([cs[j]]),cost+unitCost(cs[j],thin,medLen)+slotCost(cs[j],k));};
       rec(0,0,0,[],0);
       best.acc.forEach((c,k)=>{if(c)place(slotName(k,side),c);else hidden.push(T.slots[side][k].id);});feet[side]=best.acc.filter(Boolean);}

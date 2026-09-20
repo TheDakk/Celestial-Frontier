@@ -337,3 +337,14 @@ Addendum (same session) — rules measured on the naming bottleneck, all kept OF
 - P7 leg seeds offset 0.15/0.3/0.5 R out of the thick region: body IoU unchanged (0.35–0.48); the body ceiling is the
   near claw's thick ARM, which is thick-region "body" and seeds as body ridge (visible on the overlay). A claw's arm
   must be cut from the body at the wrist (a DT valley along the thick ridge), which is a P3 question.
+- gap-consistency cost (pitch = median angular gap between consecutive candidates; an assignment pays for gaps that
+  are not whole multiples of the pitch and for an empty front slot when the last candidate separates within one
+  pitch of the claw): 0.3 → 21/37, 0.6 → 20/37, 1.0 → 20/37 (vent +1, mud −4: its Far side runs on loops, so the
+  pitch is noise). Rejected; `gapWeight` stays 0.
+**Design finding after these rounds (for Nick and the program, not a tuning note):** the legs that no rule can name
+correctly — freshwater and crab `leg0Far`, folded flat over the carapace top — have NO candidate of any kind: a limb
+painted over the body lies inside the silhouette, so an alpha-only ridge graph cannot see it, and no empty-slot prior
+can replace an absent candidate. The compiler needs an INTERIOR-EDGE stage for limbs over the body (colour/edge
+evidence inside the mask — the P0 key already yields RGBA; Codex's label maps show these legs as painted regions
+with a visible contour). Until then, precision-first: a folded leg is an empty slot, and IC-4's erased-leg mutant
+on such a leg is undetectable by construction (the erase removes pixels the graph never saw).
