@@ -557,3 +557,7 @@ D-9e biome/generation coverage remains open; this architecture does not repair i
 
 Historical failures, commands and receipts remain in audits/C2_* and the chronological roadmap archive.
 They explain the repairs; they do not override the live candidate and qualification status above.
+
+## R9 texture class — matches code as of 2026-09-19
+
+Desktop finishing uses the existing kit worker at strength 0.35, one step, a shared prompt and recipe-derived seed. Four-pixel alpha/ownership bands and outside pixels are protected; alpha is copied exactly. Conservation reports per-label components, boundary gradient (minimum ratio 0.95), CIE76 and luminance SSIM. Finished rebind copies no geometry changes and independently recompiles painter/finished skin for equality. Original painter records and files remain immutable. Numeric/native and visual evidence is pending in the R9 packet.

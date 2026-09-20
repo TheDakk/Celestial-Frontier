@@ -13,7 +13,7 @@ try{
  const subset={...pin,files:wanted,fileCount:wanted.length,totalBytes:wanted.reduce((s,f)=>s+f.bytes,0)};report.verified=(await fetchModel({manifest:subset,cacheDir:cache,verifyOnly:true})).receipt;
  const recipe=JSON.parse(await fs.readFile(path.join(root,'audits/ART_KIT_WEATHER_MAT_20260912/prepared/recipe.json')));
  const routes=new Map(wanted.map(f=>['/model/'+f.path,path.join(cache,f.path)]));
- for(const n of ['kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','kit-contact-math.mjs','kit-weather-math.mjs','pipeline-math.mjs'])routes.set('/'+n,path.join(dir,n));
+ for(const n of ['creature-finish-math.mjs','kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','kit-contact-math.mjs','kit-weather-math.mjs','pipeline-math.mjs'])routes.set('/'+n,path.join(dir,n));
  const dist=path.join(dir,'node_modules/onnxruntime-web/dist');for(const n of await fs.readdir(dist))if(/\.(mjs|wasm)$/.test(n))routes.set('/node_modules/onnxruntime-web/dist/'+n,path.join(dist,n));
  routes.set('/tokenizer.mjs',path.join(dir,'node_modules/@huggingface/tokenizers/dist/tokenizers.mjs'));
  const script=`import * as ort from '/node_modules/onnxruntime-web/dist/ort.webgpu.min.mjs';import {Tokenizer} from '/tokenizer.mjs';import {createKitWorkerEngine} from '/kit-worker-engine.mjs';let engine;window.proof={status:'running',events:[]};try{engine=await createKitWorkerEngine({ort,Tokenizer,progress:e=>proof.events.push(e)});const text=await engine.precomputeText(${JSON.stringify(recipe.finisherPrompt)});proof.text=text;proof.status='complete';}catch(e){proof.status='failed';proof.error=String(e.stack??e);}finally{await engine?.dispose();}`;

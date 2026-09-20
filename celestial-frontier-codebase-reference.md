@@ -6861,3 +6861,7 @@ Historical strip/socket mechanisms and labelled fallback captures remain in
 `audits/C2_DEFORMING_SEAMS_20260914`, `audits/C2_PARTS_MOTION_20260913` and earlier C2 audits.
 Signing failures recorded there are historical, not a current request to unlock 1Password.
 The live audit owns the current candidate, measured failures and eventual reviewed films.
+
+### Creature texture finishing (matches code as of 2026-09-19)
+
+The shared kit worker exposes the desktop creature texture class; landfall composition remains unchanged. `port/v2/tools/painted-creature/` owns conservation, native finishing and geometry-preserving atlas replacement; `prepare-observed-crabs.mjs --finished=DIR` treats its first argument as the existing five-crab binding directory. `creature-originals.ts` retains full-identity immutable originals and supplies phone painter fallback. R9 evidence records qualification separately from code availability.

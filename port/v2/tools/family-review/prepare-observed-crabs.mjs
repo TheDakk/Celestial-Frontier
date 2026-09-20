@@ -8,6 +8,8 @@ import {buildPaintSkin} from '../creature-animation/build-paint-skin.mjs';
 import {splitObservedSurfaces} from '../creature-animation/split-observed-surfaces.mjs';
 import {createSourceJoinProbe} from '../quadruped-proof/source-join-continuity.mjs';
 const require=createRequire(import.meta.url),sharp=createRequire(require.resolve('free-tex-packer-core'))('sharp');
+const finishedArg=process.argv.find(a=>a.startsWith('--finished='));
+if(finishedArg){const {rebindFinished}=await import('../painted-creature/rebind-finished.mjs');console.log(JSON.stringify(await rebindFinished(path.resolve(process.argv[2]),path.resolve(finishedArg.slice(11)),path.resolve(process.argv[3]))));process.exit(0);}
 const [sourceArg,outArg]=process.argv.slice(2),source=path.resolve(sourceArg),output=path.resolve(outArg),report=JSON.parse(fs.readFileSync(path.join(source,'report.json')));
 if(report.schema!=='cf.source-painter-parts/v1'||report.status!=='DIAGNOSTIC_PASS'||report.rows.length!==5||fs.existsSync(output))throw Error('New output and complete source mask capture required');
 if(!Array.isArray(report.artifacts)||report.artifacts.length!==25)throw Error('Complete source artifact manifest required');

@@ -392,6 +392,16 @@ export function compileEarthArtKitV4(input: unknown, kit: string) {
     qualityAccepted: false, scope: 'six-earth-cutouts-temperate-plate-five-named-family-exemplars' });
 }
 
+/** Desktop creature texture class, same kit finisher, inverted protection polarity.
+ * No per-species prompt/settings; pixels carry anatomy and palette. */
+export function compileCreatureFinishV1(input:{recordRecipeHash:string;cutoutAssetHash:string;seed:number;width:number;height:number;master:KitPreparedImageV4;labels:KitPreparedImageV4}) {
+ if(!/^[a-f0-9]{64}$/.test(input.recordRecipeHash)||!/^[a-f0-9]{64}$/.test(input.cutoutAssetHash)||!Number.isSafeInteger(input.seed))throw Error('Creature finish identity');
+ const seed=(input.seed ^ Number.parseInt(input.recordRecipeHash.slice(0,8),16))>>>0;
+ return freeze({schema:'cf.creature-finish.v1',tier:'desktop',width:input.width,height:input.height,seed,master:input.master,labels:input.labels,
+   settings:{strength:.35,steps:1,boundaryPixels:4,gradientRatio:.95},
+   prompt:'Rich natural-history fantasy painting. Finish the existing painted creature with fine natural material texture and softly modeled light. Preserve its exact anatomy, count of legs and pincers, pose, silhouette, pigment colors, markings and part boundaries. Work only inside the existing painted surfaces. Keep the source background unchanged. No added limbs, objects, scenery, lettering or decorations.'});
+}
+
 export interface KitPreparedImageV4 { readonly url: string; readonly sha256: string; readonly width: number; readonly height: number }
 export interface KitEngineAssetsV4 { readonly plate: KitPreparedImageV4; readonly atlas: KitPreparedImageV4; readonly triptych: KitPreparedImageV4; readonly residents: Readonly<Record<string, KitPreparedImageV4>>; readonly foreground?: KitPreparedImageV4 }
 export interface KitEngineSettingsV4 { readonly width: number; readonly height: number; readonly passSize: number; readonly seed: number; readonly steps: number; readonly strength: number; readonly finisherStrength: number; readonly compositionProfile?: 'edge-runners-v1' | 'weather-mat-v1' }

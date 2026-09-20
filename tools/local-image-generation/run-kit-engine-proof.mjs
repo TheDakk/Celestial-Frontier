@@ -26,7 +26,7 @@ try{
   const recipeBytes=await fs.readFile(path.join(prepared,'recipe.json'));if(sha(recipeBytes)!==manifest.recipeSha256)throw Error('Prepared recipe SHA mismatch');
   receipt.recipeSha256=manifest.recipeSha256;
   const routes=new Map([['/recipe.json',path.join(prepared,'recipe.json')],['/kit-client.mjs',path.join(prepared,'kit-client.mjs')]]);
-  for(const name of ['kit-proof-client.mjs','stage-worker.mjs','kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','kit-contact-math.mjs','kit-weather-math.mjs','pipeline-math.mjs','gpu-profile.mjs','denoiser-shapes.mjs','browser-variant-plan.json'])routes.set('/'+name,path.join(dir,name));
+  for(const name of ['creature-finish-math.mjs','kit-proof-client.mjs','stage-worker.mjs','kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','kit-contact-math.mjs','kit-weather-math.mjs','pipeline-math.mjs','gpu-profile.mjs','denoiser-shapes.mjs','browser-variant-plan.json'])routes.set('/'+name,path.join(dir,name));
   routes.set('/stage-worker.mjs',path.join(dir,'kit-stage-worker.mjs')); // Same shipped kit worker for both proof modes.
   for(const row of manifest.files){const file=path.join(prepared,'inputs',path.basename(row.url));if(sha(await fs.readFile(file))!==row.sha256)throw Error('Prepared RGBA changed');routes.set(row.url,file);}
   for(const row of pin.files)routes.set('/model/'+row.path,path.join(cacheDir,row.path));
