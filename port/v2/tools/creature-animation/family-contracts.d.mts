@@ -2,7 +2,7 @@ import type {SkeletonDefinition} from './skeleton-pose.mjs';
 export interface FamilyContract extends SkeletonDefinition {
  readonly id:string;readonly version:number;readonly clipSetId:string;readonly joints:readonly string[];
  readonly legs:readonly string[];
- readonly contactStance?:{readonly default:'all'|'hind'|'none';readonly actions:Readonly<Record<string,'all'|'hind'|'none'>>};
+ readonly contactStance?:{readonly default:'all'|'hind'|'none';readonly gaits?:Readonly<Record<string,'alternating'|'bounding'>>;readonly actions:Readonly<Record<string,'all'|'hind'|'none'>>};
  readonly limitsDeg:Readonly<Record<string,{min:number;max:number}>>;
  readonly bounds:ReadonlyArray<{id:string;min:number;max:number;kind:string;axis?:readonly [string,string];bones?:readonly string[]}>;
 }
