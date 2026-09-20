@@ -1,5 +1,17 @@
 # Creature animation — shared anatomy and motion contract
 
+**Painted desktop delivery — Nick’s September20 decision, PROGRAM.md§6.** Accepted
+painted masters use full-film rig p95 ≤3.5ms on desktop, explicitly selected as the
+painted-desktop review tier. Canonical boundary24/interior56 meshes remain unchanged.
+Per-clip2ms readings remain recorded as diagnostics for this tier; the existing strict
+2ms phone/painter gate remains unchanged. D1 phones continue using retained originals.
+Geometry, exact rest,0.25px contact and split root-continuity gates remain mandatory.
+Current delivery: audits/VISION_P1_DESKTOP_DELIVERY_20260920/README.md.
+After four retained final captures, IC-3 writers are frozen: no intake, painting, P2 or
+roster until IC-4 passes the five accepted fits. Older CPU decision-pending notes below
+are historical measurements, superseded by this explicit tier decision.
+
+
 **Declared hidden anatomy — matches code September 20, 2026.** Nick accepted P1 Coconut
 Crab generation01; its six visible legs are correct under the species count law. The final
 walking pair is present but hidden, not absent. `cf.anatomy-presence/v2.hidden` explicitly
