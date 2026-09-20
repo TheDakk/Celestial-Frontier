@@ -1,0 +1,120 @@
+{
+  "creatureId": "p1-mud-crab",
+  "parts": [
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "63957a57198cd8aa087a6061dff72af98af1b63a5bb9fab4d65306fbee1fa374"
+    },
+    {
+      "name": "leg0far-upper.png",
+      "path": "parts/leg0far-upper.png",
+      "sha256": "0e0ef9f29dde9e4b7ab957ba5ecc60eb734519122a2e1241405141ce858ccadb"
+    },
+    {
+      "name": "leg0far-lower.png",
+      "path": "parts/leg0far-lower.png",
+      "sha256": "7eb00e7b66c3cfef32839c6112ebf59432be46f6ec2269d9f74cfc8adcac4f0b"
+    },
+    {
+      "name": "leg1far-upper.png",
+      "path": "parts/leg1far-upper.png",
+      "sha256": "bea3883d5cf28a19c60b348b6356fee4b2577cd75cf8fa6a4f109dd9f330de56"
+    },
+    {
+      "name": "leg1far-lower.png",
+      "path": "parts/leg1far-lower.png",
+      "sha256": "686531fe367bdd636cdbb2e0df8414713227a202d58afa87604feb129d723614"
+    },
+    {
+      "name": "leg2far-upper.png",
+      "path": "parts/leg2far-upper.png",
+      "sha256": "e34f6fd47163794ffdb75061ed2f36361303d0278af98f8661b9c653325c8828"
+    },
+    {
+      "name": "leg2far-lower.png",
+      "path": "parts/leg2far-lower.png",
+      "sha256": "099e304bbf143acbb277b1dae76f163e2f93bec5eb3a65af1a63a71d88a9fa51"
+    },
+    {
+      "name": "leg0near-upper.png",
+      "path": "parts/leg0near-upper.png",
+      "sha256": "bfa3117a95fa41dc82e19f33a77b23cdacc5a7862b94f5d490c8c82614f0d82b"
+    },
+    {
+      "name": "leg0near-lower.png",
+      "path": "parts/leg0near-lower.png",
+      "sha256": "92996501593a35b34eadba3bd5b859d0d8cbc6485cccd3c0094df9eb7f0ce814"
+    },
+    {
+      "name": "leg1near-upper.png",
+      "path": "parts/leg1near-upper.png",
+      "sha256": "fe254c75b1bbefcafc96278489aa53f53549372dfcd10a4d778b5b45fe6f27f7"
+    },
+    {
+      "name": "leg1near-lower.png",
+      "path": "parts/leg1near-lower.png",
+      "sha256": "ab63f343861a049130b5f374e2ffd9ef9d694b6682de0fbe74e641b77d799653"
+    },
+    {
+      "name": "leg2near-upper.png",
+      "path": "parts/leg2near-upper.png",
+      "sha256": "115f36bc870f98478bb3a610b87ec177f25a6889f4a85f13a26dbad5ebfdfbfe"
+    },
+    {
+      "name": "leg2near-lower.png",
+      "path": "parts/leg2near-lower.png",
+      "sha256": "f90412c3784867dd2d77b2a2c35eea84e7be7250a25f1e812ce8091e5ee64bfc"
+    },
+    {
+      "name": "leg3near-upper.png",
+      "path": "parts/leg3near-upper.png",
+      "sha256": "3b124e83e466ba71283a3d13902fca070e33f22046f6e83ae24b8e39456ecf52"
+    },
+    {
+      "name": "leg3near-lower.png",
+      "path": "parts/leg3near-lower.png",
+      "sha256": "785be03d8328a32ad010cf73131e091a33e11d338dcb0d0a60102eaae0b89825"
+    },
+    {
+      "name": "claw-far-arm.png",
+      "path": "parts/claw-far-arm.png",
+      "sha256": "8848b8790f5a78af0e2b1832c1c82ff4485a5688e2b91c6faa61099c0274bd82"
+    },
+    {
+      "name": "claw-far-palm.png",
+      "path": "parts/claw-far-palm.png",
+      "sha256": "68ae33087b63035ffc8df5543aa983a34c6d985f0c558c7b752e57fb876bd9ff"
+    },
+    {
+      "name": "claw-far-finger.png",
+      "path": "parts/claw-far-finger.png",
+      "sha256": "96bc3071cbb7457e414fe31ff30c04eb56cb7bbba63bc5e50ac4d513c71f92c7"
+    },
+    {
+      "name": "claw-near-arm.png",
+      "path": "parts/claw-near-arm.png",
+      "sha256": "0bf35c9a25c8b3ad29c8e9d54e5945b25da09c2b11c28f85db15754d21a9b07f"
+    },
+    {
+      "name": "claw-near-palm.png",
+      "path": "parts/claw-near-palm.png",
+      "sha256": "8d5829420ab226194a11f08237fa14d28cb2e45cefa67adb3d46175766f6db02"
+    },
+    {
+      "name": "claw-near-finger.png",
+      "path": "parts/claw-near-finger.png",
+      "sha256": "bcfc628004017378c43b9ac5f97de5494d286a5038fe5da4ddfea922fc53c14e"
+    },
+    {
+      "name": "eye-far.png",
+      "path": "parts/eye-far.png",
+      "sha256": "29ee8c625fe1affd110ca7068bf0a6feff8361eadbca08014b8afa31f6463338"
+    },
+    {
+      "name": "eye-near.png",
+      "path": "parts/eye-near.png",
+      "sha256": "47252f8f5b7e2a8b6de9ce28f8a0ac9bf9791829a15d6bbcb939b833e64ba16a"
+    }
+  ]
+}

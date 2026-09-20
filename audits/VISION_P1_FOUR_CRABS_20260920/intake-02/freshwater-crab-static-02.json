@@ -1,0 +1,2034 @@
+{
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00007046953071021482,
+      "error": null
+    },
+    {
+      "id": "approach",
+      "samples": 121,
+      "maxPaintDriftPx": 0.005785543955871853,
+      "maxGapPx": 0.00007046953071021482,
+      "error": null
+    },
+    {
+      "id": "melee:pinch",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00004793885161638131,
+      "error": null
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "maxPaintDriftPx": 0.004060833696898714,
+      "maxGapPx": 0.00006938456052804993,
+      "error": null
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00006938456061241723,
+      "error": null
+    },
+    {
+      "id": "approach:scuttle",
+      "samples": 121,
+      "maxPaintDriftPx": 0.005785543955871853,
+      "maxGapPx": 0.00007046953071021482,
+      "error": null
+    },
+    {
+      "id": "cast",
+      "samples": 91,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00007046953071021482,
+      "error": {
+        "ms": 462.5833333333333,
+        "message": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18291:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18358:4)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:15171:9)\n    at Object.action (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18403:16)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18864:85\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:15:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18899:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+        "contact": {
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "carapace": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg0FarRoot": {
+              "rotation": 0
+            },
+            "leg0FarKnee": {
+              "rotation": 0
+            },
+            "leg0FarFoot": {
+              "rotation": 0
+            },
+            "leg0NearRoot": {
+              "rotation": 0
+            },
+            "leg0NearKnee": {
+              "rotation": 0
+            },
+            "leg0NearFoot": {
+              "rotation": 0
+            },
+            "leg1FarRoot": {
+              "rotation": 0
+            },
+            "leg1FarKnee": {
+              "rotation": 0
+            },
+            "leg1FarFoot": {
+              "rotation": 0
+            },
+            "leg1NearRoot": {
+              "rotation": 0
+            },
+            "leg1NearKnee": {
+              "rotation": 0
+            },
+            "leg1NearFoot": {
+              "rotation": 0
+            },
+            "leg2FarRoot": {
+              "rotation": 0
+            },
+            "leg2FarKnee": {
+              "rotation": 0
+            },
+            "leg2FarFoot": {
+              "rotation": 0
+            },
+            "leg2NearRoot": {
+              "rotation": 0
+            },
+            "leg2NearKnee": {
+              "rotation": 0
+            },
+            "leg2NearFoot": {
+              "rotation": 0
+            },
+            "leg3FarRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg3FarKnee": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg3FarFoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg3NearRoot": {
+              "rotation": 0
+            },
+            "leg3NearKnee": {
+              "rotation": 0
+            },
+            "leg3NearFoot": {
+              "rotation": 0
+            },
+            "eyeFarRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "eyeFarTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarBase": {
+              "rotation": 0.092195,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarElbow": {
+              "rotation": 0.092195,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarPalm": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarFixedRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarFixedTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarDactylRoot": {
+              "rotation": 0.056086,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarDactylTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "eyeNearRoot": {
+              "rotation": -0.100853,
+              "dx": 0,
+              "dy": 0
+            },
+            "eyeNearTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearBase": {
+              "rotation": 0.092195,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearElbow": {
+              "rotation": 0.092195,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearPalm": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearFixedRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearFixedTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearDactylRoot": {
+              "rotation": -0.066614,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearDactylTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            }
+          },
+          "contacts": [
+            {
+              "joint": "leg0FarFoot",
+              "target": {
+                "x": 0.10845295055821372,
+                "y": 0.3508771929824561
+              },
+              "endpointTarget": {
+                "x": 0.10845295055821372,
+                "y": 0.3508771929824561
+              },
+              "paintedTarget": {
+                "x": 0.10127591706539076,
+                "y": 0.35045748342147237
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg0NearFoot",
+              "target": {
+                "x": 0.9154704944178629,
+                "y": 0.45055821371610844
+              },
+              "endpointTarget": {
+                "x": 0.9154704944178629,
+                "y": 0.45055821371610844
+              },
+              "paintedTarget": {
+                "x": 0.9210526315789473,
+                "y": 0.45215311004784686
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg1FarFoot",
+              "target": {
+                "x": 0.04226475279106858,
+                "y": 0.5661881977671451
+              },
+              "endpointTarget": {
+                "x": 0.04226475279106858,
+                "y": 0.5661881977671451
+              },
+              "paintedTarget": {
+                "x": 0.0386762360446571,
+                "y": 0.5697767145135566
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg1NearFoot",
+              "target": {
+                "x": 0.9593301435406698,
+                "y": 0.6570972886762361
+              },
+              "endpointTarget": {
+                "x": 0.9593301435406698,
+                "y": 0.6570972886762361
+              },
+              "paintedTarget": {
+                "x": 0.960127591706539,
+                "y": 0.6630781499202552
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg2FarFoot",
+              "target": {
+                "x": 0.15231259968102073,
+                "y": 0.7312599681020734
+              },
+              "endpointTarget": {
+                "x": 0.15231259968102073,
+                "y": 0.7312599681020734
+              },
+              "paintedTarget": {
+                "x": 0.15550239234449761,
+                "y": 0.733652312599681
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg2NearFoot",
+              "target": {
+                "x": 0.8843700159489634,
+                "y": 0.7862838915470495
+              },
+              "endpointTarget": {
+                "x": 0.8843700159489634,
+                "y": 0.7862838915470495
+              },
+              "paintedTarget": {
+                "x": 0.8823763955342903,
+                "y": 0.7882775119617225
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg3NearFoot",
+              "target": {
+                "x": 0.6507177033492823,
+                "y": 0.5853269537480064
+              },
+              "endpointTarget": {
+                "x": 0.6507177033492823,
+                "y": 0.5853269537480064
+              },
+              "paintedTarget": {
+                "x": 0.6475279106858054,
+                "y": 0.5853269537480064
+              },
+              "stance": true
+            }
+          ],
+          "maxError": 0,
+          "compression": 0,
+          "maxPaintTargetErrorPx": 0
+        },
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "carapace": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg0FarRoot": {
+            "rotation": 0
+          },
+          "leg0FarKnee": {
+            "rotation": 0
+          },
+          "leg0FarFoot": {
+            "rotation": 0
+          },
+          "leg0NearRoot": {
+            "rotation": 0
+          },
+          "leg0NearKnee": {
+            "rotation": 0
+          },
+          "leg0NearFoot": {
+            "rotation": 0
+          },
+          "leg1FarRoot": {
+            "rotation": 0
+          },
+          "leg1FarKnee": {
+            "rotation": 0
+          },
+          "leg1FarFoot": {
+            "rotation": 0
+          },
+          "leg1NearRoot": {
+            "rotation": 0
+          },
+          "leg1NearKnee": {
+            "rotation": 0
+          },
+          "leg1NearFoot": {
+            "rotation": 0
+          },
+          "leg2FarRoot": {
+            "rotation": 0
+          },
+          "leg2FarKnee": {
+            "rotation": 0
+          },
+          "leg2FarFoot": {
+            "rotation": 0
+          },
+          "leg2NearRoot": {
+            "rotation": 0
+          },
+          "leg2NearKnee": {
+            "rotation": 0
+          },
+          "leg2NearFoot": {
+            "rotation": 0
+          },
+          "leg3FarRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg3FarKnee": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg3FarFoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg3NearRoot": {
+            "rotation": 0
+          },
+          "leg3NearKnee": {
+            "rotation": 0
+          },
+          "leg3NearFoot": {
+            "rotation": 0
+          },
+          "eyeFarRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "eyeFarTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarBase": {
+            "rotation": 0.092195,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarElbow": {
+            "rotation": 0.092195,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarPalm": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarFixedRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarFixedTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarDactylRoot": {
+            "rotation": 0.056086,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarDactylTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "eyeNearRoot": {
+            "rotation": -0.100853,
+            "dx": 0,
+            "dy": 0
+          },
+          "eyeNearTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearBase": {
+            "rotation": 0.092195,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearElbow": {
+            "rotation": 0.092195,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearPalm": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearFixedRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearFixedTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearDactylRoot": {
+            "rotation": -0.066614,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearDactylTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "maxPaintDriftPx": 0.17079348447662193,
+      "maxGapPx": 0.00006938456068861995,
+      "error": null
+    },
+    {
+      "id": "faint",
+      "samples": 49,
+      "maxPaintDriftPx": 0.003463697873803941,
+      "maxGapPx": 0.00007046953071021482,
+      "error": {
+        "ms": 212.33333333333334,
+        "message": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18291:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18358:4)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:15171:9)\n    at Object.action (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18403:16)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18864:85\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:15:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18899:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+        "contact": {
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0.153029
+            },
+            "carapace": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg0FarRoot": {
+              "rotation": 0
+            },
+            "leg0FarKnee": {
+              "rotation": 0.08423650335193322
+            },
+            "leg0FarFoot": {
+              "rotation": 0.012351315851757432
+            },
+            "leg0NearRoot": {
+              "rotation": 0
+            },
+            "leg0NearKnee": {
+              "rotation": -0.17270659641066088
+            },
+            "leg0NearFoot": {
+              "rotation": 0.1319928639913982
+            },
+            "leg1FarRoot": {
+              "rotation": 0
+            },
+            "leg1FarKnee": {
+              "rotation": 0.11318292185847634
+            },
+            "leg1FarFoot": {
+              "rotation": -0.09675081075720236
+            },
+            "leg1NearRoot": {
+              "rotation": 0
+            },
+            "leg1NearKnee": {
+              "rotation": -0.15470752660921305
+            },
+            "leg1NearFoot": {
+              "rotation": 0.17571372062125645
+            },
+            "leg2FarRoot": {
+              "rotation": 0
+            },
+            "leg2FarKnee": {
+              "rotation": 0.20906999385075098
+            },
+            "leg2FarFoot": {
+              "rotation": -0.27123864189798397
+            },
+            "leg2NearRoot": {
+              "rotation": 0
+            },
+            "leg2NearKnee": {
+              "rotation": -0.2716807808056636
+            },
+            "leg2NearFoot": {
+              "rotation": 0.36049565137316847
+            },
+            "leg3FarRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg3FarKnee": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg3FarFoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg3NearRoot": {
+              "rotation": 0
+            },
+            "leg3NearKnee": {
+              "rotation": -0.8272106023443541
+            },
+            "leg3NearFoot": {
+              "rotation": 1.3333508680394615
+            },
+            "eyeFarRoot": {
+              "rotation": 0.039897,
+              "dx": 0,
+              "dy": 0
+            },
+            "eyeFarTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarBase": {
+              "rotation": 0.038456,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarElbow": {
+              "rotation": 0.038456,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarPalm": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarFixedRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarFixedTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarDactylRoot": {
+              "rotation": 0.023394,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarDactylTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "eyeNearRoot": {
+              "rotation": 0.030052,
+              "dx": 0,
+              "dy": 0
+            },
+            "eyeNearTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearBase": {
+              "rotation": 0.038456,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearElbow": {
+              "rotation": 0.038456,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearPalm": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearFixedRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearFixedTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearDactylRoot": {
+              "rotation": -0.027786,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearDactylTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            }
+          },
+          "contacts": [
+            {
+              "joint": "leg0FarFoot",
+              "target": {
+                "x": 0.10845295055821372,
+                "y": 0.3508771929824561
+              },
+              "endpointTarget": {
+                "x": 0.10837901955456744,
+                "y": 0.35156739373358586
+              },
+              "paintedTarget": {
+                "x": 0.10127591706539076,
+                "y": 0.35045748342147237
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg0NearFoot",
+              "target": {
+                "x": 0.9154704944178629,
+                "y": 0.45055821371610844
+              },
+              "endpointTarget": {
+                "x": 0.9154102028949272,
+                "y": 0.4507867469409458
+              },
+              "paintedTarget": {
+                "x": 0.9210526315789473,
+                "y": 0.45215311004784686
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg1FarFoot",
+              "target": {
+                "x": 0.04226475279106858,
+                "y": 0.5661881977671451
+              },
+              "endpointTarget": {
+                "x": 0.042323233355029785,
+                "y": 0.5662476472859899
+              },
+              "paintedTarget": {
+                "x": 0.0386762360446571,
+                "y": 0.5697767145135566
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg1NearFoot",
+              "target": {
+                "x": 0.9593301435406698,
+                "y": 0.6570972886762361
+              },
+              "endpointTarget": {
+                "x": 0.9594559513580636,
+                "y": 0.6570818573957232
+              },
+              "paintedTarget": {
+                "x": 0.960127591706539,
+                "y": 0.6630781499202552
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg2FarFoot",
+              "target": {
+                "x": 0.15231259968102073,
+                "y": 0.7312599681020734
+              },
+              "endpointTarget": {
+                "x": 0.1521701280253631,
+                "y": 0.7314627683688816
+              },
+              "paintedTarget": {
+                "x": 0.15550239234449761,
+                "y": 0.733652312599681
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg2NearFoot",
+              "target": {
+                "x": 0.8843700159489634,
+                "y": 0.7862838915470495
+              },
+              "endpointTarget": {
+                "x": 0.8845389892176109,
+                "y": 0.7864685804327629
+              },
+              "paintedTarget": {
+                "x": 0.8823763955342903,
+                "y": 0.7882775119617225
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg3NearFoot",
+              "target": {
+                "x": 0.6507177033492823,
+                "y": 0.5853269537480064
+              },
+              "endpointTarget": {
+                "x": 0.6503177774796108,
+                "y": 0.5868733755885119
+              },
+              "paintedTarget": {
+                "x": 0.6475279106858054,
+                "y": 0.5853269537480064
+              },
+              "stance": true
+            }
+          ],
+          "maxError": 1.5700924586837752e-16,
+          "compression": 0,
+          "maxPaintTargetErrorPx": 0.0000258263575285489
+        },
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0.153029
+          },
+          "carapace": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg0FarRoot": {
+            "rotation": 0
+          },
+          "leg0FarKnee": {
+            "rotation": 0.08423650335193322
+          },
+          "leg0FarFoot": {
+            "rotation": 0.012351315851757432
+          },
+          "leg0NearRoot": {
+            "rotation": 0
+          },
+          "leg0NearKnee": {
+            "rotation": -0.17270659641066088
+          },
+          "leg0NearFoot": {
+            "rotation": 0.1319928639913982
+          },
+          "leg1FarRoot": {
+            "rotation": 0
+          },
+          "leg1FarKnee": {
+            "rotation": 0.11318292185847634
+          },
+          "leg1FarFoot": {
+            "rotation": -0.09675081075720236
+          },
+          "leg1NearRoot": {
+            "rotation": 0
+          },
+          "leg1NearKnee": {
+            "rotation": -0.15470752660921305
+          },
+          "leg1NearFoot": {
+            "rotation": 0.17571372062125645
+          },
+          "leg2FarRoot": {
+            "rotation": 0
+          },
+          "leg2FarKnee": {
+            "rotation": 0.20906999385075098
+          },
+          "leg2FarFoot": {
+            "rotation": -0.27123864189798397
+          },
+          "leg2NearRoot": {
+            "rotation": 0
+          },
+          "leg2NearKnee": {
+            "rotation": -0.2716807808056636
+          },
+          "leg2NearFoot": {
+            "rotation": 0.36049565137316847
+          },
+          "leg3FarRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg3FarKnee": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg3FarFoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg3NearRoot": {
+            "rotation": 0
+          },
+          "leg3NearKnee": {
+            "rotation": -0.8272106023443541
+          },
+          "leg3NearFoot": {
+            "rotation": 1.3333508680394615
+          },
+          "eyeFarRoot": {
+            "rotation": 0.039897,
+            "dx": 0,
+            "dy": 0
+          },
+          "eyeFarTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarBase": {
+            "rotation": 0.038456,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarElbow": {
+            "rotation": 0.038456,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarPalm": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarFixedRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarFixedTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarDactylRoot": {
+            "rotation": 0.023394,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarDactylTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "eyeNearRoot": {
+            "rotation": 0.030052,
+            "dx": 0,
+            "dy": 0
+          },
+          "eyeNearTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearBase": {
+            "rotation": 0.038456,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearElbow": {
+            "rotation": 0.038456,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearPalm": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearFixedRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearFixedTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearDactylRoot": {
+            "rotation": -0.027786,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearDactylTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "victory",
+      "samples": 49,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00006828235300962406,
+      "error": {
+        "ms": 245,
+        "message": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 6\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18291:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18358:4)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:15171:9)\n    at Object.action (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18403:16)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18864:85\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:15:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18899:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+        "contact": {
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "carapace": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg0FarRoot": {
+              "rotation": 0
+            },
+            "leg0FarKnee": {
+              "rotation": 0
+            },
+            "leg0FarFoot": {
+              "rotation": 0
+            },
+            "leg0NearRoot": {
+              "rotation": 0
+            },
+            "leg0NearKnee": {
+              "rotation": 0
+            },
+            "leg0NearFoot": {
+              "rotation": 0
+            },
+            "leg1FarRoot": {
+              "rotation": 0
+            },
+            "leg1FarKnee": {
+              "rotation": 0
+            },
+            "leg1FarFoot": {
+              "rotation": 0
+            },
+            "leg1NearRoot": {
+              "rotation": 0
+            },
+            "leg1NearKnee": {
+              "rotation": 0
+            },
+            "leg1NearFoot": {
+              "rotation": 0
+            },
+            "leg2FarRoot": {
+              "rotation": 0
+            },
+            "leg2FarKnee": {
+              "rotation": 0
+            },
+            "leg2FarFoot": {
+              "rotation": 0
+            },
+            "leg2NearRoot": {
+              "rotation": 0
+            },
+            "leg2NearKnee": {
+              "rotation": 0
+            },
+            "leg2NearFoot": {
+              "rotation": 0
+            },
+            "leg3FarRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg3FarKnee": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg3FarFoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg3NearRoot": {
+              "rotation": 0
+            },
+            "leg3NearKnee": {
+              "rotation": 0
+            },
+            "leg3NearFoot": {
+              "rotation": 0
+            },
+            "eyeFarRoot": {
+              "rotation": 0.095754,
+              "dx": 0,
+              "dy": 0
+            },
+            "eyeFarTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarBase": {
+              "rotation": 0.092295,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarElbow": {
+              "rotation": 0.092295,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarPalm": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarFixedRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarFixedTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarDactylRoot": {
+              "rotation": 0.056147,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarDactylTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "eyeNearRoot": {
+              "rotation": 0.072124,
+              "dx": 0,
+              "dy": 0
+            },
+            "eyeNearTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearBase": {
+              "rotation": 0.092295,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearElbow": {
+              "rotation": 0.092295,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearPalm": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearFixedRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearFixedTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearDactylRoot": {
+              "rotation": -0.066686,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearDactylTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            }
+          },
+          "contacts": [
+            {
+              "joint": "leg0FarFoot",
+              "target": {
+                "x": 0.10845295055821372,
+                "y": 0.3508771929824561
+              },
+              "endpointTarget": {
+                "x": 0.10845295055821372,
+                "y": 0.3508771929824561
+              },
+              "paintedTarget": {
+                "x": 0.10127591706539076,
+                "y": 0.35045748342147237
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg0NearFoot",
+              "target": {
+                "x": 0.9154704944178629,
+                "y": 0.45055821371610844
+              },
+              "endpointTarget": {
+                "x": 0.9154704944178629,
+                "y": 0.45055821371610844
+              },
+              "paintedTarget": {
+                "x": 0.9210526315789473,
+                "y": 0.45215311004784686
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg1FarFoot",
+              "target": {
+                "x": 0.04226475279106858,
+                "y": 0.5661881977671451
+              },
+              "endpointTarget": {
+                "x": 0.04226475279106858,
+                "y": 0.5661881977671451
+              },
+              "paintedTarget": {
+                "x": 0.0386762360446571,
+                "y": 0.5697767145135566
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg1NearFoot",
+              "target": {
+                "x": 0.9593301435406698,
+                "y": 0.6570972886762361
+              },
+              "endpointTarget": {
+                "x": 0.9593301435406698,
+                "y": 0.6570972886762361
+              },
+              "paintedTarget": {
+                "x": 0.960127591706539,
+                "y": 0.6630781499202552
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg2FarFoot",
+              "target": {
+                "x": 0.15231259968102073,
+                "y": 0.7312599681020734
+              },
+              "endpointTarget": {
+                "x": 0.15231259968102073,
+                "y": 0.7312599681020734
+              },
+              "paintedTarget": {
+                "x": 0.15550239234449761,
+                "y": 0.733652312599681
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg2NearFoot",
+              "target": {
+                "x": 0.8843700159489634,
+                "y": 0.7862838915470495
+              },
+              "endpointTarget": {
+                "x": 0.8843700159489634,
+                "y": 0.7862838915470495
+              },
+              "paintedTarget": {
+                "x": 0.8823763955342903,
+                "y": 0.7882775119617225
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg3NearFoot",
+              "target": {
+                "x": 0.6507177033492823,
+                "y": 0.5853269537480064
+              },
+              "endpointTarget": {
+                "x": 0.6507177033492823,
+                "y": 0.5853269537480064
+              },
+              "paintedTarget": {
+                "x": 0.6475279106858054,
+                "y": 0.5853269537480064
+              },
+              "stance": true
+            }
+          ],
+          "maxError": 0,
+          "compression": 0,
+          "maxPaintTargetErrorPx": 0
+        },
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "carapace": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg0FarRoot": {
+            "rotation": 0
+          },
+          "leg0FarKnee": {
+            "rotation": 0
+          },
+          "leg0FarFoot": {
+            "rotation": 0
+          },
+          "leg0NearRoot": {
+            "rotation": 0
+          },
+          "leg0NearKnee": {
+            "rotation": 0
+          },
+          "leg0NearFoot": {
+            "rotation": 0
+          },
+          "leg1FarRoot": {
+            "rotation": 0
+          },
+          "leg1FarKnee": {
+            "rotation": 0
+          },
+          "leg1FarFoot": {
+            "rotation": 0
+          },
+          "leg1NearRoot": {
+            "rotation": 0
+          },
+          "leg1NearKnee": {
+            "rotation": 0
+          },
+          "leg1NearFoot": {
+            "rotation": 0
+          },
+          "leg2FarRoot": {
+            "rotation": 0
+          },
+          "leg2FarKnee": {
+            "rotation": 0
+          },
+          "leg2FarFoot": {
+            "rotation": 0
+          },
+          "leg2NearRoot": {
+            "rotation": 0
+          },
+          "leg2NearKnee": {
+            "rotation": 0
+          },
+          "leg2NearFoot": {
+            "rotation": 0
+          },
+          "leg3FarRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg3FarKnee": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg3FarFoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg3NearRoot": {
+            "rotation": 0
+          },
+          "leg3NearKnee": {
+            "rotation": 0
+          },
+          "leg3NearFoot": {
+            "rotation": 0
+          },
+          "eyeFarRoot": {
+            "rotation": 0.095754,
+            "dx": 0,
+            "dy": 0
+          },
+          "eyeFarTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarBase": {
+            "rotation": 0.092295,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarElbow": {
+            "rotation": 0.092295,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarPalm": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarFixedRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarFixedTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarDactylRoot": {
+            "rotation": 0.056147,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarDactylTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "eyeNearRoot": {
+            "rotation": 0.072124,
+            "dx": 0,
+            "dy": 0
+          },
+          "eyeNearTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearBase": {
+            "rotation": 0.092295,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearElbow": {
+            "rotation": 0.092295,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearPalm": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearFixedRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearFixedTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearDactylRoot": {
+            "rotation": -0.066686,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearDactylTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00007281851499755174,
+      "error": null
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00003446468183605724,
+      "maxGapPx": 0.00007281851499755174,
+      "error": null
+    },
+    {
+      "id": "presentation",
+      "samples": 156,
+      "maxPaintDriftPx": 0.005785543955871853,
+      "maxGapPx": 0.00007046953071021482,
+      "error": {
+        "ms": 2600,
+        "message": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 5\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18291:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18358:4)\n    at Object.presentation (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18451:7)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18864:64\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:15:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-p1-static-Ny9FD6/run.mjs:18899:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+        "contact": {
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": 0.06797674684163565,
+              "dy": 0
+            },
+            "carapace": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg0FarRoot": {
+              "rotation": 0
+            },
+            "leg0FarKnee": {
+              "rotation": 0.2673424893223431
+            },
+            "leg0FarFoot": {
+              "rotation": -0.19089393436877064
+            },
+            "leg0NearRoot": {
+              "rotation": 0
+            },
+            "leg0NearKnee": {
+              "rotation": 0.004328392040959901
+            },
+            "leg0NearFoot": {
+              "rotation": -0.0091198180707278
+            },
+            "leg1FarRoot": {
+              "rotation": 0
+            },
+            "leg1FarKnee": {
+              "rotation": 0.0018553267901610937
+            },
+            "leg1FarFoot": {
+              "rotation": -0.004672150971617218
+            },
+            "leg1NearRoot": {
+              "rotation": 0
+            },
+            "leg1NearKnee": {
+              "rotation": -0.2209044543138715
+            },
+            "leg1NearFoot": {
+              "rotation": 0.3374683593590707
+            },
+            "leg2FarRoot": {
+              "rotation": 0
+            },
+            "leg2FarKnee": {
+              "rotation": 0.24710525250107104
+            },
+            "leg2FarFoot": {
+              "rotation": -0.40238801147046405
+            },
+            "leg2NearRoot": {
+              "rotation": 0
+            },
+            "leg2NearKnee": {
+              "rotation": 0.0006331993706431005
+            },
+            "leg2NearFoot": {
+              "rotation": -0.00318331686355966
+            },
+            "leg3FarRoot": {
+              "rotation": 0.011966,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg3FarKnee": {
+              "rotation": 0.044649,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg3FarFoot": {
+              "rotation": 0.031802,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg3NearRoot": {
+              "rotation": 0
+            },
+            "leg3NearKnee": {
+              "rotation": -0.23189690491773973
+            },
+            "leg3NearFoot": {
+              "rotation": 0.5272951797589218
+            },
+            "eyeFarRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "eyeFarTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarBase": {
+              "rotation": 0.090743,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarElbow": {
+              "rotation": 0.090743,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarPalm": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarFixedRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarFixedTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarDactylRoot": {
+              "rotation": 0.055202,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawFarDactylTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "eyeNearRoot": {
+              "rotation": -0.099264,
+              "dx": 0,
+              "dy": 0
+            },
+            "eyeNearTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearBase": {
+              "rotation": 0.090743,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearElbow": {
+              "rotation": 0.090743,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearPalm": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearFixedRoot": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearFixedTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearDactylRoot": {
+              "rotation": -0.065565,
+              "dx": 0,
+              "dy": 0
+            },
+            "clawNearDactylTip": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            }
+          },
+          "contacts": [
+            {
+              "joint": "leg0FarFoot",
+              "target": {
+                "x": 0.13431196435551604,
+                "y": 0.3261337930081555
+              },
+              "endpointTarget": {
+                "x": 0.1342589439614424,
+                "y": 0.3266807288017521
+              },
+              "paintedTarget": {
+                "x": 0.12713493086269306,
+                "y": 0.32571408344717173
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg0NearFoot",
+              "target": {
+                "x": 0.9256614187727207,
+                "y": 0.45055821371610844
+              },
+              "endpointTarget": {
+                "x": 0.9256538409675965,
+                "y": 0.45058497861499547
+              },
+              "paintedTarget": {
+                "x": 0.9312435559338051,
+                "y": 0.45215311004784686
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg1FarFoot",
+              "target": {
+                "x": 0.05245567714592634,
+                "y": 0.5661881977671451
+              },
+              "endpointTarget": {
+                "x": 0.05244555457597364,
+                "y": 0.5661781036709623
+              },
+              "paintedTarget": {
+                "x": 0.04886716039951486,
+                "y": 0.5697767145135566
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg1NearFoot",
+              "target": {
+                "x": 0.9520982476743161,
+                "y": 0.6322043241550528
+              },
+              "endpointTarget": {
+                "x": 0.9527992617581175,
+                "y": 0.6321521658180268
+              },
+              "paintedTarget": {
+                "x": 0.9528956958401853,
+                "y": 0.6381851853990719
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg2FarFoot",
+              "target": {
+                "x": 0.17970076862715056,
+                "y": 0.7042228354045315
+              },
+              "endpointTarget": {
+                "x": 0.17936914885892702,
+                "y": 0.704744954269476
+              },
+              "paintedTarget": {
+                "x": 0.18289056129062745,
+                "y": 0.7066151799021391
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg2NearFoot",
+              "target": {
+                "x": 0.8945609403038212,
+                "y": 0.7862838915470495
+              },
+              "endpointTarget": {
+                "x": 0.8945558498020731,
+                "y": 0.7862788140103041
+              },
+              "paintedTarget": {
+                "x": 0.8925673198891481,
+                "y": 0.7882775119617225
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg3NearFoot",
+              "target": {
+                "x": 0.6573474779198721,
+                "y": 0.5812264948822383
+              },
+              "endpointTarget": {
+                "x": 0.6572091837119287,
+                "y": 0.582155545156361
+              },
+              "paintedTarget": {
+                "x": 0.6541576852563953,
+                "y": 0.5812264948822383
+              },
+              "stance": false
+            }
+          ],
+          "maxError": 2.220446049250313e-16,
+          "compression": 0,
+          "maxPaintTargetErrorPx": 0.000570162333780593
+        },
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": 0.06797674684163565,
+            "dy": 0
+          },
+          "carapace": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg0FarRoot": {
+            "rotation": 0
+          },
+          "leg0FarKnee": {
+            "rotation": 0.2673424893223431
+          },
+          "leg0FarFoot": {
+            "rotation": -0.19089393436877064
+          },
+          "leg0NearRoot": {
+            "rotation": 0
+          },
+          "leg0NearKnee": {
+            "rotation": 0.004328392040959901
+          },
+          "leg0NearFoot": {
+            "rotation": -0.0091198180707278
+          },
+          "leg1FarRoot": {
+            "rotation": 0
+          },
+          "leg1FarKnee": {
+            "rotation": 0.0018553267901610937
+          },
+          "leg1FarFoot": {
+            "rotation": -0.004672150971617218
+          },
+          "leg1NearRoot": {
+            "rotation": 0
+          },
+          "leg1NearKnee": {
+            "rotation": -0.2209044543138715
+          },
+          "leg1NearFoot": {
+            "rotation": 0.3374683593590707
+          },
+          "leg2FarRoot": {
+            "rotation": 0
+          },
+          "leg2FarKnee": {
+            "rotation": 0.24710525250107104
+          },
+          "leg2FarFoot": {
+            "rotation": -0.40238801147046405
+          },
+          "leg2NearRoot": {
+            "rotation": 0
+          },
+          "leg2NearKnee": {
+            "rotation": 0.0006331993706431005
+          },
+          "leg2NearFoot": {
+            "rotation": -0.00318331686355966
+          },
+          "leg3FarRoot": {
+            "rotation": 0.011966,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg3FarKnee": {
+            "rotation": 0.044649,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg3FarFoot": {
+            "rotation": 0.031802,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg3NearRoot": {
+            "rotation": 0
+          },
+          "leg3NearKnee": {
+            "rotation": -0.23189690491773973
+          },
+          "leg3NearFoot": {
+            "rotation": 0.5272951797589218
+          },
+          "eyeFarRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "eyeFarTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarBase": {
+            "rotation": 0.090743,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarElbow": {
+            "rotation": 0.090743,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarPalm": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarFixedRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarFixedTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarDactylRoot": {
+            "rotation": 0.055202,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawFarDactylTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "eyeNearRoot": {
+            "rotation": -0.099264,
+            "dx": 0,
+            "dy": 0
+          },
+          "eyeNearTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearBase": {
+            "rotation": 0.090743,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearElbow": {
+            "rotation": 0.090743,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearPalm": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearFixedRoot": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearFixedTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearDactylRoot": {
+            "rotation": -0.065565,
+            "dx": 0,
+            "dy": 0
+          },
+          "clawNearDactylTip": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        }
+      }
+    }
+  ],
+  "contacts": [
+    "leg0FarFoot",
+    "leg0NearFoot",
+    "leg1FarFoot",
+    "leg1NearFoot",
+    "leg2FarFoot",
+    "leg2NearFoot",
+    "leg3NearFoot"
+  ],
+  "status": "RED",
+  "exactRest": true
+}

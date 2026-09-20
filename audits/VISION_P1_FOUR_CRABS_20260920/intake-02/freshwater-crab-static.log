@@ -1,0 +1,13 @@
+{"id":"idle","samples":121,"drift":0.00003446468183605724,"gap":0.000050070456030942114}
+{"id":"approach","samples":121,"drift":0.005785543955871853,"gap":0.000050070456030942114}
+{"id":"melee:pinch","samples":121,"drift":0.00003446468183605724,"gap":0.00004793885161638131}
+{"id":"hit","samples":121,"drift":0.004060833696898714,"gap":0.0000648634506656943}
+{"id":"alert","samples":121,"drift":0.00003446468183605724,"gap":0.00004793885161638131}
+{"id":"approach:scuttle","samples":121,"drift":0.005785543955871853,"gap":0.000050070456030942114}
+{"id":"cast","samples":91,"drift":0.00003446468183605724,"gap":0.00004793885161638131,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 7"}
+{"id":"dodge","samples":121,"drift":0.17079348447662193,"gap":0.00005285214803266112}
+{"id":"faint","samples":43,"drift":0.003463697873803941,"gap":0.000050070456030942114,"error":"Error: Contact: joint limit leg3NearKnee faint@186.33333333333334: -30.84506922632211"}
+{"id":"victory","samples":49,"drift":0.00003446468183605724,"gap":0.000050070456030942114,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 6"}
+{"id":"tame","samples":121,"drift":0.00003446468183605724,"gap":0.00004793885161638131}
+{"id":"feed","samples":121,"drift":0.00003446468183605724,"gap":0.000050070456030942114}
+{"id":"presentation","samples":156,"drift":0.005785543955871853,"gap":0.000050070456030942114,"error":"RecoverablePoseError: ARAP skin: unresolved folded triangles: 5"}

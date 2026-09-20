@@ -1,0 +1,47 @@
+{
+  "sourceLabelsReused": false,
+  "owner": "independent polygons observed on this generation01 painting",
+  "counts": [
+    185813,
+    4369,
+    9556,
+    2064,
+    10746,
+    5561,
+    11138,
+    4929,
+    4945,
+    13105,
+    13788,
+    13481,
+    16772,
+    6513,
+    11875,
+    23259,
+    41000,
+    9693,
+    24407,
+    52080,
+    12531,
+    2976,
+    3108
+  ],
+  "hiddenParts": [],
+  "intake": {
+    "mode": "delivered alpha preserved byte-for-byte",
+    "erodedPixels": 0,
+    "despilledPixels": 0,
+    "kitAcceptance": false
+  },
+  "rgbaChangedChannels": 0,
+  "parts": {
+    "id": "p1-mud-crab",
+    "parts": 23,
+    "atlasSize": {
+      "width": 2044,
+      "height": 1244
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  }
+}

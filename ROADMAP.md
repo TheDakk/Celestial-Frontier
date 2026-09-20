@@ -17,38 +17,32 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — four-crab intake partial; three painted chain locations unresolved
+## SESSION HANDOFF — consolidated painted-crab intake and CPU series underway
 
-Latest Nick direction: intake all four generation01 paintings now, no hidden declaration,
-before painted-tier CPU decision. Native films wait for CPU gate + split continuity guard.
-Read-only authority: anthropic VISION_PROGRAM_20260920/P1-four-crabs-review/README.md.
-Packet: audits/VISION_P1_FOUR_CRABS_20260920/intake-01/README.md.
+Authority: Nick September20 consolidated direction; sibling VISION_PROGRAM_20260920
+review addenda read-only, no sync. All five paintings accepted, no repaint. Roster holds.
+Current packet: audits/VISION_P1_CONSOLIDATED_20260920/README.md.
 
-Vent completed shared intake:25parts,8contacts,3794field vertices at boundary24/interior56.
-All12static rows +10-second presentation pass, exact rest, planted drift0.0226671px,
-seam gap0.00007038px. No native film/pixel-rest or CPU claim; art verdict remains Nick's.
-No hidden/absent override, runtime solver/limits/raw clips or original image changes.
+All four painted intakes now pass static rows and presentation. Current fits: intake-02
+Crab01 / Freshwater03 / Mud01, intake-01 Vent01; Coconut hidden-01 fit04 unchanged.
+Nick-declared hidden chain: Crab leg3Near; Freshwater/Mud leg3Far. No hidden paint/contact.
+Mud facial orbs remain T2 body paint. Freshwater mask-fringe repair resolves pose folds;
+earlier masks and failed pin-only repair retained. Expanded measured contact ranges are
+Knee75° / Foot105°, raw35° unchanged. Eighteen targeted runtime tests pass.
 
-Crab fourth right chain, Freshwater fourth left and Mud fourth left remain unlocated
-in Codex's mask tracing, conflicting with Claude's eight-visible review.23draft masks
-per subject retain all visible pixels; incomplete inventories correctly refuse before
-binding. Do NOT invent foot locations, hidden presence or assign claw/body paint as a leg.
-Nick directed using the tip detector; done read-only from Claude's tips.mjs, with hashes,
-exact parameters and candidate coordinate overlays retained. Raw down-counts9/9/9/11
-match the review but include claw fingers/duplicate positions along toes. Candidate
-ownership comparison in packetREADME does not resolve those three chain locations.
-Next input: actual foot/knee coordinates or labelled paths for those three chains.
-No repaint. Mud facial orbs are a T2 finding only, retained unchanged as body paint.
+Signing currently blocked: 1Password returned "agent returned an error"; no commit written.
+All producer/evidence changes staged. Last signed HEAD4f575f84. Nick has been asked to unlock
+the signing agent. No native measurement or signed-producer shared sweep has started.
 
-Current task is PARTIAL: cannot honestly provide four admitted bindings or a five-painted-
-subject CPU table yet. Coconut fit04 remains accepted unchanged; Vent provides the second
-painted binding. Prior CPU candidates80/128/256 at VISION_P1_ANIMATION_20260920 remain
-prepared;80/128 byte-identical. No native timing or root-guard change has run. Complete
-remaining intake after coordinate resolution, then resume authorized CPU/continuity work.
+CPU candidates prepared: boundary24 interior56/80/128/256; boundary32/48 interior56.
+Identical bindings alias; measure each unique native path once. Producer must be signed and
+six-subject painter/Civet regression controls must pass before timing. After the table,
+Nick chooses painted-tier gate; no threshold change authorized by the measurement request.
+Next independent work: full native-schedule root-step ledger for five painter crabs plus
+Coconut, split gait/non-gait guard and doubled faint-recovery rejection control. Four final
+films/sheets and P2 assembly follow the actual CPU decision and continuity guard.
 
-Tool syntax/root validate pass;50-probe fingerprint unchanged. No fetch/sync/push/PR/merge,
-release/deploy. PR42 and roster hold. Node26.9.0 uninterrupted receipt reused. OpenAI/Codex
-on macOS, /Users/nick/Projects/celestial-frontier-openai-mac, branch openai/mac. Signing
-checkpoint status is reported by actual Git HEAD and packet signature receipt; no unsigned
-fallback. Pre-existing .DS_Store untouched. Claude reviews packet/overlays read-only,
-no sibling edits/copies. No GitHub action or app switch for Git required.
+Node26.9.0 continuous-session receipt reused. Signed commits only; verify every signature.
+No fetch/sync/push/PR/merge/release/deploy. PR42 parked. Pre-existing .DS_Store untouched.
+OpenAI/Codex continues locally; Anthropic/Claude reviews completed packet read-only. Nick
+need not switch apps for Git; no cross-lane synchronization is authorized.

@@ -1,0 +1,82 @@
+[
+  {
+    "dir": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-02",
+    "px": 46,
+    "error": null
+  },
+  {
+    "dir": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-02",
+    "px": 72,
+    "error": null
+  },
+  {
+    "dir": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-02",
+    "px": 80,
+    "error": null
+  },
+  {
+    "dir": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-02",
+    "px": 90,
+    "error": null
+  },
+  {
+    "dir": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-02",
+    "px": 100,
+    "error": null
+  },
+  {
+    "dir": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-02",
+    "px": 110,
+    "error": null
+  },
+  {
+    "dir": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-02",
+    "px": 120,
+    "error": null
+  },
+  {
+    "dir": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-02",
+    "px": 140,
+    "error": "Error: Contact: faint@260 leg2Near RangeError: target outside two-bone reach"
+  },
+  {
+    "dir": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03",
+    "px": 46,
+    "error": "Error: Contact: joint limit leg3NearKnee faint@260: -77.32954677800656"
+  },
+  {
+    "dir": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03",
+    "px": 72,
+    "error": "Error: Contact: joint limit leg3NearKnee faint@260: -124.28419073445443"
+  },
+  {
+    "dir": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03",
+    "px": 80,
+    "error": "Error: Contact: joint limit leg3NearKnee faint@260: -138.29595736612342"
+  },
+  {
+    "dir": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03",
+    "px": 90,
+    "error": "Error: Contact: joint limit leg3NearKnee faint@260: -151.6350080862819"
+  },
+  {
+    "dir": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03",
+    "px": 100,
+    "error": "Error: Contact: joint limit leg3NearKnee faint@260: -159.43917431993154"
+  },
+  {
+    "dir": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03",
+    "px": 110,
+    "error": "Error: Contact: joint limit leg3NearKnee faint@260: -162.40853530235182"
+  },
+  {
+    "dir": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03",
+    "px": 120,
+    "error": "Error: Contact: joint limit leg3NearKnee faint@260: -161.48468459372413"
+  },
+  {
+    "dir": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03",
+    "px": 140,
+    "error": "Error: Contact: joint limit leg3NearKnee faint@260: -147.64309805001977"
+  }
+]
