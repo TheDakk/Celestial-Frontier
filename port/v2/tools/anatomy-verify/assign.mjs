@@ -28,10 +28,10 @@ export function assignLegs(rgba,w,h,guide,{legsPerSide=4,thinSpread=1.8,minTerm=
   // (c) touching limbs: a long non-body edge from a BODY node to a thin non-body JUNCTION far from the body (a rear
   // leg whose tip rests against the carapace or another leg forms a junction there instead of an endpoint)
   const thinAll=cands.map(c=>c.termDt).sort((a,b)=>a-b),thinRef=thinAll[Math.floor(thinAll.length/4)]??6;
-  for(const e of g.edges){if(e.meanDt>=lc.bodyDt||e.length<loopMinLen)continue;const aBody=bodyIds.has(e.a),bBody=bodyIds.has(e.b);if(aBody===bBody)continue;const farId=aBody?e.b:e.a,far=g.nodes[farId];if(far.kind!=='junction'||far.dt>1.5*thinRef)continue;
+  for(const e of g.edges){if(e.meanDt>=lc.bodyDt||e.length<loopMinLen)continue;const aBody=bodyIds.has(e.a),bBody=bodyIds.has(e.b);if(aBody===bBody)continue;const farId=aBody?e.b:e.a,far=g.nodes[farId];if(far.kind!=='junction'||far.dt>2*thinRef)continue;
     const d=Math.hypot(far.x-centre[0],far.y-centre[1]);if(d<lc.bodyDt*2)continue;
     // the arriving edge must itself be a limb (thin), not an arm/palm; the tip may rest on the carapace OR on another leg
-    if(e.meanDt>2.2*thinRef)continue;
+    if(e.minDt>1.3*thinRef)continue; // the arriving edge must get thin somewhere (a leg), even if its upper segment is thick
     if(cands.some(c=>Math.hypot(c.x-far.x,c.y-far.y)<20))continue;cands.push({kind:'touch',x:far.x,y:far.y,termDt:far.dt,term:e.length,attach:exitPoint([e],aBody?e.a:e.b)});}
   // Generic appendage classes on the candidates (no family knowledge):
   //  spine  = terminal branch shorter than minLimbTerm (hairs, serrations) → dropped;
@@ -44,20 +44,32 @@ export function assignLegs(rgba,w,h,guide,{legsPerSide=4,thinSpread=1.8,minTerm=
     if(Math.hypot(a.x-b.x,a.y-b.y)<=35&&Math.hypot(a.attach[0]-b.attach[0],a.attach[1]-b.attach[1])<=16){forkOf.set(a,b);forkOf.set(b,a);}}
   // side by the SEPARATION point (where the limb leaves the body), not the tip: tips of forward limbs cross the midline
   const sideOf=c=>((c.attach?c.attach[0]:c.x)<centre[0]?'Far':'Near');
-  const sides={Far:[],Near:[]};for(const c of pool){if(forkOf.has(c))continue;sides[sideOf(c)].push(c);}
-  const feet={Far:[],Near:[]},claws={Far:[],Near:[]};for(const c of pool)if(forkOf.has(c))claws[sideOf(c)].push(c);
-  // touching-tip candidates are weaker evidence than free tips: they only fill a side whose free-tip legs are fewer
-  // than the template count, and only from the rear (tips resting against the body are rear legs; occlusion happens
-  // at the claw end and is a hidden slot, not a touch)
-  for(const side of ['Far','Near']){const free=sides[side].filter(c=>c.kind!=='touch'),touch=sides[side].filter(c=>c.kind==='touch');
-    const need=Math.max(0,legsPerSide-free.length);feet[side]=free.concat(touch.sort((a,b)=>b.term-a.term).slice(0,need));}
-  // naming by the ATTACHMENT order along the body: sort each side's feet by the angle of their attachment point about
-  // the body centre, rear/top first; leg0 is the most rearward attachment, and gaps fall at the claw end.
-  const assigned={},hidden=[];
-  for(const side of ['Far','Near']){const list=feet[side].map(f=>({f,a:ang(f.attach??[f.x,f.y],centre)}));
-    const key=o=>side==='Near'?(o.a<-Math.PI/2?o.a+2*Math.PI:o.a):(o.a>Math.PI/2?-(o.a-2*Math.PI):-o.a);
-    const ordered=list.sort((p,q)=>key(p)-key(q));
-    for(let k=0;k<legsPerSide;k++){const name='leg'+k+side+'Foot';const o=ordered[k];if(o)assigned[name]={master:toM([o.f.x,o.f.y]).map(Math.round),kind:o.f.kind,attach:toM(o.f.attach??[o.f.x,o.f.y]).map(Math.round)};else hidden.push('leg'+k+side);}
-    if(ordered.length>legsPerSide)for(const o of ordered.slice(legsPerSide))hidden.push('extra:'+side+':'+toM([o.f.x,o.f.y]).map(Math.round).join(','));}
+  // thick-terminal rule: a long candidate whose terminal branch is much thicker than the thin cluster is a finger of a
+  // forked appendage even when its twin was not found (one finger can merge into a stub)
+  const thinTerms=pool.filter(c=>c.kind==='end').map(c=>c.termDt).sort((a,b)=>a-b),thinRefT=thinTerms[Math.floor(thinTerms.length/3)]??thinRef;
+  const isClaw=c=>forkOf.has(c)||(c.kind==='end'&&c.termDt>=1.6*thinRefT);
+  const sides={Far:[],Near:[]};for(const c of pool){if(isClaw(c))continue;sides[sideOf(c)].push(c);}
+  const feet={Far:[],Near:[]},claws={Far:[],Near:[]};for(const c of pool)if(isClaw(c))claws[sideOf(c)].push(c);
+  // P5 — exact per-side assignment. Candidates on a side (any kind), sorted by separation angle from the rear, are
+  // assigned to the template's slots leg0..legN-1 under a hard MONOTONE constraint (order along the body), minimising a
+  // family-free cost: thinness vs the side's thin reference, chain length vs the median leg, a kind penalty (touching
+  // tips are weaker evidence), an empty-slot cost that is cheap at the claw end (occlusion) and expensive at the
+  // rear, and a cost for leaving a leg-like candidate unused. ≤ 8 candidates × 4 slots is enumerated exactly.
+  const assigned={},hidden=[];const chainLen=c=>c.term+(c.kind==='end'?0:0);
+  for(const side of ['Far','Near']){
+    const list=sides[side].map(f=>({f,a:ang(f.attach??[f.x,f.y],centre)}));const key=o=>side==='Near'?(o.a<-Math.PI/2?o.a+2*Math.PI:o.a):(o.a>Math.PI/2?-(o.a-2*Math.PI):-o.a);
+    const cs=list.sort((p,q)=>key(p)-key(q)).map(o=>o.f);if(!cs.length){for(let k=0;k<legsPerSide;k++)hidden.push('leg'+k+side);continue;}
+    const thin=[...cs.map(c=>c.termDt)].sort((a,b)=>a-b)[Math.floor(cs.length/2)]||1,lens=[...cs.map(c=>c.term)].sort((a,b)=>a-b),medLen=lens[Math.floor(lens.length/2)]||1;
+    const unit=c=>Math.abs(Math.log(c.termDt/thin))*0.8+Math.max(0,1-c.term/medLen)*1.0+(c.kind==='touch'?0.5:c.kind==='loop'?0.3:0);
+    const emptyCost=k=>k===legsPerSide-1?0.3:k===legsPerSide-2?1.0:1.8,unusedCost=0.7;
+    let best=null;
+    const rec=(k,i,used,acc,cost)=>{if(k===legsPerSide){const unused=cs.length-used;const total=cost+unused*unusedCost;if(!best||total<best.cost)best={cost:total,acc:acc.slice()};return;}
+      // empty slot
+      rec(k+1,i,used,acc.concat([null]),cost+emptyCost(k));
+      // take candidate j ≥ i (monotone)
+      for(let j=i;j<cs.length;j++){rec(k+1,j+1,used+1,acc.concat([cs[j]]),cost+unit(cs[j]));}};
+    rec(0,0,0,[],0);
+    best.acc.forEach((c,k)=>{const name='leg'+k+side+'Foot';if(c)assigned[name]={master:toM([c.x,c.y]).map(Math.round),kind:c.kind,attach:toM(c.attach??[c.x,c.y]).map(Math.round)};else hidden.push('leg'+k+side);});
+    feet[side]=best.acc.filter(Boolean);}
   return {pool:pool.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),sep:c.attach?toM(c.attach).map(Math.round):null,term:c.term,termDt:c.termDt,fork:forkOf.has(c)})),assigned,hidden,claws:{Far:claws.Far.map(c=>toM([c.x,c.y]).map(Math.round)),Near:claws.Near.map(c=>toM([c.x,c.y]).map(Math.round))},centre:toM(centre).map(Math.round),feetFound:feet.Far.length+feet.Near.length};
 }

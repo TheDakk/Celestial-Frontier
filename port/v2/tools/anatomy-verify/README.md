@@ -203,3 +203,13 @@ whenever one candidate is wrong, because slot filling is greedy by order. The ne
 assignment problem per side (candidates × template slots, cost = order consistency + thinness + length ratio + a
 hidden prior at the claw end), solved exactly (≤ 8 candidates × 4 slots), instead of greedy rules. Everything above
 is reproducible with the runner in the commit body; nothing here is a gate.
+
+## Slice 16 — exact per-side assignment + thick-terminal forks, 2026-09-21 early
+P5 first cut: candidates per side (endpoint chains, loop limbs, touching tips) assigned to template slots by an exact
+enumeration under a hard monotone-order constraint with a family-free cost (thinness, length, kind, an empty-slot cost
+cheap at the claw end, an unused-candidate cost). A finger whose twin merged into a stub is caught by the
+thick-terminal rule. Five painted crabs: named feet within 25 px **14 of 31**, positions 20 of 35, hidden sets exact
+1 of 5; the vent crab's rear feet come from touching tips at 10 and 23 px. The dominant remaining error is FALSE
+touching-tip candidates (junctions along legs that pass the thin test) filling slots ahead of true legs; the fix is
+to score a touching tip by whether the arriving edge's own terminal segment is thin all the way to the junction
+(DT profile monotone decreasing), which a mid-leg junction fails. That is the next change. Not a gate.
