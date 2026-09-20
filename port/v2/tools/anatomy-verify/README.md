@@ -153,3 +153,14 @@ State on the painted vent crab: both claws present, 5 of 8 feet within 25 px of 
 chain endpoints (7, 8, 6, 9, 10 px), one leg still cut into a second component; painted coconut: legs on one side
 still merged at the trunk, 2 of 8 within 25 px. Next: find the remaining cut (pass/floor interaction), then the
 template match over chains (side, order along the body, claws = forked thick chains, eyes = short knob chains).
+
+## Slice 12 — terminal-branch classification, five painted crabs, 2026-09-20 night
+Skeleton is one component on every painted crab (spur walks stop at missed forks). Classifying each chain by its
+terminal branch (last edge) — long and thin = foot, long and thick = claw finger — on the five painted crabs against
+Codex's hand landmarks (hit = chain endpoint within 25 px of the hand foot): see the run printed in the commit body.
+What remains: (a) the thin reference is still contaminated by claw fingers on the coconut and mud crabs (their fingers
+are as thick as some legs' terminal segments) — use the template's expected counts to pick the k thinnest long chains
+per side instead of a global threshold; (b) rear legs whose tips rest against the carapace have no endpoint — they are
+"loop limbs", thin edges between two body-adjacent junctions, and their foot is the edge point farthest from the body;
+(c) eyes: short knob chains from the carapace top, not yet emitted by the graph because the eye stalk merges with the
+carapace loop. All three are graph queries, not new thresholds.
