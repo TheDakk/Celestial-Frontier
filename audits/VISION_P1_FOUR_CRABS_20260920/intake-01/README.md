@@ -75,7 +75,7 @@ v1.0 fingerprint. Runtime/hidden contracts, clips, limits and accepted Coconut i
 are unchanged. Node26.9.0 uses the uninterrupted September19 receipt; builds and static
 checks ran under the shared toolchain lock. These are offline results, not CPU timing.
 
-Signed local checkpoint required; prior1Password authentication blocker remains until
-an actual signature succeeds. No fetch, push, PR, merge, release or deploy. Codex resumes
+Signed local checkpoint **890b3f5f**, verified in
+[signature receipt](producer-signature.json). Earlier1Password refusal is resolved. No fetch, push, PR, merge, release or deploy. Codex resumes
 from the specific unresolved coordinates; Claude can review these candidate overlays
 read-only. No app switch for Git is needed; no sync/copy to the sibling worktree.
