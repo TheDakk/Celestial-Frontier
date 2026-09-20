@@ -87,3 +87,54 @@ export function protectLatents(predicted,original,noise,mask,nextSigma){
   return out;
 }
 export function alphaToRgba(alpha){const out=new Uint8ClampedArray(alpha.length*4);for(let i=0;i<alpha.length;i++){out[i*4]=out[i*4+1]=out[i*4+2]=alpha[i];out[i*4+3]=255;}return out;}
+/** R9 creature-finish class block (same interpreter, opposite polarity to
+ * latentInteriorMask): the creature INTERIOR is editable (0) and the alpha
+ * band plus everything outside the silhouette is protected (1). The band is
+ * `erosionPixels` wide, measured inward from the master's alpha edge, so the
+ * finisher can repaint fur, plate and shading but never the silhouette.
+ * The caller still restores the master's alpha byte-for-byte afterwards. */
+export function latentCreatureMask(alpha,w,h,erosionPixels=4){
+  if(!Number.isSafeInteger(w)||!Number.isSafeInteger(h)||w%16||h%16||alpha.length!==w*h)throw Error('Creature mask needs 16-aligned dimensions');
+  if(!Number.isSafeInteger(erosionPixels)||erosionPixels<1||erosionPixels>32)throw Error('Creature band width refused');
+  const solid=new Uint8Array(w*h);for(let i=0;i<solid.length;i++)solid[i]=alpha[i]>0?255:0;
+  const inner=erodeAlpha(solid,w,h,erosionPixels),cw=w/16,ch=h/16,latent=new Float32Array(cw*ch);
+  let editable=0;
+  for(let y=0;y<ch;y++)for(let x=0;x<cw;x++){let sum=0;for(let j=0;j<16;j++)for(let i=0;i<16;i++)sum+=inner[(y*16+j)*w+x*16+i];const cover=sum/(256*255);latent[y*cw+x]=cover>=.55?0:1;if(cover>=.55)editable++;}
+  if(editable===0||editable===latent.length)throw Error('Empty or full editable creature mask');
+  return {latent,inner,editableTokens:editable,protectedTokens:latent.length-editable};
+}
+/** R9 work canvas for a small painted creature: crop the silhouette (+margin),
+ * upscale by an integer factor so one 16 px latent cell covers only a few
+ * master pixels, and later box-filter the result back down. Pure integer
+ * arithmetic; the same plan on the same alpha is the same plan anywhere. */
+export function creatureWorkPlan(alpha,w,h,{marginPixels=32,workCanvasMax=1024}={}){
+  const b=alphaBounds(alpha,w,h);
+  const x=Math.max(0,b.x-marginPixels),y=Math.max(0,b.y-marginPixels),cw=Math.min(w,b.x+b.width+marginPixels)-x,ch=Math.min(h,b.y+b.height+marginPixels)-y;
+  const scale=Math.max(1,Math.min(4,Math.floor(workCanvasMax/Math.max(cw,ch))));
+  const width=Math.ceil(cw*scale/16)*16,height=Math.ceil(ch*scale/16)*16;
+  if(width>2048||height>2048)throw Error('Creature work canvas exceeds the engine bound');
+  return {crop:{x,y,width:cw,height:ch},scale,width,height,bounds:b};
+}
+/** Bilinear RGB(A) upscale of a crop into a (possibly larger) canvas whose remainder is `fill`. */
+export function upscaleBilinearRgba(src,sw,sh,crop,scale,width,height,fill=[128,128,128,255]){
+  const out=new Uint8ClampedArray(width*height*4);for(let i=0;i<width*height;i++)out.set(fill,i*4);
+  const cw=crop.width*scale,ch=crop.height*scale;
+  for(let y=0;y<ch;y++){const fy=(y+.5)/scale-.5,y0=Math.max(0,Math.floor(fy)),y1=Math.min(crop.height-1,y0+1),ty=Math.min(1,Math.max(0,fy-y0));
+    for(let x=0;x<cw;x++){const fx=(x+.5)/scale-.5,x0=Math.max(0,Math.floor(fx)),x1=Math.min(crop.width-1,x0+1),tx=Math.min(1,Math.max(0,fx-x0));
+      const i00=((crop.y+y0)*sw+crop.x+x0)*4,i10=((crop.y+y0)*sw+crop.x+x1)*4,i01=((crop.y+y1)*sw+crop.x+x0)*4,i11=((crop.y+y1)*sw+crop.x+x1)*4,o=(y*width+x)*4;
+      for(let c=0;c<4;c++)out[o+c]=Math.round((src[i00+c]*(1-tx)+src[i10+c]*tx)*(1-ty)+(src[i01+c]*(1-tx)+src[i11+c]*tx)*ty);}}
+  return out;
+}
+export function upscaleNearestMask(mask,sw,crop,scale,width,height){
+  const out=new Uint8Array(width*height);
+  for(let y=0;y<crop.height*scale;y++)for(let x=0;x<crop.width*scale;x++)out[y*width+x]=mask[(crop.y+Math.floor(y/scale))*sw+crop.x+Math.floor(x/scale)];
+  return out;
+}
+/** Box-filter RGB downscale of the work crop back to master pixels (exact mean of the scale×scale block). */
+export function downscaleBoxRgb(work,width,crop,scale){
+  const out=new Uint8ClampedArray(crop.width*crop.height*4),n=scale*scale;
+  for(let y=0;y<crop.height;y++)for(let x=0;x<crop.width;x++){let r=0,g=0,b=0;
+    for(let j=0;j<scale;j++)for(let i=0;i<scale;i++){const s=((y*scale+j)*width+x*scale+i)*4;r+=work[s];g+=work[s+1];b+=work[s+2];}
+    out.set([Math.round(r/n),Math.round(g/n),Math.round(b/n),255],(y*crop.width+x)*4);}
+  return out;
+}

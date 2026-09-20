@@ -261,12 +261,13 @@ export function buildCanonicalLandfallConditioningV2(request: unknown, liveRoste
  * Markdown bytes; this owner extracts, fills and orders blocks. No separately
  * authored system cards or send-time rewrites. Other worlds and unlisted family
  * exemplars remain unsupported until their source adapters are implemented. */
-export function compileEarthArtKitV4(input: unknown, kit: string) {
+/** Art Kit v4 text interpreter shared by every compiler below: one parser for
+ * the kit's fenced blocks, so a later class block (the R9 creature finish)
+ * reads the same frozen style and negatives the Earth landfall reads. Pure
+ * string work; the strings and their order are the accepted ones. */
+export function readArtKitBlocksV4(kit: string) {
   if (!kit.startsWith('# Celestial Frontier Art Kit\n') || !['4', '4.2', '4.3'].some(version => kit.includes(`style_id: frontier   |   version ${version},`)))
     throw Error('Art Kit v4 required; retired kits are refused');
-  const admitted = buildLandfallConditioningV1(input);
-  if (!admitted.ok) throw Error('Art Kit source refused: ' + admitted.reason);
-  const { sourceSnapshot: source, scene, residents } = admitted.recipe;
   const between = (text: string, first: string, last: string) => {
     if (text.split(first).length !== 2) throw Error('Nonunique kit marker: ' + first);
     const tail = text.slice(text.indexOf(first) + first.length);
@@ -285,6 +286,16 @@ export function compileEarthArtKitV4(input: unknown, kit: string) {
   const cutoutNegative = between(negative, '  For CUT-OUT classes, add:\n', '\n\n  For SCENE classes, do not add those clauses.');
   const cutoutTechnical = between(technical, 'table says 1536, 512 or 256):\n', '\n\nSCENE BLOCK');
   const sceneTechnical = between(technical, 'SCENE BLOCK (paste for universe, stars, planet biomes):\n', '\n\nGlow is painted');
+  const frozenParagraph = '  Rich natural-history fantasy painting,' + between(style,
+    '  Rich natural-history fantasy painting,', '\n\nThe scene-contact');
+  return { between, block, reference, style, universe, technical, negative, sharedNegative, cutoutNegative, cutoutTechnical, sceneTechnical, frozenParagraph };
+}
+
+export function compileEarthArtKitV4(input: unknown, kit: string) {
+  const { between, block, reference, style, universe, sharedNegative, cutoutNegative, cutoutTechnical, sceneTechnical, frozenParagraph } = readArtKitBlocksV4(kit);
+  const admitted = buildLandfallConditioningV1(input);
+  if (!admitted.ok) throw Error('Art Kit source refused: ' + admitted.reason);
+  const { sourceSnapshot: source, scene, residents } = admitted.recipe;
   const star = starClass(source.roster.starSeed);
   const planet = SOL_PLANETS.find(row => row.P.seed === source.roster.planetSeed);
   if (!planet || star.kind !== 'G' || source.request.options.stc !== star.col) throw Error('Unsupported star/planet card');
@@ -378,8 +389,6 @@ export function compileEarthArtKitV4(input: unknown, kit: string) {
         'ACCURACY\n' + accuracy, 'LAYOUT\n' + familyLayout, 'TECHNICAL OUTPUT\n' + cutoutTechnical,
         'NEGATIVE\n' + sharedNegative + '\n' + cutoutNegative + '\n' + between(familyClass, 'NEGATIVE ADDITIONS:\n', '\n\nOUTPUT:')].join('\n\n') };
   });
-  const frozenParagraph = '  Rich natural-history fantasy painting,' + between(style,
-    '  Rich natural-history fantasy painting,', '\n\nThe scene-contact');
   // Model-facing natural language, compiled from the same source fields/pigments.
   // Authoring prompts/cards above remain byte-identical to the accepted inputs.
   const runtimeCard = [
@@ -421,6 +430,35 @@ export function compileEarthKitEngineV4(input: unknown, kit: string, assets: Kit
     plate: assets.plate, atlas: assets.atlas, triptych: assets.triptych, foreground: assets.foreground,
     composition: profile, passes, finisherPrompt, sourceSnapshot: compiled.sourceSnapshot,
     qualityAccepted: false, mastersAccepted: true, textTokenCeiling: 512, finisherSteps: 1, skipOrganismPasses: true });
+}
+
+export interface CreatureFinishSubjectV1 {
+  readonly creatureId: string; readonly name: string; readonly family: string;
+  readonly realm: 'land' | 'aquatic' | 'aerial'; readonly materials: string; readonly counts: string;
+  readonly recordRecipeHash: string; readonly cutoutAssetHash: string; readonly identitySeed: number;
+}
+export interface CreatureFinishSettingsV1 { readonly width: number; readonly height: number; readonly interiorErosionPixels?: number; readonly backgroundGrey?: number; readonly solidAlpha?: number; readonly marginPixels?: number; readonly workCanvasMax?: number }
+/** R9 creature-finish class block on the same kit interpreter. One accepted
+ * masked finisher pass (strength 0.35, one step) over an already painted
+ * creature master: the prompt asks for finished material and shading inside
+ * the painter's silhouette and forbids any change of pose, count or colour.
+ * The seed derives from the record identity and recipe hash only. */
+export function compileCreatureFinishV1(kit: string, subject: CreatureFinishSubjectV1, master: KitPreparedImageV4, settings: CreatureFinishSettingsV1, triptych?: KitPreparedImageV4) {
+  const { between, block, frozenParagraph } = readArtKitBlocksV4(kit);
+  const faunaClass = block('4E. Fauna (cut-out)');
+  const additions = between(faunaClass, 'NEGATIVE ADDITIONS:\n', '\n\nOUTPUT:');
+  if (!/^[a-z0-9-]{1,64}$/.test(subject.creatureId) || !/^[a-f0-9]{64}$/.test(subject.recordRecipeHash) || !/^[a-f0-9]{64}$/.test(subject.cutoutAssetHash)
+    || !Number.isSafeInteger(subject.identitySeed) || subject.identitySeed < 0) throw Error('Creature finish subject refused');
+  const seed = (subject.identitySeed ^ Number.parseInt(subject.recordRecipeHash.slice(0, 8), 16)) >>> 0;
+  const subjectLine = `One ${subject.name}, a ${subject.family} of the ${subject.realm}; already painted; finish this exact painting in place: keep the silhouette, pose, proportions, colours and markings exactly as painted; render finished ${subject.materials} with natural-history material truth, fine surface detail, soft form shading and small specular highlights; ${subject.counts}; no armour, no harness, no gear; alert natural expression.`;
+  const accuracy = 'Must include: the complete painted creature unchanged in outline. Must exclude: ground; floor plane; cast shadow; base; scenery; text; a second creature; extra or missing limbs; any change of pose or colour.';
+  const finisherPrompt = [frozenParagraph, 'SUBJECT\n' + subjectLine, 'ACCURACY\n' + accuracy, 'NEGATIVE\n' + additions.trim()].join('\n\n');
+  return freeze({ schema: 'cf.creature-finish.v1', experiment: 'cf.creature-finish.v1', creatureId: subject.creatureId,
+    recordRecipeHash: subject.recordRecipeHash, cutoutAssetHash: subject.cutoutAssetHash,
+    width: settings.width, height: settings.height, seed, steps: 1, finisherStrength: 0.35, finisherSteps: 1,
+    interiorErosionPixels: settings.interiorErosionPixels ?? 4, backgroundGrey: settings.backgroundGrey ?? 128,
+    solidAlpha: settings.solidAlpha ?? 250, marginPixels: settings.marginPixels ?? 32, workCanvasMax: settings.workCanvasMax ?? 1024,
+    master, ...(triptych ? { triptych } : {}), finisherPrompt, textTokenCeiling: 512, qualityAccepted: false });
 }
 
 /** Authoring-only procedural proof under the canonical Earth lighting fixture.

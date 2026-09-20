@@ -76,3 +76,20 @@ export function prepareKitTextTokens(tokenizer,prompt){
   const ids=new BigInt64Array(sequence),mask=new BigInt64Array(sequence);ids.fill(BigInt(pad));tokens.forEach((v,i)=>{ids[i]=BigInt(v);mask[i]=1n;});
   return {wrapped,ids,mask,sequence,tokenCount:tokens.length};
 }
+export const CREATURE_FINISH_SCHEMA='cf.creature-finish.v1';
+/** R9: one masked finisher pass on one painted creature master. The accepted
+ * strength/steps/token ceiling are exact; the master is the only image and it
+ * must already be the job's size (16-aligned, padded by the preparer). */
+export function admitCreatureFinishJob(job){
+  if(job?.schema!==CREATURE_FINISH_SCHEMA||job.experiment!==CREATURE_FINISH_SCHEMA)throw Error('Creature finish schema refused');
+  if(job.finisherStrength!==.35||job.finisherSteps!==1||job.steps!==1||job.textTokenCeiling!==512||job.qualityAccepted!==false)throw Error('Creature finish experiment refused');
+  const integer=(n,a,b)=>Number.isSafeInteger(n)&&n>=a&&n<=b,hex=v=>typeof v==='string'&&/^[a-f0-9]{64}$/.test(v);
+  if(!integer(job.width,128,2048)||!integer(job.height,128,2048)||job.width%16||job.height%16||!integer(job.seed,0,0xffffffff))throw Error('Creature finish dimensions/settings refused');
+  if(!integer(job.interiorErosionPixels,1,8)||!integer(job.backgroundGrey,0,255)||!integer(job.solidAlpha,1,255)||!integer(job.marginPixels,0,128)||!integer(job.workCanvasMax,256,2048)||job.workCanvasMax%16)throw Error('Creature finish mask settings refused');
+  if(typeof job.finisherPrompt!=='string'||job.finisherPrompt.length<100)throw Error('Creature finish prompt missing');
+  if(!hex(job.recordRecipeHash)||!hex(job.cutoutAssetHash)||typeof job.creatureId!=='string'||!/^[a-z0-9-]{1,64}$/.test(job.creatureId))throw Error('Creature finish identity refused');
+  const ref=(r,exact)=>{if(!r||!integer(r.width,16,2560)||!integer(r.height,16,2560)||r.width%16||r.height%16||typeof r.url!=='string'||!/^\/inputs\/[a-z0-9-]+\.rgba$/.test(r.url)||!hex(r.sha256))throw Error('Creature finish reference refused');
+    if(exact&&(r.width!==job.width||r.height!==job.height))throw Error('Creature master pre-fit mismatch');};
+  ref(job.master,true);if(job.triptych!==undefined)ref(job.triptych,false);
+  return job;
+}

@@ -1,7 +1,7 @@
-import {admitKitEngineJob,imageToImageStart,planarToRgba,rgbaToPlanar,placementBox,prepareKitTextTokens,MAX_KIT_TEXT_TOKENS} from './kit-engine-math.mjs';
+import {admitKitEngineJob,admitCreatureFinishJob,imageToImageStart,planarToRgba,rgbaToPlanar,placementBox,prepareKitTextTokens,MAX_KIT_TEXT_TOKENS} from './kit-engine-math.mjs';
 import {expandPinnedTransformer,sha256} from './kit-worker-expansion.mjs';
 import {applyKitWeather} from './kit-weather-math.mjs';
-import {keyAndDespill,compositeLayer,compositeOrganism,subtractOcclusion,latentInteriorMask,protectLatents,alphaToRgba,alphaBounds} from './kit-contact-math.mjs';
+import {keyAndDespill,compositeLayer,compositeOrganism,subtractOcclusion,latentInteriorMask,latentCreatureMask,protectLatents,alphaToRgba,alphaBounds,erodeAlpha,creatureWorkPlan,upscaleBilinearRgba,upscaleNearestMask,downscaleBoxRgb} from './kit-contact-math.mjs';
 import {encodeFloat16,decodeFloat16,packedLatentsToTokens,tokensToPackedLatents,createImageIds,eulerOutputStep,seededGaussianNoise} from './pipeline-math.mjs';
 const parse=async path=>{const r=await fetch(path);if(!r.ok)throw Error('Missing '+path);return r.json();};
 export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expandPinnedTransformer,modelFiles={},precomputedText=null}){
@@ -150,8 +150,51 @@ export async function createKitWorkerEngine({ort,Tokenizer,progress,expand=expan
         capabilities:{maxBufferSize:adapter.limits.maxBufferSize,shaderF16:adapter.features.has('shader-f16'),adapterInfo:{...adapter.info}}};
     }finally{busy=false;}
   }
+  /** R9: one accepted finisher pass over one painted creature master. The
+   * silhouette is cropped and upscaled onto a work canvas (small painted
+   * creatures are a few hundred pixels wide; a 16 px latent cell must cover only
+   * a few master pixels), composited over flat grey for the VAE, finished with
+   * the solid interior editable and the alpha band + outside protected, then
+   * box-filtered back to master pixels. Only pixels INSIDE the eroded solid
+   * interior take finisher colour; every band, soft-alpha (shadow) and
+   * transparent pixel is the painter's byte for byte, as is the alpha plane. */
+  async function finishCreature(input){
+    if(busy)throw Error('Kit engine already painting');check();const job=admitCreatureFinishJob(input);busy=true;
+    const coldStarted=performance.now();
+    try{
+      for(const kind of ['encode','text','denoise','decode'])await session(kind);
+      const started=performance.now(),coldPreparationMs=started-coldStarted;
+      const {width:W,height:H}=job,master=await pixels(job.master),alpha=new Uint8Array(W*H),solid=new Uint8Array(W*H),grey=job.backgroundGrey;
+      const composedMaster=new Uint8ClampedArray(W*H*4);
+      for(let i=0;i<alpha.length;i++){const a=master[i*4+3];alpha[i]=a;solid[i]=a>=job.solidAlpha?255:0;const t=a/255;composedMaster.set([Math.round(master[i*4]*t+grey*(1-t)),Math.round(master[i*4+1]*t+grey*(1-t)),Math.round(master[i*4+2]*t+grey*(1-t)),255],i*4);}
+      const plan=creatureWorkPlan(alpha,W,H,{marginPixels:job.marginPixels,workCanvasMax:job.workCanvasMax}),{crop,scale,width,height}=plan;
+      const innerMaster=erodeAlpha(solid,W,H,job.interiorErosionPixels);
+      const composed=upscaleBilinearRgba(composedMaster,W,H,crop,scale,width,height,[grey,grey,grey,255]);
+      const innerWork=upscaleNearestMask(innerMaster,W,crop,scale,width,height);
+      // Latent cells from the work-canvas interior (same rule as the landfall block, opposite polarity).
+      const cw=width/16,ch=height/16,latent=new Float32Array(cw*ch);let editable=0;
+      for(let y=0;y<ch;y++)for(let x=0;x<cw;x++){let sum=0;for(let j=0;j<16;j++)for(let i=0;i<16;i++)sum+=innerWork[(y*16+j)*width+x*16+i];const inside=sum/(256*255)>=.55;latent[y*cw+x]=inside?0:1;if(inside)editable++;}
+      if(editable===0||editable===latent.length)throw Error('Empty or full editable creature mask');
+      const mask={latent,editableTokens:editable,protectedTokens:latent.length-editable};
+      progress({phase:'creature-mask',editableTokens:mask.editableTokens,protectedTokens:mask.protectedTokens,scale,workCanvas:{width,height},crop});
+      const composite=await png(composed,width,height),protectionMask=await png(alphaToRgba(innerWork),width,height);
+      const initial=await encode(composed,width,height),references=job.triptych?[await reference(job.triptych)]:[];
+      progress({phase:'finisher-start',editableTokens:mask.editableTokens});const finishStart=performance.now();
+      const finished=await paintPass({prompt:job.finisherPrompt,width,height,seed:job.seed,steps:1,strength:job.finisherStrength,initial,references,protection:mask.latent});
+      const {rgba:workRgba}=planarToRgba(finished.decoded,width,height),raw=await png(workRgba,width,height);
+      const down=downscaleBoxRgb(workRgba,width,crop,scale);
+      const out=new Uint8ClampedArray(master);let repainted=0;
+      for(let y=0;y<crop.height;y++)for(let x=0;x<crop.width;x++){const i=(crop.y+y)*W+crop.x+x;if(!innerMaster[i])continue;const d=(y*crop.width+x)*4;out[i*4]=down[d];out[i*4+1]=down[d+1];out[i*4+2]=down[d+2];repainted++;}
+      for(let i=0;i<alpha.length;i++)out[i*4+3]=alpha[i];
+      return {schema:'cf.creature-finish-result.v1',creatureId:job.creatureId,finished:await png(out,W,H),raw,composite,protectionMask,
+        masking:{editableTokens:mask.editableTokens,protectedTokens:mask.protectedTokens,totalTokens:latent.length,erosionPixels:job.interiorErosionPixels,threshold:.55,backgroundGrey:grey,solidAlpha:job.solidAlpha,crop,scale,workCanvas:{width,height},repaintedPixels:repainted,masterPixels:W*H},
+        measurements:[{name:'finisher',elapsedMs:performance.now()-finishStart,...finished.text,sigmas:finished.sigmas}],
+        elapsedMs:performance.now()-started,coldPreparationMs,totalMs:performance.now()-coldStarted,width:W,height:H,sessionCreates:{...creates},expansion:expanded?.receipt,qualityAccepted:false,
+        capabilities:{maxBufferSize:adapter.limits.maxBufferSize,shaderF16:adapter.features.has('shader-f16'),adapterInfo:{...adapter.info}}};
+    }finally{busy=false;}
+  }
   async function dispose(){if(closed)return;closed=true;cache.clear();try{for(const s of sessions.values())await s.release();}finally{sessions.clear();expanded=null;for(const url of urls)URL.revokeObjectURL(url);device.destroy();}}
-  return {paint,dispose,precomputeText:embedding};
+  return {paint,finishCreature,dispose,precomputeText:embedding};
 }
 
 /** Exact accepted-prompt embedding only. No text-encoder fallback on a mismatch. */
