@@ -17,7 +17,7 @@ import {templateRest} from './template-rest.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 /** Backwards-compatible descriptor view: legs per side and slot naming per template (from the contract). */
 export const TEMPLATES=new Proxy({},{get:(_,id)=>{if(typeof id!=='string')return undefined;const r=templateRest(id);return {legsPerSide:r.legsPerSide,slotName:(k,side)=>r.slots[side][k].terminal,rest:r};}});
-export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0}={}){
+export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true}={}){
   const T=templateRest(template),legsPerSide=T.legsPerSide,slotName=(k,side)=>T.slots[side][k].terminal;
   const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128}),{mask,dt,working:{width:W,height:H,scale,box}}=det;
   const g=ridgeGraph(mask,dt,W,H,{spurFactor:1.5,spurFloor:8});
@@ -191,19 +191,33 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
     let cum=[0];if(pts)for(let i=1;i<pts.length;i++)cum.push(cum[i-1]+Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]));const total=pts?cum[cum.length-1]:0;
     const at=f=>{if(!pts||!total){const r=a.attach;return [Math.round(r[0]+(tipM[0]-r[0])*f),Math.round(r[1]+(tipM[1]-r[1])*f)];}const d=f*total;let i=0;while(i<cum.length-1&&cum[i+1]<d)i++;return toM(pts[i]).map(Math.round);};
     joints[chainNames[0]]=pts?toM(pts[0]).map(Math.round):a.attach;(sl.jointFractions??[]).forEach((f,k)=>{joints[chainNames[k+1]]=at(f);});}
-  // hidden inference (declared-hidden slots only get a landmark for the record; the compiler never infers PRESENCE):
-  // an empty slot takes its side's foot sequence extrapolated one station (the vector between the two nearest
-  // visible stations), or its twin mirrored across the body axis when the side has fewer than two visible feet
-  const inferred={};for(const side of ['Far','Near']){const sl=T.slots[side];const vis=sl.map((s,k)=>assigned[s.terminal]?{k,p:assigned[s.terminal].master}:null).filter(Boolean);
-    for(let k=0;k<sl.length;k++){if(assigned[sl[k].terminal])continue;let p=null;
-      if(vis.length>=2){const nb=[...vis].sort((a,b)=>Math.abs(a.k-k)-Math.abs(b.k-k)).slice(0,2).sort((a,b)=>a.k-b.k);const [a,b]=nb;const step=[(b.p[0]-a.p[0])/(b.k-a.k),(b.p[1]-a.p[1])/(b.k-a.k)];p=[Math.round(a.p[0]+step[0]*(k-a.k)),Math.round(a.p[1]+step[1]*(k-a.k))];}
-      else{const twin=T.slots[side==='Far'?'Near':'Far'][k];const t=assigned[twin?.terminal];if(t){const cM=toM(centre),ax=axis;const d=[t.master[0]-cM[0],t.master[1]-cM[1]];const along=d[0]*ax[0]+d[1]*ax[1];const perp=[d[0]-along*ax[0],d[1]-along*ax[1]];p=T.view==='front'?[Math.round(cM[0]-d[0]),Math.round(t.master[1])]:[Math.round(cM[0]+along*ax[0]-perp[0]*0+d[0]-2*along*ax[0]*0),Math.round(t.master[1])];if(T.view==='front')p=[Math.round(2*cM[0]-t.master[0]),t.master[1]];else p=[t.master[0],t.master[1]-Math.round(0.1*R/scale)];}}
-      if(p)inferred[sl[k].terminal]=p;}}
+  // hidden inference — Codex's record rule (openai lane `hidden-anatomy.mjs#inferHiddenLandmarks`, generalized from
+  // "leg3 from leg1/leg2" to "a station from the two preceding stations of its side"): root_k = 2·root_{k−1} −
+  // root_{k−2}; every interior joint and the terminal are the previous station's vectors from its root REFLECTED
+  // about the body-axis line through the new root (segment lengths stay 1:1). Declared-hidden slots only; the
+  // compiler never infers presence. Inputs are the compiler's own joints (roots = thick-region exits), so the
+  // record's hand-placed roots are not reproduced exactly — the residual is measured, not the rule.
+  // the contract's body axis in the painting: front view → the spine ridge's TOP normal (root→carapace is the
+  // painting's vertical for a front-on crab), side view → the spine ridge itself (pelvis→chest)
+  const inferred={};{let u=axis;if(T.view==='front'){u=[axis[1],-axis[0]];if(u[1]>0)u=[-u[0],-u[1]];}for(const side of ['Far','Near']){const sl=T.slots[side];
+    for(let k=2;k<sl.length;k++){if(assigned[sl[k].terminal])continue;const prev=sl[k-1],prev2=sl[k-2];const rootOf=s=>joints[s.chain[0]];const r=rootOf(prev),p=rootOf(prev2);if(!r||!p)continue;
+      const root=[2*r[0]-p[0],2*r[1]-p[1]];inferred[sl[k].chain[0]]=root.map(Math.round);
+      for(let j=1;j<sl[k].chain.length;j++){const src=joints[prev.chain[j]];if(!src)continue;const v=[src[0]-r[0],src[1]-r[1]];const dot=v[0]*u[0]+v[1]*u[1];inferred[sl[k].chain[j]]=[Math.round(root[0]+2*dot*u[0]-v[0]),Math.round(root[1]+2*dot*u[1]-v[1])];}}}}
   for(const a of Object.values(assigned)){if(a._c){a.path=pathOf(a._c);a.side=undefined;}delete a._c;}
   const fullPath=c=>{if(c.kind!=='end')return pathOf(c);let node=c.chain.rootNode.id;const pts=[];for(const e of c.chain.edges){const path=(e.a===node)?e.path:[...e.path].reverse();for(const i of path)pts.push([i%W,Math.floor(i/W)]);node=(e.a===node)?e.b:e.a;}return pts;};
-  const clawPaths=clawList.map(c=>({tip:[c.x,c.y],side:T.view==='front'?sideFront(c):null,path:pathOf(c),fullPath:fullPath(c)}));
   const clawEdgeSet=new Set();for(const c of clawList)if(c.kind==='end')for(const e of c.chain.edges)clawEdgeSet.add(e);
-  const bodyRidge=[];for(const e of g.edges){if(e.meanDt<lc.bodyDt||clawEdgeSet.has(e))continue;for(const i of e.path)bodyRidge.push([i%W,Math.floor(i/W)]);}
+  // P3 wrist cut: a forked appendage's ARM is as thick as the body, so its chain roots at a body node past the arm.
+  // Walk BODY edges from that root to the spine edge (shortest path by length); the wrist is the DT minimum along
+  // the walk; body-edge pixels between the root and the wrist belong to the appendage's ridge, not the body's.
+  const armPixels=new Map();if(wristCut&&spine){const badj=new Map();for(const e of g.edges){if(e.meanDt<lc.bodyDt||clawEdgeSet.has(e))continue;if(!badj.has(e.a))badj.set(e.a,[]);if(!badj.has(e.b))badj.set(e.b,[]);badj.get(e.a).push({e,to:e.b});badj.get(e.b).push({e,to:e.a});}
+    const goal=new Set([spine.a,spine.b]);for(const c of clawList){if(c.kind!=='end')continue;const start=c.chain.rootNode.id;if(goal.has(start))continue;const dist=new Map([[start,0]]),via=new Map();const q=[start];let hit=null;
+      while(q.length){q.sort((a,b)=>dist.get(a)-dist.get(b));const u=q.shift();if(goal.has(u)){hit=u;break;}for(const o of badj.get(u)??[]){const nd=dist.get(u)+o.e.length;if(!dist.has(o.to)||nd<dist.get(o.to)){dist.set(o.to,nd);via.set(o.to,{from:u,e:o.e});if(!q.includes(o.to))q.push(o.to);}}}
+      if(hit===null)continue;const edges=[];let cur=hit;while(via.get(cur)){edges.unshift(via.get(cur).e);cur=via.get(cur).from;}
+      // pixels from the root outward along the walk; wrist = DT minimum (excluding the first/last 2 px)
+      let node=start;const px=[];for(const e of edges){const path=(e.a===node)?e.path:[...e.path].reverse();px.push(...path);node=(e.a===node)?e.b:e.a;}
+      let wi=0;for(let i=2;i<px.length-2;i++)if(dt[px[i]]<dt[px[wi]]||wi===0&&i===2)wi=i;const arm=px.slice(0,wi);c.wrist=[px[wi]%W,Math.floor(px[wi]/W)];c.armPath=arm.map(i=>[i%W,Math.floor(i/W)]);for(const i of arm)armPixels.set(i,c);}}
+  const bodyRidge=[];for(const e of g.edges){if(e.meanDt<lc.bodyDt||clawEdgeSet.has(e))continue;for(const i of e.path){if(armPixels.has(i))continue;bodyRidge.push([i%W,Math.floor(i/W)]);}}
+  const clawPaths=clawList.map(c=>({tip:[c.x,c.y],side:T.view==='front'?sideFront(c):null,path:pathOf(c),fullPath:[...(c.armPath??[]).reverse(),...fullPath(c)],wrist:c.wrist?toM(c.wrist).map(Math.round):null}));
   const usedSet=new Set([...feet.Far,...feet.Near]);
   return {working:{W,H,scale,box,mask,dt,bodyDt:lc.bodyDt,bodyDist},clawPaths,bodyRidge,legsBySide:T.view==='front'?{Far:legs.filter(c=>sideFront(c)==='Far').map(c=>c.kind),Near:legs.filter(c=>sideFront(c)==='Near').map(c=>c.kind)}:null,joints,inferred,pool:pool.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),sep:c.attach?toM(c.attach).map(Math.round):null,term:c.term,len:+c.len.toFixed(1),termDt:c.termDt,fork:forkOf.has(c),claw:isClaw(c),used:usedSet.has(c),diag:c.diag})),assigned,hidden,claws:{Far:claws.Far.map(c=>toM([c.x,c.y]).map(Math.round)),Near:claws.Near.map(c=>toM([c.x,c.y]).map(Math.round))},centre:toM(centre).map(Math.round),axis:axis.map(v=>+v.toFixed(3)),spine:spine?{a:toM([g.nodes[spine.a].x,g.nodes[spine.a].y]).map(Math.round),b:toM([g.nodes[spine.b].x,g.nodes[spine.b].y]).map(Math.round),len:spine.length,minDt:spine.minDt,meanDt:spine.meanDt}:null,bodyDt:lc.bodyDt,R,feetFound:feet.Far.length+feet.Near.length};
 }
