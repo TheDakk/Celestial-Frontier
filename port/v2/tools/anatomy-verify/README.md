@@ -176,3 +176,12 @@ thin (freshwater: 4 feet kept of 7 found); select by expected count with a toler
 (2) claw-finger candidates still enter the thin cluster on the mud crab. The naming rule (gaps at the claw end) is
 right for all five paintings and should stay until a counter-example appears. Every number above is reproducible with
 the runner in the commit body; nothing here is a gate.
+
+## Slice 14 — selection and naming, 2026-09-20 late (recorded state)
+Selection: median-band per side + shared-root claw pairs; touching limbs restricted to true limb ends (no non-body
+edge continues farther from the body). Five painted crabs: visible foot positions within 25 px **16 of 35**; named
+legs within 25 px 5–11 of 31 across the naming variants tried; hidden set exact on 1 of 5.
+Naming is the open half and the reason is measured, not guessed: chains root at one of only ~4 body nodes, so
+"attachment order" collapsed to identical angles. The attachment that orders legs is the point where each chain's
+path first leaves the thick region (first path pixel with DT < bodyDt), which must be computed from the edge paths,
+not from the chain's root node. That is the next change; positions and candidate kinds stay as they are.
