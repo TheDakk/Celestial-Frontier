@@ -17,9 +17,9 @@ single-run toolchain receipt are reused. All build/native work uses the shared l
 | interiorStep | Field vertices | Native evidence |
 |---|---:|---|
 |56|3838|Retained hidden-01/native-02; baseline.json|
-|80|3791|Pending signed producer/native measurement|
+|80|3791|Signed producer890b3f5f; native measurement pending|
 |128|3791|Byte-identical binding to80; will share that measured run|
-|256|3787|Pending signed producer/native measurement|
+|256|3787|Signed producer890b3f5f; native measurement pending|
 
 The adaptive compiler subdivides any cell containing alpha boundaries or part
 ownership cuts at boundaryStep. Interior-only coarsening therefore removes at most
@@ -31,9 +31,12 @@ Build syntax and source diff checks pass. Root `validate.log` passes, including 
 unchanged50-probe v1.0 fingerprint. Candidate record/mask/atlas/part byte integrity
 is retained in `input-integrity.json`.
 
-Initial signed-commit attempt refused by the1Password agent; readiness requested.
-Native CPU runs wait for the signed producer. Root ledger and guard follow CPU in
-order; no runtime guard change yet. Paint generation proceeds independently.
+Initial signed-commit attempt refused by the1Password agent; subsequently resolved
+by signed/verified producer890b3f5f. Four paintings are retained. Latest Nick direction
+prioritizes their no-hidden intake before CPU decision; current partial intake and
+three unresolved chain locations are indexed in
+`../VISION_P1_FOUR_CRABS_20260920/intake-01/README.md`. Native timing and the root
+ledger/guard remain pending; no runtime guard or CPU-gate change.
 
 No fetch, push, PR, merge, release or deploy. PR42 and roster hold. Codex completes
 this measurement packet locally; Claude reads it without copying/syncing.
