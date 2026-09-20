@@ -7,7 +7,7 @@ const root=new URL('../../../../../',import.meta.url),read=(p:string)=>JSON.pars
 it('terminal-only needs zero first correction; half endpoint and half terminal needs half the rigid correction',()=>{
  const r=structuredClone(read('port/v2/tools/creature-animation/test-fixtures/family-records.json').records.quadruped),t=familyContractForRecord(r);
  for(const c of familyContactChains(t)){const a=r.landmarks[c.hip],b=r.landmarks[c.end];r.landmarks[c.knee]=[(a[0]+b[0])/2+.025,(a[1]+b[1])/2-.02];}
- const solver=createFamilyContactSolver(r),pose=solver.resolve({root:{rotation:0,dx:.001,dy:.01}},{actionId:'dodge',elapsedMs:200,durationMs:1000}).pose,matrices=createSkeletonPoseProgram(t,r.landmarks).evaluate(pose);
+ const solver=createFamilyContactSolver(r),pose=solver.resolve({root:{rotation:0,dx:.001,dy:.01}},{actionId:'hit',elapsedMs:200,durationMs:1000}).pose,matrices=createSkeletonPoseProgram(t,r.landmarks).evaluate(pose);
  for(const c of solver.chains){const rest=[c.endPoint.x+.004,c.endPoint.y+.004] as const,rigid=predictContactSupport(model(rest,[[c.end,1]]),matrices),terminal=predictContactSupport(model(rest,[[c.terminal!,1]]),matrices),half=predictContactSupport(model(rest,[[c.end,.5],[c.terminal!,.5]]),matrices);
   expect(Math.hypot(terminal.x-rest[0],terminal.y-rest[1])).toBeLessThan(1e-12);
   expect(rest[0]-half.x).toBeCloseTo((rest[0]-rigid.x)*.5,12);expect(rest[1]-half.y).toBeCloseTo((rest[1]-rigid.y)*.5,12);

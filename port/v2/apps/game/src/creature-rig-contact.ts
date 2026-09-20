@@ -3,7 +3,7 @@
  * clocks, curve edits, or nearest-bone fitting. Flight passes through unchanged. */
 import type {CreaturePoseV1,CreatureRigRecordV1,CreaturePartsBindingV1} from './creature-rig.js';
 import {measureMotionScale} from '../../../tools/creature-animation/motion-scale.mjs';
-import {familyContractForRecord,familyContactChains} from '../../../tools/creature-animation/family-contracts.mjs';
+import {familyContractForRecord,familyContactChains,contactStanceForAction} from '../../../tools/creature-animation/family-contracts.mjs';
 import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
 import {GRAPH} from '../../../tools/creature-animation/quadruped-template.mjs';
 import {composeAffine,rotationAround,transformPoint,IDENTITY_AFFINE,createTwoBoneChain,type Affine2} from '../../../tools/creature-animation/kinematics.js';
@@ -103,17 +103,20 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
  return {chains,scaleLength,stride,resolve(input:CreaturePoseV1,phase:ContactPhase){
   if(!Number.isFinite(phase.elapsedMs)||phase.elapsedMs<0||!Number.isFinite(phase.durationMs)||phase.durationMs<=0)throw Error('Contact: invalid phase');
   const free=/:(flight|fly|swim|jet|hop|leap|climb)$/.test(phase.actionId)||phase.actionId==='melee:kick'||phase.realm==='aquatic'||phase.realm==='aerial'||phase.realm==='gas-giant';
-  if(!chains.length||free)return {pose:input,contacts:[],maxError:0};
+  const stance=contactStanceForAction(template,phase.actionId),activeChains=free||stance==='none'?[]:chains.filter(c=>stance==='all'||c.id.startsWith('hind'));
+  // A lifted leg keeps the authored pose and its original raw-clip guard.
+  if(template.contactStance)for(const c of chains)if(!activeChains.includes(c))for(const j of [c.hip,c.knee,c.end,...c.terminal?[c.terminal]:[]]){const v=input[j];if(!v)continue;const l=template.limitsDeg[j]!,deg=v.rotation*180/Math.PI;if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: raw clip joint limit '+j+' '+phase.actionId+'@'+phase.elapsedMs+': '+deg);}
+  if(!activeChains.length)return {pose:input,contacts:[],maxError:0};
   const gait=/^approach:(walk|trot|gallop|crawl|scuttle)$/.test(phase.actionId),weight=phase.weight??1;
   if(!Number.isFinite(weight)||weight<0||weight>1)throw Error('Contact: invalid blend weight');
   const pose:Record<string,{rotation:number;dx?:number;dy?:number}>=Object.fromEntries(Object.entries(input).map(([j,k])=>[j,{...k}]));
   // Preserve the existing shared leg-pivot owner; accommodation resolves reach
   // without transferring clip gait rotations into a second hip owner.
-  for(const c of chains)if(template.legs.some(id=>c.hip===id+'Root'))pose[c.hip]={rotation:0};
+  for(const c of activeChains)if(template.legs.some(id=>c.hip===id+'Root'))pose[c.hip]={rotation:0};
   const progress=phase.elapsedMs/phase.durationMs,cycle=progress%1,completed=Math.floor(progress);
   const smooth=(v:number)=>v*v*(3-2*v);
   if(gait)pose.root={rotation:0,...pose.root,dx:direction*stride*progress/program.bodyLength};
-  const contacts=chains.map(c=>{
+  const contacts=activeChains.map(c=>{
    const swing=gait&&(c.group===1?cycle<.5:cycle>=.5),at=swing?(c.group===1?cycle*2:(cycle-.5)*2):0;
    const step=c.group===1?(cycle<.5?smooth(cycle*2):1):(cycle<.5?0:smooth((cycle-.5)*2));
    const lift=c.chain.lengths.lower*.15*weight;
@@ -124,19 +127,19 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   // Initial endpoint solve, then at most three fixed-point support corrections.
   // Every pass solves exactly to its declared endpoint target; no reach clamp.
   for(let pass=0;pass<=(hasOffset?3:0);pass++){
-   if(pass)for(let i=0;i<chains.length;i++){const c=chains[i]!,contact=contacts[i]!,m=final[c.end]!;
+   if(pass)for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,contact=contacts[i]!,m=final[c.end]!;
     // Preserve R2c's exact arithmetic for its endpoint-only reduction.
     if(c.endpointOnly)contact.endpointTarget={x:contact.paintedTarget.x-m[0]*c.offset.x-m[2]*c.offset.y,y:contact.paintedTarget.y-m[1]*c.offset.x-m[3]*c.offset.y};
     else{const predicted=predictContactSupport(c.model,final);contact.endpointTarget={x:contact.endpointTarget.x+(contact.paintedTarget.x-predicted.x),y:contact.endpointTarget.y+(contact.paintedTarget.y-predicted.y)};}}
    let matrices=program.evaluate(pose),shift=0;
-   for(let i=0;i<chains.length;i++){const c=chains[i]!,target=contacts[i]!.endpointTarget,root=transformPoint(matrices[c.hip]!,c.root),dx=target.x-root.x,max=c.chain.lengths.upper+c.chain.lengths.lower;
+   for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,target=contacts[i]!.endpointTarget,root=transformPoint(matrices[c.hip]!,c.root),dx=target.x-root.x,max=c.chain.lengths.upper+c.chain.lengths.lower;
     if(Math.hypot(dx,target.y-root.y)<=max)continue;
     if(Math.abs(dx)>=max||target.y<root.y)throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' '+c.id+' outside accommodatable reach');
     shift=Math.max(shift,target.y-Math.sqrt(max*max-dx*dx)+1e-10-root.y);
    }
    if(compression+shift>scaleLength*.08)throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' exceeds scale compression bound');
    if(shift>0){compression+=shift;pose.root={rotation:0,...pose.root,dy:(pose.root?.dy??0)+shift/program.bodyLength};matrices=program.evaluate(pose);}
-   for(let i=0;i<chains.length;i++){const c=chains[i]!,target=contacts[i]!.endpointTarget,parent=matrices[c.hip]!,root=transformPoint(parent,c.root);
+   for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,target=contacts[i]!.endpointTarget,parent=matrices[c.hip]!,root=transformPoint(parent,c.root);
     let solved;try{solved=c.chain.solve(root,target);}catch(error){throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' '+c.id+' '+String(error));}
     const upper=wrapped(angle(solved.root,solved.joint)-angle(c.root,c.joint));
     const lower=wrapped(angle(solved.joint,solved.end)-angle(c.joint,c.endPoint));
@@ -146,7 +149,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
    final=program.evaluate(pose);
   }
   let maxError=0,maxPaintTargetErrorPx=0;
-  for(let i=0;i<chains.length;i++){const c=chains[i]!,contact=contacts[i]!;
+  for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,contact=contacts[i]!;
    for(const j of [c.knee,c.end,...c.terminal?[c.terminal]:[]]){const l=template.limitsDeg[j]!,deg=pose[j]!.rotation*180/Math.PI;if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: joint limit '+j+' '+phase.actionId+'@'+phase.elapsedMs+': '+deg);}
    const p=transformPoint(final[c.end]!,c.endPoint),paint=c.endpointOnly?transformPoint(final[c.end]!,c.support):predictContactSupport(c.model,final);
    maxError=Math.max(maxError,Math.hypot(p.x-contact.endpointTarget.x,p.y-contact.endpointTarget.y));
