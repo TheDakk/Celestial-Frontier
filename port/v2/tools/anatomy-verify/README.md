@@ -86,3 +86,10 @@ rest proportions. Claw fingers then resolve as two tips on one chain whose path 
 whose chain roots on the carapace top; spines as tips whose chain length is a fraction of a leg segment. The next
 slice builds that walk-back and the per-subject debug overlay (`calibrate.mjs` gains class colours) so every
 threshold change is judged against pictures, not counts alone.
+
+## Slice 7 — `walkback.mjs` (ridge walk-back per tip), 2026-09-20
+Greedy ascent on the distance transform from each tip into the body, recording path length, the thin run (samples with
+DT < 1.6× thin) and the entry point (DT ≥ 3× thin). On the painted crab, walking feet enter after 41–247 steps with
+thin runs of 18–72; the claw palms on the painted coconut show as tips of thickness 38–40 that enter after a short
+thin run (7–17); its eye stalk is the one tip entering from above (y 16 → 52). These are the features step 3 matches
+against the template's rest proportions; the matching itself is next.
