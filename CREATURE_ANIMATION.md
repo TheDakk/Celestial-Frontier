@@ -14,13 +14,18 @@ the old eight-contact graph and arithmetic. This is ownership validation, not an
 silhouette verifier capable of discovering undeclared hidden limbs.
 
 P1 master stays 1254 square with delivered RGBA unchanged; source art and margins are accepted.
-Current fit02 has21 visible parts and exact atlas/rest reconstruction. Nick authorized
+Current fit04 has21 visible parts and exact atlas/rest reconstruction. Fit02 native review
+revealed a Far-claw tip fragment;873pixels are reassigned from body to claw, with no master,
+landmark or neighboring-limb change. The initial film retains CPU/root-continuity leaf reds. Nick authorized
 measured brachyuran contact limits after faint required−50.0539666° versus the old−35°.
 All five painter crabs plus P1, every row and presentation (12,318 samples), measure maximum
 absolute Knee17.1176319° and Foot50.0539666°. The approved ceil((max+10°)/5°)×5° rule gives
 contactLimitsDeg ±30° Knee / ±65° Foot, across the family. Raw limitsDeg stays ±35° and
 raw clips are unchanged. No contact/geometry/CPU gate, painted landmark or source pixel moves.
-The old faint red and full measurement ledger remain evidence; native acceptance is pending.
+The old faint limit red is resolved. The first native film has zero contact/seam/limit
+refusals and exact pixel rest, but approach p95=2.00ms and capture rig p95=2.90ms fail <2ms;
+faint root-step continuity is9.104px versus8.095px stride. These remain leaf findings.
+The final mask-corrected capture is pending; no gates or thresholds change.
 Evidence: `audits/VISION_P1_COCONUT_20260920/hidden-01/README.md`.
 
 > Matches D1 delivery code, 2026-09-19: `creature-delivery.ts` reads retained PNG originals by full identity and expected hash, otherwise returns the verified painter. It has no inference, worker, GPU or rig dependency. Selection of a finish is explicit; proof usage does not adopt artwork into production. Evidence: `audits/ANATOMY_SINGLE_RUN_20260919/R8/README.md`.

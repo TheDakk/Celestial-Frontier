@@ -27,13 +27,16 @@ Original PNG/prompt/tool evidence remains byte-identical in the parent packet.
 
 `cf.anatomy-presence/v2.hidden` explicitly declares leg3Far/leg3Near. Full inferred skeleton
 inventory retained; hidden joints own no visible part/positive skin weight or contact chain.
-The new P1 fit02 has21 visible parts and unchanged1254-square RGBA, exact atlas reconstruction,
+The new P1 fit04 has21 visible parts and unchanged1254-square RGBA, exact atlas reconstruction,
 eleven passing action rows and presentation. Faint hits the unchanged−35° post-IK limit;
 measurement needs−50.0539666° at leg2NearFoot/260ms. No landmark move or limit relaxation.
 Nick authorized the measured contact-limit extension: all six brachyuran subjects,12,318
 samples, give Knee17.1176319° / Foot50.0539666° maxima. Shared contact limits are now±30°/±65°
-by max+10°, round-up-to5°; raw clips and raw±35° limits unchanged. Native acceptance/film
-and the final production-check sweep are pending. The prior faint red remains evidence.
+by max+10°, round-up-to5°; raw clips and raw±35° limits unchanged. Signed producer580a6ffb
+passes shared controls: five crabs bit-identical, Civet green. P1 all12static rows plus
+presentation pass. Native01 film has exact pixel rest and zero contact/seam/limit refusals;
+CPU and faint root-continuity leaf reds remain. Fit04 corrects873Far-claw tip pixels from
+body ownership without changing master/landmarks/neighbor limbs; final capture is pending.
 
 Codex continues independent hidden-presence controls and signed evidence. Claude reviews
 read-only; Nick's art acceptance already stands. No app switch needed for Git. Roster and
