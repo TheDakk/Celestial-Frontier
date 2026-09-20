@@ -29,3 +29,16 @@ their bindings give the vertex-budget table five painted subjects instead of one
 orbs as a T2 finding (species line said two eyes) — no repaint. Native films wait for the painted-tier CPU gate and the
 split continuity guard. Signed commits; no fetch, push, PR, merge.
 ```
+
+## Addendum — the three "missing" feet (Codex question, 2026-09-20)
+Full-resolution crops (retained in this lane's scratch, reproducible from the detector overlays) show the same thing on
+all three: the **front walking leg on one side passes behind that side's claw and its foot is not painted**. There is no
+true (x, y) to trace; any coordinate is an inference. Handling is the P1 verdict's law 2: declare that leg `hidden`
+(present, occluded), place its landmarks by template inference from the adjacent visible pair, no paint, no contact
+chain. Best estimates for the inferred foot, in master pixels, if a seed point is wanted:
+crab — right front foot ≈ (750, 700), behind the right claw (mirror of the visible left front foot at (512, 702) about
+the carapace axis x ≈ 630); freshwater-crab — left front foot ≈ (370, 760), behind the left claw palm (the merus enters
+behind the claw at ≈ (320, 590)); mud-crab — left front foot ≈ (260, 700), behind the left claw base (the leg enters at
+≈ (240, 520)). Earlier I read these three as eight visible legs; that was wrong at sheet scale, and the detector's
+extra "feet" were doubled tips on one foot. T2 finding: the model occludes a front walking leg behind a claw in three
+of five crabs; count lines should say "front pair may be occluded by the claws" rather than "exactly eight visible".
