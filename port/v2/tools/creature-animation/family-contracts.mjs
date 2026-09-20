@@ -4260,7 +4260,7 @@ const quadrupedContact=contracts.find(t=>t.id==='quadruped');
 quadrupedContact.contactLimitsDeg={...quadrupedContact.limitsDeg,...Object.fromEntries(quadrupedContact.legs.flatMap(id=>Object.entries({Knee:100,Ankle:105,Paw:95}).map(([joint,max])=>[id+joint,{min:-max,max}])))};
 export const FAMILY_CONTRACTS = freeze(contracts);
 export function contactStanceForAction(template,actionId){const c=template.contactStance;return c?.actions?.[actionId]??c?.actions?.[actionId.split(':')[0]+':*']??c?.default??'all';}
-export function familyContract(id){const value=SPECIALIZED_TEMPLATES[id]??FAMILY_CONTRACTS.find(t=>t.id===id);if(!value)throw Error('Family admission: unknown template '+id);return value.id==='brachyuran'?freeze({...value,contactStance:{default:'all',actions:{}},contactLimitsDeg:{...value.limitsDeg,...Object.fromEntries(value.legs.flatMap(id=>Object.entries({Knee:30,Foot:65}).map(([joint,max])=>[id+joint,{min:-max,max}])) )}}):value;}
+export function familyContract(id){const value=SPECIALIZED_TEMPLATES[id]??FAMILY_CONTRACTS.find(t=>t.id===id);if(!value)throw Error('Family admission: unknown template '+id);return value.id==='brachyuran'?freeze({...value,contactStance:{default:'all',actions:{}},contactLimitsDeg:{...value.limitsDeg,...Object.fromEntries(value.legs.flatMap(id=>Object.entries({Knee:75,Foot:105}).map(([joint,max])=>[id+joint,{min:-max,max}])) )}}):value;}
 
 export function familyContractForRecord(record){return projectTemplateLimits(resolveAnatomyInventory(familyContract(record.template.id),record.anatomy),record);}
 

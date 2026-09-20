@@ -1,0 +1,47 @@
+{
+  "sourceLabelsReused": false,
+  "owner": "independent polygons observed on this generation01 painting",
+  "counts": [
+    162942,
+    5137,
+    9326,
+    13074,
+    13221,
+    9061,
+    14507,
+    11053,
+    4520,
+    12562,
+    11731,
+    6697,
+    14904,
+    1214,
+    1671,
+    17188,
+    34955,
+    9587,
+    23315,
+    34124,
+    9681,
+    3373,
+    3247
+  ],
+  "hiddenParts": [],
+  "intake": {
+    "mode": "delivered alpha preserved byte-for-byte",
+    "erodedPixels": 0,
+    "despilledPixels": 0,
+    "kitAcceptance": false
+  },
+  "rgbaChangedChannels": 0,
+  "parts": {
+    "id": "p1-freshwater-crab",
+    "parts": 23,
+    "atlasSize": {
+      "width": 2048,
+      "height": 1219
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  }
+}

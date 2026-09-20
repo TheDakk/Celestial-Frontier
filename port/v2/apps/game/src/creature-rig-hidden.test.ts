@@ -13,7 +13,12 @@ it('hidden limbs are present but render no parts or contacts; forged hidden pain
 });
 it('measured brachyuran contact limits admit P1 loading and reject an excessive planted fold without changing raw limits',()=>{
  const record=JSON.parse(fs.readFileSync(new URL('../../../../../audits/VISION_P1_COCONUT_20260920/hidden-01/fit-02/record.json',import.meta.url),'utf8')),t=familyContractForRecord(record),solver=createFamilyContactSolver(record);
- expect(t.contactLimitsDeg?.leg2NearKnee).toEqual({min:-30,max:30});expect(t.contactLimitsDeg?.leg2NearFoot).toEqual({min:-65,max:65});expect(t.limitsDeg.leg2NearKnee).toEqual({min:-35,max:35});expect(t.limitsDeg.leg2NearFoot).toEqual({min:-35,max:35});
+ expect(t.contactLimitsDeg?.leg2NearKnee).toEqual({min:-75,max:75});expect(t.contactLimitsDeg?.leg2NearFoot).toEqual({min:-105,max:105});expect(t.limitsDeg.leg2NearKnee).toEqual({min:-35,max:35});expect(t.limitsDeg.leg2NearFoot).toEqual({min:-35,max:35});
  const r=record.landmarks.root,c=record.landmarks.carapace,bodyPx=Math.hypot(c[0]-r[0],c[1]-r[1])*record.geometry.height,phase={actionId:'faint',elapsedMs:260,durationMs:520};
- expect(()=>solver.resolve({root:{rotation:0,dy:46/bodyPx}},phase)).not.toThrow();expect(()=>solver.resolve({root:{rotation:0,dy:72/bodyPx}},phase)).toThrow('Contact: joint limit');
+ expect(()=>solver.resolve({root:{rotation:0,dy:46/bodyPx}},phase)).not.toThrow();
+ // Retained72px coconut control is insensitive under the expanded measured family range.
+ expect(()=>solver.resolve({root:{rotation:0,dy:72/bodyPx}},phase)).not.toThrow();
+ const fresh=JSON.parse(fs.readFileSync(new URL('../../../../../audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/record.json',import.meta.url),'utf8')),freshSolver=createFamilyContactSolver(fresh),a=fresh.landmarks.root,b=fresh.landmarks.carapace,freshBodyPx=Math.hypot(a[0]-b[0],a[1]-b[1])*fresh.geometry.height;
+ expect(()=>freshSolver.resolve({root:{rotation:0,dy:40/freshBodyPx}},phase)).not.toThrow();
+ expect(()=>freshSolver.resolve({root:{rotation:0,dy:46/freshBodyPx}},phase)).toThrow('Contact: joint limit leg3NearKnee');
 });
