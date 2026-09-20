@@ -49,3 +49,20 @@ only through a measured trust gate.
 ## 4. Lane law (from tonight's double build)
 One owner per deliverable; before starting anything queued, check the other lane's single-run queue; same-path
 files are never created in both lanes; the painting tool lives in Codex's session, the gates in Claude's.
+
+## 5. The intake compiler (IC) — authorized by Nick 2026-09-20 ("proceed")
+Nick's requirement: one system for every anatomy, no per-creature hand work. Today three steps are still by hand on a
+new painting (part masks/landmarks, the occlusion decision, mask fringe repairs); everything else is already shared.
+The intake compiler removes those three: **painting + guide in → record, masks, landmarks, hidden declarations,
+binding and gates out; a person looks only at the sheet.**
+
+| Step | Owner | What it does |
+|---|---|---|
+| IC-1 registration | Claude (on T1's detector/thickness/walk-back) | match each painted tip to a guide chain (side, order along the body axis, thickness class, path profile); landmarks placed along the painting's ridge path by the guide's segment ratios; unmatched guide chains → `hidden` with inferred landmarks; pincer pairs → claw chains |
+| IC-2 labels | Claude | painting pixels assigned to chains by geodesic distance to the chain path within the mask; parts split by arc-length ratio; body = remainder; fringes outside the body outline trimmed by rule (the freshwater fit-03 repair, generalized) |
+| IC-3 writers | Codex (existing) | record/declaration/masks → observed split → binding → static/native gates, unchanged |
+| IC-4 acceptance | both | the five accepted crab fits are the regression set: the compiler must reproduce each (landmark error ≤ a recorded px bound, same hidden set, static rows green) with **zero hand edits**, and refuse mutants (a leg erased, a leg duplicated, a guide from another template) |
+
+Law: if a creature needs a hand step, that is a compiler bug and is fixed in the compiler, never on the creature.
+Order: CPU table + continuity guard first (they finish the regression set), then IC-1/IC-2 here while Codex keeps
+IC-3 stable, then archetypes and the roster only through the compiler. Morph-tier creatures never enter intake.
