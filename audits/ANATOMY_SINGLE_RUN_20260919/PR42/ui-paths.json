@@ -1,0 +1,671 @@
+[
+  {
+    "path": "UI_PRESENTATION.md",
+    "before": [
+      "100644",
+      "280fcf2db9099718262ebe43e26c304825bb3dda"
+    ],
+    "after": [
+      "100644",
+      "e00759c0d2aa5974b0c79aff35bfcffe76e444f0"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-combat-contact.wav",
+    "before": null,
+    "after": [
+      "100644",
+      "f19682675afc546d8559d11de857dc91993a32a8"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-exploration-music.wav",
+    "before": null,
+    "after": [
+      "100644",
+      "e9017e922592f1fcfcdd9548b381746c99fae8ac"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-scout-approach.wav",
+    "before": null,
+    "after": [
+      "100644",
+      "45ee2c8d0c7fbe2f418cdec1b17596ac18d49dd0"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-scout-landing.wav",
+    "before": null,
+    "after": [
+      "100644",
+      "abfe23c711a5280691fb51a4f3adc49c1df168a9"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-temperate-bed.wav",
+    "before": null,
+    "after": [
+      "100644",
+      "910fe4b382142d91354ae2604af28cab4f5d6300"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-nav.wav",
+    "before": null,
+    "after": [
+      "100644",
+      "07d533e92c6baefd2bd07b0c8713d42d82b50d46"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-refusal.wav",
+    "before": null,
+    "after": [
+      "100644",
+      "cda515e1e96fa7bd70ed10978b2d06e834685761"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/audio/cf-pilot-ui-settlement.wav",
+    "before": null,
+    "after": [
+      "100644",
+      "a8ea8a9cafb1c5b02ae551c60b85f4bfdffb26b5"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/biome/earth-rainy-landscape.webp",
+    "before": null,
+    "after": [
+      "100644",
+      "c840e0595c99dc906abb26acc15ade89970c4287"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/biome/earth-rainy-phone.webp",
+    "before": null,
+    "after": [
+      "100644",
+      "378d6b9ad8986a30016d046e2eb607da74b59b13"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/fonts/Inter-LICENSE.txt",
+    "before": null,
+    "after": [
+      "100644",
+      "9b2ca37b3ffc77391d8b2ebef4a974ef32bf46ea"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/fonts/InterVariable.woff2",
+    "before": null,
+    "after": [
+      "100644",
+      "5a8d3e72ad7ffb62af3b146e1b1f54ab5813a212"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/ship/scout-chemical-132.webp",
+    "before": null,
+    "after": [
+      "100644",
+      "1285d4bfc4a0bb88e53db82cdd91f87bbc29cf37"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/ship/scout-chemical-300.webp",
+    "before": null,
+    "after": [
+      "100644",
+      "f3cd4b003525cfe84beca1025f95e7741a495790"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/assets/pilot/ship/scout-chemical-512.webp",
+    "before": null,
+    "after": [
+      "100644",
+      "3d8df8fac498fa75f36dcc88bc37e6b111fefa88"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/audio-production-assets.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "fbb3f6016baf3b2fcec70181026574bfedc656df"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/audiovisual-pilot.html",
+    "before": null,
+    "after": [
+      "100644",
+      "e8457d851c275c4085c19acaa294ccc8a4946514"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/index.html",
+    "before": [
+      "100644",
+      "6318d487c9fb5596cb0ca60518d87b91418174f1"
+    ],
+    "after": [
+      "100644",
+      "8825b59d13fbb97db01c9f260e07d0868bc6701c"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/kit-runtime-assets.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "1d2e07224eec622d1d8fb27b229098ffee749bcb"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/package.json",
+    "before": [
+      "100644",
+      "825d9eec8e69ee8055f0e881216b49085502cde4"
+    ],
+    "after": [
+      "100644",
+      "edf76d5132d785fbeb575e2df7921eff149cbeaa"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/embeddings/earth-rain-v1.f16",
+    "before": null,
+    "after": [
+      "100644",
+      "72df201bcb7548c58f73a412fa7cb763c4453b0c"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/embeddings/earth-rain-v1.json",
+    "before": null,
+    "after": [
+      "100644",
+      "ca9abe31097239ff79ef53e5048ebc6971a3bff8"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/inputs/atlas.rgba",
+    "before": null,
+    "after": [
+      "100644",
+      "029605b3825bdd2e4270483d166fd0caa009b763"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/inputs/civet.rgba",
+    "before": null,
+    "after": [
+      "100644",
+      "c37f5a0197a97dd7179ad04c2917d2020c47168a"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/inputs/cranberry.rgba",
+    "before": null,
+    "after": [
+      "100644",
+      "de50bdc794fa5132262fce53fb8939b4ca60bb3d"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/inputs/devils-club.rgba",
+    "before": null,
+    "after": [
+      "100644",
+      "e6fb7cf836ccdf2f0aac143d0a2aaf2b8415b860"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/inputs/earth-composite.png",
+    "before": null,
+    "after": [
+      "100644",
+      "41b05337708c7a06c98ec8873919c32ffe12e65d"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/inputs/earth-rain-e.png",
+    "before": null,
+    "after": [
+      "100644",
+      "7c11334b57860b706a9ee8b035aaf2effe10a796"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/inputs/earth-temperate.rgba",
+    "before": null,
+    "after": [
+      "100644",
+      "a7151c1e751b89f3afe16f4ad54c1c2813e725b2"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/inputs/foreground-grass.rgba",
+    "before": null,
+    "after": [
+      "100644",
+      "bcbe8adfaeb3ebacdf466b0aa2ae24a3de73af96"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/inputs/frog.rgba",
+    "before": null,
+    "after": [
+      "100644",
+      "65cac30001fe122100718d4cf164ed2ff6870df3"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/inputs/persimmon.rgba",
+    "before": null,
+    "after": [
+      "100644",
+      "9b46d356e60adcbf067f9e36bf1be619aa405896"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/inputs/platypus.rgba",
+    "before": null,
+    "after": [
+      "100644",
+      "6b37e03ed995f5900fc9e573c0d70c51a5ca0964"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/public/__local_ai/inputs/triptych.rgba",
+    "before": null,
+    "after": [
+      "100644",
+      "b59e4149d6c0992c80d31f1faa6ab806470ce385"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/pwa-build.ts",
+    "before": [
+      "100644",
+      "e00232a680adf5b5bde774b1a2f4da8af69a16a8"
+    ],
+    "after": [
+      "100644",
+      "d1f7171858d4ed96435056042531dce7a437a803"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/app-chrome.ts",
+    "before": [
+      "100644",
+      "aa0a719233c378befd0039f77dd4401ddfbbbe7a"
+    ],
+    "after": [
+      "100644",
+      "d2969341713363d5da4ac29729828a499024cdb1"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/assets/painted/mars-dunesea-v1.webp",
+    "before": null,
+    "after": [
+      "100644",
+      "218267ece7226d36b971657e80d319d825559d6d"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/checkpoint-state.ts",
+    "before": [
+      "100644",
+      "5a34298788fa29e327fbf8beff6ea4b59a3508a0"
+    ],
+    "after": [
+      "100644",
+      "ef33fc6ca2381191bf1e98e422f188dbf0f1d535"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/combat-battle-scene-style.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "b2dd4ee179537622114c40dbea558dba95e0fe5d"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/combat-battle-scene.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "73b3ffcf584f61645bc5dc89f722f321cb8b745b"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/engineering-panel.ts",
+    "before": [
+      "100644",
+      "bdd3f3984f6849f5f6f25cab3ef8c9102c3a6500"
+    ],
+    "after": [
+      "100644",
+      "0f84bdd749a31a09861579db9e00cc25982fcb1e"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/main.ts",
+    "before": [
+      "100644",
+      "478972b77fd959ddb2beb2607618e570ebcd5e17"
+    ],
+    "after": [
+      "100644",
+      "c9113108f628c63364d070afbf6034f3f6a96418"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/notification-history.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "4de87c533113506377d2c4c13e32a88e3d33750d"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/panels.ts",
+    "before": [
+      "100644",
+      "60fe3a82429feb9454b28ee3a92b49a357318d4b"
+    ],
+    "after": [
+      "100644",
+      "d08d13f59395bd01a94979bcf2155edbc2154be2"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/pilot-assets.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "be23b78aa4b5c45243fb7abdd2b5ae4576a0c848"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/pilot-canonical-vista.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "63d435cc5e07b831ce87dc2b5513b995656ad6b9"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/pilot-components.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "0ef8706fbd893456b187c4d59233521488c3c4be"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/pilot-earth-binding.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "9070f318305baa0091e0926baaa65b5bd86d5316"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/pilot-pcm.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "d8d8c73bd7501cadb3c209d529f9eb449ee15d58"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/pilot-portrait-motion.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "3fdfb14370185a76578f713f5560a98071fb4d09"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/pilot-review.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "02a3b5450976b88668e77ba3ffc80d797de7f4a4"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/pilot-runtime-style.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "0569bb169e8d165fdad4dc13799078421b59fa81"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/pilot-sound-player.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "b3f8dd5e868c4ff083c042695505df93ecf5f5ca"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/pilot-specimens.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "23e130642c6ee30d8f047155d54c4eda61cdfe62"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/pilot-tokens.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "3e9913d37e3a894a0c17d7a36c7097521a9eded5"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/planet-surface-atlas.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "aa781162102c564476e9975f6c883abf01fc5030"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/planet-surface-material.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "db55d9d3549fe6e2ff8e989e06ae9bfff643c55e"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/planet-surface-turn-math.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "9cbb3948c2e2a661c15788cc2d676ff042669a8a"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/planet-surface-turn-view.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "2112185908b5c3081abd6fbd540391f48ff8ad20"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/planet-surface-turn-view.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "6b39f93cec3202fc4a58e5dd5b496645b9372dcf"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/planet-surface-turn.worker.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "7fc5cbe4cafa0b660033bbde6424b42db414fd87"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/release-content.ts",
+    "before": [
+      "100644",
+      "130259bc41176f82e70430acba439add419fea8b"
+    ],
+    "after": [
+      "100644",
+      "0f4f94598fb8d9e130c197ae139f80e4309fe27e"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/scene-image-cache-plan.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "9fa55b7f3a293801f2450c432d71290c0faaf05c"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/seeded-battle-emitter.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "8ca4008ec291e5ffd13c9646b5adc7e6cd62ae23"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/seeded-battle-emitter.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "88940cc5cdb491def10c92b0069b5eaf1b81eace"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/sheet-layout.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "74c2675c3bc1a1aa4542e2c6605998c432e429e8"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/shipyard-preview.ts",
+    "before": [
+      "100644",
+      "7900091a3eeeb8a7635aa8e7beec7b8014ce5a8c"
+    ],
+    "after": [
+      "100644",
+      "4a00c58645829fb771b9fbc9775f8a40ceb25205"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/system-protostar.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "9b1a292425530b660085e0229fe4fbd815ee19fa"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/system-star-field.test.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "be3da2a35d88076e9d9ef61cee3bd514d9a0052f"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/system-star-field.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "7416d799e717a3dc02986d296c458f378a54f762"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/tame-greeting-audio.ts",
+    "before": [
+      "100644",
+      "e0a28f42a990dba0e7bd5d85901da0b4f49875eb"
+    ],
+    "after": [
+      "100644",
+      "bcd90babcceaf2c1edf337725c6c9bb1820dc3c8"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/training.ts",
+    "before": [
+      "100644",
+      "a99ec63e638664a4d24c5dbd7f8aee8c23419760"
+    ],
+    "after": [
+      "100644",
+      "f76ac1879316e3e4068395ef028600f972bd1b64"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/ui-presentation-tokens.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "448bb4512b40959da38dd811556198f3260c9541"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/ui-sheet-style.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "ede30bc6929c28bdcf9aebb4cf5a941d88a2386c"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/src/ui-shell-style.ts",
+    "before": null,
+    "after": [
+      "100644",
+      "beb8bee1b07336cce01f7fe4e04c511f32fde608"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/tsconfig.worker.json",
+    "before": [
+      "100644",
+      "c47d161a5f20039bc56a66bd0112710e2939f333"
+    ],
+    "after": [
+      "100644",
+      "9208534b4060ee0421f5f6ece42457652b13ca78"
+    ]
+  },
+  {
+    "path": "port/v2/apps/game/vite.config.ts",
+    "before": [
+      "100644",
+      "2bfc2d761a931b262959cd98ba5b44b02eef404a"
+    ],
+    "after": [
+      "100644",
+      "165d2fc9d52e556d43e36e12effa79fb3191cc75"
+    ]
+  }
+]

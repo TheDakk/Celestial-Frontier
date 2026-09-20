@@ -17,86 +17,43 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — September19 · R3-S active, no intermediate stop
+## SESSION HANDOFF — September19 · one accumulated review stop
 
-Nick's read-only§13 supersedes the stop-per-gate loop. Report-all BEFORE complete on signed
-6c511261: all six/all rows/presentation; five crabs0classes/bit-identical. Civet1053limit,
-513compression,85publication,54reach,4support,4drift events. Ledger committed before changes.
-Current packet audits/ANATOMY_SINGLE_RUN_20260919/R3-S/README.md. Next shared quadruped
-stance contract (all/hind/none), planted-only measured contactLimitsDeg, AFTER ledger and
-controls. Fix/retain reds within1–5, no stop. Then R2d→R3interfaces→remaining§8. S2 only
-planted drift afterstep4/exactrest/crabnonidentity/or throw class AFTER said empty.
-Raw clips/root keys/input/compression bound unchanged. Node26.9.0 startup reused. Signed
-commits only; no fetch/push/PR/merge. Claude read-only/no app switch/sync; PR42parked.
+The ordered anatomy run is complete as an execution packet, with leaf reds retained:
+[audits/ANATOMY_SINGLE_RUN_20260919/README.md](audits/ANATOMY_SINGLE_RUN_20260919/README.md).
+Source/evidence producer a6afec2e, branch openai/mac, cached upstream origin/openai/mac.
+Final packet metadata follows in a signed commit. No fetch/sync/push/PR/merge/release/deploy.
+No new branches. PR42 stays parked. Pre-existing untracked.DS_Store untouched.
 
-Stance implementation prepared:34tests including raw169-action battery pass. Test-only TS
-index error corrected. Next signed stance producer and report-all planted-fold ledger.
+R3-S strict PASS13,286samples/sixsubjects, covariance0, exact rest0, five crabs R2c′bit-identical,
+Civet maxplanted drift0.165257px. Shared stance, authorized stage travel/gait phases and nine-pin
+conflict repair complete. Contact limits100/105/95° measured from planted folds; rawlimits and
+169-action battery unchanged. No new S2 after R3-S. Candidate10/history unchanged.
 
-Nick authorized stage travel/gait-phase extension and shared pin-conflict repair. Stage mode
-zeros solver root dx, stored keys unchanged. New civet-input-01 releases9non-contact pins
-around contact supports; weights/topology/atlas identical.36app/8split tests pass. Next signed
-extension producer, full report-all ledger and native rest, then measured contact limits.
+R2d parent-frame support implemented; missing Persimmon parent attachment refuses. R3 pinch/
+contactJoint/travel and R4 typed pose hold/frame publication complete. One nine-subject full-row
+capture includes faint; five R9finished identity films and one labelled habitat study complete.
+15films/16review sheets total. R9accepted local finisher masked0.35, no new model; immutable PNGs,
+conservation/rebind/retention controls pass. Q1two painted gape candidates remain unadopted.
 
-R3-S extension producer4c2f282f signature verified. Native rest0. Corrected travel-scope-03
-clears all classes except raw limits; stage selection now melee-only, gaits solver-owned.
-Measured contact limits Knee100/Ankle105/Paw95, raw limits unchanged. Nick approved x15
-negative control (x3 insensitive retained), then all remaining implementation choices within
-the run; existing S2/gates/local-only boundaries stay.39app tests pass; final AFTER pending.
+R5–R7owned fixtures, RGBA/initial-state replay, marks/structure, honest split receipts, Fiddler
+six-leg source, exact attribution and actual moving-root controls complete. Full unit battery
+4520pass/2fail/1skip; corrected roster test4pass. Remaining Compendium producer-authority mismatch
+is a leaf, sealed references unchanged. Rootvalidation/typecheck pass.
 
-R3-S signed4b969894 accepted:13,286 strict samples, six subjects zero classes, native rest0,
-Civet worst drift0.165257px, unpinned/diffused negatives fail, crab bit identity. Next R2d
-parent-frame rigid foliage (leaf reds retained) then R3 interfaces and remaining§8.
+R8D1native five retained/fallback PNGpairs identical, zero inference/workers/GPU. Both local phone
+Glass canaries instrument-red; desktop proof is the authorized fallback, no physicalphone claim.
+Roster58exhausted by14families:5retainedfit/bind/films,53explicit fitrefusals,0sourcefailures,15sheets.
+PR42three exact local UI/engine/tools path/tree projections plus copy-ready text prepared.27forward
+dependencies(20absent at cachedbase) mean hunk extraction/independentadmission still blocks promotion.
 
-R2d shared parent-frame part code implemented; two controls/typecheck pass. Persimmon
-leaf red: branch-0-foliage lacks observed nearest painted-parent attachment; no candidate
-written, no invented anchor. Candidate motion proof unrun. Continue R3 after signed
-producer/static sentinel checks. Packet R2d/README.md.
+Open review leaves: CivetT1/CPU; CoconutCPU; flora perclip/filmCPU; Persimmon folds/attachment;
+Cranberryhabitat substrate crossing33.31px and right-edge studyclipping; originalcrab edge/pinch
+readability;53rosterrefusals; phonecanary instruments; poseexporter reservedmissingmodules;
+Compendiumauthority; split forwarddependencies. Every leaf/film/sheet/CPU/refusal is indexed.
+No final visual, phone, fullrosteranimation or productionbattleE1 acceptance inferred.
 
-R2d producer7c62a15e signature verified; all six sentinels pass. R3 selector/contactJoint/
-persistent-stage-travel implementation prepared;24tests pass. Next signed producer,
-sentinels/T1 measurement, then R4 and one full-row native capture.
-
-R3 producer2865b017 verified; six sentinels PASS. T1 five crabs PASS; Civet vertical root
-step leaf red0.017142585>stride0.00804873 retained. R4 typed pose refusal/hold and explicit
-frame publication implemented; unit/typecheck pass. Full-row capture tooling includes faint
-and holds/refusal diagnostics. Next signed R4 producer, sentinels, ONE nine-subject native
-recapture; shared Civet/crab geometry/contact/rest red remains the only halt.
-
-Full-row media has its own encoded-duration check against the complete schedule (same
-750ms recorder-padding allowance). Original ten-second certificate unchanged. Output is
-family-full-rows.webm; truncated ten-second and excessive-padding controls fail.
-
-Nine-subject native recapture complete on signed f4c5489a; no S2. Full-row films/stills and
-CPU/refusal/leaf ledger in native/README.md. Civet T1 + film CPU, Coconut film CPU and flora
-CPU/fold reds retained; exact rest/contact pass on all six shared subjects. Next R9/Q1,
-then R5–R8, roster families and local PR42 split; no intermediate review stop.
-
-R9 shared finisher/immutable retention/conservation/texture-only rebind implemented. Fixed
-0.35 one-step existing model; geometry independently rebuilt and compared. Static controls
-passing; signed producer and five-crab native inference next. Evidence R9/README.md.
-
-R9 producer0cae378e verified. All five native finishes PASS conservation/immutable retention;
-Crab repeated inference byte-identical and seed+1 different/discarded. New PNG originals
-in R9/finish-01. Rebinding and native equality next; Q1 candidate-only source projection ready.
-
-R9 finished: five native numeric identities PASS, all exact rest0 and zero refusals;
-Coconut finished film2.00ms is CPU leaf red. Combined review-sheet.png includes all five
-painter/finished pairs, both Q1 painted candidates and accepted arena composite. No visual
-acceptance implied. Next R5/R6/R7 integrity batch, R8 D1, full roster, local split.
-
-R9 evidence36489e9 signed/verified after 1Password unlock. R5/R6/R7 producer prepared:
-owned current fixtures, RGBA/initial replay state, mark counts, honest split receipts,
-Fiddler six-leg source stages, compiler outcomes and exact recording attribution.21app/11tool
-tests pass; native six-owner parity/census and rendered-root controls next after signing.
-
-R5–R7 signed c1a985b7 verified. Native six-owner source parity PASS; 1,250 census complete
-with five compiler admissions, Fiddler incomplete and48unsupported observations. Root control
-input omitted rotation; instrument-only key corrected, fresh proof02 next. No shared S2 red.
-
-R5–R7 root-proof-02 PASS on verified e750bf00. D1 read-only PNG delivery prepared; next signed native retained/fallback proof and both local phone canaries, then roster and local split.
-
-D1 desktop native PASS, five exact retained/fallback pairs, zero inference/workers/GPU. Both local phone Glass attempts retain floating-trail instrument reds; small also has a changing-log source fingerprint. No retry or phone qualification. Roster58 intake producer prepared, including five completed crabs reused.
-
-Roster58 exhausted:5retained/53fitrefused/0sourcefailures;15sheets. Full unit battery4520pass/2fail/1skip: stale53vs58test now corrected to prove exactlyfiveadmissions; Compendium producer-authority mismatch remains a leaf, no sealed rebaseline. Original R3 crab/rooted-plant habitat study tool prepared to finish E2 before final split/index.
-
-R3habitat02 complete with labelledCranberrycontainment/framing leaf, noS2; three exact rests0, crabdrift<0.000026px, rootfixed. Next localPR42review trees/path manifests and one final accumulated README; no branches, push, PR or sync.
+Codex: STOP for Nick's single accumulated review, no automatic retry or nextvariant. Claude:
+optional read-only packet/interface review; no app switch, sync or copy needed. Future promotion
+base/source develop←openai/mac, UI→engine→tools, normal mergecommits, exact hosted authorization
+and unchanged-source admission required. The current task opens no PR and changes no release.

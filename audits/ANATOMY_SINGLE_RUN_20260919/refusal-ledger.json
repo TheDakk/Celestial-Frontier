@@ -1,0 +1,873 @@
+{
+  "native": [
+    {
+      "subject": "civet",
+      "rowDiagnostics": {
+        "idle": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "melee:bite": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "hit": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "alert": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach:walk": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach:trot": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach:gallop": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach:hop": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "melee:claw": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "melee:gore": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "melee:tail": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "melee:headbutt": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "cast": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "dodge": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "faint": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "victory": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "tame": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "feed": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "melee:kick": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "presentation": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        }
+      },
+      "presentationBeforeFilm": 0,
+      "presentationAfterFilm": 0,
+      "filmAdditionalRefusals": 0,
+      "filmCumulativeDiagnostics": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    {
+      "subject": "coconut-crab",
+      "rowDiagnostics": {
+        "idle": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "melee:pinch": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "hit": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "alert": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach:scuttle": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "cast": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "dodge": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "faint": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "victory": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "tame": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "feed": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "presentation": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        }
+      },
+      "presentationBeforeFilm": 0,
+      "presentationAfterFilm": 0,
+      "filmAdditionalRefusals": 0,
+      "filmCumulativeDiagnostics": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    {
+      "subject": "crab",
+      "rowDiagnostics": {
+        "idle": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "melee:pinch": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "hit": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "alert": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach:scuttle": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "cast": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "dodge": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "faint": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "victory": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "tame": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "feed": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "presentation": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        }
+      },
+      "presentationBeforeFilm": 0,
+      "presentationAfterFilm": 0,
+      "filmAdditionalRefusals": 0,
+      "filmCumulativeDiagnostics": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    {
+      "subject": "cranberry",
+      "rowDiagnostics": {
+        "sway": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "disturb": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "harvest": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "grow": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "presentation": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        }
+      },
+      "presentationBeforeFilm": 0,
+      "presentationAfterFilm": 0,
+      "filmAdditionalRefusals": 0,
+      "filmCumulativeDiagnostics": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    {
+      "subject": "devils-club",
+      "rowDiagnostics": {
+        "sway": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "disturb": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "harvest": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "grow": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "presentation": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        }
+      },
+      "presentationBeforeFilm": 0,
+      "presentationAfterFilm": 0,
+      "filmAdditionalRefusals": 0,
+      "filmCumulativeDiagnostics": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    {
+      "subject": "freshwater-crab",
+      "rowDiagnostics": {
+        "idle": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "melee:pinch": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "hit": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "alert": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach:scuttle": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "cast": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "dodge": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "faint": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "victory": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "tame": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "feed": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "presentation": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        }
+      },
+      "presentationBeforeFilm": 0,
+      "presentationAfterFilm": 0,
+      "filmAdditionalRefusals": 0,
+      "filmCumulativeDiagnostics": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    {
+      "subject": "mud-crab",
+      "rowDiagnostics": {
+        "idle": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "melee:pinch": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "hit": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "alert": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach:scuttle": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "cast": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "dodge": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "faint": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "victory": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "tame": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "feed": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "presentation": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        }
+      },
+      "presentationBeforeFilm": 0,
+      "presentationAfterFilm": 0,
+      "filmAdditionalRefusals": 0,
+      "filmCumulativeDiagnostics": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    },
+    {
+      "subject": "persimmon",
+      "rowDiagnostics": {
+        "sway": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "disturb": {
+          "refusedFrames": 1,
+          "saturated": false,
+          "firstRefusal": {
+            "actionId": "disturb",
+            "ms": 67.16666666666667,
+            "code": "ARAP_FOLD",
+            "reason": "ARAP skin: unresolved folded triangles: 84"
+          },
+          "lastRefusal": {
+            "actionId": "disturb",
+            "ms": 67.16666666666667,
+            "code": "ARAP_FOLD",
+            "reason": "ARAP skin: unresolved folded triangles: 84"
+          }
+        },
+        "harvest": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "grow": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "presentation": {
+          "refusedFrames": 12,
+          "saturated": false,
+          "firstRefusal": {
+            "actionId": "presentation",
+            "ms": 4533.333333333333,
+            "code": "ARAP_FOLD",
+            "reason": "ARAP skin: unresolved folded triangles: 169"
+          },
+          "lastRefusal": {
+            "actionId": "presentation",
+            "ms": 4700,
+            "code": "ARAP_FOLD",
+            "reason": "ARAP skin: unresolved folded triangles: 167"
+          }
+        }
+      },
+      "presentationBeforeFilm": 12,
+      "presentationAfterFilm": 13,
+      "filmAdditionalRefusals": 1,
+      "filmCumulativeDiagnostics": {
+        "refusedFrames": 13,
+        "saturated": false,
+        "firstRefusal": {
+          "actionId": "presentation",
+          "ms": 4533.333333333333,
+          "code": "ARAP_FOLD",
+          "reason": "ARAP skin: unresolved folded triangles: 169"
+        },
+        "lastRefusal": {
+          "actionId": "presentation",
+          "ms": 4533.1,
+          "code": "ARAP_FOLD",
+          "reason": "ARAP skin: unresolved folded triangles: 160"
+        }
+      }
+    },
+    {
+      "subject": "vent-crab",
+      "rowDiagnostics": {
+        "idle": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "melee:pinch": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "hit": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "alert": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "approach:scuttle": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "cast": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "dodge": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "faint": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "victory": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "tame": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "feed": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        },
+        "presentation": {
+          "refusedFrames": 0,
+          "saturated": false,
+          "firstRefusal": null,
+          "lastRefusal": null
+        }
+      },
+      "presentationBeforeFilm": 0,
+      "presentationAfterFilm": 0,
+      "filmAdditionalRefusals": 0,
+      "filmCumulativeDiagnostics": {
+        "refusedFrames": 0,
+        "saturated": false,
+        "firstRefusal": null,
+        "lastRefusal": null
+      }
+    }
+  ],
+  "roster": {
+    "total": 58,
+    "retained": 5,
+    "refused": 53
+  },
+  "families": [
+    {
+      "profile": "clawed-crustacean",
+      "total": 8,
+      "retained": 4,
+      "refused": 4,
+      "sourceReds": 0
+    },
+    {
+      "profile": "terrestrial-crab",
+      "total": 1,
+      "retained": 1,
+      "refused": 0,
+      "sourceReds": 0
+    },
+    {
+      "profile": "small-crustacean",
+      "total": 14,
+      "retained": 0,
+      "refused": 14,
+      "sourceReds": 0
+    },
+    {
+      "profile": "horseshoe-crab",
+      "total": 1,
+      "retained": 0,
+      "refused": 1,
+      "sourceReds": 0
+    },
+    {
+      "profile": "barnacle",
+      "total": 1,
+      "retained": 0,
+      "refused": 1,
+      "sourceReds": 0
+    },
+    {
+      "profile": "tardigrade",
+      "total": 1,
+      "retained": 0,
+      "refused": 1,
+      "sourceReds": 0
+    },
+    {
+      "profile": "larva",
+      "total": 1,
+      "retained": 0,
+      "refused": 1,
+      "sourceReds": 0
+    },
+    {
+      "profile": "bivalve",
+      "total": 6,
+      "retained": 0,
+      "refused": 6,
+      "sourceReds": 0
+    },
+    {
+      "profile": "land-gastropod",
+      "total": 3,
+      "retained": 0,
+      "refused": 3,
+      "sourceReds": 0
+    },
+    {
+      "profile": "water-gastropod",
+      "total": 9,
+      "retained": 0,
+      "refused": 9,
+      "sourceReds": 0
+    },
+    {
+      "profile": "annelid-land",
+      "total": 2,
+      "retained": 0,
+      "refused": 2,
+      "sourceReds": 0
+    },
+    {
+      "profile": "annelid-water",
+      "total": 7,
+      "retained": 0,
+      "refused": 7,
+      "sourceReds": 0
+    },
+    {
+      "profile": "sponge",
+      "total": 1,
+      "retained": 0,
+      "refused": 1,
+      "sourceReds": 0
+    },
+    {
+      "profile": "tunicate",
+      "total": 3,
+      "retained": 0,
+      "refused": 3,
+      "sourceReds": 0
+    }
+  ],
+  "forcedNegativeControl": 1,
+  "scope": "Cumulative presentation counters are not summed as independent film refusals."
+}
