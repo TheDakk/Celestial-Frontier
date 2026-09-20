@@ -138,3 +138,18 @@ side; claws = thick branches ending in a pincer pair; eyes = short thin branches
 guide only to break ties. Codex's mask authoring already works this way by hand; IC-1 automates that reading. What
 exists and is sound for it: keying, downscale, distance transform, multi-scale tip detection with same-toe merge,
 per-tip walk-back, the eleven-subject battery and Codex's hand landmarks as the score. Nothing here is a gate.
+
+## Slice 11 — `ridge.mjs` + `chains.mjs` (the painting's ridge graph and limb chains), 2026-09-20 evening
+The graph is read from the thinned working mask (the DT local-maximum ridge was far too noisy: 173 endpoints).
+Lessons that cost an hour each, recorded so nobody repeats them: (1) node detection must use the crossing number
+(background→skeleton transitions around the pixel), never the raw 8-neighbour count, or every diagonal staircase is a
+junction; (2) the edge walker needs a visited set and a 4-neighbour preference or it stops at staircase corners;
+(3) spur pruning must judge a spur against the junction it hangs from, fixed ONCE on the original skeleton (after a
+sibling is removed the junction stops looking like one and the walk runs through it into the trunk — that is how
+whole legs and both claws vanished); (4) the spur rule is the disc rule — an artefact is a spur whose tip never leaves
+its junction's own disc — not "shorter than k× thickness", which eats claws (their base is the thick palm);
+(5) walks must stop when ADJACENT to a junction pixel, since 8-connectivity lets them bypass it diagonally.
+State on the painted vent crab: both claws present, 5 of 8 feet within 25 px of Codex's hand landmarks straight from
+chain endpoints (7, 8, 6, 9, 10 px), one leg still cut into a second component; painted coconut: legs on one side
+still merged at the trunk, 2 of 8 within 25 px. Next: find the remaining cut (pass/floor interaction), then the
+template match over chains (side, order along the body, claws = forked thick chains, eyes = short knob chains).
