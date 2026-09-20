@@ -30,25 +30,34 @@ export function assignLegs(rgba,w,h,guide,{legsPerSide=4,thinSpread=1.8,minTerm=
   const thinAll=cands.map(c=>c.termDt).sort((a,b)=>a-b),thinRef=thinAll[Math.floor(thinAll.length/4)]??6;
   for(const e of g.edges){if(e.meanDt>=lc.bodyDt||e.length<loopMinLen)continue;const aBody=bodyIds.has(e.a),bBody=bodyIds.has(e.b);if(aBody===bBody)continue;const farId=aBody?e.b:e.a,far=g.nodes[farId];if(far.kind!=='junction'||far.dt>1.5*thinRef)continue;
     const d=Math.hypot(far.x-centre[0],far.y-centre[1]);if(d<lc.bodyDt*2)continue;
-    // the limb must END here: no other non-body edge leaves this junction and travels farther from the body centre
-    const continues=g.edges.some(o=>o!==e&&(o.a===farId||o.b===farId)&&o.meanDt<lc.bodyDt&&o.length>=30&&(()=>{const other=g.nodes[o.a===farId?o.b:o.a];return Math.hypot(other.x-centre[0],other.y-centre[1])>d+10;})());if(continues)continue;
+    // the arriving edge must itself be a limb (thin), not an arm/palm; the tip may rest on the carapace OR on another leg
+    if(e.meanDt>2.2*thinRef)continue;
     if(cands.some(c=>Math.hypot(c.x-far.x,c.y-far.y)<20))continue;cands.push({kind:'touch',x:far.x,y:far.y,termDt:far.dt,term:e.length,attach:exitPoint([e],aBody?e.a:e.b)});}
-  // claw fingers: two long candidates whose chains attach to the body at the same point (shared first edge) and whose
-  // tips are close — mark both as claw; also anything whose terminal thickness is far above the median
-  for(const c of cands){const chain=lc.chains.find(ch=>Math.hypot(ch.endNode.x-c.x,ch.endNode.y-c.y)<1);c.rootEdge=chain?chain.edges[0]:null;}
-  for(let i=0;i<cands.length;i++)for(let j=i+1;j<cands.length;j++){const a=cands[i],b=cands[j];if(a.rootEdge&&a.rootEdge===b.rootEdge&&Math.hypot(a.x-b.x,a.y-b.y)<=90&&a.term>=40&&b.term>=40){a.claw=true;b.claw=true;}}
-  // per side: tolerance band around the median terminal thickness of the non-claw long candidates, up to the count
-  const sides={Far:[],Near:[]};for(const c of cands)sides[c.x<centre[0]?'Far':'Near'].push(c);
-  const feet={Far:[],Near:[]},claws={Far:[],Near:[]};
-  const allThin=cands.filter(c=>!c.claw).map(c=>c.termDt).sort((a,b)=>a-b),med=allThin[Math.floor(allThin.length/2)]??6;
-  for(const side of ['Far','Near']){const pool=sides[side].filter(c=>!c.claw&&c.termDt<=thinSpread*med).sort((a,b)=>Math.abs(a.termDt-med)-Math.abs(b.termDt-med));
-    feet[side]=pool.slice(0,legsPerSide);claws[side]=sides[side].filter(c=>!feet[side].includes(c));}
+  // Generic appendage classes on the candidates (no family knowledge):
+  //  spine  = terminal branch shorter than minLimbTerm (hairs, serrations) → dropped;
+  //  fork   = two long candidates whose tips are close AND whose separation points nearly coincide (the two fingers
+  //           of a claw, the tines of a forked tail) → removed from the leg pool, kept as forked appendages;
+  //  leg    = everything else, ordered per side by the separation angle; the template's count per side caps it.
+  const minLimbTerm=30;const pool=cands.filter(c=>c.term>=minLimbTerm||c.kind!=='end');
+  const forkOf=new Map();for(let i=0;i<pool.length;i++)for(let j=i+1;j<pool.length;j++){const a=pool[i],b=pool[j];if(!a.attach||!b.attach)continue;
+    // working-scale thresholds (512 px longest side): fingertips within ~85 master px, separation within ~40 master px
+    if(Math.hypot(a.x-b.x,a.y-b.y)<=35&&Math.hypot(a.attach[0]-b.attach[0],a.attach[1]-b.attach[1])<=16){forkOf.set(a,b);forkOf.set(b,a);}}
+  // side by the SEPARATION point (where the limb leaves the body), not the tip: tips of forward limbs cross the midline
+  const sideOf=c=>((c.attach?c.attach[0]:c.x)<centre[0]?'Far':'Near');
+  const sides={Far:[],Near:[]};for(const c of pool){if(forkOf.has(c))continue;sides[sideOf(c)].push(c);}
+  const feet={Far:[],Near:[]},claws={Far:[],Near:[]};for(const c of pool)if(forkOf.has(c))claws[sideOf(c)].push(c);
+  // touching-tip candidates are weaker evidence than free tips: they only fill a side whose free-tip legs are fewer
+  // than the template count, and only from the rear (tips resting against the body are rear legs; occlusion happens
+  // at the claw end and is a hidden slot, not a touch)
+  for(const side of ['Far','Near']){const free=sides[side].filter(c=>c.kind!=='touch'),touch=sides[side].filter(c=>c.kind==='touch');
+    const need=Math.max(0,legsPerSide-free.length);feet[side]=free.concat(touch.sort((a,b)=>b.term-a.term).slice(0,need));}
   // naming by the ATTACHMENT order along the body: sort each side's feet by the angle of their attachment point about
   // the body centre, rear/top first; leg0 is the most rearward attachment, and gaps fall at the claw end.
   const assigned={},hidden=[];
   for(const side of ['Far','Near']){const list=feet[side].map(f=>({f,a:ang(f.attach??[f.x,f.y],centre)}));
     const key=o=>side==='Near'?(o.a<-Math.PI/2?o.a+2*Math.PI:o.a):(o.a>Math.PI/2?-(o.a-2*Math.PI):-o.a);
     const ordered=list.sort((p,q)=>key(p)-key(q));
-    for(let k=0;k<legsPerSide;k++){const name='leg'+k+side+'Foot';const o=ordered[k];if(o)assigned[name]={master:toM([o.f.x,o.f.y]).map(Math.round),kind:o.f.kind,attach:toM(o.f.attach??[o.f.x,o.f.y]).map(Math.round)};else hidden.push('leg'+k+side);}}
-  return {assigned,hidden,claws:{Far:claws.Far.map(c=>toM([c.x,c.y]).map(Math.round)),Near:claws.Near.map(c=>toM([c.x,c.y]).map(Math.round))},centre:toM(centre).map(Math.round),feetFound:feet.Far.length+feet.Near.length};
+    for(let k=0;k<legsPerSide;k++){const name='leg'+k+side+'Foot';const o=ordered[k];if(o)assigned[name]={master:toM([o.f.x,o.f.y]).map(Math.round),kind:o.f.kind,attach:toM(o.f.attach??[o.f.x,o.f.y]).map(Math.round)};else hidden.push('leg'+k+side);}
+    if(ordered.length>legsPerSide)for(const o of ordered.slice(legsPerSide))hidden.push('extra:'+side+':'+toM([o.f.x,o.f.y]).map(Math.round).join(','));}
+  return {pool:pool.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),sep:c.attach?toM(c.attach).map(Math.round):null,term:c.term,termDt:c.termDt,fork:forkOf.has(c)})),assigned,hidden,claws:{Far:claws.Far.map(c=>toM([c.x,c.y]).map(Math.round)),Near:claws.Near.map(c=>toM([c.x,c.y]).map(Math.round))},centre:toM(centre).map(Math.round),feetFound:feet.Far.length+feet.Near.length};
 }

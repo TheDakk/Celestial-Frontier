@@ -191,3 +191,15 @@ beside the body. The ordering primitive must therefore be the point where a chai
 (its last shared node), projected onto the body outline; and the body itself should be the largest thick component
 at a higher fraction of the maximum thickness so upper leg segments are not "body". Positions stand at 16 of 35;
 naming stays open. Stop for the night here; nothing in this folder is a gate.
+
+## Slice 15 — generic classes on the graph (spine / fork / leg), 2026-09-21 early
+Selection now uses only family-free rules: spine = terminal branch < 30 px; fork = two long candidates with tips within
+~85 master px whose separation points nearly coincide; leg = the rest, sided by the SEPARATION point (tips of forward
+limbs cross the midline), ordered by separation angle; touching tips fill missing rear slots only. Two units bugs found
+and fixed (thresholds written in master px but compared at working scale; the touching rule rejecting tips that rest
+on another leg). Five painted crabs: **visible foot positions within 25 px 21 of 35** (best so far; crab 6/7,
+freshwater 5/7), named 8–12 of 30 depending on the variant, hidden sets exact on 0–2 of 5. Naming still degrades
+whenever one candidate is wrong, because slot filling is greedy by order. The next step is P5 proper: a small
+assignment problem per side (candidates × template slots, cost = order consistency + thinness + length ratio + a
+hidden prior at the claw end), solved exactly (≤ 8 candidates × 4 slots), instead of greedy rules. Everything above
+is reproducible with the runner in the commit body; nothing here is a gate.
