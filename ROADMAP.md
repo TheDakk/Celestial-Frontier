@@ -83,3 +83,8 @@ R9 finished: five native numeric identities PASS, all exact rest0 and zero refus
 Coconut finished film2.00ms is CPU leaf red. Combined review-sheet.png includes all five
 painter/finished pairs, both Q1 painted candidates and accepted arena composite. No visual
 acceptance implied. Next R5/R6/R7 integrity batch, R8 D1, full roster, local split.
+
+R9 evidence36489e9 signed/verified after 1Password unlock. R5/R6/R7 producer prepared:
+owned current fixtures, RGBA/initial replay state, mark counts, honest split receipts,
+Fiddler six-leg source stages, compiler outcomes and exact recording attribution.21app/11tool
+tests pass; native six-owner parity/census and rendered-root controls next after signing.

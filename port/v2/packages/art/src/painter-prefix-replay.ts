@@ -6,9 +6,13 @@ const readers=new WeakMap<ArtContext2D,()=>Uint8ClampedArray>();
 const verifiers=new WeakMap<ArtContext2D,()=>{method:'fresh-prefix-canvas';prefixReads:number;differentChannels:number}>();
 const methods=new Set(['save','restore','translate','rotate','scale','transform','setTransform','resetTransform','beginPath','closePath','moveTo','lineTo','quadraticCurveTo','bezierCurveTo','arc','arcTo','ellipse','rect','roundRect','fill','stroke','clip','clearRect','fillRect','strokeRect','setLineDash','drawImage']);
 const queries=new Set(['getTransform','getLineDash','measureText','isPointInPath','isPointInStroke']);
-export function recordPainterPrefixes(source:ArtContext2D){
+export function recordPainterPrefixes(source:ArtContext2D,initial:{unclipped:true;emptyPath:true;saveDepth:0}){
+ if(initial?.unclipped!==true||initial.emptyPath!==true||initial.saveDepth!==0)throw Error('Painter prefix: unknown initial path/clip/stack');
  const steps:Replay[]=[],ids=new WeakMap<object,number>();let serial=0,prefixReads=0;
  const m=source.getTransform();steps.push(c=>c.setTransform(m));
+ const properties=['fillStyle','strokeStyle','globalAlpha','globalCompositeOperation','lineWidth','lineCap','lineJoin','miterLimit','lineDashOffset','shadowBlur','shadowColor','shadowOffsetX','shadowOffsetY','font','textAlign','textBaseline','direction','filter','imageSmoothingEnabled','imageSmoothingQuality','fontKerning','fontStretch','fontVariantCaps','letterSpacing','wordSpacing','textRendering'];
+ for(const key of properties){const value=Reflect.get(source,key,source);if(value===undefined)continue;if(!['string','number','boolean'].includes(typeof value))throw Error('Painter prefix: unsupported inherited state '+key);steps.push(c=>{Reflect.set(c,key,value,c);});}
+ const dash=source.getLineDash().slice();steps.push(c=>c.setLineDash(dash));
  const resolve=(value:unknown,objects:Map<number,unknown>):unknown=>value!==null&&typeof value==='object'&&ids.has(value)?objects.get(ids.get(value)!):value;
  const context=new Proxy(source,{get(target,key){
   const value=Reflect.get(target,key,target);if(typeof value!=='function')return value;

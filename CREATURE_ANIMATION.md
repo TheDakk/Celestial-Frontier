@@ -1,25 +1,21 @@
 # Creature animation — shared anatomy and motion contract
 
-**R3-S — matches code September19,2026; acceptance in progress.** Shared per-template/action
-stance selects quadruped all/hind/none exactly per Nick's§13. Only selected chains enter IK;
-lifted legs preserve authored keys with the raw-clip guard. Brachyuran remains all; absent
-contracts retain historical all-chain behavior. BEFORE report-all ledger is committed7d39716a.
-Nick subsequently authorized stage-owned travel/gait phases and shared pin-conflict repair.
-ContactPhase.travel='stage' zeros solver root dx without editing stored clip keys; diagonal
-stance and bounding hind support leave lifted keys raw. The shared split optionally releases
-non-contact pins adjacent to incompatible contact owners. Civet input01 releases9pins with
-zero weight/topology/atlas changes; previous bindings retained.36app/8split tests pass.
-Measured planted-fold maxima (travel-scope-03 ledger) are Knee86.5368918°, Ankle94.1469004°,
-Paw80.5685150°. Shared quadruped contactLimitsDeg applies ±100°/±105°/±95° respectively:
-ceil((max absolute +10°)/5°)×5°. Raw limitsDeg and the169-action raw battery are unchanged;
-absent contactLimitsDeg falls back to raw limits. Stage mode is selected for melee only in
-capture/sweep consumers; gait travel retains its paired solver root/stance targets.
-Native regenerated-binding exact rest passes0 changed pixels. All six subjects' corrected
-measurement ledger clears reach/compression/publication/drift; remaining raw limit events
-are the measured input to these contact limits. Nick authorized x15 crouch rejection after
-x3 became insensitive under hind-only stance; x3 evidence remains. All-four bite compression
-still fails with stage travel active. Compression/paint/rest gates unchanged.
-[Current packet](audits/ANATOMY_SINGLE_RUN_20260919/R3-S/README.md).
+**Current stance/contact contract — matches code September 19, 2026. R3-S accepted.**
+Shared per-template/action stances select all, hind or no quadruped contacts; only planted
+chains enter IK. Lifted legs retain authored keys and the raw-clip guard. Brachyuran keeps
+all contacts; absent contracts retain historical behavior. Stage travel zeros solver root
+dx without changing stored clip keys. Gaits retain paired solver root/stance travel with
+explicit lift phases. Civet’s regenerated binding releases nine conflicting non-contact
+pins while preserving weights, topology and atlas. Candidate-10 and earlier bindings remain.
+
+Measured planted-fold maxima are Knee 86.5368918°, Ankle 94.1469004°, Paw 80.5685150°.
+Quadruped contactLimitsDeg is ±100°/±105°/±95° respectively: ceil((max absolute + 10°)/5°)×5°.
+Other templates default to limitsDeg; the raw 169-action library and limits are unchanged.
+The final 13,286-sample six-subject strict sweep has zero throw classes; five crabs are
+bit-identical to R2c′ and Civet’s maximum planted drift is 0.165257 px. Native rest changes
+zero RGBA channels. Crouch ×15 rejects on limits, ×3 remains a documented insensitive
+control, and all-four-planted bite rejects on compression. Gates remain 0.25 px, <2 ms and
+exact rest. [Acceptance and retained controls](audits/ANATOMY_SINGLE_RUN_20260919/R3-S/README.md).
 
 **R4 — matches code September19,2026.** Typed posed-fold errors support explicit
 refusal:hold presentation with retained first/last/count diagnostics and continued action
@@ -566,3 +562,15 @@ R9 evidence now complete: five conserved finishes reproduce native painter geome
 exactly; normal refusals0/restChanged0. The combined sheet and per-part color metrics are
 in audits/ANATOMY_SINGLE_RUN_20260919/R9/. Coconut’s finished-film 2.00ms remains a CPU
 leaf red; textures and Q1 art candidates await the single final visual review.
+
+R5/R6 source integrity: test-owned current records are hash-verified before compilation;
+mirroring is an explicit detached fixture transformation. Exact full RGBA replay includes
+initial supported context state. Source marks remain provenance and do not increase body
+counts. Fiddler’s six curved legs and unequal pincers are observed without fabricated
+elbows or a fourth pair. Split receipts report observed, welded and independent excluded
+boundaries separately; source geometry and solver arithmetic are unchanged.
+
+Flora remainder exception: prepare-flora’s tiny trunk polygon is a declaration placeholder;
+the explicitly named remainder owns every otherwise unclaimed source pixel. It is not a
+trunk silhouette or inferred anatomy. Exact reconstruction guards missing/duplicate/color
+changes; a missing remainder owner is refused.

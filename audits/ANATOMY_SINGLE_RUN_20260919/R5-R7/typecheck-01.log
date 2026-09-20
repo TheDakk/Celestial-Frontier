@@ -1,0 +1,5 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/motion/anatomy-fixtures.test.ts(2,271): error TS2532: Object is possibly 'undefined'.

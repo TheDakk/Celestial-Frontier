@@ -11,11 +11,11 @@ const require=createRequire(import.meta.url),sharp=createRequire(require.resolve
 const finishedArg=process.argv.find(a=>a.startsWith('--finished='));
 if(finishedArg){const {rebindFinished}=await import('../painted-creature/rebind-finished.mjs');console.log(JSON.stringify(await rebindFinished(path.resolve(process.argv[2]),path.resolve(finishedArg.slice(11)),path.resolve(process.argv[3]))));process.exit(0);}
 const [sourceArg,outArg]=process.argv.slice(2),source=path.resolve(sourceArg),output=path.resolve(outArg),report=JSON.parse(fs.readFileSync(path.join(source,'report.json')));
-if(report.schema!=='cf.source-painter-parts/v1'||report.status!=='DIAGNOSTIC_PASS'||report.rows.length!==5||fs.existsSync(output))throw Error('New output and complete source mask capture required');
-if(!Array.isArray(report.artifacts)||report.artifacts.length!==25)throw Error('Complete source artifact manifest required');
+if(report.schema!=='cf.source-painter-parts/v1'||report.status!=='DIAGNOSTIC_PASS'||report.rows.filter(r=>r.recordRecipeHash).length!==5||fs.existsSync(output))throw Error('New output and complete source mask capture required');
+if(!Array.isArray(report.artifacts)||report.artifacts.length<25)throw Error('Complete source artifact manifest required');
 for(const artifact of report.artifacts){if(!/^[a-z-]+\.(png|json)$/.test(artifact.path)||await hashBytes(fs.readFileSync(path.join(source,artifact.path)))!==artifact.sha256)throw Error('Source artifact changed: '+artifact.path);}
 fs.mkdirSync(output,{recursive:true});
-for(const row of report.rows){
+for(const row of report.rows.filter(r=>r.recordRecipeHash)){
  const id=row.name.toLowerCase().replaceAll(' ','-'),out=path.join(output,id);fs.mkdirSync(out);
  const write=(name,value)=>fs.writeFileSync(path.join(out,name),JSON.stringify(value,null,2)+'\n');
  const original=JSON.parse(fs.readFileSync(path.join(source,id+'-record.json'))),masterFile=path.join(source,id+'-master.png');

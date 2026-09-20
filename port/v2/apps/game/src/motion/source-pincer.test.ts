@@ -1,12 +1,11 @@
-import fs from 'node:fs';import path from 'node:path';import {it,expect} from 'vitest';
+import {readAnatomyFixture} from './fixtures/anatomy/read.js';import {it,expect} from 'vitest';
 import {compileBodyCard,type ResolvedAnatomyRecord} from './body-card.js';import {buildTimeline,sampleTimeline} from './timeline.js';
 import {familyContractForRecord} from '../../../../tools/creature-animation/family-contracts.mjs';
 import {createSkeletonPoseProgram} from '../../../../tools/creature-animation/skeleton-pose.mjs';
-const base=path.resolve(import.meta.dirname,'../../../../../../audits/ANATOMY_COMPLETION_20260917/crab-masks-04');
 const point=(m:readonly number[],p:readonly number[])=>[m[0]!*p[0]!+m[2]!*p[1]!+m[4]!,m[1]!*p[0]!+m[3]!*p[1]!+m[5]!] as const;
 const angle=(p:readonly number[],f:readonly number[],d:readonly number[])=>Math.atan2((d[0]!-p[0]!)*(f[1]!-p[1]!)-(d[1]!-p[1]!)*(f[0]!-p[0]!),(d[0]!-p[0]!)*(f[0]!-p[0]!)+(d[1]!-p[1]!)*(f[1]!-p[1]!));
 for(const id of ['crab','coconut-crab','freshwater-crab','mud-crab','vent-crab'])it(id+' closes actual painted pincer gaps while every walking contact remains fixed, including mirrored source',()=>{
- const source=JSON.parse(fs.readFileSync(path.join(base,id+'-record.json'),'utf8'));
+ const source=readAnatomyFixture(id);
  for(const mirror of [false,true]){
   const r={...source,projection:'source-pincers',landmarks:Object.fromEntries(Object.entries(source.landmarks as Record<string,number[]>).map(([j,p])=>[j,[mirror?1-p[0]!:p[0],p[1]]]))} as ResolvedAnatomyRecord;
   const card=compileBodyCard(r),tl=buildTimeline(card,'melee:pinch',r.identity.seed),program=createSkeletonPoseProgram(familyContractForRecord(r),r.landmarks as Readonly<Record<string,readonly [number,number]>>),lm=r.landmarks;

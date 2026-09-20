@@ -33,7 +33,11 @@ try{
     if(!ordinary||ordinary.width!==painted.width||ordinary.height!==painted.height)throw Error('Observation changed output dimensions');
     row.changedChannels=comparePixels(painted.getContext('2d').getImageData(0,0,painted.width,painted.height).data,ordinary.getContext('2d').getImageData(0,0,ordinary.width,ordinary.height).data);
     if(row.changedChannels)throw Error('Observation changed ordinary painting');
-    if(observation?.family==='brachyuran'){
+    if(observation){
+     const pngBytes=new Uint8Array(await(await ink.convertToBlob({type:'image/png'})).arrayBuffer()),stem=item.id.toLowerCase().replace(/[^a-z0-9]+/g,'-');let binary='';for(let i=0;i<pngBytes.length;i+=8192)binary+=String.fromCharCode(...pngBytes.subarray(i,i+8192));artifacts[stem+'.png']=btoa(binary);const provenance=new TextEncoder().encode(JSON.stringify({genome:item.genome,observation},null,2)+'\n');binary='';for(let i=0;i<provenance.length;i+=8192)binary+=String.fromCharCode(...provenance.subarray(i,i+8192));artifacts[stem+'.json']=btoa(binary);row.sourceMaster=stem+'.png';row.sourceObservation=stem+'.json';
+     row.geometryAdmission={status:'UNSUPPORTED_FAMILY',reason:'No complete source-observation compiler for '+observation.family};
+    }
+    if(observation?.family==='brachyuran'){try{
      const png=new Uint8Array(await(await ink.convertToBlob({type:'image/png'})).arrayBuffer());
      const input={identity:{speciesVisualKey:speciesVisualKey(item.genome),seed:item.genome.seed,ownerId:observation.ownerId,earthName:item.genome._earthName??null},cutoutAssetHash:await sha(png),width:ink.width,height:ink.height};
      const record=await compileCrabObservationRecord(observation,input),alpha=Uint8Array.from({length:ink.width*ink.height},(_,i)=>data[i*4+3]);
@@ -43,7 +47,7 @@ try{
      if(!removed||!oldSpaceRefused)throw Error('Missing raster frame negative control');
      const file=item.genome._earthName.toLowerCase().replaceAll(' ','-')+'.png';let binary='';for(let i=0;i<png.length;i+=8192)binary+=String.fromCharCode(...png.subarray(i,i+8192));artifacts[file]=btoa(binary);
      row.geometryAdmission={master:file,status:'PASS',joints:Object.keys(record.landmarks).length,recipeHash:record.recipeHash,actualAlphaChecked:true,missingFrameRefused:oldSpaceRefused,record};
-    }
+    }catch(e){row.geometryAdmission={status:'INCOMPLETE_OBSERVATION',reason:String(e)};}}
     row.status='RASTER_PASS';row.topology=observation?'GEOMETRY_EMITTED':'NO_TOPOLOGY_EMISSION';
     if(observation)row.observation={owner:observation.ownerId,family:observation.family,materials:observation.materials,features:observation.features.map(f=>({id:f.id,kind:f.kind,pointCount:f.points.length})),unresolved:observation.unresolved,sha256:await sha(new TextEncoder().encode(JSON.stringify(observation)))};
    }

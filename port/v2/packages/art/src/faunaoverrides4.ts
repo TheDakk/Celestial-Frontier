@@ -176,7 +176,7 @@ export function faunaPyrosome(c: Ctx, g: G, p: Pal): void {
   const r = seeded(g, 0x9750);
   const observed:DrawnFeature[]|null=isObservingPainterTopology(c)?[]:null;
   const cx = S * 0.5, top = S * 0.16, bot = S * 0.84, w = S * 0.115;
-  observed?.push({id:'tube-left',kind:'body',points:[[cx-w*.72,top],[cx-w*1.16,(top+bot)/2],[cx-w,bot]],curve:'quadratic',layer:'near'},{id:'tube-right',kind:'body',points:[[cx+w,bot],[cx+w*1.16,(top+bot)/2],[cx+w*.72,top]],curve:'quadratic',layer:'near'},{id:'aperture',kind:'body',points:[[cx,top+S*.005]],widths:[w*1.4,S*.056],curve:'ellipse',layer:'near'});
+  observed?.push({id:'tube-left',kind:'body',structureId:'tube',points:[[cx-w*.72,top],[cx-w*1.16,(top+bot)/2],[cx-w,bot]],curve:'quadratic',layer:'near'},{id:'tube-right',kind:'body',structureId:'tube',points:[[cx+w,bot],[cx+w*1.16,(top+bot)/2],[cx+w*.72,top]],curve:'quadratic',layer:'near'},{id:'aperture',kind:'opening',points:[[cx,top+S*.005]],widths:[w*1.4,S*.056],curve:'ellipse',layer:'near'});
   /* the translucent tube wall */
   const wall = c.createLinearGradient(cx - w, 0, cx + w, 0);
   wall.addColorStop(0, `rgba(${p.cr},${p.cg},${p.cb},0.62)`);
@@ -202,7 +202,7 @@ export function faunaPyrosome(c: Ctx, g: G, p: Pal): void {
     const halfW = w * (0.72 + 0.28 * Math.sin(u * Math.PI));
     const x = cx - halfW + v * halfW * 2;
     const edge = Math.abs(v - 0.5) * 2;
-    observed?.push({id:'zooid'+i,kind:'body',points:[[x,y]],widths:[6.8,4.4],curve:'ellipse',layer:'near'});
+    observed?.push({id:'zooid'+i,kind:'mark',points:[[x,y]],widths:[6.8,4.4],curve:'ellipse',layer:'near'});
     c.fillStyle = `rgba(${Math.min(255, p.cr + 60)},${Math.min(255, p.cg + 70)},${Math.min(255, p.cb + 80)},${0.22 + edge * 0.42})`;
     c.beginPath(); c.ellipse(x, y, 3.4, 2.2, 0.4, 0, TAU); c.fill();
   }

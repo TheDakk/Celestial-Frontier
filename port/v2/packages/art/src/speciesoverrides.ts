@@ -1,3 +1,4 @@
+import {assertPainterCaptureRgba} from './painter-capture-parity.js';
 /* speciesoverrides.ts — THE MORPHOLOGY PASS (wave 1+). A hand-written
    override layer that sits ATOP the verbatim hdart engine. speciesPortrait
    consults resolveOverride() FIRST (by the genome's _earthName / family);
@@ -1680,15 +1681,17 @@ function applyReviewedFaunaLineageDrift(c: Ctx, g: G, name: string): void {
  * Capture ownership on a separate deterministic render, as the quadruped owner does. */
 export function resolveOverrideCanvas(g:G,observeTopology?:PainterTopologyObserver):ArtCanvas|null{
   if(!observeTopology?.captureParts)return paintOverrideCanvas(g,observeTopology);
-  let primary:{topology:PainterTopology;ink:ArtCanvas}|undefined,captured:PainterTopology|undefined;
+  let primary:{topology:PainterTopology;ink:ArtCanvas}|undefined,captured:PainterTopology|undefined,capturedInk:ArtCanvas|undefined;
   const normal=paintOverrideCanvas(g,(topology,ink)=>{if(topology)primary={topology,ink};});
   if(!normal||!primary)throw Error('Topology masks: missing winning owner');
-  const capture:PainterTopologyObserver=topology=>{if(topology)captured=topology;};capture.captureParts=true;
+  const capture:PainterTopologyObserver=(topology,ink)=>{if(topology){captured=topology;capturedInk=ink;}};capture.captureParts=true;
   paintOverrideCanvas(g,capture);
   if(!captured?.partMasks)throw Error('Topology masks: owner has no source masks');
   const {partMasks,...geometry}=captured;
   if(JSON.stringify(geometry)!==JSON.stringify(primary.topology))throw Error('Topology masks: replay changed anatomy');
   if(partMasks.width!==primary.ink.width||partMasks.height!==primary.ink.height)throw Error('Topology masks: replay dimensions');
+  if(!capturedInk)throw Error('Painter capture missing ink');
+  assertPainterCaptureRgba(primary.ink.getContext('2d')!.getImageData(0,0,partMasks.width,partMasks.height).data,capturedInk.getContext('2d')!.getImageData(0,0,partMasks.width,partMasks.height).data);
   const rgba=primary.ink.getContext('2d')!.getImageData(0,0,partMasks.width,partMasks.height).data,labels=partMasks.labels.slice();
   for(let i=0;i<labels.length;i++){if(!rgba[i*4+3])labels[i]=0;else if(!labels[i])throw Error('Topology masks: replay missed visible ink');}
   observeTopology({...primary.topology,partMasks:{...partMasks,labels}},primary.ink);
@@ -1821,7 +1824,7 @@ const R2_MICROBE_COLONY_SEEDS: ReadonlySet<number> = new Set([
 export type PainterTopologyObserver=((topology:PainterTopology|null,ink:ArtCanvas)=>void)&{captureParts?:boolean};
 function paintWithTopology(ink:{c:Ctx;cv:ArtCanvas},paint:()=>void,observe?:PainterTopologyObserver):void{
   if(observe){
-    const original=ink.c,replay=observe.captureParts?recordPainterPrefixes(original):undefined;
+    const original=ink.c,replay=observe.captureParts?recordPainterPrefixes(original,{unclipped:true,emptyPath:true,saveDepth:0}):undefined;
     if(replay)ink.c=replay.context;
     try{const topology=observePainterTopology(ink.c,paint,{captureParts:observe.captureParts??false});
       observe(topology?{...topology,rasterFrame:{width:ink.cv.width,height:ink.cv.height,origin:[INK_OFF,INK_OFF],scale:1}}:null,ink.cv);
@@ -1839,13 +1842,15 @@ export function resolveProceduralCanvas(g: G, observeAnatomy?: DrawnObserver, ca
   let primary: {geometry: import('./quadruped-anatomy.js').QuadrupedDrawnGeometry; ink: ArtCanvas} | undefined;
   const normal = paintProceduralCanvas(g, (geometry, ink) => { primary = {geometry, ink}; },false,observeTopology);
   if (!normal || !primary) throw Error('No winning anatomy observer for part capture');
-  let captured: import('./painter-part-capture.js').PaintedPartMasks | undefined;
-  paintProceduralCanvas(g, geometry => {
+  let captured: import('./painter-part-capture.js').PaintedPartMasks | undefined,capturedInk:ArtCanvas|undefined;
+  paintProceduralCanvas(g, (geometry,ink) => {
+    capturedInk=ink;
     if (JSON.stringify(geometry.landmarks) !== JSON.stringify(primary!.geometry.landmarks) || JSON.stringify(geometry.materials) !== JSON.stringify(primary!.geometry.materials) || JSON.stringify(geometry.weapons) !== JSON.stringify(primary!.geometry.weapons)) throw Error('Painter mask replay changed resolved anatomy');
     captured = geometry.partMasks;
   }, true);
   if (!captured || captured.width !== primary.ink.width || captured.height !== primary.ink.height) throw Error('Painter mask replay dimensions');
   const rgba = primary.ink.getContext('2d')!.getImageData(0, 0, captured.width, captured.height).data;
+  if(!capturedInk)throw Error('Painter capture missing ink');assertPainterCaptureRgba(rgba,capturedInk.getContext('2d')!.getImageData(0,0,captured.width,captured.height).data);
   const labels = captured.labels.slice();
   for (let i = 0; i < labels.length; i++) {
     if (!rgba[i * 4 + 3]) labels[i] = 0;

@@ -667,7 +667,7 @@ export function faunaSeaSquirt(c: Ctx, g: G, p: Pal): void {
   c.closePath(); c.fill();
   const body = (bx: number, by: number, bw: number, bh: number, dim: number): void => {
     const bodyId='tunic'+bodies++,layer=dim<1?'far' as const:'near' as const;let ports=0;
-    observed?.push({id:bodyId+'Left',kind:'body',points:[[bx-bw*1.05,by+bh],[bx-bw*.92,by-bh*.55],[bx-bw*.62,by-bh*1.02],[bx-bw*.30,by-bh]],curve:'cubic',layer},{id:bodyId+'Right',kind:'body',points:[[bx+bw*.42,by-bh*.92],[bx+bw*.86,by-bh*.50],[bx+bw*.98,by-bh*.10],[bx+bw*1.05,by+bh]],curve:'cubic',layer});
+    observed?.push({id:bodyId+'Left',kind:'body',structureId:bodyId,points:[[bx-bw*1.05,by+bh],[bx-bw*.92,by-bh*.55],[bx-bw*.62,by-bh*1.02],[bx-bw*.30,by-bh]],curve:'cubic',layer},{id:bodyId+'Right',kind:'body',structureId:bodyId,points:[[bx+bw*.42,by-bh*.92],[bx+bw*.86,by-bh*.50],[bx+bw*.98,by-bh*.10],[bx+bw*1.05,by+bh]],curve:'cubic',layer});
     c.globalAlpha = dim;
     /* THE TUNIC — a translucent leathery sac, wider at the base where it grips */
     const bgr = c.createLinearGradient(bx - bw, 0, bx + bw, 0);
@@ -683,7 +683,7 @@ export function faunaSeaSquirt(c: Ctx, g: G, p: Pal): void {
        Each is a raised rim around a dark opening, which is what makes it a
        PORT rather than a spot. */
     const siph = (sx: number, sy: number, sr: number, ang: number): void => {
-      observed?.push({id:bodyId+'Siphon'+ports++,kind:'body',points:[[sx-Math.sin(ang)*sr*1.5,sy+Math.cos(ang)*sr*1.5],[sx+Math.sin(ang)*sr*.5,sy-Math.cos(ang)*sr*.5]],widths:[sr*2,sr*.84],curve:'ellipse',layer});
+      observed?.push({id:bodyId+'Siphon'+ports++,kind:'opening',points:[[sx-Math.sin(ang)*sr*1.5,sy+Math.cos(ang)*sr*1.5],[sx+Math.sin(ang)*sr*.5,sy-Math.cos(ang)*sr*.5]],widths:[sr*2,sr*.84],curve:'ellipse',layer});
       c.save(); c.translate(sx, sy); c.rotate(ang);
       c.fillStyle = `rgb(${Math.min(255, p.cr * 1.25 | 0)},${Math.min(255, p.cg * 1.25 | 0)},${Math.min(255, p.cb * 1.25 | 0)})`;
       c.beginPath();
