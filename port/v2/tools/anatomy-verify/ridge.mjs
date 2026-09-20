@@ -42,7 +42,10 @@ export function graphFromSkeleton(skelIn,mask,dt,W,H,{spurFactor=1.5,junctionRad
   const edges=[],seenEdge=new Set();
   for(const node of nodes)for(const m of node.members)for(const start of nb(m)){if(nodeId[start]>=0&&nodeId[start]===node.id)continue;const key=Math.min(m,start)+':'+Math.max(m,start);if(seenEdge.has(key))continue;
     const path=[m],visited=new Set(node.members);let cur=start,prev=m,len=0,minD=1e9,sumD=0,maxD=0;while(true){path.push(cur);visited.add(cur);len+=Math.hypot(cur%W-prev%W,Math.floor(cur/W)-Math.floor(prev/W));const d=dt[cur];minD=Math.min(minD,d);maxD=Math.max(maxD,d);sumD+=d;if(nodeId[cur]>=0&&nodeId[cur]!==node.id)break;const n=nb(cur).filter(j=>!visited.has(j)).sort((p,q)=>((nodeId[q]>=0)-(nodeId[p]>=0))||((Math.abs(p%W-cur%W)+Math.abs(Math.floor(p/W)-Math.floor(cur/W)))-(Math.abs(q%W-cur%W)+Math.abs(Math.floor(q/W)-Math.floor(cur/W)))));if(!n.length)break;prev=cur;cur=n[0];if(path.length>5000)break;}
-    const a=node.id,b=nodeId[cur];if(b<0||b===a)continue;const k2=Math.min(path[0],path[1])+':'+Math.max(path[0],path[1]),k3=Math.min(path[path.length-1],path[path.length-2])+':'+Math.max(path[path.length-1],path[path.length-2]);if(seenEdge.has(k3))continue;seenEdge.add(k2);seenEdge.add(k3);
+    const a=node.id,b=nodeId[cur];if(b<0||b===a)continue;
+    // de-duplicate by the edge's INTERIOR (first and last non-node pixels), which both walking directions share; keying on
+    // the node-side pixel pairs let a walk that entered a junction cluster through a different member emit the edge twice
+    const inner=path.filter(p=>nodeId[p]<0);const ek=Math.min(a,b)+':'+Math.max(a,b)+':'+(inner.length?Math.min(inner[0],inner[inner.length-1])+':'+Math.max(inner[0],inner[inner.length-1]):'adj');if(seenEdge.has(ek))continue;seenEdge.add(ek);
     edges.push({a,b,length:+len.toFixed(1),minDt:+minD.toFixed(1),meanDt:+(sumD/(path.length-1)).toFixed(1),maxDt:+maxD.toFixed(1),path});}
   return {skeleton:skel,nodes,edges};
 }
