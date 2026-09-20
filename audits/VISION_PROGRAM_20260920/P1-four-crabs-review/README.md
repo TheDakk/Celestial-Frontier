@@ -18,7 +18,7 @@ natural stance and is what the rig will observe — the guide governs counts, ar
 claw angle. Side margins are below the kit's 8 % on all four (as on the coconut); retained as delivered.
 
 ## Art
-At the Civet's level on all four; the finish, material and the one hand are the kit's. **Nick's verdict pending.**
+At the Civet's level on all four; the finish, material and the one hand are the kit's. **Nick's verdict 2026-09-20: ACCEPTED ("I think the crabs look great").** Five of five procedural-roster crabs are now accepted art painted from compiled kit prompts.
 
 ## Direction (Codex, copy-ready)
 ```

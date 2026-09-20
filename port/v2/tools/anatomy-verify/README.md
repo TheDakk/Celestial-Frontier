@@ -67,3 +67,22 @@ single-limb median; the painted P1 coconut crab yields 11 down-tips (six feet at
 stalks at 8–23). Next: (1) split a tip whose thickness exceeds ~1.6× the subject's single-limb median into two limbs
 when the template's expected count says so and report it as a finding otherwise; (2) classification by template
 geometry; (3) the positives battery; (4) mutants.
+
+## Slice 6 — same-toe merge and thinness classification, 2026-09-20 (Nick: "go ahead and fix the merge")
+The doubled-tip defect Codex reproduced is fixed: two candidates are one tip when the straight path between them stays
+inside the mask and never crosses anything thicker than 1.8× the thicker tip (`sameToeMax` 90 working px). Effect on
+raw downward tips: painted vent crab 11 → 8 (exact), painted freshwater 9 → 7 (exact), painted coconut 7 thin tips → 6.
+Classification is the open problem, and three rules were tried in this slice with the eleven-subject battery
+(five painter crabs, the keyed Civet, five painted crabs with species-visible expectations 8/8/8/8/8/4/6/7/7/7/8):
+- direction ("points down"): drops rear legs that point upward — wrong by construction;
+- thinness alone (≤ 1.6× the thin reference): 2 of 11 exact; over-counts eye stalks, spines/hairs (painter vent crab: 36)
+  and claw fingertips, which are thin;
+- thinness + multi-radius + pincer-pair + eye-stalk rules: the pincer rule is either too loose (adjacent feet flagged,
+  0 of 11) or too tight (nothing flagged, 1 of 11) depending on the divergence/palm tests.
+Lesson recorded rather than tuned further by hand: the tip detector is sound; **class assignment needs the template
+graph** (step 3 of the design) — which tip belongs to which limb chain, decided by walking each tip back to the body
+along the distance-transform ridge and matching the attachment point and path thickness profile to the template's
+rest proportions. Claw fingers then resolve as two tips on one chain whose path joins at the palm; eye stalks as tips
+whose chain roots on the carapace top; spines as tips whose chain length is a fraction of a leg segment. The next
+slice builds that walk-back and the per-subject debug overlay (`calibrate.mjs` gains class colours) so every
+threshold change is judged against pictures, not counts alone.
