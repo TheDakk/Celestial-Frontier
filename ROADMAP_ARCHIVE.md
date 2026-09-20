@@ -1,3 +1,14 @@
+## SESSION HANDOFF — September19 · R2c-L measurement authorized
+
+Nick explicitly authorizes read-only reviewer§12: reportLimits static-tool-only sweep first,
+all six/all rows/presentation, crabs0exceedances; then separate contactLimitsDeg for post-IK,
+quadruped legs measured max+10°roundedup5°, other templates defaultlimitsDeg. Raw authored
+limits/battery unchanged. Four controls and§10acceptance, thenR2d→R3; any other shared red S2.
+Current packet: audits/ANATOMY_SINGLE_RUN_20260919/R2c-L/README.md. Measurement producer
+prepared; production solver unchanged. Sign/verify then run explicit--reportLimits once.
+Node26.9.0 uninterrupted startup retained. Previous signed S2c7b4fdfd retained. No fetch/push/
+PR/merge; PR42parked. Claude read-only/no app switch or sync. Pre-existing.DS_Store untouched.
+
 ## SESSION HANDOFF — September19 · R2c‴ STOPPED AT S2
 
 Signed/verified producer0dd26298 changes only constructor barycentric sign check to<−1e−8

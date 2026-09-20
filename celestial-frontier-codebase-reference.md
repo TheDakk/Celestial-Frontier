@@ -1,15 +1,14 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-**R2c‴ — matches code September19,2026; S2 STOP, NOT ADMITTED.** Signed producer0dd26298
-corrects only the barycentric sign predicate to<−1e−8, using stored values unchanged. Native
-exact rest passes; unpinned candidate10 still fails0.250095px as required. Five crabs reproduce
-R2c′ full rows/presentation bit-for-bit; exact-model covariance is0 throughout retained samples.
-Civet passes idle/approach, then bite102.122222ms fails foreFarAnkle61.560489° against unchanged
-max60°. No failed-frame residual exists because publication never occurred. Across completed
-Civet samples, ARAP/publication<=0.000088px. No further variant, clamp, input or limit change.
-[Current stop packet](audits/ANATOMY_SINGLE_RUN_20260919/R2c-triple-prime/README.md) retains10,520
-sample records and779verified source/input hashes. Remaining stages are unrun; original0.25px,
-<2ms,exactrest gates remain unchanged. No new CPU/phone/visual admission follows from this result.
+**R2c-L — matches code September19,2026; measurement S2 STOP, no runtime limit change.**
+Nick authorized tool-only post-IK limit reporting before measured contactLimitsDeg. Signed
+measurement producer1523b0b5 reports limits only in a temporary audit bundle; production
+solver/contracts/limitsDeg/raw169-action battery remain identical to c7b4fdfd. Five crabs
+complete all rows/presentation, zero exceedances and R2c′bit identity. Civet bite157.111111ms
+exceeds the unchanged8%scale-compression bound before full measurement. contactLimitsDeg was
+not added; no new range adopted. Bounds/paint/rest/CPU gates unchanged, no retry/variant.
+[Current packet and partial joint table](audits/ANATOMY_SINGLE_RUN_20260919/R2c-L/README.md).
+Prior R2c‴ native rest/unpinned proof remains retained; it does not clear this compression red.
 
 **Single-run measurement update — matches code September19,2026.** R1c Civet adapter
 hashes match candidate10. Five retained planted poses reproduce its painted-paw contour

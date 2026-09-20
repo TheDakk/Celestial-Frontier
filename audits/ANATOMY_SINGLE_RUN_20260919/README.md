@@ -1,14 +1,14 @@
-# Anatomy single-run review packet — R2c‴ S2 STOP
+# Anatomy single-run review packet — R2c-L S2 STOP
 
-Latest correction: [R2c‴ verdict and evidence](R2c-triple-prime/README.md).
-Native rest passes exactly; unpinned candidate10 still fails as required. Five crabs reproduce
-all R2c′ rows/presentation bit-for-bit. **Civet bite102.122222ms fails the unchanged ankle limit:
-foreFarAnkle61.560489° required, maximum60°.** No further variant or retry.
+[Latest packet: R2c-L](R2c-L/README.md). Reporting-only measurement clears the known joint-limit
+throw in a temporary audit bundle; production source remains unchanged. Five crabs complete
+all rows/presentation with zero exceedances and R2c′bit identity. **Civet bite157.111111ms
+exceeds the unchanged8%compression bound.** No further variant or retry.
 
-Covariance0 across all10,520retained published samples; Civet ARAP/publication<=0.000088px.
-No failed-frame residual exists: the joint-limit check fires before publication.
-[Detailed controls, samples and diagnosis](R2c-triple-prime/summary.json).
-Prior R2c/R2c′/R2c″ stops remain historical evidence, not admission of this producer.
+Measurement is incomplete; contactLimitsDeg was not added and no new joint range was chosen.
+[Compression diagnosis](R2c-L/compression-diagnosis.json), [partial joint table and every
+exceedance](R2c-L/measure/limits.json).10,527published sample records retained.
+Earlier rest/unpinned/covariance proofs remain historical evidence, not clearance of this red.
 
 | Item | Current outcome | Evidence |
 | --- | --- | --- |
@@ -20,7 +20,8 @@ Prior R2c/R2c′/R2c″ stops remain historical evidence, not admission of this 
 | R2c″ | Shared constructor rejects retained Civet interpolation before measurement | [Native result](R2c-double-prime/native-rest-02/report.json), [diagnosis](R2c-double-prime/constructor-diagnosis.json) |
 | Portability/toolchain | Signed dd7909b4; Blender20PASS, pose5PASS/2leaf reds (reserved modules absent) | [Tooling evidence](R2c-double-prime/toolchain/README.md) |
 | R2c‴ | Rest/unpinned control/five-crab bit identity pass; Civet ankle-limit S2 | [Current signed-producer packet](R2c-triple-prime/README.md) |
-| Remaining §8 | Unrun because S2 fired | [Exact summary and every new leaf diagnosis](R2c-triple-prime/summary.json) |
+| R2c-L | Reporting sweep hits Civet compression S2; no runtime range changes | [Current packet](R2c-L/README.md), [summary](R2c-L/summary.json) |
+| Remaining §8 | Unrun because S2 fired | [Current summary](R2c-L/summary.json), [retained leaf diagnoses](R2c-triple-prime/summary.json) |
 
 The earlier instrument schema failure and signing refusals are retained in the original stop
 packet. Signing is now resolved; both halted evidence and correction producer are signed and
@@ -64,7 +65,7 @@ No finished-crab or open-gape candidate was painted and no review verdict is inf
 ## Local handoff
 
 OpenAI/Codex on macOS: `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`
-tracking `origin/openai/mac`. Halted packet `ca851fb6`; R2c′ producer `dd33865c`; R2c″ implementation `766e0917`, audit producer `224086c9`; R2c‴ producer `0dd26298`.
+tracking `origin/openai/mac`. Halted packet `ca851fb6`; R2c′ producer `dd33865c`; R2c″ implementation `766e0917`, audit producer `224086c9`; R2c‴ producer `0dd26298`; R2c-L measurement `1523b0b5`.
 This verdict receives a separate signed evidence successor; use local git log for its hash.
 No fetch/sync/push, PR mutation, hosted attempt, merge, release, deployment or history change.
 Pre-existing `.DS_Store` untouched. No signing configuration or private-key change.
