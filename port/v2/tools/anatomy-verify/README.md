@@ -235,3 +235,64 @@ genericity gaps exposed, exactly what the second family was for:
    includes the head and the centroid lands at the neck, so every angle is skewed. Use the midpoint of the two thickest
    ridge nodes along the longest thick edge (the spine) as the body axis.
 These are the next three changes; each is scored on the five crabs and the Civet together.
+
+## Slice 18 — the compiler made template-driven: graph fixes, body units, view, spine axis, appendage slots, IC-4 first run, 2026-09-21
+Runner is now committed (`score.mjs`: five painted crabs + the Civet against the record landmarks, comparison only;
+`ic4.mjs`: verdict + the three mutants; `template-rest.mjs`: the descriptor). Baseline reproduced by the runner at
+session start: crabs positions 22/35, named 13/25; Civet 0/4 (pool 2). Every rule below was measured on all six.
+**Two graph bugs found first, both hiding legs on every subject:** (1) `ridge.mjs` emitted many edges TWICE (de-dup key
+was the node-side pixel pair, which differs when a walk enters a junction cluster through another member) — the
+duplicates made every Near leg of the Civet a non-terminal; (2) the chain DFS in `chains.mjs` enumerated all simple
+paths and went exponential (OOM) the moment the true connectivity appeared; replaced by a multi-source shortest-path
+tree from the body nodes (one chain per endpoint, the shortest trunk — what the old de-dup already selected). Effect
+alone: crabs positions 22 → 28/35, named 13/25 → 15/29.
+**Template descriptor (`template-rest.mjs`):** slots from the family CONTRACT (`familyContactChains`: stations ×
+sides), painting conventions of the master format (`view` front/side, `facing`), and REST RATIOS measured once on a
+declared reference (brachyuran: the painter crab, `crab-masks-05`; quadruped: the Civet proof fixture — the one
+recorded circularity: the Civet's rest ratios come from its own record; scalars only; the next quadruped is the real
+test) — body radius R = max DT; leg length 2.90 R (crab) / 1.70 R (civet); terminal thickness 0.036 / 0.087 R; mid
+thickness 0.057 / 0.139 R; interior-joint fractions per slot; non-leg appendage classes from the contract graph
+(chain: tail 3.07 R; fork: claws 3.84 R; knob: eyes/ears) with attachment joint. Every working-pixel constant in
+`assign.mjs` became a ratio (min limb 0.15 × leg, loop/touch edge ≥ 0.30 × leg, end radius ≤ 1.5 × mid thickness,
+fork tips ≤ 0.20 × leg with separations ≤ 0.09 × leg): **neutral on the crabs, and it is what admits the Civet's
+thick-pawed legs** (endDt 14–16 vs the old constant 6).
+Rules tried, with numbers (crabs named / positions unless stated; `ASSIGN_OPTS` reproduces each):
+- body/limb split as √(rest proximal thickness) × R (P3 note): crabs named 15 → 11 — the painter reference's legs are
+  thinner relative to the body than the painted tier's; length-weighted Otsu on log ridge thickness: 13/33. **0.45 R
+  stays** (0.40: 26/37, 0.50: 25/38 — a plateau).
+- body axis from the spine ridge: the body edge maximising length × MEAN thickness picked the Civet's neck→head edge
+  (axis vertical); **length × MIN thickness** picks the chest→hip spine on the Civet and the carapace ridge on all
+  five crabs (centres within 60–80 px of the record roots). Cost on crabs vs the centroid: −1 named (vent).
+- rest-angle prior per slot from the reference (weight 0.5/1/2): 15/33, 15/33, 11/19 — the painter draws leg roots in
+  a 25° fan, the paintings spread them over 120°+; **rejected**, order stays ordinal. Per-slot rest LENGTH prior
+  (0.5/1/2): 14/32, 10/29, 7/23 — **rejected** (2.7–3.15 R nearly uniform, painted legs foreshortened).
+- touching tips: the slice-16 DT-profile test and a new "interior" test (the junction lies on another candidate's
+  chain) both delete the vent crab's true rear feet (23/55 px); the test that works is **rest-against-body**: another
+  edge at the junction is body-thick and the junction is at least leg-thin (crossings of two legs and hairs fail).
+  crabs named 15/29 → 23/32. Interior test on top: 14/39 (deletes true tips whose limb continues as a short spur).
+- loop limbs generalized: both ends within 0.75 R of the thick region (not both body nodes), foot = the path point
+  farthest from the thick region (a leg folded over the carapace is nearer the centre at its tip); limb length from
+  the thick-region EXIT (not the separation node — a two-toed paw separates at the ankle); cost = thinness (0.4) +
+  |ln(len / rest leg)| (0.5) + kind, unused cost 1.0 for endpoints / 0.5 for loop-touch: together 23/32 → 25/34.
+- tuft collapse (a junction whose every branch is short is the limb's tip: tail tufts, toe clusters) + candidates
+  within 0.25 R merged + forks only between endpoint candidates + side-view station pairs need not be consecutive:
+  the Civet goes from "tail assigned as hindNear" to **all four paws and the tail in the right slots** (errors 20–60
+  px at 25 px tolerance: the record's paw is the toe, the skeleton ends in the pad; `refine:'tip'` (push out one end
+  radius along the terminal edge) gains 1 named; `refine:'far'` (farthest pixel from the separation) does not).
+- thick-terminal finger rule off: 21/44 and positives 2/6 — **stays on**.
+**State (tolerance 25 px master):** crabs positions **30/35**, named **24/34** (coconut 4/6, crab 5/6, freshwater
+5/7, mud 6/7, vent 4/8); Civet 1/5 named, 0/4 positions — at 60 px: positions 37/39, named 29/39, Civet 4/4 + tail.
+Knees at the reference's joint fractions along the ridge path from the exit: 7–110 px (median ≈ 40). Hidden slots
+extrapolated one station along the side (or the twin mirrored): 165–735 px from Codex's placements — Codex places
+hidden legs BEHIND THE CLAW, not along the sequence; the record rule must be read from Codex's writer before this is
+tuned. Nothing here is a gate.
+**IC-4 first run (`ic4.mjs`; verdict = every declared-visible slot filled, every declared-hidden slot empty, no
+unused endpoint candidate; mutants from Codex's label maps: erase one visible leg, duplicate it 15 % of the width
+away, compile under the other family's template):** positives ADMIT 4/6 (the crab refuses — its leg3Far terminal is
+claw-thick and the thick-finger rule takes it; the Civet refuses on one unused endpoint), wrong-template REFUSE 6/6,
+erased REFUSE 5/10, duplicated REFUSE 6/10. The absorbed mutants are the measured defect to fix next: an erased leg's
+slot is refilled by a weak (loop/touch) candidate or the gap slides to the claw end, so the count check never fires.
+Next, in order: (1) verdict on EVIDENCE per slot — a slot filled by a loop/touch candidate needs a declared-hidden
+neighbour or a resting-junction proof; refuse when the number of endpoint legs + resting tips ≠ declared visible
+count; (2) hidden placement by Codex's record rule (read it from the writer); (3) P7 labels by geodesic nearest
+chain (not started); (4) re-run IC-4; (5) the second quadruped (the one painted-quadruped exception in PROGRAM §6).

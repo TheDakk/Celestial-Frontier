@@ -8,17 +8,19 @@ export function limbChains(graph,dt,W,{bodyFraction=.45}={}){
   const {nodes,edges}=graph;let maxDt=0;for(const e of edges)maxDt=Math.max(maxDt,e.maxDt);const bodyDt=bodyFraction*maxDt;
   const adj=new Map(nodes.map(n=>[n.id,[]]));edges.forEach((e,i)=>{adj.get(e.a).push({e,i,to:e.b});adj.get(e.b).push({e,i,to:e.a});});
   const isBody=e=>e.meanDt>=bodyDt;const bodyNodes=new Set();for(const e of edges)if(isBody(e)){bodyNodes.add(e.a);bodyNodes.add(e.b);}
-  // chains: DFS from each body node through non-body edges to endpoints; record the path of edges
-  const chains=[];const seen=new Set();
-  const dfs=(nodeId,pathEdges,visited)=>{const outs=adj.get(nodeId).filter(o=>!isBody(o.e)&&!visited.has(o.i));const node=nodes[nodeId];
-    if(!outs.length){if(node.kind==='end'&&pathEdges.length){const len=pathEdges.reduce((a,e)=>a+e.length,0),maxD=Math.max(...pathEdges.map(e=>e.maxDt)),meanD=pathEdges.reduce((a,e)=>a+e.meanDt*e.length,0)/len;chains.push({endNode:node,length:+len.toFixed(1),meanDt:+meanD.toFixed(1),maxDt:+maxD.toFixed(1),endDt:node.dt,edges:pathEdges.slice()});}return;}
-    for(const o of outs){visited.add(o.i);pathEdges.push(o.e);dfs(o.to,pathEdges,visited);pathEdges.pop();visited.delete(o.i);}};
-  for(const b of bodyNodes){dfs(b,[],new Set());}
+  // chains: one per endpoint = its SHORTEST path (by edge length) from the body set through non-body edges. A
+  // multi-source Dijkstra from every body node replaces the earlier all-simple-paths DFS, which was exponential once
+  // crossing legs and touching tips formed cycles in the limb subgraph (it ran out of memory on the painted crabs the
+  // moment the duplicate-edge bug in ridge.mjs was fixed and the true connectivity appeared).
+  const dist=new Map(),via=new Map();const queue=[];for(const b of bodyNodes){dist.set(b,0);via.set(b,null);queue.push(b);}
+  while(queue.length){queue.sort((p,q)=>dist.get(p)-dist.get(q)||p-q);const u=queue.shift();const du=dist.get(u);
+    for(const o of adj.get(u)){if(isBody(o.e))continue;const nd=du+o.e.length;if(!dist.has(o.to)||nd<dist.get(o.to)-1e-9){dist.set(o.to,nd);via.set(o.to,{from:u,e:o.e});if(!queue.includes(o.to))queue.push(o.to);}}}
+  const chains=[];
+  for(const n of nodes){if(n.kind!=='end'||!dist.has(n.id)||bodyNodes.has(n.id))continue;const pathEdges=[];let cur=n.id;while(via.get(cur)){pathEdges.unshift(via.get(cur).e);cur=via.get(cur).from;}if(!pathEdges.length)continue;
+    const len=pathEdges.reduce((a,e)=>a+e.length,0),maxD=Math.max(...pathEdges.map(e=>e.maxDt)),meanD=pathEdges.reduce((a,e)=>a+e.meanDt*e.length,0)/len;chains.push({endNode:n,length:+len.toFixed(1),meanDt:+meanD.toFixed(1),maxDt:+maxD.toFixed(1),endDt:n.dt,edges:pathEdges});}
   // attach the root (the body node the chain starts from) — first edge endpoint that is a body node
   for(const c of chains){const first=c.edges[0];c.rootNode=nodes[bodyNodes.has(first.a)?first.a:first.b];}
-  // de-duplicate chains that share the same endpoint (keep the shortest trunk — the most direct attachment)
-  const byEnd=new Map();for(const c of chains){const k=c.endNode.id;if(!byEnd.has(k)||byEnd.get(k).length>c.length)byEnd.set(k,c);}
-  return {bodyDt:+bodyDt.toFixed(1),maxDt:+maxDt.toFixed(1),bodyNodes:[...bodyNodes].map(id=>nodes[id]),chains:[...byEnd.values()]};
+  return {bodyDt:+bodyDt.toFixed(1),maxDt:+maxDt.toFixed(1),bodyNodes:[...bodyNodes].map(id=>nodes[id]),chains};
 }
 /** Classification by the TERMINAL branch (the last edge, from the last junction to the endpoint): a walking foot ends
  * a long thin terminal branch; a claw finger ends a long THICK terminal branch (two per claw); an eye is a short
