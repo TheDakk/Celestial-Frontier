@@ -59,3 +59,11 @@ geometry from the template's rest landmarks (attachment side, direction band, pr
 limb, not by the first junction); (3) the positives battery: every named painter canvas via `speciesstrip.mjs` with
 its template; (4) mutants from the crab label maps; (5) only then a verdict. Hidden pairs are declared by the record
 (P1 verdict law 2) and never inferred here.
+
+## Slice 5 — `thickness.mjs` (exact Euclidean distance transform; tip thickness), same night
+Windows up to R = 64 and the DT behind each downward tip: civet now yields 5 down-tips (four feet + tail, thickness
+13–35 on a body DT of 89); mud-crab yields 8 down-tips whose thicknesses 5–23 show the merged pairs at ~2.5× the
+single-limb median; the painted P1 coconut crab yields 11 down-tips (six feet at 3.6–6.3, claw fingers and the eye
+stalks at 8–23). Next: (1) split a tip whose thickness exceeds ~1.6× the subject's single-limb median into two limbs
+when the template's expected count says so and report it as a finding otherwise; (2) classification by template
+geometry; (3) the positives battery; (4) mutants.
