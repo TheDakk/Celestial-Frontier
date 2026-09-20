@@ -157,7 +157,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   }
   let maxError=0,maxPaintTargetErrorPx=0;
   for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,contact=contacts[i]!;
-   for(const j of [c.knee,c.end,...c.terminal?[c.terminal]:[]]){const l=template.limitsDeg[j]!,deg=pose[j]!.rotation*180/Math.PI;if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: joint limit '+j+' '+phase.actionId+'@'+phase.elapsedMs+': '+deg);}
+   for(const j of [c.knee,c.end,...c.terminal?[c.terminal]:[]]){const l=(template.contactLimitsDeg??template.limitsDeg)[j]!,deg=pose[j]!.rotation*180/Math.PI;if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: joint limit '+j+' '+phase.actionId+'@'+phase.elapsedMs+': '+deg);}
    const p=transformPoint(final[c.end]!,c.endPoint),paint=c.endpointOnly?transformPoint(final[c.end]!,c.support):predictContactSupport(c.model,final);
    maxError=Math.max(maxError,Math.hypot(p.x-contact.endpointTarget.x,p.y-contact.endpointTarget.y));
    maxPaintTargetErrorPx=Math.max(maxPaintTargetErrorPx,Math.hypot((paint.x-contact.paintedTarget.x)*record.geometry.width,(paint.y-contact.paintedTarget.y)*record.geometry.height));

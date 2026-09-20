@@ -4254,6 +4254,10 @@ const contracts = [
 const freeze=x=>{if(x&&typeof x==='object'){for(const v of Object.values(x))freeze(v);Object.freeze(x);}return x;};
 // Shared stance ownership: default preserves the historical all-chain solve.
 contracts.find(t=>t.id==='quadruped').contactStance={default:'all',gaits:{'approach:walk':'alternating','approach:trot':'alternating','approach:gallop':'bounding'},actions:{idle:'all',alert:'all',hit:'all',feed:'all',tame:'all',faint:'all',approach:'all','melee:*':'hind',cast:'hind',victory:'hind',dodge:'none','melee:kick':'none'}};
+// R3-S planted-fold ledger: max |Knee|86.5369, |Ankle|94.1469,
+// |Paw|80.5685 degrees; +10 then ceil to5. Raw authoring limits unchanged.
+const quadrupedContact=contracts.find(t=>t.id==='quadruped');
+quadrupedContact.contactLimitsDeg={...quadrupedContact.limitsDeg,...Object.fromEntries(quadrupedContact.legs.flatMap(id=>Object.entries({Knee:100,Ankle:105,Paw:95}).map(([joint,max])=>[id+joint,{min:-max,max}])))};
 export const FAMILY_CONTRACTS = freeze(contracts);
 export function contactStanceForAction(template,actionId){const c=template.contactStance;return c?.actions?.[actionId]??c?.actions?.[actionId.split(':')[0]+':*']??c?.default??'all';}
 export function familyContract(id){const value=SPECIALIZED_TEMPLATES[id]??FAMILY_CONTRACTS.find(t=>t.id===id);if(!value)throw Error('Family admission: unknown template '+id);return value.id==='brachyuran'?freeze({...value,contactStance:{default:'all',actions:{}}}):value;}

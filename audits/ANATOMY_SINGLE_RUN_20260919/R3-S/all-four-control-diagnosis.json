@@ -1,0 +1,62 @@
+{
+  "stage": [
+    {
+      "ms": 164.96666666666667,
+      "error": "Error: Contact: melee:bite@164.96666666666667 exceeds scale compression bound"
+    },
+    {
+      "ms": 172.8222222222222,
+      "error": "Error: Contact: melee:bite@172.8222222222222 exceeds scale compression bound"
+    },
+    {
+      "ms": 180.67777777777778,
+      "error": "Error: Contact: melee:bite@180.67777777777778 exceeds scale compression bound"
+    },
+    {
+      "ms": 188.53333333333333,
+      "error": "Error: Contact: melee:bite@188.53333333333333 exceeds scale compression bound"
+    },
+    {
+      "ms": 196.38888888888886,
+      "error": "Error: Contact: melee:bite@196.38888888888886 exceeds scale compression bound"
+    }
+  ],
+  "historical": [
+    {
+      "ms": 157.11111111111111,
+      "error": "Error: Contact: melee:bite@157.11111111111111 exceeds scale compression bound"
+    },
+    {
+      "ms": 164.96666666666667,
+      "error": "Error: Contact: melee:bite@164.96666666666667 exceeds scale compression bound"
+    },
+    {
+      "ms": 172.8222222222222,
+      "error": "Error: Contact: melee:bite@172.8222222222222 exceeds scale compression bound"
+    },
+    {
+      "ms": 180.67777777777778,
+      "error": "Error: Contact: melee:bite@180.67777777777778 exceeds scale compression bound"
+    },
+    {
+      "ms": 188.53333333333333,
+      "error": "Error: Contact: melee:bite@188.53333333333333 exceeds scale compression bound"
+    },
+    {
+      "ms": 196.38888888888886,
+      "error": "Error: Contact: melee:bite@196.38888888888886 exceeds scale compression bound"
+    },
+    {
+      "ms": 204.24444444444444,
+      "error": "Error: Contact: melee:bite@204.24444444444444 exceeds scale compression bound"
+    },
+    {
+      "ms": 212.1,
+      "error": "Error: Contact: melee:bite@212.1 exceeds scale compression bound"
+    },
+    {
+      "ms": 219.95555555555555,
+      "error": "Error: Contact: melee:bite@219.95555555555555 exceeds scale compression bound"
+    }
+  ]
+}
