@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 343338728,
+    "kingdom": "fauna",
+    "color": 2,
+    "form": 17,
+    "body": 13,
+    "loco": 10,
+    "trait": 16,
+    "size": 5,
+    "diet": 0,
+    "head": 7,
+    "limbs": 5,
+    "skin": 0,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 1,
+    "behavior": 0,
+    "habitat": 16,
+    "detail": 2,
+    "accent": 2,
+    "temper": 3,
+    "sense": 9,
+    "repro": 3,
+    "life": 1,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sea Snail"
+  },
+  "observation": null
+}

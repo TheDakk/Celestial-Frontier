@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 1091588957,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 7,
+    "body": 4,
+    "loco": 13,
+    "trait": 9,
+    "size": 0,
+    "diet": 3,
+    "head": 3,
+    "limbs": 3,
+    "skin": 4,
+    "tail": 1,
+    "pattern": 5,
+    "eyes": 3,
+    "behavior": 3,
+    "habitat": 16,
+    "detail": 7,
+    "accent": 12,
+    "temper": 9,
+    "sense": 0,
+    "repro": 1,
+    "life": 3,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Nudibranch"
+  },
+  "observation": null
+}

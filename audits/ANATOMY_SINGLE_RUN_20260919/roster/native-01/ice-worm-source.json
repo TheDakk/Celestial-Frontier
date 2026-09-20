@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 2014447933,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 7,
+    "body": 7,
+    "loco": 12,
+    "trait": 6,
+    "size": 0,
+    "diet": 3,
+    "head": 5,
+    "limbs": 2,
+    "skin": 8,
+    "tail": 4,
+    "pattern": 2,
+    "eyes": 4,
+    "behavior": 9,
+    "habitat": 8,
+    "detail": 0,
+    "accent": 14,
+    "temper": 3,
+    "sense": 7,
+    "repro": 1,
+    "life": 4,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Ice Worm"
+  },
+  "observation": null
+}

@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 1266391561,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 13,
+    "body": 1,
+    "loco": 11,
+    "trait": 11,
+    "size": 3,
+    "diet": 1,
+    "head": 3,
+    "limbs": 1,
+    "skin": 1,
+    "tail": 6,
+    "pattern": 5,
+    "eyes": 2,
+    "behavior": 6,
+    "habitat": 9,
+    "detail": 6,
+    "accent": 11,
+    "temper": 0,
+    "sense": 5,
+    "repro": 1,
+    "life": 5,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Prawn"
+  },
+  "observation": null
+}

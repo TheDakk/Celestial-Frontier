@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 726564563,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 11,
+    "body": 9,
+    "loco": 9,
+    "trait": 12,
+    "size": 0,
+    "diet": 3,
+    "head": 2,
+    "limbs": 5,
+    "skin": 2,
+    "tail": 3,
+    "pattern": 4,
+    "eyes": 0,
+    "behavior": 3,
+    "habitat": 5,
+    "detail": 1,
+    "accent": 5,
+    "temper": 4,
+    "sense": 2,
+    "repro": 6,
+    "life": 3,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Giant Clam"
+  },
+  "observation": null
+}

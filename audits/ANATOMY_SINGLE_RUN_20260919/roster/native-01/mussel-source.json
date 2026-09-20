@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 2276746476,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 17,
+    "body": 3,
+    "loco": 11,
+    "trait": 23,
+    "size": 3,
+    "diet": 2,
+    "head": 3,
+    "limbs": 4,
+    "skin": 0,
+    "tail": 0,
+    "pattern": 5,
+    "eyes": 5,
+    "behavior": 11,
+    "habitat": 14,
+    "detail": 5,
+    "accent": 12,
+    "temper": 8,
+    "sense": 0,
+    "repro": 7,
+    "life": 5,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Mussel"
+  },
+  "observation": null
+}

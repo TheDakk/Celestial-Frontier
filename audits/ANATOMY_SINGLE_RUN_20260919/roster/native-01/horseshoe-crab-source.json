@@ -1,0 +1,434 @@
+{
+  "genome": {
+    "seed": 776560744,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 8,
+    "body": 0,
+    "loco": 12,
+    "trait": 12,
+    "size": 5,
+    "diet": 1,
+    "head": 3,
+    "limbs": 5,
+    "skin": 4,
+    "tail": 2,
+    "pattern": 0,
+    "eyes": 0,
+    "behavior": 9,
+    "habitat": 17,
+    "detail": 4,
+    "accent": 13,
+    "temper": 2,
+    "sense": 7,
+    "repro": 7,
+    "life": 3,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Horseshoe Crab"
+  },
+  "observation": {
+    "schema": "cf.painter-topology/v1",
+    "ownerId": "faunaHorseshoeCrab",
+    "family": "xiphosuran",
+    "coordinateSize": 440,
+    "materials": {
+      "surface": "chitinous",
+      "paletteSource": "named anchor with genome tint"
+    },
+    "features": [
+      {
+        "id": "telson",
+        "kind": "body",
+        "points": [
+          [
+            213.4,
+            237.6
+          ],
+          [
+            226.6,
+            237.6
+          ],
+          [
+            221.056,
+            357.28
+          ],
+          [
+            218.944,
+            357.28
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "opisthosoma",
+        "kind": "body",
+        "points": [
+          [
+            184.8,
+            195.35999999999999
+          ],
+          [
+            255.2,
+            195.35999999999999
+          ],
+          [
+            246.4,
+            234.07999999999998
+          ],
+          [
+            228.8,
+            242.88
+          ],
+          [
+            211.2,
+            242.88
+          ],
+          [
+            193.6,
+            234.07999999999998
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "near"
+      },
+      {
+        "id": "spine0Far",
+        "kind": "body",
+        "points": [
+          [
+            190.07999999999998,
+            202.4
+          ],
+          [
+            165.44,
+            214.72
+          ],
+          [
+            191.84,
+            211.2
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "spine1Far",
+        "kind": "body",
+        "points": [
+          [
+            191.84,
+            207.68
+          ],
+          [
+            169.312,
+            220.704
+          ],
+          [
+            193.6,
+            216.48
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "spine2Far",
+        "kind": "body",
+        "points": [
+          [
+            193.6,
+            212.95999999999998
+          ],
+          [
+            173.184,
+            226.688
+          ],
+          [
+            195.36,
+            221.76
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "spine3Far",
+        "kind": "body",
+        "points": [
+          [
+            195.36,
+            218.24
+          ],
+          [
+            177.05599999999998,
+            232.672
+          ],
+          [
+            197.12,
+            227.04
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "spine4Far",
+        "kind": "body",
+        "points": [
+          [
+            197.12,
+            223.51999999999998
+          ],
+          [
+            180.928,
+            238.656
+          ],
+          [
+            198.88,
+            232.32
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "spine5Far",
+        "kind": "body",
+        "points": [
+          [
+            198.88,
+            228.8
+          ],
+          [
+            184.8,
+            244.64
+          ],
+          [
+            200.64,
+            237.6
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "spine0Near",
+        "kind": "body",
+        "points": [
+          [
+            249.92000000000002,
+            202.4
+          ],
+          [
+            274.56,
+            214.72
+          ],
+          [
+            248.16,
+            211.2
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "spine1Near",
+        "kind": "body",
+        "points": [
+          [
+            248.16,
+            207.68
+          ],
+          [
+            270.688,
+            220.704
+          ],
+          [
+            246.4,
+            216.48
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "spine2Near",
+        "kind": "body",
+        "points": [
+          [
+            246.4,
+            212.95999999999998
+          ],
+          [
+            266.81600000000003,
+            226.688
+          ],
+          [
+            244.64,
+            221.76
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "spine3Near",
+        "kind": "body",
+        "points": [
+          [
+            244.64,
+            218.24
+          ],
+          [
+            262.944,
+            232.672
+          ],
+          [
+            242.88,
+            227.04
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "spine4Near",
+        "kind": "body",
+        "points": [
+          [
+            242.88,
+            223.51999999999998
+          ],
+          [
+            259.072,
+            238.656
+          ],
+          [
+            241.12,
+            232.32
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "spine5Near",
+        "kind": "body",
+        "points": [
+          [
+            241.12,
+            228.8
+          ],
+          [
+            255.2,
+            244.64
+          ],
+          [
+            239.36,
+            237.6
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "prosoma-left",
+        "kind": "body",
+        "points": [
+          [
+            181.28,
+            223.51999999999998
+          ],
+          [
+            128.48,
+            211.2
+          ],
+          [
+            126.72,
+            133.76
+          ],
+          [
+            220,
+            128.48
+          ]
+        ],
+        "curve": "cubic",
+        "layer": "near"
+      },
+      {
+        "id": "prosoma-right",
+        "kind": "body",
+        "points": [
+          [
+            220,
+            128.48
+          ],
+          [
+            313.28,
+            133.76
+          ],
+          [
+            311.52,
+            211.2
+          ],
+          [
+            258.72,
+            223.51999999999998
+          ]
+        ],
+        "curve": "cubic",
+        "layer": "near"
+      },
+      {
+        "id": "eyeFar",
+        "kind": "body",
+        "points": [
+          [
+            176,
+            167.2
+          ]
+        ],
+        "widths": [
+          13.2,
+          7.92
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "eyeNear",
+        "kind": "body",
+        "points": [
+          [
+            264,
+            167.2
+          ]
+        ],
+        "widths": [
+          13.2,
+          7.92
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      }
+    ],
+    "unresolved": [
+      "Top view has no painted walking legs or ventral mouth; a five-pair candidate is not a visible rig",
+      "Rigid telson, articulated opisthosoma and twelve lateral spines need source masks",
+      "Prosoma rim and dome share one rigid plate; no fabrication of hidden surfaces"
+    ],
+    "rasterFrame": {
+      "width": 880,
+      "height": 880,
+      "origin": [
+        220,
+        220
+      ],
+      "scale": 1
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 2005405410,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 10,
+    "body": 7,
+    "loco": 2,
+    "trait": 12,
+    "size": 2,
+    "diet": 2,
+    "head": 5,
+    "limbs": 0,
+    "skin": 6,
+    "tail": 1,
+    "pattern": 1,
+    "eyes": 4,
+    "behavior": 9,
+    "habitat": 3,
+    "detail": 6,
+    "accent": 3,
+    "temper": 4,
+    "sense": 1,
+    "repro": 6,
+    "life": 3,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cowrie"
+  },
+  "observation": null
+}

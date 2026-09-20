@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 937186751,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 12,
+    "body": 1,
+    "loco": 12,
+    "trait": 23,
+    "size": 5,
+    "diet": 2,
+    "head": 3,
+    "limbs": 2,
+    "skin": 4,
+    "tail": 0,
+    "pattern": 1,
+    "eyes": 3,
+    "behavior": 6,
+    "habitat": 18,
+    "detail": 6,
+    "accent": 14,
+    "temper": 5,
+    "sense": 1,
+    "repro": 4,
+    "life": 4,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Hermit Crab"
+  },
+  "observation": null
+}
