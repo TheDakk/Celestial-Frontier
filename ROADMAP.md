@@ -98,3 +98,5 @@ R5–R7 root-proof-02 PASS on verified e750bf00. D1 read-only PNG delivery prepa
 D1 desktop native PASS, five exact retained/fallback pairs, zero inference/workers/GPU. Both local phone Glass attempts retain floating-trail instrument reds; small also has a changing-log source fingerprint. No retry or phone qualification. Roster58 intake producer prepared, including five completed crabs reused.
 
 Roster58 exhausted:5retained/53fitrefused/0sourcefailures;15sheets. Full unit battery4520pass/2fail/1skip: stale53vs58test now corrected to prove exactlyfiveadmissions; Compendium producer-authority mismatch remains a leaf, no sealed rebaseline. Original R3 crab/rooted-plant habitat study tool prepared to finish E2 before final split/index.
+
+R3habitat02 complete with labelledCranberrycontainment/framing leaf, noS2; three exact rests0, crabdrift<0.000026px, rootfixed. Next localPR42review trees/path manifests and one final accumulated README; no branches, push, PR or sync.
