@@ -18,7 +18,7 @@ import {distanceTransform} from './thickness.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 /** Backwards-compatible descriptor view: legs per side and slot naming per template (from the contract). */
 export const TEMPLATES=new Proxy({},{get:(_,id)=>{if(typeof id!=='string')return undefined;const r=templateRest(id);return {legsPerSide:r.legsPerSide,slotName:(k,side)=>r.slots[side][k].terminal,rest:r};}});
-export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=1e9,thinWeight=0.4,emptyScale=1.0,unusedEnd=1.0,contactRefine=true,thickNeedsFork=false}={}){
+export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=0.7,thinWeight=0.4,emptyScale=1.0,unusedEnd=1.0,contactRefine=true,thickNeedsFork=false,touchNotSep=true,loopThinFrac=0}={}){
   const T=templateRest(template),legsPerSide=T.legsPerSide,slotName=(k,side)=>T.slots[side][k].terminal;
   const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128}),{working:{width:W,height:H,scale,box}}=det;let {mask,dt}=det;let interiorPass=null;
   // INTERIOR-EDGE STAGE (README slice 21): a limb painted over the body is inside the silhouette; its contour is a
@@ -86,6 +86,9 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
     // over the top of the body is nearer the centre at its tip than at its root)
     let far=null,fd=-1;for(const i of e.path){const d=loopMode==='body'?Math.hypot(i%W-centre[0],Math.floor(i/W)-centre[1]):bodyDist[i];if(d>fd){fd=d;far=[i%W,Math.floor(i/W)];}}
     if(loopMode!=='body'&&fd<0.5*loopMinLen)continue; // must protrude from the body by a limb's worth
+    // a loop LIMB has a thin cross-section over most of its edge (a leg); a short thick bridge between two body
+    // junctions does not — require ≥ loopThinFrac of the edge's pixels to be leg-thin (≤ 1.6 × the thin reference)
+    if(loopThinFrac>0){const thinRefL=(cands.filter(c=>c.kind==='end').map(c=>c.termDt).sort((a,b)=>a-b)[Math.floor(cands.filter(c=>c.kind==='end').length/4)])??(T.legThickness*R);let thin=0;for(const i of e.path)if(dt[i]<=1.6*thinRefL)thin++;if(thin/e.path.length<loopThinFrac)continue;}
     if(far&&!cands.some(c=>Math.hypot(c.x-far[0],c.y-far[1])<20)){cands.push({kind:'loop',x:far[0],y:far[1],termDt:e.meanDt,term:e.length,len:e.length/2,attach:exitPoint([e],e.a),edge:e,farIndex:e.path.indexOf(far[1]*W+far[0])});}}
   // (c) touching limbs
   const thinAll=cands.map(c=>c.termDt).sort((a,b)=>a-b),thinRef=thinAll[Math.floor(thinAll.length/4)]??(T.legThickness*R);
@@ -120,6 +123,10 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
       else{let inside=0,node=c.rootNode.id;for(const e of c.edges){for(const i of e.path)if(bodyDist[i]===0)inside++;node=(e.a===node)?e.b:e.a;}if(inside<interiorTipMax*R)continue;}
       const sp=seps2.get(c);const cand={kind:'interior',x:c.endNode.x,y:c.endNode.y,termDt:last.meanDt,term:last.length,len:c.length,attach:[sp.node.x,sp.node.y],chain:c,graph:g2};if(near>=0)cands[near]=cand;else cands.push(cand);added++;}
     if(process.env.ASSIGN_DEBUG)console.log('interior candidates added',added);}
+  // a touching tip that coincides with an ENDPOINT candidate's separation point is the junction where that leg parts
+  // from its neighbour, not a tip resting on the body (freshwater far side: the false tip at 74,625 IS leg1Far's
+  // separation node) — dropped
+  if(touchNotSep){const seps=cands.filter(c=>c.kind==='end'&&c.attach).map(c=>c.attach);for(let i=cands.length-1;i>=0;i--){const c=cands[i];if(c.kind!=='touch')continue;if(seps.some(a=>Math.hypot(a[0]-c.x,a[1]-c.y)<=0.1*R))cands.splice(i,1);}}
   // two candidates within a quarter body radius are one tip (adjacent tuft junctions, a toe beside its pad): keep the
   // one with the longer limb
   {cands.sort((a,b)=>b.len-a.len);for(let i=cands.length-1;i>=0;i--){for(let j=0;j<i;j++)if(Math.hypot(cands[i].x-cands[j].x,cands[i].y-cands[j].y)<=0.25*R){if(process.env.INTERIOR_DEBUG){const tp=process.env.INTERIOR_DEBUG.split(',').map(Number);const tm=toM([cands[i].x,cands[i].y]);if(Math.hypot(tm[0]-tp[0],tm[1]-tp[1])<60)console.log('   dedupe removed',cands[i].kind,'tip',tm.map(Math.round).join(','),'len',cands[i].len.toFixed(0),'kept',cands[j].kind,'tip',toM([cands[j].x,cands[j].y]).map(Math.round).join(','),'len',cands[j].len.toFixed(0));}cands.splice(i,1);break;}}}
