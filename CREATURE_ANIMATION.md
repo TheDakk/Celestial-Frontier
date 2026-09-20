@@ -1,13 +1,15 @@
 # Creature animation — shared anatomy and motion contract
 
-**R2c‴ — matches code September19,2026; acceptance pending.** Nick's §11 direction corrects
-only the support constructor's sign predicate: reject barycentric<−1e−8, matching its existing
-sum tolerance. Stored coefficients are used as-is, without snap or renormalization. The prior
-R2c″ S2 was a validator rejection of legitimate edge rounding, not a physical contact failure.
-Exact triangle LBS, endpoint-only arithmetic, shared contact locks and all binding inputs stay
-unchanged. The regenerated Civet now constructs in the unit test; −1e−3 rejects. Native rest,
-unpinned negative and six-subject acceptance are pending; gates remain0.25px,<2ms,exactrest.
-[Current candidate packet](audits/ANATOMY_SINGLE_RUN_20260919/R2c-triple-prime/README.md).
+**R2c‴ — matches code September19,2026; S2 STOP, NOT ADMITTED.** Signed producer0dd26298
+corrects only the barycentric sign predicate to<−1e−8, using stored values unchanged. Native
+exact rest passes; unpinned candidate10 still fails0.250095px as required. Five crabs reproduce
+R2c′ full rows/presentation bit-for-bit; exact-model covariance is0 throughout retained samples.
+Civet passes idle/approach, then bite102.122222ms fails foreFarAnkle61.560489° against unchanged
+max60°. No failed-frame residual exists because publication never occurred. Across completed
+Civet samples, ARAP/publication<=0.000088px. No further variant, clamp, input or limit change.
+[Current stop packet](audits/ANATOMY_SINGLE_RUN_20260919/R2c-triple-prime/README.md) retains10,520
+sample records and779verified source/input hashes. Remaining stages are unrun; original0.25px,
+<2ms,exactrest gates remain unchanged. No new CPU/phone/visual admission follows from this result.
 
 **Single-run measurement update — matches code September19,2026.** R1c Civet adapter
 hashes match candidate10. Five retained planted poses reproduce its painted-paw contour

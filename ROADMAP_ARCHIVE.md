@@ -1,3 +1,23 @@
+## SESSION HANDOFF — September19 · R2c‴ constructor correction, acceptance pending
+
+Nick's read-only reviewer§11 diagnoses R2c″ rejection as an instrument defect: preserved
+edge rounding −8.975276662232845e−16 was rejected without the constructor's existing1e−8
+rounding allowance. One authorized runtime change: reject barycentric<−1e−8; use stored
+values unchanged. No other runtime/binding/input/limit/gate change. Prior signed S2 packet8ecb9209
+retained. Node26.9.0 uninterrupted startup receipt reused.
+
+Current evidence: audits/ANATOMY_SINGLE_RUN_20260919/R2c-triple-prime/README.md.
+25contact tests pass including regenerated real-binding constructor, unchanged negative
+coefficient/+0prediction control within1e−12normalized units and −1e−3 rejection with sum1.
+Initial test compared pixels (1.28356e−12px), retained; corrected to API prediction units.
+TypeScript invocation typo retained/corrected; TypeScript and rootvalidate pass.
+Next sign/verify producer, native rest [melee:bite] unchanged inputs, unpinned candidate10
+negative control, six-subject sweep. Shared red halts with no further variant; if green
+continue all§8 without review stops. Existing expected pose-exporter module reds untouched.
+
+No fetch/push/PR/label/merge/release/deploy. PR42parked; Claude read-only/no app switch or sync.
+Pre-existing.DS_Store untouched. Every commit signed and independently verified.
+
 ## SESSION HANDOFF — September 19 · R2c″ STOPPED AT S2
 
 Nick's §10 correction was implemented in signed producer766e0917. Tooling fixes are signed

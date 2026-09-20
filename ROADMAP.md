@@ -17,22 +17,31 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — September19 · R2c‴ constructor correction, acceptance pending
+## SESSION HANDOFF — September19 · R2c‴ STOPPED AT S2
 
-Nick's read-only reviewer§11 diagnoses R2c″ rejection as an instrument defect: preserved
-edge rounding −8.975276662232845e−16 was rejected without the constructor's existing1e−8
-rounding allowance. One authorized runtime change: reject barycentric<−1e−8; use stored
-values unchanged. No other runtime/binding/input/limit/gate change. Prior signed S2 packet8ecb9209
-retained. Node26.9.0 uninterrupted startup receipt reused.
+Signed/verified producer0dd26298 changes only constructor barycentric sign check to<−1e−8
+under Nick's read-only§11 direction, retaining stored coefficients. Native exact rest passes0
+changed pixels and shifted negative control. Original unpinned candidate10 still fails0.250095px
+at bite70.7ms as required. Five crabs pass all12rows/presentation bit-for-bit with R2c′.
 
-Current evidence: audits/ANATOMY_SINGLE_RUN_20260919/R2c-triple-prime/README.md.
-25contact tests pass including regenerated real-binding constructor, unchanged negative
-coefficient/+0prediction control within1e−12normalized units and −1e−3 rejection with sum1.
-Initial test compared pixels (1.28356e−12px), retained; corrected to API prediction units.
-TypeScript invocation typo retained/corrected; TypeScript and rootvalidate pass.
-Next sign/verify producer, native rest [melee:bite] unchanged inputs, unpinned candidate10
-negative control, six-subject sweep. Shared red halts with no further variant; if green
-continue all§8 without review stops. Existing expected pose-exporter module reds untouched.
+Civet passes idle/approach, then bite102.122222ms fails unchanged joint limit: foreFarAnkle
+61.560489° required versus max60°. Failure occurs after fixed-point solve, before publication;
+no residual for failing frame. Last published Civet sample94.266667ms. No further variant,
+retry, gate/limit/clamp/kit/input change or later stage after S2.
+10,520retained sample records; covariance0 on all six through completed samples. Crab ARAP
+publication floor<=0.000063px; Civet<=0.000088px.779source/input hashes verified unchanged.
 
-No fetch/push/PR/label/merge/release/deploy. PR42parked; Claude read-only/no app switch or sync.
-Pre-existing.DS_Store untouched. Every commit signed and independently verified.
+Current accumulated index: audits/ANATOMY_SINGLE_RUN_20260919/README.md.
+Detailed packet: R2c-triple-prime/README.md; summary.json; native-rest-proof.json; per-subject
+JSONL.gz samples and static reports. Prior S2/signing/instrument evidence retained.25contact
+tests,TypeScript,rootvalidate pass. Initial pixel-converted1e−12test and TypeScript argument
+typos retained; corrected test checks native normalized prediction units. Pose-export missing
+battle2/effects modules remain expected pending separately authorized re-merge, not retried.
+Node26.9.0 uninterrupted startup reused; no tool changes.
+
+R2d→R3/T1/travel/contactJoint/pinch/profile→R4→fullnative→R9/Q1→R5/R6/R7→R8→roster→PR42split
+unrun. New films/sheets0; phoneproof absent; roster0attempted/0refusals/58remaining. Prior CPU
+and persimmon leaf reds remain indexed. Codex stays stopped without new direction. Claude may
+read if requested; no app switch/sync. No fetch/push/PR/label/merge/release/deploy. PR42parked.
+Pre-existing.DS_Store untouched. Evidence successor signed/verified; use local HEAD and cached
+ahead only, no remote verification.
