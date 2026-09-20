@@ -48,3 +48,23 @@ Foot50.0539666°; the max+10°, round-up-to5° rule sets shared Knee±30° / Foo
 remain±35°; no raw clip or landmark changes. `fit-02` record, binding, atlas and master are
 unchanged. The earlier faint refusal is retained; the final production-check sweep follows.
 Runtime controls also reject excessive planted loading under the new contact ranges.
+
+## Signed producer and first native evidence
+
+Producer580a6ffb signed/verified ([receipt](producer-signature.json)).
+[Shared controls](shared-controls/static.json): all five crabs bit-identical to R2c′ and
+Civet sentinel green, exact rest. [P1 production sweep](static-03.json): all12rows plus
+presentation PASS, max planted drift0.00107112px.
+
+[Native01 film](native-01/family-full-rows.webm):14.218s,853encoded frames,12rows including
+faint, zero refusals; exact RGBA rest before/after. Contact, seams, fold/limit rows pass.
+Leaves: approach accelerated update p95 exactly2.00ms; full-film rig update p95=2.90ms
+(target strictly<2ms). Root continuity during faint:9.104px step versus8.095px stride.
+These are retained leaf findings; no shared-path S2 regression.
+
+Visual inspection found a Far-claw tip fragment owned by body. Fit03 broad-outline
+diagnostic accidentally reassigned neighboring limb paint and was rejected before native.
+Fit04 is the precise tip-only correction: [873pixels body→claw](mask-change-final.json),
+no landmark/master/neighboring-limb change. Current input is[fit04](fit-04/record.json),
+from[observation04](observation-04.json); fit02 and its first film remain history.
+A fresh native capture is justified by that changed ownership, not by an unchanged CPU retry.

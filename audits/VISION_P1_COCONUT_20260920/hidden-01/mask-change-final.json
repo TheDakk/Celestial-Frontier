@@ -1,0 +1,15 @@
+{
+  "moves": {
+    "1->16": {
+      "pixels": 468,
+      "opaque": 113
+    },
+    "1->15": {
+      "pixels": 405,
+      "opaque": 269
+    }
+  },
+  "landmarksUnchanged": true,
+  "masterUnchanged": true,
+  "expectedScope": "body label1 to Far claw palm/finger labels15/16 only"
+}

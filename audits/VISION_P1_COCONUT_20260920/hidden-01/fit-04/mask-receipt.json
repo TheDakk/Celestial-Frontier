@@ -1,0 +1,45 @@
+{
+  "sourceLabelsReused": false,
+  "owner": "independently authored polygons on generation 01",
+  "counts": [
+    98615,
+    29202,
+    10701,
+    32313,
+    16941,
+    48730,
+    23149,
+    17352,
+    4841,
+    37052,
+    10604,
+    9873,
+    2427,
+    31248,
+    82916,
+    17150,
+    22921,
+    47808,
+    12230,
+    3218,
+    3385
+  ],
+  "hiddenParts": [],
+  "intake": {
+    "mode": "delivered alpha preserved byte-for-byte",
+    "erodedPixels": 0,
+    "despilledPixels": 0,
+    "kitAcceptance": false
+  },
+  "rgbaChangedChannels": 0,
+  "parts": {
+    "id": "p1-coconut-crab",
+    "parts": 21,
+    "atlasSize": {
+      "width": 2003,
+      "height": 2036
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  }
+}
