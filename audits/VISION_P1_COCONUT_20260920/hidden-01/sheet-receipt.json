@@ -1,0 +1,57 @@
+{
+  "sources": [
+    {
+      "name": "Civet · accepted master",
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+      "authored": true,
+      "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+      "displayBounds": {
+        "x": 26,
+        "y": 195,
+        "width": 1203,
+        "height": 859
+      },
+      "displayOnly": "alpha bounds fitted to equal review box; immutable source not resized"
+    },
+    {
+      "name": "P1 Coconut Crab · Nick accepts art",
+      "path": "audits/VISION_P1_COCONUT_20260920/generation-01/coconut-crab-master.png",
+      "authored": true,
+      "sha256": "7954331dc3ce80bf3b4e2e3759bd0b5c576d659ff5fcb4d01b8efc536bba8890",
+      "displayBounds": {
+        "x": 21,
+        "y": 257,
+        "width": 1204,
+        "height": 811
+      },
+      "displayOnly": "alpha bounds fitted to equal review box; immutable source not resized"
+    },
+    {
+      "name": "Painter crab · eight-visible control",
+      "path": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/coconut-crab-master.png",
+      "authored": false,
+      "sha256": "a0f681a8e44f374407424e5e60b2e5deffb8a23162cfefe3ace96b8cfb4d4832",
+      "displayBounds": {
+        "x": 204,
+        "y": 349,
+        "width": 472,
+        "height": 214
+      },
+      "displayOnly": "alpha bounds fitted to equal review box; immutable source not resized"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/VISION_P1_COCONUT_20260920/hidden-01/native-02/melee-pinch-50.png",
+      "sha256": "c1d280d1f8b96d2289bd1986975e1e95345ccf6f722c6ff1b811121fb4982dc0",
+      "displayOnly": "Actual native pose; right animated panel, no painting edits"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/VISION_P1_COCONUT_20260920/hidden-01/native-02/faint-50.png",
+      "sha256": "718ac04130dd8564f48f23f8b49bb1ed54ff8a742703e99fd6ba2f5cc7bdee1f",
+      "displayOnly": "Actual native pose; right animated panel, no painting edits"
+    }
+  ],
+  "sheetSha256": "de230d351e2efb33204c28d04db395ec440e5f5973e20ef4d0b9ab0cc92330f4",
+  "artAcceptedByNick": true,
+  "animationAccepted": false,
+  "masterResized": false
+}
