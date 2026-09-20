@@ -439,3 +439,29 @@ slots as yellow squares with F/N side + station letters, knees/ankles, inferred 
 spine axis, and the record's landmarks as blue rings for comparison only) plus `sheet-summary.json` with the legend
 and per-subject scores. First sheet: `audits/INTAKE_COMPILER_20260921/sheet-01/` (six subjects at the current
 defaults: crabs 30/35 positions, 24/34 named; Civet 3/5 named, tail + four paws in slot).
+
+## Slice 22 — separation-point touching tips + finger-length bound as defaults, 2026-09-21
+The freshwater far side's false touching tip (74,625, 88 px) is exactly the SEPARATION point of the true leg1Far
+chain — the junction where that leg parts from its neighbour, not a tip resting on the body. `touchNotSep` drops a
+touching tip within 0.1 R of any endpoint candidate's separation point (narrower than the "interior" test that
+deleted the vent crab's true tips): vent 4/8 → 5/7, duplicated mutants REFUSE 10/10, erased 9/10 — but freshwater
+5/7 → 3/6 because its true rear leg (136,439) is still a "claw finger" and the empty slot slides. Both together —
+`touchNotSep` + `thickMaxLen` 0.7 (a lone thick terminal is a finger only when finger-short) — give the best
+naming so far: **29/39** (coconut 4/7, crab 5/6, freshwater 6/7, mud 6/7, vent 5/7, Civet 3/5); positions 30/39
+unchanged; hidden sets exact 3/6. Now the defaults. IC-4 with them: strict verdict positives 2/6 (freshwater,
+Civet; the crab and mud crab carry a TRUE loop-filled `leg0Far` at 68/10 px that strict evidence refuses; the
+coconut fills its declared-hidden `leg3Near` with a thick terminal now allowed as a leg; the vent leaves `leg3Near`
+empty after the false tip went), wrong-template 6/6, erased 7/10, duplicated 9/10; lenient (`IC4_STRICT=0`):
+positives 3/6, erased 6/10, duplicated 7/10. Sheet regenerated at the new defaults (`sheet-01`).
+Where it stands: naming and the verdict now pull against each other on the loop-filled rear legs — a true loop
+(crab 68 px, mud 10 px) is indistinguishable from the twelve false loops by any feature measured so far. The next
+lever is the loop candidate itself: replace "far point of a thin edge between two near-body nodes" with the same
+thin-terminal test the endpoints pass (a loop limb has a thin cross-section over ≥ 0.3 × leg length of its edge),
+so a true rear leg becomes strong evidence and the false loops (short thick bridges) drop.
+Addendum — loop thin-cross-section test (`loopThinFrac`: ≥ f of the loop edge's pixels leg-thin): 0.3 no change,
+0.5/0.7 → 25/38 (drops the crab's TRUE loop). Measured why: the three true loops (crab 68 px, freshwater 38, vent
+55) have ridge thickness 21–24 — a leg folded against the carapace shares its outline, so its ridge reads as thick —
+and the ten false loops span 11–32; length 42–74 vs 26–69. No feature measured on this set separates them.
+Rejected; kept as an option at 0. **Conclusion of the tuning rounds:** on six subjects the compiler is at the
+limit of per-rule tuning (29/39 named, positions 30/39); the next real step is more subjects through the same
+code — the second painted quadruped (PROGRAM §6's one exception) — so a rule is judged on two families, not one.
