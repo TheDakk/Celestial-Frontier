@@ -51,3 +51,7 @@ R2d shared parent-frame part code implemented; two controls/typecheck pass. Pers
 leaf red: branch-0-foliage lacks observed nearest painted-parent attachment; no candidate
 written, no invented anchor. Candidate motion proof unrun. Continue R3 after signed
 producer/static sentinel checks. Packet R2d/README.md.
+
+R2d producer7c62a15e signature verified; all six sentinels pass. R3 selector/contactJoint/
+persistent-stage-travel implementation prepared;24tests pass. Next signed producer,
+sentinels/T1 measurement, then R4 and one full-row native capture.

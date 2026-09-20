@@ -21,6 +21,13 @@ x3 became insensitive under hind-only stance; x3 evidence remains. All-four bite
 still fails with stage travel active. Compression/paint/rest gates unchanged.
 [Current packet](audits/ANATOMY_SINGLE_RUN_20260919/R3-S/README.md).
 
+**R3 — matches code September19,2026.** Five admitted crab profiles select pinch through
+the generic melee alias and expose contactJoint/contactPhase=strike. Unbound crustaceans
+remain unsupported; Coconut remains ground-only. Explicit stage travel holds completed
+approach displacement through transitions, subtracting local gait translation when placing
+the rig. Contact solver stage mode and stance targets remain unchanged. Root continuity
+is measured against one source stride;42–57px reset controls fail.
+
 **R2d — matches code September19,2026.** Optional rigidParentFrame painted groups
 follow an observed published parent attachment and preserve local authored rotation/shape.
 Missing parent/source anchors refuse; current Persimmon-04 refuses at branch-0-foliage.

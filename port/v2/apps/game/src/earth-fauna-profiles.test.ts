@@ -7,7 +7,7 @@ import {attackRepertoire} from './anatomy-attacks.js';
 import {observeQuadrupedWeapons} from '../../../packages/art/src/quadruped-anatomy.js';
 import fs from 'node:fs';
 const fixtures=JSON.parse(fs.readFileSync(new URL('../../../tools/creature-animation/test-fixtures/family-records.json',import.meta.url),'utf8')).records;
-const card=(family:string,name:string)=>compileBodyCard({...fixtures[family],identity:{...fixtures[family].identity,earthName:name},recipeHash:'synthetic-control'});
+const card=(family:string,name:string)=>{const source=fixtures[family]??(family==='brachyuran'?JSON.parse(fs.readFileSync(new URL('../../../../../audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/record.json',import.meta.url),'utf8')):undefined);return compileBodyCard({...source,identity:{...source.identity,earthName:name},recipeHash:'synthetic-control'});};
 it('exactly covers the live fauna catalogue; missing, obsolete and duplicated names fail independently',()=>{
  const names=_EARTH_NAMES.fauna;
  expect(auditEarthFaunaProfiles(names)).toMatchObject({status:'PASS',species:631,missing:[],obsolete:[],duplicates:[]});
