@@ -17,24 +17,14 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — September19 · R2c-L measurement STOPPED AT S2
+## SESSION HANDOFF — September19 · R3-S active, no intermediate stop
 
-Nick explicitly authorized§12 measured contact-limit separation. Signed/verified measurement
-producer1523b0b5 changes only the static audit bundle's joint-limit throw to reporting;
-production solver/contracts/raw-clip battery remain byte-identical to c7b4fdfd. Node26.9.0.
-Five crabs complete12rows+601presentation,0limit exceedances, R2c′bit-identical.
-Civet hits a new live gate: bite157.111111ms exceeds unchanged8%scale-compression bound.
-Bound28.107509verticalpx; previous149.255556ms uses24.509773px. Rejected correction unknown
-because throw precedes publication. No replay, compression change or further variant.
-
-Packet: audits/ANATOMY_SINGLE_RUN_20260919/R2c-L/README.md; summary.json; measure/limits.json
-contains15Civet exceedances and partial maxima with root/spine/chest/hip drop.10,527published
-samples retained. Full Civet measurement incomplete, so contactLimitsDeg NOT added, no range
-adopted. Four controls only crabbitidentity/zeroexceedance completed; new-range crouch/fallback
-controls and raw battery rerun unrun. Raw battery unchanged. Current root review index updated.
-
-§10acceptance,R2d,R3 and later§8 remain unrun. Films/sheets0; phoneproof absent; roster0trials/
-0refusals/58remaining. Prior expected missing-module/CPU/fold leaf reds remain indexed.
-Codex stays stopped without new direction. Claude read-only/no app switch/sync. No fetch/push/
-PR/label/merge/release/deploy; PR42parked. Pre-existing.DS_Store untouched. Sign/verify evidence;
-report actual local HEAD/cached ahead only.
+Nick's read-only§13 supersedes the stop-per-gate loop. Report-all BEFORE complete on signed
+6c511261: all six/all rows/presentation; five crabs0classes/bit-identical. Civet1053limit,
+513compression,85publication,54reach,4support,4drift events. Ledger committed before changes.
+Current packet audits/ANATOMY_SINGLE_RUN_20260919/R3-S/README.md. Next shared quadruped
+stance contract (all/hind/none), planted-only measured contactLimitsDeg, AFTER ledger and
+controls. Fix/retain reds within1–5, no stop. Then R2d→R3interfaces→remaining§8. S2 only
+planted drift afterstep4/exactrest/crabnonidentity/or throw class AFTER said empty.
+Raw clips/root keys/input/compression bound unchanged. Node26.9.0 startup reused. Signed
+commits only; no fetch/push/PR/merge. Claude read-only/no app switch/sync; PR42parked.

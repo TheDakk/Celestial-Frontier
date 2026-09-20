@@ -1,0 +1,25 @@
+{
+  "owner": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+  "sourceSha256": "6889b1cb3a67f5d5537ec18a3c937c024cb8dfe20cc5646ba121e0762e576de8",
+  "diagnosticSha256": "a1bc3d214bed11ff8c5bb452a7a734e2f53b895d05963d4123b85fe317e56223",
+  "replacements": [
+    [
+      "if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: joint limit '+j+' '+phase.actionId+'@'+phase.elapsedMs+': '+deg);",
+      "globalThis.__cfReport({kind:'joint',joint:j,deg,limit:l,exceeded:deg<l.min-1e-7||deg>l.max+1e-7,root:pose.root??null,spine:pose.spine??null,chest:pose.chest??null,inputRoot:input.root??null,hip:c.hip,hipDropPx:(transformPoint(final[c.hip],c.root).y-c.root.y)*record.geometry.height});"
+    ],
+    [
+      "if(compression+shift>scaleLength*.08)throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' exceeds scale compression bound');",
+      "if(compression+shift>scaleLength*.08)globalThis.__cfReport({kind:'compression',pass,required:compression+shift,bound:scaleLength*.08,requiredPixels:(compression+shift)*record.geometry.height,boundPixels:scaleLength*.08*record.geometry.height,root:pose.root??null});"
+    ],
+    [
+      "if(maxError>1e-8)throw Error('Contact: unresolved endpoint');",
+      "if(maxError>1e-8)globalThis.__cfReport({kind:'endpoint',value:maxError,bound:1e-8});"
+    ],
+    [
+      "if(maxPaintTargetErrorPx>.25)throw Error('Contact: painted support iteration residual '+maxPaintTargetErrorPx);",
+      "if(maxPaintTargetErrorPx>.25)globalThis.__cfReport({kind:'support',value:maxPaintTargetErrorPx,bound:.25});"
+    ]
+  ],
+  "runtimeSourceModified": false,
+  "terminalReach": "Unsolvable reach throws are caught per sample; no clamp or NaN continuation."
+}
