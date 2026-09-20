@@ -70,3 +70,7 @@ Nine-subject native recapture complete on signed f4c5489a; no S2. Full-row films
 CPU/refusal/leaf ledger in native/README.md. Civet T1 + film CPU, Coconut film CPU and flora
 CPU/fold reds retained; exact rest/contact pass on all six shared subjects. Next R9/Q1,
 then R5–R8, roster families and local PR42 split; no intermediate review stop.
+
+R9 shared finisher/immutable retention/conservation/texture-only rebind implemented. Fixed
+0.35 one-step existing model; geometry independently rebuilt and compared. Static controls
+passing; signed producer and five-crab native inference next. Evidence R9/README.md.
