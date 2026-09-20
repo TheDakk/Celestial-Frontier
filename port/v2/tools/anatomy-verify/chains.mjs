@@ -20,15 +20,19 @@ export function limbChains(graph,dt,W,{bodyFraction=.45}={}){
   const byEnd=new Map();for(const c of chains){const k=c.endNode.id;if(!byEnd.has(k)||byEnd.get(k).length>c.length)byEnd.set(k,c);}
   return {bodyDt:+bodyDt.toFixed(1),maxDt:+maxDt.toFixed(1),bodyNodes:[...bodyNodes].map(id=>nodes[id]),chains:[...byEnd.values()]};
 }
-export function classifyChains(chains,{thinRatio=1.6}={}){
-  const thinRef=(()=>{const v=chains.map(c=>c.meanDt).sort((a,b)=>a-b);const lower=v.slice(0,Math.max(1,Math.ceil(v.length/2)));return lower[Math.floor(lower.length/2)]??1;})();
+/** Classification by the TERMINAL branch (the last edge, from the last junction to the endpoint): a walking foot ends
+ * a long thin terminal branch; a claw finger ends a long THICK terminal branch (two per claw); an eye is a short
+ * branch ending in a knob; anything else (spines, hairs, fringe) is a stub. The thin reference is the median terminal
+ * thickness of the longer half of the chains, so it follows the drawing's line weight. */
+export function classifyChains(chains,{minTerm=16,termFactor=3,thickRatio=1.7}={}){
+  const rows=chains.map(c=>{const last=c.edges[c.edges.length-1];return {chain:c,term:last.length,termDt:last.meanDt,endDt:c.endDt,maxDt:c.maxDt};});
+  const long=rows.filter(r=>r.term>=Math.max(minTerm,termFactor*r.termDt)).sort((a,b)=>a.termDt-b.termDt);
+  const lower=long.slice(0,Math.max(1,Math.ceil(long.length/2)));const thinRef=lower.length?lower[Math.floor((lower.length-1)/2)].termDt:1; // thin cluster = lower half
   const out={feet:[],claws:[],eyes:[],stubs:[],thinRef};
-  // claws: chains whose maxDt is much larger than thinRef and which fork (another chain shares ≥1 edge)
-  const shares=(a,b)=>a.edges.some(e=>b.edges.includes(e));
-  for(const c of chains){const forks=chains.some(o=>o!==c&&shares(o,c)&&o.maxDt>=3*thinRef&&c.maxDt>=3*thinRef);
-    if(c.length<2*thinRef*3&&c.endDt>c.meanDt*1.3)out.eyes.push(c); // short knob-ended chain
-    else if(c.maxDt>=3*thinRef&&forks)out.claws.push(c);
-    else if(c.length>=30&&c.meanDt<=thinRatio*thinRef*2)out.feet.push(c);
-    else out.stubs.push(c);}
+  for(const r of rows){const isLong=r.term>=Math.max(minTerm,termFactor*r.termDt);
+    if(isLong&&r.termDt<=thickRatio*thinRef&&r.endDt<=6)out.feet.push(r);
+    else if(isLong&&r.termDt>thickRatio*thinRef)out.claws.push(r);
+    else if(!isLong&&r.endDt>=1.3*r.termDt&&r.endDt>=4)out.eyes.push(r);
+    else out.stubs.push(r);}
   return out;
 }
