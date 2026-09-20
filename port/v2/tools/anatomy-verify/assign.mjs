@@ -18,7 +18,7 @@ import {distanceTransform} from './thickness.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 /** Backwards-compatible descriptor view: legs per side and slot naming per template (from the contract). */
 export const TEMPLATES=new Proxy({},{get:(_,id)=>{if(typeof id!=='string')return undefined;const r=templateRest(id);return {legsPerSide:r.legsPerSide,slotName:(k,side)=>r.slots[side][k].terminal,rest:r};}});
-export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=0.7,thinWeight=0.4,emptyScale=1.0,unusedEnd=1.0,contactRefine=true,thickNeedsFork=false,touchNotSep=true,loopThinFrac=0}={}){
+export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=0.7,thinWeight=0.4,emptyScale=1.0,unusedEnd=1.0,contactRefine=true,thickNeedsFork=false,touchNotSep=true,loopThinFrac=0,declaredHidden=[],orderBy='sep'}={}){
   const T=templateRest(template),legsPerSide=T.legsPerSide,slotName=(k,side)=>T.slots[side][k].terminal;
   const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128}),{working:{width:W,height:H,scale,box}}=det;let {mask,dt}=det;let interiorPass=null;
   // INTERIOR-EDGE STAGE (README slice 21): a limb painted over the body is inside the silhouette; its contour is a
@@ -172,7 +172,9 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
     for(const c of clawList)claws[sideFront(c)].push(c);
     const sides={Far:[],Near:[]};for(const c of legs)sides[sideFront(c)].push(c);
     for(const side of ['Far','Near']){
-      const list=sides[side].map(f=>({f,a:ang(f.attach??[f.x,f.y],centre)}));const key=o=>side==='Near'?(o.a<-Math.PI/2?o.a+2*Math.PI:o.a):(o.a>Math.PI/2?-(o.a-2*Math.PI):-o.a);
+      // ORDER within a side: 'sep' = separation-point angle (slice 15); 'tip' = the foot's own angle about the centre —
+      // a chain that shares its trunk with the claw separates far back (vent leg3Near at 18.8° vs its foot at 74°)
+      const list=sides[side].map(f=>({f,a:ang(orderBy==='tip'?[f.x,f.y]:(f.attach??[f.x,f.y]),centre)}));const key=o=>side==='Near'?(o.a<-Math.PI/2?o.a+2*Math.PI:o.a):(o.a>Math.PI/2?-(o.a-2*Math.PI):-o.a);
       const cs=list.sort((p,q)=>key(p)-key(q)).map(o=>o.f);if(!cs.length){for(let k=0;k<legsPerSide;k++)hidden.push(T.slots[side][k].id);continue;}
       const thin=thinOf(cs),medLen=medLenOf(cs);const emptyCost=k=>emptyScale*(k===legsPerSide-1?0.3:k===legsPerSide-2?1.0:1.8),unusedCost=0.7;
       // rest ORDER prior: the template reference's hip angle per slot about the axis midpoint; a candidate pays for
@@ -196,7 +198,11 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
       const angs=cs.map(c=>unwrap(ang(c.attach??[c.x,c.y],centre)));const gaps=angs.slice(1).map((a,i)=>a-angs[i]).filter(g=>g>1e-3).sort((a,b)=>a-b);const pitch=gaps.length?gaps[Math.floor(gaps.length/2)]:0;
       const gapCost=acc=>{if(!gapWeight||!pitch)return 0;let v=0,prevK=-1,prevJ=-1;acc.forEach((c,k)=>{if(!c)return;const j=cs.indexOf(c);if(prevK>=0){const g=(angs[j]-angs[prevJ])/(k-prevK);v+=Math.abs(g-pitch)/pitch;}prevK=k;prevJ=j;});
         if(!acc[legsPerSide-1]&&prevJ>=0&&fronts.length){const gf=(r1-angs[prevJ])/pitch;v+=Math.max(0,1-gf);}return gapWeight*v;};
+      // a DECLARED-hidden slot is empty by declaration: it takes no candidate and costs nothing (the declaration is
+      // an intake input; the compiler never fills what the species says is not painted)
+      const declHid=k=>declaredHidden.includes(T.slots[side][k].id);
       let best=null;const rec=(k,i,used,acc,cost)=>{if(k===legsPerSide){let total=cost+gapCost(acc);const usedSet=new Set(acc.filter(Boolean));for(const c of cs)if(!usedSet.has(c))total+=unusedCostOf(c);if(!best||total<best.cost)best={cost:total,acc:acc.slice()};return;}
+        if(declHid(k)){rec(k+1,i,used,acc.concat([null]),cost);return;}
         rec(k+1,i,used,acc.concat([null]),cost+emptyCost(k));for(let j=i;j<cs.length;j++)rec(k+1,j+1,used+1,acc.concat([cs[j]]),cost+unitCost(cs[j],thin,medLen)+slotCost(cs[j],k));};
       rec(0,0,0,[],0);
       best.acc.forEach((c,k)=>{if(c)place(slotName(k,side),c);else hidden.push(T.slots[side][k].id);});feet[side]=best.acc.filter(Boolean);}
@@ -219,9 +225,10 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
       const st=stations[si];
       if(st.app){rec(si+1,i,acc.concat([[null]]),cost+0.8);for(let j=i;j<cs.length;j++)rec(si+1,j+1,acc.concat([[cs[j]]]),cost+lenCost({...cs[j],len:cs[j].len+fromSpine(cs[j])},st.app.length)*2.0+(cs[j].kind==='touch'?0.5:cs[j].kind==='loop'?0.3:0));return;}
       rec(si+1,i,acc.concat([[null,null]]),cost+2.0); // empty station: expensive (a whole station missing)
-      for(let j=i;j<cs.length;j++){const c=cs[j];const near=c.y>=yLow-0.25*T.legLength*R;
-        rec(si+1,j+1,acc.concat([[near?null:c,near?c:null]]),cost+legCost(c)+1.0); // one leg at the station: the other depth hidden
-        for(let j2=j+1;j2<cs.length;j2++){const d=cs[j2];const [farC,nearC]=c.y<=d.y?[c,d]:[d,c];rec(si+1,j2+1,acc.concat([[farC,nearC]]),cost+legCost(c)+legCost(d));}}};
+      const hidFar=declaredHidden.includes(T.slots.Far[st.k].id),hidNear=declaredHidden.includes(T.slots.Near[st.k].id);
+      for(let j=i;j<cs.length;j++){const c=cs[j];let near=c.y>=yLow-0.25*T.legLength*R;if(hidFar)near=true;if(hidNear)near=false;
+        rec(si+1,j+1,acc.concat([[near?null:c,near?c:null]]),cost+legCost(c)+((hidFar||hidNear)?0:1.0)); // one leg at the station: the other depth hidden (free when declared)
+        if(!hidFar&&!hidNear)for(let j2=j+1;j2<cs.length;j2++){const d=cs[j2];const [farC,nearC]=c.y<=d.y?[c,d]:[d,c];rec(si+1,j2+1,acc.concat([[farC,nearC]]),cost+legCost(c)+legCost(d));}}};
     rec(0,0,[],0);
     if(process.env.ASSIGN_DEBUG)console.log('side-view cs',cs.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),u:+u(c).toFixed(0),y:+c.y.toFixed(0),len:+c.len.toFixed(0),termDt:c.termDt,legCost:+legCost(c).toFixed(2),tailCost:rearApp.length?+(lenCost(c,rearApp[0].length)*2).toFixed(2):null})),'best',best.cost.toFixed(2),'yLow',yLow);
     const others={};

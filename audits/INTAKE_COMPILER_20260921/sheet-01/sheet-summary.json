@@ -7,11 +7,12 @@
    "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/coconut-crab.png",
    "score": {
     "pos": "5/6",
-    "named": "4/7",
-    "hiddenOk": false
+    "named": "4/6",
+    "hiddenOk": true
    },
    "hidden": [
-    "leg3Far"
+    "leg3Far",
+    "leg3Near"
    ]
   },
   {

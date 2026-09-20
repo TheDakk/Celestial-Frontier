@@ -483,3 +483,17 @@ seven subjects: positives ADMIT 3/7 (freshwater, Civet, Wolf), wrong-template RE
 9/10. What the two families showed together: the side-view station assignment, the contact-terminal refinement and
 the appendage slots held on a second quadruped with no change; the one change (tail length through the body run)
 was forced by the Wolf and left every other subject byte-identical in score. Sheet regenerated (`sheet-01/wolf.png`).
+
+## Slice 24 — declared-hidden slots pre-emptied; ordering primitive measured again, 2026-09-21
+`declaredHidden` is now an input to `assignLegs` (score/ic4 pass the record's or presence file's declaration): a
+declared-hidden slot takes no candidate and costs nothing (front view: skipped in the enumeration; side view: the
+lone-leg case is forced to the other depth). Hidden sets are exact by construction; the coconut's declared-hidden
+`leg3Near` no longer fills — its would-be candidate is now an UNUSED endpoint and the strict verdict refuses on
+that instead (correct: a strong leg-like endpoint on a declared-hidden leg means the declaration or the candidate is
+wrong). Named 29/38 (the denominator drops with the slot), positions 30/39, IC-4 unchanged 3/7 · 7/7 · 7/10 · 9/10.
+Ordering: on both remaining near-side errors the separation angle mis-orders legs whose chain shares its trunk with
+the claw (vent `leg3Near` separates at 18.8° with its foot at 74°; coconut `leg2Near` at 24.5° before `leg1Near`
+at 37.7°), and the foot's own angle orders both correctly — but `orderBy:'tip'` scores 28/38 (vent 5/7 → 4/7,
+a far-side loss) with no IC-4 change. Rejected as default; both primitives are recorded. The right primitive is
+probably the ROOT along the body outline (neither the separation nor the tip), which the compiler does not yet
+estimate independently of the chain — a P6 item.
