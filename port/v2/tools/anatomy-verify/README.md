@@ -354,3 +354,29 @@ continuous line (the leg-segment boundaries read as the strongest interior edges
 the painted texture fires everywhere; an interior-edge stage would need a threshold set from the texture level,
 hysteresis and long-contour tracking, then the same ridge/graph treatment on the contour-bounded region. Design
 item for the program; the alpha-only compiler stays precision-first until it exists.
+
+## Slice 20 — Codex's hidden rule adopted; claw wrist probe, 2026-09-21
+Codex's read-only note (`openai-mac/audits/VISION_P1_CONSOLIDATED_20260920/HIDDEN_PLACEMENT_RULE.md`, its commit
+`78dc7dc3`) states the record rule exactly (`hidden-anatomy.mjs#inferHiddenLandmarks`, not yet merged into this
+lane): root₃ = 2·root₂ − root₁; knee/foot = pair 2's vectors reflected about the contract body-axis line through
+the new root; it reproduces all 15 hidden landmarks at 0 px from the SAME hand roots. `assign.mjs` now implements
+the same formula generalized to "a declared-hidden station from the two preceding stations of its side" (identical
+on crabs; no leg names). Two facts needed to make it work in the compiler: (1) the contract's body axis in the
+painting is view-dependent — front view → the spine ridge's top normal (root→carapace is the painting's vertical),
+side view → the spine ridge itself; with the spine direction itself the errors were 581–1070 px; (2) the inputs are
+the compiler's roots (thick-region exits), not the hand roots, so the residual measures root estimation:
+hidden-foot errors crab 108, freshwater 112, mud 391, coconut 709/460 px (the coconut's pair 2 is misnamed at
+416/399 px, and the reflection inherits it). Hidden SETS are exact on 5 of 6 subjects (the crab: leg3Far found by
+the thick-terminal rule as a claw finger).
+Claw wrist probe (P3, scratch): the DT profile along every claw chain from its root has its valley AT the root
+(index 0, root DT ≈ palm DT, 0.37–0.85 R) — the chain begins where the thick arm ends, so the wrist lies on the
+BODY ridge, between the claw root node and the spine. Next P3 step, implementable: shortest path through body edges
+from each claw root to the spine edge; wrist = the DT minimum along it; body seeds exclude the body ridge beyond the
+wrist and the claw seeds include it (P7 body 0.35–0.48 IoU is capped by exactly this arm).
+Addendum — wrist cut implemented (`wristCut`, on by default): for each forked appendage, the shortest body-edge walk
+from its chain root to the spine edge; wrist = the DT minimum along it; the walk's pixels before the wrist leave the
+body ridge and join the appendage's ridge. Label IoU (P7): claws coconut 0.48/0.49 → 0.61/0.48, crab 0.39/0.37 →
+0.39/0.58, mud 0.41/0.35 → 0.55/0.35, vent 0.50/0.40 → 0.50/0.59; body +0.02–0.04 on every crab (0.37–0.50).
+The DT minimum lands at the record's ELBOW, not its base (crab near 48 px, freshwater near 45, vent near 9, coconut
+far 73 px): the arm is two thick lobes (base→elbow, elbow→palm) and the valley between them is the elbow. The base
+needs the next valley toward the spine — a second cut, same walk. Naming and positions unchanged (30/39, 25/39).
