@@ -1,0 +1,3339 @@
+{
+  "schema": "cf.painted-coverage-ledger/v1",
+  "sourceHead": "7572a5cb6e7eae85004ab324c53ba148d5f24787",
+  "scope": "Working candidate evidence; no species promotion from contract fixtures.",
+  "counts": {
+    "missingSpecies": 53,
+    "newlyQualifiedMissingSpecies": 0,
+    "missingSpeciesWithBindingArtifacts": 0,
+    "observedMissingSpecies": 8,
+    "acceptedCutoutMasters": 11,
+    "mastersWithMatchingBinding": 11
+  },
+  "missingSpecies": [
+    {
+      "name": "Sponge",
+      "profile": "sponge",
+      "target": "sessile-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile filtration; effect-only combat needs a verified root/colony anchor.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Sessile filtration; effect-only combat needs a verified root/colony anchor.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Sea Squirt",
+      "profile": "tunicate",
+      "target": "sessile-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "partial-source-features",
+      "observationEvidence": {
+        "path": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/census-01/report.json",
+        "owner": "faunaSeaSquirt",
+        "geometryAdmission": "UNSUPPORTED_FAMILY"
+      },
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Salp",
+      "profile": "tunicate",
+      "target": "colonial-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "partial-source-features",
+      "observationEvidence": {
+        "path": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/census-01/report.json",
+        "owner": "faunaSalp",
+        "geometryAdmission": "UNSUPPORTED_FAMILY"
+      },
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Pyrosome",
+      "profile": "tunicate",
+      "target": "colonial-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "partial-source-features",
+      "observationEvidence": {
+        "path": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/census-01/report.json",
+        "owner": "faunaPyrosome",
+        "geometryAdmission": "UNSUPPORTED_FAMILY"
+      },
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Mussel",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Oyster",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Clam",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Razor Clam",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Giant Clam",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Scallop",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Land Snail",
+      "profile": "land-gastropod",
+      "target": "gastropod",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Banana Slug",
+      "profile": "land-gastropod",
+      "target": "gastropod",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Snail",
+      "profile": "land-gastropod",
+      "target": "gastropod",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Freshwater Snail",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Water Snail",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Sea Snail",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Limpet",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Chiton",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Nudibranch",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Cowrie",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Conch",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Abalone",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Earthworm",
+      "profile": "annelid-land",
+      "target": "annelid",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Segmented body compression needs observed source geometry.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Segmented body compression needs observed source geometry.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Ice Worm",
+      "profile": "annelid-land",
+      "target": "annelid",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Segmented body compression needs observed source geometry.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Segmented body compression needs observed source geometry.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Leech",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Marine Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Tube Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Polychaete Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Giant Tube Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Scale Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Flatworm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Different feeding structures; no universal jaw or venom.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Crayfish",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Hermit Crab",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Fiddler Crab",
+      "profile": "clawed-crustacean",
+      "target": "brachyuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "partial-source-features",
+      "observationEvidence": {
+        "path": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/census-01/report.json",
+        "owner": "faunaFiddler",
+        "geometryAdmission": "INCOMPLETE_OBSERVATION"
+      },
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Lobster",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Brine Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Water Flea",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Krill",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Copepod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Amphipod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Cave Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Freshwater Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Prawn",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Giant Isopod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "partial-source-features",
+      "observationEvidence": {
+        "path": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/census-01/report.json",
+        "owner": "isopodBody",
+        "geometryAdmission": "UNSUPPORTED_FAMILY"
+      },
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Isopod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "partial-source-features",
+      "observationEvidence": {
+        "path": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/census-01/report.json",
+        "owner": "isopodBody",
+        "geometryAdmission": "UNSUPPORTED_FAMILY"
+      },
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Vent Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Fairy Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Tadpole Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Observed segmented swimming/crawling appendages; no generic stinger.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Barnacle",
+      "profile": "barnacle",
+      "target": "barnacle",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Anchored feeding cirri, no locomotor leap.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Anchored feeding cirri, no locomotor leap.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Horseshoe Crab",
+      "profile": "horseshoe-crab",
+      "target": "xiphosuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Telson is not a venomous stinger; dedicated topology needed.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "partial-source-features",
+      "observationEvidence": {
+        "path": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/census-01/report.json",
+        "owner": "faunaHorseshoeCrab",
+        "geometryAdmission": "UNSUPPORTED_FAMILY"
+      },
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Telson is not a venomous stinger; dedicated topology needed.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Fly Larvae",
+      "profile": "larva",
+      "target": "larva",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Life stage cannot inherit adult wings or adult six-leg graph.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "needs-source-observation",
+      "observationEvidence": null,
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Life stage cannot inherit adult wings or adult six-leg graph.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    },
+    {
+      "name": "Tardigrade",
+      "profile": "tardigrade",
+      "target": "lobopod",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Eight lobopod legs and stylets require exact topology; no arachnid fangs.",
+      "status": "needs-observed-fit",
+      "structureStatus": "candidate-contract",
+      "observationStatus": "partial-source-features",
+      "observationEvidence": {
+        "path": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/census-01/report.json",
+        "owner": "tardigrade",
+        "geometryAdmission": "UNSUPPORTED_FAMILY"
+      },
+      "fitArtifacts": [],
+      "paintedFitStatus": "not-qualified",
+      "acceptance": null,
+      "openRequirements": [
+        "Eight lobopod legs and stylets require exact topology; no arachnid fangs.",
+        "Qualify observed topology/counts against candidate; do not invent or truncate parts",
+        "Bind actual painted master, part masks, exact-rest and complete-action evidence",
+        "Native capture, habitat/contact and visual acceptance"
+      ]
+    }
+  ],
+  "masters": [
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+      "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+      "fits": [
+        {
+          "record": "audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+          "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8",
+          "template": "quadruped",
+          "coverage": null,
+          "bindings": [
+            {
+              "file": "audits/C2_PAIR_BANDS_20260913/civet/binding.json",
+              "sha256": "73be4bf88a5442d5aa8bb6c0cfb8d8d62adb3eb0056e87cbf078a1ddc41d42cb",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-04/civet.binding.json",
+              "sha256": "311a80ae3e6cdb8c75df29420d1771668509aa9bd008dc6132a42a4c451d7956",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-03/civet.binding.json",
+              "sha256": "861edc0be9b9febafd789c78c1e8709b97f874070b775805891d0ef5c968593c",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/civet.binding.json",
+              "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/civet.binding.json",
+              "sha256": "8e797ff823d009fd82ab359b89537dfc1d1b7838f320f02661b12854ef739887",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_PARTS_ATLAS_20260913/civet-patched/binding.json",
+              "sha256": "38f7297740460a59d9714f6e425a4a5c0785f6dfc2d6dcfee1084bd3cb34fe1b",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-07/civet.binding.json",
+              "sha256": "b558f4e551835c604503d54bffa757fb87366d22a736f2162fc88708e57334dd",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/civet-ink/binding.json",
+              "sha256": "73be4bf88a5442d5aa8bb6c0cfb8d8d62adb3eb0056e87cbf078a1ddc41d42cb",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-09/civet.binding.json",
+              "sha256": "cf1773d7c2c77fc81595eaf4c12643a0bb69d0d0256f0c4245a5198aae343112",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-08/civet.binding.json",
+              "sha256": "475b162b6698292c1362ef11d45067b40abafbe38a5ba5790201fb3d6677db6d",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-06/civet.binding.json",
+              "sha256": "d6b97d79bbc18c734227c98156366840789c812b72813d0b84e96c360c9ea4a2",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-01/civet.binding.json",
+              "sha256": "6aac4102f104dd1fd9dee56c5b9257c3654ceae7f66cc1d743fe9ef7f9e42b33",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-04/civet.binding.json",
+              "sha256": "3e8da15a31b22bc674b569121b34356fa95e35bc30c4bbe32b1476bda3186b9c",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-02/civet.binding.json",
+              "sha256": "e1cd4d966162cdd8cb7456427ab7ecbc4c2f2d64aeecc16353e932a2aa8d551f",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-03/civet.binding.json",
+              "sha256": "eeb5644dfa2c78e39dcdba83cf9f7d46d12a29fd918f685575dbf7159f37b615",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-05/civet.binding.json",
+              "sha256": "242181675a3ec6282643166f292580a1da68cfa00710b0d1257908be9b611a57",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/civet.binding.json",
+              "sha256": "f6d8676b04f4407a477468ab6ab8022017b910d4a7db33032d92f5193a5eba7d",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-05/civet.binding.json",
+              "sha256": "3e8da15a31b22bc674b569121b34356fa95e35bc30c4bbe32b1476bda3186b9c",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_PARTS_ATLAS_20260913/civet/binding.json",
+              "sha256": "37dc1e16ffdf576060e98c136ab437249c71ad5fd0692ee320bd974f44778e9d",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-06/civet.binding.json",
+              "sha256": "7184c4063d1643b217a0df02bdd6180ec3c91fa050caf721a23f1107fe700791",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-01/civet.binding.json",
+              "sha256": "21de5a3a0e5f94384906e0b9fa0f2b20878255b073dfa3753d3fe23f14b673e2",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_PARTS_ATLAS_20260913/civet-v2/binding.json",
+              "sha256": "f0d4e39334f74f8f9f6dccc67b84bcc5a01a305572152183e135d4e51e8e4d92",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_BOUNDED_REPAIR_20260913/candidate-01/civet-patched/binding.json",
+              "sha256": "c5dd249b52742c12f84bc52f8131e6ef81b199a81ed5ac7e4ecef456a0375a50",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/binding.json",
+              "sha256": "d8e0035d35d3cdaf853da64de308bee06819ef92b43fd9985ac2b54756538909",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/binding.json",
+              "sha256": "9cacbaca6cab18e3fde0d1ecb42ea899e6c352df19a551324808ede34dbf11f1",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json",
+              "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_BAND_UNDERLAPS_20260913/civet/binding.json",
+              "sha256": "b07cfed3a125a3476a88b5062601a95fa914bce2464c52d3ab4c663fa223f3bb",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/record.json",
+          "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8",
+          "template": "quadruped",
+          "coverage": null,
+          "bindings": [
+            {
+              "file": "audits/C2_PAIR_BANDS_20260913/civet/binding.json",
+              "sha256": "73be4bf88a5442d5aa8bb6c0cfb8d8d62adb3eb0056e87cbf078a1ddc41d42cb",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-04/civet.binding.json",
+              "sha256": "311a80ae3e6cdb8c75df29420d1771668509aa9bd008dc6132a42a4c451d7956",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-03/civet.binding.json",
+              "sha256": "861edc0be9b9febafd789c78c1e8709b97f874070b775805891d0ef5c968593c",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/civet.binding.json",
+              "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/civet.binding.json",
+              "sha256": "8e797ff823d009fd82ab359b89537dfc1d1b7838f320f02661b12854ef739887",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_PARTS_ATLAS_20260913/civet-patched/binding.json",
+              "sha256": "38f7297740460a59d9714f6e425a4a5c0785f6dfc2d6dcfee1084bd3cb34fe1b",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-07/civet.binding.json",
+              "sha256": "b558f4e551835c604503d54bffa757fb87366d22a736f2162fc88708e57334dd",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/civet-ink/binding.json",
+              "sha256": "73be4bf88a5442d5aa8bb6c0cfb8d8d62adb3eb0056e87cbf078a1ddc41d42cb",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-09/civet.binding.json",
+              "sha256": "cf1773d7c2c77fc81595eaf4c12643a0bb69d0d0256f0c4245a5198aae343112",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-08/civet.binding.json",
+              "sha256": "475b162b6698292c1362ef11d45067b40abafbe38a5ba5790201fb3d6677db6d",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-06/civet.binding.json",
+              "sha256": "d6b97d79bbc18c734227c98156366840789c812b72813d0b84e96c360c9ea4a2",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-01/civet.binding.json",
+              "sha256": "6aac4102f104dd1fd9dee56c5b9257c3654ceae7f66cc1d743fe9ef7f9e42b33",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-04/civet.binding.json",
+              "sha256": "3e8da15a31b22bc674b569121b34356fa95e35bc30c4bbe32b1476bda3186b9c",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-02/civet.binding.json",
+              "sha256": "e1cd4d966162cdd8cb7456427ab7ecbc4c2f2d64aeecc16353e932a2aa8d551f",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-03/civet.binding.json",
+              "sha256": "eeb5644dfa2c78e39dcdba83cf9f7d46d12a29fd918f685575dbf7159f37b615",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-05/civet.binding.json",
+              "sha256": "242181675a3ec6282643166f292580a1da68cfa00710b0d1257908be9b611a57",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/civet.binding.json",
+              "sha256": "f6d8676b04f4407a477468ab6ab8022017b910d4a7db33032d92f5193a5eba7d",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-05/civet.binding.json",
+              "sha256": "3e8da15a31b22bc674b569121b34356fa95e35bc30c4bbe32b1476bda3186b9c",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_PARTS_ATLAS_20260913/civet/binding.json",
+              "sha256": "37dc1e16ffdf576060e98c136ab437249c71ad5fd0692ee320bd974f44778e9d",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-06/civet.binding.json",
+              "sha256": "7184c4063d1643b217a0df02bdd6180ec3c91fa050caf721a23f1107fe700791",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-01/civet.binding.json",
+              "sha256": "21de5a3a0e5f94384906e0b9fa0f2b20878255b073dfa3753d3fe23f14b673e2",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_PARTS_ATLAS_20260913/civet-v2/binding.json",
+              "sha256": "f0d4e39334f74f8f9f6dccc67b84bcc5a01a305572152183e135d4e51e8e4d92",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_BOUNDED_REPAIR_20260913/candidate-01/civet-patched/binding.json",
+              "sha256": "c5dd249b52742c12f84bc52f8131e6ef81b199a81ed5ac7e4ecef456a0375a50",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/binding.json",
+              "sha256": "d8e0035d35d3cdaf853da64de308bee06819ef92b43fd9985ac2b54756538909",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/binding.json",
+              "sha256": "9cacbaca6cab18e3fde0d1ecb42ea899e6c352df19a551324808ede34dbf11f1",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json",
+              "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_BAND_UNDERLAPS_20260913/civet/binding.json",
+              "sha256": "b07cfed3a125a3476a88b5062601a95fa914bce2464c52d3ab4c663fa223f3bb",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/record.json",
+          "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8",
+          "template": "quadruped",
+          "coverage": null,
+          "bindings": [
+            {
+              "file": "audits/C2_PAIR_BANDS_20260913/civet/binding.json",
+              "sha256": "73be4bf88a5442d5aa8bb6c0cfb8d8d62adb3eb0056e87cbf078a1ddc41d42cb",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-04/civet.binding.json",
+              "sha256": "311a80ae3e6cdb8c75df29420d1771668509aa9bd008dc6132a42a4c451d7956",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-03/civet.binding.json",
+              "sha256": "861edc0be9b9febafd789c78c1e8709b97f874070b775805891d0ef5c968593c",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/civet.binding.json",
+              "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/civet.binding.json",
+              "sha256": "8e797ff823d009fd82ab359b89537dfc1d1b7838f320f02661b12854ef739887",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_PARTS_ATLAS_20260913/civet-patched/binding.json",
+              "sha256": "38f7297740460a59d9714f6e425a4a5c0785f6dfc2d6dcfee1084bd3cb34fe1b",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-07/civet.binding.json",
+              "sha256": "b558f4e551835c604503d54bffa757fb87366d22a736f2162fc88708e57334dd",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/civet-ink/binding.json",
+              "sha256": "73be4bf88a5442d5aa8bb6c0cfb8d8d62adb3eb0056e87cbf078a1ddc41d42cb",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-09/civet.binding.json",
+              "sha256": "cf1773d7c2c77fc81595eaf4c12643a0bb69d0d0256f0c4245a5198aae343112",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-08/civet.binding.json",
+              "sha256": "475b162b6698292c1362ef11d45067b40abafbe38a5ba5790201fb3d6677db6d",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-06/civet.binding.json",
+              "sha256": "d6b97d79bbc18c734227c98156366840789c812b72813d0b84e96c360c9ea4a2",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-01/civet.binding.json",
+              "sha256": "6aac4102f104dd1fd9dee56c5b9257c3654ceae7f66cc1d743fe9ef7f9e42b33",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-04/civet.binding.json",
+              "sha256": "3e8da15a31b22bc674b569121b34356fa95e35bc30c4bbe32b1476bda3186b9c",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-02/civet.binding.json",
+              "sha256": "e1cd4d966162cdd8cb7456427ab7ecbc4c2f2d64aeecc16353e932a2aa8d551f",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-03/civet.binding.json",
+              "sha256": "eeb5644dfa2c78e39dcdba83cf9f7d46d12a29fd918f685575dbf7159f37b615",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-05/civet.binding.json",
+              "sha256": "242181675a3ec6282643166f292580a1da68cfa00710b0d1257908be9b611a57",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/civet.binding.json",
+              "sha256": "f6d8676b04f4407a477468ab6ab8022017b910d4a7db33032d92f5193a5eba7d",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-05/civet.binding.json",
+              "sha256": "3e8da15a31b22bc674b569121b34356fa95e35bc30c4bbe32b1476bda3186b9c",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_PARTS_ATLAS_20260913/civet/binding.json",
+              "sha256": "37dc1e16ffdf576060e98c136ab437249c71ad5fd0692ee320bd974f44778e9d",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-06/civet.binding.json",
+              "sha256": "7184c4063d1643b217a0df02bdd6180ec3c91fa050caf721a23f1107fe700791",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-01/civet.binding.json",
+              "sha256": "21de5a3a0e5f94384906e0b9fa0f2b20878255b073dfa3753d3fe23f14b673e2",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_PARTS_ATLAS_20260913/civet-v2/binding.json",
+              "sha256": "f0d4e39334f74f8f9f6dccc67b84bcc5a01a305572152183e135d4e51e8e4d92",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_BOUNDED_REPAIR_20260913/candidate-01/civet-patched/binding.json",
+              "sha256": "c5dd249b52742c12f84bc52f8131e6ef81b199a81ed5ac7e4ecef456a0375a50",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/binding.json",
+              "sha256": "d8e0035d35d3cdaf853da64de308bee06819ef92b43fd9985ac2b54756538909",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/binding.json",
+              "sha256": "9cacbaca6cab18e3fde0d1ecb42ea899e6c352df19a551324808ede34dbf11f1",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json",
+              "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_BAND_UNDERLAPS_20260913/civet/binding.json",
+              "sha256": "b07cfed3a125a3476a88b5062601a95fa914bce2464c52d3ab4c663fa223f3bb",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/record.json",
+          "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8",
+          "template": "quadruped",
+          "coverage": null,
+          "bindings": [
+            {
+              "file": "audits/C2_PAIR_BANDS_20260913/civet/binding.json",
+              "sha256": "73be4bf88a5442d5aa8bb6c0cfb8d8d62adb3eb0056e87cbf078a1ddc41d42cb",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-04/civet.binding.json",
+              "sha256": "311a80ae3e6cdb8c75df29420d1771668509aa9bd008dc6132a42a4c451d7956",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-03/civet.binding.json",
+              "sha256": "861edc0be9b9febafd789c78c1e8709b97f874070b775805891d0ef5c968593c",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/civet.binding.json",
+              "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/civet.binding.json",
+              "sha256": "8e797ff823d009fd82ab359b89537dfc1d1b7838f320f02661b12854ef739887",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_PARTS_ATLAS_20260913/civet-patched/binding.json",
+              "sha256": "38f7297740460a59d9714f6e425a4a5c0785f6dfc2d6dcfee1084bd3cb34fe1b",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-07/civet.binding.json",
+              "sha256": "b558f4e551835c604503d54bffa757fb87366d22a736f2162fc88708e57334dd",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/civet-ink/binding.json",
+              "sha256": "73be4bf88a5442d5aa8bb6c0cfb8d8d62adb3eb0056e87cbf078a1ddc41d42cb",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-09/civet.binding.json",
+              "sha256": "cf1773d7c2c77fc81595eaf4c12643a0bb69d0d0256f0c4245a5198aae343112",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-08/civet.binding.json",
+              "sha256": "475b162b6698292c1362ef11d45067b40abafbe38a5ba5790201fb3d6677db6d",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-06/civet.binding.json",
+              "sha256": "d6b97d79bbc18c734227c98156366840789c812b72813d0b84e96c360c9ea4a2",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-01/civet.binding.json",
+              "sha256": "6aac4102f104dd1fd9dee56c5b9257c3654ceae7f66cc1d743fe9ef7f9e42b33",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-04/civet.binding.json",
+              "sha256": "3e8da15a31b22bc674b569121b34356fa95e35bc30c4bbe32b1476bda3186b9c",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-02/civet.binding.json",
+              "sha256": "e1cd4d966162cdd8cb7456427ab7ecbc4c2f2d64aeecc16353e932a2aa8d551f",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-03/civet.binding.json",
+              "sha256": "eeb5644dfa2c78e39dcdba83cf9f7d46d12a29fd918f685575dbf7159f37b615",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-05/civet.binding.json",
+              "sha256": "242181675a3ec6282643166f292580a1da68cfa00710b0d1257908be9b611a57",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/civet.binding.json",
+              "sha256": "f6d8676b04f4407a477468ab6ab8022017b910d4a7db33032d92f5193a5eba7d",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-05/civet.binding.json",
+              "sha256": "3e8da15a31b22bc674b569121b34356fa95e35bc30c4bbe32b1476bda3186b9c",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_PARTS_ATLAS_20260913/civet/binding.json",
+              "sha256": "37dc1e16ffdf576060e98c136ab437249c71ad5fd0692ee320bd974f44778e9d",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-06/civet.binding.json",
+              "sha256": "7184c4063d1643b217a0df02bdd6180ec3c91fa050caf721a23f1107fe700791",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-01/civet.binding.json",
+              "sha256": "21de5a3a0e5f94384906e0b9fa0f2b20878255b073dfa3753d3fe23f14b673e2",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_PARTS_ATLAS_20260913/civet-v2/binding.json",
+              "sha256": "f0d4e39334f74f8f9f6dccc67b84bcc5a01a305572152183e135d4e51e8e4d92",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_BOUNDED_REPAIR_20260913/candidate-01/civet-patched/binding.json",
+              "sha256": "c5dd249b52742c12f84bc52f8131e6ef81b199a81ed5ac7e4ecef456a0375a50",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/binding.json",
+              "sha256": "d8e0035d35d3cdaf853da64de308bee06819ef92b43fd9985ac2b54756538909",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/civet-input/binding.json",
+              "sha256": "9cacbaca6cab18e3fde0d1ecb42ea899e6c352df19a551324808ede34dbf11f1",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json",
+              "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_BAND_UNDERLAPS_20260913/civet/binding.json",
+              "sha256": "b07cfed3a125a3476a88b5062601a95fa914bce2464c52d3ab4c663fa223f3bb",
+              "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+              "hasPaintSkin": false
+            }
+          ],
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/cranberry.png",
+      "sha256": "88f6f2a92524207a494e21564e54fa3916e15ca3aa1ff7885327a008bbf34732",
+      "fits": [
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/cranberry-02/record.json",
+          "sha256": "c402cb5c2e3e19245bf033511e7ce35f30cfa280609cdec65d77c69845474dff",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-03/parts/binding.json",
+              "sha256": "a76bab58e626a87cff2f0ceba772db196b9c4b890ca546b3a3af9bc1e3f65186",
+              "recordRecipeHash": "2166c1a8414f6eb867074f483bf1cf3b65fc78484e386d7536678051ef872ef4",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-03/binding.json",
+              "sha256": "c81cf5edb31a5b292474d76e842afbf23e10ee53c8d978528559d5effc794810",
+              "recordRecipeHash": "2166c1a8414f6eb867074f483bf1cf3b65fc78484e386d7536678051ef872ef4",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/cranberry-05/record.json",
+          "sha256": "de9fe33ace3c92fdb43dcd9a91d10a4bbd60e84d8eb78f8974abd92813b3a164",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-06/parts/binding.json",
+              "sha256": "0c0833ef5571ff32336595822ab7457b87d59aa61c8d219d235d555d6394d939",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-06/binding.json",
+              "sha256": "bfc1cfbdd887cdeff92271133d9af34fe5e47408969f3e6ab932e3a898b5b230",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-05/parts/binding.json",
+              "sha256": "0c0833ef5571ff32336595822ab7457b87d59aa61c8d219d235d555d6394d939",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-05/binding.json",
+              "sha256": "779536b906580bfd657a286bfb85c5fc4611ae01c9f483694a1a1f388011d7c2",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-04/parts/binding.json",
+              "sha256": "0c0833ef5571ff32336595822ab7457b87d59aa61c8d219d235d555d6394d939",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-04/binding.json",
+              "sha256": "98b4601dd99dad66e2b286d0a8caca751d1e87e8a1ee280953324c930cfb775e",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/cranberry-06/record.json",
+          "sha256": "de9fe33ace3c92fdb43dcd9a91d10a4bbd60e84d8eb78f8974abd92813b3a164",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-06/parts/binding.json",
+              "sha256": "0c0833ef5571ff32336595822ab7457b87d59aa61c8d219d235d555d6394d939",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-06/binding.json",
+              "sha256": "bfc1cfbdd887cdeff92271133d9af34fe5e47408969f3e6ab932e3a898b5b230",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-05/parts/binding.json",
+              "sha256": "0c0833ef5571ff32336595822ab7457b87d59aa61c8d219d235d555d6394d939",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-05/binding.json",
+              "sha256": "779536b906580bfd657a286bfb85c5fc4611ae01c9f483694a1a1f388011d7c2",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-04/parts/binding.json",
+              "sha256": "0c0833ef5571ff32336595822ab7457b87d59aa61c8d219d235d555d6394d939",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-04/binding.json",
+              "sha256": "98b4601dd99dad66e2b286d0a8caca751d1e87e8a1ee280953324c930cfb775e",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/cranberry-04/record.json",
+          "sha256": "de9fe33ace3c92fdb43dcd9a91d10a4bbd60e84d8eb78f8974abd92813b3a164",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-06/parts/binding.json",
+              "sha256": "0c0833ef5571ff32336595822ab7457b87d59aa61c8d219d235d555d6394d939",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-06/binding.json",
+              "sha256": "bfc1cfbdd887cdeff92271133d9af34fe5e47408969f3e6ab932e3a898b5b230",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-05/parts/binding.json",
+              "sha256": "0c0833ef5571ff32336595822ab7457b87d59aa61c8d219d235d555d6394d939",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-05/binding.json",
+              "sha256": "779536b906580bfd657a286bfb85c5fc4611ae01c9f483694a1a1f388011d7c2",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-04/parts/binding.json",
+              "sha256": "0c0833ef5571ff32336595822ab7457b87d59aa61c8d219d235d555d6394d939",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-04/binding.json",
+              "sha256": "98b4601dd99dad66e2b286d0a8caca751d1e87e8a1ee280953324c930cfb775e",
+              "recordRecipeHash": "3b5eb750be573687669d2b799c129e6ff9754a4aac5a6716dacafbea3f44f2f3",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/cranberry-07/record.json",
+          "sha256": "967f5f33289a14777853b1e6b4947c89089088d56a0f2586bcce541b946202c3",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-07/parts/binding.json",
+              "sha256": "70b7209bf71342667d414ad9994cdd04288e7ed4756f8aa5cf7389d5eeb6a9da",
+              "recordRecipeHash": "5ea4e622886089ac81f8140f2509c80f607743d0a8c29b7ddf599091368c350a",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-07/binding.json",
+              "sha256": "1404356d7cb59a7d47812482551ba56582ec3f2abfaa5fbba3a33af620109f2b",
+              "recordRecipeHash": "5ea4e622886089ac81f8140f2509c80f607743d0a8c29b7ddf599091368c350a",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/cranberry-03/record.json",
+          "sha256": "c402cb5c2e3e19245bf033511e7ce35f30cfa280609cdec65d77c69845474dff",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-03/parts/binding.json",
+              "sha256": "a76bab58e626a87cff2f0ceba772db196b9c4b890ca546b3a3af9bc1e3f65186",
+              "recordRecipeHash": "2166c1a8414f6eb867074f483bf1cf3b65fc78484e386d7536678051ef872ef4",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/cranberry-03/binding.json",
+              "sha256": "c81cf5edb31a5b292474d76e842afbf23e10ee53c8d978528559d5effc794810",
+              "recordRecipeHash": "2166c1a8414f6eb867074f483bf1cf3b65fc78484e386d7536678051ef872ef4",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/devils-club.png",
+      "sha256": "bfcb0b735475403d4c49bcdcc7893d0f3c98a704f5f9e5394df70cdee99b37db",
+      "fits": [
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/devils-club-02/record.json",
+          "sha256": "53beb6901f8bcf97c93df0c4590c02c4dbe1e54283ed07f2540f49ab401d7d62",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-02/parts/binding.json",
+              "sha256": "395d13c9e6ebf05bdf88ce39b1216322eed3ee6c05f2a07fdd19e0122ad6fb05",
+              "recordRecipeHash": "461916d2887a4abc2f477adf7b3a85fe53ae382143c7f302c186270c1f84cf26",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-02/binding.json",
+              "sha256": "d2cf3a0980650dc853f3183e125ea280df63e08706a8daaf163f84bdfad27bde",
+              "recordRecipeHash": "461916d2887a4abc2f477adf7b3a85fe53ae382143c7f302c186270c1f84cf26",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/devils-club-05/record.json",
+          "sha256": "ad5d507478eac71228f3178f8c8f01ddcad197c809f1e29b20e8f2702a1e92d9",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-06/parts/binding.json",
+              "sha256": "b77e0214e930b1de3e90106ce74ecebc9784ccb1127a4c2a58cea2738c8d0653",
+              "recordRecipeHash": "039ff438014a6210c2d9fb4c92ca2847ccd69626e3c0a0af9bde6d32af41d3e6",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-06/binding.json",
+              "sha256": "073407f20e7ac40a73d11bd33e8d9337ffcf4ae87113768af5426c380161b5f2",
+              "recordRecipeHash": "039ff438014a6210c2d9fb4c92ca2847ccd69626e3c0a0af9bde6d32af41d3e6",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/devils-club-06/record.json",
+          "sha256": "ad5d507478eac71228f3178f8c8f01ddcad197c809f1e29b20e8f2702a1e92d9",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-06/parts/binding.json",
+              "sha256": "b77e0214e930b1de3e90106ce74ecebc9784ccb1127a4c2a58cea2738c8d0653",
+              "recordRecipeHash": "039ff438014a6210c2d9fb4c92ca2847ccd69626e3c0a0af9bde6d32af41d3e6",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-06/binding.json",
+              "sha256": "073407f20e7ac40a73d11bd33e8d9337ffcf4ae87113768af5426c380161b5f2",
+              "recordRecipeHash": "039ff438014a6210c2d9fb4c92ca2847ccd69626e3c0a0af9bde6d32af41d3e6",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/devils-club-04/record.json",
+          "sha256": "4dfcb982fbf51a8b0217a8f18dd219f222923b65d2b715f51e4df14960af13e9",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-03/parts/binding.json",
+              "sha256": "c14bfc1f17613243a149ef2cc8c7c2df126b848314491c9ba4d8106d6ef2c04f",
+              "recordRecipeHash": "90efb1ae235b37d8ca4562e42511b1fe3aeec49f5a336e7d0b5a2e496438113b",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-03/binding.json",
+              "sha256": "c3a46af32a0678eba36b5529ff43e032ed28dccff04a13d26b5d7a230439fbc6",
+              "recordRecipeHash": "90efb1ae235b37d8ca4562e42511b1fe3aeec49f5a336e7d0b5a2e496438113b",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-04/parts/binding.json",
+              "sha256": "c14bfc1f17613243a149ef2cc8c7c2df126b848314491c9ba4d8106d6ef2c04f",
+              "recordRecipeHash": "90efb1ae235b37d8ca4562e42511b1fe3aeec49f5a336e7d0b5a2e496438113b",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-04/binding.json",
+              "sha256": "abe6c5b805135cd4cdc0e621726350b800ba114778319ab49b8d9139e8299bbf",
+              "recordRecipeHash": "90efb1ae235b37d8ca4562e42511b1fe3aeec49f5a336e7d0b5a2e496438113b",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/devils-club-01/record.json",
+          "sha256": "53beb6901f8bcf97c93df0c4590c02c4dbe1e54283ed07f2540f49ab401d7d62",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-02/parts/binding.json",
+              "sha256": "395d13c9e6ebf05bdf88ce39b1216322eed3ee6c05f2a07fdd19e0122ad6fb05",
+              "recordRecipeHash": "461916d2887a4abc2f477adf7b3a85fe53ae382143c7f302c186270c1f84cf26",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-02/binding.json",
+              "sha256": "d2cf3a0980650dc853f3183e125ea280df63e08706a8daaf163f84bdfad27bde",
+              "recordRecipeHash": "461916d2887a4abc2f477adf7b3a85fe53ae382143c7f302c186270c1f84cf26",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/devils-club-03/record.json",
+          "sha256": "4dfcb982fbf51a8b0217a8f18dd219f222923b65d2b715f51e4df14960af13e9",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-03/parts/binding.json",
+              "sha256": "c14bfc1f17613243a149ef2cc8c7c2df126b848314491c9ba4d8106d6ef2c04f",
+              "recordRecipeHash": "90efb1ae235b37d8ca4562e42511b1fe3aeec49f5a336e7d0b5a2e496438113b",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-03/binding.json",
+              "sha256": "c3a46af32a0678eba36b5529ff43e032ed28dccff04a13d26b5d7a230439fbc6",
+              "recordRecipeHash": "90efb1ae235b37d8ca4562e42511b1fe3aeec49f5a336e7d0b5a2e496438113b",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-04/parts/binding.json",
+              "sha256": "c14bfc1f17613243a149ef2cc8c7c2df126b848314491c9ba4d8106d6ef2c04f",
+              "recordRecipeHash": "90efb1ae235b37d8ca4562e42511b1fe3aeec49f5a336e7d0b5a2e496438113b",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/devils-club-04/binding.json",
+              "sha256": "abe6c5b805135cd4cdc0e621726350b800ba114778319ab49b8d9139e8299bbf",
+              "recordRecipeHash": "90efb1ae235b37d8ca4562e42511b1fe3aeec49f5a336e7d0b5a2e496438113b",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-bird.png",
+      "sha256": "1e538078a1d64ee605122a8bb0c1fe7f0e26bfac9a34508d85ab4daf1112aef6",
+      "fits": [
+        {
+          "record": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/bird-01/record.json",
+          "sha256": "ae99e8ec381e87495c7110bac66ec2640691b6916508bc6916af493ede4d1411",
+          "template": "biped-bird",
+          "coverage": {
+            "scope": "painted bird family reference, folded wings",
+            "occluded": [
+              "far wing; anatomy exists but has no independent painted pixels"
+            ],
+            "unproven": [
+              "open wing or flight",
+              "ground contact solver",
+              "named species identity",
+              "battle staging"
+            ]
+          },
+          "bindings": [],
+          "bindingExists": false
+        },
+        {
+          "record": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/bird-02/record.json",
+          "sha256": "17959540cd145a056293824607f91909418bfd606fd46d1267ba8315a45a6c4f",
+          "template": "biped-bird",
+          "coverage": {
+            "scope": "painted bird family reference, folded wings",
+            "occluded": [
+              "far wing; anatomy exists but has no independent painted pixels"
+            ],
+            "unproven": [
+              "open wing or flight",
+              "ground contact solver",
+              "named species identity",
+              "battle staging"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/bird-02/binding.json",
+              "sha256": "93c85c781d9899efd9636851cbeb9f2df21d66b791c19b30aa7079a271b603f8",
+              "recordRecipeHash": "14e9b9c4a4f7a708e2fc63f1665641d6e1c3730c6f0cdc9c334c11da7fb73c1e",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/bird-02/parts/binding.json",
+              "sha256": "d052311d87d1a8ec53235d9fcf97848682903424e28a48655f63083039720034",
+              "recordRecipeHash": "14e9b9c4a4f7a708e2fc63f1665641d6e1c3730c6f0cdc9c334c11da7fb73c1e",
+              "hasPaintSkin": false
+            }
+          ],
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-fish.png",
+      "sha256": "1997f036417384af559f5127b9eb98d4871a9cae5cec57cffa645b857a3adc22",
+      "fits": [
+        {
+          "record": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-03/record.json",
+          "sha256": "abc3ba0a9ef4fe7cded9f74c71164a3e4d6dc50cc2cebfb7d0e0145125e6786d",
+          "template": "fish",
+          "coverage": {
+            "scope": "painted fish family reference, not a named Earth species",
+            "retainedBodyAttached": [
+              "pelvic fins",
+              "anal fin",
+              "adipose fin"
+            ],
+            "unproven": [
+              "independent accessory fin articulation",
+              "out-of-plane swimming",
+              "battle staging"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-03/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-03/binding.json",
+              "sha256": "bb219be5105933a152a4d2c977fd53d0695a6f914f3d69192541b90f088ef8f1",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-04/binding.json",
+              "sha256": "2ac4559af530c7ba1cff18921a27ef70ea9347ca2f19779443238898bc2b0edb",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-04/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-01/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-01/binding.json",
+              "sha256": "a636b2884f6b9edf53702ceee8646d35f2ed1bf57a62ffb6447a8549ce33fedc",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-02/binding.json",
+              "sha256": "ae0b68f5c17c57eb17b7432faa23be024989f670ca884abe3755659d633aad5f",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-02/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-04/record.json",
+          "sha256": "abc3ba0a9ef4fe7cded9f74c71164a3e4d6dc50cc2cebfb7d0e0145125e6786d",
+          "template": "fish",
+          "coverage": {
+            "scope": "painted fish family reference, not a named Earth species",
+            "retainedBodyAttached": [
+              "pelvic fins",
+              "anal fin",
+              "adipose fin"
+            ],
+            "unproven": [
+              "independent accessory fin articulation",
+              "out-of-plane swimming",
+              "battle staging"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-03/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-03/binding.json",
+              "sha256": "bb219be5105933a152a4d2c977fd53d0695a6f914f3d69192541b90f088ef8f1",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-04/binding.json",
+              "sha256": "2ac4559af530c7ba1cff18921a27ef70ea9347ca2f19779443238898bc2b0edb",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-04/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-01/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-01/binding.json",
+              "sha256": "a636b2884f6b9edf53702ceee8646d35f2ed1bf57a62ffb6447a8549ce33fedc",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-02/binding.json",
+              "sha256": "ae0b68f5c17c57eb17b7432faa23be024989f670ca884abe3755659d633aad5f",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-02/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-02/record.json",
+          "sha256": "abc3ba0a9ef4fe7cded9f74c71164a3e4d6dc50cc2cebfb7d0e0145125e6786d",
+          "template": "fish",
+          "coverage": {
+            "scope": "painted fish family reference, not a named Earth species",
+            "retainedBodyAttached": [
+              "pelvic fins",
+              "anal fin",
+              "adipose fin"
+            ],
+            "unproven": [
+              "independent accessory fin articulation",
+              "out-of-plane swimming",
+              "battle staging"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-03/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-03/binding.json",
+              "sha256": "bb219be5105933a152a4d2c977fd53d0695a6f914f3d69192541b90f088ef8f1",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-04/binding.json",
+              "sha256": "2ac4559af530c7ba1cff18921a27ef70ea9347ca2f19779443238898bc2b0edb",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-04/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-01/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-01/binding.json",
+              "sha256": "a636b2884f6b9edf53702ceee8646d35f2ed1bf57a62ffb6447a8549ce33fedc",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-02/binding.json",
+              "sha256": "ae0b68f5c17c57eb17b7432faa23be024989f670ca884abe3755659d633aad5f",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-02/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-01/record.json",
+          "sha256": "abc3ba0a9ef4fe7cded9f74c71164a3e4d6dc50cc2cebfb7d0e0145125e6786d",
+          "template": "fish",
+          "coverage": {
+            "scope": "painted fish family reference, not a named Earth species",
+            "retainedBodyAttached": [
+              "pelvic fins",
+              "anal fin",
+              "adipose fin"
+            ],
+            "unproven": [
+              "independent accessory fin articulation",
+              "out-of-plane swimming",
+              "battle staging"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-03/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-03/binding.json",
+              "sha256": "bb219be5105933a152a4d2c977fd53d0695a6f914f3d69192541b90f088ef8f1",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-04/binding.json",
+              "sha256": "2ac4559af530c7ba1cff18921a27ef70ea9347ca2f19779443238898bc2b0edb",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-04/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-01/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-01/binding.json",
+              "sha256": "a636b2884f6b9edf53702ceee8646d35f2ed1bf57a62ffb6447a8549ce33fedc",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-02/binding.json",
+              "sha256": "ae0b68f5c17c57eb17b7432faa23be024989f670ca884abe3755659d633aad5f",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/FAMILY_REAL_CREATURE_REVIEW_20260916/fish-02/parts/binding.json",
+              "sha256": "f42a058a9d8b702d7aba839db678327b2c3a538704d432b6592a3df7847853af",
+              "recordRecipeHash": "4db441a43bca1700c565d253d9cd40d367dafde79ac02863b61818fbcc4d4c02",
+              "hasPaintSkin": false
+            }
+          ],
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-insect.png",
+      "sha256": "5cf63ca2f7465212bc1f770babe650bd390986c7dc16a841179c326a31a74168",
+      "fits": [
+        {
+          "record": "audits/PAINTED_FITS_AND_58_20260916/beetle-01/record.json",
+          "sha256": "f7df9b4acca0a405326ca6eb5f1d0684a438d5774c6354588dea28fdffab4441",
+          "template": "insect",
+          "coverage": {
+            "occluded": [
+              "hindFar walking leg: body-covered; no separate visible surface",
+              "flight wings: folded beneath elytra; not anatomically absent"
+            ],
+            "unproven": [
+              "open-wing flight requires an additional painted view",
+              "hidden limb emergence",
+              "out-of-plane views",
+              "full motion and visual fit"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/PAINTED_FITS_AND_58_20260916/beetle-01/parts/binding.json",
+              "sha256": "188c418f3e96214fbc3eb460cde8ac791b3903e51bf9aeedb8a0d3acd785c026",
+              "recordRecipeHash": "b83417bd32df6a3ddc708e07620d5055ce08a483633dd6c86b954794b86942b8",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/PAINTED_FITS_AND_58_20260916/beetle-01/binding.json",
+              "sha256": "a8a551d9f2bc350cb5ce47c4c14707bd3e411408ad3c6b4dbe33937aef99f384",
+              "recordRecipeHash": "b83417bd32df6a3ddc708e07620d5055ce08a483633dd6c86b954794b86942b8",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-mammal-quadruped.png",
+      "sha256": "15a3c9d7ee511360ed846a3fe1406c4fde124d99191c7f098538937ff164fdf3",
+      "fits": [
+        {
+          "record": "audits/CIVET_2D_PROOF_20260912/fox.landmarks.json",
+          "sha256": "8d21a249436eefb27ccfe01ec2565c57fe35ac3ab2379abc5dc9b336ea7674a7",
+          "template": "quadruped",
+          "coverage": null,
+          "bindings": [
+            {
+              "file": "audits/C2_PARTS_ATLAS_20260913/fox/binding.json",
+              "sha256": "974fb12d0d251b2f04d62bbd06953ce24db5bd8e102a3746de910abebcbb2157",
+              "recordRecipeHash": "041b75fe872b5500a3cb1da08ce2a8a37e2193b66354fe6ce2f4cb848719d84b",
+              "hasPaintSkin": false
+            }
+          ],
+          "bindingExists": false
+        },
+        {
+          "record": "audits/C2_BOUNDED_REPAIR_20260913/candidate-01/fox.landmarks.json",
+          "sha256": "8155226f9a6653e56d4a3d54ffef748ea561cf982c8da3e340044d48b6d2b2fe",
+          "template": "quadruped",
+          "coverage": null,
+          "bindings": [
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-04/fox.binding.json",
+              "sha256": "082a9b627480a9d2349db4e2c50ddf60cfb24311231c52da9eee3f7489df6e1e",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-03/fox.binding.json",
+              "sha256": "cb9137f860a1bb8242612eff31c73d19f9f1baa0e46f69aac64fe18762672042",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-10/fox.binding.json",
+              "sha256": "b0ff5260682c3d8d0a9e156dd363b6f13673fe8bb3b8b007f91cb4b255d37898",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/fox.binding.json",
+              "sha256": "53fa42746f79b610a710b082c5edb31941a0518ce3490216387d4a41cf2a2688",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-07/fox.binding.json",
+              "sha256": "222771a23d4fc506e9d9f55e32ebea23c1ee44f6595b0bfb7928d1347b4d992f",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-09/fox.binding.json",
+              "sha256": "365279969f099c47587305465229006e660b3e07ec64b9d8a5a05eb3c4fc69f1",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-08/fox.binding.json",
+              "sha256": "c24ed03fb15ae287df4772ddb34bf644a3de2d2c6aa9b342152f9f73b400c431",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-06/fox.binding.json",
+              "sha256": "478fe0396a58f3181bcce8e72f351a1cf799a0e1d8b5087d54445f3e5f53fb5c",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-01/fox.binding.json",
+              "sha256": "c247eb995fccfe4a552317d50a008a62042df17711af49c815770ecc8aac956d",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-02/fox-ink/binding.json",
+              "sha256": "ba7153d2f7b5429dbad4e053370fc645d074f6654b4c4bc5e9f6efb908305191",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-04/fox.binding.json",
+              "sha256": "54f7eef7e2b1090d2452c1a288fc16c0b0cffefe6da59b702ad65867baa88ced",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-02/fox.binding.json",
+              "sha256": "bc0b3f19232ef385363165030c18f9d43d5d08c393454e4bdb81bbb6a0f77618",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-03/fox.binding.json",
+              "sha256": "509f88b209426a2da549ff854769a5f4ef17ecfeb84473816d069a77cabb1981",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-05/fox.binding.json",
+              "sha256": "1b79081f5382193ea9943498760a16540de9b23137e6e8dff453540f6a7855b9",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-07/fox.binding.json",
+              "sha256": "e9088716506f3eab28f119920bc6bebdbf2e61717a900cf9603af3e9dddf12b1",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_CONTINUOUS_SKIN_20260916/candidate-05/fox.binding.json",
+              "sha256": "54f7eef7e2b1090d2452c1a288fc16c0b0cffefe6da59b702ad65867baa88ced",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-06/fox.binding.json",
+              "sha256": "f0d0d609b36683e5969f66da8ede806f8091b78dd589e5ceffb7efd9f0f1a21b",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_DEFORMING_SEAMS_20260914/candidate-01/fox.binding.json",
+              "sha256": "65ff58c60d4b96984e2b8dfd5922dfd8f1f4fc67b68b51c1b66620a13901f05c",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/C2_BOUNDED_REPAIR_20260913/candidate-01/fox/binding.json",
+              "sha256": "b288adc296f737496e84a5f52f05a7e4e67a096c649da27b2d2e7f0a65378440",
+              "recordRecipeHash": "5e56653d37dcf18cd302aaafcfe586e53e27845383265200e4e83f332ba1c2fb",
+              "hasPaintSkin": false
+            }
+          ],
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/family-reptile.png",
+      "sha256": "897a091b1eb8c5f74cb6f312a38e77de58a769bec876d62df4520c93f56ac7f6",
+      "fits": [
+        {
+          "record": "audits/PAINTED_FITS_AND_58_20260916/skink-01/record.json",
+          "sha256": "6fd8003ba7f6fe775e284da06052e528134d8e01d10a2f2b1e19170dceaa95d6",
+          "template": "quadruped",
+          "coverage": {
+            "occluded": [
+              "hindFar: body-covered; fitted kinematic chain has no separate visible surface"
+            ],
+            "unproven": [
+              "out-of-plane views",
+              "hidden limb emergence",
+              "planted-paw contact",
+              "full motion and visual fit"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/PAINTED_FITS_AND_58_20260916/skink-01/parts/binding.json",
+              "sha256": "39d79c430ac4513a7ebb6db4c2a6d9ef2f02b00107a17439a8586aee65314fa9",
+              "recordRecipeHash": "45a8311b5c4c54ac2e4d619ed6fb61460d8aed603cf3298259bd7277db79c4d0",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/PAINTED_FITS_AND_58_20260916/skink-01/binding.json",
+              "sha256": "b2223d43246adccbe1034679ad6f20a47fd597864762f9eac5e2af63f6e6e638",
+              "recordRecipeHash": "45a8311b5c4c54ac2e4d619ed6fb61460d8aed603cf3298259bd7277db79c4d0",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/frog.png",
+      "sha256": "fb229a4a7bd86507af68da9561a5e31282d594da27901d7f30ddc11cd3c84779",
+      "fits": [
+        {
+          "record": "audits/HABITAT_BATTLE_20260916/frog-04/record.json",
+          "sha256": "1bb009685a3bb67081858d0e35b0402cad510317a4dfaec02cf0c69335a658fd",
+          "template": "hopper",
+          "coverage": null,
+          "bindings": [
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-04/parts/binding.json",
+              "sha256": "da34b9f0a7c38419dcc09deeaf66cd11461cc0d3f7d23a57ea81d9dccdf5a462",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-04/binding.json",
+              "sha256": "3140c76a36f06a5d6f25988208862be8aadf45a88ce4d9a0b58cddde6a7738a8",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-03/parts/binding.json",
+              "sha256": "da34b9f0a7c38419dcc09deeaf66cd11461cc0d3f7d23a57ea81d9dccdf5a462",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-03/binding.json",
+              "sha256": "14617397759a37cd7589960debc0eb7aa11bc7103b492d169461cb85d50f997b",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-05/parts/binding.json",
+              "sha256": "da34b9f0a7c38419dcc09deeaf66cd11461cc0d3f7d23a57ea81d9dccdf5a462",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-05/binding.json",
+              "sha256": "4a0830ebeec468399169c08113a66fa40e43b9117a56d5b142918c5e92342720",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/HABITAT_BATTLE_20260916/frog-03/record.json",
+          "sha256": "1bb009685a3bb67081858d0e35b0402cad510317a4dfaec02cf0c69335a658fd",
+          "template": "hopper",
+          "coverage": null,
+          "bindings": [
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-04/parts/binding.json",
+              "sha256": "da34b9f0a7c38419dcc09deeaf66cd11461cc0d3f7d23a57ea81d9dccdf5a462",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-04/binding.json",
+              "sha256": "3140c76a36f06a5d6f25988208862be8aadf45a88ce4d9a0b58cddde6a7738a8",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-03/parts/binding.json",
+              "sha256": "da34b9f0a7c38419dcc09deeaf66cd11461cc0d3f7d23a57ea81d9dccdf5a462",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-03/binding.json",
+              "sha256": "14617397759a37cd7589960debc0eb7aa11bc7103b492d169461cb85d50f997b",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-05/parts/binding.json",
+              "sha256": "da34b9f0a7c38419dcc09deeaf66cd11461cc0d3f7d23a57ea81d9dccdf5a462",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-05/binding.json",
+              "sha256": "4a0830ebeec468399169c08113a66fa40e43b9117a56d5b142918c5e92342720",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/HABITAT_BATTLE_20260916/frog-02/record.json",
+          "sha256": "41b066417e25c3d2e959767a4b184a0a984a277e5868870169b34b0a81be16f3",
+          "template": "hopper",
+          "coverage": null,
+          "bindings": [],
+          "bindingExists": false
+        },
+        {
+          "record": "audits/HABITAT_BATTLE_20260916/frog-05/record.json",
+          "sha256": "1bb009685a3bb67081858d0e35b0402cad510317a4dfaec02cf0c69335a658fd",
+          "template": "hopper",
+          "coverage": null,
+          "bindings": [
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-04/parts/binding.json",
+              "sha256": "da34b9f0a7c38419dcc09deeaf66cd11461cc0d3f7d23a57ea81d9dccdf5a462",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-04/binding.json",
+              "sha256": "3140c76a36f06a5d6f25988208862be8aadf45a88ce4d9a0b58cddde6a7738a8",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-03/parts/binding.json",
+              "sha256": "da34b9f0a7c38419dcc09deeaf66cd11461cc0d3f7d23a57ea81d9dccdf5a462",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-03/binding.json",
+              "sha256": "14617397759a37cd7589960debc0eb7aa11bc7103b492d169461cb85d50f997b",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-05/parts/binding.json",
+              "sha256": "da34b9f0a7c38419dcc09deeaf66cd11461cc0d3f7d23a57ea81d9dccdf5a462",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/HABITAT_BATTLE_20260916/frog-05/binding.json",
+              "sha256": "4a0830ebeec468399169c08113a66fa40e43b9117a56d5b142918c5e92342720",
+              "recordRecipeHash": "b687f5593d0e2e50d5180ce70606076f11fc38b344e1c8324b60862695210e60",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/persimmon.png",
+      "sha256": "bccad6827ad3a84974e958c2833c5fc8b9116802a7e4af4eac3fa73eb2f502d3",
+      "fits": [
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/persimmon-02/record.json",
+          "sha256": "ce2ca53f5ee38d1a0ade8c740d5d64b879ed649c6218fa3eeb69c6a6d71d0c84",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/persimmon-02/parts/binding.json",
+              "sha256": "df99618024987a2b0c19cfff698d283702773e66b9cb54442fa0a47658d5f740",
+              "recordRecipeHash": "e02c65ad16376a5f7fcfad3773915a2455e488f2df3dbfda4e9284112d9f1db7",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/persimmon-02/binding.json",
+              "sha256": "c398e2a52f05d71ac743a009364b095e5ab2d3f5a254b2802123cf41b01cf360",
+              "recordRecipeHash": "e02c65ad16376a5f7fcfad3773915a2455e488f2df3dbfda4e9284112d9f1db7",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/persimmon-03/parts/binding.json",
+              "sha256": "df99618024987a2b0c19cfff698d283702773e66b9cb54442fa0a47658d5f740",
+              "recordRecipeHash": "e02c65ad16376a5f7fcfad3773915a2455e488f2df3dbfda4e9284112d9f1db7",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/persimmon-03/binding.json",
+              "sha256": "e5635272b003402aa2292b917a5cfbf82822f949b75830a767f072ec0ddd32b1",
+              "recordRecipeHash": "e02c65ad16376a5f7fcfad3773915a2455e488f2df3dbfda4e9284112d9f1db7",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/persimmon-01/record.json",
+          "sha256": "7f65d298b8317036937f0126db07ed32db4717d0cbd3a0bf1786acc3ff39a3b6",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/persimmon-01/parts/binding.json",
+              "sha256": "d505d843a7502b11fc6914596a30b0641cfee0e5053c99a0e510678bdd71c9cf",
+              "recordRecipeHash": "9007678fdd43b818fa1faba45b0286fc5d74f1999230280cae7f189b19c03a20",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/persimmon-01/binding.json",
+              "sha256": "a73305b22560f60e7b924c64830f5f51eb7f8a77659cf968c5f45c1d0465df6a",
+              "recordRecipeHash": "9007678fdd43b818fa1faba45b0286fc5d74f1999230280cae7f189b19c03a20",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/persimmon-04/record.json",
+          "sha256": "a7523b8214c525af3e076a1b6f915ca13b5de499ca6b6275a95970a426337c44",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/persimmon-04/parts/binding.json",
+              "sha256": "54fce78c5a11844fc26612602f55ea78ea469b6aa0e9ca6622a66ae7420ed468",
+              "recordRecipeHash": "e07677101fe8d009ae67d29b0dd6aceae4190b3185672d23c93d7514bf6af50a",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/persimmon-04/binding.json",
+              "sha256": "98469ded21b9c98613fdc3a22cd341cffa2b2f25e0fb5dfdc36bc5d14d654871",
+              "recordRecipeHash": "e07677101fe8d009ae67d29b0dd6aceae4190b3185672d23c93d7514bf6af50a",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/ANATOMY_COMPLETION_20260917/persimmon-03/record.json",
+          "sha256": "ce2ca53f5ee38d1a0ade8c740d5d64b879ed649c6218fa3eeb69c6a6d71d0c84",
+          "template": "plant-woody",
+          "coverage": {
+            "scope": "Hash-bound visible woody branch groups; foliage clusters retain their painted leaves and fruit",
+            "unproven": [
+              "hidden/reverse surfaces",
+              "individual leaf and fruit articulation",
+              "harvest item detachment",
+              "Compendium grow scale reveal",
+              "native full action visual acceptance",
+              "physical phone budget"
+            ]
+          },
+          "bindings": [
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/persimmon-02/parts/binding.json",
+              "sha256": "df99618024987a2b0c19cfff698d283702773e66b9cb54442fa0a47658d5f740",
+              "recordRecipeHash": "e02c65ad16376a5f7fcfad3773915a2455e488f2df3dbfda4e9284112d9f1db7",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/persimmon-02/binding.json",
+              "sha256": "c398e2a52f05d71ac743a009364b095e5ab2d3f5a254b2802123cf41b01cf360",
+              "recordRecipeHash": "e02c65ad16376a5f7fcfad3773915a2455e488f2df3dbfda4e9284112d9f1db7",
+              "hasPaintSkin": true
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/persimmon-03/parts/binding.json",
+              "sha256": "df99618024987a2b0c19cfff698d283702773e66b9cb54442fa0a47658d5f740",
+              "recordRecipeHash": "e02c65ad16376a5f7fcfad3773915a2455e488f2df3dbfda4e9284112d9f1db7",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/ANATOMY_COMPLETION_20260917/persimmon-03/binding.json",
+              "sha256": "e5635272b003402aa2292b917a5cfbf82822f949b75830a767f072ec0ddd32b1",
+              "recordRecipeHash": "e02c65ad16376a5f7fcfad3773915a2455e488f2df3dbfda4e9284112d9f1db7",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    },
+    {
+      "master": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/platypus.png",
+      "sha256": "55ed1d0549f4b74d0300e1c3428ca36e07a576b4e39a9c1f357e0da188bd39f9",
+      "fits": [
+        {
+          "record": "audits/BATTLE_FACING_20260916/platypus-02/record.json",
+          "sha256": "28ad6011a6d3653449895717c319a6ed1d621197ddc3eef95cd1bf7c5ce4509a",
+          "template": "quadruped",
+          "coverage": null,
+          "bindings": [
+            {
+              "file": "audits/BATTLE_FACING_20260916/platypus-02/parts/binding.json",
+              "sha256": "5c291b3908655e6b1ad383fa39b805ecf56a873ac3158bfadfd87e4a9f5ea974",
+              "recordRecipeHash": "36c7bc36d99cab777c4f8f417f1421ad53d198fd12dc9981d86a612366142c61",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/BATTLE_FACING_20260916/platypus-02/binding.json",
+              "sha256": "a24ece2992c4e751feed2ac974078426e9788535c2b717922e79b8748d13aa89",
+              "recordRecipeHash": "36c7bc36d99cab777c4f8f417f1421ad53d198fd12dc9981d86a612366142c61",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        },
+        {
+          "record": "audits/BATTLE_FACING_20260916/platypus-01/record.json",
+          "sha256": "80d4ed1cf51dc4806d3775ea73ccdcb14fba75a55a38d26b590cfd068a557c57",
+          "template": "quadruped",
+          "coverage": null,
+          "bindings": [
+            {
+              "file": "audits/BATTLE_FACING_20260916/platypus-01/parts/binding.json",
+              "sha256": "cc1d710f82760035e9f980d9e7a6cd2b3423940e8d783f388d555f4d95d8c431",
+              "recordRecipeHash": "d5d7b4f56456fac2a262269242fec8a746e1d658faa32b691a0e22f034a06e76",
+              "hasPaintSkin": false
+            },
+            {
+              "file": "audits/BATTLE_FACING_20260916/platypus-01/binding.json",
+              "sha256": "ebbc7f12f94467da902e58bf5312e19acbb08e4434c3db5b54f7b6f96dfb56c7",
+              "recordRecipeHash": "d5d7b4f56456fac2a262269242fec8a746e1d658faa32b691a0e22f034a06e76",
+              "hasPaintSkin": true
+            }
+          ],
+          "bindingExists": true
+        }
+      ],
+      "status": "fit-artifact-exists-review-required",
+      "scope": "Input hash match only; archived or unqualified fits remain listed, never silently selected."
+    }
+  ],
+  "evidenceInputs": [
+    {
+      "path": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/census-01/report.json",
+      "sha256": "2c0f9945974112ce95a47fa44e2e2b7c9d567a2acf12171cd7fc662e01999501"
+    }
+  ],
+  "sources": [
+    {
+      "file": "port/v2/apps/game/src/missing-body-structures.ts",
+      "sha256": "418fac21bb27c42d2ff0fe9ddb4e9a2e7273b7553a1563fb8433880a7cee80de"
+    },
+    {
+      "file": "port/v2/apps/game/src/earth-fauna-profiles.ts",
+      "sha256": "42a23e16b1b39ad9a20dfe2330706bff99842efaa1cd888d12f190c447cf45a6"
+    }
+  ]
+}
