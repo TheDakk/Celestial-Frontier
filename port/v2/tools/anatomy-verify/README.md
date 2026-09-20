@@ -322,3 +322,18 @@ ridge than the carapace ridge); the near claw's arm still goes to the body where
 Next for P7: seed the body with its outline ring (P3's "body outline = boundary ring of the thick component"), so a
 rim pixel is body unless it lies on a limb's own thin cross-section (DT ≤ limb thickness at that path point).
 Nothing here is a gate; naming remains the bottleneck for both the verdict and the labels.
+Addendum (same session) — rules measured on the naming bottleneck, all kept OFF by default:
+- weak-candidate table (every loop/touch candidate vs the nearest visible foot): loops are 1 true (freshwater 38 px;
+  the vent's true rear leg0Near sits at 55 px) against 12 false, with no separating feature (len 26–74, tip body
+  distance 0.44–1.02 R on both sides); loops OFF: named 25/39 → 22/37 (the crab and mud crab lose the loop that
+  holds their Far order) — kept ON. Touch: true tips have their junction ≤ 1.12 R from the thick region, false ones
+  1.37–2.8 R (a junction on another leg's thick base); `touchBodyDistMax` 1.2 R: vent 4/8 → 5/7 but freshwater
+  5/7 → 3/6 — the false tip was holding the rear slot, and without it the empty slot slides to the claw end and every
+  name shifts by one. **The real defect is the empty-slot prior, not the candidate.**
+- even-spacing angular prior (slots evenly spaced from the body-top normal to the side's claw separation, anchors from
+  the painting itself, so no reference geometry): 0.3 neutral (25/39), 0.6 → 12/37, 1.0 → 8/31. The legs occupy only
+  the forward half of the top→claw span (crab Far separations 2.7–3.4 rad in a 1.6–3.4 span), so the prior pushes
+  every name forward. Rejected. (A sign bug in the top normal was found and fixed on the way.)
+- P7 leg seeds offset 0.15/0.3/0.5 R out of the thick region: body IoU unchanged (0.35–0.48); the body ceiling is the
+  near claw's thick ARM, which is thick-region "body" and seeds as body ridge (visible on the overlay). A claw's arm
+  must be cut from the body at the wrist (a DT valley along the thick ridge), which is a P3 question.
