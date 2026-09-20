@@ -92,3 +92,5 @@ tests pass; native six-owner parity/census and rendered-root controls next after
 R5–R7 signed c1a985b7 verified. Native six-owner source parity PASS; 1,250 census complete
 with five compiler admissions, Fiddler incomplete and48unsupported observations. Root control
 input omitted rotation; instrument-only key corrected, fresh proof02 next. No shared S2 red.
+
+R5–R7 root-proof-02 PASS on verified e750bf00. D1 read-only PNG delivery prepared; next signed native retained/fallback proof and both local phone canaries, then roster and local split.

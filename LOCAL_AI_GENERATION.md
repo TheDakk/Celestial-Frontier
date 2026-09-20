@@ -1,5 +1,7 @@
 # Local AI generation — painted landfalls
 
+> Matches D1 delivery code, 2026-09-19: `creature-delivery.ts` reads retained PNG originals by full identity and expected hash, otherwise returns the verified painter. It has no inference, worker, GPU or rig dependency. Selection of a finish is explicit; proof usage does not adopt artwork into production. Evidence: `audits/ANATOMY_SINGLE_RUN_20260919/R8/README.md`.
+
 [Seeded painted biome encounter](audits/PAINTED_BIOME_ENCOUNTER_20260916/README.md),
 matches code September 16: three painted quadrupeds now share an 18-second, three-turn
 clearing study. The encounter seed selects scenery placement and turn order over the accepted

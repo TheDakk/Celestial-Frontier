@@ -1,5 +1,7 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+D1 delivery owner (2026-09-19): `port/v2/apps/game/src/creature-delivery.ts` verifies retained PNG identity/hash or returns the verified painter without inference. Browser proof: `port/v2/tools/painted-creature/delivery-proof.mjs`; evidence R8.
+
 **R3-S — matches code September19,2026; acceptance in progress.** Shared per-template/action
 stance selects quadruped all/hind/none exactly per Nick's§13. Only selected chains enter IK;
 lifted legs preserve authored keys with the raw-clip guard. Brachyuran remains all; absent
