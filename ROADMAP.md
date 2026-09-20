@@ -17,39 +17,36 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — vision P1 next; further roster work held
+## SESSION HANDOFF — P1 generation 01 refused; roster held
 
-Nick's next direction is the read-only vision program:
-`/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/VISION_PROGRAM_20260920/PROGRAM.md`.
-Read September19/20; not copied or synced. The previous anatomy execution packet is complete
-at signed/verified a94535aa on openai/mac, then 30 commits ahead of cached origin/openai/mac:
+P1 was painted once using Claude's supplied compiled prompt verbatim, the read-only anatomy
+guide, and the prompt-required Atlas style reference. Signed evidence is in
+[audits/VISION_P1_COCONUT_20260920/README.md](audits/VISION_P1_COCONUT_20260920/README.md).
+The original PNG hash is `7954331dc3ce80bf3b4e2e3759bd0b5c576d659ff5fcb4d01b8efc536bba8890`.
+Built-in image_gen.imagegen; no exposed seed/model version; no retry or finisher.
+
+**P1 remains incomplete, with a retained anatomy finding:** six visible walking-leg tips,
+eight required. Two chains unresolved; claw pose and stance differ. Existing pixel intake
+preserves all RGBA channels. New diagnostic region masks retain visible paint exactly; they
+are not a complete joint mask set. The current family acceptor refuses incomplete landmark
+inventory. No admitted split/binding, native rows or film. No hidden anatomy invented,
+no masterIntakeAccepted or animationReady. Comparison sheet beside Civet and painter is
+retained for Nick/Claude; it is not visual acceptance. See packet for technical-output
+findings, actual refusal, tests and every blocked downstream stage.
+
+The previous anatomy run remains completed history at a94535aa:
 [audits/ANATOMY_SINGLE_RUN_20260919/README.md](audits/ANATOMY_SINGLE_RUN_20260919/README.md).
-Its 15 films,16 sheets, five retained fits and 53 refusals remain history, with all leaf diagnoses.
-R4 is complete. **Hold all further roster work until P1.**
+Its 15 films/16 sheets, five retained fits/53 refusals are not new P1 output. R4 is complete;
+**hold further roster work**. Codex R9 is canonical at a separately authorized future
+re-merge; PR42 stays parked. No P2/P3/P4 is begun.
 
-Next Codex deliverable: P1 coconut-crab master, painted from Claude's compiled prompt packet
-with the painter canvas as the anatomy guide, then admitted, rigged and natively filmed through
-the existing Civet anatomy chain. **Compiled prompt packet path has not yet been supplied.**
-Do not invent its prompt or begin painting before reading it. Before queued work, inspect the
-other lane's single-run queue read-only to avoid duplicate ownership; no sync or same-path edits.
+Authority remains the read-only vision program and compiled packet under
+`/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/VISION_PROGRAM_20260920/`.
+No sibling edits or sync. No fetch, push, PR, merge, release, deployment, new branches or
+history rewrite. Commit signed and verify; no unsigned fallback. Branch openai/mac;
+pre-existing untracked .DS_Store untouched. Reuse this uninterrupted Node26.9.0 receipt.
 
-Retain the compiled prompt/master hash; use existing key/mask/landmark/split intake and
-masterIntakeAccepted admission. Native contact/rest/seam/limit gates remain unchanged.
-Anatomy drift is a retained finding, not an automatic repaint/retry. Claude owns prompt
-compilation, intake gates and the comparison sheet beside the Civet; Nick's sheet verdict
-remains the visual gate. Codex owns painting and rigging, and reviews Track T read-only.
-No P2/P3/P4 or resumed roster work is started by this handoff.
-
-**R9 reconciliation:** Codex's signed R9 is canonical at the eventual re-merge; Claude's R9
-remains a diagnostic. The finisher stays desktop polish/conservation machinery. P1 obtains
-master quality through the compiled painting prompt, not another unchanged local-finisher run.
-
-Local branch remains openai/mac. No fetch, push, PR, merge, release, deployment, new branches,
-LFS/history rewrite or sibling edit. PR42 stays parked. All new commits must be signed and
-verified. Pre-existing untracked .DS_Store is untouched. Prior 15-film/16-sheet counts describe
-the completed packet, not new vision-program output. No new image or native run has occurred.
-
-Codex: wait for the compiled P1 prompt packet path, then execute the authorized paint/intake/
-rig/film work within that packet. Claude: supply its compiled packet and own gates/sheet;
-no app switch or branch sync is needed now. Future integration still requires separate
-hosted authority; no PR is needed for this handoff.
+Codex next: retain generation 01 and wait for the review disposition; no changed-prompt
+retry, invented anatomy or roster resumption. Claude next: inspect the P1 packet read-only
+for its Track T finding and Nick's sheet verdict. Nick need not switch apps for Git or sync.
+No PR is needed. Report local HEAD/ahead against cached origin/openai/mac only.

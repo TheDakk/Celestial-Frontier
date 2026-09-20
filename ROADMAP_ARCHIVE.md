@@ -1,3 +1,42 @@
+## September20 — P1 queued handoff (verbatim)
+
+## SESSION HANDOFF — vision P1 next; further roster work held
+
+Nick's next direction is the read-only vision program:
+`/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/VISION_PROGRAM_20260920/PROGRAM.md`.
+Read September19/20; not copied or synced. The previous anatomy execution packet is complete
+at signed/verified a94535aa on openai/mac, then 30 commits ahead of cached origin/openai/mac:
+[audits/ANATOMY_SINGLE_RUN_20260919/README.md](audits/ANATOMY_SINGLE_RUN_20260919/README.md).
+Its 15 films,16 sheets, five retained fits and 53 refusals remain history, with all leaf diagnoses.
+R4 is complete. **Hold all further roster work until P1.**
+
+Next Codex deliverable: P1 coconut-crab master, painted from Claude's compiled prompt packet
+with the painter canvas as the anatomy guide, then admitted, rigged and natively filmed through
+the existing Civet anatomy chain. **Compiled prompt packet path has not yet been supplied.**
+Do not invent its prompt or begin painting before reading it. Before queued work, inspect the
+other lane's single-run queue read-only to avoid duplicate ownership; no sync or same-path edits.
+
+Retain the compiled prompt/master hash; use existing key/mask/landmark/split intake and
+masterIntakeAccepted admission. Native contact/rest/seam/limit gates remain unchanged.
+Anatomy drift is a retained finding, not an automatic repaint/retry. Claude owns prompt
+compilation, intake gates and the comparison sheet beside the Civet; Nick's sheet verdict
+remains the visual gate. Codex owns painting and rigging, and reviews Track T read-only.
+No P2/P3/P4 or resumed roster work is started by this handoff.
+
+**R9 reconciliation:** Codex's signed R9 is canonical at the eventual re-merge; Claude's R9
+remains a diagnostic. The finisher stays desktop polish/conservation machinery. P1 obtains
+master quality through the compiled painting prompt, not another unchanged local-finisher run.
+
+Local branch remains openai/mac. No fetch, push, PR, merge, release, deployment, new branches,
+LFS/history rewrite or sibling edit. PR42 stays parked. All new commits must be signed and
+verified. Pre-existing untracked .DS_Store is untouched. Prior 15-film/16-sheet counts describe
+the completed packet, not new vision-program output. No new image or native run has occurred.
+
+Codex: wait for the compiled P1 prompt packet path, then execute the authorized paint/intake/
+rig/film work within that packet. Claude: supply its compiled packet and own gates/sheet;
+no app switch or branch sync is needed now. Future integration still requires separate
+hosted authority; no PR is needed for this handoff.
+
 ## SESSION HANDOFF — September19 · R2c-L measurement STOPPED AT S2
 
 ## September20 — anatomy completion handoff before vision direction (verbatim)

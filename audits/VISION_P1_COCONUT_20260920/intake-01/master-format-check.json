@@ -1,0 +1,15 @@
+[
+  {
+    "path": "coconut-crab-master.png",
+    "kind": "cutout",
+    "width": 1254,
+    "height": 1254,
+    "minimum": {
+      "width": 384,
+      "height": 384
+    },
+    "sha256": "7954331dc3ce80bf3b4e2e3759bd0b5c576d659ff5fcb4d01b8efc536bba8890",
+    "bytes": 1543355,
+    "qualityAccepted": false
+  }
+]

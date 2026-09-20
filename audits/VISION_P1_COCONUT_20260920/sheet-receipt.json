@@ -1,0 +1,29 @@
+{
+  "sources": [
+    {
+      "id": "Civet / accepted master reference",
+      "file": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+      "mode": "intake",
+      "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+      "display": "full source canvas, aspect preserved, 620 square; common comparison background; source bytes unchanged"
+    },
+    {
+      "id": "P1 / one generated candidate",
+      "file": "audits/VISION_P1_COCONUT_20260920/generation-01/coconut-crab-master.png",
+      "mode": "intake",
+      "sha256": "7954331dc3ce80bf3b4e2e3759bd0b5c576d659ff5fcb4d01b8efc536bba8890",
+      "display": "full source canvas, aspect preserved, 620 square; common comparison background; source bytes unchanged"
+    },
+    {
+      "id": "Painter crab / anatomy authority",
+      "file": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/coconut-crab-master.png",
+      "mode": "native",
+      "sha256": "a0f681a8e44f374407424e5e60b2e5deffb8a23162cfefe3ace96b8cfb4d4832",
+      "display": "full source canvas, aspect preserved, 620 square; common comparison background; source bytes unchanged"
+    }
+  ],
+  "sheetSha256": "55317a5044c7747af94c8cf24bce1feffef739fc43b97c4be2ac1f4b8dfc483e",
+  "masterQualityAccepted": false,
+  "nickVerdict": "pending",
+  "generatedReferencesCopied": false
+}
