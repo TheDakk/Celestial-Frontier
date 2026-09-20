@@ -590,3 +590,107 @@ raw-clip battery unchanged; contactLimitsDeg-absent ⇒ identical behaviour (uni
 written (Civet all rows + presentation ≤ 0.25 px, exact rest) then R2d → R3. S2 stays the only halt. No fetch,
 push, PR, merge.
 ```
+
+## 13. R2c-L stopped at the compression bound (Codex `R2c-L/`, producers `1523b0b5` → `ddb51313`, signed) — verdict: same conflict, now fully mapped; direction R3-S ends the stop-per-gate loop
+
+**What Codex did.** Exactly step 1 of R2c-L: a tool-only `--reportLimits` sweep in a temporary bundle (one exact
+throw replaced, production untouched, preservation receipt to `c7b4fdfd`); five crabs, all 12 rows + presentation,
+**zero** exceedances, bit-identical; Civet idle/approach clean and 20 bite samples with 15 exceedances that match my
+§12 table (foreFarAnkle 71.8°, foreNearAnkle −61.1°, foreNearPaw 50.1°, foreFarPaw −57.9°); then S2 at bite 157 ms
+on the **8 % scale-compression bound** (28.1 px; 24.5 px used at 149 ms; raw root dx 0.259 at the throw). Codex was
+right not to derive `contactLimitsDeg` from a partial table and right to stop: the compression throw was outside
+the R2c-L scope. Nothing is wrong with the packet.
+
+**What the compression bound is.** When a planted paw is farther from its hip than the leg can reach, the solver
+lowers the root until the leg can reach it, and refuses if that drop exceeds 8 % of the pelvis–chest span. At
+157 ms the bite's launch key is pulling the root forward toward `dx 0.36` body lengths (the `melee()` default keys
+are `[-0.04, 0.36, 0.40, 0.10]`) with **all four paws planted**, so every leg is being dragged behind a body that
+has moved 90–125 px ahead of its feet.
+
+**The whole map (Civet, my mirror of the solver's reach/compression/limit kinematics, every gate reported):**
+
+| Row | Root travel | Compression needed | Bound | Limits exceeded (post-shift) |
+|---|---|---:|---:|---|
+| melee:bite / claw / gore / headbutt | dx → 0.357, dy −0.05 | **69.6 px**, first over at 157 ms (36 px) | 28.1 | elbow 69°, wrist −86°, hock −54° |
+| melee:tail | dx → 0.357 | **78.1 px** | 28.1 | elbow 99°, wrist −120° |
+| cast (rear-up, dy −0.06) | rise | **286 px** (the solver would cancel the rear-up by dropping the body 286 px) | 28.1 | stifle −123°, hock 109° |
+| victory (rear-up, dy −0.08) | rise | **297 px** | 28.1 | stifle −134°, hock 132° |
+| dodge (hop back, dx −0.25) | jump | **94 px** | 28.1 | stifle −72°, hock 86° |
+| faint (collapse, dy 0.22) | drop | 0 | | elbow ±92°, shoulder −87°, wrist 76° (§12) |
+| idle, alert, approach, hit, tame, feed, gaits, kick | | ≤ 20 px | | none (tame wrist −45°) |
+
+Codex's exact solver reads the same shape (its 24.5 px at 149 ms sits on my curve). So the joint-limit stop (§12)
+and the compression stop (this section) are one conflict: **the quadruped clip library moves the body (lunge,
+rear-up, hop, collapse) while the family solver plants all four feet for every action that is not a gait or a
+flight.** Each remaining Civet row will fire a different gate of the same solver, one stop at a time: bite →
+compression, cast → compression, dodge → compression, victory → compression, faint → limits. The crabs never met
+this because the brachyuran clips were authored *after* R1b for planted feet and a crab does not rear, hop or lunge.
+
+**Why the "feet plant" law is not what is being broken.** `MOTION_KIT.md` line 62 says feet plant, weight shifts,
+nothing hovers or slides. A rearing, lunging or leaping animal *lifts* feet; that is not hovering. The contract that
+is missing is *which* feet are planted in which action — the gaits already have one (alternating groups), and the
+compat rig in E1 already carries a crude one (`plantedFor`, which frees victory and every attack). What the
+program lacks is the shared, per-template version of that table, and the solver's post-IK check reads the raw-clip
+guard instead of a range of motion for planted folds. R2c-L's `contactLimitsDeg` was half of the fix; the stance
+contract is the other half, and it belongs to R3, whose interfaces (`contactJoint`, `travel:'stage'`, per-family
+profile) are where E1's three pins already wait.
+
+**Direction R3-S — one package, run without intermediate stops.** Under Nick's "everything is authorized" I am
+folding the remaining contact design into R3 and directing it as a single run. Codex stops only for a red outside
+this scope (see 6).
+1. **Report-all mode first (baseline ledger).** Extend the tool-only sweep flag so *every* `Contact:` throw class
+   (reach, compression, joint limit, unresolved endpoint, painted-support residual, drift) is recorded and the
+   sweep continues; all six subjects, all rows + presentation. Commit that ledger as the "before" table. Crabs must
+   report zero of every class except what they report today (nothing).
+2. **Stance contract in the family contract**: per template, per action id (with a default), which leg groups are
+   planted. Quadruped: *all* for idle, alert, hit, feed, tame, faint, approach, and the gaits (alternating, as today);
+   *hind only* for every `melee:*` except kick (the strike is a head drive from planted hind feet; the fore paws
+   follow their authored keys), cast and victory (rear-ups); *none* for dodge (a hop) and kick (as today). Brachyuran:
+   *all*, everywhere — bit-identical control. Unplanted legs keep their authored clip keys and the raw-clip guard;
+   planted legs are solved as now. The stage owns closing distance (`travel:'stage'`, E1 pin), so no clip needs a
+   lunge to reach the opponent; leave the melee root keys as they are for this run — the report-all ledger after
+   step 2 tells us whether the hind-planted lunge still exceeds anything (my estimate: hind reach is satisfied at
+   dx 0.357 with ≤ 5 px of compression).
+3. **`contactLimitsDeg`** as in R2c-L, now derived from the *after* ledger of planted folds only (faint and the bite
+   crouch): measured max + 10°, rounded up to 5°, recorded in `CREATURE_ANIMATION.md`; every other template defaults
+   to `limitsDeg`; the raw-clip guard and 169-action battery untouched.
+4. **Report-all again (after ledger)**: for the Civet, reach/compression/limit classes must be empty on every row +
+   presentation; drift ≤ 0.25 px on planted feet is the acceptance; exact rest; five crabs bit-identical to R2c′.
+5. **Controls both ways:** crouch mutant (bite anticipation dy ×3) throws on `contactLimitsDeg`; a stance mutant
+   that plants all four on the bite throws on compression exactly as today; contract-absent template ⇒ identical
+   behaviour (unit); brachyuran contract ⇒ bit-identical rows.
+6. **Then the rest of §8 in order** (R2d → R3 interfaces incl. `contactJoint` / `travel:'stage'` / pinch / crustacean
+   profile → R4 → full native capture → R9/Q1 → R5–R8 → roster → local PR42 split). **S2 halts only** for: a paint-drift
+   red on a planted foot after step 4, an exact-rest red, a crab non-identity, or any throw class the after ledger
+   said was empty. A red inside steps 1–5 is fixed and retained in the packet, not stopped on.
+
+Not chosen: shrinking the lunge/rear-up amplitudes (hides the missing contract and changes the approved look);
+relaxing the compression bound (a body cannot drop 286 px to keep rearing feet on the ground); freeing all feet
+for all actions (throws away R1b/R2c and the contact evidence).
+
+**E1 (this lane) at the re-merge:** `plantedFor` is retired in favour of the shared stance contract; the parts rig
+runs the family solver with observed supports; the three pins flip; E1.5 is re-shot on that solver.
+
+### Copy-ready for Codex
+```
+R2c-L verdict + R3-S: /Users/nick/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md §13
+(read-only; do not sync). Your R2c-L packet is accepted in full; the compression stop and the limit stop are one
+conflict: the quadruped clips move the body (lunge/rear-up/hop/collapse) while the solver plants all four feet for
+every non-gait action, and every remaining Civet row fires another gate of it (my full map is in §13: bite 69.6 px,
+tail 78 px, cast 286 px, victory 297 px, dodge 94 px against the 28.1 px bound; faint ±92° elbow). R3-S, ONE run,
+no stops inside it: (1) report-all mode in the tool-only sweep (every Contact: throw class recorded, sweep continues),
+six subjects, all rows + presentation, committed as the BEFORE ledger; (2) a per-template, per-action stance contract
+in the family contract: quadruped all-planted for idle/alert/hit/feed/tame/faint/approach + gaits alternating as
+today; hind-only for every melee:* except kick, and for cast and victory; none for dodge and kick; brachyuran all,
+everywhere (bit-identical control); unplanted legs keep authored keys + raw-clip guard; melee root keys unchanged
+for this run (stage owns travel); (3) contactLimitsDeg from the AFTER ledger's planted folds only, measured max + 10°
+rounded up to 5°, recorded in CREATURE_ANIMATION.md, other templates default to limitsDeg, raw-clip battery
+untouched; (4) report-all AFTER ledger: Civet reach/compression/limit classes empty on every row + presentation,
+drift ≤ 0.25 px on planted feet, exact rest, five crabs bit-identical to R2c′; (5) controls: crouch mutant (bite
+anticipation dy ×3) throws on contactLimitsDeg; all-four-planted bite mutant throws on compression as today;
+contract-absent template identical (unit); (6) then §8 in order: R2d → R3 interfaces (contactJoint, travel:'stage',
+pinch, crustacean profile) → R4 → full native capture → R9/Q1 → R5–R8 → roster → local PR42 split. S2 halts ONLY
+for a planted-foot drift red after step 4, an exact-rest red, a crab non-identity, or a throw class the after
+ledger said was empty; any red inside steps 1–5 is fixed and retained, not stopped on. Signed commits; no fetch,
+push, PR, merge.
+```
