@@ -1,0 +1,144 @@
+{
+  "genome": {
+    "seed": 728015385,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 2,
+    "body": 12,
+    "loco": 9,
+    "trait": 24,
+    "size": 5,
+    "diet": 4,
+    "head": 9,
+    "limbs": 2,
+    "skin": 3,
+    "tail": 2,
+    "pattern": 5,
+    "eyes": 4,
+    "behavior": 2,
+    "habitat": 2,
+    "detail": 2,
+    "accent": 15,
+    "temper": 1,
+    "sense": 1,
+    "repro": 2,
+    "life": 3,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Plover"
+  },
+  "observation": {
+    "schema": "cf.painter-topology/v1",
+    "ownerId": "faunaBird",
+    "family": "biped-bird",
+    "coordinateSize": 440,
+    "materials": {
+      "surface": "feather",
+      "paletteSource": "named"
+    },
+    "features": [
+      {
+        "id": "body",
+        "kind": "body",
+        "points": [
+          [
+            220,
+            283.1502398202913
+          ]
+        ],
+        "widths": [
+          97.25383483907757,
+          98.09952035941735
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "head",
+        "kind": "head",
+        "points": [
+          [
+            184.9886194579321,
+            236.55296764956805
+          ]
+        ],
+        "widths": [
+          32.03354243711382
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "legFar",
+        "kind": "leg",
+        "points": [
+          [
+            213.59329151257722,
+            318.4660671496815
+          ],
+          [
+            220.78482178970927,
+            335.9037122318471
+          ],
+          [
+            211.99161439072154,
+            352
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "legNear",
+        "kind": "leg",
+        "points": [
+          [
+            226.40670848742278,
+            318.4660671496815
+          ],
+          [
+            233.59823876455482,
+            335.9037122318471
+          ],
+          [
+            224.8050313655671,
+            352
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "near"
+      },
+      {
+        "id": "wingNear",
+        "kind": "wing",
+        "points": [
+          [
+            225.83523009034465,
+            285.6027278292767
+          ],
+          [
+            270.91737053495564,
+            295.6839699963247
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "near"
+      }
+    ],
+    "unresolved": [
+      "tail, beak, neck and source part masks not captured",
+      "far wing is not independently painted"
+    ],
+    "rasterFrame": {
+      "width": 880,
+      "height": 880,
+      "origin": [
+        220,
+        220
+      ],
+      "scale": 1
+    }
+  }
+}
