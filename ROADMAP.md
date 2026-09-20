@@ -104,7 +104,7 @@ Self-contained. Either lane can resume from this block alone. Earlier handoffs o
 
 | Lane | HEAD | Note |
 |---|---|---|
-| `openai/mac` (Codex) | `8ecb9209` local (origin at `7dd884f0`): R2c″ ran and stopped S2 at solver construction — the new constructor's untoleranced `barycentric < 0` check rejected a −9e−16 edge coefficient in the regenerated Civet support (review §11: instrument defect, data valid); R2c‴ direction issued (constructor tolerance + both-way controls, then resume §10 acceptance) | awaiting the §11 paste |
+| `openai/mac` (Codex) | `c7b4fdfd` local (origin at `7dd884f0`): R2c‴ passed native exact rest, the unpinned negative control, covariance 0 and five-crab bit-identity, then stopped S2 at the post-IK joint-limit check (Civet bite 102 ms, elbow fold 61.56° vs ±60°). Review §12: a real design conflict — the crouch/collapse clips with planted feet need ~70°/~90° elbow fold, the check reads the raw-clip authoring guard. Direction R2c-L issued: measure on the exact solver, add `contactLimitsDeg` (defaults to `limitsDeg`; quadruped leg joints from measurement + 10°), both-way controls, then resume §10 acceptance | awaiting the §12 paste |
 | `anthropic/mac` (Claude) | this commit = `origin/anthropic/mac` after `a0441a44` | E1.1–E1.5 coded and filmed; two TypeSafe batteries; tree clean apart from `.DS_Store` |
 
 Pushed as plain branch pushes only (no workflow runs on a branch push per `GITHUB_ACTIONS_BUDGET.md`; `origin/openai/mac` = 140 commits, `origin/anthropic/mac` = 72 first-parent commits, pushed in fast-forward chunks along the first-parent chain — pushing a `rev-list --reverse` order without `--first-parent` rejects at the merge's side commits, which is what the first attempt hit). PR42 parked, no PR opened, no merge to develop, no release. Lanes still read each other by absolute path.
@@ -152,6 +152,7 @@ branch push of both lanes Nick then authorized is done (see Lane state), so orig
 
 
 ### What Claude owes next
+0. **Self-finding (review §12):** the E1.5 films used the compat solver, which has no joint-limit check; they are contact/cadence evidence only. The parts rig moves to the family solver at the R3 re-merge (already planned) and the films are re-shot then.
 1. **Re-merge at Codex's signed R2c′/R3 producers**; pass `observedContactSupports(record, binding)` to the parts rig's family solver; then flip the three pins: `ContactPhase.travel:'stage'` in the parts-rig
    context (drop the interim stride double-count note), crab attacks through the stage, pinch selection; re-run
    `parts-rig.test.ts` + `e1-outcomes.test.ts`; move crabs from target-only to attacker in outcome 2.

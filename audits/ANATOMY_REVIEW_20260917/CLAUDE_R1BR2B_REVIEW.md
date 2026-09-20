@@ -492,3 +492,101 @@ bit-identity, Civet all rows + presentation ≤ 0.25 px). S2 stays the only halt
 pose-exporter reds from the absent battle2/choreography.ts + effects/anchors.ts are expected until the next
 re-merge. No fetch, push, PR, merge.
 ```
+
+## 12. R2c‴ ran and S2 fired a fourth time (Codex `R2c-triple-prime/`, producers `0dd26298` → `c7b4fdfd`, signed) — verdict: a real design conflict, now measured; direction R2c-L
+
+**What passed.** Native exact rest (`restChanged 0`, shift control 1,511,112 bytes); unpinned candidate-10 negative
+control fails as required (bite 70.7 ms, 0.2501 px); exact-model covariance 0 on all six; five crabs bit-identical
+to R2c′ across 12 rows + 601 presentation samples; Civet locked supports ≤ 0.000088 px through every completed
+sample; 25 contact tests incl. the real-binding constructor; 779 hashes unchanged. The constructor correction was
+the one line asked for. Codex stopped at the first throw before any measurement. All correct.
+
+**What fired.** `Contact: joint limit foreFarAnkle melee:bite@102.12 ms: 61.56°` against the quadruped template's
+±60°. This is the first time any run has reached the Civet's joint-limit check at all — R2c died at idle 262 ms and
+R2c′ at bite 55 ms on paint drift, so the limit conflict was always underneath. It is **not** an instrument defect
+this time: I re-derived the requirement offline in this lane (same record `b38684ec…`, same clips, same skeleton
+program and two-bone IK as the family solver, limits *reported* instead of thrown, no support model, nothing
+written) and the requirement is real and grows past 102 ms.
+
+**Naming the joints first.** In the skeleton program a joint's rotation pivots on its *parent's* landmark
+(`skeleton-pose.mjs`, `poseMatrices`). So for a leg chain Root→Knee→Ankle→Paw: the pose key `Knee` is the swing at
+the shoulder/hip, `Ankle` is the fold at the elbow/stifle, `Paw` is the fold at the wrist/hock. The limit that fired,
+"foreFarAnkle ±60°", is therefore the **elbow fold** of the far foreleg.
+
+**Measured requirement (Civet, planted-contact IK, every row; my sweep, 121 samples per row):**
+
+| Row | Joint (anatomical) | Required | Limit | Driver at the peak |
+|---|---|---:|---:|---|
+| melee:bite (also claw/gore/headbutt → bite) | foreFarAnkle (elbow fold) | 69.3° @ 125.7 ms | ±60 | anticipation crouch: spine +9°, root dy 0.017 → fore hip drops 79 px; hip-to-wrist distance 245 → 182 px on a 180 + 73 px chain |
+| melee:bite | foreNearAnkle (elbow fold) | −62.0° @ 117.8 ms | ±60 | same crouch; 190 + 142 px chain, 332 → 276 px |
+| melee:bite | foreNearPaw / foreFarPaw (wrist) | 48.3° / −47.8° | ±40 | same crouch / start of lunge |
+| melee:tail | foreFarPaw (wrist) | −60.9° @ 212 ms | ±40 | lunge root dx 0.373 with all four feet planted; hip 125 px ahead of the paw |
+| faint | foreFarAnkle / foreNearAnkle (elbow fold) | 91.7° / −91.1° | ±60 | collapse root dy 0.166–0.22 → hip drops 143–164 px |
+| faint | foreFarKnee (shoulder swing) | −86.7° | ±75 | end pose of the collapse |
+| faint | foreNearPaw / hindFarPaw (wrist / hock) | 76.3° / 63.1° | ±40 | collapse |
+| faint | hindFarAnkle (stifle fold) | −72.1° | ±60 | collapse |
+| tame | foreFarPaw (wrist) | −45.4° | ±40 | root dx 0.12 |
+| idle, approach, hit, alert, cast, dodge, victory, feed, gaits | — | within limits | | |
+
+Codex's exact solver (support model + the 8 % compression shift my lane's version lacks) will differ by a few
+degrees — it reached 61.56° at 102 ms where I read 64.0° at 110 ms — but not in kind: the bite crouch needs about
+70° of elbow fold and the faint needs about 90°, on both forelegs, on a leg that is painted almost straight (rest
+hip-to-wrist 97–99.7 % of the chain's full length).
+
+**Why it is a design conflict and not a Civet defect.** Three things the kit already owns collide: (1) the clips
+crouch and collapse the body (`melee()` anticipation dy 0.03, `faint` dy 0.22, spine ±12°); (2) the contact law
+plants every foot ("feet plant, weight shifts, nothing hovers or slides" — `MOTION_KIT.md` line 62, Nick's rule);
+(3) the template's `limitsDeg` were authored as the *raw-clip* guard ("anatomical joint limits after easing /
+secondary overshoot", `ANIMATION_COMPLETION_20260916`), tuned to the shallow authored leg keys. Once the IK
+replaces the authored leg keys to honour (1) and (2), the legs must fold as far as a crouching or collapsing animal
+actually folds — an elbow at 70–90° is ordinary for a carnivoran — and (3) forbids it. The raw clips passed the
+limit battery only because their authored leg angles never fold that far; the film would. The crabs never met this
+because the brachyuran limits and clips were built together after R1b. Landmarks are not the cause: near and far
+knee sit at the same fraction of leg height (0.53 / 0.54), and the near foreleg with its long lower segment
+over-folds too (−62°).
+
+**Self-finding (this lane).** The E1.5 films drove the Civet through the *compat* solver
+(`createQuadrupedContactSolver`), which has no joint-limit check; those films show the same 70° crouch fold and
+nobody could have flagged it. E1.5 is evidence of contact and cadence, not of anatomical limits. The parts rig moves
+to the family solver at the R3 re-merge as already planned; nothing is re-claimed here.
+
+**Direction R2c-L (one bounded change, then resume where R2c‴ stopped).** Under Nick's "everything is authorized"
+I am making this design call rather than stopping for it; it is reversible and its values come from measurement.
+1. **Measure on the exact solver first.** Add a `reportLimits` flag to the static sweep (sweep tool only; the runtime
+   check is untouched) that records, instead of throwing, every sample where a post-IK joint exceeds `limitsDeg`:
+   subject, row, ms, joint, required degrees, root dx/dy, spine/chest, hip drop. Run all six subjects, all rows +
+   presentation. Control: the five crabs must report zero exceedances (they passed with the check live).
+2. **Separate the two questions.** Add `contactLimitsDeg` to the family contract: the post-IK range-of-motion check
+   in `createFamilyContactSolver` (line ~150) reads it; every template defaults it to `limitsDeg` (bit-identical
+   everywhere except where overridden); the raw-clip authoring guard keeps `limitsDeg` unchanged, so the 169-action
+   clip battery keeps its sensitivity. Override the quadruped leg joints from step 1's table with the rule
+   *measured max across all six subjects + 10°, rounded up to 5°*. From my numbers that is Knee (shoulder/hip swing)
+   ±100, Ankle (elbow/stifle fold) ±105, Paw (wrist/hock fold) ±90; Codex's table governs the final values and is
+   recorded beside them in `CREATURE_ANIMATION.md`.
+3. **Controls both ways:** (a) a crouch mutant (bite anticipation `dy` ×3) must still throw at the new
+   `contactLimitsDeg`; (b) five-crab rows bit-identical to R2c′; (c) the raw-clip limit battery unchanged;
+   (d) `contactLimitsDeg` absent ⇒ behaviour identical to today on a synthetic template (unit test).
+4. Then resume the §10 acceptance exactly as written: Civet all rows + presentation ≤ 0.25 px on the family
+   solver, exact rest, then R2d → R3. S2 remains the only halt; a paint-drift or limit red after this is genuine.
+
+Not chosen: freeing feet during crouch/lunge/collapse (contradicts Nick's contact law and would need his word);
+shrinking the crouch/collapse amplitudes (changes the approved look for every quadruped to fit a guard that was
+never meant for the solved pose); widening `limitsDeg` itself (silently loosens the authoring guard).
+
+### Copy-ready for Codex
+```
+R2c‴ verdict + R2c-L: /Users/nick/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md §12
+(read-only; do not sync). Everything you ran is accepted; the stop was right, and this time the red is real: the
+post-IK limit check reads the raw-clip authoring guard (limitsDeg ±60 on "Ankle" = elbow fold, pivot is the parent
+landmark), and the kit's own crouch (bite anticipation) and collapse (faint) with planted feet need ~70° and ~90° of
+elbow fold on both Civet forelegs (my offline table is in §12). R2c-L, in order: (1) sweep tool only: a reportLimits
+flag that records instead of throws (subject,row,ms,joint,required°,root dx/dy,spine/chest,hip drop), all six
+subjects, all rows + presentation; crabs must report zero; (2) add contactLimitsDeg to the family contract, read by
+the post-IK check in createFamilyContactSolver, defaulting to limitsDeg for every template (bit-identical), overridden
+for quadruped leg joints by the rule measured max + 10° rounded up to 5° (expected about Knee ±100 / Ankle ±105 /
+Paw ±90; your table governs, record it in CREATURE_ANIMATION.md); limitsDeg and the 169-action raw-clip battery
+unchanged; (3) controls: crouch mutant (bite anticipation dy ×3) still throws; five crabs bit-identical to R2c′;
+raw-clip battery unchanged; contactLimitsDeg-absent ⇒ identical behaviour (unit); (4) resume §10 acceptance as
+written (Civet all rows + presentation ≤ 0.25 px, exact rest) then R2d → R3. S2 stays the only halt. No fetch,
+push, PR, merge.
+```
