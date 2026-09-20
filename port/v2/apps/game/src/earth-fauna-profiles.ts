@@ -76,7 +76,8 @@ export const EARTH_FAUNA_PROFILES:readonly EarthFaunaProfile[]=Object.freeze([
  group("water-gastropod",["Freshwater Snail", "Water Snail", "Sea Snail", "Limpet", "Chiton", "Nudibranch", "Cowrie", "Conch", "Abalone"],[],["water"],[],"Radula/mantle/foot are not a fish bite or jellyfish arms."),
  group("annelid-land",["Earthworm", "Ice Worm"],[],["ground"],[],"Segmented body compression needs observed source geometry."),
  group("annelid-water",["Leech", "Marine Worm", "Tube Worm", "Polychaete Worm", "Giant Tube Worm", "Scale Worm", "Flatworm"],[],["water"],[],"Different feeding structures; no universal jaw or venom."),
- group("clawed-crustacean",["Crayfish", "Freshwater Crab", "Crab", "Hermit Crab", "Fiddler Crab", "Mud Crab", "Lobster", "Vent Crab"],[],["water", "ground"],["pinch"],"Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae."),
+ group("observed-crab",["Freshwater Crab", "Crab", "Mud Crab", "Vent Crab"],["brachyuran"],["water", "ground"],["pinch"],"Observed palm/fixed finger/dactyl and contact landmark required; profile alone is not admission."),
+ group("clawed-crustacean",["Crayfish", "Hermit Crab", "Fiddler Crab", "Lobster"],[],["water", "ground"],["pinch"],"Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae."),
  group("small-crustacean",["Brine Shrimp", "Water Flea", "Krill", "Copepod", "Amphipod", "Cave Shrimp", "Freshwater Shrimp", "Shrimp", "Prawn", "Giant Isopod", "Isopod", "Vent Shrimp", "Fairy Shrimp", "Tadpole Shrimp"],[],["water"],[],"Observed segmented swimming/crawling appendages; no generic stinger."),
  group("barnacle",["Barnacle"],[],["water"],[],"Anchored feeding cirri, no locomotor leap."),
  group("horseshoe-crab",["Horseshoe Crab"],[],["water", "ground"],[],"Telson is not a venomous stinger; dedicated topology needed."),
@@ -92,7 +93,7 @@ export const EARTH_FAUNA_PROFILES:readonly EarthFaunaProfile[]=Object.freeze([
  group("springtail",["Springtail"],["insect"],["ground"],["body"],"Furcula jump needs observed spring organ, not a stinger."),
  group("tardigrade",["Tardigrade"],[],["water", "ground"],[],"Eight lobopod legs and stylets require exact topology; no arachnid fangs."),
  group("pheasant",["Pheasant"],["biped-bird"],["air", "ground"],["peck", "claw"],"Foot rake on the observed foot, not an inferred raptor talon."),
- group("terrestrial-crab",["Coconut Crab"],[],["ground"],["pinch"],"Dedicated pincer/leg topology required; adult is not a submerged aquatic fighter."),
+ group("terrestrial-crab",["Coconut Crab"],["brachyuran"],["ground"],["pinch"],"Observed pincer/leg topology required; adult is not a submerged aquatic fighter."),
  ]);
 const byName=new Map<string,EarthFaunaProfile>();
 for(const profile of EARTH_FAUNA_PROFILES)for(const name of profile.names){

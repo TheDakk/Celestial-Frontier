@@ -10,7 +10,7 @@ import {templateMelees} from './motion/family-actions.js';
 import {sampleTimeline} from './motion/timeline.js';
 const fixtures=JSON.parse(fs.readFileSync(new URL('../../../tools/creature-animation/test-fixtures/family-records.json',import.meta.url),'utf8')).records;
 const read=(name:string)=>JSON.parse(fs.readFileSync(new URL('../../../../../audits/'+name,import.meta.url),'utf8'));
-const card=(family:string)=>{const r={...fixtures[family],identity:{...fixtures[family].identity,earthName:null},recipeHash:createHash('sha256').update(JSON.stringify(fixtures[family])).digest('hex')};return compileBodyCard(r);};
+const card=(family:string)=>{const source=fixtures[family]??(family==='brachyuran'?read('ANATOMY_COMPLETION_20260917/crab-fits-03/crab/record.json'):undefined);const r={...source,...(family==='brachyuran'?{habitat:{realm:'land',source:'synthetic ground control'}}:{}),identity:{...source.identity,earthName:null},recipeHash:createHash('sha256').update(JSON.stringify(source)).digest('hex')};return compileBodyCard(r);};
 const medium=(c:BodyCard)=>c.realm==='aquatic'?'water' as const:c.realm==='aerial'||c.realm==='gas-giant'?'air' as const:'ground' as const;
 it('every implemented family melee has an anatomy row, with plants explicitly unsupported',()=>{
  for(const family of Object.keys(fixtures)){

@@ -300,7 +300,7 @@ const BASE_ACTIONS_BY_TEMPLATE: Readonly<Record<'quadruped' | FamilyTemplateId, 
 export const ACTIONS_BY_TEMPLATE = Object.freeze(Object.fromEntries(Object.entries(BASE_ACTIONS_BY_TEMPLATE).map(([id,actions])=>[id,Object.freeze({...actions,...ADDITIONAL_ACTIONS[id]})]))) as Readonly<Record<'quadruped'|FamilyTemplateId,Readonly<Record<string,MotionAction>>>>;
 /** Card weapon → the template's melee action name when the family's weapon has its own verb. */
 export const MELEE_ALIAS: Readonly<Record<string, Readonly<Record<string, string>>>> = Object.freeze({
-  hopper: { claw: 'kick' }, insect: { bite: 'mandible' }, serpent: { bite: 'strike' }, radial: { sting: 'sting-arms', tail: 'sting-arms', bite: 'sting-arms' }, fish: {}, 'biped-bird': {}, arachnid: {}, quadruped: {},
+  brachyuran: { claw: 'pinch' }, hopper: { claw: 'kick' }, insect: { bite: 'mandible' }, serpent: { bite: 'strike' }, radial: { sting: 'sting-arms', tail: 'sting-arms', bite: 'sting-arms' }, fish: {}, 'biped-bird': {}, arachnid: {}, quadruped: {},
   myriapod: { bite: 'mandible' }, cephalopod: { constrict: 'lash', tail: 'lash' }, 'flyer-membrane': {}, primate: { claw: 'punch' },
 });
 export function actionsFor(templateId:string,anatomy?:AnatomyPresence):Readonly<Record<string,MotionAction>>|undefined{
