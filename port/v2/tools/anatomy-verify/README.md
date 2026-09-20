@@ -185,3 +185,9 @@ Naming is the open half and the reason is measured, not guessed: chains root at 
 "attachment order" collapsed to identical angles. The attachment that orders legs is the point where each chain's
 path first leaves the thick region (first path pixel with DT < bodyDt), which must be computed from the edge paths,
 not from the chain's root node. That is the next change; positions and candidate kinds stay as they are.
+Addendum (same night): attachment as the path's exit from the thick region also collapses — on the painted crab three
+Near legs exit at the same pixel (897,604) because their chains share the trunk edges through one junction cluster
+beside the body. The ordering primitive must therefore be the point where a chain SEPARATES from every other chain
+(its last shared node), projected onto the body outline; and the body itself should be the largest thick component
+at a higher fraction of the maximum thickness so upper leg segments are not "body". Positions stand at 16 of 35;
+naming stays open. Stop for the night here; nothing in this folder is a gate.
