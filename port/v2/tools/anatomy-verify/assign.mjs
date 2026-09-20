@@ -17,7 +17,7 @@ import {templateRest} from './template-rest.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 /** Backwards-compatible descriptor view: legs per side and slot naming per template (from the contract). */
 export const TEMPLATES=new Proxy({},{get:(_,id)=>{if(typeof id!=='string')return undefined;const r=templateRest(id);return {legsPerSide:r.legsPerSide,slotName:(k,side)=>r.slots[side][k].terminal,rest:r};}});
-export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true}={}){
+export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0}={}){
   const T=templateRest(template),legsPerSide=T.legsPerSide,slotName=(k,side)=>T.slots[side][k].terminal;
   const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128}),{mask,dt,working:{width:W,height:H,scale,box}}=det;
   const g=ridgeGraph(mask,dt,W,H,{spurFactor:1.5,spurFloor:8});
@@ -65,6 +65,7 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
   // (b) loop limbs
   const nearBody=id=>{const n=g.nodes[id];const i=Math.round(n.y)*W+Math.round(n.x);return bodyIds.has(id)||(i>=0&&i<W*H&&bodyDist[i]<=0.75*R);};
   for(const e of g.edges){if(e.meanDt>=lc.bodyDt||e.length<loopMinLen)continue;
+    if(loopMode==='none')continue;
     if(loopMode==='body'){if(!bodyIds.has(e.a)||!bodyIds.has(e.b))continue;}else{if(!nearBody(e.a)||!nearBody(e.b))continue;}
     // the foot of a loop limb is the path point farthest from the thick region (slice 13 used the centre; a leg folded
     // over the top of the body is nearer the centre at its tip than at its root)
@@ -82,6 +83,9 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
     // carapace/torso), and the junction itself is at least leg-thin (a hair meeting the body is not a limb end); a
     // junction among only limb-thick edges is a crossing of two legs, which is not a tip
     if(touchAgainstBody&&(diag.otherMaxDt<lc.bodyDt||far.dt<thinRef))continue;
+    // a resting tip rests ON the body: its junction lies within touchBodyDistMax × R of the thick region (a junction on
+    // another leg's thick base, 1.4–2.8 R out, passed the thickness test alone — README slice 19 table)
+    {const ji=Math.round(far.y)*W+Math.round(far.x);diag.bodyDistR=+(bodyDist[ji]/R).toFixed(2);if(bodyDist[ji]>touchBodyDistMax*R)continue;}
     cands.push({kind:'touch',x:far.x,y:far.y,termDt:far.dt,term:e.length,len:e.length,attach:exitPoint([e],aBody?e.a:e.b),nodeId:farId,diag,edge:e,fromBody:aBody?e.a:e.b});}
   // a touching tip must be a limb END: a junction that another candidate's chain passes through (an ankle fork, a
   // mid-leg crossing) is interior to that limb and is dropped in favour of the chain's own endpoint
@@ -124,7 +128,17 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
       // rest ORDER prior: the template reference's hip angle per slot about the axis midpoint; a candidate pays for
       // the angular distance between its separation point and the slot's rest hip (in units of 45°)
       const angDiff=(a,b)=>{let d=Math.abs(a-b)%(2*Math.PI);return d>Math.PI?2*Math.PI-d:d;};
-      const slotCost=(c,k)=>{const sl=T.slots[side][k];let v=0;if(sl.restAngle!==undefined&&angleWeight)v+=angleWeight*angDiff(ang(c.attach??[c.x,c.y],centre),sl.restAngle)/(Math.PI/4);if(sl.restLength&&slotLenWeight)v+=slotLenWeight*Math.abs(Math.log(Math.max(1,c.len)/(sl.restLength*R)));return v;};
+      // painting-derived ORDER prior (front view): the side's N slots are evenly spaced in angle between the rear
+      // anchor (the axis normal pointing to the body's top, the far edge in a front view) and the front anchor (the
+      // side's forked appendage separation if one exists, else the axis normal pointing down); a candidate pays for
+      // its angular distance from the slot's expected angle in units of one slot spacing. This is what lets an
+      // EMPTY REAR slot be recognised when the rear leg has no candidate (the freshwater/vent folded legs).
+      let up=[axis[1],-axis[0]];if(up[1]>0)up=[-up[0],-up[1]]; // normal of the axis pointing to smaller y (the body's top)
+      const fronts=claws[side];const frontAng=fronts.length?ang(fronts[0].attach??[fronts[0].x,fronts[0].y],centre):Math.atan2(-up[1],-up[0]);
+      const unwrap=a=>side==='Near'?(a<-Math.PI/2?a+2*Math.PI:a):(a>Math.PI/2?-(a-2*Math.PI):-a); // same key as the ordering
+      const r0=unwrap(Math.atan2(up[1],up[0])),r1=unwrap(frontAng);const span=r1-r0;const expected=k=>r0+span*(k+0.5)/legsPerSide;
+      if(process.env.ASSIGN_DEBUG)console.log('spacing',side,{r0:+r0.toFixed(2),r1:+r1.toFixed(2),span:+span.toFixed(2),up:up.map(v=>+v.toFixed(2)),expected:Array.from({length:legsPerSide},(_,k)=>+expected(k).toFixed(2)),cands:cs.map(c=>+unwrap(ang(c.attach??[c.x,c.y],centre)).toFixed(2))});
+      const slotCost=(c,k)=>{const sl=T.slots[side][k];let v=0;if(spacingWeight&&Math.abs(span)>1e-6){const a=unwrap(ang(c.attach??[c.x,c.y],centre));v+=spacingWeight*Math.abs(a-expected(k))/Math.abs(span/legsPerSide);}if(sl.restAngle!==undefined&&angleWeight)v+=angleWeight*angDiff(ang(c.attach??[c.x,c.y],centre),sl.restAngle)/(Math.PI/4);if(sl.restLength&&slotLenWeight)v+=slotLenWeight*Math.abs(Math.log(Math.max(1,c.len)/(sl.restLength*R)));return v;};
       let best=null;const rec=(k,i,used,acc,cost)=>{if(k===legsPerSide){let total=cost;const usedSet=new Set(acc.filter(Boolean));for(const c of cs)if(!usedSet.has(c))total+=unusedCostOf(c);if(!best||total<best.cost)best={cost:total,acc:acc.slice()};return;}
         rec(k+1,i,used,acc.concat([null]),cost+emptyCost(k));for(let j=i;j<cs.length;j++)rec(k+1,j+1,used+1,acc.concat([cs[j]]),cost+unitCost(cs[j],thin,medLen)+slotCost(cs[j],k));};
       rec(0,0,0,[],0);
