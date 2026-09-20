@@ -1,3 +1,4 @@
+import{createCreatureRigFrameTarget}from'./creature-rig-frame.js';
 import {compileRigidParentFrames,applyRigidParentFrames} from '../../../tools/creature-animation/rigid-parent-frame.mjs';
 import {Container, Matrix, Rectangle, Sprite, Texture, Mesh, MeshGeometry} from 'pixi.js';
 import {applyPaintPart,paintPartAreas,assertPaintPartShape,validatePaintSkin,type PaintSkin} from '../../../tools/creature-animation/paint-skin.mjs';
@@ -168,11 +169,6 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
   return rig;
 }
 
-/** Adapter to Claude's PoseTarget. Keeps the contract's radians/body-length
- * units; timeline evaluation and clocks remain entirely in motion/. */
-export function createCreatureRigPoseTarget(rig:CreatureRigV1){
-  const pose:Record<string,{rotation:number;dx:number;dy:number}>={};
-  return {setJoint(name:string,rotation:number,dx=0,dy=0){
-    const next={...pose,[name]:{rotation,dx,dy}};rig.applyPose(next);pose[name]=next[name]!;
-  },reset(){rig.applyPose({});for(const name of Object.keys(pose))delete pose[name];}};
-}
+/** Compatibility name for the explicit sample/flush frame collector.
+ * setJoint only queues; the caller owns the frame boundary. */
+export function createCreatureRigPoseTarget(rig:CreatureRigV1){return createCreatureRigFrameTarget(rig);}

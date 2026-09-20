@@ -55,3 +55,9 @@ producer/static sentinel checks. Packet R2d/README.md.
 R2d producer7c62a15e signature verified; all six sentinels pass. R3 selector/contactJoint/
 persistent-stage-travel implementation prepared;24tests pass. Next signed producer,
 sentinels/T1 measurement, then R4 and one full-row native capture.
+
+R3 producer2865b017 verified; six sentinels PASS. T1 five crabs PASS; Civet vertical root
+step leaf red0.017142585>stride0.00804873 retained. R4 typed pose refusal/hold and explicit
+frame publication implemented; unit/typecheck pass. Full-row capture tooling includes faint
+and holds/refusal diagnostics. Next signed R4 producer, sentinels, ONE nine-subject native
+recapture; shared Civet/crab geometry/contact/rest red remains the only halt.
