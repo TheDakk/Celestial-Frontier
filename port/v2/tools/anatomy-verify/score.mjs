@@ -34,7 +34,7 @@ export function scoreSubject(res,truth,template,tol){
 if(process.argv[1]&&fileURLToPath(import.meta.url)===path.resolve(process.argv[1])){
   const tol=Number(process.argv[2]??25),json=process.argv[3]==='json';const tot={visible:0,pos:0,assigned:0,named:0,hiddenOk:0};const out={};
   for(const [id,template,master,rec] of SUBJECTS){if(!rec){console.log(id.padEnd(16),'no record (declaration only) — see ic4.mjs / sheet.mjs');continue;}const png=readPng(fs.readFileSync(master));const truth=truthOf(JSON.parse(fs.readFileSync(rec,'utf8')));
-    const opts=process.env.ASSIGN_OPTS?JSON.parse(process.env.ASSIGN_OPTS):{};const res=assignLegs(png.data,png.width,png.height,null,{template,...opts});const s=scoreSubject(res,truth,template,tol);out[id]=s;
+    const opts=process.env.ASSIGN_OPTS?JSON.parse(process.env.ASSIGN_OPTS):{};const res=assignLegs(png.data,png.width,png.height,null,{template,declaredHidden:truth.hidden,...opts});const s=scoreSubject(res,truth,template,tol);out[id]=s;
     for(const k of ['visible','pos','assigned','named'])tot[k]+=s[k];tot.hiddenOk+=s.hiddenOk?1:0;
     console.log(id.padEnd(16),`pos ${s.pos}/${s.visible}`.padEnd(10),`named ${s.named}/${s.assigned}`.padEnd(12),'hidden',s.hiddenOk?'OK ':'NO ',JSON.stringify(s.hidden),'truth',JSON.stringify(s.truthHidden),'| pool',res.pool.length,'|',s.perName.join(' '),'| joints',s.jointErr.join(','),'| hidden',s.hiddenErr.join(','));}
   console.log('TOTAL'.padEnd(16),`pos ${tot.pos}/${tot.visible}`.padEnd(10),`named ${tot.named}/${tot.assigned}`.padEnd(12),'hidden exact',tot.hiddenOk+'/'+SUBJECTS.length);
