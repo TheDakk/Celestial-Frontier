@@ -296,3 +296,29 @@ Next, in order: (1) verdict on EVIDENCE per slot — a slot filled by a loop/tou
 neighbour or a resting-junction proof; refuse when the number of endpoint legs + resting tips ≠ declared visible
 count; (2) hidden placement by Codex's record rule (read it from the writer); (3) P7 labels by geodesic nearest
 chain (not started); (4) re-run IC-4; (5) the second quadruped (the one painted-quadruped exception in PROGRAM §6).
+
+## Slice 19 — IC-4 mutant diagnosis and P7 labels first cut, 2026-09-21 (same session, after the push of slice 18)
+**Why erased legs are admitted (measured, `node ic4.mjs` now prints per-side candidate kinds and counts):** the
+mutation is correct (the freshwater erase of `leg0far-*` removes 19,083 px — the leg folded over the carapace top);
+the compiler's Far endpoint count does not change (e2/t1 before and after) because the slot was ALREADY filled by a
+false touching tip in the positive (195 px off) while the true folded leg had no candidate. So the absorbed mutants
+are the naming false positives seen in score.mjs, not a verdict bug; a verdict cannot be sharper than the pool.
+The independent tip detector (`classifyTips` thin-tip count) as a second count check: 10/7 on the freshwater
+positive, 9/8 vent, and erasing a mud leg RAISES it 7 → 10 (the erase edge spawns tips) — **not usable as a count
+check; recorded.** The mud crab admits every mutant because its Far side already runs on loops (e2/l3 vs 3).
+Precision-first consequence for the verdict: a slot filled by a loop/touch candidate is weak evidence, but the vent
+crab's true rear feet ARE loop/touch candidates, so the evidence rule must come from the candidate features, which
+slice 18 could not separate (rest-against-body is the best test found). Open.
+**P7 labels (`labels.mjs`), first cut:** every mask pixel goes to the part whose ridge path is geodesically nearest
+(multi-source chamfer Dijkstra inside the mask; 130–200 ms per crab at the 512 px working scale). Seeds: body = the
+body's own ridge pixels (thick edges not on a claw chain — seeding the whole thick REGION gave the claw arm/palm to
+the body because it is as thick as the carapace: claws 0.17–0.36 IoU → 0.29–0.50 with ridge seeds), claws = full
+chain ridge from the body root, legs = ridge from the thick-region exit to the tip, split upper/lower at the slot's
+first joint fraction; loop/touch legs now carry a path too. Against Codex's `labels.png` (IoU per part, working
+grid): body 0.35–0.48, claws 0.29–0.50 (freshwater near claw 0.01: it was never a candidate), legs 0.6–0.8 for
+correctly named lower segments, 0.3–0.6 upper, 0 wherever the name is wrong — labels inherit naming exactly.
+Visible defects on the overlay: upper leg segments cut wedges out of the carapace rim (the rim is nearer a leg
+ridge than the carapace ridge); the near claw's arm still goes to the body where the claw chain starts at the palm.
+Next for P7: seed the body with its outline ring (P3's "body outline = boundary ring of the thick component"), so a
+rim pixel is body unless it lies on a limb's own thin cross-section (DT ≤ limb thickness at that path point).
+Nothing here is a gate; naming remains the bottleneck for both the verdict and the labels.
