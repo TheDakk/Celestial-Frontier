@@ -17,39 +17,38 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — P1 hidden-pair rig/film delivered; CPU and continuity leaves
+## SESSION HANDOFF — four-crab intake partial; three painted chain locations unresolved
 
-Nick accepts P1 Coconut Crab generation01 art. Six visible walking legs are correct; the
-fourth pair is declared hidden, not absent. No new painting. Exact1254-square master and
-RGBA/prompt/tool/hash evidence remain in audits/VISION_P1_COCONUT_20260920/generation-01/.
-Current signed review packet:
-[audits/VISION_P1_COCONUT_20260920/hidden-01/README.md](audits/VISION_P1_COCONUT_20260920/hidden-01/README.md).
+Latest Nick direction: intake all four generation01 paintings now, no hidden declaration,
+before painted-tier CPU decision. Native films wait for CPU gate + split continuity guard.
+Read-only authority: anthropic VISION_PROGRAM_20260920/P1-four-crabs-review/README.md.
+Packet: audits/VISION_P1_FOUR_CRABS_20260920/intake-01/README.md.
 
-Producer580a6ffb implements explicit cf.anatomy-presence/v2.hidden, complete inferred hidden
-joints, no hidden paint/positive skin weights, and six visible contacts. Nick additionally
-authorized measured brachyuran contact limits:12,318 samples across all five painter crabs
-plus P1 give Knee17.1176319° / Foot50.0539666°, hence±30°/±65° by max+10°, round-up-to5°.
-Raw clips and raw±35° limits remain unchanged. Hidden-paint/missing-declaration controls
-refuse, eight-visible painter admits, five-crab static rows bit-identical, Civet green.
-35 runtime tests, Node controls, typecheck and root validate pass.
+Vent completed shared intake:25parts,8contacts,3794field vertices at boundary24/interior56.
+All12static rows +10-second presentation pass, exact rest, planted drift0.0226671px,
+seam gap0.00007038px. No native film/pixel-rest or CPU claim; art verdict remains Nick's.
+No hidden/absent override, runtime solver/limits/raw clips or original image changes.
 
-Current fit04 is on signed/verified mask producer670fe8b6. It corrects873Far-claw-tip pixels
-from body to claw, preserving all landmarks/master/other limbs. Native02 and comparison sheet
-are complete:14.218220s,853encoded frames, all12rows including faint, zero refused frames,
-exact RGBA rest, max planted drift0.00107112px; all contact/seam/fold/limit rows pass.
-**Animation acceptance remains open:** approach p95=2.10ms and recorded rig p95=3.20ms exceed
-strict<2ms; faint recovery root-step continuity is9.10410px vs8.09505px stride bound. Exact
-numbers and diagnoses are in completion-summary.json/CPU.md. No gate/root-key change and
-no unchanged retry. Nick's art acceptance/masterIntakeAccepted stand; animationReady=false.
+Crab fourth right chain, Freshwater fourth left and Mud fourth left remain unlocated
+in Codex's mask tracing, conflicting with Claude's eight-visible review.23draft masks
+per subject retain all visible pixels; incomplete inventories correctly refuse before
+binding. Do NOT invent foot locations, hidden presence or assign claw/body paint as a leg.
+Nick directed using the tip detector; done read-only from Claude's tips.mjs, with hashes,
+exact parameters and candidate coordinate overlays retained. Raw down-counts9/9/9/11
+match the review but include claw fingers/duplicate positions along toes. Candidate
+ownership comparison in packetREADME does not resolve those three chain locations.
+Next input: actual foot/knee coordinates or labelled paths for those three chains.
+No repaint. Mud facial orbs are a T2 finding only, retained unchanged as body paint.
 
-Codex next: retain fit04 and native02, do not silently start broader CPU/root-continuity
-rework or the other four packets. Claude next: review the signed packet read-only and
-reconcile the hidden-presence contract; no sync. Roster and four queued crab packets hold.
-R4 and earlier anatomy packet remain complete history; Codex R9 canonical at separately
-authorized future re-merge. PR42 parked. Nick need not switch apps for a Git handoff.
+Current task is PARTIAL: cannot honestly provide four admitted bindings or a five-painted-
+subject CPU table yet. Coconut fit04 remains accepted unchanged; Vent provides the second
+painted binding. Prior CPU candidates80/128/256 at VISION_P1_ANIMATION_20260920 remain
+prepared;80/128 byte-identical. No native timing or root-guard change has run. Complete
+remaining intake after coordinate resolution, then resume authorized CPU/continuity work.
 
-Read-only authority: anthropic audits/VISION_PROGRAM_20260920/P1_VERDICT.md, plus Nick's
-explicit in-session contact-limit approval. Branch openai/mac; Node26.9.0 uninterrupted
-receipt reused. No fetch, sync, push, PR, merge, release, deploy, new branch or unsigned
-fallback. Pre-existing untracked .DS_Store untouched. Report actual local HEAD/ahead only
-against cached origin/openai/mac. No hosted action is authorized or needed.
+Tool syntax/root validate pass;50-probe fingerprint unchanged. No fetch/sync/push/PR/merge,
+release/deploy. PR42 and roster hold. Node26.9.0 uninterrupted receipt reused. OpenAI/Codex
+on macOS, /Users/nick/Projects/celestial-frontier-openai-mac, branch openai/mac. Signing
+checkpoint status is reported by actual Git HEAD and packet signature receipt; no unsigned
+fallback. Pre-existing .DS_Store untouched. Claude reviews packet/overlays read-only,
+no sibling edits/copies. No GitHub action or app switch for Git required.

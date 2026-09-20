@@ -1,0 +1,25 @@
+{
+  "schema": "cf.paint-only-findings/v1",
+  "reviewType": "visual review of delivered original; no mask or rig admission",
+  "status": "RETAINED_FOR_REVIEW_INTAKE_HELD",
+  "anatomyObservations": [
+    "One carapace, two claws and two stalked eyes are visible. The walking ranks overlap the claws/body; eight separate complete walking chains cannot be certified from this inspection. No absent or hidden state is inferred.",
+    "The heavy claws curl down and inward in front of the body, differing from the anatomy guide’s raised/outward claw pose."
+  ],
+  "sharedOutputFindings": [
+    "Delivered 1254 x 1254 RGBA rather than requested 1024 x 1024 opaque magenta. Preserve original exactly; no keying, despill, alpha rewrite or resize performed.",
+    "Prompt requires an 8 percent safe margin; alpha >= 128 content violates the side margin. No crop or framing correction performed."
+  ],
+  "alpha128MarginsFraction": {
+    "left": 0.03987240829346093,
+    "right": 0.03588516746411483,
+    "top": 0.24720893141945774,
+    "bottom": 0.21371610845295055
+  },
+  "sideMarginsPass8Percent": false,
+  "noRetries": true,
+  "qualityAccepted": false,
+  "masterIntakeAccepted": false,
+  "animationReady": false,
+  "decisionOwner": "Nick / trust-track review; not inferred from generation"
+}

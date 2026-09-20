@@ -1,0 +1,39 @@
+{
+  "status": "DELIVERED_ONCE_INTAKE_HELD",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed",
+  "seed": null,
+  "seedReason": "not exposed",
+  "sentPromptSha256": "524c652dc2e776f8cd547965ca79b4e39d0c02a688690f76640c6a988e3abafd",
+  "masterSha256": "7ff805602f17688c4f36db55e041849148ba4796414ff7e961032bdf7432b9cf",
+  "masterPath": "audits/VISION_P1_FOUR_CRABS_20260920/mud-crab/generation-01/mud-crab-master.png",
+  "originalToolPath": "/Users/nick/.codex/generated_images/01a0bd11-37dd-7b60-8093-cdfa04c8f9d8/exec-07db5e94-f07f-47a3-a51d-7152b6fc5524.png",
+  "originalBytesIdentical": true,
+  "actualDimensions": [
+    1254,
+    1254
+  ],
+  "requestedDimensions": [
+    1024,
+    1024
+  ],
+  "mode": "RGBA",
+  "alphaHistogram": {
+    "zero": 1088807,
+    "partial": 482955,
+    "opaque": 754
+  },
+  "alpha128BoundingBox": [
+    13,
+    280,
+    1237,
+    1048
+  ],
+  "magentaOpaquePixels": 0,
+  "retries": 0,
+  "promptModified": false,
+  "resize": false,
+  "channelChanges": 0,
+  "intakePerformed": false,
+  "rigPerformed": false
+}

@@ -1,0 +1,136 @@
+{
+  "status": "PASS",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2955,
+      "sha256": "c0acf5818cf8469ad9069999b19857ceb0b328c9ba724072441cfc415e5a69a5"
+    },
+    {
+      "path": "crab/generation-01/README.md",
+      "bytes": 999,
+      "sha256": "3a423215ac2cbcce6715f5ff2c41f56fb70af340941f674e25adc8f43a830616"
+    },
+    {
+      "path": "crab/generation-01/crab-master.png",
+      "bytes": 1287384,
+      "sha256": "0586a468c0685b53aba0993788e834468dd9d7cac84bdeb212fe9531124442be"
+    },
+    {
+      "path": "crab/generation-01/findings.json",
+      "bytes": 1286,
+      "sha256": "50c94544c52a9a79ce49bf0edc4c8fdbc058e232304632eef67ecf52c9028518"
+    },
+    {
+      "path": "crab/generation-01/request.json",
+      "bytes": 1340,
+      "sha256": "0b43a1d9f281dcb4e5ff37cc21dc9197a92b9c7eda8c383f4c19e19dec655a71"
+    },
+    {
+      "path": "crab/generation-01/result.json",
+      "bytes": 1034,
+      "sha256": "734bf2b4dc77b2e82bb8369b7206733bea3665d7ac7d441f7a6a8944ca832def"
+    },
+    {
+      "path": "crab/generation-01/sent-prompt.txt",
+      "bytes": 8033,
+      "sha256": "6781207628876dd378eb01b00c5df6ae89763b4d138d9526357c11f99341138c"
+    },
+    {
+      "path": "freshwater-crab/generation-01/README.md",
+      "bytes": 1021,
+      "sha256": "07aa4eda5d314b0f9de3bc7114a7ae0056070a179485394ea4452ca933a3fb93"
+    },
+    {
+      "path": "freshwater-crab/generation-01/findings.json",
+      "bytes": 1250,
+      "sha256": "476ea5c21836c66d03861f4739dccca3cec007b4af2e2e4393994e8ba1c189ef"
+    },
+    {
+      "path": "freshwater-crab/generation-01/freshwater-crab-master.png",
+      "bytes": 1185549,
+      "sha256": "49645b5e951eaf4207e95ee2453f218abc56e49ba75451e188452e74b3cbce44"
+    },
+    {
+      "path": "freshwater-crab/generation-01/request.json",
+      "bytes": 1362,
+      "sha256": "68b53d7f77146e27cd136442fc55f89dc499bfc5df8da86f05589d4fe807f9e4"
+    },
+    {
+      "path": "freshwater-crab/generation-01/result.json",
+      "bytes": 1056,
+      "sha256": "efeba3db80df646476cadc5fc6ff255b1a8db6eccc193b7c4768c19f005cf9ea"
+    },
+    {
+      "path": "freshwater-crab/generation-01/sent-prompt.txt",
+      "bytes": 8055,
+      "sha256": "fc464780e55c025f35bdd7b49c5fdfe3b46f1c959fe587fd25f41a56583f7de5"
+    },
+    {
+      "path": "mud-crab/generation-01/README.md",
+      "bytes": 1007,
+      "sha256": "f6c7a436b59254918c52699bc799a5aac982799e9f6d69a18efba6fd6aa599e6"
+    },
+    {
+      "path": "mud-crab/generation-01/findings.json",
+      "bytes": 1419,
+      "sha256": "6bbe738c9d9a978496e1cfa63722d5b09a3ca024781b855e510e45bee7e121aa"
+    },
+    {
+      "path": "mud-crab/generation-01/mud-crab-master.png",
+      "bytes": 1343856,
+      "sha256": "7ff805602f17688c4f36db55e041849148ba4796414ff7e961032bdf7432b9cf"
+    },
+    {
+      "path": "mud-crab/generation-01/request.json",
+      "bytes": 1348,
+      "sha256": "fe2c84b07351afa066abb90ddfa11b5c8c447f6722b7bc6a9fd74dc0d98fedbe"
+    },
+    {
+      "path": "mud-crab/generation-01/result.json",
+      "bytes": 1043,
+      "sha256": "e14899bbd60dfa55d2be86497e63aecafbdc4607c32098cfa9213c00cb816d01"
+    },
+    {
+      "path": "mud-crab/generation-01/sent-prompt.txt",
+      "bytes": 8041,
+      "sha256": "524c652dc2e776f8cd547965ca79b4e39d0c02a688690f76640c6a988e3abafd"
+    },
+    {
+      "path": "vent-crab/generation-01/README.md",
+      "bytes": 1009,
+      "sha256": "e3f162f0af032a1ed2ba70d0a9977f49302e5b4d3be3220732fa3d86a5739d4c"
+    },
+    {
+      "path": "vent-crab/generation-01/findings.json",
+      "bytes": 1290,
+      "sha256": "21da4f6b16be632ab438256b23eb802b2da214d8dbe78c6f5cbf95c3ad38e123"
+    },
+    {
+      "path": "vent-crab/generation-01/request.json",
+      "bytes": 1350,
+      "sha256": "fde29ff1df34861ea8d89d1c16352d610a5f7c03e09184023094c36d103c81b1"
+    },
+    {
+      "path": "vent-crab/generation-01/result.json",
+      "bytes": 1044,
+      "sha256": "9aee652a6b6d6d3774e63a6cd2bdf2e72ea33569c8094b96c8308c9185743dd0"
+    },
+    {
+      "path": "vent-crab/generation-01/sent-prompt.txt",
+      "bytes": 8043,
+      "sha256": "16074fb3c4b368ad21dc51ffb4b4806ca0653cd85e5f3f575d97d6a4797139fc"
+    },
+    {
+      "path": "vent-crab/generation-01/vent-crab-master.png",
+      "bytes": 1351192,
+      "sha256": "fec1a86715ddf9f79781452a050e17f5522a476184251d53e2b4e99c765ec810"
+    }
+  ],
+  "pngsDecoded": 4,
+  "generationCount": 4,
+  "retries": 0,
+  "originalCopiesByteIdentical": true,
+  "promptCopiesByteIdentical": true,
+  "postToolImageChannelChanges": 0
+}

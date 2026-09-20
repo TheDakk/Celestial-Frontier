@@ -1,0 +1,49 @@
+{
+  "sourceLabelsReused": false,
+  "owner": "independent polygons observed on this generation01 painting",
+  "counts": [
+    195965,
+    6308,
+    5739,
+    13318,
+    13676,
+    13914,
+    18717,
+    10724,
+    7045,
+    6865,
+    4549,
+    12521,
+    11982,
+    12717,
+    10611,
+    2592,
+    2917,
+    15455,
+    52671,
+    13573,
+    19907,
+    32134,
+    11125,
+    3607,
+    3400
+  ],
+  "hiddenParts": [],
+  "intake": {
+    "mode": "delivered alpha preserved byte-for-byte",
+    "erodedPixels": 0,
+    "despilledPixels": 0,
+    "kitAcceptance": false
+  },
+  "rgbaChangedChannels": 0,
+  "parts": {
+    "id": "p1-vent-crab",
+    "parts": 25,
+    "atlasSize": {
+      "width": 2046,
+      "height": 1230
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  }
+}

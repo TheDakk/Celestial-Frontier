@@ -1,3 +1,85 @@
+# P1 CPU preparation handoff — superseded2026-09-20
+
+## SESSION HANDOFF — P1 CPU candidates prepared; signing authentication pending
+
+Nick accepts hidden-01 as built, including the hidden contract and masterIntakeAccepted.
+Latest authority is the sibling read-only VISION_PROGRAM_20260920/P1_ANIMATION_REVIEW.md
+and Nick's September20 task: CPU vertex-budget measurement, then root-continuity ledger
+and split guard; paint the other four packets in parallel, one generation each. No other
+variant. No fetch/sync/push/PR/merge/release/deploy. PR42 and roster hold.
+
+Current work: audits/VISION_P1_ANIMATION_20260920/README.md. Accepted fit04/master/masks
+are untouched. Three isolated CPU candidates rebuild interiorStep80/128/256 with fixed
+boundaryStep24 through the current shared observed split. Field vertices3791/3791/3787
+versus retained baseline3838. 80/128 bindings are byte-identical and must share one native
+measurement, not an unchanged rerun. Candidate input-integrity receipt proves every copied
+record/part/mask/atlas byte matches fit04. Build script syntax and source diff checks pass.
+No native CPU timing yet; no selected replacement binding or painted-tier CPU gate.
+
+The signed producer commit failed with 1Password "agent returned an error". Readiness
+question is pending; there is no unsigned fallback. Candidate files are staged from that
+attempt; subsequent receipts/docs and parallel painting evidence may remain unstaged.
+Current HEAD remains df296fa40c922a0dbad061fda4ae75ab4301f817,35ahead cached origin.
+Do not repeat builds or generations. Sign and verify the CPU producer after authentication,
+then run current animation-completion/native-runner.mjs on distinct cpu80/cpu256 inputs
+with producer port/v2/apps/game/src and melee:pinch, under shared toolchain lock and approved
+out-of-sandbox browser execution. Retain56px baseline from hidden-01/native02. Report vertices,
+approach/full-film p95, seams, planted drift, exact rest. Nick decides CPU gate; unchanged<2ms.
+
+Only after CPU measurement: root maximum-per-sample ledger for all12rows/full presentation
+on five painter crabs plus accepted P1 (six brachyurans), then gait stride bound / measured
+non-gait max+10% rounded bound, doubled faint-recovery-key negative control. No root clip
+keys changed in production; hidden/limits/raw-clip contracts stand. That step is not started.
+
+Four new one-generation paintings and exact prompt/reference/tool/hash receipts are complete
+at audits/VISION_P1_FOUR_CRABS_20260920/README.md (26files, originals1254-square RGBA).
+No resize/channel changes/retries; Mud extra eye-like pair and other trust findings retained.
+Root validate passes,50-probe fingerprint unchanged. Intake and rigs wait. Consult that
+packet for completed image identities and visual findings; never retry a changed prompt.
+Node26.9.0 and uninterrupted September19 toolchain receipt reused. OpenAI/Codex on macOS,
+physical repo /Users/nick/Projects/celestial-frontier-openai-mac, branch openai/mac.
+Pre-existing untracked .DS_Store untouched. Claude reviews read-only; do not copy/sync files.
+No GitHub/app switch needed; only local signing authentication awaits Nick.
+
+# P1 hidden-01 completed handoff — archived 2026-09-20
+
+## SESSION HANDOFF — P1 hidden-pair rig/film delivered; CPU and continuity leaves
+
+Nick accepts P1 Coconut Crab generation01 art. Six visible walking legs are correct; the
+fourth pair is declared hidden, not absent. No new painting. Exact1254-square master and
+RGBA/prompt/tool/hash evidence remain in audits/VISION_P1_COCONUT_20260920/generation-01/.
+Current signed review packet:
+[audits/VISION_P1_COCONUT_20260920/hidden-01/README.md](audits/VISION_P1_COCONUT_20260920/hidden-01/README.md).
+
+Producer580a6ffb implements explicit cf.anatomy-presence/v2.hidden, complete inferred hidden
+joints, no hidden paint/positive skin weights, and six visible contacts. Nick additionally
+authorized measured brachyuran contact limits:12,318 samples across all five painter crabs
+plus P1 give Knee17.1176319° / Foot50.0539666°, hence±30°/±65° by max+10°, round-up-to5°.
+Raw clips and raw±35° limits remain unchanged. Hidden-paint/missing-declaration controls
+refuse, eight-visible painter admits, five-crab static rows bit-identical, Civet green.
+35 runtime tests, Node controls, typecheck and root validate pass.
+
+Current fit04 is on signed/verified mask producer670fe8b6. It corrects873Far-claw-tip pixels
+from body to claw, preserving all landmarks/master/other limbs. Native02 and comparison sheet
+are complete:14.218220s,853encoded frames, all12rows including faint, zero refused frames,
+exact RGBA rest, max planted drift0.00107112px; all contact/seam/fold/limit rows pass.
+**Animation acceptance remains open:** approach p95=2.10ms and recorded rig p95=3.20ms exceed
+strict<2ms; faint recovery root-step continuity is9.10410px vs8.09505px stride bound. Exact
+numbers and diagnoses are in completion-summary.json/CPU.md. No gate/root-key change and
+no unchanged retry. Nick's art acceptance/masterIntakeAccepted stand; animationReady=false.
+
+Codex next: retain fit04 and native02, do not silently start broader CPU/root-continuity
+rework or the other four packets. Claude next: review the signed packet read-only and
+reconcile the hidden-presence contract; no sync. Roster and four queued crab packets hold.
+R4 and earlier anatomy packet remain complete history; Codex R9 canonical at separately
+authorized future re-merge. PR42 parked. Nick need not switch apps for a Git handoff.
+
+Read-only authority: anthropic audits/VISION_PROGRAM_20260920/P1_VERDICT.md, plus Nick's
+explicit in-session contact-limit approval. Branch openai/mac; Node26.9.0 uninterrupted
+receipt reused. No fetch, sync, push, PR, merge, release, deploy, new branch or unsigned
+fallback. Pre-existing untracked .DS_Store untouched. Report actual local HEAD/ahead only
+against cached origin/openai/mac. No hosted action is authorized or needed.
+
 ## September20 — P1 implementation/capture handoff (verbatim)
 
 ## SESSION HANDOFF — P1 accepted art; hidden-pair implementation and faint finding

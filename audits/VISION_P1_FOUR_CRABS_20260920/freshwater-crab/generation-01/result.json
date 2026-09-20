@@ -1,0 +1,39 @@
+{
+  "status": "DELIVERED_ONCE_INTAKE_HELD",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed",
+  "seed": null,
+  "seedReason": "not exposed",
+  "sentPromptSha256": "fc464780e55c025f35bdd7b49c5fdfe3b46f1c959fe587fd25f41a56583f7de5",
+  "masterSha256": "49645b5e951eaf4207e95ee2453f218abc56e49ba75451e188452e74b3cbce44",
+  "masterPath": "audits/VISION_P1_FOUR_CRABS_20260920/freshwater-crab/generation-01/freshwater-crab-master.png",
+  "originalToolPath": "/Users/nick/.codex/generated_images/01a0bd11-37dd-7b60-8093-cdfa04c8f9d8/exec-19136a49-59e6-4ddd-b21a-45968e28abba.png",
+  "originalBytesIdentical": true,
+  "actualDimensions": [
+    1254,
+    1254
+  ],
+  "requestedDimensions": [
+    1024,
+    1024
+  ],
+  "mode": "RGBA",
+  "alphaHistogram": {
+    "zero": 1145426,
+    "partial": 426449,
+    "opaque": 641
+  },
+  "alpha128BoundingBox": [
+    44,
+    288,
+    1217,
+    998
+  ],
+  "magentaOpaquePixels": 0,
+  "retries": 0,
+  "promptModified": false,
+  "resize": false,
+  "channelChanges": 0,
+  "intakePerformed": false,
+  "rigPerformed": false
+}

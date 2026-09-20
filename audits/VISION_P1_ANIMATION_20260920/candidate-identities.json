@@ -1,0 +1,17 @@
+[
+  {
+    "interiorStep": 80,
+    "bindingSha256": "e6034ad6e864c30ec971eebba4a89dab207f425b7523226641f2267e7e2754f3",
+    "paintSkinSha256": "18191b9b5e24b967fce5957fa240d944694dee31d5c4b64dda737cc4482cbbca"
+  },
+  {
+    "interiorStep": 128,
+    "bindingSha256": "e6034ad6e864c30ec971eebba4a89dab207f425b7523226641f2267e7e2754f3",
+    "paintSkinSha256": "18191b9b5e24b967fce5957fa240d944694dee31d5c4b64dda737cc4482cbbca"
+  },
+  {
+    "interiorStep": 256,
+    "bindingSha256": "9eb791821e91e2f213851aafeb0db459baf703c975c7e2e4693032a6df1a2203",
+    "paintSkinSha256": "db5c18c69f7f3c8ec7e69efe75c1dff3faaabfb70ecbfb87eecb1d4e8a1c2364"
+  }
+]

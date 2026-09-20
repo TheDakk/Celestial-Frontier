@@ -1,0 +1,44 @@
+{
+  "scope": "Latest no-hidden four-crab intake direction; partial completion, unresolved authoring coordinates",
+  "subjects": [
+    {
+      "id": "vent-crab",
+      "status": "STATIC_PASS_NATIVE_HELD",
+      "parts": 25,
+      "contacts": 8,
+      "fieldVertices": 3794,
+      "interiorStep": 56,
+      "boundaryStep": 24,
+      "exactRest": true,
+      "maximumPlantedDriftPx": 0.02266701152677438,
+      "maximumSeamGapPx": 7.037185979604059e-05,
+      "rows": 13
+    },
+    {
+      "id": "crab",
+      "exitCode": 1,
+      "status": "REFUSED_INCOMPLETE_OBSERVED_INVENTORY",
+      "missingChain": "leg3Near",
+      "log": "crab-intake-refusal.log"
+    },
+    {
+      "id": "freshwater-crab",
+      "exitCode": 1,
+      "status": "REFUSED_INCOMPLETE_OBSERVED_INVENTORY",
+      "missingChain": "leg3Far",
+      "log": "freshwater-crab-intake-refusal.log"
+    },
+    {
+      "id": "mud-crab",
+      "exitCode": 1,
+      "status": "REFUSED_INCOMPLETE_OBSERVED_INVENTORY",
+      "missingChain": "leg3Far",
+      "log": "mud-crab-intake-refusal.log"
+    }
+  ],
+  "hiddenDeclarations": 0,
+  "mastersChanged": 0,
+  "runtimeChanges": 0,
+  "nativeFilmsCreated": 0,
+  "paintedTierGateChanged": false
+}
