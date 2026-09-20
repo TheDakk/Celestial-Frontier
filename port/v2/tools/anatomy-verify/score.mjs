@@ -14,6 +14,8 @@ export const SUBJECTS=[
   ['mud-crab','brachyuran',codex+'audits/VISION_P1_FOUR_CRABS_20260920/mud-crab/generation-01/mud-crab-master.png',codex+'audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/record.json'],
   ['vent-crab','brachyuran',codex+'audits/VISION_P1_FOUR_CRABS_20260920/vent-crab/generation-01/vent-crab-master.png',codex+'audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/record.json'],
   ['civet','quadruped',root+'audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png',root+'audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/record.json'],
+  // the second quadruped (PROGRAM §6's exception): Codex's Wolf, no hand landmarks by design — declaration only
+  ['wolf','quadruped',codex+'audits/VISION_P1_QUADRUPED_20260921/generation-01/wolf-master.png',null,codex+'audits/VISION_P1_QUADRUPED_20260921/generation-01/presence.json'],
 ];
 export function truthOf(record){const {width:w,height:h}=record.geometry,lm=record.landmarks;const px={};for(const [k,v] of Object.entries(lm))px[k]=[v[0]*w,v[1]*h];return {px,hidden:record.anatomy?.hidden??[],absent:record.anatomy?.absent??[]};}
 export function scoreSubject(res,truth,template,tol){
@@ -31,7 +33,7 @@ export function scoreSubject(res,truth,template,tol){
 }
 if(process.argv[1]&&fileURLToPath(import.meta.url)===path.resolve(process.argv[1])){
   const tol=Number(process.argv[2]??25),json=process.argv[3]==='json';const tot={visible:0,pos:0,assigned:0,named:0,hiddenOk:0};const out={};
-  for(const [id,template,master,rec] of SUBJECTS){const png=readPng(fs.readFileSync(master));const truth=truthOf(JSON.parse(fs.readFileSync(rec,'utf8')));
+  for(const [id,template,master,rec] of SUBJECTS){if(!rec){console.log(id.padEnd(16),'no record (declaration only) — see ic4.mjs / sheet.mjs');continue;}const png=readPng(fs.readFileSync(master));const truth=truthOf(JSON.parse(fs.readFileSync(rec,'utf8')));
     const opts=process.env.ASSIGN_OPTS?JSON.parse(process.env.ASSIGN_OPTS):{};const res=assignLegs(png.data,png.width,png.height,null,{template,...opts});const s=scoreSubject(res,truth,template,tol);out[id]=s;
     for(const k of ['visible','pos','assigned','named'])tot[k]+=s[k];tot.hiddenOk+=s.hiddenOk?1:0;
     console.log(id.padEnd(16),`pos ${s.pos}/${s.visible}`.padEnd(10),`named ${s.named}/${s.assigned}`.padEnd(12),'hidden',s.hiddenOk?'OK ':'NO ',JSON.stringify(s.hidden),'truth',JSON.stringify(s.truthHidden),'| pool',res.pool.length,'|',s.perName.join(' '),'| joints',s.jointErr.join(','),'| hidden',s.hiddenErr.join(','));}

@@ -61,6 +61,11 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
   else{let sx=0,sy=0,n=0;for(const e of bodyEdges)for(const i of e.path){sx+=i%W;sy+=Math.floor(i/W);n++;}centre=[sx/n,sy/n];axis=[1,0];}
   {const L=Math.hypot(axis[0],axis[1])||1;axis=[axis[0]/L,axis[1]/L];if(T.facing==='right'&&axis[0]<0)axis=[-axis[0],-axis[1]];if(T.facing==='left'&&axis[0]>0)axis=[-axis[0],-axis[1]];}
   const bodyIds=new Set(lc.bodyNodes.map(b=>b.id));
+  // distance along BODY edges from the spine's nodes to every body node (Dijkstra): an appendage whose ridge is
+  // body-thick (a bushy tail) reaches its endpoint chain only at the tuft, so its length must count the thick run
+  const spineDist=new Map();if(spine){const badj=new Map();for(const e of g.edges){if(e.meanDt<lc.bodyDt)continue;if(!badj.has(e.a))badj.set(e.a,[]);if(!badj.has(e.b))badj.set(e.b,[]);badj.get(e.a).push({e,to:e.b});badj.get(e.b).push({e,to:e.a});}
+    const q=[spine.a,spine.b];spineDist.set(spine.a,0);spineDist.set(spine.b,0);while(q.length){q.sort((a,b)=>spineDist.get(a)-spineDist.get(b));const u=q.shift();for(const o of badj.get(u)??[]){const nd=spineDist.get(u)+o.e.length;if(!spineDist.has(o.to)||nd<spineDist.get(o.to)){spineDist.set(o.to,nd);if(!q.includes(o.to))q.push(o.to);}}}}
+  const fromSpine=c=>c.chain?(spineDist.get(c.chain.rootNode.id)??0):0;
   // distance (working px, chamfer) from every mask pixel to the thick region (pixels with DT ≥ bodyDt)
   const bodyDist=new Float32Array(W*H).fill(1e9);{const q=[];for(let i=0;i<W*H;i++)if(mask[i]&&dt[i]>=lc.bodyDt){bodyDist[i]=0;q.push(i);}let h=0;while(h<q.length){const i=q[h++];const x=i%W,y=(i-x)/W;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){if(!dx&&!dy)continue;const nx=x+dx,ny=y+dy;if(nx<0||ny<0||nx>=W||ny>=H)continue;const j=ny*W+nx;if(!mask[j])continue;const nd=bodyDist[i]+(dx&&dy?1.4142:1);if(nd<bodyDist[j]-1e-6){bodyDist[j]=nd;q.push(j);}}}}
   // limb length from the thick-region EXIT (first chain pixel with DT < bodyDt, walking root → tip) to the tip
@@ -212,7 +217,7 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
     let best=null;const stations=[...rearApp.map(a=>({app:a})),...Array.from({length:K},(_,k)=>({k})),...frontApp.map(a=>({app:a}))];
     const rec=(si,i,acc,cost)=>{if(si===stations.length){const used=acc.flat().filter(Boolean).length;const total=cost+(cs.length-used)*0.7;if(!best||total<best.cost)best={cost:total,acc:acc.map(s=>s.slice())};return;}
       const st=stations[si];
-      if(st.app){rec(si+1,i,acc.concat([[null]]),cost+0.8);for(let j=i;j<cs.length;j++)rec(si+1,j+1,acc.concat([[cs[j]]]),cost+lenCost(cs[j],st.app.length)*2.0+(cs[j].kind==='touch'?0.5:cs[j].kind==='loop'?0.3:0));return;}
+      if(st.app){rec(si+1,i,acc.concat([[null]]),cost+0.8);for(let j=i;j<cs.length;j++)rec(si+1,j+1,acc.concat([[cs[j]]]),cost+lenCost({...cs[j],len:cs[j].len+fromSpine(cs[j])},st.app.length)*2.0+(cs[j].kind==='touch'?0.5:cs[j].kind==='loop'?0.3:0));return;}
       rec(si+1,i,acc.concat([[null,null]]),cost+2.0); // empty station: expensive (a whole station missing)
       for(let j=i;j<cs.length;j++){const c=cs[j];const near=c.y>=yLow-0.25*T.legLength*R;
         rec(si+1,j+1,acc.concat([[near?null:c,near?c:null]]),cost+legCost(c)+1.0); // one leg at the station: the other depth hidden
