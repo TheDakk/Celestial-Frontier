@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 703338192,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 3,
+    "body": 5,
+    "loco": 1,
+    "trait": 1,
+    "size": 2,
+    "diet": 5,
+    "head": 0,
+    "limbs": 4,
+    "skin": 6,
+    "tail": 5,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 5,
+    "habitat": 17,
+    "detail": 6,
+    "accent": 15,
+    "temper": 3,
+    "sense": 7,
+    "repro": 1,
+    "life": 4,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Vent Shrimp"
+  },
+  "observation": null
+}

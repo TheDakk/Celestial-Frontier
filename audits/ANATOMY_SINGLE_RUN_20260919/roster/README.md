@@ -1,3 +1,5 @@
 # Ordered roster intake
 
 All 58 identities from the historical missing roster remain in scope, including the five now admitted crabs. Process clawed/terrestrial crustaceans first, then small crustaceans and adjacent families. Reuse completed five-crab fit/bind/film evidence; attempt every other actual source and retain exact anatomy/compiler refusal before skipping binding. Max12 subjects per sheet; no visual acceptance from numbers. Producer/static/native results follow.
+
+Producer29c1b548 signed/verified. Native intake exhausted58: five existing fit/bind/films reused,53fit refusals,0source failures. All53new source captures have exact ordinary/observer RGBA parity.45lack source observation, seven have partial non-crab observation without a complete compiler, and Fiddler's six-leg graph refuses the eight-leg compiler. No new complete binding fabricated. [Full outcomes](native-01/report.json), [15sheets /58subjects](sheet-receipt.json). Clawed and full12-subject small-crustacean sheets inspected; fit/refusal labels and source paint are readable.

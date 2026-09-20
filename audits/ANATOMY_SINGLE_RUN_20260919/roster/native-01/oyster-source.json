@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 3213158370,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 16,
+    "body": 2,
+    "loco": 8,
+    "trait": 0,
+    "size": 0,
+    "diet": 4,
+    "head": 7,
+    "limbs": 2,
+    "skin": 7,
+    "tail": 1,
+    "pattern": 0,
+    "eyes": 1,
+    "behavior": 11,
+    "habitat": 16,
+    "detail": 8,
+    "accent": 3,
+    "temper": 2,
+    "sense": 6,
+    "repro": 3,
+    "life": 1,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Oyster"
+  },
+  "observation": null
+}

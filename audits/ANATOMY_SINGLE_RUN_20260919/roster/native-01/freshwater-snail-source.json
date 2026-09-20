@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 1016614907,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 11,
+    "body": 12,
+    "loco": 17,
+    "trait": 14,
+    "size": 2,
+    "diet": 0,
+    "head": 2,
+    "limbs": 0,
+    "skin": 0,
+    "tail": 6,
+    "pattern": 0,
+    "eyes": 3,
+    "behavior": 1,
+    "habitat": 2,
+    "detail": 3,
+    "accent": 8,
+    "temper": 7,
+    "sense": 4,
+    "repro": 1,
+    "life": 2,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Freshwater Snail"
+  },
+  "observation": null
+}

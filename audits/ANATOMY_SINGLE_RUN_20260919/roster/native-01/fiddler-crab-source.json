@@ -1,0 +1,336 @@
+{
+  "genome": {
+    "seed": 1216492720,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 13,
+    "body": 7,
+    "loco": 17,
+    "trait": 22,
+    "size": 2,
+    "diet": 2,
+    "head": 5,
+    "limbs": 2,
+    "skin": 8,
+    "tail": 6,
+    "pattern": 4,
+    "eyes": 5,
+    "behavior": 5,
+    "habitat": 9,
+    "detail": 1,
+    "accent": 14,
+    "temper": 8,
+    "sense": 6,
+    "repro": 5,
+    "life": 3,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Fiddler Crab"
+  },
+  "observation": {
+    "schema": "cf.painter-topology/v1",
+    "ownerId": "faunaFiddler",
+    "family": "brachyuran",
+    "coordinateSize": 440,
+    "materials": {
+      "surface": "chitinous",
+      "paletteSource": "genome"
+    },
+    "features": [
+      {
+        "id": "leg0Far",
+        "kind": "leg",
+        "points": [
+          [
+            180.4,
+            242.40000000000003
+          ],
+          [
+            146.4,
+            254.40000000000003
+          ],
+          [
+            136.4,
+            272.40000000000003
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "leg0Near",
+        "kind": "leg",
+        "points": [
+          [
+            259.6,
+            242.40000000000003
+          ],
+          [
+            293.6,
+            254.40000000000003
+          ],
+          [
+            303.6,
+            272.40000000000003
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "leg1Far",
+        "kind": "leg",
+        "points": [
+          [
+            180.4,
+            254.40000000000003
+          ],
+          [
+            146.4,
+            266.40000000000003
+          ],
+          [
+            136.4,
+            284.40000000000003
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "leg1Near",
+        "kind": "leg",
+        "points": [
+          [
+            259.6,
+            254.40000000000003
+          ],
+          [
+            293.6,
+            266.40000000000003
+          ],
+          [
+            303.6,
+            284.40000000000003
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "leg2Far",
+        "kind": "leg",
+        "points": [
+          [
+            180.4,
+            266.40000000000003
+          ],
+          [
+            146.4,
+            278.40000000000003
+          ],
+          [
+            136.4,
+            296.40000000000003
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "leg2Near",
+        "kind": "leg",
+        "points": [
+          [
+            259.6,
+            266.40000000000003
+          ],
+          [
+            293.6,
+            278.40000000000003
+          ],
+          [
+            303.6,
+            296.40000000000003
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "carapace",
+        "kind": "body",
+        "points": [
+          [
+            220,
+            246.40000000000003
+          ]
+        ],
+        "widths": [
+          132,
+          92.39999999999999
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "palmFar",
+        "kind": "arm",
+        "points": [
+          [
+            137.5,
+            252.40000000000003
+          ]
+        ],
+        "widths": [
+          70.2,
+          48.6
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "fixedFingerFar",
+        "kind": "arm",
+        "points": [
+          [
+            113.2,
+            236.20000000000005
+          ],
+          [
+            75.4,
+            230.80000000000004
+          ],
+          [
+            67.3,
+            249.70000000000005
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "dactylFar",
+        "kind": "arm",
+        "points": [
+          [
+            113.2,
+            257.8
+          ],
+          [
+            78.1,
+            265.90000000000003
+          ],
+          [
+            70,
+            274.00000000000006
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "palmNear",
+        "kind": "arm",
+        "points": [
+          [
+            289.3,
+            258.40000000000003
+          ]
+        ],
+        "widths": [
+          28.6,
+          19.8
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "fixedFingerNear",
+        "kind": "arm",
+        "points": [
+          [
+            299.2,
+            251.80000000000004
+          ],
+          [
+            314.6,
+            249.60000000000002
+          ],
+          [
+            317.90000000000003,
+            257.3
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "dactylNear",
+        "kind": "arm",
+        "points": [
+          [
+            299.2,
+            260.6
+          ],
+          [
+            313.5,
+            263.90000000000003
+          ],
+          [
+            316.8,
+            267.20000000000005
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "eyeFar",
+        "kind": "head",
+        "points": [
+          [
+            208,
+            223.30000000000004
+          ],
+          [
+            208,
+            200.20000000000005
+          ]
+        ],
+        "layer": "near"
+      },
+      {
+        "id": "eyeNear",
+        "kind": "head",
+        "points": [
+          [
+            232,
+            223.30000000000004
+          ],
+          [
+            232,
+            200.20000000000005
+          ]
+        ],
+        "layer": "near"
+      }
+    ],
+    "unresolved": [
+      "Six visible quadratic walking curves, not eight articulated legs",
+      "No observed upper arm/elbow chain; large and small pincer paint only",
+      "Fourth walking pair and hidden roots unobserved; binding admission must refuse"
+    ],
+    "rasterFrame": {
+      "width": 880,
+      "height": 880,
+      "origin": [
+        220,
+        220
+      ],
+      "scale": 1
+    }
+  }
+}

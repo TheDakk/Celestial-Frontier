@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 29911955,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 6,
+    "body": 2,
+    "loco": 4,
+    "trait": 13,
+    "size": 1,
+    "diet": 0,
+    "head": 6,
+    "limbs": 4,
+    "skin": 4,
+    "tail": 5,
+    "pattern": 6,
+    "eyes": 4,
+    "behavior": 8,
+    "habitat": 13,
+    "detail": 2,
+    "accent": 2,
+    "temper": 6,
+    "sense": 8,
+    "repro": 6,
+    "life": 3,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Water Flea"
+  },
+  "observation": null
+}

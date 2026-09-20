@@ -1,0 +1,3156 @@
+{
+  "genome": {
+    "seed": 166205635,
+    "kingdom": "fauna",
+    "color": 11,
+    "form": 13,
+    "body": 1,
+    "loco": 12,
+    "trait": 5,
+    "size": 1,
+    "diet": 5,
+    "head": 1,
+    "limbs": 3,
+    "skin": 6,
+    "tail": 4,
+    "pattern": 5,
+    "eyes": 5,
+    "behavior": 6,
+    "habitat": 2,
+    "detail": 4,
+    "accent": 6,
+    "temper": 7,
+    "sense": 6,
+    "repro": 3,
+    "life": 4,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Pyrosome"
+  },
+  "observation": {
+    "schema": "cf.painter-topology/v1",
+    "ownerId": "faunaPyrosome",
+    "family": "colonial-filter",
+    "coordinateSize": 440,
+    "materials": {
+      "surface": "translucent",
+      "paletteSource": "genome"
+    },
+    "features": [
+      {
+        "id": "tube-left",
+        "kind": "body",
+        "structureId": "tube",
+        "points": [
+          [
+            183.56799999999998,
+            70.4
+          ],
+          [
+            161.304,
+            220
+          ],
+          [
+            169.4,
+            369.59999999999997
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "tube-right",
+        "kind": "body",
+        "structureId": "tube",
+        "points": [
+          [
+            270.6,
+            369.59999999999997
+          ],
+          [
+            278.696,
+            220
+          ],
+          [
+            256.432,
+            70.4
+          ]
+        ],
+        "curve": "quadratic",
+        "layer": "near"
+      },
+      {
+        "id": "aperture",
+        "kind": "opening",
+        "points": [
+          [
+            220,
+            72.60000000000001
+          ]
+        ],
+        "widths": [
+          70.84,
+          24.64
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid0",
+        "kind": "mark",
+        "points": [
+          [
+            251.6367937760242,
+            366.6477284867316
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid1",
+        "kind": "mark",
+        "points": [
+          [
+            181.94264355735615,
+            218.91562065370377
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid2",
+        "kind": "mark",
+        "points": [
+          [
+            182.06271596076485,
+            169.1594576202333
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid3",
+        "kind": "mark",
+        "points": [
+          [
+            214.18961350945906,
+            112.45836992636322
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid4",
+        "kind": "mark",
+        "points": [
+          [
+            249.20008697939144,
+            164.06334215179083
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid5",
+        "kind": "mark",
+        "points": [
+          [
+            214.10945439057994,
+            252.0730233278125
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid6",
+        "kind": "mark",
+        "points": [
+          [
+            238.73288995855398,
+            357.44891682602463
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid7",
+        "kind": "mark",
+        "points": [
+          [
+            241.45580608343786,
+            96.7700339626521
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid8",
+        "kind": "mark",
+        "points": [
+          [
+            171.42293150105985,
+            204.5483526136726
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid9",
+        "kind": "mark",
+        "points": [
+          [
+            268.5005338941404,
+            237.93216175623235
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid10",
+        "kind": "mark",
+        "points": [
+          [
+            193.8644218316995,
+            304.38796236403283
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid11",
+        "kind": "mark",
+        "points": [
+          [
+            253.29059030977538,
+            192.76714893877505
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid12",
+        "kind": "mark",
+        "points": [
+          [
+            223.95929354601128,
+            180.1203943829983
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid13",
+        "kind": "mark",
+        "points": [
+          [
+            246.9039018691791,
+            368.08494624719015
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid14",
+        "kind": "mark",
+        "points": [
+          [
+            198.13018572456605,
+            173.93995508961376
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid15",
+        "kind": "mark",
+        "points": [
+          [
+            187.5292425799645,
+            172.6280004702508
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid16",
+        "kind": "mark",
+        "points": [
+          [
+            211.40007530258302,
+            336.3407128546387
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid17",
+        "kind": "mark",
+        "points": [
+          [
+            229.63197941431432,
+            196.8305952258408
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid18",
+        "kind": "mark",
+        "points": [
+          [
+            245.00458100772698,
+            141.39973489306865
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid19",
+        "kind": "mark",
+        "points": [
+          [
+            216.50912527922983,
+            96.0068545665592
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid20",
+        "kind": "mark",
+        "points": [
+          [
+            186.88487742888776,
+            288.98040109239514
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid21",
+        "kind": "mark",
+        "points": [
+          [
+            221.85644026058486,
+            187.91270977407692
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid22",
+        "kind": "mark",
+        "points": [
+          [
+            244.837002856158,
+            140.3510784178972
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid23",
+        "kind": "mark",
+        "points": [
+          [
+            189.8579171939977,
+            293.78382365629074
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid24",
+        "kind": "mark",
+        "points": [
+          [
+            195.1308116976259,
+            126.78327928334474
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid25",
+        "kind": "mark",
+        "points": [
+          [
+            202.5988751681587,
+            354.61870730295766
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid26",
+        "kind": "mark",
+        "points": [
+          [
+            172.21395556231346,
+            165.10200673379
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid27",
+        "kind": "mark",
+        "points": [
+          [
+            243.66751927670032,
+            178.05472658425566
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid28",
+        "kind": "mark",
+        "points": [
+          [
+            186.44736932697964,
+            88.11470704376697
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid29",
+        "kind": "mark",
+        "points": [
+          [
+            231.22318787021283,
+            179.76827962733802
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid30",
+        "kind": "mark",
+        "points": [
+          [
+            180.3547201730623,
+            261.1593313094228
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid31",
+        "kind": "mark",
+        "points": [
+          [
+            200.22726042569812,
+            335.0931504666805
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid32",
+        "kind": "mark",
+        "points": [
+          [
+            227.11604671641524,
+            80.33054430522026
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid33",
+        "kind": "mark",
+        "points": [
+          [
+            226.70865502759943,
+            161.12690258398652
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid34",
+        "kind": "mark",
+        "points": [
+          [
+            189.8405481818888,
+            187.73207888565958
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid35",
+        "kind": "mark",
+        "points": [
+          [
+            182.2218522132623,
+            121.45084716789424
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid36",
+        "kind": "mark",
+        "points": [
+          [
+            180.52321295330603,
+            183.93264046870172
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid37",
+        "kind": "mark",
+        "points": [
+          [
+            221.31081463276317,
+            86.96797728650272
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid38",
+        "kind": "mark",
+        "points": [
+          [
+            180.8060945668792,
+            291.2323060430586
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid39",
+        "kind": "mark",
+        "points": [
+          [
+            187.83836171924366,
+            210.40335707776245
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid40",
+        "kind": "mark",
+        "points": [
+          [
+            227.50061251539933,
+            178.68372159563003
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid41",
+        "kind": "mark",
+        "points": [
+          [
+            223.0778347096817,
+            201.45869688838718
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid42",
+        "kind": "mark",
+        "points": [
+          [
+            220.0603024241915,
+            120.57810191772877
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid43",
+        "kind": "mark",
+        "points": [
+          [
+            269.02515991092696,
+            250.6575729336589
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid44",
+        "kind": "mark",
+        "points": [
+          [
+            220.41731018113222,
+            270.2087257411331
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid45",
+        "kind": "mark",
+        "points": [
+          [
+            203.1077998315659,
+            290.2463866081088
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid46",
+        "kind": "mark",
+        "points": [
+          [
+            256.0853935485167,
+            274.74078625887626
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid47",
+        "kind": "mark",
+        "points": [
+          [
+            236.02107385458515,
+            321.8920327454805
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid48",
+        "kind": "mark",
+        "points": [
+          [
+            210.3001569508006,
+            95.0614216234535
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid49",
+        "kind": "mark",
+        "points": [
+          [
+            182.93449645350455,
+            92.33560422807932
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid50",
+        "kind": "mark",
+        "points": [
+          [
+            223.75140741510978,
+            130.21424915418027
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid51",
+        "kind": "mark",
+        "points": [
+          [
+            242.98073475284355,
+            332.48977639637883
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid52",
+        "kind": "mark",
+        "points": [
+          [
+            236.08403917159433,
+            216.90612395517525
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid53",
+        "kind": "mark",
+        "points": [
+          [
+            249.81483355113096,
+            340.50967486277216
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid54",
+        "kind": "mark",
+        "points": [
+          [
+            196.4206822605709,
+            183.31631463617083
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid55",
+        "kind": "mark",
+        "points": [
+          [
+            210.82390411556352,
+            146.55124081894755
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid56",
+        "kind": "mark",
+        "points": [
+          [
+            268.07318715691827,
+            171.87699376530944
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid57",
+        "kind": "mark",
+        "points": [
+          [
+            246.84280905952275,
+            234.88738086931403
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid58",
+        "kind": "mark",
+        "points": [
+          [
+            212.35515450907926,
+            251.59296229369934
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid59",
+        "kind": "mark",
+        "points": [
+          [
+            195.41357437103824,
+            158.19572019875048
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid60",
+        "kind": "mark",
+        "points": [
+          [
+            235.1577408655115,
+            319.0176796358078
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid61",
+        "kind": "mark",
+        "points": [
+          [
+            174.61908726904304,
+            288.089069006592
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid62",
+        "kind": "mark",
+        "points": [
+          [
+            173.99105745245774,
+            176.5836638562381
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid63",
+        "kind": "mark",
+        "points": [
+          [
+            230.31783918392708,
+            120.58644927814602
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid64",
+        "kind": "mark",
+        "points": [
+          [
+            188.89547640851984,
+            138.35646032765507
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid65",
+        "kind": "mark",
+        "points": [
+          [
+            196.9514607514029,
+            203.62114892639218
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid66",
+        "kind": "mark",
+        "points": [
+          [
+            202.68051245506493,
+            324.24244692884383
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid67",
+        "kind": "mark",
+        "points": [
+          [
+            238.75290749977424,
+            310.1494566768407
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid68",
+        "kind": "mark",
+        "points": [
+          [
+            243.97727313539042,
+            316.5231481790542
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid69",
+        "kind": "mark",
+        "points": [
+          [
+            187.28833374233471,
+            266.88327193967996
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid70",
+        "kind": "mark",
+        "points": [
+          [
+            237.4984341660011,
+            265.2910896912217
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid71",
+        "kind": "mark",
+        "points": [
+          [
+            241.58741154570433,
+            321.0066944580525
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid72",
+        "kind": "mark",
+        "points": [
+          [
+            259.07963156121133,
+            261.2489041816443
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid73",
+        "kind": "mark",
+        "points": [
+          [
+            192.65508031639095,
+            182.49792918041345
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid74",
+        "kind": "mark",
+        "points": [
+          [
+            221.33511025886554,
+            125.20824776925146
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid75",
+        "kind": "mark",
+        "points": [
+          [
+            240.06668072399285,
+            221.83715820647774
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid76",
+        "kind": "mark",
+        "points": [
+          [
+            238.57895866272526,
+            172.3667435891926
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid77",
+        "kind": "mark",
+        "points": [
+          [
+            254.20301780473142,
+            335.2455907881259
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid78",
+        "kind": "mark",
+        "points": [
+          [
+            238.79426260141133,
+            298.3773233938962
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid79",
+        "kind": "mark",
+        "points": [
+          [
+            211.26949560293232,
+            104.44627635516227
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid80",
+        "kind": "mark",
+        "points": [
+          [
+            210.78388578464188,
+            217.31935351043936
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid81",
+        "kind": "mark",
+        "points": [
+          [
+            183.63244401328194,
+            244.0807134710252
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid82",
+        "kind": "mark",
+        "points": [
+          [
+            198.60945454316948,
+            309.4656575608998
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid83",
+        "kind": "mark",
+        "points": [
+          [
+            179.83493584166797,
+            245.9717987257987
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid84",
+        "kind": "mark",
+        "points": [
+          [
+            235.03012678371402,
+            303.3021142445504
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid85",
+        "kind": "mark",
+        "points": [
+          [
+            189.3285289369897,
+            363.5785147905349
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid86",
+        "kind": "mark",
+        "points": [
+          [
+            226.7928269626875,
+            147.983484089002
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid87",
+        "kind": "mark",
+        "points": [
+          [
+            254.36692152340487,
+            319.14788731224826
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid88",
+        "kind": "mark",
+        "points": [
+          [
+            248.17203814467948,
+            279.4330862112343
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid89",
+        "kind": "mark",
+        "points": [
+          [
+            229.62461257124323,
+            275.23122860193246
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid90",
+        "kind": "mark",
+        "points": [
+          [
+            257.2757797522573,
+            243.21822148934004
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid91",
+        "kind": "mark",
+        "points": [
+          [
+            178.12005453418604,
+            200.21543388739227
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid92",
+        "kind": "mark",
+        "points": [
+          [
+            232.62348196811186,
+            289.30800933539865
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid93",
+        "kind": "mark",
+        "points": [
+          [
+            262.659860212227,
+            286.6684750501066
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid94",
+        "kind": "mark",
+        "points": [
+          [
+            261.01307182277736,
+            302.97441223524504
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid95",
+        "kind": "mark",
+        "points": [
+          [
+            255.5633117710704,
+            81.68417100980878
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid96",
+        "kind": "mark",
+        "points": [
+          [
+            180.83088148037257,
+            126.53589953631162
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid97",
+        "kind": "mark",
+        "points": [
+          [
+            247.1964616687909,
+            349.4302731283009
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid98",
+        "kind": "mark",
+        "points": [
+          [
+            186.45975448724712,
+            262.10657388642426
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid99",
+        "kind": "mark",
+        "points": [
+          [
+            177.0379732370237,
+            215.26591657139357
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid100",
+        "kind": "mark",
+        "points": [
+          [
+            231.06285790284602,
+            336.3821595106274
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid101",
+        "kind": "mark",
+        "points": [
+          [
+            213.0772615247679,
+            79.40892319604755
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid102",
+        "kind": "mark",
+        "points": [
+          [
+            203.1534649329825,
+            250.892589322105
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid103",
+        "kind": "mark",
+        "points": [
+          [
+            213.59872242517764,
+            313.41874153763047
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid104",
+        "kind": "mark",
+        "points": [
+          [
+            211.4908156911173,
+            113.85858643129467
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid105",
+        "kind": "mark",
+        "points": [
+          [
+            239.20260263653321,
+            172.9854675680399
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid106",
+        "kind": "mark",
+        "points": [
+          [
+            191.3340438453315,
+            233.30154359005388
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid107",
+        "kind": "mark",
+        "points": [
+          [
+            215.29409546929605,
+            133.45726509988307
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid108",
+        "kind": "mark",
+        "points": [
+          [
+            204.79060759735552,
+            78.53754375725985
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid109",
+        "kind": "mark",
+        "points": [
+          [
+            177.37134932981624,
+            270.15363922305403
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid110",
+        "kind": "mark",
+        "points": [
+          [
+            239.7230671822042,
+            269.94328567087643
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid111",
+        "kind": "mark",
+        "points": [
+          [
+            253.12475228164874,
+            86.67609790563583
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid112",
+        "kind": "mark",
+        "points": [
+          [
+            224.9237308256905,
+            282.0381231356412
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid113",
+        "kind": "mark",
+        "points": [
+          [
+            175.02237177064725,
+            237.3415045533329
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid114",
+        "kind": "mark",
+        "points": [
+          [
+            242.4773435694803,
+            128.19873552918432
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid115",
+        "kind": "mark",
+        "points": [
+          [
+            188.92973782319658,
+            271.63253067098555
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid116",
+        "kind": "mark",
+        "points": [
+          [
+            205.33486292288333,
+            217.35040060579774
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid117",
+        "kind": "mark",
+        "points": [
+          [
+            203.96881443331725,
+            216.68865210562942
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid118",
+        "kind": "mark",
+        "points": [
+          [
+            176.73483964246498,
+            319.2902588326483
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid119",
+        "kind": "mark",
+        "points": [
+          [
+            262.44010575188327,
+            170.6247477993369
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid120",
+        "kind": "mark",
+        "points": [
+          [
+            244.1229934515215,
+            318.5733343672007
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid121",
+        "kind": "mark",
+        "points": [
+          [
+            182.3087015350578,
+            265.1631855588406
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid122",
+        "kind": "mark",
+        "points": [
+          [
+            237.74505143545258,
+            324.55932345837346
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid123",
+        "kind": "mark",
+        "points": [
+          [
+            192.64508255782195,
+            77.90587800852956
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid124",
+        "kind": "mark",
+        "points": [
+          [
+            221.10030122788658,
+            148.7431819409132
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid125",
+        "kind": "mark",
+        "points": [
+          [
+            182.57162977957745,
+            196.69636967033145
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid126",
+        "kind": "mark",
+        "points": [
+          [
+            256.90846031372047,
+            342.0612854216247
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid127",
+        "kind": "mark",
+        "points": [
+          [
+            236.890461051635,
+            351.81169706769276
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid128",
+        "kind": "mark",
+        "points": [
+          [
+            217.90011532320028,
+            99.09856499992311
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid129",
+        "kind": "mark",
+        "points": [
+          [
+            200.40363299642962,
+            226.86856329292056
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid130",
+        "kind": "mark",
+        "points": [
+          [
+            226.3055226462311,
+            141.21819072365759
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid131",
+        "kind": "mark",
+        "points": [
+          [
+            257.50775570634477,
+            144.56990431435406
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid132",
+        "kind": "mark",
+        "points": [
+          [
+            195.3093932475575,
+            170.54508851915597
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid133",
+        "kind": "mark",
+        "points": [
+          [
+            252.07809433327466,
+            296.32062128372485
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid134",
+        "kind": "mark",
+        "points": [
+          [
+            198.8945932836363,
+            133.69676332250236
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid135",
+        "kind": "mark",
+        "points": [
+          [
+            244.6208040756419,
+            159.80095943957565
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid136",
+        "kind": "mark",
+        "points": [
+          [
+            218.22704389147458,
+            199.59613045230506
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid137",
+        "kind": "mark",
+        "points": [
+          [
+            203.43893224601354,
+            191.4599164906889
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid138",
+        "kind": "mark",
+        "points": [
+          [
+            248.7746515051109,
+            163.4918709553778
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid139",
+        "kind": "mark",
+        "points": [
+          [
+            254.64395632326637,
+            115.02563080415129
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid140",
+        "kind": "mark",
+        "points": [
+          [
+            197.57191011440773,
+            80.92603792659939
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid141",
+        "kind": "mark",
+        "points": [
+          [
+            251.70635924927768,
+            171.5499637942761
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid142",
+        "kind": "mark",
+        "points": [
+          [
+            194.74269223833795,
+            85.24998239576817
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid143",
+        "kind": "mark",
+        "points": [
+          [
+            189.15387683961137,
+            208.58329791575667
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid144",
+        "kind": "mark",
+        "points": [
+          [
+            214.3329183360792,
+            87.59620927982033
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid145",
+        "kind": "mark",
+        "points": [
+          [
+            192.9325025206062,
+            230.37968572713433
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid146",
+        "kind": "mark",
+        "points": [
+          [
+            265.1543503066063,
+            172.07416862398384
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid147",
+        "kind": "mark",
+        "points": [
+          [
+            212.01554125722666,
+            346.50843902043994
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid148",
+        "kind": "mark",
+        "points": [
+          [
+            226.12115318216865,
+            147.60969399176537
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid149",
+        "kind": "mark",
+        "points": [
+          [
+            196.37550684526977,
+            266.0396742161363
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid150",
+        "kind": "mark",
+        "points": [
+          [
+            236.57758377433825,
+            206.507307324931
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid151",
+        "kind": "mark",
+        "points": [
+          [
+            211.9185382935936,
+            216.0705322436988
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid152",
+        "kind": "mark",
+        "points": [
+          [
+            182.50337503233737,
+            313.95375707857306
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid153",
+        "kind": "mark",
+        "points": [
+          [
+            255.35905398240556,
+            364.62967118956146
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid154",
+        "kind": "mark",
+        "points": [
+          [
+            223.13707923838106,
+            323.7849834341555
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid155",
+        "kind": "mark",
+        "points": [
+          [
+            176.4772702914601,
+            309.2341859705746
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid156",
+        "kind": "mark",
+        "points": [
+          [
+            190.40283796667092,
+            75.12821251563729
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid157",
+        "kind": "mark",
+        "points": [
+          [
+            259.1949899505637,
+            349.5201717443764
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid158",
+        "kind": "mark",
+        "points": [
+          [
+            226.49229268092282,
+            118.12988787926733
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid159",
+        "kind": "mark",
+        "points": [
+          [
+            211.97819518548113,
+            102.61791957207024
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid160",
+        "kind": "mark",
+        "points": [
+          [
+            244.46083788172237,
+            82.6142254434526
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid161",
+        "kind": "mark",
+        "points": [
+          [
+            170.1763725372039,
+            245.10117526911196
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid162",
+        "kind": "mark",
+        "points": [
+          [
+            204.16485238418537,
+            182.53898997344075
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid163",
+        "kind": "mark",
+        "points": [
+          [
+            191.69742613949626,
+            92.63937938995659
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid164",
+        "kind": "mark",
+        "points": [
+          [
+            254.47665489981688,
+            304.8728465110063
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid165",
+        "kind": "mark",
+        "points": [
+          [
+            232.787886402015,
+            99.00936308279634
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid166",
+        "kind": "mark",
+        "points": [
+          [
+            173.20003285371754,
+            249.97763154171403
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid167",
+        "kind": "mark",
+        "points": [
+          [
+            229.64275032964156,
+            274.3425386220216
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid168",
+        "kind": "mark",
+        "points": [
+          [
+            211.34631467966966,
+            82.47355766929687
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid169",
+        "kind": "mark",
+        "points": [
+          [
+            193.18080218944107,
+            183.70225562006232
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid170",
+        "kind": "mark",
+        "points": [
+          [
+            220.06938131086943,
+            88.5932960305363
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid171",
+        "kind": "mark",
+        "points": [
+          [
+            246.27478382700184,
+            255.94310678131876
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid172",
+        "kind": "mark",
+        "points": [
+          [
+            237.39192490317873,
+            198.3065718375146
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid173",
+        "kind": "mark",
+        "points": [
+          [
+            269.8339568678591,
+            223.43321357443926
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid174",
+        "kind": "mark",
+        "points": [
+          [
+            204.9916798216829,
+            125.3947974987328
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid175",
+        "kind": "mark",
+        "points": [
+          [
+            245.92750662778002,
+            243.98054528534408
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid176",
+        "kind": "mark",
+        "points": [
+          [
+            229.24185978099615,
+            180.38281811811027
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid177",
+        "kind": "mark",
+        "points": [
+          [
+            184.41807484956874,
+            114.97623456306755
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid178",
+        "kind": "mark",
+        "points": [
+          [
+            234.1222335407106,
+            291.70310288295144
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid179",
+        "kind": "mark",
+        "points": [
+          [
+            216.0171938645262,
+            267.1212532520294
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid180",
+        "kind": "mark",
+        "points": [
+          [
+            223.79838367773624,
+            277.4339138373732
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid181",
+        "kind": "mark",
+        "points": [
+          [
+            253.58658395710995,
+            207.1909586858004
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid182",
+        "kind": "mark",
+        "points": [
+          [
+            217.90185104934608,
+            232.57444791905579
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid183",
+        "kind": "mark",
+        "points": [
+          [
+            230.39958273795602,
+            239.7907551065087
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid184",
+        "kind": "mark",
+        "points": [
+          [
+            209.59981893466676,
+            104.4270858902484
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid185",
+        "kind": "mark",
+        "points": [
+          [
+            231.78034263250368,
+            143.17459368184208
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid186",
+        "kind": "mark",
+        "points": [
+          [
+            255.78782881721662,
+            225.78360233083365
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid187",
+        "kind": "mark",
+        "points": [
+          [
+            209.80222856803158,
+            325.1935808073729
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid188",
+        "kind": "mark",
+        "points": [
+          [
+            231.68163707639755,
+            149.954296336323
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "zooid189",
+        "kind": "mark",
+        "points": [
+          [
+            261.45622942584254,
+            265.784087479487
+          ]
+        ],
+        "widths": [
+          6.8,
+          4.4
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      }
+    ],
+    "unresolved": [
+      "One colonial tube; 190 zooid marks are surface detail, not 190 rig joints",
+      "Shared tube deformation, wall/aperture masks and complete motion unqualified",
+      "Bioluminescent halo is an effect, not body skin"
+    ],
+    "rasterFrame": {
+      "width": 880,
+      "height": 880,
+      "origin": [
+        220,
+        220
+      ],
+      "scale": 1
+    }
+  }
+}
