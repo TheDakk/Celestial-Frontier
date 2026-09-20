@@ -12,3 +12,7 @@ Native capture follows on one signed producer. CPU and T1 leaf reds retain revie
 flora posed refusals are held visibly and remain FAIL. Shared Civet/crab geometry, painted
 contact and exact-rest reds stop before dependent capture. A reflected painted part will
 exercise the real typed guard through the hold owner for N−1/N/N+1 native proof on one crab.
+
+Full-row media has its own encoded-duration check against the complete schedule (same
+750ms recorder-padding allowance). Original ten-second certificate unchanged. Output is
+family-full-rows.webm; truncated ten-second and excessive-padding controls fail.
