@@ -17,11 +17,13 @@ export function assignLegs(rgba,w,h,guide,{legsPerSide=4,thinSpread=1.8,minTerm=
   // body centre = centroid of body-edge pixels
   let sx=0,sy=0,n=0;for(const e of g.edges)if(e.meanDt>=lc.bodyDt)for(const i of e.path){sx+=i%W;sy+=Math.floor(i/W);n++;}const centre=[sx/n,sy/n];
   const bodyIds=new Set(lc.bodyNodes.map(b=>b.id));
+  // attachment = where the limb leaves the thick region: first pixel along the chain (body → tip) with DT < bodyDt
+  const exitPoint=(edges,fromBodyNodeId)=>{let node=fromBodyNodeId;for(const e of edges){const path=(e.a===node)?e.path:[...e.path].reverse();for(const i of path){if(dt[i]<lc.bodyDt)return [i%W,Math.floor(i/W)];}node=(e.a===node)?e.b:e.a;}const last=edges[edges.length-1];const i=last.path[last.path.length-1];return [i%W,Math.floor(i/W)];};
   // (a) terminal-branch candidates
-  const cands=[];for(const c of lc.chains){const last=c.edges[c.edges.length-1];if(last.length>=Math.max(minTerm,termFactor*last.meanDt)&&c.endDt<=6)cands.push({kind:'end',x:c.endNode.x,y:c.endNode.y,termDt:last.meanDt,term:last.length,attach:[c.rootNode.x,c.rootNode.y]});}
+  const cands=[];for(const c of lc.chains){const last=c.edges[c.edges.length-1];if(last.length>=Math.max(minTerm,termFactor*last.meanDt)&&c.endDt<=6)cands.push({kind:'end',x:c.endNode.x,y:c.endNode.y,termDt:last.meanDt,term:last.length,attach:exitPoint(c.edges,c.rootNode.id)});}
   // (b) loop limbs
   for(const e of g.edges){if(e.meanDt>=lc.bodyDt||e.length<loopMinLen)continue;if(!bodyIds.has(e.a)||!bodyIds.has(e.b))continue;let far=null,fd=-1;for(const i of e.path){const p=[i%W,Math.floor(i/W)],d=Math.hypot(p[0]-centre[0],p[1]-centre[1]);if(d>fd){fd=d;far=p;}}
-    if(far&&!cands.some(c=>Math.hypot(c.x-far[0],c.y-far[1])<20)){const bn=g.nodes[e.a];cands.push({kind:'loop',x:far[0],y:far[1],termDt:e.meanDt,term:e.length,attach:[bn.x,bn.y]});}}
+    if(far&&!cands.some(c=>Math.hypot(c.x-far[0],c.y-far[1])<20)){cands.push({kind:'loop',x:far[0],y:far[1],termDt:e.meanDt,term:e.length,attach:exitPoint([e],e.a)});}}
   // (c) touching limbs: a long non-body edge from a BODY node to a thin non-body JUNCTION far from the body (a rear
   // leg whose tip rests against the carapace or another leg forms a junction there instead of an endpoint)
   const thinAll=cands.map(c=>c.termDt).sort((a,b)=>a-b),thinRef=thinAll[Math.floor(thinAll.length/4)]??6;
@@ -29,7 +31,7 @@ export function assignLegs(rgba,w,h,guide,{legsPerSide=4,thinSpread=1.8,minTerm=
     const d=Math.hypot(far.x-centre[0],far.y-centre[1]);if(d<lc.bodyDt*2)continue;
     // the limb must END here: no other non-body edge leaves this junction and travels farther from the body centre
     const continues=g.edges.some(o=>o!==e&&(o.a===farId||o.b===farId)&&o.meanDt<lc.bodyDt&&o.length>=30&&(()=>{const other=g.nodes[o.a===farId?o.b:o.a];return Math.hypot(other.x-centre[0],other.y-centre[1])>d+10;})());if(continues)continue;
-    if(cands.some(c=>Math.hypot(c.x-far.x,c.y-far.y)<20))continue;const bn=g.nodes[aBody?e.a:e.b];cands.push({kind:'touch',x:far.x,y:far.y,termDt:far.dt,term:e.length,attach:[bn.x,bn.y]});}
+    if(cands.some(c=>Math.hypot(c.x-far.x,c.y-far.y)<20))continue;cands.push({kind:'touch',x:far.x,y:far.y,termDt:far.dt,term:e.length,attach:exitPoint([e],aBody?e.a:e.b)});}
   // claw fingers: two long candidates whose chains attach to the body at the same point (shared first edge) and whose
   // tips are close — mark both as claw; also anything whose terminal thickness is far above the median
   for(const c of cands){const chain=lc.chains.find(ch=>Math.hypot(ch.endNode.x-c.x,ch.endNode.y-c.y)<1);c.rootEdge=chain?chain.edges[0]:null;}
