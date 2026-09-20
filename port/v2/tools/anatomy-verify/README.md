@@ -465,3 +465,21 @@ and the ten false loops span 11–32; length 42–74 vs 26–69. No feature meas
 Rejected; kept as an option at 0. **Conclusion of the tuning rounds:** on six subjects the compiler is at the
 limit of per-rule tuning (29/39 named, positions 30/39); the next real step is more subjects through the same
 code — the second painted quadruped (PROGRAM §6's one exception) — so a rule is judged on two families, not one.
+
+## Slice 23 — the second quadruped (Codex's Wolf) through the identical code, 2026-09-21
+Codex painted the Wolf under PROGRAM §6's one exception (`openai-mac/audits/VISION_P1_QUADRUPED_20260921/
+generation-01/`, declaration `hidden: []`, no hand landmarks by design). It is a declaration-only subject in
+`score.mjs` (no positions/names to score), judged by `ic4.mjs` (verdict against the declaration + the
+wrong-template mutant) and `sheet.mjs`. First run: all four paws in the right stations and depths (hind pair on one
+hip separation, fore pair on the other), wrong-template REFUSE; positive REFUSE on one unused endpoint — the tail.
+The Wolf's tail is bushy: its ridge is body-thick all the way to the tuft, so the tail's endpoint chain is only the
+tuft (48 px) and the tail slot's length cost rejected it. Generic fix: an appendage's length counts the BODY-edge
+run from the spine to the chain's root (Dijkstra over body edges) plus the chain — a bushy tail is a thick run and a
+thin tip, a thin tail is all chain. With it: Wolf ADMIT (tail + four paws), Civet ADMIT unchanged, crabs unchanged
+(29/39). A chest-fur tuft (735,717, thick, finger-short) is classed as a fork finger and, being a claw, does not
+count as unused — a recorded quirk, not a rule.
+**Nick's decision (2026-09-21): the IC-4 verdict is STRICT** (a loop-filled slot is not evidence). IC-4 with the
+seven subjects: positives ADMIT 3/7 (freshwater, Civet, Wolf), wrong-template REFUSE 7/7, erased 7/10, duplicated
+9/10. What the two families showed together: the side-view station assignment, the contact-terminal refinement and
+the appendage slots held on a second quadruped with no change; the one change (tail length through the body run)
+was forced by the Wolf and left every other subject byte-identical in score. Sheet regenerated (`sheet-01/wolf.png`).
