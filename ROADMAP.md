@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — canonical desktop delivery; IC-3 freezes afterward
+## SESSION HANDOFF — final canonical delivery complete; IC-3 HOLD/FROZEN
 
 Nick chose painted desktop full-film rig p95≤3.5ms; boundary24/interior56 stays canonical.
 Phone/painter strict2ms unchanged; D1 phones use retained originals. Authority read-only
@@ -25,11 +25,21 @@ anthropic PROGRAM.md§6. Packet: audits/VISION_P1_DESKTOP_DELIVERY_20260920/READ
 The five accepted fits and all IC-3 writer files are hashed in frozen-inputs.json.
 Coconut retained split-guard film is reassessed, no new capture. Four final films/sheets:
 Crab intake02fit01; Freshwater intake02fit03; Mud intake02fit01; Vent intake01fit01.
-One new native run each on signed gate producer; retain all outputs, no unchanged retry.
+One native run each completed on signed producer c93ee2e8, all outputs retained. Full-film
+rig p95: Crab4.0ms FAIL / Freshwater2.4ms PASS / Mud3.6ms FAIL / Vent3.6ms FAIL against3.5ms.
+Retained Coconut3.0ms PASS. All geometry/contact/rest/continuity PASS, zero refused frames.
+Four films, four comparison sheets and overview delivered. CPU differences from prior table
+not causally attributed; no unchanged retry, threshold change or optimization authorized.
+310 canonical input/writer files hash-identical; frozen-verification.json PASS.
 Geometry/contact/exact-rest/continuity gates unchanged. Shared crabs+Civet controls and
 root guard already pass; no solver/skin or writer edit in this delivery batch.
 
-After delivery HOLD: no new intake, painting, P2 or roster until compiler IC-4 passes
+Final evidence signing blocked:1Password returned "agent returned an error"; producer
+c93ee2e8 is signed/verified, completed artifacts and freeze handoff are staged. Refusal
+retained in packet. Nick was asked to unlock signing. Resume final signed commit only,
+verify it, then hold; do not rerun captures. Current local HEAD c93ee2e8,41 ahead cached origin.
+
+HOLD ACTIVE: no new intake, painting, P2 or roster until compiler IC-4 passes
 all five accepted fits with zero hand edits and required erased/duplicated/wrong-guide
 mutant refusals. Claude owns IC-1/2; Codex IC-3 remains frozen. No sync or app switch for
 Git required. PR42 parked; signed commits only; no fetch/push/PR/merge/release/deploy.

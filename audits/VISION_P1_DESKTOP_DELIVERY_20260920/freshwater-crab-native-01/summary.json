@@ -1,0 +1,44 @@
+{
+  "id": "freshwater-crab",
+  "input": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03",
+  "native": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/freshwater-crab-native-01",
+  "retained": false,
+  "producer": "c93ee2e8689585e5ea4da1cb43607f42ad9bd95e",
+  "admission": {
+    "status": "PASS",
+    "policy": {
+      "tier": "painted-desktop",
+      "metric": "full-film rig p95",
+      "limitMs": 3.5,
+      "comparison": "<=",
+      "authority": "Nick, PROGRAM.md section6, 2026-09-20"
+    },
+    "valueMs": 2.400000035762787,
+    "cpuPass": true,
+    "geometryPass": true,
+    "failures": [],
+    "perClipReadings": "retained unchanged; diagnostic only for painted-desktop"
+  },
+  "restChanged": 0,
+  "finalRestChanged": 0,
+  "rootContinuity": {
+    "status": "PASS",
+    "maximumStep": 0.006199029651035703,
+    "stride": 0.0025477310887144396,
+    "worst": 583,
+    "nonGaitStep": 0.006835200619703523,
+    "scaleLength": 0.38829748450284174,
+    "worstViolation": null
+  },
+  "maxPlantedDriftPx": 0.17079348447662193,
+  "maxGapPx": 0.00007889179731084419,
+  "filmDuration": "13.819403",
+  "frames": 829,
+  "refusals": {
+    "refusedFrames": 0,
+    "saturated": false,
+    "firstRefusal": null,
+    "lastRefusal": null
+  },
+  "error": null
+}
