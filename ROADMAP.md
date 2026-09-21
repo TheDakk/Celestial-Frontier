@@ -34,3 +34,7 @@ The marking commit was refused twice by 1Password (ordinary and PTY prompt), exi
 Prepared loader changes: optional seventh argument `{borrowedAtlas:true}`, captured at load. Borrowed atlas/source survive disposal and decoded-dimension refusal; default-owned cleanup remains. One focused both-way ownership test reproduced the old bug and passes after the patch. App typecheck and root validation pass. audits/BORROWED_ATLAS_20260922/README.md records these results. The single S2 sweep has NOT run: sign/verify markings first, then sign/verify the loader producer, run the prepared s2-controls.ts once on that signed producer, compare full receipts/support bytes against BEAR_RIGID_SUPPORT_IK_20260922/s2, sign the evidence and hold. Do not repeat completed controls/typecheck/validation. S2 is still the sole quality halt; authentication is an external prerequisite, not a new design decision.
 
 Nick has been asked to approve/unlock the signing prompt. Claude's next work remains M3/M4 integration and borrowed-atlas cache use after signed handoff; Nick reviews the six-mask sheet. No bear work or remote operation.
+
+### Signing resumed
+
+Nick approved 1Password. Marking packet signed/verified as d8a1a8f9941df45241e3ac0bd459fbc1b85932e8; earlier refusal receipts retained. Loader controls/typecheck/validation are unchanged and passed. Sign the prepared loader producer, verify, then run its one pending S2 sweep and retain identity comparison/evidence. No test reruns.

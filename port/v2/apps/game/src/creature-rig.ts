@@ -91,11 +91,19 @@ async function decodeGuardedAtlasPng(bytes:Uint8Array,record:CreatureRigRecordV1
   }finally{bitmap.close();}
 }
 
-/** Hash admission precedes image decode and Pixi allocation. The decoder owns a
- * new atlas texture; dispose releases it, never the accepted source master. */
+export interface CreatureRigLoadOptions {
+  /** The custom decoder returns a caller-owned cache texture. The caller releases
+   * that texture/source only after every borrowing rig has been disposed. */
+  readonly borrowedAtlas?:boolean;
+}
+/** Hash admission precedes image decode and Pixi allocation. By default the rig
+ * owns the decoded atlas. Pass a custom decoder and {borrowedAtlas:true} to retain
+ * a caller-owned texture/source on disposal or decoded-dimension refusal. */
 export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingInput:CreaturePartsBindingV1,
   cutoutBytes:Uint8Array,cutoutAlpha:Uint8Array,atlasBytes:Uint8Array,
-  decodeAtlas:(bytes:Uint8Array)=>Promise<Texture>=decodeAtlasPng):Promise<CreatureRigV1>{
+  decodeAtlas:(bytes:Uint8Array)=>Promise<Texture>=decodeAtlasPng,
+  options:CreatureRigLoadOptions={}):Promise<CreatureRigV1>{
+  const ownsAtlas=options.borrowedAtlas!==true;
   const record=structuredClone(recordInput),binding=structuredClone(bindingInput);
   const template=await admitFamilyRecord(record,cutoutBytes,cutoutAlpha);
   const joints=[...template.joints];
@@ -131,7 +139,7 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
   const rigidParents=skin?compileRigidParentFrames(skin,binding.parts,template,w,h):[];
   const decoded=decodeAtlas===decodeAtlasPng&&skin?await decodeGuardedAtlasPng(atlasBytes.slice(),record,binding):{texture:await decodeAtlas(atlasBytes.slice()),samplingGuard:undefined};
   const atlas=decoded.texture;
-  if(atlas.width!==aw||atlas.height!==ah){atlas.destroy(true);throw Error('Creature rig: decoded atlas dimensions');}
+  if(atlas.width!==aw||atlas.height!==ah){if(ownsAtlas)atlas.destroy(true);throw Error('Creature rig: decoded atlas dimensions');}
   const root=new Container(),far=new Container(),near=new Container();root.addChild(far,near);
   const textures:Texture[]=[];
   const bridgeGroups=new Map((binding.seamBridges?.groups??[]).map(group=>[group.id,group]));
@@ -173,7 +181,7 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
       for(const bridge of bridges){bridge.buffers.positions.set(bridge.buffers.pending);bridge.geometry.getBuffer('aPosition').update();}
       published=true;
     },
-    dispose(){if(disposed)return;disposed=true;root.destroy({children:true});for(const entry of skins)entry.geometry.destroy();for(const bridge of bridges)bridge.geometry.destroy();for(const texture of textures)texture.destroy(false);atlas.destroy(true);},
+    dispose(){if(disposed)return;disposed=true;root.destroy({children:true});for(const entry of skins)entry.geometry.destroy();for(const bridge of bridges)bridge.geometry.destroy();for(const texture of textures)texture.destroy(false);if(ownsAtlas)atlas.destroy(true);},
   });
   rigRuntimeDiagnostics.set(rig,Object.freeze({schema:'cf.creature-rig-runtime/v1',sweepBackend:shape?.sweepBackend??'none',fieldVertices:skin?.vertices.length??0,get normalPasses(){return shape?.normalPasses??0;},get robustFallbacks(){return shape?.robustFallbacks??0;}}));
   let supports:ReturnType<typeof observedContactSupports>|undefined;
