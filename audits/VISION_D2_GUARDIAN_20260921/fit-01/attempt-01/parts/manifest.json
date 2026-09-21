@@ -1,0 +1,90 @@
+{
+  "creatureId": "d2-brown-bear",
+  "parts": [
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "f348a6373b4b2710d4e37d9cf72c9e33051d162652f74a9cbd1317cf97437e14"
+    },
+    {
+      "name": "hind-far-upper.png",
+      "path": "parts/hind-far-upper.png",
+      "sha256": "6608515955af65cbb58a00a1bb6237f296f6b7ee0eb1074c135547718ea139f5"
+    },
+    {
+      "name": "hind-far-lower.png",
+      "path": "parts/hind-far-lower.png",
+      "sha256": "9fd574c1c54ea602f88176fef65a80b110d2737a503a728564ba77e134dc4c15"
+    },
+    {
+      "name": "hind-far-paw.png",
+      "path": "parts/hind-far-paw.png",
+      "sha256": "6a662e296cf4d9c5fc31365360ddef3085832da5bd81a63453b3be5bae6c8dbc"
+    },
+    {
+      "name": "fore-far-upper.png",
+      "path": "parts/fore-far-upper.png",
+      "sha256": "b2a98e130c083c0f710ab74ae294336d350dd764daf0a6179affed618cda1c23"
+    },
+    {
+      "name": "fore-far-lower.png",
+      "path": "parts/fore-far-lower.png",
+      "sha256": "85b36f588b52c718fc5c3d80292b0c5bd714b190655b46f9a442abdfcfb589fb"
+    },
+    {
+      "name": "fore-far-paw.png",
+      "path": "parts/fore-far-paw.png",
+      "sha256": "0e9313afd6661cc8ea23f04a122ba8bfebbd4f181256d5c456abb6611afdfac5"
+    },
+    {
+      "name": "hind-near-upper.png",
+      "path": "parts/hind-near-upper.png",
+      "sha256": "438b35c0492d830ac06701fa0c98e2b09bf67fc36f96f746745b3d8deb11ebb6"
+    },
+    {
+      "name": "hind-near-lower.png",
+      "path": "parts/hind-near-lower.png",
+      "sha256": "6b4c024abaa38a6a43037054c7fa726d5f1503ea1cccd8d5585c07a92729ae8b"
+    },
+    {
+      "name": "hind-near-paw.png",
+      "path": "parts/hind-near-paw.png",
+      "sha256": "addae5ddaa2c2023b52cf6cec2ebfda533806559b8a9290b7c22fab396dc6b38"
+    },
+    {
+      "name": "fore-near-upper.png",
+      "path": "parts/fore-near-upper.png",
+      "sha256": "f07fe8290da91412af7435b8e00b92cc6a8e889a18a23a43831d4a73981f9cd6"
+    },
+    {
+      "name": "fore-near-lower.png",
+      "path": "parts/fore-near-lower.png",
+      "sha256": "99aa68484ade63b835c4460f31b75b695bc1a78700ea6eec5bae1e90753aa656"
+    },
+    {
+      "name": "fore-near-paw.png",
+      "path": "parts/fore-near-paw.png",
+      "sha256": "a7966acedc02032866270e2670fd04729b032ab310f4fbd55a518a3fd029a786"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "3b7a4e77b71d8b9188a3299cdf18e2763a4dc4a2a7215676e55f62a32b31fad7"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "c5bb0325aaa3dade174758002fb8fe7ed656468a3e037198ef7f892443b23d30"
+    },
+    {
+      "name": "ear-far.png",
+      "path": "parts/ear-far.png",
+      "sha256": "e719cf4d8ba09388abc8eea61b8acf9150307bdb0433a74e01681b6eed86fd99"
+    },
+    {
+      "name": "ear-near.png",
+      "path": "parts/ear-near.png",
+      "sha256": "422625c42496683837be30829d01baffd0d65c9b74a511b033fcfa5f7d0e2e52"
+    }
+  ]
+}

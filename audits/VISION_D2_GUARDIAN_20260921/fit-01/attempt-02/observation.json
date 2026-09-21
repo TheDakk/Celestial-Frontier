@@ -1,0 +1,657 @@
+{
+  "schema": "cf.hand-comparison-truth/v1",
+  "master": "audits/VISION_D2_GUARDIAN_20260921/generation-01/brown-bear-master.png",
+  "masterSha256": "1fdbef97b7c612d85ebe4a3ed7b580c31d7671a379c92e46ba3f200f655d035d",
+  "width": 1254,
+  "height": 1254,
+  "landmarksPx": {
+    "root": [
+      660,
+      630
+    ],
+    "pelvis": [
+      335,
+      650
+    ],
+    "spine": [
+      590,
+      550
+    ],
+    "chest": [
+      830,
+      580
+    ],
+    "neck": [
+      965,
+      500
+    ],
+    "head": [
+      1080,
+      462
+    ],
+    "jaw": [
+      1150,
+      575
+    ],
+    "earFarRoot": [
+      1120,
+      390
+    ],
+    "earFarTip": [
+      1105,
+      342
+    ],
+    "earNearRoot": [
+      987,
+      390
+    ],
+    "earNearTip": [
+      974,
+      339
+    ],
+    "hindFarRoot": [
+      470,
+      650
+    ],
+    "hindFarKnee": [
+      445,
+      814
+    ],
+    "hindFarAnkle": [
+      413,
+      991
+    ],
+    "hindFarPaw": [
+      459,
+      1015
+    ],
+    "hindNearRoot": [
+      260,
+      653
+    ],
+    "hindNearKnee": [
+      172,
+      800
+    ],
+    "hindNearAnkle": [
+      112,
+      976
+    ],
+    "hindNearPaw": [
+      177,
+      1000
+    ],
+    "foreFarRoot": [
+      894,
+      608
+    ],
+    "foreFarKnee": [
+      939,
+      830
+    ],
+    "foreFarAnkle": [
+      1055,
+      1008
+    ],
+    "foreFarPaw": [
+      1093,
+      1033
+    ],
+    "foreNearRoot": [
+      683,
+      608
+    ],
+    "foreNearKnee": [
+      637,
+      822
+    ],
+    "foreNearAnkle": [
+      666,
+      1034
+    ],
+    "foreNearPaw": [
+      735,
+      1050
+    ]
+  },
+  "parts": [
+    {
+      "id": "hind-far-upper",
+      "joint": "hindFarKnee",
+      "layer": "far",
+      "poly": [
+        [
+          390,
+          625
+        ],
+        [
+          522,
+          619
+        ],
+        [
+          559,
+          805
+        ],
+        [
+          475,
+          875
+        ],
+        [
+          370,
+          828
+        ]
+      ]
+    },
+    {
+      "id": "hind-far-lower",
+      "joint": "hindFarAnkle",
+      "layer": "far",
+      "poly": [
+        [
+          370,
+          828
+        ],
+        [
+          475,
+          830
+        ],
+        [
+          503,
+          959
+        ],
+        [
+          465,
+          1004
+        ],
+        [
+          350,
+          997
+        ],
+        [
+          345,
+          924
+        ]
+      ]
+    },
+    {
+      "id": "hind-far-paw",
+      "joint": "hindFarPaw",
+      "layer": "far",
+      "poly": [
+        [
+          350,
+          974
+        ],
+        [
+          470,
+          968
+        ],
+        [
+          565,
+          1044
+        ],
+        [
+          342,
+          1063
+        ]
+      ]
+    },
+    {
+      "id": "fore-far-upper",
+      "joint": "foreFarKnee",
+      "layer": "far",
+      "poly": [
+        [
+          785,
+          538
+        ],
+        [
+          974,
+          568
+        ],
+        [
+          1005,
+          778
+        ],
+        [
+          1012,
+          861
+        ],
+        [
+          889,
+          893
+        ],
+        [
+          785,
+          750
+        ]
+      ]
+    },
+    {
+      "id": "fore-far-lower",
+      "joint": "foreFarAnkle",
+      "layer": "far",
+      "poly": [
+        [
+          889,
+          848
+        ],
+        [
+          1012,
+          837
+        ],
+        [
+          1056,
+          967
+        ],
+        [
+          1090,
+          1015
+        ],
+        [
+          965,
+          1051
+        ],
+        [
+          900,
+          947
+        ]
+      ]
+    },
+    {
+      "id": "fore-far-paw",
+      "joint": "foreFarPaw",
+      "layer": "far",
+      "poly": [
+        [
+          965,
+          984
+        ],
+        [
+          1077,
+          968
+        ],
+        [
+          1208,
+          985
+        ],
+        [
+          1216,
+          1080
+        ],
+        [
+          956,
+          1080
+        ]
+      ]
+    },
+    {
+      "id": "hind-near-upper",
+      "joint": "hindNearKnee",
+      "layer": "near",
+      "poly": [
+        [
+          209,
+          547
+        ],
+        [
+          370,
+          553
+        ],
+        [
+          391,
+          719
+        ],
+        [
+          297,
+          832
+        ],
+        [
+          159,
+          883
+        ],
+        [
+          53,
+          803
+        ],
+        [
+          70,
+          664
+        ]
+      ]
+    },
+    {
+      "id": "hind-near-lower",
+      "joint": "hindNearAnkle",
+      "layer": "near",
+      "poly": [
+        [
+          52,
+          795
+        ],
+        [
+          158,
+          827
+        ],
+        [
+          298,
+          814
+        ],
+        [
+          231,
+          891
+        ],
+        [
+          191,
+          974
+        ],
+        [
+          91,
+          1026
+        ],
+        [
+          12,
+          960
+        ]
+      ]
+    },
+    {
+      "id": "hind-near-paw",
+      "joint": "hindNearPaw",
+      "layer": "near",
+      "poly": [
+        [
+          12,
+          957
+        ],
+        [
+          155,
+          954
+        ],
+        [
+          254,
+          977
+        ],
+        [
+          292,
+          1065
+        ],
+        [
+          13,
+          1074
+        ]
+      ]
+    },
+    {
+      "id": "fore-near-upper",
+      "joint": "foreNearKnee",
+      "layer": "near",
+      "poly": [
+        [
+          625,
+          524
+        ],
+        [
+          780,
+          545
+        ],
+        [
+          800,
+          669
+        ],
+        [
+          716,
+          841
+        ],
+        [
+          685,
+          902
+        ],
+        [
+          530,
+          852
+        ],
+        [
+          465,
+          735
+        ]
+      ]
+    },
+    {
+      "id": "fore-near-lower",
+      "joint": "foreNearAnkle",
+      "layer": "near",
+      "poly": [
+        [
+          530,
+          833
+        ],
+        [
+          683,
+          837
+        ],
+        [
+          703,
+          954
+        ],
+        [
+          723,
+          1014
+        ],
+        [
+          642,
+          1068
+        ],
+        [
+          535,
+          992
+        ],
+        [
+          497,
+          900
+        ]
+      ]
+    },
+    {
+      "id": "fore-near-paw",
+      "joint": "foreNearPaw",
+      "layer": "near",
+      "poly": [
+        [
+          559,
+          1009
+        ],
+        [
+          690,
+          992
+        ],
+        [
+          811,
+          1033
+        ],
+        [
+          852,
+          1109
+        ],
+        [
+          557,
+          1115
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "poly": [
+        [
+          937,
+          336
+        ],
+        [
+          1100,
+          299
+        ],
+        [
+          1188,
+          360
+        ],
+        [
+          1254,
+          507
+        ],
+        [
+          1254,
+          654
+        ],
+        [
+          1089,
+          700
+        ],
+        [
+          967,
+          640
+        ],
+        [
+          885,
+          507
+        ]
+      ]
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "poly": [
+        [
+          1101,
+          577
+        ],
+        [
+          1190,
+          557
+        ],
+        [
+          1254,
+          571
+        ],
+        [
+          1254,
+          665
+        ],
+        [
+          1093,
+          681
+        ],
+        [
+          1050,
+          630
+        ]
+      ]
+    },
+    {
+      "id": "ear-far",
+      "joint": "earFarTip",
+      "layer": "far",
+      "poly": [
+        [
+          1068,
+          303
+        ],
+        [
+          1147,
+          301
+        ],
+        [
+          1169,
+          370
+        ],
+        [
+          1123,
+          410
+        ],
+        [
+          1090,
+          371
+        ]
+      ]
+    },
+    {
+      "id": "ear-near",
+      "joint": "earNearTip",
+      "layer": "near",
+      "poly": [
+        [
+          925,
+          319
+        ],
+        [
+          980,
+          298
+        ],
+        [
+          1040,
+          331
+        ],
+        [
+          1046,
+          393
+        ],
+        [
+          1000,
+          424
+        ],
+        [
+          950,
+          398
+        ]
+      ]
+    }
+  ],
+  "bodyOutline": [
+    [
+      0,
+      0
+    ],
+    [
+      1254,
+      0
+    ],
+    [
+      1254,
+      650
+    ],
+    [
+      1000,
+      650
+    ],
+    [
+      760,
+      740
+    ],
+    [
+      500,
+      800
+    ],
+    [
+      350,
+      780
+    ],
+    [
+      0,
+      720
+    ]
+  ],
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "tail"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "owner": "Independent hand observation on generation01; comparison truth, not compiler output",
+  "compilerContext": "Claude anatomy-verify slice34 ADMIT, tail absent; no quadruped compiled-01 masks available for reuse",
+  "sourceLandmarksReused": false,
+  "sourceLabelsReused": false
+}
