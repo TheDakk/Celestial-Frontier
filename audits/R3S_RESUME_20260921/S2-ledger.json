@@ -1,0 +1,84 @@
+{
+  "schema": "cf.s2-resume-reconciliation/v1",
+  "sourceHead": "73398486ac886aeddeaa1580389a8d92ad5efa9c",
+  "status": "NO_NEW_S2_IN_RETAINED_EVIDENCE",
+  "newSolverChanges": false,
+  "newSweepExecuted": false,
+  "beforeProducer": "6c511261ba6800368b48250df83cec15a78df837",
+  "beforeEvents": {
+    "limit": 1053,
+    "compression": 513,
+    "publication": 85,
+    "reach": 54,
+    "support": 4,
+    "drift": 4
+  },
+  "afterProducer": "4b9698945b66846157bf7f62201eea818e821a0a",
+  "afterEvents": {},
+  "latestSharedControlProducer": "63b13bff3e7255dcac5b399123a87e77c7d535d1",
+  "subjects": [
+    {
+      "subject": "crab",
+      "status": "PASS",
+      "maxPaintDriftPx": 6.2718136032873e-05,
+      "exactRestGeometry": true,
+      "maxCovariancePx": 0,
+      "r2cRowsBitIdentical": true,
+      "rows": 12,
+      "samples": 2053
+    },
+    {
+      "subject": "coconut-crab",
+      "status": "PASS",
+      "maxPaintDriftPx": 5.6789684025662956e-05,
+      "exactRestGeometry": true,
+      "maxCovariancePx": 0,
+      "r2cRowsBitIdentical": true,
+      "rows": 12,
+      "samples": 2053
+    },
+    {
+      "subject": "freshwater-crab",
+      "status": "PASS",
+      "maxPaintDriftPx": 3.140645853198839e-05,
+      "exactRestGeometry": true,
+      "maxCovariancePx": 0,
+      "r2cRowsBitIdentical": true,
+      "rows": 12,
+      "samples": 2053
+    },
+    {
+      "subject": "mud-crab",
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00038152336698686834,
+      "exactRestGeometry": true,
+      "maxCovariancePx": 0,
+      "r2cRowsBitIdentical": true,
+      "rows": 12,
+      "samples": 2053
+    },
+    {
+      "subject": "vent-crab",
+      "status": "PASS",
+      "maxPaintDriftPx": 0.009359584649786994,
+      "exactRestGeometry": true,
+      "maxCovariancePx": 0,
+      "r2cRowsBitIdentical": true,
+      "rows": 12,
+      "samples": 2053
+    },
+    {
+      "subject": "civet",
+      "status": "PASS",
+      "maxPaintDriftPx": 0.16525637288346104,
+      "exactRestGeometry": true,
+      "maxCovariancePx": 0,
+      "r2cRowsBitIdentical": null,
+      "rows": 20,
+      "samples": 3021
+    }
+  ],
+  "sampleCount": 13286,
+  "scope": "Retained signed stage results; current provenance differs only in independently checked folded presence handling. Not a newly executed battery. Historical R2c stops remain retained.",
+  "controls": "Original x3 crouch is retained as insensitive; Nick-authorized x15 rejects. All-four stance, diffused and unpinned controls reject. No reverted clip keys, pin repair or gait-phase changes."
+}

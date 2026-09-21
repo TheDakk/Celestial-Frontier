@@ -56,3 +56,19 @@ Receipt and exact paths/hashes: audits/INTAKE_FOLDED_DECLARATIONS_20260921/READM
 Codex holds again, writers frozen. Claude reads these presence inputs in score.mjs/ic4.mjs
 and removes its FOLDED proposal map. Nick: nothing to decide. No fetch/push/PR/merge.
 Prior staged four-crab delivery remains separate and retains its signing-refusal receipt.
+
+## R3-S / section8 reconciled review stop — 2026-09-21
+
+The requested sequence already completed in signed history through a94535aa; do not
+repeat its report-all sweep, native captures, R9 finisher or historical roster attempts.
+Accumulated current packet: audits/R3S_RESUME_20260921/README.md; S2-ledger.json retains
+BEFORE/AFTER and later six-subject controls.13,286 samples, zero AFTER classes, exact rest,
+five crab bit identity; Civet max planted drift0.165256373px. No new solver change or S2.
+Twenty stage signatures and833 original media hashes verified;37 films now indexed.
+Previously pending final P1 native films/sheets signed and verified as3e23766d. Historical
+signing refusals remain evidence, no longer blockers. Existing CPU/plant/phone/roster/PR42
+leaves stay open. R9 remains this lane's canonical finish at Claude's later re-merge.
+Folded presence73398486 is preserved; IC-3 frozen for new species, no P2 or roster intake.
+Codex holds. Claude re-merges signed producers on its lane and re-films E1 on the family
+solver with contactJoint/travel:stage/pinch and declared presence inputs. Nick: review only
+at this accumulated stop, no interim decision. No fetch/push/PR/merge/release/deploy here.
