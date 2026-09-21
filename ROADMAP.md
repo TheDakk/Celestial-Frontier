@@ -227,8 +227,32 @@ Continues §8 unattended. Interfaces E1 consumes from R3, unchanged: `ContactPha
 dx in stage mode, stance targets unchanged) and `contactJoint` on `compileAnatomyAttack` (already on the attack rows). Nothing
 in Claude's E1 changed a Codex-owned file except the two merge repairs above, both recorded for re-application in its lane.
 
+### Nick — decision needed before the cadence is wired into the battle stage (2026-09-22)
+Under decision A the approach beat's time is set by distance. Measured on the six rigged subjects at arena scale
+(run-up 0.18 × frame = 184 px; per-cycle travel = 2 × the rig's measured stance reach):
+
+| subject | gait | body on arena | run-up | per cycle | cycles | approach time |
+|---|---|---|---|---|---|---|
+| crab | 420 ms | 119 px | 1.5 bodies | 0.40 | 4 | **1.7 s** |
+| coconut | 420 ms | 114 px | 1.6 | 0.40 | 5 | **2.1 s** |
+| freshwater | 420 ms | 111 px | 1.7 | 0.20 | 9 | **3.8 s** |
+| mud | 420 ms | 132 px | 1.4 | 0.14 | 11 | **4.6 s** |
+| vent | 420 ms | 100 px | 1.8 | 0.14 | 14 | **5.9 s** |
+| Civet | 869 ms | 85 px | 2.2 | 0.40 | 6 | **5.2 s** |
+
+Today's approach beat is 420 ms. The reach that sets these numbers is the RIG's (far legs painted foreshortened
+or folded), not the animal's: a real crab scuttles about a body length per cycle. Options:
+(A1) accept 2–6 s approaches — faithful, slow, and the slowest rigs are the worst-drawn far legs;
+(A2, recommended) **walk whole cycles up to a cap (2 cycles ≈ 0.84 s, feet planted, no slide) and let the attack
+clip's own lunge cover the remaining distance** (a lunge is a committed airborne move, choreographed contact, not
+gait) — the arena distance is preserved, no foot slides, approach ≤ 0.9 s;
+(A3) raise the rigs' reach first (Codex's body-planted folded legs may lift freshwater/mud/vent toward 0.2; crab
+and coconut are already at the compression bound, so A3 alone cannot reach one body length per cycle).
+Until decided: the stage keeps its 420 ms eased run-up without `stageDisplacement` (feet ride with the body, as in
+the films).
+
 ### Claude — next run (standing authority: Nick says "go")
-On Codex's report: re-merge its signed producers; re-film E1 on the cadence stage (Civet vs crab, crab attacks) and re-check the three pins; run the bear fit through `score.mjs`/`ic4.mjs`/`sheet.mjs` as G3 with a record (60 px bound); build G6 (`combatantScale` `frameFill`) on the bear's record and film it; then the roster batch through the compiler the moment IC-4 passes on the crabs (one sheet for Nick).
+After Nick's cadence decision (above): wire it into `choreography.ts`/`stage.ts` (A2: whole cycles to a cap + lunge remainder; the stage passes `stageDisplacement` per tick from `createStrideCadence`), re-check the pins, re-film. Then, on Codex's report: re-merge its signed producers; re-film E1 on the cadence stage (Civet vs crab, crab attacks) and re-check the three pins; run the bear fit through `score.mjs`/`ic4.mjs`/`sheet.mjs` as G3 with a record (60 px bound); build G6 (`combatantScale` `frameFill`) on the bear's record and film it; then the roster batch through the compiler the moment IC-4 passes on the crabs (one sheet for Nick).
 
 ### Nick — decision A taken (2026-09-21, latest): the stage runs up in body lengths with a stride cadence
 Codex's stage/solver work: the run-up distance becomes N stride cycles of the attacker's gait (each ≤ 0.2 body lengths of stage travel per stance), the stage passes `stageDisplacement` per tick, feet plant exactly; Claude re-films and re-pins when it lands.
