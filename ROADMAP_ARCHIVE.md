@@ -1,3 +1,37 @@
+# Archived handoff — 2026-09-22 bear signature resolved
+
+## Live handoff — 2026-09-22 measured cadence / bear signing wait
+
+Verified openai/mac in /Users/nick/Projects/celestial-frontier-openai-mac. Claude’s sibling read-only. Nick’s “Claude and I agree, with go” authorizes slice35’s measured stance reach, declared folded body planting, nine native subjects, then generation01 guardian comparison fit. No fetch/sync/push/PR/merge/release/deploy. Node26.9.0 session receipt reused. Existing .DS_Store untouched.
+
+Packet: audits/STAGE_CADENCE_REACH_20260922/README.md. Signed/verified producer a817ad64 measures approach stance reach over121 phases,24 bisections, existing family solver; createStrideCadence takes measured reach; declared folded legs are body-relative in stage mode. No short-bone inference.7/7 unit controls, typecheck and validate PASS. Signed/verified evidence38fee9c6: one S2 sweep, all six exact preceding receipts, five original crabs R2c′-identical, Civet0.165256373px, exact rest. Nine native subjects complete, zero refusals, all six animal stance drift≤0.5px; no S2 halt. CPU leaf reds Persimmon2.5ms and Devil’s Club2.6ms vs unchanged<2ms, retained without retry. This is cadence performance, not full-film certification. No repeated batteries needed.
+
+Brown Bear fit-01 built but UNSIGNED, staged with shared source-probe bin lookup correction. Path audits/VISION_D2_GUARDIAN_20260921/fit-01. Source gen01 unchanged1254², tail absent, hidden/folded empty;17 new hand comparison masks,3540 vertices, recipe7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc, binding869beb8ac0ff2ce32479babf206818d6579225a7f861912152f374cbd89e715a.60px independent compiler comparison/5ms guardian CPU remain unqualified.1536 requirement remains a retained source-size red. Attempt01’s limb-edge torso ownership corrected; attempt02’s boundary-mesh probe refusal diagnosed as spatial-bin rounding, real surface existed. Generic adjacent-bin lookup fixes instrument without changing geometry/tolerances;8/8 two-way controls and root validate pass, negative/failure receipts retained. Accepted sentinel/runtime solver inputs unchanged by the probe correction.
+
+AUTHENTICATION BLOCKER:1Password returned “agent returned an error” on bear producer; no commit created, no unsigned fallback. signing-refusal-01.txt retained. Async readiness question pending. Local HEAD38fee9c6ffa1dc99ef506204143a9336fe4fe0b6,58 ahead cached origin/openai/mac (no fetch). Producer already staged; later index/hash/refusal/handoff docs are unstaged. On Nick readiness, sign and verify staged producer (include receipt/hash docs as appropriate), THEN run once: node audits/ANATOMY_SINGLE_RUN_20260919/R1c/run-offline.mjs audits/VISION_D2_GUARDIAN_20260921/fit-01/static.ts audits/VISION_D2_GUARDIAN_20260921/fit-01/static. It records every family row/presentation with shape/contact/seam gates and exact rest; rows not yet run. Record leaf findings, do not pretend fit acceptance. Sign final evidence/docs, report actual local HEAD/ahead, hold.
+
+Paired next steps: Codex resumes at signature only, no repeated cadence/S2 run; then final evidence and hold. Claude reconciles measured reach with its E1 stage, re-films/rechecks pins, runs bear score/ic4 as G3 with comparison record, and G6 frameFill. Read-only sibling now records A2 tempo built(slice36); do not override it. Nick: approve/unlock1Password only, no new design decision. IC3 remains frozen except this guardian; roster/P2/other intake held.
+
+# Archived handoff — 2026-09-22 measured cadence continuation
+
+## Live handoff — 2026-09-21 cadence S2 STOP
+
+OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`, verified. Claude’s sibling read-only. No fetch, sync, push, PR, merge, release or deploy. Node26.9.0 uninterrupted receipt reused. Existing .DS_Store untouched.
+
+**S2_STOP; do not retry or proceed to the bear fit.** Packet: `audits/STAGE_CADENCE_20260921/README.md`; S2_LEDGER.md, NATIVE_ROWS.md and native-summary.json in that folder.
+
+Signed producer `0072cbdb`: shared createStrideCadence helper in creature-stage-travel.ts preserves composed pixel distance, covers it in whole authored gait cycles, emits separate world pixel travel and stance-local body lengths. Max0.2body lengths per whole cycle/0.1 per half-cycle stance. Native harness exercises actual Pixi rig, sampler, family contact solver and published painted supports. No solver, raw clip, skin, binding or threshold change. Focused2/2, app typecheck and root validation PASS. One solver-mode S2 sweep on the signed producer: all six receipts exactly equal prior ledger, five crab R2c′ rows identical, Civet0.165256373px, exact rest.
+
+Native run: Crab2700frames, drift0.000015325px/p950.4ms; Coconut2040frames, drift0.000016464px/p950.6ms — both PASS. Freshwater refused at154ms (22/2100frames), `Contact: approach:scuttle@154 leg0Far outside accommodatable reach`, stageDisplacement0.07165014577259474 body lengths. Exact rest PASS; partial p951.6ms is not a full cadence certification. Maximum planned per-stance displacement0.0977047442 was below0.2; one-crab reach measurement does not generalize. S2 halted immediately, no retry. Mud, Vent, Persimmon, Cranberry, Devil’s Club, Civet native cadence are unrun. Brown Bear generation01 fit-01 NOT STARTED; no record or binding hashes.
+
+Battle2 modules are absent on this lane. Shared helper/native cadence implementation is present, but full E1 stage wiring was never copied or edited. Claude’s current parts-rig divides stageDisplacement by card.scaleLength; future body-length RigPoseContext must remove that obsolete conversion. Do not integrate the current cadence as universally admitted: Freshwater S2 remains red.
+
+Paired next steps: Codex holds. Claude reviews the retained refusal before another cadence producer or E1 re-film; pin rechecks, bear fit/G3-with-record and G6 frameFill remain pending. Nick: nothing newly requested to decide in this packet. Prior bear originals and presence remain unchanged (generation01 ADMIT on Claude, tail absent; both raw masters1254², size red retained). Roster/P2/other intake remain held. Previous arc context preserved verbatim in ROADMAP_ARCHIVE.md.
+
+## Active authorized continuation — 2026-09-22
+
+Nick says “Claude and I agree, with go”; Claude slice35/next Codex block authorizes measured per-record stance reach and body-relative declared-folded planting, then nine native subjects and generation01 bear fit. New packet audits/STAGE_CADENCE_REACH_20260922. Seven focused controls pass; typecheck correction retains recipeHash in the measurement signature. Previous S2 evidence remains immutable. Sign producer then one S2/static and one native run; S2 remains the halt.
+
 # Archived handoff — 2026-09-21 cadence S2 stop
 
 ## Live handoff — 2026-09-21 stage displacement / bear retry
