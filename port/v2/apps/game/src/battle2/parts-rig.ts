@@ -77,6 +77,8 @@ export interface PartsRig extends BattleRigV1 {
 /** The stage's context, or the rest context when a caller applies a bare pose. */
 export const restContext = (): RigPoseContext => Object.freeze({ actionId: 'idle', elapsedMs: 0, durationMs: 1, weight: 1, planted: plantedFor('idle'), travel: 'stage' });
 
+/** A2 stance-reach probe cap, body lengths per stance (one body length per gait cycle). */
+export const STANCE_REACH_CAP = 0.5;
 export function createPartsRig(options: PartsRigOptions): PartsRig {
   const { record, rig, card, alphaBox } = options;
   const W = record.geometry.width, H = record.geometry.height;
@@ -114,7 +116,10 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
   if (family) {
     try {
       const approach = buildTimeline(card, 'approach', 5), clip = { source: 'timeline' as const, timeline: approach };
-      let reach = 0.5;
+      // cap: one body length per gait cycle (0.5 per stance) — a choreography bound, not a measurement limit. Codex's
+      // 121-phase helper reads the declared-folded mud/vent fits at 0.507/0.837 forward (2026-09-22); the stage walks them
+      // at the cap (0.45 after the margin) so a crab never crosses more than a body length per cycle.
+      let reach = STANCE_REACH_CAP;
       // both half-cycles: each half is the other leg group's stance (the far legs that bound the reach stand in one of
       // them), then a 10 % margin — the first probe sampled one half and the freshwater/mud/vent rigs refused 14–20×
       for (const frac of [0.05, 0.25, 0.45, 0.55, 0.75, 0.95]) {

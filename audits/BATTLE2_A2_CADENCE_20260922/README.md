@@ -9,6 +9,9 @@ own lunge covers the remaining run-up by impact. Native films (Edge over CDP, `t
 | `civet-vs-crab-01` | Civet (compat solver, no cadence — legacy eased run-up) | 357 ms | bite (jaw) ×2, claw dodge | 0 / 0 | 3.90 ms | DIAGNOSTIC_PASS |
 | `crab-attacks-civet-01` | Crab from the right (cadence, 2 cycles) | 840 ms | pinch ×3 | **0 / 7** | 3.90 ms | FAIL — retained: the displacement was world-signed; the solver recedes in body space (forward = +x for either facing) |
 | `crab-attacks-civet-02` | Crab from the right (cadence, 2 cycles, forward body lengths) | 840 ms | pinch (clawNearDactylTip) ×3 | **0 / 0** | 3.40 ms | **DIAGNOSTIC_PASS** |
+| `mud-crab-attacks-civet-01` | Mud crab from the left, far legs DECLARED folded (Codex 99fc32ee; reach 0.45 at the cap) | 1 cycle | pinch ×2 | **0 / 0** | 3.10 ms | **DIAGNOSTIC_PASS** |
+| `vent-crab-attacks-civet-01` | Vent crab, same | — | — | 0 / 0 | — | FAIL — retained: the runner's source hash refused because `parts-rig.ts` was edited (the reach-cap constant) while it ran; not a rig failure |
+| `vent-crab-attacks-civet-02` | Vent crab from the left, far legs declared folded (reach 0.45 at the cap) | 1 cycle | pinch ×2 | **0 / 0** | 2.90 ms | **DIAGNOSTIC_PASS** |
 | `civet-vs-crab-02` | Civet on the FAMILY solver (cadence, 1 cycle of its 869 ms walk) | 869 ms | bite (jaw) ×2, claw dodge | **0 / 0** | 3.20 ms | **DIAGNOSTIC_PASS** — the Civet's first film off the compat solver |
 
 What the passing crab film shows for the eye: two whole scuttle cycles with the near feet fixed on the ground while
