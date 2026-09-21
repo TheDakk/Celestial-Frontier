@@ -739,3 +739,12 @@ closed by construction: the walk never asks the solver for more than the rig's m
 Addendum — the first film on the cadence stage found a sign error: a RIGHT-side attacker refused 7× because the
 displacement was world-signed while the solver recedes in body space (forward = +x for either facing; the holder
 mirrors the rig). Fixed: forward body lengths; the outcome test now runs the crab from both sides (36/36).
+Addendum — quadrupeds on the family solver, and the reach probe corrected: the Civet under `contact: 'family'`
+(R3's solver) plants its four paws to 0.0000 px at idle with zero refusals across idle/approach/hit/faint/victory
+and measures a stance reach of 0.27, so the parts rig's `'auto'` is now the family solver for EVERY family (the
+compat solver stays selectable; E1's "flip the Civet" item closed). The reach probe now samples BOTH half-cycles
+(each half is the other leg group's stance — the far legs that bound the reach stand in one of them) and keeps a
+10 % margin; the first probe, sampling one half, let the freshwater/mud/vent rigs refuse 14–20× on the stage.
+Measured (body lengths per stance, ×0.9): crab 0.24, coconut 0.26, freshwater ≈ 0.11, mud 0.040, vent 0.032, Civet
+0.24. `a2-cadence.test.ts` now runs the five crabs and the Civet from BOTH sides: twelve cases, every stance
+window < 0.5 px in the arena, zero refusals, the lunge at the run-up by impact (battle2 46/46).

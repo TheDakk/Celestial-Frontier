@@ -21,7 +21,7 @@ describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage co
     for (const name of Object.keys(FITS) as FitName[]) {
       const { rig, record, binding } = await loadFit(name);
       expect(rig.kind).toBe('parts'); expect(rig.label).toContain(PARTS_RIG_LABEL); expect(rig.label).toContain(rig.contactMode);
-      expect(rig.contactMode).toBe(name === 'civet' ? 'quadruped-compat' : 'family');
+      expect(rig.contactMode).toBe('family');
       expect(rig.recipeHash).toBe(record.recipeHash); expect(rig.templateId).toBe(record.template.id);
       expect(rig.foot).toEqual({ x: record.landmarks.root![0], y: record.geometry.groundLineY });
       expect(rig.cutout).toEqual({ width: 1, height: 1 }); expect(rig.sourceSize).toEqual({ width: record.geometry.width, height: record.geometry.height }); // display units are normalized (E1.5 film finding)
@@ -113,9 +113,9 @@ describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage co
     rig.dispose();
   }, 60_000);
 
-  it('quadruped bindings take the preserved compatibility solver: the Civet idle plants four paws with zero refusals', async () => {
+  it('quadruped bindings take the FAMILY solver since the R3 re-merge: the Civet idle plants four paws with zero refusals and measures a stance reach', async () => {
     const { rig, record } = await loadFit('civet');
-    expect(rig.contactMode).toBe('quadruped-compat');
+    expect(rig.contactMode).toBe('family'); expect(rig.stanceReach).toBeGreaterThan(0.1);
     const card = compileBodyCard(record), idle = buildTimeline(card, 'idle', 3), clip = { source: 'timeline' as const, timeline: idle };
     const W = record.geometry.width, H = record.geometry.height, paws = ['hindFarAnkle', 'foreFarAnkle', 'hindNearAnkle', 'foreNearAnkle'];
     for (let i = 0; i <= 30; i++) {
