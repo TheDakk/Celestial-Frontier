@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "hiddenChains": [
+    "leg3Near"
+  ],
+  "contactChains": [
+    {
+      "id": "leg0Far",
+      "hip": "leg0FarRoot",
+      "knee": "leg0FarKnee",
+      "end": "leg0FarFoot",
+      "terminal": null,
+      "group": 0
+    },
+    {
+      "id": "leg0Near",
+      "hip": "leg0NearRoot",
+      "knee": "leg0NearKnee",
+      "end": "leg0NearFoot",
+      "terminal": null,
+      "group": 1
+    },
+    {
+      "id": "leg1Far",
+      "hip": "leg1FarRoot",
+      "knee": "leg1FarKnee",
+      "end": "leg1FarFoot",
+      "terminal": null,
+      "group": 1
+    },
+    {
+      "id": "leg1Near",
+      "hip": "leg1NearRoot",
+      "knee": "leg1NearKnee",
+      "end": "leg1NearFoot",
+      "terminal": null,
+      "group": 0
+    },
+    {
+      "id": "leg2Far",
+      "hip": "leg2FarRoot",
+      "knee": "leg2FarKnee",
+      "end": "leg2FarFoot",
+      "terminal": null,
+      "group": 0
+    },
+    {
+      "id": "leg2Near",
+      "hip": "leg2NearRoot",
+      "knee": "leg2NearKnee",
+      "end": "leg2NearFoot",
+      "terminal": null,
+      "group": 1
+    },
+    {
+      "id": "leg3Far",
+      "hip": "leg3FarRoot",
+      "knee": "leg3FarKnee",
+      "end": "leg3FarFoot",
+      "terminal": null,
+      "group": 1
+    }
+  ],
+  "checks": [
+    "v2 declaration resolves",
+    "leg3Far is visible",
+    "leg3Near remains hidden",
+    "seven visible contact chains",
+    "sealed fit files unchanged (coconut-declaration.json)"
+  ]
+}

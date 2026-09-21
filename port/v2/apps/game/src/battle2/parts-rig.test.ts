@@ -81,7 +81,7 @@ describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage co
     rig.dispose();
   }, 60_000);
 
-  it.fails('SOLVER FINDING for Codex (2026-09-21 re-merge): under travel:"stage" the family solver zeroes root dx but its stance TARGETS still advance by stride×(completed+step), so feet march in body space while the stage also moves the body (the double count); arena-planting needs targets that recede by the stage displacement. Measured 185 px spread; flips green when the solver owns that.', async () => {
+  it.fails('ONE solver ask left (Codex cb1a667d removed the local stride in stage mode; the 184 px spread is now exactly the stage travel): stance feet stay planted in ARENA space while the stage carries the run-up — flips green when ContactPhase accepts `stageDisplacement` (body-length units, passed by the parts rig from RigPoseContext) and recedes stance targets by it', async () => {
     const { rig, record } = await loadFit('crab');
     const card = compileBodyCard(record, record.genome), W = record.geometry.width, frameW = 1024, runUpPx = 0.18 * frameW;
     const approach = buildTimeline(card, 'approach', 5), clip = { source: 'timeline' as const, timeline: approach };
