@@ -1,0 +1,24 @@
+{
+  "decision": "Nick 2026-09-21: stub tail inside outline removes long-tail slot",
+  "previous": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "previousSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+  "current": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "tail"
+    ],
+    "hidden": [],
+    "folded": []
+  },
+  "presenceSha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db",
+  "foldedJudgment": "hindFar left unfolded: the upper leg is occluded by the near leg/body, but its lower leg and separate weight-bearing paw extend toward the ground; it is not visibly folded flat against the torso. Four painted endpoint paws remain.",
+  "masterSha256": "1fdbef97b7c612d85ebe4a3ed7b580c31d7671a379c92e46ba3f200f655d035d",
+  "masterChanged": false,
+  "landmarksAuthored": false,
+  "schema": "cf.declaration-change/v1"
+}

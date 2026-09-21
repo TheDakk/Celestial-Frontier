@@ -5,7 +5,7 @@ One built-in `image_gen.imagegen` call used the exact bytes of `prompt.txt`, wit
 - [Master](brown-bear-master.png)
 - [Exact sent prompt](prompt.txt), [compiler](compile-prompt.mjs), [request receipt](request.json), [result receipt](result.json)
 - [Painter guide](anatomy-guide.png), [catalogue source](subject-source.json)
-- [Presence input](presence.json): four visible walking legs; hidden=[], absent=[], folded=[] (cf.anatomy-presence/v2).
+- [Presence input](presence.json): four visible walking legs; hidden=[], absent=[tail], folded=[] (cf.anatomy-presence/v2). Tail is a stub inside the outline; its long-tail slot is removed under Nick’s decision. hindFar remains unfolded: partly occluded, but extended toward its own weight-bearing paw. Prior declaration is retained in `audits/SOLVER_STAGE_DISPLACEMENT_20260921/bear-declaration.json`.
 
 The guide is retained at its native 440 square; it was not resampled to 1536. The actual Brown Bear catalogue has headFrac 0.27, rather than the design note’s 0.22. The prompt uses catalogue anatomy. Sol’s retained source card explicitly has no biome hazard; the guardian’s threatening face and more elaborate focal fur/claw detail do not invent a hazard motif. GUARDIAN RULE is included verbatim with that source application stated.
 
