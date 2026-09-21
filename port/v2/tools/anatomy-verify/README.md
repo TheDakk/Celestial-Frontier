@@ -582,3 +582,7 @@ with a scope error and a pre-written number — corrected here from the actual r
 no record), FAIL 6/7 — coconut (REFUSE), crab (REFUSE), freshwater (ADMIT, worst foot 206), mud (ADMIT, 158),
 vent (ADMIT, 439), Civet (ADMIT, paws ≤ 31 px but `tail3` 65 px from the record's tail tip — the tuft junction
 vs the hand tip). A verdict that admits a wrong landmark no longer reads as a pass.
+Process fix: `check.mjs` runs score, ic4 and sheet on the committed files and exits nonzero on any error; it is
+the first command of every commit in this folder from now on. Appendage tips (tail) are now refined like feet: the
+Civet's `tail3` moves 65 → 67 px from the record's tail tip — the hand landmark sits at the end of the fur tuft, the
+compiler's at the tuft junction; a tuft-length correction (the collapsed tuft's own length) is the P6 item for tails.
