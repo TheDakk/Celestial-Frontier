@@ -1,0 +1,38 @@
+{
+  "striped": {
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "seed": null,
+    "generatedFile": "/Users/nick/.codex/generated_images/01a0bab7-303d-74b2-9084-ec26ea52e7e8/exec-2b183eb0-0af3-40cd-9473-c7635af5ef31.png"
+  },
+  "spotted": {
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "seed": null,
+    "generatedFile": "/Users/nick/.codex/generated_images/01a0bab7-303d-74b2-9084-ec26ea52e7e8/exec-f674dc8e-8455-4576-8404-85a1af2ae4e0.png"
+  },
+  "banded": {
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "seed": null,
+    "generatedFile": "/Users/nick/.codex/generated_images/01a0bab7-303d-74b2-9084-ec26ea52e7e8/exec-47d602fb-8891-4f26-9a30-cff02f1d8c46.png"
+  },
+  "mottled": {
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "seed": null,
+    "generatedFile": "/Users/nick/.codex/generated_images/01a0bab7-303d-74b2-9084-ec26ea52e7e8/exec-f43776f2-eb8f-4b72-ab38-0bee0a27f821.png"
+  },
+  "marbled": {
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "seed": null,
+    "generatedFile": "/Users/nick/.codex/generated_images/01a0bab7-303d-74b2-9084-ec26ea52e7e8/exec-ee9bcf82-3a48-420a-8419-5eabce7ad43b.png"
+  },
+  "eye-spotted": {
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "seed": null,
+    "generatedFile": "/Users/nick/.codex/generated_images/01a0bab7-303d-74b2-9084-ec26ea52e7e8/exec-5b01f290-e477-47f7-96fb-7ab3ad14e80d.png"
+  }
+}
