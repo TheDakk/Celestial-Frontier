@@ -1,0 +1,5 @@
+Initial sheet build stopped at Vent: TypeError: Cannot read properties of undefined (reading hidden).
+Vent uses the accepted legacy complete inventory with no anatomy declaration. Three prior sheets were already written.
+Correction: sheet renderer reads absent declaration as empty hidden set, matching the existing contract.
+Continuation verifies any already-created sheet byte-for-byte, preserves it, and renders Vent plus overview.
+No native rerun, no record or shared writer change.

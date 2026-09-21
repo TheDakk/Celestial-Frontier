@@ -7,8 +7,12 @@ Per-clip2ms readings remain recorded as diagnostics for this tier; the existing 
 2ms phone/painter gate remains unchanged. D1 phones continue using retained originals.
 Geometry, exact rest,0.25px contact and split root-continuity gates remain mandatory.
 Current delivery: audits/VISION_P1_DESKTOP_DELIVERY_20260920/README.md.
-After four retained final captures, IC-3 writers are frozen: no intake, painting, P2 or
-roster until IC-4 passes the five accepted fits. Older CPU decision-pending notes below
+Final canonical captures: Crab4.0ms / Freshwater2.4ms / Mud3.6ms / Vent3.6ms full-film rig
+p95; retained split-guard Coconut3.0ms. Freshwater and Coconut PASS the desktop gate;
+Crab/Mud/Vent remain CPU leaf reds, with films and sheets delivered and no unchanged retry.
+All geometry/contact/rest/continuity checks pass, zero refused frames.310 frozen input/writer
+files unchanged. IC-3 writers are now frozen: no intake, painting, P2 or roster until IC-4
+passes the five accepted fits. Older CPU decision-pending notes below
 are historical measurements, superseded by this explicit tier decision.
 
 
