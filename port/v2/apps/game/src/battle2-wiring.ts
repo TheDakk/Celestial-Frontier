@@ -30,7 +30,9 @@
  * delivery clip, labelled. Not yet done here: synchronising turns to the Chronicle cue cadence (the study plays the
  * transcript through at its own pace); a crab cannot attack until R3 admits pinch (labelled per side in `status().attacks`). */
 import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-contact-math.mjs';
-import arenaRecipeUrl from '../../../../../audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json?url';
+/** The shipped battle2 assets (`apps/game/public/battle2/…`, mirrored by `tools/morph/build-shipped-battle2.mjs`) keep the
+ * proof folders' relative layout, so every path below resolves against this recipe URL unchanged. */
+const arenaRecipeUrl = '/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json';
 import { speciesVisualKey } from '@cf/art/species-identity';
 import { BattleStage, GUARDIAN_FRAME_FILL, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, selectHabitatArena, turnPlanInputFromTranscriptEvent,
   type BattleRigV1, type BattleStageFactory, type FixturePartCut, type RigContainerLike, type RigSpriteLike,
