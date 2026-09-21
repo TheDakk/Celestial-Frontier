@@ -261,6 +261,15 @@ controls, including Objective, receive presses. Objective is now a named native 
 sole Charters opener, using the existing panel owner for pointer/keyboard activation and focus
 return. It remains available while landed and shows **Charters** when no objective is active.
 The existing objective text/progress calculation and Charter gameplay remain unchanged.
+Portrait objective allocation (matches code as of 2026-09-23): the sheet controller hides
+Objective under an open Survey, then synchronously republishes AppChrome's header height.
+Other panels keep the opener rendered. If natural wrapping prevents a panel's measured header
+and 44px body or the native 72px biosphere band from fitting, its caption ellipsizes with full
+DOM text/accessible name intact; full wrapping returns with room. Panel open/close sends
+`cf-panel-layout` before focus restoration. Temporary natural measurements preserve native
+sheet/Compendium scroll offsets. This replaces the broad portrait card/panel CSS hide rule.
+Both phone Glass diagnostics and controls are green in
+`audits/U1_SURVEY_OBJECTIVE_YIELD_20260923/README.md`; this is local proof, not hosted certification.
 The canonical #trail remains populated for diagnostics but is visually hidden, as in production.
 There is no visible Cosmos/Current view label. Actual rail wrappers own their 8px internal gaps,
 so those gaps keep a panel open; empty sky still dismisses it. The left rail `#raillft` is nested

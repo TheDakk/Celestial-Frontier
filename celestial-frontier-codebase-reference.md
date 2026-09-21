@@ -791,6 +791,13 @@ Prime stays top-center, four utilities bottom-right and Atlas/Shipyard on the ri
 Desktop/tablet name, Objective and text controls use bounded `width:max-content` to fit their labels.
 Objective sits below Search at upper-right and is a named native button: the sole Charters
 opener through the existing panel/focus owner after duplicate dock/rail shortcuts are removed.
+As of 2026-09-23, the sheet layout owner hides Objective under portrait Survey and synchronously
+refreshes the AppChrome header measurement. Generic panels retain the opener; measured room
+shortage ellipsizes its caption without removing its complete text or accessible name.
+`cf-panel-layout` settles open/close layout before native focus return, and natural-header
+measurement preserves sheet/Compendium scroll offsets. Full wrapping resumes with room.
+The two local phone Glass logs and controlled mutations are retained in
+`audits/U1_SURVEY_OBJECTIVE_YIELD_20260923/README.md`.
 Native keyboard activation and focus return apply; the button remains available while landed
 and falls back to Charters when no objective is active. Objective progress and Charter gameplay
 are unchanged. Name-only Inventory and Health stay upper-left; Health geometry, exact ratio,

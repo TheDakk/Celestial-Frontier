@@ -119,6 +119,8 @@ export function openPanel(id: string, opener?: HTMLElement | null): boolean {
     b?.classList.add('on', 'sel');
     b?.setAttribute('aria-expanded', 'true');
   }
+  // Settle measured chrome before focus/scroll reads the new panel geometry.
+  document.dispatchEvent(new document.defaultView!.Event('cf-panel-layout'));
   /* Panels are non-modal regions, but keyboard users still need a reliable
      entry point. Focus the sticky close control; closing restores the exact
      opener captured above. */
@@ -174,6 +176,7 @@ export function closePanels(except?: string): void {
     if (wasVisible) p.onClose?.();
   }
   document.body.classList.toggle('panel-open', PANELS.some((p) => p.el.style.display !== 'none'));
+  document.dispatchEvent(new document.defaultView!.Event('cf-panel-layout'));
   if (!except && _opener) { restorePanelFocus(); _opener = null; }
 }
 export function togglePanel(id: string): void {

@@ -8944,7 +8944,7 @@ sideEl.id = 'planetside';
 sideEl.className = 'glass';
 sideEl.style.display = 'none';
 document.body.appendChild(sideEl);
-createSheetLayoutController();
+createSheetLayoutController(document, () => { syncTopbarH(); syncSurfaceChromeBottom(); });
 let planetsideGeneration = 0;
 let planetsideWorldKey: string | null = null;
 let planetsideAudioRoster: CanonicalWorldRoster | null = null;
