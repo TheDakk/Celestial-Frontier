@@ -102,6 +102,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
  const stride=chains.length?Math.min(...chains.map(c=>c.chain.lengths.upper+c.chain.lengths.lower))*.04:0;
  const direction=template.id==='brachyuran'?Math.sign(record.landmarks.leg0NearRoot![0]-record.landmarks.leg0FarRoot![0]):1;
  const hasOffset=chains.some(c=>c.offset.x!==0||c.offset.y!==0||!c.endpointOnly);
+ const rigidSupportChains=new Map<string,ReturnType<typeof createTwoBoneChain>>();
  return {chains,scaleLength,stride,resolve(input:CreaturePoseV1,phase:ContactPhase){
   if(!Number.isFinite(phase.elapsedMs)||phase.elapsedMs<0||!Number.isFinite(phase.durationMs)||phase.durationMs<=0)throw Error('Contact: invalid phase');
   if(phase.travel!==undefined&&phase.travel!=='solver'&&phase.travel!=='stage')throw Error('Contact: invalid travel owner');
@@ -138,6 +139,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
    if(!swing&&!bodyPlanted&&phase.travel==='stage'&&phase.stageDisplacement!==undefined)target.x-=phase.stageDisplacement*scaleLength;
    return {joint:c.end,target,endpointTarget:{...target},paintedTarget:{x:target.x+c.offset.x,y:target.y+c.offset.y},stance:!swing,...bodyPlanted?{space:'body' as const}:{}};
   });
+  const uncompressedRoot=pose.root;
   let compression=0,final=program.evaluate(pose);
   // Initial endpoint solve, then at most three fixed-point support corrections.
   // Every pass solves exactly to its declared endpoint target; no reach clamp.
@@ -163,16 +165,55 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
    }
    final=program.evaluate(pose);
   }
-  let maxError=0,maxPaintTargetErrorPx=0;
-  for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,contact=contacts[i]!;
-   for(const j of [c.knee,c.end,...c.terminal?[c.terminal]:[]]){const l=(template.contactLimitsDeg??template.limitsDeg)[j]!,deg=pose[j]!.rotation*180/Math.PI;if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: joint limit '+j+' '+phase.actionId+'@'+phase.elapsedMs+': '+deg);}
-   const p=transformPoint(final[c.end]!,c.endPoint),paint=c.endpointOnly?transformPoint(final[c.end]!,c.support):predictContactSupport(c.model,final);
-   maxError=Math.max(maxError,Math.hypot(p.x-contact.endpointTarget.x,p.y-contact.endpointTarget.y));
-   maxPaintTargetErrorPx=Math.max(maxPaintTargetErrorPx,Math.hypot((paint.x-contact.paintedTarget.x)*record.geometry.width,(paint.y-contact.paintedTarget.y)*record.geometry.height));
+  const measure=()=>{
+   let maxError=0,maxPaintTargetErrorPx=0;
+   for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,contact=contacts[i]!;
+    for(const j of [c.knee,c.end,...c.terminal?[c.terminal]:[]]){const l=(template.contactLimitsDeg??template.limitsDeg)[j]!,deg=pose[j]!.rotation*180/Math.PI;if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: joint limit '+j+' '+phase.actionId+'@'+phase.elapsedMs+': '+deg);}
+    const p=transformPoint(final[c.end]!,c.endPoint),paint=c.endpointOnly?transformPoint(final[c.end]!,c.support):predictContactSupport(c.model,final);
+    maxError=Math.max(maxError,Math.hypot(p.x-contact.endpointTarget.x,p.y-contact.endpointTarget.y));
+    maxPaintTargetErrorPx=Math.max(maxPaintTargetErrorPx,Math.hypot((paint.x-contact.paintedTarget.x)*record.geometry.width,(paint.y-contact.paintedTarget.y)*record.geometry.height));
+   }
+   if(maxError>1e-8)throw Error('Contact: unresolved endpoint');
+   return {maxError,maxPaintTargetErrorPx};
+  };
+  let measured=measure();
+  // Preserve the exact accepted three-pass path. A rigid offset near a straight
+  // knee can oscillate instead of converging. When every active support belongs
+  // solely to its endpoint, solve that rigid point analytically. Mixed weights
+  // retain their existing fixed-point path and refusal; no fit-specific rule.
+  if(measured.maxPaintTargetErrorPx>.25&&activeChains.every(c=>c.endpointOnly)){
+   const rigid=activeChains.map(c=>{
+    let chain=rigidSupportChains.get(c.id);
+    if(!chain){const cross=(c.support.x-c.root.x)*(c.joint.y-c.root.y)-(c.support.y-c.root.y)*(c.joint.x-c.root.x);
+     chain=createTwoBoneChain({root:c.root,joint:c.joint,end:c.support,bend:cross<0?-1:1});rigidSupportChains.set(c.id,chain);}
+    return chain;
+   });
+   // Recompute accommodation from the authored root, not from corrections that
+   // belonged to the failed endpoint iteration. The same compression cap applies.
+   if(uncompressedRoot)pose.root=uncompressedRoot;else delete pose.root;
+   let matrices=program.evaluate(pose),shift=0;
+   for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,target=contacts[i]!.paintedTarget,root=transformPoint(matrices[c.hip]!,c.root),dx=target.x-root.x,max=rigid[i]!.lengths.upper+rigid[i]!.lengths.lower;
+    if(Math.hypot(dx,target.y-root.y)<=max)continue;
+    if(Math.abs(dx)>=max||target.y<root.y)throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' '+c.id+' rigid support outside accommodatable reach');
+    shift=Math.max(shift,target.y-Math.sqrt(max*max-dx*dx)+1e-10-root.y);
+   }
+   if(shift>scaleLength*.08)throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' rigid support exceeds scale compression bound');
+   compression=shift;
+   if(shift>0){pose.root={rotation:0,...pose.root,dy:(pose.root?.dy??0)+shift/program.bodyLength};matrices=program.evaluate(pose);}
+   for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,contact=contacts[i]!,parent=matrices[c.hip]!,root=transformPoint(parent,c.root),solved=rigid[i]!.solve(root,contact.paintedTarget);
+    const upper=wrapped(angle(solved.root,solved.joint)-angle(c.root,c.joint));
+    const lower=wrapped(angle(solved.joint,solved.end)-angle(c.joint,c.support));
+    pose[c.knee]={rotation:wrapped(upper-Math.atan2(parent[1],parent[0]))};pose[c.end]={rotation:wrapped(lower-upper)};
+    if(c.terminal)pose[c.terminal]={rotation:wrapped(-lower)};
+    // The anatomical lower bone is unchanged: rotate its original vector from
+    // the solved knee. The rigid support is only the IK target, not a new joint.
+    const dx=c.endPoint.x-c.joint.x,dy=c.endPoint.y-c.joint.y,cos=Math.cos(lower),sin=Math.sin(lower);
+    contact.endpointTarget={x:solved.joint.x+cos*dx-sin*dy,y:solved.joint.y+sin*dx+cos*dy};
+   }
+   final=program.evaluate(pose);measured=measure();
   }
-  if(maxError>1e-8)throw Error('Contact: unresolved endpoint');
-  if(maxPaintTargetErrorPx>.25)throw Error('Contact: painted support iteration residual '+maxPaintTargetErrorPx);
-  return {pose,contacts,maxError,compression,maxPaintTargetErrorPx};
+  if(measured.maxPaintTargetErrorPx>.25)throw Error('Contact: painted support iteration residual '+measured.maxPaintTargetErrorPx);
+  return {pose,contacts,maxError:measured.maxError,compression,maxPaintTargetErrorPx:measured.maxPaintTargetErrorPx};
  }};
 }
 
