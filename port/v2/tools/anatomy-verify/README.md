@@ -597,3 +597,21 @@ several micro-junctions, so graph hops from the one junction miss them; the firs
 terminal direction, hops from the junction — left the Civet at 67 px). Civet `tail3` 65 → **42 px**, and with it
 the Civet passes PROGRAM §6's landmark bound: **§6 PASS 2/7** (Civet worst 31 px; Wolf by verdict). Run of the
 committed file via `check.mjs`.
+
+## Slice 30 — the "false endpoints" identified: lone claw fingers; three tests and a scale sweep, 2026-09-21
+The two endpoints that have displaced true legs all day are the NEAR CLAW's dactyl tips: coconut (937,1010) is
+5 px from the record's `clawNearDactylTip`, freshwater (704,904) 6 px from its. Their twin finger merged into the
+same ridge at the working scale, so no fork was seen and the finger entered the leg pool as a long thick endpoint.
+Measured on every endpoint candidate, labelled by its nearest record landmark (leg / finger / eye):
+- palm behind the tip (max DT outside the thick region along the chain): 0.44 R for EVERY candidate — it saturates
+  at the body threshold and measures nothing; dropped.
+- twin stub at the last junction (thickest other short edge / terminal thickness): the coconut lone finger has NONE
+  (0.00) while legs beside the claw carry carapace-adjacent stubs at 2.3–3.5× — rejected.
+- thinness weight re-swept on the current defaults (0.4/0.6/0.8/1.0): 29/39, 25/38, 25/38, 24/38 — rejected.
+- working scale (`longest` 512/640/768; `detectTips`/`ridgeGraph` constants unchanged): 640 and 768 flip refusals
+  on four crabs each and the Wolf refuses at 768 — not a lever until P2's constants (spur floor 8 px, junction
+  radius 3 px, tip windows 8–64 px, same-toe 90 px) are expressed in body units; that is the prerequisite for any
+  scale study and the P2 item that could separate merged fingers. Default stays 512.
+Conclusion: the remaining wrong feet are one graph defect (two claw fingers merged into one ridge at 512 px on two
+paintings), not a matcher defect; the fix is at P2 (resolution or a fork-aware ridge), reachable only after P2's
+constants are body-relative. Every rule tried is recorded above.
