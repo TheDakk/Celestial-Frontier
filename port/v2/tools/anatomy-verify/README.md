@@ -577,6 +577,8 @@ the applied three): no change on any of the three — the freshwater false endpo
 loop on a declared-folded slot, the crab's `leg3Far` is an endpoint the finger rule takes, the vent's near order is
 unchanged. Declarations are exhausted as a lever too.
 **`ic4.mjs` now prints PROGRAM §6's pass honestly:** PASS = verdict ADMIT and, where a hand record exists, every
-named foot within `IC4_BOUND` (default 60) master px. Over seven subjects: PASS 2/7 (Civet at worst 31 px; Wolf
-by verdict, no record), FAIL 5/7 — coconut (REFUSE), crab (REFUSE), freshwater (ADMIT, worst 206), mud (ADMIT,
-worst 158), vent (ADMIT, worst 439). A verdict that admits a wrong foot no longer reads as a pass.
+named landmark within `IC4_BOUND` (default 60) master px. Run of the committed file (`c4e7fabe` shipped this check
+with a scope error and a pre-written number — corrected here from the actual run): **PASS 1/7** (Wolf, by verdict,
+no record), FAIL 6/7 — coconut (REFUSE), crab (REFUSE), freshwater (ADMIT, worst foot 206), mud (ADMIT, 158),
+vent (ADMIT, 439), Civet (ADMIT, paws ≤ 31 px but `tail3` 65 px from the record's tail tip — the tuft junction
+vs the hand tip). A verdict that admits a wrong landmark no longer reads as a pass.
