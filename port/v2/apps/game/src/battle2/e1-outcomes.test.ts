@@ -16,8 +16,8 @@ import { createPortraitRig } from './fallback.js';
 import type { BattleRigV1, RigContainerLike, RigSpriteLike } from './fixture-rig.js';
 import { defaultArenaWorld, selectHabitatArena, DEFAULT_ARENA_WORLD_KEY } from './habitat-arena.js';
 import { buildTurnCuePlan } from './cue-plan.js';
-import { FITS, REPO_ROOT, loadFit, type FitName } from './parts-rig.fixtures.js';
-import { BattleStage, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext } from './stage.js';
+import { FITS, REPO_ROOT, loadFit, loadFitDir, type FitName } from './parts-rig.fixtures.js';
+import { GUARDIAN_FRAME_FILL, BattleStage, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext } from './stage.js';
 
 class Node { x = 0; y = 0; rotation = 0; alpha = 1; visible = true; destroyed = false; scaleSet: [number, number] = [1, 1]; anchorSet: [number, number] = [0, 0]; text = ''; ops: string[] = [];
   readonly scale = { set: (x: number, y: number) => { this.scaleSet = [x, y]; } }; readonly anchor = { set: (x: number, y: number) => { this.anchorSet = [x, y]; } };
@@ -117,6 +117,23 @@ describe('E1 outcome 2 — no refusal in play', () => {
       stage.dispose();
     }
     for (const [name, r] of Object.entries(report)) { expect(r.ticks, name).toBeGreaterThan(300); expect(r.refusals, `${name}: ${r.last ?? ''}`).toBe(0); }
+  }, 600_000);
+  it('D2 G6: the Brown Bear GUARDIAN attacks (anatomy claw), is attacked, dodges, wins and faints across seeded turns at 30 Hz on the guardian stands with the tallest-pose fill: zero refusals, landmarks inside the frame every tick', async () => {
+    const { rig, card, record } = await loadFitDir('audits/VISION_D2_GUARDIAN_20260921/fit-01/');
+    expect(rig.guardian).toBeDefined(); expect(rig.tallestHeight! / rig.bounds.height).toBeGreaterThan(1.3);
+    const gLayout = composeArena({ id: 'e1-guardian', groundLineNormalized: 0.78, plates: { far: TEX, mid: TEX, near: TEX } }, FRAME, { guardianSide: 'left' });
+    const attackFor = (side: 'A' | 'B', ordinal: number): TurnAttack | null => { if (side !== 'A') return null; const r = compileAnatomyAttack(card, 'ground', ordinal); return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; };
+    const { f, nodes } = stageFactory(); let now = 0;
+    const stage = new BattleStage({ factory: f, clock: () => now, layout: gLayout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: rig, right: portraitRig() }, masses: { left: card.massClass.multiplier, right: 0.85 } });
+    const rows = [{ side: 'A', an: 'Bear', dn: 'Platypus', dmg: 7, crit: false, hpA: 30, hpB: 20 }, { side: 'B', an: 'Platypus', dn: 'Bear', dmg: 4, crit: true, hpA: 26, hpB: 20 }, { an: 'Bear', dn: 'Platypus', dodge: true }, { side: 'A', an: 'Bear', dn: 'Platypus', dmg: 20, crit: true, hpA: 26, hpB: 0 }, { side: 'B', an: 'Platypus', dn: 'Bear', dmg: 26, crit: true, hpA: 0, hpB: 20 }];
+    const plans = rows.map((row, i) => turnOf(contextFor('Bear', card.massClass.multiplier, card, attackFor, { seed: (0xA11 + i * 7919) >>> 0, arena: { groundLineY: gLayout.groundLineY, stands: gLayout.stands } }), row, i));
+    expect(plans[0]!.attack?.verb).toBe('claw');
+    const holder = nodes.find((n) => n.children.includes(rig.root as object))!; const joints = Object.keys(record.landmarks); let topMin = Infinity, ticks = 0;
+    for (const input of plans) { const plan = stage.play(input); for (let ms = 0; ms <= plan.beats.end; ms += 1000 / 30) { now = ms; if (!stage.tick()) throw new Error('no frame'); ticks++;
+      for (const j of joints) { const p = rig.jointPosition(j); if (!p) continue; const y = holder.y + holder.scaleSet[1] * (p.y - rig.foot.y) * rig.cutout.height; if (y < topMin) topMin = y; } } }
+    expect(ticks).toBeGreaterThan(300); expect(rig.refusals(), rig.lastRefusal() ?? '').toBe(0);
+    expect(topMin).toBeGreaterThanOrEqual(FRAME.height * (1 - GUARDIAN_FRAME_FILL) - FRAME.height * 0.02); // the guardian never leaves the frame across attack / hit / dodge / victory / faint
+    stage.dispose();
   }, 600_000);
   it('a crab ATTACKS through the stage (R3 landed 2026-09-21: pinch reachable by the resolvers; pin flipped from it.fails)', async () => {
     const { rig, card } = await loadFit('crab');
