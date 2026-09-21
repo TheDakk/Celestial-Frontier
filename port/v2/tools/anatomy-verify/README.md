@@ -537,3 +537,8 @@ refilled by one of the mud crab's three false loops — a folded slot must accep
 have chosen on the unmutated master, i.e. the mutant runner should compare against the positive's loop, not
 re-admit any loop), mud erase/dup `leg3Near`, freshwater erase/dup `leg3Near`, coconut erase `leg2Near`, vent dup
 `leg0Far`. Eight of twenty; the other twelve and all seven wrong-template mutants refuse.
+Mutant runner fix: a mutant's folded slot counts only when it carries the positive's own loop (far point within
+0.25 R). Effect: duplicated 6/10 → 7/10 (mud dup `leg0Far` now refuses); erased unchanged at 6/10 — erasing a
+folded leg leaves the carapace rim it lay against, which forms a loop at the same far point, so an erased FOLDED
+leg is undetectable by loop evidence by construction (recorded; the declaration path accepts this for folded legs).
+Seven absorbed mutants remain, named above.
