@@ -1,6 +1,8 @@
 {
   "schema": "cf.anatomy-presence/v2",
-  "absent": [],
+  "absent": [
+    "tail"
+  ],
   "hidden": [],
   "folded": []
 }
