@@ -10,6 +10,9 @@ import { EffectSequencePlayer, type EffectPixiHost, type EffectTextureLike } fro
 import type { EffectDelivery } from '../effects/sequencer.js';
 import type { BodyCard } from '../motion/body-card.js';
 import { PLATE_ORDER, combatantScale, parallaxOffset, type ArenaLayout, type PlateId } from './arena.js';
+/** D2 G6 — a guardian rig fills 0.9 of the frame height (kit GUARDIAN RULE: "fills the battle screen"); an option of
+ * `combatantScale`, not a species branch. */
+export const GUARDIAN_FRAME_FILL = 0.9;
 import { buildTurnPlan, sampleTurn, type Side, type StageSample, type TurnArena, type TurnAttack, type TurnPlan, type TurnPlanInput } from './choreography.js';
 import { TurnCuePlayer, buildTurnCuePlan, type CueSink, type TurnCuePlan } from './cue-plan.js';
 import type { BattleRigV1, RigNodeLike } from './fixture-rig.js';
@@ -66,7 +69,7 @@ export class BattleStage {
       r.x = -rig.foot.x * rig.cutout.width; r.y = -rig.foot.y * rig.cutout.height; h.addChild(r as object);
       this.root.addChild(h); return h;
     };
-    this.#scales = { left: combatantScale(o.rigs.left.bounds, o.rigs.left.cutout.height, o.masses.left, L.frame.height).scale, right: combatantScale(o.rigs.right.bounds, o.rigs.right.cutout.height, o.masses.right, L.frame.height).scale };
+    this.#scales = { left: combatantScale(o.rigs.left.bounds, o.rigs.left.cutout.height, o.masses.left, L.frame.height, o.rigs.left.guardian ? { frameFill: GUARDIAN_FRAME_FILL } : {}).scale, right: combatantScale(o.rigs.right.bounds, o.rigs.right.cutout.height, o.masses.right, L.frame.height, o.rigs.right.guardian ? { frameFill: GUARDIAN_FRAME_FILL } : {}).scale };
     this.#holders = { left: holder('left'), right: holder('right') };
     this.#fx = f.container(); this.root.addChild(this.#fx);
     this.root.addChild(this.#plates.near);
