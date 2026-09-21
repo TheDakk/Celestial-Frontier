@@ -1,0 +1,1 @@
+{"status":"FAIL","error":"rig refusals in play: {\"left\":0,\"right\":7} {\"left\":null,\"right\":\"Contact: approach:scuttle@201.8333333333339 leg0Far outside accommodatable reach\"}","refusals":{"left":0,"right":7},"attacks":{"left":null,"right":"pinch (clawNearDactylTip)"},"capture":{"frames":602,"cpuP95Ms":3.899999976158142,"frameDeltaP95Ms":16.799999999999272}}
