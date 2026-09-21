@@ -532,3 +532,8 @@ claw finger (a palm test `thickNeedsPalm` was measured: 26/40, rejected); the co
 (937,1010), 52 px from the record's placed hidden `leg3Far` — the painting shows the leg the fit declares hidden,
 and a strict verdict is right to say so. Ordering re-measured with folded declarations: `sep` 5/7 positives,
 `depth`/`mid` 4/7 — `sep` stays.
+Absorbed mutants after the folded rule, by name (the next IC-4 item): mud erase/dup `leg0Far` (its folded slot is
+refilled by one of the mud crab's three false loops — a folded slot must accept only the loop the compiler would
+have chosen on the unmutated master, i.e. the mutant runner should compare against the positive's loop, not
+re-admit any loop), mud erase/dup `leg3Near`, freshwater erase/dup `leg3Near`, coconut erase `leg2Near`, vent dup
+`leg0Far`. Eight of twenty; the other twelve and all seven wrong-template mutants refuse.
