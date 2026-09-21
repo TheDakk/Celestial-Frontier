@@ -1,5 +1,7 @@
 # Brown Bear — observed and REST-support static comparison
 
+Latest correction: signed solver 58f81e54 resolves the observed-support iteration refusals. Its separate [current observed result](../../BEAR_RIGID_SUPPORT_IK_20260922/BEAR_STATIC.md) passes 18/20 action rows and presentation, with exact rest and drift ≤ 0.25 px; gallop/tail compression remain red. The two tables below are the retained pre-correction comparison on 1ff30009, not a rerun of REST mode.
+
 **Common runtime solver and fit producer: `1ff30009d9b8cda3a92d72a2ef07a36c8506d91b`.** Record, binding, clips, gates and solver bytes are unchanged between the two tables. The retained observed evidence was produced at1ff30009; the new REST tool run was signed at`756c366d004358e1d8efbb0e033778e3f53595cb`. Distinct tool-producer hashes are retained rather than relabeling historical evidence.
 
 Observed:5/20 action rows complete plus presentation refuses. REST:18/20 action rows and presentation complete at the solver; gallop and tail refuse compression. Both have exact rest PASS. REST mode still measures actual painted drift against the unchanged0.25px gate, retaining RED while continuing to distinguish surface failure from solver admission. The stage’s default REST mode does not establish painted-surface planting.
