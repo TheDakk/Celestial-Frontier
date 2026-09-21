@@ -64,12 +64,17 @@ export function parallaxOffset(displacementPx: number): ParallaxOffset {
 }
 
 export interface CombatantScale { readonly scale: number; readonly heightFraction: number; readonly heightPx: number; }
-/** Scale a rig so its standing height is 1/3 (tiny) .. 1/2 (titanic) of the frame height. */
-export function combatantScale(bounds: Readonly<{ height: number }>, cutoutHeightPx: number, mass: number, frameHeight: number): CombatantScale {
+/** Options of the scale, not a species branch: `frameFill` (0.5–1) replaces the mass-class fraction with a
+ * frame-fill target — the kit's GUARDIAN RULE ("fills the battle screen", D2 §4) for apex guardians. Absent, the
+ * result is byte-identical to the mass-class rule. */
+export interface CombatantScaleOptions { readonly frameFill?: number; }
+/** Scale a rig so its standing height is 1/3 (tiny) .. 1/2 (titanic) of the frame height, or `frameFill` of it. */
+export function combatantScale(bounds: Readonly<{ height: number }>, cutoutHeightPx: number, mass: number, frameHeight: number, options: CombatantScaleOptions = {}): CombatantScale {
   if (!(bounds.height > 0) || bounds.height > 1) throw new TypeError('combatant scale: bounds.height must be in (0,1]');
   if (!(cutoutHeightPx > 0) || !(frameHeight > 0) || !Number.isFinite(mass) || mass <= 0) throw new TypeError('combatant scale: sizes and mass must be positive');
+  if (options.frameFill !== undefined && !(options.frameFill >= COMBATANT_HEIGHT_FRACTION.max && options.frameFill <= 1)) throw new TypeError('combatant scale: frameFill must be in [1/2, 1]');
   const u = Math.min(1, Math.max(0, (mass - MASS_CLASS.tiny) / (MASS_CLASS.titanic - MASS_CLASS.tiny)));
-  const heightFraction = COMBATANT_HEIGHT_FRACTION.min + (COMBATANT_HEIGHT_FRACTION.max - COMBATANT_HEIGHT_FRACTION.min) * u;
+  const heightFraction = options.frameFill ?? (COMBATANT_HEIGHT_FRACTION.min + (COMBATANT_HEIGHT_FRACTION.max - COMBATANT_HEIGHT_FRACTION.min) * u);
   const heightPx = heightFraction * frameHeight;
   return Object.freeze({ scale: heightPx / (bounds.height * cutoutHeightPx), heightFraction, heightPx });
 }

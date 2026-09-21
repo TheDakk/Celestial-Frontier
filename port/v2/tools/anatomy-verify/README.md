@@ -586,3 +586,14 @@ Process fix: `check.mjs` runs score, ic4 and sheet on the committed files and ex
 the first command of every commit in this folder from now on. Appendage tips (tail) are now refined like feet: the
 Civet's `tail3` moves 65 → 67 px from the record's tail tip — the hand landmark sits at the end of the fur tuft, the
 compiler's at the tuft junction; a tuft-length correction (the collapsed tuft's own length) is the P6 item for tails.
+
+## Slice 29 — P6 geometry (option A, Nick 2026-09-21): knees and tails, measured
+Knees (32 interior joints on correctly named crab/Civet legs, error vs the record): path start `exit` (current)
+median 42 px, 25/32 within 60; `sep` 110 / 8; `root` 48 / 19; knees by the path's own bend (max turning angle,
+`kneeMode:'bend'`) median 90 / 8. **`exit` + the reference's joint fraction stays**; bend-based joints are rejected
+(painted legs bend at the joint AND at every segment ridge). Tails: a chain collapsed at a tuft junction takes as its
+landmark the farthest LEAF within 0.6 R of the junction measured from the chain's approach point (fur tips hang off
+several micro-junctions, so graph hops from the one junction miss them; the first two cuts — tuft length along the
+terminal direction, hops from the junction — left the Civet at 67 px). Civet `tail3` 65 → **42 px**, and with it
+the Civet passes PROGRAM §6's landmark bound: **§6 PASS 2/7** (Civet worst 31 px; Wolf by verdict). Run of the
+committed file via `check.mjs`.
