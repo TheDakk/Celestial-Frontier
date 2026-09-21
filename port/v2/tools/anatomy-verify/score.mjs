@@ -22,6 +22,11 @@ export const SUBJECTS=[
  * only subject's presence file. Declared sets are intake INPUTS; the compiler never infers presence. */
 export function declarationOf(rec,presence){const f=rec?path.dirname(rec)+'/presence.json':presence;if(f&&fs.existsSync(f)){const j=JSON.parse(fs.readFileSync(f,'utf8'));return {hidden:j.hidden??[],absent:j.absent??[],folded:j.folded??[]};}
   if(rec){const r=JSON.parse(fs.readFileSync(rec,'utf8'));return {hidden:r.anatomy?.hidden??[],absent:r.anatomy?.absent??[],folded:r.anatomy?.folded??[]};}return {hidden:[],absent:[],folded:[]};}
+/** Ad-hoc subjects for the runners without editing SUBJECTS: env `ANATOMY_SUBJECTS` = one or more
+ * `id:template:masterPath[:recordPath][:presencePath]` separated by `;` (paths absolute or repo-relative). The
+ * Brown Bear (D2 G3) enters this way the day it lands: no code change for a new subject. */
+export function extraSubjects(){const env=process.env.ANATOMY_SUBJECTS;if(!env)return [];return env.split(';').filter(Boolean).map(spec=>{const [id,template,master,rec,presence]=spec.split(':');const abs=f=>f?(path.isAbsolute(f)?f:root+f):null;return [id,template,abs(master),abs(rec)||null,abs(presence)||null];});}
+SUBJECTS.push(...extraSubjects());
 export function truthOf(record){const {width:w,height:h}=record.geometry,lm=record.landmarks;const px={};for(const [k,v] of Object.entries(lm))px[k]=[v[0]*w,v[1]*h];return {px,hidden:record.anatomy?.hidden??[],absent:record.anatomy?.absent??[]};}
 export function scoreSubject(res,truth,template,tol){
   const t=TEMPLATES[template],footNames=[];for(const side of ['Far','Near'])for(let k=0;k<t.legsPerSide;k++)footNames.push(t.slotName(k,side));
