@@ -1,4 +1,4 @@
-/** Explicit absent/hidden anatomy, shared by the motion producer and rig intake.
+/** Explicit absent/hidden/folded anatomy, shared by the motion producer and rig intake.
  * A hidden but present appendage is NOT absent. Never infer absence from a
  * missing landmark: only the hash-bound record can declare it. */
 import {resolveHiddenPresence} from './hidden-anatomy.mjs';
@@ -20,8 +20,13 @@ const OPTIONAL=Object.freeze({
 const OMITTED_BOUNDS=Object.freeze({'biped-bird':{wings:['wing/torso']},fish:{caudal:['caudal/body']}});
 export function resolveAnatomyInventory(template,anatomy){
  if(anatomy===undefined)return template;
- const allowed=anatomy?.schema==='cf.anatomy-presence/v2'?['schema','absent','appendages','growth','hidden']:['schema','absent','growth'];
+ const allowed=anatomy?.schema==='cf.anatomy-presence/v2'?['schema','absent','appendages','growth','hidden','folded']:['schema','absent','growth'];
  if(!anatomy||!['cf.anatomy-presence/v1','cf.anatomy-presence/v2'].includes(anatomy.schema)||!Array.isArray(anatomy.absent)||Object.keys(anatomy).some(k=>!allowed.includes(k)))throw Error('Anatomy inventory: invalid presence declaration');
+ // Folded is a species declaration about painted evidence, not a graph edit.
+ // Omission means []; never derive it from missing landmarks or missing paint.
+ const folded=anatomy.folded===undefined?[]:anatomy.folded;
+ if(!Array.isArray(folded)||new Set(folded).size!==folded.length||folded.some(id=>typeof id!=='string'||!template.legs?.includes(id)))throw Error('Anatomy inventory: invalid folded leg declaration');
+ if(folded.some(id=>anatomy.absent.includes(id)||(Array.isArray(anatomy.hidden)&&anatomy.hidden.includes(id))))throw Error('Anatomy inventory: folded is neither hidden nor absent');
  template=resolveHiddenPresence(expandPlantAnatomy(expandRepeatedAnatomy(template,anatomy),anatomy),anatomy);
  if(new Set(anatomy.absent).size!==anatomy.absent.length)throw Error('Anatomy inventory: duplicate absence');
  const removed=new Set(),omittedBounds=new Set();for(const group of anatomy.absent){const names=template.optional?.[group]??OPTIONAL[template.id]?.[group];if(!names)throw Error('Anatomy inventory: mandatory or unknown part '+group);for(const j of names)removed.add(j);for(const id of OMITTED_BOUNDS[template.id]?.[group]??[])omittedBounds.add(id);}

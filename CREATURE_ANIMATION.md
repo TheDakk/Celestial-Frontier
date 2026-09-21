@@ -624,3 +624,13 @@ Flora remainder exception: prepare-flora’s tiny trunk polygon is a declaration
 the explicitly named remainder owns every otherwise unclaimed source pixel. It is not a
 trunk silhouette or inferred anatomy. Exact reconstruction guards missing/duplicate/color
 changes; a missing remainder owner is refused.
+
+### Declared folded legs — matches code 2026-09-21
+
+`cf.anatomy-presence/v2.folded?: string[]` is an explicit species declaration; omission
+means `[]`. Folded legs are present and painted, never inferred, and cannot also be hidden
+or absent. The shared inventory validates template leg names and preserves all geometry,
+paint, joint and contact requirements. Unlike hidden, folded removes no contact chain.
+Accepted Crab/Mud/Vent fits now have standalone compiler `presence.json` inputs; their
+sealed records and binding bytes remain unchanged. Exact declarations and focused controls:
+`audits/INTAKE_FOLDED_DECLARATIONS_20260921/README.md`. IC-3 is frozen again.
