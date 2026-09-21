@@ -1,0 +1,111 @@
+{
+  "sheet": "brown-bear-review-sheet.png",
+  "size": [
+    1584,
+    756
+  ],
+  "tiles": [
+    {
+      "tile": 1,
+      "label": "generation-01 master (1254², retained)",
+      "source": "audits/VISION_D2_GUARDIAN_20260921/generation-01/brown-bear-master.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "drawn": [
+        360,
+        360
+      ],
+      "at": [
+        88,
+        12
+      ]
+    },
+    {
+      "tile": 2,
+      "label": "compiler reading (sheet-01/brown-bear.png)",
+      "source": "audits/INTAKE_COMPILER_20260921/sheet-01/brown-bear.png",
+      "size": [
+        1032,
+        790
+      ],
+      "drawn": [
+        470,
+        360
+      ],
+      "at": [
+        557,
+        12
+      ]
+    },
+    {
+      "tile": 3,
+      "label": "Codex hand fit-01 labels (comparison truth)",
+      "source": "audits/VISION_D2_GUARDIAN_20260921/fit-01/labels.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "drawn": [
+        360,
+        360
+      ],
+      "at": [
+        1136,
+        12
+      ]
+    },
+    {
+      "tile": 4,
+      "label": "film -01: rest fill 0.9 (head leaves the frame when rearing)",
+      "source": "audits/BATTLE2_D2_GUARDIAN_FILM_20260922/bear-vs-crab-01/turn0-hit-approach-50.png",
+      "size": [
+        1024,
+        576
+      ],
+      "drawn": [
+        512,
+        288
+      ],
+      "at": [
+        12,
+        420
+      ]
+    },
+    {
+      "tile": 5,
+      "label": "film -02: tallest-pose fill 0.96 (rest 0.70), guardian stands",
+      "source": "audits/BATTLE2_D2_GUARDIAN_FILM_20260922/bear-vs-crab-02/turn0-hit-approach-50.png",
+      "size": [
+        1024,
+        576
+      ],
+      "drawn": [
+        512,
+        288
+      ],
+      "at": [
+        536,
+        420
+      ]
+    },
+    {
+      "tile": 6,
+      "label": "film: the bear as target (mirrored stands)",
+      "source": "audits/BATTLE2_D2_GUARDIAN_FILM_20260922/crab-attacks-bear-01/turn0-hit-reaction-50.png",
+      "size": [
+        1024,
+        576
+      ],
+      "drawn": [
+        512,
+        288
+      ],
+      "at": [
+        1060,
+        420
+      ]
+    }
+  ]
+}
