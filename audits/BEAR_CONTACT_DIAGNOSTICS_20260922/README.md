@@ -1,0 +1,5 @@
+# Bear contact and crab reach diagnostics
+
+Nick authorizes diagnostic-only bear iteration and per-support measurement, rest/observed static comparison, a Freshwater reach history check, and declared folded legs on original Mud/Vent painter fits. No production solver gate, limit, clip, iteration budget or source pixel changes. Signed local commits only. Prior S2 ledger: ../STAGE_CADENCE_REACH_20260922/S2_LEDGER.md. Node26.9.0 retained from the uninterrupted anatomy run. Measurements are added only after their producing run.
+
+The diagnostic solver is an explicitly instrumented copy of current local production source. make-instrument.mjs records exact unique substitutions and original SHA256; only this audit clone accepts a larger iteration count. It is not imported into the game. First-refusal sample replays compare the three-pass error exactly with retained observed static evidence before measuring up to32 passes. The unchanged0.25px production gate remains active in the clone at its endpoint; per-pass traces record progress before it.
