@@ -71,3 +71,15 @@ test('fish spine and fin attachments use the declared graph; foreign joints and 
  const missing=structuredClone(f);delete missing.binding.sourceJoinTopology;assert.throws(()=>createSourceJoinProbe(missing),/explicit family remainder/);
  const wrong=structuredClone(f);wrong.binding.parts[1].joint='hindNearKnee';assert.throws(()=>createSourceJoinProbe(wrong),/unique known source owners/);
 });
+
+test('bin-edge rounding keeps present source coverage; true missing coverage and displaced publication still fail',()=>{
+ const f=fixture();f.record.geometry={width:64,height:64};f.atlas={width:64,height:64,rgba:new Uint8Array(64*64*4).fill(255)};f.binding.atlasSize={width:64,height:64};
+ for(const p of f.binding.parts)for(const box of[p.cutout,p.frame])for(const k of['x','y','width','height'])box[k]*=16;
+ for(const v of f.binding.paintSkin.vertices){v.x*=16;v.y*=16;}
+ // The bear's reconstructed edge fell in bin 15 while its exact source edge
+ // queried bin 16. Keep that numerical error; do not snap source geometry.
+ f.binding.paintSkin.vertices[1].x-=1e-12;f.binding.paintSkin.vertices[2].x-=1e-12;
+ const probe=createSourceJoinProbe(f);assert.equal(assessSourceJoinContinuity(probe,f.positions).status,'PASS');
+ const missing=structuredClone(f);missing.binding.paintSkin.parts[0].indices=[0,2,3];assert.throws(()=>createSourceJoinProbe(missing),/source attachment absent/);
+ f.positions.part1=f.positions.part1.map((v,i)=>v+(i%2?0:.01));assert.equal(assessSourceJoinContinuity(probe,f.positions).status,'FAIL');
+});

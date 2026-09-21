@@ -18,7 +18,15 @@ function meshSource(part,skin){
   for(let y=Math.floor(Math.min(...ys)/CELL);y<=Math.floor(Math.max(...ys)/CELL);y++)for(let x=Math.floor(Math.min(...xs)/CELL);x<=Math.floor(Math.max(...xs)/CELL);x++){const key=x+':'+y;if(!bins.has(key))bins.set(key,[]);bins.get(key).push(t);}}
  return {part,positions,bins};
 }
-function trianglesNear(mesh,points){const found=new Set();for(const[x,y]of points)for(const t of mesh.bins.get(Math.floor(x/CELL)+':'+Math.floor(y/CELL))??[])found.add(t);return [...found].sort((a,b)=>a-b);}
+function trianglesNear(mesh,points){
+ const found=new Set();for(const[x,y]of points)for(const t of mesh.bins.get(Math.floor(x/CELL)+':'+Math.floor(y/CELL))??[])found.add(t);
+ const primary=[...found].sort((a,b)=>a-b),neighbors=new Set();
+ // Reconstructed triangle edges can round to the adjacent spatial bin. Search
+ // neighboring bins too; the unchanged barycentric test decides coverage.
+ // Preserve the original candidates first so established interpolation stays stable.
+ for(const[x,y]of points)for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++)for(const t of mesh.bins.get((Math.floor(x/CELL)+dx)+':'+(Math.floor(y/CELL)+dy))??[])if(!found.has(t))neighbors.add(t);
+ return [...primary,...[...neighbors].sort((a,b)=>a-b)];
+}
 function barycentric(mesh,point){
  const p=mesh.positions,[x,y]=point;
  for(const t of trianglesNear(mesh,[point])){const ids=Array.from(mesh.part.indices.slice(t,t+3)),[a,b,c]=ids.map(i=>i*2),ux=p[b]-p[a],uy=p[b+1]-p[a+1],vx=p[c]-p[a],vy=p[c+1]-p[a+1],det=ux*vy-uy*vx;if(Math.abs(det)<1e-12)continue;
