@@ -45,3 +45,23 @@ five Civet-vs-crab runs, zero refusals, CPU p95 ≈ 2.2 ms at 60 fps, review she
 numeric gates could not: the parts rig's display units are normalized (it was drawn 0.3 px tall — `cutout` is now 1×1
 with `sourceSize` for pixels), and the quadruped victory rear-up cannot be a planted stance (`plantedFor` frees it).
 Observations for Nick: the contact gap stops at a crab's leg tips (silhouette box), and the fainted crab stands back up.
+
+### A2 — planted cadence (2026-09-22, matches code as of 2026-09-22)
+The approach walks whole gait cycles (≤ `APPROACH_CADENCE_CAP_MS` 900) with stance feet fixed in the arena — the stage
+passes the forward body-length displacement per tick to the family solver — and the attack's lunge covers the rest
+by impact. Each parts rig measures its `stanceReach` at load (both half-cycles × 0.9). `a2-cadence.test.ts` asserts
+< 0.5 px per stance window from both sides on the five crabs, the Civet and the bear.
+
+### D2 G6 — the guardian on the stage (2026-09-22, matches code as of 2026-09-22)
+A record with a `guardian` block (D2: desktop-only, 5 ms CPU tier, 60 px comparison bound) reaches the stage as
+`BattleRigV1.guardian`; the stage scales it with `combatantScale(..., { frameFill: GUARDIAN_FRAME_FILL, tallestHeight })`
+— an option of the existing scale, never a species branch. The parts rig measures `tallestHeight` at load through its
+public path (largest upward landmark rise across approach / the anatomy attacks / hit / dodge / faint / victory; crab
+×1.00, Civet ×1.26, bear ×1.38 of rest) so the fill sizes the TALLEST pose (0.96 of the frame → the bear stands at 0.70
+and its rearing head stays under the HUD band). `composeArena(recipe, frame, { guardianSide })` moves the stands to
+`GUARDIAN_STANDS` (0.30 guardian / 0.82 opponent, mirrored on the right); the game wiring and the native entry compose
+the arena after the rigs so they know the side. Without a guardian block every number is byte-identical to before
+(`arena-frame-fill.test.ts`, `d2-guardian-fill.test.ts` 9/9, `e1-outcomes` guardian case, `a2-cadence` 14/14). Films:
+`audits/BATTLE2_D2_GUARDIAN_FILM_20260922/` (bear-vs-crab -01 rest fill / -02 tallest-pose fill; crab-attacks-bear);
+review sheet `audits/VISION_D2_GUARDIAN_20260921/G7_SHEET/`. The bear's static RED under OBSERVED painted supports is
+Codex's (hindFarAnkle residual plateau); the stage plays REST supports (`G6_CLAUDE_REVIEW.md`).
