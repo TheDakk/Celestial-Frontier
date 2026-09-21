@@ -1,3 +1,27 @@
+# Archived handoff — 2026-09-22 signing resolved
+
+## Live handoff — 2026-09-22 crab markings, loader next
+
+Verified Codex/macOS in /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. Claude sibling read-only. Nick authorized two ordered items: original 880² crab marking masks, then borrowed-atlas loader ownership with focused control/typecheck/one S2 sweep. Signed local commits only; no fetch/sync/push/PR/merge/release/deploy. Continuing-run Node 26.9.0 receipt reused; existing .DS_Store untouched.
+
+Previous evidence signing completed and verified as 88adb919; refusal receipt retained. Nick reports Claude merged rigid-support producer 58f81e54 as 137c272a and measured observed bear 0/216 refusals, 2.80 ms. No further bear work is authorized or needed here; those stage numbers are Claude-reported, not a local rerun.
+
+Marking packet: audits/MORPH_CRAB_MARKINGS_20260922/README.md. Six white-on-transparent masks and markings.json beside crab-fits-03/crab. Master-space 880², zero pixels outside keyed alpha, existing eyes/shadow excluded, all accepted source/record/binding/atlas bytes unchanged. Exact prompts/raw outputs/registration/source hashes retained; six-mask-sheet.png is pending Nick's eye. Plain no mask, iridescent emissive. No second archetype or new intake.
+
+Next authorized item: additive borrowed-atlas option on loadCreatureRigV1, default ownership unchanged. Run one ownership control, app typecheck and one S2 sweep on its signed producer, then hold. Claude integrates masks for M3/M4 and uses caller-owned atlas cache; Nick reviews the sheet. Roster/P2/new intake remain held.
+
+### Authentication blocker and prepared loader
+
+The marking commit was refused twice by 1Password (ordinary and PTY prompt), exit 128 “agent returned an error”; receipt in the marking packet. No unsigned fallback. The prior bear evidence is signed at 88adb919. Marking files and their handoff remain staged separately; loader code and evidence are prepared but not staged into that commit.
+
+Prepared loader changes: optional seventh argument `{borrowedAtlas:true}`, captured at load. Borrowed atlas/source survive disposal and decoded-dimension refusal; default-owned cleanup remains. One focused both-way ownership test reproduced the old bug and passes after the patch. App typecheck and root validation pass. audits/BORROWED_ATLAS_20260922/README.md records these results. The single S2 sweep has NOT run: sign/verify markings first, then sign/verify the loader producer, run the prepared s2-controls.ts once on that signed producer, compare full receipts/support bytes against BEAR_RIGID_SUPPORT_IK_20260922/s2, sign the evidence and hold. Do not repeat completed controls/typecheck/validation. S2 is still the sole quality halt; authentication is an external prerequisite, not a new design decision.
+
+Nick has been asked to approve/unlock the signing prompt. Claude's next work remains M3/M4 integration and borrowed-atlas cache use after signed handoff; Nick reviews the six-mask sheet. No bear work or remote operation.
+
+### Signing resumed
+
+Nick approved 1Password. Marking packet signed/verified as d8a1a8f9941df45241e3ac0bd459fbc1b85932e8; earlier refusal receipts retained. Loader controls/typecheck/validation are unchanged and passed. Sign the prepared loader producer, verify, then run its one pending S2 sweep and retain identity comparison/evidence. No test reruns.
+
 # Archived handoff — 2026-09-22 before crab markings
 
 ## Live handoff — 2026-09-22 analytic rigid-support review stop
