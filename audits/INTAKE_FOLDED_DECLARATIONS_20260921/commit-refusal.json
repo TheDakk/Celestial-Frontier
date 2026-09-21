@@ -1,0 +1,9 @@
+{
+  "status": "COMMIT_BLOCKED_BY_AUTOMATIC_APPROVAL_REVIEW",
+  "attemptExecuted": false,
+  "head": "15a031deed222a55924e8bc96d748bf6b7cd825b",
+  "reason": "Reviewer treated the preceding one-quadruped task and IC-3 freeze as controlling; rejected committing the later routed folded-only schema/declaration change as beyond scope.",
+  "signingAgentInvoked": false,
+  "focusedValidation": "3/3 tests pass; syntax and diff checks pass; no batteries",
+  "authorizationSource": "Later codex_delegation from Windows task explicitly states Nick releases IC-3 for folded-only change. Reading source task recent completed turns did not expose this active routed request. Direct confirmation needed to resolve reviewer authorization conflict."
+}

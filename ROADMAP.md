@@ -34,3 +34,15 @@ all five accepted fits with zero hand edits and required erased/duplicated/wrong
 mutant refusals. Claude owns IC-1/2; Codex IC-3 remains frozen. No sync or app switch for
 Git required. PR42 parked; signed commits only; no fetch/push/PR/merge/release/deploy.
 Node26.9.0 uninterrupted-session receipt reused. Pre-existing .DS_Store untouched.
+
+## Folded declarations handoff — 2026-09-21
+
+Nick released IC-3 only for explicit folded-leg declarations. Applied v2 `presence.json`
+inputs beside Crab intake-02 fit01 (leg0Far), Mud intake-02 fit01 (leg0Far), and Vent
+intake-01 fit01 (leg0Near). Sealed records, landmarks, masks, bindings and rigs unchanged.
+Optional folded defaults to []; painted and present, disjoint from hidden/absent.
+Focused declaration/geometry controls: 3/3 pass; no batteries or native reruns.
+Receipt and exact paths/hashes: audits/INTAKE_FOLDED_DECLARATIONS_20260921/README.md.
+Codex holds again, writers frozen. Claude reads these presence inputs in score.mjs/ic4.mjs
+and removes its FOLDED proposal map. Nick: nothing to decide. No fetch/push/PR/merge.
+Prior staged four-crab delivery remains separate and retains its signing-refusal receipt.
