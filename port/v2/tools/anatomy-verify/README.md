@@ -553,3 +553,16 @@ wrong-template 7/7, erased 6/10, duplicated 7/10; sheet regenerated.
 Correction: commit `0ba7210b` shipped `ic4.mjs` with an identifier collision (it did not run); the IC-4 numbers
 recorded above were re-run and confirmed on the fixed file in the following commit. A record written before its
 run is a process error; the runner output is now pasted only from a run of the committed file.
+
+## Slice 28 — per-slot confidence measured: the assignment margin is a diagnostic, not a gate, 2026-09-21
+`assignLegs` now returns `margins[slot]` = the cost gap between the best assignment and the best one that puts a
+different candidate (or nothing) in that slot (front and side views; `score.mjs` prints `error/m<margin>`). Both-way
+control on the five wrong named feet vs the right ones: wrong — coconut leg1Near 416 px m0.08, leg2Near 259 m0.14,
+mud folded leg0Far 158 m0.25, **freshwater leg3Near 206 m0.88, vent leg2/3Near 429/439 m0.62**; right — mud near
+side 5–24 px all m0.04, crab folded leg0Far 68 m0.07, vent far side 3–23 px m0.14–0.17, Civet paws m1.0–1.4. A
+margin threshold that refuses the freshwater and vent wrong feet (≥ 0.62) also refuses most right crab feet;
+one that keeps the right feet (< 0.04) passes every wrong foot. **Rejected as a gate; kept as output.** The wrong
+feet on the freshwater and vent are false candidates the cost model prefers (thick, long endpoints beside the
+claw), not close calls — so a confidence over the assignment cannot see them; only candidate precision can.
+Label IoU with the applied declarations (P7, for the record): body 0.38–0.54, claws 0.37–0.66, legs 0.24–0.44 mean
+(unchanged in kind from slice 21: labels inherit naming).
