@@ -41,10 +41,11 @@ import { createPartsRig } from './battle2/parts-rig.js';
 import { compileAnatomyAttack } from './anatomy-attacks.js';
 import type { ArenaWorld } from './battle-habitat.js';
 import { individualFromGenomeV1 } from './morph/morph-individual.js';
+import { morphAtlasCache, morphAtlasKey, type MorphAtlasLease } from './morph/morph-atlas-cache.js';
 import { markingNameV1, maskAlphaOf, type AlphaMask } from './morph/morph-markings.js';
 import { archetypeGenomeV1, morphParamsV1 } from './morph/morph-params.js';
 import { decodePng } from './morph/png-decode.js';
-import { loadCreatureRigV1, type CreaturePartsBindingV1, type CreatureRigRecordV1 } from './creature-rig.js';
+import { decodeMorphedAtlas, loadCreatureRigV1, type CreaturePartsBindingV1, type CreatureRigRecordV1, type CreatureRigV1 } from './creature-rig.js';
 import { abilityTheme } from '@cf/domain-combatcore';
 import { parseEffectSequenceAnchors, type EffectSequenceAnchors } from './effects/anchors.js';
 import { EffectThemeLibrary, isEffectTheme, isProceduralImage } from './effects/theme-library.js';
@@ -268,10 +269,12 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   const Observer = win.MutationObserver ?? (typeof MutationObserver === 'function' ? MutationObserver : null);
   const observer = Observer ? new Observer(() => { if (input.mount.dataset.combatChronicleGeneration !== undefined && input.mount.dataset.combatChronicleGeneration !== String(input.generation)) dispose('chronicle generation replaced'); }) : null;
   observer?.observe(input.mount, { attributes: true, attributeFilter: ['data-combat-chronicle-generation'] });
+  const atlasLeases: MorphAtlasLease[] = [];
   const dispose = (why = 'disposed'): void => {
     if (disposed) return; disposed = true; stopTicking();
     win.removeEventListener('pagehide', onPageHide); win.removeEventListener('pageshow', onPageShow); observer?.disconnect();
     try { stage?.dispose(); } catch { /* total teardown continues */ }
+    for (const lease of atlasLeases.splice(0)) { try { lease.release(); } catch { /* teardown continues */ } }
     try { app?.destroy(true, { children: true }); } catch { /* the second renderer is gone either way */ }
     stage = null; app = null; section.remove(); setPhase('disposed', why); if (current === handle) current = null;
   };
@@ -318,7 +321,12 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
             // the morph system: this genome's individual on the accepted archetype (identity genome → the archetype's own path)
             const markingMask = await loadMarkingMask(assets, fit.dir, record as unknown as { recipeHash: string; genome?: Record<string, unknown> | null; identity?: { speciesVisualKey?: string }; geometry: { width: number; height: number } }, genome);
             const morph = individualFromGenomeV1({ record: record as unknown as { recipeHash: string; genome?: Record<string, unknown> | null; identity?: { speciesVisualKey?: string }; geometry: { width: number; height: number } }, binding, card, genome, markingMask });
-            const paintRig = await loadCreatureRigV1(record as unknown as CreatureRigRecordV1, binding, master, alpha, atlas, undefined, { ...(morph.jointScale ? { jointScale: morph.jointScale } : {}), ...(morph.atlasPixels ? { atlasPixels: morph.atlasPixels } : {}) });
+            // a morphed individual's texture comes from the app's cache (one decode + remap per individual, shared and borrowed;
+            // released when this study is disposed); the archetype itself takes the loader's own guarded decode as before
+            let paintRig: CreatureRigV1;
+            if (morph.atlasPixels) { const lease = await morphAtlasCache.acquire(morphAtlasKey(record.recipeHash ?? record.identity.speciesVisualKey, speciesVisualKey(genome as Record<string, unknown>), morph.marking), async () => (await decodeMorphedAtlas(atlas, record as unknown as CreatureRigRecordV1, binding, morph.atlasPixels!)).texture); atlasLeases.push(lease);
+              paintRig = await loadCreatureRigV1(record as unknown as CreatureRigRecordV1, binding, master, alpha, atlas, async () => lease.texture, { borrowedAtlas: true, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) }); }
+            else paintRig = await loadCreatureRigV1(record as unknown as CreatureRigRecordV1, binding, master, alpha, atlas, undefined, morph.jointScale ? { jointScale: morph.jointScale } : {});
             const rig = createPartsRig({ record: record as unknown as CreatureRigRecordV1, rig: paintRig, card, alphaBox: alphaBox(pixels, keyed.width, keyed.height), binding, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) });
             return { rig, card, mass: card.massClass.multiplier, seed };
           } catch (error) { skipped.push(`${name}: parts rig unavailable (${error instanceof Error ? error.message : String(error)}); fixture fallback`); }

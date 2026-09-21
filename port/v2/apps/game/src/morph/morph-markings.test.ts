@@ -4,7 +4,9 @@ import { createRequire } from 'node:module';
 import { describe, expect, it } from 'vitest';
 import { FITS, REPO_ROOT, repoJson, type FitRecord } from '../battle2/parts-rig.fixtures.js';
 import type { CreaturePartsBindingV1 } from '../creature-rig.js';
-import { MARKING_STRENGTH, MASKED_PATTERNS, PATTERN_NAMES, applyMarkingV1, emissiveV1, markingNameV1, maskAlphaOf, masterMaskToAtlasV1, scaleMaskV1 } from './morph-markings.js';
+import { MARKING_STRENGTH, MASKED_PATTERNS, PATTERN_NAMES, applyEmissiveAccentV1, applyMarkingV1, emissiveV1, markingNameV1, maskAlphaOf, masterMaskToAtlasV1, scaleMaskV1 } from './morph-markings.js';
+import { compileBodyCard } from '../motion/body-card.js';
+import { individualFromGenomeV1, paletteFramesV1 } from './morph-individual.js';
 import { morphParamsV1 } from './morph-params.js';
 const require = createRequire(import.meta.url);
 const { PNG } = createRequire(require.resolve('free-tex-packer-core'))('pngjs') as { PNG: { sync: { read(b: Buffer): { width: number; height: number; data: Uint8Array } } } };
@@ -35,5 +37,19 @@ describe('M3/M4 — painted markings', () => {
     expect(alphaDiff).toBe(0); expect(outsideMask).toBe(0); expect(lumE).toBeGreaterThan(lumA);
     const half = new Uint8Array(base); applyMarkingV1(half, W, H, mask, accent, false, MARKING_STRENGTH / 2); let dFull = 0, dHalf = 0; for (let i = 0; i < W * H * 4; i++) { dFull += Math.abs(a[i]! - base[i]!); dHalf += Math.abs(half[i]! - base[i]!); } expect(dHalf).toBeLessThan(dFull);
     const s = scaleMaskV1(mask, 100, 30); expect([s.width, s.height]).toEqual([100, 30]); expect(s.alpha.some((v) => v > 0)).toBe(true);
+  });
+});
+
+describe('M4 without a marking — emissive on the accent set', () => {
+  it('an IRIDESCENT plain crab lifts only its accent frames (claws/eyes), alpha untouched; the archetype\'s own genome (which is itself lumin — the painting already shows it) stays the identity', () => {
+    const f = crab(); const card = compileBodyCard(f.record, f.record.genome); const frames = paletteFramesV1(f.binding, card);
+    const own = { seed: 3, color: 12, accent: 3, pattern: 0 }; // the archetype's own colours (from its visual key) → identity palette
+    const plain = individualFromGenomeV1({ record: f.record, binding: f.binding, card, genome: { ...own, lumin: true } }); expect(plain.atlasPixels).toBeUndefined(); expect(plain.emissive).toBe(false); // own lumin → identity
+    const glow = individualFromGenomeV1({ record: f.record, binding: f.binding, card, genome: { ...own, pattern: 5 } }); expect(glow.emissive).toBe(true); expect(glow.marking).toBeNull(); expect(glow.atlasPixels).toBeDefined();
+    const base = new Uint8Array(f.atlas.data), out = glow.atlasPixels!(base, f.atlas.width, f.atlas.height); const W = f.atlas.width;
+    const inAccent = (i: number) => frames.some((fr) => fr.role === 'accent' && (i % W) >= fr.x && (i % W) < fr.x + fr.width && Math.floor(i / W) >= fr.y && Math.floor(i / W) < fr.y + fr.height);
+    let changedAccent = 0, changedOther = 0, alphaDiff = 0; for (let i = 0; i < W * f.atlas.height; i++) { const j = i * 4; if (base[j + 3] !== out[j + 3]) alphaDiff++; if (base[j] === out[j] && base[j + 1] === out[j + 1] && base[j + 2] === out[j + 2]) continue; if (inAccent(i)) changedAccent++; else changedOther++; }
+    expect(alphaDiff).toBe(0); expect(changedOther).toBe(0); expect(changedAccent).toBeGreaterThan(200);
+    const again = new Uint8Array(base); expect(applyEmissiveAccentV1(again, W, f.atlas.height, () => false)).toBe(0);
   });
 });

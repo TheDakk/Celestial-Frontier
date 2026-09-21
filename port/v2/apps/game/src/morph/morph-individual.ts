@@ -6,7 +6,7 @@ import type { BodyCard } from '../motion/body-card.js';
 import { archetypeGenomeV1, morphParamsV1, type MorphGenome, type MorphParamsV1 } from './morph-params.js';
 import { paletteRoleOfGroup, remapAtlasPaletteV1, type PaletteFrame } from './morph-palette.js';
 import { jointScalesV1 } from './morph-skeleton.js';
-import { applyMarkingV1, emissiveV1, markingNameV1, masterMaskToAtlasV1, type AlphaMask } from './morph-markings.js';
+import { applyEmissiveAccentV1, applyMarkingV1, emissiveV1, markingNameV1, masterMaskToAtlasV1, type AlphaMask } from './morph-markings.js';
 export interface MorphIndividualV1 {
   readonly params: MorphParamsV1;
   /** The painted marking this individual wears (null: plain / no painted mask for the pattern). */
@@ -23,9 +23,11 @@ export function paletteFramesV1(binding: Pick<CreaturePartsBindingV1, 'parts'>, 
 export function individualFromGenomeV1(input: { readonly record: { readonly recipeHash: string; readonly genome?: MorphGenome | null; readonly identity?: { readonly speciesVisualKey?: string }; readonly geometry?: { readonly width: number; readonly height: number } }; readonly binding: Pick<CreaturePartsBindingV1, 'parts' | 'atlasSize'>; readonly card: Pick<BodyCard, 'parts'>; readonly genome: MorphGenome | null | undefined; /** the individual's painted marking mask in MASTER space, when the archetype has one for its pattern; mapped into the atlas inside the remap where the decoded atlas is at hand */ readonly markingMask?: AlphaMask | null }): MorphIndividualV1 {
   const params = morphParamsV1(input.genome, input.record.recipeHash, archetypeGenomeV1(input.record)), frames = paletteFramesV1(input.binding, input.card);
   const marking = markingNameV1(params), mask = marking && input.markingMask ? input.markingMask : null, emissive = emissiveV1(params);
-  if (params.identity && !mask) return Object.freeze({ params, frames, marking: mask ? marking : null, emissive });
+  if (params.identity && !mask && !emissive) return Object.freeze({ params, frames, marking: null, emissive });
   const scales = jointScalesV1(input.card, params), palette = params.base.hue !== null || params.base.chroma !== 1 || params.accent.hue !== null || params.accent.chroma !== 1;
   const geometry = input.record.geometry; if (mask && !geometry) throw new TypeError('morph: a marking mask needs the record geometry');
-  const atlasPixels = palette || mask ? (rgba: Uint8Array, w: number, h: number): Uint8Array => { const out = palette ? remapAtlasPaletteV1(rgba, w, h, frames, params) : new Uint8Array(rgba); if (mask) applyMarkingV1(out, w, h, masterMaskToAtlasV1(mask, input.binding, geometry!.width, geometry!.height, rgba), params.accent, emissive); return out; } : undefined;
+  const accentIndex = (w: number): ((i: number) => boolean) => { const inside = new Uint8Array(w * (input.binding.atlasSize?.height ?? 0) || 0); for (const f of frames) if (f.role === 'accent') for (let y = f.y; y < f.y + f.height; y++) for (let x = f.x; x < f.x + f.width; x++) inside[y * w + x] = 1; return (i) => inside[i] === 1; };
+  const atlasPixels = palette || mask || emissive ? (rgba: Uint8Array, w: number, h: number): Uint8Array => { const out = palette ? remapAtlasPaletteV1(rgba, w, h, frames, params) : new Uint8Array(rgba);
+    if (mask) applyMarkingV1(out, w, h, masterMaskToAtlasV1(mask, input.binding, geometry!.width, geometry!.height, rgba), params.accent, emissive); else if (emissive) applyEmissiveAccentV1(out, w, h, accentIndex(w)); return out; } : undefined;
   return Object.freeze({ params, frames, marking: mask ? marking : null, emissive, ...(Object.keys(scales).length ? { jointScale: scales } : {}), ...(atlasPixels ? { atlasPixels } : {}) });
 }
