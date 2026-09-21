@@ -1,0 +1,5 @@
+import fs from'node:fs';import{gunzipSync}from'node:zlib';import assert from'node:assert/strict';
+import{assessTemplateRootContinuity,BRACHYURAN_NON_GAIT_STEP_PER_SCALE}from'../../port/v2/apps/game/src/creature-stage-travel.ts';
+const base='audits/VISION_P1_CONSOLIDATED_20260920',dir=base+'/root-ledger-01',ledger=JSON.parse(fs.readFileSync(dir+'/ledger.json')),read=s=>gunzipSync(fs.readFileSync(dir+'/'+s.samplesFile)).toString().trim().split('\n').map(s=>JSON.parse(s)),result={status:'PASS',sampleHz:60,boundPerMotionScale:BRACHYURAN_NON_GAIT_STEP_PER_SCALE,subjects:[],controls:[]};
+for(const key of['subjects','controls'])for(const s of ledger[key]){const guard=assessTemplateRootContinuity(read(s),s.stride,'brachyuran',s.scaleLength);assert.equal(guard.status,key==='subjects'?'PASS':'FAIL');result[key].push({id:s.id,maximumStepPx:guard.maximumStep*s.height,nonGaitBoundPx:guard.nonGaitStep*s.height,stridePx:s.stride*s.height,guard});}
+fs.writeFileSync(base+'/root-guard-results.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

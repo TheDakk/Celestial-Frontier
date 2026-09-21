@@ -1,0 +1,42 @@
+{
+  "status": "SIGNING_BLOCKED_ACCEPTANCE_NOT_RUN",
+  "timestamp": "2026-09-19T23:17:25.683461+00:00",
+  "head": "dd7909b440a409f2b977079b592d698332c4c0de",
+  "headSignatureVerified": true,
+  "runtime": "v26.9.0",
+  "attempts": [
+    {
+      "mode": "pipes",
+      "exit": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "mode": "PTY (documented recovery path)",
+      "exit": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    }
+  ],
+  "readOnlyDiagnosis": {
+    "applicationRunning": true,
+    "helperRunning": true,
+    "agentSocketExists": true,
+    "publicIdentityCount": 1,
+    "configuredSigningPublicKeyMatchesAgent": true
+  },
+  "signerChanged": false,
+  "unsignedFallback": false,
+  "acceptanceExecuted": false,
+  "s2TriggeredThisSession": false,
+  "cachedRemoteCounts": {
+    "origin/openai/mac": [
+      "0",
+      "1"
+    ],
+    "origin/develop": [
+      "0",
+      "252"
+    ]
+  },
+  "remoteContacted": false,
+  "next": "Restore configured 1Password signing authorization; sign staged producer and independently verify before native rest, unpinned negative control, six-subject static sweep. No unchanged signature retry performed after the documented PTY attempt."
+}

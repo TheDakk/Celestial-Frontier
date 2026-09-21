@@ -12,7 +12,7 @@
 
    Style law preserved: rim-lit painterly figurine, grounding shadow,
    palette from the genome. Bodies, not recolors. */
-import {isObservingPainterTopology,emitPainterTopology,type DrawnFeature} from './painter-topology.js';
+import {isObservingPainterTopology,emitPainterTopology,startTopologyPartCapture,type DrawnFeature} from './painter-topology.js';
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { speciesHue } from './surface.js';
 import { ellipseTube } from './torso.js';
@@ -850,32 +850,45 @@ function faunaResetWaterBeetle(c: Ctx, g: G, p: Pal): void { faunaResetBeetle(c,
 /** ASYMMETRIC CLAW crab (Fiddler): one huge claw, one small */
 export function faunaFiddler(c: Ctx, g: G, p: Pal): void {
   const cx = S * 0.5, cy = S * 0.56, bw = S * 0.15, bh = S * 0.105;
+  const observed=isObservingPainterTopology(c)?[] as DrawnFeature[]:undefined,masks=startTopologyPartCapture(c);
+  masks?.stage('shadow','root');
   ground(c, cx, cy + bh + 16, S * 0.2);
   c.strokeStyle = p.dark; c.lineWidth = 4; c.lineCap = 'round';
   for (let i = 0; i < 3; i++) for (const s of [-1, 1] as const) {
     const lx = cx + s * bw * 0.6, ly = cy - 4 + i * 12;
+    const side=s<0?'Far':'Near';masks?.stage('leg'+i+'-'+side.toLowerCase(),'leg'+i+side+'Curve');
+    observed?.push({id:'leg'+i+side,kind:'leg',points:[[lx,ly],[lx+s*34,ly+12],[lx+s*44,ly+30]],curve:'quadratic',layer:'near'});
     c.beginPath(); c.moveTo(lx, ly); c.quadraticCurveTo(lx + s * 34, ly + 12, lx + s * 44, ly + 30); c.stroke();
   }
+  masks?.stage('carapace','carapace');observed?.push({id:'carapace',kind:'body',points:[[cx,cy]],widths:[2*bw,2*bh],curve:'ellipse',layer:'near'});
   c.fillStyle = bodyGrad(c, p, cx, cy, bw);
   c.beginPath(); c.ellipse(cx, cy, bw, bh, 0, 0, TAU); c.fill();
   rim(c, () => c.ellipse(cx, cy, bw, bh, 0, -2.8, 0.3), 2.2);
-  eye(c, cx - 12, cy - bh * 0.85, 4); eye(c, cx + 12, cy - bh * 0.85, 4);
+  masks?.stage('eye-far','eyeFarTip');eye(c, cx - 12, cy - bh * 0.85, 4);masks?.stage('eye-near','eyeNearTip');eye(c, cx + 12, cy - bh * 0.85, 4);
   c.strokeStyle = p.dark; c.lineWidth = 3;
+  masks?.stage('eye-far','eyeFarTip');
   c.beginPath(); c.moveTo(cx - 12, cy - bh * 0.5); c.lineTo(cx - 12, cy - bh * 1.0); c.stroke();
+  masks?.stage('eye-near','eyeNearTip');
   c.beginPath(); c.moveTo(cx + 12, cy - bh * 0.5); c.lineTo(cx + 12, cy - bh * 1.0); c.stroke();
   const claw = (x: number, y: number, sc: number, s: number): void => {
+    const side=s<0?'Far':'Near',prefix='claw-'+side.toLowerCase();masks?.stage(prefix+'-palm','claw'+side+'Palm');
+    observed?.push({id:'palm'+side,kind:'arm',points:[[x,y]],widths:[52*sc,36*sc],curve:'ellipse',layer:'near'},{id:'fixedFinger'+side,kind:'arm',points:[[x+s*18*sc,y-12*sc],[x+s*46*sc,y-16*sc],[x+s*52*sc,y-2*sc]],curve:'quadratic',layer:'near'},{id:'dactyl'+side,kind:'arm',points:[[x+s*18*sc,y+4*sc],[x+s*44*sc,y+10*sc],[x+s*50*sc,y+16*sc]],curve:'quadratic',layer:'near'});
     c.fillStyle = bodyGrad(c, p, x, y, 26 * sc);
     c.beginPath(); c.ellipse(x, y, 26 * sc, 18 * sc, s * 0.3, 0, TAU); c.fill();
     c.fillStyle = p.lit;
     c.beginPath(); c.moveTo(x + s * 18 * sc, y - 12 * sc); c.quadraticCurveTo(x + s * 46 * sc, y - 16 * sc, x + s * 52 * sc, y - 2 * sc);
     c.quadraticCurveTo(x + s * 40 * sc, y + 2 * sc, x + s * 18 * sc, y + 2 * sc); c.closePath(); c.fill();
+    masks?.stage(prefix+'-dactyl','claw'+side+'DactylRoot');
     c.fillStyle = p.base;
     c.beginPath(); c.moveTo(x + s * 18 * sc, y + 4 * sc); c.quadraticCurveTo(x + s * 44 * sc, y + 10 * sc, x + s * 50 * sc, y + 16 * sc);
     c.quadraticCurveTo(x + s * 34 * sc, y + 16 * sc, x + s * 18 * sc, y + 12 * sc); c.closePath(); c.fill();
+    masks?.stage(prefix+'-palm','claw'+side+'Palm');
     rim(c, () => c.ellipse(x, y, 26 * sc, 18 * sc, s * 0.3, -2.6, 0.4), 1.8);
   };
   claw(cx - bw * 1.25, cy + 6, 1.35, -1);   /* THE oversized one */
   claw(cx + bw * 1.05, cy + 12, 0.55, 1);
+  for(const side of ['Far','Near']as const){const x=cx+(side==='Far'?-12:12);observed?.push({id:'eye'+side,kind:'head',points:[[x,cy-bh*.5],[x,cy-bh]],layer:'near'});}
+  if(observed)emitPainterTopology(c,{schema:'cf.painter-topology/v1',ownerId:'faunaFiddler',family:'brachyuran',coordinateSize:S,materials:{surface:'chitinous',paletteSource:'genome'},features:observed,...(masks?{partMasks:masks.finish()}:{}),unresolved:['Six visible quadratic walking curves, not eight articulated legs','No observed upper arm/elbow chain; large and small pincer paint only','Fourth walking pair and hidden roots unobserved; binding admission must refuse']});
 }
 /** HORSESHOE CRAB: broad carapace + rigid tail spine */
 export function faunaHorseshoe(c: Ctx, g: G, p: Pal): void {

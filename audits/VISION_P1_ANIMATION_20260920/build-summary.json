@@ -1,0 +1,14 @@
+[
+  {
+    "interiorStep": 80,
+    "fieldVertices": 3791
+  },
+  {
+    "interiorStep": 128,
+    "fieldVertices": 3791
+  },
+  {
+    "interiorStep": 256,
+    "fieldVertices": 3787
+  }
+]

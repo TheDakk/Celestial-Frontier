@@ -1,66 +1,29 @@
 # Celestial Frontier — Species & Genome System
 
-[Current anatomy continuation](audits/ANATOMY_COMPLETION_20260917/ANATOMY_STATUS.md), matches code
-as of September17,2026: the full1,250case native census has1,237nonblank/parity passes,13explicit
-fallthroughs and53topology emissions (quadruped observation is separate). Twelve of the58missing
-body names have source observations; five crab owners have actual26part/44joint bindings and
-12-action native diagnostics at60fps/1.0–1.5ms rig p95. Source-stage capture uses fresh command
-prefix replay and exact RGBA checks; repeated readback failures remain recorded. Shared pinch
-motion preserves walking contacts and derives closure from painted gape, including mirror views.
-New isopod/tardigrade/tunicate/Horseshoe observations preserve actual counts and hidden anatomy.
-All58still await visual/phone qualification;53lack binding artifacts. All11accepted master hashes
-have bindings, while the three flora retain deformation/CPU failures. Signing the prepared batch
-is blocked by the configured1Password agent; no unsigned commit or GitHub write occurred.
+> Current roster intake, 2026-09-19: the historical58 inventory is explicit in `tools/fauna-coverage/roster-inventory.json`. Five admitted crabs retain existing fit/bind/film evidence; the remaining53 are attempted in source-family order and incomplete source fits refuse. Current missing-profile census counts53/8observed, not the historical58/13. Partial source features do not grant animation qualification. Evidence: `audits/ANATOMY_SINGLE_RUN_20260919/roster/README.md`.
 
-[September 17 flora continuation](audits/ANATOMY_COMPLETION_20260917/README.md), matches code as of
-September 17, 2026: all eleven accepted master hashes now have binding artifacts. The three new
-woody candidates declare actual bark/foliage ownership and 8/7/8 branch groups through one shared
-count expander. Unknown declared materials refuse; per-joint secondary materials preserve chain
-lag; plant actions retain fixed roots. Native full-action captures expose leaf deformation,
-polygon-cut tears and CPU overruns despite diagnostic numeric passes. Flat-master continuity
-can explicitly retain every source-alpha boundary; it does not manufacture hidden paint.
-No flora visual/phone acceptance or new missing-species qualification follows. All 58 missing-body
-species still need qualified painted fits; original masters remain unchanged.
+Current anatomy implementation — matches code as of September 19, 2026. The canonical
+contract and live limits are in [CREATURE_ANIMATION.md](CREATURE_ANIMATION.md); the current
+[accumulated review packet](audits/ANATOMY_SINGLE_RUN_20260919/README.md) separates source
+observation, binding admission, contact geometry, native timing and visual qualification.
+Five crab families have admitted pinch attacks and contactJoint. Quadruped action stances
+and stage-owned melee travel preserve source clip keys; exact rest and 0.25 px planted
+contact pass on the regenerated Civet. Its T1 root continuity and film CPU remain leaf reds.
+Flora retain their recorded shape/CPU and Persimmon parent-attachment intake refusals.
 
-[Full catalogue and anatomy pass](audits/FAUNA_FULL_PASS_20260916/README.md), matches code as of
-September 17, 2026: existing Skink/Beetle painted fits retain full-action native diagnostics
-(60 fps; 1.2/1.6 ms rig-update p95; exact rest). Twelve specialized structure/curve candidates
-share intake and motion. Five actual crab variants now pass 44-joint admission against their
-source-rendered alpha, including named Freshwater/Mud/Vent owners and Mud Crab foot paddles.
-Topology callbacks carry the padded raster frame; compilers must project source coordinates
-through it. Root/Knee/Foot leg slack is measured. The census accounts for 1,010 Earth organisms
-and 240 procedural samples: 1,237 nonblank/parity passes, 13 explicit legacy fallthroughs.
-This is raster/geometry evidence, not universal animation. All 58 missing-body names still need
-qualified painted fits, contacts and visual review. Current evidence-based ledger:
-audits/FAUNA_FULL_PASS_20260916/coverage-final.json. Original accepted masters are unchanged.
+The historical 58-name missing-body roster is the work inventory, not a claim that all 58
+remain unsupported by today’s selector. Five have admitted crab bindings and conserved
+finished textures; no numeric result grants visual acceptance. The current source census
+and source-family fit/refusal sheets are recorded in the accumulated packet. Historical
+counts and failed inputs remain in their dated audit folders.
 
-[Count-preserving anatomy](audits/COUNTED_ANATOMY_20260916/README.md), matches code as of
-September 16, 2026: radial and cephalopod records can declare actual arm/tentacle counts in
-`cf.anatomy-presence/v2`. One shared expander feeds motion and rig admission; no missing
-landmarks are synthesized. The painters publish ten radial arms or eight cephalopod arms
-plus the squid's two feeding tentacles, with unchanged drawing commands. Repeated motion
-uses shared family curves, and cephalopod impact follows the appendage that actually lashes.
-The 64-joint and 40-part/2048px atlas budgets remain. All94 supported count combinations
-pass1,222 clips/147,862 synthetic pose samples;20 oversized combinations refuse. This closes
-a count/curve contract gap, not painted fitting or phone qualification. Complete masks/body
-landmarks, other variable topologies and the58 unmatched named-species structures remain.
-
-[Animation library and shared deformation review](audits/ANIMATION_COMPLETION_20260916/README.md),
-matches code as of September 16, 2026: 169 family actions now have complete-clip limit,
-determinism and GSAP parity checks (40,729 synthetic samples). Eight additional physical
-motions bring the anatomy selector to32 rows, including actual hoof kicks, body strikes
-and fish tail sweeps. Explicit anatomical absence is shared by compiler and rig intake.
-All631 named fauna still have exact profiles:573 have candidate moves;58 require new body
-structures. A candidate is not a fitted or visually accepted species. Broad marine/crust/
-sessile labels no longer silently borrow fish/spider/radial bones.
-
-The shared skin solver retains its established fast projection and invokes a bounded
-active-set repair only for unresolved folds. No creature-specific motion attenuation or
-solver setting was added. Whole-library painted checks exposed fish cast/dodge/victory
-folds and the difference between pure and Float32-rendered geometry; failed controls are
-retained. Native films, per-action frames, source hashes and timing limitations are in the
-review folder. Some timings exceed the2ms goal; this is not universal or phone qualification.
-Originals, approved artwork, kits, combat results and seeded generation are unchanged.
+Source capture compares complete RGBA across ordinary and observed renders. Replay admits
+known fresh path/clip/stack state and copies supported initial context properties. Unknown
+inherited gradients/patterns refuse. Structural counts exclude marks: Pyrosome is one tube
+with 190 zooid marks and a separate aperture. Fiddler emits six visible quadratic legs and
+asymmetric pincer masks; missing arm chains and the fourth walking pair are explicit.
+Count-expanders and the 169-action raw-clip battery retain their existing limits; a synthetic
+contract pass does not establish a painted fit or a phone animation tier.
 
 **Local landfall conditioning — matches code as of 2026-09-09:**
 `buildLandfallConditioningV2` / `buildCanonicalLandfallConditioningV2` preserve the existing

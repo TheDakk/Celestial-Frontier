@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 692104867,
+    "kingdom": "fauna",
+    "color": 5,
+    "form": 15,
+    "body": 7,
+    "loco": 9,
+    "trait": 4,
+    "size": 3,
+    "diet": 2,
+    "head": 4,
+    "limbs": 4,
+    "skin": 8,
+    "tail": 0,
+    "pattern": 7,
+    "eyes": 2,
+    "behavior": 10,
+    "habitat": 18,
+    "detail": 7,
+    "accent": 10,
+    "temper": 2,
+    "sense": 2,
+    "repro": 4,
+    "life": 0,
+    "metab": 2,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Razor Clam"
+  },
+  "observation": null
+}

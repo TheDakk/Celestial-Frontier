@@ -1,0 +1,129 @@
+{
+  "genome": {
+    "seed": 2103110547,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 17,
+    "body": 8,
+    "loco": 6,
+    "trait": 4,
+    "size": 0,
+    "diet": 4,
+    "head": 4,
+    "limbs": 0,
+    "skin": 8,
+    "tail": 6,
+    "pattern": 7,
+    "eyes": 4,
+    "behavior": 5,
+    "habitat": 9,
+    "detail": 6,
+    "accent": 15,
+    "temper": 0,
+    "sense": 5,
+    "repro": 0,
+    "life": 1,
+    "metab": 3,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Penguin"
+  },
+  "observation": {
+    "schema": "cf.painter-topology/v1",
+    "ownerId": "faunaBird",
+    "family": "biped-bird",
+    "coordinateSize": 440,
+    "materials": {
+      "surface": "feather",
+      "paletteSource": "named"
+    },
+    "features": [
+      {
+        "id": "body",
+        "kind": "body",
+        "points": [
+          [
+            220,
+            238.50039487761444
+          ]
+        ],
+        "widths": [
+          96.27813145370857,
+          216.4392102447712
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "head",
+        "kind": "head",
+        "points": [
+          [
+            193.52351385023013,
+            151.92471077970595
+          ]
+        ],
+        "widths": [
+          43.49312962076425
+        ],
+        "curve": "ellipse",
+        "layer": "near"
+      },
+      {
+        "id": "legFar",
+        "kind": "leg",
+        "points": [
+          [
+            211.30137407584715,
+            316.41851056573205
+          ],
+          [
+            219.486781070475,
+            334.92088507155137
+          ],
+          [
+            209.12671759480895,
+            352
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "far"
+      },
+      {
+        "id": "legNear",
+        "kind": "leg",
+        "points": [
+          [
+            228.69862592415285,
+            316.41851056573205
+          ],
+          [
+            236.8840329187807,
+            334.92088507155137
+          ],
+          [
+            226.52396944311465,
+            352
+          ]
+        ],
+        "curve": "polyline",
+        "layer": "near"
+      }
+    ],
+    "unresolved": [
+      "tail, beak, neck and source part masks not captured",
+      "flipper observation not connected",
+      "far wing is not independently painted"
+    ],
+    "rasterFrame": {
+      "width": 880,
+      "height": 880,
+      "origin": [
+        220,
+        220
+      ],
+      "scale": 1
+    }
+  }
+}

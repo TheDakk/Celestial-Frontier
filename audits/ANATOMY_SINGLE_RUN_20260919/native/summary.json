@@ -1,0 +1,79 @@
+{
+  "producer": "f4c5489ac5dfaee45f9d4dbc3f1267e75b6ff96c",
+  "status": "REVIEW_CAPTURE_COMPLETE",
+  "subjects": [
+    {
+      "id": "crab",
+      "input": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab",
+      "report": "audits/ANATOMY_SINGLE_RUN_20260919/native/crab/report.json",
+      "status": "DIAGNOSTIC_PASS",
+      "sharedPathRed": false,
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/native/crab/family-full-rows.webm"
+    },
+    {
+      "id": "coconut-crab",
+      "input": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab",
+      "report": "audits/ANATOMY_SINGLE_RUN_20260919/native/coconut-crab/report.json",
+      "status": "DIAGNOSTIC_PASS",
+      "sharedPathRed": false,
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/native/coconut-crab/family-full-rows.webm"
+    },
+    {
+      "id": "freshwater-crab",
+      "input": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab",
+      "report": "audits/ANATOMY_SINGLE_RUN_20260919/native/freshwater-crab/report.json",
+      "status": "DIAGNOSTIC_PASS",
+      "sharedPathRed": false,
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/native/freshwater-crab/family-full-rows.webm"
+    },
+    {
+      "id": "mud-crab",
+      "input": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab",
+      "report": "audits/ANATOMY_SINGLE_RUN_20260919/native/mud-crab/report.json",
+      "status": "DIAGNOSTIC_PASS",
+      "sharedPathRed": false,
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/native/mud-crab/family-full-rows.webm"
+    },
+    {
+      "id": "vent-crab",
+      "input": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab",
+      "report": "audits/ANATOMY_SINGLE_RUN_20260919/native/vent-crab/report.json",
+      "status": "DIAGNOSTIC_PASS",
+      "sharedPathRed": false,
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/native/vent-crab/family-full-rows.webm"
+    },
+    {
+      "id": "persimmon",
+      "input": "audits/ANATOMY_COMPLETION_20260917/persimmon-04",
+      "report": "audits/ANATOMY_SINGLE_RUN_20260919/native/persimmon/report.json",
+      "status": "LEAF_RED_WITH_REVIEW_FILM",
+      "sharedPathRed": false,
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/native/persimmon/family-full-rows.webm"
+    },
+    {
+      "id": "cranberry",
+      "input": "audits/ANATOMY_COMPLETION_20260917/cranberry-07",
+      "report": "audits/ANATOMY_SINGLE_RUN_20260919/native/cranberry/report.json",
+      "status": "LEAF_RED_WITH_REVIEW_FILM",
+      "sharedPathRed": false,
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/native/cranberry/family-full-rows.webm"
+    },
+    {
+      "id": "devils-club",
+      "input": "audits/ANATOMY_COMPLETION_20260917/devils-club-06",
+      "report": "audits/ANATOMY_SINGLE_RUN_20260919/native/devils-club/report.json",
+      "status": "LEAF_RED_WITH_REVIEW_FILM",
+      "sharedPathRed": false,
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/native/devils-club/family-full-rows.webm"
+    },
+    {
+      "id": "civet",
+      "input": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01",
+      "report": "audits/ANATOMY_SINGLE_RUN_20260919/native/civet/report.json",
+      "status": "LEAF_RED_WITH_REVIEW_FILM",
+      "sharedPathRed": false,
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/native/civet/family-full-rows.webm"
+    }
+  ],
+  "unrun": []
+}

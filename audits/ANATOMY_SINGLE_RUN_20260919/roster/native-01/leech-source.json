@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 3343886916,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 15,
+    "body": 2,
+    "loco": 6,
+    "trait": 21,
+    "size": 0,
+    "diet": 0,
+    "head": 1,
+    "limbs": 1,
+    "skin": 3,
+    "tail": 3,
+    "pattern": 6,
+    "eyes": 0,
+    "behavior": 4,
+    "habitat": 6,
+    "detail": 7,
+    "accent": 1,
+    "temper": 8,
+    "sense": 4,
+    "repro": 4,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Leech"
+  },
+  "observation": null
+}

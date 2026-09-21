@@ -1,5 +1,6 @@
 /** Family-specific admission shared by offline intake and the actual Pixi loader.
  * No family guessing, skeleton fitting, missing-joint synthesis or clip overrides. */
+import {checkHiddenLandmarks} from './hidden-anatomy.mjs';
 import {measureMotionScale} from './motion-scale.mjs';
 import {familyContractForRecord} from './family-contracts.mjs';
 import {createSkeletonPoseProgram} from './skeleton-pose.mjs';
@@ -21,6 +22,7 @@ export function checkFamilyGeometry(record,alpha){
  const {width:w,height:h,groundLineY,depthLayers}=record.geometry??{};
  need([w,h].every(n=>Number.isInteger(n)&&n>=128&&n<=2048),'input dimensions');
  createSkeletonPoseProgram(template,record.landmarks); // Exact own inventory, graph and normalized coordinates.
+ checkHiddenLandmarks(template,record.landmarks);
  need(Number.isFinite(groundLineY)&&groundLineY>0&&groundLineY<=1,'ground line');
  need(Array.isArray(depthLayers)&&depthLayers.length===2&&depthLayers.every((v,i)=>v.id===['far','near'][i]&&v.order===i),'two depth layers');
  measureMotionScale(template,record.landmarks); // Independent motion-scale admission; body-axis bounds stay unchanged.
@@ -29,13 +31,13 @@ export function checkFamilyGeometry(record,alpha){
  if(alpha!==undefined){
   need(alpha instanceof Uint8Array&&alpha.length===w*h,'alpha dimensions');
   const radius=Math.ceil(Math.max(w,h)*.012);
-  for(const name of template.joints){const p=record.landmarks[name],x=Math.round(p[0]*w),y=Math.round(p[1]*h);let found=false;
+  for(const name of template.joints){if(template.hiddenJoints?.includes(name))continue;const p=record.landmarks[name],x=Math.round(p[0]*w),y=Math.round(p[1]*h);let found=false;
    for(let dy=-radius;dy<=radius&&!found;dy++)for(let dx=-radius;dx<=radius;dx++){
     const xx=x+dx,yy=y+dy;if(xx>=0&&yy>=0&&xx<w&&yy<h&&alpha[yy*w+xx]>12){found=true;break;}}
    need(found,'landmark outside painted alpha: '+name);
   }
  }
- return {inside:true,clamped:[],...result};
+ return {inside:true,clamped:[],...result,...(template.hiddenJoints?.length?{hiddenJoints:template.hiddenJoints}:{})};
 }
 export async function sealFamilyRecord(input){
  const {recipeHash:_old,boundsCheck:_bounds,...body}=structuredClone(input);

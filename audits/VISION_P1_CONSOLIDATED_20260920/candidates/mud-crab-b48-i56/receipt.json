@@ -1,0 +1,91 @@
+{
+  "boundaryStep": 48,
+  "interiorStep": 56,
+  "source": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01",
+  "partsUnchanged": true,
+  "atlasSha256": "8ecca4d62f699b9da19304360c786f0fa40344603bdb57d4cf5f49ebe98859bf",
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "leg0FarFoot",
+        "part": "leg0far-lower",
+        "vertex": 52,
+        "distancePx": 8.94427190999916,
+        "supports": [
+          1041,
+          1013
+        ]
+      },
+      {
+        "joint": "leg0NearFoot",
+        "part": "leg0near-lower",
+        "vertex": 29,
+        "distancePx": 12.074870599720697,
+        "supports": [
+          1149,
+          1148
+        ]
+      },
+      {
+        "joint": "leg1FarFoot",
+        "part": "leg1far-lower",
+        "vertex": 62,
+        "distancePx": 13.509256086106298,
+        "supports": [
+          1089
+        ]
+      },
+      {
+        "joint": "leg1NearFoot",
+        "part": "leg1near-lower",
+        "vertex": 69,
+        "distancePx": 5.099019513592785,
+        "supports": [
+          1205
+        ]
+      },
+      {
+        "joint": "leg2FarFoot",
+        "part": "leg2far-lower",
+        "vertex": 62,
+        "distancePx": 14.219214528286974,
+        "supports": [
+          1131,
+          1129
+        ]
+      },
+      {
+        "joint": "leg2NearFoot",
+        "part": "leg2near-lower",
+        "vertex": 70,
+        "distancePx": 7.810249675906656,
+        "supports": [
+          1268
+        ]
+      },
+      {
+        "joint": "leg3NearFoot",
+        "part": "leg3near-lower",
+        "vertex": 44,
+        "distancePx": 4.301162633521313,
+        "supports": [
+          1317
+        ]
+      }
+    ],
+    "sourceBindingHash": "f66da8a0e1f2e917dd6e7b83e11e6e02c12cae4f8dc72ecf4669099d497dbf47",
+    "sourceVertices": 1180,
+    "vertices": 1646,
+    "sharedSupports": 342,
+    "pins": 1175,
+    "independentSurfaceParts": 23,
+    "sourceJoins": 22,
+    "excludedOverlaps": 21,
+    "observedExcludedBoundaries": 21,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 21,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  }
+}

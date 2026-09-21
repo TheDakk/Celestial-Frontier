@@ -1,0 +1,27 @@
+{
+  "scope": "Read-only declared scale/bound and retained previous-sample calculation; no replay",
+  "motionScale": {
+    "reference": {
+      "kind": "span",
+      "axis": [
+        "pelvis",
+        "chest"
+      ]
+    },
+    "length": 0.28017851452243797
+  },
+  "bodyLength": 0.28017851452243797,
+  "boundNormalized": 0.022414281161795037,
+  "boundPixelsY": 28.107508576890975,
+  "lastPublishedMs": 149.25555555555553,
+  "lastPublishedCompressionNormalized": 0.019545273375922715,
+  "lastPublishedCompressionPixelsY": 24.509772813407086,
+  "failedMs": 157.11111111111111,
+  "failedRequiredCompression": null,
+  "reason": "The existing throw does not publish the rejected correction; do not attribute previous-sample values to failure",
+  "rawFailedRoot": {
+    "rotation": 0,
+    "dx": 0.259272,
+    "dy": -0.029854
+  }
+}

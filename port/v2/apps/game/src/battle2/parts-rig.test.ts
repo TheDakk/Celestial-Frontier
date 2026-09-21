@@ -38,7 +38,7 @@ describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage co
     const card = compileBodyCard(record, record.genome), W = record.geometry.width, H = record.geometry.height;
     const rest: Record<string, [number, number]> = Object.fromEntries(CRAB_FEET.map((f) => [f, [record.landmarks[f]![0] * W, record.landmarks[f]![1] * H] as [number, number]]));
     rig.applyPose({}, restContext()); expect(rig.applied()).toBe(1);
-    for (const f of CRAB_FEET) { const p = px(rig, f); expect(Math.hypot(p[0] - rest[f]![0], p[1] - rest[f]![1]), f).toBeLessThan(1e-6); }
+    for (const f of CRAB_FEET) { const p = px(rig, f); expect(Math.hypot(p[0] - rest[f]![0], p[1] - rest[f]![1]), f).toBeLessThan(1e-6); } // rest supports (default): feet stay bit-for-bit; with contactSupports 'observed' the joints drift up to 5.3 px under this hit (2026-09-21, finding for Codex)
     const carapaceRest = px(rig, 'carapace');
     const hit = buildTimeline(card, 'hit', 7), clip = { source: 'timeline' as const, timeline: hit };
     let maxLoad = 0;
@@ -64,7 +64,7 @@ describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage co
     rig.dispose();
   }, 60_000);
 
-  it('run-up (interim, pending R3 travel:stage): the gait cycles without a refusal, no foot goes below the ground line, and swing feet lift; feet plant to the body, not the arena', async () => {
+  it('run-up (travel: stage since the R3 re-merge): the gait cycles without a refusal, no foot goes below the ground line, and swing feet lift; feet plant to the body, not the arena', async () => {
     const { rig, record } = await loadFit('coconut-crab');
     const card = compileBodyCard(record, record.genome), H = record.geometry.height;
     const approach = buildTimeline(card, 'approach', 11), clip = { source: 'timeline' as const, timeline: approach };
@@ -77,11 +77,11 @@ describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage co
     }
     expect(rig.refusals()).toBe(0); expect(rig.lastRefusal()).toBeNull();
     expect(maxLift).toBeGreaterThan(1); // N2 readability: swing lift is 15 % of lower-leg length, well over a source pixel
-    expect(rig.travelOwner).toContain('pending R3');
+    expect(rig.travelOwner).toBe('stage');
     rig.dispose();
   }, 60_000);
 
-  it.fails('R3 pending: stance feet stay planted in ARENA space while the stage carries the run-up (flips green when ContactPhase.travel:"stage" lands)', async () => {
+  it.fails('SOLVER FINDING for Codex (2026-09-21 re-merge): under travel:"stage" the family solver zeroes root dx but its stance TARGETS still advance by stride×(completed+step), so feet march in body space while the stage also moves the body (the double count); arena-planting needs targets that recede by the stage displacement. Measured 185 px spread; flips green when the solver owns that.', async () => {
     const { rig, record } = await loadFit('crab');
     const card = compileBodyCard(record, record.genome), W = record.geometry.width, frameW = 1024, runUpPx = 0.18 * frameW;
     const approach = buildTimeline(card, 'approach', 5), clip = { source: 'timeline' as const, timeline: approach };

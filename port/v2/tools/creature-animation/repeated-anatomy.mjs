@@ -7,6 +7,7 @@ const freeze=value=>{if(value&&typeof value==='object'&&!Object.isFrozen(value))
 export function appendageCounts(id,anatomy){
  if(anatomy?.schema!=='cf.anatomy-presence/v2')return null;
  const c=anatomy.appendages;
+ if(c===undefined&&(Array.isArray(anatomy.hidden)||Array.isArray(anatomy.folded)))return null;
  if(!c||typeof c!=='object'||Array.isArray(c)||!['radial','cephalopod'].includes(id))fail('unsupported repeated topology '+id);
  const allowed=id==='radial'?['arms']:['arms','feedingTentacles'];
  if(Object.keys(c).some(k=>!allowed.includes(k))||!allowed.every(k=>Object.hasOwn(c,k)))fail('unknown or missing appendage count');

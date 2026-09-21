@@ -1,6 +1,7 @@
 /** Allocation-free local/global 2D shape projection. The pose owner supplies all
  * targets; this solver neither authors curves nor changes bone transforms.
  * Independent anatomical surfaces must supply independent vertex inventories. */
+import{RecoverablePoseError}from'./pose-refusal.mjs';
 import{createWasmArapPass}from'./wasm-arap-sweep.mjs';
 import{createOrientationProjector,projectOrientations}from'./orientation-projector.mjs';
 const need=(ok,why)=>{if(!ok)throw Error('ARAP skin: '+why);};
@@ -96,7 +97,7 @@ export function solveArapSkin(s,targets,output){
  s.stats.flippedTriangles=flipped;s.stats.minimumAreaRatio=minRatio;s.stats.orientationPasses=orientationPasses;s.stats.maximumProjectionPx=Math.sqrt(projection);
  let maximum=0,sum=0;for(let i=0;i<n;i++){need(Number.isFinite(p[i*2])&&Number.isFinite(p[i*2+1]),'nonfinite solution');const e=(p[i*2]-t[i*2])**2+(p[i*2+1]-t[i*2+1])**2;maximum=Math.max(maximum,e);sum+=e;}
  s.stats.maximumTargetErrorPx=Math.sqrt(maximum);s.stats.rmsTargetErrorPx=Math.sqrt(sum/n);
- need(flipped===0,'unresolved folded triangles: '+flipped);
+ if(flipped!==0)throw new RecoverablePoseError('ARAP_FOLD','ARAP skin: unresolved folded triangles: '+flipped);
  for(let i=0;i<n;i++){output[i*2]=pins[i]?targets[i*2]:p[i*2]/width;output[i*2+1]=pins[i]?targets[i*2+1]:p[i*2+1]/height;}
  return s.stats;
 }

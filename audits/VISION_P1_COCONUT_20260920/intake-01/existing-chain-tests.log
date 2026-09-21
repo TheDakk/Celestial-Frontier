@@ -1,0 +1,27 @@
+✔ native alpha preserves every RGBA channel and old keying resurrects invisible background (2.163375ms)
+✔ opaque keyed sources retain the established intake result exactly (0.964333ms)
+✔ blank and mixed opaque-border exports refuse (0.298833ms)
+✔ quadruped: exact family anatomy, immutable contract and hostile-record controls (5.920167ms)
+✔ hopper: exact family anatomy, immutable contract and hostile-record controls (2.1035ms)
+✔ biped-bird: exact family anatomy, immutable contract and hostile-record controls (0.976542ms)
+✔ fish: exact family anatomy, immutable contract and hostile-record controls (1.281125ms)
+✔ insect: exact family anatomy, immutable contract and hostile-record controls (2.006958ms)
+✔ serpent: exact family anatomy, immutable contract and hostile-record controls (0.92475ms)
+✔ arachnid: exact family anatomy, immutable contract and hostile-record controls (1.207542ms)
+✔ radial: exact family anatomy, immutable contract and hostile-record controls (0.9825ms)
+✔ plant-woody: exact family anatomy, immutable contract and hostile-record controls (1.096875ms)
+✔ plant-herb: exact family anatomy, immutable contract and hostile-record controls (0.982ms)
+✔ myriapod: exact family anatomy, immutable contract and hostile-record controls (1.150166ms)
+✔ cephalopod: exact family anatomy, immutable contract and hostile-record controls (1.168375ms)
+✔ flyer-membrane: exact family anatomy, immutable contract and hostile-record controls (0.910458ms)
+✔ primate: exact family anatomy, immutable contract and hostile-record controls (0.83425ms)
+✔ unknown template never defaults to quadruped and all contracted inventories are closed (0.151708ms)
+✔ old hopper and fish fixture clip-set names are rejected instead of silently using different motion (0.082667ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 145.530833

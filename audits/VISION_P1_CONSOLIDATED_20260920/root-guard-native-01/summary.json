@@ -1,0 +1,34 @@
+{
+  "producer": "ea9988742694763377ba864c994dbcb720c2b881",
+  "status": "LEAF_RED_WITH_REVIEW_FILM",
+  "purpose": "Changed-guard native confirmation, excluded from original CPU table",
+  "rootContinuity": {
+    "status": "PASS",
+    "maximumStep": 0.007260045286851924,
+    "stride": 0.0064553827392768975,
+    "worst": 607,
+    "nonGaitStep": 0.008044847859899257,
+    "scaleLength": 0.45701572799518586,
+    "worstViolation": null
+  },
+  "restChanged": 0,
+  "finalRestChanged": 0,
+  "maxGapPx": 8.131099709081602e-05,
+  "maxPlantedDriftPx": 0.0010711193480326677,
+  "presentation": {
+    "samples": 849,
+    "maxGapPx": 7.776154567535529e-05,
+    "status": "PASS"
+  },
+  "capture": {
+    "durationMs": 14128.326491254073,
+    "refusals": {
+      "refusedFrames": 0,
+      "saturated": false,
+      "firstRefusal": null,
+      "lastRefusal": null
+    },
+    "rigUpdateP95Ms": 3
+  },
+  "rawReportSha256": "95edb4d51db6a1d2e6f3c0ce392f76fb36c6a924af541e88f2c63354a6eb2e87"
+}

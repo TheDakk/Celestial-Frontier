@@ -52,7 +52,7 @@ def main():
      safe_url(s['file_url']);f=a.fetch(s['file_url'],'source-audio/'+SID,32*1024**2)
      a.ingest(f,{'sourceId':SID,'sourceKind':'wildlife_or_environment_recording','title':t['commonName'] or t['name'],
       'recordingTitle':o['taxon'].get('preferred_common_name',o['taxon']['name']),'scientificName':o['taxon']['name'],'taxonId':o['taxon']['id'],
-      'queriedTaxonId':taxon_id,'soundId':s['id'],'sourcePage':o['uri'],'creator':o['user'].get('name') or o['user']['login'],
+      'queriedTaxonId':taxon_id,'soundId':s['id'],'sourcePage':o['uri'],'creatorProfileName':o['user'].get('name') or o['user']['login'],
       'creatorProfile':'https://www.inaturalist.org/people/'+o['user']['login'],'attribution':s['attribution'],
       'licenseId':'CC-BY-4.0','licenseUrl':LICENSE,'licenseEvidence':e,'licenseMappingEvidence':mapping,'itemEvidence':e,
       'soundLicenseCode':'cc-by','itemMetadataText':o.get('description') or '',

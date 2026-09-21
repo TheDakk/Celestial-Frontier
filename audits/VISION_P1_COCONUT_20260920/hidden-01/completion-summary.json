@@ -1,0 +1,176 @@
+{
+  "status": "DELIVERED_WITH_LEAF_REDS",
+  "producer": "670fe8b61e98a3a614c6c50865e8cc3fef69fa24",
+  "artAcceptedByNick": true,
+  "masterIntakeAccepted": true,
+  "animationReady": false,
+  "currentFit": "fit-04",
+  "native": "native-02",
+  "masterUnchanged": true,
+  "masterDimensions": [
+    1254,
+    1254
+  ],
+  "hidden": [
+    "leg3Far",
+    "leg3Near"
+  ],
+  "visibleContacts": [
+    "leg0Far",
+    "leg0Near",
+    "leg1Far",
+    "leg1Near",
+    "leg2Far",
+    "leg2Near"
+  ],
+  "restChanged": 0,
+  "finalRestChanged": 0,
+  "contacts": {
+    "maxContactError": 4.577566798522237e-16,
+    "maxPaintContactDriftPx": 0.0010711193480326677,
+    "paintTolerancePx": 0.25,
+    "chains": [
+      "leg0Far",
+      "leg0Near",
+      "leg1Far",
+      "leg1Near",
+      "leg2Far",
+      "leg2Near"
+    ]
+  },
+  "sourceJoinNegativeControl": {
+    "status": "FAIL",
+    "maxGapPx": 12.540030751909626
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "geometryFailure": null,
+      "updateP95Ms": 0.8999999761581421,
+      "updateMaxMs": 3.5,
+      "performanceFailure": null
+    },
+    {
+      "id": "approach",
+      "samples": 121,
+      "geometryFailure": null,
+      "updateP95Ms": 2.100000023841858,
+      "updateMaxMs": 4,
+      "performanceFailure": "Per-clip update must be below 2 ms"
+    },
+    {
+      "id": "melee:pinch",
+      "samples": 121,
+      "geometryFailure": null,
+      "updateP95Ms": 0.699999988079071,
+      "updateMaxMs": 0.7999999523162842,
+      "performanceFailure": null
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "geometryFailure": null,
+      "updateP95Ms": 1.899999976158142,
+      "updateMaxMs": 2,
+      "performanceFailure": null
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "geometryFailure": null,
+      "updateP95Ms": 0.7000000476837158,
+      "updateMaxMs": 0.7000000476837158,
+      "performanceFailure": null
+    },
+    {
+      "id": "approach:scuttle",
+      "samples": 121,
+      "geometryFailure": null,
+      "updateP95Ms": 1.899999976158142,
+      "updateMaxMs": 1.9000000357627869,
+      "performanceFailure": null
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "geometryFailure": null,
+      "updateP95Ms": 1.800000011920929,
+      "updateMaxMs": 1.9000000357627869,
+      "performanceFailure": null
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "geometryFailure": null,
+      "updateP95Ms": 0.699999988079071,
+      "updateMaxMs": 0.7000000476837158,
+      "performanceFailure": null
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "geometryFailure": null,
+      "updateP95Ms": 1.800000011920929,
+      "updateMaxMs": 1.9000000357627869,
+      "performanceFailure": null
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "geometryFailure": null,
+      "updateP95Ms": 1.600000023841858,
+      "updateMaxMs": 1.9000000357627869,
+      "performanceFailure": null
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "geometryFailure": null,
+      "updateP95Ms": 0.7000000476837158,
+      "updateMaxMs": 0.800000011920929,
+      "performanceFailure": null
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "geometryFailure": null,
+      "updateP95Ms": 0.699999988079071,
+      "updateMaxMs": 0.800000011920929,
+      "performanceFailure": null
+    }
+  ],
+  "leafReds": [
+    {
+      "id": "approach-cpu",
+      "measuredMs": 2.100000023841858,
+      "gate": "strictly <2 ms",
+      "diagnosis": "Accelerated per-row rig update exceeds budget; includes current motion/contact/field/ARAP publication path."
+    },
+    {
+      "id": "capture-cpu",
+      "measuredMs": 3.199999988079071,
+      "wholeFrameP95Ms": 3.299999952316284,
+      "gate": "rig update strictly <2 ms",
+      "diagnosis": "Actual full-row recorded rig tail exceeds budget; timing differs from accelerated per-row measurement."
+    },
+    {
+      "id": "root-continuity",
+      "stepPx": 9.104096789712312,
+      "stridePx": 8.095049955053229,
+      "worstIndex": 607,
+      "approximatelyAtMs": 10116.666666666666,
+      "row": "faint",
+      "rowAgeMs": 448.34017541259345,
+      "diagnosis": "Full-row presentation root displacement per 60 Hz sample exceeds the existing stride bound during faint recovery. Per-row contact/limit/seam checks remain green. No continuity threshold or authored root key changed."
+    }
+  ],
+  "film": {
+    "path": "native-02/family-full-rows.webm",
+    "durationSeconds": 14.21822,
+    "encodedFrames": 853,
+    "refusedFrames": 0
+  },
+  "sharedPathRed": false,
+  "rosterHeld": true
+}

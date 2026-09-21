@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 204355912,
+    "kingdom": "fauna",
+    "color": 0,
+    "form": 14,
+    "body": 11,
+    "loco": 11,
+    "trait": 8,
+    "size": 4,
+    "diet": 1,
+    "head": 0,
+    "limbs": 4,
+    "skin": 1,
+    "tail": 4,
+    "pattern": 3,
+    "eyes": 5,
+    "behavior": 0,
+    "habitat": 12,
+    "detail": 7,
+    "accent": 11,
+    "temper": 5,
+    "sense": 8,
+    "repro": 2,
+    "life": 2,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Polychaete Worm"
+  },
+  "observation": null
+}

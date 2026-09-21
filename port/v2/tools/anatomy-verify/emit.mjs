@@ -7,7 +7,7 @@
  * against Codex's labels.png when one exists (comparison only). Usage: node emit.mjs <outDir> [subject…]. Not a gate. */
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {createHash} from 'node:crypto';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../..')+'/';
-const {readPng,writePng}=await import(root+'port/v2/tools/painted-creature/finish-conservation.mjs');
+const {readPng,writePng}=await import('./png.mjs');
 const {SUBJECTS,declarationOf}=await import('./score.mjs');const {assignLegs}=await import('./assign.mjs');const {labelParts}=await import('./labels.mjs');const {templateRest}=await import('./template-rest.mjs');
 const sha=b=>createHash('sha256').update(b).digest('hex');
 export function emitSubject(id,template,master,rec,presence,outDir){

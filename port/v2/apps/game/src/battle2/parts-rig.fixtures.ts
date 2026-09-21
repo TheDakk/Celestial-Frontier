@@ -35,5 +35,5 @@ export async function loadFit(name: FitName): Promise<{ rig: PartsRig; record: F
   const decoder = (): Promise<Texture> => Promise.resolve(new Texture({ source: new TextureSource({ width: binding.atlasSize.width, height: binding.atlasSize.height }) }));
   const paintRig = await loadCreatureRigV1(record, binding, master, alpha, atlas, decoder);
   const card = compileBodyCard(record, record.genome);
-  return { rig: createPartsRig({ record, rig: paintRig, card, alphaBox: alphaBoxOf(keyed.data, keyed.width, keyed.height) }), record, binding, card };
+  return { rig: createPartsRig({ record, rig: paintRig, card, alphaBox: alphaBoxOf(keyed.data, keyed.width, keyed.height), binding }), record, binding, card };
 }

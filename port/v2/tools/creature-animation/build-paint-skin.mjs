@@ -24,7 +24,7 @@ export async function buildPaintSkin(baseDirectory,seamBinding,record,options={}
  for(const m of [horizontal,vertical])for(const[k,v]of m)m.set(k,[...v].sort((a,b)=>a-b));
  const vertices=[],lookup=new Map(),fieldTriangles=[];
  const dist=(x,y,e)=>{const [[ax,ay],[bx,by]]=e.edge,dx=bx-ax,dy=by-ay,t=Math.max(0,Math.min(1,(x-ax)*dx+(y-ay)*dy));return Math.hypot(x-ax-dx*t,y-ay-dy*t);};
- const weights=(x,y)=>{let id=0,best=Infinity;for(let r=0;r<=32&&!id;r++)for(let yy=Math.max(0,Math.floor(y)-r-1);yy<=Math.min(h-1,Math.floor(y)+r);yy++)for(let xx=Math.max(0,Math.floor(x)-r-1);xx<=Math.min(w-1,Math.floor(x)+r);xx++){const k=owner[yy*w+xx],d=(xx+.5-x)**2+(yy+.5-y)**2;if(k&&(d<best||(d===best&&k<id))){id=k;best=d;}}if(!id)throw Error('Mesh vertex has no nearby ink');
+ const weights=(x,y)=>{let id=0,best=Infinity;for(let r=0;r<=Math.max(32,Math.ceil(Math.SQRT2*Math.max(boundaryStep,interiorStep)))&&!id;r++)for(let yy=Math.max(0,Math.floor(y)-r-1);yy<=Math.min(h-1,Math.floor(y)+r);yy++)for(let xx=Math.max(0,Math.floor(x)-r-1);xx<=Math.min(w-1,Math.floor(x)+r);xx++){const k=owner[yy*w+xx],d=(xx+.5-x)**2+(yy+.5-y)**2;if(k&&(d<best||(d===best&&k<id))){id=k;best=d;}}if(!id)throw Error('Mesh vertex has no nearby ink');
   const close=new Map();for(const e of incident.get(id)){const other=e.ai===id?e.di:e.ai,d=dist(x,y,e),prior=close.get(other);if(!prior||d<prior.d)close.set(other,{d,depth:e.sourceDepthPx});}
   const scores=new Map([[parts[id-1].joint,1]]);for(const [other,{d,depth}]of close){const t=Math.max(0,1-d/depth),f=.5*t*t*(3-2*t);if(f>1e-5){const j=parts[other-1].joint;scores.set(j,(scores.get(j)??0)+f/(1-f));}}
   const total=[...scores.values()].reduce((a,b)=>a+b,0);return [...scores].map(([j,v])=>[j,v/total]);};

@@ -633,3 +633,8 @@ crab — the arm/palm split uses the wrist index on the claw ridge and the wrist
 path (first cut; the wrist cut itself works in P3). Quadrupeds are not emitted: Codex's quadruped part vocabulary
 (the Civet's parts list) is not in this lane. `recordRecipeHash` is null: the compiler does not write records yet.
 This is the boundary where the compiler hands to Codex's frozen writers; nothing here is admission.
+
+## Re-merge note, 2026-09-21 — `png.mjs`
+Codex's R9 finisher is canonical at the re-merge and its `finish-conservation.mjs` no longer exports
+`readPng`/`writePng`; the runners now import them from `png.mjs` here (pngjs), so nothing in this folder depends on
+a Codex-owned file. `check.mjs` green on the merged tree; numbers unchanged (29/39 named, §6 PASS 2/7).

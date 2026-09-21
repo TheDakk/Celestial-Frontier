@@ -178,7 +178,7 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   else if (earth) {
     // Intent only. Runtime attacks still require observed parts and conditional weapon evidence.
     const verbs=earthFaunaProfile(record.identity.earthName!)?.intendedMoves??[];
-    const vocabulary:Readonly<Record<string,Weapon>>={bite:'bite',claw:'claw',peck:'peck',headbutt:'headbutt',tail:'tail',strike:'bite',constrict:'constrict',mandible:'bite',lash:'constrict',punch:'claw',kick:'kick',body:'body','sting-arms':'sting'};
+    const vocabulary:Readonly<Record<string,Weapon>>={bite:'bite',claw:'claw',pinch:'claw',peck:'peck',headbutt:'headbutt',tail:'tail',strike:'bite',constrict:'constrict',mandible:'bite',lash:'constrict',punch:'claw',kick:'kick',body:'body','sting-arms':'sting'};
     for(const verb of verbs)addWeapon(vocabulary[verb]);
   }
   else if (!specialized) {

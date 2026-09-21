@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 51234866,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 17,
+    "body": 11,
+    "loco": 14,
+    "trait": 0,
+    "size": 4,
+    "diet": 2,
+    "head": 3,
+    "limbs": 4,
+    "skin": 1,
+    "tail": 6,
+    "pattern": 3,
+    "eyes": 1,
+    "behavior": 5,
+    "habitat": 12,
+    "detail": 1,
+    "accent": 14,
+    "temper": 3,
+    "sense": 4,
+    "repro": 1,
+    "life": 0,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Barnacle"
+  },
+  "observation": null
+}

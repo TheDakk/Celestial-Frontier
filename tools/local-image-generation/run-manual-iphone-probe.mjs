@@ -16,7 +16,7 @@ try{
  const recipe=await fs.readFile(path.join(prepared,'recipe.json'));if(sha(recipe)!==manifest.recipeSha256)throw Error('Recipe changed');report.recipeSha256=sha(recipe);
  const cert=await fs.readFile(path.join(tls,'server.pem'));report.serverCertificatePemSha256=sha(cert);
  const routes=new Map([['/recipe.json',path.join(prepared,'recipe.json')],['/kit-client.mjs',path.join(prepared,'kit-client.mjs')],['/stage-worker.mjs',path.join(dir,'kit-phone-stage-worker.mjs')]]);
- for(const n of ['manual-iphone-probe-client.mjs','kit-proof-client.mjs','kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','kit-contact-math.mjs','kit-weather-math.mjs','pipeline-math.mjs','browser-variant-plan.json'])routes.set('/'+n,path.join(dir,n));
+ for(const n of ['manual-iphone-probe-client.mjs','kit-proof-client.mjs','creature-finish-math.mjs','kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','kit-contact-math.mjs','kit-weather-math.mjs','pipeline-math.mjs','browser-variant-plan.json'])routes.set('/'+n,path.join(dir,n));
  for(const f of manifest.files){const file=path.join(prepared,'inputs',path.basename(f.url));if(sha(await fs.readFile(file))!==f.sha256)throw Error('Fitted input changed');routes.set(f.url,file);}
  for(const f of pin.files)if(!f.path.startsWith('text_encoder')&&!f.path.startsWith('tokenizer/'))routes.set('/model/'+f.path,path.join(cache,f.path));
  for(const ext of ['json','f16'])routes.set('/__local_ai/embeddings/earth-rain-v1.'+ext,path.join(root,'port/v2/apps/game/public/__local_ai/embeddings/earth-rain-v1.'+ext));

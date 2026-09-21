@@ -11,7 +11,7 @@ def recording_credit(media):
         expected='https://creativecommons.org/licenses/by/'+license_id.removeprefix('CC-BY-')+'/'
         if url!=expected or not media.get('attribution') or not media.get('sourcePage'):
             raise ValueError('Attributed recording lacks exact license/source/attribution')
-    return {'sourceId':media['sourceId'],'creator':media.get('attribution') or media['creator'],
+    return {'sourceId':media['sourceId'],'creator':media.get('attribution') or media.get('creatorProfileName') or media['creator'],
         'license':license_id+(' ('+url+')' if url else ''),'licenseId':license_id,'licenseUrl':url,
         'url':media.get('sourcePage',''),'attribution':media.get('attribution','')}
 
@@ -56,7 +56,7 @@ def main():
             raw=f.readframes(f.getnframes()); signature=hashlib.sha256(str((f.getnchannels(),f.getframerate(),f.getsampwidth())).encode()+raw).hexdigest()
         content.setdefault(signature,[]).append(row['id'])
         locks.append({'id':row['id'],'masterSha256':row['masterSha256'],'opusSha256':row['opusSha256'],'decodedPcmSha256':signature,
-          'recipe':row,'approved':False,'rights':[{'sourceId':x['sourceId'],'creator':source_media[(x['sourceId'],x['sha256'])]['creator'],
+          'recipe':row,'approved':False,'rights':[{'sourceId':x['sourceId'],'creator':recording_credit(source_media[(x['sourceId'],x['sha256'])])['creator'],
             'licenseId':source_media[(x['sourceId'],x['sha256'])]['licenseId'],
             'sourceUrl':source_media[(x['sourceId'],x['sha256'])].get('sourcePage',sources[x['sourceId']]['source_page_url']),
             'inputSha256':x['sha256'],**recording_credit(source_media[(x['sourceId'],x['sha256'])]),

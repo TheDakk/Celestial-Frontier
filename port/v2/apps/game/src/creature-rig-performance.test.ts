@@ -1,3 +1,4 @@
+import{RecoverablePoseError}from'../../../tools/creature-animation/pose-refusal.mjs';
 import {describe,it,expect} from 'vitest';
 import {createCreatureRigPerformance,type CreatureActionPlayer} from './creature-rig-performance.js';
 import type {CreaturePoseV1,CreatureRigV1,CreatureRigRecordV1} from './creature-rig.js';
@@ -26,3 +27,5 @@ describe('whole-creature action playback',()=>{
   expect(()=>p.update(199)).toThrow('time before');expect(()=>p.update(NaN)).toThrow('elapsed');p.reset();expect(f.calls.at(-1)).toEqual({});p.dispose();p.dispose();expect(f.disposed()).toBe(3);expect(()=>p.update(0)).toThrow('disposed');
  });
 });
+
+it('holds only typed posed refusals, preserves published buffers and advances action time',()=>{const f=fixture(),published:number[]=[];let fail=false;const rig={...f.rig,applyPose(p:CreaturePoseV1){if(fail)throw new RecoverablePoseError('PAINT_FOLD','injected painted fold');published.splice(0,published.length,p.root?.dx??0,p.head?.rotation??0);}},owner=createCreatureRigPerformance(f.record,rig,[f.player('idle',1)],{refusal:'hold'});owner.play('idle',0,0);const previous=owner.update(100),pixels=published.slice();fail=true;expect(owner.update(200)).toEqual(previous);expect(published).toEqual(pixels);expect(owner.sample(200).head!.rotation).toBe(.2);expect(owner.diagnostics).toMatchObject({refusedFrames:1,firstRefusal:{actionId:'idle',ms:200,code:'PAINT_FOLD'}});fail=false;owner.update(300);expect(published).toEqual([.3,.3]);expect(owner.diagnostics.refusedFrames).toBe(1);const strict=createCreatureRigPerformance(f.record,rig,[f.player('idle',1)]);strict.play('idle',0,0);fail=true;expect(()=>strict.update(200)).toThrow(RecoverablePoseError);expect(strict.diagnostics.refusedFrames).toBe(1);rig.applyPose=()=>{throw Error('bad recipe');};expect(()=>owner.update(400)).toThrow('bad recipe');expect(owner.diagnostics.refusedFrames).toBe(1);});

@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 4239261292,
+    "kingdom": "fauna",
+    "color": 4,
+    "form": 9,
+    "body": 5,
+    "loco": 16,
+    "trait": 2,
+    "size": 3,
+    "diet": 2,
+    "head": 3,
+    "limbs": 5,
+    "skin": 4,
+    "tail": 4,
+    "pattern": 4,
+    "eyes": 1,
+    "behavior": 9,
+    "habitat": 1,
+    "detail": 1,
+    "accent": 9,
+    "temper": 3,
+    "sense": 5,
+    "repro": 5,
+    "life": 3,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Shrimp"
+  },
+  "observation": null
+}

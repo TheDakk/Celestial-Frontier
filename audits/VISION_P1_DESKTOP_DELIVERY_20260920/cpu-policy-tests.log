@@ -1,0 +1,11 @@
+✔ desktop admits full-film at3.5ms and rejects above/missing; per-clip timings cannot substitute (0.403125ms)
+✔ phone and painter retain the strict2ms per-clip gate (0.089959ms)
+✔ desktop CPU cannot conceal geometry, rest, contact, continuity or capture reds (0.098333ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 84.664375

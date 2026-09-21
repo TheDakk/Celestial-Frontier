@@ -3,6 +3,7 @@
 import json,re
 from acquire import BASE,sha_file,write_json
 from produce import INVENTORY,slug,validate_jobs
+from report import recording_credit
 
 def build(acquisition,inventory,bindings):
  media=[m for m in acquisition['media'] if m.get('intakeStatus')!='quarantined_decode_failure'];by_hash={m['sha256']:m for m in media};jobs=[];matches={r['name']:[] for r in inventory['earth'] if r['kingdom']=='fauna'}
@@ -39,7 +40,7 @@ def build(acquisition,inventory,bindings):
     'rate':1,'gain':.65,'delay':0,'duration':m['duration']}],'synthNote':None,
    'requirements':['earth.fauna.'+slug(n)+'.recording' for n in names],
    'notes':'Identified recording reference: '+', '.join(names)+'. Actual source: '+m.get('recordingTitle',m.get('title',''))+
-    '. Opening excerpt at supplied speed; creator '+m['creator']+'. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed.',
+    '. Opening excerpt at supplied speed; creator '+recording_credit(m)['creator']+'. Not a verified call/attack/hurt/faint cue. Narrower source taxa and field companions remain disclosed.',
    'recipeVersion':4,'listeningStatus':'not_reviewed','approved':False})
  def find(pattern,sid=None):
   pool=[m for m in media if (sid is None or m['sourceId'] in sid) and m.get('duration',0)>.1 and

@@ -8,10 +8,11 @@ import type {BattleMedium} from './battle-habitat.js';
 import {earthFaunaProfile} from './earth-fauna-profiles.js';
 export interface AnatomyAttack {
  readonly family:string;readonly verb:string;readonly weapon:Weapon;readonly label:string;
- readonly joints:readonly string[];readonly contactJoint:string;readonly medium:readonly BattleMedium[];
+ readonly joints:readonly string[];readonly contactJoint:string;readonly contactPhase?:'strike'|'smear';readonly medium:readonly BattleMedium[];
 }
-const row=(family:string,verb:string,weapon:Weapon,label:string,joints:string[],contactJoint:string,medium:BattleMedium[]=['ground','air','water']):AnatomyAttack=>Object.freeze({family,verb,weapon,label,joints:Object.freeze(joints),contactJoint,medium:Object.freeze(medium)});
+const row=(family:string,verb:string,weapon:Weapon,label:string,joints:string[],contactJoint:string,medium:BattleMedium[]=['ground','air','water'],contactPhase?:'strike'|'smear'):AnatomyAttack=>Object.freeze({family,verb,weapon,label,joints:Object.freeze(joints),contactJoint,medium:Object.freeze(medium),...(contactPhase?{contactPhase}:{})});
 export const ANATOMY_ATTACKS:readonly AnatomyAttack[]=Object.freeze([
+ row('brachyuran','pinch','claw','Pincer pinch',['clawNearPalm','clawNearFixedTip','clawNearDactylRoot','clawNearDactylTip'],'clawNearDactylTip',['ground','water'],'strike'),
  row('quadruped','bite','bite','Bite',['head','jaw'],'jaw'),
  row('quadruped','claw','claw','Foreclaw rake',['foreNearKnee','foreNearAnkle','foreNearPaw'],'foreNearPaw'),
  row('quadruped','gore','gore','Horn thrust',['neck','head'],'head'),
@@ -77,10 +78,10 @@ export function compileAnatomyAttack(card:BodyCard,medium:BattleMedium,ordinal:n
  const attack=requestedVerb?repertoire.attacks.find(a=>a.verb===requestedVerb):repertoire.attacks[index];
  if(!attack)throw Error('Attack anatomy: no admitted move'+(requestedVerb?' '+requestedVerb:''));
  const timeline=buildTimeline(card,'melee:'+attack.verb,card.identity.seed);
- const contactPhase=attack.verb==='claw'?'strike':'smear',strike=timeline.phases.find(([name])=>name===contactPhase);
+ const contactPhase=attack.contactPhase??(attack.verb==='claw'?'strike':'smear'),strike=timeline.phases.find(([name])=>name===contactPhase);
  // Sum actual phase boundaries; duration includes secondary settling and is
 // never a valid substitute for the instant the primary strike reaches contact.
  let contactMs=0;for(const [phase,ms]of timeline.phases){contactMs+=ms;if(phase===contactPhase)break;}
  if(!strike)throw Error('Attack anatomy: motion has no contact/smear phase');
- return {schema:'cf.anatomy-attack/v1' as const,attack,timeline,contactMs,contactPhase,medium,ordinal,recordHash:card.recipeHash,repertoire};
+ return {schema:'cf.anatomy-attack/v1' as const,attack,contactJoint:attack.contactJoint,timeline,contactMs,contactPhase,medium,ordinal,recordHash:card.recipeHash,repertoire};
 }

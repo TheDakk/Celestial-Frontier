@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 317247420,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 4,
+    "body": 14,
+    "loco": 17,
+    "trait": 5,
+    "size": 2,
+    "diet": 2,
+    "head": 1,
+    "limbs": 5,
+    "skin": 0,
+    "tail": 4,
+    "pattern": 0,
+    "eyes": 4,
+    "behavior": 7,
+    "habitat": 9,
+    "detail": 4,
+    "accent": 4,
+    "temper": 5,
+    "sense": 7,
+    "repro": 2,
+    "life": 2,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Brine Shrimp"
+  },
+  "observation": null
+}

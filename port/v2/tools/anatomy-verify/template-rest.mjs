@@ -7,7 +7,7 @@
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../..')+'/';
 const {familyContract,familyContactChains}=await import(root+'port/v2/tools/creature-animation/family-contracts.mjs');
-const {readPng}=await import(root+'port/v2/tools/painted-creature/finish-conservation.mjs');
+const {readPng}=await import('./png.mjs');
 import {alphaOf,detectTips} from './tips.mjs';
 /** Painting conventions of the master format per template, plus the rest reference. Side view: legs are stations
  * along the body axis (rear → front), each with two depths (Far above/behind, Near below/in front). Front view: legs

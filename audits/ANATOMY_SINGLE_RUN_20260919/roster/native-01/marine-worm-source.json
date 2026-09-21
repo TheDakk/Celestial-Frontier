@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 2872592751,
+    "kingdom": "fauna",
+    "color": 15,
+    "form": 4,
+    "body": 13,
+    "loco": 9,
+    "trait": 4,
+    "size": 0,
+    "diet": 3,
+    "head": 8,
+    "limbs": 1,
+    "skin": 1,
+    "tail": 2,
+    "pattern": 4,
+    "eyes": 4,
+    "behavior": 6,
+    "habitat": 4,
+    "detail": 6,
+    "accent": 12,
+    "temper": 2,
+    "sense": 8,
+    "repro": 5,
+    "life": 4,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Marine Worm"
+  },
+  "observation": null
+}

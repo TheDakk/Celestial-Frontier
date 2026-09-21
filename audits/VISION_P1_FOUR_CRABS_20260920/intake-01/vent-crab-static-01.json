@@ -1,0 +1,107 @@
+{
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00004375825383462844,
+      "maxGapPx": 0.000054308455560599216,
+      "error": null
+    },
+    {
+      "id": "approach",
+      "samples": 121,
+      "maxPaintDriftPx": 0.02266701152677438,
+      "maxGapPx": 0.00007037185979604059,
+      "error": null
+    },
+    {
+      "id": "melee:pinch",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00004375825383462844,
+      "maxGapPx": 0.000053861207593672366,
+      "error": null
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "maxPaintDriftPx": 0.002491807872531335,
+      "maxGapPx": 0.00006487964899319782,
+      "error": null
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00004375825383462844,
+      "maxGapPx": 0.000047048099518583994,
+      "error": null
+    },
+    {
+      "id": "approach:scuttle",
+      "samples": 121,
+      "maxPaintDriftPx": 0.02266701152677438,
+      "maxGapPx": 0.00007037185979604059,
+      "error": null
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00004375825383462844,
+      "maxGapPx": 0.00005025925930848788,
+      "error": null
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "maxPaintDriftPx": 0.0011443806188100743,
+      "maxGapPx": 0.00007037185979604059,
+      "error": null
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "maxPaintDriftPx": 0.0012148361584581918,
+      "maxGapPx": 0.00007037185979604059,
+      "error": null
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00004375825383462844,
+      "maxGapPx": 0.000047860105165293506,
+      "error": null
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00004375825383462844,
+      "maxGapPx": 0.000050109060311344946,
+      "error": null
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "maxPaintDriftPx": 0.00004375825383462844,
+      "maxGapPx": 0.00005130204400973607,
+      "error": null
+    },
+    {
+      "id": "presentation",
+      "samples": 601,
+      "maxPaintDriftPx": 0.015077586310854754,
+      "maxGapPx": 0.00007037185979604059,
+      "error": null
+    }
+  ],
+  "contacts": [
+    "leg0FarFoot",
+    "leg0NearFoot",
+    "leg1FarFoot",
+    "leg1NearFoot",
+    "leg2FarFoot",
+    "leg2NearFoot",
+    "leg3FarFoot",
+    "leg3NearFoot"
+  ],
+  "status": "PASS",
+  "exactRest": true
+}

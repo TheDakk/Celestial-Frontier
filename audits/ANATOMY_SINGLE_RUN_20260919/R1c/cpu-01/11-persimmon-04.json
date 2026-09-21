@@ -1,0 +1,1667 @@
+{
+  "subject": "persimmon-04",
+  "stage": "factorial",
+  "order": "rows-first",
+  "scale": "legacy-body-axis",
+  "repeat": 3,
+  "gates": {
+    "contacts": {
+      "maxContactError": 0,
+      "maxPaintContactDriftPx": 0,
+      "paintTolerancePx": 0.25,
+      "chains": []
+    },
+    "maximumRootDrift": 0,
+    "rootSurfaceChecked": true,
+    "attackIds": [
+      "sway",
+      "disturb",
+      "harvest",
+      "grow"
+    ],
+    "actionCount": 4,
+    "allClipPerformance": {
+      "scope": "121 accelerated samples per clip before presentation/framing; separate from real-time capture",
+      "maxP95Ms": 2.900000035762787,
+      "targetMs": 2
+    },
+    "status": "FAIL",
+    "framing": {
+      "samples": 1,
+      "fullMotionBox": {
+        "minX": 0.0366826169192791,
+        "minY": 0.009569378569722176,
+        "maxX": 0.9641148447990417,
+        "maxY": 0.9776714444160461
+      },
+      "view": {
+        "x": 745,
+        "y": 90,
+        "width": 610,
+        "height": 540
+      },
+      "fit": {
+        "scale": 557.7924260784703,
+        "x": 724.5387141136882,
+        "y": 84.66227311153135
+      },
+      "inside": false,
+      "oldRestOnlyInside": true,
+      "skipped": "Prior action/presentation failed"
+    },
+    "presentation": {
+      "samples": 73,
+      "maxGapPx": 0.00005823250575866448,
+      "status": "FAIL",
+      "failure": {
+        "action": "disturb",
+        "ms": 1216.6666666666667,
+        "error": "Error: ARAP skin: unresolved folded triangles: 132"
+      }
+    },
+    "restChanged": 0,
+    "finalRestChanged": 0,
+    "rows": [
+      {
+        "id": "sway",
+        "samples": 121,
+        "maxGapPx": 0.00006354819386966698,
+        "status": "FAIL",
+        "updateP95Ms": 2.199999988079071,
+        "updateMaxMs": 3.699999988079071,
+        "performanceFailure": "Per-clip update must be below 2 ms",
+        "readability": {
+          "peakSwingFootLowerLeg": 0,
+          "peakCarapaceDy": 0,
+          "carapaceUnits": "normalized source height; root painted surface",
+          "footUnits": "observed swing support displacement from rest / lower-leg length"
+        },
+        "normalPasses": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "id": "disturb",
+        "samples": 17,
+        "maxGapPx": 0.00005818474027121917,
+        "status": "FAIL",
+        "failure": {
+          "ms": 87.83333333333333,
+          "error": "Error: ARAP skin: unresolved folded triangles: 78"
+        },
+        "updateP95Ms": 2.900000035762787,
+        "updateMaxMs": 2.900000035762787,
+        "performanceFailure": "Per-clip update must be below 2 ms",
+        "readability": {
+          "peakSwingFootLowerLeg": 0,
+          "peakCarapaceDy": 0,
+          "carapaceUnits": "normalized source height; root painted surface",
+          "footUnits": "observed swing support displacement from rest / lower-leg length"
+        },
+        "normalPasses": [
+          0,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "id": "harvest",
+        "samples": 121,
+        "maxGapPx": 0.000060041016376791555,
+        "status": "FAIL",
+        "updateP95Ms": 2.199999988079071,
+        "updateMaxMs": 2.300000011920929,
+        "performanceFailure": "Per-clip update must be below 2 ms",
+        "readability": {
+          "peakSwingFootLowerLeg": 0,
+          "peakCarapaceDy": 0,
+          "carapaceUnits": "normalized source height; root painted surface",
+          "footUnits": "observed swing support displacement from rest / lower-leg length"
+        },
+        "normalPasses": [
+          0,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "grow",
+        "samples": 121,
+        "maxGapPx": 0.00006242933186477829,
+        "status": "FAIL",
+        "updateP95Ms": 2.199999988079071,
+        "updateMaxMs": 2.300000011920929,
+        "performanceFailure": "Per-clip update must be below 2 ms",
+        "readability": {
+          "peakSwingFootLowerLeg": 0,
+          "peakCarapaceDy": 0,
+          "carapaceUnits": "normalized source height; root painted surface",
+          "footUnits": "observed swing support displacement from rest / lower-leg length"
+        },
+        "normalPasses": [
+          0,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "negative": {
+      "status": "FAIL",
+      "maxGapPx": 12.539991778155393
+    },
+    "card": {
+      "kind": "body-card",
+      "amplitudeProfile": {
+        "schema": "cf.motion-amplitude/v1",
+        "scales": {
+          "root": 1,
+          "trunk": 0.3333333333333333,
+          "branch0Base": 0.19311865175500306,
+          "branch0Tip": 0.4,
+          "leaf0": 0.3333333333333333,
+          "branch1Base": 0.3425386310398387,
+          "branch1Tip": 0.4,
+          "leaf1": 0.3333333333333333,
+          "branch2Base": 0.29246406677112236,
+          "branch2Tip": 0.4,
+          "leaf2": 0.3333333333333333,
+          "branch3Base": 0.5,
+          "branch3Tip": 0.2675631482737789,
+          "leaf3": 0.3333333333333333,
+          "branch4Base": 0.35303418768360917,
+          "branch4Tip": 0.35456888142316617,
+          "leaf4": 0.3281495262409394,
+          "branch5Base": 0.2536103099807182,
+          "branch5Tip": 0.4,
+          "leaf5": 0.3333333333333333,
+          "branch6Base": 0.19704086563492887,
+          "branch6Tip": 0.4,
+          "leaf6": 0.3333333333333333,
+          "branch7Base": 0.21048625557121486,
+          "branch7Tip": 0.4,
+          "leaf7": 0.3333333333333333,
+          "branch8Base": 0.4578876838911981,
+          "branch8Tip": 0.2982745670690872,
+          "leaf8": 0.3333333333333333,
+          "branch9Base": 0.5,
+          "branch9Tip": 0.21091573505740122,
+          "leaf9": 0.3333333333333333,
+          "branch10Base": 0.5,
+          "branch10Tip": 0.33597595228273974,
+          "leaf10": 0.3333333333333333
+        }
+      },
+      "anatomy": {
+        "schema": "cf.anatomy-presence/v1",
+        "absent": [],
+        "growth": {
+          "branches": 11
+        }
+      },
+      "projectionSigns": {},
+      "projectionScales": {},
+      "identity": {
+        "speciesVisualKey": "authored:accepted-persimmon-master",
+        "seed": 133,
+        "ownerId": "authored:flora/persimmon",
+        "earthName": "Persimmon"
+      },
+      "recipeHash": "e07677101fe8d009ae67d29b0dd6aceae4190b3185672d23c93d7514bf6af50a",
+      "template": {
+        "id": "plant-woody",
+        "version": 1,
+        "clipSetId": "plant-woody-v1"
+      },
+      "massClass": {
+        "name": "medium",
+        "multiplier": 1
+      },
+      "locomotion": {
+        "loco": null,
+        "gait": "walk",
+        "templateGait": "none"
+      },
+      "realm": "land",
+      "materials": {
+        "body": "bark",
+        "head": "bark",
+        "legs": "bark",
+        "tail": "bark",
+        "ears": "bark",
+        "wings": "bark",
+        "fins": "bark",
+        "antennae": "bark",
+        "fronds": "bark",
+        "arms": "bark"
+      },
+      "jointMaterials": {
+        "root": "bark",
+        "trunk": "bark",
+        "branch0Base": "bark",
+        "branch0Tip": "bark",
+        "leaf0": "foliage",
+        "branch1Base": "bark",
+        "branch1Tip": "bark",
+        "leaf1": "foliage",
+        "branch2Base": "bark",
+        "branch2Tip": "bark",
+        "leaf2": "foliage",
+        "branch3Base": "bark",
+        "branch3Tip": "bark",
+        "leaf3": "foliage",
+        "branch4Base": "bark",
+        "branch4Tip": "bark",
+        "leaf4": "foliage",
+        "branch5Base": "bark",
+        "branch5Tip": "bark",
+        "leaf5": "foliage",
+        "branch6Base": "bark",
+        "branch6Tip": "bark",
+        "leaf6": "foliage",
+        "branch7Base": "bark",
+        "branch7Tip": "bark",
+        "leaf7": "foliage",
+        "branch8Base": "bark",
+        "branch8Tip": "bark",
+        "leaf8": "foliage",
+        "branch9Base": "bark",
+        "branch9Tip": "bark",
+        "leaf9": "foliage",
+        "branch10Base": "bark",
+        "branch10Tip": "bark",
+        "leaf10": "foliage"
+      },
+      "parts": [
+        {
+          "joint": "trunk",
+          "parent": "root",
+          "group": "body",
+          "pivot": [
+            0.55,
+            0.955
+          ],
+          "tip": [
+            0.53,
+            0.65
+          ],
+          "boneLength": 0.30565503431155844
+        },
+        {
+          "joint": "branch0Base",
+          "parent": "trunk",
+          "group": "fronds",
+          "pivot": [
+            0.53,
+            0.65
+          ],
+          "tip": [
+            0.169,
+            0.488
+          ],
+          "boneLength": 0.39568295389111724
+        },
+        {
+          "joint": "branch0Tip",
+          "parent": "branch0Base",
+          "group": "fronds",
+          "pivot": [
+            0.169,
+            0.488
+          ],
+          "tip": [
+            0.123,
+            0.515
+          ],
+          "boneLength": 0.05333854141237838
+        },
+        {
+          "joint": "leaf0",
+          "parent": "branch0Tip",
+          "group": "fronds",
+          "pivot": [
+            0.123,
+            0.515
+          ],
+          "tip": [
+            0.082,
+            0.527
+          ],
+          "boneLength": 0.04272001872658766
+        },
+        {
+          "joint": "branch1Base",
+          "parent": "trunk",
+          "group": "fronds",
+          "pivot": [
+            0.53,
+            0.65
+          ],
+          "tip": [
+            0.524,
+            0.427
+          ],
+          "boneLength": 0.22308070288574944
+        },
+        {
+          "joint": "branch1Tip",
+          "parent": "branch1Base",
+          "group": "fronds",
+          "pivot": [
+            0.524,
+            0.427
+          ],
+          "tip": [
+            0.556,
+            0.411
+          ],
+          "boneLength": 0.035777087639996666
+        },
+        {
+          "joint": "leaf1",
+          "parent": "branch1Tip",
+          "group": "fronds",
+          "pivot": [
+            0.556,
+            0.411
+          ],
+          "tip": [
+            0.58,
+            0.423
+          ],
+          "boneLength": 0.0268328157299974
+        },
+        {
+          "joint": "branch2Base",
+          "parent": "trunk",
+          "group": "fronds",
+          "pivot": [
+            0.53,
+            0.65
+          ],
+          "tip": [
+            0.773,
+            0.554
+          ],
+          "boneLength": 0.26127571643763603
+        },
+        {
+          "joint": "branch2Tip",
+          "parent": "branch2Base",
+          "group": "fronds",
+          "pivot": [
+            0.773,
+            0.554
+          ],
+          "tip": [
+            0.787,
+            0.595
+          ],
+          "boneLength": 0.04332435804486888
+        },
+        {
+          "joint": "leaf2",
+          "parent": "branch2Tip",
+          "group": "fronds",
+          "pivot": [
+            0.787,
+            0.595
+          ],
+          "tip": [
+            0.751,
+            0.613
+          ],
+          "boneLength": 0.040249223594996254
+        },
+        {
+          "joint": "branch3Base",
+          "parent": "trunk",
+          "group": "fronds",
+          "pivot": [
+            0.53,
+            0.65
+          ],
+          "tip": [
+            0.51,
+            0.6
+          ],
+          "boneLength": 0.0538516480713451
+        },
+        {
+          "joint": "branch3Tip",
+          "parent": "branch3Base",
+          "group": "fronds",
+          "pivot": [
+            0.51,
+            0.6
+          ],
+          "tip": [
+            0.3,
+            0.51
+          ],
+          "boneLength": 0.22847319317591727
+        },
+        {
+          "joint": "leaf3",
+          "parent": "branch3Tip",
+          "group": "fronds",
+          "pivot": [
+            0.3,
+            0.51
+          ],
+          "tip": [
+            0.15,
+            0.51
+          ],
+          "boneLength": 0.15
+        },
+        {
+          "joint": "branch4Base",
+          "parent": "trunk",
+          "group": "fronds",
+          "pivot": [
+            0.53,
+            0.65
+          ],
+          "tip": [
+            0.505,
+            0.435
+          ],
+          "boneLength": 0.21644860821913364
+        },
+        {
+          "joint": "branch4Tip",
+          "parent": "branch4Base",
+          "group": "fronds",
+          "pivot": [
+            0.505,
+            0.435
+          ],
+          "tip": [
+            0.355,
+            0.35
+          ],
+          "boneLength": 0.17240939649566672
+        },
+        {
+          "joint": "leaf4",
+          "parent": "branch4Tip",
+          "group": "fronds",
+          "pivot": [
+            0.355,
+            0.35
+          ],
+          "tip": [
+            0.205,
+            0.39
+          ],
+          "boneLength": 0.15524174696260026
+        },
+        {
+          "joint": "branch5Base",
+          "parent": "trunk",
+          "group": "fronds",
+          "pivot": [
+            0.53,
+            0.65
+          ],
+          "tip": [
+            0.502,
+            0.35
+          ],
+          "boneLength": 0.3013038333642638
+        },
+        {
+          "joint": "branch5Tip",
+          "parent": "branch5Base",
+          "group": "fronds",
+          "pivot": [
+            0.502,
+            0.35
+          ],
+          "tip": [
+            0.432,
+            0.247
+          ],
+          "boneLength": 0.1245351356043747
+        },
+        {
+          "joint": "leaf5",
+          "parent": "branch5Tip",
+          "group": "fronds",
+          "pivot": [
+            0.432,
+            0.247
+          ],
+          "tip": [
+            0.337,
+            0.207
+          ],
+          "boneLength": 0.10307764064044148
+        },
+        {
+          "joint": "branch6Base",
+          "parent": "trunk",
+          "group": "fronds",
+          "pivot": [
+            0.53,
+            0.65
+          ],
+          "tip": [
+            0.505,
+            0.263
+          ],
+          "boneLength": 0.387806652856807
+        },
+        {
+          "joint": "branch6Tip",
+          "parent": "branch6Base",
+          "group": "fronds",
+          "pivot": [
+            0.505,
+            0.263
+          ],
+          "tip": [
+            0.513,
+            0.128
+          ],
+          "boneLength": 0.1352368293032634
+        },
+        {
+          "joint": "leaf6",
+          "parent": "branch6Tip",
+          "group": "fronds",
+          "pivot": [
+            0.513,
+            0.128
+          ],
+          "tip": [
+            0.491,
+            0.057
+          ],
+          "boneLength": 0.07433034373659253
+        },
+        {
+          "joint": "branch7Base",
+          "parent": "trunk",
+          "group": "fronds",
+          "pivot": [
+            0.53,
+            0.65
+          ],
+          "tip": [
+            0.535,
+            0.287
+          ],
+          "boneLength": 0.36303443362854715
+        },
+        {
+          "joint": "branch7Tip",
+          "parent": "branch7Base",
+          "group": "fronds",
+          "pivot": [
+            0.535,
+            0.287
+          ],
+          "tip": [
+            0.606,
+            0.206
+          ],
+          "boneLength": 0.10771258050942792
+        },
+        {
+          "joint": "leaf7",
+          "parent": "branch7Tip",
+          "group": "fronds",
+          "pivot": [
+            0.606,
+            0.206
+          ],
+          "tip": [
+            0.637,
+            0.123
+          ],
+          "boneLength": 0.08860022573334675
+        },
+        {
+          "joint": "branch8Base",
+          "parent": "trunk",
+          "group": "fronds",
+          "pivot": [
+            0.53,
+            0.65
+          ],
+          "tip": [
+            0.555,
+            0.485
+          ],
+          "boneLength": 0.16688319268278642
+        },
+        {
+          "joint": "branch8Tip",
+          "parent": "branch8Base",
+          "group": "fronds",
+          "pivot": [
+            0.555,
+            0.485
+          ],
+          "tip": [
+            0.653,
+            0.305
+          ],
+          "boneLength": 0.2049487740875753
+        },
+        {
+          "joint": "leaf8",
+          "parent": "branch8Tip",
+          "group": "fronds",
+          "pivot": [
+            0.653,
+            0.305
+          ],
+          "tip": [
+            0.621,
+            0.255
+          ],
+          "boneLength": 0.05936328831862333
+        },
+        {
+          "joint": "branch9Base",
+          "parent": "trunk",
+          "group": "fronds",
+          "pivot": [
+            0.53,
+            0.65
+          ],
+          "tip": [
+            0.59,
+            0.595
+          ],
+          "boneLength": 0.08139410298049853
+        },
+        {
+          "joint": "branch9Tip",
+          "parent": "branch9Base",
+          "group": "fronds",
+          "pivot": [
+            0.59,
+            0.595
+          ],
+          "tip": [
+            0.724,
+            0.338
+          ],
+          "boneLength": 0.28983616061492395
+        },
+        {
+          "joint": "leaf9",
+          "parent": "branch9Tip",
+          "group": "fronds",
+          "pivot": [
+            0.724,
+            0.338
+          ],
+          "tip": [
+            0.834,
+            0.316
+          ],
+          "boneLength": 0.11217842929904126
+        },
+        {
+          "joint": "branch10Base",
+          "parent": "trunk",
+          "group": "fronds",
+          "pivot": [
+            0.53,
+            0.65
+          ],
+          "tip": [
+            0.61,
+            0.65
+          ],
+          "boneLength": 0.07999999999999996
+        },
+        {
+          "joint": "branch10Tip",
+          "parent": "branch10Base",
+          "group": "fronds",
+          "pivot": [
+            0.61,
+            0.65
+          ],
+          "tip": [
+            0.751,
+            0.535
+          ],
+          "boneLength": 0.1819505427307102
+        },
+        {
+          "joint": "leaf10",
+          "parent": "branch10Tip",
+          "group": "fronds",
+          "pivot": [
+            0.751,
+            0.535
+          ],
+          "tip": [
+            0.827,
+            0.583
+          ],
+          "boneLength": 0.08988882021697686
+        }
+      ],
+      "secondaryParts": [
+        {
+          "id": "branch0",
+          "driver": "trunk",
+          "joints": [
+            "branch0Base",
+            "branch0Tip",
+            "leaf0"
+          ],
+          "lagOrder": [
+            0,
+            1,
+            2
+          ],
+          "material": "bark",
+          "jointMaterials": {
+            "branch0Base": "bark",
+            "branch0Tip": "bark",
+            "leaf0": "foliage"
+          },
+          "kind": "frond"
+        },
+        {
+          "id": "branch1",
+          "driver": "trunk",
+          "joints": [
+            "branch1Base",
+            "branch1Tip",
+            "leaf1"
+          ],
+          "lagOrder": [
+            0,
+            1,
+            2
+          ],
+          "material": "bark",
+          "jointMaterials": {
+            "branch1Base": "bark",
+            "branch1Tip": "bark",
+            "leaf1": "foliage"
+          },
+          "kind": "frond"
+        },
+        {
+          "id": "branch2",
+          "driver": "trunk",
+          "joints": [
+            "branch2Base",
+            "branch2Tip",
+            "leaf2"
+          ],
+          "lagOrder": [
+            0,
+            1,
+            2
+          ],
+          "material": "bark",
+          "jointMaterials": {
+            "branch2Base": "bark",
+            "branch2Tip": "bark",
+            "leaf2": "foliage"
+          },
+          "kind": "frond"
+        },
+        {
+          "id": "branch3",
+          "driver": "trunk",
+          "joints": [
+            "branch3Base",
+            "branch3Tip",
+            "leaf3"
+          ],
+          "lagOrder": [
+            0,
+            1,
+            2
+          ],
+          "material": "bark",
+          "jointMaterials": {
+            "branch3Base": "bark",
+            "branch3Tip": "bark",
+            "leaf3": "foliage"
+          },
+          "kind": "frond"
+        },
+        {
+          "id": "branch4",
+          "driver": "trunk",
+          "joints": [
+            "branch4Base",
+            "branch4Tip",
+            "leaf4"
+          ],
+          "lagOrder": [
+            0,
+            1,
+            2
+          ],
+          "material": "bark",
+          "jointMaterials": {
+            "branch4Base": "bark",
+            "branch4Tip": "bark",
+            "leaf4": "foliage"
+          },
+          "kind": "frond"
+        },
+        {
+          "id": "branch5",
+          "driver": "trunk",
+          "joints": [
+            "branch5Base",
+            "branch5Tip",
+            "leaf5"
+          ],
+          "lagOrder": [
+            0,
+            1,
+            2
+          ],
+          "material": "bark",
+          "jointMaterials": {
+            "branch5Base": "bark",
+            "branch5Tip": "bark",
+            "leaf5": "foliage"
+          },
+          "kind": "frond"
+        },
+        {
+          "id": "branch6",
+          "driver": "trunk",
+          "joints": [
+            "branch6Base",
+            "branch6Tip",
+            "leaf6"
+          ],
+          "lagOrder": [
+            0,
+            1,
+            2
+          ],
+          "material": "bark",
+          "jointMaterials": {
+            "branch6Base": "bark",
+            "branch6Tip": "bark",
+            "leaf6": "foliage"
+          },
+          "kind": "frond"
+        },
+        {
+          "id": "branch7",
+          "driver": "trunk",
+          "joints": [
+            "branch7Base",
+            "branch7Tip",
+            "leaf7"
+          ],
+          "lagOrder": [
+            0,
+            1,
+            2
+          ],
+          "material": "bark",
+          "jointMaterials": {
+            "branch7Base": "bark",
+            "branch7Tip": "bark",
+            "leaf7": "foliage"
+          },
+          "kind": "frond"
+        },
+        {
+          "id": "branch8",
+          "driver": "trunk",
+          "joints": [
+            "branch8Base",
+            "branch8Tip",
+            "leaf8"
+          ],
+          "lagOrder": [
+            0,
+            1,
+            2
+          ],
+          "material": "bark",
+          "jointMaterials": {
+            "branch8Base": "bark",
+            "branch8Tip": "bark",
+            "leaf8": "foliage"
+          },
+          "kind": "frond"
+        },
+        {
+          "id": "branch9",
+          "driver": "trunk",
+          "joints": [
+            "branch9Base",
+            "branch9Tip",
+            "leaf9"
+          ],
+          "lagOrder": [
+            0,
+            1,
+            2
+          ],
+          "material": "bark",
+          "jointMaterials": {
+            "branch9Base": "bark",
+            "branch9Tip": "bark",
+            "leaf9": "foliage"
+          },
+          "kind": "frond"
+        },
+        {
+          "id": "branch10",
+          "driver": "trunk",
+          "joints": [
+            "branch10Base",
+            "branch10Tip",
+            "leaf10"
+          ],
+          "lagOrder": [
+            0,
+            1,
+            2
+          ],
+          "material": "bark",
+          "jointMaterials": {
+            "branch10Base": "bark",
+            "branch10Tip": "bark",
+            "leaf10": "foliage"
+          },
+          "kind": "frond"
+        }
+      ],
+      "weapons": [],
+      "luminous": false,
+      "bodyLength": 0.30565503431155844,
+      "scaleLength": 0.9030288602082214,
+      "scaleReference": {
+        "kind": "longest-chain",
+        "origin": "root"
+      },
+      "groundLineY": 0.98,
+      "landmarks": {
+        "root": [
+          0.55,
+          0.955
+        ],
+        "trunk": [
+          0.53,
+          0.65
+        ],
+        "branch0Base": [
+          0.169,
+          0.488
+        ],
+        "branch0Tip": [
+          0.123,
+          0.515
+        ],
+        "leaf0": [
+          0.082,
+          0.527
+        ],
+        "branch1Base": [
+          0.524,
+          0.427
+        ],
+        "branch1Tip": [
+          0.556,
+          0.411
+        ],
+        "leaf1": [
+          0.58,
+          0.423
+        ],
+        "branch2Base": [
+          0.773,
+          0.554
+        ],
+        "branch2Tip": [
+          0.787,
+          0.595
+        ],
+        "leaf2": [
+          0.751,
+          0.613
+        ],
+        "branch3Base": [
+          0.51,
+          0.6
+        ],
+        "branch3Tip": [
+          0.3,
+          0.51
+        ],
+        "leaf3": [
+          0.15,
+          0.51
+        ],
+        "branch4Base": [
+          0.505,
+          0.435
+        ],
+        "branch4Tip": [
+          0.355,
+          0.35
+        ],
+        "leaf4": [
+          0.205,
+          0.39
+        ],
+        "branch5Base": [
+          0.502,
+          0.35
+        ],
+        "branch5Tip": [
+          0.432,
+          0.247
+        ],
+        "leaf5": [
+          0.337,
+          0.207
+        ],
+        "branch6Base": [
+          0.505,
+          0.263
+        ],
+        "branch6Tip": [
+          0.513,
+          0.128
+        ],
+        "leaf6": [
+          0.491,
+          0.057
+        ],
+        "branch7Base": [
+          0.535,
+          0.287
+        ],
+        "branch7Tip": [
+          0.606,
+          0.206
+        ],
+        "leaf7": [
+          0.637,
+          0.123
+        ],
+        "branch8Base": [
+          0.555,
+          0.485
+        ],
+        "branch8Tip": [
+          0.653,
+          0.305
+        ],
+        "leaf8": [
+          0.621,
+          0.255
+        ],
+        "branch9Base": [
+          0.59,
+          0.595
+        ],
+        "branch9Tip": [
+          0.724,
+          0.338
+        ],
+        "leaf9": [
+          0.834,
+          0.316
+        ],
+        "branch10Base": [
+          0.61,
+          0.65
+        ],
+        "branch10Tip": [
+          0.751,
+          0.535
+        ],
+        "leaf10": [
+          0.827,
+          0.583
+        ]
+      },
+      "bounds": {
+        "inside": true,
+        "clamped": [],
+        "limitsDeg": {
+          "root": {
+            "min": -5,
+            "max": 5
+          },
+          "trunk": {
+            "min": -12,
+            "max": 12
+          },
+          "branch0Base": {
+            "min": -25,
+            "max": 25
+          },
+          "branch0Tip": {
+            "min": -35,
+            "max": 35
+          },
+          "leaf0": {
+            "min": -45,
+            "max": 45
+          },
+          "branch1Base": {
+            "min": -25,
+            "max": 25
+          },
+          "branch1Tip": {
+            "min": -35,
+            "max": 35
+          },
+          "leaf1": {
+            "min": -45,
+            "max": 45
+          },
+          "branch2Base": {
+            "min": -25,
+            "max": 25
+          },
+          "branch2Tip": {
+            "min": -35,
+            "max": 35
+          },
+          "leaf2": {
+            "min": -45,
+            "max": 45
+          },
+          "branch3Base": {
+            "min": -25,
+            "max": 25
+          },
+          "branch3Tip": {
+            "min": -35,
+            "max": 35
+          },
+          "leaf3": {
+            "min": -45,
+            "max": 45
+          },
+          "branch4Base": {
+            "min": -25,
+            "max": 25
+          },
+          "branch4Tip": {
+            "min": -35,
+            "max": 35
+          },
+          "leaf4": {
+            "min": -45,
+            "max": 45
+          },
+          "branch5Base": {
+            "min": -25,
+            "max": 25
+          },
+          "branch5Tip": {
+            "min": -35,
+            "max": 35
+          },
+          "leaf5": {
+            "min": -45,
+            "max": 45
+          },
+          "branch6Base": {
+            "min": -25,
+            "max": 25
+          },
+          "branch6Tip": {
+            "min": -35,
+            "max": 35
+          },
+          "leaf6": {
+            "min": -45,
+            "max": 45
+          },
+          "branch7Base": {
+            "min": -25,
+            "max": 25
+          },
+          "branch7Tip": {
+            "min": -35,
+            "max": 35
+          },
+          "leaf7": {
+            "min": -45,
+            "max": 45
+          },
+          "branch8Base": {
+            "min": -25,
+            "max": 25
+          },
+          "branch8Tip": {
+            "min": -35,
+            "max": 35
+          },
+          "leaf8": {
+            "min": -45,
+            "max": 45
+          },
+          "branch9Base": {
+            "min": -25,
+            "max": 25
+          },
+          "branch9Tip": {
+            "min": -35,
+            "max": 35
+          },
+          "leaf9": {
+            "min": -45,
+            "max": 45
+          },
+          "branch10Base": {
+            "min": -25,
+            "max": 25
+          },
+          "branch10Tip": {
+            "min": -35,
+            "max": 35
+          },
+          "leaf10": {
+            "min": -45,
+            "max": 45
+          }
+        },
+        "legSlack": {}
+      },
+      "notes": [
+        "earth species \"Persimmon\" mass uncalibrated (medium); gait from physical habitat/anatomy",
+        "physical realm: Authored terrestrial woody master; roots attached to substrate"
+      ]
+    },
+    "runtime": {
+      "schema": "cf.creature-rig-runtime/v1",
+      "sweepBackend": "wasm",
+      "fieldVertices": 4066,
+      "normalPasses": 1696,
+      "robustFallbacks": 0
+    }
+  },
+  "status": "FAIL"
+}

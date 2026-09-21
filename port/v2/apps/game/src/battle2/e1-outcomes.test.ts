@@ -79,7 +79,7 @@ describe('E1 outcome 1 — the attack pays: anatomy contact, effect impact, abil
     stage.dispose();
   }, 120_000);
 
-  it.fails('R3 pending: Crab pinch is an admitted anatomy attack (flips green when Codex adds the brachyuran row and the crustacean profile split)', async () => {
+  it('Crab pinch is an admitted anatomy attack (R3 landed 2026-09-21: brachyuran row + crustacean profile split; pin flipped from it.fails)', async () => {
     const { card } = await loadFit('crab');
     expect(compileAnatomyAttack(card, 'ground', 0).attack.verb).toBe('pinch');
   }, 60_000);
@@ -118,7 +118,7 @@ describe('E1 outcome 2 — no refusal in play', () => {
     }
     for (const [name, r] of Object.entries(report)) { expect(r.ticks, name).toBeGreaterThan(300); expect(r.refusals, `${name}: ${r.last ?? ''}`).toBe(0); }
   }, 600_000);
-  it.fails('R3 pending: a crab ATTACKS through the stage (today: "no admitted brachyuran melee for weapons []" — S4, pinch unreachable by the resolvers)', async () => {
+  it('a crab ATTACKS through the stage (R3 landed 2026-09-21: pinch reachable by the resolvers; pin flipped from it.fails)', async () => {
     const { rig, card } = await loadFit('crab');
     const { f } = stageFactory(); let now = 0;
     const stage = new BattleStage({ factory: f, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: rig, right: portraitRig() }, masses: { left: card.massClass.multiplier, right: 0.85 } });

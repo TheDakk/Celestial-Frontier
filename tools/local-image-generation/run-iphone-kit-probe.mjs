@@ -36,7 +36,7 @@ try{
  report.modelVerification=(await fetchModel({manifest:pin,cacheDir,verifyOnly:true})).receipt;
  const recipe=await fs.readFile(path.join(prepared,'recipe.json'));if(sha(recipe)!==manifest.recipeSha256)throw Error('Accepted recipe changed');report.recipeSha256=sha(recipe);
  const routes=new Map([['/recipe.json',path.join(prepared,'recipe.json')],['/kit-client.mjs',path.join(prepared,'kit-client.mjs')]]);
- for(const name of ['kit-proof-client.mjs','kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','kit-contact-math.mjs','kit-weather-math.mjs','pipeline-math.mjs','browser-variant-plan.json'])routes.set('/'+name,path.join(dir,name));
+ for(const name of ['kit-proof-client.mjs','creature-finish-math.mjs','kit-worker-engine.mjs','kit-worker-expansion.mjs','kit-engine-math.mjs','kit-contact-math.mjs','kit-weather-math.mjs','pipeline-math.mjs','browser-variant-plan.json'])routes.set('/'+name,path.join(dir,name));
  routes.set('/stage-worker.mjs',path.join(dir,embedded?'kit-phone-stage-worker.mjs':'kit-stage-worker.mjs'));
  if(embedded){
   report.initializerAudit=JSON.parse(await fs.readFile(path.join(root,'audits/IPHONE_EMBEDDED_PROBE_20260912/initializer-audit.json')));

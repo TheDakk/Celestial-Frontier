@@ -1,0 +1,6 @@
+{
+  "operation": "git -c gpg.ssh.program=/usr/bin/ssh-keygen commit -S with configured 1Password socket",
+  "status": "FAILED_BEFORE_COMMIT",
+  "error": "agent refused operation",
+  "effect": "R2c remains staged and unsigned. No further signing attempt without external-state change. Static source-hashed diagnostic may proceed; no signed producer or native certification is claimed."
+}
