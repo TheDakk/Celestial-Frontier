@@ -1,0 +1,89 @@
+{
+  "schema": "cf.marking-conservation/v1",
+  "status": "PASS",
+  "createdAt": "2026-09-21T13:03:31.736Z",
+  "sourceHashes": {
+    "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/crab-master.png": "dd419ae94d47663e22cc7ca598247d5c2d539b78dff24bb2b881bf16ecae5655",
+    "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/record.json": "625309b27b17aff36a12ed6eedc4b882c14e1b4dd93c9e94e90c603dc021f2b4",
+    "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/binding.json": "227ec4b53559c38424ed8b243d88b2caf664e2804ba7f65986afb69f8482009b",
+    "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/labels.png": "2f8752420492af502902f818cfd35fc8085719ab2752e09ae2aad92218067075",
+    "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/parts/keyed.png": "018862eaf6d1cbc4ea45e18537910832eb2542ed9708c519ee60e3f91bb5cdb2",
+    "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/parts/atlas/crab.png": "7d4ebb89db341e158a74f919d4e608691ce4b48a714cb116ba142ee2bfe73d15",
+    "audits/VISION_P1_FOUR_CRABS_20260920/crab/generation-01/sent-prompt.txt": "6781207628876dd378eb01b00c5df6ae89763b4d138d9526357c11f99341138c"
+  },
+  "rows": [
+    {
+      "pattern": "striped",
+      "width": 880,
+      "height": 880,
+      "nonzeroAlphaPixels": 7846,
+      "opaqueEquivalentPixels": 2190.4745098039216,
+      "preClipOutsidePixels": 1507,
+      "excludedEyeShadowPixels": 26,
+      "outsideAlphaPixels": 0,
+      "sha256": "5c3ac9188d3a06b2a02fa11b2180453c650f2356ab6c29ed23796a5ebd780b39"
+    },
+    {
+      "pattern": "spotted",
+      "width": 880,
+      "height": 880,
+      "nonzeroAlphaPixels": 5675,
+      "opaqueEquivalentPixels": 1167.3176470588235,
+      "preClipOutsidePixels": 615,
+      "excludedEyeShadowPixels": 2,
+      "outsideAlphaPixels": 0,
+      "sha256": "917b6d4f8d9f92a9d33ae733912ad7895f49960685cc219d78c764bb0652c023"
+    },
+    {
+      "pattern": "banded",
+      "width": 880,
+      "height": 880,
+      "nonzeroAlphaPixels": 8041,
+      "opaqueEquivalentPixels": 2399.235294117647,
+      "preClipOutsidePixels": 4961,
+      "excludedEyeShadowPixels": 63,
+      "outsideAlphaPixels": 0,
+      "sha256": "19ea3564dc5f8b3d4a2fc70526c71f476699bc83d171623aa4407baaa471ace5"
+    },
+    {
+      "pattern": "mottled",
+      "width": 880,
+      "height": 880,
+      "nonzeroAlphaPixels": 10737,
+      "opaqueEquivalentPixels": 3234.6470588235293,
+      "preClipOutsidePixels": 9842,
+      "excludedEyeShadowPixels": 27,
+      "outsideAlphaPixels": 0,
+      "sha256": "4af1a86c92e33b6e6bab4ad008540ace4d1240693ccb8bf94ec2e0e84bb58ddb"
+    },
+    {
+      "pattern": "marbled",
+      "width": 880,
+      "height": 880,
+      "nonzeroAlphaPixels": 11230,
+      "opaqueEquivalentPixels": 1517.137254901961,
+      "preClipOutsidePixels": 15940,
+      "excludedEyeShadowPixels": 296,
+      "outsideAlphaPixels": 0,
+      "sha256": "b6a1ffe77ef569e1ff5a73bc426c0950ad5d87f3395ef6879a591e7ab603d204"
+    },
+    {
+      "pattern": "eye-spotted",
+      "width": 880,
+      "height": 880,
+      "nonzeroAlphaPixels": 1468,
+      "opaqueEquivalentPixels": 670.0627450980393,
+      "preClipOutsidePixels": 20,
+      "excludedEyeShadowPixels": 0,
+      "outsideAlphaPixels": 0,
+      "sha256": "ce9a7d41a59c559cecee83f8d3e34bc97116ba61bd6e767defb572b5dca66f51"
+    }
+  ],
+  "controls": {
+    "validAccepted": true,
+    "onePixelOutsideMutantRefused": true
+  },
+  "node": "v26.9.0",
+  "imageMagick": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org",
+  "sheetSha256": "0f3d3d3b0625d0b849fb711455691478a33adb98b8d5ca6776b10c8baab0f74a"
+}

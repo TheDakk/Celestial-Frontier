@@ -1,0 +1,134 @@
+{
+ "columns": [
+  "plain",
+  "striped",
+  "spotted",
+  "banded",
+  "mottled",
+  "iridescent",
+  "marbled",
+  "eye-spotted"
+ ],
+ "tiles": [
+  {
+   "row": "own genome + accent turquoise",
+   "pattern": "plain",
+   "bytes": 10110
+  },
+  {
+   "row": "own genome + accent turquoise",
+   "pattern": "striped",
+   "bytes": 11527
+  },
+  {
+   "row": "own genome + accent turquoise",
+   "pattern": "spotted",
+   "bytes": 11037
+  },
+  {
+   "row": "own genome + accent turquoise",
+   "pattern": "banded",
+   "bytes": 11501
+  },
+  {
+   "row": "own genome + accent turquoise",
+   "pattern": "mottled",
+   "bytes": 11551
+  },
+  {
+   "row": "own genome + accent turquoise",
+   "pattern": "iridescent",
+   "bytes": 10105
+  },
+  {
+   "row": "own genome + accent turquoise",
+   "pattern": "marbled",
+   "bytes": 11352
+  },
+  {
+   "row": "own genome + accent turquoise",
+   "pattern": "eye-spotted",
+   "bytes": 10550
+  },
+  {
+   "row": "same, lumin (emissive)",
+   "pattern": "plain",
+   "bytes": 10110
+  },
+  {
+   "row": "same, lumin (emissive)",
+   "pattern": "striped",
+   "bytes": 11527
+  },
+  {
+   "row": "same, lumin (emissive)",
+   "pattern": "spotted",
+   "bytes": 11037
+  },
+  {
+   "row": "same, lumin (emissive)",
+   "pattern": "banded",
+   "bytes": 11501
+  },
+  {
+   "row": "same, lumin (emissive)",
+   "pattern": "mottled",
+   "bytes": 11551
+  },
+  {
+   "row": "same, lumin (emissive)",
+   "pattern": "iridescent",
+   "bytes": 10105
+  },
+  {
+   "row": "same, lumin (emissive)",
+   "pattern": "marbled",
+   "bytes": 11352
+  },
+  {
+   "row": "same, lumin (emissive)",
+   "pattern": "eye-spotted",
+   "bytes": 10550
+  },
+  {
+   "row": "crimson base, accent golden",
+   "pattern": "plain",
+   "bytes": 10402
+  },
+  {
+   "row": "crimson base, accent golden",
+   "pattern": "striped",
+   "bytes": 11677
+  },
+  {
+   "row": "crimson base, accent golden",
+   "pattern": "spotted",
+   "bytes": 11164
+  },
+  {
+   "row": "crimson base, accent golden",
+   "pattern": "banded",
+   "bytes": 12004
+  },
+  {
+   "row": "crimson base, accent golden",
+   "pattern": "mottled",
+   "bytes": 11955
+  },
+  {
+   "row": "crimson base, accent golden",
+   "pattern": "iridescent",
+   "bytes": 10409
+  },
+  {
+   "row": "crimson base, accent golden",
+   "pattern": "marbled",
+   "bytes": 11779
+  },
+  {
+   "row": "crimson base, accent golden",
+   "pattern": "eye-spotted",
+   "bytes": 10865
+  }
+ ]
+}

@@ -64,3 +64,19 @@ export function morphParamsV1(genome: MorphGenome | null | undefined, archetypeR
   const identity = base === IDENTITY_PALETTE && acc === IDENTITY_PALETTE && !lumin && pattern === null && Object.values(proportion).every((v) => v === 1);
   return Object.freeze({ schema: 'cf.morph-params/v1', identity, archetype: archetypeRecipeHash, base, accent: acc, lumin, proportion, clamped: Object.freeze(clamped), pattern: pattern === null ? null : pattern % V1_TABLE_LENGTHS.pattern });
 }
+
+/** The archetype's OWN genome for identity comparison: the fit record's `genome` block carries only motion genes
+ * (size/loco/skin/head/tail/lumin…), so the visual genes come from `identity.speciesVisualKey` — the canonical
+ * serialization `["object",[[key,[type,value]],…]]` of the full genome (found 2026-09-23: `color 12` read as a morph
+ * because `record.genome.color` was undefined, and the striped crab filmed teal). */
+export function genomeFromVisualKey(key: string): MorphGenome {
+  const out: Record<string, unknown> = {};
+  try { const parsed = JSON.parse(key) as unknown; if (!Array.isArray(parsed) || parsed[0] !== 'object' || !Array.isArray(parsed[1])) return Object.freeze(out);
+    for (const entry of parsed[1] as unknown[]) { if (!Array.isArray(entry) || typeof entry[0] !== 'string' || !Array.isArray(entry[1])) continue; const [type, value] = entry[1] as [string, unknown];
+      if (type === 'number') out[entry[0]] = Number(value); else if (type === 'boolean') out[entry[0]] = value === true || value === 'true'; else if (type === 'string') out[entry[0]] = String(value); } } catch { /* not a visual key */ }
+  return Object.freeze(out);
+}
+export function archetypeGenomeV1(record: { readonly genome?: MorphGenome | null; readonly identity?: { readonly speciesVisualKey?: string } }): MorphGenome {
+  const fromKey = record.identity?.speciesVisualKey ? genomeFromVisualKey(record.identity.speciesVisualKey) : {};
+  return Object.freeze({ ...fromKey, ...(record.genome ?? {}) });
+}

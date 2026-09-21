@@ -41,6 +41,9 @@ import { createPartsRig } from './battle2/parts-rig.js';
 import { compileAnatomyAttack } from './anatomy-attacks.js';
 import type { ArenaWorld } from './battle-habitat.js';
 import { individualFromGenomeV1 } from './morph/morph-individual.js';
+import { markingNameV1, maskAlphaOf, type AlphaMask } from './morph/morph-markings.js';
+import { archetypeGenomeV1, morphParamsV1 } from './morph/morph-params.js';
+import { decodePng } from './morph/png-decode.js';
 import { loadCreatureRigV1, type CreaturePartsBindingV1, type CreatureRigRecordV1 } from './creature-rig.js';
 import { abilityTheme } from '@cf/domain-combatcore';
 import { parseEffectSequenceAnchors, type EffectSequenceAnchors } from './effects/anchors.js';
@@ -173,6 +176,15 @@ export function genomeMass(genome: Readonly<Record<string, unknown>> | null | un
   const n = MASS_BY_SIZE_INDEX.length, name = MASS_BY_SIZE_INDEX[(((size | 0) % n) + n) % n] ?? 'medium'; return MASS_CLASS[name];
 }
 /** A record matches a combatant when its visual key equals the genome's, or its named Earth species equals the genome's `_earthName`. */
+/** The individual's PAINTED marking mask in MASTER space, or null: the archetype's optional `markings.json` names one
+ * mask file per pattern the kit hand painted; a pattern without one renders plain (the law). Never throws. */
+export async function loadMarkingMask(assets: Battle2AssetSource, fitDir: string, record: { recipeHash: string; genome?: Record<string, unknown> | null; identity?: { speciesVisualKey?: string }; geometry: { width: number; height: number } }, genome: Readonly<Record<string, unknown>> | null | undefined): Promise<AlphaMask | null> {
+  if (!assets.bytes) return null;
+  try { const name = markingNameV1(morphParamsV1(genome, record.recipeHash, archetypeGenomeV1(record))); if (!name) return null;
+    const mj = await assets.json(fitDir + 'markings.json') as { patterns?: Record<string, { file?: string }> }; const file = mj?.patterns?.[name]?.file; if (typeof file !== 'string') return null;
+    const png = await decodePng(await assets.bytes(fitDir + file)); if (png.width !== record.geometry.width || png.height !== record.geometry.height) return null; return maskAlphaOf(png.rgba, png.width, png.height); }
+  catch { return null; }
+}
 export function matchRecord(records: readonly ResolvedAnatomyRecord[], genome: Readonly<Record<string, unknown>> | null | undefined): ResolvedAnatomyRecord | null {
   if (!genome) return null;
   let key: string | null = null; try { key = speciesVisualKey(genome as Record<string, unknown>); } catch { key = null; }
@@ -304,7 +316,8 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
             const pixels = keyed.pixels(), alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = pixels[i * 4 + 3] ?? 0;
             if (keyed.width !== record.geometry.width || keyed.height !== record.geometry.height) throw new Error('keyed cut-out size disagrees with the record geometry');
             // the morph system: this genome's individual on the accepted archetype (identity genome → the archetype's own path)
-            const morph = individualFromGenomeV1({ record: record as unknown as { recipeHash: string }, binding, card, genome });
+            const markingMask = await loadMarkingMask(assets, fit.dir, record as unknown as { recipeHash: string; genome?: Record<string, unknown> | null; identity?: { speciesVisualKey?: string }; geometry: { width: number; height: number } }, genome);
+            const morph = individualFromGenomeV1({ record: record as unknown as { recipeHash: string; genome?: Record<string, unknown> | null; identity?: { speciesVisualKey?: string }; geometry: { width: number; height: number } }, binding, card, genome, markingMask });
             const paintRig = await loadCreatureRigV1(record as unknown as CreatureRigRecordV1, binding, master, alpha, atlas, undefined, { ...(morph.jointScale ? { jointScale: morph.jointScale } : {}), ...(morph.atlasPixels ? { atlasPixels: morph.atlasPixels } : {}) });
             const rig = createPartsRig({ record: record as unknown as CreatureRigRecordV1, rig: paintRig, card, alphaBox: alphaBox(pixels, keyed.width, keyed.height), binding, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) });
             return { rig, card, mass: card.massClass.multiplier, seed };

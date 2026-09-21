@@ -5,8 +5,9 @@
 import { speciesVisualKey } from '@cf/art/species-identity';
 import { compileBodyCard, type BodyCard, type MotionGenomeFields, type ResolvedAnatomyRecord } from '../motion/body-card.js';
 import { renderCardIndividualV1, type CardMasterV1, type CardReceiptV1 } from './morph-card.js';
-import { morphParamsV1, type MorphGenome } from './morph-params.js';
+import { archetypeGenomeV1, morphParamsV1, type MorphGenome } from './morph-params.js';
 import { decodePng } from './png-decode.js';
+import { markingNameV1, maskAlphaOf, scaleMaskV1, type AlphaMask } from './morph-markings.js';
 import { encodePng, pngDataUrl } from './png-encode.js';
 export interface PaintedCardArchetype { readonly earthName: string; readonly dir: string; }
 export interface PaintedCardAssets { json(path: string): Promise<unknown>; bytes(path: string): Promise<Uint8Array>; }
@@ -14,7 +15,7 @@ export interface PaintedCardAsset { readonly key: string; readonly url: string; 
 export interface PaintedCardSourceOptions { readonly assets: PaintedCardAssets; readonly registry: readonly PaintedCardArchetype[]; readonly cacheEntries?: { thumb: number; portrait: number }; }
 export const CARD_SIZES = Object.freeze({ thumb: 132, portrait: 440 } as const);
 export type CardKind = keyof typeof CARD_SIZES;
-interface Archetype { readonly master: CardMasterV1; readonly receipt: CardReceiptV1 & { recordRecipeHash: string }; readonly record: ResolvedAnatomyRecord & { recipeHash: string }; }
+interface Archetype { readonly master: CardMasterV1; readonly receipt: CardReceiptV1 & { recordRecipeHash: string }; readonly record: ResolvedAnatomyRecord & { recipeHash: string }; readonly markings: Readonly<Record<string, string>> | null; readonly masks: Map<string, Promise<AlphaMask | null>>; }
 export class PaintedCardSource {
   readonly #o: PaintedCardSourceOptions; readonly #byName: Map<string, PaintedCardArchetype>; readonly #archetypes = new Map<string, Promise<Archetype>>();
   readonly #cache: Record<CardKind, Map<string, PaintedCardAsset>> = { thumb: new Map(), portrait: new Map() }; readonly #pending = new Map<string, Promise<PaintedCardAsset>>();
@@ -30,8 +31,16 @@ export class PaintedCardSource {
       const [m, l] = await Promise.all([decodePng(masterBytes), decodePng(labelsBytes)]);
       if (m.width !== receipt.card.width || m.height !== receipt.card.height || l.width !== m.width || l.height !== m.height) throw new Error('painted card: master/labels disagree with the receipt');
       if (receipt.recordRecipeHash !== record.recipeHash) throw new Error('painted card: card master sealed for another record');
-      return { master: { width: m.width, height: m.height, master: m.rgba, labels: l.rgba }, receipt, record }; })();
+      // the archetype's painted marking masks (optional: `markings.json` beside the fit, pattern → file); fetched per pattern on demand
+      let markings: Readonly<Record<string, string>> | null = null; try { const mj = await this.#o.assets.json(dir + 'markings.json') as { patterns?: Record<string, { file?: string }> }; if (mj?.patterns) { const map: Record<string, string> = {}; for (const [k, v] of Object.entries(mj.patterns)) if (typeof v?.file === 'string') map[k] = v.file; markings = Object.freeze(map); } } catch { markings = null; }
+      return { master: { width: m.width, height: m.height, master: m.rgba, labels: l.rgba }, receipt, record, markings, masks: new Map() }; })();
     this.#archetypes.set(a.earthName, p); return p;
+  }
+  async #mask(a: PaintedCardArchetype, arch: Archetype, name: string): Promise<AlphaMask | null> {
+    const file = arch.markings?.[name]; if (!file) return null; let p = arch.masks.get(name); if (p) return p;
+    const dir = a.dir.endsWith('/') ? a.dir : a.dir + '/';
+    p = (async () => { try { const png = await decodePng(await this.#o.assets.bytes(dir + file)); return scaleMaskV1(maskAlphaOf(png.rgba, png.width, png.height), arch.master.width, arch.master.height); } catch { return null; } })();
+    arch.masks.set(name, p); return p;
   }
   /** Render (or serve from cache) the individual's card of `kind` for this genome; null when no archetype matches. */
   card(genome: Readonly<Record<string, unknown>>, kind: CardKind): Promise<PaintedCardAsset> | null {
@@ -39,7 +48,8 @@ export class PaintedCardSource {
     const key = speciesVisualKey(genome as Record<string, unknown>), cacheKey = kind + ':' + key; const hit = this.#cache[kind].get(key); if (hit) return Promise.resolve(hit);
     const pending = this.#pending.get(cacheKey); if (pending) return pending;
     const p = (async () => { const arch = await this.#archetype(a); const card: BodyCard = compileBodyCard(arch.record, genome as MotionGenomeFields);
-      const size = CARD_SIZES[kind], rgba = renderCardIndividualV1({ master: arch.master, receipt: arch.receipt, card, params: morphParamsV1(genome as MorphGenome, arch.record.recipeHash, (arch.record as { genome?: MorphGenome }).genome ?? null), size }); this.#renders++;
+      const params = morphParamsV1(genome as MorphGenome, arch.record.recipeHash, archetypeGenomeV1(arch.record as { genome?: MorphGenome; identity?: { speciesVisualKey?: string } })), marking = markingNameV1(params), markingMask = marking ? await this.#mask(a, arch, marking) : null;
+      const size = CARD_SIZES[kind], rgba = renderCardIndividualV1({ master: arch.master, receipt: arch.receipt, card, params, size, markingMask }); this.#renders++;
       const png = await encodePng(rgba, size, size); const asset: PaintedCardAsset = Object.freeze({ key, url: pngDataUrl(png), width: size, height: size, encodedBytes: png.length, decodedPixels: size * size });
       const cache = this.#cache[kind], cap = this.#o.cacheEntries?.[kind] ?? (kind === 'thumb' ? 64 : 8); cache.set(key, asset); while (cache.size > cap) { const oldest = cache.keys().next().value!; cache.delete(oldest); }
       return asset; })().finally(() => { this.#pending.delete(cacheKey); });

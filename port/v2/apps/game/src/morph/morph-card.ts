@@ -7,10 +7,11 @@ import type { BodyCard } from '../motion/body-card.js';
 import type { MorphParamsV1 } from './morph-params.js';
 import { paletteRoleOfGroup, remapAtlasPaletteV1, type PaletteFrame, type PaletteRole } from './morph-palette.js';
 import { jointScalesV1 } from './morph-skeleton.js';
+import { applyMarkingV1, emissiveV1, type AlphaMask } from './morph-markings.js';
 export interface CardMasterV1 { readonly width: number; readonly height: number; readonly master: Uint8Array; readonly labels: Uint8Array; }
 export interface CardReceiptV1 { readonly labels: ReadonlyArray<Readonly<{ label: number; id: string; joint: string; layer: 'far' | 'near' }>>; readonly landmarks: Readonly<Record<string, readonly [number, number]>>; readonly card: Readonly<{ width: number; height: number }>; }
 export const CARD_MARGIN = 0.06;
-export interface CardRenderInput { readonly master: CardMasterV1; readonly receipt: CardReceiptV1; readonly card: Pick<BodyCard, 'parts'>; readonly params: MorphParamsV1; readonly size: number; }
+export interface CardRenderInput { readonly master: CardMasterV1; readonly receipt: CardReceiptV1; readonly card: Pick<BodyCard, 'parts'>; readonly params: MorphParamsV1; readonly size: number; /** the painted marking in CARD-master space (scaled from the master-space mask), when the archetype has one for this pattern */ readonly markingMask?: AlphaMask | null; }
 /** Sub-tree membership from the body card's parent links: every joint under (and including) each scaled root. */
 function subtreesOf(card: Pick<BodyCard, 'parts'>, scales: Readonly<Record<string, number>>): ReadonlyArray<Readonly<{ root: string; scale: number; joints: ReadonlySet<string> }>> {
   const children = new Map<string, string[]>(); for (const p of card.parts) { const list = children.get(p.parent) ?? []; list.push(p.joint); children.set(p.parent, list); }
@@ -18,7 +19,7 @@ function subtreesOf(card: Pick<BodyCard, 'parts'>, scales: Readonly<Record<strin
 }
 /** Steps 1–2 in master space (palette, then proportion): the individual at the card master's own size. */
 export function cardCompositeV1(input: Omit<CardRenderInput, 'size'>): Uint8Array {
-  const { master: m, receipt, card, params } = input; const W = m.width, H = m.height;
+  const { master: m, receipt, card, params, markingMask } = input; const W = m.width, H = m.height;
   if (m.master.length !== W * H * 4 || m.labels.length !== W * H * 4) throw new TypeError('card: master/labels size');
   const groupOf = new Map(card.parts.map((p) => [p.joint, p.group] as const)), parentOf = new Map(card.parts.map((p) => [p.joint, p.parent] as const));
   const jointOfLabel = new Map(receipt.labels.map((l) => [l.label, l.joint] as const)), roleOfLabel = new Map<number, PaletteRole>(receipt.labels.map((l) => [l.label, paletteRoleOfGroup(groupOf.get(l.joint))] as const));
@@ -27,6 +28,8 @@ export function cardCompositeV1(input: Omit<CardRenderInput, 'size'>): Uint8Arra
   if (!params.identity) { const whole: PaletteFrame[] = [{ x: 0, y: 0, width: W, height: H, role: 'base' }]; const out = new Uint8Array(m.master);
     for (const role of ['base', 'accent'] as const) { const full = remapAtlasPaletteV1(m.master, W, H, [{ ...whole[0]!, role }], params); for (let i = 0; i < W * H; i++) if (roleOfLabel.get(m.labels[i * 4]!) === role) { out[i * 4] = full[i * 4]!; out[i * 4 + 1] = full[i * 4 + 1]!; out[i * 4 + 2] = full[i * 4 + 2]!; } }
     px = out; }
+  // 1b. the painted marking (M3/M4), before proportion so it scales with a grown head/tail
+  if (markingMask) { const out = px === m.master ? new Uint8Array(m.master) : px; applyMarkingV1(out, W, H, markingMask, params.accent, emissiveV1(params)); px = out; }
   // 2. proportion: scaled sub-trees drawn about their root's pivot (the parent landmark) over a base without them
   //    composited in the rig's layer order: far base → far sub-trees → near base → near sub-trees (a near leg stays in
   //    front of an enlarged far tail; label 0 = fringe/shadow counts as far base)

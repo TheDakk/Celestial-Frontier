@@ -8,7 +8,7 @@ export interface PaletteFrame { readonly x: number; readonly y: number; readonly
 export const GREY_SATURATION = 0.08;
 // scratch HSL/RGB triples: the remap visits every pixel of a 2048² atlas several times — no per-pixel allocation
 const HSL = new Float64Array(3), RGB = new Uint8ClampedArray(3);
-const rgbToHsl = (r: number, g: number, b: number): Float64Array => {
+export const rgbToHsl = (r: number, g: number, b: number): Float64Array => {
   r /= 255; g /= 255; b /= 255; const max = Math.max(r, g, b), min = Math.min(r, g, b), l = (max + min) / 2;
   if (max === min) { HSL[0] = 0; HSL[1] = 0; HSL[2] = l; return HSL; }
   const d = max - min, s = l > 0.5 ? d / (2 - max - min) : d / (max + min); let h: number;
@@ -16,7 +16,7 @@ const rgbToHsl = (r: number, g: number, b: number): Float64Array => {
   HSL[0] = h * 60; HSL[1] = s; HSL[2] = l; return HSL;
 };
 const hue2rgb = (p: number, q: number, t: number): number => { if (t < 0) t += 1; if (t > 1) t -= 1; if (t < 1 / 6) return p + (q - p) * 6 * t; if (t < 1 / 2) return q; if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6; return p; };
-const hslToRgb = (h: number, s: number, l: number): Uint8ClampedArray => {
+export const hslToRgb = (h: number, s: number, l: number): Uint8ClampedArray => {
   if (s === 0) { const v = Math.round(l * 255); RGB[0] = v; RGB[1] = v; RGB[2] = v; return RGB; } const q = l < 0.5 ? l * (1 + s) : l + s - l * s, p = 2 * l - q, hh = h / 360;
   RGB[0] = Math.round(hue2rgb(p, q, hh + 1 / 3) * 255); RGB[1] = Math.round(hue2rgb(p, q, hh) * 255); RGB[2] = Math.round(hue2rgb(p, q, hh - 1 / 3) * 255); return RGB;
 };
