@@ -547,6 +547,7 @@ function packagePreviewLocked(args) {
     if (clean) {
       snapshot = exactCommitSnapshot(repoRoot, commit, [
         'port/v2', 'port/baseline-v1.8.9/content-registry.json',
+        'ART_KIT.md', // imported `?raw` by apps/game/src/{local-ai-game,worldlife-wiring}.ts — the app's build reaches it
       ], 'port/v2');
       buildV2Root = snapshot.sourceRoot;
       attachInstalledDependencies(buildV2Root);

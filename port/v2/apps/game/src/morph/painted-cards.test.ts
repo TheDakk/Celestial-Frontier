@@ -8,7 +8,8 @@ const assets: PaintedCardAssets = { json: async (p) => JSON.parse(readFileSync(n
 describe('the painted card in the species-art loader', () => {
   it('the TS registry equals the build tool\'s list, and every archetype has its sealed card master + receipt on disk', () => {
     const tool = readFileSync(new URL('port/v2/tools/morph/build-card-masters.mjs', REPO_ROOT), 'utf8');
-    for (const a of CARD_ARCHETYPES) { expect(tool).toContain(`{ earthName: '${a.earthName}', dir: '${a.dir}' }`); const r = JSON.parse(readFileSync(new URL(a.dir + 'card/card.json', REPO_ROOT), 'utf8')) as { earthName: string; card: { width: number } }; expect(r.earthName).toBe(a.earthName); expect(r.card.width).toBeLessThanOrEqual(512); }
+    for (const a of CARD_ARCHETYPES) { expect(tool).toContain(`{ earthName: '${a.earthName}', dir: 'audits/`); const r = JSON.parse(readFileSync(new URL(a.dir + 'card/card.json', REPO_ROOT), 'utf8')) as { earthName: string; card: { width: number } }; expect(r.earthName).toBe(a.earthName); expect(r.card.width).toBeLessThanOrEqual(512);
+      const src = JSON.parse(readFileSync(new URL(a.dir + 'SOURCE.json', REPO_ROOT), 'utf8')) as { fitDir: string; recordRecipeHash: string }; expect(tool).toContain(`dir: '${src.fitDir}'`); expect(JSON.parse(readFileSync(new URL(src.fitDir + 'record.json', REPO_ROOT), 'utf8')).recipeHash).toBe(src.recordRecipeHash); } // the shipped mirror names its fit and seals its record
     expect((tool.match(/earthName: '/g) ?? []).length).toBe(CARD_ARCHETYPES.length);
   });
   it('a crab genome\'s thumb and portrait come from the painted source (the painter producer is never asked); a procedural genome goes to the broker', async () => {
