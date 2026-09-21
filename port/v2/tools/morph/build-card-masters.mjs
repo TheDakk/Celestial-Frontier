@@ -6,6 +6,9 @@ import fs from 'node:fs'; import path from 'node:path'; import { createHash } fr
 import { readPng, writePng } from '../anatomy-verify/png.mjs';
 export const CARD_MASTER_SIDE = 512;
 const R = path.resolve(import.meta.dirname, '../../../..');
+/** Shipped copies live INSIDE port/v2 (the preview producer archives only the v2 subtree; the app never imports evidence
+ * folders): `port/v2/apps/game/assets/painted-cards/<key>/` mirrors each fit's card + record + markings. */
+export const SHIPPED_ROOT = 'port/v2/apps/game/assets/painted-cards/';
 export const CARD_ARCHETYPES = Object.freeze([
   { earthName: 'Crab', dir: 'audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/' }, { earthName: 'Coconut Crab', dir: 'audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/' },
   { earthName: 'Freshwater Crab', dir: 'audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/' }, { earthName: 'Mud Crab', dir: 'audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/' },
@@ -42,6 +45,12 @@ if (import.meta.url === new URL(process.argv[1], 'file:').href) {
     fs.writeFileSync(path.join(out, 'master-512.png'), m); fs.writeFileSync(path.join(out, 'labels-512.png'), l);
     const receipt = { schema: 'cf.card-master/v1', earthName: a.earthName, recordRecipeHash: record.recipeHash, source: { master: record.source, masterSha256: sha(masterBytes), keyedSha256: sha(keyedBytes), alpha: 'parts/keyed.png', labelsSha256, labelSource, width: master.width, height: master.height }, labels: labelList, landmarks: record.landmarks, card: { width: dw, height: dh, scale: s, masterSha256: sha(m), labelsSha256: sha(l), filter: 'alpha-weighted box; labels nearest' } };
     fs.writeFileSync(path.join(out, 'card.json'), JSON.stringify(receipt, null, 1) + '\n');
-    console.log(JSON.stringify({ earthName: a.earthName, from: [master.width, master.height], to: [dw, dh], masterSha256: receipt.card.masterSha256.slice(0, 12) }));
+    // shipped mirror inside port/v2: card files, the record, and the fit's markings (json + masks) when present
+    const key = path.basename(a.dir.replace(/\/$/, '')), ship = path.join(R, SHIPPED_ROOT, key); fs.mkdirSync(path.join(ship, 'card'), { recursive: true });
+    for (const f of ['card/master-512.png', 'card/labels-512.png', 'card/card.json']) fs.copyFileSync(path.join(dir, f), path.join(ship, f));
+    fs.copyFileSync(path.join(dir, 'record.json'), path.join(ship, 'record.json'));
+    if (fs.existsSync(path.join(dir, 'markings.json'))) { const mj = JSON.parse(fs.readFileSync(path.join(dir, 'markings.json'))); fs.copyFileSync(path.join(dir, 'markings.json'), path.join(ship, 'markings.json')); fs.mkdirSync(path.join(ship, 'markings'), { recursive: true }); for (const v of Object.values(mj.patterns ?? {})) if (v?.file) fs.copyFileSync(path.join(dir, v.file), path.join(ship, v.file)); }
+    fs.writeFileSync(path.join(ship, 'SOURCE.json'), JSON.stringify({ schema: 'cf.shipped-card-archetype/v1', earthName: a.earthName, fitDir: a.dir, mirroredBy: 'tools/morph/build-card-masters.mjs', recordRecipeHash: record.recipeHash }, null, 1) + '\n');
+    console.log(JSON.stringify({ earthName: a.earthName, from: [master.width, master.height], to: [dw, dh], masterSha256: receipt.card.masterSha256.slice(0, 12), shipped: SHIPPED_ROOT + key + '/' }));
   }
 }
