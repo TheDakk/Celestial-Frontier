@@ -2,6 +2,8 @@
    producer. The broker is cheap and safe at boot; the sealed Worker graph is
    constructed only after a real owner exists AND the app explicitly activates
    background work after its first serviced turn. */
+import { PaintedCardSource, paintedPortraitRequest, paintedThumbLease } from './morph/painted-card-source.js';
+import { speciesVisualKey } from '@cf/art/species-identity';
 import {
   SpeciesArtBroker,
   type Portrait440,
@@ -161,6 +163,9 @@ export interface SpeciesArtWorkerLike {
 export type SpeciesArtWorkerFactory = () => SpeciesArtWorkerLike;
 
 export interface SpeciesArtLoaderOptions {
+  /** The painted individual on the card (morph system, Nick 2026-09-22 option 3): asked first for every thumb and
+   * portrait; answers only for genomes whose Earth species has a painted archetype, otherwise the painter tier. */
+  readonly paintedCards?: PaintedCardSource;
   readonly createProducer?: SpeciesArtProducerFactory;
   readonly workerFactory?: SpeciesArtWorkerFactory;
   readonly createThumbObjectUrl?: (dataUrl: string) => string;
@@ -480,6 +485,10 @@ function createWorkerProducer(
  * but no Worker is created until both an owner and explicit activation exist. */
 export class SpeciesArtLoader {
   private readonly broker: SpeciesArtBroker;
+  private readonly paintedCards: PaintedCardSource | null;
+  private paintedThumbs0 = 0; private paintedPortraits0 = 0;
+  /** Painted-card answers so far (thumbs, portraits) — the painter tier served the rest. */
+  paintedCardCounts(): Readonly<{ thumbs: number; portraits: number }> { return Object.freeze({ thumbs: this.paintedThumbs0, portraits: this.paintedPortraits0 }); }
   private readonly workerFactory: SpeciesArtWorkerFactory;
   private readonly releaseDeviceClassChange: () => void;
   private disposed = false;
@@ -526,6 +535,7 @@ export class SpeciesArtLoader {
     options: SpeciesArtLoaderOptions = {},
   ) {
     if (!documentToken) throw new TypeError('species art document token must be non-empty');
+    this.paintedCards = options.paintedCards ?? null;
     const createThumbObjectUrl = options.createThumbObjectUrl ?? defaultCreateThumbObjectUrl;
     const revokeThumbObjectUrl = options.revokeThumbObjectUrl ?? defaultRevokeThumbObjectUrl;
     if (typeof createThumbObjectUrl !== 'function' || typeof revokeThumbObjectUrl !== 'function') {
@@ -695,6 +705,8 @@ export class SpeciesArtLoader {
 
   leaseThumb(genome: Record<string, unknown>): ThumbLease {
     this.requested = true;
+    const painted = this.paintedCards?.card(genome, 'thumb');
+    if (painted) { this.paintedThumbs0++; return paintedThumbLease(speciesVisualKey(genome), painted, (a): Thumb132 => ({ key: a.key as SpeciesVisualKey, url: a.url, width: 132, height: 132, encodedBytes: a.encodedBytes, decodedPixels: a.decodedPixels })); }
     return this.broker.leaseThumb(genome);
   }
 
@@ -704,6 +716,8 @@ export class SpeciesArtLoader {
     listener: PortraitListener,
   ): PortraitRequest {
     this.requested = true;
+    const painted = this.paintedCards?.card(genome, 'portrait');
+    if (painted) { this.paintedPortraits0++; return paintedPortraitRequest(speciesVisualKey(genome), painted, (a): Portrait440 => ({ key: a.key as SpeciesVisualKey, url: a.url, width: 440, height: 440, encodedBytes: a.encodedBytes, decodedPixels: a.decodedPixels }), listener); }
     return this.broker.requestPortrait(owner, genome, listener);
   }
 

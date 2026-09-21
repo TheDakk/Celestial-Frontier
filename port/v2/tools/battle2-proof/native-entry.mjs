@@ -9,6 +9,7 @@ import { combatantScale, composeArena } from 'cf-proof/battle2/arena.ts';
 import { selectHabitatArena } from 'cf-proof/battle2/habitat-arena.ts';
 import { createPartsRig } from 'cf-proof/battle2/parts-rig.ts';
 import { BattleStage, GUARDIAN_FRAME_FILL, turnPlanInputFromTranscriptEvent } from 'cf-proof/battle2/stage.ts';
+import { individualFromGenomeV1 } from 'cf-proof/morph/morph-individual.ts';
 import { loadCreatureRigV1 } from 'cf-proof/creature-rig.ts';
 import { parseEffectSequenceAnchors } from 'cf-proof/effects/anchors.ts';
 import { PARTICLE_DISC_SIZE, particleDiscRgba } from 'cf-proof/effects/particle-texture.ts';
@@ -30,8 +31,11 @@ try {
   const loadSide = async (side) => {
     const record = await json(side + '-record.json'), binding = await json(side + '-binding.json'), keyed = await image(side + '-keyed.png'), master = await bytes(side + '-master.png'), atlas = await bytes(side + '-atlas.png');
     const alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = keyed.rgba[i * 4 + 3];
-    const paintRig = await loadCreatureRigV1(record, binding, master, alpha, atlas), card = compileBodyCard(record, record.genome);
-    return { record, card, rig: createPartsRig({ record, rig: paintRig, card, alphaBox: alphaBox(keyed.rgba, keyed.width, keyed.height) }), name: record.identity.earthName ?? record.kind };
+    const card = compileBodyCard(record, record.genome);
+    // morph system: script.morph[side] is a genome (color/accent/head/tail/seed) → this individual on the archetype
+    const morph = individualFromGenomeV1({ record, binding, card, genome: script.morph?.[side] ?? null });
+    const paintRig = await loadCreatureRigV1(record, binding, master, alpha, atlas, undefined, { ...(morph.jointScale ? { jointScale: morph.jointScale } : {}), ...(morph.atlasPixels ? { atlasPixels: morph.atlasPixels } : {}) });
+    return { record, card, morph: morph.params, rig: createPartsRig({ record, rig: paintRig, card, alphaBox: alphaBox(keyed.rgba, keyed.width, keyed.height), binding, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) }), name: record.identity.earthName ?? record.kind };
   };
   const [left, right] = await Promise.all([loadSide('left'), loadSide('right')]);
   const [recipe, anchorsRaw, far, mid, near] = await Promise.all([json('arena-recipe.json'), json('wild-anchors.json'), image('arena-far.png'), image('arena-mid.png'), image('arena-near.png')]);

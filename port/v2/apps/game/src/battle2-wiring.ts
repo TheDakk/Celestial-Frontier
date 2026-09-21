@@ -40,6 +40,7 @@ import { BattleStage, GUARDIAN_FRAME_FILL, combatantScale, composeArena, createF
 import { createPartsRig } from './battle2/parts-rig.js';
 import { compileAnatomyAttack } from './anatomy-attacks.js';
 import type { ArenaWorld } from './battle-habitat.js';
+import { individualFromGenomeV1 } from './morph/morph-individual.js';
 import { loadCreatureRigV1, type CreaturePartsBindingV1, type CreatureRigRecordV1 } from './creature-rig.js';
 import { abilityTheme } from '@cf/domain-combatcore';
 import { parseEffectSequenceAnchors, type EffectSequenceAnchors } from './effects/anchors.js';
@@ -302,8 +303,10 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
             const [master, atlas] = await Promise.all([assets.bytes(auditAssetPath(source)), assets.bytes(fit.dir + 'parts/atlas/' + manifest.creatureId + '.png')]);
             const pixels = keyed.pixels(), alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = pixels[i * 4 + 3] ?? 0;
             if (keyed.width !== record.geometry.width || keyed.height !== record.geometry.height) throw new Error('keyed cut-out size disagrees with the record geometry');
-            const paintRig = await loadCreatureRigV1(record as unknown as CreatureRigRecordV1, binding, master, alpha, atlas);
-            const rig = createPartsRig({ record: record as unknown as CreatureRigRecordV1, rig: paintRig, card, alphaBox: alphaBox(pixels, keyed.width, keyed.height), binding });
+            // the morph system: this genome's individual on the accepted archetype (identity genome → the archetype's own path)
+            const morph = individualFromGenomeV1({ record: record as unknown as { recipeHash: string }, binding, card, genome });
+            const paintRig = await loadCreatureRigV1(record as unknown as CreatureRigRecordV1, binding, master, alpha, atlas, undefined, { ...(morph.jointScale ? { jointScale: morph.jointScale } : {}), ...(morph.atlasPixels ? { atlasPixels: morph.atlasPixels } : {}) });
+            const rig = createPartsRig({ record: record as unknown as CreatureRigRecordV1, rig: paintRig, card, alphaBox: alphaBox(pixels, keyed.width, keyed.height), binding, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) });
             return { rig, card, mass: card.massClass.multiplier, seed };
           } catch (error) { skipped.push(`${name}: parts rig unavailable (${error instanceof Error ? error.message : String(error)}); fixture fallback`); }
         } else if (fit) skipped.push(`${name}: parts rig needs raw asset bytes; fixture fallback`);

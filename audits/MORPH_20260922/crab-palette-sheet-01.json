@@ -1,0 +1,279 @@
+{
+ "archetype": "0d2a7af8811a91ab1524cd22f42b5046eec86aba797493a19f7a7f766f51cf60",
+ "master": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/crab-master.png",
+ "crop": {
+  "x": 313,
+  "y": 323,
+  "size": 254
+ },
+ "tiles": [
+  {
+   "tile": 0,
+   "label": "archetype as painted"
+  },
+  {
+   "tile": 1,
+   "genome": {
+    "seed": 8919,
+    "color": 5,
+    "accent": 14
+   },
+   "base": {
+    "hue": 242.264,
+    "chroma": 0.95
+   },
+   "accent": {
+    "hue": 151.176,
+    "chroma": 0.85
+   },
+   "conservation": {
+    "alphaChanged": 0,
+    "outsideChanged": 0,
+    "luminanceMaxDelta": 0.5,
+    "changed": 13180
+   }
+  },
+  {
+   "tile": 2,
+   "genome": {
+    "seed": 16838,
+    "color": 10,
+    "accent": 8
+   },
+   "base": {
+    "hue": null,
+    "chroma": 0.25
+   },
+   "accent": {
+    "hue": 202.70399999999995,
+    "chroma": 0.45
+   },
+   "conservation": {
+    "alphaChanged": 0,
+    "outsideChanged": 0,
+    "luminanceMaxDelta": 0.5,
+    "changed": 13180
+   }
+  },
+  {
+   "tile": 3,
+   "genome": {
+    "seed": 24757,
+    "color": 15,
+    "accent": 2
+   },
+   "base": {
+    "hue": 298.52,
+    "chroma": 0.7
+   },
+   "accent": {
+    "hue": 283.41200000000003,
+    "chroma": 1
+   },
+   "conservation": {
+    "alphaChanged": 0,
+    "outsideChanged": 0,
+    "luminanceMaxDelta": 0.5,
+    "changed": 13180
+   }
+  },
+  {
+   "tile": 4,
+   "genome": {
+    "seed": 32676,
+    "color": 3,
+    "accent": 13
+   },
+   "base": {
+    "hue": 38.591999999999985,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 25.148000000000025,
+    "chroma": 0.8
+   },
+   "conservation": {
+    "alphaChanged": 0,
+    "outsideChanged": 0,
+    "luminanceMaxDelta": 0.5,
+    "changed": 13180
+   }
+  },
+  {
+   "tile": 5,
+   "genome": {
+    "seed": 40595,
+    "color": 8,
+    "accent": 7
+   },
+   "base": {
+    "hue": 218.784,
+    "chroma": 0.45
+   },
+   "accent": {
+    "hue": 14.567999999999984,
+    "chroma": 0.95
+   },
+   "conservation": {
+    "alphaChanged": 0,
+    "outsideChanged": 0,
+    "luminanceMaxDelta": 0.5,
+    "changed": 13180
+   }
+  },
+  {
+   "tile": 6,
+   "genome": {
+    "seed": 48514,
+    "color": 13,
+    "accent": 1
+   },
+   "base": {
+    "hue": 26.672000000000025,
+    "chroma": 0.8
+   },
+   "accent": {
+    "hue": 338.72,
+    "chroma": 1.1
+   },
+   "conservation": {
+    "alphaChanged": 0,
+    "outsideChanged": 0,
+    "luminanceMaxDelta": 0.5,
+    "changed": 13180
+   }
+  },
+  {
+   "tile": 7,
+   "genome": {
+    "seed": 56433,
+    "color": 1,
+    "accent": 12
+   },
+   "base": {
+    "hue": 349.124,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 176.36,
+    "chroma": 0.9
+   },
+   "conservation": {
+    "alphaChanged": 0,
+    "outsideChanged": 0,
+    "luminanceMaxDelta": 0.5,
+    "changed": 13180
+   }
+  },
+  {
+   "tile": 8,
+   "genome": {
+    "seed": 64352,
+    "color": 6,
+    "accent": 6
+   },
+   "base": {
+    "hue": 27.187999999999988,
+    "chroma": 1.05
+   },
+   "accent": {
+    "hue": 41.096000000000004,
+    "chroma": 1.05
+   },
+   "conservation": {
+    "alphaChanged": 0,
+    "outsideChanged": 0,
+    "luminanceMaxDelta": 0.5,
+    "changed": 13173
+   }
+  },
+  {
+   "tile": 9,
+   "genome": {
+    "seed": 72271,
+    "color": 11,
+    "accent": 0
+   },
+   "base": {
+    "hue": 308.1120000000001,
+    "chroma": 1.1
+   },
+   "accent": {
+    "hue": 150.27999999999997,
+    "chroma": 1.05
+   },
+   "conservation": {
+    "alphaChanged": 0,
+    "outsideChanged": 0,
+    "luminanceMaxDelta": 0.5,
+    "changed": 13180
+   }
+  },
+  {
+   "tile": 10,
+   "genome": {
+    "seed": 80190,
+    "color": 16,
+    "accent": 11
+   },
+   "base": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "accent": {
+    "hue": 303.91200000000003,
+    "chroma": 1.1
+   },
+   "conservation": {
+    "alphaChanged": 0,
+    "outsideChanged": 0,
+    "luminanceMaxDelta": 0.5,
+    "changed": 13180
+   }
+  },
+  {
+   "tile": 11,
+   "genome": {
+    "seed": 88109,
+    "color": 4,
+    "accent": 5
+   },
+   "base": {
+    "hue": 175.25199999999995,
+    "chroma": 1
+   },
+   "accent": {
+    "hue": 251.91200000000003,
+    "chroma": 0.95
+   },
+   "conservation": {
+    "alphaChanged": 0,
+    "outsideChanged": 0,
+    "luminanceMaxDelta": 0.5,
+    "changed": 13180
+   }
+  },
+  {
+   "tile": 12,
+   "genome": {
+    "seed": 96028,
+    "color": 9,
+    "accent": 16
+   },
+   "base": {
+    "hue": null,
+    "chroma": 0.3
+   },
+   "accent": {
+    "hue": null,
+    "chroma": 0.35
+   },
+   "conservation": {
+    "alphaChanged": 0,
+    "outsideChanged": 0,
+    "luminanceMaxDelta": 0.5,
+    "changed": 13180
+   }
+  }
+ ]
+}

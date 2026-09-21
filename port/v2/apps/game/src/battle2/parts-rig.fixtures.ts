@@ -30,14 +30,14 @@ export async function loadFit(name: FitName, contact?: 'family' | 'quadruped-com
   return loadFitDir(FITS[name], contact);
 }
 /** A fit by directory (repo-relative, e.g. the Brown Bear guardian fit `audits/VISION_D2_GUARDIAN_20260921/fit-01/`). */
-export async function loadFitDir(dirIn: string, contact?: 'family' | 'quadruped-compat' | 'auto', contactSupports?: 'rest' | 'observed'): Promise<{ rig: PartsRig; record: FitRecord; binding: CreaturePartsBindingV1; card: BodyCard }> {
+export async function loadFitDir(dirIn: string, contact?: 'family' | 'quadruped-compat' | 'auto', contactSupports?: 'rest' | 'observed', jointScale?: Readonly<Record<string, number>>): Promise<{ rig: PartsRig; record: FitRecord; binding: CreaturePartsBindingV1; card: BodyCard }> {
   const dir = dirIn.endsWith('/') ? dirIn : dirIn + '/';
   const record = repoJson<FitRecord>(dir + 'record.json'), binding = repoJson<CreaturePartsBindingV1>(dir + 'binding.json'), manifest = repoJson<{ creatureId: string }>(dir + 'parts/manifest.json');
   const keyed = PNG.sync.read(readFileSync(new URL(dir + 'parts/keyed.png', REPO_ROOT)));
   const alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = keyed.data[i * 4 + 3] ?? 0;
   const master = new Uint8Array(readFileSync(new URL(record.source, REPO_ROOT))), atlas = new Uint8Array(readFileSync(new URL(dir + 'parts/atlas/' + manifest.creatureId + '.png', REPO_ROOT)));
   const decoder = (): Promise<Texture> => Promise.resolve(new Texture({ source: new TextureSource({ width: binding.atlasSize.width, height: binding.atlasSize.height }) }));
-  const paintRig = await loadCreatureRigV1(record, binding, master, alpha, atlas, decoder);
+  const paintRig = await loadCreatureRigV1(record, binding, master, alpha, atlas, decoder, jointScale ? { jointScale } : {});
   const card = compileBodyCard(record, record.genome);
-  return { rig: createPartsRig({ record, rig: paintRig, card, alphaBox: alphaBoxOf(keyed.data, keyed.width, keyed.height), binding, ...(contact ? { contact } : {}), ...(contactSupports ? { contactSupports } : {}) }), record, binding, card };
+  return { rig: createPartsRig({ record, rig: paintRig, card, alphaBox: alphaBoxOf(keyed.data, keyed.width, keyed.height), binding, ...(contact ? { contact } : {}), ...(contactSupports ? { contactSupports } : {}), ...(jointScale ? { jointScale } : {}) }), record, binding, card };
 }

@@ -39,6 +39,13 @@ export function rotationAround(pivot: Point2, radians: number, offset: Point2 = 
   const matrix: Affine2 = [c, s, -s, c, p.x - c * p.x + s * p.y + move.x, p.y - s * p.x - c * p.y + move.y];
   return Object.freeze(matrix);
 }
+/** Uniform scale about a pivot (the morph system's M1: a sub-tree grows or shrinks about its root joint). */
+export function scaleAround(pivot: Point2, scale: number): Affine2 {
+  const p = point(pivot); finite(scale, 'scale'); if (!(scale > 0)) throw new RangeError('scale must be positive');
+  if (scale === 1) return IDENTITY_AFFINE;
+  const matrix: Affine2 = [scale, 0, 0, scale, p.x - scale * p.x, p.y - scale * p.y];
+  return Object.freeze(matrix);
+}
 const length = (a: Point2, b: Point2): number => Math.hypot(b.x - a.x, b.y - a.y);
 const same = (a: Point2, b: Point2): boolean => a.x === b.x && a.y === b.y;
 function segment(a: Point2, b: Point2): number {

@@ -2,7 +2,7 @@ import {requireVisiblePaintOwner} from '../../../tools/creature-animation/hidden
 import {observedContactSupports} from './creature-rig-contact.js';
 import{createCreatureRigFrameTarget}from'./creature-rig-frame.js';
 import {compileRigidParentFrames,applyRigidParentFrames} from '../../../tools/creature-animation/rigid-parent-frame.mjs';
-import {Container, Matrix, Rectangle, Sprite, Texture, Mesh, MeshGeometry} from 'pixi.js';
+import {BufferImageSource,Container, Matrix, Rectangle, Sprite, Texture, Mesh, MeshGeometry} from 'pixi.js';
 import {applyPaintPart,paintPartAreas,assertPaintPartShape,validatePaintSkin,type PaintSkin} from '../../../tools/creature-animation/paint-skin.mjs';
 import {validateSeamBridges,createSeamGeometry,writeSeamPose} from '../../../tools/creature-animation/seam-bridge.mjs';
 import {createArapScratch,solveArapSkin} from '../../../tools/creature-animation/arap-skin.mjs';
@@ -11,6 +11,7 @@ import {createOpaqueSeamSamplingGuard} from '../../../tools/creature-animation/s
 import {hashBytes, hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
 import {admitFamilyRecord} from '../../../tools/creature-animation/family-record.mjs';
 import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
+import {decodePng} from './morph/png-decode.js';
 
 export type CreaturePoseV1 = Readonly<Record<string, {rotation:number; dx?:number; dy?:number}>>;
 export interface CreatureRigV1 {
@@ -91,11 +92,26 @@ async function decodeGuardedAtlasPng(bytes:Uint8Array,record:CreatureRigRecordV1
   }finally{bitmap.close();}
 }
 
+/** Morph M2 (additive): decode the atlas EXACTLY in JS (straight alpha — never a canvas round trip), let the
+ * individual's remap rewrite hue/chroma, write the opaque seam-guard texels into the same buffer, upload as a buffer
+ * texture. Record, binding and atlas bytes stay the accepted archetype's; only this individual's texture differs. */
+async function decodeMorphedAtlas(bytes:Uint8Array,record:CreatureRigRecordV1,binding:CreaturePartsBindingV1,atlasPixels:(rgba:Uint8Array,width:number,height:number)=>Uint8Array){
+  const decoded=await decodePng(bytes);
+  requireValue(decoded.width===binding.atlasSize.width&&decoded.height===binding.atlasSize.height,'decoded atlas dimensions');
+  const rgba=atlasPixels(decoded.rgba,decoded.width,decoded.height);
+  requireValue(rgba instanceof Uint8Array&&rgba.length===decoded.rgba.length,'morph atlas pixels size');
+  for(let i=3;i<rgba.length;i+=4)requireValue(rgba[i]===decoded.rgba[i],'morph atlas pixels must keep alpha');
+  const plan=createOpaqueSeamSamplingGuard({record,binding,atlas:{rgba,width:decoded.width,height:decoded.height}});
+  for(const px of plan.pixels){const j=(px.y*decoded.width+px.x)*4;rgba[j]=px.rgba[0]!;rgba[j+1]=px.rgba[1]!;rgba[j+2]=px.rgba[2]!;rgba[j+3]=px.rgba[3]!;}
+  const source=new BufferImageSource({resource:rgba,width:decoded.width,height:decoded.height,alphaMode:'premultiply-alpha-on-upload'});
+  return {texture:new Texture({source}),samplingGuard:plan.receipt};
+}
+
 /** Hash admission precedes image decode and Pixi allocation. The decoder owns a
  * new atlas texture; dispose releases it, never the accepted source master. */
 export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingInput:CreaturePartsBindingV1,
   cutoutBytes:Uint8Array,cutoutAlpha:Uint8Array,atlasBytes:Uint8Array,
-  decodeAtlas:(bytes:Uint8Array)=>Promise<Texture>=decodeAtlasPng):Promise<CreatureRigV1>{
+  decodeAtlas:(bytes:Uint8Array)=>Promise<Texture>=decodeAtlasPng,options:{readonly jointScale?:Readonly<Record<string,number>>;readonly atlasPixels?:(rgba:Uint8Array,width:number,height:number)=>Uint8Array}={}):Promise<CreatureRigV1>{
   const record=structuredClone(recordInput),binding=structuredClone(bindingInput);
   const template=await admitFamilyRecord(record,cutoutBytes,cutoutAlpha);
   const joints=[...template.joints];
@@ -104,7 +120,8 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
   requireValue(shaPattern.test(bindingHash)&&await hashJSON(body)===bindingHash,'corrupted part binding');
   requireValue(binding.recordRecipeHash===record.recipeHash,'parts belong to another record');
   requireValue(shaPattern.test(binding.atlasSha256)&&await hashBytes(atlasBytes)===binding.atlasSha256,'mismatched atlas hash');
-  const skeleton=createSkeletonPoseProgram(template,record.landmarks);
+  // morph M1 (additive, default none): uniform sub-tree scales composed into the skeleton; record/binding bytes unchanged
+  const skeleton=createSkeletonPoseProgram(template,record.landmarks,options.jointScale?{jointScale:options.jointScale}:{});
   const {width:w,height:h}=record.geometry,{width:aw,height:ah}=binding.atlasSize;
   requireValue([aw,ah].every(n=>Number.isInteger(n)&&n>0&&n<=2048),'atlas budget');
   requireValue(binding.parts.length>0&&binding.parts.length<=40,'part budget');
@@ -129,7 +146,7 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
   const target=shape&&field?field.slice():null;
   const compiledField=skin?createCompiledSkinField(skin,w,h):null;
   const rigidParents=skin?compileRigidParentFrames(skin,binding.parts,template,w,h):[];
-  const decoded=decodeAtlas===decodeAtlasPng&&skin?await decodeGuardedAtlasPng(atlasBytes.slice(),record,binding):{texture:await decodeAtlas(atlasBytes.slice()),samplingGuard:undefined};
+  const decoded=options.atlasPixels&&skin?await decodeMorphedAtlas(atlasBytes.slice(),record,binding,options.atlasPixels):decodeAtlas===decodeAtlasPng&&skin?await decodeGuardedAtlasPng(atlasBytes.slice(),record,binding):{texture:await decodeAtlas(atlasBytes.slice()),samplingGuard:undefined};
   const atlas=decoded.texture;
   if(atlas.width!==aw||atlas.height!==ah){atlas.destroy(true);throw Error('Creature rig: decoded atlas dimensions');}
   const root=new Container(),far=new Container(),near=new Container();root.addChild(far,near);

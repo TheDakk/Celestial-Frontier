@@ -1,12 +1,14 @@
 /** Family-neutral inherited pose evaluation. Template owners supply the graph
  * and body axis; painter/authored records supply actual normalized landmarks.
  * This does not infer anatomy, admit assets, choose clips or qualify a family. */
-import {composeAffine, rotationAround, IDENTITY_AFFINE} from './kinematics.ts';
+import {composeAffine, rotationAround, scaleAround, IDENTITY_AFFINE} from './kinematics.ts';
 export const MAX_SKELETON_JOINTS = 64;
 const need = (ok, reason) => { if (!ok) throw Error('Skeleton pose: ' + reason); };
 const nameIsSafe = name => typeof name === 'string' && /^[A-Za-z][A-Za-z0-9]*$/.test(name)
   && !['constructor', 'prototype', '__proto__'].includes(name);
-export function createSkeletonPoseProgram(definition, landmarks) {
+/** `options.jointScale` (morph M1, additive, default none): a uniform scale about the joint's own pivot composed into
+ * that joint's local frame — its whole sub-tree inherits it. Rest pose is then no longer identity for those joints. */
+export function createSkeletonPoseProgram(definition, landmarks, options = {}) {
   need(definition && Array.isArray(definition.graph) && definition.graph.length > 0
     && definition.graph.length < MAX_SKELETON_JOINTS, 'joint budget');
   const names = ['root'], seen = new Set(names), parents = [undefined];
@@ -33,6 +35,11 @@ export function createSkeletonPoseProgram(definition, landmarks) {
   need(bodyLength >= .000001, 'degenerate body axis');
   const pivots = names.map((_, i) => points[parents[i] ?? 'root']);
   const index = new Map(names.map((n, i) => [n, i]));
+  const scales = names.map(() => IDENTITY_AFFINE);
+  if (options.jointScale !== undefined) {
+    need(options.jointScale && typeof options.jointScale === 'object' && !Array.isArray(options.jointScale), 'jointScale map');
+    for (const [name, s] of Object.entries(options.jointScale)) { need(index.has(name), 'unknown scaled joint: ' + name); need(Number.isFinite(s) && s > 0, 'positive joint scale: ' + name); scales[index.get(name)] = scaleAround(pivots[index.get(name)], s); }
+  }
   return Object.freeze({
     jointNames: Object.freeze(names), bodyLength,
     pivot(name) { need(index.has(name), 'unknown pivot joint: ' + name); return pivots[index.get(name)]; },
@@ -47,8 +54,9 @@ export function createSkeletonPoseProgram(definition, landmarks) {
       const matrices = Object.create(null);
       for (let i = 0; i < names.length; i++) {
         const name = names[i], parent = parents[i], key = Object.hasOwn(pose, name) ? pose[name] : undefined;
-        const local = key ? rotationAround(pivots[i], key.rotation,
+        const rotated = key ? rotationAround(pivots[i], key.rotation,
           {x: (key.dx ?? 0) * bodyLength, y: (key.dy ?? 0) * bodyLength}) : IDENTITY_AFFINE;
+        const local = scales[i] === IDENTITY_AFFINE ? rotated : composeAffine(rotated, scales[i]);
         matrices[name] = parent ? composeAffine(matrices[parent], local) : local;
       }
       return matrices;
