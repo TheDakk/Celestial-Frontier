@@ -30,3 +30,7 @@ Native run: Crab2700frames, drift0.000015325px/p950.4ms; Coconut2040frames, drif
 Battle2 modules are absent on this lane. Shared helper/native cadence implementation is present, but full E1 stage wiring was never copied or edited. Claude’s current parts-rig divides stageDisplacement by card.scaleLength; future body-length RigPoseContext must remove that obsolete conversion. Do not integrate the current cadence as universally admitted: Freshwater S2 remains red.
 
 Paired next steps: Codex holds. Claude reviews the retained refusal before another cadence producer or E1 re-film; pin rechecks, bear fit/G3-with-record and G6 frameFill remain pending. Nick: nothing newly requested to decide in this packet. Prior bear originals and presence remain unchanged (generation01 ADMIT on Claude, tail absent; both raw masters1254², size red retained). Roster/P2/other intake remain held. Previous arc context preserved verbatim in ROADMAP_ARCHIVE.md.
+
+## Active authorized continuation — 2026-09-22
+
+Nick says “Claude and I agree, with go”; Claude slice35/next Codex block authorizes measured per-record stance reach and body-relative declared-folded planting, then nine native subjects and generation01 bear fit. New packet audits/STAGE_CADENCE_REACH_20260922. Seven focused controls pass; typecheck correction retains recipeHash in the measurement signature. Previous S2 evidence remains immutable. Sign producer then one S2/static and one native run; S2 remains the halt.

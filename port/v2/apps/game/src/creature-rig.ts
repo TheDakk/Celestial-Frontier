@@ -32,6 +32,7 @@ export function readCreatureRigContactSupport(rig:CreatureRigV1,joint:string){re
 /** Read the admitted backend and live pass counters for this actual loaded rig. */
 export function readCreatureRigRuntimeDiagnostics(rig:CreatureRigV1){return rigRuntimeDiagnostics.get(rig)??null;}
 export interface CreatureRigRecordV1 {
+  readonly anatomy?:import('../../../tools/creature-animation/anatomy-inventory.mjs').AnatomyPresence;
   readonly recipeHash:string;
   readonly template:{id:string;version:number};
   readonly geometry:{width:number;height:number;groundLineY:number;cutoutAssetHash:string};
