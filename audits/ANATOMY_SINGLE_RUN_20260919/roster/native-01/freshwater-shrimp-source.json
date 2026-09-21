@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 2752122973,
+    "kingdom": "fauna",
+    "color": 9,
+    "form": 16,
+    "body": 5,
+    "loco": 11,
+    "trait": 12,
+    "size": 0,
+    "diet": 2,
+    "head": 7,
+    "limbs": 1,
+    "skin": 0,
+    "tail": 4,
+    "pattern": 1,
+    "eyes": 4,
+    "behavior": 2,
+    "habitat": 16,
+    "detail": 4,
+    "accent": 5,
+    "temper": 0,
+    "sense": 8,
+    "repro": 1,
+    "life": 5,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Freshwater Shrimp"
+  },
+  "observation": null
+}

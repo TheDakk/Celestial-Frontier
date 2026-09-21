@@ -1,5 +1,7 @@
 # Local AI generation — painted landfalls
 
+> Matches D1 delivery code, 2026-09-19: `creature-delivery.ts` reads retained PNG originals by full identity and expected hash, otherwise returns the verified painter. It has no inference, worker, GPU or rig dependency. Selection of a finish is explicit; proof usage does not adopt artwork into production. Evidence: `audits/ANATOMY_SINGLE_RUN_20260919/R8/README.md`.
+
 [Seeded painted biome encounter](audits/PAINTED_BIOME_ENCOUNTER_20260916/README.md),
 matches code September 16: three painted quadrupeds now share an 18-second, three-turn
 clearing study. The encounter seed selects scenery placement and turn order over the accepted
@@ -162,3 +164,7 @@ Use the committed proof runner arguments and preparation manifest belonging to t
 recipe; do not restart `PAUSED_CHECKPOINT.md`, `--landfall --variant`, historical prompt
 sweeps or predecessor packages. Native browser jobs require a clean signed source and the
 checkout lock outside unit tests. Retain the first failed run; never relabel it after a repair.
+
+## Creature textures — matches code as of 2026-09-19
+
+The existing kit interpreter admits `creature-finish-v1` on desktop only. `compileCreatureFinishV1` produces one shared texture prompt, recipe-derived seed and fixed 0.35/one-step settings. Its protection polarity permits interior texture while preserving alpha and four-pixel part-boundary bands. `creature-originals.ts` owns a separate immutable IndexedDB database keyed by recipe, cutout, settings and model hashes; find precedes inference, duplicate retain fails. Phones read retained PNGs or receive the painter fallback without inference. This entry is an anatomy-run candidate; no new model, visual acceptance or runtime delivery qualification is implied.

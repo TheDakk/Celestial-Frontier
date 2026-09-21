@@ -11,7 +11,7 @@ it.each(['quadruped','biped-bird','insect','arachnid','myriapod'])('holds actual
  const r=structuredClone(records[id]),t=familyContractForRecord(r);
  // Explicit synthetic bend fixtures, never claimed as painted source evidence.
  for(const c of familyContactChains(t)){const a=r.landmarks[c.hip],b=r.landmarks[c.end];r.landmarks[c.knee]=[(a[0]+b[0])/2+.025,(a[1]+b[1])/2-.02];}
- const s=createFamilyContactSolver(r),p={root:{rotation:0,dx:.001,dy:.001}},ctx={actionId:'dodge',elapsedMs:200,durationMs:1000};
+ const s=createFamilyContactSolver(r),p={root:{rotation:0,dx:.001,dy:.001}},ctx={actionId:'hit',elapsedMs:200,durationMs:1000};
  const solved=s.resolve(p,ctx);
  expect(solved.contacts.length).toBe(t.legs.length);expect(solved.maxError).toBeLessThan(1e-8);
  for(const c of solved.contacts){const point=at(r,solved.pose,c.joint);expect(point.x).toBeCloseTo(c.target.x,9);expect(point.y).toBeCloseTo(c.target.y,9);}

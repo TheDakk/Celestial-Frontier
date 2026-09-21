@@ -1,0 +1,10 @@
+✔ full review retains every row and complete faint duration before settling (0.68075ms)
+✔ encoded full-row duration rejects a truncated ten-second film and excessive recorder padding (0.083917ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 100.370083

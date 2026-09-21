@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 67682014,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 12,
+    "body": 13,
+    "loco": 10,
+    "trait": 8,
+    "size": 2,
+    "diet": 1,
+    "head": 5,
+    "limbs": 3,
+    "skin": 8,
+    "tail": 6,
+    "pattern": 7,
+    "eyes": 3,
+    "behavior": 6,
+    "habitat": 2,
+    "detail": 4,
+    "accent": 4,
+    "temper": 5,
+    "sense": 0,
+    "repro": 5,
+    "life": 5,
+    "metab": 3,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Conch"
+  },
+  "observation": null
+}

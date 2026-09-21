@@ -1,0 +1,14 @@
+{
+  "interiorStep": 56,
+  "boundaryStep": 24,
+  "fieldVertices": 3838,
+  "approachP95Ms": 2.100000023841858,
+  "fullFilmP95Ms": 3.199999988079071,
+  "maxGapPx": 8.131099709081602e-05,
+  "maxPlantedDriftPx": 0.0010711193480326677,
+  "restChanged": 0,
+  "finalRestChanged": 0,
+  "sourceReport": "audits/VISION_P1_COCONUT_20260920/hidden-01/native-02/report.json",
+  "sourceReportSha256": "3aebd534798ca81a773cfc6d20025917a453b0b616ace9599376f3852c902acd",
+  "retainedBaseline": true
+}

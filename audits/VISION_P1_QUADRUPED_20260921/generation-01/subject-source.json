@@ -1,0 +1,18 @@
+{
+  "species": {
+    "name": "Wolf",
+    "aspect": 1.8,
+    "headFrac": 0.22,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "broad blocky head with erect triangular ears",
+      "long legs and a narrow deep chest",
+      "straight bushy tail carried level or low"
+    ],
+    "note": "the tail hangs straight and never curls over the back the way a husky's does"
+  },
+  "source": "port/v2/reference/fauna.json",
+  "guideSource": "port/v2/apps/game/smoke/hybrid-platinum-repair-provisional-2026-08-11-r1/portraits/wolf/01-pure.png",
+  "handLandmarks": false
+}

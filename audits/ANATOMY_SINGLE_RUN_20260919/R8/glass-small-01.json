@@ -1,0 +1,34 @@
+{
+  "schema": "cf-v2-glassmatrix/v2",
+  "status": "running",
+  "terminal": false,
+  "certifying": false,
+  "scope": "targeted-diagnostic",
+  "exit": null,
+  "startedAt": "2026-09-20T02:25:37.891Z",
+  "endedAt": null,
+  "durationMs": null,
+  "run": {
+    "id": "local-7572a5cb-d1-small-phone",
+    "artifactPath": "apps/game/smoke/glassmatrix-local-7572a5cb-d1-small-phone.json",
+    "provenance": "The unique run artifact is reserved before build/browser work; the current report is only a mutable pointer."
+  },
+  "source": {
+    "commit": "7572a5cb6e7eae85004ab324c53ba148d5f24787",
+    "branch": "openai/mac",
+    "state": "dirty-diagnostic",
+    "statusSha256": "24700802c472c18e8683e0e4d1b38e53ab0d9f4b7721c47d970c854431911c4f",
+    "workingTreeSha256": "53cec4a67faff82f8d4c903ec84ca662407ab9f3eefcd04a208ca59f1efc10a5"
+  },
+  "sourceEnd": null,
+  "sourceChange": {
+    "detected": null,
+    "ending": null
+  },
+  "predecessors": null,
+  "controlSummary": {
+    "automaticRetries": 0
+  },
+  "findings": [],
+  "instrumentFailures": []
+}

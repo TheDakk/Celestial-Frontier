@@ -304,7 +304,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
             const pixels = keyed.pixels(), alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = pixels[i * 4 + 3] ?? 0;
             if (keyed.width !== record.geometry.width || keyed.height !== record.geometry.height) throw new Error('keyed cut-out size disagrees with the record geometry');
             const paintRig = await loadCreatureRigV1(record as unknown as CreatureRigRecordV1, binding, master, alpha, atlas);
-            const rig = createPartsRig({ record: record as unknown as CreatureRigRecordV1, rig: paintRig, card, alphaBox: alphaBox(pixels, keyed.width, keyed.height) });
+            const rig = createPartsRig({ record: record as unknown as CreatureRigRecordV1, rig: paintRig, card, alphaBox: alphaBox(pixels, keyed.width, keyed.height), binding });
             return { rig, card, mass: card.massClass.multiplier, seed };
           } catch (error) { skipped.push(`${name}: parts rig unavailable (${error instanceof Error ? error.message : String(error)}); fixture fallback`); }
         } else if (fit) skipped.push(`${name}: parts rig needs raw asset bytes; fixture fallback`);

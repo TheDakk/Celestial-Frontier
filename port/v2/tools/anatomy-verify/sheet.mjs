@@ -5,7 +5,7 @@
  * comparison only — the record's landmarks as blue rings. Usage: node sheet.mjs <outDir> [subject…]. Not a gate. */
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../..')+'/';
-const {readPng,writePng}=await import(root+'port/v2/tools/painted-creature/finish-conservation.mjs');
+const {readPng,writePng}=await import('./png.mjs');
 const {SUBJECTS,truthOf,scoreSubject,declarationOf}=await import('./score.mjs');const {assignLegs}=await import('./assign.mjs');const {labelParts}=await import('./labels.mjs');
 const GLYPH={0:[' ### ','#   #','#   #','#   #',' ### '],1:['  #  ',' ##  ','  #  ','  #  ',' ### '],2:[' ### ','#   #','   # ','  #  ','#####'],3:['#### ','    #',' ### ','    #','#### '],F:['#####','#    ','#### ','#    ','#    '],N:['#   #','##  #','# # #','#  ##','#   #'],T:['#####','  #  ','  #  ','  #  ','  #  '],H:['#   #','#   #','#####','#   #','#   #']};
 export function renderSheet(id,template,master,rec,outFile,presence){

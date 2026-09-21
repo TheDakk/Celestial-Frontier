@@ -1,0 +1,122 @@
+[
+  {
+    "stage": "R3-S BEFORE",
+    "commit": "6c511261ba6800368b48250df83cec15a78df837",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/before/ledger.json"
+  },
+  {
+    "stage": "R3-S planted limits",
+    "commit": "4b9698945b66846157bf7f62201eea818e821a0a",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/README.md"
+  },
+  {
+    "stage": "R3-S acceptance",
+    "commit": "a03b18f5c67341acc66a087b1f9ca8db1802ff2b",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/static-01/static.json"
+  },
+  {
+    "stage": "R2d",
+    "commit": "7c62a15e7865509c27946049816ca68521f6dc88",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R2d/README.md"
+  },
+  {
+    "stage": "R3 interfaces",
+    "commit": "2865b017bdf8471ede3c01ac17a0ded6872ae2f9",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R3/README.md"
+  },
+  {
+    "stage": "R4",
+    "commit": "7da95a7af679924cd0b1a62021c8908c4fdd7a0d",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R4/README.md"
+  },
+  {
+    "stage": "native full rows",
+    "commit": "6c6ead8c56c735bbf0662846e9fe76b1c567d7a4",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/README.md"
+  },
+  {
+    "stage": "R9 producer",
+    "commit": "0cae378eab5eab1f6367cf677e0aca78faa31f33",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R9/README.md"
+  },
+  {
+    "stage": "R9 identity films",
+    "commit": "36489e9a81ac741cbbce3f7afc89f313032827fb",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R9/sheet-receipt.json"
+  },
+  {
+    "stage": "R5-R7",
+    "commit": "c1a985b7fdf9bbdb2b326879d9ac9ab57f5f3166",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/README.md"
+  },
+  {
+    "stage": "R5-R7 root control",
+    "commit": "e750bf00921f6e344b7b32e77e52ac9776208888",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/root-proof-02/report.json"
+  },
+  {
+    "stage": "R8 D1",
+    "commit": "7572a5cb6e7eae85004ab324c53ba148d5f24787",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R8/README.md"
+  },
+  {
+    "stage": "roster dispositions",
+    "commit": "be0e551f8e4d4e1443d203c72da3f43f7f50830e",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/README.md"
+  },
+  {
+    "stage": "PR42 projections",
+    "commit": "a6afec2e065430755d2f1516c2f064f3bd4e09ab",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/PR42/README.md"
+  },
+  {
+    "stage": "original final packet",
+    "commit": "a94535aa03dd07f1e0afb3cad3894b500f0af54b",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/README.md"
+  },
+  {
+    "stage": "later shared controls",
+    "commit": "63b13bff3e7255dcac5b399123a87e77c7d535d1",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": null
+  },
+  {
+    "stage": "continuity guard",
+    "commit": "ea9988742694763377ba864c994dbcb720c2b881",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": null
+  },
+  {
+    "stage": "continuity native",
+    "commit": "d17f512d66f30fe46d5b4b1c6f1e0b88286c22cd",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": null
+  },
+  {
+    "stage": "desktop tier",
+    "commit": "c93ee2e8689585e5ea4da1cb43607f42ad9bd95e",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": null
+  },
+  {
+    "stage": "folded declaration",
+    "commit": "73398486ac886aeddeaa1580389a8d92ad5efa9c",
+    "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk",
+    "evidence": null
+  }
+]

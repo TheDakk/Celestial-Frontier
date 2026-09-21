@@ -1,0 +1,31 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+stdout | apps/game/src/creature-rig-contact-limits.test.ts > retains sensitivity to tripled bite anticipation dy under contact limits
+{"control":"bite anticipation dy x3","originalKey":{"ms":119,"t":0.27631578947368424,"value":0.03,"ease":"ease-in"},"count":0}
+
+ ❯ apps/game/src/creature-rig-contact-limits.test.ts (3 tests | 1 failed) 87ms
+   × retains sensitivity to tripled bite anticipation dy under contact limits 54ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-contact-limits.test.ts > retains sensitivity to tripled bite anticipation dy under contact limits
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ apps/game/src/creature-rig-contact-limits.test.ts:4:507
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  21:05:58
+   Duration  379ms (transform 127ms, setup 0ms, import 174ms, tests 87ms, environment 0ms)
+

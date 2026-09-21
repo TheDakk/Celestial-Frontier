@@ -1,0 +1,1269 @@
+{
+  "sourceHead": "d17f512d66f30fe46d5b4b1c6f1e0b88286c22cd",
+  "boundaryStep": 24,
+  "interiorStep": 56,
+  "subjects": [
+    {
+      "id": "coconut-crab",
+      "dir": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04"
+    },
+    {
+      "id": "crab",
+      "dir": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01"
+    },
+    {
+      "id": "freshwater-crab",
+      "dir": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03"
+    },
+    {
+      "id": "mud-crab",
+      "dir": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01"
+    },
+    {
+      "id": "vent-crab",
+      "dir": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01"
+    }
+  ],
+  "files": [
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/generation-01/coconut-crab-master.png",
+      "sha256": "7954331dc3ce80bf3b4e2e3759bd0b5c576d659ff5fcb4d01b8efc536bba8890"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/binding.json",
+      "sha256": "021c0850f5c1735411313a5b3c9167b87bf65a25f7d712a123e0e2534bd8553d"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/declaration.json",
+      "sha256": "3dd64efa1be1132019c2f4f09ad0b3c55a93c8910e32c6a2baa67ac870325fa5"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/labels.png",
+      "sha256": "844ab2652cff1fb38faf75f117c3fa8bed2963ec281d073a765f3dab19cfb338"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/mask-receipt.json",
+      "sha256": "7a8e91bd402915e856c9628ce2b214a31cc41e14a8f44452eddddd4203f1ebd4"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/atlas/p1-coconut-crab.json",
+      "sha256": "acf5f7e42b1ebd20f6189a5cd423fb84fc0e263756f7b3541ab3b52ad056ea4b"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/atlas/p1-coconut-crab.png",
+      "sha256": "0dd9a34e031346c04829ca9b897ec1264695506e98734cf415a7e952d26836b5"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/atlas/receipt.json",
+      "sha256": "6e5605f4d3d61ee4fe2fb06ba1aed678348a044f6ee816efb8ea9151a774b5a1"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/binding.json",
+      "sha256": "9f30dfca531e1a069beeeec286381573ef5d7640f1be685244b9434f7740afb9"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/keyed.png",
+      "sha256": "9e10240fcdd50c136da89ba5db70cbcd1ac44fce7e09cd25b4843ba108035ddc"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/manifest.json",
+      "sha256": "58f6347a72325b4059c74666be0934474697510372e07b729f607a50874b6655"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/ownership.png",
+      "sha256": "223cb3c5b2eb9f34e18d21c7b27534196e9702409b02ad5d66d1b6153ab7efca"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/body.png",
+      "sha256": "ef82a13137df26c3f1d5ef6f789dee938d7f0a5b7d02d0da52464653e5bcea98"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/claw-far-arm.png",
+      "sha256": "0bc8425c14af6154b30f0fbc2bd49f0e8536ad35f9920cb296d72594bef52bd6"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/claw-far-finger.png",
+      "sha256": "b165d953b1d6013cdffe4127230eb4819824f08509063df337b3ab3ceb58c6a6"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/claw-far-palm.png",
+      "sha256": "1b013c0484e739cf945518ce5f9fda4ba2aeb9595852ea3d67e0afee365db209"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/claw-near-arm.png",
+      "sha256": "8dc407b183255f85e7def4cd848ad74e4bd40c85ee9939012268d48c01ff4d85"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/claw-near-finger.png",
+      "sha256": "2e9a75c3f675ba0f9506d3fc96f3f699020141d95a724515d5535ccd0501d564"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/claw-near-palm.png",
+      "sha256": "0e7876a20913b1b85458dc0a06e4296d0df6b88c2e2657351e108c9d0e21d412"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/eye-far.png",
+      "sha256": "3238e22f3af96089c67d1928018d5b4dda03e46345440080dcc4f20c64152381"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/eye-near.png",
+      "sha256": "e5d7da7f0b9f718bc10cc8aff673f760425d064b482a331a5a826294eaf7134e"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg0far-lower.png",
+      "sha256": "23689da073e797d7815bdd41d8ed4a2c216520b6bce82bcc7202857418865881"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg0far-upper.png",
+      "sha256": "c7c956548af37a18d3dbaa098971892edefededd2fef0bce0ee6d1185415d182"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg0near-lower.png",
+      "sha256": "3304cb6be2e3b55420cab0b22603a4f5e9e5ea2dfcf88e02b8bc0f853199f6e4"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg0near-upper.png",
+      "sha256": "82a2b4b64d622bbcda3cfcf66a3b2895d353ab7a03fb8e1cf90d5741801bd4e0"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg1far-lower.png",
+      "sha256": "6592ad3a1f341207d8fe11eb153c4f54bd2b5127e9929433a32493dec91da263"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg1far-upper.png",
+      "sha256": "232f4f939a1ccd1a430076248e94679a7bfdf9d0c998f92409e1c3308deb59ae"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg1near-lower.png",
+      "sha256": "70758f009495f497733da87453ec2900f09e6514d1a9a909a74c5b35465181d0"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg1near-upper.png",
+      "sha256": "14fa9e6ec4a80357e027bbd594595a440f0433e6d5adddf4c88fc8fc6ee025d9"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg2far-lower.png",
+      "sha256": "f0bebd1d999d6ec433e674f3dda1306e5cb622990c237a872ba5669822d16093"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg2far-upper.png",
+      "sha256": "0e3e2c6fef6800f46eda140c562e62509d60527d051bf0bfdde3e4062a81cd88"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg2near-lower.png",
+      "sha256": "a25a955165e4f26f0fa1c69407ba18d49d9f09e51d160356870fb7e061fa251a"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg2near-upper.png",
+      "sha256": "87e3d096af76d63f7041a22c12d8159804037bedb9e81de072649a0ca694c955"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/receipt.json",
+      "sha256": "b186c6da94bc41aafc79f7bba492c9c1ceaa219ad3985a1f0c5b1b1e9d0e102d"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/receipt.json",
+      "sha256": "c1a29bea5a30fe6ff46b98eba2c369ae148121126b3285971ac9a97500942bab"
+    },
+    {
+      "path": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/record.json",
+      "sha256": "12c19c9543b0ce8924cffcc11092854743b07840496615207e1e72f62ad2639d"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/crab/generation-01/crab-master.png",
+      "sha256": "0586a468c0685b53aba0993788e834468dd9d7cac84bdeb212fe9531124442be"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/freshwater-crab/generation-01/freshwater-crab-master.png",
+      "sha256": "49645b5e951eaf4207e95ee2453f218abc56e49ba75451e188452e74b3cbce44"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/binding.json",
+      "sha256": "fd8df02613e5e6850192baa804f35435c0dc5d1a10cf50758c60c3e089f59533"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/declaration.json",
+      "sha256": "90cfe304dcdfd663241ae72f71dbeafa0712a36decc192bffc7c19785af0b461"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/labels.png",
+      "sha256": "7e56d7f4671909fccb9546dcf8b9eb11782b4d86913fa699c1b1638189ef2b0c"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/mask-landmarks.png",
+      "sha256": "98ea5b8ea8c9e7f7ee07448489ae10aae96de6c1c33411b5f36ca80fba7c7586"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/mask-receipt.json",
+      "sha256": "e54beac529f6bae535b7f305813fcd787c05a5e79dfc9350b7a56425d54d1f59"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/atlas/p1-vent-crab.json",
+      "sha256": "4252cab7d0a97ef7981a5b5391def7271a6a266b4e5faf85f5202a2bdd3ec81e"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/atlas/p1-vent-crab.png",
+      "sha256": "ee8dd5bb7699ad2497b076626b25cca8becc837483e6f040fb372747a5492cda"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/atlas/receipt.json",
+      "sha256": "6a3066c146865b1fb32a304913feed148da7a200f86fdfbec974998bfde38b8f"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/binding.json",
+      "sha256": "9e44cd8d6611b7db31592b2067fa8fd7369b23d2719041637a5fc948281b36f6"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/keyed.png",
+      "sha256": "eccdbf32fffb6444fec1f9f810442700a38370d180e31aa129857ff647dc6536"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/manifest.json",
+      "sha256": "32fcfe39fa65ac1ebd1bd1ef758adbe8a1969287c8d2362768f230673e69a339"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/ownership.png",
+      "sha256": "71eb30b8773e3070d1a40c845e1d8cff0b8a641f90f0685b1bb90a73e8e0dd01"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/body.png",
+      "sha256": "547168a2e860b8938648ac81cd9632d3be63ab6bc29ef689bb74cb5a53615e7c"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/claw-far-arm.png",
+      "sha256": "df11caa125ac29504530598aa7c6343f62b708e69c11d39a13e741deea2e62ab"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/claw-far-finger.png",
+      "sha256": "9683d5114e692d1f588f57e62e11191abee82a5fb6faeec38069c7cc9f36d0a3"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/claw-far-palm.png",
+      "sha256": "656472b7332814c285cd2f0f57b6d9c0ba519561b046d52dd5c068a5591a0ed1"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/claw-near-arm.png",
+      "sha256": "660c02e271082fc2efe9783420bc83bf455337bd592d25096ab0be5ad3126b80"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/claw-near-finger.png",
+      "sha256": "08aab7cf5081ec3d7d1ccb87ee51b3f8f3c5187fda042149d087df06e36848f2"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/claw-near-palm.png",
+      "sha256": "8c2a5dac6a28fcd8ca6034a83883612fc8ea0d0059e485d31da72d5ba6da5b03"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/eye-far.png",
+      "sha256": "6e318a575c68d0e396601e6b23892e7af212bdc06271afb0c04cd571a4f2afbb"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/eye-near.png",
+      "sha256": "3af202b904da32b427b970678c85667180e005d76d29b3ca154b62f689c5170d"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg0far-lower.png",
+      "sha256": "ebf9bc798a9625e28788380ac2c461c13cc373e5d9d5bdb421e23f189e5f010e"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg0far-upper.png",
+      "sha256": "0509af4a2df6333b220586f1575cc9c12d06e5ef48d2a28b87b8c7d173ae04d2"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg0near-lower.png",
+      "sha256": "5d5027d654e424389a01bdc823cd4962026e174c1fffa954acfe89696ceb29c4"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg0near-upper.png",
+      "sha256": "ba7a9722ed29d405b2ef440c76f2950db248cafa6a88503223da708173eebfe9"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg1far-lower.png",
+      "sha256": "aea6d3031867de5c701dc508307a1bc1cb5a3ea1e2d09b404b854e006e99f15e"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg1far-upper.png",
+      "sha256": "9246b0e3f4505794c750ed98bf8403574e4ea5734e45b34ed131705da7a6aaee"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg1near-lower.png",
+      "sha256": "64368824d799779aa520461254224d930aba99233ade558e460a0bd671935b8f"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg1near-upper.png",
+      "sha256": "232545ebafa5125a09be97814be98d027625cc0b45aaf563f7031c26763ffee6"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg2far-lower.png",
+      "sha256": "5c2fed0e98d45912fc305fcdfe3a7e366c65a9735cac611cf5de37dd49c3c151"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg2far-upper.png",
+      "sha256": "96da096dc2446ac2b706744ad72a82ea10c74e686f68335cd17749180323ed56"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg2near-lower.png",
+      "sha256": "778ab6415ae93d0199677860f4ef5517938ddba6c9dfcb7462e36590ebd45df5"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg2near-upper.png",
+      "sha256": "6d364d38620d6ba5b910e1d9869b1b89b2912f27a8ac54df9a4ae63320309876"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg3far-lower.png",
+      "sha256": "c795881df3104d58403ecb755bf00fd68c680556eb4a9933838312ba9d111dc6"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg3far-upper.png",
+      "sha256": "ad7b5514ffbc4132131684ec026d001739bb45b0e2d16091b934e4a8fa7dd480"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg3near-lower.png",
+      "sha256": "c43a32828023378178dab852a520ad7a055fdeec8a21b711f058adadd6314b1e"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/parts/leg3near-upper.png",
+      "sha256": "12b4d06cf510d5edc1f8465c1f73f65e2a5c06d9322da154809c4df4abf8983c"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/parts/receipt.json",
+      "sha256": "80ff53223880796c21bf74948b7933eb9ed150fcb6e6258ea6350afab3945f3d"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/receipt.json",
+      "sha256": "612b6d780f7227298425616dba5bf6a187cdaf597a885b803d523af1eb5da406"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01/record.json",
+      "sha256": "510e1252a5c2765580e5aa634451d15515e826061cb0cba08397ccb0c7971f2f"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/binding.json",
+      "sha256": "8e4b836fdcc0f0f813e0ec2c5879a45284afe803351c62d2bc1b80b40e8d795c"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/declaration.json",
+      "sha256": "425f6964fbbe5c4dbbd4c540018609a6954a54e93330dc38faf0182961a6bcb8"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/labels.png",
+      "sha256": "65bd98611c013cf3d77fadf4c1307cd9093e4fdd77482bd8d3c0244724452d80"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/mask-receipt.json",
+      "sha256": "33645fa525b439e8266f4e2a47e34977fea774ee50c099b613d6e7337544b8fe"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/atlas/p1-crab.json",
+      "sha256": "3de521307f5040967c4ee71dedbbf677dfb681ebb5d164611a23f3155ebfedf1"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/atlas/p1-crab.png",
+      "sha256": "532d0e9c4f3234d2240baeafed982ded851d52b4f1dd54e230878a4dbf573af2"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/atlas/receipt.json",
+      "sha256": "bc29669d35e5999b37d50156c989415be8c6447bd8906fa522e0dc1ab51650be"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/binding.json",
+      "sha256": "64ea2b9b2152330fd2bc041a06b2a6c4c1ff3027b09404cdf15383f033d3e7d0"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/keyed.png",
+      "sha256": "6384a4d65af928ebee0518e6751d36ae71ccf58ee44925e2e369c560809db585"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/manifest.json",
+      "sha256": "be1fd0aab3c176b6af92571442027c93d1dc9004866028d50aa539a37973b80c"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/ownership.png",
+      "sha256": "9f3324b42048775738352d073725ea9ae690d3d2bc3645319e356c826e544f66"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/body.png",
+      "sha256": "6bac0a65c43bb529a6a1a1c49083d26d75cdaa36dbdf3b7f186909ed2d15a7a7"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/claw-far-arm.png",
+      "sha256": "9a376436a506d37f16110835c2cdaa198119416edf2ad4d9defe8fba06df4853"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/claw-far-finger.png",
+      "sha256": "acbc14ea5a0c31736e16a8ed8366ac7d076f6d88b99eacdd137761928d96930e"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/claw-far-palm.png",
+      "sha256": "c5e5a50ba108d9f8cc2e940053881bb4c33c4d0ad39176ec53f27c40c783050d"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/claw-near-arm.png",
+      "sha256": "afd539a4eef8a77af7c893f1a568ec69fc5e0a76debaac3e8d12063acfef17e9"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/claw-near-finger.png",
+      "sha256": "f15c3267c421f434b2d62c08ce75e4bb735fed779ffc01c168f0bfe3537456fa"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/claw-near-palm.png",
+      "sha256": "c1db582882f2823a1dd04409ff1edc2db8cdd22caa808e61de07e4df293335c6"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/eye-far.png",
+      "sha256": "0342277c87e15441f70e227c55e4b05c6489f9678cab71fd98458fee86a253de"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/eye-near.png",
+      "sha256": "d510fd9efb941a0ed87c08097486406b195290c356d541873e34875a94f4ee99"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg0far-lower.png",
+      "sha256": "aaf54cd6b4d9edbfcd8e62252c405046fad70135c6a5a61c03cded070a70f9b5"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg0far-upper.png",
+      "sha256": "d72c7461d3788042ef1c34a7815a9d1ae4e5bc3a5f0da4b141671c99026de83a"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg0near-lower.png",
+      "sha256": "1af530803d20f82ad99c0ff4db3b3cf53d84230a09421a2d010725be42dcbf37"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg0near-upper.png",
+      "sha256": "a64b329e80812743669d7b08b8a5222fbf16a64aeb0cb4d2c52f5e955f709801"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg1far-lower.png",
+      "sha256": "0f469d3aae52667b7e0d4a08add69c3709966ab021df321692740490d971b049"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg1far-upper.png",
+      "sha256": "c4691868c3d8a325693b8844fdf20562cc3ae0040ce03ddf9aebe64b255e6a0b"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg1near-lower.png",
+      "sha256": "1edbf1c3b3e6d35f5c7d9f2122b4da506e365b4d64ccf67db74a3d3c5cf8589e"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg1near-upper.png",
+      "sha256": "776aaa8810d3446d61da57859cc7ce65cc7b0271016067b98c9e56d95096234f"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg2far-lower.png",
+      "sha256": "ae535bd2fcba19eee55647eca336d72951d868448a3846f3cd9aa21f7b38b295"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg2far-upper.png",
+      "sha256": "e9ec484c529fa0d35ad106b1dea2fbc576a74d9604d4b66add76242bf0fcc803"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg2near-lower.png",
+      "sha256": "13067b320f2d2dd9b5306ffa74163b1014dcdae5b04b74be844c1d1c92ab4173"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg2near-upper.png",
+      "sha256": "c3b22ecfb924f513551774fd46188284093ca504722e69f856fe89935aaa6925"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg3far-lower.png",
+      "sha256": "2b2672e69f89d83f465f30068a5dbfbba045456c2bed17e62dbd8215eb4e72c3"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/parts/leg3far-upper.png",
+      "sha256": "3b40580907b644b43ab841ea77dadf75de3e1f6e3a5d1025ce2d2403f00fa3c5"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/parts/receipt.json",
+      "sha256": "d354682148af1363ecb089eae698370da15fbdce1b8ea89f790320eefa74bd55"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/receipt.json",
+      "sha256": "4ff7198d26d55bf7c6e662065327912211841f0e71edd5d3402a5930be8400fc"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/record.json",
+      "sha256": "aee718e12b7c6061ea5ff7fd14a11960e1779229316b9451b42a21c1d885408a"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/binding.json",
+      "sha256": "41183a57a1463837fb00e4b0871e5a33189f3a47e35ffc31cc07cff542b00823"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/declaration.json",
+      "sha256": "769dc32c2fea67326af1afe69d614853bf0adca02606a3f77a1fb52861a2b0d6"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/labels.png",
+      "sha256": "c04302b7a72004ee290fa716304ee8a0b7ce30effde176033cc188b3b496df53"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/mask-overlay.png",
+      "sha256": "0ba069614085d67c19bea5c82298679ca3c9fbf17aa33a674b0de9d58fb48b07"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/mask-receipt.json",
+      "sha256": "84b350aecc6b62e4699d4b69b631243b37592be3a26ac6072782a7e854f51f62"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/atlas/p1-freshwater-crab.json",
+      "sha256": "fdd55e3971c3469e54f74140bc179a9592c0ab6ab9b902f96cb0e8fb3d684806"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/atlas/p1-freshwater-crab.png",
+      "sha256": "192f8ef9c68bc20a268f0a260d95bc4baf509aae93177a0f6a2b84f48ebb00e2"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/atlas/receipt.json",
+      "sha256": "a4116b2984c942a2608454c0a2745a5a2f76c8eda5ec112a9fb9f0bb4caa55de"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/binding.json",
+      "sha256": "46a3242f7db73ab3a781b4ffaeeddc9aafc648b3b8958d668f2639c35c0d9d7e"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/keyed.png",
+      "sha256": "4cf8f5e66d387c7349ec47ffb9862f1f07dbf5fea4a1d1f62d77eb6794be1df7"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/manifest.json",
+      "sha256": "6bf41eb89ee3556d817a86aae953efe88102f13cf77c4f54be364ae8f4effe97"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/ownership.png",
+      "sha256": "2e0969b16a6f1f6fca6d98ad022b595fed5c6469b1fd7057eabde81f6ce1ccb4"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/body.png",
+      "sha256": "91f8e8f2ac2c201cf94dda4674480239b093d40a6b0f24979a14260e1938e5aa"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/claw-far-arm.png",
+      "sha256": "9c9d9d973637d6f966718311dcfd4a97a49e230370b61ff292f039e043938d13"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/claw-far-finger.png",
+      "sha256": "e62336f72b1c8b295048dbcd0c73d08934b84613b6f1db01cac799c9a6c442ac"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/claw-far-palm.png",
+      "sha256": "c5646d033c2c2c7a474a482bd5e9c85ecf0f8fe7bd296825271d24aa05bd7c70"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/claw-near-arm.png",
+      "sha256": "a87b76f4a27c49d4f811f2fd5349ac0eaf966bbbc1def67770f839c06a615d93"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/claw-near-finger.png",
+      "sha256": "052c0b7ead0f574f57e386e72872e6489658dc347790ecbf4f9e1b393008cc2b"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/claw-near-palm.png",
+      "sha256": "d3cbc00030296da3a5033cf630681eb24d183a00cc7987a068a16865c7db93a0"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/eye-far.png",
+      "sha256": "38bb12fbb22e5304fca44cf3df11ce969b829f6920d786d7bb4ff43ab6398461"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/eye-near.png",
+      "sha256": "4dd3598a4cecde9513b90668d01110753a127f72988ebc4f7e663844dfb9edfb"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg0far-lower.png",
+      "sha256": "3725dab9edfc9a8c0b5707c61a15f6950f1085a9476609153fa79f0734cdbd57"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg0far-upper.png",
+      "sha256": "2433f6c1ff67100bd49ead35dc088c73d4a6ee664eac3191564d9c8719c29956"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg0near-lower.png",
+      "sha256": "3df8eded3fb094e27480bb87b3be48edf0547f16abaead77f18f7c245a54a25c"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg0near-upper.png",
+      "sha256": "0cedd3e42911a81787c963c7ddb8caba7704d2e7bd364331372e19c2a922ce7b"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg1far-lower.png",
+      "sha256": "4fda319b825d92188cbe0f19c90a724b4fee93a6a38ae9a8eb9d31af18f93b0d"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg1far-upper.png",
+      "sha256": "f1b50bc3df4329d9f0bd8fb81316c95db9a39b8d975f52e7aafa54496474b3d6"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg1near-lower.png",
+      "sha256": "4dd054442d955bc6e2ce3c90e17dc0d3aab3a7bd2e094770c89dd26550576485"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg1near-upper.png",
+      "sha256": "324ce00a0ec4c156c4cd5f1ccf525b3702b8a70428f0152931a31d8d86347ca1"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg2far-lower.png",
+      "sha256": "0841cecbb223d82d713c3529b3d649d23c3bb93b4afade3face312bcc2097a4c"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg2far-upper.png",
+      "sha256": "286551a1674e1e1b9fe93b07e2c88186df9e524101079d027716f67a4526999c"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg2near-lower.png",
+      "sha256": "e7af0bfa0b38c21430ad14f29d46a31fd99eed6338cfcaabeb05a38675f3f043"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg2near-upper.png",
+      "sha256": "75052ff3f2fe9c15318e5f2158a73d546b6608c5b9382a492392a4c78fc3bf77"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg3near-lower.png",
+      "sha256": "ee3b5461f056f5167d30b95894a4c5fe2979641c107c3efa8442326a78b2b747"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/parts/leg3near-upper.png",
+      "sha256": "0cc4c766840a73072a59d991977d524674a5886025afe96265c1af6b49fddf2b"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/parts/receipt.json",
+      "sha256": "6eb91e3da6e34c75362a4982cfb4c9f4f9be07a6ebb10744a5f9a7befdd81817"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/receipt.json",
+      "sha256": "6685989c73f06be0d8df88edacb3cda658cec92900af30bc9e25e7fd4c129d30"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/freshwater-crab-fit-03/record.json",
+      "sha256": "5b9fb12924e0fb43cc1955b8f3f367e7e0ac1c6175d05ac64dd9f3c1e9dd5ffe"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/binding.json",
+      "sha256": "d8a42eedf197d19d49d5cc817b282fa9fbda683306342f6518f882be6bd5d41f"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/declaration.json",
+      "sha256": "db07fceb17a4467280244eb99e729779ca78bc42563f93c7a11001fa0cda49d5"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/labels.png",
+      "sha256": "f15e845954f7b0f4bf3e651858762bf2b855af7815d4517abed3296672b581c7"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/mask-receipt.json",
+      "sha256": "06a6a972abea04c4503ede5afbf406df218eae771be554601352770eb925e59c"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/atlas/p1-mud-crab.json",
+      "sha256": "1cc219eb436e55c8466ad5f65ea5037af1d4c0cb69fbfa3dd6ff6e1d29a4d6a9"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/atlas/p1-mud-crab.png",
+      "sha256": "8ecca4d62f699b9da19304360c786f0fa40344603bdb57d4cf5f49ebe98859bf"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/atlas/receipt.json",
+      "sha256": "41d7604fc319de5584c19a60e2a6fcb0da8a35698f226d0092b2504fb941b432"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/binding.json",
+      "sha256": "e84df354175b6586b60063c8711a67050cf9d10f72e1ab9155b16545d459a193"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/keyed.png",
+      "sha256": "81d3fa3bfc4154802c8286cad6b44ba949713c581d402a41e003d0093230d6a7"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/manifest.json",
+      "sha256": "a4c9a0242c01d4135416beace00f009d8e22740096caecc8ea51b034e9d137bf"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/ownership.png",
+      "sha256": "c7366c58621cd78f32c71cf03b0696f49a399ea3c3ea8c3d4e05dce082d7bb86"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/body.png",
+      "sha256": "63957a57198cd8aa087a6061dff72af98af1b63a5bb9fab4d65306fbee1fa374"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/claw-far-arm.png",
+      "sha256": "8848b8790f5a78af0e2b1832c1c82ff4485a5688e2b91c6faa61099c0274bd82"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/claw-far-finger.png",
+      "sha256": "96bc3071cbb7457e414fe31ff30c04eb56cb7bbba63bc5e50ac4d513c71f92c7"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/claw-far-palm.png",
+      "sha256": "68ae33087b63035ffc8df5543aa983a34c6d985f0c558c7b752e57fb876bd9ff"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/claw-near-arm.png",
+      "sha256": "0bf35c9a25c8b3ad29c8e9d54e5945b25da09c2b11c28f85db15754d21a9b07f"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/claw-near-finger.png",
+      "sha256": "bcfc628004017378c43b9ac5f97de5494d286a5038fe5da4ddfea922fc53c14e"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/claw-near-palm.png",
+      "sha256": "8d5829420ab226194a11f08237fa14d28cb2e45cefa67adb3d46175766f6db02"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/eye-far.png",
+      "sha256": "29ee8c625fe1affd110ca7068bf0a6feff8361eadbca08014b8afa31f6463338"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/eye-near.png",
+      "sha256": "47252f8f5b7e2a8b6de9ce28f8a0ac9bf9791829a15d6bbcb939b833e64ba16a"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg0far-lower.png",
+      "sha256": "7eb00e7b66c3cfef32839c6112ebf59432be46f6ec2269d9f74cfc8adcac4f0b"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg0far-upper.png",
+      "sha256": "0e0ef9f29dde9e4b7ab957ba5ecc60eb734519122a2e1241405141ce858ccadb"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg0near-lower.png",
+      "sha256": "92996501593a35b34eadba3bd5b859d0d8cbc6485cccd3c0094df9eb7f0ce814"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg0near-upper.png",
+      "sha256": "bfa3117a95fa41dc82e19f33a77b23cdacc5a7862b94f5d490c8c82614f0d82b"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg1far-lower.png",
+      "sha256": "686531fe367bdd636cdbb2e0df8414713227a202d58afa87604feb129d723614"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg1far-upper.png",
+      "sha256": "bea3883d5cf28a19c60b348b6356fee4b2577cd75cf8fa6a4f109dd9f330de56"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg1near-lower.png",
+      "sha256": "ab63f343861a049130b5f374e2ffd9ef9d694b6682de0fbe74e641b77d799653"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg1near-upper.png",
+      "sha256": "fe254c75b1bbefcafc96278489aa53f53549372dfcd10a4d778b5b45fe6f27f7"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg2far-lower.png",
+      "sha256": "099e304bbf143acbb277b1dae76f163e2f93bec5eb3a65af1a63a71d88a9fa51"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg2far-upper.png",
+      "sha256": "e34f6fd47163794ffdb75061ed2f36361303d0278af98f8661b9c653325c8828"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg2near-lower.png",
+      "sha256": "f90412c3784867dd2d77b2a2c35eea84e7be7250a25f1e812ce8091e5ee64bfc"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg2near-upper.png",
+      "sha256": "115f36bc870f98478bb3a610b87ec177f25a6889f4a85f13a26dbad5ebfdfbfe"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg3near-lower.png",
+      "sha256": "785be03d8328a32ad010cf73131e091a33e11d338dcb0d0a60102eaae0b89825"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/parts/leg3near-upper.png",
+      "sha256": "3b124e83e466ba71283a3d13902fca070e33f22046f6e83ae24b8e39456ecf52"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/parts/receipt.json",
+      "sha256": "81392e7770d52d72eb3d7e245e57bc0fae55a8e2fcf4ac6aa504f09cbccedf73"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/receipt.json",
+      "sha256": "87135a26f9c372c803b0dc95864cdbee3c9059fe4329a608340b9ec3997629cf"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/intake-02/mud-crab-fit-01/record.json",
+      "sha256": "255b2dfcde8f4bf0a7d4478fcb848ae973353717f3e6e3c3b42f52e5c6a6c0cc"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/mud-crab/generation-01/mud-crab-master.png",
+      "sha256": "7ff805602f17688c4f36db55e041849148ba4796414ff7e961032bdf7432b9cf"
+    },
+    {
+      "path": "audits/VISION_P1_FOUR_CRABS_20260920/vent-crab/generation-01/vent-crab-master.png",
+      "sha256": "fec1a86715ddf9f79781452a050e17f5522a476184251d53e2b4e99c765ec810"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.d.mts",
+      "sha256": "72c9c577976defeac75fb0e5a327ecb508e944ee89fddeb166efae0ca4027ce5"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "4b9480107e3743ce93f0623ab1d344bffa4962aabc0cd6e25cef2d95fa246517"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-kernel-numerics.test.mjs",
+      "sha256": "556421cfc53e50c5bccfb410cf12e1d52f946dbd8b8c408fc2f12c0e5e79139b"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-kernel-parity.test.mjs",
+      "sha256": "7633c71a5a0589acebccc452bce5c7006d415d7c0186e1f1755bf65574c8349b"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-skin.d.mts",
+      "sha256": "f9fd2a0f4db4474ebf0ae96789922a1e5b101511c138fc94b57266e393048f01"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-skin.mjs",
+      "sha256": "4e6a6e7d2c0a4c7d24174758373c707a85527a535d3a3516078764fe35eb4db4"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-skin.test.mjs",
+      "sha256": "d3ef24bd2b64f09602b467141e941ed4e224a94b06b4e4b61a24225749d95d75"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep-build.json",
+      "sha256": "7c021213e22153135121739be5b85adb07e99ed9d01bb41a565f980f175e67ce"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+      "sha256": "aa430e622b613af414da991a1b464e434be5b26a5efe96f5d07e63756f8b72db"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep.c",
+      "sha256": "df3eae55747455894b92ce81d30a3f105fb632519e57db8aaa2b7d563f2f62f6"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/arap-sweep.wasm",
+      "sha256": "cd438afc7be683430cf468d51e1195a4f85a5c3cd0b71d64a1f6788c4b1b8c0e"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/attachment-coverage.mjs",
+      "sha256": "e8312eef0fb5b0e27b4cfec14140daa6340c599f7c7eaeccc0c2d66e23c31570"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/attachment-coverage.test.mjs",
+      "sha256": "32964d922d4777b6ea9408289b6ecc367ef0062a80e035504252347a59d3ce72"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/audit-cut-seams.mjs",
+      "sha256": "affba75fb433f188b61462e827d6e0041565f3bd3e9b0f95e3d6ea9899bd0764"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/audit-ear-support.mjs",
+      "sha256": "276d4559cacf893364b032951d76ca5095076b6994c4590ca8e90cacd9febc62"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/authored-intake.mjs",
+      "sha256": "0ac7085e295bc7110496f44778113c3981f6d8805de8ab998e38650c11ece9a7"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/authored-intake.test.mjs",
+      "sha256": "c05149d2aa5ca31822ed2d94e1e9fae0dc8cb479fe88dae69dad32ebd083b27c"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/band-patches.mjs",
+      "sha256": "22e8754f586bd7be3626c8d6e130e53ac7fc2234c1b187838a3fb94eb28afd16"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/band-patches.test.mjs",
+      "sha256": "0550845774b28d9c110c17bc68b736350989e5ac00c6375738a0dad6c32aba48"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/body-card-probe.mjs",
+      "sha256": "fbc4b010ef0966f32436e8c749a829ef4fa547d3f808f1d656acec6172be3b86"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/build-arap-sweep.mjs",
+      "sha256": "75e19fd17d9127979b665f245d0620855b7a73da72c546bbfcb74933eb451c80"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/build-authored-parts.mjs",
+      "sha256": "f1f9cd36b5459fc77107e1f73d55c8798e909b3822512a05f50cee03bc6021f0"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/build-paint-skin.mjs",
+      "sha256": "190133cbe97d99ea1bf61a644d19f6e64a3dad7fe07485a86ce4b53ad04c56b6"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/build-paint-skin.test.mjs",
+      "sha256": "e760c3b369929fa8d6ebf4cb81f3f94915325f99b42c60949d462abaf8880cbd"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/build-seam-bridges.mjs",
+      "sha256": "78d9605415cfc76d692259d0eefa27bca9428eb63d1c399cb58676d162cd2c79"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/c2-review-repair.mjs",
+      "sha256": "d810ead151a91b519ea4d73d7f4eaa070f8399d4d9d191c50340e63e8a0f95c8"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/compiled-skin-field.d.mts",
+      "sha256": "2d09cfaeb82407f349b3681e9107c17c0b497627e062dd268a4b63872866ba16"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/compiled-skin-field.mjs",
+      "sha256": "2edb8045988f97c00ac7983af24d33c0631d21f88eade72f57fc2e247f3847a8"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/compiled-skin-field.test.mjs",
+      "sha256": "ab9f2cd53c1711375ab2ede535032f7a6879e89218b3e46fa5c57a59ff20c4f4"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/coverage-ledger.mjs",
+      "sha256": "a95e2027af4da5c56462178ca64f7360b2af978dc5f0159ce88c97ec21e0847a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/crab-observation-record.d.mts",
+      "sha256": "1f1f8b87daa830dfcf08834086d3455b08039efe0f88cb3e7876ce9903785c86"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/crab-observation-record.mjs",
+      "sha256": "415caf32a29cf40cdf4326788d9a04d439fdb18fda0ee40d9c894bc0fa96b2b9"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/cut-inventory.test.mjs",
+      "sha256": "9d28d0a05b27f25e0fd324c7b2b7ea6ee2b4a2330694e7e73ff02c97af1006f4"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/cut-seam.mjs",
+      "sha256": "0f65a0bb48939e815f57a2a89dd7dd0a3f1a1b2b17cf0ce2a1bfc359879ff565"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/cut-seam.test.mjs",
+      "sha256": "4a4b13a5f950f700dff8f190ca78d8bd8d8fa33a503b10061ffc19c1ebaf1e3d"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/deformation-quality.mjs",
+      "sha256": "414f0b84f2b731508676d14b59b99c6ee210d57342e05c11d11db012805b80d0"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/deformation-quality.test.mjs",
+      "sha256": "9f6266eff1cde553da9acd691ac5c2aaaf91a54717c4b40139559703e72db787"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-atlas-probe.mjs",
+      "sha256": "e767d6b9b8bbe52b8382b5538ba155daae40138539d7b31072d8a7d06471de15"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contract-probe.mjs",
+      "sha256": "0bc30fb84493b641ce55e3563594fe604c2a759f0e521b88ab7ec3f5c296f73b"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "sha256": "6f03e88e12f02062fe49ad76af448ff6ac0194dcdc6ba03f232906958f0394bc"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "1f94900f6038d0407fa6e865d294de6e11e52b22bbcbbfaa17567311a866d6e6"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-pose-probe.mjs",
+      "sha256": "cb22ac288e1c7c070e72cb1907ae6c7de42279ac0ab373b6b269e84f04f867d0"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-record.d.mts",
+      "sha256": "e3baaa1756aebe183d46857dbbf573e2587740a7090c3b8557d63eae921921ba"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-record.mjs",
+      "sha256": "6a4b825d7f4073033229438bf2a2d2f11a7432989947e4f26d4c14fae7de1069"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-record.test.mjs",
+      "sha256": "ef7fb179693a4dbcc98002f4eb25b70775e301f8cb7a3512f4021d64ffccb0d1"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/hidden-anatomy.d.mts",
+      "sha256": "b123856d3d28713028f0b963dcf2e56784a4ae85894157e6fec5ce4962de15f3"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/hidden-anatomy.mjs",
+      "sha256": "a3cef7edff31f86a70f727f1433eeaabcabe2a1626929e65fbcbc0715b80a328"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/hidden-anatomy.test.mjs",
+      "sha256": "7807de202f09098293ddbaf103c7be737aee44dfc67721113cb13b344344e442"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/joint-patches.mjs",
+      "sha256": "fb1dbe82449554cc8134d4358f06ece33fd864ccb35ea7a9566dac73d824336c"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/joint-patches.test.mjs",
+      "sha256": "bfe8af995e96570dd42f90f1127f89ab7171799d5ac4d0582acad9b3c1dce65e"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/limb-islands.mjs",
+      "sha256": "9380588337d7cb622ee934d42baea39585557172039ec9df54b40915f6ef41da"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/limb-islands.test.mjs",
+      "sha256": "ebbd2140239d5cff25a9e2dc7172bcd4bfd0200dee5932c3fcba67a0cec5ce0d"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/motion-interop-probe.mjs",
+      "sha256": "0a1b61501cf67615c5f690af0a4e7c73777339457a6032fccbb3e6bf29b41957"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/motion-scale.d.mts",
+      "sha256": "96110dde366edf8704275458f94a46cee4747b1d71e0d74fa3f129651dbe9521"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/motion-scale.mjs",
+      "sha256": "a38a55fbce7272597f5cd70af73bc850d73580795afcb2cc3e7db44c11653096"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-projector.mjs",
+      "sha256": "d84dc929eef8743a842388cf1a92b9631cc39bd232fe8954a7308d169a519d21"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-projector.test.mjs",
+      "sha256": "95ee7ad4201a66ed7bc273db2ae7345645fe79844e16a4b56aee4ea301e56ad0"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/ownership-junctions.mjs",
+      "sha256": "0e3a7764e7d36e03c3cdd3834ed970554312e1bb77cad3e1ef6f03ea84897c4a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/ownership-junctions.test.mjs",
+      "sha256": "458ce463d34777a5a24b12c54b0706a5deb839c4ef50adb59c0aec3d58eff496"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pack-staged-review.mjs",
+      "sha256": "c2fbeea33d395d5e3ef10418b1717d64ee09cb38009a9dd49f19a5f79aafc1fd"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/paint-skin.d.mts",
+      "sha256": "47b89eba9040137018ebaa4648d18c1462b8af1a1fcb34d775a24de5f195ee79"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/paint-skin.mjs",
+      "sha256": "c000e8f6ca3b1e5db8af82eba060a321c2522fb421dd09349654701a0a0ee9d2"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/paint-skin.test.mjs",
+      "sha256": "6e91c03de4e741aef0cae794b88aad0b79fba8c4dcfdfdd36ac1af074be8c6f6"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/part-masks.mjs",
+      "sha256": "52250c55eedb50ae0ad757c4d5764ed357d2799ba275f2ffe4db24a633cebc3e"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/part-masks.test.mjs",
+      "sha256": "1004ebf5f6c42887303c4784da1323b06a69fabfa9ff6993a43119f459aa4212"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/paw-contact-pins.mjs",
+      "sha256": "8d7e5f866f043d94e22221c3a4e15acab62aff20567003cb3c898600db7c1995"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/paw-contact-pins.test.mjs",
+      "sha256": "f0fe5242cf6e76c1950337f588c7b3d3cd40d07f6ccd984c707f018832ef0123"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/performance-probe.mjs",
+      "sha256": "5ab0aa7527a7a8aee4761649ba52c526cad9e12a371dfdff53d0718892d9d50c"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/plant-anatomy.d.mts",
+      "sha256": "30fa8089d149f6c39459d718cd29be78e04a745121ca4474ae88cd0eb4d1258f"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/plant-anatomy.mjs",
+      "sha256": "7e900b8355f6193b941f62a573d6c58124d127faa3348524170593ef2084e218"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pose-projection.d.mts",
+      "sha256": "fe3b06c360a55d191c7b1765e3926b52962db727c3e4a194155091d600c990f0"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pose-projection.mjs",
+      "sha256": "9a6d31c80812def61beec124a1dad039d16b9afb556ee5ddf47c0f528891d486"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pose-projection.test.mjs",
+      "sha256": "df5a04fec9daa65fed91974368423dbb4f9daaad9664ca1f6e853322da6143bf"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pose-refusal.d.mts",
+      "sha256": "76d8dcf4fc8de0f6da7db1cdd88953593c931c400a4d44498c1470eefd66d4f7"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pose-refusal.mjs",
+      "sha256": "f91e6977ec0e2cdb0b7e4cf90980eeebab90c59aabfb1e2e48b47cb4bf12e80c"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/prepare-continuous-skin.mjs",
+      "sha256": "a25a51e5620ed55080b36612f98c6138ac77989f873898577cd089670e11f1dd"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/prepare-seam-proof.mjs",
+      "sha256": "63a77430083c8cab2457019bb1d9cf44fb98225fcd1977273fddc44359ace460"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/quadruped-template.d.mts",
+      "sha256": "7459aea7d9d1f317099de0a80ac967465f1087255ec78af5d1aad7cdedc0e595"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/quadruped-template.mjs",
+      "sha256": "86b4419ab0ef904f87e08942a1fdaf1f68a608c3cac40747b3095f8fb0aae5dc"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/quadruped-template.test.mjs",
+      "sha256": "a39f651485a48839b78254b6997c0766c37da79e25bce59543296becdcf75cb0"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/qualify-continuous-skin.mjs",
+      "sha256": "c36ac47fb32dcacc5e63e865e15590715ac8892060bededa55016cb1a614f1d6"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.d.mts",
+      "sha256": "2d4d256360f45f34227777618dd573350a66a71a1f1e7c56fc288b1b4215a33b"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "37c090988c2e96d4d4a9adc80a9697db77b58db4df667d138b842c86f85545a8"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/rig-atlas.mjs",
+      "sha256": "69d0a609471000088fa2439e294c1016325a907ac33998c56d927c12baf65057"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/rig-atlas.test.mjs",
+      "sha256": "35361fc1a813ff99948e733a9e4b0720526ff31cb9a57ae23bbdab4c5c74d97c"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/rigid-parent-frame.d.mts",
+      "sha256": "eb19c690836128ee0f183e41197c4ceaf4f6e02840d195b6642448874cb548fc"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/rigid-parent-frame.mjs",
+      "sha256": "a2b4d700e8ee7cf76af602814e5820b50acb67355e735dce921f7a16030ff56c"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/rigid-parent-frame.test.mjs",
+      "sha256": "14f97e22d8f4f4d8dd8d6cf9dcab6201ee69d66c65d3d76f6d86e39bc4b3e704"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/seam-bridge.d.mts",
+      "sha256": "3335c94780e0cf78340d12420ea60cce2bc9772ed837a5f0717ac50b7c000e73"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/seam-bridge.mjs",
+      "sha256": "a9e6dea282af27f223dd58900bae9242812a9320c59cff600a3eb7d443dccb28"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/seam-bridge.test.mjs",
+      "sha256": "300ab6902a80ef572906400c25728bb4ec18deaad03f72dd221f7db8a303c58f"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/seam-oracle-audit.mjs",
+      "sha256": "b407448c786e54c97666d84a85c773913b7b358fe764f64cdbf5d7b97217dfd5"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/seam-sampling-guard.d.mts",
+      "sha256": "43797c5be2a03150d67a3b4e8d2a6707cff6ecafa811940dd405999b9f14867d"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/seam-sampling-guard.mjs",
+      "sha256": "bcc199f9cabb5835b9b76ba65499608c0b62dbee7e88c93374cb31f572270f74"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/seam-sampling-guard.test.mjs",
+      "sha256": "7b67f9efff80f3f3e244168d851c220d0ed81fa5e3afb01c958f10f412bca33b"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.d.mts",
+      "sha256": "83a6ab10eac1549600a208ea3e2e773b2c7b450c004ca8197b66e65ac207d208"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "3d7ba73ec369a07fc1678610b32e77fb5beadedbdee1885ca544424588e1f587"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.test.mjs",
+      "sha256": "ce5c9ed6a4a56db45db65532c78572c4aa3543d0417a45fbcda1b88007a7da2d"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/smooth-skin-weights.mjs",
+      "sha256": "6a589f1347bff0643e2b0d38e8249da25739ce0d61562c7a148c3eaab02d070f"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/smooth-skin-weights.test.mjs",
+      "sha256": "dbeb562e715ecc0a1102c7eeb9d156b629e19cd5c91c702d42852f55d95f50b4"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.d.mts",
+      "sha256": "db0b4d4485ae888e3cf75d7b8681964b2a9367be343cd9a16a60ed567093557e"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "e2dca64d0077c7a3f91b1c00bc383392c6a7d245f9c1b19a9254384c8acb8596"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+      "sha256": "b747e26e58700dba92de54a33ad22b7acfeb6a01772c19cacb6aab0ee1af63a4"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/split-observed-surfaces.test.mjs",
+      "sha256": "f326f3e59197a10092c8ddce6cb5a5c98a71a0fd1b27fbd86df3c69aba31a137"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/split-skin-branches.mjs",
+      "sha256": "30e0e12a22e990b877ece27676f319331eb895a075487d692d6a1e6cd06c7e8a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/split-skin-branches.test.mjs",
+      "sha256": "2d7fae83559704e585efefd6da2016382637d19690a1e46e5db870cd0f8cf6f6"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/test-fixtures/family-records.json",
+      "sha256": "80bc11fc5f2045d783ef2c82e39898cffac2b680e7895f6e679da4157b586b84"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/test-fixtures/fish-cast-orientation.json",
+      "sha256": "43d2b0dbcc6b148e040d367fd431d654aa9ce72fcaaa8047f5e948ec8270728e"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/texture-hinges.mjs",
+      "sha256": "7a7694e815fd50f8337a465afb4cfa6eebbeece836e31c9ca5fa30536f3c24a8"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/texture-hinges.test.mjs",
+      "sha256": "c9c9c2bcf51404bb548e993f5bab90d3e9b73013aa432f86d5a1c4194ed2f912"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/underlap-support.mjs",
+      "sha256": "e57fc2f3956a62342e69f3ad53f38be42c1e5994603e3f4f04150fa78380d99d"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/underlap-support.test.mjs",
+      "sha256": "e9a7d32faa261c5fb15a2f79953206f39be9ad10e2f7072cee63ea2fb927cde0"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/verify-parts.mjs",
+      "sha256": "f5278c15111466e447bb9c3dbffabc56fcf3ff6f7fcdee9a01c6e82cb936fd71"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/verify-parts.test.mjs",
+      "sha256": "6e033b2155bcc1f8c1cf73f964a2d24b8a8cde380de4d2ac9723bf8302139306"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/wasm-arap-sweep.d.mts",
+      "sha256": "8f6e8fa30e4f2a11c9f201bcc4f183be4194b4bdc02acfa52fb1c55d6ca1033a"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/wasm-arap-sweep.mjs",
+      "sha256": "08c41cca60a7ec46ca07103d27ecbdff1d97f2bbf62507fb310c560d05487ccd"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/wasm-arap-sweep.test.mjs",
+      "sha256": "0c83ccfec27a90d85ff14aefff89d1e0838b9de83f5093e7eb37bd6550575631"
+    }
+  ]
+}

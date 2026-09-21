@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "throughSourceHead": "a6afec2e065430755d2f1516c2f064f3bd4e09ab",
+  "verifiedLocalSignatures": 29,
+  "markdownLinksChecked": 120,
+  "reviewSheetHashesVerified": 16,
+  "filmCount": 15,
+  "rosterExactlyOnce": 58,
+  "missingLinkMutationRejected": true,
+  "falseQualificationMutationRejected": true,
+  "splitManifestHashesAndTreesValid": true,
+  "limitations": "No repeated browser or unchanged admission run; media and sheet checks do not grant visual acceptance."
+}

@@ -351,7 +351,7 @@ export function tardigrade(c: Ctx, g: G, p: Pal): void {
   const segs = 4 + Math.floor(r() * 3);
   for (let i = 1; i < segs; i++) {
     const x = cx - bw * 0.66 + i * (bw * 1.32 / segs);
-    observed?.push({id:'fold'+i,kind:'body',points:[[x,cy-bh*.8],[x+bh*.1,cy],[x,cy+bh*.7]],widths:[2],curve:'quadratic',layer:'near'});
+    observed?.push({id:'fold'+i,kind:'mark',points:[[x,cy-bh*.8],[x+bh*.1,cy],[x,cy+bh*.7]],widths:[2],curve:'quadratic',layer:'near'});
     c.beginPath(); c.moveTo(x, cy - bh * 0.8); c.quadraticCurveTo(x + bh * 0.1, cy, x, cy + bh * 0.7); c.stroke();
   }
   c.strokeStyle = 'rgba(214,226,244,0.4)'; c.lineWidth = 2;

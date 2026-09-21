@@ -1,0 +1,245 @@
+{
+  "schema": "cf.local-pr42-split/v1",
+  "sourceHead": "a6afec2e065430755d2f1516c2f064f3bd4e09ab",
+  "cachedDevelop": "c1791e210158de864fdd475323c3091d9ecbae58",
+  "base": "c1791e210158de864fdd475323c3091d9ecbae58",
+  "baseBranch": "develop",
+  "sourceBranch": "openai/mac",
+  "branchCreated": false,
+  "hostedWrites": 0,
+  "tiers": [
+    {
+      "tier": "ui",
+      "paths": 78,
+      "previousTree": "514018b9843f092b5e5d58d2cf77f0d12e680b4e",
+      "tree": "713d17c50d4ff9c32289e6b19adbcf5685179da9",
+      "manifest": "ui-paths.json",
+      "sha256": "7d524839230c21c8f368665a9c251874d88b218e5a4176cf68b7d67e28dd0e9a",
+      "standaloneAdmission": "NOT_RUN",
+      "futureMerge": "normal merge commit; never squash"
+    },
+    {
+      "tier": "engine",
+      "paths": 289,
+      "previousTree": "713d17c50d4ff9c32289e6b19adbcf5685179da9",
+      "tree": "41191949f2185019fbac1022500b868b2551a0b3",
+      "manifest": "engine-paths.json",
+      "sha256": "71db301c3e69bde430a88fd8b7200429324d1a3ecd19933a55b87b28709fc32c",
+      "standaloneAdmission": "NOT_RUN",
+      "futureMerge": "normal merge commit; never squash"
+    },
+    {
+      "tier": "tools",
+      "paths": 15147,
+      "previousTree": "41191949f2185019fbac1022500b868b2551a0b3",
+      "tree": "e7f7615bfc1334f0d1baed0681087cb2034c14c4",
+      "manifest": "tools-paths.json",
+      "sha256": "de572d3b48c0363f00f86b7e83db882d5f7459b5d2bdfc984a68076b4df4dff9",
+      "standaloneAdmission": "NOT_RUN",
+      "futureMerge": "normal merge commit; never squash"
+    }
+  ],
+  "controls": [
+    {
+      "mutation": "omission",
+      "rejected": true
+    },
+    {
+      "mutation": "duplicate",
+      "rejected": true
+    }
+  ],
+  "scope": "Exact path review projections, not independently admitted PRs or merge authority.",
+  "combinedTreeExactlySource": true,
+  "forwardLocalDependencies": [
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/painted-mars-binding.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/painted-vista-load.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/earth-layered-recipe.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/painted-earth-landing-recipe.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/local-ai-game.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/ai-presentation.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/ai-landfall-originals.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/earth-layered-load.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/earth-layered-resources.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/earth-layered-layout.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/audiovisual-pilot.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/audiovisual-pilot.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/audio-production-review.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/apps/game/src/main.ts",
+      "to": "port/v2/apps/game/src/local-ai-game.ts",
+      "fromTier": "ui",
+      "toTier": "engine",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/tools/creature-animation/audit-cut-seams.mjs",
+      "to": "port/v2/tools/workspacelock.mjs",
+      "fromTier": "engine",
+      "toTier": "tools",
+      "absentAtBase": false
+    },
+    {
+      "from": "port/v2/tools/creature-animation/audit-ear-support.mjs",
+      "to": "port/v2/tools/workspacelock.mjs",
+      "fromTier": "engine",
+      "toTier": "tools",
+      "absentAtBase": false
+    },
+    {
+      "from": "port/v2/tools/creature-animation/prepare-continuous-skin.mjs",
+      "to": "port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "fromTier": "engine",
+      "toTier": "tools",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/tools/creature-animation/prepare-seam-proof.mjs",
+      "to": "port/v2/tools/workspacelock.mjs",
+      "fromTier": "engine",
+      "toTier": "tools",
+      "absentAtBase": false
+    },
+    {
+      "from": "port/v2/tools/creature-animation/qualify-continuous-skin.mjs",
+      "to": "port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "fromTier": "engine",
+      "toTier": "tools",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/tools/creature-animation/qualify-continuous-skin.mjs",
+      "to": "port/v2/tools/quadruped-proof/rendered-contact.mjs",
+      "fromTier": "engine",
+      "toTier": "tools",
+      "absentAtBase": true
+    },
+    {
+      "from": "port/v2/tools/creature-animation/seam-sampling-guard.mjs",
+      "to": "port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "fromTier": "engine",
+      "toTier": "tools",
+      "absentAtBase": true
+    },
+    {
+      "from": "tools/local-image-generation/browser-variant-plan.mjs",
+      "to": "tools/local-image-repack/protobuf.mjs",
+      "fromTier": "engine",
+      "toTier": "tools",
+      "absentAtBase": true
+    },
+    {
+      "from": "tools/local-image-generation/browser-variant-plan.mjs",
+      "to": "tools/local-image-repack/model.mjs",
+      "fromTier": "engine",
+      "toTier": "tools",
+      "absentAtBase": true
+    },
+    {
+      "from": "tools/local-image-generation/mobile-pack.mjs",
+      "to": "port/v2/tools/workspacelock.mjs",
+      "fromTier": "engine",
+      "toTier": "tools",
+      "absentAtBase": false
+    },
+    {
+      "from": "tools/local-image-generation/prepare-kit-engine.mjs",
+      "to": "port/v2/tools/workspacelock.mjs",
+      "fromTier": "engine",
+      "toTier": "tools",
+      "absentAtBase": false
+    },
+    {
+      "from": "tools/local-image-generation/probe-webgpu.mjs",
+      "to": "port/v2/tools/workspacelock.mjs",
+      "fromTier": "engine",
+      "toTier": "tools",
+      "absentAtBase": false
+    },
+    {
+      "from": "tools/local-image-generation/runtime-pack.mjs",
+      "to": "port/v2/tools/workspacelock.mjs",
+      "fromTier": "engine",
+      "toTier": "tools",
+      "absentAtBase": false
+    }
+  ]
+}

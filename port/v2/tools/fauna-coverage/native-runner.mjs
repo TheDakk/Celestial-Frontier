@@ -39,7 +39,7 @@ try{
  Object.assign(report,await evaluate('window.cfFaunaCensus.report'));
  const artifacts=await evaluate('window.cfFaunaCensus.artifacts');report.artifacts=[];
  for(const[name,base64]of Object.entries(artifacts)){
-  if(!/^[a-z-]+\.(png|json)$/.test(name))throw Error('Invalid census artifact');
+  if(!/^[a-z0-9-]+\.(png|json)$/.test(name))throw Error('Invalid census artifact');
   const bytes=Buffer.from(base64,'base64');fs.writeFileSync(path.join(out,name),bytes);report.artifacts.push({path:name,sha256:sha(bytes),bytes:bytes.length});
  }
  if(report.status!=='DIAGNOSTIC_PASS')process.exitCode=1;

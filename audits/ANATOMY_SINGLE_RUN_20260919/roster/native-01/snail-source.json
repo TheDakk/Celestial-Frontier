@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 450526374,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 7,
+    "body": 5,
+    "loco": 2,
+    "trait": 14,
+    "size": 0,
+    "diet": 5,
+    "head": 4,
+    "limbs": 5,
+    "skin": 6,
+    "tail": 3,
+    "pattern": 1,
+    "eyes": 1,
+    "behavior": 11,
+    "habitat": 12,
+    "detail": 7,
+    "accent": 6,
+    "temper": 5,
+    "sense": 8,
+    "repro": 1,
+    "life": 0,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Snail"
+  },
+  "observation": null
+}

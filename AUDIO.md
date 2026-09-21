@@ -1090,3 +1090,12 @@ declined to score it.
 profile corrections make the test useful, but it has not been run and the clamp curve still must be
 tuned from its evidence. Gate G therefore remains open before any large v2 audio expansion can be
 called complete.
+
+## Recording metadata — matches code as of 2026-09-19
+
+New CC BY acquisitions label the account field creatorProfileName. The exact sound’s
+attribution remains the credit authority; legacy creator fields remain readable. The offline
+recording-metadata writer verifies retained API evidence hashes and exact sound attribution
+without downloading or rerendering audio. The R5–R7 packet contains a successor metadata
+ledger and controls for sounds 619339 and 858791; original acquisition/license/audio bytes
+remain unchanged. No new listening or licensing approval is implied.

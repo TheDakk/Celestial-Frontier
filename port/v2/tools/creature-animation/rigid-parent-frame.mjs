@@ -1,0 +1,12 @@
+/** Rigid painted groups follow an observed published parent attachment. Their
+ * local authored rotation is inherited from the skeleton; world-space pins do
+ * not force the flexible collar to chase a separate rigid target. */
+const need=(ok,s)=>{if(!ok)throw Error('Rigid parent frame: '+s);};
+export function compileRigidParentFrames(skin,owners,definition,width,height){
+ const parent=new Map(definition.graph),byId=new Map(owners.map(p=>[p.id,p])),byJoint=new Map(owners.map(p=>[p.joint,p.id])),parts=new Map(skin.parts.map(p=>[p.id,p])),restField=Float32Array.from(skin.vertices.flatMap(v=>[v.x/width,v.y/height]));
+ const rest=p=>Float32Array.from(p.vertices.flatMap(v=>{let x=0,y=0;for(let k=0;k<3;k++){x+=restField[v.triangle[k]*2]*v.barycentric[k];y+=restField[v.triangle[k]*2+1]*v.barycentric[k];}return[x,y];}));
+ return skin.parts.filter(p=>p.rigidParentFrame).map(p=>{const f=p.rigidParentFrame,owner=byId.get(p.id),a=parts.get(f.parentPart),anchor=f.anchor;need(owner&&a&&a!==p&&!a.rigidParentFrame&&parent.get(owner.joint)===f.parentJoint,'declared parent');let j=f.parentJoint;while(j&&!byJoint.has(j))j=parent.get(j);need(byJoint.get(j)===f.parentPart,'nearest painted parent');need(anchor?.triangle?.length===3&&anchor.weights?.length===3&&anchor.triangle.every(i=>Number.isInteger(i)&&i>=0&&i<a.vertices.length)&&anchor.weights.every(v=>Number.isFinite(v)&&v>=-1e-8)&&Math.abs(anchor.weights.reduce((s,v)=>s+v,0)-1)<=1e-8,'anchor');const parentRest=rest(a),childRest=rest(p),at=positions=>anchor.triangle.reduce((v,i,k)=>[v[0]+positions[i*2]*anchor.weights[k],v[1]+positions[i*2+1]*anchor.weights[k]],[0,0]);return{id:p.id,joint:owner.joint,parentJoint:f.parentJoint,parentPart:f.parentPart,at,anchorRest:at(parentRest),rest:childRest,width,height};});
+}
+/** Writes only caller-owned pending buffers. The caller validates all shapes
+ * and source joins before accepting the complete frame. */
+export function applyRigidParentFrames(groups,matrices,positions){for(const g of groups){const m=matrices[g.joint],p=matrices[g.parentJoint],out=positions[g.id],parent=positions[g.parentPart];need(m&&p&&out?.length===g.rest.length&&parent,'frame inventory');for(const q of[m,p])need(q.length===6&&q.every(Number.isFinite)&&Math.abs(q[0]*q[0]+q[1]*q[1]-1)<1e-8&&Math.abs(q[2]+q[1])<1e-8&&Math.abs(q[3]-q[0])<1e-8,'rigid matrix');const a=g.at(parent),c=m[0],s=m[1];for(let i=0;i<out.length;i+=2){const x=(g.rest[i]-g.anchorRest[0])*g.width,y=(g.rest[i+1]-g.anchorRest[1])*g.height;out[i]=a[0]+(c*x-s*y)/g.width;out[i+1]=a[1]+(s*x+c*y)/g.height;}}}

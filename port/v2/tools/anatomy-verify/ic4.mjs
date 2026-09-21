@@ -7,7 +7,7 @@
  * node ic4.mjs [json]. Landmark accuracy is score.mjs's business; this file is the verdict and its controls. */
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../..')+'/';
-const {readPng}=await import(root+'port/v2/tools/painted-creature/finish-conservation.mjs');
+const {readPng}=await import('./png.mjs');
 const {assignLegs}=await import('./assign.mjs');const {alphaOf,detectTips,classifyTips}=await import('./tips.mjs');const {templateRest}=await import('./template-rest.mjs');const {SUBJECTS,truthOf,scoreSubject,declarationOf}=await import('./score.mjs');
 export function verdict(res,template,declaredHidden,positive=null){const T=templateRest(template);const reasons=[];
   // a mutant's folded slot must carry the SAME loop the unmutated master did (within 0.25 R); any other loop there is a refill

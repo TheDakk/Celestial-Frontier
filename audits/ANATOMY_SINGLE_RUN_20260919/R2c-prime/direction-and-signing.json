@@ -1,0 +1,11 @@
+{
+  "section": 9,
+  "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md",
+  "sha256": "cd3d2cb26bbeeb4dbc375bef619c8ea8c3861d2495417a54cf5e1c4e3e603c24",
+  "haltedPacketCommit": "ca851fb62bd35d5804ed22496c29f48969361733",
+  "signatureVerified": true,
+  "signature": "Good \"git\" signature for configured-signer with ED25519 key SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk\n",
+  "authority": "Nick explicitly authorizes one bounded correction and reopens S2; no sync, push or changed thresholds. The halted packet is signed evidence, not admission.",
+  "runtime": "v26.9.0",
+  "startup": "Uninterrupted run reuses00-toolchain receipt; Node26.9.0 unchanged."
+}

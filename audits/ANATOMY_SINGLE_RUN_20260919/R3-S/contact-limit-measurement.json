@@ -1,0 +1,128 @@
+{
+  "ledger": "travel-scope-03/ledger.json",
+  "selection": "Planted quadruped chains only; all six subjects swept; brachyuran unchanged and zero classes.",
+  "formula": "ceil((max(abs(deg)) + 10) / 5) * 5",
+  "groups": [
+    {
+      "group": "Knee",
+      "measuredMaxAbsDeg": 86.53689176514563,
+      "contactLimitAbsDeg": 100,
+      "witness": {
+        "subject": "civet",
+        "row": "faint",
+        "ms": 445.2,
+        "kind": "joint",
+        "joint": "foreFarKnee",
+        "deg": -86.53689176514563,
+        "limit": {
+          "min": -75,
+          "max": 75
+        },
+        "exceeded": true,
+        "root": {
+          "rotation": 0.174533,
+          "dx": -0.02,
+          "dy": 0.22
+        },
+        "spine": {
+          "rotation": 0.139626,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "inputRoot": {
+          "rotation": 0.174533,
+          "dx": -0.02,
+          "dy": 0.22
+        },
+        "hip": "foreFarRoot",
+        "hipDropPx": 189.34312836341144
+      }
+    },
+    {
+      "group": "Ankle",
+      "measuredMaxAbsDeg": 94.14690036930628,
+      "contactLimitAbsDeg": 105,
+      "witness": {
+        "subject": "civet",
+        "row": "faint",
+        "ms": 270.3,
+        "kind": "joint",
+        "joint": "foreFarAnkle",
+        "deg": 94.14690036930628,
+        "limit": {
+          "min": -60,
+          "max": 60
+        },
+        "exceeded": true,
+        "root": {
+          "rotation": 0.087467,
+          "dx": -0.010023,
+          "dy": 0.160138
+        },
+        "spine": {
+          "rotation": 0.174453,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "inputRoot": {
+          "rotation": 0.087467,
+          "dx": -0.010023,
+          "dy": 0.160138
+        },
+        "hip": "foreFarRoot",
+        "hipDropPx": 160.9418189963634
+      }
+    },
+    {
+      "group": "Paw",
+      "measuredMaxAbsDeg": 80.56851495806845,
+      "contactLimitAbsDeg": 95,
+      "witness": {
+        "subject": "civet",
+        "row": "faint",
+        "ms": 445.2,
+        "kind": "joint",
+        "joint": "foreNearPaw",
+        "deg": 80.56851495806845,
+        "limit": {
+          "min": -40,
+          "max": 40
+        },
+        "exceeded": true,
+        "root": {
+          "rotation": 0.174533,
+          "dx": -0.02,
+          "dy": 0.22
+        },
+        "spine": {
+          "rotation": 0.139626,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "inputRoot": {
+          "rotation": 0.174533,
+          "dx": -0.02,
+          "dy": 0.22
+        },
+        "hip": "foreNearRoot",
+        "hipDropPx": 142.8422890267172
+      }
+    }
+  ],
+  "rawLimitsChanged": false
+}

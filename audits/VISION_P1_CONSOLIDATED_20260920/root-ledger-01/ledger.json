@@ -1,0 +1,1912 @@
+{
+  "schema": "cf.root-continuity-ledger/v1",
+  "sampleHz": 60,
+  "nativeSourceSha256": "6f02d2ed4613ab704c9b70376edae02bb0ae67a7eafa9a0522ee3ba41800321f",
+  "scope": "All full native rows with transitions; same GSAP, performance owner, contact solver, persistent stage travel; root kinematics only, no CPU/pixel claim.",
+  "subjects": [
+    {
+      "id": "painter-crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab",
+      "mutant": false,
+      "mutations": [],
+      "recordSha256": "625309b27b17aff36a12ed6eedc4b882c14e1b4dd93c9e94e90c603dc021f2b4",
+      "bindingSha256": "227ec4b53559c38424ed8b243d88b2caf664e2804ba7f65986afb69f8482009b",
+      "width": 880,
+      "height": 880,
+      "stride": 0.00466105410993862,
+      "scaleLength": 0.09374540429634415,
+      "durationMs": 13768.119471694034,
+      "rows": [
+        {
+          "id": "idle",
+          "startMs": 1000,
+          "endMs": 4301.452805027366,
+          "samples": 320,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach",
+          "startMs": 4301.452805027366,
+          "endMs": 5001.452805027366,
+          "samples": 42,
+          "maximumStep": 0.00018496246468010808,
+          "maximumStepPx": 0.16276696891849513,
+          "maximumStepScale": 0.001973029676157908,
+          "worstMs": 4700,
+          "fromAction": "approach"
+        },
+        {
+          "id": "melee:pinch",
+          "startMs": 5001.452805027366,
+          "endMs": 5788.119471694033,
+          "samples": 47,
+          "maximumStep": 0.00001612286391367273,
+          "maximumStepPx": 0.014188120244032001,
+          "maximumStepScale": 0.00017198564595983596,
+          "worstMs": 5016.666666666667,
+          "fromAction": "approach"
+        },
+        {
+          "id": "hit",
+          "startMs": 5788.119471694033,
+          "endMs": 6518.119471694033,
+          "samples": 44,
+          "maximumStep": 0.0008048179028600338,
+          "maximumStepPx": 0.7082397545168297,
+          "maximumStepScale": 0.008585145148191758,
+          "worstMs": 6233.333333333333,
+          "fromAction": "hit"
+        },
+        {
+          "id": "alert",
+          "startMs": 6518.119471694033,
+          "endMs": 7118.119471694033,
+          "samples": 36,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach:scuttle",
+          "startMs": 7118.119471694033,
+          "endMs": 7818.119471694033,
+          "samples": 42,
+          "maximumStep": 0.00018496246468010895,
+          "maximumStepPx": 0.16276696891849587,
+          "maximumStepScale": 0.0019730296761579177,
+          "worstMs": 7250,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "cast",
+          "startMs": 7818.119471694033,
+          "endMs": 8708.119471694034,
+          "samples": 53,
+          "maximumStep": 0.00001612286391367186,
+          "maximumStepPx": 0.014188120244031238,
+          "maximumStepScale": 0.0001719856459598267,
+          "worstMs": 7833.333333333333,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "dodge",
+          "startMs": 8708.119471694034,
+          "endMs": 9308.119471694034,
+          "samples": 36,
+          "maximumStep": 0.0011352842239424447,
+          "maximumStepPx": 0.9990501170693513,
+          "maximumStepScale": 0.01211029204539596,
+          "worstMs": 8933.333333333334,
+          "fromAction": "dodge"
+        },
+        {
+          "id": "faint",
+          "startMs": 9308.119471694034,
+          "endMs": 10108.119471694034,
+          "samples": 48,
+          "maximumStep": 0.0014985934678648505,
+          "maximumStepPx": 1.3187622517210684,
+          "maximumStepScale": 0.01598578062693674,
+          "worstMs": 9633.333333333334,
+          "fromAction": "faint"
+        },
+        {
+          "id": "victory",
+          "startMs": 10108.119471694034,
+          "endMs": 10988.119471694034,
+          "samples": 53,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "tame",
+          "startMs": 10988.119471694034,
+          "endMs": 11908.119471694034,
+          "samples": 55,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "feed",
+          "startMs": 11908.119471694034,
+          "endMs": 12768.119471694034,
+          "samples": 52,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        }
+      ],
+      "failure": null,
+      "oldGuard": {
+        "status": "PASS",
+        "maximumStep": 0.0014985934678648505,
+        "stride": 0.00466105410993862,
+        "worst": 578
+      },
+      "samplesFile": "painter-crab-samples.jsonl.gz"
+    },
+    {
+      "id": "painter-coconut-crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab",
+      "mutant": false,
+      "mutations": [],
+      "recordSha256": "65a117c20f6de4bea7c7074d7b1214abebc42813e57f4b95818723d5bd0ff5ef",
+      "bindingSha256": "7ac8b5345f1155a97acb9de087b0c3ba0b34320d73419bad673752e04e9e34f7",
+      "width": 880,
+      "height": 880,
+      "stride": 0.008621141515749758,
+      "scaleLength": 0.12369153327604604,
+      "durationMs": 14128.326491254073,
+      "rows": [
+        {
+          "id": "idle",
+          "startMs": 1000,
+          "endMs": 4661.659824587405,
+          "samples": 341,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach",
+          "startMs": 4661.659824587405,
+          "endMs": 5361.659824587405,
+          "samples": 42,
+          "maximumStep": 0.00034210879030753885,
+          "maximumStepPx": 0.3010557354706342,
+          "maximumStepScale": 0.0027658222131020445,
+          "worstMs": 5300,
+          "fromAction": "approach"
+        },
+        {
+          "id": "melee:pinch",
+          "startMs": 5361.659824587405,
+          "endMs": 6148.326491254072,
+          "samples": 47,
+          "maximumStep": 0.000239335709087702,
+          "maximumStepPx": 0.21061542399717775,
+          "maximumStepScale": 0.001934940110682996,
+          "worstMs": 5366.666666666667,
+          "fromAction": "approach"
+        },
+        {
+          "id": "hit",
+          "startMs": 6148.326491254072,
+          "endMs": 6878.326491254072,
+          "samples": 44,
+          "maximumStep": 0.0010195996827681334,
+          "maximumStepPx": 0.8972477208359574,
+          "maximumStepScale": 0.008243083869715341,
+          "worstMs": 6583.333333333333,
+          "fromAction": "hit"
+        },
+        {
+          "id": "alert",
+          "startMs": 6878.326491254072,
+          "endMs": 7478.326491254072,
+          "samples": 36,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach:scuttle",
+          "startMs": 7478.326491254072,
+          "endMs": 8178.326491254072,
+          "samples": 42,
+          "maximumStep": 0.00034210879030753885,
+          "maximumStepPx": 0.3010557354706342,
+          "maximumStepScale": 0.0027658222131020445,
+          "worstMs": 7616.666666666667,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "cast",
+          "startMs": 8178.326491254072,
+          "endMs": 9068.326491254073,
+          "samples": 54,
+          "maximumStep": 0.000239335709087702,
+          "maximumStepPx": 0.21061542399717775,
+          "maximumStepScale": 0.001934940110682996,
+          "worstMs": 8183.333333333333,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "dodge",
+          "startMs": 9068.326491254073,
+          "endMs": 9668.326491254073,
+          "samples": 36,
+          "maximumStep": 0.0017120205296670132,
+          "maximumStepPx": 1.5065780661069716,
+          "maximumStepScale": 0.013841048650001343,
+          "worstMs": 9300,
+          "fromAction": "dodge"
+        },
+        {
+          "id": "faint",
+          "startMs": 9668.326491254073,
+          "endMs": 10468.326491254073,
+          "samples": 48,
+          "maximumStep": 0.0019648939387185644,
+          "maximumStepPx": 1.7291066660723367,
+          "maximumStepScale": 0.01588543602522456,
+          "worstMs": 10116.666666666666,
+          "fromAction": "faint"
+        },
+        {
+          "id": "victory",
+          "startMs": 10468.326491254073,
+          "endMs": 11348.326491254073,
+          "samples": 52,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "tame",
+          "startMs": 11348.326491254073,
+          "endMs": 12268.326491254073,
+          "samples": 56,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "feed",
+          "startMs": 12268.326491254073,
+          "endMs": 13128.326491254073,
+          "samples": 51,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        }
+      ],
+      "failure": null,
+      "oldGuard": {
+        "status": "PASS",
+        "maximumStep": 0.0019648939387185644,
+        "stride": 0.008621141515749758,
+        "worst": 607
+      },
+      "samplesFile": "painter-coconut-crab-samples.jsonl.gz"
+    },
+    {
+      "id": "painter-freshwater-crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab",
+      "mutant": false,
+      "mutations": [],
+      "recordSha256": "3ed3407e87adf664775629811a7845f1a3c3b2b94bad402fadb2262f4edf6202",
+      "bindingSha256": "075341dac4101bf8b0d641424cb7a7514277f9044a71b96a2b546228850a5f40",
+      "width": 880,
+      "height": 880,
+      "stride": 0.0044954258348100596,
+      "scaleLength": 0.1225,
+      "durationMs": 13726.164551811915,
+      "rows": [
+        {
+          "id": "idle",
+          "startMs": 1000,
+          "endMs": 4259.497885145247,
+          "samples": 317,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach",
+          "startMs": 4259.497885145247,
+          "endMs": 4959.497885145247,
+          "samples": 42,
+          "maximumStep": 0.00017838991407976863,
+          "maximumStepPx": 0.1569831243901964,
+          "maximumStepScale": 0.00145624419656954,
+          "worstMs": 4700,
+          "fromAction": "approach"
+        },
+        {
+          "id": "melee:pinch",
+          "startMs": 4959.497885145247,
+          "endMs": 5746.164551811914,
+          "samples": 47,
+          "maximumStep": 0.00010165961490000465,
+          "maximumStepPx": 0.08946046111200409,
+          "maximumStepScale": 0.0008298744073469768,
+          "worstMs": 4966.666666666667,
+          "fromAction": "approach"
+        },
+        {
+          "id": "hit",
+          "startMs": 5746.164551811914,
+          "endMs": 6476.164551811914,
+          "samples": 44,
+          "maximumStep": 0.0010297124999999994,
+          "maximumStepPx": 0.9061469999999995,
+          "maximumStepScale": 0.008405816326530608,
+          "worstMs": 6183.333333333333,
+          "fromAction": "hit"
+        },
+        {
+          "id": "alert",
+          "startMs": 6476.164551811914,
+          "endMs": 7076.164551811914,
+          "samples": 36,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach:scuttle",
+          "startMs": 7076.164551811914,
+          "endMs": 7776.164551811914,
+          "samples": 42,
+          "maximumStep": 0.00017838991407976776,
+          "maximumStepPx": 0.15698312439019563,
+          "maximumStepScale": 0.0014562441965695328,
+          "worstMs": 7100,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "cast",
+          "startMs": 7776.164551811914,
+          "endMs": 8666.164551811915,
+          "samples": 53,
+          "maximumStep": 0.00010165961490000465,
+          "maximumStepPx": 0.08946046111200409,
+          "maximumStepScale": 0.0008298744073469768,
+          "worstMs": 7783.333333333333,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "dodge",
+          "startMs": 8666.164551811915,
+          "endMs": 9266.164551811915,
+          "samples": 36,
+          "maximumStep": 0.001775114999999999,
+          "maximumStepPx": 1.5621011999999992,
+          "maximumStepScale": 0.014490734693877542,
+          "worstMs": 8900,
+          "fromAction": "dodge"
+        },
+        {
+          "id": "faint",
+          "startMs": 9266.164551811915,
+          "endMs": 10066.164551811915,
+          "samples": 48,
+          "maximumStep": 0.0019556639999999993,
+          "maximumStepPx": 1.7209843199999995,
+          "maximumStepScale": 0.01596460408163265,
+          "worstMs": 9716.666666666666,
+          "fromAction": "faint"
+        },
+        {
+          "id": "victory",
+          "startMs": 10066.164551811915,
+          "endMs": 10946.164551811915,
+          "samples": 53,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "tame",
+          "startMs": 10946.164551811915,
+          "endMs": 11866.164551811915,
+          "samples": 55,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "feed",
+          "startMs": 11866.164551811915,
+          "endMs": 12726.164551811915,
+          "samples": 52,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        }
+      ],
+      "failure": null,
+      "oldGuard": {
+        "status": "PASS",
+        "maximumStep": 0.0019556639999999993,
+        "stride": 0.0044954258348100596,
+        "worst": 583
+      },
+      "samplesFile": "painter-freshwater-crab-samples.jsonl.gz"
+    },
+    {
+      "id": "painter-mud-crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab",
+      "mutant": false,
+      "mutations": [],
+      "recordSha256": "f16b43760db43c41a65f0272af1ec60e5c9817b3b3943caa88934f5e5a981408",
+      "bindingSha256": "f87614a4fb9745f5d265ebaa2bc2203332ab2ecfd019d6368af66ac335619788",
+      "width": 880,
+      "height": 880,
+      "stride": 0.00459457139279816,
+      "scaleLength": 0.14349999999999996,
+      "durationMs": 14090.00042470793,
+      "rows": [
+        {
+          "id": "idle",
+          "startMs": 1000,
+          "endMs": 4623.333758041263,
+          "samples": 339,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach",
+          "startMs": 4623.333758041263,
+          "endMs": 5323.333758041263,
+          "samples": 42,
+          "maximumStep": 0.00018232426161897929,
+          "maximumStepPx": 0.16044535022470177,
+          "maximumStepScale": 0.0012705523457768595,
+          "worstMs": 5266.666666666667,
+          "fromAction": "approach"
+        },
+        {
+          "id": "melee:pinch",
+          "startMs": 5323.333758041263,
+          "endMs": 6110.00042470793,
+          "samples": 47,
+          "maximumStep": 0.00007293435072116411,
+          "maximumStepPx": 0.06418222863462442,
+          "maximumStepScale": 0.0005082533151300636,
+          "worstMs": 5333.333333333333,
+          "fromAction": "approach"
+        },
+        {
+          "id": "hit",
+          "startMs": 6110.00042470793,
+          "endMs": 6840.00042470793,
+          "samples": 44,
+          "maximumStep": 0.0012263327999999997,
+          "maximumStepPx": 1.0791728639999998,
+          "maximumStepScale": 0.008545873170731707,
+          "worstMs": 6550,
+          "fromAction": "hit"
+        },
+        {
+          "id": "alert",
+          "startMs": 6840.00042470793,
+          "endMs": 7440.00042470793,
+          "samples": 36,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach:scuttle",
+          "startMs": 7440.00042470793,
+          "endMs": 8140.00042470793,
+          "samples": 42,
+          "maximumStep": 0.00018232426161897929,
+          "maximumStepPx": 0.16044535022470177,
+          "maximumStepScale": 0.0012705523457768595,
+          "worstMs": 7516.666666666667,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "cast",
+          "startMs": 8140.00042470793,
+          "endMs": 9030.00042470793,
+          "samples": 53,
+          "maximumStep": 0.00007293435072117278,
+          "maximumStepPx": 0.06418222863463205,
+          "maximumStepScale": 0.0005082533151301241,
+          "worstMs": 8150,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "dodge",
+          "startMs": 9030.00042470793,
+          "endMs": 9630.00042470793,
+          "samples": 36,
+          "maximumStep": 0.0014566104000000007,
+          "maximumStepPx": 1.2818171520000006,
+          "maximumStepScale": 0.010150595121951227,
+          "worstMs": 9266.666666666666,
+          "fromAction": "dodge"
+        },
+        {
+          "id": "faint",
+          "startMs": 9630.00042470793,
+          "endMs": 10430.00042470793,
+          "samples": 48,
+          "maximumStep": 0.002296324799999999,
+          "maximumStepPx": 2.0207658239999993,
+          "maximumStepScale": 0.016002263414634146,
+          "worstMs": 10083.333333333334,
+          "fromAction": "faint"
+        },
+        {
+          "id": "victory",
+          "startMs": 10430.00042470793,
+          "endMs": 11310.00042470793,
+          "samples": 53,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "tame",
+          "startMs": 11310.00042470793,
+          "endMs": 12230.00042470793,
+          "samples": 55,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "feed",
+          "startMs": 12230.00042470793,
+          "endMs": 13090.00042470793,
+          "samples": 52,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        }
+      ],
+      "failure": null,
+      "oldGuard": {
+        "status": "PASS",
+        "maximumStep": 0.002296324799999999,
+        "stride": 0.00459457139279816,
+        "worst": 605
+      },
+      "samplesFile": "painter-mud-crab-samples.jsonl.gz"
+    },
+    {
+      "id": "painter-vent-crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab",
+      "mutant": false,
+      "mutations": [],
+      "recordSha256": "6ed9989d14132ea998b1601da1b86838e61f87c7d973f7a1ddac00a8fd5b2f5c",
+      "bindingSha256": "ff30f7d588fcdcb73f3320ced63d6c1d9d37548be09f07c9103f6215daa8837b",
+      "width": 880,
+      "height": 880,
+      "stride": 0.006159010596724999,
+      "scaleLength": 0.10149999999999992,
+      "durationMs": 13349.259831557672,
+      "rows": [
+        {
+          "id": "idle",
+          "startMs": 1000,
+          "endMs": 3882.5931648910046,
+          "samples": 294,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach",
+          "startMs": 3882.5931648910046,
+          "endMs": 4582.593164891005,
+          "samples": 42,
+          "maximumStep": 0.00024440518240972757,
+          "maximumStepPx": 0.21507656052056026,
+          "maximumStepScale": 0.0024079328316229335,
+          "worstMs": 4450,
+          "fromAction": "approach"
+        },
+        {
+          "id": "melee:pinch",
+          "startMs": 4582.593164891005,
+          "endMs": 5369.2598315576715,
+          "samples": 48,
+          "maximumStep": 0.0002335511222200399,
+          "maximumStepPx": 0.2055249875536351,
+          "maximumStepScale": 0.0023009962780299515,
+          "worstMs": 4583.333333333333,
+          "fromAction": "approach"
+        },
+        {
+          "id": "hit",
+          "startMs": 5369.2598315576715,
+          "endMs": 6099.2598315576715,
+          "samples": 43,
+          "maximumStep": 0.0008644944000000005,
+          "maximumStepPx": 0.7607550720000005,
+          "maximumStepScale": 0.008517186206896564,
+          "worstMs": 5816.666666666667,
+          "fromAction": "hit"
+        },
+        {
+          "id": "alert",
+          "startMs": 6099.2598315576715,
+          "endMs": 6699.2598315576715,
+          "samples": 36,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach:scuttle",
+          "startMs": 6699.2598315576715,
+          "endMs": 7399.2598315576715,
+          "samples": 42,
+          "maximumStep": 0.0002444051824097293,
+          "maximumStepPx": 0.2150765605205618,
+          "maximumStepScale": 0.002407932831622951,
+          "worstMs": 6750,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "cast",
+          "startMs": 7399.2598315576715,
+          "endMs": 8289.259831557672,
+          "samples": 54,
+          "maximumStep": 0.0002335511222200555,
+          "maximumStepPx": 0.20552498755364884,
+          "maximumStepScale": 0.002300996278030105,
+          "worstMs": 7400,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "dodge",
+          "startMs": 8289.259831557672,
+          "endMs": 8889.259831557672,
+          "samples": 36,
+          "maximumStep": 0.0013027938000000003,
+          "maximumStepPx": 1.1464585440000001,
+          "maximumStepScale": 0.012835406896551736,
+          "worstMs": 8516.666666666666,
+          "fromAction": "dodge"
+        },
+        {
+          "id": "faint",
+          "startMs": 8889.259831557672,
+          "endMs": 9689.259831557672,
+          "samples": 48,
+          "maximumStep": 0.001616353200000001,
+          "maximumStepPx": 1.422390816000001,
+          "maximumStepScale": 0.01592466206896554,
+          "worstMs": 9216.666666666666,
+          "fromAction": "faint"
+        },
+        {
+          "id": "victory",
+          "startMs": 9689.259831557672,
+          "endMs": 10569.259831557672,
+          "samples": 53,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "tame",
+          "startMs": 10569.259831557672,
+          "endMs": 11489.259831557672,
+          "samples": 55,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "feed",
+          "startMs": 11489.259831557672,
+          "endMs": 12349.259831557672,
+          "samples": 51,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        }
+      ],
+      "failure": null,
+      "oldGuard": {
+        "status": "PASS",
+        "maximumStep": 0.001616353200000001,
+        "stride": 0.006159010596724999,
+        "worst": 553
+      },
+      "samplesFile": "painter-vent-crab-samples.jsonl.gz"
+    },
+    {
+      "id": "painted-coconut-crab",
+      "dir": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04",
+      "mutant": false,
+      "mutations": [],
+      "recordSha256": "12c19c9543b0ce8924cffcc11092854743b07840496615207e1e72f62ad2639d",
+      "bindingSha256": "021c0850f5c1735411313a5b3c9167b87bf65a25f7d712a123e0e2534bd8553d",
+      "width": 1254,
+      "height": 1254,
+      "stride": 0.0064553827392768975,
+      "scaleLength": 0.45701572799518586,
+      "durationMs": 14128.326491254073,
+      "rows": [
+        {
+          "id": "idle",
+          "startMs": 1000,
+          "endMs": 4661.659824587405,
+          "samples": 341,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach",
+          "startMs": 4661.659824587405,
+          "endMs": 5361.659824587405,
+          "samples": 42,
+          "maximumStep": 0.00025616598171734374,
+          "maximumStepPx": 0.321232141073549,
+          "maximumStepScale": 0.0005605189625334779,
+          "worstMs": 5216.666666666667,
+          "fromAction": "approach"
+        },
+        {
+          "id": "melee:pinch",
+          "startMs": 5361.659824587405,
+          "endMs": 6148.326491254072,
+          "samples": 47,
+          "maximumStep": 0.00017921102472506778,
+          "maximumStepPx": 0.224730625005235,
+          "maximumStepScale": 0.00039213316686325414,
+          "worstMs": 5366.666666666667,
+          "fromAction": "approach"
+        },
+        {
+          "id": "hit",
+          "startMs": 6148.326491254072,
+          "endMs": 6878.326491254072,
+          "samples": 44,
+          "maximumStep": 0.00376728997369397,
+          "maximumStepPx": 4.724181627012238,
+          "maximumStepScale": 0.008243239221153576,
+          "worstMs": 6583.333333333333,
+          "fromAction": "hit"
+        },
+        {
+          "id": "alert",
+          "startMs": 6878.326491254072,
+          "endMs": 7478.326491254072,
+          "samples": 36,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach:scuttle",
+          "startMs": 7478.326491254072,
+          "endMs": 8178.326491254072,
+          "samples": 42,
+          "maximumStep": 0.0002561659817173455,
+          "maximumStepPx": 0.32123214107355125,
+          "maximumStepScale": 0.0005605189625334817,
+          "worstMs": 8166.666666666667,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "cast",
+          "startMs": 8178.326491254072,
+          "endMs": 9068.326491254073,
+          "samples": 54,
+          "maximumStep": 0.00017921102472506778,
+          "maximumStepPx": 0.224730625005235,
+          "maximumStepScale": 0.00039213316686325414,
+          "worstMs": 8183.333333333333,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "dodge",
+          "startMs": 9068.326491254073,
+          "endMs": 9668.326491254073,
+          "samples": 36,
+          "maximumStep": 0.0037513301528283045,
+          "maximumStepPx": 4.7041680116466935,
+          "maximumStepScale": 0.008208317401426107,
+          "worstMs": 9300,
+          "fromAction": "dodge"
+        },
+        {
+          "id": "faint",
+          "startMs": 9668.326491254073,
+          "endMs": 10468.326491254073,
+          "samples": 48,
+          "maximumStep": 0.007260045286851924,
+          "maximumStepPx": 9.104096789712312,
+          "maximumStepScale": 0.015885766817478983,
+          "worstMs": 10116.666666666666,
+          "fromAction": "faint"
+        },
+        {
+          "id": "victory",
+          "startMs": 10468.326491254073,
+          "endMs": 11348.326491254073,
+          "samples": 52,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "tame",
+          "startMs": 11348.326491254073,
+          "endMs": 12268.326491254073,
+          "samples": 56,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "feed",
+          "startMs": 12268.326491254073,
+          "endMs": 13128.326491254073,
+          "samples": 51,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        }
+      ],
+      "failure": null,
+      "oldGuard": {
+        "status": "FAIL",
+        "maximumStep": 0.007260045286851924,
+        "stride": 0.0064553827392768975,
+        "worst": 607
+      },
+      "samplesFile": "painted-coconut-crab-samples.jsonl.gz"
+    }
+  ],
+  "controls": [
+    {
+      "id": "painter-crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab",
+      "mutant": true,
+      "mutations": [
+        {
+          "action": "faint",
+          "keyBefore": {
+            "ms": 260,
+            "t": 0.5,
+            "value": 0.1803953192714742,
+            "ease": "sine-in-out"
+          },
+          "rule": "Double peak key that begins faint recovery; all times, other keys, joint tracks unchanged",
+          "keyAfter": {
+            "ms": 260,
+            "t": 0.5,
+            "value": 0.3607906385429484,
+            "ease": "sine-in-out"
+          }
+        }
+      ],
+      "recordSha256": "625309b27b17aff36a12ed6eedc4b882c14e1b4dd93c9e94e90c603dc021f2b4",
+      "bindingSha256": "227ec4b53559c38424ed8b243d88b2caf664e2804ba7f65986afb69f8482009b",
+      "width": 880,
+      "height": 880,
+      "stride": 0.00466105410993862,
+      "scaleLength": 0.09374540429634415,
+      "durationMs": 13768.119471694034,
+      "rows": [
+        {
+          "id": "idle",
+          "startMs": 1000,
+          "endMs": 4301.452805027366,
+          "samples": 320,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach",
+          "startMs": 4301.452805027366,
+          "endMs": 5001.452805027366,
+          "samples": 42,
+          "maximumStep": 0.00018496246468010808,
+          "maximumStepPx": 0.16276696891849513,
+          "maximumStepScale": 0.001973029676157908,
+          "worstMs": 4700,
+          "fromAction": "approach"
+        },
+        {
+          "id": "melee:pinch",
+          "startMs": 5001.452805027366,
+          "endMs": 5788.119471694033,
+          "samples": 47,
+          "maximumStep": 0.00001612286391367273,
+          "maximumStepPx": 0.014188120244032001,
+          "maximumStepScale": 0.00017198564595983596,
+          "worstMs": 5016.666666666667,
+          "fromAction": "approach"
+        },
+        {
+          "id": "hit",
+          "startMs": 5788.119471694033,
+          "endMs": 6518.119471694033,
+          "samples": 44,
+          "maximumStep": 0.0008048179028600338,
+          "maximumStepPx": 0.7082397545168297,
+          "maximumStepScale": 0.008585145148191758,
+          "worstMs": 6233.333333333333,
+          "fromAction": "hit"
+        },
+        {
+          "id": "alert",
+          "startMs": 6518.119471694033,
+          "endMs": 7118.119471694033,
+          "samples": 36,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach:scuttle",
+          "startMs": 7118.119471694033,
+          "endMs": 7818.119471694033,
+          "samples": 42,
+          "maximumStep": 0.00018496246468010895,
+          "maximumStepPx": 0.16276696891849587,
+          "maximumStepScale": 0.0019730296761579177,
+          "worstMs": 7250,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "cast",
+          "startMs": 7818.119471694033,
+          "endMs": 8708.119471694034,
+          "samples": 53,
+          "maximumStep": 0.00001612286391367186,
+          "maximumStepPx": 0.014188120244031238,
+          "maximumStepScale": 0.0001719856459598267,
+          "worstMs": 7833.333333333333,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "dodge",
+          "startMs": 8708.119471694034,
+          "endMs": 9308.119471694034,
+          "samples": 36,
+          "maximumStep": 0.0011352842239424447,
+          "maximumStepPx": 0.9990501170693513,
+          "maximumStepScale": 0.01211029204539596,
+          "worstMs": 8933.333333333334,
+          "fromAction": "dodge"
+        },
+        {
+          "id": "faint",
+          "startMs": 9308.119471694034,
+          "endMs": 10108.119471694034,
+          "samples": 48,
+          "maximumStep": 0.0029971453624096514,
+          "maximumStepPx": 2.637487918920493,
+          "maximumStepScale": 0.03197111778338699,
+          "worstMs": 9633.333333333334,
+          "fromAction": "faint"
+        },
+        {
+          "id": "victory",
+          "startMs": 10108.119471694034,
+          "endMs": 10988.119471694034,
+          "samples": 53,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "tame",
+          "startMs": 10988.119471694034,
+          "endMs": 11908.119471694034,
+          "samples": 55,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "feed",
+          "startMs": 11908.119471694034,
+          "endMs": 12768.119471694034,
+          "samples": 52,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        }
+      ],
+      "failure": null,
+      "oldGuard": {
+        "status": "PASS",
+        "maximumStep": 0.0029971453624096514,
+        "stride": 0.00466105410993862,
+        "worst": 578
+      },
+      "samplesFile": "painter-crab-mutant-samples.jsonl.gz"
+    },
+    {
+      "id": "painter-coconut-crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab",
+      "mutant": true,
+      "mutations": [
+        {
+          "action": "faint",
+          "keyBefore": {
+            "ms": 260,
+            "t": 0.5,
+            "value": 0.16846122421510118,
+            "ease": "sine-in-out"
+          },
+          "rule": "Double peak key that begins faint recovery; all times, other keys, joint tracks unchanged",
+          "keyAfter": {
+            "ms": 260,
+            "t": 0.5,
+            "value": 0.33692244843020236,
+            "ease": "sine-in-out"
+          }
+        }
+      ],
+      "recordSha256": "65a117c20f6de4bea7c7074d7b1214abebc42813e57f4b95818723d5bd0ff5ef",
+      "bindingSha256": "7ac8b5345f1155a97acb9de087b0c3ba0b34320d73419bad673752e04e9e34f7",
+      "width": 880,
+      "height": 880,
+      "stride": 0.008621141515749758,
+      "scaleLength": 0.12369153327604604,
+      "durationMs": 14128.326491254073,
+      "rows": [
+        {
+          "id": "idle",
+          "startMs": 1000,
+          "endMs": 4661.659824587405,
+          "samples": 341,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach",
+          "startMs": 4661.659824587405,
+          "endMs": 5361.659824587405,
+          "samples": 42,
+          "maximumStep": 0.00034210879030753885,
+          "maximumStepPx": 0.3010557354706342,
+          "maximumStepScale": 0.0027658222131020445,
+          "worstMs": 5300,
+          "fromAction": "approach"
+        },
+        {
+          "id": "melee:pinch",
+          "startMs": 5361.659824587405,
+          "endMs": 6148.326491254072,
+          "samples": 47,
+          "maximumStep": 0.000239335709087702,
+          "maximumStepPx": 0.21061542399717775,
+          "maximumStepScale": 0.001934940110682996,
+          "worstMs": 5366.666666666667,
+          "fromAction": "approach"
+        },
+        {
+          "id": "hit",
+          "startMs": 6148.326491254072,
+          "endMs": 6878.326491254072,
+          "samples": 44,
+          "maximumStep": 0.0010195996827681334,
+          "maximumStepPx": 0.8972477208359574,
+          "maximumStepScale": 0.008243083869715341,
+          "worstMs": 6583.333333333333,
+          "fromAction": "hit"
+        },
+        {
+          "id": "alert",
+          "startMs": 6878.326491254072,
+          "endMs": 7478.326491254072,
+          "samples": 36,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach:scuttle",
+          "startMs": 7478.326491254072,
+          "endMs": 8178.326491254072,
+          "samples": 42,
+          "maximumStep": 0.00034210879030753885,
+          "maximumStepPx": 0.3010557354706342,
+          "maximumStepScale": 0.0027658222131020445,
+          "worstMs": 7616.666666666667,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "cast",
+          "startMs": 8178.326491254072,
+          "endMs": 9068.326491254073,
+          "samples": 54,
+          "maximumStep": 0.000239335709087702,
+          "maximumStepPx": 0.21061542399717775,
+          "maximumStepScale": 0.001934940110682996,
+          "worstMs": 8183.333333333333,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "dodge",
+          "startMs": 9068.326491254073,
+          "endMs": 9668.326491254073,
+          "samples": 36,
+          "maximumStep": 0.0017120205296670132,
+          "maximumStepPx": 1.5065780661069716,
+          "maximumStepScale": 0.013841048650001343,
+          "worstMs": 9300,
+          "fromAction": "dodge"
+        },
+        {
+          "id": "faint",
+          "startMs": 9668.326491254073,
+          "endMs": 10468.326491254073,
+          "samples": 48,
+          "maximumStep": 0.003929846616904969,
+          "maximumStepPx": 3.4582650228763727,
+          "maximumStepScale": 0.03177134693717972,
+          "worstMs": 10116.666666666666,
+          "fromAction": "faint"
+        },
+        {
+          "id": "victory",
+          "startMs": 10468.326491254073,
+          "endMs": 11348.326491254073,
+          "samples": 52,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "tame",
+          "startMs": 11348.326491254073,
+          "endMs": 12268.326491254073,
+          "samples": 56,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "feed",
+          "startMs": 12268.326491254073,
+          "endMs": 13128.326491254073,
+          "samples": 51,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        }
+      ],
+      "failure": null,
+      "oldGuard": {
+        "status": "PASS",
+        "maximumStep": 0.003929846616904969,
+        "stride": 0.008621141515749758,
+        "worst": 607
+      },
+      "samplesFile": "painter-coconut-crab-mutant-samples.jsonl.gz"
+    },
+    {
+      "id": "painter-freshwater-crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab",
+      "mutant": true,
+      "mutations": [
+        {
+          "action": "faint",
+          "keyBefore": {
+            "ms": 260,
+            "t": 0.5,
+            "value": 0.16131687242798362,
+            "ease": "sine-in-out"
+          },
+          "rule": "Double peak key that begins faint recovery; all times, other keys, joint tracks unchanged",
+          "keyAfter": {
+            "ms": 260,
+            "t": 0.5,
+            "value": 0.32263374485596724,
+            "ease": "sine-in-out"
+          }
+        }
+      ],
+      "recordSha256": "3ed3407e87adf664775629811a7845f1a3c3b2b94bad402fadb2262f4edf6202",
+      "bindingSha256": "075341dac4101bf8b0d641424cb7a7514277f9044a71b96a2b546228850a5f40",
+      "width": 880,
+      "height": 880,
+      "stride": 0.0044954258348100596,
+      "scaleLength": 0.1225,
+      "durationMs": 13726.164551811915,
+      "rows": [
+        {
+          "id": "idle",
+          "startMs": 1000,
+          "endMs": 4259.497885145247,
+          "samples": 317,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach",
+          "startMs": 4259.497885145247,
+          "endMs": 4959.497885145247,
+          "samples": 42,
+          "maximumStep": 0.00017838991407976863,
+          "maximumStepPx": 0.1569831243901964,
+          "maximumStepScale": 0.00145624419656954,
+          "worstMs": 4700,
+          "fromAction": "approach"
+        },
+        {
+          "id": "melee:pinch",
+          "startMs": 4959.497885145247,
+          "endMs": 5746.164551811914,
+          "samples": 47,
+          "maximumStep": 0.00010165961490000465,
+          "maximumStepPx": 0.08946046111200409,
+          "maximumStepScale": 0.0008298744073469768,
+          "worstMs": 4966.666666666667,
+          "fromAction": "approach"
+        },
+        {
+          "id": "hit",
+          "startMs": 5746.164551811914,
+          "endMs": 6476.164551811914,
+          "samples": 44,
+          "maximumStep": 0.0010297124999999994,
+          "maximumStepPx": 0.9061469999999995,
+          "maximumStepScale": 0.008405816326530608,
+          "worstMs": 6183.333333333333,
+          "fromAction": "hit"
+        },
+        {
+          "id": "alert",
+          "startMs": 6476.164551811914,
+          "endMs": 7076.164551811914,
+          "samples": 36,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach:scuttle",
+          "startMs": 7076.164551811914,
+          "endMs": 7776.164551811914,
+          "samples": 42,
+          "maximumStep": 0.00017838991407976776,
+          "maximumStepPx": 0.15698312439019563,
+          "maximumStepScale": 0.0014562441965695328,
+          "worstMs": 7100,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "cast",
+          "startMs": 7776.164551811914,
+          "endMs": 8666.164551811915,
+          "samples": 53,
+          "maximumStep": 0.00010165961490000465,
+          "maximumStepPx": 0.08946046111200409,
+          "maximumStepScale": 0.0008298744073469768,
+          "worstMs": 7783.333333333333,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "dodge",
+          "startMs": 8666.164551811915,
+          "endMs": 9266.164551811915,
+          "samples": 36,
+          "maximumStep": 0.001775114999999999,
+          "maximumStepPx": 1.5621011999999992,
+          "maximumStepScale": 0.014490734693877542,
+          "worstMs": 8900,
+          "fromAction": "dodge"
+        },
+        {
+          "id": "faint",
+          "startMs": 9266.164551811915,
+          "endMs": 10066.164551811915,
+          "samples": 48,
+          "maximumStep": 0.003911327999999997,
+          "maximumStepPx": 3.441968639999997,
+          "maximumStepScale": 0.031929208163265284,
+          "worstMs": 9716.666666666666,
+          "fromAction": "faint"
+        },
+        {
+          "id": "victory",
+          "startMs": 10066.164551811915,
+          "endMs": 10946.164551811915,
+          "samples": 53,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "tame",
+          "startMs": 10946.164551811915,
+          "endMs": 11866.164551811915,
+          "samples": 55,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "feed",
+          "startMs": 11866.164551811915,
+          "endMs": 12726.164551811915,
+          "samples": 52,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        }
+      ],
+      "failure": null,
+      "oldGuard": {
+        "status": "PASS",
+        "maximumStep": 0.003911327999999997,
+        "stride": 0.0044954258348100596,
+        "worst": 583
+      },
+      "samplesFile": "painter-freshwater-crab-mutant-samples.jsonl.gz"
+    },
+    {
+      "id": "painter-mud-crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab",
+      "mutant": true,
+      "mutations": [
+        {
+          "action": "faint",
+          "keyBefore": {
+            "ms": 260,
+            "t": 0.5,
+            "value": 0.22777777777777772,
+            "ease": "sine-in-out"
+          },
+          "rule": "Double peak key that begins faint recovery; all times, other keys, joint tracks unchanged",
+          "keyAfter": {
+            "ms": 260,
+            "t": 0.5,
+            "value": 0.45555555555555544,
+            "ease": "sine-in-out"
+          }
+        }
+      ],
+      "recordSha256": "f16b43760db43c41a65f0272af1ec60e5c9817b3b3943caa88934f5e5a981408",
+      "bindingSha256": "f87614a4fb9745f5d265ebaa2bc2203332ab2ecfd019d6368af66ac335619788",
+      "width": 880,
+      "height": 880,
+      "stride": 0.00459457139279816,
+      "scaleLength": 0.14349999999999996,
+      "durationMs": 14090.00042470793,
+      "rows": [
+        {
+          "id": "idle",
+          "startMs": 1000,
+          "endMs": 4623.333758041263,
+          "samples": 339,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach",
+          "startMs": 4623.333758041263,
+          "endMs": 5323.333758041263,
+          "samples": 42,
+          "maximumStep": 0.00018232426161897929,
+          "maximumStepPx": 0.16044535022470177,
+          "maximumStepScale": 0.0012705523457768595,
+          "worstMs": 5266.666666666667,
+          "fromAction": "approach"
+        },
+        {
+          "id": "melee:pinch",
+          "startMs": 5323.333758041263,
+          "endMs": 6110.00042470793,
+          "samples": 47,
+          "maximumStep": 0.00007293435072116411,
+          "maximumStepPx": 0.06418222863462442,
+          "maximumStepScale": 0.0005082533151300636,
+          "worstMs": 5333.333333333333,
+          "fromAction": "approach"
+        },
+        {
+          "id": "hit",
+          "startMs": 6110.00042470793,
+          "endMs": 6840.00042470793,
+          "samples": 44,
+          "maximumStep": 0.0012263327999999997,
+          "maximumStepPx": 1.0791728639999998,
+          "maximumStepScale": 0.008545873170731707,
+          "worstMs": 6550,
+          "fromAction": "hit"
+        },
+        {
+          "id": "alert",
+          "startMs": 6840.00042470793,
+          "endMs": 7440.00042470793,
+          "samples": 36,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach:scuttle",
+          "startMs": 7440.00042470793,
+          "endMs": 8140.00042470793,
+          "samples": 42,
+          "maximumStep": 0.00018232426161897929,
+          "maximumStepPx": 0.16044535022470177,
+          "maximumStepScale": 0.0012705523457768595,
+          "worstMs": 7516.666666666667,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "cast",
+          "startMs": 8140.00042470793,
+          "endMs": 9030.00042470793,
+          "samples": 53,
+          "maximumStep": 0.00007293435072117278,
+          "maximumStepPx": 0.06418222863463205,
+          "maximumStepScale": 0.0005082533151301241,
+          "worstMs": 8150,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "dodge",
+          "startMs": 9030.00042470793,
+          "endMs": 9630.00042470793,
+          "samples": 36,
+          "maximumStep": 0.0014566104000000007,
+          "maximumStepPx": 1.2818171520000006,
+          "maximumStepScale": 0.010150595121951227,
+          "worstMs": 9266.666666666666,
+          "fromAction": "dodge"
+        },
+        {
+          "id": "faint",
+          "startMs": 9630.00042470793,
+          "endMs": 10430.00042470793,
+          "samples": 48,
+          "maximumStep": 0.0045925991999999985,
+          "maximumStepPx": 4.041487295999999,
+          "maximumStepScale": 0.032004175609756096,
+          "worstMs": 10083.333333333334,
+          "fromAction": "faint"
+        },
+        {
+          "id": "victory",
+          "startMs": 10430.00042470793,
+          "endMs": 11310.00042470793,
+          "samples": 53,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "tame",
+          "startMs": 11310.00042470793,
+          "endMs": 12230.00042470793,
+          "samples": 55,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "feed",
+          "startMs": 12230.00042470793,
+          "endMs": 13090.00042470793,
+          "samples": 52,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        }
+      ],
+      "failure": null,
+      "oldGuard": {
+        "status": "PASS",
+        "maximumStep": 0.0045925991999999985,
+        "stride": 0.00459457139279816,
+        "worst": 605
+      },
+      "samplesFile": "painter-mud-crab-mutant-samples.jsonl.gz"
+    },
+    {
+      "id": "painter-vent-crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab",
+      "mutant": true,
+      "mutations": [
+        {
+          "action": "faint",
+          "keyBefore": {
+            "ms": 260,
+            "t": 0.5,
+            "value": 0.17575757575757556,
+            "ease": "sine-in-out"
+          },
+          "rule": "Double peak key that begins faint recovery; all times, other keys, joint tracks unchanged",
+          "keyAfter": {
+            "ms": 260,
+            "t": 0.5,
+            "value": 0.3515151515151511,
+            "ease": "sine-in-out"
+          }
+        }
+      ],
+      "recordSha256": "6ed9989d14132ea998b1601da1b86838e61f87c7d973f7a1ddac00a8fd5b2f5c",
+      "bindingSha256": "ff30f7d588fcdcb73f3320ced63d6c1d9d37548be09f07c9103f6215daa8837b",
+      "width": 880,
+      "height": 880,
+      "stride": 0.006159010596724999,
+      "scaleLength": 0.10149999999999992,
+      "durationMs": 13349.259831557672,
+      "rows": [
+        {
+          "id": "idle",
+          "startMs": 1000,
+          "endMs": 3882.5931648910046,
+          "samples": 294,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach",
+          "startMs": 3882.5931648910046,
+          "endMs": 4582.593164891005,
+          "samples": 42,
+          "maximumStep": 0.00024440518240972757,
+          "maximumStepPx": 0.21507656052056026,
+          "maximumStepScale": 0.0024079328316229335,
+          "worstMs": 4450,
+          "fromAction": "approach"
+        },
+        {
+          "id": "melee:pinch",
+          "startMs": 4582.593164891005,
+          "endMs": 5369.2598315576715,
+          "samples": 48,
+          "maximumStep": 0.0002335511222200399,
+          "maximumStepPx": 0.2055249875536351,
+          "maximumStepScale": 0.0023009962780299515,
+          "worstMs": 4583.333333333333,
+          "fromAction": "approach"
+        },
+        {
+          "id": "hit",
+          "startMs": 5369.2598315576715,
+          "endMs": 6099.2598315576715,
+          "samples": 43,
+          "maximumStep": 0.0008644944000000005,
+          "maximumStepPx": 0.7607550720000005,
+          "maximumStepScale": 0.008517186206896564,
+          "worstMs": 5816.666666666667,
+          "fromAction": "hit"
+        },
+        {
+          "id": "alert",
+          "startMs": 6099.2598315576715,
+          "endMs": 6699.2598315576715,
+          "samples": 36,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach:scuttle",
+          "startMs": 6699.2598315576715,
+          "endMs": 7399.2598315576715,
+          "samples": 42,
+          "maximumStep": 0.0002444051824097293,
+          "maximumStepPx": 0.2150765605205618,
+          "maximumStepScale": 0.002407932831622951,
+          "worstMs": 6750,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "cast",
+          "startMs": 7399.2598315576715,
+          "endMs": 8289.259831557672,
+          "samples": 54,
+          "maximumStep": 0.0002335511222200555,
+          "maximumStepPx": 0.20552498755364884,
+          "maximumStepScale": 0.002300996278030105,
+          "worstMs": 7400,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "dodge",
+          "startMs": 8289.259831557672,
+          "endMs": 8889.259831557672,
+          "samples": 36,
+          "maximumStep": 0.0013027938000000003,
+          "maximumStepPx": 1.1464585440000001,
+          "maximumStepScale": 0.012835406896551736,
+          "worstMs": 8516.666666666666,
+          "fromAction": "dodge"
+        },
+        {
+          "id": "faint",
+          "startMs": 8889.259831557672,
+          "endMs": 9689.259831557672,
+          "samples": 48,
+          "maximumStep": 0.0032326602000000027,
+          "maximumStepPx": 2.8447409760000024,
+          "maximumStepScale": 0.031848868965517294,
+          "worstMs": 9216.666666666666,
+          "fromAction": "faint"
+        },
+        {
+          "id": "victory",
+          "startMs": 9689.259831557672,
+          "endMs": 10569.259831557672,
+          "samples": 53,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "tame",
+          "startMs": 10569.259831557672,
+          "endMs": 11489.259831557672,
+          "samples": 55,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "feed",
+          "startMs": 11489.259831557672,
+          "endMs": 12349.259831557672,
+          "samples": 51,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        }
+      ],
+      "failure": null,
+      "oldGuard": {
+        "status": "PASS",
+        "maximumStep": 0.0032326602000000027,
+        "stride": 0.006159010596724999,
+        "worst": 553
+      },
+      "samplesFile": "painter-vent-crab-mutant-samples.jsonl.gz"
+    },
+    {
+      "id": "painted-coconut-crab",
+      "dir": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04",
+      "mutant": true,
+      "mutations": [
+        {
+          "action": "faint",
+          "keyBefore": {
+            "ms": 260,
+            "t": 0.5,
+            "value": 0.2840630894213345,
+            "ease": "sine-in-out"
+          },
+          "rule": "Double peak key that begins faint recovery; all times, other keys, joint tracks unchanged",
+          "keyAfter": {
+            "ms": 260,
+            "t": 0.5,
+            "value": 0.568126178842669,
+            "ease": "sine-in-out"
+          }
+        }
+      ],
+      "recordSha256": "12c19c9543b0ce8924cffcc11092854743b07840496615207e1e72f62ad2639d",
+      "bindingSha256": "021c0850f5c1735411313a5b3c9167b87bf65a25f7d712a123e0e2534bd8553d",
+      "width": 1254,
+      "height": 1254,
+      "stride": 0.0064553827392768975,
+      "scaleLength": 0.45701572799518586,
+      "durationMs": 14128.326491254073,
+      "rows": [
+        {
+          "id": "idle",
+          "startMs": 1000,
+          "endMs": 4661.659824587405,
+          "samples": 341,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach",
+          "startMs": 4661.659824587405,
+          "endMs": 5361.659824587405,
+          "samples": 42,
+          "maximumStep": 0.00025616598171734374,
+          "maximumStepPx": 0.321232141073549,
+          "maximumStepScale": 0.0005605189625334779,
+          "worstMs": 5216.666666666667,
+          "fromAction": "approach"
+        },
+        {
+          "id": "melee:pinch",
+          "startMs": 5361.659824587405,
+          "endMs": 6148.326491254072,
+          "samples": 47,
+          "maximumStep": 0.00017921102472506778,
+          "maximumStepPx": 0.224730625005235,
+          "maximumStepScale": 0.00039213316686325414,
+          "worstMs": 5366.666666666667,
+          "fromAction": "approach"
+        },
+        {
+          "id": "hit",
+          "startMs": 6148.326491254072,
+          "endMs": 6878.326491254072,
+          "samples": 44,
+          "maximumStep": 0.00376728997369397,
+          "maximumStepPx": 4.724181627012238,
+          "maximumStepScale": 0.008243239221153576,
+          "worstMs": 6583.333333333333,
+          "fromAction": "hit"
+        },
+        {
+          "id": "alert",
+          "startMs": 6878.326491254072,
+          "endMs": 7478.326491254072,
+          "samples": 36,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "approach:scuttle",
+          "startMs": 7478.326491254072,
+          "endMs": 8178.326491254072,
+          "samples": 42,
+          "maximumStep": 0.0002561659817173455,
+          "maximumStepPx": 0.32123214107355125,
+          "maximumStepScale": 0.0005605189625334817,
+          "worstMs": 8166.666666666667,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "cast",
+          "startMs": 8178.326491254072,
+          "endMs": 9068.326491254073,
+          "samples": 54,
+          "maximumStep": 0.00017921102472506778,
+          "maximumStepPx": 0.224730625005235,
+          "maximumStepScale": 0.00039213316686325414,
+          "worstMs": 8183.333333333333,
+          "fromAction": "approach:scuttle"
+        },
+        {
+          "id": "dodge",
+          "startMs": 9068.326491254073,
+          "endMs": 9668.326491254073,
+          "samples": 36,
+          "maximumStep": 0.0037513301528283045,
+          "maximumStepPx": 4.7041680116466935,
+          "maximumStepScale": 0.008208317401426107,
+          "worstMs": 9300,
+          "fromAction": "dodge"
+        },
+        {
+          "id": "faint",
+          "startMs": 9668.326491254073,
+          "endMs": 10468.326491254073,
+          "samples": 48,
+          "maximumStep": 0.014520090573703848,
+          "maximumStepPx": 18.208193579424623,
+          "maximumStepScale": 0.031771533634957966,
+          "worstMs": 10116.666666666666,
+          "fromAction": "faint"
+        },
+        {
+          "id": "victory",
+          "startMs": 10468.326491254073,
+          "endMs": 11348.326491254073,
+          "samples": 52,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "tame",
+          "startMs": 11348.326491254073,
+          "endMs": 12268.326491254073,
+          "samples": 56,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        },
+        {
+          "id": "feed",
+          "startMs": 12268.326491254073,
+          "endMs": 13128.326491254073,
+          "samples": 51,
+          "maximumStep": 0,
+          "maximumStepPx": 0,
+          "maximumStepScale": 0,
+          "worstMs": null
+        }
+      ],
+      "failure": null,
+      "oldGuard": {
+        "status": "FAIL",
+        "maximumStep": 0.014520090573703848,
+        "stride": 0.0064553827392768975,
+        "worst": 607
+      },
+      "samplesFile": "painted-coconut-crab-mutant-samples.jsonl.gz"
+    }
+  ]
+}

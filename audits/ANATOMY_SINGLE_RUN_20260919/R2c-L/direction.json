@@ -1,0 +1,7 @@
+{
+  "authority": "Nick explicitly authorizes R2c-L section12, measurement before bounded contactLimitsDeg change",
+  "reviewPath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md",
+  "reviewSha256": "81454df0d0b1838678d5eb78e1e27836067d8100f92dde96c107b3ce19ab0ab6",
+  "runtime": "v26.9.0",
+  "startup": "Uninterrupted single run receipt reused"
+}

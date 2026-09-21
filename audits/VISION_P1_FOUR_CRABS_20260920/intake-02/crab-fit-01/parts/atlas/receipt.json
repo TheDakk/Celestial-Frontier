@@ -1,0 +1,123 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "p1-crab",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "3de521307f5040967c4ee71dedbbf677dfb681ebb5d164611a23f3155ebfedf1",
+    "pngSha256": "532d0e9c4f3234d2240baeafed982ded851d52b4f1dd54e230878a4dbf573af2"
+  },
+  "parts": [
+    {
+      "name": "body.png",
+      "sha256": "6bac0a65c43bb529a6a1a1c49083d26d75cdaa36dbdf3b7f186909ed2d15a7a7"
+    },
+    {
+      "name": "claw-far-arm.png",
+      "sha256": "9a376436a506d37f16110835c2cdaa198119416edf2ad4d9defe8fba06df4853"
+    },
+    {
+      "name": "claw-far-finger.png",
+      "sha256": "acbc14ea5a0c31736e16a8ed8366ac7d076f6d88b99eacdd137761928d96930e"
+    },
+    {
+      "name": "claw-far-palm.png",
+      "sha256": "c5e5a50ba108d9f8cc2e940053881bb4c33c4d0ad39176ec53f27c40c783050d"
+    },
+    {
+      "name": "claw-near-arm.png",
+      "sha256": "afd539a4eef8a77af7c893f1a568ec69fc5e0a76debaac3e8d12063acfef17e9"
+    },
+    {
+      "name": "claw-near-finger.png",
+      "sha256": "f15c3267c421f434b2d62c08ce75e4bb735fed779ffc01c168f0bfe3537456fa"
+    },
+    {
+      "name": "claw-near-palm.png",
+      "sha256": "c1db582882f2823a1dd04409ff1edc2db8cdd22caa808e61de07e4df293335c6"
+    },
+    {
+      "name": "eye-far.png",
+      "sha256": "0342277c87e15441f70e227c55e4b05c6489f9678cab71fd98458fee86a253de"
+    },
+    {
+      "name": "eye-near.png",
+      "sha256": "d510fd9efb941a0ed87c08097486406b195290c356d541873e34875a94f4ee99"
+    },
+    {
+      "name": "leg0far-lower.png",
+      "sha256": "aaf54cd6b4d9edbfcd8e62252c405046fad70135c6a5a61c03cded070a70f9b5"
+    },
+    {
+      "name": "leg0far-upper.png",
+      "sha256": "d72c7461d3788042ef1c34a7815a9d1ae4e5bc3a5f0da4b141671c99026de83a"
+    },
+    {
+      "name": "leg0near-lower.png",
+      "sha256": "1af530803d20f82ad99c0ff4db3b3cf53d84230a09421a2d010725be42dcbf37"
+    },
+    {
+      "name": "leg0near-upper.png",
+      "sha256": "a64b329e80812743669d7b08b8a5222fbf16a64aeb0cb4d2c52f5e955f709801"
+    },
+    {
+      "name": "leg1far-lower.png",
+      "sha256": "0f469d3aae52667b7e0d4a08add69c3709966ab021df321692740490d971b049"
+    },
+    {
+      "name": "leg1far-upper.png",
+      "sha256": "c4691868c3d8a325693b8844fdf20562cc3ae0040ce03ddf9aebe64b255e6a0b"
+    },
+    {
+      "name": "leg1near-lower.png",
+      "sha256": "1edbf1c3b3e6d35f5c7d9f2122b4da506e365b4d64ccf67db74a3d3c5cf8589e"
+    },
+    {
+      "name": "leg1near-upper.png",
+      "sha256": "776aaa8810d3446d61da57859cc7ce65cc7b0271016067b98c9e56d95096234f"
+    },
+    {
+      "name": "leg2far-lower.png",
+      "sha256": "ae535bd2fcba19eee55647eca336d72951d868448a3846f3cd9aa21f7b38b295"
+    },
+    {
+      "name": "leg2far-upper.png",
+      "sha256": "e9ec484c529fa0d35ad106b1dea2fbc576a74d9604d4b66add76242bf0fcc803"
+    },
+    {
+      "name": "leg2near-lower.png",
+      "sha256": "13067b320f2d2dd9b5306ffa74163b1014dcdae5b04b74be844c1d1c92ab4173"
+    },
+    {
+      "name": "leg2near-upper.png",
+      "sha256": "c3b22ecfb924f513551774fd46188284093ca504722e69f856fe89935aaa6925"
+    },
+    {
+      "name": "leg3far-lower.png",
+      "sha256": "2b2672e69f89d83f465f30068a5dbfbba045456c2bed17e62dbd8215eb4e72c3"
+    },
+    {
+      "name": "leg3far-upper.png",
+      "sha256": "3b40580907b644b43ab841ea77dadf75de3e1f6e3a5d1025ce2d2403f00fa3c5"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

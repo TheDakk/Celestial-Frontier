@@ -1,0 +1,21 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-contact-weighted.test.ts (4 tests | 1 failed) 28ms
+   × accepts stored edge rounding unchanged but rejects a genuinely negative barycentric coefficient 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-contact-weighted.test.ts > accepts stored edge rounding unchanged but rejects a genuinely negative barycentric coefficient
+AssertionError: expected 1.2835631168434424e-12 to be less than or equal to 1e-12
+ ❯ apps/game/src/creature-rig-contact-weighted.test.ts:32:77
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 24 passed (25)
+   Start at  19:58:10
+   Duration  705ms (transform 203ms, setup 0ms, import 269ms, tests 472ms, environment 0ms)
+

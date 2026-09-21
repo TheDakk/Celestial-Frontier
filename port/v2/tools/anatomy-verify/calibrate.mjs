@@ -3,7 +3,7 @@
  * README.md. Usage: node calibrate.mjs [fillMax] [unused] [debug] [overlayDir]. Not a gate. */
 import fs from 'node:fs';
 import path from 'node:path';import {fileURLToPath} from 'node:url';const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../..')+'/';
-const {readPng,writePng}=await import(root+'port/v2/tools/painted-creature/finish-conservation.mjs');
+const {readPng,writePng}=await import('./png.mjs');
 const {alphaOf,detectTips,classifyTips}=await import(root+'port/v2/tools/anatomy-verify/tips.mjs');
 const S=(process.argv[5]??'/tmp')+'/';
 const subjects=[['crab','brachyuran',root+'audits/ANATOMY_COMPLETION_20260917/crab-masks-05/crab-master.png',null],['coconut-crab','brachyuran',root+'audits/ANATOMY_COMPLETION_20260917/crab-masks-05/coconut-crab-master.png',null],['freshwater-crab','brachyuran',root+'audits/ANATOMY_COMPLETION_20260917/crab-masks-05/freshwater-crab-master.png',null],['mud-crab','brachyuran',root+'audits/ANATOMY_COMPLETION_20260917/crab-masks-05/mud-crab-master.png',null],['vent-crab','brachyuran',root+'audits/ANATOMY_COMPLETION_20260917/crab-masks-05/vent-crab-master.png',null],['civet','quadruped',root+'audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png',null],['P1-coconut','brachyuran','/Users/nick/Projects/celestial-frontier-openai-mac/audits/VISION_P1_COCONUT_20260920/generation-01/coconut-crab-master.png',6]];

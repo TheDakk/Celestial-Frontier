@@ -1,0 +1,95 @@
+{
+  "status": "S2_STOP",
+  "producer": "dd33865c0e60994b37df31364959e89749d277a8",
+  "producerSignatureVerified": true,
+  "haltedR2cEvidenceSigned": "ca851fb62bd35d5804ed22496c29f48969361733",
+  "runtime": "v26.9.0",
+  "fiveCrabsRowsBitIdentical": true,
+  "civetCompletedRows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "maxPaintDriftPx": 0.19333620441138036,
+      "maxEndpointError": 4.0029660424867215e-16,
+      "maxGapPx": 8.221445246845438e-05
+    },
+    {
+      "id": "approach",
+      "samples": 121,
+      "maxPaintDriftPx": 0.05996473127087552,
+      "maxEndpointError": 4.0029660424867215e-16,
+      "maxGapPx": 8.221445246845438e-05
+    }
+  ],
+  "civetFailure": {
+    "action": "melee:bite",
+    "ms": 54.98888888888889,
+    "error": "Error: Actual painted support foreNearAnkle drift 0.2661074117264736 px >0.25\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-r1c-HFUnXR/run.mjs:18778:13\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-r1c-HFUnXR/run.mjs:17:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-r1c-HFUnXR/run.mjs:18845:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+  },
+  "failureResiduals": {
+    "joint": "foreNearAnkle",
+    "lbsPrediction": [
+      0.7747624385884888,
+      0.7862355532714793
+    ],
+    "weightedPointPrediction": [
+      0.7748258204681775,
+      0.7862838915654665
+    ],
+    "published": [
+      0.7746179699897766,
+      0.7862411141395569
+    ],
+    "kinematicResidualPx": [
+      -0.07948095740346495,
+      -0.06061619756497927
+    ],
+    "weightedPointResidualPx": [
+      -8.027385489661754e-08,
+      2.3094975265536277e-08
+    ],
+    "arapResidualPx": [
+      -0.18116362278509834,
+      0.006973328569272574
+    ],
+    "weightPositionCovariancePx": [
+      -0.07948087712961005,
+      -0.060616220659954534
+    ],
+    "publishedResidualPx": [
+      -0.2606445801885633,
+      -0.053642868995706694
+    ],
+    "stance": true
+  },
+  "civetUnrunRows": [
+    "hit",
+    "alert",
+    "approach:walk",
+    "approach:trot",
+    "approach:gallop",
+    "approach:hop",
+    "melee:claw",
+    "melee:gore",
+    "melee:tail",
+    "melee:headbutt",
+    "cast",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed",
+    "melee:kick"
+  ],
+  "perSampleRecords": 10515,
+  "unchangedSourceAndInputHashes": 58,
+  "noRetry": true,
+  "laterStages": "Not run: R2d, R3, R4, native recapture, R9/Q1, R5/R6/R7/R8, roster, PR42 split",
+  "newFilms": 0,
+  "newSheets": 0,
+  "rosterAttempted": 0,
+  "rosterRefusals": 0,
+  "rosterRemaining": 58,
+  "phoneProof": "Not run",
+  "githubWrites": 0
+}

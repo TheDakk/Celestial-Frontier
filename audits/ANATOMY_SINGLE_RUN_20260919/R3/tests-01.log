@@ -1,0 +1,39 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/anatomy-attacks.test.ts (8 tests | 1 failed) 36ms
+   × all physical motion rows compile with explicit synthetic weapon declarations and required contact tracks 3ms
+ ❯ apps/game/src/earth-fauna-profiles.test.ts (7 tests | 1 failed) 45ms
+   × all catalogue intent rows filter synthetic template cards without borrowing another species weapons 30ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/anatomy-attacks.test.ts > all physical motion rows compile with explicit synthetic weapon declarations and required contact tracks
+Error: Habitat: unresolved physical realm; source declaration required
+ ❯ resolvePhysicalHabitat apps/game/src/battle-habitat.ts:27:18
+
+ ❯ compileBodyCard apps/game/src/motion/body-card.ts:166:18
+ ❯ card apps/game/src/anatomy-attacks.test.ts:13:310
+ ❯ apps/game/src/anatomy-attacks.test.ts:44:161
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  apps/game/src/earth-fauna-profiles.test.ts > all catalogue intent rows filter synthetic template cards without borrowing another species weapons
+TypeError: Cannot read properties of undefined (reading 'identity')
+ ❯ card apps/game/src/earth-fauna-profiles.test.ts:10:108
+      8| import fs from 'node:fs';
+      9| const fixtures=JSON.parse(fs.readFileSync(new URL('../../../tools/crea…
+     10| const card=(family:string,name:string)=>compileBodyCard({...fixtures[f…
+       |                                                                                                            ^
+     11| it('exactly covers the live fauna catalogue; missing, obsolete and dup…
+     12|  const names=_EARTH_NAMES.fauna;
+ ❯ apps/game/src/earth-fauna-profiles.test.ts:52:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 2 passed (4)
+      Tests  2 failed | 22 passed (24)
+   Start at  21:20:11
+   Duration  568ms (transform 544ms, setup 0ms, import 776ms, tests 325ms, environment 0ms)
+

@@ -100,6 +100,22 @@ everything?" — yes for text/JSON (flora rows, biomes, procedural records, univ
 Self-contained. Either lane can resume from this block alone. Earlier handoffs of the day are archived verbatim at the top of
 `ROADMAP_ARCHIVE.md`.
 
+### Lane state — 2026-09-21 re-merge (this commit merges `openai/mac` `db8858bb` into `anthropic/mac` locally)
+Codex's R3-S → §8 chain (signed, 20 stages verified in its packet `audits/R3S_RESUME_20260921/`) is now in this lane. Resolution
+rule as recorded: Codex's R9/finisher files canonical (`creature-originals.ts`+test, `finish-master.mjs`, `finish-conservation.mjs`+test,
+`prepare-observed-crabs.mjs`, `kit-worker-engine.mjs`, `landfall-conditioning.ts` — the duplicated `compileCreatureFinishV1` resolved to
+Codex's); `ROADMAP.md`/`ROADMAP_ARCHIVE.md` kept from this lane. Test state on the merged tree: `tsc` clean; battle2 33 pass + 1 expected
+fail; the two E1 R3 pins FLIPPED green (crab pinch admitted; a crab attacks through the stage); the parts rig now forwards
+`travel:'stage'` and takes an optional binding for observed supports (off by default). **Two solver findings for Codex, measured:**
+(1) under `travel:'stage'` the family solver zeroes root dx but its stance targets still advance by stride×(completed+step), so feet
+march in body space while the stage moves the body — the double count; arena-planting needs targets that recede by the stage
+displacement (the third pin stays `it.fails` with this reason, 185 px spread); (2) with `observedContactSupports` on the crab, foot
+JOINTS drift up to 5.3 px under hit loading (the surface, not the joint, is what that model pins; a support-position accessor is needed
+to test the true invariant). Three sealed tests are red on the merged tree and none is merge-caused: `biome-vista` (identical bytes on
+both lanes), `training-checkpoint` (this lane's TypeSafe batch `a3bd835d` changed the v1.8.9 html by 8 lines — Codex's html matches the
+seal; Nick decides re-seal vs revert), `current-producer-authorities` (a local `dist/` build artifact). `node tools/validate.js` PASS
+(fingerprint match). Anatomy-verify runners own their PNG helper now (`png.mjs`).
+
 ### Lane state (both lanes pushed to origin 2026-09-19 evening under Nick's explicit "push anthropic/mac and openai/mac")
 
 | Lane | HEAD | Note |
@@ -152,7 +168,8 @@ branch push of both lanes Nick then authorized is done (see Lane state), so orig
 
 
 ### What Claude owes next
--27. **Slice 31 (2026-09-21, this commit):** `emit.mjs` — the compiler writes Codex-format `labels.png` + `declaration.json` per crab (`audits/INTAKE_COMPILER_20260921/compiled-01/`), with declared gaps (eyes unnamed; arm/palm split first cut; quadruped part vocabulary needed from Codex; no record written). P2 constants in body units are an option (byte-identical at 512); scale is not a lever (thinning topology). After this the Claude list is blocked on Codex's R3-S stop and Nick's D2 decisions.
+-28. **Re-merge of Codex's R3-S → §8 (2026-09-21, this commit):** see Lane state above. E1 re-film on the family solver is next (browser run).
+-27. **Slice 31 (2026-09-21, commit `82c25377`):** `emit.mjs` — the compiler writes Codex-format `labels.png` + `declaration.json` per crab (`audits/INTAKE_COMPILER_20260921/compiled-01/`), with declared gaps (eyes unnamed; arm/palm split first cut; quadruped part vocabulary needed from Codex; no record written). P2 constants in body units are an option (byte-identical at 512); scale is not a lever (thinning topology). After this the Claude list is blocked on Codex's R3-S stop and Nick's D2 decisions.
 -26. **Slice 30 (2026-09-21, commit `f400328e`):** the coconut/freshwater "false endpoints" are the near claw's lone dactyl tips (5–6 px from the record) whose twin merged into one ridge at the 512 px working scale — a P2 graph defect, not a matcher one. Palm, twin-stub, thinness re-sweep and a working-scale sweep measured and rejected; the prerequisite is P2's constants in body units. Codex is running R3-S (authorized 2026-09-21).
 -25. **D2 G6 (2026-09-21, commit `3191d02b`):** `combatantScale` gains a `frameFill` option (guardian frame fill as an option of the scale, not a species branch) with three outcome tests (`arena-frame-fill.test.ts`, 3/3 pass, tsc clean); nothing wired until a guardian record exists (D2 decisions for Nick). After this the Claude list is blocked on others: E1 re-film and the parts-rig family solver wait for Codex's R3 re-merge; D2 G1–G5 wait for Nick's four decisions; R9 (b)/(c)/(e) need the canonical finisher/ownership map/native harness on Codex's lane.
 -24. **Slice 29 — option A done (2026-09-21, commit pending signature):** knees measured across four placements (exit + reference fraction stays; bend-based rejected at median 90 px); tail landmark = farthest leaf near the tuft junction (Civet tail3 65 → 42 px). **§6 PASS 2/7** (Civet, Wolf) on the committed run. D2 first-guardian design written (`audits/VISION_PROGRAM_20260920/D2_FIRST_GUARDIAN_DESIGN.md`: Brown Bear recommended, pipeline G1–G7 with owners/gates, CPU needs a guardian tier — four decisions for Nick). R9 (b) coconut rerun at workCanvasMax 1088: not run — the canonical finisher has no work-canvas flag on this lane and the run needs the browser + local model; recorded, not chased.

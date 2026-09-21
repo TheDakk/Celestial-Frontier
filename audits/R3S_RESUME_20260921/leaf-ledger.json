@@ -1,0 +1,626 @@
+[
+  {
+    "id": "native-civet-1",
+    "subject": "civet",
+    "status": "open",
+    "diagnosis": "film rig-update p95 exceeds <2 ms",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/civet/report.json"
+  },
+  {
+    "id": "native-civet-2",
+    "subject": "civet",
+    "status": "open",
+    "diagnosis": "T1 full-row root step 0.028825622596303096 exceeds stride 0.008048730263854342",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/civet/report.json",
+    "laterDisposition": "Historical single-stride non-gait diagnostic; later measured split continuity guard retained in VISION_P1_CONSOLIDATED_20260920/ROOT_CONTINUITY.md. Original report unchanged."
+  },
+  {
+    "id": "native-coconut-crab-1",
+    "subject": "coconut-crab",
+    "status": "open",
+    "diagnosis": "film rig-update p95 exceeds <2 ms",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/coconut-crab/report.json"
+  },
+  {
+    "id": "native-cranberry-1",
+    "subject": "cranberry",
+    "status": "open",
+    "diagnosis": "film rig-update p95 exceeds <2 ms",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/cranberry/report.json"
+  },
+  {
+    "id": "native-cranberry-2",
+    "subject": "cranberry",
+    "status": "open",
+    "diagnosis": "disturb: rig-update p95 3.300000ms against strict <2ms.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/cranberry/report.json"
+  },
+  {
+    "id": "native-cranberry-3",
+    "subject": "cranberry",
+    "status": "open",
+    "diagnosis": "harvest: rig-update p95 2.000000ms against strict <2ms.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/cranberry/report.json"
+  },
+  {
+    "id": "native-devils-club-1",
+    "subject": "devils-club",
+    "status": "open",
+    "diagnosis": "film rig-update p95 exceeds <2 ms",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/devils-club/report.json"
+  },
+  {
+    "id": "native-devils-club-2",
+    "subject": "devils-club",
+    "status": "open",
+    "diagnosis": "sway: rig-update p95 2.800000ms against strict <2ms.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/devils-club/report.json"
+  },
+  {
+    "id": "native-devils-club-3",
+    "subject": "devils-club",
+    "status": "open",
+    "diagnosis": "disturb: rig-update p95 4.300000ms against strict <2ms.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/devils-club/report.json"
+  },
+  {
+    "id": "native-devils-club-4",
+    "subject": "devils-club",
+    "status": "open",
+    "diagnosis": "harvest: rig-update p95 2.300000ms against strict <2ms.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/devils-club/report.json"
+  },
+  {
+    "id": "native-devils-club-5",
+    "subject": "devils-club",
+    "status": "open",
+    "diagnosis": "grow: rig-update p95 2.200000ms against strict <2ms.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/devils-club/report.json"
+  },
+  {
+    "id": "native-persimmon-1",
+    "subject": "persimmon",
+    "status": "open",
+    "diagnosis": "film rig-update p95 exceeds <2 ms",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/persimmon/report.json"
+  },
+  {
+    "id": "native-persimmon-2",
+    "subject": "persimmon",
+    "status": "open",
+    "diagnosis": "sway: rig-update p95 2.400000ms against strict <2ms.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/persimmon/report.json"
+  },
+  {
+    "id": "native-persimmon-3",
+    "subject": "persimmon",
+    "status": "open",
+    "diagnosis": "disturb: rig-update p95 3.300000ms against strict <2ms. RecoverablePoseError: ARAP skin: unresolved folded triangles: 84 at 67.16666666666667ms.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/persimmon/report.json"
+  },
+  {
+    "id": "native-persimmon-4",
+    "subject": "persimmon",
+    "status": "open",
+    "diagnosis": "harvest: rig-update p95 5.100000ms against strict <2ms.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/persimmon/report.json"
+  },
+  {
+    "id": "native-persimmon-5",
+    "subject": "persimmon",
+    "status": "open",
+    "diagnosis": "grow: rig-update p95 2.400000ms against strict <2ms.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/persimmon/report.json"
+  },
+  {
+    "id": "native-persimmon-6",
+    "subject": "persimmon",
+    "status": "open",
+    "diagnosis": "presentation {\"action\": \"disturb\", \"ms\": 4533.333333333333, \"error\": \"RecoverablePoseError: ARAP skin: unresolved folded triangles: 169\"}",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/persimmon/report.json"
+  },
+  {
+    "id": "r2d-parent",
+    "subject": "Persimmon",
+    "status": "open",
+    "diagnosis": "branch-0-foliage has no observed nearest painted-parent attachment; parent-frame binding regeneration refused, no invented anchor.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R2d/README.md"
+  },
+  {
+    "id": "r9-coconut-cpu",
+    "subject": "finished Coconut Crab",
+    "status": "open",
+    "diagnosis": "Film rig-update p95 exactly2.00ms fails strict <2ms, despite full numeric identity.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R9/native-coconut-crab/report.json"
+  },
+  {
+    "id": "visual-crab-edge",
+    "subject": "Crab",
+    "status": "open",
+    "diagnosis": "Thin source/rig edge streaks remain visible in faint; numeric rest/contact does not grant visual acceptance.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/native/crab/family-full-rows.webm"
+  },
+  {
+    "id": "visual-pinch",
+    "subject": "Crab / Coconut",
+    "status": "open",
+    "diagnosis": "Original gape and pinch readability remain open. Separate Q1 source candidates are on the sheet, not adopted.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R9/review-sheet.png"
+  },
+  {
+    "id": "r3-habitat-depth",
+    "subject": "Cranberry",
+    "status": "open",
+    "diagnosis": "25/601study samples extend below ground band; maximum33.307271screen px. Root remains exact; geometry and containment unchanged.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R3/habitat-02/report.json"
+  },
+  {
+    "id": "r3-habitat-framing",
+    "subject": "Cranberry",
+    "status": "open",
+    "diagnosis": "Rightmost paint clips the study viewport; study film does not qualify full shape. Separate full-row native film is available.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R3/habitat-02/strike-contact.png"
+  },
+  {
+    "id": "tool-reserved-modules",
+    "subject": "pose exporters",
+    "status": "open",
+    "diagnosis": "Two integration tests cannot resolve reserved battle2/choreography.ts and effects/anchors.ts in this checkout. No sibling copy/sync or skip.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/toolchain/README.md"
+  },
+  {
+    "id": "glass-small-control",
+    "subject": "small-phone",
+    "status": "open",
+    "diagnosis": "Floating-trail fallback instrument red; no completed canary. Full raw log retained.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R8/glass-small-01.log"
+  },
+  {
+    "id": "glass-small-provenance",
+    "subject": "small-phone",
+    "status": "open",
+    "diagnosis": "Writing the log inside the worktree changed its source fingerprint; terminal publication refused, retained JSON is a running sentinel, never PASS.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R8/glass-small-01.json"
+  },
+  {
+    "id": "glass-large-control",
+    "subject": "large-phone",
+    "status": "open",
+    "diagnosis": "Floating-trail fallback tightPolicyObserved:false; injected collision/restoration pass. Terminal instrument-fail, not phone qualification.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R8/glass-large-01.json"
+  },
+  {
+    "id": "compendium-authority",
+    "subject": "full unit battery",
+    "status": "open",
+    "diagnosis": "Nine Compendium producer-authority fields mismatch current source after painter/worker/input changes. Sealed authority/budget not rebaselined.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/full-unit-01.log"
+  },
+  {
+    "id": "pr42-forward-imports",
+    "subject": "local split",
+    "status": "open",
+    "diagnosis": "27forward local dependencies,20absent at cached base. Exact path projections are prepared; hunk/dependency extraction and standalone admission remain required before promotion.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/PR42/split.json"
+  },
+  {
+    "id": "roster-crayfish",
+    "subject": "Crayfish",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-fiddler-crab",
+    "subject": "Fiddler Crab",
+    "status": "open",
+    "diagnosis": "Error: Crab observation: unsupported source Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-hermit-crab",
+    "subject": "Hermit Crab",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-lobster",
+    "subject": "Lobster",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-amphipod",
+    "subject": "Amphipod",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-brine-shrimp",
+    "subject": "Brine Shrimp",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-cave-shrimp",
+    "subject": "Cave Shrimp",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-copepod",
+    "subject": "Copepod",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-fairy-shrimp",
+    "subject": "Fairy Shrimp",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-freshwater-shrimp",
+    "subject": "Freshwater Shrimp",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-giant-isopod",
+    "subject": "Giant Isopod",
+    "status": "open",
+    "diagnosis": "Error: No complete source-bound record compiler for observed crustacean-small; partial features are not fitted joint/part ownership Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-isopod",
+    "subject": "Isopod",
+    "status": "open",
+    "diagnosis": "Error: No complete source-bound record compiler for observed crustacean-small; partial features are not fitted joint/part ownership Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-krill",
+    "subject": "Krill",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-prawn",
+    "subject": "Prawn",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-shrimp",
+    "subject": "Shrimp",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-tadpole-shrimp",
+    "subject": "Tadpole Shrimp",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-vent-shrimp",
+    "subject": "Vent Shrimp",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-water-flea",
+    "subject": "Water Flea",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-horseshoe-crab",
+    "subject": "Horseshoe Crab",
+    "status": "open",
+    "diagnosis": "Error: No complete source-bound record compiler for observed xiphosuran; partial features are not fitted joint/part ownership Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-barnacle",
+    "subject": "Barnacle",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-tardigrade",
+    "subject": "Tardigrade",
+    "status": "open",
+    "diagnosis": "Error: No complete source-bound record compiler for observed lobopod; partial features are not fitted joint/part ownership Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-fly-larvae",
+    "subject": "Fly Larvae",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-clam",
+    "subject": "Clam",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-giant-clam",
+    "subject": "Giant Clam",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-mussel",
+    "subject": "Mussel",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-oyster",
+    "subject": "Oyster",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-razor-clam",
+    "subject": "Razor Clam",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-scallop",
+    "subject": "Scallop",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-banana-slug",
+    "subject": "Banana Slug",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-land-snail",
+    "subject": "Land Snail",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-snail",
+    "subject": "Snail",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-abalone",
+    "subject": "Abalone",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-chiton",
+    "subject": "Chiton",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-conch",
+    "subject": "Conch",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-cowrie",
+    "subject": "Cowrie",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-freshwater-snail",
+    "subject": "Freshwater Snail",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-limpet",
+    "subject": "Limpet",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-nudibranch",
+    "subject": "Nudibranch",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-sea-snail",
+    "subject": "Sea Snail",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-water-snail",
+    "subject": "Water Snail",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-earthworm",
+    "subject": "Earthworm",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-ice-worm",
+    "subject": "Ice Worm",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-flatworm",
+    "subject": "Flatworm",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-giant-tube-worm",
+    "subject": "Giant Tube Worm",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-leech",
+    "subject": "Leech",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-marine-worm",
+    "subject": "Marine Worm",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-polychaete-worm",
+    "subject": "Polychaete Worm",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-scale-worm",
+    "subject": "Scale Worm",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-tube-worm",
+    "subject": "Tube Worm",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-sponge",
+    "subject": "Sponge",
+    "status": "open",
+    "diagnosis": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-pyrosome",
+    "subject": "Pyrosome",
+    "status": "open",
+    "diagnosis": "Error: No complete source-bound record compiler for observed colonial-filter; partial features are not fitted joint/part ownership Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-salp",
+    "subject": "Salp",
+    "status": "open",
+    "diagnosis": "Error: No complete source-bound record compiler for observed colonial-filter; partial features are not fitted joint/part ownership Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "roster-sea-squirt",
+    "subject": "Sea Squirt",
+    "status": "open",
+    "diagnosis": "Error: No complete source-bound record compiler for observed sessile-filter; partial features are not fitted joint/part ownership Binding skipped; native source still retained; no animated fit qualified.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/roster/native-01/report.json"
+  },
+  {
+    "id": "root-proof-input",
+    "subject": "instrument",
+    "status": "resolved; retained",
+    "diagnosis": "Root-proof01 omitted required rotation and failed before rendering the mutant. Corrected key proof02 passes and detects938307changed channels.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/root-proof-01/report.json"
+  },
+  {
+    "id": "roster-count-test",
+    "subject": "instrument",
+    "status": "resolved; retained",
+    "diagnosis": "Old test expected58missing after five admissions. Corrected control proves53missing plus exactlyfiveadmissions; four focused tests pass.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R5-R7/roster-count-control-02.log"
+  },
+  {
+    "id": "habitat-reporter",
+    "subject": "instrument",
+    "status": "resolved; retained",
+    "diagnosis": "Study01 threw on Cranberry containment before retaining the complete film. Changed reporter02 records the same red and captures it without gate changes.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R3/habitat-01/report.json"
+  },
+  {
+    "id": "r9-identity-path",
+    "subject": "instrument",
+    "status": "resolved; retained",
+    "diagnosis": "First independent identity check had an incorrect relative import. Corrected control02 reconstructs five identical skins/binding hashes.",
+    "evidence": "audits/ANATOMY_SINGLE_RUN_20260919/R9/identity-control-01.json"
+  },
+  {
+    "id": "painted-desktop-crab",
+    "subject": "crab",
+    "status": "open",
+    "diagnosis": "4ms full-film rig p95 exceeds approved3.5ms desktop tier; geometry/contact/rest/continuity pass, no retry.",
+    "evidence": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/results.json"
+  },
+  {
+    "id": "painted-desktop-mud-crab",
+    "subject": "mud-crab",
+    "status": "open",
+    "diagnosis": "3.599999964237213ms full-film rig p95 exceeds approved3.5ms desktop tier; geometry/contact/rest/continuity pass, no retry.",
+    "evidence": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/results.json"
+  },
+  {
+    "id": "painted-desktop-vent-crab",
+    "subject": "vent-crab",
+    "status": "open",
+    "diagnosis": "3.600000023841858ms full-film rig p95 exceeds approved3.5ms desktop tier; geometry/contact/rest/continuity pass, no retry.",
+    "evidence": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/results.json"
+  }
+]

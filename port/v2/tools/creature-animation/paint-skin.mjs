@@ -1,4 +1,5 @@
 /** Shared deformation field for alpha-adaptive parts. No new source pixels. */
+import{RecoverablePoseError}from'./pose-refusal.mjs';
 export function applyPaintSkin(skin,matrices,width,height,output){
  if(output.length!==skin.vertices.length*2)throw Error('Paint skin position buffer');
  for(let i=0;i<skin.vertices.length;i++){
@@ -49,5 +50,5 @@ export function paintPartAreas(part,skin){
 export function assertPaintPartShape(part,skin,p,width,height,areas=paintPartAreas(part,skin)){
  for(let i=0;i<part.indices.length;i+=3){const area=areas[i/3];if(!Number.isFinite(area)||area===0)throw Error('Paint skin degenerate source triangle: '+part.id+' '+i/3);
   const a=part.indices[i]*2,b=part.indices[i+1]*2,c=part.indices[i+2]*2,posed=((p[b]-p[a])*(p[c+1]-p[a+1])-(p[b+1]-p[a+1])*(p[c]-p[a]))*width*height;
-  if(!Number.isFinite(posed)||posed/area<=0)throw Error('Paint skin folded triangle: '+part.id+' '+i/3);}
+  if(!Number.isFinite(posed)||posed/area<=0)throw new RecoverablePoseError('PAINT_FOLD','Paint skin folded triangle: '+part.id+' '+i/3);}
 }

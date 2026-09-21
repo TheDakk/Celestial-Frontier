@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 1645776703,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 14,
+    "body": 0,
+    "loco": 5,
+    "trait": 24,
+    "size": 4,
+    "diet": 0,
+    "head": 1,
+    "limbs": 0,
+    "skin": 7,
+    "tail": 0,
+    "pattern": 2,
+    "eyes": 1,
+    "behavior": 1,
+    "habitat": 10,
+    "detail": 7,
+    "accent": 9,
+    "temper": 9,
+    "sense": 7,
+    "repro": 1,
+    "life": 2,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Lobster"
+  },
+  "observation": null
+}

@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 1918134728,
+    "kingdom": "fauna",
+    "color": 6,
+    "form": 17,
+    "body": 5,
+    "loco": 17,
+    "trait": 13,
+    "size": 1,
+    "diet": 4,
+    "head": 8,
+    "limbs": 5,
+    "skin": 5,
+    "tail": 4,
+    "pattern": 5,
+    "eyes": 2,
+    "behavior": 4,
+    "habitat": 0,
+    "detail": 6,
+    "accent": 5,
+    "temper": 2,
+    "sense": 5,
+    "repro": 6,
+    "life": 4,
+    "metab": 1,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Krill"
+  },
+  "observation": null
+}

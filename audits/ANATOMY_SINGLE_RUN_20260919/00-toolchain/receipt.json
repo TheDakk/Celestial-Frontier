@@ -1,0 +1,19 @@
+{
+  "node": "v26.9.0",
+  "executable": "/opt/homebrew/bin/node",
+  "previousHead": "4cb5f7a3186c4ffe3ca2dcf01244ee8e2b3c8d4d",
+  "directionSource": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md",
+  "directionSha256": "d29ab1e3873a56d16b165caf17136f4c91076df6ec69ede3359b1e98707a69dc",
+  "authority": "Nick 2026-09-19 single run, \u00a7\u00a76\u20138; section8 and latest message override prior intermediate stops",
+  "status": "PASS",
+  "updated": [
+    "node 26.8.2 -> 26.9.0",
+    "Homebrew 7.0.3 -> 7.0.4",
+    "abseil 20260817.0 installed",
+    "highway 1.4.0 installed",
+    "simdutf 9.1.1 -> 9.2.0",
+    "merve 1.2.2_2 -> 1.2.2_3",
+    "readline 8.3.3 -> 8.3.6"
+  ],
+  "unchanged": "project dependency locks, sealed inputs; no cleanup, no GitHub operation"
+}

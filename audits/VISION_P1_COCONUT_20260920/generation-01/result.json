@@ -1,0 +1,21 @@
+{
+  "status": "DELIVERED_ONCE",
+  "tool": "image_gen.imagegen",
+  "seed": null,
+  "seedReason": "not exposed",
+  "model": "not exposed",
+  "sentPromptSha256": "c35fbf4093e44d7ca0d0267a627c365823d1059daf41f21b7bf3068ff2628eb4",
+  "masterSha256": "7954331dc3ce80bf3b4e2e3759bd0b5c576d659ff5fcb4d01b8efc536bba8890",
+  "masterPath": "audits/VISION_P1_COCONUT_20260920/generation-01/coconut-crab-master.png",
+  "originalToolPath": "/Users/nick/.codex/generated_images/01a0bab7-303d-74b2-9084-ec26ea52e7e8/exec-d4a88646-5ae1-4a39-95d2-14d66f8ba16b.png",
+  "actualDimensions": [
+    1254,
+    1254
+  ],
+  "requestedDimensions": [
+    1024,
+    1024
+  ],
+  "retries": 0,
+  "promptModified": false
+}

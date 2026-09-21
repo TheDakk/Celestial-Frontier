@@ -1,0 +1,3014 @@
+{
+  "status": "DIAGNOSTIC_PASS",
+  "diagnostic": true,
+  "sourceCommit": "29c1b5488088e0eac5a0e763007dafee1db4dbe5",
+  "dirtyDiagnostic": false,
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.48",
+    "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.7",
+    "protocol_version": "1.3"
+  },
+  "schema": "cf.exhausted-roster-intake/v1",
+  "scope": "Every historical58 identity attempted in source-family order. Refused fits are skipped; static source sheets are not animated captures or visual acceptance.",
+  "counts": {
+    "total": 58,
+    "retained": 5,
+    "refused": 53
+  },
+  "families": [
+    {
+      "profile": "clawed-crustacean",
+      "total": 8,
+      "retained": 4,
+      "refused": 4,
+      "sourceReds": 0
+    },
+    {
+      "profile": "terrestrial-crab",
+      "total": 1,
+      "retained": 1,
+      "refused": 0,
+      "sourceReds": 0
+    },
+    {
+      "profile": "small-crustacean",
+      "total": 14,
+      "retained": 0,
+      "refused": 14,
+      "sourceReds": 0
+    },
+    {
+      "profile": "horseshoe-crab",
+      "total": 1,
+      "retained": 0,
+      "refused": 1,
+      "sourceReds": 0
+    },
+    {
+      "profile": "barnacle",
+      "total": 1,
+      "retained": 0,
+      "refused": 1,
+      "sourceReds": 0
+    },
+    {
+      "profile": "tardigrade",
+      "total": 1,
+      "retained": 0,
+      "refused": 1,
+      "sourceReds": 0
+    },
+    {
+      "profile": "larva",
+      "total": 1,
+      "retained": 0,
+      "refused": 1,
+      "sourceReds": 0
+    },
+    {
+      "profile": "bivalve",
+      "total": 6,
+      "retained": 0,
+      "refused": 6,
+      "sourceReds": 0
+    },
+    {
+      "profile": "land-gastropod",
+      "total": 3,
+      "retained": 0,
+      "refused": 3,
+      "sourceReds": 0
+    },
+    {
+      "profile": "water-gastropod",
+      "total": 9,
+      "retained": 0,
+      "refused": 9,
+      "sourceReds": 0
+    },
+    {
+      "profile": "annelid-land",
+      "total": 2,
+      "retained": 0,
+      "refused": 2,
+      "sourceReds": 0
+    },
+    {
+      "profile": "annelid-water",
+      "total": 7,
+      "retained": 0,
+      "refused": 7,
+      "sourceReds": 0
+    },
+    {
+      "profile": "sponge",
+      "total": 1,
+      "retained": 0,
+      "refused": 1,
+      "sourceReds": 0
+    },
+    {
+      "profile": "tunicate",
+      "total": 3,
+      "retained": 0,
+      "refused": 3,
+      "sourceReds": 0
+    }
+  ],
+  "rows": [
+    {
+      "name": "Crab",
+      "profile": "clawed-crustacean",
+      "target": "brachyuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "id": "crab",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "status": "REUSE_COMPLETED",
+      "fit": "RETAINED",
+      "bind": "RETAINED",
+      "capture": "RETAINED",
+      "binding": "audits/ANATOMY_SINGLE_RUN_20260919/R9/rebound-01/crab",
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/R9/native-crab/family-full-rows.webm",
+      "reason": "Same five source inputs already fitted, bound and natively captured; no unchanged repeat"
+    },
+    {
+      "name": "Crayfish",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "id": "crayfish",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 15959,
+        "bounds": {
+          "minX": 303,
+          "minY": 386,
+          "maxX": 507,
+          "maxY": 528
+        }
+      },
+      "sourceSha256": "82bd837f92af9d977d94b2415708ddeb839ea3384db51680fbe9cba4c293febc",
+      "sourceMaster": "crayfish.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Fiddler Crab",
+      "profile": "clawed-crustacean",
+      "target": "brachyuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "id": "fiddler-crab",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 18585,
+        "bounds": {
+          "minX": 287,
+          "minY": 418,
+          "maxX": 537,
+          "maxY": 543
+        }
+      },
+      "sourceSha256": "c0d34e2d2a7cc64434f28492c4e26c108831141ed3cb129de3b84b2046004b20",
+      "sourceMaster": "fiddler-crab.png",
+      "observedFamily": "brachyuran",
+      "observedOwner": "faunaFiddler",
+      "unresolved": [
+        "Six visible quadratic walking curves, not eight articulated legs",
+        "No observed upper arm/elbow chain; large and small pincer paint only",
+        "Fourth walking pair and hidden roots unobserved; binding admission must refuse"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: Crab observation: unsupported source",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Freshwater Crab",
+      "profile": "clawed-crustacean",
+      "target": "brachyuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "id": "freshwater-crab",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "status": "REUSE_COMPLETED",
+      "fit": "RETAINED",
+      "bind": "RETAINED",
+      "capture": "RETAINED",
+      "binding": "audits/ANATOMY_SINGLE_RUN_20260919/R9/rebound-01/freshwater-crab",
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/R9/native-freshwater-crab/family-full-rows.webm",
+      "reason": "Same five source inputs already fitted, bound and natively captured; no unchanged repeat"
+    },
+    {
+      "name": "Hermit Crab",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "id": "hermit-crab",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 47771,
+        "bounds": {
+          "minX": 260,
+          "minY": 342,
+          "maxX": 608,
+          "maxY": 578
+        }
+      },
+      "sourceSha256": "be7facae28d244edb34897d7096c9a984e3bfa2abe8613842ac6f0c3033da4e9",
+      "sourceMaster": "hermit-crab.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Lobster",
+      "profile": "clawed-crustacean",
+      "target": "crustacean-clawed",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "id": "lobster",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 29950,
+        "bounds": {
+          "minX": 231,
+          "minY": 264,
+          "maxX": 611,
+          "maxY": 578
+        }
+      },
+      "sourceSha256": "d8ac7120b1171eb8e391523beb64df9d990c1314d11df49558524da795b3ac8f",
+      "sourceMaster": "lobster.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Mud Crab",
+      "profile": "clawed-crustacean",
+      "target": "brachyuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "id": "mud-crab",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "status": "REUSE_COMPLETED",
+      "fit": "RETAINED",
+      "bind": "RETAINED",
+      "capture": "RETAINED",
+      "binding": "audits/ANATOMY_SINGLE_RUN_20260919/R9/rebound-01/mud-crab",
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/R9/native-mud-crab/family-full-rows.webm",
+      "reason": "Same five source inputs already fitted, bound and natively captured; no unchanged repeat"
+    },
+    {
+      "name": "Vent Crab",
+      "profile": "clawed-crustacean",
+      "target": "brachyuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",
+      "id": "vent-crab",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "status": "REUSE_COMPLETED",
+      "fit": "RETAINED",
+      "bind": "RETAINED",
+      "capture": "RETAINED",
+      "binding": "audits/ANATOMY_SINGLE_RUN_20260919/R9/rebound-01/vent-crab",
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/R9/native-vent-crab/family-full-rows.webm",
+      "reason": "Same five source inputs already fitted, bound and natively captured; no unchanged repeat"
+    },
+    {
+      "name": "Coconut Crab",
+      "profile": "terrestrial-crab",
+      "target": "brachyuran",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Dedicated pincer/leg topology required; adult is not a submerged aquatic fighter.",
+      "id": "coconut-crab",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "status": "REUSE_COMPLETED",
+      "fit": "RETAINED",
+      "bind": "RETAINED",
+      "capture": "RETAINED",
+      "binding": "audits/ANATOMY_SINGLE_RUN_20260919/R9/rebound-01/coconut-crab",
+      "film": "audits/ANATOMY_SINGLE_RUN_20260919/R9/native-coconut-crab/family-full-rows.webm",
+      "reason": "Same five source inputs already fitted, bound and natively captured; no unchanged repeat"
+    },
+    {
+      "name": "Amphipod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "amphipod",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 23597,
+        "bounds": {
+          "minX": 233,
+          "minY": 249,
+          "maxX": 532,
+          "maxY": 587
+        }
+      },
+      "sourceSha256": "80414abffe2007fa63a7ce00ed493ceb52e1ae75797170971807096ba074a4bf",
+      "sourceMaster": "amphipod.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Brine Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "brine-shrimp",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 32871,
+        "bounds": {
+          "minX": 243,
+          "minY": 318,
+          "maxX": 645,
+          "maxY": 565
+        }
+      },
+      "sourceSha256": "37786e4b3de0a77449b540cda21928e8222aee82ba4b1569581325b181e4fd91",
+      "sourceMaster": "brine-shrimp.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Cave Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "cave-shrimp",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 8783,
+        "bounds": {
+          "minX": 311,
+          "minY": 400,
+          "maxX": 497,
+          "maxY": 520
+        }
+      },
+      "sourceSha256": "062f223c53992999dcd8a12cf12153cc46eb67083c54bd8097905462642ba875",
+      "sourceMaster": "cave-shrimp.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Copepod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "copepod",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 25206,
+        "bounds": {
+          "minX": 240,
+          "minY": 264,
+          "maxX": 639,
+          "maxY": 605
+        }
+      },
+      "sourceSha256": "50823932d8a2d53c90b36c67fcd3add5988d913cfdafaea5ec5f4e6b4c2fdbc8",
+      "sourceMaster": "copepod.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Fairy Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "fairy-shrimp",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 31652,
+        "bounds": {
+          "minX": 243,
+          "minY": 318,
+          "maxX": 631,
+          "maxY": 565
+        }
+      },
+      "sourceSha256": "fb95e7a62d5f3feed986d946ab5faf68e815321a00c4f8d5c68516c822b440cf",
+      "sourceMaster": "fairy-shrimp.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Freshwater Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "freshwater-shrimp",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 26434,
+        "bounds": {
+          "minX": 231,
+          "minY": 326,
+          "maxX": 593,
+          "maxY": 585
+        }
+      },
+      "sourceSha256": "d7c577970a7ef513d44132f1e744cfb5d596fa09f663682e5388badf11a94159",
+      "sourceMaster": "freshwater-shrimp.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Giant Isopod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "giant-isopod",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 18636,
+        "bounds": {
+          "minX": 305,
+          "minY": 406,
+          "maxX": 530,
+          "maxY": 523
+        }
+      },
+      "sourceSha256": "db6ab89c3a3843fc8067e307f357b007fca35741b3aedc9b749ab105bbac11bf",
+      "sourceMaster": "giant-isopod.png",
+      "observedFamily": "crustacean-small",
+      "observedOwner": "isopodBody",
+      "unresolved": [
+        "Seven leg pairs and seven tergite marks; do not use the five-pair shrimp candidate",
+        "Isopod paired uropods are present only on the named Isopod owner",
+        "Hidden limb roots, source part masks, articulated plate graph and full motion"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No complete source-bound record compiler for observed crustacean-small; partial features are not fitted joint/part ownership",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Isopod",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "isopod",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 15579,
+        "bounds": {
+          "minX": 321,
+          "minY": 411,
+          "maxX": 560,
+          "maxY": 514
+        }
+      },
+      "sourceSha256": "9c76afa79fad2cb0f6e929166471734640777a5cc9674e63ac5f3a5720250706",
+      "sourceMaster": "isopod.png",
+      "observedFamily": "crustacean-small",
+      "observedOwner": "isopodBody",
+      "unresolved": [
+        "Seven leg pairs and seven tergite marks; do not use the five-pair shrimp candidate",
+        "Isopod paired uropods are present only on the named Isopod owner",
+        "Hidden limb roots, source part masks, articulated plate graph and full motion"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No complete source-bound record compiler for observed crustacean-small; partial features are not fitted joint/part ownership",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Krill",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "krill",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 23416,
+        "bounds": {
+          "minX": 234,
+          "minY": 315,
+          "maxX": 589,
+          "maxY": 570
+        }
+      },
+      "sourceSha256": "155a26a027656499e43213a8405434f3ac9d12fe6cd12d425eb4ca5efb921704",
+      "sourceMaster": "krill.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Prawn",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "prawn",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 24935,
+        "bounds": {
+          "minX": 231,
+          "minY": 326,
+          "maxX": 599,
+          "maxY": 585
+        }
+      },
+      "sourceSha256": "f4f643fe73894114d60cf0ef059f32df185daa1ff40a896b65cad67c6cd58ccc",
+      "sourceMaster": "prawn.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "shrimp",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 25923,
+        "bounds": {
+          "minX": 231,
+          "minY": 326,
+          "maxX": 593,
+          "maxY": 585
+        }
+      },
+      "sourceSha256": "39abe6cd3851b0d53e05562d5e5070e676f095c9db38fe5aaa2b3de79a2f8fb7",
+      "sourceMaster": "shrimp.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Tadpole Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "tadpole-shrimp",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 33493,
+        "bounds": {
+          "minX": 303,
+          "minY": 355,
+          "maxX": 646,
+          "maxY": 578
+        }
+      },
+      "sourceSha256": "9b00a622cb4d07c9e81133ff9aadcb8f7f95453727f317dcda1a029dd028a6aa",
+      "sourceMaster": "tadpole-shrimp.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Vent Shrimp",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "vent-shrimp",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 24543,
+        "bounds": {
+          "minX": 232,
+          "minY": 315,
+          "maxX": 585,
+          "maxY": 578
+        }
+      },
+      "sourceSha256": "e8e9a86d34189df9f25fa875409de2b29d140bc9702cb8c494df4a93e688b4c0",
+      "sourceMaster": "vent-shrimp.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Water Flea",
+      "profile": "small-crustacean",
+      "target": "crustacean-small",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Observed segmented swimming/crawling appendages; no generic stinger.",
+      "id": "water-flea",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 22255,
+        "bounds": {
+          "minX": 328,
+          "minY": 306,
+          "maxX": 522,
+          "maxY": 564
+        }
+      },
+      "sourceSha256": "d49dce271bb9abaa7e87f61945014a237451400e466630efca01c63f7c49c7c5",
+      "sourceMaster": "water-flea.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Horseshoe Crab",
+      "profile": "horseshoe-crab",
+      "target": "xiphosuran",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Telson is not a venomous stinger; dedicated topology needed.",
+      "id": "horseshoe-crab",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 17187,
+        "bounds": {
+          "minX": 359,
+          "minY": 348,
+          "maxX": 520,
+          "maxY": 618
+        }
+      },
+      "sourceSha256": "566ef5401849e0000822df646b8db0912d221198aa8cb4394d31a7cd637d7715",
+      "sourceMaster": "horseshoe-crab.png",
+      "observedFamily": "xiphosuran",
+      "observedOwner": "faunaHorseshoeCrab",
+      "unresolved": [
+        "Top view has no painted walking legs or ventral mouth; a five-pair candidate is not a visible rig",
+        "Rigid telson, articulated opisthosoma and twelve lateral spines need source masks",
+        "Prosoma rim and dome share one rigid plate; no fabrication of hidden surfaces"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No complete source-bound record compiler for observed xiphosuran; partial features are not fitted joint/part ownership",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Barnacle",
+      "profile": "barnacle",
+      "target": "barnacle",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Anchored feeding cirri, no locomotor leap.",
+      "id": "barnacle",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 27118,
+        "bounds": {
+          "minX": 348,
+          "minY": 301,
+          "maxX": 531,
+          "maxY": 576
+        }
+      },
+      "sourceSha256": "9751b473cd2cf1bfd4fe2835a948272fab8f62cad480d73bf8210dcafab9d84c",
+      "sourceMaster": "barnacle.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Tardigrade",
+      "profile": "tardigrade",
+      "target": "lobopod",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Eight lobopod legs and stylets require exact topology; no arachnid fangs.",
+      "id": "tardigrade",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 21021,
+        "bounds": {
+          "minX": 324,
+          "minY": 399,
+          "maxX": 536,
+          "maxY": 530
+        }
+      },
+      "sourceSha256": "149951bec568c588982711437ea2563c49508f122ae826fa59cfca2156849e46",
+      "sourceMaster": "tardigrade.png",
+      "observedFamily": "lobopod",
+      "observedOwner": "tardigrade",
+      "unresolved": [
+        "Four leg pairs are actual limbs; seeded cuticle folds are surface details, not extra body segments",
+        "Hidden leg roots and reverse surfaces",
+        "Source part masks, fitted joint graph, contacts and complete motion"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No complete source-bound record compiler for observed lobopod; partial features are not fitted joint/part ownership",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Fly Larvae",
+      "profile": "larva",
+      "target": "larva",
+      "media": [
+        "water",
+        "ground"
+      ],
+      "anatomyRequirements": "Life stage cannot inherit adult wings or adult six-leg graph.",
+      "id": "fly-larvae",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 21961,
+        "bounds": {
+          "minX": 298,
+          "minY": 421,
+          "maxX": 581,
+          "maxY": 536
+        }
+      },
+      "sourceSha256": "c9ddcf3b26009df42b79e08cb8fc5ee764912017c0ee33c8d1213d3b69e53369",
+      "sourceMaster": "fly-larvae.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Clam",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "id": "clam",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 26090,
+        "bounds": {
+          "minX": 317,
+          "minY": 405,
+          "maxX": 573,
+          "maxY": 566
+        }
+      },
+      "sourceSha256": "2853b7c221452577a26047dc89a4bb7f44b3b384343956b4dc860beebe2796e8",
+      "sourceMaster": "clam.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Giant Clam",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "id": "giant-clam",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 39882,
+        "bounds": {
+          "minX": 307,
+          "minY": 366,
+          "maxX": 572,
+          "maxY": 571
+        }
+      },
+      "sourceSha256": "34890cbd677ed908c6cc83f724dbc2a4a55dfb66493581f608fe76be7d323862",
+      "sourceMaster": "giant-clam.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Mussel",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "id": "mussel",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 25199,
+        "bounds": {
+          "minX": 329,
+          "minY": 342,
+          "maxX": 551,
+          "maxY": 597
+        }
+      },
+      "sourceSha256": "e9517c0330341deebcc93ec8c0d765fe4e1d6cc5144b2158e4d81a0593dd0fad",
+      "sourceMaster": "mussel.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Oyster",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "id": "oyster",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 25582,
+        "bounds": {
+          "minX": 345,
+          "minY": 366,
+          "maxX": 534,
+          "maxY": 558
+        }
+      },
+      "sourceSha256": "65fa29cf055422791b253922ce24efbf458329c4443ff12af2f5677b2167f85a",
+      "sourceMaster": "oyster.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Razor Clam",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "id": "razor-clam",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 15274,
+        "bounds": {
+          "minX": 304,
+          "minY": 410,
+          "maxX": 552,
+          "maxY": 533
+        }
+      },
+      "sourceSha256": "1df74e18fa777adbd0fe34debd316966e24578b949e34e9e8a37bad22bae2df3",
+      "sourceMaster": "razor-clam.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Scallop",
+      "profile": "bivalve",
+      "target": "bivalve",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Valve closure/jet escape needs a valve rig; do not call it a bite.",
+      "id": "scallop",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 42373,
+        "bounds": {
+          "minX": 302,
+          "minY": 363,
+          "maxX": 577,
+          "maxY": 586
+        }
+      },
+      "sourceSha256": "dca5c962bae8ac8d914d841b8fe2784f82e32e0804e6122fea5e6428f361c837",
+      "sourceMaster": "scallop.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Banana Slug",
+      "profile": "land-gastropod",
+      "target": "gastropod",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+      "id": "banana-slug",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 20423,
+        "bounds": {
+          "minX": 308,
+          "minY": 354,
+          "maxX": 611,
+          "maxY": 534
+        }
+      },
+      "sourceSha256": "016132565eaee36861fd0ea9ff909eb360b6f8e25605f7376a04acb8c73c4a9d",
+      "sourceMaster": "banana-slug.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Land Snail",
+      "profile": "land-gastropod",
+      "target": "gastropod",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+      "id": "land-snail",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 20391,
+        "bounds": {
+          "minX": 342,
+          "minY": 365,
+          "maxX": 555,
+          "maxY": 519
+        }
+      },
+      "sourceSha256": "c4dd033e66fc9a3b53257cfcbccb5c68822dbb69ca2cfc70daffbf997e730760",
+      "sourceMaster": "land-snail.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Snail",
+      "profile": "land-gastropod",
+      "target": "gastropod",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",
+      "id": "snail",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 17692,
+        "bounds": {
+          "minX": 342,
+          "minY": 385,
+          "maxX": 555,
+          "maxY": 519
+        }
+      },
+      "sourceSha256": "d9a5d3c5f0bec1155de0f2d6ac21285f2cb6d791c353cb68df270a97839c702a",
+      "sourceMaster": "snail.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Abalone",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "id": "abalone",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 31291,
+        "bounds": {
+          "minX": 325,
+          "minY": 380,
+          "maxX": 554,
+          "maxY": 561
+        }
+      },
+      "sourceSha256": "d6183fd04a439b860b4f5d64c4beb4bd668d59f75ebd9989cb143771b34478b2",
+      "sourceMaster": "abalone.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Chiton",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "id": "chiton",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 28152,
+        "bounds": {
+          "minX": 309,
+          "minY": 401,
+          "maxX": 570,
+          "maxY": 531
+        }
+      },
+      "sourceSha256": "a6a2c33a9217409afeaa50714f3a09763c04c576f9a17ba158abd10685b99c43",
+      "sourceMaster": "chiton.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Conch",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "id": "conch",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 36368,
+        "bounds": {
+          "minX": 312,
+          "minY": 366,
+          "maxX": 584,
+          "maxY": 556
+        }
+      },
+      "sourceSha256": "4043fada5a7c9e9b9637a1767fc1812c11f4482d7b204f3567867c305f1330c3",
+      "sourceMaster": "conch.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Cowrie",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "id": "cowrie",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 13819,
+        "bounds": {
+          "minX": 367,
+          "minY": 407,
+          "maxX": 512,
+          "maxY": 532
+        }
+      },
+      "sourceSha256": "dbd85583ea6ecf218ad7297f9aaa87abb1165101d537a3b0bc5c002f64f54806",
+      "sourceMaster": "cowrie.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Freshwater Snail",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "id": "freshwater-snail",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 16482,
+        "bounds": {
+          "minX": 342,
+          "minY": 386,
+          "maxX": 555,
+          "maxY": 519
+        }
+      },
+      "sourceSha256": "48965baedd3c2d8b04e6b0dd86974d8a55040b1c888c4142a2ff954d85f7b88b",
+      "sourceMaster": "freshwater-snail.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Limpet",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "id": "limpet",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 35160,
+        "bounds": {
+          "minX": 312,
+          "minY": 352,
+          "maxX": 566,
+          "maxY": 580
+        }
+      },
+      "sourceSha256": "ca64a7695c0c0c84a3828527baa521313a6acb5bab8437b8717a5413c0df43ba",
+      "sourceMaster": "limpet.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Nudibranch",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "id": "nudibranch",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 11294,
+        "bounds": {
+          "minX": 362,
+          "minY": 386,
+          "maxX": 513,
+          "maxY": 516
+        }
+      },
+      "sourceSha256": "b2d222f765e12a49a7eee76cfb5658d795bc82ac39d4acb2724e763cd954ba7f",
+      "sourceMaster": "nudibranch.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Sea Snail",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "id": "sea-snail",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 20237,
+        "bounds": {
+          "minX": 343,
+          "minY": 383,
+          "maxX": 581,
+          "maxY": 518
+        }
+      },
+      "sourceSha256": "9e1855d2b8ac2fd1760ff27a5b11caf1d1108d5bc74a69d2e317f9cbff8f6d4c",
+      "sourceMaster": "sea-snail.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Water Snail",
+      "profile": "water-gastropod",
+      "target": "gastropod",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Radula/mantle/foot are not a fish bite or jellyfish arms.",
+      "id": "water-snail",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 21235,
+        "bounds": {
+          "minX": 342,
+          "minY": 360,
+          "maxX": 555,
+          "maxY": 519
+        }
+      },
+      "sourceSha256": "87cb8878704e3e2314cfd375c78b335e250e317d8534decdb35b86018a013477",
+      "sourceMaster": "water-snail.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Earthworm",
+      "profile": "annelid-land",
+      "target": "annelid",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Segmented body compression needs observed source geometry.",
+      "id": "earthworm",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 19290,
+        "bounds": {
+          "minX": 289,
+          "minY": 407,
+          "maxX": 593,
+          "maxY": 523
+        }
+      },
+      "sourceSha256": "4a961fc97b998d9578e3eb27bcc726124b42c5a54c11ad670b4fb5b0bd1dfed7",
+      "sourceMaster": "earthworm.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Ice Worm",
+      "profile": "annelid-land",
+      "target": "annelid",
+      "media": [
+        "ground"
+      ],
+      "anatomyRequirements": "Segmented body compression needs observed source geometry.",
+      "id": "ice-worm",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 9861,
+        "bounds": {
+          "minX": 288,
+          "minY": 442,
+          "maxX": 595,
+          "maxY": 523
+        }
+      },
+      "sourceSha256": "c67586ebafd1c19fbcdd5841c061ddeaea956a91c6695ef5ca27608e476fa606",
+      "sourceMaster": "ice-worm.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Flatworm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "id": "flatworm",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 20929,
+        "bounds": {
+          "minX": 267,
+          "minY": 404,
+          "maxX": 590,
+          "maxY": 521
+        }
+      },
+      "sourceSha256": "35324a83337a0d97c50cc7df0017a99f03a1a941f2a126834782da613c9fd293",
+      "sourceMaster": "flatworm.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Giant Tube Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "id": "giant-tube-worm",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 16359,
+        "bounds": {
+          "minX": 369,
+          "minY": 374,
+          "maxX": 510,
+          "maxY": 582
+        }
+      },
+      "sourceSha256": "e66f26aff6096c8244fa3fa4c7d5fdf41b94f0e5bf2c16d97099919850951422",
+      "sourceMaster": "giant-tube-worm.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Leech",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "id": "leech",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 24928,
+        "bounds": {
+          "minX": 279,
+          "minY": 389,
+          "maxX": 574,
+          "maxY": 553
+        }
+      },
+      "sourceSha256": "e9e192ce9fb29e1ed59154a7bacd465cb721e28e6083b7f485663cac0434baf7",
+      "sourceMaster": "leech.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Marine Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "id": "marine-worm",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 19976,
+        "bounds": {
+          "minX": 268,
+          "minY": 405,
+          "maxX": 583,
+          "maxY": 523
+        }
+      },
+      "sourceSha256": "58bdc087753cdd9ea7ef4e5ced9f535248077ab73a3ca2476583aabd9093928a",
+      "sourceMaster": "marine-worm.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Polychaete Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "id": "polychaete-worm",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 23880,
+        "bounds": {
+          "minX": 258,
+          "minY": 403,
+          "maxX": 582,
+          "maxY": 523
+        }
+      },
+      "sourceSha256": "b6d2b610ae1ce37124a676a312089d1e3c54748ae3a2c1425d627e0122f0700c",
+      "sourceMaster": "polychaete-worm.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Scale Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "id": "scale-worm",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 28367,
+        "bounds": {
+          "minX": 295,
+          "minY": 408,
+          "maxX": 583,
+          "maxY": 530
+        }
+      },
+      "sourceSha256": "a984d3f430233fbd0158a7c68bfcea3178ebf92e887731d31e9e264df6b30e42",
+      "sourceMaster": "scale-worm.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Tube Worm",
+      "profile": "annelid-water",
+      "target": "annelid",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Different feeding structures; no universal jaw or venom.",
+      "id": "tube-worm",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 16161,
+        "bounds": {
+          "minX": 369,
+          "minY": 379,
+          "maxX": 510,
+          "maxY": 582
+        }
+      },
+      "sourceSha256": "195f0b81232453233d6b84e8493a546b19fd69a756b7709c99e20dbbc859a59e",
+      "sourceMaster": "tube-worm.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Sponge",
+      "profile": "sponge",
+      "target": "sessile-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile filtration; effect-only combat needs a verified root/colony anchor.",
+      "id": "sponge",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 35560,
+        "bounds": {
+          "minX": 326,
+          "minY": 360,
+          "maxX": 559,
+          "maxY": 577
+        }
+      },
+      "sourceSha256": "a26787f11855fd61694ce017375c6cc3272846a0ddbfffe5af2759a62658a663",
+      "sourceMaster": "sponge.png",
+      "observedFamily": null,
+      "observedOwner": null,
+      "unresolved": [
+        "Winning painter emits no anatomy observation"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No source-bound observation, landmark graph or ownership masks; complete fit cannot be admitted",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Pyrosome",
+      "profile": "tunicate",
+      "target": "colonial-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+      "id": "pyrosome",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 37344,
+        "bounds": {
+          "minX": 354,
+          "minY": 278,
+          "maxX": 525,
+          "maxY": 599
+        }
+      },
+      "sourceSha256": "62ded78dae879f6e9d6a2393aa9aef6e0f665171c1cc812a52227110e36cb749",
+      "sourceMaster": "pyrosome.png",
+      "observedFamily": "colonial-filter",
+      "observedOwner": "faunaPyrosome",
+      "unresolved": [
+        "One colonial tube; 190 zooid marks are surface detail, not 190 rig joints",
+        "Shared tube deformation, wall/aperture masks and complete motion unqualified",
+        "Bioluminescent halo is an effect, not body skin"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No complete source-bound record compiler for observed colonial-filter; partial features are not fitted joint/part ownership",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Salp",
+      "profile": "tunicate",
+      "target": "colonial-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+      "id": "salp",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 15141,
+        "bounds": {
+          "minX": 292,
+          "minY": 316,
+          "maxX": 584,
+          "maxY": 570
+        }
+      },
+      "sourceSha256": "38b267ed763abe42002e3bcde7b070688a6e39e9c54593f84a0e5342e922d296",
+      "sourceMaster": "salp.png",
+      "observedFamily": "colonial-filter",
+      "observedOwner": "faunaSalp",
+      "unresolved": [
+        "Four actual barrels and eight apertures; bands are surface marks",
+        "Painted inter-barrel contact, individual tube masks and jet motion unqualified"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No complete source-bound record compiler for observed colonial-filter; partial features are not fitted joint/part ownership",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    },
+    {
+      "name": "Sea Squirt",
+      "profile": "tunicate",
+      "target": "sessile-filter",
+      "media": [
+        "water"
+      ],
+      "anatomyRequirements": "Sessile or colonial suspension feeders; no invented jaws, legs or arms.",
+      "id": "sea-squirt",
+      "visualAcceptance": null,
+      "groupingAuthority": "Requested source-routing profile; actual observed owner/family reported separately",
+      "changedChannels": 0,
+      "ink": {
+        "width": 880,
+        "height": 880,
+        "paintedPixels": 42311,
+        "bounds": {
+          "minX": 264,
+          "minY": 377,
+          "maxX": 624,
+          "maxY": 642
+        }
+      },
+      "sourceSha256": "ac2f0f6fe9d9f20ef071e8b9e1ccc3681a29c1b91a340e26457dfbec216747a4",
+      "sourceMaster": "sea-squirt.png",
+      "observedFamily": "sessile-filter",
+      "observedOwner": "faunaSeaSquirt",
+      "unresolved": [
+        "Two actual attached bodies, each with inhalant and exhalant siphons",
+        "The painted rock is scenery, not an organism joint",
+        "Separate tunic and rim masks, rooted motion and aperture closure unqualified"
+      ],
+      "fit": "REFUSED",
+      "status": "REFUSED",
+      "reason": "Error: No complete source-bound record compiler for observed sessile-filter; partial features are not fitted joint/part ownership",
+      "bind": "SKIPPED_FIT_REFUSAL",
+      "capture": "STATIC_SOURCE_ONLY"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "crayfish.png",
+      "sha256": "82bd837f92af9d977d94b2415708ddeb839ea3384db51680fbe9cba4c293febc",
+      "bytes": 50396
+    },
+    {
+      "path": "crayfish-source.json",
+      "sha256": "60e748c934bf23116275e93a486a21046ef9a3c22394f13142bc953941a778b4",
+      "bytes": 525
+    },
+    {
+      "path": "fiddler-crab.png",
+      "sha256": "c0d34e2d2a7cc64434f28492c4e26c108831141ed3cb129de3b84b2046004b20",
+      "bytes": 42586
+    },
+    {
+      "path": "fiddler-crab-source.json",
+      "sha256": "47b0fad39c250e70d38f9ff4ac3e2f622e45fd9b304146647ae99c00af2455a5",
+      "bytes": 6301
+    },
+    {
+      "path": "hermit-crab.png",
+      "sha256": "be7facae28d244edb34897d7096c9a984e3bfa2abe8613842ac6f0c3033da4e9",
+      "bytes": 88414
+    },
+    {
+      "path": "hermit-crab-source.json",
+      "sha256": "ab6255f2a59d5039510d27e57f258a6385f97d2637e21e04e85511315a6e5880",
+      "bytes": 529
+    },
+    {
+      "path": "lobster.png",
+      "sha256": "d8ac7120b1171eb8e391523beb64df9d990c1314d11df49558524da795b3ac8f",
+      "bytes": 67360
+    },
+    {
+      "path": "lobster-source.json",
+      "sha256": "8173fa31b1e86fef863ab30b3108853ed2d0750ac1289d864c6fba93a8a4fe31",
+      "bytes": 525
+    },
+    {
+      "path": "amphipod.png",
+      "sha256": "80414abffe2007fa63a7ce00ed493ceb52e1ae75797170971807096ba074a4bf",
+      "bytes": 61776
+    },
+    {
+      "path": "amphipod-source.json",
+      "sha256": "9774cffce0c79b5e3b3e063fb36de12f57243b139dcf5cbf4c9930788f66663a",
+      "bytes": 525
+    },
+    {
+      "path": "brine-shrimp.png",
+      "sha256": "37786e4b3de0a77449b540cda21928e8222aee82ba4b1569581325b181e4fd91",
+      "bytes": 58196
+    },
+    {
+      "path": "brine-shrimp-source.json",
+      "sha256": "273941fbc74bc6498f6c0108460e98350a388a22c8c37c6eba8035d962b4794a",
+      "bytes": 529
+    },
+    {
+      "path": "cave-shrimp.png",
+      "sha256": "062f223c53992999dcd8a12cf12153cc46eb67083c54bd8097905462642ba875",
+      "bytes": 40271
+    },
+    {
+      "path": "cave-shrimp-source.json",
+      "sha256": "057144064fe0c467a4b69295da91d7740fd1d9e858c4d5fa23a0118d0f5580bd",
+      "bytes": 527
+    },
+    {
+      "path": "copepod.png",
+      "sha256": "50823932d8a2d53c90b36c67fcd3add5988d913cfdafaea5ec5f4e6b4c2fdbc8",
+      "bytes": 72101
+    },
+    {
+      "path": "copepod-source.json",
+      "sha256": "b5007e06db8e92d3bdc147e6330c6a657a9b9b27f76a61eac3d5325513dac073",
+      "bytes": 525
+    },
+    {
+      "path": "fairy-shrimp.png",
+      "sha256": "fb95e7a62d5f3feed986d946ab5faf68e815321a00c4f8d5c68516c822b440cf",
+      "bytes": 54971
+    },
+    {
+      "path": "fairy-shrimp-source.json",
+      "sha256": "490107cee7012144eea58dc82e16acb05bf6c2883f90d6a40a7052fb54751135",
+      "bytes": 531
+    },
+    {
+      "path": "freshwater-shrimp.png",
+      "sha256": "d7c577970a7ef513d44132f1e744cfb5d596fa09f663682e5388badf11a94159",
+      "bytes": 69558
+    },
+    {
+      "path": "freshwater-shrimp-source.json",
+      "sha256": "dab4557497f8ebfdb35b97e3a62a1ea348af00fde432234f851839f1dc6c90eb",
+      "bytes": 536
+    },
+    {
+      "path": "giant-isopod.png",
+      "sha256": "db6ab89c3a3843fc8067e307f357b007fca35741b3aedc9b749ab105bbac11bf",
+      "bytes": 43596
+    },
+    {
+      "path": "giant-isopod-source.json",
+      "sha256": "3375d17c9d82d12469e96877deaebb3402a1573da26513dc698f2c199dab08f1",
+      "bytes": 12769
+    },
+    {
+      "path": "isopod.png",
+      "sha256": "9c76afa79fad2cb0f6e929166471734640777a5cc9674e63ac5f3a5720250706",
+      "bytes": 40686
+    },
+    {
+      "path": "isopod-source.json",
+      "sha256": "4aaa2e124e7cea724eaee1ce9378819145abe6c9c7a94e258e08d18989b6ace7",
+      "bytes": 13760
+    },
+    {
+      "path": "krill.png",
+      "sha256": "155a26a027656499e43213a8405434f3ac9d12fe6cd12d425eb4ca5efb921704",
+      "bytes": 67799
+    },
+    {
+      "path": "krill-source.json",
+      "sha256": "d63d4483c25bd62adc3f2ff33a292880774cdd8efc9112aba0a3b4028edf22c3",
+      "bytes": 523
+    },
+    {
+      "path": "prawn.png",
+      "sha256": "f4f643fe73894114d60cf0ef059f32df185daa1ff40a896b65cad67c6cd58ccc",
+      "bytes": 63121
+    },
+    {
+      "path": "prawn-source.json",
+      "sha256": "4e065e4c020415415a71595b917655028d07d4b4b3e7469825ddc2cab18f50f3",
+      "bytes": 525
+    },
+    {
+      "path": "shrimp.png",
+      "sha256": "39abe6cd3851b0d53e05562d5e5070e676f095c9db38fe5aaa2b3de79a2f8fb7",
+      "bytes": 65504
+    },
+    {
+      "path": "shrimp-source.json",
+      "sha256": "bd848d7e6ecf982b785d71a5a618115d6b80d320861d5ec10c8041baa7ca1784",
+      "bytes": 522
+    },
+    {
+      "path": "tadpole-shrimp.png",
+      "sha256": "9b00a622cb4d07c9e81133ff9aadcb8f7f95453727f317dcda1a029dd028a6aa",
+      "bytes": 74638
+    },
+    {
+      "path": "tadpole-shrimp-source.json",
+      "sha256": "da8655127fdb2740b4a270ee68f403993f23193f343bcbe59a78c61c4364de78",
+      "bytes": 529
+    },
+    {
+      "path": "vent-shrimp.png",
+      "sha256": "e8e9a86d34189df9f25fa875409de2b29d140bc9702cb8c494df4a93e688b4c0",
+      "bytes": 63459
+    },
+    {
+      "path": "vent-shrimp-source.json",
+      "sha256": "dcb08b1193c422219aebfade402b5d94c290b853086895114b8da73055a2736e",
+      "bytes": 528
+    },
+    {
+      "path": "water-flea.png",
+      "sha256": "d49dce271bb9abaa7e87f61945014a237451400e466630efca01c63f7c49c7c5",
+      "bytes": 36298
+    },
+    {
+      "path": "water-flea-source.json",
+      "sha256": "2cf02fe09e1f07162a8ecee5db258b1839e1859f19b807f285f25eb4237b25f1",
+      "bytes": 525
+    },
+    {
+      "path": "horseshoe-crab.png",
+      "sha256": "566ef5401849e0000822df646b8db0912d221198aa8cb4394d31a7cd637d7715",
+      "bytes": 43688
+    },
+    {
+      "path": "horseshoe-crab-source.json",
+      "sha256": "ce490eac97e5ce29ff7dfe40d9374cebf2714d04e6d67924dabf3f787c28bac2",
+      "bytes": 7803
+    },
+    {
+      "path": "barnacle.png",
+      "sha256": "9751b473cd2cf1bfd4fe2835a948272fab8f62cad480d73bf8210dcafab9d84c",
+      "bytes": 64090
+    },
+    {
+      "path": "barnacle-source.json",
+      "sha256": "52a7eae9a56eafa0fc6ed80fda73f8d06af2500acc9ef46a78ebc0ef4067f3eb",
+      "bytes": 527
+    },
+    {
+      "path": "tardigrade.png",
+      "sha256": "149951bec568c588982711437ea2563c49508f122ae826fa59cfca2156849e46",
+      "bytes": 46059
+    },
+    {
+      "path": "tardigrade-source.json",
+      "sha256": "47d1e15d4fc9a93bd6ec57757b82488c43c8d6c323c87ee67794abb7b4bdd541",
+      "bytes": 16906
+    },
+    {
+      "path": "fly-larvae.png",
+      "sha256": "c9ddcf3b26009df42b79e08cb8fc5ee764912017c0ee33c8d1213d3b69e53369",
+      "bytes": 47834
+    },
+    {
+      "path": "fly-larvae-source.json",
+      "sha256": "f1bcc6316cc8896f203c5ec1ddbbfbc11fe3d8ebbf1502622a6d48d115d872ec",
+      "bytes": 526
+    },
+    {
+      "path": "clam.png",
+      "sha256": "2853b7c221452577a26047dc89a4bb7f44b3b384343956b4dc860beebe2796e8",
+      "bytes": 48997
+    },
+    {
+      "path": "clam-source.json",
+      "sha256": "9a2444126b2847f5c689367d6f64a1e635dfadd084ccf96328871cbd26a586e7",
+      "bytes": 521
+    },
+    {
+      "path": "giant-clam.png",
+      "sha256": "34890cbd677ed908c6cc83f724dbc2a4a55dfb66493581f608fe76be7d323862",
+      "bytes": 66527
+    },
+    {
+      "path": "giant-clam-source.json",
+      "sha256": "5cbab99d60aa5622d8458ad3a08a23a85252f87ce7bede3aee08cf2af60c1463",
+      "bytes": 526
+    },
+    {
+      "path": "mussel.png",
+      "sha256": "e9517c0330341deebcc93ec8c0d765fe4e1d6cc5144b2158e4d81a0593dd0fad",
+      "bytes": 55940
+    },
+    {
+      "path": "mussel-source.json",
+      "sha256": "dffafec101106b3009f9437023f38682e8864db75141d7ddb80a25d706b9c569",
+      "bytes": 527
+    },
+    {
+      "path": "oyster.png",
+      "sha256": "65fa29cf055422791b253922ce24efbf458329c4443ff12af2f5677b2167f85a",
+      "bytes": 54309
+    },
+    {
+      "path": "oyster-source.json",
+      "sha256": "89e424505536f446a8baaaa4d7c2b74386cb7e604d6c4214efb011029325419a",
+      "bytes": 524
+    },
+    {
+      "path": "razor-clam.png",
+      "sha256": "1df74e18fa777adbd0fe34debd316966e24578b949e34e9e8a37bad22bae2df3",
+      "bytes": 35602
+    },
+    {
+      "path": "razor-clam-source.json",
+      "sha256": "d9a856eed44f7dfd8ee9fa91e2f0c394f6332fcf3c819fdd3be0e55ccbbfdaee",
+      "bytes": 527
+    },
+    {
+      "path": "scallop.png",
+      "sha256": "dca5c962bae8ac8d914d841b8fe2784f82e32e0804e6122fea5e6428f361c837",
+      "bytes": 90602
+    },
+    {
+      "path": "scallop-source.json",
+      "sha256": "6ca3d67436653be58ed8dce889c344c3a9380ad458937d5ff00732113ae5f772",
+      "bytes": 527
+    },
+    {
+      "path": "banana-slug.png",
+      "sha256": "016132565eaee36861fd0ea9ff909eb360b6f8e25605f7376a04acb8c73c4a9d",
+      "bytes": 38312
+    },
+    {
+      "path": "banana-slug-source.json",
+      "sha256": "0249e1aca5a69175f9cb3b3cf1ed3638513be29f095c232b43dc736af97621a4",
+      "bytes": 529
+    },
+    {
+      "path": "land-snail.png",
+      "sha256": "c4dd033e66fc9a3b53257cfcbccb5c68822dbb69ca2cfc70daffbf997e730760",
+      "bytes": 62021
+    },
+    {
+      "path": "land-snail-source.json",
+      "sha256": "12a83e63045525ec04871f709d19cbc9a037af5e299648d4c584500b4b6f9084",
+      "bytes": 526
+    },
+    {
+      "path": "snail.png",
+      "sha256": "d9a5d3c5f0bec1155de0f2d6ac21285f2cb6d791c353cb68df270a97839c702a",
+      "bytes": 54720
+    },
+    {
+      "path": "snail-source.json",
+      "sha256": "f6375d7820acb909a79c94f9f7c4429f45809c4434ff744feb063b6a5a7dc010",
+      "bytes": 522
+    },
+    {
+      "path": "abalone.png",
+      "sha256": "d6183fd04a439b860b4f5d64c4beb4bd668d59f75ebd9989cb143771b34478b2",
+      "bytes": 67412
+    },
+    {
+      "path": "abalone-source.json",
+      "sha256": "902aab4217ab606bfb639f8ca26bae0a6007363916b00464f2c2795db570dbbb",
+      "bytes": 525
+    },
+    {
+      "path": "chiton.png",
+      "sha256": "a6a2c33a9217409afeaa50714f3a09763c04c576f9a17ba158abd10685b99c43",
+      "bytes": 68403
+    },
+    {
+      "path": "chiton-source.json",
+      "sha256": "f5d37712c0cce5bcb70165e57a93eb7e840c3ec1cde98e6774624df65e41b2b8",
+      "bytes": 524
+    },
+    {
+      "path": "conch.png",
+      "sha256": "4043fada5a7c9e9b9637a1767fc1812c11f4482d7b204f3567867c305f1330c3",
+      "bytes": 63369
+    },
+    {
+      "path": "conch-source.json",
+      "sha256": "c1f5be059006aba3cdb85ad0adca57a1184346254b7557d01edc5f3848c4480f",
+      "bytes": 521
+    },
+    {
+      "path": "cowrie.png",
+      "sha256": "dbd85583ea6ecf218ad7297f9aaa87abb1165101d537a3b0bc5c002f64f54806",
+      "bytes": 39083
+    },
+    {
+      "path": "cowrie-source.json",
+      "sha256": "675d9b6f18e8ccde069d1fd0c69dd6ef152c947c33719793a4e50dd90278d32d",
+      "bytes": 523
+    },
+    {
+      "path": "freshwater-snail.png",
+      "sha256": "48965baedd3c2d8b04e6b0dd86974d8a55040b1c888c4142a2ff954d85f7b88b",
+      "bytes": 50034
+    },
+    {
+      "path": "freshwater-snail-source.json",
+      "sha256": "b5fdbdaec0a68c5d3413300832e3b3c18e7470a2f637f6f81ee7efc8b1564348",
+      "bytes": 535
+    },
+    {
+      "path": "limpet.png",
+      "sha256": "ca64a7695c0c0c84a3828527baa521313a6acb5bab8437b8717a5413c0df43ba",
+      "bytes": 56638
+    },
+    {
+      "path": "limpet-source.json",
+      "sha256": "d301d75a1995f50410d9ccf25959194b32a94e3581c75de21335f384b82a1e5c",
+      "bytes": 525
+    },
+    {
+      "path": "nudibranch.png",
+      "sha256": "b2d222f765e12a49a7eee76cfb5658d795bc82ac39d4acb2724e763cd954ba7f",
+      "bytes": 34692
+    },
+    {
+      "path": "nudibranch-source.json",
+      "sha256": "4e84de479c6ce6c80abde323c46b056cd59d702914c437ed43e5cb0c9cec27c7",
+      "bytes": 528
+    },
+    {
+      "path": "sea-snail.png",
+      "sha256": "9e1855d2b8ac2fd1760ff27a5b11caf1d1108d5bc74a69d2e317f9cbff8f6d4c",
+      "bytes": 43706
+    },
+    {
+      "path": "sea-snail-source.json",
+      "sha256": "e38327ed09d96ed4cb9cbd7788bfeaec8d2f210e8047d1904bd708406376ecb1",
+      "bytes": 528
+    },
+    {
+      "path": "water-snail.png",
+      "sha256": "87cb8878704e3e2314cfd375c78b335e250e317d8534decdb35b86018a013477",
+      "bytes": 61788
+    },
+    {
+      "path": "water-snail-source.json",
+      "sha256": "6b7852864fa41e26fe132b0bf5fb4f126ce0b7d941f75807e27d32f94049b054",
+      "bytes": 526
+    },
+    {
+      "path": "earthworm.png",
+      "sha256": "4a961fc97b998d9578e3eb27bcc726124b42c5a54c11ad670b4fb5b0bd1dfed7",
+      "bytes": 39066
+    },
+    {
+      "path": "earthworm-source.json",
+      "sha256": "7b691f27faf062ec6ea1b49b3beb9c64dd61abb7f1ad8e33eb55a6e3c026f3eb",
+      "bytes": 527
+    },
+    {
+      "path": "ice-worm.png",
+      "sha256": "c67586ebafd1c19fbcdd5841c061ddeaea956a91c6695ef5ca27608e476fa606",
+      "bytes": 27145
+    },
+    {
+      "path": "ice-worm-source.json",
+      "sha256": "cbfa55263fd11cc5bed351bb19b5dd5fba880548c4e3978d2b99681effd441d8",
+      "bytes": 524
+    },
+    {
+      "path": "flatworm.png",
+      "sha256": "35324a83337a0d97c50cc7df0017a99f03a1a941f2a126834782da613c9fd293",
+      "bytes": 31211
+    },
+    {
+      "path": "flatworm-source.json",
+      "sha256": "05d4c6ce4f4965687dda678471b6dcbb556293a2c23a6abbe4c9266de19176c2",
+      "bytes": 524
+    },
+    {
+      "path": "giant-tube-worm.png",
+      "sha256": "e66f26aff6096c8244fa3fa4c7d5fdf41b94f0e5bf2c16d97099919850951422",
+      "bytes": 46708
+    },
+    {
+      "path": "giant-tube-worm-source.json",
+      "sha256": "da69cd4c97b0e876644b7d1b676bd92c01442d61cbf58c8690c35554d799ad2a",
+      "bytes": 533
+    },
+    {
+      "path": "leech.png",
+      "sha256": "e9e192ce9fb29e1ed59154a7bacd465cb721e28e6083b7f485663cac0434baf7",
+      "bytes": 45730
+    },
+    {
+      "path": "leech-source.json",
+      "sha256": "7369d53ec85956027ea6bb4bf0c59b8060deab457a6ed1d9389f02b75f5850c1",
+      "bytes": 522
+    },
+    {
+      "path": "marine-worm.png",
+      "sha256": "58bdc087753cdd9ea7ef4e5ced9f535248077ab73a3ca2476583aabd9093928a",
+      "bytes": 56284
+    },
+    {
+      "path": "marine-worm-source.json",
+      "sha256": "55e7528fbbe38cfdcfd4124093809b3e86880de0a764ce1e8558c6fd7c123dbf",
+      "bytes": 528
+    },
+    {
+      "path": "polychaete-worm.png",
+      "sha256": "b6d2b610ae1ce37124a676a312089d1e3c54748ae3a2c1425d627e0122f0700c",
+      "bytes": 56340
+    },
+    {
+      "path": "polychaete-worm-source.json",
+      "sha256": "a2855845019d0dd4c706069f770ba3f24d1c1c45e52ce1b95e49450607022dbf",
+      "bytes": 533
+    },
+    {
+      "path": "scale-worm.png",
+      "sha256": "a984d3f430233fbd0158a7c68bfcea3178ebf92e887731d31e9e264df6b30e42",
+      "bytes": 49525
+    },
+    {
+      "path": "scale-worm-source.json",
+      "sha256": "31b31bc8a0c90d9d430343e1c844e0a2998df7d47ba6107463d9a75d466b9e73",
+      "bytes": 526
+    },
+    {
+      "path": "tube-worm.png",
+      "sha256": "195f0b81232453233d6b84e8493a546b19fd69a756b7709c99e20dbbc859a59e",
+      "bytes": 46218
+    },
+    {
+      "path": "tube-worm-source.json",
+      "sha256": "365fffd260a347d69d9706c374e6ba8e95b531da18a8fea22ecb80f82a7930c0",
+      "bytes": 528
+    },
+    {
+      "path": "sponge.png",
+      "sha256": "a26787f11855fd61694ce017375c6cc3272846a0ddbfffe5af2759a62658a663",
+      "bytes": 72588
+    },
+    {
+      "path": "sponge-source.json",
+      "sha256": "9325c9262b815072d012bad586cfa306bbd2bc5c65009eb4e7da4555ccadafa9",
+      "bytes": 526
+    },
+    {
+      "path": "pyrosome.png",
+      "sha256": "62ded78dae879f6e9d6a2393aa9aef6e0f665171c1cc812a52227110e36cb749",
+      "bytes": 129268
+    },
+    {
+      "path": "pyrosome-source.json",
+      "sha256": "09e18efeff8a31a6a4c4fc1c55ccdf9fd5eb4fc60052810c119a307fd7518140",
+      "bytes": 58383
+    },
+    {
+      "path": "salp.png",
+      "sha256": "38b267ed763abe42002e3bcde7b070688a6e39e9c54593f84a0e5342e922d296",
+      "bytes": 60241
+    },
+    {
+      "path": "salp-source.json",
+      "sha256": "6d01ae0fb0a2c1b04bc7d7c0bb38f8f1946f9890788d1b3da9991f8f8b583c99",
+      "bytes": 5584
+    },
+    {
+      "path": "sea-squirt.png",
+      "sha256": "ac2f0f6fe9d9f20ef071e8b9e1ccc3681a29c1b91a340e26457dfbec216747a4",
+      "bytes": 72128
+    },
+    {
+      "path": "sea-squirt-source.json",
+      "sha256": "257c7c8763d7e95769b2095193ba8b8fbe58272099e70fe4b91f1b591749fd8a",
+      "bytes": 4732
+    }
+  ],
+  "sources": [
+    {
+      "path": "port/v2/tools/fauna-coverage/roster-entry.mjs",
+      "sha256": "87c1cc6e2faf894cdafc243014b3cde628388f3698412b524f77f48d4c4320b7"
+    },
+    {
+      "path": "port/v2/tools/fauna-coverage/roster-inventory.json",
+      "sha256": "e5dde84feb192e7a0f259ecfee546cd071315a359a299a241b300872f291e017"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesidentity.ts",
+      "sha256": "f219d6aee5acd20235f6c7a020eac35aa7ebb7d2acb168be2f73a3fefc3c1ba0"
+    },
+    {
+      "path": "port/v2/packages/domain/genome/src/index.ts",
+      "sha256": "f2936929b86938c7236d093320b52202b90169abea4c4ce4d90b55f4ec477f72"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciescanvas.ts",
+      "sha256": "17594498f0d4ed8140a3708ef4b0150b0d08a538a0777ae5fee822782ae095d4"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/index.ts",
+      "sha256": "70a8fc4bd7c188b3e26e699e2644f8a57587cb14b6a0bf2a927f48dd4d18b96a"
+    },
+    {
+      "path": "port/v2/packages/domain/rand/src/index.ts",
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "path": "port/v2/tools/fauna-coverage/census-contract.mjs",
+      "sha256": "19f3d91d7c80528d73629fca80100a8d054cb1fa1953ef755e9c83ad93d50bf3"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-record.mjs",
+      "sha256": "dd4b0fb3e9200d4081bda4c77b128020b2fc0dce19d8196f1dcfd95b1581c878"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/crab-observation-record.mjs",
+      "sha256": "415caf32a29cf40cdf4326788d9a04d439fdb18fda0ee40d9c894bc0fa96b2b9"
+    },
+    {
+      "path": "port/v2/packages/art/src/speciesoverrides.ts",
+      "sha256": "82e5b1f880b3aa7474a3a542da8172306890b74d6a8194f33da1a94e0996e999"
+    },
+    {
+      "path": "port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "sha256": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/apphooks.ts",
+      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
+      "sha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/describe-pick.ts",
+      "sha256": "2e689f6c986c5a0c5d1ad877caf6e48c814fadd47550aa6555612282ed6895d1"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "3d7ba73ec369a07fc1678610b32e77fb5beadedbdee1885ca544424588e1f587"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/quadruped-template.mjs",
+      "sha256": "86b4419ab0ef904f87e08942a1fdaf1f68a608c3cac40747b3095f8fb0aae5dc"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/motion-scale.mjs",
+      "sha256": "a38a55fbce7272597f5cd70af73bc850d73580795afcb2cc3e7db44c11653096"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "33ea5ce27cf4deef762264ca82497684d616184c6eed27d35b01cae6211ec6bf"
+    },
+    {
+      "path": "port/v2/packages/domain/planetgen/src/index.ts",
+      "sha256": "92c0b25b750c9457a7365e482d9423400a54150019997a5d1c96c1ea96e203e0"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/index.ts",
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
+      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff"
+    },
+    {
+      "path": "port/v2/packages/domain/worldconfig/src/index.ts",
+      "sha256": "4ce4e39da1afe2f97baaa2105c2aa209e4d65d10443dfc81a960deeb8ccf0079"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5"
+    },
+    {
+      "path": "port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
+      "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    },
+    {
+      "path": "port/v2/packages/domain/starcatalog/src/index.ts",
+      "sha256": "da886e9f3a2be6ce7e609e031e3a0e4c325d272f8926803f2d0e33b2d7ed1b13"
+    },
+    {
+      "path": "port/v2/packages/domain/ecology/src/index.ts",
+      "sha256": "9ae354c71f86794966f928a8e3c27c3d34a05b23093f3bfdf5c77909979acc3b"
+    },
+    {
+      "path": "port/v2/packages/domain/genetics/src/index.ts",
+      "sha256": "eee2058546ab009b6b33376bad1005d6a597bd2b336506851d9be562d8cbef61"
+    },
+    {
+      "path": "port/v2/packages/domain/naming/src/index.ts",
+      "sha256": "f485458ba79dfa6bbe96838eb831506dc7d01bc80f27b2a2d8c8f4edc039c11e"
+    },
+    {
+      "path": "port/v2/packages/domain/strays/src/index.ts",
+      "sha256": "fa905124c4d182f361b868cf0319fdb9279bd8d13cfb1f85c991d00f83d225ec"
+    },
+    {
+      "path": "port/v2/packages/domain/surveyphrases/src/index.ts",
+      "sha256": "8c8ec0c8f6b2d76b326daf994f2f4042f0c09e78f1772046f0df1ebc1168989c"
+    },
+    {
+      "path": "port/v2/packages/domain/worldgen/src/index.ts",
+      "sha256": "d81b384a57674c39146726f1b05acec3eddc86fe06da36d80b1bcd5f3c8d4673"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "6bca7ed6d1ad6a97216c3df01add6f2bad21494a331e8ca001c92dd7db80f1b0"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "e2dca64d0077c7a3f91b1c00bc383392c6a7d245f9c1b19a9254384c8acb8596"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/pose-projection.mjs",
+      "sha256": "9a6d31c80812def61beec124a1dad039d16b9afb556ee5ddf47c0f528891d486"
+    },
+    {
+      "path": "port/v2/packages/domain/ecology/src/explicit-epoch.ts",
+      "sha256": "d0c2daee6e4d9a668eb98b677bf668f77587d83574173bdf234e4dde531cec5f"
+    },
+    {
+      "path": "port/v2/packages/domain/ecology/src/civilization.ts",
+      "sha256": "faed945d2a4ff864fded1d8b0d80fd4cc4f2bb4a5ec4f11a38b045d92593553d"
+    },
+    {
+      "path": "port/v2/packages/domain/ecology/src/ecology.verbatim.js",
+      "sha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c"
+    },
+    {
+      "path": "port/v2/packages/domain/naming/src/cleanname.verbatim.js",
+      "sha256": "9d5f6685bdd96563bf48dc293b4f8b5fd9dacbd7ec2afd40b0a7174b2eada30a"
+    },
+    {
+      "path": "port/v2/packages/domain/genetics/src/genetics.verbatim.js",
+      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12"
+    },
+    {
+      "path": "port/v2/packages/domain/strays/src/strays.verbatim.js",
+      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+    },
+    {
+      "path": "port/v2/packages/domain/surveyphrases/src/surveyphrases.verbatim.js",
+      "sha256": "8915e785a7e5c67f7bcec720ada0f24466082e9ce0c6a9329d18affc251cfd58"
+    },
+    {
+      "path": "port/v2/packages/domain/worldgen/src/worldgen.verbatim.js",
+      "sha256": "95f0acec80a37c67cc829dc0d71e6719768e5a975d030fe9b89457c23da00eff"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "d8ac44e769a16d08737637527da3169beae1756b07fa70ad3b6f1c607e8a6e08"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/plant-anatomy.mjs",
+      "sha256": "7e900b8355f6193b941f62a573d6c58124d127faa3348524170593ef2084e218"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/index.ts",
+      "sha256": "fbe4bcc52197b984e57b8d48ae7a3e9110cf9b6e1cfd259f584eb2f5012761e0"
+    },
+    {
+      "path": "port/v2/packages/domain/encutil/src/index.ts",
+      "sha256": "ef7ca91752c270c5452c6cc6595574f9bf6b754b950494b21302768e2d5de94e"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
+      "sha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/guardian-prime.ts",
+      "sha256": "fcbb7ea8bea461e2fab76aedd66cb98d56794b11768acce343f9eee4723ccf70"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/combat-settlement.ts",
+      "sha256": "0add16e8b7c45789665542ef1ed0a420bfcfc8438421a0d456fffda8d852be13"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/lineage-codec.ts",
+      "sha256": "7c80826744c22230263e53facefb05d28c3968d3defabb070a6d9a6f19a9f8f4"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/creature-level-progress.ts",
+      "sha256": "e41c72f116358fa46d04d79b399e179bab201094383a8ddd9ace87e2c79a2ed6"
+    },
+    {
+      "path": "port/v2/packages/domain/worldidentity/src/index.ts",
+      "sha256": "90d44680a1da815afcf04bfed995dd46cb8522b2ba19bd856040da42b6d71141"
+    },
+    {
+      "path": "port/v2/packages/domain/worldidentity/src/authority.ts",
+      "sha256": "8bfff96bbcb569c32e3d3b0a4a7f0c6c9eec0b06940d72e3041477a785d75875"
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-capture-parity.ts",
+      "sha256": "f30fc5959a83ed2c98195a9bb52dd5e4ede54092623374d2d0fd6a7d13422700"
+    },
+    {
+      "path": "port/v2/packages/art/src/proceduraloverrides.ts",
+      "sha256": "155de5f3969514ad55270c797efffb507eeb0bec19909830025a46728799a8be"
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-topology.ts",
+      "sha256": "07128793edf30a85f720cb626343b8a72e9fa780b8102036d2d25bceef74419b"
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-prefix-replay.ts",
+      "sha256": "16bce1ce61bb0564157cf8779060d0225bacf236c63e49d1a3ffc4a1f5b1a759"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides3.ts",
+      "sha256": "f0eb76d48f04773415ceebe6cfb797e1900fc2eb223632d174e06fbe1ac36dec"
+    },
+    {
+      "path": "port/v2/packages/art/src/birdoverrides.ts",
+      "sha256": "48ffa589f2273f0f29fd85df1f05fd070477ade70f1cdeb7698f5321e5702dc7"
+    },
+    {
+      "path": "port/v2/packages/art/src/mammaloverrides.ts",
+      "sha256": "6f295a3dc951a10e6e4ba464d3467ce755c3d3fff0a6a95eb0a54c35f8d52822"
+    },
+    {
+      "path": "port/v2/packages/art/src/surface.ts",
+      "sha256": "a896ff25c61fdc11beb09a2015bd80dd4546b595d63aad927202de72d8217c3f"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides2.ts",
+      "sha256": "841d502feb89d799ba9cfc1673c07d6c2287caf29767ec71c905c586b4fccb02"
+    },
+    {
+      "path": "port/v2/packages/art/src/fungioverrides2.ts",
+      "sha256": "8eda86ea05e7e568b1b1b3fafb41264b0418335f2b9f2472067c66999397f993"
+    },
+    {
+      "path": "port/v2/packages/art/src/florarost.ts",
+      "sha256": "e3b89406d88af811e5810a2b72508ff68a20280fe71bfb3d7f6f5c8a9e53c8b2"
+    },
+    {
+      "path": "port/v2/packages/art/src/floraoverrides.ts",
+      "sha256": "6323d1c46e998568bf57cbbfc9355557e22b9b70de227f68bfda932231b2ed6c"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides4.ts",
+      "sha256": "ce1bfcdbef012988d3b8fda7e0d1b136521ecdd5fb831671997f7943d5959c78"
+    },
+    {
+      "path": "port/v2/packages/art/src/floraoverrides3.ts",
+      "sha256": "515a528673df782ea0143d9f7050e813706d085ff1e4c2a22cc99a69a522c45e"
+    },
+    {
+      "path": "port/v2/packages/art/src/invertoverrides.ts",
+      "sha256": "9e66ca538e009a04a9bff07ac5b13f952be397341147f25fbdfce595d10079f5"
+    },
+    {
+      "path": "port/v2/packages/art/src/proceduralfamilies.ts",
+      "sha256": "749afc6e4e1859bab54bc06e5a05a39d8940a0ed701038e4e034ccd10ab2df66"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides.ts",
+      "sha256": "dfba551dd88e06fbadbf4d7284280767134bdebce3f1e0c19a072d0433def13f"
+    },
+    {
+      "path": "port/v2/packages/art/src/faunaoverrides5.ts",
+      "sha256": "078daa7c99454adb7f2183782822d11b32cba6ad475455d655791626de933c22"
+    },
+    {
+      "path": "port/v2/packages/art/src/quadrupedoverrides.ts",
+      "sha256": "adbf2b0e703df4cd67a13f7f06d0e2bbca2ad94657a24a9c77bde3eb4ebe9b02"
+    },
+    {
+      "path": "port/v2/packages/art/src/floraoverrides2.ts",
+      "sha256": "42800cea6e658b6323a87d6a0c75683980afc10faf1ea188d1b6649b9750d73d"
+    },
+    {
+      "path": "port/v2/packages/art/src/topology-part-capture.ts",
+      "sha256": "4196b615102dc7e847005126bb79869d7879a67bb7a6f4a2fd44b9b29de7b950"
+    },
+    {
+      "path": "port/v2/packages/art/src/painter-part-capture.ts",
+      "sha256": "fcf5a13c8f81040fa8b1d34fcd7b6b4235443b7b351171ff4f8b058969bc0a75"
+    },
+    {
+      "path": "port/v2/packages/art/src/skin.ts",
+      "sha256": "d62f443ebf548fddece065d33f32d123a2a02200bc01dac26d17a9d3c66dc8aa"
+    },
+    {
+      "path": "port/v2/packages/art/src/torso.ts",
+      "sha256": "7270db2c642b9dde13ff9e4a31c79305ef8d45a011d190bd971a005232d70758"
+    },
+    {
+      "path": "port/v2/packages/art/src/quadruped-anatomy.ts",
+      "sha256": "8677675e2578919dbe0ae6e3cfe55220bb3e6218ec03dca047cc09610db3e545"
+    },
+    {
+      "path": "port/v2/packages/art/src/alientraits.ts",
+      "sha256": "9c54b1abb2e94854750d7c62c282dbccce4ae37cb21f6961e52edbdd114ca3f7"
+    }
+  ]
+}

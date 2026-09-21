@@ -5,7 +5,7 @@ import {createTurnPoseSampler} from './turn-performance.mjs';
 import {createTurnContactSampler} from './turn-contact-transition.mjs';
 import {exportCurrentPoses} from './export-current-poses.mjs';
 const root=path.resolve(import.meta.dirname,'../../../..');
-const producer='/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src';
+const producer=path.join(root,'port/v2/apps/game/src');
 const fixturePlans=()=>[0,1].map(i=>({
  marker:3,beats:{commandEnd:100,actionStart:200,impactAt:250,hitstopEnd:280,actionEnd:400,returnEnd:600},
  clips:{attacker:{idle:{source:'timeline',timeline:{value:1}},approach:{source:'timeline',timeline:{value:0,durationMs:100}},action:{source:'timeline',timeline:{value:0}}},target:{idle:{source:'timeline',timeline:{value:40+i}}}},

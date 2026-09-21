@@ -5,7 +5,7 @@
  * of that name, and hidden-set equality with the record's declaration. Usage: node score.mjs [tol] [json]. Not a gate. */
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../..')+'/',codex='/Users/nick/Projects/celestial-frontier-openai-mac/';
-const {readPng}=await import(root+'port/v2/tools/painted-creature/finish-conservation.mjs');
+const {readPng}=await import('./png.mjs');
 const {assignLegs,TEMPLATES}=await import('./assign.mjs');
 export const SUBJECTS=[
   ['coconut-crab','brachyuran',codex+'audits/VISION_P1_COCONUT_20260920/generation-01/coconut-crab-master.png',codex+'audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/record.json'],

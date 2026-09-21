@@ -1,0 +1,46 @@
+{
+  "id": "vent-crab",
+  "input": "audits/VISION_P1_FOUR_CRABS_20260920/intake-01/vent-crab-fit-01",
+  "native": "audits/VISION_P1_DESKTOP_DELIVERY_20260920/vent-crab-native-01",
+  "retained": false,
+  "producer": "c93ee2e8689585e5ea4da1cb43607f42ad9bd95e",
+  "admission": {
+    "status": "FAIL",
+    "policy": {
+      "tier": "painted-desktop",
+      "metric": "full-film rig p95",
+      "limitMs": 3.5,
+      "comparison": "<=",
+      "authority": "Nick, PROGRAM.md section6, 2026-09-20"
+    },
+    "valueMs": 3.600000023841858,
+    "cpuPass": false,
+    "geometryPass": true,
+    "failures": [
+      "CPU full-film rig p95"
+    ],
+    "perClipReadings": "retained unchanged; diagnostic only for painted-desktop"
+  },
+  "restChanged": 0,
+  "finalRestChanged": 0,
+  "rootContinuity": {
+    "status": "PASS",
+    "maximumStep": 0.005686009706140974,
+    "stride": 0.005598490109486827,
+    "worst": 553,
+    "nonGaitStep": 0.006285359096254231,
+    "scaleLength": 0.35706181311448226,
+    "worstViolation": null
+  },
+  "maxPlantedDriftPx": 0.02266701152677438,
+  "maxGapPx": 0.00007037185979604059,
+  "filmDuration": "13.435021",
+  "frames": 806,
+  "refusals": {
+    "refusedFrames": 0,
+    "saturated": false,
+    "firstRefusal": null,
+    "lastRefusal": null
+  },
+  "error": null
+}

@@ -1,0 +1,32 @@
+{
+  "status": "PREPARED",
+  "sourceHead": "df296fa40c922a0dbad061fda4ae75ab4301f817",
+  "sourcePacket": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/VISION_PROGRAM_20260920/P1-crab-packet",
+  "sourcePacketReceiptSha256": "4060d1e704c81520d632a5535fb0c430c34da9e1fa26330aa4a54fbe93a5181d",
+  "sentPromptSha256": "6781207628876dd378eb01b00c5df6ae89763b4d138d9526357c11f99341138c",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed by built-in tool",
+  "seed": null,
+  "seedReason": "No seed parameter exposed",
+  "references": [
+    {
+      "role": "approved Discovery Atlas style lock",
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    },
+    {
+      "role": "anatomy guide, not output layout or reusable masks",
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/VISION_PROGRAM_20260920/P1-crab-packet/anatomy-guide.png",
+      "sha256": "e674db6cf9791a4ca2b7267fa4da895ebb11272cdcd412767d80213ccf0fc9a8"
+    }
+  ],
+  "requestedSize": [
+    1024,
+    1024
+  ],
+  "background": "#FF00FF per exact compiled prompt",
+  "promptModified": false,
+  "retriesAuthorized": false,
+  "sourceLabelsReused": false,
+  "intakeHeld": true
+}

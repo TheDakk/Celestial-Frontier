@@ -1,0 +1,564 @@
+{
+  "sources": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/anatomy-verify/tips.mjs",
+      "sha256": "c6334a3de5b2610af5ae3a1b7f7585cca782a3ff4af23c6842348b394d662f19"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/anatomy-verify/skeleton.mjs",
+      "sha256": "d1f836036a6aaced09528748c0e0249466a3a53f6ec78dce48299e2e8f54e7d5"
+    }
+  ],
+  "input": {
+    "master": "audits/VISION_P1_FOUR_CRABS_20260920/crab/generation-01/crab-master.png",
+    "sha256": "0586a468c0685b53aba0993788e834468dd9d7cac84bdeb212fe9531124442be"
+  },
+  "keyed": false,
+  "scope": "Candidate coordinates only; classifier is not a certified anatomical admission",
+  "coordinateMapping": "box offset + (working coordinate - 2 border + 0.5 cell centre)/scale; quantized detection, not subpixel ground truth",
+  "det": {
+    "tips": [
+      {
+        "x": 501,
+        "y": 243,
+        "f": 0.111,
+        "R": 8,
+        "members": 247,
+        "dir": {
+          "x": 0.19,
+          "y": 0.98
+        },
+        "length": 4
+      },
+      {
+        "x": 509,
+        "y": 161,
+        "f": 0.128,
+        "R": 8,
+        "members": 32,
+        "dir": {
+          "x": 0.97,
+          "y": -0.23
+        },
+        "length": 2
+      },
+      {
+        "x": 427,
+        "y": 300,
+        "f": 0.145,
+        "R": 8,
+        "members": 244,
+        "dir": {
+          "x": -0.76,
+          "y": 0.65
+        },
+        "length": 18
+      },
+      {
+        "x": 206,
+        "y": 175,
+        "f": 0.159,
+        "R": 8,
+        "members": 58,
+        "dir": {
+          "x": 0.98,
+          "y": 0.21
+        },
+        "length": 6
+      },
+      {
+        "x": 33,
+        "y": 229,
+        "f": 0.17,
+        "R": 8,
+        "members": 320,
+        "dir": {
+          "x": 0.57,
+          "y": 0.82
+        },
+        "length": 18
+      },
+      {
+        "x": 204,
+        "y": 253,
+        "f": 0.17,
+        "R": 8,
+        "members": 132,
+        "dir": {
+          "x": 0.88,
+          "y": 0.48
+        },
+        "length": 4
+      },
+      {
+        "x": 267,
+        "y": 279,
+        "f": 0.18,
+        "R": 8,
+        "members": 106,
+        "dir": {
+          "x": -0.85,
+          "y": 0.53
+        },
+        "length": 6
+      },
+      {
+        "x": 203,
+        "y": 241,
+        "f": 0.194,
+        "R": 8,
+        "members": 2,
+        "dir": {
+          "x": 0.98,
+          "y": 0.2
+        },
+        "length": 4
+      },
+      {
+        "x": 45,
+        "y": 152,
+        "f": 0.208,
+        "R": 8,
+        "members": 12,
+        "dir": {
+          "x": 0.77,
+          "y": 0.63
+        },
+        "length": 2
+      },
+      {
+        "x": 509,
+        "y": 231,
+        "f": 0.19,
+        "R": 14,
+        "members": 37,
+        "dir": {
+          "x": 0.86,
+          "y": 0.51
+        },
+        "length": 8
+      },
+      {
+        "x": 17,
+        "y": 213,
+        "f": 0.199,
+        "R": 22,
+        "members": 24,
+        "dir": {
+          "x": -0.38,
+          "y": 0.92
+        },
+        "length": 18
+      },
+      {
+        "x": 447,
+        "y": 289,
+        "f": 0.2,
+        "R": 22,
+        "members": 23,
+        "dir": {
+          "x": -0.15,
+          "y": 0.99
+        },
+        "length": 34
+      }
+    ],
+    "working": {
+      "width": 516,
+      "height": 303,
+      "scale": 0.44176013805004316,
+      "box": {
+        "x": 50,
+        "y": 310,
+        "width": 1159,
+        "height": 676
+      }
+    },
+    "params": {
+      "solidAlpha": 128,
+      "longest": 512,
+      "windowRadii": [
+        8,
+        14,
+        22,
+        32,
+        48,
+        64
+      ],
+      "fillMax": 0.22,
+      "mergeRadius": 12
+    }
+  },
+  "classified": {
+    "templateId": "brachyuran",
+    "counts": {
+      "feet": 4,
+      "claws": 0,
+      "eyes": 0,
+      "other": 8
+    },
+    "verdict": "REFUSE",
+    "reasons": [
+      "feet 4 outside 8-8",
+      "claw tips 0 outside 2-4"
+    ],
+    "classes": {
+      "feet": [
+        {
+          "x": 427,
+          "y": 300,
+          "f": 0.145,
+          "R": 8,
+          "members": 244,
+          "dir": {
+            "x": -0.76,
+            "y": 0.65
+          },
+          "length": 18
+        },
+        {
+          "x": 33,
+          "y": 229,
+          "f": 0.17,
+          "R": 8,
+          "members": 320,
+          "dir": {
+            "x": 0.57,
+            "y": 0.82
+          },
+          "length": 18
+        },
+        {
+          "x": 17,
+          "y": 213,
+          "f": 0.199,
+          "R": 22,
+          "members": 24,
+          "dir": {
+            "x": -0.38,
+            "y": 0.92
+          },
+          "length": 18
+        },
+        {
+          "x": 447,
+          "y": 289,
+          "f": 0.2,
+          "R": 22,
+          "members": 23,
+          "dir": {
+            "x": -0.15,
+            "y": 0.99
+          },
+          "length": 34
+        }
+      ],
+      "claws": [],
+      "eyes": [],
+      "other": [
+        {
+          "x": 501,
+          "y": 243,
+          "f": 0.111,
+          "R": 8,
+          "members": 247,
+          "dir": {
+            "x": 0.19,
+            "y": 0.98
+          },
+          "length": 4
+        },
+        {
+          "x": 509,
+          "y": 161,
+          "f": 0.128,
+          "R": 8,
+          "members": 32,
+          "dir": {
+            "x": 0.97,
+            "y": -0.23
+          },
+          "length": 2
+        },
+        {
+          "x": 206,
+          "y": 175,
+          "f": 0.159,
+          "R": 8,
+          "members": 58,
+          "dir": {
+            "x": 0.98,
+            "y": 0.21
+          },
+          "length": 6
+        },
+        {
+          "x": 204,
+          "y": 253,
+          "f": 0.17,
+          "R": 8,
+          "members": 132,
+          "dir": {
+            "x": 0.88,
+            "y": 0.48
+          },
+          "length": 4
+        },
+        {
+          "x": 267,
+          "y": 279,
+          "f": 0.18,
+          "R": 8,
+          "members": 106,
+          "dir": {
+            "x": -0.85,
+            "y": 0.53
+          },
+          "length": 6
+        },
+        {
+          "x": 203,
+          "y": 241,
+          "f": 0.194,
+          "R": 8,
+          "members": 2,
+          "dir": {
+            "x": 0.98,
+            "y": 0.2
+          },
+          "length": 4
+        },
+        {
+          "x": 45,
+          "y": 152,
+          "f": 0.208,
+          "R": 8,
+          "members": 12,
+          "dir": {
+            "x": 0.77,
+            "y": 0.63
+          },
+          "length": 2
+        },
+        {
+          "x": 509,
+          "y": 231,
+          "f": 0.19,
+          "R": 14,
+          "members": 37,
+          "dir": {
+            "x": 0.86,
+            "y": 0.51
+          },
+          "length": 8
+        }
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "id": 1,
+      "sourcePx": [
+        1180.7041015625,
+        856.6767578125
+      ],
+      "x": 501,
+      "y": 243,
+      "f": 0.111,
+      "R": 8,
+      "members": 247,
+      "dir": {
+        "x": 0.19,
+        "y": 0.98
+      },
+      "length": 4
+    },
+    {
+      "id": 2,
+      "sourcePx": [
+        1198.8134765625,
+        671.0556640625
+      ],
+      "x": 509,
+      "y": 161,
+      "f": 0.128,
+      "R": 8,
+      "members": 32,
+      "dir": {
+        "x": 0.97,
+        "y": -0.23
+      },
+      "length": 2
+    },
+    {
+      "id": 3,
+      "sourcePx": [
+        1013.1923828125,
+        985.7060546875
+      ],
+      "x": 427,
+      "y": 300,
+      "f": 0.145,
+      "R": 8,
+      "members": 244,
+      "dir": {
+        "x": -0.76,
+        "y": 0.65
+      },
+      "length": 18
+    },
+    {
+      "id": 4,
+      "sourcePx": [
+        512.9208984375,
+        702.7470703125
+      ],
+      "x": 206,
+      "y": 175,
+      "f": 0.159,
+      "R": 8,
+      "members": 58,
+      "dir": {
+        "x": 0.98,
+        "y": 0.21
+      },
+      "length": 6
+    },
+    {
+      "id": 5,
+      "sourcePx": [
+        121.3056640625,
+        824.9853515625
+      ],
+      "x": 33,
+      "y": 229,
+      "f": 0.17,
+      "R": 8,
+      "members": 320,
+      "dir": {
+        "x": 0.57,
+        "y": 0.82
+      },
+      "length": 18
+    },
+    {
+      "id": 6,
+      "sourcePx": [
+        508.3935546875,
+        879.3134765625
+      ],
+      "x": 204,
+      "y": 253,
+      "f": 0.17,
+      "R": 8,
+      "members": 132,
+      "dir": {
+        "x": 0.88,
+        "y": 0.48
+      },
+      "length": 4
+    },
+    {
+      "id": 7,
+      "sourcePx": [
+        651.0048828125,
+        938.1689453125
+      ],
+      "x": 267,
+      "y": 279,
+      "f": 0.18,
+      "R": 8,
+      "members": 106,
+      "dir": {
+        "x": -0.85,
+        "y": 0.53
+      },
+      "length": 6
+    },
+    {
+      "id": 8,
+      "sourcePx": [
+        506.1298828125,
+        852.1494140625
+      ],
+      "x": 203,
+      "y": 241,
+      "f": 0.194,
+      "R": 8,
+      "members": 2,
+      "dir": {
+        "x": 0.98,
+        "y": 0.2
+      },
+      "length": 4
+    },
+    {
+      "id": 9,
+      "sourcePx": [
+        148.4697265625,
+        650.6826171875
+      ],
+      "x": 45,
+      "y": 152,
+      "f": 0.208,
+      "R": 8,
+      "members": 12,
+      "dir": {
+        "x": 0.77,
+        "y": 0.63
+      },
+      "length": 2
+    },
+    {
+      "id": 10,
+      "sourcePx": [
+        1198.8134765625,
+        829.5126953125
+      ],
+      "x": 509,
+      "y": 231,
+      "f": 0.19,
+      "R": 14,
+      "members": 37,
+      "dir": {
+        "x": 0.86,
+        "y": 0.51
+      },
+      "length": 8
+    },
+    {
+      "id": 11,
+      "sourcePx": [
+        85.0869140625,
+        788.7666015625
+      ],
+      "x": 17,
+      "y": 213,
+      "f": 0.199,
+      "R": 22,
+      "members": 24,
+      "dir": {
+        "x": -0.38,
+        "y": 0.92
+      },
+      "length": 18
+    },
+    {
+      "id": 12,
+      "sourcePx": [
+        1058.4658203125,
+        960.8056640625
+      ],
+      "x": 447,
+      "y": 289,
+      "f": 0.2,
+      "R": 22,
+      "members": 23,
+      "dir": {
+        "x": -0.15,
+        "y": 0.99
+      },
+      "length": 34
+    }
+  ]
+}

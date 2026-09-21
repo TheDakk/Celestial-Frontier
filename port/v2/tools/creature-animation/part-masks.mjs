@@ -1,3 +1,4 @@
+import {requireVisiblePaintOwner} from './hidden-anatomy.mjs';
 import {hashJSON} from './quadruped-template.mjs';
 import {admitFamilyRecord} from './family-record.mjs';
 const requireValue=(ok,message)=>{if(!ok)throw Error('Part masks: '+message);};
@@ -21,7 +22,7 @@ export async function cutAuthoredParts(record,masterBytes,rgba,declaration){
  const seen=new Set();
  for(const part of declaration.parts){
   requireValue(/^[a-z0-9-]+$/.test(part.id)&&!seen.has(part.id),'duplicate/invalid id');seen.add(part.id);
-  requireValue(names.has(part.joint),'unknown joint');requireValue(['far','near'].includes(part.layer),'depth layer');
+  requireValue(names.has(part.joint),'unknown joint');requireVisiblePaintOwner(template,part.joint);requireValue(['far','near'].includes(part.layer),'depth layer');
   requireValue(Array.isArray(part.polygon)&&part.polygon.length>=3&&part.polygon.every(p=>Array.isArray(p)&&p.length===2&&p.every(n=>Number.isFinite(n)&&n>=0&&n<=1)),'polygon');
  }
  requireValue(seen.has(declaration.remainderPart),'explicit remainder part');
@@ -71,6 +72,7 @@ export async function cutPainterParts(record,masterBytes,rgba,labels,declaration
  requireValue(declaration.parts.length>0&&declaration.parts.length<=32,'painter part budget');
  const seen=new Set();
  const parts=declaration.parts.map((p,k)=>{
+  requireVisiblePaintOwner(template,p.joint);
   requireValue(/^[a-z0-9-]+$/.test(p.id)&&!seen.has(p.id)&&names.has(p.joint)&&['far','near'].includes(p.layer),'painter part identity');seen.add(p.id);
   let x0=w,y0=h,x1=-1,y1=-1,pixels=0;
   for(let i=0;i<labels.length;i++)if(labels[i]===k+1){requireValue(alpha[i]>0,'painter invisible ownership');const x=i%w,y=Math.floor(i/w);x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y);pixels++;}

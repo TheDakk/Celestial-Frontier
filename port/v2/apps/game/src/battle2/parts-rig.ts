@@ -24,7 +24,8 @@
 import { familyContractForRecord } from '../../../../tools/creature-animation/family-contracts.mjs';
 import { transformPoint } from '../../../../tools/creature-animation/kinematics.js';
 import { createSkeletonPoseProgram, type SkeletonPoseProgram } from '../../../../tools/creature-animation/skeleton-pose.mjs';
-import { createFamilyContactSolver, createQuadrupedContactSolver } from '../creature-rig-contact.js';
+import { createFamilyContactSolver, createQuadrupedContactSolver, observedContactSupports } from '../creature-rig-contact.js';
+import type { CreaturePartsBindingV1 } from '../creature-rig.js';
 import { createCreatureRigPerformance } from '../creature-rig-performance.js';
 import type { CreaturePoseV1, CreatureRigRecordV1, CreatureRigV1 as PaintSkinRigV1 } from '../creature-rig.js';
 import type { BodyCard } from '../motion/body-card.js';
@@ -44,11 +45,17 @@ export interface PartsRigOptions {
   readonly alphaBox: PixelBox;
   /** Default `'auto'`: quadruped records use the compatibility solver, every other family the family solver. */
   readonly contact?: PartsContactMode | 'auto';
+  /** The parts binding the rig was loaded from. With `contactSupports: 'observed'` the family solver models each
+   * painted support by its observed skin weights (`observedContactSupports`, R2c″); the default `'rest'` keeps the
+   * rest supports — measured 2026-09-21: observed supports on the crab move foot JOINTS up to 5.3 px under hit
+   * loading (the painted surface, not the joint, is what that model pins), a finding handed to Codex. */
+  readonly binding?: CreaturePartsBindingV1;
+  readonly contactSupports?: 'rest' | 'observed';
 }
 export interface PartsRig extends BattleRigV1 {
   readonly kind: 'parts';
   readonly contactMode: PartsContactMode;
-  readonly travelOwner: 'stage (interim: the solver still adds its stride dx and feet plant to the body during the run-up, pending R3 travel:stage)';
+  readonly travelOwner: 'stage';
   /** Poses refused by the owner, the solver or the paint skin since creation; the rig kept its last valid pose each time. */
   refusals(): number;
   lastRefusal(): string | null;
@@ -75,7 +82,10 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
   const root = record.landmarks.root;
   if (!root) throw new TypeError('parts rig: record has no root landmark');
   const contactMode: PartsContactMode = options.contact === undefined || options.contact === 'auto' ? (record.template.id === 'quadruped' ? 'quadruped-compat' : 'family') : options.contact;
-  const family = contactMode === 'family' ? createFamilyContactSolver(record) : null;
+  // R3 re-merge (2026-09-21): the family solver models the painted support by its observed skin weights
+  // (`observedContactSupports(record, binding)`, Codex's R2c″ rule) and owns nothing of the run-up when the context
+  // says `travel: 'stage'`.
+  const family = contactMode === 'family' ? createFamilyContactSolver(record, options.contactSupports === 'observed' && options.binding ? observedContactSupports(record, options.binding) : {}) : null;
   const compat = contactMode === 'quadruped-compat' ? createQuadrupedContactSolver(record) : null;
   const program: SkeletonPoseProgram = createSkeletonPoseProgram(familyContractForRecord(record as { template: { id: string } }), record.landmarks);
   let pending: RigPose = {}, frame = 0, refused = 0, lastError: string | null = null, applied = 0, last: CreaturePoseV1 | null = null, disposed = false;
@@ -86,14 +96,14 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
   owner.play('stage', 0, 0);
   const resolve = (pose: CreaturePoseV1, context: RigPoseContext): CreaturePoseV1 => {
     if (compat) return compat.resolve(pose, context.planted).pose;
-    return family!.resolve(pose, { actionId: context.actionId, elapsedMs: context.elapsedMs, durationMs: context.durationMs, weight: context.weight, realm: card.realm }).pose;
+    return family!.resolve(pose, { actionId: context.actionId, elapsedMs: context.elapsedMs, durationMs: context.durationMs, weight: context.weight, realm: card.realm, travel: context.travel }).pose;
   };
   const parts: readonly RigPartV1[] = Object.freeze(rig.parts.map((p) => Object.freeze({ id: p.id, display: p.display, pivot: Object.freeze({ x: p.pivot.x, y: p.pivot.y }), layer: p.layer })));
   const bounds = Object.freeze({ width: alphaBox.width / W, height: alphaBox.height / H, groundLineY: record.geometry.groundLineY });
   if (!(bounds.height > 0) || bounds.height > 1 || !(bounds.width > 0) || bounds.width > 1) throw new TypeError('parts rig: alpha box must lie inside the cut-out');
   const out: PartsRig = {
-    kind: 'parts', label: `${PARTS_RIG_LABEL} · contact: ${contactMode} · travel: stage (interim)`, contactMode,
-    travelOwner: 'stage (interim: the solver still adds its stride dx and feet plant to the body during the run-up, pending R3 travel:stage)',
+    kind: 'parts', label: `${PARTS_RIG_LABEL} · contact: ${contactMode} · travel: stage`, contactMode,
+    travelOwner: 'stage',
     recipeHash: rig.recipeHash, templateId: rig.templateId, parts, root: rig.root, bounds,
     // E1.5 finding: the stage treats `cutout` as the rig's display-unit size; the paint-skin mesh is normalized, so it is 1×1 here.
     cutout: Object.freeze({ width: 1, height: 1 }), sourceSize: Object.freeze({ width: W, height: H }), foot: Object.freeze({ x: root[0], y: record.geometry.groundLineY }), bodyLength: card.scaleLength,

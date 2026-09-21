@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 3566030808,
+    "kingdom": "fauna",
+    "color": 13,
+    "form": 2,
+    "body": 15,
+    "loco": 3,
+    "trait": 7,
+    "size": 4,
+    "diet": 2,
+    "head": 5,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 1,
+    "pattern": 4,
+    "eyes": 3,
+    "behavior": 0,
+    "habitat": 1,
+    "detail": 6,
+    "accent": 3,
+    "temper": 2,
+    "sense": 1,
+    "repro": 2,
+    "life": 5,
+    "metab": 1,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Land Snail"
+  },
+  "observation": null
+}

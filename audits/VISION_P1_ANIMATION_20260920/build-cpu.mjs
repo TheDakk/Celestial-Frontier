@@ -1,0 +1,13 @@
+import fs from 'node:fs';import path from 'node:path';import {createRequire}from'node:module';
+import{buildPaintSkin}from'../../port/v2/tools/creature-animation/build-paint-skin.mjs';
+import{splitObservedSurfaces}from'../../port/v2/tools/creature-animation/split-observed-surfaces.mjs';
+import{familyContractForRecord,familyContactChains}from'../../port/v2/tools/creature-animation/family-contracts.mjs';
+import{hashJSON,hashBytes}from'../../port/v2/tools/creature-animation/quadruped-template.mjs';
+import{createSourceJoinProbe}from'../../port/v2/tools/quadruped-proof/source-join-continuity.mjs';
+const req=createRequire(path.resolve('port/v2/package.json')),sharp=createRequire(req.resolve('free-tex-packer-core'))('sharp');
+const base='audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04',record=JSON.parse(fs.readFileSync(base+'/record.json')),parts=base+'/parts',source=JSON.parse(fs.readFileSync(base+'/binding.json'));
+const atlasFile=parts+'/atlas/p1-coconut-crab.png',atlas=await sharp(atlasFile).ensureAlpha().raw().toBuffer({resolveWithObject:true}),results=[];
+for(const interiorStep of[80,128,256]){const out='audits/VISION_P1_ANIMATION_20260920/cpu-'+interiorStep;if(fs.existsSync(out))throw Error('New output required: '+out);fs.mkdirSync(out,{recursive:true});fs.copyFileSync(base+'/record.json',out+'/record.json');fs.cpSync(parts,out+'/parts',{recursive:true});
+ const compiled=await buildPaintSkin(parts,{seamBridges:{groups:[]}},record,{boundaryStep:24,interiorStep,includeTopology:true});const{bindingHash,...body}=compiled.binding;body.sourceJoinTopology={remainderPartId:'body'};const binding={...body,bindingHash:await hashJSON(body)},probe=createSourceJoinProbe({record,binding,atlas:{rgba:atlas.data,width:atlas.info.width,height:atlas.info.height}}),split=await splitObservedSurfaces(binding,record,probe,{fixedJoints:['root'],contactEndpoints:familyContactChains(familyContractForRecord(record)).map(c=>c.end),shapeJoints:source.parts.filter(p=>p.joint!=='root').map(p=>p.joint)});
+ fs.writeFileSync(out+'/binding.json',JSON.stringify(split.binding,null,2)+'\n');const receipt={boundaryStep:24,interiorStep,fieldVertices:split.binding.paintSkin.vertices.length,source:base,masterSha256:await hashBytes(fs.readFileSync(record.source)),atlasSha256:await hashBytes(fs.readFileSync(atlasFile)),recordIdentical:fs.readFileSync(base+'/record.json').equals(fs.readFileSync(out+'/record.json')),surfaces:split.receipt};fs.writeFileSync(out+'/receipt.json',JSON.stringify(receipt,null,2)+'\n');results.push({interiorStep,fieldVertices:receipt.fieldVertices});console.log(JSON.stringify(results.at(-1)));}
+fs.writeFileSync('audits/VISION_P1_ANIMATION_20260920/build-summary.json',JSON.stringify(results,null,2)+'\n');

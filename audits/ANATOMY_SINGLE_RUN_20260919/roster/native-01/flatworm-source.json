@@ -1,0 +1,33 @@
+{
+  "genome": {
+    "seed": 2140198241,
+    "kingdom": "fauna",
+    "color": 7,
+    "form": 16,
+    "body": 5,
+    "loco": 5,
+    "trait": 4,
+    "size": 4,
+    "diet": 1,
+    "head": 6,
+    "limbs": 3,
+    "skin": 8,
+    "tail": 4,
+    "pattern": 4,
+    "eyes": 1,
+    "behavior": 0,
+    "habitat": 6,
+    "detail": 2,
+    "accent": 2,
+    "temper": 0,
+    "sense": 9,
+    "repro": 7,
+    "life": 1,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Flatworm"
+  },
+  "observation": null
+}

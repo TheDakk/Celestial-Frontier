@@ -41,7 +41,7 @@ it('uses child-bone/parent-pivot inheritance, radians and body-length offsets; P
  try{
   const pose={head:{rotation:.4},jaw:{rotation:-.15},root:{rotation:0,dx:.5,dy:-.2}};
   a.applyPose(pose);const target=createCreatureRigPoseTarget(b);
-  for(const [joint,key] of Object.entries(pose))target.setJoint(joint,key.rotation,'dx' in key?key.dx:0,'dy' in key?key.dy:0);
+  for(const [joint,key] of Object.entries(pose))target.setJoint(joint,key.rotation,'dx' in key?key.dx:0,'dy' in key?key.dy:0);target.flush();
   expect(snapshot(b)).toEqual(snapshot(a));
   const length=Math.hypot(record.landmarks.chest[0]-record.landmarks.pelvis[0],record.landmarks.chest[1]-record.landmarks.pelvis[1]);
   const head=a.parts.find(p=>p.id==='head')!.display,neck=record.landmarks.neck;

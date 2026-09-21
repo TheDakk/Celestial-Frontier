@@ -27,7 +27,7 @@ export function extractNativePlanning(source){
 }
 
 export async function exportCurrentPoses({manifestFile,producerDirectory,outputDirectory}){
- const manifestPath=path.resolve(manifestFile),producer=path.resolve(producerDirectory),output=path.resolve(outputDirectory);
+ const manifestPath=path.resolve(manifestFile),producer=path.resolve(root,producerDirectory??'port/v2/apps/game/src'),output=path.resolve(outputDirectory);
  if(fs.existsSync(output))throw Error('New output directory required');
  const sources=new Map(),remember=p=>{const absolute=path.resolve(p),bytes=fs.readFileSync(absolute),hash=sha(bytes),old=sources.get(absolute);if(old&&old.sha256!==hash)throw Error('Source changed while reading: '+absolute);sources.set(absolute,{path:absolute,sha256:hash});return bytes;};
  const readJson=p=>JSON.parse(remember(p)),image=p=>{const decoded=PNG.sync.read(remember(p));return {width:decoded.width,height:decoded.height,rgba:decoded.data};};

@@ -1,0 +1,7 @@
+{
+  "status": "AUTHENTICATION_ERROR",
+  "action": "git commit -S",
+  "message": "1Password: agent returned an error; fatal: failed to write commit object",
+  "unsignedFallback": false,
+  "sourceStaged": true
+}

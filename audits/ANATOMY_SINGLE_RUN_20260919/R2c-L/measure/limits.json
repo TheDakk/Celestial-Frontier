@@ -1,0 +1,4078 @@
+{
+  "scope": "reportLimits diagnostic: post-IK limitsDeg exceedances reported, all other gates enforced; not admission",
+  "status": "S2_STOP",
+  "exceedances": [
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 102.12222222222222,
+      "joint": "foreFarAnkle",
+      "deg": 61.560488728365755,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 102.12222222222222,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.029458,
+        "dy": 0.022094
+      },
+      "spine": {
+        "rotation": 0.154243,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.029458,
+        "dy": 0.022094
+      },
+      "inputSpine": {
+        "rotation": 0.154243,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 79.78038629664472
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 102.12222222222222,
+      "joint": "foreNearPaw",
+      "deg": 41.370737625609834,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 102.12222222222222,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.029458,
+        "dy": 0.022094
+      },
+      "spine": {
+        "rotation": 0.154243,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.029458,
+        "dy": 0.022094
+      },
+      "inputSpine": {
+        "rotation": 0.154243,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 56.66182331403742
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 109.97777777777777,
+      "joint": "foreFarAnkle",
+      "deg": 65.76128476361505,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 109.97777777777777,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.034165,
+        "dy": 0.025623
+      },
+      "spine": {
+        "rotation": 0.178885,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.034165,
+        "dy": 0.025623
+      },
+      "inputSpine": {
+        "rotation": 0.178885,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 92.1900310048327
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 109.97777777777777,
+      "joint": "foreNearPaw",
+      "deg": 45.68121431862215,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 109.97777777777777,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.034165,
+        "dy": 0.025623
+      },
+      "spine": {
+        "rotation": 0.178885,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.034165,
+        "dy": 0.025623
+      },
+      "inputSpine": {
+        "rotation": 0.178885,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 65.41475191874298
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 117.83333333333333,
+      "joint": "foreFarAnkle",
+      "deg": 69.02805547531075,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 117.83333333333333,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.03922,
+        "dy": 0.029415
+      },
+      "spine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.03922,
+        "dy": 0.029415
+      },
+      "inputSpine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 105.39546885798161
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 117.83333333333333,
+      "joint": "foreNearAnkle",
+      "deg": -61.128080962429536,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 117.83333333333333,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.03922,
+        "dy": 0.029415
+      },
+      "spine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.03922,
+        "dy": 0.029415
+      },
+      "inputSpine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 74.71067737392767
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 117.83333333333333,
+      "joint": "foreNearPaw",
+      "deg": 50.10416838218315,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 117.83333333333333,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.03922,
+        "dy": 0.029415
+      },
+      "spine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.03922,
+        "dy": 0.029415
+      },
+      "inputSpine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 74.71067737392767
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 125.68888888888888,
+      "joint": "foreFarAnkle",
+      "deg": 71.81510325974413,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 125.68888888888888,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.026891,
+        "dy": 0.016622
+      },
+      "spine": {
+        "rotation": 0.156904,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.026891,
+        "dy": 0.016622
+      },
+      "inputSpine": {
+        "rotation": 0.156904,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 79.06917472785581
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 125.68888888888888,
+      "joint": "foreFarPaw",
+      "deg": -44.39988500888142,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 125.68888888888888,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.026891,
+        "dy": 0.016622
+      },
+      "spine": {
+        "rotation": 0.156904,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.026891,
+        "dy": 0.016622
+      },
+      "inputSpine": {
+        "rotation": 0.156904,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 79.06917472785581
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 125.68888888888888,
+      "joint": "foreNearPaw",
+      "deg": 40.2120241346126,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 125.68888888888888,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.026891,
+        "dy": 0.016622
+      },
+      "spine": {
+        "rotation": 0.156904,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.026891,
+        "dy": 0.016622
+      },
+      "inputSpine": {
+        "rotation": 0.156904,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 55.55502060977073
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 133.54444444444442,
+      "joint": "foreFarAnkle",
+      "deg": 63.55563309393707,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 133.54444444444442,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.09764,
+        "dy": 0.002472
+      },
+      "spine": {
+        "rotation": 0.101338,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.09764,
+        "dy": 0.002472
+      },
+      "inputSpine": {
+        "rotation": 0.101338,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 48.56082549876629
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 133.54444444444442,
+      "joint": "foreFarPaw",
+      "deg": -50.85696868412002,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 133.54444444444442,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.09764,
+        "dy": 0.002472
+      },
+      "spine": {
+        "rotation": 0.101338,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.09764,
+        "dy": 0.002472
+      },
+      "inputSpine": {
+        "rotation": 0.101338,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 48.56082549876629
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 141.4,
+      "joint": "foreFarPaw",
+      "deg": -55.02240756299399,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 141.4,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.159953,
+        "dy": 0.019709624454849802
+      },
+      "spine": {
+        "rotation": 0.052397,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.159953,
+        "dy": -0.009991
+      },
+      "inputSpine": {
+        "rotation": 0.052397,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 31.743970626078138
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 149.25555555555553,
+      "joint": "foreFarPaw",
+      "deg": -57.87111879817844,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 149.25555555555553,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": 0.04899407210701889
+      },
+      "spine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": -0.020766
+      },
+      "inputSpine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 22.01238548426461
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 149.25555555555553,
+      "joint": "hindNearPaw",
+      "deg": -40.196142036273734,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 149.25555555555553,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": 0.04899407210701889
+      },
+      "spine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": -0.020766
+      },
+      "inputSpine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 17.21376627456057
+    }
+  ],
+  "maxima": [
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 1316.6666666666667,
+      "joint": "leg0FarKnee",
+      "deg": 12.829969990074531,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 316.66666666666674,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.08453226311111546,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 3000,
+      "joint": "leg0FarFoot",
+      "deg": -12.937133418294284,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 2000,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.533887977543887,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 2783.3333333333335,
+      "joint": "leg0NearKnee",
+      "deg": -12.829519706425309,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1783.3333333333335,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.4760501133099659,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 3200,
+      "joint": "leg0NearFoot",
+      "deg": 12.935475627760919,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 2200,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.5872767752982757,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "joint": "leg1FarKnee",
+      "deg": 12.752129571132349,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1366.6666666666665,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.36482345132165606,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 1950,
+      "joint": "leg1FarFoot",
+      "deg": -17.153617776359052,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 950,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.25359678933334634,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "joint": "leg1NearKnee",
+      "deg": -13.051903021013084,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 733.3333333333333,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.1957589250994252,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 2150,
+      "joint": "leg1NearFoot",
+      "deg": 17.21436923778202,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1150,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.306985587087735,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 1316.6666666666667,
+      "joint": "leg2FarKnee",
+      "deg": 11.025163882840987,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 316.66666666666674,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.08453226311111546,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "approach",
+      "ms": 318.5,
+      "joint": "leg2FarFoot",
+      "deg": -15.320543406169795,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 318.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.085021660423864,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 2783.3333333333335,
+      "joint": "leg2NearKnee",
+      "deg": -10.888995593019295,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1783.3333333333335,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.4760501133099659,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "approach",
+      "ms": 101.5,
+      "joint": "leg2NearFoot",
+      "deg": 15.054403674352915,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 101.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.027094814860352263,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "joint": "leg3FarKnee",
+      "deg": 10.239965025410424,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1366.6666666666665,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.36482345132165606,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "approach",
+      "ms": 108.5,
+      "joint": "leg3FarFoot",
+      "deg": -18.005727587457812,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 108.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.028963422781755874,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "joint": "leg3NearKnee",
+      "deg": -10.565753796716884,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 733.3333333333333,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.1957589250994252,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "crab",
+      "row": "approach",
+      "ms": 311.5,
+      "joint": "leg3NearFoot",
+      "deg": 18.36818326750481,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 311.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.0831530525024604,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "approach",
+      "ms": 318.5,
+      "joint": "leg0FarKnee",
+      "deg": 10.877771390941161,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 318.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.1112999355148369,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 3000,
+      "joint": "leg0FarFoot",
+      "deg": -12.308556600962717,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 2000,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.6989006939707183,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "approach",
+      "ms": 101.5,
+      "joint": "leg0NearKnee",
+      "deg": -10.932384411922659,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 101.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.035469210219013954,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 3200,
+      "joint": "leg0NearFoot",
+      "deg": 12.390474870849914,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 2200,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.7687907633677902,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "joint": "leg1FarKnee",
+      "deg": 11.09701290269619,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1366.6666666666665,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.4775821408799908,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 1950,
+      "joint": "leg1FarFoot",
+      "deg": -16.287527651975235,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 950,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.33197782963609124,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "joint": "leg1NearKnee",
+      "deg": -11.305414310373578,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 733.3333333333333,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.25626358778926334,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 2150,
+      "joint": "leg1NearFoot",
+      "deg": 16.629404479202844,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1150,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.401867899033163,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 1316.6666666666667,
+      "joint": "leg2FarKnee",
+      "deg": 9.23163246787531,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 316.66666666666674,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.11065927654536377,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 3000,
+      "joint": "leg2FarFoot",
+      "deg": -13.75036724843127,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 2000,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.6989006939707183,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 2783.3333333333335,
+      "joint": "leg2NearKnee",
+      "deg": -9.231632467875302,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1783.3333333333335,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.6231864521238905,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 3200,
+      "joint": "leg2NearFoot",
+      "deg": 13.750367248431221,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 2200,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.7687907633677902,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "joint": "leg3FarKnee",
+      "deg": 9.083656851820443,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1366.6666666666665,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.4775821408799908,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 1950,
+      "joint": "leg3FarFoot",
+      "deg": -16.961741982276518,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 950,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.33197782963609124,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "joint": "leg3NearKnee",
+      "deg": -9.11223952583798,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 733.3333333333333,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.25626358778926334,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "coconut-crab",
+      "row": "presentation",
+      "ms": 2150,
+      "joint": "leg3NearFoot",
+      "deg": 17.07432110160197,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1150,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.401867899033163,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "hit",
+      "ms": 270,
+      "joint": "leg0FarKnee",
+      "deg": 12.196604370879342,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "hit",
+        "elapsedMs": 270,
+        "durationMs": 450,
+        "loop": false
+      },
+      "root": {
+        "rotation": -0.05236,
+        "dx": 0,
+        "dy": 0.060494
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": -0.05236,
+        "dx": 0,
+        "dy": 0.060494
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0FarRoot",
+      "hipDropPx": 6.160751693055397
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "dodge",
+      "ms": 140,
+      "joint": "leg0FarFoot",
+      "deg": -11.389381540355425,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "dodge",
+        "elapsedMs": 140,
+        "durationMs": 280,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 3200,
+      "joint": "leg0NearKnee",
+      "deg": -10.060911422280299,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 2200,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.38761265281529045,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "dodge",
+      "ms": 140,
+      "joint": "leg0NearFoot",
+      "deg": -15.053650253595029,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "dodge",
+        "elapsedMs": 140,
+        "durationMs": 280,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "approach",
+      "ms": 108.5,
+      "joint": "leg1FarKnee",
+      "deg": 12.426492354827602,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 108.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.01911635128657228,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 1950,
+      "joint": "leg1FarFoot",
+      "deg": -16.329300942584922,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 950,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.16737819098842086,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "approach",
+      "ms": 311.5,
+      "joint": "leg1NearKnee",
+      "deg": -12.377364858055023,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 311.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.0548824278872559,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 2150,
+      "joint": "leg1NearFoot",
+      "deg": 16.31352449791954,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1150,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.20261570488072,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 1316.6666666666667,
+      "joint": "leg2FarKnee",
+      "deg": 11.340309930327367,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 316.66666666666674,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.05579273032947364,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "approach",
+      "ms": 318.5,
+      "joint": "leg2FarFoot",
+      "deg": -14.568748290980674,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 318.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.056115740873486364,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 2783.3333333333335,
+      "joint": "leg2NearKnee",
+      "deg": -11.299193515828051,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1783.3333333333335,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.31420116553966726,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "approach",
+      "ms": 101.5,
+      "joint": "leg2NearFoot",
+      "deg": 14.543479317888357,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 101.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.01788303830034181,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "joint": "leg3FarKnee",
+      "deg": 12.536096799142266,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1366.6666666666665,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.24078967826404404,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "approach",
+      "ms": 108.5,
+      "joint": "leg3FarFoot",
+      "deg": -18.07044735615025,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 108.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.01911635128657228,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "joint": "leg3NearKnee",
+      "deg": -12.503509014455073,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 733.3333333333333,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.12920421760509682,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "freshwater-crab",
+      "row": "approach",
+      "ms": 311.5,
+      "joint": "leg3NearFoot",
+      "deg": 18.047546523332382,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 311.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.0548824278872559,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "hit",
+      "ms": 270,
+      "joint": "leg0FarKnee",
+      "deg": 12.002968233625468,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "hit",
+        "elapsedMs": 270,
+        "durationMs": 450,
+        "loop": false
+      },
+      "root": {
+        "rotation": -0.05236,
+        "dx": 0,
+        "dy": 0.085417
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": -0.05236,
+        "dx": 0,
+        "dy": 0.085417
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0FarRoot",
+      "hipDropPx": 7.182642301552069
+    },
+    {
+      "subject": "mud-crab",
+      "row": "dodge",
+      "ms": 140,
+      "joint": "leg0FarFoot",
+      "deg": -11.20303700152696,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "dodge",
+        "elapsedMs": 140,
+        "durationMs": 280,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "hit",
+      "ms": 270,
+      "joint": "leg0NearKnee",
+      "deg": 10.528318927852853,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "hit",
+        "elapsedMs": 270,
+        "durationMs": 450,
+        "loop": false
+      },
+      "root": {
+        "rotation": -0.05236,
+        "dx": 0,
+        "dy": 0.085417
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": -0.05236,
+        "dx": 0,
+        "dy": 0.085417
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0.573642306638269
+    },
+    {
+      "subject": "mud-crab",
+      "row": "dodge",
+      "ms": 140,
+      "joint": "leg0NearFoot",
+      "deg": -16.423608866634662,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "dodge",
+        "elapsedMs": 140,
+        "durationMs": 280,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 108.5,
+      "joint": "leg1FarKnee",
+      "deg": 12.358520268188743,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 108.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.02355021712578422,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 112,
+      "joint": "leg1FarFoot",
+      "deg": -17.850137179473982,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 112,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.02430990154919661,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 311.5,
+      "joint": "leg1NearKnee",
+      "deg": -12.35852026818881,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 311.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.06761191368370308,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 308,
+      "joint": "leg1NearFoot",
+      "deg": 17.8501371794739,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 308,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.06685222926029068,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "presentation",
+      "ms": 3416.6666666666665,
+      "joint": "leg2FarKnee",
+      "deg": 11.038136744150622,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 2416.6666666666665,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.5245440066418913,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 318.5,
+      "joint": "leg2FarFoot",
+      "deg": -15.590390232917605,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 318.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.06913128253052786,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "presentation",
+      "ms": 2783.3333333333335,
+      "joint": "leg2NearKnee",
+      "deg": -10.98257158722609,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1783.3333333333335,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.3870773014529818,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 101.5,
+      "joint": "leg2NearFoot",
+      "deg": 15.55347142213724,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 101.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.02203084827895943,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "joint": "leg3FarKnee",
+      "deg": 11.815801513295169,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1366.6666666666665,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.2966386796181729,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 108.5,
+      "joint": "leg3FarFoot",
+      "deg": -18.665315891180157,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 108.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.02355021712578422,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "joint": "leg3NearKnee",
+      "deg": -11.737558855713036,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 733.3333333333333,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.15917197442926354,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "mud-crab",
+      "row": "approach",
+      "ms": 311.5,
+      "joint": "leg3NearFoot",
+      "deg": 18.603769140496645,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 311.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.06761191368370308,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 322,
+      "joint": "leg0FarKnee",
+      "deg": 11.070078192948937,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 322,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.1022058035531565,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 213.5,
+      "joint": "leg0FarFoot",
+      "deg": 16.81386013927475,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 213.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.06776689148633203,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 98,
+      "joint": "leg0NearKnee",
+      "deg": -10.870500229673201,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 98,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.031106114124873716,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "dodge",
+      "ms": 140,
+      "joint": "leg0NearFoot",
+      "deg": -16.8149175261109,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "dodge",
+        "elapsedMs": 140,
+        "durationMs": 280,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.08,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg0NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 108.5,
+      "joint": "leg1FarKnee",
+      "deg": 12.93214617633425,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 108.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.03443891206682448,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 112,
+      "joint": "leg1FarFoot",
+      "deg": -20.79183203853272,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 112,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.035549844714141396,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 311.5,
+      "joint": "leg1NearKnee",
+      "deg": -12.952819094900082,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 311.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.09887300561120574,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 308,
+      "joint": "leg1NearFoot",
+      "deg": 20.90524523643113,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 308,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.09776207296388882,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg1NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 318.5,
+      "joint": "leg2FarKnee",
+      "deg": 10.435779603727806,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 318.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.10109487090583959,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "presentation",
+      "ms": 3000,
+      "joint": "leg2FarFoot",
+      "deg": -16.48719881237518,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 2000,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.6348186556096677,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 101.5,
+      "joint": "leg2NearKnee",
+      "deg": -10.382514788681076,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 101.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.03221704677219064,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "presentation",
+      "ms": 3200,
+      "joint": "leg2NearFoot",
+      "deg": 16.45218548300665,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 2200,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.6983005211706345,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg2NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "presentation",
+      "ms": 2366.6666666666665,
+      "joint": "leg3FarKnee",
+      "deg": 10.797252305307884,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 1366.6666666666665,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.43379274799993955,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 108.5,
+      "joint": "leg3FarFoot",
+      "deg": -19.352529924945564,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 108.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.03443891206682448,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3FarRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "presentation",
+      "ms": 1733.3333333333333,
+      "joint": "leg3NearKnee",
+      "deg": -11.16129453145267,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 733.3333333333333,
+        "durationMs": 420,
+        "weight": 1
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.23276684039021145,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "vent-crab",
+      "row": "approach",
+      "ms": 311.5,
+      "joint": "leg3NearFoot",
+      "deg": 20.066259394389014,
+      "limit": {
+        "min": -35,
+        "max": 35
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "approach:scuttle",
+        "elapsedMs": 311.5,
+        "durationMs": 420,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.09887300561120574,
+        "dy": 0
+      },
+      "spine": null,
+      "chest": null,
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputSpine": null,
+      "inputChest": null,
+      "hip": "leg3NearRoot",
+      "hipDropPx": 0
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 149.25555555555553,
+      "joint": "hindFarKnee",
+      "deg": 14.054418979802952,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 149.25555555555553,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": 0.04899407210701889
+      },
+      "spine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": -0.020766
+      },
+      "inputSpine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 17.21376627456057
+    },
+    {
+      "subject": "civet",
+      "row": "idle",
+      "ms": 1208.9915864355862,
+      "joint": "hindFarAnkle",
+      "deg": -20.686672200569713,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "idle",
+        "elapsedMs": 1208.9915864355862,
+        "durationMs": 2417.9831728711724,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0.04808654937201779
+      },
+      "spine": {
+        "rotation": -0.034907,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": -0.034907,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": -0.011
+      },
+      "inputSpine": {
+        "rotation": -0.034907,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": -0.034907,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 16.89491373633857
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 149.25555555555553,
+      "joint": "hindFarPaw",
+      "deg": -30.068543454924278,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 149.25555555555553,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": 0.04899407210701889
+      },
+      "spine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": -0.020766
+      },
+      "inputSpine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "hindFarRoot",
+      "hipDropPx": 17.21376627456057
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 117.83333333333333,
+      "joint": "foreFarKnee",
+      "deg": -52.24978175450434,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 117.83333333333333,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.03922,
+        "dy": 0.029415
+      },
+      "spine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.03922,
+        "dy": 0.029415
+      },
+      "inputSpine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 105.39546885798161
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 125.68888888888888,
+      "joint": "foreFarAnkle",
+      "deg": 71.81510325974413,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 125.68888888888888,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.026891,
+        "dy": 0.016622
+      },
+      "spine": {
+        "rotation": 0.156904,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.026891,
+        "dy": 0.016622
+      },
+      "inputSpine": {
+        "rotation": 0.156904,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 79.06917472785581
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 149.25555555555553,
+      "joint": "foreFarPaw",
+      "deg": -57.87111879817844,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 149.25555555555553,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": 0.04899407210701889
+      },
+      "spine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": -0.020766
+      },
+      "inputSpine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreFarRoot",
+      "hipDropPx": 22.01238548426461
+    },
+    {
+      "subject": "civet",
+      "row": "idle",
+      "ms": 1208.9915864355862,
+      "joint": "hindNearKnee",
+      "deg": 6.030309991122092,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "idle",
+        "elapsedMs": 1208.9915864355862,
+        "durationMs": 2417.9831728711724,
+        "loop": true
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0.04808654937201779
+      },
+      "spine": {
+        "rotation": -0.034907,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": -0.034907,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": -0.011
+      },
+      "inputSpine": {
+        "rotation": -0.034907,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": -0.034907,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 16.89491373633857
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 141.4,
+      "joint": "hindNearAnkle",
+      "deg": 36.96292166298838,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 141.4,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.159953,
+        "dy": 0.019709624454849802
+      },
+      "spine": {
+        "rotation": 0.052397,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.159953,
+        "dy": -0.009991
+      },
+      "inputSpine": {
+        "rotation": 0.052397,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 6.924855480149832
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 149.25555555555553,
+      "joint": "hindNearPaw",
+      "deg": -40.196142036273734,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 149.25555555555553,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": 0.04899407210701889
+      },
+      "spine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": -0.020766
+      },
+      "inputSpine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "hindNearRoot",
+      "hipDropPx": 17.21376627456057
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 149.25555555555553,
+      "joint": "foreNearKnee",
+      "deg": 29.989276155207598,
+      "limit": {
+        "min": -75,
+        "max": 75
+      },
+      "exceeded": false,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 149.25555555555553,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": 0.04899407210701889
+      },
+      "spine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": 0.213831,
+        "dy": -0.020766
+      },
+      "inputSpine": {
+        "rotation": 0.010081,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 20.495422298527824
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 117.83333333333333,
+      "joint": "foreNearAnkle",
+      "deg": -61.128080962429536,
+      "limit": {
+        "min": -60,
+        "max": 60
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 117.83333333333333,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.03922,
+        "dy": 0.029415
+      },
+      "spine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.03922,
+        "dy": 0.029415
+      },
+      "inputSpine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 74.71067737392767
+    },
+    {
+      "subject": "civet",
+      "row": "melee:bite",
+      "ms": 117.83333333333333,
+      "joint": "foreNearPaw",
+      "deg": 50.10416838218315,
+      "limit": {
+        "min": -40,
+        "max": 40
+      },
+      "exceeded": true,
+      "solverPhase": {
+        "actionId": "melee:bite",
+        "elapsedMs": 117.83333333333333,
+        "durationMs": 942.6666666666666,
+        "loop": false
+      },
+      "root": {
+        "rotation": 0,
+        "dx": -0.03922,
+        "dy": 0.029415
+      },
+      "spine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "chest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputRoot": {
+        "rotation": 0,
+        "dx": -0.03922,
+        "dy": 0.029415
+      },
+      "inputSpine": {
+        "rotation": 0.205353,
+        "dx": 0,
+        "dy": 0
+      },
+      "inputChest": {
+        "rotation": 0,
+        "dx": 0,
+        "dy": 0
+      },
+      "hip": "foreNearRoot",
+      "hipDropPx": 74.71067737392767
+    }
+  ]
+}
