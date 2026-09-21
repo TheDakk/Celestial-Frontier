@@ -1,0 +1,2668 @@
+{
+  "producer": "8dd8d42bfb839aeda913ef127fda96abeaf00c3c",
+  "subjects": [
+    {
+      "subject": "crab",
+      "recordRecipeHash": "0d2a7af8811a91ab1524cd22f42b5046eec86aba797493a19f7a7f766f51cf60",
+      "bindingHash": "e493cfa99fa1b658c927b8cf6face727b619f19a5e9e26ce8cfd93875e684a53",
+      "anatomy": null,
+      "models": [
+        {
+          "mode": "rest",
+          "before": {
+            "label": "before",
+            "traceHash": "df1df29c9dda848181bc6c2ce0c0ccb8c4f2dddac5a332dcd691ce719dceec21",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.263671875,
+                "margin90": 0.2373046875,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.265625,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.27734375,
+                "margin90": 0.249609375,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.27734375,
+                    "refusedAt": 0.279296875,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.27734375,
+                    "refusedAt": 0.27734375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.27734375,
+                    "refusedAt": 0.27734375,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.2632598876953125,
+                "margin90": 0.23693389892578126,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.27734375,
+                    "refusedAt": 0.279296875,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.27734375,
+                    "refusedAt": 0.27734375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.27734375,
+                    "refusedAt": 0.27734375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.2632598876953125,
+                    "refusedAt": 0.26434326171875,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.2632598876953125,
+                    "refusedAt": 0.2632598876953125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.2632598876953125,
+                    "refusedAt": 0.2632598876953125,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "label": "after",
+            "traceHash": "df1df29c9dda848181bc6c2ce0c0ccb8c4f2dddac5a332dcd691ce719dceec21",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.263671875,
+                "margin90": 0.2373046875,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.265625,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.27734375,
+                "margin90": 0.249609375,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.27734375,
+                    "refusedAt": 0.279296875,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.27734375,
+                    "refusedAt": 0.27734375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.27734375,
+                    "refusedAt": 0.27734375,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.2632598876953125,
+                "margin90": 0.23693389892578126,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.27734375,
+                    "refusedAt": 0.279296875,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.27734375,
+                    "refusedAt": 0.27734375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.27734375,
+                    "refusedAt": 0.27734375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.2632598876953125,
+                    "refusedAt": 0.26434326171875,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.2632598876953125,
+                    "refusedAt": 0.2632598876953125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.2632598876953125,
+                    "refusedAt": 0.2632598876953125,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "identical": true
+        },
+        {
+          "mode": "observed",
+          "before": {
+            "label": "before",
+            "traceHash": "b5dbe6a4dcd1442eb8eff3b05d24ffffc34655260acbd1a9d4e5f36b43207134",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.263671875,
+                "margin90": 0.2373046875,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.265625,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.263671875,
+                "margin90": 0.2373046875,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.265625,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.263671875,
+                "margin90": 0.2373046875,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.265625,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "label": "after",
+            "traceHash": "b5dbe6a4dcd1442eb8eff3b05d24ffffc34655260acbd1a9d4e5f36b43207134",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.263671875,
+                "margin90": 0.2373046875,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.265625,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.263671875,
+                "margin90": 0.2373046875,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.265625,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.263671875,
+                "margin90": 0.2373046875,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.265625,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.263671875,
+                    "refusedAt": 0.263671875,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "identical": true
+        }
+      ]
+    },
+    {
+      "subject": "coconut-crab",
+      "recordRecipeHash": "e73140997301d696a49373f0f5b2525468bb5d0abe337be566fb04e2e84a7e04",
+      "bindingHash": "e8a2b2c2795bdab71c3f25cdebb08a0c618d14160e2febcee68dfe128682db97",
+      "anatomy": null,
+      "models": [
+        {
+          "mode": "rest",
+          "before": {
+            "label": "before",
+            "traceHash": "f890754ab0d5cb46882613d0101378430dd30b41327adffb6fde462eb315f929",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.29296875,
+                "margin90": 0.263671875,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.294921875,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.29296875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.29296875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.291015625,
+                "margin90": 0.2619140625,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.29296875,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.291015625,
+                "margin90": 0.2619140625,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.29296875,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "label": "after",
+            "traceHash": "f890754ab0d5cb46882613d0101378430dd30b41327adffb6fde462eb315f929",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.29296875,
+                "margin90": 0.263671875,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.294921875,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.29296875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.29296875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.291015625,
+                "margin90": 0.2619140625,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.29296875,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.291015625,
+                "margin90": 0.2619140625,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.29296875,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.291015625,
+                    "refusedAt": 0.291015625,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "identical": true
+        },
+        {
+          "mode": "observed",
+          "before": {
+            "label": "before",
+            "traceHash": "89136bcc3611aa599ccaede39f2ad743173c9dc08cfe7d158987489c75bc8e9e",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.287109375,
+                "margin90": 0.2583984375,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.287109375,
+                    "refusedAt": 0.2890625,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.287109375,
+                    "refusedAt": 0.287109375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.287109375,
+                    "refusedAt": 0.287109375,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.28125,
+                "margin90": 0.253125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.283203125,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.28125,
+                "margin90": 0.253125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.283203125,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "label": "after",
+            "traceHash": "89136bcc3611aa599ccaede39f2ad743173c9dc08cfe7d158987489c75bc8e9e",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.287109375,
+                "margin90": 0.2583984375,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.287109375,
+                    "refusedAt": 0.2890625,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.287109375,
+                    "refusedAt": 0.287109375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.287109375,
+                    "refusedAt": 0.287109375,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.28125,
+                "margin90": 0.253125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.283203125,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.28125,
+                "margin90": 0.253125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.283203125,
+                    "refusal": "Error: Contact: approach:scuttle@21 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.28125,
+                    "refusedAt": 0.28125,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "identical": true
+        }
+      ]
+    },
+    {
+      "subject": "freshwater-crab",
+      "recordRecipeHash": "ffb9a6786ed27e1cf9fd98d9a653111e2f69f0856bbd5b70ccad71dffca5419f",
+      "bindingHash": "00d3c3451f011b84cfe80f833d44f32e4f73984f7852f296840ce7ce691fd092",
+      "anatomy": null,
+      "models": [
+        {
+          "mode": "rest",
+          "before": {
+            "label": "before",
+            "traceHash": "7e68485d3e35889a26720af2026a265346db45428db2ded0b41aedd2fd144205",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.126953125,
+                "margin90": 0.1142578125,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.126953125,
+                    "refusedAt": 0.12890625,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.126953125,
+                    "refusedAt": 0.126953125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.126953125,
+                    "refusedAt": 0.126953125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.0703125,
+                "margin90": 0.06328125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.072265625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.0703125,
+                "margin90": 0.06328125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.072265625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "label": "after",
+            "traceHash": "7e68485d3e35889a26720af2026a265346db45428db2ded0b41aedd2fd144205",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.126953125,
+                "margin90": 0.1142578125,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.126953125,
+                    "refusedAt": 0.12890625,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.126953125,
+                    "refusedAt": 0.126953125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.126953125,
+                    "refusedAt": 0.126953125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.0703125,
+                "margin90": 0.06328125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.072265625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.0703125,
+                "margin90": 0.06328125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.072265625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "identical": true
+        },
+        {
+          "mode": "observed",
+          "before": {
+            "label": "before",
+            "traceHash": "cb20284bf149f39395281a7cf50deb7cb902e11c18e48e4e412ace150b05af90",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.126953125,
+                "margin90": 0.1142578125,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.126953125,
+                    "refusedAt": 0.12890625,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.126953125,
+                    "refusedAt": 0.126953125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.126953125,
+                    "refusedAt": 0.126953125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.0703125,
+                "margin90": 0.06328125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.072265625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.0703125,
+                "margin90": 0.06328125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.072265625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "label": "after",
+            "traceHash": "cb20284bf149f39395281a7cf50deb7cb902e11c18e48e4e412ace150b05af90",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.126953125,
+                "margin90": 0.1142578125,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.126953125,
+                    "refusedAt": 0.12890625,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.126953125,
+                    "refusedAt": 0.126953125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.126953125,
+                    "refusedAt": 0.126953125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.0703125,
+                "margin90": 0.06328125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.072265625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.0703125,
+                "margin90": 0.06328125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.072265625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.0703125,
+                    "refusedAt": 0.0703125,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "identical": true
+        }
+      ]
+    },
+    {
+      "subject": "mud-crab",
+      "recordRecipeHash": "cc71ff2d73f5482f16278a77a2bbff2d7e4d0888fb88883b57b21a5822f0cd35",
+      "bindingHash": "98a02df4983b53eb78dc0cbd2eef64e65314e319d8299bfe5acb504f7d4bd10a",
+      "anatomy": null,
+      "models": [
+        {
+          "mode": "rest",
+          "before": {
+            "label": "before",
+            "traceHash": "b4362277dd37cdf7f37a11a90b3e4952ca310bbaea2a24d37880c5a81de6689f",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.08984375,
+                "margin90": 0.080859375,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.08984375,
+                    "refusedAt": 0.091796875,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.08984375,
+                    "refusedAt": 0.08984375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.08984375,
+                    "refusedAt": 0.08984375,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.044921875,
+                "margin90": 0.0404296875,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.046875,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.044921875,
+                "margin90": 0.0404296875,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.046875,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "label": "after",
+            "traceHash": "b4362277dd37cdf7f37a11a90b3e4952ca310bbaea2a24d37880c5a81de6689f",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.08984375,
+                "margin90": 0.080859375,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.08984375,
+                    "refusedAt": 0.091796875,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.08984375,
+                    "refusedAt": 0.08984375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.08984375,
+                    "refusedAt": 0.08984375,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.044921875,
+                "margin90": 0.0404296875,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.046875,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.044921875,
+                "margin90": 0.0404296875,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.046875,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.044921875,
+                    "refusedAt": 0.044921875,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "identical": true
+        },
+        {
+          "mode": "observed",
+          "before": {
+            "label": "before",
+            "traceHash": "c686f4691c7abbaf633ccb2ba7a27365bf928ebcba8d3c120593a61af593a150",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.083984375,
+                "margin90": 0.0755859375,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.083984375,
+                    "refusedAt": 0.0859375,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.083984375,
+                    "refusedAt": 0.083984375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.083984375,
+                    "refusedAt": 0.083984375,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.0390625,
+                "margin90": 0.03515625,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.041015625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.0390625,
+                "margin90": 0.03515625,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.041015625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "label": "after",
+            "traceHash": "c686f4691c7abbaf633ccb2ba7a27365bf928ebcba8d3c120593a61af593a150",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.083984375,
+                "margin90": 0.0755859375,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.083984375,
+                    "refusedAt": 0.0859375,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.083984375,
+                    "refusedAt": 0.083984375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.083984375,
+                    "refusedAt": 0.083984375,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.0390625,
+                "margin90": 0.03515625,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.041015625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.0390625,
+                "margin90": 0.03515625,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.041015625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.0390625,
+                    "refusedAt": 0.0390625,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "identical": true
+        }
+      ]
+    },
+    {
+      "subject": "vent-crab",
+      "recordRecipeHash": "adf835a7d5bc793f550dc953397084cf0b3ee9dba80325d8180856502e099089",
+      "bindingHash": "d077aa39935502f4d592a117766b79ad3a29710113a93fa12fada0058f1c91d0",
+      "anatomy": null,
+      "models": [
+        {
+          "mode": "rest",
+          "before": {
+            "label": "before",
+            "traceHash": "76c6d719757540a4055a0616c9190abd7aaf84b10f9d6ce748735338b25249b4",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.078125,
+                "margin90": 0.0703125,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.078125,
+                    "refusedAt": 0.080078125,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.078125,
+                    "refusedAt": 0.078125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.078125,
+                    "refusedAt": 0.078125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.03515625,
+                "margin90": 0.031640625,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.037109375,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.03515625,
+                "margin90": 0.031640625,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.037109375,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "label": "after",
+            "traceHash": "76c6d719757540a4055a0616c9190abd7aaf84b10f9d6ce748735338b25249b4",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.078125,
+                "margin90": 0.0703125,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.078125,
+                    "refusedAt": 0.080078125,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.078125,
+                    "refusedAt": 0.078125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.078125,
+                    "refusedAt": 0.078125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.03515625,
+                "margin90": 0.031640625,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.037109375,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.03515625,
+                "margin90": 0.031640625,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.037109375,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.03515625,
+                    "refusedAt": 0.03515625,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "identical": true
+        },
+        {
+          "mode": "observed",
+          "before": {
+            "label": "before",
+            "traceHash": "214e5fbc1fac53f82aae1b8b6d0b725f7e627745096cbfa0672cbb59d862283b",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.07421875,
+                "margin90": 0.066796875,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.07421875,
+                    "refusedAt": 0.076171875,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.07421875,
+                    "refusedAt": 0.07421875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.07421875,
+                    "refusedAt": 0.07421875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.033203125,
+                "margin90": 0.0298828125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.03515625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.033203125,
+                "margin90": 0.0298828125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.03515625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "label": "after",
+            "traceHash": "214e5fbc1fac53f82aae1b8b6d0b725f7e627745096cbfa0672cbb59d862283b",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.07421875,
+                "margin90": 0.066796875,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.07421875,
+                    "refusedAt": 0.076171875,
+                    "refusal": "Error: Contact: approach:scuttle@231.00000000000003 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.07421875,
+                    "refusedAt": 0.07421875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.07421875,
+                    "refusedAt": 0.07421875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.033203125,
+                "margin90": 0.0298828125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.03515625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.033203125,
+                "margin90": 0.0298828125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.03515625,
+                    "refusal": "Error: Contact: approach:scuttle@21 leg0Far outside accommodatable reach"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.033203125,
+                    "refusedAt": 0.033203125,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "identical": true
+        }
+      ]
+    },
+    {
+      "subject": "civet",
+      "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f",
+      "bindingHash": "61bfcfce57a4db3c42e5ea46fc204af2834767bd74d86a94770049240c0533c2",
+      "anatomy": null,
+      "models": [
+        {
+          "mode": "rest",
+          "before": {
+            "label": "before",
+            "traceHash": "d806b7a1925eb1d280ad8b2232aa087d46b5028ba39d366fdbe92bd06b082093",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.26953125,
+                "margin90": 0.242578125,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.26953125,
+                    "refusedAt": 0.271484375,
+                    "refusal": "Error: Contact: approach:walk@477.95000000000005 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.26953125,
+                    "refusedAt": 0.26953125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.26953125,
+                    "refusedAt": 0.26953125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.30078125,
+                "margin90": 0.270703125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.30078125,
+                    "refusedAt": 0.302734375,
+                    "refusal": "Error: Contact: approach:walk@43.45 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.30078125,
+                    "refusedAt": 0.30078125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.30078125,
+                    "refusedAt": 0.30078125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.270233154296875,
+                "margin90": 0.2432098388671875,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.30078125,
+                    "refusedAt": 0.302734375,
+                    "refusal": "Error: Contact: approach:walk@43.45 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.30078125,
+                    "refusedAt": 0.30078125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.30078125,
+                    "refusedAt": 0.30078125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.270233154296875,
+                    "refusedAt": 0.2714080810546875,
+                    "refusal": "Error: Contact: approach:walk@477.95000000000005 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.270233154296875,
+                    "refusedAt": 0.270233154296875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.270233154296875,
+                    "refusedAt": 0.270233154296875,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "label": "after",
+            "traceHash": "d806b7a1925eb1d280ad8b2232aa087d46b5028ba39d366fdbe92bd06b082093",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.26953125,
+                "margin90": 0.242578125,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.26953125,
+                    "refusedAt": 0.271484375,
+                    "refusal": "Error: Contact: approach:walk@477.95000000000005 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.26953125,
+                    "refusedAt": 0.26953125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.26953125,
+                    "refusedAt": 0.26953125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.30078125,
+                "margin90": 0.270703125,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.30078125,
+                    "refusedAt": 0.302734375,
+                    "refusal": "Error: Contact: approach:walk@43.45 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.30078125,
+                    "refusedAt": 0.30078125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.30078125,
+                    "refusedAt": 0.30078125,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.270233154296875,
+                "margin90": 0.2432098388671875,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.30078125,
+                    "refusedAt": 0.302734375,
+                    "refusal": "Error: Contact: approach:walk@43.45 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.30078125,
+                    "refusedAt": 0.30078125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.30078125,
+                    "refusedAt": 0.30078125,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.270233154296875,
+                    "refusedAt": 0.2714080810546875,
+                    "refusal": "Error: Contact: approach:walk@477.95000000000005 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.270233154296875,
+                    "refusedAt": 0.270233154296875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.270233154296875,
+                    "refusedAt": 0.270233154296875,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "identical": true
+        },
+        {
+          "mode": "observed",
+          "before": {
+            "label": "before",
+            "traceHash": "91c50dee4d2868b944a92ac32473c48371d0b1df3bd1a407d271fca81cc5abb8",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.26171875,
+                "margin90": 0.23554687500000002,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.26171875,
+                    "refusedAt": 0.263671875,
+                    "refusal": "Error: Contact: approach:walk@477.95000000000005 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.26171875,
+                    "refusedAt": 0.26171875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.26171875,
+                    "refusedAt": 0.26171875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.29296875,
+                "margin90": 0.263671875,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.294921875,
+                    "refusal": "Error: Contact: approach:walk@43.45 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.29296875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.29296875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.2620697021484375,
+                "margin90": 0.23586273193359375,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.294921875,
+                    "refusal": "Error: Contact: approach:walk@43.45 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.29296875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.29296875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.2620697021484375,
+                    "refusedAt": 0.263214111328125,
+                    "refusal": "Error: Contact: approach:walk@477.95000000000005 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.2620697021484375,
+                    "refusedAt": 0.2620697021484375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.2620697021484375,
+                    "refusedAt": 0.2620697021484375,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "after": {
+            "label": "after",
+            "traceHash": "91c50dee4d2868b944a92ac32473c48371d0b1df3bd1a407d271fca81cc5abb8",
+            "groups": [
+              {
+                "scope": "second-half",
+                "unmargined": 0.26171875,
+                "margin90": 0.23554687500000002,
+                "samples": [
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.26171875,
+                    "refusedAt": 0.263671875,
+                    "refusal": "Error: Contact: approach:walk@477.95000000000005 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.26171875,
+                    "refusedAt": 0.26171875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.26171875,
+                    "refusedAt": 0.26171875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "first-half",
+                "unmargined": 0.29296875,
+                "margin90": 0.263671875,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.294921875,
+                    "refusal": "Error: Contact: approach:walk@43.45 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.29296875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.29296875,
+                    "refusal": null
+                  }
+                ]
+              },
+              {
+                "scope": "both-halves",
+                "unmargined": 0.2620697021484375,
+                "margin90": 0.23586273193359375,
+                "samples": [
+                  {
+                    "frac": 0.05,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.294921875,
+                    "refusal": "Error: Contact: approach:walk@43.45 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.25,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.29296875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.45,
+                    "admitted": 0.29296875,
+                    "refusedAt": 0.29296875,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.55,
+                    "admitted": 0.2620697021484375,
+                    "refusedAt": 0.263214111328125,
+                    "refusal": "Error: Contact: approach:walk@477.95000000000005 exceeds scale compression bound"
+                  },
+                  {
+                    "frac": 0.75,
+                    "admitted": 0.2620697021484375,
+                    "refusedAt": 0.2620697021484375,
+                    "refusal": null
+                  },
+                  {
+                    "frac": 0.95,
+                    "admitted": 0.2620697021484375,
+                    "refusedAt": 0.2620697021484375,
+                    "refusal": null
+                  }
+                ]
+              }
+            ]
+          },
+          "identical": true
+        }
+      ]
+    }
+  ],
+  "helperBefore": [
+    {
+      "subject": "freshwater-crab",
+      "recordRecipeHash": "ffb9a6786ed27e1cf9fd98d9a653111e2f69f0856bbd5b70ccad71dffca5419f",
+      "bindingHash": "00d3c3451f011b84cfe80f833d44f32e4f73984f7852f296840ce7ce691fd092",
+      "rest": {
+        "applicable": true,
+        "forward": 0.070494,
+        "backward": 0.070494,
+        "samples": 121,
+        "bodyPlanted": [],
+        "limits": [
+          {
+            "direction": 1,
+            "admitted": 0.070494,
+            "refusedAt": 0.07049515830810887,
+            "refusal": {
+              "ms": 0,
+              "displacement": 0.07049515830810887,
+              "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+            }
+          },
+          {
+            "direction": -1,
+            "admitted": 0.070494,
+            "refusedAt": 0.07049515830810887,
+            "refusal": {
+              "ms": 210,
+              "displacement": -0.07049515830810887,
+              "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+            }
+          }
+        ]
+      },
+      "observed": {
+        "applicable": true,
+        "forward": 0.070494,
+        "backward": 0.070494,
+        "samples": 121,
+        "bodyPlanted": [],
+        "limits": [
+          {
+            "direction": 1,
+            "admitted": 0.070494,
+            "refusedAt": 0.07049515830810887,
+            "refusal": {
+              "ms": 0,
+              "displacement": 0.07049515830810887,
+              "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+            }
+          },
+          {
+            "direction": -1,
+            "admitted": 0.070494,
+            "refusedAt": 0.07049515830810887,
+            "refusal": {
+              "ms": 210,
+              "displacement": -0.07049515830810887,
+              "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "subject": "mud-crab",
+      "recordRecipeHash": "cc71ff2d73f5482f16278a77a2bbff2d7e4d0888fb88883b57b21a5822f0cd35",
+      "bindingHash": "98a02df4983b53eb78dc0cbd2eef64e65314e319d8299bfe5acb504f7d4bd10a",
+      "rest": {
+        "applicable": true,
+        "forward": 0.046092,
+        "backward": 0.046092,
+        "samples": 121,
+        "bodyPlanted": [],
+        "limits": [
+          {
+            "direction": 1,
+            "admitted": 0.046092,
+            "refusedAt": 0.046092704661766654,
+            "refusal": {
+              "ms": 0,
+              "displacement": 0.046092704661766654,
+              "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+            }
+          },
+          {
+            "direction": -1,
+            "admitted": 0.046092,
+            "refusedAt": 0.046092704661766654,
+            "refusal": {
+              "ms": 210,
+              "displacement": -0.046092704661766654,
+              "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+            }
+          }
+        ]
+      },
+      "observed": {
+        "applicable": true,
+        "forward": 0.040753,
+        "backward": 0.041061,
+        "samples": 121,
+        "bodyPlanted": [],
+        "limits": [
+          {
+            "direction": 1,
+            "admitted": 0.040753,
+            "refusedAt": 0.04075410020599074,
+            "refusal": {
+              "ms": 0,
+              "displacement": 0.04075410020599074,
+              "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+            }
+          },
+          {
+            "direction": -1,
+            "admitted": 0.041061,
+            "refusedAt": 0.041061878167168234,
+            "refusal": {
+              "ms": 210,
+              "displacement": -0.041061878167168234,
+              "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "subject": "vent-crab",
+      "recordRecipeHash": "adf835a7d5bc793f550dc953397084cf0b3ee9dba80325d8180856502e099089",
+      "bindingHash": "d077aa39935502f4d592a117766b79ad3a29710113a93fa12fada0058f1c91d0",
+      "rest": {
+        "applicable": true,
+        "forward": 0.036701,
+        "backward": 0.036701,
+        "samples": 121,
+        "bodyPlanted": [],
+        "limits": [
+          {
+            "direction": 1,
+            "admitted": 0.036701,
+            "refusedAt": 0.03670226009799192,
+            "refusal": {
+              "ms": 0,
+              "displacement": 0.03670226009799192,
+              "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+            }
+          },
+          {
+            "direction": -1,
+            "admitted": 0.036701,
+            "refusedAt": 0.03670226009799192,
+            "refusal": {
+              "ms": 210,
+              "displacement": -0.03670226009799192,
+              "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+            }
+          }
+        ]
+      },
+      "observed": {
+        "applicable": true,
+        "forward": 0.034066,
+        "backward": 0.036701,
+        "samples": 121,
+        "bodyPlanted": [],
+        "limits": [
+          {
+            "direction": 1,
+            "admitted": 0.034066,
+            "refusedAt": 0.03406692968653849,
+            "refusal": {
+              "ms": 0,
+              "displacement": 0.03406692968653849,
+              "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+            }
+          },
+          {
+            "direction": -1,
+            "admitted": 0.036701,
+            "refusedAt": 0.03670226009799192,
+            "refusal": {
+              "ms": 210,
+              "displacement": -0.03670226009799192,
+              "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
