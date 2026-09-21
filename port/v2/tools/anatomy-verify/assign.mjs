@@ -18,7 +18,7 @@ import {distanceTransform} from './thickness.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 /** Backwards-compatible descriptor view: legs per side and slot naming per template (from the contract). */
 export const TEMPLATES=new Proxy({},{get:(_,id)=>{if(typeof id!=='string')return undefined;const r=templateRest(id);return {legsPerSide:r.legsPerSide,slotName:(k,side)=>r.slots[side][k].terminal,rest:r};}});
-export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=0.7,thinWeight=0.4,emptyScale=1.0,unusedEnd=1.0,contactRefine=true,thickNeedsFork=false,touchNotSep=true,loopThinFrac=0,declaredHidden=[],declaredFolded=[],orderBy='sep',rootMode='none',orderFrac=0.5,loopConfirm=false,thickNeedsPalm=false,clawAttached=0,tuftReach=true,kneeFrom='exit',kneeMode='fraction',longest=512,bodyUnitsP2=false,clawEdgeCut=0,gapeMin=0.3,rearGap=0}={}){
+export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=0.7,thinWeight=0.4,emptyScale=1.0,unusedEnd=1.0,contactRefine=true,thickNeedsFork=false,touchNotSep=true,loopThinFrac=0,declaredHidden=[],declaredFolded=[],declaredAbsent=[],orderBy='sep',rootMode='none',orderFrac=0.5,loopConfirm=false,thickNeedsPalm=false,clawAttached=0,tuftReach=true,kneeFrom='exit',kneeMode='fraction',longest=512,bodyUnitsP2=false,clawEdgeCut=0,gapeMin=0.3,rearGap=0,sideLenWeight=0.25}={}){
   const T=templateRest(template),legsPerSide=T.legsPerSide,slotName=(k,side)=>T.slots[side][k].terminal;
   // working scale: the longest side of the working mask (512 = the slice-4 constant; a template-tier setting — a
   // 2.45× downscale of a 1254 master closes the gap between a claw's two fingers)
@@ -283,11 +283,16 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
     const cs=legs.slice().sort((p,q)=>u(p)-u(q));const thin=thinOf(cs);const K=legsPerSide;
     // chain appendages of the contract that hang off the axis ends: rear (bodyAxis[0]) slots precede station 0, front
     // (bodyAxis[1]) slots follow the last station; a fork whose tip is body-thick (a head) is body, not an appendage
-    const rearApp=T.appendages.filter(a=>a.kind==='chain'&&a.attach===T.contract.bodyAxis[0]&&a.length),frontApp=T.appendages.filter(a=>a.kind==='chain'&&a.attach===T.contract.bodyAxis[1]&&a.length);
+    // a declared-absent or declared-hidden appendage (a stub tail inside the outline, `absent: ['tail']`) offers no
+    // slot: the declaration names the appendage's contract id (`tail3`) or its chain prefix (`tail`)
+    const declaredOut=id=>[...declaredAbsent,...declaredHidden].some(d=>d===id||id.startsWith(d));
+    const rearApp=T.appendages.filter(a=>a.kind==='chain'&&a.attach===T.contract.bodyAxis[0]&&a.length&&!declaredOut(a.id)),frontApp=T.appendages.filter(a=>a.kind==='chain'&&a.attach===T.contract.bodyAxis[1]&&a.length&&!declaredOut(a.id));
     // lengths: a candidate's `len` runs from its separation node on the spine, so subtract the descent through the
     // body (≈ R/2) before comparing with a rest length measured from the attachment landmark
     const lenCost=(c,restRatio)=>Math.abs(Math.log(Math.max(1,c.len-0.5*R)/(restRatio*R)));
-    const legCost=c=>Math.abs(Math.log(c.termDt/thin))*0.4+lenCost(c,T.legLength)*(c.kind==='end'?1.0:0.25)+(c.kind==='touch'?0.5:c.kind==='loop'?0.3:0);
+    // side view: the rest leg length is one species' (the reference's); stocky vs leggy quadrupeds differ ~2×, so the
+    // length term carries `sideLenWeight` (measured on Civet/Wolf/bear, README slice 33)
+    const legCost=c=>Math.abs(Math.log(c.termDt/thin))*0.4+lenCost(c,T.legLength)*(c.kind==='end'?sideLenWeight:0.25*sideLenWeight)+(c.kind==='touch'?0.5:c.kind==='loop'?0.3:0);
     const yLow=cs.length?Math.max(...cs.map(c=>c.y)):0;
     let best=null;const allS=[];const stations=[...rearApp.map(a=>({app:a})),...Array.from({length:K},(_,k)=>({k})),...frontApp.map(a=>({app:a}))];
     const rec=(si,i,acc,cost)=>{if(si===stations.length){const used=acc.flat().filter(Boolean).length;const total=cost+(cs.length-used)*0.7;allS.push({cost:total,acc:acc.map(s=>s.slice())});if(!best||total<best.cost)best={cost:total,acc:acc.map(s=>s.slice())};return;}

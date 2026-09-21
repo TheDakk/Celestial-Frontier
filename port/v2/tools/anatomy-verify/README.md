@@ -673,3 +673,14 @@ record exists, so no landmark numbers; G6 waits for a record.
 Coconut with Codex's corrected declaration (`leg3Far` visible, `presence.json` 41ec…): the compiler leaves
 `leg3Far` empty (precision: the only candidate there is the lone finger) and refuses — "visible leg3Far not found; 1
 unused endpoint" — the finger/leg merge of slice 30, unchanged.
+Addendum — declarations for appendages, and the bear's two fixes measured: (1) `absent`/`hidden` now remove an
+appendage's SLOT (by contract id `tail3` or prefix `tail`), so a stub-tailed species declared `absent: ['tail']`
+offers no tail slot — required before Codex's bear declaration can act. (2) With that trial declaration the rear-most
+foot correctly becomes `hindNear`, and the remaining refusal is a cost: the hind station pairs the loop with it and
+leaves the true hind endpoint unused, because the quadruped's REST LEG LENGTH is the Civet's (leggy) and a stocky
+bear's short leg pays |ln(len/rest)| ≈ 0.7. `sideLenWeight` (the side-view length term) 1.0 / 0.5 → loop wins;
+**0.25 → ADMIT with all four paws as endpoints** (far feet outboard, near feet under the body); 0 → the fore pair
+breaks. Civet, Wolf and the five crabs are byte-identical at every weight; **0.25 is the default.** As Codex declared
+the bear (tail offered), it still refuses at 0.25 (`hindFar` loop) — both the declaration and the weight are
+needed; the declaration is Codex's data. Rest leg length is one species' number: a future template-tier item is a
+per-species leg ratio from the catalogue (fauna.json has aspect/headFrac, not leg length).
