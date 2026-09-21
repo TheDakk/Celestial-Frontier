@@ -1,7 +1,7 @@
 import{createFullRowSchedule}from'./review-schedule.mjs';
 import{RecoverablePoseError}from'../creature-animation/pose-refusal.mjs';
 import{assertPaintPartShape}from'../creature-animation/paint-skin.mjs';
-import{createStageTravel,assessTemplateRootContinuity}from'../../apps/game/src/creature-stage-travel.ts';
+import{createStrideCadence,createStageTravel,assessTemplateRootContinuity}from'../../apps/game/src/creature-stage-travel.ts';
 import {sampleSupportResidual} from './contact-support-probe.mjs';
 import {createSkeletonPoseProgram} from '../creature-animation/skeleton-pose.mjs';
 import {familyContractForRecord} from '../creature-animation/family-contracts.mjs';
@@ -91,5 +91,25 @@ async function rootProof(){
  const priorVisible=rig.root.visible;rig.root.visible=false;subject.root.scale.set(displayScale);subject.root.position.set(displayX,displayY);app.stage.addChild(subject.root);for(const p of subject.parts)p.display.visible=p.id===rootPart.id;
  const snapshots=[],artifacts={};try{for(const[name,pose]of[['root-rest',{}],['root-positive-trunk',{trunk:{rotation:.01}}],['root-negative-translate',{root:{rotation:0,dx:.02,dy:0}}]]){subject.applyPose(pose);app.renderer.render(app.stage);snapshots.push(new Uint8Array(app.renderer.extract.pixels({target:app.stage}).pixels));artifacts[name+'.png']=app.canvas.toDataURL('image/png').split(',')[1];}const changed=(a,b)=>a.reduce((n,v,i)=>n+(v!==b[i]),0),positiveChanged=changed(snapshots[0],snapshots[1]),negativeChanged=changed(snapshots[0],snapshots[2]);return {status:positiveChanged===0&&negativeChanged>0?'PASS':'FAIL',positive:{status:positiveChanged===0?'PASS':'FAIL',changedChannels:positiveChanged},negative:{status:negativeChanged>0?'FAIL':'PASS',changedChannels:negativeChanged},scope:'Actual root-supported textured part through the native rig owner, without field pins; deliberate root translation vs trunk-only bend. Source pixels/record unchanged; test-only binding.',testBindingHash:testBinding.bindingHash,artifacts};}finally{subject.dispose();rig.root.visible=priorVisible;}
 }
-window.cfFamilyReview={state,gates,capture,refusalProof,rootProof,actionStill(id,fraction){if(!players[id]||!Number.isFinite(fraction)||fraction<0||fraction>1)throw Error('Invalid action still');rig.root.position.set(displayX,displayY);reviewCapture=isPlant;try{pose(id,timelines[id].durationMs*fraction);app.renderer.render(app.stage);return app.canvas.toDataURL('image/png').split(',')[1];}finally{reviewCapture=false;}},still(ms){reviewCapture=isPlant;try{stageAt(ms);return app.canvas.toDataURL('image/png').split(',')[1];}finally{reviewCapture=false;}}};state.status='READY';rig.applyPose({});app.renderer.render(app.stage);
+async function cadence(){
+ const actionId=isPlant?'sway':'approach',tl=timelines[actionId],arenaScale=record.geometry.width*.25,targetDistancePx=isPlant?0:1024*.18;
+ const plan=createStrideCadence({targetDistancePx,bodyLengthPx:contact.scaleLength*arenaScale,gaitDurationMs:tl.durationMs});
+ const rest=()=>Object.fromEntries(Object.entries(positions()).map(([id,p])=>[id,Array.from(p)]));rig.applyPose({});const original=JSON.stringify(rest()),windows=new Map(),times=[],failures=[];
+ const frames=isPlant?121:Math.max(121,plan.cycles*60),total=isPlant?tl.durationMs:plan.durationMs;let maxSpread=0;
+ const oldX=rig.root.x,oldY=rig.root.y,oldScale=rig.root.scale.x;rig.root.scale.set(arenaScale);rig.root.position.set(160,100);
+ try{for(let i=0;i<frames;i++){
+  const ms=total*i/frames,c=plan.sample(ms),age=isPlant?ms:c.gaitMs,phase={actionId:tl.actionId,elapsedMs:age,durationMs:tl.durationMs,travel:'stage',stageDisplacement:c.stageDisplacement,realm:card.realm};
+  try{const start=performance.now(),solved=contact.resolve(players[actionId].sample(age),phase);rig.applyPose(solved.pose);times.push(performance.now()-start);lastResolvedPose=solved.pose;
+   const current=positions();for(const foot of solved.contacts){if(!foot.stance)continue;const mark=paintContacts.find(p=>p.joint===foot.joint),p=current[mark.part],x=c.worldDisplacementPx+p[mark.index*2]*arenaScale,y=p[mark.index*2+1]*arenaScale,key=c.stanceWindow+':'+foot.joint;
+    let w=windows.get(key);if(!w){w={joint:foot.joint,window:c.stanceWindow,samples:0,x,y,maxDriftPx:0};windows.set(key,w);}w.samples++;w.maxDriftPx=Math.max(w.maxDriftPx,Math.hypot(x-w.x,y-w.y));maxSpread=Math.max(maxSpread,w.maxDriftPx);
+   }
+  }catch(e){failures.push({ms,phase,error:String(e.stack??e)});break;}
+  rig.root.x=160+c.worldDisplacementPx;label.text='Cadence '+(isPlant?'rooted flora':c.stanceWindow)+' / '+plan.cycles+' cycles';app.renderer.render(app.stage);
+  if(i%60===0)await new Promise(requestAnimationFrame);
+ }
+ const still=app.canvas.toDataURL('image/png').split(',')[1];rig.applyPose({});const exactRest=JSON.stringify(rest())===original;times.sort((a,b)=>a-b);
+ return{status:failures.length||!exactRest||maxSpread>.5?'FAIL':'PASS',template:record.template.id,scope:isPlant?'Rooted flora: no gait or contact chains; planting not applicable':'Actual native Pixi painted rig, gait sampler, family solver and stance-local cadence',plan:{cycles:plan.cycles,durationMs:plan.durationMs,targetDistancePx,bodyLengthPx:plan.bodyLengthPx,maxStanceTravelBodyLengths:plan.maxStanceTravelBodyLengths},frames:times.length,expectedFrames:frames,refusals:failures.length,failures,exactRest,maxStanceDriftPx:isPlant?null:maxSpread,windows:[...windows.values()],rigP95Ms:times[Math.floor(times.length*.95)]??null,still};
+ }finally{rig.root.scale.set(oldScale);rig.root.position.set(oldX,oldY);}
+}
+window.cfFamilyReview={state,gates,capture,cadence,refusalProof,rootProof,actionStill(id,fraction){if(!players[id]||!Number.isFinite(fraction)||fraction<0||fraction>1)throw Error('Invalid action still');rig.root.position.set(displayX,displayY);reviewCapture=isPlant;try{pose(id,timelines[id].durationMs*fraction);app.renderer.render(app.stage);return app.canvas.toDataURL('image/png').split(',')[1];}finally{reviewCapture=false;}},still(ms){reviewCapture=isPlant;try{stageAt(ms);return app.canvas.toDataURL('image/png').split(',')[1];}finally{reviewCapture=false;}}};state.status='READY';rig.applyPose({});app.renderer.render(app.stage);
 }catch(e){state.status='FAIL';state.error=String(e.stack??e);}

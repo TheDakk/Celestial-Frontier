@@ -6937,3 +6937,9 @@ CREATURE_ANIMATION.md and audits/SOLVER_STAGE_SUPPORT_20260921/README.md.
 ### Stage displacement — matches code 2026-09-21
 
 `ContactPhase.stageDisplacement?: number` is signed stage translation in measured body-length units. For `travel:stage`, each planted target (including its painted-support target) recedes by that displacement times `scaleLength`; root dx remains zero, swing targets retain their existing path. Missing displacement preserves prior behavior; solver travel ignores it. Non-finite stage values refuse. No reach/limit threshold changes. The adapter must convert actual stage translation to local source coordinates before dividing by the same scaleLength.
+
+### Whole-cycle stage cadence — matches code 2026-09-21
+
+`createStrideCadence` in creature-stage-travel.ts preserves an arena-composed target distance and takes measured body length in arena pixels plus the authored gait duration. N=ceil(abs(distance/bodyLength)/0.2); each full cycle advances distance/N and each half-cycle defines a stance window. Sample outputs separate world pixels from signed stance-local body lengths. The native harness cadence entry exercises the actual rig and painted supports. Battle2 is absent on openai/mac: its caller integration remains a Claude handoff, including removal of the obsolete scaleLength division at the context boundary. No contact limits, clip keys or solver default path changes.
+
+Cadence qualification is **S2 RED** on the retained Freshwater Crab at0.0716501458 body lengths (154ms, leg0Far reach refusal). Crab/Coconut native passes do not generalize the0.2 ceiling into a universal capacity. The helper is not admitted for E1 integration. Packet: `audits/STAGE_CADENCE_20260921/NATIVE_ROWS.md`. No production solver defaults or thresholds changed.

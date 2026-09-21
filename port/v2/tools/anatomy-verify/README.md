@@ -703,3 +703,21 @@ the battle stage's run-up is composed in frame units, so wiring `stageDisplaceme
 would refuse every approach; either the stage runs up in body lengths (stride cadence) or the solver clamps
 instead of refusing — a decision for Nick and Codex before the stage passes it. The films are unchanged (the stage
 does not pass it yet).
+
+## Slice 35 — Codex's cadence S2 halt reviewed: stance reach is per subject, set by the far legs, 2026-09-22
+Codex's body-length cadence (`creature-stage-travel.ts#createStrideCadence`, 0.2 body lengths per cycle, 0.1 per
+stance) passed the crab and coconut natively and REFUSED the freshwater crab at 0.0717 body lengths (`leg0Far`
+outside accommodatable reach), stopping at S2 before mud, vent, the plants, the Civet and the bear fit. Reviewed
+at the solver level on all five crab fits (three stance samples each; the largest displacement accepted):
+
+| crab | coconut | freshwater | mud | vent |
+|---|---|---|---|---|
+| ≤ 0.2 (then the compression bound) | ≤ 0.2 (compression bound) | ≤ 0.1 (`leg1Far` reach) | ≤ 0.07 (`leg1Far`) | ≤ 0.07 (`leg1Far`) |
+
+The limit is a rig property, set by the far-side legs drawn foreshortened or folded (the compiler's slice 21/30
+legs): a fold has almost no reach along the travel direction. Two consequences for the cadence, both Codex's:
+(1) the per-stance travel is `measureStanceReach(record)` — the minimum over stance legs of the accommodatable
+recede, computed once from the record (the 0.2 was one crab's number); (2) a leg declared `folded` (or resting
+on the body) is BODY-planted in stage mode — it rides with the body and is never receded — which lifts the far-leg
+limit on the freshwater/mud/vent rigs to their walking legs' reach. The parts rig now passes Codex's unit
+(signed body lengths since the stance boundary) unchanged; battle2 36/36 with the cadence test.

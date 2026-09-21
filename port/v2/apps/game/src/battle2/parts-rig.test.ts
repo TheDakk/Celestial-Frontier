@@ -97,7 +97,10 @@ describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage co
     for (let i = 0; i <= 60; i++) {
       const k = i / 60, ms = approach.durationMs * k;
       const holderX = runUpPx * EASE_FN['ease-out'](k);
-      rig.applyPose(sampleClip(clip, ms), { ...ctx(approach.actionId, ms, approach.durationMs, false), stageDisplacement: holderX / (scale * W) });
+      // body lengths since the stance boundary: the stage's cumulative travel (display units) over the body length,
+      // minus what it was when this stance began (the swing half carries no planting)
+      const stanceStartX = stanceAt(ms) ? runUpPx * EASE_FN['ease-out'](0.5) : holderX;
+      rig.applyPose(sampleClip(clip, ms), { ...ctx(approach.actionId, ms, approach.durationMs, false), stageDisplacement: ((holderX - stanceStartX) / (scale * W)) / card.scaleLength });
       const foot = px(rig, 'leg0NearFoot'), world = holderX + scale * (foot[0] / W - rig.foot.x) * W;
       if (worldAt0 === null) worldAt0 = world;
       if (stanceAt(ms)) { if (!current) { current = []; windows.push(current); } current.push(world); } else current = null;
