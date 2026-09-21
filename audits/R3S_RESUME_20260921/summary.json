@@ -1,0 +1,14 @@
+{
+  "status": "COMPLETE_RECONCILIATION_AT_REVIEW_STOP",
+  "sourceHead": "73398486ac886aeddeaa1580389a8d92ad5efa9c",
+  "verifiedSignedStages": 20,
+  "verifiedOriginalMedia": 833,
+  "indexedMedia": 862,
+  "films": 37,
+  "newSourceChanges": false,
+  "newIntakes": 0,
+  "newCaptures": 0,
+  "s2": "No new S2 in retained results; see S2-ledger.json",
+  "signing": "Native evidence signed and verified; this reconciliation packet is committed afterward.",
+  "nativeEvidenceCommit": "3e23766d3fcfaba1e29faa0b75e0e0f69e66f5a4"
+}
