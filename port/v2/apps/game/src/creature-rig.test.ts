@@ -83,6 +83,27 @@ it('refuses internally resealed bad frames, duplicate parts and budgets; release
  rig.dispose();rig.dispose();expect(texture.destroyed).toBe(true);expect(rig.root.destroyed).toBe(true);
  expect(Texture.EMPTY.destroyed).toBe(false);expect(()=>rig.applyPose({})).toThrow('disposed');
 });
+it('keeps a borrowed atlas and its source alive while disposing owned atlases',async()=>{
+ const base=await binding(),shared=await decoder(),source=shared.source,decode=()=>Promise.resolve(shared);
+ const options={borrowedAtlas:true};
+ const a=await loadCreatureRigV1(record,base,master,alpha,atlasBytes,decode,options);
+ const b=await loadCreatureRigV1(record,base,master,alpha,atlasBytes,decode,{borrowedAtlas:true});
+ options.borrowedAtlas=false; // Ownership is captured at load, not read from mutable options at disposal.
+ a.dispose();a.dispose();
+ expect(a.root.destroyed).toBe(true);expect(shared.destroyed).toBe(false);expect(source.destroyed).toBe(false);
+ expect(()=>b.applyPose({head:{rotation:.1}})).not.toThrow();b.dispose();
+ expect(shared.destroyed).toBe(false);expect(source.destroyed).toBe(false);
+ shared.destroy(true);expect(shared.destroyed).toBe(true);expect(source.destroyed).toBe(true);
+ const owned=await decoder(),ownedSource=owned.source;
+ const c=await loadCreatureRigV1(record,base,master,alpha,atlasBytes,()=>Promise.resolve(owned));
+ c.dispose();expect(owned.destroyed).toBe(true);expect(ownedSource.destroyed).toBe(true);
+ for(const borrowedAtlas of [true,false]){
+  const wrong=new Texture({source:new TextureSource({width:1,height:1})}),wrongSource=wrong.source;
+  await expect(loadCreatureRigV1(record,base,master,alpha,atlasBytes,()=>Promise.resolve(wrong),{borrowedAtlas})).rejects.toThrow('decoded atlas dimensions');
+  expect(wrong.destroyed).toBe(!borrowedAtlas);expect(wrongSource.destroyed).toBe(!borrowedAtlas);
+  if(borrowedAtlas)wrong.destroy(true);
+ }
+});
 it('replays without clock/RNG reads and keeps a full-graph/40-part update below the 2ms Mac budget',async()=>{
  const base=await binding(),names=Object.keys(record.landmarks);
  const {bindingHash,...body}={...base,atlasSize:{width:320,height:8},parts:Array.from({length:40},(_,i)=>({...parts[0]!,id:'part'+i,joint:names[i%names.length]!,frame:{x:i*8,y:0,width:8,height:8}}))};
