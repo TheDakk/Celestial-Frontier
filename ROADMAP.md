@@ -168,7 +168,8 @@ branch push of both lanes Nick then authorized is done (see Lane state), so orig
 
 
 ### What Claude owes next
--29. **E1 re-filmed on the family solver (2026-09-21, this commit):** `audits/BATTLE2_E1_PROOF_20260921/` — Civet-vs-crab DIAGNOSTIC_PASS (0 refusals, 3.30 ms p95) and **the crab attacking with a pinch through the stage** (0 refusals, 3.40 ms) on Codex's delivered crab fit. Third pin still red with the solver double-count finding.
+-30. **Re-seal + re-lift under Nick's decision (2026-09-21, this commit):** training fixture/test html seal → `a65d5905…`; `lift-hdart.mjs` re-run; speciesportable byte-seal re-blessed; suite 4,770 pass. Decisions 1–4 recorded under "Nick" below.
+-29. **E1 re-filmed on the family solver (2026-09-21, commit `11a45b4c`):** `audits/BATTLE2_E1_PROOF_20260921/` — Civet-vs-crab DIAGNOSTIC_PASS (0 refusals, 3.30 ms p95) and **the crab attacking with a pinch through the stage** (0 refusals, 3.40 ms) on Codex's delivered crab fit. Third pin still red with the solver double-count finding.
 -28. **Re-merge of Codex's R3-S → §8 (2026-09-21, merge `9ee651d2`, signed and pushed):** see Lane state above.
 -27. **Slice 31 (2026-09-21, commit `82c25377`):** `emit.mjs` — the compiler writes Codex-format `labels.png` + `declaration.json` per crab (`audits/INTAKE_COMPILER_20260921/compiled-01/`), with declared gaps (eyes unnamed; arm/palm split first cut; quadruped part vocabulary needed from Codex; no record written). P2 constants in body units are an option (byte-identical at 512); scale is not a lever (thinning topology). After this the Claude list is blocked on Codex's R3-S stop and Nick's D2 decisions.
 -26. **Slice 30 (2026-09-21, commit `f400328e`):** the coconut/freshwater "false endpoints" are the near claw's lone dactyl tips (5–6 px from the record) whose twin merged into one ridge at the 512 px working scale — a P2 graph defect, not a matcher one. Palm, twin-stub, thinness re-sweep and a working-scale sweep measured and rejected; the prerequisite is P2's constants in body units. Codex is running R3-S (authorized 2026-09-21).
@@ -214,7 +215,11 @@ Continues §8 unattended. Interfaces E1 consumes from R3, unchanged: `ContactPha
 dx in stage mode, stance targets unchanged) and `contactJoint` on `compileAnatomyAttack` (already on the attack rows). Nothing
 in Claude's E1 changed a Codex-owned file except the two merge repairs above, both recorded for re-application in its lane.
 
-### Nick
+### Nick — decisions taken 2026-09-21 (late)
+1. **Re-seal**: the v2 `training-checkpoint` fixture and test now seal the TypeSafe html (`a65d5905…`, from `5d0844c4…`; reason recorded in the fixture); the hdart lift was re-run from the tracked source and `speciesportable`'s byte-seal re-blessed to the new `hdart.verbatim.js`. `validate.js` fingerprint identical throughout. port/v2 suite: 4,770 pass, 1 expected fail; the one red file (`current-producer-authorities`) wants a local EVIDENCE build in the ignored `apps/game/dist/` and is environmental.
+2. **D2**: Brown Bear; a guardian CPU tier at 5 ms desktop-only; §6 landmark bound 60 px at 1536; Codex's IC-3 writers released for this one guardian.
+3. **Declarations**: the coconut's `leg3Far` is painted — declare it visible (Codex applies to the fit's presence file); the crab's `leg3Far` stays (a finger-vs-leg call no declaration describes).
+4. **Codex's next run**: the two solver findings (stance-target double count under `travel:'stage'`; observed-support joint drift), then G1–G2 of the Brown Bear. Claude: the fork-aware ridge (the one structural lever left for IC-4).
 **Decision item withdrawn (2026-09-21, slice 21):** the folded legs DO have alpha-only candidates (freshwater: an endpoint 1 px from the record misclassified as a claw finger by ridge thickness; crab: a loop at 68 px); an interior-edge stage was built as an option and measured (README slice 21) — it cleans the ridge but does not change the naming economics that actually lose the slot. Nothing to decide until the stop. R9 addendum's two answers (finisher model = the accepted one; arena-scale crab on the sheet)
 are already in the pre-answered set (§7).
 
