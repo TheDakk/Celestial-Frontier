@@ -1,0 +1,1446 @@
+{
+  "schema": "cf-v2-glassmatrix/v2",
+  "status": "instrument-fail",
+  "terminal": true,
+  "scope": "targeted-diagnostic",
+  "certifying": false,
+  "exit": {
+    "code": 2
+  },
+  "startedAt": "2026-09-21T20:03:16.818Z",
+  "endedAt": "2026-09-21T20:03:24.666Z",
+  "run": {
+    "id": "20260921200316818-40748-824b047555f5",
+    "artifactPath": "apps/game/smoke/glassmatrix-20260921200316818-40748-824b047555f5.json",
+    "provenance": "The unique run artifact is authority; the fixed-name report is a mutable current pointer only."
+  },
+  "source": {
+    "commit": "f25098fa4202c86cd6db8b6a5ded47c9faf5dc69",
+    "branch": "openai/mac",
+    "state": "dirty-diagnostic",
+    "statusSha256": "b5d3a408ddc7dfa95fb168b0ad79c64715b788558b875bf71ff000d8e78ef4ba",
+    "workingTreeSha256": "535b1838c4118a35e2de26c2d1e30cdc88a7e557de014088b74ec61debd6b1d0"
+  },
+  "sourceEnd": {
+    "commit": "f25098fa4202c86cd6db8b6a5ded47c9faf5dc69",
+    "branch": "openai/mac",
+    "state": "dirty-diagnostic",
+    "statusSha256": "b5d3a408ddc7dfa95fb168b0ad79c64715b788558b875bf71ff000d8e78ef4ba",
+    "workingTreeSha256": "535b1838c4118a35e2de26c2d1e30cdc88a7e557de014088b74ec61debd6b1d0"
+  },
+  "sourceChange": {
+    "detected": false,
+    "ending": null
+  },
+  "predecessors": null,
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.48",
+    "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.7",
+    "protocol_version": "1.3",
+    "consistentAcrossViewports": true
+  },
+  "viewportInventory": [
+    {
+      "label": "small-phone",
+      "width": 320,
+      "height": 568,
+      "dpr": 2,
+      "mobile": true,
+      "safeArea": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      }
+    }
+  ],
+  "viewportTimings": [
+    {
+      "label": "small-phone",
+      "durationMs": 4652
+    }
+  ],
+  "arc4CaptureOutcomeInventory": {
+    "plannedOutcomeCodes": [
+      "ARC4_CAPTURE_NATIVE_SURVEY_RETURN",
+      "ARC4_CAPTURE_PRESENTATION_TRUTH",
+      "ARC4_CAPTURE_GEOMETRY_FOCUS"
+    ],
+    "complete": false,
+    "expectedCount": 3,
+    "observedCount": 0,
+    "omitted": [
+      "small-phone\u0000ARC4_CAPTURE_NATIVE_SURVEY_RETURN",
+      "small-phone\u0000ARC4_CAPTURE_PRESENTATION_TRUTH",
+      "small-phone\u0000ARC4_CAPTURE_GEOMETRY_FOCUS"
+    ],
+    "outcomes": []
+  },
+  "shipyardKeyboardHeartbeatInventory": {
+    "plannedViewports": [],
+    "complete": true,
+    "expectedCount": 0,
+    "observedCount": 0,
+    "omitted": [],
+    "outcomes": []
+  },
+  "controlSummary": {
+    "selftestRan": true,
+    "negativeControls": [
+      "accessible-name",
+      "arc4-capture-control-overlap",
+      "arc4-capture-earth-title",
+      "arc4-capture-epoch-mutation",
+      "arc4-capture-full-pool-copy",
+      "arc4-capture-model-disabled-parity",
+      "arc4-capture-native-activation",
+      "arc4-capture-native-survey-return",
+      "arc4-capture-ownership-mutation",
+      "arc4-capture-receipt-mutation",
+      "arc4-capture-roster-counts",
+      "arc4-capture-roster-fingerprint",
+      "arc4-capture-sample-odds",
+      "arc4-capture-scavenge-odds",
+      "arc4-capture-session-rng-mutation",
+      "arc4-capture-tame-odds",
+      "arc4-capture-v4-counter-mutation",
+      "arc4-capture-yield",
+      "backing-pixel-ceiling",
+      "canvas-backing-density",
+      "canvas-css-fit",
+      "centre-hit-test",
+      "clipped-without-scroll",
+      "cumulative-opacity-contrast",
+      "dock-toggle-pressed",
+      "glass-fallback",
+      "guide-render-focus",
+      "hp-label-dual-background",
+      "import-phase-sequence",
+      "keyboard-reachability",
+      "motion-css-policy",
+      "non-glass-background-chain",
+      "opener-expanded-controls",
+      "ordinary-panel-centre-close",
+      "panel-open-focus",
+      "phone-dock-exact-membership",
+      "phone-dock-inventory",
+      "populated-copy",
+      "preference-computed-outcome",
+      "pseudo-placeholder-contrast",
+      "ready-confirmation-heartbeat",
+      "ready-confirmation-ticker-progress",
+      "reload-audio-release",
+      "reload-resource-release",
+      "replacement-boot-phase-sequence",
+      "replacement-document-loader-token-phase",
+      "replacement-ticker-quiescence",
+      "safe-area-override",
+      "scene-transform-delta",
+      "settings-audio-non-replay",
+      "settings-creature-voice-control",
+      "settings-pressed-focus",
+      "surface-overlap",
+      "survey-expanded-controls",
+      "target-floor",
+      "text-contrast",
+      "training-focused-action-visibility",
+      "typography-no-shrink-hierarchy",
+      "ultra-viewport-render-budget",
+      "viewport-fit",
+      "viewport-metrics",
+      "visible-focus"
+    ],
+    "plannedNegativeControls": [
+      "target-floor",
+      "visible-focus",
+      "accessible-name",
+      "keyboard-reachability",
+      "centre-hit-test",
+      "text-contrast",
+      "glass-fallback",
+      "populated-copy",
+      "viewport-fit",
+      "safe-area-override",
+      "viewport-metrics",
+      "surface-overlap",
+      "scene-transform-delta",
+      "canvas-css-fit",
+      "canvas-backing-density",
+      "non-glass-background-chain",
+      "preference-computed-outcome",
+      "settings-pressed-focus",
+      "settings-creature-voice-control",
+      "settings-audio-non-replay",
+      "settings-close-gutter-clearance",
+      "guide-render-focus",
+      "motion-css-policy",
+      "ordinary-panel-centre-close",
+      "dpr-card-preservation",
+      "opener-expanded-controls",
+      "dock-toggle-pressed",
+      "survey-expanded-controls",
+      "pseudo-placeholder-contrast",
+      "cumulative-opacity-contrast",
+      "control-on-off-contrast",
+      "typography-no-shrink-hierarchy",
+      "backing-pixel-ceiling",
+      "forced-colors-system-mapping",
+      "panel-open-focus",
+      "hp-label-dual-background",
+      "clipped-without-scroll",
+      "training-focused-action-visibility",
+      "settings-horizontal-overflow",
+      "planetside-surface-ownership",
+      "panel-planetside-layering",
+      "mobile-chrome-yield-restore",
+      "mobile-landscape-surface-chrome-yield",
+      "planetside-top-chrome-clearance",
+      "planetside-portrait-band-viability",
+      "planetside-portrait-trail-fallback",
+      "mobile-surface-objective-yield",
+      "panel-close-accessible-name",
+      "hidden-panel-opener-focus-fallback",
+      "replacement-document-loader-token-phase",
+      "import-phase-sequence",
+      "replacement-ticker-quiescence",
+      "replacement-boot-phase-sequence",
+      "reload-resource-release",
+      "reload-audio-release",
+      "ready-confirmation-heartbeat",
+      "ready-confirmation-ticker-progress",
+      "nonmodal-dock-button-contrast",
+      "phone-dock-inventory",
+      "phone-dock-exact-membership",
+      "inventory-control-floor",
+      "inventory-missing-row",
+      "inventory-duplicate-row",
+      "inventory-raw-authority-parity",
+      "inventory-disabled-pager-contrast",
+      "inventory-condition-wording",
+      "inventory-modal-duplication",
+      "inventory-modal-retention",
+      "inventory-modal-focus",
+      "inventory-focus-wrap",
+      "inventory-protected-action",
+      "inventory-action-publication",
+      "inventory-convergence-retry",
+      "shipyard-preview-uniqueness",
+      "shipyard-dom-state-parity",
+      "shipyard-contact-effect-oracle",
+      "shipyard-close-release",
+      "shipyard-opener-path",
+      "shipyard-geometry-focus",
+      "arc4-capture-full-pool-copy",
+      "arc4-capture-model-disabled-parity",
+      "arc4-capture-earth-title",
+      "arc4-capture-roster-counts",
+      "arc4-capture-roster-fingerprint",
+      "arc4-capture-yield",
+      "arc4-capture-tame-odds",
+      "arc4-capture-scavenge-odds",
+      "arc4-capture-sample-odds",
+      "arc4-capture-native-survey-return",
+      "arc4-capture-ownership-mutation",
+      "arc4-capture-session-rng-mutation",
+      "arc4-capture-receipt-mutation",
+      "arc4-capture-epoch-mutation",
+      "arc4-capture-v4-counter-mutation",
+      "arc4-capture-native-activation",
+      "arc4-capture-control-overlap",
+      "orbital-mineral-survey-disclosure",
+      "orbital-title-semantic-copy",
+      "orbital-row-containment-restore",
+      "rarity-opaque-contrast",
+      "ultra-viewport-render-budget",
+      "ultra-same-backing-resize"
+    ],
+    "blockedNegativeControls": [],
+    "omittedNegativeControls": [
+      "settings-close-gutter-clearance",
+      "dpr-card-preservation",
+      "control-on-off-contrast",
+      "forced-colors-system-mapping",
+      "settings-horizontal-overflow",
+      "planetside-surface-ownership",
+      "panel-planetside-layering",
+      "mobile-chrome-yield-restore",
+      "mobile-landscape-surface-chrome-yield",
+      "planetside-top-chrome-clearance",
+      "planetside-portrait-band-viability",
+      "planetside-portrait-trail-fallback",
+      "mobile-surface-objective-yield",
+      "panel-close-accessible-name",
+      "hidden-panel-opener-focus-fallback",
+      "nonmodal-dock-button-contrast",
+      "inventory-control-floor",
+      "inventory-missing-row",
+      "inventory-duplicate-row",
+      "inventory-raw-authority-parity",
+      "inventory-disabled-pager-contrast",
+      "inventory-condition-wording",
+      "inventory-modal-duplication",
+      "inventory-modal-retention",
+      "inventory-modal-focus",
+      "inventory-focus-wrap",
+      "inventory-protected-action",
+      "inventory-action-publication",
+      "inventory-convergence-retry",
+      "shipyard-preview-uniqueness",
+      "shipyard-dom-state-parity",
+      "shipyard-contact-effect-oracle",
+      "shipyard-close-release",
+      "shipyard-opener-path",
+      "shipyard-geometry-focus",
+      "orbital-mineral-survey-disclosure",
+      "orbital-title-semantic-copy",
+      "orbital-row-containment-restore",
+      "rarity-opaque-contrast",
+      "ultra-same-backing-resize"
+    ],
+    "automaticRetries": 0
+  },
+  "summary": {
+    "viewportCount": 1,
+    "findingCount": 0,
+    "instrumentFailureCount": 1,
+    "counts": {}
+  },
+  "findings": [],
+  "reloadEvidence": [
+    {
+      "viewport": "small-phone",
+      "status": "pass",
+      "priorLoaderId": "D07765D836FA8DAFD947D121256DD99E",
+      "replacementLoaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+      "elapsedMs": 674,
+      "importPhases": [
+        {
+          "at": 1790021001018,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 2,
+          "loaderId": "D07765D836FA8DAFD947D121256DD99E",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-7006964581019971816.3949485853995257675",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021000395
+          },
+          "receiptOrdinal": 1,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "11b41a2d-24fc-43e5-83b1-ae3f3df732ba",
+              "reason": "save-import",
+              "documentToken": "6a84cb5d-c639-4a91-b4e2-8ba3b7265a00",
+              "stage": "invoked",
+              "sequence": 1,
+              "tickerStarted": true,
+              "performanceNow": 628.7999999523163,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001019,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 2,
+          "loaderId": "D07765D836FA8DAFD947D121256DD99E",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-7006964581019971816.3949485853995257675",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021000395
+          },
+          "receiptOrdinal": 2,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "11b41a2d-24fc-43e5-83b1-ae3f3df732ba",
+              "reason": "save-import",
+              "documentToken": "6a84cb5d-c639-4a91-b4e2-8ba3b7265a00",
+              "stage": "claimed",
+              "sequence": 2,
+              "tickerStarted": false,
+              "performanceNow": 630.1000000238419,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001019,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 2,
+          "loaderId": "D07765D836FA8DAFD947D121256DD99E",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-7006964581019971816.3949485853995257675",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021000395
+          },
+          "receiptOrdinal": 3,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "11b41a2d-24fc-43e5-83b1-ae3f3df732ba",
+              "reason": "save-import",
+              "documentToken": "6a84cb5d-c639-4a91-b4e2-8ba3b7265a00",
+              "stage": "no-active-persist",
+              "sequence": 3,
+              "tickerStarted": false,
+              "performanceNow": 630.1000000238419,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001019,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 2,
+          "loaderId": "D07765D836FA8DAFD947D121256DD99E",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-7006964581019971816.3949485853995257675",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021000395
+          },
+          "receiptOrdinal": 4,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "11b41a2d-24fc-43e5-83b1-ae3f3df732ba",
+              "reason": "save-import",
+              "documentToken": "6a84cb5d-c639-4a91-b4e2-8ba3b7265a00",
+              "stage": "primary-write-started",
+              "sequence": 4,
+              "tickerStarted": false,
+              "performanceNow": 630.1000000238419,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001020,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 2,
+          "loaderId": "D07765D836FA8DAFD947D121256DD99E",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-7006964581019971816.3949485853995257675",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021000395
+          },
+          "receiptOrdinal": 5,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "11b41a2d-24fc-43e5-83b1-ae3f3df732ba",
+              "reason": "save-import",
+              "documentToken": "6a84cb5d-c639-4a91-b4e2-8ba3b7265a00",
+              "stage": "primary-write-complete",
+              "sequence": 5,
+              "tickerStarted": false,
+              "performanceNow": 631.1000000238419,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001020,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 2,
+          "loaderId": "D07765D836FA8DAFD947D121256DD99E",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-7006964581019971816.3949485853995257675",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021000395
+          },
+          "receiptOrdinal": 6,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "11b41a2d-24fc-43e5-83b1-ae3f3df732ba",
+              "reason": "save-import",
+              "documentToken": "6a84cb5d-c639-4a91-b4e2-8ba3b7265a00",
+              "stage": "release-started",
+              "sequence": 6,
+              "tickerStarted": false,
+              "performanceNow": 631.2000000476837,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001025,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 2,
+          "loaderId": "D07765D836FA8DAFD947D121256DD99E",
+          "context": {
+            "active": true,
+            "id": 2,
+            "uniqueId": "-7006964581019971816.3949485853995257675",
+            "generation": 2,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021000395
+          },
+          "receiptOrdinal": 8,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-import-phase/v1",
+              "phaseId": "11b41a2d-24fc-43e5-83b1-ae3f3df732ba",
+              "reason": "save-import",
+              "documentToken": "6a84cb5d-c639-4a91-b4e2-8ba3b7265a00",
+              "stage": "release-complete",
+              "sequence": 7,
+              "tickerStarted": false,
+              "performanceNow": 635.2000000476837,
+              "error": null
+            }
+          }
+        }
+      ],
+      "releaseWitness": {
+        "at": 1790021001025,
+        "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+        "executionContextId": 2,
+        "loaderId": "D07765D836FA8DAFD947D121256DD99E",
+        "context": {
+          "active": true,
+          "id": 2,
+          "uniqueId": "-7006964581019971816.3949485853995257675",
+          "generation": 2,
+          "origin": "http://127.0.0.1:57285",
+          "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+          "isDefault": true,
+          "createdAt": 1790021000395
+        },
+        "receiptOrdinal": 7,
+        "validation": {
+          "ok": true,
+          "why": null,
+          "witness": {
+            "schema": "cf-v2-reload-release/v1",
+            "status": "released",
+            "error": null,
+            "reason": "save-import",
+            "documentToken": "6a84cb5d-c639-4a91-b4e2-8ba3b7265a00",
+            "audio": {
+              "schema": "cf-v2-tame-greeting-audio/v1",
+              "disposed": true,
+              "armed": 0,
+              "claimedEvents": 0,
+              "activeVoiceId": null,
+              "activeCombatVoiceIds": [],
+              "lastEventKey": null,
+              "lastEventKind": null,
+              "lastDisposition": "disposed",
+              "counterpart": {
+                "key": null,
+                "generation": null,
+                "status": "none"
+              },
+              "runtime": {
+                "state": "disposed",
+                "contextState": null,
+                "contextGeneration": 0,
+                "muted": true,
+                "hidden": false,
+                "gains": {
+                  "master": 1,
+                  "effectiveMaster": 0,
+                  "categories": {
+                    "music": 1,
+                    "ambience": 1,
+                    "creature": 1,
+                    "combat-gameplay": 1,
+                    "ui": 1
+                  }
+                },
+                "voiceMix": {
+                  "schema": "cf.audio.voice-mix-intent/v1",
+                  "activeOwners": 0,
+                  "owners": [],
+                  "factors": {
+                    "music": 1,
+                    "ambience": 1,
+                    "creature": 1,
+                    "combat-gameplay": 1,
+                    "ui": 1
+                  },
+                  "effectiveCategoryGains": {
+                    "music": 1,
+                    "ambience": 1,
+                    "creature": 1,
+                    "combat-gameplay": 1,
+                    "ui": 1
+                  }
+                },
+                "nodes": {
+                  "active": 0,
+                  "peak": 0,
+                  "budget": 96
+                },
+                "cache": {
+                  "active": 0,
+                  "peak": 0,
+                  "budget": 32,
+                  "evictions": 0
+                },
+                "voices": {
+                  "active": 0,
+                  "peak": 0,
+                  "budget": 24,
+                  "ids": [],
+                  "started": 0,
+                  "completed": 0,
+                  "stopped": 0,
+                  "stolen": 0,
+                  "cooldownRejects": 0,
+                  "concurrencyRejects": 0
+                },
+                "creatureEmitters": {
+                  "active": 0,
+                  "peak": 0,
+                  "budget": 8
+                },
+                "cooldowns": {
+                  "active": 0,
+                  "budget": 128
+                },
+                "reservations": {
+                  "voices": {
+                    "active": 0,
+                    "peak": 0,
+                    "activePlusReservedPeak": 0
+                  },
+                  "nodes": {
+                    "active": 0,
+                    "peak": 0,
+                    "activePlusReservedPeak": 0
+                  }
+                },
+                "cleanup": {
+                  "sourceStopFailures": 0,
+                  "nodeDisconnectFailures": 0,
+                  "cacheReleaseFailures": 0
+                },
+                "peaks": {
+                  "master": 0,
+                  "music": 0,
+                  "ambience": 0,
+                  "creature": 0,
+                  "combat-gameplay": 0,
+                  "ui": 0
+                },
+                "faults": {
+                  "total": 0,
+                  "retained": [],
+                  "budget": 20
+                }
+              }
+            },
+            "rendererReleased": true,
+            "stageReleased": true,
+            "viewDetached": true,
+            "appCanvas": {
+              "beforeWidth": 640,
+              "beforeHeight": 1136,
+              "afterWidth": 1,
+              "afterHeight": 1
+            },
+            "backdropCanvas": {
+              "beforeWidth": 640,
+              "beforeHeight": 1136,
+              "afterWidth": 1,
+              "afterHeight": 1
+            }
+          }
+        }
+      },
+      "bootPhases": [
+        {
+          "at": 1790021001106,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "5547378022907286136.-617764388662750487",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021001036
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "5936c5a4-a23d-49d5-a2b9-c3821121d9b4",
+              "sequence": 1,
+              "stage": "app-init-start",
+              "tickerStarted": false,
+              "performanceNow": 79.80000007152557,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001136,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "5547378022907286136.-617764388662750487",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021001036
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "5936c5a4-a23d-49d5-a2b9-c3821121d9b4",
+              "sequence": 2,
+              "stage": "app-init-complete",
+              "tickerStarted": false,
+              "performanceNow": 110.90000009536743,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001137,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "5547378022907286136.-617764388662750487",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021001036
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "5936c5a4-a23d-49d5-a2b9-c3821121d9b4",
+              "sequence": 3,
+              "stage": "backdrop-complete",
+              "tickerStarted": false,
+              "performanceNow": 111.80000007152557,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001137,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "5547378022907286136.-617764388662750487",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021001036
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "5936c5a4-a23d-49d5-a2b9-c3821121d9b4",
+              "sequence": 4,
+              "stage": "save-load-start",
+              "tickerStarted": false,
+              "performanceNow": 111.80000007152557,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001170,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "5547378022907286136.-617764388662750487",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021001036
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "5936c5a4-a23d-49d5-a2b9-c3821121d9b4",
+              "sequence": 5,
+              "stage": "save-load-complete",
+              "tickerStarted": false,
+              "performanceNow": 144.80000007152557,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001217,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "5547378022907286136.-617764388662750487",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021001036
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "5936c5a4-a23d-49d5-a2b9-c3821121d9b4",
+              "sequence": 6,
+              "stage": "scene-rendered",
+              "tickerStarted": false,
+              "performanceNow": 191.80000007152557,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001217,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "5547378022907286136.-617764388662750487",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021001036
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "5936c5a4-a23d-49d5-a2b9-c3821121d9b4",
+              "sequence": 7,
+              "stage": "slice-published",
+              "tickerStarted": false,
+              "performanceNow": 191.90000009536743,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001217,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "5547378022907286136.-617764388662750487",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021001036
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "5936c5a4-a23d-49d5-a2b9-c3821121d9b4",
+              "sequence": 8,
+              "stage": "wiring-complete",
+              "tickerStarted": false,
+              "performanceNow": 191.90000009536743,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001217,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "5547378022907286136.-617764388662750487",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021001036
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "5936c5a4-a23d-49d5-a2b9-c3821121d9b4",
+              "sequence": 9,
+              "stage": "ticker-started",
+              "tickerStarted": true,
+              "performanceNow": 191.90000009536743,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001363,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "5547378022907286136.-617764388662750487",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021001036
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "5936c5a4-a23d-49d5-a2b9-c3821121d9b4",
+              "sequence": 10,
+              "stage": "first-tick",
+              "tickerStarted": true,
+              "performanceNow": 337.60000002384186,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001380,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "5547378022907286136.-617764388662750487",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021001036
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "5936c5a4-a23d-49d5-a2b9-c3821121d9b4",
+              "sequence": 11,
+              "stage": "ready-scheduled",
+              "tickerStarted": true,
+              "performanceNow": 354.90000009536743,
+              "error": null
+            }
+          }
+        },
+        {
+          "at": 1790021001658,
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+          "context": {
+            "active": true,
+            "id": 3,
+            "uniqueId": "5547378022907286136.-617764388662750487",
+            "generation": 3,
+            "origin": "http://127.0.0.1:57285",
+            "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+            "isDefault": true,
+            "createdAt": 1790021001036
+          },
+          "receiptOrdinal": null,
+          "validation": {
+            "ok": true,
+            "why": null,
+            "witness": {
+              "schema": "cf-v2-boot-phase/v1",
+              "documentToken": "5936c5a4-a23d-49d5-a2b9-c3821121d9b4",
+              "sequence": 12,
+              "stage": "ready-emitted",
+              "tickerStarted": true,
+              "performanceNow": 632.3000000715256,
+              "error": null
+            }
+          }
+        }
+      ],
+      "readyWitness": {
+        "at": 1790021001658,
+        "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+        "executionContextId": 3,
+        "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+        "context": {
+          "active": true,
+          "id": 3,
+          "uniqueId": "5547378022907286136.-617764388662750487",
+          "generation": 3,
+          "origin": "http://127.0.0.1:57285",
+          "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+          "isDefault": true,
+          "createdAt": 1790021001036
+        },
+        "receiptOrdinal": null,
+        "validation": {
+          "ok": true,
+          "why": null,
+          "witness": {
+            "schema": "cf-v2-slice-ready/v1",
+            "status": "ready",
+            "token": "5936c5a4-a23d-49d5-a2b9-c3821121d9b4",
+            "href": "http://127.0.0.1:57285/",
+            "readyState": "complete",
+            "saveReady": true,
+            "viewConnected": true,
+            "rendererReady": true,
+            "stageReady": true,
+            "tickerTicks": 3,
+            "rendererDpr": 2,
+            "backingPixelCapPerCanvas": 8388608,
+            "viewportWidth": 320,
+            "viewportHeight": 568,
+            "backingWidth": 640,
+            "backingHeight": 1136,
+            "backdropBackingWidth": 640,
+            "backdropBackingHeight": 1136,
+            "combinedBackingPixels": 1454080,
+            "performanceNow": 632.3000000715256
+          }
+        }
+      },
+      "commands": [
+        {
+          "method": "Runtime.evaluate/import-arm",
+          "role": "import-arm",
+          "cycle": 0,
+          "startedAt": 1790021001017,
+          "endedAt": 1790021001019,
+          "durationMs": 2,
+          "timeoutMs": 20000,
+          "status": "completed",
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": null,
+          "awaitPromise": false,
+          "postRenderPriority": null
+        },
+        {
+          "method": "Runtime.evaluate",
+          "role": "target-exact-context",
+          "cycle": 1,
+          "startedAt": 1790021001673,
+          "endedAt": 1790021001675,
+          "durationMs": 2,
+          "timeoutMs": 2000,
+          "status": "completed",
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "awaitPromise": false,
+          "postRenderPriority": null
+        },
+        {
+          "method": "Browser.getVersion",
+          "role": "browser-process-heartbeat",
+          "cycle": 1,
+          "startedAt": 1790021001673,
+          "endedAt": 1790021001674,
+          "durationMs": 1,
+          "timeoutMs": 2000,
+          "status": "completed",
+          "sessionId": null,
+          "executionContextId": null,
+          "awaitPromise": null,
+          "postRenderPriority": null
+        },
+        {
+          "method": "Runtime.evaluate",
+          "role": "target-exact-context",
+          "cycle": 2,
+          "startedAt": 1790021001675,
+          "endedAt": 1790021001691,
+          "durationMs": 16,
+          "timeoutMs": 2000,
+          "status": "completed",
+          "sessionId": "10BCB2FF3226FF8AA2835FE066B5F68C",
+          "executionContextId": 3,
+          "awaitPromise": true,
+          "postRenderPriority": -50
+        },
+        {
+          "method": "Browser.getVersion",
+          "role": "browser-process-heartbeat",
+          "cycle": 2,
+          "startedAt": 1790021001675,
+          "endedAt": 1790021001675,
+          "durationMs": 0,
+          "timeoutMs": 2000,
+          "status": "completed",
+          "sessionId": null,
+          "executionContextId": null,
+          "awaitPromise": null,
+          "postRenderPriority": null
+        }
+      ],
+      "events": [
+        {
+          "at": 1790021001018,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 1,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001019,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 2,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001019,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 3,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001019,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 4,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001020,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 5,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001020,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 6,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001025,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfReloadReleaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 7,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001025,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfImportPhaseWitness",
+          "executionContextId": 2,
+          "receiptOrdinal": 8,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001027,
+          "method": "Page.frameStartedLoading",
+          "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D"
+        },
+        {
+          "at": 1790021001034,
+          "method": "Page.lifecycleEvent",
+          "name": "init",
+          "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27"
+        },
+        {
+          "at": 1790021001034,
+          "method": "Page.frameNavigated",
+          "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+          "parentId": null,
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27",
+          "url": "http://127.0.0.1:57285/",
+          "unreachableUrl": null
+        },
+        {
+          "at": 1790021001106,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001110,
+          "method": "Page.domContentEventFired"
+        },
+        {
+          "at": 1790021001110,
+          "method": "Page.lifecycleEvent",
+          "name": "DOMContentLoaded",
+          "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27"
+        },
+        {
+          "at": 1790021001112,
+          "method": "Page.lifecycleEvent",
+          "name": "firstMeaningfulPaintCandidate",
+          "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27"
+        },
+        {
+          "at": 1790021001112,
+          "method": "Page.lifecycleEvent",
+          "name": "firstContentfulPaint",
+          "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27"
+        },
+        {
+          "at": 1790021001112,
+          "method": "Page.lifecycleEvent",
+          "name": "firstPaint",
+          "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27"
+        },
+        {
+          "at": 1790021001119,
+          "method": "Page.loadEventFired"
+        },
+        {
+          "at": 1790021001119,
+          "method": "Page.lifecycleEvent",
+          "name": "load",
+          "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D",
+          "loaderId": "F61A0DEBF1F250EBE42255BED4472E27"
+        },
+        {
+          "at": 1790021001119,
+          "method": "Page.frameStoppedLoading",
+          "frameId": "49A4AAE5D134DA47DCFEAA6508F8141D"
+        },
+        {
+          "at": 1790021001136,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001137,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001137,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001170,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001217,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001217,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001217,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001217,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001363,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001380,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001658,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfBootPhaseWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        },
+        {
+          "at": 1790021001658,
+          "method": "Runtime.bindingCalled",
+          "name": "__cfSliceReadyWitness",
+          "executionContextId": 3,
+          "receiptOrdinal": null,
+          "valid": true,
+          "why": null
+        }
+      ]
+    }
+  ],
+  "instrumentFailures": [
+    "small-phone: visible trail-under-survey injection did not turn red and restore ({\"ok\":false,\"baseline\":{\"ok\":true,\"rows\":[{\"id\":\"trail\",\"text\":\"Milky Way›Sun (Sol)\",\"display\":\"none\"},{\"id\":\"objchip\",\"text\":\"⬆ Chapter 3 — Beyond the Rim is recorded — the next Charter action is not available in this development slice\",\"display\":\"none\"}]},\"broken\":{\"ok\":false,\"rows\":[{\"id\":\"trail\",\"text\":\"Milky Way›Sun (Sol)\",\"display\":\"block\"},{\"id\":\"objchip\",\"text\":\"⬆ Chapter 3 — Beyond the Rim is recorded — the next Charter action is not available in this development slice\",\"display\":\"none\"}]},\"restored\":{\"ok\":true,\"rows\":[{\"id\":\"trail\",\"text\":\"Milky Way›Sun (Sol)\",\"display\":\"none\"},{\"id\":\"objchip\",\"text\":\"⬆ Chapter 3 — Beyond the Rim is recorded — the next Charter action is not available in this development slice\",\"display\":\"none\"}]},\"styleRestored\":false})"
+  ],
+  "durationMs": 7848
+}

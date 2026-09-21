@@ -175,11 +175,14 @@ export async function chartersCloseSettlement(settleFrames, readFrames, auditOpt
       geometry:Object.fromEntries(keys.map(id=>[id,geometry(document.getElementById(id))])
         .concat([['heading',geometry(document.querySelector('#planetside .planetside-heading'))]])) };
   };
-  const receipt = {label,before:snapshot(),immediate:null,microtask:null,settled:null,closeOutcome:null,openerAudit:null,
+  const receipt = {label,before:snapshot(),immediate:null,microtask:null,settled:null,closeOutcome:null,microtaskAudit:null,openerAudit:null,
     expectedFrameId:(readFrames()?.invocations?.at(-1)?.id ?? 0)+1,frame:null,overflow:false,error:null};
   receipt.closeOutcome = window.__CF_GLASS_AUDIT__.panelCloseOutcome('#chpanel','[data-pnx]','#objchip','#planetside');
   receipt.immediate = snapshot();
   await Promise.resolve(); receipt.microtask = snapshot();
+  // Retain answerability before background ceremonies may change the notice.
+  // A later expiry/replacement can never erase a red in this same-task audit.
+  receipt.microtaskAudit = window.__CF_GLASS_AUDIT__.audit(auditOptions);
   try {
     await settleFrames(label);
     receipt.settled = snapshot();
@@ -200,6 +203,7 @@ export function assessChartersCloseSettlement(receipt, viewport) {
     && r.width>=0 && r.height>=0 && Math.abs(r.right-r.left-r.width)<0.01 && Math.abs(r.bottom-r.top-r.height)<0.01;
   const baseline = snapshots[0], noticePainted = s => s?.toast?.computedOpacity>0 && s.geometry?.toast?.width>0
     && s.geometry?.toast?.height>0 && s.geometry.toast.display!=='none' && s.geometry.toast.visibility!=='hidden';
+  const earlyAnswerable = receipt?.microtask?.hit?.owned === true && Array.isArray(receipt?.microtaskAudit) && receipt.microtaskAudit.length === 0;
   for (const [index,s] of snapshots.entries()) {
     if (!s || !Number.isFinite(s.at) || s.timeOrigin!==phases[0]?.timeOrigin || (index>0&&s.at<snapshots[index-1]?.at)
       || s.viewport?.width!==viewport.width || s.viewport?.height!==viewport.height || typeof s.classes!=='string'
@@ -214,10 +218,10 @@ export function assessChartersCloseSettlement(receipt, viewport) {
       || (index>0&&s.focus!=='objchip')) errors.push('Charters route/copy/focus changed '+index);
     if (!Number.isSafeInteger(s?.toast?.serial) || s.toast.serial<0 || typeof s.toast.on!=='boolean'
       || !Number.isFinite(s.toast.computedOpacity) || s.toast.computedOpacity<0 || s.toast.computedOpacity>1
-      || !['serial','on','text','inlineOpacity'].every(key=>s.toast[key]===baseline?.toast?.[key])
-      || (noticePainted(baseline)&&!noticePainted(s))
-      || (!noticePainted(baseline)&&baseline?.toast?.inlineOpacity!=='1'&&noticePainted(s))
-      || (index===3&&baseline?.toast?.inlineOpacity==='1'&&!noticePainted(s))) errors.push('Charters notice expired/replaced '+index);
+      || (!(index===3&&earlyAnswerable) && (!['serial','on','text','inlineOpacity'].every(key=>s.toast[key]===baseline?.toast?.[key])
+        || (noticePainted(baseline)&&!noticePainted(s))
+        || (!noticePainted(baseline)&&baseline?.toast?.inlineOpacity!=='1'&&noticePainted(s))
+        || (index===3&&baseline?.toast?.inlineOpacity==='1'&&!noticePainted(s))))) errors.push('Charters notice expired/replaced '+index);
     const hit=s?.hit,r=s?.geometry?.objchip;
     if (!hit || !Array.isArray(hit.path) || !hit.path.every(node=>node&&typeof node.id==='string'&&typeof node.tag==='string')
       || typeof hit.owned!=='boolean' || hit.owned!==hit.path.some(node=>node.id==='objchip')
@@ -9773,16 +9777,24 @@ function portraitFloatingFixtureOutcome(control) {
   const nativeRect = fixture?.originalRect, injectedRect = fixture?.injectedRect;
   const finiteRect = (rect) => Array.isArray(rect) && rect.length === 4
     && rect.every(Number.isFinite) && rect[2] > rect[0] && rect[3] > rect[1];
-  const labelledFaultFixture = fixture?.kind === 'injected-floating-trail-regression'
+  const fixedBottom = fixture?.objectiveFixture ? fixture.fixtureFixedBottom : fixture?.nativeBaseline?.fixedChromeBottom;
+  const compactFixtureValid = !fixture?.objectiveFixture || (fixture.objectiveFixture.kind === 'compact-caption-visible-opener'
+    && fixture.objectiveFixture.textUnchanged === true && Array.isArray(fixture.fixtureFixedRows)
+    && fixture.fixtureFixedRows.some(row => row.id === 'objchip' && row.visible === true)
+    && fixedBottom === Math.max(0, ...fixture.fixtureFixedRows.filter(row => row.visible).map(row => row.bottom))
+    && JSON.stringify(fixture.restoredObjectiveStyle) === JSON.stringify(fixture.objectiveFixture.originalStyle));
+  const labelledFaultFixture = compactFixtureValid && fixture?.kind === 'injected-floating-trail-regression'
     && fixture?.error === null && control?.error === null
     && fixture?.nativeBaseline?.ok === true && fixture?.nativeBaseline?.canonicalHidden === true
     && Array.isArray(nativeRect) && nativeRect.length === 4 && nativeRect.every(Number.isFinite) && finiteRect(injectedRect)
     && Number.isFinite(fixture?.nativeBaseline?.fixedChromeBottom)
-    && injectedRect[1] >= fixture.nativeBaseline.fixedChromeBottom + 7.5
+    && Number.isFinite(fixedBottom) && injectedRect[1] >= fixedBottom + 7.5
     && fixture?.observedOutsideHeader === true
     && fixture?.injectedBaseline?.ok === true && fixture?.injectedBaseline?.headerContained === false
     && fixture?.injectedBaseline?.trailVisible === true && fixture?.injectedBaseline?.fallback === false
     && typeof fixture?.injectedStyle === 'string' && fixture.injectedStyle.length > 0;
+  const noticeChanged = typeof fixture?.noticeBefore?.text === 'string' && typeof fixture?.noticeAfter?.text === 'string'
+    && fixture.noticeLaneRemoved === true && JSON.stringify(fixture.noticeBefore) !== JSON.stringify(fixture.noticeAfter);
   const fixtureRestored = typeof fixture?.originalStyle?.present === 'boolean'
     && fixture?.restoredStyle?.present === fixture.originalStyle.present
     && fixture?.restoredStyle?.value === fixture.originalStyle.value
@@ -9790,7 +9802,7 @@ function portraitFloatingFixtureOutcome(control) {
     && fixture?.nativeRestored?.ok === true && fixture?.nativeRestored?.canonicalHidden === true
     && fixture?.cleanup?.kind === 'temporary-header-contained-edge-reset' && fixture.cleanup.headerContained === true
     && Number.isFinite(fixture?.nativeBaseline?.surfaceBottom) && Number.isFinite(fixture?.nativeRestored?.surfaceBottom)
-    && Math.abs(fixture.nativeRestored.surfaceBottom-fixture.nativeBaseline.surfaceBottom)<=1;
+    && (noticeChanged || Math.abs(fixture.nativeRestored.surfaceBottom-fixture.nativeBaseline.surfaceBottom)<=1);
   return {labelledFaultFixture,fixtureRestored};
 }
 
@@ -11531,10 +11543,15 @@ async function main() {
           'opening a survey yields the mobile trail and objective instead of painting the card over them');
         if (!chromeYieldControlRun) {
           chromeYieldControlRun = true;
-          const yieldControl = await evalIn(`(()=>{ const el=document.getElementById('trail'),prior=el.getAttribute('style');
-            el.style.setProperty('display','block','important');const result=${chromeYieldCheck};
-            if(prior===null)el.removeAttribute('style');else el.setAttribute('style',prior);return result;})()`);
-          if (yieldControl.ok) recordInstrumentFailure(`${vp.label}: visible trail-under-survey injection stayed green (${JSON.stringify(yieldControl)})`);
+          for (const id of ['trail', 'objchip']) {
+            const yieldControl = await evalIn(`(()=>{ const el=document.getElementById(${JSON.stringify(id)}),prior=el.getAttribute('style'),baseline=${chromeYieldCheck};let broken;
+              try{el.style.setProperty('display','block','important');broken=${chromeYieldCheck};}
+              finally{el.setAttribute('style','');el.removeAttribute('style');if(prior!==null)el.setAttribute('style',prior);}
+              const restored=${chromeYieldCheck},styleRestored=el.getAttribute('style')===prior;
+              return {ok:baseline.ok&&broken?.ok===false&&restored.ok&&styleRestored,baseline,broken,restored,styleRestored};})()`);
+            console.log(`GLASS SURVEY CHROME YIELD CONTROL — ${vp.label}/${id}: ${JSON.stringify(yieldControl)}`);
+            if (!yieldControl.ok) recordInstrumentFailure(`${vp.label}: visible ${id}-under-survey injection did not turn red and restore (${JSON.stringify(yieldControl)})`);
+          }
         }
         addOutcome(vp.label, 'survey', 'SURVEY_DISCLOSURE_STATE', '#docksurvey',
           await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome('#docksurvey','#survey',true)`),
@@ -12539,6 +12556,13 @@ async function main() {
             fitSelectors: [item.panel], interactiveRoots: [item.panel], contrastSelectors: [item.panel, opener],
             maxContrastReports: 16, overlapPairs: item.inventory ? [[item.panel, '#dock']] : [],
           };
+          if (item.id === 'ch') {
+            const lanes = await evalIn(`(()=>{const root=getComputedStyle(document.documentElement);return {body:document.body.className,
+              values:Object.fromEntries(['--topbar-h','--cf-sheet-floor','--cf-lower-top'].map(key=>[key,root.getPropertyValue(key)])),
+              elements:['objchip','chpanel','hintpill','ctxbar','toast'].map(id=>{const el=document.getElementById(id),s=getComputedStyle(el),r=el.getBoundingClientRect();
+                return {id,classes:el.className,display:s.display,ariaHidden:el.getAttribute('aria-hidden'),top:r.top,height:r.height,bottom:r.bottom};})};})()`);
+            console.log(`GLASS CHARTERS OPEN LANES — ${vp.label}: ${JSON.stringify(lanes)}`);
+          }
           add(vp.label, composition, await audit(ordinaryPanelAuditOptions));
           if (item.id === 'codex' && !rarityContrastControlRun) {
             rarityContrastControlRun = true;
@@ -13846,27 +13870,48 @@ async function main() {
             /* Explicitly inject the former floating-trail regression. Both
                controls share this labelled visible predecessor; no outcome
                claims that the normally hidden trail occupies a native lane. */
-            const portraitControls = await evalIn(`(async()=>{const trail=document.getElementById('trail'),header=document.getElementById('topbar'),
+            const portraitControls = await evalIn(`(async()=>{const trail=document.getElementById('trail'),header=document.getElementById('topbar'),objective=document.getElementById('objchip'),notice=document.getElementById('toast'),
               settlements=[],cleanupErrors=[],message=cause=>String(cause?.message||cause),
               settle=async label=>{const receipt=await ${topChromeFrameOwner}(label);settlements.push(receipt);
                 if(receipt.error!==null)throw new Error(receipt.error);return receipt;},
               nativeBaseline=${portraitNativeCheck},originalStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')},
-              originalRect=trail.getBoundingClientRect();let fixture=null,band=null,fallback=null,cleanup=null,error=null;
+              originalRect=trail.getBoundingClientRect(),objectiveStyle={present:objective.hasAttribute('style'),value:objective.getAttribute('style')},
+              objectiveText=objective.textContent,noticeBefore={text:notice.textContent,opacity:notice.style.opacity??null},
+              noticeLane=document.createElement('style'),noticeHeight=notice.getBoundingClientRect().height,
+              noticeVisible=notice.style.opacity==='1'||Number(getComputedStyle(notice).opacity)>0;let fixture=null,band=null,fallback=null,cleanup=null,error=null;
               const cleanupFailed=cause=>{const failure=message(cause);cleanupErrors.push(failure);error??=failure;};
               try{
                 if(!nativeBaseline.ok||!nativeBaseline.canonicalHidden)throw new Error('native hidden-trail portrait predecessor is not green');
-                const rootStyle=getComputedStyle(document.documentElement),left=(parseFloat(rootStyle.getPropertyValue('--safe-left'))||0)+10,
-                  right=(parseFloat(rootStyle.getPropertyValue('--safe-right'))||0)+10,injectedTop=nativeBaseline.fixedChromeBottom+8;
+                // This synthetic extra lane needs its own usable predecessor.
+                // Preserve the populated native opener, but bound its caption
+                // for this fixture only; native geometry was checked above.
+                // Isolate the synthetic lane from live toast arrival/expiry
+                // and compaction. Removing this rule restores the current
+                // native notice; no timer, text, serial or inline style changes.
+                noticeLane.textContent=noticeVisible
+                  ? '#toast{display:block!important;opacity:1!important;box-sizing:border-box!important;height:'+noticeHeight+'px!important;min-height:'+noticeHeight+'px!important;max-height:'+noticeHeight+'px!important}'
+                  : '#toast{display:none!important}';
+                document.head.appendChild(noticeLane);
+                objective.style.setProperty('white-space','nowrap','important');
+                objective.style.setProperty('overflow','hidden','important');
+                objective.style.setProperty('text-overflow','ellipsis','important');
+                const fixtureFixedRows=${topChromeFixedRows},fixtureFixedBottom=Math.max(0,...fixtureFixedRows.filter(row=>row.visible).map(row=>row.bottom)),
+                  rootStyle=getComputedStyle(document.documentElement),left=(parseFloat(rootStyle.getPropertyValue('--safe-left'))||0)+10,
+                  right=(parseFloat(rootStyle.getPropertyValue('--safe-right'))||0)+10,injectedTop=fixtureFixedBottom+8;
                 trail.style.setProperty('display','flex');trail.style.setProperty('position','fixed','important');
+                trail.style.setProperty('height','16px','important');trail.style.setProperty('line-height','16px','important');
+                trail.style.setProperty('white-space','nowrap','important');trail.style.setProperty('overflow','hidden','important');
                 trail.style.setProperty('left',left+'px','important');trail.style.setProperty('top',injectedTop+'px','important');
                 trail.style.setProperty('right','auto','important');trail.style.setProperty('bottom','auto','important');
                 trail.style.setProperty('width',(innerWidth-left-right)+'px','important');trail.style.setProperty('transform','none','important');
                 window.dispatchEvent(new Event('resize'));await settle('portrait.fixture.injected.fonts-two-frames');
                 const injectedBaseline=${portraitBandCheck},injectedRect=trail.getBoundingClientRect();
                 fixture={kind:'injected-floating-trail-regression',nativeBaseline,originalStyle,
+                  noticeBefore,noticeLane:{kind:'fixed-measured-notice-lane',visible:noticeVisible,height:noticeHeight,rule:noticeLane.textContent},
+                  objectiveFixture:{kind:'compact-caption-visible-opener',originalStyle:objectiveStyle,injectedStyle:objective.getAttribute('style'),textUnchanged:objective.textContent===objectiveText},fixtureFixedRows,fixtureFixedBottom,
                   originalRect:[originalRect.left,originalRect.top,originalRect.right,originalRect.bottom],injectedTop,
                   injectedRect:[injectedRect.left,injectedRect.top,injectedRect.right,injectedRect.bottom],injectedStyle:trail.getAttribute('style'),
-                  injectedBaseline,observedOutsideHeader:!injectedBaseline.headerContained&&injectedRect.top>=nativeBaseline.fixedChromeBottom+7.5};
+                  injectedBaseline,observedOutsideHeader:!injectedBaseline.headerContained&&injectedRect.top>=fixtureFixedBottom+7.5};
                 if(!fixture.observedOutsideHeader||!injectedBaseline.ok||!injectedBaseline.trailVisible||injectedBaseline.fallback)
                   throw new Error('labelled floating-trail fixture did not establish a usable visible predecessor');
                 band=await (async()=>{const side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
@@ -13884,8 +13929,10 @@ async function main() {
                   return {baseline,prior,mutation,restored};})();
                 fallback=await (async()=>{const root=document.documentElement,side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
                   value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom'),computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim()},
-                  beforeSide=side.getBoundingClientRect(),beforeTrail=trail.getBoundingClientRect(),baseSafe=parseFloat(prior.computed)||0,
-                  forcedSafe=baseSafe+Math.max(8,beforeSide.bottom-beforeTrail.bottom-6-64),requested=forcedSafe+'px';let mutation,failure=null;
+                  beforeTrail=trail.getBoundingClientRect(),baseSafe=parseFloat(prior.computed)||0,
+                  dockTop=document.getElementById('dock').getBoundingClientRect().top,
+                  highestFloor=Math.min(innerHeight-baseSafe-12,dockTop)-8-(noticeVisible?noticeHeight+8:0),
+                  forcedSafe=baseSafe+Math.max(8,highestFloor-beforeTrail.bottom-6-64),requested=forcedSafe+'px';let mutation,failure=null;
                   try{root.style.setProperty('--safe-bottom',requested,'important');window.dispatchEvent(new Event('resize'));await settle('portrait.fallback.mutated.fonts-two-frames');
                     const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ss=getComputedStyle(side),ts=getComputedStyle(trail),fallback=document.body.classList.contains('surface-trail-yield'),
                       meaningful=a.height>=71&&side.clientHeight>=68,scrollOk=side.scrollHeight<=side.clientHeight+1||((ss.overflowY==='auto'||ss.overflowY==='scroll')&&side.scrollHeight>side.clientHeight),
@@ -13893,9 +13940,10 @@ async function main() {
                       actualFixedRows=${topChromeFixedRows},fixedClear=fixedRows.every(row=>!row.visible||row.gap>=5.5)&&actualFixedRows.every(row=>!row.visible||a.top-row.bottom>=5.5),
                       outcome={ok:fallback&&ts.display==='none'&&meaningful&&scrollOk&&fixedClear,fallback,trailDisplay:ts.display,meaningful,scrollOk,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,overflowY:ss.overflowY,fixedClear,fixedRows,actualFixedRows,baseSafe,forcedSafe};
                     mutation={requested,property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
-                      computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),baseSafe,forcedSafe,outcome};}
+                      computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),baseSafe,forcedSafe,highestFloor,dockTop,noticeHeight,noticeVisible,outcome};}
                   catch(cause){failure=cause;error??=message(cause);}
-                  finally{try{if(prior.value===''&&prior.priority==='')root.style.removeProperty('--safe-bottom');else root.style.setProperty('--safe-bottom',prior.value,prior.priority);window.dispatchEvent(new Event('resize'));
+                  finally{try{if(prior.value===''&&prior.priority==='')root.style.removeProperty('--safe-bottom');else root.style.setProperty('--safe-bottom',prior.value,prior.priority);
+                    window.dispatchEvent(new Event('resize'));
                     await settle('portrait.fallback.restored.fonts-two-frames');}catch(cause){cleanupFailed(cause);failure??=cause;}}
                   if(failure)throw failure;
                   const restored={property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
@@ -13914,13 +13962,17 @@ async function main() {
                       &&c.left>=h.left-1&&c.right<=h.right+1&&c.top>=h.top-1&&c.bottom<=h.bottom+1};
                 }catch(cause){cleanupFailed(cause);}
                 finally{try{trail.setAttribute('style','');trail.removeAttribute('style');if(originalStyle.present)trail.setAttribute('style',originalStyle.value);
+                  objective.setAttribute('style','');objective.removeAttribute('style');if(objectiveStyle.present)objective.setAttribute('style',objectiveStyle.value);
+                  noticeLane.remove();
                   window.dispatchEvent(new Event('resize'));await settle('portrait.fixture.native-restored.fonts-two-frames');
                 }catch(cause){cleanupFailed(cause);}}
               }
-              const restoredStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')};let nativeRestored=null;
+              const restoredStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')},restoredObjectiveStyle={present:objective.hasAttribute('style'),value:objective.getAttribute('style')};let nativeRestored=null;
+              if(JSON.stringify(restoredObjectiveStyle)!==JSON.stringify(objectiveStyle)||objective.textContent!==objectiveText)cleanupFailed('objective fixture did not restore exact style/text');
               // An unsuccessful cleanup boundary does not authorize a dependent geometry read.
               if(cleanupErrors.length===0){try{nativeRestored=${portraitNativeCheck};}catch(cause){cleanupFailed(cause);}}
-              const witness={...fixture,restoredStyle,nativeRestored,cleanup,error,cleanupErrors};
+              const noticeAfter={text:notice.textContent,opacity:notice.style.opacity??null};
+              const witness={...fixture,noticeAfter,noticeLaneRemoved:!noticeLane.isConnected,restoredStyle,restoredObjectiveStyle,nativeRestored,cleanup,error,cleanupErrors};
               return {band:{...band,fixture:witness,error},fallback:{...fallback,fixture:witness,error},settlements};})()`);
             const fixtureError=portraitControls.band?.fixture?.error??portraitControls.fallback?.fixture?.error
               ??portraitControls.band?.error??portraitControls.fallback?.error??null;

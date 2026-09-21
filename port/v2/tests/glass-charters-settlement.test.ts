@@ -10,7 +10,7 @@ const extract = (source:string,start:string,end:string) => {
 const owner = extract(glass,'export async function chartersCloseSettlement(','const here = path.dirname(');
 const close = extract(glass,'  const panelCloseOutcome =','  const inventoryRowsOutcome =');
 const frameOwner = frames.slice(frames.indexOf('export function assessReviewFrameSettlement(')).replace(/^export /gm,'');
-async function fixture(settledOwned=false) {
+async function fixture(settledOwned=false, earlyOwned=false) {
   let at=0,panelOpen:string|null='ch',owns=false,toastOn=true,serial=7,classes='fs-xl tone-max surface-mode panel-open';
   let releaseFonts!:()=>void; const callbacks:Array<()=>void>=[],calls:string[]=[];
   const fonts={status:'loading',ready:new Promise<void>(resolve=>{releaseFonts=resolve;})};
@@ -29,7 +29,7 @@ async function fixture(settledOwned=false) {
     getElementById:(id:string)=>nodes.get(id),querySelector:(selector:string)=>selector.includes('planetside-heading')?nodes.get('heading'):nodes.get(selector.slice(1)),
     elementFromPoint:()=>panelOpen?nodes.get('close'):owns?nodes.get('objchip'):nodes.get('heading')};
   document.body.getAttribute=()=>classes;
-  nodes.get('close').click=()=>{calls.push('close');panelOpen=null;classes='fs-xl tone-max surface-mode';document.activeElement=nodes.get('objchip');};
+  nodes.get('close').click=()=>{calls.push('close');owns=earlyOwned;panelOpen=null;classes='fs-xl tone-max surface-mode';document.activeElement=nodes.get('objchip');};
   const window:any={__CF_SLICE__:{api:{state:()=>({mode:'surface',star:424242,planet:133,panelOpen,cardOpen:false,toastSerial:serial,toastOn})}},__CF_GLASS_AUDIT__:{}};
   const audit=(options:any)=>{calls.push('audit');expect(options.surface).toBe('charters-opener-off');return owns?[]:[{code:'CONTROL_NOT_HITTABLE',element:'#objchip',
     actual:{at:[229,191.44],rect:{left:148,top:60,right:310,bottom:322.88,width:162,height:262.88}}}];};
@@ -43,7 +43,7 @@ async function fixture(settledOwned=false) {
   expect(calls).toEqual(['close']);expect(callbacks).toHaveLength(0);await Promise.resolve();
   fonts.status='loaded';releaseFonts();await Promise.resolve();await Promise.resolve();expect(callbacks).toHaveLength(1);
   callbacks.shift()!();expect(callbacks).toHaveLength(1);owns=settledOwned;callbacks.shift()!();
-  const receipt=JSON.parse(JSON.stringify(await pending));expect(calls).toEqual(['close','audit']);
+  const receipt=JSON.parse(JSON.stringify(await pending));expect(calls).toEqual(['close','audit','audit']);
   return {receipt,assess:(r:any)=>exported.assessChartersCloseSettlement(r,{width:320,height:568}),
     expireLater:()=>{toastOn=false;serial++;owns=true;return audit({surface:'charters-opener-off'});}};
 }
@@ -73,4 +73,13 @@ it('retains the same-task settled red at the original opener-off call site after
   await runInNewContext('(async()=>{'+code+'})()', {vp:{label:'small-phone'},item:{name:'charters'},chartersSettlement:receipt,
     add:(...args:any[])=>calls.push(args),audit:()=>{remeasurements++;return[];}});
   expect(remeasurements).toBe(0);expect(calls[0][2]).toBe(receipt.openerAudit);expect(calls[0][2][0].code).toBe('CONTROL_NOT_HITTABLE');
+});
+
+it('allows a later ceremony only with a retained green audit before it; never substitutes expiry for answerability',async()=>{
+  const {receipt,assess}=await fixture(true,true);
+  const changed=structuredClone(receipt);changed.settled.toast.serial++;changed.settled.toast.text='A queued achievement';
+  expect(assess(changed).ok).toBe(true);
+  for(const key of ['immediate','microtask']){const tooEarly=structuredClone(receipt);tooEarly[key].toast.serial++;expect(assess(tooEarly).ok).toBe(false);}
+  for(const early of [null,[{code:'CONTROL_NOT_HITTABLE',element:'#objchip'}]]){const red=structuredClone(changed);red.microtaskAudit=early;expect(assess(red).ok).toBe(false);}
+  const forged=structuredClone(changed);forged.microtask.hit.path=[];expect(assess(forged).ok).toBe(false);
 });
