@@ -230,17 +230,6 @@
     ]
   },
   "source": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/vent-crab-master.png",
-  "anatomy": {
-    "schema": "cf.anatomy-presence/v2",
-    "absent": [],
-    "hidden": [],
-    "folded": [
-      "leg0Far",
-      "leg1Far",
-      "leg2Far",
-      "leg3Far"
-    ]
-  },
   "boundsCheck": {
     "inside": true,
     "clamped": [],
@@ -295,5 +284,5 @@
       "bone-max": 0.12449927261333699
     }
   },
-  "recipeHash": "cbb1c415eca9c4c763b4f87a1c83d7f1928b1f3b5ded1165b6bdc99a9cae2505"
+  "recipeHash": "adf835a7d5bc793f550dc953397084cf0b3ee9dba80325d8180856502e099089"
 }

@@ -267,17 +267,6 @@
     ]
   },
   "source": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/mud-crab-master.png",
-  "anatomy": {
-    "schema": "cf.anatomy-presence/v2",
-    "absent": [],
-    "hidden": [],
-    "folded": [
-      "leg0Far",
-      "leg1Far",
-      "leg2Far",
-      "leg3Far"
-    ]
-  },
   "boundsCheck": {
     "inside": true,
     "clamped": [],
@@ -332,5 +321,5 @@
       "bone-max": 0.09261015063155871
     }
   },
-  "recipeHash": "15b149aab62ff824e197e34dbe6b2b98bed80dd1c320045489b82ce7eb9fd22a"
+  "recipeHash": "cc71ff2d73f5482f16278a77a2bbff2d7e4d0888fb88883b57b21a5822f0cd35"
 }
