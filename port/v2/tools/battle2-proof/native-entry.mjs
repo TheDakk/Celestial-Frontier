@@ -35,7 +35,7 @@ try {
     // morph system: script.morph[side] is a genome (color/accent/head/tail/seed) → this individual on the archetype
     const morph = individualFromGenomeV1({ record, binding, card, genome: script.morph?.[side] ?? null });
     const paintRig = await loadCreatureRigV1(record, binding, master, alpha, atlas, undefined, { ...(morph.jointScale ? { jointScale: morph.jointScale } : {}), ...(morph.atlasPixels ? { atlasPixels: morph.atlasPixels } : {}) });
-    return { record, card, morph: morph.params, rig: createPartsRig({ record, rig: paintRig, card, alphaBox: alphaBox(keyed.rgba, keyed.width, keyed.height), binding, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) }), name: record.identity.earthName ?? record.kind };
+    return { record, card, morph: morph.params, rig: createPartsRig({ record, rig: paintRig, card, alphaBox: alphaBox(keyed.rgba, keyed.width, keyed.height), binding, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}), ...(script.supports === 'observed' ? { contactSupports: 'observed' } : {}) }), name: record.identity.earthName ?? record.kind };
   };
   const [left, right] = await Promise.all([loadSide('left'), loadSide('right')]);
   const [recipe, anchorsRaw, far, mid, near] = await Promise.all([json('arena-recipe.json'), json('wild-anchors.json'), image('arena-far.png'), image('arena-mid.png'), image('arena-near.png')]);
