@@ -615,3 +615,8 @@ Measured on every endpoint candidate, labelled by its nearest record landmark (l
 Conclusion: the remaining wrong feet are one graph defect (two claw fingers merged into one ridge at 512 px on two
 paintings), not a matcher defect; the fix is at P2 (resolution or a fork-aware ridge), reachable only after P2's
 constants are body-relative. Every rule tried is recorded above.
+Addendum — P2 constants in body units (`bodyUnitsP2`: tip windows, merge radius, same-toe, spur floor and junction
+radius as ratios of R equal to the constants at R = 70): byte-identical at 512 (29/39, same §6 rows), and the
+scale sweep is STILL not a lever (640: 20/34, 768: 19/36 with §6 rows flipping) — the sensitivity is in the
+thinning topology at higher resolution (more junctions and spurs), not in the constants. Merged fingers will need a
+fork-aware ridge (a second thinning pass restricted to thick terminals) rather than resolution. Option kept off.
