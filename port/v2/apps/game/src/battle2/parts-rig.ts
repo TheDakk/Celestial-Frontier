@@ -55,6 +55,9 @@ export interface PartsRigOptions {
    * loading (the painted surface, not the joint, is what that model pins), a finding handed to Codex. */
   readonly binding?: CreaturePartsBindingV1;
   readonly contactSupports?: 'rest' | 'observed';
+  /** Morph M1: per-joint uniform scales (from `jointScalesV1`) — the SAME map the paint-skin rig was loaded with, so
+   * `jointPosition`, the tallest-pose and reach probes read the morphed skeleton. */
+  readonly jointScale?: Readonly<Record<string, number>>;
 }
 export interface PartsRig extends BattleRigV1 {
   readonly kind: 'parts';
@@ -95,7 +98,7 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
   // says `travel: 'stage'`.
   const family = contactMode === 'family' ? createFamilyContactSolver(record, options.contactSupports === 'observed' && options.binding ? observedContactSupports(record, options.binding) : {}) : null;
   const compat = contactMode === 'quadruped-compat' ? createQuadrupedContactSolver(record) : null;
-  const program: SkeletonPoseProgram = createSkeletonPoseProgram(familyContractForRecord(record as { template: { id: string } }), record.landmarks);
+  const program: SkeletonPoseProgram = createSkeletonPoseProgram(familyContractForRecord(record as { template: { id: string } }), record.landmarks, options.jointScale ? { jointScale: options.jointScale } : {});
   let pending: RigPose = {}, frame = 0, refused = 0, lastError: string | null = null, applied = 0, last: CreaturePoseV1 | null = null, disposed = false;
   const owner = createCreatureRigPerformance(record, rig, [{
     id: 'stage', durationMs: 1e12, loop: false, dispose() { /* the adapter owns the rig */ },

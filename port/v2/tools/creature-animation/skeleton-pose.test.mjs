@@ -53,3 +53,16 @@ test('matches the previous quadruped evaluator exactly for all three real record
   }
  }
 });
+
+test('jointScale (morph M1): a scaled joint grows its sub-tree about its own pivot; siblings and ancestors are untouched; no option is byte-identical',()=>{
+ const lm=landmarks(),plain=createSkeletonPoseProgram(definition(),lm),scaled=createSkeletonPoseProgram(definition(),lm,{jointScale:{wing:1.5}});
+ const a=plain.evaluate({wing:{rotation:.3}}),b=scaled.evaluate({wing:{rotation:.3}});
+ for(const n of ['root','body','fin'])assert.deepEqual(b[n],a[n]);
+ // wing pivots on body (.3,.4): the tip (.9,.4) lies .6 from the pivot along the wing; after the scale it lies .9 away, then rotates
+ const tipPlain=transformPoint(a.tip,{x:.9,y:.4}),tipScaled=transformPoint(b.tip,{x:.9,y:.4}),pivot={x:.3,y:.4};
+ close(Math.hypot(tipPlain.x-pivot.x,tipPlain.y-pivot.y),.6);close(Math.hypot(tipScaled.x-pivot.x,tipScaled.y-pivot.y),.9);
+ const restScaled=scaled.evaluate({});assert.deepEqual(restScaled.body,IDENTITY_AFFINE);close(transformPoint(restScaled.wing,{x:.7,y:.4}).x,.3+.4*1.5);
+ assert.throws(()=>createSkeletonPoseProgram(definition(),lm,{jointScale:{nope:1.2}}),/unknown scaled joint/);
+ assert.throws(()=>createSkeletonPoseProgram(definition(),lm,{jointScale:{wing:0}}),/positive joint scale/);
+ assert.deepEqual(createSkeletonPoseProgram(definition(),lm,{}).evaluate({wing:{rotation:.3}}),a);
+});

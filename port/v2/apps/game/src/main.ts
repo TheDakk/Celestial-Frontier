@@ -17,6 +17,7 @@
    on the V2 program roadmap. Atlas charting/favorites and rarity stings are live.
    Static deterministic Canvas species portraits and the preserved 43-biome landing vistas are live;
    retained Pixi actors, meshes, and portrait animation remain later work. */
+import { createPaintedCardsForApp } from './painted-cards.js';
 import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin, RendererType, MeshPipe, Particle, ParticleContainer } from 'pixi.js';
 import { createSystemStarField } from './system-star-field.js';
 import { createSystemProtostarCanvas, SYSTEM_PROTOSTAR_WIDTH, SYSTEM_PROTOSTAR_HEIGHT } from './system-protostar.js';
@@ -662,7 +663,9 @@ const DOCUMENT_TOKEN = crypto.randomUUID();
    may clone sessionStorage into a duplicated/opener tab. BFCache retains this
    same JS realm and therefore correctly retains this token. */
 const F4_TAB_TOKEN = DOCUMENT_TOKEN;
-const speciesArtLoader = new SpeciesArtLoader(DOCUMENT_TOKEN);
+// the painted individual on the card (morph system): asked first for every thumb/portrait; painter tier otherwise
+const paintedCards = (() => { try { return createPaintedCardsForApp(); } catch { return null; } })();
+const speciesArtLoader = new SpeciesArtLoader(DOCUMENT_TOKEN, paintedCards ? { paintedCards } : {});
 /* Keep one exact SceneMemory route's 9 Compendium + 8 Planetside thumbs warm.
    Repainting the same bounded set on every navigation grows V8's worker/task
    churn even after every cache, lease and DOM owner has been released. */
