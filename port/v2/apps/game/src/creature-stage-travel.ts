@@ -28,3 +28,21 @@ export function assessTemplateRootContinuity(samples:readonly RootContinuitySamp
  }
  return{...original,status:worstViolation?'FAIL' as const:'PASS' as const,nonGaitStep,scaleLength,worstViolation};
 }
+
+/** Arena composition owns target distance. Whole gait cycles own approach time.
+ * Stage displacement is signed BODY LENGTHS since the current half-cycle's
+ * planting boundary; it is not pixels or total travel since approach began. */
+export function createStrideCadence(input:{targetDistancePx:number;bodyLengthPx:number;gaitDurationMs:number}){
+ const {targetDistancePx,bodyLengthPx,gaitDurationMs}=input;
+ if(![targetDistancePx,bodyLengthPx,gaitDurationMs].every(Number.isFinite)||bodyLengthPx<=0||gaitDurationMs<=0)throw Error('Stride cadence: invalid distance/scale/duration');
+ const distanceBodies=targetDistancePx/bodyLengthPx,cycles=Math.ceil(Math.abs(distanceBodies)/.2),durationMs=cycles*gaitDurationMs,perCycle=cycles?distanceBodies/cycles:0;
+ return Object.freeze({cycles,durationMs,gaitDurationMs,targetDistancePx,bodyLengthPx,perCycleBodyLengths:perCycle,maxStanceTravelBodyLengths:Math.abs(perCycle)/2,
+  sample(ms:number){
+   if(!Number.isFinite(ms)||ms<0)throw Error('Stride cadence: invalid time');
+   if(!cycles)return{worldDisplacementPx:0,stageDisplacement:0,gaitMs:0,stanceWindow:0,done:true};
+   const at=Math.min(ms,durationMs),progress=at/gaitDurationMs,done=at===durationMs;
+   const cycle=done?cycles-1:Math.floor(progress),within=done?1:progress-cycle,half=within>=.5?1:0;
+   return{worldDisplacementPx:targetDistancePx*(at/durationMs),stageDisplacement:perCycle*(within-half*.5),gaitMs:within*gaitDurationMs,stanceWindow:cycle*2+half,done};
+  }
+ });
+}
