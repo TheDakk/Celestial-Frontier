@@ -81,19 +81,32 @@ describe('E1.1 parts rig — Codex source paint-skin rigs on the battle stage co
     rig.dispose();
   }, 60_000);
 
-  it.fails('ONE solver ask left (Codex cb1a667d removed the local stride in stage mode; the 184 px spread is now exactly the stage travel): stance feet stay planted in ARENA space while the stage carries the run-up — flips green when ContactPhase accepts `stageDisplacement` (body-length units, passed by the parts rig from RigPoseContext) and recedes stance targets by it', async () => {
+  it('stance feet stay planted in ARENA space while the stage carries the run-up (Codex d8787235: ContactPhase.stageDisplacement consumed; the parts rig passes it from RigPoseContext; pin flipped from it.fails)', async () => {
     const { rig, record } = await loadFit('crab');
-    const card = compileBodyCard(record, record.genome), W = record.geometry.width, frameW = 1024, runUpPx = 0.18 * frameW;
+    const card = compileBodyCard(record, record.genome), W = record.geometry.width, scale = 0.25;
+    // one gait cycle carries the stage 0.2 body length on the arena: the solver cancels the displacement exactly
+    // (target shift = −d, maxError 0) up to 0.2 body lengths per stance and REFUSES beyond (compression bound, then
+    // reach) — measured 2026-09-21 on the crab; 0.18 × frame ≈ 9 body lengths at this scale is unreachable by design
+    const runUpPx = 0.2 * scale * W * card.scaleLength;
     const approach = buildTimeline(card, 'approach', 5), clip = { source: 'timeline' as const, timeline: approach };
-    const scale = 0.25; const world: number[] = [];
-    for (let i = 0; i <= 12; i++) {
-      const k = i / 12, ms = approach.durationMs * k;
-      rig.applyPose(sampleClip(clip, ms), ctx(approach.actionId, ms, approach.durationMs, false));
-      const holderX = runUpPx * EASE_FN['ease-out'](k), foot = px(rig, 'leg0NearFoot');
-      world.push(holderX + scale * (foot[0] / W - rig.foot.x) * W);
+    // A walking foot advances during its SWING half-cycles and must not move in the arena during its STANCE ones
+    // (the solver's rule: leg group 0 stands in the first half of each cycle, group 1 in the second). leg0Near is
+    // the second contract leg → group (floor(1/2) + 1 % 2) % 2 = 1 → stance while cycle ≥ 0.5.
+    const stanceAt = (ms: number) => ((ms / approach.durationMs) % 1) >= 0.5;
+    const windows: number[][] = []; let current: number[] | null = null; let worldAt0: number | null = null;
+    for (let i = 0; i <= 60; i++) {
+      const k = i / 60, ms = approach.durationMs * k;
+      const holderX = runUpPx * EASE_FN['ease-out'](k);
+      rig.applyPose(sampleClip(clip, ms), { ...ctx(approach.actionId, ms, approach.durationMs, false), stageDisplacement: holderX / (scale * W) });
+      const foot = px(rig, 'leg0NearFoot'), world = holderX + scale * (foot[0] / W - rig.foot.x) * W;
+      if (worldAt0 === null) worldAt0 = world;
+      if (stanceAt(ms)) { if (!current) { current = []; windows.push(current); } current.push(world); } else current = null;
     }
-    // A planted stance foot must not move in the arena while the body advances; today the foot rides with the body.
-    expect(Math.max(...world) - Math.min(...world)).toBeLessThan(0.5);
+    // the approach timeline is one gait cycle: one swing half (first) then one stance half (second)
+    expect(windows.length).toBeGreaterThanOrEqual(1);
+    for (const w of windows) { expect(w.length).toBeGreaterThanOrEqual(3); expect(Math.max(...w) - Math.min(...w), `stance window of ${w.length} samples`).toBeLessThan(0.5); }
+    // (in stage mode the foot never advances: the stage carries the body, swings only lift — Codex cb1a667d/d8787235)
+    expect(rig.refusals()).toBe(0);
     rig.dispose();
   }, 60_000);
 

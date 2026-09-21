@@ -46,9 +46,39 @@ it('observed support accessor reads published mesh under hit, retains last good 
   }
   expect(maxPaint).toBeLessThanOrEqual(.25);expect(maxJoint).toBeGreaterThan(.25);
   console.log(JSON.stringify({finding:'hit joint proxy versus published support',maxPaintDriftPx:maxPaint,maxJointDriftPx:maxJoint}));
+  // Test the published painted surface too: stage plus local support must
+  // cancel, even though a foot joint is not the pinned surface on this binding.
+  for(const stageDisplacement of [-.03,0,.03]){
+   const solved=solver.resolve({}, {actionId:'idle',elapsedMs:0,durationMs:1000,travel:'stage',stageDisplacement});rig.applyPose(solved.pose);
+   for(const [joint,q]of Object.entries(rest)){const p=readCreatureRigContactSupport(rig,joint)!;
+    expect(Math.hypot((p.x+stageDisplacement*solver.scaleLength-q.x)*r.geometry.width,(p.y-q.y)*r.geometry.height)).toBeLessThanOrEqual(.25);
+   }
+  }
   const before=readCreatureRigContactSupport(rig,'leg0FarFoot');expect(()=>rig.applyPose({foreign:{rotation:1}})).toThrow();expect(readCreatureRigContactSupport(rig,'leg0FarFoot')).toEqual(before);
   rig.applyPose({root:{rotation:0,dx:.01}});expect(readCreatureRigContactSupport(rig,'leg0FarFoot')).not.toEqual(rest.leg0FarFoot);
   rig.applyPose({});expect(readCreatureRigContactSupport(rig,'leg0FarFoot')).toEqual(rest.leg0FarFoot);
  }finally{player.stop();rig.dispose();}
  expect(readCreatureRigContactSupport(rig,'leg0FarFoot')).toBeNull();
 },60_000);
+
+it('stage displacement plants stance endpoints in arena space in either direction; omission retains the sliding negative control',()=>{
+ const r=read('audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/record.json'),solver=createFamilyContactSolver(r),program=createSkeletonPoseProgram(familyContractForRecord(r),r.landmarks),W=r.geometry.width,scale=.25;
+ let worst=0,omittedDrift=0;
+ for(const actionId of ['idle','approach:scuttle'])for(const sign of [-1,1])for(let i=0;i<=12;i++){
+  const phase={actionId,elapsedMs:i*1000/12,durationMs:1000,travel:'stage' as const},displacement=sign*.03*i/12;
+  const moved=solver.resolve({}, {...phase,stageDisplacement:displacement}),zero=solver.resolve({},phase),matrices=program.evaluate(moved.pose);
+  expect(moved.pose.root!.dx).toBe(0);
+  for(const c of moved.contacts){const previous=zero.contacts.find(p=>p.joint===c.joint)!;
+   if(c.stance){const rest=r.landmarks[c.joint],actual=transformPoint(matrices[c.joint]!,{x:rest[0],y:rest[1]}),holderX=displacement*solver.scaleLength*W*scale;
+    const error=Math.abs(holderX+actual.x*W*scale-rest[0]*W*scale);worst=Math.max(worst,error);expect(error).toBeLessThan(1e-6);
+    expect(c.target.x).toBe(previous.target.x-displacement*solver.scaleLength);omittedDrift=Math.max(omittedDrift,Math.abs(holderX));
+   }else expect(c.target).toEqual(previous.target);
+  }
+  const legacy={...phase,travel:'solver' as const};expect(solver.resolve({},legacy)).toEqual(solver.resolve({}, {...legacy,stageDisplacement:displacement}));
+ }
+ expect(omittedDrift).toBeGreaterThan(.25);
+ // A whole 184.32px arena run-up cannot be one unlimited stance at quarter scale.
+ expect(()=>solver.resolve({}, {actionId:'idle',elapsedMs:0,durationMs:1000,travel:'stage',stageDisplacement:(.18*1024)/(scale*W*solver.scaleLength)})).toThrow(/reach|compression/);
+ for(const stageDisplacement of [NaN,Infinity,-Infinity])expect(()=>solver.resolve({}, {actionId:'idle',elapsedMs:0,durationMs:1000,travel:'stage',stageDisplacement})).toThrow('invalid stage displacement');
+ console.log(JSON.stringify({finding:'arena stance cancellation',maxArenaErrorPx:worst,omittedDisplacementDriftPx:omittedDrift}));
+});
