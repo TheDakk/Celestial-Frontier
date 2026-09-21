@@ -1,0 +1,111 @@
+{
+ "schema": "cf.painter-part-intake/v1",
+ "source": "intake-compiler (anatomy-verify emit.mjs)",
+ "recordRecipeHash": null,
+ "cutoutSha256": "0586a468c0685b53aba0993788e834468dd9d7cac84bdeb212fe9531124442be",
+ "labelsFile": "labels.png",
+ "labelsSha256": "76f42988e5045c11ab83f2a04cd116801bf02e22b0ac170d9b750c07bb46f6e5",
+ "parts": [
+  {
+   "id": "body",
+   "joint": "root",
+   "layer": "near"
+  },
+  {
+   "id": "leg0far-upper",
+   "joint": "leg0FarKnee",
+   "layer": "far"
+  },
+  {
+   "id": "leg0far-lower",
+   "joint": "leg0FarFoot",
+   "layer": "far"
+  },
+  {
+   "id": "leg1far-upper",
+   "joint": "leg1FarKnee",
+   "layer": "far"
+  },
+  {
+   "id": "leg1far-lower",
+   "joint": "leg1FarFoot",
+   "layer": "far"
+  },
+  {
+   "id": "leg2far-upper",
+   "joint": "leg2FarKnee",
+   "layer": "far"
+  },
+  {
+   "id": "leg2far-lower",
+   "joint": "leg2FarFoot",
+   "layer": "far"
+  },
+  {
+   "id": "leg0near-upper",
+   "joint": "leg0NearKnee",
+   "layer": "near"
+  },
+  {
+   "id": "leg0near-lower",
+   "joint": "leg0NearFoot",
+   "layer": "near"
+  },
+  {
+   "id": "leg1near-upper",
+   "joint": "leg1NearKnee",
+   "layer": "near"
+  },
+  {
+   "id": "leg1near-lower",
+   "joint": "leg1NearFoot",
+   "layer": "near"
+  },
+  {
+   "id": "leg2near-upper",
+   "joint": "leg2NearKnee",
+   "layer": "near"
+  },
+  {
+   "id": "leg2near-lower",
+   "joint": "leg2NearFoot",
+   "layer": "near"
+  },
+  {
+   "id": "claw-far-arm",
+   "joint": "clawFarElbow",
+   "layer": "near"
+  },
+  {
+   "id": "claw-far-palm",
+   "joint": "clawFarPalm",
+   "layer": "near"
+  },
+  {
+   "id": "claw-far-finger",
+   "joint": "clawFarDactylRoot",
+   "layer": "near"
+  },
+  {
+   "id": "claw-near-arm",
+   "joint": "clawNearElbow",
+   "layer": "near"
+  },
+  {
+   "id": "claw-near-palm",
+   "joint": "clawNearPalm",
+   "layer": "near"
+  },
+  {
+   "id": "claw-near-finger",
+   "joint": "clawNearDactylRoot",
+   "layer": "near"
+  }
+ ],
+ "gaps": [
+  "eyes not named by the compiler (eye-far/eye-near absent)",
+  "hidden: leg3Far,leg3Near",
+  "folded: leg0Far"
+ ],
+ "declarationHash": "4a1710dfa6a8b123162a5a1fb11233b73190cb325cfd3f06ce78dac6f37920a8"
+}

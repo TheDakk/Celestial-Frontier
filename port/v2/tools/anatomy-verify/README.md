@@ -620,3 +620,16 @@ radius as ratios of R equal to the constants at R = 70): byte-identical at 512 (
 scale sweep is STILL not a lever (640: 20/34, 768: 19/36 with §6 rows flipping) — the sensitivity is in the
 thinning topology at higher resolution (more junctions and spurs), not in the constants. Merged fingers will need a
 fork-aware ridge (a second thinning pass restricted to thick terminals) rather than resolution. Option kept off.
+
+## Slice 31 — IC-2 emits what IC-3 reads (`emit.mjs`), 2026-09-21
+First compiler OUTPUT in Codex's format: per crab, `labels.png` (red channel = part index + 1, master resolution)
+and `declaration.json` (`cf.painter-part-intake/v1`, parts in the accepted fits' order and vocabulary: body,
+`<leg>-upper` (joint Knee) / `-lower` (terminal) per named leg, `claw-<side>-arm/palm/finger` split along the
+claw's own ridge at the wrist and the fork separation), plus `compare.json` (IoU per part vs Codex's map,
+comparison only) — `audits/INTAKE_COMPILER_20260921/compiled-01/<id>/`. Declared gaps in each declaration: eyes
+are not named by the compiler (no `eye-far`/`eye-near`), hidden and folded slots listed. Numbers (IoU vs Codex):
+body 0.37–0.54, legs mean 0.28–0.45 (labels inherit naming), palms 0.01–0.38, fingers 0–0.33, arms 0 on every
+crab — the arm/palm split uses the wrist index on the claw ridge and the wrist is not being found on the full
+path (first cut; the wrist cut itself works in P3). Quadrupeds are not emitted: Codex's quadruped part vocabulary
+(the Civet's parts list) is not in this lane. `recordRecipeHash` is null: the compiler does not write records yet.
+This is the boundary where the compiler hands to Codex's frozen writers; nothing here is admission.
