@@ -31,9 +31,9 @@ if(process.argv[1]&&fileURLToPath(import.meta.url)===path.resolve(process.argv[1
     run(id,template,png,declHidden,'positive');
     const other=template==='brachyuran'?'quadruped':'brachyuran';run(id,other,png,[],'wrong-tmpl');
     if(!rec)continue;const dir=path.dirname(rec);const declFile=dir+'/declaration.json',labelFile=dir+'/labels.png';if(!fs.existsSync(declFile)||!fs.existsSync(labelFile))continue;
-    const decl=JSON.parse(fs.readFileSync(declFile,'utf8'));const lp=readPng(fs.readFileSync(labelFile));const labels=new Uint16Array(lp.width*lp.height);for(let i=0;i<labels.length;i++)labels[i]=lp.data[i*4];
+    const labelDecl=JSON.parse(fs.readFileSync(declFile,'utf8'));const lp=readPng(fs.readFileSync(labelFile));const labels=new Uint16Array(lp.width*lp.height);for(let i=0;i<labels.length;i++)labels[i]=lp.data[i*4];
     const T=templateRest(template);const visibleLegs=[...T.slots.Far,...T.slots.Near].map(s=>s.id).filter(l=>!declHidden.includes(l));
-    for(const leg of [visibleLegs[0],visibleLegs[visibleLegs.length-1]]){const ids=legPartIds(decl,leg);if(!ids.length){console.log('  no label parts for',leg);continue;}
+    for(const leg of [visibleLegs[0],visibleLegs[visibleLegs.length-1]]){const ids=legPartIds(labelDecl,leg);if(!ids.length){console.log('  no label parts for',leg);continue;}
       run(id,template,mutate(png,labels,ids,'erase'),declHidden,'erase:'+leg);
       run(id,template,mutate(png,labels,ids,'dup',[Math.round(png.width*Number(process.env.IC4_DUP_SHIFT??0.15)),Math.round(png.height*0.03)]),declHidden,'dup:'+leg);}}
   if(process.argv[2]==='json')fs.writeFileSync(process.env.IC4_OUT??'/dev/stdout',JSON.stringify(rows,null,1));
