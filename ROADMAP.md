@@ -72,3 +72,11 @@ Folded presence73398486 is preserved; IC-3 frozen for new species, no P2 or rost
 Codex holds. Claude re-merges signed producers on its lane and re-films E1 on the family
 solver with contactJoint/travel:stage/pinch and declared presence inputs. Nick: review only
 at this accumulated stop, no interim decision. No fetch/push/PR/merge/release/deploy here.
+
+## Active ordered solver → coconut → guardian run — 2026-09-21
+
+Step1 producer: minimal stage stride double-count fix and published surface accessor;
+focused tests/typecheck pass. Sign then run fresh S2 sweep before step2. Packet:
+audits/SOLVER_STAGE_SUPPORT_20260921/. Step2 coconut explicit presence removes leg3Far
+from hidden with no record/binding change. Step3 G1/G2 Brown Bear1536 master + presence,
+no hand landmarks. No internal review stops; S2 only, signed stages, no push/sync/merge.
