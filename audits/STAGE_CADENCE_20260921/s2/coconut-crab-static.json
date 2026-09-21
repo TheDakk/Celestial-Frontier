@@ -1,0 +1,390 @@
+{
+  "subject": "coconut-crab",
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000025177724369878116,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.00004228822480034731
+    },
+    {
+      "id": "approach",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000056789684025662956,
+      "maxEndpointError": 3.376611507232129e-16,
+      "maxGapPx": 0.000052984609613973016
+    },
+    {
+      "id": "melee:pinch",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000025177724369878116,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.00004378868020758932
+    },
+    {
+      "id": "hit",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000056789684025662956,
+      "maxEndpointError": 4.0029660424867215e-16,
+      "maxGapPx": 0.00004945230227957858
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000025177724369878116,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.00004210711808893367
+    },
+    {
+      "id": "approach:scuttle",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000056789684025662956,
+      "maxEndpointError": 3.376611507232129e-16,
+      "maxGapPx": 0.000052984609613973016
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000025177724369878116,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.00004304942919455368
+    },
+    {
+      "id": "dodge",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000056789684025662956,
+      "maxEndpointError": 3.342213888644167e-16,
+      "maxGapPx": 0.00005298460949338992
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000056789684025662956,
+      "maxEndpointError": 3.510833468576701e-16,
+      "maxGapPx": 0.000044951299420093425
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000025177724369878116,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.000041467015929579454
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000025177724369878116,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.00004146701598350586
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "maxPaintDriftPx": 0.000025177724369878116,
+      "maxEndpointError": 0,
+      "maxGapPx": 0.00004347339767441965
+    }
+  ],
+  "maxPaintDriftPx": 0.000056789684025662956,
+  "maxEndpointError": 4.0029660424867215e-16,
+  "maxGapPx": 0.000052984609613973016,
+  "exactRestGeometry": true,
+  "maxCovariancePx": 0,
+  "maxArapPublicationPx": 0.00005993264480081748,
+  "lastResiduals": [
+    {
+      "joint": "leg0FarFoot",
+      "lbsPrediction": [
+        0.2681818181818182,
+        0.5579545454545454
+      ],
+      "supportPrediction": [
+        0.2681818181818182,
+        0.5579545454545454
+      ],
+      "published": [
+        0.26818183064460754,
+        0.5579545497894287
+      ],
+      "kinematicResidualPx": [
+        0,
+        -9.769962616701378e-14
+      ],
+      "modelResidualPx": [
+        0,
+        -9.769962616701378e-14
+      ],
+      "arapResidualPx": [
+        0.000010967254633342804,
+        0.000003814697340231987
+      ],
+      "modelToTriangleResidualPx": [
+        0,
+        0
+      ],
+      "publishedResidualPx": [
+        0.000010967254633342804,
+        0.000003814697242532361
+      ],
+      "stance": true
+    },
+    {
+      "joint": "leg0NearFoot",
+      "lbsPrediction": [
+        0.7340909090909091,
+        0.5545454545454546
+      ],
+      "supportPrediction": [
+        0.7340909090909091,
+        0.5545454545454546
+      ],
+      "published": [
+        0.7340909242630005,
+        0.5545454621315002
+      ],
+      "kinematicResidualPx": [
+        0,
+        0
+      ],
+      "modelResidualPx": [
+        0,
+        0
+      ],
+      "arapResidualPx": [
+        0.000013351440397713077,
+        0.0000066757201988565384
+      ],
+      "modelToTriangleResidualPx": [
+        0,
+        0
+      ],
+      "publishedResidualPx": [
+        0.000013351440397713077,
+        0.0000066757201988565384
+      ],
+      "stance": true
+    },
+    {
+      "joint": "leg1FarFoot",
+      "lbsPrediction": [
+        0.25681818181818183,
+        0.5852272727272727
+      ],
+      "supportPrediction": [
+        0.25681818181818183,
+        0.5852272727272727
+      ],
+      "published": [
+        0.25681817531585693,
+        0.5852272510528564
+      ],
+      "kinematicResidualPx": [
+        0,
+        0
+      ],
+      "modelResidualPx": [
+        0,
+        0
+      ],
+      "arapResidualPx": [
+        -0.000005722045912648355,
+        -0.00001907348631036143
+      ],
+      "modelToTriangleResidualPx": [
+        0,
+        0
+      ],
+      "publishedResidualPx": [
+        -0.000005722045912648355,
+        -0.00001907348631036143
+      ],
+      "stance": true
+    },
+    {
+      "joint": "leg1NearFoot",
+      "lbsPrediction": [
+        0.7460227272727272,
+        0.58125
+      ],
+      "supportPrediction": [
+        0.7460227272727272,
+        0.58125
+      ],
+      "published": [
+        0.7460227012634277,
+        0.581250011920929
+      ],
+      "kinematicResidualPx": [
+        0,
+        0
+      ],
+      "modelResidualPx": [
+        0,
+        0
+      ],
+      "arapResidualPx": [
+        -0.000022888183552893793,
+        0.0000104904174413889
+      ],
+      "modelToTriangleResidualPx": [
+        0,
+        0
+      ],
+      "publishedResidualPx": [
+        -0.000022888183552893793,
+        0.0000104904174413889
+      ],
+      "stance": true
+    },
+    {
+      "joint": "leg2FarFoot",
+      "lbsPrediction": [
+        0.24318181818181817,
+        0.6090909090909091
+      ],
+      "supportPrediction": [
+        0.24318181818181817,
+        0.6090909090909091
+      ],
+      "published": [
+        0.24318180978298187,
+        0.6090909242630005
+      ],
+      "kinematicResidualPx": [
+        -4.884981308350689e-14,
+        0
+      ],
+      "modelResidualPx": [
+        -4.884981308350689e-14,
+        0
+      ],
+      "arapResidualPx": [
+        -0.000007390975937937583,
+        0.000013351440397713077
+      ],
+      "modelToTriangleResidualPx": [
+        0,
+        0
+      ],
+      "publishedResidualPx": [
+        -0.000007390975986787396,
+        0.000013351440397713077
+      ],
+      "stance": true
+    },
+    {
+      "joint": "leg2NearFoot",
+      "lbsPrediction": [
+        0.7568181818181818,
+        0.6090909090909091
+      ],
+      "supportPrediction": [
+        0.7568181818181818,
+        0.6090909090909091
+      ],
+      "published": [
+        0.7568181753158569,
+        0.6090909242630005
+      ],
+      "kinematicResidualPx": [
+        0,
+        0
+      ],
+      "modelResidualPx": [
+        0,
+        0
+      ],
+      "arapResidualPx": [
+        -0.000005722045912648355,
+        0.000013351440397713077
+      ],
+      "modelToTriangleResidualPx": [
+        0,
+        0
+      ],
+      "publishedResidualPx": [
+        -0.000005722045912648355,
+        0.000013351440397713077
+      ],
+      "stance": true
+    },
+    {
+      "joint": "leg3FarFoot",
+      "lbsPrediction": [
+        0.2318181818181818,
+        0.6375
+      ],
+      "supportPrediction": [
+        0.2318181818181818,
+        0.6375
+      ],
+      "published": [
+        0.23181818425655365,
+        0.637499988079071
+      ],
+      "kinematicResidualPx": [
+        0,
+        0
+      ],
+      "modelResidualPx": [
+        0,
+        0
+      ],
+      "arapResidualPx": [
+        0.000002145767217243133,
+        -0.0000104904174413889
+      ],
+      "modelToTriangleResidualPx": [
+        0,
+        0
+      ],
+      "publishedResidualPx": [
+        0.000002145767217243133,
+        -0.0000104904174413889
+      ],
+      "stance": true
+    },
+    {
+      "joint": "leg3NearFoot",
+      "lbsPrediction": [
+        0.7681818181818182,
+        0.6363636363636362
+      ],
+      "supportPrediction": [
+        0.7681818181818182,
+        0.6363636363636362
+      ],
+      "published": [
+        0.7681818008422852,
+        0.6363636255264282
+      ],
+      "kinematicResidualPx": [
+        9.769962616701378e-14,
+        -1.9539925233402755e-13
+      ],
+      "modelResidualPx": [
+        9.769962616701378e-14,
+        -1.9539925233402755e-13
+      ],
+      "arapResidualPx": [
+        -0.00001525878906782907,
+        -0.00000953674305748109
+      ],
+      "modelToTriangleResidualPx": [
+        0,
+        0
+      ],
+      "publishedResidualPx": [
+        -0.000015258788970129444,
+        -0.000009536743252880342
+      ],
+      "stance": true
+    }
+  ],
+  "presentation": {
+    "samples": 601
+  },
+  "r2cRowsBitIdentical": true
+}

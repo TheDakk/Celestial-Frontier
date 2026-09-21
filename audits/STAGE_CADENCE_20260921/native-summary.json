@@ -1,0 +1,138 @@
+{
+  "producer": "0072cbdbabac3efb4220779fe75c85951ed3e77c",
+  "status": "S2_STOP",
+  "subjects": [
+    {
+      "id": "crab",
+      "input": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab",
+      "report": "audits/STAGE_CADENCE_20260921/native/crab/report.json",
+      "status": "PASS",
+      "sharedPathRed": false,
+      "cadence": {
+        "status": "PASS",
+        "template": "brachyuran",
+        "scope": "Actual native Pixi painted rig, gait sampler, family solver and stance-local cadence",
+        "plan": {
+          "cycles": 45,
+          "durationMs": 18900,
+          "targetDistancePx": 184.32,
+          "bodyLengthPx": 20.623988945195713,
+          "maxStanceTravelBodyLengths": 0.09930183755636052
+        },
+        "frames": 2700,
+        "expectedFrames": 2700,
+        "refusals": 0,
+        "failures": [],
+        "exactRest": true,
+        "maxStanceDriftPx": 0.00001532492314263139,
+        "rigP95Ms": 0.40000003576278687
+      },
+      "cpu": {
+        "policy": {
+          "tier": "painter",
+          "metric": "maximum per-clip rig p95",
+          "limitMs": 2,
+          "comparison": "<",
+          "authority": "unchanged phone/painter gate"
+        },
+        "valueMs": 0.40000003576278687,
+        "pass": true
+      }
+    },
+    {
+      "id": "coconut-crab",
+      "input": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab",
+      "report": "audits/STAGE_CADENCE_20260921/native/coconut-crab/report.json",
+      "status": "PASS",
+      "sharedPathRed": false,
+      "cadence": {
+        "status": "PASS",
+        "template": "brachyuran",
+        "scope": "Actual native Pixi painted rig, gait sampler, family solver and stance-local cadence",
+        "plan": {
+          "cycles": 34,
+          "durationMs": 14280,
+          "targetDistancePx": 184.32,
+          "bodyLengthPx": 27.21213732073013,
+          "maxStanceTravelBodyLengths": 0.09960953097312203
+        },
+        "frames": 2040,
+        "expectedFrames": 2040,
+        "refusals": 0,
+        "failures": [],
+        "exactRest": true,
+        "maxStanceDriftPx": 0.000016463706640047564,
+        "rigP95Ms": 0.5999999642372131
+      },
+      "cpu": {
+        "policy": {
+          "tier": "painter",
+          "metric": "maximum per-clip rig p95",
+          "limitMs": 2,
+          "comparison": "<",
+          "authority": "unchanged phone/painter gate"
+        },
+        "valueMs": 0.5999999642372131,
+        "pass": true
+      }
+    },
+    {
+      "id": "freshwater-crab",
+      "input": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab",
+      "report": "audits/STAGE_CADENCE_20260921/native/freshwater-crab/report.json",
+      "status": "RED",
+      "sharedPathRed": true,
+      "cadence": {
+        "status": "FAIL",
+        "template": "brachyuran",
+        "scope": "Actual native Pixi painted rig, gait sampler, family solver and stance-local cadence",
+        "plan": {
+          "cycles": 35,
+          "durationMs": 14700,
+          "targetDistancePx": 184.32,
+          "bodyLengthPx": 26.95,
+          "maxStanceTravelBodyLengths": 0.09770474423535647
+        },
+        "frames": 22,
+        "expectedFrames": 2100,
+        "refusals": 1,
+        "failures": [
+          {
+            "ms": 154,
+            "phase": {
+              "actionId": "approach:scuttle",
+              "elapsedMs": 154,
+              "durationMs": 420,
+              "travel": "stage",
+              "stageDisplacement": 0.07165014577259474,
+              "realm": "amphibious"
+            },
+            "error": "Error: Contact: approach:scuttle@154 leg0Far outside accommodatable reach\n    at Object.resolve (http://127.0.0.1:50807/bundle.js:8496:58)\n    at Object.cadence (http://127.0.0.1:50807/bundle.js:24183:56)"
+          }
+        ],
+        "exactRest": true,
+        "maxStanceDriftPx": 0.000013979148860698842,
+        "rigP95Ms": 1.600000023841858
+      },
+      "cpu": {
+        "policy": {
+          "tier": "painter",
+          "metric": "maximum per-clip rig p95",
+          "limitMs": 2,
+          "comparison": "<",
+          "authority": "unchanged phone/painter gate"
+        },
+        "valueMs": 1.600000023841858,
+        "pass": true
+      }
+    }
+  ],
+  "unrun": [
+    "mud-crab",
+    "vent-crab",
+    "persimmon",
+    "cranberry",
+    "devils-club",
+    "civet"
+  ]
+}
