@@ -96,9 +96,9 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
   owner.play('stage', 0, 0);
   const resolve = (pose: CreaturePoseV1, context: RigPoseContext): CreaturePoseV1 => {
     if (compat) return compat.resolve(pose, context.planted).pose;
-    // `stageDisplacement` (converted to body-length units) rides along for the solver's arena-planting contract;
-    // today's solver ignores it — the one ask left for Codex (see the parts-rig test pin)
-    const phase = { actionId: context.actionId, elapsedMs: context.elapsedMs, durationMs: context.durationMs, weight: context.weight, realm: card.realm, travel: context.travel, ...(context.stageDisplacement !== undefined ? { stageDisplacement: context.stageDisplacement / card.scaleLength } : {}) };
+    // `stageDisplacement` is already in signed body lengths since the stance boundary (Codex's cadence contract) and
+    // goes to the solver unchanged; the solver recedes stance targets by it (d8787235)
+    const phase = { actionId: context.actionId, elapsedMs: context.elapsedMs, durationMs: context.durationMs, weight: context.weight, realm: card.realm, travel: context.travel, ...(context.stageDisplacement !== undefined ? { stageDisplacement: context.stageDisplacement } : {}) };
     return family!.resolve(pose, phase as Parameters<NonNullable<typeof family>['resolve']>[1]).pose;
   };
   const parts: readonly RigPartV1[] = Object.freeze(rig.parts.map((p) => Object.freeze({ id: p.id, display: p.display, pivot: Object.freeze({ x: p.pivot.x, y: p.pivot.y }), layer: p.layer })));

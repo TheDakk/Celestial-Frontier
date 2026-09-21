@@ -31,8 +31,8 @@ export interface RigPoseContext {
   /** Stance for the quadruped compatibility solver: feet planted (stationary clips) or free (gait / lunge). */
   readonly planted: boolean;
   readonly travel: 'stage';
-  /** Run-up displacement the stage has already applied (display units) — the solver's arena-planting contract
-   * (Codex cb1a667d: stage mode adds no local stride; arena planting "needs the caller's stage displacement"). */
+  /** Stage displacement in signed BODY LENGTHS since the current half-cycle's planting boundary — Codex's cadence
+   * contract (`createStrideCadence().sample(ms).stageDisplacement`, 0072cbdb); passed to ContactPhase unchanged. */
   readonly stageDisplacement?: number;
 }
 /** What the battle stage needs beyond the contract (a C2 rig gets a thin wrapper adding these). */
