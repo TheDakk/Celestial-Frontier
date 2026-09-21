@@ -1,0 +1,21 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-stage-support.test.ts (3 tests | 1 failed) 199ms
+   × stage displacement plants stance endpoints in arena space in either direction; omission retains the sliding negative control 18ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-stage-support.test.ts > stage displacement plants stance endpoints in arena space in either direction; omission retains the sliding negative control
+AssertionError: expected 0.1237439336711743 to be greater than 0.25
+ ❯ apps/game/src/creature-rig-stage-support.test.ts:71:23
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 7 passed (8)
+   Start at  23:05:25
+   Duration  553ms (transform 155ms, setup 0ms, import 305ms, tests 207ms, environment 0ms)
+

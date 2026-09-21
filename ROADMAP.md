@@ -94,3 +94,7 @@ OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, `op
 - Step 3: `audits/VISION_D2_GUARDIAN_20260921/generation-01/`: one Brown Bear master via built-in imagegen, exact prompt, request/result hashes, native side-on painter guide, presence v2 (four visible legs, hidden/absent/folded empty). No hand landmarks/intake/fit/rig. **G1 format RED: tool returned1254×1254 RGBA despite1536×1536 request.** Original bytes and alpha retained, no resize/retry. G2 schema PASS. Guardian5ms desktop and60px-at1536 decisions unchanged; not yet measured or admitted. Source Sol card has no hazard; no invented signature motif. Catalogue headFrac0.27 overrides design-note0.22.
 
 Paired next steps: Codex holds. Claude uses the signed solver changes and coconut declaration; runs bear G3 compiler diagnostics and builds G6 titanic fill, retaining the G1 format red rather than claiming complete D2 acceptance. Nick: no new decision requested. Roster/other intake/P2 remain held. Do not repeat completed S2/tests or regenerate the master from this handoff. 1Password refused the first step1 signature; refusal receipt retained; subsequent signatures verified.
+
+## Active stage-displacement / bear continuation — 2026-09-21
+
+Nick authorizes one ordered run: stageDisplacement producer and S2, bear tail/folded declaration, one identical-prompt generation02 retry. No sibling edits/sync or push. Packet: `audits/SOLVER_STAGE_DISPLACEMENT_20260921/`. S2 is the only halt; no further intake/rig work in this run.
