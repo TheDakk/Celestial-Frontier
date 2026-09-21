@@ -748,3 +748,14 @@ compat solver stays selectable; E1's "flip the Civet" item closed). The reach pr
 Measured (body lengths per stance, ×0.9): crab 0.24, coconut 0.26, freshwater ≈ 0.11, mud 0.040, vent 0.032, Civet
 0.24. `a2-cadence.test.ts` now runs the five crabs and the Civet from BOTH sides: twelve cases, every stance
 window < 0.5 px in the arena, zero refusals, the lunge at the run-up by impact (battle2 46/46).
+
+## Slice 37 — the Brown Bear against its hand fit (G3 with a record), 2026-09-22
+Codex's guardian comparison fit (`fit-01`, 27 landmarks, 60 px bound and the 5 ms desktop-only tier in the record;
+staged on its lane pending its producer signature, read by absolute path). First run: verdict ADMIT, §6 FAIL at
+359 px — the fore pair matched (49/74 px) and the HIND pair was name-swapped: the side-view depth rule used the raw
+skeleton end's y, and on the bear the far hind leg's skeleton ends higher than the near one's while its ground
+contact is lower. Depth is now decided by the CONTACT-refined y (the pad's ground point): nearer feet stand lower
+on the canvas, and the skeleton end is not that point. Result: all four bear paws named correctly (hindFar 77,
+hindNear 41, foreFar 49, foreNear 74 px), the Civet 5/5 at 60 px, crabs byte-identical. The bear still fails the
+60 px bound by 14–17 px on two pads (a bear's pad is twice the Civet's; the two readings put the contact at
+different points of the pad) — a placement question for the record's definition of Paw, recorded, not tuned.
