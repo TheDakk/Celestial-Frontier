@@ -14,11 +14,19 @@ import type { RigPose, RigPoseContext } from './fixture-rig.js';
 import { RUN_UP_FRACTION } from './arena.js';
 
 export const APPROACH_CAP_MS = 500, RETURN_CAP_MS = 500, IDLE_TAIL_MS = 600, CURSOR_BLINK_MS = 250;
+/** A2: the approach walks at most this long in whole gait cycles (≈ 2 crab cycles); the lunge covers the rest. */
+export const APPROACH_CADENCE_CAP_MS = 900;
 export const NUMBER_RISE = 0.07, NUMBER_LIFT = 0.30, DODGE_LEAD_MS = 120, CONTACT_GAP = 0.02, RUN_UP_MIN_FRACTION = 0.15;
 export type Side = 'left' | 'right';
 export type TurnOutcome = 'hit' | 'dodge' | 'miss';
 export type TurnPhase = 'ready' | 'command' | 'approach' | 'action' | 'hitstop' | 'impact' | 'return' | 'idle' | 'done';
-export interface CombatantPlanInput { readonly side: Side; readonly mass: number; readonly card: BodyCard | null; readonly seed: number; readonly label: string; }
+export interface CombatantPlanInput { readonly side: Side; readonly mass: number; readonly card: BodyCard | null; readonly seed: number; readonly label: string;
+  /** Decision A2 (Nick, 2026-09-22): when present the approach WALKS whole gait cycles up to `APPROACH_CADENCE_CAP_MS`
+   * with feet planted in the arena (the stage passes `stageDisplacement` per tick), and the attack's own lunge covers
+   * the remaining run-up by impact. `bodyLength` in stand units (fraction of frame width), `stanceReach` in body
+   * lengths per stance (the rig's measured accommodatable recede). Absent → the legacy eased 420 ms run-up. */
+  readonly cadence?: Readonly<{ bodyLength: number; stanceReach: number }>; }
+export interface TurnCadence { readonly cycles: number; readonly gaitMs: number; readonly perCycle: number; readonly walked: number; readonly bodyLength: number; }
 export interface TurnArena {
   readonly groundLineY: number; readonly stands: Readonly<{ left: NormalizedPoint; right: NormalizedPoint }>;
   /** Half the standing width of each combatant at stage scale, as a fraction of frame width; the run-up stops at contact. Absent → RUN_UP_FRACTION. */
@@ -52,6 +60,8 @@ export interface TurnPlan {
   readonly target: Readonly<{ side: Side; facing: 1 | -1; mass: number; label: string; rigged: boolean }>;
   readonly delivery: EffectDelivery; readonly theme: string; readonly outcome: TurnOutcome; readonly targetFaints: boolean;
   readonly beats: TurnBeats; readonly phases: readonly Readonly<{ phase: TurnPhase; start: number; end: number }>[];
+  /** A2 cadence of the approach, or null for the legacy eased run-up. */
+  readonly cadence: TurnCadence | null;
   readonly hitstopMs: number; readonly runUp: number; readonly arena: TurnArena;
   readonly clips: Readonly<{ attacker: Readonly<{ idle: TurnClip; approach: TurnClip; action: TurnClip; after: TurnClip }>; target: Readonly<{ idle: TurnClip; reaction: TurnClip | null }> }>;
   readonly effect: Readonly<{ anchors: EffectSequenceAnchors; schedule: EffectSchedule; placement: SequencePlacement; startMs: number }> | null;
@@ -131,7 +141,19 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
     target: { idle: makeClip(T, 'idle', seedT), reaction: hit ? makeClip(T, targetFaints ? 'faint' : 'hit', seedT) : input.outcome === 'dodge' ? makeClip(T, 'dodge', seedT) : null },
   };
   const readyEnd = input.readyMs, commandEnd = readyEnd + input.commandMs;
-  const actionStart = commandEnd + Math.min(APPROACH_CAP_MS, scaleMs(420, massA));
+  // A2 cadence: whole gait cycles (unmodified gait duration) up to the cap; feet planted; the lunge does the rest
+  let cadence: TurnCadence | null = null;
+  if (A.cadence) {
+    const { bodyLength, stanceReach } = A.cadence;
+    if (!(bodyLength > 0) || !(stanceReach > 0) || !Number.isFinite(bodyLength) || !Number.isFinite(stanceReach)) throw new TypeError('turn plan: cadence bodyLength and stanceReach must be positive');
+    const gaitMs = clipMs(clips.attacker.approach), perCycle = 2 * stanceReach;
+    const needed = Math.max(1, Math.ceil(runUpLength / bodyLength / perCycle)), cycles = Math.max(1, Math.min(needed, Math.floor(APPROACH_CADENCE_CAP_MS / gaitMs)));
+    // `perCycle` is the ACTUAL signed body lengths the stage travels per cycle (≤ the reach capacity 2 × stanceReach):
+    // the solver's recede must equal the stage's travel, not the capacity, or a short run-up over-cancels
+    const walkedLength = Math.min(runUpLength, cycles * perCycle * bodyLength);
+    cadence = Object.freeze({ cycles, gaitMs, perCycle: (walkedLength / (cycles * bodyLength)) * facing, walked: walkedLength * facing, bodyLength });
+  }
+  const actionStart = commandEnd + (cadence ? cadence.cycles * cadence.gaitMs : Math.min(APPROACH_CAP_MS, scaleMs(420, massA)));
   const stop = hit ? hitstopMs(massA) : 0;
   let effect: TurnPlan['effect'] = null, impactLocal = attack ? attack.contactMs : impactOffset(input.delivery, massA);
   if (input.effect) {
@@ -160,7 +182,7 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
   return Object.freeze({
     kind: 'turn-plan', seed: input.seed,
     attacker: { side: A.side, facing, mass: massA, label: A.label, rigged: A.card !== null }, target: { side: T.side, facing: facingOf(T.side), mass: massT, label: T.label, rigged: T.card !== null },
-    delivery: input.delivery, theme: input.theme, outcome: input.outcome, targetFaints, beats, phases: Object.freeze(phases), hitstopMs: stop, runUp, arena: input.arena, clips, effect,
+    delivery: input.delivery, theme: input.theme, outcome: input.outcome, targetFaints, beats, phases: Object.freeze(phases), hitstopMs: stop, runUp, cadence, arena: input.arena, clips, effect,
     number: { text, x: standT.x, y: input.arena.groundLineY - NUMBER_LIFT }, reducedMotion: input.reducedMotion === true, attack,
   });
 }
@@ -189,8 +211,20 @@ export function sampleTurn(plan: TurnPlan, ms: number): StageSample {
   // Attacker: idle underneath; approach / action (hitstop-frozen) / return / after on top.
   let aPose = sampleClip(c.attacker.idle, ic), disp = 0, aCtx = contextOf(c.attacker.idle, ic);
   // The gait clip is time-scaled to the capped approach/return windows so it completes exactly on the boundary.
-  if (ms >= b.commandEnd && ms < b.actionStart) { const k = input01(ms, b.commandEnd, b.actionStart), at = k * clipMs(c.attacker.approach); aPose = addPose(aPose, sampleClip(c.attacker.approach, at)); disp = plan.runUp * EASE_FN['ease-out'](k); aCtx = contextOf(c.attacker.approach, at); }
-  else if (ms >= b.actionStart && ms < b.actionEnd) { aPose = addPose(aPose, sampleClip(c.attacker.action, ic - b.actionStart)); disp = plan.runUp; aCtx = contextOf(c.attacker.action, ic - b.actionStart); }
+  if (ms >= b.commandEnd && ms < b.actionStart) {
+    if (plan.cadence) {
+      // A2: whole gait cycles at the unmodified gait; the stage's travel is linear in time (Codex's cadence contract) and
+      // `stageDisplacement` is the signed body lengths since the current half-cycle's planting boundary
+      const cd = plan.cadence, since = ms - b.commandEnd, k = since / (cd.cycles * cd.gaitMs), within = (since / cd.gaitMs) % 1, half = within >= 0.5 ? 1 : 0;
+      const at = within * cd.gaitMs; aPose = addPose(aPose, sampleClip(c.attacker.approach, at)); disp = cd.walked * k;
+      aCtx = Object.freeze({ ...contextOf(c.attacker.approach, at), stageDisplacement: cd.perCycle * (within - half * 0.5) });
+    } else { const k = input01(ms, b.commandEnd, b.actionStart), at = k * clipMs(c.attacker.approach); aPose = addPose(aPose, sampleClip(c.attacker.approach, at)); disp = plan.runUp * EASE_FN['ease-out'](k); aCtx = contextOf(c.attacker.approach, at); }
+  }
+  else if (ms >= b.actionStart && ms < b.actionEnd) {
+    aPose = addPose(aPose, sampleClip(c.attacker.action, ic - b.actionStart)); aCtx = contextOf(c.attacker.action, ic - b.actionStart);
+    // A2: the lunge covers the run-up the walk did not, arriving exactly at impact (eased), then holds
+    disp = plan.cadence ? plan.cadence.walked + (plan.runUp - plan.cadence.walked) * EASE_FN['ease-out'](input01(ic, b.actionStart, b.impactAt)) : plan.runUp;
+  }
   else if (ms >= b.actionEnd && ms < b.returnEnd) { const k = input01(ms, b.actionEnd, b.returnEnd), at = k * clipMs(c.attacker.approach); aPose = addPose(aPose, sampleClip(c.attacker.approach, at)); disp = plan.runUp * (1 - EASE_FN['sine-in-out'](k)); aCtx = contextOf(c.attacker.approach, at); }
   else if (ms >= b.returnEnd && plan.targetFaints) { aPose = addPose(aPose, sampleClip(c.attacker.after, ms - b.returnEnd)); aCtx = contextOf(c.attacker.after, ms - b.returnEnd); } // victory; otherwise `after` is the idle already underneath
   // Target: idle underneath (frozen through hitstop); reaction on top; faint holds its final pose.

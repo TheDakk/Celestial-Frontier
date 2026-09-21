@@ -47,6 +47,8 @@ export interface BattleRigV1 extends CreatureRigV1 {
   /** Normalized cut-out point that stands on the arena ground line (under the root landmark). */
   readonly foot: { readonly x: number; readonly y: number };
   readonly bodyLength: number;
+  /** Measured accommodatable stage travel per stance (body lengths) — the parts rig probes its solver at load (A2). */
+  readonly stanceReach?: number;
 }
 
 export interface PixelBox { readonly x: number; readonly y: number; readonly width: number; readonly height: number; }

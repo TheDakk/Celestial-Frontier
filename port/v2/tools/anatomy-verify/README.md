@@ -721,3 +721,18 @@ recede, computed once from the record (the 0.2 was one crab's number); (2) a leg
 on the body) is BODY-planted in stage mode — it rides with the body and is never receded — which lifts the far-leg
 limit on the freshwater/mud/vent rigs to their walking legs' reach. The parts rig now passes Codex's unit
 (signed body lengths since the stance boundary) unchanged; battle2 36/36 with the cadence test.
+
+## Slice 36 — A2 built: the approach walks whole gait cycles planted; the lunge covers the rest, 2026-09-22
+Nick chose A2. `choreography.ts`: an attacker with `cadence` (body length in stand units, stance reach in body
+lengths) walks whole gait cycles up to `APPROACH_CADENCE_CAP_MS` (900) at the unmodified gait; the stage's travel is
+linear in time; `stageDisplacement` = signed body lengths since the half-cycle boundary, from the ACTUAL walked
+distance per cycle (deriving it from the reach capacity over-cancelled a short run-up by ~1.5 px per sample — found
+by trace, fixed); the attack's own lunge eases from the walked distance to the full run-up by impact. `stage.ts`
+injects the cadence for a rig that measured its reach; other rigs keep the legacy 420 ms eased run-up (byte-
+identical). `parts-rig.ts` measures `stanceReach` at load by binary search on the family solver at three stance
+samples (the caller-side measurement until Codex's `measureStanceReach(record)` lands): crab 0.264, coconut 0.293,
+freshwater 0.127, mud 0.090, vent 0.078 body lengths per stance; the Civet (compat solver) has none. Outcome test
+`a2-cadence.test.ts` on the real stage: `plan.cadence` set, approach = whole cycles ≤ the cap, `leg0NearFoot`
+fixed in arena pixels within every stance window (< 0.5 px), zero refusals, the holder at the walked distance at
+the end of the walk and at the full run-up at impact. battle2 37/37, `tsc` clean. The stage-run-up decision is
+closed by construction: the walk never asks the solver for more than the rig's measured reach.
