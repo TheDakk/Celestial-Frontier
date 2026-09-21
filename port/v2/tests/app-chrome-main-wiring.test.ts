@@ -66,7 +66,7 @@ function wiringErrors(main: string, owner: string): string[] {
   const exactThinAdapter = 'function syncSurfaceChromeBottom(): void {\n  appChrome.syncSurfaceChromeBottom();\n}';
   if (!adapter.includes(exactThinAdapter)
     || occurrences(main, 'appChrome.syncSurfaceChromeBottom();') !== 1
-    || occurrences(main, 'syncSurfaceChromeBottom();') !== 7) {
+    || occurrences(main, 'syncSurfaceChromeBottom();') !== 8) {
     errors.push('surface-thin-adapter');
   }
 
