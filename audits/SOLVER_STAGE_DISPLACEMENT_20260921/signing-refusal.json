@@ -1,0 +1,8 @@
+{
+  "stage": "producer",
+  "error": "1Password: agent returned an error; failed to write commit object",
+  "attempt": 1,
+  "head": "ce23786737f02bf4ee565d66074192f7fc5e01d3",
+  "s2Executed": false,
+  "remainingStagesExecuted": false
+}

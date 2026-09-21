@@ -655,3 +655,7 @@ travel is unchanged. This minimum correction does not infer the arena displaceme
 support in normalized source coordinates, not the joint or predicted LBS position.
 Refusal preserves its prior value; unpublished/disposed/non-support queries return null.
 Evidence: audits/SOLVER_STAGE_SUPPORT_20260921/README.md.
+
+### Stage displacement — matches code 2026-09-21
+
+`ContactPhase.stageDisplacement?: number` is signed stage translation in measured body-length units. For `travel:stage`, each planted target (including its painted-support target) recedes by that displacement times `scaleLength`; root dx remains zero, swing targets retain their existing path. Missing displacement preserves prior behavior; solver travel ignores it. Non-finite stage values refuse. No reach/limit threshold changes. The adapter must convert actual stage translation to local source coordinates before dividing by the same scaleLength.

@@ -684,3 +684,22 @@ breaks. Civet, Wolf and the five crabs are byte-identical at every weight; **0.2
 the bear (tail offered), it still refuses at 0.25 (`hindFar` loop) — both the declaration and the weight are
 needed; the declaration is Codex's data. Rest leg length is one species' number: a future template-tier item is a
 per-species leg ratio from the catalogue (fauna.json has aspect/headFrac, not leg length).
+
+## Slice 34 — the Brown Bear under Codex's declaration; the E1 planting contract closed, 2026-09-21 (late)
+Codex applied `absent: ["tail"]` (`hindFar` left undeclared: "occluded but weight-bearing") and painted a second
+generation (again 1254², G1 stays red). Through the identical code:
+- **generation-01: ADMIT**, all four paws as endpoints, wrong-template REFUSE — the third quadruped through the
+  compiler with no code change for the subject; §6 by verdict only (no hand record exists).
+- generation-02: REFUSE on one unused endpoint. The sheet shows the cause: on this painting the far hind leg is
+  BODY-THICK (a body ridge runs into it; R = 117), so its paw is not a chain endpoint; three leg chains plus a
+  mid-leg endpoint scramble the names. The refusal is right; the cause is P3's body/limb split by a fraction of
+  the maximum thickness, which a massive animal breaks (slice 17 note 3 in a new form). Not fixed here.
+E1's third pin is GREEN: the parts rig passes `stageDisplacement` (RigPoseContext → phase, body lengths), Codex's
+d8787235 recedes stance targets by it, and the solver cancels the displacement to the digit (target shift = −d,
+maxError 0) up to **0.2 body lengths per stance** — beyond that it refuses (compression bound, then reach). The
+pin now runs the stage 0.2 body length over one gait cycle and asserts stance-window constancy < 0.5 px with zero
+refusals; the earlier 0.18 × frame run-up was ~9 body lengths at that scale — unreachable by design. Design note:
+the battle stage's run-up is composed in frame units, so wiring `stageDisplacement` from the stage as it stands
+would refuse every approach; either the stage runs up in body lengths (stride cadence) or the solver clamps
+instead of refusing — a decision for Nick and Codex before the stage passes it. The films are unchanged (the stage
+does not pass it yet).

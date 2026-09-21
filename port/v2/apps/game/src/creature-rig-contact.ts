@@ -80,7 +80,7 @@ export function observedContactSupports(record:CreatureRigRecordV1,binding:Creat
   if(!best)throw Error('Contact: empty painted surface '+chain.end);supports[chain.end]=best;
  }return Object.freeze(supports);
 }
-export interface ContactPhase {readonly actionId:string;readonly elapsedMs:number;readonly durationMs:number;readonly realm?:string;readonly weight?:number;readonly travel?:'solver'|'stage';}
+export interface ContactPhase {readonly actionId:string;readonly elapsedMs:number;readonly durationMs:number;readonly realm?:string;readonly weight?:number;readonly travel?:'solver'|'stage';/** Signed stage translation already applied, in measured body-length units. */readonly stageDisplacement?:number;}
 /** Source graph contacts for stance and alternating support. Elapsed phase is
  * explicit and replayable; rendering cadence is not solver state. */
 export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupports:Readonly<Record<string,ContactSupport>>={}){
@@ -105,6 +105,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
  return {chains,scaleLength,stride,resolve(input:CreaturePoseV1,phase:ContactPhase){
   if(!Number.isFinite(phase.elapsedMs)||phase.elapsedMs<0||!Number.isFinite(phase.durationMs)||phase.durationMs<=0)throw Error('Contact: invalid phase');
   if(phase.travel!==undefined&&phase.travel!=='solver'&&phase.travel!=='stage')throw Error('Contact: invalid travel owner');
+  if(phase.travel==='stage'&&phase.stageDisplacement!==undefined&&!Number.isFinite(phase.stageDisplacement))throw Error('Contact: invalid stage displacement');
   if(phase.travel==='stage')input={...input,root:{rotation:0,...input.root,dx:0}};
   const free=/:(flight|fly|swim|jet|hop|leap|climb)$/.test(phase.actionId)||phase.actionId==='melee:kick'||phase.realm==='aquatic'||phase.realm==='aerial'||phase.realm==='gas-giant';
   const stance=contactStanceForAction(template,phase.actionId),selected=free||stance==='none'?[]:chains.filter(c=>stance==='all'||c.id.startsWith('hind'));
@@ -129,10 +130,11 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
    const swing=gait&&!gaitPolicy&&(c.group===1?cycle<.5:cycle>=.5),at=swing?(c.group===1?cycle*2:(cycle-.5)*2):0;
    const step=c.group===1?(cycle<.5?smooth(cycle*2):1):(cycle<.5?0:smooth((cycle-.5)*2));
    const lift=c.chain.lengths.lower*.15*weight;
-   // Stage mode owns translation: retain gait lift without adding local stride.
-   // Arena-space planting additionally needs the caller's stage displacement;
-   // no such displacement is inferred from elapsed time here.
+   // Stage translation is signed and supplied by the caller, never inferred
+   // from elapsed time. Only stance targets recede; airborne keys keep their
+   // authored swing. Use the same measured scale as the stage adapter.
    const target={x:c.endPoint.x+(gait&&phase.travel!=='stage'?direction*stride*(completed+step):0)-(swing?Math.sign(c.endPoint.x-c.root.x)*c.chain.lengths.lower*.10*Math.sin(Math.PI*at)**2*weight:0),y:c.endPoint.y-(swing?Math.sin(Math.PI*at)**2*lift:0)};
+   if(!swing&&phase.travel==='stage'&&phase.stageDisplacement!==undefined)target.x-=phase.stageDisplacement*scaleLength;
    return {joint:c.end,target,endpointTarget:{...target},paintedTarget:{x:target.x+c.offset.x,y:target.y+c.offset.y},stance:!swing};
   });
   let compression=0,final=program.evaluate(pose);
