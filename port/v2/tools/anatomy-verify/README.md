@@ -736,3 +736,6 @@ freshwater 0.127, mud 0.090, vent 0.078 body lengths per stance; the Civet (comp
 fixed in arena pixels within every stance window (< 0.5 px), zero refusals, the holder at the walked distance at
 the end of the walk and at the full run-up at impact. battle2 37/37, `tsc` clean. The stage-run-up decision is
 closed by construction: the walk never asks the solver for more than the rig's measured reach.
+Addendum — the first film on the cadence stage found a sign error: a RIGHT-side attacker refused 7× because the
+displacement was world-signed while the solver recedes in body space (forward = +x for either facing; the holder
+mirrors the rig). Fixed: forward body lengths; the outcome test now runs the crab from both sides (36/36).
