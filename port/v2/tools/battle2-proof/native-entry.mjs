@@ -8,7 +8,7 @@ import { compileAnatomyAttack } from 'cf-proof/anatomy-attacks.ts';
 import { combatantScale, composeArena } from 'cf-proof/battle2/arena.ts';
 import { selectHabitatArena } from 'cf-proof/battle2/habitat-arena.ts';
 import { createPartsRig } from 'cf-proof/battle2/parts-rig.ts';
-import { BattleStage, turnPlanInputFromTranscriptEvent } from 'cf-proof/battle2/stage.ts';
+import { BattleStage, GUARDIAN_FRAME_FILL, turnPlanInputFromTranscriptEvent } from 'cf-proof/battle2/stage.ts';
 import { loadCreatureRigV1 } from 'cf-proof/creature-rig.ts';
 import { parseEffectSequenceAnchors } from 'cf-proof/effects/anchors.ts';
 import { PARTICLE_DISC_SIZE, particleDiscRgba } from 'cf-proof/effects/particle-texture.ts';
@@ -37,9 +37,11 @@ try {
   const [recipe, anchorsRaw, far, mid, near] = await Promise.all([json('arena-recipe.json'), json('wild-anchors.json'), image('arena-far.png'), image('arena-mid.png'), image('arena-near.png')]);
   const parsed = parseEffectSequenceAnchors(anchorsRaw); if (!parsed.ok) throw Error(parsed.reason); const anchors = parsed.anchors, themes = new EffectThemeLibrary([anchors]);
   const texture = (img) => Texture.from(img.canvas);
-  const layout = composeArena({ id: recipe.battleContext?.worldKey ?? 'arena', groundLineNormalized: recipe.groundLineNormalized, plates: { far, mid, near } }, FRAME);
+  // D2 G6: a guardian record moves the stands (GUARDIAN_STANDS) and fills the frame by its tallest pose, as the stage does
+  const guardianSide = left.rig.guardian ? 'left' : right.rig.guardian ? 'right' : undefined;
+  const layout = composeArena({ id: recipe.battleContext?.worldKey ?? 'arena', groundLineNormalized: recipe.groundLineNormalized, plates: { far, mid, near } }, FRAME, guardianSide ? { guardianSide } : {});
   const masses = { left: left.card.massClass.multiplier, right: right.card.massClass.multiplier };
-  const painted = (s, mass) => { const k = combatantScale(s.rig.bounds, s.rig.cutout.height, mass, FRAME.height); return { height: k.heightFraction, footBelowCentre: (s.rig.foot.y - 0.5) * s.rig.cutout.height * k.scale / FRAME.height }; };
+  const painted = (s, mass) => { const k = combatantScale(s.rig.bounds, s.rig.cutout.height, mass, FRAME.height, s.rig.guardian ? { frameFill: GUARDIAN_FRAME_FILL, tallestHeight: s.rig.tallestHeight } : {}); return { height: k.heightFraction, footBelowCentre: (s.rig.foot.y - 0.5) * s.rig.cutout.height * k.scale / FRAME.height }; };
   const habitat = selectHabitatArena({ contextId: 'battle2-proof', seed: recipe.seed, round: 0, kind: 'wild', worlds: null, groundLineY: layout.groundLineY,
     left: { record: left.record, genome: null, label: left.name, painted: painted(left, masses.left) }, right: { record: right.record, genome: null, label: right.name, painted: painted(right, masses.right) } });
   if (habitat.status !== 'READY') throw Error('habitat: ' + habitat.reason);

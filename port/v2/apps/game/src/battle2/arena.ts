@@ -10,6 +10,11 @@ export const PARALLAX_RATES = Object.freeze({ far: 0.10, mid: 0.50, near: 1.20 }
 export type PlateId = keyof typeof PARALLAX_RATES;
 export const PLATE_ORDER: readonly PlateId[] = Object.freeze(['far', 'mid', 'near']);
 export const STAND_X = Object.freeze({ left: 1 / 3, right: 2 / 3 });
+/** D2 G6 eye finding (bear-vs-crab-01): a guardian at 0.9 of the frame height is ~0.75 of its width side-on, so on the
+ * equal stands its fore paws already overlap the opponent before the lunge. In a guardian battle the guardian's stand
+ * moves out and the opponent's to the far third; one pair of constants for Nick's eye. */
+export const GUARDIAN_STANDS = Object.freeze({ guardian: 0.30, opponent: 0.82 });
+export interface ComposeArenaOptions { readonly guardianSide?: 'left' | 'right'; }
 /** The attacker closes this fraction of the stand distance on its run-up (kit: "approach, distance-independent"). */
 export const RUN_UP_FRACTION = 0.55;
 export const COMBATANT_HEIGHT_FRACTION = Object.freeze({ min: 1 / 3, max: 1 / 2 });
@@ -39,13 +44,15 @@ export type ParallaxOffset = Readonly<Record<PlateId, number>>;
 const finite01 = (v: number): boolean => Number.isFinite(v) && v > 0 && v < 1;
 
 /** Frame-space layout: plates cover the frame plus the overscan their parallax rate needs, ground lines aligned. */
-export function composeArena(recipe: ArenaRecipeInput, frame: FrameSize): ArenaLayout {
+export function composeArena(recipe: ArenaRecipeInput, frame: FrameSize, options: ComposeArenaOptions = {}): ArenaLayout {
   if (!recipe || typeof recipe.id !== 'string' || !recipe.id) throw new TypeError('arena: recipe id required');
   if (!finite01(recipe.groundLineNormalized)) throw new TypeError('arena: groundLineNormalized must be inside (0,1)');
   if (!(frame.width > 0) || !(frame.height > 0)) throw new TypeError('arena: frame must be positive');
   const g = recipe.groundLineNormalized, groundLinePx = g * frame.height;
-  const stands = Object.freeze({ left: Object.freeze({ x: STAND_X.left, y: g }), right: Object.freeze({ x: STAND_X.right, y: g }) });
-  const standDistance = STAND_X.right - STAND_X.left, runUp = standDistance * RUN_UP_FRACTION, runUpPx = runUp * frame.width;
+  const gs = options.guardianSide;
+  const sx = gs === 'left' ? { left: GUARDIAN_STANDS.guardian, right: GUARDIAN_STANDS.opponent } : gs === 'right' ? { left: 1 - GUARDIAN_STANDS.opponent, right: 1 - GUARDIAN_STANDS.guardian } : STAND_X;
+  const stands = Object.freeze({ left: Object.freeze({ x: sx.left, y: g }), right: Object.freeze({ x: sx.right, y: g }) });
+  const standDistance = sx.right - sx.left, runUp = standDistance * RUN_UP_FRACTION, runUpPx = runUp * frame.width;
   const plates = PLATE_ORDER.map((id): PlateLayout => {
     const tex = recipe.plates[id];
     if (!tex || !(tex.width > 0) || !(tex.height > 0)) throw new TypeError(`arena: plate "${id}" has no size`);
@@ -67,7 +74,10 @@ export interface CombatantScale { readonly scale: number; readonly heightFractio
 /** Options of the scale, not a species branch: `frameFill` (0.5–1) replaces the mass-class fraction with a
  * frame-fill target — the kit's GUARDIAN RULE ("fills the battle screen", D2 §4) for apex guardians. Absent, the
  * result is byte-identical to the mass-class rule. */
-export interface CombatantScaleOptions { readonly frameFill?: number; }
+export interface CombatantScaleOptions { readonly frameFill?: number;
+  /** With `frameFill`: the height the fill sizes, in cut-out units (the rig's tallest pose, `BattleRigV1.tallestHeight`);
+   * absent, the rest bounds height. Ignored without `frameFill`. */
+  readonly tallestHeight?: number; }
 /** Scale a rig so its standing height is 1/3 (tiny) .. 1/2 (titanic) of the frame height, or `frameFill` of it. */
 export function combatantScale(bounds: Readonly<{ height: number }>, cutoutHeightPx: number, mass: number, frameHeight: number, options: CombatantScaleOptions = {}): CombatantScale {
   if (!(bounds.height > 0) || bounds.height > 1) throw new TypeError('combatant scale: bounds.height must be in (0,1]');
@@ -76,7 +86,11 @@ export function combatantScale(bounds: Readonly<{ height: number }>, cutoutHeigh
   const u = Math.min(1, Math.max(0, (mass - MASS_CLASS.tiny) / (MASS_CLASS.titanic - MASS_CLASS.tiny)));
   const heightFraction = options.frameFill ?? (COMBATANT_HEIGHT_FRACTION.min + (COMBATANT_HEIGHT_FRACTION.max - COMBATANT_HEIGHT_FRACTION.min) * u);
   const heightPx = heightFraction * frameHeight;
-  return Object.freeze({ scale: heightPx / (bounds.height * cutoutHeightPx), heightFraction, heightPx });
+  if (options.frameFill === undefined || options.tallestHeight === undefined) return Object.freeze({ scale: heightPx / (bounds.height * cutoutHeightPx), heightFraction, heightPx });
+  // the fill sizes the TALLEST pose (D2 G6 eye finding): the rest height is the fill's share scaled by rest/tallest
+  if (!(options.tallestHeight >= bounds.height)) throw new TypeError('combatant scale: tallestHeight must be at least bounds.height');
+  const scale = heightPx / (options.tallestHeight * cutoutHeightPx);
+  return Object.freeze({ scale, heightFraction, heightPx: scale * bounds.height * cutoutHeightPx });
 }
 
 /* ---------- seeded arena selection (stub: recipe ids only) ---------- */

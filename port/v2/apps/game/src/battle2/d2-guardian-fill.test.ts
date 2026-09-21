@@ -7,11 +7,12 @@ import { describe, expect, it } from 'vitest';
 import { compileAnatomyAttack } from '../anatomy-attacks.js';
 import { parseEffectSequenceAnchors, type EffectSequenceAnchors } from '../effects/anchors.js';
 import type { EffectTextureLike } from '../effects/pixi-adapter.js';
-import { combatantScale, composeArena } from './arena.js';
+import { GUARDIAN_STANDS, STAND_X, combatantScale, composeArena, type ComposeArenaOptions } from './arena.js';
 import type { TurnAttack, TurnPlanInput } from './choreography.js';
 import { createPortraitRig } from './fallback.js';
 import type { BattleRigV1, RigContainerLike, RigSpriteLike } from './fixture-rig.js';
 import { REPO_ROOT, loadFit, loadFitDir } from './parts-rig.fixtures.js';
+import type { PartsRig } from './parts-rig.js';
 import { BattleStage, GUARDIAN_FRAME_FILL, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext } from './stage.js';
 class Node { x = 0; y = 0; rotation = 0; alpha = 1; visible = true; destroyed = false; scaleSet: [number, number] = [1, 1]; anchorSet: [number, number] = [0, 0]; text = ''; ops: string[] = [];
   readonly scale = { set: (x: number, y: number) => { this.scaleSet = [x, y]; } }; readonly anchor = { set: (x: number, y: number) => { this.anchorSet = [x, y]; } };
@@ -24,12 +25,17 @@ const rigFactory = { container: (): RigContainerLike => new Node(), portraitSpri
 const portraitRig = (): BattleRigV1 => createPortraitRig({ templateId: 'portrait', recipeHash: 'thumb:platypus', cutout: { width: 132, height: 132 }, alphaBox: { x: 20, y: 30, width: 90, height: 96 }, factory: rigFactory });
 const TEX: EffectTextureLike = { width: 1672, height: 941 };
 const VIEWPORTS = [{ width: 1024, height: 576 }, { width: 1920, height: 1080 }] as const;
-const layoutFor = (frame: { width: number; height: number }) => composeArena({ id: 'g6', groundLineNormalized: 0.78, plates: { far: TEX, mid: TEX, near: TEX } }, frame);
+const layoutFor = (frame: { width: number; height: number }, options: ComposeArenaOptions = {}) => composeArena({ id: 'g6', groundLineNormalized: 0.78, plates: { far: TEX, mid: TEX, near: TEX } }, frame, options);
 const wild = (): EffectSequenceAnchors => { const p = parseEffectSequenceAnchors(JSON.parse(readFileSync(new URL('audits/ARENA_EFFECTS_V42_PROOF_20260912/wild-anchors.json', REPO_ROOT), 'utf8'))); if (!p.ok) throw new Error(p.reason); return p.anchors; };
 const BEAR = 'audits/VISION_D2_GUARDIAN_20260921/fit-01/';
 const holderOf = (nodes: Node[], rig: BattleRigV1): Node => { const h = nodes.find((n) => n.children.includes(rig.root as object)); if (!h) throw new Error('rig holder not on stage'); return h; };
-/** Drawn standing height of a rig on the stage, in frame px: holder scale × cut-out bounds height × cut-out height. */
+/** Drawn standing (rest) height of a rig on the stage, in frame px: holder scale × cut-out bounds height × cut-out height. */
 const drawnHeight = (holder: Node, rig: BattleRigV1): number => Math.abs(holder.scaleSet[1]) * rig.bounds.height * rig.cutout.height;
+/** Landmark extents of a posed rig in frame px (the parts rig's public path): top y, left x, right x. */
+const landmarkBox = (holder: Node, rig: PartsRig, joints: readonly string[]) => { let top = Infinity, left = Infinity, right = -Infinity;
+  for (const j of joints) { const p = rig.jointPosition(j); if (!p) continue; const x = holder.x + holder.scaleSet[0] * (p.x - rig.foot.x) * rig.cutout.width, y = holder.y + holder.scaleSet[1] * (p.y - rig.foot.y) * rig.cutout.height; if (y < top) top = y; if (x < left) left = x; if (x > right) right = x; }
+  return { top, left, right }; };
+const JOINTS = (record: { landmarks: Record<string, unknown> }) => Object.keys(record.landmarks);
 type Ctx = TurnOutcomeContext;
 const playTurn = (stage: BattleStage, ctx: Ctx, row: Record<string, unknown>) => { const t = turnPlanInputFromTranscriptEvent(row, ctx, 0); if (t.kind !== 'turn') throw new Error(t.reason); const plan = stage.play(t.input as TurnPlanInput); return plan; };
 const attackOf = (card: Parameters<typeof compileAnatomyAttack>[0]): TurnAttack => { const r = compileAnatomyAttack(card, 'ground', 0); return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.contactJoint } as TurnAttack; };
@@ -47,21 +53,26 @@ describe('D2 G6 — a guardian fills the frame; everything else is untouched', (
     expect(rig.guardian).toMatchObject({ desktopOnly: true, cpuP95GateMs: 5, landmarkComparisonBoundPx: 60, requestedMasterSize: 1536, actualMasterSize: 1254 });
     expect((record as { guardian?: unknown }).guardian).toEqual(rig.guardian);
     expect(rig.contactMode).toBe('family'); expect(rig.stanceReach).toBeGreaterThan(0.01);
-    const crab = await loadFit('crab'); expect(crab.rig.guardian).toBeUndefined();
+    // the tallest-pose probe: the bear rears in its claw attack (measured 1.38 × rest); the crab never rises above rest
+    expect(rig.tallestHeight! / rig.bounds.height).toBeGreaterThan(1.3); expect(rig.tallestHeight! / rig.bounds.height).toBeLessThan(1.5);
+    expect(rig.refusals?.()).toBe(0); // probe refusals are not the stage's
+    const crab = await loadFit('crab'); expect(crab.rig.guardian).toBeUndefined(); expect(crab.rig.tallestHeight).toBe(crab.rig.bounds.height);
   });
-  for (const frame of VIEWPORTS) for (const side of ['left', 'right'] as const) it(`bear on the ${side} at ${frame.width}×${frame.height}: drawn height within 2 % of ${GUARDIAN_FRAME_FILL} × frame through a whole turn, zero refusals`, async () => {
-    const { rig, card } = await loadFitDir(BEAR);
-    const layout = layoutFor(frame); const { f, nodes } = stageFactory(); let now = 0;
+  for (const frame of VIEWPORTS) for (const side of ['left', 'right'] as const) it(`bear on the ${side} at ${frame.width}×${frame.height}: its tallest pose spans ${GUARDIAN_FRAME_FILL} of the frame, the landmarks never leave the frame through a whole turn, zero refusals`, async () => {
+    const { rig, card, record } = await loadFitDir(BEAR);
+    const layout = layoutFor(frame, { guardianSide: side }); const { f, nodes } = stageFactory(); let now = 0;
     const rigs = side === 'left' ? { left: rig, right: portraitRig() } : { left: portraitRig(), right: rig };
     const masses = side === 'left' ? { left: card.massClass.multiplier, right: 0.85 } : { left: 0.85, right: card.massClass.multiplier };
     const stage = new BattleStage({ factory: f, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs, masses });
     const ctx = ctxFor(layout, side === 'left' ? 'A' : 'B', 'Bear', card.massClass.multiplier, card);
     const plan = playTurn(stage, ctx, side === 'left' ? { side: 'A', an: 'Bear', dn: 'Platypus', dmg: 7, crit: false, hpA: 30, hpB: 20 } : { side: 'B', an: 'Bear', dn: 'Platypus', dmg: 7, crit: false, hpA: 20, hpB: 30 });
-    const holder = holderOf(nodes, rig); const target = GUARDIAN_FRAME_FILL * frame.height;
-    let min = Infinity, max = -Infinity;
-    runFull(stage, plan, (ms) => { now = ms; const h = drawnHeight(holder, rig); if (h < min) min = h; if (h > max) max = h; });
+    const holder = holderOf(nodes, rig); const target = GUARDIAN_FRAME_FILL * frame.height * (rig.bounds.height / rig.tallestHeight!);
+    let min = Infinity, max = -Infinity, topMin = Infinity; const joints = JOINTS(record);
+    runFull(stage, plan, (ms) => { now = ms; const h = drawnHeight(holder, rig); if (h < min) min = h; if (h > max) max = h; const t = landmarkBox(holder, rig, joints).top; if (t < topMin) topMin = t; });
     expect(min).toBeGreaterThanOrEqual(target * 0.98); expect(max).toBeLessThanOrEqual(target * 1.02);
-    expect(drawnHeight(holder, rig)).toBeCloseTo(combatantScale(rig.bounds, rig.cutout.height, card.massClass.multiplier, frame.height, { frameFill: GUARDIAN_FRAME_FILL }).heightPx, 9);
+    expect(target / frame.height).toBeGreaterThan(0.65); // the bear at rest is still the biggest thing on the stage (0.70 measured)
+    expect(topMin).toBeGreaterThanOrEqual(frame.height * (1 - GUARDIAN_FRAME_FILL) - frame.height * 0.02); // the rearing head stays inside the frame (2 % for blend samples between the probe's 13)
+    expect(drawnHeight(holder, rig)).toBeCloseTo(combatantScale(rig.bounds, rig.cutout.height, card.massClass.multiplier, frame.height, { frameFill: GUARDIAN_FRAME_FILL, tallestHeight: rig.tallestHeight! }).heightPx, 9);
     expect(rig.refusals?.() ?? 0).toBe(0);
   });
   for (const frame of VIEWPORTS) it(`crab (no guardian block) at ${frame.width}×${frame.height}: holder scale byte-identical to the mass-class rule; the bear beside it is ${GUARDIAN_FRAME_FILL} of the frame`, async () => {
@@ -74,9 +85,27 @@ describe('D2 G6 — a guardian fills the frame; everything else is untouched', (
     const hc = holderOf(nodes, crab.rig), hb = holderOf(nodes, bear.rig);
     expect(hc.scaleSet[1]).toBe(combatantScale(crab.rig.bounds, crab.rig.cutout.height, crab.card.massClass.multiplier, frame.height).scale);
     expect(hc.scaleSet[1]).not.toBe(combatantScale(crab.rig.bounds, crab.rig.cutout.height, crab.card.massClass.multiplier, frame.height, { frameFill: GUARDIAN_FRAME_FILL }).scale);
-    expect(drawnHeight(hb, bear.rig) / frame.height).toBeCloseTo(GUARDIAN_FRAME_FILL, 9);
+    expect(drawnHeight(hb, bear.rig) / frame.height).toBeCloseTo(GUARDIAN_FRAME_FILL * bear.rig.bounds.height / bear.rig.tallestHeight!, 9);
     expect(drawnHeight(hc, crab.rig) / frame.height).toBeLessThan(0.5 + 1e-9);
     expect(crab.rig.refusals?.() ?? 0).toBe(0); expect(bear.rig.refusals?.() ?? 0).toBe(0);
+  });
+  it('guardian stands: with the bear on the left the stands move to 0.30 / 0.82 (mirrored on the right) and the bear\'s landmarks clear the crab\'s at rest; without a guardian the stands are the equal thirds', async () => {
+    const crab = await loadFit('crab'), bear = await loadFitDir(BEAR); const frame = VIEWPORTS[0];
+    expect(layoutFor(frame).stands.left.x).toBe(STAND_X.left); expect(layoutFor(frame).stands.right.x).toBe(STAND_X.right);
+    expect(layoutFor(frame, { guardianSide: 'left' }).stands).toMatchObject({ left: { x: GUARDIAN_STANDS.guardian }, right: { x: GUARDIAN_STANDS.opponent } });
+    expect(layoutFor(frame, { guardianSide: 'right' }).stands).toMatchObject({ left: { x: 1 - GUARDIAN_STANDS.opponent }, right: { x: 1 - GUARDIAN_STANDS.guardian } });
+    for (const side of ['left', 'right'] as const) {
+      const layout = layoutFor(frame, { guardianSide: side }); const { f, nodes } = stageFactory(); let now = 0;
+      const rigs = side === 'left' ? { left: bear.rig, right: crab.rig } : { left: crab.rig, right: bear.rig };
+      const masses = side === 'left' ? { left: bear.card.massClass.multiplier, right: crab.card.massClass.multiplier } : { left: crab.card.massClass.multiplier, right: bear.card.massClass.multiplier };
+      const stage = new BattleStage({ factory: f, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs, masses });
+      const plan = playTurn(stage, ctxFor(layout, side === 'left' ? 'A' : 'B', 'Bear', bear.card.massClass.multiplier, bear.card), side === 'left' ? { side: 'A', an: 'Bear', dn: 'Platypus', dmg: 7, crit: false, hpA: 30, hpB: 20 } : { side: 'B', an: 'Bear', dn: 'Platypus', dmg: 7, crit: false, hpA: 20, hpB: 30 });
+      now = plan.beats.commandEnd - 1; stage.tick(); // at the stands, before the approach
+      const hb = holderOf(nodes, bear.rig), hc = holderOf(nodes, crab.rig), bb = landmarkBox(hb, bear.rig, JOINTS(bear.record)), cb = landmarkBox(hc, crab.rig, JOINTS(crab.record));
+      if (side === 'left') expect(bb.right).toBeLessThan(cb.left); else expect(bb.left).toBeGreaterThan(cb.right);
+      expect(bb.left).toBeGreaterThanOrEqual(-frame.width * 0.02); expect(bb.right).toBeLessThanOrEqual(frame.width * 1.02); // the guardian stays inside the frame at its stand
+      runFull(stage, plan, (ms) => { now = ms; }); expect(bear.rig.refusals?.() ?? 0).toBe(0); expect(crab.rig.refusals?.() ?? 0).toBe(0);
+    }
   });
   it('MEASUREMENT (not a gate): the bear under OBSERVED painted supports through the same turn — Codex\'s static sweep refuses 15/20 rows at residual 0.254–0.269 px vs 0.25; the rest-support parts rig is what the stage uses', async () => {
     const { rig, card } = await loadFitDir(BEAR, 'family', 'observed');

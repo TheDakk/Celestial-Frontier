@@ -9,11 +9,25 @@ of `combatantScale`, taken when the record carries a `guardian` block). Native f
 | Film | Left | Right | Attacks | Refusals | CPU p95 | Verdict |
 |---|---|---|---|---|---|---|
 | `bear-vs-crab-01` | Brown Bear, guardian fill, family solver, cadence approach (reach 0.120) | crab (crab-fits-03) | claw (foreNearPaw) ×2, dodge | **0 / 0** | **3.10 ms** (guardian tier gate 5 ms; painted tier 3.5) | **DIAGNOSTIC_PASS** |
+| `bear-vs-crab-02` | same bear; the fill sizes its TALLEST pose (0.96 of the frame, `tallestHeight` = 1.38 × rest → rest 0.70 of the frame) and the guardian stands (0.30 / 0.82) | crab (crab-fits-03) | claw (foreNearPaw) ×2, dodge | **0 / 0** | **3.00 ms** | **DIAGNOSTIC_PASS** — both eye findings answered; -01 kept beside it for Nick's choice |
 
 Stills: `turn0-hit-approach-50.png` — the bear at 0.9 of the frame walking its planted cycle, head at the HUD band;
 `turn0-hit-impact.png` — reared on the hind legs, fore paw on the crab (bleached by the hit flash by design).
 
-## Findings for the eye (Nick), not defects of the gates
+## The two eye findings, built (film -02) — Nick chooses between -01 and -02
+- **Headroom:** the parts rig measures its tallest pose at load through its own public path (largest upward landmark
+  rise over approach / the anatomy attacks / hit / dodge / faint / victory; crab ×1.00, Civet ×1.26, bear ×1.38 of
+  rest) and the guardian fill sizes THAT (`GUARDIAN_FRAME_FILL = 0.96` of the frame for the tallest pose → the bear
+  stands at 0.70 of the frame and its rearing head stays under the HUD band; `d2-guardian-fill.test.ts` asserts the
+  landmarks never leave the frame through the whole turn on both viewports).
+- **Stands:** `composeArena(..., { guardianSide })` moves the stands to `GUARDIAN_STANDS` 0.30 / 0.82 (mirrored on the
+  right); the test asserts the bear's landmarks clear the crab's at the stands from both sides; the game wiring and
+  the native entry compose the arena after the rigs so they know the guardian side.
+- Trade recorded for the eye: -01 is the bigger bear (0.9 at rest) whose head leaves the frame when it rears and whose
+  paws overlap the crab before the lunge; -02 is 0.70 at rest, always inside the frame, clear of the crab. One
+  constant each (`GUARDIAN_FRAME_FILL`, `GUARDIAN_STANDS`) if Nick wants it between.
+
+## Findings for the eye (Nick) as first seen on film -01
 1. **Headroom when rearing.** At 0.9 fill the standing bear touches the HUD band; when the claw attack rears it,
    the head leaves the frame top. Options: fill 0.8 for quadrupeds whose melee rears, or a fill measured from the
    record's tallest pose rather than rest. Nick's eye decides; the number is one constant.

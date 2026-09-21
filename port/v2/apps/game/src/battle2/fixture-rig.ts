@@ -49,6 +49,9 @@ export interface BattleRigV1 extends CreatureRigV1 {
   readonly bodyLength: number;
   /** Measured accommodatable stage travel per stance (body lengths) — the parts rig probes its solver at load (A2). */
   readonly stanceReach?: number;
+  /** Tallest pose height in cut-out units (≥ bounds.height): rest bounds plus the largest upward landmark rise across
+   * the clips the stage plays, measured by the parts rig at load (D2 G6 eye finding: a rearing melee left the frame). */
+  readonly tallestHeight?: number;
   /** The record's guardian block (D2): a guardian FILLS the battle screen (kit GUARDIAN RULE) — the stage scales it with
    * `frameFill` instead of its mass class; desktop-only, its own CPU gate. Absent for every other creature. */
   readonly guardian?: Readonly<{ desktopOnly?: boolean; cpuP95GateMs?: number; landmarkComparisonBoundPx?: number }>;

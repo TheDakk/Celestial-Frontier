@@ -29,7 +29,7 @@ block; nothing in the solver, its gates or the fit was changed here.
   mass-class scale byte-identical (`toBe` against `combatantScale` without the option) and stays ≤ 0.5 of the frame.
 
 ## 3. Film
-See `audits/BATTLE2_D2_GUARDIAN_FILM_20260922/README.md` (bear vs crab, native runner, rest supports).
+See `audits/BATTLE2_D2_GUARDIAN_FILM_20260922/README.md`: `bear-vs-crab-01` (rest fill 0.9; two eye findings — rearing head leaves the frame, stands overlap) and `bear-vs-crab-02` (fill sizes the tallest pose, guardian stands; both answered; 3.00 ms). Nick picks the look; each is one constant.
 
 ## 4. Left for Codex / Nick
 Codex: §1's diagnostics, a rest-supports mode in `static.ts` (so the static verdict reports the mode the stage

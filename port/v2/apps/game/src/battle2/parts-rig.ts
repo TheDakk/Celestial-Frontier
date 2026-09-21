@@ -27,6 +27,8 @@ import { createSkeletonPoseProgram, type SkeletonPoseProgram } from '../../../..
 import { createFamilyContactSolver, createQuadrupedContactSolver, observedContactSupports } from '../creature-rig-contact.js';
 import { buildTimeline } from '../motion/timeline.js';
 import { sampleClip } from './choreography.js';
+import { compileAnatomyAttack } from '../anatomy-attacks.js';
+import type { MotionTimeline } from '../motion/timeline.js';
 import type { CreaturePartsBindingV1 } from '../creature-rig.js';
 import { createCreatureRigPerformance } from '../creature-rig-performance.js';
 import type { CreaturePoseV1, CreatureRigRecordV1, CreatureRigV1 as PaintSkinRigV1 } from '../creature-rig.js';
@@ -125,15 +127,15 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
       stanceReach = reach * 0.9;
     } catch { stanceReach = undefined; }
   }
-  const parts: readonly RigPartV1[] = Object.freeze(rig.parts.map((p) => Object.freeze({ id: p.id, display: p.display, pivot: Object.freeze({ x: p.pivot.x, y: p.pivot.y }), layer: p.layer })));
   const bounds = Object.freeze({ width: alphaBox.width / W, height: alphaBox.height / H, groundLineY: record.geometry.groundLineY });
+  const parts: readonly RigPartV1[] = Object.freeze(rig.parts.map((p) => Object.freeze({ id: p.id, display: p.display, pivot: Object.freeze({ x: p.pivot.x, y: p.pivot.y }), layer: p.layer })));
   if (!(bounds.height > 0) || bounds.height > 1 || !(bounds.width > 0) || bounds.width > 1) throw new TypeError('parts rig: alpha box must lie inside the cut-out');
   const out: PartsRig = {
     kind: 'parts', label: `${PARTS_RIG_LABEL} · contact: ${contactMode} · travel: stage`, contactMode,
     travelOwner: 'stage',
     recipeHash: rig.recipeHash, templateId: rig.templateId, parts, root: rig.root, bounds,
     // E1.5 finding: the stage treats `cutout` as the rig's display-unit size; the paint-skin mesh is normalized, so it is 1×1 here.
-    cutout: Object.freeze({ width: 1, height: 1 }), sourceSize: Object.freeze({ width: W, height: H }), foot: Object.freeze({ x: root[0], y: record.geometry.groundLineY }), bodyLength: card.scaleLength, ...(stanceReach !== undefined ? { stanceReach } : {}), ...((record as { guardian?: BattleRigV1['guardian'] }).guardian ? { guardian: Object.freeze({ ...(record as { guardian?: BattleRigV1['guardian'] }).guardian }) } : {}),
+    cutout: Object.freeze({ width: 1, height: 1 }), sourceSize: Object.freeze({ width: W, height: H }), foot: Object.freeze({ x: root[0], y: record.geometry.groundLineY }), bodyLength: card.scaleLength, tallestHeight: bounds.height, ...(stanceReach !== undefined ? { stanceReach } : {}), ...((record as { guardian?: BattleRigV1['guardian'] }).guardian ? { guardian: Object.freeze({ ...(record as { guardian?: BattleRigV1['guardian'] }).guardian }) } : {}),
     applyPose(pose: RigPose, context: RigPoseContext = restContext()): void {
       if (disposed) throw new Error('parts rig is disposed');
       pending = pose; frame += 1;
@@ -149,5 +151,22 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
     },
     dispose(): void { if (disposed) return; disposed = true; owner.dispose(); rig.dispose(); },
   };
+  // D2 G6 eye finding (bear-vs-crab-01): a rearing melee lifted the head out of the frame when the REST height filled
+  // it. The rig measures its TALLEST pose once at load through its own public path (applyPose → jointPosition, the
+  // path the stage drives): the largest upward rise of any landmark across the clips the stage plays (approach, the
+  // anatomy attacks, hit, dodge, faint, victory), added to the rest bounds. Cut-out units. Universal: measured for
+  // every parts rig, applied by the stage only where a fill rule asks for it. Probe refusals are not the stage's.
+  const topOf = (): number => { let y = Infinity; for (const j of Object.keys(record.landmarks)) { const p = out.jointPosition(j); if (p && p.y < y) y = p.y; } return y; };
+  const timelines: MotionTimeline[] = [];
+  for (const id of ['approach', 'hit', 'dodge', 'faint', 'victory']) { try { timelines.push(buildTimeline(card, id, 5)); } catch { /* not an action of this family */ } }
+  for (let k = 0; k < 3; k++) { try { timelines.push(compileAnatomyAttack(card, 'ground', k).timeline); } catch { break; } }
+  out.applyPose({}, restContext()); const restTop = topOf(); let rise = 0;
+  for (const tl of timelines) for (let i = 0; i <= 12; i++) {
+    const ms = tl.durationMs * (i / 12);
+    out.applyPose(sampleClip({ source: 'timeline', timeline: tl }, ms), { actionId: tl.actionId, elapsedMs: ms, durationMs: tl.durationMs, weight: 1, planted: plantedFor(tl.actionId), travel: 'stage' });
+    const r = restTop - topOf(); if (r > rise) rise = r;
+  }
+  out.applyPose({}, restContext()); refused = 0; applied = 0; lastError = null; last = null;
+  Object.assign(out, { tallestHeight: bounds.height + rise });
   return out;
 }

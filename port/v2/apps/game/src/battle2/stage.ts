@@ -10,9 +10,12 @@ import { EffectSequencePlayer, type EffectPixiHost, type EffectTextureLike } fro
 import type { EffectDelivery } from '../effects/sequencer.js';
 import type { BodyCard } from '../motion/body-card.js';
 import { PLATE_ORDER, combatantScale, parallaxOffset, type ArenaLayout, type PlateId } from './arena.js';
-/** D2 G6 — a guardian rig fills 0.9 of the frame height (kit GUARDIAN RULE: "fills the battle screen"); an option of
- * `combatantScale`, not a species branch. */
-export const GUARDIAN_FRAME_FILL = 0.9;
+/** D2 G6 — a guardian rig fills the frame (kit GUARDIAN RULE: "fills the battle screen"): its TALLEST pose
+ * (`BattleRigV1.tallestHeight`, measured by the parts rig at load) spans this fraction of the frame height, so a rearing
+ * melee stays inside the frame and under the HUD band. An option of `combatantScale`, not a species branch. Bear
+ * (tallest = 1.38 × rest): rest height 0.70 of the frame at 0.96. Film -01 (rest at 0.9, head leaves the frame when
+ * rearing) is kept beside film -02 for Nick's eye. */
+export const GUARDIAN_FRAME_FILL = 0.96;
 import { buildTurnPlan, sampleTurn, type Side, type StageSample, type TurnArena, type TurnAttack, type TurnPlan, type TurnPlanInput } from './choreography.js';
 import { TurnCuePlayer, buildTurnCuePlan, type CueSink, type TurnCuePlan } from './cue-plan.js';
 import type { BattleRigV1, RigNodeLike } from './fixture-rig.js';
@@ -69,7 +72,7 @@ export class BattleStage {
       r.x = -rig.foot.x * rig.cutout.width; r.y = -rig.foot.y * rig.cutout.height; h.addChild(r as object);
       this.root.addChild(h); return h;
     };
-    this.#scales = { left: combatantScale(o.rigs.left.bounds, o.rigs.left.cutout.height, o.masses.left, L.frame.height, o.rigs.left.guardian ? { frameFill: GUARDIAN_FRAME_FILL } : {}).scale, right: combatantScale(o.rigs.right.bounds, o.rigs.right.cutout.height, o.masses.right, L.frame.height, o.rigs.right.guardian ? { frameFill: GUARDIAN_FRAME_FILL } : {}).scale };
+    this.#scales = { left: combatantScale(o.rigs.left.bounds, o.rigs.left.cutout.height, o.masses.left, L.frame.height, o.rigs.left.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(o.rigs.left.tallestHeight !== undefined ? { tallestHeight: o.rigs.left.tallestHeight } : {}) } : {}).scale, right: combatantScale(o.rigs.right.bounds, o.rigs.right.cutout.height, o.masses.right, L.frame.height, o.rigs.right.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(o.rigs.right.tallestHeight !== undefined ? { tallestHeight: o.rigs.right.tallestHeight } : {}) } : {}).scale };
     this.#holders = { left: holder('left'), right: holder('right') };
     this.#fx = f.container(); this.root.addChild(this.#fx);
     this.root.addChild(this.#plates.near);
