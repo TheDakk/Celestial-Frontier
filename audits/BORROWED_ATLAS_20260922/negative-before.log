@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig.test.ts (9 tests | 1 failed | 8 skipped) 9ms
+   × keeps a borrowed atlas and its source alive while disposing owned atlases 8ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig.test.ts > keeps a borrowed atlas and its source alive while disposing owned atlases
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ apps/game/src/creature-rig.test.ts:93:63
+     91|  options.borrowedAtlas=false; // Ownership is captured at load, not re…
+     92|  a.dispose();a.dispose();
+     93|  expect(a.root.destroyed).toBe(true);expect(shared.destroyed).toBe(fal…
+       |                                                               ^
+     94|  expect(()=>b.applyPose({head:{rotation:.1}})).not.toThrow();b.dispose…
+     95|  expect(shared.destroyed).toBe(false);expect(source.destroyed).toBe(fa…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 skipped (9)
+   Start at  09:05:51
+   Duration  367ms (transform 76ms, setup 0ms, import 240ms, tests 9ms, environment 0ms)
+
