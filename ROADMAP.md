@@ -31,3 +31,7 @@ Packet: `audits/SOLVER_STAGE_DISPLACEMENT_20260921/README.md`.
 ### Paired next steps
 
 Codex holds. Claude must pass actual stageDisplacement in its third-pin context (currently omitted), measure planted intervals within the unchanged reach guards, flip the pin when passing and re-film. A184.32px run-up at quarter scale cannot be one unlimited stance; focused negative control preserves that refusal. This lane did not edit or run the sibling’s pin. Claude runs the1536 bear as G3 when available and builds G6 on its record once fitted; the returned1254 masters cannot establish1536 acceptance. Nick: no new decision requested. IC-3 otherwise frozen; roster/P2/other intake held. Prior R3-S/native/R9/phone/CPU leaves and signed evidence remain indexed by `audits/R3S_RESUME_20260921/README.md`; do not repeat completed work.
+
+## Active cadence / guardian fit run — 2026-09-21
+
+Nick authorized shared stride cadence, nine-subject native proof, then Brown Bear generation01 fit. Producer is prepared in shared creature-stage-travel and native harness; battle2 is absent and sibling read-only, so actual E1 wiring remains explicit Claude integration. Packet: audits/STAGE_CADENCE_20260921. Sign producer, one S2, native subjects in retained order; shared native red halts. Bear fit has not begun.
