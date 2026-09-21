@@ -18,11 +18,12 @@ import {distanceTransform} from './thickness.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 /** Backwards-compatible descriptor view: legs per side and slot naming per template (from the contract). */
 export const TEMPLATES=new Proxy({},{get:(_,id)=>{if(typeof id!=='string')return undefined;const r=templateRest(id);return {legsPerSide:r.legsPerSide,slotName:(k,side)=>r.slots[side][k].terminal,rest:r};}});
-export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=0.7,thinWeight=0.4,emptyScale=1.0,unusedEnd=1.0,contactRefine=true,thickNeedsFork=false,touchNotSep=true,loopThinFrac=0,declaredHidden=[],declaredFolded=[],orderBy='sep',rootMode='none',orderFrac=0.5,loopConfirm=false,thickNeedsPalm=false,clawAttached=0,tuftReach=true,kneeFrom='exit',kneeMode='fraction',longest=512}={}){
+export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=0.7,thinWeight=0.4,emptyScale=1.0,unusedEnd=1.0,contactRefine=true,thickNeedsFork=false,touchNotSep=true,loopThinFrac=0,declaredHidden=[],declaredFolded=[],orderBy='sep',rootMode='none',orderFrac=0.5,loopConfirm=false,thickNeedsPalm=false,clawAttached=0,tuftReach=true,kneeFrom='exit',kneeMode='fraction',longest=512,bodyUnitsP2=false}={}){
   const T=templateRest(template),legsPerSide=T.legsPerSide,slotName=(k,side)=>T.slots[side][k].terminal;
   // working scale: the longest side of the working mask (512 = the slice-4 constant; a template-tier setting — a
   // 2.45× downscale of a 1254 master closes the gap between a claw's two fingers)
-  const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128,longest}),{working:{width:W,height:H,scale,box}}=det;let {mask,dt}=det;let interiorPass=null;
+  const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128,longest,bodyUnits:bodyUnitsP2}),{working:{width:W,height:H,scale,box}}=det;let {mask,dt}=det;let interiorPass=null;
+  let R0=0;for(let i=0;i<W*H;i++)if(dt[i]>R0)R0=dt[i];const kP2=bodyUnitsP2?R0/70:1; // graph constants scale with the body radius when bodyUnitsP2 is on
   // INTERIOR-EDGE STAGE (README slice 21): a limb painted over the body is inside the silhouette; its contour is a
   // strong luminance edge. Strong interior contours (Sobel ≥ interiorEdges × the mask's median magnitude, in
   // connected runs ≥ edgeMinLen × rest leg length) are cut out of the working mask before the distance transform,
@@ -37,7 +38,7 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
     for(let i=0;i<W*H;i++){if(!strong[i]||seen[i])continue;const comp=[i];seen[i]=1;const st=[i];let minx=1e9,maxx=-1,miny=1e9,maxy=-1;while(st.length){const c=st.pop();const x=c%W,y=(c-x)/W;if(x<minx)minx=x;if(x>maxx)maxx=x;if(y<miny)miny=y;if(y>maxy)maxy=y;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const nx=x+dx,ny=y+dy;if(nx<0||ny<0||nx>=W||ny>=H)continue;const j=ny*W+nx;if(strong[j]&&!seen[j]){seen[j]=1;comp.push(j);st.push(j);}}}
       if(Math.hypot(maxx-minx,maxy-miny)>=minLen)for(const j of comp)cut[j]=1;}
     const m2=new Uint8Array(mask);let ncut=0;for(let i=0;i<W*H;i++)if(cut[i]&&m2[i]){m2[i]=0;ncut++;}interiorPass={mask:m2,dt:distanceTransform(m2,W,H)};if(process.env.ASSIGN_DEBUG)console.log('interior edges: median',med.toFixed(1),'thr',thr.toFixed(1),'cut px',ncut,'minLen',minLen.toFixed(0));}
-  const g=ridgeGraph(mask,dt,W,H,{spurFactor:1.5,spurFloor:8});
+  const g=ridgeGraph(mask,dt,W,H,{spurFactor:1.5,spurFloor:Math.max(3,Math.round(8*kP2)),junctionRadius:Math.max(2,Math.round(3*kP2))});
   // body/limb split: the geometric mean of the body radius and the rest proximal leg thickness (P3 note), unless a
   // fraction is passed explicitly for measurement
   let frac=bodyFraction??0.45; // 0.45 R: the slice-11 constant; sqrt(rest proximal thickness) and Otsu are measured variants (README slice 18)
@@ -119,7 +120,7 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
   // INTERIOR PASS: the same graph on the contour-cut mask; a thin terminal chain whose TIP lies inside the original
   // thick region (bodyDist 0 on the uncut mask) is a limb painted over the body. Added as kind 'interior' with the
   // same attributes; the main graph is untouched.
-  if(interiorPass){const g2=ridgeGraph(interiorPass.mask,interiorPass.dt,W,H,{spurFactor:1.5,spurFloor:8});const lc2=limbChains(g2,interiorPass.dt,W,{bodyFraction:frac});const seps2=separationPoints(lc2.chains,g2.nodes,centre);let added=0;
+  if(interiorPass){const g2=ridgeGraph(interiorPass.mask,interiorPass.dt,W,H,{spurFactor:1.5,spurFloor:Math.max(3,Math.round(8*kP2)),junctionRadius:Math.max(2,Math.round(3*kP2))});const lc2=limbChains(g2,interiorPass.dt,W,{bodyFraction:frac});const seps2=separationPoints(lc2.chains,g2.nodes,centre);let added=0;
     for(const c of lc2.chains){const last=c.edges[c.edges.length-1];const ti=Math.round(c.endNode.y)*W+Math.round(c.endNode.x);if(process.env.INTERIOR_DEBUG){const tm=toM([c.endNode.x,c.endNode.y]).map(Math.round);const tp=process.env.INTERIOR_DEBUG.split(',').map(Number);console.log('  g2 chain tip',tm.join(','),'d→target',Math.round(Math.hypot(tm[0]-tp[0],tm[1]-tp[1])),'term',last.length,'termDt',last.meanDt,'endDt',c.endDt,'endMax',endMax.toFixed(1),'bodyDist/R',(bodyDist[ti]/R).toFixed(2),'len',c.length,'near existing',cands.some(o=>Math.hypot(o.x-c.endNode.x,o.y-c.endNode.y)<=0.25*R));}
       if(last.length<Math.max(minLimbTerm,termFactor*last.meanDt)||c.endDt>endMax)continue;
       // (a) UPGRADE: a main-graph candidate at the same tip whose terminal edge is spine-short (chopped by the body

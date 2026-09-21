@@ -17,8 +17,11 @@ export function alphaOf(rgba,w,h){
 function integral(mask,W,H){const I=new Int32Array((W+1)*(H+1));for(let y=0;y<H;y++){let row=0;for(let x=0;x<W;x++){row+=mask[y*W+x];I[(y+1)*(W+1)+x+1]=I[y*(W+1)+x+1]+row;}}return (x0,y0,x1,y1)=>{x0=Math.max(0,x0);y0=Math.max(0,y0);x1=Math.min(W,x1);y1=Math.min(H,y1);if(x1<=x0||y1<=y0)return 0;return I[y1*(W+1)+x1]-I[y0*(W+1)+x1]-I[y1*(W+1)+x0]+I[y0*(W+1)+x0];};}
 /** Multi-scale: a thin limb's tip shows at a small window, a thick limb's only at a large one; the union over
  * `windowRadii` (clustered) finds both. Each tip records the smallest radius that found it (its thickness class). */
-export function detectTips(alpha,w,h,{solidAlpha=128,longest=512,windowRadii=[8,14,22,32,48,64],fillMax=.22,mergeRadius=12,sameToeMax=90}={}){
+export function detectTips(alpha,w,h,{solidAlpha=128,longest=512,windowRadii=[8,14,22,32,48,64],fillMax=.22,mergeRadius=12,sameToeMax=90,bodyUnits=false}={}){
   const d=downscaleMask(alpha,w,h,{solidAlpha,longest}),{mask,width:W,height:H}=d,sum=integral(mask,W,H);
+  // body units (slice 30 prerequisite): every window/merge constant as a ratio of the body radius R (max DT of the
+  // working mask), equal to the slice-4/6 constants at the crabs' typical R ≈ 70 working px at 512
+  let dtEarly=null;if(bodyUnits){dtEarly=distanceTransform(mask,W,H);let R=0;for(let i=0;i<W*H;i++)if(dtEarly[i]>R)R=dtEarly[i];const k=R/70;windowRadii=[8,14,22,32,48,64].map(r=>Math.max(2,Math.round(r*k)));mergeRadius=Math.max(3,Math.round(12*k));sameToeMax=Math.round(90*k);}
   const cands=[];
   for(const R of windowRadii){const area=(2*R+1)**2;
     for(let y=1;y<H-1;y++)for(let x=1;x<W-1;x++){const i=y*W+x;if(!mask[i])continue;if(mask[i-1]&&mask[i+1]&&mask[i-W]&&mask[i+W])continue;
@@ -32,7 +35,7 @@ export function detectTips(alpha,w,h,{solidAlpha=128,longest=512,windowRadii=[8,
   // Same-toe merge: two candidates are one tip when the straight path between them stays inside the mask and
   // never crosses anything thicker than ~1.8× the thicker of the two tips (a long tapered toe found at several
   // window sizes). A claw's two fingers fail the test because the thick palm lies between them.
-  const dt=distanceTransform(mask,W,H),thick=t=>{let b=0;const r=Math.max(4,t.R);const cx=Math.round(t.x-t.dir.x*r),cy=Math.round(t.y-t.dir.y*r);for(let y=cy-r;y<=cy+r;y++)for(let x=cx-r;x<=cx+r;x++)if(x>=0&&y>=0&&x<W&&y<H&&dt[y*W+x]>b)b=dt[y*W+x];return b;};
+  const dt=dtEarly??distanceTransform(mask,W,H),thick=t=>{let b=0;const r=Math.max(4,t.R);const cx=Math.round(t.x-t.dir.x*r),cy=Math.round(t.y-t.dir.y*r);for(let y=cy-r;y<=cy+r;y++)for(let x=cx-r;x<=cx+r;x++)if(x>=0&&y>=0&&x<W&&y<H&&dt[y*W+x]>b)b=dt[y*W+x];return b;};
   for(const t of tips)t.thickness=+thick(t).toFixed(1);
   tips.sort((a,b)=>a.f-b.f);const kept=[];
   for(const t of tips){let dup=false;
