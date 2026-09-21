@@ -127,15 +127,16 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   const smooth=(v:number)=>v*v*(3-2*v);
   if(gait)pose.root={rotation:0,...pose.root,dx:phase.travel==='stage'?0:direction*stride*progress/program.bodyLength};
   const contacts=activeChains.map(c=>{
-   const swing=gait&&!gaitPolicy&&(c.group===1?cycle<.5:cycle>=.5),at=swing?(c.group===1?cycle*2:(cycle-.5)*2):0;
+   const bodyPlanted=phase.travel==='stage'&&record.anatomy?.schema==='cf.anatomy-presence/v2'&&record.anatomy.folded?.includes(c.id)===true;
+   const swing=!bodyPlanted&&gait&&!gaitPolicy&&(c.group===1?cycle<.5:cycle>=.5),at=swing?(c.group===1?cycle*2:(cycle-.5)*2):0;
    const step=c.group===1?(cycle<.5?smooth(cycle*2):1):(cycle<.5?0:smooth((cycle-.5)*2));
    const lift=c.chain.lengths.lower*.15*weight;
    // Stage translation is signed and supplied by the caller, never inferred
    // from elapsed time. Only stance targets recede; airborne keys keep their
    // authored swing. Use the same measured scale as the stage adapter.
    const target={x:c.endPoint.x+(gait&&phase.travel!=='stage'?direction*stride*(completed+step):0)-(swing?Math.sign(c.endPoint.x-c.root.x)*c.chain.lengths.lower*.10*Math.sin(Math.PI*at)**2*weight:0),y:c.endPoint.y-(swing?Math.sin(Math.PI*at)**2*lift:0)};
-   if(!swing&&phase.travel==='stage'&&phase.stageDisplacement!==undefined)target.x-=phase.stageDisplacement*scaleLength;
-   return {joint:c.end,target,endpointTarget:{...target},paintedTarget:{x:target.x+c.offset.x,y:target.y+c.offset.y},stance:!swing};
+   if(!swing&&!bodyPlanted&&phase.travel==='stage'&&phase.stageDisplacement!==undefined)target.x-=phase.stageDisplacement*scaleLength;
+   return {joint:c.end,target,endpointTarget:{...target},paintedTarget:{x:target.x+c.offset.x,y:target.y+c.offset.y},stance:!swing,...bodyPlanted?{space:'body' as const}:{}};
   });
   let compression=0,final=program.evaluate(pose);
   // Initial endpoint solve, then at most three fixed-point support corrections.
