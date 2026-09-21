@@ -40,7 +40,7 @@ body.training #setpanel{z-index:var(--cf-layer-training-settings)}
 :is(.panel,#survey,#dock,#sceneactions,#raillft,#railrgt) button:not(:disabled):active{box-shadow:inset 0 0 0 2px var(--cf-color-accent-gold)}
 :is(.panel,#survey) button:is([aria-pressed="true"],[aria-selected="true"],.sel){border-color:var(--cf-color-accent-gold);box-shadow:inset 0 0 0 1px var(--cf-color-accent-gold)}
 :is(.panel,#survey) button:disabled{cursor:default;filter:saturate(.45)}
-/* the Compendium row keeps its own contained 3px ring (index.html; the Compendium instrument's law) — `:is(#survey…)` carries ID specificity, so it is excluded here rather than out-weighed */
+/* the Compendium row keeps its own contained 3px ring (index.html; the Compendium instrument's law); the :is(#survey) selector carries ID specificity, so the row is excluded here rather than out-weighed. NEVER put a backtick in this file: the CSS lives in a template literal and a backtick ends it (broke the evidence build, 2026-09-23). */
 :is(.panel,#survey) :is(button,input,select):not(.compendium-row):focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}
 @media(max-width:900px) and (orientation:portrait){
  body.surface-mode #planetside{min-height:0;max-height:max(72px,min(calc(var(--cf-sheet-floor) - var(--cf-planetside-start)),var(--planetside-card-max,100dvh)));overflow-y:auto}
