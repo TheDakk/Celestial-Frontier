@@ -47,3 +47,13 @@ export function applyMarkingV1(rgba: Uint8Array, width: number, height: number, 
     if (r !== rgba[j] || g !== rgba[j + 1] || b !== rgba[j + 2]) changed++; rgba[j] = r; rgba[j + 1] = g; rgba[j + 2] = b; }
   return changed;
 }
+
+/** M4 without a marking: an iridescent or lumin individual with no painted mask glows on its ACCENT set (head, claws,
+ * tail, ears…): a half-strength emissive lift over the accent frames / labels — in place. */
+export const EMISSIVE_ACCENT_LIFT = EMISSIVE_LIFT * 0.5;
+export function applyEmissiveAccentV1(rgba: Uint8Array, width: number, height: number, isAccent: (index: number) => boolean): number {
+  let changed = 0;
+  for (let i = 0; i < width * height; i++) { if (!isAccent(i)) continue; const j = i * 4; if (!rgba[j + 3]) continue; const hsl = rgbToHsl(rgba[j]!, rgba[j + 1]!, rgba[j + 2]!); const h = hsl[0]!, s = Math.min(1, Math.max(hsl[1]!, GREY_SATURATION) * 1.2), l = Math.min(1, hsl[2]! + EMISSIVE_ACCENT_LIFT);
+    const t = hslToRgb(h, s, l); if (t[0] !== rgba[j] || t[1] !== rgba[j + 1] || t[2] !== rgba[j + 2]) changed++; rgba[j] = t[0]!; rgba[j + 1] = t[1]!; rgba[j + 2] = t[2]!; }
+  return changed;
+}

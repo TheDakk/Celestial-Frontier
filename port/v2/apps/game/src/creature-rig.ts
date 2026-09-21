@@ -95,7 +95,7 @@ async function decodeGuardedAtlasPng(bytes:Uint8Array,record:CreatureRigRecordV1
 /** Morph M2 (additive): decode the atlas EXACTLY in JS (straight alpha — never a canvas round trip), let the
  * individual's remap rewrite hue/chroma, write the opaque seam-guard texels into the same buffer, upload as a buffer
  * texture. Record, binding and atlas bytes stay the accepted archetype's; only this individual's texture differs. */
-async function decodeMorphedAtlas(bytes:Uint8Array,record:CreatureRigRecordV1,binding:CreaturePartsBindingV1,atlasPixels:(rgba:Uint8Array,width:number,height:number)=>Uint8Array){
+export async function decodeMorphedAtlas(bytes:Uint8Array,record:CreatureRigRecordV1,binding:CreaturePartsBindingV1,atlasPixels:(rgba:Uint8Array,width:number,height:number)=>Uint8Array){
   const decoded=await decodePng(bytes);
   requireValue(decoded.width===binding.atlasSize.width&&decoded.height===binding.atlasSize.height,'decoded atlas dimensions');
   const rgba=atlasPixels(decoded.rgba,decoded.width,decoded.height);

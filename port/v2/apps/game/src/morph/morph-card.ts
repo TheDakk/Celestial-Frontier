@@ -7,7 +7,7 @@ import type { BodyCard } from '../motion/body-card.js';
 import type { MorphParamsV1 } from './morph-params.js';
 import { paletteRoleOfGroup, remapAtlasPaletteV1, type PaletteFrame, type PaletteRole } from './morph-palette.js';
 import { jointScalesV1 } from './morph-skeleton.js';
-import { applyMarkingV1, emissiveV1, type AlphaMask } from './morph-markings.js';
+import { applyEmissiveAccentV1, applyMarkingV1, emissiveV1, type AlphaMask } from './morph-markings.js';
 export interface CardMasterV1 { readonly width: number; readonly height: number; readonly master: Uint8Array; readonly labels: Uint8Array; }
 export interface CardReceiptV1 { readonly labels: ReadonlyArray<Readonly<{ label: number; id: string; joint: string; layer: 'far' | 'near' }>>; readonly landmarks: Readonly<Record<string, readonly [number, number]>>; readonly card: Readonly<{ width: number; height: number }>; }
 export const CARD_MARGIN = 0.06;
@@ -30,6 +30,7 @@ export function cardCompositeV1(input: Omit<CardRenderInput, 'size'>): Uint8Arra
     px = out; }
   // 1b. the painted marking (M3/M4), before proportion so it scales with a grown head/tail
   if (markingMask) { const out = px === m.master ? new Uint8Array(m.master) : px; applyMarkingV1(out, W, H, markingMask, params.accent, emissiveV1(params)); px = out; }
+  else if (emissiveV1(params)) { const out = px === m.master ? new Uint8Array(m.master) : px; applyEmissiveAccentV1(out, W, H, (i) => roleOfLabel.get(m.labels[i * 4]!) === 'accent'); px = out; }
   // 2. proportion: scaled sub-trees drawn about their root's pivot (the parent landmark) over a base without them
   //    composited in the rig's layer order: far base → far sub-trees → near base → near sub-trees (a near leg stays in
   //    front of an enlarged far tail; label 0 = fringe/shadow counts as far base)

@@ -22,12 +22,12 @@ describe('painted card source — the individual on the card', () => {
     expect(await s.card(crabGenome(), 'thumb')!).toBe(t); expect(s.renders).toBe(3);
     const [a, b] = await Promise.all([s.card(crabGenome({ seed: 99 }), 'thumb')!, s.card(crabGenome({ seed: 99 }), 'thumb')!]); expect(a).toBe(b); expect(s.renders).toBe(4); // in-flight dedupe
   });
-  it('M3 on the card: a striped crab differs from the plain one; an eye-spotted lumin crab (emissive) differs again; a pattern with no painted mask (iridescent) renders as plain', async () => {
+  it('M3/M4 on the card: a striped crab differs from the plain one; an eye-spotted lumin crab (emissive) differs again; iridescent (no painted mask) glows on the accent set only', async () => {
     const s = new PaintedCardSource({ assets, registry: REGISTRY });
     const plain = await s.card(crabGenome({ pattern: 0 }), 'thumb')!, striped = await s.card(crabGenome({ pattern: 1 }), 'thumb')!, eye = await s.card(crabGenome({ pattern: 7, lumin: true }), 'thumb')!, irid = await s.card(crabGenome({ pattern: 5 }), 'thumb')!;
-    expect(striped.url).not.toBe(plain.url); expect(eye.url).not.toBe(striped.url); expect(irid.url).toBe(plain.url === irid.url ? irid.url : irid.url);
+    expect(striped.url).not.toBe(plain.url); expect(eye.url).not.toBe(striped.url); expect(irid.url).not.toBe(plain.url);
     const dec = async (u: string) => (await decodePng(new Uint8Array(Buffer.from(u.slice('data:image/png;base64,'.length), 'base64')))).rgba;
-    const a = await dec(plain.url), b = await dec(irid.url); let diff = 0; for (let i = 0; i < a.length; i += 4) if (a[i] !== b[i] || a[i + 1] !== b[i + 1] || a[i + 2] !== b[i + 2]) diff++; expect(diff).toBe(0); // iridescent = no mask → plain (emissive on the accent set is not in this slice)
+    const a = await dec(plain.url), b = await dec(irid.url); let diff = 0, alphaDiff = 0; for (let i = 0; i < a.length; i += 4) { if (a[i + 3] !== b[i + 3]) alphaDiff++; if (a[i] !== b[i] || a[i + 1] !== b[i + 1] || a[i + 2] !== b[i + 2]) diff++; } expect(alphaDiff).toBe(0); expect(diff).toBeGreaterThan(50); expect(diff).toBeLessThan(a.length / 4 / 3); // the glow sits on the accent set (claws/eyes), not the whole crab
   });
   it('the Civet archetype (labels derived from its binding) renders too; the cache cap evicts the oldest', async () => {
     const s = new PaintedCardSource({ assets, registry: REGISTRY, cacheEntries: { thumb: 2, portrait: 1 } });
