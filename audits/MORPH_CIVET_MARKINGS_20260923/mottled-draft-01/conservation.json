@@ -1,0 +1,469 @@
+{
+  "schema": "cf.marking-conservation/v1",
+  "status": "PASS",
+  "createdAt": "2026-09-21T14:15:57.472Z",
+  "sourceHashes": {
+    "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+    "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/record.json": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8",
+    "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178",
+    "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/keyed.png": "b1888b586cb67809420eb0ed3a85c67a9c7327843307afee9c6971db88630a0a",
+    "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/atlas/civet.png": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79",
+    "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/manifest.json": "df34c15b5f86540a00d3aef900a44338f2b1ed94ac1d61cc0624dfd72833053a",
+    "audits/ART_KIT_ENGINE_FIRST_20260912/prompts/civet-prompt.txt": "725a3f23e3aa5fe2cd962cafc4adb9b51c4de8131e0977ae127dec246991d2de"
+  },
+  "exclusion": {
+    "method": "binding atlas frame alpha mapped to source cutout; protected ink overrides allowed ink",
+    "headProtectsIntegratedEyes": true,
+    "separateEyeParts": 0,
+    "separateShadowParts": 0,
+    "excludedParts": [
+      "ear-far",
+      "ear-near",
+      "jaw",
+      "head",
+      "fore-near-paw",
+      "fore-far-paw",
+      "hind-near-paw",
+      "hind-far-paw",
+      "tail-tip",
+      "tail-middle",
+      "tail-root"
+    ],
+    "partFrames": [
+      {
+        "id": "ear-far",
+        "frame": {
+          "x": 1918,
+          "y": 491,
+          "width": 95,
+          "height": 126
+        },
+        "cutout": {
+          "x": 933,
+          "y": 195,
+          "width": 95,
+          "height": 126
+        },
+        "excluded": true
+      },
+      {
+        "id": "ear-near",
+        "frame": {
+          "x": 5,
+          "y": 1771,
+          "width": 129,
+          "height": 157
+        },
+        "cutout": {
+          "x": 1094,
+          "y": 213,
+          "width": 129,
+          "height": 157
+        },
+        "excluded": true
+      },
+      {
+        "id": "jaw",
+        "frame": {
+          "x": 1274,
+          "y": 888,
+          "width": 163,
+          "height": 67
+        },
+        "cutout": {
+          "x": 945,
+          "y": 468,
+          "width": 163,
+          "height": 67
+        },
+        "excluded": true
+      },
+      {
+        "id": "head",
+        "frame": {
+          "x": 659,
+          "y": 647,
+          "width": 304,
+          "height": 342
+        },
+        "cutout": {
+          "x": 925,
+          "y": 224,
+          "width": 304,
+          "height": 342
+        },
+        "excluded": true
+      },
+      {
+        "id": "fore-near-paw",
+        "frame": {
+          "x": 514,
+          "y": 1928,
+          "width": 135,
+          "height": 78
+        },
+        "cutout": {
+          "x": 934,
+          "y": 976,
+          "width": 135,
+          "height": 78
+        },
+        "excluded": true
+      },
+      {
+        "id": "fore-near-lower",
+        "frame": {
+          "x": 309,
+          "y": 647,
+          "width": 143,
+          "height": 158
+        },
+        "cutout": {
+          "x": 877,
+          "y": 828,
+          "width": 143,
+          "height": 158
+        },
+        "excluded": false
+      },
+      {
+        "id": "fore-near-upper",
+        "frame": {
+          "x": 1831,
+          "y": 640,
+          "width": 203,
+          "height": 237
+        },
+        "cutout": {
+          "x": 821,
+          "y": 608,
+          "width": 203,
+          "height": 237
+        },
+        "excluded": false
+      },
+      {
+        "id": "fore-far-paw",
+        "frame": {
+          "x": 108,
+          "y": 1938,
+          "width": 87,
+          "height": 98
+        },
+        "cutout": {
+          "x": 1094,
+          "y": 897,
+          "width": 87,
+          "height": 98
+        },
+        "excluded": true
+      },
+      {
+        "id": "fore-far-lower",
+        "frame": {
+          "x": 1918,
+          "y": 124,
+          "width": 109,
+          "height": 83
+        },
+        "cutout": {
+          "x": 1073,
+          "y": 815,
+          "width": 109,
+          "height": 83
+        },
+        "excluded": false
+      },
+      {
+        "id": "fore-far-upper",
+        "frame": {
+          "x": 201,
+          "y": 888,
+          "width": 168,
+          "height": 173
+        },
+        "cutout": {
+          "x": 1001,
+          "y": 648,
+          "width": 168,
+          "height": 173
+        },
+        "excluded": false
+      },
+      {
+        "id": "hind-near-paw",
+        "frame": {
+          "x": 205,
+          "y": 1933,
+          "width": 135,
+          "height": 84
+        },
+        "cutout": {
+          "x": 442,
+          "y": 918,
+          "width": 135,
+          "height": 84
+        },
+        "excluded": true
+      },
+      {
+        "id": "hind-near-lower",
+        "frame": {
+          "x": 1918,
+          "y": 268,
+          "width": 98,
+          "height": 128
+        },
+        "cutout": {
+          "x": 431,
+          "y": 806,
+          "width": 98,
+          "height": 128
+        },
+        "excluded": false
+      },
+      {
+        "id": "hind-near-upper",
+        "frame": {
+          "x": 406,
+          "y": 815,
+          "width": 233,
+          "height": 284
+        },
+        "cutout": {
+          "x": 435,
+          "y": 551,
+          "width": 233,
+          "height": 284
+        },
+        "excluded": false
+      },
+      {
+        "id": "hind-far-paw",
+        "frame": {
+          "x": 350,
+          "y": 1928,
+          "width": 154,
+          "height": 83
+        },
+        "cutout": {
+          "x": 677,
+          "y": 863,
+          "width": 154,
+          "height": 83
+        },
+        "excluded": true
+      },
+      {
+        "id": "hind-far-lower",
+        "frame": {
+          "x": 5,
+          "y": 1938,
+          "width": 93,
+          "height": 104
+        },
+        "cutout": {
+          "x": 635,
+          "y": 786,
+          "width": 93,
+          "height": 104
+        },
+        "excluded": false
+      },
+      {
+        "id": "hind-far-upper",
+        "frame": {
+          "x": 5,
+          "y": 888,
+          "width": 186,
+          "height": 249
+        },
+        "cutout": {
+          "x": 634,
+          "y": 593,
+          "width": 186,
+          "height": 249
+        },
+        "excluded": false
+      },
+      {
+        "id": "tail-tip",
+        "frame": {
+          "x": 1831,
+          "y": 887,
+          "width": 197,
+          "height": 161
+        },
+        "cutout": {
+          "x": 26,
+          "y": 884,
+          "width": 197,
+          "height": 161
+        },
+        "excluded": true
+      },
+      {
+        "id": "tail-middle",
+        "frame": {
+          "x": 350,
+          "y": 1771,
+          "width": 262,
+          "height": 147
+        },
+        "cutout": {
+          "x": 33,
+          "y": 766,
+          "width": 262,
+          "height": 147
+        },
+        "excluded": true
+      },
+      {
+        "id": "tail-root",
+        "frame": {
+          "x": 401,
+          "y": 1109,
+          "width": 227,
+          "height": 284
+        },
+        "cutout": {
+          "x": 227,
+          "y": 577,
+          "width": 227,
+          "height": 284
+        },
+        "excluded": true
+      },
+      {
+        "id": "neck",
+        "frame": {
+          "x": 5,
+          "y": 647,
+          "width": 294,
+          "height": 216
+        },
+        "cutout": {
+          "x": 908,
+          "y": 474,
+          "width": 294,
+          "height": 216
+        },
+        "excluded": false
+      },
+      {
+        "id": "chest",
+        "frame": {
+          "x": 1506,
+          "y": 581,
+          "width": 315,
+          "height": 494
+        },
+        "cutout": {
+          "x": 739,
+          "y": 306,
+          "width": 315,
+          "height": 494
+        },
+        "excluded": false
+      },
+      {
+        "id": "torso",
+        "frame": {
+          "x": 989,
+          "y": 5,
+          "width": 919,
+          "height": 566
+        },
+        "cutout": {
+          "x": 138,
+          "y": 309,
+          "width": 919,
+          "height": 566
+        },
+        "excluded": false
+      }
+    ]
+  },
+  "rows": [
+    {
+      "pattern": "striped",
+      "width": 1254,
+      "height": 1254,
+      "nonzeroAlphaPixels": 179398,
+      "opaqueEquivalentPixels": 58027.262745098036,
+      "rawOutsideAlphaPixels": 2985,
+      "excludedPixelCount": 3166,
+      "outsideAlphaPixels": 0,
+      "protectedPixels": 0,
+      "sha256": "dcdb3eb5a11eeeb9fc3a3758018100cb474fc08456c49f20d53510129ccb05ac"
+    },
+    {
+      "pattern": "spotted",
+      "width": 1254,
+      "height": 1254,
+      "nonzeroAlphaPixels": 210487,
+      "opaqueEquivalentPixels": 57464.51764705883,
+      "rawOutsideAlphaPixels": 1476,
+      "excludedPixelCount": 3953,
+      "outsideAlphaPixels": 0,
+      "protectedPixels": 0,
+      "sha256": "2019bf581d322f62440f93c53262d0a193feca5a449ffdfb6950724bbeec1523"
+    },
+    {
+      "pattern": "banded",
+      "width": 1254,
+      "height": 1254,
+      "nonzeroAlphaPixels": 163931,
+      "opaqueEquivalentPixels": 92697.94509803921,
+      "rawOutsideAlphaPixels": 3449,
+      "excludedPixelCount": 3973,
+      "outsideAlphaPixels": 0,
+      "protectedPixels": 0,
+      "sha256": "37f87c9c8ad56bd534fa430fedb9e56761f540c8d3fd32b82f0493a3e4d4d54f"
+    },
+    {
+      "pattern": "mottled",
+      "width": 1254,
+      "height": 1254,
+      "nonzeroAlphaPixels": 227604,
+      "opaqueEquivalentPixels": 69761.37647058823,
+      "rawOutsideAlphaPixels": 2756,
+      "excludedPixelCount": 5267,
+      "outsideAlphaPixels": 0,
+      "protectedPixels": 0,
+      "sha256": "321ceff3ff44019bba193ea0e544079f0a5f9415c62815a6230a2112eef5ddee"
+    },
+    {
+      "pattern": "marbled",
+      "width": 1254,
+      "height": 1254,
+      "nonzeroAlphaPixels": 230395,
+      "opaqueEquivalentPixels": 54724.56470588235,
+      "rawOutsideAlphaPixels": 4725,
+      "excludedPixelCount": 10710,
+      "outsideAlphaPixels": 0,
+      "protectedPixels": 0,
+      "sha256": "a11163de8e240bb5552f0776e4c11e2f85b69e761084b96b058cac10590bc349"
+    },
+    {
+      "pattern": "eye-spotted",
+      "width": 1254,
+      "height": 1254,
+      "nonzeroAlphaPixels": 34876,
+      "opaqueEquivalentPixels": 14421.121568627452,
+      "rawOutsideAlphaPixels": 24,
+      "excludedPixelCount": 117,
+      "outsideAlphaPixels": 0,
+      "protectedPixels": 0,
+      "sha256": "5fc556bcff69d51aa89d02da4808190038dce7f409abf5c930ccda8a2d277de0"
+    }
+  ],
+  "controls": {
+    "validAccepted": true,
+    "outsidePixelMutantRefused": true,
+    "protectedPartPixelMutantRefused": true
+  },
+  "node": "v26.9.0",
+  "imageMagick": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org",
+  "sheetSha256": "b5da0e9db77b1b9ae36f7a50fc70f0b56dad421ac928f61330cd6e2f05c6c1ca"
+}
