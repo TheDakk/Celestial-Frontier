@@ -5,13 +5,11 @@
   {
    "id": "brown-bear",
    "file": "../../../../audits/INTAKE_COMPILER_20260921/sheet-01/brown-bear.png",
-   "score": null,
-   "hidden": []
-  },
-  {
-   "id": "brown-bear-02",
-   "file": "../../../../audits/INTAKE_COMPILER_20260921/sheet-01/brown-bear-02.png",
-   "score": null,
+   "score": {
+    "pos": "0/4",
+    "named": "0/4",
+    "hiddenOk": true
+   },
    "hidden": []
   }
  ]

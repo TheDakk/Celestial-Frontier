@@ -1,0 +1,12 @@
+file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs:7
+const need=(ok,message)=>{if(!ok)throw Error('Source join continuity: '+message);};
+                                       ^
+
+Error: Source join continuity: source attachment absent from mesh fore-near-lower|hind-far-lower at 512,960
+    at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs:7:40)
+    at sampleEdge (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs:60:88)
+    at visit (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs:67:430)
+    at createSourceJoinProbe (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs:71:83)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/VISION_D2_GUARDIAN_20260921/fit-01/prepare.mjs:29:401
+
+Node.js v26.9.0

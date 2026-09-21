@@ -1,0 +1,30 @@
+{
+  "counts": [
+    243936,
+    26523,
+    21797,
+    11700,
+    67920,
+    27059,
+    15554,
+    75818,
+    29590,
+    17168,
+    79023,
+    33079,
+    20250,
+    64636,
+    8715,
+    4413,
+    10295
+  ],
+  "id": "d2-brown-bear",
+  "parts": 17,
+  "atlasSize": {
+    "width": 2038,
+    "height": 2030
+  },
+  "restDifferentChannels": 0,
+  "atlasDifferentChannels": 0,
+  "sourceChannelsChanged": 0
+}

@@ -1,0 +1,6 @@
+Local signed producer attempt; no commit created.
+HEAD remains38fee9c6ffa1dc99ef506204143a9336fe4fe0b6.
+Command: git -c core.hooksPath=/dev/null commit -q -S -m "Build Brown Bear guardian comparison fit and repair source probe bin lookup"
+error: 1Password: agent returned an error
+fatal: failed to write commit object
+Exit128. No unsigned fallback. Nick authentication requested; static sweep waits for signed producer.

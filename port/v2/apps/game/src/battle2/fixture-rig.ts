@@ -49,6 +49,9 @@ export interface BattleRigV1 extends CreatureRigV1 {
   readonly bodyLength: number;
   /** Measured accommodatable stage travel per stance (body lengths) — the parts rig probes its solver at load (A2). */
   readonly stanceReach?: number;
+  /** The record's guardian block (D2): a guardian FILLS the battle screen (kit GUARDIAN RULE) — the stage scales it with
+   * `frameFill` instead of its mass class; desktop-only, its own CPU gate. Absent for every other creature. */
+  readonly guardian?: Readonly<{ desktopOnly?: boolean; cpuP95GateMs?: number; landmarkComparisonBoundPx?: number }>;
 }
 
 export interface PixelBox { readonly x: number; readonly y: number; readonly width: number; readonly height: number; }

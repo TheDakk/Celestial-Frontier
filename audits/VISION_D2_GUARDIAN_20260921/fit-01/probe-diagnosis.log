@@ -1,0 +1,14 @@
+{"part":"fore-near-lower","point":[512,960],"original":[366,369,372,375,378,381,384,387,390,393,396,399,402,405,408,411],"nearby":[234,237,240,243,246,249,255,258,261,264,324,327,330,333,336,339,342,345,348,351,354,357,360,363,366,369,372,375,378,381,384,387,390,393,396,399,402,405,408,411],"hitAfterNeighborLookup":{"triangle":[86,79,83],"weights":[0.09999999999999998,0.7921052631578948,0.10789473684210527]}}
+{"part":"hind-far-lower","point":[512,960],"original":[],"nearby":[510,513,516,522,525,528,531,690,693,696,702,705,708,711,714,717,720,726,729,732,735,738,741,744,747,750,753,756,759,762,765,768,774,777,780,783],"hitAfterNeighborLookup":{"triangle":[156,147,154],"weights":[0.3166666666666804,-2.4947944944466475e-14,0.6833333333333445]}}
+file:///private/tmp/cf-bear-probe-instrument.mjs:7
+const need=(ok,message)=>{if(!ok)throw Error('Source join continuity: '+message);};
+                                       ^
+
+Error: Source join continuity: source attachment absent from mesh fore-near-lower|hind-far-lower at 512,960
+    at need (file:///private/tmp/cf-bear-probe-instrument.mjs:7:40)
+    at sampleEdge (file:///private/tmp/cf-bear-probe-instrument.mjs:60:626)
+    at visit (file:///private/tmp/cf-bear-probe-instrument.mjs:67:430)
+    at createSourceJoinProbe (file:///private/tmp/cf-bear-probe-instrument.mjs:71:83)
+    at file:///private/tmp/cf-bear-probe-debug.mjs:8:1
+
+Node.js v26.9.0
