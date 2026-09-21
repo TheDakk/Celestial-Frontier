@@ -638,3 +638,21 @@ This is the boundary where the compiler hands to Codex's frozen writers; nothing
 Codex's R9 finisher is canonical at the re-merge and its `finish-conservation.mjs` no longer exports
 `readPng`/`writePng`; the runners now import them from `png.mjs` here (pngjs), so nothing in this folder depends on
 a Codex-owned file. `check.mjs` green on the merged tree; numbers unchanged (29/39 named, §6 PASS 2/7).
+
+## Slice 32 — the fork-aware ridge measured and rejected, 2026-09-21 (late)
+The lone near-claw fingers (slice 30) sit 13–20 working px from their twins at the record's tips, so the tip
+detector can see both; the RIDGE merges them because the closed gape lies inside the alpha (one blob). Built:
+`clawEdgeCut` — for every thick unforked endpoint, cut strong interior contours (blur 1, `clawEdgeCut` × median)
+inside a disc of 3 terminal radii, re-thin that disc only, and call it a fork when two thin endpoints there have the
+gape between them. Measured with the trace on all seven subjects:
+- without a gape test every thick lone tip re-thins into ≥ 2 endpoints (spurs): "fork" on the freshwater folded
+  leg, the crab's leg3Far, the vent's 628,851 — no discrimination (26/38, freshwater slides 6/7 → 3/6).
+- gape as "background or contour between the ends": the same false forks (a thin leg tip has background between
+  its spur ends) — 0.71/0.86 on true legs.
+- gape as INTERIOR contour only (`gapeMin` 0.15/0.3): the coconut finger 937,1010 shows 0.05, the freshwater
+  finger never enters the test (termDt 11.8 < 1.6 × thin), while the crab's true leg3Far shows 0.86 (its own
+  segment line) — the test inverts. Score unchanged (29/39) because nothing true is flagged either.
+Conclusion: on these paintings the gape of a closed claw is not a strong interior contour at any threshold that
+leaves legs alone; the finger/leg separation must come from the painting's colour/texture at the palm or from a
+declared claw pose, not from alpha or luminance contours. `clawEdgeCut` stays 0. This closes the structural levers
+measurable on seven subjects; IC-4 stands at verdict 5/7, §6 PASS 2/7.

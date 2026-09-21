@@ -168,7 +168,8 @@ branch push of both lanes Nick then authorized is done (see Lane state), so orig
 
 
 ### What Claude owes next
--30. **Re-seal + re-lift under Nick's decision (2026-09-21, this commit):** training fixture/test html seal → `a65d5905…`; `lift-hdart.mjs` re-run; speciesportable byte-seal re-blessed; suite 4,770 pass. Decisions 1–4 recorded under "Nick" below.
+-31. **Slice 32 (2026-09-21, this commit):** fork-aware ridge (local contour cut + gape test) measured three ways and rejected — a closed claw's gape is not an interior contour on these paintings; option kept at 0. Structural levers on seven subjects are exhausted; the next inputs are Codex's solver fixes and the Brown Bear (G3 through the compiler).
+-30. **Re-seal + re-lift under Nick's decision (2026-09-21, commit `86fbaf5a`):** training fixture/test html seal → `a65d5905…`; `lift-hdart.mjs` re-run; speciesportable byte-seal re-blessed; suite 4,770 pass. Decisions 1–4 recorded under "Nick" below.
 -29. **E1 re-filmed on the family solver (2026-09-21, commit `11a45b4c`):** `audits/BATTLE2_E1_PROOF_20260921/` — Civet-vs-crab DIAGNOSTIC_PASS (0 refusals, 3.30 ms p95) and **the crab attacking with a pinch through the stage** (0 refusals, 3.40 ms) on Codex's delivered crab fit. Third pin still red with the solver double-count finding.
 -28. **Re-merge of Codex's R3-S → §8 (2026-09-21, merge `9ee651d2`, signed and pushed):** see Lane state above.
 -27. **Slice 31 (2026-09-21, commit `82c25377`):** `emit.mjs` — the compiler writes Codex-format `labels.png` + `declaration.json` per crab (`audits/INTAKE_COMPILER_20260921/compiled-01/`), with declared gaps (eyes unnamed; arm/palm split first cut; quadruped part vocabulary needed from Codex; no record written). P2 constants in body units are an option (byte-identical at 512); scale is not a lever (thinning topology). After this the Claude list is blocked on Codex's R3-S stop and Nick's D2 decisions.
