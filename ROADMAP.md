@@ -213,11 +213,17 @@ branch push of both lanes Nick then authorized is done (see Lane state), so orig
    `paintOverrideCanvas` (one-token edit, identical text applied here); `resolvePhysicalHabitat` never reads `genome.realm`
    (a habitat-gene-less "drifters" jelly resolves aerial); the I5 stale certificate is the one red on both lanes.
 
-### Codex (openai lane)
-Next run authorized by decision A: the stage run-up in body lengths with a stride cadence (see Nick's decision above); S2 the only halt. Previous asks for reference: three asks for its next run (no Nick decision needed, all inside decisions already taken): (1) `ContactPhase.stageDisplacement` (body-length units) — recede stance targets by it in stage mode; five crabs + Civet S2-identical; (2) bear declaration: `hindFar` folded, tail `absent` (stub inside the outline); (3) one retry of the bear paint at 1536² (G1's size requirement), same prompt bytes.
+### Codex (openai lane) — next run (standing authority: Nick says "go")
+1. Stage run-up = N stride cycles of the attacker's gait, each ≤ 0.2 body lengths of stage travel per stance; the stage passes `stageDisplacement` (body lengths, cumulative within the current stance) into RigPoseContext per tick; arena composition owns the distance, the cadence owns the time.
+2. Nine-subject native proof: zero refusals, stance feet fixed in arena space within 0.5 px per stance window, CPU inside each tier's gate; five crabs + Civet S2-identical in solver mode.
+3. Fit the Brown Bear generation-01 as the first guardian record (5 ms desktop-only tier, 60 px bound, IC-3 released for this one guardian) under `audits/VISION_D2_GUARDIAN_20260921/fit-01/`; the compiler's `compiled-01`-style output may seed it; the hand fit is comparison truth.
+Report: S2 ledger, native planting/CPU rows, fit path + hashes, paired next steps. Codex writes every presence declaration itself. Previous asks for reference: three asks for its next run (no Nick decision needed, all inside decisions already taken): (1) `ContactPhase.stageDisplacement` (body-length units) — recede stance targets by it in stage mode; five crabs + Civet S2-identical; (2) bear declaration: `hindFar` folded, tail `absent` (stub inside the outline); (3) one retry of the bear paint at 1536² (G1's size requirement), same prompt bytes.
 Continues §8 unattended. Interfaces E1 consumes from R3, unchanged: `ContactPhase.travel?: 'solver' | 'stage'` (zero solver root
 dx in stage mode, stance targets unchanged) and `contactJoint` on `compileAnatomyAttack` (already on the attack rows). Nothing
 in Claude's E1 changed a Codex-owned file except the two merge repairs above, both recorded for re-application in its lane.
+
+### Claude — next run (standing authority: Nick says "go")
+On Codex's report: re-merge its signed producers; re-film E1 on the cadence stage (Civet vs crab, crab attacks) and re-check the three pins; run the bear fit through `score.mjs`/`ic4.mjs`/`sheet.mjs` as G3 with a record (60 px bound); build G6 (`combatantScale` `frameFill`) on the bear's record and film it; then the roster batch through the compiler the moment IC-4 passes on the crabs (one sheet for Nick).
 
 ### Nick — decision A taken (2026-09-21, latest): the stage runs up in body lengths with a stride cadence
 Codex's stage/solver work: the run-up distance becomes N stride cycles of the attacker's gait (each ≤ 0.2 body lengths of stage travel per stance), the stage passes `stageDisplacement` per tick, feet plant exactly; Claude re-films and re-pins when it lands.
