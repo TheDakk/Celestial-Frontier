@@ -36,3 +36,6 @@ Codex: §1's diagnostics, a rest-supports mode in `static.ts` (so the static ver
 plays), the freshwater reach regression, mud/vent folded declarations. Nick: nothing new to decide from G6; the
 1254² size finding stands as Codex recorded it; the §6 60 px comparison (G3) is recorded in README slice 37 of
 `port/v2/tools/anatomy-verify/README.md` (all four paws named; two pads 14–17 px outside the bound).
+
+## 5. Closed by Codex's rigid-support IK (2026-09-23)
+With `58f81e54` merged (`137c272a`), the same stage measurement under OBSERVED painted supports reads **0 / 216 refusals** (was 77), and `bear-vs-crab-03-observed` films DIAGNOSTIC_PASS at **2.80 ms** — inside the 5 ms guardian tier and under the 3.5 ms painted tier. Gallop and tail compression stay refused in Codex's full-library static (independent, unchanged bounds).
