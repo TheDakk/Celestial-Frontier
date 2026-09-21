@@ -550,3 +550,6 @@ unchanged; 3/3 focused checks). `score.mjs#declarationOf` now reads a fit's `pre
 (hidden/absent/folded), else the record's `anatomy`, else the declaration-only presence file; the `FOLDED`
 proposal map is gone. Verified byte-identical to slice 26: named 29/39, positions 30/39, IC-4 positives 5/7,
 wrong-template 7/7, erased 6/10, duplicated 7/10; sheet regenerated.
+Correction: commit `0ba7210b` shipped `ic4.mjs` with an identifier collision (it did not run); the IC-4 numbers
+recorded above were re-run and confirmed on the fixed file in the following commit. A record written before its
+run is a process error; the runner output is now pasted only from a run of the committed file.
