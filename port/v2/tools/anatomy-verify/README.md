@@ -564,5 +564,11 @@ margin threshold that refuses the freshwater and vent wrong feet (≥ 0.62) also
 one that keeps the right feet (< 0.04) passes every wrong foot. **Rejected as a gate; kept as output.** The wrong
 feet on the freshwater and vent are false candidates the cost model prefers (thick, long endpoints beside the
 claw), not close calls — so a confidence over the assignment cannot see them; only candidate precision can.
-Label IoU with the applied declarations (P7, for the record): body 0.38–0.54, claws 0.37–0.66, legs 0.24–0.44 mean
-(unchanged in kind from slice 21: labels inherit naming).
+Label IoU with the applied declarations (P7, for the record, five crabs): body 0.37–0.54; claws far 0.39–0.63, near
+0–0.66 (coconut/freshwater near claws were never candidates: 0 / 0.07); legs mean 0.28–0.46 (unchanged in kind
+from slice 21: labels inherit naming).
+`clawAttached` (an endpoint whose chain joins a fork member's chain outside the body is a claw part): removes the
+freshwater false `leg3Near` (704,904) but the slot then empties (the true leg3Near is a LOOP at 38 px, which strict
+evidence refuses) and leg2Near slides to 413 px; vent unchanged (its false endpoints are not claw-attached).
+28/38, positives 4/7. Rejected; kept at 0. What this measured: freshwater `leg3Near` is a folded leg like the
+three declared ones — a second-round declaration, not a rule.
