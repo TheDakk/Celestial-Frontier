@@ -1,0 +1,36 @@
+{
+  "schema": "cf.painted-master-result/v1",
+  "generation": 2,
+  "tool": "image_gen.imagegen",
+  "sourcePath": "/Users/nick/.codex/generated_images/01a0bab7-303d-74b2-9084-ec26ea52e7e8/exec-faa409f3-9fe9-4d53-96ac-d86005e00a13.png",
+  "master": "brown-bear-master.png",
+  "pngSha256": "4e7b7e9626ef17af3ff82b3e0f496c3257d2c5afd49fd0d7fca8d55aa9ce52de",
+  "sourceSha256": "4e7b7e9626ef17af3ff82b3e0f496c3257d2c5afd49fd0d7fca8d55aa9ce52de",
+  "bytes": 1999794,
+  "actualSize": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "requestedSize": [
+    1536,
+    1536
+  ],
+  "sizePass": false,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "originalBytesPreserved": true,
+  "pixelEdits": 0,
+  "resized": false,
+  "generationCountThisRun": 1,
+  "seed": null,
+  "seedReason": "Not exposed",
+  "sentPromptSha256": "feb0070c0e645be54932c1f48abc8a6c236c0099df639a07ae1a45b64aafd02d",
+  "promptIdenticalToGeneration01": true,
+  "generation01MasterUnchanged": true,
+  "generation01PngSha256": "1fdbef97b7c612d85ebe4a3ed7b580c31d7671a379c92e46ba3f200f655d035d",
+  "g1": "FORMAT_RED",
+  "artAcceptance": "Not asserted"
+}

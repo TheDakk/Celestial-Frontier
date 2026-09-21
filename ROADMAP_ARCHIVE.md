@@ -1,3 +1,88 @@
+# Archived handoffs — 2026-09-21 stage displacement / bear retry
+
+## SESSION HANDOFF — final canonical delivery complete; IC-3 HOLD/FROZEN
+
+Nick chose painted desktop full-film rig p95≤3.5ms; boundary24/interior56 stays canonical.
+Phone/painter strict2ms unchanged; D1 phones use retained originals. Authority read-only
+anthropic PROGRAM.md§6. Packet: audits/VISION_P1_DESKTOP_DELIVERY_20260920/README.md.
+The five accepted fits and all IC-3 writer files are hashed in frozen-inputs.json.
+Coconut retained split-guard film is reassessed, no new capture. Four final films/sheets:
+Crab intake02fit01; Freshwater intake02fit03; Mud intake02fit01; Vent intake01fit01.
+One native run each completed on signed producer c93ee2e8, all outputs retained. Full-film
+rig p95: Crab4.0ms FAIL / Freshwater2.4ms PASS / Mud3.6ms FAIL / Vent3.6ms FAIL against3.5ms.
+Retained Coconut3.0ms PASS. All geometry/contact/rest/continuity PASS, zero refused frames.
+Four films, four comparison sheets and overview delivered. CPU differences from prior table
+not causally attributed; no unchanged retry, threshold change or optimization authorized.
+310 canonical input/writer files hash-identical; frozen-verification.json PASS.
+Geometry/contact/exact-rest/continuity gates unchanged. Shared crabs+Civet controls and
+root guard already pass; no solver/skin or writer edit in this delivery batch.
+
+Final evidence signing blocked:1Password returned "agent returned an error"; producer
+c93ee2e8 is signed/verified, completed artifacts and freeze handoff are staged. Refusal
+retained in packet. Nick was asked to unlock signing. Resume final signed commit only,
+verify it, then hold; do not rerun captures. Current local HEAD c93ee2e8,41 ahead cached origin.
+
+HOLD ACTIVE: no new intake, painting, P2 or roster until compiler IC-4 passes
+all five accepted fits with zero hand edits and required erased/duplicated/wrong-guide
+mutant refusals. Claude owns IC-1/2; Codex IC-3 remains frozen. No sync or app switch for
+Git required. PR42 parked; signed commits only; no fetch/push/PR/merge/release/deploy.
+Node26.9.0 uninterrupted-session receipt reused. Pre-existing .DS_Store untouched.
+
+## Folded declarations handoff — 2026-09-21
+
+Nick released IC-3 only for explicit folded-leg declarations. Applied v2 `presence.json`
+inputs beside Crab intake-02 fit01 (leg0Far), Mud intake-02 fit01 (leg0Far), and Vent
+intake-01 fit01 (leg0Near). Sealed records, landmarks, masks, bindings and rigs unchanged.
+Optional folded defaults to []; painted and present, disjoint from hidden/absent.
+Focused declaration/geometry controls: 3/3 pass; no batteries or native reruns.
+Receipt and exact paths/hashes: audits/INTAKE_FOLDED_DECLARATIONS_20260921/README.md.
+Codex holds again, writers frozen. Claude reads these presence inputs in score.mjs/ic4.mjs
+and removes its FOLDED proposal map. Nick: nothing to decide. No fetch/push/PR/merge.
+Prior staged four-crab delivery remains separate and retains its signing-refusal receipt.
+
+## R3-S / section8 reconciled review stop — 2026-09-21
+
+The requested sequence already completed in signed history through a94535aa; do not
+repeat its report-all sweep, native captures, R9 finisher or historical roster attempts.
+Accumulated current packet: audits/R3S_RESUME_20260921/README.md; S2-ledger.json retains
+BEFORE/AFTER and later six-subject controls.13,286 samples, zero AFTER classes, exact rest,
+five crab bit identity; Civet max planted drift0.165256373px. No new solver change or S2.
+Twenty stage signatures and833 original media hashes verified;37 films now indexed.
+Previously pending final P1 native films/sheets signed and verified as3e23766d. Historical
+signing refusals remain evidence, no longer blockers. Existing CPU/plant/phone/roster/PR42
+leaves stay open. R9 remains this lane's canonical finish at Claude's later re-merge.
+Folded presence73398486 is preserved; IC-3 frozen for new species, no P2 or roster intake.
+Codex holds. Claude re-merges signed producers on its lane and re-films E1 on the family
+solver with contactJoint/travel:stage/pinch and declared presence inputs. Nick: review only
+at this accumulated stop, no interim decision. No fetch/push/PR/merge/release/deploy here.
+
+## Active ordered solver → coconut → guardian run — 2026-09-21
+
+Step1 producer: minimal stage stride double-count fix and published surface accessor;
+focused tests/typecheck pass. Sign then run fresh S2 sweep before step2. Packet:
+audits/SOLVER_STAGE_SUPPORT_20260921/. Step2 coconut explicit presence removes leg3Far
+from hidden with no record/binding change. Step3 G1/G2 Brown Bear1536 master + presence,
+no hand landmarks. No internal review stops; S2 only, signed stages, no push/sync/merge.
+
+Step 1 signed producer `cb1a667d`: stage gait no longer advances local stride targets; published painted-support accessor available. One S2 sweep PASS for all six; five crab rows bit-identical, Civet <=0.25 px, exact rest. Evidence: `audits/SOLVER_STAGE_SUPPORT_20260921/S2_LEDGER.md`. Proceed to the declaration-only coconut correction, then Brown Bear G1–G2.
+
+Step 2 complete: coconut fit-04 now has an authoritative `presence.json`, hidden=[leg3Near]; leg3Far is painted per Nick. Focused presence PASS; historical sealed fit bytes unchanged. Next: one Brown Bear guardian painting, then hold.
+
+## Fresh-session handoff — 2026-09-21 solver / coconut / D2 run
+
+OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`; sibling Claude lane read-only. **Ordered run stopped; Codex holds.** No fetch, sync, push, PR, merge, release or deploy.
+
+- Step 1: signed producer `cb1a667d` removes local gait stride advance in stage travel and exposes `readCreatureRigContactSupport(rig,joint)` for the actual published mesh support. This is the authorized minimum stage fix, not a claim of arena-space planting. Focused tests/typecheck/root validation PASS. S2 evidence signed `1b3f4454`: all six pass, five crab rows bit-identical to R2c′, exact rest, Civet maximum row drift 0.165256373 px. One sweep only. Packet/index: `audits/SOLVER_STAGE_SUPPORT_20260921/README.md`; S2 table: `S2_LEDGER.md` in that folder.
+- Step 2: signed `20534d6d` adds current `audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/presence.json` with hidden=[leg3Near]. Nick declares leg3Far painted. Focused presence PASS; all existing sealed record/landmark/mask/binding bytes unchanged. This follows the compiler’s standalone-presence override used for folded declarations. Hash and unchanged-file manifest are in the packet’s `coconut-declaration.json`.
+- Step 3: `audits/VISION_D2_GUARDIAN_20260921/generation-01/`: one Brown Bear master via built-in imagegen, exact prompt, request/result hashes, native side-on painter guide, presence v2 (four visible legs, hidden/absent/folded empty). No hand landmarks/intake/fit/rig. **G1 format RED: tool returned1254×1254 RGBA despite1536×1536 request.** Original bytes and alpha retained, no resize/retry. G2 schema PASS. Guardian5ms desktop and60px-at1536 decisions unchanged; not yet measured or admitted. Source Sol card has no hazard; no invented signature motif. Catalogue headFrac0.27 overrides design-note0.22.
+
+Paired next steps: Codex holds. Claude uses the signed solver changes and coconut declaration; runs bear G3 compiler diagnostics and builds G6 titanic fill, retaining the G1 format red rather than claiming complete D2 acceptance. Nick: no new decision requested. Roster/other intake/P2 remain held. Do not repeat completed S2/tests or regenerate the master from this handoff. 1Password refused the first step1 signature; refusal receipt retained; subsequent signatures verified.
+
+## Active stage-displacement / bear continuation — 2026-09-21
+
+Nick authorizes one ordered run: stageDisplacement producer and S2, bear tail/folded declaration, one identical-prompt generation02 retry. No sibling edits/sync or push. Packet: `audits/SOLVER_STAGE_DISPLACEMENT_20260921/`. S2 is the only halt; no further intake/rig work in this run.
+
+
 # P1 CPU preparation handoff — superseded2026-09-20
 
 ## SESSION HANDOFF — P1 CPU table complete; measured root guard; intake compiler next

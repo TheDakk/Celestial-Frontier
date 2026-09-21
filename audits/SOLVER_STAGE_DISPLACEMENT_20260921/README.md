@@ -11,3 +11,12 @@ Focused stage/support3/3 and stance5/5 PASS; app typecheck and root validation P
 ## S2 complete
 
 Signed producer `d8787235`; one sweep PASS. All six subject receipts exactly equal the prior stage-support ledger; five crab rows also bit-identical to R2c′. See [S2 ledger](S2_LEDGER.md). No S2 halt.
+
+## Ordered run stop
+
+- Producer `d8787235`, S2 evidence `96631949`, bear declaration `1268a2f0`: signed and verified.
+- [S2 ledger](S2_LEDGER.md): six subjects exactly unchanged; no shared red.
+- [Bear declaration receipt](bear-declaration.json): generation01 absent=[tail], hidden=[], folded=[]; presence SHA256 `90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db`. hindFar remains unfolded by visual judgment: partly occluded above, extended lower leg and weight-bearing paw. Tail absence removes the long-tail compiler slot, not a biological claim that the species has no stub.
+- [Generation02](../VISION_D2_GUARDIAN_20260921/generation-02/README.md): one authorized retry, exact same prompt SHA256 `feb0070c0e645be54932c1f48abc8a6c236c0099df639a07ae1a45b64aafd02d`, same two references. **Again1254 square RGBA, G1 format RED against1536.** Both raw PNGs retained; no resize or further generation.
+
+Codex holds. Claude wires the displacement into the third pin, checks planted intervals against unchanged reach constraints, flips it when passing, and re-films. Current pin’s ctx omits the field; the entire184.32px arena travel at quarter-scale exceeds one continuous stance’s reach. No claim that this untouched pin passes. Claude runs a1536 bear as G3 when one exists and builds G6 once its compiler record is fitted; the retained1254 outputs are diagnostic inputs only. No fit was requested/performed in this run. Nick: nothing newly requested to decide. No fetch, push, PR, merge, release or deploy.
