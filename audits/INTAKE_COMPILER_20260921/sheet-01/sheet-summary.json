@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-20",
+ "generated": "2026-09-21",
  "legend": "cyan ring endpoint candidate · magenta loop · white resting tip · orange interior · yellow square + label = assigned slot (F/N side, digit station; H/F hind/fore; T tail) · yellow ring = inferred hidden · amber squares = knees/ankles · blue rings = record landmarks (comparison only) · red = body ridge · green = leg ridges · orange = claw ridges · white cross = wrist · white line = spine axis",
  "rows": [
   {
@@ -57,12 +57,10 @@
    "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/vent-crab.png",
    "score": {
     "pos": "7/8",
-    "named": "5/7",
-    "hiddenOk": false
+    "named": "5/8",
+    "hiddenOk": true
    },
-   "hidden": [
-    "leg3Near"
-   ]
+   "hidden": []
   },
   {
    "id": "civet",

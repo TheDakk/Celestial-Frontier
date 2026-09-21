@@ -518,3 +518,17 @@ chain on the contour-cut ridge): threshold 2 × blur 1 confirms one loop on the 
 crab's 68 px folded leg) yet the crab loses a name (5/6 → 4/6) and IC-4 is unchanged; 2.5–3 confirm nothing.
 Rejected as default; the folded legs' contours are not separable from paint texture at any threshold that leaves
 the rest of the crab intact (slice 21's finding, confirmed locally).
+
+## Slice 26 — folded legs declared (Nick's decision), 2026-09-21
+Nick's decision on the loop-only rear legs: **declare them.** `declaredFolded` joins `declaredHidden` as an intake
+input to `assignLegs` (proposal file `audits/INTAKE_COMPILER_20260921/FOLDED_DECLARATIONS.md`; Codex owns the
+presence files; `score.mjs#FOLDED` carries the proposal meanwhile). On a declared-folded slot a loop candidate
+pays no kind or length penalty, and the strict verdict accepts a loop there. Declarations: crab `leg0Far`, mud
+`leg0Far`, vent `leg0Near`. Result: named 29/39, positions 30/39; **IC-4 positives 3/7 → 5/7** (freshwater, mud,
+vent, Civet, Wolf), wrong-template 7/7 refused, erased 6/10, duplicated 6/10 (down from 7/10 · 9/10: a folded slot
+now accepts the loop-shaped remnant an erase or a duplicate leaves — the mutants must be re-cut for folded legs,
+which is the next IC-4 item). Remaining refusals: the crab's `leg3Far` — short and thick behind the claw, read as a
+claw finger (a palm test `thickNeedsPalm` was measured: 26/40, rejected); the coconut's unused endpoint at
+(937,1010), 52 px from the record's placed hidden `leg3Far` — the painting shows the leg the fit declares hidden,
+and a strict verdict is right to say so. Ordering re-measured with folded declarations: `sep` 5/7 positives,
+`depth`/`mid` 4/7 — `sep` stays.

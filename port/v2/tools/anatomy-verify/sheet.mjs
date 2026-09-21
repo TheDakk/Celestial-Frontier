@@ -6,11 +6,11 @@
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../..')+'/';
 const {readPng,writePng}=await import(root+'port/v2/tools/painted-creature/finish-conservation.mjs');
-const {SUBJECTS,truthOf,scoreSubject}=await import('./score.mjs');const {assignLegs}=await import('./assign.mjs');const {labelParts}=await import('./labels.mjs');
+const {SUBJECTS,truthOf,scoreSubject,FOLDED}=await import('./score.mjs');const {assignLegs}=await import('./assign.mjs');const {labelParts}=await import('./labels.mjs');
 const GLYPH={0:[' ### ','#   #','#   #','#   #',' ### '],1:['  #  ',' ##  ','  #  ','  #  ',' ### '],2:[' ### ','#   #','   # ','  #  ','#####'],3:['#### ','    #',' ### ','    #','#### '],F:['#####','#    ','#### ','#    ','#    '],N:['#   #','##  #','# # #','#  ##','#   #'],T:['#####','  #  ','  #  ','  #  ','  #  '],H:['#   #','#   #','#####','#   #','#   #']};
 export function renderSheet(id,template,master,rec,outFile,presence){
   const png=readPng(fs.readFileSync(master));const truth=rec?truthOf(JSON.parse(fs.readFileSync(rec,'utf8'))):null;const declaredHidden=truth?truth.hidden:(presence?(JSON.parse(fs.readFileSync(presence,'utf8')).hidden??[]):[]);
-  const opts=process.env.ASSIGN_OPTS?JSON.parse(process.env.ASSIGN_OPTS):{};const res=assignLegs(png.data,png.width,png.height,null,{template,declaredHidden,...opts});
+  const opts=process.env.ASSIGN_OPTS?JSON.parse(process.env.ASSIGN_OPTS):{};const res=assignLegs(png.data,png.width,png.height,null,{template,declaredHidden,declaredFolded:FOLDED[id]??[],...opts});
   const {W,H,scale,box,mask}=res.working;const toW=p=>[(p[0]-box.x)*scale+2,(p[1]-box.y)*scale+2];const Z=2;const img=new Uint8Array(W*Z*H*Z*4);
   const put=(x,y,c)=>{x=Math.round(x);y=Math.round(y);if(x<0||y<0||x>=W||y>=H)return;for(let dy=0;dy<Z;dy++)for(let dx=0;dx<Z;dx++)img.set([...c,255],((y*Z+dy)*W*Z+x*Z+dx)*4);};
   const lab=labelParts(res,template);for(let i=0;i<W*H;i++){const l=lab.labels[i];const h=l*47%360;const c=mask[i]?(l?[70+40*Math.cos(h/57.3),70+40*Math.cos((h+120)/57.3),70+40*Math.cos((h+240)/57.3)]:[60,60,60]):[12,12,12];put(i%W,Math.floor(i/W),c.map(Math.round));}
