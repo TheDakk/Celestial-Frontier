@@ -39,6 +39,18 @@ describe('morph individual — archetype + genome through the real loader', () =
     const again = individualFromGenomeV1({ record: f.record, binding: f.binding, card: f.card, genome }); expect(JSON.stringify(again.params)).toBe(JSON.stringify(morph.params));
     rig.dispose(); plainRig.dispose();
   });
+  it('M3 through the real loader: a striped crab (its painted mask in master space) loads with the marking applied in the atlas — only masked, opaque texels differ from the unmarked individual; alpha identical', async () => {
+    const f = crab(); const { readFileSync: rf } = await import('node:fs'); const { maskAlphaOf, masterMaskToAtlasV1 } = await import('./morph-markings.js');
+    const markings = repoJson<{ patterns: Record<string, { file: string }> }>(FITS.crab + 'markings.json'); const png = PNG.sync.read(rf(new URL(FITS.crab + markings.patterns['striped']!.file, REPO_ROOT)));
+    const mask = maskAlphaOf(new Uint8Array(png.data), png.width, png.height); const genome = { seed: 21, color: 12, accent: 4, pattern: 1 }; // color 12 = the archetype's own → base identity; accent morphs; striped
+    const morph = individualFromGenomeV1({ record: f.record, binding: f.binding, card: f.card, genome, markingMask: mask }); expect(morph.marking).toBe('striped'); expect(morph.emissive).toBe(false); expect(morph.atlasPixels).toBeDefined();
+    const plainMorph = individualFromGenomeV1({ record: f.record, binding: f.binding, card: f.card, genome: { ...genome, pattern: 0 }, markingMask: mask }); expect(plainMorph.marking).toBeNull();
+    let seen: Uint8Array | null = null, seenPlain: Uint8Array | null = null;
+    const rig = await loadCreatureRigV1(f.record, f.binding, f.master, f.alpha, f.atlas, undefined, { atlasPixels: (rgba, w, h) => { seen = morph.atlasPixels!(rgba, w, h); seenPlain = plainMorph.atlasPixels!(rgba, w, h); const atlasMask = masterMaskToAtlasV1(mask, f.binding, f.record.geometry.width, f.record.geometry.height, rgba);
+      let inMask = 0, outMask = 0, alphaDiff = 0; for (let i = 0; i < w * h; i++) { const j = i * 4; if (seen![j + 3] !== seenPlain![j + 3]) alphaDiff++; const d = seen![j] !== seenPlain![j] || seen![j + 1] !== seenPlain![j + 1] || seen![j + 2] !== seenPlain![j + 2]; if (!d) continue; if (atlasMask.alpha[i]) inMask++; else outMask++; }
+      expect(alphaDiff).toBe(0); expect(outMask).toBe(0); expect(inMask).toBeGreaterThan(200); return seen; } });
+    expect(seen).not.toBeNull(); rig.dispose();
+  });
   it('NEGATIVE CONTROL: a remap that touches alpha is refused by the loader', async () => {
     const f = crab();
     await expect(loadCreatureRigV1(f.record, f.binding, f.master, f.alpha, f.atlas, undefined, { atlasPixels: (rgba) => { const o = new Uint8Array(rgba); o[3] = (o[3]! + 1) & 255; return o; } })).rejects.toThrow(/keep alpha/);

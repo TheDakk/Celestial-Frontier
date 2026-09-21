@@ -29,7 +29,7 @@
    "row": "Coconut Crab",
    "col": "crimson / turquoise, head 7",
    "key": "[\"object\",[[\"_earthName\",[\"string\",\"Coco",
-   "bytes": 7947
+   "bytes": 7657
   },
   {
    "row": "Coconut Crab",
@@ -83,7 +83,7 @@
    "row": "Vent Crab",
    "col": "crimson / turquoise, head 7",
    "key": "[\"object\",[[\"_earthName\",[\"string\",\"Vent",
-   "bytes": 7663
+   "bytes": 7098
   },
   {
    "row": "Vent Crab",
@@ -94,19 +94,19 @@
   {
    "row": "Civet",
    "col": "own genome (as painted)",
-   "key": "[\"object\",[[\"_earthName\",[\"string\",\"Cive",
+   "key": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"",
    "bytes": 18781
   },
   {
    "row": "Civet",
    "col": "crimson / turquoise, head 7",
-   "key": "[\"object\",[[\"_earthName\",[\"string\",\"Cive",
+   "key": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"",
    "bytes": 19483
   },
   {
    "row": "Civet",
    "col": "golden / indigo, tail 6",
-   "key": "[\"object\",[[\"_earthName\",[\"string\",\"Cive",
+   "key": "[\"object\",[[\"_cradle\",[\"number\",\"1\"]],[\"",
    "bytes": 18758
   },
   {

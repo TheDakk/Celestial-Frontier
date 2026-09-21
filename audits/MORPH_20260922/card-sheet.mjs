@@ -6,9 +6,10 @@ import { writePng } from '../../port/v2/tools/anatomy-verify/png.mjs';
 const { PaintedCardSource } = await import('../../port/v2/apps/game/src/morph/painted-card-source.ts');
 const { CARD_ARCHETYPES } = await import('../../port/v2/apps/game/src/morph/card-archetypes.ts');
 const { decodePng } = await import('../../port/v2/apps/game/src/morph/png-decode.ts');
+const { archetypeGenomeV1 } = await import('../../port/v2/apps/game/src/morph/morph-params.ts');
 const R = path.resolve(import.meta.dirname, '../..');
 const src = new PaintedCardSource({ assets: { json: async (p) => JSON.parse(fs.readFileSync(path.join(R, p), 'utf8')), bytes: async (p) => new Uint8Array(fs.readFileSync(path.join(R, p))) }, registry: CARD_ARCHETYPES });
-const OWN = Object.fromEntries(CARD_ARCHETYPES.map((a) => [a.earthName, JSON.parse(fs.readFileSync(path.join(R, a.dir, 'record.json'), 'utf8')).genome ?? {}]));
+const OWN = Object.fromEntries(CARD_ARCHETYPES.map((a) => [a.earthName, archetypeGenomeV1(JSON.parse(fs.readFileSync(path.join(R, a.dir, 'record.json'), 'utf8')))]));
 const GEN = (name, over) => ({ ...OWN[name], _earthName: name, ...over }); // identity column = the archetype's OWN genome → the painting as painted
 const cols = [{ label: 'own genome (as painted)', g: {} }, { label: 'crimson / turquoise, head 7', g: { seed: 77, color: 1, accent: 4, head: 7 } }, { label: 'golden / indigo, tail 6', g: { seed: 12, color: 3, accent: 5, tail: 6 } }];
 const T = 132, PAD = 8, W = PAD + cols.length * (T + PAD) + 440 + PAD, H = PAD + CARD_ARCHETYPES.length * (T + PAD), out = new Uint8Array(W * H * 4); for (let i = 0; i < W * H; i++) out.set([20, 29, 34, 255], i * 4);

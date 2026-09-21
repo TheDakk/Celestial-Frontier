@@ -10,6 +10,9 @@ import { selectHabitatArena } from 'cf-proof/battle2/habitat-arena.ts';
 import { createPartsRig } from 'cf-proof/battle2/parts-rig.ts';
 import { BattleStage, GUARDIAN_FRAME_FILL, turnPlanInputFromTranscriptEvent } from 'cf-proof/battle2/stage.ts';
 import { individualFromGenomeV1 } from 'cf-proof/morph/morph-individual.ts';
+import { markingNameV1, maskAlphaOf } from 'cf-proof/morph/morph-markings.ts';
+import { archetypeGenomeV1, morphParamsV1 } from 'cf-proof/morph/morph-params.ts';
+import { decodePng } from 'cf-proof/morph/png-decode.ts';
 import { loadCreatureRigV1 } from 'cf-proof/creature-rig.ts';
 import { parseEffectSequenceAnchors } from 'cf-proof/effects/anchors.ts';
 import { PARTICLE_DISC_SIZE, particleDiscRgba } from 'cf-proof/effects/particle-texture.ts';
@@ -33,9 +36,11 @@ try {
     const alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = keyed.rgba[i * 4 + 3];
     const card = compileBodyCard(record, record.genome);
     // morph system: script.morph[side] is a genome (color/accent/head/tail/seed) → this individual on the archetype
-    const morph = individualFromGenomeV1({ record, binding, card, genome: script.morph?.[side] ?? null });
+    // the painted marking (M3/M4) when the archetype ships one for this genome's pattern (runner copies `<side>-markings.json` + masks)
+    let markingMask = null; try { const name = markingNameV1(morphParamsV1(script.morph?.[side] ?? null, record.recipeHash, archetypeGenomeV1(record))); if (name) { const mj = await json(side + '-markings.json'); if (mj?.patterns?.[name]?.file) { const png = await decodePng(await bytes(side + '-marking-' + name + '.png')); markingMask = maskAlphaOf(png.rgba, png.width, png.height); } } } catch { markingMask = null; }
+    const morph = individualFromGenomeV1({ record, binding, card, genome: script.morph?.[side] ?? null, markingMask });
     const paintRig = await loadCreatureRigV1(record, binding, master, alpha, atlas, undefined, { ...(morph.jointScale ? { jointScale: morph.jointScale } : {}), ...(morph.atlasPixels ? { atlasPixels: morph.atlasPixels } : {}) });
-    return { record, card, morph: morph.params, rig: createPartsRig({ record, rig: paintRig, card, alphaBox: alphaBox(keyed.rgba, keyed.width, keyed.height), binding, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}), ...(script.supports === 'observed' ? { contactSupports: 'observed' } : {}) }), name: record.identity.earthName ?? record.kind };
+    return { record, card, morph: { ...morph.params, marking: morph.marking, emissive: morph.emissive }, rig: createPartsRig({ record, rig: paintRig, card, alphaBox: alphaBox(keyed.rgba, keyed.width, keyed.height), binding, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}), ...(script.supports === 'observed' ? { contactSupports: 'observed' } : {}) }), name: record.identity.earthName ?? record.kind };
   };
   const [left, right] = await Promise.all([loadSide('left'), loadSide('right')]);
   const [recipe, anchorsRaw, far, mid, near] = await Promise.all([json('arena-recipe.json'), json('wild-anchors.json'), image('arena-far.png'), image('arena-mid.png'), image('arena-near.png')]);
