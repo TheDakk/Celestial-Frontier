@@ -32,7 +32,7 @@
 import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-contact-math.mjs';
 import arenaRecipeUrl from '../../../../../audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json?url';
 import { speciesVisualKey } from '@cf/art/species-identity';
-import { BattleStage, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, selectHabitatArena, turnPlanInputFromTranscriptEvent,
+import { BattleStage, GUARDIAN_FRAME_FILL, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, selectHabitatArena, turnPlanInputFromTranscriptEvent,
   type BattleRigV1, type BattleStageFactory, type FixturePartCut, type RigContainerLike, type RigSpriteLike,
   type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnAttack, type TurnOutcomeContext, type TurnPlanInput } from './battle2/index.js';
 // parts-rig (and Codex's pixi-backed creature-rig behind it) is imported by path, not through battle2/index: the root
@@ -284,7 +284,6 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const records = input.records ?? await loadRecords();
     if (disposed) throw new Error('disposed while loading');
     const texture = (img: Battle2Image): EffectTextureLike => pixi.Texture.from(img.source);
-    const layout = composeArena({ id: recipe.battleContext?.worldKey ?? 'arena', groundLineNormalized: recipe.groundLineNormalized, plates: { far, mid, near } }, BATTLE2_FRAME);
     const champion = input.settlement.champion, championGenome = champion.kind === 'owned-fauna' && champion.genome ? champion.genome : null;
     const rigContainer = (): RigContainerLike => new pixi.Container();
     const buildRig = async (side: 'left' | 'right', name: string, genome: Readonly<Record<string, unknown>> | null): Promise<{ rig: BattleRigV1; card: BodyCard | null; mass: number; seed: number }> => {
@@ -332,11 +331,14 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     };
     const left = await buildRig('left', input.chronicle.championName, championGenome);
     const right = await buildRig('right', input.chronicle.defenderName, input.settlement.encounter.defender.battleGenome);
+    // D2 G6: a guardian rig moves the stands (GUARDIAN_STANDS) — composed after the rigs so the layout knows the guardian side
+    const guardianSide = left.rig.guardian ? 'left' : right.rig.guardian ? 'right' : undefined;
+    const layout = composeArena({ id: recipe.battleContext?.worldKey ?? 'arena', groundLineNormalized: recipe.groundLineNormalized, plates: { far, mid, near } }, BATTLE2_FRAME, guardianSide ? { guardianSide } : {});
     if (disposed) { left.rig.dispose(); right.rig.dispose(); throw new Error('disposed while rigging'); }
     rigLabels.left = left.rig.label; rigLabels.right = right.rig.label;
     refusalsOf = () => Object.freeze({ left: left.rig.refusals?.() ?? null, right: right.rig.refusals?.() ?? null });
     // E1 §1.4: the habitat decides each side's medium and band on the selected world; UNSUPPORTED keeps the Chronicle path with its reason.
-    const painted = (r: { rig: BattleRigV1; mass: number }) => { const k = combatantScale(r.rig.bounds, r.rig.cutout.height, r.mass, BATTLE2_FRAME.height); return { height: k.heightFraction, footBelowCentre: (r.rig.foot.y - 0.5) * r.rig.cutout.height * k.scale / BATTLE2_FRAME.height }; };
+    const painted = (r: { rig: BattleRigV1; mass: number }) => { const k = combatantScale(r.rig.bounds, r.rig.cutout.height, r.mass, BATTLE2_FRAME.height, r.rig.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(r.rig.tallestHeight !== undefined ? { tallestHeight: r.rig.tallestHeight } : {}) } : {}); return { height: k.heightFraction, footBelowCentre: (r.rig.foot.y - 0.5) * r.rig.cutout.height * k.scale / BATTLE2_FRAME.height }; };
     const habitat = selectHabitatArena({ contextId: input.settlement.battleId, seed: recipe.seed, round: 0, kind: 'wild', worlds: input.worlds ?? null, groundLineY: layout.groundLineY,
       left: { record: matchRecord(records, championGenome), genome: championGenome, label: input.chronicle.championName, painted: painted(left) },
       right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, label: input.chronicle.defenderName, painted: painted(right) } });
