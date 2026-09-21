@@ -32,10 +32,10 @@ export function assessTemplateRootContinuity(samples:readonly RootContinuitySamp
 /** Arena composition owns target distance. Whole gait cycles own approach time.
  * Stage displacement is signed BODY LENGTHS since the current half-cycle's
  * planting boundary; it is not pixels or total travel since approach began. */
-export function createStrideCadence(input:{targetDistancePx:number;bodyLengthPx:number;gaitDurationMs:number}){
- const {targetDistancePx,bodyLengthPx,gaitDurationMs}=input;
- if(![targetDistancePx,bodyLengthPx,gaitDurationMs].every(Number.isFinite)||bodyLengthPx<=0||gaitDurationMs<=0)throw Error('Stride cadence: invalid distance/scale/duration');
- const distanceBodies=targetDistancePx/bodyLengthPx,cycles=Math.ceil(Math.abs(distanceBodies)/.2),durationMs=cycles*gaitDurationMs,perCycle=cycles?distanceBodies/cycles:0;
+export function createStrideCadence(input:{targetDistancePx:number;bodyLengthPx:number;gaitDurationMs:number;stanceReachBodyLengths:number}){
+ const {targetDistancePx,bodyLengthPx,gaitDurationMs,stanceReachBodyLengths}=input;
+ if(![targetDistancePx,bodyLengthPx,gaitDurationMs,stanceReachBodyLengths].every(Number.isFinite)||bodyLengthPx<=0||gaitDurationMs<=0||stanceReachBodyLengths<=0)throw Error('Stride cadence: invalid distance/scale/duration');
+ const distanceBodies=targetDistancePx/bodyLengthPx,cycles=Math.ceil(Math.abs(distanceBodies)/(2*stanceReachBodyLengths)),durationMs=cycles*gaitDurationMs,perCycle=cycles?distanceBodies/cycles:0;
  return Object.freeze({cycles,durationMs,gaitDurationMs,targetDistancePx,bodyLengthPx,perCycleBodyLengths:perCycle,maxStanceTravelBodyLengths:Math.abs(perCycle)/2,
   sample(ms:number){
    if(!Number.isFinite(ms)||ms<0)throw Error('Stride cadence: invalid time');

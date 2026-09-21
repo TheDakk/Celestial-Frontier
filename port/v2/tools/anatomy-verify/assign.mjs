@@ -302,9 +302,12 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
       if(st.app){rec(si+1,i,acc.concat([[null]]),cost+0.8);for(let j=i;j<cs.length;j++){const next=cs.slice(j+1).find(c=>!rearApp.length||true);const behind=j+1<cs.length?u(cs[j+1])-u(cs[j]):Infinity;if(rearApp.includes(st.app)&&behind<rearGap*R)continue;rec(si+1,j+1,acc.concat([[cs[j]]]),cost+lenCost({...cs[j],len:cs[j].len+fromSpine(cs[j])},st.app.length)*2.0+(cs[j].kind==='touch'?0.5:cs[j].kind==='loop'?0.3:0));}return;}
       rec(si+1,i,acc.concat([[null,null]]),cost+2.0); // empty station: expensive (a whole station missing)
       const hidFar=declaredHidden.includes(T.slots.Far[st.k].id),hidNear=declaredHidden.includes(T.slots.Near[st.k].id);
-      for(let j=i;j<cs.length;j++){const c=cs[j];let near=c.y>=yLow-0.25*T.legLength*R;if(hidFar)near=true;if(hidNear)near=false;
+      // depth by the ground CONTACT point (contact-refined y), not the skeleton end: nearer feet stand lower on the canvas
+      // (the bear's hind pair inverted on skeleton-end y, 2026-09-22; contact y matches the hand fit)
+      const depthY=c=>(c.kind==='end'&&c.chain&&contactRefine)?refineContact(c)[1]:c.y;
+      for(let j=i;j<cs.length;j++){const c=cs[j];let near=depthY(c)>=yLow-0.25*T.legLength*R;if(hidFar)near=true;if(hidNear)near=false;
         rec(si+1,j+1,acc.concat([[near?null:c,near?c:null]]),cost+legCost(c)+((hidFar||hidNear)?0:1.0)); // one leg at the station: the other depth hidden (free when declared)
-        if(!hidFar&&!hidNear)for(let j2=j+1;j2<cs.length;j2++){const d=cs[j2];const [farC,nearC]=c.y<=d.y?[c,d]:[d,c];rec(si+1,j2+1,acc.concat([[farC,nearC]]),cost+legCost(c)+legCost(d));}}};
+        if(!hidFar&&!hidNear)for(let j2=j+1;j2<cs.length;j2++){const d=cs[j2];const [farC,nearC]=depthY(c)<=depthY(d)?[c,d]:[d,c];rec(si+1,j2+1,acc.concat([[farC,nearC]]),cost+legCost(c)+legCost(d));}}};
     rec(0,0,[],0);
     stations.forEach((st,si)=>{if(st.app)return;[0,1].forEach(d=>{const c=best.acc[si][d];let alt=Infinity;for(const a of allS){if(a.acc[si][d]!==c&&a.cost<alt)alt=a.cost;}margins[slotName(st.k,d?'Near':'Far')]=alt===Infinity?9.99:+(alt-best.cost).toFixed(2);});});
     if(process.env.ASSIGN_DEBUG)console.log('side-view cs',cs.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),u:+u(c).toFixed(0),y:+c.y.toFixed(0),len:+c.len.toFixed(0),termDt:c.termDt,legCost:+legCost(c).toFixed(2),tailCost:rearApp.length?+(lenCost(c,rearApp[0].length)*2).toFixed(2):null})),'best',best.cost.toFixed(2),'yLow',yLow);
