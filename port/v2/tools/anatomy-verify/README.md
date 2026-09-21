@@ -572,3 +572,11 @@ freshwater false `leg3Near` (704,904) but the slot then empties (the true leg3Ne
 evidence refuses) and leg2Near slides to 413 px; vent unchanged (its false endpoints are not claw-attached).
 28/38, positives 4/7. Rejected; kept at 0. What this measured: freshwater `leg3Near` is a folded leg like the
 three declared ones — a second-round declaration, not a rule.
+Second-round declarations measured (freshwater `leg3Near`, crab `leg3Far`, vent `leg3Near` as folded, on top of
+the applied three): no change on any of the three — the freshwater false endpoint (704,904) still outbids the
+loop on a declared-folded slot, the crab's `leg3Far` is an endpoint the finger rule takes, the vent's near order is
+unchanged. Declarations are exhausted as a lever too.
+**`ic4.mjs` now prints PROGRAM §6's pass honestly:** PASS = verdict ADMIT and, where a hand record exists, every
+named foot within `IC4_BOUND` (default 60) master px. Over seven subjects: PASS 2/7 (Civet at worst 31 px; Wolf
+by verdict, no record), FAIL 5/7 — coconut (REFUSE), crab (REFUSE), freshwater (ADMIT, worst 206), mud (ADMIT,
+worst 158), vent (ADMIT, worst 439). A verdict that admits a wrong foot no longer reads as a pass.
