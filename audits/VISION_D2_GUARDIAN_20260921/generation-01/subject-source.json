@@ -1,0 +1,23 @@
+{
+  "species": {
+    "name": "Brown Bear",
+    "aspect": 1.5,
+    "headFrac": 0.27,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "prominent muscular shoulder hump",
+      "dished concave face with a broad forehead",
+      "long straight pale digging claws"
+    ],
+    "note": "the shoulder hump is the diagnostic - it makes the front of the animal the tallest point"
+  },
+  "catalogue": "port/v2/reference/fauna.json",
+  "guide": "port/v2/apps/game/smoke/gp71-platinum-repair-current-2026-08-11-03ea297/portraits/earth-fauna/Brown_Bear.png",
+  "guideNativeSize": [
+    440,
+    440
+  ],
+  "handLandmarks": false,
+  "sourceNote": "Actual fauna.json headFrac is 0.27; the design note says 0.22. Catalogue is authoritative. Retained painter guide is native 440 square, not resampled."
+}

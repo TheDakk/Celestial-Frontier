@@ -96,7 +96,10 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
   owner.play('stage', 0, 0);
   const resolve = (pose: CreaturePoseV1, context: RigPoseContext): CreaturePoseV1 => {
     if (compat) return compat.resolve(pose, context.planted).pose;
-    return family!.resolve(pose, { actionId: context.actionId, elapsedMs: context.elapsedMs, durationMs: context.durationMs, weight: context.weight, realm: card.realm, travel: context.travel }).pose;
+    // `stageDisplacement` (converted to body-length units) rides along for the solver's arena-planting contract;
+    // today's solver ignores it — the one ask left for Codex (see the parts-rig test pin)
+    const phase = { actionId: context.actionId, elapsedMs: context.elapsedMs, durationMs: context.durationMs, weight: context.weight, realm: card.realm, travel: context.travel, ...(context.stageDisplacement !== undefined ? { stageDisplacement: context.stageDisplacement / card.scaleLength } : {}) };
+    return family!.resolve(pose, phase as Parameters<NonNullable<typeof family>['resolve']>[1]).pose;
   };
   const parts: readonly RigPartV1[] = Object.freeze(rig.parts.map((p) => Object.freeze({ id: p.id, display: p.display, pivot: Object.freeze({ x: p.pivot.x, y: p.pivot.y }), layer: p.layer })));
   const bounds = Object.freeze({ width: alphaBox.width / W, height: alphaBox.height / H, groundLineY: record.geometry.groundLineY });

@@ -1,0 +1,52 @@
+{
+  "schema": "cf.painted-master-request/v1",
+  "species": "Brown Bear",
+  "generation": 1,
+  "sourceHead": "20534d6d18bf42c566e5cd796c5dc6071fc273e0",
+  "compiler": "compile-prompt.mjs",
+  "compilerSha256": "e3dec52ecc2fad6916f8fa4d33a9304887f655f6597e1b35eacf077bb0018029",
+  "template": {
+    "path": "audits/VISION_P1_QUADRUPED_20260921/generation-01/prompt.txt",
+    "sha256": "d873809f129bae3681fc06bc0cd9454e4316c36c5eaa5d4c17a03c12d1540a03"
+  },
+  "catalogue": {
+    "path": "port/v2/reference/fauna.json",
+    "sha256": "2963f1fb1ddee01ef94fce4246401dcf39159af7444b3f364d0859bedfc657c0"
+  },
+  "kit": {
+    "path": "ART_KIT.md",
+    "sha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c"
+  },
+  "sentPromptSha256": "feb0070c0e645be54932c1f48abc8a6c236c0099df639a07ae1a45b64aafd02d",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed",
+  "seed": null,
+  "seedReason": "No seed parameter exposed",
+  "references": [
+    {
+      "role": "Discovery Atlas style lock",
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    },
+    {
+      "role": "Side-on painter anatomy guide only",
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/VISION_D2_GUARDIAN_20260921/generation-01/anatomy-guide.png",
+      "source": "port/v2/apps/game/smoke/gp71-platinum-repair-current-2026-08-11-03ea297/portraits/earth-fauna/Brown_Bear.png",
+      "sha256": "5a3257c15dbad2c6bdbfb1fcc89d8f2e3fb5cb9d9e43d48b6d626159937f1ce3"
+    }
+  ],
+  "requestedSize": [
+    1536,
+    1536
+  ],
+  "format": "PNG",
+  "background": "#FF00FF (P1 technical block); delivered alpha also accepted by D2",
+  "generationCount": 1,
+  "guardianCpuGateMs": 5,
+  "guardianTier": "desktop-only",
+  "landmarkBoundPx": 60,
+  "handLandmarks": false,
+  "fitPerformed": false,
+  "rigPerformed": false,
+  "intakePerformed": false
+}

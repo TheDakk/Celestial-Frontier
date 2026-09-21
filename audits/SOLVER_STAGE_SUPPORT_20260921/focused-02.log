@@ -1,0 +1,24 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-stance.test.ts (5 tests | 1 failed) 13ms
+   × stage travel zeroes solver root dx and stride target advance while preserving stored authored keys 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-stance.test.ts > stage travel zeroes solver root dx and stride target advance while preserving stored authored keys
+AssertionError: expected [ { x: 0.555, y: 0.715 }, …(1) ] to not deeply equal [ { x: 0.555, y: 0.715 }, …(1) ]
+
+Compared values have no visual difference.
+
+ ❯ apps/game/src/creature-rig-stance.test.ts:6:500
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 10 passed (11)
+   Start at  22:13:54
+   Duration  691ms (transform 230ms, setup 0ms, import 503ms, tests 241ms, environment 0ms)
+

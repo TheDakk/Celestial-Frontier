@@ -4,7 +4,7 @@
  "rows": [
   {
    "id": "coconut-crab",
-   "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/coconut-crab.png",
+   "file": "../../../../audits/INTAKE_COMPILER_20260921/sheet-01/coconut-crab.png",
    "score": {
     "pos": "5/6",
     "named": "4/6",
@@ -16,65 +16,8 @@
    ]
   },
   {
-   "id": "crab",
-   "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/crab.png",
-   "score": {
-    "pos": "6/7",
-    "named": "5/6",
-    "hiddenOk": false
-   },
-   "hidden": [
-    "leg3Far",
-    "leg3Near"
-   ]
-  },
-  {
-   "id": "freshwater-crab",
-   "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/freshwater-crab.png",
-   "score": {
-    "pos": "6/7",
-    "named": "6/7",
-    "hiddenOk": true
-   },
-   "hidden": [
-    "leg3Far"
-   ]
-  },
-  {
-   "id": "mud-crab",
-   "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/mud-crab.png",
-   "score": {
-    "pos": "6/7",
-    "named": "6/7",
-    "hiddenOk": true
-   },
-   "hidden": [
-    "leg3Far"
-   ]
-  },
-  {
-   "id": "vent-crab",
-   "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/vent-crab.png",
-   "score": {
-    "pos": "7/8",
-    "named": "5/8",
-    "hiddenOk": true
-   },
-   "hidden": []
-  },
-  {
-   "id": "civet",
-   "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/civet.png",
-   "score": {
-    "pos": "0/4",
-    "named": "3/5",
-    "hiddenOk": true
-   },
-   "hidden": []
-  },
-  {
-   "id": "wolf",
-   "file": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/INTAKE_COMPILER_20260921/sheet-01/wolf.png",
+   "id": "brown-bear",
+   "file": "../../../../audits/INTAKE_COMPILER_20260921/sheet-01/brown-bear.png",
    "score": null,
    "hidden": []
   }

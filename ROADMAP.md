@@ -168,7 +168,8 @@ branch push of both lanes Nick then authorized is done (see Lane state), so orig
 
 
 ### What Claude owes next
--31. **Slice 32 (2026-09-21, this commit):** fork-aware ridge (local contour cut + gape test) measured three ways and rejected — a closed claw's gape is not an interior contour on these paintings; option kept at 0. Structural levers on seven subjects are exhausted; the next inputs are Codex's solver fixes and the Brown Bear (G3 through the compiler).
+-32. **Re-merge of Codex `ce237867` + G3 (2026-09-21, this commit):** Codex's solver stage-support producer (S2 PASS: crabs bit-identical, Civet ≤ 0.1653 px) merged; it removes the local stride in stage mode and leaves the stage displacement to the caller — the parts rig now passes `stageDisplacement` (RigPoseContext → phase); **one solver ask left for Codex: accept `stageDisplacement` and recede stance targets by it** (third pin stays `it.fails`, 184 px = the stage travel). Coconut's declaration consumed (refuses on the merged finger, recorded). Brown Bear G3: 1254² not 1536 (Codex's size red retained); four paws + tail assigned; refuses on `hindFar` as a loop; the tail slot takes the rear-most foot (stub-tailed species: declare the tail absent) — README slice 33. G6 waits for a bear record.
+-31. **Slice 32 (2026-09-21, commit `a686e0aa`):** fork-aware ridge (local contour cut + gape test) measured three ways and rejected — a closed claw's gape is not an interior contour on these paintings; option kept at 0. Structural levers on seven subjects are exhausted; the next inputs are Codex's solver fixes and the Brown Bear (G3 through the compiler).
 -30. **Re-seal + re-lift under Nick's decision (2026-09-21, commit `86fbaf5a`):** training fixture/test html seal → `a65d5905…`; `lift-hdart.mjs` re-run; speciesportable byte-seal re-blessed; suite 4,770 pass. Decisions 1–4 recorded under "Nick" below.
 -29. **E1 re-filmed on the family solver (2026-09-21, commit `11a45b4c`):** `audits/BATTLE2_E1_PROOF_20260921/` — Civet-vs-crab DIAGNOSTIC_PASS (0 refusals, 3.30 ms p95) and **the crab attacking with a pinch through the stage** (0 refusals, 3.40 ms) on Codex's delivered crab fit. Third pin still red with the solver double-count finding.
 -28. **Re-merge of Codex's R3-S → §8 (2026-09-21, merge `9ee651d2`, signed and pushed):** see Lane state above.
@@ -211,7 +212,7 @@ branch push of both lanes Nick then authorized is done (see Lane state), so orig
    (a habitat-gene-less "drifters" jelly resolves aerial); the I5 stale certificate is the one red on both lanes.
 
 ### Codex (openai lane)
-Holds with writers frozen; the `folded` declarations are applied and consumed (slice 27). Nothing further asked unless Nick decides the coconut/crab declarations.
+Holds. Three asks for its next run (no Nick decision needed, all inside decisions already taken): (1) `ContactPhase.stageDisplacement` (body-length units) — recede stance targets by it in stage mode; five crabs + Civet S2-identical; (2) bear declaration: `hindFar` folded, tail `absent` (stub inside the outline); (3) one retry of the bear paint at 1536² (G1's size requirement), same prompt bytes.
 Continues §8 unattended. Interfaces E1 consumes from R3, unchanged: `ContactPhase.travel?: 'solver' | 'stage'` (zero solver root
 dx in stage mode, stance targets unchanged) and `contactJoint` on `compileAnatomyAttack` (already on the attack rows). Nothing
 in Claude's E1 changed a Codex-owned file except the two merge repairs above, both recorded for re-application in its lane.

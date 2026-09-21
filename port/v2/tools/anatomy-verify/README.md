@@ -656,3 +656,20 @@ Conclusion: on these paintings the gape of a closed claw is not a strong interio
 leaves legs alone; the finger/leg separation must come from the painting's colour/texture at the palm or from a
 declared claw pose, not from alpha or luminance contours. `clawEdgeCut` stays 0. This closes the structural levers
 measurable on seven subjects; IC-4 stands at verdict 5/7, §6 PASS 2/7.
+
+## Slice 33 — the Brown Bear (D2 G3) and the coconut's corrected declaration, 2026-09-21 (late)
+Codex's Brown Bear (`openai-mac/audits/VISION_D2_GUARDIAN_20260921/generation-01/`, declaration hidden/absent/
+folded all empty; **G1 RED: the tool returned 1254², not the requested 1536²** — retained as Codex recorded it).
+Through the identical code via `ANATOMY_SUBJECTS` (no code change for the new subject): R = 117 working px (the
+bear is one thick mass — its thick region swallows the upper legs), four paws + a tail assigned, verdict REFUSE
+(`hindFar` is a LOOP: the far hind leg is painted mostly behind the near one), wrong-template REFUSE. The sheet
+shows the second defect: the rear-most foot (bottom-left) is taken by the TAIL slot — a bear's tail is a stub inside
+the outline, so no tail candidate exists and a hind leg fits the tail slot's length cost. Measured `rearGap`
+(a rear appendage must separate a clear gap behind the hips, 0.15/0.3 R): no change — this leg's chain separates
+far behind the hips on the ridge, so the gap cannot tell it from a tail. Two data facts for Codex, not rules: the
+bear's `hindFar` is folded/occluded (declare it, per Nick's law) and, per the contract, a quadruped's tail is
+long (`tail0..3`) — a stub-tailed species needs `absent`/`hidden` for the tail so the slot is not offered. No hand
+record exists, so no landmark numbers; G6 waits for a record.
+Coconut with Codex's corrected declaration (`leg3Far` visible, `presence.json` 41ec…): the compiler leaves
+`leg3Far` empty (precision: the only candidate there is the lone finger) and refuses — "visible leg3Far not found; 1
+unused endpoint" — the finger/leg merge of slice 30, unchanged.

@@ -31,6 +31,9 @@ export interface RigPoseContext {
   /** Stance for the quadruped compatibility solver: feet planted (stationary clips) or free (gait / lunge). */
   readonly planted: boolean;
   readonly travel: 'stage';
+  /** Run-up displacement the stage has already applied (display units) — the solver's arena-planting contract
+   * (Codex cb1a667d: stage mode adds no local stride; arena planting "needs the caller's stage displacement"). */
+  readonly stageDisplacement?: number;
 }
 /** What the battle stage needs beyond the contract (a C2 rig gets a thin wrapper adding these). */
 export interface BattleRigV1 extends CreatureRigV1 {

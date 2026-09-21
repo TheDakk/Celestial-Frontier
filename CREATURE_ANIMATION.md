@@ -646,3 +646,12 @@ paint, joint and contact requirements. Unlike hidden, folded removes no contact 
 Accepted Crab/Mud/Vent fits now have standalone compiler `presence.json` inputs; their
 sealed records and binding bytes remain unchanged. Exact declarations and focused controls:
 `audits/INTAKE_FOLDED_DECLARATIONS_20260921/README.md`. IC-3 is frozen again.
+
+### Stage-mode support readout — matches code 2026-09-21
+
+Stage-owned gait contact no longer adds local stride to stance targets; solver/default
+travel is unchanged. This minimum correction does not infer the arena displacement.
+`readCreatureRigContactSupport(rig,joint)` exposes the actual last-published painted
+support in normalized source coordinates, not the joint or predicted LBS position.
+Refusal preserves its prior value; unpublished/disposed/non-support queries return null.
+Evidence: audits/SOLVER_STAGE_SUPPORT_20260921/README.md.

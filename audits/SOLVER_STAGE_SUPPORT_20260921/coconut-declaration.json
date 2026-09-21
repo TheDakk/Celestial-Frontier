@@ -1,0 +1,52 @@
+{
+  "decision": "Nick 2026-09-21: leg3Far is painted; remove hidden declaration",
+  "appliedTo": "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/presence.json",
+  "sha256": "41ecbcdfc2bbe926e635ca150b4839836198fcd782b240814f0a537101078026",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [
+      "leg3Near"
+    ],
+    "folded": []
+  },
+  "sealedRecord": "Unchanged historical record; compiler declarationOf reads presence.json as the current anatomy input",
+  "unchangedFiles": {
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/record.json": "12c19c9543b0ce8924cffcc11092854743b07840496615207e1e72f62ad2639d",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/binding.json": "021c0850f5c1735411313a5b3c9167b87bf65a25f7d712a123e0e2534bd8553d",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/declaration.json": "3dd64efa1be1132019c2f4f09ad0b3c55a93c8910e32c6a2baa67ac870325fa5",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/mask-receipt.json": "7a8e91bd402915e856c9628ce2b214a31cc41e14a8f44452eddddd4203f1ebd4",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/labels.png": "844ab2652cff1fb38faf75f117c3fa8bed2963ec281d073a765f3dab19cfb338",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/receipt.json": "c1a29bea5a30fe6ff46b98eba2c369ae148121126b3285971ac9a97500942bab",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/binding.json": "9f30dfca531e1a069beeeec286381573ef5d7640f1be685244b9434f7740afb9",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/keyed.png": "9e10240fcdd50c136da89ba5db70cbcd1ac44fce7e09cd25b4843ba108035ddc",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/ownership.png": "223cb3c5b2eb9f34e18d21c7b27534196e9702409b02ad5d66d1b6153ab7efca",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/manifest.json": "58f6347a72325b4059c74666be0934474697510372e07b729f607a50874b6655",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/receipt.json": "b186c6da94bc41aafc79f7bba492c9c1ceaa219ad3985a1f0c5b1b1e9d0e102d",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg1far-upper.png": "232f4f939a1ccd1a430076248e94679a7bfdf9d0c998f92409e1c3308deb59ae",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/claw-near-finger.png": "2e9a75c3f675ba0f9506d3fc96f3f699020141d95a724515d5535ccd0501d564",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg0far-upper.png": "c7c956548af37a18d3dbaa098971892edefededd2fef0bce0ee6d1185415d182",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg0near-upper.png": "82a2b4b64d622bbcda3cfcf66a3b2895d353ab7a03fb8e1cf90d5741801bd4e0",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/eye-near.png": "e5d7da7f0b9f718bc10cc8aff673f760425d064b482a331a5a826294eaf7134e",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/body.png": "ef82a13137df26c3f1d5ef6f789dee938d7f0a5b7d02d0da52464653e5bcea98",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg1far-lower.png": "6592ad3a1f341207d8fe11eb153c4f54bd2b5127e9929433a32493dec91da263",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/claw-far-finger.png": "b165d953b1d6013cdffe4127230eb4819824f08509063df337b3ab3ceb58c6a6",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg0near-lower.png": "3304cb6be2e3b55420cab0b22603a4f5e9e5ea2dfcf88e02b8bc0f853199f6e4",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg0far-lower.png": "23689da073e797d7815bdd41d8ed4a2c216520b6bce82bcc7202857418865881",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/claw-near-arm.png": "8dc407b183255f85e7def4cd848ad74e4bd40c85ee9939012268d48c01ff4d85",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg1near-lower.png": "70758f009495f497733da87453ec2900f09e6514d1a9a909a74c5b35465181d0",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg2far-lower.png": "f0bebd1d999d6ec433e674f3dda1306e5cb622990c237a872ba5669822d16093",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/claw-far-arm.png": "0bc8425c14af6154b30f0fbc2bd49f0e8536ad35f9920cb296d72594bef52bd6",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg2near-lower.png": "a25a955165e4f26f0fa1c69407ba18d49d9f09e51d160356870fb7e061fa251a",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg2far-upper.png": "0e3e2c6fef6800f46eda140c562e62509d60527d051bf0bfdde3e4062a81cd88",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/claw-far-palm.png": "1b013c0484e739cf945518ce5f9fda4ba2aeb9595852ea3d67e0afee365db209",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/claw-near-palm.png": "0e7876a20913b1b85458dc0a06e4296d0df6b88c2e2657351e108c9d0e21d412",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg1near-upper.png": "14fa9e6ec4a80357e027bbd594595a440f0433e6d5adddf4c88fc8fc6ee025d9",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/leg2near-upper.png": "87e3d096af76d63f7041a22c12d8159804037bedb9e81de072649a0ca694c955",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/parts/eye-far.png": "3238e22f3af96089c67d1928018d5b4dda03e46345440080dcc4f20c64152381",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/atlas/p1-coconut-crab.png": "0dd9a34e031346c04829ca9b897ec1264695506e98734cf415a7e952d26836b5",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/atlas/p1-coconut-crab.json": "acf5f7e42b1ebd20f6189a5cd423fb84fc0e263756f7b3541ab3b52ad056ea4b",
+    "audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/parts/atlas/receipt.json": "6e5605f4d3d61ee4fe2fb06ba1aed678348a044f6ee816efb8ea9151a774b5a1"
+  },
+  "unchangedFileCount": 35
+}
