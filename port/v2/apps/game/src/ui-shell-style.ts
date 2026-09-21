@@ -26,7 +26,11 @@ export const UI_SHELL_CSS = `
 #objchip{grid-column:2;grid-row:2;justify-self:end;position:static;inset:auto;z-index:auto;display:block;margin:0;padding:8px 11px;font-size:10.5px;letter-spacing:.01em;line-height:1.45;color:#f0cf8a;width:max-content;max-width:min(236px,100%);box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;border:1px solid rgba(255,207,138,.48);border-radius:22px;background:rgba(10,16,30,.94);pointer-events:auto;min-width:44px;min-height:44px;font-family:var(--ui);font-weight:400;text-align:left;cursor:pointer;touch-action:manipulation}
 #objchip::before{content:'Objective';display:block;margin-bottom:2px;font-size:8px;line-height:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#d4be97}
 #objchip:empty{display:none}#objchip .prog{color:#7ec8f0;font-weight:600;white-space:nowrap}
-body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
+/* Portrait Survey yield is measured by the sheet layout owner. Panels retain
+   the objective, including while establishing a floating-trail predecessor. */
+@media(min-width:901px),(orientation:landscape){body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}}
+#objchip.sheet-objective-yield{display:none}
+#objchip.sheet-objective-compact{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #ctxbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 64px);width:max-content;max-width:min(620px,90vw);text-align:center;pointer-events:none;z-index:var(--cf-layer-caption);box-sizing:border-box;padding:0;border:0;background:rgba(10,16,30,.94);border-radius:0;font-size:12.5px;line-height:1.5;color:var(--dim);text-shadow:0 1px 12px #000c}
 #hintpill{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 18px);z-index:var(--cf-layer-caption);pointer-events:none;font-size:11px;line-height:1.5;letter-spacing:.04em;color:var(--dim);padding:0;border:0;border-radius:0;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;text-align:center;text-shadow:0 1px 3px #000,0 0 8px #000;-webkit-text-stroke:2px #000;paint-order:stroke fill;white-space:normal;max-width:min(620px,90vw);width:max-content;box-sizing:border-box}
 #hintpill .kw{color:#7ec8f0;font-weight:600}

@@ -1,6 +1,9 @@
 /** U2 measured sheet lanes. Presentation only; no game or persistence ownership.
  * Rectangles are viewport CSS pixels. Hidden chrome owns no lane. */
-export function createSheetLayoutController(document: Document = window.document): {
+export function createSheetLayoutController(
+  document: Document = window.document,
+  onUpperChromeChange: () => void = () => {},
+): {
   sync(): void; dispose(): void;
 } {
   const view = document.defaultView!;
@@ -12,6 +15,7 @@ export function createSheetLayoutController(document: Document = window.document
   const hint = document.getElementById('hintpill')!;
   const guidance = [hint, document.getElementById('ctxbar')!];
   const topbar = document.getElementById('topbar')!;
+  const objective = document.getElementById('objchip');
   const upperChrome = [...new Set([topbar, ...topbar.children,
     ...['searchbox', 'objchip', 'sceneactions', 'trail'].flatMap(id => {
       const el = document.getElementById(id); return el ? [el] : [];
@@ -22,6 +26,10 @@ export function createSheetLayoutController(document: Document = window.document
   const observedHeaders = new Set<HTMLElement>();
   let disposed = false;
   let frame = 0;
+  let publishedObjectiveYield = false;
+  let publishedObjectiveCompact = false;
+  const overlayState = (): string => ['card-open', 'panel-open'].map(name => document.body.classList.contains(name)).join('/');
+  let measuredOverlayState = overlayState();
   const set = (name: string, value: number): void => {
     const next = `${Math.max(0, value).toFixed(2)}px`;
     if (root.style.getPropertyValue(name) !== next) root.style.setProperty(name, next);
@@ -41,9 +49,21 @@ export function createSheetLayoutController(document: Document = window.document
     return { minimum: headerHeight + topEdge + pixels(style.paddingBottom) + pixels(style.borderBottomWidth) + 44,
       scrollTop: headerHeight + topEdge };
   };
-  const sync = (): void => {
+  const measure = (restoreObjective: boolean): void => {
     if (disposed) return;
+    measuredOverlayState = overlayState();
     const height = view.innerHeight;
+    const portrait = view.innerWidth <= 900 && height >= view.innerWidth;
+    const yieldObjective = portrait && document.body.classList.contains('card-open');
+    if (restoreObjective) { publishedObjectiveYield = yieldObjective; publishedObjectiveCompact = false; }
+    if (restoreObjective && objective && (objective.classList.contains('sheet-objective-yield') !== yieldObjective
+      || objective.classList.contains('sheet-objective-compact'))) {
+      objective.classList.toggle('sheet-objective-yield', yieldObjective);
+      objective.classList.remove('sheet-objective-compact');
+      // Publish the header owner's new height before measuring sheet space.
+      // A hide/show in one task can have no net ResizeObserver size change.
+      onUpperChromeChange();
+    }
     const safeBottom = parseFloat(view.getComputedStyle(root).getPropertyValue('--safe-bottom')) || 0;
     // Restore both native lanes first. AppChrome may still hold a clipped 1px
     // hint receipt, so project the natural offsetHeight only while measuring the
@@ -88,13 +108,14 @@ export function createSheetLayoutController(document: Document = window.document
     // The accepted topbar wrapper is pointer-transparent. Its empty bottom
     // padding is not a control; measure its painted child surfaces instead.
     // A wrapper that can itself intercept input still contributes its full box.
-    const sideStart = Math.max(0, ...upperChrome.map(el => {
+    const upperBottom = (includeTrail = true): number => Math.max(0, ...upperChrome.map(el => {
+      if (!includeTrail && el.id === 'trail') return 0;
       const style = view.getComputedStyle(el);
       if ((el === topbar && style.pointerEvents === 'none') || Number(style.opacity || '1') <= 0) return 0;
       return visibleRect(el)?.bottom ?? 0;
-    })) + 8;
+    }));
+    const sideStart = upperBottom() + 8;
     set('--cf-planetside-start', sideStart);
-    const portrait = view.innerWidth <= 900 && height >= view.innerWidth;
     const stacked = portrait && document.body.classList.contains('surface-mode') && document.body.classList.contains('card-open')
       && surveyRect !== null && sideRect !== null
       && Math.min(surveyRect.right, sideRect.right) > Math.max(surveyRect.left, sideRect.left);
@@ -143,6 +164,33 @@ export function createSheetLayoutController(document: Document = window.document
     // A short strip can translate without resizing; Survey derives its edge
     // from this final height and floor instead of Main's older position receipt.
     set('--cf-planetside-height', planetside ? visibleRect(planetside)?.height ?? 0 : 0);
+    // Keep the Charters opener rendered when a long objective consumes the
+    // panel body or native biosphere band: ellipsize its caption, preserving
+    // the full DOM/accessible name and touch floor. Recompute from natural
+    // text every time. Floating-trail pressure belongs to its own yield rule.
+    const shortPanel = sharedSheets.some(sheet => {
+      const rect = visibleRect(sheet);
+      return rect && sheet.getAttribute('aria-hidden') !== 'true' && floor - rect.top < sheetMetrics(sheet).minimum;
+    });
+    const shortBiosphere = sideRect !== null && floor - (upperBottom(false) + 8) < 72;
+    if (restoreObjective && portrait && !yieldObjective && objective && (shortPanel || shortBiosphere)) {
+      publishedObjectiveCompact = true;
+      objective.classList.add('sheet-objective-compact');
+      onUpperChromeChange();
+      measure(false);
+    }
+  };
+  const sync = (): void => {
+    // Natural-caption measurement temporarily resizes sheets. Preserve native
+    // scroll offsets across that projection; otherwise a transient larger
+    // scrollport clamps a user's scroll before the final compact layout returns.
+    const scrolls = sheets.flatMap(sheet => [sheet, ...sheet.querySelectorAll<HTMLElement>('.compendium-scroll')])
+      .map(el => ({ el, left: el.scrollLeft, top: el.scrollTop }));
+    measure(true);
+    for (const { el, left, top } of scrolls) {
+      if (el.scrollLeft !== left) el.scrollLeft = left;
+      if (el.scrollTop !== top) el.scrollTop = top;
+    }
   };
   const schedule = (): void => {
     if (!disposed && !frame) frame = view.requestAnimationFrame(() => { frame = 0; sync(); });
@@ -157,8 +205,18 @@ export function createSheetLayoutController(document: Document = window.document
     return comparisonStyle.cssText;
   };
   const mutation = new view.MutationObserver(records => {
+    // Opening a panel can immediately focus/scroll its controls. Settle the
+    // final overlay's header and floor in this microtask, before that input.
+    if (overlayState() !== measuredOverlayState) { sync(); return; }
     if (records.some(record => {
       const sheet = record.target as HTMLElement;
+      if (sheet === objective && record.type === 'attributes' && record.attributeName === 'class') {
+        const externalClasses = (value: string | null): string => (value ?? '').split(/\s+/)
+          .filter(name => name && name !== 'sheet-objective-yield' && name !== 'sheet-objective-compact').sort().join(' ');
+        return objective.classList.contains('sheet-objective-yield') !== publishedObjectiveYield
+          || objective.classList.contains('sheet-objective-compact') !== publishedObjectiveCompact
+          || externalClasses(record.oldValue) !== externalClasses(objective.getAttribute('class'));
+      }
       if (record.type !== 'attributes' || record.attributeName !== 'style' || !sharedSheets.includes(sheet)) return true;
       // Ignore only our own unchanged-value publication. Real style changes
       // (including a corrupted owned value) must still schedule measurement.
@@ -172,11 +230,12 @@ export function createSheetLayoutController(document: Document = window.document
   // text/style changes and preference changes still restore natural measurement.
   for (const el of guidance) mutation.observe(el, { attributes: true, attributeFilter: ['style'], childList: true, subtree: true, characterData: true });
   for (const el of upperChrome.filter(el => el === topbar || !topbar.contains(el))) {
-    mutation.observe(el, { attributes: true, attributeFilter: ['style', 'class'], childList: true, subtree: true, characterData: true });
+    mutation.observe(el, { attributes: true, attributeOldValue: true, attributeFilter: ['style', 'class'], childList: true, subtree: true, characterData: true });
   }
   mutation.observe(toast, { attributes: true, attributeFilter: ['style'], childList: true, subtree: true, characterData: true });
   for (const sheet of sheets) mutation.observe(sheet, { attributes: true, attributeOldValue: true, attributeFilter: ['class', 'style', 'hidden', 'aria-hidden'],
     childList: true, subtree: true, characterData: true });
+  document.addEventListener('cf-panel-layout', sync);
   toast.addEventListener('transitionend', schedule);
   view.addEventListener('resize', schedule, { passive: true });
   sync();
@@ -184,6 +243,7 @@ export function createSheetLayoutController(document: Document = window.document
     disposed = true;
     if (frame) view.cancelAnimationFrame(frame);
     resize.disconnect(); mutation.disconnect();
+    document.removeEventListener('cf-panel-layout', sync);
     toast.removeEventListener('transitionend', schedule);
     view.removeEventListener('resize', schedule);
   } };

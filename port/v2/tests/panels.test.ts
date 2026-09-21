@@ -53,6 +53,20 @@ afterEach(() => {
 });
 
 describe('shared panel selection presentation', () => {
+  it('settles yielded opener visibility before restoring focus, with a missing-layout negative control', async () => {
+    const panels = await import('../apps/game/src/panels.js');
+    const board = document.getElementById('firstpanel')!, opener = document.getElementById('first')!;
+    panels.registerPanel({ id: 'first', el: board, btns: [opener] });
+    const settle = () => { opener.style.display = document.body.classList.contains('panel-open') ? 'none' : 'block'; };
+    document.addEventListener('cf-panel-layout', settle);
+    opener.click(); expect(opener.style.display).toBe('none');
+    panels.closePanels(); expect(document.activeElement).toBe(opener);
+    opener.click(); document.removeEventListener('cf-panel-layout', settle);
+    panels.closePanels(); expect(document.activeElement).toBe(document.getElementById('docksurvey'));
+    document.addEventListener('cf-panel-layout', settle); settle();
+    opener.click(); panels.closePanels(); expect(document.activeElement).toBe(opener);
+    document.removeEventListener('cf-panel-layout', settle);
+  });
   it('styles the existing direct title without wrapping or replacing its children', async () => {
     const panels = await import('../apps/game/src/panels.js');
     const board = document.getElementById('firstpanel')!;

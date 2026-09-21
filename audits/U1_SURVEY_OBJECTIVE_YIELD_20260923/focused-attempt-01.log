@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/sheet-layout.test.ts (26 tests | 1 failed) 627ms
+     × restores native scene guidance after close makes the landed allocation unnecessary 31ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/sheet-layout.test.ts > measured U2 sheet lanes > restores native scene guidance after close makes the landed allocation unnecessary
+AssertionError: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ tests/sheet-layout.test.ts:279:73
+    277|     expect(hint.classList.contains('sheet-guidance-yield')).toBe(false…
+    278|     expect(h.value('--cf-lower-top')).toBe(reason === 'resize' ? 700 :…
+    279|     h.controller.sync(); await Promise.resolve(); expect(h.frames.size…
+       |                                                                         ^
+    280|     expect(hint.classList.contains('sheet-guidance-yield')).toBe(false…
+    281|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 58 passed (59)
+   Start at  16:02:14
+   Duration  963ms (transform 56ms, setup 0ms, import 431ms, tests 867ms, environment 0ms)
+

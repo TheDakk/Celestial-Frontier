@@ -45,12 +45,71 @@ function harness(includePlanetside = true, width = 1024, height = 568, compactTo
     callback: () => void; disconnect = vi.fn(); observe = vi.fn(); unobserve = vi.fn();
     constructor(callback: () => void) { this.callback = callback; observers.push(this); }
   };
-  const controller = createSheetLayoutController(document);
+  const upperChange = vi.fn();
+  const controller = createSheetLayoutController(document, upperChange);
   cleanups.push(() => { controller.dispose(); dom.window.close(); });
   const value = (name: string) => parseFloat(document.documentElement.style.getPropertyValue(name));
-  return { document, rects, controller, observers, value, flushFrames, frames };
+  return { document, rects, controller, observers, value, flushFrames, frames, upperChange };
 }
 describe('measured U2 sheet lanes', () => {
+  it('compacts a tall objective before panel input, remeasures, and expands when room returns', async () => {
+    const h = harness(false, 320), objective = h.document.getElementById('objchip');
+    const panel = h.document.getElementById('chpanel'), view = h.document.defaultView;
+    objective.setAttribute('aria-label', 'Full expedition objective');
+    const text = objective.textContent, label = objective.getAttribute('aria-label');
+    h.rects.set('chpanel', { top: 339, height: 70.5 });
+    h.rects.set('charterheader', { top: 354, height: 84.56 });
+    h.upperChange.mockImplementation(() => {
+      h.rects.set('chpanel', { top: objective.classList.contains('sheet-objective-compact') ? 132 : 339, height: 70.5 });
+      panel.scrollTop = 0; // Browser clamp during the temporary header projection.
+    });
+    panel.scrollTop = 240;
+    panel.style.display = 'block'; h.document.body.classList.add('panel-open');
+    h.document.dispatchEvent(new view.Event('cf-panel-layout'));
+    expect(objective.classList.contains('sheet-objective-compact')).toBe(true);
+    expect(objective.classList.contains('sheet-objective-yield')).toBe(false);
+    expect(h.value('--cf-sheet-floor') - panel.getBoundingClientRect().top).toBeGreaterThan(170);
+    expect(panel.scrollTop).toBe(240);
+    await Promise.resolve(); h.flushFrames(); await Promise.resolve(); h.flushFrames();
+    h.controller.sync(); await Promise.resolve(); expect(h.frames.size).toBe(0);
+    Object.defineProperty(view, 'innerHeight', { value: 900, configurable: true });
+    h.rects.set('hintpill', { top: 700, height: 76 }); h.rects.set('dock', { top: 800, height: 92 });
+    view.dispatchEvent(new view.Event('resize')); h.flushFrames();
+    expect(objective.classList.contains('sheet-objective-compact')).toBe(false);
+    expect(objective.textContent).toBe(text); expect(objective.getAttribute('aria-label')).toBe(label);
+    h.controller.dispose(); h.document.body.classList.add('card-open');
+    h.document.dispatchEvent(new view.Event('cf-panel-layout'));
+    expect(objective.classList.contains('sheet-objective-yield')).toBe(false);
+  });
+  it('observes portrait Survey yield and restores the objective for a panel, close and rotation', async () => {
+    const h = harness(true, 320), objective = h.document.getElementById('objchip');
+    const { body, defaultView: view } = h.document;
+    h.upperChange.mockImplementation(() => {
+      // Callback sees the final visibility class before sheet measurements.
+      expect(objective.classList.contains('sheet-objective-yield')).toBe(
+        body.classList.contains('card-open') && view.innerHeight >= view.innerWidth);
+    });
+    const settle = async () => { await Promise.resolve(); h.flushFrames(); await Promise.resolve(); h.flushFrames(); };
+    body.classList.add('panel-open'); await settle();
+    expect(objective.classList.contains('sheet-objective-yield')).toBe(false);
+    body.classList.add('card-open'); await settle();
+    expect(objective.classList.contains('sheet-objective-yield')).toBe(true);
+    expect(h.upperChange).toHaveBeenCalledTimes(1);
+    // Wrong retained class is repaired by the observed layout path.
+    objective.classList.remove('sheet-objective-yield'); await settle();
+    expect(objective.classList.contains('sheet-objective-yield')).toBe(true);
+    // Same-task close/reopen must not publish an intermediate header.
+    body.classList.remove('card-open'); body.classList.add('card-open'); await settle();
+    expect(h.upperChange).toHaveBeenCalledTimes(2);
+    body.classList.remove('card-open'); await settle();
+    expect(objective.classList.contains('sheet-objective-yield')).toBe(false);
+    expect(body.classList.contains('panel-open')).toBe(true);
+    body.classList.add('card-open'); await settle();
+    Object.defineProperty(view, 'innerWidth', { value: 844, configurable: true });
+    view.dispatchEvent(new view.Event('resize')); h.flushFrames();
+    expect(objective.classList.contains('sheet-objective-yield')).toBe(false);
+    expect(objective.textContent).toBe('Current objective');
+  });
   it('clears the retained 320×568 A++ hint by 8px, not the old 390px edge', () => {
     const h = harness(true, 320);
     expect(h.value('--cf-lower-top')).toBe(367.5);

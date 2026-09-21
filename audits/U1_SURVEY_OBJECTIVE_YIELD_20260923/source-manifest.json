@@ -1,0 +1,69 @@
+{
+  "schema": "cf.u1-survey-yield-source/v1",
+  "baseCommit": "f25098fa4202c86cd6db8b6a5ded47c9faf5dc69",
+  "node": "v26.9.0",
+  "files": {
+    "port/v2/apps/game/src/main.ts": "d1fcbb60a15bf33cb28cbc8b080296be40fe5ac8d7a6bb9fcb06e021b870e13a",
+    "port/v2/apps/game/src/panels.ts": "03cd0205306f0059e84d1d033466376bdf4147c573633f037e5116843166f3a3",
+    "port/v2/apps/game/src/sheet-layout.ts": "2da4a2cdd718503c974ea92b0441f6feeb077cdf4d43d46647bea8581e9daba1",
+    "port/v2/apps/game/src/ui-shell-style.ts": "8d9821a712a0cf2547a032bf2df8d67be1fb88dc2585d80e6577b17b2c96e4c8",
+    "port/v2/tests/app-chrome-main-wiring.test.ts": "e707e75c11d4e287e5d7fb63c32b1015f91204f807832e39d9ddcf9a9b87e04f",
+    "port/v2/tests/glass-charters-settlement.test.ts": "15a7aef33aa504d0b0399bfe758daf8580354e1f8babc28417d0bd4a42614884",
+    "port/v2/tests/glass-post-close-geometry.test.ts": "117a95f9b5c1e7e731a3d52ee4260121deab58ad9aafaa989d50ada0e4b2ad6e",
+    "port/v2/tests/panels.test.ts": "182ecaddc26d3f7c1e28f373981065b34165e61c81a0ccbb75198ab815e6f34e",
+    "port/v2/tests/sheet-layout.test.ts": "677b50401da5fd2dd2c541869c06373d0ebe5a49b65a486c6fd69bbbed8e84c9",
+    "port/v2/tools/glassmatrix.mjs": "509843fa70a1233d62d5c6140847a1e02e95273b191920fe651e9dff35c87e02"
+  },
+  "runs": {
+    "small-phone": {
+      "id": "20260921202401242-43808-32367f127295",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "source": {
+        "commit": "f25098fa4202c86cd6db8b6a5ded47c9faf5dc69",
+        "branch": "openai/mac",
+        "state": "dirty-diagnostic",
+        "statusSha256": "611003eaf29c34f89c55c9136cf1466c5d5b7d78767f94f60d2248eb706130b9",
+        "workingTreeSha256": "e549ddd2bfdc58515ddeab90dbf17c1a391f32eef7f9afc4a7b379d0434b5719"
+      },
+      "sourceChange": {
+        "detected": false,
+        "ending": null
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/153.0.4234.48",
+        "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+        "js_version": "15.3.12.7",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      }
+    },
+    "large-phone": {
+      "id": "20260921202449160-44013-b89e1b19d18a",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "source": {
+        "commit": "f25098fa4202c86cd6db8b6a5ded47c9faf5dc69",
+        "branch": "openai/mac",
+        "state": "dirty-diagnostic",
+        "statusSha256": "0d81d2024eeece49ed5b054143bebcc9732345c924aadd4f7e726a97f1bf0314",
+        "workingTreeSha256": "64239c1a8dcad576d872e9570861b7eea4ef7012464650413edce7beae110993"
+      },
+      "sourceChange": {
+        "detected": false,
+        "ending": null
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/153.0.4234.48",
+        "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+        "js_version": "15.3.12.7",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      }
+    }
+  }
+}

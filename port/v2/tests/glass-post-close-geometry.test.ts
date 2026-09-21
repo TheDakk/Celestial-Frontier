@@ -57,6 +57,8 @@ function fixture(options: { badInjected?: boolean; failedLabels?: string[]; manu
     nodes.set(id, el); return el;
   }
   const html = node('html', () => box(0, 0, 320, 568));
+  node('toast', () => box(12, 450, 296, 44));
+  node('dock', () => box(12, 500, 296, 56));
   const header = node('topbar', () => box(0, 0, 320, headerHeight)); header.pointerEvents = 'none';
   const player = node('playerchip', () => box(10, 10, 100, 44));
   const hp = node('hpbar', () => box(120, 10, 90, 44));
@@ -84,6 +86,8 @@ function fixture(options: { badInjected?: boolean; failedLabels?: string[]; manu
     return options.failedLabels?.includes(label) ? Promise.reject(new Error('font failure: ' + label)) : Promise.resolve();
   } };
   const document = { documentElement: html, fonts, visibilityState: 'visible',
+    head: { appendChild: (el: any) => { el.isConnected = true; } },
+    createElement: () => ({ textContent: '', isConnected: false, remove() { this.isConnected = false; } }),
     body: { classList: { contains: (name: string) => name === 'surface-trail-yield' && fallback() } },
     getElementById: (id: string) => nodes.get(id) ?? null };
   const context: any = { document, window, innerWidth: 320, innerHeight: 568, Event: class {},
