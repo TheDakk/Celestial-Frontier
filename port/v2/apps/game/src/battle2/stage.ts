@@ -91,7 +91,7 @@ export class BattleStage {
   /** Start a turn now (per the injected clock). Accepts a built plan or its input. */
   play(turn: TurnPlan | TurnPlanInput): TurnPlan {
     this.#assertLive();
-    const plan = (turn as TurnPlan).kind === 'turn-plan' ? (turn as TurnPlan) : buildTurnPlan({ ...(turn as TurnPlanInput), reducedMotion: (turn as TurnPlanInput).reducedMotion === true || this.#o.reducedMotion === true,
+    const plan = (turn as TurnPlan).kind === 'turn-plan' ? (turn as TurnPlan) : buildTurnPlan({ ...(turn as TurnPlanInput), attacker: this.#withCadence((turn as TurnPlanInput).attacker), reducedMotion: (turn as TurnPlanInput).reducedMotion === true || this.#o.reducedMotion === true,
       arena: { ...(turn as TurnPlanInput).arena, halfWidths: (turn as TurnPlanInput).arena.halfWidths ?? this.halfWidths() } });
     this.#clearEffect();
     this.#plan = plan; this.#startMs = this.#o.clock();
@@ -151,6 +151,13 @@ export class BattleStage {
     this.root.destroy(); this.#plan = null; this.#disposed = true;
   }
 
+  /** A2: a rig that measured its stance reach walks its approach in whole gait cycles with feet planted; body length in
+   * stand units = display body length × stage scale / frame width. Other rigs keep the legacy eased run-up. */
+  #withCadence(a: TurnPlanInput['attacker']): TurnPlanInput['attacker'] {
+    const rig = this.#o.rigs[a.side], reach = rig.stanceReach;
+    if (reach === undefined || !(reach > 0) || a.cadence) return a;
+    return { ...a, cadence: Object.freeze({ bodyLength: rig.bodyLength * this.#scales[a.side] / this.#o.layout.frame.width, stanceReach: reach }) };
+  }
   #place(side: Side, displacementX: number, facing: 1 | -1): void {
     const L = this.#o.layout, st = L.stands[side], h = this.#holders[side], k = this.#scales[side];
     h.x = (st.x + displacementX) * L.frame.width; h.y = st.y * L.frame.height; h.scale.set(facing * k, k);

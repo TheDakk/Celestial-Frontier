@@ -25,6 +25,8 @@ import { familyContractForRecord } from '../../../../tools/creature-animation/fa
 import { transformPoint } from '../../../../tools/creature-animation/kinematics.js';
 import { createSkeletonPoseProgram, type SkeletonPoseProgram } from '../../../../tools/creature-animation/skeleton-pose.mjs';
 import { createFamilyContactSolver, createQuadrupedContactSolver, observedContactSupports } from '../creature-rig-contact.js';
+import { buildTimeline } from '../motion/timeline.js';
+import { sampleClip } from './choreography.js';
 import type { CreaturePartsBindingV1 } from '../creature-rig.js';
 import { createCreatureRigPerformance } from '../creature-rig-performance.js';
 import type { CreaturePoseV1, CreatureRigRecordV1, CreatureRigV1 as PaintSkinRigV1 } from '../creature-rig.js';
@@ -101,6 +103,24 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
     const phase = { actionId: context.actionId, elapsedMs: context.elapsedMs, durationMs: context.durationMs, weight: context.weight, realm: card.realm, travel: context.travel, ...(context.stageDisplacement !== undefined ? { stageDisplacement: context.stageDisplacement } : {}) };
     return family!.resolve(pose, phase as Parameters<NonNullable<typeof family>['resolve']>[1]).pose;
   };
+  // A2: the rig's stance reach — the largest stage displacement (body lengths) the family solver accepts at three
+  // stance samples of the approach gait (binary search to 1/256 body length); the caller-side measurement until
+  // Codex's `measureStanceReach(record)` lands. Measured 2026-09-22: crab/coconut 0.2, freshwater 0.1, mud/vent 0.07.
+  let stanceReach: number | undefined;
+  if (family) {
+    try {
+      const approach = buildTimeline(card, 'approach', 5), clip = { source: 'timeline' as const, timeline: approach };
+      let reach = 0.5;
+      for (const frac of [0.55, 0.75, 0.95]) {
+        const ms = approach.durationMs * frac, pose = sampleClip(clip, ms);
+        const ok = (d: number): boolean => { try { family.resolve(pose, { actionId: approach.actionId, elapsedMs: ms, durationMs: approach.durationMs, weight: 1, realm: card.realm, travel: 'stage', stageDisplacement: d }); return true; } catch { return false; } };
+        let lo = 0, hi = reach; if (ok(hi)) { reach = hi; continue; }
+        for (let i = 0; i < 8; i++) { const mid = (lo + hi) / 2; if (ok(mid)) lo = mid; else hi = mid; }
+        reach = Math.min(reach, lo);
+      }
+      stanceReach = reach;
+    } catch { stanceReach = undefined; }
+  }
   const parts: readonly RigPartV1[] = Object.freeze(rig.parts.map((p) => Object.freeze({ id: p.id, display: p.display, pivot: Object.freeze({ x: p.pivot.x, y: p.pivot.y }), layer: p.layer })));
   const bounds = Object.freeze({ width: alphaBox.width / W, height: alphaBox.height / H, groundLineY: record.geometry.groundLineY });
   if (!(bounds.height > 0) || bounds.height > 1 || !(bounds.width > 0) || bounds.width > 1) throw new TypeError('parts rig: alpha box must lie inside the cut-out');
@@ -109,7 +129,7 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
     travelOwner: 'stage',
     recipeHash: rig.recipeHash, templateId: rig.templateId, parts, root: rig.root, bounds,
     // E1.5 finding: the stage treats `cutout` as the rig's display-unit size; the paint-skin mesh is normalized, so it is 1×1 here.
-    cutout: Object.freeze({ width: 1, height: 1 }), sourceSize: Object.freeze({ width: W, height: H }), foot: Object.freeze({ x: root[0], y: record.geometry.groundLineY }), bodyLength: card.scaleLength,
+    cutout: Object.freeze({ width: 1, height: 1 }), sourceSize: Object.freeze({ width: W, height: H }), foot: Object.freeze({ x: root[0], y: record.geometry.groundLineY }), bodyLength: card.scaleLength, ...(stanceReach !== undefined ? { stanceReach } : {}),
     applyPose(pose: RigPose, context: RigPoseContext = restContext()): void {
       if (disposed) throw new Error('parts rig is disposed');
       pending = pose; frame += 1;
