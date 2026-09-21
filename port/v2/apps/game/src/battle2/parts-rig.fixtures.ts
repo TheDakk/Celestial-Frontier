@@ -26,7 +26,7 @@ export function alphaBoxOf(rgba: Uint8Array, w: number, h: number): PixelBox {
   for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) if ((rgba[(y * w + x) * 4 + 3] ?? 0) > 8) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
   if (x1 < 0) throw new Error('empty alpha'); return { x: x0, y: y0, width: x1 - x0 + 1, height: y1 - y0 + 1 };
 }
-export async function loadFit(name: FitName): Promise<{ rig: PartsRig; record: FitRecord; binding: CreaturePartsBindingV1; card: BodyCard }> {
+export async function loadFit(name: FitName, contact?: 'family' | 'quadruped-compat' | 'auto'): Promise<{ rig: PartsRig; record: FitRecord; binding: CreaturePartsBindingV1; card: BodyCard }> {
   const dir = FITS[name];
   const record = repoJson<FitRecord>(dir + 'record.json'), binding = repoJson<CreaturePartsBindingV1>(dir + 'binding.json'), manifest = repoJson<{ creatureId: string }>(dir + 'parts/manifest.json');
   const keyed = PNG.sync.read(readFileSync(new URL(dir + 'parts/keyed.png', REPO_ROOT)));
@@ -35,5 +35,5 @@ export async function loadFit(name: FitName): Promise<{ rig: PartsRig; record: F
   const decoder = (): Promise<Texture> => Promise.resolve(new Texture({ source: new TextureSource({ width: binding.atlasSize.width, height: binding.atlasSize.height }) }));
   const paintRig = await loadCreatureRigV1(record, binding, master, alpha, atlas, decoder);
   const card = compileBodyCard(record, record.genome);
-  return { rig: createPartsRig({ record, rig: paintRig, card, alphaBox: alphaBoxOf(keyed.data, keyed.width, keyed.height), binding }), record, binding, card };
+  return { rig: createPartsRig({ record, rig: paintRig, card, alphaBox: alphaBoxOf(keyed.data, keyed.width, keyed.height), binding, ...(contact ? { contact } : {}) }), record, binding, card };
 }

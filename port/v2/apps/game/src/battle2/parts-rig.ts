@@ -45,7 +45,7 @@ export interface PartsRigOptions {
   readonly card: BodyCard;
   /** Opaque box of the keyed cut-out in source pixels (the stage sizes combatants by it, as the fixture rig does). */
   readonly alphaBox: PixelBox;
-  /** Default `'auto'`: quadruped records use the compatibility solver, every other family the family solver. */
+  /** Default `'auto'`: the family solver for every family (the quadruped compatibility solver remains selectable). */
   readonly contact?: PartsContactMode | 'auto';
   /** The parts binding the rig was loaded from. With `contactSupports: 'observed'` the family solver models each
    * painted support by its observed skin weights (`observedContactSupports`, R2c″); the default `'rest'` keeps the
@@ -83,7 +83,9 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
   if (card.recipeHash !== null && card.recipeHash !== record.recipeHash) throw new TypeError('parts rig: card/record identity mismatch');
   const root = record.landmarks.root;
   if (!root) throw new TypeError('parts rig: record has no root landmark');
-  const contactMode: PartsContactMode = options.contact === undefined || options.contact === 'auto' ? (record.template.id === 'quadruped' ? 'quadruped-compat' : 'family') : options.contact;
+  // 'auto' = the family solver for EVERY family since the R3 re-merge (2026-09-22: the Civet runs it with 0.0000 px
+  // idle paw drift and zero refusals across idle/approach/hit/faint/victory); 'quadruped-compat' stays selectable
+  const contactMode: PartsContactMode = options.contact === undefined || options.contact === 'auto' ? 'family' : options.contact;
   // R3 re-merge (2026-09-21): the family solver models the painted support by its observed skin weights
   // (`observedContactSupports(record, binding)`, Codex's R2c″ rule) and owns nothing of the run-up when the context
   // says `travel: 'stage'`.
@@ -111,14 +113,16 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
     try {
       const approach = buildTimeline(card, 'approach', 5), clip = { source: 'timeline' as const, timeline: approach };
       let reach = 0.5;
-      for (const frac of [0.55, 0.75, 0.95]) {
+      // both half-cycles: each half is the other leg group's stance (the far legs that bound the reach stand in one of
+      // them), then a 10 % margin — the first probe sampled one half and the freshwater/mud/vent rigs refused 14–20×
+      for (const frac of [0.05, 0.25, 0.45, 0.55, 0.75, 0.95]) {
         const ms = approach.durationMs * frac, pose = sampleClip(clip, ms);
         const ok = (d: number): boolean => { try { family.resolve(pose, { actionId: approach.actionId, elapsedMs: ms, durationMs: approach.durationMs, weight: 1, realm: card.realm, travel: 'stage', stageDisplacement: d }); return true; } catch { return false; } };
         let lo = 0, hi = reach; if (ok(hi)) { reach = hi; continue; }
         for (let i = 0; i < 8; i++) { const mid = (lo + hi) / 2; if (ok(mid)) lo = mid; else hi = mid; }
         reach = Math.min(reach, lo);
       }
-      stanceReach = reach;
+      stanceReach = reach * 0.9;
     } catch { stanceReach = undefined; }
   }
   const parts: readonly RigPartV1[] = Object.freeze(rig.parts.map((p) => Object.freeze({ id: p.id, display: p.display, pivot: Object.freeze({ x: p.pivot.x, y: p.pivot.y }), layer: p.layer })));
