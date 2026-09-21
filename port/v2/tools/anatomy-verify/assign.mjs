@@ -176,7 +176,7 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
   // front view: side by the SEPARATION point's x about the centre (tips of forward limbs cross the midline)
   // side view: depth is not an x split; it is decided inside the station assignment below (Near = the lower tip)
   const sideFront=c=>((c.attach?c.attach[0]:c.x)<centre[0]?'Far':'Near');
-  const assigned={},hidden=[];const feet={Far:[],Near:[]},claws={Far:[],Near:[]};const usedApp=[]; // candidates placed in appendage slots (tail…) count as used
+  const assigned={},hidden=[];const feet={Far:[],Near:[]},claws={Far:[],Near:[]};const usedApp=[];const margins={}; // candidates placed in appendage slots (tail…) count as used
   const thinOf=cs=>[...cs.map(c=>c.termDt)].sort((a,b)=>a-b)[Math.floor(cs.length/2)]||1,medLenOf=cs=>{const l=[...cs.map(c=>c.term)].sort((a,b)=>a-b);return l[Math.floor(l.length/2)]||1;};
   const restLen=T.legLength*R;
   const unitCost=(c,thin,medLen)=>costMode==='median'?Math.abs(Math.log(c.termDt/thin))*0.8+Math.max(0,1-c.term/medLen)*1.0+(c.kind==='touch'?0.5:c.kind==='loop'?0.3:0)
@@ -228,10 +228,13 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
       // a DECLARED-hidden slot is empty by declaration: it takes no candidate and costs nothing (the declaration is
       // an intake input; the compiler never fills what the species says is not painted)
       const declHid=k=>declaredHidden.includes(T.slots[side][k].id);
-      let best=null;const rec=(k,i,used,acc,cost)=>{if(k===legsPerSide){let total=cost+gapCost(acc);const usedSet=new Set(acc.filter(Boolean));for(const c of cs)if(!usedSet.has(c))total+=unusedCostOf(c);if(!best||total<best.cost)best={cost:total,acc:acc.slice()};return;}
+      let best=null;const all=[];const rec=(k,i,used,acc,cost)=>{if(k===legsPerSide){let total=cost+gapCost(acc);const usedSet=new Set(acc.filter(Boolean));for(const c of cs)if(!usedSet.has(c))total+=unusedCostOf(c);all.push({cost:total,acc:acc.slice()});if(!best||total<best.cost)best={cost:total,acc:acc.slice()};return;}
         if(declHid(k)){rec(k+1,i,used,acc.concat([null]),cost);return;}
         rec(k+1,i,used,acc.concat([null]),cost+emptyCost(k));for(let j=i;j<cs.length;j++){const folded=declaredFolded.includes(T.slots[side][k].id);const u=unitCost(cs[j],thin,medLen)-(folded&&cs[j].kind==='loop'?0.3+Math.abs(Math.log(Math.max(1,cs[j].len)/restLen))*0.5:0);rec(k+1,j+1,used+1,acc.concat([cs[j]]),cost+u+slotCost(cs[j],k));}};
       rec(0,0,0,[],0);
+      // per-slot CONFIDENCE: the cost margin between the best assignment and the best one that puts a different
+      // candidate (or nothing) in this slot — a thin margin means the name is a guess between two readings
+      best.acc.forEach((c,k)=>{let alt=Infinity;for(const a of all){if(a.acc[k]!==c&&a.cost<alt)alt=a.cost;}margins[slotName(k,side)]=alt===Infinity?9.99:+(alt-best.cost).toFixed(2);});
       best.acc.forEach((c,k)=>{if(c)place(slotName(k,side),c);else hidden.push(T.slots[side][k].id);});feet[side]=best.acc.filter(Boolean);}
   }else{
     // side view: slots are stations (rear → front along the axis) × depths (Far, Near). Candidates ordered by their
@@ -247,8 +250,8 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
     const lenCost=(c,restRatio)=>Math.abs(Math.log(Math.max(1,c.len-0.5*R)/(restRatio*R)));
     const legCost=c=>Math.abs(Math.log(c.termDt/thin))*0.4+lenCost(c,T.legLength)*(c.kind==='end'?1.0:0.25)+(c.kind==='touch'?0.5:c.kind==='loop'?0.3:0);
     const yLow=cs.length?Math.max(...cs.map(c=>c.y)):0;
-    let best=null;const stations=[...rearApp.map(a=>({app:a})),...Array.from({length:K},(_,k)=>({k})),...frontApp.map(a=>({app:a}))];
-    const rec=(si,i,acc,cost)=>{if(si===stations.length){const used=acc.flat().filter(Boolean).length;const total=cost+(cs.length-used)*0.7;if(!best||total<best.cost)best={cost:total,acc:acc.map(s=>s.slice())};return;}
+    let best=null;const allS=[];const stations=[...rearApp.map(a=>({app:a})),...Array.from({length:K},(_,k)=>({k})),...frontApp.map(a=>({app:a}))];
+    const rec=(si,i,acc,cost)=>{if(si===stations.length){const used=acc.flat().filter(Boolean).length;const total=cost+(cs.length-used)*0.7;allS.push({cost:total,acc:acc.map(s=>s.slice())});if(!best||total<best.cost)best={cost:total,acc:acc.map(s=>s.slice())};return;}
       const st=stations[si];
       if(st.app){rec(si+1,i,acc.concat([[null]]),cost+0.8);for(let j=i;j<cs.length;j++)rec(si+1,j+1,acc.concat([[cs[j]]]),cost+lenCost({...cs[j],len:cs[j].len+fromSpine(cs[j])},st.app.length)*2.0+(cs[j].kind==='touch'?0.5:cs[j].kind==='loop'?0.3:0));return;}
       rec(si+1,i,acc.concat([[null,null]]),cost+2.0); // empty station: expensive (a whole station missing)
@@ -257,6 +260,7 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
         rec(si+1,j+1,acc.concat([[near?null:c,near?c:null]]),cost+legCost(c)+((hidFar||hidNear)?0:1.0)); // one leg at the station: the other depth hidden (free when declared)
         if(!hidFar&&!hidNear)for(let j2=j+1;j2<cs.length;j2++){const d=cs[j2];const [farC,nearC]=c.y<=d.y?[c,d]:[d,c];rec(si+1,j2+1,acc.concat([[farC,nearC]]),cost+legCost(c)+legCost(d));}}};
     rec(0,0,[],0);
+    stations.forEach((st,si)=>{if(st.app)return;[0,1].forEach(d=>{const c=best.acc[si][d];let alt=Infinity;for(const a of allS){if(a.acc[si][d]!==c&&a.cost<alt)alt=a.cost;}margins[slotName(st.k,d?'Near':'Far')]=alt===Infinity?9.99:+(alt-best.cost).toFixed(2);});});
     if(process.env.ASSIGN_DEBUG)console.log('side-view cs',cs.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),u:+u(c).toFixed(0),y:+c.y.toFixed(0),len:+c.len.toFixed(0),termDt:c.termDt,legCost:+legCost(c).toFixed(2),tailCost:rearApp.length?+(lenCost(c,rearApp[0].length)*2).toFixed(2):null})),'best',best.cost.toFixed(2),'yLow',yLow);
     const others={};
     best.acc.forEach((slot,si)=>{const st=stations[si];if(st.app){if(slot[0]){others[st.app.id]=toM([slot[0].x,slot[0].y]).map(Math.round);usedApp.push(slot[0]);}return;}
@@ -303,5 +307,5 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
   const bodyRidge=[];for(const e of g.edges){if(e.meanDt<lc.bodyDt||clawEdgeSet.has(e))continue;for(const i of e.path){if(armPixels.has(i))continue;bodyRidge.push([i%W,Math.floor(i/W)]);}}
   const clawPaths=clawList.map(c=>({tip:[c.x,c.y],side:T.view==='front'?sideFront(c):null,path:pathOf(c),fullPath:[...(c.armPath??[]).reverse(),...fullPath(c)],wrist:c.wrist?toM(c.wrist).map(Math.round):null,elbow:c.elbow?toM(c.elbow).map(Math.round):null}));
   const usedSet=new Set([...feet.Far,...feet.Near,...usedApp]);
-  return {declaredFolded,working:{W,H,scale,box,mask,dt,bodyDt:lc.bodyDt,bodyDist},clawPaths,bodyRidge,legsBySide:T.view==='front'?{Far:legs.filter(c=>sideFront(c)==='Far').map(c=>c.kind),Near:legs.filter(c=>sideFront(c)==='Near').map(c=>c.kind)}:null,joints,inferred,pool:pool.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),sep:c.attach?toM(c.attach).map(Math.round):null,term:c.term,len:+c.len.toFixed(1),termDt:c.termDt,fork:forkOf.has(c),claw:isClaw(c),used:usedSet.has(c),diag:c.diag})),assigned,hidden,claws:{Far:claws.Far.map(c=>toM([c.x,c.y]).map(Math.round)),Near:claws.Near.map(c=>toM([c.x,c.y]).map(Math.round))},centre:toM(centre).map(Math.round),axis:axis.map(v=>+v.toFixed(3)),spine:spine?{a:toM([g.nodes[spine.a].x,g.nodes[spine.a].y]).map(Math.round),b:toM([g.nodes[spine.b].x,g.nodes[spine.b].y]).map(Math.round),len:spine.length,minDt:spine.minDt,meanDt:spine.meanDt}:null,bodyDt:lc.bodyDt,R,feetFound:feet.Far.length+feet.Near.length};
+  return {margins,declaredFolded,working:{W,H,scale,box,mask,dt,bodyDt:lc.bodyDt,bodyDist},clawPaths,bodyRidge,legsBySide:T.view==='front'?{Far:legs.filter(c=>sideFront(c)==='Far').map(c=>c.kind),Near:legs.filter(c=>sideFront(c)==='Near').map(c=>c.kind)}:null,joints,inferred,pool:pool.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),sep:c.attach?toM(c.attach).map(Math.round):null,term:c.term,len:+c.len.toFixed(1),termDt:c.termDt,fork:forkOf.has(c),claw:isClaw(c),used:usedSet.has(c),diag:c.diag})),assigned,hidden,claws:{Far:claws.Far.map(c=>toM([c.x,c.y]).map(Math.round)),Near:claws.Near.map(c=>toM([c.x,c.y]).map(Math.round))},centre:toM(centre).map(Math.round),axis:axis.map(v=>+v.toFixed(3)),spine:spine?{a:toM([g.nodes[spine.a].x,g.nodes[spine.a].y]).map(Math.round),b:toM([g.nodes[spine.b].x,g.nodes[spine.b].y]).map(Math.round),len:spine.length,minDt:spine.minDt,meanDt:spine.meanDt}:null,bodyDt:lc.bodyDt,R,feetFound:feet.Far.length+feet.Near.length};
 }

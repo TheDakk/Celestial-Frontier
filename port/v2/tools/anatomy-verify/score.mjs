@@ -30,7 +30,7 @@ export function scoreSubject(res,truth,template,tol){
   const pos=visible.filter(n=>pool.some(p=>dist(p,truth.px[n])<=tol));
   const assigned=Object.keys(res.assigned),named=assigned.filter(n=>truth.px[n]&&dist(res.assigned[n].master,truth.px[n])<=tol);
   const hiddenOk=[...res.hidden].sort().join(',')===[...truth.hidden].sort().join(',');
-  const perName=visible.map(n=>{const a=res.assigned[n];return n+':'+(a?Math.round(dist(a.master,truth.px[n])):'-')});
+  const perName=visible.map(n=>{const a=res.assigned[n];return n+':'+(a?Math.round(dist(a.master,truth.px[n])):'-')+(a&&res.margins[n]!==undefined?'/m'+res.margins[n]:'')});
   // interior joints (knees, ankles) of correctly named legs, and inferred landmarks of declared-hidden slots
   const jointErr=[],hiddenErr=[];for(const side of ['Far','Near'])for(const sl of t.rest.slots[side]){if(named.includes(sl.terminal))for(const j of sl.chain.slice(1,-1)){if(res.joints[j]&&truth.px[j])jointErr.push(Math.round(dist(res.joints[j],truth.px[j])));}
     if(truth.hidden.includes(sl.id)&&res.inferred[sl.terminal]&&truth.px[sl.terminal])hiddenErr.push(Math.round(dist(res.inferred[sl.terminal],truth.px[sl.terminal])));}
