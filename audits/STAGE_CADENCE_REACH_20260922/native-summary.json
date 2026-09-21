@@ -1,0 +1,538 @@
+{
+  "producer": "a817ad646fac9313c59b04e0f677eec0881e742a",
+  "status": "NATIVE_COMPLETE",
+  "subjects": [
+    {
+      "id": "crab",
+      "input": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab",
+      "report": "audits/STAGE_CADENCE_REACH_20260922/native/crab/report.json",
+      "status": "PASS",
+      "sharedPathRed": false,
+      "cadence": {
+        "status": "PASS",
+        "template": "brachyuran",
+        "reach": {
+          "applicable": true,
+          "forward": 0.264173,
+          "backward": 0.26049,
+          "samples": 121,
+          "bodyPlanted": [],
+          "limits": [
+            {
+              "direction": 1,
+              "admitted": 0.264173,
+              "refusedAt": 0.26417350331855705,
+              "refusal": {
+                "ms": 210,
+                "displacement": 0.26417350331855705,
+                "error": "Error: Contact: approach:scuttle@210 exceeds scale compression bound"
+              }
+            },
+            {
+              "direction": -1,
+              "admitted": 0.26049,
+              "refusedAt": 0.26049030666831186,
+              "refusal": {
+                "ms": 0,
+                "displacement": -0.26049030666831186,
+                "error": "Error: Contact: approach:scuttle@0 exceeds scale compression bound"
+              }
+            }
+          ]
+        },
+        "scope": "Actual native Pixi painted rig, gait sampler, family solver and stance-local cadence",
+        "plan": {
+          "cycles": 17,
+          "durationMs": 7140,
+          "targetDistancePx": 184.32,
+          "bodyLengthPx": 20.623988945195713,
+          "maxStanceTravelBodyLengths": 0.2628578052962484
+        },
+        "frames": 1020,
+        "expectedFrames": 1020,
+        "refusals": 0,
+        "failures": [],
+        "exactRest": true,
+        "maxStanceDriftPx": 0.0009609064307093512,
+        "rigP95Ms": 0.40000003576278687
+      },
+      "cpu": {
+        "policy": {
+          "tier": "painter",
+          "metric": "maximum per-clip rig p95",
+          "limitMs": 2,
+          "comparison": "<",
+          "authority": "unchanged phone/painter gate"
+        },
+        "valueMs": 0.40000003576278687,
+        "pass": true
+      }
+    },
+    {
+      "id": "coconut-crab",
+      "input": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab",
+      "report": "audits/STAGE_CADENCE_REACH_20260922/native/coconut-crab/report.json",
+      "status": "PASS",
+      "sharedPathRed": false,
+      "cadence": {
+        "status": "PASS",
+        "template": "brachyuran",
+        "reach": {
+          "applicable": true,
+          "forward": 0.282451,
+          "backward": 0.282451,
+          "samples": 121,
+          "bodyPlanted": [],
+          "limits": [
+            {
+              "direction": 1,
+              "admitted": 0.282451,
+              "refusedAt": 0.2824519509664829,
+              "refusal": {
+                "ms": 0,
+                "displacement": 0.2824519509664829,
+                "error": "Error: Contact: approach:scuttle@0 exceeds scale compression bound"
+              }
+            },
+            {
+              "direction": -1,
+              "admitted": 0.282451,
+              "refusedAt": 0.2824519509664829,
+              "refusal": {
+                "ms": 210,
+                "displacement": -0.2824519509664829,
+                "error": "Error: Contact: approach:scuttle@210 exceeds scale compression bound"
+              }
+            }
+          ]
+        },
+        "scope": "Actual native Pixi painted rig, gait sampler, family solver and stance-local cadence",
+        "plan": {
+          "cycles": 12,
+          "durationMs": 5040,
+          "targetDistancePx": 184.32,
+          "bodyLengthPx": 27.21213732073013,
+          "maxStanceTravelBodyLengths": 0.28222700442384574
+        },
+        "frames": 720,
+        "expectedFrames": 720,
+        "refusals": 0,
+        "failures": [],
+        "exactRest": true,
+        "maxStanceDriftPx": 0.0033460737738020586,
+        "rigP95Ms": 0.6000000238418579
+      },
+      "cpu": {
+        "policy": {
+          "tier": "painter",
+          "metric": "maximum per-clip rig p95",
+          "limitMs": 2,
+          "comparison": "<",
+          "authority": "unchanged phone/painter gate"
+        },
+        "valueMs": 0.6000000238418579,
+        "pass": true
+      }
+    },
+    {
+      "id": "freshwater-crab",
+      "input": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab",
+      "report": "audits/STAGE_CADENCE_REACH_20260922/native/freshwater-crab/report.json",
+      "status": "PASS",
+      "sharedPathRed": false,
+      "cadence": {
+        "status": "PASS",
+        "template": "brachyuran",
+        "reach": {
+          "applicable": true,
+          "forward": 0.070494,
+          "backward": 0.070494,
+          "samples": 121,
+          "bodyPlanted": [],
+          "limits": [
+            {
+              "direction": 1,
+              "admitted": 0.070494,
+              "refusedAt": 0.07049515830810887,
+              "refusal": {
+                "ms": 0,
+                "displacement": 0.07049515830810887,
+                "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+              }
+            },
+            {
+              "direction": -1,
+              "admitted": 0.070494,
+              "refusedAt": 0.07049515830810887,
+              "refusal": {
+                "ms": 210,
+                "displacement": -0.07049515830810887,
+                "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+              }
+            }
+          ]
+        },
+        "scope": "Actual native Pixi painted rig, gait sampler, family solver and stance-local cadence",
+        "plan": {
+          "cycles": 49,
+          "durationMs": 20580,
+          "targetDistancePx": 184.32,
+          "bodyLengthPx": 26.95,
+          "maxStanceTravelBodyLengths": 0.06978910302525462
+        },
+        "frames": 2940,
+        "expectedFrames": 2940,
+        "refusals": 0,
+        "failures": [],
+        "exactRest": true,
+        "maxStanceDriftPx": 0.000011552771752576518,
+        "rigP95Ms": 0.5
+      },
+      "cpu": {
+        "policy": {
+          "tier": "painter",
+          "metric": "maximum per-clip rig p95",
+          "limitMs": 2,
+          "comparison": "<",
+          "authority": "unchanged phone/painter gate"
+        },
+        "valueMs": 0.5,
+        "pass": true
+      }
+    },
+    {
+      "id": "mud-crab",
+      "input": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab",
+      "report": "audits/STAGE_CADENCE_REACH_20260922/native/mud-crab/report.json",
+      "status": "PASS",
+      "sharedPathRed": false,
+      "cadence": {
+        "status": "PASS",
+        "template": "brachyuran",
+        "reach": {
+          "applicable": true,
+          "forward": 0.040753,
+          "backward": 0.041061,
+          "samples": 121,
+          "bodyPlanted": [],
+          "limits": [
+            {
+              "direction": 1,
+              "admitted": 0.040753,
+              "refusedAt": 0.04075410020599074,
+              "refusal": {
+                "ms": 0,
+                "displacement": 0.04075410020599074,
+                "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+              }
+            },
+            {
+              "direction": -1,
+              "admitted": 0.041061,
+              "refusedAt": 0.041061878167168234,
+              "refusal": {
+                "ms": 210,
+                "displacement": -0.041061878167168234,
+                "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+              }
+            }
+          ]
+        },
+        "scope": "Actual native Pixi painted rig, gait sampler, family solver and stance-local cadence",
+        "plan": {
+          "cycles": 72,
+          "durationMs": 30240,
+          "targetDistancePx": 184.32,
+          "bodyLengthPx": 31.569999999999993,
+          "maxStanceTravelBodyLengths": 0.04054482103262592
+        },
+        "frames": 4320,
+        "expectedFrames": 4320,
+        "refusals": 0,
+        "failures": [],
+        "exactRest": true,
+        "maxStanceDriftPx": 0.0016147260266656431,
+        "rigP95Ms": 0.5
+      },
+      "cpu": {
+        "policy": {
+          "tier": "painter",
+          "metric": "maximum per-clip rig p95",
+          "limitMs": 2,
+          "comparison": "<",
+          "authority": "unchanged phone/painter gate"
+        },
+        "valueMs": 0.5,
+        "pass": true
+      }
+    },
+    {
+      "id": "vent-crab",
+      "input": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab",
+      "report": "audits/STAGE_CADENCE_REACH_20260922/native/vent-crab/report.json",
+      "status": "PASS",
+      "sharedPathRed": false,
+      "cadence": {
+        "status": "PASS",
+        "template": "brachyuran",
+        "reach": {
+          "applicable": true,
+          "forward": 0.034066,
+          "backward": 0.036701,
+          "samples": 121,
+          "bodyPlanted": [],
+          "limits": [
+            {
+              "direction": 1,
+              "admitted": 0.034066,
+              "refusedAt": 0.03406692968653849,
+              "refusal": {
+                "ms": 0,
+                "displacement": 0.03406692968653849,
+                "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+              }
+            },
+            {
+              "direction": -1,
+              "admitted": 0.036701,
+              "refusedAt": 0.03670226009799192,
+              "refusal": {
+                "ms": 210,
+                "displacement": -0.03670226009799192,
+                "error": "Error: Contact: approach:scuttle@210 leg0Near outside accommodatable reach"
+              }
+            }
+          ]
+        },
+        "scope": "Actual native Pixi painted rig, gait sampler, family solver and stance-local cadence",
+        "plan": {
+          "cycles": 122,
+          "durationMs": 51240,
+          "targetDistancePx": 184.32,
+          "bodyLengthPx": 22.329999999999984,
+          "maxStanceTravelBodyLengths": 0.03382937017758953
+        },
+        "frames": 7320,
+        "expectedFrames": 7320,
+        "refusals": 0,
+        "failures": [],
+        "exactRest": true,
+        "maxStanceDriftPx": 0.0002958999710680762,
+        "rigP95Ms": 0.5
+      },
+      "cpu": {
+        "policy": {
+          "tier": "painter",
+          "metric": "maximum per-clip rig p95",
+          "limitMs": 2,
+          "comparison": "<",
+          "authority": "unchanged phone/painter gate"
+        },
+        "valueMs": 0.5,
+        "pass": true
+      }
+    },
+    {
+      "id": "persimmon",
+      "input": "audits/ANATOMY_COMPLETION_20260917/persimmon-04",
+      "report": "audits/STAGE_CADENCE_REACH_20260922/native/persimmon/report.json",
+      "status": "RED",
+      "sharedPathRed": false,
+      "cadence": {
+        "status": "PASS",
+        "template": "plant-woody",
+        "reach": {
+          "applicable": false,
+          "forward": 0,
+          "backward": 0,
+          "samples": 0,
+          "bodyPlanted": [],
+          "limits": []
+        },
+        "scope": "Rooted flora: no gait or contact chains; planting not applicable",
+        "plan": {
+          "cycles": 0,
+          "durationMs": 0,
+          "targetDistancePx": 0,
+          "bodyLengthPx": 283.0995476752774,
+          "maxStanceTravelBodyLengths": 0
+        },
+        "frames": 121,
+        "expectedFrames": 121,
+        "refusals": 0,
+        "failures": [],
+        "exactRest": true,
+        "maxStanceDriftPx": null,
+        "rigP95Ms": 2.5
+      },
+      "cpu": {
+        "policy": {
+          "tier": "painter",
+          "metric": "maximum per-clip rig p95",
+          "limitMs": 2,
+          "comparison": "<",
+          "authority": "unchanged phone/painter gate"
+        },
+        "valueMs": 2.5,
+        "pass": false
+      }
+    },
+    {
+      "id": "cranberry",
+      "input": "audits/ANATOMY_COMPLETION_20260917/cranberry-07",
+      "report": "audits/STAGE_CADENCE_REACH_20260922/native/cranberry/report.json",
+      "status": "PASS",
+      "sharedPathRed": false,
+      "cadence": {
+        "status": "PASS",
+        "template": "plant-woody",
+        "reach": {
+          "applicable": false,
+          "forward": 0,
+          "backward": 0,
+          "samples": 0,
+          "bodyPlanted": [],
+          "limits": []
+        },
+        "scope": "Rooted flora: no gait or contact chains; planting not applicable",
+        "plan": {
+          "cycles": 0,
+          "durationMs": 0,
+          "targetDistancePx": 0,
+          "bodyLengthPx": 220.78777262380007,
+          "maxStanceTravelBodyLengths": 0
+        },
+        "frames": 121,
+        "expectedFrames": 121,
+        "refusals": 0,
+        "failures": [],
+        "exactRest": true,
+        "maxStanceDriftPx": null,
+        "rigP95Ms": 1.9000000357627869
+      },
+      "cpu": {
+        "policy": {
+          "tier": "painter",
+          "metric": "maximum per-clip rig p95",
+          "limitMs": 2,
+          "comparison": "<",
+          "authority": "unchanged phone/painter gate"
+        },
+        "valueMs": 1.9000000357627869,
+        "pass": true
+      }
+    },
+    {
+      "id": "devils-club",
+      "input": "audits/ANATOMY_COMPLETION_20260917/devils-club-06",
+      "report": "audits/STAGE_CADENCE_REACH_20260922/native/devils-club/report.json",
+      "status": "RED",
+      "sharedPathRed": false,
+      "cadence": {
+        "status": "PASS",
+        "template": "plant-woody",
+        "reach": {
+          "applicable": false,
+          "forward": 0,
+          "backward": 0,
+          "samples": 0,
+          "bodyPlanted": [],
+          "limits": []
+        },
+        "scope": "Rooted flora: no gait or contact chains; planting not applicable",
+        "plan": {
+          "cycles": 0,
+          "durationMs": 0,
+          "targetDistancePx": 0,
+          "bodyLengthPx": 265.33441810253544,
+          "maxStanceTravelBodyLengths": 0
+        },
+        "frames": 121,
+        "expectedFrames": 121,
+        "refusals": 0,
+        "failures": [],
+        "exactRest": true,
+        "maxStanceDriftPx": null,
+        "rigP95Ms": 2.599999964237213
+      },
+      "cpu": {
+        "policy": {
+          "tier": "painter",
+          "metric": "maximum per-clip rig p95",
+          "limitMs": 2,
+          "comparison": "<",
+          "authority": "unchanged phone/painter gate"
+        },
+        "valueMs": 2.599999964237213,
+        "pass": false
+      }
+    },
+    {
+      "id": "civet",
+      "input": "audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01",
+      "report": "audits/STAGE_CADENCE_REACH_20260922/native/civet/report.json",
+      "status": "PASS",
+      "sharedPathRed": false,
+      "cadence": {
+        "status": "PASS",
+        "template": "quadruped",
+        "reach": {
+          "applicable": true,
+          "forward": 0.262634,
+          "backward": 0.1708,
+          "samples": 121,
+          "bodyPlanted": [],
+          "limits": [
+            {
+              "direction": 1,
+              "admitted": 0.262634,
+              "refusedAt": 0.26263495093262157,
+              "refusal": {
+                "ms": 434.5,
+                "displacement": 0.26263495093262157,
+                "error": "Error: Contact: approach:walk@434.5 exceeds scale compression bound"
+              }
+            },
+            {
+              "direction": -1,
+              "admitted": 0.1708,
+              "refusedAt": 0.17080038264009145,
+              "refusal": {
+                "ms": 434.5,
+                "displacement": -0.17080038264009145,
+                "error": "Error: Contact: approach:walk@434.5 exceeds scale compression bound"
+              }
+            }
+          ]
+        },
+        "scope": "Actual native Pixi painted rig, gait sampler, family solver and stance-local cadence",
+        "plan": {
+          "cycles": 4,
+          "durationMs": 3476,
+          "targetDistancePx": 184.32,
+          "bodyLengthPx": 87.8359643027843,
+          "maxStanceTravelBodyLengths": 0.26230713333524197
+        },
+        "frames": 240,
+        "expectedFrames": 240,
+        "refusals": 0,
+        "failures": [],
+        "exactRest": true,
+        "maxStanceDriftPx": 0.04582190522940237,
+        "rigP95Ms": 1.5
+      },
+      "cpu": {
+        "policy": {
+          "tier": "painter",
+          "metric": "maximum per-clip rig p95",
+          "limitMs": 2,
+          "comparison": "<",
+          "authority": "unchanged phone/painter gate"
+        },
+        "valueMs": 1.5,
+        "pass": true
+      }
+    }
+  ],
+  "unrun": []
+}
