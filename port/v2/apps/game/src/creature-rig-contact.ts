@@ -57,6 +57,8 @@ export interface ContactSupportVertex {
 export interface WeightedContactSupport {
  readonly rest:readonly [number,number];
  readonly vertices:ReadonlyArray<ContactSupportVertex>;
+ /** Exact rendered part vertex selected from the binding, not a joint proxy. */
+ readonly surface?:{readonly partId:string;readonly vertexIndex:number};
 }
 export type ContactSupport=readonly [number,number]|WeightedContactSupport;
 /** Exact per-vertex LBS, then interpolation at the observed painted support.
@@ -73,8 +75,8 @@ export function observedContactSupports(record:CreatureRigRecordV1,binding:Creat
   const owner=binding.parts.find(p=>p.joint===chain.end),part=skin.parts.find(p=>p.id===owner?.id),end=record.landmarks[chain.end]!;
   if(!part)throw Error('Contact: missing painted surface '+chain.end);
   let best:WeightedContactSupport|undefined,distance=Infinity;
-  for(const v of part.vertices){let x=0,y=0;for(let k=0;k<3;k++){const p=skin.vertices[v.triangle[k]!]!,weight=v.barycentric[k]!;x+=p.x*weight/record.geometry.width;y+=p.y*weight/record.geometry.height;}
-   const d=Math.hypot((x-end[0])*record.geometry.width,(y-end[1])*record.geometry.height);if(d<distance){distance=d;best={rest:[x,y],vertices:v.triangle.map((index,k)=>{const vertex=skin.vertices[index]!;return{rest:[vertex.x/record.geometry.width,vertex.y/record.geometry.height] as const,barycentric:v.barycentric[k]!,weights:vertex.weights.map(([j,w])=>[j,w] as const)};})};}}
+  for(const [vertexIndex,v] of part.vertices.entries()){let x=0,y=0;for(let k=0;k<3;k++){const p=skin.vertices[v.triangle[k]!]!,weight=v.barycentric[k]!;x+=p.x*weight/record.geometry.width;y+=p.y*weight/record.geometry.height;}
+   const d=Math.hypot((x-end[0])*record.geometry.width,(y-end[1])*record.geometry.height);if(d<distance){distance=d;best={rest:[x,y],surface:{partId:part.id,vertexIndex},vertices:v.triangle.map((index,k)=>{const vertex=skin.vertices[index]!;return{rest:[vertex.x/record.geometry.width,vertex.y/record.geometry.height] as const,barycentric:v.barycentric[k]!,weights:vertex.weights.map(([j,w])=>[j,w] as const)};})};}}
   if(!best)throw Error('Contact: empty painted surface '+chain.end);supports[chain.end]=best;
  }return Object.freeze(supports);
 }
@@ -127,7 +129,10 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
    const swing=gait&&!gaitPolicy&&(c.group===1?cycle<.5:cycle>=.5),at=swing?(c.group===1?cycle*2:(cycle-.5)*2):0;
    const step=c.group===1?(cycle<.5?smooth(cycle*2):1):(cycle<.5?0:smooth((cycle-.5)*2));
    const lift=c.chain.lengths.lower*.15*weight;
-   const target={x:c.endPoint.x+(gait?direction*stride*(completed+step):0)-(swing?Math.sign(c.endPoint.x-c.root.x)*c.chain.lengths.lower*.10*Math.sin(Math.PI*at)**2*weight:0),y:c.endPoint.y-(swing?Math.sin(Math.PI*at)**2*lift:0)};
+   // Stage mode owns translation: retain gait lift without adding local stride.
+   // Arena-space planting additionally needs the caller's stage displacement;
+   // no such displacement is inferred from elapsed time here.
+   const target={x:c.endPoint.x+(gait&&phase.travel!=='stage'?direction*stride*(completed+step):0)-(swing?Math.sign(c.endPoint.x-c.root.x)*c.chain.lengths.lower*.10*Math.sin(Math.PI*at)**2*weight:0),y:c.endPoint.y-(swing?Math.sin(Math.PI*at)**2*lift:0)};
    return {joint:c.end,target,endpointTarget:{...target},paintedTarget:{x:target.x+c.offset.x,y:target.y+c.offset.y},stance:!swing};
   });
   let compression=0,final=program.evaluate(pose);

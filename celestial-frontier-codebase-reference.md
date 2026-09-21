@@ -6928,3 +6928,8 @@ Fiddler exposes six visible leg curves and pincer masks while mandatory binding 
 remains incomplete. Source census compiler outcomes separate admission from unsupported
 families and incomplete observations. Audio acquisition stores creatorProfileName; recording
 credits retain exact sound attribution, including legacy manifests.
+
+Stage contact update (2026-09-21): `travel:stage` removes local stride advance as well as
+root dx; arena displacement remains caller-owned. `readCreatureRigContactSupport` reads
+the published observed-support mesh vertex, preserving refused-frame publication. See
+CREATURE_ANIMATION.md and audits/SOLVER_STAGE_SUPPORT_20260921/README.md.

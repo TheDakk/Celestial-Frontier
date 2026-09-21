@@ -1,0 +1,7 @@
+{
+  "status": "SIGNING_REFUSED",
+  "error": "1Password: agent returned an error",
+  "producerCommitted": false,
+  "head": "db8858bbacd74ce31006dce35d68d1c719130e93",
+  "s2Executed": false
+}

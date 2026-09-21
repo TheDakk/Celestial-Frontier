@@ -1,4 +1,5 @@
 import {requireVisiblePaintOwner} from '../../../tools/creature-animation/hidden-anatomy.mjs';
+import {observedContactSupports} from './creature-rig-contact.js';
 import{createCreatureRigFrameTarget}from'./creature-rig-frame.js';
 import {compileRigidParentFrames,applyRigidParentFrames} from '../../../tools/creature-animation/rigid-parent-frame.mjs';
 import {Container, Matrix, Rectangle, Sprite, Texture, Mesh, MeshGeometry} from 'pixi.js';
@@ -23,6 +24,11 @@ export interface CreatureRigV1 {
 }
 interface CreatureRigRuntimeDiagnostics {readonly schema:'cf.creature-rig-runtime/v1';readonly sweepBackend:'wasm'|'js'|'none';readonly fieldVertices:number;readonly normalPasses:number;readonly robustFallbacks:number;}
 const rigRuntimeDiagnostics=new WeakMap<CreatureRigV1,Readonly<CreatureRigRuntimeDiagnostics>>();
+const rigSupportReaders=new WeakMap<CreatureRigV1,(joint:string)=>Readonly<{x:number;y:number}>|null>();
+/** Last successfully published ARAP/Float32 part vertex, in normalized source
+ * coordinates. Null before publication, after disposal, or for a non-support.
+ * This is the painted surface; neither a joint position nor an LBS prediction. */
+export function readCreatureRigContactSupport(rig:CreatureRigV1,joint:string){return rigSupportReaders.get(rig)?.(joint)??null;}
 /** Read the admitted backend and live pass counters for this actual loaded rig. */
 export function readCreatureRigRuntimeDiagnostics(rig:CreatureRigV1){return rigRuntimeDiagnostics.get(rig)??null;}
 export interface CreatureRigRecordV1 {
@@ -150,7 +156,7 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
     display.addChild(sprite);(part.layer==='far'?far:near).addChild(display);
     return {part,display,pivot:skeleton.pivot(part.joint)};
   });
-  let disposed=false;
+  let disposed=false,published=false;
   const parts=Object.freeze([...skins.map(({source,display})=>Object.freeze({id:source.id,display,pivot:skeleton.pivot(source.joint),layer:source.layer})),...entries.map(({part,display,pivot})=>Object.freeze({id:part.id,display,pivot,layer:part.layer})),
     ...bridges.map(({group,display})=>Object.freeze({id:group.id,display,pivot:skeleton.pivot(group.ancestorJoint),layer:group.layer}))]);
   const rig=Object.freeze({recipeHash:record.recipeHash,templateId:record.template.id,root,parts,
@@ -164,10 +170,19 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
       for(const entry of skins){entry.positions.set(entry.pending);entry.geometry.getBuffer('aPosition').update();}
       for(const entry of entries)entry.display.setFromMatrix(new Matrix(...matrices[entry.part.joint]!));
       for(const bridge of bridges){bridge.buffers.positions.set(bridge.buffers.pending);bridge.geometry.getBuffer('aPosition').update();}
+      published=true;
     },
     dispose(){if(disposed)return;disposed=true;root.destroy({children:true});for(const entry of skins)entry.geometry.destroy();for(const bridge of bridges)bridge.geometry.destroy();for(const texture of textures)texture.destroy(false);atlas.destroy(true);},
   });
   rigRuntimeDiagnostics.set(rig,Object.freeze({schema:'cf.creature-rig-runtime/v1',sweepBackend:shape?.sweepBackend??'none',fieldVertices:skin?.vertices.length??0,get normalPasses(){return shape?.normalPasses??0;},get robustFallbacks(){return shape?.robustFallbacks??0;}}));
+  let supports:ReturnType<typeof observedContactSupports>|undefined;
+  rigSupportReaders.set(rig,joint=>{
+    if(disposed||!published||!skin)return null;
+    supports??=observedContactSupports(record,binding);
+    const location=supports[joint]?.surface;if(!location)return null;
+    const entry=skins.find(e=>e.part.id===location.partId);if(!entry)return null;
+    return Object.freeze({x:entry.positions[location.vertexIndex*2]!,y:entry.positions[location.vertexIndex*2+1]!});
+  });
   return rig;
 }
 
