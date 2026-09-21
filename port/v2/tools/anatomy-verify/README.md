@@ -513,3 +513,8 @@ Four ordering points for the front-view per-side order, all as options in `assig
   shift and leave the front slot empty — the loop-evidence economics of slice 22, not the primitive.
 Verdict: no primitive changes IC-4 (3/7 · 7/7 · 7/10 · 9/10); `sep` stays the default. The two near-side errors
 that remain are one candidate-order swap (coconut) and one loop-evidence shift (vent); the far sides are right.
+Addendum — `loopConfirm` (the interior-edge pass used only to upgrade a loop whose far point carries a thin endpoint
+chain on the contour-cut ridge): threshold 2 × blur 1 confirms one loop on the coconut and one on the crab (the
+crab's 68 px folded leg) yet the crab loses a name (5/6 → 4/6) and IC-4 is unchanged; 2.5–3 confirm nothing.
+Rejected as default; the folded legs' contours are not separable from paint texture at any threshold that leaves
+the rest of the crab intact (slice 21's finding, confirmed locally).

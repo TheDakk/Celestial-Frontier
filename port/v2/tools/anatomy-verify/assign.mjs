@@ -18,7 +18,7 @@ import {distanceTransform} from './thickness.mjs';
 const ang=(p,c)=>Math.atan2(p[1]-c[1],p[0]-c[0]);
 /** Backwards-compatible descriptor view: legs per side and slot naming per template (from the contract). */
 export const TEMPLATES=new Proxy({},{get:(_,id)=>{if(typeof id!=='string')return undefined;const r=templateRest(id);return {legsPerSide:r.legsPerSide,slotName:(k,side)=>r.slots[side][k].terminal,rest:r};}});
-export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=0.7,thinWeight=0.4,emptyScale=1.0,unusedEnd=1.0,contactRefine=true,thickNeedsFork=false,touchNotSep=true,loopThinFrac=0,declaredHidden=[],orderBy='sep',rootMode='none',orderFrac=0.5}={}){
+export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=null,termFactor=3,thinSpread=1.8,centreMode='spine',units='body',refine='tip',touchInterior=false,touchProfile=false,touchAgainstBody=true,angleWeight=0,slotLenWeight=0,lenMode='exit',loopMode='near',costMode='rest',thickFinger=true,touchBodyDistMax=1e9,spacingWeight=0,gapWeight=0,wristCut=true,wristCuts=2,interiorEdges=0,edgeMinLen=0.3,edgeBlur=0,interiorTipMax=0.5,thickMaxLen=0.7,thinWeight=0.4,emptyScale=1.0,unusedEnd=1.0,contactRefine=true,thickNeedsFork=false,touchNotSep=true,loopThinFrac=0,declaredHidden=[],orderBy='sep',rootMode='none',orderFrac=0.5,loopConfirm=false}={}){
   const T=templateRest(template),legsPerSide=T.legsPerSide,slotName=(k,side)=>T.slots[side][k].terminal;
   const {alpha}=alphaOf(rgba,w,h),det=detectTips(alpha,w,h,{solidAlpha:128}),{working:{width:W,height:H,scale,box}}=det;let {mask,dt}=det;let interiorPass=null;
   // INTERIOR-EDGE STAGE (README slice 21): a limb painted over the body is inside the silhouette; its contour is a
@@ -123,6 +123,10 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
       // (a) UPGRADE: a main-graph candidate at the same tip whose terminal edge is spine-short (chopped by the body
       //     outline's junctions) is replaced by this chain; (b) otherwise the chain's path must run THROUGH the
       //     original thick region for at least interiorTipMax × R of its length (a limb over the body)
+      // LOOP CONFIRMATION (`loopConfirm`): the interior pass is used ONLY to upgrade a loop candidate whose far point
+      // has a thin endpoint chain on the contour-cut ridge — a folded leg confirmed by its own contour; a thick
+      // bridge between two body junctions has none. Everything else about the interior pass stays off.
+      if(loopConfirm){const li=cands.findIndex(o=>o.kind==='loop'&&Math.hypot(o.x-c.endNode.x,o.y-c.endNode.y)<=0.35*R);if(li>=0){const sp=seps2.get(c);cands[li]={kind:'interior',x:c.endNode.x,y:c.endNode.y,termDt:last.meanDt,term:last.length,len:c.length,attach:cands[li].attach,chain:c,graph:g2,confirmedLoop:true};added++;}continue;}
       const near=cands.findIndex(o=>Math.hypot(o.x-c.endNode.x,o.y-c.endNode.y)<=0.25*R);if(process.env.INTERIOR_DEBUG&&near>=0){const o=cands[near];console.log('   near cand',o.kind,'tip',toM([o.x,o.y]).map(Math.round).join(','),'term',o.term,'termDt',o.termDt,'minLimbTerm',minLimbTerm.toFixed(1));}
       if(near>=0){const o=cands[near];const cleaner=o.kind==='end'&&last.meanDt<0.8*o.termDt;if(!(o.kind==='end'&&o.term<minLimbTerm)&&!cleaner)continue;} // spine-short OR a thinner (cleaner) ridge than the outline-merged main chain
       else{let inside=0,node=c.rootNode.id;for(const e of c.edges){for(const i of e.path)if(bodyDist[i]===0)inside++;node=(e.a===node)?e.b:e.a;}if(inside<interiorTipMax*R)continue;}
