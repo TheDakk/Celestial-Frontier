@@ -30,7 +30,7 @@ export function labelParts(res,template,{bodyBand=0,seedMode='ridge',legSeedFrom
   const out=new Uint16Array(W*H);const partIds=['none'];const idOf=new Map();const pid=n=>{if(!idOf.has(n)){idOf.set(n,partIds.length);partIds.push(n);}return idOf.get(n);};
   const kneeIdx={};for(const side of ['Far','Near'])for(const sl of T.slots[side]){const p=legPaths[sl.id];if(!p)continue;const f=(sl.jointFractions??[0.5])[0];let cum=[0];for(let i=1;i<p.length;i++)cum.push(cum[i-1]+Math.hypot(p[i][0]-p[i-1][0],p[i][1]-p[i-1][1]));const tot=cum[cum.length-1];let k=0;while(k<cum.length-1&&cum[k]<f*tot)k++;kneeIdx[sl.id]=k;}
   for(let i=0;i<W*H;i++){if(!mask[i]||src[i]<0)continue;const name=parts[src[i]];if(name==='body'||name.startsWith('claw'))out[i]=pid(name);else out[i]=pid(name+(srcIdx[i]<kneeIdx[name]?'-upper':'-lower'));}
-  return {labels:out,partIds,W,H};
+  return {labels:out,partIds,W,H,srcIdx};
 }
 /** Compare with Codex's labels.png + declaration.json (red channel = part index + 1). IoU per part at working scale
  * (Codex's map sampled at the working grid); Codex part ids are lower-case `leg0far-upper`, `claw-far-palm`… */
