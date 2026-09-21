@@ -1,0 +1,17 @@
+{
+  "presence": "PASS",
+  "contactChains": 4,
+  "tailSlots": 0,
+  "promptIdentical": "PASS",
+  "originalMasterPreserved": "PASS",
+  "generation01MasterPreserved": "PASS",
+  "size": "RED",
+  "actualSize": [
+    1254,
+    1254
+  ],
+  "requiredSize": [
+    1536,
+    1536
+  ]
+}
