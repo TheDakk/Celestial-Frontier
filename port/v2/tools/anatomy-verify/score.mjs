@@ -17,10 +17,11 @@ export const SUBJECTS=[
   // the second quadruped (PROGRAM §6's exception): Codex's Wolf, no hand landmarks by design — declaration only
   ['wolf','quadruped',codex+'audits/VISION_P1_QUADRUPED_20260921/generation-01/wolf-master.png',null,codex+'audits/VISION_P1_QUADRUPED_20260921/generation-01/presence.json'],
 ];
-/** PROPOSED folded declarations (Nick, 2026-09-21: "declare them") — a leg painted flat against the carapace, whose
- * only silhouette evidence is a loop. Codex applies them to the presence files/records (its writers); until then
- * the runners take them from here. Comparison truth is unchanged. */
-export const FOLDED={'crab':['leg0Far'],'mud-crab':['leg0Far'],'vent-crab':['leg0Near']};
+/** The species' presence declaration for a subject: `presence.json` beside the fit when Codex's writers have one
+ * (2026-09-21: `folded` applied to crab/mud/vent), else the record's `anatomy` (hidden only), else the declaration-
+ * only subject's presence file. Declared sets are intake INPUTS; the compiler never infers presence. */
+export function declarationOf(rec,presence){const f=rec?path.dirname(rec)+'/presence.json':presence;if(f&&fs.existsSync(f)){const j=JSON.parse(fs.readFileSync(f,'utf8'));return {hidden:j.hidden??[],absent:j.absent??[],folded:j.folded??[]};}
+  if(rec){const r=JSON.parse(fs.readFileSync(rec,'utf8'));return {hidden:r.anatomy?.hidden??[],absent:r.anatomy?.absent??[],folded:r.anatomy?.folded??[]};}return {hidden:[],absent:[],folded:[]};}
 export function truthOf(record){const {width:w,height:h}=record.geometry,lm=record.landmarks;const px={};for(const [k,v] of Object.entries(lm))px[k]=[v[0]*w,v[1]*h];return {px,hidden:record.anatomy?.hidden??[],absent:record.anatomy?.absent??[]};}
 export function scoreSubject(res,truth,template,tol){
   const t=TEMPLATES[template],footNames=[];for(const side of ['Far','Near'])for(let k=0;k<t.legsPerSide;k++)footNames.push(t.slotName(k,side));
@@ -37,8 +38,8 @@ export function scoreSubject(res,truth,template,tol){
 }
 if(process.argv[1]&&fileURLToPath(import.meta.url)===path.resolve(process.argv[1])){
   const tol=Number(process.argv[2]??25),json=process.argv[3]==='json';const tot={visible:0,pos:0,assigned:0,named:0,hiddenOk:0};const out={};
-  for(const [id,template,master,rec] of SUBJECTS){if(!rec){console.log(id.padEnd(16),'no record (declaration only) — see ic4.mjs / sheet.mjs');continue;}const png=readPng(fs.readFileSync(master));const truth=truthOf(JSON.parse(fs.readFileSync(rec,'utf8')));
-    const opts=process.env.ASSIGN_OPTS?JSON.parse(process.env.ASSIGN_OPTS):{};const res=assignLegs(png.data,png.width,png.height,null,{template,declaredHidden:truth.hidden,declaredFolded:FOLDED[id]??[],...opts});const s=scoreSubject(res,truth,template,tol);out[id]=s;
+  for(const [id,template,master,rec,presence] of SUBJECTS){if(!rec){console.log(id.padEnd(16),'no record (declaration only) — see ic4.mjs / sheet.mjs');continue;}const png=readPng(fs.readFileSync(master));const truth=truthOf(JSON.parse(fs.readFileSync(rec,'utf8')));const decl=declarationOf(rec,presence);
+    const opts=process.env.ASSIGN_OPTS?JSON.parse(process.env.ASSIGN_OPTS):{};const res=assignLegs(png.data,png.width,png.height,null,{template,declaredHidden:decl.hidden,declaredFolded:decl.folded,...opts});const s=scoreSubject(res,truth,template,tol);out[id]=s;
     for(const k of ['visible','pos','assigned','named'])tot[k]+=s[k];tot.hiddenOk+=s.hiddenOk?1:0;
     console.log(id.padEnd(16),`pos ${s.pos}/${s.visible}`.padEnd(10),`named ${s.named}/${s.assigned}`.padEnd(12),'hidden',s.hiddenOk?'OK ':'NO ',JSON.stringify(s.hidden),'truth',JSON.stringify(s.truthHidden),'| pool',res.pool.length,'|',s.perName.join(' '),'| joints',s.jointErr.join(','),'| hidden',s.hiddenErr.join(','));}
   console.log('TOTAL'.padEnd(16),`pos ${tot.pos}/${tot.visible}`.padEnd(10),`named ${tot.named}/${tot.assigned}`.padEnd(12),'hidden exact',tot.hiddenOk+'/'+SUBJECTS.length);

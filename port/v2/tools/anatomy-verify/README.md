@@ -542,3 +542,11 @@ Mutant runner fix: a mutant's folded slot counts only when it carries the positi
 folded leg leaves the carapace rim it lay against, which forms a loop at the same far point, so an erased FOLDED
 leg is undetectable by loop evidence by construction (recorded; the declaration path accepts this for folded legs).
 Seven absorbed mutants remain, named above.
+
+## Slice 27 — declarations consumed from Codex's presence files, 2026-09-21
+Codex applied `folded` to the three fits' `presence.json` (crab `leg0Far` 7407…, mud `leg0Far` 0d81…, vent
+`leg0Near` c4cb…; schema stays `cf.anatomy-presence/v2` with the new field; records, masks, bindings, rigs
+unchanged; 3/3 focused checks). `score.mjs#declarationOf` now reads a fit's `presence.json` when it exists
+(hidden/absent/folded), else the record's `anatomy`, else the declaration-only presence file; the `FOLDED`
+proposal map is gone. Verified byte-identical to slice 26: named 29/39, positions 30/39, IC-4 positives 5/7,
+wrong-template 7/7, erased 6/10, duplicated 7/10; sheet regenerated.
