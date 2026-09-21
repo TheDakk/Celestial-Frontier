@@ -80,3 +80,5 @@ focused tests/typecheck pass. Sign then run fresh S2 sweep before step2. Packet:
 audits/SOLVER_STAGE_SUPPORT_20260921/. Step2 coconut explicit presence removes leg3Far
 from hidden with no record/binding change. Step3 G1/G2 Brown Bear1536 master + presence,
 no hand landmarks. No internal review stops; S2 only, signed stages, no push/sync/merge.
+
+Step 1 signed producer `cb1a667d`: stage gait no longer advances local stride targets; published painted-support accessor available. One S2 sweep PASS for all six; five crab rows bit-identical, Civet <=0.25 px, exact rest. Evidence: `audits/SOLVER_STAGE_SUPPORT_20260921/S2_LEDGER.md`. Proceed to the declaration-only coconut correction, then Brown Bear G1–G2.

@@ -22,3 +22,7 @@ stance03 logs. The new test checks the accessor against the actual Pixi mesh buf
 painted drift<=0.25px while joint drift>0.25px, and detects deliberate root translation.
 App TypeScript PASS. Next: signed-producer S2 sweep once, five crabs bit-identical to R2c-prime,
 Civet inside0.25px and exact rest. No input/mask/binding or source pixel was changed.
+
+## Completed S2
+
+Signed producer `cb1a667d` passed the one six-subject sweep. See [S2 ledger](S2_LEDGER.md). Five crab rows are bit-identical; Civet maximum row drift 0.165256373 px; exact rest and all presentation samples pass. No S2 halt.
