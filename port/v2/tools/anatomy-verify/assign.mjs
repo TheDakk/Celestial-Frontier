@@ -268,7 +268,7 @@ export function assignLegs(rgba,w,h,guide,{template='brachyuran',bodyFraction=nu
     stations.forEach((st,si)=>{if(st.app)return;[0,1].forEach(d=>{const c=best.acc[si][d];let alt=Infinity;for(const a of allS){if(a.acc[si][d]!==c&&a.cost<alt)alt=a.cost;}margins[slotName(st.k,d?'Near':'Far')]=alt===Infinity?9.99:+(alt-best.cost).toFixed(2);});});
     if(process.env.ASSIGN_DEBUG)console.log('side-view cs',cs.map(c=>({kind:c.kind,tip:toM([c.x,c.y]).map(Math.round),u:+u(c).toFixed(0),y:+c.y.toFixed(0),len:+c.len.toFixed(0),termDt:c.termDt,legCost:+legCost(c).toFixed(2),tailCost:rearApp.length?+(lenCost(c,rearApp[0].length)*2).toFixed(2):null})),'best',best.cost.toFixed(2),'yLow',yLow);
     const others={};
-    best.acc.forEach((slot,si)=>{const st=stations[si];if(st.app){if(slot[0]){others[st.app.id]=toM([slot[0].x,slot[0].y]).map(Math.round);usedApp.push(slot[0]);}return;}
+    best.acc.forEach((slot,si)=>{const st=stations[si];if(st.app){if(slot[0]){others[st.app.id]=toM(refineTip(slot[0])).map(Math.round);usedApp.push(slot[0]);}return;} // appendage tips refined like feet
       [['Far',slot[0]],['Near',slot[1]]].forEach(([side,c])=>{if(c){place(slotName(st.k,side),c);feet[side].push(c);}else hidden.push(T.slots[side][st.k].id);});});
     Object.assign(assigned,Object.fromEntries(Object.entries(others).map(([k,v])=>[k,{master:v,kind:'appendage'}])));
     for(const c of clawList)claws[c.y>=yLow?'Near':'Far'].push(c);
