@@ -39,13 +39,16 @@ const holderOf = (nodes: Node[], rig: BattleRigV1): Node => { const h = nodes.fi
 const turnOf = (ctx: TurnOutcomeContext, row: Record<string, unknown>, ordinal = 0): TurnPlanInput => { const t = turnPlanInputFromTranscriptEvent(row, ctx, ordinal); if (t.kind !== 'turn') throw new Error(t.reason); return t.input; };
 
 describe('A2 cadence — walk whole cycles planted, lunge the rest', () => {
-  it('crab attacker: whole gait cycles ≤ the cap, stance feet fixed in the arena per stance window, zero refusals, run-up reached by impact', async () => {
+  for (const side of ['left', 'right'] as const) it(`crab attacker from the ${side}: whole gait cycles ≤ the cap, stance feet fixed in the arena per stance window, zero refusals, run-up reached by impact`, async () => {
     const { rig, card } = await loadFit('crab');
     expect(rig.stanceReach).toBeDefined(); expect(rig.stanceReach!).toBeGreaterThan(0.05);
     const attackFor: TurnOutcomeContext['attackFor'] = (side, ordinal) => { if (side !== 'A') return null; const r = compileAnatomyAttack(card, 'ground', ordinal); return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.contactJoint } as TurnAttack; };
     const { f, nodes } = stageFactory(); let now = 0;
-    const stage = new BattleStage({ factory: f, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: rig, right: portraitRig() }, masses: { left: card.massClass.multiplier, right: 0.85 } });
-    const input = turnOf(contextFor('Crab', card.massClass.multiplier, card, attackFor), { side: 'A', an: 'Crab', dn: 'Platypus', dmg: 7, crit: false, hpA: 30, hpB: 20 });
+    const rigs = side === 'left' ? { left: rig, right: portraitRig() } : { left: portraitRig(), right: rig };
+    const masses = side === 'left' ? { left: card.massClass.multiplier, right: 0.85 } : { left: 0.85, right: card.massClass.multiplier };
+    const stage = new BattleStage({ factory: f, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs, masses });
+    const ctx = side === 'left' ? contextFor('Crab', card.massClass.multiplier, card, attackFor) : contextTarget('Crab', card.massClass.multiplier, card, { attackFor: (s, o) => (s === 'B' ? attackFor('A', o) : null) });
+    const input = turnOf(ctx, side === 'left' ? { side: 'A', an: 'Crab', dn: 'Platypus', dmg: 7, crit: false, hpA: 30, hpB: 20 } : { side: 'B', an: 'Crab', dn: 'Platypus', dmg: 7, crit: false, hpA: 20, hpB: 30 });
     const plan = stage.play(input);
     expect(plan.cadence).not.toBeNull();
     const cd = plan.cadence!, b = plan.beats;
@@ -57,13 +60,13 @@ describe('A2 cadence — walk whole cycles planted, lunge the rest', () => {
     for (let ms = b.commandEnd; ms < b.actionStart; ms += cd.gaitMs / 40) {
       now = ms; stage.tick();
       const within = ((ms - b.commandEnd) / cd.gaitMs) % 1, stance = within >= 0.5; // leg0Near: contract group 1 stands in the second half-cycle
-      const foot = rig.jointPosition('leg0NearFoot')!, world = holder.x + Math.abs(holder.scaleSet[0]) * foot.x; // holder px + display units × px per unit (cutout 1×1)
+      const foot = rig.jointPosition('leg0NearFoot')!, world = holder.x + holder.scaleSet[0] * foot.x; // holder px + SIGNED scale (a right-facing rig is mirrored) × display units (cutout 1×1)
       if (stance) { if (!cur) { cur = []; windows.push(cur); } cur.push(world); } else cur = null;
       if (process.env.A2_DEBUG && Math.round((ms - b.commandEnd) / (cd.gaitMs / 40)) % 5 === 0) console.log(JSON.stringify({ ms: +ms.toFixed(0), within: +within.toFixed(3), stance, holderX: +holder.x.toFixed(2), footX: +foot.x.toFixed(4), world: +world.toFixed(2), refusals: rig.refusals(), disp: +((stage as any).lastSample?.attacker?.context?.stageDisplacement ?? NaN).toFixed(4) }));
     }
     expect(windows.length).toBe(cd.cycles);
     for (const w of windows) { expect(w.length).toBeGreaterThanOrEqual(10); expect(Math.max(...w) - Math.min(...w), `stance window of ${w.length}`).toBeLessThan(0.5); }
-    const standX = layout.stands.left.x * FRAME.width;
+    const standX = layout.stands[side].x * FRAME.width;
     now = b.commandEnd + cd.cycles * cd.gaitMs - 1e-6; stage.tick(); expect(Math.abs((holder.x - standX) / FRAME.width - cd.walked)).toBeLessThan(Math.abs(cd.walked) * 0.05 + 1e-9);
     now = b.impactAt; stage.tick(); expect(Math.abs((holder.x - standX) / FRAME.width - plan.runUp)).toBeLessThan(1e-9);
     expect(rig.refusals()).toBe(0);

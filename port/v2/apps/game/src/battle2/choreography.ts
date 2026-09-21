@@ -217,7 +217,9 @@ export function sampleTurn(plan: TurnPlan, ms: number): StageSample {
       // `stageDisplacement` is the signed body lengths since the current half-cycle's planting boundary
       const cd = plan.cadence, since = ms - b.commandEnd, k = since / (cd.cycles * cd.gaitMs), within = (since / cd.gaitMs) % 1, half = within >= 0.5 ? 1 : 0;
       const at = within * cd.gaitMs; aPose = addPose(aPose, sampleClip(c.attacker.approach, at)); disp = cd.walked * k;
-      aCtx = Object.freeze({ ...contextOf(c.attacker.approach, at), stageDisplacement: cd.perCycle * (within - half * 0.5) });
+      // FORWARD body lengths (the solver recedes in body space, where forward is +x for either facing; the holder flips
+      // the rig) — the film of 2026-09-22 found a right-side attacker refusing 7× on a world-signed value
+      aCtx = Object.freeze({ ...contextOf(c.attacker.approach, at), stageDisplacement: Math.abs(cd.perCycle) * (within - half * 0.5) });
     } else { const k = input01(ms, b.commandEnd, b.actionStart), at = k * clipMs(c.attacker.approach); aPose = addPose(aPose, sampleClip(c.attacker.approach, at)); disp = plan.runUp * EASE_FN['ease-out'](k); aCtx = contextOf(c.attacker.approach, at); }
   }
   else if (ms >= b.actionStart && ms < b.actionEnd) {
