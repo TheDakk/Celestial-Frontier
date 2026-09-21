@@ -1,0 +1,74 @@
+[
+  {
+    "pattern": "striped",
+    "width": 1254,
+    "height": 1254,
+    "nonzeroAlphaPixels": 179398,
+    "opaqueEquivalentPixels": 58027.262745098036,
+    "rawOutsideAlphaPixels": 2985,
+    "excludedPixelCount": 3166,
+    "outsideAlphaPixels": 0,
+    "protectedPixels": 0,
+    "sha256": "dcdb3eb5a11eeeb9fc3a3758018100cb474fc08456c49f20d53510129ccb05ac"
+  },
+  {
+    "pattern": "spotted",
+    "width": 1254,
+    "height": 1254,
+    "nonzeroAlphaPixels": 210487,
+    "opaqueEquivalentPixels": 57464.51764705883,
+    "rawOutsideAlphaPixels": 1476,
+    "excludedPixelCount": 3953,
+    "outsideAlphaPixels": 0,
+    "protectedPixels": 0,
+    "sha256": "2019bf581d322f62440f93c53262d0a193feca5a449ffdfb6950724bbeec1523"
+  },
+  {
+    "pattern": "banded",
+    "width": 1254,
+    "height": 1254,
+    "nonzeroAlphaPixels": 163931,
+    "opaqueEquivalentPixels": 92697.94509803921,
+    "rawOutsideAlphaPixels": 3449,
+    "excludedPixelCount": 3973,
+    "outsideAlphaPixels": 0,
+    "protectedPixels": 0,
+    "sha256": "37f87c9c8ad56bd534fa430fedb9e56761f540c8d3fd32b82f0493a3e4d4d54f"
+  },
+  {
+    "pattern": "mottled",
+    "width": 1254,
+    "height": 1254,
+    "nonzeroAlphaPixels": 249668,
+    "opaqueEquivalentPixels": 72876.90196078431,
+    "rawOutsideAlphaPixels": 7018,
+    "excludedPixelCount": 17957,
+    "outsideAlphaPixels": 0,
+    "protectedPixels": 0,
+    "sha256": "2818b5b1240fe96951b7fb5fa4c25cb90bf5bb8b6ca7176739ff6d9069384d97"
+  },
+  {
+    "pattern": "marbled",
+    "width": 1254,
+    "height": 1254,
+    "nonzeroAlphaPixels": 230395,
+    "opaqueEquivalentPixels": 54724.56470588235,
+    "rawOutsideAlphaPixels": 4725,
+    "excludedPixelCount": 10710,
+    "outsideAlphaPixels": 0,
+    "protectedPixels": 0,
+    "sha256": "a11163de8e240bb5552f0776e4c11e2f85b69e761084b96b058cac10590bc349"
+  },
+  {
+    "pattern": "eye-spotted",
+    "width": 1254,
+    "height": 1254,
+    "nonzeroAlphaPixels": 34876,
+    "opaqueEquivalentPixels": 14421.121568627452,
+    "rawOutsideAlphaPixels": 24,
+    "excludedPixelCount": 117,
+    "outsideAlphaPixels": 0,
+    "protectedPixels": 0,
+    "sha256": "5fc556bcff69d51aa89d02da4808190038dce7f409abf5c930ccda8a2d277de0"
+  }
+]
