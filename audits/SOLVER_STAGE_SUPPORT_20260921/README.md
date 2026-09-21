@@ -26,3 +26,7 @@ Civet inside0.25px and exact rest. No input/mask/binding or source pixel was cha
 ## Completed S2
 
 Signed producer `cb1a667d` passed the one six-subject sweep. See [S2 ledger](S2_LEDGER.md). Five crab rows are bit-identical; Civet maximum row drift 0.165256373 px; exact rest and all presentation samples pass. No S2 halt.
+
+## Coconut declaration correction
+
+Nick’s painted `leg3Far` decision is applied to `audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/presence.json`, the current compiler anatomy input. Hidden is now only `leg3Near`; absent/folded are empty. SHA256: `41ecbcdfc2bbe926e635ca150b4839836198fcd782b240814f0a537101078026`. Focused inventory checks PASS (seven visible contact chains). All 35 existing sealed fit files, including historical record, landmarks, masks, bindings and rigs, remain byte-identical; see `coconut-declaration.json` and `coconut-presence-check.json`. No battery rerun.

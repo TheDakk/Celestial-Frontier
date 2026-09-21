@@ -82,3 +82,5 @@ from hidden with no record/binding change. Step3 G1/G2 Brown Bear1536 master + p
 no hand landmarks. No internal review stops; S2 only, signed stages, no push/sync/merge.
 
 Step 1 signed producer `cb1a667d`: stage gait no longer advances local stride targets; published painted-support accessor available. One S2 sweep PASS for all six; five crab rows bit-identical, Civet <=0.25 px, exact rest. Evidence: `audits/SOLVER_STAGE_SUPPORT_20260921/S2_LEDGER.md`. Proceed to the declaration-only coconut correction, then Brown Bear G1–G2.
+
+Step 2 complete: coconut fit-04 now has an authoritative `presence.json`, hidden=[leg3Near]; leg3Far is painted per Nick. Focused presence PASS; historical sealed fit bytes unchanged. Next: one Brown Bear guardian painting, then hold.
