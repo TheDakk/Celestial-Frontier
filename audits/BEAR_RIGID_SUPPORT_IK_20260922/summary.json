@@ -1,0 +1,23 @@
+{
+  "producer": "58f81e545cf7d40798bddbb0592506681c124073",
+  "solverProducer": "58f81e545cf7d40798bddbb0592506681c124073",
+  "fitProducer": "1ff30009d9b8cda3a92d72a2ef07a36c8506d91b",
+  "actionRowsPassed": 18,
+  "totalActionRows": 20,
+  "presentationPassed": true,
+  "exactRest": true,
+  "maxPaintDriftPx": 0.2495765127496037,
+  "maxGapPx": 7.089904861267076e-05,
+  "remainingRefusals": [
+    {
+      "id": "approach:gallop",
+      "ms": 180.26666666666668,
+      "error": "Error: Contact: approach:gallop@180.26666666666668 exceeds scale compression bound"
+    },
+    {
+      "id": "melee:tail",
+      "ms": 247.86666666666667,
+      "error": "Error: Contact: melee:tail@247.86666666666667 exceeds scale compression bound"
+    }
+  ]
+}
