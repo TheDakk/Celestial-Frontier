@@ -1,6 +1,6 @@
 # Archetype sprint — 2026-09-22
 
-Source: OpenAI/Codex · macOS · /Users/nick/Projects/celestial-frontier-openai-mac · openai/mac (tracks origin/openai/mac). No GitHub writes or synchronization. Claude lane is read-only. Node 26.9.0 continuing-run receipt. S2 regression alone halts all battery work. No numeric acceptance claims before measurement.
+Source: OpenAI/Codex · macOS · /Users/nick/Projects/celestial-frontier-openai-mac · openai/mac (tracks origin/openai/mac). Nick’s continuation authorizes one normal final push to origin/openai/mac after all items are signed; no fetch/sync or other GitHub write. See CONTINUATION_AUTHORITY.md. Claude lane is read-only. Node 26.9.0 continuing-run receipt. S2 regression alone halts all battery work. No numeric acceptance claims before measurement.
 
 | Item | Plan | Exemplar | Signed commit | Static rows | Film refusals | CPU p95 | Sheet | State |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -12,8 +12,8 @@ Source: OpenAI/Codex · macOS · /Users/nick/Projects/celestial-frontier-openai-
 | 6 | hopper | Tree Frog | f598f58914056d8eb10ca53dbfc67f933ec1d132 | REFUSED before rows | not measured | not measured | 06-hopper/review-sheet.png | RED: Error: MotionCompileError: motion refused (unsupported-materials): surface "moist granular green frog skin, cream underside and orange adhesive toe discs" maps to no kit material |
 | 7 | primate | Chimpanzee | 6496aee59332b62566574fa0e9707837100623dc | 14 rows / 3 red | {"left":0,"right":53} | 4.600000023841858 ms stage | 07-primate/review-sheet.png | RED: Error: Motion capture: encoded video lost frames |
 | 8 | radial | Starfish | b13c1b87507ed2223c13f739573d944283fa7ea9 | 14 rows / 7 red | not measured | not measured | 08-radial/review-sheet.png | RED: Error: Error: habitat: Selected home arena cannot support both organisms; no habitat or biome substitution · left Starfish: aquatic (water) · right Starfish: aquatic (water) |
-| 9 | arachnid | Tarantula | STAGED — signature pending after 9 refusals | not run after intake refusal | not measured | not measured | 09-arachnid/review-sheet.png | RED: Error: Hidden anatomy: unsupported hidden chain |
-| 10 | cephalopod | Octopus | pending | not run | not run | not measured | pending | not started |
+| 9 | arachnid | Tarantula | 5a58994496f0ec0ac05ccc786d57094d98173942 | not run after intake refusal | not measured | not measured | 09-arachnid/review-sheet.png | RED: Error: Hidden anatomy: unsupported hidden chain |
+| 10 | cephalopod | Octopus | packet history (10-cephalopod) | 14 rows / 0 red | not measured | not measured | 10-cephalopod/review-sheet.png | RED: Error: Error: habitat: Selected home arena cannot support both organisms; no habitat or biome substitution · left Octopus: aquatic (water) · right Octopus: aquatic (water) |
 | 11 | flyer-membrane | Fruit Bat | pending | not run | not run | not measured | pending | not started |
 | 12 | myriapod | Centipede | pending | not run | not run | not measured | pending | not started |
 | 13 | fish markings | Salmon | pending | not run | not run | not measured | pending | not started |

@@ -52,3 +52,7 @@ Sprint item8 Starfish: RED; exact rest 0 changed channels, static 14 rows/7 reds
 Sprint item9 Tarantula: RED; exact rest unproved, static 0 rows/0 reds, native not run, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/09-arachnid/README.md. Next unticked item:10. Codex continues; Claude read-only; no hosted action.
 
 Signing checkpoint: items1–8 signed, HEAD b13c1b87507ed2223c13f739573d944283fa7ea9. Item9 Tarantula evidence is complete and staged; nine 1Password signing attempts refused (including the same-agent ssh-keygen diagnostic). No unsigned fallback. Local authentication requested; do not start item10 until item9 signs. Resume at that signature, then Octopus → Fruit Bat → Centipede → Salmon marking masks. No certificate, static or native retry; no hosted action. Claude lane remains read-only.
+
+Continuation: Nick unlocked1Password and explicitly directed completion plus a final push. Tarantula signed5a58994496f0ec0ac05ccc786d57094d98173942. Continue items10–13, sign each, then one normal openai/mac → origin/openai/mac push. No fetch/sync, PR, label, hosted battery, merge, release or deploy is authorized. Exact instruction retained in audits/ARCHETYPE_SPRINT_20260922/CONTINUATION_AUTHORITY.md.
+
+Sprint item10 Octopus: RED; exact rest 0 changed channels, static 14 rows/0 reds, native FAIL, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/README.md. Next unticked item:11. Codex continues; Claude read-only; no hosted action.

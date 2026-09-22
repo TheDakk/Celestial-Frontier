@@ -1,0 +1,76 @@
+{
+  "id": "archetype-sprint-10-cephalopod-01",
+  "stages": [
+    {
+      "name": "intake",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/intake.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01"
+      ],
+      "startedAt": "2026-09-22T12:31:36.922Z",
+      "endedAt": "2026-09-22T12:31:39.056Z",
+      "durationMs": 2131.975583,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "static",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/static-runner.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/static.json"
+      ],
+      "startedAt": "2026-09-22T12:31:39.057Z",
+      "endedAt": "2026-09-22T12:31:48.888Z",
+      "durationMs": 9831.100416,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "native",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-runner.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/native-01"
+      ],
+      "startedAt": "2026-09-22T12:31:48.888Z",
+      "endedAt": "2026-09-22T12:31:52.609Z",
+      "durationMs": 3720.1319999999996,
+      "exitCode": 1,
+      "signal": null
+    },
+    {
+      "name": "sheet",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/review-sheet.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod"
+      ],
+      "startedAt": "2026-09-22T12:31:52.609Z",
+      "endedAt": "2026-09-22T12:31:53.032Z",
+      "durationMs": 422.82587500000045,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "finish",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/finish-item.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod",
+        "10"
+      ],
+      "startedAt": "2026-09-22T12:31:53.032Z",
+      "endedAt": "2026-09-22T12:31:53.137Z",
+      "durationMs": 105.56025000000045,
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "noRetry": true
+}
