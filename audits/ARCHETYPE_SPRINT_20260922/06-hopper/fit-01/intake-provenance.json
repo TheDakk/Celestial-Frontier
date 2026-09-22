@@ -1,0 +1,86 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "879844704150ae0e3fd505cd2b276156106daf27",
+  "helperSha256": "ae9cafe006642a2aea96206581abb3c4df2bb94ad9b2ae4259092979ceb992ae",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/06-hopper/master.png",
+      "sha256": "f2dc168f7208fc41101c658b3fa007e7fe4a8f07c898790a15e0c5a0398462d0"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/06-hopper/authoring.json",
+      "sha256": "ba546e6226386ded6f5a1b7f24ab2cb7958b02506b66a3060a7417241bcdc29c"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/06-hopper/subject-source.json",
+      "sha256": "b60c3c4508b9572e0508c29315c0cfb45c661f47133b7da17a65d1e91a4954d0"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/06-hopper/presence.json",
+      "sha256": "f68210c1e3a6fef07ed143da7b57ce9b7d731747ded900ccf4f9b215068846c7"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "b9629c93950666f62d8f0b124cd10224e08051e254523449371f4c02d311456f",
+  "bindingHash": "37b827ced85df7ba5372f9dc9b650cd6a1858fbe1d8ad60210faf0253f20247c",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "foreNearPaw",
+    "foreFarPaw",
+    "hindNearPaw",
+    "hindFarPaw",
+    "foreNearAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "hindNearKnee",
+    "hindFarAnkle",
+    "hindFarKnee",
+    "foreNearKnee",
+    "foreFarKnee",
+    "jaw",
+    "head",
+    "neck",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/06-hopper/master.png",
+      "sha256": "f2dc168f7208fc41101c658b3fa007e7fe4a8f07c898790a15e0c5a0398462d0",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/06-hopper/authoring.json",
+      "sha256": "ba546e6226386ded6f5a1b7f24ab2cb7958b02506b66a3060a7417241bcdc29c",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/06-hopper/subject-source.json",
+      "sha256": "b60c3c4508b9572e0508c29315c0cfb45c661f47133b7da17a65d1e91a4954d0",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/06-hopper/presence.json",
+      "sha256": "f68210c1e3a6fef07ed143da7b57ce9b7d731747ded900ccf4f9b215068846c7",
+      "unchanged": true
+    }
+  ]
+}
