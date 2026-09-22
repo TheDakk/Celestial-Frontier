@@ -1,0 +1,13 @@
+✔ explicit scales govern the actual holder transform, width and cadence, and are copied (1.697834ms)
+✔ omitted scales retain exact ordinary and guardian arithmetic and turn output (1.735542ms)
+✔ invalid or incomplete presentation scales refuse before the stage can render (0.371916ms)
+✔ timing records constructor rest, play implicit ticks, transitions and both actual rig sides (0.249959ms)
+✔ reduced-motion play rest is measured but ticks do not fabricate rig updates (0.208042ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 158.452625

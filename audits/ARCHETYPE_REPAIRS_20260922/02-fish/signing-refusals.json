@@ -1,0 +1,19 @@
+{
+  "headUnchanged": "4cf88823fc74152528a63b57a732cb4c1ef7e5dc",
+  "attempts": [
+    {
+      "client": "/usr/bin/ssh-keygen with explicit existing 1Password socket",
+      "exitCode": 128,
+      "refusal": "Couldn't sign message (signer): agent refused operation?; fatal: failed to write commit object"
+    },
+    {
+      "client": "configured op-ssh-sign in interactive PTY",
+      "exitCode": 128,
+      "refusal": "error: 1Password: agent returned an error; fatal: failed to write commit object"
+    }
+  ],
+  "configurationChanged": false,
+  "keyExported": false,
+  "unsignedCommitCreated": false,
+  "next": "User key-use authorization/state change, then retry signed Salmon commit; do not rerun passing checks."
+}

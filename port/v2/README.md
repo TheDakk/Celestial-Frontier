@@ -1,5 +1,7 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+Local unmorphed archetype review (matches2026-09-22): `node tools/battle2-proof/native-runner.mjs LEFT_FIT RIGHT_FIT NEW_OUTPUT SCRIPT_JSON`. On macOS request out-of-sandbox browser execution on the first attempt. The harness records exact source/world/script bytes, fits published animated meshes to unchanged medium bands, and reports per-rig sampling/update p95 plus whole-stage p95; morph and guardian requests are outside its scope. Acceptance still requires exact rest/static rows, no film refusals, complete ten-second capture,570encoded frames and desktop3.5ms per-rig. Salmon evidence: `audits/ARCHETYPE_REPAIRS_20260922/02-fish`; human art review remains separate.
+
 ## Local AI species references and optional offline package — matches code as of 2026-09-09
 
 The default-off `?localai=1` preview connects ordinary Land, Survey and Notifications to local
