@@ -1,0 +1,32 @@
+{
+  "schema": "cf.authored-mesh-density-candidate/v1",
+  "previous": "fit-08",
+  "candidate": "fit-09",
+  "before": {
+    "boundaryStep": 24,
+    "interiorStep": 56
+  },
+  "after": {
+    "boundaryStep": 40,
+    "interiorStep": 80
+  },
+  "scope": "Existing authored buildPaintSkin sampling options. Not solver, family or gate parameters. New candidate only; retain fit08 and every failure. Exact rest and all original pose/publication gates remain required.",
+  "inputs": [
+    {
+      "name": "master.png",
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "name": "authoring.json",
+      "sha256": "5241b41deb498c47936f6203cc341e7911b0b709d23ec28576826a5ccf2b40ae"
+    },
+    {
+      "name": "presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "name": "subject-source.json",
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    }
+  ]
+}

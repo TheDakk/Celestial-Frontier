@@ -1,0 +1,95 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "302a526d5d0fdd6cf5093ed3d680b3001b914cde5668552c5613d736da41e8d8",
+  "cutoutSha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a",
+  "labelsFile": "labels.png",
+  "labelsSha256": "31233bfcc52e1a011d781aadd2ddb9a45864ef8de1c625e6ffe52868eee19bc7",
+  "parts": [
+    {
+      "id": "near-foot",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "far-foot",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "near-shin",
+      "joint": "legNearAnkle",
+      "layer": "near"
+    },
+    {
+      "id": "far-shin",
+      "joint": "legFarAnkle",
+      "layer": "far"
+    },
+    {
+      "id": "near-thigh",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "far-thigh",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "beak",
+      "joint": "beak",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "neck-upper",
+      "joint": "neck1",
+      "layer": "near"
+    },
+    {
+      "id": "neck-lower",
+      "joint": "neck0",
+      "layer": "near"
+    },
+    {
+      "id": "near-wing-shoulder",
+      "joint": "wingNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "near-wing-flight",
+      "joint": "wingNearTip",
+      "layer": "near"
+    },
+    {
+      "id": "far-wing-shoulder",
+      "joint": "wingFarRoot",
+      "layer": "far"
+    },
+    {
+      "id": "far-wing-flight",
+      "joint": "wingFarTip",
+      "layer": "far"
+    },
+    {
+      "id": "tail",
+      "joint": "tailFan",
+      "layer": "far"
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "77864bde4553ed87e9225ef071f42e87d390ac8435ef3fa77ec91d87c2e9a470"
+}

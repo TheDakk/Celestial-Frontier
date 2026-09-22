@@ -1,0 +1,3579 @@
+{
+  "files": [
+    {
+      "path": "affected-tests-01.log",
+      "bytes": 3188,
+      "sha256": "04ed87c6aa7af7ed5c23d4a9cd53c40021690a35b66f4da1aa9dea4bd042668b"
+    },
+    {
+      "path": "affected-tests-02.log",
+      "bytes": 582,
+      "sha256": "07bde400278ab54c3b660d324bd6afc656590e8a6a009aa699ebf9e8bd947df3"
+    },
+    {
+      "path": "authoring.json",
+      "bytes": 11878,
+      "sha256": "91f942596d436ee57223a320dea006de5494f414c4ddfed35fa19a46222acbd1"
+    },
+    {
+      "path": "candidate-03/authoring.json",
+      "bytes": 11878,
+      "sha256": "d48badac3882b251cc76d7904ffa5bc6fa7fa55aa5216ff5cd43c10ce653d454"
+    },
+    {
+      "path": "candidate-03/master.png",
+      "bytes": 1602781,
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "candidate-03/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "candidate-03/subject-source.json",
+      "bytes": 6044,
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "candidate-04/authoring.json",
+      "bytes": 12178,
+      "sha256": "220e33ac6f75df8897aae28bd62ca6e73bd09ee7c1f6d1abb134f9c9c36344ae"
+    },
+    {
+      "path": "candidate-04/master.png",
+      "bytes": 1602781,
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "candidate-04/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "candidate-04/subject-source.json",
+      "bytes": 6044,
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "candidate-05/authoring.json",
+      "bytes": 12377,
+      "sha256": "a01ee3e4c99bb656e293381f775fc73098cdbf769e2b269887b3de4991d97b1a"
+    },
+    {
+      "path": "candidate-05/master.png",
+      "bytes": 1602781,
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "candidate-05/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "candidate-05/subject-source.json",
+      "bytes": 6044,
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "candidate-06/authoring.json",
+      "bytes": 20896,
+      "sha256": "6f4de5f16e3d1dda22fb631a9e4d73b90a84ab042cdcc5aca90b74c54d2c08ea"
+    },
+    {
+      "path": "candidate-06/master.png",
+      "bytes": 1602781,
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "candidate-06/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "candidate-06/subject-source.json",
+      "bytes": 6044,
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "candidate-06-refusal.json",
+      "bytes": 543,
+      "sha256": "eddede10229589bb76b5aa3631a791ded93ccc4fa2d3c8ae47c319cda6dbae09"
+    },
+    {
+      "path": "candidate-07/authoring.json",
+      "bytes": 20001,
+      "sha256": "a7b69ac637b13478251f15c5c3d9c9d3316cc2d4a0d6fe7cb8ff0156e8f6801a"
+    },
+    {
+      "path": "candidate-07/master.png",
+      "bytes": 1602781,
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "candidate-07/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "candidate-07/subject-source.json",
+      "bytes": 6044,
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "candidate-08/authoring.json",
+      "bytes": 22252,
+      "sha256": "5241b41deb498c47936f6203cc341e7911b0b709d23ec28576826a5ccf2b40ae"
+    },
+    {
+      "path": "candidate-08/master.png",
+      "bytes": 1602781,
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "candidate-08/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "candidate-08/subject-source.json",
+      "bytes": 6044,
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "candidate-09/authoring.json",
+      "bytes": 22252,
+      "sha256": "5241b41deb498c47936f6203cc341e7911b0b709d23ec28576826a5ccf2b40ae"
+    },
+    {
+      "path": "candidate-09/master.png",
+      "bytes": 1602781,
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "candidate-09/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "candidate-09/subject-source.json",
+      "bytes": 6044,
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "candidate-10/authoring.json",
+      "bytes": 22393,
+      "sha256": "971807865c795c251e472c9d5ebfb6c4d6b901d41d0a2ef195e1cfec7bb0e3fa"
+    },
+    {
+      "path": "candidate-10/master.png",
+      "bytes": 1602781,
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "candidate-10/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "candidate-10/subject-source.json",
+      "bytes": 6044,
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "candidate-11/authoring.json",
+      "bytes": 22394,
+      "sha256": "5d56330054fa848cf8f6aca876f8dc471454e25eaa7642c39695e0f462a371a4"
+    },
+    {
+      "path": "candidate-11/master.png",
+      "bytes": 1602781,
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "candidate-11/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "candidate-11/subject-source.json",
+      "bytes": 6044,
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "candidate-12/authoring.json",
+      "bytes": 22792,
+      "sha256": "8588281d427a16ec162caf08a750cae15499809597ce5598bc52b0b01dd5af8a"
+    },
+    {
+      "path": "candidate-12/master.png",
+      "bytes": 1602781,
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "candidate-12/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "candidate-12/subject-source.json",
+      "bytes": 6044,
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "close-eagle-07.mjs",
+      "bytes": 13020,
+      "sha256": "9e1ebd823323344036ac4d42e757c4e67fc5b4838a533ed2e66feb11fbb5dd55"
+    },
+    {
+      "path": "cpu-diagnosis-02.json",
+      "bytes": 2753694,
+      "sha256": "f8a8910736643a49aa83b33e114665f421221efd98dd058cd1a9b2817ea6d9d3"
+    },
+    {
+      "path": "cpu-diagnosis-02.log",
+      "bytes": 16134,
+      "sha256": "233313c30ba15a6b198570c7ed2e27d89632f238d0c5f8754250e6d98611756d"
+    },
+    {
+      "path": "cpu-diagnosis-02.mjs",
+      "bytes": 1724,
+      "sha256": "7cf53128f70bd78b8437d94e6e9082a4dbb58b0ddc322714946f5d355bbbce71"
+    },
+    {
+      "path": "cpu-diagnosis-02.sources.json",
+      "bytes": 27792,
+      "sha256": "bcc1482f332f43815de8a7099b9ac07ed9e8f153d643519034a006a737934910"
+    },
+    {
+      "path": "cpu-diagnosis-02.ts",
+      "bytes": 12365,
+      "sha256": "735e7cdae2d5fa37af2a280073ad89767f15dae095633ab65318ed64ef7933ff"
+    },
+    {
+      "path": "declaration.txt",
+      "bytes": 1334,
+      "sha256": "e8622f04142e79bb277b89351cd32ee49b00eaf8afb0b0931163428bf894f434"
+    },
+    {
+      "path": "diagnose-folds-02.mjs",
+      "bytes": 1490,
+      "sha256": "3e56db75a043f1aa9fdd8293af8c93c70c1a880e47dc6a3ba56d47bd07991efe"
+    },
+    {
+      "path": "diagnose-folds-02.ts",
+      "bytes": 4899,
+      "sha256": "5f7a71ec512e9cad2ce7e23de783f9c011d347ad4151ff06693e258443c4b919"
+    },
+    {
+      "path": "diagnose-folds-03.mjs",
+      "bytes": 1490,
+      "sha256": "9411b32c4318822ff39a306a3914a7ce06bbab84622262bad0189ef3b2973a55"
+    },
+    {
+      "path": "diagnose-folds-03.ts",
+      "bytes": 4963,
+      "sha256": "c2b01a565b1b3e75bdccc269a76f7addb89cd009c7a002cb16e5057c4f9dce42"
+    },
+    {
+      "path": "diagnose-folds-09.mjs",
+      "bytes": 2140,
+      "sha256": "862e1a6dc9b04dbb0c4ea860e25ce37eca4976c3787ee5b4fbbe570f1f9a9042"
+    },
+    {
+      "path": "diagnose-folds-09.ts",
+      "bytes": 5788,
+      "sha256": "b29f766b5900259986921cdf0a49bbebbf7a149bc838725f213beb7b82cc10e9"
+    },
+    {
+      "path": "final-review-note.json",
+      "bytes": 581,
+      "sha256": "fb42766e6d16b43c23e0f2129e2b841308db435a5463507fdb4857a647997f20"
+    },
+    {
+      "path": "final-source-check-07.json",
+      "bytes": 221169,
+      "sha256": "faa459d1c9e1a7e2ffa5f2ec605035ec11df8d20f2a90cae6d772ef312f2472d"
+    },
+    {
+      "path": "fit-02/binding.json",
+      "bytes": 3383104,
+      "sha256": "dd3d0748a2e29d07b9a7add8b238c370047fc2124cfc5997a150018141b03034"
+    },
+    {
+      "path": "fit-02/declaration.json",
+      "bytes": 1929,
+      "sha256": "0caa90f40b4b953814a1930425a593e98d2575521eb2e2c5d3d5eb3085d4fc47"
+    },
+    {
+      "path": "fit-02/intake-provenance.json",
+      "bytes": 3113,
+      "sha256": "fcf6d02d87617a63b49dda466d35a3a69eecc7620d16367b5d906b3479075f2d"
+    },
+    {
+      "path": "fit-02/label-authoring-receipt.json",
+      "bytes": 601,
+      "sha256": "27c53f266fcb0e470d34bd403582a0058c3d0832d34308b78bf2ad0fbaf64991"
+    },
+    {
+      "path": "fit-02/labels.png",
+      "bytes": 56090,
+      "sha256": "d0f54ca3f326b3ddba68ae44cca3441e3dde00884a1d405020900d24b258e131"
+    },
+    {
+      "path": "fit-02/parts/atlas/eagle.json",
+      "bytes": 7062,
+      "sha256": "92a8445499b70240ac9bd902b8750cef366045e5875d36d33cd1486f28fb37c9"
+    },
+    {
+      "path": "fit-02/parts/atlas/eagle.png",
+      "bytes": 1657561,
+      "sha256": "d880b136c2c08420d9904e30ee96c4354368520c124527010c44e740aa284aa2"
+    },
+    {
+      "path": "fit-02/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "6f59aeaed37b1a72e900aa0420bd5b93c59f0e229996ba1b245a37920afd783f"
+    },
+    {
+      "path": "fit-02/parts/binding.json",
+      "bytes": 5862,
+      "sha256": "9d9bc679dbb2d8b8f4229ef753a36d840486a08f91470e52ead60e9ebc0f6a7a"
+    },
+    {
+      "path": "fit-02/parts/keyed.png",
+      "bytes": 1982442,
+      "sha256": "9fa51a95834205a5faf850b98ea60e77f57da16b1d4dbdb3669c55d19a452735"
+    },
+    {
+      "path": "fit-02/parts/manifest.json",
+      "bytes": 2847,
+      "sha256": "14f3fca9408b2550454b124fe23192ea80256873f7bde6f363671ab7dd44780e"
+    },
+    {
+      "path": "fit-02/parts/ownership.png",
+      "bytes": 213512,
+      "sha256": "da956002067cede6f6868a6df17319b03d45e01c4537d2c3ab9b57b7b4b11b8b"
+    },
+    {
+      "path": "fit-02/parts/parts/beak.png",
+      "bytes": 24634,
+      "sha256": "a21ac2043c1d13352dec2a0f31964b70f7c9f1523def487125d72b316827bc3e"
+    },
+    {
+      "path": "fit-02/parts/parts/body.png",
+      "bytes": 75170,
+      "sha256": "2b23cba94ae9d4c4f6721ee356826d6c9435920ec6590c39a3a935464c607a68"
+    },
+    {
+      "path": "fit-02/parts/parts/chest.png",
+      "bytes": 121998,
+      "sha256": "f5d371bf00a97b290ff4ae90f08223ac6c2e393ddeae5eab5b8632416aa6cd1f"
+    },
+    {
+      "path": "fit-02/parts/parts/far-foot.png",
+      "bytes": 43352,
+      "sha256": "0a4f6af4ef4a5896e95b5656e08f483217754cfe495ce22d1d2a9898cd0eb67a"
+    },
+    {
+      "path": "fit-02/parts/parts/far-shin.png",
+      "bytes": 47108,
+      "sha256": "f3aa3aa52ba8ad29ee4b9e1af12225162fdba7e9fb37221de575079621b5285d"
+    },
+    {
+      "path": "fit-02/parts/parts/far-thigh.png",
+      "bytes": 55995,
+      "sha256": "579db25788fdc51d6b55e82bb276774f295bb4ca711bf33ffa5ca53fd72828ee"
+    },
+    {
+      "path": "fit-02/parts/parts/far-wing-flight.png",
+      "bytes": 269812,
+      "sha256": "c6b0e23dfa80162a9445500910346eeed70f9e3432f901beafc3caf270e88888"
+    },
+    {
+      "path": "fit-02/parts/parts/far-wing-shoulder.png",
+      "bytes": 124431,
+      "sha256": "5edb2d78ae2c6b70bbc96f5e393e7a6217915ccb4a4a624538e0eaf781070169"
+    },
+    {
+      "path": "fit-02/parts/parts/head.png",
+      "bytes": 103473,
+      "sha256": "309af0f001b63d3c7a6636ac42bc9c344a3ebe1bb78a6315b32b16036b753a75"
+    },
+    {
+      "path": "fit-02/parts/parts/near-foot.png",
+      "bytes": 43429,
+      "sha256": "8646b5db2d71e83294386ad142d5ca2aee1a998e1ce9ba1f48128f7083f25a6b"
+    },
+    {
+      "path": "fit-02/parts/parts/near-shin.png",
+      "bytes": 67311,
+      "sha256": "86a206497085a29423c9814bd0e7cb36724cc16d779119a04675fb0690fd04d8"
+    },
+    {
+      "path": "fit-02/parts/parts/near-thigh.png",
+      "bytes": 90004,
+      "sha256": "43f4dd1663f26372dc4ebb97745581702e783752711c53efeeee0990c979736a"
+    },
+    {
+      "path": "fit-02/parts/parts/near-wing-flight.png",
+      "bytes": 444762,
+      "sha256": "cb1c8e53f1121a62a3f65f7dad3a87d0de15a690e31e90c65f488ce91f20956b"
+    },
+    {
+      "path": "fit-02/parts/parts/near-wing-shoulder.png",
+      "bytes": 135642,
+      "sha256": "03485cb59e65ff611c22d26f3a3a262794eb9a9b51bf23159c90eb223eab0017"
+    },
+    {
+      "path": "fit-02/parts/parts/neck-lower.png",
+      "bytes": 98743,
+      "sha256": "26401fb788ea94420c960867f02135df6803f4327c669f4eee0f048526bc41f8"
+    },
+    {
+      "path": "fit-02/parts/parts/neck-upper.png",
+      "bytes": 61058,
+      "sha256": "f9470d020d9cb84cc2e61b094534ceebf181e59bbc5da9298a015616b83f86da"
+    },
+    {
+      "path": "fit-02/parts/parts/tail.png",
+      "bytes": 155006,
+      "sha256": "53c0062fa035f88ef8e71543ca79ea7d60955915a68efecaf0f2fa777fde3951"
+    },
+    {
+      "path": "fit-02/parts/receipt.json",
+      "bytes": 4684,
+      "sha256": "626485cb875295b4c83a4ef6a3b3eb06a59038b5a8ea3c72f9debdeb6d773093"
+    },
+    {
+      "path": "fit-02/pre-split-binding.json",
+      "bytes": 2345616,
+      "sha256": "f7c006fa6902eb61130cf11cfe31f0ea544babca523279034ffc1a16f7a344ff"
+    },
+    {
+      "path": "fit-02/receipt.json",
+      "bytes": 2410,
+      "sha256": "b53b36ed1490986a7c3f4e26a309608ceebd99c4626357206568ecab24793474"
+    },
+    {
+      "path": "fit-02/record.json",
+      "bytes": 6357,
+      "sha256": "2a7c3dda3abb4fc6d77ec55ace22aa898f8a9819da7e833105be49b54064aae1"
+    },
+    {
+      "path": "fit-03/binding.json",
+      "bytes": 3347616,
+      "sha256": "5fa27e3f320b07bfc559890da46bb5a69a3fa9be4161c96dc66065213f5da0b8"
+    },
+    {
+      "path": "fit-03/declaration.json",
+      "bytes": 1929,
+      "sha256": "0d256c6eb07b4548333abb83038a4fd7307372af9eae60157e5700845c40dd71"
+    },
+    {
+      "path": "fit-03/intake-provenance.json",
+      "bytes": 3217,
+      "sha256": "541ec72f029cf22a86b00e79e79e69bd361cce5aaa054d05b7d37a1280c56073"
+    },
+    {
+      "path": "fit-03/label-authoring-receipt.json",
+      "bytes": 601,
+      "sha256": "3972b39ae5234077603138fd1a77ffbee3fc00c9e54b2a2c2bf35e61d65397ab"
+    },
+    {
+      "path": "fit-03/labels.png",
+      "bytes": 56065,
+      "sha256": "4a5e92950787aa76b163f738c58b8e250595f61ead92b10663e21fc56ed90aed"
+    },
+    {
+      "path": "fit-03/parts/atlas/eagle.json",
+      "bytes": 7062,
+      "sha256": "92a8445499b70240ac9bd902b8750cef366045e5875d36d33cd1486f28fb37c9"
+    },
+    {
+      "path": "fit-03/parts/atlas/eagle.png",
+      "bytes": 1657280,
+      "sha256": "cea3ef2b54465b020deb6d78ad66e70dbed26930326f8617c3519f87eb2a72a4"
+    },
+    {
+      "path": "fit-03/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "53f121d1b5a5cce5b91af09aa739f3a0bf6a93923464497a9f4de251edc9cca4"
+    },
+    {
+      "path": "fit-03/parts/binding.json",
+      "bytes": 5862,
+      "sha256": "051c93dddfc7d4712900aa2719662a8adcfc77ac6bb94ac6ced91ec999ba9b57"
+    },
+    {
+      "path": "fit-03/parts/keyed.png",
+      "bytes": 1982442,
+      "sha256": "9fa51a95834205a5faf850b98ea60e77f57da16b1d4dbdb3669c55d19a452735"
+    },
+    {
+      "path": "fit-03/parts/manifest.json",
+      "bytes": 2847,
+      "sha256": "498735c8bbb325253b38a074f9898fdae84db19e84052ee707829bf2919d15b0"
+    },
+    {
+      "path": "fit-03/parts/ownership.png",
+      "bytes": 213303,
+      "sha256": "d31c8787f1fd3643ac4c41ec9ce64fb1490cfc2df66f74bf79a01d48bc845130"
+    },
+    {
+      "path": "fit-03/parts/parts/beak.png",
+      "bytes": 24634,
+      "sha256": "a21ac2043c1d13352dec2a0f31964b70f7c9f1523def487125d72b316827bc3e"
+    },
+    {
+      "path": "fit-03/parts/parts/body.png",
+      "bytes": 74012,
+      "sha256": "c61d5009b7ed8cce48e68dc99c89e94f96aee5ed9bd86ebc32124eb9aadc3954"
+    },
+    {
+      "path": "fit-03/parts/parts/chest.png",
+      "bytes": 121998,
+      "sha256": "f5d371bf00a97b290ff4ae90f08223ac6c2e393ddeae5eab5b8632416aa6cd1f"
+    },
+    {
+      "path": "fit-03/parts/parts/far-foot.png",
+      "bytes": 43352,
+      "sha256": "0a4f6af4ef4a5896e95b5656e08f483217754cfe495ce22d1d2a9898cd0eb67a"
+    },
+    {
+      "path": "fit-03/parts/parts/far-shin.png",
+      "bytes": 47108,
+      "sha256": "f3aa3aa52ba8ad29ee4b9e1af12225162fdba7e9fb37221de575079621b5285d"
+    },
+    {
+      "path": "fit-03/parts/parts/far-thigh.png",
+      "bytes": 55995,
+      "sha256": "579db25788fdc51d6b55e82bb276774f295bb4ca711bf33ffa5ca53fd72828ee"
+    },
+    {
+      "path": "fit-03/parts/parts/far-wing-flight.png",
+      "bytes": 269812,
+      "sha256": "c6b0e23dfa80162a9445500910346eeed70f9e3432f901beafc3caf270e88888"
+    },
+    {
+      "path": "fit-03/parts/parts/far-wing-shoulder.png",
+      "bytes": 124431,
+      "sha256": "5edb2d78ae2c6b70bbc96f5e393e7a6217915ccb4a4a624538e0eaf781070169"
+    },
+    {
+      "path": "fit-03/parts/parts/head.png",
+      "bytes": 103473,
+      "sha256": "309af0f001b63d3c7a6636ac42bc9c344a3ebe1bb78a6315b32b16036b753a75"
+    },
+    {
+      "path": "fit-03/parts/parts/near-foot.png",
+      "bytes": 43429,
+      "sha256": "8646b5db2d71e83294386ad142d5ca2aee1a998e1ce9ba1f48128f7083f25a6b"
+    },
+    {
+      "path": "fit-03/parts/parts/near-shin.png",
+      "bytes": 67311,
+      "sha256": "86a206497085a29423c9814bd0e7cb36724cc16d779119a04675fb0690fd04d8"
+    },
+    {
+      "path": "fit-03/parts/parts/near-thigh.png",
+      "bytes": 90004,
+      "sha256": "43f4dd1663f26372dc4ebb97745581702e783752711c53efeeee0990c979736a"
+    },
+    {
+      "path": "fit-03/parts/parts/near-wing-flight.png",
+      "bytes": 444762,
+      "sha256": "cb1c8e53f1121a62a3f65f7dad3a87d0de15a690e31e90c65f488ce91f20956b"
+    },
+    {
+      "path": "fit-03/parts/parts/near-wing-shoulder.png",
+      "bytes": 135642,
+      "sha256": "03485cb59e65ff611c22d26f3a3a262794eb9a9b51bf23159c90eb223eab0017"
+    },
+    {
+      "path": "fit-03/parts/parts/neck-lower.png",
+      "bytes": 98743,
+      "sha256": "26401fb788ea94420c960867f02135df6803f4327c669f4eee0f048526bc41f8"
+    },
+    {
+      "path": "fit-03/parts/parts/neck-upper.png",
+      "bytes": 61058,
+      "sha256": "f9470d020d9cb84cc2e61b094534ceebf181e59bbc5da9298a015616b83f86da"
+    },
+    {
+      "path": "fit-03/parts/parts/tail.png",
+      "bytes": 155927,
+      "sha256": "b51568413e3617228cd7d5f926208622e03be77e72a654a9728c18eee70c024a"
+    },
+    {
+      "path": "fit-03/parts/receipt.json",
+      "bytes": 4684,
+      "sha256": "bc105c9d192ecfd9f82a1d483658c2dc15bb4e7a32769ef1e634a01d0b7633ee"
+    },
+    {
+      "path": "fit-03/pre-split-binding.json",
+      "bytes": 2337441,
+      "sha256": "abec378848087c273e77d35c230d17ea89ac586aa1c7af44fb460b5ec30f84c2"
+    },
+    {
+      "path": "fit-03/receipt.json",
+      "bytes": 2410,
+      "sha256": "3a4b9e0a9484be9ebdabb686f4fb060c4591aa4f628d55ec4fe7c4d0d2fc8fe4"
+    },
+    {
+      "path": "fit-03/record.json",
+      "bytes": 6370,
+      "sha256": "5d4bbc544154dbcfb640a5831165cad69934ac39f249d58eec7fb82587e3eb22"
+    },
+    {
+      "path": "fit-04/binding.json",
+      "bytes": 3326334,
+      "sha256": "e45c260dced61db22594475aa97b66d3980a2b01b066ba1203ce40e99230acfa"
+    },
+    {
+      "path": "fit-04/declaration.json",
+      "bytes": 1929,
+      "sha256": "3c92248d088e3be5dedd44c46f17842b494edf28c66c5f50bfc909b14e38948b"
+    },
+    {
+      "path": "fit-04/intake-provenance.json",
+      "bytes": 3217,
+      "sha256": "c97e0a21927e19bc79165ac316848346b3c746657a6c2f2387242e242712795c"
+    },
+    {
+      "path": "fit-04/label-authoring-receipt.json",
+      "bytes": 601,
+      "sha256": "ddb4e6f67cabc64922f3fb7f3d6fc18913f97a07cd74f32c36af43477f7d26f4"
+    },
+    {
+      "path": "fit-04/labels.png",
+      "bytes": 55926,
+      "sha256": "483dbba3bbcd2452137244c96716eaf2810ddca7e7efad7d82c03e2576ebdda0"
+    },
+    {
+      "path": "fit-04/parts/atlas/eagle.json",
+      "bytes": 7062,
+      "sha256": "bcda994a5e6f5e6f7e9a4895e97d69e7d86636492f1f198ca4dd4e962026384f"
+    },
+    {
+      "path": "fit-04/parts/atlas/eagle.png",
+      "bytes": 1656954,
+      "sha256": "67147732ef3f15123bb432334f6631a7ab0a4f28494ec88f6ff053d97d878b3e"
+    },
+    {
+      "path": "fit-04/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "1dd2611b4811a54700326e261f671fda8524d7f932ecb7c2a03c0c9d6f90ca7a"
+    },
+    {
+      "path": "fit-04/parts/binding.json",
+      "bytes": 5862,
+      "sha256": "b4f5820511ec742c6092be821ce0d5caef26bcf5c5dd81de505a816b871e359f"
+    },
+    {
+      "path": "fit-04/parts/keyed.png",
+      "bytes": 1982442,
+      "sha256": "9fa51a95834205a5faf850b98ea60e77f57da16b1d4dbdb3669c55d19a452735"
+    },
+    {
+      "path": "fit-04/parts/manifest.json",
+      "bytes": 2847,
+      "sha256": "466ae4b72e76895001888835cbc052faa21a20b5acd69384dbc542b7f9bcc91a"
+    },
+    {
+      "path": "fit-04/parts/ownership.png",
+      "bytes": 213183,
+      "sha256": "74e1e0cc8adc3d325e400be46d61f7a1a975a7d9f4128ae969b452709829e2dc"
+    },
+    {
+      "path": "fit-04/parts/parts/beak.png",
+      "bytes": 24634,
+      "sha256": "a21ac2043c1d13352dec2a0f31964b70f7c9f1523def487125d72b316827bc3e"
+    },
+    {
+      "path": "fit-04/parts/parts/body.png",
+      "bytes": 72755,
+      "sha256": "58ab560bcdd948ea6f021b62edf42064ab6f7f997f3db13284a7718d0016ee5a"
+    },
+    {
+      "path": "fit-04/parts/parts/chest.png",
+      "bytes": 121888,
+      "sha256": "7dacd832043beac13566e7ff9dffaafb0129e53f265c78020ff66764f4f3a7f5"
+    },
+    {
+      "path": "fit-04/parts/parts/far-foot.png",
+      "bytes": 43352,
+      "sha256": "0a4f6af4ef4a5896e95b5656e08f483217754cfe495ce22d1d2a9898cd0eb67a"
+    },
+    {
+      "path": "fit-04/parts/parts/far-shin.png",
+      "bytes": 47108,
+      "sha256": "f3aa3aa52ba8ad29ee4b9e1af12225162fdba7e9fb37221de575079621b5285d"
+    },
+    {
+      "path": "fit-04/parts/parts/far-thigh.png",
+      "bytes": 57125,
+      "sha256": "75660508c85d86d42b245b4b9420362901afb2dea45df07dd7cc016d280d6129"
+    },
+    {
+      "path": "fit-04/parts/parts/far-wing-flight.png",
+      "bytes": 269812,
+      "sha256": "c6b0e23dfa80162a9445500910346eeed70f9e3432f901beafc3caf270e88888"
+    },
+    {
+      "path": "fit-04/parts/parts/far-wing-shoulder.png",
+      "bytes": 124431,
+      "sha256": "5edb2d78ae2c6b70bbc96f5e393e7a6217915ccb4a4a624538e0eaf781070169"
+    },
+    {
+      "path": "fit-04/parts/parts/head.png",
+      "bytes": 103473,
+      "sha256": "309af0f001b63d3c7a6636ac42bc9c344a3ebe1bb78a6315b32b16036b753a75"
+    },
+    {
+      "path": "fit-04/parts/parts/near-foot.png",
+      "bytes": 43429,
+      "sha256": "8646b5db2d71e83294386ad142d5ca2aee1a998e1ce9ba1f48128f7083f25a6b"
+    },
+    {
+      "path": "fit-04/parts/parts/near-shin.png",
+      "bytes": 67311,
+      "sha256": "86a206497085a29423c9814bd0e7cb36724cc16d779119a04675fb0690fd04d8"
+    },
+    {
+      "path": "fit-04/parts/parts/near-thigh.png",
+      "bytes": 90004,
+      "sha256": "43f4dd1663f26372dc4ebb97745581702e783752711c53efeeee0990c979736a"
+    },
+    {
+      "path": "fit-04/parts/parts/near-wing-flight.png",
+      "bytes": 444762,
+      "sha256": "cb1c8e53f1121a62a3f65f7dad3a87d0de15a690e31e90c65f488ce91f20956b"
+    },
+    {
+      "path": "fit-04/parts/parts/near-wing-shoulder.png",
+      "bytes": 135642,
+      "sha256": "03485cb59e65ff611c22d26f3a3a262794eb9a9b51bf23159c90eb223eab0017"
+    },
+    {
+      "path": "fit-04/parts/parts/neck-lower.png",
+      "bytes": 98743,
+      "sha256": "26401fb788ea94420c960867f02135df6803f4327c669f4eee0f048526bc41f8"
+    },
+    {
+      "path": "fit-04/parts/parts/neck-upper.png",
+      "bytes": 61058,
+      "sha256": "f9470d020d9cb84cc2e61b094534ceebf181e59bbc5da9298a015616b83f86da"
+    },
+    {
+      "path": "fit-04/parts/parts/tail.png",
+      "bytes": 155927,
+      "sha256": "b51568413e3617228cd7d5f926208622e03be77e72a654a9728c18eee70c024a"
+    },
+    {
+      "path": "fit-04/parts/receipt.json",
+      "bytes": 4684,
+      "sha256": "b7ad645fb7fbd207af2f6293c898f55cfd9de043a4483389a8f5a520588328bb"
+    },
+    {
+      "path": "fit-04/pre-split-binding.json",
+      "bytes": 2331510,
+      "sha256": "df134050f579d48b007408dc6dd04ba862efaafb95df83598e9307b1adeb36c6"
+    },
+    {
+      "path": "fit-04/receipt.json",
+      "bytes": 2410,
+      "sha256": "64441619ff4b573fda7c288c67c47ed78b48b5cf5f182cfd1fb0185992053120"
+    },
+    {
+      "path": "fit-04/record.json",
+      "bytes": 6370,
+      "sha256": "52eed5ad84c212f0d638f0b6c260af048cd1fc2dbd208f914aa8704fc79dc1c4"
+    },
+    {
+      "path": "fit-05/binding.json",
+      "bytes": 3326263,
+      "sha256": "f37cae2fc40e342ac7814533642470638e4d6dbb40cc8c5d0b74827b59944b82"
+    },
+    {
+      "path": "fit-05/declaration.json",
+      "bytes": 1929,
+      "sha256": "8d9606fdc5b14c59ccc54412c47f5e4328733606ad0341b1112a9b8fd0f6c192"
+    },
+    {
+      "path": "fit-05/intake-provenance.json",
+      "bytes": 3217,
+      "sha256": "90abc34eea53e12d388ac536e3ef466dedbf777d360ed93c4df17050ce371f4c"
+    },
+    {
+      "path": "fit-05/label-authoring-receipt.json",
+      "bytes": 601,
+      "sha256": "42b738d2cb7169d18823b44e41c2683a09ac9d141096d4a780892d3e86008f09"
+    },
+    {
+      "path": "fit-05/labels.png",
+      "bytes": 55976,
+      "sha256": "31233bfcc52e1a011d781aadd2ddb9a45864ef8de1c625e6ffe52868eee19bc7"
+    },
+    {
+      "path": "fit-05/parts/atlas/eagle.json",
+      "bytes": 7062,
+      "sha256": "d88e54b039724cda7ef4dc5382d033cc8496ab432a8ab0315594fc078218ae91"
+    },
+    {
+      "path": "fit-05/parts/atlas/eagle.png",
+      "bytes": 1657215,
+      "sha256": "646ff23d816d3508e53e00bcc880abb288660e385fd05cc454773e415b47b03f"
+    },
+    {
+      "path": "fit-05/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "6dbc062c7b7df7e133ed18b77c723c86290d335babc397a0ce6a6b975db02dc6"
+    },
+    {
+      "path": "fit-05/parts/binding.json",
+      "bytes": 5862,
+      "sha256": "c57a76cefa3a97ab1ff4c00d94f82d0ca5907b165bc77a111f138ab4774a5bcb"
+    },
+    {
+      "path": "fit-05/parts/keyed.png",
+      "bytes": 1982442,
+      "sha256": "9fa51a95834205a5faf850b98ea60e77f57da16b1d4dbdb3669c55d19a452735"
+    },
+    {
+      "path": "fit-05/parts/manifest.json",
+      "bytes": 2847,
+      "sha256": "6e01287b095e85ebe4051e5601e5bbb7ff1b9d2ca3fb98917d16c3e9635a40f0"
+    },
+    {
+      "path": "fit-05/parts/ownership.png",
+      "bytes": 213196,
+      "sha256": "90839b78c54bea910d08585bd86eca2260d2b612c0ea8239c63978124257317c"
+    },
+    {
+      "path": "fit-05/parts/parts/beak.png",
+      "bytes": 24634,
+      "sha256": "a21ac2043c1d13352dec2a0f31964b70f7c9f1523def487125d72b316827bc3e"
+    },
+    {
+      "path": "fit-05/parts/parts/body.png",
+      "bytes": 72755,
+      "sha256": "58ab560bcdd948ea6f021b62edf42064ab6f7f997f3db13284a7718d0016ee5a"
+    },
+    {
+      "path": "fit-05/parts/parts/chest.png",
+      "bytes": 121998,
+      "sha256": "f5d371bf00a97b290ff4ae90f08223ac6c2e393ddeae5eab5b8632416aa6cd1f"
+    },
+    {
+      "path": "fit-05/parts/parts/far-foot.png",
+      "bytes": 43352,
+      "sha256": "0a4f6af4ef4a5896e95b5656e08f483217754cfe495ce22d1d2a9898cd0eb67a"
+    },
+    {
+      "path": "fit-05/parts/parts/far-shin.png",
+      "bytes": 47108,
+      "sha256": "f3aa3aa52ba8ad29ee4b9e1af12225162fdba7e9fb37221de575079621b5285d"
+    },
+    {
+      "path": "fit-05/parts/parts/far-thigh.png",
+      "bytes": 57060,
+      "sha256": "42eea51b64ddbc7fb94ac5cad3f37271e1de65b3d7df728af03f65f1fd237730"
+    },
+    {
+      "path": "fit-05/parts/parts/far-wing-flight.png",
+      "bytes": 269812,
+      "sha256": "c6b0e23dfa80162a9445500910346eeed70f9e3432f901beafc3caf270e88888"
+    },
+    {
+      "path": "fit-05/parts/parts/far-wing-shoulder.png",
+      "bytes": 124431,
+      "sha256": "5edb2d78ae2c6b70bbc96f5e393e7a6217915ccb4a4a624538e0eaf781070169"
+    },
+    {
+      "path": "fit-05/parts/parts/head.png",
+      "bytes": 103473,
+      "sha256": "309af0f001b63d3c7a6636ac42bc9c344a3ebe1bb78a6315b32b16036b753a75"
+    },
+    {
+      "path": "fit-05/parts/parts/near-foot.png",
+      "bytes": 43429,
+      "sha256": "8646b5db2d71e83294386ad142d5ca2aee1a998e1ce9ba1f48128f7083f25a6b"
+    },
+    {
+      "path": "fit-05/parts/parts/near-shin.png",
+      "bytes": 67311,
+      "sha256": "86a206497085a29423c9814bd0e7cb36724cc16d779119a04675fb0690fd04d8"
+    },
+    {
+      "path": "fit-05/parts/parts/near-thigh.png",
+      "bytes": 90004,
+      "sha256": "43f4dd1663f26372dc4ebb97745581702e783752711c53efeeee0990c979736a"
+    },
+    {
+      "path": "fit-05/parts/parts/near-wing-flight.png",
+      "bytes": 444762,
+      "sha256": "cb1c8e53f1121a62a3f65f7dad3a87d0de15a690e31e90c65f488ce91f20956b"
+    },
+    {
+      "path": "fit-05/parts/parts/near-wing-shoulder.png",
+      "bytes": 135642,
+      "sha256": "03485cb59e65ff611c22d26f3a3a262794eb9a9b51bf23159c90eb223eab0017"
+    },
+    {
+      "path": "fit-05/parts/parts/neck-lower.png",
+      "bytes": 98743,
+      "sha256": "26401fb788ea94420c960867f02135df6803f4327c669f4eee0f048526bc41f8"
+    },
+    {
+      "path": "fit-05/parts/parts/neck-upper.png",
+      "bytes": 61058,
+      "sha256": "f9470d020d9cb84cc2e61b094534ceebf181e59bbc5da9298a015616b83f86da"
+    },
+    {
+      "path": "fit-05/parts/parts/tail.png",
+      "bytes": 155927,
+      "sha256": "b51568413e3617228cd7d5f926208622e03be77e72a654a9728c18eee70c024a"
+    },
+    {
+      "path": "fit-05/parts/receipt.json",
+      "bytes": 4684,
+      "sha256": "f715ee5d438d063208eaf8834178a78ca7a90f2128f1504a1e9927738e053bb3"
+    },
+    {
+      "path": "fit-05/pre-split-binding.json",
+      "bytes": 2331439,
+      "sha256": "c0f4200e7f27c48c1ffcc730ef910ac6470e14e0508f63c934c3f1c2002dae49"
+    },
+    {
+      "path": "fit-05/receipt.json",
+      "bytes": 2410,
+      "sha256": "1a72f9d6acf4bef689793fa8aa037954f401a538de0d8c5bf428ac11255fd09b"
+    },
+    {
+      "path": "fit-05/record.json",
+      "bytes": 6370,
+      "sha256": "82f3fc0eccf7ebc2d359dce42152bbcd61e9319d8c302b42def8a83b83799bf1"
+    },
+    {
+      "path": "fit-06/binding.json",
+      "bytes": 3305115,
+      "sha256": "4114c74869cf0fc25e70bd9989e9b9d2d45d0815ce5f6c8e93f6117198967b43"
+    },
+    {
+      "path": "fit-06/declaration.json",
+      "bytes": 1929,
+      "sha256": "ed810ec31bc7f91da3e813fcfb64b892ef116b185279ad77781ee6c8028c4f9d"
+    },
+    {
+      "path": "fit-06/intake-provenance.json",
+      "bytes": 12781,
+      "sha256": "9ed86e1e919a6d4651c4d639f36bfed8e8ce6c16f36a50dbc16ed5a75da8e5e8"
+    },
+    {
+      "path": "fit-06/label-authoring-receipt.json",
+      "bytes": 601,
+      "sha256": "2f5b8b31bba94e5206a0d4a2e4ed34b3f1d12c8c99616e1bc1bfb07a6b36cadd"
+    },
+    {
+      "path": "fit-06/labels.png",
+      "bytes": 55191,
+      "sha256": "9cdc3e0846de4b9ecc4cdd31fd1180cca1d8161f50c82184b22e99564245b308"
+    },
+    {
+      "path": "fit-06/parts/atlas/eagle.json",
+      "bytes": 7062,
+      "sha256": "25b9eec43806366934c9f9a0a900c391d4595a00f501b348a9724fa8ea4032eb"
+    },
+    {
+      "path": "fit-06/parts/atlas/eagle.png",
+      "bytes": 1655845,
+      "sha256": "391f274c5f23b1a4c599db1d07fe11ab4e57dfd7b9e9b3d41bb0b802cee5bc58"
+    },
+    {
+      "path": "fit-06/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "7fbdbcaf91f4592b184bda36b4dda239076e2b886cc87455398c28d7a8a319f2"
+    },
+    {
+      "path": "fit-06/parts/binding.json",
+      "bytes": 5862,
+      "sha256": "79ff68893804554c93460fdcb0b4fc6d0984203cff842e139b2e0627da4ef9ac"
+    },
+    {
+      "path": "fit-06/parts/keyed.png",
+      "bytes": 1982442,
+      "sha256": "9fa51a95834205a5faf850b98ea60e77f57da16b1d4dbdb3669c55d19a452735"
+    },
+    {
+      "path": "fit-06/parts/manifest.json",
+      "bytes": 2847,
+      "sha256": "a05d03506ebdf80bf05072b67b49e3b0448328743e5610cb7892e5e6723686d5"
+    },
+    {
+      "path": "fit-06/parts/ownership.png",
+      "bytes": 212241,
+      "sha256": "964c3ecf59fc3a80005bef22e93421222144025094c8d2bdad8f6beed3118b7e"
+    },
+    {
+      "path": "fit-06/parts/parts/beak.png",
+      "bytes": 24634,
+      "sha256": "a21ac2043c1d13352dec2a0f31964b70f7c9f1523def487125d72b316827bc3e"
+    },
+    {
+      "path": "fit-06/parts/parts/body.png",
+      "bytes": 53519,
+      "sha256": "6a1942e9f1169110d2e630dc9133fdfcccafdd9e043e4e2376c5317b2b36052d"
+    },
+    {
+      "path": "fit-06/parts/parts/chest.png",
+      "bytes": 121998,
+      "sha256": "f5d371bf00a97b290ff4ae90f08223ac6c2e393ddeae5eab5b8632416aa6cd1f"
+    },
+    {
+      "path": "fit-06/parts/parts/far-foot.png",
+      "bytes": 43352,
+      "sha256": "0a4f6af4ef4a5896e95b5656e08f483217754cfe495ce22d1d2a9898cd0eb67a"
+    },
+    {
+      "path": "fit-06/parts/parts/far-shin.png",
+      "bytes": 49385,
+      "sha256": "ca3847f3865ace4d6c9b48f67b68a1ba2c09fe12ab41e6853fee06a6e72b5105"
+    },
+    {
+      "path": "fit-06/parts/parts/far-thigh.png",
+      "bytes": 59106,
+      "sha256": "6c726bde020a8a23d012b3f26ed6f6e9ef0a443c9caad79a49ef39fc90b6a266"
+    },
+    {
+      "path": "fit-06/parts/parts/far-wing-flight.png",
+      "bytes": 272126,
+      "sha256": "afa2446001aa5c0952e7ec5b4e010026514ea856e8ca167361360bed994f6c42"
+    },
+    {
+      "path": "fit-06/parts/parts/far-wing-shoulder.png",
+      "bytes": 124431,
+      "sha256": "5edb2d78ae2c6b70bbc96f5e393e7a6217915ccb4a4a624538e0eaf781070169"
+    },
+    {
+      "path": "fit-06/parts/parts/head.png",
+      "bytes": 103473,
+      "sha256": "309af0f001b63d3c7a6636ac42bc9c344a3ebe1bb78a6315b32b16036b753a75"
+    },
+    {
+      "path": "fit-06/parts/parts/near-foot.png",
+      "bytes": 43429,
+      "sha256": "8646b5db2d71e83294386ad142d5ca2aee1a998e1ce9ba1f48128f7083f25a6b"
+    },
+    {
+      "path": "fit-06/parts/parts/near-shin.png",
+      "bytes": 69639,
+      "sha256": "7cbc80cf9e9f4cbf50601db1c1142ceb58fe8b0d79c7e8031d52bf5d84952922"
+    },
+    {
+      "path": "fit-06/parts/parts/near-thigh.png",
+      "bytes": 90691,
+      "sha256": "ee2fedc3be337b965b9f2fcaccfe502074430c883d152cb5c25262d887f63efc"
+    },
+    {
+      "path": "fit-06/parts/parts/near-wing-flight.png",
+      "bytes": 452233,
+      "sha256": "b16f49846a346a53d5bd9ecf3e1920a8cdf8fc4d16e7944401cb75f2e5437ae7"
+    },
+    {
+      "path": "fit-06/parts/parts/near-wing-shoulder.png",
+      "bytes": 135642,
+      "sha256": "03485cb59e65ff611c22d26f3a3a262794eb9a9b51bf23159c90eb223eab0017"
+    },
+    {
+      "path": "fit-06/parts/parts/neck-lower.png",
+      "bytes": 98743,
+      "sha256": "26401fb788ea94420c960867f02135df6803f4327c669f4eee0f048526bc41f8"
+    },
+    {
+      "path": "fit-06/parts/parts/neck-upper.png",
+      "bytes": 61058,
+      "sha256": "f9470d020d9cb84cc2e61b094534ceebf181e59bbc5da9298a015616b83f86da"
+    },
+    {
+      "path": "fit-06/parts/parts/tail.png",
+      "bytes": 155927,
+      "sha256": "b51568413e3617228cd7d5f926208622e03be77e72a654a9728c18eee70c024a"
+    },
+    {
+      "path": "fit-06/parts/receipt.json",
+      "bytes": 4684,
+      "sha256": "9491aba572b2820d1884fae64327d15ac2c8f484892395fbcf547dc9b3ad8828"
+    },
+    {
+      "path": "fit-06/pre-split-binding.json",
+      "bytes": 2296248,
+      "sha256": "592d34bff13523ea1fbcb65effed7fc9034619321ed4ed3ea8b54895bd1c5d94"
+    },
+    {
+      "path": "fit-06/receipt.json",
+      "bytes": 2411,
+      "sha256": "53ca2772f4fcffe0bc77bec3e89c0c6061ca7d045935352c1d77dc5051aebce2"
+    },
+    {
+      "path": "fit-06/record.json",
+      "bytes": 6370,
+      "sha256": "bfbacfec4e83a0f030a0d271903ee229bab1ee864ee57f1e07a5cd60f6837a94"
+    },
+    {
+      "path": "fit-07/binding.json",
+      "bytes": 3291474,
+      "sha256": "e15cef31fc56d21c3da25724ae59486c20ce1e819327b4830496528e556ea45d"
+    },
+    {
+      "path": "fit-07/declaration.json",
+      "bytes": 1929,
+      "sha256": "a2c191af0539582d62240e8dd4c073743c0df2bf98176b9bb47bcae8f6771b9a"
+    },
+    {
+      "path": "fit-07/intake-provenance.json",
+      "bytes": 11804,
+      "sha256": "23dbdf2d976d80fc091577cd9e60b7ad3f5fd03202c3f020705442fd28424b1c"
+    },
+    {
+      "path": "fit-07/label-authoring-receipt.json",
+      "bytes": 601,
+      "sha256": "4359ba49b69dcdfc035c5d1e6655112c488fd4c0f32a32abb9a5f8caa02f4172"
+    },
+    {
+      "path": "fit-07/labels.png",
+      "bytes": 55286,
+      "sha256": "5a7440e08a00ef832814d8cab78c5f6cbaa99432c5ea6c03e258219d1d5d47f9"
+    },
+    {
+      "path": "fit-07/parts/atlas/eagle.json",
+      "bytes": 7062,
+      "sha256": "45eef81660af61b3df0b11a2e2f0a57aadbb8d13641c2efe2fa650f843943755"
+    },
+    {
+      "path": "fit-07/parts/atlas/eagle.png",
+      "bytes": 1655422,
+      "sha256": "17e5f346c652dfea47963c9f5a189bca10dac05974624a803b1dca123b52417b"
+    },
+    {
+      "path": "fit-07/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "67e6477ab37c1afa2aa572659757c7bde314fd3f4cd16b83338b874e43e1060c"
+    },
+    {
+      "path": "fit-07/parts/binding.json",
+      "bytes": 5862,
+      "sha256": "70b65638a4c50fbe1a671dec616017cd79692924b884d274ec8b2a66c8c72828"
+    },
+    {
+      "path": "fit-07/parts/keyed.png",
+      "bytes": 1982442,
+      "sha256": "9fa51a95834205a5faf850b98ea60e77f57da16b1d4dbdb3669c55d19a452735"
+    },
+    {
+      "path": "fit-07/parts/manifest.json",
+      "bytes": 2847,
+      "sha256": "2039eaf4a5d060a400e51b4378757d921591d08327469ab8a59575ef3947e16a"
+    },
+    {
+      "path": "fit-07/parts/ownership.png",
+      "bytes": 212341,
+      "sha256": "8f269898159bc190728e1181a281a6a27cfd046d79c1b8fcd60289e4f93fcab5"
+    },
+    {
+      "path": "fit-07/parts/parts/beak.png",
+      "bytes": 24634,
+      "sha256": "a21ac2043c1d13352dec2a0f31964b70f7c9f1523def487125d72b316827bc3e"
+    },
+    {
+      "path": "fit-07/parts/parts/body.png",
+      "bytes": 55442,
+      "sha256": "1780665a0642e456e6c59262c37ad129964fc28799e207045325f47c1229eb81"
+    },
+    {
+      "path": "fit-07/parts/parts/chest.png",
+      "bytes": 121998,
+      "sha256": "f5d371bf00a97b290ff4ae90f08223ac6c2e393ddeae5eab5b8632416aa6cd1f"
+    },
+    {
+      "path": "fit-07/parts/parts/far-foot.png",
+      "bytes": 43352,
+      "sha256": "0a4f6af4ef4a5896e95b5656e08f483217754cfe495ce22d1d2a9898cd0eb67a"
+    },
+    {
+      "path": "fit-07/parts/parts/far-shin.png",
+      "bytes": 49420,
+      "sha256": "fb417d30bd2b0fcea9ecbd26a2e5aa3315ce3dbe61ea88b775b8a8dd625e274b"
+    },
+    {
+      "path": "fit-07/parts/parts/far-thigh.png",
+      "bytes": 58182,
+      "sha256": "516e2edfe22c0229c644c358b87acb8512b51bdb25fed932d7df1dd228f8fe99"
+    },
+    {
+      "path": "fit-07/parts/parts/far-wing-flight.png",
+      "bytes": 272126,
+      "sha256": "afa2446001aa5c0952e7ec5b4e010026514ea856e8ca167361360bed994f6c42"
+    },
+    {
+      "path": "fit-07/parts/parts/far-wing-shoulder.png",
+      "bytes": 124431,
+      "sha256": "5edb2d78ae2c6b70bbc96f5e393e7a6217915ccb4a4a624538e0eaf781070169"
+    },
+    {
+      "path": "fit-07/parts/parts/head.png",
+      "bytes": 103473,
+      "sha256": "309af0f001b63d3c7a6636ac42bc9c344a3ebe1bb78a6315b32b16036b753a75"
+    },
+    {
+      "path": "fit-07/parts/parts/near-foot.png",
+      "bytes": 43429,
+      "sha256": "8646b5db2d71e83294386ad142d5ca2aee1a998e1ce9ba1f48128f7083f25a6b"
+    },
+    {
+      "path": "fit-07/parts/parts/near-shin.png",
+      "bytes": 69480,
+      "sha256": "638a4db53462bdf20a38ab169a820ea38d6db0d4ba8b9cc4b4690dd520ea1ed7"
+    },
+    {
+      "path": "fit-07/parts/parts/near-thigh.png",
+      "bytes": 90077,
+      "sha256": "506dad8d8d6fa2352b2016560e9fd0a4ae8ed091859bf3ab4261781d2d8c4d52"
+    },
+    {
+      "path": "fit-07/parts/parts/near-wing-flight.png",
+      "bytes": 452233,
+      "sha256": "b16f49846a346a53d5bd9ecf3e1920a8cdf8fc4d16e7944401cb75f2e5437ae7"
+    },
+    {
+      "path": "fit-07/parts/parts/near-wing-shoulder.png",
+      "bytes": 135642,
+      "sha256": "03485cb59e65ff611c22d26f3a3a262794eb9a9b51bf23159c90eb223eab0017"
+    },
+    {
+      "path": "fit-07/parts/parts/neck-lower.png",
+      "bytes": 98743,
+      "sha256": "26401fb788ea94420c960867f02135df6803f4327c669f4eee0f048526bc41f8"
+    },
+    {
+      "path": "fit-07/parts/parts/neck-upper.png",
+      "bytes": 61058,
+      "sha256": "f9470d020d9cb84cc2e61b094534ceebf181e59bbc5da9298a015616b83f86da"
+    },
+    {
+      "path": "fit-07/parts/parts/tail.png",
+      "bytes": 155927,
+      "sha256": "b51568413e3617228cd7d5f926208622e03be77e72a654a9728c18eee70c024a"
+    },
+    {
+      "path": "fit-07/parts/receipt.json",
+      "bytes": 4684,
+      "sha256": "16c01ec3b4046f6b39d77cfc3910cfcf634c59be9ecbbf056d2c823a087d33af"
+    },
+    {
+      "path": "fit-07/pre-split-binding.json",
+      "bytes": 2298375,
+      "sha256": "d7d0a6a5dab17b147bfbee5015c50aa803ca159e118b48b7f2c1684d575c4b77"
+    },
+    {
+      "path": "fit-07/receipt.json",
+      "bytes": 2411,
+      "sha256": "581a259ca39c2c42fddcdea7c96079095dccf071da61d9ff30cbb7bc196bcfee"
+    },
+    {
+      "path": "fit-07/record.json",
+      "bytes": 6370,
+      "sha256": "319f1da5d2b6fb63656554a7d6ae4bf3e02797cd360a402302fefd11de7cb1e6"
+    },
+    {
+      "path": "fit-08/binding.json",
+      "bytes": 3297293,
+      "sha256": "50011172805af4288eefa1cbcc225d4bad107d4f0c2f4718de6e2046e7ecf7b2"
+    },
+    {
+      "path": "fit-08/declaration.json",
+      "bytes": 1929,
+      "sha256": "28f80c3a870c738ed642b34b8682cf02dbbb21fc5cfe182ca5b8e8e840feaef1"
+    },
+    {
+      "path": "fit-08/intake-provenance.json",
+      "bytes": 14239,
+      "sha256": "baacf7a0737e6f759cb02b69f0eeaa63c193ac6283084358a8fa7c538364a7e0"
+    },
+    {
+      "path": "fit-08/label-authoring-receipt.json",
+      "bytes": 601,
+      "sha256": "2a0429d3c3562b7f21ee14f0196b2cee26cba345b18eba8ac1254a93a79ca049"
+    },
+    {
+      "path": "fit-08/labels.png",
+      "bytes": 55186,
+      "sha256": "af01fcb9c64e5d4e52bf04e6c37a29991e089f45fcccf31e2348aa0d5bd594c1"
+    },
+    {
+      "path": "fit-08/parts/atlas/eagle.json",
+      "bytes": 7062,
+      "sha256": "dffc90cb92403590b72ecef92aa949281c636983357ef0a4f881b2d1c3d63583"
+    },
+    {
+      "path": "fit-08/parts/atlas/eagle.png",
+      "bytes": 1655085,
+      "sha256": "07291a7b900473c042343362da3968f3c7e6adcf5adbbac3d14ac61104659ede"
+    },
+    {
+      "path": "fit-08/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "c21a1f8964df8165d37bee4cf810f4838e898368e39e4a0820ff0932f778f878"
+    },
+    {
+      "path": "fit-08/parts/binding.json",
+      "bytes": 5862,
+      "sha256": "36e46937b24f383e95607b080b4191b397c39d3599426e4e3f525dae77175050"
+    },
+    {
+      "path": "fit-08/parts/keyed.png",
+      "bytes": 1982442,
+      "sha256": "9fa51a95834205a5faf850b98ea60e77f57da16b1d4dbdb3669c55d19a452735"
+    },
+    {
+      "path": "fit-08/parts/manifest.json",
+      "bytes": 2847,
+      "sha256": "ef91743588247f2ab01662169cb8456896e8679fb787a200d94d2ac0baf4a709"
+    },
+    {
+      "path": "fit-08/parts/ownership.png",
+      "bytes": 212200,
+      "sha256": "251e9303cbe115267d3a2f9bc4a3ed10cab9fbc6df96386031918a95898057a2"
+    },
+    {
+      "path": "fit-08/parts/parts/beak.png",
+      "bytes": 24634,
+      "sha256": "a21ac2043c1d13352dec2a0f31964b70f7c9f1523def487125d72b316827bc3e"
+    },
+    {
+      "path": "fit-08/parts/parts/body.png",
+      "bytes": 53519,
+      "sha256": "6a1942e9f1169110d2e630dc9133fdfcccafdd9e043e4e2376c5317b2b36052d"
+    },
+    {
+      "path": "fit-08/parts/parts/chest.png",
+      "bytes": 121998,
+      "sha256": "f5d371bf00a97b290ff4ae90f08223ac6c2e393ddeae5eab5b8632416aa6cd1f"
+    },
+    {
+      "path": "fit-08/parts/parts/far-foot.png",
+      "bytes": 43352,
+      "sha256": "0a4f6af4ef4a5896e95b5656e08f483217754cfe495ce22d1d2a9898cd0eb67a"
+    },
+    {
+      "path": "fit-08/parts/parts/far-shin.png",
+      "bytes": 49420,
+      "sha256": "fb417d30bd2b0fcea9ecbd26a2e5aa3315ce3dbe61ea88b775b8a8dd625e274b"
+    },
+    {
+      "path": "fit-08/parts/parts/far-thigh.png",
+      "bytes": 59501,
+      "sha256": "24ccb20e64617289873e19dbf5fd9765ce7627b4c827d0f1c69670f860f25991"
+    },
+    {
+      "path": "fit-08/parts/parts/far-wing-flight.png",
+      "bytes": 272126,
+      "sha256": "afa2446001aa5c0952e7ec5b4e010026514ea856e8ca167361360bed994f6c42"
+    },
+    {
+      "path": "fit-08/parts/parts/far-wing-shoulder.png",
+      "bytes": 124431,
+      "sha256": "5edb2d78ae2c6b70bbc96f5e393e7a6217915ccb4a4a624538e0eaf781070169"
+    },
+    {
+      "path": "fit-08/parts/parts/head.png",
+      "bytes": 103473,
+      "sha256": "309af0f001b63d3c7a6636ac42bc9c344a3ebe1bb78a6315b32b16036b753a75"
+    },
+    {
+      "path": "fit-08/parts/parts/near-foot.png",
+      "bytes": 43429,
+      "sha256": "8646b5db2d71e83294386ad142d5ca2aee1a998e1ce9ba1f48128f7083f25a6b"
+    },
+    {
+      "path": "fit-08/parts/parts/near-shin.png",
+      "bytes": 69480,
+      "sha256": "638a4db53462bdf20a38ab169a820ea38d6db0d4ba8b9cc4b4690dd520ea1ed7"
+    },
+    {
+      "path": "fit-08/parts/parts/near-thigh.png",
+      "bytes": 90240,
+      "sha256": "09d6a93ec825c7f55694f9277df7e7a85f703f317736486474262c0159cf5830"
+    },
+    {
+      "path": "fit-08/parts/parts/near-wing-flight.png",
+      "bytes": 452233,
+      "sha256": "b16f49846a346a53d5bd9ecf3e1920a8cdf8fc4d16e7944401cb75f2e5437ae7"
+    },
+    {
+      "path": "fit-08/parts/parts/near-wing-shoulder.png",
+      "bytes": 135642,
+      "sha256": "03485cb59e65ff611c22d26f3a3a262794eb9a9b51bf23159c90eb223eab0017"
+    },
+    {
+      "path": "fit-08/parts/parts/neck-lower.png",
+      "bytes": 98743,
+      "sha256": "26401fb788ea94420c960867f02135df6803f4327c669f4eee0f048526bc41f8"
+    },
+    {
+      "path": "fit-08/parts/parts/neck-upper.png",
+      "bytes": 61058,
+      "sha256": "f9470d020d9cb84cc2e61b094534ceebf181e59bbc5da9298a015616b83f86da"
+    },
+    {
+      "path": "fit-08/parts/parts/tail.png",
+      "bytes": 155927,
+      "sha256": "b51568413e3617228cd7d5f926208622e03be77e72a654a9728c18eee70c024a"
+    },
+    {
+      "path": "fit-08/parts/receipt.json",
+      "bytes": 4684,
+      "sha256": "916ada0b1e2aa0867e46cec4d357ba499bf2628779d1da76fde242fe659673cf"
+    },
+    {
+      "path": "fit-08/pre-split-binding.json",
+      "bytes": 2293023,
+      "sha256": "2bd3d9439700b89587da8a501328ce32c5f8c5a1148420909e8bab0e81ab5013"
+    },
+    {
+      "path": "fit-08/receipt.json",
+      "bytes": 2411,
+      "sha256": "0ad16e276666e727e060e3db934d4c431eac1d47078f0bb87c47b0793c45e6ae"
+    },
+    {
+      "path": "fit-08/record.json",
+      "bytes": 6370,
+      "sha256": "8ba1ca327f6c7f3aa0b54ee4b7bfed6de62168b4fec7d722eeca3806ac4eef91"
+    },
+    {
+      "path": "fit-09/binding.json",
+      "bytes": 1490310,
+      "sha256": "014df6b4ae69cc91680724da7593b271a8aee9e7fc147a7b0793fd60204d7d8e"
+    },
+    {
+      "path": "fit-09/declaration.json",
+      "bytes": 1929,
+      "sha256": "93ca0715124587a83b173c9215d194b7d9c3b920bee2bad434b3f9c3c4aaa054"
+    },
+    {
+      "path": "fit-09/intake-provenance.json",
+      "bytes": 14239,
+      "sha256": "cded7b3355e90b57676e053d3065bc3727040ab8536b7782f1f47997a9f08aaf"
+    },
+    {
+      "path": "fit-09/label-authoring-receipt.json",
+      "bytes": 601,
+      "sha256": "2a0429d3c3562b7f21ee14f0196b2cee26cba345b18eba8ac1254a93a79ca049"
+    },
+    {
+      "path": "fit-09/labels.png",
+      "bytes": 55186,
+      "sha256": "af01fcb9c64e5d4e52bf04e6c37a29991e089f45fcccf31e2348aa0d5bd594c1"
+    },
+    {
+      "path": "fit-09/parts/atlas/eagle.json",
+      "bytes": 7062,
+      "sha256": "dffc90cb92403590b72ecef92aa949281c636983357ef0a4f881b2d1c3d63583"
+    },
+    {
+      "path": "fit-09/parts/atlas/eagle.png",
+      "bytes": 1655085,
+      "sha256": "07291a7b900473c042343362da3968f3c7e6adcf5adbbac3d14ac61104659ede"
+    },
+    {
+      "path": "fit-09/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "c21a1f8964df8165d37bee4cf810f4838e898368e39e4a0820ff0932f778f878"
+    },
+    {
+      "path": "fit-09/parts/binding.json",
+      "bytes": 5862,
+      "sha256": "2c6b6e994171cbd42738aed24445a70720baa37de96ef46dc53799088de0b356"
+    },
+    {
+      "path": "fit-09/parts/keyed.png",
+      "bytes": 1982442,
+      "sha256": "9fa51a95834205a5faf850b98ea60e77f57da16b1d4dbdb3669c55d19a452735"
+    },
+    {
+      "path": "fit-09/parts/manifest.json",
+      "bytes": 2847,
+      "sha256": "ef91743588247f2ab01662169cb8456896e8679fb787a200d94d2ac0baf4a709"
+    },
+    {
+      "path": "fit-09/parts/ownership.png",
+      "bytes": 212200,
+      "sha256": "251e9303cbe115267d3a2f9bc4a3ed10cab9fbc6df96386031918a95898057a2"
+    },
+    {
+      "path": "fit-09/parts/parts/beak.png",
+      "bytes": 24634,
+      "sha256": "a21ac2043c1d13352dec2a0f31964b70f7c9f1523def487125d72b316827bc3e"
+    },
+    {
+      "path": "fit-09/parts/parts/body.png",
+      "bytes": 53519,
+      "sha256": "6a1942e9f1169110d2e630dc9133fdfcccafdd9e043e4e2376c5317b2b36052d"
+    },
+    {
+      "path": "fit-09/parts/parts/chest.png",
+      "bytes": 121998,
+      "sha256": "f5d371bf00a97b290ff4ae90f08223ac6c2e393ddeae5eab5b8632416aa6cd1f"
+    },
+    {
+      "path": "fit-09/parts/parts/far-foot.png",
+      "bytes": 43352,
+      "sha256": "0a4f6af4ef4a5896e95b5656e08f483217754cfe495ce22d1d2a9898cd0eb67a"
+    },
+    {
+      "path": "fit-09/parts/parts/far-shin.png",
+      "bytes": 49420,
+      "sha256": "fb417d30bd2b0fcea9ecbd26a2e5aa3315ce3dbe61ea88b775b8a8dd625e274b"
+    },
+    {
+      "path": "fit-09/parts/parts/far-thigh.png",
+      "bytes": 59501,
+      "sha256": "24ccb20e64617289873e19dbf5fd9765ce7627b4c827d0f1c69670f860f25991"
+    },
+    {
+      "path": "fit-09/parts/parts/far-wing-flight.png",
+      "bytes": 272126,
+      "sha256": "afa2446001aa5c0952e7ec5b4e010026514ea856e8ca167361360bed994f6c42"
+    },
+    {
+      "path": "fit-09/parts/parts/far-wing-shoulder.png",
+      "bytes": 124431,
+      "sha256": "5edb2d78ae2c6b70bbc96f5e393e7a6217915ccb4a4a624538e0eaf781070169"
+    },
+    {
+      "path": "fit-09/parts/parts/head.png",
+      "bytes": 103473,
+      "sha256": "309af0f001b63d3c7a6636ac42bc9c344a3ebe1bb78a6315b32b16036b753a75"
+    },
+    {
+      "path": "fit-09/parts/parts/near-foot.png",
+      "bytes": 43429,
+      "sha256": "8646b5db2d71e83294386ad142d5ca2aee1a998e1ce9ba1f48128f7083f25a6b"
+    },
+    {
+      "path": "fit-09/parts/parts/near-shin.png",
+      "bytes": 69480,
+      "sha256": "638a4db53462bdf20a38ab169a820ea38d6db0d4ba8b9cc4b4690dd520ea1ed7"
+    },
+    {
+      "path": "fit-09/parts/parts/near-thigh.png",
+      "bytes": 90240,
+      "sha256": "09d6a93ec825c7f55694f9277df7e7a85f703f317736486474262c0159cf5830"
+    },
+    {
+      "path": "fit-09/parts/parts/near-wing-flight.png",
+      "bytes": 452233,
+      "sha256": "b16f49846a346a53d5bd9ecf3e1920a8cdf8fc4d16e7944401cb75f2e5437ae7"
+    },
+    {
+      "path": "fit-09/parts/parts/near-wing-shoulder.png",
+      "bytes": 135642,
+      "sha256": "03485cb59e65ff611c22d26f3a3a262794eb9a9b51bf23159c90eb223eab0017"
+    },
+    {
+      "path": "fit-09/parts/parts/neck-lower.png",
+      "bytes": 98743,
+      "sha256": "26401fb788ea94420c960867f02135df6803f4327c669f4eee0f048526bc41f8"
+    },
+    {
+      "path": "fit-09/parts/parts/neck-upper.png",
+      "bytes": 61058,
+      "sha256": "f9470d020d9cb84cc2e61b094534ceebf181e59bbc5da9298a015616b83f86da"
+    },
+    {
+      "path": "fit-09/parts/parts/tail.png",
+      "bytes": 155927,
+      "sha256": "b51568413e3617228cd7d5f926208622e03be77e72a654a9728c18eee70c024a"
+    },
+    {
+      "path": "fit-09/parts/receipt.json",
+      "bytes": 4684,
+      "sha256": "bb9660ffd9e3955b140959c6619c9b1f0141682f337078bac2371e08d949ea87"
+    },
+    {
+      "path": "fit-09/pre-split-binding.json",
+      "bytes": 993933,
+      "sha256": "1a0f37a2b87c2b806908dd4d90d32134036246f7e5fce32a48178a48a9efd96f"
+    },
+    {
+      "path": "fit-09/receipt.json",
+      "bytes": 2418,
+      "sha256": "e8cf1dfb5b4eec8a902d0ccb0fd085116a4e46e013e207d5e10d2aeea1779cc1"
+    },
+    {
+      "path": "fit-09/record.json",
+      "bytes": 6370,
+      "sha256": "b33d70d20ef984edaa76c7ddc7c597284324478930cfa6d3483e419b4f8da38f"
+    },
+    {
+      "path": "fit-10/binding.json",
+      "bytes": 1905882,
+      "sha256": "46086934ca164632967b7e86447490d0cbd3b4ed8865cce06b1819f8ffba99c3"
+    },
+    {
+      "path": "fit-10/declaration.json",
+      "bytes": 1929,
+      "sha256": "0bd1d85c42b60622f479176ebd69fcd3409b04972dd270b051593382fd7a7892"
+    },
+    {
+      "path": "fit-10/intake-provenance.json",
+      "bytes": 14417,
+      "sha256": "78e7135de9cdb106b92f8b6994365965eb18e0a552006713ef82db140ca25352"
+    },
+    {
+      "path": "fit-10/label-authoring-receipt.json",
+      "bytes": 601,
+      "sha256": "2a0429d3c3562b7f21ee14f0196b2cee26cba345b18eba8ac1254a93a79ca049"
+    },
+    {
+      "path": "fit-10/labels.png",
+      "bytes": 55186,
+      "sha256": "af01fcb9c64e5d4e52bf04e6c37a29991e089f45fcccf31e2348aa0d5bd594c1"
+    },
+    {
+      "path": "fit-10/parts/atlas/eagle.json",
+      "bytes": 7062,
+      "sha256": "dffc90cb92403590b72ecef92aa949281c636983357ef0a4f881b2d1c3d63583"
+    },
+    {
+      "path": "fit-10/parts/atlas/eagle.png",
+      "bytes": 1655085,
+      "sha256": "07291a7b900473c042343362da3968f3c7e6adcf5adbbac3d14ac61104659ede"
+    },
+    {
+      "path": "fit-10/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "c21a1f8964df8165d37bee4cf810f4838e898368e39e4a0820ff0932f778f878"
+    },
+    {
+      "path": "fit-10/parts/binding.json",
+      "bytes": 5862,
+      "sha256": "657909dfa24a9f55dd0ded70595c002953f65128f7eeb3a550ed0213c8b6b1fa"
+    },
+    {
+      "path": "fit-10/parts/keyed.png",
+      "bytes": 1982442,
+      "sha256": "9fa51a95834205a5faf850b98ea60e77f57da16b1d4dbdb3669c55d19a452735"
+    },
+    {
+      "path": "fit-10/parts/manifest.json",
+      "bytes": 2847,
+      "sha256": "ef91743588247f2ab01662169cb8456896e8679fb787a200d94d2ac0baf4a709"
+    },
+    {
+      "path": "fit-10/parts/ownership.png",
+      "bytes": 212200,
+      "sha256": "251e9303cbe115267d3a2f9bc4a3ed10cab9fbc6df96386031918a95898057a2"
+    },
+    {
+      "path": "fit-10/parts/parts/beak.png",
+      "bytes": 24634,
+      "sha256": "a21ac2043c1d13352dec2a0f31964b70f7c9f1523def487125d72b316827bc3e"
+    },
+    {
+      "path": "fit-10/parts/parts/body.png",
+      "bytes": 53519,
+      "sha256": "6a1942e9f1169110d2e630dc9133fdfcccafdd9e043e4e2376c5317b2b36052d"
+    },
+    {
+      "path": "fit-10/parts/parts/chest.png",
+      "bytes": 121998,
+      "sha256": "f5d371bf00a97b290ff4ae90f08223ac6c2e393ddeae5eab5b8632416aa6cd1f"
+    },
+    {
+      "path": "fit-10/parts/parts/far-foot.png",
+      "bytes": 43352,
+      "sha256": "0a4f6af4ef4a5896e95b5656e08f483217754cfe495ce22d1d2a9898cd0eb67a"
+    },
+    {
+      "path": "fit-10/parts/parts/far-shin.png",
+      "bytes": 49420,
+      "sha256": "fb417d30bd2b0fcea9ecbd26a2e5aa3315ce3dbe61ea88b775b8a8dd625e274b"
+    },
+    {
+      "path": "fit-10/parts/parts/far-thigh.png",
+      "bytes": 59501,
+      "sha256": "24ccb20e64617289873e19dbf5fd9765ce7627b4c827d0f1c69670f860f25991"
+    },
+    {
+      "path": "fit-10/parts/parts/far-wing-flight.png",
+      "bytes": 272126,
+      "sha256": "afa2446001aa5c0952e7ec5b4e010026514ea856e8ca167361360bed994f6c42"
+    },
+    {
+      "path": "fit-10/parts/parts/far-wing-shoulder.png",
+      "bytes": 124431,
+      "sha256": "5edb2d78ae2c6b70bbc96f5e393e7a6217915ccb4a4a624538e0eaf781070169"
+    },
+    {
+      "path": "fit-10/parts/parts/head.png",
+      "bytes": 103473,
+      "sha256": "309af0f001b63d3c7a6636ac42bc9c344a3ebe1bb78a6315b32b16036b753a75"
+    },
+    {
+      "path": "fit-10/parts/parts/near-foot.png",
+      "bytes": 43429,
+      "sha256": "8646b5db2d71e83294386ad142d5ca2aee1a998e1ce9ba1f48128f7083f25a6b"
+    },
+    {
+      "path": "fit-10/parts/parts/near-shin.png",
+      "bytes": 69480,
+      "sha256": "638a4db53462bdf20a38ab169a820ea38d6db0d4ba8b9cc4b4690dd520ea1ed7"
+    },
+    {
+      "path": "fit-10/parts/parts/near-thigh.png",
+      "bytes": 90240,
+      "sha256": "09d6a93ec825c7f55694f9277df7e7a85f703f317736486474262c0159cf5830"
+    },
+    {
+      "path": "fit-10/parts/parts/near-wing-flight.png",
+      "bytes": 452233,
+      "sha256": "b16f49846a346a53d5bd9ecf3e1920a8cdf8fc4d16e7944401cb75f2e5437ae7"
+    },
+    {
+      "path": "fit-10/parts/parts/near-wing-shoulder.png",
+      "bytes": 135642,
+      "sha256": "03485cb59e65ff611c22d26f3a3a262794eb9a9b51bf23159c90eb223eab0017"
+    },
+    {
+      "path": "fit-10/parts/parts/neck-lower.png",
+      "bytes": 98743,
+      "sha256": "26401fb788ea94420c960867f02135df6803f4327c669f4eee0f048526bc41f8"
+    },
+    {
+      "path": "fit-10/parts/parts/neck-upper.png",
+      "bytes": 61058,
+      "sha256": "f9470d020d9cb84cc2e61b094534ceebf181e59bbc5da9298a015616b83f86da"
+    },
+    {
+      "path": "fit-10/parts/parts/tail.png",
+      "bytes": 155927,
+      "sha256": "b51568413e3617228cd7d5f926208622e03be77e72a654a9728c18eee70c024a"
+    },
+    {
+      "path": "fit-10/parts/receipt.json",
+      "bytes": 4684,
+      "sha256": "d57b277130e4104b2fff342b2eb2c6af29f13133b615756a5319b7cbfb465048"
+    },
+    {
+      "path": "fit-10/pre-split-binding.json",
+      "bytes": 1324984,
+      "sha256": "c9b9e1cccd17e46c0e1aa37ec845c2e8af1d7041697fcca9953b6ae682ea563e"
+    },
+    {
+      "path": "fit-10/receipt.json",
+      "bytes": 2601,
+      "sha256": "8291e382b34347015e9d9b1af39b7803c77717062ff0015b6b346215df0ed799"
+    },
+    {
+      "path": "fit-10/record.json",
+      "bytes": 6370,
+      "sha256": "bce3e9de7bf2cd7c8feb5b368f9ef2289eb1fb2e179daa76d4a1055de97da2c6"
+    },
+    {
+      "path": "fit-11/binding.json",
+      "bytes": 1652216,
+      "sha256": "3bb0c4c52e4aafb5086355f2a3ad2cbbdc706f6a1ea11bd711a8efbc9c03f01c"
+    },
+    {
+      "path": "fit-11/declaration.json",
+      "bytes": 1929,
+      "sha256": "3029b78af2b1f6d1c8c029c83402fc8d4ce5981315c37e87b12c9963d477e7ba"
+    },
+    {
+      "path": "fit-11/intake-provenance.json",
+      "bytes": 14418,
+      "sha256": "6c1ed36891fb826356f5c128dd598ac1487cb8410523f9f1613bfab7ea7b9224"
+    },
+    {
+      "path": "fit-11/label-authoring-receipt.json",
+      "bytes": 601,
+      "sha256": "2a0429d3c3562b7f21ee14f0196b2cee26cba345b18eba8ac1254a93a79ca049"
+    },
+    {
+      "path": "fit-11/labels.png",
+      "bytes": 55186,
+      "sha256": "af01fcb9c64e5d4e52bf04e6c37a29991e089f45fcccf31e2348aa0d5bd594c1"
+    },
+    {
+      "path": "fit-11/parts/atlas/eagle.json",
+      "bytes": 7062,
+      "sha256": "dffc90cb92403590b72ecef92aa949281c636983357ef0a4f881b2d1c3d63583"
+    },
+    {
+      "path": "fit-11/parts/atlas/eagle.png",
+      "bytes": 1655085,
+      "sha256": "07291a7b900473c042343362da3968f3c7e6adcf5adbbac3d14ac61104659ede"
+    },
+    {
+      "path": "fit-11/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "c21a1f8964df8165d37bee4cf810f4838e898368e39e4a0820ff0932f778f878"
+    },
+    {
+      "path": "fit-11/parts/binding.json",
+      "bytes": 5862,
+      "sha256": "c064ae391d572de0bf7131c1d86be6ee537e6ceee40462f30a91b63e7321ab7f"
+    },
+    {
+      "path": "fit-11/parts/keyed.png",
+      "bytes": 1982442,
+      "sha256": "9fa51a95834205a5faf850b98ea60e77f57da16b1d4dbdb3669c55d19a452735"
+    },
+    {
+      "path": "fit-11/parts/manifest.json",
+      "bytes": 2847,
+      "sha256": "ef91743588247f2ab01662169cb8456896e8679fb787a200d94d2ac0baf4a709"
+    },
+    {
+      "path": "fit-11/parts/ownership.png",
+      "bytes": 212200,
+      "sha256": "251e9303cbe115267d3a2f9bc4a3ed10cab9fbc6df96386031918a95898057a2"
+    },
+    {
+      "path": "fit-11/parts/parts/beak.png",
+      "bytes": 24634,
+      "sha256": "a21ac2043c1d13352dec2a0f31964b70f7c9f1523def487125d72b316827bc3e"
+    },
+    {
+      "path": "fit-11/parts/parts/body.png",
+      "bytes": 53519,
+      "sha256": "6a1942e9f1169110d2e630dc9133fdfcccafdd9e043e4e2376c5317b2b36052d"
+    },
+    {
+      "path": "fit-11/parts/parts/chest.png",
+      "bytes": 121998,
+      "sha256": "f5d371bf00a97b290ff4ae90f08223ac6c2e393ddeae5eab5b8632416aa6cd1f"
+    },
+    {
+      "path": "fit-11/parts/parts/far-foot.png",
+      "bytes": 43352,
+      "sha256": "0a4f6af4ef4a5896e95b5656e08f483217754cfe495ce22d1d2a9898cd0eb67a"
+    },
+    {
+      "path": "fit-11/parts/parts/far-shin.png",
+      "bytes": 49420,
+      "sha256": "fb417d30bd2b0fcea9ecbd26a2e5aa3315ce3dbe61ea88b775b8a8dd625e274b"
+    },
+    {
+      "path": "fit-11/parts/parts/far-thigh.png",
+      "bytes": 59501,
+      "sha256": "24ccb20e64617289873e19dbf5fd9765ce7627b4c827d0f1c69670f860f25991"
+    },
+    {
+      "path": "fit-11/parts/parts/far-wing-flight.png",
+      "bytes": 272126,
+      "sha256": "afa2446001aa5c0952e7ec5b4e010026514ea856e8ca167361360bed994f6c42"
+    },
+    {
+      "path": "fit-11/parts/parts/far-wing-shoulder.png",
+      "bytes": 124431,
+      "sha256": "5edb2d78ae2c6b70bbc96f5e393e7a6217915ccb4a4a624538e0eaf781070169"
+    },
+    {
+      "path": "fit-11/parts/parts/head.png",
+      "bytes": 103473,
+      "sha256": "309af0f001b63d3c7a6636ac42bc9c344a3ebe1bb78a6315b32b16036b753a75"
+    },
+    {
+      "path": "fit-11/parts/parts/near-foot.png",
+      "bytes": 43429,
+      "sha256": "8646b5db2d71e83294386ad142d5ca2aee1a998e1ce9ba1f48128f7083f25a6b"
+    },
+    {
+      "path": "fit-11/parts/parts/near-shin.png",
+      "bytes": 69480,
+      "sha256": "638a4db53462bdf20a38ab169a820ea38d6db0d4ba8b9cc4b4690dd520ea1ed7"
+    },
+    {
+      "path": "fit-11/parts/parts/near-thigh.png",
+      "bytes": 90240,
+      "sha256": "09d6a93ec825c7f55694f9277df7e7a85f703f317736486474262c0159cf5830"
+    },
+    {
+      "path": "fit-11/parts/parts/near-wing-flight.png",
+      "bytes": 452233,
+      "sha256": "b16f49846a346a53d5bd9ecf3e1920a8cdf8fc4d16e7944401cb75f2e5437ae7"
+    },
+    {
+      "path": "fit-11/parts/parts/near-wing-shoulder.png",
+      "bytes": 135642,
+      "sha256": "03485cb59e65ff611c22d26f3a3a262794eb9a9b51bf23159c90eb223eab0017"
+    },
+    {
+      "path": "fit-11/parts/parts/neck-lower.png",
+      "bytes": 98743,
+      "sha256": "26401fb788ea94420c960867f02135df6803f4327c669f4eee0f048526bc41f8"
+    },
+    {
+      "path": "fit-11/parts/parts/neck-upper.png",
+      "bytes": 61058,
+      "sha256": "f9470d020d9cb84cc2e61b094534ceebf181e59bbc5da9298a015616b83f86da"
+    },
+    {
+      "path": "fit-11/parts/parts/tail.png",
+      "bytes": 155927,
+      "sha256": "b51568413e3617228cd7d5f926208622e03be77e72a654a9728c18eee70c024a"
+    },
+    {
+      "path": "fit-11/parts/receipt.json",
+      "bytes": 4684,
+      "sha256": "9daeabc1e3f44615db71cc0430af31074f9a3ba039aa67be07b27f7ab8b5adc2"
+    },
+    {
+      "path": "fit-11/pre-split-binding.json",
+      "bytes": 1141944,
+      "sha256": "166f7bec05faf61a1dd1e6eb319e1e7a7c88937ed6d5866a5c52dcc5c70c798a"
+    },
+    {
+      "path": "fit-11/receipt.json",
+      "bytes": 2597,
+      "sha256": "d34cb40001d7ccae05e2c1d791262e5986975a8867c58bd24d850b2b68206df6"
+    },
+    {
+      "path": "fit-11/record.json",
+      "bytes": 6370,
+      "sha256": "2fd7307c923ba76dd076acadc5953adae13e9a7a86f602aa0aca1d6a2fbe25aa"
+    },
+    {
+      "path": "fit-12/binding.json",
+      "bytes": 1473071,
+      "sha256": "2ca72744f94ad11896b15dcdc0261e177dd4016cea5e19d384bb98e0b8fba74f"
+    },
+    {
+      "path": "fit-12/declaration.json",
+      "bytes": 1929,
+      "sha256": "ad44f2793ff48eaeb58811debfc0b514bb7f81adff32fda03e2ffbe146e6a77d"
+    },
+    {
+      "path": "fit-12/intake-provenance.json",
+      "bytes": 14864,
+      "sha256": "e0679cbfaf9695f62e928d87c3e163cb577d3f0cd810ab125b981a7db5712fac"
+    },
+    {
+      "path": "fit-12/label-authoring-receipt.json",
+      "bytes": 601,
+      "sha256": "ffee13a7717eae5eff77e64ae37b84cf40431341e44e81a500f7b5199b92766d"
+    },
+    {
+      "path": "fit-12/labels.png",
+      "bytes": 55091,
+      "sha256": "66f75a3c56760f750b5d023b54eab085ed3a5e646902ef559f9dda4fd4271ab6"
+    },
+    {
+      "path": "fit-12/parts/atlas/eagle.json",
+      "bytes": 7062,
+      "sha256": "dffc90cb92403590b72ecef92aa949281c636983357ef0a4f881b2d1c3d63583"
+    },
+    {
+      "path": "fit-12/parts/atlas/eagle.png",
+      "bytes": 1654281,
+      "sha256": "b77d7b20a1dd776f53ee92c4a8e253af37a70214501a571a57d0ed40bb301137"
+    },
+    {
+      "path": "fit-12/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "d63efa072c86e443838657cb7492c2a5cc0ee39068e4a5fc15b3ce9fccbe9b9b"
+    },
+    {
+      "path": "fit-12/parts/binding.json",
+      "bytes": 5862,
+      "sha256": "4c876d6cdf2466c8c903776f3d01825010a0392e561ffca5d53bb654be0809bc"
+    },
+    {
+      "path": "fit-12/parts/keyed.png",
+      "bytes": 1982442,
+      "sha256": "9fa51a95834205a5faf850b98ea60e77f57da16b1d4dbdb3669c55d19a452735"
+    },
+    {
+      "path": "fit-12/parts/manifest.json",
+      "bytes": 2847,
+      "sha256": "5f8497a2eb1abe849cf2e965710bd9723d6e5880026cacc570404bd25c8ef30f"
+    },
+    {
+      "path": "fit-12/parts/ownership.png",
+      "bytes": 211591,
+      "sha256": "a625b9f1573681d8afba900c0816c390506f8b69a55d93209e25ca9ff41ba8fa"
+    },
+    {
+      "path": "fit-12/parts/parts/beak.png",
+      "bytes": 24634,
+      "sha256": "a21ac2043c1d13352dec2a0f31964b70f7c9f1523def487125d72b316827bc3e"
+    },
+    {
+      "path": "fit-12/parts/parts/body.png",
+      "bytes": 47402,
+      "sha256": "64833bae82e5f96f4fb7ca23e31ecd2a7c25e9bb2dadc3b91b38890da8c0067a"
+    },
+    {
+      "path": "fit-12/parts/parts/chest.png",
+      "bytes": 121998,
+      "sha256": "f5d371bf00a97b290ff4ae90f08223ac6c2e393ddeae5eab5b8632416aa6cd1f"
+    },
+    {
+      "path": "fit-12/parts/parts/far-foot.png",
+      "bytes": 43352,
+      "sha256": "0a4f6af4ef4a5896e95b5656e08f483217754cfe495ce22d1d2a9898cd0eb67a"
+    },
+    {
+      "path": "fit-12/parts/parts/far-shin.png",
+      "bytes": 49420,
+      "sha256": "fb417d30bd2b0fcea9ecbd26a2e5aa3315ce3dbe61ea88b775b8a8dd625e274b"
+    },
+    {
+      "path": "fit-12/parts/parts/far-thigh.png",
+      "bytes": 59501,
+      "sha256": "24ccb20e64617289873e19dbf5fd9765ce7627b4c827d0f1c69670f860f25991"
+    },
+    {
+      "path": "fit-12/parts/parts/far-wing-flight.png",
+      "bytes": 272126,
+      "sha256": "afa2446001aa5c0952e7ec5b4e010026514ea856e8ca167361360bed994f6c42"
+    },
+    {
+      "path": "fit-12/parts/parts/far-wing-shoulder.png",
+      "bytes": 124431,
+      "sha256": "5edb2d78ae2c6b70bbc96f5e393e7a6217915ccb4a4a624538e0eaf781070169"
+    },
+    {
+      "path": "fit-12/parts/parts/head.png",
+      "bytes": 103473,
+      "sha256": "309af0f001b63d3c7a6636ac42bc9c344a3ebe1bb78a6315b32b16036b753a75"
+    },
+    {
+      "path": "fit-12/parts/parts/near-foot.png",
+      "bytes": 43429,
+      "sha256": "8646b5db2d71e83294386ad142d5ca2aee1a998e1ce9ba1f48128f7083f25a6b"
+    },
+    {
+      "path": "fit-12/parts/parts/near-shin.png",
+      "bytes": 69480,
+      "sha256": "638a4db53462bdf20a38ab169a820ea38d6db0d4ba8b9cc4b4690dd520ea1ed7"
+    },
+    {
+      "path": "fit-12/parts/parts/near-thigh.png",
+      "bytes": 90240,
+      "sha256": "09d6a93ec825c7f55694f9277df7e7a85f703f317736486474262c0159cf5830"
+    },
+    {
+      "path": "fit-12/parts/parts/near-wing-flight.png",
+      "bytes": 452233,
+      "sha256": "b16f49846a346a53d5bd9ecf3e1920a8cdf8fc4d16e7944401cb75f2e5437ae7"
+    },
+    {
+      "path": "fit-12/parts/parts/near-wing-shoulder.png",
+      "bytes": 135642,
+      "sha256": "03485cb59e65ff611c22d26f3a3a262794eb9a9b51bf23159c90eb223eab0017"
+    },
+    {
+      "path": "fit-12/parts/parts/neck-lower.png",
+      "bytes": 98743,
+      "sha256": "26401fb788ea94420c960867f02135df6803f4327c669f4eee0f048526bc41f8"
+    },
+    {
+      "path": "fit-12/parts/parts/neck-upper.png",
+      "bytes": 61058,
+      "sha256": "f9470d020d9cb84cc2e61b094534ceebf181e59bbc5da9298a015616b83f86da"
+    },
+    {
+      "path": "fit-12/parts/parts/tail.png",
+      "bytes": 161305,
+      "sha256": "9500675d4ad940dec1d8fb3aaa81217357eb536f09908ffa90bd74d459634209"
+    },
+    {
+      "path": "fit-12/parts/receipt.json",
+      "bytes": 4684,
+      "sha256": "65a17c2d12f30584128f7f066e5f4937b81ba04428bd7076112f0ac8dfe38510"
+    },
+    {
+      "path": "fit-12/pre-split-binding.json",
+      "bytes": 986912,
+      "sha256": "e762016c17a21822008140e089a48e8b21e4211aa14461c71c31af16ba7c2f74"
+    },
+    {
+      "path": "fit-12/receipt.json",
+      "bytes": 2418,
+      "sha256": "7902b723c2cd1ef2aee4485d5d53506f0f089a87efe63a0566a5c9ea559edee0"
+    },
+    {
+      "path": "fit-12/record.json",
+      "bytes": 6370,
+      "sha256": "5327906d70d258adef8e40514643df9aa17516c98c11e328c2f2a3e9216683bb"
+    },
+    {
+      "path": "fold-diagnosis-02.json",
+      "bytes": 240123,
+      "sha256": "592a9ebeeb0b27b15b16b22dd295d6d3a908100d41c9b9cb6456d1187fd06bfe"
+    },
+    {
+      "path": "fold-diagnosis-02.sources.json",
+      "bytes": 3732,
+      "sha256": "19bd26aaea53cfba599adc2909ad444eae1af0da5b8fd9629eb72f56610802ec"
+    },
+    {
+      "path": "fold-diagnosis-03.json",
+      "bytes": 93895,
+      "sha256": "64f94b8345cb3a8e617a3b277350e85546acefab6e9caf0b344d391cff2e7c12"
+    },
+    {
+      "path": "fold-diagnosis-03.sources.json",
+      "bytes": 3732,
+      "sha256": "c3284f1308ba66ac4e78d9069c42d9c6f0405792f7ebd1a73922578616ad492d"
+    },
+    {
+      "path": "fold-diagnosis-09.json",
+      "bytes": 104305,
+      "sha256": "fa501f070add51d798b04c207227e53bee7b39ab7ccafa8d11ec190b62df8482"
+    },
+    {
+      "path": "fold-diagnosis-09.log",
+      "bytes": 954,
+      "sha256": "e6254460ae6a951cb03bce870534acedef19aea5d523474347091cbc1ff7203c"
+    },
+    {
+      "path": "fold-diagnosis-09.sources.json",
+      "bytes": 5656,
+      "sha256": "6f540c50cd917c392021b607ce09c81ba8517a24045947d831143841546d8ac8"
+    },
+    {
+      "path": "generation-receipt.json",
+      "bytes": 832,
+      "sha256": "bae64b2bdf4c930c29adfa00aeb9be0b479a554a43d92d265cbbb989034c068d"
+    },
+    {
+      "path": "HISTORY.md",
+      "bytes": 7454,
+      "sha256": "107f4da334aa25b8fc427604133e6a93bd16ac492b8689f974f845679f3d178c"
+    },
+    {
+      "path": "inner-leg-component-inventory-07.json",
+      "bytes": 2250,
+      "sha256": "e7424b27cbcb3f4a211ec5c733d0fa20aa33218e444cd0fac1ea70ed7ceb3fa8"
+    },
+    {
+      "path": "inner-leg-source-inspection.json",
+      "bytes": 297,
+      "sha256": "50737446f810229c11ba079cd19d780404b23ddac7a0334a8dcfba90c177a9f5"
+    },
+    {
+      "path": "inner-leg-source-inspection.png",
+      "bytes": 78924,
+      "sha256": "8470582fe029951787e06a2140ed8757ac0bd522345aa3a4f40dc9bbf3245af2"
+    },
+    {
+      "path": "intake-02.log",
+      "bytes": 318,
+      "sha256": "ff38e6099ef0e5e83d231623bf8871020e1c0fad11b9169e3788d934ddfb1b48"
+    },
+    {
+      "path": "intake-03.log",
+      "bytes": 318,
+      "sha256": "2ec551391a53344b1304d8a21d2aaa82e0f58fc6bb308e901feb9cd8e8b904e7"
+    },
+    {
+      "path": "intake-04.log",
+      "bytes": 318,
+      "sha256": "992d8fa2889c248b7cc2068eb569f733d29da93e5437db5551675000e4ff2bc3"
+    },
+    {
+      "path": "intake-05.log",
+      "bytes": 318,
+      "sha256": "80fb85128456c3bcd1967365fa10dd1cf48a0a2fea33ead8e3ef0b39cea98668"
+    },
+    {
+      "path": "intake-06.log",
+      "bytes": 318,
+      "sha256": "1f74eb02b675f9fc6d57b00a7d582027e7c3656e419861a0f62e2f6c8b5a0234"
+    },
+    {
+      "path": "intake-07.log",
+      "bytes": 318,
+      "sha256": "db9e6214870546ba8df6634e3eeb0d3310219213a4bdf3df997b659f1e19152c"
+    },
+    {
+      "path": "intake-08.log",
+      "bytes": 318,
+      "sha256": "ce0dae73ceac1e015ede9265e15787237154e4ea72397d11599d7e50dc4e1387"
+    },
+    {
+      "path": "intake-09.log",
+      "bytes": 318,
+      "sha256": "c54acc9d3995a6e476282774365c91adc579f365b587d761cdd832ba338b5dd1"
+    },
+    {
+      "path": "intake-10.log",
+      "bytes": 318,
+      "sha256": "182ba267bb1333ae3e39b61ea6e4ae1b1763a4215b25fcc28bb8e7d37198ee0d"
+    },
+    {
+      "path": "intake-11.log",
+      "bytes": 318,
+      "sha256": "225e5d30e131a6d75600cd4cd5e26649c38094bb4bfbf0f09f7ae216386b7228"
+    },
+    {
+      "path": "intake-12.log",
+      "bytes": 318,
+      "sha256": "4197d11cb229431d582a58aabad27ef0dda5eb050d3d84074ef341d73b97ee4c"
+    },
+    {
+      "path": "intake-mesh-09.mjs",
+      "bytes": 15919,
+      "sha256": "8d8a3a3223d01b2296f40fdcf0189dd266c52355307153d24d035d3d5ba3930f"
+    },
+    {
+      "path": "intake-mesh-10.mjs",
+      "bytes": 16200,
+      "sha256": "29ba0bbe573531e43b0558178f4556fc149c1fca9159fb66c175f627a1d998bc"
+    },
+    {
+      "path": "intake-mesh-11.mjs",
+      "bytes": 16184,
+      "sha256": "57041b5261de2c1daa38293d919b3a3cc6b7e5af413bd39d32d4ac5585d86660"
+    },
+    {
+      "path": "intake-ownership-07.mjs",
+      "bytes": 15405,
+      "sha256": "ae1955bc1acce626f1c9f7df1e4f5fd0959f13ebaf8f3b4c84ce5f0942e7be1e"
+    },
+    {
+      "path": "intake-ownership-08.mjs",
+      "bytes": 15700,
+      "sha256": "cec68955662834017ff0d02a8f3dd6569555650b69972a02dd3ab2ccca2fd2b1"
+    },
+    {
+      "path": "intake-tail-12.mjs",
+      "bytes": 16082,
+      "sha256": "a75dcd7c8584fcdcf07360fc927daa0429f30e8fc0147134d3981ac66bff2313"
+    },
+    {
+      "path": "intake-wing-correction-06.mjs",
+      "bytes": 15405,
+      "sha256": "ae1955bc1acce626f1c9f7df1e4f5fd0959f13ebaf8f3b4c84ce5f0942e7be1e"
+    },
+    {
+      "path": "leg-component-inventory-06.json",
+      "bytes": 2084,
+      "sha256": "391e04bb83eda4b6db88b3c27dab70476e496242bfca063e18f13f3a19ced5af"
+    },
+    {
+      "path": "mask-delta-03.json",
+      "bytes": 574,
+      "sha256": "6a25fa0700e993800f442fbfb5652eeb45d28188a339ab324cc12310174be8dc"
+    },
+    {
+      "path": "mask-delta-04-inventory.json",
+      "bytes": 1248,
+      "sha256": "6ea9ccb3b5869954a416ba56db379a1418ced7bb345b086be6c14dc9b22d0a15"
+    },
+    {
+      "path": "mask-delta-04-refusal.json",
+      "bytes": 392,
+      "sha256": "80f26c3a3e675814355840c2648027c500fefd2e0daf91978381c8aefdc3066e"
+    },
+    {
+      "path": "mask-delta-05.json",
+      "bytes": 573,
+      "sha256": "4e032f86bdc901d7f8a7af76d6fc8e5a6eeecaf59de4f9e069942ab8efcfdc45"
+    },
+    {
+      "path": "mask-delta-05.log",
+      "bytes": 439,
+      "sha256": "cdb539e5198a7b86968241c1981ee3dd2d8aa93b678860b99b6f5e84a834e615"
+    },
+    {
+      "path": "mask-delta-07.json",
+      "bytes": 613,
+      "sha256": "e70c8b914f9438b8951e9e71bd7703f72505f7604d40273935e41dd325931b3e"
+    },
+    {
+      "path": "mask-delta-08.json",
+      "bytes": 591,
+      "sha256": "1e241a77e45ac90a128c5bb989edd6691568a7e30b81a436b214082fc527a64b"
+    },
+    {
+      "path": "mask-delta-08.log",
+      "bytes": 451,
+      "sha256": "9102e21e7a0c2f574df352f09e656fef0c729790b8bf442625bfca27611a3afb"
+    },
+    {
+      "path": "mask-delta-12.json",
+      "bytes": 1192,
+      "sha256": "0f3988a8a9757a2351110d8a29b3d0d929211312d24681071d238b4c26f6bc2e"
+    },
+    {
+      "path": "mask-repair-03.json",
+      "bytes": 957,
+      "sha256": "bb2aa703b727abf049a23a7aa9d2fd79232af5b4a9adbe95b4fb08f5efefd35c"
+    },
+    {
+      "path": "mask-repair-04.json",
+      "bytes": 1358,
+      "sha256": "b908e0b2417b8098429dc65ef1f9d0eadd6d4e8371b3fbee2afc40e1d84e34fc"
+    },
+    {
+      "path": "mask-repair-05.json",
+      "bytes": 1538,
+      "sha256": "cf7cb8eba7c0db79567fe0a5132e8db41c8712c435bc37c4ea681b85ce6084e3"
+    },
+    {
+      "path": "mask-repair-06.json",
+      "bytes": 1099,
+      "sha256": "33561bb87265965dddcfc214b080302d7e6d4602901d113bec60eea86f65cf96"
+    },
+    {
+      "path": "mask-repair-07.json",
+      "bytes": 573,
+      "sha256": "7167d8094877c7b1213f3b2a2dece38fe824f04e2c058eb78bd1edb01a7ad547"
+    },
+    {
+      "path": "master.png",
+      "bytes": 1602781,
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "mesh-candidate-09.json",
+      "bytes": 990,
+      "sha256": "6fbf48b7a95a5c20a491fb384645de18dc15b2fe6f090f3652c713b6692029a2"
+    },
+    {
+      "path": "mesh-candidate-10.json",
+      "bytes": 646,
+      "sha256": "302520c4e5f6e27f1b3ca03e67205df86c5d6a4000dc121a5833983cd3e33e66"
+    },
+    {
+      "path": "mesh-candidate-11.json",
+      "bytes": 647,
+      "sha256": "0d2cca51d8aca9cf8e6f47a3670409246e2e1f8137d923390eb2529bb57a7006"
+    },
+    {
+      "path": "mesh-default-parity-01.json",
+      "bytes": 1613,
+      "sha256": "341e8d76c341690e8110f06172de216f897b6879c41f1e586547f4173575239c"
+    },
+    {
+      "path": "mesh-parity-09.json",
+      "bytes": 453,
+      "sha256": "da21eb7b68b6de62da28dd4cadcebe0b16e15ead3bff569b4b8ecf71c31208fa"
+    },
+    {
+      "path": "mesh-writer-before/build-paint-skin.mjs",
+      "bytes": 8014,
+      "sha256": "190133cbe97d99ea1bf61a644d19f6e64a3dad7fe07485a86ce4b53ad04c56b6"
+    },
+    {
+      "path": "mesh-writer-before/build-paint-skin.test.mjs",
+      "bytes": 439,
+      "sha256": "e760c3b369929fa8d6ebf4cb81f3f94915325f99b42c60949d462abaf8880cbd"
+    },
+    {
+      "path": "mesh-writer-before/manifest.json",
+      "bytes": 633,
+      "sha256": "f387a28da034a8d4ce406aee62bf83524d5b1c15b75c520b8397eb02d280c3f0"
+    },
+    {
+      "path": "mesh-writer-unit-01.execution.json",
+      "bytes": 1577,
+      "sha256": "2e4c5a7646d5ad80da8b46035427c0d0cc38cd0f03fc173ff4f875dfa27ecf5e"
+    },
+    {
+      "path": "native-02/battle-10s.webm",
+      "bytes": 6681619,
+      "sha256": "5928724fbd9789f31304fba09a3a25a37070b6337ab9b28e6a6eb71030a04a72"
+    },
+    {
+      "path": "native-02/report.json",
+      "bytes": 2266145,
+      "sha256": "69e0b51b7db2269c5b0d785e72cbca55722333867c4917df27ec9b28c5f75d82"
+    },
+    {
+      "path": "native-02/script.json",
+      "bytes": 537,
+      "sha256": "56a0f5a1afb91300eee727ddb40dcb01e0b2396ce00d97a5892a963a7e8acb45"
+    },
+    {
+      "path": "native-02/turn0-hit-approach-50.png",
+      "bytes": 1557032,
+      "sha256": "2bc9b96297fbe87ea6f4d476257b2d87f3ea2ce9bff8bbec6633942f65197b1a"
+    },
+    {
+      "path": "native-02/turn0-hit-impact.png",
+      "bytes": 990019,
+      "sha256": "1178df76e69665ec299e9147c191c4de28eaf16e368fc7d1f9e116bca7ceadbe"
+    },
+    {
+      "path": "native-02/turn0-hit-reaction-50.png",
+      "bytes": 1557637,
+      "sha256": "359779d0e7dffb2312212f1f0cdeb5c717dfe6cbde722d4392c1fb16378c889d"
+    },
+    {
+      "path": "native-02/turn0-hit-return-end.png",
+      "bytes": 1557620,
+      "sha256": "37aec68a31955c652e69564954687137b11cdd7f44c67ad8bdc0ce4ff1c0e45c"
+    },
+    {
+      "path": "native-02/turn1-dodge-approach-50.png",
+      "bytes": 1557032,
+      "sha256": "2bc9b96297fbe87ea6f4d476257b2d87f3ea2ce9bff8bbec6633942f65197b1a"
+    },
+    {
+      "path": "native-02/turn1-dodge-impact.png",
+      "bytes": 1559324,
+      "sha256": "5eab724f4e82933c03261e6f4fa455810a973a7bb56c9a9430ace4fe70b07a52"
+    },
+    {
+      "path": "native-02/turn1-dodge-reaction-50.png",
+      "bytes": 1560451,
+      "sha256": "6a7614ad26c9c1d3b1b1f59cf4d977fa50c07ed96bbd84828eecf15023ac3ed2"
+    },
+    {
+      "path": "native-02/turn1-dodge-return-end.png",
+      "bytes": 1557620,
+      "sha256": "37aec68a31955c652e69564954687137b11cdd7f44c67ad8bdc0ce4ff1c0e45c"
+    },
+    {
+      "path": "native-02/turn2-hit-approach-50.png",
+      "bytes": 1557032,
+      "sha256": "2bc9b96297fbe87ea6f4d476257b2d87f3ea2ce9bff8bbec6633942f65197b1a"
+    },
+    {
+      "path": "native-02/turn2-hit-impact.png",
+      "bytes": 990143,
+      "sha256": "f1020ce13cd9e747309380a9037b10ab0c6ebd17c5fe2492e4c81b1ac2ef82bf"
+    },
+    {
+      "path": "native-02/turn2-hit-reaction-50.png",
+      "bytes": 1557420,
+      "sha256": "e6b306eb24b035887570f0e32c8f43ac6a9f650be481fd2d47d031328e800a1c"
+    },
+    {
+      "path": "native-02/turn2-hit-return-end.png",
+      "bytes": 1557918,
+      "sha256": "6e76526179bcc36886eebb297789975ce936b20bddf1f67b10d6cddaaca3eabe"
+    },
+    {
+      "path": "native-02/world.json",
+      "bytes": 247,
+      "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
+    },
+    {
+      "path": "native-02-cpu-inspection.json",
+      "bytes": 2021,
+      "sha256": "37f95df4ea56cda34e208783b77d3017868f19c4aa30e9fd4ea259779900eafe"
+    },
+    {
+      "path": "native-02.log",
+      "bytes": 712,
+      "sha256": "524ee3a4d9849693bbe44401ced8c09d071f3fab474a94f726d942cdffec6f71"
+    },
+    {
+      "path": "native-03/battle-10s.webm",
+      "bytes": 6790474,
+      "sha256": "ab2445ffd7d285cfeced7b5a495ded04cd7c867e0eb4a8eb9bd928321c0063ea"
+    },
+    {
+      "path": "native-03/report.json",
+      "bytes": 2310878,
+      "sha256": "b7dcbffbda2f93b78d7b78f704c5e47c76bdff3cce5d69219dd6ab6b59da545a"
+    },
+    {
+      "path": "native-03/script.json",
+      "bytes": 537,
+      "sha256": "cb0cabe6ddd896ee535b1c6556a2f28ffee3e349a723c00413e9786cea3442dd"
+    },
+    {
+      "path": "native-03/turn0-hit-approach-50.png",
+      "bytes": 1556789,
+      "sha256": "f67f884edb86a7197ce5def9f7b6025460e910f46605771af40b453216bce372"
+    },
+    {
+      "path": "native-03/turn0-hit-impact.png",
+      "bytes": 989851,
+      "sha256": "43a881b9a533f44e9374d4524de0669d4c10f7dcd75293460cd760d9493a5fb1"
+    },
+    {
+      "path": "native-03/turn0-hit-reaction-50.png",
+      "bytes": 1557527,
+      "sha256": "ca7d42fd103b6c18e4b7269168b6dee5ac2e2688c67ec42c66c389a4d48e4ae1"
+    },
+    {
+      "path": "native-03/turn0-hit-return-end.png",
+      "bytes": 1557450,
+      "sha256": "b53bc50854841a8377d9671550195f7235e7b6e763ac625f36fc614dfbbf2b3a"
+    },
+    {
+      "path": "native-03/turn1-dodge-approach-50.png",
+      "bytes": 1556789,
+      "sha256": "f67f884edb86a7197ce5def9f7b6025460e910f46605771af40b453216bce372"
+    },
+    {
+      "path": "native-03/turn1-dodge-impact.png",
+      "bytes": 1558671,
+      "sha256": "acf50992af2beaae36033dc96bb6552ac281ca8cb17724b62cdb81acbf598d1b"
+    },
+    {
+      "path": "native-03/turn1-dodge-reaction-50.png",
+      "bytes": 1560206,
+      "sha256": "3d18f0647127691a85679af4fee76ca2143cbb03a6a4942ed8a45a3baff2700f"
+    },
+    {
+      "path": "native-03/turn1-dodge-return-end.png",
+      "bytes": 1557450,
+      "sha256": "b53bc50854841a8377d9671550195f7235e7b6e763ac625f36fc614dfbbf2b3a"
+    },
+    {
+      "path": "native-03/turn2-hit-approach-50.png",
+      "bytes": 1556789,
+      "sha256": "f67f884edb86a7197ce5def9f7b6025460e910f46605771af40b453216bce372"
+    },
+    {
+      "path": "native-03/turn2-hit-impact.png",
+      "bytes": 990046,
+      "sha256": "2c46deb044d641a4c0e8435f73e6393b85bc286dd4e41a555fa52a97654f2806"
+    },
+    {
+      "path": "native-03/turn2-hit-reaction-50.png",
+      "bytes": 1557216,
+      "sha256": "4761054d112cba94301877212b9e126b48782c3037335df92cf0e5b86715c8de"
+    },
+    {
+      "path": "native-03/turn2-hit-return-end.png",
+      "bytes": 1557687,
+      "sha256": "04c427a69f10cc651e63ad0cd602ed6815240adae46deea5b640c4e0372a51ef"
+    },
+    {
+      "path": "native-03/world.json",
+      "bytes": 247,
+      "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
+    },
+    {
+      "path": "native-03.log",
+      "bytes": 712,
+      "sha256": "8efb03d3dbdc17eb87e6e7eb444144798e912dad69b8d37f4c36697819474220"
+    },
+    {
+      "path": "native-04/battle-10s.webm",
+      "bytes": 6714771,
+      "sha256": "298b91b62737b15f9c81abaeaeadf4cae98f50f2af6e9ca18d1701ffebcd9359"
+    },
+    {
+      "path": "native-04/report.json",
+      "bytes": 2315161,
+      "sha256": "c8377fe54dac9bf8d7fef8847da3fa4b6d0a297265db5daaed7705c2660f2d81"
+    },
+    {
+      "path": "native-04/script.json",
+      "bytes": 537,
+      "sha256": "e953ad99e06c5df910534d1adf15f4394ae8cdef058001ae42decdd996e96a58"
+    },
+    {
+      "path": "native-04/turn0-hit-approach-50.png",
+      "bytes": 1556789,
+      "sha256": "f67f884edb86a7197ce5def9f7b6025460e910f46605771af40b453216bce372"
+    },
+    {
+      "path": "native-04/turn0-hit-impact.png",
+      "bytes": 989851,
+      "sha256": "43a881b9a533f44e9374d4524de0669d4c10f7dcd75293460cd760d9493a5fb1"
+    },
+    {
+      "path": "native-04/turn0-hit-reaction-50.png",
+      "bytes": 1557527,
+      "sha256": "ca7d42fd103b6c18e4b7269168b6dee5ac2e2688c67ec42c66c389a4d48e4ae1"
+    },
+    {
+      "path": "native-04/turn0-hit-return-end.png",
+      "bytes": 1557450,
+      "sha256": "b53bc50854841a8377d9671550195f7235e7b6e763ac625f36fc614dfbbf2b3a"
+    },
+    {
+      "path": "native-04/turn1-dodge-approach-50.png",
+      "bytes": 1556789,
+      "sha256": "f67f884edb86a7197ce5def9f7b6025460e910f46605771af40b453216bce372"
+    },
+    {
+      "path": "native-04/turn1-dodge-impact.png",
+      "bytes": 1558671,
+      "sha256": "acf50992af2beaae36033dc96bb6552ac281ca8cb17724b62cdb81acbf598d1b"
+    },
+    {
+      "path": "native-04/turn1-dodge-reaction-50.png",
+      "bytes": 1560206,
+      "sha256": "3d18f0647127691a85679af4fee76ca2143cbb03a6a4942ed8a45a3baff2700f"
+    },
+    {
+      "path": "native-04/turn1-dodge-return-end.png",
+      "bytes": 1557450,
+      "sha256": "b53bc50854841a8377d9671550195f7235e7b6e763ac625f36fc614dfbbf2b3a"
+    },
+    {
+      "path": "native-04/turn2-hit-approach-50.png",
+      "bytes": 1556789,
+      "sha256": "f67f884edb86a7197ce5def9f7b6025460e910f46605771af40b453216bce372"
+    },
+    {
+      "path": "native-04/turn2-hit-impact.png",
+      "bytes": 990046,
+      "sha256": "2c46deb044d641a4c0e8435f73e6393b85bc286dd4e41a555fa52a97654f2806"
+    },
+    {
+      "path": "native-04/turn2-hit-reaction-50.png",
+      "bytes": 1557216,
+      "sha256": "4761054d112cba94301877212b9e126b48782c3037335df92cf0e5b86715c8de"
+    },
+    {
+      "path": "native-04/turn2-hit-return-end.png",
+      "bytes": 1557687,
+      "sha256": "04c427a69f10cc651e63ad0cd602ed6815240adae46deea5b640c4e0372a51ef"
+    },
+    {
+      "path": "native-04/world.json",
+      "bytes": 247,
+      "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
+    },
+    {
+      "path": "native-04.log",
+      "bytes": 695,
+      "sha256": "63178645a92316b2bd0a1b7664833b104294147c3d748310dbebfc4fc8ed9b36"
+    },
+    {
+      "path": "native-05/battle-10s.webm",
+      "bytes": 6588699,
+      "sha256": "5d0c06afe9c357d18345f423f6d4c8745ceda6efa5ae6739f6bd6900388c89b8"
+    },
+    {
+      "path": "native-05/report.json",
+      "bytes": 2312935,
+      "sha256": "113e1aee6c71231bd57961fd1d498da847282889ab1024d09f234ab35b3692c8"
+    },
+    {
+      "path": "native-05/script.json",
+      "bytes": 537,
+      "sha256": "0191b9f324cd530d9e4f8e4ed7649fff717e6aed0b10e8d6da7990d53293613a"
+    },
+    {
+      "path": "native-05/turn0-hit-approach-50.png",
+      "bytes": 1556558,
+      "sha256": "1ca7db65f879d29765446299fd3c8ffb3368083748b40f660487db910f5a7ef5"
+    },
+    {
+      "path": "native-05/turn0-hit-impact.png",
+      "bytes": 989622,
+      "sha256": "23fb67609c067c4000346ae0e3375b075579156c81ee8c70d5e75e1c2a285fb4"
+    },
+    {
+      "path": "native-05/turn0-hit-reaction-50.png",
+      "bytes": 1557256,
+      "sha256": "32d55b1c2a083c1cda567f32fee2696ee2633abaaead13a0d6358653ab862cbd"
+    },
+    {
+      "path": "native-05/turn0-hit-return-end.png",
+      "bytes": 1557248,
+      "sha256": "413f9b44a3d28c6ccb8b605920b6d4fbcf019534b8c5df3aaacf158d1cba535d"
+    },
+    {
+      "path": "native-05/turn1-dodge-approach-50.png",
+      "bytes": 1556558,
+      "sha256": "1ca7db65f879d29765446299fd3c8ffb3368083748b40f660487db910f5a7ef5"
+    },
+    {
+      "path": "native-05/turn1-dodge-impact.png",
+      "bytes": 1558580,
+      "sha256": "6e3a5afee02119396844367d970bd35a72f53da03ada15e3ee9c9f39bb80c9c4"
+    },
+    {
+      "path": "native-05/turn1-dodge-reaction-50.png",
+      "bytes": 1559957,
+      "sha256": "92d59c3b42517cd939eccaef5ca1213a39ce0f4a881f8ccca77456c0fb004f42"
+    },
+    {
+      "path": "native-05/turn1-dodge-return-end.png",
+      "bytes": 1557248,
+      "sha256": "413f9b44a3d28c6ccb8b605920b6d4fbcf019534b8c5df3aaacf158d1cba535d"
+    },
+    {
+      "path": "native-05/turn2-hit-approach-50.png",
+      "bytes": 1556558,
+      "sha256": "1ca7db65f879d29765446299fd3c8ffb3368083748b40f660487db910f5a7ef5"
+    },
+    {
+      "path": "native-05/turn2-hit-impact.png",
+      "bytes": 989797,
+      "sha256": "2c6c41a40b408c81403be747237a8c454fb5b14e95e31bac7091e4b95f0c1a6d"
+    },
+    {
+      "path": "native-05/turn2-hit-reaction-50.png",
+      "bytes": 1557031,
+      "sha256": "8827d9f1d351122b7da3ee1052f688df0c564e5aeb3af92e22dfe68f66091d92"
+    },
+    {
+      "path": "native-05/turn2-hit-return-end.png",
+      "bytes": 1557336,
+      "sha256": "e5c68c4fd79621bf38c76dc568f5686f84db51e86a73414477721e1f5f61fbb1"
+    },
+    {
+      "path": "native-05/world.json",
+      "bytes": 247,
+      "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
+    },
+    {
+      "path": "native-05-right-cpu-diagnosis.json",
+      "bytes": 34221,
+      "sha256": "e62f07a5f8f1ac5a565c003eef4e054b75ddbff678a84bd6e7d059d706e48601"
+    },
+    {
+      "path": "native-05.log",
+      "bytes": 712,
+      "sha256": "7ba59d4c7b9f1826819b19ebc92b2dff9616ba37ff9c6e405cefdfa4fff2628d"
+    },
+    {
+      "path": "native-06/report.json",
+      "bytes": 200659,
+      "sha256": "6b359257da50b0901016c3dfdcbaefdd9083adc6cdc64a672d236679c2c113b8"
+    },
+    {
+      "path": "native-06/script.json",
+      "bytes": 537,
+      "sha256": "aef3b82e876261a0a0be2c45f1bc5c1cfe8f74adb32e3addd733d0df642816d6"
+    },
+    {
+      "path": "native-06/world.json",
+      "bytes": 247,
+      "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
+    },
+    {
+      "path": "native-06.log",
+      "bytes": 466,
+      "sha256": "25f9a7b39a1d234c0537fc4134b14bd22a22c2436469c77dfdb69d1292cd6aaf"
+    },
+    {
+      "path": "native-07/battle-10s.webm",
+      "bytes": 6627645,
+      "sha256": "bdb2ffd044f0c3612a513688dd9a779889af03423518b3702f52d95c30a8704e"
+    },
+    {
+      "path": "native-07/report.json",
+      "bytes": 2312630,
+      "sha256": "bd728ad07712790e600ef20263db570203894f413ed9824af621894768101965"
+    },
+    {
+      "path": "native-07/script.json",
+      "bytes": 537,
+      "sha256": "8621defe3ac5300e5e8808cdf35caf6ef58944d6ba79457fe46adce6c1f03632"
+    },
+    {
+      "path": "native-07/turn0-hit-approach-50.png",
+      "bytes": 1556619,
+      "sha256": "9f6b887a69ef53d157ed8e021c4438cf77a3b2710a173c24b4e297bff27a8572"
+    },
+    {
+      "path": "native-07/turn0-hit-impact.png",
+      "bytes": 989541,
+      "sha256": "37027f9a680739e164369f15118615dc9fe56dc54b1752a1bed51ebc51f65337"
+    },
+    {
+      "path": "native-07/turn0-hit-reaction-50.png",
+      "bytes": 1557316,
+      "sha256": "1a6f2c3d917e1030486711c9aa4c04c68e662f7dae48c3e55ce83be0a18dad8f"
+    },
+    {
+      "path": "native-07/turn0-hit-return-end.png",
+      "bytes": 1557154,
+      "sha256": "0b3b297f9ed86fb8f76ef34c0908a62e289e9105c3a4d5872d205d315ccfc59d"
+    },
+    {
+      "path": "native-07/turn1-dodge-approach-50.png",
+      "bytes": 1556619,
+      "sha256": "9f6b887a69ef53d157ed8e021c4438cf77a3b2710a173c24b4e297bff27a8572"
+    },
+    {
+      "path": "native-07/turn1-dodge-impact.png",
+      "bytes": 1558528,
+      "sha256": "be49211eec9d3578276b511b5af9e05c82485663a3f67a84db2a7b914b24d88a"
+    },
+    {
+      "path": "native-07/turn1-dodge-reaction-50.png",
+      "bytes": 1559952,
+      "sha256": "27687c320398db3ceb5915077377b449e61426aa069a48bac64df36c0efa5a08"
+    },
+    {
+      "path": "native-07/turn1-dodge-return-end.png",
+      "bytes": 1557154,
+      "sha256": "0b3b297f9ed86fb8f76ef34c0908a62e289e9105c3a4d5872d205d315ccfc59d"
+    },
+    {
+      "path": "native-07/turn2-hit-approach-50.png",
+      "bytes": 1556619,
+      "sha256": "9f6b887a69ef53d157ed8e021c4438cf77a3b2710a173c24b4e297bff27a8572"
+    },
+    {
+      "path": "native-07/turn2-hit-impact.png",
+      "bytes": 989708,
+      "sha256": "30f01132c4e9aa758a08244bf55a768c15e6da199e64a25c4d0104701b9b0484"
+    },
+    {
+      "path": "native-07/turn2-hit-reaction-50.png",
+      "bytes": 1557038,
+      "sha256": "3082791073a4d370abb47aa9988d72e92df5fb97cf1d55adb523c8a6a3a1d154"
+    },
+    {
+      "path": "native-07/turn2-hit-return-end.png",
+      "bytes": 1557271,
+      "sha256": "5d5c353748623db240e6c652cb6a48069ad1c6e223227675fcb0bb30a177ccf5"
+    },
+    {
+      "path": "native-07/world.json",
+      "bytes": 247,
+      "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
+    },
+    {
+      "path": "native-07.log",
+      "bytes": 184,
+      "sha256": "5042183659475a33e5d4abc25c404fb5334a182ea7ac9733f7f2665c332248ec"
+    },
+    {
+      "path": "native-script-02.json",
+      "bytes": 537,
+      "sha256": "56a0f5a1afb91300eee727ddb40dcb01e0b2396ce00d97a5892a963a7e8acb45"
+    },
+    {
+      "path": "native-script-03.json",
+      "bytes": 537,
+      "sha256": "cb0cabe6ddd896ee535b1c6556a2f28ffee3e349a723c00413e9786cea3442dd"
+    },
+    {
+      "path": "native-script-04.json",
+      "bytes": 537,
+      "sha256": "e953ad99e06c5df910534d1adf15f4394ae8cdef058001ae42decdd996e96a58"
+    },
+    {
+      "path": "native-script-05.json",
+      "bytes": 537,
+      "sha256": "0191b9f324cd530d9e4f8e4ed7649fff717e6aed0b10e8d6da7990d53293613a"
+    },
+    {
+      "path": "native-script-06.json",
+      "bytes": 537,
+      "sha256": "aef3b82e876261a0a0be2c45f1bc5c1cfe8f74adb32e3addd733d0df642816d6"
+    },
+    {
+      "path": "native-script-07.json",
+      "bytes": 537,
+      "sha256": "8621defe3ac5300e5e8808cdf35caf6ef58944d6ba79457fe46adce6c1f03632"
+    },
+    {
+      "path": "node-cost-breakdown-01.json",
+      "bytes": 64607,
+      "sha256": "6c5e24e2e4031fd02e7432f8504e5adbc5ad435825ffc9c978d3cbaecafe7f01"
+    },
+    {
+      "path": "node-cost-breakdown-01.log",
+      "bytes": 9419,
+      "sha256": "fc18f89ac783922f8ec968ddc46d8902ae3c774a4d05ff3bf9ae23e27259b41d"
+    },
+    {
+      "path": "node-cost-breakdown-01.mjs",
+      "bytes": 8256,
+      "sha256": "3fa02d7a5aa805487407f42514ec0a680f2a2f5c7e2d713b103ca36859a94153"
+    },
+    {
+      "path": "orientation-active-integration-01.log",
+      "bytes": 443,
+      "sha256": "cfb6206f664b1d7fd58dc5233f5b9b580237a275650ad4e5f247bfb9bed437fd"
+    },
+    {
+      "path": "orientation-active-unit-02.execution.json",
+      "bytes": 2399,
+      "sha256": "6ac940af142a7a85332d24041df0791c352372a3e75c59bb586a611768b0b567"
+    },
+    {
+      "path": "orientation-forward-integration-01.log",
+      "bytes": 749,
+      "sha256": "73dddaf57a1177236a2239ef2a26f22b95edfc218140b741b054caaa48a74ff4"
+    },
+    {
+      "path": "orientation-forward-test-history.log",
+      "bytes": 3103,
+      "sha256": "3de530c95b693cbf83bad2b3ce57700ff4a184cc10250da07e589a723e343af9"
+    },
+    {
+      "path": "PERFORMANCE_PROPOSAL.md",
+      "bytes": 1991,
+      "sha256": "0caf1d226f00f521ed3ece15e543d555a1098d76f200f5880de228446bef1314"
+    },
+    {
+      "path": "presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "probe-refusal-06.json",
+      "bytes": 53158,
+      "sha256": "ba401190665c1048d962c5bc7b693d9490f6bfb7a10265461a370558311ecfe8"
+    },
+    {
+      "path": "probe-refusal-06.log",
+      "bytes": 41761,
+      "sha256": "f6221b9009bb7f0cddc321f7d12bc3c619ec5ce11570c699d1db546d2b2c4a23"
+    },
+    {
+      "path": "probe-refusal-06.mjs",
+      "bytes": 1724,
+      "sha256": "a4db554c7548617c12f1a7da12bf67b2876babcbe50b29512739c0446a4b0050"
+    },
+    {
+      "path": "probe-refusal-06.sources.json",
+      "bytes": 29433,
+      "sha256": "e6b4d1608539ffac68b3fd11876d4e375c9bb5297eacd79c16f653f312a31d74"
+    },
+    {
+      "path": "probe-refusal-06.ts",
+      "bytes": 20561,
+      "sha256": "c889b90bd9ce653351943851e8b2eec1c751eabec8e3e29435efe952f00d89bf"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 8065,
+      "sha256": "5c0ec6be679dcd5191624416e49f236e5c4c7d12246302b455151c1cb3807219"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5183,
+      "sha256": "5261fb322e7664092aa71f5335af0cbf5ec19572d262da744f5b4abc45d0465c"
+    },
+    {
+      "path": "repair-inputs.json",
+      "bytes": 1799,
+      "sha256": "cd71c8b1d5b5a116724a0638e5e122e2d8fbd1203c4adcad02ddf3dc9b0ffad5"
+    },
+    {
+      "path": "result-native03.json",
+      "bytes": 2376,
+      "sha256": "bb84ca352dc8c4d546fb6407e885aaf38dc6a741fb971eed8a92aa78c32833be"
+    },
+    {
+      "path": "result.json",
+      "bytes": 2736,
+      "sha256": "45ad2f954419c161356cf6ea8e9605f1b88364289e0f23164eb9fb54c97274bb"
+    },
+    {
+      "path": "review-07.json",
+      "bytes": 546,
+      "sha256": "547566db7a7a16c989f6e1b46498ded54857db8011d7491a2f48bd9153d2f608"
+    },
+    {
+      "path": "review-sheet-02.png",
+      "bytes": 1414201,
+      "sha256": "75651a92982120baf74b1bf930912e8553427151aae2c10c5f389428070e1054"
+    },
+    {
+      "path": "review-sheet-07-receipt.json",
+      "bytes": 2044,
+      "sha256": "1f7e4aa3b059c8b8a185adbc77ddc12c648a06e04531c0e5b4677d06f4ffb01b"
+    },
+    {
+      "path": "review-sheet-07.png",
+      "bytes": 1412673,
+      "sha256": "9662842141fc36abff0bb95d1d2936935cdf91d0bcfe63a2ff1f554b514514c4"
+    },
+    {
+      "path": "review-sheet-receipt.json",
+      "bytes": 2070,
+      "sha256": "baceb32aad83b96a4822480e96ba458613181a21167bea266a1290ab19ad0d4b"
+    },
+    {
+      "path": "review-sheet.png",
+      "bytes": 1413505,
+      "sha256": "53016c61fee94c3cbc07901c32cd98a59b7bf8cfb5447061dfbeee4338417963"
+    },
+    {
+      "path": "rig-tests-01.log",
+      "bytes": 244,
+      "sha256": "52bfe79013766c06dd41dbaac4955ef6361d0b43d5e0d53f166cbf2d923c7e85"
+    },
+    {
+      "path": "s2-launch-01.log",
+      "bytes": 5445,
+      "sha256": "bf8f1f82b9835c5f9378ec7bc4cb24b1ba5c0dfe4904d670b1a088663b260c55"
+    },
+    {
+      "path": "s2-launch-02.log",
+      "bytes": 5448,
+      "sha256": "cb5c648e0bac79d88bbe256b0f284e8b7314e022ad1268d63d0475708d2c7fde"
+    },
+    {
+      "path": "signing-refusal-01.json",
+      "bytes": 468,
+      "sha256": "aa1749db7eac7631676d81c7c3a9bdf1e9040a0507a2b8367bce7eef36efb1af"
+    },
+    {
+      "path": "signing-refusal-02.json",
+      "bytes": 508,
+      "sha256": "7fcb8627d5a9ce6643da7f2d378ad792039f218a95f40a6b3f0b46bdf1f5125e"
+    },
+    {
+      "path": "signing-refusal-03.json",
+      "bytes": 390,
+      "sha256": "34d23f33ce31d380c3048e4c44c73dda2c32aba8a61bb230fbd3c50a45cb9c15"
+    },
+    {
+      "path": "solver-active-before-02/build-orientation-active.mjs",
+      "bytes": 4814,
+      "sha256": "ff11d59efb88e7520550bd6705bc5122bb2a77b5aa30516af844a3d116b83e85"
+    },
+    {
+      "path": "solver-active-before-02/manifest.json",
+      "bytes": 2477,
+      "sha256": "3f6fd36bc19f5f8ae1c836c795fc83cefa3a1fcaf153e7e98ae98ea69e89737d"
+    },
+    {
+      "path": "solver-active-before-02/orientation-active-build.json",
+      "bytes": 969,
+      "sha256": "78025710481ac940d5f54b28e52738922c99544f10a6ecc1036b67e6aea242e4"
+    },
+    {
+      "path": "solver-active-before-02/orientation-active-bytes.mjs",
+      "bytes": 13212,
+      "sha256": "1d0844e9c50d697586ef4eb2fd1de1d7d3a4ec80c2bb804002152b585866485b"
+    },
+    {
+      "path": "solver-active-before-02/orientation-active-integration.test.mjs",
+      "bytes": 3591,
+      "sha256": "1ac1360c5880e7b0e03ec65741f386c0ead270ddd1c8e22e008fba940468a0d2"
+    },
+    {
+      "path": "solver-active-before-02/orientation-active-reference.mjs",
+      "bytes": 2794,
+      "sha256": "534a5d4b555a1caa7b34dafdaf46086443303faa7bc5f8b6e384ee114f412206"
+    },
+    {
+      "path": "solver-active-before-02/orientation-active.c",
+      "bytes": 5149,
+      "sha256": "5105d3e2034116547991214a76292f4953aa31c57b951cf2adaf2f5cd7ac80bb"
+    },
+    {
+      "path": "solver-active-before-02/orientation-active.wasm",
+      "bytes": 4567,
+      "sha256": "b668cd9d513a21887427afeb62b702dc662f86731d7ab407d7007b3e3e9f6eff"
+    },
+    {
+      "path": "solver-active-before-02/wasm-orientation-active.mjs",
+      "bytes": 6846,
+      "sha256": "1db0f39f9d8596ff3a42139cd5278b56fa0b0936a9914bdd1b45c20992107590"
+    },
+    {
+      "path": "solver-active-before-02/wasm-orientation-active.test.mjs",
+      "bytes": 10478,
+      "sha256": "600baab84b33d1a3409021b9befb8944f6e71d7fd1901707ccfb21d183639e4c"
+    },
+    {
+      "path": "solver-before/arap-skin.mjs",
+      "bytes": 11820,
+      "sha256": "4e6a6e7d2c0a4c7d24174758373c707a85527a535d3a3516078764fe35eb4db4"
+    },
+    {
+      "path": "solver-before/arap-sweep-bytes.mjs",
+      "bytes": 5972,
+      "sha256": "aa430e622b613af414da991a1b464e434be5b26a5efe96f5d07e63756f8b72db"
+    },
+    {
+      "path": "solver-before/orientation-projector.mjs",
+      "bytes": 6212,
+      "sha256": "d84dc929eef8743a842388cf1a92b9631cc39bd232fe8954a7308d169a519d21"
+    },
+    {
+      "path": "solver-before/pose-refusal.mjs",
+      "bytes": 392,
+      "sha256": "f91e6977ec0e2cdb0b7e4cf90980eeebab90c59aabfb1e2e48b47cb4bf12e80c"
+    },
+    {
+      "path": "solver-before/receipt.json",
+      "bytes": 1022,
+      "sha256": "0d0fc821d11e94ff69b720e61daae8054acbbe885619a3869a67e4f359065347"
+    },
+    {
+      "path": "solver-before/wasm-arap-sweep.mjs",
+      "bytes": 7035,
+      "sha256": "08c41cca60a7ec46ca07103d27ecbdff1d97f2bbf62507fb310c560d05487ccd"
+    },
+    {
+      "path": "solver-parity/orientation-boundary-parity.mjs",
+      "bytes": 5952,
+      "sha256": "a0d8e22cb6ac968a7661778691bb66dc51f66c87a2296bca1a80cbbb47036c52"
+    },
+    {
+      "path": "solver-parity/orientation-parity.json",
+      "bytes": 1400,
+      "sha256": "3062abf08820108dfa454a4ee160eb6551dc2ebae4bbe173d34766107278ca75"
+    },
+    {
+      "path": "solver-parity/run-s2.mjs",
+      "bytes": 10055,
+      "sha256": "b2aa6b05acd88703b68fc228870a857e4a3144e3bff01f967b5fa9f5de2fd2a2"
+    },
+    {
+      "path": "solver-parity/s2/civet-static.json",
+      "bytes": 7400,
+      "sha256": "452fa278586993592c7f171e93dd64cbc9dd5bbf5e3fc7f4897c6553e07b8396"
+    },
+    {
+      "path": "solver-parity/s2/civet-support-samples.jsonl.gz",
+      "bytes": 540573,
+      "sha256": "c8deace40f822ac707b337c16ee63cf73ca6838ee094ef80324093ab08ab2d2f"
+    },
+    {
+      "path": "solver-parity/s2/coconut-crab-static.json",
+      "bytes": 8541,
+      "sha256": "2ce886550c98d4586e3a446dd1576f6552e6f58ca1b7b37d0b5656ea1c06debc"
+    },
+    {
+      "path": "solver-parity/s2/coconut-crab-support-samples.jsonl.gz",
+      "bytes": 450159,
+      "sha256": "031446c269052b8a91d89e4244f190fa65c7f60c64cb2056e8b5f2351e01d32b"
+    },
+    {
+      "path": "solver-parity/s2/crab-static.json",
+      "bytes": 8478,
+      "sha256": "ee3f133ed6137a12ea21fa5c2f318c3c74d9e8117544bacd58b2dc8fb72dc565"
+    },
+    {
+      "path": "solver-parity/s2/crab-support-samples.jsonl.gz",
+      "bytes": 472712,
+      "sha256": "258aa03be580be6fcb1e07658ecd5a903db050f2cd63e0c297f3ff8d1fb4b1b8"
+    },
+    {
+      "path": "solver-parity/s2/freshwater-crab-static.json",
+      "bytes": 8449,
+      "sha256": "9da3890b44693cfc1a3977415c408c4b3e5fba8287af206d3fb8492c0c5376a9"
+    },
+    {
+      "path": "solver-parity/s2/freshwater-crab-support-samples.jsonl.gz",
+      "bytes": 455397,
+      "sha256": "84e207fd9353806843dee605d7937f4fd99d7a9e4dd3c4c865b92abcc660b127"
+    },
+    {
+      "path": "solver-parity/s2/identity.json",
+      "bytes": 2960,
+      "sha256": "7364c70a865ccfd9d229dce53f1cf6378bc306da5cad306f52eba1bc9ef7dbf2"
+    },
+    {
+      "path": "solver-parity/s2/mud-crab-static.json",
+      "bytes": 8269,
+      "sha256": "6e1b2ec0792f524e730e7624e0a4112b1741f747645625629175c50c6e5cb9aa"
+    },
+    {
+      "path": "solver-parity/s2/mud-crab-support-samples.jsonl.gz",
+      "bytes": 463241,
+      "sha256": "fe6b52249ff1391607394571ca0b3693c88439f61f6c9f9bdf7c6763daec6e41"
+    },
+    {
+      "path": "solver-parity/s2/sources.json",
+      "bytes": 16870,
+      "sha256": "07275689a7e61beb8e3dc582d7f5e36d28a3ed1e2e0a20290c8b5cec89fd464d"
+    },
+    {
+      "path": "solver-parity/s2/static.json",
+      "bytes": 61950,
+      "sha256": "75d37f09dc1cd42e810edb03b3d7b3b3426a53003c51753b7c6f1eb9b90901be"
+    },
+    {
+      "path": "solver-parity/s2/vent-crab-static.json",
+      "bytes": 8384,
+      "sha256": "9b8278daf85ce4902c6e74c544a61665f0550a09d3ca6bd8cbcd609afc051a4e"
+    },
+    {
+      "path": "solver-parity/s2/vent-crab-support-samples.jsonl.gz",
+      "bytes": 475748,
+      "sha256": "1b6588bbd35d7f75ea8c31b301508243a80d725bd75a9cfe297b48176137d7a2"
+    },
+    {
+      "path": "solver-parity/s2-execution.json",
+      "bytes": 60707,
+      "sha256": "4e3b197f2cba53d9fc749146c39683989658e465cc97ea3aa4744cd5443a4d81"
+    },
+    {
+      "path": "solver-parity/s2-run.log",
+      "bytes": 5147,
+      "sha256": "6046632ae7a68e89ea8b68a104de96f8b6674d04bfee1b92f1fb8a7c1489f6ac"
+    },
+    {
+      "path": "solver-parity-02/orientation-boundary-parity.mjs",
+      "bytes": 5952,
+      "sha256": "a0d8e22cb6ac968a7661778691bb66dc51f66c87a2296bca1a80cbbb47036c52"
+    },
+    {
+      "path": "solver-parity-02/orientation-parity.json",
+      "bytes": 1400,
+      "sha256": "3062abf08820108dfa454a4ee160eb6551dc2ebae4bbe173d34766107278ca75"
+    },
+    {
+      "path": "solver-parity-02/run-s2.mjs",
+      "bytes": 10055,
+      "sha256": "b2aa6b05acd88703b68fc228870a857e4a3144e3bff01f967b5fa9f5de2fd2a2"
+    },
+    {
+      "path": "solver-parity-02/s2/civet-static.json",
+      "bytes": 7400,
+      "sha256": "452fa278586993592c7f171e93dd64cbc9dd5bbf5e3fc7f4897c6553e07b8396"
+    },
+    {
+      "path": "solver-parity-02/s2/civet-support-samples.jsonl.gz",
+      "bytes": 540573,
+      "sha256": "c8deace40f822ac707b337c16ee63cf73ca6838ee094ef80324093ab08ab2d2f"
+    },
+    {
+      "path": "solver-parity-02/s2/coconut-crab-static.json",
+      "bytes": 8541,
+      "sha256": "2ce886550c98d4586e3a446dd1576f6552e6f58ca1b7b37d0b5656ea1c06debc"
+    },
+    {
+      "path": "solver-parity-02/s2/coconut-crab-support-samples.jsonl.gz",
+      "bytes": 450159,
+      "sha256": "031446c269052b8a91d89e4244f190fa65c7f60c64cb2056e8b5f2351e01d32b"
+    },
+    {
+      "path": "solver-parity-02/s2/crab-static.json",
+      "bytes": 8478,
+      "sha256": "ee3f133ed6137a12ea21fa5c2f318c3c74d9e8117544bacd58b2dc8fb72dc565"
+    },
+    {
+      "path": "solver-parity-02/s2/crab-support-samples.jsonl.gz",
+      "bytes": 472712,
+      "sha256": "258aa03be580be6fcb1e07658ecd5a903db050f2cd63e0c297f3ff8d1fb4b1b8"
+    },
+    {
+      "path": "solver-parity-02/s2/freshwater-crab-static.json",
+      "bytes": 8449,
+      "sha256": "9da3890b44693cfc1a3977415c408c4b3e5fba8287af206d3fb8492c0c5376a9"
+    },
+    {
+      "path": "solver-parity-02/s2/freshwater-crab-support-samples.jsonl.gz",
+      "bytes": 455397,
+      "sha256": "84e207fd9353806843dee605d7937f4fd99d7a9e4dd3c4c865b92abcc660b127"
+    },
+    {
+      "path": "solver-parity-02/s2/identity.json",
+      "bytes": 2960,
+      "sha256": "7364c70a865ccfd9d229dce53f1cf6378bc306da5cad306f52eba1bc9ef7dbf2"
+    },
+    {
+      "path": "solver-parity-02/s2/mud-crab-static.json",
+      "bytes": 8269,
+      "sha256": "6e1b2ec0792f524e730e7624e0a4112b1741f747645625629175c50c6e5cb9aa"
+    },
+    {
+      "path": "solver-parity-02/s2/mud-crab-support-samples.jsonl.gz",
+      "bytes": 463241,
+      "sha256": "fe6b52249ff1391607394571ca0b3693c88439f61f6c9f9bdf7c6763daec6e41"
+    },
+    {
+      "path": "solver-parity-02/s2/sources.json",
+      "bytes": 16876,
+      "sha256": "70a8d832d05f9f19e4173a8a290fcfb768cbea36803656439ef45c083eba79b3"
+    },
+    {
+      "path": "solver-parity-02/s2/static.json",
+      "bytes": 61950,
+      "sha256": "75d37f09dc1cd42e810edb03b3d7b3b3426a53003c51753b7c6f1eb9b90901be"
+    },
+    {
+      "path": "solver-parity-02/s2/vent-crab-static.json",
+      "bytes": 8384,
+      "sha256": "9b8278daf85ce4902c6e74c544a61665f0550a09d3ca6bd8cbcd609afc051a4e"
+    },
+    {
+      "path": "solver-parity-02/s2/vent-crab-support-samples.jsonl.gz",
+      "bytes": 475748,
+      "sha256": "1b6588bbd35d7f75ea8c31b301508243a80d725bd75a9cfe297b48176137d7a2"
+    },
+    {
+      "path": "solver-parity-02/s2-execution.json",
+      "bytes": 70042,
+      "sha256": "b2ed540f2200f317389f7473ebc21e713607216e253cf26677baeb6d5b112c44"
+    },
+    {
+      "path": "solver-parity-02/s2-run.log",
+      "bytes": 5147,
+      "sha256": "6046632ae7a68e89ea8b68a104de96f8b6674d04bfee1b92f1fb8a7c1489f6ac"
+    },
+    {
+      "path": "solver-parity-eagle-01.json",
+      "bytes": 65805,
+      "sha256": "66dc4b5c9a92152f17c649519bba584c444e004075191475099f6b8f277b243d"
+    },
+    {
+      "path": "solver-parity-eagle-01.log",
+      "bytes": 193,
+      "sha256": "65f01b5ca4237d60a946d677fa045efb9d90c276151aef39566e364051589227"
+    },
+    {
+      "path": "solver-parity-eagle-02.json",
+      "bytes": 59244,
+      "sha256": "5d810424f07516a147b5236f8ade86fa1b3921f500f9e68858261410d1820636"
+    },
+    {
+      "path": "solver-parity-eagle-02.log",
+      "bytes": 193,
+      "sha256": "a6120a911188390f8dd82292f34fddd2a7bf5bf83ae581538724e2a60c8b57d2"
+    },
+    {
+      "path": "solver-parity-eagle-03.json",
+      "bytes": 59255,
+      "sha256": "0e08ff40c8c590517f580d8fc117967fe67a479034e62262358389b3d1f03a66"
+    },
+    {
+      "path": "solver-parity-eagle-03.log",
+      "bytes": 193,
+      "sha256": "5de85fe6aa40cddc514f6ffc7d715a4c84887b2d1212fca24bd8a25852dd99a9"
+    },
+    {
+      "path": "solver-parity-eagle.mjs",
+      "bytes": 6556,
+      "sha256": "5c358283abd7a32afbc8eb8833e05fbdbc9041d982523985dc4703a3a42a2102"
+    },
+    {
+      "path": "sparse-fit-comparison-07.json",
+      "bytes": 148848,
+      "sha256": "37527135a905fa0d058bc56c9a2773dfbf7caf6007ef297736c0ccdb80f380da"
+    },
+    {
+      "path": "sparse-fit-comparison-07.log",
+      "bytes": 5520,
+      "sha256": "23cd264434f023d2c12f318162c477251f406096824c556351e98682847ad12f"
+    },
+    {
+      "path": "sparse-fit-comparison-07.mjs",
+      "bytes": 8552,
+      "sha256": "adf42746be245aaa2511bc0faa6b91b5df20a4c167ed147e3bd26a077bce8192"
+    },
+    {
+      "path": "sparse-fit-comparison-08.json",
+      "bytes": 125293,
+      "sha256": "7793bcdab98224fb6609d854bd71c77001384aa2d78e9205e3e69eea9d56dae2"
+    },
+    {
+      "path": "sparse-fit-comparison-08.log",
+      "bytes": 5469,
+      "sha256": "8c06c9860614a25e9214fc025f90ae254227dc25495d5db9590464257a84afcf"
+    },
+    {
+      "path": "sparse-fit-comparison-08.mjs",
+      "bytes": 8552,
+      "sha256": "a7836cc5fa4bdefac0765bc6bd722967bc38bbeea15e872dbea13b0c9c2a8c27"
+    },
+    {
+      "path": "static-02.json",
+      "bytes": 31599,
+      "sha256": "f3d79fb8917d6a51148aadcb54e5e56642577d44ede3d35f19c5476c02f07dfb"
+    },
+    {
+      "path": "static-02.json.sources.json",
+      "bytes": 11387,
+      "sha256": "3375de6fecbcdd958166105e541ab36b5d6f1ac41dbb390cfc01d00c4ea20458"
+    },
+    {
+      "path": "static-02.log",
+      "bytes": 2263,
+      "sha256": "90a7619dbf7766416ae8324fe284c69fc84bd986c9d0571cbb726ed1b6ad5823"
+    },
+    {
+      "path": "static-03.json",
+      "bytes": 13885,
+      "sha256": "843b32d160e3c57182b15b959b2faed3670c939d2b176e4f87e2acd784ee8910"
+    },
+    {
+      "path": "static-03.json.sources.json",
+      "bytes": 11387,
+      "sha256": "0a59d9dcfa9379cfcd2555c5c3b652c1340b4b4a7fb5199216cd57c7098d152c"
+    },
+    {
+      "path": "static-03.log",
+      "bytes": 1954,
+      "sha256": "9290b18137d439dc407d13d76c9cfcd441935442b8a20c57dfc5ca72ce1cc5a8"
+    },
+    {
+      "path": "static-05.json",
+      "bytes": 7803,
+      "sha256": "e1cea8caa462d6141ba90cda29ef9fdf84a821f3c4c265be575a8df94b975215"
+    },
+    {
+      "path": "static-05.json.sources.json",
+      "bytes": 11387,
+      "sha256": "c9b894882f62f9ca1724fd480fda8c8d91fbf8bbc9af9965dc140fe271e01b5f"
+    },
+    {
+      "path": "static-05.log",
+      "bytes": 1961,
+      "sha256": "04e1ac3076df4017eced8f418be41d10fd667b8c298fcffe766bfca69e0dc1ab"
+    },
+    {
+      "path": "static-08.json",
+      "bytes": 7804,
+      "sha256": "8db2dffa88c930751e25eeb25f2841b4bf26db83211e8d6925221d1993f6aeea"
+    },
+    {
+      "path": "static-08.json.sources.json",
+      "bytes": 11387,
+      "sha256": "7d44f548dfc0ce9506b458ad41e131ecbba98054616b1409208ef96e8bad3eab"
+    },
+    {
+      "path": "static-08.log",
+      "bytes": 1962,
+      "sha256": "b3317fe84626c8af6090dc824cef419074681a73ebf8b7ae1a44464a009b837a"
+    },
+    {
+      "path": "static-09.json",
+      "bytes": 7804,
+      "sha256": "8db2dffa88c930751e25eeb25f2841b4bf26db83211e8d6925221d1993f6aeea"
+    },
+    {
+      "path": "static-09.json.sources.json",
+      "bytes": 12596,
+      "sha256": "4be3fbbb4ef312e588c7d57e3933af63ef2ea9fc6edd29bb745f21068a7238b8"
+    },
+    {
+      "path": "static-09.log",
+      "bytes": 1962,
+      "sha256": "b3317fe84626c8af6090dc824cef419074681a73ebf8b7ae1a44464a009b837a"
+    },
+    {
+      "path": "static-10.json",
+      "bytes": 13716,
+      "sha256": "5298f4cb220541cba8078969525c8a710e85cd4ae4c5b180edfb5012186f47ba"
+    },
+    {
+      "path": "static-10.json.sources.json",
+      "bytes": 12596,
+      "sha256": "86e4b26c4799e5f1c315faaa5b4b1c2111c35744750c2d8adc392e279aaa19b5"
+    },
+    {
+      "path": "static-10.log",
+      "bytes": 2065,
+      "sha256": "147c3d6ff9c048d15fcb99e0635ce1149ce6482c7172c7b3d0fd0e830235ecd4"
+    },
+    {
+      "path": "static-11.json",
+      "bytes": 7799,
+      "sha256": "0279dbc3100c7476d7954f6897de90eced9c36afcc8d17a7a744cbc068400926"
+    },
+    {
+      "path": "static-11.json.sources.json",
+      "bytes": 12596,
+      "sha256": "3340e00ce089f7f72ebfaeb6b330c358ff987d89fb167b0072ad66aa75b18017"
+    },
+    {
+      "path": "static-11.log",
+      "bytes": 1957,
+      "sha256": "ac4b580017217d38fe27ba5b0d008d35d56a8991d2322b1399dd193d660b2e46"
+    },
+    {
+      "path": "static-12.json",
+      "bytes": 7803,
+      "sha256": "8a8cd7a53b41dd2cf99a495a030595650c14eb1c6459d8d9da68e1b72a380dc6"
+    },
+    {
+      "path": "static-12.json.sources.json",
+      "bytes": 12596,
+      "sha256": "9e5899beb457e2e76cd086c446ad459336a474b84aab86e1606607bdef242be2"
+    },
+    {
+      "path": "static-12.log",
+      "bytes": 1961,
+      "sha256": "3fc4d0310d388ca2ce72cadfec8b4b2d7b35a06cdb6def6b1190766db5e6d74a"
+    },
+    {
+      "path": "static-13.json",
+      "bytes": 7803,
+      "sha256": "bdccea82edb0572cee2c9c015889838d0c81531de3e4cb1f55445ebe5e9e6525"
+    },
+    {
+      "path": "static-13.json.sources.json",
+      "bytes": 12596,
+      "sha256": "6bc3ee85f0f8d9c9db99d7c8751534b709d349c022f884c16d97cc436dfa5d68"
+    },
+    {
+      "path": "static-13.log",
+      "bytes": 1961,
+      "sha256": "3fc4d0310d388ca2ce72cadfec8b4b2d7b35a06cdb6def6b1190766db5e6d74a"
+    },
+    {
+      "path": "static-source-check-13.json",
+      "bytes": 13200,
+      "sha256": "8cd77487269597ba0c83472f20b135d6637150cbd214e12675458e24f15e12a6"
+    },
+    {
+      "path": "subject-source.json",
+      "bytes": 6044,
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "tail-ownership-observation-12.json",
+      "bytes": 1044,
+      "sha256": "cedc1a1236809eefede82cdafb938f8e3840f95f7015ff2cd7f72ef00d1dacec"
+    },
+    {
+      "path": "typecheck-01.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "upper-leg-contour-observation-08.json",
+      "bytes": 816,
+      "sha256": "a6568e39f333c58a14f08bb96d648e589667d4357616e703ccc8c76aa60fc744"
+    },
+    {
+      "path": "validate-01.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "validate-02.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "validate-03.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "validate-04.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "verify-mask-delta-03.mjs",
+      "bytes": 1491,
+      "sha256": "8ca32f3aebbb35eef9f4f0435eeb03d7a4a7b06ae62f2b051766f03b3ecb1a68"
+    },
+    {
+      "path": "verify-mask-delta-04.mjs",
+      "bytes": 1477,
+      "sha256": "97242dec629ee12e9049e6802515922971c2b88f9509dcc7f43551e0afa386fe"
+    },
+    {
+      "path": "verify-mask-delta-05.mjs",
+      "bytes": 1477,
+      "sha256": "724ad8571d5f2dd03828d708b552ae858fde89822289777c750d4d680863c8ca"
+    },
+    {
+      "path": "verify-mask-delta-08.mjs",
+      "bytes": 1548,
+      "sha256": "00a7a5c2a2f67e0067c6a710c9aceb0efbd20d5f3f60666e326e4c84a03f0d92"
+    },
+    {
+      "path": "verify-mask-delta-12.mjs",
+      "bytes": 2013,
+      "sha256": "9e124b0fe0f48b9dac2bd91bff6692097e45d54f4b0ff2ac3ebbf408c3e1ee1a"
+    }
+  ]
+}

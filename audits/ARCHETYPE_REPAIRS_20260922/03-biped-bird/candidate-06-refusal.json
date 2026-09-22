@@ -1,0 +1,7 @@
+{
+  "candidate": "candidate-06",
+  "fit": "fit-06",
+  "status": "REJECTED_AUTHORING_BEFORE_STATIC",
+  "reason": "Vertical x788 split crosses actual transparent gap, assigning far-leg strand to near-shin (including65 pixels in three lower pieces). Closer source silhouette review supersedes earlier coarse no-objection. No static or native test run.",
+  "preserve": "All candidate06 authoring, helper and compiled outputs retained. Replacement uses observed separated components below y865; ambiguous upper845\u2013864 attachment unchanged."
+}

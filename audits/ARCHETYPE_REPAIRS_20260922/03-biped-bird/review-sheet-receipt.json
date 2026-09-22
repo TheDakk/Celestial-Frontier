@@ -1,0 +1,43 @@
+{
+  "scope": "Construction command executed successfully in this session; receipt/input hashes retained afterward. No repeated rendering for bookkeeping.",
+  "command": "node audits/ARCHETYPE_REPAIRS_20260922/review-sheet.mjs audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/native-03 audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/review-sheet.png audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-08",
+  "exitCode": 0,
+  "nativeRunId": "20260922-eagle-native-03",
+  "fit": "fit-08",
+  "selectedStill": "native-03/turn0-hit-approach-50.png",
+  "inputs": [
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/review-sheet.mjs",
+      "sha256": "8ef83aee0af577d4b43809ecfd31dec6caf8af9ea408ab65f6336852d9819bf5"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/master.png",
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/subject-source.json",
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/authoring.json",
+      "sha256": "91f942596d436ee57223a320dea006de5494f414c4ddfed35fa19a46222acbd1"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-08/labels.png",
+      "sha256": "af01fcb9c64e5d4e52bf04e6c37a29991e089f45fcccf31e2348aa0d5bd594c1"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/native-03/report.json",
+      "sha256": "b7dcbffbda2f93b78d7b78f704c5e47c76bdff3cce5d69219dd6ab6b59da545a"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/native-03/turn0-hit-approach-50.png",
+      "sha256": "f67f884edb86a7197ce5def9f7b6025460e910f46605771af40b453216bce372"
+    }
+  ],
+  "output": {
+    "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/review-sheet.png",
+    "sha256": "53016c61fee94c3cbc07901c32cd98a59b7bf8cfb5447061dfbeee4338417963"
+  },
+  "landmarkParity": true
+}
