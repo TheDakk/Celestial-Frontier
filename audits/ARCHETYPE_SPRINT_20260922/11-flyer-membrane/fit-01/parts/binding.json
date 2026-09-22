@@ -1,0 +1,318 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "0d334e3ba561bd5c3e3c43d39d36ba21772ea6846ba85c41c0e03657848ae0b6",
+  "atlasSha256": "934ff61c00018b5997234f3fcee61e3537ac0d420bccce3c362995f537e9c20b",
+  "atlasSize": {
+    "width": 2048,
+    "height": 1243
+  },
+  "parts": [
+    {
+      "id": "ear-near",
+      "joint": "earNearTip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1754,
+        "y": 308,
+        "width": 79,
+        "height": 114
+      },
+      "cutout": {
+        "x": 984,
+        "y": 591,
+        "width": 79,
+        "height": 114
+      }
+    },
+    {
+      "id": "ear-far",
+      "joint": "earFarTip",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 1754,
+        "y": 432,
+        "width": 57,
+        "height": 76
+      },
+      "cutout": {
+        "x": 1067,
+        "y": 609,
+        "width": 57,
+        "height": 76
+      }
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1870,
+        "y": 771,
+        "width": 120,
+        "height": 43
+      },
+      "cutout": {
+        "x": 1083,
+        "y": 746,
+        "width": 120,
+        "height": 43
+      }
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1859,
+        "y": 5,
+        "width": 184,
+        "height": 133
+      },
+      "cutout": {
+        "x": 1018,
+        "y": 665,
+        "width": 184,
+        "height": 133
+      }
+    },
+    {
+      "id": "wing-near-distal",
+      "joint": "wingNearTip",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1219,
+        "y": 950,
+        "width": 450,
+        "height": 174
+      },
+      "cutout": {
+        "x": 34,
+        "y": 42,
+        "width": 450,
+        "height": 174
+      }
+    },
+    {
+      "id": "wing-near-wrist",
+      "joint": "wingNearWrist",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1219,
+        "y": 5,
+        "width": 630,
+        "height": 192
+      },
+      "cutout": {
+        "x": 45,
+        "y": 185,
+        "width": 630,
+        "height": 192
+      }
+    },
+    {
+      "id": "wing-near-elbow",
+      "joint": "wingNearElbow",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1219,
+        "y": 207,
+        "width": 525,
+        "height": 352
+      },
+      "cutout": {
+        "x": 127,
+        "y": 308,
+        "width": 525,
+        "height": 352
+      }
+    },
+    {
+      "id": "wing-near-base",
+      "joint": "wingNearRoot",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1219,
+        "y": 569,
+        "width": 454,
+        "height": 371
+      },
+      "cutout": {
+        "x": 367,
+        "y": 596,
+        "width": 454,
+        "height": 371
+      }
+    },
+    {
+      "id": "leg-near-foot",
+      "joint": "legNearFoot",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1870,
+        "y": 824,
+        "width": 101,
+        "height": 77
+      },
+      "cutout": {
+        "x": 425,
+        "y": 1017,
+        "width": 101,
+        "height": 77
+      }
+    },
+    {
+      "id": "leg-near-upper",
+      "joint": "legNearKnee",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1683,
+        "y": 771,
+        "width": 177,
+        "height": 101
+      },
+      "cutout": {
+        "x": 475,
+        "y": 927,
+        "width": 177,
+        "height": 101
+      }
+    },
+    {
+      "id": "leg-far-foot",
+      "joint": "legFarFoot",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 1754,
+        "y": 207,
+        "width": 91,
+        "height": 91
+      },
+      "cutout": {
+        "x": 314,
+        "y": 987,
+        "width": 91,
+        "height": 91
+      }
+    },
+    {
+      "id": "leg-far-upper",
+      "joint": "legFarKnee",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 1843,
+        "y": 410,
+        "width": 199,
+        "height": 100
+      },
+      "cutout": {
+        "x": 352,
+        "y": 910,
+        "width": 199,
+        "height": 100
+      }
+    },
+    {
+      "id": "wing-far-distal",
+      "joint": "wingFarTip",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 1754,
+        "y": 520,
+        "width": 222,
+        "height": 104
+      },
+      "cutout": {
+        "x": 1016,
+        "y": 435,
+        "width": 222,
+        "height": 104
+      }
+    },
+    {
+      "id": "wing-far-wrist",
+      "joint": "wingFarWrist",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 1859,
+        "y": 148,
+        "width": 183,
+        "height": 113
+      },
+      "cutout": {
+        "x": 991,
+        "y": 489,
+        "width": 183,
+        "height": 113
+      }
+    },
+    {
+      "id": "wing-far-elbow",
+      "joint": "wingFarElbow",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 1855,
+        "y": 271,
+        "width": 181,
+        "height": 129
+      },
+      "cutout": {
+        "x": 843,
+        "y": 478,
+        "width": 181,
+        "height": 129
+      }
+    },
+    {
+      "id": "wing-far-base",
+      "joint": "wingFarRoot",
+      "layer": "far",
+      "kind": "part",
+      "frame": {
+        "x": 1683,
+        "y": 634,
+        "width": 323,
+        "height": 127
+      },
+      "cutout": {
+        "x": 751,
+        "y": 559,
+        "width": 323,
+        "height": 127
+      }
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 1204,
+        "height": 1233
+      },
+      "cutout": {
+        "x": 0,
+        "y": 21,
+        "width": 1204,
+        "height": 1233
+      }
+    }
+  ],
+  "bindingHash": "c753336bc46381b193ee8b6cf4da138a9f816a3f2f304663b2f895bf11d41ce7"
+}
