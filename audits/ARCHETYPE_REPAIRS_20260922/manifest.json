@@ -2842,8 +2842,8 @@
     },
     {
       "path": "03-biped-bird/HISTORY.md",
-      "bytes": 7454,
-      "sha256": "107f4da334aa25b8fc427604133e6a93bd16ac492b8689f974f845679f3d178c"
+      "bytes": 7842,
+      "sha256": "ebdaa4b6628a368dbfbef9de5c99ea98f0be54d49b8f01ecfc35b0fc68718cd0"
     },
     {
       "path": "03-biped-bird/inner-leg-component-inventory-07.json",
@@ -2958,7 +2958,7 @@
     {
       "path": "03-biped-bird/manifest.json",
       "bytes": 117300,
-      "sha256": "b7a27ff038649a529b633b489aa5287f574814f326b68e2c2f6f39f787abb5ec"
+      "sha256": "9c21808af4e9891c58d1421612e20373c1d272c7e9c17452567e8aba03858275"
     },
     {
       "path": "03-biped-bird/mask-delta-03.json",
@@ -3642,8 +3642,8 @@
     },
     {
       "path": "03-biped-bird/README.md",
-      "bytes": 5183,
-      "sha256": "5261fb322e7664092aa71f5335af0cbf5ec19572d262da744f5b4abc45d0465c"
+      "bytes": 5005,
+      "sha256": "e3fd0e1d03d4ca5c3a745c1996372205d1d99968a85f345d3832e97425780acb"
     },
     {
       "path": "03-biped-bird/repair-inputs.json",
@@ -4271,19 +4271,124 @@
       "sha256": "9e124b0fe0f48b9dac2bd91bff6692097e45d54f4b0ff2ac3ebbf408c3e1ee1a"
     },
     {
+      "path": "04-insect/authoring.json",
+      "bytes": 660,
+      "sha256": "19370b686cd036330a2712da593b59764038e9d6705ab8f0cb6d7b5c3289f9f4"
+    },
+    {
+      "path": "04-insect/compile-prompt.mjs",
+      "bytes": 3845,
+      "sha256": "2cb4158d33276c183c10b5d8d7176acdc7f8477e11b08d65ad7a6f21e54a7fe0"
+    },
+    {
+      "path": "04-insect/declaration.txt",
+      "bytes": 520,
+      "sha256": "0068cafcf7720ce13e4070185a0f8c859c6e7e7e1f677d0e92804521fbe7bf20"
+    },
+    {
+      "path": "04-insect/execution.json",
+      "bytes": 656,
+      "sha256": "adb914f81d4bbf505aa92fe80af5eb7ed4c025a2aa69d4f2803c191526e00708"
+    },
+    {
+      "path": "04-insect/fit-02/intake-provenance.json",
+      "bytes": 3530,
+      "sha256": "2e9a43e7438c116fcb33b6c1d5f42cf67ff6a05f43a65d26541deba7facc61be"
+    },
+    {
+      "path": "04-insect/fit-02/refusal.json",
+      "bytes": 1079,
+      "sha256": "e16f1c34ac0fc62fa964e668c0851e5f58e77471ae46a5ee3f7bee89203e79a9"
+    },
+    {
+      "path": "04-insect/generation-receipt.json",
+      "bytes": 801,
+      "sha256": "aa1f88d53a94f56413afa53bda54d5235adde2249cd8a35a9dfc97b8d1e43d5b"
+    },
+    {
+      "path": "04-insect/intake-02.log",
+      "bytes": 1199,
+      "sha256": "f7ed54ee1fdda360ac597c0e079b807e1fe8b5dee3b6d72a4eb9490c7d1ed816"
+    },
+    {
+      "path": "04-insect/manifest.json",
+      "bytes": 3048,
+      "sha256": "14fef7100139e78a50aa71f1c881884d16995c938d4567c69c2889bbfb12f9b9"
+    },
+    {
+      "path": "04-insect/master.png",
+      "bytes": 1534840,
+      "sha256": "1322d8099bd6f24143d55c8c21510de02740407fd08221268078bc20379e7793"
+    },
+    {
+      "path": "04-insect/presence.json",
+      "bytes": 110,
+      "sha256": "285cfa665d6c9fe4f62ccd53ddf70cd59cff1c67a1caa2bb5852dab0070753bf"
+    },
+    {
+      "path": "04-insect/prompt-prefix-receipt.json",
+      "bytes": 461,
+      "sha256": "6e047c701594da83450bdf0f84278c6a16596fce64a9497660a902749e06ae21"
+    },
+    {
+      "path": "04-insect/prompt.txt",
+      "bytes": 10237,
+      "sha256": "e4d9c972979a81a0b2ec2a68668a3945c44bf28113c997a4fb8f11e03ffde1a7"
+    },
+    {
+      "path": "04-insect/README.md",
+      "bytes": 2242,
+      "sha256": "d16ea6e36b59c8de58393a180a245d80abdbeca18c6953b2bf519571aec703bc"
+    },
+    {
+      "path": "04-insect/request.json",
+      "bytes": 1260,
+      "sha256": "d6c5aba14946e7bbec01bf98539b6f97667befd35de73096c17899147eb99fe3"
+    },
+    {
+      "path": "04-insect/result.json",
+      "bytes": 609,
+      "sha256": "3af545b2829ea65f6d4efd7f285cba83366665af5ce0df707cb249c950f5079e"
+    },
+    {
+      "path": "04-insect/review-sheet-receipt.json",
+      "bytes": 1064,
+      "sha256": "a9ec366b69a5af11f35d30c1749f7b15dec3ae8e575fb147396ad26412d79352"
+    },
+    {
+      "path": "04-insect/review-sheet.mjs",
+      "bytes": 3687,
+      "sha256": "666c6f213a01645feeed8f01c53a4a565ff69741d5760df235519e012852a8a7"
+    },
+    {
+      "path": "04-insect/review-sheet.png",
+      "bytes": 371874,
+      "sha256": "ebc43aa7a0e88507cd8e8733d6b10a56053bf8214dbd351222d1505197abcdda"
+    },
+    {
+      "path": "04-insect/subject-source.json",
+      "bytes": 7400,
+      "sha256": "3fe4fafdce0c1fd38584b099be810651b457136eeabaee1aee6117538e765694"
+    },
+    {
+      "path": "04-insect/visual-census.json",
+      "bytes": 663,
+      "sha256": "cd2fd46a6e19c7fcefff5dd3818bd510c8f9b0dcfc3c8e378559f1b4990a7b3c"
+    },
+    {
       "path": "AUTHORITY.md",
       "bytes": 1874,
       "sha256": "c8ea60b7624cec8ac6dedba81ca1e70f0e592a9424c5d91b52a78c0c9ca11b31"
     },
     {
       "path": "LEDGER.md",
-      "bytes": 1691,
-      "sha256": "8a02b48226ed52b0162f27614aed950d9fee0202aa7b5de8a69c624dd6d1fa63"
+      "bytes": 1829,
+      "sha256": "040405cee99cc2dda6be08369e3bfa5f2ed0e612a144272b581b7d2a1aaeaded"
     },
     {
       "path": "README.md",
-      "bytes": 1485,
-      "sha256": "20044310a1aa2823e36d7833114aaecf37d23ff55f3d2cc533676e87716aced7"
+      "bytes": 1744,
+      "sha256": "a6b4300d5a2f6104e4b0f90432115ebde93f02d5868f78e30a8a394d4793a7e9"
     },
     {
       "path": "review-sheet.mjs",

@@ -1,0 +1,16 @@
+{
+  "status": "SECOND_PAINT_FAILURE",
+  "expectedWalkingLegs": 6,
+  "traceableWalkingLegs": 5,
+  "visibleMembranousWings": 2,
+  "chains": [
+    "hindFar: leftmost foot",
+    "hindNear: lower-left foot",
+    "midFar: short curled foot below abdomen",
+    "midNear: bottom-center foot",
+    "frontNear: lower-right foot"
+  ],
+  "missingTrace": "legFrontFar; no separately traceable femur/tibia/tarsus or sixth foot",
+  "independentReview": "Second agent visually confirms five chains and two membranes; claws on the same foot are not extra legs.",
+  "rule": "One corrected re-prompt allowed; second failure ends this item. No third paint or contract relaxation."
+}

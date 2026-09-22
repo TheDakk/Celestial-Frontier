@@ -1,0 +1,28 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 2,
+  "scope": "Single corrected re-prompt; previous rejected image/prompt remain in original sprint packet",
+  "sourceHead": "3ee02d5db99fa03470c078489b0484bf039856e6",
+  "previousMaster": {
+    "path": "audits/ARCHETYPE_SPRINT_20260922/04-insect/master.png",
+    "sha256": "c3c2c4c68322a840df76f3cadd2796f69b8c1ac3e694001970933569eedfcf0d"
+  },
+  "previousPrompt": {
+    "path": "audits/ARCHETYPE_SPRINT_20260922/04-insect/prompt.txt",
+    "sha256": "6271b8cfa456f261d09a809b1974bf1efa92e82a423e7da362af5e95f0b570ae"
+  },
+  "promptSha256": "e4d9c972979a81a0b2ec2a68668a3945c44bf28113c997a4fb8f11e03ffde1a7",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "speciesGenome": "unchanged subject-source.json",
+  "postureCorrection": "Expose six walking legs and both membranous flight wings to satisfy existing complete visible intake; no contract or presence inference.",
+  "editTarget": "audits/ARCHETYPE_SPRINT_20260922/04-insect/master.png",
+  "referenceRoles": [
+    "rejected master edit target",
+    "approved atlas style reference"
+  ]
+}
