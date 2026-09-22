@@ -1,0 +1,13 @@
+{
+  "scope": "minimum repeated-leg capacity request; full painted leg/pair count remains unknown",
+  "minimumCapabilityRequest": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "appendages": {
+      "legPairs": 5
+    }
+  },
+  "observations": "observed-inventory.json"
+}
