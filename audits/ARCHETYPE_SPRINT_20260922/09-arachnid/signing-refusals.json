@@ -1,0 +1,52 @@
+{
+  "failedAttempts": [
+    {
+      "attempt": 1,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 2,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 3,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 5,
+      "signer": "/usr/bin/ssh-keygen via same configured 1Password agent",
+      "exitCode": 128,
+      "error": "Could not sign message: agent refused operation; fatal: failed to write commit object"
+    },
+    {
+      "attempt": 6,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 7,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 8,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 9,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\nfatal: failed to write commit object"
+    }
+  ],
+  "unsignedFallback": false,
+  "sameAgentDiagnostic": "Configured 1Password agent lists the expected signing fingerprint; invocation-only ssh-keygen signer will use that same agent and key, with no persistent setting change."
+}
