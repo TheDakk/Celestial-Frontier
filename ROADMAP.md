@@ -48,3 +48,7 @@ Sprint item6 Tree Frog: RED; exact rest 0 changed channels, static 0 rows/0 reds
 Sprint item7 Chimpanzee: RED; exact rest 0 changed channels, static 14 rows/3 reds, native FAIL, CPU 4.600000023841858. Packet: audits/ARCHETYPE_SPRINT_20260922/07-primate/README.md. Next unticked item:8. Codex continues; Claude read-only; no hosted action.
 
 Sprint item8 Starfish: RED; exact rest 0 changed channels, static 14 rows/7 reds, native FAIL, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/08-radial/README.md. Next unticked item:9. Codex continues; Claude read-only; no hosted action.
+
+Sprint item9 Tarantula: RED; exact rest unproved, static 0 rows/0 reds, native not run, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/09-arachnid/README.md. Next unticked item:10. Codex continues; Claude read-only; no hosted action.
+
+Signing checkpoint: items1–8 signed, HEAD b13c1b87507ed2223c13f739573d944283fa7ea9. Item9 Tarantula evidence is complete and staged; nine 1Password signing attempts refused (including the same-agent ssh-keygen diagnostic). No unsigned fallback. Local authentication requested; do not start item10 until item9 signs. Resume at that signature, then Octopus → Fruit Bat → Centipede → Salmon marking masks. No certificate, static or native retry; no hosted action. Claude lane remains read-only.
