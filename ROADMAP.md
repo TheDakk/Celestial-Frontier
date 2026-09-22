@@ -36,3 +36,5 @@ Nick’s continuous 13-item archetype sprint supersedes the hold above. Durable 
 I5 attempted once on signed36402564d08d: instrument-fail, phone review screenshot row focus/ring not visibly contained; 0 outcomes in7,385ms. Packet01-i5 retains exact source/Edge153.0.4234.48/authority/report hashes. Original sealed budget restored, no sample/ceiling/test-pin rewrite. Next unticked item:2 Salmon.
 
 Sprint item2 Salmon: RED; exact rest 0 changed channels, static 14 rows/0 reds, native FAIL, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/02-fish/README.md. Next unticked item:3. Codex continues; Claude read-only; no hosted action.
+
+Sprint item3 Eagle: RED; exact rest 0 changed channels, static 0 rows/0 reds, native FAIL, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/README.md. Next unticked item:4. Codex continues; Claude read-only; no hosted action.

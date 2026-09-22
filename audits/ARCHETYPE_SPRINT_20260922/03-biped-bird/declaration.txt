@@ -1,0 +1,9 @@
+Codex explicit presence declaration for the delivered Eagle master.
+
+Present and visible: one head, one hooked beak, two separately readable spread wings, two feathered legs, two distinct taloned feet, and one tail fan. Both wing surfaces are painted. Both leg chains are painted and extended to their own feet.
+
+Absent contracted groups: none. Hidden contracted groups or chains: none. Folded leg chains: none. These empty lists are authored declarations; no missing landmark, mask or failed admission creates an absence, hidden or folded designation. The far eye is naturally occluded in this side-oriented painting, but the biped-bird contract has no separate eye joint or eye paint slot.
+
+The full nineteen-joint inventory is observed on this master in authoring.json. Polygon ownership is manually authored in this master's pixel space; it is not transferred from a painter guide or another species. Separate proximal shoulder and distal feather groups own each wing. The named body remainder owns positive-alpha pixels left after the listed priority regions. Alpha and color remain the delivered source channels.
+
+This is a diagnostic first fit and a candidate for Nick's art review. It does not assert anatomical automatic registration, successful static rows, native rendering or animation acceptance before those owners run.

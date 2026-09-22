@@ -1,0 +1,52 @@
+{
+  "id": "eagle",
+  "family": "biped-bird",
+  "landmarksPx": {
+    "root": [815, 641],
+    "pelvis": [732, 705],
+    "spine": [852, 550],
+    "chest": [977, 463],
+    "neck0": [1018, 378],
+    "neck1": [1041, 308],
+    "head": [1091, 240],
+    "beak": [1175, 282],
+    "legFarKnee": [866, 843],
+    "legFarAnkle": [930, 981],
+    "legFarFoot": [991, 1024],
+    "legNearKnee": [690, 854],
+    "legNearAnkle": [704, 1002],
+    "legNearFoot": [734, 1051],
+    "wingFarRoot": [820, 382],
+    "wingFarTip": [125, 562],
+    "wingNearRoot": [872, 478],
+    "wingNearTip": [153, 748],
+    "tailFan": [210, 873]
+  },
+  "groundLineY": 0.9,
+  "materials": {"surface": "layered brown and golden eagle feathers; horn beak and scaled taloned feet"},
+  "remainderPart": "body",
+  "parts": [
+    {"id":"near-foot","joint":"legNearFoot","layer":"near","polygonPx":[[570,1018],[650,1014],[717,1007],[773,1020],[816,1033],[865,1035],[878,1115],[560,1118]]},
+    {"id":"far-foot","joint":"legFarFoot","layer":"far","polygonPx":[[817,990],[888,986],[937,984],[980,994],[1021,1005],[1078,994],[1118,1010],[1128,1101],[811,1094]]},
+    {"id":"near-shin","joint":"legNearAnkle","layer":"near","polygonPx":[[605,884],[754,878],[775,946],[759,1018],[713,1030],[640,1033],[595,989],[573,949]]},
+    {"id":"far-shin","joint":"legFarAnkle","layer":"far","polygonPx":[[808,891],[934,879],[951,935],[980,994],[938,1021],[857,1007],[824,963],[795,935]]},
+    {"id":"near-thigh","joint":"legNearKnee","layer":"near","polygonPx":[[632,747],[754,708],[802,758],[781,842],[758,895],[609,903],[579,871],[595,807]]},
+    {"id":"far-thigh","joint":"legFarKnee","layer":"far","polygonPx":[[810,753],[914,739],[940,817],[936,897],[818,914],[793,852],[789,792]]},
+    {"id":"beak","joint":"beak","layer":"near","polygonPx":[[1117,231],[1180,233],[1217,264],[1220,325],[1180,353],[1144,312],[1081,294],[1070,276],[1121,273]]},
+    {"id":"head","joint":"head","layer":"near","polygonPx":[[915,153],[1080,148],[1164,178],[1210,230],[1175,280],[1124,321],[1007,344],[939,325],[902,266]]},
+    {"id":"neck-upper","joint":"neck1","layer":"near","polygonPx":[[906,282],[1001,309],[1109,295],[1114,399],[1034,429],[968,417],[881,378],[879,327]]},
+    {"id":"neck-lower","joint":"neck0","layer":"near","polygonPx":[[868,347],[967,391],[1087,375],[1110,501],[1094,554],[976,556],[905,499],[847,441]]},
+    {"id":"near-wing-shoulder","joint":"wingNearRoot","layer":"near","polygonPx":[[620,442],[692,410],[790,391],[873,418],[932,458],[954,503],[929,555],[872,590],[798,603],[706,557],[634,506]]},
+    {"id":"near-wing-flight","joint":"wingNearTip","layer":"near","polygonPx":[[595,417],[745,398],[828,401],[906,434],[945,482],[944,530],[894,589],[797,656],[645,731],[482,777],[336,786],[79,836],[96,793],[222,672],[338,565],[476,468]]},
+    {"id":"far-wing-shoulder","joint":"wingFarRoot","layer":"far","polygonPx":[[591,265],[719,225],[801,243],[804,282],[780,328],[849,378],[846,414],[788,443],[650,430],[507,384]]},
+    {"id":"far-wing-flight","joint":"wingFarTip","layer":"far","polygonPx":[[590,263],[719,222],[803,241],[800,302],[777,337],[856,381],[829,449],[646,476],[465,549],[281,627],[130,646],[27,607],[44,548],[110,462],[293,353],[444,296]]},
+    {"id":"tail","joint":"tailFan","layer":"far","polygonPx":[[393,738],[589,741],[670,765],[564,830],[438,860],[300,928],[149,967],[29,951],[18,916],[181,812],[298,760]]},
+    {"id":"chest","joint":"chest","layer":"near","polygonPx":[[939,514],[1105,490],[1096,600],[1057,691],[1009,737],[880,800],[786,778],[809,653]]},
+    {"id":"body","joint":"root","layer":"near","polygonPx":[[0,0],[1,0],[0,1]]}
+  ],
+  "coverage": {
+    "declarations": "One head and hooked beak, two independently visible spread wing surfaces, two feathered legs with distinct taloned feet, and one visible tail fan. All nineteen contracted joints are explicitly located on this master. No contracted appendage is declared hidden or absent; no leg chain is declared folded. Far eye is naturally out of view and has no separate biped-bird joint. Priority polygons are manually observed ownership regions of this painting, with root-owned body as the explicit remainder.",
+    "visualAcceptance": "candidate for Nick; first acceptable paint",
+    "landmarkMethod": "Manual observation of this 1254-square master; no transferred painter or other-species coordinates. Wing-tip joints follow the distal feather groups, while wing-root joints follow the visible shoulder masses."
+  }
+}
