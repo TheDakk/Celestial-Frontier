@@ -4,7 +4,7 @@ Source: OpenAI/Codex · macOS · /Users/nick/Projects/celestial-frontier-openai-
 
 | Item | Plan | Exemplar | Signed commit | Static rows | Film refusals | CPU p95 | Sheet | State |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | I5 | Compendium | pending | not run | not run | not measured | pending | authority preparation |
+| 1 | I5 | Compendium | A `36402564d08d`; B packet history | 0 outcomes | n/a | n/a | n/a | RED instrument: phone review focus/ring; 7,385 ms; sealed budget restored |
 | 2 | fish | Salmon | pending | not run | not run | not measured | pending | not started |
 | 3 | biped-bird | Eagle | pending | not run | not run | not measured | pending | not started |
 | 4 | insect | Beetle | pending | not run | not run | not measured | pending | not started |

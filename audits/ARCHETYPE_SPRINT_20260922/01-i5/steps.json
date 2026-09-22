@@ -1,0 +1,10 @@
+[
+  {
+    "label": "edge-preflight",
+    "exitCode": 0
+  },
+  {
+    "label": "certificate",
+    "exitCode": 2
+  }
+]
