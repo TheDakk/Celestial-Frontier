@@ -40,3 +40,5 @@ Sprint item2 Salmon: RED; exact rest 0 changed channels, static 14 rows/0 reds, 
 Sprint item3 Eagle: RED; exact rest 0 changed channels, static 0 rows/0 reds, native FAIL, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/README.md. Next unticked item:4. Codex continues; Claude read-only; no hosted action.
 
 Sprint item4 Beetle: RED; exact rest unproved, static 0 rows/0 reds, native not run, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/04-insect/README.md. Next unticked item:5. Codex continues; Claude read-only; no hosted action.
+
+Sprint item5 Python: PASS; exact rest 0 changed channels, static 13 rows/0 reds, native DIAGNOSTIC_PASS, CPU 2.899999976158142. Packet: audits/ARCHETYPE_SPRINT_20260922/05-serpent/README.md. Next unticked item:6. Codex continues; Claude read-only; no hosted action.
