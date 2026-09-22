@@ -1,0 +1,36 @@
+✔ compiled solve rows and guarded numerics retain machine-scale agreement across valences and pin partitions (20.857958ms)
+✔ norm scaling fallback retains finite large-scale and near-collapsed targets without changing refusal semantics (1.237958ms)
+✔ ARAP retains exact rest and rigid rotation/translation, independently of prior seeks (4.320041ms)
+✔ ARAP reduces a discontinuous skin target while preserving hard authored contact handles (1.105625ms)
+✔ ARAP refuses invalid topology/targets atomically and never mutates rest or input (1.150083ms)
+✔ orientation projection repairs a reflected skin triangle with fixed joint targets; contradictory fixed triangle refuses without publication (0.347709ms)
+✔ distinct surfaces at the same source coordinates remain free to cross without welding their contact targets (0.264666ms)
+✔ a thin reflected triangle cannot pass the approximate rigid identity shortcut (0.170959ms)
+✔ exact no-progress projection stops redundant sweeps without accepting a contradictory pinned fold (0.582458ms)
+✔ integrated admitted forward kernel preserves targets, pins, all output bytes and diagnostics (5.959583ms)
+✔ unavailable Wasm retains the original JS path without changing admitted outcomes (0.772166ms)
+✔ a real leaf trap after private-memory work falls back from untouched input and disables the leaf (1.217625ms)
+✔ floor underflow retains original source admission and the JS solver (0.224542ms)
+✔ floor overflow retains original source admission and identical refusal without publication (0.315917ms)
+✔ contradictory hard pins retain exact recoverable refusal and atomic output on admitted and fallback paths (0.365417ms)
+✔ active-set projection closes the real cast fold that 64 forward sweeps leave inverted, without changing targets or pins (54.908792ms)
+✔ both source parts share exact deformation; rest reconstructs authored positions without patches (1.23525ms)
+✔ foreign joints, missing source ownership, extrapolated UVs and corrupt indices refuse (0.20625ms)
+✔ a foldover fails on the actual posed triangle, while rest and rigid translation pass (0.159542ms)
+✔ thin nonzero painted triangles cannot bypass orientation checks (0.092584ms)
+✔ asset solver profile cannot override orientation defaults or add inherited tuning fields (4.050875ms)
+✔ real admitted Wasm leaf matches the current JS solver exactly and shares fixed scratch memory (7.062541ms)
+✔ absent Wasm and denied memory use the actual JS fallback with exact outputs (5.339042ms)
+✔ a real add-to-subtract binary mutant is rejected by admission and the runtime falls back (1.259333ms)
+✔ leaf snapshots all invariants and refuses malformed rows instead of silently accepting them (0.525542ms)
+✔ normal-range refusal precedes every position and RHS write, then robust JS preserves exact results (0.671333ms)
+✔ strict artifact admission rejects relocation/global/data/table/function-import controls (1.64475ms)
+✔ a late disconnected-component norm refusal cannot publish an earlier component update (0.287959ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 176.527417

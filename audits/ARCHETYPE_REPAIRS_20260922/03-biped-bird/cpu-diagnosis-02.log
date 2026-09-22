@@ -1,0 +1,676 @@
+{
+  "output": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/cpu-diagnosis-02.json",
+  "planParity": "EXACT",
+  "findings": [
+    {
+      "ms": 0,
+      "side": "left",
+      "turn": 0,
+      "phase": "ready",
+      "context": {
+        "actionId": "idle",
+        "elapsedMs": 0,
+        "durationMs": 3130.0032768398523,
+        "weight": 1,
+        "planted": true,
+        "travel": "stage"
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 0.15238826694703111,
+        "rmsTargetErrorPx": 0.008336719306105553,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.999366251109905,
+        "orientationPasses": 1
+      },
+      "backend": "wasm",
+      "orientationQueue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "remaining": 0
+      },
+      "preOrientationViolatingFaceCount": 0,
+      "partCounts": {},
+      "pinnedVertexIds": [],
+      "fieldSha256": "003a14a325d8c4d0d6e258f28846c1d74001e42e9ca1fb157d253eaebef6944e",
+      "retainedNativeCpu": {
+        "recordedMs": 0,
+        "rigMs": 0.5,
+        "sharedSamplingMs": 0
+      },
+      "violations": 0
+    },
+    {
+      "ms": 0,
+      "side": "right",
+      "turn": 0,
+      "phase": "ready",
+      "context": {
+        "actionId": "idle",
+        "elapsedMs": 0,
+        "durationMs": 2698.2100604102015,
+        "weight": 1,
+        "planted": true,
+        "travel": "stage"
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 0.20784387293180726,
+        "rmsTargetErrorPx": 0.011371831131137333,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.9991313022962389,
+        "orientationPasses": 1
+      },
+      "backend": "wasm",
+      "orientationQueue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "remaining": 0
+      },
+      "preOrientationViolatingFaceCount": 0,
+      "partCounts": {},
+      "pinnedVertexIds": [],
+      "fieldSha256": "ff5a093d26669a1793f3f7e75f1e8575705d15ce7e41dc2cb1d4a47e9b61affc",
+      "retainedNativeCpu": {
+        "recordedMs": 0,
+        "rigMs": 0.6000000238418579,
+        "sharedSamplingMs": 0
+      },
+      "violations": 0
+    },
+    {
+      "ms": 1206,
+      "side": "left",
+      "turn": 0,
+      "phase": "approach",
+      "context": {
+        "actionId": "approach:flight",
+        "elapsedMs": 306,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 110.87612162558652,
+        "rmsTargetErrorPx": 8.23920820740825,
+        "maximumProjectionPx": 106.00519836438828,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.060809783366053805,
+        "orientationPasses": 70
+      },
+      "backend": "wasm",
+      "orientationQueue": {
+        "visits": 33702,
+        "projections": 33702,
+        "stalled": false,
+        "remaining": 99
+      },
+      "preOrientationViolatingFaceCount": 103,
+      "partCounts": {
+        "near-shin": 21,
+        "near-thigh": 40,
+        "far-shin": 12,
+        "far-thigh": 42,
+        "far-wing-flight": 1
+      },
+      "pinnedVertexIds": [
+        293,
+        294,
+        295,
+        350,
+        359,
+        391,
+        393,
+        395,
+        430,
+        463,
+        466,
+        484,
+        485,
+        503,
+        506,
+        509,
+        513,
+        575,
+        577,
+        659,
+        663,
+        665,
+        685,
+        687
+      ],
+      "fieldSha256": "732c74f0108afa6d61e1135c9696cbb2d1731430a02364cb8c82a2559c7a45d9",
+      "retainedNativeCpu": null,
+      "violations": 103
+    },
+    {
+      "ms": 1206,
+      "side": "right",
+      "turn": 0,
+      "phase": "approach",
+      "context": {
+        "actionId": "idle",
+        "elapsedMs": 1206,
+        "durationMs": 2698.2100604102015,
+        "weight": 1,
+        "planted": true,
+        "travel": "stage"
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 2.213408545929745,
+        "rmsTargetErrorPx": 0.14646902813576493,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.7154115047699933,
+        "orientationPasses": 1
+      },
+      "backend": "wasm",
+      "orientationQueue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "remaining": 0
+      },
+      "preOrientationViolatingFaceCount": 0,
+      "partCounts": {},
+      "pinnedVertexIds": [],
+      "fieldSha256": "836ab8cd17ecb38fa2fd1297ab23b220c29f59eb52f32e1535fc4c8e4da2a142",
+      "retainedNativeCpu": null,
+      "violations": 0
+    },
+    {
+      "ms": 2333.2,
+      "side": "left",
+      "turn": 0,
+      "phase": "return",
+      "context": {
+        "actionId": "approach:flight",
+        "elapsedMs": 84.60631578947364,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage"
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 132.9642545510996,
+        "rmsTargetErrorPx": 8.045197180606344,
+        "maximumProjectionPx": 131.08406582998137,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.06022582325513811,
+        "orientationPasses": 75
+      },
+      "backend": "wasm",
+      "orientationQueue": {
+        "visits": 69525,
+        "projections": 69525,
+        "stalled": false,
+        "remaining": 95
+      },
+      "preOrientationViolatingFaceCount": 89,
+      "partCounts": {
+        "near-shin": 19,
+        "near-thigh": 36,
+        "far-shin": 10,
+        "far-thigh": 34
+      },
+      "pinnedVertexIds": [
+        293,
+        294,
+        295,
+        350,
+        359,
+        393,
+        395,
+        430,
+        463,
+        466,
+        484,
+        485,
+        503,
+        506,
+        509,
+        513,
+        575,
+        577,
+        659,
+        663,
+        665,
+        685,
+        687
+      ],
+      "fieldSha256": "5b6790827f163da967c5513e79cac207d422d37a4193bd1be18c72d1f37d4d13",
+      "retainedNativeCpu": {
+        "recordedMs": 2333.2000000000007,
+        "rigMs": 35.699999928474426,
+        "sharedSamplingMs": 0
+      },
+      "violations": 89
+    },
+    {
+      "ms": 2333.2,
+      "side": "right",
+      "turn": 0,
+      "phase": "return",
+      "context": {
+        "actionId": "hit",
+        "elapsedMs": 521.1999999999998,
+        "durationMs": 642,
+        "weight": 1,
+        "planted": true,
+        "travel": "stage"
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 8.492076819536193,
+        "rmsTargetErrorPx": 0.4657935823125765,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.9582245087713843,
+        "orientationPasses": 1
+      },
+      "backend": "wasm",
+      "orientationQueue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "remaining": 0
+      },
+      "preOrientationViolatingFaceCount": 0,
+      "partCounts": {},
+      "pinnedVertexIds": [],
+      "fieldSha256": "ada229f68da58c885bc726b54d067164d098ce8cf45bfee09d27a9280640d15d",
+      "retainedNativeCpu": {
+        "recordedMs": 2333.2000000000007,
+        "rigMs": 0.5,
+        "sharedSamplingMs": 0
+      },
+      "violations": 0
+    },
+    {
+      "ms": 4466.666666666666,
+      "side": "left",
+      "turn": 1,
+      "phase": "approach",
+      "context": {
+        "actionId": "approach:flight",
+        "elapsedMs": 305.99999999999955,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage",
+        "stageDisplacement": 0.44999999999999934
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 110.87612162558652,
+        "rmsTargetErrorPx": 8.23920820740825,
+        "maximumProjectionPx": 106.00519836438828,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.060809783366053805,
+        "orientationPasses": 70
+      },
+      "backend": "wasm",
+      "orientationQueue": {
+        "visits": 33702,
+        "projections": 33702,
+        "stalled": false,
+        "remaining": 99
+      },
+      "preOrientationViolatingFaceCount": 103,
+      "partCounts": {
+        "near-shin": 21,
+        "near-thigh": 40,
+        "far-shin": 12,
+        "far-thigh": 42,
+        "far-wing-flight": 1
+      },
+      "pinnedVertexIds": [
+        293,
+        294,
+        295,
+        350,
+        359,
+        391,
+        393,
+        395,
+        430,
+        463,
+        466,
+        484,
+        485,
+        503,
+        506,
+        509,
+        513,
+        575,
+        577,
+        659,
+        663,
+        665,
+        685,
+        687
+      ],
+      "fieldSha256": "732c74f0108afa6d61e1135c9696cbb2d1731430a02364cb8c82a2559c7a45d9",
+      "retainedNativeCpu": null,
+      "violations": 103
+    },
+    {
+      "ms": 4466.666666666666,
+      "side": "right",
+      "turn": 1,
+      "phase": "approach",
+      "context": {
+        "actionId": "idle",
+        "elapsedMs": 1205.9999999999995,
+        "durationMs": 2698.2100604102015,
+        "weight": 1,
+        "planted": true,
+        "travel": "stage"
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 2.213408545929745,
+        "rmsTargetErrorPx": 0.14646902813576493,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.7154115047699933,
+        "orientationPasses": 1
+      },
+      "backend": "wasm",
+      "orientationQueue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "remaining": 0
+      },
+      "preOrientationViolatingFaceCount": 0,
+      "partCounts": {},
+      "pinnedVertexIds": [],
+      "fieldSha256": "836ab8cd17ecb38fa2fd1297ab23b220c29f59eb52f32e1535fc4c8e4da2a142",
+      "retainedNativeCpu": null,
+      "violations": 0
+    },
+    {
+      "ms": 8583,
+      "side": "left",
+      "turn": 2,
+      "phase": "impact",
+      "context": {
+        "actionId": "melee:peck",
+        "elapsedMs": 549.666666666667,
+        "durationMs": 698.6666666666666,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage"
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 7.108984907689104,
+        "rmsTargetErrorPx": 0.39195710430175584,
+        "maximumProjectionPx": 0,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.953303037485379,
+        "orientationPasses": 1
+      },
+      "backend": "wasm",
+      "orientationQueue": {
+        "visits": 0,
+        "projections": 0,
+        "stalled": true,
+        "remaining": 0
+      },
+      "preOrientationViolatingFaceCount": 0,
+      "partCounts": {},
+      "pinnedVertexIds": [],
+      "fieldSha256": "51a52792d8f6a6bda97e0e8c69bda7e5698486196c4807b0330f7a45f510f4c3",
+      "retainedNativeCpu": {
+        "recordedMs": 8583,
+        "rigMs": 0.6999999284744263,
+        "sharedSamplingMs": 0
+      },
+      "violations": 0
+    },
+    {
+      "ms": 8583,
+      "side": "right",
+      "turn": 2,
+      "phase": "impact",
+      "context": {
+        "actionId": "faint",
+        "elapsedMs": 303.0000000000002,
+        "durationMs": 712,
+        "weight": 1,
+        "planted": true,
+        "travel": "stage"
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 128.1379067702292,
+        "rmsTargetErrorPx": 7.63123427558372,
+        "maximumProjectionPx": 126.33818334808976,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.060579939096390124,
+        "orientationPasses": 76
+      },
+      "backend": "wasm",
+      "orientationQueue": {
+        "visits": 73432,
+        "projections": 73432,
+        "stalled": false,
+        "remaining": 83
+      },
+      "preOrientationViolatingFaceCount": 85,
+      "partCounts": {
+        "near-shin": 18,
+        "near-thigh": 33,
+        "far-shin": 10,
+        "far-thigh": 34
+      },
+      "pinnedVertexIds": [
+        293,
+        294,
+        295,
+        350,
+        359,
+        393,
+        395,
+        430,
+        463,
+        466,
+        484,
+        485,
+        503,
+        506,
+        509,
+        513,
+        575,
+        577,
+        659,
+        663,
+        665,
+        685,
+        687
+      ],
+      "fieldSha256": "659e1868d7895df31141d72cd4204c23ca9a48e5698885b6b01912edbeaa8496",
+      "retainedNativeCpu": {
+        "recordedMs": 8583,
+        "rigMs": 37.700000047683716,
+        "sharedSamplingMs": 0
+      },
+      "violations": 85
+    },
+    {
+      "ms": 8783,
+      "side": "left",
+      "turn": 2,
+      "phase": "return",
+      "context": {
+        "actionId": "approach:flight",
+        "elapsedMs": 82.1368421052639,
+        "durationMs": 612,
+        "weight": 1,
+        "planted": false,
+        "travel": "stage"
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 127.12737432137395,
+        "rmsTargetErrorPx": 7.678959946398573,
+        "maximumProjectionPx": 125.33608018935634,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.06258789271450825,
+        "orientationPasses": 76
+      },
+      "backend": "wasm",
+      "orientationQueue": {
+        "visits": 73940,
+        "projections": 73940,
+        "stalled": false,
+        "remaining": 82
+      },
+      "preOrientationViolatingFaceCount": 83,
+      "partCounts": {
+        "near-shin": 17,
+        "near-thigh": 33,
+        "far-shin": 9,
+        "far-thigh": 34
+      },
+      "pinnedVertexIds": [
+        293,
+        294,
+        295,
+        359,
+        393,
+        395,
+        430,
+        463,
+        466,
+        484,
+        485,
+        503,
+        506,
+        509,
+        513,
+        575,
+        577,
+        659,
+        663,
+        665,
+        685,
+        687
+      ],
+      "fieldSha256": "9534af8f9613b47071745d4aecbb5313e00eef1fe883c5771f6485c664afad6b",
+      "retainedNativeCpu": {
+        "recordedMs": 8783,
+        "rigMs": 38.700000047683716,
+        "sharedSamplingMs": 0.10000002384185791
+      },
+      "violations": 83
+    },
+    {
+      "ms": 8783,
+      "side": "right",
+      "turn": 2,
+      "phase": "return",
+      "context": {
+        "actionId": "faint",
+        "elapsedMs": 503.0000000000002,
+        "durationMs": 712,
+        "weight": 1,
+        "planted": true,
+        "travel": "stage"
+      },
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 193.91321069812295,
+        "rmsTargetErrorPx": 14.112843399976663,
+        "maximumProjectionPx": 176.93018647340895,
+        "flippedTriangles": 0,
+        "minimumAreaRatio": 0.060286182519435925,
+        "orientationPasses": 67
+      },
+      "backend": "wasm",
+      "orientationQueue": {
+        "visits": 14727,
+        "projections": 14727,
+        "stalled": false,
+        "remaining": 105
+      },
+      "preOrientationViolatingFaceCount": 178,
+      "partCounts": {
+        "near-shin": 14,
+        "near-thigh": 23,
+        "far-shin": 7,
+        "far-thigh": 31,
+        "near-wing-shoulder": 2,
+        "tail": 104,
+        "chest": 5
+      },
+      "pinnedVertexIds": [
+        293,
+        294,
+        295,
+        359,
+        393,
+        395,
+        430,
+        463,
+        466,
+        484,
+        485,
+        503,
+        506,
+        509,
+        513,
+        575,
+        577,
+        659,
+        663,
+        665,
+        685,
+        687,
+        2588,
+        2593,
+        2594,
+        2595,
+        2602,
+        2606,
+        2608,
+        2610,
+        2612,
+        2614,
+        2624,
+        2625,
+        2641,
+        2646,
+        2647,
+        2648,
+        2653,
+        2663,
+        2701,
+        2706,
+        2777,
+        2783,
+        2785,
+        2917,
+        2918
+      ],
+      "fieldSha256": "1a087b6cde891ef461c101248bfa27e687ae2bc63e9a67d1318e38e6db6f8b6f",
+      "retainedNativeCpu": {
+        "recordedMs": 8783,
+        "rigMs": 9.299999952316284,
+        "sharedSamplingMs": 0.10000002384185791
+      },
+      "violations": 178
+    }
+  ]
+}

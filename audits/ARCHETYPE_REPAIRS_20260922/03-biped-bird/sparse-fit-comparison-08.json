@@ -1,0 +1,4571 @@
+{
+  "schema": "cf.sparse-changed-fit-comparison/v1",
+  "scope": "Fit-08 only: replay the twelve retained native resolved poses against the unchanged pose/ARAP/publication owners. Fit-05 numbers are historical recorded diagnosis, not rerun. No stage battery, film, or CPU certificate.",
+  "semanticsParity": "EXACT",
+  "baseline": {
+    "recordRecipeHash": "302a526d5d0fdd6cf5093ed3d680b3001b914cde5668552c5613d736da41e8d8",
+    "bindingHash": "7c37a44b196c36464680238d17c65a0ffe40c2b3bdc7c86659f355ea145f6f67"
+  },
+  "candidate": {
+    "recordRecipeHash": "4e806fc94a2cd6fef82e53e4482531d4795453c68a3e23eea931102ccca07422",
+    "bindingHash": "85cfa087a72df27c32f70ce4e7c7f13b65e8b23c5af7e3eed3fa9fcaf20bea6b",
+    "vertices": 3628,
+    "triangles": 6187,
+    "pins": 1983
+  },
+  "findings": [
+    {
+      "ms": 0,
+      "side": "left",
+      "turn": 0,
+      "phase": "ready",
+      "resolvedPoseSha256": "e368308cc3ff08da1156d46c290887a59561d69e9806492ed8b51b313bf167d5",
+      "baseline": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 0.15238826694703111,
+          "rmsTargetErrorPx": 0.008336719306105553,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.999366251109905,
+          "orientationPasses": 1
+        },
+        "orientationQueue": {
+          "visits": 0,
+          "projections": 0,
+          "stalled": true,
+          "remaining": 0
+        },
+        "preOrientationViolatingFaceCount": 0,
+        "partCounts": {},
+        "fieldSha256": "003a14a325d8c4d0d6e258f28846c1d74001e42e9ca1fb157d253eaebef6944e"
+      },
+      "candidate": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 0.1524370850510826,
+          "rmsTargetErrorPx": 0.008453626232013805,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.9993665148919921,
+          "orientationPasses": 1
+        },
+        "orientationQueue": {
+          "visits": 0,
+          "projections": 0,
+          "stalled": true,
+          "remaining": 0
+        },
+        "preOrientationViolatingFaceCount": 0,
+        "partCounts": {},
+        "preOrientationFaces": [],
+        "fieldSha256": "47c7637977e3765ca5fb66b01882b1c86261ff4887c5f4c21243abebb8abc848",
+        "published": true,
+        "refusal": null
+      },
+      "delta": {
+        "orientationPasses": 0,
+        "visits": 0,
+        "projections": 0
+      }
+    },
+    {
+      "ms": 0,
+      "side": "right",
+      "turn": 0,
+      "phase": "ready",
+      "resolvedPoseSha256": "32ae7a692e843d91d8fe2b955295a5f1a23ff02e7dd68e6e99a6cfee180d7f7b",
+      "baseline": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 0.20784387293180726,
+          "rmsTargetErrorPx": 0.011371831131137333,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.9991313022962389,
+          "orientationPasses": 1
+        },
+        "orientationQueue": {
+          "visits": 0,
+          "projections": 0,
+          "stalled": true,
+          "remaining": 0
+        },
+        "preOrientationViolatingFaceCount": 0,
+        "partCounts": {},
+        "fieldSha256": "ff5a093d26669a1793f3f7e75f1e8575705d15ce7e41dc2cb1d4a47e9b61affc"
+      },
+      "candidate": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 0.20793670986804572,
+          "rmsTargetErrorPx": 0.011531562958494645,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.9991314586079684,
+          "orientationPasses": 1
+        },
+        "orientationQueue": {
+          "visits": 0,
+          "projections": 0,
+          "stalled": true,
+          "remaining": 0
+        },
+        "preOrientationViolatingFaceCount": 0,
+        "partCounts": {},
+        "preOrientationFaces": [],
+        "fieldSha256": "46372a42bb432112d56950c369875836e547d16fa87afdeb46453750a580fe43",
+        "published": true,
+        "refusal": null
+      },
+      "delta": {
+        "orientationPasses": 0,
+        "visits": 0,
+        "projections": 0
+      }
+    },
+    {
+      "ms": 1206,
+      "side": "left",
+      "turn": 0,
+      "phase": "approach",
+      "resolvedPoseSha256": "3eddc5fd2e2bf5b5e9eea2f1fd69df22680d1a1664948d44472acb4e64047ff7",
+      "baseline": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 110.87612162558652,
+          "rmsTargetErrorPx": 8.23920820740825,
+          "maximumProjectionPx": 106.00519836438828,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060809783366053805,
+          "orientationPasses": 70
+        },
+        "orientationQueue": {
+          "visits": 33702,
+          "projections": 33702,
+          "stalled": false,
+          "remaining": 99
+        },
+        "preOrientationViolatingFaceCount": 103,
+        "partCounts": {
+          "near-shin": 21,
+          "near-thigh": 40,
+          "far-shin": 12,
+          "far-thigh": 42,
+          "far-wing-flight": 1
+        },
+        "fieldSha256": "732c74f0108afa6d61e1135c9696cbb2d1731430a02364cb8c82a2559c7a45d9"
+      },
+      "candidate": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 107.69988080796035,
+          "rmsTargetErrorPx": 6.619870077857922,
+          "maximumProjectionPx": 69.23056205762556,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060275161008011384,
+          "orientationPasses": 67
+        },
+        "orientationQueue": {
+          "visits": 14899,
+          "projections": 14899,
+          "stalled": false,
+          "remaining": 81
+        },
+        "preOrientationViolatingFaceCount": 69,
+        "partCounts": {
+          "near-shin": 8,
+          "near-thigh": 41,
+          "far-shin": 1,
+          "far-thigh": 23,
+          "far-wing-flight": 1
+        },
+        "preOrientationFaces": [
+          {
+            "triangle": 477,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": -0.024125516421816897
+          },
+          {
+            "triangle": 537,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": 0.0008530793822738225
+          },
+          {
+            "triangle": 538,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": -0.5330402698529042
+          },
+          {
+            "triangle": 539,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": 0.0006675047324882755
+          },
+          {
+            "triangle": 543,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": 0.10591449441597614
+          },
+          {
+            "triangle": 544,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": 0.1184922988661205
+          },
+          {
+            "triangle": 579,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": -0.08664763782211005
+          },
+          {
+            "triangle": 623,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": 0.09453602401137352
+          },
+          {
+            "triangle": 683,
+            "parts": [
+              "far-shin",
+              "far-thigh"
+            ],
+            "preRatio": -0.015481268452383795
+          },
+          {
+            "triangle": 800,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.9923439575334714
+          },
+          {
+            "triangle": 802,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.003311873553807638
+          },
+          {
+            "triangle": 803,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.00008652002324109676
+          },
+          {
+            "triangle": 818,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.14903071561095288
+          },
+          {
+            "triangle": 821,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -3.2335509884068694
+          },
+          {
+            "triangle": 822,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.6271482575594447
+          },
+          {
+            "triangle": 823,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.11956149534114079
+          },
+          {
+            "triangle": 825,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -3.410170259071814
+          },
+          {
+            "triangle": 828,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -4.4038964875777715
+          },
+          {
+            "triangle": 829,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.7666465682282878
+          },
+          {
+            "triangle": 830,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.14356721367742067
+          },
+          {
+            "triangle": 841,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.7085850329363275
+          },
+          {
+            "triangle": 842,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.805055735533635
+          },
+          {
+            "triangle": 843,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.10772843752041185
+          },
+          {
+            "triangle": 844,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.7698294571698527
+          },
+          {
+            "triangle": 845,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.1392655548487624
+          },
+          {
+            "triangle": 846,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.23346109994467237
+          },
+          {
+            "triangle": 848,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.10407142638670225
+          },
+          {
+            "triangle": 900,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.034089115889506756
+          },
+          {
+            "triangle": 905,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.9898343376037224
+          },
+          {
+            "triangle": 929,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.07306503000603123
+          },
+          {
+            "triangle": 939,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.0762091673669745
+          },
+          {
+            "triangle": 943,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.5694568215697473
+          },
+          {
+            "triangle": 944,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.236778862863322
+          },
+          {
+            "triangle": 946,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.28324629999193784
+          },
+          {
+            "triangle": 947,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.4346350038112133
+          },
+          {
+            "triangle": 948,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -4.584070084297696
+          },
+          {
+            "triangle": 950,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.2225087245204812
+          },
+          {
+            "triangle": 959,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.7085850329363275
+          },
+          {
+            "triangle": 962,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.4728160253793283
+          },
+          {
+            "triangle": 963,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.04962577273878156
+          },
+          {
+            "triangle": 964,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.835009056019051
+          },
+          {
+            "triangle": 966,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.24490248582863208
+          },
+          {
+            "triangle": 967,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.2961073068553883
+          },
+          {
+            "triangle": 970,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.020621990870235963
+          },
+          {
+            "triangle": 1018,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.035932446510231
+          },
+          {
+            "triangle": 1039,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.2136190289810216
+          },
+          {
+            "triangle": 1096,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.2516103462356656
+          },
+          {
+            "triangle": 1097,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.5307904284857345
+          },
+          {
+            "triangle": 1100,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.3581806463214385
+          },
+          {
+            "triangle": 1101,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.7760282471402924
+          },
+          {
+            "triangle": 1130,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -2.7942295624937605
+          },
+          {
+            "triangle": 1131,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.5803468075838477
+          },
+          {
+            "triangle": 1144,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.027593376858611546
+          },
+          {
+            "triangle": 1150,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.07016096761461664
+          },
+          {
+            "triangle": 1151,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.27117044772564275
+          },
+          {
+            "triangle": 1152,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.13958783534287572
+          },
+          {
+            "triangle": 1186,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.08708533418334855
+          },
+          {
+            "triangle": 1194,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -4.024845168031501
+          },
+          {
+            "triangle": 1195,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -2.126778347845731
+          },
+          {
+            "triangle": 1196,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.06361998476517254
+          },
+          {
+            "triangle": 1197,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.0684928673050249
+          },
+          {
+            "triangle": 1198,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -4.771344591242561
+          },
+          {
+            "triangle": 1199,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -3.8656320384895952
+          },
+          {
+            "triangle": 1200,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.10109454473085293
+          },
+          {
+            "triangle": 1201,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.2746649478653873
+          },
+          {
+            "triangle": 1227,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -2.0164741540822764
+          },
+          {
+            "triangle": 1229,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.004576241213827583
+          },
+          {
+            "triangle": 1243,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.045828145544885075
+          },
+          {
+            "triangle": 4576,
+            "parts": [
+              "far-wing-flight"
+            ],
+            "preRatio": 0.0396846948857353
+          }
+        ],
+        "fieldSha256": "5b8e28c56c2458e90156f54dfe9ca6d4bd1046a7b044d2904836a0b8fb24a4d6",
+        "published": true,
+        "refusal": null
+      },
+      "delta": {
+        "orientationPasses": -3,
+        "visits": -18803,
+        "projections": -18803
+      }
+    },
+    {
+      "ms": 1206,
+      "side": "right",
+      "turn": 0,
+      "phase": "approach",
+      "resolvedPoseSha256": "496787b0b448b537b1454ec1a8f3becb931125420f248d12cf09dbd96198a9d8",
+      "baseline": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 2.213408545929745,
+          "rmsTargetErrorPx": 0.14646902813576493,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.7154115047699933,
+          "orientationPasses": 1
+        },
+        "orientationQueue": {
+          "visits": 0,
+          "projections": 0,
+          "stalled": true,
+          "remaining": 0
+        },
+        "preOrientationViolatingFaceCount": 0,
+        "partCounts": {},
+        "fieldSha256": "836ab8cd17ecb38fa2fd1297ab23b220c29f59eb52f32e1535fc4c8e4da2a142"
+      },
+      "candidate": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 2.214094083485047,
+          "rmsTargetErrorPx": 0.14843851366875227,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.7153853349539111,
+          "orientationPasses": 1
+        },
+        "orientationQueue": {
+          "visits": 0,
+          "projections": 0,
+          "stalled": true,
+          "remaining": 0
+        },
+        "preOrientationViolatingFaceCount": 0,
+        "partCounts": {},
+        "preOrientationFaces": [],
+        "fieldSha256": "cab520b1685ea91f1ed524a874b8511e1f35b93438a3ee79de6f36cbe2f28e1e",
+        "published": true,
+        "refusal": null
+      },
+      "delta": {
+        "orientationPasses": 0,
+        "visits": 0,
+        "projections": 0
+      }
+    },
+    {
+      "ms": 2333.2,
+      "side": "left",
+      "turn": 0,
+      "phase": "return",
+      "resolvedPoseSha256": "adba91fe03f661899b3a51288fdf019aecc91255ad5c772498d943c3e8af098b",
+      "baseline": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 132.9642545510996,
+          "rmsTargetErrorPx": 8.045197180606344,
+          "maximumProjectionPx": 131.08406582998137,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06022582325513811,
+          "orientationPasses": 75
+        },
+        "orientationQueue": {
+          "visits": 69525,
+          "projections": 69525,
+          "stalled": false,
+          "remaining": 95
+        },
+        "preOrientationViolatingFaceCount": 89,
+        "partCounts": {
+          "near-shin": 19,
+          "near-thigh": 36,
+          "far-shin": 10,
+          "far-thigh": 34
+        },
+        "fieldSha256": "5b6790827f163da967c5513e79cac207d422d37a4193bd1be18c72d1f37d4d13"
+      },
+      "candidate": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 101.4523085591252,
+          "rmsTargetErrorPx": 5.519845540206567,
+          "maximumProjectionPx": 66.2398306700684,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06056660023660414,
+          "orientationPasses": 65
+        },
+        "orientationQueue": {
+          "visits": 1284,
+          "projections": 1284,
+          "stalled": false,
+          "remaining": 62
+        },
+        "preOrientationViolatingFaceCount": 59,
+        "partCounts": {
+          "near-shin": 5,
+          "near-thigh": 36,
+          "far-shin": 1,
+          "far-thigh": 21
+        },
+        "preOrientationFaces": [
+          {
+            "triangle": 477,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": 0.1007061883885607
+          },
+          {
+            "triangle": 537,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": 0.09226661621917026
+          },
+          {
+            "triangle": 538,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": -0.32969236858680495
+          },
+          {
+            "triangle": 539,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": 0.10748578269908432
+          },
+          {
+            "triangle": 579,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": 0.035554925740209346
+          },
+          {
+            "triangle": 683,
+            "parts": [
+              "far-shin",
+              "far-thigh"
+            ],
+            "preRatio": 0.07802408518384658
+          },
+          {
+            "triangle": 800,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.7584032206336323
+          },
+          {
+            "triangle": 802,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.04537814064426095
+          },
+          {
+            "triangle": 803,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.05735461174639255
+          },
+          {
+            "triangle": 818,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.010326499008400254
+          },
+          {
+            "triangle": 821,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.990702676456372
+          },
+          {
+            "triangle": 822,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.3774819866600863
+          },
+          {
+            "triangle": 823,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.008959901354331716
+          },
+          {
+            "triangle": 825,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.9135388222319296
+          },
+          {
+            "triangle": 828,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -3.9918874327291176
+          },
+          {
+            "triangle": 829,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.6130701336023173
+          },
+          {
+            "triangle": 830,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.01210208814588316
+          },
+          {
+            "triangle": 841,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.5539025971476745
+          },
+          {
+            "triangle": 842,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.6145684094089485
+          },
+          {
+            "triangle": 844,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.5057719337502946
+          },
+          {
+            "triangle": 845,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.020496932361447093
+          },
+          {
+            "triangle": 846,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.11634654723685138
+          },
+          {
+            "triangle": 905,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.5490198105720516
+          },
+          {
+            "triangle": 939,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.7963069299597195
+          },
+          {
+            "triangle": 943,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.3348476197954136
+          },
+          {
+            "triangle": 944,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.1323245561563686
+          },
+          {
+            "triangle": 946,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.13092780504081428
+          },
+          {
+            "triangle": 947,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.28965276372396564
+          },
+          {
+            "triangle": 948,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -4.21638155765527
+          },
+          {
+            "triangle": 950,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.06705466426723
+          },
+          {
+            "triangle": 959,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.5539025971476745
+          },
+          {
+            "triangle": 962,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.31397301242436526
+          },
+          {
+            "triangle": 963,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.04775593688192704
+          },
+          {
+            "triangle": 964,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.6267052176295025
+          },
+          {
+            "triangle": 966,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.11122037082289069
+          },
+          {
+            "triangle": 967,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.17179690875058104
+          },
+          {
+            "triangle": 970,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.10082791559686495
+          },
+          {
+            "triangle": 1018,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.871798355901327
+          },
+          {
+            "triangle": 1039,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.9429565498543266
+          },
+          {
+            "triangle": 1096,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.15261126918395518
+          },
+          {
+            "triangle": 1097,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.3898386407494948
+          },
+          {
+            "triangle": 1100,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.2485312471158023
+          },
+          {
+            "triangle": 1101,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.5093845741948264
+          },
+          {
+            "triangle": 1130,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -2.303258393329681
+          },
+          {
+            "triangle": 1131,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.3379380212151641
+          },
+          {
+            "triangle": 1144,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.10654205641739062
+          },
+          {
+            "triangle": 1150,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.016974502550812638
+          },
+          {
+            "triangle": 1151,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.18046654214184238
+          },
+          {
+            "triangle": 1152,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.06517481847329892
+          },
+          {
+            "triangle": 1194,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -3.623229909931724
+          },
+          {
+            "triangle": 1195,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.8632356418673246
+          },
+          {
+            "triangle": 1196,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.04496143999667244
+          },
+          {
+            "triangle": 1197,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.04865171724591954
+          },
+          {
+            "triangle": 1198,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -4.165927413830331
+          },
+          {
+            "triangle": 1199,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -3.427812929289313
+          },
+          {
+            "triangle": 1200,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.05872376640179908
+          },
+          {
+            "triangle": 1201,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.0956126359844383
+          },
+          {
+            "triangle": 1227,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.5653249787568888
+          },
+          {
+            "triangle": 1243,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.020572593963244835
+          }
+        ],
+        "fieldSha256": "ca60cccce26b3183cce8d0e92c4067ab972013d04b856622491ddb78814382aa",
+        "published": true,
+        "refusal": null
+      },
+      "delta": {
+        "orientationPasses": -10,
+        "visits": -68241,
+        "projections": -68241
+      }
+    },
+    {
+      "ms": 2333.2,
+      "side": "right",
+      "turn": 0,
+      "phase": "return",
+      "resolvedPoseSha256": "d815f626c98f2514eb9fcdd20e55b302d398600c62651346f0453481298158db",
+      "baseline": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 8.492076819536193,
+          "rmsTargetErrorPx": 0.4657935823125765,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.9582245087713843,
+          "orientationPasses": 1
+        },
+        "orientationQueue": {
+          "visits": 0,
+          "projections": 0,
+          "stalled": true,
+          "remaining": 0
+        },
+        "preOrientationViolatingFaceCount": 0,
+        "partCounts": {},
+        "fieldSha256": "ada229f68da58c885bc726b54d067164d098ce8cf45bfee09d27a9280640d15d"
+      },
+      "candidate": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 8.494689393871749,
+          "rmsTargetErrorPx": 0.472321354028552,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.9582245087713843,
+          "orientationPasses": 1
+        },
+        "orientationQueue": {
+          "visits": 0,
+          "projections": 0,
+          "stalled": true,
+          "remaining": 0
+        },
+        "preOrientationViolatingFaceCount": 0,
+        "partCounts": {},
+        "preOrientationFaces": [],
+        "fieldSha256": "8893a9b67828d4c0a1773385195b461ef97a1ede4c422d69dcbb267c2883a1e8",
+        "published": true,
+        "refusal": null
+      },
+      "delta": {
+        "orientationPasses": 0,
+        "visits": 0,
+        "projections": 0
+      }
+    },
+    {
+      "ms": 4466.666666666666,
+      "side": "left",
+      "turn": 1,
+      "phase": "approach",
+      "resolvedPoseSha256": "32614e6b5d617fc21c29103ca97ff8afed6ed411b66bd490e8d8ed6e83186e12",
+      "baseline": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 110.87612162558652,
+          "rmsTargetErrorPx": 8.23920820740825,
+          "maximumProjectionPx": 106.00519836438828,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060809783366053805,
+          "orientationPasses": 70
+        },
+        "orientationQueue": {
+          "visits": 33702,
+          "projections": 33702,
+          "stalled": false,
+          "remaining": 99
+        },
+        "preOrientationViolatingFaceCount": 103,
+        "partCounts": {
+          "near-shin": 21,
+          "near-thigh": 40,
+          "far-shin": 12,
+          "far-thigh": 42,
+          "far-wing-flight": 1
+        },
+        "fieldSha256": "732c74f0108afa6d61e1135c9696cbb2d1731430a02364cb8c82a2559c7a45d9"
+      },
+      "candidate": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 107.69988080796035,
+          "rmsTargetErrorPx": 6.619870077857922,
+          "maximumProjectionPx": 69.23056205762556,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060275161008011384,
+          "orientationPasses": 67
+        },
+        "orientationQueue": {
+          "visits": 14899,
+          "projections": 14899,
+          "stalled": false,
+          "remaining": 81
+        },
+        "preOrientationViolatingFaceCount": 69,
+        "partCounts": {
+          "near-shin": 8,
+          "near-thigh": 41,
+          "far-shin": 1,
+          "far-thigh": 23,
+          "far-wing-flight": 1
+        },
+        "preOrientationFaces": [
+          {
+            "triangle": 477,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": -0.024125516421816897
+          },
+          {
+            "triangle": 537,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": 0.0008530793822738225
+          },
+          {
+            "triangle": 538,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": -0.5330402698529042
+          },
+          {
+            "triangle": 539,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": 0.0006675047324882755
+          },
+          {
+            "triangle": 543,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": 0.10591449441597614
+          },
+          {
+            "triangle": 544,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": 0.1184922988661205
+          },
+          {
+            "triangle": 579,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": -0.08664763782211005
+          },
+          {
+            "triangle": 623,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": 0.09453602401137352
+          },
+          {
+            "triangle": 683,
+            "parts": [
+              "far-shin",
+              "far-thigh"
+            ],
+            "preRatio": -0.015481268452383795
+          },
+          {
+            "triangle": 800,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.9923439575334714
+          },
+          {
+            "triangle": 802,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.003311873553807638
+          },
+          {
+            "triangle": 803,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.00008652002324109676
+          },
+          {
+            "triangle": 818,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.14903071561095288
+          },
+          {
+            "triangle": 821,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -3.2335509884068694
+          },
+          {
+            "triangle": 822,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.6271482575594447
+          },
+          {
+            "triangle": 823,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.11956149534114079
+          },
+          {
+            "triangle": 825,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -3.410170259071814
+          },
+          {
+            "triangle": 828,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -4.4038964875777715
+          },
+          {
+            "triangle": 829,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.7666465682282878
+          },
+          {
+            "triangle": 830,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.14356721367742067
+          },
+          {
+            "triangle": 841,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.7085850329363275
+          },
+          {
+            "triangle": 842,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.805055735533635
+          },
+          {
+            "triangle": 843,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.10772843752041185
+          },
+          {
+            "triangle": 844,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.7698294571698527
+          },
+          {
+            "triangle": 845,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.1392655548487624
+          },
+          {
+            "triangle": 846,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.23346109994467237
+          },
+          {
+            "triangle": 848,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.10407142638670225
+          },
+          {
+            "triangle": 900,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.034089115889506756
+          },
+          {
+            "triangle": 905,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.9898343376037224
+          },
+          {
+            "triangle": 929,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.07306503000603123
+          },
+          {
+            "triangle": 939,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.0762091673669745
+          },
+          {
+            "triangle": 943,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.5694568215697473
+          },
+          {
+            "triangle": 944,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.236778862863322
+          },
+          {
+            "triangle": 946,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.28324629999193784
+          },
+          {
+            "triangle": 947,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.4346350038112133
+          },
+          {
+            "triangle": 948,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -4.584070084297696
+          },
+          {
+            "triangle": 950,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.2225087245204812
+          },
+          {
+            "triangle": 959,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.7085850329363275
+          },
+          {
+            "triangle": 962,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.4728160253793283
+          },
+          {
+            "triangle": 963,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.04962577273878156
+          },
+          {
+            "triangle": 964,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.835009056019051
+          },
+          {
+            "triangle": 966,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.24490248582863208
+          },
+          {
+            "triangle": 967,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.2961073068553883
+          },
+          {
+            "triangle": 970,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.020621990870235963
+          },
+          {
+            "triangle": 1018,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.035932446510231
+          },
+          {
+            "triangle": 1039,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.2136190289810216
+          },
+          {
+            "triangle": 1096,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.2516103462356656
+          },
+          {
+            "triangle": 1097,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.5307904284857345
+          },
+          {
+            "triangle": 1100,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.3581806463214385
+          },
+          {
+            "triangle": 1101,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.7760282471402924
+          },
+          {
+            "triangle": 1130,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -2.7942295624937605
+          },
+          {
+            "triangle": 1131,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.5803468075838477
+          },
+          {
+            "triangle": 1144,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.027593376858611546
+          },
+          {
+            "triangle": 1150,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.07016096761461664
+          },
+          {
+            "triangle": 1151,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.27117044772564275
+          },
+          {
+            "triangle": 1152,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.13958783534287572
+          },
+          {
+            "triangle": 1186,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.08708533418334855
+          },
+          {
+            "triangle": 1194,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -4.024845168031501
+          },
+          {
+            "triangle": 1195,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -2.126778347845731
+          },
+          {
+            "triangle": 1196,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.06361998476517254
+          },
+          {
+            "triangle": 1197,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.0684928673050249
+          },
+          {
+            "triangle": 1198,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -4.771344591242561
+          },
+          {
+            "triangle": 1199,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -3.8656320384895952
+          },
+          {
+            "triangle": 1200,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.10109454473085293
+          },
+          {
+            "triangle": 1201,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.2746649478653873
+          },
+          {
+            "triangle": 1227,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -2.0164741540822764
+          },
+          {
+            "triangle": 1229,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.004576241213827583
+          },
+          {
+            "triangle": 1243,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.045828145544885075
+          },
+          {
+            "triangle": 4576,
+            "parts": [
+              "far-wing-flight"
+            ],
+            "preRatio": 0.0396846948857353
+          }
+        ],
+        "fieldSha256": "5b8e28c56c2458e90156f54dfe9ca6d4bd1046a7b044d2904836a0b8fb24a4d6",
+        "published": true,
+        "refusal": null
+      },
+      "delta": {
+        "orientationPasses": -3,
+        "visits": -18803,
+        "projections": -18803
+      }
+    },
+    {
+      "ms": 4466.666666666666,
+      "side": "right",
+      "turn": 1,
+      "phase": "approach",
+      "resolvedPoseSha256": "538e6ad2639d607646d73830cbfc563861019b0d411c7660c1bb9ecbf687d226",
+      "baseline": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 2.213408545929745,
+          "rmsTargetErrorPx": 0.14646902813576493,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.7154115047699933,
+          "orientationPasses": 1
+        },
+        "orientationQueue": {
+          "visits": 0,
+          "projections": 0,
+          "stalled": true,
+          "remaining": 0
+        },
+        "preOrientationViolatingFaceCount": 0,
+        "partCounts": {},
+        "fieldSha256": "836ab8cd17ecb38fa2fd1297ab23b220c29f59eb52f32e1535fc4c8e4da2a142"
+      },
+      "candidate": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 2.214094083485047,
+          "rmsTargetErrorPx": 0.14843851366875227,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.7153853349539111,
+          "orientationPasses": 1
+        },
+        "orientationQueue": {
+          "visits": 0,
+          "projections": 0,
+          "stalled": true,
+          "remaining": 0
+        },
+        "preOrientationViolatingFaceCount": 0,
+        "partCounts": {},
+        "preOrientationFaces": [],
+        "fieldSha256": "cab520b1685ea91f1ed524a874b8511e1f35b93438a3ee79de6f36cbe2f28e1e",
+        "published": true,
+        "refusal": null
+      },
+      "delta": {
+        "orientationPasses": 0,
+        "visits": 0,
+        "projections": 0
+      }
+    },
+    {
+      "ms": 8583,
+      "side": "left",
+      "turn": 2,
+      "phase": "impact",
+      "resolvedPoseSha256": "e4db11f2ffba7aef16167fae8fa7478df39ca1c321cedaac66ae2132e4da0b91",
+      "baseline": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 7.108984907689104,
+          "rmsTargetErrorPx": 0.39195710430175584,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.953303037485379,
+          "orientationPasses": 1
+        },
+        "orientationQueue": {
+          "visits": 0,
+          "projections": 0,
+          "stalled": true,
+          "remaining": 0
+        },
+        "preOrientationViolatingFaceCount": 0,
+        "partCounts": {},
+        "fieldSha256": "51a52792d8f6a6bda97e0e8c69bda7e5698486196c4807b0330f7a45f510f4c3"
+      },
+      "candidate": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 7.111133608650502,
+          "rmsTargetErrorPx": 0.39744770755286213,
+          "maximumProjectionPx": 0,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.95330302422025,
+          "orientationPasses": 1
+        },
+        "orientationQueue": {
+          "visits": 0,
+          "projections": 0,
+          "stalled": true,
+          "remaining": 0
+        },
+        "preOrientationViolatingFaceCount": 0,
+        "partCounts": {},
+        "preOrientationFaces": [],
+        "fieldSha256": "d0d49425d76fbcaa2fe6b93accb6559edb64c87a35bd61396b944bb5c71e806e",
+        "published": true,
+        "refusal": null
+      },
+      "delta": {
+        "orientationPasses": 0,
+        "visits": 0,
+        "projections": 0
+      }
+    },
+    {
+      "ms": 8583,
+      "side": "right",
+      "turn": 2,
+      "phase": "impact",
+      "resolvedPoseSha256": "2bfe1b88d04d4ecd921a0e5ed903815bf4bd623049883c48ef50811359f90741",
+      "baseline": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 128.1379067702292,
+          "rmsTargetErrorPx": 7.63123427558372,
+          "maximumProjectionPx": 126.33818334808976,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060579939096390124,
+          "orientationPasses": 76
+        },
+        "orientationQueue": {
+          "visits": 73432,
+          "projections": 73432,
+          "stalled": false,
+          "remaining": 83
+        },
+        "preOrientationViolatingFaceCount": 85,
+        "partCounts": {
+          "near-shin": 18,
+          "near-thigh": 33,
+          "far-shin": 10,
+          "far-thigh": 34
+        },
+        "fieldSha256": "659e1868d7895df31141d72cd4204c23ca9a48e5698885b6b01912edbeaa8496"
+      },
+      "candidate": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 96.73534544883962,
+          "rmsTargetErrorPx": 5.254711512436611,
+          "maximumProjectionPx": 62.91580195711093,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060954305654694486,
+          "orientationPasses": 65
+        },
+        "orientationQueue": {
+          "visits": 350,
+          "projections": 350,
+          "stalled": false,
+          "remaining": 71
+        },
+        "preOrientationViolatingFaceCount": 61,
+        "partCounts": {
+          "near-shin": 6,
+          "near-thigh": 37,
+          "far-shin": 1,
+          "far-thigh": 21
+        },
+        "preOrientationFaces": [
+          {
+            "triangle": 537,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": 0.0031893346759310328
+          },
+          {
+            "triangle": 538,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": -0.4927033618665183
+          },
+          {
+            "triangle": 539,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": 0.029206471792887177
+          },
+          {
+            "triangle": 543,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": 0.1194424375133597
+          },
+          {
+            "triangle": 579,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": 0.11063843712920379
+          },
+          {
+            "triangle": 623,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": 0.11219525101626467
+          },
+          {
+            "triangle": 683,
+            "parts": [
+              "far-shin",
+              "far-thigh"
+            ],
+            "preRatio": 0.011650505232010014
+          },
+          {
+            "triangle": 800,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.7255323396478162
+          },
+          {
+            "triangle": 802,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.07128070485413186
+          },
+          {
+            "triangle": 803,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.08103576920219852
+          },
+          {
+            "triangle": 818,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.041427608815802736
+          },
+          {
+            "triangle": 821,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.8393504015229705
+          },
+          {
+            "triangle": 822,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.2220502079825193
+          },
+          {
+            "triangle": 823,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.05605976152689518
+          },
+          {
+            "triangle": 825,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.616292896354895
+          },
+          {
+            "triangle": 828,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -3.637029020799298
+          },
+          {
+            "triangle": 829,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.4950631781767358
+          },
+          {
+            "triangle": 830,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.05645829806659373
+          },
+          {
+            "triangle": 841,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.5356440264109235
+          },
+          {
+            "triangle": 842,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.5836640041113555
+          },
+          {
+            "triangle": 844,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.4725031850448227
+          },
+          {
+            "triangle": 845,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.0035860972981112686
+          },
+          {
+            "triangle": 846,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.09392583430630053
+          },
+          {
+            "triangle": 905,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.5753216174863707
+          },
+          {
+            "triangle": 939,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.6954437491592088
+          },
+          {
+            "triangle": 943,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.2102163644504447
+          },
+          {
+            "triangle": 944,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.0693083043543155
+          },
+          {
+            "triangle": 946,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.07577655503424101
+          },
+          {
+            "triangle": 947,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.2189535504810129
+          },
+          {
+            "triangle": 948,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -4.00493027627318
+          },
+          {
+            "triangle": 950,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.0054500842189249745
+          },
+          {
+            "triangle": 959,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.5356427622880816
+          },
+          {
+            "triangle": 962,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.2917928433427741
+          },
+          {
+            "triangle": 963,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.06760771023987071
+          },
+          {
+            "triangle": 964,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.5831777728608831
+          },
+          {
+            "triangle": 966,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.08677297858509625
+          },
+          {
+            "triangle": 967,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.1544184848557881
+          },
+          {
+            "triangle": 970,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.11790547689372202
+          },
+          {
+            "triangle": 1018,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.8545638386740417
+          },
+          {
+            "triangle": 1032,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.10515730939255312
+          },
+          {
+            "triangle": 1039,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.8999321331234726
+          },
+          {
+            "triangle": 1096,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.13393586243580297
+          },
+          {
+            "triangle": 1097,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.3630407229880062
+          },
+          {
+            "triangle": 1100,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.233873022171163
+          },
+          {
+            "triangle": 1101,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.4776790374663327
+          },
+          {
+            "triangle": 1130,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -2.309957090369938
+          },
+          {
+            "triangle": 1131,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.3190094122486025
+          },
+          {
+            "triangle": 1144,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.05015966939904252
+          },
+          {
+            "triangle": 1150,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.04586122382192167
+          },
+          {
+            "triangle": 1151,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.2459184795458522
+          },
+          {
+            "triangle": 1152,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.11946677770485706
+          },
+          {
+            "triangle": 1194,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -3.57536458607407
+          },
+          {
+            "triangle": 1195,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.830456761649693
+          },
+          {
+            "triangle": 1196,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.060300060049578545
+          },
+          {
+            "triangle": 1197,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.06529260020486673
+          },
+          {
+            "triangle": 1198,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -4.073729247089405
+          },
+          {
+            "triangle": 1199,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -3.3334934359366684
+          },
+          {
+            "triangle": 1200,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.07220963385563525
+          },
+          {
+            "triangle": 1201,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.08853310950199017
+          },
+          {
+            "triangle": 1227,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.631088235802814
+          },
+          {
+            "triangle": 1243,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.027511819053372074
+          }
+        ],
+        "fieldSha256": "4e7e1e7e5278f36c4edf1d8540b4b934e86c2455a4b8d3ee9a7a3ef0a7a1ec07",
+        "published": true,
+        "refusal": null
+      },
+      "delta": {
+        "orientationPasses": -11,
+        "visits": -73082,
+        "projections": -73082
+      }
+    },
+    {
+      "ms": 8783,
+      "side": "left",
+      "turn": 2,
+      "phase": "return",
+      "resolvedPoseSha256": "769882216010506018d65a0df15fba2e00e90c7a82ef1edb4b558f9cdc17afee",
+      "baseline": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 127.12737432137395,
+          "rmsTargetErrorPx": 7.678959946398573,
+          "maximumProjectionPx": 125.33608018935634,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06258789271450825,
+          "orientationPasses": 76
+        },
+        "orientationQueue": {
+          "visits": 73940,
+          "projections": 73940,
+          "stalled": false,
+          "remaining": 82
+        },
+        "preOrientationViolatingFaceCount": 83,
+        "partCounts": {
+          "near-shin": 17,
+          "near-thigh": 33,
+          "far-shin": 9,
+          "far-thigh": 34
+        },
+        "fieldSha256": "9534af8f9613b47071745d4aecbb5313e00eef1fe883c5771f6485c664afad6b"
+      },
+      "candidate": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 99.85714321159065,
+          "rmsTargetErrorPx": 5.352379506421368,
+          "maximumProjectionPx": 65.43501679455822,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06227287353712107,
+          "orientationPasses": 65
+        },
+        "orientationQueue": {
+          "visits": 604,
+          "projections": 604,
+          "stalled": false,
+          "remaining": 61
+        },
+        "preOrientationViolatingFaceCount": 56,
+        "partCounts": {
+          "near-shin": 3,
+          "near-thigh": 35,
+          "far-shin": 1,
+          "far-thigh": 20
+        },
+        "preOrientationFaces": [
+          {
+            "triangle": 537,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": 0.11722966140427053
+          },
+          {
+            "triangle": 538,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": -0.2767953421873077
+          },
+          {
+            "triangle": 579,
+            "parts": [
+              "near-shin",
+              "near-thigh"
+            ],
+            "preRatio": 0.06510886936507176
+          },
+          {
+            "triangle": 683,
+            "parts": [
+              "far-shin",
+              "far-thigh"
+            ],
+            "preRatio": 0.10145140052938441
+          },
+          {
+            "triangle": 800,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.7077783111191336
+          },
+          {
+            "triangle": 802,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.06420526411166148
+          },
+          {
+            "triangle": 803,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.07759419748308095
+          },
+          {
+            "triangle": 818,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.02379312664634185
+          },
+          {
+            "triangle": 821,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.9224239981581555
+          },
+          {
+            "triangle": 822,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.3128707742847205
+          },
+          {
+            "triangle": 823,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.04083887397517398
+          },
+          {
+            "triangle": 825,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.790348394820271
+          },
+          {
+            "triangle": 828,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -3.8855458041363975
+          },
+          {
+            "triangle": 829,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.5756590019807677
+          },
+          {
+            "triangle": 830,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.020885316456703676
+          },
+          {
+            "triangle": 841,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.5210570138599698
+          },
+          {
+            "triangle": 842,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.5717534984928602
+          },
+          {
+            "triangle": 844,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.448470086025498
+          },
+          {
+            "triangle": 845,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.009252183608892814
+          },
+          {
+            "triangle": 846,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.08760511850356657
+          },
+          {
+            "triangle": 905,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.4416037464025124
+          },
+          {
+            "triangle": 930,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.11876944350949423
+          },
+          {
+            "triangle": 939,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.727266692502401
+          },
+          {
+            "triangle": 943,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.2784468364508534
+          },
+          {
+            "triangle": 944,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.101210383153792
+          },
+          {
+            "triangle": 946,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.09255906216450621
+          },
+          {
+            "triangle": 947,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.2538557475873274
+          },
+          {
+            "triangle": 948,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -4.117553427665225
+          },
+          {
+            "triangle": 950,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.028311469139684693
+          },
+          {
+            "triangle": 959,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.5210570138599698
+          },
+          {
+            "triangle": 962,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.27995176697740903
+          },
+          {
+            "triangle": 963,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.07067764990177344
+          },
+          {
+            "triangle": 964,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.5717281541986685
+          },
+          {
+            "triangle": 966,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.07850779671770206
+          },
+          {
+            "triangle": 967,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.14194789271814862
+          },
+          {
+            "triangle": 1018,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.8283431025389479
+          },
+          {
+            "triangle": 1039,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.8748057092001078
+          },
+          {
+            "triangle": 1096,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.12817904992875226
+          },
+          {
+            "triangle": 1097,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.3546508883730957
+          },
+          {
+            "triangle": 1100,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.2205663784061807
+          },
+          {
+            "triangle": 1101,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.4416765968671128
+          },
+          {
+            "triangle": 1130,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -2.181507544815197
+          },
+          {
+            "triangle": 1131,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.27891536576422465
+          },
+          {
+            "triangle": 1150,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.03992452159134982
+          },
+          {
+            "triangle": 1151,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.15642419165088162
+          },
+          {
+            "triangle": 1152,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.04528068053896389
+          },
+          {
+            "triangle": 1194,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -3.520471630008834
+          },
+          {
+            "triangle": 1195,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.8035626707752161
+          },
+          {
+            "triangle": 1196,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.07046229571796843
+          },
+          {
+            "triangle": 1197,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.07608880900829458
+          },
+          {
+            "triangle": 1198,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -4.008179649628068
+          },
+          {
+            "triangle": 1199,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -3.316852432278832
+          },
+          {
+            "triangle": 1200,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.09654601745756436
+          },
+          {
+            "triangle": 1201,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.05211716636105134
+          },
+          {
+            "triangle": 1227,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.4550928168009243
+          },
+          {
+            "triangle": 1243,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.03872114788060143
+          }
+        ],
+        "fieldSha256": "51baa3a6f452e337db5f2ef8c27c3491c615d290ceb5ae9184f0a8f795443c94",
+        "published": true,
+        "refusal": null
+      },
+      "delta": {
+        "orientationPasses": -11,
+        "visits": -73336,
+        "projections": -73336
+      }
+    },
+    {
+      "ms": 8783,
+      "side": "right",
+      "turn": 2,
+      "phase": "return",
+      "resolvedPoseSha256": "f7e937710a0a3564df5ffa9deb405720c82adbf6597d5467732707a61c60ba2b",
+      "baseline": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 193.91321069812295,
+          "rmsTargetErrorPx": 14.112843399976663,
+          "maximumProjectionPx": 176.93018647340895,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060286182519435925,
+          "orientationPasses": 67
+        },
+        "orientationQueue": {
+          "visits": 14727,
+          "projections": 14727,
+          "stalled": false,
+          "remaining": 105
+        },
+        "preOrientationViolatingFaceCount": 178,
+        "partCounts": {
+          "near-shin": 14,
+          "near-thigh": 23,
+          "far-shin": 7,
+          "far-thigh": 31,
+          "near-wing-shoulder": 2,
+          "tail": 104,
+          "chest": 5
+        },
+        "fieldSha256": "1a087b6cde891ef461c101248bfa27e687ae2bc63e9a67d1318e38e6db6f8b6f"
+      },
+      "candidate": {
+        "stats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 193.63428833975055,
+          "rmsTargetErrorPx": 14.339884657732659,
+          "maximumProjectionPx": 176.67976098287457,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.060267424814925884,
+          "orientationPasses": 67
+        },
+        "orientationQueue": {
+          "visits": 14843,
+          "projections": 14843,
+          "stalled": false,
+          "remaining": 98
+        },
+        "preOrientationViolatingFaceCount": 148,
+        "partCounts": {
+          "near-shin": 1,
+          "near-thigh": 23,
+          "far-thigh": 13,
+          "near-wing-shoulder": 2,
+          "tail": 104,
+          "chest": 5
+        },
+        "preOrientationFaces": [
+          {
+            "triangle": 538,
+            "parts": [
+              "near-shin"
+            ],
+            "preRatio": 0.03420349677053895
+          },
+          {
+            "triangle": 800,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.5556129049953934
+          },
+          {
+            "triangle": 821,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -2.2978998576695577
+          },
+          {
+            "triangle": 822,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.8695309299130026
+          },
+          {
+            "triangle": 825,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.9687991093270674
+          },
+          {
+            "triangle": 828,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -3.201381693357396
+          },
+          {
+            "triangle": 829,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.4061869446805596
+          },
+          {
+            "triangle": 841,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.4096151805364142
+          },
+          {
+            "triangle": 842,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.37258323556541845
+          },
+          {
+            "triangle": 844,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.2607323168507463
+          },
+          {
+            "triangle": 846,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.07842408094390095
+          },
+          {
+            "triangle": 905,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.797995757292387
+          },
+          {
+            "triangle": 939,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.2787662616848864
+          },
+          {
+            "triangle": 943,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.9846901888824161
+          },
+          {
+            "triangle": 944,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.8187311828510206
+          },
+          {
+            "triangle": 947,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.07693872167022872
+          },
+          {
+            "triangle": 948,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -3.5026090749523004
+          },
+          {
+            "triangle": 959,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.4096165251484868
+          },
+          {
+            "triangle": 962,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.14087288897565875
+          },
+          {
+            "triangle": 964,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.2793864273435473
+          },
+          {
+            "triangle": 966,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.10754951912720621
+          },
+          {
+            "triangle": 967,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": 0.023961685351678176
+          },
+          {
+            "triangle": 1018,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -0.534371719310383
+          },
+          {
+            "triangle": 1039,
+            "parts": [
+              "near-thigh"
+            ],
+            "preRatio": -1.4653477036790823
+          },
+          {
+            "triangle": 1096,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.02792555598927532
+          },
+          {
+            "triangle": 1097,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.13399555025471288
+          },
+          {
+            "triangle": 1100,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.9991947946693729
+          },
+          {
+            "triangle": 1101,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.0003946979793725
+          },
+          {
+            "triangle": 1130,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.4447482425745715
+          },
+          {
+            "triangle": 1131,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.06822218415959304
+          },
+          {
+            "triangle": 1151,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.0021683694965490214
+          },
+          {
+            "triangle": 1152,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": 0.088707223421847
+          },
+          {
+            "triangle": 1194,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -2.8538719639298966
+          },
+          {
+            "triangle": 1195,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -1.489390202696055
+          },
+          {
+            "triangle": 1198,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -3.0035462503843355
+          },
+          {
+            "triangle": 1199,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -2.615696522658294
+          },
+          {
+            "triangle": 1227,
+            "parts": [
+              "far-thigh"
+            ],
+            "preRatio": -0.8058768376027082
+          },
+          {
+            "triangle": 2215,
+            "parts": [
+              "near-wing-shoulder"
+            ],
+            "preRatio": -0.21193463565325443
+          },
+          {
+            "triangle": 2394,
+            "parts": [
+              "near-wing-shoulder"
+            ],
+            "preRatio": -0.19949271206039104
+          },
+          {
+            "triangle": 4661,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.607867101721136
+          },
+          {
+            "triangle": 4662,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -5.229494249593554
+          },
+          {
+            "triangle": 4663,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.217003557619006
+          },
+          {
+            "triangle": 4671,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -4.353276187930638
+          },
+          {
+            "triangle": 4674,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.8917457993512511
+          },
+          {
+            "triangle": 4676,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -5.2143160440647005
+          },
+          {
+            "triangle": 4677,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -6.088232953179598
+          },
+          {
+            "triangle": 4678,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.888741269427839
+          },
+          {
+            "triangle": 4679,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -5.672447474048275
+          },
+          {
+            "triangle": 4680,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.2719855889585734
+          },
+          {
+            "triangle": 4681,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.358837338788077
+          },
+          {
+            "triangle": 4682,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -3.000080331298258
+          },
+          {
+            "triangle": 4683,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.4161736757758074
+          },
+          {
+            "triangle": 4687,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -3.935359856146179
+          },
+          {
+            "triangle": 4688,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -6.585624728962895
+          },
+          {
+            "triangle": 4689,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -4.132636208745908
+          },
+          {
+            "triangle": 4690,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -4.991393924244557
+          },
+          {
+            "triangle": 4691,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.646082378363066
+          },
+          {
+            "triangle": 4692,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -3.7678642809603367
+          },
+          {
+            "triangle": 4693,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.9326390456529934
+          },
+          {
+            "triangle": 4694,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.5166836944128326
+          },
+          {
+            "triangle": 4695,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -3.699943174308378
+          },
+          {
+            "triangle": 4696,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.1194831179576332
+          },
+          {
+            "triangle": 4697,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -3.519310294931765
+          },
+          {
+            "triangle": 4698,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.517608670168013
+          },
+          {
+            "triangle": 4699,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.684795445187848
+          },
+          {
+            "triangle": 4700,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.4936823527369866
+          },
+          {
+            "triangle": 4701,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.736379063493002
+          },
+          {
+            "triangle": 4702,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.26937711355075633
+          },
+          {
+            "triangle": 4703,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.8007101493753574
+          },
+          {
+            "triangle": 4704,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.2546356363940623
+          },
+          {
+            "triangle": 4705,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.5101626285168835
+          },
+          {
+            "triangle": 4706,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": 0.05354429453000444
+          },
+          {
+            "triangle": 4707,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.7483838762298651
+          },
+          {
+            "triangle": 4709,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.07951587093424144
+          },
+          {
+            "triangle": 4720,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -4.4347037326412915
+          },
+          {
+            "triangle": 4721,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -4.395399587180646
+          },
+          {
+            "triangle": 4722,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.1256892279708448
+          },
+          {
+            "triangle": 4723,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -5.490183034873478
+          },
+          {
+            "triangle": 4724,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.011846400707181
+          },
+          {
+            "triangle": 4725,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.059522324235206
+          },
+          {
+            "triangle": 4726,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.5757538548953276
+          },
+          {
+            "triangle": 4750,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.2761510412998187
+          },
+          {
+            "triangle": 4752,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.07143698437006384
+          },
+          {
+            "triangle": 4753,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": 0.0833308961167245
+          },
+          {
+            "triangle": 4756,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.3044674006397948
+          },
+          {
+            "triangle": 4758,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.08334419784339947
+          },
+          {
+            "triangle": 4819,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": 0.07122603378385793
+          },
+          {
+            "triangle": 4829,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.8780602959963045
+          },
+          {
+            "triangle": 4951,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.1945924625597906
+          },
+          {
+            "triangle": 4952,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.4683711227833691
+          },
+          {
+            "triangle": 4953,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.22873627579516234
+          },
+          {
+            "triangle": 4954,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.8566857694767515
+          },
+          {
+            "triangle": 4955,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.9778830721080575
+          },
+          {
+            "triangle": 4956,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.0333345226051986
+          },
+          {
+            "triangle": 4968,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.6078752766510274
+          },
+          {
+            "triangle": 4970,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.8904802857531897
+          },
+          {
+            "triangle": 4971,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.273526033167796
+          },
+          {
+            "triangle": 4974,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -4.353276677950584
+          },
+          {
+            "triangle": 4976,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -5.214308299045165
+          },
+          {
+            "triangle": 4978,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.5400842223190305
+          },
+          {
+            "triangle": 4979,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -5.368689427662699
+          },
+          {
+            "triangle": 4980,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.7280307707945454
+          },
+          {
+            "triangle": 4981,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.0811774886366434
+          },
+          {
+            "triangle": 4982,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.341466292298352
+          },
+          {
+            "triangle": 4985,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -3.935359856146179
+          },
+          {
+            "triangle": 4987,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -3.313970739069348
+          },
+          {
+            "triangle": 4988,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -4.688252967394666
+          },
+          {
+            "triangle": 4989,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -3.5694496756664966
+          },
+          {
+            "triangle": 4990,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -7.091045488315301
+          },
+          {
+            "triangle": 4991,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.9522175737254408
+          },
+          {
+            "triangle": 4992,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.922502182916658
+          },
+          {
+            "triangle": 4993,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -3.306794359305858
+          },
+          {
+            "triangle": 4994,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -4.106685680127288
+          },
+          {
+            "triangle": 4995,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.7662583271381729
+          },
+          {
+            "triangle": 4996,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -3.2670845027829643
+          },
+          {
+            "triangle": 4997,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.0820745682665809
+          },
+          {
+            "triangle": 4998,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.685717501851256
+          },
+          {
+            "triangle": 4999,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.4529951186979353
+          },
+          {
+            "triangle": 5000,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.6381956735839696
+          },
+          {
+            "triangle": 5001,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.18496354306684118
+          },
+          {
+            "triangle": 5002,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.5995248659199747
+          },
+          {
+            "triangle": 5003,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.2300996840551773
+          },
+          {
+            "triangle": 5004,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.8832820557824574
+          },
+          {
+            "triangle": 5006,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.569581538886455
+          },
+          {
+            "triangle": 5008,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.4364507274784398
+          },
+          {
+            "triangle": 5010,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": 0.0887658262626652
+          },
+          {
+            "triangle": 5019,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -4.434712357800083
+          },
+          {
+            "triangle": 5021,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.4548251065082665
+          },
+          {
+            "triangle": 5022,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -4.951206247114408
+          },
+          {
+            "triangle": 5023,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -2.7018737382165376
+          },
+          {
+            "triangle": 5024,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -7.078631977783918
+          },
+          {
+            "triangle": 5025,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.46414674130226513
+          },
+          {
+            "triangle": 5026,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.9779971803517484
+          },
+          {
+            "triangle": 5029,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.6959470121591214
+          },
+          {
+            "triangle": 5030,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.5586912462710241
+          },
+          {
+            "triangle": 5050,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.9642873550283336
+          },
+          {
+            "triangle": 5051,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.26863098421814297
+          },
+          {
+            "triangle": 5052,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.012685947538544
+          },
+          {
+            "triangle": 5056,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.292670842552245
+          },
+          {
+            "triangle": 5117,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.23165477838835918
+          },
+          {
+            "triangle": 5118,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.2316637401737574
+          },
+          {
+            "triangle": 5124,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -0.7606248999927469
+          },
+          {
+            "triangle": 5242,
+            "parts": [
+              "tail"
+            ],
+            "preRatio": -1.5920988969166203
+          },
+          {
+            "triangle": 5253,
+            "parts": [
+              "chest"
+            ],
+            "preRatio": -0.012974322603264343
+          },
+          {
+            "triangle": 5256,
+            "parts": [
+              "chest"
+            ],
+            "preRatio": -0.03938877739849271
+          },
+          {
+            "triangle": 5268,
+            "parts": [
+              "chest"
+            ],
+            "preRatio": 0.0951762615458133
+          },
+          {
+            "triangle": 5438,
+            "parts": [
+              "chest"
+            ],
+            "preRatio": 0.016967661943928274
+          },
+          {
+            "triangle": 5455,
+            "parts": [
+              "chest"
+            ],
+            "preRatio": 0.09603068192412118
+          }
+        ],
+        "fieldSha256": "d6fa6d60f87eb98fd5bc1b59d02cffae0673f6949ff79ad4f8e202cffda63e7e",
+        "published": true,
+        "refusal": null
+      },
+      "delta": {
+        "orientationPasses": 0,
+        "visits": 116,
+        "projections": 116
+      }
+    }
+  ],
+  "refusals": [],
+  "inputs": [
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/sparse-fit-comparison-08.mjs",
+      "sha256": "a7836cc5fa4bdefac0765bc6bd722967bc38bbeea15e872dbea13b0c9c2a8c27",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/cpu-diagnosis-02.json",
+      "sha256": "f8a8910736643a49aa83b33e114665f421221efd98dd058cd1a9b2817ea6d9d3",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/cpu-diagnosis-02.sources.json",
+      "sha256": "bcc1482f332f43815de8a7099b9ac07ed9e8f153d643519034a006a737934910",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-skin.mjs",
+      "sha256": "4e6a6e7d2c0a4c7d24174758373c707a85527a535d3a3516078764fe35eb4db4",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "1f94900f6038d0407fa6e865d294de6e11e52b22bbcbbfaa17567311a866d6e6",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "3d7ba73ec369a07fc1678610b32e77fb5beadedbdee1885ca544424588e1f587",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/rigid-parent-frame.mjs",
+      "sha256": "a2b4d700e8ee7cf76af602814e5820b50acb67355e735dce921f7a16030ff56c",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/compiled-skin-field.mjs",
+      "sha256": "2edb8045988f97c00ac7983af24d33c0631d21f88eade72f57fc2e247f3847a8",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/paint-skin.mjs",
+      "sha256": "c000e8f6ca3b1e5db8af82eba060a321c2522fb421dd09349654701a0a0ee9d2",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/stage.ts",
+      "sha256": "eb11d509e785da06783cb2aaa64a47db14615c00678d797c93a228b74279688f",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/anatomy-attacks.ts",
+      "sha256": "17f1578f67803d3babd0a0fa1c0ebab8b75d727f34f161fc26d0427825351f34",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/arena.ts",
+      "sha256": "e04178ae02814dc5dc48d858b7ad434a598eb555412d21e7681a4a330df4151a",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "1ce96d43975b980b80b922dee96c1bdd748f1d30f3b7286bda46add55af66a9a",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/parts-rig.ts",
+      "sha256": "558cd5a48feb6cb2410611cad6303690bc8f9c810226a5e92fea4081b0892c34",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/anchors.ts",
+      "sha256": "3f26b0c6c40f4b210080e18d347d0ede86df2b3f4f018eb70cb9d344ef870870",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/theme-library.ts",
+      "sha256": "68d20d1e4b652d4c82c508af9a392de4ba39e1202768fd1d427f9067ff934eb4",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle-habitat.ts",
+      "sha256": "a5ccd7326dd31518680a980a1948e39eb9cf04f54da541a431e1b78c40abed41",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/pose-refusal.mjs",
+      "sha256": "f91e6977ec0e2cdb0b7e4cf90980eeebab90c59aabfb1e2e48b47cb4bf12e80c",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-projector.mjs",
+      "sha256": "d84dc929eef8743a842388cf1a92b9631cc39bd232fe8954a7308d169a519d21",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/wasm-arap-sweep.mjs",
+      "sha256": "08c41cca60a7ec46ca07103d27ecbdff1d97f2bbf62507fb310c560d05487ccd",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "ef5cdebde69b377d3aa0416bf04a6a7c6d13ba2e3319146d66ce7cfc2196f0f0",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "e2dca64d0077c7a3f91b1c00bc383392c6a7d245f9c1b19a9254384c8acb8596",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/pose-projection.mjs",
+      "sha256": "9a6d31c80812def61beec124a1dad039d16b9afb556ee5ddf47c0f528891d486",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-performance.ts",
+      "sha256": "0998619a479e2cd3f8855127ab26564e9a3460d741475741ad6a025862645c99",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/emitter.ts",
+      "sha256": "81183b4a234307d359001ca532cd7d6b58a94f72baa365b9be86de633e5ef09c",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/choreography.ts",
+      "sha256": "fa258bbb088e8adb5ab78b3c3f56016972cc715ba8bd2dd59fe285f252647cb3",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/cue-plan.ts",
+      "sha256": "abcd1b2dde08a12647bb4ef73ecf9f35a998017a61b7183b142ac0ee28054e6e",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "082f95111f3cffa61a97fddb1e4500dfca0241c3398403b8fa19c0e1c25cf12e",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "d226a95458fe5330cea64b78ebbcc4b37750044fa85139466d426ef03a960d83",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "37ce18684c45eb771cbc927341c4bd6c2179145cd033b02e5db4588eddaba3e4",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+      "sha256": "aa430e622b613af414da991a1b464e434be5b26a5efe96f5d07e63756f8b72db",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/pixi-adapter.ts",
+      "sha256": "7694ad3a30cf7604f6d9fd238a5b07ce51007dd2a83968959e3a020a746171bf",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/earth-fauna-profiles.ts",
+      "sha256": "42a23e16b1b39ad9a20dfe2330706bff99842efaa1cd888d12f190c447cf45a6",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/motion-scale.mjs",
+      "sha256": "a38a55fbce7272597f5cd70af73bc850d73580795afcb2cc3e7db44c11653096",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "19a4f6a8e597ab5ca801a685908dcc65ceae316ca989038cddf541ee866acaed",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/amplitude-profile.ts",
+      "sha256": "cf71d707f357cb753572c2451b90af7c2cce3dc1d60665cc864fe3eba5ceac2a",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/templates.ts",
+      "sha256": "c9e66689202268eea4f7901e53d2f20c42fd40a67fbe496fe24817897807fe0b",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/secondary.ts",
+      "sha256": "da51acb7b05b77a561f09d084eb02c6a3bc314f180f0e3be1ccfb4f2855b8de5",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/index.ts",
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/plant-anatomy.mjs",
+      "sha256": "7e900b8355f6193b941f62a573d6c58124d127faa3348524170593ef2084e218",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "01fb429e30a2ce63d3fd7fc0071db172e99346a2e965e0646f349f70a8cf4690",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timing.ts",
+      "sha256": "135ad4c2752d8941ef4cad337d900ecfd58125dfe1bd7afbf4608c80b68534fa",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/hidden-anatomy.mjs",
+      "sha256": "a3cef7edff31f86a70f727f1433eeaabcabe2a1626929e65fbcbc0715b80a328",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/rand/src/index.ts",
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/biome-profile/src/index.ts",
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/fallback.ts",
+      "sha256": "feda6d4b6d688b090019f016812d60ff686f662fb575e9ac3d969dd5b74b6869",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/soundkit/mix.ts",
+      "sha256": "f9afb4df123fc018ffb2e78d08ef157c1fa5d3f9de52f7078acef7a9de883a1f",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
+      "sha256": "539e95f74d3b7d14adc53358f2420d7be9ef6e7bc76282dec78289ad8e733bec",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/sequencer.ts",
+      "sha256": "0b168bd71cb30507326580d02f9584c6901c8f8f0a66ec6fe2c7357b306598a8",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/soundkit/cues.ts",
+      "sha256": "b7bbabf3389616cd2e8e669c1fe21ddc06bf38416be0dbedd197c7373fda1dc2",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs",
+      "sha256": "6a4b825d7f4073033229438bf2a2d2f11a7432989947e4f26d4c14fae7de1069",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/quadruped-template.mjs",
+      "sha256": "86b4419ab0ef904f87e08942a1fdaf1f68a608c3cac40747b3095f8fb0aae5dc",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/index.ts",
+      "sha256": "1f9d6a8f245b80523c204b310a443f098baf7bd872feee9fe95b7ea46fa37797",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/additional-actions.ts",
+      "sha256": "e585cd2df5c13975472a496e342f96c1704f034144a496dbe3d93df64468271f",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/specialized-actions.ts",
+      "sha256": "2527215e0d2ab5b03a53a9cf2653e4131ca6d6fcb53e3ec05227170989a78f08",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/stings.verbatim.js",
+      "sha256": "af91ae822a8c8e1db08eda8fa7e9eb51a51fda5e9d42c3dadd7efa79eedac97d",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/distant-ecology-voice.ts",
+      "sha256": "5636a50dbc320ade85f398386964876eb74440c4a1cd4da2904234ab0ba44975",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/rights.ts",
+      "sha256": "e15e5996c42a38f7a8dcd79a63c9b6dc6f10b76bf3b368a42728e3d3cd01adfd",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/sound-witness.ts",
+      "sha256": "88c436388b4a50bf7943c0bc287d8cc03606489fa56ae753cef31d0ae216a198",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/identity.ts",
+      "sha256": "4ca7621bad99450f8142b2fdc3dc2ab44791f1a5a7202b9d8191d0238096591c",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/creature-expression-voice.ts",
+      "sha256": "94a890759e428fb15adf12480beae893bbf590d62c09c1902c77151133f151f0",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/events.ts",
+      "sha256": "7d4d00412e8b4e7e9d3a2efb9c1408634503e4f3a2e4e11e64de21794e0bbd4e",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/taxonomy.ts",
+      "sha256": "f7ff05d11ee1b1f654a3992b3a9926fbdfa2a1fb3047376a973dd0d601bdd0d2",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/runtime.ts",
+      "sha256": "3e245551b2f36749efc4e3444f25ad1403546e2ef55f575d08ee5ec725a41acc",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/combat-gameplay-voice.ts",
+      "sha256": "39cb4107094fc6f16b23b4d49b5b6a130062ad64aef9421f7e442d6d7354e175",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/purity.ts",
+      "sha256": "68b8181b3103bf1c02709aff4835a472b30db9de9d94603bdcbe1de5d3e3713a",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/lab.ts",
+      "sha256": "d0161a77d0fc78dc1ff6274db2ec8a383f8020f64653637fb5e2e5759de3b5f7",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/finite-voice-lifetime.ts",
+      "sha256": "2cbaade9193bf33de57727c6d3dcda31dab1ed02d0827c2282e64fde31d79576",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/combat-cues.ts",
+      "sha256": "8ba3e3364c790fa4b53c331b565290657263ac9d4f991966a9abb959c2026564",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/ecology.ts",
+      "sha256": "1347d2b75966923d8a631c98bc961fd49c25ad82e61e312ab1397c7a02f563ce",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/pilot-rights-data.ts",
+      "sha256": "0dd189915662152106e57e9b3642998c14e7a0f228413ed11134c7c8811b54d2",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/index.ts",
+      "sha256": "70a8fc4bd7c188b3e26e699e2644f8a57587cb14b6a0bf2a927f48dd4d18b96a",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/describe-pick.ts",
+      "sha256": "2e689f6c986c5a0c5d1ad877caf6e48c814fadd47550aa6555612282ed6895d1",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.ts",
+      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
+      "sha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/index.ts",
+      "sha256": "fbe4bcc52197b984e57b8d48ae7a3e9110cf9b6e1cfd259f584eb2f5012761e0",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
+      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genome/src/index.ts",
+      "sha256": "f2936929b86938c7236d093320b52202b90169abea4c4ce4d90b55f4ec477f72",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/planetgen/src/index.ts",
+      "sha256": "92c0b25b750c9457a7365e482d9423400a54150019997a5d1c96c1ea96e203e0",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldconfig/src/index.ts",
+      "sha256": "4ce4e39da1afe2f97baaa2105c2aa209e4d65d10443dfc81a960deeb8ccf0079",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/creature-level-progress.ts",
+      "sha256": "e41c72f116358fa46d04d79b399e179bab201094383a8ddd9ace87e2c79a2ed6",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/lineage-codec.ts",
+      "sha256": "7c80826744c22230263e53facefb05d28c3968d3defabb070a6d9a6f19a9f8f4",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
+      "sha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/guardian-prime.ts",
+      "sha256": "fcbb7ea8bea461e2fab76aedd66cb98d56794b11768acce343f9eee4723ccf70",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/combat-settlement.ts",
+      "sha256": "0add16e8b7c45789665542ef1ed0a420bfcfc8438421a0d456fffda8d852be13",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
+      "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "sha256": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/encutil/src/index.ts",
+      "sha256": "ef7ca91752c270c5452c6cc6595574f9bf6b754b950494b21302768e2d5de94e",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/naming/src/index.ts",
+      "sha256": "f485458ba79dfa6bbe96838eb831506dc7d01bc80f27b2a2d8c8f4edc039c11e",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/starcatalog/src/index.ts",
+      "sha256": "da886e9f3a2be6ce7e609e031e3a0e4c325d272f8926803f2d0e33b2d7ed1b13",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/strays/src/index.ts",
+      "sha256": "fa905124c4d182f361b868cf0319fdb9279bd8d13cfb1f85c991d00f83d225ec",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/surveyphrases/src/index.ts",
+      "sha256": "8c8ec0c8f6b2d76b326daf994f2f4042f0c09e78f1772046f0df1ebc1168989c",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genetics/src/index.ts",
+      "sha256": "eee2058546ab009b6b33376bad1005d6a597bd2b336506851d9be562d8cbef61",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/index.ts",
+      "sha256": "9ae354c71f86794966f928a8e3c27c3d34a05b23093f3bfdf5c77909979acc3b",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldgen/src/index.ts",
+      "sha256": "d81b384a57674c39146726f1b05acec3eddc86fe06da36d80b1bcd5f3c8d4673",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/naming/src/cleanname.verbatim.js",
+      "sha256": "9d5f6685bdd96563bf48dc293b4f8b5fd9dacbd7ec2afd40b0a7174b2eada30a",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/surveyphrases/src/surveyphrases.verbatim.js",
+      "sha256": "8915e785a7e5c67f7bcec720ada0f24466082e9ce0c6a9329d18affc251cfd58",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldidentity/src/index.ts",
+      "sha256": "90d44680a1da815afcf04bfed995dd46cb8522b2ba19bd856040da42b6d71141",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/strays/src/strays.verbatim.js",
+      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/ecology.verbatim.js",
+      "sha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/explicit-epoch.ts",
+      "sha256": "d0c2daee6e4d9a668eb98b677bf668f77587d83574173bdf234e4dde531cec5f",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/civilization.ts",
+      "sha256": "faed945d2a4ff864fded1d8b0d80fd4cc4f2bb4a5ec4f11a38b045d92593553d",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldgen/src/worldgen.verbatim.js",
+      "sha256": "95f0acec80a37c67cc829dc0d71e6719768e5a975d030fe9b89457c23da00eff",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genetics/src/genetics.verbatim.js",
+      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldidentity/src/authority.ts",
+      "sha256": "8bfff96bbcb569c32e3d3b0a4a7f0c6c9eec0b06940d72e3041477a785d75875",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-05/record.json",
+      "sha256": "82f3fc0eccf7ebc2d359dce42152bbcd61e9319d8c302b42def8a83b83799bf1",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-05/binding.json",
+      "sha256": "f37cae2fc40e342ac7814533642470638e4d6dbb40cc8c5d0b74827b59944b82",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-08/record.json",
+      "sha256": "8ba1ca327f6c7f3aa0b54ee4b7bfed6de62168b4fec7d722eeca3806ac4eef91",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-08/binding.json",
+      "sha256": "50011172805af4288eefa1cbcc225d4bad107d4f0c2f4718de6e2046e7ecf7b2",
+      "unchanged": true
+    }
+  ]
+}

@@ -3,8 +3,8 @@
 | Item | Exemplar | Signed commit / state | Result | Evidence |
 | --- | --- | --- | --- | --- |
 | 1 | Compendium | preparation89b5da95c185; result4cf88823fc74 | PASS78/78,0findings; exactEdge named verification PASS | 01-i5/README.md |
-| 2 | Salmon | Complete and staged; 1Password signature refused | Static14/14,exact rest; film0/0refusals; CPU1.5/1.100000023841858ms p95 | 02-fish/README.md |
-| 3 | Eagle | Next | Original taxonomy-field refusal; repair not executed | ../ARCHETYPE_SPRINT_20260922/03-biped-bird |
+| 2 | Salmon | Signed9c50c190f215 | Static14/14,exact rest; film0/0refusals; CPU1.5/1.100000023841858ms p95 | 02-fish/README.md |
+| 3 | Eagle | Complete; signing next | Static15/15/exact rest PASS; native0/0refusals; CPU0.7000000476837158/0.8000000715255737ms p95 | 03-biped-bird/README.md |
 | 4 | Beetle | Pending | Corrected paint needed | TRIAGE.md |
 | 5 | Python | Original signed PASS retained | No unchanged rerun | ../ARCHETYPE_SPRINT_20260922/05-serpent |
 | 6 | Tree Frog | Pending | Material token correction | TRIAGE.md |
@@ -16,4 +16,4 @@
 | 12 | Centipede | Pending | Approved bounded representation; exact visibility unresolved | TRIAGE.md |
 | 13 | Salmon marking masks | Original signed PASS retained | No unchanged rerun; master unchanged | ../ARCHETYPE_SPRINT_20260922/13-fish-markings |
 
-Codex resumes signing Salmon before advancing. Claude holds until signed handoff; Nick reviews art. No new hosted attempt, PR, merge, release or deploy.
+Salmon signature verified after Nick approved key use. Codex signs completed Eagle then repairs Beetle next. Claude holds until signed handoff; Nick reviews art. No new hosted attempt, PR, merge, release or deploy.

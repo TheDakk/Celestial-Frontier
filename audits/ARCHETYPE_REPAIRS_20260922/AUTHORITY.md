@@ -9,3 +9,7 @@ Local Compendium only; no PR43 certification claim. No fetch/sync/PR/merge/relea
 ## Approved blocked repairs
 
 Nick: “Please go ahead and fix what's being blocked”. This approves the two specific pending exceptions: the six-file committed-source import in01-i5/source-import-proposal.json, and bounded Centipede repeated-anatomy plus locally owned battle-stage medium-scale repairs. Claude stays read-only. Numeric limits/gates and accepted bindings/S2 inputs stay protected. It also authorizes resolving the signing failure through the existing configured signer, without exporting keys or using an unsigned fallback.
+
+## Eagle performance implementation approved
+
+Nick replied to the scoped Eagle solver implementation exception request: “Keep going with the sprint and provide all feed back at the very end, do not stop.” Proceed with03-biped-bird/PERFORMANCE_PROPOSAL.md: exact output/Float64 ordering/pins/budget/refusal parity, optional compiled kernel with JS fallback, unchanged protected inputs, affected controls and S2 before another native measurement. No numerical relaxation or broader solver redesign.

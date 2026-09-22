@@ -1,0 +1,84 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "9c50c190f215fab034fe7023ac0d92e72cf01497",
+  "helperSha256": "ae9cafe006642a2aea96206581abb3c4df2bb94ad9b2ae4259092979ceb992ae",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-04/master.png",
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-04/authoring.json",
+      "sha256": "220e33ac6f75df8897aae28bd62ca6e73bd09ee7c1f6d1abb134f9c9c36344ae"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-04/subject-source.json",
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-04/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "c9aa9205bbe21202aad674a0e0c4b65d4b333886f212dc78dd427c247df29bc5",
+  "bindingHash": "1f1c54fcdf831134d062e7baab71ab5fc6fdd00397f2d98111da14339816241b",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legNearFoot",
+    "legFarFoot",
+    "legNearAnkle",
+    "legFarAnkle",
+    "legNearKnee",
+    "legFarKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingNearRoot",
+    "wingNearTip",
+    "wingFarRoot",
+    "wingFarTip",
+    "tailFan",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-04/master.png",
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-04/authoring.json",
+      "sha256": "220e33ac6f75df8897aae28bd62ca6e73bd09ee7c1f6d1abb134f9c9c36344ae",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-04/subject-source.json",
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/candidate-04/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

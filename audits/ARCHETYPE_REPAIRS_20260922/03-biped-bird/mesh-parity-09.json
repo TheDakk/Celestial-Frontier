@@ -1,0 +1,16 @@
+{
+  "sourceRgbaAndLabels": "IDENTICAL",
+  "recordSemantics": "IDENTICAL",
+  "solverOptionsExcludingVertexPins": "IDENTICAL",
+  "before": {
+    "vertices": 3628,
+    "triangles": 6187,
+    "pins": 1983
+  },
+  "after": {
+    "vertices": 1530,
+    "triangles": 2413,
+    "pins": 724
+  },
+  "scope": "Same authored source/masks/landmarks/policies. Vertex, support, weight and pin IDs change with tessellation; prior pose qualification does not transfer."
+}

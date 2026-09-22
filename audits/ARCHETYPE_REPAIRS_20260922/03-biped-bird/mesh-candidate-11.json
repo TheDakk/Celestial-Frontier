@@ -1,0 +1,20 @@
+{
+  "schema": "cf.authored-mesh-density-candidate/v1",
+  "previous": "fit-10",
+  "candidate": "fit-11",
+  "global": {
+    "boundaryStep": 40,
+    "interiorStep": 80
+  },
+  "refinements": [
+    {
+      "x": 80,
+      "y": 704,
+      "width": 288,
+      "height": 320,
+      "boundaryStep": 24,
+      "interiorStep": 56
+    }
+  ],
+  "reason": "Native05 zero refusals but right CPU4.299999952316284ms; left1.2000000476837158ms. Narrow fine sampling from whole tail to diagnosed13fold envelope[156,783,273,940] plus72px-or-greater collar. Keep the rest at previously admitted40/80 density. Full qualification required; no historical pass transfer."
+}

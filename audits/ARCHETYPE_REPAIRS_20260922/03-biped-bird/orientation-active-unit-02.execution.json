@@ -1,0 +1,39 @@
+{
+  "schema": "cf.reconstructed-test-execution-receipt/v1",
+  "evidenceKind": "Reconstructed from the assistant-visible exec_command tool observation; this is not a retained raw process log.",
+  "noRerun": true,
+  "workingDirectory": "/Users/nick/Projects/celestial-frontier-openai-mac",
+  "command": "node --test port/v2/tools/creature-animation/wasm-orientation-active.test.mjs",
+  "observedToolChunkId": "de43dd",
+  "observedExitCode": 0,
+  "observedSummary": {
+    "tests": 13,
+    "suites": 0,
+    "pass": 13,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "durationMs": 117.798375
+  },
+  "observedPassingTestNames": [
+    "all pin masks/signs retain exact positions and the entire queue at multiple budgets",
+    "shared-vertex incident traversal preserves duplicates, heap order and repeated seeks",
+    "equal priorities use triangle ID order and preserve stale unused heap entries",
+    "half-floor stopping retains nonempty queue; degenerate removal and full budget retain original counters",
+    "signed-zero-only progress, underflow and overflowing finite coordinates preserve Object.is semantics",
+    "shared-corner fixture exercises both unchanged and changed queued priorities and rejects overbroad skipping",
+    "equal-priority mutant is rejected by full queue parity even when coordinates do not change",
+    "mixed finite/overflowing shared triangles preserve the original unordered-priority behavior",
+    "private topology is snapshotted; runtime absence and denied memory give null without caller changes",
+    "valid arithmetic mutant and no-op export fail admission before touching caller state",
+    "post-admission trap, invalid result, invalid counters and invalid heap are transactional",
+    "malformed topology, reset state and call budgets fail closed",
+    "artifact admits exactly one thirteen-i32 memory-only leaf and rejects linker inputs"
+  ],
+  "associatedSourceAuthority": {
+    "cSourceSha256": "3cf52a78928180d13359984ef22a7fe7eb23055573ae116d45cd6a22f6bced35",
+    "moduleSha256": "307c11eb0fc75709ddbf8dc1bd88cfb7ab5ad586ac5037db65a42a1ad173eee8"
+  },
+  "authorityNote": "Active source/module hashes were observed in the build output immediately preceding that test command; mesh writer hash was captured in the subsequent exact fit09 default parity receipt with no intervening writer edit. No execution time was reconstructed."
+}

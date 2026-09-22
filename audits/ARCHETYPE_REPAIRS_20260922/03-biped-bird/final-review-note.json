@@ -1,0 +1,14 @@
+{
+  "status": "PASS_AFTER_WORDING_CORRECTION",
+  "scope": "Bounded read-only final evidence and documentation review",
+  "manifestEntriesVerified": 714,
+  "mesh": {
+    "vertices": 1527,
+    "triangleIndices": 7221,
+    "triangles": 2407,
+    "pins": 737,
+    "parts": 17
+  },
+  "correction": "Replaced tool-only change with scoped orientation/intake change; the implementation is consumed by actual creature-rig runtime in native proof.",
+  "stagedWhitespace": "git diff --cached --check flags only rig-tests-01.log line9 blank line at EOF; retain exact measured output bytes."
+}

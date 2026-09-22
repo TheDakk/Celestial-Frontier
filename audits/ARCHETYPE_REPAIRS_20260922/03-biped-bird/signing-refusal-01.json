@@ -1,0 +1,8 @@
+{
+  "status": "REFUSED",
+  "action": "git -c gpg.ssh.program=/usr/bin/ssh-keygen commit -q -S -F /private/tmp/cf-eagle-commit.txt",
+  "toolChunk": "517de4",
+  "message": "agent refused operation; failed to write commit object",
+  "unchangedHead": "9c50c190f215fab034fe7023ac0d92e72cf01497",
+  "scope": "Following commands verified predecessor signature only; Eagle not yet committed. Nick previously approved signing retries; next uses configured 1Password signer."
+}

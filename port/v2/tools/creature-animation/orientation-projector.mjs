@@ -47,9 +47,22 @@ export function projectOrientations(s){
  // Preserve the established inexpensive solve (and its accepted poses) when
  // it succeeds. Only an unresolved signed fold invokes the active-set repair.
  // Both stages are bounded by orientationIterations; there is no pose retry.
- const fastPasses=forwardProjection(s);let folded=false;
+ let fastPasses;
+ if(s.orientationKernel){
+  // The optional leaf copies back only after a valid result. A runtime trap
+  // therefore leaves the input available for the unchanged JS fallback.
+  try{fastPasses=s.orientationKernel.run(p,s.orientationIterations);q.stalled=s.orientationKernel.stalled;}
+  catch{s.orientationKernel=null;fastPasses=forwardProjection(s);}
+ }else fastPasses=forwardProjection(s);
+ let folded=false;
  for(let k=0;k<d.length;k+=3){const a=d[k],b=d[k+1],c=d[k+2];if(((p[b]-p[a])*(p[c+1]-p[a+1])-(p[b+1]-p[a+1])*(p[c]-p[a]))*signs[k/3]<=0){folded=true;break;}}
  if(!folded||q.stalled)return fastPasses;
+ if(s.orientationActiveKernel){
+  // Both position and complete heap state are transactional in the leaf.
+  // Preserve the original ordered active solve when the backend is unavailable.
+  try{return fastPasses+s.orientationActiveKernel.run(p,q,s.orientationIterations);}
+  catch{s.orientationActiveKernel=null;}
+ }
  for(let t=0;t<count;t++)update(s,t);
  // The old solver visited every triangle once per pass. Spend that same
  // upper bound on violated constraints, updating only their neighbours.

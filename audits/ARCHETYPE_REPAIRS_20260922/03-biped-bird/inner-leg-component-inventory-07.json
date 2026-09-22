@@ -1,0 +1,152 @@
+[
+  {
+    "boundsPxInclusive": [
+      759,
+      865,
+      808,
+      883
+    ],
+    "connectivity": 4,
+    "components": [
+      {
+        "seedPx": [
+          771,
+          865
+        ],
+        "componentBounds": [
+          763,
+          865,
+          805,
+          883
+        ],
+        "expectedPixels": 553
+      },
+      {
+        "seedPx": [
+          780,
+          871
+        ],
+        "componentBounds": [
+          780,
+          871,
+          780,
+          871
+        ],
+        "expectedPixels": 1
+      }
+    ]
+  },
+  {
+    "boundsPxInclusive": [
+      759,
+      884,
+      808,
+      890
+    ],
+    "connectivity": 4,
+    "components": [
+      {
+        "seedPx": [
+          763,
+          884
+        ],
+        "componentBounds": [
+          760,
+          884,
+          773,
+          890
+        ],
+        "expectedPixels": 88
+      },
+      {
+        "seedPx": [
+          784,
+          884
+        ],
+        "componentBounds": [
+          784,
+          884,
+          808,
+          890
+        ],
+        "expectedPixels": 158
+      }
+    ]
+  },
+  {
+    "boundsPxInclusive": [
+      759,
+      891,
+      808,
+      920
+    ],
+    "connectivity": 4,
+    "components": [
+      {
+        "seedPx": [
+          760,
+          891
+        ],
+        "componentBounds": [
+          759,
+          891,
+          773,
+          917
+        ],
+        "expectedPixels": 256
+      },
+      {
+        "seedPx": [
+          785,
+          891
+        ],
+        "componentBounds": [
+          785,
+          891,
+          807,
+          920
+        ],
+        "expectedPixels": 429
+      },
+      {
+        "seedPx": [
+          790,
+          917
+        ],
+        "componentBounds": [
+          790,
+          917,
+          790,
+          917
+        ],
+        "expectedPixels": 1
+      },
+      {
+        "seedPx": [
+          791,
+          918
+        ],
+        "componentBounds": [
+          791,
+          918,
+          791,
+          918
+        ],
+        "expectedPixels": 1
+      },
+      {
+        "seedPx": [
+          799,
+          919
+        ],
+        "componentBounds": [
+          799,
+          919,
+          799,
+          919
+        ],
+        "expectedPixels": 1
+      }
+    ]
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "sourceInputs": [
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/master.png",
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/subject-source.json",
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/prompt.txt",
+      "sha256": "5c0ec6be679dcd5191624416e49f236e5c4c7d12246302b455151c1cb3807219"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/generation-receipt.json",
+      "sha256": "bae64b2bdf4c930c29adfa00aeb9be0b479a554a43d92d265cbbb989034c068d"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/declaration.txt",
+      "sha256": "e8622f04142e79bb277b89351cd32ee49b00eaf8afb0b0931163428bf894f434"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/03-biped-bird/authoring.json",
+      "sha256": "815047e8b3c655e51fcefeccfdc6117ec647ec4a6f35acd2dab35ad243ff119e"
+    }
+  ],
+  "changes": [
+    "Use current retained intake writer which omits optional taxonomy-family field; template remains biped-bird.",
+    "Dominant observed surface feathers; beak uses existing plated-response token, two taloned feet use existing scaled-response token. Old verbose surface accidentally selected scaled for all parts."
+  ],
+  "presence": "Codex explicitly retains absent=[],hidden=[],folded=[] after viewing the unchanged master; both wings, both leg/foot chains, head/beak/tail visible. No automatically inferred declaration."
+}

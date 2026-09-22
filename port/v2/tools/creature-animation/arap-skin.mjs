@@ -3,6 +3,8 @@
  * Independent anatomical surfaces must supply independent vertex inventories. */
 import{RecoverablePoseError}from'./pose-refusal.mjs';
 import{createWasmArapPass}from'./wasm-arap-sweep.mjs';
+import{createWasmOrientationForward}from'./wasm-orientation-forward.mjs';
+import{createWasmOrientationActive}from'./wasm-orientation-active.mjs';
 import{createOrientationProjector,projectOrientations}from'./orientation-projector.mjs';
 const need=(ok,why)=>{if(!ok)throw Error('ARAP skin: '+why);};
 export function createArapScratch(vertices,triangles,width,height,options={}){
@@ -38,7 +40,12 @@ export function createArapScratch(vertices,triangles,width,height,options={}){
  for(let k=0;k<areas.length;k++){triangleSigns[k]=Math.sign(areas[k]);triangleFloors[k]=Math.abs(areas[k])*minimumAreaRatio;triangleMovable[k]=(pins[triangles[k*3]]?0:1)|(pins[triangles[k*3+1]]?0:2)|(pins[triangles[k*3+2]]?0:4);}
  let axis=1,axisDistance=0;for(let i=1;i<n;i++){const distance=(rest[i*2]-rest[0])**2+(rest[i*2+1]-rest[1])**2;if(distance>axisDistance){axis=i;axisDistance=distance;}}need(axisDistance>1e-18,'rest axis');
  const sweepKernel=createWasmArapPass({rest,rows:solveRows,neighbours:neighbourDofs,reciprocals:solveReciprocals,starts,deltas,lambda});
- return {orientationQueue:createOrientationProjector(triangles,n),sweepBackend:sweepKernel?'wasm':'js',get normalPasses(){return sweepKernel?.normalPasses??0;},get robustFallbacks(){return sweepKernel?.robustFallbacks??0;},sweepKernel,n,width,height,rest,starts,neighbours,neighbourDofs,deltas,pins,freeDofs,lambda,divisor,solveRows,solveDivisors,solveReciprocals,triangleDofs,triangleSigns,triangleFloors,triangleMovable,iterations,globalIterations,targetWeight,axis,triangles:Uint32Array.from(triangles),areas,orientationIterations,minimumAreaRatio,
+ // Optional execution backend only: unsupported runtimes/topologies retain the
+ // established JS constraints and refusal path without a new admission gate.
+ let orientationKernel=null;try{orientationKernel=createWasmOrientationForward({position:rest,triangleDofs,triangleSigns,triangleFloors,triangleMovable});}catch{}
+ const orientationQueue=createOrientationProjector(triangles,n);
+ let orientationActiveKernel=null;try{orientationActiveKernel=createWasmOrientationActive({position:rest,triangleDofs,triangleSigns,triangleFloors,triangleMovable,orientationQueue});}catch{}
+ return {orientationKernel,orientationActiveKernel,orientationQueue,sweepBackend:sweepKernel?'wasm':'js',get normalPasses(){return sweepKernel?.normalPasses??0;},get robustFallbacks(){return sweepKernel?.robustFallbacks??0;},sweepKernel,n,width,height,rest,starts,neighbours,neighbourDofs,deltas,pins,freeDofs,lambda,divisor,solveRows,solveDivisors,solveReciprocals,triangleDofs,triangleSigns,triangleFloors,triangleMovable,iterations,globalIterations,targetWeight,axis,triangles:Uint32Array.from(triangles),areas,orientationIterations,minimumAreaRatio,
   position:sweepKernel?.position??new Float64Array(n*2),target:sweepKernel?.target??new Float64Array(n*2),rotation:sweepKernel?.rotation??new Float64Array(n*2),rhs:sweepKernel?.rhs??new Float64Array(n*2),
   stats:{rigid:false,maximumTargetErrorPx:0,rmsTargetErrorPx:0,maximumProjectionPx:0,flippedTriangles:0,minimumAreaRatio:1,orientationPasses:0}};
 }

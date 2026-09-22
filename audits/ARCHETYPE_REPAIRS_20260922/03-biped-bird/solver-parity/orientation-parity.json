@@ -1,0 +1,47 @@
+{
+  "schema": "cf.orientation-boundary-parity/v1",
+  "status": "PASS_EXACT",
+  "scope": "Every actual non-rigid S2 orientation invocation: retained pre-change JavaScript versus current implementation on identical pre-position and queue state. Exact Float64 bytes, Object.is coordinates, every queue field, returned pass count, refusal and immutable triangle inputs. Kernel-present counts report availability at entry, not proof of invocation. Instrumented timing is not CPU evidence.",
+  "calls": 11555,
+  "completedCalls": 11555,
+  "refusalPairs": 0,
+  "coordinateComparisons": 44564652,
+  "kernelPresentCalls": 11555,
+  "forwardKernelPresentCalls": 11555,
+  "activeKernelPresentCalls": 11555,
+  "negativeControls": [
+    {
+      "id": "identical-control",
+      "status": "PASS"
+    },
+    {
+      "id": "one-bit-position",
+      "status": "REJECTED_AS_REQUIRED"
+    },
+    {
+      "id": "one-bit-queue-priority",
+      "status": "REJECTED_AS_REQUIRED"
+    },
+    {
+      "id": "one-bit-queue-visits",
+      "status": "REJECTED_AS_REQUIRED"
+    },
+    {
+      "id": "one-bit-pass-count",
+      "status": "REJECTED_AS_REQUIRED"
+    },
+    {
+      "id": "signed-zero-position",
+      "status": "REJECTED_AS_REQUIRED"
+    },
+    {
+      "id": "refusal-mismatch",
+      "status": "REJECTED_AS_REQUIRED"
+    },
+    {
+      "id": "recovery-control",
+      "status": "PASS"
+    }
+  ],
+  "failure": null
+}

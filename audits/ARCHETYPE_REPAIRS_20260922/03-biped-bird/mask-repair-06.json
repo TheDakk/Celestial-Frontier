@@ -1,0 +1,25 @@
+{
+  "basis": "cpu-diagnosis-02.json proves native plan parity and expensive orientation projection at selected exact capture times; fixed-body pins occur on observed detached leg-edge feathers. Separate visual review identifies two clear wing-feather components.",
+  "manualDecisions": {
+    "legNearFarBoundaryX": 788,
+    "nearShinStartsY": 884,
+    "farShinStartsY": 891,
+    "upperTorsoTailUnchanged": true
+  },
+  "declaredPixels": {
+    "nearWingFlight": 2699,
+    "farWingFlight": 766,
+    "threeLargeLegComponents": 3375,
+    "separatelyDeclaredAdjacentLegPixels": 9
+  },
+  "selection": "Explicit connected-component seeds on immutable original labels, bounded/clipped in master pixel space. All counts checked before writer; overlaps refused. No anatomy/presence inference.",
+  "preserved": [
+    "delivered master RGBA",
+    "all existing non-body labels",
+    "all landmarks/materials/presence",
+    "fixedJoints=root and shape/contact pins policy",
+    "solver/gates/limits/thresholds",
+    "accepted bindings/S2 inputs"
+  ],
+  "status": "unrun candidate; no measured fit or CPU claim"
+}
