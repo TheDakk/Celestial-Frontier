@@ -1,0 +1,474 @@
+{
+  "files": [
+    {
+      "path": "01-i5/README.md",
+      "bytes": 7036,
+      "sha256": "4d32edf03b456f161dd657a67a9ea4b9d0814c844184d32724dc53fbcda67d78"
+    },
+    {
+      "path": "01-i5/budget-before.json",
+      "bytes": 175661,
+      "sha256": "b808629ace23c36f2fc4e31e57280b715dd20b03a39c677998e41e0ea86a189a"
+    },
+    {
+      "path": "01-i5/certificate-launcher.py",
+      "bytes": 1915,
+      "sha256": "de122463549f506610b015d920d65c985bcd6d7f2d1d819675ae18a3f87e616a"
+    },
+    {
+      "path": "01-i5/develop-profile-admission.log",
+      "bytes": 36508,
+      "sha256": "9ec42217407e04de5ec8cae521598b17880fbdb00f17a565a2940eed05620e34"
+    },
+    {
+      "path": "01-i5/develop-profile-complete.log",
+      "bytes": 37498,
+      "sha256": "7087dd03f6475d0b8e28939383bd864bdf9dffeb32a572861e841a5429cfa92f"
+    },
+    {
+      "path": "01-i5/develop-profile-final.log",
+      "bytes": 34841,
+      "sha256": "b6eaceadf85005b487adee744afd51e7ddd444af989026b855c60fb5313cb75c"
+    },
+    {
+      "path": "01-i5/develop-profile-imported-refusal.md",
+      "bytes": 497,
+      "sha256": "f4010b5f0b3c7b770c0e6b4625f9e6e48d75a7398c00e220784d52ee9e13ac86"
+    },
+    {
+      "path": "01-i5/develop-profile-imported.log",
+      "bytes": 43669,
+      "sha256": "0f195f47c1895415c47c8e2512e36999f5af1ce7bed3bf7b6aaffc7e2e6b95de"
+    },
+    {
+      "path": "01-i5/develop-profile-reconciled-refusal.md",
+      "bytes": 423,
+      "sha256": "46ee384e229534911efb98d7d9b2cae14b23e69951af609305716538667ab7da"
+    },
+    {
+      "path": "01-i5/develop-profile-reconciled.log",
+      "bytes": 36230,
+      "sha256": "1d2afa61c4c8ddf73d36ffbe498db4c491ed7db4709196f7ef1357e77d6324c6"
+    },
+    {
+      "path": "01-i5/develop-profile.log",
+      "bytes": 36973,
+      "sha256": "c4372cb5f3667e1421f5a5d5cc7c70d246a4bf199e3e645f8af98debfbc58773"
+    },
+    {
+      "path": "01-i5/focus-01/fixture-default.html",
+      "bytes": 90112,
+      "sha256": "d9d3892d6ecdcc817c2e55f1f8d8f7abb6965c5ad76b7c57784683bd2f86b00d"
+    },
+    {
+      "path": "01-i5/focus-01/fixture-pilot.html",
+      "bytes": 96529,
+      "sha256": "1c05b51d515a6475af87fd5715f242b0c4464967df61690030a1681160dff4f6"
+    },
+    {
+      "path": "01-i5/focus-01/phone-default-baseline-row.png",
+      "bytes": 103577,
+      "sha256": "8b31e30631dd97ec2b1b3718bb39f29e44385a06c9e25449b98a2dd6866c06ba"
+    },
+    {
+      "path": "01-i5/focus-01/phone-default-sheet-historical-fault.png",
+      "bytes": 104594,
+      "sha256": "d395b92e7539162faab295095f2902379003d8dcdc661e325ee3137e361d59f7"
+    },
+    {
+      "path": "01-i5/focus-01/report.json",
+      "bytes": 24400,
+      "sha256": "6097875bebe9bab74afbbb8a62be3199e1685884ce725eeb40e30a9ce34099f6"
+    },
+    {
+      "path": "01-i5/focus-01.log",
+      "bytes": 192,
+      "sha256": "d05061c59429eb61c37f4bfcf89f0c256f41e71d4ba83b448c6b551a6684b98d"
+    },
+    {
+      "path": "01-i5/focus-02/desktop-default-baseline-row.png",
+      "bytes": 34105,
+      "sha256": "a677159cdf001ba738e48eed6c4d7f9f2a36cabfb7df60f774eae1e1de70e4ea"
+    },
+    {
+      "path": "01-i5/focus-02/desktop-default-generic-recovered.png",
+      "bytes": 34124,
+      "sha256": "6d01287740f72fb896ef0c396b5fe6d4e7e1dc8507fae5719895a1b35f5849ae"
+    },
+    {
+      "path": "01-i5/focus-02/desktop-default-sheet-historical-fault.png",
+      "bytes": 34181,
+      "sha256": "1936d3c1819f6e1a611892104ac9779cbdcd906fdf35e634d0a97e7b9d043532"
+    },
+    {
+      "path": "01-i5/focus-02/desktop-default-sheet-recovered.png",
+      "bytes": 34105,
+      "sha256": "a677159cdf001ba738e48eed6c4d7f9f2a36cabfb7df60f774eae1e1de70e4ea"
+    },
+    {
+      "path": "01-i5/focus-02/desktop-pilot-baseline-row.png",
+      "bytes": 84726,
+      "sha256": "542def7d3d467b583abff4ab40843a02e238c36a51ab289dc3d27ee5b2d01f94"
+    },
+    {
+      "path": "01-i5/focus-02/desktop-pilot-generic-recovered.png",
+      "bytes": 84092,
+      "sha256": "1c060ed6e66f0b34bc5a02ab52fc4440362201970f1a6856cd5675ae1385eff9"
+    },
+    {
+      "path": "01-i5/focus-02/desktop-pilot-pilot-historical-fault.png",
+      "bytes": 85263,
+      "sha256": "fb6960fb3902fe2abb202edf1d4ca69039a2c127bc8df4d55e88703c6b55e513"
+    },
+    {
+      "path": "01-i5/focus-02/desktop-pilot-pilot-recovered.png",
+      "bytes": 84726,
+      "sha256": "542def7d3d467b583abff4ab40843a02e238c36a51ab289dc3d27ee5b2d01f94"
+    },
+    {
+      "path": "01-i5/focus-02/desktop-pilot-sheet-historical-fault.png",
+      "bytes": 85244,
+      "sha256": "effb71cd1d641f97f8e36fcc499b0a87b82955f32ea36fb2af0f07dc50483893"
+    },
+    {
+      "path": "01-i5/focus-02/desktop-pilot-sheet-recovered.png",
+      "bytes": 84726,
+      "sha256": "542def7d3d467b583abff4ab40843a02e238c36a51ab289dc3d27ee5b2d01f94"
+    },
+    {
+      "path": "01-i5/focus-02/fixture-default.html",
+      "bytes": 90112,
+      "sha256": "d9d3892d6ecdcc817c2e55f1f8d8f7abb6965c5ad76b7c57784683bd2f86b00d"
+    },
+    {
+      "path": "01-i5/focus-02/fixture-pilot.html",
+      "bytes": 96529,
+      "sha256": "1c05b51d515a6475af87fd5715f242b0c4464967df61690030a1681160dff4f6"
+    },
+    {
+      "path": "01-i5/focus-02/phone-default-baseline-row.png",
+      "bytes": 104388,
+      "sha256": "e87286700fef6614dc91279864330205ddbda76428b66c36099936b53cd725cb"
+    },
+    {
+      "path": "01-i5/focus-02/phone-default-generic-recovered.png",
+      "bytes": 104527,
+      "sha256": "93830ab8fedd8200317278f32d934ff2969b77feef61174bb7fee5d05b050b7b"
+    },
+    {
+      "path": "01-i5/focus-02/phone-default-sheet-historical-fault.png",
+      "bytes": 104594,
+      "sha256": "d395b92e7539162faab295095f2902379003d8dcdc661e325ee3137e361d59f7"
+    },
+    {
+      "path": "01-i5/focus-02/phone-default-sheet-recovered.png",
+      "bytes": 104391,
+      "sha256": "2bf53e021449f0ccaabe45589f3a1f7b7add955095c5d39c1742a21d3a79513a"
+    },
+    {
+      "path": "01-i5/focus-02/phone-pilot-baseline-row.png",
+      "bytes": 319006,
+      "sha256": "285f83f7d7c5b294530d6f370970d98de8a4e95da6a19ff3405bcbc3014e8d1b"
+    },
+    {
+      "path": "01-i5/focus-02/phone-pilot-generic-recovered.png",
+      "bytes": 310970,
+      "sha256": "a801d81c1269890b13b01065cf317223c4008bf9eb7371408c722ea22d15199f"
+    },
+    {
+      "path": "01-i5/focus-02/phone-pilot-pilot-historical-fault.png",
+      "bytes": 318658,
+      "sha256": "b6061f177b114e9b8ea22861a2b78bfd37e625242f2e049d6713726426124de9"
+    },
+    {
+      "path": "01-i5/focus-02/phone-pilot-pilot-recovered.png",
+      "bytes": 319006,
+      "sha256": "285f83f7d7c5b294530d6f370970d98de8a4e95da6a19ff3405bcbc3014e8d1b"
+    },
+    {
+      "path": "01-i5/focus-02/phone-pilot-sheet-historical-fault.png",
+      "bytes": 318690,
+      "sha256": "b2ac8d344a063b35cc34dd504434b5c5572be769333eea92e8ba590c689f9e85"
+    },
+    {
+      "path": "01-i5/focus-02/phone-pilot-sheet-recovered.png",
+      "bytes": 319006,
+      "sha256": "285f83f7d7c5b294530d6f370970d98de8a4e95da6a19ff3405bcbc3014e8d1b"
+    },
+    {
+      "path": "01-i5/focus-02/report.json",
+      "bytes": 131435,
+      "sha256": "743c0f2190338410bbe5bcb08d95c289f0967cd18f8fae7f10e6fe7764416daa"
+    },
+    {
+      "path": "01-i5/focus-02.log",
+      "bytes": 192,
+      "sha256": "b46cf92f161a9dd25a2a231cfcba097dc341d9c17242e6062d821ce4ee612007"
+    },
+    {
+      "path": "01-i5/focus-review-refusal.md",
+      "bytes": 1927,
+      "sha256": "7e040dc6de2f2b8edea68e2005d77db33c06541d659f0c84a1a0fc8458365292"
+    },
+    {
+      "path": "01-i5/focus-review.mjs",
+      "bytes": 23474,
+      "sha256": "734a6626d546fbabce35686230e6a5360d18a137917dd3225e2c7c92b37ac2ec"
+    },
+    {
+      "path": "01-i5/focused-final-refusal.md",
+      "bytes": 660,
+      "sha256": "5369a262ee76644de26b22b2b816b7b18c332e5816377bcb69236e31d556f4ae"
+    },
+    {
+      "path": "01-i5/focused-final.log",
+      "bytes": 11950,
+      "sha256": "88a7dbf989b3112a4ef2fdb2bee4310404b3741308d91e9389e035334107c0dc"
+    },
+    {
+      "path": "01-i5/focused-tests-refusal.md",
+      "bytes": 456,
+      "sha256": "f040bd65554f2be831aff25e76d8486baa3930606d8a0e62103a0c5a58df1a9a"
+    },
+    {
+      "path": "01-i5/focused-tests-repaired.log",
+      "bytes": 10756,
+      "sha256": "1fbf18cf7f64875ee121485d6133a012209c9f7f9fb516574d76507c04f04cf4"
+    },
+    {
+      "path": "01-i5/focused-tests.log",
+      "bytes": 109618,
+      "sha256": "5ef4331e1498844e4d336b43fcd77d2829fd0b648e38962a603f446a5827590a"
+    },
+    {
+      "path": "01-i5/historical-conservation-final.json",
+      "bytes": 1778,
+      "sha256": "dec96a8bb2529d6d090d95a56db1f6f9be30b57ee75d246bf7fa0d2454de9f21"
+    },
+    {
+      "path": "01-i5/historical-conservation.json",
+      "bytes": 1727,
+      "sha256": "84c59a845016ad2bb0eba1cd4ca6b069e1f884df6f2358ef0e9791fcadd93fb8"
+    },
+    {
+      "path": "01-i5/import-proof-tests.log",
+      "bytes": 886,
+      "sha256": "69c7051e807dd346eb8fb0c5fee4c2fce8d690b66f04c8dcd18c02c6e30f78ad"
+    },
+    {
+      "path": "01-i5/import-types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "01-i5/no-unused-repaired.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "01-i5/override-parser-repair.json",
+      "bytes": 2284,
+      "sha256": "bfa34b684acdcce31a2636e310440452b79b2820c2c6d798d6b454a8c13c0c31"
+    },
+    {
+      "path": "01-i5/override-parser-repair.md",
+      "bytes": 3379,
+      "sha256": "511a5c28f0e8b94f34b9a8cb56ca09fab57732218136a585a63f5899a04c0f9e"
+    },
+    {
+      "path": "01-i5/override-parser-targeted-final.log",
+      "bytes": 1673,
+      "sha256": "cc1ec0a91ec365a954b273ee2e0ada891f5e8d1ce5f969ff8f366a169466a5a5"
+    },
+    {
+      "path": "01-i5/override-parser-targeted-repaired.log",
+      "bytes": 3727,
+      "sha256": "57984338415882f1ea8d08cecd964a28b3f33a5a995c85e205208e672ba5213d"
+    },
+    {
+      "path": "01-i5/override-parser-targeted.log",
+      "bytes": 3151,
+      "sha256": "10bf6b49bd61279b99a0abc9614982cfd74481b082c6807291aa5fb358382c19"
+    },
+    {
+      "path": "01-i5/overridecheck-repaired.log",
+      "bytes": 295,
+      "sha256": "1e7945015c24a8166cdc616d451d58df09ee86183a404e3fa01ba16f5da0c272"
+    },
+    {
+      "path": "01-i5/preparation-authorities-cleanup.json",
+      "bytes": 6117,
+      "sha256": "66757f8559a7c11f671469578b43479f77c0f5bfe8b3869f6054072166cdf11b"
+    },
+    {
+      "path": "01-i5/preparation-authorities-final.json",
+      "bytes": 6204,
+      "sha256": "21ada1a07f65b9b8fd1ba8f84e17dcd7806734e9d5bba0b2c380f347fc9796af"
+    },
+    {
+      "path": "01-i5/preparation-authorities.json",
+      "bytes": 6402,
+      "sha256": "07ac9ad49cb9f09d99b2f121b2e50a883bb71744b6075865cecf8e546b19b419"
+    },
+    {
+      "path": "01-i5/preparation-build-cleanup.log",
+      "bytes": 10511,
+      "sha256": "f8f7c14e2476f96ed837cdfb6517bc0f62a3a668da4a76e11b40e06d11a5dc71"
+    },
+    {
+      "path": "01-i5/preparation-build-final.log",
+      "bytes": 10511,
+      "sha256": "9a01154f6a6534c4613a42eb71ddb7750e2127d91625f418ea691601b654c8ea"
+    },
+    {
+      "path": "01-i5/preparation-build.log",
+      "bytes": 10511,
+      "sha256": "507071459e59f9ec79bfcb97dea7f3e721c666dd5b51348f23ddf566ad892115"
+    },
+    {
+      "path": "01-i5/root-validate-admission.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "01-i5/root-validate.log",
+      "bytes": 1093,
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "01-i5/run-s2.mjs",
+      "bytes": 7221,
+      "sha256": "8498334c2583948b838a67037d44adf69573867c2bcabce832d8d869ac5199f9"
+    },
+    {
+      "path": "01-i5/s2/civet-static.json",
+      "bytes": 7400,
+      "sha256": "452fa278586993592c7f171e93dd64cbc9dd5bbf5e3fc7f4897c6553e07b8396"
+    },
+    {
+      "path": "01-i5/s2/civet-support-samples.jsonl.gz",
+      "bytes": 540573,
+      "sha256": "c8deace40f822ac707b337c16ee63cf73ca6838ee094ef80324093ab08ab2d2f"
+    },
+    {
+      "path": "01-i5/s2/coconut-crab-static.json",
+      "bytes": 8541,
+      "sha256": "2ce886550c98d4586e3a446dd1576f6552e6f58ca1b7b37d0b5656ea1c06debc"
+    },
+    {
+      "path": "01-i5/s2/coconut-crab-support-samples.jsonl.gz",
+      "bytes": 450159,
+      "sha256": "031446c269052b8a91d89e4244f190fa65c7f60c64cb2056e8b5f2351e01d32b"
+    },
+    {
+      "path": "01-i5/s2/crab-static.json",
+      "bytes": 8478,
+      "sha256": "ee3f133ed6137a12ea21fa5c2f318c3c74d9e8117544bacd58b2dc8fb72dc565"
+    },
+    {
+      "path": "01-i5/s2/crab-support-samples.jsonl.gz",
+      "bytes": 472712,
+      "sha256": "258aa03be580be6fcb1e07658ecd5a903db050f2cd63e0c297f3ff8d1fb4b1b8"
+    },
+    {
+      "path": "01-i5/s2/freshwater-crab-static.json",
+      "bytes": 8449,
+      "sha256": "9da3890b44693cfc1a3977415c408c4b3e5fba8287af206d3fb8492c0c5376a9"
+    },
+    {
+      "path": "01-i5/s2/freshwater-crab-support-samples.jsonl.gz",
+      "bytes": 455397,
+      "sha256": "84e207fd9353806843dee605d7937f4fd99d7a9e4dd3c4c865b92abcc660b127"
+    },
+    {
+      "path": "01-i5/s2/identity.json",
+      "bytes": 2960,
+      "sha256": "7364c70a865ccfd9d229dce53f1cf6378bc306da5cad306f52eba1bc9ef7dbf2"
+    },
+    {
+      "path": "01-i5/s2/mud-crab-static.json",
+      "bytes": 8269,
+      "sha256": "6e1b2ec0792f524e730e7624e0a4112b1741f747645625629175c50c6e5cb9aa"
+    },
+    {
+      "path": "01-i5/s2/mud-crab-support-samples.jsonl.gz",
+      "bytes": 463241,
+      "sha256": "fe6b52249ff1391607394571ca0b3693c88439f61f6c9f9bdf7c6763daec6e41"
+    },
+    {
+      "path": "01-i5/s2/sources.json",
+      "bytes": 9863,
+      "sha256": "e84f87f4a8ad3409c77c3babe6562d5caf5245d9289d1bfce9887b29e5e41954"
+    },
+    {
+      "path": "01-i5/s2/static.json",
+      "bytes": 61950,
+      "sha256": "82f0ff82bba0b92326d94b16f963ad6ba9a601f3eb3dfc2d3d8f680f1f0d0586"
+    },
+    {
+      "path": "01-i5/s2/vent-crab-static.json",
+      "bytes": 8384,
+      "sha256": "9b8278daf85ce4902c6e74c544a61665f0550a09d3ca6bd8cbcd609afc051a4e"
+    },
+    {
+      "path": "01-i5/s2/vent-crab-support-samples.jsonl.gz",
+      "bytes": 475748,
+      "sha256": "1b6588bbd35d7f75ea8c31b301508243a80d725bd75a9cfe297b48176137d7a2"
+    },
+    {
+      "path": "01-i5/s2-execution.json",
+      "bytes": 21690,
+      "sha256": "f9f04eb0b1a6b6916f50c2c171b7670b5b6229d11ba7a8ea2b9b5403018bdb50"
+    },
+    {
+      "path": "01-i5/s2-run.log",
+      "bytes": 5147,
+      "sha256": "6046632ae7a68e89ea8b68a104de96f8b6674d04bfee1b92f1fb8a7c1489f6ac"
+    },
+    {
+      "path": "01-i5/signing-agent-diagnostic.json",
+      "bytes": 156,
+      "sha256": "5570544f6888d79980f3dcb7cbc4fb820b6686049ef7c9b074b7b7ae5a1bd7f3"
+    },
+    {
+      "path": "01-i5/signing-refusal.json",
+      "bytes": 259,
+      "sha256": "f9e74e419151799a1f0ae250997c1930b45c4e130a5f113a9a5cb4c83e717ca6"
+    },
+    {
+      "path": "01-i5/signing-standard-agent-refusal.json",
+      "bytes": 862,
+      "sha256": "8c0ab053359056cd0e5c4469dc9065a05ee424c20472dc5b3de3c99f3b3f7c4d"
+    },
+    {
+      "path": "01-i5/source-import-proposal.json",
+      "bytes": 2626,
+      "sha256": "a29205362b07afd444bfeeb040ae2700082072d51fc5c36f3f72cb6e7f614f21"
+    },
+    {
+      "path": "01-i5/source-import-receipt.json",
+      "bytes": 2687,
+      "sha256": "86634cd2f59a30ddb61bce48226302457efb25ff53e9f9bac1c82c97135a5664"
+    },
+    {
+      "path": "01-i5/test-live-pins-before.txt",
+      "bytes": 1147,
+      "sha256": "f0f4936ac1129432bf16c9c2587b659d924ee3fd9373ab1884b34f19c536cda2"
+    },
+    {
+      "path": "AUTHORITY.md",
+      "bytes": 1372,
+      "sha256": "bfc9cddfd2df4b8e6ac4250c6a43ca14f2c7b4d342df1e83e78fce7ccb82a302"
+    },
+    {
+      "path": "README.md",
+      "bytes": 926,
+      "sha256": "abb74a0ec1902aea1bd7cbc48873343872d7aed33b8bab57799f291540fed748"
+    },
+    {
+      "path": "TRIAGE.md",
+      "bytes": 3530,
+      "sha256": "a2e78f9274a4d370c1c9f394b97eb72ad8f344ca864e06ca50c9501a2f556835"
+    }
+  ]
+}

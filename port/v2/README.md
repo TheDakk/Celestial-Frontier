@@ -4398,7 +4398,13 @@ its source/build mutation controls still run in every profile. The standalone au
 remains an all-authorities fail-closed diagnostic. The stricter root no-unused TypeScript pass owns the root compilation;
 the old `artunused` alias remains available but is not a second gate. `overridecheck` already fails
 closed on incomplete kingdom-qualified catalogue coverage, so `coveragegap` remains an on-demand
-planning report rather than a duplicate merge gate. The `production` profile adds `overridecontrol`, the
+planning report rather than a duplicate merge gate. Source discovery (matches code as of 2026-09-22)
+follows actual static relative imports and re-exports through the v2 source boundary, rejecting
+missing/ambiguous targets and symlinks. Transitive JavaScript and TypeScript receive the same AST
+audit. The live topology wrapper, private painter binding, synchronous same-ink callbacks, routing
+precedence, fitting and canvas returns remain independently guarded; fresh null-prototype
+dictionaries are allowed only through the exact direct `Object.create(null)` form.
+The `production` profile adds `overridecontrol`, the
 107-mutation selftest that temporarily rewrites audited art sources under the workspace lock. The
 ordinary specification scan runs its five parser/oracle controls inside that same `speccheck`
 command, so no second stage is required. HEAD,
