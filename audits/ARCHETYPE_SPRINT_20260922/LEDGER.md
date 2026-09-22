@@ -14,8 +14,8 @@ Source: OpenAI/Codex · macOS · /Users/nick/Projects/celestial-frontier-openai-
 | 8 | radial | Starfish | b13c1b87507ed2223c13f739573d944283fa7ea9 | 14 rows / 7 red | not measured | not measured | 08-radial/review-sheet.png | RED: Error: Error: habitat: Selected home arena cannot support both organisms; no habitat or biome substitution · left Starfish: aquatic (water) · right Starfish: aquatic (water) |
 | 9 | arachnid | Tarantula | 5a58994496f0ec0ac05ccc786d57094d98173942 | not run after intake refusal | not measured | not measured | 09-arachnid/review-sheet.png | RED: Error: Hidden anatomy: unsupported hidden chain |
 | 10 | cephalopod | Octopus | 10266ed7cac0771dd8485b0bb6647655c3eaded5 | 14 rows / 0 red | not measured | not measured | 10-cephalopod/review-sheet.png | RED: Error: Error: habitat: Selected home arena cannot support both organisms; no habitat or biome substitution · left Octopus: aquatic (water) · right Octopus: aquatic (water) |
-| 11 | flyer-membrane | Fruit Bat | packet history (11-flyer-membrane) | 14 rows / 4 red | not measured | not measured | 11-flyer-membrane/review-sheet.png | RED: Error: Error: Habitat: organism cannot fit its medium |
-| 12 | myriapod | Centipede | pending | not run | not run | not measured | pending | not started |
+| 11 | flyer-membrane | Fruit Bat | 9089d3009fc5929a3ed35590c6ad7530f3eb14fa | 14 rows / 4 red | not measured | not measured | 11-flyer-membrane/review-sheet.png | RED: Error: Error: Habitat: organism cannot fit its medium |
+| 12 | myriapod | Centipede | packet history (12-myriapod) | not run after intake refusal | not measured | not measured | 12-myriapod/review-sheet.png | RED: Error: Anatomy inventory: unsupported repeated topology myriapod |
 | 13 | fish markings | Salmon | pending | not run | not run | not measured | pending | not started |
 
 Commit references use the next item’s recorded parent or `git log -- audits/ARCHETYPE_SPRINT_20260922/<packet>` so a commit never claims its own unknowable hash.

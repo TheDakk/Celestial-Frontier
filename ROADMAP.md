@@ -58,3 +58,5 @@ Continuation: Nick unlocked1Password and explicitly directed completion plus a f
 Sprint item10 Octopus: RED; exact rest 0 changed channels, static 14 rows/0 reds, native FAIL, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/README.md. Next unticked item:11. Codex continues; Claude read-only; no hosted action.
 
 Sprint item11 Fruit Bat: RED; exact rest 0 changed channels, static 14 rows/4 reds, native FAIL, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/11-flyer-membrane/README.md. Next unticked item:12. Codex continues; Claude read-only; no hosted action.
+
+Sprint item12 Centipede: RED; exact rest unproved, static 0 rows/0 reds, native not run, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/12-myriapod/README.md. Next unticked item:13. Codex continues; Claude read-only; no hosted action.

@@ -1,0 +1,24 @@
+{
+  "status": "REFUSED",
+  "minimumObservedNearLegs": 5,
+  "contractNearLegSlots": 4,
+  "fullObservedLegCount": null,
+  "fullObservedPairCount": null,
+  "sourceFiles": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "1f94900f6038d0407fa6e865d294de6e11e52b22bbcbbfaa17567311a866d6e6"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "ef5cdebde69b377d3aa0416bf04a6a7c6d13ba2e3319146d66ce7cfc2196f0f0"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "d226a95458fe5330cea64b78ebbcc4b37750044fa85139466d426ef03a960d83"
+    }
+  ],
+  "recordProduced": false,
+  "masksProduced": false,
+  "bindingProduced": false
+}

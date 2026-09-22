@@ -1,0 +1,14 @@
+{
+  "id": "archetype-sprint-12-myriapod-01",
+  "noRetry": true,
+  "stages": [
+    {
+      "name": "family-contract-capability",
+      "startedAt": "2026-09-22T12:40:35.229Z",
+      "endedAt": "2026-09-22T12:40:35.232Z",
+      "durationMs": 2.5274160000000023,
+      "exitCode": 1,
+      "error": "Error: Anatomy inventory: unsupported repeated topology myriapod\n    at fail (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/repeated-anatomy.mjs:5:27)\n    at appendageCounts (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/repeated-anatomy.mjs:11:86)\n    at expandRepeatedAnatomy (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/repeated-anatomy.mjs:21:15)\n    at resolveAnatomyInventory (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anatomy-inventory.mjs:30:52)\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/12-myriapod/admission-attempt.mjs:11:20\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    }
+  ]
+}
