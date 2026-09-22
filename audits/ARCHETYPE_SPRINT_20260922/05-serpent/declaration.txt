@@ -1,0 +1,9 @@
+Codex explicit presence declaration for the delivered Python master.
+
+One visible head and lower jaw; one continuous heavy limbless body; one tapering tail. Root, head, jaw and seg0 through seg9 are manually located on painted surfaces in this master. The declared route follows the upper neck curl, lower right neck, rear neck-to-coil connection, central crest, diagonal foreground crossing, right turn, broad front coil, left turn, rear-left coil and tail tip.
+
+Absent contracted groups: none. Hidden contracted groups or chains: none. Folded leg chains: none. Portions of the continuous body are covered by another turn of the same body, but each of the ten segment owners has a visible painted surface. This partial surface occlusion is not an absent segment or an unsupported hidden-chain declaration. The serpent has no leg inventory; a coiled trunk is not a folded-leg declaration.
+
+Priority polygons explicitly give the foreground tail and front coil their visible overlap pixels before the deeper coil and neck surfaces. No concealed reverse surfaces or additional pixels are invented. The named root-owned body remainder receives every otherwise unclaimed source pixel. The visible tongue remains jaw-attached because this contract has no independent tongue slot.
+
+All coordinates and ownership regions were authored from this painting, with no other specimen's coordinates copied. The first fit remains diagnostic until its unchanged writers, static rows and native owner produce their results. Nick owns the final art review.
