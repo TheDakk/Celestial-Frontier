@@ -56,3 +56,5 @@ Signing checkpoint: items1–8 signed, HEAD b13c1b87507ed2223c13f739573d944283fa
 Continuation: Nick unlocked1Password and explicitly directed completion plus a final push. Tarantula signed5a58994496f0ec0ac05ccc786d57094d98173942. Continue items10–13, sign each, then one normal openai/mac → origin/openai/mac push. No fetch/sync, PR, label, hosted battery, merge, release or deploy is authorized. Exact instruction retained in audits/ARCHETYPE_SPRINT_20260922/CONTINUATION_AUTHORITY.md.
 
 Sprint item10 Octopus: RED; exact rest 0 changed channels, static 14 rows/0 reds, native FAIL, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/README.md. Next unticked item:11. Codex continues; Claude read-only; no hosted action.
+
+Sprint item11 Fruit Bat: RED; exact rest 0 changed channels, static 14 rows/4 reds, native FAIL, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/11-flyer-membrane/README.md. Next unticked item:12. Codex continues; Claude read-only; no hosted action.

@@ -1,0 +1,25 @@
+{
+  "schema": "cf.archetype-sprint-result/v1",
+  "item": 11,
+  "name": "Fruit Bat",
+  "family": "flyer-membrane",
+  "status": "RED",
+  "restDifferentChannels": 0,
+  "static": {
+    "rows": 14,
+    "reds": 4,
+    "exactRest": true,
+    "status": "RED",
+    "refusal": null
+  },
+  "film": {
+    "status": "FAIL",
+    "refusals": null,
+    "cpuP95Ms": null,
+    "cpuScope": "whole two-rig battle2 stage; per-creature CPU not exposed",
+    "error": "Error: Error: Habitat: organism cannot fit its medium\n    at containHabitatBody (http://127.0.0.1:64370/bundle.js:11436:157)\n    at stand (http://127.0.0.1:64370/bundle.js:11502:62)\n    at selectHabitatArena (http://127.0.0.1:64370/bundle.js:11512:9)\n    at http://127.0.0.1:64370/bundle.js:27086:18\n    at file:///Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-runner.mjs:47:148",
+    "source": "5154c64f6f5fe0b9a75bc3f7a51e7da56b6b2e7f"
+  },
+  "intakeRefusal": null,
+  "paintHumanAccepted": false
+}
