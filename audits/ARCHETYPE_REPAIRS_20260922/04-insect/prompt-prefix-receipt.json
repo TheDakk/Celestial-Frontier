@@ -1,0 +1,9 @@
+{
+  "scope": "compile-prompt.mjs preserves kit/genome/contract and changes posture. Before send, explicit edit/style-reference role header was prepended and request hash recomputed.",
+  "exactSentPrompt": "prompt.txt",
+  "sha256": "e4d9c972979a81a0b2ec2a68668a3945c44bf28113c997a4fb8f11e03ffde1a7",
+  "referencedImagePaths": [
+    "audits/ARCHETYPE_SPRINT_20260922/04-insect/master.png",
+    "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ]
+}

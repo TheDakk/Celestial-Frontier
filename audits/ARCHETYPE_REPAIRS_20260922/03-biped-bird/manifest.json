@@ -2152,8 +2152,8 @@
     },
     {
       "path": "HISTORY.md",
-      "bytes": 7454,
-      "sha256": "107f4da334aa25b8fc427604133e6a93bd16ac492b8689f974f845679f3d178c"
+      "bytes": 7842,
+      "sha256": "ebdaa4b6628a368dbfbef9de5c99ea98f0be54d49b8f01ecfc35b0fc68718cd0"
     },
     {
       "path": "inner-leg-component-inventory-07.json",
@@ -2947,8 +2947,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5183,
-      "sha256": "5261fb322e7664092aa71f5335af0cbf5ec19572d262da744f5b4abc45d0465c"
+      "bytes": 5005,
+      "sha256": "e3fd0e1d03d4ca5c3a745c1996372205d1d99968a85f345d3832e97425780acb"
     },
     {
       "path": "repair-inputs.json",

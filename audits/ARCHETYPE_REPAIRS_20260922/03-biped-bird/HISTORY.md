@@ -39,3 +39,7 @@ Every failed attempt remains: original taxonomy rejection in ../../ARCHETYPE_SPR
 Remaining blocker: CPU cost remains in protected ARAP/orientation implementation. PERFORMANCE_PROPOSAL.md names the proposed bounded optimization and required exception. No solver edit or unchanged retry has occurred. Eagle is not complete or signed; do not start the next item while this decision is pending.
 
 Paired next steps: Codex obtains the specific solver-edit exception or further scope direction, completes performance validation, then signs Eagle before Beetle. Claude holds and later consumes signed results under Nick's integration direction. Nick need not open Claude now; he reviews the sheet/film. No new hosted attempt, PR, merge, release or deploy.
+
+## Superseded signing handoff (verbatim)
+
+Signing state: the standard SSH agent, configured 1Password helper and interactive helper refused key use. signing-refusal-01/02/03.json preserve exact results. The item is validated but uncommitted; HEAD remains9c50c190f215. Runtime key-use approval is pending; task authority is already granted. No unsigned fallback and no next item started.

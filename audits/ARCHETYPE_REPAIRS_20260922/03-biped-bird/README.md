@@ -16,4 +16,4 @@ Every refusal remains. Original taxonomy/material issues; static02 tail and stat
 
 Paired next steps: Codex signs this completed item, then starts Beetle. Claude consumes signed results under Nick's integration direction; Nick need not open Claude now and reviews the art. No new hosted attempt, PR, merge, release or deploy.
 
-Signing state: the standard SSH agent, configured 1Password helper and interactive helper refused key use. signing-refusal-01/02/03.json preserve exact results. The item is validated but uncommitted; HEAD remains9c50c190f215. Runtime key-use approval is pending; task authority is already granted. No unsigned fallback and no next item started.
+Signed commit **3ee02d5db99fa03470c078489b0484bf039856e6**; signature verified after Nick confirmed1Password availability. All three prior refusals remain historical.

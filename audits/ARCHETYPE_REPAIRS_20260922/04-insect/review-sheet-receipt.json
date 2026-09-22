@@ -1,0 +1,24 @@
+{
+  "command": "node audits/ARCHETYPE_REPAIRS_20260922/04-insect/review-sheet.mjs audits/ARCHETYPE_REPAIRS_20260922/04-insect audits/ARCHETYPE_REPAIRS_20260922/04-insect/native-02 audits/ARCHETYPE_REPAIRS_20260922/04-insect/review-sheet.png audits/ARCHETYPE_REPAIRS_20260922/04-insect/fit-02",
+  "exitCode": 0,
+  "outputSha256": "ebc43aa7a0e88507cd8e8733d6b10a56053bf8214dbd351222d1505197abcdda",
+  "review": "Parent inspected; corrected master displayed with explicit unavailable labels/fit/film panels; no false fit or still.",
+  "inputs": [
+    {
+      "path": "master.png",
+      "sha256": "1322d8099bd6f24143d55c8c21510de02740407fd08221268078bc20379e7793"
+    },
+    {
+      "path": "subject-source.json",
+      "sha256": "3fe4fafdce0c1fd38584b099be810651b457136eeabaee1aee6117538e765694"
+    },
+    {
+      "path": "authoring.json",
+      "sha256": "19370b686cd036330a2712da593b59764038e9d6705ab8f0cb6d7b5c3289f9f4"
+    },
+    {
+      "path": "review-sheet.mjs",
+      "sha256": "666c6f213a01645feeed8f01c53a4a565ff69741d5760df235519e012852a8a7"
+    }
+  ]
+}
