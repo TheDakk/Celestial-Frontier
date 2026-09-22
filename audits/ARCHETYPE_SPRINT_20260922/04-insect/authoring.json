@@ -1,0 +1,40 @@
+{
+  "id": "beetle",
+  "family": "insect",
+  "landmarksPx": {
+    "root": [
+      800,
+      590
+    ]
+  },
+  "groundLineY": 0.82,
+  "materials": {
+    "surface": "brown chitin"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "stage": "Presence admission first; no fabricated hidden joint coordinates",
+    "visualAcceptance": "candidate for Nick; flight wings intentionally hidden"
+  }
+}
