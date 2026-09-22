@@ -1,0 +1,22 @@
+{
+  "scope": "Read-only snapshot before final item commit and final documentation",
+  "head": "64e792e06ca1e305336868a5d3a207e1caa12668",
+  "remoteBranchBase": "f25098fa4202c86cd6db8b6a5ded47c9faf5dc69",
+  "outgoingCommitsVerified": 14,
+  "signatureVerifier": "/usr/bin/ssh-keygen",
+  "allSignaturesGood": true,
+  "outgoingBlobs": 627,
+  "outgoingBlobBytes": 164069238,
+  "outgoingAndThenStagedBlobBytes": 172704734,
+  "largestBlobBytes": 6898969,
+  "blobsAbove100MiB": 0,
+  "staticRows": 83,
+  "staticGreen": 69,
+  "staticRed": 14,
+  "staticPresentationRows": 6,
+  "staticPreRowRefusals": 2,
+  "admissionRefusals": 3,
+  "nativeFilms": 2,
+  "cpuScope": "whole two-rig battle2 stage",
+  "finalItemSignature": "must verify after final commit"
+}

@@ -1,0 +1,1196 @@
+{
+  "failedAttempts": [
+    {
+      "attempt": 1,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 2,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 3,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 5,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 6,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 7,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 8,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 9,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 10,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 11,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 12,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 13,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 14,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 15,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 16,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 17,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 18,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 19,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 20,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 21,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 22,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 23,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 24,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 25,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 26,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 27,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 28,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 29,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 30,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 31,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 32,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 33,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 34,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 35,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 36,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 37,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 38,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 39,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 40,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 41,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 42,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 43,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 44,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 45,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 46,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 47,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 48,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 49,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 50,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 51,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 52,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 53,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 54,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 55,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 56,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 57,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 58,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 59,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 60,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 61,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 62,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 63,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 64,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 65,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 66,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 67,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 68,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 69,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 70,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 71,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 72,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 73,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 74,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 75,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 76,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 77,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 78,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 79,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 80,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 81,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 82,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 83,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 84,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 85,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 86,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 87,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 88,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 89,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 90,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 91,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 92,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 93,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 94,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 95,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 96,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 97,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 98,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 99,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 100,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 101,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 102,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 103,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 104,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 105,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 106,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 107,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 108,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 109,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 110,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 111,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 112,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 113,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 114,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 115,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 116,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 117,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 118,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 119,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 120,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 121,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 122,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 123,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 124,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 125,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 126,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 127,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 128,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 129,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 130,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 131,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 132,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 133,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 134,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 135,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 136,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 137,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 138,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 139,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 140,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 141,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 142,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 143,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 144,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 145,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 146,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 147,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 148,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 149,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 150,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 151,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 152,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 153,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 154,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 155,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 156,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 157,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 158,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 159,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 160,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 161,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 162,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 163,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 164,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 165,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 166,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 167,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 168,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 169,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 170,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 171,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 172,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 173,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 174,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 175,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 176,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 177,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 178,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 179,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 180,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 181,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 182,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 183,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 184,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 185,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 186,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 187,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 188,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 189,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 190,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 191,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 192,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 193,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 194,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 195,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 196,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 197,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 198,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 199,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 200,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 201,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 202,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 203,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 204,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 205,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 206,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 207,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 208,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 209,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 210,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 211,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 212,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 213,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 214,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 215,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 216,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 217,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 218,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 219,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 220,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 221,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 222,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 223,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 224,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 225,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 226,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 227,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 228,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 229,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 230,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 231,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 232,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 233,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 234,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 235,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 236,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 237,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    },
+    {
+      "attempt": 238,
+      "exitCode": 128,
+      "error": "error: 1Password: agent returned an error\n\nfatal: failed to write commit object"
+    }
+  ],
+  "unsignedFallback": false,
+  "authorization": "Nick directed continued signing retries until 1Password answers; no key export or security configuration changes."
+}
