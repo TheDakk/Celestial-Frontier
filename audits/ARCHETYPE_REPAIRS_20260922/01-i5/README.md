@@ -1,5 +1,15 @@
 # I5 repair preparation — local source only
 
+## Measured result — PASS
+
+Certificate **20260922-i5-focus-89b5da95c185** passes78/78 outcomes,0 findings; lifecycle complete, named verifier exit0. Exact Edge153.0.4234.48/CDP1.3, duration56765ms. Source begin/end are identical clean committed89b5da95c185a1e8f08080ed3f42bab8a0494ec7. Its SSH signature verifies. The user-authorized signing retry succeeded; previous refusals below remain historical evidence.
+
+Producer bd8edd1b570d4bc4e1933a87a9e0552e75208d18ca43c40d2ffcd6712ebc1a5b; measurement6a829fb18eab4c171afaace0f49ad2a987cfcdc520d33dbc05337c379df85ee2. certificate/summary.json retains every authority input, memory measurement/ceiling and raw/compressed report hash. report.json.gz decompresses to the exact9531555-byte emitted report. Six review PNGs are hash-verified copies; native focus evidence inspected. No film applies to this certificate.
+
+The final preparation develop profile includes both required authority/budget test files and passes251Node plus4542Vitest tests/1existing skip. Result commit changes evidence/docs only, so no unchanged battery repeated. Current certification follows the repaired local bytes; historical calibration samples/ruler/ceilings and historical test assertions remain unchanged. No PR43 certification claim.
+
+Codex signs this result then immediately repairs Salmon's native stage. Claude consumes signed results under Nick's integration direction; Nick need not open Claude now and reviews art. No new hosted attempt, PR, merge, release or deploy.
+
 ## Current preparation result (supersedes pending checkpoints below)
 
 Develop profile PASS:251 Node tests;409 Vitest files/4542 PASS/1 existing skip;3 TypeScript checks;42 art modules/0 findings;1014 live override routes/0 dead;454 specification fields/0 inert. See develop-profile-complete.log. The override parser's22 focused controls and real gate pass; override-parser-repair.md records its source-graph/current-wrapper repair and unchanged acceptance criteria. Historical-conservation-final.json verifies all historical budget fields and all test bytes outside the live producer block are unchanged.
