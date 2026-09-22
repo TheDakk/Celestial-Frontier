@@ -50,7 +50,7 @@
    implementations; BY/BZ prove imports resolve through the exact exported
    table/helper binding; CA binds shadow precedence to selector order; CB proves
    .mts sources and their .mjs imports cannot escape recursive discovery; CC
-   rejects a route re-export whose owner escapes that discovered graph; CD
+   discovers an outside-art re-export and rejects its duplicate route owner; CD
    rejects route-name laundering through an export alias; CE/CF pin the
    allowlisted executable art inputs and live catalog wrapper by byte identity;
    CG rejects an unscanned bare side-effect dependency; CH rejects namespace
@@ -526,8 +526,8 @@ try {
   removeTmp();
 
   writeRouter(replaceOnce(routerOrig,
-    "    if (fp) fp(ink.c, g, palette(g) as Pal, name);",
-    "    if (fp) return resolveProcedural(g);",
+    "    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);",
+    "    paintWithTopology(ink,()=>{if (fp) return resolveProcedural(g);",
     'control AJ'));
   check('AJ: an intact selector disconnected from dispatch fails closed', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/);
@@ -614,11 +614,11 @@ try {
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    'export function resolveOverrideCanvas(g: G, fitInk: (src: ArtCanvas, dst: Ctx, who: string) => void = () => {}): ArtCanvas | null {',
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver, fitInk: (src: ArtCanvas, dst: Ctx, who: string) => void = () => {}): ArtCanvas | null {',
     'control AV'));
   check('AV: a resolver parameter cannot shadow the canvas compositor', run(), 'parser-fail',
-    /resolver selector\/consumer contract changed: resolveOverrideCanvas must have only its audited g parameter[\s\S]*PARSER is broken/);
+    /resolver selector\/consumer contract changed: paintOverrideCanvas must have only its audited g and optional observeTopology parameters[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeVictim(replaceOnce(orig, PYTHON, "  'Python': null!,", 'control AW'));
@@ -635,16 +635,16 @@ try {
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    "    const ink = newInk();\n    if (fp) fp(ink.c, g, palette(g) as Pal, name);",
-    "    const ink = newCanvas();\n    if (fp) fp(ink.c, g, palette(g) as Pal, name);",
+    "    const ink = newInk();\n    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);",
+    "    const ink = newCanvas();\n    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);",
     'control AY'));
   check('AY: the detached painter surface must originate from newInk', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    "    if (fp) fp(ink.c, g, palette(g) as Pal, name);",
-    "    if (fp) fp(c, g, palette(g) as Pal, name);",
+    "    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);",
+    "    paintWithTopology(ink,()=>{if (fp) fp(c, g, palette(g) as Pal, name);",
     'control AZ'));
   check('AZ: the selected painter must draw into ink.c', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/);
@@ -707,32 +707,32 @@ try {
   writeVictim(orig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "fitInk = (_src: ArtCanvas, _dst: Ctx, _who: string): void => {};\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "fitInk = (_src: ArtCanvas, _dst: Ctx, _who: string): void => {};\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BG'));
   check('BG: a reassigned canvas helper fails the binding contract', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: route helper fitInk is not its stable exact function binding[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "const String = (_value: unknown): string => '';\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "const String = (_value: unknown): string => '';\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BH'));
   check('BH: a local binding cannot shadow the built-in String resolver input', run(), 'parser-fail',
     /shadowing the built-in String binding is unsupported in route-table sources[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "const Boolean = (_value: unknown): boolean => false;\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "const Boolean = (_value: unknown): boolean => false;\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BI'));
   check('BI: a local binding cannot shadow the built-in Boolean route probe', run(), 'parser-fail',
     /shadowing the built-in Boolean binding is unsupported in route-table sources[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "lineageRenderKingdom = (_g: G): EarthKingdom => 'fauna';\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "lineageRenderKingdom = (_g: G): EarthKingdom => 'fauna';\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BJ'));
   check('BJ: a reassigned lineage route helper fails the binding contract', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: route helper lineageRenderKingdom is not its stable exact function binding[\s\S]*PARSER is broken/);
@@ -755,16 +755,16 @@ try {
   writeQuad(quadOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    'newCanvas = newCanvas;\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    'newCanvas = newCanvas;\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
     'control BM'));
   check('BM: a reassigned canvas allocator fails the binding contract', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: route helper newCanvas is not its stable exact function binding[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    'newInk = newInk;\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    'newInk = newInk;\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
     'control BN'));
   check('BN: a reassigned ink allocator fails the binding contract', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: route helper newInk is not its stable exact function binding[\s\S]*PARSER is broken/);
@@ -798,32 +798,32 @@ try {
   writeCatalog(catalogOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "(Object as any).keys = (_value: object): string[] => [];\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "(Object as any).keys = (_value: object): string[] => [];\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BR'));
   check('BR: Object.keys cannot be monkeypatched around the route audit', run(), 'parser-fail',
     /trusted built-in Object member escapes its approved direct-call context[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "globalThis.String = ((_value?: unknown): string => '') as StringConstructor;\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "globalThis.String = ((_value?: unknown): string => '') as StringConstructor;\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BS'));
   check('BS: a global-object write cannot poison the String route input', run(), 'parser-fail',
     /globalThis global-object access is outside its exact audited context[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
-    "void import('./faunaoverrides2.js');\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
+    'function paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {',
+    "void import('./faunaoverrides2.js');\n\nfunction paintOverrideCanvas(g: G, observeTopology?:PainterTopologyObserver): ArtCanvas | null {",
     'control BT'));
   check('BT: dynamic imports cannot acquire a route table outside static provenance', run(), 'parser-fail',
     /dynamic imports are unsupported in route-table sources[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    "    const { cv, c } = newCanvas();\n    vignette(c, false);\n    floorFade(c);\n    const ink = newInk();\n    if (fp)",
-    "    const { cv, c } = newCanvas();\n    cv.toDataURL = () => '';\n    floorFade(c);\n    const ink = newInk();\n    if (fp)",
+    "    const { cv, c } = newCanvas();\n    vignette(c, false);\n    floorFade(c);\n    const ink = newInk();\n    paintWithTopology(ink,()=>{if (fp)",
+    "    const { cv, c } = newCanvas();\n    cv.toDataURL = () => '';\n    floorFade(c);\n    const ink = newInk();\n    paintWithTopology(ink,()=>{if (fp)",
     'control BU'));
   check('BU: generic furniture syntax cannot poison the returned canvas', run(), 'parser-fail',
     /fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/);
@@ -897,8 +897,8 @@ try {
     'export const FAUNA2_NAME: Record<string, Painter2> = {',
     `export { FAUNA2_NAME } from '../${path.basename(ESCAPE, '.ts')}.js';\nconst FAUNA2_NAME: Record<string, Painter2> = {`,
     'control CC'));
-  check('CC: a route re-export cannot escape the recursively scanned owner graph', run(), 'parser-fail',
-    /re-export "\.\.\/routeescape-control-[0-9]+\.js" is outside recursive art-source discovery[\s\S]*PARSER is broken/);
+  check('CC: an outside-art re-export is scanned and cannot hide a second route owner', run(), 'parser-fail',
+    /FAUNA2_NAME route table has multiple declaration owners:[\s\S]*PARSER is broken/);
   writeVictim(orig);
   removeEscape();
 
@@ -1009,16 +1009,16 @@ try {
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    "    canon(ink.c, g, palette(g) as Pal);\n    applyReviewedFaunaLineageDrift(ink.c, g, name);\n    fitInk(ink.cv, c, kingdom + ':' + name);",
-    "    canon(ink.c, g, palette(g) as Pal);\n    void name;\n    fitInk(ink.cv, c, kingdom + ':' + name);",
+    "    paintWithTopology(ink,()=>canon(ink.c, g, palette(g) as Pal),observeTopology);\n    applyReviewedFaunaLineageDrift(ink.c, g, name);\n    fitInk(ink.cv, c, kingdom + ':' + name);",
+    "    paintWithTopology(ink,()=>canon(ink.c, g, palette(g) as Pal),observeTopology);\n    void name;\n    fitInk(ink.cv, c, kingdom + ':' + name);",
     'control CT'));
   check('CT: canonical fauna must apply reviewed drift before fitInk', run(), 'parser-fail',
     /canon lookup is not the guarded painter that feeds the returned canvas[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    "    if (fp) fp(ink.c, g, palette(g) as Pal, name);\n    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);\n    applyReviewedFaunaLineageDrift(ink.c, g, name);\n    fitInk(ink.cv, c, 'fauna:' + name);",
-    "    if (fp) fp(ink.c, g, palette(g) as Pal, name);\n    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);\n    void name;\n    fitInk(ink.cv, c, 'fauna:' + name);",
+    "    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);\n    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);},observeTopology);\n    applyReviewedFaunaLineageDrift(ink.c, g, name);\n    fitInk(ink.cv, c, 'fauna:' + name);",
+    "    paintWithTopology(ink,()=>{if (fp) fp(ink.c, g, palette(g) as Pal, name);\n    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);},observeTopology);\n    void name;\n    fitInk(ink.cv, c, 'fauna:' + name);",
     'control CU'));
   check('CU: fauna-table painters must apply reviewed drift before fitInk', run(), 'parser-fail',
     /fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/);

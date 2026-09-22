@@ -1,0 +1,59 @@
+{
+  "schema": "cf.source-import-proposal/v1",
+  "status": "IMPORTED",
+  "sourceCommit": "5154c64f6f5fe0b9a75bc3f7a51e7da56b6b2e7f",
+  "localSourceCommit": "61c37f3a846429bcbc0167ea92de12623593e750",
+  "files": [
+    {
+      "sourcePath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/battle2/choreography.ts",
+      "destination": "port/v2/apps/game/src/battle2/choreography.ts",
+      "bytes": 23822,
+      "sha256": "fa258bbb088e8adb5ab78b3c3f56016972cc715ba8bd2dd59fe285f252647cb3",
+      "workingBytesMatchCommit": true,
+      "destinationAbsent": true
+    },
+    {
+      "sourcePath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/battle2/fallback.ts",
+      "destination": "port/v2/apps/game/src/battle2/fallback.ts",
+      "bytes": 4837,
+      "sha256": "feda6d4b6d688b090019f016812d60ff686f662fb575e9ac3d969dd5b74b6869",
+      "workingBytesMatchCommit": true,
+      "destinationAbsent": true
+    },
+    {
+      "sourcePath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/battle2/arena.ts",
+      "destination": "port/v2/apps/game/src/battle2/arena.ts",
+      "bytes": 9573,
+      "sha256": "e04178ae02814dc5dc48d858b7ad434a598eb555412d21e7681a4a330df4151a",
+      "workingBytesMatchCommit": true,
+      "destinationAbsent": true
+    },
+    {
+      "sourcePath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/battle2/fixture-rig.ts",
+      "destination": "port/v2/apps/game/src/battle2/fixture-rig.ts",
+      "bytes": 20142,
+      "sha256": "ec38fdf18b32e3dc92e269f01a98a3d0e5b93afe49be0a42efb302df416c3c9a",
+      "workingBytesMatchCommit": true,
+      "destinationAbsent": true
+    },
+    {
+      "sourcePath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/effects/anchors.ts",
+      "destination": "port/v2/apps/game/src/effects/anchors.ts",
+      "bytes": 10684,
+      "sha256": "3f26b0c6c40f4b210080e18d347d0ede86df2b3f4f018eb70cb9d344ef870870",
+      "workingBytesMatchCommit": true,
+      "destinationAbsent": true
+    },
+    {
+      "sourcePath": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/effects/sequencer.ts",
+      "destination": "port/v2/apps/game/src/effects/sequencer.ts",
+      "bytes": 8925,
+      "sha256": "0b168bd71cb30507326580d02f9584c6901c8f8f0a66ec6fe2c7357b306598a8",
+      "workingBytesMatchCommit": true,
+      "destinationAbsent": true
+    }
+  ],
+  "noFilesImported": false,
+  "purpose": "Repair existing current-local-producer Node proof dependencies without weakening/skipping tests.",
+  "authorization": "Nick: Please go ahead and fix what is being blocked"
+}

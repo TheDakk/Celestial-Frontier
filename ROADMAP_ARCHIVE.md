@@ -1,3 +1,36 @@
+## Live handoff — 2026-09-22 full archetype sprint attempted
+
+## Live handoff — 2026-09-22 archetype repairs active
+
+OpenAI/Codex on macOS verified /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac. Original sprint signed HEAD61c37f3a846429bcbc0167ea92de12623593e750 was pushed successfully and remote equality verified. Original thirteen-item results remain immutable in audits/ARCHETYPE_SPRINT_20260922; that was attempted evidence, not all passing.
+
+Nick now directs “fix everything.” Repair authority and bounded diagnoses: audits/ARCHETYPE_REPAIRS_20260922/AUTHORITY.md and TRIAGE.md. Work in original order, signed packets. Preserve prior failures, measured numbers only, no unchanged retries or relaxed gates. Claude lane remains read-only; accepted bindings and S2 sentinels unchanged. No fresh tool maintenance within this uninterrupted session.
+
+I5 first: fixed generic sheet/pilot CSS overriding the inset Compendium row focus ring. Current local producer measured a2947f975d10311f8fdf6dd1b3dc0f13a5d3a63b78e9c8d0aed91c65b9b7c9a2; measurement remains6a829fb18eab4c171afaace0f49ad2a987cfcdc520d33dbc05337c379df85ee2. Budget/test live pins reconciled together; all historical samples, ruler and ceilings preserved. Focused2files/33tests PASS; root validation/50fingerprints PASS. No new certificate used yet. Native focus diagnostic i5-focus-repair-02 passes4phone/desktop/standard/pilot rows and6historical-fault controls with exact recovery. The first diagnostic refusal sampled baseline mid-transition; retained, then repaired by awaiting actual animation completion.
+
+Develop profile stopped in Node proof tests because local battle2/choreography.ts and effects/anchors.ts are absent. They must be supplied truthfully, not skipped or redirected to Claude and claimed local. Missing source closure under review. A specific exception is pending for protected Centipede repeated-anatomy support and a locally owned battle-stage medium-scale adapter. Other repair plans remain unexecuted.
+
+Signing preparation checkpoint failed: 1Password agent error, git128, no commit created. Read-only explicit agent probe subsequently lists one identity, so do not assume it is locked. No unchanged signing retry. Staged repair and raw refusal are retained; resolve signing before clean-source certificate.
+
+Budget UNFROZEN/public last verified; private fallback3,000. Previous normal push complete; no new PR/label/hosted run/merge/release/deploy authority. No fetch or sync.
+
+Paired next steps: Codex completes I5 validation, signs clean source, runs one changed-source exact-Edge certificate and signs results, then continues ordered archetype repairs. Claude consumes signed results under Nick’s integration direction; Nick need not open Claude to run these repairs. Nick reviews art and resolves the specific protected-code exception. PR43’s different source remains uncertified by local evidence.
+
+
+Verified OpenAI/Codex · macOS · /Users/nick/Projects/celestial-frontier-openai-mac · openai/mac, tracking origin/openai/mac. All 13 items attempted in order, with signed per-item evidence (I5 preparation A + result B); the final packet commit contains this handoff. Durable index: audits/ARCHETYPE_SPRINT_20260922/README.md. Exact instructions, final-push authority, ledger, per-item READMEs, hashes, prompts, refusals, films and sheets are retained there. Earlier U1 and sprint checkpoints moved verbatim to ROADMAP_ARCHIVE.md.
+
+Results: Python passes exact rest, 13 static rows and its native diagnostic (0/0 refusals; CPU p95 2.899999976158142 ms for the whole two-rig stage). Six Salmon masks pass alpha conservation with zero outside-alpha and alpha-excess pixels. The other eleven items are RED. Chimpanzee has 3 static reds, 53 right-rig film refusals, CPU p95 4.600000023841858 ms and an encoded-frame failure. Starfish has 7 static reds; Fruit Bat has 4. Eagle’s optional family metadata and Tree Frog’s material metadata were authored incorrectly; their failures are not absent contracts. Beetle/Tarantula hidden-chain refusals and Centipede capacity refusal are retained; no contract was loosened. All paintings remain subject to Nick’s review. Missing measurements remain unmeasured.
+
+I5 run 20260922-i5-local-36402564d08d on clean signed 36402564d08d1e3354a95f9c92a5e7da6bda2b09 and exact Edge153.0.4234.48 refused the phone review focus/ring instrument: 0 outcomes in7,385ms. Original sealed budget restored byte-for-byte; historical samples/ceilings/test pins unchanged; focused tests/develop profile not run under the explicit RED fallback. Only local producer c489036580a3086563ef1cc7b3eabe002d8155a8b0a6b27395093331a8d5ec0a was attempted. No PR43 certification claim.
+
+Node26.9.0 continuing-run receipt reused. Claude’s /Users/nick/Projects/celestial-frontier-anthropic-mac stayed read-only; .DS_Store untouched. Accepted bindings, S2 sentinels, contracts, solver, limits, gates and thresholds unchanged. No repeated certificate/static/native batteries. S2 reference remains audits/BORROWED_ATLAS_20260922/S2_LEDGER.md; no new S2 run is claimed.
+
+Final Git procedure: sign the final packet, verify the signature, then perform Nick’s one authorized normal openai/mac → origin/openai/mac push and verify remote HEAD equality. Resolve the final item SHA from git history; do not create another commit merely to embed its own hash. UNFROZEN/public; private fallback cap3,000. SSH preflight authenticated TheDakk to git@github.com:TheDakk/Celestial-Frontier.git and read the repo successfully. Remote workflow bytes verified: labeled-PR/manual only, zero listed jobs triggered by this push. No fetch/sync, PR, label, hosted battery, merge, release or deploy. Check actual remote HEAD if resuming before assuming the push completed.
+
+Paired next steps: Codex completes that final signature/push, then HOLDS. Claude consumes signed evidence and diagnoses retained reds under Nick’s integration direction; future integration is openai/mac → develop, never directly main. Nick may open Claude after the push and reviews the art. No unchanged battery or painting retries are pending.
+
+---
+
 ## Archived 2026-09-22 — U1 and continuous archetype sprint checkpoints
 
 ## Live handoff — 2026-09-23 U1 phone Glass repair complete

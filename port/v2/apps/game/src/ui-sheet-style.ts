@@ -40,7 +40,7 @@ body.training #setpanel{z-index:var(--cf-layer-training-settings)}
 :is(.panel,#survey,#dock,#sceneactions,#raillft,#railrgt) button:not(:disabled):active{box-shadow:inset 0 0 0 2px var(--cf-color-accent-gold)}
 :is(.panel,#survey) button:is([aria-pressed="true"],[aria-selected="true"],.sel){border-color:var(--cf-color-accent-gold);box-shadow:inset 0 0 0 1px var(--cf-color-accent-gold)}
 :is(.panel,#survey) button:disabled{cursor:default;filter:saturate(.45)}
-:is(.panel,#survey) :is(button,input,select):focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}
+:is(.panel,#survey) :is(button,input,select):not(.compendium-row):focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}
 @media(max-width:900px) and (orientation:portrait){
  body.surface-mode #planetside{min-height:0;max-height:max(72px,min(calc(var(--cf-sheet-floor) - var(--cf-planetside-start)),var(--planetside-card-max,100dvh)));overflow-y:auto}
  body.surface-mode.card-open #planetside{--planetside-card-max:calc(var(--cf-sheet-floor) - var(--cf-survey-start) - var(--cf-survey-min-height) - 8px)}

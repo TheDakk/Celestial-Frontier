@@ -837,6 +837,13 @@ consumes a separate measured floor in landscape that reserves toast height only 
 intersecting horizontal column; other sheet lanes reserve the actual painted toast. Planetside
 width is observed.
 The panel is still its scroll owner, and Compendium keeps its virtual scrollport.
+Compendium keyboard focus (matches code as of 2026-09-22): `ui-sheet-style.ts` and
+`pilot-runtime-style.ts` exclude `.compendium-row` from generic focus rules. The row
+owner in `index.html` retains the 3px outline with -4px offset inside its clipped scrollport.
+Local proof dependencies (2026-09-22): six absent battle2/effects modules were imported from
+committed5154c64f6f5fe0b9a75bc3f7a51e7da56b6b2e7f under Nick’s explicit exception;
+see audits/ARCHETYPE_REPAIRS_20260922/01-i5/source-import-receipt.json. Existing proof tests
+now compile the actual local source. These modules do not enter the game bundle.
 `panels.ts#seatPnx` tags the original direct h2/h3 `.sheet-header` and keeps a direct first
 `.sheet-close`; `fillPanel` retains that Close node and any Close-owned focus.
 Current title paint (2026-09-08), owned by `ui-sheet-style.ts`: `.panel .sheet-header` is opaque

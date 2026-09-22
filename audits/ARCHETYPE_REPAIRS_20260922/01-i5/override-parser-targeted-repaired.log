@@ -1,0 +1,77 @@
+✔ static dependency closure follows real JS, TS fallbacks, re-exports and cycles beyond art (3.491333ms)
+✔ dependency discovery rejects missing dependency (1.056417ms)
+✔ dependency discovery rejects ambiguous runtime and typed files (1.346ms)
+✔ dependency discovery rejects source boundary escape (1.187084ms)
+✔ dependency discovery rejects symlink directory escape (1.499209ms)
+✔ dependency discovery rejects declaration-only dependency (1.210792ms)
+✔ dependency discovery rejects malformed transitive JS (1.416792ms)
+▶ real sentinel audits transitive modules and exact null-prototype construction in an isolated source copy
+  ✔ transitive route mutation (329.068375ms)
+  ✔ arbitrary Object.create prototype (302.498375ms)
+  ✔ Object.create property descriptors (302.598583ms)
+  ✔ aliased Object.create (302.282708ms)
+  ✔ outside-art re-export cannot hide a second route owner (CC) (410.110208ms)
+  ✔ private route function reassignment (686.442542ms)
+  ✔ public ordinary branch disconnects (685.120625ms)
+  ✖ public capture branch returns replay ink (0.490542ms)
+  ✔ selected painter bypasses ink (689.840375ms)
+  ✔ topology helper skips painting (667.421542ms)
+  ✔ topology callback loses the painter (681.963709ms)
+  ✔ topology callback receives the wrong ink (672.946875ms)
+  ✔ topology callback changes painter genome (681.342208ms)
+  ✖ route precedence remains enforced (0.121959ms)
+✖ real sentinel audits transitive modules and exact null-prototype construction in an isolated source copy (7852.951125ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 19
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7962.154791
+
+✖ failing tests:
+
+test at tools/override-source-graph.test.mjs:133:14
+✖ public capture branch returns replay ink (0.490542ms)
+  AssertionError [ERR_ASSERTION]: public capture branch returns replay ink
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/override-source-graph.test.mjs:134:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/override-source-graph.test.mjs:133:14)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools/override-source-graph.test.mjs:133:14
+✖ route precedence remains enforced (0.121959ms)
+  AssertionError [ERR_ASSERTION]: route precedence remains enforced
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/override-source-graph.test.mjs:134:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at TestContext.test (node:internal/test_runner/test:400:20)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/override-source-graph.test.mjs:133:14)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

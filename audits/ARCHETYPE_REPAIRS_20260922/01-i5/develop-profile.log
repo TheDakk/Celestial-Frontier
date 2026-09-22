@@ -1,0 +1,355 @@
+
+[check:develop] npm test
+
+> cf-v2@0.0.0 test
+> npm run test:tools && node tools/run-unit-tests.mjs
+
+
+> cf-v2@0.0.0 test:tools
+> node tools/test-node-tools.mjs
+
+✔ separates exact triangle LBS, model covariance and published ARAP residual (0.53375ms)
+✔ desktop admits full-film at3.5ms and rejects above/missing; per-clip timings cannot substitute (0.504458ms)
+✔ phone and painter retain the strict2ms per-clip gate (0.144ms)
+✔ desktop CPU cannot conceal geometry, rest, contact, continuity or capture reds (0.480625ms)
+✔ full review retains every row and complete faint duration before settling (1.742625ms)
+✔ encoded full-row duration rejects a truncated ten-second film and excessive recorder padding (0.224458ms)
+✔ arena intake binds full compiler card, context, ground, dimensions and keyed copies; mutations refuse (560.709416ms)
+✔ closed twelve-at-a-time inventory retains original bytes and refuses missing, duplicate, reordered and stale inputs (97.639292ms)
+✔ real codec export is deterministic, preserves decoded duration and source bytes, and measures both peaks (507.676625ms)
+✔ sample-safe intersample clipping is rejected by real true-peak measurement (98.179375ms)
+✔ missing metrics, false encoded peak, wrong channels, duration and unsupported profiles refuse (3.451125ms)
+✔ complete voice export preserves source hashes and refuses existing output or changed manifest before publication (3733.005958ms)
+✔ theme, battle and overlapped bed exports preserve source/sidecar bytes and fit exact budgets (6695.373667ms)
+✔ loop derivative joins the exact declared samples, preserves channels and source; seed changes phase only (9.462583ms)
+✔ odd mono PCM frame count retains RIFF padding; the old unpadded output refuses (1.20675ms)
+✔ WAV intake refuses malformed, silent, clipped and wrong-format masters (0.9055ms)
+✔ 24-bit extensible PCM is equivalent; float subtype, layout and reduced precision refuse (0.688042ms)
+✔ runtime minimum admits large masters without resampling and refuses undersize or corrupt PNG (101.7895ms)
+✔ voice inventory, rights, dry source and hashes fail closed; source bytes stay unchanged (5.25075ms)
+✔ all closed ability/battle inventories pass; missing, extra, renamed, wet and unlicensed cues refuse (32.566791ms)
+✔ bed inventory binds a stereo source and exact loop sidecar; malformed or stale loops refuse (93.877334ms)
+✔ loop discontinuity is measured per channel without claiming it is inaudible (0.129917ms)
+✔ shared joint angles move only their authored head support, leave the attachment still and preserve rest (1.100458ms)
+✔ real Civet source supports pass all ear/jaw envelope combinations and retain the neck-removal failure control (129.605167ms)
+✔ head follows actual pose but source neck remains attached to chest; rigid old transform fails (1.402042ms)
+✔ actual triangle fold is refused, including the reflected profile view (0.098875ms)
+✔ head replacement cannot cut away the neck or chest; original bad declaration is refused (0.123125ms)
+✔ Platypus intake preserves every atlas channel and binds named Earth anatomy; old straight chains fail 3% slack (186.320084ms)
+✔ head views bind the unchanged accepted turnaround and record, and have real source pixels (61.571875ms)
+✔ mirroring uses the same published mouth, not the opposite body end (0.440375ms)
+✔ three-turn capture admits full film and rejects truncated, 30 Hz and over-budget controls (0.1495ms)
+✔ weapon contact uses the declared painted paw, not an unrelated jaw (1.204958ms)
+✔ same encounter replays exactly; distinct seeds alter composition and every actor has a turn (3.303875ms)
+✔ dry fish, foreign biome templates, duplicate actors and missing cards refuse (0.369625ms)
+✔ run-up and return are bounded, return to home, and seek matches frame playback (0.522292ms)
+✔ impact follows the anatomy motion contact time, not settling duration (0.275625ms)
+✔ missing anatomical contact time cannot silently use the old percentage estimate (0.239166ms)
+✔ compiled solve rows and guarded numerics retain machine-scale agreement across valences and pin partitions (15.602625ms)
+✔ norm scaling fallback retains finite large-scale and near-collapsed targets without changing refusal semantics (0.71175ms)
+✔ historical compiled solve rows retain exact arithmetic for short, four, eight and wide neighbor rows (19.3055ms)
+✔ ARAP retains exact rest and rigid rotation/translation, independently of prior seeks (2.7015ms)
+✔ ARAP reduces a discontinuous skin target while preserving hard authored contact handles (1.379125ms)
+✔ ARAP refuses invalid topology/targets atomically and never mutates rest or input (0.614ms)
+✔ orientation projection repairs a reflected skin triangle with fixed joint targets; contradictory fixed triangle refuses without publication (0.230292ms)
+✔ distinct surfaces at the same source coordinates remain free to cross without welding their contact targets (0.1835ms)
+✔ a thin reflected triangle cannot pass the approximate rigid identity shortcut (0.505167ms)
+✔ exact no-progress projection stops redundant sweeps without accepting a contradictory pinned fold (0.491583ms)
+✔ one-pixel exposed join fails between opaque endpoints; restored pixels pass (0.988ms)
+✔ published surface displacement is measured, including reflected meshes and non-square scales (0.4545ms)
+✔ socket evaluator accepts quadruped vocabulary without quadruped assumptions (synthetic) (0.215791ms)
+✔ socket evaluator accepts hopper vocabulary without quadruped assumptions (synthetic) (0.160667ms)
+✔ socket evaluator accepts biped-bird vocabulary without quadruped assumptions (synthetic) (0.151333ms)
+✔ socket evaluator accepts fish vocabulary without quadruped assumptions (synthetic) (0.347333ms)
+✔ socket evaluator accepts insect vocabulary without quadruped assumptions (synthetic) (0.131583ms)
+✔ socket evaluator accepts serpent vocabulary without quadruped assumptions (synthetic) (0.128916ms)
+✔ socket evaluator accepts arachnid vocabulary without quadruped assumptions (synthetic) (0.142334ms)
+✔ socket evaluator accepts radial vocabulary without quadruped assumptions (synthetic) (0.181708ms)
+✔ socket evaluator accepts plant-woody vocabulary without quadruped assumptions (synthetic) (0.151042ms)
+✔ socket evaluator accepts plant-herb vocabulary without quadruped assumptions (synthetic) (0.132958ms)
+✔ socket evaluator accepts myriapod vocabulary without quadruped assumptions (synthetic) (0.137375ms)
+✔ socket evaluator accepts cephalopod vocabulary without quadruped assumptions (synthetic) (0.147584ms)
+✔ socket evaluator accepts flyer-membrane vocabulary without quadruped assumptions (synthetic) (0.7495ms)
+✔ socket evaluator accepts primate vocabulary without quadruped assumptions (synthetic) (0.955542ms)
+✔ native alpha preserves every RGBA channel and old keying resurrects invisible background (2.6615ms)
+✔ opaque keyed sources retain the established intake result exactly (1.393625ms)
+✔ blank and mixed opaque-border exports refuse (0.435625ms)
+✔ depth is pivot-distance and cumulative-limit driven, with fixed floor/cap (1.040875ms)
+✔ bands duplicate only own descendant opaque ink and attach to ancestor in descendant layer (0.829458ms)
+✔ unowned hips and tail root resolve to torso; true siblings do not become ancestors (0.128709ms)
+✔ descendant size cap prevents whole small appendage duplication (0.052458ms)
+✔ mesh profile refuses nonpositive, fractional and excessive steps before reading sources (0.895167ms)
+✔ compiled field preserves weight order and bitwise Float32/Float64 output parity (0.848708ms)
+✔ each current matrix and each component is read once; in-place edits cannot hide behind a cache (0.357541ms)
+✔ source geometry and sparse weights are captured immutably; recompilation observes source edits (0.106292ms)
+✔ missing/nonfinite/malformed matrices and Float32/Float64 overflow refuse atomically (0.163958ms)
+✔ failure after a valid call and later recovery do not leak partially computed scratch (0.103417ms)
+✔ invalid source/foreign state and destination refuse, without accepting inherited matrices (0.175292ms)
+✔ candidate-03 actual Civet field is bitwise equal at every retained named native pose (113.219833ms)
+✔ civet complete contact inventory passes; formerly green missing pairs refuse (27.214416ms)
+✔ fox complete contact inventory passes; formerly green missing pairs refuse (18.960167ms)
+✔ procedural complete contact inventory passes; formerly green missing pairs refuse (10.578792ms)
+✔ intact rest and rigid motion preserve the authored notch; real separation fails (6.271333ms)
+✔ a covered rotated cut passes and removing its support fails on the same geometry (1.99725ms)
+✔ empty, overlapping, malformed and clipped observations refuse rather than pass (1.9495ms)
+✔ transparent diagnostic padding preserves the true gap count and detects canvas escape (1.715333ms)
+✔ rest and arbitrary rigid rotation/translation preserve all measures; output and buffers are reused (1.259625ms)
+✔ flipped, collapsed, compressed and stretched triangles expose distinct failures without thresholds (0.15675ms)
+✔ anisotropy uses the full deformation gradient and survives skewed source triangles (0.10325ms)
+✔ genuinely transparent triangles are excluded, but finite geometry is still checked (0.378583ms)
+✔ ink inside a triangle counts even when vertices and centroid are transparent (0.21075ms)
+✔ bounding-box ink outside the triangle does not count, but a sliver crossing a texel does (0.243166ms)
+✔ bilinear support, cutout origin, RGBA alpha and normalized rig output are handled explicitly (0.243833ms)
+✔ painted zero-area source triangles and nonfinite/overflow poses cannot produce complete measurements (0.158417ms)
+✔ mixed triangles count ink individually and classify only the actual corrupt/strained triangle (0.216083ms)
+✔ malformed source, missing alpha and malformed posed buffers refuse before measurements (0.654542ms)
+✔ quadruped: exact family anatomy, immutable contract and hostile-record controls (11.572209ms)
+✔ hopper: exact family anatomy, immutable contract and hostile-record controls (6.327916ms)
+✔ biped-bird: exact family anatomy, immutable contract and hostile-record controls (3.79225ms)
+✔ fish: exact family anatomy, immutable contract and hostile-record controls (10.217334ms)
+✔ insect: exact family anatomy, immutable contract and hostile-record controls (8.597083ms)
+✔ serpent: exact family anatomy, immutable contract and hostile-record controls (4.003209ms)
+✔ arachnid: exact family anatomy, immutable contract and hostile-record controls (9.883208ms)
+✔ radial: exact family anatomy, immutable contract and hostile-record controls (5.305625ms)
+✔ plant-woody: exact family anatomy, immutable contract and hostile-record controls (7.924917ms)
+✔ plant-herb: exact family anatomy, immutable contract and hostile-record controls (4.472291ms)
+✔ myriapod: exact family anatomy, immutable contract and hostile-record controls (7.583708ms)
+✔ cephalopod: exact family anatomy, immutable contract and hostile-record controls (3.97925ms)
+✔ flyer-membrane: exact family anatomy, immutable contract and hostile-record controls (1.861666ms)
+✔ primate: exact family anatomy, immutable contract and hostile-record controls (7.472584ms)
+✔ unknown template never defaults to quadruped and all contracted inventories are closed (0.43075ms)
+✔ old hopper and fish fixture clip-set names are rejected instead of silently using different motion (0.199375ms)
+✔ v2 folded is optional, declared, painted and does not change the rig or contact inventory (1.289584ms)
+✔ folded malformed, unknown, duplicate and overlapping declarations refuse (0.595084ms)
+✔ three applied presence inputs preserve accepted geometry, hidden sets and contact chains (8.44925ms)
+✔ declared hidden pair keeps complete skeleton, flags inferred joints and excludes exactly two contact chains (5.455667ms)
+✔ missing pair is never inferred by admission, declared or undeclared; absent cannot replace hidden (1.61725ms)
+✔ actual eight-visible painter admits unchanged; same paint assigned to declared hidden joints refuses in both intake routes (256.818084ms)
+✔ joint underlap never introduces a rest-visible pixel outside opaque base coverage (0.838542ms)
+✔ excluded crop corner key is ignored but retained key ink refuses (0.333792ms)
+✔ actual floating paint is refused although its rest and geometric seams passed (6.862875ms)
+✔ all observed final limb parts are connected; no pixel deletion is used (55.964792ms)
+✔ active-set projection closes the real cast fold that 64 forward sweeps leave inverted, without changing targets or pins (36.4045ms)
+✔ only real multi-owner interior vertices with a painted ancestor qualify (0.631125ms)
+✔ three copies of one point expose a native hole that pair-only geometry misses (0.6435ms)
+✔ socket triangle has zero rest area, uses only descendant texel and validates all owners (1.143333ms)
+✔ both source parts share exact deformation; rest reconstructs authored positions without patches (2.289708ms)
+✔ foreign joints, missing source ownership, extrapolated UVs and corrupt indices refuse (0.485458ms)
+✔ a foldover fails on the actual posed triangle, while rest and rigid translation pass (0.448042ms)
+✔ thin nonzero painted triangles cannot bypass orientation checks (0.331583ms)
+✔ asset solver profile cannot override orientation defaults or add inherited tuning fields (2.974292ms)
+✔ authored mask ownership reconstructs visible pixels; drops, duplicates and changed colours fail (512.409334ms)
+✔ corruption, wrong master, wrong record and unknown joint refuse before output (146.454958ms)
+✔ painter labels reconstruct actual alpha and refuse dropped, unknown or rehashed foreign owners (430.186041ms)
+✔ every original lower-alpha column including faint high contour contributes actual mesh supports (2.265708ms)
+✔ pinning source supports removes painted drift that a fixed paw bone alone misses (0.967333ms)
+✔ two paw owners cannot silently share pinned supports and missing alpha/mesh refuses (0.299416ms)
+✔ frontal source wings both lift under canonical positive flap; old broadcast lifts one and drops one (1.850459ms)
+✔ source-view declarations fail closed and unmarked side views retain the canonical basis (0.200791ms)
+✔ hash-bound master, corruption, swapped cut-out and unsupported serpent controls (12.034708ms)
+✔ alpha topology refines at silhouette, skips empty regions and shares edges (3.568875ms)
+✔ template finite endpoints restore exact rest; curves move jaw, ears, tail and release feet only in attack (93.61975ms)
+✔ one CLI atlas is byte-stable across input order; original pixels and hashes survive (1076.446833ms)
+✔ parent attachment movement carries a rigid leaf without world pins; exact rest remains exact (0.935958ms)
+✔ wrong parent and invented attachment are refused (0.15325ms)
+✔ strip is exactly zero-area at rest, covers moving edge separation, samples only original descendant pixel (1.443125ms)
+✔ source caps, foreign pixels, bad ownership, malformed geometry and nonfinite motion refuse (0.304917ms)
+✔ subpixel overlap closes the captured strike raster crack; exact-edge control opens it (0.150167ms)
+✔ ancestral contacts resolve pelvis ink to torso and refuse independent siblings (1.42925ms)
+✔ reconstructs full filtered opaque coverage and colour; old independent alpha-over is the failing control (5.032667ms)
+✔ does not guard outer silhouettes, nonopaque paint, independent limbs or distal body overlaps (7.484875ms)
+✔ refuses apparently aligned boundaries carried by different skin fields and foreign-frame padding (0.6055ms)
+✔ fish decoder guard retains source pixels and refuses the old quadruped inventory (1.002834ms)
+✔ uses the owner body axis and parent pivot; root displacement applies exactly once (0.961542ms)
+✔ snapshots template and landmarks; failed frames cannot poison subsequent poses (0.40275ms)
+✔ refuses malformed topology, ambiguous inventories, hidden prototype joints and bad body axes (1.158125ms)
+✔ matches the previous quadruped evaluator exactly for all three real records (12.014041ms)
+✔ smooths actual adjacent influences deterministically without changing topology, positions or original weights (1.973958ms)
+✔ refuses invalid topology or unsupported iterations (0.245125ms)
+✔ projected independent surfaces retain exact source coordinates and cannot inherit opposing paint (10.752125ms)
+✔ observed attachments weld all source-supported faces, not independent overlaps (1.448708ms)
+✔ corrupted binding/probe, missing source face and conflicting fixed owners refuse (2.276625ms)
+✔ flat source ownership boundaries weld only when explicitly requested (3.857ms)
+✔ mutated source recipe and unknown anatomy refuse before compilation (1.452916ms)
+✔ contact endpoint locks survive diffusion; unpinned shared paint retains mixed influence (6.396667ms)
+✔ existing-field contact refresh preserves every non-contact weight, pin and triangle (1.967417ms)
+✔ contact conflict repair releases only neighbouring non-contact pins without changing weights (21.182625ms)
+✔ branch reindex preserves every source interpolation but opposing paws have separate vertices/solver topology (11.485583ms)
+✔ proximal root socket stays shared and malformed source references fail closed (6.081833ms)
+✔ a bent distal paw behind the root plane retains its painted limb ownership (4.357167ms)
+✔ source/record corruption and unsupported anatomy refuse before producing a binding (21.782ms)
+✔ uniform authoring scale preserves normalized interpolation, weights and surfaces and repeated builds are identical (3.692458ms)
+✔ actual part faces enter solver topology even when cached vertex interpolation references other faces (5.66575ms)
+✔ actual ancestral attachment welds below root plane while an opposing sibling remains separate (8.782875ms)
+✔ physical proximal skin joins axial/upper sibling owners while limb pairs and distal crossings remain split (3.578625ms)
+✔ shared shoulder skin retains proximal limb influence without importing distal foot transforms (4.645666ms)
+✔ shared muscle influences cross a socket continuously while an opposing distal foot remains independent (3.618041ms)
+✔ source walk stops before a transparent hole and never exceeds the original depth cap (2.822584ms)
+✔ textured hinge omits the duplicate silhouette, maps the source interior, and refuses foreign UVs (1.196292ms)
+✔ complete descendant support distinguishes a missing band from absent source ink (0.484625ms)
+✔ inverse mapping follows translation and rotation rather than the rest image coordinate (0.338916ms)
+✔ invalid matrices, geometry, data and targets refuse instead of reporting no ink (0.20825ms)
+✔ verifies the hidden band against packed bytes and refuses a resealed pixel or dimension mismatch (25.925709ms)
+✔ real admitted Wasm leaf matches the current JS solver exactly and shares fixed scratch memory (6.376375ms)
+✔ absent Wasm and denied memory use the actual JS fallback with exact outputs (6.463125ms)
+✔ a real add-to-subtract binary mutant is rejected by admission and the runtime falls back (1.419334ms)
+✔ leaf snapshots all invariants and refuses malformed rows instead of silently accepting them (0.414625ms)
+✔ normal-range refusal precedes every position and RHS write, then robust JS preserves exact results (0.378084ms)
+✔ strict artifact admission rejects relocation/global/data/table/function-import controls (1.489ms)
+✔ a late disconnected-component norm refusal cannot publish an earlier component update (0.162625ms)
+✔ full motion stays inside the frame; the rest-only fit clips a lunge (0.424375ms)
+✔ empty and nonfinite motion cannot receive an apparently valid fit (0.122208ms)
+✔ media byte probes, seeking and suffix reads retain exact boundaries (0.67575ms)
+✔ malformed and out-of-bounds ranges refuse instead of returning an empty movie (0.123208ms)
+✔ transparent ink cannot pass; one real pixel has exact bounds (0.726666ms)
+✔ pixel parity detects a one-channel defect and different dimensions (0.092041ms)
+✔ complete census refuses omitted, duplicated, extra and unfinished cases (0.559792ms)
+✔ identity/changed interiors conserve alpha, ownership components and label gradients; edge mutants fail (85.823041ms)
+✔ desktop class admitted, phone and setting/model-input mutants refused (0.299ms)
+✔ audio evidence rejects silence, corruption and incomplete tracks (49.096666ms)
+✔ skin capture refuses rest drift, untested motion, slow update and diagnostic substitution (2.012125ms)
+✔ capture binds complete source inventory, manifest, generated program and actual asset routing before filming (0.889ms)
+✔ independent media duration rejects first short recordings and missing/overlong evidence (0.090209ms)
+✔ startup feeds frames before acknowledgment and refuses a recorder that never starts (0.2855ms)
+✔ the creature budget counts slow producer sampling and slow contact solving (6.01925ms)
+✔ timing preserves the callback result, executes once and never masks failures (0.480541ms)
+✔ planning is taken from the native owner; duplicate or missing declarations refuse (1.0435ms)
+✔ changed producer is refused before exporting any evidence; existing output is protected (1.481167ms)
+✖ actual current producer exports 1201 resolved poses each, deterministically and source-bound (134.031375ms)
+✔ impact exposure follows the struck side and leaves the attacker neutral (0.658042ms)
+✔ explicit-time fading is history-free and cannot brighten a miss or reduced-motion turn (0.220208ms)
+✔ pacing admits a real 60 Hz trace and rejects 30 Hz, stalls, missing samples and slow rigs (1.923667ms)
+✔ motion evidence rejects static appendages, missing phases and missing endpoints (4.344542ms)
+✔ turn sampler retains additive curves, freezes hitstop and kills every compiled player (1.256ms)
+✔ samples actual lowest alpha and retains perspective offsets rather than flattening paws (0.98775ms)
+✔ negative control exposes drifting painted contact with a perfectly fixed skeleton (0.650333ms)
+✔ airborne rigid translation separates intended motion from skin-following error (0.187958ms)
+✔ refuses missing source ink, uncovered painted contour, wrong binding and malformed published buffers (0.354375ms)
+✔ resolves pelvis-rooted upper limb to torso and detects broken rendered attachment with unchanged rest (1.868459ms)
+✔ independent legs and non-nearest ancestral silhouette contacts remain explicitly excluded (1.009708ms)
+✔ samples both piecewise-affine breakpoint inventories so a narrow gap cannot hide between pixel endpoints (0.37325ms)
+✔ refuses missing source coverage, overlapping ownership and nonfinite publication (0.464916ms)
+✔ proximal body skin joins across bone siblings while distinct limbs stay independent (6.958208ms)
+✔ retained actual Civet strike: continuous C03 passes; branch-split C06 and incomplete-socket C07 fail (706.656417ms)
+✔ fish spine and fin attachments use the declared graph; foreign joints and absent remainder refuse (0.436916ms)
+✔ bin-edge rounding keeps present source coverage; true missing coverage and displaced publication still fail (1.688667ms)
+✔ one idle clip continues across roles and pauses in both existing hitstops (1.024208ms)
+✔ support releases and reacquires continuously without changing grounded solves or admitting a refused endpoint (0.728667ms)
+✖ actual current producer has continuous support/role boundaries, exact grounded contacts and frame-rate-independent seeks (123.254625ms)
+✔ right combatant keeps its own idle and releases support only during its own attack (0.723ms)
+ℹ tests 229
+ℹ suites 0
+ℹ pass 227
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11353.761
+
+✖ failing tests:
+
+test at tools/quadruped-proof/export-current-poses.test.mjs:37:1
+✖ actual current producer exports 1201 resolved poses each, deterministically and source-bound (134.031375ms)
+  Error: Build failed with 2 errors:
+  
+  [31m[UNLOADABLE_DEPENDENCY] [0mCould not load apps/game/src/battle2/choreography.ts
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m tools/quadruped-proof/current-poses-entry.mjs:5:26 [38;5;246m][0m
+     [38;5;246m│[0m
+   [38;5;246m5 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mT[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249mn[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/battle2/choreography.ts'[38;5;249m;[0m
+   [38;5;240m  │[0m                          ─────────────────┬────────────────  
+   [38;5;240m  │[0m                                           ╰────────────────── No such file or directory (os error 2)
+  [38;5;246m───╯[0m
+  
+  [31m[UNLOADABLE_DEPENDENCY] [0mCould not load apps/game/src/effects/anchors.ts
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m tools/quadruped-proof/current-poses-entry.mjs:6:42 [38;5;246m][0m
+     [38;5;246m│[0m
+   [38;5;246m6 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249mp[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249me[0m[38;5;249mE[0m[38;5;249mf[0m[38;5;249mf[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249mt[0m[38;5;249mS[0m[38;5;249me[0m[38;5;249mq[0m[38;5;249mu[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249me[0m[38;5;249mA[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249mh[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/effects/anchors.ts'[38;5;249m;[0m
+   [38;5;240m  │[0m                                          ──────────────┬──────────────  
+   [38;5;240m  │[0m                                                        ╰──────────────── No such file or directory (os error 2)
+  [38;5;246m───╯[0m
+  
+      at aggregateBindingErrorsIntoJsError (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/error-BgfXq0Tb.mjs:48:18)
+      at unwrapBindingResult (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/error-BgfXq0Tb.mjs:18:128)
+      at #build (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/rolldown-DP_p9pd3.mjs:132:34)
+      at async exportCurrentPoses (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/export-current-poses.mjs:49:7)
+      at async TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/export-current-poses.test.mjs:40:15)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    errors: [
+      [Error: [31m[UNLOADABLE_DEPENDENCY] [0mCould not load apps/game/src/battle2/choreography.ts
+         [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m tools/quadruped-proof/current-poses-entry.mjs:5:26 [38;5;246m][0m
+         [38;5;246m│[0m
+       [38;5;246m5 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mT[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249mn[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/battle2/choreography.ts'[38;5;249m;[0m
+       [38;5;240m  │[0m                          ─────────────────┬────────────────  
+       [38;5;240m  │[0m                                           ╰────────────────── No such file or directory (os error 2)
+      [38;5;246m───╯[0m
+      ],
+      [Error: [31m[UNLOADABLE_DEPENDENCY] [0mCould not load apps/game/src/effects/anchors.ts
+         [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m tools/quadruped-proof/current-poses-entry.mjs:6:42 [38;5;246m][0m
+         [38;5;246m│[0m
+       [38;5;246m6 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249mp[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249me[0m[38;5;249mE[0m[38;5;249mf[0m[38;5;249mf[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249mt[0m[38;5;249mS[0m[38;5;249me[0m[38;5;249mq[0m[38;5;249mu[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249me[0m[38;5;249mA[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249mh[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/effects/anchors.ts'[38;5;249m;[0m
+       [38;5;240m  │[0m                                          ──────────────┬──────────────  
+       [38;5;240m  │[0m                                                        ╰──────────────── No such file or directory (os error 2)
+      [38;5;246m───╯[0m
+      ]
+    ]
+  }
+
+test at tools/quadruped-proof/turn-contact-transition.test.mjs:40:1
+✖ actual current producer has continuous support/role boundaries, exact grounded contacts and frame-rate-independent seeks (123.254625ms)
+  Error: Build failed with 2 errors:
+  
+  [31m[UNLOADABLE_DEPENDENCY] [0mCould not load apps/game/src/battle2/choreography.ts
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m tools/quadruped-proof/current-poses-entry.mjs:5:26 [38;5;246m][0m
+     [38;5;246m│[0m
+   [38;5;246m5 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mT[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249mn[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/battle2/choreography.ts'[38;5;249m;[0m
+   [38;5;240m  │[0m                          ─────────────────┬────────────────  
+   [38;5;240m  │[0m                                           ╰────────────────── No such file or directory (os error 2)
+  [38;5;246m───╯[0m
+  
+  [31m[UNLOADABLE_DEPENDENCY] [0mCould not load apps/game/src/effects/anchors.ts
+     [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m tools/quadruped-proof/current-poses-entry.mjs:6:42 [38;5;246m][0m
+     [38;5;246m│[0m
+   [38;5;246m6 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249mp[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249me[0m[38;5;249mE[0m[38;5;249mf[0m[38;5;249mf[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249mt[0m[38;5;249mS[0m[38;5;249me[0m[38;5;249mq[0m[38;5;249mu[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249me[0m[38;5;249mA[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249mh[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/effects/anchors.ts'[38;5;249m;[0m
+   [38;5;240m  │[0m                                          ──────────────┬──────────────  
+   [38;5;240m  │[0m                                                        ╰──────────────── No such file or directory (os error 2)
+  [38;5;246m───╯[0m
+  
+      at aggregateBindingErrorsIntoJsError (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/error-BgfXq0Tb.mjs:48:18)
+      at unwrapBindingResult (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/error-BgfXq0Tb.mjs:18:128)
+      at #build (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/rolldown-DP_p9pd3.mjs:132:34)
+      at async exportCurrentPoses (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/export-current-poses.mjs:49:7)
+      at async TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/turn-contact-transition.test.mjs:44:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    errors: [
+      [Error: [31m[UNLOADABLE_DEPENDENCY] [0mCould not load apps/game/src/battle2/choreography.ts
+         [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m tools/quadruped-proof/current-poses-entry.mjs:5:26 [38;5;246m][0m
+         [38;5;246m│[0m
+       [38;5;246m5 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249ms[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249ml[0m[38;5;249me[0m[38;5;249mT[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249mn[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/battle2/choreography.ts'[38;5;249m;[0m
+       [38;5;240m  │[0m                          ─────────────────┬────────────────  
+       [38;5;240m  │[0m                                           ╰────────────────── No such file or directory (os error 2)
+      [38;5;246m───╯[0m
+      ],
+      [Error: [31m[UNLOADABLE_DEPENDENCY] [0mCould not load apps/game/src/effects/anchors.ts
+         [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m tools/quadruped-proof/current-poses-entry.mjs:6:42 [38;5;246m][0m
+         [38;5;246m│[0m
+       [38;5;246m6 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249mp[0m[38;5;249ma[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249me[0m[38;5;249mE[0m[38;5;249mf[0m[38;5;249mf[0m[38;5;249me[0m[38;5;249mc[0m[38;5;249mt[0m[38;5;249mS[0m[38;5;249me[0m[38;5;249mq[0m[38;5;249mu[0m[38;5;249me[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249me[0m[38;5;249mA[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249mh[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m'cf-proof/effects/anchors.ts'[38;5;249m;[0m
+       [38;5;240m  │[0m                                          ──────────────┬──────────────  
+       [38;5;240m  │[0m                                                        ╰──────────────── No such file or directory (os error 2)
+      [38;5;246m───╯[0m
+      ]
+    ]
+  }
+CHECK PROFILE: FAIL
+Error: Command failed: npm test
+    at genericNodeError (node:internal/errors:999:15)
+    at wrappedFn (node:internal/errors:544:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at runCheckCommand (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/check-profile.mjs:82:3)
+    at runCheckProfile (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/check-profile.mjs:96:5)
+    at main (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/check-profile.mjs:108:3)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/check-profile.mjs:114:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at async node:internal/modules/esm/loader:650:26

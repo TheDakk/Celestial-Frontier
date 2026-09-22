@@ -11,7 +11,6 @@ import {resolveAnatomyInventory,type AnatomyPresence} from '../../../../tools/cr
 import {resolvePhysicalHabitat} from '../battle-habitat.js';
 import {earthFaunaProfile} from '../earth-fauna-profiles.js';
 import { FA_HEAD, FA_LOCO, FA_SKIN, FA_TAIL } from '@cf/domain-speciestraits';
-import { classifyRealm } from '@cf/domain-genome';
 import { isMotionFallback, resolveTemplate, type JointLimitDeg, type JointName, type MotionFallback, type MotionTemplate, type Vec2 } from './templates.js';
 import { PLANT_TEMPLATE_IDS, templateIdForFamily } from './family-templates.js';
 import { templateGaits } from './family-actions.js';
@@ -112,8 +111,6 @@ const groupOf = (joint: string): PartGroup =>
   /^tail|^abdomen$|^sting$/.test(joint) ? 'tail' : /^ear/.test(joint) ? 'ears' : /wing|tailFan/.test(joint) ? 'wings' : /caudal|dorsal|pectoral/.test(joint) ? 'fins' : /antenna/.test(joint) ? 'antennae'
   : /branch|leaf|stem|frond/.test(joint) ? 'fronds' : /^(arm(\d|Far|Near)|tentacle\d)/.test(joint) ? 'arms' : /^(neck\d?|head|jaw|beak|mandible|chelicera|eye)/.test(joint) ? 'head' : /^(pelvis|spine\d?|chest|thorax|cephalothorax|centre|bell|trunk|seg\d|mantle|siphon)$/.test(joint) ? 'body' : /^fin/.test(joint) ? 'fins' : 'legs';
 const at = <T>(arr: readonly T[], i: number | undefined): T | undefined => typeof i === 'number' ? arr[((i | 0) % arr.length + arr.length) % arr.length] : undefined;
-const realmFromLabel = (label: string): Realm =>
-  /Aerial/.test(label) ? 'aerial' : /Aquatic/.test(label) ? 'aquatic' : /Amphibious/.test(label) ? 'amphibious' : /Gas Giant/.test(label) ? 'gas-giant' : 'land';
 
 export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGenomeFields): BodyCard {
   if (!record || typeof record !== 'object' || !record.identity || (!record.template && !record.family)) throw new MotionCompileError('missing-record', 'record lacks template/identity');

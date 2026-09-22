@@ -1,0 +1,55 @@
+✖ static dependency closure follows real JS, TS fallbacks, re-exports and cycles beyond art (3.353792ms)
+✔ dependency discovery rejects missing dependency (1.303958ms)
+✔ dependency discovery rejects ambiguous runtime and typed files (1.305ms)
+✔ dependency discovery rejects source boundary escape (1.102459ms)
+✔ dependency discovery rejects symlink directory escape (1.408958ms)
+✔ dependency discovery rejects declaration-only dependency (1.298667ms)
+✔ dependency discovery rejects malformed transitive JS (2.134792ms)
+✖ real sentinel audits transitive modules and exact null-prototype construction in an isolated source copy (674.400667ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 6
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 782.002958
+
+✖ failing tests:
+
+test at tools/override-source-graph.test.mjs:29:1
+✖ static dependency closure follows real JS, TS fallbacks, re-exports and cycles beyond art (3.353792ms)
+  Error: ../../../tools/value.ts relative module "../../../v2/packages/art/src/entry.js" escapes the v2 source boundary
+      at inspect (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/override-source-graph.mjs:22:48)
+      at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/override-source-graph.mjs:39:70
+      at Array.filter (<anonymous>)
+      at resolve (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/override-source-graph.mjs:39:51)
+      at discoverRelativeSourceClosure (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/override-source-graph.mjs:57:22)
+      at Object.graph (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/override-source-graph.test.mjs:24:18)
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/override-source-graph.test.mjs:35:19)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+
+test at tools/override-source-graph.test.mjs:70:1
+✖ real sentinel audits transitive modules and exact null-prototype construction in an isolated source copy (674.400667ms)
+  AssertionError [ERR_ASSERTION]: overridecheck: source graph 42 art + 3 transitive modules
+  overridecheck: speciesoverrides.ts@116653 CANON route table uses unsupported computed member — the PARSER is broken
+  
+  
+  2 !== 0
+  
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/override-source-graph.test.mjs:92:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

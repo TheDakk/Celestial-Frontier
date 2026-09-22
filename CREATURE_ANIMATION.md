@@ -1,5 +1,7 @@
 # Creature animation — shared anatomy and motion contract
 
+**Local repair source, matches code as of2026-09-22:** Nick authorized the named archetype sprint and repairs in audits/ARCHETYPE_REPAIRS_20260922/AUTHORITY.md. The six supporting battle2/effects modules listed in01-i5/source-import-receipt.json are now present locally from committed5154c64f6f5fe0b9a75bc3f7a51e7da56b6b2e7f for existing current-producer proofs. They are not reachable from the game entry. This does not claim full battle-stage integration or completion of failed archetypes. Only unused motion declarations were removed to satisfy strict compilation; family definitions, solver behavior and limits remain unchanged. Accepted inputs and S2 sentinels stay protected.
+
 **Painted desktop delivery — Nick’s September20 decision, PROGRAM.md§6.** Accepted
 painted masters use full-film rig p95 ≤3.5ms on desktop, explicitly selected as the
 painted-desktop review tier. Canonical boundary24/interior56 meshes remain unchanged.
