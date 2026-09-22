@@ -28,3 +28,7 @@ Product: sheet-layout owns portrait Survey Objective hiding and header publicati
 S2 remains untouched; prior audits/BORROWED_ATLAS_20260922/S2_LEDGER.md is the solver reference. No rig/skin/anatomy changes or repeated rig batteries.
 
 Paired next steps: Codex holds. Claude reconciles the signed producer into its integration tree, checks both phone preflights there, then handles PR #43's hosted battery under its existing authority. Nick can continue in Claude; nothing new to decide. Report actual signed local HEAD/ahead only; this session authorizes no push.
+
+## Active sprint — 2026-09-22
+
+Nick’s continuous 13-item archetype sprint supersedes the hold above. Durable ledger: audits/ARCHETYPE_SPRINT_20260922/LEDGER.md; exact instructions retained beside it. I5 local source selected, signed preparation → one certificate → signed evidence authorized. Then eleven archetypes in ledger order and Salmon marking masks. No contract/solver/gate/limit changes, accepted bindings untouched, S2 red stops the sprint. Claude lane read-only; no fetch/sync/push/PR/merge/release/deploy. Continue Node26.9.0 receipt. Codex continues; Claude consumes signed results afterward; Nick reviews art.
