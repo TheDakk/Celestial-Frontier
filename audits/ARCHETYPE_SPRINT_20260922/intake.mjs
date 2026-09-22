@@ -76,7 +76,7 @@ let stage='family-record',failure=null;
 const provenance={schema:'cf.sprint-authored-intake/v1',status:'RUNNING',sourceHead:execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim(),helperSha256:sha(fs.readFileSync(fileURLToPath(import.meta.url))),inputs,manualAuthoring:true,sourceLabelsReused:false,sourceLandmarksReused:false,hiddenInference:false,options:{boundaryStep:24,interiorStep:56,includeTopology:true,fixedJoints:['root']},nativeAcceptance:false};
 try {
   const contract=familyContract(author.family);
-  const record=await sealFamilyRecord({kind:author.family,family:author.family,
+  const record=await sealFamilyRecord({kind:author.family, // Template id is not the optional taxonomy-family field.
     identity:{speciesVisualKey:visualKey,seed:subject.genome.seed,ownerId:subject.ownerId??`authored:archetype-sprint/${author.id}`,earthName:subject.name},
     template:{id:author.family,version:contract.version},clipSetId:contract.clipSetId,
     anatomy:presence,genome:subject.genome,
