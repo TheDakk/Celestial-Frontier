@@ -10,8 +10,8 @@ Source: OpenAI/Codex · macOS · /Users/nick/Projects/celestial-frontier-openai-
 | 4 | insect | Beetle | 0c8b6e56f705af15564571b311d77ea09a5f0c48 | not run | not measured | not measured | 04-insect/review-sheet.png | RED: Error: Hidden anatomy: unsupported hidden chain |
 | 5 | serpent | Python | 879844704150ae0e3fd505cd2b276156106daf27 | 13 rows / 0 red | {"left":0,"right":0} | 2.899999976158142 ms stage | 05-serpent/review-sheet.png | PASS:  |
 | 6 | hopper | Tree Frog | f598f58914056d8eb10ca53dbfc67f933ec1d132 | REFUSED before rows | not measured | not measured | 06-hopper/review-sheet.png | RED: Error: MotionCompileError: motion refused (unsupported-materials): surface "moist granular green frog skin, cream underside and orange adhesive toe discs" maps to no kit material |
-| 7 | primate | Chimpanzee | packet history (07-primate) | 14 rows / 3 red | {"left":0,"right":53} | 4.600000023841858 ms stage | 07-primate/review-sheet.png | RED: Error: Motion capture: encoded video lost frames |
-| 8 | radial | Starfish | pending | not run | not run | not measured | pending | not started |
+| 7 | primate | Chimpanzee | 6496aee59332b62566574fa0e9707837100623dc | 14 rows / 3 red | {"left":0,"right":53} | 4.600000023841858 ms stage | 07-primate/review-sheet.png | RED: Error: Motion capture: encoded video lost frames |
+| 8 | radial | Starfish | packet history (08-radial) | 14 rows / 7 red | not measured | not measured | 08-radial/review-sheet.png | RED: Error: Error: habitat: Selected home arena cannot support both organisms; no habitat or biome substitution · left Starfish: aquatic (water) · right Starfish: aquatic (water) |
 | 9 | arachnid | Tarantula | pending | not run | not run | not measured | pending | not started |
 | 10 | cephalopod | Octopus | pending | not run | not run | not measured | pending | not started |
 | 11 | flyer-membrane | Fruit Bat | pending | not run | not run | not measured | pending | not started |

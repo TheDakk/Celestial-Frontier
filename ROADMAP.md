@@ -46,3 +46,5 @@ Sprint item5 Python: PASS; exact rest 0 changed channels, static 13 rows/0 reds,
 Sprint item6 Tree Frog: RED; exact rest 0 changed channels, static 0 rows/0 reds, native FAIL, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/06-hopper/README.md. Next unticked item:7. Codex continues; Claude read-only; no hosted action.
 
 Sprint item7 Chimpanzee: RED; exact rest 0 changed channels, static 14 rows/3 reds, native FAIL, CPU 4.600000023841858. Packet: audits/ARCHETYPE_SPRINT_20260922/07-primate/README.md. Next unticked item:8. Codex continues; Claude read-only; no hosted action.
+
+Sprint item8 Starfish: RED; exact rest 0 changed channels, static 14 rows/7 reds, native FAIL, CPU unmeasured. Packet: audits/ARCHETYPE_SPRINT_20260922/08-radial/README.md. Next unticked item:9. Codex continues; Claude read-only; no hosted action.
