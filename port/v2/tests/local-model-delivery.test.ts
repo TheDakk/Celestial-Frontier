@@ -107,7 +107,7 @@ describe('explicit browser model delivery: synthetic OPFS-shaped controls, no we
     expect((await reopened.verify()).ready).toBe(true); expect(f.calls).toHaveLength(previousCalls);
     expect(new Uint8Array(await (await reopened.openFile('file-0.data')).arrayBuffer())).toEqual(f.data[0]);
     expect(Math.max(...f.disk.reads)).toBe(C);
-  });
+  }, 30_000); // real stream install + reopen/reverify: over the 5 s default on a hosted runner (PR #43 run 35669457751); the assertions are unchanged.
   it('cancels after one committed chunk and resumes only the missing Range on a new instance', async () => {
     const f = fixture(), controller = new AbortController();
     const result = await f.make(status => { if (status.storedBytes >= C && status.phase === 'downloading') controller.abort(); }).install({ signal: controller.signal });
