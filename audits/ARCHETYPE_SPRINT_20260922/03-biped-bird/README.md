@@ -19,3 +19,7 @@ Static findings:
 Native provenance: read-only Claude battle2 harness at 5154c64f6f5fe0b9a75bc3f7a51e7da56b6b2e7f; exact source hashes are in native-01/report.json. Its arena selection and refusal policy are unchanged. Writes confined to this Codex packet and temporary scratch.
 
 Paired next steps: Codex signs this item and immediately advances to the next unticked ledger row. Claude consumes signed results after the sprint under Nick’s integration direction. Nick reviews the art and retained reds. No need to open Claude during the sprint. GitHub step: none; PR details: not needed; no fetch/sync/push/PR/merge/release/deploy. This is local diagnostic evidence, not PR #43 green.
+
+Diagnosis: both static and native attempts refused before action rows/film because the authored optional taxonomy `family` was set to the template ID `biped-bird`. This is packet metadata error, not evidence that the biped-bird family contract is missing. Future packets omit the optional taxonomy field, as established P1 writers do; the Eagle attempt is retained without retry. A later authorized repair should correct that metadata and remeasure.
+
+Exact orchestration run ID: `archetype-sprint-03-biped-bird-01` (execution.json retains stage commands, times and exit codes). Native artifact identity: `03-biped-bird/native-01` when produced; no separate native run ID was emitted.

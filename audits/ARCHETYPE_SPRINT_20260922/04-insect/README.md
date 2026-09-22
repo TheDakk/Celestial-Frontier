@@ -17,3 +17,5 @@ Static findings:
 Native not run after the recorded admission refusal.
 
 Paired next steps: Codex signs this item and immediately advances to the next unticked ledger row. Claude consumes signed results after the sprint under Nick’s integration direction. Nick reviews the art and retained reds. No need to open Claude during the sprint. GitHub step: none; PR details: not needed; no fetch/sync/push/PR/merge/release/deploy. This is local diagnostic evidence, not PR #43 green.
+
+Exact orchestration run ID: `archetype-sprint-04-insect-01` (execution.json retains stage commands, times and exit codes). Native artifact identity: `04-insect/native-01` when produced; no separate native run ID was emitted.

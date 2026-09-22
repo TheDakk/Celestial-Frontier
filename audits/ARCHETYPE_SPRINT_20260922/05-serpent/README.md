@@ -31,3 +31,5 @@ Native provenance: read-only Claude battle2 harness at 5154c64f6f5fe0b9a75bc3f7a
 Paired next steps: Codex signs this item and immediately advances to the next unticked ledger row. Claude consumes signed results after the sprint under Nick’s integration direction. Nick reviews the art and retained reds. No need to open Claude during the sprint. GitHub step: none; PR details: not needed; no fetch/sync/push/PR/merge/release/deploy. This is local diagnostic evidence, not PR #43 green.
 
 Review-only follow-up: [unobscured native-frame sheet](review-sheet-unobscured.png) selects the already-retained approach-50 still; the original sheet keeps the impact flash. No new film, test, geometry or measurement.
+
+Exact orchestration run ID: `archetype-sprint-05-serpent-01` (execution.json retains stage commands, times and exit codes). Native artifact identity: `05-serpent/native-01` when produced; no separate native run ID was emitted.

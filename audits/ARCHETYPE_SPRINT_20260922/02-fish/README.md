@@ -32,3 +32,5 @@ Static findings:
 Native provenance: read-only Claude battle2 harness at 0190e2ff139eec82f45acbee54a8278216547de0; exact source hashes are in native-01/report.json. Its arena selection and refusal policy are unchanged. Writes confined to this Codex packet and temporary scratch.
 
 Paired next steps: Codex signs this item and immediately advances to the next unticked ledger row. Claude consumes signed results after the sprint under Nick’s integration direction. Nick reviews the art and retained reds. No need to open Claude during the sprint. GitHub step: none; PR details: not needed; no fetch/sync/push/PR/merge/release/deploy. This is local diagnostic evidence, not PR #43 green.
+
+No orchestration/static/native run ID was emitted by this first packet’s tools. Immutable artifact identities are `02-fish/fit-01`, `02-fish/static.json`, and `02-fish/native-01`; the manifest binds their measured bytes. No retrospective measurement ID is invented.

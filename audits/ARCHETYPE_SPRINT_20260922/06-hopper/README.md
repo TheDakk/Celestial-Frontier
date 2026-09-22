@@ -22,4 +22,6 @@ Native provenance: read-only Claude battle2 harness at 5154c64f6f5fe0b9a75bc3f7a
 
 Paired next steps: Codex signs this item and immediately advances to the next unticked ledger row. Claude consumes signed results after the sprint under Nick’s integration direction. Nick reviews the art and retained reds. No need to open Claude during the sprint. GitHub step: none; PR details: not needed; no fetch/sync/push/PR/merge/release/deploy. This is local diagnostic evidence, not PR #43 green.
 
-Diagnosis: the authored `materials.surface` contains descriptive paint prose, while the motion compiler requires a supported kit material token. This is packet metadata error, not evidence that the hopper family is unsupported. The single attempt is retained without retry; a later authorized repair should use the existing `skin` token and remeasure. No compiler/material gate changed.
+Diagnosis: the authored `materials.surface` contains descriptive paint prose, while the motion compiler requires a recognized material name. This is packet metadata error, not evidence that the hopper family is unsupported. The single attempt is retained without retry; a later authorized repair should use the existing `smooth skin` name and remeasure. No compiler/material gate changed.
+
+Exact orchestration run ID: `archetype-sprint-06-hopper-01` (execution.json retains stage commands, times and exit codes). Native artifact identity: `06-hopper/native-01` when produced; no separate native run ID was emitted.
