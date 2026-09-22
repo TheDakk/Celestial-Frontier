@@ -2,13 +2,83 @@
   "files": [
     {
       "path": "01-i5/README.md",
-      "bytes": 7036,
-      "sha256": "4d32edf03b456f161dd657a67a9ea4b9d0814c844184d32724dc53fbcda67d78"
+      "bytes": 8540,
+      "sha256": "8812df1b30fd2da665dc7e6d2508ef3dae8beb8b2e80bcc9f16e5160aa044cac"
     },
     {
       "path": "01-i5/budget-before.json",
       "bytes": 175661,
       "sha256": "b808629ace23c36f2fc4e31e57280b715dd20b03a39c677998e41e0ea86a189a"
+    },
+    {
+      "path": "01-i5/certificate/certificate.log",
+      "bytes": 10516,
+      "sha256": "07f2f2d0038f430a3a7468160ee19d6bfbf67c1441005166d02733575b485887"
+    },
+    {
+      "path": "01-i5/certificate/compendiummem-20260922-i5-focus-89b5da95c185-desktop-detail.png",
+      "bytes": 634364,
+      "sha256": "5ae158fcbcb7e7979f8805c415fd8aa3bb4e13fc14eaa4bcabaf47f04dc4fb32"
+    },
+    {
+      "path": "01-i5/certificate/compendiummem-20260922-i5-focus-89b5da95c185-desktop-focus-pinned.png",
+      "bytes": 628972,
+      "sha256": "e30cc09a3504fd5ccc389cf707be0590c12e1e977afa285cfdd26e9eb36c8b17"
+    },
+    {
+      "path": "01-i5/certificate/compendiummem-20260922-i5-focus-89b5da95c185-desktop-list.png",
+      "bytes": 638029,
+      "sha256": "1430872bc194221dfad93a503f7b43f6ec4f0add2fdd514ae4cddacb2b75e09e"
+    },
+    {
+      "path": "01-i5/certificate/compendiummem-20260922-i5-focus-89b5da95c185-phone-detail.png",
+      "bytes": 925561,
+      "sha256": "aa5da36fa71fb88364ff67ba35ded8068c7f9f0b998f4b1ffbdd8a440e47a803"
+    },
+    {
+      "path": "01-i5/certificate/compendiummem-20260922-i5-focus-89b5da95c185-phone-focus-pinned.png",
+      "bytes": 790211,
+      "sha256": "f8ec6c9cb032884b7765f451cecbd34790c57f8c48d337756c3532094170ed4e"
+    },
+    {
+      "path": "01-i5/certificate/compendiummem-20260922-i5-focus-89b5da95c185-phone-list.png",
+      "bytes": 834506,
+      "sha256": "2af704182fe1e8b9c04133616ceccb70943d276d0359449c97a853ad464b6b66"
+    },
+    {
+      "path": "01-i5/certificate/edge-preflight.log",
+      "bytes": 876,
+      "sha256": "8c371e363670f682c9e20bb334169c073e24dae7bd979f0eee77df4da66146f4"
+    },
+    {
+      "path": "01-i5/certificate/execution.json",
+      "bytes": 992,
+      "sha256": "753ec61004c4b83fa314d6aebf5f5098da8ac32fcbd0bc8b88ed9b4e56f2a906"
+    },
+    {
+      "path": "01-i5/certificate/git-excludes",
+      "bytes": 11,
+      "sha256": "de4393705bd17145d85d7971dd692780789374326f33704c7b9a2af13af2f671"
+    },
+    {
+      "path": "01-i5/certificate/named-verify.log",
+      "bytes": 66,
+      "sha256": "4db19dc282e05bffcddebd38ca80f5d8533f5969b7b512c9d2ca8a29340361a0"
+    },
+    {
+      "path": "01-i5/certificate/preparation-signature.txt",
+      "bytes": 95,
+      "sha256": "709187bca08cfbf1443292b83e35a833cc18842ba762f0c4a5d6d5cff48fdd8b"
+    },
+    {
+      "path": "01-i5/certificate/report.json.gz",
+      "bytes": 412140,
+      "sha256": "d1708fe9fa39dfbb6d7ab2dc696eb1749d08ebcd4959d1fdad54b9fe9ba211de"
+    },
+    {
+      "path": "01-i5/certificate/summary.json",
+      "bytes": 6955,
+      "sha256": "a3cf7772a6cd0abf4f7b24e07b09c21b17e8dc4c10e664f27f00bc5757448098"
     },
     {
       "path": "01-i5/certificate-launcher.py",
@@ -462,8 +532,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 926,
-      "sha256": "abb74a0ec1902aea1bd7cbc48873343872d7aed33b8bab57799f291540fed748"
+      "bytes": 1007,
+      "sha256": "5eade27970975faf54d2eea7c2c93af4c3cae5ad13f691bd38f7f767662a76e6"
     },
     {
       "path": "TRIAGE.md",
