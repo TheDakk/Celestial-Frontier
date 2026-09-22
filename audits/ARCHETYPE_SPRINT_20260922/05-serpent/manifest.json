@@ -2,8 +2,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 2623,
-      "sha256": "66edcdda246ef0d3da5a4c4a29d1fecd94e54c7e67662c5f98a628dfba666ecb"
+      "bytes": 2843,
+      "sha256": "7c6880f50589a62fa48cf0f3d5ae967338e1820f45852dc470e9aa54db15059c"
     },
     {
       "path": "authoring.json",
@@ -279,6 +279,11 @@
       "path": "result.json",
       "bytes": 629,
       "sha256": "ad2948407247886ea7a69f559f426b705441b5772f96479ca71665f83b6b473b"
+    },
+    {
+      "path": "review-sheet-unobscured.png",
+      "bytes": 1606660,
+      "sha256": "0b59251a6aeb96b60b4ee760fcd017590a7cf449bac0fc72f6ccf6e513e50463"
     },
     {
       "path": "review-sheet.png",
