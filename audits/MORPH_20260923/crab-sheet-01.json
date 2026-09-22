@@ -1,0 +1,802 @@
+{
+ "schema": "cf.archetype-sheet/v1",
+ "earthName": "Crab",
+ "dir": "port/v2/apps/game/assets/painted-cards/crab/",
+ "recipeHash": "0d2a7af8811a91ab1524cd22f42b5046eec86aba797493a19f7a7f766f51cf60",
+ "master": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/crab-master.png",
+ "cardReceipt": {
+  "master": {
+   "width": 512,
+   "height": 512,
+   "scale": 0.5818181818181818,
+   "masterSha256": "03cf2ccad88691a154033162468bedb9c4314c45d387101836c7e01477beab5c",
+   "labelsSha256": "3a9962568fd18f962bdb9935ff591284890cef4d3a71e8960d70664304763841",
+   "filter": "alpha-weighted box; labels nearest"
+  },
+  "labels": 26,
+  "landmarks": 44
+ },
+ "archetypeGenome": {
+  "_earthName": "Crab",
+  "accent": 3,
+  "behavior": 4,
+  "body": 10,
+  "color": 12,
+  "detail": 9,
+  "diet": 5,
+  "eyes": 5,
+  "form": 13,
+  "gen": 0,
+  "habitat": 16,
+  "head": 0,
+  "heat": 1,
+  "kingdom": "fauna",
+  "life": 3,
+  "limbs": 3,
+  "loco": 12,
+  "lumin": true,
+  "metab": 1,
+  "pattern": 0,
+  "repro": 7,
+  "seed": 1431434066,
+  "sense": 7,
+  "size": 0,
+  "skin": 4,
+  "tail": 1,
+  "temper": 2,
+  "trait": 24
+ },
+ "renders": 37,
+ "controls": {
+  "identityByteIdentical": true,
+  "paletteDistinct": true,
+  "allMasksLand": true,
+  "emissiveVisible": true,
+  "proportionLive": true,
+  "maskedLanding": [
+   {
+    "rowIndex": 0,
+    "patterns": [
+     {
+      "pattern": "striped",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "spotted",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "banded",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "mottled",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "marbled",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "eye-spotted",
+      "differsFromPlain": true
+     }
+    ]
+   },
+   {
+    "rowIndex": 1,
+    "patterns": [
+     {
+      "pattern": "striped",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "spotted",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "banded",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "mottled",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "marbled",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "eye-spotted",
+      "differsFromPlain": true
+     }
+    ]
+   },
+   {
+    "rowIndex": 2,
+    "patterns": [
+     {
+      "pattern": "striped",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "spotted",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "banded",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "mottled",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "marbled",
+      "differsFromPlain": true
+     },
+     {
+      "pattern": "eye-spotted",
+      "differsFromPlain": true
+     }
+    ]
+   }
+  ]
+ },
+ "luminFinding": {
+  "archetypeOwnLumin": true,
+  "inertOnEveryPattern": true,
+  "liveAgainstNonLuminArchetype": true,
+  "perPattern": [
+   {
+    "pattern": "plain",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "striped",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "spotted",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "banded",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "mottled",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "iridescent",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "marbled",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   },
+   {
+    "pattern": "eye-spotted",
+    "archetypeOwnLumin": true,
+    "luminGeneInert": true,
+    "paramsLuminUnderOwn": false,
+    "paramsLuminUnderNonLuminArchetype": true
+   }
+  ]
+ },
+ "paletteSheet": {
+  "file": "crab-palette-sheet-01.png",
+  "width": 1810,
+  "height": 1810,
+  "tile": 440,
+  "tiles": [
+   {
+    "tile": 0,
+    "label": "archetype as painted (its own genome)",
+    "genome": {
+     "_earthName": "Crab",
+     "accent": 3,
+     "behavior": 4,
+     "body": 10,
+     "color": 12,
+     "detail": 9,
+     "diet": 5,
+     "eyes": 5,
+     "form": 13,
+     "gen": 0,
+     "habitat": 16,
+     "head": 0,
+     "heat": 1,
+     "kingdom": "fauna",
+     "life": 3,
+     "limbs": 3,
+     "loco": 12,
+     "lumin": true,
+     "metab": 1,
+     "pattern": 0,
+     "repro": 7,
+     "seed": 1431434066,
+     "sense": 7,
+     "size": 0,
+     "skin": 4,
+     "tail": 1,
+     "temper": 2,
+     "trait": 24
+    },
+    "identity": true,
+    "base": {
+     "hue": null,
+     "chroma": 1
+    },
+    "accent": {
+     "hue": null,
+     "chroma": 1
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 46771,
+    "sha256": "0f588f2164d7a875023122d6e00399f4e2a844fc4392ef40acbfdaf88086c935"
+   },
+   {
+    "tile": 1,
+    "label": "seed 8919",
+    "genome": {
+     "_earthName": "Crab",
+     "seed": 8919,
+     "color": 5,
+     "accent": 14
+    },
+    "identity": false,
+    "base": {
+     "hue": 242.264,
+     "chroma": 0.95
+    },
+    "accent": {
+     "hue": 151.176,
+     "chroma": 0.85
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 48071,
+    "sha256": "48f10d14c2bcae7e5adac0fe50fe54e65e69fc075441339926ed5d1c53ceeed3"
+   },
+   {
+    "tile": 2,
+    "label": "seed 16838",
+    "genome": {
+     "_earthName": "Crab",
+     "seed": 16838,
+     "color": 10,
+     "accent": 8
+    },
+    "identity": false,
+    "base": {
+     "hue": null,
+     "chroma": 0.25
+    },
+    "accent": {
+     "hue": 202.70399999999995,
+     "chroma": 0.45
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 45301,
+    "sha256": "eae30390d13a2455654b5c2190d5ef33eac26577397b3862fa96b1f100f964ce"
+   },
+   {
+    "tile": 3,
+    "label": "seed 24757",
+    "genome": {
+     "_earthName": "Crab",
+     "seed": 24757,
+     "color": 15,
+     "accent": 2
+    },
+    "identity": false,
+    "base": {
+     "hue": 298.52,
+     "chroma": 0.7
+    },
+    "accent": {
+     "hue": 283.41200000000003,
+     "chroma": 1
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 48112,
+    "sha256": "dc37d3bc8fe7109a20efb3a6f76195593a5255d2d35f1891052a45421f2aeeb0"
+   },
+   {
+    "tile": 4,
+    "label": "seed 32676",
+    "genome": {
+     "_earthName": "Crab",
+     "seed": 32676,
+     "color": 3,
+     "accent": 13
+    },
+    "identity": false,
+    "base": {
+     "hue": 38.591999999999985,
+     "chroma": 1.1
+    },
+    "accent": {
+     "hue": 25.148000000000025,
+     "chroma": 0.8
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 49015,
+    "sha256": "c02becd718aebd204292f307b8108467c30c4b0cf60dd5827ba79a7fe865da01"
+   },
+   {
+    "tile": 5,
+    "label": "seed 40595",
+    "genome": {
+     "_earthName": "Crab",
+     "seed": 40595,
+     "color": 8,
+     "accent": 7
+    },
+    "identity": false,
+    "base": {
+     "hue": 218.784,
+     "chroma": 0.45
+    },
+    "accent": {
+     "hue": 14.567999999999984,
+     "chroma": 0.95
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 47001,
+    "sha256": "9f02132194ff2be64d6dc146121ecf9d59d1408d0d772dabb307f1f52db9e03a"
+   },
+   {
+    "tile": 6,
+    "label": "seed 48514",
+    "genome": {
+     "_earthName": "Crab",
+     "seed": 48514,
+     "color": 13,
+     "accent": 1
+    },
+    "identity": false,
+    "base": {
+     "hue": 26.672000000000025,
+     "chroma": 0.8
+    },
+    "accent": {
+     "hue": 338.72,
+     "chroma": 1.1
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 47168,
+    "sha256": "630369e7ff9f289a5e175b20338f70c6f523bf4dd6304e84bd8a983b26428186"
+   },
+   {
+    "tile": 7,
+    "label": "seed 56433",
+    "genome": {
+     "_earthName": "Crab",
+     "seed": 56433,
+     "color": 1,
+     "accent": 12
+    },
+    "identity": false,
+    "base": {
+     "hue": 349.124,
+     "chroma": 1.1
+    },
+    "accent": {
+     "hue": 176.36,
+     "chroma": 0.9
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 49177,
+    "sha256": "4f427cad55550928820b0eced17cc343838d50d66dd2945358285e5c89f82542"
+   },
+   {
+    "tile": 8,
+    "label": "seed 64352",
+    "genome": {
+     "_earthName": "Crab",
+     "seed": 64352,
+     "color": 6,
+     "accent": 6
+    },
+    "identity": false,
+    "base": {
+     "hue": 27.187999999999988,
+     "chroma": 1.05
+    },
+    "accent": {
+     "hue": 41.096000000000004,
+     "chroma": 1.05
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 47972,
+    "sha256": "eb8aa3ee57f68cfacb7f01568656a072e6a32b06c1e29e62bfd53bffd49db080"
+   },
+   {
+    "tile": 9,
+    "label": "seed 72271",
+    "genome": {
+     "_earthName": "Crab",
+     "seed": 72271,
+     "color": 11,
+     "accent": 0
+    },
+    "identity": false,
+    "base": {
+     "hue": 308.1120000000001,
+     "chroma": 1.1
+    },
+    "accent": {
+     "hue": 150.27999999999997,
+     "chroma": 1.05
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 49733,
+    "sha256": "be9eda9a52fbe263fe4b682b0e487d9b57ccd9e2da62c4c715c56766569a9855"
+   },
+   {
+    "tile": 10,
+    "label": "seed 80190",
+    "genome": {
+     "_earthName": "Crab",
+     "seed": 80190,
+     "color": 16,
+     "accent": 11
+    },
+    "identity": false,
+    "base": {
+     "hue": null,
+     "chroma": 0.35
+    },
+    "accent": {
+     "hue": 303.91200000000003,
+     "chroma": 1.1
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 46096,
+    "sha256": "c82df1d5947c9469122ac7de2578ce7a59a8e2d79ae6f015e1afbd9577664cef"
+   },
+   {
+    "tile": 11,
+    "label": "seed 88109",
+    "genome": {
+     "_earthName": "Crab",
+     "seed": 88109,
+     "color": 4,
+     "accent": 5
+    },
+    "identity": false,
+    "base": {
+     "hue": 175.25199999999995,
+     "chroma": 1
+    },
+    "accent": {
+     "hue": 251.91200000000003,
+     "chroma": 0.95
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 48991,
+    "sha256": "6cb9487b3aa9a520cc5ee692dd74f67e8de566002b6d9483d98ed918cd1a6821"
+   },
+   {
+    "tile": 12,
+    "label": "seed 96028",
+    "genome": {
+     "_earthName": "Crab",
+     "seed": 96028,
+     "color": 9,
+     "accent": 16
+    },
+    "identity": false,
+    "base": {
+     "hue": null,
+     "chroma": 0.3
+    },
+    "accent": {
+     "hue": null,
+     "chroma": 0.35
+    },
+    "proportion": {
+     "head": 1,
+     "tail": 1,
+     "ears": 1,
+     "antennae": 1
+    },
+    "encodedBytes": 45287,
+    "sha256": "de6fe2858516d5e300dea4559b8f82d6b0bab6a46ea27a7a642ed00f2bcb5f58"
+   }
+  ]
+ },
+ "markingsSheet": {
+  "file": "crab-markings-sheet-01.png",
+  "width": 1128,
+  "height": 428,
+  "tile": 132,
+  "columns": [
+   "plain",
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "iridescent",
+   "marbled",
+   "eye-spotted"
+  ],
+  "tiles": [
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "plain",
+    "masked": false,
+    "encodedBytes": 10110,
+    "sha256": "47d0ce7a0d9b99123bf5146021f1ed61f1d813c147eee3ec1164aea3aae33f9d"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "striped",
+    "masked": true,
+    "encodedBytes": 11527,
+    "sha256": "0e1b9a6ce4ffff50a327932782eeae4d9908f599a9e4fa46f9b9e95e6fbb7ad4"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "spotted",
+    "masked": true,
+    "encodedBytes": 11037,
+    "sha256": "c96de90bdace7521f91c67406f9eac075cc61bf315262cdaeb441865a4a806bc"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "banded",
+    "masked": true,
+    "encodedBytes": 11501,
+    "sha256": "100c37a3e9053201bfee8dbc891636be9628f1fcf3dc3dc0a74bcc4b619d7a17"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "mottled",
+    "masked": true,
+    "encodedBytes": 11551,
+    "sha256": "eb82bfc852669c01272eb565bcd7f2c9b30aaabc438edd3f100c8a6d41433c70"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "iridescent",
+    "masked": false,
+    "encodedBytes": 10124,
+    "sha256": "5171ca70e88b323fc6a59f32e2e28e48f8c791b5c4649e0ddb9fbc53488692ae"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "marbled",
+    "masked": true,
+    "encodedBytes": 11352,
+    "sha256": "3f3776d518a6ee09d20ecb8423a83ff41774a51e601041fa3c91406082802ea5"
+   },
+   {
+    "row": "own genome + accent turquoise",
+    "rowIndex": 0,
+    "pattern": "eye-spotted",
+    "masked": true,
+    "encodedBytes": 10550,
+    "sha256": "26ff3714f17f16b30752386cfd1cbcf3b54eadfff500a1f515bf60a989acf164"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "plain",
+    "masked": false,
+    "encodedBytes": 10402,
+    "sha256": "dabc8284d12ef4a7674e40f56d12a219343db3eea9dbe0f6d0cf49fe89519ed7"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "striped",
+    "masked": true,
+    "encodedBytes": 11677,
+    "sha256": "2d20d12cc91719bc938a0c571b845b8bf236031f5fee724419961912d2bd86ef"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "spotted",
+    "masked": true,
+    "encodedBytes": 11164,
+    "sha256": "705f980248d72b7e1462d63360b3951613e5ae7a524f98cc968a80eba990e408"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "banded",
+    "masked": true,
+    "encodedBytes": 12004,
+    "sha256": "12d7652b159884855ffd69d6e121ee4f5811739400042f4ccdae383acc39bab1"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "mottled",
+    "masked": true,
+    "encodedBytes": 11955,
+    "sha256": "0f537363145fceda9ee5828c75e696f9cc1c453d2df7ceb3bbcebda08de9183f"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "iridescent",
+    "masked": false,
+    "encodedBytes": 10461,
+    "sha256": "d4e0cabf9d2c347bdaf500beb830bdc41c51ada82b9f2f1562f868cf95ea3eb7"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "marbled",
+    "masked": true,
+    "encodedBytes": 11779,
+    "sha256": "1bf5fd4bac1437081b89ebbcc5a05b5b0ba471465d00e37edac5dc34db894d3f"
+   },
+   {
+    "row": "crimson base, accent golden",
+    "rowIndex": 1,
+    "pattern": "eye-spotted",
+    "masked": true,
+    "encodedBytes": 10865,
+    "sha256": "2a3c6adc3204697d4146de3202e2a5bfe585f2c6b056d7a8a2a4b6eee3364bbb"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "plain",
+    "masked": false,
+    "encodedBytes": 11261,
+    "sha256": "c4d055a8c311f0c2e9dbcf21cb1a53790f7ad1520801adcca1121b593d5870f9"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "striped",
+    "masked": true,
+    "encodedBytes": 12608,
+    "sha256": "86723af247668ab685a662c8fdbcf7c764539467292fb0814799616a4da7c1a2"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "spotted",
+    "masked": true,
+    "encodedBytes": 12146,
+    "sha256": "67c0aece777b139e5e376cb4f353cfde98a38a1de06767996596065a12089ab4"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "banded",
+    "masked": true,
+    "encodedBytes": 12569,
+    "sha256": "d0f7297244926df20f080a15e47fca06a4af933a29695e99399102bad0f16a82"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "mottled",
+    "masked": true,
+    "encodedBytes": 12712,
+    "sha256": "b369ca622670e5f6eba31d02daed53dd7daf168c4133ff85bd5239446dc13e49"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "iridescent",
+    "masked": false,
+    "encodedBytes": 11281,
+    "sha256": "443b43fd501fdd6a2179d28f84ff2a9bbf9a5d1bab4dd177422661b89841d381"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "marbled",
+    "masked": true,
+    "encodedBytes": 12371,
+    "sha256": "1b6080ac2d988974cf1e28e524524341c650f065e942d57753505638d331873a"
+   },
+   {
+    "row": "own genome + accent turquoise, head gene 7 (M1 proportion)",
+    "rowIndex": 2,
+    "pattern": "eye-spotted",
+    "masked": true,
+    "encodedBytes": 11716,
+    "sha256": "b7d88d6e7a0b066a62e82a6862ce0138ee0ca819fcde3663ae980f853512b3eb"
+   }
+  ]
+ }
+}

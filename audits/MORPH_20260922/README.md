@@ -13,3 +13,9 @@ Stills: `striped-vs-eyespotted-lumin-02/turn0-hit-approach-50.png` (markings on 
 Determinism: the individual is `morphParamsV1(genome, recipeHash)` — the same genome on the same archetype on every
 device (golden fixture `port/v2/apps/game/src/morph/morph-params.golden.json`). The archetype's record, binding and
 atlas bytes are untouched; an identity genome takes the archetype's own load path byte for byte.
+
+---
+**Correction (2026-09-23, `audits/MORPH_20260923/`).** Row 2 of `card-markings-sheet-01.png` ("the same emissive")
+is **byte-identical to row 1** — 0 differing bytes of 595,584 — because the crab archetype's own genome carries
+`lumin: true`, so the lumin gene is an identity channel for it. The sheet is RETAINED unchanged as the failing
+control; M4 is demonstrated on it by the `iridescent` column instead. See finding 2 of the 2026-09-23 packet.
