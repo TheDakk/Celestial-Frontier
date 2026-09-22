@@ -1,0 +1,239 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "owner": "winning painter draw-stage RGBA changes",
+  "recordRecipeHash": "1768acb6b0da7467eadb5a11b60228543147583b7ee0a83dd02bf3dbda8da88d",
+  "declarationHash": "3e03bd61784d7a2e9c75163163fd90d8d39a94593491d3bd278136690102cd54",
+  "paintedPixels": 594263,
+  "parts": [
+    {
+      "id": "central-disc-upper",
+      "joint": "bell",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 544,
+        "y": 472,
+        "width": 231,
+        "height": 133
+      },
+      "pixels": 22505
+    },
+    {
+      "id": "arm0-tip",
+      "joint": "arm0Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 560,
+        "y": 29,
+        "width": 180,
+        "height": 161
+      },
+      "pixels": 18910
+    },
+    {
+      "id": "arm0-middle",
+      "joint": "arm0Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 523,
+        "y": 190,
+        "width": 267,
+        "height": 170
+      },
+      "pixels": 36894
+    },
+    {
+      "id": "arm0-base",
+      "joint": "arm0Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 507,
+        "y": 360,
+        "width": 300,
+        "height": 247
+      },
+      "pixels": 34444
+    },
+    {
+      "id": "arm1-tip",
+      "joint": "arm1Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 1055,
+        "y": 345,
+        "width": 185,
+        "height": 204
+      },
+      "pixels": 24205
+    },
+    {
+      "id": "arm1-middle",
+      "joint": "arm1Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 868,
+        "y": 389,
+        "width": 259,
+        "height": 254
+      },
+      "pixels": 38587
+    },
+    {
+      "id": "arm1-base",
+      "joint": "arm1Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 654,
+        "y": 461,
+        "width": 325,
+        "height": 262
+      },
+      "pixels": 41782
+    },
+    {
+      "id": "arm2-tip",
+      "joint": "arm2Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 909,
+        "y": 936,
+        "width": 216,
+        "height": 272
+      },
+      "pixels": 33268
+    },
+    {
+      "id": "arm2-middle",
+      "joint": "arm2Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 739,
+        "y": 756,
+        "width": 274,
+        "height": 285
+      },
+      "pixels": 42447
+    },
+    {
+      "id": "arm2-base",
+      "joint": "arm2Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 601,
+        "y": 611,
+        "width": 267,
+        "height": 307
+      },
+      "pixels": 35016
+    },
+    {
+      "id": "arm3-tip",
+      "joint": "arm3Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 137,
+        "y": 992,
+        "width": 222,
+        "height": 182
+      },
+      "pixels": 20112
+    },
+    {
+      "id": "arm3-middle",
+      "joint": "arm3Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 262,
+        "y": 806,
+        "width": 284,
+        "height": 269
+      },
+      "pixels": 36718
+    },
+    {
+      "id": "arm3-base",
+      "joint": "arm3Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 403,
+        "y": 608,
+        "width": 229,
+        "height": 371
+      },
+      "pixels": 41603
+    },
+    {
+      "id": "arm4-tip",
+      "joint": "arm4Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 19,
+        "y": 337,
+        "width": 215,
+        "height": 215
+      },
+      "pixels": 27967
+    },
+    {
+      "id": "arm4-middle",
+      "joint": "arm4Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 166,
+        "y": 369,
+        "width": 269,
+        "height": 260
+      },
+      "pixels": 40236
+    },
+    {
+      "id": "arm4-base",
+      "joint": "arm4Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 315,
+        "y": 417,
+        "width": 312,
+        "height": 304
+      },
+      "pixels": 40891
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 0,
+        "y": 21,
+        "width": 1218,
+        "height": 1233
+      },
+      "pixels": 58678
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "mode": "native painter alpha; no keyer"
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687",
+  "masterUnchanged": true,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

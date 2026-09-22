@@ -1,0 +1,9 @@
+Codex explicit presence declaration for the delivered Starfish master.
+
+Exactly five painted arms are present, declared through the existing cf.anatomy-presence/v2 appendages input: arms=5. Arm0 points upward; subsequent arms proceed clockwise through upper-right, lower-right, lower-left and upper-left. Every arm is visible through its tip and receives three manually observed segment joints. No arm is absent, hidden or folded; the folded-leg list is explicitly empty.
+
+This species is viewed face-on because its reference says it has no true profile. The central disc has root, centre and the radial template's existing bell landmark. The latter is used as the shared core slot on the observed starfish body, not as invented jellyfish anatomy. No contract or count is changed to fit the picture.
+
+Broad priority polygons follow the five observed arm regions and their proximal/middle/distal subdivisions. Tube feet visible along the lower arm edges remain attached to those surfaces. The explicit body remainder owns unassigned positive-alpha pixels. The master, its alpha and its colors remain unchanged.
+
+The supported material token warty was verified in motion/secondary.ts. All landmarks are from this painting. This is the first authored fit for the unchanged admission and motion owners; no static, film or art acceptance is presumed.
