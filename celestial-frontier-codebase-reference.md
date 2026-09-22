@@ -1,5 +1,7 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+**Local archetype stage, matches code2026-09-22:** tools/battle2-proof owns a bounded unmorphed native review using local battle2/effects/soundkit dependencies. Explicit stage scales feed rendering, placement, half-widths and cadence; optional injected timing reports shared pose sampling and per-rig update costs. Full published mesh sweeps size water/air presentations under unchanged habitat bands, then fresh final rigs and live film verify containment/refusals. Canonical wet worlds use an explicitly procedural water overlay. Morph/guardian requests refuse in this diagnostic. Salmon passes14static rows, exact rest,0native refusals and desktop per-rig1.5/1.100000023841858ms p95; audits/ARCHETYPE_REPAIRS_20260922/02-fish owns hashes/film/sheet. No accepted binding, S2 input, numerical limit or solver changed.
+
 **Painted desktop delivery — Nick’s September20 decision, PROGRAM.md§6.** Accepted
 painted masters use full-film rig p95 ≤3.5ms on desktop, explicitly selected as the
 painted-desktop review tier. Canonical boundary24/interior56 meshes remain unchanged.

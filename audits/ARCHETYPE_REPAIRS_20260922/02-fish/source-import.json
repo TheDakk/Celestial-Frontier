@@ -1,0 +1,67 @@
+{
+  "sourceRepo": "/Users/nick/Projects/celestial-frontier-anthropic-mac",
+  "sourceCommit": "5154c64f6f5fe0b9a75bc3f7a51e7da56b6b2e7f",
+  "purpose": "Local unmorphed archetype battle2 stage and native harness; authorized medium-aware stage repair. Subsequent changes retained in Git diff; Claude read-only.",
+  "files": [
+    {
+      "path": "port/v2/tools/battle2-proof/native-entry.mjs",
+      "bytes": 15211,
+      "importedSha256": "16aec742557b01ca11d00f3a24e3e67969fbfe681282ce687a0c16f79d958a4e"
+    },
+    {
+      "path": "port/v2/tools/battle2-proof/native-runner.mjs",
+      "bytes": 9538,
+      "importedSha256": "b9464d9224916486b55bc2c7adee512927200b9877fa158b135d15a7ae9d14f3"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/stage.ts",
+      "bytes": 17602,
+      "importedSha256": "60d821d8c0e827bad8ac6ab37d817de4f5fcd0d4b810af079bad0c1c4f0239c2"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/parts-rig.ts",
+      "bytes": 14890,
+      "importedSha256": "7a2747fb7b73ba582bc05ca758a8d1c39802c1c8a95da51625b1220542990a52"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/habitat-arena.ts",
+      "bytes": 5588,
+      "importedSha256": "0691c6bcc90baf6ad3932144ee4ea7915e79d1479e6fffef29c91283b2ee8a9a"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/cue-plan.ts",
+      "bytes": 6758,
+      "importedSha256": "abcd1b2dde08a12647bb4ef73ecf9f35a998017a61b7183b142ac0ee28054e6e"
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/particle-texture.ts",
+      "bytes": 1591,
+      "importedSha256": "bff16a74484673501654a51cba1e39f50162d42d1440348999ce9599c952074e"
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/pixi-adapter.ts",
+      "bytes": 9412,
+      "importedSha256": "7694ad3a30cf7604f6d9fd238a5b07ce51007dd2a83968959e3a020a746171bf"
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/theme-library.ts",
+      "bytes": 11019,
+      "importedSha256": "68d20d1e4b652d4c82c508af9a392de4ba39e1202768fd1d427f9067ff934eb4"
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/emitter.ts",
+      "bytes": 8281,
+      "importedSha256": "81183b4a234307d359001ca532cd7d6b58a94f72baa365b9be86de633e5ef09c"
+    },
+    {
+      "path": "port/v2/apps/game/src/soundkit/cues.ts",
+      "bytes": 5204,
+      "importedSha256": "b7bbabf3389616cd2e8e669c1fe21ddc06bf38416be0dbedd197c7373fda1dc2"
+    },
+    {
+      "path": "port/v2/apps/game/src/soundkit/mix.ts",
+      "bytes": 4755,
+      "importedSha256": "f9afb4df123fc018ffb2e78d08ef157c1fa5d3f9de52f7078acef7a9de883a1f"
+    }
+  ]
+}

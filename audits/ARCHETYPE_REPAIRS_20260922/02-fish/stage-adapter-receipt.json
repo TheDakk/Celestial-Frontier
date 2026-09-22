@@ -1,0 +1,49 @@
+{
+  "schema": "cf.stage-adapter-repair/v1",
+  "scope": "Codex local stage.ts optional presentation scales and observational timing; no solver/band/contact changes",
+  "sourceHead": "4cf88823fc74152528a63b57a732cb4c1ef7e5dc",
+  "sourceState": "dirty-development",
+  "workspace": "/Users/nick/Projects/celestial-frontier-openai-mac",
+  "branch": "openai/mac",
+  "importedParent": "5154c64f6f5fe0b9a75bc3f7a51e7da56b6b2e7f",
+  "files": [
+    {
+      "path": "port/v2/apps/game/src/battle2/stage.ts",
+      "sha256": "eb11d509e785da06783cb2aaa64a47db14615c00678d797c93a228b74279688f"
+    },
+    {
+      "path": "port/v2/tools/battle2-proof/stage-contract.test.mjs",
+      "sha256": "10eff494caff9c306ee566b09d6076697daa8e8fef0fb8ecd6675d5f75ce1f5f"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/stage-contract.log",
+      "sha256": "108cffcd4ecba143bb7777fe04290bbb671b10b6a4b011a8d01738fa9ea83812"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/stage-types.log",
+      "sha256": "8053419ea68d0a4336cee6a60e8ddc28f045de18ef5de6395e4dc51c235e8115"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node --test tools/battle2-proof/stage-contract.test.mjs",
+      "cwd": "port/v2",
+      "exitCode": 0,
+      "tests": 5,
+      "passed": 5
+    },
+    {
+      "command": "npx tsc --noEmit -p apps/game/tsconfig.json",
+      "cwd": "port/v2",
+      "exitCode": 1,
+      "refusal": "Imported battle2/parts-rig.ts:101 passes3arguments to local createSkeletonPoseProgram, which accepts2; parent owns no-morph compatibility repair."
+    }
+  ],
+  "automaticRetries": 0,
+  "stageApi": {
+    "presentationScales": "optional finitepositive left/right; copied at construction; same values for holder,width,cadence",
+    "timing": "optional now/sample; sample {kind:tick|rest,sampleTurnMs,rigMs:{left,right}}; all actual rest applications and ticks retained",
+    "cpuScope": "shared sampleTurn plus independent applyPose durations; caller accumulates every event within each frame before percentile"
+  },
+  "defaultParity": "unchanged mass and guardian scale arithmetic and identical sampled turn output against explicitly supplied original scales"
+}

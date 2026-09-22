@@ -4,7 +4,7 @@ Original evidence stays in ../ARCHETYPE_SPRINT_20260922. No success is inferred 
 
 I5: generic sheet/pilot :is selectors inherit ID specificity and override the inset Compendium focus ring. Exclude .compendium-row from generic rules; native CSS positive/negative controls, then clean signed local certification. Preserve historical calibration and thresholds.
 
-Salmon/Starfish/Octopus: Claude battle2 proof hardcodes worlds:null, selecting dry Earth. Even a water world cannot fit current 1/3–1/2-height sizing into water band .57–.86. Bat similarly exceeds air band .08–.46. Need explicit common presentation scale for placement and BattleStage rendering, truthful canonical world and locally owned producer. Ownership exception asked; no Claude write.
+Salmon/Starfish/Octopus: Claude battle2 proof hardcodes worlds:null, selecting dry Earth. Even a water world cannot fit current 1/3–1/2-height sizing into water band .57–.86. Bat similarly exceeds air band .08–.46. Need explicit common presentation scale for placement and BattleStage rendering, truthful canonical world and locally owned producer. Ownership exception approved; Salmon repair now passes on the local stage, see02-fish. No Claude write.
 
 Eagle: remove erroneous optional family=biped-bird taxonomy field. Frog: replace unsupported authored material prose with existing smooth skin token.
 
@@ -18,7 +18,7 @@ Starfish: current clockwise arm IDs conflict with alternating right/left motion 
 
 Bat: far wing points forward while canonical action expects both wings backward. One corrected profile painting can expose both wings swept backward; projection extension otherwise protected.
 
-Centipede: repeated-anatomy.mjs rejects myriapod; fixed graph has four leg pairs but current master shows more. Need count-generated inventory/types/motion with unchanged numerical limits. Structure13+4joints/pair admits at most12pairs under64; complete observed census required. Ownership/protected-code exception asked, pending Nick.
+Centipede: repeated-anatomy.mjs rejects myriapod; fixed graph has four leg pairs but current master shows more. Need count-generated inventory/types/motion with unchanged numerical limits. Structure13+4joints/pair admits at most12pairs under64; complete observed census required. Ownership/protected-code exception approved; exact observation and implementation remain pending in order.
 
 Codex continues I5 first, then ordered repair packets/commits. Claude consumes signed local results under Nick’s integration direction; no need to open Claude for repair execution. Nick reviews art.
 
