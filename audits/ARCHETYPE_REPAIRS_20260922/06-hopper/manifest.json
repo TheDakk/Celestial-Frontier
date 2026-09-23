@@ -296,6 +296,11 @@
       "sha256": "31edc9a33b0703700ecb8e18de2d88e53353eda6618bdafeb03028ecad4cea50"
     },
     {
+      "path": "HISTORY.md",
+      "bytes": 686,
+      "sha256": "f467fed5e08c56ec00e50fabd8b7f3e9b4cb8fb24ff525e10d4a690b0d8eea2c"
+    },
+    {
       "path": "intake-02.log",
       "bytes": 314,
       "sha256": "ecb219f684086748d6102df5ea7f37568a55fa1d8f55dd039f30932d7764a8c2"
@@ -317,8 +322,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4122,
-      "sha256": "d1be5b69920a5d07a2523249b48b50397a7175dc280b2e9142a0ec023b9f1d1c"
+      "bytes": 4285,
+      "sha256": "b2d8a57c51dbf450db182d0c9ef43fb7b068af4ba22ba235e5e027c479c6c197"
     },
     {
       "path": "repair-scope.json",

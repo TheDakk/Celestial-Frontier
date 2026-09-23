@@ -1,0 +1,37 @@
+{
+  "sourceHead": "2283e5388793a31b7fbc0d68897492adb6beadd1",
+  "scope": "One bounded explicit manual rig-fit hypothesis, no automated coordinate search or contract/gate edit",
+  "oldAuthoringSha256": "2db59e9bd0718ce1ad24e89f0643e2f34a98d876ffbe1dad072fcb164ee0cdd2",
+  "landmarkChanges": {
+    "legNearKnee": {
+      "from": [
+        509,
+        737
+      ],
+      "to": [
+        506,
+        748
+      ],
+      "observation": "Both positions lie in the rounded fur-covered knee bend; new pivot placed nearer the lower bend center."
+    },
+    "legFarKnee": {
+      "from": [
+        295,
+        793
+      ],
+      "to": [
+        315,
+        773
+      ],
+      "observation": "New pivot sits closer to visible far-shin emergence; actual hinge is partly occluded and its exact center remains uncertain."
+    }
+  },
+  "uncertainty": "Independent visual review cannot prove either internal hinge center exactly. Record these as plausible authored rig-fit choices and retain both candidates; do not misrepresent them as pixel-derived ground truth.",
+  "unchanged": [
+    "master RGBA",
+    "all part masks",
+    "all other landmarks",
+    "explicit presence",
+    "solver and joint/compression limits"
+  ]
+}
