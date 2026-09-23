@@ -1,0 +1,1 @@
+Manual rejected-paint declaration: the targeted leg2Far completion merged/replaced the neighboring front far leg, so an independent leg1Far chain is not established. Numbering is uncertain and this declaration is not admission; no hidden coordinates or fit were created.

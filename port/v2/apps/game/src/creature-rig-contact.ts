@@ -111,6 +111,11 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   return {...c,root,joint,endPoint:end,support:point(support),model,endpointOnly,terminalSolver,offset:{x:support[0]-end.x,y:support[1]-end.y},chain:createTwoBoneChain({root,joint,end,bend:cross<0?-1:1})};
  });
  if(Object.keys(paintedSupports).length&&(Object.keys(paintedSupports).length!==chains.length||chains.some(c=>!Object.hasOwn(paintedSupports,c.end))))throw Error('Contact: exact painted support inventory required');
+ // Explicit named support groups must resolve to complete existing chains.
+ // An absent declaration retains the historical hind-name convention exactly.
+ const declaredHind=template.contactStance?.hind,hasDeclaredHind=!!template.contactStance&&Object.hasOwn(template.contactStance,'hind');
+ if(hasDeclaredHind&&(!Array.isArray(declaredHind)||!declaredHind.length||new Set(declaredHind).size!==declaredHind.length||declaredHind.some(id=>typeof id!=='string'||!template.legs.includes(id)||!chains.some(c=>c.id===id))))throw Error('Contact: invalid declared hind support group');
+ const hindGroup=hasDeclaredHind?new Set(declaredHind):null;
  const scaleLength=measureMotionScale(template,record.landmarks).length;
  const stride=chains.length?Math.min(...chains.map(c=>c.chain.lengths.upper+c.chain.lengths.lower))*.04:0;
  const direction=template.id==='brachyuran'?Math.sign(record.landmarks.leg0NearRoot![0]-record.landmarks.leg0FarRoot![0]):1;
@@ -145,7 +150,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   if(phase.travel==='stage'&&phase.stageDisplacement!==undefined&&!Number.isFinite(phase.stageDisplacement))throw Error('Contact: invalid stage displacement');
   if(phase.travel==='stage')input={...input,root:{rotation:0,...input.root,dx:0}};
   const free=/:(flight|fly|swim|jet|hop|leap|climb)$/.test(phase.actionId)||phase.actionId==='melee:kick'||phase.realm==='aquatic'||phase.realm==='aerial'||phase.realm==='gas-giant';
-  const stance=contactStanceForAction(template,phase.actionId),selected=free||stance==='none'?[]:chains.filter(c=>stance==='all'||c.id.startsWith('hind')||c.id.startsWith('legHind'));
+  const stance=contactStanceForAction(template,phase.actionId),selected=free||stance==='none'?[]:chains.filter(c=>stance==='all'||(hindGroup?hindGroup.has(c.id):c.id.startsWith('hind')||c.id.startsWith('legHind')));
   if(!free&&stance==='hind'&&!selected.length)throw Error('Contact: declared hind stance has no chains');
   const gaitPolicy=template.contactStance?.gaits?.[phase.actionId],cycleAt=(phase.elapsedMs/phase.durationMs)%1;
   // Bounding lifts the forequarters during the authored upward spine stroke.

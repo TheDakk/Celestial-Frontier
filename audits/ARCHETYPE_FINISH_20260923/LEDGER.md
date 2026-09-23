@@ -10,9 +10,9 @@ Prior signed outcomes and all original refusals remain in ../ARCHETYPE_REPAIRS_2
 |4 insect|Beetle|signed1dfeec2a G; PASS;13 actions+presentation;rest0;film0/0;per-rig0.7000000476837158/0.8999999761581421ms|04-insect/README.md; review-sheet-native-01.png;20260923-beetle-native-01|
 |5 serpent|Python|retained PASS|../ARCHETYPE_REPAIRS_20260922/05-serpent/README.md|
 |6 hopper|Tree Frog|PASS;12 actions+850 presentation;rest0;film0/0;per-rig0.6000000238418579/0.8999999761581421ms; signed2398916e G|06-hopper/README.md; review-sheet-native-02.png;20260923-tree-frog-native-02|
-|7 primate|Chimpanzee|PASS;13 actions+886 presentation;rest0;film0/0;per-rig0.7000000476837158/0.8999999761581421ms; staged, signing pending after2 agent refusals|07-primate/README.md; review-sheet-native-01.png;20260923-chimpanzee-native-01|
+|7 primate|Chimpanzee|PASS;13 actions+886 presentation;rest0;film0/0;per-rig0.7000000476837158/0.8999999761581421ms; signed7158fc13 G|07-primate/README.md; review-sheet-native-01.png;20260923-chimpanzee-native-01|
 |8 radial|Starfish|retained PASS|../ARCHETYPE_REPAIRS_20260922/08-radial/README.md|
-|9 arachnid|Tarantula|pending|—|
+|9 arachnid|Tarantula|PASS;13 actions+896 presentation;rest0;film0/0;per-rig0.7999999523162842/1ms; staged, signing awaits renewed approval after2refusals|09-arachnid/README.md; review-sheet-native-01.png;20260923-tarantula-native-01|
 |10 cephalopod|Octopus|retained PASS|../ARCHETYPE_REPAIRS_20260922/10-cephalopod/README.md|
 |11 flyer-membrane|Fruit Bat|pending|—|
 |12 myriapod|Centipede|pending|—|

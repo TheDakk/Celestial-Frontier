@@ -1,0 +1,12 @@
+{
+  "runId": "20260923-tarantula-paint-06",
+  "sourceHead": "7158fc13ce1ffb5791845c96f2013634ee0512c0",
+  "tool": "built-in image_gen",
+  "promptSha256": "a4384986155894185aee574dbcfe6d6b1bd53895cf9d0e9aabeee069616dff4f",
+  "geometryGuideSha256": "4e0b8c0b39e95d8b782bd8542b984babc5e0a1ae9cb01f51742468b9a4d55208",
+  "geometryGuideSourceSha256": "18c47137d2a340c62e30306e982e97693e6cbd8cf0a14ad6f3b186d17d642239",
+  "observedLandmarksReused": false,
+  "styleReference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "styleReferenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "authority": "../../AUTHORITY.md"
+}

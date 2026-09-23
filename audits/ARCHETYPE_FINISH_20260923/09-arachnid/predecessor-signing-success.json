@@ -1,0 +1,10 @@
+{
+  "commit": "7158fc13ce1ffb5791845c96f2013634ee0512c0",
+  "signature": "G",
+  "signingReceipt": "caec4c",
+  "resolvesRefusals": [
+    "b841ca",
+    "dee0ca"
+  ],
+  "historicalChimpPacketUnchanged": true
+}
