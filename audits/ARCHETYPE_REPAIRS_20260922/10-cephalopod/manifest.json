@@ -251,6 +251,11 @@
       "sha256": "497387908eca80cc6c6f56f9cb7c808ec3a0542a893a3714bcaae2d2132eddb1"
     },
     {
+      "path": "HISTORY.md",
+      "bytes": 456,
+      "sha256": "83873c2aea304a33fca0f5f385858165b27d075c21040531b86f53e0a91d1dea"
+    },
+    {
       "path": "intake-02.log",
       "bytes": 318,
       "sha256": "2108770849a191f040bc3bed3fd54763992fb220f943e9b77bda3feda17f47cf"
@@ -477,8 +482,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4068,
-      "sha256": "14efd394e93a9c1700bd007178f4dbc160b02409e36c3e734f9be71e4f172867"
+      "bytes": 4061,
+      "sha256": "d77e4add7d2051a8d03df4803c7b3d1a2414be2c033cf5e05157be2e2dc1e879"
     },
     {
       "path": "request.json",
