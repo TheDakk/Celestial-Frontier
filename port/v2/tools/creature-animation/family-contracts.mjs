@@ -4254,6 +4254,10 @@ const contracts = [
 const freeze=x=>{if(x&&typeof x==='object'){for(const v of Object.values(x))freeze(v);Object.freeze(x);}return x;};
 // Shared stance ownership: default preserves the historical all-chain solve.
 contracts.find(t=>t.id==='quadruped').contactStance={default:'all',gaits:{'approach:walk':'alternating','approach:trot':'alternating','approach:gallop':'bounding'},actions:{idle:'all',alert:'all',hit:'all',feed:'all',tame:'all',faint:'all',approach:'all','melee:*':'hind',cast:'hind',victory:'hind',dodge:'none','melee:kick':'none'}};
+// Insect source clips explicitly rear onto the hind pair for cast/victory,
+// tuck all six legs for the dodge hop, and step through hit/tame root travel.
+// Contact inventory is semantic; no numerical authoring/contact limit changes.
+contracts.find(t=>t.id==='insect').contactStance={default:'all',actions:{cast:'hind',victory:'hind',dodge:'none'},travel:{hit:'source-steps',tame:'source-steps'}};
 // R3-S planted-fold ledger: max |Knee|86.5369, |Ankle|94.1469,
 // |Paw|80.5685 degrees; +10 then ceil to5. Raw authoring limits unchanged.
 const quadrupedContact=contracts.find(t=>t.id==='quadruped');
