@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 2,
+  "sourceFile": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-91744076-4d87-41dd-9f58-33e1a147a94a.png",
+  "promptSha256": "359fd030f6db8ca25f90e059ba4e8788e1cf2e9fc3b578a00f053f4876a5ee0a",
+  "masterSha256": "9d3bf3f1ef7ef1992924beececd2c0b0f83fa4274293a0dad8aaaf63001c3297",
+  "measuredMetadata": {
+    "width": 1254,
+    "height": 1254,
+    "channels": 4,
+    "hasAlpha": true
+  }
+}

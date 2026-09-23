@@ -1,0 +1,74 @@
+{
+  "files": [
+    {
+      "path": "declaration.txt",
+      "bytes": 779,
+      "sha256": "7ab08beb597d44523514511590d3858cff08daab1af7ffebb97721fca7b96c11"
+    },
+    {
+      "path": "execution.json",
+      "bytes": 600,
+      "sha256": "6185836e509fcad5768882db3163425791e6dddc8c36e357a2086e2b8e8f0325"
+    },
+    {
+      "path": "generation-receipt.json",
+      "bytes": 472,
+      "sha256": "072f94ff496151404a360c12d1861ae29a405f256d0e76ae7deb7ad59595fd15"
+    },
+    {
+      "path": "master.png",
+      "bytes": 1529853,
+      "sha256": "9d3bf3f1ef7ef1992924beececd2c0b0f83fa4274293a0dad8aaaf63001c3297"
+    },
+    {
+      "path": "predecessor-signing-success.json",
+      "bytes": 361,
+      "sha256": "5632f064c4ec6805cefa282e847c65491b04fa7b61b0300733f6f3ba0c7e3bfb"
+    },
+    {
+      "path": "presence.json",
+      "bytes": 151,
+      "sha256": "6ccdb6b0f13aefa2a5b437c322795fe1999fc1312e509dbcee578a973a455e3a"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 10315,
+      "sha256": "359fd030f6db8ca25f90e059ba4e8788e1cf2e9fc3b578a00f053f4876a5ee0a"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2523,
+      "sha256": "d3784c2ebcc46e103d4db03d01cedcd177e0beffc07486b3396a1b3eb7dace68"
+    },
+    {
+      "path": "request.json",
+      "bytes": 785,
+      "sha256": "af1db04e8d64338b0f951d594874cb730999b4bdb910f9f5e07fbc97eb8289e3"
+    },
+    {
+      "path": "result.json",
+      "bytes": 855,
+      "sha256": "7734ac6707ae5212e5bcb03fd632e743390f2b3fc6b01670ea0e83a4cdfce780"
+    },
+    {
+      "path": "review-sheet-02.png",
+      "bytes": 362508,
+      "sha256": "dfd5d1e99086dc9dd3d73e66e16926361fed5f06128194263f419c4b4eb8b3eb"
+    },
+    {
+      "path": "review-sheet.mjs",
+      "bytes": 3745,
+      "sha256": "97ce644beb37204ad11eb5beb8e8607c9d58129dcd2e7e5f242061734ba3b7fe"
+    },
+    {
+      "path": "subject-source.json",
+      "bytes": 8231,
+      "sha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231"
+    },
+    {
+      "path": "visual-review.md",
+      "bytes": 2148,
+      "sha256": "84eca00ecb58fe17b49762bd6fb7c289bd54ea3113e760c0b98cd5cda2bfbbd7"
+    }
+  ]
+}

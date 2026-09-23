@@ -1,0 +1,101 @@
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes (orbital planets, flora, fauna, ships, landmarks, items,
+emblems, Effects; inactive people excluded; Arena MID/NEAR use the rule below):
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes (universe, stars, planet biomes, Arena FAR), and Arena
+MID/NEAR key-painted terrain so all arena layers match the same biome hand:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: Earth Tarantula; real named anatomy and natural materials take priority over raw procedural genes. eight thick densely hairy legs; two-part body: fused cephalothorax plus a bulbous abdomen; downward-stabbing fangs flanked by leg-like pedipalps. Isolated library archetype, not a landing resident claim.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Tarantula. eight thick densely hairy legs; two-part body: fused cephalothorax plus a bulbous abdomen; downward-stabbing fangs flanked by leg-like pedipalps. no antennae and no separate head; the front section carries all eight legs plus the pedipalps
+Genomic identity and traits (Earth anatomy takes priority): {"seed":3680049014,"kingdom":"fauna","color":15,"form":13,"body":9,"loco":0,"trait":17,"size":5,"diet":5,"head":8,"limbs":1,"skin":8,"tail":1,"pattern":0,"eyes":3,"behavior":7,"habitat":3,"detail":0,"accent":15,"temper":4,"sense":9,"repro":7,"life":2,"metab":2,"lumin":true,"gen":0,"heat":1,"_earthName":"Tarantula"}
+Family contract arachnid, clip set arachnid-v1. Required rig joint/part inventory: root, cephalothorax, abdomen, cheliceraFar, cheliceraNear, leg1FarKnee, leg1FarFoot, leg1NearKnee, leg1NearFoot, leg2FarKnee, leg2FarFoot, leg2NearKnee, leg2NearFoot, leg3FarKnee, leg3FarFoot, leg3NearKnee, leg3NearFoot, leg4FarKnee, leg4FarFoot, leg4NearKnee, leg4NearFoot. Connected organic painted subject, no equipment, no fantasy added limbs.
+A single complete adult tarantula in low side-on view facing right, with only slight elevation enough to distinguish all eight legs. Exactly four near legs and four far legs: each stout hairy leg individually readable from body to separate tip, offset so none is fully hidden. Two main body lobes: cephalothorax and bulbous abdomen; downward-pointing paired fangs and short paired pedipalps at the mouth. Natural warm dark-brown chitin covered in dense copper-black hairs. No antennae, no separate head segment, no tail or sting. All eight walking legs comfortably spread, complete at tips, safe margin; no web, scenery or shadow.
+
+ACCURACY
+  Complete real Tarantula, one creature, anatomically accurate species proportions.
+  All normally visible limbs separately readable with far appendages visibly offset where the view permits; never invent extra anatomy.
+  No scenery, ground, shadow, text, duplicate creature, cropped anatomy.
+  no antennae and no separate head; the front section carries all eight legs plus the pedipalps
+
+LAYOUT
+  A single complete adult tarantula in low side-on view facing right, with only slight elevation enough to distinguish all eight legs. Exactly four near legs and four far legs: each stout hairy leg individually readable from body to separate tip, offset so none is fully hidden. Two main body lobes: cephalothorax and bulbous abdomen; downward-pointing paired fangs and short paired pedipalps at the mouth. Natural warm dark-brown chitin covered in dense copper-black hairs. No antennae, no separate head segment, no tail or sting. All eight walking legs comfortably spread, complete at tips, safe margin; no web, scenery or shadow.
+  One whole creature centered, entire anatomy in frame, at least 8 percent safe margin. No floor plane.
+
+TECHNICAL OUTPUT
+  Create a square 1254 x 1254 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+
+SINGLE AUTHORIZED CORRECTIVE REPAINT — EIGHT TRACEABLE WALKING LEGS
+Paint a new adult tarantula in the approved atlas hand. The previous painting lost one far walking leg behind the body; this replacement must show eight complete independent walking legs, in addition to the two SHORT pedipalps and two downward fangs. Keep the abdomen at left and face pointing right in the specified slightly elevated side view. Spread the four near legs as a broad open fan below/in front of the body. Spread the four far legs as a second clearly offset fan beyond it. Each of the eight walking legs has a visible continuous proximal segment, visible bend, and separate distal segment terminating in its own distinct tip. The four far tips must sit in visible negative-space gaps between or outside the near legs, never hidden by the abdomen or a near limb. Leave visible background gaps between all distal leg silhouettes. Moderate relaxed bends and similar believable leg segment lengths, no locked straight legs, no coiled or crossed leg chains. Small pedipalps stay short and next to the mouth; never count them as walking legs. Preserve exactly two main body lobes, no separate head, no antennae, no tail/sting. Count four complete legs on each side before finalizing. No numbered labels or diagrams on the output.
+Use the attached Discovery Atlas solely as style reference. No original spider pose is supplied as a preservation target. Create one new full-body cutout at exactly1254 x1254 pixels, entire eight-legged silhouette comfortably inside frame. Genuine transparent alpha is preferred; otherwise uniform pure magenta as specified above. Preserve the approved kit style, species genome and existing contract inventory verbatim.

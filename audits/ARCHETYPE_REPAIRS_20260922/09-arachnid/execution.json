@@ -1,0 +1,15 @@
+{
+  "schema": "cf.archetype-repair-execution/v1",
+  "runId": "20260922-tarantula-repair-02",
+  "sourceHead": "f1f1cd80c01e3c859f88943e231f8d3c2ff8b5f2",
+  "generationReceipt": "generation-receipt.json",
+  "toolReceipt": "d6fbf2",
+  "review": "visual-review.md",
+  "reviewSheet": "review-sheet-02.png",
+  "reviewSheetInspected": true,
+  "outcome": "STOPPED_SECOND_PAINT_FAILURE",
+  "intakeExecuted": false,
+  "staticExecuted": false,
+  "nativeExecuted": false,
+  "reason": "Single corrected painting failed required visible-chain anatomy; stop under second-paint rule before fabricating landmarks."
+}

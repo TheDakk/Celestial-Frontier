@@ -5401,6 +5401,11 @@
       "sha256": "d4cb13401cc8940cee462555f64fbd9e068af9a53c2c1444a7c0734b8b67b7bf"
     },
     {
+      "path": "08-radial/HISTORY.md",
+      "bytes": 775,
+      "sha256": "b05cf7b0cce0eda0b30c36cd281d78c76d04470e3e520f9907c9a1569cfcbed8"
+    },
+    {
       "path": "08-radial/intake-02.log",
       "bytes": 314,
       "sha256": "9e3c667c01a3f0035310f55f0bf03831f4c494a9d4a9d93b4e1f04900d316e14"
@@ -5412,8 +5417,8 @@
     },
     {
       "path": "08-radial/manifest.json",
-      "bytes": 14640,
-      "sha256": "0290233558125f11f940ad990adfe9033e394e1d85f121d0c2b2a3202f5ef723"
+      "bytes": 14784,
+      "sha256": "b6fd51dd2170afbcf8e4bb220026adfdc10b19230901825b359903a669279268"
     },
     {
       "path": "08-radial/mapping-inspection-01.md",
@@ -5562,8 +5567,8 @@
     },
     {
       "path": "08-radial/README.md",
-      "bytes": 4127,
-      "sha256": "f82401f0da4fa5d7517c8aa21319f34b3ba4807975b5e5c946bc2415193a9065"
+      "bytes": 3981,
+      "sha256": "0ef538628e3a0cab00d1934a36536f2b23540a74a76ed45b4574859b581862d5"
     },
     {
       "path": "08-radial/request.json",
@@ -5626,19 +5631,94 @@
       "sha256": "a6ad4b171fe23f5a8892c303d35bdac2c9f11019fcf4a5ccaacb5bc05daf6d3b"
     },
     {
+      "path": "09-arachnid/declaration.txt",
+      "bytes": 779,
+      "sha256": "7ab08beb597d44523514511590d3858cff08daab1af7ffebb97721fca7b96c11"
+    },
+    {
+      "path": "09-arachnid/execution.json",
+      "bytes": 600,
+      "sha256": "6185836e509fcad5768882db3163425791e6dddc8c36e357a2086e2b8e8f0325"
+    },
+    {
+      "path": "09-arachnid/generation-receipt.json",
+      "bytes": 472,
+      "sha256": "072f94ff496151404a360c12d1861ae29a405f256d0e76ae7deb7ad59595fd15"
+    },
+    {
+      "path": "09-arachnid/manifest.json",
+      "bytes": 2128,
+      "sha256": "8ae8fbaed8e6c4da83c025664d1620e280242d02f6db6e5e4a122bed3fb349e4"
+    },
+    {
+      "path": "09-arachnid/master.png",
+      "bytes": 1529853,
+      "sha256": "9d3bf3f1ef7ef1992924beececd2c0b0f83fa4274293a0dad8aaaf63001c3297"
+    },
+    {
+      "path": "09-arachnid/predecessor-signing-success.json",
+      "bytes": 361,
+      "sha256": "5632f064c4ec6805cefa282e847c65491b04fa7b61b0300733f6f3ba0c7e3bfb"
+    },
+    {
+      "path": "09-arachnid/presence.json",
+      "bytes": 151,
+      "sha256": "6ccdb6b0f13aefa2a5b437c322795fe1999fc1312e509dbcee578a973a455e3a"
+    },
+    {
+      "path": "09-arachnid/prompt.txt",
+      "bytes": 10315,
+      "sha256": "359fd030f6db8ca25f90e059ba4e8788e1cf2e9fc3b578a00f053f4876a5ee0a"
+    },
+    {
+      "path": "09-arachnid/README.md",
+      "bytes": 2523,
+      "sha256": "d3784c2ebcc46e103d4db03d01cedcd177e0beffc07486b3396a1b3eb7dace68"
+    },
+    {
+      "path": "09-arachnid/request.json",
+      "bytes": 785,
+      "sha256": "af1db04e8d64338b0f951d594874cb730999b4bdb910f9f5e07fbc97eb8289e3"
+    },
+    {
+      "path": "09-arachnid/result.json",
+      "bytes": 855,
+      "sha256": "7734ac6707ae5212e5bcb03fd632e743390f2b3fc6b01670ea0e83a4cdfce780"
+    },
+    {
+      "path": "09-arachnid/review-sheet-02.png",
+      "bytes": 362508,
+      "sha256": "dfd5d1e99086dc9dd3d73e66e16926361fed5f06128194263f419c4b4eb8b3eb"
+    },
+    {
+      "path": "09-arachnid/review-sheet.mjs",
+      "bytes": 3745,
+      "sha256": "97ce644beb37204ad11eb5beb8e8607c9d58129dcd2e7e5f242061734ba3b7fe"
+    },
+    {
+      "path": "09-arachnid/subject-source.json",
+      "bytes": 8231,
+      "sha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231"
+    },
+    {
+      "path": "09-arachnid/visual-review.md",
+      "bytes": 2148,
+      "sha256": "84eca00ecb58fe17b49762bd6fb7c289bd54ea3113e760c0b98cd5cda2bfbbd7"
+    },
+    {
       "path": "AUTHORITY.md",
       "bytes": 1874,
       "sha256": "c8ea60b7624cec8ac6dedba81ca1e70f0e592a9424c5d91b52a78c0c9ca11b31"
     },
     {
       "path": "LEDGER.md",
-      "bytes": 2364,
-      "sha256": "40b55e32ac03f0967f4ff0d271ffe7d4a57b0f567f692864530c6cc898f423ad"
+      "bytes": 2551,
+      "sha256": "286010798cc2e01d9bdc26c041311c796d29a548c88b858cf71fc9557debe2f4"
     },
     {
       "path": "README.md",
-      "bytes": 2871,
-      "sha256": "9654911a7a05c6455ae020d0e83a4a2e39202f8d9b5beeacbe0b53ed2898e08c"
+      "bytes": 3230,
+      "sha256": "16bf254971727146e36fb5a6748609c8a6331337ee9976be72cd43f1f00b6e9e"
     },
     {
       "path": "review-sheet.mjs",
