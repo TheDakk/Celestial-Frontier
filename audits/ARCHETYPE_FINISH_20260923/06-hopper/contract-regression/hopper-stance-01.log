@@ -1,0 +1,30 @@
+cwd: /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+command: npx vitest run apps/game/src/creature-rig-contact-hopper.test.ts
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-contact-hopper.test.ts (6 tests | 1 failed) 19ms
+   × melee:bite holds exactly the hind pair at canonical keys while preserving authored foreleg motion 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-contact-hopper.test.ts > melee:bite holds exactly the hind pair at canonical keys while preserving authored foreleg motion
+Error: Contact: melee:bite@230 hindFar outside accommodatable reach
+ ❯ Object.resolve apps/game/src/creature-rig-contact.ts:186:49
+
+ ❯ apps/game/src/creature-rig-contact-hopper.test.ts:44:88
+
+Caused by: Error: Contact: melee:bite@230 hindFar rigid support outside accommodatable reach
+ ❯ Object.resolve apps/game/src/creature-rig-contact.ts:233:49
+ ❯ apps/game/src/creature-rig-contact-hopper.test.ts:44:88
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  02:23:20
+   Duration  303ms (transform 124ms, setup 0ms, import 168ms, tests 19ms, environment 0ms)
+
+
+exitCode: 1

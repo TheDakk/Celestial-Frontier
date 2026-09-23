@@ -1,0 +1,29 @@
+$ npx vitest run apps/game/src/creature-rig-terminal-support.test.ts
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-terminal-support.test.ts (1 test | 1 failed) 52ms
+   × the admitted adhesive pad reads the actual published triangle, detects changed paint, and retains publication lifecycle 52ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-terminal-support.test.ts > the admitted adhesive pad reads the actual published triangle, detects changed paint, and retains publication lifecycle
+Error: ENOENT: no such file or directory, open '/Users/nick/Projects/celestial-frontier-openai-mac/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/candidate-08/master.png'
+ ❯ apps/game/src/creature-rig-terminal-support.test.ts:29:54
+     27|  const keyed=PNG.sync.read(fs.readFileSync(path.join(root,fit+'parts/k…
+     28|  const alpha=Uint8Array.from({length:keyed.width*keyed.height},(_,i)=>…
+     29|  const rig=await loadCreatureRigV1(record,binding,fs.readFileSync(path…
+       |                                                      ^
+     30|   fs.readFileSync(path.join(root,fit+'parts/atlas/'+manifest.creatureI…
+     31|   async()=>new Texture({source:new TextureSource(binding.atlasSize)}));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  02:58:13
+   Duration  457ms (transform 131ms, setup 0ms, import 300ms, tests 52ms, environment 0ms)
+
+
+EXIT_CODE=1

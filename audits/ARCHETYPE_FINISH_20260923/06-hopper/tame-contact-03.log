@@ -1,0 +1,5 @@
+Command: node audits/ARCHETYPE_FINISH_20260923/06-hopper/tame-contact-03.mjs
+Scope: current-source contact only; no transforms, bypasses, browser, ARAP or film.
+{"status":"PASS_CONTACT_ONLY","attempted":121,"passed":121,"failed":0,"firstRefusal":null,"maxCompressionPx":0,"maxPaintErrorPx":0.001680358588619999,"maxBoneLengthError":3.0531133177191805e-16}
+
+Exit: 0

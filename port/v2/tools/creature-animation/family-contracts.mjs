@@ -4258,6 +4258,9 @@ contracts.find(t=>t.id==='quadruped').contactStance={default:'all',gaits:{'appro
 // tuck all six legs for the dodge hop, and step through hit/tame root travel.
 // Contact inventory is semantic; no numerical authoring/contact limit changes.
 contracts.find(t=>t.id==='insect').contactStance={default:'all',actions:{cast:'hind',victory:'hind',dodge:'none'},travel:{hit:'source-steps',tame:'source-steps'}};
+// Hopper bite/cast/victory raise the forelegs; dodge is an aerial recoil.
+// Faint and ordinary stance retain all contacts and the existing limits.
+contracts.find(t=>t.id==='hopper').contactStance={default:'all',actions:{'melee:bite':'hind',cast:'hind',victory:'hind',dodge:'none'},travel:{hit:'source-steps',tame:'source-steps'}};
 // R3-S planted-fold ledger: max |Knee|86.5369, |Ankle|94.1469,
 // |Paw|80.5685 degrees; +10 then ceil to5. Raw authoring limits unchanged.
 const quadrupedContact=contracts.find(t=>t.id==='quadruped');

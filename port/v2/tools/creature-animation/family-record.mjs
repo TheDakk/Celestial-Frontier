@@ -2,7 +2,8 @@
  * No family guessing, skeleton fitting, missing-joint synthesis or clip overrides. */
 import {checkHiddenLandmarks} from './hidden-anatomy.mjs';
 import {measureMotionScale} from './motion-scale.mjs';
-import {familyContractForRecord} from './family-contracts.mjs';
+import {familyContractForRecord,familyContactChains} from './family-contracts.mjs';
+import {validateTerminalContactPads} from './terminal-contact-pads.mjs';
 import {createSkeletonPoseProgram} from './skeleton-pose.mjs';
 import {checkGeometry as checkQuadruped,admitRecord as admitQuadruped,hashBytes,hashJSON,stableJSON} from './quadruped-template.mjs';
 const need=(ok,reason)=>{if(!ok)throw Error('Family admission: '+reason);};
@@ -15,8 +16,9 @@ export function measureFamilyBounds(template,landmarks){
  return {boneLengths:bones,measures};
 }
 export function checkFamilyGeometry(record,alpha){
- if(record?.template?.id==='quadruped'&&!record.anatomy)return checkQuadruped(record,alpha);
+ if(record?.template?.id==='quadruped'&&!record.anatomy){need(!Object.hasOwn(record.geometry??{},'contactPads'),'terminal pads require family anatomy admission');return checkQuadruped(record,alpha);}
  const template=familyContractForRecord(record);
+ validateTerminalContactPads(record,familyContactChains(template),alpha);
  need(record.kind===template.id&&record.template.version===template.version,'unsupported body or template version');
  need(record.clipSetId===template.clipSetId&&!Object.hasOwn(record,'clipOverrides'),'shared clip set required');
  const {width:w,height:h,groundLineY,depthLayers}=record.geometry??{};
@@ -46,7 +48,7 @@ export async function sealFamilyRecord(input){
 }
 export async function admitFamilyRecord(record,cutoutBytes,alpha){
  const template=familyContractForRecord(record);
- if(template.id==='quadruped'&&!record.anatomy){await admitQuadruped(record,cutoutBytes,alpha);return template;}
+ if(template.id==='quadruped'&&!record.anatomy){need(!Object.hasOwn(record.geometry??{},'contactPads'),'terminal pads require family anatomy admission');await admitQuadruped(record,cutoutBytes,alpha);return template;}
  const {recipeHash,...body}=record;
  need(typeof recipeHash==='string'&&await hashJSON(body)===recipeHash,'corrupted landmark / recipe hash');
  need(await hashBytes(cutoutBytes)===record.geometry?.cutoutAssetHash,'mismatched cut-out hash');

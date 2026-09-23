@@ -1,0 +1,21 @@
+{
+  "status": "WAITING_FOR_1PASSWORD_APPROVAL",
+  "completedItem": "Tree Frog static05/native02 PASS, staged for signed commit",
+  "currentHead": "1dfeec2a88ac6e7be01b525e12421c3b1b181a7c",
+  "signingProgram": "/Users/nick/.local/bin/git-ssh-sign",
+  "attempts": [
+    {
+      "toolReceipt": "455730",
+      "exitCode": 128,
+      "error": "Couldn't sign message (signer): agent refused operation?"
+    },
+    {
+      "toolReceipt": "8a4ef7",
+      "exitCode": 128,
+      "error": "Couldn't sign message (signer): agent refused operation?"
+    }
+  ],
+  "policy": "Nick requires one retry maximum, then approval with until quit before one further retry. Never unsigned and never change helper/global config.",
+  "configurationVerification": "file:/Users/nick/.gitconfig /Users/nick/.local/bin/git-ssh-sign",
+  "lastSignatureVerification": "1dfeec2a88ac6e7be01b525e12421c3b1b181a7c G"
+}

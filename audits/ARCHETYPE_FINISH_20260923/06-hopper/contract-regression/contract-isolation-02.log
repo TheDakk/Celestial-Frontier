@@ -1,0 +1,4 @@
+command: node audits/ARCHETYPE_FINISH_20260923/06-hopper/contract-regression/run-contract-isolation-02.mjs
+{"status":"PASS_CONTRACT_ISOLATION","referenceHead":"1dfeec2a88ac6e7be01b525e12421c3b1b181a7c","subjectCount":6,"protectedInputCount":12,"sourceCount":84,"priorS2Replayed":false,"error":null,"packet":"/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/06-hopper/contract-regression"}
+
+exitCode: 0

@@ -1,0 +1,4 @@
+cwd: /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+command: npx tsc --noEmit -p apps/game/tsconfig.json
+
+exitCode: 0

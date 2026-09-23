@@ -1,0 +1,7 @@
+{
+  "runId": "20260923-tree-frog-paint-06",
+  "tool": "image_gen.imagegen",
+  "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-d178634c-87d0-4721-b6f9-92211653d948.png",
+  "sha256": "aa1ad50d8ac1e354d0f0ba5beeb211a22519461ac36802ca621022f2418c65eb",
+  "toolReceipt": "functions imagegen result exec-d178634c-87d0-4721-b6f9-92211653d948; tool displayed original generated PNG; copied unchanged"
+}
