@@ -4264,6 +4264,9 @@ contracts.find(t=>t.id==='hopper').contactStance={default:'all',actions:{'melee:
 // Primate's bilateral leg tuck follows the existing unplanted stage dodge;
 // ordinary stance and faint retain both feet and all numerical limits.
 contracts.find(t=>t.id==='primate').contactStance={default:'all',actions:{dodge:'none'}};
+// Arachnid casts rear on the posterior two pairs; the shared source-step
+// planner uses the graph's existing alternating tetrapods for hit/tame travel.
+contracts.find(t=>t.id==='arachnid').contactStance={default:'all',hind:['leg3Far','leg3Near','leg4Far','leg4Near'],actions:{cast:'hind',victory:'hind',dodge:'none'},travel:{hit:'source-steps',tame:'source-steps'}};
 // R3-S planted-fold ledger: max |Knee|86.5369, |Ankle|94.1469,
 // |Paw|80.5685 degrees; +10 then ceil to5. Raw authoring limits unchanged.
 const quadrupedContact=contracts.find(t=>t.id==='quadruped');

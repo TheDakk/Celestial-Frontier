@@ -1,0 +1,11 @@
+{
+  "runId": "20260923-tarantula-paint-05",
+  "sourceHead": "7158fc13ce1ffb5791845c96f2013634ee0512c0",
+  "tool": "built-in image_gen",
+  "promptSha256": "88d86ef22735a74227394ee07f1cad1ee7c111e7931a5c1b60318c7b965f8223",
+  "editTarget": "../candidate-04/master.png",
+  "editTargetSha256": "71065baf218a5ec5bc3b75ebce6ab59ecd952ecf2dbe0a54ccb92b1a25446ac7",
+  "styleReference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "change": "Complete the missing distal leg from the upper-right far arch, preserving existing7walkingtips.",
+  "authority": "../../AUTHORITY.md"
+}

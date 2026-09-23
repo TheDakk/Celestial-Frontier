@@ -1,0 +1,9 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+
+ Test Files  4 passed (4)
+      Tests  41 passed (41)
+   Start at  10:07:58
+   Duration  321ms (transform 397ms, setup 0ms, import 527ms, tests 49ms, environment 0ms)
+

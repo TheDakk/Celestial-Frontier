@@ -1,0 +1,11 @@
+Test-only review fix: valid retained Hopper fit01 now exercises implicit/explicit hind selection; collinear canonical Hopper rejection is a separate negative control. Production unchanged.
+COMMAND: npx vitest run apps/game/src/creature-rig-contact-arachnid.test.ts
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+
+ Test Files  1 passed (1)
+      Tests  21 passed (21)
+   Start at  09:25:04
+   Duration  286ms (transform 111ms, setup 0ms, import 146ms, tests 18ms, environment 0ms)
+

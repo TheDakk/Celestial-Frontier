@@ -1,0 +1,497 @@
+{
+  "schema": "cf.source-retention-review/v1",
+  "reviewDate": "2026-09-23",
+  "scope": "Read-only source-retention audit of Tarantula paint03–06, same-master candidate07, and fit01/02 intake pins. No tests, films, runtime qualification, source edits, image edits, or historical receipt rewrites.",
+  "status": "RETAINED_WITH_DOCUMENTED_QUALIFICATIONS",
+  "attempts": [
+    {
+      "directory": ".",
+      "runId": "20260923-tarantula-paint-03",
+      "sourceHead": "7158fc13ce1ffb5791845c96f2013634ee0512c0",
+      "prompt": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/prompt.txt",
+        "bytes": 9639,
+        "sha256": "03cb34a0758642be61946662f09fa2c248f84ce4aa5fd5620e6828b25c4c7b50"
+      },
+      "request": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/request.json",
+        "bytes": 764,
+        "sha256": "ab1112856cafbcf5b91cfccccdb8f649f80044900e8cf1d4c26a2adf952a0bcb"
+      },
+      "generationReceipt": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/generation-receipt.json",
+        "bytes": 461,
+        "sha256": "c024e62c08b3ee294ac6998941ba40a11b8c6b4d0e82205bcca394fb5e189612"
+      },
+      "master": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/master.png",
+        "bytes": 1323609,
+        "sha256": "133efbc401fc9d52049e762f5a0f1c7ec04f4100045d5204af6622ae08534f6f"
+      },
+      "subjectSource": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/subject-source.json",
+        "bytes": 8231,
+        "sha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231"
+      },
+      "presence": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/presence.json",
+        "bytes": 328,
+        "sha256": "2df5ac9af8a3e6bb4ce6d6375d56a6949d510b2881190a1d3b5bcb5709054b5b",
+        "declaration": {
+          "schema": "cf.anatomy-presence/v2",
+          "absent": [
+            "sting"
+          ],
+          "hidden": [
+            "leg4Far"
+          ],
+          "folded": [],
+          "note": "Manual rejected-paint declaration: missing far posterior chain is an uncertain numbering interpretation, not measured hidden coordinates. At least one chain is incomplete; no admission claimed."
+        }
+      },
+      "toolOutput": {
+        "path": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-bea257dc-7b6b-4c01-8b4e-f7373951fea7.png",
+        "sha256": "133efbc401fc9d52049e762f5a0f1c7ec04f4100045d5204af6622ae08534f6f"
+      },
+      "checks": {
+        "requestReceiptRunEqual": true,
+        "promptMatchesRequest": true,
+        "promptMatchesReceipt": true,
+        "masterMatchesReceipt": true,
+        "masterMatchesOriginalToolOutput": true
+      }
+    },
+    {
+      "directory": "candidate-04",
+      "runId": "20260923-tarantula-paint-04",
+      "sourceHead": "7158fc13ce1ffb5791845c96f2013634ee0512c0",
+      "prompt": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-04/prompt.txt",
+        "bytes": 7563,
+        "sha256": "75864b37f2bad857c14cc4c87ec11c1a4df267c536c17fd838e6ed810b2081d9"
+      },
+      "request": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-04/request.json",
+        "bytes": 650,
+        "sha256": "3050cc3266e3c3e80b889c8eb7e5b8d4c47ecee99d27091499ca7a49bc03ff82"
+      },
+      "generationReceipt": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-04/generation-receipt.json",
+        "bytes": 423,
+        "sha256": "4e7059d7c3ff5a1e14803c4b5575ee2e1e674c7a181181dd90015f7b521a6216"
+      },
+      "master": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-04/master.png",
+        "bytes": 1631100,
+        "sha256": "71065baf218a5ec5bc3b75ebce6ab59ecd952ecf2dbe0a54ccb92b1a25446ac7"
+      },
+      "subjectSource": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-04/subject-source.json",
+        "bytes": 8231,
+        "sha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231"
+      },
+      "presence": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-04/presence.json",
+        "bytes": 121,
+        "sha256": "ebd7993cb9d7e0221024c94f3c8ea3fd4b779edd09f5c613e2e411f76d101f7c",
+        "declaration": {
+          "schema": "cf.anatomy-presence/v2",
+          "absent": [
+            "sting"
+          ],
+          "hidden": [
+            "leg2Far"
+          ],
+          "folded": []
+        }
+      },
+      "toolOutput": {
+        "path": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-62244905-8965-4e17-a2d2-d5ed232068e8.png",
+        "sha256": "71065baf218a5ec5bc3b75ebce6ab59ecd952ecf2dbe0a54ccb92b1a25446ac7"
+      },
+      "checks": {
+        "requestReceiptRunEqual": true,
+        "promptMatchesRequest": true,
+        "promptMatchesReceipt": true,
+        "masterMatchesReceipt": true,
+        "masterMatchesOriginalToolOutput": true
+      }
+    },
+    {
+      "directory": "candidate-05",
+      "runId": "20260923-tarantula-paint-05",
+      "sourceHead": "7158fc13ce1ffb5791845c96f2013634ee0512c0",
+      "prompt": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-05/prompt.txt",
+        "bytes": 8659,
+        "sha256": "88d86ef22735a74227394ee07f1cad1ee7c111e7931a5c1b60318c7b965f8223"
+      },
+      "request": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-05/request.json",
+        "bytes": 591,
+        "sha256": "d7ee408b580d37474a4ee8ebcd32fb03d88bf8dc45c9fbfabd8c00a29b5aa339"
+      },
+      "generationReceipt": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-05/generation-receipt.json",
+        "bytes": 556,
+        "sha256": "5d353ef3dbf2318f9f3b470eca7a1f71fbf791bc05306b799f98f034aa7fef9a"
+      },
+      "master": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-05/master.png",
+        "bytes": 1533175,
+        "sha256": "605e74c5c5ec210ff68dfd36afd046acdec65c76e6c0af6266465eba9d770d85"
+      },
+      "subjectSource": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-05/subject-source.json",
+        "bytes": 8231,
+        "sha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231"
+      },
+      "presence": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-05/presence.json",
+        "bytes": 121,
+        "sha256": "ba2bbacaf3a8b3d61ededb0f19c78c8357c891b91b668e225e9abeb32455e59b",
+        "declaration": {
+          "schema": "cf.anatomy-presence/v2",
+          "absent": [
+            "sting"
+          ],
+          "hidden": [
+            "leg1Far"
+          ],
+          "folded": []
+        }
+      },
+      "toolOutput": {
+        "path": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-344c58c7-f715-42bd-a9b8-a10f0497437e.png",
+        "sha256": "605e74c5c5ec210ff68dfd36afd046acdec65c76e6c0af6266465eba9d770d85"
+      },
+      "checks": {
+        "requestReceiptRunEqual": true,
+        "promptMatchesRequest": true,
+        "promptMatchesReceipt": true,
+        "masterMatchesReceipt": true,
+        "masterMatchesOriginalToolOutput": true
+      }
+    },
+    {
+      "directory": "candidate-06",
+      "runId": "20260923-tarantula-paint-06",
+      "sourceHead": "7158fc13ce1ffb5791845c96f2013634ee0512c0",
+      "prompt": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/prompt.txt",
+        "bytes": 6949,
+        "sha256": "a4384986155894185aee574dbcfe6d6b1bd53895cf9d0e9aabeee069616dff4f"
+      },
+      "request": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/request.json",
+        "bytes": 666,
+        "sha256": "7887ec449b34b3a7216815fe59a2f472254d3957a4b05837477c60f5e66e0fdb"
+      },
+      "generationReceipt": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/generation-receipt.json",
+        "bytes": 559,
+        "sha256": "3719a351914f05bd9bb08323021af801648e6c9e6da986198932ede8814d88f1"
+      },
+      "master": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/master.png",
+        "bytes": 1351184,
+        "sha256": "a63b700253d16406f8fdf5ec5055875f2235554b3ccd81bd5fb2e515b2b37de5"
+      },
+      "subjectSource": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/subject-source.json",
+        "bytes": 8231,
+        "sha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231"
+      },
+      "presence": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/presence.json",
+        "bytes": 104,
+        "sha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165",
+        "declaration": {
+          "schema": "cf.anatomy-presence/v2",
+          "absent": [
+            "sting"
+          ],
+          "hidden": [],
+          "folded": []
+        }
+      },
+      "toolOutput": {
+        "path": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-a0e7bc08-0ef0-4468-8895-4bf8b18e076a.png",
+        "sha256": "a63b700253d16406f8fdf5ec5055875f2235554b3ccd81bd5fb2e515b2b37de5"
+      },
+      "checks": {
+        "requestReceiptRunEqual": true,
+        "promptMatchesRequest": true,
+        "promptMatchesReceipt": true,
+        "masterMatchesReceipt": true,
+        "masterMatchesOriginalToolOutput": true
+      }
+    }
+  ],
+  "styleReference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "bytes": 2954509,
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "geometryGuide": [
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/pose-guide.png",
+      "bytes": 87738,
+      "sha256": "4e0b8c0b39e95d8b782bd8542b984babc5e0a1ae9cb01f51742468b9a4d55208"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/pose-guide.svg",
+      "bytes": 2704,
+      "sha256": "18c47137d2a340c62e30306e982e97693e6cbd8cf0a14ad6f3b186d17d642239"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/pose-guide.json",
+      "bytes": 1930,
+      "sha256": "33d780d535c9da855cdcca18d67fc96c565ba65d69a67f3fe31b5ed5650339af"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/pose-guide-initial.png",
+      "bytes": 88567,
+      "sha256": "95a70a47630b846d5ea33136b4072236f11932ad01e5540dd05ed9fec68d7641"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/pose-guide-initial.svg",
+      "bytes": 2705,
+      "sha256": "976cdbb6f42c43ee7886722d67a6814caf994d40bb03926df2fa679511fa1397"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/pose-guide-initial.json",
+      "bytes": 1800,
+      "sha256": "e86ce13cd491bb7ce8276b677d352c6323a339aca30cb40f14b9a117919ab037"
+    }
+  ],
+  "rejectionEvidence": [
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/visual-review-03.md",
+      "bytes": 551,
+      "sha256": "ff2f13b0db03268c8fef770a3912c25688e95c028ad8d732589e628e5f236c47"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-04/visual-review.md",
+      "bytes": 298,
+      "sha256": "3cd24126b58ada17fc9d948aafc6ec29412af5ed2ffc486452747caa973ca2bd"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-05/generation-receipt.json",
+      "bytes": 556,
+      "sha256": "5d353ef3dbf2318f9f3b470eca7a1f71fbf791bc05306b799f98f034aa7fef9a"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/paint-ledger.json",
+      "bytes": 1194,
+      "sha256": "98c88e6ed7fca6656fd25a4d760c47a30e176addfe3612a2c5a86b1325b95778"
+    }
+  ],
+  "candidate07": {
+    "newPainting": false,
+    "amendment": {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-07/fit-amendment.json",
+      "bytes": 982,
+      "sha256": "c3d66e3bdbe060b977898ec2dbf1e650bc92c2fd02c854ac100e14ca76327791"
+    },
+    "masterPinMatches": true,
+    "identicalInputs": [
+      {
+        "name": "master.png",
+        "beforeSha256": "a63b700253d16406f8fdf5ec5055875f2235554b3ccd81bd5fb2e515b2b37de5",
+        "afterSha256": "a63b700253d16406f8fdf5ec5055875f2235554b3ccd81bd5fb2e515b2b37de5",
+        "identical": true
+      },
+      {
+        "name": "presence.json",
+        "beforeSha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165",
+        "afterSha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165",
+        "identical": true
+      },
+      {
+        "name": "subject-source.json",
+        "beforeSha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231",
+        "afterSha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231",
+        "identical": true
+      }
+    ],
+    "authoringBefore": {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/authoring.json",
+      "bytes": 18016,
+      "sha256": "66580e52033f75b0b2ad072ff9d7e1ebd3e77c9d15b1adad6bae1e7826ba750a"
+    },
+    "authoringAfter": {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-07/authoring.json",
+      "bytes": 18804,
+      "sha256": "665a6e47fac5b3522a99f5406386f23f90a1584385d86f16aa80c73d237c0a83"
+    },
+    "observedChanges": [
+      "leg3NearKnee [623,792] to [665,724]",
+      "leg4NearKnee [350,788] to [350,745]",
+      "leg3-near-distal polygon proximal boundary",
+      "leg4-near-distal polygon proximal boundary",
+      "Explanatory coverage.repair metadata added; other geometry and authoring fields unchanged"
+    ],
+    "anatomicalTruthClaim": false
+  },
+  "intake": [
+    {
+      "fit": "fit-01",
+      "provenance": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-01/intake-provenance.json",
+        "bytes": 3411,
+        "sha256": "049f22fc04fcc3ed54f9882a37ac625daea4309a5e323006ef41095cf6d68afa"
+      },
+      "retainedMatchingHelper": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/intake-01.mjs",
+        "bytes": 12912,
+        "sha256": "00f96495f28219a5201edaeeace8dc482bc263fc9ce0bc5d2290bd6b11f54f23"
+      },
+      "inputs": [
+        {
+          "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/master.png",
+          "expectedSha256": "a63b700253d16406f8fdf5ec5055875f2235554b3ccd81bd5fb2e515b2b37de5",
+          "actualSha256": "a63b700253d16406f8fdf5ec5055875f2235554b3ccd81bd5fb2e515b2b37de5",
+          "matches": true
+        },
+        {
+          "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/authoring.json",
+          "expectedSha256": "66580e52033f75b0b2ad072ff9d7e1ebd3e77c9d15b1adad6bae1e7826ba750a",
+          "actualSha256": "66580e52033f75b0b2ad072ff9d7e1ebd3e77c9d15b1adad6bae1e7826ba750a",
+          "matches": true
+        },
+        {
+          "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/subject-source.json",
+          "expectedSha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231",
+          "actualSha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231",
+          "matches": true
+        },
+        {
+          "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-06/presence.json",
+          "expectedSha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165",
+          "actualSha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165",
+          "matches": true
+        }
+      ],
+      "record": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-01/record.json",
+        "bytes": 7676,
+        "sha256": "ffd3b883b28c31f3fc5e34f6d149c708c2a577b7a0de5d5a94afb8cebea75e23"
+      },
+      "binding": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-01/binding.json",
+        "bytes": 1558886,
+        "sha256": "129f0c168e95d6470226ac431d1badbb55cb38ae64c9c956f131d499bff85081"
+      },
+      "declaration": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-01/declaration.json",
+        "bytes": 2330,
+        "sha256": "d518443c0a55725075c522fae167519d5aff628edb2fdac25a8ce47ef0a808e0"
+      },
+      "recordRecipeHash": "4ccacb0f6629c177bb87ad3da912fbcee0b0e50fea2ca4bb0f26ea446839b49a",
+      "bindingHash": "4f2f2fb7c58326d55cc95393e9296c4839059219cdbec7480f267be91ba927ca",
+      "checks": {
+        "helperPinMatches": true,
+        "recipeMatches": true,
+        "bindingMatches": true,
+        "labelsPinMatches": true,
+        "cutoutPinMatches": true,
+        "presenceContractFieldsMatch": true
+      },
+      "nativeAcceptance": false
+    },
+    {
+      "fit": "fit-02",
+      "provenance": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/intake-provenance.json",
+        "bytes": 3411,
+        "sha256": "ce5c0dc162c66baf0dd2fe292d6d854c6fb60d7a026bcbdec1c5e596e6c08e0c"
+      },
+      "retainedMatchingHelper": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/intake-01.mjs",
+        "bytes": 12912,
+        "sha256": "00f96495f28219a5201edaeeace8dc482bc263fc9ce0bc5d2290bd6b11f54f23"
+      },
+      "inputs": [
+        {
+          "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-07/master.png",
+          "expectedSha256": "a63b700253d16406f8fdf5ec5055875f2235554b3ccd81bd5fb2e515b2b37de5",
+          "actualSha256": "a63b700253d16406f8fdf5ec5055875f2235554b3ccd81bd5fb2e515b2b37de5",
+          "matches": true
+        },
+        {
+          "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-07/authoring.json",
+          "expectedSha256": "665a6e47fac5b3522a99f5406386f23f90a1584385d86f16aa80c73d237c0a83",
+          "actualSha256": "665a6e47fac5b3522a99f5406386f23f90a1584385d86f16aa80c73d237c0a83",
+          "matches": true
+        },
+        {
+          "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-07/subject-source.json",
+          "expectedSha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231",
+          "actualSha256": "a443ac8d93632efa106af93c5f65162a8d035308aa2802094b96e022a9f58231",
+          "matches": true
+        },
+        {
+          "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/09-arachnid/candidate-07/presence.json",
+          "expectedSha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165",
+          "actualSha256": "2d694050a6517ff5800ea172ca6f38fa1425a5838a1f76fc0ccf9c09fc39f165",
+          "matches": true
+        }
+      ],
+      "record": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/record.json",
+        "bytes": 8256,
+        "sha256": "24ccad753e5f42192b7822c6c9449446cc388ce7a11439ce95a37bd514de19b8"
+      },
+      "binding": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/binding.json",
+        "bytes": 1562281,
+        "sha256": "e35bd83c98d22bb72fee5ea78d5ba0046227855dd90d0151a04e507f05fec12d"
+      },
+      "declaration": {
+        "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/declaration.json",
+        "bytes": 2330,
+        "sha256": "c7d49eb188450f9ac345b82deaa06d237ff41b3366fb082d45a2105441618622"
+      },
+      "recordRecipeHash": "3ba58d18d37ebbeff9a2f2bb214431f60edfa646ed521b8ac808c68348e3b77c",
+      "bindingHash": "525a165cb9ce7ddf0b9490fe35e75add9341a517de3deca60be8e985eddef3e6",
+      "checks": {
+        "helperPinMatches": true,
+        "recipeMatches": true,
+        "bindingMatches": true,
+        "labelsPinMatches": true,
+        "cutoutPinMatches": true,
+        "presenceContractFieldsMatch": true
+      },
+      "nativeAcceptance": false
+    }
+  ],
+  "qualifications": [
+    {
+      "finding": "Paint03/04 generation receipts retain their original pending manual qualification text. Their separate visual reviews and paint ledger explicitly record rejection; historical receipts must remain unchanged.",
+      "blocking": false
+    },
+    {
+      "finding": "Paint05 request identifies the approved atlas path but does not carry a style-reference hash. The same retained atlas file hashes to c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62, matching paint03/04/06 pins. Paint05 is a retained rejected attempt.",
+      "blocking": false
+    },
+    {
+      "finding": "subject-source.promptAnatomy states requested complete anatomy. Rejected attempts have separate manual presence declarations with hidden-chain entries. Requested anatomy must not replace those retrospective declarations.",
+      "blocking": false
+    },
+    {
+      "finding": "Candidate07 allOtherAuthoringUnchanged describes unchanged geometry outside its two specified knee/mask amendments; an explanatory coverage.repair metadata field was also added. This review records that literal metadata exception without changing the historical amendment.",
+      "blocking": false
+    },
+    {
+      "finding": "Generation receipts are retained tool-output metadata with exact source hashes. This audit verifies retained prompt/request/receipt consistency and original output bytes; it does not independently attest an external service call or requalify the painting.",
+      "blocking": false
+    },
+    {
+      "finding": "Intake helper pins resolve to retained identical helpers in 04-insect/intake-01.mjs and 06-hopper/intake-01.mjs. Fit provenance records a helper hash rather than its path; this review supplies an explicit matching path.",
+      "blocking": false
+    }
+  ],
+  "missingRequiredSourceFound": [],
+  "technicalAcceptanceClaim": false
+}
