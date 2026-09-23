@@ -1,0 +1,50 @@
+{
+  "role": "Authored composition guide, not observed anatomy or fit landmarks",
+  "wings": {
+    "far": [
+      [
+        850,
+        550
+      ],
+      [
+        690,
+        435
+      ],
+      [
+        480,
+        485
+      ],
+      [
+        180,
+        650
+      ]
+    ],
+    "near": [
+      [
+        865,
+        650
+      ],
+      [
+        705,
+        535
+      ],
+      [
+        495,
+        585
+      ],
+      [
+        195,
+        750
+      ]
+    ]
+  },
+  "reuseAsObservedLandmarks": false,
+  "drawingTransform": {
+    "translate": [
+      -50,
+      -100
+    ],
+    "scale": 0.95,
+    "note": "Pre-submission recentering and additional empty margins; listed construction points transform accordingly. Initial unsubmitted guide retained."
+  }
+}

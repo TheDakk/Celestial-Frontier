@@ -1,0 +1,13 @@
+# Fruit Bat source-retention review — 2026-09-23
+
+**PASS_SOURCE_RETENTION_AND_S2_EQUIVALENCE** for paint run `20260923-fruit-bat-paint-03` on signed predecessor `aaef06aff92852cd4caf711769ea80339a423605`. This review hashes retained files only; it executes no image processing, tests, static/native battery or film. It makes no art or fit acceptance claim.
+
+The exact prompt retains the kit prefix, Fruit Bat species requirements, complete genome and all 21 family joints in order. Request, prompt, composition guide and sole Discovery Atlas style reference hashes agree. The master is byte-identical to the original built-in tool output: `ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7`. Prompt: `f1713b7201837b939222a965582363fdec3f1bd25fec555599547cf35743fe88`. The guide remains explicitly authored composition, never observed landmark evidence.
+
+Both earlier Fruit Bat masters, prompts and refusal packets remain intact: 53 original-sprint manifest entries and 17 repair entries match their retained hashes, including both original image tool outputs. The original four static failures and native habitat refusal remain historical; the second painting’s clipping/forearm findings remain a manual art refusal.
+
+Current bytes match all **846 native source entries, 59 static source entries, 5 prior fit inputs and 84 S2 source entries** in the signed Tarantula final source check. All **12 protected S2 inputs** match, and there are no current production/runtime changes. The retained **6-subject / 13,286-sample PASS_STATIC_IDENTICAL** result in `../09-arachnid/contact-regression-final` can therefore be reused by exact source equivalence. No unchanged S2 battery was rerun. That historical execution recorded predecessor `7158fc13ce1ffb5791845c96f2013634ee0512c0` plus actual dirty-source hashes; this receipt does not relabel it a clean or signed-source execution. Its evidence and consumed source bytes are now retained in signed `aaef06aff92852cd4caf711769ea80339a423605`.
+
+The recorded120px margin request is not met, per existing `master-integrity.json`; no pixels were removed and no extent calculation was rerun. Runtime/source equivalence must be reassessed if a consumed owner, dependency, protected input or relevant observer changes. Full file/hash evidence and retained refusal details are in `source-retention-review-01.json`.
+
+Audit setup history: the first comparison used an older fish prompt whose class headings were abbreviated. The corrected comparison uses the exact current `ART_KIT.md` reference-lock/frozen-style blocks and the original Fruit Bat prompt; both match the submitted bytes. The initial refusal is preserved in the JSON inspection history. No prompt, art, runtime or test changed.
