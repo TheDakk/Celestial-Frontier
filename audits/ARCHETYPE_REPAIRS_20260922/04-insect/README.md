@@ -9,3 +9,5 @@ Run **20260922-beetle-repair-02**, source predecessor3ee02d5db99fa03470c078489b0
 [Review sheet](review-sheet.png) shows the corrected master and explicit unavailable labels/fit/film panels. Original rejected master/prompt remain in ../../ARCHETYPE_SPRINT_20260922/04-insect. declaration.txt and visual-census.json retain observation and human-authored presence. manifest.json hashes every packet file. No shared source, accepted binding or S2 input changed.
 
 Paired next steps: Codex signs this item and continues; Python's original signed passing packet is retained without an unchanged rerun, then Tree Frog is next. Claude consumes signed results under Nick's integration direction; Nick need not open Claude now and reviews art. Resolving Beetle would require a separately authorized further paint or hidden-insect representation; neither is silently assumed. No new hosted attempt, PR, merge, release or deploy.
+
+Signed commit4207748479e1ddeccb2f2f9f24c45e219f73956f; signature verified.
