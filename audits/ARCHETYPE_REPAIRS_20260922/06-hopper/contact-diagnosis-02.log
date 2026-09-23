@@ -1,0 +1,6 @@
+{"id":"melee:bite","ms":118.22222222222221,"error":"Error: Contact: joint limit foreFarPaw melee:bite@118.22222222222221: 47.94402136281136","traceEvents":21,"lastEvent":"measure"}
+{"id":"cast","ms":76.25,"error":"Error: Contact: cast@76.25 exceeds scale compression bound","traceEvents":1,"lastEvent":"compression"}
+{"id":"hit","ms":161.25,"error":"Error: Contact: hit@161.25 hindNear RangeError: target outside two-bone reach","traceEvents":4,"lastEvent":"solve"}
+{"id":"dodge","ms":25.666666666666668,"error":"Error: Contact: dodge@25.666666666666668 exceeds scale compression bound","traceEvents":1,"lastEvent":"compression"}
+{"id":"faint","ms":186.33333333333334,"error":"Error: Contact: joint limit foreFarPaw faint@186.33333333333334: 46.96417433402339","traceEvents":21,"lastEvent":"measure"}
+{"id":"victory","ms":20,"error":"Error: Contact: victory@20 exceeds scale compression bound","traceEvents":1,"lastEvent":"compression"}
