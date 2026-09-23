@@ -1,0 +1,35 @@
+{
+  "runId": "20260922-starfish-native-03",
+  "readyMs": 400,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Starfish",
+      "dn": "Starfish",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "an": "Starfish",
+      "dn": "Starfish",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Starfish",
+      "dn": "Starfish",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 30,
+      "hpB": 0
+    }
+  ],
+  "supports": "observed"
+}

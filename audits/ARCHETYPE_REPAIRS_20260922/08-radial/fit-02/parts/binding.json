@@ -1,0 +1,318 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "7b02d178f4c3ff04c7801e70613a66f3f82a238647dcd4fe73ba593e37470dca",
+  "atlasSha256": "f3db8ab96f2490e93bd7b96bb75abd4a0bd4f2d5797a9635e38c47cd1dad4ae2",
+  "atlasSize": {
+    "width": 2047,
+    "height": 1984
+  },
+  "parts": [
+    {
+      "id": "central-disc-upper",
+      "joint": "bell",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1123,
+        "y": 612,
+        "width": 171,
+        "height": 92
+      },
+      "cutout": {
+        "x": 563,
+        "y": 500,
+        "width": 171,
+        "height": 92
+      }
+    },
+    {
+      "id": "arm0-base",
+      "joint": "arm0Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 184,
+        "width": 489,
+        "height": 131
+      },
+      "cutout": {
+        "x": 393,
+        "y": 360,
+        "width": 489,
+        "height": 131
+      }
+    },
+    {
+      "id": "arm0-middle",
+      "joint": "arm0Seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 966,
+        "y": 5,
+        "width": 717,
+        "height": 170
+      },
+      "cutout": {
+        "x": 316,
+        "y": 190,
+        "width": 717,
+        "height": 170
+      }
+    },
+    {
+      "id": "arm0-tip",
+      "joint": "arm0Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 951,
+        "height": 169
+      },
+      "cutout": {
+        "x": 128,
+        "y": 21,
+        "width": 951,
+        "height": 169
+      }
+    },
+    {
+      "id": "arm4-base",
+      "joint": "arm4Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1679,
+        "y": 663,
+        "width": 363,
+        "height": 580
+      },
+      "cutout": {
+        "x": 779,
+        "y": 433,
+        "width": 363,
+        "height": 580
+      }
+    },
+    {
+      "id": "arm4-middle",
+      "joint": "arm4Seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1364,
+        "y": 185,
+        "width": 305,
+        "height": 570
+      },
+      "cutout": {
+        "x": 867,
+        "y": 387,
+        "width": 305,
+        "height": 570
+      }
+    },
+    {
+      "id": "arm4-tip",
+      "joint": "arm4Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 692,
+        "width": 188,
+        "height": 509
+      },
+      "cutout": {
+        "x": 1052,
+        "y": 212,
+        "width": 188,
+        "height": 509
+      }
+    },
+    {
+      "id": "arm2-base",
+      "joint": "arm2Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1123,
+        "y": 765,
+        "width": 264,
+        "height": 193
+      },
+      "cutout": {
+        "x": 632,
+        "y": 722,
+        "width": 264,
+        "height": 193
+      }
+    },
+    {
+      "id": "arm2-middle",
+      "joint": "arm2Seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 471,
+        "y": 472,
+        "width": 359,
+        "height": 380
+      },
+      "cutout": {
+        "x": 654,
+        "y": 774,
+        "width": 359,
+        "height": 380
+      }
+    },
+    {
+      "id": "arm2-tip",
+      "joint": "arm2Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 504,
+        "y": 184,
+        "width": 423,
+        "height": 278
+      },
+      "cutout": {
+        "x": 702,
+        "y": 936,
+        "width": 423,
+        "height": 278
+      }
+    },
+    {
+      "id": "arm3-base",
+      "joint": "arm3Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 840,
+        "y": 612,
+        "width": 273,
+        "height": 228
+      },
+      "cutout": {
+        "x": 359,
+        "y": 714,
+        "width": 273,
+        "height": 228
+      }
+    },
+    {
+      "id": "arm3-middle",
+      "joint": "arm3Seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 937,
+        "y": 185,
+        "width": 417,
+        "height": 417
+      },
+      "cutout": {
+        "x": 208,
+        "y": 773,
+        "width": 417,
+        "height": 417
+      }
+    },
+    {
+      "id": "arm3-tip",
+      "joint": "arm3Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 471,
+        "y": 862,
+        "width": 323,
+        "height": 267
+      },
+      "cutout": {
+        "x": 97,
+        "y": 987,
+        "width": 323,
+        "height": 267
+      }
+    },
+    {
+      "id": "arm1-base",
+      "joint": "arm1Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 203,
+        "y": 692,
+        "width": 252,
+        "height": 490
+      },
+      "cutout": {
+        "x": 257,
+        "y": 417,
+        "width": 252,
+        "height": 490
+      }
+    },
+    {
+      "id": "arm1-middle",
+      "joint": "arm1Seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1693,
+        "y": 5,
+        "width": 347,
+        "height": 648
+      },
+      "cutout": {
+        "x": 41,
+        "y": 337,
+        "width": 347,
+        "height": 648
+      }
+    },
+    {
+      "id": "arm1-tip",
+      "joint": "arm1Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1253,
+        "width": 218,
+        "height": 726
+      },
+      "cutout": {
+        "x": 0,
+        "y": 198,
+        "width": 218,
+        "height": 726
+      }
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 325,
+        "width": 456,
+        "height": 357
+      },
+      "cutout": {
+        "x": 401,
+        "y": 470,
+        "width": 456,
+        "height": 357
+      }
+    }
+  ],
+  "bindingHash": "8c432f1099e352a81d9a80c585c7c80d7294295e8e861c4e754af4f1b1bf7716"
+}

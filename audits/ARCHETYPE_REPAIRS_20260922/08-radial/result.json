@@ -1,0 +1,98 @@
+{
+  "schema": "cf.archetype-repair-result/v1",
+  "status": "PASS_LOCAL_NATIVE",
+  "item": 8,
+  "name": "Starfish",
+  "predecessorCommit": "4f82025c490d39b80b78bfab81ac53232a780a74",
+  "currentFit": "fit-02",
+  "recordRecipeHash": "7b02d178f4c3ff04c7801e70613a66f3f82a238647dcd4fe73ba593e37470dca",
+  "bindingHash": "365bab8ce809290217ded4a06f11685bedd88046e630e78ee381d0ec55298ae9",
+  "masterSha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687",
+  "presenceSha256": "301237f98346c6f5301d071ed5e4eb0990f026f41a334b7e3149d3c3410fa563",
+  "static": {
+    "file": "static-02.json",
+    "status": "PASS_STATIC",
+    "rows": 14,
+    "actions": 13,
+    "samplesPerAction": [
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121
+    ],
+    "presentationSamples": 1052,
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  "native": {
+    "runId": "20260922-starfish-native-03",
+    "status": "DIAGNOSTIC_PASS",
+    "scope": "Local unmorphed archetype native proof: actual stage, motion/contact and paint-skin owners. Canonical source world with labelled procedural water overlay when aquatic. Human art review remains separate.",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "denseRefusals": {
+      "left": 0,
+      "right": 0
+    },
+    "denseSamples": 1232,
+    "liveFrames": 602,
+    "durationMs": 10016.199999999999,
+    "encodedFrames": {
+      "frames": 606,
+      "width": 1024,
+      "height": 576
+    },
+    "encodedMedia": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1024,
+          "height": 576,
+          "nb_read_frames": "606"
+        }
+      ],
+      "format": {
+        "duration": "10.099543"
+      }
+    },
+    "scriptMs": 9688,
+    "perRigUpdateP95Ms": {
+      "left": 1.899999976158142,
+      "right": 1.600000023841858
+    },
+    "wholeStageP95Ms": 3.399999976158142,
+    "cpuGateMs": 3.5,
+    "timingScope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes.",
+    "sourceFiles": 842,
+    "film": "native-03/battle-10s.webm",
+    "stills": 12
+  },
+  "retainedNativeRefusal": {
+    "runId": "20260922-starfish-native-02",
+    "report": "native-02/report.json",
+    "error": "Error: Error: Ten-second film cannot cover 10288ms script",
+    "scriptMs": 10288,
+    "filmStarted": false,
+    "cpuP95Ms": null,
+    "changedInput": "native-script-03.json readyMs 600 -> 400; transcript outcomes, command duration, action curves and speed unchanged"
+  },
+  "protection": "Original RGBA and explicit presence unchanged. Manual identity/cuts and shape-joint policy qualified on fit02. No shared solver, family, numerical limit, gate, accepted binding or S2 input change. Working-source diagnostic, not a clean committed certificate or PR43 certification.",
+  "next": "Codex signs Starfish before Tarantula. Claude consumes signed results; Nick reviews art and need not open Claude now."
+}
