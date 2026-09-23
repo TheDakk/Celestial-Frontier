@@ -1,0 +1,91 @@
+Eligibility only: observedContactSupports(actual fit-05 record,binding); no pose solve or publication.
+record.json sha256=ee6e5a17d974560efd023d80c3035536ae553ced395f86e851d108ca5a7f23b8
+binding.json sha256=3e1c8a51b676614db4002339c6b6d02901f4bb9e914abff85b8de26a7158d8c4
+{
+  "status": "ELIGIBLE",
+  "recipeHash": "5357c3e397fbd0d70587424b527de754e7d7fc15988324ba93d85e5e3d692b97",
+  "supports": {
+    "hindFarAnkle": {
+      "rest": [
+        0.06818181818181818,
+        0.629585326953748
+      ],
+      "pivotJoint": "hindFarPaw",
+      "surface": {
+        "partId": "far-hind-foot",
+        "triangle": [
+          98,
+          68,
+          75
+        ],
+        "barycentric": [
+          0.9285714285714457,
+          0.045787545787531886,
+          0.025641025641022414
+        ]
+      }
+    },
+    "foreFarAnkle": {
+      "rest": [
+        0.9374003189792663,
+        0.5657894736842105
+      ],
+      "pivotJoint": "foreFarPaw",
+      "surface": {
+        "partId": "far-front-foot",
+        "triangle": [
+          50,
+          33,
+          52
+        ],
+        "barycentric": [
+          0.7999999999999945,
+          0.10000000000000278,
+          0.10000000000000273
+        ]
+      }
+    },
+    "hindNearAnkle": {
+      "rest": [
+        0.07615629984051037,
+        0.7970494417862839
+      ],
+      "pivotJoint": "hindNearPaw",
+      "surface": {
+        "partId": "near-hind-foot",
+        "triangle": [
+          92,
+          95,
+          84
+        ],
+        "barycentric": [
+          0.33333333333327664,
+          0.6111111111111721,
+          0.05555555555555125
+        ]
+      }
+    },
+    "foreNearAnkle": {
+      "rest": [
+        0.7994417862838915,
+        0.6032695374800638
+      ],
+      "pivotJoint": "foreNearPaw",
+      "surface": {
+        "partId": "near-front-foot",
+        "triangle": [
+          144,
+          132,
+          141
+        ],
+        "barycentric": [
+          0.8750000000000001,
+          0.02500000000001115,
+          0.09999999999998874
+        ]
+      }
+    }
+  }
+}
+
+EXIT_CODE=0

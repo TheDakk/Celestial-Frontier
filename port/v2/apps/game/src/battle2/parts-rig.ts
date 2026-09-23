@@ -103,7 +103,12 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
   const compat = contactMode === 'quadruped-compat' ? createQuadrupedContactSolver(record) : null;
   const program: SkeletonPoseProgram = createSkeletonPoseProgram(familyContractForRecord(record as { template: { id: string } }), record.landmarks);
   let pending: RigPose = {}, frame = 0, refused = 0, lastError: string | null = null, applied = 0, last: CreaturePoseV1 | null = null, disposed = false;
-  const owner = createCreatureRigPerformance(record, rig, [{
+  // Source-declared adhesive pads use the same solve result for prepublication
+  // mesh admission; old rigs retain the original performance target unchanged.
+  let resolvedPads: ReturnType<NonNullable<typeof family>['resolve']> | null = null;
+  if(record.geometry.contactPads&&(!family||!rig.applyContactPose))throw Error('Terminal pad publication guard required');
+  const performanceRig=record.geometry.contactPads?{...rig,applyPose(pose:CreaturePoseV1){if(!resolvedPads)throw Error('Matching pad targets required');rig.applyContactPose!(pose,resolvedPads.contacts);}}:rig;
+  const owner = createCreatureRigPerformance(record, performanceRig, [{
     id: 'stage', durationMs: 1e12, loop: false, dispose() { /* the adapter owns the rig */ },
     seek(_ms, target) { for (const [j, k] of Object.entries(pending)) target.setJoint(j, k.rotation, k.dx ?? 0, k.dy ?? 0); },
   }]);
@@ -113,7 +118,9 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
     // `stageDisplacement` is already in signed body lengths since the stance boundary (Codex's cadence contract) and
     // goes to the solver unchanged; the solver recedes stance targets by it (d8787235)
     const phase = { actionId: context.actionId, elapsedMs: context.elapsedMs, durationMs: context.durationMs, weight: context.weight, realm: card.realm, travel: context.travel, ...(context.stageDisplacement !== undefined ? { stageDisplacement: context.stageDisplacement } : {}) };
-    return family!.resolve(pose, phase as Parameters<NonNullable<typeof family>['resolve']>[1]).pose;
+    const solved=family!.resolve(pose, phase as Parameters<NonNullable<typeof family>['resolve']>[1]);
+    if(record.geometry.contactPads)resolvedPads=solved;
+    return solved.pose;
   };
   // A2: the rig's stance reach — the largest stage displacement (body lengths) the family solver accepts at three
   // stance samples of the approach gait (binary search to 1/256 body length); the caller-side measurement until

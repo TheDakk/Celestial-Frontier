@@ -4,6 +4,7 @@ import{RecoverablePoseError}from'../creature-animation/pose-refusal.mjs';
 import{assertPaintPartShape}from'../creature-animation/paint-skin.mjs';
 import{createStrideCadence,createStageTravel,assessTemplateRootContinuity}from'../../apps/game/src/creature-stage-travel.ts';
 import {sampleSupportResidual} from './contact-support-probe.mjs';
+import {assertLegacyContactObserver} from './legacy-contact-observer.mjs';
 import {createSkeletonPoseProgram} from '../creature-animation/skeleton-pose.mjs';
 import {familyContractForRecord} from '../creature-animation/family-contracts.mjs';
 import {Application,Container,Sprite,Texture,Text,RenderTexture}from'pixi.js';
@@ -21,7 +22,7 @@ const image=async n=>{const b=await bytes(n),bmp=await createImageBitmap(new Blo
 const state={status:'LOADING'};window.cfFamilyReview={state};
 try{
 const app=new Application();await app.init({width:1400,height:800,resolution:1,background:0x14242c,antialias:false,autoStart:false,preference:'webgl'});document.body.append(app.canvas);
-const record=await json('record.json'),binding=await json('binding.json'),paint=await image('keyed.png'),master=new Uint8Array(await bytes('master.png')),atlas=await image('atlas.png'),rig=await loadCreatureRigV1(record,binding,master,Uint8Array.from({length:paint.canvas.width*paint.canvas.height},(_,i)=>paint.rgba[i*4+3]),atlas.bytes),card=compileBodyCard(record,record.genome),players={},timelines={};
+const record=assertLegacyContactObserver(await json('record.json')),binding=await json('binding.json'),paint=await image('keyed.png'),master=new Uint8Array(await bytes('master.png')),atlas=await image('atlas.png'),rig=await loadCreatureRigV1(record,binding,master,Uint8Array.from({length:paint.canvas.width*paint.canvas.height},(_,i)=>paint.rgba[i*4+3]),atlas.bytes),card=compileBodyCard(record,record.genome),players={},timelines={};
 const attackIds=await json('actions.json'),isPlant=card.template.id.startsWith('plant-'),idleId=isPlant?'sway':'idle',library=actionsFor(card.template.id,card.anatomy);
 const selected=isPlant?Object.keys(library):['idle','approach',...attackIds,'hit',...Object.keys(library??{})];
 for(const id of new Set(selected)){const tl=buildTimeline(card,id,record.identity.seed);timelines[id]=tl;let current={};const player=createGsapPlayer(tl,{setJoint(j,rotation,dx,dy){current[j]={rotation,dx,dy};}},{now:()=>0});players[id]={sample(ms){current={};player.seek(ms);return current;}};}

@@ -1,0 +1,20 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 5,
+  "runId": "20260923-tree-frog-paint-05",
+  "sourceHead": "1dfeec2a88ac6e7be01b525e12421c3b1b181a7c",
+  "promptSha256": "30031f564ddcaa2b68ece129a3958471e4064d2c50709f34b01dc5b8e6f9f448",
+  "editTarget": {
+    "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/master.png",
+    "sha256": "1bf61af1e833d5741fdf97b93f560bf518580d7f4cfd47488338b7a236233517"
+  },
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "reason": "Measured far foreleg upper64.846px lower63.008px with only0.429420px rest outer slack; alert/hit compression and faint joint-limit refusals remain. Paint a visible real elbow bend; no numerical gate change."
+}

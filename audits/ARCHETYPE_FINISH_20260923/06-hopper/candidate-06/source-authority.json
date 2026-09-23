@@ -1,0 +1,7 @@
+{
+  "masterFrom": "../candidate-05/master.png",
+  "generationReceipt": "../candidate-05/generation-receipt.json",
+  "prompt": "../candidate-05/prompt.txt",
+  "change": "One explicitly estimated occluded far hip moved from skin emergence535,572 into pelvic region575,515. No other landmarks/masks/sourceRGBA change.",
+  "independentVisualReview": "Far exposed thigh continues inward/up-right to posterior pelvis beside near hip; exact coordinate remains unobservable."
+}
