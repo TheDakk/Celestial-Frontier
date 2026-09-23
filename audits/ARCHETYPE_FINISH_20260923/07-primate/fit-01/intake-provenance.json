@@ -1,0 +1,80 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "2398916ea8941af484dbbfb25591dd56e2b0bcb5",
+  "helperSha256": "00f96495f28219a5201edaeeace8dc482bc263fc9ce0bc5d2290bd6b11f54f23",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/07-primate/master.png",
+      "sha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/07-primate/authoring.json",
+      "sha256": "9c8a9966b3783b1aa59950ac2b86dec8ed3f76be7729ece104dd23f1a9b5bd20"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/07-primate/subject-source.json",
+      "sha256": "9652f406d364002c708254c8e3abdc4828d9d408f4ac421cadfeeaffc9a7bbbe"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/07-primate/presence.json",
+      "sha256": "d986f997305b8791db32ac13a99a9368060f4df703b93b8cae4f9a6583b299ee"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 40,
+    "interiorStep": 80,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "19c1262f501cacabdae7e6cd9f1cca6a8b3cdd551ce6b7e4de7e336d7ea95544",
+  "bindingHash": "9579d75b0d4315f85c2f6d293bcf5d3d55543a8f1b97f797edc8d3c368102b21",
+  "contactEndpoints": [
+    "legFarFoot",
+    "legNearFoot"
+  ],
+  "shapeJoints": [
+    "armNearHand",
+    "armFarHand",
+    "legNearFoot",
+    "legFarFoot",
+    "armNearElbow",
+    "armFarElbow",
+    "legNearKnee",
+    "legFarKnee",
+    "jaw",
+    "head",
+    "neck",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/07-primate/master.png",
+      "sha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/07-primate/authoring.json",
+      "sha256": "9c8a9966b3783b1aa59950ac2b86dec8ed3f76be7729ece104dd23f1a9b5bd20",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/07-primate/subject-source.json",
+      "sha256": "9652f406d364002c708254c8e3abdc4828d9d408f4ac421cadfeeaffc9a7bbbe",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/07-primate/presence.json",
+      "sha256": "d986f997305b8791db32ac13a99a9368060f4df703b93b8cae4f9a6583b299ee",
+      "unchanged": true
+    }
+  ]
+}
