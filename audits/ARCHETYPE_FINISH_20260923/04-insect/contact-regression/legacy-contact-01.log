@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-contact-family.test.ts (19 tests | 1 failed) 481ms
+   × holds actual declared insect stance endpoints under root travel and frees aerial motion 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-contact-family.test.ts > holds actual declared insect stance endpoints under root travel and frees aerial motion
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ apps/game/src/creature-rig-contact-family.test.ts:20:55
+     18|  const first=solved.contacts[0]!;expect(at(r,p,first.joint)).not.toEqu…
+     19|  expect(s.resolve(p,{...ctx,actionId:'approach:flight'}).pose).toBe(p);
+     20|  expect(()=>s.resolve({root:{rotation:0,dx:99}},ctx)).toThrow('reach');
+       |                                                       ^
+     21| });
+     22| it.each(['crab','coconut-crab','freshwater-crab','mud-crab','vent-crab…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 20 passed (21)
+   Start at  01:59:59
+   Duration  730ms (transform 201ms, setup 0ms, import 266ms, tests 484ms, environment 0ms)
+
