@@ -10,10 +10,10 @@
 | 6 | Tree Frog | Signed2283e5388793; stopped | Material/rest repaired;9/13static reds diagnosed; corrected pose rejected at paint limit | 06-hopper/README.md |
 | 7 | Chimpanzee | Signed4f82025c490d; STOPPED_SECOND_PAINT_FAILURE | Exact rest;3/14 static failures diagnosed; corrected paint has extra hind leg; no film/CPU | 07-primate/README.md |
 | 8 | Starfish | Signedf1f1cd80c01e; PASS_LOCAL_NATIVE | Static14/14/exact rest; native0/0refusals; CPU1.899999976158142/1.600000023841858ms p95 | 08-radial/README.md |
-| 9 | Tarantula | STOPPED_SECOND_PAINT_FAILURE; signature pending | Six exposed walking tips; eight visible chains required; no intake/static/native/CPU | 09-arachnid/README.md |
-| 10 | Octopus | Pending | Local native aquatic harness now available | TRIAGE.md |
+| 9 | Tarantula | Signed7a6f45980eeb; STOPPED_SECOND_PAINT_FAILURE | Six exposed walking tips; eight visible chains required; no intake/static/native/CPU | 09-arachnid/README.md |
+| 10 | Octopus | PASS_LOCAL_NATIVE; signature pending | Static14/14/exact rest; native0/0refusals; CPU1/1.3000000715255737ms p95 | 10-cephalopod/README.md |
 | 11 | Fruit Bat | Pending | Corrected wing paint and local air harness | TRIAGE.md |
 | 12 | Centipede | Pending | Approved bounded representation; exact visibility unresolved | TRIAGE.md |
 | 13 | Salmon marking masks | Original signed PASS retained | No unchanged rerun; master unchanged | ../ARCHETYPE_SPRINT_20260922/13-fish-markings |
 
-Salmon signature verified after Nick approved key use. Beetle refusal signed4207748479e1; Python signed PASS retained. Tree Frog refusal signed2283e5388793a31b7fbc0d68897492adb6beadd1 and verified. Chimpanzee refusal signed4f82025c490d39b80b78bfab81ac53232a780a74 and verified. Starfish PASS signedf1f1cd80c01e3c859f88943e231f8d3c2ff8b5f2 and verified. Codex signs the completed Tarantula refusal packet, then starts Octopus. Claude consumes signed results under Nick's integration direction; Nick reviews art and need not open Claude now. No new hosted attempt, PR, merge, release or deploy.
+Salmon signature verified after Nick approved key use. Beetle refusal signed4207748479e1; Python signed PASS retained. Tree Frog refusal signed2283e5388793a31b7fbc0d68897492adb6beadd1 and verified. Chimpanzee refusal signed4f82025c490d39b80b78bfab81ac53232a780a74 and verified. Starfish PASS signedf1f1cd80c01e3c859f88943e231f8d3c2ff8b5f2 and verified. Tarantula refusal signed7a6f45980eeb5c1c400a55be188cd16a0f3faf63 and verified. Codex signs Octopus PASS before Fruit Bat. Claude consumes signed results under Nick's integration direction; Nick reviews art and need not open Claude now. No new hosted attempt, PR, merge, release or deploy.

@@ -1,0 +1,2446 @@
+{
+  "schema": "cf.native-capture-cpu-inspection/v1",
+  "runId": "20260922-octopus-native-02",
+  "scope": "Read-only arithmetic over retained native frame timings, turn beats, script and immutable binding. No replay, test, browser or new CPU measurement. Phase labels follow unchanged choreography; no solver-subphase or part-cost attribution is inferred.",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/report.json",
+      "sha256": "c9c16e7866bcf8e2ad6a9bd9a5f6f0f1fc43c959219a78e13a5de4f31d55bf66",
+      "unchanged": true,
+      "matchesNativeSourceReceipt": null
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/10-cephalopod/fit-01/binding.json",
+      "sha256": "a78a1f2c81cf33274d3b9ef82d1faa793b2f4d0a4191b9643c77e94ed0e5cb0a",
+      "unchanged": true,
+      "matchesNativeSourceReceipt": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/choreography.ts",
+      "sha256": "fa258bbb088e8adb5ab78b3c3f56016972cc715ba8bd2dd59fe285f252647cb3",
+      "unchanged": true,
+      "matchesNativeSourceReceipt": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-entry.mjs",
+      "sha256": "3b6ea490d57ecb9684f50198234d9cad9ef1978d36f88cc2210ce5b2c774e88b",
+      "unchanged": true,
+      "matchesNativeSourceReceipt": true
+    }
+  ],
+  "algorithm": {
+    "p95": "Ascending numeric sort; element at floor(sampleCount*0.95), matching native-entry. Phase uses min(captureMs,totalStageMs), latest turn offset, then retained reaction beats. Faint holds its final clip pose with idle underneath; after totalMs the whole stage time is clamped.",
+    "limitMs": 3.5
+  },
+  "capture": {
+    "frames": 598,
+    "encodedFrames": {
+      "frames": 601,
+      "width": 1024,
+      "height": 576
+    },
+    "durationMs": 10016.2,
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "lastRefusal": {
+      "left": null,
+      "right": null
+    },
+    "wholeStageP95Ms": 6.299999952316284,
+    "perRigUpperBoundP95Ms": {
+      "left": 2,
+      "right": 5.100000023841858
+    },
+    "rigOwnerP95Ms": {
+      "left": 1.899999976158142,
+      "right": 5
+    },
+    "sharedSampleTurnP95Ms": 0.19999992847442627,
+    "sharedSampleTurnMaximumMs": 0.30000007152557373,
+    "eventCounts": {
+      "1": 596,
+      "2": 2
+    }
+  },
+  "mesh": {
+    "bindingHash": "5dfe2e058e9b92643865ab9af2cddab468317d170da1b6104f27371664735fad",
+    "recordRecipeHash": "f9fed9bd0621995b61e8560dbb8797b4c285cfb6a2637a98b8ef8f42d2df7f9f",
+    "fieldVertices": 5157,
+    "fieldTriangles": 8360,
+    "pins": 3075,
+    "pureRootPins": 1791,
+    "parts": 30,
+    "partVertices": 6330,
+    "renderTriangles": 9585,
+    "solverSettings": {
+      "iterations": 4,
+      "globalIterations": 4,
+      "targetWeight": 0.35
+    }
+  },
+  "turns": [
+    {
+      "turn": 0,
+      "outcome": "hit",
+      "attacker": "left",
+      "beats": {
+        "readyEnd": 300,
+        "commandEnd": 500,
+        "actionStart": 1256,
+        "impactAt": 1502.6666666666667,
+        "hitstopEnd": 1572.6666666666667,
+        "flashEnd": 1656,
+        "shakeEnd": 1682.6666666666667,
+        "numbersEnd": 2012.6666666666667,
+        "reactionStart": 1572.6666666666667,
+        "reactionEnd": 2358.666666666667,
+        "actionEnd": 2168.6666666666665,
+        "returnEnd": 2548.6666666666665,
+        "idleStart": 2548.6666666666665,
+        "end": 3148.6666666666665
+      },
+      "offsetMs": 0,
+      "runUp": 0.18333333333333335,
+      "attack": {
+        "verb": "bite",
+        "contactMs": 246.66666666666666,
+        "contactJoint": "head"
+      }
+    },
+    {
+      "turn": 1,
+      "outcome": "dodge",
+      "attacker": "left",
+      "beats": {
+        "readyEnd": 300,
+        "commandEnd": 500,
+        "actionStart": 1256,
+        "impactAt": 1502.6666666666667,
+        "hitstopEnd": 1502.6666666666667,
+        "flashEnd": 1502.6666666666667,
+        "shakeEnd": 1502.6666666666667,
+        "numbersEnd": 2012.6666666666667,
+        "reactionStart": 1382.6666666666667,
+        "reactionEnd": 1998.6666666666667,
+        "actionEnd": 2098.6666666666665,
+        "returnEnd": 2478.6666666666665,
+        "idleStart": 2478.6666666666665,
+        "end": 3078.6666666666665
+      },
+      "offsetMs": 3148.6666666666665,
+      "runUp": 0.18333333333333335,
+      "attack": {
+        "verb": "bite",
+        "contactMs": 246.66666666666666,
+        "contactJoint": "head"
+      }
+    },
+    {
+      "turn": 2,
+      "outcome": "hit",
+      "attacker": "left",
+      "beats": {
+        "readyEnd": 300,
+        "commandEnd": 500,
+        "actionStart": 1256,
+        "impactAt": 1502.6666666666667,
+        "hitstopEnd": 1572.6666666666667,
+        "flashEnd": 1656,
+        "shakeEnd": 1682.6666666666667,
+        "numbersEnd": 2012.6666666666667,
+        "reactionStart": 1572.6666666666667,
+        "reactionEnd": 2428.666666666667,
+        "actionEnd": 2168.6666666666665,
+        "returnEnd": 2548.6666666666665,
+        "idleStart": 2548.6666666666665,
+        "end": 3148.6666666666665
+      },
+      "offsetMs": 6227.333333333333,
+      "runUp": 0.18333333333333335,
+      "attack": {
+        "verb": "lash",
+        "contactMs": 246.66666666666666,
+        "contactJoint": "arm4Seg2"
+      }
+    }
+  ],
+  "phaseSummary": [
+    {
+      "turn": 0,
+      "rightPhase": "idle-before",
+      "frames": 95,
+      "firstMs": 0,
+      "lastMs": 1566.6000000000004,
+      "rightUpperBoundP95Ms": 1,
+      "rightUpperBoundMaximumMs": 1.2000000476837158,
+      "framesOverLimit": 0,
+      "overLimitRangeMs": null
+    },
+    {
+      "turn": 0,
+      "rightPhase": "hit",
+      "frames": 47,
+      "firstMs": 1583.3000000000002,
+      "lastMs": 2349.8999999999996,
+      "rightUpperBoundP95Ms": 1.399999976158142,
+      "rightUpperBoundMaximumMs": 1.5,
+      "framesOverLimit": 0,
+      "overLimitRangeMs": null
+    },
+    {
+      "turn": 0,
+      "rightPhase": "hit-finished-plus-idle",
+      "frames": 47,
+      "firstMs": 2366.6000000000004,
+      "lastMs": 3133.2000000000007,
+      "rightUpperBoundP95Ms": 0.8999998569488525,
+      "rightUpperBoundMaximumMs": 0.9999998807907104,
+      "framesOverLimit": 0,
+      "overLimitRangeMs": null
+    },
+    {
+      "turn": 1,
+      "rightPhase": "idle-before",
+      "frames": 83,
+      "firstMs": 3149.8999999999996,
+      "lastMs": 4516.4,
+      "rightUpperBoundP95Ms": 1,
+      "rightUpperBoundMaximumMs": 1.399999976158142,
+      "framesOverLimit": 0,
+      "overLimitRangeMs": null
+    },
+    {
+      "turn": 1,
+      "rightPhase": "dodge",
+      "frames": 35,
+      "firstMs": 4533.1,
+      "lastMs": 5133.1,
+      "rightUpperBoundP95Ms": 1.5,
+      "rightUpperBoundMaximumMs": 60.799999952316284,
+      "framesOverLimit": 1,
+      "overLimitRangeMs": [
+        4633.1,
+        4633.1
+      ]
+    },
+    {
+      "turn": 1,
+      "rightPhase": "dodge-finished-plus-idle",
+      "frames": 65,
+      "firstMs": 5149.799999999999,
+      "lastMs": 6216.4,
+      "rightUpperBoundP95Ms": 1.3000000715255737,
+      "rightUpperBoundMaximumMs": 1.4000000953674316,
+      "framesOverLimit": 0,
+      "overLimitRangeMs": null
+    },
+    {
+      "turn": 2,
+      "rightPhase": "idle-before",
+      "frames": 95,
+      "firstMs": 6233,
+      "lastMs": 7799.700000000001,
+      "rightUpperBoundP95Ms": 1.399999976158142,
+      "rightUpperBoundMaximumMs": 2.299999952316284,
+      "framesOverLimit": 0,
+      "overLimitRangeMs": null
+    },
+    {
+      "turn": 2,
+      "rightPhase": "faint",
+      "frames": 51,
+      "firstMs": 7816.299999999999,
+      "lastMs": 8649.7,
+      "rightUpperBoundP95Ms": 2.200000047683716,
+      "rightUpperBoundMaximumMs": 2.4000000953674316,
+      "framesOverLimit": 0,
+      "overLimitRangeMs": null
+    },
+    {
+      "turn": 2,
+      "rightPhase": "held-faint-plus-idle",
+      "frames": 80,
+      "firstMs": 8666.3,
+      "lastMs": 10016.2,
+      "rightUpperBoundP95Ms": 8.800000071525574,
+      "rightUpperBoundMaximumMs": 10.399999976158142,
+      "framesOverLimit": 71,
+      "overLimitRangeMs": [
+        8783,
+        10016.2
+      ]
+    }
+  ],
+  "rightFramesOverLimit": 72,
+  "rightOverLimitSamples": [
+    {
+      "frameIndex": 278,
+      "ms": 4633.1,
+      "wholeStageCpuMs": 61.89999997615814,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.7999999523162842,
+          "right": 60.799999952316284
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.7999999523162842,
+        "right": 60.799999952316284
+      },
+      "classification": {
+        "turn": 1,
+        "rightPhase": "dodge",
+        "sampledStageMs": 4633.1,
+        "turnElapsedMs": 1484.4333333333338,
+        "reactionElapsedMs": 101.7666666666671,
+        "reactionDurationMs": 616.0,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 525,
+      "ms": 8783,
+      "wholeStageCpuMs": 5.399999976158142,
+      "timing": {
+        "sampleTurnMs": 0.09999990463256836,
+        "rigMs": {
+          "left": 0.9000000953674316,
+          "right": 4.299999952316284
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1,
+        "right": 4.3999998569488525
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8783,
+        "turnElapsedMs": 2555.666666666667,
+        "reactionElapsedMs": 983.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 526,
+      "ms": 8799.6,
+      "wholeStageCpuMs": 5.299999952316284,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.5999999046325684,
+          "right": 3.4000000953674316
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.6999999284744263,
+        "right": 3.5000001192092896
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8799.6,
+        "turnElapsedMs": 2572.2666666666673,
+        "reactionElapsedMs": 999.6000000000006,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 529,
+      "ms": 8849.7,
+      "wholeStageCpuMs": 56.799999952316284,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 52.199999928474426,
+          "right": 4.300000071525574
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 52.299999952316284,
+        "right": 4.400000095367432
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8849.7,
+        "turnElapsedMs": 2622.3666666666677,
+        "reactionElapsedMs": 1049.700000000001,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 530,
+      "ms": 8899.6,
+      "wholeStageCpuMs": 16.200000047683716,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 5.700000047683716,
+          "right": 10.399999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 5.700000047683716,
+        "right": 10.399999976158142
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8899.6,
+        "turnElapsedMs": 2672.2666666666673,
+        "reactionElapsedMs": 1099.6000000000006,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 531,
+      "ms": 8916.3,
+      "wholeStageCpuMs": 15.5,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 5.100000023841858,
+          "right": 10.399999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 5.100000023841858,
+        "right": 10.399999976158142
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8916.3,
+        "turnElapsedMs": 2688.9666666666662,
+        "reactionElapsedMs": 1116.2999999999995,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 532,
+      "ms": 8933,
+      "wholeStageCpuMs": 14,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 5.299999952316284,
+          "right": 8.5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 5.399999976158142,
+        "right": 8.600000023841858
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8933,
+        "turnElapsedMs": 2705.666666666667,
+        "reactionElapsedMs": 1133.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 533,
+      "ms": 8949.7,
+      "wholeStageCpuMs": 15.400000095367432,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 5.899999976158142,
+          "right": 9.200000047683716
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 6,
+        "right": 9.300000071525574
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8949.7,
+        "turnElapsedMs": 2722.3666666666677,
+        "reactionElapsedMs": 1149.700000000001,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 534,
+      "ms": 8966.3,
+      "wholeStageCpuMs": 11.899999976158142,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 6.100000023841858,
+          "right": 5.600000023841858
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 6.100000023841858,
+        "right": 5.600000023841858
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8966.3,
+        "turnElapsedMs": 2738.9666666666662,
+        "reactionElapsedMs": 1166.2999999999995,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 535,
+      "ms": 8983,
+      "wholeStageCpuMs": 12.5,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 6.299999952316284,
+          "right": 6
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 6.299999952316284,
+        "right": 6
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8983,
+        "turnElapsedMs": 2755.666666666667,
+        "reactionElapsedMs": 1183.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 536,
+      "ms": 8999.6,
+      "wholeStageCpuMs": 6.899999976158142,
+      "timing": {
+        "sampleTurnMs": 0.19999992847442627,
+        "rigMs": {
+          "left": 1.4000000953674316,
+          "right": 5.199999928474426
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.600000023841858,
+        "right": 5.3999998569488525
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8999.6,
+        "turnElapsedMs": 2772.2666666666673,
+        "reactionElapsedMs": 1199.6000000000006,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 537,
+      "ms": 9016.3,
+      "wholeStageCpuMs": 7.299999952316284,
+      "timing": {
+        "sampleTurnMs": 0.09999990463256836,
+        "rigMs": {
+          "left": 1.5,
+          "right": 5.600000023841858
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.5999999046325684,
+        "right": 5.699999928474426
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9016.3,
+        "turnElapsedMs": 2788.9666666666662,
+        "reactionElapsedMs": 1216.2999999999995,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 538,
+      "ms": 9033,
+      "wholeStageCpuMs": 10.399999976158142,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.5,
+          "right": 8.700000047683716
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.600000023841858,
+        "right": 8.800000071525574
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9033,
+        "turnElapsedMs": 2805.666666666667,
+        "reactionElapsedMs": 1233.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 539,
+      "ms": 9049.6,
+      "wholeStageCpuMs": 7.299999952316284,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 1.5,
+          "right": 5.700000047683716
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.5,
+        "right": 5.700000047683716
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9049.6,
+        "turnElapsedMs": 2822.2666666666673,
+        "reactionElapsedMs": 1249.6000000000006,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 540,
+      "ms": 9066.3,
+      "wholeStageCpuMs": 7,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.399999976158142,
+          "right": 5.300000071525574
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.5,
+        "right": 5.400000095367432
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9066.3,
+        "turnElapsedMs": 2838.9666666666662,
+        "reactionElapsedMs": 1266.2999999999995,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 541,
+      "ms": 9082.9,
+      "wholeStageCpuMs": 6.899999976158142,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.399999976158142,
+          "right": 5.200000047683716
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.5,
+        "right": 5.300000071525574
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9082.9,
+        "turnElapsedMs": 2855.5666666666666,
+        "reactionElapsedMs": 1282.8999999999999,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 542,
+      "ms": 9099.6,
+      "wholeStageCpuMs": 6.699999928474426,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.399999976158142,
+          "right": 5.199999928474426
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.5,
+        "right": 5.299999952316284
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9099.6,
+        "turnElapsedMs": 2872.2666666666673,
+        "reactionElapsedMs": 1299.6000000000006,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 543,
+      "ms": 9116.3,
+      "wholeStageCpuMs": 6.699999928474426,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.399999976158142,
+          "right": 5.100000023841858
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.5,
+        "right": 5.200000047683716
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9116.3,
+        "turnElapsedMs": 2888.9666666666662,
+        "reactionElapsedMs": 1316.2999999999995,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 544,
+      "ms": 9133,
+      "wholeStageCpuMs": 6.800000071525574,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.2999999523162842,
+          "right": 5.300000071525574
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.399999976158142,
+        "right": 5.400000095367432
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9133,
+        "turnElapsedMs": 2905.666666666667,
+        "reactionElapsedMs": 1333.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 545,
+      "ms": 9149.6,
+      "wholeStageCpuMs": 6.699999928474426,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.5,
+          "right": 5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.600000023841858,
+        "right": 5.100000023841858
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9149.6,
+        "turnElapsedMs": 2922.2666666666673,
+        "reactionElapsedMs": 1349.6000000000006,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 546,
+      "ms": 9166.3,
+      "wholeStageCpuMs": 6.300000071525574,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.399999976158142,
+          "right": 4.700000047683716
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.5,
+        "right": 4.800000071525574
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9166.3,
+        "turnElapsedMs": 2938.9666666666662,
+        "reactionElapsedMs": 1366.2999999999995,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 547,
+      "ms": 9183,
+      "wholeStageCpuMs": 6.600000023841858,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.5,
+          "right": 4.899999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.600000023841858,
+        "right": 5
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9183,
+        "turnElapsedMs": 2955.666666666667,
+        "reactionElapsedMs": 1383.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 548,
+      "ms": 9199.6,
+      "wholeStageCpuMs": 6.400000095367432,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 1.5,
+          "right": 4.800000071525574
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.5,
+        "right": 4.800000071525574
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9199.6,
+        "turnElapsedMs": 2972.2666666666673,
+        "reactionElapsedMs": 1399.6000000000006,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 549,
+      "ms": 9216.3,
+      "wholeStageCpuMs": 6.5,
+      "timing": {
+        "sampleTurnMs": 0.20000004768371582,
+        "rigMs": {
+          "left": 1.5,
+          "right": 4.799999952316284
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.7000000476837158,
+        "right": 5
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9216.3,
+        "turnElapsedMs": 2988.9666666666662,
+        "reactionElapsedMs": 1416.2999999999995,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 550,
+      "ms": 9232.9,
+      "wholeStageCpuMs": 6.399999976158142,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.5,
+          "right": 4.600000023841858
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.600000023841858,
+        "right": 4.700000047683716
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9232.9,
+        "turnElapsedMs": 3005.5666666666666,
+        "reactionElapsedMs": 1432.8999999999999,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 551,
+      "ms": 9249.6,
+      "wholeStageCpuMs": 6.699999928474426,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 1.600000023841858,
+          "right": 4.899999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.600000023841858,
+        "right": 4.899999976158142
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9249.6,
+        "turnElapsedMs": 3022.2666666666673,
+        "reactionElapsedMs": 1449.6000000000006,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 552,
+      "ms": 9266.3,
+      "wholeStageCpuMs": 6.200000047683716,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.5,
+          "right": 4.5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.600000023841858,
+        "right": 4.600000023841858
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9266.3,
+        "turnElapsedMs": 3038.9666666666662,
+        "reactionElapsedMs": 1466.2999999999995,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 553,
+      "ms": 9282.9,
+      "wholeStageCpuMs": 6.100000023841858,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.100000023841858,
+          "right": 4.799999952316284
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.2000000476837158,
+        "right": 4.899999976158142
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9282.9,
+        "turnElapsedMs": 3055.5666666666666,
+        "reactionElapsedMs": 1482.8999999999999,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 554,
+      "ms": 9299.6,
+      "wholeStageCpuMs": 5.899999976158142,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1,
+          "right": 4.700000047683716
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.100000023841858,
+        "right": 4.800000071525574
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9299.6,
+        "turnElapsedMs": 3072.2666666666673,
+        "reactionElapsedMs": 1499.6000000000006,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 555,
+      "ms": 9316.3,
+      "wholeStageCpuMs": 6.199999928474426,
+      "timing": {
+        "sampleTurnMs": 0.09999990463256836,
+        "rigMs": {
+          "left": 1.100000023841858,
+          "right": 4.899999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.1999999284744263,
+        "right": 4.9999998807907104
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9316.3,
+        "turnElapsedMs": 3088.9666666666662,
+        "reactionElapsedMs": 1516.2999999999995,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 556,
+      "ms": 9332.9,
+      "wholeStageCpuMs": 6.5,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 1.5,
+          "right": 4.899999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.5,
+        "right": 4.899999976158142
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9332.9,
+        "turnElapsedMs": 3105.5666666666666,
+        "reactionElapsedMs": 1532.8999999999999,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 557,
+      "ms": 9349.6,
+      "wholeStageCpuMs": 6,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 1.0999999046325684,
+          "right": 4.700000047683716
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.0999999046325684,
+        "right": 4.700000047683716
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9349.6,
+        "turnElapsedMs": 3122.2666666666673,
+        "reactionElapsedMs": 1549.6000000000006,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 558,
+      "ms": 9366.3,
+      "wholeStageCpuMs": 5.700000047683716,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 4.600000023841858
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1,
+        "right": 4.700000047683716
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9366.3,
+        "turnElapsedMs": 3138.9666666666662,
+        "reactionElapsedMs": 1566.2999999999995,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 559,
+      "ms": 9383,
+      "wholeStageCpuMs": 5.900000095367432,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.9000000953674316,
+          "right": 4.799999952316284
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.9000000953674316,
+        "right": 4.799999952316284
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 560,
+      "ms": 9399.6,
+      "wholeStageCpuMs": 5.699999928474426,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.6999999284744263,
+          "right": 4.800000071525574
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.7999999523162842,
+        "right": 4.900000095367432
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 561,
+      "ms": 9416.3,
+      "wholeStageCpuMs": 5.900000095367432,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.8000000715255737,
+          "right": 4.899999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.9000000953674316,
+        "right": 5
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 562,
+      "ms": 9433,
+      "wholeStageCpuMs": 5.900000095367432,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.8000000715255737,
+          "right": 4.899999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.9000000953674316,
+        "right": 5
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 563,
+      "ms": 9449.6,
+      "wholeStageCpuMs": 6.200000047683716,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.8000000715255737,
+          "right": 5.199999928474426
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.9000000953674316,
+        "right": 5.299999952316284
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 564,
+      "ms": 9466.2,
+      "wholeStageCpuMs": 5.899999976158142,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.7999999523162842,
+          "right": 4.900000095367432
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5.0000001192092896
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 565,
+      "ms": 9482.9,
+      "wholeStageCpuMs": 6.100000023841858,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 5.100000023841858
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5.100000023841858
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 566,
+      "ms": 9499.6,
+      "wholeStageCpuMs": 6.199999928474426,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 5.200000047683716
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5.200000047683716
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 567,
+      "ms": 9516.3,
+      "wholeStageCpuMs": 6.200000047683716,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1,
+        "right": 5.100000023841858
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 568,
+      "ms": 9532.9,
+      "wholeStageCpuMs": 5.899999976158142,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.7999999523162842,
+          "right": 4.899999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 569,
+      "ms": 9549.6,
+      "wholeStageCpuMs": 6.099999904632568,
+      "timing": {
+        "sampleTurnMs": 0.09999990463256836,
+        "rigMs": {
+          "left": 0.9000000953674316,
+          "right": 4.899999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1,
+        "right": 4.9999998807907104
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 570,
+      "ms": 9566.2,
+      "wholeStageCpuMs": 6,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 4.900000095367432
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1,
+        "right": 5.0000001192092896
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 571,
+      "ms": 9582.9,
+      "wholeStageCpuMs": 6,
+      "timing": {
+        "sampleTurnMs": 0.09999990463256836,
+        "rigMs": {
+          "left": 0.8000000715255737,
+          "right": 5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5.099999904632568
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 572,
+      "ms": 9599.6,
+      "wholeStageCpuMs": 5.899999976158142,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.7999999523162842,
+          "right": 4.899999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 573,
+      "ms": 9616.3,
+      "wholeStageCpuMs": 6,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.7999999523162842,
+          "right": 5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5.100000023841858
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 574,
+      "ms": 9632.9,
+      "wholeStageCpuMs": 6.299999952316284,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 1,
+          "right": 5.199999928474426
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1,
+        "right": 5.199999928474426
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 575,
+      "ms": 9649.6,
+      "wholeStageCpuMs": 6.299999952316284,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 1,
+          "right": 5.200000047683716
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1,
+        "right": 5.200000047683716
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 576,
+      "ms": 9666.3,
+      "wholeStageCpuMs": 6.399999976158142,
+      "timing": {
+        "sampleTurnMs": 0.19999992847442627,
+        "rigMs": {
+          "left": 0.9000000953674316,
+          "right": 5.099999904632568
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.100000023841858,
+        "right": 5.299999833106995
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 577,
+      "ms": 9682.9,
+      "wholeStageCpuMs": 5.900000095367432,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.9000000953674316,
+          "right": 4.899999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.9000000953674316,
+        "right": 4.899999976158142
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 578,
+      "ms": 9699.6,
+      "wholeStageCpuMs": 6.199999928474426,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 5.200000047683716
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5.200000047683716
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 579,
+      "ms": 9716.3,
+      "wholeStageCpuMs": 6.199999928474426,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.9000000953674316,
+          "right": 5.099999904632568
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.9000000953674316,
+        "right": 5.099999904632568
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 580,
+      "ms": 9733,
+      "wholeStageCpuMs": 6.100000023841858,
+      "timing": {
+        "sampleTurnMs": 0.20000004768371582,
+        "rigMs": {
+          "left": 0.7000000476837158,
+          "right": 5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.9000000953674316,
+        "right": 5.200000047683716
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 581,
+      "ms": 9749.5,
+      "wholeStageCpuMs": 6.100000023841858,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1,
+        "right": 5.100000023841858
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 582,
+      "ms": 9766.2,
+      "wholeStageCpuMs": 6,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 583,
+      "ms": 9782.9,
+      "wholeStageCpuMs": 6.100000023841858,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 4.900000095367432
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1,
+        "right": 5.0000001192092896
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 584,
+      "ms": 9799.6,
+      "wholeStageCpuMs": 5.899999976158142,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 4.799999952316284
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 4.799999952316284
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 585,
+      "ms": 9816.2,
+      "wholeStageCpuMs": 6.100000023841858,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 4.899999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1,
+        "right": 5
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 586,
+      "ms": 9832.9,
+      "wholeStageCpuMs": 6.100000023841858,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.7999999523162842,
+          "right": 5.100000023841858
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5.200000047683716
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 587,
+      "ms": 9849.6,
+      "wholeStageCpuMs": 5.800000071525574,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 4.800000071525574
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 4.800000071525574
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 588,
+      "ms": 9866.2,
+      "wholeStageCpuMs": 6.099999904632568,
+      "timing": {
+        "sampleTurnMs": 0.19999992847442627,
+        "rigMs": {
+          "left": 0.7000000476837158,
+          "right": 5.100000023841858
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5.299999952316284
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 589,
+      "ms": 9883,
+      "wholeStageCpuMs": 6.200000047683716,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 5.100000023841858
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5.100000023841858
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 590,
+      "ms": 9899.6,
+      "wholeStageCpuMs": 6.100000023841858,
+      "timing": {
+        "sampleTurnMs": 0.20000004768371582,
+        "rigMs": {
+          "left": 0.6999999284744263,
+          "right": 5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5.200000047683716
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 591,
+      "ms": 9916.2,
+      "wholeStageCpuMs": 5.900000095367432,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.8000000715255737,
+          "right": 4.899999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.9000000953674316,
+        "right": 5
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 592,
+      "ms": 9932.9,
+      "wholeStageCpuMs": 6,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 593,
+      "ms": 9949.5,
+      "wholeStageCpuMs": 6,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.7999999523162842,
+          "right": 4.899999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 594,
+      "ms": 9966.2,
+      "wholeStageCpuMs": 6.100000023841858,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.7999999523162842,
+          "right": 5.100000023841858
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.7999999523162842,
+        "right": 5.100000023841858
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 595,
+      "ms": 9982.9,
+      "wholeStageCpuMs": 5.899999976158142,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 596,
+      "ms": 9999.5,
+      "wholeStageCpuMs": 6,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.7999999523162842,
+          "right": 5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.8999999761581421,
+        "right": 5.100000023841858
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    },
+    {
+      "frameIndex": 597,
+      "ms": 10016.2,
+      "wholeStageCpuMs": 5.799999952316284,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 0.8999999761581421,
+          "right": 4.699999928474426
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1,
+        "right": 4.799999952316284
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9376,
+        "turnElapsedMs": 3148.666666666667,
+        "reactionElapsedMs": 1576.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": true
+      }
+    }
+  ],
+  "representativeExactP95Rank": 568,
+  "representativeExactP95Frame": {
+    "frameIndex": 581,
+    "ms": 9749.5,
+    "wholeStageCpuMs": 6.100000023841858,
+    "timing": {
+      "sampleTurnMs": 0.10000002384185791,
+      "rigMs": {
+        "left": 0.8999999761581421,
+        "right": 5
+      },
+      "events": 1
+    },
+    "perRigUpperBoundMs": {
+      "left": 1,
+      "right": 5.100000023841858
+    },
+    "classification": {
+      "turn": 2,
+      "rightPhase": "held-faint-plus-idle",
+      "sampledStageMs": 9376,
+      "turnElapsedMs": 3148.666666666667,
+      "reactionElapsedMs": 1576.0000000000002,
+      "reactionDurationMs": 856.0000000000002,
+      "clampedToFinalStagePose": true
+    }
+  },
+  "topRightSamples": [
+    {
+      "frameIndex": 278,
+      "ms": 4633.1,
+      "wholeStageCpuMs": 61.89999997615814,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 0.7999999523162842,
+          "right": 60.799999952316284
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 0.7999999523162842,
+        "right": 60.799999952316284
+      },
+      "classification": {
+        "turn": 1,
+        "rightPhase": "dodge",
+        "sampledStageMs": 4633.1,
+        "turnElapsedMs": 1484.4333333333338,
+        "reactionElapsedMs": 101.7666666666671,
+        "reactionDurationMs": 616.0,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 530,
+      "ms": 8899.6,
+      "wholeStageCpuMs": 16.200000047683716,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 5.700000047683716,
+          "right": 10.399999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 5.700000047683716,
+        "right": 10.399999976158142
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8899.6,
+        "turnElapsedMs": 2672.2666666666673,
+        "reactionElapsedMs": 1099.6000000000006,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 531,
+      "ms": 8916.3,
+      "wholeStageCpuMs": 15.5,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 5.100000023841858,
+          "right": 10.399999976158142
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 5.100000023841858,
+        "right": 10.399999976158142
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8916.3,
+        "turnElapsedMs": 2688.9666666666662,
+        "reactionElapsedMs": 1116.2999999999995,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 533,
+      "ms": 8949.7,
+      "wholeStageCpuMs": 15.400000095367432,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 5.899999976158142,
+          "right": 9.200000047683716
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 6,
+        "right": 9.300000071525574
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8949.7,
+        "turnElapsedMs": 2722.3666666666677,
+        "reactionElapsedMs": 1149.700000000001,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 538,
+      "ms": 9033,
+      "wholeStageCpuMs": 10.399999976158142,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 1.5,
+          "right": 8.700000047683716
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.600000023841858,
+        "right": 8.800000071525574
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9033,
+        "turnElapsedMs": 2805.666666666667,
+        "reactionElapsedMs": 1233.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 532,
+      "ms": 8933,
+      "wholeStageCpuMs": 14,
+      "timing": {
+        "sampleTurnMs": 0.10000002384185791,
+        "rigMs": {
+          "left": 5.299999952316284,
+          "right": 8.5
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 5.399999976158142,
+        "right": 8.600000023841858
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8933,
+        "turnElapsedMs": 2705.666666666667,
+        "reactionElapsedMs": 1133.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 535,
+      "ms": 8983,
+      "wholeStageCpuMs": 12.5,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 6.299999952316284,
+          "right": 6
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 6.299999952316284,
+        "right": 6
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8983,
+        "turnElapsedMs": 2755.666666666667,
+        "reactionElapsedMs": 1183.0000000000002,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 539,
+      "ms": 9049.6,
+      "wholeStageCpuMs": 7.299999952316284,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 1.5,
+          "right": 5.700000047683716
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.5,
+        "right": 5.700000047683716
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9049.6,
+        "turnElapsedMs": 2822.2666666666673,
+        "reactionElapsedMs": 1249.6000000000006,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 537,
+      "ms": 9016.3,
+      "wholeStageCpuMs": 7.299999952316284,
+      "timing": {
+        "sampleTurnMs": 0.09999990463256836,
+        "rigMs": {
+          "left": 1.5,
+          "right": 5.600000023841858
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 1.5999999046325684,
+        "right": 5.699999928474426
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 9016.3,
+        "turnElapsedMs": 2788.9666666666662,
+        "reactionElapsedMs": 1216.2999999999995,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    },
+    {
+      "frameIndex": 534,
+      "ms": 8966.3,
+      "wholeStageCpuMs": 11.899999976158142,
+      "timing": {
+        "sampleTurnMs": 0,
+        "rigMs": {
+          "left": 6.100000023841858,
+          "right": 5.600000023841858
+        },
+        "events": 1
+      },
+      "perRigUpperBoundMs": {
+        "left": 6.100000023841858,
+        "right": 5.600000023841858
+      },
+      "classification": {
+        "turn": 2,
+        "rightPhase": "held-faint-plus-idle",
+        "sampledStageMs": 8966.3,
+        "turnElapsedMs": 2738.9666666666662,
+        "reactionElapsedMs": 1166.2999999999995,
+        "reactionDurationMs": 856.0000000000002,
+        "clampedToFinalStagePose": false
+      }
+    }
+  ],
+  "findings": [
+    "71 of 72 over-limit right samples belong to the final faint hold after reaction end, beginning at 8783ms and extending through 10016.2ms. Active faint phase stays below 3.5ms.",
+    "One isolated right dodge sample at 4633.1ms takes 60.799999952316284ms; retained timings cannot distinguish solver work, allocation, scheduling or collection within this owner. It is not the sustained p95 driver.",
+    "The exact overall p95 sample is right rig owner 5ms plus shared sampleTurn 0.10000002384185791ms at capture9749.5ms, with stage time clamped9376ms.",
+    "A changed authored mesh density is a separate candidate; these timings do not guarantee its admission, shape parity or CPU result."
+  ]
+}

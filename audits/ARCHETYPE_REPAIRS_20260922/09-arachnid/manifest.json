@@ -16,6 +16,11 @@
       "sha256": "072f94ff496151404a360c12d1861ae29a405f256d0e76ae7deb7ad59595fd15"
     },
     {
+      "path": "HISTORY.md",
+      "bytes": 409,
+      "sha256": "7e7dfedc778a22c06522cf1faa73eb37f499a88717ceb05c627c256559120966"
+    },
+    {
       "path": "master.png",
       "bytes": 1529853,
       "sha256": "9d3bf3f1ef7ef1992924beececd2c0b0f83fa4274293a0dad8aaaf63001c3297"
@@ -37,8 +42,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2523,
-      "sha256": "d3784c2ebcc46e103d4db03d01cedcd177e0beffc07486b3396a1b3eb7dace68"
+      "bytes": 2582,
+      "sha256": "a08a1a39a09a603d6e6a12d73e97d2f0748a1c1de9ac503eeeb1a3a60cbc8758"
     },
     {
       "path": "request.json",

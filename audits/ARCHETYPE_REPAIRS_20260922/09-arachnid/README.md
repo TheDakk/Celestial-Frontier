@@ -8,4 +8,4 @@ Run **20260922-tarantula-repair-02**, source predecessor **f1f1cd80c01e3c859f889
 
 [Review sheet](review-sheet-02.png) shows the corrected master and explicitly unavailable labels/fit/film. Nick owns art review. The packet manifest seals retained bytes. No shared source, accepted binding or S2 input changed; no unchanged battery was repeated.
 
-Signing state: completed refusal packet awaits signed commit. Paired next steps: Codex signs this item then continues Octopus; Claude consumes signed results under Nick's integration direction; Nick reviews art and need not open Claude now. Further Tarantula painting or hidden-chain representation needs separate authority. No new hosted attempt, PR, merge, release or deploy.
+Signing state: signed7a6f45980eeb5c1c400a55be188cd16a0f3faf63; signature verified in tool receipt5a5208 through the dedicated signing session. Paired next steps: Codex continues Octopus; Claude consumes signed results under Nick's integration direction; Nick reviews art and need not open Claude now. Further Tarantula painting or hidden-chain representation needs separate authority. No new hosted attempt, PR, merge, release or deploy.

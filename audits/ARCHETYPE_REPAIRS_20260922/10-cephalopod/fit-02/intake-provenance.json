@@ -1,0 +1,94 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "7a6f45980eeb5c1c400a55be188cd16a0f3faf63",
+  "helperSha256": "47e57ad083b826360946d5c49241a01aebc19cc135e273d6b8a5c6b62909cdba",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/master.png",
+      "sha256": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/authoring.json",
+      "sha256": "9c4189e0d64249c8f2528d032679dbd83aacb884227db90dc79cd1122de6d98e"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/subject-source.json",
+      "sha256": "ce8465b898ede8a650598d284ee22f7f55852411a7f673c3c80bc2a194eb08f1"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/presence.json",
+      "sha256": "de7d6290a7c816fca319bbb7b8b78e35f73a4f9df99bd99f7329966b717100df"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 40,
+    "interiorStep": 80,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "fa37f83a3595df918d6c56e2fb26644cf26b4f03705ff72451dc676dcb5e9e11",
+  "bindingHash": "e094d6c22cd093acc4c9df4afd94c43fbb6d1f968c6abdae0d6783e5c33358cb",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "eyeNear",
+    "eyeFar",
+    "siphon",
+    "arm4Seg2",
+    "arm4Seg1",
+    "arm4Seg0",
+    "arm2Seg2",
+    "arm2Seg1",
+    "arm2Seg0",
+    "arm6Seg2",
+    "arm6Seg1",
+    "arm6Seg0",
+    "arm0Seg2",
+    "arm0Seg1",
+    "arm0Seg0",
+    "arm7Seg2",
+    "arm7Seg1",
+    "arm7Seg0",
+    "arm1Seg2",
+    "arm1Seg1",
+    "arm1Seg0",
+    "arm3Seg2",
+    "arm3Seg1",
+    "arm3Seg0",
+    "arm5Seg2",
+    "arm5Seg1",
+    "arm5Seg0",
+    "mantle",
+    "head"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/master.png",
+      "sha256": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/authoring.json",
+      "sha256": "9c4189e0d64249c8f2528d032679dbd83aacb884227db90dc79cd1122de6d98e",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/subject-source.json",
+      "sha256": "ce8465b898ede8a650598d284ee22f7f55852411a7f673c3c80bc2a194eb08f1",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/presence.json",
+      "sha256": "de7d6290a7c816fca319bbb7b8b78e35f73a4f9df99bd99f7329966b717100df",
+      "unchanged": true
+    }
+  ]
+}

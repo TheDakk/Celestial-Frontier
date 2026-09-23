@@ -1,0 +1,69 @@
+{
+  "schema": "cf.archetype-repair-result/v1",
+  "status": "PASS_LOCAL_NATIVE",
+  "item": 10,
+  "name": "Octopus",
+  "sourceHead": "7a6f45980eeb5c1c400a55be188cd16a0f3faf63",
+  "runId": "20260922-octopus-native-03",
+  "currentFit": "fit-02",
+  "recordRecipeHash": "fa37f83a3595df918d6c56e2fb26644cf26b4f03705ff72451dc676dcb5e9e11",
+  "bindingHash": "e094d6c22cd093acc4c9df4afd94c43fbb6d1f968c6abdae0d6783e5c33358cb",
+  "masterSha256": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e",
+  "static": {
+    "status": "PASS_STATIC",
+    "rows": 14,
+    "actions": 13,
+    "presentationSamples": 1110,
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  "native": {
+    "status": "DIAGNOSTIC_PASS",
+    "runId": "20260922-octopus-native-03",
+    "denseSamples": 1192,
+    "denseRefusals": {
+      "left": 0,
+      "right": 0
+    },
+    "liveRefusals": {
+      "left": 0,
+      "right": 0
+    },
+    "frames": 602,
+    "durationMs": 10016.3,
+    "encodedFrames": {
+      "frames": 605,
+      "width": 1024,
+      "height": 576
+    },
+    "encodedDurationSeconds": 10.083894,
+    "scriptMs": 9376,
+    "perRigP95Ms": {
+      "left": 1,
+      "right": 1.3000000715255737
+    },
+    "wholeStageP95Ms": 2.399999976158142,
+    "gateMs": 3.5,
+    "timingScope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes.",
+    "film": "native-03/battle-10s.webm"
+  },
+  "retainedRefusal": {
+    "runId": "20260922-octopus-native-02",
+    "error": "Error: Desktop painted tier exceeded: {\"limitMs\":3.5,\"scope\":\"Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes.\",\"perRig\":{\"left\":2,\"right\":5.100000023841858}}\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:64:145",
+    "perRigP95Ms": {
+      "left": 2,
+      "right": 5.100000023841858
+    },
+    "liveRefusals": {
+      "left": 0,
+      "right": 0
+    },
+    "film": "native-02/battle-10s.webm"
+  },
+  "protectedChanges": false,
+  "originalFitUnchanged": true
+}
