@@ -26,6 +26,6 @@ Run **20260922-tree-frog-repair-02**, source predecessor4207748479e1ddeccb2f2f9f
 
 [Measured-fit review sheet](review-sheet-02.png) and [rejected-paint sheet](candidate-03/review-sheet.png) separate the authorities and identify missing films. Original failed material attempt remains in ../../ARCHETYPE_SPRINT_20260922/06-hopper.
 
-Paired next steps: Codex signs this packet then repairs Chimpanzee. Claude consumes signed results under Nick's integration direction; Nick reviews art and need not open Claude now. Tree Frog needs separate further-paint or representation authority to continue; no new hosted attempt, PR, merge, release or deploy.
+Paired next steps: Codex has signed this refusal packet and is closing Chimpanzee before Starfish. Claude consumes signed results under Nick's integration direction; Nick reviews art and need not open Claude now. Tree Frog needs separate further-paint or representation authority to continue; no new hosted attempt, PR, merge, release or deploy.
 
-Signing state: standard SSH and configured interactive1Password signers both refused; a later standard-agent retry also refused (signing-refusal-01/02/03.json). Complete packet is staged; HEAD remains4207748479e1 until runtime key use succeeds. No unsigned fallback or Chimpanzee work has begun.
+Signing state: commit `2283e5388793a31b7fbc0d68897492adb6beadd1` is signed and its signature verified. The successful receipt is retained in ../07-primate/predecessor-signing-success.json. Prior signing-refusal-01/02/03.json remain unchanged; HISTORY.md preserves the superseded signing handoff verbatim. The refusal cause is unknown: the earlier errors do not establish that1Password was locked. No unsigned fallback was used.
