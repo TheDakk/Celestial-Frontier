@@ -1,0 +1,18 @@
+{
+  "schema": "cf.authored-landmark-amendment/v1",
+  "joint": "legFarHip",
+  "beforePx": [
+    297,
+    670
+  ],
+  "afterPx": [
+    320,
+    550
+  ],
+  "method": "Manual anatomical placement before any changed-fit solver run",
+  "basis": "Hip belongs to the same upper pelvic haunch as the near hip306545 and pelvis355493; the original297670 placement was down the visible thigh. Far hip is occluded; this is an explicit low-precision rig-fit hypothesis, not an observed exact anatomical center.",
+  "otherLandmarksUnchanged": true,
+  "masterUnchanged": true,
+  "maskReview": "anatomy-review-01.md",
+  "authoringSha256": "9c8a9966b3783b1aa59950ac2b86dec8ed3f76be7729ece104dd23f1a9b5bd20"
+}

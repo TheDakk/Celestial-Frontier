@@ -1,0 +1,36 @@
+{
+  "schema": "cf.sprint-retained-master/v1",
+  "sourceUnchanged": true,
+  "noNewGeneration": true,
+  "files": [
+    {
+      "source": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/master.png",
+      "retainedCopy": "audits/ARCHETYPE_FINISH_20260923/07-primate/master.png",
+      "sha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408"
+    },
+    {
+      "source": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/subject-source.json",
+      "retainedCopy": "audits/ARCHETYPE_FINISH_20260923/07-primate/subject-source.json",
+      "sha256": "9652f406d364002c708254c8e3abdc4828d9d408f4ac421cadfeeaffc9a7bbbe"
+    },
+    {
+      "source": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/presence.json",
+      "retainedCopy": "audits/ARCHETYPE_FINISH_20260923/07-primate/presence.json",
+      "sha256": "d986f997305b8791db32ac13a99a9368060f4df703b93b8cae4f9a6583b299ee"
+    },
+    {
+      "retainedSource": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/prompt.txt",
+      "sha256": "4d454642e662b3382b990e5dcc9a2da4e12aa4cc30cc29f4f13bc53cf1e19b47"
+    },
+    {
+      "retainedSource": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/generation-receipt.json",
+      "sha256": "69368737d0e1cbfc55b4f831f36b4d964ee94a896e18414b1f3f2a454a360317"
+    },
+    {
+      "retainedSource": "audits/ARCHETYPE_SPRINT_20260922/07-primate/request.json",
+      "sha256": "8953a045cd8153b08537221f62ef45cb004affe08c7759f47e6aefc9205ecc61"
+    }
+  ],
+  "rejectedCandidate": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03",
+  "reason": "Retain the original two-legged/two-armed painting; repair demonstrated ownership/contact issues. Candidate03 with three hindlegs remains rejected."
+}

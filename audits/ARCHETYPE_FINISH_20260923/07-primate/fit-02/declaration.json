@@ -1,0 +1,75 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "7b6ee65a8fd5789aa3b62aa0e582c619883fd105a8cd1e7fa8019731d912f532",
+  "cutoutSha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408",
+  "labelsFile": "labels.png",
+  "labelsSha256": "60192171eaa2af8a72771581340a034cc203e2a69bac86059f35589a48de8009",
+  "parts": [
+    {
+      "id": "near-arm-lower-hand",
+      "joint": "armNearHand",
+      "layer": "near"
+    },
+    {
+      "id": "far-arm-lower-hand",
+      "joint": "armFarHand",
+      "layer": "far"
+    },
+    {
+      "id": "near-leg-lower-foot",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "far-leg-lower-foot",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "near-arm-upper",
+      "joint": "armNearElbow",
+      "layer": "near"
+    },
+    {
+      "id": "far-arm-upper",
+      "joint": "armFarElbow",
+      "layer": "far"
+    },
+    {
+      "id": "near-leg-upper",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "far-leg-upper",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "neck",
+      "joint": "neck",
+      "layer": "near"
+    },
+    {
+      "id": "chest",
+      "joint": "chest",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "32cc52be35983a4967d09f729fa95664f9d8cac5ef8d4d65d2cf8c3d7974ff55"
+}
