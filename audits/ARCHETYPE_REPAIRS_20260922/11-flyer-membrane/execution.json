@@ -1,0 +1,126 @@
+{
+  "schema": "cf.archetype-repair-execution/v1",
+  "sourceHead": "7525aa0bdc56c5eb8ee4c8576bf3c610918aed8c",
+  "runId": "20260922-fruit-bat-repair-02",
+  "status": "STOPPED_SECOND_PAINT_FAILURE",
+  "scope": "Index of retained generation, qualitative review and historical reports; no new rig or acceptance execution",
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generation": 2,
+    "request": "request.json",
+    "receipt": "generation-receipt.json",
+    "sourceFile": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-a7aadb9d-b76a-405a-8262-51a3408de1cc.png",
+    "master": "master.png",
+    "masterSha256": "9364c0aa98efdae80a657ca7fe123e41199edc8acdacbefa067d53bc5764c1fd",
+    "prompt": "prompt.txt",
+    "promptSha256": "ac35985bad045112262afcbcbce04fa80f1c6f0ac3eced96df346c82270794ef",
+    "metadata": {
+      "width": 1254,
+      "height": 1254,
+      "channels": 4,
+      "hasAlpha": true
+    },
+    "sourceOutputUnmodified": true
+  },
+  "visualReview": {
+    "file": "visual-review-02.md",
+    "status": "REJECTED",
+    "findings": [
+      "Near/lower wing outline is clipped at left canvas boundary; complete silhouette and requested margin not achieved",
+      "Forearms do not follow requested shared shallow downward elbow-to-wrist pose"
+    ],
+    "scope": "Qualitative visual findings only; no numerical margin, exact joint-center or solver outcome claim"
+  },
+  "edgeInspection": {
+    "file": "edge-inspection.json",
+    "method": "Read delivered RGBA, x=0; no image modification",
+    "leftEdgePositiveAlphaPixels": 33,
+    "leftEdgeAlphaRange": [
+      1,
+      5
+    ],
+    "limitation": "Edge alpha values do not independently prove clipping; the visual review owns that finding"
+  },
+  "presence": "presence.json",
+  "declaration": "declaration.txt",
+  "intake": null,
+  "static": null,
+  "exactRest": null,
+  "native": null,
+  "cpuP95Ms": null,
+  "historicalOriginal": {
+    "packet": "../../ARCHETYPE_SPRINT_20260922/11-flyer-membrane",
+    "masterSha256": "eb48d2ea66a1d63099918a4ee865b4255077466d879a0c1fdcf948b19a970c64",
+    "promptSha256": "637cb98614fd99822964a484e23fbf6f22c84e96dcbf15185dbedcf2ac012ba9",
+    "staticReport": "../../ARCHETYPE_SPRINT_20260922/11-flyer-membrane/static.json",
+    "staticStatus": "RED",
+    "rows": 14,
+    "failedRows": [
+      {
+        "id": "cast",
+        "ms": 418.56666666666666,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 171"
+      },
+      {
+        "id": "faint",
+        "ms": 148.73333333333332,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 17"
+      },
+      {
+        "id": "victory",
+        "ms": 156.93333333333334,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 12"
+      },
+      {
+        "id": "presentation",
+        "ms": 9700,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 159"
+      }
+    ],
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "nativeReport": "../../ARCHETYPE_SPRINT_20260922/11-flyer-membrane/native-01/report.json",
+    "nativeError": "Error: Error: Habitat: organism cannot fit its medium",
+    "filmStarted": false,
+    "scope": "Historical original-master evidence only; no certification of corrected generation2"
+  },
+  "reviewSheet": "review-sheet-02.png",
+  "next": "Sign refusal packet before Centipede; single corrected repaint allowance consumed",
+  "evidenceHashes": [
+    {
+      "path": "result.json",
+      "sha256": "3bdee85ec1275ade05d23622a9e5123a0b925ea4379d9babcd248f7d85305ae5"
+    },
+    {
+      "path": "request.json",
+      "sha256": "e37bc92a0b8e5a1293ed75aa91c888d7188a9d9804c865d78b0ed07a147c40f3"
+    },
+    {
+      "path": "generation-receipt.json",
+      "sha256": "5d1c12843ae113d693ae90a275c1e7bb712d57951ad0ae7763a26b728bd60d07"
+    },
+    {
+      "path": "visual-review-02.md",
+      "sha256": "c533b3ebd09fb91118b18530e99d5c9f7a3e345c1f59beb3a9d44d2f07c9ce0b"
+    },
+    {
+      "path": "edge-inspection.json",
+      "sha256": "35bc593f70a0bee6344f8365ef561a640f05af60098253d13c15915c1c7a68f3"
+    },
+    {
+      "path": "presence.json",
+      "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db"
+    },
+    {
+      "path": "declaration.txt",
+      "sha256": "f09b98433f0327eae469bff8acbe8a99ed051596e4db3030dd9cb903f084b9b4"
+    },
+    {
+      "path": "review-sheet-02.png",
+      "sha256": "eaad6b3d97b5b890f887caf8ab86e1f42388ecefd6cd36aae204c519dd9d2694"
+    }
+  ]
+}

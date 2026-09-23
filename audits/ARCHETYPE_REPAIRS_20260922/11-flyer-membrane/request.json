@@ -1,0 +1,17 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 2,
+  "sourceHead": "7525aa0bdc56c5eb8ee4c8576bf3c610918aed8c",
+  "promptFile": "prompt.txt",
+  "promptSha256": "ac35985bad045112262afcbcbce04fa80f1c6f0ac3eced96df346c82270794ef",
+  "references": [
+    "/Users/nick/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+  ],
+  "referenceRole": "Approved atlas style only; fresh corrected repaint",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "originalPacket": "../../ARCHETYPE_SPRINT_20260922/11-flyer-membrane",
+  "originalPromptSha256": "637cb98614fd99822964a484e23fbf6f22c84e96dcbf15185dbedcf2ac012ba9",
+  "originalMasterSha256": "eb48d2ea66a1d63099918a4ee865b4255077466d879a0c1fdcf948b19a970c64",
+  "reason": "Original far wing points forward, opposite existing family action rest-direction assumption. One permitted corrective generation; no third paint.",
+  "canonicalCoordinatesCopied": false
+}
