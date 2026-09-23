@@ -1,0 +1,2471 @@
+{
+  "schema": "cf.archetype-repairs.final-source-check/v1",
+  "inspectedAtUtc": "2026-09-23T02:54:39.705041+00:00",
+  "scope": "Local read-only Git and workflow-header inspection; this receipt is the only file written by this audit. No network, push, test, browser, or workflow invocation.",
+  "repository": "/Users/nick/Projects/celestial-frontier-openai-mac",
+  "branch": "openai/mac",
+  "auditedRange": {
+    "baseEagleCommit": "3ee02d5db99fa03470c078489b0484bf039856e6",
+    "endCommit": "ab108ca2caa0220335d5445d4b7f21a06655e8a2",
+    "observedHeadBefore": "ab108ca2caa0220335d5445d4b7f21a06655e8a2",
+    "observedHeadAfter": "ab108ca2caa0220335d5445d4b7f21a06655e8a2",
+    "commitCount": 8
+  },
+  "changes": {
+    "count": 449,
+    "statusCounts": {
+      "M": 8,
+      "A": 441
+    },
+    "auditPathCount": 447,
+    "roadmapPathCount": 2,
+    "paths": [
+      {
+        "status": "M",
+        "path": "ROADMAP.md"
+      },
+      {
+        "status": "M",
+        "path": "ROADMAP_ARCHIVE.md"
+      },
+      {
+        "status": "M",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/HISTORY.md"
+      },
+      {
+        "status": "M",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/README.md"
+      },
+      {
+        "status": "M",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/README.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/authoring.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/compile-prompt.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/declaration.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/execution.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/fit-02/intake-provenance.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/fit-02/refusal.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/generation-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/intake-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/master.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/presence.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/prompt-prefix-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/prompt.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/request.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/result.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/review-sheet-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/review-sheet.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/review-sheet.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/subject-source.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/visual-census.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/05-serpent/README.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/05-serpent/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/05-serpent/retained-authorities.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/HISTORY.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/README.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/authoring.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/declaration.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/generation-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/master.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/presence.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/prompt.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/request.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/review-sheet.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/review-sheet.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/subject-source.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/visual-review.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/compile-corrected-prompt.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/contact-diagnosis-02-findings.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/contact-diagnosis-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/contact-diagnosis-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/contact-diagnosis-02.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/contact-diagnosis-02.sources.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/contact-diagnosis-02.ts"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/declaration.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/diagnose-folds-02.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/diagnose-folds-02.ts"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/execution.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/binding.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/declaration.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/intake-provenance.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/label-authoring-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/labels.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/atlas/receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/atlas/tree-frog.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/atlas/tree-frog.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/binding.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/keyed.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/ownership.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/body.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/chest.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/far-front-foot.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/far-front-lower.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/far-front-upper.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/far-hind-foot.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/far-hind-lower.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/far-hind-upper.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/head.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/jaw.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/near-front-foot.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/near-front-lower.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/near-front-upper.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/near-hind-foot.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/near-hind-lower.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/near-hind-upper.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/neck.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/pre-split-binding.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/record.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fold-diagnosis-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fold-diagnosis-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fold-diagnosis-02.sources.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/generation-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/intake-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/master.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/presence.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/prompt.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/repair-scope.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/request.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/result.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/review-sheet-02.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/review-sheet-receipts.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/review-static.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/signing-refusal-01.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/signing-refusal-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/signing-refusal-03.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/static-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/static-02.json.sources.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/static-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/subject-source.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/HISTORY.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/README.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/authoring-repair-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/authoring.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/declaration.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/generation-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/master.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/presence.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/prompt.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/request.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/review-sheet.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/subject-source.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/submitted-prompt.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/visual-review.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-01-findings.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-01.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-01.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-01.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-01.sources.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-01.ts"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02-findings.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02.sources.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02.ts"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/declaration.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/execution.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/binding.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/declaration.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/intake-provenance.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/label-authoring-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/labels.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/atlas/chimpanzee.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/atlas/chimpanzee.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/atlas/receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/binding.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/keyed.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/ownership.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/body.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/chest.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/far-arm-lower-hand.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/far-arm-upper.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/far-leg-lower-foot.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/far-leg-upper.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/head.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/jaw.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/near-arm-lower-hand.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/near-arm-upper.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/near-leg-lower-foot.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/near-leg-upper.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/neck.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/pre-split-binding.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/record.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/generation-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/intake-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/master.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/predecessor-signing-success.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/presence.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/prompt.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/request.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/result.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/review-sheet-02.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/review-sheet.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/signing-refusal-01.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/signing-refusal-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/signing-refusal-03.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/source-check-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/static-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/static-02.json.sources.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/static-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/07-primate/subject-source.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/HISTORY.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/README.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/author-repair-02.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/authoring-repair-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/authoring-sheet-02.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/authoring.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/declaration-original.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/declaration.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/execution.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/binding.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/declaration.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/intake-provenance.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/label-authoring-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/labels.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/atlas/receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/atlas/starfish.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/atlas/starfish.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/binding.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/keyed.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/ownership.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm0-base.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm0-middle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm0-tip.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm1-base.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm1-middle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm1-tip.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm2-base.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm2-middle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm2-tip.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm3-base.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm3-middle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm3-tip.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm4-base.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm4-middle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm4-tip.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/body.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/central-disc-upper.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/pre-split-binding.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/record.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fold-diagnosis-01-findings.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fold-diagnosis-01.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fold-diagnosis-01.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fold-diagnosis-01.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fold-diagnosis-01.sources.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fold-diagnosis-01.ts"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/generation-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/intake-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/intake-02.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/mapping-inspection-01.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/mask-conservation-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/master.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-02/report.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-02/script.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-02/world.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/battle-10s.webm"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/report.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/script.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn0-hit-approach-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn0-hit-impact.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn0-hit-reaction-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn0-hit-return-end.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn1-dodge-approach-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn1-dodge-impact.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn1-dodge-reaction-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn1-dodge-return-end.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn2-hit-approach-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn2-hit-impact.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn2-hit-reaction-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn2-hit-return-end.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/world.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-script-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-script-03.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/predecessor-signing-success.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/presence.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/prompt.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/request.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/result.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/review-sheet-03.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/review-sheet.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/script-repair-03.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/signing-refusal-01.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/signing-refusal-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/source-check-03.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/static-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/static-02.json.sources.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/static-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/subject-source.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/HISTORY.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/README.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/declaration.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/execution.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/generation-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/master.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/predecessor-signing-success.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/presence.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/prompt.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/request.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/result.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/review-sheet-02.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/review-sheet.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/subject-source.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/visual-review.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/HISTORY.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/README.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/authoring.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/declaration.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/execution.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/binding.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/declaration.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/intake-provenance.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/label-authoring-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/labels.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/atlas/octopus.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/atlas/octopus.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/atlas/receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/binding.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/keyed.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/ownership.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm0-base.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm0-middle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm0-tip.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm1-base.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm1-middle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm1-tip.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm2-base.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm2-middle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm2-tip.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm3-base.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm3-middle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm3-tip.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm4-base.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm4-middle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm4-tip.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm5-base.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm5-middle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm5-tip.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm6-base.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm6-middle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm6-tip.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm7-base.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm7-middle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm7-tip.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/body.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/far-eye-rim.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/head.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/mantle.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/near-eye.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/siphon.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/pre-split-binding.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/record.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/generation-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/intake-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/intake-mesh-02.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/master.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/mesh-repair-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02-cpu-inspection.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02-cpu-inspection.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/battle-10s.webm"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/report.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/script.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn0-hit-approach-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn0-hit-impact.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn0-hit-reaction-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn0-hit-return-end.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn1-dodge-approach-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn1-dodge-impact.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn1-dodge-reaction-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn1-dodge-return-end.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn2-hit-approach-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn2-hit-impact.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn2-hit-reaction-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn2-hit-return-end.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/world.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/battle-10s.webm"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/report.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/script.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn0-hit-approach-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn0-hit-impact.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn0-hit-reaction-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn0-hit-return-end.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn1-dodge-approach-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn1-dodge-impact.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn1-dodge-reaction-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn1-dodge-return-end.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn2-hit-approach-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn2-hit-impact.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn2-hit-reaction-50.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn2-hit-return-end.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/world.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-script-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-script-03.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/predecessor-signing-success.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/presence.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/prompt.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/request.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/result.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/retained-fit-authorities.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/review-sheet-03.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/signing-refusal-01.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/source-check-03.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/source-delta.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/source-delta.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-02.json.sources.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-02.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-03.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-03.json.sources.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-03.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/subject-source.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/HISTORY.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/README.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/declaration.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/edge-inspection.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/execution.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/generation-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/master.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/predecessor-signing-success.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/presence.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/prompt.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/request.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/result.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/review-sheet-02.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/review-sheet.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/subject-source.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/tool-output.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/visual-review-02.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/README.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/capacity-analysis.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/capacity-analysis.log"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/capacity-analysis.md"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/capacity-analysis.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/declaration-02.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/declaration.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/execution.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/generation-receipt.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/manifest.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/master.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/observed-inventory.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/predecessor-signing-success.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/presence-observation-02.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/presence-observation.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/prompt.txt"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/request.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/result.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/review-sheet-02.png"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/review-sheet.mjs"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/subject-source.json"
+      },
+      {
+        "status": "A",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/visual-inventory.md"
+      },
+      {
+        "status": "M",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/LEDGER.md"
+      },
+      {
+        "status": "M",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/README.md"
+      },
+      {
+        "status": "M",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/manifest.json"
+      }
+    ],
+    "nonAddedPaths": [
+      {
+        "status": "M",
+        "path": "ROADMAP.md"
+      },
+      {
+        "status": "M",
+        "path": "ROADMAP_ARCHIVE.md"
+      },
+      {
+        "status": "M",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/HISTORY.md"
+      },
+      {
+        "status": "M",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/README.md"
+      },
+      {
+        "status": "M",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/manifest.json"
+      },
+      {
+        "status": "M",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/LEDGER.md"
+      },
+      {
+        "status": "M",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/README.md"
+      },
+      {
+        "status": "M",
+        "path": "audits/ARCHETYPE_REPAIRS_20260922/manifest.json"
+      }
+    ],
+    "perCommitChangedPathUnion": [
+      "ROADMAP.md",
+      "ROADMAP_ARCHIVE.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/HISTORY.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/README.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/README.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/authoring.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/compile-prompt.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/declaration.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/execution.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/fit-02/intake-provenance.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/fit-02/refusal.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/generation-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/intake-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/master.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/presence.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/prompt-prefix-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/prompt.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/request.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/result.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/review-sheet-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/review-sheet.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/review-sheet.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/subject-source.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/04-insect/visual-census.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/05-serpent/README.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/05-serpent/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/05-serpent/retained-authorities.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/HISTORY.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/README.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/authoring.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/declaration.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/generation-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/master.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/presence.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/prompt.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/request.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/review-sheet.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/review-sheet.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/subject-source.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/visual-review.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/compile-corrected-prompt.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/contact-diagnosis-02-findings.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/contact-diagnosis-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/contact-diagnosis-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/contact-diagnosis-02.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/contact-diagnosis-02.sources.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/contact-diagnosis-02.ts",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/declaration.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/diagnose-folds-02.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/diagnose-folds-02.ts",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/execution.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/binding.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/declaration.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/intake-provenance.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/label-authoring-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/labels.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/atlas/receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/atlas/tree-frog.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/atlas/tree-frog.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/binding.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/keyed.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/ownership.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/body.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/chest.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/far-front-foot.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/far-front-lower.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/far-front-upper.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/far-hind-foot.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/far-hind-lower.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/far-hind-upper.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/head.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/jaw.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/near-front-foot.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/near-front-lower.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/near-front-upper.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/near-hind-foot.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/near-hind-lower.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/near-hind-upper.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/parts/neck.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/parts/receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/pre-split-binding.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fit-02/record.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fold-diagnosis-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fold-diagnosis-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fold-diagnosis-02.sources.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/generation-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/intake-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/master.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/presence.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/prompt.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/repair-scope.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/request.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/result.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/review-sheet-02.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/review-sheet-receipts.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/review-static.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/signing-refusal-01.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/signing-refusal-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/signing-refusal-03.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/static-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/static-02.json.sources.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/static-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/subject-source.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/HISTORY.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/README.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/authoring-repair-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/authoring.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/declaration.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/generation-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/master.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/presence.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/prompt.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/request.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/review-sheet.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/subject-source.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/submitted-prompt.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/candidate-03/visual-review.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-01-findings.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-01.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-01.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-01.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-01.sources.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-01.ts",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02-findings.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02.sources.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/contact-diagnosis-02.ts",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/declaration.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/execution.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/binding.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/declaration.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/intake-provenance.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/label-authoring-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/labels.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/atlas/chimpanzee.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/atlas/chimpanzee.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/atlas/receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/binding.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/keyed.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/ownership.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/body.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/chest.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/far-arm-lower-hand.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/far-arm-upper.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/far-leg-lower-foot.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/far-leg-upper.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/head.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/jaw.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/near-arm-lower-hand.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/near-arm-upper.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/near-leg-lower-foot.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/near-leg-upper.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/parts/neck.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/parts/receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/pre-split-binding.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/fit-02/record.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/generation-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/intake-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/master.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/predecessor-signing-success.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/presence.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/prompt.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/request.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/result.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/review-sheet-02.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/review-sheet.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/signing-refusal-01.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/signing-refusal-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/signing-refusal-03.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/source-check-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/static-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/static-02.json.sources.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/static-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/07-primate/subject-source.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/HISTORY.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/README.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/author-repair-02.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/authoring-repair-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/authoring-sheet-02.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/authoring.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/declaration-original.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/declaration.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/execution.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/binding.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/declaration.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/intake-provenance.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/label-authoring-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/labels.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/atlas/receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/atlas/starfish.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/atlas/starfish.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/binding.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/keyed.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/ownership.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm0-base.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm0-middle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm0-tip.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm1-base.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm1-middle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm1-tip.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm2-base.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm2-middle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm2-tip.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm3-base.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm3-middle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm3-tip.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm4-base.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm4-middle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/arm4-tip.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/body.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/parts/central-disc-upper.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/pre-split-binding.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/record.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fold-diagnosis-01-findings.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fold-diagnosis-01.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fold-diagnosis-01.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fold-diagnosis-01.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fold-diagnosis-01.sources.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fold-diagnosis-01.ts",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/generation-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/intake-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/intake-02.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/mapping-inspection-01.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/mask-conservation-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/master.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-02/report.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-02/script.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-02/world.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/battle-10s.webm",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/report.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/script.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn0-hit-approach-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn0-hit-impact.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn0-hit-reaction-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn0-hit-return-end.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn1-dodge-approach-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn1-dodge-impact.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn1-dodge-reaction-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn1-dodge-return-end.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn2-hit-approach-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn2-hit-impact.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn2-hit-reaction-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/turn2-hit-return-end.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-03/world.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-script-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/native-script-03.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/predecessor-signing-success.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/presence.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/prompt.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/request.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/result.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/review-sheet-03.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/review-sheet.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/script-repair-03.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/signing-refusal-01.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/signing-refusal-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/source-check-03.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/static-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/static-02.json.sources.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/static-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/08-radial/subject-source.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/HISTORY.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/README.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/declaration.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/execution.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/generation-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/master.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/predecessor-signing-success.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/presence.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/prompt.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/request.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/result.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/review-sheet-02.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/review-sheet.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/subject-source.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid/visual-review.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/HISTORY.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/README.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/authoring.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/declaration.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/execution.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/binding.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/declaration.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/intake-provenance.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/label-authoring-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/labels.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/atlas/octopus.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/atlas/octopus.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/atlas/receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/binding.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/keyed.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/ownership.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm0-base.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm0-middle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm0-tip.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm1-base.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm1-middle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm1-tip.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm2-base.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm2-middle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm2-tip.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm3-base.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm3-middle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm3-tip.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm4-base.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm4-middle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm4-tip.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm5-base.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm5-middle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm5-tip.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm6-base.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm6-middle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm6-tip.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm7-base.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm7-middle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/arm7-tip.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/body.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/far-eye-rim.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/head.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/mantle.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/near-eye.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/parts/siphon.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/pre-split-binding.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/record.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/generation-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/intake-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/intake-mesh-02.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/master.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/mesh-repair-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02-cpu-inspection.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02-cpu-inspection.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/battle-10s.webm",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/report.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/script.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn0-hit-approach-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn0-hit-impact.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn0-hit-reaction-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn0-hit-return-end.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn1-dodge-approach-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn1-dodge-impact.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn1-dodge-reaction-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn1-dodge-return-end.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn2-hit-approach-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn2-hit-impact.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn2-hit-reaction-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/turn2-hit-return-end.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-02/world.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/battle-10s.webm",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/report.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/script.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn0-hit-approach-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn0-hit-impact.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn0-hit-reaction-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn0-hit-return-end.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn1-dodge-approach-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn1-dodge-impact.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn1-dodge-reaction-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn1-dodge-return-end.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn2-hit-approach-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn2-hit-impact.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn2-hit-reaction-50.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/turn2-hit-return-end.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/world.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-script-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-script-03.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/predecessor-signing-success.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/presence.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/prompt.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/request.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/result.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/retained-fit-authorities.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/review-sheet-03.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/signing-refusal-01.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/source-check-03.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/source-delta.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/source-delta.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-02.json.sources.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-02.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-03.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-03.json.sources.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/static-03.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/subject-source.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/HISTORY.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/README.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/declaration.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/edge-inspection.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/execution.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/generation-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/master.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/predecessor-signing-success.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/presence.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/prompt.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/request.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/result.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/review-sheet-02.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/review-sheet.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/subject-source.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/tool-output.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane/visual-review-02.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/README.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/capacity-analysis.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/capacity-analysis.log",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/capacity-analysis.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/capacity-analysis.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/declaration-02.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/declaration.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/execution.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/generation-receipt.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/manifest.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/master.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/observed-inventory.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/predecessor-signing-success.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/presence-observation-02.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/presence-observation.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/prompt.txt",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/request.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/result.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/review-sheet-02.png",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/review-sheet.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/subject-source.json",
+      "audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/visual-inventory.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/LEDGER.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/README.md",
+      "audits/ARCHETYPE_REPAIRS_20260922/manifest.json"
+    ],
+    "perCommitChangedPathUnionCount": 449,
+    "outsideRoadmapOrAudits": [],
+    "noLaterProductionOrWorkflowTouchesAcrossInspectedCommits": true
+  },
+  "unchangedTrees": [
+    {
+      "path": "port/v2",
+      "eagleGitTree": "b1db236d282018c222c23b5e414049b2dc06be51",
+      "auditedEndGitTree": "b1db236d282018c222c23b5e414049b2dc06be51",
+      "exactTreeIdentity": true
+    },
+    {
+      "path": "tools",
+      "eagleGitTree": "31d6733e5342d776e6d4c68f5435d60d429a7c37",
+      "auditedEndGitTree": "31d6733e5342d776e6d4c68f5435d60d429a7c37",
+      "exactTreeIdentity": true
+    },
+    {
+      "path": ".github",
+      "eagleGitTree": "c18b639d18fc0e1e1946282fc51391a782f18637",
+      "auditedEndGitTree": "c18b639d18fc0e1e1946282fc51391a782f18637",
+      "exactTreeIdentity": true
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922",
+      "eagleGitTree": "68e624490bb205fe68f12b2b8d2f07ea21d96f8c",
+      "auditedEndGitTree": "68e624490bb205fe68f12b2b8d2f07ea21d96f8c",
+      "exactTreeIdentity": true
+    },
+    {
+      "path": "audits/BORROWED_ATLAS_20260922",
+      "eagleGitTree": "2ef2882ff7f655179c93da098ebaf88b38c5f8a6",
+      "auditedEndGitTree": "2ef2882ff7f655179c93da098ebaf88b38c5f8a6",
+      "exactTreeIdentity": true
+    }
+  ],
+  "protectedSourceConclusion": "No tracked source, solver, S2 sentinel, or prior accepted input was modified in this range. Existing-file modifications are limited to the eight explicitly listed roadmap/audit documentation and manifest paths; all other differences are added audit packet files. Original sprint and BORROWED_ATLAS trees are exactly identical to Eagle.",
+  "workflowInspection": {
+    "count": 5,
+    "files": [
+      {
+        "path": ".github/workflows/branch-flow-guard.yml",
+        "bytes": 2673,
+        "sha256": "dbbb65cbd8f93140befb4e4d71701961498fdec3a0e2ac17e9af5aae7de8ad40",
+        "matchesAuditedEndCommit": true,
+        "matchesEagleCommit": true,
+        "onBlock": "on:\n  workflow_dispatch:\n    inputs:\n      actions_budget_authorization:\n        description: Select the run token only after Nick authorizes this one hosted workflow\n        required: true\n        default: DO_NOT_RUN\n        type: choice\n        options:\n          - DO_NOT_RUN\n          - RUN_ONE_AUTHORIZED_WORKFLOW\n      base_branch:\n        description: Destination branch to validate\n        required: true\n        default: develop\n        type: choice\n        options:\n          - develop\n          - main\n      head_branch:\n        description: Source branch to validate\n        required: true\n        type: string\n      head_repository:\n        description: Source repository owner/name\n        required: true\n        default: TheDakk/Celestial-Frontier\n        type: string",
+        "events": [
+          "workflow_dispatch"
+        ],
+        "pullRequestActivityTypes": null,
+        "directNormalBranchPushMatches": false,
+        "reason": "Only workflow_dispatch is configured; a branch push is not a manual dispatch."
+      },
+      {
+        "path": ".github/workflows/dev-preview-package.yml",
+        "bytes": 4045,
+        "sha256": "1ba3d58179f85f424b735346373431f625b351b87b21380101663a0f11181a86",
+        "matchesAuditedEndCommit": true,
+        "matchesEagleCommit": true,
+        "onBlock": "on:\n  workflow_dispatch:\n    inputs:\n      actions_budget_authorization:\n        description: Select the run token only after Nick authorizes this one hosted workflow\n        required: true\n        default: DO_NOT_RUN\n        type: choice\n        options:\n          - DO_NOT_RUN\n          - RUN_ONE_AUTHORIZED_WORKFLOW\n      preview_origin:\n        description: Separate HTTPS origin that will host the extracted artifact\n        required: true\n        default: https://dev-celestialfrontier.github.io\n        type: string\n      acknowledge_public_artifact:\n        description: I understand a published preview exposes this development build to its testers\n        required: true\n        default: false\n        type: boolean",
+        "events": [
+          "workflow_dispatch"
+        ],
+        "pullRequestActivityTypes": null,
+        "directNormalBranchPushMatches": false,
+        "reason": "Only workflow_dispatch is configured; a branch push is not a manual dispatch."
+      },
+      {
+        "path": ".github/workflows/publish-branch-sites.yml",
+        "bytes": 4582,
+        "sha256": "beea847251257299b63325b733d302b9e158cb954503d8dc09b89b42583be34c",
+        "matchesAuditedEndCommit": true,
+        "matchesEagleCommit": true,
+        "onBlock": "on:\n  workflow_dispatch:\n    inputs:\n      actions_budget_authorization:\n        description: Publication is parked; this token alone does not enable either job\n        required: true\n        default: DO_NOT_RUN\n        type: choice\n        options:\n          - DO_NOT_RUN\n          - RUN_ONE_AUTHORIZED_WORKFLOW",
+        "events": [
+          "workflow_dispatch"
+        ],
+        "pullRequestActivityTypes": null,
+        "directNormalBranchPushMatches": false,
+        "reason": "Only workflow_dispatch is configured; a branch push is not a manual dispatch."
+      },
+      {
+        "path": ".github/workflows/sync-agent-branches.yml",
+        "bytes": 2755,
+        "sha256": "252c890888d9c2aaa417524e52a4c8d417d538dc7d368f4070232c77dd78b681",
+        "matchesAuditedEndCommit": true,
+        "matchesEagleCommit": true,
+        "onBlock": "on:\n  workflow_dispatch:\n    inputs:\n      actions_budget_authorization:\n        description: Select the run token only after Nick authorizes this one hosted workflow\n        required: true\n        default: DO_NOT_RUN\n        type: choice\n        options:\n          - DO_NOT_RUN\n          - RUN_ONE_AUTHORIZED_WORKFLOW",
+        "events": [
+          "workflow_dispatch"
+        ],
+        "pullRequestActivityTypes": null,
+        "directNormalBranchPushMatches": false,
+        "reason": "Only workflow_dispatch is configured; a branch push is not a manual dispatch."
+      },
+      {
+        "path": ".github/workflows/test.yml",
+        "bytes": 22854,
+        "sha256": "3f204ff54f3ab735525838ce49ea9fb771f7fb7adfa5cdb64d3320174a258dde",
+        "matchesAuditedEndCommit": true,
+        "matchesEagleCommit": true,
+        "onBlock": "on:\n  pull_request:\n    types: [labeled]",
+        "events": [
+          "pull_request"
+        ],
+        "pullRequestActivityTypes": [
+          "labeled"
+        ],
+        "directNormalBranchPushMatches": false,
+        "reason": "Only the labeled pull_request activity is configured; a branch push is not a labeling operation."
+      }
+    ],
+    "matchingDirectPushTriggerCount": 0,
+    "conditionalPrediction": "A normal push of openai/mac to the configured origin matches zero triggers in these five inspected local workflows."
+  },
+  "gitDestination": {
+    "remoteNames": [
+      "origin"
+    ],
+    "originFetchUrls": [
+      "git@github.com:TheDakk/Celestial-Frontier.git"
+    ],
+    "originPushUrls": [
+      "git@github.com:TheDakk/Celestial-Frontier.git"
+    ],
+    "branchRemote": [
+      "origin"
+    ],
+    "branchMerge": [
+      "refs/heads/openai/mac"
+    ],
+    "branchPushRemote": [],
+    "remotePushDefault": [],
+    "pushDefault": [],
+    "originPushRefspecs": [],
+    "upstream": "refs/remotes/origin/openai/mac",
+    "upstreamCachedCommit": "61c37f3a846429bcbc0167ea92de12623593e750",
+    "auditedEndVsCachedUpstream": {
+      "behind": 0,
+      "ahead": 12
+    },
+    "freshness": "Local configuration and cached tracking ref only. No fetch or remote query was performed."
+  },
+  "limits": [
+    "This checks local workflow files at the named end commit and their exact equality to the working copies and Eagle commit; it is not evidence of remote workflow definitions or remote Actions results.",
+    "A predicted zero direct trigger count does not inspect server-side rules, external integrations, manual dispatches, separate label changes, remote default-branch state, or other repositories.",
+    "The stored tracking ref may be stale; ahead/behind counts are local cached comparisons only.",
+    "This receipt stops at the named end commit and does not certify later item-13 or final packet commits.",
+    "No push authorization or hosted-spend authorization judgment is made."
+  ],
+  "commands": [
+    "git rev-parse --show-toplevel",
+    "git branch --show-current",
+    "git diff --name-status -z --no-renames 3ee02d5db99fa03470c078489b0484bf039856e6 ab108ca2caa0220335d5445d4b7f21a06655e8a2",
+    "git log --format= --name-only 3ee02d5db99fa03470c078489b0484bf039856e6..ab108ca2caa0220335d5445d4b7f21a06655e8a2",
+    "git rev-parse <commit>:<tree>",
+    "git show <commit>:.github/workflows/<file>",
+    "Read all five local .github/workflows/*.yml trigger headers and compute SHA-256",
+    "git remote get-url --all origin",
+    "git remote get-url --push --all origin",
+    "git config --get-all <scoped push/upstream key>",
+    "git rev-parse --symbolic-full-name @{upstream}",
+    "git rev-parse @{upstream}",
+    "git rev-list --left-right --count @{upstream}...ab108ca2caa0220335d5445d4b7f21a06655e8a2"
+  ]
+}

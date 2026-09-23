@@ -1,0 +1,23 @@
+# Superseded repair handoffs
+
+## Before final closure
+
+# Archetype repair continuation
+
+Nick directs fixing all failures. Original attempted sprint evidence remains in ../ARCHETYPE_SPRINT_20260922.
+
+1. [I5](01-i5/README.md): local focus and proof/checker repairs validated; develop PASS (251 Node,4542 Vitest/1 existing skip), nativefocus4rows/6controls PASS, S2 identical. Import approved/completed. Signed preparation89b5da95c185; certificate20260922-i5-focus-89b5da95c185 PASS78/78,0findings, named verifier PASS. Result packet in01-i5/certificate.
+2. [Salmon](02-fish/README.md):14static rows PASS, exact rest,0film refusals, per-rig1.5/1.100000023841858ms p95. Local medium-aware stage repaired.
+3. [Eagle](03-biped-bird/README.md): fit12 static15/15/exact rest and native0/0refusals PASS; per-rig CPU0.7000000476837158/0.8000000715255737ms passes3.5ms. Exact orientation parity/S2 protection verified; film/sheet and every refusal retained.
+4. [Beetle](04-insect/README.md): second painting still5/6traceable legs; existing hidden-insect admission refused. Item stopped at the paint limit; no film or CPU number.
+5. Python original signed PASS retained without a rerun.
+6. [Tree Frog](06-hopper/README.md): material/exact rest repaired;9/13 static rows fail with exact diagnoses. Corrected pose rejected at the second-paint limit; no film/CPU.
+7. [Chimpanzee](07-primate/README.md): fit02 exact rest passes; three of14 static rows fail and have exact diagnoses. The uncertain two-knee authoring hypothesis is not anatomical ground truth. Corrected paint has an extra hind leg; stopped at the second-paint limit, no film/CPU.
+8. [Starfish](08-radial/README.md): fit02 static14/14/exact rest PASS; native03 has0/0refusals and per-rig p951.899999976158142/1.600000023841858ms. Native02 script-duration refusal retained. PASS packet signedf1f1cd80c01e3c859f88943e231f8d3c2ff8b5f2 and signature verified.
+9. [Tarantula](09-arachnid/README.md): corrected generation2 has six exposed walking tips, with two far arches lacking traceable tips; eight visible chains required. STOPPED_SECOND_PAINT_FAILURE; signed7a6f45980eeb5c1c400a55be188cd16a0f3faf63 and verified. No intake/static/native/CPU result.
+10. [Octopus](10-cephalopod/README.md): fit02 static14/14/exact rest and native03 PASS,0/0refusals; CPU1/1.3000000715255737ms p95. Original binding retained; legal40/80mesh resolves measured5.100000023841858ms original-fit CPU refusal. Packet signed7525aa0bdc56c5eb8ee4c8576bf3c610918aed8c and verified.
+11. [Fruit Bat](11-flyer-membrane/README.md): both wings now point backward, but near tip is clipped and corrected shallow forearm phase is not achieved. STOPPED_SECOND_PAINT_FAILURE, signed330e060b7629 and verified; no new fit/static/film/CPU.
+12. [Centipede](12-myriapod/README.md): lower-bound15pair scenario needs73joints with current two-bone contacts; compact43joint proposal refuses `Contact contract: unsupported leg leg0Far`. STOPPED_PROTECTED_CONTACT_REPRESENTATION, signature pending; no new repaint or rig result.
+13. Passing fish-mask conservation retained.
+
+AUTHORITY.md records continuation scope;01-i5/source-import-proposal.json is the concrete six-file proposal. All prior refusals retained; no changed threshold or invented result. I5 measured result is signed4cf88823fc74. Salmon is signed9c50c190f215. Eagle native07 now passes; its approved bounded optimization and all retained failures are documented. Eagle signed3ee02d5db99f; Beetle stopped under the second-paint rule. Beetle signed4207748479e1. Tree Frog refusal packet is signed2283e5388793a31b7fbc0d68897492adb6beadd1 and verified. Chimpanzee is STOPPED_SECOND_PAINT_FAILURE, signed4f82025c490d39b80b78bfab81ac53232a780a74 and signature verified. Starfish PASS is signed and verified; Tarantula refusal is signed7a6f45980eeb and verified; Octopus PASS is signed7525aa0bdc56 and verified; Fruit Bat refusal is signed330e060b7629 and verified; Codex signs Centipede capacity refusal before retained mask closure. Claude consumes signed evidence under Nick's integration direction; Nick reviews art and need not open Claude now. Fruit Bat has reached the two-paint stop and is signed; no new hosted attempt, PR, merge, release or deploy is authorized.

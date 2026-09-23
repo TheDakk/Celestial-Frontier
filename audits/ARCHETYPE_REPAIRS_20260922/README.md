@@ -1,19 +1,50 @@
-# Archetype repair continuation
+# Archetype repair sprint — final handoff
 
-Nick directs fixing all failures. Original attempted sprint evidence remains in ../ARCHETYPE_SPRINT_20260922.
+All 13 ordered items have a recorded outcome: **7 passing results and 6 stopped items**. This is not an all-green roster. The five passing archetypes are Salmon, Eagle, Python, Starfish and Octopus; I5 and Salmon markings supply the other two passes. Every original failure remains retained. Nick owns visual art acceptance.
 
-1. [I5](01-i5/README.md): local focus and proof/checker repairs validated; develop PASS (251 Node,4542 Vitest/1 existing skip), nativefocus4rows/6controls PASS, S2 identical. Import approved/completed. Signed preparation89b5da95c185; certificate20260922-i5-focus-89b5da95c185 PASS78/78,0findings, named verifier PASS. Result packet in01-i5/certificate.
-2. [Salmon](02-fish/README.md):14static rows PASS, exact rest,0film refusals, per-rig1.5/1.100000023841858ms p95. Local medium-aware stage repaired.
-3. [Eagle](03-biped-bird/README.md): fit12 static15/15/exact rest and native0/0refusals PASS; per-rig CPU0.7000000476837158/0.8000000715255737ms passes3.5ms. Exact orientation parity/S2 protection verified; film/sheet and every refusal retained.
-4. [Beetle](04-insect/README.md): second painting still5/6traceable legs; existing hidden-insect admission refused. Item stopped at the paint limit; no film or CPU number.
-5. Python original signed PASS retained without a rerun.
-6. [Tree Frog](06-hopper/README.md): material/exact rest repaired;9/13 static rows fail with exact diagnoses. Corrected pose rejected at the second-paint limit; no film/CPU.
-7. [Chimpanzee](07-primate/README.md): fit02 exact rest passes; three of14 static rows fail and have exact diagnoses. The uncertain two-knee authoring hypothesis is not anatomical ground truth. Corrected paint has an extra hind leg; stopped at the second-paint limit, no film/CPU.
-8. [Starfish](08-radial/README.md): fit02 static14/14/exact rest PASS; native03 has0/0refusals and per-rig p951.899999976158142/1.600000023841858ms. Native02 script-duration refusal retained. PASS packet signedf1f1cd80c01e3c859f88943e231f8d3c2ff8b5f2 and signature verified.
-9. [Tarantula](09-arachnid/README.md): corrected generation2 has six exposed walking tips, with two far arches lacking traceable tips; eight visible chains required. STOPPED_SECOND_PAINT_FAILURE; signed7a6f45980eeb5c1c400a55be188cd16a0f3faf63 and verified. No intake/static/native/CPU result.
-10. [Octopus](10-cephalopod/README.md): fit02 static14/14/exact rest and native03 PASS,0/0refusals; CPU1/1.3000000715255737ms p95. Original binding retained; legal40/80mesh resolves measured5.100000023841858ms original-fit CPU refusal. Packet signed7525aa0bdc56c5eb8ee4c8576bf3c610918aed8c and verified.
-11. [Fruit Bat](11-flyer-membrane/README.md): both wings now point backward, but near tip is clipped and corrected shallow forearm phase is not achieved. STOPPED_SECOND_PAINT_FAILURE, signed330e060b7629 and verified; no new fit/static/film/CPU.
-12. [Centipede](12-myriapod/README.md): lower-bound15pair scenario needs73joints with current two-bone contacts; compact43joint proposal refuses `Contact contract: unsupported leg leg0Far`. STOPPED_PROTECTED_CONTACT_REPRESENTATION, signature pending; no new repaint or rig result.
-13. Passing fish-mask conservation retained.
+| Item | Outcome and remaining finding | Packet / art review |
+| --- | --- | --- |
+| 1 — Compendium | Exact-Edge certificate PASS, 78/78 outcomes and zero findings, on clean committed local source | [Certificate and authorities](01-i5/README.md) |
+| 2 — Salmon | 14 static rows and exact rest PASS; zero film refusals | [Packet](02-fish/README.md) · [sheet](02-fish/review-sheet.png) · [film](02-fish/native-02/battle-10s.webm) |
+| 3 — Eagle | 15 static rows and exact rest PASS; zero film refusals | [Packet](03-biped-bird/README.md) · [sheet](03-biped-bird/review-sheet-07.png) · [film](03-biped-bird/native-07/battle-10s.webm) |
+| 4 — Beetle | Corrected painting still exposes only five of six traceable walking legs; stopped at second painting | [Packet](04-insect/README.md) · [sheet](04-insect/review-sheet.png) |
+| 5 — Python | Original signed PASS retained: 13 static rows, exact rest and zero film refusals | [Packet](05-serpent/README.md) · [sheet](../ARCHETYPE_SPRINT_20260922/05-serpent/review-sheet-unobscured.png) · [film](../ARCHETYPE_SPRINT_20260922/05-serpent/native-01/battle-10s.webm) |
+| 6 — Tree Frog | Material/rest repaired; nine static failures diagnosed; corrected pose painting rejected | [Packet](06-hopper/README.md) · [fit sheet](06-hopper/review-sheet-02.png) · [rejected repaint](06-hopper/candidate-03/review-sheet.png) |
+| 7 — Chimpanzee | Exact rest passes; three static failures diagnosed; corrected painting adds a third hind leg | [Packet](07-primate/README.md) · [fit sheet](07-primate/review-sheet-02.png) · [rejected repaint](07-primate/candidate-03/review-sheet.png) |
+| 8 — Starfish | 14 static rows and exact rest PASS; zero film refusals | [Packet](08-radial/README.md) · [sheet](08-radial/review-sheet-03.png) · [film](08-radial/native-03/battle-10s.webm) |
+| 9 — Tarantula | Corrected painting has six exposed walking tips; eight traceable chains required | [Packet](09-arachnid/README.md) · [sheet](09-arachnid/review-sheet-02.png) |
+| 10 — Octopus | 14 static rows and exact rest PASS; zero film refusals after legal authored-mesh change | [Packet](10-cephalopod/README.md) · [sheet](10-cephalopod/review-sheet-03.png) · [film](10-cephalopod/native-03/battle-10s.webm) |
+| 11 — Fruit Bat | Corrected wings point rearward, but near-wing tip is clipped and forearm pose remains wrong | [Packet](11-flyer-membrane/README.md) · [sheet](11-flyer-membrane/review-sheet-02.png) |
+| 12 — Centipede | 73-joint candidate exceeds 64; compact 43-joint candidate fails existing planted-contact admission | [Packet](12-myriapod/README.md) · [sheet](12-myriapod/review-sheet-02.png) |
+| 13 — Salmon markings | Six original mask results retained; exact bytes and original master authority checked, no repeated conservation battery | [Packet](13-fish-markings/README.md) · [six-mask sheet](../ARCHETYPE_SPRINT_20260922/13-fish-markings/six-mask-sheet.png) |
 
-AUTHORITY.md records continuation scope;01-i5/source-import-proposal.json is the concrete six-file proposal. All prior refusals retained; no changed threshold or invented result. I5 measured result is signed4cf88823fc74. Salmon is signed9c50c190f215. Eagle native07 now passes; its approved bounded optimization and all retained failures are documented. Eagle signed3ee02d5db99f; Beetle stopped under the second-paint rule. Beetle signed4207748479e1. Tree Frog refusal packet is signed2283e5388793a31b7fbc0d68897492adb6beadd1 and verified. Chimpanzee is STOPPED_SECOND_PAINT_FAILURE, signed4f82025c490d39b80b78bfab81ac53232a780a74 and signature verified. Starfish PASS is signed and verified; Tarantula refusal is signed7a6f45980eeb and verified; Octopus PASS is signed7525aa0bdc56 and verified; Fruit Bat refusal is signed330e060b7629 and verified; Codex signs Centipede capacity refusal before retained mask closure. Claude consumes signed evidence under Nick's integration direction; Nick reviews art and need not open Claude now. Fruit Bat has reached the two-paint stop and is signed; no new hosted attempt, PR, merge, release or deploy is authorized.
+## Measured desktop performance
+
+The passing local native runs have zero dense/live rig refusals. Per-rig p95 values below are rounded for reading; raw measured values and scope are retained in each report. The unchanged painted-tier limit is 3.5 ms per rig.
+
+| Archetype | Native run ID | Left / right p95 ms |
+| --- | --- | --- |
+| Salmon | 20260922-salmon-native-02 | 1.50 / 1.10 |
+| Eagle | 20260922-eagle-native-07 | 0.70 / 0.80 |
+| Starfish | 20260922-starfish-native-03 | 1.90 / 1.60 |
+| Octopus | 20260922-octopus-native-03 | 1.00 / 1.30 |
+
+Python's historical run `archetype-sprint-05-serpent-01` records whole-stage p95 2.899999976158142 ms; no separate native run ID or per-rig metric was emitted. It is not relabelled as a newly measured per-rig result. The stopped corrected paintings and Centipede have no new film or CPU number.
+
+## I5 certificate scope
+
+Run `20260922-i5-focus-89b5da95c185` measured clean committed local source `89b5da95c185a1e8f08080ed3f42bab8a0494ec7`, using exact Edge 153.0.4234.48 / CDP 1.3. Named verification passed; duration 56765 ms. Producer authority: `bd8edd1b570d4bc4e1933a87a9e0552e75208d18ca43c40d2ffcd6712ebc1a5b`. Measurement authority: `6a829fb18eab4c171afaace0f49ad2a987cfcdc520d33dbc05337c379df85ee2`.
+
+The required authority/budget tests and develop profile passed at that preparation: 251 Node tests, 4542 Vitest passes and one existing skip. Historical calibration samples, ruler, ceilings and historical assertions remain preserved. Later archetype diagnostics carry their own source hashes; this certificate is not rebound to later code or to PR #43's integrated bytes. No PR #43 green claim follows.
+
+## Changes, limits and handoff
+
+Approved local repairs covered Compendium focus/source completeness, native habitat sizing and exact-output orientation optimization with JS fallback. The orientation controls and S2 comparison are retained in Eagle's packet. Subsequent commits through Centipede change audit/handoff files only; FINAL_SOURCE_CHECK.json records that inspection. Accepted bindings, S2 inputs and numerical gates remain protected. No unchanged acceptance batteries were repeated for evidence-only closure.
+
+Five items exhausted their single corrective repaint: Beetle, Tree Frog, Chimpanzee, Tarantula and Fruit Bat. Further paintings need a new allowance. Centipede's corrective painting remains unused; its counted-contact representation must be scoped before painting or fitting, and the 64-joint/32-part ceilings remain unchanged. These are unresolved acceptance problems, not passes.
+
+All item commits use SSH signatures; individual verification receipts and earlier signer refusals remain retained. The signer worked for the final continuation. Earlier `agent refused operation` messages did not establish a locked 1Password state.
+
+Codex completes the signed closure and one normal final `openai/mac` branch push under Nick's standing instruction, verifies remote equality, then holds. FINAL_PUSH_PREFLIGHT.json records PUBLIC visibility and UNFROZEN mode; inspected workflows have no push trigger, and no hosted-attempt authority is inferred. No fetch/sync, PR, label, merge, release or deploy.
+
+Claude consumes the signed packets under Nick's integration direction. Nick can open Claude after the final handoff and review the linked sheets/films. Claude should retain the six stopped outcomes unless Nick grants the remaining painting/contact scope; no PR preparation or merge is part of this handoff. The final response reports the actual signed head and push result; this pre-push committed packet does not invent a future remote result.
