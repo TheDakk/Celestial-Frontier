@@ -1,0 +1,34 @@
+{
+  "schema": "cf.archetype-repair-result/v1",
+  "item": 12,
+  "name": "Centipede",
+  "status": "STOPPED_PROTECTED_CONTACT_REPRESENTATION",
+  "runId": "20260922-centipede-capacity-02",
+  "sourceHead": "330e060b7629fc7851c7964e1e64838e1966beb7",
+  "masterSha256": "fb30b035194749af6fbb66325dceb9da69a8f4b6ace53aa94ccde5aa209da2f2",
+  "promptSha256": "3887f599797cea0ade50c98fa28d64608bee16b2d67ef2c4f088468e1a340323",
+  "generation": 1,
+  "correctiveRepaintUsed": false,
+  "observedNearWalkingLegsAtLeast": 15,
+  "fullPairCount": null,
+  "capacityProbe": "capacity-analysis.json",
+  "twoJointCandidate": {
+    "joints": 73,
+    "jointLimit": 64,
+    "refusal": "Error: Skeleton pose: joint budget"
+  },
+  "compactCandidate": {
+    "joints": 43,
+    "proposedParts": 32,
+    "refusal": "Error: Contact contract: unsupported leg leg0Far",
+    "paintedAdmission": false
+  },
+  "finding": "Bounded repeated-count extension cannot admit the current lower-bound anatomy using existing two-bone contacts and64joint cap. The tested compact construction needs a new contact representation; no solver/threshold change made. This is not a proof that all possible representations are impossible.",
+  "intake": null,
+  "static": null,
+  "exactRest": null,
+  "native": null,
+  "cpuP95Ms": null,
+  "protectedChanges": false,
+  "originalPacket": "../../ARCHETYPE_SPRINT_20260922/12-myriapod"
+}

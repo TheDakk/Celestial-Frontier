@@ -1,0 +1,11 @@
+Centipede — manual minimum appendage inventory and contract-capacity finding
+
+This master paints many separate walking legs. Five independently traceable near-side legs are enough to establish the admission conflict. Their approximate distal tip pixels are [417,798], [491,811], [573,825], [651,816] and [711,804]. Each has its own visible proximal attachment and bent shaft; observed-inventory.json records those witnesses. This is a manually counted lower bound of five near-side walking legs, not a claim about the full number of legs or anatomical pairs. No far-side counterpart is assumed from symmetry.
+
+The resolved myriapod contract provides only legA, legB, legC and legD pairs, hence four near-side walking-leg slots. The five-leg witness set exceeds that capacity. Grouping multiple independently painted legs into one slot, labelling painted legs absent/hidden, or claiming an exact four-pair count would misrepresent this image.
+
+Read-only inspection of repeated-anatomy.mjs shows that appendageCounts supports repeated topology only for radial and cephalopod. A myriapod appendages object reaches the existing source refusal "Anatomy inventory: unsupported repeated topology myriapod" before count-field validation. This document records source inspection, not an executed gate result.
+
+No presence.json or authoring.json is supplied by this authoring subtask: the supported contract cannot truthfully represent the observed repeated legs, and the lower-bound witness set does not justify inventing an exact legPairs integer. Admission requires a future explicitly authorized count-preserving myriapod contract design. The current item must retain the conflict and existing refusal without changing contracts, limits, solvers, gates, or thresholds.
+
+No intake, static row, native film, retry, or painting revision was run here. No accepted binding, S2 sentinel, or shared source was changed. The parent orchestrator owns any exact existing-admission refusal receipt and the final signed packet.

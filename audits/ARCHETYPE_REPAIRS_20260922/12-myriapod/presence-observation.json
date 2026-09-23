@@ -1,0 +1,11 @@
+{
+  "schema": "cf.sprint-manual-presence-observation/v1",
+  "admittedPresence": false,
+  "absent": "No optional antenna or mandible group is declared absent.",
+  "hidden": "Far-side walking-leg portions are occluded by the body; a complete whole-chain census is unresolved.",
+  "folded": "No folded walking-leg chain is declared.",
+  "observedNearWalkingLegsAtLeast": 5,
+  "fullLegCount": null,
+  "fullPairCount": null,
+  "reason": "The current presence schema cannot represent repeated myriapod legs; no false four-pair declaration is supplied."
+}
