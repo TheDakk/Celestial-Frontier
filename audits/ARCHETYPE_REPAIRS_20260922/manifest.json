@@ -5646,9 +5646,14 @@
       "sha256": "072f94ff496151404a360c12d1861ae29a405f256d0e76ae7deb7ad59595fd15"
     },
     {
+      "path": "09-arachnid/HISTORY.md",
+      "bytes": 409,
+      "sha256": "7e7dfedc778a22c06522cf1faa73eb37f499a88717ceb05c627c256559120966"
+    },
+    {
       "path": "09-arachnid/manifest.json",
-      "bytes": 2128,
-      "sha256": "8ae8fbaed8e6c4da83c025664d1620e280242d02f6db6e5e4a122bed3fb349e4"
+      "bytes": 2272,
+      "sha256": "2c99629cfbb6101fd08597e5990000139fd6d289da55f2eed6f0c3c3ee52f139"
     },
     {
       "path": "09-arachnid/master.png",
@@ -5672,8 +5677,8 @@
     },
     {
       "path": "09-arachnid/README.md",
-      "bytes": 2523,
-      "sha256": "d3784c2ebcc46e103d4db03d01cedcd177e0beffc07486b3396a1b3eb7dace68"
+      "bytes": 2582,
+      "sha256": "a08a1a39a09a603d6e6a12d73e97d2f0748a1c1de9ac503eeeb1a3a60cbc8758"
     },
     {
       "path": "09-arachnid/request.json",
@@ -5706,19 +5711,579 @@
       "sha256": "84eca00ecb58fe17b49762bd6fb7c289bd54ea3113e760c0b98cd5cda2bfbbd7"
     },
     {
+      "path": "10-cephalopod/authoring.json",
+      "bytes": 6558,
+      "sha256": "9c4189e0d64249c8f2528d032679dbd83aacb884227db90dc79cd1122de6d98e"
+    },
+    {
+      "path": "10-cephalopod/declaration.txt",
+      "bytes": 1594,
+      "sha256": "7e44123ddacf63f25a714d09ce2d4c629028fea075be8c86ea91bbbea28b5c0b"
+    },
+    {
+      "path": "10-cephalopod/execution.json",
+      "bytes": 5997,
+      "sha256": "ec72b08db31dc6f449e0f63388ee157e3f5879e9a9b116ae9e0ca7a38a1aea35"
+    },
+    {
+      "path": "10-cephalopod/fit-02/binding.json",
+      "bytes": 1956447,
+      "sha256": "978a7f26cdeedfa58792fe1a976d3db6db27d2f4e6f35689b48a9d65386a3015"
+    },
+    {
+      "path": "10-cephalopod/fit-02/declaration.json",
+      "bytes": 3013,
+      "sha256": "2e914374243531f73b1c02e2bcfe8b524b1522c2579112d420823d8ea17b558c"
+    },
+    {
+      "path": "10-cephalopod/fit-02/intake-provenance.json",
+      "bytes": 3258,
+      "sha256": "d86129ca20cb4ef8658be0deee7879471e3e287d6486f2cda925d33e2fabf05d"
+    },
+    {
+      "path": "10-cephalopod/fit-02/label-authoring-receipt.json",
+      "bytes": 736,
+      "sha256": "5433d459a6cce622bf351d4f4028a66655db78d693df52206d06d9902a266443"
+    },
+    {
+      "path": "10-cephalopod/fit-02/labels.png",
+      "bytes": 65554,
+      "sha256": "1108a8dac4d7686c83359121eb9b159486f89bfff92a97a3c60861abeed1331a"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/atlas/octopus.json",
+      "bytes": 12312,
+      "sha256": "a4e24df463d8c8325ea203701b7e051aa6715aaab1e4263b335412df2c8cbaf3"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/atlas/octopus.png",
+      "bytes": 1812477,
+      "sha256": "9b3be6b71f6736f6640009923c58c2b9fe3a9bf796c8cbdd411a5973795f762e"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/atlas/receipt.json",
+      "bytes": 4557,
+      "sha256": "fc83b21eb0f8054449b6b28ba5388cbd5fe157a2b65d4a598d9bddb88576f3b0"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/binding.json",
+      "bytes": 10009,
+      "sha256": "5deda0605455dff79f7d82fca15fc059dbec632965dac14988bece22c5eb23fe"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/keyed.png",
+      "bytes": 2164138,
+      "sha256": "ff4bbe1c798744b79927777aa88e4d88d6533e53c76698127fc9c450b1db5aab"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/manifest.json",
+      "bytes": 4953,
+      "sha256": "3fd0e6f511b44112e37faa29797f862fb869b95b84c85a167a5b2a38728fd763"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/ownership.png",
+      "bytes": 241561,
+      "sha256": "a19b9a6f9557cb71d952f861021be879f055d63625d62acbf77f727c7f11571f"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm0-base.png",
+      "bytes": 91080,
+      "sha256": "7fa2e50d826a0b6e98fa8f0da778dbbf351d7e684c6ec92ac8d3fd794f556fbc"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm0-middle.png",
+      "bytes": 57530,
+      "sha256": "ba758c990af6f79ef6d4a07bdd00cd5028f4a652a4c9c3cde7ec3603ad2e3a2b"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm0-tip.png",
+      "bytes": 43075,
+      "sha256": "e11e1fecab0b0298b96e463bed5d3234e166f7e178710883e644ffd2b5e5c600"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm1-base.png",
+      "bytes": 44269,
+      "sha256": "624dea1a2cb1929547d0caf892b1dadae2fb0d4b34594cb28aac704358b63ba8"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm1-middle.png",
+      "bytes": 36893,
+      "sha256": "0764e45b65551f14df07920195b520345b42789a07811ea737e9b0be8fc93168"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm1-tip.png",
+      "bytes": 50254,
+      "sha256": "53914ed8e6c4c6ac0024fed740c45af46540dc5e16c02030fa826aabe8858b18"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm2-base.png",
+      "bytes": 85114,
+      "sha256": "32fcba7ae10bf3e661adef1d58d6a63b623c2bedd691d05c31ad053e427596aa"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm2-middle.png",
+      "bytes": 76883,
+      "sha256": "c9443f18baef8f6035279d49d042a8e7be13fc1c9cdcbb31b5f94b979f9d9a2c"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm2-tip.png",
+      "bytes": 53665,
+      "sha256": "cde4d5762ab3ba06fb28a2f598babbdef9722d41e452b71e6622a1590cf3cb01"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm3-base.png",
+      "bytes": 28751,
+      "sha256": "e6760c41d6d831fcec79b3cc26420b7bbac277baa431c00ec97da08a047a6829"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm3-middle.png",
+      "bytes": 17380,
+      "sha256": "e218f5788731bd1e28ef289db6ecc73e945053c63da0b5a6936dc261c034fb2e"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm3-tip.png",
+      "bytes": 20165,
+      "sha256": "54d597c743b12a3211f33034d4797f2469c2bf9fa88626529273cfad01809926"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm4-base.png",
+      "bytes": 104280,
+      "sha256": "0e28413b5a1af248d8a95710c0177d658d4445069bcaf40230cb8078f4538d16"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm4-middle.png",
+      "bytes": 113212,
+      "sha256": "ae6b56b4f4387e94fb6519488b7c9b467d75467ae36f75f2a97c00651f07d2b1"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm4-tip.png",
+      "bytes": 69821,
+      "sha256": "d3bcf863565b564856173cf1685241e37b50d7fc8e5e2a084cef42284765b32b"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm5-base.png",
+      "bytes": 10282,
+      "sha256": "c21984c0f2a620268a6dd93f24b6448a6143aa0c5453b14756ac773fef27876a"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm5-middle.png",
+      "bytes": 32290,
+      "sha256": "98bafbd7f583d7627a34e31930329d6bc0959303253ce4a479892273e06967d1"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm5-tip.png",
+      "bytes": 17101,
+      "sha256": "f45859e5084182d1d917d88a35df525c0f6e62a8e6ad73abbb155bdba4ad1b46"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm6-base.png",
+      "bytes": 64123,
+      "sha256": "a3d68e52d9f729f78e0d70ecbf769d19e96fd93cfe385c02ef96e3a8457daddd"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm6-middle.png",
+      "bytes": 64831,
+      "sha256": "e267e9493912830cc758cf9be9051d5380774cf95810399453a3fb2d39fa6e1b"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm6-tip.png",
+      "bytes": 48889,
+      "sha256": "8a182271ce4857595a1b94d86643879b8948cb2e20da9e5078add4f7cda4245c"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm7-base.png",
+      "bytes": 98151,
+      "sha256": "dba495575930a7599de770046f2ec21c2fe872e3db56cc8f1b5584aaeba92965"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm7-middle.png",
+      "bytes": 54427,
+      "sha256": "f48097022b4d7e6267556c0da671ba874914de54d9034f0ed5e54b307c3ecb6c"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/arm7-tip.png",
+      "bytes": 36039,
+      "sha256": "d8a98b924c2701ad5c5bfabc5e5d88ffad16f43c8ebefc58c01ae54e715692af"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/body.png",
+      "bytes": 190063,
+      "sha256": "8c6c3d3f81670315f1e4568ea0f76d80055cb1f3b41ed399adcf737fcd1f7e38"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/far-eye-rim.png",
+      "bytes": 15215,
+      "sha256": "c08eed83a538ac921a4805bacc246cda55f753d2fc81735720397dfb403d355b"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/head.png",
+      "bytes": 112861,
+      "sha256": "b28f8eb3335809347943d7b6f2eb3a05df744e20525e47481e08d039979384c5"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/mantle.png",
+      "bytes": 466661,
+      "sha256": "2be109b625a4d60797ef49d1b0b7e662c58d045a9663d23971528a2e174b076e"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/near-eye.png",
+      "bytes": 28885,
+      "sha256": "0533a3d8a092a765824c0575a41e96ddd15264dc552601362170e2f20fdda1b5"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/parts/siphon.png",
+      "bytes": 16417,
+      "sha256": "15441e1d72dcffc83dd2862958912e1ca5913140dd66b1590e884c7e59b6cbb0"
+    },
+    {
+      "path": "10-cephalopod/fit-02/parts/receipt.json",
+      "bytes": 7688,
+      "sha256": "cb8de8e5fe8a5f8bf72e46475d223e988b10e349d4154727b29b943f1f4e3c78"
+    },
+    {
+      "path": "10-cephalopod/fit-02/pre-split-binding.json",
+      "bytes": 1303757,
+      "sha256": "1a2042e95cacc2dfda8ac2af8182f9636e211f34698dfbf92b8c6c311f41567d"
+    },
+    {
+      "path": "10-cephalopod/fit-02/receipt.json",
+      "bytes": 2047,
+      "sha256": "85dcc58077d8cacb9def8abccd8031b3309b573b5541468b17d3adf301bb805d"
+    },
+    {
+      "path": "10-cephalopod/fit-02/record.json",
+      "bytes": 7982,
+      "sha256": "9ab4e752cd10d0a6c174c749a9e3c93ec8d9e950c02a1b6210ea812a06d87311"
+    },
+    {
+      "path": "10-cephalopod/generation-receipt.json",
+      "bytes": 832,
+      "sha256": "497387908eca80cc6c6f56f9cb7c808ec3a0542a893a3714bcaae2d2132eddb1"
+    },
+    {
+      "path": "10-cephalopod/intake-02.log",
+      "bytes": 318,
+      "sha256": "2108770849a191f040bc3bed3fd54763992fb220f943e9b77bda3feda17f47cf"
+    },
+    {
+      "path": "10-cephalopod/intake-mesh-02.mjs",
+      "bytes": 12779,
+      "sha256": "47e57ad083b826360946d5c49241a01aebc19cc135e273d6b8a5c6b62909cdba"
+    },
+    {
+      "path": "10-cephalopod/manifest.json",
+      "bytes": 18074,
+      "sha256": "963f5f8998346ae065f37e89288b3c3098251c9bbef4b8be6c36317f78e3e330"
+    },
+    {
+      "path": "10-cephalopod/master.png",
+      "bytes": 1735401,
+      "sha256": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e"
+    },
+    {
+      "path": "10-cephalopod/mesh-repair-02.json",
+      "bytes": 803,
+      "sha256": "b8c376bc2e3bc69468be555c6250f2b4c245d505b4cad2d469a5a67f9f4d6bd2"
+    },
+    {
+      "path": "10-cephalopod/native-02/battle-10s.webm",
+      "bytes": 5689719,
+      "sha256": "25ff991c64a50821720c63f96bd521abb1828343baf1e53d058662bd132c4869"
+    },
+    {
+      "path": "10-cephalopod/native-02/report.json",
+      "bytes": 2280839,
+      "sha256": "c9c16e7866bcf8e2ad6a9bd9a5f6f0f1fc43c959219a78e13a5de4f31d55bf66"
+    },
+    {
+      "path": "10-cephalopod/native-02/script.json",
+      "bytes": 551,
+      "sha256": "f677d854ce841e4853185f3fb5d9a5575ef5cbacd2985f08d61c2d2b20709b8b"
+    },
+    {
+      "path": "10-cephalopod/native-02/turn0-hit-approach-50.png",
+      "bytes": 1086391,
+      "sha256": "0487fb2737b2e78be28105f797156955b7cc6fb3863f0527207280beb8042a15"
+    },
+    {
+      "path": "10-cephalopod/native-02/turn0-hit-impact.png",
+      "bytes": 577332,
+      "sha256": "cde49e3345391b45100c1b6cdc1499b52d26a0446596f1b4fdf0969b1c19117f"
+    },
+    {
+      "path": "10-cephalopod/native-02/turn0-hit-reaction-50.png",
+      "bytes": 1085268,
+      "sha256": "d4010d43b678f5fac577f90ed1c91ac4c1624f5c803e1cbf592d0ca8aa49ad59"
+    },
+    {
+      "path": "10-cephalopod/native-02/turn0-hit-return-end.png",
+      "bytes": 1089688,
+      "sha256": "8083d88934f60b95d524d0aead7afc7bda0dbc0f8f8c2eaa720e29fa15063f3a"
+    },
+    {
+      "path": "10-cephalopod/native-02/turn1-dodge-approach-50.png",
+      "bytes": 1086391,
+      "sha256": "0487fb2737b2e78be28105f797156955b7cc6fb3863f0527207280beb8042a15"
+    },
+    {
+      "path": "10-cephalopod/native-02/turn1-dodge-impact.png",
+      "bytes": 1082085,
+      "sha256": "57ee0ce8ee2460bab96bec07dda0e8a6d27f576b34dbacb134247d1bfa263bee"
+    },
+    {
+      "path": "10-cephalopod/native-02/turn1-dodge-reaction-50.png",
+      "bytes": 1112333,
+      "sha256": "bb1ac043f74a01481fadc01d4e7cdc3017ade3bd1afdcbf0ef436a662af50e8f"
+    },
+    {
+      "path": "10-cephalopod/native-02/turn1-dodge-return-end.png",
+      "bytes": 1089688,
+      "sha256": "8083d88934f60b95d524d0aead7afc7bda0dbc0f8f8c2eaa720e29fa15063f3a"
+    },
+    {
+      "path": "10-cephalopod/native-02/turn2-hit-approach-50.png",
+      "bytes": 1086391,
+      "sha256": "0487fb2737b2e78be28105f797156955b7cc6fb3863f0527207280beb8042a15"
+    },
+    {
+      "path": "10-cephalopod/native-02/turn2-hit-impact.png",
+      "bytes": 577095,
+      "sha256": "7333a2163f43609ca13c0b6ef1e9e7fa3607affd921bad4375a8db2bedea3281"
+    },
+    {
+      "path": "10-cephalopod/native-02/turn2-hit-reaction-50.png",
+      "bytes": 1083902,
+      "sha256": "1310d6e67a5ab536f575fd70c657ab373631cf62f90f5e0d00ca315a0bfdb122"
+    },
+    {
+      "path": "10-cephalopod/native-02/turn2-hit-return-end.png",
+      "bytes": 1089992,
+      "sha256": "79dd1b979f73f0f2d48fa8337eaa808d9581c2a313bc1a1da40f7c744ed4aba4"
+    },
+    {
+      "path": "10-cephalopod/native-02/world.json",
+      "bytes": 247,
+      "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
+    },
+    {
+      "path": "10-cephalopod/native-02-cpu-inspection.json",
+      "bytes": 67145,
+      "sha256": "04e0d4beeb406d4dffd3bf6c6117e9816be90109b269c07e15ff485338eebd58"
+    },
+    {
+      "path": "10-cephalopod/native-02-cpu-inspection.md",
+      "bytes": 2123,
+      "sha256": "f85abad1f1e4509761d3c8173aa7b3ef1f402c7a2c1bc382a5ebee3d79d19177"
+    },
+    {
+      "path": "10-cephalopod/native-02.log",
+      "bytes": 699,
+      "sha256": "ccbf1ca95429a89545e2a400d03916e9c7f3e9849f327e19e1ff34f49b4f69ce"
+    },
+    {
+      "path": "10-cephalopod/native-03/battle-10s.webm",
+      "bytes": 5776939,
+      "sha256": "1b5bd955b14ec8bdb59d60884c74531e9c313700fae44052dd9141c77dd7d6c8"
+    },
+    {
+      "path": "10-cephalopod/native-03/report.json",
+      "bytes": 2286611,
+      "sha256": "75eec485cae40f3e29220f27f7c8f8987c12cc72c9fd0d506b088eba4f8b4654"
+    },
+    {
+      "path": "10-cephalopod/native-03/script.json",
+      "bytes": 551,
+      "sha256": "f885f91ba0fc67b514431a7059558b2fbe096ba1e1825a3dd88951fea7343ce4"
+    },
+    {
+      "path": "10-cephalopod/native-03/turn0-hit-approach-50.png",
+      "bytes": 1082711,
+      "sha256": "3861fbb16b7de8a4115d43a8d32a3fe2ed49d2a78c53c9120cfbab8d057b3e84"
+    },
+    {
+      "path": "10-cephalopod/native-03/turn0-hit-impact.png",
+      "bytes": 576965,
+      "sha256": "2ee0f62aa81650490d937f707136b5ffbe23b473747a779bc6a72fa9259a6894"
+    },
+    {
+      "path": "10-cephalopod/native-03/turn0-hit-reaction-50.png",
+      "bytes": 1084571,
+      "sha256": "fc78f559678ffbf1e5433fbf6e1ba6c312c55ff2c1182f296fdb283e258e784e"
+    },
+    {
+      "path": "10-cephalopod/native-03/turn0-hit-return-end.png",
+      "bytes": 1089282,
+      "sha256": "5d8bad70eec8f5a06e5c70228970aa2837bae0c43e6ad80c85b13f39a2763ca5"
+    },
+    {
+      "path": "10-cephalopod/native-03/turn1-dodge-approach-50.png",
+      "bytes": 1082711,
+      "sha256": "3861fbb16b7de8a4115d43a8d32a3fe2ed49d2a78c53c9120cfbab8d057b3e84"
+    },
+    {
+      "path": "10-cephalopod/native-03/turn1-dodge-impact.png",
+      "bytes": 1081695,
+      "sha256": "64d94f096d8dce32d18c6e3dac3158ed3e46e5116cbb3fd4010215fcdcd1fb8b"
+    },
+    {
+      "path": "10-cephalopod/native-03/turn1-dodge-reaction-50.png",
+      "bytes": 1112208,
+      "sha256": "687769ff3612d82d80850fd4fcecb6058bf2417dc75167194c184d496328be67"
+    },
+    {
+      "path": "10-cephalopod/native-03/turn1-dodge-return-end.png",
+      "bytes": 1089282,
+      "sha256": "5d8bad70eec8f5a06e5c70228970aa2837bae0c43e6ad80c85b13f39a2763ca5"
+    },
+    {
+      "path": "10-cephalopod/native-03/turn2-hit-approach-50.png",
+      "bytes": 1082711,
+      "sha256": "3861fbb16b7de8a4115d43a8d32a3fe2ed49d2a78c53c9120cfbab8d057b3e84"
+    },
+    {
+      "path": "10-cephalopod/native-03/turn2-hit-impact.png",
+      "bytes": 577060,
+      "sha256": "294254ef71297592979b671a4e229d3762c9ae2f2e37323c6a02fdda59351222"
+    },
+    {
+      "path": "10-cephalopod/native-03/turn2-hit-reaction-50.png",
+      "bytes": 1083586,
+      "sha256": "13afef24f8a9451bb3e0ffeb6ab9263b05536aa71c62b40124a9c52ffa7d38ad"
+    },
+    {
+      "path": "10-cephalopod/native-03/turn2-hit-return-end.png",
+      "bytes": 1089730,
+      "sha256": "462412914ac558ab050a876c48f7411eb6edfc9785161c59f735b85faed69638"
+    },
+    {
+      "path": "10-cephalopod/native-03/world.json",
+      "bytes": 247,
+      "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
+    },
+    {
+      "path": "10-cephalopod/native-03.log",
+      "bytes": 202,
+      "sha256": "d7f8b92946355af1427d9e7e21025db77c9338d0977e01fa3842463ddcf3902c"
+    },
+    {
+      "path": "10-cephalopod/native-script-02.json",
+      "bytes": 551,
+      "sha256": "f677d854ce841e4853185f3fb5d9a5575ef5cbacd2985f08d61c2d2b20709b8b"
+    },
+    {
+      "path": "10-cephalopod/native-script-03.json",
+      "bytes": 551,
+      "sha256": "f885f91ba0fc67b514431a7059558b2fbe096ba1e1825a3dd88951fea7343ce4"
+    },
+    {
+      "path": "10-cephalopod/predecessor-signing-success.json",
+      "bytes": 219,
+      "sha256": "290c37dd0d88bc4d2ff48d9a633221c938f87e8d7d8ad471a7f4c22e9ff58957"
+    },
+    {
+      "path": "10-cephalopod/presence.json",
+      "bytes": 139,
+      "sha256": "de7d6290a7c816fca319bbb7b8b78e35f73a4f9df99bd99f7329966b717100df"
+    },
+    {
+      "path": "10-cephalopod/prompt.txt",
+      "bytes": 8550,
+      "sha256": "340deaaae51f226315de0b7b43bbfc0a3d490ae488d65002b7ec93e0a352d1f2"
+    },
+    {
+      "path": "10-cephalopod/README.md",
+      "bytes": 4068,
+      "sha256": "14efd394e93a9c1700bd007178f4dbc160b02409e36c3e734f9be71e4f172867"
+    },
+    {
+      "path": "10-cephalopod/request.json",
+      "bytes": 641,
+      "sha256": "312e070e59544400bb1cc4f19f3c15da20f908a1bca331edfe4a7123b07108d7"
+    },
+    {
+      "path": "10-cephalopod/result.json",
+      "bytes": 2598,
+      "sha256": "3965f6240b2b29eae23d6f0d9dc672b9068818bfa4eb0c486fa4947d3197dd12"
+    },
+    {
+      "path": "10-cephalopod/retained-fit-authorities.json",
+      "bytes": 11347,
+      "sha256": "988bc331e6e90881b8948b6170dc3941e8bcd3ee1d2831e33ee662b4cce241a2"
+    },
+    {
+      "path": "10-cephalopod/review-sheet-03.png",
+      "bytes": 1143565,
+      "sha256": "2fab5f8ccebef93dd985197b87b664afec11e4262d53c5128258666426665378"
+    },
+    {
+      "path": "10-cephalopod/signing-refusal-01.json",
+      "bytes": 594,
+      "sha256": "3c92170c9d2e8da460dd11db3962cf0449583411388dbcd540c996182869d0cb"
+    },
+    {
+      "path": "10-cephalopod/source-check-03.json",
+      "bytes": 352460,
+      "sha256": "65a57d07e57c8f88cb1d9cae25e691dce73d82798bc0a8f7dfb47e9d51d524ed"
+    },
+    {
+      "path": "10-cephalopod/source-delta.json",
+      "bytes": 35045,
+      "sha256": "9847b5d0302bdc0b9135cd5f9703da3b2b57df148c7ca6be0ec4551a41deb38d"
+    },
+    {
+      "path": "10-cephalopod/source-delta.md",
+      "bytes": 2480,
+      "sha256": "1cac976f1b64c4f048ac6568cf19978f74965286c9e1d984e4588dea3856c552"
+    },
+    {
+      "path": "10-cephalopod/static-02.json",
+      "bytes": 7382,
+      "sha256": "ba182dbfa9fb843e6ef139a2c192466f25d09b4bb3f08a2e24be66897d42f693"
+    },
+    {
+      "path": "10-cephalopod/static-02.json.sources.json",
+      "bytes": 12596,
+      "sha256": "0b77c21f1ae58592f7a930821954b99dfd61622b799c30daa719b8d61f047ad7"
+    },
+    {
+      "path": "10-cephalopod/static-02.log",
+      "bytes": 1838,
+      "sha256": "b6a45c0b6186a93073b71ca5a3b97e9313f4b11d1bfa9e8febf4bb2cff54685e"
+    },
+    {
+      "path": "10-cephalopod/static-03.json",
+      "bytes": 7381,
+      "sha256": "f28d6d3e5e801ff76dd44955fb65e7a779aa0c06e9e5ecfc8580a8410a26a892"
+    },
+    {
+      "path": "10-cephalopod/static-03.json.sources.json",
+      "bytes": 12596,
+      "sha256": "394c2d3688da7cb292422edb6350e5f39afc3d6fec94924a1ff4fcdd6e4cb87e"
+    },
+    {
+      "path": "10-cephalopod/static-03.log",
+      "bytes": 1832,
+      "sha256": "5edb189fdef5c8e57caff778380a29970ca3116a35275d33de28fe62db81978d"
+    },
+    {
+      "path": "10-cephalopod/subject-source.json",
+      "bytes": 9016,
+      "sha256": "ce8465b898ede8a650598d284ee22f7f55852411a7f673c3c80bc2a194eb08f1"
+    },
+    {
       "path": "AUTHORITY.md",
       "bytes": 1874,
       "sha256": "c8ea60b7624cec8ac6dedba81ca1e70f0e592a9424c5d91b52a78c0c9ca11b31"
     },
     {
       "path": "LEDGER.md",
-      "bytes": 2551,
-      "sha256": "286010798cc2e01d9bdc26c041311c796d29a548c88b858cf71fc9557debe2f4"
+      "bytes": 2674,
+      "sha256": "b6394eabf793f9e141b52519daf910d0f99c419d46fb5922679e3caff758c20d"
     },
     {
       "path": "README.md",
-      "bytes": 3230,
-      "sha256": "16bf254971727146e36fb5a6748609c8a6331337ee9976be72cd43f1f00b6e9e"
+      "bytes": 3548,
+      "sha256": "48f43319849e077276df95ec195784246b7e4233ea7ae40a81629f4101bed712"
     },
     {
       "path": "review-sheet.mjs",
