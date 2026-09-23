@@ -1,0 +1,68 @@
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes (orbital planets, flora, fauna, ships, landmarks, items,
+emblems, Effects; inactive people excluded; Arena MID/NEAR use the rule below):
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes (universe, stars, planet biomes, Arena FAR), and Arena
+MID/NEAR key-painted terrain so all arena layers match the same biome hand:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: Earth Fruit Bat; real named anatomy and natural materials take priority over raw procedural genes. broad membranous wings with visible finger bones; fox-like face with a long muzzle and big eyes; clawed thumb at the bend of the wing. Isolated library archetype, not a landing resident claim.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Fruit Bat. broad membranous wings with visible finger bones; fox-like face with a long muzzle and big eyes; clawed thumb at the bend of the wing. no leaf-nose and no huge ears - fruit bats look like winged foxes, not the crinkle-faced insect bats
+Genomic identity and traits (Earth anatomy takes priority): {"seed":3695426012,"kingdom":"fauna","color":10,"form":2,"body":2,"loco":6,"trait":14,"size":3,"diet":4,"head":3,"limbs":0,"skin":7,"tail":4,"pattern":1,"eyes":5,"behavior":9,"habitat":18,"detail":7,"accent":1,"temper":6,"sense":5,"repro":0,"life":0,"metab":4,"lumin":false,"gen":0,"heat":1,"_earthName":"Fruit Bat"}
+Family contract flyer-membrane, clip set flyer-membrane-v1. Required rig joint/part inventory: root, pelvis, spine, chest, neck, head, jaw, wingFarRoot, wingFarElbow, wingFarWrist, wingFarTip, wingNearRoot, wingNearElbow, wingNearWrist, wingNearTip, legFarKnee, legFarFoot, legNearKnee, legNearFoot, earFarTip, earNearTip. Connected organic painted subject, no equipment, no fantasy added limbs.
+INPUTS AND POSE
+Image1 is a GRAYSCALE COMPOSITION GUIDE, never the painting style. Image2 is the approved Discovery Atlas, the ONLY style reference. Create a fresh natural-history painted fruit bat following the guide's connected anatomy and compact placement. It faces RIGHT in a relaxed side-on glide. There are exactly TWO membrane wings, one farther/higher and one nearer/lower, both extending backward to the LEFT of the chest, in the SAME shallow flight phase. Each shoulder-to-elbow segment rises modestly toward the left. Each elbow-to-wrist/thumb forearm continues farther LEFT and slopes a little DOWNWARD; do not turn it into an upward-pointing forearm. Each wrist supports long fingers fanning farther left/down into a broad scalloped membrane. The guide's two dark leading arm paths show this direction. Preserve both separate elbow and wrist/thumb hubs and both fully visible distal tips. Far wing remains higher, near wing lower; neither points past the head to the right. Small natural overlapping membrane areas at the body are allowed, but both complete leading chains and both tips must be traceable. Do not merge the wings or spread them to opposite sides like a frontal bat.
+
+ANATOMY AND FINISH
+One connected real Earth flying fox fruit bat, furry dark brown body with warm golden collar, long fox-like muzzle and large glossy eye, exactly TWO moderate pointed ears, TWO membrane wings with visible finger bones and one small clawed thumb on each wrist, and TWO separately visible short bent hind legs ending in hooked feet. No tail. Mouth closed. Membranes are natural warm brown leathery skin, never feathers, fins or detached sheets. Broad connected wings attach naturally to the body and hindlimb region. Use the guide for composition and the atlas for painterly finish. Remove every geometric mark, dark guide line and dot; make an organic living animal, not a diagram.
+
+FRAMING AND OUTPUT
+1254x1254PNG with genuine transparent alpha, no background. Keep the entire animal compact and centered, at least120pixels of empty space on EVERY canvas edge, especially before both left wing tips and beyond the right muzzle. Scale the complete animal down if necessary. No cropped or off-canvas anatomy. No scenery, floor, shadows, fruit, props, text, labels, numbers, arrows, outline glow, guides or extra limbs. Do not copy any lettering, panel layout or background from the atlas.

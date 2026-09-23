@@ -1,0 +1,345 @@
+{
+  "name": "Fruit Bat",
+  "family": "flyer-membrane",
+  "species": {
+    "name": "Fruit Bat",
+    "aspect": 2.6,
+    "headFrac": 0.28,
+    "eyes": "prominent",
+    "posture": "flying",
+    "mustRead": [
+      "broad membranous wings with visible finger bones",
+      "fox-like face with a long muzzle and big eyes",
+      "clawed thumb at the bend of the wing"
+    ],
+    "note": "no leaf-nose and no huge ears - fruit bats look like winged foxes, not the crinkle-faced insect bats"
+  },
+  "genome": {
+    "seed": 3695426012,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 2,
+    "body": 2,
+    "loco": 6,
+    "trait": 14,
+    "size": 3,
+    "diet": 4,
+    "head": 3,
+    "limbs": 0,
+    "skin": 7,
+    "tail": 4,
+    "pattern": 1,
+    "eyes": 5,
+    "behavior": 9,
+    "habitat": 18,
+    "detail": 7,
+    "accent": 1,
+    "temper": 6,
+    "sense": 5,
+    "repro": 0,
+    "life": 0,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Fruit Bat"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Fruit Bat\"]],[\"accent\",[\"number\",\"1\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"7\"]],[\"diet\",[\"number\",\"4\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"2\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"0\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"0\"]],[\"seed\",[\"number\",\"3695426012\"]],[\"sense\",[\"number\",\"5\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"6\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "index": 23,
+  "contract": {
+    "id": "flyer-membrane",
+    "version": 1,
+    "clipSetId": "flyer-membrane-v1",
+    "graph": [
+      [
+        "pelvis",
+        "root"
+      ],
+      [
+        "spine",
+        "pelvis"
+      ],
+      [
+        "chest",
+        "spine"
+      ],
+      [
+        "neck",
+        "chest"
+      ],
+      [
+        "head",
+        "neck"
+      ],
+      [
+        "jaw",
+        "head"
+      ],
+      [
+        "wingFarRoot",
+        "chest"
+      ],
+      [
+        "wingFarElbow",
+        "wingFarRoot"
+      ],
+      [
+        "wingFarWrist",
+        "wingFarElbow"
+      ],
+      [
+        "wingFarTip",
+        "wingFarWrist"
+      ],
+      [
+        "wingNearRoot",
+        "chest"
+      ],
+      [
+        "wingNearElbow",
+        "wingNearRoot"
+      ],
+      [
+        "wingNearWrist",
+        "wingNearElbow"
+      ],
+      [
+        "wingNearTip",
+        "wingNearWrist"
+      ],
+      [
+        "legFarKnee",
+        "pelvis"
+      ],
+      [
+        "legFarFoot",
+        "legFarKnee"
+      ],
+      [
+        "legNearKnee",
+        "pelvis"
+      ],
+      [
+        "legNearFoot",
+        "legNearKnee"
+      ],
+      [
+        "earFarTip",
+        "head"
+      ],
+      [
+        "earNearTip",
+        "head"
+      ]
+    ],
+    "bodyAxis": [
+      "pelvis",
+      "chest"
+    ],
+    "joints": [
+      "root",
+      "pelvis",
+      "spine",
+      "chest",
+      "neck",
+      "head",
+      "jaw",
+      "wingFarRoot",
+      "wingFarElbow",
+      "wingFarWrist",
+      "wingFarTip",
+      "wingNearRoot",
+      "wingNearElbow",
+      "wingNearWrist",
+      "wingNearTip",
+      "legFarKnee",
+      "legFarFoot",
+      "legNearKnee",
+      "legNearFoot",
+      "earFarTip",
+      "earNearTip"
+    ],
+    "legs": [
+      "legFar",
+      "legNear"
+    ],
+    "limitsDeg": {
+      "root": {
+        "min": -35,
+        "max": 35
+      },
+      "pelvis": {
+        "min": -20,
+        "max": 20
+      },
+      "spine": {
+        "min": -25,
+        "max": 25
+      },
+      "chest": {
+        "min": -20,
+        "max": 20
+      },
+      "neck": {
+        "min": -35,
+        "max": 35
+      },
+      "head": {
+        "min": -40,
+        "max": 40
+      },
+      "jaw": {
+        "min": -40,
+        "max": 5
+      },
+      "wingFarRoot": {
+        "min": -80,
+        "max": 100
+      },
+      "wingFarElbow": {
+        "min": -90,
+        "max": 90
+      },
+      "wingFarWrist": {
+        "min": -80,
+        "max": 80
+      },
+      "wingFarTip": {
+        "min": -70,
+        "max": 70
+      },
+      "wingNearRoot": {
+        "min": -80,
+        "max": 100
+      },
+      "wingNearElbow": {
+        "min": -90,
+        "max": 90
+      },
+      "wingNearWrist": {
+        "min": -80,
+        "max": 80
+      },
+      "wingNearTip": {
+        "min": -70,
+        "max": 70
+      },
+      "legFarKnee": {
+        "min": -70,
+        "max": 70
+      },
+      "legFarFoot": {
+        "min": -60,
+        "max": 60
+      },
+      "legNearKnee": {
+        "min": -70,
+        "max": 70
+      },
+      "legNearFoot": {
+        "min": -60,
+        "max": 60
+      },
+      "earFarTip": {
+        "min": -40,
+        "max": 40
+      },
+      "earNearTip": {
+        "min": -40,
+        "max": 40
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.05,
+        "max": 0.6,
+        "kind": "distance",
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "wing/torso:wingFar",
+        "min": 0.8,
+        "max": 12,
+        "kind": "ratio",
+        "bones": [
+          "wingFarRoot",
+          "wingFarElbow",
+          "wingFarWrist",
+          "wingFarTip"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "wing/torso:wingNear",
+        "min": 0.8,
+        "max": 12,
+        "kind": "ratio",
+        "bones": [
+          "wingNearRoot",
+          "wingNearElbow",
+          "wingNearWrist",
+          "wingNearTip"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:legFar",
+        "min": 0.2,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "legFarKnee",
+          "legFarFoot"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:legNear",
+        "min": 0.2,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "legNearKnee",
+          "legNearFoot"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      }
+    ]
+  },
+  "promptAnatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "tail"
+    ],
+    "hidden": [],
+    "folded": []
+  }
+}

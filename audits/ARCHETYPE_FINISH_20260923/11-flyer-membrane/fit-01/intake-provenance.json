@@ -1,0 +1,84 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "aaef06aff92852cd4caf711769ea80339a423605",
+  "helperSha256": "00f96495f28219a5201edaeeace8dc482bc263fc9ce0bc5d2290bd6b11f54f23",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/master.png",
+      "sha256": "ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/authoring.json",
+      "sha256": "1a88593285413314910c8a29f951dbacc5aa0c9b3a870d5dcae274fe9d6c9a3e"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/subject-source.json",
+      "sha256": "11b0449e8b28659334e36aba28200712f679e0c4d7ca886b188c16cd58baa9e3"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/presence.json",
+      "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 40,
+    "interiorStep": 80,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "584ae12f33cafd725010536c82a974b59c9dee35879c9826d03409206cadd45e",
+  "bindingHash": "598a5ef0bfa6157c4fc2a0132943e720eadbd82d140a76c2eb0e3bd456ec7264",
+  "contactEndpoints": [
+    "legFarFoot",
+    "legNearFoot"
+  ],
+  "shapeJoints": [
+    "earNearTip",
+    "earFarTip",
+    "jaw",
+    "head",
+    "wingNearTip",
+    "wingNearWrist",
+    "wingNearElbow",
+    "wingNearRoot",
+    "legNearFoot",
+    "legNearKnee",
+    "legFarFoot",
+    "legFarKnee",
+    "wingFarTip",
+    "wingFarWrist",
+    "wingFarElbow",
+    "wingFarRoot"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/master.png",
+      "sha256": "ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/authoring.json",
+      "sha256": "1a88593285413314910c8a29f951dbacc5aa0c9b3a870d5dcae274fe9d6c9a3e",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/subject-source.json",
+      "sha256": "11b0449e8b28659334e36aba28200712f679e0c4d7ca886b188c16cd58baa9e3",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/presence.json",
+      "sha256": "90cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db",
+      "unchanged": true
+    }
+  ]
+}
