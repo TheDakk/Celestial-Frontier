@@ -1,0 +1,19 @@
+{
+  "previousAttempt": "native-02",
+  "measuredRefusal": "Ten-second film cannot cover 10288ms script",
+  "filmStarted": false,
+  "change": {
+    "readyMs": {
+      "from": 600,
+      "to": 400
+    }
+  },
+  "unchanged": [
+    "all three transcript outcomes",
+    "command duration",
+    "all action curves and speed",
+    "fit02/sourceRGBA",
+    "10-second minimum duration and encoded-frame gate"
+  ],
+  "reason": "Reduce authored ready hold per turn so the full species-duration script fits the fixed ten-second film; no action truncation or threshold edit."
+}
