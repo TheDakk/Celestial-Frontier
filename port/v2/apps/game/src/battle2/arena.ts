@@ -12,8 +12,10 @@ export const PLATE_ORDER: readonly PlateId[] = Object.freeze(['far', 'mid', 'nea
 export const STAND_X = Object.freeze({ left: 1 / 3, right: 2 / 3 });
 /** D2 G6 eye finding (bear-vs-crab-01): a guardian at 0.9 of the frame height is ~0.75 of its width side-on, so on the
  * equal stands its fore paws already overlap the opponent before the lunge. In a guardian battle the guardian's stand
- * moves out and the opponent's to the far third; one pair of constants for Nick's eye. */
-export const GUARDIAN_STANDS = Object.freeze({ guardian: 0.30, opponent: 0.82 });
+ * moves out and the opponent's to the far third; one pair of constants for Nick's eye.
+ * `groundY` (Nick 2026-09-24, audits/BATTLE2_GUARDIAN_SIZE_20260924): a guardian on the ground stands LOWER, in the foreground,
+ * so the tallest-pose top cap leaves it bigger (the Bear rests at 0.67 of the frame instead of 0.55) with its rear-up in frame. */
+export const GUARDIAN_STANDS = Object.freeze({ guardian: 0.30, opponent: 0.82, groundY: 0.95 });
 export interface ComposeArenaOptions { readonly guardianSide?: 'left' | 'right'; }
 /** The attacker closes this fraction of the stand distance on its run-up (kit: "approach, distance-independent"). */
 export const RUN_UP_FRACTION = 0.55;
@@ -61,7 +63,7 @@ export function composeArena(recipe: ArenaRecipeInput, frame: FrameSize, options
   const g = recipe.groundLineNormalized, groundLinePx = g * frame.height;
   const gs = options.guardianSide;
   const sx = gs === 'left' ? { left: GUARDIAN_STANDS.guardian, right: GUARDIAN_STANDS.opponent } : gs === 'right' ? { left: 1 - GUARDIAN_STANDS.opponent, right: 1 - GUARDIAN_STANDS.guardian } : STAND_X;
-  const stands = Object.freeze({ left: Object.freeze({ x: sx.left, y: g }), right: Object.freeze({ x: sx.right, y: g }) });
+  const gy = Math.max(g, GUARDIAN_STANDS.groundY), stands = Object.freeze({ left: Object.freeze({ x: sx.left, y: gs === 'left' ? gy : g }), right: Object.freeze({ x: sx.right, y: gs === 'right' ? gy : g }) });
   const standDistance = sx.right - sx.left, runUp = standDistance * RUN_UP_FRACTION, runUpPx = runUp * frame.width;
   const plates = PLATE_ORDER.map((id): PlateLayout => {
     const tex = recipe.plates[id];

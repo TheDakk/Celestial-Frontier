@@ -32,9 +32,9 @@ const holderOf = (nodes: Node[], rig: BattleRigV1): Node => { const h = nodes.fi
 /** Drawn standing (rest) height of a rig on the stage, in frame px: holder scale × cut-out bounds height × cut-out height. */
 const drawnHeight = (holder: Node, rig: BattleRigV1): number => Math.abs(holder.scaleSet[1]) * rig.bounds.height * rig.cutout.height;
 /** Landmark extents of a posed rig in frame px (the parts rig's public path): top y, left x, right x. */
-const landmarkBox = (holder: Node, rig: PartsRig, joints: readonly string[]) => { let top = Infinity, left = Infinity, right = -Infinity;
-  for (const j of joints) { const p = rig.jointPosition(j); if (!p) continue; const x = holder.x + holder.scaleSet[0] * (p.x - rig.foot.x) * rig.cutout.width, y = holder.y + holder.scaleSet[1] * (p.y - rig.foot.y) * rig.cutout.height; if (y < top) top = y; if (x < left) left = x; if (x > right) right = x; }
-  return { top, left, right }; };
+const landmarkBox = (holder: Node, rig: PartsRig, joints: readonly string[]) => { let top = Infinity, left = Infinity, right = -Infinity, bottom = -Infinity;
+  for (const j of joints) { const p = rig.jointPosition(j); if (!p) continue; const x = holder.x + holder.scaleSet[0] * (p.x - rig.foot.x) * rig.cutout.width, y = holder.y + holder.scaleSet[1] * (p.y - rig.foot.y) * rig.cutout.height; if (y < top) top = y; if (y > bottom) bottom = y; if (x < left) left = x; if (x > right) right = x; }
+  return { top, left, right, bottom }; };
 const JOINTS = (record: { landmarks: Record<string, unknown> }) => Object.keys(record.landmarks);
 type Ctx = TurnOutcomeContext;
 const playTurn = (stage: BattleStage, ctx: Ctx, row: Record<string, unknown>) => { const t = turnPlanInputFromTranscriptEvent(row, ctx, 0); if (t.kind !== 'turn') throw new Error(t.reason); const plan = stage.play(t.input as TurnPlanInput); return plan; };
@@ -71,9 +71,14 @@ describe('D2 G6 — a guardian fills the frame; everything else is untouched', (
     // its stand; the victory is played below.
     const holder = holderOf(nodes, rig); const target = combatantPresentation(rig, card.massClass.multiplier, frame, layout.stands[side].y).scale * rig.bounds.height * rig.cutout.height;
     let min = Infinity, max = -Infinity, topMin = Infinity; const joints = JOINTS(record);
-    runFull(stage, plan, (ms) => { now = ms; const h = drawnHeight(holder, rig); if (h < min) min = h; if (h > max) max = h; const t = landmarkBox(holder, rig, joints).top; if (t < topMin) topMin = t; });
+    let bottomMax = -Infinity;
+    runFull(stage, plan, (ms) => { now = ms; const h = drawnHeight(holder, rig); if (h < min) min = h; if (h > max) max = h; const box = landmarkBox(holder, rig, joints), t = box.top; if (t < topMin) topMin = t; if (box.bottom > bottomMax) bottomMax = box.bottom; });
+    expect(bottomMax).toBeLessThanOrEqual(frame.height); // standing in the foreground, the feet stay inside the frame too
     expect(min).toBeGreaterThanOrEqual(target * 0.98); expect(max).toBeLessThanOrEqual(target * 1.02);
     expect(target / frame.height).toBeGreaterThan(0.5); // still by far the biggest thing on the stage (a plain combatant is 1/3–1/2 of the frame at most)
+    // Nick 2026-09-24: the guardian stands in the foreground (GUARDIAN_STANDS.groundY), which buys back its size (0.55 on the ground line)
+    expect(layout.stands[side].y).toBe(GUARDIAN_STANDS.groundY); expect(layout.stands[side === 'left' ? 'right' : 'left'].y).toBe(0.78);
+    expect(target / frame.height).toBeGreaterThan(0.66);
     console.log(JSON.stringify({ bearRestFillOfFrame: +(target / frame.height).toFixed(3), side, frame: `${frame.width}x${frame.height}` }));
     expect(topMin).toBeGreaterThanOrEqual(frame.height * COMBATANT_TOP_MARGIN - frame.height * 0.01); // the rearing head stays inside the frame (1 % for blend samples between the probe's 13)
     expect(drawnHeight(holder, rig)).toBeCloseTo(target, 9);
