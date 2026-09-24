@@ -5,6 +5,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { Plugin, ResolvedConfig } from 'vite';
 import { sealedWorkerJavaScriptDependencyEdges } from '../../tools/sealed-worker-graph.mjs';
+import { readBattle2AssetPins, verifyBattle2AssetFiles, type Battle2AssetPin } from './pwa-battle2-assets.js';
 
 export const CF_PWA_SCHEMA = 'cf-v2-pwa-build/v1' as const;
 export const CF_PWA_SERVICE_WORKER = 'service-worker.js' as const;
@@ -40,6 +41,8 @@ function modelDeliveryPolicy(value?: PwaOptionalModelDeliveryV1): PwaOptionalMod
 export interface PwaAssetDigestV1 {
   readonly path: string;
   readonly sha256: string;
+  readonly cache?: 'first-use';
+  readonly bytes?: number;
 }
 
 const textEncoder = new TextEncoder();
@@ -106,7 +109,14 @@ export function canonicalPwaAssetTableV1(assets: readonly PwaAssetDigestV1[]): s
     }
     if (seen.has(asset.path)) throw new Error(`Celestial Frontier PWA received duplicate asset ${asset.path}`);
     seen.add(asset.path);
-    canonical += `${asset.path}\t${asset.sha256}\n`;
+    if (asset.cache !== undefined || asset.bytes !== undefined) {
+      if (asset.cache !== 'first-use' || !Number.isSafeInteger(asset.bytes) || asset.bytes! <= 0
+        || asset.bytes! > SHIPPED_PACK_BYTE_LIMIT || !/\/battle2\/[A-Za-z0-9_.\/-]+$/u.test(asset.path)
+        || asset.path.split('/').slice(1).some((part) => !part || part === '.' || part === '..')) {
+        throw new Error('Invalid first-use PWA asset');
+      }
+    }
+    canonical += `${asset.path}\t${asset.sha256}${asset.cache === 'first-use' ? `\tfirst-use\t${asset.bytes}` : ''}\n`;
   }
   if (sorted.length === 0) throw new Error('Celestial Frontier PWA cannot publish an empty asset set');
   return canonical;
@@ -230,7 +240,7 @@ function clientPinUrl(clientId){if(!validClientId(clientId))throw new Error('Ref
 function clientPinPathPrefix(){return new URL(CLIENT_PIN_PATH_PREFIX,self.registration.scope).pathname;}
 function canonicalBuildIdentity(assets,workerRevision){
   let value=SCHEMA+'\\nworker\\t'+workerRevision+'\\n';
-  for(const asset of [...assets].sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0)){value+=asset.path+'\\t'+asset.sha256+'\\n';}
+  for(const asset of [...assets].sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0)){value+=asset.path+'\\t'+asset.sha256+(asset.cache==='first-use'?'\\tfirst-use\\t'+asset.bytes:'')+'\\n';}
   return value;
 }
 async function sha256(value){
@@ -239,7 +249,11 @@ async function sha256(value){
   return [...new Uint8Array(digest)].map((byte)=>byte.toString(16).padStart(2,'0')).join('');
 }
 function markerBody(){return JSON.stringify({schema:SCHEMA,buildId:BUILD_ID,workerRevision:WORKER_REVISION,basePath:BASE_PATH,assets:ASSETS});}
-function validAssetShape(asset){return !!asset&&typeof asset.path==='string'&&asset.path.startsWith(BASE_PATH)&&!asset.path.includes('\\t')&&!asset.path.includes('\\n')&&typeof asset.sha256==='string'&&HEX64.test(asset.sha256);}
+function validAssetShape(asset){
+  if(!asset||typeof asset.path!=='string'||!asset.path.startsWith(BASE_PATH)||asset.path.includes('\\t')||asset.path.includes('\\n')||typeof asset.sha256!=='string'||!HEX64.test(asset.sha256))return false;
+  if(asset.cache===undefined&&asset.bytes===undefined)return true;
+  return asset.cache==='first-use'&&Number.isSafeInteger(asset.bytes)&&asset.bytes>0&&asset.bytes<=134217728&&asset.path.startsWith(BASE_PATH+'battle2/')&&/^[A-Za-z0-9_./-]+$/.test(asset.path)&&asset.path.split('/').slice(1).every((part)=>part&&part!=='.'&&part!=='..');
+}
 async function decodeMarker(cache,buildId){
   if(!HEX64.test(buildId))return null;
   const response=await cache.match(markerUrl(buildId));
@@ -260,6 +274,7 @@ async function verifyCompleteBuild(buildId){
   if(!marker)return null;
   for(const asset of marker.assets){
     const response=await cache.match(absolute(asset.path));
+    if(asset.cache==='first-use'&&!response)continue;
     if(!response||!response.ok||await sha256(await response.clone().arrayBuffer())!==asset.sha256)return null;
   }
   return {cache,marker};
@@ -366,6 +381,7 @@ async function retainedUpdatePayloadBytes(){
 ${delivery ? `      let admittedBytes=await retainedUpdatePayloadBytes()+new TextEncoder().encode(markerBody()).byteLength;
       if(admittedBytes>268435456)throw new Error('Optional AI update payload exceeds 256 MiB');
 ` : ''}      for(const asset of ASSETS){
+        if(asset.cache==='first-use')continue;
         const request=new Request(absolute(asset.path),{cache:'reload',credentials:'same-origin',redirect:'error'});
         const response=await fetch(request);
         if(!response.ok||response.redirected||new URL(response.url).href!==request.url)throw new Error('PWA asset fetch failed: '+asset.path);
@@ -375,7 +391,7 @@ ${delivery ? `        const checkedBytes=await response.clone().arrayBuffer();
         admittedBytes+=checkedBytes.byteLength;` : "        if(await sha256(await response.clone().arrayBuffer())!==asset.sha256)throw new Error('PWA asset digest mismatch: '+asset.path);"}
         await cache.put(request,response);
       }
-      /* Written last: its presence means every exact response above was fetched and verified. */
+      /* Written last: the eager shell is complete; first-use files remain pinned but need not be downloaded. */
       await cache.put(markerUrl(BUILD_ID),new Response(markerBody(),{headers:{'content-type':'application/json'}}));
     }catch(error){await caches.delete(cacheName);throw error;}
   })());
@@ -437,6 +453,34 @@ self.addEventListener('message',(event)=>{
   }
 });
 
+async function verifiedLazyBytes(response,asset){
+  if(response.status!==200||!response.body)throw new Error('First-use asset response is incomplete');
+  const reader=response.body.getReader(),bytes=new Uint8Array(asset.bytes);let at=0;
+  try{for(;;){const chunk=await reader.read();if(chunk.done)break;if(chunk.value.byteLength>bytes.length-at)throw new Error('First-use asset exceeds pinned bytes');bytes.set(chunk.value,at);at+=chunk.value.byteLength;}}
+  finally{void reader.cancel().catch(()=>{});reader.releaseLock();}
+  if(at!==asset.bytes||await sha256(bytes)!==asset.sha256)throw new Error('First-use asset digest or byte count mismatch');
+  return new Response(bytes,{status:200,headers:response.headers});
+}
+const lazyFetches=new Map();
+async function firstUseAsset(cache,buildId,asset){
+  const key=buildId+':'+asset.path;
+  if(!lazyFetches.has(key)){
+    const pending=(async()=>{
+      const request=new Request(absolute(asset.path),{cache:'no-store',credentials:'same-origin',redirect:'error'});
+      const cached=await cache.match(request);
+      if(cached){try{return await verifiedLazyBytes(cached,asset);}catch{await cache.delete(request);}}
+      const response=await fetch(request);
+      if(response.redirected||new URL(response.url).href!==request.url)throw new Error('First-use asset redirect refused');
+      const verified=await verifiedLazyBytes(response,asset);
+      await cache.put(request,verified.clone());
+      return verified;
+    })();
+    lazyFetches.set(key,pending);
+    pending.then(()=>lazyFetches.delete(key),()=>lazyFetches.delete(key));
+  }
+  try{return (await lazyFetches.get(key)).clone();}catch{return new Response('Pinned battle2 asset is unavailable or failed integrity verification.',{status:503});}
+}
+
 self.addEventListener('fetch',(event)=>{
   const request=event.request;
   event.respondWith((async()=>{
@@ -472,7 +516,12 @@ ${delivery ? `    const workerDestination=request.destination==='worker'||reques
     const requestedPath=navigation
       ? (marker.assets.some((asset)=>asset.path===url.pathname&&asset.path.endsWith('.html'))?url.pathname:INDEX_PATH)
       : url.pathname;
-    if(!marker.assets.some((asset)=>asset.path===requestedPath))return new Response('Resource is not part of the selected Celestial Frontier build.',{status:503});
+    const selectedAsset=marker.assets.find((asset)=>asset.path===requestedPath);
+    if(!selectedAsset)return new Response('Resource is not part of the selected Celestial Frontier build.',{status:503});
+    if(selectedAsset.cache==='first-use'){
+      if(navigation||workerCreation||url.search||url.hash||request.headers.has('range'))return new Response('Pinned battle2 files require an exact complete asset GET.',{status:403});
+      return firstUseAsset(cache,selectedBuildId,selectedAsset);
+    }
     const response=await cache.match(absolute(requestedPath));
     if(!response)return new Response('A required Celestial Frontier build resource is missing.',{status:503});
     if(navigation){
@@ -554,6 +603,10 @@ export function celestialFrontierPwaPlugin(options: Readonly<{ modelDelivery?: P
   let resolved: ResolvedConfig | null = null;
   let base = '/';
   let runtimeFileNames: readonly string[] = Object.freeze([]);
+  let battle2Files: readonly Battle2AssetPin[] = Object.freeze([]);
+  const lazyAssets = (): PwaAssetDigestV1[] => battle2Files.map((file) => ({
+    path: assetPath(base, file.path), sha256: file.sha256, bytes: file.bytes, cache: 'first-use',
+  }));
   return {
     name: 'celestial-frontier-exact-pwa',
     apply: 'build',
@@ -561,6 +614,7 @@ export function celestialFrontierPwaPlugin(options: Readonly<{ modelDelivery?: P
     configResolved(config) {
       resolved = config;
       base = normalizeBase(config.base);
+      battle2Files = readBattle2AssetPins(config.root);
     },
     buildStart() {
       this.emitFile({ type: 'asset', fileName: CF_PWA_MANIFEST, source: webManifest(base) });
@@ -607,7 +661,7 @@ export function celestialFrontierPwaPlugin(options: Readonly<{ modelDelivery?: P
       this.emitFile({
         type: 'asset',
         fileName: CF_PWA_SERVICE_WORKER,
-        source: serviceWorkerSource(base, assets, workerRevision, delivery),
+        source: serviceWorkerSource(base, [...assets, ...lazyAssets()], workerRevision, delivery),
       });
     },
     writeBundle: {
@@ -633,8 +687,9 @@ export function celestialFrontierPwaPlugin(options: Readonly<{ modelDelivery?: P
           writtenAssetByteCounts.push(bytes.byteLength);
           return Object.freeze({ path: assetPath(base, fileName), sha256: sha256Hex(bytes) });
         });
-        const finalWorkerSource = serviceWorkerSource(base, assets, workerRevision, delivery);
-        assertShippedPackBytes(writtenAssetByteCounts, textEncoder.encode(finalWorkerSource).byteLength);
+        verifyBattle2AssetFiles(outDir, battle2Files);
+        const finalWorkerSource = serviceWorkerSource(base, [...assets, ...lazyAssets()], workerRevision, delivery);
+        assertShippedPackBytes([...writtenAssetByteCounts, ...battle2Files.map((file) => file.bytes)], textEncoder.encode(finalWorkerSource).byteLength);
         writeFileSync(
           resolve(outDir, CF_PWA_SERVICE_WORKER),
           finalWorkerSource,

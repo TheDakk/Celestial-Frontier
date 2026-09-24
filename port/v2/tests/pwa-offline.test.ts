@@ -110,6 +110,7 @@ function createWorkerHarness(
     matchAllOmittedClientIds?: readonly string[];
     revealClientIdsAtClaim?: readonly string[];
     sourceTransform?: (source: string) => string;
+    networkResponse?: (request: Request, body: string) => Response;
   }> = Object.freeze({}),
 ): WorkerHarness {
   const workerRevision = options.workerRevision ?? pwaWorkerRevisionV1();
@@ -154,7 +155,7 @@ function createWorkerHarness(
     const url = new URL(request.url);
     const body = network[url.pathname];
     if (body === undefined) return responseAt(request.url, 'missing');
-    return responseAt(request.url, body);
+    return options.networkResponse?.(request, body) ?? responseAt(request.url, body);
   };
   const context = vm.createContext({
     self,
@@ -397,7 +398,7 @@ describe('Celestial Frontier exact-build PWA', () => {
     });
     const source = __pwaBuildTestOnly.serviceWorkerSource('/', assets);
     expect(source).toContain(`const BUILD_ID=${JSON.stringify(pwaBuildIdV1(assets))}`);
-    expect(source).toContain("Written last: its presence means every exact response above was fetched and verified.");
+    expect(source).toContain("Written last: the eager shell is complete; first-use files remain pinned but need not be downloaded.");
     expect(source).not.toMatch(/"path":"[^"]+\.map"/u);
     expect(source.indexOf("self.addEventListener('install'"))
       .toBeLessThan(source.indexOf("self.addEventListener('activate'"));
@@ -1214,5 +1215,62 @@ describe('PWA production wiring', () => {
     const bypassed = mount.replace('void reloadForPwaUpdate();', 'location.reload();');
     expect(bypassed).toContain('location.reload();');
     expect(bypassed).not.toContain('void reloadForPwaUpdate();');
+  });
+});
+
+
+describe('first-use battle2 assets', () => {
+  const url='https://game.test/battle2/atlas.png';
+  const pins=(body='paint'):readonly PwaAssetDigestV1[] => [
+    {path:'/index.html',sha256:sha256Hex('index')},
+    {path:'/battle2/atlas.png',sha256:sha256Hex(body),bytes:new TextEncoder().encode(body).byteLength,cache:'first-use'},
+  ];
+  const get=(h:WorkerHarness,init:Record<string,unknown>={})=>h.dispatch('fetch',{request:new Request(url),...init}) as Promise<Response>;
+  it('does not fetch arena files at install, verifies first use once, and serves the pinned file offline',async()=>{
+    const net:Record<string,string>={'/index.html':'index','/battle2/atlas.png':'paint'};
+    const h=createWorkerHarness(pins(),net);await h.dispatch('install');await h.dispatch('activate');
+    expect(h.fetches).toEqual(['https://game.test/index.html']);
+    const pair=await Promise.all([get(h),get(h)]);expect(await pair[0]!.text()).toBe('paint');expect(await pair[1]!.text()).toBe('paint');
+    expect(h.fetches.filter(x=>x===url)).toHaveLength(1);
+    delete net['/battle2/atlas.png'];expect(await (await get(h)).text()).toBe('paint');expect(h.fetches.filter(x=>x===url)).toHaveLength(1);
+    const cache=await h.caches.open('cf-v2-build-'+h.buildId);
+    await cache.put(url,new Response('wrong'));
+    expect((await get(h)).status).toBe(503);expect(await cache.match(url)).toBeUndefined();
+  });
+  it.each(['wrong','too-large','x'])('refuses and never caches changed, oversized or truncated payload %s',async(body)=>{
+    const h=createWorkerHarness(pins(),{'/index.html':'index','/battle2/atlas.png':body});await h.dispatch('install');await h.dispatch('activate');
+    expect((await get(h)).status).toBe(503);expect(await (await h.caches.open('cf-v2-build-'+h.buildId)).match(url)).toBeUndefined();
+  });
+  it('rejects redirects, partial responses, unpinned paths, range/query variants and ownerless GETs',async()=>{
+    for(const variant of ['redirect','partial']){
+      const h=createWorkerHarness(pins(),{'/index.html':'index','/battle2/atlas.png':'paint'}, {networkResponse:(request,body)=>{
+        if(request.url!==url)return responseAt(request.url,body);
+        const r=variant==='partial'?new Response(body,{status:206}):responseAt(request.url,body);
+        Object.defineProperty(r,'url',{value:variant==='redirect'?url+'-other':url});return r;
+      }});await h.dispatch('install');await h.dispatch('activate');expect((await get(h)).status).toBe(503);
+    }
+    const h=createWorkerHarness(pins(),{'/index.html':'index','/battle2/atlas.png':'paint'});await h.dispatch('install');await h.dispatch('activate');
+    for(const request of [new Request(url+'?bust=1'),new Request(url,{headers:{range:'bytes=0-'}})])expect((await get(h,{request})).status).toBe(403);
+    expect((await get(h,{clientId:''})).status).toBe(503);
+    expect((await get(h,{request:new Request(url+'-foreign')})).status).toBe(503);
+    expect(h.fetches).toHaveLength(1);
+  });
+  it('retains old-client bytes separately from a new build at the same path',async()=>{
+    const caches=new MemoryCacheStorage();
+    const old=createWorkerHarness(pins('old!!'),{'/index.html':'index','/battle2/atlas.png':'old!!'},{caches});await old.dispatch('install');await old.dispatch('activate');expect(await (await get(old)).text()).toBe('old!!');
+    const next=createWorkerHarness(pins('new!!'),{'/index.html':'index','/battle2/atlas.png':'new!!'},{caches,clientIds:['client-current','client-new']});await next.dispatch('install');await next.dispatch('activate');
+    await seedClientPin(caches,'client-new',next.buildId);
+    expect(await (await get(next)).text()).toBe('old!!');
+    expect(await (await get(next,{clientId:'client-new'})).text()).toBe('new!!');
+    expect(await (await get(next)).text()).toBe('old!!');
+    const oldCache=await caches.open('cf-v2-build-'+old.buildId);await oldCache.delete(url);
+    expect((await get(next)).status).toBe(503); // server only has new bytes: never mix them into the old build
+  });
+  it('negative control: bypassing the digest check admits the wrong same-length bytes',async()=>{
+    const h=createWorkerHarness(pins(),{'/index.html':'index','/battle2/atlas.png':'wrong'},{sourceTransform:source=>{
+      const needle="at!==asset.bytes||await sha256(bytes)!==asset.sha256";
+      expect(source.split(needle)).toHaveLength(2);return source.replace(needle,'at!==asset.bytes');
+    }});await h.dispatch('install');await h.dispatch('activate');
+    expect(await (await get(h)).text()).toBe('wrong');
   });
 });
