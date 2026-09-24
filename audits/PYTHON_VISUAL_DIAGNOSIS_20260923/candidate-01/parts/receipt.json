@@ -1,0 +1,187 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "owner": "winning painter draw-stage RGBA changes",
+  "recordRecipeHash": "8c3dd500768f444c6d64df3f47b891ab903148becbf543ce8d4fccb5760ee49f",
+  "declarationHash": "afa5cbc2224af1e032669a57e5b0550bb274212dc8443cd1776f30a067aac3ea",
+  "paintedPixels": 450184,
+  "parts": [
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 1034,
+        "y": 341,
+        "width": 214,
+        "height": 85
+      },
+      "pixels": 7554
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 987,
+        "y": 274,
+        "width": 221,
+        "height": 120
+      },
+      "pixels": 13338
+    },
+    {
+      "id": "tail-tip",
+      "joint": "seg9",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 0,
+        "y": 512,
+        "width": 299,
+        "height": 290
+      },
+      "pixels": 26833
+    },
+    {
+      "id": "coil-right-turn",
+      "joint": "seg5",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 840,
+        "y": 740,
+        "width": 251,
+        "height": 239
+      },
+      "pixels": 31134
+    },
+    {
+      "id": "coil-front",
+      "joint": "seg6",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 433,
+        "y": 795,
+        "width": 519,
+        "height": 186
+      },
+      "pixels": 56151
+    },
+    {
+      "id": "coil-left-turn",
+      "joint": "seg7",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 300,
+        "y": 671,
+        "width": 362,
+        "height": 229
+      },
+      "pixels": 51313
+    },
+    {
+      "id": "coil-middle-crossing",
+      "joint": "seg4",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 550,
+        "y": 553,
+        "width": 514,
+        "height": 255
+      },
+      "pixels": 67806
+    },
+    {
+      "id": "coil-crest",
+      "joint": "seg3",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 529,
+        "y": 437,
+        "width": 268,
+        "height": 192
+      },
+      "pixels": 27020
+    },
+    {
+      "id": "neck-upper-curve",
+      "joint": "seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 874,
+        "y": 326,
+        "width": 199,
+        "height": 209
+      },
+      "pixels": 25833
+    },
+    {
+      "id": "neck-lower-curve",
+      "joint": "seg1",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 1002,
+        "y": 477,
+        "width": 188,
+        "height": 296
+      },
+      "pixels": 27873
+    },
+    {
+      "id": "coil-rear-neck-link",
+      "joint": "seg2",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 765,
+        "y": 493,
+        "width": 323,
+        "height": 196
+      },
+      "pixels": 25485
+    },
+    {
+      "id": "coil-rear-left",
+      "joint": "seg8",
+      "layer": "far",
+      "kind": "part",
+      "box": {
+        "x": 117,
+        "y": 546,
+        "width": 447,
+        "height": 187
+      },
+      "pixels": 49954
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 0,
+        "y": 21,
+        "width": 1222,
+        "height": 1177
+      },
+      "pixels": 39890
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "mode": "native painter alpha; no keyer"
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "1c44d54e241b2444ce37950f0b3ce7ebfe9d9f4cd550a77cdaf0c20924849e43",
+  "masterUnchanged": true,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

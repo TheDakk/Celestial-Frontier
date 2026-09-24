@@ -1,0 +1,22 @@
+{
+  "commit": "fe8f6ca1a8c5a934897fbf0711319e17cc5cf388",
+  "signature": "G",
+  "signedCommitReceipt": "70b935",
+  "signatureVerification": "a311b7",
+  "push": {
+    "start": "d00df8",
+    "completion": "4fd422",
+    "exitCode": 0,
+    "range": "755f52a7..fe8f6ca1",
+    "destination": "openai/mac"
+  },
+  "remoteEquality": {
+    "receipt": "296e2a",
+    "sha": "fe8f6ca1a8c5a934897fbf0711319e17cc5cf388"
+  },
+  "priorRefusals": [
+    "be367c",
+    "8c77de"
+  ],
+  "signingConfigurationChanged": false
+}
