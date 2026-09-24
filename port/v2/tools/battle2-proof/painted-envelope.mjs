@@ -72,27 +72,57 @@ export function mergePaintedBounds(samples) {
   return Object.freeze({...box(minX, minY, maxX, maxY), sampleCount});
 }
 
-/** One shared stage scale. massScale is the unmodified combatantScale result;
- * only water/air may cap it to their band. An explicit edgeReserveFraction is
- * presentation spacing on EACH band edge, never an acceptance tolerance.
+/** One shared stage scale. massScale is the unmodified combatantScale result.
+ * Water/air cap it to their band; an explicit groundViewport caps ground motion
+ * around its unchanged ground registration, including the measured camera range.
+ * edgeReserveFraction is presentation spacing on EACH edge, never an acceptance tolerance.
  * foot is in display units (rig.foot * rig.cutout), not assumed centred at 0.5.
  * Ground standY/centreY are null: its existing ground registration owns placement.
  * `painted` feeds selectHabitatArena, and `scale` feeds BattleStage unchanged. */
 export function fitPaintedEnvelope({bounds: input, foot, frame, medium, band, massScale,
-  edgeReserveFraction = 0}) {
+  edgeReserveFraction = 0, groundViewport}) {
   const bounds = checkedBounds(input); checkedFrame(frame); checkedMedium(medium, band);
   need(foot && finite(foot.x, foot.y), 'finite display-space foot required');
   need(Number.isFinite(massScale) && massScale > 0, 'positive finite mass scale required');
   need(Number.isFinite(edgeReserveFraction) && edgeReserveFraction >= 0 && edgeReserveFraction < .5,
     'edge reserve must lie in [0, 0.5)');
   const free = (band.maxY - band.minY) * frame.height * (1 - 2 * edgeReserveFraction);
-  const scale = medium === 'ground' ? massScale : Math.min(massScale, free / bounds.height);
+  let scale = medium === 'ground' ? massScale : Math.min(massScale, free / bounds.height);
+  if (groundViewport !== undefined) {
+    const {standY, cameraMinY, cameraMaxY} = groundViewport;
+    need(medium === 'ground' && finite(standY, cameraMinY, cameraMaxY)
+      && standY > 0 && standY < 1 && cameraMinY <= cameraMaxY,
+      'valid ground registration and measured camera range required');
+    const reserve = edgeReserveFraction * frame.height;
+    const above = Math.max(0, foot.y - bounds.minY), below = Math.max(0, bounds.maxY - foot.y);
+    const up = standY * frame.height + cameraMinY - reserve;
+    const down = (1 - standY) * frame.height - cameraMaxY - reserve;
+    need(up > 0 && down > 0, 'ground registration leaves no viewport reserve');
+    if (above > 0) scale = Math.min(scale, up / above);
+    if (below > 0) scale = Math.min(scale, down / below);
+  }
   need(Number.isFinite(scale) && scale > 0, 'medium has no positive display scale');
   const height = bounds.height * scale / frame.height;
   const footBelowCentre = (foot.y - (bounds.minY + bounds.maxY) / 2) * scale / frame.height;
   const centreY = medium === 'ground' ? null : (band.minY + band.maxY) / 2;
   return Object.freeze({scale, painted: Object.freeze({height, footBelowCentre}), centreY,
     standY: centreY === null ? null : centreY + footBelowCentre});
+}
+
+/** The tighter ground envelope sets one presentation reduction for both roles.
+ * Preserve combatantScale mass ratios; changing attacker/target motion must not
+ * make otherwise identical creatures different sizes. Other media keep their fit. */
+export function preserveGroundMassRatios(sizings) {
+  need(sizings && typeof sizings === 'object' && !Array.isArray(sizings), 'side sizing map required');
+  const ground = Object.values(sizings).filter(s => s.medium === 'ground');
+  for (const s of ground) need(finite(s.scale, s.massScale, s.height, s.footBelowCentre)
+    && s.scale > 0 && s.massScale >= s.scale && s.height > 0, 'valid ground scale receipt required');
+  const factor = Math.min(1, ...ground.map(s => s.scale / s.massScale));
+  return Object.fromEntries(Object.entries(sizings).map(([side, s]) => {
+    if (s.medium !== 'ground') return [side, s];
+    const scale = Math.min(s.scale, s.massScale * factor), ratio = scale / s.scale;
+    return [side, {...s, scale, height: s.height * ratio, footBelowCentre: s.footBelowCentre * ratio}];
+  }));
 }
 
 function transformPoint(point, transform) {

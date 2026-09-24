@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import test from 'node:test';
 import {parseAst} from 'rolldown/parseAst';
 import {publishedMeshBounds, assertPublishedSample, mergePaintedBounds,
-  fitPaintedEnvelope, placedPaintedBounds, assessPaintedContainment} from './painted-envelope.mjs';
+  fitPaintedEnvelope, preserveGroundMassRatios, placedPaintedBounds, assessPaintedContainment} from './painted-envelope.mjs';
 
 const frame = {width: 100, height: 100}, band = {minY: .25, maxY: .75};
 const foot = {x: .5, y: .875};
@@ -135,4 +135,76 @@ test('frame assessment has no epsilon and rejects malformed or collapsed transfo
   assert.throws(() => place(fit(), {root: {x: 0, y: 0, scaleX: 0, scaleY: 1}}), /nonzero display transform/);
   assert.throws(() => place(fit(), {camera: {x: 0, y: NaN}}), /camera translation/);
   assert.throws(() => assess({arena: bounds, viewport: {...bounds, maxY: Infinity}}), /finite nonempty/);
+});
+
+
+test('ground framing closes the retained Python bottom breach without changing its foot or gate', () => {
+  const frame = {width: 1024, height: 576}, band = {minY: .08, maxY: .86};
+  const source = {minX: 109.4388280453432, minY: 326.0186672453447,
+    maxX: 377.9039230451767, maxY: 579.4291486982866};
+  const foot = {x: 250, y: .78 * frame.height};
+  const options = {bounds: source, foot, frame, medium: 'ground', band,
+    massScale: 1, edgeReserveFraction: .05};
+  const placement = scale => placedPaintedBounds({bounds: source,
+    root: {x: -foot.x, y: -foot.y, scaleX: 1, scaleY: 1},
+    holder: {x: foot.x, y: foot.y, scaleX: scale, scaleY: scale}, camera: {x: 0, y: 0}});
+  const check = scale => assessPaintedContainment({placed: placement(scale), frame, medium: 'ground', band});
+  assert.deepEqual(check(fitPaintedEnvelope(options).scale).findings, ['viewport']);
+  const sizing = fitPaintedEnvelope({...options,
+    groundViewport: {standY: .78, cameraMinY: 0, cameraMaxY: 0}});
+  assert.ok(sizing.scale < 1);
+  assert.equal(check(sizing.scale).status, 'PASS');
+  assert.equal(placement(sizing.scale).viewport.maxY, frame.height - frame.height * .05);
+  assert.equal(sizing.standY, null); // caller still uses the same source ground registration
+  assert.equal(sizing.centreY, null);
+  // Removing the cap from the otherwise corrected path recreates the reported breach.
+  assert.deepEqual(check(options.massScale).findings, ['viewport']);
+});
+
+test('ground fit accounts for upward motion, off-centre foot and both camera extrema', () => {
+  const bounds = {minX: -.2, minY: -2, maxX: .2, maxY: .1}, foot = {x: 0, y: 0};
+  const options = {bounds, foot, frame, medium: 'ground', band, massScale: 100,
+    edgeReserveFraction: .05, groundViewport: {standY: .25, cameraMinY: -8, cameraMaxY: 3}};
+  const sizing = fitPaintedEnvelope(options);
+  for (const y of [-8, 3]) {
+    const placed = placedPaintedBounds({bounds, root: {x: 0, y: 0, scaleX: 1, scaleY: 1},
+      holder: {x: 50, y: 25, scaleX: sizing.scale, scaleY: sizing.scale}, camera: {x: 0, y}});
+    assert.equal(assessPaintedContainment({placed, frame, medium: 'ground', band}).status, 'PASS');
+    assert.ok(placed.viewport.minY >= 5 && placed.viewport.maxY <= 95);
+  }
+  assert.equal(fitPaintedEnvelope({...options, massScale: 1}).scale, 1);
+  const noCamera = fitPaintedEnvelope({...options, edgeReserveFraction: 0,
+    groundViewport: {...options.groundViewport, cameraMinY: 0, cameraMaxY: 0}});
+  const wrong = placedPaintedBounds({bounds, root: {x: 0, y: 0, scaleX: 1, scaleY: 1},
+    holder: {x: 50, y: 25, scaleX: noCamera.scale, scaleY: noCamera.scale}, camera: {x: 0, y: -8}});
+  assert.deepEqual(assessPaintedContainment({placed: wrong, frame, medium: 'ground', band}).findings, ['viewport']);
+});
+
+test('ground framing refuses unavailable or malformed placement and camera evidence', () => {
+  for (const groundViewport of [
+    {standY: NaN, cameraMinY: 0, cameraMaxY: 0},
+    {standY: 0, cameraMinY: 0, cameraMaxY: 0},
+    {standY: .8, cameraMinY: 3, cameraMaxY: -3},
+    {standY: .99, cameraMinY: 0, cameraMaxY: 20},
+  ]) assert.throws(() => fit({medium: 'ground', groundViewport}), /ground/);
+  assert.throws(() => fit({groundViewport: {standY: .8, cameraMinY: 0, cameraMaxY: 0}}), /ground/);
+});
+
+
+test('shared ground framing preserves equal and unequal source mass ratios across turn roles', () => {
+  for (const rightMass of [10, 20]) {
+    const original = {left: {medium: 'ground', massScale: 10, scale: 4, height: .4, footBelowCentre: .1},
+      right: {medium: 'ground', massScale: rightMass, scale: rightMass * .8, height: .8, footBelowCentre: .2},
+      water: {medium: 'water', massScale: 20, scale: 3, height: .2, footBelowCentre: .1}};
+    const out = preserveGroundMassRatios(original);
+    assert.equal(out.left.scale / out.right.scale, 10 / rightMass);
+    assert.equal(out.right.scale, rightMass * .4);
+    assert.equal(out.right.height, .4);
+    assert.equal(out.right.footBelowCentre, .1);
+    assert.equal(out.water, original.water);
+    assert.equal(original.right.scale, rightMass * .8);
+    // The old independent cap visibly changes the ratio despite valid individual fits.
+    assert.notEqual(original.left.scale / original.right.scale, 10 / rightMass);
+  }
+  assert.throws(() => preserveGroundMassRatios({left: {medium: 'ground', scale: 2, massScale: 1, height: .5, footBelowCentre: 0}}), /ground scale/);
 });
