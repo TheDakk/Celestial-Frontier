@@ -63,7 +63,7 @@ describe('morph M1 — proportion on the real rigs', () => {
     const { f } = stageFactory(); let now = 0;
     const stage = new BattleStage({ factory: f, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: rig, right: portraitRig() }, masses: { left: card.massClass.multiplier, right: 0.85 } });
     const rows = [{ side: 'A', an: 'X', dn: 'Platypus', dmg: 7, crit: false, hpA: 30, hpB: 20 }, { side: 'B', an: 'Platypus', dn: 'X', dmg: 4, crit: true, hpA: 26, hpB: 20 }, { an: 'X', dn: 'Platypus', dodge: true }, { side: 'B', an: 'Platypus', dn: 'X', dmg: 26, crit: true, hpA: 0, hpB: 20 }];
-    let ticks = 0; for (const [i, row] of rows.entries()) { const plan = stage.play(turnOf(ctx('X', card.massClass.multiplier, card), row, i)); for (let ms = 0; ms <= plan.beats.end; ms += 1000 / 30) { now = ms; if (!stage.tick()) throw new Error('no frame'); ticks++; } }
+    let ticks = 0; for (const [i, row] of rows.entries()) { now = 0; const plan = stage.play(turnOf(ctx('X', card.massClass.multiplier, card), row, i)); for (let ms = 0; ms < plan.beats.end; ms += 1000 / 30) { now = ms; if (!stage.tick()) throw new Error('no frame'); ticks++; } now = plan.beats.end; if (!stage.tick()?.done) throw new Error('turn never reached its end'); ticks++; } // each turn from clock 0 (review 2026-09-24)
     expect(ticks).toBeGreaterThan(200); expect(rig.refusals(), rig.lastRefusal() ?? '').toBe(0);
     stage.dispose();
   }, 300_000);

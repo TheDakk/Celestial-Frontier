@@ -13,7 +13,7 @@ import { createPortraitRig } from './fallback.js';
 import type { BattleRigV1, RigContainerLike, RigSpriteLike } from './fixture-rig.js';
 import { REPO_ROOT, loadFit, loadFitDir } from './parts-rig.fixtures.js';
 import type { PartsRig } from './parts-rig.js';
-import { BattleStage, GUARDIAN_FRAME_FILL, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext } from './stage.js';
+import { BattleStage, COMBATANT_TOP_MARGIN, GUARDIAN_FRAME_FILL, combatantPresentation, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext } from './stage.js';
 class Node { x = 0; y = 0; rotation = 0; alpha = 1; visible = true; destroyed = false; scaleSet: [number, number] = [1, 1]; anchorSet: [number, number] = [0, 0]; text = ''; ops: string[] = [];
   readonly scale = { set: (x: number, y: number) => { this.scaleSet = [x, y]; } }; readonly anchor = { set: (x: number, y: number) => { this.anchorSet = [x, y]; } };
   children: object[] = []; addChild(c: object) { this.children.push(c); } removeChild(c: object) { this.children = this.children.filter((x) => x !== c); }
@@ -58,7 +58,7 @@ describe('D2 G6 — a guardian fills the frame; everything else is untouched', (
     expect(rig.refusals?.()).toBe(0); // probe refusals are not the stage's
     const crab = await loadFit('crab'); expect(crab.rig.guardian).toBeUndefined(); expect(crab.rig.tallestHeight).toBe(crab.rig.bounds.height);
   });
-  for (const frame of VIEWPORTS) for (const side of ['left', 'right'] as const) it(`bear on the ${side} at ${frame.width}×${frame.height}: its tallest pose spans ${GUARDIAN_FRAME_FILL} of the frame, the landmarks never leave the frame through a whole turn, zero refusals`, async () => {
+  for (const frame of VIEWPORTS) for (const side of ['left', 'right'] as const) it(`bear on the ${side} at ${frame.width}×${frame.height}: its tallest pose fills the frame ABOVE ITS STAND (the one presentation rule), the landmarks never leave the frame through an attack AND a victory, zero refusals`, async () => {
     const { rig, card, record } = await loadFitDir(BEAR);
     const layout = layoutFor(frame, { guardianSide: side }); const { f, nodes } = stageFactory(); let now = 0;
     const rigs = side === 'left' ? { left: rig, right: portraitRig() } : { left: portraitRig(), right: rig };
@@ -66,16 +66,24 @@ describe('D2 G6 — a guardian fills the frame; everything else is untouched', (
     const stage = new BattleStage({ factory: f, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs, masses });
     const ctx = ctxFor(layout, side === 'left' ? 'A' : 'B', 'Bear', card.massClass.multiplier, card);
     const plan = playTurn(stage, ctx, side === 'left' ? { side: 'A', an: 'Bear', dn: 'Platypus', dmg: 7, crit: false, hpA: 30, hpB: 20 } : { side: 'B', an: 'Bear', dn: 'Platypus', dmg: 7, crit: false, hpA: 20, hpB: 30 });
-    const holder = holderOf(nodes, rig); const target = GUARDIAN_FRAME_FILL * frame.height * (rig.bounds.height / rig.tallestHeight!);
+    // 2026-09-24 (adversarial review): the fill used to size the tallest pose to 0.96 of the WHOLE frame while the bear stands on the ground
+    // line, so its victory rear-up left the top — this test played only the attack. The rule now caps the tallest pose inside the frame above
+    // its stand; the victory is played below.
+    const holder = holderOf(nodes, rig); const target = combatantPresentation(rig, card.massClass.multiplier, frame, layout.stands[side].y).scale * rig.bounds.height * rig.cutout.height;
     let min = Infinity, max = -Infinity, topMin = Infinity; const joints = JOINTS(record);
     runFull(stage, plan, (ms) => { now = ms; const h = drawnHeight(holder, rig); if (h < min) min = h; if (h > max) max = h; const t = landmarkBox(holder, rig, joints).top; if (t < topMin) topMin = t; });
     expect(min).toBeGreaterThanOrEqual(target * 0.98); expect(max).toBeLessThanOrEqual(target * 1.02);
-    expect(target / frame.height).toBeGreaterThan(0.65); // the bear at rest is still the biggest thing on the stage (0.70 measured)
-    expect(topMin).toBeGreaterThanOrEqual(frame.height * (1 - GUARDIAN_FRAME_FILL) - frame.height * 0.02); // the rearing head stays inside the frame (2 % for blend samples between the probe's 13)
-    expect(drawnHeight(holder, rig)).toBeCloseTo(combatantScale(rig.bounds, rig.cutout.height, card.massClass.multiplier, frame.height, { frameFill: GUARDIAN_FRAME_FILL, tallestHeight: rig.tallestHeight! }).heightPx, 9);
+    expect(target / frame.height).toBeGreaterThan(0.5); // still by far the biggest thing on the stage (a plain combatant is 1/3–1/2 of the frame at most)
+    console.log(JSON.stringify({ bearRestFillOfFrame: +(target / frame.height).toFixed(3), side, frame: `${frame.width}x${frame.height}` }));
+    expect(topMin).toBeGreaterThanOrEqual(frame.height * COMBATANT_TOP_MARGIN - frame.height * 0.01); // the rearing head stays inside the frame (1 % for blend samples between the probe's 13)
+    expect(drawnHeight(holder, rig)).toBeCloseTo(target, 9);
+    // the VICTORY rear-up (the pose that left the frame): the bear wins a second turn
+    let vTop = Infinity; now = 0; const win = playTurn(stage, ctx, side === 'left' ? { side: 'A', an: 'Bear', dn: 'Platypus', dmg: 20, crit: true, hpA: 30, hpB: 0 } : { side: 'B', an: 'Bear', dn: 'Platypus', dmg: 20, crit: true, hpA: 0, hpB: 30 });
+    runFull(stage, win, (ms) => { now = ms; const t = landmarkBox(holder, rig, joints).top; if (t < vTop) vTop = t; });
+    expect(vTop).toBeGreaterThanOrEqual(frame.height * COMBATANT_TOP_MARGIN - frame.height * 0.01);
     expect(rig.refusals?.() ?? 0).toBe(0);
   });
-  for (const frame of VIEWPORTS) it(`crab (no guardian block) at ${frame.width}×${frame.height}: holder scale byte-identical to the mass-class rule; the bear beside it is ${GUARDIAN_FRAME_FILL} of the frame`, async () => {
+  for (const frame of VIEWPORTS) it(`crab (no guardian block) at ${frame.width}×${frame.height}: holder scale byte-identical to the mass-class rule; the bear beside it takes the one presentation rule`, async () => {
     const crab = await loadFit('crab'), bear = await loadFitDir(BEAR);
     const layout = layoutFor(frame); const { f, nodes } = stageFactory(); let now = 0;
     const stage = new BattleStage({ factory: f, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: crab.rig, right: bear.rig }, masses: { left: crab.card.massClass.multiplier, right: bear.card.massClass.multiplier } });
@@ -85,7 +93,7 @@ describe('D2 G6 — a guardian fills the frame; everything else is untouched', (
     const hc = holderOf(nodes, crab.rig), hb = holderOf(nodes, bear.rig);
     expect(hc.scaleSet[1]).toBe(combatantScale(crab.rig.bounds, crab.rig.cutout.height, crab.card.massClass.multiplier, frame.height).scale);
     expect(hc.scaleSet[1]).not.toBe(combatantScale(crab.rig.bounds, crab.rig.cutout.height, crab.card.massClass.multiplier, frame.height, { frameFill: GUARDIAN_FRAME_FILL }).scale);
-    expect(drawnHeight(hb, bear.rig) / frame.height).toBeCloseTo(GUARDIAN_FRAME_FILL * bear.rig.bounds.height / bear.rig.tallestHeight!, 9);
+    expect(drawnHeight(hb, bear.rig) / frame.height).toBeCloseTo(combatantPresentation(bear.rig, bear.card.massClass.multiplier, frame, layout.stands.right.y).scale * bear.rig.bounds.height * bear.rig.cutout.height / frame.height, 9);
     expect(drawnHeight(hc, crab.rig) / frame.height).toBeLessThan(0.5 + 1e-9);
     expect(crab.rig.refusals?.() ?? 0).toBe(0); expect(bear.rig.refusals?.() ?? 0).toBe(0);
   });

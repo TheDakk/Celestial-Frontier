@@ -156,7 +156,7 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
     travelOwner: 'stage',
     recipeHash: rig.recipeHash, templateId: rig.templateId, parts, root: rig.root, bounds,
     // E1.5 finding: the stage treats `cutout` as the rig's display-unit size; the paint-skin mesh is normalized, so it is 1×1 here.
-    cutout: Object.freeze({ width: 1, height: 1 }), sourceSize: Object.freeze({ width: W, height: H }), foot: Object.freeze({ x: root[0], y: record.geometry.groundLineY }), extent: Object.freeze({ left: root[0] - alphaBox.x / W, right: (alphaBox.x + alphaBox.width) / W - root[0] }), bodyLength: card.scaleLength, tallestHeight: bounds.height, ...(stanceReach !== undefined ? { stanceReach } : {}), ...((record as { guardian?: BattleRigV1['guardian'] }).guardian ? { guardian: Object.freeze({ ...(record as { guardian?: BattleRigV1['guardian'] }).guardian }) } : {}),
+    cutout: Object.freeze({ width: 1, height: 1 }), sourceSize: Object.freeze({ width: W, height: H }), foot: Object.freeze({ x: root[0], y: record.geometry.groundLineY }), extent: Object.freeze({ left: root[0] - alphaBox.x / W, right: (alphaBox.x + alphaBox.width) / W - root[0], up: record.geometry.groundLineY - alphaBox.y / H }), bodyLength: card.scaleLength, tallestHeight: bounds.height, ...(stanceReach !== undefined ? { stanceReach } : {}), ...((record as { guardian?: BattleRigV1['guardian'] }).guardian ? { guardian: Object.freeze({ ...(record as { guardian?: BattleRigV1['guardian'] }).guardian }) } : {}),
     applyPose(pose: RigPose, context: RigPoseContext = restContext()): void {
       if (disposed) throw new Error('parts rig is disposed');
       pending = pose; frame += 1;

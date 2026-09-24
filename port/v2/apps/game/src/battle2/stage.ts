@@ -26,13 +26,23 @@ export function standCentreShift(rig: Pick<BattleRigV1, 'extent' | 'cutout'>, sc
   if (!rig.extent) return 0;
   return (-facing * ((rig.extent.right - rig.extent.left) / 2) * rig.cutout.width * scale) / frameWidth;
 }
-/** ONE sizing rule for a combatant's presentation (2026-09-24; used by the app wiring, the film harness and the tests — two
- * copies could disagree): the mass rule (or the guardian's decided tallest-pose fill), then the arena WIDTH cap for a long
- * body (guardians exempt). `height`/`footBelowCentre` are frame fractions at the returned scale, ready for the habitat's
- * band fit; `capped` says the scale differs from the stage's own mass rule. */
-export function combatantPresentation(rig: Pick<BattleRigV1, 'bounds' | 'cutout' | 'foot' | 'guardian' | 'tallestHeight'>, mass: number, frame: Readonly<{ width: number; height: number }>): Readonly<{ scale: number; capped: boolean; height: number; footBelowCentre: number }> {
+/** Top margin (frame fraction) a combatant's TALLEST pose keeps below the frame's top edge. */
+export const COMBATANT_TOP_MARGIN = 0.02;
+/** ONE sizing rule for a combatant's presentation (2026-09-24; the stage's own default, the app wiring, the film harness and
+ * the tests all use it — two copies could disagree): the mass rule (or the guardian's decided tallest-pose fill), then the
+ * arena WIDTH cap for a long body (guardians exempt), then — given the line it stands on — the TOP cap: the tallest pose
+ * (rest reach above the foot + the measured rise) stays COMBATANT_TOP_MARGIN inside the frame. Found by the adversarial
+ * review of 2026-09-24: the guardian fill sized the tallest pose to 0.96 of the WHOLE frame while the Bear stands on the
+ * ground line at 0.78, so its victory rear-up left the top (the E1 test only ever checked turn one). `height` /
+ * `footBelowCentre` are frame fractions at the returned scale; `capped` = the scale differs from the plain mass rule. */
+export function combatantPresentation(rig: Pick<BattleRigV1, 'bounds' | 'cutout' | 'foot' | 'guardian' | 'tallestHeight' | 'extent'>, mass: number, frame: Readonly<{ width: number; height: number }>, standY?: number): Readonly<{ scale: number; capped: boolean; height: number; footBelowCentre: number }> {
   const k = combatantScale(rig.bounds, rig.cutout.height, mass, frame.height, rig.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(rig.tallestHeight !== undefined ? { tallestHeight: rig.tallestHeight } : {}) } : {});
-  const scale = rig.guardian ? k.scale : fitCombatantWidth(k.scale, rig.bounds, rig.cutout.width, frame.width), f = scale / k.scale;
+  let scale = rig.guardian ? k.scale : fitCombatantWidth(k.scale, rig.bounds, rig.cutout.width, frame.width);
+  if (standY !== undefined && rig.extent?.up !== undefined) {
+    const above = rig.extent.up + Math.max(0, (rig.tallestHeight ?? rig.bounds.height) - rig.bounds.height);
+    if (above > 0) scale = Math.min(scale, ((standY - COMBATANT_TOP_MARGIN) * frame.height) / (above * rig.cutout.height));
+  }
+  const f = scale / k.scale;
   return Object.freeze({ scale, capped: f < 1, height: k.heightFraction * f, footBelowCentre: ((rig.foot.y - 0.5) * rig.cutout.height * scale) / frame.height });
 }
 import { buildTurnPlan, sampleTurn, type Side, type StageSample, type TurnArena, type TurnAttack, type TurnPlan, type TurnPlanInput } from './choreography.js';
@@ -124,7 +134,8 @@ export class BattleStage {
       r.x = -rig.foot.x * rig.cutout.width; r.y = -rig.foot.y * rig.cutout.height; h.addChild(r as object);
       this.root.addChild(h); return h;
     };
-    this.#scales = o.presentationScales ? { ...o.presentationScales } : { left: combatantScale(o.rigs.left.bounds, o.rigs.left.cutout.height, o.masses.left, L.frame.height, o.rigs.left.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(o.rigs.left.tallestHeight !== undefined ? { tallestHeight: o.rigs.left.tallestHeight } : {}) } : {}).scale, right: combatantScale(o.rigs.right.bounds, o.rigs.right.cutout.height, o.masses.right, L.frame.height, o.rigs.right.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(o.rigs.right.tallestHeight !== undefined ? { tallestHeight: o.rigs.right.tallestHeight } : {}) } : {}).scale };
+    // no measured scales given: the ONE presentation rule (mass → width cap → tallest pose inside the frame above its stand)
+    this.#scales = o.presentationScales ? { ...o.presentationScales } : { left: combatantPresentation(o.rigs.left, o.masses.left, L.frame, L.stands.left.y).scale, right: combatantPresentation(o.rigs.right, o.masses.right, L.frame, L.stands.right.y).scale };
     this.#holders = { left: holder('left'), right: holder('right') };
     this.#fx = f.container(); this.root.addChild(this.#fx);
     this.root.addChild(this.#plates.near);

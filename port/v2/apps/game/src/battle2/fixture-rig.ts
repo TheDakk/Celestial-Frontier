@@ -22,7 +22,7 @@ export interface CreatureRigV1 {
   /** How far the painted body reaches left and right of `foot.x`, in cut-out-width fractions (2026-09-24): the stage stands the
    * FOOT on the stand, so a lopsided body (a snake's root sits near its head) hangs off one side — the matchup picker filmed a
    * right-hand Python whose tail left the frame. The wiring centres the body box on the stand with it. Absent = symmetric. */
-  readonly extent?: Readonly<{ left: number; right: number }>;
+  readonly extent?: Readonly<{ left: number; right: number; /** how far the painted body reaches ABOVE the foot at rest, in cut-out-height fractions */ up?: number }>;
   dispose(): void;
 }
 /** What the stage knows about the pose it hands over (E1 §1.3): which clip it sampled and where in it, so a
@@ -268,7 +268,7 @@ export function createFixtureRig(options: FixtureRigOptions): BattleRigV1 {
     parts: Object.freeze(parts), root, bodyLength,
     bounds: Object.freeze({ width: cut.alphaBox.width / W, height: cut.alphaBox.height / H, groundLineY: record.geometry.groundLineY }),
     cutout: Object.freeze({ width: W, height: H }), foot: Object.freeze({ x: rootLm[0], y: record.geometry.groundLineY }),
-    extent: Object.freeze({ left: rootLm[0] - cut.alphaBox.x / W, right: (cut.alphaBox.x + cut.alphaBox.width) / W - rootLm[0] }),
+    extent: Object.freeze({ left: rootLm[0] - cut.alphaBox.x / W, right: (cut.alphaBox.x + cut.alphaBox.width) / W - rootLm[0], up: record.geometry.groundLineY - cut.alphaBox.y / H }),
     applyPose(pose) {
       if (disposed) throw new Error('fixture rig is disposed');
       const solved = solvePose(record, bodyLength, pose);
