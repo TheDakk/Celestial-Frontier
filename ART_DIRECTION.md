@@ -1,5 +1,7 @@
 # Celestial Frontier — Master Art Direction
 
+**Retained sprint visual review — 2026-09-23.** The [art review and integration plan](audits/ARCHETYPE_REVIEW_PLAN_20260923/README.md) inspect the signed/pushed755f52a7 sprint evidence. Python’s retained approach still and decoded native movie show loss of coherent moving-body coverage; a separate named dodge still clips at the top boundary. Hold Python visual acceptance pending a bounded diagnosis/repair. Historical exact-rest/static/native technical PASS records remain unchanged and do not establish visual acceptance. The other ten creature sheets and six-mask composite have per-selection review notes; Nick retains art acceptance, including framing, fringe, projected-view and anatomy limitations. No new master, runtime change, browser run or production admission accompanies this review.
+
 [Animation library and shared deformation review](audits/ANIMATION_COMPLETION_20260916/README.md),
 matches code as of September 16, 2026: 169 family actions now have complete-clip limit,
 determinism and GSAP parity checks (40,729 synthetic samples). Eight additional physical

@@ -1,0 +1,11 @@
+{
+  "schema": "cf.review-document-checks/v1",
+  "tool": "0a859b",
+  "localDocumentLinksChecked": 14,
+  "missingLinks": [],
+  "manifestEntriesVerifiedBeforeSigningReceipts": 9,
+  "productionSourceChanged": false,
+  "diffWhitespace": "PASS",
+  "runtimeTestRuns": 0,
+  "note": "Signing-refusal links/receipt were added after this check; original measurement/source reports remain unchanged."
+}

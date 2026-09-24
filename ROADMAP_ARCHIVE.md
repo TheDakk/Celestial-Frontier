@@ -1,3 +1,23 @@
+## Archived 2026-09-23 — published sprint handoff before visual review
+
+## Live handoff — 2026-09-23 final sprint technical packet
+
+OpenAI/Codex on macOS: /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac. Claude's /Users/nick/Projects/celestial-frontier-anthropic-mac remains read-only. Pre-existing untracked .DS_Store is untouched. Reuse the uninterrupted session maintenance receipt and Node26.9.0. Authority and retained history: audits/ARCHETYPE_FINISH_20260923/AUTHORITY.md and HISTORY.md.
+
+All13 selections have retained source-specific technical evidence: I5, Salmon, Eagle, Beetle, Python, Tree Frog, Chimpanzee, Starfish, Tarantula, Octopus, Fruit Bat, Centipede and six Salmon marking masks. The final index and review links are audits/ARCHETYPE_FINISH_20260923/final-sprint-index.json and final-sprint-review-index.md. Earlier twelve selections were not rerun or rebound to today's source. Each item has its own packet README, exact prompts, hashes, receipts and retained refusals.
+
+Centipede: 12 actions × 121 samples + 822 presentation samples; exact pose rest PASS and 0 changed visible RGBA channels. Native 20260923-centipede-native-02: 0/0 refusals; per-rig CPU p95 2.8000000715255737/1.8000000715255737 ms. S2 6 subjects/13286 support samples/12 protected inputs remain identical. Its result.json and final-source-check-01.json bind the exact consumed dirty source before signed item commit d379e61dae8d50e3ed0c68cdc8368f321431491c. The compact model has63 real joints,31 source-fixed sockets and32 texture owners, retaining original64/32 capacities. Shared contact changes preserve numerical limits; source masks and regional influence/refinement changes retain every original paint pixel. All failures and corrected tests remain in12-myriapod. The current references describe the retained runtime.
+
+Human art review remains open. Centipede uses a rigid trunk and stylized upper-projected far leg row, approximate internal hinges and a two-span leg model. The requested101px margin is missed and faint/red generated fringe remains. Other item-specific art caveats remain in their packets; technical passes do not accept art or admit a production roster. Python retains its historical whole-stage CPU scope rather than an invented per-rig figure.
+
+I5 certificate20260922-i5-focus-89b5da95c185 passed78/78 only on clean committed89b5da95c185a1e8f08080ed3f42bab8a0494ec7. Build authority bd8edd1b570d4bc4e1933a87a9e0552e75208d18ca43c40d2ffcd6712ebc1a5b; measurement authority6a829fb18eab4c171afaace0f49ad2a987cfcdc520d33dbc05337c379df85ee2. It certifies neither this final source nor PR43.
+
+Git closure: Centipede and its sealed evidence are signed in d379e61dae8d50e3ed0c68cdc8368f321431491c, signature G (b86b5f/e9b037). Nick’s renewed proceed resolved the earlier agent refusals. SSH authenticated TheDakk (58225e), repository read passed (4b36e0) and fresh visibility is PUBLIC (66d200). The successful receipt and handoff live in audits/ARCHETYPE_FINISH_20260923/git-closure. Historical waiting states remain immutable. This documentation-only closure precedes the one authorized final normal openai/mac push; verify the actual final remote HEAD equals the signed local HEAD. No new source/test change or repeated measurement is needed.
+
+Actions budget mode UNFROZEN, PUBLIC visibility, private fallback3,000; zero exact hosted attempts authorized. The retained remote workflow inspection shows no job triggered by a normal branch push. Nick requested one final normal push to openai/mac after signing. No fetch/sync, PR, label, hosted attempt, merge, release or deploy follows.
+
+Paired next steps: Codex completes the authorized normal openai/mac push and remote-equality verification, then holds. Claude can review signed packets under Nick’s integration direction; these changes are not merged into develop and must not be assumed present in its lane or copied manually. Nick reviews the art; opening Claude is optional for review, with no synchronization or integration authorized. No PR is requested.
+
 ## Archived 2026-09-23 — sprint signing wait resolved
 
 ## Live handoff — 2026-09-23 final sprint technical packet
