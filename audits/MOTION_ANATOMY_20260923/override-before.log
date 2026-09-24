@@ -1,0 +1,2 @@
+overridecheck: source graph 42 art + 5 transitive modules
+overridecheck: ../../../tools/creature-animation/fixed-attachments.mjs@258 trusted built-in Object member escapes its approved direct-call context — the PARSER is broken

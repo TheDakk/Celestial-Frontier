@@ -19,7 +19,7 @@ the archive verbatim and refresh this handoff in place.
 
 ## Live handoff — 2026-09-24 motion anatomy sprint
 
-OpenAI/Codex macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`. Baseline236b9846 signatureG; `.DS_Store` untouched. Claude lane read-only. Nick accepted all thirteen selections and explicitly requests the complete M0–M4 anatomy program plus crab/overridecheck/portable-source repairs. Request and prospective specification: audits/MOTION_ANATOMY_20260923/REQUEST.md and SPEC.md. M0 commits first; M1 instrument and M2 measured baseline precede motion edits. No acceptance numbers are inferred.
+OpenAI/Codex macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`. Baseline236b9846 signatureG; `.DS_Store` untouched. Claude lane read-only. Nick accepted all thirteen selections and explicitly requests the complete M0–M4 anatomy program plus crab/overridecheck/portable-source repairs. Request and prospective specification: audits/MOTION_ANATOMY_20260923/REQUEST.md and SPEC.md. M0 signed076e8ea3. M1 controls pass5/5; M2 baseline measured18 rigs/234 actions/1875 rows,73 FAIL plus explicit unmeasured semantics, before motion edits. Packet INSTRUMENT.md records scope and known gaps. No acceptance numbers are inferred.
 
 Startup official metadata PASS; no eligible updates; REAPER suffix resolved by scoped empty outdated result. Node26.9.0 retained. Source authorities, accepted masters/bindings and S2 input seals are unchanged. Historical I5 certificate remains solely bound to89b5da95c185, never current head/PR43.
 
