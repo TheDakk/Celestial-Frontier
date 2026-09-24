@@ -224,7 +224,9 @@ function compactMyriapodActions(pairs:number):Readonly<Record<string,MotionActio
  return fauna({
   idle:[{...ant(-3),...ultimate(2)},{head:-2},{...ant(3),...ultimate(-2)},0,-.001,-.002],
   alert:[{head:-12,...ant(-24),...ultimate(5)},-.002],
-  approach:{crawl:loop4(wave(22,12),wave(-3,5),wave(-22,-12),0,-.002,.001)},
+  // A rigid trunk stays level during crawl; stance/swing owns leg clearance.
+  // Stacking a body bob over idle lifts the front stance limb into a skin fold.
+  approach:{crawl:loop4(wave(22,12),wave(-3,5),wave(-22,-12))},
   melee:{mandible:melee({head:-12},{head:8,mandible:-20},{head:16,mandible:-38},{head:2},[-.02,.10,.12,.03],[0,0,0,0]),
    body:melee({head:-4,...ultimate(3)},{head:3},{head:6,...ultimate(-3)},{head:1},[-.01,.07,.09,.02],[0,0,0,0])},
   cast:[P(tAt('cast','rise'),'ease-in',{head:-16,...ant(-15)},0,-.002),P(tAt('cast','hold'),'sine-in-out',{head:-20,...ant(-25),...ultimate(8)},0,-.002),P(tAt('cast','release'),'ease-out',{head:14,mandible:-15},0,0),take(REST)],
