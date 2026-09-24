@@ -1,0 +1,27 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-contact-swing-lift.test.ts (12 tests | 1 failed) 36ms
+   × omitting the declaration preserves exact former compact refusals and the ordinary screen-up target 10ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-contact-swing-lift.test.ts > omitting the declaration preserves exact former compact refusals and the ordinary screen-up target
+AssertionError: expected '' to be 'Error: Contact: hit@22.5 leg3Far outs…' // Object.is equality
+
+- Expected
++ Received
+
+- Error: Contact: hit@22.5 leg3Far outside accommodatable reach
+
+ ❯ apps/game/src/creature-rig-contact-swing-lift.test.ts:56:263
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 35 passed (36)
+   Start at  16:16:56
+   Duration  332ms (transform 329ms, setup 0ms, import 444ms, tests 132ms, environment 0ms)
+

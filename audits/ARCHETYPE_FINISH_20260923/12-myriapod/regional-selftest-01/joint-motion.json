@@ -1,0 +1,317 @@
+[
+  {
+    "joint": "root",
+    "partId": "body",
+    "maxPublishedMotionPx": 0.2828352038616869
+  },
+  {
+    "joint": "head",
+    "partId": "head",
+    "maxPublishedMotionPx": 0.4924304123158842
+  },
+  {
+    "joint": "mandible",
+    "partId": "head",
+    "maxPublishedMotionPx": 0.28283486249894396
+  },
+  {
+    "joint": "antennaFar",
+    "partId": "head",
+    "maxPublishedMotionPx": 0.2828352038616869
+  },
+  {
+    "joint": "antennaNear",
+    "partId": "head",
+    "maxPublishedMotionPx": 0.28283622795226737
+  },
+  {
+    "joint": "leg0FarKnee",
+    "partId": "leg0-far",
+    "maxPublishedMotionPx": 0.4924331693620835
+  },
+  {
+    "joint": "leg0FarFoot",
+    "partId": "leg0-far",
+    "maxPublishedMotionPx": 0.28283349705189104
+  },
+  {
+    "joint": "leg0NearKnee",
+    "partId": "leg0-near",
+    "maxPublishedMotionPx": 0.4924331693620835
+  },
+  {
+    "joint": "leg0NearFoot",
+    "partId": "leg0-near",
+    "maxPublishedMotionPx": 0.28283349705189104
+  },
+  {
+    "joint": "leg1FarKnee",
+    "partId": "leg1-far",
+    "maxPublishedMotionPx": 0.492430850441719
+  },
+  {
+    "joint": "leg1FarFoot",
+    "partId": "leg1-far",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "leg1NearKnee",
+    "partId": "leg1-near",
+    "maxPublishedMotionPx": 0.492430850441719
+  },
+  {
+    "joint": "leg1NearFoot",
+    "partId": "leg1-near",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "leg2FarKnee",
+    "partId": "leg2-far",
+    "maxPublishedMotionPx": 0.492430850441719
+  },
+  {
+    "joint": "leg2FarFoot",
+    "partId": "leg2-far",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "leg2NearKnee",
+    "partId": "leg2-near",
+    "maxPublishedMotionPx": 0.492430850441719
+  },
+  {
+    "joint": "leg2NearFoot",
+    "partId": "leg2-near",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "leg3FarKnee",
+    "partId": "leg3-far",
+    "maxPublishedMotionPx": 0.492430850441719
+  },
+  {
+    "joint": "leg3FarFoot",
+    "partId": "leg3-far",
+    "maxPublishedMotionPx": 0.28283486249894396
+  },
+  {
+    "joint": "leg3NearKnee",
+    "partId": "leg3-near",
+    "maxPublishedMotionPx": 0.492430850441719
+  },
+  {
+    "joint": "leg3NearFoot",
+    "partId": "leg3-near",
+    "maxPublishedMotionPx": 0.28283622795226737
+  },
+  {
+    "joint": "leg4FarKnee",
+    "partId": "leg4-far",
+    "maxPublishedMotionPx": 0.4924331693620835
+  },
+  {
+    "joint": "leg4FarFoot",
+    "partId": "leg4-far",
+    "maxPublishedMotionPx": 0.28283349705189104
+  },
+  {
+    "joint": "leg4NearKnee",
+    "partId": "leg4-near",
+    "maxPublishedMotionPx": 0.4924331693620835
+  },
+  {
+    "joint": "leg4NearFoot",
+    "partId": "leg4-near",
+    "maxPublishedMotionPx": 0.28283349705189104
+  },
+  {
+    "joint": "leg5FarKnee",
+    "partId": "leg5-far",
+    "maxPublishedMotionPx": 0.492430850441719
+  },
+  {
+    "joint": "leg5FarFoot",
+    "partId": "leg5-far",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "leg5NearKnee",
+    "partId": "leg5-near",
+    "maxPublishedMotionPx": 0.492430850441719
+  },
+  {
+    "joint": "leg5NearFoot",
+    "partId": "leg5-near",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "leg6FarKnee",
+    "partId": "leg6-far",
+    "maxPublishedMotionPx": 0.492430850441719
+  },
+  {
+    "joint": "leg6FarFoot",
+    "partId": "leg6-far",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "leg6NearKnee",
+    "partId": "leg6-near",
+    "maxPublishedMotionPx": 0.492430850441719
+  },
+  {
+    "joint": "leg6NearFoot",
+    "partId": "leg6-near",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "leg7FarKnee",
+    "partId": "leg7-far",
+    "maxPublishedMotionPx": 0.4924303530124287
+  },
+  {
+    "joint": "leg7FarFoot",
+    "partId": "leg7-far",
+    "maxPublishedMotionPx": 0.28283486249894396
+  },
+  {
+    "joint": "leg7NearKnee",
+    "partId": "leg7-near",
+    "maxPublishedMotionPx": 0.4924297030860682
+  },
+  {
+    "joint": "leg7NearFoot",
+    "partId": "leg7-near",
+    "maxPublishedMotionPx": 0.28283622795226737
+  },
+  {
+    "joint": "leg8FarKnee",
+    "partId": "leg8-far",
+    "maxPublishedMotionPx": 0.4924331693620835
+  },
+  {
+    "joint": "leg8FarFoot",
+    "partId": "leg8-far",
+    "maxPublishedMotionPx": 0.28283349705189104
+  },
+  {
+    "joint": "leg8NearKnee",
+    "partId": "leg8-near",
+    "maxPublishedMotionPx": 0.4924331693620835
+  },
+  {
+    "joint": "leg8NearFoot",
+    "partId": "leg8-near",
+    "maxPublishedMotionPx": 0.28283349705189104
+  },
+  {
+    "joint": "leg9FarKnee",
+    "partId": "leg9-far",
+    "maxPublishedMotionPx": 0.49242934485086143
+  },
+  {
+    "joint": "leg9FarFoot",
+    "partId": "leg9-far",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "leg9NearKnee",
+    "partId": "leg9-near",
+    "maxPublishedMotionPx": 0.49242934485086143
+  },
+  {
+    "joint": "leg9NearFoot",
+    "partId": "leg9-near",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "leg10FarKnee",
+    "partId": "leg10-far",
+    "maxPublishedMotionPx": 0.49242934485086143
+  },
+  {
+    "joint": "leg10FarFoot",
+    "partId": "leg10-far",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "leg10NearKnee",
+    "partId": "leg10-near",
+    "maxPublishedMotionPx": 0.49242934485086143
+  },
+  {
+    "joint": "leg10NearFoot",
+    "partId": "leg10-near",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "leg11FarKnee",
+    "partId": "leg11-far",
+    "maxPublishedMotionPx": 0.4924303530124287
+  },
+  {
+    "joint": "leg11FarFoot",
+    "partId": "leg11-far",
+    "maxPublishedMotionPx": 0.28283486249894396
+  },
+  {
+    "joint": "leg11NearKnee",
+    "partId": "leg11-near",
+    "maxPublishedMotionPx": 0.4924297030860682
+  },
+  {
+    "joint": "leg11NearFoot",
+    "partId": "leg11-near",
+    "maxPublishedMotionPx": 0.28283622795226737
+  },
+  {
+    "joint": "leg12FarKnee",
+    "partId": "leg12-far",
+    "maxPublishedMotionPx": 0.4924331693620835
+  },
+  {
+    "joint": "leg12FarFoot",
+    "partId": "leg12-far",
+    "maxPublishedMotionPx": 0.28283349705189104
+  },
+  {
+    "joint": "leg12NearKnee",
+    "partId": "leg12-near",
+    "maxPublishedMotionPx": 0.4924331693620835
+  },
+  {
+    "joint": "leg12NearFoot",
+    "partId": "leg12-near",
+    "maxPublishedMotionPx": 0.28283349705189104
+  },
+  {
+    "joint": "leg13FarKnee",
+    "partId": "leg13-far",
+    "maxPublishedMotionPx": 0.49242934485086143
+  },
+  {
+    "joint": "leg13FarFoot",
+    "partId": "leg13-far",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "leg13NearKnee",
+    "partId": "leg13-near",
+    "maxPublishedMotionPx": 0.49242934485086143
+  },
+  {
+    "joint": "leg13NearFoot",
+    "partId": "leg13-near",
+    "maxPublishedMotionPx": 0.2828389588777255
+  },
+  {
+    "joint": "ultimateFar",
+    "partId": "ultimate-far",
+    "maxPublishedMotionPx": 0.6363821956211793
+  },
+  {
+    "joint": "ultimateNear",
+    "partId": "ultimate-near",
+    "maxPublishedMotionPx": 0.6363821956211793
+  }
+]

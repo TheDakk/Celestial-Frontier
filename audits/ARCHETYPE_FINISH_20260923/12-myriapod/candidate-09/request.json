@@ -1,0 +1,25 @@
+{
+  "schema": "cf.image-request/v1",
+  "runId": "20260923-centipede-paint-03",
+  "tool": "built-in image_gen",
+  "promptSha256": "006bf5fce063cad08371df26b4e44975049cd480dd305e248eec1f7b64c83019",
+  "references": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/master.png",
+      "role": "edit target",
+      "sha256": "d3daf82ae3963d701c2bae94304f3c15a97b3d21d0ebf782b5ffc43a09199f2b"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/pose-guide.png",
+      "role": "count guide only",
+      "sha256": "103680706a06456473a3bbc54ca9ae96dfd2ff65a71c7f14678cde98bc57837b"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "role": "sole style",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    }
+  ],
+  "priorRefusal": "../visual-review02.md",
+  "purpose": "Correct observed missing anterior far walking leg and required framing; retain rejected paint02"
+}

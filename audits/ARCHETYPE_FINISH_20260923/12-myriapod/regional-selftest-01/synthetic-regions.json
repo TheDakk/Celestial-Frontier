@@ -1,0 +1,746 @@
+[
+  {
+    "id": "head-mandible",
+    "partId": "head",
+    "joint": "mandible",
+    "polygonPx": [
+      [
+        34,
+        18
+      ],
+      [
+        38,
+        18
+      ],
+      [
+        38,
+        22
+      ],
+      [
+        34,
+        22
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "head-antennafar",
+    "partId": "head",
+    "joint": "antennaFar",
+    "polygonPx": [
+      [
+        50,
+        2
+      ],
+      [
+        54,
+        2
+      ],
+      [
+        54,
+        6
+      ],
+      [
+        50,
+        6
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "head-antennanear",
+    "partId": "head",
+    "joint": "antennaNear",
+    "polygonPx": [
+      [
+        50,
+        18
+      ],
+      [
+        54,
+        18
+      ],
+      [
+        54,
+        22
+      ],
+      [
+        50,
+        22
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg0-far-proximal",
+    "partId": "leg0-far",
+    "joint": "leg0FarKnee",
+    "polygonPx": [
+      [
+        66,
+        2
+      ],
+      [
+        86,
+        2
+      ],
+      [
+        86,
+        6
+      ],
+      [
+        66,
+        6
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg0-near-proximal",
+    "partId": "leg0-near",
+    "joint": "leg0NearKnee",
+    "polygonPx": [
+      [
+        98,
+        2
+      ],
+      [
+        118,
+        2
+      ],
+      [
+        118,
+        6
+      ],
+      [
+        98,
+        6
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg1-far-proximal",
+    "partId": "leg1-far",
+    "joint": "leg1FarKnee",
+    "polygonPx": [
+      [
+        130,
+        2
+      ],
+      [
+        150,
+        2
+      ],
+      [
+        150,
+        6
+      ],
+      [
+        130,
+        6
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg1-near-proximal",
+    "partId": "leg1-near",
+    "joint": "leg1NearKnee",
+    "polygonPx": [
+      [
+        162,
+        2
+      ],
+      [
+        182,
+        2
+      ],
+      [
+        182,
+        6
+      ],
+      [
+        162,
+        6
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg2-far-proximal",
+    "partId": "leg2-far",
+    "joint": "leg2FarKnee",
+    "polygonPx": [
+      [
+        194,
+        2
+      ],
+      [
+        214,
+        2
+      ],
+      [
+        214,
+        6
+      ],
+      [
+        194,
+        6
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg2-near-proximal",
+    "partId": "leg2-near",
+    "joint": "leg2NearKnee",
+    "polygonPx": [
+      [
+        226,
+        2
+      ],
+      [
+        246,
+        2
+      ],
+      [
+        246,
+        6
+      ],
+      [
+        226,
+        6
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg3-far-proximal",
+    "partId": "leg3-far",
+    "joint": "leg3FarKnee",
+    "polygonPx": [
+      [
+        2,
+        34
+      ],
+      [
+        22,
+        34
+      ],
+      [
+        22,
+        38
+      ],
+      [
+        2,
+        38
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg3-near-proximal",
+    "partId": "leg3-near",
+    "joint": "leg3NearKnee",
+    "polygonPx": [
+      [
+        34,
+        34
+      ],
+      [
+        54,
+        34
+      ],
+      [
+        54,
+        38
+      ],
+      [
+        34,
+        38
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg4-far-proximal",
+    "partId": "leg4-far",
+    "joint": "leg4FarKnee",
+    "polygonPx": [
+      [
+        66,
+        34
+      ],
+      [
+        86,
+        34
+      ],
+      [
+        86,
+        38
+      ],
+      [
+        66,
+        38
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg4-near-proximal",
+    "partId": "leg4-near",
+    "joint": "leg4NearKnee",
+    "polygonPx": [
+      [
+        98,
+        34
+      ],
+      [
+        118,
+        34
+      ],
+      [
+        118,
+        38
+      ],
+      [
+        98,
+        38
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg5-far-proximal",
+    "partId": "leg5-far",
+    "joint": "leg5FarKnee",
+    "polygonPx": [
+      [
+        130,
+        34
+      ],
+      [
+        150,
+        34
+      ],
+      [
+        150,
+        38
+      ],
+      [
+        130,
+        38
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg5-near-proximal",
+    "partId": "leg5-near",
+    "joint": "leg5NearKnee",
+    "polygonPx": [
+      [
+        162,
+        34
+      ],
+      [
+        182,
+        34
+      ],
+      [
+        182,
+        38
+      ],
+      [
+        162,
+        38
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg6-far-proximal",
+    "partId": "leg6-far",
+    "joint": "leg6FarKnee",
+    "polygonPx": [
+      [
+        194,
+        34
+      ],
+      [
+        214,
+        34
+      ],
+      [
+        214,
+        38
+      ],
+      [
+        194,
+        38
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg6-near-proximal",
+    "partId": "leg6-near",
+    "joint": "leg6NearKnee",
+    "polygonPx": [
+      [
+        226,
+        34
+      ],
+      [
+        246,
+        34
+      ],
+      [
+        246,
+        38
+      ],
+      [
+        226,
+        38
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg7-far-proximal",
+    "partId": "leg7-far",
+    "joint": "leg7FarKnee",
+    "polygonPx": [
+      [
+        2,
+        66
+      ],
+      [
+        22,
+        66
+      ],
+      [
+        22,
+        70
+      ],
+      [
+        2,
+        70
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg7-near-proximal",
+    "partId": "leg7-near",
+    "joint": "leg7NearKnee",
+    "polygonPx": [
+      [
+        34,
+        66
+      ],
+      [
+        54,
+        66
+      ],
+      [
+        54,
+        70
+      ],
+      [
+        34,
+        70
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg8-far-proximal",
+    "partId": "leg8-far",
+    "joint": "leg8FarKnee",
+    "polygonPx": [
+      [
+        66,
+        66
+      ],
+      [
+        86,
+        66
+      ],
+      [
+        86,
+        70
+      ],
+      [
+        66,
+        70
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg8-near-proximal",
+    "partId": "leg8-near",
+    "joint": "leg8NearKnee",
+    "polygonPx": [
+      [
+        98,
+        66
+      ],
+      [
+        118,
+        66
+      ],
+      [
+        118,
+        70
+      ],
+      [
+        98,
+        70
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg9-far-proximal",
+    "partId": "leg9-far",
+    "joint": "leg9FarKnee",
+    "polygonPx": [
+      [
+        130,
+        66
+      ],
+      [
+        150,
+        66
+      ],
+      [
+        150,
+        70
+      ],
+      [
+        130,
+        70
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg9-near-proximal",
+    "partId": "leg9-near",
+    "joint": "leg9NearKnee",
+    "polygonPx": [
+      [
+        162,
+        66
+      ],
+      [
+        182,
+        66
+      ],
+      [
+        182,
+        70
+      ],
+      [
+        162,
+        70
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg10-far-proximal",
+    "partId": "leg10-far",
+    "joint": "leg10FarKnee",
+    "polygonPx": [
+      [
+        194,
+        66
+      ],
+      [
+        214,
+        66
+      ],
+      [
+        214,
+        70
+      ],
+      [
+        194,
+        70
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg10-near-proximal",
+    "partId": "leg10-near",
+    "joint": "leg10NearKnee",
+    "polygonPx": [
+      [
+        226,
+        66
+      ],
+      [
+        246,
+        66
+      ],
+      [
+        246,
+        70
+      ],
+      [
+        226,
+        70
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg11-far-proximal",
+    "partId": "leg11-far",
+    "joint": "leg11FarKnee",
+    "polygonPx": [
+      [
+        2,
+        98
+      ],
+      [
+        22,
+        98
+      ],
+      [
+        22,
+        102
+      ],
+      [
+        2,
+        102
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg11-near-proximal",
+    "partId": "leg11-near",
+    "joint": "leg11NearKnee",
+    "polygonPx": [
+      [
+        34,
+        98
+      ],
+      [
+        54,
+        98
+      ],
+      [
+        54,
+        102
+      ],
+      [
+        34,
+        102
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg12-far-proximal",
+    "partId": "leg12-far",
+    "joint": "leg12FarKnee",
+    "polygonPx": [
+      [
+        66,
+        98
+      ],
+      [
+        86,
+        98
+      ],
+      [
+        86,
+        102
+      ],
+      [
+        66,
+        102
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg12-near-proximal",
+    "partId": "leg12-near",
+    "joint": "leg12NearKnee",
+    "polygonPx": [
+      [
+        98,
+        98
+      ],
+      [
+        118,
+        98
+      ],
+      [
+        118,
+        102
+      ],
+      [
+        98,
+        102
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg13-far-proximal",
+    "partId": "leg13-far",
+    "joint": "leg13FarKnee",
+    "polygonPx": [
+      [
+        130,
+        98
+      ],
+      [
+        150,
+        98
+      ],
+      [
+        150,
+        102
+      ],
+      [
+        130,
+        102
+      ]
+    ],
+    "pin": true
+  },
+  {
+    "id": "leg13-near-proximal",
+    "partId": "leg13-near",
+    "joint": "leg13NearKnee",
+    "polygonPx": [
+      [
+        162,
+        98
+      ],
+      [
+        182,
+        98
+      ],
+      [
+        182,
+        102
+      ],
+      [
+        162,
+        102
+      ]
+    ],
+    "pin": true
+  }
+]

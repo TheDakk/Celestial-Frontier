@@ -1,0 +1,36 @@
+{
+  "schema": "cf.sprint-signing-refusal/v1",
+  "status": "AWAITING_RENEWED_1PASSWORD_APPROVAL",
+  "attempts": [
+    {
+      "tool": "2156fb",
+      "exitCode": 128,
+      "attempt": "initial",
+      "error": "Couldn't sign message (signer): agent refused operation?",
+      "terminal": "fatal: failed to write commit object"
+    },
+    {
+      "tool": "ef89f6",
+      "exitCode": 128,
+      "attempt": "single permitted retry",
+      "error": "Couldn't sign message (signer): agent refused operation?",
+      "terminal": "fatal: failed to write commit object"
+    }
+  ],
+  "execution": "Both git commit commands ran outside the sandbox with approval through the unchanged configured SSH signing wrapper.",
+  "configurationTool": "baef42",
+  "gpgSshProgram": "/Users/nick/.local/bin/git-ssh-sign",
+  "newCommitCreated": false,
+  "pushAttempted": false,
+  "verifiedAfterRefusals": {
+    "tool": "29e0c4",
+    "head": "1285ba2ecc0548e0a299e2b855168ff9616c8496",
+    "signature": "G",
+    "trackedChanges": "completed item staged",
+    "untrackedOutsidePacket": [
+      ".DS_Store"
+    ]
+  },
+  "requiredNextStep": "Nick renews the 1Password SSH approval with until quit and confirms. Then one signed-commit retry; never unsigned and no configuration changes.",
+  "approvalRequested": true
+}

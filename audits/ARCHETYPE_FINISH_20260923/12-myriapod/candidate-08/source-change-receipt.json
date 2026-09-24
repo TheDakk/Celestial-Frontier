@@ -1,0 +1,223 @@
+{
+  "schema": "cf.centipede-source-mask-amendment/v1",
+  "candidate": "candidate-08",
+  "sourceCandidate": "candidate-07",
+  "samePaint": true,
+  "sourceAuthoringSha256": "d4ea3437786ae775c2f978aa27265331dfc58d610e6011ed652973af9a01d66a",
+  "authoringSha256": "01bb22243915ccbfb63008893217f04f3324dfa8566cf1e3a531210f1f0258aa",
+  "copied": {
+    "master.png": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+    "prompt.txt": "006bf5fce063cad08371df26b4e44975049cd480dd305e248eec1f7b64c83019",
+    "request.json": "eee818a3eedb39e1213426c05e8ea8ea9dda1576f22c12dfbab5ba6e93c5b9de",
+    "subject-source.json": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67",
+    "presence.json": "cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c",
+    "generation-receipt.json": "a95cf62f9b8fd9770549804a6f4e2e6ec0a337b522546a2785d1f383c2fd801f"
+  },
+  "maskChange": {
+    "partId": "leg10-near",
+    "before": [
+      [
+        402,
+        712
+      ],
+      [
+        440,
+        712
+      ],
+      [
+        479,
+        764
+      ],
+      [
+        432,
+        830
+      ],
+      [
+        432,
+        858
+      ],
+      [
+        365,
+        858
+      ],
+      [
+        365,
+        828
+      ],
+      [
+        413,
+        761
+      ]
+    ],
+    "after": [
+      [
+        402,
+        712
+      ],
+      [
+        440,
+        712
+      ],
+      [
+        453,
+        724
+      ],
+      [
+        479,
+        764
+      ],
+      [
+        432,
+        830
+      ],
+      [
+        432,
+        858
+      ],
+      [
+        365,
+        858
+      ],
+      [
+        365,
+        828
+      ],
+      [
+        413,
+        761
+      ]
+    ]
+  },
+  "regionChanges": [
+    {
+      "id": "leg9-far-knee-bend-observed-paint",
+      "partId": "leg9-far",
+      "before": [
+        [
+          456,
+          595
+        ],
+        [
+          480,
+          595
+        ],
+        [
+          480,
+          619
+        ],
+        [
+          456,
+          619
+        ]
+      ],
+      "after": [
+        [
+          460,
+          599
+        ],
+        [
+          476,
+          599
+        ],
+        [
+          476,
+          615
+        ],
+        [
+          460,
+          615
+        ]
+      ]
+    },
+    {
+      "id": "leg13-far-knee-bend-observed-paint",
+      "partId": "leg13-far",
+      "before": [
+        [
+          219,
+          581
+        ],
+        [
+          243,
+          581
+        ],
+        [
+          243,
+          605
+        ],
+        [
+          219,
+          605
+        ]
+      ],
+      "after": [
+        [
+          223,
+          585
+        ],
+        [
+          239,
+          585
+        ],
+        [
+          239,
+          601
+        ],
+        [
+          223,
+          601
+        ]
+      ]
+    }
+  ],
+  "manuallyObservedEnvelopes": [
+    {
+      "partId": "leg9-far",
+      "bounds": [
+        455,
+        594,
+        501,
+        649
+      ]
+    },
+    {
+      "partId": "leg13-far",
+      "bounds": [
+        218,
+        580,
+        258,
+        634
+      ]
+    }
+  ],
+  "refinements": [
+    {
+      "x": 445,
+      "y": 584,
+      "width": 66,
+      "height": 75,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 208,
+      "y": 570,
+      "width": 60,
+      "height": 74,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    }
+  ],
+  "diagnosis": "../static-paint-diagnosis02/source-review/findings.md",
+  "preserved": {
+    "masterPixels": true,
+    "otherParts": 31,
+    "far9And13BodyCollars": true,
+    "landmarks": 63,
+    "sockets": 31,
+    "otherRegions": 29,
+    "priorRefinements": 5,
+    "inheritedPins": true
+  },
+  "qualification": "No intake, test or solver execution by authoring agent"
+}

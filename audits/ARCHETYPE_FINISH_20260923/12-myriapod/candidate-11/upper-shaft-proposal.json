@@ -1,0 +1,968 @@
+{
+  "schema": "cf.manual-upper-shaft-region-proposal/v1",
+  "scope": "Manual source polygon and existing support membership only; no compiler, diffusion, skeleton, ARAP or pose execution",
+  "region": {
+    "id": "leg3-far-upper-shaft-observed-gold-proposal",
+    "partId": "leg3-far",
+    "joint": "leg3FarKnee",
+    "polygonPx": [
+      [
+        830,
+        590
+      ],
+      [
+        841,
+        588
+      ],
+      [
+        845,
+        594
+      ],
+      [
+        846,
+        603
+      ],
+      [
+        853,
+        612
+      ],
+      [
+        859,
+        618
+      ],
+      [
+        854,
+        622
+      ],
+      [
+        847,
+        622
+      ],
+      [
+        840,
+        617
+      ],
+      [
+        835,
+        610
+      ],
+      [
+        831,
+        603
+      ],
+      [
+        828,
+        596
+      ]
+    ],
+    "pin": false
+  },
+  "selected": [
+    {
+      "index": 1581,
+      "sourcePx": [
+        831.5,
+        597
+      ],
+      "currentWeights": [
+        [
+          "leg3FarKnee",
+          1
+        ]
+      ],
+      "preRegionalWeights": [
+        [
+          "leg3FarFoot",
+          0.8832321101474148
+        ],
+        [
+          "root",
+          0.11474887907661899
+        ],
+        [
+          "leg4FarFoot",
+          0.0020078987200269705
+        ],
+        [
+          "leg2FarFoot",
+          0.000009377643155946918
+        ],
+        [
+          "leg4NearFoot",
+          8.168552918133728e-7
+        ],
+        [
+          "leg3NearFoot",
+          7.031100857291391e-7
+        ],
+        [
+          "leg5NearFoot",
+          1.4873274147680236e-7
+        ],
+        [
+          "leg2NearFoot",
+          6.571466446407998e-8
+        ]
+      ],
+      "currentPin": true,
+      "inheritedPin": false,
+      "inheritedConflict": false,
+      "sourcePixelAtFloor": {
+        "x": 831,
+        "y": 597,
+        "rgba": [
+          149,
+          62,
+          4,
+          249
+        ]
+      }
+    },
+    {
+      "index": 1582,
+      "sourcePx": [
+        841,
+        592
+      ],
+      "currentWeights": [
+        [
+          "leg3FarKnee",
+          1
+        ]
+      ],
+      "preRegionalWeights": [
+        [
+          "leg3FarFoot",
+          0.9589596620321263
+        ],
+        [
+          "root",
+          0.04056058908002978
+        ],
+        [
+          "leg4FarFoot",
+          0.00047192740628949724
+        ],
+        [
+          "leg2FarFoot",
+          0.00000734994665175529
+        ],
+        [
+          "leg3NearFoot",
+          2.326414604669358e-7
+        ],
+        [
+          "leg4NearFoot",
+          1.9159437765406747e-7
+        ],
+        [
+          "leg5NearFoot",
+          2.392121546794121e-8
+        ],
+        [
+          "leg2NearFoot",
+          2.3377849062318524e-8
+        ]
+      ],
+      "currentPin": true,
+      "inheritedPin": false,
+      "inheritedConflict": false,
+      "sourcePixelAtFloor": {
+        "x": 841,
+        "y": 592,
+        "rgba": [
+          220,
+          133,
+          31,
+          252
+        ]
+      }
+    },
+    {
+      "index": 1583,
+      "sourcePx": [
+        841,
+        597
+      ],
+      "currentWeights": [
+        [
+          "leg3FarKnee",
+          1
+        ]
+      ],
+      "preRegionalWeights": [
+        [
+          "leg3FarFoot",
+          0.9412516987773977
+        ],
+        [
+          "root",
+          0.058197201927194436
+        ],
+        [
+          "leg4FarFoot",
+          0.000518594385047917
+        ],
+        [
+          "leg2FarFoot",
+          0.000030551893183246636
+        ],
+        [
+          "leg3NearFoot",
+          0.0000010391816910262327
+        ],
+        [
+          "leg4NearFoot",
+          7.189151856613989e-7
+        ],
+        [
+          "leg2NearFoot",
+          1.2695833562725764e-7
+        ],
+        [
+          "leg5NearFoot",
+          6.796196443426746e-8
+        ]
+      ],
+      "currentPin": true,
+      "inheritedPin": false,
+      "inheritedConflict": false,
+      "sourcePixelAtFloor": {
+        "x": 841,
+        "y": 597,
+        "rgba": [
+          251,
+          240,
+          206,
+          252
+        ]
+      }
+    },
+    {
+      "index": 1584,
+      "sourcePx": [
+        841,
+        607
+      ],
+      "currentWeights": [
+        [
+          "leg3FarFoot",
+          0.6618560791067565
+        ],
+        [
+          "root",
+          0.2484751069216264
+        ],
+        [
+          "leg3FarKnee",
+          0.08794149179214247
+        ],
+        [
+          "leg4FarFoot",
+          0.0013262104528339292
+        ],
+        [
+          "leg2FarFoot",
+          0.00036678239120885124
+        ],
+        [
+          "leg3NearFoot",
+          0.000018634535553233215
+        ],
+        [
+          "leg4NearFoot",
+          0.000013287059868477082
+        ],
+        [
+          "leg2FarKnee",
+          0.0000024077400101234207
+        ]
+      ],
+      "preRegionalWeights": [
+        [
+          "leg3FarFoot",
+          0.8766530719679186
+        ],
+        [
+          "root",
+          0.12250176129895123
+        ],
+        [
+          "leg4FarFoot",
+          0.0007352937037057187
+        ],
+        [
+          "leg2FarFoot",
+          0.00009735718952313865
+        ],
+        [
+          "leg3NearFoot",
+          0.000006574183438489445
+        ],
+        [
+          "leg4NearFoot",
+          0.0000045897334095164705
+        ],
+        [
+          "leg2NearFoot",
+          9.094721957466244e-7
+        ],
+        [
+          "leg5NearFoot",
+          4.4245085753200623e-7
+        ]
+      ],
+      "currentPin": false,
+      "inheritedPin": false,
+      "inheritedConflict": false,
+      "sourcePixelAtFloor": {
+        "x": 841,
+        "y": 607,
+        "rgba": [
+          185,
+          94,
+          11,
+          252
+        ]
+      }
+    },
+    {
+      "index": 1591,
+      "sourcePx": [
+        843.5,
+        594.5
+      ],
+      "currentWeights": [
+        [
+          "leg3FarFoot",
+          0.751259279625833
+        ],
+        [
+          "leg3FarKnee",
+          0.17017363938968794
+        ],
+        [
+          "root",
+          0.07789759455243823
+        ],
+        [
+          "leg4FarFoot",
+          0.0005474723503156179
+        ],
+        [
+          "leg2FarFoot",
+          0.0001167757883103585
+        ],
+        [
+          "leg3NearFoot",
+          0.0000029971850117292905
+        ],
+        [
+          "leg4NearFoot",
+          0.0000020799116572514557
+        ],
+        [
+          "leg2NearFoot",
+          1.61196745777495e-7
+        ]
+      ],
+      "preRegionalWeights": [
+        [
+          "leg3FarFoot",
+          0.9673161378439725
+        ],
+        [
+          "root",
+          0.0324176799251456
+        ],
+        [
+          "leg4FarFoot",
+          0.00025325619922507176
+        ],
+        [
+          "leg2FarFoot",
+          0.000012450011785160751
+        ],
+        [
+          "leg3NearFoot",
+          2.6007911848331495e-7
+        ],
+        [
+          "leg4NearFoot",
+          1.7306551489472546e-7
+        ],
+        [
+          "leg2NearFoot",
+          2.7938158515569237e-8
+        ],
+        [
+          "leg5NearFoot",
+          1.493707976522493e-8
+        ]
+      ],
+      "currentPin": false,
+      "inheritedPin": false,
+      "inheritedConflict": false,
+      "sourcePixelAtFloor": {
+        "x": 843,
+        "y": 594,
+        "rgba": [
+          190,
+          95,
+          12,
+          250
+        ]
+      }
+    },
+    {
+      "index": 1614,
+      "sourcePx": [
+        841,
+        617
+      ],
+      "currentWeights": [
+        [
+          "leg3FarFoot",
+          0.5341412397541496
+        ],
+        [
+          "root",
+          0.43812717995139233
+        ],
+        [
+          "leg3FarKnee",
+          0.025940338760740405
+        ],
+        [
+          "leg4FarFoot",
+          0.001234487241869611
+        ],
+        [
+          "leg2FarFoot",
+          0.000438987626372368
+        ],
+        [
+          "leg3NearFoot",
+          0.00006310616820255312
+        ],
+        [
+          "leg4NearFoot",
+          0.000046768754949779446
+        ],
+        [
+          "leg2NearFoot",
+          0.000007891742323362559
+        ]
+      ],
+      "preRegionalWeights": [
+        [
+          "leg3FarFoot",
+          0.7523675572275798
+        ],
+        [
+          "root",
+          0.24669575094734725
+        ],
+        [
+          "leg4FarFoot",
+          0.0007228540863847093
+        ],
+        [
+          "leg2FarFoot",
+          0.000134453802234387
+        ],
+        [
+          "leg3NearFoot",
+          0.000040621027468961374
+        ],
+        [
+          "leg4NearFoot",
+          0.000029563441820450757
+        ],
+        [
+          "leg2NearFoot",
+          0.00000621932852513563
+        ],
+        [
+          "leg5NearFoot",
+          0.0000029801386393222327
+        ]
+      ],
+      "currentPin": false,
+      "inheritedPin": false,
+      "inheritedConflict": false,
+      "sourcePixelAtFloor": {
+        "x": 841,
+        "y": 617,
+        "rgba": [
+          152,
+          69,
+          10,
+          252
+        ]
+      }
+    },
+    {
+      "index": 1626,
+      "sourcePx": [
+        846,
+        612
+      ],
+      "currentWeights": [
+        [
+          "leg3FarFoot",
+          0.6654024234377462
+        ],
+        [
+          "root",
+          0.29959622708303696
+        ],
+        [
+          "leg3FarKnee",
+          0.033430651016005564
+        ],
+        [
+          "leg2FarFoot",
+          0.0008449814280627124
+        ],
+        [
+          "leg4FarFoot",
+          0.000658332965110367
+        ],
+        [
+          "leg3NearFoot",
+          0.00003539922400687971
+        ],
+        [
+          "leg4NearFoot",
+          0.000021272999034162087
+        ],
+        [
+          "leg2FarKnee",
+          0.000010711846997309191
+        ]
+      ],
+      "preRegionalWeights": [
+        [
+          "leg3FarFoot",
+          0.8566170821483843
+        ],
+        [
+          "root",
+          0.14277382179009795
+        ],
+        [
+          "leg2FarFoot",
+          0.00030003739174882973
+        ],
+        [
+          "leg4FarFoot",
+          0.0002826850303661557
+        ],
+        [
+          "leg3NearFoot",
+          0.000014964309553968568
+        ],
+        [
+          "leg4NearFoot",
+          0.000008295251010863505
+        ],
+        [
+          "leg2NearFoot",
+          0.0000025004005757800774
+        ],
+        [
+          "leg5NearFoot",
+          6.136782622591767e-7
+        ]
+      ],
+      "currentPin": false,
+      "inheritedPin": false,
+      "inheritedConflict": false,
+      "sourcePixelAtFloor": {
+        "x": 846,
+        "y": 612,
+        "rgba": [
+          166,
+          89,
+          16,
+          252
+        ]
+      }
+    },
+    {
+      "index": 1627,
+      "sourcePx": [
+        851,
+        612
+      ],
+      "currentWeights": [
+        [
+          "leg3FarFoot",
+          0.6908275383103661
+        ],
+        [
+          "root",
+          0.28825299680518207
+        ],
+        [
+          "leg3FarKnee",
+          0.019041012146910972
+        ],
+        [
+          "leg2FarFoot",
+          0.0014955298107269261
+        ],
+        [
+          "leg4FarFoot",
+          0.00030459735775980993
+        ],
+        [
+          "leg2FarKnee",
+          0.00003313424603481362
+        ],
+        [
+          "leg3NearFoot",
+          0.0000299048248174022
+        ],
+        [
+          "leg4NearFoot",
+          0.00001528649820183906
+        ]
+      ],
+      "preRegionalWeights": [
+        [
+          "leg3FarFoot",
+          0.868622903245232
+        ],
+        [
+          "root",
+          0.13061562349031902
+        ],
+        [
+          "leg2FarFoot",
+          0.0006590900011840511
+        ],
+        [
+          "leg4FarFoot",
+          0.00008589431584534004
+        ],
+        [
+          "leg3NearFoot",
+          0.000010041669756412464
+        ],
+        [
+          "leg4NearFoot",
+          0.000004371570334696194
+        ],
+        [
+          "leg2NearFoot",
+          0.0000018449040919196887
+        ],
+        [
+          "leg5NearFoot",
+          2.3080323666901049e-7
+        ]
+      ],
+      "currentPin": false,
+      "inheritedPin": false,
+      "inheritedConflict": false,
+      "sourcePixelAtFloor": {
+        "x": 851,
+        "y": 612,
+        "rgba": [
+          189,
+          110,
+          30,
+          251
+        ]
+      }
+    },
+    {
+      "index": 1628,
+      "sourcePx": [
+        851,
+        617
+      ],
+      "currentWeights": [
+        [
+          "leg3FarFoot",
+          0.5785174215466288
+        ],
+        [
+          "root",
+          0.40658693421207753
+        ],
+        [
+          "leg3FarKnee",
+          0.013010006246660885
+        ],
+        [
+          "leg2FarFoot",
+          0.0013687768556631548
+        ],
+        [
+          "leg4FarFoot",
+          0.00037874253436520877
+        ],
+        [
+          "leg3NearFoot",
+          0.00007246546869460337
+        ],
+        [
+          "leg4NearFoot",
+          0.000037668137766338416
+        ],
+        [
+          "leg2FarKnee",
+          0.00002798499814354127
+        ]
+      ],
+      "preRegionalWeights": [
+        [
+          "leg3FarFoot",
+          0.7869183369382433
+        ],
+        [
+          "root",
+          0.2122022519090235
+        ],
+        [
+          "leg2FarFoot",
+          0.0006632193851265797
+        ],
+        [
+          "leg4FarFoot",
+          0.00014063706330989345
+        ],
+        [
+          "leg3NearFoot",
+          0.000044713325825111375
+        ],
+        [
+          "leg4NearFoot",
+          0.000020430303281211857
+        ],
+        [
+          "leg2NearFoot",
+          0.000009197218423721029
+        ],
+        [
+          "leg5NearFoot",
+          0.0000012138567665885613
+        ]
+      ],
+      "currentPin": false,
+      "inheritedPin": false,
+      "inheritedConflict": false,
+      "sourcePixelAtFloor": {
+        "x": 851,
+        "y": 617,
+        "rgba": [
+          203,
+          115,
+          43,
+          251
+        ]
+      }
+    },
+    {
+      "index": 1634,
+      "sourcePx": [
+        853.5,
+        614.5
+      ],
+      "currentWeights": [
+        [
+          "leg3FarFoot",
+          0.6475258205696969
+        ],
+        [
+          "root",
+          0.33895547881573446
+        ],
+        [
+          "leg3FarKnee",
+          0.011207470850054529
+        ],
+        [
+          "leg2FarFoot",
+          0.001983769400753182
+        ],
+        [
+          "leg4FarFoot",
+          0.0002177144615745602
+        ],
+        [
+          "leg2FarKnee",
+          0.000053420872950833405
+        ],
+        [
+          "leg3NearFoot",
+          0.0000381631745583099
+        ],
+        [
+          "leg4NearFoot",
+          0.00001816185467717775
+        ]
+      ],
+      "preRegionalWeights": [
+        [
+          "leg3FarFoot",
+          0.8378879729629399
+        ],
+        [
+          "root",
+          0.1610377397625528
+        ],
+        [
+          "leg2FarFoot",
+          0.0010000930939523076
+        ],
+        [
+          "leg4FarFoot",
+          0.000050913624737322684
+        ],
+        [
+          "leg3NearFoot",
+          0.000014428468514394862
+        ],
+        [
+          "leg4NearFoot",
+          0.0000057192232778996505
+        ],
+        [
+          "leg2NearFoot",
+          0.000002861162934313668
+        ],
+        [
+          "leg5NearFoot",
+          2.7170109107222736e-7
+        ]
+      ],
+      "currentPin": false,
+      "inheritedPin": false,
+      "inheritedConflict": false,
+      "sourcePixelAtFloor": {
+        "x": 853,
+        "y": 614,
+        "rgba": [
+          189,
+          111,
+          45,
+          249
+        ]
+      }
+    },
+    {
+      "index": 1635,
+      "sourcePx": [
+        856,
+        617
+      ],
+      "currentWeights": [
+        [
+          "leg3FarFoot",
+          0.5797234858752456
+        ],
+        [
+          "root",
+          0.40986873166166465
+        ],
+        [
+          "leg3FarKnee",
+          0.007136685445992482
+        ],
+        [
+          "leg2FarFoot",
+          0.0029382253628110226
+        ],
+        [
+          "leg4FarFoot",
+          0.00014906476850255933
+        ],
+        [
+          "leg2FarKnee",
+          0.00011700624280546543
+        ],
+        [
+          "leg3NearFoot",
+          0.000046866269021562414
+        ],
+        [
+          "leg4NearFoot",
+          0.00001993437395669352
+        ]
+      ],
+      "preRegionalWeights": [
+        [
+          "leg3FarFoot",
+          0.7833824366806749
+        ],
+        [
+          "root",
+          0.21464949314726195
+        ],
+        [
+          "leg2FarFoot",
+          0.0019023762196688286
+        ],
+        [
+          "leg4FarFoot",
+          0.00003127974578205205
+        ],
+        [
+          "leg3NearFoot",
+          0.00002170949763278197
+        ],
+        [
+          "leg4NearFoot",
+          0.000007404046364324938
+        ],
+        [
+          "leg2NearFoot",
+          0.000004989361787377988
+        ],
+        [
+          "leg5NearFoot",
+          3.113008277366386e-7
+        ]
+      ],
+      "currentPin": false,
+      "inheritedPin": false,
+      "inheritedConflict": false,
+      "sourcePixelAtFloor": {
+        "x": 856,
+        "y": 617,
+        "rgba": [
+          214,
+          125,
+          37,
+          249
+        ]
+      }
+    }
+  ],
+  "selectedCount": 11,
+  "inheritedConflicts": [],
+  "sourceHashes": {
+    "binding": {
+      "path": "../../audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-08/binding.json",
+      "sha256": "4aa64efddc0f7e5ada91f721fcb7ac468d73d2f879fe656e459fcd729168dfb5"
+    },
+    "before": {
+      "path": "../../audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-08/pre-regional-binding.json",
+      "sha256": "4deca7570a8ada8b832481a668cc6fa162144fbfa5d489e614b2f28408da9596"
+    },
+    "master": {
+      "path": "../../audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e"
+    },
+    "authoring": {
+      "path": "../../audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/authoring.json",
+      "sha256": "a0477b00a8dbd7c0ed77f5d9e6f696af5f94fc913c002589caf40f13242a2184"
+    }
+  },
+  "membership": "Exact boundary-inclusive predicate copied from packet regional-influences.mjs; field membership equals fieldTriangles plus per-render-vertex triangle contributors; no proximity snapping or pin skipping",
+  "qualification": "Unapplied proposal; parent awaits full remaining ARAP union before candidate11"
+}

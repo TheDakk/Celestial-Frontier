@@ -1,0 +1,37 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "audits/ARCHETYPE_FINISH_20260923/12-myriapod/native-alpha-real-01.test.mjs"
+  ],
+  "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+  "exitCode": 0,
+  "elapsedSeconds": 0.19748000000000002,
+  "scope": "Only corrected real-image control; prior passing helper controls not repeated",
+  "sources": [
+    {
+      "file": "port/v2/tools/battle2-proof/native-entry.mjs",
+      "sha256": "4674ba473bc325cc2d2870a5fd0b6653f52e4152354f917d7ad6c1b49543af62",
+      "afterSha256": "4674ba473bc325cc2d2870a5fd0b6653f52e4152354f917d7ad6c1b49543af62",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/battle2-proof/positive-alpha-box.mjs",
+      "sha256": "e5c1d074f7d4abf35abbb2f993ef210937e66ba4edd9bd516faca20500e12b01",
+      "afterSha256": "e5c1d074f7d4abf35abbb2f993ef210937e66ba4edd9bd516faca20500e12b01",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/native-alpha-real-01.test.mjs",
+      "sha256": "d25da7f827e834da79b64f0a1cbef21e2aa92e95e06ca945f3900ab1d4e502ac",
+      "afterSha256": "d25da7f827e834da79b64f0a1cbef21e2aa92e95e06ca945f3900ab1d4e502ac",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/parts/keyed.png",
+      "sha256": "2e5b90fe110deefac59fa32e471a540b9e35e3d98d2a687be548ba13ec44fdd3",
+      "afterSha256": "2e5b90fe110deefac59fa32e471a540b9e35e3d98d2a687be548ba13ec44fdd3",
+      "unchanged": true
+    }
+  ]
+}

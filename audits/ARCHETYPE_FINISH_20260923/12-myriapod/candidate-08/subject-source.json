@@ -1,0 +1,1103 @@
+{
+  "name": "Centipede",
+  "family": "myriapod",
+  "species": {
+    "name": "Centipede",
+    "aspect": 8,
+    "headFrac": 0.05,
+    "eyes": "small",
+    "posture": "crawling",
+    "mustRead": [
+      "long flattened body of many identical segments",
+      "one pair of legs per segment fanned along both sides",
+      "long antennae and a pair of rear trailing legs"
+    ],
+    "note": "Generic Centipede represented here by an adult stone centipede (Lithobiomorpha): fifteen total leg pairs, comprising fourteen ordinary walking pairs plus the ultimate rear-directed pair. The earlier scolopendrid choice remains in original-subject-source.json."
+  },
+  "genome": {
+    "seed": 3894424807,
+    "kingdom": "fauna",
+    "color": 1,
+    "form": 0,
+    "body": 0,
+    "loco": 0,
+    "trait": 18,
+    "size": 0,
+    "diet": 1,
+    "head": 2,
+    "limbs": 2,
+    "skin": 7,
+    "tail": 2,
+    "pattern": 7,
+    "eyes": 0,
+    "behavior": 2,
+    "habitat": 18,
+    "detail": 6,
+    "accent": 10,
+    "temper": 9,
+    "sense": 6,
+    "repro": 1,
+    "life": 2,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Centipede"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Centipede\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3894424807\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "index": 283,
+  "contract": {
+    "id": "myriapod",
+    "version": 1,
+    "clipSetId": "myriapod-v1",
+    "graph": [
+      [
+        "head",
+        "root"
+      ],
+      [
+        "mandible",
+        "head"
+      ],
+      [
+        "antennaFar",
+        "head"
+      ],
+      [
+        "antennaNear",
+        "head"
+      ],
+      [
+        "leg0FarKnee",
+        "root"
+      ],
+      [
+        "leg0FarFoot",
+        "leg0FarKnee"
+      ],
+      [
+        "leg0NearKnee",
+        "root"
+      ],
+      [
+        "leg0NearFoot",
+        "leg0NearKnee"
+      ],
+      [
+        "leg1FarKnee",
+        "root"
+      ],
+      [
+        "leg1FarFoot",
+        "leg1FarKnee"
+      ],
+      [
+        "leg1NearKnee",
+        "root"
+      ],
+      [
+        "leg1NearFoot",
+        "leg1NearKnee"
+      ],
+      [
+        "leg2FarKnee",
+        "root"
+      ],
+      [
+        "leg2FarFoot",
+        "leg2FarKnee"
+      ],
+      [
+        "leg2NearKnee",
+        "root"
+      ],
+      [
+        "leg2NearFoot",
+        "leg2NearKnee"
+      ],
+      [
+        "leg3FarKnee",
+        "root"
+      ],
+      [
+        "leg3FarFoot",
+        "leg3FarKnee"
+      ],
+      [
+        "leg3NearKnee",
+        "root"
+      ],
+      [
+        "leg3NearFoot",
+        "leg3NearKnee"
+      ],
+      [
+        "leg4FarKnee",
+        "root"
+      ],
+      [
+        "leg4FarFoot",
+        "leg4FarKnee"
+      ],
+      [
+        "leg4NearKnee",
+        "root"
+      ],
+      [
+        "leg4NearFoot",
+        "leg4NearKnee"
+      ],
+      [
+        "leg5FarKnee",
+        "root"
+      ],
+      [
+        "leg5FarFoot",
+        "leg5FarKnee"
+      ],
+      [
+        "leg5NearKnee",
+        "root"
+      ],
+      [
+        "leg5NearFoot",
+        "leg5NearKnee"
+      ],
+      [
+        "leg6FarKnee",
+        "root"
+      ],
+      [
+        "leg6FarFoot",
+        "leg6FarKnee"
+      ],
+      [
+        "leg6NearKnee",
+        "root"
+      ],
+      [
+        "leg6NearFoot",
+        "leg6NearKnee"
+      ],
+      [
+        "leg7FarKnee",
+        "root"
+      ],
+      [
+        "leg7FarFoot",
+        "leg7FarKnee"
+      ],
+      [
+        "leg7NearKnee",
+        "root"
+      ],
+      [
+        "leg7NearFoot",
+        "leg7NearKnee"
+      ],
+      [
+        "leg8FarKnee",
+        "root"
+      ],
+      [
+        "leg8FarFoot",
+        "leg8FarKnee"
+      ],
+      [
+        "leg8NearKnee",
+        "root"
+      ],
+      [
+        "leg8NearFoot",
+        "leg8NearKnee"
+      ],
+      [
+        "leg9FarKnee",
+        "root"
+      ],
+      [
+        "leg9FarFoot",
+        "leg9FarKnee"
+      ],
+      [
+        "leg9NearKnee",
+        "root"
+      ],
+      [
+        "leg9NearFoot",
+        "leg9NearKnee"
+      ],
+      [
+        "leg10FarKnee",
+        "root"
+      ],
+      [
+        "leg10FarFoot",
+        "leg10FarKnee"
+      ],
+      [
+        "leg10NearKnee",
+        "root"
+      ],
+      [
+        "leg10NearFoot",
+        "leg10NearKnee"
+      ],
+      [
+        "leg11FarKnee",
+        "root"
+      ],
+      [
+        "leg11FarFoot",
+        "leg11FarKnee"
+      ],
+      [
+        "leg11NearKnee",
+        "root"
+      ],
+      [
+        "leg11NearFoot",
+        "leg11NearKnee"
+      ],
+      [
+        "leg12FarKnee",
+        "root"
+      ],
+      [
+        "leg12FarFoot",
+        "leg12FarKnee"
+      ],
+      [
+        "leg12NearKnee",
+        "root"
+      ],
+      [
+        "leg12NearFoot",
+        "leg12NearKnee"
+      ],
+      [
+        "leg13FarKnee",
+        "root"
+      ],
+      [
+        "leg13FarFoot",
+        "leg13FarKnee"
+      ],
+      [
+        "leg13NearKnee",
+        "root"
+      ],
+      [
+        "leg13NearFoot",
+        "leg13NearKnee"
+      ],
+      [
+        "ultimateFar",
+        "root"
+      ],
+      [
+        "ultimateNear",
+        "root"
+      ]
+    ],
+    "bodyAxis": [
+      "root",
+      "head"
+    ],
+    "joints": [
+      "root",
+      "head",
+      "mandible",
+      "antennaFar",
+      "antennaNear",
+      "leg0FarKnee",
+      "leg0FarFoot",
+      "leg0NearKnee",
+      "leg0NearFoot",
+      "leg1FarKnee",
+      "leg1FarFoot",
+      "leg1NearKnee",
+      "leg1NearFoot",
+      "leg2FarKnee",
+      "leg2FarFoot",
+      "leg2NearKnee",
+      "leg2NearFoot",
+      "leg3FarKnee",
+      "leg3FarFoot",
+      "leg3NearKnee",
+      "leg3NearFoot",
+      "leg4FarKnee",
+      "leg4FarFoot",
+      "leg4NearKnee",
+      "leg4NearFoot",
+      "leg5FarKnee",
+      "leg5FarFoot",
+      "leg5NearKnee",
+      "leg5NearFoot",
+      "leg6FarKnee",
+      "leg6FarFoot",
+      "leg6NearKnee",
+      "leg6NearFoot",
+      "leg7FarKnee",
+      "leg7FarFoot",
+      "leg7NearKnee",
+      "leg7NearFoot",
+      "leg8FarKnee",
+      "leg8FarFoot",
+      "leg8NearKnee",
+      "leg8NearFoot",
+      "leg9FarKnee",
+      "leg9FarFoot",
+      "leg9NearKnee",
+      "leg9NearFoot",
+      "leg10FarKnee",
+      "leg10FarFoot",
+      "leg10NearKnee",
+      "leg10NearFoot",
+      "leg11FarKnee",
+      "leg11FarFoot",
+      "leg11NearKnee",
+      "leg11NearFoot",
+      "leg12FarKnee",
+      "leg12FarFoot",
+      "leg12NearKnee",
+      "leg12NearFoot",
+      "leg13FarKnee",
+      "leg13FarFoot",
+      "leg13NearKnee",
+      "leg13NearFoot",
+      "ultimateFar",
+      "ultimateNear"
+    ],
+    "legs": [
+      "leg0Far",
+      "leg0Near",
+      "leg1Far",
+      "leg1Near",
+      "leg2Far",
+      "leg2Near",
+      "leg3Far",
+      "leg3Near",
+      "leg4Far",
+      "leg4Near",
+      "leg5Far",
+      "leg5Near",
+      "leg6Far",
+      "leg6Near",
+      "leg7Far",
+      "leg7Near",
+      "leg8Far",
+      "leg8Near",
+      "leg9Far",
+      "leg9Near",
+      "leg10Far",
+      "leg10Near",
+      "leg11Far",
+      "leg11Near",
+      "leg12Far",
+      "leg12Near",
+      "leg13Far",
+      "leg13Near"
+    ],
+    "limitsDeg": {
+      "root": {
+        "min": -20,
+        "max": 20
+      },
+      "head": {
+        "min": -35,
+        "max": 35
+      },
+      "mandible": {
+        "min": -40,
+        "max": 5
+      },
+      "antennaFar": {
+        "min": -50,
+        "max": 50
+      },
+      "antennaNear": {
+        "min": -50,
+        "max": 50
+      },
+      "leg0FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg0FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg0NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg0NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg1FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg1FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg1NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg1NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg2FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg2FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg2NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg2NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg3FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg3FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg3NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg3NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg4FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg4FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg4NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg4NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg5FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg5FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg5NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg5NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg6FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg6FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg6NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg6NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg7FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg7FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg7NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg7NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg8FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg8FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg8NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg8NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg9FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg9FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg9NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg9NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg10FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg10FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg10NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg10NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg11FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg11FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg11NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg11NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg12FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg12FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg12NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg12NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg13FarKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg13FarFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "leg13NearKnee": {
+        "min": -60,
+        "max": 60
+      },
+      "leg13NearFoot": {
+        "min": -70,
+        "max": 70
+      },
+      "ultimateFar": {
+        "min": -70,
+        "max": 70
+      },
+      "ultimateNear": {
+        "min": -70,
+        "max": 70
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.1,
+        "max": 0.95,
+        "kind": "distance",
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "leg/body:leg0Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg0FarKnee",
+          "leg0FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg0Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg0NearKnee",
+          "leg0NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg1Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg1FarKnee",
+          "leg1FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg1Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg1NearKnee",
+          "leg1NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg2Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg2FarKnee",
+          "leg2FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg2Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg2NearKnee",
+          "leg2NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg3Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg3FarKnee",
+          "leg3FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg3Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg3NearKnee",
+          "leg3NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg4Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg4FarKnee",
+          "leg4FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg4Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg4NearKnee",
+          "leg4NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg5Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg5FarKnee",
+          "leg5FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg5Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg5NearKnee",
+          "leg5NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg6Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg6FarKnee",
+          "leg6FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg6Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg6NearKnee",
+          "leg6NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg7Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg7FarKnee",
+          "leg7FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg7Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg7NearKnee",
+          "leg7NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg8Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg8FarKnee",
+          "leg8FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg8Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg8NearKnee",
+          "leg8NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg9Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg9FarKnee",
+          "leg9FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg9Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg9NearKnee",
+          "leg9NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg10Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg10FarKnee",
+          "leg10FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg10Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg10NearKnee",
+          "leg10NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg11Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg11FarKnee",
+          "leg11FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg11Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg11NearKnee",
+          "leg11NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg12Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg12FarKnee",
+          "leg12FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg12Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg12NearKnee",
+          "leg12NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg13Far",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg13FarKnee",
+          "leg13FarFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      },
+      {
+        "id": "leg/body:leg13Near",
+        "min": 0.05,
+        "max": 1.5,
+        "kind": "ratio",
+        "bones": [
+          "leg13NearKnee",
+          "leg13NearFoot"
+        ],
+        "axis": [
+          "root",
+          "head"
+        ]
+      }
+    ],
+    "anatomyModel": "myriapod-rigid-trunk-v1",
+    "contactStance": {
+      "default": "all",
+      "actions": {},
+      "gaits": {
+        "approach:crawl": "alternating"
+      },
+      "travel": {
+        "melee:mandible": "source-steps",
+        "melee:body": "source-steps",
+        "hit": "source-steps",
+        "dodge": "source-steps",
+        "tame": "source-steps"
+      }
+    }
+  },
+  "promptAnatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": [],
+    "appendages": {
+      "walkingLegPairs": 14,
+      "ultimateLegPairs": 1
+    }
+  },
+  "selection": {
+    "scope": "Fresh representative of the same generic Earth Centipede, same complete genome and visualKey. Not an observed count or admission until the returned painting is inspected.",
+    "source": "https://www.nhm.ac.uk/discover/how-to-make-pitfall-trap-to-catch-insects.html",
+    "terminalSource": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6330759/"
+  }
+}

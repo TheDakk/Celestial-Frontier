@@ -1,0 +1,10 @@
+PASS compile 32 texture owners and preserve standard seals, source geometry, pins and all 63 influences
+PASS real skeleton, ARAP and part interpolation move every declared joint; exact rest is retained
+PASS proximal Knee shape remains independent of Foot rotation while inherited Foot contact pin follows Foot
+PASS motion oracle rejects erased secondary influence and a frozen walking part
+PASS unknown joint refuses before output
+PASS conflicting regional and inherited pins refuse rather than overwriting locks
+PASS no owned paint and paint without a selected support each refuse
+PASS stale record and binding seals refuse
+PASS unlocked seed survives diffusion and produces published secondary motion
+{"status":"PASS","passedCases":9,"sourceFiles":31,"out":"/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-selftest-01"}

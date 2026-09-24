@@ -1,0 +1,9 @@
+{
+  "schema": "cf.predecessor-signing-success/v1",
+  "commit": "1285ba2ecc0548e0a299e2b855168ff9616c8496",
+  "signatureStatus": "G",
+  "commitToolReceipt": "3dd1e1",
+  "verificationToolReceipt": "faafe1",
+  "resolves": "../11-flyer-membrane/signing-attempts.json",
+  "scope": "Nick renewed proceed authority; one successful signed retry. Historical Fruit Bat waiting receipt unchanged."
+}

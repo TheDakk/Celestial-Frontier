@@ -1,0 +1,3 @@
+# Explicit presence declaration
+
+The parent Codex agent inspected candidate03 master.png itself and declares14 far walking legs,14 near walking legs,one ultimate pair,two antennae and the visible head/mouth. No absent,hidden or folded declaration is inferred by software. The ultimate pair is explicitly non-walking; it is retained as two articulated appendages. The painted trunk plates are carried by one rigid trunk, with no segmented-wave claim. Internal landmarks and fixed sockets remain manual source-space hypotheses for fitting; the image does not prove skeletal anatomy. Nick reviews the art, including the missed101px margin and generated edge fringe.

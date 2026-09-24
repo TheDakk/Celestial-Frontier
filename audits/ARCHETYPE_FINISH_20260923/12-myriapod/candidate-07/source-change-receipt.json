@@ -1,0 +1,124 @@
+{
+  "schema": "cf.centipede-source-mask-amendment/v1",
+  "candidate": "candidate-07",
+  "sourceCandidate": "candidate-06",
+  "samePaint": true,
+  "sourceAuthoringSha256": "45418670b670334729710d1fb0340530e38f9ab319646159b4b6e7fe02efa34a",
+  "authoringSha256": "d4ea3437786ae775c2f978aa27265331dfc58d610e6011ed652973af9a01d66a",
+  "copied": {
+    "master.png": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+    "prompt.txt": "006bf5fce063cad08371df26b4e44975049cd480dd305e248eec1f7b64c83019",
+    "request.json": "eee818a3eedb39e1213426c05e8ea8ea9dda1576f22c12dfbab5ba6e93c5b9de",
+    "subject-source.json": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67",
+    "presence.json": "cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c",
+    "generation-receipt.json": "a95cf62f9b8fd9770549804a6f4e2e6ec0a337b522546a2785d1f383c2fd801f"
+  },
+  "partId": "leg4-near",
+  "before": [
+    [
+      778,
+      692
+    ],
+    [
+      816,
+      692
+    ],
+    [
+      856,
+      748
+    ],
+    [
+      817,
+      812
+    ],
+    [
+      817,
+      839
+    ],
+    [
+      755,
+      839
+    ],
+    [
+      755,
+      810
+    ],
+    [
+      797,
+      744
+    ]
+  ],
+  "after": [
+    [
+      778,
+      692
+    ],
+    [
+      816,
+      692
+    ],
+    [
+      836,
+      715
+    ],
+    [
+      856,
+      748
+    ],
+    [
+      817,
+      812
+    ],
+    [
+      817,
+      839
+    ],
+    [
+      755,
+      839
+    ],
+    [
+      755,
+      810
+    ],
+    [
+      797,
+      744
+    ]
+  ],
+  "diagnosis": "../static-paint-diagnosis01/root-edge-inspection.json",
+  "retainedFringePoints": [
+    [
+      832,
+      714
+    ],
+    [
+      833,
+      715
+    ],
+    [
+      833,
+      716
+    ]
+  ],
+  "preserved": {
+    "masterPixels": true,
+    "hipEdge": [
+      [
+        778,
+        692
+      ],
+      [
+        816,
+        692
+      ]
+    ],
+    "otherParts": 31,
+    "landmarks": 63,
+    "fixedAttachments": 31,
+    "regions": 31,
+    "meshRefinements": 5,
+    "inheritedPins": true
+  },
+  "qualification": "No intake, test or solver execution by authoring agent"
+}

@@ -1,0 +1,159 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "centipede",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "ccc9bb95a16b35762133e17cfc3e93669ca3678bc20b063567f185f0a2971c3c",
+    "pngSha256": "e65da3cf01ac59924bb84c6112543684b732b6d7491247521f084b60278ccba9"
+  },
+  "parts": [
+    {
+      "name": "body.png",
+      "sha256": "80497f72bfcf6a30ea3cc29091aa328ea36645cb2f2bbedfbe0da90e2530e2e9"
+    },
+    {
+      "name": "head.png",
+      "sha256": "4e140b32f38ca874742f3d13cf9d068428512ebeab701976562573ab2763fbb6"
+    },
+    {
+      "name": "leg0-far.png",
+      "sha256": "a236d564bae395edbcca6141db8ef7372654b482f3b291a6d6723417efcf6e1e"
+    },
+    {
+      "name": "leg0-near.png",
+      "sha256": "598337320246906aa1c982224b3f0c73d6fcf2bb94b86cd5b7f1e0cd5233fce9"
+    },
+    {
+      "name": "leg1-far.png",
+      "sha256": "926bc67f40b2ddd96642088dfbedff7c9147ef338a841d98061080df84409c9e"
+    },
+    {
+      "name": "leg1-near.png",
+      "sha256": "16074c2d4a828ed1a100bee0562adef21c5db645cda37fc75c51d84461e2f306"
+    },
+    {
+      "name": "leg10-far.png",
+      "sha256": "0469e02a4e194be90ebe303ad58f9d4dec73efbc82a826560bcaecbccded0b4f"
+    },
+    {
+      "name": "leg10-near.png",
+      "sha256": "fa8a16ae81f320504145be49061c25fb1e2a84848b68527257d4dab38b8ae60a"
+    },
+    {
+      "name": "leg11-far.png",
+      "sha256": "760f615f20b15174e0c426b8db2da2e4f8e9c07f2f1f81dced1e1fe4da4febd6"
+    },
+    {
+      "name": "leg11-near.png",
+      "sha256": "8b3beb7bf9c3f8d69f61ab85f149c5d0dc719d469c78d15c73522a9e336ac412"
+    },
+    {
+      "name": "leg12-far.png",
+      "sha256": "a2c8ada04b3c7f3e2e62b376444c443eedbdc0fab19284fb73438ae02e340eca"
+    },
+    {
+      "name": "leg12-near.png",
+      "sha256": "90b59cce9209ab9c04986cdc50babe078b288a6531e4c820ce41f473ad456ec4"
+    },
+    {
+      "name": "leg13-far.png",
+      "sha256": "6bf19dbfd37464cb078a5ad47fb2163bf6536c192a01be1389b56b3d66313d1b"
+    },
+    {
+      "name": "leg13-near.png",
+      "sha256": "d480999ad2414bc97928959b5b9bea2f2075bbdb4f7cc8514445a0f3c3e25426"
+    },
+    {
+      "name": "leg2-far.png",
+      "sha256": "7a4f5b95ae9fdd0955c9d6bbbca03284222ee0fff48fd9ba11d338f3abec55fc"
+    },
+    {
+      "name": "leg2-near.png",
+      "sha256": "64d5064de38d9a0d0ce535bf3fd8b0c746f9751e235b0a9f64e6989ca99e75c3"
+    },
+    {
+      "name": "leg3-far.png",
+      "sha256": "d5ace4d5de789ab15df1401c424dbc3806c9fe302404779583c746472af3a263"
+    },
+    {
+      "name": "leg3-near.png",
+      "sha256": "ceb1afdeed7f6f6b4c393a81d1db0cdcf262695824fb27e5a5f7090f1261c613"
+    },
+    {
+      "name": "leg4-far.png",
+      "sha256": "ec8d62fe0c62456f6351561e70d8ee0b9f0af640922466d22940e50280daa06e"
+    },
+    {
+      "name": "leg4-near.png",
+      "sha256": "cfba121df6d7b9833806075b417669c03fab60841f93d4da44a3adef367512f6"
+    },
+    {
+      "name": "leg5-far.png",
+      "sha256": "bcba84b005eb58e5aeb3a7552549dec12ffa930b3aa1e8d599c5f704d9fb323a"
+    },
+    {
+      "name": "leg5-near.png",
+      "sha256": "00f652f29252960cf2b904845d90204d7329580d2ee25ba7cc8316b639a0fe05"
+    },
+    {
+      "name": "leg6-far.png",
+      "sha256": "78f9b0d714f630c6bdf77386b9943e5007a857688ae39b50a02c6ca19069191b"
+    },
+    {
+      "name": "leg6-near.png",
+      "sha256": "19410e2131580afb8498c996765d03534fb7ee07b4f34637e2be6ec64787fb9d"
+    },
+    {
+      "name": "leg7-far.png",
+      "sha256": "2b9e9b5f57db015b7afff518b8d5331cd8fcb8468210e8060a9d4e6a902a8f11"
+    },
+    {
+      "name": "leg7-near.png",
+      "sha256": "63f450d37cbc88cb531569ffd2a0a3cbe04ae4f33b2150da374cd97aa2c373ff"
+    },
+    {
+      "name": "leg8-far.png",
+      "sha256": "1303e5a89ce8e654d599dee4dd314eedb59dcf6c3891461f753c0850ba4a7165"
+    },
+    {
+      "name": "leg8-near.png",
+      "sha256": "f526c99fa04999ba8f7b83cc61685627e70806fb5389be7513a315fd5b97b4d4"
+    },
+    {
+      "name": "leg9-far.png",
+      "sha256": "1a38d31dc63896103b6ff443f7da5c98b8af614efa35f210841f9055b9e91536"
+    },
+    {
+      "name": "leg9-near.png",
+      "sha256": "14edfd81d96252b5fe9a73032a5be736aeb26c2d740e9230e0c45be217fa1c48"
+    },
+    {
+      "name": "ultimate-far.png",
+      "sha256": "04780d9eae595bee22a2bc8518d74ae2cd47ca11a4b9c78de82df380a1fbd693"
+    },
+    {
+      "name": "ultimate-near.png",
+      "sha256": "55e216d5613c023bfebe8a4a24a7cd802379c607065d714f839bfccd39a6264c"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

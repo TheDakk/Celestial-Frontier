@@ -1,0 +1,13 @@
+{
+  "schema": "cf.image-generation-receipt/v1",
+  "runId": "20260923-centipede-paint-02",
+  "tool": "built-in image_gen",
+  "toolOutputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-4a8515ee-186b-4c8d-baab-4cf9bfcec799.png",
+  "toolOutputSha256": "d3daf82ae3963d701c2bae94304f3c15a97b3d21d0ebf782b5ffc43a09199f2b",
+  "retainedMaster": "master.png",
+  "masterSha256": "d3daf82ae3963d701c2bae94304f3c15a97b3d21d0ebf782b5ffc43a09199f2b",
+  "promptSha256": "b4c754b74501ae150328f77ea732889ec3c2d54cd47a3a0819f830941a54067c",
+  "requestSha256": "669d9d712d0251f627343bb81e3a92f862db5ece62cc782490b83362ec10e2e3",
+  "rgbaEdited": false,
+  "visualAcceptance": "pending independent actual count"
+}

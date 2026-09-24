@@ -2,14 +2,15 @@
  * Supports every family graph. Preserves all face provenance and source UVs. */
 import {hashJSON} from './quadruped-template.mjs';
 import {smoothSkinWeights} from './smooth-skin-weights.mjs';
+import {selectPaintedContactVertex} from './painted-contact-selector.mjs';
 const need=(ok,msg)=>{if(!ok)throw Error('Observed surfaces: '+msg);};
 function observedContactPins(input,record,skin,contactEndpoints){
  const {parts,vertices}=skin,contactPins=[];
  for(const joint of contactEndpoints){
   const owner=input.parts.find(p=>p.joint===joint),part=parts.find(p=>p.id===owner?.id),end=record.landmarks[joint];need(part&&record.geometry,'missing contact surface');
-  let best=null;part.vertices.forEach((v,index)=>{const xy=[0,0];for(let k=0;k<3;k++){const p=vertices[v.triangle[k]];xy[0]+=p.x*v.barycentric[k];xy[1]+=p.y*v.barycentric[k];}const distance=Math.hypot(xy[0]-end[0]*record.geometry.width,xy[1]-end[1]*record.geometry.height);if(!best||distance<best.distance)best={index,distance,v};});
-  need(best,'empty contact surface');const supports=best.v.triangle.filter((_,k)=>best.v.barycentric[k]>1e-10);
-  contactPins.push({joint,part:part.id,vertex:best.index,distancePx:best.distance,supports});
+  const best=selectPaintedContactVertex(vertices,part,end,record.geometry.width,record.geometry.height);
+  need(best,'empty contact surface');const supports=best.vertex.triangle.filter((_,k)=>best.vertex.barycentric[k]>1e-10);
+  contactPins.push({joint,part:part.id,vertex:best.vertexIndex,distancePx:best.distancePx,supports});
  }return contactPins;
 }
 export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['root'],shapeJoints=[],preservePaintBoundaries=false,contactEndpoints=[],preserveExistingWeights=false,releaseContactConflicts=false}={}){

@@ -14,6 +14,6 @@ Prior signed outcomes and all original refusals remain in ../ARCHETYPE_REPAIRS_2
 |8 radial|Starfish|retained PASS|../ARCHETYPE_REPAIRS_20260922/08-radial/README.md|
 |9 arachnid|Tarantula|PASS;13 actions+896 presentation;rest0;film0/0;per-rig0.7999999523162842/1ms; signedaaef06af G|09-arachnid/README.md; review-sheet-native-01.png;20260923-tarantula-native-01|
 |10 cephalopod|Octopus|retained PASS|../ARCHETYPE_REPAIRS_20260922/10-cephalopod/README.md|
-|11 flyer-membrane|Fruit Bat|PASS;13 actions×121+1057 presentation;rest0;film0/0;per-rig0.6000000238418579/0.6000000238418579ms; WAITING_FOR_SIGNATURE after2refusals|11-flyer-membrane/README.md; review-sheet-native-01.png;20260923-fruit-bat-native-01|
-|12 myriapod|Centipede|pending|—|
+|11 flyer-membrane|Fruit Bat|PASS;13 actions×121+1057 presentation;rest0;film0/0;per-rig0.6000000238418579/0.6000000238418579ms; signed1285ba2e G|11-flyer-membrane/README.md; review-sheet-native-01.png;20260923-fruit-bat-native-01|
+|12 myriapod|Centipede|technical PASS;12 actions+822 presentation;rest0;film0/0;per-rig2.8000000715255737/1.8000000715255737ms; signed commit blocked:two agent refusals;renewed approval required|12-myriapod/README.md;12-myriapod/review-sheet-native-01.png;20260923-centipede-native-02|
 |13 markings|Salmon|retained PASS|../ARCHETYPE_REPAIRS_20260922/13-fish-markings/README.md|
