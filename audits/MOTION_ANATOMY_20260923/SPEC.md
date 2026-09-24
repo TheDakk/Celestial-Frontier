@@ -37,7 +37,7 @@ All action rows also report actual amplitude, exact zero/rest start where specif
 - Every offered verb (source inventory): `idle`, `alert`, `approach:walk`, `approach:trot`, `approach:gallop`, `approach:hop`, `melee:bite`, `melee:claw`, `melee:gore`, `melee:tail`, `melee:headbutt`, `cast`, `hit`, `dodge`, `faint`, `victory`, `tame`, `feed`, `melee:kick`. Common verbs above are specialized by these anatomy restrictions. Count-dependent libraries must be inventoried again per actual record; no absent verb is fabricated.
 - Reference IDs: civet-proxy, bear.
 
-### brachyuran — Crab, Freshwater Crab, Mud Crab, Vent Crab, Fiddler Crab
+### brachyuran — Crab, Freshwater Crab, Mud Crab, Vent Crab, Coconut Crab
 
 - Locomotion: Scuttle alternating four-leg support groups; contralateral mirror and alternating ipsilateral pairs.
 - Duty/phase target:  .60±.08. Swing lift follows the common arc target when walking contacts exist.
