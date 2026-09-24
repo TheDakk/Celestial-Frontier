@@ -49,7 +49,10 @@ try {
   const texture = (img) => Texture.from(img.canvas);
   // D2 G6: a guardian record moves the stands (GUARDIAN_STANDS) and fills the frame by its tallest pose, as the stage does
   const guardianSide = left.rig.guardian ? 'left' : right.rig.guardian ? 'right' : undefined;
-  const layout = composeArena({ id: recipe.battleContext?.worldKey ?? 'arena', groundLineNormalized: recipe.groundLineNormalized, plates: { far, mid, near } }, FRAME, guardianSide ? { guardianSide } : {});
+  const composed = composeArena({ id: recipe.battleContext?.worldKey ?? 'arena', groundLineNormalized: recipe.groundLineNormalized, plates: { far, mid, near } }, FRAME, guardianSide ? { guardianSide } : {});
+  // script.guardianStandY (optional; LOOK STUDIES ONLY, not a game setting): stand the guardian lower in the foreground, so the
+  // presentation top cap (tallest pose inside the frame above its stand) allows a larger drawn size
+  const layout = guardianSide && typeof script.guardianStandY === 'number' ? { ...composed, stands: { ...composed.stands, [guardianSide]: { ...composed.stands[guardianSide], y: script.guardianStandY } } } : composed;
   const masses = { left: left.card.massClass.multiplier, right: right.card.massClass.multiplier };
   // the app's ONE placement pipeline (battle2/placement.ts — the same the wiring and the tests use); script.world (optional) is an
   // ArenaWorld to fight on (e.g. a lake, so swimmers can be filmed); absent = the default dry arena
@@ -57,7 +60,9 @@ try {
   const placed = placeCombatants({ contextId: 'battle2-proof', seed: recipe.seed, layout, worlds: scriptWorld ? { home: scriptWorld, visitor: scriptWorld } : null,
     left: { rig: left.rig, mass: masses.left, record: left.record, genome: null, label: left.name }, right: { rig: right.rig, mass: masses.right, record: right.record, genome: null, label: right.name } });
   if (placed.status !== 'READY') throw Error('habitat: ' + placed.habitat.reason);
-  const habitat = placed.habitat, stagedLayout = placed.layout;
+  // the look-study knob must hold through placement too (placement stands each side on its habitat line, the dry ground)
+  const standY = guardianSide && typeof script.guardianStandY === 'number' ? script.guardianStandY : null;
+  const habitat = placed.habitat, stagedLayout = standY === null ? placed.layout : { ...placed.layout, stands: { ...placed.layout.stands, [guardianSide]: { ...placed.layout.stands[guardianSide], y: standY } } };
   const paintedL = { capped: !!placed.presentationScales }, paintedR = paintedL; // report fields (widthCapped)
   const phaseTextures = new Map(); for (const p of anchors.phases) if (!isProceduralImage(p.keyedImage)) phaseTextures.set(p.keyedImage, texture(await image(p.keyedImage.split('/').pop())));
   const dot = particleDiscRgba(PARTICLE_DISC_SIZE), dotCanvas = new OffscreenCanvas(PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE), dotImage = dotCanvas.getContext('2d').createImageData(PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE); dotImage.data.set(dot); dotCanvas.getContext('2d').putImageData(dotImage, 0, 0);
@@ -89,7 +94,7 @@ try {
       if (plan.attack) { stageAt(o + b.impactAt); const c = contactWorld(side, plan.attack.contactJoint), targetStand = stagedLayout.stands[plan.target.side]; row.contactAtImpact = c ? { x: c.x / FRAME.width, y: c.y / FRAME.height, targetStandX: targetStand.x, gapToTargetStand: Math.abs(targetStand.x - c.x / FRAME.width) } : null; }
       return row; });
     stageAt(0);
-    return { status: 'DIAGNOSTIC', frame: FRAME, rigs: { left: left.rig.label, right: right.rig.label }, names: { left: left.name, right: right.name }, habitat: habitat.label, fit: { left: habitat.stands.left.fit, right: habitat.stands.right.fit }, widthCapped: { left: paintedL.capped, right: paintedR.capped }, mediums: { left: habitat.stands.left.medium, right: habitat.stands.right.medium }, stands: stagedLayout.stands, attacks: { ...attackLabels }, turns: rows, skipped, totalMs, refusals: { left: left.rig.refusals(), right: right.rig.refusals() }, lastRefusal: { left: left.rig.lastRefusal(), right: right.rig.lastRefusal() } };
+    return { status: 'DIAGNOSTIC', frame: FRAME, rigs: { left: left.rig.label, right: right.rig.label }, names: { left: left.name, right: right.name }, habitat: habitat.label, fit: { left: habitat.stands.left.fit, right: habitat.stands.right.fit }, widthCapped: { left: paintedL.capped, right: paintedR.capped }, mediums: { left: habitat.stands.left.medium, right: habitat.stands.right.medium }, stands: stagedLayout.stands, restFill: (() => { const b = stage.bodies(); return { left: stagedLayout.stands.left.y - b.left.topY, right: stagedLayout.stands.right.y - b.right.topY }; })(), guardianStandY: standY, attacks: { ...attackLabels }, turns: rows, skipped, totalMs, refusals: { left: left.rig.refusals(), right: right.rig.refusals() }, lastRefusal: { left: left.rig.lastRefusal(), right: right.rig.lastRefusal() } };
   };
   const still = (g) => { stageAt(g); return app.canvas.toDataURL('image/png').split(',')[1]; };
   async function capture() {
