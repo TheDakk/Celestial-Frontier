@@ -1,0 +1,98 @@
+[
+  {
+    "id": "snake",
+    "title": "Hu et al. 2009, The mechanics of slithering locomotion",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2700932/",
+    "scope": "Lateral undulation depends on body-wave propagation and directional ground friction; planar animation does not prove propulsion."
+  },
+  {
+    "id": "snake-modes",
+    "title": "Jayne 2020, What Defines Different Modes of Snake Locomotion?",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7391877/",
+    "scope": "Distinguishes lateral undulation and rectilinear skin/muscle transport. A bone wave alone cannot certify rectilinear locomotion."
+  },
+  {
+    "id": "fish",
+    "title": "Lauder et al., Undulatory locomotion of flexible foils",
+    "url": "https://journals.biologists.com/jeb/article/217/12/2110/12094/Undulatory-locomotion-of-flexible-foils-as",
+    "scope": "Fish-like bending travels toward the tail with an increasing lateral envelope; mechanical foil experiments are a proxy, not Salmon species calibration."
+  },
+  {
+    "id": "centipede",
+    "title": "Dynamics of centipede locomotion revealed by large-scale traction force microscopy",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11285478/",
+    "scope": "Measured travelling force waves along walking legs. Direction and wavelength depend on species and speed; do not assume all myriapods share a single gait."
+  },
+  {
+    "id": "insect",
+    "title": "Climbing favours the tripod gait over alternative faster insect gaits",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5321742/",
+    "scope": "Tripod coordination supports stable climbing; walking duty exceeds one half. Beetle values below are game targets, not measurements from this study."
+  },
+  {
+    "id": "arachnid",
+    "title": "Biomechanics of octopedal locomotion",
+    "url": "https://journals.biologists.com/jeb/article/214/20/3433/10466/Biomechanics-of-octopedal-locomotion-kinematic-and",
+    "scope": "Slow spider displacement approximates alternating tetrapods with duty above one half; fast gaits vary."
+  },
+  {
+    "id": "frog",
+    "title": "Take-off and landing forces in jumping frogs",
+    "url": "https://journals.biologists.com/jeb/article/209/1/66/33403/Take-off-and-landing-forces-in-jumping-frogs",
+    "scope": "Landing and recovery occupy a substantial portion of the cycle. Hindlimb launch and forelimb landing are distinct."
+  },
+  {
+    "id": "primate",
+    "title": "The biomechanics of knuckle-walking",
+    "url": "https://journals.biologists.com/jeb/article/223/14/jeb224360/224550/The-biomechanics-of-knuckle-walking-3-D-kinematics",
+    "scope": "Chimpanzee hand/wrist mechanics are specialized; arm endpoints do not by themselves prove knuckle contact."
+  },
+  {
+    "id": "bear",
+    "title": "Grizzly bear locomotion: gaits and ground reaction forces",
+    "url": "https://journals.biologists.com/jeb/article/218/19/3102/14189/Grizzly-bear-Ursus-arctos-horribilis-locomotion",
+    "scope": "Slow walking uses a lateral sequence; do not call all bear gaits trots."
+  },
+  {
+    "id": "civet-proxy",
+    "title": "Interspecific scaling of cat locomotion",
+    "url": "https://journals.biologists.com/jeb/article/210/4/642/17244/Interspecific-scaling-of-the-morphology-and",
+    "scope": "Felids in this experiment used lateral sequence walking. This is an explicit quadruped proxy, not a Civet measurement."
+  },
+  {
+    "id": "bird",
+    "title": "The role of passive avian head stabilization in flapping flight",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4614461/",
+    "scope": "Head motion can be attenuated relative to wingbeat/body oscillation; an Eagle-specific numerical calibration is not claimed."
+  },
+  {
+    "id": "bat",
+    "title": "Megachiropteran bats profoundly unique in climbing and walking locomotion",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5619802/",
+    "scope": "Pteropodid terrestrial motion differs from microbat walking. Forelimbs remain wing-bearing; ordinary mammal paw gait is an inadequate substitute."
+  },
+  {
+    "id": "octopus",
+    "title": "Arm Coordination in Octopus Crawling Involves Unique Motor Control Strategies",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0960982215002663",
+    "scope": "Octopus crawling uses flexible arm selection rather than a mandatory periodic tetrapod. Jetting and crawling are different modes."
+  },
+  {
+    "id": "starfish",
+    "title": "Sea star inspired crawling and bouncing",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7014793/",
+    "scope": "Tube-foot locomotion is distinct from arm flapping. The model describes coordinated feet; missing tube feet cannot be certified by oscillating five arms."
+  },
+  {
+    "id": "crab",
+    "title": "Martinez et al., Underwater punting by an intertidal crab",
+    "url": "https://polypedal.berkeley.edu/publications/051_Martinez_UnderwaterPuntingbyanIntertidalCrab_JExpBiol_1998.pdf",
+    "scope": "Crab gait depends on substrate and immersion. Our land scuttle is a stylized alternating support gait; freshwater reach remains independently sealed."
+  },
+  {
+    "id": "strike",
+    "title": "Rattlesnake Strike Behavior: Kinematics",
+    "url": "https://journals.biologists.com/jeb/article/201/6/837/7851/Rattlesnake-Strike-Behavior-Kinematics",
+    "scope": "Strike recruitment and launch posture vary. The Python extension and timing bounds below are explicit game direction, not an inferred universal snake measurement."
+  }
+]
