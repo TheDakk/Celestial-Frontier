@@ -7011,6 +7011,16 @@ Painted support recovery (matches code 2026-09-23): the cached endpoint-only ana
 
 `port/v2/apps/game/src/creature-rig.ts` exports `CreatureRigLoadOptions`; optional seventh argument `{borrowedAtlas:true}` makes the existing custom decoder's Texture caller-owned. Rig disposal and decoded-size refusal preserve that atlas/source while releasing rig-owned objects. Default remains owned. A shared cache releases only after all borrowers dispose. The loader still checks record/binding/atlas hashes and dimensions. Evidence: audits/BORROWED_ATLAS_20260922/README.md; master-space Crab masks: audits/MORPH_CRAB_MARKINGS_20260922/README.md.
 
+## Combat Chronicle pacer and battle2 delivery — matches code as of 2026-09-24 (day)
+- `combat-chronicle.ts`: `CombatChronicleController.setPacer(pacer | null)` (set before `start`). With a pacer each step waits for
+  `pacer.waitFor(step.transcriptIndex)`, at most `COMBAT_CHRONICLE_PACER_MAX_WAIT_MS` (12,000 ms). Skip, hide, close and reduced motion are
+  unchanged, and without a pacer the 420/240 ms cadence is unchanged. `createCombatChroniclePacerGateV1()` returns `{ pacer,
+  release(throughTranscriptIndex), releaseAll() }`. `main.ts` sets a gate only under `?battle2=1` with motion on; `battle2-wiring.ts`
+  releases rows at turn impacts.
+- Shipped arena: `public/battle2/` (alpha-only cut-outs, gzip-compressed bindings, `MANIFEST.json`) and the build's pin list
+  `apps/game/battle2-assets.json`, both written by `tools/morph/build-shipped-battle2.mjs`. `pwa-battle2-assets.ts` (Codex) reads the pins,
+  and the worker serves them first-use.
+
 ## Painted card (morph) and battle2 library module map — matches code as of 2026-09-24
 
 This section covers the Claude-lane owners of the painted library on the Compendium card and in the battle2 arena. Paths are relative to `port/v2/` unless they start with `audits/`, which is at the repo root. Anatomy, fitting, the parts rig, the ARAP skin and source-fixed sockets belong to Codex. They are described in [CREATURE_ANIMATION.md](CREATURE_ANIMATION.md) and the C2 sections above; this map only names where they are consumed. The design intent is in [MORPH_SYSTEM_DESIGN.md](audits/VISION_PROGRAM_20260920/MORPH_SYSTEM_DESIGN.md).

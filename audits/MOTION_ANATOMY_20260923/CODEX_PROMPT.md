@@ -80,6 +80,18 @@ Nick is tired of "stop, generate something, stop." For this run and every run af
    SHA-256-pinned manifest in place of the bytes (or bind the record to the atlas/binding chain it already checks). Only if you
    agree it keeps the admission's guarantee; Claude will not touch the loader.
 
+## Added 2026-09-24 (day) — after Claude merged `1e9f5920`
+
+9. **Five reds first appear at your `fb1922a0`** (bisected in a scratch worktree; `95c97b08` is clean; `1e9f5920` alone reproduces them):
+   `creature-rig-contact-rigid-refusal.test.ts` ×2 (*"Contact: cast@157.58333333333334 exceeds scale compression bound"*, and "expected
+   undefined to be an instance of Error": the refusal lost its cause), after the `creature-rig-contact.ts` change;
+   `exceptional-crafting-evidence-contract.test.ts` ×2 (*"development-detail baseline red before mutation controls"*) and
+   `slicesmoke-sixth-red-contract.test.ts` ×1 (`populated: false`), after the one-line `release-content.ts` addition. Please fix them in your
+   lane. Claude's merged tree carries them unchanged.
+10. **Item 4 is integrated.** Claude generates `apps/game/battle2-assets.json` from the shipping builder. The arena counted toward your 128 MiB cap
+   left ~3 MiB, so the bindings now ship gzip-compressed (arena 48.1 MiB, ~33 MiB headroom). Edge with the worker controlling the page:
+   first use, then a cached reload with 0 server requests, plus a cold-pair control (`audits/BATTLE2_LIBRARY_20260924/picker-smoke-06-sw/`).
+
 **Nick accepted the archetype sprint art (all thirteen selections).** His direction: *"Animations can be fine-tuned
 more. The snake doesn't move exactly like a snake — we need to double-check all the animals and make sure they're
 moving appropriately for their anatomy."* This run is **MOTION ANATOMY**: every rigged animal must move the way its

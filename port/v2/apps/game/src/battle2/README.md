@@ -181,6 +181,18 @@ sits just above the target's painted top, clamped inside the frame.
   the app rule, and goes through `placeCombatants` to real turn plans both ways (attack, counter-attack, dodge) on a
   stage without a habitat refusal or a throw; the `main.ts` gate check carries mutation controls.
 
+### Shipping, the service worker, the guardian and pacing (matches code as of 2026-09-24, day)
+- **Shipped files.** `tools/morph/build-shipped-battle2.mjs` writes `apps/game/public/battle2/`. Each keyed cut-out ships as `parts/alpha.png`
+  (the stage reads only its alpha), and each part binding as `binding.json.gz` (the asset source gunzips `.gz` and sniffs the bytes; the
+  loader's binding hash is over the parsed JSON). `MANIFEST.json` records `derivedFrom` for both. The shipped arena is 48.1 MiB.
+- **Pins.** The same builder writes `apps/game/battle2-assets.json` (`cf-battle2-assets/v1`, Codex's contract): every regular file under
+  `public/battle2`, final bytes and SHA-256. The PWA build makes them first-use marker assets, and the worker verifies and caches each on
+  first use. The 128 MiB pack cap counts them.
+- **Guardian.** A guardian on the ground stands at `GUARDIAN_STANDS.groundY` (0.95, in the foreground); `placeCombatants` keeps every ground
+  fighter on its composed stand line. The Bear rests at 0.673 of the frame.
+- **Pacing.** With `input.pacer` (a `CombatChroniclePacerGateV1`; `main.ts` passes one under `?battle2=1` with motion on), the study
+  releases each staged turn's Chronicle row at the turn's impact, and everything on finish, failure or dispose.
+
 ### Known limits
 - The Centipede's ARAP skin folds a triangle at 0.85× its default presentation scale (Codex's anatomy chain). The
   `SCALE SWEEP` in `library-arena.test.ts` pins it by its reason (`Centipede ×0.85` → `ARAP skin: unresolved folded

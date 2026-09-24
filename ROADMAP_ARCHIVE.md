@@ -1,3 +1,68 @@
+## Archived 2026-09-24 (day, Claude) — superseded handoffs: Claude's night-sprint handoff and Codex's "expanded sprint in progress" block (merged in at 1e9f5920), verbatim
+
+## SESSION HANDOFF — September 24, 2026 (night) · CLAUDE'S SPRINT: PICKER, REVIEW FIXES, COVERAGE STUDY, DOCS; THE SERVICE WORKER BLOCKS THE ARENA
+Self-contained: either lane can resume from this block alone. Older handoffs are archived verbatim at the top of `ROADMAP_ARCHIVE.md`.
+
+**Where the work stands.** `anthropic/mac` holds tonight's sprint (items -68…-72 below) on top of `d643fc0e`. PR #43 is the one combined PR
+(both lanes; #42 closed). Every workflow is dispatch- or `labeled`-only, so a push spends no Actions; a hosted attempt needs Nick to
+cycle the label. Remaining reds are all Codex's: I5 (the Compendium memory budget's measured re-seal), the freshwater-crab reach
+regression (`1dfeec2a`) and Codex's own override gate. Codex is running the motion-anatomy program in sprint mode
+(`audits/MOTION_ANATOMY_20260923/CODEX_PROMPT.md`, which now also carries tonight's four new items).
+
+**What is built and proven.**
+- The morph system end to end, on the card and on the stage (items -39…-63).
+- All 17 painted archetypes fight on the real stage: on land, in the air and in water (-65/-66).
+- A matchup picker puts any two of them on the stage: `?battle2=1&vs=Python,Eagle[&world=lake|land][&seed=N]` (-68).
+- Tonight's adversarial review fixes, each with an outcome test and a negative control (-69).
+- One placement pipeline (`battle2/placement.ts` `placeCombatants`), shared by the game, the film harness and the tests.
+
+**The new blocker for playtesting the arena (item -70).** In a BUILT game the service worker refuses every `/battle2/` file (503),
+because they live in `public/` and never enter its build marker. So the painted arena does not stage once the worker controls the
+page, and that includes the -67 playtest packages (the current one is item -76). Until Codex's worker gains a lane for them, play the arena on the dev server:
+`cd port/v2/apps/game && npm run dev`, then open `http://localhost:5173/?battle2=1&vs=Tree%20Frog,Salmon`. The dev server has no
+worker.
+
+**How close the vision is, measured (item -71).** One painting per body plan leaves **454 of 561** Earth species misleading
+(`audits/COVERAGE_STUDY_20260924/README.md`). The morph is right for individuals of one silhouette; the library needs more
+paintings, but far fewer than one per species. The top 10 new paintings fix 120 species and the top 20 fix 195. The painting order
+is Nick's call.
+
+**Next, by owner.**
+- **Nick:** (1) the painting plan: which archetypes, in what order (top 10 in the study's README); (2) the Bear guardian now stands
+  at 0.55 of the frame so its rear-up stays in frame (it was 0.70, and its head left the frame). Keep it, or stand guardians lower
+  in the foreground: at a 0.95 stand line it is 0.67 (`audits/BATTLE2_GUARDIAN_SIZE_20260924/guardian-size-sheet-01.png`, item -73); (3) one look at the half lake's faded shore (`picker-smoke-03/picker-1.png`); (4) after
+  I5 lands, cycle the label on PR #43.
+- **Codex:** the motion-anatomy program plus items 1–7 of its prompt: the SW lane for `/battle2/` and the Centipede fold at 0.85×
+  are new; I5 stays first for the PR.
+- **Claude:** wire the arena into Codex's worker lane once it names the shape (the pinned list already exists: `public/battle2/MANIFEST.json`);
+  add each new archetype to the card and arena the day it lands; rebuild the playtest package once the worker serves the arena.
+- **Two more questions for Nick (battle2):** (a) portrait-phone framing (item -75); (b) turn pacing: today the painted stage plays
+  the whole transcript at its own pace while the Chronicle text log reveals a row every 240 ms. Should the stage pace the log (each
+  row appears at its turn's impact) or stay independent? Pacing the log changes the Chronicle, which owns accessibility and audio,
+  so Claude has not built it.
+
+**Traps this session paid for (obey them).**
+- `stage.play()` stamps a turn's start from the clock. A test loop that rewinds the clock plays every later turn at negative
+  time: reset to 0 before each play and require the end tick to report `done`.
+- A staging test with no effect anchors passes vacuously. Give it the real Wild anchors and make it throw when no effect was
+  placed.
+- A browser smoke test of a built package runs under the service worker; `picker-smoke.mjs --no-sw` separates the arena from
+  the worker.
+- Earlier traps still hold: the training-restart fixture is exact capture output (notes in `.RESEAL.md`). A backtick in a
+  comment inside `ui-sheet-style.ts` ends the CSS literal. Never `expect(x).not.toBe(y)` on a multi-MB typed array. A sealed
+  budget is never re-bound by hand. Run `npm run overridecontrol` and the workflow's whole gate list locally before any hosted
+  attempt.
+
+## Live handoff — 2026-09-24 expanded sprint in progress
+
+Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. Claude’s absolute worktree remains read-only. Nick added items4–7 from Claude’s uncommitted CODEX_PROMPT.md; its exact snapshot and hash are retained at audits/MOTION_FOLLOWUP_20260924. Signedef45f97b records I5 source triage first. PR43 was read-only verified OPEN at anthropic/mac202191a1efe47ca173ce0bbd32809def910b7a45 → develop; it differs from this local source. Standing no-sync/no-merge remains; no certificate attempt or hosted action consumed. I5-FIRST.md explains the exact source gate.
+
+Item4 implemented here: external battle2-assets.json with schema cf-battle2-assets/v1 and files[{path,bytes,sha256}], exact source/final-output inventory validation, digest-verified first-use caching per retained build, no eager arena download. The unchanged128MiB shipped limit includes lazy assets.45 PWA tests,35 release tests and all3 typechecks pass; one local evidence build succeeds. The authority printer then exits2 for stale budget producer, explicitly retained; no rebind. Claude must generate the actual pinned list from its builder and run the integrated controlled-worker picker. Exact shape/next steps: CLAUDE_BATTLE2_MANIFEST.md.
+
+Item5 Centipede0.85× and item7 unused-template wiring are next in this uninterrupted sprint. Item6 remains the signedfb1922a0 stance/override repair, no changed seals or repeated unchanged battery. Existing motion review is audits/MOTION_ANATOMY_20260923/review.html, signedfb1922a0 plus4c23bffc handoff; its unresolved anatomy gates remain explicit.
+
+Codex continues independent work; Claude consumes signed changes and generates the manifest when handed this contract. Nick need not open Claude before this sprint finishes, but may relay the contract now. No push/PR/label/hosted/merge/release/deploy; no new art commissioned. Current Node26.9.0 identity rechecked; startup receipt reused within the same uninterrupted session. Signed commits only through existing wrapper; pre-existing .DS_Store untouched.
+
 ## Archived 2026-09-24 (Claude) — ROADMAP hygiene: the 2026-09-19 (night) handoff with its lane-state sub-blocks, and the 2026-09-17…19 batch blocks, verbatim
 
 ## SESSION HANDOFF — September 19, 2026 (night) · E1 CODED ON THE MERGED LANE; CODEX RUNNING THE SINGLE-RUN PROGRAM
