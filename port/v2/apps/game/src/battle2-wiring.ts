@@ -260,13 +260,14 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   let voices: CreatureVoiceHook | null = null;
   const status = (): Battle2Status => Object.freeze({ phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }) });
   const setPhase = (next: Battle2Phase, why: string | null = null): void => { phase = next; reason = why; section.dataset.battle2Status = next; if (why) section.dataset.battle2Reason = why; };
-  const tick = (): void => {
+  const tickUnguarded = (): void => {
     if (disposed || !stage || !app) return;
     if (!input.mount.isConnected || section.parentElement !== input.mount) { dispose('mount left the document'); return; }
     ticks++;
-    const play = (i: number): void => { turnStart = input.clock(); impactAt = stage!.play(turns[i]!).beats.impactAt; };
+    const play = (i: number): void => { turnStart = input.clock(); impactAt = stage!.play(turns[i]!).beats.impactAt; section.dataset.battle2Turn = String(i); };
     if (turnIndex < 0) { turnIndex = 0; play(0); }
     const frame = stage.tick();
+    if (ticks % 30 === 0) section.dataset.battle2Ticks = String(ticks); // smoke diagnostics (cheap)
     if (input.clock() - turnStart >= impactAt) releaseThrough(turnIndex); // this turn's Chronicle row appears at its impact
     if (frame?.done) {
       releaseThrough(turnIndex);
@@ -275,6 +276,9 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     }
     app.renderer.render(app.stage);
   };
+  // the flagged study must never throw into the game's SHARED ticker: a throw inside a ticker callback stops Pixi's ticker and the
+  // whole game freezes (2026-09-24, a Python's missing voice source set in a real browser). A failed tick fails the study, labelled.
+  const tick = (): void => { try { tickUnguarded(); } catch (error) { const why = `stage tick failed: ${error instanceof Error ? error.message : String(error)}`; dispose(why); setPhase('failed', why); } };
   const startTicking = (): void => { if (!ticking) { ticking = true; input.ticker.add(tick); } };
   const stopTicking = (): void => { if (ticking) { ticking = false; input.ticker.remove(tick); } };
   const onPageHide = (event: Event): void => { stopTicking(); if (!(event as PageTransitionEvent).persisted) dispose('pagehide'); };
