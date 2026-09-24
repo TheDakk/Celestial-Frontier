@@ -16,9 +16,9 @@ export interface MorphIndividualV1 {
   readonly atlasPixels?: (rgba: Uint8Array, width: number, height: number) => Uint8Array;
   readonly frames: readonly PaletteFrame[];
 }
-export function paletteFramesV1(binding: Pick<CreaturePartsBindingV1, 'parts'>, card: Pick<BodyCard, 'parts'>): readonly PaletteFrame[] {
+export function paletteFramesV1(binding: Pick<CreaturePartsBindingV1, 'parts'>, card: Pick<BodyCard, 'parts'> & { readonly template?: Readonly<{ id: string }> }): readonly PaletteFrame[] {
   const groupOf = new Map(card.parts.map((p) => [p.joint, p.group] as const));
-  return Object.freeze(binding.parts.filter((p) => p.kind === 'part').map((p) => Object.freeze({ x: p.frame.x, y: p.frame.y, width: p.frame.width, height: p.frame.height, role: paletteRoleOfGroup(groupOf.get(p.joint)) })));
+  return Object.freeze(binding.parts.filter((p) => p.kind === 'part').map((p) => Object.freeze({ x: p.frame.x, y: p.frame.y, width: p.frame.width, height: p.frame.height, role: paletteRoleOfGroup(groupOf.get(p.joint), card.template?.id) })));
 }
 export function individualFromGenomeV1(input: { readonly record: { readonly recipeHash: string; readonly genome?: MorphGenome | null; readonly identity?: { readonly speciesVisualKey?: string }; readonly geometry?: { readonly width: number; readonly height: number } }; readonly binding: Pick<CreaturePartsBindingV1, 'parts' | 'atlasSize'>; readonly card: Pick<BodyCard, 'parts'>; readonly genome: MorphGenome | null | undefined; /** the individual's painted marking mask in MASTER space, when the archetype has one for its pattern; mapped into the atlas inside the remap where the decoded atlas is at hand */ readonly markingMask?: AlphaMask | null }): MorphIndividualV1 {
   const params = morphParamsV1(input.genome, input.record.recipeHash, archetypeGenomeV1(input.record)), frames = paletteFramesV1(input.binding, input.card);

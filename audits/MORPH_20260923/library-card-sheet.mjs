@@ -26,7 +26,7 @@ for (const [r, a] of CARD_ARCHETYPES.entries()) {
   }
   const t = row.tiles.map((x) => x.sha256); row.morphsDistinct = new Set(t.slice(0, 4)).size === 4; row.stripedDiffers = t[4] !== t[0]; rows.push(row);
 }
-fs.writeFileSync(path.join(import.meta.dirname, 'library-card-sheet-01.png'), writePng(W, H, out));
+fs.writeFileSync(path.join(import.meta.dirname, 'library-card-sheet-03.png'), writePng(W, H, out));
 const summary = { archetypes: rows.length, allMorphsDistinct: rows.every((r) => r.morphsDistinct), masksLandWhereShipped: rows.filter((r) => r.hasMasks).every((r) => r.stripedDiffers), renders: src.renders };
-fs.writeFileSync(path.join(import.meta.dirname, 'library-card-sheet-01.json'), JSON.stringify({ schema: 'cf.library-card-sheet/v1', columns: cols.map((c) => c.label), summary, rows }, null, 1) + '\n');
+fs.writeFileSync(path.join(import.meta.dirname, 'library-card-sheet-03.json'), JSON.stringify({ schema: 'cf.library-card-sheet/v1', columns: cols.map((c) => c.label), summary, rows }, null, 1) + '\n');
 console.log(JSON.stringify(summary));
