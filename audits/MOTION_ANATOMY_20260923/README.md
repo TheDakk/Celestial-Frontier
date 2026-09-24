@@ -1,5 +1,7 @@
 # Motion anatomy — measured local results, 2026-09-24
 
+**Signing resolved:** repair/review commit `fb1922a0cd43f2a0f4d43a31f22d2bbb935b806a` verified **G** after Nick’s authorized retry. [Signing completion](SIGNING_COMPLETE.md) supersedes the earlier staged/signing-block statements retained below. The local result is committed; no push occurred.
+
 Open [review.html](review.html), Python first. Nick's thirteen art selections remain accepted and byte-identical. This packet completes the specification, baseline, available independent repairs and review assembly. **Full M3 anatomy qualification remains blocked** by the specific stage, representation and protected-measurement gates below; it is not all green.
 
 ## Source and authority
