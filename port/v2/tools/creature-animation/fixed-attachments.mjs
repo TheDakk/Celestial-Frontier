@@ -1,7 +1,7 @@
 /** Source-authored fixed sockets carry no pose channel or extra joint. */
 const MODEL='myriapod-rigid-trunk-v1';
 const need=(ok,reason)=>{if(!ok)throw Error('Fixed attachments: '+reason);};
-const object=v=>v!==null&&typeof v==='object'&&!Array.isArray(v)&&[Object.prototype,null].includes(Object.getPrototypeOf(v));
+const object=v=>v!==null&&typeof v==='object'&&!Array.isArray(v)&&[Object.getPrototypeOf({}),null].includes(Object.getPrototypeOf(v));
 const exact=(v,keys)=>Reflect.ownKeys(v).length===keys.length&&keys.every(k=>Object.hasOwn(v,k));
 function expected(definition){
  need(definition?.id==='myriapod'&&definition.anatomyModel===MODEL,'unsupported anatomy model');

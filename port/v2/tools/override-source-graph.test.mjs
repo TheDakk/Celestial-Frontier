@@ -76,7 +76,8 @@ test('real sentinel audits transitive modules and exact null-prototype construct
   }
   for (const filename of ['tools/overridecheck.mjs', 'tools/override-source-graph.mjs',
     'tools/creature-animation/repeated-anatomy.mjs', 'tools/creature-animation/skeleton-pose.mjs',
-    'tools/creature-animation/kinematics.ts']) {
+    'tools/creature-animation/kinematics.ts', 'tools/creature-animation/fixed-attachments.mjs',
+    'tools/creature-animation/myriapod-anatomy.mjs']) {
     write(temporary, filename, fs.readFileSync(path.join(root, filename)));
   }
   fs.symlinkSync(path.join(root, 'node_modules'), path.join(temporary, 'node_modules'), 'dir');
@@ -90,7 +91,7 @@ test('real sentinel audits transitive modules and exact null-prototype construct
   };
   const baseline = run();
   assert.equal(baseline.status, 0, baseline.output);
-  assert.match(baseline.output, /source graph \d+ art \+ 3 transitive modules/);
+  assert.match(baseline.output, /source graph \d+ art \+ 5 transitive modules/);
   for (const [name, mutated, expected] of [
     ['transitive route mutation', source + '\nFAUNA2_NAME.Python = () => {};\n', /route table appears in an assignment target/],
     ['arbitrary Object.create prototype', source.replace('Object.create(null)', 'Object.create({})'), /trusted built-in Object member escapes/],

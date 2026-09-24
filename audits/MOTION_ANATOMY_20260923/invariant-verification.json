@@ -1,0 +1,20 @@
+{
+  "protectedFiles": 90,
+  "changed": [],
+  "s2Subjects": 6,
+  "s2Samples": 13286,
+  "s2AllIdentical": true,
+  "claudeHead": "236d01860ff8b0fa017a3535f5336fe76b9d430d",
+  "claudeCommittedHdArt": [
+    {
+      "path": "port/v2/packages/art/src/hdart.verbatim.js",
+      "sha256": "93d1e79292e68cd2cceab14617005900b1ccf649d2284a83f0ec497ec8e34bcd",
+      "workingTreeMatchesCommit": true
+    },
+    {
+      "path": "port/v2/packages/art/src/hdportrait.worker.verbatim.js",
+      "sha256": "50c43aa81272cc3e7950b85cf957d0e5657b3fd2c174fa38b16dd11cdc1b67e3",
+      "workingTreeMatchesCommit": true
+    }
+  ]
+}
