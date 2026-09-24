@@ -1,0 +1,58 @@
+[
+  {
+    "factor": 1,
+    "error": null,
+    "folds": [],
+    "stats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 15.499811915510486,
+      "rmsTargetErrorPx": 0.706757315776476,
+      "maximumProjectionPx": 14.265474466115185,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.061250304184329814,
+      "orientationPasses": 65
+    }
+  },
+  {
+    "factor": 0.75,
+    "error": null,
+    "folds": [],
+    "stats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 15.499811915510486,
+      "rmsTargetErrorPx": 0.7104180195391409,
+      "maximumProjectionPx": 14.265474466115185,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.061250304184329814,
+      "orientationPasses": 65
+    }
+  },
+  {
+    "factor": 0.5,
+    "error": null,
+    "folds": [],
+    "stats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 15.499811915510486,
+      "rmsTargetErrorPx": 0.7077607407221621,
+      "maximumProjectionPx": 14.265474466115185,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.061250304184329814,
+      "orientationPasses": 65
+    }
+  },
+  {
+    "factor": 0,
+    "error": null,
+    "folds": [],
+    "stats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 15.499811915510486,
+      "rmsTargetErrorPx": 0.7035945590985656,
+      "maximumProjectionPx": 14.265474466115185,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.06102075399696967,
+      "orientationPasses": 65
+    }
+  }
+]

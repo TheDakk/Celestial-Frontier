@@ -1,0 +1,15 @@
+--- a/port/v2/apps/game/src/battle2/library-arena.test.ts
++++ b/port/v2/apps/game/src/battle2/library-arena.test.ts
+@@ -147,11 +147,7 @@
+       const n = rig.refusals(); if (n) found.push(`${a.earthName} ×${k}: ${n} (${(rig.lastRefusal() ?? '').slice(0, 90)})`); lines.push(`${a.earthName} ×${k}: ${n}`); stage.dispose();
+     }
+     console.log('\nSWEEP\n' + found.join('\n'));
+-    // KNOWN, owned by Codex (the anatomy chain), measured by this sweep 2026-09-24: the Centipede's ARAP skin folds one triangle at 0.85×
+-    // (also film chimpanzee-vs-centipede-02). The pin demands it with its reason, so the day Codex fixes the skin this test goes red and says so.
+-    const KNOWN: Readonly<Record<string, RegExp>> = { 'Centipede ×0.85:': /ARAP skin: unresolved folded triangles/ };
+-    expect(found.filter((f) => !Object.keys(KNOWN).some((k) => f.startsWith(k)))).toEqual([]);
+-    for (const [k, why] of Object.entries(KNOWN)) { const hit = found.find((f) => f.startsWith(k)); expect(hit, `${k} no longer refuses — remove its KNOWN pin`).toBeDefined(); expect(hit).toMatch(why); }
++    expect(found).toEqual([]);
+     expect(lines.length).toBe(CARD_ARCHETYPES.length * 3); // every archetype at every scale was run
+   }, 900_000);
+   it('WET arena DRAWING: a full lake from surfaceY to the floor, three frames wide in the depth bands; a swimmer facing a GROUND fighter gets its own half and the ground fighter keeps its floor (review 2026-09-24: the land fighter stood underwater)', async () => {
