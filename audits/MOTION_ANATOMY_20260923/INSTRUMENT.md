@@ -11,3 +11,11 @@ Baseline before product fixes: 18 rigs, 234 actions, 1875 criterion rows, 73 FAI
 Defects reproduced once: Freshwater reach .072643 against sealed .07165014577259474; override graph42 art+5 transitive rejects Object.prototype use in fixed-attachments. Logs retained. Source path defect is present in selected records; historical records will remain byte-identical. Writer repair must normalize before hashing new records.
 
 The accepted Centipede is a rigid trunk with explicit fixed sockets; it cannot demonstrate axial travel. The Starfish has no tube feet; Octopus lacks per-sucker support observations. Those are evidence/representation gaps, not numerical tolerance issues. Full path-following requires Claude's stage displacement and head-history integration. Nick's all-thirteen art acceptance is retained, separate from new motion results.
+
+## Post-baseline corrections and limits (2026-09-24)
+
+The final adapter adds amplitude-envelope, end-rest, full walking-support inventory and root-relative neck recruitment. It also matches the static owner’s compiled realm and melee travel context. Earlier raw adapter outputs are retained unchanged; context-audit is the final action-local table. Ground-only projections in after-gait-01 are explicitly separate from compiled aerial context. See EXECUTION.md for the causal 27 → 2 contact-refusal-row correction; no product limit moved.
+
+The original strike-extension-speed metric includes root translation. A PASS there is never sufficient for a biological neck-strike claim; strike-neck-recruitment and actual stage history are required. The 0.017411361201458392 body-axis Python head excursion fails that additional criterion. Wavelength estimates use equally indexed links rather than measured anatomical arc lengths. Authored-rest-start examines raw clip phase, whereas static exactRest restores the actual painted rig; these answer different questions.
+
+context-audit contains 18 rigs / 234 actions / 1,977 rows: 812 PASS, 47 FAIL, 229 UNMEASURED, 889 N/A; no admission exceptions. Each remaining FAIL has an individual diagnosis in FINDINGS.md. The prospective universal stabilization target has known flight/hop interpretation limitations, retained visibly instead of silently revised after the baseline.

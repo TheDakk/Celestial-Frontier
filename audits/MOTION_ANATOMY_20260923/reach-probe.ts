@@ -1,0 +1,2 @@
+import fs from 'node:fs';import{measureStanceReach}from'../../port/v2/apps/game/src/creature-stance-reach.ts';import{observedContactSupports}from'../../port/v2/apps/game/src/creature-rig-contact.ts';
+const p='audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/',r=JSON.parse(fs.readFileSync(p+'record.json','utf8')),b=JSON.parse(fs.readFileSync(p+'binding.json','utf8'));console.log(JSON.stringify(measureStanceReach(r,observedContactSupports(r,b)),null,2));

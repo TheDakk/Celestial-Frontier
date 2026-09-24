@@ -2659,6 +2659,7 @@ describe('legacy and v2 release channels', () => {
       /EVERY LANDED WORLD HAS A HORIZON:[^\n]*960×430 authored landing vista[^\n]*full canonical biosphere[^\n]*unsupported workers or failed art mounts leave the usable globe intact/,
       /Star Atlas, Compendium, Records, Charters, Settings, Field Training/,
       /EVERY PIECE STAYS ITSELF/,
+      /CREATURE MOTION STUDIES:[^\n]*travelling body waves[^\n]*Existing painted artwork is preserved[^\n]*separate from release and full biomechanical qualification/,
       /stable exact item instance/,
       /Oversized legacy holds remain lossless inspection-only evidence/,
       /COMPARISON TELLS THE WHOLE STORY/,
@@ -2830,7 +2831,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 85,
+        inventory: bullets.length === 86,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,
@@ -2858,7 +2859,7 @@ describe('legacy and v2 release channels', () => {
       category: section.category,
       bullets: index === 1 ? section.bullets.filter((_, bulletIndex) => bulletIndex !== 3) : section.bullets,
     }));
-    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(84);
+    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(85);
     expect(bulletinOutcome(missingMiddle).inventory).toBe(false);
     const missingRequired = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,

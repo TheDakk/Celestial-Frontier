@@ -1,0 +1,19 @@
+{
+  "status": "BLOCKED_SIGNING",
+  "parentHead": "95c97b0811358d43a5f6e08ccfb0f82eae04b1d0",
+  "signingProgram": "/Users/nick/.local/bin/git-ssh-sign",
+  "configOrigin": "file:/Users/nick/.gitconfig",
+  "attempts": [
+    {
+      "toolReceipt": "8694d3",
+      "exit": 128,
+      "stderr": "error: Signing file /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmpZ3duUx\nCouldn't sign message (signer): agent refused operation?\nSigning /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmpZ3duUx failed: agent refused operation?\n\nfatal: failed to write commit object\n"
+    },
+    {
+      "toolReceipt": "9756f8",
+      "exit": 128,
+      "stderr": "error: Signing file /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmpxwKU46\nCouldn't sign message (signer): agent refused operation?\nSigning /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmpxwKU46 failed: agent refused operation?\n\nfatal: failed to write commit object\n"
+    }
+  ],
+  "nextStep": "Nick renews SSH signing approval in 1Password with until quit; then retry once. No unsigned fallback, config edit or further unchanged retry."
+}

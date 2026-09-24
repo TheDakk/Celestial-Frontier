@@ -1,0 +1,714 @@
+{
+  "scope": "Assembled retained evidence, not one new certificate",
+  "rigs": [
+    {
+      "id": "python",
+      "name": "Python",
+      "seed": 1896382194,
+      "opponent": "Python",
+      "before": "before-films/python/report.json",
+      "after": "after-compact-films/python/report.json",
+      "beforeRunId": "20260924-motion-before-films-python",
+      "afterRunId": "20260924-motion-after-compact-films-python",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Fresh baseline",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": false,
+      "counts": {
+        "PASS": 44,
+        "N/A": 45,
+        "UNMEASURED": 12,
+        "FAIL": 3
+      },
+      "findings": "The bend travels tailward. Following the head through world space, S-neck recruitment and constrict contact are still blocked by missing stage history and the current head/body topology. Root-relative strike excursion is only 0.0174 body axes; root surge is not neck extension.",
+      "recordSha256": "6f6e63380f15841030dd15177acf15cfcb2f052a9eeb52d186418adb26d6bd77",
+      "cpuP95Ms": {
+        "left": 0.40000009536743164,
+        "right": 0.3999999761581421
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "8206a44ade070e05761d3ee7bcb91e5c41bfd5a475b9aa1c0a8e1f485013d796",
+        "after": "c385f938f06427de753228f10cbf695323901c3ed34ea716da259a20899d78a6"
+      }
+    },
+    {
+      "id": "salmon",
+      "name": "Salmon",
+      "seed": 3927271512,
+      "opponent": "Salmon",
+      "before": "before-films/salmon/report.json",
+      "after": "after-wave-films/salmon/report.json",
+      "beforeRunId": "20260924-motion-before-films-salmon",
+      "afterRunId": "20260924-motion-after-wave-films-salmon",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Fresh baseline",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": false,
+      "counts": {
+        "PASS": 47,
+        "N/A": 50,
+        "FAIL": 2,
+        "UNMEASURED": 13
+      },
+      "findings": "The tailward wave and growing amplitude pass. Wavelength is an index-based chain estimate, not an arc-length or swimming-speed measurement. World-path following has no stage history.",
+      "recordSha256": "0d55904876d7638af2b8a43eea96e48328de0950e241cf1c32509c62ab1b6696",
+      "cpuP95Ms": {
+        "left": 1.0999999046325684,
+        "right": 1.100000023841858
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "0b2ac27aec1680f631086af62cac0f61583edfedc6ae9f05bb659fcc415dd330",
+        "after": "94c990abf976bdb8b04f79766ab1e76835e4d1a1c3a9ff82744d5cd4e5e14a4c"
+      }
+    },
+    {
+      "id": "eagle",
+      "name": "Eagle",
+      "seed": 3837331972,
+      "opponent": "Eagle",
+      "before": "before-films/eagle/report.json",
+      "after": "after-compact-films/eagle/report.json",
+      "beforeRunId": "20260924-motion-before-films-eagle",
+      "afterRunId": "20260924-motion-after-compact-films-eagle",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Fresh baseline",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": false,
+      "counts": {
+        "PASS": 48,
+        "N/A": 53,
+        "FAIL": 3,
+        "UNMEASURED": 14
+      },
+      "findings": "The ground-only walking projection reaches 65% stance. The compiled aerial realm bypasses foot contacts, so the actual-context walk remains unqualified. The native film exercises flight and attacks, not grounded walking.",
+      "recordSha256": "5327906d70d258adef8e40514643df9aa17516c98c11e328c2f2a3e9216683bb",
+      "cpuP95Ms": {
+        "left": 0.7000000476837158,
+        "right": 0.9000000953674316
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "9511473c71bdb015ff12a332e455da5b66c88af6c01831fc2f05cb8eb2070890",
+        "after": "ff1e8b3f7f785b6e458804dc22675d3dd004146cbedb322dc1d083ecbae08e6f"
+      }
+    },
+    {
+      "id": "beetle",
+      "name": "Beetle",
+      "seed": 881335556,
+      "opponent": "Beetle",
+      "before": "before-films/beetle/report.json",
+      "after": "after-compact-films/beetle/report.json",
+      "beforeRunId": "20260924-motion-before-films-beetle",
+      "afterRunId": "20260924-motion-after-compact-films-beetle",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Fresh baseline",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": false,
+      "counts": {
+        "PASS": 47,
+        "N/A": 49,
+        "UNMEASURED": 13
+      },
+      "findings": "Tripod timing and lift pass. Film review still owns whether every attack reads naturally.",
+      "recordSha256": "4e935e3ab068c2ed17e5d993bb542cc4f7551e549772b0d3cce772df610d50b9",
+      "cpuP95Ms": {
+        "left": 0.6000000238418579,
+        "right": 0.9000000953674316
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "10a7b6c214e06228eebb825426d8c200f616b2872ac1195981c28b8460cc6e38",
+        "after": "bc90c93b0da158e027c8aaffa776005f0179a0386dd2c659ce054127ab9c065b"
+      }
+    },
+    {
+      "id": "tree-frog",
+      "name": "Tree Frog",
+      "seed": 3965697315,
+      "opponent": "Tree Frog",
+      "before": "../ARCHETYPE_FINISH_20260923/06-hopper/native-02/report.json",
+      "after": "observed-compact-films/tree-frog/report.json",
+      "beforeRunId": "20260923-tree-frog-native-02",
+      "afterRunId": "20260924-motion-observed-compact-films-tree-frog",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Historical baseline \u2014 fresh baseline refusal retained",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": false,
+      "counts": {
+        "PASS": 41,
+        "N/A": 47,
+        "UNMEASURED": 12,
+        "FAIL": 1
+      },
+      "findings": "Existing observed toe-pad support admits the film. Hop head translation exceeds the prospective universal stabilization target; airborne body rise is not automatically a biological defect. No frog motion change was made.",
+      "recordSha256": "ee6e5a17d974560efd023d80c3035536ae553ced395f86e851d108ca5a7f23b8",
+      "cpuP95Ms": {
+        "left": 0.5999999046325684,
+        "right": 0.6000000238418579
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "a654f7958d1aecbd783e086c176f387abfc09c59eafade4838a8511a9469d2de",
+        "after": "ea3925b85ec938e46916d219f5523918e3bda7f02748eb5a3abb168629e3a254"
+      }
+    },
+    {
+      "id": "chimpanzee",
+      "name": "Chimpanzee",
+      "seed": 3074712006,
+      "opponent": "Chimpanzee",
+      "before": "before-films/chimpanzee/report.json",
+      "after": "after-compact-films/chimpanzee/report.json",
+      "beforeRunId": "20260924-motion-before-films-chimpanzee",
+      "afterRunId": "20260924-motion-after-compact-films-chimpanzee",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Fresh baseline",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": false,
+      "counts": {
+        "PASS": 46,
+        "N/A": 49,
+        "UNMEASURED": 12,
+        "FAIL": 4
+      },
+      "findings": "Hindfeet reach 65% stance. Knuckle contacts and climb anchors are absent; a hindfoot result is not a complete knuckle-walk or climbing result.",
+      "recordSha256": "333cacf0dac7834c820887404a7ba3f03593206110e51b639c7a33a89e49e7a2",
+      "cpuP95Ms": {
+        "left": 0.6999999284744263,
+        "right": 0.8999999761581421
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "e58dff2ba9768a0cec2650bf374a5b199e61abb0bf847606ef0de0e60ff02912",
+        "after": "a595352a1fc8f6dbcb8aa304df53004e31b54662965ddf33a56ae28b462ef054"
+      }
+    },
+    {
+      "id": "starfish",
+      "name": "Starfish",
+      "seed": 3930800215,
+      "opponent": "Starfish",
+      "before": "../ARCHETYPE_REPAIRS_20260922/08-radial/native-03/report.json",
+      "after": "after-compact-films/starfish/report.json",
+      "beforeRunId": "20260922-starfish-native-03",
+      "afterRunId": "20260924-motion-after-compact-films-starfish",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Historical baseline \u2014 fresh baseline refusal retained",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": false,
+      "counts": {
+        "PASS": 43,
+        "N/A": 50,
+        "FAIL": 6,
+        "UNMEASURED": 10
+      },
+      "findings": "No tube-foot joints or contact observations exist. Arm pulse and sting labels cannot establish tube-foot propulsion. No locomotion fix claimed.",
+      "recordSha256": "50f548ed56044ae8ff66941ff762ad547da48a87ea984fc3f89c6484cae9ec06",
+      "cpuP95Ms": {
+        "left": 2.799999952316284,
+        "right": 1.399999976158142
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "fd6e73aa88e8d94958a3c3ce0733a51e5f4be5edf1cfa0502c654d3f8b07670b",
+        "after": "49b2a953f96c7d518e9b0f9f3826328ef54edb8b576cd76626a9065601774fde"
+      }
+    },
+    {
+      "id": "tarantula",
+      "name": "Tarantula",
+      "seed": 3680049014,
+      "opponent": "Tarantula",
+      "before": "before-films/tarantula/report.json",
+      "after": "after-compact-films/tarantula/report.json",
+      "beforeRunId": "20260924-motion-before-films-tarantula",
+      "afterRunId": "20260924-motion-after-compact-films-tarantula",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Fresh baseline",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": false,
+      "counts": {
+        "PASS": 46,
+        "N/A": 51,
+        "UNMEASURED": 12,
+        "FAIL": 1
+      },
+      "findings": "Alternating tetrapod timing and lift pass. The offered sting verb has no stinger on this accepted animal; it remains an explicit anatomy refusal.",
+      "recordSha256": "12b5ac9ce9d1f3986628253ecabdb97f7e4a772562703eebf9f543d56e6ed64a",
+      "cpuP95Ms": {
+        "left": 0.7999999523162842,
+        "right": 1.2999999523162842
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "c88c71d56cd73fe224a0b02a990a82bc5dd53493c8f3ac19cff95b8667af82c3",
+        "after": "460ee73bdf01484ee3e102f88bc455da47ee5da624100d170ba1e6c7244ad843"
+      }
+    },
+    {
+      "id": "octopus",
+      "name": "Octopus",
+      "seed": 6160491,
+      "opponent": "Octopus",
+      "before": "../ARCHETYPE_REPAIRS_20260922/10-cephalopod/native-03/report.json",
+      "after": "after-compact-films/octopus/report.json",
+      "beforeRunId": "20260922-octopus-native-03",
+      "afterRunId": "20260924-motion-after-compact-films-octopus",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Historical baseline \u2014 fresh baseline refusal retained",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": false,
+      "counts": {
+        "PASS": 45,
+        "N/A": 48,
+        "FAIL": 3,
+        "UNMEASURED": 13
+      },
+      "findings": "The rig lacks sucker contact observations. Arm animation does not certify a coordinated sucker crawl or jet propulsion. No locomotion fix claimed.",
+      "recordSha256": "9ab4e752cd10d0a6c174c749a9e3c93ec8d9e950c02a1b6210ea812a06d87311",
+      "cpuP95Ms": {
+        "left": 1.100000023841858,
+        "right": 0.8999999761581421
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "75eec485cae40f3e29220f27f7c8f8987c12cc72c9fd0d506b088eba4f8b4654",
+        "after": "425d76a5417084165fa123b3f7415126e9f799678c6385e0b1c4f4309499e71a"
+      }
+    },
+    {
+      "id": "fruit-bat",
+      "name": "Fruit Bat",
+      "seed": 3695426012,
+      "opponent": "Fruit Bat",
+      "before": "../ARCHETYPE_FINISH_20260923/11-flyer-membrane/native-01/report.json",
+      "after": "after-compact-films/fruit-bat/report.json",
+      "beforeRunId": "20260923-fruit-bat-native-01",
+      "afterRunId": "20260924-motion-after-compact-films-fruit-bat",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Historical baseline \u2014 fresh baseline refusal retained",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": false,
+      "counts": {
+        "PASS": 44,
+        "N/A": 49,
+        "FAIL": 4,
+        "UNMEASURED": 13
+      },
+      "findings": "The ground-only hindfoot projection reaches 65% stance. Wing-wrist supports are absent, and the compiled aerial realm bypasses walking contacts. Full crawling remains unqualified.",
+      "recordSha256": "474df06b02888a7e086ddb0a867c6f2357c64a40431e4df7defb2e6da057f27f",
+      "cpuP95Ms": {
+        "left": 0.5,
+        "right": 0.5
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "849bffc8c02e460ed44e50818e3054933e92d4458584a15af89714c96601e4b3",
+        "after": "06265bc01dc1e5195913b75c07fed800a4ae47f13a4468bf7dbf98a7f6a18e7b"
+      }
+    },
+    {
+      "id": "centipede",
+      "name": "Centipede",
+      "seed": 3894424807,
+      "opponent": "Centipede",
+      "before": "../ARCHETYPE_FINISH_20260923/12-myriapod/native-02/report.json",
+      "after": "after-compact-films/centipede/report.json",
+      "beforeRunId": "20260923-centipede-native-02",
+      "afterRunId": "20260924-motion-after-compact-films-centipede",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Historical baseline \u2014 fresh baseline refusal retained",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": false,
+      "counts": {
+        "PASS": 43,
+        "N/A": 45,
+        "UNMEASURED": 12,
+        "FAIL": 2
+      },
+      "findings": "All fourteen leg pairs use a 0.20-cycle adjacent-pair offset and approximately 65% stance. The accepted trunk is rigid: no axial body-wave claim is possible without a new represented chain.",
+      "recordSha256": "19f7988daaa9054bed677f00abf2adb88b5b69dd91e5776e0462a9009e260d54",
+      "cpuP95Ms": {
+        "left": 3.299999952316284,
+        "right": 1.899999976158142
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "5c0b6ebe7991f75dec6373cc8593610f16314e3690b426a57a379fccca65bfdf",
+        "after": "cbfd96fcd1db096ce30993af815cc98a2aa4c886df6d880c5708089aa7ae6f37"
+      }
+    },
+    {
+      "id": "civet",
+      "name": "Civet",
+      "seed": 3212817920,
+      "opponent": "Civet",
+      "before": "before-films/civet/report.json",
+      "after": "after-compact-films/civet/report.json",
+      "beforeRunId": "20260924-motion-before-films-civet",
+      "afterRunId": "20260924-motion-after-compact-films-civet",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Fresh baseline refused \u2014 no substitute baseline film",
+      "beforeStatus": "FAIL",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": false,
+      "counts": {
+        "PASS": 67,
+        "N/A": 69,
+        "FAIL": 6,
+        "UNMEASURED": 19
+      },
+      "findings": "Protected S2 gait remains byte-identical. The existing 50% stance and small lift miss the prospective anatomy targets. Improving it would change protected measurements; no re-seal was attempted.",
+      "recordSha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8",
+      "cpuP95Ms": {
+        "left": 1.100000023841858,
+        "right": 1.399999976158142
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "6e834ee6362afce833b77acef42823e7cba50520ac9759aa10f6645143278866",
+        "after": "22dd69a9b109278bf417e483853972f0e60e2849b0b7cc5dd9bce4089b250005"
+      }
+    },
+    {
+      "id": "bear",
+      "name": "Bear guardian",
+      "seed": 133,
+      "opponent": "Bear guardian",
+      "before": "before-films/bear/report.json",
+      "after": "before-films/bear/report.json",
+      "beforeRunId": "20260924-motion-before-films-bear",
+      "afterRunId": "20260924-motion-before-films-bear",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Fresh baseline",
+      "beforeStatus": "FAIL",
+      "afterStatus": "FAIL",
+      "sameFilmReused": true,
+      "counts": {
+        "PASS": 66,
+        "N/A": 69,
+        "UNMEASURED": 19,
+        "FAIL": 7
+      },
+      "findings": "Guardian sizing is outside this archetype-only native harness. No 5 ms CPU claim or admitted film. Two action-local contact rows still refuse (gallop and tail); stage-owner diagnosis is required before tuning against guardian evidence.",
+      "recordSha256": "0810715e3cffbb0101ffdc8db75cefa1a16a8712e79d0985fea5b4e77bb6727e",
+      "cpuP95Ms": null,
+      "refusalsAtEnd": null,
+      "reportsSha256": {
+        "before": "f2dbf3cabc9890dd8adfc43a5c59dff0c9388aabe70944dae821de69085420b4",
+        "after": "f2dbf3cabc9890dd8adfc43a5c59dff0c9388aabe70944dae821de69085420b4"
+      }
+    },
+    {
+      "id": "crab",
+      "name": "Crab",
+      "seed": 1431434066,
+      "opponent": "Crab",
+      "before": "before-films/crab/report.json",
+      "after": "before-films/crab/report.json",
+      "beforeRunId": "20260924-motion-before-films-crab",
+      "afterRunId": "20260924-motion-before-films-crab",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Fresh baseline",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": true,
+      "counts": {
+        "PASS": 37,
+        "N/A": 43,
+        "UNMEASURED": 11,
+        "FAIL": 1
+      },
+      "findings": "Protected S2 gait remains byte-identical. Its 50% duty misses the prospective 60% target; the sealed reach and existing gait were preserved. Both displayed films are the same retained control, not an invented after run.",
+      "recordSha256": "625309b27b17aff36a12ed6eedc4b882c14e1b4dd93c9e94e90c603dc021f2b4",
+      "cpuP95Ms": {
+        "left": 0.7000000476837158,
+        "right": 0.7000000476837158
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "a79a90c718d0d147722d2c6cce2e3337e33e5ef66d9582ced6779164d6787a8d",
+        "after": "a79a90c718d0d147722d2c6cce2e3337e33e5ef66d9582ced6779164d6787a8d"
+      }
+    },
+    {
+      "id": "freshwater-crab",
+      "name": "Freshwater Crab",
+      "seed": 2150023242,
+      "opponent": "Freshwater Crab",
+      "before": "before-films/freshwater-crab/report.json",
+      "after": "before-films/freshwater-crab/report.json",
+      "beforeRunId": "20260924-motion-before-films-freshwater-crab",
+      "afterRunId": "20260924-motion-before-films-freshwater-crab",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Fresh baseline",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": true,
+      "counts": {
+        "PASS": 37,
+        "N/A": 43,
+        "UNMEASURED": 11,
+        "FAIL": 1
+      },
+      "findings": "Protected S2 gait remains byte-identical. Its 50% duty misses the prospective 60% target; the sealed reach and existing gait were preserved. Both displayed films are the same retained control, not an invented after run.",
+      "recordSha256": "3ed3407e87adf664775629811a7845f1a3c3b2b94bad402fadb2262f4edf6202",
+      "cpuP95Ms": {
+        "left": 0.7999999523162842,
+        "right": 0.8000000715255737
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "2fdeb81035f4bc1f34aa3c0fd2f280d79a16c47ea3debf6b60907beb053eb127",
+        "after": "2fdeb81035f4bc1f34aa3c0fd2f280d79a16c47ea3debf6b60907beb053eb127"
+      }
+    },
+    {
+      "id": "coconut-crab",
+      "name": "Coconut Crab",
+      "seed": 404517011,
+      "opponent": "Coconut Crab",
+      "before": "before-films/coconut-crab/report.json",
+      "after": "before-films/coconut-crab/report.json",
+      "beforeRunId": "20260924-motion-before-films-coconut-crab",
+      "afterRunId": "20260924-motion-before-films-coconut-crab",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Fresh baseline",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": true,
+      "counts": {
+        "PASS": 37,
+        "N/A": 43,
+        "UNMEASURED": 11,
+        "FAIL": 1
+      },
+      "findings": "Protected S2 gait remains byte-identical. Its 50% duty misses the prospective 60% target; the sealed reach and existing gait were preserved. Both displayed films are the same retained control, not an invented after run.",
+      "recordSha256": "65a117c20f6de4bea7c7074d7b1214abebc42813e57f4b95818723d5bd0ff5ef",
+      "cpuP95Ms": {
+        "left": 0.8999999761581421,
+        "right": 0.9000000953674316
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "9a3d3a0d98dfdc2fa73007a80e699b0490fc933479ac646ee697dbcb39003b08",
+        "after": "9a3d3a0d98dfdc2fa73007a80e699b0490fc933479ac646ee697dbcb39003b08"
+      }
+    },
+    {
+      "id": "vent-crab",
+      "name": "Vent Crab",
+      "seed": 3382616006,
+      "opponent": "Vent Crab",
+      "before": "before-films/vent-crab/report.json",
+      "after": "before-films/vent-crab/report.json",
+      "beforeRunId": "20260924-motion-before-films-vent-crab",
+      "afterRunId": "20260924-motion-before-films-vent-crab",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Fresh baseline",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": true,
+      "counts": {
+        "PASS": 37,
+        "N/A": 43,
+        "UNMEASURED": 11,
+        "FAIL": 1
+      },
+      "findings": "Protected S2 gait remains byte-identical. Its 50% duty misses the prospective 60% target; the sealed reach and existing gait were preserved. Both displayed films are the same retained control, not an invented after run.",
+      "recordSha256": "9625d7f7e4f275edccddc7c7e27362b13d8eabb9dd9582a9d7285a3232745b1d",
+      "cpuP95Ms": {
+        "left": 0.8000000715255737,
+        "right": 0.7000000476837158
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "cc8556faff6efb2c7729910c427a5cb82e8780928abc584f701312ea0f1f9f6b",
+        "after": "cc8556faff6efb2c7729910c427a5cb82e8780928abc584f701312ea0f1f9f6b"
+      }
+    },
+    {
+      "id": "mud-crab",
+      "name": "Mud Crab",
+      "seed": 725465033,
+      "opponent": "Mud Crab",
+      "before": "before-films/mud-crab/report.json",
+      "after": "before-films/mud-crab/report.json",
+      "beforeRunId": "20260924-motion-before-films-mud-crab",
+      "afterRunId": "20260924-motion-before-films-mud-crab",
+      "sameActionRows": true,
+      "beforeExactRecord": true,
+      "afterExactRecord": true,
+      "beforeLabel": "Fresh baseline",
+      "beforeStatus": "DIAGNOSTIC_PASS",
+      "afterStatus": "DIAGNOSTIC_PASS",
+      "sameFilmReused": true,
+      "counts": {
+        "PASS": 37,
+        "N/A": 43,
+        "UNMEASURED": 11,
+        "FAIL": 1
+      },
+      "findings": "Protected S2 gait remains byte-identical. Its 50% duty misses the prospective 60% target; the sealed reach and existing gait were preserved. Both displayed films are the same retained control, not an invented after run.",
+      "recordSha256": "c2ac58531ad3585b433343a9f03e3c1bae766efb1f69e68dd6c11fe062debdd0",
+      "cpuP95Ms": {
+        "left": 0.6000000238418579,
+        "right": 0.5000001192092896
+      },
+      "refusalsAtEnd": {
+        "left": 0,
+        "right": 0
+      },
+      "reportsSha256": {
+        "before": "2281555a3f1bfd0800d6857fe804e5f450d86331ce2b31f77a4c12d439ac03de",
+        "after": "2281555a3f1bfd0800d6857fe804e5f450d86331ce2b31f77a4c12d439ac03de"
+      }
+    }
+  ],
+  "nativeRefusals": [
+    {
+      "report": "before-films/bear/report.json",
+      "runId": "20260924-motion-before-films-bear",
+      "error": "Error: Error: Guardian sizing is outside this archetype-only study\n    at loadSide (http://127.0.0.1:55303/bundle.js:33586:30)\n    at async http://127.0.0.1:55303/bundle.js:33606:9\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
+      "sha256": "f2dbf3cabc9890dd8adfc43a5c59dff0c9388aabe70944dae821de69085420b4"
+    },
+    {
+      "report": "before-films/centipede/report.json",
+      "runId": "20260924-motion-before-films-centipede",
+      "error": "Error: Error: Painted publication at 4966.666666666668ms, turn 1: {\"left\":{\"refusals\":1,\"lastRefusal\":\"ARAP skin: unresolved folded triangles: 1\"},\"right\":{\"refusals\":0,\"lastRefusal\":null}}; Error: Painted envelope: refused pose cannot count as a published sample\n    at stageAt (http://127.0.0.1:55267/bundle.js:33817:10)\n    at http://127.0.0.1:55267/bundle.js:33848:3\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
+      "sha256": "8f0edb7bbf15756c1fa180c52eebac63c082dbcca5c18de5a7c146376598b06b"
+    },
+    {
+      "report": "before-films/civet/report.json",
+      "runId": "20260924-motion-before-films-civet",
+      "error": "Error: Error: Ten-second film cannot cover 11023ms script\n    at http://127.0.0.1:55284/bundle.js:33949:27\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
+      "sha256": "6e834ee6362afce833b77acef42823e7cba50520ac9759aa10f6645143278866"
+    },
+    {
+      "report": "before-films/fruit-bat/report.json",
+      "runId": "20260924-motion-before-films-fruit-bat",
+      "error": "Error: Error: Ten-second film cannot cover 10096ms script\n    at http://127.0.0.1:55251/bundle.js:33949:27\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
+      "sha256": "75ab125cd367eec2a2ab77a84d541cf5a8c2e6c2860267f358ef2364b7f4dddc"
+    },
+    {
+      "report": "before-films/octopus/report.json",
+      "runId": "20260924-motion-before-films-octopus",
+      "error": "Error: Error: Ten-second film cannot cover 10576ms script\n    at http://127.0.0.1:55212/bundle.js:33949:27\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
+      "sha256": "e8cac9bd15c851091d1069c35e9d741cc7e2357c9e71b87fb8d6ccfa75f1f72a"
+    },
+    {
+      "report": "before-films/starfish/report.json",
+      "runId": "20260924-motion-before-films-starfish",
+      "error": "Error: Error: Ten-second film cannot cover 10288ms script\n    at http://127.0.0.1:55173/bundle.js:33949:27\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
+      "sha256": "237fc43983630728d988ba8176da663c64b926b60507492c85e8c116bda443f6"
+    },
+    {
+      "report": "before-films/tree-frog/report.json",
+      "runId": "20260924-motion-before-films-tree-frog",
+      "error": "Error: Error: Contact pad: observed painted supports required\n    at createFamilyContactSolver (http://127.0.0.1:55137/bundle.js:17579:68)\n    at createPartsRig (http://127.0.0.1:55137/bundle.js:18988:44)\n    at loadSide (http://127.0.0.1:55137/bundle.js:33593:9)\n    at async http://127.0.0.1:55137/bundle.js:33606:9\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
+      "sha256": "ae2ca971bb6d8f2b27bb615185117b49e959df1197fc431e609568108c566fd2"
+    },
+    {
+      "report": "after-wave-films/python/report.json",
+      "runId": "20260924-motion-after-wave-films-python",
+      "error": "Error: Error: Ten-second film cannot cover 10540ms script\n    at http://127.0.0.1:55688/bundle.js:33997:27\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148",
+      "sha256": "3528bbbc7f338c54d75690ea7e5123cf411c788fdbf3b3a1b444cd941edfef15"
+    }
+  ]
+}

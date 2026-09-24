@@ -1,0 +1,92 @@
+[
+  {
+    "rig": "python",
+    "exit": 0,
+    "error": null
+  },
+  {
+    "rig": "salmon",
+    "exit": 0,
+    "error": null
+  },
+  {
+    "rig": "eagle",
+    "exit": 0,
+    "error": null
+  },
+  {
+    "rig": "beetle",
+    "exit": 0,
+    "error": null
+  },
+  {
+    "rig": "tree-frog",
+    "exit": 1,
+    "error": null
+  },
+  {
+    "rig": "chimpanzee",
+    "exit": 0,
+    "error": null
+  },
+  {
+    "rig": "starfish",
+    "exit": 1,
+    "error": null
+  },
+  {
+    "rig": "tarantula",
+    "exit": 0,
+    "error": null
+  },
+  {
+    "rig": "octopus",
+    "exit": 1,
+    "error": null
+  },
+  {
+    "rig": "fruit-bat",
+    "exit": 1,
+    "error": null
+  },
+  {
+    "rig": "centipede",
+    "exit": 1,
+    "error": null
+  },
+  {
+    "rig": "civet",
+    "exit": 1,
+    "error": null
+  },
+  {
+    "rig": "bear",
+    "exit": 1,
+    "error": null
+  },
+  {
+    "rig": "crab",
+    "exit": 0,
+    "error": null
+  },
+  {
+    "rig": "freshwater-crab",
+    "exit": 0,
+    "error": null
+  },
+  {
+    "rig": "coconut-crab",
+    "exit": 0,
+    "error": null
+  },
+  {
+    "rig": "vent-crab",
+    "exit": 0,
+    "error": null
+  },
+  {
+    "rig": "mud-crab",
+    "exit": 0,
+    "error": null
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Salmon",
+      "dn": "Salmon",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "an": "Salmon",
+      "dn": "Salmon",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Salmon",
+      "dn": "Salmon",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 30,
+      "hpB": 0
+    }
+  ],
+  "runId": "20260924-motion-before-films-salmon"
+}

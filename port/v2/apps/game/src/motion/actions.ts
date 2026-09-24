@@ -10,7 +10,7 @@ import { tAt } from './timing.js';
 export type Ease = 'ease-out' | 'ease-in' | 'back-out' | 'sine-in-out';
 export const EASES: readonly Ease[] = Object.freeze(['ease-out', 'ease-in', 'back-out', 'sine-in-out']);
 export interface KeyPose { readonly t: number; readonly ease: Ease; readonly joints: Readonly<Record<string, number>>; readonly root: { readonly dx: number; readonly dy: number }; }
-export interface MotionAction { readonly id: string; readonly family: string; readonly loop: boolean; readonly rootUnit?: 'body' | 'motion-scale'; readonly poses: readonly KeyPose[]; }
+export interface MotionAction { readonly id: string; readonly family: string; readonly loop: boolean; readonly rootUnit?: 'body' | 'motion-scale'; readonly poses: readonly KeyPose[]; readonly phaseOwnedJoints?: readonly string[]; }
 type J = Record<string, number>;
 const P = (t: number, ease: Ease, joints: J, dx = 0, dy = 0): KeyPose => ({ t, ease, joints, root: { dx, dy } });
 const REST: J = {};

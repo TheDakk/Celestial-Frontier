@@ -1,0 +1,32 @@
+[
+  {
+    "rig": "eagle",
+    "status": 0,
+    "error": null
+  },
+  {
+    "rig": "beetle",
+    "status": 0,
+    "error": null
+  },
+  {
+    "rig": "chimpanzee",
+    "status": 0,
+    "error": null
+  },
+  {
+    "rig": "tarantula",
+    "status": 0,
+    "error": null
+  },
+  {
+    "rig": "fruit-bat",
+    "status": 0,
+    "error": null
+  },
+  {
+    "rig": "centipede",
+    "status": 0,
+    "error": null
+  }
+]

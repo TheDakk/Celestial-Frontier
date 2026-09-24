@@ -1,0 +1,21 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-stance-reach.test.ts (2 tests | 1 failed) 523ms
+   × Freshwater measured gait envelope admits positive cadence and retains the original reach refusal 520ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-stance-reach.test.ts > Freshwater measured gait envelope admits positive cadence and retains the original reach refusal
+AssertionError: expected 0.072643 to be less than 0.07165014577259474
+ ❯ apps/game/src/creature-stance-reach.test.ts:6:57
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 17 passed (18)
+   Start at  00:23:53
+   Duration  863ms (transform 407ms, setup 0ms, import 586ms, tests 552ms, environment 0ms)
+
