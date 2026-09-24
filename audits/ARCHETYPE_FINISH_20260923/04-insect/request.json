@@ -1,0 +1,21 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 4,
+  "runId": "20260923-beetle-paint-04",
+  "authorization": "../AUTHORITY.md",
+  "sourceHead": "6768b9879a8a11086bfa8669792acf555fc10140",
+  "promptSha256": "c340028415fb0d48d063d03d9504f0cb125b6339d48b491f6cb02f5a0e737706",
+  "references": [
+    {
+      "role": "approved atlas style only",
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    }
+  ],
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "strategyChange": "Fresh composition; do not condition on rejected occluding pose",
+  "rejectedPrior": "candidate-03/visual-review.json"
+}

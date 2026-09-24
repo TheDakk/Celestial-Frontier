@@ -209,6 +209,30 @@ const MYRIAPOD = fauna({
   feed: feed({ head: 22, seg0: 6, ...legA(12) }, { mandible: -20 }, { mandible: -3 }),
 });
 
+/** Compact rigid-trunk articulation: all walking limbs remain two-link;
+ * motion travels through source steps, while the long trunk stays level.
+ * The ultimate pair senses/fans behind the body and is not a stance foot. */
+function compactMyriapodActions(pairs:number):Readonly<Record<string,MotionAction>>{
+ const legs=Array.from({length:pairs},(_,i)=>['leg'+i+'Far','leg'+i+'Near']).flat();
+ const wave=(k:number,f:number):J=>Object.fromEntries(legs.flatMap((id,i)=>{const sign=(Math.floor(i/2)+i%2)%2?1:-1;return [[id+'Knee',k*sign],[id+'Foot',f*sign]];}));
+ const ultimate=(v:number):J=>({ultimateFar:-v,ultimateNear:v});
+ const take=(j:J,dx=0,dy=0)=>P(1,'sine-in-out',j,dx,dy);
+ return fauna({
+  idle:[{...ant(-3),...ultimate(2)},{head:-2},{...ant(3),...ultimate(-2)},0,-.001,-.002],
+  alert:[{head:-12,...ant(-24),...ultimate(5)},-.002],
+  approach:{crawl:loop4(wave(22,12),wave(-3,5),wave(-22,-12),0,-.002,.001)},
+  melee:{mandible:melee({head:-12},{head:8,mandible:-20},{head:16,mandible:-38},{head:2},[-.02,.10,.12,.03],[0,0,0,0]),
+   body:melee({head:-4,...ultimate(3)},{head:3},{head:6,...ultimate(-3)},{head:1},[-.01,.07,.09,.02],[0,0,0,0])},
+  cast:[P(tAt('cast','rise'),'ease-in',{head:-16,...ant(-15)},0,-.002),P(tAt('cast','hold'),'sine-in-out',{head:-20,...ant(-25),...ultimate(8)},0,-.002),P(tAt('cast','release'),'ease-out',{head:14,mandible:-15},0,0),take(REST)],
+  hit:hit({head:-18,...ant(20),...ultimate(8)},{head:-6,...ultimate(3)},.002),
+  dodge:dodge({...wave(16,-18),head:-5,...ultimate(10)},-.12,0),
+  faint:[P(.45,'ease-in',{head:6,...ant(12)},0,.003),P(1,'ease-out',{head:20,...ant(30),...ultimate(-10)},0,.006)],
+  victory:[P(tAt('victory','rear'),'ease-out',{head:-22,...ant(-28),...ultimate(8)},0,-.002),P(tAt('victory','toss'),'back-out',{head:-28,mandible:-12,...ant(-38),...ultimate(12)},0,-.002),take(REST)],
+  tame:[P(tAt('tame','approach'),'ease-out',wave(12,8),.10,0),P(tAt('tame','lower'),'ease-out',{head:14,...ant(12)},.10,.002),P(1,'back-out',{head:5},.10,0)],
+  feed:feed({head:18},{mandible:-20},{mandible:-3})
+ });
+}
+
 /* ---- cephalopod (B3): arms 0..3 hang left (sign −) and 4..7 right (sign +), so csplay(+) opens the crown; the front pair (3, 4) lashes ---- */
 function cephalopodActions(arms=8,feedingTentacles=0):Readonly<Record<string,MotionAction>>{
 const cephArmsA=Array.from({length:arms},(_,i)=>'arm'+i),tentacles=Array.from({length:feedingTentacles},(_,i)=>'tentacle'+i);
@@ -307,6 +331,7 @@ export function actionsFor(templateId:string,anatomy?:AnatomyPresence):Readonly<
  const branches=plantBranchCount(templateId,anatomy);
  if(branches!==null)return plant(k=>wsway(k,branches),Object.fromEntries(Array.from({length:branches},(_,i)=>['leaf'+i,i%2?-30:30])));
  const counts=appendageCounts(templateId,anatomy);
+ if(counts&&'walkingLegPairs' in counts)return compactMyriapodActions(counts.walkingLegPairs);
  if(counts)return Object.freeze({...templateId==='radial'?radialActions(counts.arms):cephalopodActions(counts.arms,counts.feedingTentacles),...ADDITIONAL_ACTIONS[templateId]});
  return ACTIONS_BY_TEMPLATE[templateId as 'quadruped'|FamilyTemplateId]??specializedActions(templateId);
 }

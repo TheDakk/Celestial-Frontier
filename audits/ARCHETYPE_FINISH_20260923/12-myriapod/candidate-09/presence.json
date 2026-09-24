@@ -1,0 +1,10 @@
+{
+  "schema": "cf.anatomy-presence/v2",
+  "absent": [],
+  "hidden": [],
+  "folded": [],
+  "appendages": {
+    "walkingLegPairs": 14,
+    "ultimateLegPairs": 1
+  }
+}

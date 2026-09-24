@@ -1,0 +1,25 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 3,
+  "runId": "20260923-beetle-paint-03",
+  "authorization": "../AUTHORITY.md",
+  "sourceHead": "6768b9879a8a11086bfa8669792acf555fc10140",
+  "promptSha256": "4dbe81d402dea17db070725da2103a6d8e950d75a44ee88786b5aee1817e48b9",
+  "references": [
+    {
+      "role": "edit target: retained rejected generation2",
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/04-insect/master.png",
+      "sha256": "1322d8099bd6f24143d55c8c21510de02740407fd08221268078bc20379e7793"
+    },
+    {
+      "role": "approved atlas style reference",
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    }
+  ],
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "previousRefusals": "../../ARCHETYPE_REPAIRS_20260922/04-insect/README.md"
+}

@@ -1,0 +1,108 @@
+{
+  "schema": "cf.sprint-visual-review-inputs/v1",
+  "sourceHead": "755f52a7d686715657e4ec5924b3e96e5ec8626c",
+  "reviewScope": "Eleven creature review sheets and one six-mask sheet; three retained Python native stills; two frames decoded from its existing movie. This is not a new native run or a full viewing of all eleven films.",
+  "files": [
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/02-fish/review-sheet.png",
+      "bytes": 1302520,
+      "sha256": "2f05e34b8c7239253e05ecc151f5304e7ee632083133596eba18a9d47b3af547"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/review-sheet-07.png",
+      "bytes": 1412673,
+      "sha256": "9662842141fc36abff0bb95d1d2936935cdf91d0bcfe63a2ff1f554b514514c4"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/review-sheet-native-01.png",
+      "bytes": 1006681,
+      "sha256": "d2ee0c88f684a753dd93b6082984d45dedc687ea4ca7ac40b905a19a16bfc2f3"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/review-sheet-unobscured.png",
+      "bytes": 1606660,
+      "sha256": "0b59251a6aeb96b60b4ee760fcd017590a7cf449bac0fc72f6ccf6e513e50463"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/review-sheet-native-02.png",
+      "bytes": 908744,
+      "sha256": "7432294aa2eed26ce68d66721272258089be5cbbef2b6ec0a1bcdd22462a440a"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/review-sheet-native-01.png",
+      "bytes": 1107901,
+      "sha256": "a160f8bce204a85f6441d7c08189a6a9843f2ceaae90449a57e6163f313c9f29"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/review-sheet-03.png",
+      "bytes": 957730,
+      "sha256": "8998197805b80a1fc6f4cd396eadab68f92c5111c11c70071954775acf352d81"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/review-sheet-native-01.png",
+      "bytes": 1036601,
+      "sha256": "675fc03bc3657e751d4914a0e8302ff437cef66b2a3b51f018aec123f6967f88"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/review-sheet-03.png",
+      "bytes": 1143565,
+      "sha256": "2fab5f8ccebef93dd985197b87b664afec11e4262d53c5128258666426665378"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/review-sheet-native-01.png",
+      "bytes": 946963,
+      "sha256": "dc0be367cb931432ac4e9fd3a8afd340153c9e2d7323cea2b6e58e6a7bd65913"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/review-sheet-native-01.png",
+      "bytes": 876415,
+      "sha256": "674ff963dc38c9f7a8855d141fa9cc735289ae451fbbb7b01616f95d89fb485e"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/six-mask-sheet.png",
+      "bytes": 1691520,
+      "sha256": "746c785ea8c9d34ca761a9a46149ae2f7df0e097908b560f269fe4897348d873"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/native-01/report.json",
+      "bytes": 207995,
+      "sha256": "2fc6a543c7399be73ed61935f38f2e2e170e50128f2fbdc70b2273a9a4e14025"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/native-01/battle-10s.webm",
+      "bytes": 6898969,
+      "sha256": "094c227eb6663165ee35274e2d31838885554ac210982efea4c136348ca15be6"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/native-01/turn0-hit-approach-50.png",
+      "bytes": 1568889,
+      "sha256": "255536c9116a315f1d7ab97584c01dbe670f2791e4325942231af37d7e244727"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/native-01/turn0-hit-return-end.png",
+      "bytes": 1569569,
+      "sha256": "313c743657b106fc0fe9210ae82dbb74bc36721e8afd0a572f8c5228cc5f1443"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/native-01/turn1-dodge-reaction-50.png",
+      "bytes": 1607381,
+      "sha256": "bb21e3e5a64b2627a4e3c127650ad0e0996135d5a911d026329a39ee6837338c"
+    }
+  ],
+  "decode": {
+    "tool": "003f22",
+    "exitCode": 0,
+    "ffmpeg": "9.0.2",
+    "input": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/native-01/battle-10s.webm",
+    "requestedVideoTimesSeconds": [
+      1.23,
+      5.3
+    ],
+    "commandPattern": "ffmpeg -v error -n -ss TIME -i INPUT -frames:v 1 -update 1 OUTPUT",
+    "outputs": [
+      "python-film-at-1.23s.png",
+      "python-film-at-5.30s.png"
+    ],
+    "timingScope": "Video seek time only; not asserted equal to the report\u2019s action-clock timestamps."
+  }
+}

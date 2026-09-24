@@ -1,0 +1,48 @@
+{
+  "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+  "beforeSha256": "320a106834b3bba32e727b95ad13abdf13ff7f74723d40841a464d2b62a040be",
+  "afterSha256": "b6b7e745c61c6e9634ab4b8fd5c7411913ca383cb7772f5b143b49bcb0149abc",
+  "changes": [
+    {
+      "before": "const rigidSupportChains=new Map<string,ReturnType<typeof createTwoBoneChain>>();",
+      "after": "const supportCandidateChains=new Map<string,ReturnType<typeof createTwoBoneChain>>();"
+    },
+    {
+      "before": "  const rigidEligible=hasOffset&&activeChains.every(c=>c.endpointOnly);",
+      "after": "  const rigidEligible=hasOffset&&activeChains.every(c=>c.endpointOnly),candidateEligible=hasOffset;\n  // Mixed skin weights stay mixed. Keep the complete authored/travel-adjusted\n  // pose for one geometric candidate after failure, not an exact rigid claim.\n  const candidateBaseline=rigidEligible?null:{...pose};"
+    },
+    {
+      "before": "if(!rigidEligible)throw error;iterativeFailure=error;",
+      "after": "if(!candidateEligible)throw error;iterativeFailure=error;",
+      "count": 2
+    },
+    {
+      "before": "  // solely to its endpoint, solve that rigid point analytically. Mixed weights\n  // retain their existing fixed-point path and refusal; no fit-specific rule.",
+      "after": "  // solely to its endpoint, solve that rigid point analytically. For mixed\n  // supports the same geometry is only a candidate: all original contributors\n  // (including foreign joints) remain in the final full-ensemble measurement."
+    },
+    {
+      "before": "  if((iterativeFailure!==undefined||measured.maxPaintTargetErrorPx>.25)&&rigidEligible){try{",
+      "after": "  if((iterativeFailure!==undefined||measured.maxPaintTargetErrorPx>.25)&&candidateEligible){try{\n   if(candidateBaseline){for(const joint of Object.keys(pose))delete pose[joint];Object.assign(pose,candidateBaseline);}\n   const supportKind=rigidEligible?'rigid support':'support candidate';"
+    },
+    {
+      "before": "let chain=rigidSupportChains.get(c.id);",
+      "after": "let chain=supportCandidateChains.get(c.id);"
+    },
+    {
+      "before": "rigidSupportChains.set(c.id,chain);",
+      "after": "supportCandidateChains.set(c.id,chain);"
+    },
+    {
+      "before": "+' rigid support outside accommodatable reach'",
+      "after": "+' '+supportKind+' outside accommodatable reach'"
+    },
+    {
+      "before": "+' rigid support exceeds scale compression bound'",
+      "after": "+' '+supportKind+' exceeds scale compression bound'"
+    },
+    {
+      "before": "   final=program.evaluate(pose);measured=measure();",
+      "after": "   final=program.evaluate(pose);measured=measure();\n   // A geometric seed never grants rigid eligibility. Reject against the actual\n   // unchanged mixed LBS support of every chain, after every candidate is posed.\n   if(!rigidEligible&&measured.maxPaintTargetErrorPx>.25)throw Error('Contact: painted support candidate residual '+measured.maxPaintTargetErrorPx);"
+    }
+  ]
+}

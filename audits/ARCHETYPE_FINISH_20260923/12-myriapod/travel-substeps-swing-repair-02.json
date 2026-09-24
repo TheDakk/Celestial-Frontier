@@ -1,0 +1,8 @@
+{
+  "reason": "Earlier nested mockRestore restores the real contract function, so the second historical fixture must explicitly omit travelSubsteps too; no runtime or assertion-gate change.",
+  "file": "port/v2/apps/game/src/creature-rig-contact-swing-lift.test.ts",
+  "before": "{swingLift:removed,...oldStance}=actual.contactStance!;expect(removed).toBe('toward-socket');",
+  "after": "{swingLift:removed,travelSubsteps:removedCadence,...oldStance}=actual.contactStance!;expect(removed).toBe('toward-socket');expect(removedCadence).toEqual({hit:2,dodge:2});",
+  "beforeSha256": "0b38f8f7618b714d7c4e6f8c30e3ad1e636d3c560df72680514104bfffa85773",
+  "afterSha256": "c113e516fbb7bfbd9193c7bcc60b4dbd5a744d112aa09c898b6bbf95854e0f63"
+}

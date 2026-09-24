@@ -1,0 +1,14 @@
+{
+  "attempt": "standard-ssh-agent-signer",
+  "command": "SSH_AUTH_SOCK=<existing 1Password socket> git -c gpg.ssh.program=/usr/bin/ssh-keygen commit -S -F /private/tmp/cf-i5-focus-repair-commit.txt",
+  "exitCode": 128,
+  "stderr": "Couldn't sign message (signer): agent refused operation?\nSigning failed: agent refused operation?\nfatal: failed to write commit object",
+  "headUnchanged": "61c37f3a846429bcbc0167ea92de12623593e750",
+  "configurationChanged": false,
+  "privateKeyExported": false,
+  "diagnosis": "Configured key is listed; actual signing is refused by the agent through both signing clients. Unlock does not prove key-use authorization. Awaiting user response about SSH request waiting; no unchanged retry.",
+  "documentation": [
+    "https://www.1password.dev/ssh/agent/security",
+    "https://www.1password.dev/ssh/agent/compatibility"
+  ]
+}

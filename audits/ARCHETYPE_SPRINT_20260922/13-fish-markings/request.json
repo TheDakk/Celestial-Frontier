@@ -1,0 +1,21 @@
+{
+  "tool": "image_gen.imagegen",
+  "patterns": [
+    "striped",
+    "spotted",
+    "banded",
+    "mottled",
+    "marbled",
+    "eye-spotted"
+  ],
+  "reference": "audits/ARCHETYPE_SPRINT_20260922/02-fish/master.png",
+  "referenceSha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4",
+  "compiledPrompt": "audits/ARCHETYPE_SPRINT_20260922/02-fish/prompt.txt",
+  "compiledPromptSha256": "51e488e389257f20c270d2222b4362d3558108a336cafab942d2439ee89aa38c",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "sourceTransforms": "none; master pixel space",
+  "sourceHead": "64e792e06ca1e305336868a5d3a207e1caa12668"
+}

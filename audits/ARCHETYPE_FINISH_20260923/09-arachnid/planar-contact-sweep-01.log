@@ -1,0 +1,72 @@
+{
+  "sampleCount": 122,
+  "passed": 74,
+  "refused": 48,
+  "provenOverCapSamples": 48,
+  "boundPx": 23.31090731824911,
+  "firstRefusal": {
+    "id": "victory",
+    "ms": 135,
+    "maximumLowerBoundPx": 23.49739001804259,
+    "error": {
+      "error": "Error: Contact: victory@135 exceeds scale compression bound",
+      "cause": {
+        "error": "Error: Contact: victory@135 rigid support exceeds scale compression bound",
+        "cause": {
+          "error": "Error: Contact: no sampled admissible planar root candidate",
+          "attempts": []
+        }
+      }
+    }
+  },
+  "firstProvenOverCap": {
+    "id": "victory",
+    "ms": 135,
+    "maximumLowerBoundPx": 23.49739001804259,
+    "chains": [
+      {
+        "id": "leg3Near",
+        "hip": {
+          "x": 0.5826855302896004,
+          "y": 0.40509183858120734
+        },
+        "target": {
+          "x": 0.4059011164274322,
+          "y": 0.8748006379585327
+        },
+        "distance": 0.5018755674438424,
+        "minimum": 0.16169181035699579,
+        "maximum": 0.4831376168712407,
+        "translationLowerBound": 0.018737950572601747,
+        "translationLowerBoundPx": 23.49739001804259,
+        "innerTranslationLowerBound": 0,
+        "exceedsCap": true
+      }
+    ]
+  },
+  "worst": {
+    "id": "victory",
+    "ms": 210,
+    "maximumLowerBoundPx": 26.803874311353756,
+    "chains": [
+      {
+        "id": "leg3Near",
+        "hip": {
+          "x": 0.5819819962221241,
+          "y": 0.40201294558808554
+        },
+        "target": {
+          "x": 0.4059011164274322,
+          "y": 0.8748006379585327
+        },
+        "distance": 0.5045123172790188,
+        "minimum": 0.16169181035699579,
+        "maximum": 0.4831376168712407,
+        "translationLowerBound": 0.021374700407778113,
+        "translationLowerBoundPx": 26.803874311353756,
+        "innerTranslationLowerBound": 0,
+        "exceedsCap": true
+      }
+    ]
+  }
+}

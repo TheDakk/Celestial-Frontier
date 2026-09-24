@@ -1,0 +1,115 @@
+{
+  "schema": "cf.sprint-continuation-status/v1",
+  "signedHead": "1285ba2ecc0548e0a299e2b855168ff9616c8496",
+  "signature": "G previously verified",
+  "item": "Centipede only remaining item",
+  "fit": "fit-07",
+  "candidate": "candidate-09",
+  "recordRecipeHash": "87434dc5b868915b31575e47ba8deab0006eb16a100c6e496512a54019607791",
+  "bindingHash": "541cc0657e235e5a3d7586a877200312ab3f6aeb9380b08442b8d64e03a97ab0",
+  "fieldVertices": 5074,
+  "triangles": 8867,
+  "static": "static-04.json",
+  "status": "RED",
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "alert",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "approach:crawl",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "melee:mandible",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "melee:body",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "cast",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "hit",
+      "status": "RED",
+      "samples": 7,
+      "firstRefusal": {
+        "ms": 26.25,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 20"
+      }
+    },
+    {
+      "id": "dodge",
+      "status": "RED",
+      "samples": 10,
+      "firstRefusal": {
+        "ms": 23.333333333333332,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7"
+      }
+    },
+    {
+      "id": "faint",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "victory",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "tame",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "feed",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    }
+  ],
+  "pending": [
+    "Compact hit/dodge two-substep source cadence preserving exact authored root arithmetic; contact agent implementing and focused controls pending.",
+    "Candidate10 near1/6/13 remaining observed fringe contour fixes; source authoring agent active.",
+    "Changed intake and full static, final S2 once, first native film, inspected sheet, source closure, final docs/manifest, signed commit, normal requested branch push."
+  ],
+  "nativeAttempts": 0,
+  "s2Executed": false,
+  "ssh": "Two preflight failures communicating with agent; renewed until-quit confirmation pending. Effective GitHub IdentityAgent verified as exact 1Password path; no config change or further auth attempt.",
+  "docsGenerator": "write-final-readme.mjs prepared, unexecuted; exact current README/HISTORY guards must be preserved or deliberately refreshed.",
+  "notes": [
+    "All12 other technical selections remain retained; no unchanged reruns.",
+    "No accepted binding or S2 input changed; no ARAP/numerical gate changes.",
+    "Latest contact support-candidate fallback9/9 focused controls and TypeScript06 PASS; source b6b7e745c61c6e9634ab4b8fd5c7411913ca383cb7772f5b143b49bcb0149abc precedes new cadence work.",
+    "Do not repeat body-region refinement on the rejected far3 bounding-box hypothesis; existing fine box covers measured points."
+  ]
+}

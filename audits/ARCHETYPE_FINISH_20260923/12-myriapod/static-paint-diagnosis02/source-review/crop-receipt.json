@@ -1,0 +1,83 @@
+{
+  "schema": "cf.read-only-source-crops/v1",
+  "files": [
+    {
+      "file": "leg9-far-source.png",
+      "source": "candidate-07/master.png",
+      "sourceSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+      "crop": {
+        "x": 415,
+        "y": 560,
+        "width": 115,
+        "height": 115
+      },
+      "sha256": "2593ed51ffc8cea248446bf3cb4fa42b3dd3f0a39018c1149b1a2f6326301b3c",
+      "transformation": "direct RGBA crop only; no compositing, alpha threshold, recoloring, labels or scaling"
+    },
+    {
+      "file": "leg13-far-source.png",
+      "source": "candidate-07/master.png",
+      "sourceSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+      "crop": {
+        "x": 185,
+        "y": 548,
+        "width": 115,
+        "height": 115
+      },
+      "sha256": "616f33a8660bef982529f73e573327b5aa80ad3217ed5c3e9f7dbc0dc9f09db8",
+      "transformation": "direct RGBA crop only; no compositing, alpha threshold, recoloring, labels or scaling"
+    },
+    {
+      "file": "leg10-near-source.png",
+      "source": "candidate-07/master.png",
+      "sourceSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+      "crop": {
+        "x": 393,
+        "y": 672,
+        "width": 100,
+        "height": 118
+      },
+      "sha256": "66bcdff81acc9334202146b3515bf9f03ab8b05c59c6605758904c78bb8536fe",
+      "transformation": "direct RGBA crop only; no compositing, alpha threshold, recoloring, labels or scaling"
+    },
+    {
+      "file": "leg9-far-ownership.png",
+      "source": "fit-05/parts/ownership.png",
+      "sourceSha256": "8b385aeed3c352ec891b190953692fe2133ebaca373220ba9b6d919ccd4e502c",
+      "crop": {
+        "x": 415,
+        "y": 560,
+        "width": 115,
+        "height": 115
+      },
+      "sha256": "f7c2d3a095c40b9b1baef38db3dc64093a07bb701cc2f0e2c5bcc176ab28af0c",
+      "transformation": "direct RGBA crop only; no compositing, alpha threshold, recoloring, labels or scaling"
+    },
+    {
+      "file": "leg13-far-ownership.png",
+      "source": "fit-05/parts/ownership.png",
+      "sourceSha256": "8b385aeed3c352ec891b190953692fe2133ebaca373220ba9b6d919ccd4e502c",
+      "crop": {
+        "x": 185,
+        "y": 548,
+        "width": 115,
+        "height": 115
+      },
+      "sha256": "98f80c8c5d725853bf0c25e8818b900d5808c2025b0b2e3e01c1cef80a7120fe",
+      "transformation": "direct RGBA crop only; no compositing, alpha threshold, recoloring, labels or scaling"
+    },
+    {
+      "file": "leg10-near-ownership.png",
+      "source": "fit-05/parts/ownership.png",
+      "sourceSha256": "8b385aeed3c352ec891b190953692fe2133ebaca373220ba9b6d919ccd4e502c",
+      "crop": {
+        "x": 393,
+        "y": 672,
+        "width": 100,
+        "height": 118
+      },
+      "sha256": "aa38a2fabd36b51209d60679be9b32cf197e216bbf3202089c2e3f079f9cda48",
+      "transformation": "direct RGBA crop only; no compositing, alpha threshold, recoloring, labels or scaling"
+    }
+  ]
+}

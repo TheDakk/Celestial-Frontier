@@ -1,0 +1,12 @@
+{
+  "source": "master.png",
+  "sourceSha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a",
+  "crop": {
+    "left": 730,
+    "top": 800,
+    "width": 130,
+    "height": 150
+  },
+  "scale": 5,
+  "method": "Nearest-neighbour inspection crop only; delivered master unchanged"
+}

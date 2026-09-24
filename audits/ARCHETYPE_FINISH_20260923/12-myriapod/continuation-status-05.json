@@ -1,0 +1,46 @@
+{
+  "schema": "cf.sprint-continuation-status/v1",
+  "signedHead": "1285ba2ecc0548e0a299e2b855168ff9616c8496",
+  "item": "Centipede",
+  "candidate": "candidate-10",
+  "fit": "fit-08",
+  "recordRecipeHash": "3c9d84cf0243a347e3ab0acc82834624daab4b3ffcbc8f427000222ad97ae304",
+  "bindingHash": "2542d6063cb8f50575e64920cd52fa745ed6a9ae3ef4046f24f5ae8181ed18ed",
+  "static": "static-05.json",
+  "status": "RED",
+  "greenActions": 10,
+  "exactRest": true,
+  "redRows": [
+    {
+      "id": "hit",
+      "ms": 15,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 4"
+    },
+    {
+      "id": "dodge",
+      "ms": 14,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 10"
+    }
+  ],
+  "diagnostic": "static-paint-diagnosis05/report.json",
+  "contactTargetScan": {
+    "actions": [
+      "hit",
+      "dodge"
+    ],
+    "samplesEach": 121,
+    "resolvedEach": 121,
+    "fullyPinnedInversions": 0,
+    "contactRefusals": 0
+  },
+  "currentFinding": "Both first mesh failures are soft leg3-far collar folds. Current bend-core-only regional influence under inspection; no next authoring change chosen yet.",
+  "activeWork": [
+    "Audit agent: only230 previously unexecuted later hit/dodge ARAP samples, collect union of soft folds before source correction.",
+    "Triage: source upper-shaft influence proposal, no authoring changes yet."
+  ],
+  "runtime": "Frozen after explicit compact hit/dodge two-substeps; cached old root-displacement arithmetic, all original gates preserved. New18 cadence+6support controls passed; old12swing controls passed after retained fixture isolation fix. TypeScript07 PASS tool453504.",
+  "nativeAttempts": 0,
+  "s2Executed": false,
+  "ssh": "Renewed until-quit confirmation still pending after two preflight agent-communication refusals; no new auth/sign/push attempt.",
+  "next": "Source-author upper influence correction if justified, changed intake/static, final S2/native/sheet/source closure/docs/seal, signed commit and normal requested branch push."
+}

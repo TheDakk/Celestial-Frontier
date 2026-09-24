@@ -22,6 +22,8 @@ export interface ProportionBound {
 }
 export interface SecondaryChain { readonly id: string; readonly driver: JointName; readonly joints: readonly JointName[]; /** A11 chain kind for §6 rules; absent on the quadruped chains (tail/ear by name). */ readonly kind?: string; }
 export interface MotionTemplate {
+  readonly anatomyModel?:string;
+  readonly fixedPivots?:import('../../../../tools/creature-animation/fixed-attachments.mjs').FixedPivotMap;
   readonly id: 'quadruped' | FamilyTemplateId | SpecializedTemplateId;
   readonly version: 1;
   readonly clipSetId: string;

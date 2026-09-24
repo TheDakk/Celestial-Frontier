@@ -1,0 +1,27 @@
+[
+  {
+    "file": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+    "before": "actions:{},swingLift:'toward-socket'",
+    "after": "actions:{},swingLift:'toward-socket',travelSubsteps:{hit:2,dodge:2}"
+  },
+  {
+    "file": "port/v2/tools/creature-animation/family-contracts.d.mts",
+    "before": "readonly swingLift?:'toward-socket';",
+    "after": "readonly swingLift?:'toward-socket';readonly travelSubsteps?:Readonly<Partial<Record<'hit'|'dodge',2>>>;"
+  },
+  {
+    "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+    "before": " // Explicit named support groups must resolve to complete existing chains.",
+    "after": " // Reaction cadence is an explicit compact-model choice, not a reach-based\n // adjustment. Only the two declared source-step reactions may subdivide.\n const travelSubsteps=template.contactStance?.travelSubsteps;\n if(template.contactStance&&Object.hasOwn(template.contactStance,'travelSubsteps')&&\n  (template.id!=='myriapod'||template.anatomyModel!=='myriapod-rigid-trunk-v1'||!travelSubsteps||typeof travelSubsteps!=='object'||Array.isArray(travelSubsteps)||![Object.prototype,null].includes(Object.getPrototypeOf(travelSubsteps))||!Reflect.ownKeys(travelSubsteps).length||Reflect.ownKeys(travelSubsteps).some(id=>(id!=='hit'&&id!=='dodge')||travelSubsteps[id]!==2||template.contactStance?.travel?.[id]!=='source-steps')))throw Error('Contact: invalid travel substeps declaration');\n // Explicit named support groups must resolve to complete existing chains."
+  },
+  {
+    "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+    "before": "  return {...step,authoredDx:sampleKeys(plan.timeline.root.dx,phase.elapsedMs)*weight};",
+    "after": "  const authoredDx=sampleKeys(plan.timeline.root.dx,phase.elapsedMs)*weight;\n  if((phase.actionId==='hit'||phase.actionId==='dodge')&&travelSubsteps?.[phase.actionId]===2&&step.stride!==0){\n   // Preserve the original body expression before subdividing the feet. Rebuilding\n   // it from halves could change a waypoint by floating-point reassociation.\n   const rootDisplacement=step.base+step.stride*step.progress,half=step.stride/2,doubled=step.progress*2,index=doubled<1?0:1;\n   return {base:step.base+half*index,stride:half,progress:doubled-index,rootDisplacement,authoredDx};\n  }\n  return {...step,authoredDx};"
+  },
+  {
+    "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+    "before": "sourceTravel?(sourceTravel.base+sourceTravel.stride*progress)/program.bodyLength+",
+    "after": "sourceTravel?(sourceTravel.rootDisplacement??(sourceTravel.base+sourceTravel.stride*progress))/program.bodyLength+"
+  }
+]

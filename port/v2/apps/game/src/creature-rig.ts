@@ -20,9 +20,14 @@ export interface CreatureRigV1 {
   readonly parts:ReadonlyArray<{id:string;display:Container;pivot:{x:number;y:number};layer:'far'|'near'}>;
   readonly root:Container;
   applyPose(pose:CreaturePoseV1):void;
+  /** Opt-in pad records admit their matching painted targets before publication. */
+  applyContactPose?(pose:CreaturePoseV1,contacts:readonly CreaturePaintContact[]):void;
   readonly bounds:{width:number;height:number;groundLineY:number};
   dispose():void;
 }
+export interface CreaturePaintContact {readonly joint:string;readonly paintedTarget:{readonly x:number;readonly y:number};readonly stance:boolean;}
+const rigContactEvidence=new WeakMap<CreatureRigV1,{samples:number;maxPaintDriftPx:number}>();
+export function readCreatureRigContactEvidence(rig:CreatureRigV1){const e=rigContactEvidence.get(rig);return e?Object.freeze({...e,scope:'Actual pending Float32 rendered pad interpolation, admitted before publication; adhesive point anchors, no terrain-clearance claim'}):null;}
 interface CreatureRigRuntimeDiagnostics {readonly schema:'cf.creature-rig-runtime/v1';readonly sweepBackend:'wasm'|'js'|'none';readonly fieldVertices:number;readonly normalPasses:number;readonly robustFallbacks:number;}
 const rigRuntimeDiagnostics=new WeakMap<CreatureRigV1,Readonly<CreatureRigRuntimeDiagnostics>>();
 const rigSupportReaders=new WeakMap<CreatureRigV1,(joint:string)=>Readonly<{x:number;y:number}>|null>();
@@ -36,7 +41,7 @@ export interface CreatureRigRecordV1 {
   readonly anatomy?:import('../../../tools/creature-animation/anatomy-inventory.mjs').AnatomyPresence;
   readonly recipeHash:string;
   readonly template:{id:string;version:number};
-  readonly geometry:{width:number;height:number;groundLineY:number;cutoutAssetHash:string};
+  readonly geometry:{width:number;height:number;groundLineY:number;cutoutAssetHash:string;fixedAttachments?:Readonly<Record<string,readonly [number,number]>>;contactPads?:{readonly schema:'cf.terminal-pad-support/v1';readonly kind:'adhesive';readonly points:Readonly<Record<string,readonly [number,number]>>}};
   readonly landmarks:Readonly<Record<string,readonly [number,number]>>;
 }
 interface Box {readonly x:number;readonly y:number;readonly width:number;readonly height:number;}
@@ -187,31 +192,53 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
     return {part,display,pivot:skeleton.pivot(part.joint)};
   });
   let disposed=false,published=false;
+  let supports:ReturnType<typeof observedContactSupports>|undefined;
+  const contactEvidence={samples:0,maxPaintDriftPx:0};
   const parts=Object.freeze([...skins.map(({source,display})=>Object.freeze({id:source.id,display,pivot:skeleton.pivot(source.joint),layer:source.layer})),...entries.map(({part,display,pivot})=>Object.freeze({id:part.id,display,pivot,layer:part.layer})),
     ...bridges.map(({group,display})=>Object.freeze({id:group.id,display,pivot:skeleton.pivot(group.ancestorJoint),layer:group.layer}))]);
-  const rig=Object.freeze({recipeHash:record.recipeHash,templateId:record.template.id,root,parts,
-    bounds:Object.freeze({width:1,height:1,groundLineY:record.geometry.groundLineY}),
-    applyPose(pose:CreaturePoseV1){
+  const publishPose=(pose:CreaturePoseV1,contacts?:readonly CreaturePaintContact[])=>{
       requireValue(!disposed,'disposed');
       const matrices=skeleton.evaluate(pose);
       if(skin&&field&&compiledField){applyCompiledSkinField(compiledField,matrices,target??field);if(shape&&target)solveArapSkin(shape,target,field);for(const entry of skins)applyPaintPart(entry.part,field,entry.pending);if(rigidParents.length)applyRigidParentFrames(rigidParents,matrices,Object.fromEntries(skins.map(e=>[e.part.id,e.pending])));for(const entry of skins)assertPaintPartShape(entry.part,skin,entry.pending,w,h,entry.areas);}
+      let contactMax=0;
+      if(contacts){
+        requireValue(record.geometry.contactPads,'undeclared terminal pad guard');supports??=observedContactSupports(record,binding);
+        requireValue(new Set(contacts.map(c=>c.joint)).size===contacts.length,'duplicate painted contact');
+        for(const contact of contacts){
+          const surface=supports[contact.joint]?.surface;
+          requireValue(surface&&'triangle' in surface,'missing interpolated painted pad');
+          requireValue(Number.isFinite(contact.paintedTarget.x)&&Number.isFinite(contact.paintedTarget.y)&&typeof contact.stance==='boolean','invalid painted pad target');
+          if(!surface||!('triangle' in surface))throw Error('Creature rig: terminal pad surface required');
+          const entry=skins.find(e=>e.part.id===surface.partId);requireValue(entry,'missing pad part');
+          let x=0,y=0;for(let k=0;k<3;k++){const index=surface.triangle[k]!;x+=entry!.pending[index*2]!*surface.barycentric[k]!;y+=entry!.pending[index*2+1]!*surface.barycentric[k]!;}
+          const drift=Math.hypot((x-contact.paintedTarget.x)*w,(y-contact.paintedTarget.y)*h);
+          requireValue(Number.isFinite(drift)&&drift<=.25,'published painted pad drift '+contact.joint+': '+drift);contactMax=Math.max(contactMax,drift);
+        }
+      }
       // All spans are admitted into private scratch before any visible state changes.
       for(const bridge of bridges)writeSeamPose(bridge.group,matrices,w,h,bridge.buffers.pending,bridge.part.cutout);
       for(const entry of skins){entry.positions.set(entry.pending);entry.geometry.getBuffer('aPosition').update();}
       for(const entry of entries)entry.display.setFromMatrix(new Matrix(...matrices[entry.part.joint]!));
       for(const bridge of bridges){bridge.buffers.positions.set(bridge.buffers.pending);bridge.geometry.getBuffer('aPosition').update();}
       published=true;
-    },
+      if(contacts){contactEvidence.samples+=contacts.length;contactEvidence.maxPaintDriftPx=Math.max(contactEvidence.maxPaintDriftPx,contactMax);}
+
+  };
+  const rig=Object.freeze({recipeHash:record.recipeHash,templateId:record.template.id,root,parts,
+    bounds:Object.freeze({width:1,height:1,groundLineY:record.geometry.groundLineY}),
+    applyPose(pose:CreaturePoseV1){publishPose(pose);},
+    ...(record.geometry.contactPads?{applyContactPose(pose:CreaturePoseV1,contacts:readonly CreaturePaintContact[]){publishPose(pose,contacts);}}:{}),
     dispose(){if(disposed)return;disposed=true;root.destroy({children:true});for(const entry of skins)entry.geometry.destroy();for(const bridge of bridges)bridge.geometry.destroy();for(const texture of textures)texture.destroy(false);if(ownsAtlas)atlas.destroy(true);},
   });
   rigRuntimeDiagnostics.set(rig,Object.freeze({schema:'cf.creature-rig-runtime/v1',sweepBackend:shape?.sweepBackend??'none',fieldVertices:skin?.vertices.length??0,get normalPasses(){return shape?.normalPasses??0;},get robustFallbacks(){return shape?.robustFallbacks??0;}}));
-  let supports:ReturnType<typeof observedContactSupports>|undefined;
+  if(record.geometry.contactPads)rigContactEvidence.set(rig,contactEvidence);
   rigSupportReaders.set(rig,joint=>{
     if(disposed||!published||!skin)return null;
     supports??=observedContactSupports(record,binding);
     const location=supports[joint]?.surface;if(!location)return null;
     const entry=skins.find(e=>e.part.id===location.partId);if(!entry)return null;
-    return Object.freeze({x:entry.positions[location.vertexIndex*2]!,y:entry.positions[location.vertexIndex*2+1]!});
+    if('vertexIndex' in location)return Object.freeze({x:entry.positions[location.vertexIndex*2]!,y:entry.positions[location.vertexIndex*2+1]!});
+    let x=0,y=0;for(let k=0;k<3;k++){const index=location.triangle[k]!;x+=entry.positions[index*2]!*location.barycentric[k]!;y+=entry.positions[index*2+1]!*location.barycentric[k]!;}return Object.freeze({x,y});
   });
   return rig;
 }

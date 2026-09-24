@@ -4,6 +4,16 @@ const require=createRequire(import.meta.url),{PNG}=createRequire(require.resolve
 export async function buildPaintSkin(baseDirectory,seamBinding,record,options={}){
  const boundaryStep=options.boundaryStep??8,interiorStep=options.interiorStep??32;
  for(const [name,value]of Object.entries({boundaryStep,interiorStep}))if(!Number.isInteger(value)||value<1||value>2048)throw Error('Paint skin: invalid '+name);
+ const requested=options.refinements===undefined?[]:options.refinements;
+ if(!Array.isArray(requested))throw Error('Paint skin: invalid refinements');
+ const refinements=requested.map((r,index)=>{
+  const keys=['x','y','width','height','boundaryStep','interiorStep'],fail=why=>{throw Error('Paint skin: invalid refinement '+index+' '+why);};
+  if(!r||typeof r!=='object'||Array.isArray(r)||(Object.getPrototypeOf(r)!==Object.prototype&&Object.getPrototypeOf(r)!==null)||Reflect.ownKeys(r).length!==keys.length||keys.some(k=>!Object.hasOwn(r,k)||!Number.isInteger(r[k])))fail('fields');
+  const {width,height}=record?.geometry??{};
+  if(!Number.isInteger(width)||!Number.isInteger(height)||width<=0||height<=0||r.x<0||r.y<0||r.width<=0||r.height<=0||r.x+r.width>width||r.y+r.height>height)fail('bounds');
+  if(r.boundaryStep<1||r.boundaryStep>2048||r.interiorStep<1||r.interiorStep>2048||r.boundaryStep>boundaryStep||r.interiorStep>interiorStep)fail('steps must refine global sampling');
+  return Object.fromEntries(keys.map(k=>[k,r[k]]));
+ });
  const verified=await verifyPartsDirectory(baseDirectory),base=verified.binding,{width:w,height:h}=record.geometry,parts=base.parts.filter(p=>p.kind==='part'),owner=new Uint8Array(w*h),partIndex=new Map(parts.map((p,i)=>[p.id,i+1]));
  for(const [k,p]of parts.entries()){const png=PNG.sync.read(verified.sources.get(p.id));for(let y=0;y<png.height;y++)for(let x=0;x<png.width;x++)if(png.data[(y*png.width+x)*4+3]){const i=(y+p.cutout.y)*w+x+p.cutout.x;if(owner[i])throw Error('Overlapping base ink');owner[i]=k+1;}}
  // Texture ownership is a different graph from bone ancestry: neck paint
@@ -16,7 +26,10 @@ export async function buildPaintSkin(baseDirectory,seamBinding,record,options={}
  for(const e of ownershipEdges)for(const [x,y]of e.edge)if(x<w&&y<h)seamPixels[y*w+x]=1;
  const integral=a=>{const out=new Uint32Array((w+1)*(h+1));for(let y=0;y<h;y++){let row=0;for(let x=0;x<w;x++){row+=!!a[y*w+x];out[(y+1)*(w+1)+x+1]=out[y*(w+1)+x+1]+row;}}return out;},inkSum=integral(owner),cutSum=integral(seamPixels);
  const sum=(a,x,y,ww,hh)=>a[(y+hh)*(w+1)+x+ww]-a[y*(w+1)+x+ww]-a[(y+hh)*(w+1)+x]+a[y*(w+1)+x];
- const leaves=[];function split(x,y,ww,hh){const n=sum(inkSum,x,y,ww,hh);if(!n)return;const limit=n<ww*hh||sum(cutSum,x,y,ww,hh)?boundaryStep:interiorStep;
+ const leaves=[];function split(x,y,ww,hh){const n=sum(inkSum,x,y,ww,hh);if(!n)return;const boundary=n<ww*hh||sum(cutSum,x,y,ww,hh);let limit=boundary?boundaryStep:interiorStep;
+  // Authoring density only: intersecting cells may become finer, never coarser.
+  // Shared edge vertices still make the resulting quadtree mesh conforming.
+  for(const r of refinements)if(x<r.x+r.width&&x+ww>r.x&&y<r.y+r.height&&y+hh>r.y)limit=Math.min(limit,boundary?r.boundaryStep:r.interiorStep);
   if(ww>limit||hh>limit){const left=Math.floor(ww/2),top=Math.floor(hh/2);for(const [a,b,c,d]of [[x,y,left,top],[x+left,y,ww-left,top],[x,y+top,left,hh-top],[x+left,y+top,ww-left,hh-top]])if(c&&d)split(a,b,c,d);}
   else leaves.push({x,y,w:ww,h:hh});}split(0,0,w,h);
  const horizontal=new Map(),vertical=new Map(),add=(m,k,v)=>{if(!m.has(k))m.set(k,new Set());m.get(k).add(v);};
@@ -49,5 +62,5 @@ export async function buildPaintSkin(baseDirectory,seamBinding,record,options={}
   }
  }
  const skin={schema:'cf.paint-skin/v1',vertices,parts:[...result.values()],...(options.includeTopology?{triangles:fieldTriangles}:{})},stats=validatePaintSkin(skin,parts,w,h,familyContractForRecord(record).joints),{bindingHash,...body}=base;body.parts=parts;body.paintSkin=skin;
- return {ownershipEdges,binding:{...body,bindingHash:await hashJSON(body)},receipt:{schema:'cf.paint-skin-intake/v1',sourceBindingHash:bindingHash,recordRecipeHash:record.recipeHash,packedPixels:verified.receipt,...stats,leaves:leaves.length,triangles,ownershipEdges:ownershipEdges.length,ownershipAlphaRule:'every nonzero original alpha',originalInkOnly:true,method:'alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches',nativeAcceptance:false}};
+ return {ownershipEdges,binding:{...body,bindingHash:await hashJSON(body)},receipt:{schema:'cf.paint-skin-intake/v1',...(refinements.length?{refinements}:{}),sourceBindingHash:bindingHash,recordRecipeHash:record.recipeHash,packedPixels:verified.receipt,...stats,leaves:leaves.length,triangles,ownershipEdges:ownershipEdges.length,ownershipAlphaRule:'every nonzero original alpha',originalInkOnly:true,method:'alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches',nativeAcceptance:false}};
 }

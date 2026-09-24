@@ -58,6 +58,8 @@ export interface PartsRigOptions {
   /** Morph M1: per-joint uniform scales (from `jointScalesV1`) — the SAME map the paint-skin rig was loaded with, so
    * `jointPosition`, the tallest-pose and reach probes read the morphed skeleton. */
   readonly jointScale?: Readonly<Record<string, number>>;
+  /** Native archetype study measures complete published mesh envelopes on separate rigs. */
+  readonly heightProbe?: 'legacy-landmarks' | 'external-painted-envelope';
 }
 export interface PartsRig extends BattleRigV1 {
   readonly kind: 'parts';
@@ -100,7 +102,12 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
   const compat = contactMode === 'quadruped-compat' ? createQuadrupedContactSolver(record) : null;
   const program: SkeletonPoseProgram = createSkeletonPoseProgram(familyContractForRecord(record as { template: { id: string } }), record.landmarks, options.jointScale ? { jointScale: options.jointScale } : {});
   let pending: RigPose = {}, frame = 0, refused = 0, lastError: string | null = null, applied = 0, last: CreaturePoseV1 | null = null, disposed = false;
-  const owner = createCreatureRigPerformance(record, rig, [{
+  // Source-declared adhesive pads use the same solve result for prepublication
+  // mesh admission; old rigs retain the original performance target unchanged.
+  let resolvedPads: ReturnType<NonNullable<typeof family>['resolve']> | null = null;
+  if(record.geometry.contactPads&&(!family||!rig.applyContactPose))throw Error('Terminal pad publication guard required');
+  const performanceRig=record.geometry.contactPads?{...rig,applyPose(pose:CreaturePoseV1){if(!resolvedPads)throw Error('Matching pad targets required');rig.applyContactPose!(pose,resolvedPads.contacts);}}:rig;
+  const owner = createCreatureRigPerformance(record, performanceRig, [{
     id: 'stage', durationMs: 1e12, loop: false, dispose() { /* the adapter owns the rig */ },
     seek(_ms, target) { for (const [j, k] of Object.entries(pending)) target.setJoint(j, k.rotation, k.dx ?? 0, k.dy ?? 0); },
   }]);
@@ -110,7 +117,9 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
     // `stageDisplacement` is already in signed body lengths since the stance boundary (Codex's cadence contract) and
     // goes to the solver unchanged; the solver recedes stance targets by it (d8787235)
     const phase = { actionId: context.actionId, elapsedMs: context.elapsedMs, durationMs: context.durationMs, weight: context.weight, realm: card.realm, travel: context.travel, ...(context.stageDisplacement !== undefined ? { stageDisplacement: context.stageDisplacement } : {}) };
-    return family!.resolve(pose, phase as Parameters<NonNullable<typeof family>['resolve']>[1]).pose;
+    const solved=family!.resolve(pose, phase as Parameters<NonNullable<typeof family>['resolve']>[1]);
+    if(record.geometry.contactPads)resolvedPads=solved;
+    return solved.pose;
   };
   // A2: the rig's stance reach — the largest stage displacement (body lengths) the family solver accepts at three
   // stance samples of the approach gait (binary search to 1/256 body length); the caller-side measurement until
@@ -164,6 +173,7 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
   // path the stage drives): the largest upward rise of any landmark across the clips the stage plays (approach, the
   // anatomy attacks, hit, dodge, faint, victory), added to the rest bounds. Cut-out units. Universal: measured for
   // every parts rig, applied by the stage only where a fill rule asks for it. Probe refusals are not the stage's.
+  if (options.heightProbe === 'external-painted-envelope') { out.applyPose({}, restContext()); return out; }
   const topOf = (): number => { let y = Infinity; for (const j of Object.keys(record.landmarks)) { const p = out.jointPosition(j); if (p && p.y < y) y = p.y; } return y; };
   const timelines: MotionTimeline[] = [];
   for (const id of ['approach', 'hit', 'dodge', 'faint', 'victory']) { try { timelines.push(buildTimeline(card, id, 5)); } catch { /* not an action of this family */ } }

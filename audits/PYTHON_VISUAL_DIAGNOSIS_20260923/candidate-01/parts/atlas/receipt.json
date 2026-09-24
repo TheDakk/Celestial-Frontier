@@ -1,0 +1,83 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "python",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "05312aa44c12a6063882ad2870224021610f0a4cda87e3d0dc8e3c1f3acc1e2e",
+    "pngSha256": "e7ce81ff84aeee0acc2e5e33871c65b6b47b884be8a556a45ce9d2a52d778646"
+  },
+  "parts": [
+    {
+      "name": "body.png",
+      "sha256": "4e981833a46b7844822d79d4a063c3e6c8e3fa3a46b2062db8af80a45db7ed43"
+    },
+    {
+      "name": "coil-crest.png",
+      "sha256": "b6845534c14eedf8e53782645c57224000dc5d4b1e1138b6ebfb69b6743f2a1e"
+    },
+    {
+      "name": "coil-front.png",
+      "sha256": "d22721c4894f954943cddb9db853eee55e918968a08c444134850274ab18f670"
+    },
+    {
+      "name": "coil-left-turn.png",
+      "sha256": "2bac3583210d84169df7c0673374c8b8013adc6691b2012638d33490af8fe9bd"
+    },
+    {
+      "name": "coil-middle-crossing.png",
+      "sha256": "3b3fb3ee94cf6feba2b81901a1953a02ecc7d0550762223ab8eb2d88f81e2555"
+    },
+    {
+      "name": "coil-rear-left.png",
+      "sha256": "d5d83e332df0258483917bbe04624286668920907a2eb19f1355cb27c532bebb"
+    },
+    {
+      "name": "coil-rear-neck-link.png",
+      "sha256": "465d93dccdfac5ec46c30c07456d6327f10725ce080c344e7f92b3fcfeae193a"
+    },
+    {
+      "name": "coil-right-turn.png",
+      "sha256": "af6a512aec1b8ef764be80819df53a9e9e4fbea3589fbf763efb9c1b31953b15"
+    },
+    {
+      "name": "head.png",
+      "sha256": "6c4c21cead6805c8f9bcffdbd4382ef6813f13cf1652154825e81b38f7f60456"
+    },
+    {
+      "name": "jaw.png",
+      "sha256": "3485a7cec5d712f25e6b31c386688fc1e761a659338eab0ccc781b3036081402"
+    },
+    {
+      "name": "neck-lower-curve.png",
+      "sha256": "4640bb39fcca9161fce6c0515051e31b43c0970c190ca9a7a4841904e8b6b12a"
+    },
+    {
+      "name": "neck-upper-curve.png",
+      "sha256": "67e5bbf0b8b474a08a58d63c005808e5b6d340f706847fd65bef377884ac02c6"
+    },
+    {
+      "name": "tail-tip.png",
+      "sha256": "5c4534746f70681fe44a4c5837d7fc29b3672608921d678ceb4e966493075855"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

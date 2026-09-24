@@ -1,0 +1,164 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3499,
+      "sha256": "8d76f4007b92fd9ff2134df5c326ef11a9e76c2135d51c146e56fd3667367daf"
+    },
+    {
+      "path": "adapter-types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "format-note.txt",
+      "bytes": 298,
+      "sha256": "9a6f87eb360ebcabb67e07fe7e79a8384695701d1fee3a7de79911769d2d39ed"
+    },
+    {
+      "path": "native-02/battle-10s.webm",
+      "bytes": 5819218,
+      "sha256": "2017eb46da160426d74635fe654d3b9b0dc492ab5b4d31d96b1babbf805ee292"
+    },
+    {
+      "path": "native-02/report.json",
+      "bytes": 2251453,
+      "sha256": "924f62b46ff2c89c8971d5e0202b4bb9c22974dd9f4f0fe66423ef9fb5d4ed87"
+    },
+    {
+      "path": "native-02/script.json",
+      "bytes": 518,
+      "sha256": "d8ca5cf0e835fefddde8b5e1fffc78cdd2f6fa52eb1fb800c5e3d9b8ba5c5025"
+    },
+    {
+      "path": "native-02/turn0-hit-approach-50.png",
+      "bytes": 1081352,
+      "sha256": "ec5f0a9b4fda21a65a4e4ff0b2c173525506be041f6d0a8fed1bdd3d28700874"
+    },
+    {
+      "path": "native-02/turn0-hit-impact.png",
+      "bytes": 576801,
+      "sha256": "b8b262691f398c77a61280ee3efc6986bb976a864db8935f2fa2373524c48f87"
+    },
+    {
+      "path": "native-02/turn0-hit-reaction-50.png",
+      "bytes": 1110080,
+      "sha256": "2da4fee100d12ecb2eb461bedc99fdd43e4baacd57c990362baef560acad6b12"
+    },
+    {
+      "path": "native-02/turn0-hit-return-end.png",
+      "bytes": 1080571,
+      "sha256": "c791597b2397446ca5f5ab56fddf2cd6693d8d4878e74027c4271485e0dc474e"
+    },
+    {
+      "path": "native-02/turn1-dodge-approach-50.png",
+      "bytes": 1081352,
+      "sha256": "ec5f0a9b4fda21a65a4e4ff0b2c173525506be041f6d0a8fed1bdd3d28700874"
+    },
+    {
+      "path": "native-02/turn1-dodge-impact.png",
+      "bytes": 1076832,
+      "sha256": "b944b9821de202751e3056829e7c8d358125e2dcacf866fe8574dee548ae39ea"
+    },
+    {
+      "path": "native-02/turn1-dodge-reaction-50.png",
+      "bytes": 1111513,
+      "sha256": "98da8b02d83c69102607184ebb24c97951f3959e3c716c92cc07a26d43929a8f"
+    },
+    {
+      "path": "native-02/turn1-dodge-return-end.png",
+      "bytes": 1080571,
+      "sha256": "c791597b2397446ca5f5ab56fddf2cd6693d8d4878e74027c4271485e0dc474e"
+    },
+    {
+      "path": "native-02/turn2-hit-approach-50.png",
+      "bytes": 1081352,
+      "sha256": "ec5f0a9b4fda21a65a4e4ff0b2c173525506be041f6d0a8fed1bdd3d28700874"
+    },
+    {
+      "path": "native-02/turn2-hit-impact.png",
+      "bytes": 576801,
+      "sha256": "b8b262691f398c77a61280ee3efc6986bb976a864db8935f2fa2373524c48f87"
+    },
+    {
+      "path": "native-02/turn2-hit-reaction-50.png",
+      "bytes": 1105496,
+      "sha256": "7a00293f46d2ea04eec3de2637420d69626b4557892c4371938cb335c470cda8"
+    },
+    {
+      "path": "native-02/turn2-hit-return-end.png",
+      "bytes": 1082272,
+      "sha256": "837e2c26d2e09d4799a9584fcb243b2b597821097dc8a834af5827072c6b48cf"
+    },
+    {
+      "path": "native-02/world.json",
+      "bytes": 247,
+      "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
+    },
+    {
+      "path": "native-02.log",
+      "bytes": 197,
+      "sha256": "e26376aed12195f3e0d1b8ffe154b19e5f8f8335e22e53eb384635898ea2048b"
+    },
+    {
+      "path": "painted-envelope-tests.log",
+      "bytes": 1797,
+      "sha256": "737acb7044753f5e16cd7892b128b2b355cb9c5df6776d7fae20c698bbf3e362"
+    },
+    {
+      "path": "retained-inputs.json",
+      "bytes": 2428,
+      "sha256": "f143f9ec2785df1f41803e21948e5367e66926bae9d0d781ce502259bb785f79"
+    },
+    {
+      "path": "review-sheet.png",
+      "bytes": 1302520,
+      "sha256": "2f05e34b8c7239253e05ecc151f5304e7ee632083133596eba18a9d47b3af547"
+    },
+    {
+      "path": "script.json",
+      "bytes": 518,
+      "sha256": "d8ca5cf0e835fefddde8b5e1fffc78cdd2f6fa52eb1fb800c5e3d9b8ba5c5025"
+    },
+    {
+      "path": "signing-refusals.json",
+      "bytes": 718,
+      "sha256": "44bb4c9e42ed738793c97c14edd6e7b54eb0555d575c2269bd0cd6a8d6ebf979"
+    },
+    {
+      "path": "source-import.json",
+      "bytes": 2559,
+      "sha256": "c2e8f43a667d5a2abd3bfeae38696784a4cd1a212563a5c3deff550730db1c04"
+    },
+    {
+      "path": "stage-adapter-receipt.json",
+      "bytes": 2178,
+      "sha256": "2ff9205532adf12045b4eb05a537ff38889f4be1242d2f513819ac7091933d67"
+    },
+    {
+      "path": "stage-contract.log",
+      "bytes": 608,
+      "sha256": "108cffcd4ecba143bb7777fe04290bbb671b10b6a4b011a8d01738fa9ea83812"
+    },
+    {
+      "path": "stage-types.log",
+      "bytes": 92,
+      "sha256": "8053419ea68d0a4336cee6a60e8ddc28f045de18ef5de6395e4dc51c235e8115"
+    },
+    {
+      "path": "static.json",
+      "bytes": 7320,
+      "sha256": "9e4e77994c11e0d43d5e970e11ad915840eece55bbdaffc444e8c20a114321c8"
+    },
+    {
+      "path": "static.json.sources.json",
+      "bytes": 11387,
+      "sha256": "a9d9b9d8a1862b46f25f3431dad53a97dc0a27f7bc83fcd0e4286ed2de82c09d"
+    },
+    {
+      "path": "static.log",
+      "bytes": 1826,
+      "sha256": "63eee511571e34b9a34fb73e64f1196cce8ce5cb36f9c67a8a967fd61b2c936e"
+    }
+  ]
+}

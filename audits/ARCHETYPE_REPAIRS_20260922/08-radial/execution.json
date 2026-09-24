@@ -1,0 +1,77 @@
+{
+  "schema": "cf.archetype-repair-execution/v1",
+  "sourceHead": "4f82025c490d39b80b78bfab81ac53232a780a74",
+  "status": "PASS_LOCAL_NATIVE",
+  "scope": "Evidence index assembled from retained reports; no extra measurement, test or browser run",
+  "intake": {
+    "receipt": "fit-02/receipt.json",
+    "status": "FIT_COMPILED",
+    "recordRecipeHash": "7b02d178f4c3ff04c7801e70613a66f3f82a238647dcd4fe73ba593e37470dca",
+    "bindingHash": "365bab8ce809290217ded4a06f11685bedd88046e630e78ee381d0ec55298ae9"
+  },
+  "static": {
+    "report": "static-02.json",
+    "status": "PASS_STATIC",
+    "rows": 14,
+    "sourceReceipt": "static-02.json.sources.json"
+  },
+  "nativeAttempts": [
+    {
+      "runId": "20260922-starfish-native-02",
+      "report": "native-02/report.json",
+      "status": "FAIL",
+      "error": "Error: Error: Ten-second film cannot cover 10288ms script",
+      "filmStarted": false,
+      "cpuP95Ms": null
+    },
+    {
+      "runId": "20260922-starfish-native-03",
+      "report": "native-03/report.json",
+      "status": "DIAGNOSTIC_PASS",
+      "film": "native-03/battle-10s.webm",
+      "scriptMs": 9688,
+      "encodedFrames": {
+        "frames": 606,
+        "width": 1024,
+        "height": 576
+      },
+      "encodedDurationSeconds": "10.099543"
+    }
+  ],
+  "changedScriptReceipt": "script-repair-03.json",
+  "sourceVerification": {
+    "file": "source-check-03.json",
+    "allUnchanged": true,
+    "counts": {
+      "static": 60,
+      "native": 842
+    }
+  },
+  "reviewSheet": "review-sheet-03.png",
+  "evidenceHashes": [
+    {
+      "path": "static-02.json",
+      "sha256": "f9d6c23e77ff392d17ce724c513dd9ab0ba353457b3a44fde11f0fb4961feb04"
+    },
+    {
+      "path": "native-02/report.json",
+      "sha256": "c48fb38b412593073572e6520d7b5cdfb67424587de6879337e3cbbd1b4ace31"
+    },
+    {
+      "path": "native-03/report.json",
+      "sha256": "fd6e73aa88e8d94958a3c3ce0733a51e5f4be5edf1cfa0502c654d3f8b07670b"
+    },
+    {
+      "path": "authoring-repair-02.json",
+      "sha256": "28bccf9477823c81a0e89efc612b7f9db551f1dd4b754c8a9fe102b11d521128"
+    },
+    {
+      "path": "script-repair-03.json",
+      "sha256": "6f0e2d57ce11030d0b408ce8f424c9764ef55e604440b1e37554e3dc4c0e4417"
+    },
+    {
+      "path": "source-check-03.json",
+      "sha256": "5afd9feafc5d80081d887b13243fb9a94c392d00295b4e930d9cc57c25a1bf00"
+    }
+  ]
+}

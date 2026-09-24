@@ -1,0 +1,22 @@
+{
+  "runId": "20260922-i5-local-36402564d08d",
+  "source": "36402564d08d1e3354a95f9c92a5e7da6bda2b09",
+  "rawBytes": 174806,
+  "rawSha256": "6681169203e735623e48aab641ab83b3b599dcaff6c6b88b5df3a0b327ac973a",
+  "gzipBytes": 14130,
+  "gzipSha256": "f6ac83bd19f68c3aea4c5548f703ecf241819a91b2025dd3fec30ce14b58b659",
+  "outcomes": 0,
+  "findings": [
+    "instrument: phone: review screenshot row focus/ring was not visibly contained"
+  ],
+  "durationMs": 7385,
+  "status": "instrument-fail",
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.48",
+    "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.7",
+    "protocol_version": "1.3"
+  }
+}

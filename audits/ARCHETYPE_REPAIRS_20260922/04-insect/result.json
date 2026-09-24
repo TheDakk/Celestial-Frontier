@@ -1,0 +1,19 @@
+{
+  "schema": "cf.archetype-repair-result/v1",
+  "item": 4,
+  "name": "Beetle",
+  "status": "STOPPED_SECOND_PAINT_FAILURE",
+  "attempts": 2,
+  "visibleWalkingLegs": 5,
+  "requiredWalkingLegs": 6,
+  "visibleMembranousWings": 2,
+  "intakeRefusal": "Hidden anatomy: unsupported hidden chain",
+  "exactRest": null,
+  "static": null,
+  "native": null,
+  "cpuP95Ms": null,
+  "masterSha256": "1322d8099bd6f24143d55c8c21510de02740407fd08221268078bc20379e7793",
+  "promptSha256": "e4d9c972979a81a0b2ec2a68668a3945c44bf28113c997a4fb8f11e03ffde1a7",
+  "runId": "20260922-beetle-repair-02",
+  "protectedChanges": false
+}

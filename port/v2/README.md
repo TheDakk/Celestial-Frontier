@@ -1,5 +1,7 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+Local unmorphed archetype review (matches2026-09-22): `node tools/battle2-proof/archetype-native-runner.mjs LEFT_FIT RIGHT_FIT NEW_OUTPUT SCRIPT_JSON`. On macOS request out-of-sandbox browser execution on the first attempt. The harness records exact source/world/script bytes, fits published animated meshes to unchanged medium bands, and reports per-rig sampling/update p95 plus whole-stage p95; morph and guardian requests are outside its scope. Acceptance still requires exact rest/static rows, no film refusals, complete ten-second capture,570encoded frames and desktop3.5ms per-rig. Salmon evidence: `audits/ARCHETYPE_REPAIRS_20260922/02-fish`; human art review remains separate.
+
 ## Local AI species references and optional offline package — matches code as of 2026-09-09
 
 The default-off `?localai=1` preview connects ordinary Land, Survey and Notifications to local
@@ -4398,7 +4400,13 @@ its source/build mutation controls still run in every profile. The standalone au
 remains an all-authorities fail-closed diagnostic. The stricter root no-unused TypeScript pass owns the root compilation;
 the old `artunused` alias remains available but is not a second gate. `overridecheck` already fails
 closed on incomplete kingdom-qualified catalogue coverage, so `coveragegap` remains an on-demand
-planning report rather than a duplicate merge gate. The `production` profile adds `overridecontrol`, the
+planning report rather than a duplicate merge gate. Source discovery (matches code as of 2026-09-22)
+follows actual static relative imports and re-exports through the v2 source boundary, rejecting
+missing/ambiguous targets and symlinks. Transitive JavaScript and TypeScript receive the same AST
+audit. The live topology wrapper, private painter binding, synchronous same-ink callbacks, routing
+precedence, fitting and canvas returns remain independently guarded; fresh null-prototype
+dictionaries are allowed only through the exact direct `Object.create(null)` form.
+The `production` profile adds `overridecontrol`, the
 107-mutation selftest that temporarily rewrites audited art sources under the workspace lock. The
 ordinary specification scan runs its five parser/oracle controls inside that same `speccheck`
 command, so no second stage is required. HEAD,

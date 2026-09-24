@@ -1,0 +1,14 @@
+{
+  "schema": "cf.type-only-repair/v1",
+  "refusal": "typescript-04.log",
+  "correction": "Mark intentionally invalid mocked contract as any; no production or behavioral change.",
+  "before": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/swing-lift-before-types-02.ts",
+  "after": "port/v2/apps/game/src/creature-rig-contact-swing-lift.test.ts",
+  "beforeSha256": "f7363a98c76e9055dffc05ad6165792f544a8c52e58364510adb6b3333325efc",
+  "afterSha256": "810dbc33fa15f925c37d27b6fd6e47a4a4e1462f5c287b58f3095f568665b9fe",
+  "onlyTypeAnnotationChanged": true,
+  "typeStrippedTextIdenticalIgnoringHorizontalWhitespace": true,
+  "strippedSha256": "6e6733b6b7c59bf8396905700657e404b74ec50932c7f7e6656661f64855021f",
+  "node": "v26.9.0",
+  "behavioralEvidence": "swing-lift-tests-01.log:12/12 PASS retained without unchanged rerun; parent owns changed TypeScript check."
+}

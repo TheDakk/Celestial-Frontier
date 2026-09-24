@@ -1,0 +1,36 @@
+{
+  "schema": "cf.bounded-diagnostic-execution/v1",
+  "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis02/run.mjs",
+  "toolReceipt": "4f6f14",
+  "exitCode": 0,
+  "scope": "Exactly three changed-fit canonical attempted poses; no row replay",
+  "samples": [
+    {
+      "action": "hit",
+      "ms": 22.5,
+      "reproduced": true,
+      "folds": 2
+    },
+    {
+      "action": "dodge",
+      "ms": 21,
+      "reproduced": true,
+      "folds": 1
+    },
+    {
+      "action": "tame",
+      "ms": 53.333333333333336,
+      "reproduced": true,
+      "folds": 1
+    }
+  ],
+  "loadedSourceCount": 58,
+  "staticSourceCount": 62,
+  "allHashComparisonsMatchedAtExecution": true,
+  "rootEdgeRead": {
+    "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis02/root-edge-inspection.mjs",
+    "toolReceipt": "ca613c",
+    "exitCode": 0,
+    "scope": "Five root-pin source joins read from retained probe; no graph/pose execution"
+  }
+}

@@ -1,0 +1,9 @@
+Codex explicit presence declaration for the delivered adult Tree Frog master.
+
+The adult frog has no tail and no external ears: absent=[tail, external-ears]. The tympanum behind the eye is retained as head skin, not mislabeled as an external ear. Four leg chains and four pad-bearing feet are visible. Hidden chains: none.
+
+Both hindFar and hindNear are explicitly folded, with tight bent hind-limb silhouettes. The near hind chain runs from the posterior body through the forward-facing knee, back to the elevated rear hock, and onward along the elongated distal limb to the orange toe discs. The far hind chain remains painted beneath the overlapping near leg and reaches the small orange pads under the rear belly. A partly covered segment is not an absent or hidden whole leg. The two forelegs extend toward separate visible hands and are not declared folded.
+
+The hopper inventory is resolved after the two absent groups; all remaining twenty-three joints are manually assigned from this master. Contract foreleg Knee and Paw labels represent the frog's elbow and pad-bearing hand. Prioritized masks follow the visible nearer limbs before the deeper limb surfaces; the root-owned body remainder receives unclaimed positive-alpha pixels.
+
+These are explicit authored declarations, not deductions from a missing landmark or a failed fit. No alpha or paint channel is changed. This first fit is a review candidate, with static and native results to be measured by their unchanged owners.

@@ -1,0 +1,40 @@
+{
+  "id": "beetle",
+  "family": "insect",
+  "landmarksPx": {
+    "root": [
+      805,
+      682
+    ]
+  },
+  "groundLineY": 0.83,
+  "materials": {
+    "surface": "chitin"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "stage": "Presence admission first; no fabricated hidden joint coordinates",
+    "visualAcceptance": "Rejected corrected paint: five traceable legs only; wings exposed"
+  }
+}

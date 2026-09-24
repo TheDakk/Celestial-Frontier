@@ -39,6 +39,7 @@ it('observed support accessor reads published mesh under hit, retains last good 
    for(const [joint,support]of Object.entries(supports)){
     const p=readCreatureRigContactSupport(rig,joint)!,location=support.surface!,part=rig.parts.find(p=>p.id===location.partId)!,mesh=part.display.children[0] as Mesh;
     const data=mesh.geometry.getBuffer('aPosition').data;
+    if(!('vertexIndex' in location))throw Error('Legacy crab must retain its single-vertex support');
     expect(p).toEqual({x:data[location.vertexIndex*2],y:data[location.vertexIndex*2+1]});
     const q=rest[joint]!;maxPaint=Math.max(maxPaint,Math.hypot((p.x-q.x)*r.geometry.width,(p.y-q.y)*r.geometry.height));
     const lm=r.landmarks[joint],jp=transformPoint(matrices[joint]!,{x:lm[0],y:lm[1]});maxJoint=Math.max(maxJoint,Math.hypot((jp.x-lm[0])*r.geometry.width,(jp.y-lm[1])*r.geometry.height));

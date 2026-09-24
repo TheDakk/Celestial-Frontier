@@ -1,0 +1,13 @@
+# Candidate09 consolidated source repair
+
+Same unchanged paint03, copied exactly from candidate08. No image-generation call. Master SHA-256: e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e. Authoring SHA-256: 310670dd1af38c5fd33f8df6d1eee956ba399423ff7910165407e1b9d0bc90ad. Exact copied inputs, before/after mask and region arrays, and sampling rectangles are retained in source-change-receipt.json.
+
+The full source plan is ../static-paint-diagnosis03/source-review/findings.md, with direct RGBA crops and hashes. The audit agent's target-only union found 19 fully pinned inversion faces across 12 parts during 121 canonical samples each for hit, dodge and tame. Its 22 root-pin source-edge traces ground these corrections. This review did not perform another pose, ARAP, static or native run.
+
+Five near-part upper contours receive bounded outer-envelope points: near1 [1018,737]; near3 [886,705] and [901,727]; near5 [792,730]; near6 [707,709]; near13 [274,708]. These include observed gold/orange shaft edges and retained faint fringe below their existing hip cuts. All hip endpoints and the rest of each contour remain intact. No alpha is discarded, recolored or strengthened.
+
+All 14 far masks remain exactly unchanged. Traced far source edges contain genuine brown dorsal trunk rim; no body pixels or protected pins are reassigned to legs. Nine remaining far spans (0/3/4/5/6/7/8/10/11) receive the existing 8/32 sampling option around explicit manually viewed source envelopes plus 10px. Their unchanged Knee centers receive ±8 core squares, retaining pin:true. The five already refined far spans remain unchanged, so all 14 visible far bends now share the same authored sampling/core policy. Far8 and far11 have comparable short gold spans in the source but were not diagnosed as failed by the three-action union. Their inclusion is explicit source consistency, not an invented failure. Manual envelopes are not measured alpha bounds, and bend centers remain authored anatomical approximations.
+
+All 63 landmarks, 31 fixed sockets, 32 part identities/order, 28 contact definitions, materials, other 27 masks, other 22 regions, the prior seven refinements and all inherited root/contact pins remain unchanged. No numerical threshold, solver or runtime file changes. Existing disclosures remain: rigid trunk, two-span anatomical approximation, elevated far-row projection, missed 101px margin and untrimmed source fringe.
+
+This is one consolidated source-authoring hypothesis. It does not promise that any later pose will pass. Parent owns actual changed intake and measured qualification; no acceptance is claimed here.

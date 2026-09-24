@@ -1,0 +1,24 @@
+{
+  "runId": "20260923-fruit-bat-paint-03",
+  "tool": "image_gen built-in",
+  "mode": "fresh painting from authored geometry guide and approved atlas",
+  "promptFile": "prompt.txt",
+  "promptSha256": "f1713b7201837b939222a965582363fdec3f1bd25fec555599547cf35743fe88",
+  "references": [
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/pose-guide.png",
+      "role": "original composition guide; not observed landmarks",
+      "sha256": "e1071e82de0754ce80aeeda9c3924d3ee38789e5ffd55af619b86ce72ad8ee84"
+    },
+    {
+      "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+      "role": "sole style reference",
+      "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+    }
+  ],
+  "sourceHead": "aaef06aff92852cd4caf711769ea80339a423605",
+  "priorAttemptsRetained": [
+    "audits/ARCHETYPE_SPRINT_20260922/11-flyer-membrane",
+    "audits/ARCHETYPE_REPAIRS_20260922/11-flyer-membrane"
+  ]
+}

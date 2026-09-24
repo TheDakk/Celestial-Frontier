@@ -310,30 +310,30 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
 /* Refreshed once, after the final app build. Historical samples continue to
    bind their explicit historical producer authorities rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
-  '357ad8db3729ad3252b9c67bcf4a629328cd9e90cb35c1e88d6ed7476cb00ece';
+  'bd8edd1b570d4bc4e1933a87a9e0552e75208d18ca43c40d2ffcd6712ebc1a5b';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v2',
   sha256: EXPECTED_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
-      sha256: 'b9ab29d9f75148a73db07d623fb69bca1e3c6d1ce616faa34e1b89fcb7dfdec8',
+      sha256: '55e439ce77ee0440e0038de9802d4cb8746504438e8e97224c8a6dd7b4e7c79e',
     }),
     owner: Object.freeze({
-      relativePath: 'assets/tame-greeting-audio-rhsfOKDj.js',
-      sha256: '86ac176ed49ae0777307b1ab37812d94e88f2f2d7095eebc7f026988913195cb',
+      relativePath: 'assets/tame-greeting-audio-CYnzTOVq.js',
+      sha256: '565e33887fa37e962a95a6cfa2ab0ef5d28fc2baa5cdde4b1e770f2cd20ab800',
     }),
     worker: Object.freeze({
-      relativePath: 'assets/species-art.worker-oT5j4xm4.js',
-      sha256: '38a31b7fa16395ae68ad564df925a96033af0306ab7d88c5149fb8c829294401',
+      relativePath: 'assets/species-art.worker-BtRvoDhH.js',
+      sha256: 'efb212d2336903157a32e998096c4b4fc4adf728dcee2fd89719574daa48d0ef',
     }),
     painter: Object.freeze({
-      relativePath: 'assets/species-art.worker-oT5j4xm4.js',
-      sha256: '38a31b7fa16395ae68ad564df925a96033af0306ab7d88c5149fb8c829294401',
+      relativePath: 'assets/species-art.worker-BtRvoDhH.js',
+      sha256: 'efb212d2336903157a32e998096c4b4fc4adf728dcee2fd89719574daa48d0ef',
     }),
     serviceWorker: Object.freeze({
       relativePath: 'service-worker.js',
-      sha256: 'e265a1b0e98614bf26ab697c02c7ee66e615e1e23d43cb037ab50f92f9edda5e',
+      sha256: 'a514f038dab983359e0e5f9d0d7e3d9fc719815a1ef938eff3c834d8e3405ebf',
     }),
   }),
 });

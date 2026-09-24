@@ -62,7 +62,8 @@ export function attackRepertoire(card:BodyCard,medium:BattleMedium,declaration?:
  const joints=new Set(card.parts.map(p=>p.joint)),library=actionsFor(card.template.id,card.anatomy);
  const counts=appendageCounts(card.template.id,card.anatomy);
  const candidates=ANATOMY_ATTACKS.filter(a=>a.family===card.template.id).map(a=>{
-  if(a.family!=='cephalopod'||a.verb!=='lash'||!counts)return a;
+  if(a.family==='myriapod'&&a.verb==='body'&&counts&&'walkingLegPairs' in counts)return row(a.family,a.verb,a.weapon,'Rigid-trunk shove',['head'],'head',[...a.medium]);
+  if(a.family!=='cephalopod'||a.verb!=='lash'||!counts||!('arms' in counts))return a;
   const prefix=counts.feedingTentacles?'tentacle0':'arm'+Math.ceil((counts.arms-1)/2);
   return row(a.family,a.verb,a.weapon,counts.feedingTentacles?'Feeding tentacle lash':a.label,['mantle',prefix+'Seg0',prefix+'Seg1',prefix+'Seg2'],prefix+'Seg2',[...a.medium]);
  }),rejected:{verb:string;reason:string}[]=[],attacks:AnatomyAttack[]=[];

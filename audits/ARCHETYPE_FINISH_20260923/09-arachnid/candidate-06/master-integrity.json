@@ -1,0 +1,36 @@
+{
+  "schema": "cf.source-raster-inspection/v1",
+  "width": 1254,
+  "height": 1254,
+  "channels": 4,
+  "sha256": "a63b700253d16406f8fdf5ec5055875f2235554b3ccd81bd5fb2e515b2b37de5",
+  "positiveAlpha": {
+    "thresholdExclusive": 0,
+    "pixels": 494071,
+    "minX": 0,
+    "minY": 19,
+    "maxX": 1241,
+    "maxY": 1253,
+    "marginsPx": {
+      "left": 0,
+      "right": 12,
+      "top": 19,
+      "bottom": 0
+    }
+  },
+  "opaqueCore": {
+    "thresholdExclusive": 127,
+    "pixels": 372687,
+    "minX": 94,
+    "minY": 201,
+    "maxX": 1237,
+    "maxY": 1122,
+    "marginsPx": {
+      "left": 94,
+      "right": 16,
+      "top": 201,
+      "bottom": 131
+    }
+  },
+  "scope": "Pixel extents only; not anatomical tip count, crop proof, or a new alpha admission cutoff. Original RGBA retained unchanged."
+}

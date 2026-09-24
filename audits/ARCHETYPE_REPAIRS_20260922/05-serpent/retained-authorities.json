@@ -1,0 +1,54 @@
+{
+  "scope": "Read-only hashes of original passing evidence; no new acceptance measurement",
+  "signedItem": "879844704150ae0e3fd505cd2b276156106daf27",
+  "files": [
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/README.md",
+      "sha256": "5352978f4ccf9ad7c64da9b216f7b6648a23e3c5b38fe8891bd93de895b35b7d"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/result.json",
+      "sha256": "ad2948407247886ea7a69f559f426b705441b5772f96479ca71665f83b6b473b"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/manifest.json",
+      "sha256": "3cad71944ad6f674104c97f3b24a65ef126fa7009f0d97ed4d4042501f72f8f0"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/master.png",
+      "sha256": "1c44d54e241b2444ce37950f0b3ce7ebfe9d9f4cd550a77cdaf0c20924849e43"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/prompt.txt",
+      "sha256": "fbd1986dcd19df48220339d9fd28b326b813c8d17eec4342f80d0aba7027b997"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/generation-receipt.json",
+      "sha256": "197fe97284155676b073a9b4c5f818e1405d24509fa99a7ada2541e4494a2f27"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01/record.json",
+      "sha256": "920fb85b070e3c9d3df937ac881aa724349fd9d5fcf8e19cd9caac058fe8038b"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01/binding.json",
+      "sha256": "139201fe33b2227c2abdd7437bdff5e991102e40a8c23a64eb212ba2d7e3de35"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/static.json",
+      "sha256": "2422a1a093993b195ed43d2a29246bcc2b539522a0f4dd15642813ded1f24add"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/native-01/report.json",
+      "sha256": "2fc6a543c7399be73ed61935f38f2e2e170e50128f2fbdc70b2273a9a4e14025"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/native-01/battle-10s.webm",
+      "sha256": "094c227eb6663165ee35274e2d31838885554ac210982efea4c136348ca15be6"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/review-sheet-unobscured.png",
+      "sha256": "0b59251a6aeb96b60b4ee760fcd017590a7cf449bac0fc72f6ccf6e513e50463"
+    }
+  ]
+}

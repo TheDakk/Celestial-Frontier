@@ -329,6 +329,9 @@ Escape invokes Settings' real Close without ascent. Queued lesson focus and the 
 close yield to newly opened Settings. Only the current lesson's actual surfaces receive
 `.tutpri`, cleared on teardown. Lesson content, step advancement and persistence remain unchanged.
 The shared 150–200ms motion and control-state tokens respect reduced-motion preferences.
+Compendium focus (matches code as of 2026-09-22): generic sheet and pilot focus selectors
+exclude `.compendium-row`, preserving its 3px outline and -4px inset within the clipped
+virtual scrollport. Other controls retain their sheet/pilot focus treatments.
 
 Notifications retains saved read/unread history and clearly labelled session-only notices
 while save writes are held. Opening does not mark read; explicit Mark read uses the existing

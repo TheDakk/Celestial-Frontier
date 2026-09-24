@@ -1,0 +1,284 @@
+{
+  "schema": "cf.observed-surface-split/v1",
+  "contactPins": [
+    {
+      "joint": "leg0FarFoot",
+      "part": "leg0-far",
+      "vertex": 122,
+      "distancePx": 6.560487786742607,
+      "supports": [
+        886,
+        855
+      ]
+    },
+    {
+      "joint": "leg0NearFoot",
+      "part": "leg0-near",
+      "vertex": 56,
+      "distancePx": 8.246211251235422,
+      "supports": [
+        39
+      ]
+    },
+    {
+      "joint": "leg1FarFoot",
+      "part": "leg1-far",
+      "vertex": 18,
+      "distancePx": 6.403124237432834,
+      "supports": [
+        1022
+      ]
+    },
+    {
+      "joint": "leg1NearFoot",
+      "part": "leg1-near",
+      "vertex": 70,
+      "distancePx": 8.602325267042676,
+      "supports": [
+        108,
+        100
+      ]
+    },
+    {
+      "joint": "leg2FarFoot",
+      "part": "leg2-far",
+      "vertex": 1,
+      "distancePx": 8.602325267042565,
+      "supports": [
+        1246
+      ]
+    },
+    {
+      "joint": "leg2NearFoot",
+      "part": "leg2-near",
+      "vertex": 47,
+      "distancePx": 4.47213595499952,
+      "supports": [
+        149
+      ]
+    },
+    {
+      "joint": "leg3FarFoot",
+      "part": "leg3-far",
+      "vertex": 0,
+      "distancePx": 7.071067811865479,
+      "supports": [
+        1494,
+        1495
+      ]
+    },
+    {
+      "joint": "leg3NearFoot",
+      "part": "leg3-near",
+      "vertex": 55,
+      "distancePx": 3.9999999999999742,
+      "supports": [
+        215
+      ]
+    },
+    {
+      "joint": "leg4FarFoot",
+      "part": "leg4-far",
+      "vertex": 158,
+      "distancePx": 7.810249675906786,
+      "supports": [
+        2030,
+        2031,
+        2032
+      ]
+    },
+    {
+      "joint": "leg4NearFoot",
+      "part": "leg4-near",
+      "vertex": 63,
+      "distancePx": 6.250000000000004,
+      "supports": [
+        266,
+        261
+      ]
+    },
+    {
+      "joint": "leg5FarFoot",
+      "part": "leg5-far",
+      "vertex": 12,
+      "distancePx": 4.999999999999989,
+      "supports": [
+        2148,
+        2143,
+        2142
+      ]
+    },
+    {
+      "joint": "leg5NearFoot",
+      "part": "leg5-near",
+      "vertex": 59,
+      "distancePx": 7.0000000000000595,
+      "supports": [
+        317
+      ]
+    },
+    {
+      "joint": "leg6FarFoot",
+      "part": "leg6-far",
+      "vertex": 10,
+      "distancePx": 1.5811388300842346,
+      "supports": [
+        2398
+      ]
+    },
+    {
+      "joint": "leg6NearFoot",
+      "part": "leg6-near",
+      "vertex": 57,
+      "distancePx": 8.062257748298503,
+      "supports": [
+        370
+      ]
+    },
+    {
+      "joint": "leg7FarFoot",
+      "part": "leg7-far",
+      "vertex": 3,
+      "distancePx": 7.071067811865539,
+      "supports": [
+        2623,
+        2624
+      ]
+    },
+    {
+      "joint": "leg7NearFoot",
+      "part": "leg7-near",
+      "vertex": 36,
+      "distancePx": 5.8309518948453105,
+      "supports": [
+        416
+      ]
+    },
+    {
+      "joint": "leg8FarFoot",
+      "part": "leg8-far",
+      "vertex": 14,
+      "distancePx": 5.2624105839913025,
+      "supports": [
+        2840,
+        2843
+      ]
+    },
+    {
+      "joint": "leg8NearFoot",
+      "part": "leg8-near",
+      "vertex": 52,
+      "distancePx": 2.8284271247462707,
+      "supports": [
+        479
+      ]
+    },
+    {
+      "joint": "leg9FarFoot",
+      "part": "leg9-far",
+      "vertex": 100,
+      "distancePx": 6.708203932499341,
+      "supports": [
+        3163
+      ]
+    },
+    {
+      "joint": "leg9NearFoot",
+      "part": "leg9-near",
+      "vertex": 55,
+      "distancePx": 6.708203932499404,
+      "supports": [
+        531
+      ]
+    },
+    {
+      "joint": "leg10FarFoot",
+      "part": "leg10-far",
+      "vertex": 41,
+      "distancePx": 3.041381265149127,
+      "supports": [
+        3340
+      ]
+    },
+    {
+      "joint": "leg10NearFoot",
+      "part": "leg10-near",
+      "vertex": 55,
+      "distancePx": 6.708203932499435,
+      "supports": [
+        582,
+        583
+      ]
+    },
+    {
+      "joint": "leg11FarFoot",
+      "part": "leg11-far",
+      "vertex": 1,
+      "distancePx": 5.656854249492394,
+      "supports": [
+        3552
+      ]
+    },
+    {
+      "joint": "leg11NearFoot",
+      "part": "leg11-near",
+      "vertex": 56,
+      "distancePx": 2.2360679774998533,
+      "supports": [
+        641
+      ]
+    },
+    {
+      "joint": "leg12FarFoot",
+      "part": "leg12-far",
+      "vertex": 204,
+      "distancePx": 5.496158481513418,
+      "supports": [
+        3980,
+        3982
+      ]
+    },
+    {
+      "joint": "leg12NearFoot",
+      "part": "leg12-near",
+      "vertex": 27,
+      "distancePx": 4.472135954999551,
+      "supports": [
+        679
+      ]
+    },
+    {
+      "joint": "leg13FarFoot",
+      "part": "leg13-far",
+      "vertex": 0,
+      "distancePx": 8.602325267042621,
+      "supports": [
+        4038,
+        4039
+      ]
+    },
+    {
+      "joint": "leg13NearFoot",
+      "part": "leg13-near",
+      "vertex": 62,
+      "distancePx": 5.000000000000003,
+      "supports": [
+        761,
+        764
+      ]
+    }
+  ],
+  "sourceBindingHash": "9d2ceaa4f5c3bb777871b539b5aa3eb490a10bced0f07f86b9404ca7188c7f31",
+  "sourceVertices": 5067,
+  "vertices": 5334,
+  "sharedSupports": 764,
+  "pins": 1681,
+  "independentSurfaceParts": 32,
+  "sourceJoins": 31,
+  "excludedOverlaps": 8,
+  "observedExcludedBoundaries": 8,
+  "weldedExcludedBoundaries": 0,
+  "independentExcludedBoundaries": 8,
+  "preservePaintBoundaries": false,
+  "sourceCoordinateChanges": 0
+}

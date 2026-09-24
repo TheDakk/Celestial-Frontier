@@ -1,0 +1,15 @@
+✔ fixed sockets keep their source location under local rotation and inherit actual root rotation/translation (1.18375ms)
+✔ admission bone lengths measure socket-to-knee and knee-to-foot without adding geometry or mutating source (0.203584ms)
+✔ missing, malformed, extra, sparse and nonfinite socket data refuse without a parent-pivot fallback (0.211792ms)
+✔ foreign-model declarations and source-substituted resolved sockets refuse (0.119708ms)
+✔ source alpha validates the exact socket pixel rather than a nearby substitute (0.12575ms)
+✔ absent socket declarations preserve legacy definition identity and exact parent-pivot matrices (0.075334ms)
+✔ legacy quadruped shortcuts refuse present socket declarations in geometry, sealing and admission (6.640125ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 133.963334

@@ -1,0 +1,48 @@
+{
+  "schema": "cf.manual-mask-conservation/v1",
+  "status": "PASS",
+  "changedPositiveAlphaPixels": 1788,
+  "bounds": [
+    39,
+    818,
+    170,
+    901
+  ],
+  "labelPairs": {
+    "17->15": 1788
+  },
+  "alphaRange": [
+    1,
+    253
+  ],
+  "aboveAlpha8": 1232,
+  "allOtherLabelChannelsIdentical": true,
+  "masterBytesIdentical": true,
+  "presenceBytesIdentical": true,
+  "inputs": [
+    {
+      "file": "fit-09/labels.png",
+      "sha256": "af01fcb9c64e5d4e52bf04e6c37a29991e089f45fcccf31e2348aa0d5bd594c1"
+    },
+    {
+      "file": "fit-12/labels.png",
+      "sha256": "66f75a3c56760f750b5d023b54eab085ed3a5e646902ef559f9dda4fd4271ab6"
+    },
+    {
+      "file": "master.png",
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "file": "candidate-12/master.png",
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "file": "candidate-12/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "file": "candidate-09/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ]
+}

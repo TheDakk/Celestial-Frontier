@@ -1,0 +1,33 @@
+{
+  "observedTool": "525c6e",
+  "sourceHead": "755f52a7d686715657e4ec5924b3e96e5ec8626c",
+  "baseHead": "c1791e210158de864fdd475323c3091d9ecbae58",
+  "mergeBase": "c1791e210158de864fdd475323c3091d9ecbae58",
+  "behind": 0,
+  "ahead": 358,
+  "changedPaths": 22148,
+  "auditPaths": 21128,
+  "nonAuditPaths": 1020,
+  "changedWorkflowPaths": [],
+  "prs": [
+    {
+      "number": 42,
+      "title": "Refine responsive UI and add bounded audiovisual and painted-world prototypes",
+      "source": "openai/mac",
+      "head": "755f52a7d686715657e4ec5924b3e96e5ec8626c",
+      "base": "develop",
+      "isDraft": true,
+      "url": "https://github.com/TheDakk/Celestial-Frontier/pull/42"
+    },
+    {
+      "number": 43,
+      "title": "Vision program September 2026: battle2 E1/A2, D2 guardian, intake compiler, morph system + painted card",
+      "source": "anthropic/mac",
+      "head": "5154c64f6f5fe0b9a75bc3f7a51e7da56b6b2e7f",
+      "base": "develop",
+      "isDraft": false,
+      "url": "https://github.com/TheDakk/Celestial-Frontier/pull/43"
+    }
+  ],
+  "scope": "Read-only PR/branch metadata and local Git path inventory, not a mergeability or required-check verdict."
+}

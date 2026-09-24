@@ -1,0 +1,8 @@
+{
+  "commit": "1dfeec2a88ac6e7be01b525e12421c3b1b181a7c",
+  "signatureStatus": "G",
+  "toolReceipt": "6bbab0",
+  "item": "Beetle",
+  "configurationOrigin": "file:/Users/dakk/.gitconfig",
+  "signingProgram": "/Users/dakk/.local/bin/git-ssh-sign"
+}

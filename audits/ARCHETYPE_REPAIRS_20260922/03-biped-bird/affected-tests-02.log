@@ -1,0 +1,12 @@
+✔ actual fish cast uses the admitted active leaf with exact full solver and queue bytes (54.070125ms)
+✔ unavailable runtime preserves the actual active fish cast through the original JS path (27.794417ms)
+✔ post-private-active-work runtime trap preserves every live byte before fallback and disables the leaf (33.515834ms)
+✔ active-set projection closes the real cast fold that 64 forward sweeps leave inverted, without changing targets or pins (45.549583ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 212.506209
