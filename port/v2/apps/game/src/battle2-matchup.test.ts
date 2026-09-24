@@ -15,7 +15,10 @@ import { resolvePhysicalHabitat } from './battle-habitat.js';
 import type { TurnAttack } from './battle2/choreography.js';
 import { parseEffectSequenceAnchors } from './effects/anchors.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
-import { MATCHUP_NAMES, matchupEnabled, matchupGenome, matchupTranscript, matchupWorld, mountBattle2Matchup, parseMatchup, swimsOnly } from './battle2-matchup.js';
+import { MATCHUP_NAMES, matchupDuel, matchupEnabled, matchupGenome, matchupTranscript, matchupWorld, mountBattle2Matchup, parseMatchup, swimsOnly } from './battle2-matchup.js';
+import { installCaptureHooks } from '@cf/domain-descriptors';
+import { speciesVisualKey } from '@cf/art/species-identity';
+import { CombatChronicleController } from './combat-chronicle.js';
 import type { Battle2AssetSource, Battle2StudyHandle, Battle2StudyInput, Battle2Status } from './battle2-wiring.js';
 import { archetypeGenomeV1, morphParamsV1 } from './morph/morph-params.js';
 import { CARD_ARCHETYPES } from './morph/card-archetypes.js';
@@ -120,6 +123,52 @@ describe('matchup picker — DOM', () => {
     (doc.querySelectorAll('button')[1] as HTMLButtonElement).click();
     expect(doc.querySelector('[data-battle2-matchup]')).toBeNull(); expect(disposed.at(-1)).toBe('Eagle:matchup closed');
     await expect(h.play()).rejects.toThrow(/closed/);
+  });
+});
+
+describe('matchup picker — the REAL duel (Nick 2026-09-24: the stage paces the Chronicle, shown in the picker)', () => {
+  it('?duel=1 turns it on; absent it is off', () => {
+    expect(parseMatchup('?battle2=1&vs=Civet,Python&duel=1').duel).toBe(true); expect(parseMatchup('?battle2=1&vs=Civet,Python').duel).toBe(false);
+  });
+  it('every archetype fights a REAL planned duel as champion and as defender; both genomes keep the painting\'s visual key (so the stage stages the painted archetype); deterministic', () => {
+    installCaptureHooks();
+    const names = MATCHUP_NAMES, keyOf = (n: string) => (recordOf(n) as { identity: { speciesVisualKey: string } }).identity.speciesVisualKey;
+    for (const [i, a] of names.entries()) {
+      const b = names[(i + 5) % names.length]!;
+      const d = matchupDuel(recordOf(a), recordOf(b), { left: a, right: b, seed: null });
+      expect(d.settlement.status, `${a} vs ${b}`).toBe('planned');
+      const champ = d.settlement.champion as { genome?: Record<string, unknown> };
+      expect(speciesVisualKey(champ.genome as never), `${a} as champion`).toBe(keyOf(a));
+      expect(speciesVisualKey(d.settlement.encounter.defender.battleGenome as never), `${b} as defender`).toBe(keyOf(b));
+      expect(d.chronicle.steps.length, `${a} vs ${b}`).toBeGreaterThan(0);
+      expect(d.settlement.transcript.log.length).toBeGreaterThan(0);
+    }
+    const x = matchupDuel(recordOf('Civet'), recordOf('Python'), { left: 'Civet', right: 'Python', seed: 7 }), y = matchupDuel(recordOf('Civet'), recordOf('Python'), { left: 'Civet', right: 'Python', seed: 7 });
+    expect(x.settlement.transcriptFingerprint).toBe(y.settlement.transcriptFingerprint);
+    // control: another seed is another duel
+    expect(matchupDuel(recordOf('Civet'), recordOf('Python'), { left: 'Civet', right: 'Python', seed: 8 }).settlement.transcriptFingerprint).not.toBe(x.settlement.transcriptFingerprint);
+  });
+  it('the picker in duel mode starts the Combat Chronicle under the stage, sets a pacer BEFORE start and hands the same gate to the study (the game\'s order); reduced motion hands none', async () => {
+    installCaptureHooks();
+    for (const reduced of [false, true]) {
+      const dom = new JSDOM('<!doctype html><body></body>'), doc = dom.window.document, mounted: Battle2StudyInput[] = [];
+      const order: string[] = [], setPacer = CombatChronicleController.prototype.setPacer, start = CombatChronicleController.prototype.start;
+      CombatChronicleController.prototype.setPacer = function (this: CombatChronicleController, p) { order.push(p ? 'pacer' : 'no pacer'); return setPacer.call(this, p); };
+      CombatChronicleController.prototype.start = function (this: CombatChronicleController, c, q) { order.push('start'); return start.call(this, c, q); };
+      try {
+        const fakeStudy = (input: Battle2StudyInput): Battle2StudyHandle => { order.push('study'); mounted.push(input); const st = { phase: 'playing', reason: null, label: null, turns: 3, turnIndex: 0, skipped: [], rigs: { left: 'parts', right: 'parts' }, ticks: 0, effects: { left: null, right: null }, arena: null, attacks: { left: null, right: null }, refusals: { left: 0, right: 0 }, audio: 'none' } as unknown as Battle2Status;
+          return { ready: Promise.resolve(st), status: () => st, dispose: () => {} }; };
+        const h = mountBattle2Matchup({ doc, search: '?battle2=1&vs=Civet,Python&duel=1', assets: diskAssets, mountStudy: fakeStudy, ticker: { add() {}, remove() {} }, clock: () => 0, reducedMotion: reduced, deviceTier: 'high', pixi: {} as never, artLoader: null });
+        await new Promise((r) => setTimeout(r, 30));
+        expect(order).toEqual([reduced ? 'no pacer' : 'pacer', 'start', 'study']);
+        const input = mounted[0]!; expect(Boolean(input.pacer)).toBe(!reduced);
+        expect(input.mount.querySelector('[data-combat-chronicle-log]')).not.toBeNull(); // the study mounts over the Chronicle's own mount
+        expect(input.generation).toBe(Number(input.mount.dataset.combatChronicleGeneration));
+        expect((input.settlement as unknown as { status: string }).status).toBe('planned'); expect(input.chronicle.championName).toBe('Civet');
+        expect(doc.querySelector('output')!.textContent).toMatch(/^real duel · Civet vs /);
+        h.dispose(); expect(doc.querySelector('[data-battle2-matchup]')).toBeNull();
+      } finally { CombatChronicleController.prototype.setPacer = setPacer; CombatChronicleController.prototype.start = start; }
+    }
   });
 });
 
