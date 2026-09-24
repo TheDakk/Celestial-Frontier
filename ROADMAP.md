@@ -17,16 +17,16 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — September 24, 2026 (day) · THE PAINTED ARENA PLAYS IN A BUILT GAME; NICK'S FOUR BATTLE2 DECISIONS BUILT
+## SESSION HANDOFF — September 24, 2026 (day) · THE PAINTED ARENA PLAYS IN A BUILT GAME; NICK'S FOUR BATTLE2 DECISIONS BUILT; A REAL DUEL IN THE PICKER
 Self-contained: either lane can resume from this block alone. Older handoffs are archived verbatim at the top of `ROADMAP_ARCHIVE.md`.
 
-**Where the work stands.** `anthropic/mac` merged Codex's signed `openai/mac` `1e9f5920` (merge `5229e4f1`: the motion-anatomy sprint and
-the first-use service-worker lane), then made the arena ship and play under that worker (`92fbe610`). The last pushed head is `8ad295d4`.
-Everything after it is local, because **1Password refused both signing and the SSH push** ("communication with agent failed?"). The
-queued commits sign and push in one step once Nick renews 1Password: see "Signing" below. PR #43 is the one combined PR; every
-workflow is dispatch- or `labeled`-only.
+**Where the work stands.** `anthropic/mac` merged Codex's signed `openai/mac` `1e9f5920` (merge `5229e4f1`), made the arena ship and play
+under Codex's service worker, built Nick's four decisions, then fixed three real defects that only real-browser runs surfaced (items -81…-83).
+Pushed through `4c2bd1ec`. **Local and signed, not yet pushed:** `86c9e3ed` and `f6ee445f`. **Staged, not yet committed:** the preview fix
+(item -83) and this handoff. 1Password signing and the SSH push dropped again ("communication with agent failed?") about 25 minutes after
+Nick unlocked it. The queue script is the "Signing" line below.
 
-**Built today (items -77…-80 below).**
+**Built today (items -77…-83 below).**
 - **The painted arena plays in a BUILT game with the service worker in control.** The builder writes `apps/game/battle2-assets.json`
   (Codex's `cf-battle2-assets/v1` contract: every shipped arena file pinned by bytes and SHA-256). The worker caches each file on
   first use. A reload with the arena blocked at the server stages from that cache with zero requests (`picker-smoke-06-sw`).
@@ -50,19 +50,22 @@ workflow is dispatch- or `labeled`-only.
 
 The freshwater-crab reach red is now green. Typecheck ×3 PASS; `overridecheck` 1014/1014 and `overridecontrol` PASS.
 
-**Signing (blocked).** Staged: the guardian commit (message `scratchpad/mguard2.txt` of session 1c642229). Unstaged: the pacing work and
-these docs. When 1Password is renewed ("until quit"), Claude commits guardian → pacing → docs, then pushes `anthropic/mac`. Codex's items
-5 and 7 are staged unsigned in ITS lane, blocked by the same error.
+**Signing (blocked again).** Run `scratchpad/commit-day2.sh` of session 1c642229 once 1Password answers. It commits the preview fix and this
+handoff, signed and verified G, then pushes `anthropic/mac`. Then rebuild the playtest package: it is the first whose worker can install, so the
+painted arena works offline in it. Codex's items 5 and 7 are staged unsigned in its lane, blocked by the same error.
 
 **Next, by owner.**
 - **Nick:** renew 1Password approval (both lanes are blocked on it); after I5 lands, cycle the label on PR #43.
 - **Codex:** sign items 5 and 7; fix the five `fb1922a0` reds above; then I5 on the final clean integrated source. Item 5 comes with
   removing Claude's KNOWN Centipede pin in `library-arena.test.ts`, in the same commit. Proposal (item 8): admit the painter master by its pinned
   hash instead of shipping 13 MB of masters.
-- **Claude:** after signing, commit and push the queue; integrate Codex's signed items 5 and 7; rebuild the playtest package so the
-  arena plays inside it; film one real battle through the Chronicle to show the pacing (no smoke drives a full battle yet).
+- **Claude:** after signing, push the queue; rebuild the playtest package (its worker now installs) and run
+  `picker-smoke --sw-control --duel` on the package itself; integrate Codex's signed items 5 and 7 when they land.
 
 **Traps (obey them).**
+- A browser smoke must watch a bout to its END and assert zero page errors: a throw inside a ticker callback freezes the whole page
+  while every status still reads "playing" (item -82).
+- A preview/package step that rewrites a built file after `vite build` breaks the worker's pins; stamp inside the build (item -83).
 - `picker-smoke --sw-control` asserts PAINTED rigs from the stage label: "playing" alone also covers the portrait fallback.
 - The gate test in `battle2-wiring.test.ts` mutates the gate ON the import line (`main.ts` now also reads the flag to set the
   pacer).
@@ -74,6 +77,25 @@ these docs. When 1Password is renewed ("until quit"), Claude commits guardian �
 - Run `npm run overridecontrol` and the whole gate list locally before any hosted attempt.
 
 ### What Claude owes next
+-84. **Codex's item 5 applied (2026-09-24).** Codex's prepared patch was applied verbatim, and the Centipede's KNOWN pin removed in the same commit: its crawl no longer
+bobs the trunk, and the scale sweep demands zero refusals for all 17 at every scale. Control: the old crawl line reproduces the 0.85× fold. Codex commits the
+same line in `openai/mac`, so the identical change merges clean.
+-83. **Preview packages could never install their service worker; fixed (2026-09-24).** `tools/devpreview.mjs` stamped the four HTML files
+AFTER `vite build`, but the PWA plugin had already pinned their SHA-256, so the worker's install always failed (4 of 305 pins). The arena
+only "worked" in a package because no worker ever controlled the page. The stamp now runs INSIDE the build
+(`apps/game/dev-preview-html-plugin.ts`, the last `transformIndexHtml` step, only under `CF_DEV_PREVIEW_HTML`). The HTML is byte-identical to the
+old rewrite on all 4 pages, and all 309 pins match. The Edge duel smoke with the worker controlling the page passes on the stamped build
+(`picker-smoke-08-stamped`).
+-82. **A non-quadruped fighter FROZE THE WHOLE GAME in the flagged study; fixed (`86c9e3ed`).** The study's creature-voice hook has a source set
+only for the quadruped, so `deriveCue` threw inside `BattleStage.tick` for any other body plan whenever an audio port was supplied (the game
+supplies one). A throw inside a ticker callback stops Pixi's SHARED ticker, so the page stopped animating. Now a body plan without a
+source set gets no voice (labelled), and the study's tick is guarded (a throw fails the study, never the ticker). Both have negative
+controls. Found by the first smoke that watched a bout past 2.5 s and captured page errors.
+-81. **The picker plays a REAL duel with the Chronicle under the stage (`f6ee445f`, `&duel=1` or the checkbox).** `matchupDuel` builds full genomes carrying
+each painting's visual genes, then runs the combat domain's `runDuel`, `planCombatSettlementV1`, the cue plan and the Combat Chronicle, in `main.ts`'s
+order (pacer, start, stage). Every archetype fights a planned duel as champion and as defender and keeps its visual key. Edge with the worker in control:
+Civet vs Python's rows land at 2.4 / 6.1 / 10.0 s (its three hits), and the log completes as the stage finishes. This is the pacing proof
+item -80 was missing.
 -80. **The stage paces the Chronicle log (Nick 2026-09-24, decision 4).** `CombatChronicleController.setPacer(pacer)` (set before `start`):
 each step waits for `pacer.waitFor(transcriptIndex)`, never longer than `COMBAT_CHRONICLE_PACER_MAX_WAIT_MS` (12 s). Skip, hide, close and reduced motion are
 unchanged; without a pacer the 420/240 cadence is byte-identical. `createCombatChroniclePacerGateV1()` is the gate. `main.ts` sets it only under
