@@ -53,6 +53,9 @@ try {
   report.stills = [];
   for (const t of report.gates.turns) { const b = t.beats, o = t.offsetMs, marks = [['approach-50', o + (b.commandEnd + b.actionStart) / 2], ['impact', o + b.impactAt], ['reaction-50', o + (b.reactionStart + b.reactionEnd) / 2], ['return-end', o + b.returnEnd], ...(t.turn === report.gates.turns.length - 1 ? [['idle-50', o + (b.returnEnd + b.end) / 2], ['idle-90', o + b.returnEnd + 0.9 * (b.end - b.returnEnd)]] : [])];
     for (const [name, ms] of marks) { const file = `turn${t.turn}-${t.outcome}-${name}.png`; fs.writeFileSync(path.join(out, file), Buffer.from(await evaluate('window.cfBattle2Proof.still(' + ms + ')'), 'base64')); report.stills.push({ turn: t.turn, name, ms, file }); } }
+  // CF_CPU_THROTTLE=N (optional, phone-tier studies): Chrome slows the page's CPU N× for the capture (CDP Emulation.setCPUThrottlingRate)
+  const throttle = Number(process.env.CF_CPU_THROTTLE ?? '1'); if (!(throttle >= 1 && throttle <= 20)) throw Error('CF_CPU_THROTTLE must be 1..20');
+  if (throttle > 1) await send('Emulation.setCPUThrottlingRate', { rate: throttle }); report.cpuThrottle = throttle;
   report.capture = await evaluate('window.cfBattle2Proof.capture()'); fs.writeFileSync(path.join(out, 'battle-10s.webm'), Buffer.from(report.capture.video, 'base64')); delete report.capture.video;
   const media = JSON.parse(execFileSync('/opt/homebrew/bin/ffprobe', ['-v', 'error', '-count_frames', '-show_entries', 'format=duration:stream=codec_type,nb_read_frames,width,height', '-of', 'json', path.join(out, 'battle-10s.webm')], { encoding: 'utf8' }));
   report.capture.encodedMedia = media; save(); requireTenSecondMedia(Number(media.format.duration)); report.capture.encodedFrames = inspectEncodedFrames(media.streams);
