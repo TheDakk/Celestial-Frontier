@@ -4,11 +4,50 @@ Copy everything below the line into Codex (`/Users/nick/Projects/celestial-front
 
 ---
 
+## SPRINT MODE — read this first (Nick, 2026-09-23: "stop waiting… I really want to do a sprint")
+
+Nick is tired of "stop, generate something, stop." For this run and every run after it, until Nick says otherwise:
+
+- **Work in large batches.** Carry the whole program below — every phase, every animal — to completion in one run. Do not
+  stop after a generation, a film, a packet, a phase or a commit to report or to ask "shall I continue?". Commit signed
+  as you go (small, frequent commits are fine) and KEEP GOING.
+- **Decide routine calls yourself.** Numeric tuning, which animal next, how to structure a tool, whether a retained
+  refusal needs a second candidate — pick the option you would recommend, record it in the packet in one line, and move
+  on. Nick reviews the films at the end; he does not want to approve each step.
+- **Batch every question** into the final report. If one item is blocked, write down why and continue with every other
+  item; a blocked item never stops the run.
+- **Stop only at a real gate:** a push, PR, label, hosted Actions attempt, merge, release or deploy (those still need
+  Nick's word); a sealed gate or sealed measurement that would have to be weakened or re-bound; a signing refusal that
+  one retry does not clear (then stage everything, write the exact error, and still finish the non-commit work); or
+  the whole program being done.
+- **Report once, at the end:** what changed, the numbers, the films Nick should watch (Python first), and the batched
+  questions.
+
+## Also in this run — three defects from Claude's merge of your sprint (verify each; they are yours)
+
+1. **Sealed crab measurement moved.** `apps/game/src/creature-stance-reach.test.ts` "Freshwater measured gait envelope…" is
+   red on your own head: the freshwater crab's measured forward reach is **0.072643** against the sealed bound
+   **0.07165**. Bisected on Claude's merged tree: first bad commit **`1dfeec2a`** (Beetle contact repair) — the pre-sprint
+   `creature-rig-contact.ts` passes, all four sprint versions fail identically. Either the Beetle repair changed crab
+   behaviour it should not (fix it so the crab is untouched), or the change is intended and the bound needs a MEASURED
+   re-seal with its reason — not a hand re-bind.
+2. **Your `overridecheck` gate is red on your own head.** From `d379e61d` on, `repeated-anatomy.mjs` imports
+   `skeleton-pose.mjs` (→ `fixed-attachments.mjs`, `kinematics.ts`) and `myriapod-anatomy.mjs`, so the art tree's source
+   closure is 42 art + 5 transitive modules, and the gate refuses: *"fixed-attachments.mjs@258 trusted built-in Object
+   member escapes its approved direct-call context"*. Your sentinel test expects 3 transitive modules. Reviewing
+   `fixed-attachments.mjs`'s Object use (or narrowing what the art tree imports), then re-running the gate and its
+   mutation controls, is yours. Claude's lane keeps its own green gate until yours passes. Nick has approved adopting
+   yours then, with the two hdart seal lines set to Claude's committed TypeSafe re-lift values
+   (`hdart.verbatim.js` `93d1e79292e68cd2cceab14617005900b1ccf649d2284a83f0ec497ec8e34bcd`,
+   `hdportrait.worker.verbatim.js` `50c43aa81272cc3e7950b85cf957d0e5657b3fd2c174fa38b16dd11cdc1b67e3`).
+3. **Records carry absolute paths.** Every sprint fit's `record.json` `source` is an absolute path into
+   `/Users/nick/Projects/celestial-frontier-openai-mac/…`; nothing else can resolve it. Make the writers emit
+   repo-relative sources (Claude's card builder works around it today, and records the master SHA-256 it read).
+
 **Nick accepted the archetype sprint art (all thirteen selections).** His direction: *"Animations can be fine-tuned
 more. The snake doesn't move exactly like a snake — we need to double-check all the animals and make sure they're
 moving appropriately for their anatomy."* This run is **MOTION ANATOMY**: every rigged animal must move the way its
-body is built, measured against a written reference, not judged by eye alone. It is one run with no internal stops;
-halt only on a red you cannot fix without changing a sealed gate. Standing authority applies (signed commits; no
+body is built, measured against a written reference, not judged by eye alone. It is one run with no internal stops (see SPRINT MODE above). Standing authority applies (signed commits; no
 push, PR, label, hosted attempt, merge, release or deploy without Nick's word; Claude's worktree is read-only).
 
 ## Claude's diagnosis (read from `port/v2/apps/game/src/motion/family-actions.ts` at `236b9846`; verify it, don't trust it)

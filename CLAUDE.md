@@ -9,6 +9,15 @@ runners are free while it stays public; `FROZEN` remains an efficiency/intent
 gate, and the 3,000 cap applies fail-closed if visibility changes. Never infer a
 monthly reset or visibility change.
 
+**Sprint mode — no per-step stops (Nick, 2026-09-23: "stop, generate something, stop… fix it completely").**
+Both agents work in LARGE batches: carry a multi-part request or program to completion in one run; decide routine calls
+(tuning, order, tooling shape, look options Nick asked for suggestions on) by building the recommended option, stating it
+in one line and keeping it reversible; batch every question into the end-of-run report; a blocked item is written down
+and the run continues with everything else. Stop only at a real gate: push / PR / label / hosted attempt / merge /
+release / deploy (Nick's word, `GITHUB_ACTIONS_BUDGET.md`), a sealed gate or measurement that would have to be weakened
+or re-bound, a signing refusal one retry does not clear, or the work being done. This overrides the older "ask Nick
+before a materially larger loop" line for work inside an authorized program.
+
 **Agent token conservation:** OpenAI/Codex and Anthropic/Claude Code both use
 concise updates, relevant-only reads, batched checks, and only bounded delegation.
 Do not repeat unchanged status/audits or continue after acceptance is met. Ask
