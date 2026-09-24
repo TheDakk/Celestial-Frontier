@@ -1,0 +1,45 @@
+{
+  "schema": "cf.final-readme-generation/v1",
+  "scope": "Evidence reads and guarded documentation writes only; no rig/test/browser/Git execution",
+  "resultSha256": "2937cb760b7394072ac8625ad6acc6d64ed4db25b55382ad14553559d44af559",
+  "staticReport": "static-08.json",
+  "nativeReport": "native-02/report.json",
+  "selectedCandidate": "candidate-13",
+  "readmeBeforeSha256": "c1c5b0b3f5a65249a10b11ea55839de55c51a3b5ee8ccf6dddf432f41b07ef2b",
+  "readmeAfterSha256": "1e9036759d1803c3f42dbbf56dba5f9a1978f153f7742c7a106fb92d93896f1b",
+  "historyBeforeSha256": "7d402740ef8b3ca4fd8bdd426366675c3b8b283bdc162c246ec062b42c776314",
+  "historyAfterSha256": "b27cbfed63e1cc0136dd5d08a10c48ef512cc26ec293b8bcffb51a1d9d208f20",
+  "archivedReadmeVerbatim": true,
+  "selectedSources": [
+    {
+      "name": "master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e"
+    },
+    {
+      "name": "authoring.json",
+      "sha256": "c35625a9055561a7ba5e07c699466716916717321595b93ccda9ddd8a9aaf97d"
+    },
+    {
+      "name": "prompt.txt",
+      "sha256": "006bf5fce063cad08371df26b4e44975049cd480dd305e248eec1f7b64c83019"
+    },
+    {
+      "name": "request.json",
+      "sha256": "eee818a3eedb39e1213426c05e8ea8ea9dda1576f22c12dfbab5ba6e93c5b9de"
+    },
+    {
+      "name": "generation-receipt.json",
+      "sha256": "a95cf62f9b8fd9770549804a6f4e2e6ec0a337b522546a2785d1f383c2fd801f"
+    },
+    {
+      "name": "subject-source.json",
+      "sha256": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67"
+    },
+    {
+      "name": "presence.json",
+      "sha256": "cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c"
+    }
+  ],
+  "signedCommitAsserted": false,
+  "pushAsserted": false
+}

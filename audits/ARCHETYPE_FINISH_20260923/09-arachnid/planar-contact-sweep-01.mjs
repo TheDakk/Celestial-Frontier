@@ -1,0 +1,24 @@
+/** In-memory observational trace; exact original module identity and unchanged math. */
+import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import {spawnSync} from 'node:child_process';import {createHash} from 'node:crypto';
+import {rolldown} from '../../../port/v2/node_modules/rolldown/dist/index.mjs';
+const base=import.meta.dirname,root='/Users/nick/Projects/celestial-frontier-openai-mac',owner=path.join(root,'port/v2/apps/game/src/creature-rig-contact.ts'),out=path.join(base,'planar-contact-sweep-01.sources.json');
+if(fs.existsSync(out)||fs.existsSync(path.join(base,'planar-contact-sweep-01.json')))throw Error('New diagnostic outputs required');
+const prior=new Map(JSON.parse(fs.readFileSync(path.join(base,'static-03.json.sources.json'))).map(x=>[x.path,x.sha256]));
+const sha=b=>createHash('sha256').update(b).digest('hex'),sources=new Map(),scratch=fs.mkdtempSync(path.join(os.tmpdir(),'cf-tarantula-contact-')),insertions=[];let bundle;
+try{
+ bundle=await rolldown({input:path.join(base,'planar-contact-sweep-01.ts'),platform:'node',plugins:[{name:'contact-observer',transform(code,id){
+  if(path.isAbsolute(id)&&fs.existsSync(id)&&fs.statSync(id).isFile()){const hash=sha(fs.readFileSync(id));if(prior.has(id)&&hash!==prior.get(id))throw Error('Static source drift '+id);sources.set(id,hash);}
+  if(id!==owner)return;const original=code;
+  const add=(needle,insertion)=>{if(code.split(needle).length!==2)throw Error('Unique trace anchor required '+needle);code=code.replace(needle,insertion+needle);insertions.push({needle,insertion});};
+  add('  if(padDeclaration){',`  (globalThis as any).__planarSweepTrace?.('targets',{phase,stance,pose,contacts,activeChains:activeChains.map(c=>({id:c.id,endpointOnly:c.endpointOnly}))});\n`);
+  add('   for(const translation of candidates){restore();try{',`   (globalThis as any).__planarSweepTrace?.('candidates',{reach,bound,candidates});\n`);
+  add('    compression=actual.y;rootAccommodation=',`    (globalThis as any).__planarSweepTrace?.('candidate-pass',{translation,actual,actualNorm,measured});\n`);
+  add('attempts.push({translation:{...translation},reason:String(error)});',`(globalThis as any).__planarSweepTrace?.('candidate-refusal',{translation,error:String(error)});`);
+  let restored=code;for(const {insertion}of insertions)restored=restored.replace(insertion,'');if(restored!==original)throw Error('Trace must invert to exact owner source');return {code,map:null};
+ }}]});
+ await bundle.write({file:path.join(scratch,'run.mjs'),format:'es'});
+ const r=spawnSync(process.execPath,[path.join(scratch,'run.mjs')],{cwd:root,stdio:'inherit',timeout:60000});process.exitCode=r.status??1;if(r.error)console.error(r.error);
+}finally{
+ const receipt=[...sources].map(([file,sha256])=>({file,sha256,unchanged:sha(fs.readFileSync(file))===sha256,staticSha256:prior.get(file)??null,exactStaticBytes:prior.has(file)?prior.get(file)===sha256:null}));
+ fs.writeFileSync(out,JSON.stringify({scope:'Actual bundled source hashes; only exact invertible observational insertions in a temporary bundle',insertions,sources:receipt},null,2)+'\n',{flag:'wx'});if(receipt.some(x=>!x.unchanged))process.exitCode=1;await bundle?.close();fs.rmSync(scratch,{recursive:true});
+}

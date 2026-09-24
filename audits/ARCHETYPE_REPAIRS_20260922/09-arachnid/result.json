@@ -1,0 +1,21 @@
+{
+  "schema": "cf.archetype-repair-result/v1",
+  "status": "STOPPED_SECOND_PAINT_FAILURE",
+  "item": 9,
+  "name": "Tarantula",
+  "sourceHead": "f1f1cd80c01e3c859f88943e231f8d3c2ff8b5f2",
+  "runId": "20260922-tarantula-repair-02",
+  "generation": 2,
+  "masterSha256": "9d3bf3f1ef7ef1992924beececd2c0b0f83fa4274293a0dad8aaaf63001c3297",
+  "promptSha256": "359fd030f6db8ca25f90e059ba4e8788e1cf2e9fc3b578a00f053f4876a5ee0a",
+  "visibleWalkingTips": 6,
+  "requiredVisibleWalkingChains": 8,
+  "finding": "Two far arches disappear behind body without traceable tips; rear exposed tip has occluded proximal continuation. Two short mouth pedipalps are not walking legs.",
+  "intake": null,
+  "static": null,
+  "exactRest": null,
+  "native": null,
+  "cpuP95Ms": null,
+  "protectedChanges": false,
+  "originalPacket": "../../ARCHETYPE_SPRINT_20260922/09-arachnid"
+}

@@ -1,0 +1,168 @@
+{
+  "command": [
+    "npx",
+    "vitest",
+    "run",
+    "apps/game/src/motion/compact-myriapod.test.ts"
+  ],
+  "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+  "exitCode": 1,
+  "elapsedSeconds": 0.847052333,
+  "scope": "Focused compact counted-anatomy controls; explicit source inventory, not full transitive closure or painted/native qualification. Existing fixed-socket test runs reused without execution.",
+  "files": [
+    {
+      "file": "port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "sha256": "1fe0cdfcc270cb08cd231927668a087c9473d3b2590f13bd1a581eb444f49534",
+      "afterSha256": "1fe0cdfcc270cb08cd231927668a087c9473d3b2590f13bd1a581eb444f49534",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/fixed-attachments.d.mts",
+      "sha256": "c1575834acf3324ff206adedbe268733eb3d18099ff6469a3dccff68a6c3ffc7",
+      "afterSha256": "c1575834acf3324ff206adedbe268733eb3d18099ff6469a3dccff68a6c3ffc7",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/fixed-attachments.test.mjs",
+      "sha256": "9b52bf3f96f2ac0b33c35edfb669e168600c71a876522117953c7f74e9db6790",
+      "afterSha256": "9b52bf3f96f2ac0b33c35edfb669e168600c71a876522117953c7f74e9db6790",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "9b23b08d8800ac634ec9dd3fff7b8939ada5747f7052e1f2be08818991056215",
+      "afterSha256": "9b23b08d8800ac634ec9dd3fff7b8939ada5747f7052e1f2be08818991056215",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/skeleton-pose.d.mts",
+      "sha256": "b4cc3a94a4532c5270b1515ce79710159625e5dd2aea67549ebebe822ca34a42",
+      "afterSha256": "b4cc3a94a4532c5270b1515ce79710159625e5dd2aea67549ebebe822ca34a42",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-record.mjs",
+      "sha256": "de1d5909809f0517c3aa1c8a2297fafef1fa6ed9853297df7d20ab88f11c0466",
+      "afterSha256": "de1d5909809f0517c3aa1c8a2297fafef1fa6ed9853297df7d20ab88f11c0466",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a",
+      "afterSha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "sha256": "088551d84282b6af9c677a34ec118e7efb3ba83ba92b48b131b9e657bd306b24",
+      "afterSha256": "088551d84282b6af9c677a34ec118e7efb3ba83ba92b48b131b9e657bd306b24",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "926e3a309668dd60bd6ef94bfda6a27790602153c8aa30bed5f5c30b81531684",
+      "afterSha256": "926e3a309668dd60bd6ef94bfda6a27790602153c8aa30bed5f5c30b81531684",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/repeated-anatomy.d.mts",
+      "sha256": "4edca5a6e77c520b877e4bdb9d776bd9ebecb1f75a4710dc2f19c1900323e15c",
+      "afterSha256": "4edca5a6e77c520b877e4bdb9d776bd9ebecb1f75a4710dc2f19c1900323e15c",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "d0d94cb62976f12357b91e66c5e661483a72224d8a4e950ba6ab6a06b852d4c3",
+      "afterSha256": "d0d94cb62976f12357b91e66c5e661483a72224d8a4e950ba6ab6a06b852d4c3",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/anatomy-inventory.d.mts",
+      "sha256": "60cc9190ecce727446ddb4d61d23a103d5848d2cb94422fe2eb9025dd92a4d4c",
+      "afterSha256": "60cc9190ecce727446ddb4d61d23a103d5848d2cb94422fe2eb9025dd92a4d4c",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "f57554f41bdc0fd16bb7093d0ba479ea2f4efdecf96198095957857d4264fe58",
+      "afterSha256": "f57554f41bdc0fd16bb7093d0ba479ea2f4efdecf96198095957857d4264fe58",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig.ts",
+      "sha256": "8ecbe80466e8c5ed16ed6439ba2768757b9a02b3859736a5b2e3711c328b2f84",
+      "afterSha256": "8ecbe80466e8c5ed16ed6439ba2768757b9a02b3859736a5b2e3711c328b2f84",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-fixed-attachments.test.ts",
+      "sha256": "e8b45d9edc9264e03205b1208ef555d1de986e64e3efff5873751ae848105e23",
+      "afterSha256": "e8b45d9edc9264e03205b1208ef555d1de986e64e3efff5873751ae848105e23",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "f8f75dfe8f2e1b8c225713fd4d627bac535abfab60f1f75bc34519327ce8b70a",
+      "afterSha256": "f8f75dfe8f2e1b8c225713fd4d627bac535abfab60f1f75bc34519327ce8b70a",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/templates.ts",
+      "sha256": "bc4ccea589ec9d52b054faf25b1e06915017a0b6d76793ef0f3ba214091e5e48",
+      "afterSha256": "bc4ccea589ec9d52b054faf25b1e06915017a0b6d76793ef0f3ba214091e5e48",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "375b9e2cd331676ed6b17f5435a55fce9f59693118354ece9a99cabcfb0cd390",
+      "afterSha256": "375b9e2cd331676ed6b17f5435a55fce9f59693118354ece9a99cabcfb0cd390",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/family-templates.ts",
+      "sha256": "01fb429e30a2ce63d3fd7fc0071db172e99346a2e965e0646f349f70a8cf4690",
+      "afterSha256": "01fb429e30a2ce63d3fd7fc0071db172e99346a2e965e0646f349f70a8cf4690",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "sha256": "feea85a1ce58317f18ca5c460d8587c838a571c6da1cd02c10111edb75c3681a",
+      "afterSha256": "feea85a1ce58317f18ca5c460d8587c838a571c6da1cd02c10111edb75c3681a",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "082f95111f3cffa61a97fddb1e4500dfca0241c3398403b8fa19c0e1c25cf12e",
+      "afterSha256": "082f95111f3cffa61a97fddb1e4500dfca0241c3398403b8fa19c0e1c25cf12e",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/actions.ts",
+      "sha256": "539e95f74d3b7d14adc53358f2420d7be9ef6e7bc76282dec78289ad8e733bec",
+      "afterSha256": "539e95f74d3b7d14adc53358f2420d7be9ef6e7bc76282dec78289ad8e733bec",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/anatomy-attacks.ts",
+      "sha256": "c365c60dd6e089b16d69fab86a6865a1b93a6628871ed0d8cb51f5a136fecc9a",
+      "afterSha256": "c365c60dd6e089b16d69fab86a6865a1b93a6628871ed0d8cb51f5a136fecc9a",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/packages/art/src/painter-topology.ts",
+      "sha256": "98eee6f0a25dc5150b8cc70013dd3af8f43ed18edec9db3ad880d5df4328e0b9",
+      "afterSha256": "98eee6f0a25dc5150b8cc70013dd3af8f43ed18edec9db3ad880d5df4328e0b9",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/motion/compact-myriapod.test.ts",
+      "sha256": "a3fc73d73d7668280bf48c3f30336e8beee8777d9a30878c440ad436a56c044e",
+      "afterSha256": "a3fc73d73d7668280bf48c3f30336e8beee8777d9a30878c440ad436a56c044e",
+      "unchanged": true
+    }
+  ],
+  "reusedSocketSources": {
+    "receipt": "fixed-socket-contact-tests-01.sources.json",
+    "unchanged": true
+  }
+}

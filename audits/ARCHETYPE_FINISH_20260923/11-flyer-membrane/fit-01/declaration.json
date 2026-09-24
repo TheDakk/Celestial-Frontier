@@ -1,0 +1,95 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "584ae12f33cafd725010536c82a974b59c9dee35879c9826d03409206cadd45e",
+  "cutoutSha256": "ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7",
+  "labelsFile": "labels.png",
+  "labelsSha256": "dddf7ed06692e4b0ce751503718d9ce88157d4b54cd62943ebfb5a57d167c833",
+  "parts": [
+    {
+      "id": "ear-near",
+      "joint": "earNearTip",
+      "layer": "near"
+    },
+    {
+      "id": "ear-far",
+      "joint": "earFarTip",
+      "layer": "far"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near"
+    },
+    {
+      "id": "wing-near-distal",
+      "joint": "wingNearTip",
+      "layer": "near"
+    },
+    {
+      "id": "wing-near-wrist",
+      "joint": "wingNearWrist",
+      "layer": "near"
+    },
+    {
+      "id": "wing-near-elbow",
+      "joint": "wingNearElbow",
+      "layer": "near"
+    },
+    {
+      "id": "wing-near-base",
+      "joint": "wingNearRoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg-near-foot",
+      "joint": "legNearFoot",
+      "layer": "near"
+    },
+    {
+      "id": "leg-near-upper",
+      "joint": "legNearKnee",
+      "layer": "near"
+    },
+    {
+      "id": "leg-far-foot",
+      "joint": "legFarFoot",
+      "layer": "far"
+    },
+    {
+      "id": "leg-far-upper",
+      "joint": "legFarKnee",
+      "layer": "far"
+    },
+    {
+      "id": "wing-far-distal",
+      "joint": "wingFarTip",
+      "layer": "far"
+    },
+    {
+      "id": "wing-far-wrist",
+      "joint": "wingFarWrist",
+      "layer": "far"
+    },
+    {
+      "id": "wing-far-elbow",
+      "joint": "wingFarElbow",
+      "layer": "far"
+    },
+    {
+      "id": "wing-far-base",
+      "joint": "wingFarRoot",
+      "layer": "far"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "2b3031a42a7b74b9d0cf9c69c41884ba6e9d1f511c3aa941a01f007b3e3fec4c"
+}

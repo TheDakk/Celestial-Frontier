@@ -1,0 +1,9 @@
+# Native focus diagnostic: retained first refusal
+
+Run `20260922-i5-native-focus-01` remains **FAIL**, retained without overwriting or retrying its evidence in `focus-01/`. Its report SHA-256 is `6097875bebe9bab74afbbb8a62be3199e1685884ce725eeb40e30a9ce34099f6`.
+
+The first phone/default row passed the product focus checks. Restoring the historical sheet rule reproduced the expected 2px outline and +2px offset, and removing that fault restored the required 3px outline and −4px offset. The diagnostic then refused `restoration changed boxShadow`: its baseline was sampled during the real focus transition (`0.790476px` / `1.97619px` inset shadow spreads), while the restored observation had reached the final `2px` / `5px` spreads. Two animation frames were insufficient evidence that a transition had finished. This is a diagnostic settlement error; this run establishes neither all-four-row acceptance nor a Compendium certificate.
+
+The corrected helper reads current animations/transitions from the focus owner, its ancestors and the fixture body, waits for each finite animation's native `finished` promise, then consumes two rendering frames and rejects unresolved finite animation state. Every baseline, injected-fault observation and restoration retains that settlement receipt. CSS animation is not disabled, no arbitrary time delay is introduced, and exact restoration equality remains required.
+
+Historical sheet controls are now inserted immediately after `cf-ui-presentation`, before the optional pilot stylesheet. Historical pilot controls follow `cf-pilot-style`. Thus the pilot/sheet control preserves real owner order: the current pilot rule excludes Compendium rows, leaving the historical sheet fault observable. No production source, focus-ring threshold, certificate, budget, or historical result is changed by this diagnostic repair. The corrected helper has not been executed by the authoring agent.

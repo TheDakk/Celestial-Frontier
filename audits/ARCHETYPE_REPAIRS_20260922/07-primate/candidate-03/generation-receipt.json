@@ -1,0 +1,15 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 2,
+  "sourceFile": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-138d6070-3413-4b32-8cb4-be2ea18f06e5.png",
+  "promptSha256": "f6b76ca7a15ddff62c90f30a391f131909d19bbba4858666f1bf3bbcce815ad7",
+  "storedPromptFileSha256": "0600e4ad1ea71a77a4bb288e350032b62325d0a42c1ba203ede840ac6e09a8f7",
+  "promptNote": "Submitted exact stored prompt minus trailing whitespace (trimEnd); retained submitted-prompt.txt is exact UTF-8 request.",
+  "masterSha256": "c10a043d1c0e35c80611eb8ecb8e33de8ef048b21232946f8495880b53709728",
+  "measuredMetadata": {
+    "width": 1254,
+    "height": 1254,
+    "channels": 4,
+    "hasAlpha": true
+  }
+}

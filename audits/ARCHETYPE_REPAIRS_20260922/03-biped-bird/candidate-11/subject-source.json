@@ -1,0 +1,303 @@
+{
+  "name": "Eagle",
+  "family": "biped-bird",
+  "species": {
+    "name": "Eagle",
+    "aspect": 0.9,
+    "headFrac": 0.24,
+    "eyes": "prominent",
+    "posture": "biped",
+    "mustRead": [
+      "heavy hooked beak with a fleshy cere",
+      "bony brow ridge giving a scowling glare",
+      "massive feathered legs ending in taloned feet"
+    ],
+    "note": "generic representative: a large booted eagle. Perched, the folded wings reach roughly to the tail tip"
+  },
+  "genome": {
+    "seed": 3837331972,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 15,
+    "body": 7,
+    "loco": 17,
+    "trait": 5,
+    "size": 3,
+    "diet": 1,
+    "head": 7,
+    "limbs": 3,
+    "skin": 1,
+    "tail": 2,
+    "pattern": 5,
+    "eyes": 0,
+    "behavior": 9,
+    "habitat": 3,
+    "detail": 9,
+    "accent": 16,
+    "temper": 1,
+    "sense": 1,
+    "repro": 6,
+    "life": 4,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Eagle"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Eagle\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3837331972\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"5\"]]]]",
+  "index": 30,
+  "contract": {
+    "id": "biped-bird",
+    "version": 1,
+    "clipSetId": "biped-bird-v1",
+    "graph": [
+      [
+        "pelvis",
+        "root"
+      ],
+      [
+        "spine",
+        "pelvis"
+      ],
+      [
+        "chest",
+        "spine"
+      ],
+      [
+        "neck0",
+        "chest"
+      ],
+      [
+        "neck1",
+        "neck0"
+      ],
+      [
+        "head",
+        "neck1"
+      ],
+      [
+        "beak",
+        "head"
+      ],
+      [
+        "legFarKnee",
+        "pelvis"
+      ],
+      [
+        "legFarAnkle",
+        "legFarKnee"
+      ],
+      [
+        "legFarFoot",
+        "legFarAnkle"
+      ],
+      [
+        "legNearKnee",
+        "pelvis"
+      ],
+      [
+        "legNearAnkle",
+        "legNearKnee"
+      ],
+      [
+        "legNearFoot",
+        "legNearAnkle"
+      ],
+      [
+        "wingFarRoot",
+        "chest"
+      ],
+      [
+        "wingFarTip",
+        "wingFarRoot"
+      ],
+      [
+        "wingNearRoot",
+        "chest"
+      ],
+      [
+        "wingNearTip",
+        "wingNearRoot"
+      ],
+      [
+        "tailFan",
+        "pelvis"
+      ]
+    ],
+    "bodyAxis": [
+      "pelvis",
+      "chest"
+    ],
+    "joints": [
+      "root",
+      "pelvis",
+      "spine",
+      "chest",
+      "neck0",
+      "neck1",
+      "head",
+      "beak",
+      "legFarKnee",
+      "legFarAnkle",
+      "legFarFoot",
+      "legNearKnee",
+      "legNearAnkle",
+      "legNearFoot",
+      "wingFarRoot",
+      "wingFarTip",
+      "wingNearRoot",
+      "wingNearTip",
+      "tailFan"
+    ],
+    "legs": [
+      "legFar",
+      "legNear"
+    ],
+    "limitsDeg": {
+      "root": {
+        "min": -25,
+        "max": 25
+      },
+      "pelvis": {
+        "min": -20,
+        "max": 20
+      },
+      "spine": {
+        "min": -25,
+        "max": 25
+      },
+      "chest": {
+        "min": -20,
+        "max": 20
+      },
+      "neck0": {
+        "min": -45,
+        "max": 45
+      },
+      "neck1": {
+        "min": -45,
+        "max": 45
+      },
+      "head": {
+        "min": -40,
+        "max": 40
+      },
+      "beak": {
+        "min": -30,
+        "max": 5
+      },
+      "legFarKnee": {
+        "min": -70,
+        "max": 70
+      },
+      "legFarAnkle": {
+        "min": -85,
+        "max": 85
+      },
+      "legFarFoot": {
+        "min": -45,
+        "max": 45
+      },
+      "legNearKnee": {
+        "min": -70,
+        "max": 70
+      },
+      "legNearAnkle": {
+        "min": -85,
+        "max": 85
+      },
+      "legNearFoot": {
+        "min": -45,
+        "max": 45
+      },
+      "wingFarRoot": {
+        "min": -60,
+        "max": 95
+      },
+      "wingFarTip": {
+        "min": -70,
+        "max": 70
+      },
+      "wingNearRoot": {
+        "min": -60,
+        "max": 95
+      },
+      "wingNearTip": {
+        "min": -70,
+        "max": 70
+      },
+      "tailFan": {
+        "min": -40,
+        "max": 40
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.06,
+        "max": 0.65,
+        "kind": "distance",
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "leg/torso:legFar",
+        "min": 0.3,
+        "max": 3.5,
+        "kind": "ratio",
+        "bones": [
+          "legFarKnee",
+          "legFarAnkle",
+          "legFarFoot"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:legNear",
+        "min": 0.3,
+        "max": 3.5,
+        "kind": "ratio",
+        "bones": [
+          "legNearKnee",
+          "legNearAnkle",
+          "legNearFoot"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "wing/torso",
+        "min": 0.4,
+        "max": 4.5,
+        "kind": "ratio",
+        "bones": [
+          "wingFarRoot",
+          "wingFarTip"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      }
+    ]
+  }
+}

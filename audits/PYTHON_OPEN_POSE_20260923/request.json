@@ -1,0 +1,20 @@
+{
+  "tool": "image_gen.imagegen",
+  "sourceHead": "4ff2fad720e1d5734ce95a77c8a401cd8884e24e",
+  "generation": 2,
+  "scope": "One corrected re-prompt after old coiled master motion rejection",
+  "authority": "Nick: continue after explicit open-pose repaint proposal",
+  "template": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/prompt.txt",
+  "templateSha256": "fbd1986dcd19df48220339d9fd28b326b813c8d17eec4342f80d0aba7027b997",
+  "promptSha256": "e844bf4a0ee7caf3585a7d17e5e75f95df0136c236f3a1b96c85999f683902ef",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "sourceGenomeUnchanged": true,
+  "sourcePostureOverride": "Coiled -> open non-overlapping lateral wave, as approved for visual repair",
+  "model": "not exposed",
+  "seed": "not exposed"
+}

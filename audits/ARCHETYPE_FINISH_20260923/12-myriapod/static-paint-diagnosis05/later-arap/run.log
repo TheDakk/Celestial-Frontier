@@ -1,0 +1,42 @@
+{
+  "output": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/later-arap/report.json",
+  "rows": [
+    {
+      "action": "hit",
+      "attempted": 116,
+      "pass": 116,
+      "errors": 0,
+      "errorStages": []
+    },
+    {
+      "action": "dodge",
+      "attempted": 114,
+      "pass": 109,
+      "errors": 5,
+      "errorStages": [
+        "arap"
+      ]
+    }
+  ],
+  "faceUnion": 32,
+  "parts": [
+    {
+      "part": "leg3-far",
+      "faces": 32,
+      "actions": [
+        {
+          "action": "hit",
+          "samples": 0,
+          "firstMs": null,
+          "lastMs": null
+        },
+        {
+          "action": "dodge",
+          "samples": 5,
+          "firstMs": 16.333333333333332,
+          "lastMs": 79.33333333333333
+        }
+      ]
+    }
+  ]
+}

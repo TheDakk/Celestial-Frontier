@@ -1,0 +1,38 @@
+{
+  "schema": "cf.validation-receipt/v1",
+  "commands": [
+    {
+      "command": "node port/v2/node_modules/typescript/bin/tsc --noEmit -p port/v2/apps/game/tsconfig.json",
+      "exitCode": 0,
+      "toolChunk": "7b119d",
+      "log": "typecheck-02.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "node tools/validate.js",
+      "exitCode": 0,
+      "toolChunk": "d89340",
+      "log": "legacy-validate-02.log",
+      "logSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    }
+  ],
+  "focusedProduction": [
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "acda802b193eb2973a34f3ba6c99e9bf00ac8195d1916486ad3b728132a77e62"
+    },
+    {
+      "path": "port/v2/apps/game/src/creature-planar-contact.ts",
+      "sha256": "1c637a308ae1f487d3b7ee4e42b589e342bf36a2170210582400eec21c273436"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "080e38525409eb9bfd6fca0ec0dbc4168fa14b96a01aa0eac53141ec35281773"
+    },
+    {
+      "path": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "sha256": "4a2f4cd25ec80b1ec5dec9f5930784d2d63dcdc8635d2294c9b982f0368e8d93"
+    }
+  ],
+  "scope": "Receipts for the production state used by static03. Later source changes require their own relevant verification; no browser or clean-source certificate."
+}

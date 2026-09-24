@@ -1,0 +1,11 @@
+{
+  "schema": "cf.sprint-ssh-refusal/v1",
+  "command": "git ls-remote origin HEAD refs/heads/openai/mac",
+  "tool": "db550a",
+  "exitCode": 128,
+  "error": "sign_and_send_pubkey: signing failed for ED25519 \"GitHub\" from agent: communication with agent failed\ngit@github.com: Permission denied (publickey).\nfatal: Could not read from remote repository.",
+  "remoteSha": null,
+  "pushAttempted": false,
+  "unchangedAuthRetry": false,
+  "note": "Both independent SSH preflight operations failed on agent communication. Repository permission was not independently disproved; no credential fallback or configuration edit."
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "cf.contact-pin-diagnosis-execution/v1",
+  "diagnosticToolReceipt": "78189c",
+  "diagnosticExitCode": 0,
+  "visualizationToolReceipt": "091ea9",
+  "visualizationExitCode": 0,
+  "realIntakeExecuted": false,
+  "sharedWriterChanged": false,
+  "inputsUnchanged": true,
+  "inputCount": 7,
+  "contactsInspected": 28,
+  "prospectiveRootLockConflicts": 43,
+  "originalRunStoppedAtFirstConflict": true,
+  "files": [
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/contact-pin-diagnosis-01/report.json",
+      "sha256": "ce244dd0bed1a012df27969ea6b9d7846bd236b1a71d2c441b1fcc9dc4067f6a"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/contact-pin-diagnosis-01/contact-summary.json",
+      "sha256": "31b22457b778c58eb54e3f8b777d0a470ff192e0387ebdbe7955bc68c44fd588"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/contact-pin-diagnosis-01/root-leakage-footpoints.png",
+      "sha256": "eac5122e2b49160db36c3eb8a7af57c9c6344c0b84e8ea162e1fff6328fdce61"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/contact-pin-diagnosis-01.mjs",
+      "sha256": "67026b4e1b20db371582196aeface487e3559d2c35b7e9ab5f7c0533e29cd859"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/contact-pin-diagnosis-01.log",
+      "sha256": "739e169c9b9b0acc0bca1be8fc581094106fcee982fc4a7332791616f56ffb1a"
+    }
+  ]
+}

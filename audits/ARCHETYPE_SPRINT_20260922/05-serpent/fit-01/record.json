@@ -1,0 +1,164 @@
+{
+  "kind": "serpent",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Python\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"3\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"13\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"1\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"2\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"1896382194\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"4\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"6\"]]]]",
+    "seed": 1896382194,
+    "ownerId": "authored:archetype-sprint/python",
+    "earthName": "Python"
+  },
+  "template": {
+    "id": "serpent",
+    "version": 1
+  },
+  "clipSetId": "serpent-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 1896382194,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 13,
+    "body": 2,
+    "loco": 14,
+    "trait": 6,
+    "size": 4,
+    "diet": 5,
+    "head": 1,
+    "limbs": 2,
+    "skin": 6,
+    "tail": 4,
+    "pattern": 2,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 13,
+    "detail": 3,
+    "accent": 0,
+    "temper": 8,
+    "sense": 9,
+    "repro": 4,
+    "life": 5,
+    "metab": 4,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Python"
+  },
+  "geometry": {
+    "cutoutAssetHash": "1c44d54e241b2444ce37950f0b3ce7ebfe9d9f4cd550a77cdaf0c20924849e43",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.85,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.8229665071770335,
+      0.2902711323763955
+    ],
+    "head": [
+      0.8947368421052632,
+      0.25996810207336524
+    ],
+    "jaw": [
+      0.9298245614035088,
+      0.2926634768740032
+    ],
+    "seg0": [
+      0.7543859649122807,
+      0.3452950558213716
+    ],
+    "seg1": [
+      0.8835725677830941,
+      0.47208931419457734
+    ],
+    "seg2": [
+      0.671451355661882,
+      0.4569377990430622
+    ],
+    "seg3": [
+      0.5223285486443381,
+      0.41467304625199364
+    ],
+    "seg4": [
+      0.6451355661881978,
+      0.55103668261563
+    ],
+    "seg5": [
+      0.8046251993620415,
+      0.6626794258373205
+    ],
+    "seg6": [
+      0.5653907496012759,
+      0.7129186602870813
+    ],
+    "seg7": [
+      0.3277511961722488,
+      0.6299840510366826
+    ],
+    "seg8": [
+      0.23843700159489634,
+      0.5079744816586922
+    ],
+    "seg9": [
+      0.07894736842105263,
+      0.42902711323763953
+    ]
+  },
+  "materials": {
+    "surface": "overlapping python scales with geometric brown, black and cream reticulation"
+  },
+  "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/master.png",
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "One head, one jaw and one continuous limbless body ending in one tapering tail. The ten segment landmarks follow the visible neck and coil route: upper neck curl, descending right neck, rear connection, upper central crest, foreground diagonal crossing, right turn, front coil, left turn, rear-left coil and terminal tail. Overlap masks preserve the visible foremost surface by polygon priority. No segment chain or appendage is declared hidden or absent, and folded-leg semantics do not apply to the coiled trunk.",
+    "visualAcceptance": "candidate for Nick; first acceptable paint",
+    "landmarkMethod": "Manual observation of this 1254-square painting. The continuation through partial coil occlusion is an authored anatomical correspondence, not recovered hidden paint. Every supplied joint is placed on a visible surface. The tongue remains jaw-attached because the current serpent contract has no independent tongue joint.",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "98c5e0ddc133c3b02e8e854512033f88a4994cf89d82d99acc456dd02674cebf",
+    "subjectSourceSha256": "7045ce9b8ff117638dd975e66b2b3f1888750da731412e8f43b0b07a6050d72f",
+    "presenceSha256": "ea2aeb7df86e52f7c74c20398bab9e05f26e80886af60c3e5c9c95c6473f7e0b",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "head": 0.07790542100044541,
+      "jaw": 0.04795972872011129,
+      "seg0": 0.08792566706375407,
+      "seg1": 0.18101370754092772,
+      "seg2": 0.2126616492063364,
+      "seg3": 0.1549965189973045,
+      "seg4": 0.18351186577530051,
+      "seg5": 0.194681907746949,
+      "seg6": 0.2444526592828033,
+      "seg7": 0.25169566298501,
+      "seg8": 0.1512063503058117,
+      "seg9": 0.17795963045178717
+    },
+    "measures": {
+      "body": 0.6806088120713698,
+      "bone-min": 0.04795972872011129,
+      "bone-max": 0.25169566298501,
+      "head/body": 0.11446431432961834
+    }
+  },
+  "recipeHash": "8c3dd500768f444c6d64df3f47b891ab903148becbf543ce8d4fccb5760ee49f"
+}

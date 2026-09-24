@@ -1,0 +1,12 @@
+{
+  "id": "20260922-beetle-repair-02",
+  "sourceHead": "3ee02d5db99fa03470c078489b0484bf039856e6",
+  "generationAttempt": 2,
+  "generationTool": "image_gen.imagegen",
+  "intakeCommand": "node audits/ARCHETYPE_SPRINT_20260922/intake.mjs audits/ARCHETYPE_REPAIRS_20260922/04-insect audits/ARCHETYPE_REPAIRS_20260922/04-insect/fit-02",
+  "intakeExitCode": 1,
+  "refusal": "Hidden anatomy: unsupported hidden chain",
+  "staticRun": false,
+  "nativeRun": false,
+  "reason": "Second paint has only five traceable legs; complete visible six-leg anatomy not satisfied. Existing hidden-insect chain refusal retained. Stop this item under the paint-attempt rule."
+}

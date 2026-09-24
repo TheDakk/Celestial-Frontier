@@ -1,0 +1,116 @@
+{
+  "status": "PASS_LOCAL_NATIVE",
+  "species": "Tree Frog",
+  "item": 6,
+  "sourcePredecessor": "1dfeec2a88ac6e7be01b525e12421c3b1b181a7c",
+  "scope": "Local changed-source explicit adhesive-pad record; recorded runtime hashes name actual bytes. No current Compendium or PR43 certification.",
+  "fit": "fit-05",
+  "paintRunId": "20260923-tree-frog-paint-06",
+  "masterSha256": "aa1ad50d8ac1e354d0f0ba5beeb211a22519461ac36802ca621022f2418c65eb",
+  "promptSha256": "b37000d75f1c8668e78d07ed685bc8270ca91a504fb22102ed232e8603902632",
+  "recordRecipeHash": "5357c3e397fbd0d70587424b527de754e7d7fc15988324ba93d85e5e3d692b97",
+  "bindingHash": "7e3ac04a6e9ddbb3087ebe6df37bfb98e5e47241c4f08a89044341b3a0a85fa2",
+  "mesh": {
+    "parts": 17,
+    "vertices": 1117,
+    "triangles": 1711,
+    "pins": 750,
+    "globalSteps": [
+      40,
+      80
+    ],
+    "refinements": [
+      {
+        "x": 970,
+        "y": 700,
+        "width": 70,
+        "height": 70,
+        "boundaryStep": 12,
+        "interiorStep": 24
+      }
+    ]
+  },
+  "static": {
+    "status": "PASS_STATIC",
+    "rows": 12,
+    "samples": [
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121
+    ],
+    "presentationSamples": 850,
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    },
+    "maxPaintDriftPx": 6.700236199542844e-05
+  },
+  "native": {
+    "runId": "20260923-tree-frog-native-01",
+    "status": "DIAGNOSTIC_PASS",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "liveFrames": 602,
+    "durationMs": 10016.3,
+    "encodedFrames": 606,
+    "encodedDurationSeconds": "10.100335",
+    "scriptMs": 7960,
+    "perRigP95Ms": {
+      "left": 0.6000000238418579,
+      "right": 0.8999999761581421
+    },
+    "wholeStageP95Ms": 1.5,
+    "paintedContactsAtEnd": {
+      "left": {
+        "samples": 2250,
+        "maxPaintDriftPx": 3.583657188361569e-05,
+        "scope": "Actual pending Float32 rendered pad interpolation, admitted before publication; adhesive point anchors, no terrain-clearance claim"
+      },
+      "right": {
+        "samples": 3904,
+        "maxPaintDriftPx": 6.808562263478834e-05,
+        "scope": "Actual pending Float32 rendered pad interpolation, admitted before publication; adhesive point anchors, no terrain-clearance claim"
+      }
+    },
+    "browser": {
+      "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+      "product": "Edg/153.0.4234.48",
+      "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+      "js_version": "15.3.12.7",
+      "protocol_version": "1.3"
+    }
+  },
+  "protection": {
+    "s2ReceiptCount": 6,
+    "s2SupportSamples": 13286,
+    "protectedInputs": 12,
+    "status": "PASS_STATIC_IDENTICAL",
+    "numericThresholdsChanged": false,
+    "acceptedBindingsChanged": false
+  },
+  "sourceCheckCounts": {
+    "native": 846,
+    "staticSources": 59,
+    "staticInputs": 5
+  },
+  "artFindings": [
+    "Requested8percent safe margin not met; source alpha>127 bounds18,278\u20131236,995; no visible tip crop identified.",
+    "Four visible limbs andpad-bearing extremities; parent absenttail/externalears; hidden/foldedempty. Far proximal joints explicitlyestimatedoccludedattachments.",
+    "Fine alpha1 edge fringes retained; adhesive anchor doesnotprovewhole-footterrainclearance.",
+    "Parent reviewed sheet; Nick owns final artacceptance."
+  ]
+}

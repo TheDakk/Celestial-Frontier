@@ -1,0 +1,16 @@
+{
+  "runId": "20260923-beetle-paint-04",
+  "tool": "image_gen.imagegen",
+  "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-e94950d6-404e-4d60-8946-fc684ec32a03.png",
+  "width": 1254,
+  "height": 1254,
+  "channels": 4,
+  "sha256": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb",
+  "alphaOver127Bounds": [
+    39,
+    230,
+    1233,
+    1027
+  ],
+  "alphaOver127Pixels": 370728
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "cf.sprint-item-result/v1",
+  "item": "09-arachnid",
+  "species": "Tarantula",
+  "status": "PASS_LOCAL_SIGNING_PENDING",
+  "sourceHead": "7158fc13ce1ffb5791845c96f2013634ee0512c0",
+  "masterSha256": "55d8a5d00e4eabd761fc64cc42d82da1d3837b0448651d8c78820b9cfe9fb19b",
+  "promptSha256": "146a05c4c9b8a1af4f1b7a5f2cef877917d9ce54313799843170c807f6507fac",
+  "recipeHash": "4165e4c57c508d442b8cf09991bd9925a34620bf5c3895d7a73d9962ec9a6a4c",
+  "bindingHash": "cfe54f47406488cec5c9883648132ace3aced5a0bfa011c2131b7363bf0f18d8",
+  "static": {
+    "report": "static-04.json",
+    "status": "PASS_STATIC",
+    "actions": 13,
+    "samplesPerAction": 121,
+    "presentationSamples": 896,
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  "native": {
+    "runId": "20260923-tarantula-native-01",
+    "report": "native-01/report.json",
+    "film": "native-01/battle-10s.webm",
+    "status": "DIAGNOSTIC_PASS",
+    "frames": 602,
+    "durationMs": 10016.3,
+    "encodedMedia": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1024,
+          "height": 576,
+          "nb_read_frames": "606"
+        }
+      ],
+      "format": {
+        "duration": "10.101386"
+      }
+    },
+    "encodedFrames": {
+      "frames": 606,
+      "width": 1024,
+      "height": 576
+    },
+    "perRigUpdateP95Ms": {
+      "left": 0.7999999523162842,
+      "right": 1
+    },
+    "wholeStageP95Ms": 1.7000000476837158,
+    "timingScope": "Each per-rig upper bound charges the entire shared sampleTurn time plus its own performance/contact/publication; event sums include transition ticks. Whole stage additionally includes effects and rendering. Bounds admission cost excluded from these scopes.",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "browser": {
+      "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+      "product": "Edg/153.0.4234.48",
+      "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+      "js_version": "15.3.12.7",
+      "protocol_version": "1.3"
+    }
+  },
+  "s2": {
+    "status": "PASS_STATIC_IDENTICAL",
+    "subjects": 6,
+    "samples": 13286,
+    "protectedInputs": 12
+  },
+  "sheet": "review-sheet-native-01.png",
+  "sourceCheck": "final-source-check-01.json",
+  "limitations": [
+    "Local unmorphed diagnostic proof, not production roster admission or PR43 certification.",
+    "Two-span knees are authored visible segment-transition estimates; internal hinges are not directly observed.",
+    "Requested eight-percent paint margin is not met; original faint fringe and all pixels retained for Nick art review.",
+    "All rejected masters, failed fits and solver refusals remain retained."
+  ],
+  "signing": "signing-attempts-01.json"
+}

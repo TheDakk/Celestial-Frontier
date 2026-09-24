@@ -1,0 +1,25 @@
+{
+  "schema": "cf.native-positive-alpha-sizing/v1",
+  "status": "PASS_SIZING_INPUT_ONLY",
+  "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/parts/keyed.png",
+  "sha256": "2e5b90fe110deefac59fa32e471a540b9e35e3d98d2a687be548ba13ec44fdd3",
+  "width": 1254,
+  "height": 1254,
+  "positiveAlphaPixels": 178726,
+  "priorAbove8Pixels": 140406,
+  "priorExcludedPositivePixels": 38320,
+  "box": {
+    "x": 39,
+    "y": 50,
+    "width": 1189,
+    "height": 1148
+  },
+  "priorBox": {
+    "x": 41,
+    "y": 413,
+    "width": 1185,
+    "height": 460
+  },
+  "pixelsUnchanged": true,
+  "scope": "Rest-size helper qualification only; no browser, publication, CPU or native containment claim."
+}

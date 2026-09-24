@@ -1,0 +1,19 @@
+{
+  "schema": "cf.commit-signing-receipt/v1",
+  "status": "WAITING_FOR_RENEWED_UNTIL_QUIT_APPROVAL",
+  "predecessor": "aaef06aff92852cd4caf711769ea80339a423605",
+  "program": "/Users/nick/.local/bin/git-ssh-sign",
+  "attempts": [
+    {
+      "toolReceipt": "378c80",
+      "exitCode": 128,
+      "error": "Couldn't sign message (signer): agent refused operation?\nSigning /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmp6hOG04 failed: agent refused operation?\nfatal: failed to write commit object"
+    },
+    {
+      "toolReceipt": "2ae6cb",
+      "exitCode": 128,
+      "error": "Couldn't sign message (signer): agent refused operation?\nSigning /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmpp3fHk6 failed: agent refused operation?\nfatal: failed to write commit object"
+    }
+  ],
+  "next": "Bounded retry exhausted. Nick asked to approve1Password prompt until quit, then one retry. Centipede not started; signed commits remain mandatory. No unsigned fallback or signing configuration change."
+}

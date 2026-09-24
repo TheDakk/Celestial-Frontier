@@ -91,7 +91,6 @@ const BIRD = build({
 });
 
 /* ---- fish ---- */
-const spine6 = Array.from({ length: 6 }, (_, i) => 'spine' + i);
 const FISH = build({
   id: 'fish', clipSetId: 'fish-aquatic-v1', legs: [], bodyAxis: ['spine0', 'spine5'],
   graph: [['head', 'root'], ['jaw', 'head'], ...seq('spine', 6, 'root'), ['caudal', 'spine5'], ['dorsal', 'spine1'], ['pectoralFar', 'root'], ['pectoralNear', 'root']],

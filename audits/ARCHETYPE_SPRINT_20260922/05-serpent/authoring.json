@@ -1,0 +1,42 @@
+{
+  "id": "python",
+  "family": "serpent",
+  "landmarksPx": {
+    "root": [1032,364],
+    "head": [1122,326],
+    "jaw": [1166,367],
+    "seg0": [946,433],
+    "seg1": [1108,592],
+    "seg2": [842,573],
+    "seg3": [655,520],
+    "seg4": [809,691],
+    "seg5": [1009,831],
+    "seg6": [709,894],
+    "seg7": [411,790],
+    "seg8": [299,637],
+    "seg9": [99,538]
+  },
+  "groundLineY": 0.85,
+  "materials": {"surface":"overlapping python scales with geometric brown, black and cream reticulation"},
+  "remainderPart": "body",
+  "parts": [
+    {"id":"jaw","joint":"jaw","layer":"near","polygonPx":[[1034,352],[1110,349],[1184,341],[1238,346],[1253,441],[1191,439],[1181,383],[1115,390],[1042,389]]},
+    {"id":"head","joint":"head","layer":"near","polygonPx":[[1011,276],[1080,270],[1135,291],[1201,293],[1229,320],[1224,354],[1183,382],[1087,394],[1019,377],[987,330]]},
+    {"id":"tail-tip","joint":"seg9","layer":"near","polygonPx":[[147,505],[156,525],[99,547],[64,580],[45,623],[54,665],[97,699],[173,723],[251,718],[299,733],[278,774],[216,805],[116,798],[46,765],[2,702],[0,614],[25,555],[82,523]]},
+    {"id":"coil-right-turn","joint":"seg5","layer":"near","polygonPx":[[959,741],[1074,740],[1102,807],[1090,892],[1032,959],[914,989],[840,945],[883,874],[965,853],[1004,806]]},
+    {"id":"coil-front","joint":"seg6","layer":"near","polygonPx":[[564,795],[744,815],[940,848],[1049,915],[1017,977],[852,993],[681,968],[484,920],[433,861]]},
+    {"id":"coil-left-turn","joint":"seg7","layer":"near","polygonPx":[[378,679],[517,671],[647,720],[662,805],[569,846],[493,887],[397,904],[325,860],[300,771],[329,707]]},
+    {"id":"coil-middle-crossing","joint":"seg4","layer":"near","polygonPx":[[550,553],[662,555],[743,586],[851,621],[945,661],[1030,694],[1077,756],[1011,810],[918,795],[794,767],[648,718],[568,665]]},
+    {"id":"coil-crest","joint":"seg3","layer":"near","polygonPx":[[564,464],[648,432],[744,446],[797,489],[779,576],[700,630],[583,653],[532,597],[527,529]]},
+    {"id":"neck-upper-curve","joint":"seg0","layer":"near","polygonPx":[[990,325],[1041,349],[1021,396],[1017,433],[1043,463],[1073,479],[1070,530],[985,535],[921,502],[881,461],[873,414],[893,376],[934,344]]},
+    {"id":"neck-lower-curve","joint":"seg1","layer":"far","polygonPx":[[989,476],[1070,477],[1132,506],[1176,552],[1205,617],[1198,683],[1162,738],[1085,776],[990,710],[1047,666],[1090,630],[1088,589],[1034,552],[986,526]]},
+    {"id":"coil-rear-neck-link","joint":"seg2","layer":"far","polygonPx":[[738,472],[807,497],[929,575],[1010,598],[1083,600],[1099,704],[1033,725],[925,681],[824,658],[751,570]]},
+    {"id":"coil-rear-left","joint":"seg8","layer":"far","polygonPx":[[155,645],[290,573],[412,543],[532,558],[573,609],[550,682],[454,699],[310,726],[221,779],[148,754],[111,709]]},
+    {"id":"body","joint":"root","layer":"near","polygonPx":[[0,0],[1,0],[0,1]]}
+  ],
+  "coverage": {
+    "declarations":"One head, one jaw and one continuous limbless body ending in one tapering tail. The ten segment landmarks follow the visible neck and coil route: upper neck curl, descending right neck, rear connection, upper central crest, foreground diagonal crossing, right turn, front coil, left turn, rear-left coil and terminal tail. Overlap masks preserve the visible foremost surface by polygon priority. No segment chain or appendage is declared hidden or absent, and folded-leg semantics do not apply to the coiled trunk.",
+    "visualAcceptance":"candidate for Nick; first acceptable paint",
+    "landmarkMethod":"Manual observation of this 1254-square painting. The continuation through partial coil occlusion is an authored anatomical correspondence, not recovered hidden paint. Every supplied joint is placed on a visible surface. The tongue remains jaw-attached because the current serpent contract has no independent tongue joint."
+  }
+}

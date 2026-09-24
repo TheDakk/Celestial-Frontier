@@ -1,0 +1,989 @@
+{
+  "output": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis03/report.json",
+  "findings": [
+    {
+      "action": "hit",
+      "reproduced": true,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "foldParts": {
+        "leg3-far": 1
+      },
+      "foldBounds": [
+        822,
+        597,
+        841,
+        607
+      ],
+      "drifts": []
+    },
+    {
+      "action": "dodge",
+      "reproduced": true,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "foldParts": {
+        "leg3-far": 1
+      },
+      "foldBounds": [
+        822,
+        597,
+        841,
+        607
+      ],
+      "drifts": []
+    },
+    {
+      "action": "tame",
+      "reproduced": true,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 1",
+      "foldParts": {
+        "leg0-far": 1
+      },
+      "foldBounds": [
+        998,
+        617,
+        1018,
+        627
+      ],
+      "drifts": []
+    }
+  ]
+}
+{
+  "targetScan": [
+    {
+      "action": "hit",
+      "attempted": 121,
+      "targets": 120,
+      "invertedSamples": 47,
+      "errors": 1
+    },
+    {
+      "action": "dodge",
+      "attempted": 121,
+      "targets": 110,
+      "invertedSamples": 47,
+      "errors": 11
+    },
+    {
+      "action": "tame",
+      "attempted": 121,
+      "targets": 121,
+      "invertedSamples": 13,
+      "errors": 0
+    }
+  ],
+  "union": [
+    {
+      "triangle": 107,
+      "parts": [
+        "leg1-near"
+      ],
+      "vertices": [
+        {
+          "index": 80,
+          "restPx": [
+            1008,
+            753.5
+          ],
+          "weights": [
+            [
+              "leg1NearKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 76,
+          "restPx": [
+            1018,
+            744
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 81,
+          "restPx": [
+            1018,
+            763
+          ],
+          "weights": [
+            [
+              "leg1NearKnee",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 5
+    },
+    {
+      "triangle": 273,
+      "parts": [
+        "leg3-near"
+      ],
+      "vertices": [
+        {
+          "index": 192,
+          "restPx": [
+            890,
+            753.5
+          ],
+          "weights": [
+            [
+              "leg3NearKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 185,
+          "restPx": [
+            880,
+            744
+          ],
+          "weights": [
+            [
+              "leg3NearKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 123,
+          "restPx": [
+            900,
+            744
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 28
+    },
+    {
+      "triangle": 303,
+      "parts": [
+        "leg3-near"
+      ],
+      "vertices": [
+        {
+          "index": 122,
+          "restPx": [
+            890,
+            734
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 123,
+          "restPx": [
+            900,
+            744
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 185,
+          "restPx": [
+            880,
+            744
+          ],
+          "weights": [
+            [
+              "leg3NearKnee",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 19
+    },
+    {
+      "triangle": 304,
+      "parts": [
+        "leg3-near"
+      ],
+      "vertices": [
+        {
+          "index": 122,
+          "restPx": [
+            890,
+            734
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 185,
+          "restPx": [
+            880,
+            744
+          ],
+          "weights": [
+            [
+              "leg3NearKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 121,
+          "restPx": [
+            880,
+            724
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 19
+    },
+    {
+      "triangle": 414,
+      "parts": [
+        "leg5-near"
+      ],
+      "vertices": [
+        {
+          "index": 286,
+          "restPx": [
+            773,
+            734
+          ],
+          "weights": [
+            [
+              "leg5NearKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 283,
+          "restPx": [
+            783,
+            724
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 287,
+          "restPx": [
+            783,
+            744
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 26
+    },
+    {
+      "triangle": 423,
+      "parts": [
+        "leg5-near"
+      ],
+      "vertices": [
+        {
+          "index": 296,
+          "restPx": [
+            773,
+            753.5
+          ],
+          "weights": [
+            [
+              "leg5NearKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 285,
+          "restPx": [
+            763,
+            744
+          ],
+          "weights": [
+            [
+              "leg5NearKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 287,
+          "restPx": [
+            783,
+            744
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 33
+    },
+    {
+      "triangle": 496,
+      "parts": [
+        "leg6-near"
+      ],
+      "vertices": [
+        {
+          "index": 341,
+          "restPx": [
+            695,
+            734
+          ],
+          "weights": [
+            [
+              "leg6NearKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 337,
+          "restPx": [
+            705,
+            724
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 342,
+          "restPx": [
+            705,
+            744
+          ],
+          "weights": [
+            [
+              "leg6NearKnee",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 3
+    },
+    {
+      "triangle": 1086,
+      "parts": [
+        "leg13-near"
+      ],
+      "vertices": [
+        {
+          "index": 731,
+          "restPx": [
+            263,
+            734
+          ],
+          "weights": [
+            [
+              "leg13NearKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 727,
+          "restPx": [
+            273,
+            724
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 732,
+          "restPx": [
+            273,
+            744
+          ],
+          "weights": [
+            [
+              "leg13NearKnee",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 21
+    },
+    {
+      "triangle": 1160,
+      "parts": [
+        "leg0-far"
+      ],
+      "vertices": [
+        {
+          "index": 778,
+          "restPx": [
+            1008,
+            617
+          ],
+          "weights": [
+            [
+              "leg0FarKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 779,
+          "restPx": [
+            1018,
+            627
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 780,
+          "restPx": [
+            998,
+            627
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 55
+    },
+    {
+      "triangle": 1161,
+      "parts": [
+        "leg0-far"
+      ],
+      "vertices": [
+        {
+          "index": 778,
+          "restPx": [
+            1008,
+            617
+          ],
+          "weights": [
+            [
+              "leg0FarKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 780,
+          "restPx": [
+            998,
+            627
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 781,
+          "restPx": [
+            998,
+            622
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 42
+    },
+    {
+      "triangle": 2123,
+      "parts": [
+        "leg3-far"
+      ],
+      "vertices": [
+        {
+          "index": 1327,
+          "restPx": [
+            831.5,
+            597
+          ],
+          "weights": [
+            [
+              "leg3FarKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1328,
+          "restPx": [
+            841,
+            607
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1322,
+          "restPx": [
+            822,
+            607
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 13
+    },
+    {
+      "triangle": 2181,
+      "parts": [
+        "leg4-far"
+      ],
+      "vertices": [
+        {
+          "index": 1372,
+          "restPx": [
+            773,
+            597
+          ],
+          "weights": [
+            [
+              "leg4FarKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1373,
+          "restPx": [
+            783,
+            607
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1370,
+          "restPx": [
+            763,
+            607
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 38
+    },
+    {
+      "triangle": 2182,
+      "parts": [
+        "leg4-far"
+      ],
+      "vertices": [
+        {
+          "index": 1372,
+          "restPx": [
+            773,
+            597
+          ],
+          "weights": [
+            [
+              "leg4FarKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1370,
+          "restPx": [
+            763,
+            607
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1365,
+          "restPx": [
+            763,
+            587
+          ],
+          "weights": [
+            [
+              "leg4FarKnee",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 35
+    },
+    {
+      "triangle": 2244,
+      "parts": [
+        "leg5-far"
+      ],
+      "vertices": [
+        {
+          "index": 1419,
+          "restPx": [
+            714.5,
+            597
+          ],
+          "weights": [
+            [
+              "leg5FarKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1420,
+          "restPx": [
+            724,
+            607
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1406,
+          "restPx": [
+            705,
+            607
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 7
+    },
+    {
+      "triangle": 2245,
+      "parts": [
+        "leg5-far"
+      ],
+      "vertices": [
+        {
+          "index": 1419,
+          "restPx": [
+            714.5,
+            597
+          ],
+          "weights": [
+            [
+              "leg5FarKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1406,
+          "restPx": [
+            705,
+            607
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1403,
+          "restPx": [
+            705,
+            587
+          ],
+          "weights": [
+            [
+              "leg5FarKnee",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 6
+    },
+    {
+      "triangle": 2304,
+      "parts": [
+        "leg6-far"
+      ],
+      "vertices": [
+        {
+          "index": 1453,
+          "restPx": [
+            656,
+            597
+          ],
+          "weights": [
+            [
+              "leg6FarKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1454,
+          "restPx": [
+            666,
+            607
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1451,
+          "restPx": [
+            646,
+            607
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 11
+    },
+    {
+      "triangle": 2305,
+      "parts": [
+        "leg6-far"
+      ],
+      "vertices": [
+        {
+          "index": 1453,
+          "restPx": [
+            656,
+            597
+          ],
+          "weights": [
+            [
+              "leg6FarKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1451,
+          "restPx": [
+            646,
+            607
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1442,
+          "restPx": [
+            646,
+            587
+          ],
+          "weights": [
+            [
+              "leg6FarKnee",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 13
+    },
+    {
+      "triangle": 2364,
+      "parts": [
+        "leg7-far"
+      ],
+      "vertices": [
+        {
+          "index": 1491,
+          "restPx": [
+            597,
+            597
+          ],
+          "weights": [
+            [
+              "leg7FarKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1486,
+          "restPx": [
+            587,
+            607
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1475,
+          "restPx": [
+            587,
+            587
+          ],
+          "weights": [
+            [
+              "leg7FarKnee",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 5
+    },
+    {
+      "triangle": 2971,
+      "parts": [
+        "leg10-far"
+      ],
+      "vertices": [
+        {
+          "index": 1856,
+          "restPx": [
+            400.5,
+            617
+          ],
+          "weights": [
+            [
+              "leg10FarKnee",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1857,
+          "restPx": [
+            410,
+            627
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        },
+        {
+          "index": 1831,
+          "restPx": [
+            391,
+            627
+          ],
+          "weights": [
+            [
+              "root",
+              1
+            ]
+          ]
+        }
+      ],
+      "events": 45
+    }
+  ]
+}

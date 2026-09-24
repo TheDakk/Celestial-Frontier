@@ -1,0 +1,44 @@
+{
+  "command": [
+    "node",
+    "--test",
+    "port/v2/tools/battle2-proof/positive-alpha-box.test.mjs",
+    "audits/ARCHETYPE_FINISH_20260923/12-myriapod/native-alpha-real-01.test.mjs"
+  ],
+  "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+  "exitCode": 1,
+  "elapsedSeconds": 0.200499875,
+  "scope": "Pure positive-alpha sizing helper controls and retained keyed-image geometry only; no browser/static/S2/typecheck or other test owners.",
+  "sources": [
+    {
+      "file": "port/v2/tools/battle2-proof/native-entry.mjs",
+      "sha256": "4674ba473bc325cc2d2870a5fd0b6653f52e4152354f917d7ad6c1b49543af62",
+      "afterSha256": "4674ba473bc325cc2d2870a5fd0b6653f52e4152354f917d7ad6c1b49543af62",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/battle2-proof/positive-alpha-box.mjs",
+      "sha256": "e5c1d074f7d4abf35abbb2f993ef210937e66ba4edd9bd516faca20500e12b01",
+      "afterSha256": "e5c1d074f7d4abf35abbb2f993ef210937e66ba4edd9bd516faca20500e12b01",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/battle2-proof/positive-alpha-box.test.mjs",
+      "sha256": "11bef51eef07d679f661e8028db7bf561104d8b321bbab3797bbf6b97a5822dd",
+      "afterSha256": "11bef51eef07d679f661e8028db7bf561104d8b321bbab3797bbf6b97a5822dd",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/native-alpha-real-01.test.mjs",
+      "sha256": "c98f381abf64234145ed313e40ae3a2b92a58563ecca2fd4d2a07f715b51db47",
+      "afterSha256": "c98f381abf64234145ed313e40ae3a2b92a58563ecca2fd4d2a07f715b51db47",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/parts/keyed.png",
+      "sha256": "2e5b90fe110deefac59fa32e471a540b9e35e3d98d2a687be548ba13ec44fdd3",
+      "afterSha256": "2e5b90fe110deefac59fa32e471a540b9e35e3d98d2a687be548ba13ec44fdd3",
+      "unchanged": true
+    }
+  ]
+}

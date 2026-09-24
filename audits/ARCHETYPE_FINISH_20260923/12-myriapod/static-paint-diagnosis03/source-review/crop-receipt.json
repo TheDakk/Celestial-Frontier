@@ -1,0 +1,32 @@
+{
+  "schema": "cf.read-only-source-crops/v1",
+  "source": "../../candidate-08/master.png",
+  "sourceSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+  "transformation": "Direct RGBA crops only, no source editing/alpha threshold/overlay/rescaling",
+  "crops": [
+    {
+      "file": "far-row.png",
+      "x": 190,
+      "y": 558,
+      "width": 900,
+      "height": 109,
+      "sha256": "faa545acfdfe58bc211a5d3985ae738a06cc3f36b0117e037d5a0681526d2269"
+    },
+    {
+      "file": "near-front.png",
+      "x": 640,
+      "y": 680,
+      "width": 440,
+      "height": 115,
+      "sha256": "80905dd90d2190dbefb145c106b7267ddc17207eccfda4265b49f15465a85d85"
+    },
+    {
+      "file": "near13.png",
+      "x": 208,
+      "y": 670,
+      "width": 107,
+      "height": 125,
+      "sha256": "d8ddbb64b1148758930ea0b78c7296860576406383eb574fae6974a346696a89"
+    }
+  ]
+}

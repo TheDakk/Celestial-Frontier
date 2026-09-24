@@ -99,6 +99,30 @@ identify the host OS, and match exactly one ownership row above.
 5. The preflight and final handoff record the verified row verbatim. “Correct
    repository” without the app/OS-qualified folder and branch is insufficient.
 
+## Commit signing
+
+Nick’s macOS setup and rules, verified 2026-09-22, apply to both agents on this Mac:
+`~/.gitconfig` sets `gpg.format=ssh`, `commit.gpgsign=true`, and
+`gpg.ssh.program=/Users/nick/.local/bin/git-ssh-sign`. The wrapper sets
+`SSH_AUTH_SOCK` to
+`~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock` and executes
+`/usr/bin/ssh-keygen`. Verify the active configuration with
+`git config --show-origin --get gpg.ssh.program` and a commit’s signature with
+`git log -1 --format='%h %G?'`; `G` means a good signature.
+
+- Never change `gpg.ssh.program` back to 1Password’s `op-ssh-sign`; Nick reports
+  that it fails inside agent sandboxes. Use the configured wrapper.
+- Never commit unsigned: no `--no-gpg-sign` or `-c commit.gpgsign=false`.
+  Do not edit `~/.gitconfig` or `~/.local/bin/git-ssh-sign`.
+- The agent sandbox keeps `.git` read-only. Run `git commit` outside the sandbox
+  with approval. The wrapper reaches the agent socket there, or in a sandbox
+  that explicitly allows that exact socket path. Do not enable sandbox
+  `network_access` for commit signing.
+- If signing fails with “agent refused”, “no private key”, or “Operation not
+  permitted”, retry at most once, then stop. Tell Nick the 1Password approval
+  probably lapsed and ask him to approve the prompt with **“until quit”**.
+  After his approval, retry once; never loop or use an unsigned fallback.
+
 ## GitHub SSH authentication
 
 All four agent worktrees use the SSH origin

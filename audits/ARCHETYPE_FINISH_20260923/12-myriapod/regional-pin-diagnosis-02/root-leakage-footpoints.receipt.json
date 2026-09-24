@@ -1,0 +1,28 @@
+{
+  "schema": "cf.source-owner-diagnostic-visualization/v1",
+  "highlightedPixels": 61886,
+  "rootLabel": 32,
+  "authoredFootMarkers": 28,
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-05/master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+      "afterSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-05/authoring.json",
+      "sha256": "e10be4630709bd13f175ea0089804352f2d9a7a5c29cbba5854c3263c6df35ea",
+      "afterSha256": "e10be4630709bd13f175ea0089804352f2d9a7a5c29cbba5854c3263c6df35ea"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-03/labels.png",
+      "sha256": "401e153293f91bd04484f4203c14bbd4f894ed11bfea50b203141db7f457d0cf",
+      "afterSha256": "401e153293f91bd04484f4203c14bbd4f894ed11bfea50b203141db7f457d0cf"
+    }
+  ],
+  "output": {
+    "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-02/root-leakage-footpoints.png",
+    "sha256": "5c92440e8f839de8a357bb3d3ef88d4d0b26626a7e4e058f395ba6b5c7f090ed"
+  },
+  "displayOnly": "Positive alpha is amplified for ownership visibility; no source alpha threshold, crop, resampling or master/label edit."
+}

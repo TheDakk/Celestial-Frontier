@@ -1,0 +1,24 @@
+{
+  "schema": "cf.review-signing-refusal/v1",
+  "attempts": [
+    {
+      "tool": "be367c",
+      "exitCode": 128,
+      "attempt": "initial"
+    },
+    {
+      "tool": "8c77de",
+      "exitCode": 128,
+      "attempt": "single permitted retry"
+    }
+  ],
+  "error": "Couldn't sign message (signer): agent refused operation?",
+  "terminal": "fatal: failed to write commit object",
+  "command": "git commit -q -m Document sprint art findings and integration prerequisites",
+  "execution": "Outside sandbox with approval; unchanged configured wrapper",
+  "status": "RENEWED_1PASSWORD_APPROVAL_REQUIRED",
+  "newCommitCreated": false,
+  "pushAttempted": false,
+  "publishedSprintHead": "755f52a7d686715657e4ec5924b3e96e5ec8626c",
+  "next": "After Nick renews until-quit SSH approval, one signed retry. Never unsigned or change configuration."
+}

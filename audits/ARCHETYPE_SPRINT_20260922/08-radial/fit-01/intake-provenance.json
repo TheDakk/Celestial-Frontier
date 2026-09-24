@@ -1,0 +1,81 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "6496aee59332b62566574fa0e9707837100623dc",
+  "helperSha256": "ae9cafe006642a2aea96206581abb3c4df2bb94ad9b2ae4259092979ceb992ae",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/08-radial/master.png",
+      "sha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/08-radial/authoring.json",
+      "sha256": "53a578a6ce45a6113560fab4a92ac011906d49824aae714f081b97387968a5c3"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/08-radial/subject-source.json",
+      "sha256": "a6ad4b171fe23f5a8892c303d35bdac2c9f11019fcf4a5ccaacb5bc05daf6d3b"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/08-radial/presence.json",
+      "sha256": "301237f98346c6f5301d071ed5e4eb0990f026f41a334b7e3149d3c3410fa563"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "1768acb6b0da7467eadb5a11b60228543147583b7ee0a83dd02bf3dbda8da88d",
+  "bindingHash": "e3c551fca0181cd500ca15ccebca90f6e6438d0946ddfe022bea0ad40ccc3c46",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "bell",
+    "arm0Seg2",
+    "arm0Seg1",
+    "arm0Seg0",
+    "arm1Seg2",
+    "arm1Seg1",
+    "arm1Seg0",
+    "arm2Seg2",
+    "arm2Seg1",
+    "arm2Seg0",
+    "arm3Seg2",
+    "arm3Seg1",
+    "arm3Seg0",
+    "arm4Seg2",
+    "arm4Seg1",
+    "arm4Seg0"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/08-radial/master.png",
+      "sha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/08-radial/authoring.json",
+      "sha256": "53a578a6ce45a6113560fab4a92ac011906d49824aae714f081b97387968a5c3",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/08-radial/subject-source.json",
+      "sha256": "a6ad4b171fe23f5a8892c303d35bdac2c9f11019fcf4a5ccaacb5bc05daf6d3b",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/08-radial/presence.json",
+      "sha256": "301237f98346c6f5301d071ed5e4eb0990f026f41a334b7e3149d3c3410fa563",
+      "unchanged": true
+    }
+  ]
+}

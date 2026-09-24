@@ -1,0 +1,53 @@
+{
+  "scope": "One focused legacy terminal-pad admission suite; explicit changed owner and retained fixture/source hashes. No broad profile or existing pure/contact test rerun.",
+  "command": [
+    "node",
+    "--test",
+    "tools/creature-animation/family-record-terminal-legacy.test.mjs"
+  ],
+  "exitCode": 0,
+  "files": [
+    {
+      "file": "port/v2/tools/creature-animation/family-record-terminal-legacy.test.mjs",
+      "sha256": "41941175bcc6511217493f15080815017e592346a89a358db09f8d4d1964c54d",
+      "afterSha256": "41941175bcc6511217493f15080815017e592346a89a358db09f8d4d1964c54d",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-record.mjs",
+      "sha256": "2ebd7130412606fc400c51ef2aa785ab1f7194d218d44604bdd46e20b9152da6",
+      "afterSha256": "2ebd7130412606fc400c51ef2aa785ab1f7194d218d44604bdd46e20b9152da6",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/quadruped-template.mjs",
+      "sha256": "86b4419ab0ef904f87e08942a1fdaf1f68a608c3cac40747b3095f8fb0aae5dc",
+      "afterSha256": "86b4419ab0ef904f87e08942a1fdaf1f68a608c3cac40747b3095f8fb0aae5dc",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "9ffb08d0aae0f5385622d078217cd43b3d7a10c4fce0727c80d933c61aa5d854",
+      "afterSha256": "9ffb08d0aae0f5385622d078217cd43b3d7a10c4fce0727c80d933c61aa5d854",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/terminal-contact-pads.mjs",
+      "sha256": "96dd7cda3a832670a3133490d41a5aabc314aef26c903056027dbcd81bec2505",
+      "afterSha256": "96dd7cda3a832670a3133490d41a5aabc314aef26c903056027dbcd81bec2505",
+      "unchanged": true
+    },
+    {
+      "file": "audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8",
+      "afterSha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+      "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+      "afterSha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b",
+      "unchanged": true
+    }
+  ]
+}

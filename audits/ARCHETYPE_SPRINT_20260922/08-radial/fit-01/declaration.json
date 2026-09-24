@@ -1,0 +1,95 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "1768acb6b0da7467eadb5a11b60228543147583b7ee0a83dd02bf3dbda8da88d",
+  "cutoutSha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687",
+  "labelsFile": "labels.png",
+  "labelsSha256": "b6dd6e51ba5bcb6640b5f17a1d1d83ff9ad46902ed15d7732f888008323bbad8",
+  "parts": [
+    {
+      "id": "central-disc-upper",
+      "joint": "bell",
+      "layer": "near"
+    },
+    {
+      "id": "arm0-tip",
+      "joint": "arm0Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm0-middle",
+      "joint": "arm0Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm0-base",
+      "joint": "arm0Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm1-tip",
+      "joint": "arm1Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm1-middle",
+      "joint": "arm1Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm1-base",
+      "joint": "arm1Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm2-tip",
+      "joint": "arm2Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm2-middle",
+      "joint": "arm2Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm2-base",
+      "joint": "arm2Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm3-tip",
+      "joint": "arm3Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm3-middle",
+      "joint": "arm3Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm3-base",
+      "joint": "arm3Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm4-tip",
+      "joint": "arm4Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm4-middle",
+      "joint": "arm4Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm4-base",
+      "joint": "arm4Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "3e03bd61784d7a2e9c75163163fd90d8d39a94593491d3bd278136690102cd54"
+}

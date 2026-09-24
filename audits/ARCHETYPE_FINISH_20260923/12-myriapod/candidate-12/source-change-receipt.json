@@ -1,0 +1,253 @@
+{
+  "schema": "cf.centipede-source-seam-amendment/v1",
+  "candidate": "candidate-12",
+  "sourceCandidate": "candidate-11",
+  "samePaint": true,
+  "sourceAuthoringSha256": "f9340f385333ab4a6f8ca53b277a7fdf3470b53f3a9b37457c1c1d6f42720d93",
+  "authoringSha256": "227856f7ad2e1c7cf2a2f3c6a934b0a8685e87e97c24a53acb51602d84969485",
+  "copied": {
+    "master.png": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+    "prompt.txt": "006bf5fce063cad08371df26b4e44975049cd480dd305e248eec1f7b64c83019",
+    "request.json": "eee818a3eedb39e1213426c05e8ea8ea9dda1576f22c12dfbab5ba6e93c5b9de",
+    "subject-source.json": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67",
+    "presence.json": "cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c",
+    "generation-receipt.json": "a95cf62f9b8fd9770549804a6f4e2e6ec0a337b522546a2785d1f383c2fd801f",
+    "upper-shaft-proposal.json": "c520c37a4bdf426268c74c0a6cabd8831ce1f1d03c2fc92b75c76679eeb131a0"
+  },
+  "change": {
+    "partId": "leg3-far",
+    "beforePolygonPx": [
+      [
+        832,
+        632
+      ],
+      [
+        870,
+        632
+      ],
+      [
+        865,
+        596
+      ],
+      [
+        900,
+        540
+      ],
+      [
+        900,
+        507
+      ],
+      [
+        839,
+        507
+      ],
+      [
+        839,
+        534
+      ],
+      [
+        805,
+        590
+      ]
+    ],
+    "afterPolygonPx": [
+      [
+        851,
+        630
+      ],
+      [
+        858,
+        624
+      ],
+      [
+        866,
+        620
+      ],
+      [
+        865,
+        596
+      ],
+      [
+        900,
+        540
+      ],
+      [
+        900,
+        507
+      ],
+      [
+        839,
+        507
+      ],
+      [
+        839,
+        534
+      ],
+      [
+        805,
+        590
+      ],
+      [
+        819,
+        612
+      ],
+      [
+        824,
+        614
+      ],
+      [
+        832,
+        616
+      ],
+      [
+        837,
+        619
+      ],
+      [
+        843,
+        624
+      ],
+      [
+        849,
+        629
+      ]
+    ],
+    "sourceBasis": "Manually observed gold upper shaft and dark socket between brown dorsal plates; previous horizontal base includes visible brown plate. No motion target or numerical slack selected this seam."
+  },
+  "ownershipDiagnostic": {
+    "scope": "Read-only source alpha and exact priority-polygon ownership comparison; no intake, field construction, compiler, pose or test executed",
+    "reference": "fit-09/labels.png",
+    "referenceSha256": "4c133c6cab717ae73a07a7859b5636e617c939dc8c1e449187513877dd0395a1",
+    "priorLabelMismatches": 0,
+    "changedPixels": 442,
+    "transfers": {
+      "leg3-far -> body": 442
+    },
+    "alphaBands": {
+      "alpha1to7": 28,
+      "alpha8to127": 18,
+      "alpha128to255": 396
+    },
+    "rgbaChangedChannels": 0,
+    "changedBounds": {
+      "minX": 819,
+      "minY": 609,
+      "maxX": 869,
+      "maxY": 631
+    },
+    "samples": [
+      {
+        "x": 822,
+        "y": 607,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ],
+        "before": "leg3-far",
+        "after": "leg3-far"
+      },
+      {
+        "x": 822,
+        "y": 612,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ],
+        "before": "leg3-far",
+        "after": "leg3-far"
+      },
+      {
+        "x": 826,
+        "y": 617,
+        "rgba": [
+          122,
+          55,
+          27,
+          236
+        ],
+        "before": "leg3-far",
+        "after": "body"
+      },
+      {
+        "x": 831,
+        "y": 622,
+        "rgba": [
+          96,
+          42,
+          31,
+          252
+        ],
+        "before": "leg3-far",
+        "after": "body"
+      },
+      {
+        "x": 831,
+        "y": 627,
+        "rgba": [
+          108,
+          77,
+          69,
+          253
+        ],
+        "before": "leg3-far",
+        "after": "body"
+      },
+      {
+        "x": 840,
+        "y": 617,
+        "rgba": [
+          165,
+          84,
+          25,
+          251
+        ],
+        "before": "leg3-far",
+        "after": "leg3-far"
+      },
+      {
+        "x": 847,
+        "y": 629,
+        "rgba": [
+          154,
+          69,
+          39,
+          253
+        ],
+        "before": "leg3-far",
+        "after": "body"
+      },
+      {
+        "x": 851,
+        "y": 629,
+        "rgba": [
+          197,
+          114,
+          71,
+          253
+        ],
+        "before": "leg3-far",
+        "after": "leg3-far"
+      }
+    ],
+    "changedPixelsFile": "ownership-changes.json"
+  },
+  "preserved": {
+    "otherMasks": 31,
+    "landmarks": 63,
+    "fixedSockets": 31,
+    "regions": 32,
+    "refinements": 16,
+    "sourceRGBA": true,
+    "partIdentityAndPriority": true,
+    "materials": true,
+    "contacts": true,
+    "inheritedPinPolicy": true,
+    "numericalLimits": true
+  },
+  "uncertainty": "The dark socket blends into plate shading over a few source pixels. Red/generated fringe touching both surfaces cannot be given a biological owner from alpha or proximity alone. This manual seam is a source-fit hypothesis, not exact segmentation or motion acceptance.",
+  "qualification": "Authoring and source ownership read only. No intake, field compilation, diffusion, solver, static/native qualification or tests."
+}

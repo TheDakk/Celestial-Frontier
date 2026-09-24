@@ -1,0 +1,19 @@
+{
+  "scope": "Read-only final repair publication preflight; push has not run",
+  "toolReceipt": "48c7c0",
+  "root": "/Users/nick/Projects/celestial-frontier-openai-mac",
+  "agent": "OpenAI/Codex",
+  "host": "macOS",
+  "branch": "openai/mac",
+  "upstream": "origin/openai/mac",
+  "origin": "git@github.com:TheDakk/Celestial-Frontier.git",
+  "lsRemoteExit": 0,
+  "remoteBranchHead": "61c37f3a846429bcbc0167ea92de12623593e750",
+  "repositoryVisibility": "PUBLIC",
+  "budgetMode": "UNFROZEN",
+  "privateFallbackCap": 3000,
+  "fetchSyncPerformed": false,
+  "userAuthority": "Nick: You were supposed to continue until complete and push at the end. Standing final normal branch push applied to the completed repair continuation.",
+  "hostedAttemptAuthorized": false,
+  "intendedWrite": "One normal HEAD:refs/heads/openai/mac push after all item packets are signed; no force, PR, label, workflow, merge, release or deploy."
+}

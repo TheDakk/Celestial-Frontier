@@ -1,0 +1,4691 @@
+{
+  "scope": "Retained fit09 two-level interpolation and exact split conservative support membership; no pose, contact, solve, intake, or acceptance rerun.",
+  "conventions": {
+    "fieldCoordinates": "source pixel coordinates",
+    "pixelDistance": "Euclidean distance to the center [pixelX+0.5,pixelY+0.5]",
+    "positiveCoefficient": "strict >0; no epsilon or alpha threshold used",
+    "zeroCoefficient": "strict ===0"
+  },
+  "bodyLabel": 32,
+  "joinName": "body--leg3-far",
+  "maxReconstructionErrorPx": 1.6077746776921858e-13,
+  "controls": {
+    "zeroWeightConservativeMemberDetected": true,
+    "positiveWeightMutantDetected": true
+  },
+  "rows": [
+    {
+      "index": 1573,
+      "preIndex": 2174,
+      "sourcePx": [
+        822,
+        607
+      ],
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "sourcePixel": {
+        "pixel": [
+          822,
+          607
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "sampleCount": 10,
+      "bothCoefficientZero": 10,
+      "bothCoefficientPositive": 0,
+      "eitherCoefficientPositive": 0,
+      "maxCoefficient": 0,
+      "minSampleDistancePx": 5,
+      "maxSampleDistancePx": 10,
+      "bodyPixels": [
+        {
+          "pixel": [
+            818,
+            611
+          ],
+          "label": 32,
+          "rgba": [
+            255,
+            0,
+            0,
+            1
+          ],
+          "distanceToPixelCenterPx": 5.70087712549569
+        },
+        {
+          "pixel": [
+            818,
+            612
+          ],
+          "label": 32,
+          "rgba": [
+            255,
+            0,
+            0,
+            1
+          ],
+          "distanceToPixelCenterPx": 6.519202405202649
+        },
+        {
+          "pixel": [
+            819,
+            613
+          ],
+          "label": 32,
+          "rgba": [
+            85,
+            85,
+            85,
+            3
+          ],
+          "distanceToPixelCenterPx": 6.96419413859206
+        },
+        {
+          "pixel": [
+            820,
+            614
+          ],
+          "label": 32,
+          "rgba": [
+            255,
+            127,
+            0,
+            2
+          ],
+          "distanceToPixelCenterPx": 7.648529270389178
+        },
+        {
+          "pixel": [
+            820,
+            615
+          ],
+          "label": 32,
+          "rgba": [
+            144,
+            76,
+            49,
+            83
+          ],
+          "distanceToPixelCenterPx": 8.631338250816034
+        },
+        {
+          "pixel": [
+            821,
+            616
+          ],
+          "label": 32,
+          "rgba": [
+            112,
+            52,
+            28,
+            224
+          ],
+          "distanceToPixelCenterPx": 9.513148795220223
+        },
+        {
+          "pixel": [
+            822,
+            617
+          ],
+          "label": 32,
+          "rgba": [
+            123,
+            57,
+            35,
+            246
+          ],
+          "distanceToPixelCenterPx": 10.511898020814318
+        }
+      ],
+      "samples": [
+        {
+          "sampleIndex": 3,
+          "source": [
+            819,
+            611
+          ],
+          "distancePx": 5,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 340,
+                "outerCorner": 0,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1574,
+                  1573
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 86,
+                "outerCorner": 0,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1574,
+                  1573
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            819,
+            611
+          ],
+          "descendantReconstructed": [
+            819,
+            611
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                818,
+                611
+              ],
+              "label": 32,
+              "rgba": [
+                255,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 4,
+          "source": [
+            819,
+            612
+          ],
+          "distancePx": 5.8309518948453,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 340,
+                "outerCorner": 0,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1575,
+                  1574,
+                  1573
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 86,
+                "outerCorner": 0,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1575,
+                  1574,
+                  1573
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            819,
+            612
+          ],
+          "descendantReconstructed": [
+            819,
+            612
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                818,
+                611
+              ],
+              "label": 32,
+              "rgba": [
+                255,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "pixel": [
+                818,
+                612
+              ],
+              "label": 32,
+              "rgba": [
+                255,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 6,
+          "source": [
+            819,
+            613
+          ],
+          "distancePx": 6.708203932499369,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 342,
+                "outerCorner": 2,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 87,
+                "outerCorner": 2,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            818.9999999999999,
+            613
+          ],
+          "descendantReconstructed": [
+            818.9999999999999,
+            613
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                818,
+                612
+              ],
+              "label": 32,
+              "rgba": [
+                255,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "pixel": [
+                819,
+                613
+              ],
+              "label": 32,
+              "rgba": [
+                85,
+                85,
+                85,
+                3
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 7,
+          "source": [
+            820,
+            613
+          ],
+          "distancePx": 6.324555320336759,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 342,
+                "outerCorner": 2,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 87,
+                "outerCorner": 2,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            820,
+            613
+          ],
+          "descendantReconstructed": [
+            820,
+            613
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                819,
+                613
+              ],
+              "label": 32,
+              "rgba": [
+                85,
+                85,
+                85,
+                3
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 9,
+          "source": [
+            820,
+            614
+          ],
+          "distancePx": 7.280109889280519,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 342,
+                "outerCorner": 2,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 87,
+                "outerCorner": 2,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            820,
+            614
+          ],
+          "descendantReconstructed": [
+            820,
+            614
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                819,
+                613
+              ],
+              "label": 32,
+              "rgba": [
+                85,
+                85,
+                85,
+                3
+              ]
+            },
+            {
+              "pixel": [
+                820,
+                614
+              ],
+              "label": 32,
+              "rgba": [
+                255,
+                127,
+                0,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 10,
+          "source": [
+            821,
+            614
+          ],
+          "distancePx": 7.0710678118654755,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            820.9999999999999,
+            614
+          ],
+          "descendantReconstructed": [
+            820.9999999999999,
+            614
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                820,
+                614
+              ],
+              "label": 32,
+              "rgba": [
+                255,
+                127,
+                0,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 14,
+          "source": [
+            821,
+            615
+          ],
+          "distancePx": 8.06225774829855,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            821,
+            615
+          ],
+          "descendantReconstructed": [
+            821,
+            615
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                820,
+                615
+              ],
+              "label": 32,
+              "rgba": [
+                144,
+                76,
+                49,
+                83
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 15,
+          "source": [
+            821,
+            616
+          ],
+          "distancePx": 9.055385138137417,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            821,
+            616
+          ],
+          "descendantReconstructed": [
+            821,
+            616
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                820,
+                615
+              ],
+              "label": 32,
+              "rgba": [
+                144,
+                76,
+                49,
+                83
+              ]
+            },
+            {
+              "pixel": [
+                821,
+                616
+              ],
+              "label": 32,
+              "rgba": [
+                112,
+                52,
+                28,
+                224
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 16,
+          "source": [
+            822,
+            616
+          ],
+          "distancePx": 9,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            822,
+            616
+          ],
+          "descendantReconstructed": [
+            822,
+            616
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                821,
+                616
+              ],
+              "label": 32,
+              "rgba": [
+                112,
+                52,
+                28,
+                224
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 18,
+          "source": [
+            822,
+            617
+          ],
+          "distancePx": 10,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            822,
+            617
+          ],
+          "descendantReconstructed": [
+            822,
+            617
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                821,
+                616
+              ],
+              "label": 32,
+              "rgba": [
+                112,
+                52,
+                28,
+                224
+              ]
+            },
+            {
+              "pixel": [
+                822,
+                617
+              ],
+              "label": 32,
+              "rgba": [
+                123,
+                57,
+                35,
+                246
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 1576,
+      "preIndex": 2216,
+      "sourcePx": [
+        822,
+        612
+      ],
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "sourcePixel": {
+        "pixel": [
+          822,
+          612
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "sampleCount": 17,
+      "bothCoefficientZero": 9,
+      "bothCoefficientPositive": 8,
+      "eitherCoefficientPositive": 8,
+      "maxCoefficient": 0.4,
+      "minSampleDistancePx": 2.23606797749979,
+      "maxSampleDistancePx": 7.762087348130012,
+      "bodyPixels": [
+        {
+          "pixel": [
+            818,
+            611
+          ],
+          "label": 32,
+          "rgba": [
+            255,
+            0,
+            0,
+            1
+          ],
+          "distanceToPixelCenterPx": 3.5355339059327378
+        },
+        {
+          "pixel": [
+            818,
+            612
+          ],
+          "label": 32,
+          "rgba": [
+            255,
+            0,
+            0,
+            1
+          ],
+          "distanceToPixelCenterPx": 3.5355339059327378
+        },
+        {
+          "pixel": [
+            819,
+            613
+          ],
+          "label": 32,
+          "rgba": [
+            85,
+            85,
+            85,
+            3
+          ],
+          "distanceToPixelCenterPx": 2.91547594742265
+        },
+        {
+          "pixel": [
+            820,
+            614
+          ],
+          "label": 32,
+          "rgba": [
+            255,
+            127,
+            0,
+            2
+          ],
+          "distanceToPixelCenterPx": 2.91547594742265
+        },
+        {
+          "pixel": [
+            820,
+            615
+          ],
+          "label": 32,
+          "rgba": [
+            144,
+            76,
+            49,
+            83
+          ],
+          "distanceToPixelCenterPx": 3.8078865529319543
+        },
+        {
+          "pixel": [
+            821,
+            616
+          ],
+          "label": 32,
+          "rgba": [
+            112,
+            52,
+            28,
+            224
+          ],
+          "distanceToPixelCenterPx": 4.527692569068709
+        },
+        {
+          "pixel": [
+            822,
+            617
+          ],
+          "label": 32,
+          "rgba": [
+            123,
+            57,
+            35,
+            246
+          ],
+          "distanceToPixelCenterPx": 5.522680508593631
+        },
+        {
+          "pixel": [
+            822,
+            618
+          ],
+          "label": 32,
+          "rgba": [
+            179,
+            104,
+            76,
+            247
+          ],
+          "distanceToPixelCenterPx": 6.519202405202649
+        },
+        {
+          "pixel": [
+            823,
+            619
+          ],
+          "label": 32,
+          "rgba": [
+            158,
+            87,
+            65,
+            251
+          ],
+          "distanceToPixelCenterPx": 7.648529270389178
+        }
+      ],
+      "samples": [
+        {
+          "sampleIndex": 3,
+          "source": [
+            819,
+            611
+          ],
+          "distancePx": 3.1622776601683795,
+          "ancestor": {
+            "coefficient": 0.2,
+            "terms": [
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.2
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0.2,
+            "terms": [
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.2
+              },
+              {
+                "projectedVertex": 88,
+                "outerCorner": 2,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1576,
+                  1577
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            819,
+            611
+          ],
+          "descendantReconstructed": [
+            819,
+            611
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                818,
+                611
+              ],
+              "label": 32,
+              "rgba": [
+                255,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 4,
+          "source": [
+            819,
+            612
+          ],
+          "distancePx": 3,
+          "ancestor": {
+            "coefficient": 0.4,
+            "terms": [
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.4
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0.4,
+            "terms": [
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.4
+              },
+              {
+                "projectedVertex": 88,
+                "outerCorner": 2,
+                "outerWeight": 0.6,
+                "fieldTriangle": [
+                  1575,
+                  1576,
+                  1577
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            819,
+            612
+          ],
+          "descendantReconstructed": [
+            819,
+            612
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                818,
+                611
+              ],
+              "label": 32,
+              "rgba": [
+                255,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "pixel": [
+                818,
+                612
+              ],
+              "label": 32,
+              "rgba": [
+                255,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 6,
+          "source": [
+            819,
+            613
+          ],
+          "distancePx": 3.1622776601683795,
+          "ancestor": {
+            "coefficient": 0.2,
+            "terms": [
+              {
+                "projectedVertex": 345,
+                "outerCorner": 0,
+                "outerWeight": 0.39999999999999997,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 342,
+                "outerCorner": 2,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.2
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0.2,
+            "terms": [
+              {
+                "projectedVertex": 89,
+                "outerCorner": 0,
+                "outerWeight": 0.39999999999999997,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 88,
+                "outerCorner": 1,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1576,
+                  1577
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 87,
+                "outerCorner": 2,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.2
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            818.9999999999999,
+            613
+          ],
+          "descendantReconstructed": [
+            818.9999999999999,
+            613
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                818,
+                612
+              ],
+              "label": 32,
+              "rgba": [
+                255,
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "pixel": [
+                819,
+                613
+              ],
+              "label": 32,
+              "rgba": [
+                85,
+                85,
+                85,
+                3
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 7,
+          "source": [
+            820,
+            613
+          ],
+          "distancePx": 2.23606797749979,
+          "ancestor": {
+            "coefficient": 0.4,
+            "terms": [
+              {
+                "projectedVertex": 345,
+                "outerCorner": 0,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 342,
+                "outerCorner": 2,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.4
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0.4,
+            "terms": [
+              {
+                "projectedVertex": 89,
+                "outerCorner": 0,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 88,
+                "outerCorner": 1,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1576,
+                  1577
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 87,
+                "outerCorner": 2,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.4
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            820,
+            613
+          ],
+          "descendantReconstructed": [
+            820,
+            613
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                819,
+                613
+              ],
+              "label": 32,
+              "rgba": [
+                85,
+                85,
+                85,
+                3
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 9,
+          "source": [
+            820,
+            614
+          ],
+          "distancePx": 2.8284271247461903,
+          "ancestor": {
+            "coefficient": 0.2,
+            "terms": [
+              {
+                "projectedVertex": 345,
+                "outerCorner": 0,
+                "outerWeight": 0.8,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 342,
+                "outerCorner": 2,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.2
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0.2,
+            "terms": [
+              {
+                "projectedVertex": 89,
+                "outerCorner": 0,
+                "outerWeight": 0.8,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 88,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1575,
+                  1576,
+                  1577
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 87,
+                "outerCorner": 2,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.2
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            820,
+            614
+          ],
+          "descendantReconstructed": [
+            820,
+            614
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                819,
+                613
+              ],
+              "label": 32,
+              "rgba": [
+                85,
+                85,
+                85,
+                3
+              ]
+            },
+            {
+              "pixel": [
+                820,
+                614
+              ],
+              "label": 32,
+              "rgba": [
+                255,
+                127,
+                0,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 10,
+          "source": [
+            821,
+            614
+          ],
+          "distancePx": 2.23606797749979,
+          "ancestor": {
+            "coefficient": 0.4,
+            "terms": [
+              {
+                "projectedVertex": 345,
+                "outerCorner": 0,
+                "outerWeight": 0.39999999999999997,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.4
+              },
+              {
+                "projectedVertex": 346,
+                "outerCorner": 2,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0.4,
+            "terms": [
+              {
+                "projectedVertex": 89,
+                "outerCorner": 0,
+                "outerWeight": 0.39999999999999997,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.4
+              },
+              {
+                "projectedVertex": 90,
+                "outerCorner": 2,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            820.9999999999999,
+            614
+          ],
+          "descendantReconstructed": [
+            820.9999999999999,
+            614
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                820,
+                614
+              ],
+              "label": 32,
+              "rgba": [
+                255,
+                127,
+                0,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 14,
+          "source": [
+            821,
+            615
+          ],
+          "distancePx": 3.1622776601683795,
+          "ancestor": {
+            "coefficient": 0.2,
+            "terms": [
+              {
+                "projectedVertex": 345,
+                "outerCorner": 0,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.2
+              },
+              {
+                "projectedVertex": 346,
+                "outerCorner": 2,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0.2,
+            "terms": [
+              {
+                "projectedVertex": 89,
+                "outerCorner": 0,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.2
+              },
+              {
+                "projectedVertex": 90,
+                "outerCorner": 2,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            821,
+            615
+          ],
+          "descendantReconstructed": [
+            821,
+            615
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                820,
+                615
+              ],
+              "label": 32,
+              "rgba": [
+                144,
+                76,
+                49,
+                83
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 15,
+          "source": [
+            821,
+            616
+          ],
+          "distancePx": 4.123105625617661,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 345,
+                "outerCorner": 0,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0
+              },
+              {
+                "projectedVertex": 346,
+                "outerCorner": 2,
+                "outerWeight": 0.6,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 89,
+                "outerCorner": 0,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0
+              },
+              {
+                "projectedVertex": 90,
+                "outerCorner": 2,
+                "outerWeight": 0.6,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            821,
+            616
+          ],
+          "descendantReconstructed": [
+            821,
+            616
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                820,
+                615
+              ],
+              "label": 32,
+              "rgba": [
+                144,
+                76,
+                49,
+                83
+              ]
+            },
+            {
+              "pixel": [
+                821,
+                616
+              ],
+              "label": 32,
+              "rgba": [
+                112,
+                52,
+                28,
+                224
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 16,
+          "source": [
+            822,
+            616
+          ],
+          "distancePx": 4,
+          "ancestor": {
+            "coefficient": 0.2,
+            "terms": [
+              {
+                "projectedVertex": 345,
+                "outerCorner": 0,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.2
+              },
+              {
+                "projectedVertex": 346,
+                "outerCorner": 2,
+                "outerWeight": 0.8,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0.2,
+            "terms": [
+              {
+                "projectedVertex": 89,
+                "outerCorner": 0,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.2
+              },
+              {
+                "projectedVertex": 90,
+                "outerCorner": 2,
+                "outerWeight": 0.8,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            822,
+            616
+          ],
+          "descendantReconstructed": [
+            822,
+            616
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                821,
+                616
+              ],
+              "label": 32,
+              "rgba": [
+                112,
+                52,
+                28,
+                224
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 18,
+          "source": [
+            822,
+            617
+          ],
+          "distancePx": 5,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 345,
+                "outerCorner": 0,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 342,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0
+              },
+              {
+                "projectedVertex": 346,
+                "outerCorner": 2,
+                "outerWeight": 1,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 89,
+                "outerCorner": 0,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1578,
+                  1577,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 87,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1575,
+                  1573,
+                  1576
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0
+              },
+              {
+                "projectedVertex": 90,
+                "outerCorner": 2,
+                "outerWeight": 1,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            822,
+            617
+          ],
+          "descendantReconstructed": [
+            822,
+            617
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                821,
+                616
+              ],
+              "label": 32,
+              "rgba": [
+                112,
+                52,
+                28,
+                224
+              ]
+            },
+            {
+              "pixel": [
+                822,
+                617
+              ],
+              "label": 32,
+              "rgba": [
+                123,
+                57,
+                35,
+                246
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 19,
+          "source": [
+            823,
+            617
+          ],
+          "distancePx": 5.099019513592785,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 346,
+                "outerCorner": 1,
+                "outerWeight": 0.75,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 120,
+                "outerCorner": 0,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1609,
+                  1576,
+                  1606
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 90,
+                "outerCorner": 2,
+                "outerWeight": 0.75,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            823,
+            617
+          ],
+          "descendantReconstructed": [
+            823,
+            617
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                822,
+                617
+              ],
+              "label": 32,
+              "rgba": [
+                123,
+                57,
+                35,
+                246
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 21,
+          "source": [
+            823,
+            618
+          ],
+          "distancePx": 6.0827625302982185,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 346,
+                "outerCorner": 1,
+                "outerWeight": 0.55,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 90,
+                "outerCorner": 1,
+                "outerWeight": 0.55,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            823,
+            618
+          ],
+          "descendantReconstructed": [
+            823,
+            618
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                822,
+                617
+              ],
+              "label": 32,
+              "rgba": [
+                123,
+                57,
+                35,
+                246
+              ]
+            },
+            {
+              "pixel": [
+                822,
+                618
+              ],
+              "label": 32,
+              "rgba": [
+                179,
+                104,
+                76,
+                247
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 23,
+          "source": [
+            823,
+            618.25
+          ],
+          "distancePx": 6.329494450586082,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 346,
+                "outerCorner": 1,
+                "outerWeight": 0.5,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 90,
+                "outerCorner": 1,
+                "outerWeight": 0.5,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            823,
+            618.25
+          ],
+          "descendantReconstructed": [
+            823,
+            618.25
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                822,
+                618
+              ],
+              "label": 32,
+              "rgba": [
+                179,
+                104,
+                76,
+                247
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 24,
+          "source": [
+            823,
+            619
+          ],
+          "distancePx": 7.0710678118654755,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 346,
+                "outerCorner": 2,
+                "outerWeight": 0.35,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 90,
+                "outerCorner": 2,
+                "outerWeight": 0.35,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            823,
+            619
+          ],
+          "descendantReconstructed": [
+            823,
+            619
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                822,
+                618
+              ],
+              "label": 32,
+              "rgba": [
+                179,
+                104,
+                76,
+                247
+              ]
+            },
+            {
+              "pixel": [
+                823,
+                619
+              ],
+              "label": 32,
+              "rgba": [
+                158,
+                87,
+                65,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 25,
+          "source": [
+            823.6,
+            619
+          ],
+          "distancePx": 7.180529228406502,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 346,
+                "outerCorner": 1,
+                "outerWeight": 0.19999999999999432,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 90,
+                "outerCorner": 1,
+                "outerWeight": 0.19999999999999432,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            823.6,
+            619
+          ],
+          "descendantReconstructed": [
+            823.6,
+            619
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                823,
+                619
+              ],
+              "label": 32,
+              "rgba": [
+                158,
+                87,
+                65,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 26,
+          "source": [
+            824,
+            619
+          ],
+          "distancePx": 7.280109889280519,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 346,
+                "outerCorner": 1,
+                "outerWeight": 0.1,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 90,
+                "outerCorner": 1,
+                "outerWeight": 0.1,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            824.0000000000001,
+            619.0000000000001
+          ],
+          "descendantReconstructed": [
+            824.0000000000001,
+            619.0000000000001
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                823,
+                619
+              ],
+              "label": 32,
+              "rgba": [
+                158,
+                87,
+                65,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 28,
+          "source": [
+            824,
+            619.5
+          ],
+          "distancePx": 7.762087348130012,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 346,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 90,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1578,
+                  1576,
+                  1579
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            824,
+            619.5
+          ],
+          "descendantReconstructed": [
+            824,
+            619.5
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                823,
+                619
+              ],
+              "label": 32,
+              "rgba": [
+                158,
+                87,
+                65,
+                251
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 1610,
+      "preIndex": 2261,
+      "sourcePx": [
+        826,
+        617
+      ],
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "sourcePixel": {
+        "pixel": [
+          826,
+          617
+        ],
+        "label": 18,
+        "rgba": [
+          122,
+          55,
+          27,
+          236
+        ]
+      },
+      "sampleCount": 18,
+      "bothCoefficientZero": 12,
+      "bothCoefficientPositive": 5,
+      "eitherCoefficientPositive": 5,
+      "maxCoefficient": 0.25,
+      "minSampleDistancePx": 2.8284271247461903,
+      "maxSampleDistancePx": 8.06225774829855,
+      "bodyPixels": [
+        {
+          "pixel": [
+            822,
+            617
+          ],
+          "label": 32,
+          "rgba": [
+            123,
+            57,
+            35,
+            246
+          ],
+          "distanceToPixelCenterPx": 3.5355339059327378
+        },
+        {
+          "pixel": [
+            822,
+            618
+          ],
+          "label": 32,
+          "rgba": [
+            179,
+            104,
+            76,
+            247
+          ],
+          "distanceToPixelCenterPx": 3.8078865529319543
+        },
+        {
+          "pixel": [
+            823,
+            619
+          ],
+          "label": 32,
+          "rgba": [
+            158,
+            87,
+            65,
+            251
+          ],
+          "distanceToPixelCenterPx": 3.5355339059327378
+        },
+        {
+          "pixel": [
+            824,
+            620
+          ],
+          "label": 32,
+          "rgba": [
+            120,
+            54,
+            37,
+            251
+          ],
+          "distanceToPixelCenterPx": 3.8078865529319543
+        },
+        {
+          "pixel": [
+            824,
+            621
+          ],
+          "label": 32,
+          "rgba": [
+            92,
+            31,
+            19,
+            251
+          ],
+          "distanceToPixelCenterPx": 4.743416490252569
+        },
+        {
+          "pixel": [
+            825,
+            622
+          ],
+          "label": 32,
+          "rgba": [
+            87,
+            29,
+            18,
+            252
+          ],
+          "distanceToPixelCenterPx": 5.522680508593631
+        },
+        {
+          "pixel": [
+            826,
+            623
+          ],
+          "label": 32,
+          "rgba": [
+            93,
+            38,
+            27,
+            252
+          ],
+          "distanceToPixelCenterPx": 6.519202405202649
+        },
+        {
+          "pixel": [
+            826,
+            624
+          ],
+          "label": 32,
+          "rgba": [
+            108,
+            50,
+            39,
+            252
+          ],
+          "distanceToPixelCenterPx": 7.516648189186455
+        },
+        {
+          "pixel": [
+            827,
+            625
+          ],
+          "label": 32,
+          "rgba": [
+            114,
+            59,
+            46,
+            252
+          ],
+          "distanceToPixelCenterPx": 8.631338250816034
+        }
+      ],
+      "samples": [
+        {
+          "sampleIndex": 19,
+          "source": [
+            823,
+            617
+          ],
+          "distancePx": 3,
+          "ancestor": {
+            "coefficient": 0.25,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 358,
+                "outerCorner": 2,
+                "outerWeight": 0.25,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.25
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0.25,
+            "terms": [
+              {
+                "projectedVertex": 121,
+                "outerCorner": 1,
+                "outerWeight": 0.25,
+                "fieldTriangle": [
+                  1609,
+                  1606,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.25
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            823,
+            617
+          ],
+          "descendantReconstructed": [
+            823,
+            617
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                822,
+                617
+              ],
+              "label": 32,
+              "rgba": [
+                123,
+                57,
+                35,
+                246
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 21,
+          "source": [
+            823,
+            618
+          ],
+          "distancePx": 3.1622776601683795,
+          "ancestor": {
+            "coefficient": 0.05,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 0.39999999999999997,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 358,
+                "outerCorner": 2,
+                "outerWeight": 0.05,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.05
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0.05,
+            "terms": [
+              {
+                "projectedVertex": 126,
+                "outerCorner": 0,
+                "outerWeight": 0.39999999999999997,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 121,
+                "outerCorner": 2,
+                "outerWeight": 0.05,
+                "fieldTriangle": [
+                  1609,
+                  1606,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.05
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            823,
+            618
+          ],
+          "descendantReconstructed": [
+            823,
+            618
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                822,
+                617
+              ],
+              "label": 32,
+              "rgba": [
+                123,
+                57,
+                35,
+                246
+              ]
+            },
+            {
+              "pixel": [
+                822,
+                618
+              ],
+              "label": 32,
+              "rgba": [
+                179,
+                104,
+                76,
+                247
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 23,
+          "source": [
+            823,
+            618.25
+          ],
+          "distancePx": 3.25,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 0.5,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 358,
+                "outerCorner": 2,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 126,
+                "outerCorner": 0,
+                "outerWeight": 0.5,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 121,
+                "outerCorner": 2,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1609,
+                  1606,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            823,
+            618.25
+          ],
+          "descendantReconstructed": [
+            823,
+            618.25
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                822,
+                618
+              ],
+              "label": 32,
+              "rgba": [
+                179,
+                104,
+                76,
+                247
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 24,
+          "source": [
+            823,
+            619
+          ],
+          "distancePx": 3.6055512754639896,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 0.5,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 126,
+                "outerCorner": 0,
+                "outerWeight": 0.5,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            823,
+            619
+          ],
+          "descendantReconstructed": [
+            823,
+            619
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                822,
+                618
+              ],
+              "label": 32,
+              "rgba": [
+                179,
+                104,
+                76,
+                247
+              ]
+            },
+            {
+              "pixel": [
+                823,
+                619
+              ],
+              "label": 32,
+              "rgba": [
+                158,
+                87,
+                65,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 25,
+          "source": [
+            823.6,
+            619
+          ],
+          "distancePx": 3.1240998703626444,
+          "ancestor": {
+            "coefficient": 5.684341886080802e-15,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 0.8,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 358,
+                "outerCorner": 2,
+                "outerWeight": 5.684341886080802e-15,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 5.684341886080802e-15
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 5.684341886080802e-15,
+            "terms": [
+              {
+                "projectedVertex": 126,
+                "outerCorner": 0,
+                "outerWeight": 0.8,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 121,
+                "outerCorner": 2,
+                "outerWeight": 5.684341886080802e-15,
+                "fieldTriangle": [
+                  1609,
+                  1606,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 5.684341886080802e-15
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            823.6,
+            619
+          ],
+          "descendantReconstructed": [
+            823.6,
+            619
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                823,
+                619
+              ],
+              "label": 32,
+              "rgba": [
+                158,
+                87,
+                65,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 26,
+          "source": [
+            824,
+            619
+          ],
+          "distancePx": 2.8284271247461903,
+          "ancestor": {
+            "coefficient": 0.1,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 0.8,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 358,
+                "outerCorner": 2,
+                "outerWeight": 0.1,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.1
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0.1,
+            "terms": [
+              {
+                "projectedVertex": 126,
+                "outerCorner": 0,
+                "outerWeight": 0.8,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 121,
+                "outerCorner": 2,
+                "outerWeight": 0.1,
+                "fieldTriangle": [
+                  1609,
+                  1606,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.1
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            824.0000000000001,
+            619.0000000000001
+          ],
+          "descendantReconstructed": [
+            824.0000000000001,
+            619.0000000000001
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                823,
+                619
+              ],
+              "label": 32,
+              "rgba": [
+                158,
+                87,
+                65,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 28,
+          "source": [
+            824,
+            619.5
+          ],
+          "distancePx": 3.2015621187164243,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 1,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 358,
+                "outerCorner": 2,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 126,
+                "outerCorner": 0,
+                "outerWeight": 1,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 121,
+                "outerCorner": 2,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1609,
+                  1606,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            824,
+            619.5
+          ],
+          "descendantReconstructed": [
+            824,
+            619.5
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                823,
+                619
+              ],
+              "label": 32,
+              "rgba": [
+                158,
+                87,
+                65,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 29,
+          "source": [
+            824,
+            620
+          ],
+          "distancePx": 3.6055512754639896,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 0.8,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 359,
+                "outerCorner": 1,
+                "outerWeight": 0.1,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 126,
+                "outerCorner": 0,
+                "outerWeight": 0.8,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 127,
+                "outerCorner": 1,
+                "outerWeight": 0.1,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            824.0000000000001,
+            620.0000000000001
+          ],
+          "descendantReconstructed": [
+            824.0000000000001,
+            620.0000000000001
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                823,
+                619
+              ],
+              "label": 32,
+              "rgba": [
+                158,
+                87,
+                65,
+                251
+              ]
+            },
+            {
+              "pixel": [
+                824,
+                620
+              ],
+              "label": 32,
+              "rgba": [
+                120,
+                54,
+                37,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 30,
+          "source": [
+            824.4,
+            620
+          ],
+          "distancePx": 3.4000000000000106,
+          "ancestor": {
+            "coefficient": -5.684341886080802e-15,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 0.8000000000000115,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 358,
+                "outerCorner": 1,
+                "outerWeight": -5.684341886080802e-15,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": -5.684341886080802e-15
+              },
+              {
+                "projectedVertex": 359,
+                "outerCorner": 2,
+                "outerWeight": 0.19999999999999432,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": -5.684341886080802e-15,
+            "terms": [
+              {
+                "projectedVertex": 126,
+                "outerCorner": 0,
+                "outerWeight": 0.8000000000000115,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 121,
+                "outerCorner": 1,
+                "outerWeight": -5.684341886080802e-15,
+                "fieldTriangle": [
+                  1609,
+                  1606,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": -5.684341886080802e-15
+              },
+              {
+                "projectedVertex": 127,
+                "outerCorner": 2,
+                "outerWeight": 0.19999999999999432,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            824.4000000000001,
+            620.0000000000001
+          ],
+          "descendantReconstructed": [
+            824.4000000000001,
+            620.0000000000001
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                824,
+                620
+              ],
+              "label": 32,
+              "rgba": [
+                120,
+                54,
+                37,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 31,
+          "source": [
+            825,
+            620
+          ],
+          "distancePx": 3.1622776601683795,
+          "ancestor": {
+            "coefficient": 0.15,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 0.5,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 358,
+                "outerCorner": 1,
+                "outerWeight": 0.15,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.15
+              },
+              {
+                "projectedVertex": 359,
+                "outerCorner": 2,
+                "outerWeight": 0.35,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0.15,
+            "terms": [
+              {
+                "projectedVertex": 126,
+                "outerCorner": 0,
+                "outerWeight": 0.5,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 121,
+                "outerCorner": 1,
+                "outerWeight": 0.15,
+                "fieldTriangle": [
+                  1609,
+                  1606,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0.15
+              },
+              {
+                "projectedVertex": 127,
+                "outerCorner": 2,
+                "outerWeight": 0.35,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            825,
+            620
+          ],
+          "descendantReconstructed": [
+            825,
+            620
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                824,
+                620
+              ],
+              "label": 32,
+              "rgba": [
+                120,
+                54,
+                37,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 33,
+          "source": [
+            825,
+            620.75
+          ],
+          "distancePx": 3.881043674065006,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 0.5,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 358,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0
+              },
+              {
+                "projectedVertex": 359,
+                "outerCorner": 2,
+                "outerWeight": 0.5,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 126,
+                "outerCorner": 0,
+                "outerWeight": 0.5,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 121,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1609,
+                  1606,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0
+              },
+              {
+                "projectedVertex": 127,
+                "outerCorner": 2,
+                "outerWeight": 0.5,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            825,
+            620.75
+          ],
+          "descendantReconstructed": [
+            825,
+            620.75
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                824,
+                620
+              ],
+              "label": 32,
+              "rgba": [
+                120,
+                54,
+                37,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 34,
+          "source": [
+            825,
+            621
+          ],
+          "distancePx": 4.123105625617661,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 0.39999999999999997,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 359,
+                "outerCorner": 1,
+                "outerWeight": 0.55,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 126,
+                "outerCorner": 0,
+                "outerWeight": 0.39999999999999997,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 127,
+                "outerCorner": 1,
+                "outerWeight": 0.55,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            825,
+            621
+          ],
+          "descendantReconstructed": [
+            825,
+            621
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                824,
+                620
+              ],
+              "label": 32,
+              "rgba": [
+                120,
+                54,
+                37,
+                251
+              ]
+            },
+            {
+              "pixel": [
+                824,
+                621
+              ],
+              "label": 32,
+              "rgba": [
+                92,
+                31,
+                19,
+                251
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 37,
+          "source": [
+            825,
+            622
+          ],
+          "distancePx": 5.099019513592785,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 359,
+                "outerCorner": 1,
+                "outerWeight": 0.75,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 126,
+                "outerCorner": 0,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 127,
+                "outerCorner": 1,
+                "outerWeight": 0.75,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            825,
+            622
+          ],
+          "descendantReconstructed": [
+            825,
+            622
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                824,
+                621
+              ],
+              "label": 32,
+              "rgba": [
+                92,
+                31,
+                19,
+                251
+              ]
+            },
+            {
+              "pixel": [
+                825,
+                622
+              ],
+              "label": 32,
+              "rgba": [
+                87,
+                29,
+                18,
+                252
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 38,
+          "source": [
+            826,
+            622
+          ],
+          "distancePx": 5,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 357,
+                "outerCorner": 0,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 358,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0
+              },
+              {
+                "projectedVertex": 359,
+                "outerCorner": 2,
+                "outerWeight": 1,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 126,
+                "outerCorner": 0,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1615,
+                  1579,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 0,
+                "product": 0
+              },
+              {
+                "projectedVertex": 121,
+                "outerCorner": 1,
+                "outerWeight": 0,
+                "fieldTriangle": [
+                  1609,
+                  1606,
+                  1610
+                ],
+                "innerCorner": 2,
+                "innerWeight": 1,
+                "product": 0
+              },
+              {
+                "projectedVertex": 127,
+                "outerCorner": 2,
+                "outerWeight": 1,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            826,
+            622
+          ],
+          "descendantReconstructed": [
+            826,
+            622
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                825,
+                622
+              ],
+              "label": 32,
+              "rgba": [
+                87,
+                29,
+                18,
+                252
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 40,
+          "source": [
+            826,
+            623
+          ],
+          "distancePx": 6,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 359,
+                "outerCorner": 1,
+                "outerWeight": 0.8,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 127,
+                "outerCorner": 2,
+                "outerWeight": 0.8,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            826.0000000000001,
+            623
+          ],
+          "descendantReconstructed": [
+            826.0000000000001,
+            623
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                825,
+                622
+              ],
+              "label": 32,
+              "rgba": [
+                87,
+                29,
+                18,
+                252
+              ]
+            },
+            {
+              "pixel": [
+                826,
+                623
+              ],
+              "label": 32,
+              "rgba": [
+                93,
+                38,
+                27,
+                252
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 41,
+          "source": [
+            827,
+            623
+          ],
+          "distancePx": 6.0827625302982185,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 359,
+                "outerCorner": 1,
+                "outerWeight": 0.6,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 127,
+                "outerCorner": 1,
+                "outerWeight": 0.6,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            827,
+            623
+          ],
+          "descendantReconstructed": [
+            827,
+            623
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                826,
+                623
+              ],
+              "label": 32,
+              "rgba": [
+                93,
+                38,
+                27,
+                252
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 43,
+          "source": [
+            827,
+            624
+          ],
+          "distancePx": 7.0710678118654755,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 359,
+                "outerCorner": 2,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 127,
+                "outerCorner": 2,
+                "outerWeight": 0.4,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            827,
+            624
+          ],
+          "descendantReconstructed": [
+            827,
+            624
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                826,
+                623
+              ],
+              "label": 32,
+              "rgba": [
+                93,
+                38,
+                27,
+                252
+              ]
+            },
+            {
+              "pixel": [
+                826,
+                624
+              ],
+              "label": 32,
+              "rgba": [
+                108,
+                50,
+                39,
+                252
+              ]
+            }
+          ]
+        },
+        {
+          "sampleIndex": 45,
+          "source": [
+            827,
+            625
+          ],
+          "distancePx": 8.06225774829855,
+          "ancestor": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 359,
+                "outerCorner": 2,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "descendant": {
+            "coefficient": 0,
+            "terms": [
+              {
+                "projectedVertex": 127,
+                "outerCorner": 2,
+                "outerWeight": 0.2,
+                "fieldTriangle": [
+                  1615,
+                  1610,
+                  1616
+                ],
+                "innerCorner": 1,
+                "innerWeight": 0,
+                "product": 0
+              }
+            ]
+          },
+          "ancestorReconstructed": [
+            827,
+            625
+          ],
+          "descendantReconstructed": [
+            827,
+            625
+          ],
+          "adjacentBodyPixels": [
+            {
+              "pixel": [
+                826,
+                624
+              ],
+              "label": 32,
+              "rgba": [
+                108,
+                50,
+                39,
+                252
+              ]
+            },
+            {
+              "pixel": [
+                827,
+                625
+              ],
+              "label": 32,
+              "rgba": [
+                114,
+                59,
+                46,
+                252
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-09/binding.json",
+      "sha256": "e091119e5a72e915b19f37ce78aa0e29adb92fb2cb127601bacfefd3745a9e88",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-09/pre-split-binding.json",
+      "sha256": "402413c5c871f23a4d8897b72e1fd1af82a170e684580e56e8e90faf91804c90",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-09/source-join-probe.json",
+      "sha256": "d3971dc702cfdd12e12eaa19e860a85d1c7a95597050e8b6d403ed42bca47a0a",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-11/authoring.json",
+      "sha256": "f9340f385333ab4a6f8ca53b277a7fdf3470b53f3a9b37457c1c1d6f42720d93",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+      "sha256": "4d0280d20b8a1b3032595d89e28ace3c56f2c2c570458e12efc6a79423daa084",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-11/master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-09/labels.png",
+      "sha256": "4c133c6cab717ae73a07a7859b5636e617c939dc8c1e449187513877dd0395a1",
+      "unchanged": true
+    }
+  ]
+}

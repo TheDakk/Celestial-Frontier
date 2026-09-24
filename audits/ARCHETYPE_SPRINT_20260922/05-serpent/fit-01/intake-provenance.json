@@ -1,0 +1,77 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "0c8b6e56f705af15564571b311d77ea09a5f0c48",
+  "helperSha256": "ae9cafe006642a2aea96206581abb3c4df2bb94ad9b2ae4259092979ceb992ae",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/master.png",
+      "sha256": "1c44d54e241b2444ce37950f0b3ce7ebfe9d9f4cd550a77cdaf0c20924849e43"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/authoring.json",
+      "sha256": "98c5e0ddc133c3b02e8e854512033f88a4994cf89d82d99acc456dd02674cebf"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/subject-source.json",
+      "sha256": "7045ce9b8ff117638dd975e66b2b3f1888750da731412e8f43b0b07a6050d72f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/presence.json",
+      "sha256": "ea2aeb7df86e52f7c74c20398bab9e05f26e80886af60c3e5c9c95c6473f7e0b"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "8c3dd500768f444c6d64df3f47b891ab903148becbf543ce8d4fccb5760ee49f",
+  "bindingHash": "745196a275ca26878f97fcd41adc98cdfcdb4b711b4d92982c349a8c9bf521d1",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "jaw",
+    "head",
+    "seg9",
+    "seg5",
+    "seg6",
+    "seg7",
+    "seg4",
+    "seg3",
+    "seg0",
+    "seg1",
+    "seg2",
+    "seg8"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/master.png",
+      "sha256": "1c44d54e241b2444ce37950f0b3ce7ebfe9d9f4cd550a77cdaf0c20924849e43",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/authoring.json",
+      "sha256": "98c5e0ddc133c3b02e8e854512033f88a4994cf89d82d99acc456dd02674cebf",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/subject-source.json",
+      "sha256": "7045ce9b8ff117638dd975e66b2b3f1888750da731412e8f43b0b07a6050d72f",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/presence.json",
+      "sha256": "ea2aeb7df86e52f7c74c20398bab9e05f26e80886af60c3e5c9c95c6473f7e0b",
+      "unchanged": true
+    }
+  ]
+}

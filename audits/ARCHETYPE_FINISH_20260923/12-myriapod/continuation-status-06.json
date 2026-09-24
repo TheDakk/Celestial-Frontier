@@ -1,0 +1,46 @@
+{
+  "schema": "cf.sprint-continuation-status/v1",
+  "signedHead": "1285ba2ecc0548e0a299e2b855168ff9616c8496",
+  "item": "Centipede",
+  "candidate": "candidate-13",
+  "fit": "fit-11",
+  "recordRecipeHash": "39962065dde06970c0b494e3e2b959d363202fef2d9804658abc1a6bfacb7b16",
+  "bindingHash": "c67037345e169e813839fc96b66b0f1c05758cb0c9124a8326c2e42fa15a10aa",
+  "static": "static-07.json",
+  "status": "RED_PRESENTATION_ONLY",
+  "actionRowsPass": 12,
+  "samplesPerAction": 121,
+  "exactRest": true,
+  "sourcePixelChangedChannels": 0,
+  "presentationFirstRefusal": {
+    "sampleIndex": 704,
+    "globalMs": 11733.333333333334,
+    "action": "tame",
+    "elapsedMs": 722.6853397116065,
+    "durationMs": 640,
+    "weight": 0.4748343953390537,
+    "error": "leg0Far outside accommodatable reach"
+  },
+  "diagnosis": "static-contact-diagnosis04.json",
+  "cause": "Completed translated tame returns as one long backwardstep duringfade, actualanatomicalreach1.213169885953818px overlimit; actualpaintedsupportcandidate.5661884721544757px overlimit. Rootpath exact; no rounding mismatch.",
+  "activeWork": "Inspectagent explicitly addingcompacttame:2toexistinghit/dodgesubsteps; focusedcontrols, actualphaseproof, freezesource. No numerical gate change. Parentpendingfreshstatic08/finalS2/native.",
+  "s2": {
+    "first": "contact-regression/s2-execution.json",
+    "status": "PASS_STATIC_IDENTICAL",
+    "subjects": 6,
+    "samples": 13286,
+    "inputs": 12,
+    "sources": 87,
+    "scope": "Before new tame-only cadence; secondchangedsourceS2 prepared undercontact-regression-final; not yet executed."
+  },
+  "nativeAttempts": 0,
+  "ssh": "Two GitHub preflight communication-with-agent failures retained; reneweduntilquitconfirmationstillpending. NoCentipedecommit orpushattempt.",
+  "preparedUnexecuted": [
+    "finalize-evidence-01.mjs",
+    "write-final-readme.mjs",
+    "write-final-sprint-index.mjs",
+    "write-root-closure.mjs",
+    "contact-regression-final/run-s2.mjs"
+  ],
+  "next": "Qualifychangedcadence, finalsourceS2/static/native/sheet/closure, docs/index/seals, signedcommit andauthorizednormalpushonceauthenticationavailable."
+}

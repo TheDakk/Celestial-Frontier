@@ -1,0 +1,1031 @@
+{
+  "schema": "cf.centipede-consolidated-source-repair/v1",
+  "candidate": "candidate-09",
+  "sourceCandidate": "candidate-08",
+  "samePaint": true,
+  "sourceAuthoringSha256": "01bb22243915ccbfb63008893217f04f3324dfa8566cf1e3a531210f1f0258aa",
+  "authoringSha256": "310670dd1af38c5fd33f8df6d1eee956ba399423ff7910165407e1b9d0bc90ad",
+  "copied": {
+    "master.png": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+    "prompt.txt": "006bf5fce063cad08371df26b4e44975049cd480dd305e248eec1f7b64c83019",
+    "request.json": "eee818a3eedb39e1213426c05e8ea8ea9dda1576f22c12dfbab5ba6e93c5b9de",
+    "subject-source.json": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67",
+    "presence.json": "cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c",
+    "generation-receipt.json": "a95cf62f9b8fd9770549804a6f4e2e6ec0a337b522546a2785d1f383c2fd801f"
+  },
+  "maskChanges": [
+    {
+      "partId": "leg1-near",
+      "before": [
+        [
+          942,
+          703
+        ],
+        [
+          980,
+          703
+        ],
+        [
+          1037,
+          763
+        ],
+        [
+          997,
+          823
+        ],
+        [
+          997,
+          850
+        ],
+        [
+          938,
+          850
+        ],
+        [
+          938,
+          819
+        ],
+        [
+          977,
+          756
+        ],
+        [
+          953,
+          726
+        ]
+      ],
+      "after": [
+        [
+          942,
+          703
+        ],
+        [
+          980,
+          703
+        ],
+        [
+          1018,
+          737
+        ],
+        [
+          1037,
+          763
+        ],
+        [
+          997,
+          823
+        ],
+        [
+          997,
+          850
+        ],
+        [
+          938,
+          850
+        ],
+        [
+          938,
+          819
+        ],
+        [
+          977,
+          756
+        ],
+        [
+          953,
+          726
+        ]
+      ],
+      "inserted": [
+        [
+          1018,
+          737
+        ]
+      ]
+    },
+    {
+      "partId": "leg3-near",
+      "before": [
+        [
+          837,
+          698
+        ],
+        [
+          875,
+          698
+        ],
+        [
+          916,
+          753
+        ],
+        [
+          878,
+          814
+        ],
+        [
+          878,
+          841
+        ],
+        [
+          817,
+          841
+        ],
+        [
+          817,
+          812
+        ],
+        [
+          856,
+          748
+        ]
+      ],
+      "after": [
+        [
+          837,
+          698
+        ],
+        [
+          875,
+          698
+        ],
+        [
+          886,
+          705
+        ],
+        [
+          901,
+          727
+        ],
+        [
+          916,
+          753
+        ],
+        [
+          878,
+          814
+        ],
+        [
+          878,
+          841
+        ],
+        [
+          817,
+          841
+        ],
+        [
+          817,
+          812
+        ],
+        [
+          856,
+          748
+        ]
+      ],
+      "inserted": [
+        [
+          886,
+          705
+        ],
+        [
+          901,
+          727
+        ]
+      ]
+    },
+    {
+      "partId": "leg5-near",
+      "before": [
+        [
+          718,
+          686
+        ],
+        [
+          756,
+          686
+        ],
+        [
+          797,
+          744
+        ],
+        [
+          755,
+          810
+        ],
+        [
+          755,
+          838
+        ],
+        [
+          694,
+          838
+        ],
+        [
+          694,
+          811
+        ],
+        [
+          738,
+          743
+        ]
+      ],
+      "after": [
+        [
+          718,
+          686
+        ],
+        [
+          756,
+          686
+        ],
+        [
+          792,
+          730
+        ],
+        [
+          797,
+          744
+        ],
+        [
+          755,
+          810
+        ],
+        [
+          755,
+          838
+        ],
+        [
+          694,
+          838
+        ],
+        [
+          694,
+          811
+        ],
+        [
+          738,
+          743
+        ]
+      ],
+      "inserted": [
+        [
+          792,
+          730
+        ]
+      ]
+    },
+    {
+      "partId": "leg6-near",
+      "before": [
+        [
+          639,
+          690
+        ],
+        [
+          677,
+          690
+        ],
+        [
+          721,
+          724
+        ],
+        [
+          738,
+          743
+        ],
+        [
+          694,
+          811
+        ],
+        [
+          694,
+          842
+        ],
+        [
+          632,
+          842
+        ],
+        [
+          632,
+          815
+        ],
+        [
+          675,
+          747
+        ]
+      ],
+      "after": [
+        [
+          639,
+          690
+        ],
+        [
+          677,
+          690
+        ],
+        [
+          707,
+          709
+        ],
+        [
+          721,
+          724
+        ],
+        [
+          738,
+          743
+        ],
+        [
+          694,
+          811
+        ],
+        [
+          694,
+          842
+        ],
+        [
+          632,
+          842
+        ],
+        [
+          632,
+          815
+        ],
+        [
+          675,
+          747
+        ]
+      ],
+      "inserted": [
+        [
+          707,
+          709
+        ]
+      ]
+    },
+    {
+      "partId": "leg13-near",
+      "before": [
+        [
+          225,
+          696
+        ],
+        [
+          263,
+          696
+        ],
+        [
+          294,
+          749
+        ],
+        [
+          245,
+          817
+        ],
+        [
+          245,
+          844
+        ],
+        [
+          181,
+          844
+        ],
+        [
+          181,
+          815
+        ],
+        [
+          232,
+          746
+        ]
+      ],
+      "after": [
+        [
+          225,
+          696
+        ],
+        [
+          263,
+          696
+        ],
+        [
+          274,
+          708
+        ],
+        [
+          294,
+          749
+        ],
+        [
+          245,
+          817
+        ],
+        [
+          245,
+          844
+        ],
+        [
+          181,
+          844
+        ],
+        [
+          181,
+          815
+        ],
+        [
+          232,
+          746
+        ]
+      ],
+      "inserted": [
+        [
+          274,
+          708
+        ]
+      ]
+    }
+  ],
+  "regionChanges": [
+    {
+      "id": "leg0-far-knee-bend-observed-paint",
+      "partId": "leg0-far",
+      "center": [
+        1014,
+        609
+      ],
+      "before": [
+        [
+          1002,
+          597
+        ],
+        [
+          1026,
+          597
+        ],
+        [
+          1026,
+          621
+        ],
+        [
+          1002,
+          621
+        ]
+      ],
+      "after": [
+        [
+          1006,
+          601
+        ],
+        [
+          1022,
+          601
+        ],
+        [
+          1022,
+          617
+        ],
+        [
+          1006,
+          617
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg3-far-knee-bend-observed-paint",
+      "partId": "leg3-far",
+      "center": [
+        835,
+        592
+      ],
+      "before": [
+        [
+          823,
+          580
+        ],
+        [
+          847,
+          580
+        ],
+        [
+          847,
+          604
+        ],
+        [
+          823,
+          604
+        ]
+      ],
+      "after": [
+        [
+          827,
+          584
+        ],
+        [
+          843,
+          584
+        ],
+        [
+          843,
+          600
+        ],
+        [
+          827,
+          600
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg4-far-knee-bend-observed-paint",
+      "partId": "leg4-far",
+      "center": [
+        775,
+        588
+      ],
+      "before": [
+        [
+          763,
+          576
+        ],
+        [
+          787,
+          576
+        ],
+        [
+          787,
+          600
+        ],
+        [
+          763,
+          600
+        ]
+      ],
+      "after": [
+        [
+          767,
+          580
+        ],
+        [
+          783,
+          580
+        ],
+        [
+          783,
+          596
+        ],
+        [
+          767,
+          596
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg5-far-knee-bend-observed-paint",
+      "partId": "leg5-far",
+      "center": [
+        713,
+        585
+      ],
+      "before": [
+        [
+          701,
+          573
+        ],
+        [
+          725,
+          573
+        ],
+        [
+          725,
+          597
+        ],
+        [
+          701,
+          597
+        ]
+      ],
+      "after": [
+        [
+          705,
+          577
+        ],
+        [
+          721,
+          577
+        ],
+        [
+          721,
+          593
+        ],
+        [
+          705,
+          593
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg6-far-knee-bend-observed-paint",
+      "partId": "leg6-far",
+      "center": [
+        653,
+        587
+      ],
+      "before": [
+        [
+          641,
+          575
+        ],
+        [
+          665,
+          575
+        ],
+        [
+          665,
+          599
+        ],
+        [
+          641,
+          599
+        ]
+      ],
+      "after": [
+        [
+          645,
+          579
+        ],
+        [
+          661,
+          579
+        ],
+        [
+          661,
+          595
+        ],
+        [
+          645,
+          595
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg7-far-knee-bend-observed-paint",
+      "partId": "leg7-far",
+      "center": [
+        591,
+        592
+      ],
+      "before": [
+        [
+          579,
+          580
+        ],
+        [
+          603,
+          580
+        ],
+        [
+          603,
+          604
+        ],
+        [
+          579,
+          604
+        ]
+      ],
+      "after": [
+        [
+          583,
+          584
+        ],
+        [
+          599,
+          584
+        ],
+        [
+          599,
+          600
+        ],
+        [
+          583,
+          600
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg8-far-knee-bend-observed-paint",
+      "partId": "leg8-far",
+      "center": [
+        530,
+        600
+      ],
+      "before": [
+        [
+          518,
+          588
+        ],
+        [
+          542,
+          588
+        ],
+        [
+          542,
+          612
+        ],
+        [
+          518,
+          612
+        ]
+      ],
+      "after": [
+        [
+          522,
+          592
+        ],
+        [
+          538,
+          592
+        ],
+        [
+          538,
+          608
+        ],
+        [
+          522,
+          608
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg10-far-knee-bend-observed-paint",
+      "partId": "leg10-far",
+      "center": [
+        409,
+        608
+      ],
+      "before": [
+        [
+          397,
+          596
+        ],
+        [
+          421,
+          596
+        ],
+        [
+          421,
+          620
+        ],
+        [
+          397,
+          620
+        ]
+      ],
+      "after": [
+        [
+          401,
+          600
+        ],
+        [
+          417,
+          600
+        ],
+        [
+          417,
+          616
+        ],
+        [
+          401,
+          616
+        ]
+      ],
+      "pin": true
+    },
+    {
+      "id": "leg11-far-knee-bend-observed-paint",
+      "partId": "leg11-far",
+      "center": [
+        350,
+        604
+      ],
+      "before": [
+        [
+          338,
+          592
+        ],
+        [
+          362,
+          592
+        ],
+        [
+          362,
+          616
+        ],
+        [
+          338,
+          616
+        ]
+      ],
+      "after": [
+        [
+          342,
+          596
+        ],
+        [
+          358,
+          596
+        ],
+        [
+          358,
+          612
+        ],
+        [
+          342,
+          612
+        ]
+      ],
+      "pin": true
+    }
+  ],
+  "manualSourceEnvelopes": [
+    {
+      "index": 0,
+      "bounds": [
+        1001,
+        596,
+        1037,
+        645
+      ]
+    },
+    {
+      "index": 3,
+      "bounds": [
+        822,
+        580,
+        864,
+        634
+      ]
+    },
+    {
+      "index": 4,
+      "bounds": [
+        762,
+        576,
+        804,
+        628
+      ]
+    },
+    {
+      "index": 5,
+      "bounds": [
+        700,
+        573,
+        744,
+        626
+      ]
+    },
+    {
+      "index": 6,
+      "bounds": [
+        640,
+        575,
+        684,
+        628
+      ]
+    },
+    {
+      "index": 7,
+      "bounds": [
+        578,
+        580,
+        623,
+        634
+      ]
+    },
+    {
+      "index": 8,
+      "bounds": [
+        517,
+        588,
+        562,
+        643
+      ]
+    },
+    {
+      "index": 10,
+      "bounds": [
+        396,
+        595,
+        439,
+        650
+      ]
+    },
+    {
+      "index": 11,
+      "bounds": [
+        337,
+        591,
+        380,
+        647
+      ]
+    }
+  ],
+  "newRefinements": [
+    {
+      "x": 991,
+      "y": 586,
+      "width": 56,
+      "height": 69,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 812,
+      "y": 570,
+      "width": 62,
+      "height": 74,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 752,
+      "y": 566,
+      "width": 62,
+      "height": 72,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 690,
+      "y": 563,
+      "width": 64,
+      "height": 73,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 630,
+      "y": 565,
+      "width": 64,
+      "height": 73,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 568,
+      "y": 570,
+      "width": 65,
+      "height": 74,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 507,
+      "y": 578,
+      "width": 65,
+      "height": 75,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 386,
+      "y": 585,
+      "width": 63,
+      "height": 75,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    },
+    {
+      "x": 327,
+      "y": 581,
+      "width": 63,
+      "height": 76,
+      "boundaryStep": 8,
+      "interiorStep": 32
+    }
+  ],
+  "diagnoses": [
+    "../static-paint-diagnosis03/report.json",
+    "../static-paint-diagnosis03/root-edge-inspection.json",
+    "../static-paint-diagnosis03/source-review/findings.md"
+  ],
+  "scope": "Consolidated source authoring hypothesis; no new intake, pose, solver or test execution",
+  "preserved": {
+    "masterPixels": true,
+    "farMasks": 14,
+    "otherMasks": 27,
+    "landmarks": 63,
+    "sockets": 31,
+    "contactDefinitions": true,
+    "otherRegions": 22,
+    "priorRefinements": 7,
+    "partIdentityAndOrder": true,
+    "materials": true,
+    "inheritedPins": true,
+    "numericalLimits": true
+  }
+}

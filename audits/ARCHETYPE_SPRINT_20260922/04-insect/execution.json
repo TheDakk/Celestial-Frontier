@@ -1,0 +1,47 @@
+{
+  "id": "archetype-sprint-04-insect-01",
+  "stages": [
+    {
+      "name": "intake",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/intake.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/04-insect",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/04-insect/fit-01"
+      ],
+      "startedAt": "2026-09-22T04:25:17.040Z",
+      "endedAt": "2026-09-22T04:25:17.204Z",
+      "durationMs": 162.655125,
+      "exitCode": 1,
+      "signal": null
+    },
+    {
+      "name": "sheet",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/review-sheet.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/04-insect"
+      ],
+      "startedAt": "2026-09-22T04:25:17.204Z",
+      "endedAt": "2026-09-22T04:25:17.536Z",
+      "durationMs": 331.86858299999994,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "finish",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/finish-item.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/04-insect",
+        "4"
+      ],
+      "startedAt": "2026-09-22T04:25:17.536Z",
+      "endedAt": "2026-09-22T04:25:17.636Z",
+      "durationMs": 99.44475,
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "noRetry": true
+}

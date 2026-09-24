@@ -1,0 +1,68 @@
+{
+  "output": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/06-hopper/fold-diagnosis-02.json",
+  "findings": [
+    {
+      "row": "approach:hop",
+      "recordedMs": 203,
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 17",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 17",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 180.35953409042136,
+        "rmsTargetErrorPx": 12.556925395797382,
+        "maximumProjectionPx": 162.82059915153147,
+        "flippedTriangles": 17,
+        "minimumAreaRatio": -0.052159011630038554,
+        "orientationPasses": 128
+      },
+      "outputUnpublished": true,
+      "partCounts": {
+        "near-hind-lower": 16,
+        "near-hind-upper": 1
+      },
+      "foldedCount": 17
+    },
+    {
+      "row": "melee:kick",
+      "recordedMs": 232.2222222222222,
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 59",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 59",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 186.37849080547903,
+        "rmsTargetErrorPx": 14.349967278454434,
+        "maximumProjectionPx": 173.54601856998082,
+        "flippedTriangles": 59,
+        "minimumAreaRatio": -0.19301184069466784,
+        "orientationPasses": 128
+      },
+      "outputUnpublished": true,
+      "partCounts": {
+        "near-hind-lower": 33,
+        "near-hind-upper": 34
+      },
+      "foldedCount": 59
+    },
+    {
+      "row": "presentation",
+      "recordedMs": 6250,
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 116",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 116",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 182.4699477440638,
+        "rmsTargetErrorPx": 14.41152648500966,
+        "maximumProjectionPx": 169.89610992879147,
+        "flippedTriangles": 116,
+        "minimumAreaRatio": -0.08590655362275126,
+        "orientationPasses": 128
+      },
+      "outputUnpublished": true,
+      "partCounts": {
+        "near-hind-lower": 77,
+        "near-hind-upper": 66
+      },
+      "foldedCount": 116
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "status": "COMPLETED_STAGED_SIGNING_REFUSED",
+  "head": "4ff2fad720e1d5734ce95a77c8a401cd8884e24e",
+  "priorDiagnosisSignature": "G",
+  "attempts": [
+    {
+      "receipt": "6f97f5",
+      "exitCode": 128
+    },
+    {
+      "receipt": "14dd00",
+      "exitCode": 128
+    }
+  ],
+  "literalError": "Couldn't sign message (signer): agent refused operation",
+  "unsignedFallback": false,
+  "wrapperOrGlobalConfigurationChanged": false,
+  "next": "Nick renews request approval until quit; after confirmation retry once. No further art or test work remains for this bounded correction."
+}

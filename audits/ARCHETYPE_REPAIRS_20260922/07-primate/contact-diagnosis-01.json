@@ -1,0 +1,4181 @@
+{
+  "schema": "cf.primate-contact-first-refusal-diagnosis/v1",
+  "status": "EXACT_THREE_REFUSALS_REPRODUCED",
+  "scope": "Browser-free exact failed sample replay using actual unchanged GSAP/performance/contact owners. Contact source receives only packet bundler trace insertions, no math or refusal edits. No ARAP, static battery, native film, performance or acceptance claim.",
+  "staticPoseCaveat": "Retained firstRefusal.pose is last successful paint publication when contact throws; attemptedPose here is captured before contact.resolve.",
+  "recordRecipeHash": "a3745e1be455b779e4e0673f9537e8b8ce8bc9e376f78b610949fd1b99585876",
+  "bindingHash": "2131d12fe14d86ff23204a39c14278f017044e2767a246ae2de602d2b59ade40",
+  "card": {
+    "kind": "body-card",
+    "amplitudeProfile": {
+      "schema": "cf.motion-amplitude/v1",
+      "scales": {
+        "root": 1,
+        "pelvis": 1,
+        "spine": 1,
+        "chest": 1,
+        "neck": 1,
+        "head": 1,
+        "jaw": 1,
+        "armFarShoulder": 1,
+        "armFarElbow": 1,
+        "armFarHand": 1,
+        "armNearShoulder": 1,
+        "armNearElbow": 1,
+        "armNearHand": 1,
+        "legFarHip": 1,
+        "legFarKnee": 1,
+        "legFarFoot": 0.8155463121414634,
+        "legNearHip": 1,
+        "legNearKnee": 0.8515225307159423,
+        "legNearFoot": 0.6996385948646093
+      }
+    },
+    "anatomy": {
+      "schema": "cf.anatomy-presence/v2",
+      "absent": [
+        "tail"
+      ],
+      "hidden": [],
+      "folded": []
+    },
+    "projectionSigns": {},
+    "projectionScales": {},
+    "identity": {
+      "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Chimpanzee\"]],[\"accent\",[\"number\",\"4\"]],[\"behavior\",[\"number\",\"10\"]],[\"body\",[\"number\",\"8\"]],[\"color\",[\"number\",\"7\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"16\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"0\"]],[\"head\",[\"number\",\"9\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"14\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3074712006\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"0\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"11\"]]]]",
+      "seed": 3074712006,
+      "ownerId": "authored:archetype-sprint/chimpanzee",
+      "earthName": "Chimpanzee"
+    },
+    "recipeHash": "a3745e1be455b779e4e0673f9537e8b8ce8bc9e376f78b610949fd1b99585876",
+    "template": {
+      "id": "primate",
+      "version": 1,
+      "clipSetId": "primate-v1"
+    },
+    "massClass": {
+      "name": "medium",
+      "multiplier": 1
+    },
+    "locomotion": {
+      "loco": null,
+      "gait": "walk",
+      "templateGait": "walk"
+    },
+    "realm": "land",
+    "materials": {
+      "body": "furred",
+      "head": "furred",
+      "legs": "furred",
+      "tail": "furred",
+      "ears": "furred",
+      "wings": "furred",
+      "fins": "furred",
+      "antennae": "furred",
+      "fronds": "furred",
+      "arms": "furred"
+    },
+    "jointMaterials": {
+      "root": "furred",
+      "pelvis": "furred",
+      "spine": "furred",
+      "chest": "furred",
+      "neck": "furred",
+      "head": "furred",
+      "jaw": "furred",
+      "armFarShoulder": "furred",
+      "armFarElbow": "furred",
+      "armFarHand": "furred",
+      "armNearShoulder": "furred",
+      "armNearElbow": "furred",
+      "armNearHand": "furred",
+      "legFarHip": "furred",
+      "legFarKnee": "furred",
+      "legFarFoot": "furred",
+      "legNearHip": "furred",
+      "legNearKnee": "furred",
+      "legNearFoot": "furred"
+    },
+    "parts": [
+      {
+        "joint": "pelvis",
+        "parent": "root",
+        "group": "body",
+        "pivot": [
+          0.5454545454545454,
+          0.34290271132376393
+        ],
+        "tip": [
+          0.28309409888357256,
+          0.39314194577352474
+        ],
+        "boneLength": 0.2671272816524331
+      },
+      {
+        "joint": "spine",
+        "parent": "pelvis",
+        "group": "body",
+        "pivot": [
+          0.28309409888357256,
+          0.39314194577352474
+        ],
+        "tip": [
+          0.4298245614035088,
+          0.2862838915470494
+        ],
+        "boneLength": 0.18151714074539282
+      },
+      {
+        "joint": "chest",
+        "parent": "spine",
+        "group": "body",
+        "pivot": [
+          0.4298245614035088,
+          0.2862838915470494
+        ],
+        "tip": [
+          0.6323763955342903,
+          0.24481658692185007
+        ],
+        "boneLength": 0.2067529512791116
+      },
+      {
+        "joint": "neck",
+        "parent": "chest",
+        "group": "head",
+        "pivot": [
+          0.6323763955342903,
+          0.24481658692185007
+        ],
+        "tip": [
+          0.7280701754385965,
+          0.22807017543859648
+        ],
+        "boneLength": 0.09714804069017687
+      },
+      {
+        "joint": "head",
+        "parent": "neck",
+        "group": "head",
+        "pivot": [
+          0.7280701754385965,
+          0.22807017543859648
+        ],
+        "tip": [
+          0.8301435406698564,
+          0.20574162679425836
+        ],
+        "boneLength": 0.10448701342366305
+      },
+      {
+        "joint": "jaw",
+        "parent": "head",
+        "group": "head",
+        "pivot": [
+          0.8301435406698564,
+          0.20574162679425836
+        ],
+        "tip": [
+          0.8644338118022329,
+          0.2966507177033493
+        ],
+        "boneLength": 0.09716113165381128
+      },
+      {
+        "joint": "armFarShoulder",
+        "parent": "chest",
+        "group": "arms",
+        "pivot": [
+          0.6323763955342903,
+          0.24481658692185007
+        ],
+        "tip": [
+          0.7416267942583732,
+          0.3405103668261563
+        ],
+        "boneLength": 0.14523411835290254
+      },
+      {
+        "joint": "armFarElbow",
+        "parent": "armFarShoulder",
+        "group": "arms",
+        "pivot": [
+          0.7416267942583732,
+          0.3405103668261563
+        ],
+        "tip": [
+          0.7862838915470495,
+          0.5518341307814992
+        ],
+        "boneLength": 0.21599071635258724
+      },
+      {
+        "joint": "armFarHand",
+        "parent": "armFarElbow",
+        "group": "arms",
+        "pivot": [
+          0.7862838915470495,
+          0.5518341307814992
+        ],
+        "tip": [
+          0.9098883572567783,
+          0.8580542264752791
+        ],
+        "boneLength": 0.3302253941629795
+      },
+      {
+        "joint": "armNearShoulder",
+        "parent": "chest",
+        "group": "arms",
+        "pivot": [
+          0.6323763955342903,
+          0.24481658692185007
+        ],
+        "tip": [
+          0.6180223285486444,
+          0.2719298245614035
+        ],
+        "boneLength": 0.030678443479539623
+      },
+      {
+        "joint": "armNearElbow",
+        "parent": "armNearShoulder",
+        "group": "arms",
+        "pivot": [
+          0.6180223285486444,
+          0.2719298245614035
+        ],
+        "tip": [
+          0.6347687400318979,
+          0.5350877192982456
+        ],
+        "boneLength": 0.26369019674590355
+      },
+      {
+        "joint": "armNearHand",
+        "parent": "armNearElbow",
+        "group": "arms",
+        "pivot": [
+          0.6347687400318979,
+          0.5350877192982456
+        ],
+        "tip": [
+          0.7304625199362041,
+          0.8620414673046252
+        ],
+        "boneLength": 0.3406700057941599
+      },
+      {
+        "joint": "legFarHip",
+        "parent": "pelvis",
+        "group": "legs",
+        "pivot": [
+          0.28309409888357256,
+          0.39314194577352474
+        ],
+        "tip": [
+          0.23684210526315788,
+          0.5342902711323764
+        ],
+        "boneLength": 0.1485331500557068
+      },
+      {
+        "joint": "legFarKnee",
+        "parent": "legFarHip",
+        "group": "legs",
+        "pivot": [
+          0.23684210526315788,
+          0.5342902711323764
+        ],
+        "tip": [
+          0.23524720893141945,
+          0.6323763955342903
+        ],
+        "boneLength": 0.09809909018179894
+      },
+      {
+        "joint": "legFarFoot",
+        "parent": "legFarKnee",
+        "group": "legs",
+        "pivot": [
+          0.23524720893141945,
+          0.6323763955342903
+        ],
+        "tip": [
+          0.11802232854864433,
+          0.8333333333333334
+        ],
+        "boneLength": 0.23264858355537957
+      },
+      {
+        "joint": "legNearHip",
+        "parent": "pelvis",
+        "group": "legs",
+        "pivot": [
+          0.28309409888357256,
+          0.39314194577352474
+        ],
+        "tip": [
+          0.24401913875598086,
+          0.43460925039872406
+        ],
+        "boneLength": 0.05697709945102469
+      },
+      {
+        "joint": "legNearKnee",
+        "parent": "legNearHip",
+        "group": "legs",
+        "pivot": [
+          0.24401913875598086,
+          0.43460925039872406
+        ],
+        "tip": [
+          0.4059011164274322,
+          0.5877192982456141
+        ],
+        "boneLength": 0.22281934710993392
+      },
+      {
+        "joint": "legNearFoot",
+        "parent": "legNearKnee",
+        "group": "legs",
+        "pivot": [
+          0.4059011164274322,
+          0.5877192982456141
+        ],
+        "tip": [
+          0.3843700159489633,
+          0.8580542264752791
+        ],
+        "boneLength": 0.2711910059510677
+      }
+    ],
+    "secondaryParts": [],
+    "weapons": [
+      "claw",
+      "bite"
+    ],
+    "luminous": false,
+    "bodyLength": 0.3794713886870498,
+    "scaleLength": 0.3794713886870498,
+    "scaleReference": {
+      "kind": "span",
+      "axis": [
+        "pelvis",
+        "chest"
+      ]
+    },
+    "groundLineY": 0.95,
+    "landmarks": {
+      "root": [
+        0.5454545454545454,
+        0.34290271132376393
+      ],
+      "pelvis": [
+        0.28309409888357256,
+        0.39314194577352474
+      ],
+      "spine": [
+        0.4298245614035088,
+        0.2862838915470494
+      ],
+      "chest": [
+        0.6323763955342903,
+        0.24481658692185007
+      ],
+      "neck": [
+        0.7280701754385965,
+        0.22807017543859648
+      ],
+      "head": [
+        0.8301435406698564,
+        0.20574162679425836
+      ],
+      "jaw": [
+        0.8644338118022329,
+        0.2966507177033493
+      ],
+      "armFarShoulder": [
+        0.7416267942583732,
+        0.3405103668261563
+      ],
+      "armFarElbow": [
+        0.7862838915470495,
+        0.5518341307814992
+      ],
+      "armFarHand": [
+        0.9098883572567783,
+        0.8580542264752791
+      ],
+      "armNearShoulder": [
+        0.6180223285486444,
+        0.2719298245614035
+      ],
+      "armNearElbow": [
+        0.6347687400318979,
+        0.5350877192982456
+      ],
+      "armNearHand": [
+        0.7304625199362041,
+        0.8620414673046252
+      ],
+      "legFarHip": [
+        0.23684210526315788,
+        0.5342902711323764
+      ],
+      "legFarKnee": [
+        0.23524720893141945,
+        0.6323763955342903
+      ],
+      "legFarFoot": [
+        0.11802232854864433,
+        0.8333333333333334
+      ],
+      "legNearHip": [
+        0.24401913875598086,
+        0.43460925039872406
+      ],
+      "legNearKnee": [
+        0.4059011164274322,
+        0.5877192982456141
+      ],
+      "legNearFoot": [
+        0.3843700159489633,
+        0.8580542264752791
+      ]
+    },
+    "bounds": {
+      "inside": true,
+      "clamped": [],
+      "limitsDeg": {
+        "root": {
+          "min": -30,
+          "max": 30
+        },
+        "pelvis": {
+          "min": -25,
+          "max": 25
+        },
+        "spine": {
+          "min": -30,
+          "max": 30
+        },
+        "chest": {
+          "min": -25,
+          "max": 25
+        },
+        "neck": {
+          "min": -35,
+          "max": 35
+        },
+        "head": {
+          "min": -40,
+          "max": 40
+        },
+        "jaw": {
+          "min": -35,
+          "max": 5
+        },
+        "armFarShoulder": {
+          "min": -100,
+          "max": 100
+        },
+        "armFarElbow": {
+          "min": -110,
+          "max": 110
+        },
+        "armFarHand": {
+          "min": -60,
+          "max": 60
+        },
+        "armNearShoulder": {
+          "min": -100,
+          "max": 100
+        },
+        "armNearElbow": {
+          "min": -110,
+          "max": 110
+        },
+        "armNearHand": {
+          "min": -60,
+          "max": 60
+        },
+        "legFarHip": {
+          "min": -80,
+          "max": 80
+        },
+        "legFarKnee": {
+          "min": -110,
+          "max": 110
+        },
+        "legFarFoot": {
+          "min": -50,
+          "max": 50
+        },
+        "legNearHip": {
+          "min": -80,
+          "max": 80
+        },
+        "legNearKnee": {
+          "min": -110,
+          "max": 110
+        },
+        "legNearFoot": {
+          "min": -50,
+          "max": 50
+        }
+      },
+      "legSlack": {
+        "legFar": 0.02536385426489556,
+        "legNear": 0.1323123690400136
+      }
+    },
+    "notes": [
+      "earth species \"Chimpanzee\" mass uncalibrated (medium); gait from physical habitat/anatomy",
+      "physical realm: exact-name Earth fauna presentation profile",
+      "materials: record surface \"fur\" wins over genome skin \"scaled\" (observer disagreement)",
+      "leg slack under 3% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): legFar 2.5%"
+    ]
+  },
+  "template": {
+    "id": "primate",
+    "version": 1,
+    "clipSetId": "primate-v1",
+    "graph": [
+      [
+        "pelvis",
+        "root"
+      ],
+      [
+        "spine",
+        "pelvis"
+      ],
+      [
+        "chest",
+        "spine"
+      ],
+      [
+        "neck",
+        "chest"
+      ],
+      [
+        "head",
+        "neck"
+      ],
+      [
+        "jaw",
+        "head"
+      ],
+      [
+        "armFarShoulder",
+        "chest"
+      ],
+      [
+        "armFarElbow",
+        "armFarShoulder"
+      ],
+      [
+        "armFarHand",
+        "armFarElbow"
+      ],
+      [
+        "armNearShoulder",
+        "chest"
+      ],
+      [
+        "armNearElbow",
+        "armNearShoulder"
+      ],
+      [
+        "armNearHand",
+        "armNearElbow"
+      ],
+      [
+        "legFarHip",
+        "pelvis"
+      ],
+      [
+        "legFarKnee",
+        "legFarHip"
+      ],
+      [
+        "legFarFoot",
+        "legFarKnee"
+      ],
+      [
+        "legNearHip",
+        "pelvis"
+      ],
+      [
+        "legNearKnee",
+        "legNearHip"
+      ],
+      [
+        "legNearFoot",
+        "legNearKnee"
+      ]
+    ],
+    "bodyAxis": [
+      "pelvis",
+      "chest"
+    ],
+    "joints": [
+      "root",
+      "pelvis",
+      "spine",
+      "chest",
+      "neck",
+      "head",
+      "jaw",
+      "armFarShoulder",
+      "armFarElbow",
+      "armFarHand",
+      "armNearShoulder",
+      "armNearElbow",
+      "armNearHand",
+      "legFarHip",
+      "legFarKnee",
+      "legFarFoot",
+      "legNearHip",
+      "legNearKnee",
+      "legNearFoot"
+    ],
+    "legs": [
+      "legFar",
+      "legNear"
+    ],
+    "limitsDeg": {
+      "root": {
+        "min": -30,
+        "max": 30
+      },
+      "pelvis": {
+        "min": -25,
+        "max": 25
+      },
+      "spine": {
+        "min": -30,
+        "max": 30
+      },
+      "chest": {
+        "min": -25,
+        "max": 25
+      },
+      "neck": {
+        "min": -35,
+        "max": 35
+      },
+      "head": {
+        "min": -40,
+        "max": 40
+      },
+      "jaw": {
+        "min": -35,
+        "max": 5
+      },
+      "armFarShoulder": {
+        "min": -100,
+        "max": 100
+      },
+      "armFarElbow": {
+        "min": -110,
+        "max": 110
+      },
+      "armFarHand": {
+        "min": -60,
+        "max": 60
+      },
+      "armNearShoulder": {
+        "min": -100,
+        "max": 100
+      },
+      "armNearElbow": {
+        "min": -110,
+        "max": 110
+      },
+      "armNearHand": {
+        "min": -60,
+        "max": 60
+      },
+      "legFarHip": {
+        "min": -80,
+        "max": 80
+      },
+      "legFarKnee": {
+        "min": -110,
+        "max": 110
+      },
+      "legFarFoot": {
+        "min": -50,
+        "max": 50
+      },
+      "legNearHip": {
+        "min": -80,
+        "max": 80
+      },
+      "legNearKnee": {
+        "min": -110,
+        "max": 110
+      },
+      "legNearFoot": {
+        "min": -50,
+        "max": 50
+      }
+    },
+    "bounds": [
+      {
+        "id": "body",
+        "min": 0.06,
+        "max": 0.6,
+        "kind": "distance",
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "bone-min",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-min"
+      },
+      {
+        "id": "bone-max",
+        "min": 0.001,
+        "max": 0.75,
+        "kind": "bone-max"
+      },
+      {
+        "id": "arm/torso:armFar",
+        "min": 0.5,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "armFarShoulder",
+          "armFarElbow",
+          "armFarHand"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "arm/torso:armNear",
+        "min": 0.5,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "armNearShoulder",
+          "armNearElbow",
+          "armNearHand"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:legFar",
+        "min": 0.5,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "legFarHip",
+          "legFarKnee",
+          "legFarFoot"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      },
+      {
+        "id": "leg/torso:legNear",
+        "min": 0.5,
+        "max": 4,
+        "kind": "ratio",
+        "bones": [
+          "legNearHip",
+          "legNearKnee",
+          "legNearFoot"
+        ],
+        "axis": [
+          "pelvis",
+          "chest"
+        ]
+      }
+    ]
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 4489.0225875377655
+      },
+      {
+        "id": "alert",
+        "startMs": 4489.0225875377655,
+        "endMs": 5089.0225875377655
+      },
+      {
+        "id": "approach:walk",
+        "startMs": 5089.0225875377655,
+        "endMs": 5789.0225875377655
+      },
+      {
+        "id": "approach:climb",
+        "startMs": 5789.0225875377655,
+        "endMs": 6489.0225875377655
+      },
+      {
+        "id": "melee:punch",
+        "startMs": 6489.0225875377655,
+        "endMs": 7275.6892542044325
+      },
+      {
+        "id": "melee:bite",
+        "startMs": 7275.6892542044325,
+        "endMs": 8062.355920871099
+      },
+      {
+        "id": "cast",
+        "startMs": 8062.355920871099,
+        "endMs": 8952.3559208711
+      },
+      {
+        "id": "hit",
+        "startMs": 8952.3559208711,
+        "endMs": 9682.3559208711
+      },
+      {
+        "id": "dodge",
+        "startMs": 9682.3559208711,
+        "endMs": 10282.3559208711
+      },
+      {
+        "id": "faint",
+        "startMs": 10282.3559208711,
+        "endMs": 11082.3559208711
+      },
+      {
+        "id": "victory",
+        "startMs": 11082.3559208711,
+        "endMs": 11962.3559208711
+      },
+      {
+        "id": "tame",
+        "startMs": 11962.3559208711,
+        "endMs": 12882.3559208711
+      },
+      {
+        "id": "feed",
+        "startMs": 12882.3559208711,
+        "endMs": 13742.3559208711
+      }
+    ],
+    "durationMs": 14742.3559208711
+  },
+  "scaleLength": 0.3794713886870498,
+  "compressionBound": 0.030357711094963987,
+  "compressionBoundPx": 38.06856971308484,
+  "chains": [
+    {
+      "id": "legFar",
+      "hip": "legFarHip",
+      "knee": "legFarKnee",
+      "end": "legFarFoot",
+      "terminal": null,
+      "root": {
+        "x": 0.23684210526315788,
+        "y": 0.5342902711323764
+      },
+      "joint": {
+        "x": 0.23524720893141945,
+        "y": 0.6323763955342903
+      },
+      "endPoint": {
+        "x": 0.11802232854864433,
+        "y": 0.8333333333333334
+      },
+      "support": {
+        "x": 0.12440191387559808,
+        "y": 0.8269537480063796
+      },
+      "model": {
+        "rest": [
+          0.12440191387559808,
+          0.8269537480063796
+        ],
+        "surface": {
+          "partId": "far-leg-lower-foot",
+          "vertexIndex": 255
+        },
+        "vertices": [
+          {
+            "rest": [
+              0.10885167464114832,
+              0.8273524720893142
+            ],
+            "barycentric": 0,
+            "weights": [
+              [
+                "legFarFoot",
+                1
+              ]
+            ]
+          },
+          {
+            "rest": [
+              0.12440191387559808,
+              0.8118022328548644
+            ],
+            "barycentric": 0,
+            "weights": [
+              [
+                "legFarFoot",
+                1
+              ]
+            ]
+          },
+          {
+            "rest": [
+              0.12440191387559808,
+              0.8269537480063796
+            ],
+            "barycentric": 1,
+            "weights": [
+              [
+                "legFarFoot",
+                1
+              ]
+            ]
+          }
+        ]
+      },
+      "offset": {
+        "x": 0.006379585326953749,
+        "y": -0.006379585326953818
+      },
+      "endpointOnly": true,
+      "lengths": {
+        "upper": 0.09809909018179894,
+        "lower": 0.23264858355537957
+      },
+      "minReach": 0.13454949337358063,
+      "maxReach": 0.3307476737371785
+    },
+    {
+      "id": "legNear",
+      "hip": "legNearHip",
+      "knee": "legNearKnee",
+      "end": "legNearFoot",
+      "terminal": null,
+      "root": {
+        "x": 0.24401913875598086,
+        "y": 0.43460925039872406
+      },
+      "joint": {
+        "x": 0.4059011164274322,
+        "y": 0.5877192982456141
+      },
+      "endPoint": {
+        "x": 0.3843700159489633,
+        "y": 0.8580542264752791
+      },
+      "support": {
+        "x": 0.39035087719298245,
+        "y": 0.8588516746411483
+      },
+      "model": {
+        "rest": [
+          0.39035087719298245,
+          0.8588516746411483
+        ],
+        "surface": {
+          "partId": "near-leg-lower-foot",
+          "vertexIndex": 238
+        },
+        "vertices": [
+          {
+            "rest": [
+              0.39035087719298245,
+              0.8588516746411483
+            ],
+            "barycentric": 1,
+            "weights": [
+              [
+                "legNearFoot",
+                1
+              ]
+            ]
+          },
+          {
+            "rest": [
+              0.3748006379585327,
+              0.8429027113237639
+            ],
+            "barycentric": 0,
+            "weights": [
+              [
+                "legNearFoot",
+                1
+              ]
+            ]
+          },
+          {
+            "rest": [
+              0.4059011164274322,
+              0.8429027113237639
+            ],
+            "barycentric": 0,
+            "weights": [
+              [
+                "legNearFoot",
+                1
+              ]
+            ]
+          }
+        ]
+      },
+      "offset": {
+        "x": 0.005980861244019142,
+        "y": 0.0007974481658692412
+      },
+      "endpointOnly": true,
+      "lengths": {
+        "upper": 0.22281934710993392,
+        "lower": 0.2711910059510677
+      },
+      "minReach": 0.048371658841133786,
+      "maxReach": 0.4940103530610016
+    }
+  ],
+  "results": [
+    {
+      "id": "dodge",
+      "ms": 44.333333333333336,
+      "phase": {
+        "actionId": "dodge",
+        "elapsedMs": 44.333333333333336,
+        "durationMs": 280,
+        "loop": false,
+        "realm": "land"
+      },
+      "error": "Error: Contact: joint limit legNearFoot dodge@44.333333333333336: -51.14672708234197",
+      "retainedErrorExact": true,
+      "attemptedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": -0.1506,
+          "dy": -0.03012
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": -0.063083,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": -0.063083,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": -0.315416,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": -0.210277,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarHand": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearShoulder": {
+          "rotation": -0.315416,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": -0.210277,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearHand": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarHip": {
+          "rotation": 0.262846,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.420554,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": 0.085745,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearHip": {
+          "rotation": 0.262846,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.358111,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": 0.073559,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "trace": [
+        {
+          "event": "compression",
+          "pass": 0,
+          "compression": 0,
+          "shift": 0,
+          "bound": 0.030357711094963987,
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.1506,
+              "dy": -0.03012
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": -0.063083,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": -0.063083,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": -0.315416,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.210277,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": -0.315416,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.210277,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.262846,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.420554,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarFoot": {
+              "rotation": 0.085745,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearHip": {
+              "rotation": 0.262846,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": -0.358111,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearFoot": {
+              "rotation": 0.073559,
+              "dx": 0,
+              "dy": 0
+            }
+          },
+          "chains": [
+            {
+              "id": "legFar",
+              "root": {
+                "x": 0.14460771732772384,
+                "y": 0.5059951222768232
+              },
+              "target": {
+                "x": 0.11802232854864433,
+                "y": 0.8333333333333334
+              },
+              "distance": 0.3284160277973826,
+              "min": 0.13454949337358063,
+              "max": 0.3307476737371785,
+              "requiredShift": 0
+            },
+            {
+              "id": "legNear",
+              "root": {
+                "x": 0.17743835635638877,
+                "y": 0.41160251215701865
+              },
+              "target": {
+                "x": 0.3843700159489633,
+                "y": 0.8580542264752791
+              },
+              "distance": 0.49207707217411656,
+              "min": 0.048371658841133786,
+              "max": 0.4940103530610016,
+              "requiredShift": 0
+            }
+          ]
+        },
+        {
+          "event": "solve",
+          "pass": 0,
+          "id": "legFar",
+          "root": {
+            "x": 0.14460771732772384,
+            "y": 0.5059951222768232
+          },
+          "target": {
+            "x": 0.11802232854864433,
+            "y": 0.8333333333333334
+          },
+          "parent": [
+            0.9656544141319799,
+            0.2598298529180637,
+            -0.2598298529180637,
+            0.9656544141319799,
+            0.054724655491922125,
+            -0.07148328584525931
+          ],
+          "lengths": {
+            "upper": 0.09809909018179894,
+            "lower": 0.23264858355537957
+          },
+          "distance": 0.3284160277973826,
+          "minimum": 0.13454949337358063,
+          "maximum": 0.3307476737371785
+        },
+        {
+          "event": "solve",
+          "pass": 0,
+          "id": "legNear",
+          "root": {
+            "x": 0.17743835635638877,
+            "y": 0.41160251215701865
+          },
+          "target": {
+            "x": 0.3843700159489633,
+            "y": 0.8580542264752791
+          },
+          "parent": [
+            0.9656544141319799,
+            0.2598298529180637,
+            -0.2598298529180637,
+            0.9656544141319799,
+            0.054724655491922125,
+            -0.07148328584525931
+          ],
+          "lengths": {
+            "upper": 0.22281934710993392,
+            "lower": 0.2711910059510677
+          },
+          "distance": 0.49207707217411656,
+          "minimum": 0.048371658841133786,
+          "maximum": 0.4940103530610016
+        },
+        {
+          "event": "compression",
+          "pass": 1,
+          "compression": 0,
+          "shift": 0.0005555405470197838,
+          "bound": 0.030357711094963987,
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.1506,
+              "dy": -0.03012
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": -0.063083,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": -0.063083,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": -0.315416,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.210277,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": -0.315416,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.210277,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.262846,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.38136853805421655
+            },
+            "legFarFoot": {
+              "rotation": -0.2515772783226553
+            },
+            "legNearHip": {
+              "rotation": 0.262846,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": 0.01870984078964888
+            },
+            "legNearFoot": {
+              "rotation": -0.7148633079260335
+            }
+          },
+          "chains": [
+            {
+              "id": "legFar",
+              "root": {
+                "x": 0.14460771732772384,
+                "y": 0.5059951222768232
+              },
+              "target": {
+                "x": 0.1207618325096124,
+                "y": 0.8352089297449466
+              },
+              "distance": 0.33007629004582756,
+              "min": 0.13454949337358063,
+              "max": 0.3307476737371785,
+              "requiredShift": 0
+            },
+            {
+              "id": "legNear",
+              "root": {
+                "x": 0.17743835635638877,
+                "y": 0.41160251215701865
+              },
+              "target": {
+                "x": 0.3845879267576243,
+                "y": 0.8606391385084933
+              },
+              "distance": 0.4945147483367207,
+              "min": 0.048371658841133786,
+              "max": 0.4940103530610016,
+              "requiredShift": 0.0005555405470197838
+            }
+          ]
+        },
+        {
+          "event": "solve",
+          "pass": 1,
+          "id": "legFar",
+          "root": {
+            "x": 0.14460771732772384,
+            "y": 0.506550662823843
+          },
+          "target": {
+            "x": 0.1207618325096124,
+            "y": 0.8352089297449466
+          },
+          "parent": [
+            0.9656544141319799,
+            0.2598298529180637,
+            -0.2598298529180637,
+            0.9656544141319799,
+            0.054724655491922125,
+            -0.07092774529823953
+          ],
+          "lengths": {
+            "upper": 0.09809909018179894,
+            "lower": 0.23264858355537957
+          },
+          "distance": 0.3295222035589439,
+          "minimum": 0.13454949337358063,
+          "maximum": 0.3307476737371785
+        },
+        {
+          "event": "solve",
+          "pass": 1,
+          "id": "legNear",
+          "root": {
+            "x": 0.17743835635638877,
+            "y": 0.41215805270403844
+          },
+          "target": {
+            "x": 0.3845879267576243,
+            "y": 0.8606391385084933
+          },
+          "parent": [
+            0.9656544141319799,
+            0.2598298529180637,
+            -0.2598298529180637,
+            0.9656544141319799,
+            0.054724655491922125,
+            -0.07092774529823953
+          ],
+          "lengths": {
+            "upper": 0.22281934710993392,
+            "lower": 0.2711910059510677
+          },
+          "distance": 0.49401035297021784,
+          "minimum": 0.048371658841133786,
+          "maximum": 0.4940103530610016
+        },
+        {
+          "event": "compression",
+          "pass": 2,
+          "compression": 0.0005555405470197838,
+          "shift": 0.0005217351053026231,
+          "bound": 0.030357711094963987,
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.1506,
+              "dy": -0.028656014667820088
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": -0.063083,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": -0.063083,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": -0.315416,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.210277,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": -0.315416,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.210277,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.262846,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.33941215313608086
+            },
+            "legFarFoot": {
+              "rotation": -0.323245516334391
+            },
+            "legNearHip": {
+              "rotation": 0.262846,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": 0.11767319813949344
+            },
+            "legNearFoot": {
+              "rotation": -0.8926787860338334
+            }
+          },
+          "chains": [
+            {
+              "id": "legFar",
+              "root": {
+                "x": 0.14460771732772384,
+                "y": 0.506550662823843
+              },
+              "target": {
+                "x": 0.12100867977332146,
+                "y": 0.8353134238502694
+              },
+              "distance": 0.3296086582770745,
+              "min": 0.13454949337358063,
+              "max": 0.3307476737371785,
+              "requiredShift": 0
+            },
+            {
+              "id": "legNear",
+              "root": {
+                "x": 0.17743835635638877,
+                "y": 0.41215805270403844
+              },
+              "target": {
+                "x": 0.3847466328048287,
+                "y": 0.8610875345730997
+              },
+              "distance": 0.49448397463946864,
+              "min": 0.048371658841133786,
+              "max": 0.4940103530610016,
+              "requiredShift": 0.0005217351053026231
+            }
+          ]
+        },
+        {
+          "event": "solve",
+          "pass": 2,
+          "id": "legFar",
+          "root": {
+            "x": 0.14460771732772384,
+            "y": 0.5070723979291456
+          },
+          "target": {
+            "x": 0.12100867977332146,
+            "y": 0.8353134238502694
+          },
+          "parent": [
+            0.9656544141319799,
+            0.2598298529180637,
+            -0.2598298529180637,
+            0.9656544141319799,
+            0.054724655491922125,
+            -0.07040601019293691
+          ],
+          "lengths": {
+            "upper": 0.09809909018179894,
+            "lower": 0.23264858355537957
+          },
+          "distance": 0.32908826425633286,
+          "minimum": 0.13454949337358063,
+          "maximum": 0.3307476737371785
+        },
+        {
+          "event": "solve",
+          "pass": 2,
+          "id": "legNear",
+          "root": {
+            "x": 0.17743835635638877,
+            "y": 0.41267978780934106
+          },
+          "target": {
+            "x": 0.3847466328048287,
+            "y": 0.8610875345730997
+          },
+          "parent": [
+            0.9656544141319799,
+            0.2598298529180637,
+            -0.2598298529180637,
+            0.9656544141319799,
+            0.054724655491922125,
+            -0.07040601019293691
+          ],
+          "lengths": {
+            "upper": 0.22281934710993392,
+            "lower": 0.2711910059510677
+          },
+          "distance": 0.4940103529702327,
+          "minimum": 0.048371658841133786,
+          "maximum": 0.4940103530610016
+        },
+        {
+          "event": "compression",
+          "pass": 3,
+          "compression": 0.001077275652322407,
+          "shift": 0.000002349218806041442,
+          "bound": 0.030357711094963987,
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.1506,
+              "dy": -0.027281114949799717
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": -0.063083,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": -0.063083,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": -0.315416,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.210277,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": -0.315416,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.210277,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.262846,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.3618616592626015
+            },
+            "legFarFoot": {
+              "rotation": -0.29234121850201245
+            },
+            "legNearHip": {
+              "rotation": 0.262846,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": 0.11731929637741743
+            },
+            "legNearFoot": {
+              "rotation": -0.892678789187763
+            }
+          },
+          "chains": [
+            {
+              "id": "legFar",
+              "root": {
+                "x": 0.14460771732772384,
+                "y": 0.5070723979291456
+              },
+              "target": {
+                "x": 0.12093812257680465,
+                "y": 0.8352844363168478
+              },
+              "distance": 0.3290644190098395,
+              "min": 0.13454949337358063,
+              "max": 0.3307476737371785,
+              "requiredShift": 0
+            },
+            {
+              "id": "legNear",
+              "root": {
+                "x": 0.17743835635638877,
+                "y": 0.41267978780934106
+              },
+              "target": {
+                "x": 0.3847474244375957,
+                "y": 0.8610895178026784
+              },
+              "distance": 0.49401248532946634,
+              "min": 0.048371658841133786,
+              "max": 0.4940103530610016,
+              "requiredShift": 0.000002349218806041442
+            }
+          ]
+        },
+        {
+          "event": "solve",
+          "pass": 3,
+          "id": "legFar",
+          "root": {
+            "x": 0.14460771732772384,
+            "y": 0.5070747471479516
+          },
+          "target": {
+            "x": 0.12093812257680465,
+            "y": 0.8352844363168478
+          },
+          "parent": [
+            0.9656544141319799,
+            0.2598298529180637,
+            -0.2598298529180637,
+            0.9656544141319799,
+            0.054724655491922125,
+            -0.07040366097413087
+          ],
+          "lengths": {
+            "upper": 0.09809909018179894,
+            "lower": 0.23264858355537957
+          },
+          "distance": 0.32906207587629444,
+          "minimum": 0.13454949337358063,
+          "maximum": 0.3307476737371785
+        },
+        {
+          "event": "solve",
+          "pass": 3,
+          "id": "legNear",
+          "root": {
+            "x": 0.17743835635638877,
+            "y": 0.4126821370281471
+          },
+          "target": {
+            "x": 0.3847474244375957,
+            "y": 0.8610895178026784
+          },
+          "parent": [
+            0.9656544141319799,
+            0.2598298529180637,
+            -0.2598298529180637,
+            0.9656544141319799,
+            0.054724655491922125,
+            -0.07040366097413087
+          ],
+          "lengths": {
+            "upper": 0.22281934710993392,
+            "lower": 0.2711910059510677
+          },
+          "distance": 0.4940103529702328,
+          "minimum": 0.048371658841133786,
+          "maximum": 0.4940103530610016
+        },
+        {
+          "event": "measure",
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.1506,
+              "dy": -0.027274924183180473
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": -0.063083,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": -0.063083,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": -0.315416,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.210277,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": -0.315416,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.210277,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.262846,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.36285981138791124
+            },
+            "legFarFoot": {
+              "rotation": -0.2906135193666001
+            },
+            "legNearHip": {
+              "rotation": 0.262846,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": 0.1173175309559884
+            },
+            "legNearFoot": {
+              "rotation": -0.8926787892058202
+            }
+          },
+          "contacts": [
+            {
+              "joint": "legFarFoot",
+              "target": {
+                "x": 0.11802232854864433,
+                "y": 0.8333333333333334
+              },
+              "endpointTarget": {
+                "x": 0.12093812257680465,
+                "y": 0.8352844363168478
+              },
+              "paintedTarget": {
+                "x": 0.12440191387559808,
+                "y": 0.8269537480063796
+              },
+              "stance": true
+            },
+            {
+              "joint": "legNearFoot",
+              "target": {
+                "x": 0.3843700159489633,
+                "y": 0.8580542264752791
+              },
+              "endpointTarget": {
+                "x": 0.3847474244375957,
+                "y": 0.8610895178026784
+              },
+              "paintedTarget": {
+                "x": 0.39035087719298245,
+                "y": 0.8588516746411483
+              },
+              "stance": true
+            }
+          ],
+          "compression": 0.0010796248711284484,
+          "limits": {
+            "root": {
+              "min": -30,
+              "max": 30
+            },
+            "pelvis": {
+              "min": -25,
+              "max": 25
+            },
+            "spine": {
+              "min": -30,
+              "max": 30
+            },
+            "chest": {
+              "min": -25,
+              "max": 25
+            },
+            "neck": {
+              "min": -35,
+              "max": 35
+            },
+            "head": {
+              "min": -40,
+              "max": 40
+            },
+            "jaw": {
+              "min": -35,
+              "max": 5
+            },
+            "armFarShoulder": {
+              "min": -100,
+              "max": 100
+            },
+            "armFarElbow": {
+              "min": -110,
+              "max": 110
+            },
+            "armFarHand": {
+              "min": -60,
+              "max": 60
+            },
+            "armNearShoulder": {
+              "min": -100,
+              "max": 100
+            },
+            "armNearElbow": {
+              "min": -110,
+              "max": 110
+            },
+            "armNearHand": {
+              "min": -60,
+              "max": 60
+            },
+            "legFarHip": {
+              "min": -80,
+              "max": 80
+            },
+            "legFarKnee": {
+              "min": -110,
+              "max": 110
+            },
+            "legFarFoot": {
+              "min": -50,
+              "max": 50
+            },
+            "legNearHip": {
+              "min": -80,
+              "max": 80
+            },
+            "legNearKnee": {
+              "min": -110,
+              "max": 110
+            },
+            "legNearFoot": {
+              "min": -50,
+              "max": 50
+            }
+          }
+        }
+      ],
+      "lastTrace": {
+        "event": "measure",
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": -0.1506,
+            "dy": -0.027274924183180473
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": -0.063083,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": -0.063083,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": -0.315416,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": -0.210277,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarHand": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearShoulder": {
+            "rotation": -0.315416,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": -0.210277,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearHand": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarHip": {
+            "rotation": 0.262846,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.36285981138791124
+          },
+          "legFarFoot": {
+            "rotation": -0.2906135193666001
+          },
+          "legNearHip": {
+            "rotation": 0.262846,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": 0.1173175309559884
+          },
+          "legNearFoot": {
+            "rotation": -0.8926787892058202
+          }
+        },
+        "contacts": [
+          {
+            "joint": "legFarFoot",
+            "target": {
+              "x": 0.11802232854864433,
+              "y": 0.8333333333333334
+            },
+            "endpointTarget": {
+              "x": 0.12093812257680465,
+              "y": 0.8352844363168478
+            },
+            "paintedTarget": {
+              "x": 0.12440191387559808,
+              "y": 0.8269537480063796
+            },
+            "stance": true
+          },
+          {
+            "joint": "legNearFoot",
+            "target": {
+              "x": 0.3843700159489633,
+              "y": 0.8580542264752791
+            },
+            "endpointTarget": {
+              "x": 0.3847474244375957,
+              "y": 0.8610895178026784
+            },
+            "paintedTarget": {
+              "x": 0.39035087719298245,
+              "y": 0.8588516746411483
+            },
+            "stance": true
+          }
+        ],
+        "compression": 0.0010796248711284484,
+        "limits": {
+          "root": {
+            "min": -30,
+            "max": 30
+          },
+          "pelvis": {
+            "min": -25,
+            "max": 25
+          },
+          "spine": {
+            "min": -30,
+            "max": 30
+          },
+          "chest": {
+            "min": -25,
+            "max": 25
+          },
+          "neck": {
+            "min": -35,
+            "max": 35
+          },
+          "head": {
+            "min": -40,
+            "max": 40
+          },
+          "jaw": {
+            "min": -35,
+            "max": 5
+          },
+          "armFarShoulder": {
+            "min": -100,
+            "max": 100
+          },
+          "armFarElbow": {
+            "min": -110,
+            "max": 110
+          },
+          "armFarHand": {
+            "min": -60,
+            "max": 60
+          },
+          "armNearShoulder": {
+            "min": -100,
+            "max": 100
+          },
+          "armNearElbow": {
+            "min": -110,
+            "max": 110
+          },
+          "armNearHand": {
+            "min": -60,
+            "max": 60
+          },
+          "legFarHip": {
+            "min": -80,
+            "max": 80
+          },
+          "legFarKnee": {
+            "min": -110,
+            "max": 110
+          },
+          "legFarFoot": {
+            "min": -50,
+            "max": 50
+          },
+          "legNearHip": {
+            "min": -80,
+            "max": 80
+          },
+          "legNearKnee": {
+            "min": -110,
+            "max": 110
+          },
+          "legNearFoot": {
+            "min": -50,
+            "max": 50
+          }
+        }
+      }
+    },
+    {
+      "id": "faint",
+      "ms": 359.6666666666667,
+      "phase": {
+        "actionId": "faint",
+        "elapsedMs": 359.6666666666667,
+        "durationMs": 520,
+        "loop": false,
+        "realm": "land"
+      },
+      "error": "Error: Contact: faint@359.6666666666667 exceeds scale compression bound",
+      "retainedErrorExact": true,
+      "attemptedPose": {
+        "root": {
+          "rotation": 0.167553,
+          "dx": -0.013714,
+          "dy": 0.162287
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": 0.187499,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": 0.263298,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0.344082,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": 0.528587,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": -0.64328,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarHand": {
+          "rotation": 0.119681,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearShoulder": {
+          "rotation": 0.528587,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": -0.64328,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearHand": {
+          "rotation": 0.119681,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarHip": {
+          "rotation": 0.64328,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.605877,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": 0.239945,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearHip": {
+          "rotation": 0.64328,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.515918,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": 0.205843,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "trace": [
+        {
+          "event": "compression",
+          "pass": 0,
+          "compression": 0,
+          "shift": 0.029274370530242233,
+          "bound": 0.030357711094963987,
+          "pose": {
+            "root": {
+              "rotation": 0.167553,
+              "dx": -0.013714,
+              "dy": 0.162287
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": 0.187499,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": 0.263298,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0.344082,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": 0.528587,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.64328,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0.119681,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": 0.528587,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.64328,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0.119681,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.64328,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.605877,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarFoot": {
+              "rotation": 0.239945,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearHip": {
+              "rotation": 0.64328,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": -0.515918,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearFoot": {
+              "rotation": 0.205843,
+              "dx": 0,
+              "dy": 0
+            }
+          },
+          "chains": [
+            {
+              "id": "legFar",
+              "root": {
+                "x": 0.13901005611145298,
+                "y": 0.47397785321290536
+              },
+              "target": {
+                "x": 0.11802232854864433,
+                "y": 0.8333333333333334
+              },
+              "distance": 0.3599678399535631,
+              "min": 0.13454949337358063,
+              "max": 0.3307476737371785,
+              "requiredShift": 0.029274370530242233
+            },
+            {
+              "id": "legNear",
+              "root": {
+                "x": 0.21620918941660033,
+                "y": 0.41051046378184386
+              },
+              "target": {
+                "x": 0.3843700159489633,
+                "y": 0.8580542264752791
+              },
+              "distance": 0.4780935924124536,
+              "min": 0.048371658841133786,
+              "max": 0.4940103530610016,
+              "requiredShift": 0
+            }
+          ]
+        },
+        {
+          "event": "solve",
+          "pass": 0,
+          "id": "legFar",
+          "root": {
+            "x": 0.13901005611145298,
+            "y": 0.5032522237431476
+          },
+          "target": {
+            "x": 0.11802232854864433,
+            "y": 0.8333333333333334
+          },
+          "parent": [
+            0.6888948625875956,
+            0.7248612752109315,
+            -0.7248612752109315,
+            0.6888948625875956,
+            0.36313707381704163,
+            -0.03649526961517437
+          ],
+          "lengths": {
+            "upper": 0.09809909018179894,
+            "lower": 0.23264858355537957
+          },
+          "distance": 0.3307476736373801,
+          "minimum": 0.13454949337358063,
+          "maximum": 0.3307476737371785
+        },
+        {
+          "event": "solve",
+          "pass": 0,
+          "id": "legNear",
+          "root": {
+            "x": 0.21620918941660033,
+            "y": 0.4397848343120861
+          },
+          "target": {
+            "x": 0.3843700159489633,
+            "y": 0.8580542264752791
+          },
+          "parent": [
+            0.6888948625875956,
+            0.7248612752109315,
+            -0.7248612752109315,
+            0.6888948625875956,
+            0.36313707381704163,
+            -0.03649526961517437
+          ],
+          "lengths": {
+            "upper": 0.22281934710993392,
+            "lower": 0.2711910059510677
+          },
+          "distance": 0.45080744004576323,
+          "minimum": 0.048371658841133786,
+          "maximum": 0.4940103530610016
+        },
+        {
+          "event": "compression",
+          "pass": 1,
+          "compression": 0.029274370530242233,
+          "shift": 0.0019763863240926938,
+          "bound": 0.030357711094963987,
+          "pose": {
+            "root": {
+              "rotation": 0.167553,
+              "dx": -0.013714,
+              "dy": 0.23943213242099737
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": 0.187499,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": 0.263298,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0.344082,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": 0.528587,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.64328,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0.119681,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": 0.528587,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.64328,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0.119681,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.64328,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.7636314935723327
+            },
+            "legFarFoot": {
+              "rotation": -0.5117619359326289
+            },
+            "legNearHip": {
+              "rotation": 0.64328,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": -0.8474595350060761
+            },
+            "legNearFoot": {
+              "rotation": -0.045730800690883734
+            }
+          },
+          "chains": [
+            {
+              "id": "legFar",
+              "root": {
+                "x": 0.13901005611145298,
+                "y": 0.5032522237431476
+              },
+              "target": {
+                "x": 0.12155669070409887,
+                "y": 0.8355154606266519
+              },
+              "distance": 0.33272132265357796,
+              "min": 0.13454949337358063,
+              "max": 0.3307476737371785,
+              "requiredShift": 0.0019763863240926938
+            },
+            {
+              "id": "legNear",
+              "root": {
+                "x": 0.21620918941660033,
+                "y": 0.4397848343120861
+              },
+              "target": {
+                "x": 0.3843246862845646,
+                "y": 0.8585489405453469
+              },
+              "distance": 0.4512495949654739,
+              "min": 0.048371658841133786,
+              "max": 0.4940103530610016,
+              "requiredShift": 0
+            }
+          ]
+        }
+      ],
+      "lastTrace": {
+        "event": "compression",
+        "pass": 1,
+        "compression": 0.029274370530242233,
+        "shift": 0.0019763863240926938,
+        "bound": 0.030357711094963987,
+        "pose": {
+          "root": {
+            "rotation": 0.167553,
+            "dx": -0.013714,
+            "dy": 0.23943213242099737
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0.187499,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0.263298,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0.344082,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0.528587,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": -0.64328,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarHand": {
+            "rotation": 0.119681,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearShoulder": {
+            "rotation": 0.528587,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": -0.64328,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearHand": {
+            "rotation": 0.119681,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarHip": {
+            "rotation": 0.64328,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.7636314935723327
+          },
+          "legFarFoot": {
+            "rotation": -0.5117619359326289
+          },
+          "legNearHip": {
+            "rotation": 0.64328,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.8474595350060761
+          },
+          "legNearFoot": {
+            "rotation": -0.045730800690883734
+          }
+        },
+        "chains": [
+          {
+            "id": "legFar",
+            "root": {
+              "x": 0.13901005611145298,
+              "y": 0.5032522237431476
+            },
+            "target": {
+              "x": 0.12155669070409887,
+              "y": 0.8355154606266519
+            },
+            "distance": 0.33272132265357796,
+            "min": 0.13454949337358063,
+            "max": 0.3307476737371785,
+            "requiredShift": 0.0019763863240926938
+          },
+          {
+            "id": "legNear",
+            "root": {
+              "x": 0.21620918941660033,
+              "y": 0.4397848343120861
+            },
+            "target": {
+              "x": 0.3843246862845646,
+              "y": 0.8585489405453469
+            },
+            "distance": 0.4512495949654739,
+            "min": 0.048371658841133786,
+            "max": 0.4940103530610016,
+            "requiredShift": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "presentation",
+      "ms": 9850,
+      "phase": {
+        "actionId": "dodge",
+        "elapsedMs": 47.64407912890056,
+        "durationMs": 280,
+        "weight": 1,
+        "realm": "land"
+      },
+      "error": "Error: Contact: joint limit legNearFoot dodge@47.64407912890056: -51.146731326657175",
+      "retainedErrorExact": true,
+      "attemptedPose": {
+        "root": {
+          "rotation": 0,
+          "dx": -0.159108,
+          "dy": -0.031822
+        },
+        "pelvis": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "spine": {
+          "rotation": -0.066647,
+          "dx": 0,
+          "dy": 0
+        },
+        "chest": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "neck": {
+          "rotation": -0.066647,
+          "dx": 0,
+          "dy": 0
+        },
+        "head": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "jaw": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarShoulder": {
+          "rotation": -0.333235,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarElbow": {
+          "rotation": -0.222157,
+          "dx": 0,
+          "dy": 0
+        },
+        "armFarHand": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearShoulder": {
+          "rotation": -0.333235,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearElbow": {
+          "rotation": -0.222157,
+          "dx": 0,
+          "dy": 0
+        },
+        "armNearHand": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarHip": {
+          "rotation": 0.277696,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarKnee": {
+          "rotation": -0.444313,
+          "dx": 0,
+          "dy": 0
+        },
+        "legFarFoot": {
+          "rotation": 0.09059,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearHip": {
+          "rotation": 0.277696,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearKnee": {
+          "rotation": -0.378343,
+          "dx": 0,
+          "dy": 0
+        },
+        "legNearFoot": {
+          "rotation": 0.077715,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "trace": [
+        {
+          "event": "compression",
+          "pass": 0,
+          "compression": 0,
+          "shift": 0.0009493695286938997,
+          "bound": 0.030357711094963987,
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.159108,
+              "dy": -0.031822
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": -0.066647,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": -0.066647,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": -0.333235,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.222157,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": -0.333235,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.222157,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.277696,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.444313,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarFoot": {
+              "rotation": 0.09059,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearHip": {
+              "rotation": 0.277696,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": -0.378343,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearFoot": {
+              "rotation": 0.077715,
+              "dx": 0,
+              "dy": 0
+            }
+          },
+          "chains": [
+            {
+              "id": "legFar",
+              "root": {
+                "x": 0.13954261045569885,
+                "y": 0.5041277338776896
+              },
+              "target": {
+                "x": 0.11802232854864433,
+                "y": 0.8333333333333334
+              },
+              "distance": 0.3299082436774032,
+              "min": 0.13454949337358063,
+              "max": 0.3307476737371785,
+              "requiredShift": 0
+            },
+            {
+              "id": "legNear",
+              "root": {
+                "x": 0.17377130834559262,
+                "y": 0.4102330484848395
+              },
+              "target": {
+                "x": 0.3843700159489633,
+                "y": 0.8580542264752791
+              },
+              "distance": 0.49486929900828863,
+              "min": 0.048371658841133786,
+              "max": 0.4940103530610016,
+              "requiredShift": 0.0009493695286938997
+            }
+          ]
+        },
+        {
+          "event": "solve",
+          "pass": 0,
+          "id": "legFar",
+          "root": {
+            "x": 0.13954261045569885,
+            "y": 0.5050771034063836
+          },
+          "target": {
+            "x": 0.11802232854864433,
+            "y": 0.8333333333333334
+          },
+          "parent": [
+            0.9616896103218263,
+            0.27414064528824234,
+            -0.27414064528824234,
+            0.9616896103218263,
+            0.05824469823683121,
+            -0.07367234680592229
+          ],
+          "lengths": {
+            "upper": 0.09809909018179894,
+            "lower": 0.23264858355537957
+          },
+          "distance": 0.3289609019613328,
+          "minimum": 0.13454949337358063,
+          "maximum": 0.3307476737371785
+        },
+        {
+          "event": "solve",
+          "pass": 0,
+          "id": "legNear",
+          "root": {
+            "x": 0.17377130834559262,
+            "y": 0.4111824180135334
+          },
+          "target": {
+            "x": 0.3843700159489633,
+            "y": 0.8580542264752791
+          },
+          "parent": [
+            0.9616896103218263,
+            0.27414064528824234,
+            -0.27414064528824234,
+            0.9616896103218263,
+            0.05824469823683121,
+            -0.07367234680592229
+          ],
+          "lengths": {
+            "upper": 0.22281934710993392,
+            "lower": 0.2711910059510677
+          },
+          "distance": 0.49401035297054363,
+          "minimum": 0.048371658841133786,
+          "maximum": 0.4940103530610016
+        },
+        {
+          "event": "compression",
+          "pass": 1,
+          "compression": 0.0009493695286938997,
+          "shift": 0.0032623177183269125,
+          "bound": 0.030357711094963987,
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.159108,
+              "dy": -0.029320178895703666
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": -0.066647,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": -0.066647,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": -0.333235,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.222157,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": -0.333235,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.222157,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.277696,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.38885975733024153
+            },
+            "legFarFoot": {
+              "rotation": -0.28406121483986313
+            },
+            "legNearHip": {
+              "rotation": 0.277696,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": 0.09511874292858868
+            },
+            "legNearFoot": {
+              "rotation": -0.8926788552267955
+            }
+          },
+          "chains": [
+            {
+              "id": "legFar",
+              "root": {
+                "x": 0.13954261045569885,
+                "y": 0.5050771034063836
+              },
+              "target": {
+                "x": 0.12097037229815355,
+                "y": 0.8352977722327368
+              },
+              "distance": 0.330742525464,
+              "min": 0.13454949337358063,
+              "max": 0.3307476737371785,
+              "requiredShift": 0
+            },
+            {
+              "id": "legNear",
+              "root": {
+                "x": 0.17377130834559262,
+                "y": 0.4111824180135334
+              },
+              "target": {
+                "x": 0.3847640252041141,
+                "y": 0.8611306458239272
+              },
+              "distance": 0.4969621054739025,
+              "min": 0.048371658841133786,
+              "max": 0.4940103530610016,
+              "requiredShift": 0.0032623177183269125
+            }
+          ]
+        },
+        {
+          "event": "solve",
+          "pass": 1,
+          "id": "legFar",
+          "root": {
+            "x": 0.13954261045569885,
+            "y": 0.5083394211247104
+          },
+          "target": {
+            "x": 0.12097037229815355,
+            "y": 0.8352977722327368
+          },
+          "parent": [
+            0.9616896103218263,
+            0.27414064528824234,
+            -0.27414064528824234,
+            0.9616896103218263,
+            0.05824469823683121,
+            -0.07041002908759537
+          ],
+          "lengths": {
+            "upper": 0.09809909018179894,
+            "lower": 0.23264858355537957
+          },
+          "distance": 0.32748540637631474,
+          "minimum": 0.13454949337358063,
+          "maximum": 0.3307476737371785
+        },
+        {
+          "event": "solve",
+          "pass": 1,
+          "id": "legNear",
+          "root": {
+            "x": 0.17377130834559262,
+            "y": 0.4144447357318603
+          },
+          "target": {
+            "x": 0.3847640252041141,
+            "y": 0.8611306458239272
+          },
+          "parent": [
+            0.9616896103218263,
+            0.27414064528824234,
+            -0.27414064528824234,
+            0.9616896103218263,
+            0.05824469823683121,
+            -0.07041002908759537
+          ],
+          "lengths": {
+            "upper": 0.22281934710993392,
+            "lower": 0.2711910059510677
+          },
+          "distance": 0.4940103529705812,
+          "minimum": 0.048371658841133786,
+          "maximum": 0.4940103530610016
+        },
+        {
+          "event": "compression",
+          "pass": 2,
+          "compression": 0.004211687247020812,
+          "shift": 0.000005876481799116373,
+          "bound": 0.030357711094963987,
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.159108,
+              "dy": -0.02072317312508588
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": -0.066647,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": -0.066647,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": -0.333235,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.222157,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": -0.333235,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.222157,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.277696,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.45424343999855427
+            },
+            "legFarFoot": {
+              "rotation": -0.20386275576365318
+            },
+            "legNearHip": {
+              "rotation": 0.277696,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": 0.09423685860981044
+            },
+            "legNearFoot": {
+              "rotation": -0.8926788632167559
+            }
+          },
+          "chains": [
+            {
+              "id": "legFar",
+              "root": {
+                "x": 0.13954261045569885,
+                "y": 0.5083394211247104
+              },
+              "target": {
+                "x": 0.12084713853299774,
+                "y": 0.8352460209246697
+              },
+              "distance": 0.32744075137829626,
+              "min": 0.13454949337358063,
+              "max": 0.3307476737371785,
+              "requiredShift": 0
+            },
+            {
+              "id": "legNear",
+              "root": {
+                "x": 0.17377130834559262,
+                "y": 0.4144447357318603
+              },
+              "target": {
+                "x": 0.38476603718355384,
+                "y": 0.8611355719388708
+              },
+              "distance": 0.49401566650129936,
+              "min": 0.048371658841133786,
+              "max": 0.4940103530610016,
+              "requiredShift": 0.000005876481799116373
+            }
+          ]
+        },
+        {
+          "event": "solve",
+          "pass": 2,
+          "id": "legFar",
+          "root": {
+            "x": 0.13954261045569885,
+            "y": 0.5083452976065096
+          },
+          "target": {
+            "x": 0.12084713853299774,
+            "y": 0.8352460209246697
+          },
+          "parent": [
+            0.9616896103218263,
+            0.27414064528824234,
+            -0.27414064528824234,
+            0.9616896103218263,
+            0.05824469823683121,
+            -0.07040415260579626
+          ],
+          "lengths": {
+            "upper": 0.09809909018179894,
+            "lower": 0.23264858355537957
+          },
+          "distance": 0.32743488448292857,
+          "minimum": 0.13454949337358063,
+          "maximum": 0.3307476737371785
+        },
+        {
+          "event": "solve",
+          "pass": 2,
+          "id": "legNear",
+          "root": {
+            "x": 0.17377130834559262,
+            "y": 0.4144506122136594
+          },
+          "target": {
+            "x": 0.38476603718355384,
+            "y": 0.8611355719388708
+          },
+          "parent": [
+            0.9616896103218263,
+            0.27414064528824234,
+            -0.27414064528824234,
+            0.9616896103218263,
+            0.05824469823683121,
+            -0.07040415260579626
+          ],
+          "lengths": {
+            "upper": 0.22281934710993392,
+            "lower": 0.2711910059510677
+          },
+          "distance": 0.4940103529705815,
+          "minimum": 0.048371658841133786,
+          "maximum": 0.4940103530610016
+        },
+        {
+          "event": "compression",
+          "pass": 3,
+          "compression": 0.004217563728819929,
+          "shift": 3.0014918661613876e-8,
+          "bound": 0.030357711094963987,
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.159108,
+              "dy": -0.020707687157041098
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": -0.066647,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": -0.066647,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": -0.333235,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.222157,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": -0.333235,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.222157,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.277696,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.4555434094996314
+            },
+            "legFarFoot": {
+              "rotation": -0.20148015455002222
+            },
+            "legNearHip": {
+              "rotation": 0.277696,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": 0.09423235440390754
+            },
+            "legNearFoot": {
+              "rotation": -0.8926788632830943
+            }
+          },
+          "chains": [
+            {
+              "id": "legFar",
+              "root": {
+                "x": 0.13954261045569885,
+                "y": 0.5083452976065096
+              },
+              "target": {
+                "x": 0.12083816314038162,
+                "y": 0.8352421675532541
+              },
+              "distance": 0.327431549992285,
+              "min": 0.13454949337358063,
+              "max": 0.3307476737371785,
+              "requiredShift": 0
+            },
+            {
+              "id": "legNear",
+              "root": {
+                "x": 0.17377130834559262,
+                "y": 0.4144506122136594
+              },
+              "target": {
+                "x": 0.3847660474709057,
+                "y": 0.8611355970944875
+              },
+              "distance": 0.4940103801101193,
+              "min": 0.048371658841133786,
+              "max": 0.4940103530610016,
+              "requiredShift": 3.0014918661613876e-8
+            }
+          ]
+        },
+        {
+          "event": "solve",
+          "pass": 3,
+          "id": "legFar",
+          "root": {
+            "x": 0.13954261045569885,
+            "y": 0.5083453276214283
+          },
+          "target": {
+            "x": 0.12083816314038162,
+            "y": 0.8352421675532541
+          },
+          "parent": [
+            0.9616896103218263,
+            0.27414064528824234,
+            -0.27414064528824234,
+            0.9616896103218263,
+            0.05824469823683121,
+            -0.0704041225908776
+          ],
+          "lengths": {
+            "upper": 0.09809909018179894,
+            "lower": 0.23264858355537957
+          },
+          "distance": 0.32743152002637926,
+          "minimum": 0.13454949337358063,
+          "maximum": 0.3307476737371785
+        },
+        {
+          "event": "solve",
+          "pass": 3,
+          "id": "legNear",
+          "root": {
+            "x": 0.17377130834559262,
+            "y": 0.4144506422285781
+          },
+          "target": {
+            "x": 0.3847660474709057,
+            "y": 0.8611355970944875
+          },
+          "parent": [
+            0.9616896103218263,
+            0.27414064528824234,
+            -0.27414064528824234,
+            0.9616896103218263,
+            0.05824469823683121,
+            -0.0704041225908776
+          ],
+          "lengths": {
+            "upper": 0.22281934710993392,
+            "lower": 0.2711910059510677
+          },
+          "distance": 0.4940103529705815,
+          "minimum": 0.048371658841133786,
+          "maximum": 0.4940103530610016
+        },
+        {
+          "event": "measure",
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.159108,
+              "dy": -0.020707608060383072
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": -0.066647,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": -0.066647,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": -0.333235,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.222157,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": -0.333235,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.222157,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.277696,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.4556271750348309
+            },
+            "legFarFoot": {
+              "rotation": -0.20132212902297525
+            },
+            "legNearHip": {
+              "rotation": 0.277696,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": 0.0942323313734661
+            },
+            "legNearFoot": {
+              "rotation": -0.892678863283095
+            }
+          },
+          "contacts": [
+            {
+              "joint": "legFarFoot",
+              "target": {
+                "x": 0.11802232854864433,
+                "y": 0.8333333333333334
+              },
+              "endpointTarget": {
+                "x": 0.12083816314038162,
+                "y": 0.8352421675532541
+              },
+              "paintedTarget": {
+                "x": 0.12440191387559808,
+                "y": 0.8269537480063796
+              },
+              "stance": true
+            },
+            {
+              "joint": "legNearFoot",
+              "target": {
+                "x": 0.3843700159489633,
+                "y": 0.8580542264752791
+              },
+              "endpointTarget": {
+                "x": 0.3847660474709057,
+                "y": 0.8611355970944875
+              },
+              "paintedTarget": {
+                "x": 0.39035087719298245,
+                "y": 0.8588516746411483
+              },
+              "stance": true
+            }
+          ],
+          "compression": 0.00421759374373859,
+          "limits": {
+            "root": {
+              "min": -30,
+              "max": 30
+            },
+            "pelvis": {
+              "min": -25,
+              "max": 25
+            },
+            "spine": {
+              "min": -30,
+              "max": 30
+            },
+            "chest": {
+              "min": -25,
+              "max": 25
+            },
+            "neck": {
+              "min": -35,
+              "max": 35
+            },
+            "head": {
+              "min": -40,
+              "max": 40
+            },
+            "jaw": {
+              "min": -35,
+              "max": 5
+            },
+            "armFarShoulder": {
+              "min": -100,
+              "max": 100
+            },
+            "armFarElbow": {
+              "min": -110,
+              "max": 110
+            },
+            "armFarHand": {
+              "min": -60,
+              "max": 60
+            },
+            "armNearShoulder": {
+              "min": -100,
+              "max": 100
+            },
+            "armNearElbow": {
+              "min": -110,
+              "max": 110
+            },
+            "armNearHand": {
+              "min": -60,
+              "max": 60
+            },
+            "legFarHip": {
+              "min": -80,
+              "max": 80
+            },
+            "legFarKnee": {
+              "min": -110,
+              "max": 110
+            },
+            "legFarFoot": {
+              "min": -50,
+              "max": 50
+            },
+            "legNearHip": {
+              "min": -80,
+              "max": 80
+            },
+            "legNearKnee": {
+              "min": -110,
+              "max": 110
+            },
+            "legNearFoot": {
+              "min": -50,
+              "max": 50
+            }
+          }
+        }
+      ],
+      "lastTrace": {
+        "event": "measure",
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": -0.159108,
+            "dy": -0.020707608060383072
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": -0.066647,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": -0.066647,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": -0.333235,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": -0.222157,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarHand": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearShoulder": {
+            "rotation": -0.333235,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": -0.222157,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearHand": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarHip": {
+            "rotation": 0.277696,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.4556271750348309
+          },
+          "legFarFoot": {
+            "rotation": -0.20132212902297525
+          },
+          "legNearHip": {
+            "rotation": 0.277696,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": 0.0942323313734661
+          },
+          "legNearFoot": {
+            "rotation": -0.892678863283095
+          }
+        },
+        "contacts": [
+          {
+            "joint": "legFarFoot",
+            "target": {
+              "x": 0.11802232854864433,
+              "y": 0.8333333333333334
+            },
+            "endpointTarget": {
+              "x": 0.12083816314038162,
+              "y": 0.8352421675532541
+            },
+            "paintedTarget": {
+              "x": 0.12440191387559808,
+              "y": 0.8269537480063796
+            },
+            "stance": true
+          },
+          {
+            "joint": "legNearFoot",
+            "target": {
+              "x": 0.3843700159489633,
+              "y": 0.8580542264752791
+            },
+            "endpointTarget": {
+              "x": 0.3847660474709057,
+              "y": 0.8611355970944875
+            },
+            "paintedTarget": {
+              "x": 0.39035087719298245,
+              "y": 0.8588516746411483
+            },
+            "stance": true
+          }
+        ],
+        "compression": 0.00421759374373859,
+        "limits": {
+          "root": {
+            "min": -30,
+            "max": 30
+          },
+          "pelvis": {
+            "min": -25,
+            "max": 25
+          },
+          "spine": {
+            "min": -30,
+            "max": 30
+          },
+          "chest": {
+            "min": -25,
+            "max": 25
+          },
+          "neck": {
+            "min": -35,
+            "max": 35
+          },
+          "head": {
+            "min": -40,
+            "max": 40
+          },
+          "jaw": {
+            "min": -35,
+            "max": 5
+          },
+          "armFarShoulder": {
+            "min": -100,
+            "max": 100
+          },
+          "armFarElbow": {
+            "min": -110,
+            "max": 110
+          },
+          "armFarHand": {
+            "min": -60,
+            "max": 60
+          },
+          "armNearShoulder": {
+            "min": -100,
+            "max": 100
+          },
+          "armNearElbow": {
+            "min": -110,
+            "max": 110
+          },
+          "armNearHand": {
+            "min": -60,
+            "max": 60
+          },
+          "legFarHip": {
+            "min": -80,
+            "max": 80
+          },
+          "legFarKnee": {
+            "min": -110,
+            "max": 110
+          },
+          "legFarFoot": {
+            "min": -50,
+            "max": 50
+          },
+          "legNearHip": {
+            "min": -80,
+            "max": 80
+          },
+          "legNearKnee": {
+            "min": -110,
+            "max": 110
+          },
+          "legNearFoot": {
+            "min": -50,
+            "max": 50
+          }
+        }
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/07-primate/static.json",
+      "sha256": "d476b2883ece23fb88d9b3992c48b0bc4c5aec9daeb03644040235b16dd06897",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/07-primate/fit-01/record.json",
+      "sha256": "ff606c057e360f5e2072aeeab346f34acfca159a5a796abfec735be6d4f2a633",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/07-primate/fit-01/binding.json",
+      "sha256": "953a41c7893a1d58bcdeb451e1fc2ffbf78b3a0ccc0d922bd7ec489d606755d2",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/07-primate/authoring.json",
+      "sha256": "2db59e9bd0718ce1ad24e89f0643e2f34a98d876ffbe1dad072fcb164ee0cdd2",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/07-primate/presence.json",
+      "sha256": "d986f997305b8791db32ac13a99a9368060f4df703b93b8cae4f9a6583b299ee",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/07-primate/subject-source.json",
+      "sha256": "9652f406d364002c708254c8e3abdc4828d9d408f4ac421cadfeeaffc9a7bbbe",
+      "unchanged": true
+    }
+  ]
+}

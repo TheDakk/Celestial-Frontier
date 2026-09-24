@@ -1,0 +1,9 @@
+Codex explicit presence declaration for the delivered Chimpanzee master.
+
+This ape has no tail: absent=[tail]. Both arms, both hands with chunky weight-bearing knuckles, both hind legs and both feet are painted and separately readable. Hidden chains: none. Folded leg chains: none; ordinary bent knees are not declared folded or body-planted chains.
+
+All nineteen joints in the tail-absent primate inventory are assigned from this image. The near-side hand is the central-right knuckle group and the far-side hand is farther right; the near hind foot is the broad central foot and the far hind foot extends rearward to the left. The ears are included in the head-owned surface because the existing contract has no separate ear articulation.
+
+Priority polygons give the visible foreground limbs ownership before the far limbs. A distal arm surface includes forearm and hand under the existing Elbow-to-Hand segment, without inventing a wrist joint. Distal hind-leg surfaces include shin and foot under Knee-to-Foot. The explicit root-owned body remainder receives otherwise unclaimed positive-alpha pixels.
+
+materials.surface is the supported exact token fur, verified in motion/secondary.ts; descriptive material prose is not passed to the compiler. No missing feature is silently inferred from a mask or landmark failure. This is a first authored fit for measurement and Nick's later art review, not a predeclared animation PASS.

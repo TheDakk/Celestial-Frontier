@@ -1,0 +1,23 @@
+{
+  "schema": "cf.signing-attempts/v1",
+  "status": "AWAITING_RENEWED_USER_APPROVAL",
+  "sourceHead": "7158fc13ce1ffb5791845c96f2013634ee0512c0",
+  "command": "git commit -S -q -m 'Complete Tarantula archetype with corrected source pose and support policy'",
+  "execution": "require_escalated; /bin/zsh login:false; configured SSH signing wrapper unchanged",
+  "attempts": [
+    {
+      "toolChunk": "060985",
+      "exitCode": 128,
+      "error": "Couldn't sign message (signer): agent refused operation?; fatal: failed to write commit object",
+      "stderr": "error: Signing file /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmpx3BNB8\nCouldn't sign message (signer): agent refused operation?\nSigning /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmpx3BNB8 failed: agent refused operation?\n\nfatal: failed to write commit object\n"
+    },
+    {
+      "toolChunk": "7725ac",
+      "exitCode": 128,
+      "error": "Couldn't sign message (signer): agent refused operation?; fatal: failed to write commit object",
+      "stderr": "error: Signing file /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmpaII1C4\nCouldn't sign message (signer): agent refused operation?\nSigning /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmpaII1C4 failed: agent refused operation?\n\nfatal: failed to write commit object\n"
+    }
+  ],
+  "rule": "PARALLEL_GIT_PROTOCOL.md: stop after one retry, ask Nick to approve until quit, then retry once. No unsigned commit or signing configuration change.",
+  "scope": "Tarantula source and local technical acceptance are complete. No item commit exists yet; no next item or push begun."
+}

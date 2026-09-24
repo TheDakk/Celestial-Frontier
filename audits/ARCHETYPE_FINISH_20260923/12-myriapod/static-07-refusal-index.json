@@ -1,0 +1,89 @@
+{
+  "schema": "cf.static-refusal-index/v1",
+  "startTool": "8c26a9",
+  "completionTool": "03b9e2",
+  "exitCode": 1,
+  "fit": "fit-11",
+  "candidate": "candidate-13",
+  "recordRecipeHash": "39962065dde06970c0b494e3e2b959d363202fef2d9804658abc1a6bfacb7b16",
+  "bindingHash": "c67037345e169e813839fc96b66b0f1c05758cb0c9124a8326c2e42fa15a10aa",
+  "status": "RED",
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "status": "PASS",
+      "samples": 121
+    },
+    {
+      "id": "alert",
+      "status": "PASS",
+      "samples": 121
+    },
+    {
+      "id": "approach:crawl",
+      "status": "PASS",
+      "samples": 121
+    },
+    {
+      "id": "melee:mandible",
+      "status": "PASS",
+      "samples": 121
+    },
+    {
+      "id": "melee:body",
+      "status": "PASS",
+      "samples": 121
+    },
+    {
+      "id": "cast",
+      "status": "PASS",
+      "samples": 121
+    },
+    {
+      "id": "hit",
+      "status": "PASS",
+      "samples": 121
+    },
+    {
+      "id": "dodge",
+      "status": "PASS",
+      "samples": 121
+    },
+    {
+      "id": "faint",
+      "status": "PASS",
+      "samples": 121
+    },
+    {
+      "id": "victory",
+      "status": "PASS",
+      "samples": 121
+    },
+    {
+      "id": "tame",
+      "status": "PASS",
+      "samples": 121
+    },
+    {
+      "id": "feed",
+      "status": "PASS",
+      "samples": 121
+    }
+  ],
+  "presentation": {
+    "status": "RED",
+    "samples": 704,
+    "firstRefusal": {
+      "ms": 11733.333333333334,
+      "error": "Error: Contact: tame@722.6853397116065 leg0Far outside accommodatable reach",
+      "action": "tame"
+    }
+  },
+  "next": "Diagnose actual blended tame return-home phase before any change. No native attempt."
+}

@@ -1,0 +1,50 @@
+{
+  "native": {
+    "startReceipt": "055a5a",
+    "completionReceipt": "e4455b",
+    "exitCode": 0,
+    "command": "CF_BROWSER='/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge' node tools/with-toolchain-lock.mjs --label python-current-native-diagnostic -- node port/v2/tools/battle2-proof/native-runner.mjs audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01 audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01 audits/PYTHON_VISUAL_DIAGNOSIS_20260923/native-01 audits/PYTHON_VISUAL_DIAGNOSIS_20260923/native-script-01.json"
+  },
+  "originalSynthetic": {
+    "receipt": "898dda",
+    "exitCode": 0
+  },
+  "candidateBuild": {
+    "receipt": "d25bae",
+    "exitCode": 0
+  },
+  "candidateStatic": {
+    "receipt": "a4b380",
+    "exitCode": 1
+  },
+  "candidateSynthetic": {
+    "receipt": "a95733",
+    "exitCode": 0
+  },
+  "inspectionOnlyErrors": [
+    {
+      "receipt": "cfee3b",
+      "exitCode": 2,
+      "path": "family-contract.mjs",
+      "resolution": "Actual plural family-contracts.mjs used"
+    },
+    {
+      "receipt": "66c9d5",
+      "exitCode": 2,
+      "path": "parts-writer.mjs",
+      "resolution": "Actual intake owner identified from execution.json"
+    },
+    {
+      "receipt": "1cd2c2",
+      "exitCode": 0,
+      "stderr": "turn-plan.ts path absent",
+      "resolution": "Actual choreography.ts read"
+    },
+    {
+      "receipt": "366ece",
+      "exitCode": 1,
+      "path": "binding-receipt.json",
+      "resolution": "Actual receipt.json retained; no missing measurement inferred"
+    }
+  ]
+}

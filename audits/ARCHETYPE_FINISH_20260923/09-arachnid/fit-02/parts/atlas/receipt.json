@@ -1,0 +1,111 @@
+{
+  "cli": "0.3.0",
+  "core": "0.3.9",
+  "creatureId": "tarantula",
+  "options": {
+    "allowRotation": false,
+    "allowTrim": false,
+    "detectIdentical": false,
+    "exporter": "Pixi",
+    "extrude": 1,
+    "fixedSize": false,
+    "height": 2048,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit",
+    "padding": 4,
+    "powerOfTwo": false,
+    "prependFolderName": false,
+    "removeFileExtension": false,
+    "scale": 1,
+    "textureFormat": "png",
+    "tinify": false,
+    "width": 2048
+  },
+  "outputs": {
+    "jsonSha256": "4ed104925c14db27a7f37f142d102c15c8ed5b95d9689db7f10922fda208768e",
+    "pngSha256": "bb32d0327e6f96e879278ef5bff9ecd43b6ed02850fcd2248d63293949b0dcac"
+  },
+  "parts": [
+    {
+      "name": "abdomen.png",
+      "sha256": "9c770e8474fc6ac66123f443cae9382c00dffbba16677d6017b8401b266e3ad8"
+    },
+    {
+      "name": "body.png",
+      "sha256": "9c71c3d05dde7675c279116936ed2902e03c12cbc712819e7f877768b4584127"
+    },
+    {
+      "name": "chelicera-far.png",
+      "sha256": "35c738256affb2379ff52622166123ef036625b1d81b6363be7eb2c27b02acde"
+    },
+    {
+      "name": "chelicera-near.png",
+      "sha256": "88c3249c336f93a569fc9d5dbac63814cdbc4048303adaa27ea9b71517ad3e46"
+    },
+    {
+      "name": "leg1-far-distal.png",
+      "sha256": "64ad2e65c7047f6e8122719c4b765e4bcded7044d867c6f6552bde2b9dc92bc7"
+    },
+    {
+      "name": "leg1-far-upper.png",
+      "sha256": "fe6ec5ee50e122155776c44e17996454f7cb5007a039a192944516c133c694e1"
+    },
+    {
+      "name": "leg1-near-distal.png",
+      "sha256": "1cb8dd8835c85b65dd2a99b4f3a734d54d236f1aad741292d51d115e7b9dcecd"
+    },
+    {
+      "name": "leg1-near-upper.png",
+      "sha256": "a83290a558670356e19fdd019299b69e9be3e2aa240faabeca9fb06e8b062090"
+    },
+    {
+      "name": "leg2-far-distal.png",
+      "sha256": "12c1abbc1ba2f3c321cf0666ad9db2d158d83c75afd592151b6386f86bcec9c3"
+    },
+    {
+      "name": "leg2-far-upper.png",
+      "sha256": "4c4609300fa9e8f7e82aa07b37520997b2c9e27b3d1475e69739e7a779e4c708"
+    },
+    {
+      "name": "leg2-near-distal.png",
+      "sha256": "cae040fd4c1d2e75976289c020a2a7e0a9d8a9568858a73086f403dd3c1f0fd8"
+    },
+    {
+      "name": "leg2-near-upper.png",
+      "sha256": "f8e18348c3f56b25fa476da94f1696bb290fb7e20441370cfc4f9060becf9e37"
+    },
+    {
+      "name": "leg3-far-distal.png",
+      "sha256": "aba39a45c87dc7007c26349ec2ca0700c6d632dc224b7ab555499eac02e5798e"
+    },
+    {
+      "name": "leg3-far-upper.png",
+      "sha256": "3b0bf8d35bdf0ae8e22062ebe1d3891caebbaef8631cf4730dde3d8e904457ff"
+    },
+    {
+      "name": "leg3-near-distal.png",
+      "sha256": "7877cc755b6d0b5e76ad9b188f5e483b85f30745d7ec340fc19de9e47c635e61"
+    },
+    {
+      "name": "leg3-near-upper.png",
+      "sha256": "053c4445cf23cdf111726f5da304a5785143bc4a6a02ac932b0b49ea7e4d780e"
+    },
+    {
+      "name": "leg4-far-distal.png",
+      "sha256": "521e94e53d3322e9e32b8f8cb44b1dc0c0c120a916813a2af1d28d195d56cd3f"
+    },
+    {
+      "name": "leg4-far-upper.png",
+      "sha256": "3434d11b46e6f372c91135d0ec279065a97a339f79dbf49ff307d055c8843056"
+    },
+    {
+      "name": "leg4-near-distal.png",
+      "sha256": "da3fcfda06fca3fd1cca73ba4f524eb9a9cd08722b1d65482a15b3a6c6d36726"
+    },
+    {
+      "name": "leg4-near-upper.png",
+      "sha256": "19fe878c0a3438dedbc7148014c2733b4f1a6aaf16a3998bb7b7f1a0458d6760"
+    }
+  ],
+  "schema": "cf-rig-atlas/v1"
+}

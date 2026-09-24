@@ -1,0 +1,18 @@
+Complete Centipede local proof and seal archetype sprint evidence
+
+Add the opt-in 63-joint rigid-trunk Centipede representation, source-fixed
+limb sockets and explicit hit/dodge/tame foot cadence. Preserve existing
+joint/part capacities, contact limits, accepted bindings and S2 inputs.
+Align observed support selection and retain checked geometric fallback.
+Size native rest bounds from every positive-alpha source pixel.
+
+Final fit11/static08 passes 12 actions and 822 presentation samples with
+exact rest and zero changed visible RGBA channels. Native02 records zero
+rig refusals and 2.8000000715255737/1.8000000715255737 ms per-rig p95.
+All three TypeScript programs pass. Six S2 subjects retain 13,286 identical
+support samples and 12 unchanged protected inputs. Focused controls and
+every rejected source/test/fit/native attempt remain in the item packet.
+
+Seal the 13-selection source-specific sprint review index and refresh the
+current handoff. Retain human art caveats and historical I5 authority;
+no production admission, current-head I5 or PR43 certification is claimed.

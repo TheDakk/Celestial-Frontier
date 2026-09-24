@@ -1,0 +1,21 @@
+# Fit09/static06: the soft shaft region leaves the left collar conflict
+
+The two exact failed poses reproduce: hit15ms has9folds (fit08 had4); dodge14ms has7folds (fit08 had10). All are leg3-far. Four of the9 hit faces and one of the7 dodge faces are already inverted in their LBS targets; the remainder invert during ARAP/projection. None of the failed faces has three pinned vertices. Full original refusal objects, exact reconstructed poses, source coordinates, weights, targets, private rejected positions and nearby pins are in `report.json`. No later poses, scan or complete static row was run.
+
+## Controlled fit08→fit09 comparison
+
+The raw clip and complete contact results are byte-identical at both failed times. Source master, labels and keyed pixels are byte-identical (`source-pixel-equality.json`). Mesh coordinates, topology, part mappings and solver configuration/pin inventory are also identical. Every pinned weight is unchanged. The11 selected upper-shaft supports seed one extra soft Knee region; eight were free and three already Knee-pinned. Subsequent unchanged diffusion changes1515 weight vectors, including small propagated changes outside that local region.
+
+The new region does affect the intended opaque shaft: selected support1614[841,617] increases Knee2.5940338760740405%→27.86207596041476%; its Foot influence falls53.41412397541496%→33.30733757953419%. It therefore did not fail merely because the declaration was inert.
+
+However, the left collar support1605[824,609.5] lies outside the new opaque-shaft region. It retains root53.73517092497164%, Foot38.32927499810292% and Knee7.079840360777523% (previous Knee4.574258019732298%). At rest it is2px right of the hard-root edge1573[822,607]–1576[822,612]. In the hit target those two root points share x817.3087366819382 while the free point lands atx813.9718555212021: it crosses to the opposite side. Previously it landed atx813.831859588623; the soft shaft edit changes x by only0.13999593257904053px. Face2686 therefore remains target-inverted, ratio−1.6684330820787097 versus the earlier−1.7384307337840545. Other target ratios improve and the final rejected face set changes, but this source-attached collar crossing remains.
+
+The exact same source pixel at the free support's floored[824,609] is retained alpha1 fringe, established by the fit08 source-pixel receipt and unchanged pixel authority. This is distinct from the opaque gold shaft support used to author the soft region. Root's/triage's source review must determine whether the adjoining root locks arise from a wrong fringe contour or a legitimate body attachment. The diagnosis does not authorize discarding tiny alpha, releasing locks, modifying a solver budget, or assuming more mesh density fixes it.
+
+## Fixed-boundary check
+
+A separate read-only inspection evaluates the recorded resolved poses into exact Float32 LBS targets and confirms those target coordinates match the replay. It considers124 hard edges (26boundary edges),62fully pinned triangles and64hard vertices in the actual far3 source field. At both poses it finds **zero new proper crossings of nonadjacent hard edges** and **zero pinned-point intrusions into a hard triangle that did not contain that point at rest**. Simple crossing/noncrossing/inside/outside controls are retained in the helper. The same hard constraints occur in both fits.
+
+This limited negative result neither proves a globally feasible orientation-preserving deformation nor proves infeasibility. In particular, zero fully pinned triangle inversions alone is insufficient, but the suggested hard-cluster edge crossing was not observed here. The measured direct obstruction is the soft target crossing an unchanged fixed collar edge; no iteration/mesh prescription follows without the source-ownership decision.
+
+Execution: tool011ae9 exit0 for exactly2ARAP reproductions; tool2d65d3 exit0 for geometry/LBS comparison only. All58loaded-source and62retained static-source hashes matched at execution. No shared production or authoring file was edited. Authorities: record`854feb0a1fe24255530343388510405920b734a305a442512e9c34e6feafd1d7`; binding`c2d591959cda99eb863e29f712f318451b95393a451e0df210cde59df14e2857`.

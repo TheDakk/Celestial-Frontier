@@ -1,0 +1,13 @@
+{
+  "source": "fe8f6ca1a8c5a934897fbf0711319e17cc5cf388",
+  "authority": "Nick: Please push and continue",
+  "scope": "One changed-source native diagnostic with original Python fit; inspect named approach/dodge stills and retain all results. No accepted asset edits.",
+  "historicalStatus": "DIAGNOSTIC_PASS",
+  "findings": [
+    "ART-PY-01 moving body coherence",
+    "ART-PY-02 historical still top clipping"
+  ],
+  "scriptChange": "Only runId added; rows, themes, readyMs and commandMs retained",
+  "unchangedFit": "audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01",
+  "certificate": false
+}

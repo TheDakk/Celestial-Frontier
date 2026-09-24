@@ -1,0 +1,42 @@
+{
+  "schema": "cf.master-pixel-integrity/v1",
+  "width": 1254,
+  "height": 1254,
+  "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+  "positiveAlpha": {
+    "alphaThreshold": 1,
+    "pixels": 178726,
+    "bounds": {
+      "x0": 39,
+      "y0": 50,
+      "x1": 1227,
+      "y1": 1197
+    },
+    "margins": {
+      "left": 39,
+      "top": 50,
+      "right": 26,
+      "bottom": 56
+    },
+    "borderPixels": 0
+  },
+  "diagnosticCoreAlpha": {
+    "alphaThreshold": 128,
+    "pixels": 130822,
+    "bounds": {
+      "x0": 42,
+      "y0": 414,
+      "x1": 1224,
+      "y1": 871
+    },
+    "margins": {
+      "left": 42,
+      "top": 414,
+      "right": 29,
+      "bottom": 382
+    },
+    "borderPixels": 0
+  },
+  "rgbaEdited": false,
+  "interpretation": "Bounds measure delivered pixels only. Parent manual review counts14 far and14 near walking legs,2 ultimate appendages and2 antennae; all visibly complete. Requested101px margin is not met. No pixel trimming or inferred hidden anatomy."
+}

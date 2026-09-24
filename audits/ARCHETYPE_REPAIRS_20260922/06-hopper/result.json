@@ -1,0 +1,34 @@
+{
+  "schema": "cf.archetype-repair-result/v1",
+  "status": "STOPPED_SECOND_PAINT_FAILURE",
+  "item": 6,
+  "name": "Tree Frog",
+  "sourceHead": "4207748479e1ddeccb2f2f9f24c45e219f73956f",
+  "runId": "20260922-tree-frog-repair-02",
+  "measuredFit": "fit-02",
+  "static": {
+    "status": "RED",
+    "rows": 13,
+    "reds": 9,
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  "recordRecipeHash": "c9c090cb8c2d4323643b160d1208b6c8fc23aaa52fcd61692cb1059a8504e768",
+  "bindingHash": "bce045b5d90fa8b39cff69f3fdb6814dc86b34048fe8a19dfa884fcc9e826315",
+  "masterSha256": "f2dc168f7208fc41101c658b3fa007e7fe4a8f07c898790a15e0c5a0398462d0",
+  "rejectedRepaint": {
+    "path": "candidate-03/master.png",
+    "sha256": "67d17f2769afbcc1752ce2fb431dcb6fd9944f9e3a008a2b75e92b0a2d5293b3",
+    "generation": 2,
+    "status": "POSE_CORRECTION_NOT_ACHIEVED",
+    "static": null,
+    "native": null
+  },
+  "native": null,
+  "cpuP95Ms": null,
+  "protectedChanges": false
+}

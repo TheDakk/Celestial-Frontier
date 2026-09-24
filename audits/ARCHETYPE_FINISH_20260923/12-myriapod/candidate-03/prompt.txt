@@ -1,0 +1,72 @@
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes (orbital planets, flora, fauna, ships, landmarks, items,
+emblems, Effects; inactive people excluded; Arena MID/NEAR use the rule below):
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes (universe, stars, planet biomes, Arena FAR), and Arena
+MID/NEAR key-painted terrain so all arena layers match the same biome hand:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: Earth Centipede; real named anatomy and natural materials take priority over raw procedural genes. long flattened body of many identical segments; one pair of legs per segment fanned along both sides; long antennae and a pair of rear trailing legs. Isolated library archetype, not a landing resident claim.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Centipede. long flattened body of many identical segments; one pair of legs per segment fanned along both sides; long antennae and a pair of rear trailing legs. Use an adult stone centipede (Lithobiomorpha), with15total leg pairs including the ultimate pair. One pair per leg-bearing segment, flat body, not tubular.
+Genomic identity and traits (Earth anatomy takes priority): {"seed":3894424807,"kingdom":"fauna","color":1,"form":0,"body":0,"loco":0,"trait":18,"size":0,"diet":1,"head":2,"limbs":2,"skin":7,"tail":2,"pattern":7,"eyes":0,"behavior":2,"habitat":18,"detail":6,"accent":10,"temper":9,"sense":6,"repro":1,"life":2,"metab":2,"lumin":false,"gen":0,"heat":1,"_earthName":"Centipede"}
+Family contract myriapod, clip set myriapod-v1, explicitly declared rigid-trunk fixed-socket representation. Required63-joint inventory: root, head, mandible, antennaFar, antennaNear, leg0FarKnee, leg0FarFoot, leg0NearKnee, leg0NearFoot, leg1FarKnee, leg1FarFoot, leg1NearKnee, leg1NearFoot, leg2FarKnee, leg2FarFoot, leg2NearKnee, leg2NearFoot, leg3FarKnee, leg3FarFoot, leg3NearKnee, leg3NearFoot, leg4FarKnee, leg4FarFoot, leg4NearKnee, leg4NearFoot, leg5FarKnee, leg5FarFoot, leg5NearKnee, leg5NearFoot, leg6FarKnee, leg6FarFoot, leg6NearKnee, leg6NearFoot, leg7FarKnee, leg7FarFoot, leg7NearKnee, leg7NearFoot, leg8FarKnee, leg8FarFoot, leg8NearKnee, leg8NearFoot, leg9FarKnee, leg9FarFoot, leg9NearKnee, leg9NearFoot, leg10FarKnee, leg10FarFoot, leg10NearKnee, leg10NearFoot, leg11FarKnee, leg11FarFoot, leg11NearKnee, leg11NearFoot, leg12FarKnee, leg12FarFoot, leg12NearKnee, leg12NearFoot, leg13FarKnee, leg13FarFoot, leg13NearKnee, leg13NearFoot, ultimateFar, ultimateNear. Thirty-two paint owners: body, head (including independently articulated mouth and antennae), leg0Far, leg0Near, leg1Far, leg1Near, leg2Far, leg2Near, leg3Far, leg3Near, leg4Far, leg4Near, leg5Far, leg5Near, leg6Far, leg6Near, leg7Far, leg7Near, leg8Far, leg8Near, leg9Far, leg9Near, leg10Far, leg10Near, leg11Far, leg11Near, leg12Far, leg12Near, leg13Far, leg13Near, ultimateFar, ultimateNear. These render owners do not reduce visible biological anatomy.
+
+Use case: stylized-concept
+Asset type: one painted natural-history creature sprite,1254x1254.
+Input image1 is the paint02 EDIT TARGET. Input image2 is the neutral gray COMPOSITION AND EXACT COUNT GUIDE ONLY. Input image3 is the approved Discovery Atlas, the ONLY STYLE reference. Preserve the target painting except the specified anatomy/count and framing corrections. Never copy guide gray or atlas layout.
+Primary request: paint one complete adult stone centipede facing right, reddish chestnut brown flat segmented trunk, warm orange amber legs, dark small eyes and natural paired forcipules beneath the head. Two long tapering antennae at the RIGHT head. Exactly14 ordinary walking legs on the visible NEAR lower row and14 on the FAR upper projected row. Each near/far station is ONE pair:14 walking pairs. Add exactlyONE elongated ultimate pair trailing LEFT from the rear: these are pair15 INCLUDED in the total, not extra walking legs. Exactly30 legs total plus2 antennae. Follow every guide leg; do not duplicate, add or omit any.
+Pose: side-on moderately elevated lateral view as the guide so both complete rows can be counted. Keep the flattened shallow-curved trunk horizontal. The far legs project visibly past the far lateral edge; they must attach to that side, not sprout from dorsal plates. Every leg has a visibly bent upper span and lower span, separated from neighbors by empty background. Retain clear knees/bends and complete small feet. No hidden far chains, no front/rear leg overlap, no coiled trunk. Fourteen dark near chains, fourteen lighter far chains, one clear ultimate pair. Do not add extra limbs under the head or between guide stations. Plate widths may vary naturally; no extra leg-bearing station.
+Accuracy: the earlier generic scolopendrid interpretation is replaced explicitly by a stone-centipede representative, whose adult15-pair anatomy is real. Do not paint a21-pair scolopendrid or a tube-bodied millipede. No rear sting. The long rear pair are ultimate legs, not antennae.
+Composition: center the COMPLETE animal; no cropped antenna or foot. Keep at least101pixels free on all four sides, matching guide framing.
+Style: keep the exact approved kit hand, tactile natural-history brushwork, restrained detail and softly lit physical chitin. Groundless isolated cutout; no shadow or scenery.
+Technical: deliver exactly1254x1254 PNG with genuine transparent background. Preserve fine real edges but no colored halo, floating paint specks, fake checkerboard or opaque background. No text, labels, numbers, arrows, diagram marks, grid, frame, watermark, gear or extra creature.
+
+PRECISE CORRECTION OF PAINT02: The target actually has14near walking legs but only13far walking legs. Keep all14existing near walking legs, the2ultimate legs and2antennae. Add exactlyONE missing far walking leg at the ANTERIOR (right/head-side) upper row, between the current last far walking leg and the head. It must visibly attach to its corresponding frontmost trunk station and have a bent upper span, knee and complete lower span/foot, separate from antennae/forcipules. Do not replace or merge an existing far leg: final upper row14walking tips, lower row14walking tips, rear2ultimate tips, front2antennae. Reframe the whole creature slightly smaller so every tip has101pixels breathing room on all four sides; no cropping, no added canvas outside1254square. Keep the rest of its anatomy, colors and brushwork consistent. No added legs anywhere else.

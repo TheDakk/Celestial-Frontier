@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "onlyChangedBudgetFields": [
+    "producerAuthority",
+    "calibration.selectionRule"
+  ],
+  "preserved": [
+    {
+      "path": "schema",
+      "sha256": "0a0a276a6cd8282538ad2cb522ccb2900fbd79dfb5fe53694b676e94916ca5b9"
+    },
+    {
+      "path": "status",
+      "sha256": "db0fb2bf5ebc424454c3e11b5ee8bfb43af24a52e561aa49e94143831dc6fd93"
+    },
+    {
+      "path": "fixture",
+      "sha256": "c8c6a7a62898c01850acf7d36daf9fe92e0d230dd1e07a38be08bb90e61eb303"
+    },
+    {
+      "path": "requirements",
+      "sha256": "8d4ae46286797e6ea3c71528286bee308fddef72445b74b865422d588cffc6bf"
+    },
+    {
+      "path": "browserAuthority",
+      "sha256": "4c533a8c5d996d0aef3d35c255f9f9623d42b196cd29115ba6d5448cc03b6193"
+    },
+    {
+      "path": "measurementAuthority",
+      "sha256": "80e15e5aa653963fdf4017bef9790ae60f00f0e40e1d8829b2c84e4b0f346b65"
+    },
+    {
+      "path": "pairedBrokenBaseline",
+      "sha256": "db736317ace77f84726dd95c560e8163d27ed699d3abe12012f8abc5cca3e3a5"
+    },
+    {
+      "path": "ceilings",
+      "sha256": "a5f05be521eb127f3e74306bd69538bdb6d3b564875ed921f2c7f3c0904def83"
+    },
+    {
+      "path": "calibration.requiredIndependentRunsPerProfile",
+      "sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+    },
+    {
+      "path": "calibration.headroomRationaleRequired",
+      "sha256": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+    },
+    {
+      "path": "calibration.rulerAuthority",
+      "sha256": "5a09637a0c05d7bd394b2292550583baa4e2221eeceb31417fa7f58af2dbf708"
+    },
+    {
+      "path": "calibration.samples",
+      "sha256": "0b2eae3d6ddb164b1c372950528b66571017737ec0e445ce9b01ea4166d60d44"
+    }
+  ]
+}

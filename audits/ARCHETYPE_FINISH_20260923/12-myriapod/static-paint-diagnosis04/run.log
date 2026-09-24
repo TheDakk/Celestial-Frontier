@@ -1,0 +1,79 @@
+{
+  "output": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/report.json",
+  "findings": [
+    {
+      "action": "hit",
+      "reproduced": true,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 20",
+      "foldParts": {
+        "leg3-far": 20
+      },
+      "foldBounds": [
+        819.5,
+        597,
+        856,
+        627
+      ],
+      "drifts": []
+    },
+    {
+      "action": "dodge",
+      "reproduced": true,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7",
+      "foldParts": {
+        "leg3-far": 7
+      },
+      "foldBounds": [
+        822,
+        597,
+        841,
+        617
+      ],
+      "drifts": []
+    }
+  ]
+}
+{
+  "firstFailureClasses": [
+    {
+      "action": "hit",
+      "folds": 20,
+      "allPinned": 0,
+      "targetAlreadyFolded": 5,
+      "parts": [
+        "leg3-far"
+      ]
+    },
+    {
+      "action": "dodge",
+      "folds": 7,
+      "allPinned": 0,
+      "targetAlreadyFolded": 1,
+      "parts": [
+        "leg3-far"
+      ]
+    }
+  ],
+  "targetScan": [
+    {
+      "action": "hit",
+      "attempted": 121,
+      "targets": 121,
+      "invertedSamples": 13,
+      "errors": 0
+    },
+    {
+      "action": "dodge",
+      "attempted": 121,
+      "targets": 111,
+      "invertedSamples": 11,
+      "errors": 10
+    }
+  ],
+  "unionCount": 3,
+  "unionParts": [
+    "leg1-near",
+    "leg6-near",
+    "leg13-near"
+  ]
+}

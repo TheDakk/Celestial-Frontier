@@ -1,0 +1,13 @@
+# Python signed handoff — 2026-09-23
+
+The Python open-pose correction is committed as `469982364ee6d365806280bedcba7f52bc694f0c`, signature **G**, verified by `git log -1 --format='%H %G?'` (receipt e66e8d). The renewed signed commit succeeded in receipt 1adc05. Earlier 1Password refusals are preserved as historical evidence; the signing blocker is resolved.
+
+OpenAI/Codex on macOS verified `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`. The tracked worktree was clean, with only pre-existing untracked `.DS_Store`; local tracking refs showed 0 behind / 2 ahead before this documentation closure. No remote query or push occurred. The signing wrapper and Git configuration were unchanged.
+
+The [correction packet](../PYTHON_OPEN_POSE_20260923/README.md) retains prompts, hashes, rejected candidates, static rows, films and findings. Selected run `20260923-python-open-native-03` recorded zero rig refusals and per-rig p95 **0.5 / 0.5 ms**. Static proof passes all 12 action rows and exact rest. Ground-framing controls passed 21/21; root validation passed. These are retained results, not rerun measurements. The film used the documented predecessor plus changed inputs; it is not a clean committed-source certificate. Requested image margins, faint alpha fringe, small arena scale and exaggerated family poses remain disclosed for human art review.
+
+Precommit whitespace check 6991ee reported four findings confined to retained evidence: ground-framing-tests-01.log lines 37 and 39, and native-01-harness-source/native-entry.mjs and native-02-harness-source/native-entry.mjs line 53. These are raw failed-test output and exact historical source snapshots. Their bytes are deliberately preserved; functional source whitespace checks passed previously. This closure changes documentation only and repeats no battery.
+
+The original packet's staged/refused status describes its capture time. Its files and manifest remain unchanged; receipt.json hashes the selected original evidence. ROADMAP now records the resolved status, with the prior signing-wait paragraph archived verbatim.
+
+Codex holds; Nick reviews the [sheet](../PYTHON_OPEN_POSE_20260923/review-sheet.png) and full film linked in the correction packet. Claude consumes signed results when Nick directs integration; Nick need not open Claude now. Claude’s worktree stays read-only. No new PR is requested. Budget remains UNFROZEN, last verified PUBLIC with private fallback 3,000 and zero authorized hosted attempts; no GitHub write was made or newly authorized. Promotion, phone qualification and art acceptance remain separate. All sprint packets are indexed in [the sprint review index](../ARCHETYPE_FINISH_20260923/final-sprint-review-index.md).

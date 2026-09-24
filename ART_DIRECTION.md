@@ -1,5 +1,7 @@
 # Celestial Frontier — Master Art Direction
 
+**Python corrected open-pose candidate — matches retained source 2026-09-23.** Nick authorized the [new1254-square master and P1 proof](audits/PYTHON_OPEN_POSE_20260923/README.md). The [review sheet](audits/PYTHON_OPEN_POSE_20260923/review-sheet.png) and native03 film retain a connected open body in the inspected views; static12×121+968 and exact rest pass, with zero native refusals and0.5/0.5ms per-rig p95. A bounded harness framing repair keeps both identical creatures at equal scale inside the viewport. Original coiled paint/binding, rejected continuity candidate and all intermediate attempts remain immutable. The missed margins, faint alpha/fringe, small wide-arena presentation and exaggerated poses still need Nick’s full-film art review. The prior diagnosis’s presentation-not-run statement is corrected: its static presentation actually failed after254 samples, as its unchanged raw report records. Other ten creature sheets and six-mask composite retain their original review notes. Technical success is not production roster admission or final visual approval.
+
 [Animation library and shared deformation review](audits/ANIMATION_COMPLETION_20260916/README.md),
 matches code as of September 16, 2026: 169 family actions now have complete-clip limit,
 determinism and GSAP parity checks (40,729 synthetic samples). Eight additional physical

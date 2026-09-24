@@ -1,0 +1,223 @@
+{
+  "kind": "hopper",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Tree Frog\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"6\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"5\"]],[\"diet\",[\"number\",\"3\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"1\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"3965697315\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"8\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"2\"]],[\"trait\",[\"number\",\"8\"]]]]",
+    "seed": 3965697315,
+    "ownerId": "authored:archetype-sprint/tree-frog",
+    "earthName": "Tree Frog"
+  },
+  "template": {
+    "id": "hopper",
+    "version": 1
+  },
+  "clipSetId": "hopper-land-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [
+      "tail",
+      "external-ears"
+    ],
+    "hidden": [],
+    "folded": [
+      "hindFar",
+      "hindNear"
+    ]
+  },
+  "genome": {
+    "seed": 3965697315,
+    "kingdom": "fauna",
+    "color": 3,
+    "form": 1,
+    "body": 6,
+    "loco": 2,
+    "trait": 8,
+    "size": 1,
+    "diet": 3,
+    "head": 7,
+    "limbs": 3,
+    "skin": 8,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 0,
+    "behavior": 2,
+    "habitat": 17,
+    "detail": 5,
+    "accent": 15,
+    "temper": 2,
+    "sense": 1,
+    "repro": 5,
+    "life": 4,
+    "metab": 5,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Tree Frog"
+  },
+  "geometry": {
+    "cutoutAssetHash": "f2dc168f7208fc41101c658b3fa007e7fe4a8f07c898790a15e0c5a0398462d0",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.88,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5223285486443381,
+      0.430622009569378
+    ],
+    "pelvis": [
+      0.3277511961722488,
+      0.4529505582137161
+    ],
+    "spine": [
+      0.49760765550239233,
+      0.35964912280701755
+    ],
+    "chest": [
+      0.6586921850079744,
+      0.3963317384370016
+    ],
+    "neck": [
+      0.6810207336523126,
+      0.3532695374800638
+    ],
+    "head": [
+      0.7926634768740032,
+      0.2783094098883573
+    ],
+    "jaw": [
+      0.8819776714513556,
+      0.3492822966507177
+    ],
+    "hindFarRoot": [
+      0.3397129186602871,
+      0.5414673046251993
+    ],
+    "hindFarKnee": [
+      0.215311004784689,
+      0.5980861244019139
+    ],
+    "hindFarAnkle": [
+      0.3333333333333333,
+      0.6435406698564593
+    ],
+    "hindFarPaw": [
+      0.4800637958532695,
+      0.6794258373205742
+    ],
+    "foreFarRoot": [
+      0.726475279106858,
+      0.4481658692185008
+    ],
+    "foreFarKnee": [
+      0.7328548644338118,
+      0.5502392344497608
+    ],
+    "foreFarAnkle": [
+      0.7982456140350878,
+      0.6244019138755981
+    ],
+    "foreFarPaw": [
+      0.84688995215311,
+      0.6491228070175439
+    ],
+    "hindNearRoot": [
+      0.3333333333333333,
+      0.48325358851674644
+    ],
+    "hindNearKnee": [
+      0.41148325358851673,
+      0.6220095693779905
+    ],
+    "hindNearAnkle": [
+      0.11562998405103668,
+      0.4314194577352472
+    ],
+    "hindNearPaw": [
+      0.2647527910685805,
+      0.7472089314194578
+    ],
+    "foreNearRoot": [
+      0.6379585326953748,
+      0.4529505582137161
+    ],
+    "foreNearKnee": [
+      0.5127591706539075,
+      0.5542264752791068
+    ],
+    "foreNearAnkle": [
+      0.6331738437001595,
+      0.7073365231259968
+    ],
+    "foreNearPaw": [
+      0.7025518341307815,
+      0.75518341307815
+    ]
+  },
+  "materials": {
+    "surface": "smooth skin"
+  },
+  "source": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/06-hopper/master.png",
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Adult Tree Frog: no tail or external ears. Four painted leg chains and four visible pad-bearing feet. Both hind legs are explicitly folded; forelegs are extended. The near hind chain follows its folded Z from the hip through the forward knee, back to the high rear hock, then along the long distal foot to orange pads. The far hind chain follows the partly occluded lower rear limb to the orange pads under the belly. No whole chain is declared hidden.",
+    "visualAcceptance": "candidate for Nick; first acceptable paint",
+    "landmarkMethod": "Manual observation of this delivered master, with the existing hopper names used for frog limb homologies. The contract Knee slot represents each forelimb elbow and Paw represents each pad-bearing hand/foot. No coordinates were transferred from another animal.",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "40c1e871c5c6b54d8d59f0ed943130cbcb65bafcd1110c114ddd9403660c57d6",
+    "subjectSourceSha256": "b60c3c4508b9572e0508c29315c0cfb45c661f47133b7da17a65d1e91a4954d0",
+    "presenceSha256": "f68210c1e3a6fef07ed143da7b57ce9b7d731747ded900ccf4f9b215068846c7",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.19585430855513555,
+      "spine": 0.19379467130218792,
+      "chest": 0.16520847416368173,
+      "neck": 0.048506878232043256,
+      "head": 0.13447350238106112,
+      "jaw": 0.11407969148092928,
+      "hindFarRoot": 0.08932131436648069,
+      "hindFarKnee": 0.13668038238467073,
+      "hindFarAnkle": 0.12647286562153748,
+      "hindFarPaw": 0.1510548704121849,
+      "foreFarRoot": 0.08533068005993902,
+      "foreFarKnee": 0.10227253296256071,
+      "foreFarAnkle": 0.09887392554681083,
+      "foreFarPaw": 0.0545655036508963,
+      "hindNearRoot": 0.030812885305202032,
+      "hindNearKnee": 0.15925021902860115,
+      "hindNearAnkle": 0.3519286117268815,
+      "hindNearPaw": 0.3492285831121822,
+      "foreNearRoot": 0.060295730289364975,
+      "foreNearKnee": 0.1610332004060849,
+      "foreNearAnkle": 0.19478803925424348,
+      "foreNearPaw": 0.0842771050421461
+    },
+    "measures": {
+      "body": 0.3357493541981518,
+      "bone-min": 0.030812885305202032,
+      "bone-max": 0.3519286117268815,
+      "leg/torso:hindFar": 1.2336825469333195,
+      "leg/torso:foreFar": 0.7616156485869289,
+      "leg/torso:hindNear": 2.5626480084303354,
+      "leg/torso:foreNear": 1.3107943148648271
+    }
+  },
+  "recipeHash": "c9c090cb8c2d4323643b160d1208b6c8fc23aaa52fcd61692cb1059a8504e768"
+}

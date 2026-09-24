@@ -1,0 +1,1 @@
+Manual rejected-paint declaration: the upper far-front-adjacent arch has no separate distal tip. Assignment to leg2Far is a visual ordering hypothesis; no hidden coordinates or fit were created. Far4 proximal route is overlapped, but its visible outer knee and distal tip are retained.

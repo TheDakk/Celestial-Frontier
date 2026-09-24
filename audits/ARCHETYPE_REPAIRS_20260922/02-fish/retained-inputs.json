@@ -1,0 +1,60 @@
+{
+  "files": [
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/prompt.txt",
+      "bytes": 7676,
+      "sha256": "51e488e389257f20c270d2222b4362d3558108a336cafab942d2439ee89aa38c"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/generation-receipt.json",
+      "bytes": 832,
+      "sha256": "ea790ba9fde0d34360f18dc5d8d933526357a658995ad5bae6191cb4592efc38"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/master.png",
+      "bytes": 863009,
+      "sha256": "52da01243b6720bf4715b0895a9e95a1913d14489484e5e3340d31dc7b47a0b4"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/declaration.txt",
+      "bytes": 385,
+      "sha256": "95dd8106e1e23d18873d0da52e0adf61ab594b857108d417602c0d812d2737a6"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/subject-source.json",
+      "bytes": 4543,
+      "sha256": "c238c6f79ddc58d2b8d46cd5c914765ffc77a66a7a28786bcc06135cde7e2813"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/authoring.json",
+      "bytes": 5430,
+      "sha256": "b973fe0595d98ed9c27e3c272d03163fbbf777f810e6a92c93f2962a61a7f390"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/record.json",
+      "bytes": 5010,
+      "sha256": "0d55904876d7638af2b8a43eea96e48328de0950e241cf1c32509c62ab1b6696"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/binding.json",
+      "bytes": 2044039,
+      "sha256": "4d9eb64b3af20f1a78cae84b7a77ca5f2b2b27d7361e5b6620fca65f44ed3734"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/parts/manifest.json",
+      "bytes": 2112,
+      "sha256": "0ec4474557c8b3f7916211c74f6d24342602728d7924b3dfb869d8b814f94510"
+    },
+    {
+      "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/labels.png",
+      "bytes": 47901,
+      "sha256": "64076272f5ed1b9e78e3afbae099f958b6730524b0dbe6891f4f8f4dd844b368"
+    }
+  ],
+  "unchanged": "Original Salmon paint, exact prompt bytes/tool receipt, presence and admitted binding reused without rewriting. Only body-card.ts/family-templates.ts unused-declaration cleanup differed from original static source receipt, so changed-source static run performed once."
+}

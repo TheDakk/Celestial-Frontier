@@ -1,0 +1,260 @@
+{
+  "schema": "cf.packet-regional-selftest/v1",
+  "status": "PASS",
+  "command": [
+    "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+    "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-selftest-01.mjs"
+  ],
+  "node": "v26.9.0",
+  "sourceHead": "1285ba2ecc0548e0a299e2b855168ff9616c8496",
+  "startedAt": "2026-09-23T19:03:33.284Z",
+  "scope": "Synthetic 32-texture-part, 63-joint compiler controls; actual skeleton/ARAP/part interpolation. No real painting intake, raster conservation, static battery, contact admission, browser, film or CPU acceptance.",
+  "cases": [
+    {
+      "name": "compile 32 texture owners and preserve standard seals, source geometry, pins and all 63 influences",
+      "status": "PASS",
+      "parts": 32,
+      "joints": 63,
+      "regions": 31,
+      "vertices": 133,
+      "triangles": 70,
+      "inheritedPins": 32,
+      "additionalPins": 59,
+      "bindingHash": "68dc9191e3fcb9164f434dee0361af2554cf28a89c432ae93ce12eb9cd7a8301"
+    },
+    {
+      "name": "real skeleton, ARAP and part interpolation move every declared joint; exact rest is retained",
+      "status": "PASS",
+      "jointPoses": 63,
+      "zeroMotion": 0,
+      "restCoordinateChanges": 0
+    },
+    {
+      "name": "proximal Knee shape remains independent of Foot rotation while inherited Foot contact pin follows Foot",
+      "status": "PASS",
+      "proximalPins": 2,
+      "footPin": 16
+    },
+    {
+      "name": "motion oracle rejects erased secondary influence and a frozen walking part",
+      "status": "PASS",
+      "detectedMutants": [
+        "erased antennaFar influence",
+        "root-frozen leg0-far"
+      ]
+    },
+    {
+      "name": "unknown joint refuses before output",
+      "status": "PASS"
+    },
+    {
+      "name": "conflicting regional and inherited pins refuse rather than overwriting locks",
+      "status": "PASS"
+    },
+    {
+      "name": "no owned paint and paint without a selected support each refuse",
+      "status": "PASS"
+    },
+    {
+      "name": "stale record and binding seals refuse",
+      "status": "PASS"
+    },
+    {
+      "name": "unlocked seed survives diffusion and produces published secondary motion",
+      "status": "PASS",
+      "additionalPins": 0,
+      "joint": "antennaFar",
+      "partId": "head",
+      "maxPublishedMotionPx": 0.03803853771737553
+    }
+  ],
+  "finishedAt": "2026-09-23T19:03:33.372Z",
+  "sources": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/intake-01.mjs",
+      "sha256": "f45342dae1d412e3e219d7e34f0c013c730867b96c157edd381a61a7b14ef216",
+      "retained": "sources/audits/ARCHETYPE_FINISH_20260923/12-myriapod/intake-01.mjs",
+      "afterSha256": "f45342dae1d412e3e219d7e34f0c013c730867b96c157edd381a61a7b14ef216"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-authoring-schema.md",
+      "sha256": "02d4ae0cd0775db7ea6ea114cca268cfe24a8fcba5f64266773b3a6d192542dd",
+      "retained": "sources/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-authoring-schema.md",
+      "afterSha256": "02d4ae0cd0775db7ea6ea114cca268cfe24a8fcba5f64266773b3a6d192542dd"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-influences.mjs",
+      "sha256": "25a65459ce82a31c810bb2500778dcd975c67981b66e3f58b83c0fe72179501e",
+      "retained": "sources/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-influences.mjs",
+      "afterSha256": "25a65459ce82a31c810bb2500778dcd975c67981b66e3f58b83c0fe72179501e"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-selftest-01.mjs",
+      "sha256": "e25cbf4c6c429cf738186e3442bd76360a9fd794cf1c43ff88915e51dbae0eee",
+      "retained": "sources/audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-selftest-01.mjs",
+      "afterSha256": "e25cbf4c6c429cf738186e3442bd76360a9fd794cf1c43ff88915e51dbae0eee"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "sha256": "d0d94cb62976f12357b91e66c5e661483a72224d8a4e950ba6ab6a06b852d4c3",
+      "retained": "sources/port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "afterSha256": "d0d94cb62976f12357b91e66c5e661483a72224d8a4e950ba6ab6a06b852d4c3"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-skin.mjs",
+      "sha256": "92fcaaf491e28a99e33bc62b762816fa790ed087de963aa2dcd0636d648ce399",
+      "retained": "sources/port/v2/tools/creature-animation/arap-skin.mjs",
+      "afterSha256": "92fcaaf491e28a99e33bc62b762816fa790ed087de963aa2dcd0636d648ce399"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+      "sha256": "aa430e622b613af414da991a1b464e434be5b26a5efe96f5d07e63756f8b72db",
+      "retained": "sources/port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+      "afterSha256": "aa430e622b613af414da991a1b464e434be5b26a5efe96f5d07e63756f8b72db"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a",
+      "retained": "sources/port/v2/tools/creature-animation/family-contracts.mjs",
+      "afterSha256": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs",
+      "sha256": "de1d5909809f0517c3aa1c8a2297fafef1fa6ed9853297df7d20ab88f11c0466",
+      "retained": "sources/port/v2/tools/creature-animation/family-record.mjs",
+      "afterSha256": "de1d5909809f0517c3aa1c8a2297fafef1fa6ed9853297df7d20ab88f11c0466"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "sha256": "1fe0cdfcc270cb08cd231927668a087c9473d3b2590f13bd1a581eb444f49534",
+      "retained": "sources/port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "afterSha256": "1fe0cdfcc270cb08cd231927668a087c9473d3b2590f13bd1a581eb444f49534"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/hidden-anatomy.mjs",
+      "sha256": "a3cef7edff31f86a70f727f1433eeaabcabe2a1626929e65fbcbc0715b80a328",
+      "retained": "sources/port/v2/tools/creature-animation/hidden-anatomy.mjs",
+      "afterSha256": "a3cef7edff31f86a70f727f1433eeaabcabe2a1626929e65fbcbc0715b80a328"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/kinematics.ts",
+      "sha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5",
+      "retained": "sources/port/v2/tools/creature-animation/kinematics.ts",
+      "afterSha256": "4a27bf2ad2402e411bc3fd70d633ab91a3ab5dc1c00684f6969d9cb805416ae5"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/motion-scale.mjs",
+      "sha256": "a38a55fbce7272597f5cd70af73bc850d73580795afcb2cc3e7db44c11653096",
+      "retained": "sources/port/v2/tools/creature-animation/motion-scale.mjs",
+      "afterSha256": "a38a55fbce7272597f5cd70af73bc850d73580795afcb2cc3e7db44c11653096"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "sha256": "feea85a1ce58317f18ca5c460d8587c838a571c6da1cd02c10111edb75c3681a",
+      "retained": "sources/port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "afterSha256": "feea85a1ce58317f18ca5c460d8587c838a571c6da1cd02c10111edb75c3681a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-active-bytes.mjs",
+      "sha256": "7c49f7cb965853d672e0bb33219a7715d2c49d5de7393b510fc250cfb70c1c23",
+      "retained": "sources/port/v2/tools/creature-animation/orientation-active-bytes.mjs",
+      "afterSha256": "7c49f7cb965853d672e0bb33219a7715d2c49d5de7393b510fc250cfb70c1c23"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-active-reference.mjs",
+      "sha256": "534a5d4b555a1caa7b34dafdaf46086443303faa7bc5f8b6e384ee114f412206",
+      "retained": "sources/port/v2/tools/creature-animation/orientation-active-reference.mjs",
+      "afterSha256": "534a5d4b555a1caa7b34dafdaf46086443303faa7bc5f8b6e384ee114f412206"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-forward-bytes.mjs",
+      "sha256": "435ed949f6347e6169dfd929e5b57f059c533aa3741229efdbaf8e89dfb608ab",
+      "retained": "sources/port/v2/tools/creature-animation/orientation-forward-bytes.mjs",
+      "afterSha256": "435ed949f6347e6169dfd929e5b57f059c533aa3741229efdbaf8e89dfb608ab"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-projector.mjs",
+      "sha256": "ddb2b35c467bd4332460da853cdfbc6f33693d3417e2e04fe0d797defb45ba31",
+      "retained": "sources/port/v2/tools/creature-animation/orientation-projector.mjs",
+      "afterSha256": "ddb2b35c467bd4332460da853cdfbc6f33693d3417e2e04fe0d797defb45ba31"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/paint-skin.mjs",
+      "sha256": "c000e8f6ca3b1e5db8af82eba060a321c2522fb421dd09349654701a0a0ee9d2",
+      "retained": "sources/port/v2/tools/creature-animation/paint-skin.mjs",
+      "afterSha256": "c000e8f6ca3b1e5db8af82eba060a321c2522fb421dd09349654701a0a0ee9d2"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/plant-anatomy.mjs",
+      "sha256": "7e900b8355f6193b941f62a573d6c58124d127faa3348524170593ef2084e218",
+      "retained": "sources/port/v2/tools/creature-animation/plant-anatomy.mjs",
+      "afterSha256": "7e900b8355f6193b941f62a573d6c58124d127faa3348524170593ef2084e218"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/pose-projection.mjs",
+      "sha256": "9a6d31c80812def61beec124a1dad039d16b9afb556ee5ddf47c0f528891d486",
+      "retained": "sources/port/v2/tools/creature-animation/pose-projection.mjs",
+      "afterSha256": "9a6d31c80812def61beec124a1dad039d16b9afb556ee5ddf47c0f528891d486"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/pose-refusal.mjs",
+      "sha256": "f91e6977ec0e2cdb0b7e4cf90980eeebab90c59aabfb1e2e48b47cb4bf12e80c",
+      "retained": "sources/port/v2/tools/creature-animation/pose-refusal.mjs",
+      "afterSha256": "f91e6977ec0e2cdb0b7e4cf90980eeebab90c59aabfb1e2e48b47cb4bf12e80c"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/quadruped-template.mjs",
+      "sha256": "86b4419ab0ef904f87e08942a1fdaf1f68a608c3cac40747b3095f8fb0aae5dc",
+      "retained": "sources/port/v2/tools/creature-animation/quadruped-template.mjs",
+      "afterSha256": "86b4419ab0ef904f87e08942a1fdaf1f68a608c3cac40747b3095f8fb0aae5dc"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "sha256": "926e3a309668dd60bd6ef94bfda6a27790602153c8aa30bed5f5c30b81531684",
+      "retained": "sources/port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "afterSha256": "926e3a309668dd60bd6ef94bfda6a27790602153c8aa30bed5f5c30b81531684"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "9b23b08d8800ac634ec9dd3fff7b8939ada5747f7052e1f2be08818991056215",
+      "retained": "sources/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "afterSha256": "9b23b08d8800ac634ec9dd3fff7b8939ada5747f7052e1f2be08818991056215"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/smooth-skin-weights.mjs",
+      "sha256": "6a589f1347bff0643e2b0d38e8249da25739ce0d61562c7a148c3eaab02d070f",
+      "retained": "sources/port/v2/tools/creature-animation/smooth-skin-weights.mjs",
+      "afterSha256": "6a589f1347bff0643e2b0d38e8249da25739ce0d61562c7a148c3eaab02d070f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "sha256": "e2dca64d0077c7a3f91b1c00bc383392c6a7d245f9c1b19a9254384c8acb8596",
+      "retained": "sources/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "afterSha256": "e2dca64d0077c7a3f91b1c00bc383392c6a7d245f9c1b19a9254384c8acb8596"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/terminal-contact-pads.mjs",
+      "sha256": "96dd7cda3a832670a3133490d41a5aabc314aef26c903056027dbcd81bec2505",
+      "retained": "sources/port/v2/tools/creature-animation/terminal-contact-pads.mjs",
+      "afterSha256": "96dd7cda3a832670a3133490d41a5aabc314aef26c903056027dbcd81bec2505"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/wasm-arap-sweep.mjs",
+      "sha256": "08c41cca60a7ec46ca07103d27ecbdff1d97f2bbf62507fb310c560d05487ccd",
+      "retained": "sources/port/v2/tools/creature-animation/wasm-arap-sweep.mjs",
+      "afterSha256": "08c41cca60a7ec46ca07103d27ecbdff1d97f2bbf62507fb310c560d05487ccd"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/wasm-orientation-active.mjs",
+      "sha256": "1db0f39f9d8596ff3a42139cd5278b56fa0b0936a9914bdd1b45c20992107590",
+      "retained": "sources/port/v2/tools/creature-animation/wasm-orientation-active.mjs",
+      "afterSha256": "1db0f39f9d8596ff3a42139cd5278b56fa0b0936a9914bdd1b45c20992107590"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/wasm-orientation-forward.mjs",
+      "sha256": "ba4760f6817de9c63b0508167ad0623f784b1983b71006c2e024356fe8d65da3",
+      "retained": "sources/port/v2/tools/creature-animation/wasm-orientation-forward.mjs",
+      "afterSha256": "ba4760f6817de9c63b0508167ad0623f784b1983b71006c2e024356fe8d65da3"
+    }
+  ]
+}

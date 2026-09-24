@@ -1,0 +1,4473 @@
+{
+  "schema": "cf.i5-native-focus-review/v1",
+  "runId": "i5-focus-repair-02",
+  "status": "PASS",
+  "startedAt": "2026-09-22T18:19:06.454Z",
+  "node": "v26.9.0",
+  "invocation": {
+    "executable": "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+    "arguments": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/01-i5/focus-review.mjs",
+      "audits/ARCHETYPE_REPAIRS_20260922/01-i5/focus-02",
+      "i5-focus-repair-02"
+    ],
+    "exactBrowser": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"
+  },
+  "scope": "Native keyboard/computed-style/clipping diagnostic on a narrow source-CSS fixture; not a game, virtualization, memory, or art certificate.",
+  "policy": {
+    "attempts": 1,
+    "automaticRetries": 0
+  },
+  "source": {
+    "begin": "61c37f3a846429bcbc0167ea92de12623593e750",
+    "branch": "openai/mac",
+    "end": "61c37f3a846429bcbc0167ea92de12623593e750",
+    "files": [
+      {
+        "file": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/focus-review.mjs",
+        "sha256": "734a6626d546fbabce35686230e6a5360d18a137917dd3225e2c7c92b37ac2ec",
+        "unchanged": true
+      },
+      {
+        "file": "port/v2/tools/browsercdp.mjs",
+        "sha256": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
+        "unchanged": true
+      },
+      {
+        "file": "port/v2/tools/browserpath.mjs",
+        "sha256": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
+        "unchanged": true
+      },
+      {
+        "file": "port/v2/tools/workspacelock.mjs",
+        "sha256": "ceb20c120f1c2a889124f5e90050cf0df44768cd9c5a61cb1558ca5373371ae8",
+        "unchanged": true
+      },
+      {
+        "file": "port/v2/apps/game/index.html",
+        "sha256": "db71621fb31f059014402200cd4577f43d6d171d906482ab9d2068601fbb4f1f",
+        "unchanged": true
+      },
+      {
+        "file": "port/v2/apps/game/src/main.ts",
+        "sha256": "d1fcbb60a15bf33cb28cbc8b080296be40fe5ac8d7a6bb9fcb06e021b870e13a",
+        "unchanged": true
+      },
+      {
+        "file": "port/v2/apps/game/src/audiovisual-pilot.ts",
+        "sha256": "4c98a67a7ca74d1bcf67f88004f1dcf0a2d8ddc5977b5ef3ec58b0d75178cc5a",
+        "unchanged": true
+      },
+      {
+        "file": "port/v2/apps/game/src/pilot-runtime-style.ts",
+        "sha256": "8409a4b8cb469baea7b97958c80053aa7adb8b8a80104a2a5575dd3b5dacb91a",
+        "unchanged": true
+      },
+      {
+        "file": "port/v2/apps/game/src/ui-sheet-style.ts",
+        "sha256": "76645418ad22e79fbbbdaae94ef0cb441a0eac10031cd2f442ea182111c210cc",
+        "unchanged": true
+      },
+      {
+        "file": "port/v2/apps/game/src/ui-shell-style.ts",
+        "sha256": "8d9821a712a0cf2547a032bf2df8d67be1fb88dc2585d80e6577b17b2c96e4c8",
+        "unchanged": true
+      },
+      {
+        "file": "port/v2/apps/game/src/ui-presentation-tokens.ts",
+        "sha256": "2a53bfe1510bfbf4d72aa0a29ba40c6f446bbc952bd961445e0eb2871c07b0c7",
+        "unchanged": true
+      },
+      {
+        "file": "port/v2/apps/game/src/notification-history.ts",
+        "sha256": "eadb4447b9654da8d43bb0f6404a6e892e905abe5a46431f785fcb6aa0df969e",
+        "unchanged": true
+      },
+      {
+        "file": "port/v2/apps/game/src/pilot-tokens.ts",
+        "sha256": "a71fc4897b4c348254fa54ef7b1ffe7cbd0eefa31dacf57ea054f3ebcff811a3",
+        "unchanged": true
+      },
+      {
+        "file": "port/v2/apps/game/src/pilot-assets.ts",
+        "sha256": "e17dbffb5baa6f935bfe745393e05a09022b53554a9f5ca202b88ed79ca40fbb",
+        "unchanged": true
+      }
+    ]
+  },
+  "styles": [
+    {
+      "owner": "index-style-0",
+      "sha256": "a5456ffd1c765072c585b0f2a3535e6523780f93856d4f4272612d1e61fd16a6"
+    },
+    {
+      "owner": "UI_PRESENTATION_CSS",
+      "source": "port/v2/apps/game/src/ui-presentation-tokens.ts",
+      "sha256": "66d74d732db049a3107f118c10d40724d78dfddac6187120583f843332b0a84b"
+    },
+    {
+      "owner": "UI_SHELL_CSS",
+      "source": "port/v2/apps/game/src/ui-shell-style.ts",
+      "sha256": "5cfeb3ecebc1de00a34bde00abe3d7a792e1238b96e86bf8f31e3e02ed59495d"
+    },
+    {
+      "owner": "NOTIFICATION_HISTORY_CSS",
+      "source": "port/v2/apps/game/src/notification-history.ts",
+      "sha256": "a310b67eeaf1f00ecc0414e2197a62e327d67bee7f7a9e42f62052021f9c7849"
+    },
+    {
+      "owner": "UI_SHEET_CSS",
+      "source": "port/v2/apps/game/src/ui-sheet-style.ts",
+      "sha256": "3f7dc4206c9292d4fba40531a90ad9c02991a0f46022c871f6075fe4ac959dd0"
+    },
+    {
+      "owner": "PILOT_RUNTIME_CSS",
+      "source": "port/v2/apps/game/src/pilot-runtime-style.ts",
+      "sha256": "836ebe7829997e53c1b81a5966636ce4ced812361825561cde44767ce76f20f7"
+    }
+  ],
+  "rows": [
+    {
+      "id": "phone-default",
+      "viewport": {
+        "id": "phone",
+        "width": 390,
+        "height": 844,
+        "dpr": 3,
+        "mobile": true
+      },
+      "pilot": false,
+      "checks": [
+        {
+          "name": "generic-native-focus",
+          "measured": {
+            "selector": "#ordinary-control",
+            "activeId": "ordinary-control",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 183.78125,
+              "right": 169.15625,
+              "bottom": 227.78125,
+              "width": 147.15625,
+              "height": 44
+            },
+            "scroller": {
+              "left": 22,
+              "top": 227.78125,
+              "right": 310,
+              "bottom": 687.78125,
+              "width": 288,
+              "height": 460,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 672
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              }
+            ],
+            "ring": {
+              "left": 18,
+              "right": 173.15625,
+              "top": 179.78125,
+              "bottom": 231.78125
+            },
+            "outlineWidth": 2,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px",
+            "visible": true,
+            "intersects": false,
+            "rowInsideScroller": false,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 205.78125,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 165.15625,
+                "y": 205.78125,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 95.578125,
+                "y": 187.78125,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 95.578125,
+                "y": 223.78125,
+                "owned": true,
+                "hit": "ordinary-control"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": true,
+            "errors": []
+          }
+        },
+        {
+          "name": "row-native-focus",
+          "measured": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 227.78125,
+              "right": 310,
+              "bottom": 291.78125,
+              "width": 288,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 227.78125,
+              "right": 310,
+              "bottom": 687.78125,
+              "width": 288,
+              "height": 460,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 227.78125,
+                "right": 310,
+                "bottom": 687.78125
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 672
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              }
+            ],
+            "ring": {
+              "left": 23,
+              "right": 309,
+              "top": 228.78125,
+              "bottom": 290.78125
+            },
+            "outlineWidth": 3,
+            "outlineOffset": -4,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": true,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 259.78125,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 306,
+                "y": 259.78125,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 166,
+                "y": 231.78125,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 166,
+                "y": 287.78125,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": true,
+            "errors": []
+          }
+        },
+        {
+          "name": "generic-focus-after-controls",
+          "measured": {
+            "selector": "#ordinary-control",
+            "activeId": "ordinary-control",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 183.78125,
+              "right": 169.15625,
+              "bottom": 227.78125,
+              "width": 147.15625,
+              "height": 44
+            },
+            "scroller": {
+              "left": 22,
+              "top": 227.78125,
+              "right": 310,
+              "bottom": 687.78125,
+              "width": 288,
+              "height": 460,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 672
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              }
+            ],
+            "ring": {
+              "left": 18,
+              "right": 173.15625,
+              "top": 179.78125,
+              "bottom": 231.78125
+            },
+            "outlineWidth": 2,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px",
+            "visible": true,
+            "intersects": false,
+            "rowInsideScroller": false,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 205.78125,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 165.15625,
+                "y": 205.78125,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 95.578125,
+                "y": 187.78125,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 95.578125,
+                "y": 223.78125,
+                "owned": true,
+                "hit": "ordinary-control"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": true,
+            "errors": []
+          }
+        }
+      ],
+      "controls": [
+        {
+          "kind": "sheet",
+          "originalRule": {
+            "source": "port/v2/apps/game/src/ui-sheet-style.ts",
+            "sourceCommit": "61c37f3a846429bcbc0167ea92de12623593e750",
+            "sourceSha256": "73f0f6adc6e3d58f333996ec279e3b53b580ef512e6297d29445779f381d72cc",
+            "css": ":is(.panel,#survey) :is(button,input,select):focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}"
+          },
+          "status": "PASS",
+          "placement": {
+            "after": "cf-ui-presentation",
+            "next": null
+          },
+          "broken": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 227.78125,
+              "right": 310,
+              "bottom": 291.78125,
+              "width": 288,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 227.78125,
+              "right": 310,
+              "bottom": 687.78125,
+              "width": 288,
+              "height": 460,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 227.78125,
+                "right": 310,
+                "bottom": 687.78125
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 672
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              }
+            ],
+            "ring": {
+              "left": 18,
+              "right": 314,
+              "top": 223.78125,
+              "bottom": 295.78125
+            },
+            "outlineWidth": 2,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": false,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 259.78125,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 306,
+                "y": 259.78125,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 166,
+                "y": 231.78125,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 166,
+                "y": 287.78125,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": false,
+            "errors": [
+              "outline-width",
+              "outline-not-inset",
+              "ringInsideScroller",
+              "ringInsideAncestors"
+            ]
+          },
+          "removed": true,
+          "restored": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 227.78125,
+              "right": 310,
+              "bottom": 291.78125,
+              "width": 288,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 227.78125,
+              "right": 310,
+              "bottom": 687.78125,
+              "width": 288,
+              "height": 460,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 227.78125,
+                "right": 310,
+                "bottom": 687.78125
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 672
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              }
+            ],
+            "ring": {
+              "left": 23,
+              "right": 309,
+              "top": 228.78125,
+              "bottom": 290.78125
+            },
+            "outlineWidth": 3,
+            "outlineOffset": -4,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": true,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 259.78125,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 306,
+                "y": 259.78125,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 166,
+                "y": 231.78125,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 166,
+                "y": 287.78125,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "recoveredVerdict": {
+            "pass": true,
+            "errors": []
+          }
+        }
+      ],
+      "settlements": [
+        {
+          "label": "generic-native-focus",
+          "selector": "#ordinary-control",
+          "startedAt": 113.90000009536743,
+          "finishedAt": 297,
+          "awaitedFinite": 2,
+          "skippedNonfinite": [],
+          "before": [
+            {
+              "type": "CSSTransition",
+              "target": "ordinary-control",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.59999999999999,
+              "endTime": 150,
+              "finite": true
+            },
+            {
+              "type": "CSSAnimation",
+              "target": "codexpanel",
+              "animationName": "cf-sheet-enter",
+              "transitionProperty": null,
+              "playState": "running",
+              "pending": false,
+              "currentTime": 66.634,
+              "endTime": 200,
+              "finite": true
+            }
+          ],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "row-native-focus",
+          "selector": "#focus-row-0",
+          "startedAt": 332,
+          "finishedAt": 497.40000009536743,
+          "awaitedFinite": 2,
+          "skippedNonfinite": [],
+          "before": [
+            {
+              "type": "CSSTransition",
+              "target": "ordinary-control",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.699999999999992,
+              "endTime": 150,
+              "finite": true
+            },
+            {
+              "type": "CSSTransition",
+              "target": "focus-row-0",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.699999999999992,
+              "endTime": 150,
+              "finite": true
+            }
+          ],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "sheet-historical-fault",
+          "selector": "#focus-row-0",
+          "startedAt": 564.4000000953674,
+          "finishedAt": 596,
+          "awaitedFinite": 0,
+          "skippedNonfinite": [],
+          "before": [],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "sheet-restoration",
+          "selector": "#focus-row-0",
+          "startedAt": 663.7000000476837,
+          "finishedAt": 697,
+          "awaitedFinite": 0,
+          "skippedNonfinite": [],
+          "before": [],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "generic-focus-after-controls",
+          "selector": "#ordinary-control",
+          "startedAt": 813.3000000715256,
+          "finishedAt": 979.7000000476837,
+          "awaitedFinite": 2,
+          "skippedNonfinite": [],
+          "before": [
+            {
+              "type": "CSSTransition",
+              "target": "ordinary-control",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.69999999999994,
+              "endTime": 150,
+              "finite": true
+            },
+            {
+              "type": "CSSTransition",
+              "target": "focus-row-0",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.69999999999994,
+              "endTime": 150,
+              "finite": true
+            }
+          ],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        }
+      ],
+      "status": "PASS",
+      "targetId": "E825CFD9D56C1372C176CB222301E40B",
+      "sessionId": "A7479B0ACD1B2B4A2106EE5291BD65DC"
+    },
+    {
+      "id": "phone-pilot",
+      "viewport": {
+        "id": "phone",
+        "width": 390,
+        "height": 844,
+        "dpr": 3,
+        "mobile": true
+      },
+      "pilot": true,
+      "checks": [
+        {
+          "name": "generic-native-focus",
+          "measured": {
+            "selector": "#ordinary-control",
+            "activeId": "ordinary-control",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 174,
+              "right": 175.8125,
+              "bottom": 218,
+              "width": 153.8125,
+              "height": 44
+            },
+            "scroller": {
+              "left": 22,
+              "top": 218,
+              "right": 310,
+              "bottom": 678,
+              "width": 288,
+              "height": 460,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 672
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              }
+            ],
+            "ring": {
+              "left": 17,
+              "right": 180.8125,
+              "top": 169,
+              "bottom": 223
+            },
+            "outlineWidth": 3,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(111, 211, 255)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px",
+            "visible": true,
+            "intersects": false,
+            "rowInsideScroller": false,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 196,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 171.8125,
+                "y": 196,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 98.90625,
+                "y": 178,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 98.90625,
+                "y": 214,
+                "owned": true,
+                "hit": "ordinary-control"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": true,
+            "errors": []
+          }
+        },
+        {
+          "name": "row-native-focus",
+          "measured": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 218,
+              "right": 310,
+              "bottom": 282,
+              "width": 288,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 218,
+              "right": 310,
+              "bottom": 678,
+              "width": 288,
+              "height": 460,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 218,
+                "right": 310,
+                "bottom": 678
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 672
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              }
+            ],
+            "ring": {
+              "left": 23,
+              "right": 309,
+              "top": 219,
+              "bottom": 281
+            },
+            "outlineWidth": 3,
+            "outlineOffset": -4,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": true,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 250,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 306,
+                "y": 250,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 166,
+                "y": 222,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 166,
+                "y": 278,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": true,
+            "errors": []
+          }
+        },
+        {
+          "name": "generic-focus-after-controls",
+          "measured": {
+            "selector": "#ordinary-control",
+            "activeId": "ordinary-control",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 174,
+              "right": 175.8125,
+              "bottom": 218,
+              "width": 153.8125,
+              "height": 44
+            },
+            "scroller": {
+              "left": 22,
+              "top": 218,
+              "right": 310,
+              "bottom": 678,
+              "width": 288,
+              "height": 460,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 672
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              }
+            ],
+            "ring": {
+              "left": 17,
+              "right": 180.8125,
+              "top": 169,
+              "bottom": 223
+            },
+            "outlineWidth": 3,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(111, 211, 255)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px",
+            "visible": true,
+            "intersects": false,
+            "rowInsideScroller": false,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 196,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 171.8125,
+                "y": 196,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 98.90625,
+                "y": 178,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 98.90625,
+                "y": 214,
+                "owned": true,
+                "hit": "ordinary-control"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": true,
+            "errors": []
+          }
+        }
+      ],
+      "controls": [
+        {
+          "kind": "sheet",
+          "originalRule": {
+            "source": "port/v2/apps/game/src/ui-sheet-style.ts",
+            "sourceCommit": "61c37f3a846429bcbc0167ea92de12623593e750",
+            "sourceSha256": "73f0f6adc6e3d58f333996ec279e3b53b580ef512e6297d29445779f381d72cc",
+            "css": ":is(.panel,#survey) :is(button,input,select):focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}"
+          },
+          "status": "PASS",
+          "placement": {
+            "after": "cf-ui-presentation",
+            "next": "cf-pilot-style"
+          },
+          "broken": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 218,
+              "right": 310,
+              "bottom": 282,
+              "width": 288,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 218,
+              "right": 310,
+              "bottom": 678,
+              "width": 288,
+              "height": 460,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 218,
+                "right": 310,
+                "bottom": 678
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 672
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              }
+            ],
+            "ring": {
+              "left": 18,
+              "right": 314,
+              "top": 214,
+              "bottom": 286
+            },
+            "outlineWidth": 2,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": false,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 250,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 306,
+                "y": 250,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 166,
+                "y": 222,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 166,
+                "y": 278,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": false,
+            "errors": [
+              "outline-width",
+              "outline-not-inset",
+              "ringInsideScroller",
+              "ringInsideAncestors"
+            ]
+          },
+          "removed": true,
+          "restored": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 218,
+              "right": 310,
+              "bottom": 282,
+              "width": 288,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 218,
+              "right": 310,
+              "bottom": 678,
+              "width": 288,
+              "height": 460,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 218,
+                "right": 310,
+                "bottom": 678
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 672
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              }
+            ],
+            "ring": {
+              "left": 23,
+              "right": 309,
+              "top": 219,
+              "bottom": 281
+            },
+            "outlineWidth": 3,
+            "outlineOffset": -4,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": true,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 250,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 306,
+                "y": 250,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 166,
+                "y": 222,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 166,
+                "y": 278,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "recoveredVerdict": {
+            "pass": true,
+            "errors": []
+          }
+        },
+        {
+          "kind": "pilot",
+          "originalRule": {
+            "source": "port/v2/apps/game/src/pilot-runtime-style.ts",
+            "sourceCommit": "61c37f3a846429bcbc0167ea92de12623593e750",
+            "sourceSha256": "12ca6ae00d0b660767f0aa6109b4f5bbcdbd8e4323b5e40273959ba79df1abb5",
+            "css": "body[data-cf-pilot-look] :is(.panel,#survey,#planetside,#inventorysheet) :is(button,input,select,textarea,summary):focus-visible{outline:3px solid #6fd3ff;outline-offset:2px}"
+          },
+          "status": "PASS",
+          "placement": {
+            "after": "cf-pilot-style",
+            "next": null
+          },
+          "broken": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 218,
+              "right": 310,
+              "bottom": 282,
+              "width": 288,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 218,
+              "right": 310,
+              "bottom": 678,
+              "width": 288,
+              "height": 460,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 218,
+                "right": 310,
+                "bottom": 678
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 672
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              }
+            ],
+            "ring": {
+              "left": 17,
+              "right": 315,
+              "top": 213,
+              "bottom": 287
+            },
+            "outlineWidth": 3,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(111, 211, 255)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": false,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 250,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 306,
+                "y": 250,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 166,
+                "y": 222,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 166,
+                "y": 278,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": false,
+            "errors": [
+              "outline-not-inset",
+              "ringInsideScroller",
+              "ringInsideAncestors"
+            ]
+          },
+          "removed": true,
+          "restored": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 218,
+              "right": 310,
+              "bottom": 282,
+              "width": 288,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 218,
+              "right": 310,
+              "bottom": 678,
+              "width": 288,
+              "height": 460,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 218,
+                "right": 310,
+                "bottom": 678
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 672
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 390,
+                "bottom": 844
+              }
+            ],
+            "ring": {
+              "left": 23,
+              "right": 309,
+              "top": 219,
+              "bottom": 281
+            },
+            "outlineWidth": 3,
+            "outlineOffset": -4,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": true,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 250,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 306,
+                "y": 250,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 166,
+                "y": 222,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 166,
+                "y": 278,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "recoveredVerdict": {
+            "pass": true,
+            "errors": []
+          }
+        }
+      ],
+      "settlements": [
+        {
+          "label": "generic-native-focus",
+          "selector": "#ordinary-control",
+          "startedAt": 284.2000000476837,
+          "finishedAt": 314.60000002384186,
+          "awaitedFinite": 0,
+          "skippedNonfinite": [],
+          "before": [],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "row-native-focus",
+          "selector": "#focus-row-0",
+          "startedAt": 348.7999999523163,
+          "finishedAt": 514.6000000238419,
+          "awaitedFinite": 2,
+          "skippedNonfinite": [],
+          "before": [
+            {
+              "type": "CSSTransition",
+              "target": "ordinary-control",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.799999999999983,
+              "endTime": 150,
+              "finite": true
+            },
+            {
+              "type": "CSSTransition",
+              "target": "focus-row-0",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.799999999999983,
+              "endTime": 150,
+              "finite": true
+            }
+          ],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "sheet-historical-fault",
+          "selector": "#focus-row-0",
+          "startedAt": 629.2999999523163,
+          "finishedAt": 646.7000000476837,
+          "awaitedFinite": 0,
+          "skippedNonfinite": [],
+          "before": [],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "sheet-restoration",
+          "selector": "#focus-row-0",
+          "startedAt": 745,
+          "finishedAt": 764.6000000238419,
+          "awaitedFinite": 0,
+          "skippedNonfinite": [],
+          "before": [],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "pilot-historical-fault",
+          "selector": "#focus-row-0",
+          "startedAt": 863,
+          "finishedAt": 897.5,
+          "awaitedFinite": 0,
+          "skippedNonfinite": [],
+          "before": [],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "pilot-restoration",
+          "selector": "#focus-row-0",
+          "startedAt": 996.8999999761581,
+          "finishedAt": 1030.2000000476837,
+          "awaitedFinite": 0,
+          "skippedNonfinite": [],
+          "before": [],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "generic-focus-after-controls",
+          "selector": "#ordinary-control",
+          "startedAt": 1165,
+          "finishedAt": 1329.7000000476837,
+          "awaitedFinite": 2,
+          "skippedNonfinite": [],
+          "before": [
+            {
+              "type": "CSSTransition",
+              "target": "ordinary-control",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.600000000000172,
+              "endTime": 150,
+              "finite": true
+            },
+            {
+              "type": "CSSTransition",
+              "target": "focus-row-0",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.600000000000172,
+              "endTime": 150,
+              "finite": true
+            }
+          ],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        }
+      ],
+      "status": "PASS",
+      "targetId": "5F82D3E830FC31E0813FBC701E4D7430",
+      "sessionId": "76412A653327889088AB8F6EEDCDD1CD"
+    },
+    {
+      "id": "desktop-default",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900,
+        "dpr": 1,
+        "mobile": false
+      },
+      "pilot": false,
+      "checks": [
+        {
+          "name": "generic-native-focus",
+          "measured": {
+            "selector": "#ordinary-control",
+            "activeId": "ordinary-control",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 183.78125,
+              "right": 169.15625,
+              "bottom": 204.78125,
+              "width": 147.15625,
+              "height": 21
+            },
+            "scroller": {
+              "left": 22,
+              "top": 204.78125,
+              "right": 299,
+              "bottom": 720.78125,
+              "width": 288,
+              "height": 516,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 728
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              }
+            ],
+            "ring": {
+              "left": 18,
+              "right": 173.15625,
+              "top": 179.78125,
+              "bottom": 208.78125
+            },
+            "outlineWidth": 2,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px",
+            "visible": true,
+            "intersects": false,
+            "rowInsideScroller": false,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 194.28125,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 165.15625,
+                "y": 194.28125,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 95.578125,
+                "y": 187.78125,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 95.578125,
+                "y": 200.78125,
+                "owned": true,
+                "hit": "ordinary-control"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": true,
+            "errors": []
+          }
+        },
+        {
+          "name": "row-native-focus",
+          "measured": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 204.78125,
+              "right": 299,
+              "bottom": 268.78125,
+              "width": 277,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 204.78125,
+              "right": 299,
+              "bottom": 720.78125,
+              "width": 288,
+              "height": 516,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 204.78125,
+                "right": 299,
+                "bottom": 720.78125
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 728
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              }
+            ],
+            "ring": {
+              "left": 23,
+              "right": 298,
+              "top": 205.78125,
+              "bottom": 267.78125
+            },
+            "outlineWidth": 3,
+            "outlineOffset": -4,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": true,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 236.78125,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 295,
+                "y": 236.78125,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 160.5,
+                "y": 208.78125,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 160.5,
+                "y": 264.78125,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": true,
+            "errors": []
+          }
+        },
+        {
+          "name": "generic-focus-after-controls",
+          "measured": {
+            "selector": "#ordinary-control",
+            "activeId": "ordinary-control",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 183.78125,
+              "right": 169.15625,
+              "bottom": 204.78125,
+              "width": 147.15625,
+              "height": 21
+            },
+            "scroller": {
+              "left": 22,
+              "top": 204.78125,
+              "right": 299,
+              "bottom": 720.78125,
+              "width": 288,
+              "height": 516,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 728
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              }
+            ],
+            "ring": {
+              "left": 18,
+              "right": 173.15625,
+              "top": 179.78125,
+              "bottom": 208.78125
+            },
+            "outlineWidth": 2,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px",
+            "visible": true,
+            "intersects": false,
+            "rowInsideScroller": false,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 194.28125,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 165.15625,
+                "y": 194.28125,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 95.578125,
+                "y": 187.78125,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 95.578125,
+                "y": 200.78125,
+                "owned": true,
+                "hit": "ordinary-control"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": true,
+            "errors": []
+          }
+        }
+      ],
+      "controls": [
+        {
+          "kind": "sheet",
+          "originalRule": {
+            "source": "port/v2/apps/game/src/ui-sheet-style.ts",
+            "sourceCommit": "61c37f3a846429bcbc0167ea92de12623593e750",
+            "sourceSha256": "73f0f6adc6e3d58f333996ec279e3b53b580ef512e6297d29445779f381d72cc",
+            "css": ":is(.panel,#survey) :is(button,input,select):focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}"
+          },
+          "status": "PASS",
+          "placement": {
+            "after": "cf-ui-presentation",
+            "next": null
+          },
+          "broken": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 204.78125,
+              "right": 299,
+              "bottom": 268.78125,
+              "width": 277,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 204.78125,
+              "right": 299,
+              "bottom": 720.78125,
+              "width": 288,
+              "height": 516,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 204.78125,
+                "right": 299,
+                "bottom": 720.78125
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 728
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              }
+            ],
+            "ring": {
+              "left": 18,
+              "right": 303,
+              "top": 200.78125,
+              "bottom": 272.78125
+            },
+            "outlineWidth": 2,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": false,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 236.78125,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 295,
+                "y": 236.78125,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 160.5,
+                "y": 208.78125,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 160.5,
+                "y": 264.78125,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": false,
+            "errors": [
+              "outline-width",
+              "outline-not-inset",
+              "ringInsideScroller",
+              "ringInsideAncestors"
+            ]
+          },
+          "removed": true,
+          "restored": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 204.78125,
+              "right": 299,
+              "bottom": 268.78125,
+              "width": 277,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 204.78125,
+              "right": 299,
+              "bottom": 720.78125,
+              "width": 288,
+              "height": 516,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 204.78125,
+                "right": 299,
+                "bottom": 720.78125
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 728
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              }
+            ],
+            "ring": {
+              "left": 23,
+              "right": 298,
+              "top": 205.78125,
+              "bottom": 267.78125
+            },
+            "outlineWidth": 3,
+            "outlineOffset": -4,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": true,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 236.78125,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 295,
+                "y": 236.78125,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 160.5,
+                "y": 208.78125,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 160.5,
+                "y": 264.78125,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "recoveredVerdict": {
+            "pass": true,
+            "errors": []
+          }
+        }
+      ],
+      "settlements": [
+        {
+          "label": "generic-native-focus",
+          "selector": "#ordinary-control",
+          "startedAt": 114.39999997615814,
+          "finishedAt": 295.2999999523163,
+          "awaitedFinite": 2,
+          "skippedNonfinite": [],
+          "before": [
+            {
+              "type": "CSSTransition",
+              "target": "ordinary-control",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.699999999999992,
+              "endTime": 150,
+              "finite": true
+            },
+            {
+              "type": "CSSAnimation",
+              "target": "codexpanel",
+              "animationName": "cf-sheet-enter",
+              "transitionProperty": null,
+              "playState": "running",
+              "pending": false,
+              "currentTime": 49.99999999999999,
+              "endTime": 200,
+              "finite": true
+            }
+          ],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "row-native-focus",
+          "selector": "#focus-row-0",
+          "startedAt": 329.2999999523163,
+          "finishedAt": 496.5,
+          "awaitedFinite": 2,
+          "skippedNonfinite": [],
+          "before": [
+            {
+              "type": "CSSTransition",
+              "target": "ordinary-control",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.600000000000005,
+              "endTime": 150,
+              "finite": true
+            },
+            {
+              "type": "CSSTransition",
+              "target": "focus-row-0",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.600000000000005,
+              "endTime": 150,
+              "finite": true
+            }
+          ],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "sheet-historical-fault",
+          "selector": "#focus-row-0",
+          "startedAt": 543.5,
+          "finishedAt": 563,
+          "awaitedFinite": 0,
+          "skippedNonfinite": [],
+          "before": [],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "sheet-restoration",
+          "selector": "#focus-row-0",
+          "startedAt": 608.7000000476837,
+          "finishedAt": 629.2999999523163,
+          "awaitedFinite": 0,
+          "skippedNonfinite": [],
+          "before": [],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "generic-focus-after-controls",
+          "selector": "#ordinary-control",
+          "startedAt": 697.8999999761581,
+          "finishedAt": 846.2000000476837,
+          "awaitedFinite": 2,
+          "skippedNonfinite": [],
+          "before": [
+            {
+              "type": "CSSTransition",
+              "target": "ordinary-control",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 33.33400000000009,
+              "endTime": 150,
+              "finite": true
+            },
+            {
+              "type": "CSSTransition",
+              "target": "focus-row-0",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 33.33400000000009,
+              "endTime": 150,
+              "finite": true
+            }
+          ],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        }
+      ],
+      "status": "PASS",
+      "targetId": "6ADC1F679AC2CCC2A921BCB73227A04E",
+      "sessionId": "8DA37E393B887393D49B7FBF61AEC2CB"
+    },
+    {
+      "id": "desktop-pilot",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900,
+        "dpr": 1,
+        "mobile": false
+      },
+      "pilot": true,
+      "checks": [
+        {
+          "name": "generic-native-focus",
+          "measured": {
+            "selector": "#ordinary-control",
+            "activeId": "ordinary-control",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 174,
+              "right": 175.8125,
+              "bottom": 196,
+              "width": 153.8125,
+              "height": 22
+            },
+            "scroller": {
+              "left": 22,
+              "top": 196,
+              "right": 299,
+              "bottom": 712,
+              "width": 288,
+              "height": 516,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 726
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              }
+            ],
+            "ring": {
+              "left": 17,
+              "right": 180.8125,
+              "top": 169,
+              "bottom": 201
+            },
+            "outlineWidth": 3,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(111, 211, 255)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px",
+            "visible": true,
+            "intersects": false,
+            "rowInsideScroller": false,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 185,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 171.8125,
+                "y": 185,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 98.90625,
+                "y": 178,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 98.90625,
+                "y": 192,
+                "owned": true,
+                "hit": "ordinary-control"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": true,
+            "errors": []
+          }
+        },
+        {
+          "name": "row-native-focus",
+          "measured": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 196,
+              "right": 299,
+              "bottom": 260,
+              "width": 277,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 196,
+              "right": 299,
+              "bottom": 712,
+              "width": 288,
+              "height": 516,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 196,
+                "right": 299,
+                "bottom": 712
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 726
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              }
+            ],
+            "ring": {
+              "left": 23,
+              "right": 298,
+              "top": 197,
+              "bottom": 259
+            },
+            "outlineWidth": 3,
+            "outlineOffset": -4,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": true,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 228,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 295,
+                "y": 228,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 160.5,
+                "y": 200,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 160.5,
+                "y": 256,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": true,
+            "errors": []
+          }
+        },
+        {
+          "name": "generic-focus-after-controls",
+          "measured": {
+            "selector": "#ordinary-control",
+            "activeId": "ordinary-control",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 174,
+              "right": 175.8125,
+              "bottom": 196,
+              "width": 153.8125,
+              "height": 22
+            },
+            "scroller": {
+              "left": 22,
+              "top": 196,
+              "right": 299,
+              "bottom": 712,
+              "width": 288,
+              "height": 516,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 726
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              }
+            ],
+            "ring": {
+              "left": 17,
+              "right": 180.8125,
+              "top": 169,
+              "bottom": 201
+            },
+            "outlineWidth": 3,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(111, 211, 255)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px",
+            "visible": true,
+            "intersects": false,
+            "rowInsideScroller": false,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 185,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 171.8125,
+                "y": 185,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 98.90625,
+                "y": 178,
+                "owned": true,
+                "hit": "ordinary-control"
+              },
+              {
+                "x": 98.90625,
+                "y": 192,
+                "owned": true,
+                "hit": "ordinary-control"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": true,
+            "errors": []
+          }
+        }
+      ],
+      "controls": [
+        {
+          "kind": "sheet",
+          "originalRule": {
+            "source": "port/v2/apps/game/src/ui-sheet-style.ts",
+            "sourceCommit": "61c37f3a846429bcbc0167ea92de12623593e750",
+            "sourceSha256": "73f0f6adc6e3d58f333996ec279e3b53b580ef512e6297d29445779f381d72cc",
+            "css": ":is(.panel,#survey) :is(button,input,select):focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}"
+          },
+          "status": "PASS",
+          "placement": {
+            "after": "cf-ui-presentation",
+            "next": "cf-pilot-style"
+          },
+          "broken": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 196,
+              "right": 299,
+              "bottom": 260,
+              "width": 277,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 196,
+              "right": 299,
+              "bottom": 712,
+              "width": 288,
+              "height": 516,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 196,
+                "right": 299,
+                "bottom": 712
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 726
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              }
+            ],
+            "ring": {
+              "left": 18,
+              "right": 303,
+              "top": 192,
+              "bottom": 264
+            },
+            "outlineWidth": 2,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": false,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 228,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 295,
+                "y": 228,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 160.5,
+                "y": 200,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 160.5,
+                "y": 256,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": false,
+            "errors": [
+              "outline-width",
+              "outline-not-inset",
+              "ringInsideScroller",
+              "ringInsideAncestors"
+            ]
+          },
+          "removed": true,
+          "restored": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 196,
+              "right": 299,
+              "bottom": 260,
+              "width": 277,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 196,
+              "right": 299,
+              "bottom": 712,
+              "width": 288,
+              "height": 516,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 196,
+                "right": 299,
+                "bottom": 712
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 726
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              }
+            ],
+            "ring": {
+              "left": 23,
+              "right": 298,
+              "top": 197,
+              "bottom": 259
+            },
+            "outlineWidth": 3,
+            "outlineOffset": -4,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": true,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 228,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 295,
+                "y": 228,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 160.5,
+                "y": 200,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 160.5,
+                "y": 256,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "recoveredVerdict": {
+            "pass": true,
+            "errors": []
+          }
+        },
+        {
+          "kind": "pilot",
+          "originalRule": {
+            "source": "port/v2/apps/game/src/pilot-runtime-style.ts",
+            "sourceCommit": "61c37f3a846429bcbc0167ea92de12623593e750",
+            "sourceSha256": "12ca6ae00d0b660767f0aa6109b4f5bbcdbd8e4323b5e40273959ba79df1abb5",
+            "css": "body[data-cf-pilot-look] :is(.panel,#survey,#planetside,#inventorysheet) :is(button,input,select,textarea,summary):focus-visible{outline:3px solid #6fd3ff;outline-offset:2px}"
+          },
+          "status": "PASS",
+          "placement": {
+            "after": "cf-pilot-style",
+            "next": null
+          },
+          "broken": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 196,
+              "right": 299,
+              "bottom": 260,
+              "width": 277,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 196,
+              "right": 299,
+              "bottom": 712,
+              "width": 288,
+              "height": 516,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 196,
+                "right": 299,
+                "bottom": 712
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 726
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              }
+            ],
+            "ring": {
+              "left": 17,
+              "right": 304,
+              "top": 191,
+              "bottom": 265
+            },
+            "outlineWidth": 3,
+            "outlineOffset": 2,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(111, 211, 255)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": false,
+            "ringInsideAncestors": false,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 228,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 295,
+                "y": 228,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 160.5,
+                "y": 200,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 160.5,
+                "y": 256,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "verdict": {
+            "pass": false,
+            "errors": [
+              "outline-not-inset",
+              "ringInsideScroller",
+              "ringInsideAncestors"
+            ]
+          },
+          "removed": true,
+          "restored": {
+            "selector": "#focus-row-0",
+            "activeId": "focus-row-0",
+            "focused": true,
+            "focusVisible": true,
+            "native": true,
+            "rect": {
+              "left": 22,
+              "top": 196,
+              "right": 299,
+              "bottom": 260,
+              "width": 277,
+              "height": 64
+            },
+            "scroller": {
+              "left": 22,
+              "top": 196,
+              "right": 299,
+              "bottom": 712,
+              "width": 288,
+              "height": 516,
+              "overflowX": "hidden",
+              "overflowY": "auto"
+            },
+            "clips": [
+              {
+                "id": "",
+                "className": "compendium-scroll",
+                "left": 22,
+                "top": 196,
+                "right": 299,
+                "bottom": 712
+              },
+              {
+                "id": "codexpanel",
+                "className": "panel codex-list-mode",
+                "left": 8,
+                "top": 104,
+                "right": 368,
+                "bottom": 726
+              },
+              {
+                "id": "",
+                "className": "panel-open",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              },
+              {
+                "id": "",
+                "className": "",
+                "left": 0,
+                "top": 0,
+                "right": 1440,
+                "bottom": 900
+              }
+            ],
+            "ring": {
+              "left": 23,
+              "right": 298,
+              "top": 197,
+              "bottom": 259
+            },
+            "outlineWidth": 3,
+            "outlineOffset": -4,
+            "outlineStyle": "solid",
+            "outlineColor": "rgb(255, 217, 106)",
+            "boxShadow": "rgb(7, 16, 29) 0px 0px 0px 2px inset, rgba(255, 217, 106, 0.45) 0px 0px 0px 5px inset",
+            "visible": true,
+            "intersects": true,
+            "rowInsideScroller": true,
+            "ringInsideScroller": true,
+            "ringInsideAncestors": true,
+            "ringInsideViewport": true,
+            "points": [
+              {
+                "x": 26,
+                "y": 228,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 295,
+                "y": 228,
+                "owned": true,
+                "hit": "SPAN"
+              },
+              {
+                "x": 160.5,
+                "y": 200,
+                "owned": true,
+                "hit": "focus-row-0"
+              },
+              {
+                "x": 160.5,
+                "y": 256,
+                "owned": true,
+                "hit": "focus-row-0"
+              }
+            ],
+            "nativeEvents": [
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "BODY"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "keydown",
+                "key": "Tab",
+                "trusted": true,
+                "target": "ordinary-control"
+              },
+              {
+                "type": "focusin",
+                "key": null,
+                "trusted": true,
+                "target": "focus-row-0"
+              },
+              {
+                "type": "keyup",
+                "key": "Tab",
+                "trusted": true,
+                "target": "focus-row-0"
+              }
+            ]
+          },
+          "recoveredVerdict": {
+            "pass": true,
+            "errors": []
+          }
+        }
+      ],
+      "settlements": [
+        {
+          "label": "generic-native-focus",
+          "selector": "#ordinary-control",
+          "startedAt": 115.29999995231628,
+          "finishedAt": 297,
+          "awaitedFinite": 2,
+          "skippedNonfinite": [],
+          "before": [
+            {
+              "type": "CSSTransition",
+              "target": "ordinary-control",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.699999999999992,
+              "endTime": 150,
+              "finite": true
+            },
+            {
+              "type": "CSSAnimation",
+              "target": "codexpanel",
+              "animationName": "cf-sheet-enter",
+              "transitionProperty": null,
+              "playState": "running",
+              "pending": false,
+              "currentTime": 66.634,
+              "endTime": 200,
+              "finite": true
+            }
+          ],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "row-native-focus",
+          "selector": "#focus-row-0",
+          "startedAt": 332.2000000476837,
+          "finishedAt": 515,
+          "awaitedFinite": 2,
+          "skippedNonfinite": [],
+          "before": [
+            {
+              "type": "CSSTransition",
+              "target": "ordinary-control",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.600000000000005,
+              "endTime": 150,
+              "finite": true
+            },
+            {
+              "type": "CSSTransition",
+              "target": "focus-row-0",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.600000000000005,
+              "endTime": 150,
+              "finite": true
+            }
+          ],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "sheet-historical-fault",
+          "selector": "#focus-row-0",
+          "startedAt": 573.5,
+          "finishedAt": 597.5,
+          "awaitedFinite": 0,
+          "skippedNonfinite": [],
+          "before": [],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "sheet-restoration",
+          "selector": "#focus-row-0",
+          "startedAt": 654.2999999523163,
+          "finishedAt": 679.7999999523163,
+          "awaitedFinite": 0,
+          "skippedNonfinite": [],
+          "before": [],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "pilot-historical-fault",
+          "selector": "#focus-row-0",
+          "startedAt": 738.7000000476837,
+          "finishedAt": 764.7000000476837,
+          "awaitedFinite": 0,
+          "skippedNonfinite": [],
+          "before": [],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "pilot-restoration",
+          "selector": "#focus-row-0",
+          "startedAt": 821.2999999523163,
+          "finishedAt": 848.1000000238419,
+          "awaitedFinite": 0,
+          "skippedNonfinite": [],
+          "before": [],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        },
+        {
+          "label": "generic-focus-after-controls",
+          "selector": "#ordinary-control",
+          "startedAt": 932,
+          "finishedAt": 1098.2999999523163,
+          "awaitedFinite": 2,
+          "skippedNonfinite": [],
+          "before": [
+            {
+              "type": "CSSTransition",
+              "target": "ordinary-control",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.60000000000006,
+              "endTime": 150,
+              "finite": true
+            },
+            {
+              "type": "CSSTransition",
+              "target": "focus-row-0",
+              "animationName": null,
+              "transitionProperty": "box-shadow",
+              "playState": "running",
+              "pending": false,
+              "currentTime": 16.60000000000006,
+              "endTime": 150,
+              "finite": true
+            }
+          ],
+          "after": [],
+          "settled": true,
+          "unresolved": []
+        }
+      ],
+      "status": "PASS",
+      "targetId": "1BD191589D1C7FDE1F3CB8E8861AB2F7",
+      "sessionId": "AF270F0BF9898E573ECEBC632D277756"
+    }
+  ],
+  "screenshots": [
+    {
+      "row": "phone-default",
+      "label": "baseline-row",
+      "file": "phone-default-baseline-row.png",
+      "bytes": 104388,
+      "sha256": "e87286700fef6614dc91279864330205ddbda76428b66c36099936b53cd725cb"
+    },
+    {
+      "row": "phone-default",
+      "label": "sheet-historical-fault",
+      "file": "phone-default-sheet-historical-fault.png",
+      "bytes": 104594,
+      "sha256": "d395b92e7539162faab295095f2902379003d8dcdc661e325ee3137e361d59f7"
+    },
+    {
+      "row": "phone-default",
+      "label": "sheet-recovered",
+      "file": "phone-default-sheet-recovered.png",
+      "bytes": 104391,
+      "sha256": "2bf53e021449f0ccaabe45589f3a1f7b7add955095c5d39c1742a21d3a79513a"
+    },
+    {
+      "row": "phone-default",
+      "label": "generic-recovered",
+      "file": "phone-default-generic-recovered.png",
+      "bytes": 104527,
+      "sha256": "93830ab8fedd8200317278f32d934ff2969b77feef61174bb7fee5d05b050b7b"
+    },
+    {
+      "row": "phone-pilot",
+      "label": "baseline-row",
+      "file": "phone-pilot-baseline-row.png",
+      "bytes": 319006,
+      "sha256": "285f83f7d7c5b294530d6f370970d98de8a4e95da6a19ff3405bcbc3014e8d1b"
+    },
+    {
+      "row": "phone-pilot",
+      "label": "sheet-historical-fault",
+      "file": "phone-pilot-sheet-historical-fault.png",
+      "bytes": 318690,
+      "sha256": "b2ac8d344a063b35cc34dd504434b5c5572be769333eea92e8ba590c689f9e85"
+    },
+    {
+      "row": "phone-pilot",
+      "label": "sheet-recovered",
+      "file": "phone-pilot-sheet-recovered.png",
+      "bytes": 319006,
+      "sha256": "285f83f7d7c5b294530d6f370970d98de8a4e95da6a19ff3405bcbc3014e8d1b"
+    },
+    {
+      "row": "phone-pilot",
+      "label": "pilot-historical-fault",
+      "file": "phone-pilot-pilot-historical-fault.png",
+      "bytes": 318658,
+      "sha256": "b6061f177b114e9b8ea22861a2b78bfd37e625242f2e049d6713726426124de9"
+    },
+    {
+      "row": "phone-pilot",
+      "label": "pilot-recovered",
+      "file": "phone-pilot-pilot-recovered.png",
+      "bytes": 319006,
+      "sha256": "285f83f7d7c5b294530d6f370970d98de8a4e95da6a19ff3405bcbc3014e8d1b"
+    },
+    {
+      "row": "phone-pilot",
+      "label": "generic-recovered",
+      "file": "phone-pilot-generic-recovered.png",
+      "bytes": 310970,
+      "sha256": "a801d81c1269890b13b01065cf317223c4008bf9eb7371408c722ea22d15199f"
+    },
+    {
+      "row": "desktop-default",
+      "label": "baseline-row",
+      "file": "desktop-default-baseline-row.png",
+      "bytes": 34105,
+      "sha256": "a677159cdf001ba738e48eed6c4d7f9f2a36cabfb7df60f774eae1e1de70e4ea"
+    },
+    {
+      "row": "desktop-default",
+      "label": "sheet-historical-fault",
+      "file": "desktop-default-sheet-historical-fault.png",
+      "bytes": 34181,
+      "sha256": "1936d3c1819f6e1a611892104ac9779cbdcd906fdf35e634d0a97e7b9d043532"
+    },
+    {
+      "row": "desktop-default",
+      "label": "sheet-recovered",
+      "file": "desktop-default-sheet-recovered.png",
+      "bytes": 34105,
+      "sha256": "a677159cdf001ba738e48eed6c4d7f9f2a36cabfb7df60f774eae1e1de70e4ea"
+    },
+    {
+      "row": "desktop-default",
+      "label": "generic-recovered",
+      "file": "desktop-default-generic-recovered.png",
+      "bytes": 34124,
+      "sha256": "6d01287740f72fb896ef0c396b5fe6d4e7e1dc8507fae5719895a1b35f5849ae"
+    },
+    {
+      "row": "desktop-pilot",
+      "label": "baseline-row",
+      "file": "desktop-pilot-baseline-row.png",
+      "bytes": 84726,
+      "sha256": "542def7d3d467b583abff4ab40843a02e238c36a51ab289dc3d27ee5b2d01f94"
+    },
+    {
+      "row": "desktop-pilot",
+      "label": "sheet-historical-fault",
+      "file": "desktop-pilot-sheet-historical-fault.png",
+      "bytes": 85244,
+      "sha256": "effb71cd1d641f97f8e36fcc499b0a87b82955f32ea36fb2af0f07dc50483893"
+    },
+    {
+      "row": "desktop-pilot",
+      "label": "sheet-recovered",
+      "file": "desktop-pilot-sheet-recovered.png",
+      "bytes": 84726,
+      "sha256": "542def7d3d467b583abff4ab40843a02e238c36a51ab289dc3d27ee5b2d01f94"
+    },
+    {
+      "row": "desktop-pilot",
+      "label": "pilot-historical-fault",
+      "file": "desktop-pilot-pilot-historical-fault.png",
+      "bytes": 85263,
+      "sha256": "fb6960fb3902fe2abb202edf1d4ca69039a2c127bc8df4d55e88703c6b55e513"
+    },
+    {
+      "row": "desktop-pilot",
+      "label": "pilot-recovered",
+      "file": "desktop-pilot-pilot-recovered.png",
+      "bytes": 84726,
+      "sha256": "542def7d3d467b583abff4ab40843a02e238c36a51ab289dc3d27ee5b2d01f94"
+    },
+    {
+      "row": "desktop-pilot",
+      "label": "generic-recovered",
+      "file": "desktop-pilot-generic-recovered.png",
+      "bytes": 84092,
+      "sha256": "1c060ed6e66f0b34bc5a02ab52fc4440362201970f1a6856cd5675ae1385eff9"
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "The fixture preserves real stylesheet owner order and actual Compendium row/scroller classes; three positioned rows stand in for the virtualized inventory.",
+    "Geometry plus computed visible outline and native focus are machine-assessed; retained screenshots support human pixel review.",
+    "No generated game bundle, species art, save, gameplay route, or Compendium certificate is exercised."
+  ],
+  "styleImportBundle": {
+    "sha256": "c816f9b57257bb9d68c2f519f467226eef87f4fd331d267ff81bd8a8a0caf1d9",
+    "scope": "temporary CSS imports only; not app build"
+  },
+  "controls": {
+    "sheet": {
+      "source": "port/v2/apps/game/src/ui-sheet-style.ts",
+      "sourceCommit": "61c37f3a846429bcbc0167ea92de12623593e750",
+      "sourceSha256": "73f0f6adc6e3d58f333996ec279e3b53b580ef512e6297d29445779f381d72cc",
+      "css": ":is(.panel,#survey) :is(button,input,select):focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}"
+    },
+    "pilot": {
+      "source": "port/v2/apps/game/src/pilot-runtime-style.ts",
+      "sourceCommit": "61c37f3a846429bcbc0167ea92de12623593e750",
+      "sourceSha256": "12ca6ae00d0b660767f0aa6109b4f5bbcdbd8e4323b5e40273959ba79df1abb5",
+      "css": "body[data-cf-pilot-look] :is(.panel,#survey,#planetside,#inventorysheet) :is(button,input,select,textarea,summary):focus-visible{outline:3px solid #6fd3ff;outline-offset:2px}"
+    }
+  },
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.48",
+    "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.7",
+    "protocol_version": "1.3"
+  },
+  "finishedAt": "2026-09-22T18:19:12.068Z"
+}

@@ -1,0 +1,67 @@
+{
+  "id":"fruit-bat",
+  "family":"flyer-membrane",
+  "landmarksPx":{
+    "root":[744,858],
+    "pelvis":[614,896],
+    "spine":[778,843],
+    "chest":[919,750],
+    "neck":[1034,754],
+    "head":[1104,724],
+    "jaw":[1150,770],
+    "wingFarRoot":[845,663],
+    "wingFarElbow":[972,544],
+    "wingFarWrist":[1118,560],
+    "wingFarTip":[1205,453],
+    "wingNearRoot":[805,699],
+    "wingNearElbow":[614,582],
+    "wingNearWrist":[582,335],
+    "wingNearTip":[300,54],
+    "legFarKnee":[432,954],
+    "legFarFoot":[352,1043],
+    "legNearKnee":[536,998],
+    "legNearFoot":[452,1076],
+    "earFarTip":[1100,620],
+    "earNearTip":[1021,610]
+  },
+  "groundLineY":0.89,
+  "materials":{
+    "surface":"fur",
+    "joints":{
+      "wingFarRoot":"smooth skin",
+      "wingFarElbow":"smooth skin",
+      "wingFarWrist":"smooth skin",
+      "wingFarTip":"smooth skin",
+      "wingNearRoot":"smooth skin",
+      "wingNearElbow":"smooth skin",
+      "wingNearWrist":"smooth skin",
+      "wingNearTip":"smooth skin"
+    }
+  },
+  "remainderPart":"body",
+  "parts":[
+    {"id":"ear-near","joint":"earNearTip","layer":"near","polygonPx":[[984,626],[1015,591],[1040,607],[1063,661],[1043,701],[1006,705],[985,675]]},
+    {"id":"ear-far","joint":"earFarTip","layer":"far","polygonPx":[[1067,638],[1116,603],[1124,636],[1118,678],[1082,685]]},
+    {"id":"jaw","joint":"jaw","layer":"near","polygonPx":[[1083,746],[1124,746],[1161,757],[1203,747],[1194,783],[1158,795],[1108,784]]},
+    {"id":"head","joint":"head","layer":"near","polygonPx":[[1046,667],[1111,663],[1140,711],[1204,735],[1200,764],[1158,769],[1115,754],[1088,790],[1048,798],[1018,747]]},
+    {"id":"wing-near-distal","joint":"wingNearTip","layer":"near","polygonPx":[[25,30],[354,31],[486,166],[466,216],[253,185],[103,187],[31,135]]},
+    {"id":"wing-near-wrist","joint":"wingNearWrist","layer":"near","polygonPx":[[98,169],[300,175],[479,201],[573,293],[683,313],[686,365],[565,377],[349,308],[35,374],[89,288]]},
+    {"id":"wing-near-elbow","joint":"wingNearElbow","layer":"near","polygonPx":[[68,353],[325,303],[557,356],[613,371],[649,498],[652,601],[551,660],[207,611],[220,477],[153,388]]},
+    {"id":"wing-near-base","joint":"wingNearRoot","layer":"near","polygonPx":[[250,582],[449,596],[556,631],[633,590],[719,618],[821,694],[777,745],[673,731],[560,805],[442,895],[390,968],[421,835],[425,730],[354,667]]},
+    {"id":"leg-near-foot","joint":"legNearFoot","layer":"near","polygonPx":[[478,1017],[526,1024],[504,1058],[495,1081],[467,1101],[427,1097],[420,1079],[447,1063],[455,1037]]},
+    {"id":"leg-near-upper","joint":"legNearKnee","layer":"near","polygonPx":[[572,927],[652,942],[622,989],[575,1014],[520,1036],[474,1033],[477,1004],[517,969]]},
+    {"id":"leg-far-foot","joint":"legFarFoot","layer":"far","polygonPx":[[341,987],[405,1002],[394,1043],[375,1065],[342,1081],[329,1061],[333,1038],[313,1033],[315,1010]]},
+    {"id":"leg-far-upper","joint":"legFarKnee","layer":"far","polygonPx":[[465,910],[552,928],[502,960],[454,981],[403,1011],[342,1000],[365,973],[411,947]]},
+    {"id":"wing-far-distal","joint":"wingFarTip","layer":"far","polygonPx":[[1001,447],[1134,426],[1215,431],[1240,454],[1244,490],[1205,473],[1158,521],[1101,539],[1063,498]]},
+    {"id":"wing-far-wrist","joint":"wingFarWrist","layer":"far","polygonPx":[[991,489],[1065,494],[1103,537],[1163,544],[1182,579],[1163,606],[1125,578],[1078,602],[1012,579]]},
+    {"id":"wing-far-elbow","joint":"wingFarElbow","layer":"far","polygonPx":[[908,505],[981,478],[1021,524],[1029,582],[957,605],[887,607],[843,583]]},
+    {"id":"wing-far-base","joint":"wingFarRoot","layer":"far","polygonPx":[[751,601],[846,559],[896,588],[990,601],[1077,594],[1054,650],[965,667],[879,677],[819,686],[766,655]]},
+    {"id":"body","joint":"root","layer":"near","polygonPx":[[0,0],[1,0],[0,1]]}
+  ],
+  "coverage":{
+    "declarations":"Tail is explicitly absent. Both large near wing and smaller far wing are visibly spread, both ears and both clawed feet are visible; hidden and folded lists are empty. The near wing occupies the left/upper canvas, the far wing the right/upper background. Wing landmarks follow the observed shoulder, bent elbow, wrist/thumb hub and distal digit tip; membrane scallops remain part of the same wing surfaces rather than invented extra joints.",
+    "visualAcceptance":"candidate for Nick; first acceptable paint",
+    "landmarkMethod":"Manual first coarse source-image fit with no copied coordinates. Near wing elbow is observed around [614,582], wrist around [582,335], and dorsal distal digit tip around [300,54]. The far wing uses its visible elbow ridge, wrist hub and rightmost dorsal tip.",
+    "materialAuthority":"Body surface fur maps to furred. Explicit materials.joints entries assign smooth skin to the eight wing joints, supported by body-card.ts record.materials.joints handling; this represents the visibly bare wing membranes."
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "stage": "source-join-probe",
+  "error": "Error: Source join continuity: unique known source owners\n    at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs:7:40)\n    at createSourceJoinProbe (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs:54:2)\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/04-insect/intake-01.mjs:130:15"
+}

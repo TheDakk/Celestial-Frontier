@@ -1,0 +1,95 @@
+{
+  "schema": "cf.native-cpu-data-inspection/v1",
+  "sourceReportSha256": "69e0b51b7db2269c5b0d785e72cbca55722333867c4917df27ec9b28c5f75d82",
+  "sourceRunId": "20260922-eagle-native-02",
+  "frameCount": 575,
+  "percentileIndex": 546,
+  "sharedSamplingP95Ms": 0.10000002384185791,
+  "rigOnlyP95Ms": {
+    "left": 18.299999952316284,
+    "right": 8.199999928474426
+  },
+  "perSecond": [
+    {
+      "startMs": 0,
+      "frames": 60,
+      "rigOnlyP95Ms": {
+        "left": 1.7000000476837158,
+        "right": 1.600000023841858
+      }
+    },
+    {
+      "startMs": 1000,
+      "frames": 56,
+      "rigOnlyP95Ms": {
+        "left": 18.5,
+        "right": 13.800000071525574
+      }
+    },
+    {
+      "startMs": 2000,
+      "frames": 57,
+      "rigOnlyP95Ms": {
+        "left": 18.699999928474426,
+        "right": 14.399999976158142
+      }
+    },
+    {
+      "startMs": 3000,
+      "frames": 60,
+      "rigOnlyP95Ms": {
+        "left": 2.399999976158142,
+        "right": 2.5
+      }
+    },
+    {
+      "startMs": 4000,
+      "frames": 56,
+      "rigOnlyP95Ms": {
+        "left": 18.399999976158142,
+        "right": 2
+      }
+    },
+    {
+      "startMs": 5000,
+      "frames": 57,
+      "rigOnlyP95Ms": {
+        "left": 18.700000047683716,
+        "right": 0.9000000953674316
+      }
+    },
+    {
+      "startMs": 6000,
+      "frames": 60,
+      "rigOnlyP95Ms": {
+        "left": 1.100000023841858,
+        "right": 2.0000001192092896
+      }
+    },
+    {
+      "startMs": 7000,
+      "frames": 57,
+      "rigOnlyP95Ms": {
+        "left": 18.399999976158142,
+        "right": 2.200000047683716
+      }
+    },
+    {
+      "startMs": 8000,
+      "frames": 52,
+      "rigOnlyP95Ms": {
+        "left": 18.299999952316284,
+        "right": 24.899999976158142
+      }
+    },
+    {
+      "startMs": 9000,
+      "frames": 59,
+      "rigOnlyP95Ms": {
+        "left": 17.799999952316284,
+        "right": 2.5
+      }
+    }
+  ],
+  "scope": "Analysis of existing exact native capture samples; no new browser run or measurement"
+}

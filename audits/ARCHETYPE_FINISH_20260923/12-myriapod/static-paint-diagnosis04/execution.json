@@ -1,0 +1,66 @@
+{
+  "schema": "cf.bounded-diagnostic-execution/v1",
+  "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/run.mjs",
+  "toolReceipt": "e93d43",
+  "exitCode": 0,
+  "firstRefusalArapExecutions": 2,
+  "firstRefusalsReproduced": 2,
+  "targetOnlyAttempted": 242,
+  "targetOnlyResolved": 232,
+  "targetOnlyErrors": 10,
+  "unionFullyPinnedInvertedTriangles": 3,
+  "loadedSourceCount": 58,
+  "staticSourceCount": 62,
+  "allHashesMatchedAtExecution": true,
+  "readOnlyFollowups": [
+    {
+      "toolReceipt": "c312d8",
+      "exitCode": 0,
+      "purpose": "Eight retained root-pin source edge traces"
+    },
+    {
+      "toolReceipt": "905dd2",
+      "exitCode": 0,
+      "purpose": "Rest mesh metrics and retained target/solved field conditioning, no new solver run"
+    },
+    {
+      "toolReceipt": "7bc902",
+      "exitCode": 0,
+      "purpose": "Exact authored fine-rectangle containment and root-edge summaries"
+    }
+  ],
+  "hashes": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/diagnose.ts",
+      "sha256": "aef725b5e96978c64682b5ca581a3c24f8abd7d4339c03bac1383ff42dc31635"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/run.mjs",
+      "sha256": "da7a0dea4ac35710d09fd5d2144a7b6f949889c586a8791186a22d915a280902"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/report.json",
+      "sha256": "23eaead6897c4b3f7e15e2768b749f4ed1aae73341d02b44f73d298a5d93447c"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/conditioning.mjs",
+      "sha256": "52276ec9994174e7609234b7eb641bd37d0685ee0d8382ab0882b21f629045fd"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/conditioning.json",
+      "sha256": "b0f57a8029c3f1d256cb304de570f5e87dfd0a7c3342f0208db7ee027f52bf72"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/root-edge-inspection.mjs",
+      "sha256": "e458ceedeacc4abf63ceecd5d40678998e3cd7b47458e939833b14e7327d475f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/root-edge-inspection.json",
+      "sha256": "77a9c0c6dfb3287d99059b82a5af8b309f49c82c84761d936c173c90d316d203"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis04/refinement-coverage.json",
+      "sha256": "b0f245802b9d29ffa14f2894742ec4cd15ac0e582c59a6686e369f016cb358bc"
+    }
+  ]
+}

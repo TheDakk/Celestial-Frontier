@@ -1,0 +1,165 @@
+{
+  "schema": "cf.compact-dodge-support-extent/v1",
+  "scope": "Two exact replayed contact poses; ten already retained error poses used only for geometric selection, not another contact sweep. No ARAP/browser/production change.",
+  "sourceRun": "static-contact-diagnosis03.json",
+  "firstMs": 49,
+  "worstAmongRetainedErrorsMs": 63,
+  "failedTimes": [
+    49,
+    51.333333333333336,
+    53.666666666666664,
+    56,
+    58.333333333333336,
+    60.666666666666664,
+    63,
+    65.33333333333333,
+    67.66666666666667,
+    70
+  ],
+  "chain": "leg0Far",
+  "sourceSocketPx": {
+    "x": 1022.0,
+    "y": 639.0000000000001
+  },
+  "sourceKneePx": {
+    "x": 1014.0,
+    "y": 609.0
+  },
+  "sourceEndpointPx": {
+    "x": 1057.0,
+    "y": 558.0
+  },
+  "sourceSupportPx": {
+    "x": 1060.9999999999998,
+    "y": 563.2
+  },
+  "sourceOffsetPx": {
+    "x": 3.9999999999998352,
+    "y": 5.200000000000022
+  },
+  "supportSelection": {
+    "partId": "leg0-far",
+    "vertexIndex": 122
+  },
+  "restSupportGeometryExactlyMatchesPriorFit06": true,
+  "endpointOnly": false,
+  "model": {
+    "rest": [
+      0.8460925039872407,
+      0.44912280701754387
+    ],
+    "surface": {
+      "partId": "leg0-far",
+      "vertexIndex": 122
+    },
+    "vertices": [
+      {
+        "rest": [
+          0.8508771929824561,
+          0.4445773524720893
+        ],
+        "barycentric": 0.3999999999999952,
+        "weights": [
+          [
+            "leg0FarFoot",
+            1
+          ]
+        ]
+      },
+      {
+        "rest": [
+          0.8588516746411483,
+          0.45215311004784686
+        ],
+        "barycentric": 2.3934071099287585e-15,
+        "weights": [
+          [
+            "leg0FarFoot",
+            0.9998107984078378
+          ],
+          [
+            "leg0FarKnee",
+            0.0001848459398754212
+          ],
+          [
+            "root",
+            4.306306354545473e-06
+          ],
+          [
+            "head",
+            4.4610751562388166e-08
+          ],
+          [
+            "leg1FarFoot",
+            4.726238338418668e-09
+          ],
+          [
+            "leg0NearFoot",
+            4.505528597990039e-12
+          ],
+          [
+            "leg1NearFoot",
+            4.1274109191595e-12
+          ],
+          [
+            "leg2NearFoot",
+            3.0952567901262596e-13
+          ]
+        ]
+      },
+      {
+        "rest": [
+          0.8429027113237639,
+          0.45215311004784686
+        ],
+        "barycentric": 0.6000000000000023,
+        "weights": [
+          [
+            "leg0FarFoot",
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  "measurements": [
+    {
+      "ms": 49,
+      "error": "Error: Contact: dodge@49 leg0Far outside accommodatable reach",
+      "causes": [
+        "Error: Contact: dodge@49 leg0Far support candidate outside accommodatable reach"
+      ],
+      "stance": true,
+      "swingProgress": 0,
+      "sourceSegmentProgress": 0.4083333333333333,
+      "bodyRetreatPx": 21.07105494772111,
+      "footTranslationXPx": 0.0,
+      "liftTowardSocketPx": 0.0,
+      "paintedDistancePx": 96.7169666735476,
+      "maximumProvisionalSupportReachPx": 96.673344630615,
+      "outerExcessPx": 0.04362204293258792,
+      "minimumHorizontalRepairAtSameYPx": 0.07025860242521986,
+      "supportAboveHip": true
+    },
+    {
+      "ms": 63,
+      "error": "Error: Contact: dodge@63 leg0Far outside accommodatable reach",
+      "causes": [
+        "Error: Contact: dodge@63 leg0Far support candidate outside accommodatable reach"
+      ],
+      "stance": false,
+      "swingProgress": 0.050000000000000044,
+      "sourceSegmentProgress": 0.525,
+      "bodyRetreatPx": 27.09117206766814,
+      "footTranslationXPx": -0.5373630651258736,
+      "liftTowardSocketPx": 0.24487031914429735,
+      "paintedDistancePx": 100.0293931593744,
+      "maximumProvisionalSupportReachPx": 96.673344630615,
+      "outerExcessPx": 3.356048528759379,
+      "minimumHorizontalRepairAtSameYPx": 5.2449544206589,
+      "supportAboveHip": true
+    }
+  ],
+  "sourceCount": 47,
+  "allSourcesUnchanged": true
+}

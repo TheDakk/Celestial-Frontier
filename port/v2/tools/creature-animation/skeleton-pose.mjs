@@ -2,6 +2,7 @@
  * and body axis; painter/authored records supply actual normalized landmarks.
  * This does not infer anatomy, admit assets, choose clips or qualify a family. */
 import {composeAffine, rotationAround, scaleAround, IDENTITY_AFFINE} from './kinematics.ts';
+import {validateFixedPivots} from './fixed-attachments.mjs';
 export const MAX_SKELETON_JOINTS = 64;
 const need = (ok, reason) => { if (!ok) throw Error('Skeleton pose: ' + reason); };
 const nameIsSafe = name => typeof name === 'string' && /^[A-Za-z][A-Za-z0-9]*$/.test(name)
@@ -33,7 +34,8 @@ export function createSkeletonPoseProgram(definition, landmarks, options = {}) {
   need(Array.isArray(axis) && axis.length === 2 && axis.every(n => seen.has(n)), 'explicit body axis');
   const a = points[axis[0]], b = points[axis[1]], bodyLength = Math.hypot(b.x - a.x, b.y - a.y);
   need(bodyLength >= .000001, 'degenerate body axis');
-  const pivots = names.map((_, i) => points[parents[i] ?? 'root']);
+  const fixedPivots=validateFixedPivots(definition);
+  const pivots = names.map((name, i) => fixedPivots?.[name]?Object.freeze({x:fixedPivots[name][0],y:fixedPivots[name][1]}):points[parents[i] ?? 'root']);
   const index = new Map(names.map((n, i) => [n, i]));
   const scales = names.map(() => IDENTITY_AFFINE);
   if (options.jointScale !== undefined) {

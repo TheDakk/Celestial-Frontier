@@ -1,0 +1,69 @@
+{
+  "schema": "cf.override-parser-repair/v1",
+  "sourceModules": {
+    "art": 42,
+    "transitive": 3,
+    "paths": [
+      "tools/creature-animation/repeated-anatomy.mjs",
+      "tools/creature-animation/skeleton-pose.mjs",
+      "tools/creature-animation/kinematics.ts"
+    ]
+  },
+  "focusedTests": {
+    "command": "node --test tools/override-source-graph.test.mjs",
+    "passed": 22,
+    "failed": 0,
+    "skipped": 0
+  },
+  "realGate": {
+    "command": "node tools/overridecheck.mjs",
+    "exitCode": 0,
+    "tableKeys": 1014,
+    "live": 1014,
+    "dead": 0,
+    "earthSpecies": 1010
+  },
+  "productionControlAnchors": {
+    "checked": 48,
+    "stale": [],
+    "execution": "not run; static unique-anchor inspection only"
+  },
+  "files": [
+    {
+      "path": "port/v2/tools/overridecheck.mjs",
+      "sha256": "fe25b86c46287db9aa7f8930faacf82d8709ff1f2d216698c74729f56b35380a"
+    },
+    {
+      "path": "port/v2/tools/overridecheck.control.mjs",
+      "sha256": "7a96119ef6d1ba0eed0240cc11f750251f414a768e0cb700311893770ad5d517"
+    },
+    {
+      "path": "port/v2/tools/override-source-graph.mjs",
+      "sha256": "c06e9324e7b09ac7c9646551cecdfe165d8cfcd5fbaa2ad7f958401de018119f"
+    },
+    {
+      "path": "port/v2/tools/override-source-graph.test.mjs",
+      "sha256": "f3d17e0505fe66acd57b09f25ec0e1ce06ae364eb92b21443431d9725f3a6ce5"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/develop-profile-admission.log",
+      "sha256": "9ec42217407e04de5ec8cae521598b17880fbdb00f17a565a2940eed05620e34"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/override-parser-targeted.log",
+      "sha256": "10bf6b49bd61279b99a0abc9614982cfd74481b082c6807291aa5fb358382c19"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/override-parser-targeted-repaired.log",
+      "sha256": "57984338415882f1ea8d08cecd964a28b3f33a5a995c85e205208e672ba5213d"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/override-parser-targeted-final.log",
+      "sha256": "cc1ec0a91ec365a954b273ee2e0ada891f5e8d1ce5f969ff8f366a169466a5a5"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/01-i5/overridecheck-repaired.log",
+      "sha256": "1e7945015c24a8166cdc616d451d58df09ee86183a404e3fa01ba16f5da0c272"
+    }
+  ]
+}

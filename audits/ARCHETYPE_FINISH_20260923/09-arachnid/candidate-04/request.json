@@ -1,0 +1,11 @@
+{
+  "runId": "20260923-tarantula-paint-04",
+  "sourceHead": "7158fc13ce1ffb5791845c96f2013634ee0512c0",
+  "tool": "built-in image_gen",
+  "promptSha256": "75864b37f2bad857c14cc4c87ec11c1a4df267c536c17fd838e6ed810b2081d9",
+  "sourceGenomeFile": "subject-source.json",
+  "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+  "referenceSha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62",
+  "change": "Smaller body, elevated true lateral stance and four offset far feet, to repair seven-tip visibility failure; no generated master supplied as preservation target.",
+  "authority": "../../AUTHORITY.md"
+}

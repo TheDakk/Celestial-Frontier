@@ -1,0 +1,60 @@
+{
+  "schema": "cf.orientation-active-before/v1",
+  "scope": "Exact active-leaf inputs before unchanged-priority repair optimization; native04 measured these bytes. No prior references replaced.",
+  "files": [
+    {
+      "path": "port/v2/tools/creature-animation/build-orientation-active.mjs",
+      "retainedFile": "build-orientation-active.mjs",
+      "sha256": "ff11d59efb88e7520550bd6705bc5122bb2a77b5aa30516af844a3d116b83e85",
+      "bytes": 4814
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-active-build.json",
+      "retainedFile": "orientation-active-build.json",
+      "sha256": "78025710481ac940d5f54b28e52738922c99544f10a6ecc1036b67e6aea242e4",
+      "bytes": 969
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-active-bytes.mjs",
+      "retainedFile": "orientation-active-bytes.mjs",
+      "sha256": "1d0844e9c50d697586ef4eb2fd1de1d7d3a4ec80c2bb804002152b585866485b",
+      "bytes": 13212
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-active-integration.test.mjs",
+      "retainedFile": "orientation-active-integration.test.mjs",
+      "sha256": "1ac1360c5880e7b0e03ec65741f386c0ead270ddd1c8e22e008fba940468a0d2",
+      "bytes": 3591
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-active-reference.mjs",
+      "retainedFile": "orientation-active-reference.mjs",
+      "sha256": "534a5d4b555a1caa7b34dafdaf46086443303faa7bc5f8b6e384ee114f412206",
+      "bytes": 2794
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-active.c",
+      "retainedFile": "orientation-active.c",
+      "sha256": "5105d3e2034116547991214a76292f4953aa31c57b951cf2adaf2f5cd7ac80bb",
+      "bytes": 5149
+    },
+    {
+      "path": "port/v2/tools/creature-animation/orientation-active.wasm",
+      "retainedFile": "orientation-active.wasm",
+      "sha256": "b668cd9d513a21887427afeb62b702dc662f86731d7ab407d7007b3e3e9f6eff",
+      "bytes": 4567
+    },
+    {
+      "path": "port/v2/tools/creature-animation/wasm-orientation-active.mjs",
+      "retainedFile": "wasm-orientation-active.mjs",
+      "sha256": "1db0f39f9d8596ff3a42139cd5278b56fa0b0936a9914bdd1b45c20992107590",
+      "bytes": 6846
+    },
+    {
+      "path": "port/v2/tools/creature-animation/wasm-orientation-active.test.mjs",
+      "retainedFile": "wasm-orientation-active.test.mjs",
+      "sha256": "600baab84b33d1a3409021b9befb8944f6e71d7fd1901707ccfb21d183639e4c",
+      "bytes": 10478
+    }
+  ]
+}

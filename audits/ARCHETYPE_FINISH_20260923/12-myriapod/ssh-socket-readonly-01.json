@@ -1,0 +1,20 @@
+{
+  "schema": "cf.ssh-read-only-socket/v1",
+  "socket": "/Users/nick/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock",
+  "stat": {
+    "tool": "b366d7",
+    "exitCode": 0,
+    "type": "Socket",
+    "owner": "nick",
+    "mode": "srw-------"
+  },
+  "lsof": {
+    "tool": "d67587",
+    "exitCode": 0,
+    "command": "1Password",
+    "pid": 2477,
+    "fd": "51u",
+    "type": "unix"
+  },
+  "scope": "Metadata only. Socket exists and is open in1Password; doesnotproveauthorizationorfunctionalsigning. Noagentrequest, authentication attempt, config edit, restart orprivatekeyinspection."
+}

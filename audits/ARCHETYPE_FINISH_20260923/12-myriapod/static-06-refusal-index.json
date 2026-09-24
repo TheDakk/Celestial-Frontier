@@ -1,0 +1,111 @@
+{
+  "schema": "cf.static-refusal-index/v1",
+  "report": "static-06.json",
+  "fit": "fit-09",
+  "candidate": "candidate-11",
+  "intakeCompletionTool": "fe4240",
+  "staticStartTool": "4108d9",
+  "staticCompletionTool": "934b25",
+  "exitCode": 1,
+  "status": "RED",
+  "recordRecipeHash": "854feb0a1fe24255530343388510405920b734a305a442512e9c34e6feafd1d7",
+  "bindingHash": "c2d591959cda99eb863e29f712f318451b95393a451e0df210cde59df14e2857",
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "alert",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "approach:crawl",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "melee:mandible",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "melee:body",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "cast",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "hit",
+      "status": "RED",
+      "samples": 4,
+      "firstRefusal": {
+        "ms": 15,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 9"
+      }
+    },
+    {
+      "id": "dodge",
+      "status": "RED",
+      "samples": 6,
+      "firstRefusal": {
+        "ms": 14,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7"
+      }
+    },
+    {
+      "id": "faint",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "victory",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "tame",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "feed",
+      "status": "PASS",
+      "samples": 121,
+      "firstRefusal": null
+    },
+    {
+      "id": "presentation",
+      "status": "RED",
+      "samples": 525,
+      "firstRefusal": {
+        "ms": 8750,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 14"
+      }
+    }
+  ],
+  "diagnosis": "static-paint-diagnosis06/report.json",
+  "s2": "contact-regression/s2-execution.json",
+  "s2Scope": "Final runtime S2 passed independently; source-mask repair still pending. No native attempt."
+}

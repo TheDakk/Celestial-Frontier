@@ -1,0 +1,23 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 2,
+  "sourceHead": "4207748479e1ddeccb2f2f9f24c45e219f73956f",
+  "promptSha256": "045756be416b58af138bd5959ec6cc225897b932ee7bc0d262468396846ab98c",
+  "editTarget": {
+    "path": "audits/ARCHETYPE_SPRINT_20260922/06-hopper/master.png",
+    "sha256": "f2dc168f7208fc41101c658b3fa007e7fe4a8f07c898790a15e0c5a0398462d0"
+  },
+  "reference": {
+    "path": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png",
+    "sha256": "c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62"
+  },
+  "originalPrompt": {
+    "path": "audits/ARCHETYPE_SPRINT_20260922/06-hopper/prompt.txt",
+    "sha256": "58a48cc4c4933cc7ac1922f09aae78be0a42d42128ccf2cd578c69392af8eed2"
+  },
+  "requestedSize": [
+    1254,
+    1254
+  ],
+  "reason": "Current pose exposes nine static failures: severe folded hind reach/mesh and nearly straight far foreleg contact. Correct actual visible neutral pose; unchanged genome/contract/solver/limits; new observation/qualification required."
+}

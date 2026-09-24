@@ -1,0 +1,43 @@
+{
+  "command": "node audits/ARCHETYPE_REPAIRS_20260922/review-sheet.mjs audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/native-07 audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/review-sheet-07.png audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12",
+  "exitCode": 0,
+  "nativeRunId": "20260922-eagle-native-07",
+  "fit": "fit-12",
+  "selectedStill": "native-07/turn0-hit-approach-50.png",
+  "inputs": [
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/review-sheet.mjs",
+      "sha256": "8ef83aee0af577d4b43809ecfd31dec6caf8af9ea408ab65f6336852d9819bf5"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/master.png",
+      "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/subject-source.json",
+      "sha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/authoring.json",
+      "sha256": "91f942596d436ee57223a320dea006de5494f414c4ddfed35fa19a46222acbd1"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/labels.png",
+      "sha256": "66f75a3c56760f750b5d023b54eab085ed3a5e646902ef559f9dda4fd4271ab6"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/native-07/report.json",
+      "sha256": "bd728ad07712790e600ef20263db570203894f413ed9824af621894768101965"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/native-07/turn0-hit-approach-50.png",
+      "sha256": "9f6b887a69ef53d157ed8e021c4438cf77a3b2710a173c24b4e297bff27a8572"
+    }
+  ],
+  "output": {
+    "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/review-sheet-07.png",
+    "sha256": "9662842141fc36abff0bb95d1d2936935cdf91d0bcfe63a2ff1f554b514514c4"
+  },
+  "landmarkParity": true,
+  "visualReview": "Codex inspected the four-panel master/labels/landmarks/native still sheet; Nick owns art acceptance."
+}

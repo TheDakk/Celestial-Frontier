@@ -1,0 +1,110 @@
+{
+  "scope": "Changed inputs/source only; no unchanged retries. Shared toolchain lock held across art and native work.",
+  "rows": [
+    {
+      "stage": "prior-diagnosis-signing",
+      "receipt": "e6288e",
+      "exitCode": 0,
+      "signatureVerification": "47fedf"
+    },
+    {
+      "stage": "image-generation",
+      "cell": "1571",
+      "mode": "built-in",
+      "output": "exec-8d3c391c-cf1c-4cc9-8c85-3a0dc6a3f24d.png"
+    },
+    {
+      "stage": "intake-01",
+      "receipt": "5118e6",
+      "exitCode": 0
+    },
+    {
+      "stage": "static-01",
+      "start": "3bfcff",
+      "completion": "2b7c72",
+      "exitCode": 0
+    },
+    {
+      "stage": "join-01",
+      "receipt": "27e34c",
+      "exitCode": 0
+    },
+    {
+      "stage": "intake-static-02",
+      "start": "b23691",
+      "completion": "47035f",
+      "exitCode": 0
+    },
+    {
+      "stage": "join-02",
+      "receipt": "932154",
+      "exitCode": 0
+    },
+    {
+      "stage": "native-01",
+      "start": "ed4048",
+      "completion": "657039",
+      "exitCode": 1,
+      "reason": "Viewport maxY579.4291486982866 exceeded576 at9450ms; before film"
+    },
+    {
+      "stage": "ground-framing-tests-01",
+      "receipt": "38614a",
+      "exitCode": 1,
+      "reason": "19/20; one test expected-value rounding failure, retained"
+    },
+    {
+      "stage": "ground-framing-tests-02",
+      "receipt": "015170",
+      "exitCode": 0,
+      "tests": 20
+    },
+    {
+      "stage": "native-02",
+      "start": "e4f4a0",
+      "completion": "7b986f",
+      "exitCode": 0,
+      "selection": "Superseded: asymmetric role-dependent presentation scale identified visually"
+    },
+    {
+      "stage": "ground-framing-tests-03",
+      "receipt": "e39dec",
+      "exitCode": 0,
+      "tests": 21
+    },
+    {
+      "stage": "validate",
+      "start": "c7a0a6",
+      "completion": "489111",
+      "exitCode": 0
+    },
+    {
+      "stage": "native-03",
+      "start": "110b9e",
+      "status": "DIAGNOSTIC_PASS",
+      "completion": "ec6486",
+      "exitCode": 0
+    },
+    {
+      "stage": "review-sheet-and-film-decoding",
+      "receipt": "24e9f7",
+      "exitCode": 0,
+      "frameTimesSeconds": [
+        1.23,
+        5.3,
+        9.6
+      ],
+      "timingNote": "Video seek timestamps are not asserted equal to action clock."
+    }
+  ],
+  "inspectionErrors": [
+    {
+      "receipt": "27eadf",
+      "reason": "Guessed battle2-proof/README.md absent; current CREATURE_ANIMATION/codebase references used"
+    },
+    {
+      "receipt": "b41dc5",
+      "reason": "Guessed port/v2/tools/README.md absent; no tool result inferred"
+    }
+  ]
+}

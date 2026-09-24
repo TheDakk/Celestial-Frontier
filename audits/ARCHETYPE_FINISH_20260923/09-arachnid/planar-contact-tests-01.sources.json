@@ -1,0 +1,83 @@
+{
+  "command": [
+    "npx",
+    "vitest",
+    "run",
+    "apps/game/src/creature-planar-contact.test.ts",
+    "apps/game/src/creature-rig-contact-planar.test.ts",
+    "apps/game/src/creature-rig-contact-arachnid.test.ts",
+    "apps/game/src/creature-rig-contact-rigid-refusal.test.ts"
+  ],
+  "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+  "exitCode": 0,
+  "elapsedSeconds": 0.96491525,
+  "scope": "Explicit focused source and fixture inventory, not complete Vitest transitive dependency manifest. No full static/S2/native run.",
+  "files": [
+    {
+      "file": "port/v2/apps/game/src/creature-planar-contact.ts",
+      "sha256": "1c637a308ae1f487d3b7ee4e42b589e342bf36a2170210582400eec21c273436",
+      "after": "1c637a308ae1f487d3b7ee4e42b589e342bf36a2170210582400eec21c273436",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "acda802b193eb2973a34f3ba6c99e9bf00ac8195d1916486ad3b728132a77e62",
+      "after": "acda802b193eb2973a34f3ba6c99e9bf00ac8195d1916486ad3b728132a77e62",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.mjs",
+      "sha256": "080e38525409eb9bfd6fca0ec0dbc4168fa14b96a01aa0eac53141ec35281773",
+      "after": "080e38525409eb9bfd6fca0ec0dbc4168fa14b96a01aa0eac53141ec35281773",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/tools/creature-animation/family-contracts.d.mts",
+      "sha256": "4a2f4cd25ec80b1ec5dec9f5930784d2d63dcdc8635d2294c9b982f0368e8d93",
+      "after": "4a2f4cd25ec80b1ec5dec9f5930784d2d63dcdc8635d2294c9b982f0368e8d93",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-planar-contact.test.ts",
+      "sha256": "80b293aca935bf25d7f67323254f81509e6936cd4c99eab707bb2ccbce8847cf",
+      "after": "80b293aca935bf25d7f67323254f81509e6936cd4c99eab707bb2ccbce8847cf",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-planar.test.ts",
+      "sha256": "269ced71317217a56e351d273e8a59f342f11440a31f2749204e04c81c862057",
+      "after": "269ced71317217a56e351d273e8a59f342f11440a31f2749204e04c81c862057",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-arachnid.test.ts",
+      "sha256": "96d6ae9e9fcef61b7f357af4a1e6ef2ff7eb306a0071d96831866fb1e1fae1b8",
+      "after": "96d6ae9e9fcef61b7f357af4a1e6ef2ff7eb306a0071d96831866fb1e1fae1b8",
+      "unchanged": true
+    },
+    {
+      "file": "port/v2/apps/game/src/creature-rig-contact-rigid-refusal.test.ts",
+      "sha256": "2193aaf22b460dc7d11c19811db124140ec51ea95b9cf7be7d90f540254692a4",
+      "after": "2193aaf22b460dc7d11c19811db124140ec51ea95b9cf7be7d90f540254692a4",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/record.json",
+      "sha256": "24ccad753e5f42192b7822c6c9449446cc388ce7a11439ce95a37bd514de19b8",
+      "after": "24ccad753e5f42192b7822c6c9449446cc388ce7a11439ce95a37bd514de19b8",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-02/binding.json",
+      "sha256": "e35bd83c98d22bb72fee5ea78d5ba0046227855dd90d0151a04e507f05fec12d",
+      "after": "e35bd83c98d22bb72fee5ea78d5ba0046227855dd90d0151a04e507f05fec12d",
+      "unchanged": true
+    },
+    {
+      "file": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/planar-feasibility-03.json",
+      "sha256": "a433d368e5a1329c8d11b47ce4cf529cdc052368cb1b6ad6050021c2097d1583",
+      "after": "a433d368e5a1329c8d11b47ce4cf529cdc052368cb1b6ad6050021c2097d1583",
+      "unchanged": true
+    }
+  ]
+}

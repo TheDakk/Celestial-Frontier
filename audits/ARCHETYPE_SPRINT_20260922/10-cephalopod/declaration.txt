@@ -1,0 +1,9 @@
+Octopus — manual anatomy presence and first coarse authoring
+
+There are eight independently visible curling arm tips. Clockwise correspondence begins at the upper-left arm: arm0 upper-left; arm1 middle-left; arm2 lower-left foreground; arm3 short lower-left inner curl; arm4 lowest foreground curl; arm5 narrow lower-right inner curl; arm6 outer lower-right; arm7 upper-right. Three source-observed points are supplied for each arm. All arm chains are present and visible despite normal web and arm overlap. hidden and folded are explicitly empty; soft curling is not a folded appendage declaration.
+
+Fins are explicitly absent. appendages is arms:8, feedingTentacles:0. No ninth/tenth feeding tentacle is inferred from the painting. Mantle, head and siphon are observed. The near eye's pupil and surrounding eye are fully visible. Only the far eye's rim/bulge is visible at the right silhouette; its landmark lies on that observed rim and does not invent a hidden pupil.
+
+All landmarks and first-priority coarse polygons are manually authored from this master. Foreground arm surfaces take priority across overlaps, and otherwise unclaimed positive-alpha pixels belong to the body remainder. materials.surface is exactly smooth skin, supported by the current slick-material mapping. This is an initial fit candidate for Nick's art review, not a rig acceptance or a family-wide claim.
+
+No source, family contract, solver, limit, threshold, accepted binding, or S2 sentinel was edited. No chain, static run, native film, or polishing iteration was executed while authoring these three inputs.

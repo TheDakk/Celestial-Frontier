@@ -1,0 +1,7053 @@
+{
+  "scope": "Retained far3 source supports in an explicit inspection rectangle; no inferred ownership or new influence region, no pose/mesh execution",
+  "inspectionBox": [
+    818,
+    582,
+    874,
+    644
+  ],
+  "part": "leg3-far",
+  "partLabel": 18,
+  "socket": [
+    851,
+    629
+  ],
+  "knee": [
+    835,
+    592
+  ],
+  "regions": [
+    {
+      "id": "leg3-far-knee-bend-observed-paint",
+      "partId": "leg3-far",
+      "joint": "leg3FarKnee",
+      "polygonPx": [
+        [
+          827,
+          584
+        ],
+        [
+          843,
+          584
+        ],
+        [
+          843,
+          600
+        ],
+        [
+          827,
+          600
+        ]
+      ],
+      "pin": true
+    }
+  ],
+  "sourceContour": [
+    [
+      832,
+      632
+    ],
+    [
+      870,
+      632
+    ],
+    [
+      865,
+      596
+    ],
+    [
+      900,
+      540
+    ],
+    [
+      900,
+      507
+    ],
+    [
+      839,
+      507
+    ],
+    [
+      839,
+      534
+    ],
+    [
+      805,
+      590
+    ]
+  ],
+  "vertices": [
+    {
+      "index": 1506,
+      "sourcePx": [
+        822,
+        582
+      ],
+      "sourcePixel": {
+        "sample": [
+          822,
+          582
+        ],
+        "label": 18,
+        "rgba": [
+          170,
+          85,
+          0,
+          3
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.9032926576150181
+        ],
+        [
+          "leg3FarKnee",
+          0.05581098867187473
+        ],
+        [
+          "root",
+          0.0403974732119557
+        ],
+        [
+          "leg4FarFoot",
+          0.0004922088257565402
+        ],
+        [
+          "leg2FarFoot",
+          0.000005916376577041173
+        ],
+        [
+          "leg3NearFoot",
+          3.7188809574045985e-7
+        ],
+        [
+          "leg4NearFoot",
+          3.4946396603347325e-7
+        ],
+        [
+          "leg5NearFoot",
+          3.394675622196086e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1537,
+      "sourcePx": [
+        826,
+        582
+      ],
+      "sourcePixel": {
+        "sample": [
+          826,
+          582
+        ],
+        "label": 18,
+        "rgba": [
+          177,
+          78,
+          7,
+          246
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8684550544125929
+        ],
+        [
+          "leg3FarKnee",
+          0.0944405411437864
+        ],
+        [
+          "root",
+          0.03668066485082736
+        ],
+        [
+          "leg4FarFoot",
+          0.0004156842681481388
+        ],
+        [
+          "leg2FarFoot",
+          0.0000072112928353303575
+        ],
+        [
+          "leg3NearFoot",
+          4.251722930643215e-7
+        ],
+        [
+          "leg4NearFoot",
+          3.8586884857041756e-7
+        ],
+        [
+          "leg5NearFoot",
+          3.299066822192389e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1539,
+      "sourcePx": [
+        831,
+        582
+      ],
+      "sourcePixel": {
+        "sample": [
+          831,
+          582
+        ],
+        "label": 18,
+        "rgba": [
+          175,
+          104,
+          35,
+          251
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8387721588230022
+        ],
+        [
+          "leg3FarKnee",
+          0.1274826558369104
+        ],
+        [
+          "root",
+          0.033374487717662396
+        ],
+        [
+          "leg4FarFoot",
+          0.0003612661484634949
+        ],
+        [
+          "leg2FarFoot",
+          0.000008544326040577628
+        ],
+        [
+          "leg3NearFoot",
+          4.54181477095793e-7
+        ],
+        [
+          "leg4NearFoot",
+          4.0222673986082407e-7
+        ],
+        [
+          "leg5NearFoot",
+          3.073970405976149e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1544,
+      "sourcePx": [
+        836,
+        582
+      ],
+      "sourcePixel": {
+        "sample": [
+          836,
+          582
+        ],
+        "label": 18,
+        "rgba": [
+          174,
+          88,
+          10,
+          250
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8547237787431912
+        ],
+        [
+          "leg3FarKnee",
+          0.11588027867105427
+        ],
+        [
+          "root",
+          0.02908312208920816
+        ],
+        [
+          "leg4FarFoot",
+          0.00030110903985350215
+        ],
+        [
+          "leg2FarFoot",
+          0.000010831025086642794
+        ],
+        [
+          "leg3NearFoot",
+          4.621417299976105e-7
+        ],
+        [
+          "leg4NearFoot",
+          3.9422941654739494e-7
+        ],
+        [
+          "leg5NearFoot",
+          2.406045974227575e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1545,
+      "sourcePx": [
+        841,
+        582
+      ],
+      "sourcePixel": {
+        "sample": [
+          841,
+          582
+        ],
+        "label": 18,
+        "rgba": [
+          171,
+          83,
+          10,
+          245
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.875498153045051
+        ],
+        [
+          "leg3FarKnee",
+          0.09943332796032894
+        ],
+        [
+          "root",
+          0.024821016274782764
+        ],
+        [
+          "leg4FarFoot",
+          0.00023329343633276872
+        ],
+        [
+          "leg2FarFoot",
+          0.000013410328973179837
+        ],
+        [
+          "leg3NearFoot",
+          4.335542634045824e-7
+        ],
+        [
+          "leg4NearFoot",
+          3.5180860385744816e-7
+        ],
+        [
+          "leg5NearFoot",
+          1.3591664181749599e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1556,
+      "sourcePx": [
+        846,
+        582
+      ],
+      "sourcePixel": {
+        "sample": [
+          846,
+          582
+        ],
+        "label": 18,
+        "rgba": [
+          170,
+          85,
+          0,
+          3
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.9162984543652324
+        ],
+        [
+          "leg3FarKnee",
+          0.06511192677595279
+        ],
+        [
+          "root",
+          0.018428765473187655
+        ],
+        [
+          "leg4FarFoot",
+          0.00014480113686932933
+        ],
+        [
+          "leg2FarFoot",
+          0.00001543790707191231
+        ],
+        [
+          "leg3NearFoot",
+          3.424594034868457e-7
+        ],
+        [
+          "leg4NearFoot",
+          2.578281235196099e-7
+        ],
+        [
+          "leg2NearFoot",
+          1.4054158926405416e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1558,
+      "sourcePx": [
+        851,
+        582
+      ],
+      "sourcePixel": {
+        "sample": [
+          851,
+          582
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.9370944945527441
+        ],
+        [
+          "leg3FarKnee",
+          0.047406401040933466
+        ],
+        [
+          "root",
+          0.01537765174317939
+        ],
+        [
+          "leg4FarFoot",
+          0.00010216973431245844
+        ],
+        [
+          "leg2FarFoot",
+          0.000018723773321887182
+        ],
+        [
+          "leg3NearFoot",
+          3.156081059158435e-7
+        ],
+        [
+          "leg4NearFoot",
+          2.2203226756623597e-7
+        ],
+        [
+          "leg2NearFoot",
+          2.151513520652919e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1508,
+      "sourcePx": [
+        819.5,
+        584.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          819,
+          584
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8860765388409318
+        ],
+        [
+          "root",
+          0.057148716708663345
+        ],
+        [
+          "leg3FarKnee",
+          0.05601165097355374
+        ],
+        [
+          "leg4FarFoot",
+          0.0007543489556420203
+        ],
+        [
+          "leg2FarFoot",
+          0.000007723855545964354
+        ],
+        [
+          "leg3NearFoot",
+          4.938936018974081e-7
+        ],
+        [
+          "leg4NearFoot",
+          4.7613854774389763e-7
+        ],
+        [
+          "leg5NearFoot",
+          5.0633513471000064e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1540,
+      "sourcePx": [
+        824,
+        584.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          824,
+          584
+        ],
+        "label": 18,
+        "rgba": [
+          174,
+          96,
+          27,
+          121
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8550830890574737
+        ],
+        [
+          "leg3FarKnee",
+          0.08890696339881127
+        ],
+        [
+          "root",
+          0.0553199553571981
+        ],
+        [
+          "leg4FarFoot",
+          0.00067816885622401
+        ],
+        [
+          "leg2FarFoot",
+          0.000010542187106888829
+        ],
+        [
+          "leg3NearFoot",
+          6.382292330260331e-7
+        ],
+        [
+          "leg4NearFoot",
+          5.886628789393086e-7
+        ],
+        [
+          "leg5NearFoot",
+          5.4251074047227603e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1542,
+      "sourcePx": [
+        828.5,
+        584.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          828,
+          584
+        ],
+        "label": 18,
+        "rgba": [
+          155,
+          60,
+          3,
+          251
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarKnee",
+          1
+        ]
+      ],
+      "selectedRegions": [
+        {
+          "id": "leg3-far-knee-bend-observed-paint",
+          "joint": "leg3FarKnee",
+          "pin": true
+        }
+      ],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1559,
+      "sourcePx": [
+        843.5,
+        584.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          843,
+          584
+        ],
+        "label": 18,
+        "rgba": [
+          198,
+          113,
+          28,
+          9
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8504915538963844
+        ],
+        [
+          "leg3FarKnee",
+          0.11852961238364215
+        ],
+        [
+          "root",
+          0.030677699103953352
+        ],
+        [
+          "leg4FarFoot",
+          0.00027829475766306657
+        ],
+        [
+          "leg2FarFoot",
+          0.000021744518389437805
+        ],
+        [
+          "leg3NearFoot",
+          6.065157696625253e-7
+        ],
+        [
+          "leg4NearFoot",
+          4.756948156119882e-7
+        ],
+        [
+          "leg5NearFoot",
+          1.3129382353886774e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1561,
+      "sourcePx": [
+        848.5,
+        584.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          848,
+          584
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.9132849718641805
+        ],
+        [
+          "leg3FarKnee",
+          0.06501749930359713
+        ],
+        [
+          "root",
+          0.02152184109613047
+        ],
+        [
+          "leg4FarFoot",
+          0.0001477635161474974
+        ],
+        [
+          "leg2FarFoot",
+          0.00002707421865841365
+        ],
+        [
+          "leg3NearFoot",
+          4.79268756998807e-7
+        ],
+        [
+          "leg4NearFoot",
+          3.3786551485712537e-7
+        ],
+        [
+          "leg2NearFoot",
+          3.2867014145610135e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1509,
+      "sourcePx": [
+        822,
+        587
+      ],
+      "sourcePixel": {
+        "sample": [
+          822,
+          587
+        ],
+        "label": 18,
+        "rgba": [
+          170,
+          170,
+          85,
+          3
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8220873607376942
+        ],
+        [
+          "leg3FarKnee",
+          0.0902663391287353
+        ],
+        [
+          "root",
+          0.0864511684758436
+        ],
+        [
+          "leg4FarFoot",
+          0.0011765976601287018
+        ],
+        [
+          "leg2FarFoot",
+          0.000016478695023647474
+        ],
+        [
+          "leg3NearFoot",
+          0.000001004920955955517
+        ],
+        [
+          "leg4NearFoot",
+          9.528600983537296e-7
+        ],
+        [
+          "leg5NearFoot",
+          9.752152023566377e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1541,
+      "sourcePx": [
+        826,
+        587
+      ],
+      "sourcePixel": {
+        "sample": [
+          826,
+          587
+        ],
+        "label": 18,
+        "rgba": [
+          139,
+          49,
+          2,
+          246
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.7730734479280131
+        ],
+        [
+          "leg3FarKnee",
+          0.15120543731709654
+        ],
+        [
+          "root",
+          0.07477323594363398
+        ],
+        [
+          "leg4FarFoot",
+          0.0009262289046751452
+        ],
+        [
+          "leg2FarFoot",
+          0.00001940382138379808
+        ],
+        [
+          "leg3NearFoot",
+          0.0000011259661569972743
+        ],
+        [
+          "leg4NearFoot",
+          0.0000010282352322334148
+        ],
+        [
+          "leg5NearFoot",
+          9.188380804372605e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1543,
+      "sourcePx": [
+        831,
+        587
+      ],
+      "sourcePixel": {
+        "sample": [
+          831,
+          587
+        ],
+        "label": 18,
+        "rgba": [
+          214,
+          129,
+          36,
+          251
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarKnee",
+          1
+        ]
+      ],
+      "selectedRegions": [
+        {
+          "id": "leg3-far-knee-bend-observed-paint",
+          "joint": "leg3FarKnee",
+          "pin": true
+        }
+      ],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1546,
+      "sourcePx": [
+        841,
+        587
+      ],
+      "sourcePixel": {
+        "sample": [
+          841,
+          587
+        ],
+        "label": 18,
+        "rgba": [
+          185,
+          98,
+          21,
+          254
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarKnee",
+          1
+        ]
+      ],
+      "selectedRegions": [
+        {
+          "id": "leg3-far-knee-bend-observed-paint",
+          "joint": "leg3FarKnee",
+          "pin": true
+        }
+      ],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1560,
+      "sourcePx": [
+        846,
+        587
+      ],
+      "sourcePixel": {
+        "sample": [
+          846,
+          587
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8589916857240304
+        ],
+        [
+          "leg3FarKnee",
+          0.10675491128446256
+        ],
+        [
+          "root",
+          0.03395037413946312
+        ],
+        [
+          "leg4FarFoot",
+          0.0002618988597312841
+        ],
+        [
+          "leg2FarFoot",
+          0.00003965267231857247
+        ],
+        [
+          "leg3NearFoot",
+          8.310670723300307e-7
+        ],
+        [
+          "leg4NearFoot",
+          5.998993683889595e-7
+        ],
+        [
+          "leg2NearFoot",
+          4.6353553228046944e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1562,
+      "sourcePx": [
+        851,
+        587
+      ],
+      "sourcePixel": {
+        "sample": [
+          851,
+          587
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.9051423024829107
+        ],
+        [
+          "leg3FarKnee",
+          0.06674191466981699
+        ],
+        [
+          "root",
+          0.027899874464339402
+        ],
+        [
+          "leg4FarFoot",
+          0.00016255307489599518
+        ],
+        [
+          "leg2FarFoot",
+          0.000052032304757796384
+        ],
+        [
+          "leg3NearFoot",
+          7.722949709371595e-7
+        ],
+        [
+          "leg4NearFoot",
+          5.102619654045478e-7
+        ],
+        [
+          "leg2NearFoot",
+          4.044634279043443e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1563,
+      "sourcePx": [
+        819.5,
+        589.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          819,
+          589
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.826241272431488
+        ],
+        [
+          "root",
+          0.10292344030252601
+        ],
+        [
+          "leg3FarKnee",
+          0.0692501784525653
+        ],
+        [
+          "leg4FarFoot",
+          0.0015708052158126182
+        ],
+        [
+          "leg2FarFoot",
+          0.000012545585050351036
+        ],
+        [
+          "leg4NearFoot",
+          8.351261810428629e-7
+        ],
+        [
+          "leg3NearFoot",
+          8.166464274865004e-7
+        ],
+        [
+          "leg5NearFoot",
+          1.062399491694394e-7
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1587,
+      "sourcePx": [
+        843.5,
+        589.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          843,
+          589
+        ],
+        "label": 18,
+        "rgba": [
+          176,
+          92,
+          20,
+          209
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.7766697112191516
+        ],
+        [
+          "leg3FarKnee",
+          0.17064661332014755
+        ],
+        [
+          "root",
+          0.05218049771410217
+        ],
+        [
+          "leg4FarFoot",
+          0.00044773073717268907
+        ],
+        [
+          "leg2FarFoot",
+          0.0000529730267218494
+        ],
+        [
+          "leg3NearFoot",
+          0.0000013774484131443009
+        ],
+        [
+          "leg4NearFoot",
+          0.0000010210763572080012
+        ],
+        [
+          "leg2NearFoot",
+          7.545793381660179e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1589,
+      "sourcePx": [
+        848.5,
+        589.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          848,
+          589
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8809449731175448
+        ],
+        [
+          "leg3FarKnee",
+          0.0819384974986938
+        ],
+        [
+          "root",
+          0.03682854930835678
+        ],
+        [
+          "leg4FarFoot",
+          0.00021481076127802105
+        ],
+        [
+          "leg2FarFoot",
+          0.00007125477887291959
+        ],
+        [
+          "leg3NearFoot",
+          0.000001116839144873565
+        ],
+        [
+          "leg4NearFoot",
+          7.369774024149609e-7
+        ],
+        [
+          "leg2NearFoot",
+          6.07187062971223e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1564,
+      "sourcePx": [
+        822,
+        592
+      ],
+      "sourcePixel": {
+        "sample": [
+          822,
+          592
+        ],
+        "label": 18,
+        "rgba": [
+          170,
+          85,
+          0,
+          3
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.7652495625470213
+        ],
+        [
+          "root",
+          0.1403934640619445
+        ],
+        [
+          "leg3FarKnee",
+          0.09209154005662568
+        ],
+        [
+          "leg4FarFoot",
+          0.0022418192296315073
+        ],
+        [
+          "leg2FarFoot",
+          0.000020777814878566386
+        ],
+        [
+          "leg4NearFoot",
+          0.0000013477531643235011
+        ],
+        [
+          "leg3NearFoot",
+          0.000001314948969263861
+        ],
+        [
+          "leg5NearFoot",
+          1.735877647449651e-7
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1582,
+      "sourcePx": [
+        841,
+        592
+      ],
+      "sourcePixel": {
+        "sample": [
+          841,
+          592
+        ],
+        "label": 18,
+        "rgba": [
+          220,
+          133,
+          31,
+          252
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarKnee",
+          1
+        ]
+      ],
+      "selectedRegions": [
+        {
+          "id": "leg3-far-knee-bend-observed-paint",
+          "joint": "leg3FarKnee",
+          "pin": true
+        }
+      ],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1588,
+      "sourcePx": [
+        846,
+        592
+      ],
+      "sourcePixel": {
+        "sample": [
+          846,
+          592
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.824817899208607
+        ],
+        [
+          "leg3FarKnee",
+          0.12106834614061193
+        ],
+        [
+          "root",
+          0.05366814790260721
+        ],
+        [
+          "leg4FarFoot",
+          0.0003502007129891829
+        ],
+        [
+          "leg2FarFoot",
+          0.00009229224429193914
+        ],
+        [
+          "leg3NearFoot",
+          0.0000018048898586448404
+        ],
+        [
+          "leg4NearFoot",
+          0.0000012229535166721896
+        ],
+        [
+          "leg2NearFoot",
+          8.594751752146135e-8
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1590,
+      "sourcePx": [
+        851,
+        592
+      ],
+      "sourcePixel": {
+        "sample": [
+          851,
+          592
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8865850263645997
+        ],
+        [
+          "leg3FarKnee",
+          0.06578337548839966
+        ],
+        [
+          "root",
+          0.047290045700267125
+        ],
+        [
+          "leg4FarFoot",
+          0.0001966760394405476
+        ],
+        [
+          "leg2FarFoot",
+          0.00014166962065184294
+        ],
+        [
+          "leg3NearFoot",
+          0.0000017678011598572273
+        ],
+        [
+          "leg4NearFoot",
+          0.0000010804134481126951
+        ],
+        [
+          "leg2FarKnee",
+          3.585720333895755e-7
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1596,
+      "sourcePx": [
+        856,
+        592
+      ],
+      "sourcePixel": {
+        "sample": [
+          856,
+          592
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8982565669106211
+        ],
+        [
+          "root",
+          0.05448404357978575
+        ],
+        [
+          "leg3FarKnee",
+          0.046876041829125734
+        ],
+        [
+          "leg2FarFoot",
+          0.00022477589827147275
+        ],
+        [
+          "leg4FarFoot",
+          0.00015394730603725729
+        ],
+        [
+          "leg3NearFoot",
+          0.000002177605332214038
+        ],
+        [
+          "leg4NearFoot",
+          0.000001244816506343928
+        ],
+        [
+          "leg2FarKnee",
+          0.0000012020543202583006
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1566,
+      "sourcePx": [
+        819.5,
+        594.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          819,
+          594
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.7583600661950705
+        ],
+        [
+          "root",
+          0.16818220963992805
+        ],
+        [
+          "leg3FarKnee",
+          0.07037197710779941
+        ],
+        [
+          "leg4FarFoot",
+          0.003068706006176666
+        ],
+        [
+          "leg2FarFoot",
+          0.000014588560376396839
+        ],
+        [
+          "leg4NearFoot",
+          0.0000012215884754211368
+        ],
+        [
+          "leg3NearFoot",
+          0.0000010166524529347888
+        ],
+        [
+          "leg5NearFoot",
+          2.1424972073770687e-7
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1591,
+      "sourcePx": [
+        843.5,
+        594.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          843,
+          594
+        ],
+        "label": 18,
+        "rgba": [
+          190,
+          95,
+          12,
+          250
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.751259279625833
+        ],
+        [
+          "leg3FarKnee",
+          0.17017363938968794
+        ],
+        [
+          "root",
+          0.07789759455243823
+        ],
+        [
+          "leg4FarFoot",
+          0.0005474723503156179
+        ],
+        [
+          "leg2FarFoot",
+          0.0001167757883103585
+        ],
+        [
+          "leg3NearFoot",
+          0.0000029971850117292905
+        ],
+        [
+          "leg4NearFoot",
+          0.0000020799116572514557
+        ],
+        [
+          "leg2NearFoot",
+          1.61196745777495e-7
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1593,
+      "sourcePx": [
+        848.5,
+        594.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          848,
+          594
+        ],
+        "label": 18,
+        "rgba": [
+          127,
+          127,
+          127,
+          2
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8587019282545321
+        ],
+        [
+          "leg3FarKnee",
+          0.08216605062573044
+        ],
+        [
+          "root",
+          0.05870175517675743
+        ],
+        [
+          "leg4FarFoot",
+          0.0002691468955329142
+        ],
+        [
+          "leg2FarFoot",
+          0.0001569172698849349
+        ],
+        [
+          "leg3NearFoot",
+          0.0000023628599709074197
+        ],
+        [
+          "leg4NearFoot",
+          0.0000014826647581848572
+        ],
+        [
+          "leg2FarKnee",
+          3.562528331450847e-7
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1595,
+      "sourcePx": [
+        853.5,
+        594.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          853,
+          594
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8936602985260826
+        ],
+        [
+          "root",
+          0.057617194068300265
+        ],
+        [
+          "leg3FarKnee",
+          0.04831895654430718
+        ],
+        [
+          "leg2FarFoot",
+          0.00023206544116675517
+        ],
+        [
+          "leg4FarFoot",
+          0.00016652951508560116
+        ],
+        [
+          "leg3NearFoot",
+          0.0000023821557389052593
+        ],
+        [
+          "leg4NearFoot",
+          0.0000013731889455213925
+        ],
+        [
+          "leg2FarKnee",
+          0.0000012005603732657324
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1567,
+      "sourcePx": [
+        822,
+        597
+      ],
+      "sourcePixel": {
+        "sample": [
+          822,
+          597
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.6931035651501253
+        ],
+        [
+          "root",
+          0.2121979953418053
+        ],
+        [
+          "leg3FarKnee",
+          0.0906967556588212
+        ],
+        [
+          "leg4FarFoot",
+          0.0039760672322622995
+        ],
+        [
+          "leg2FarFoot",
+          0.000021986381841914298
+        ],
+        [
+          "leg4NearFoot",
+          0.0000018150728692625852
+        ],
+        [
+          "leg3NearFoot",
+          0.0000014909791544237327
+        ],
+        [
+          "leg5NearFoot",
+          3.24183120302511e-7
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1581,
+      "sourcePx": [
+        831.5,
+        597
+      ],
+      "sourcePixel": {
+        "sample": [
+          831,
+          597
+        ],
+        "label": 18,
+        "rgba": [
+          149,
+          62,
+          4,
+          249
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarKnee",
+          1
+        ]
+      ],
+      "selectedRegions": [
+        {
+          "id": "leg3-far-knee-bend-observed-paint",
+          "joint": "leg3FarKnee",
+          "pin": true
+        }
+      ],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1583,
+      "sourcePx": [
+        841,
+        597
+      ],
+      "sourcePixel": {
+        "sample": [
+          841,
+          597
+        ],
+        "label": 18,
+        "rgba": [
+          251,
+          240,
+          206,
+          252
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarKnee",
+          1
+        ]
+      ],
+      "selectedRegions": [
+        {
+          "id": "leg3-far-knee-bend-observed-paint",
+          "joint": "leg3FarKnee",
+          "pin": true
+        }
+      ],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1592,
+      "sourcePx": [
+        846,
+        597
+      ],
+      "sourcePixel": {
+        "sample": [
+          846,
+          597
+        ],
+        "label": 18,
+        "rgba": [
+          180,
+          93,
+          19,
+          248
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8041003066574565
+        ],
+        [
+          "leg3FarKnee",
+          0.11527270232834527
+        ],
+        [
+          "root",
+          0.08001564959432356
+        ],
+        [
+          "leg4FarFoot",
+          0.00042235092205109834
+        ],
+        [
+          "leg2FarFoot",
+          0.00018248474012066255
+        ],
+        [
+          "leg3NearFoot",
+          0.000003599070870681444
+        ],
+        [
+          "leg4NearFoot",
+          0.0000023418474578118055
+        ],
+        [
+          "leg2FarKnee",
+          5.64839374495589e-7
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1594,
+      "sourcePx": [
+        851,
+        597
+      ],
+      "sourcePixel": {
+        "sample": [
+          851,
+          597
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.863157262700836
+        ],
+        [
+          "root",
+          0.07686050072397665
+        ],
+        [
+          "leg3FarKnee",
+          0.05943725092547301
+        ],
+        [
+          "leg2FarFoot",
+          0.0002929528994675826
+        ],
+        [
+          "leg4FarFoot",
+          0.00024421154375715604
+        ],
+        [
+          "leg3NearFoot",
+          0.0000036192574916118685
+        ],
+        [
+          "leg4NearFoot",
+          0.000002136711147028102
+        ],
+        [
+          "leg2FarKnee",
+          0.0000020652378510437496
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1597,
+      "sourcePx": [
+        856,
+        597
+      ],
+      "sourcePixel": {
+        "sample": [
+          856,
+          597
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8825099085490821
+        ],
+        [
+          "root",
+          0.07608111238859987
+        ],
+        [
+          "leg3FarKnee",
+          0.04084998023238786
+        ],
+        [
+          "leg2FarFoot",
+          0.0003855088126389515
+        ],
+        [
+          "leg4FarFoot",
+          0.00016387153454632252
+        ],
+        [
+          "leg2FarKnee",
+          0.0000044148205634854335
+        ],
+        [
+          "leg3NearFoot",
+          0.000003358590176600191
+        ],
+        [
+          "leg4NearFoot",
+          0.0000018450720048907528
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1569,
+      "sourcePx": [
+        819.5,
+        599.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          819,
+          599
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.6496064881525322
+        ],
+        [
+          "root",
+          0.2780254575429391
+        ],
+        [
+          "leg3FarKnee",
+          0.06629927234881727
+        ],
+        [
+          "leg4FarFoot",
+          0.006049971263457108
+        ],
+        [
+          "leg2FarFoot",
+          0.000015118645318468194
+        ],
+        [
+          "leg4NearFoot",
+          0.0000020089076866873237
+        ],
+        [
+          "leg3NearFoot",
+          0.0000011785919687035747
+        ],
+        [
+          "leg5NearFoot",
+          5.045472802908736e-7
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1601,
+      "sourcePx": [
+        853.5,
+        599.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          853,
+          599
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8652666442516087
+        ],
+        [
+          "root",
+          0.09445369596746266
+        ],
+        [
+          "leg3FarKnee",
+          0.03958062997383824
+        ],
+        [
+          "leg2FarFoot",
+          0.0004975819568295205
+        ],
+        [
+          "leg4FarFoot",
+          0.0001880745096716761
+        ],
+        [
+          "leg2FarKnee",
+          0.0000064203189841496364
+        ],
+        [
+          "leg3NearFoot",
+          0.000004495818451864772
+        ],
+        [
+          "leg4NearFoot",
+          0.0000024572031533940696
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1570,
+      "sourcePx": [
+        822,
+        602
+      ],
+      "sourcePixel": {
+        "sample": [
+          822,
+          602
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.5714139295239059
+        ],
+        [
+          "root",
+          0.3377265100407363
+        ],
+        [
+          "leg3FarKnee",
+          0.08385590226183821
+        ],
+        [
+          "leg4FarFoot",
+          0.006975777466623091
+        ],
+        [
+          "leg2FarFoot",
+          0.000022439475556928214
+        ],
+        [
+          "leg4NearFoot",
+          0.0000029519643058721948
+        ],
+        [
+          "leg3NearFoot",
+          0.0000017525059760870102
+        ],
+        [
+          "leg5NearFoot",
+          7.367610575748247e-7
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1598,
+      "sourcePx": [
+        846,
+        602
+      ],
+      "sourcePixel": {
+        "sample": [
+          846,
+          602
+        ],
+        "label": 18,
+        "rgba": [
+          213,
+          137,
+          40,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.7774869374573741
+        ],
+        [
+          "root",
+          0.13312340747235016
+        ],
+        [
+          "leg3FarKnee",
+          0.08844098466642714
+        ],
+        [
+          "leg4FarFoot",
+          0.0005333261615117544
+        ],
+        [
+          "leg2FarFoot",
+          0.0003986053329335707
+        ],
+        [
+          "leg3NearFoot",
+          0.000007962127403511368
+        ],
+        [
+          "leg4NearFoot",
+          0.0000050244209229094135
+        ],
+        [
+          "leg2FarKnee",
+          0.000003752361076923493
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1599,
+      "sourcePx": [
+        851,
+        602
+      ],
+      "sourcePixel": {
+        "sample": [
+          851,
+          602
+        ],
+        "label": 18,
+        "rgba": [
+          175,
+          95,
+          34,
+          67
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8303364654987493
+        ],
+        [
+          "root",
+          0.1254080880208025
+        ],
+        [
+          "leg3FarKnee",
+          0.043335691212658574
+        ],
+        [
+          "leg2FarFoot",
+          0.0006341463667519127
+        ],
+        [
+          "leg4FarFoot",
+          0.0002652855882577613
+        ],
+        [
+          "leg2FarKnee",
+          0.000009509351915016454
+        ],
+        [
+          "leg3NearFoot",
+          0.000006946608482732732
+        ],
+        [
+          "leg4NearFoot",
+          0.000003867352382093249
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1602,
+      "sourcePx": [
+        856,
+        602
+      ],
+      "sourcePixel": {
+        "sample": [
+          856,
+          602
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.833858013116507
+        ],
+        [
+          "root",
+          0.13385698723583253
+        ],
+        [
+          "leg3FarKnee",
+          0.031166957985425514
+        ],
+        [
+          "leg2FarFoot",
+          0.0009061296821598397
+        ],
+        [
+          "leg4FarFoot",
+          0.00018016832809320904
+        ],
+        [
+          "leg2FarKnee",
+          0.000021990703720761495
+        ],
+        [
+          "leg3NearFoot",
+          0.000006437461012326079
+        ],
+        [
+          "leg4NearFoot",
+          0.0000033154872488096
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1572,
+      "sourcePx": [
+        819.5,
+        604.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          819,
+          604
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.47809399492147947
+        ],
+        [
+          "leg3FarFoot",
+          0.4563511844853469
+        ],
+        [
+          "leg3FarKnee",
+          0.0537406279464453
+        ],
+        [
+          "leg4FarFoot",
+          0.011792480955880492
+        ],
+        [
+          "leg2FarFoot",
+          0.00001485681434201627
+        ],
+        [
+          "leg4NearFoot",
+          0.000004165212972050955
+        ],
+        [
+          "leg5NearFoot",
+          0.0000013839136968160537
+        ],
+        [
+          "leg3NearFoot",
+          0.0000013057498368441691
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1603,
+      "sourcePx": [
+        853.5,
+        604.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          853,
+          604
+        ],
+        "label": 18,
+        "rgba": [
+          0,
+          255,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.8001816368082805
+        ],
+        [
+          "root",
+          0.16863359453456805
+        ],
+        [
+          "leg3FarKnee",
+          0.029795946926819677
+        ],
+        [
+          "leg2FarFoot",
+          0.0011168867044665121
+        ],
+        [
+          "leg4FarFoot",
+          0.00022981748759888556
+        ],
+        [
+          "leg2FarKnee",
+          0.000028213554204517624
+        ],
+        [
+          "leg3NearFoot",
+          0.000009130630469591157
+        ],
+        [
+          "leg4NearFoot",
+          0.000004773353592116618
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1573,
+      "sourcePx": [
+        822,
+        607
+      ],
+      "sourcePixel": {
+        "sample": [
+          822,
+          607
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1586,
+      "sourcePx": [
+        826,
+        607
+      ],
+      "sourcePixel": {
+        "sample": [
+          826,
+          607
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.5058221823501583
+        ],
+        [
+          "root",
+          0.41303087264554894
+        ],
+        [
+          "leg3FarKnee",
+          0.07555621177217756
+        ],
+        [
+          "leg4FarFoot",
+          0.005522014124982581
+        ],
+        [
+          "leg2FarFoot",
+          0.00005284682661462251
+        ],
+        [
+          "leg4NearFoot",
+          0.000008063238666744668
+        ],
+        [
+          "leg3NearFoot",
+          0.000006353139242854402
+        ],
+        [
+          "leg5NearFoot",
+          0.0000014559026083812648
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1585,
+      "sourcePx": [
+        831,
+        607
+      ],
+      "sourcePixel": {
+        "sample": [
+          831,
+          607
+        ],
+        "label": 18,
+        "rgba": [
+          170,
+          85,
+          0,
+          3
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.5855765692118962
+        ],
+        [
+          "root",
+          0.3320036125676918
+        ],
+        [
+          "leg3FarKnee",
+          0.07919848126648901
+        ],
+        [
+          "leg4FarFoot",
+          0.003071590922591212
+        ],
+        [
+          "leg2FarFoot",
+          0.00012658958569793436
+        ],
+        [
+          "leg3NearFoot",
+          0.000011649462186594033
+        ],
+        [
+          "leg4NearFoot",
+          0.00001076072309822916
+        ],
+        [
+          "leg5NearFoot",
+          7.462603491142729e-7
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1584,
+      "sourcePx": [
+        841,
+        607
+      ],
+      "sourcePixel": {
+        "sample": [
+          841,
+          607
+        ],
+        "label": 18,
+        "rgba": [
+          185,
+          94,
+          11,
+          252
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.6618560791067565
+        ],
+        [
+          "root",
+          0.2484751069216264
+        ],
+        [
+          "leg3FarKnee",
+          0.08794149179214247
+        ],
+        [
+          "leg4FarFoot",
+          0.0013262104528339292
+        ],
+        [
+          "leg2FarFoot",
+          0.00036678239120885124
+        ],
+        [
+          "leg3NearFoot",
+          0.000018634535553233215
+        ],
+        [
+          "leg4NearFoot",
+          0.000013287059868477082
+        ],
+        [
+          "leg2FarKnee",
+          0.0000024077400101234207
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1600,
+      "sourcePx": [
+        851,
+        607
+      ],
+      "sourcePixel": {
+        "sample": [
+          851,
+          607
+        ],
+        "label": 18,
+        "rgba": [
+          179,
+          86,
+          10,
+          248
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.7524101576331309
+        ],
+        [
+          "root",
+          0.20756885364229571
+        ],
+        [
+          "leg3FarKnee",
+          0.03854148843644224
+        ],
+        [
+          "leg2FarFoot",
+          0.0010175595837862452
+        ],
+        [
+          "leg4FarFoot",
+          0.0004168653050427175
+        ],
+        [
+          "leg2FarKnee",
+          0.000021135914589508396
+        ],
+        [
+          "leg3NearFoot",
+          0.000015347146495446013
+        ],
+        [
+          "leg4NearFoot",
+          0.000008592338217337453
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1604,
+      "sourcePx": [
+        856,
+        607
+      ],
+      "sourcePixel": {
+        "sample": [
+          856,
+          607
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.7203190096187753
+        ],
+        [
+          "root",
+          0.25823400536831725
+        ],
+        [
+          "leg3FarKnee",
+          0.01878908333844971
+        ],
+        [
+          "leg2FarFoot",
+          0.002361902589391044
+        ],
+        [
+          "leg4FarFoot",
+          0.00017441033330110322
+        ],
+        [
+          "leg2FarKnee",
+          0.00010339517775513544
+        ],
+        [
+          "leg3NearFoot",
+          0.000012366053061108943
+        ],
+        [
+          "leg4NearFoot",
+          0.000005827520949386238
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1632,
+      "sourcePx": [
+        861,
+        607
+      ],
+      "sourcePixel": {
+        "sample": [
+          861,
+          607
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.5293359348146364
+        ],
+        [
+          "root",
+          0.4570966571618071
+        ],
+        [
+          "leg3FarKnee",
+          0.006932730372089356
+        ],
+        [
+          "leg2FarFoot",
+          0.006069671126559413
+        ],
+        [
+          "leg2FarKnee",
+          0.0004773364189144612
+        ],
+        [
+          "leg4FarFoot",
+          0.00007178571020161269
+        ],
+        [
+          "leg3NearFoot",
+          0.000011354825151993532
+        ],
+        [
+          "leg4NearFoot",
+          0.000004529570639749978
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1648,
+      "sourcePx": [
+        865,
+        607
+      ],
+      "sourcePixel": {
+        "sample": [
+          865,
+          607
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1651,
+      "sourcePx": [
+        870,
+        607
+      ],
+      "sourcePixel": {
+        "sample": [
+          870,
+          607
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1575,
+      "sourcePx": [
+        819.5,
+        609.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          819,
+          609
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1605,
+      "sourcePx": [
+        824,
+        609.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          824,
+          609
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.5413585119944745
+        ],
+        [
+          "leg3FarFoot",
+          0.4043210478578383
+        ],
+        [
+          "leg3FarKnee",
+          0.04574258019732298
+        ],
+        [
+          "leg4FarFoot",
+          0.008530236400338613
+        ],
+        [
+          "leg2FarFoot",
+          0.00003009037741134105
+        ],
+        [
+          "leg4NearFoot",
+          0.000009534674148297503
+        ],
+        [
+          "leg3NearFoot",
+          0.0000054277620431783695
+        ],
+        [
+          "leg5NearFoot",
+          0.0000025707364229379607
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1607,
+      "sourcePx": [
+        828.5,
+        609.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          828,
+          609
+        ],
+        "label": 18,
+        "rgba": [
+          127,
+          127,
+          0,
+          2
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.5300586862931157
+        ],
+        [
+          "root",
+          0.41374588366061654
+        ],
+        [
+          "leg3FarKnee",
+          0.05162409306614101
+        ],
+        [
+          "leg4FarFoot",
+          0.004479321411963398
+        ],
+        [
+          "leg2FarFoot",
+          0.00006991319615503317
+        ],
+        [
+          "leg4NearFoot",
+          0.000010964941071993436
+        ],
+        [
+          "leg3NearFoot",
+          0.000009550184673122162
+        ],
+        [
+          "leg5NearFoot",
+          0.00000158724626312303
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1629,
+      "sourcePx": [
+        853.5,
+        609.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          853,
+          609
+        ],
+        "label": 18,
+        "rgba": [
+          177,
+          85,
+          19,
+          240
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.7234660580744198
+        ],
+        [
+          "root",
+          0.2548154813354263
+        ],
+        [
+          "leg3FarKnee",
+          0.019637153860418484
+        ],
+        [
+          "leg2FarFoot",
+          0.0017722344023228405
+        ],
+        [
+          "leg4FarFoot",
+          0.00023177805932063036
+        ],
+        [
+          "leg2FarKnee",
+          0.0000506233250674229
+        ],
+        [
+          "leg3NearFoot",
+          0.000017888315406711286
+        ],
+        [
+          "leg4NearFoot",
+          0.000008782627617782313
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1631,
+      "sourcePx": [
+        858.5,
+        609.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          858,
+          609
+        ],
+        "label": 0,
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.6221871017353661
+        ],
+        [
+          "root",
+          0.3641437121624847
+        ],
+        [
+          "leg3FarKnee",
+          0.00920364881777497
+        ],
+        [
+          "leg2FarFoot",
+          0.004115182242853334
+        ],
+        [
+          "leg2FarKnee",
+          0.0002293549378281951
+        ],
+        [
+          "leg4FarFoot",
+          0.0001006275394259861
+        ],
+        [
+          "leg3NearFoot",
+          0.000014343112714917806
+        ],
+        [
+          "leg4NearFoot",
+          0.0000060294515518761986
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1647,
+      "sourcePx": [
+        863,
+        609.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          863,
+          609
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.5726653765852802
+        ],
+        [
+          "leg3FarFoot",
+          0.4143693573363023
+        ],
+        [
+          "leg2FarFoot",
+          0.008532217571256015
+        ],
+        [
+          "leg3FarKnee",
+          0.0035624366407568334
+        ],
+        [
+          "leg2FarKnee",
+          0.0008145240058106393
+        ],
+        [
+          "leg4FarFoot",
+          0.00004114181240460085
+        ],
+        [
+          "leg3NearFoot",
+          0.000010933729193567797
+        ],
+        [
+          "leg4NearFoot",
+          0.000004012318995711195
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1650,
+      "sourcePx": [
+        867.5,
+        609.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          867,
+          609
+        ],
+        "label": 32,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1576,
+      "sourcePx": [
+        822,
+        612
+      ],
+      "sourcePixel": {
+        "sample": [
+          822,
+          612
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1606,
+      "sourcePx": [
+        826,
+        612
+      ],
+      "sourcePixel": {
+        "sample": [
+          826,
+          612
+        ],
+        "label": 18,
+        "rgba": [
+          127,
+          127,
+          0,
+          2
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.5416353386638133
+        ],
+        [
+          "leg3FarFoot",
+          0.4175218261162284
+        ],
+        [
+          "leg3FarKnee",
+          0.03389817142686216
+        ],
+        [
+          "leg4FarFoot",
+          0.006872959248734627
+        ],
+        [
+          "leg2FarFoot",
+          0.00004345621311823108
+        ],
+        [
+          "leg4NearFoot",
+          0.000014952443675523152
+        ],
+        [
+          "leg3NearFoot",
+          0.000009682444284219291
+        ],
+        [
+          "leg5NearFoot",
+          0.000003613443283524521
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1608,
+      "sourcePx": [
+        831,
+        612
+      ],
+      "sourcePixel": {
+        "sample": [
+          831,
+          612
+        ],
+        "label": 18,
+        "rgba": [
+          170,
+          85,
+          85,
+          3
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.5144423512905856
+        ],
+        [
+          "root",
+          0.4428857378952378
+        ],
+        [
+          "leg3FarKnee",
+          0.038726058008573
+        ],
+        [
+          "leg4FarFoot",
+          0.003817901334471502
+        ],
+        [
+          "leg2FarFoot",
+          0.00009385746362944029
+        ],
+        [
+          "leg4NearFoot",
+          0.00001669452483338988
+        ],
+        [
+          "leg3NearFoot",
+          0.000015488314268175192
+        ],
+        [
+          "leg5NearFoot",
+          0.000001911168401256706
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1613,
+      "sourcePx": [
+        836,
+        612
+      ],
+      "sourcePixel": {
+        "sample": [
+          836,
+          612
+        ],
+        "label": 18,
+        "rgba": [
+          162,
+          77,
+          16,
+          226
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.5667824314000084
+        ],
+        [
+          "root",
+          0.38481458733480867
+        ],
+        [
+          "leg3FarKnee",
+          0.04583252038022521
+        ],
+        [
+          "leg4FarFoot",
+          0.002317057799830474
+        ],
+        [
+          "leg2FarFoot",
+          0.0002052159435936874
+        ],
+        [
+          "leg3NearFoot",
+          0.000025062641300146303
+        ],
+        [
+          "leg4NearFoot",
+          0.00002146827570203316
+        ],
+        [
+          "leg2NearFoot",
+          0.0000016562245313864131
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1626,
+      "sourcePx": [
+        846,
+        612
+      ],
+      "sourcePixel": {
+        "sample": [
+          846,
+          612
+        ],
+        "label": 18,
+        "rgba": [
+          166,
+          89,
+          16,
+          252
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.6654024234377462
+        ],
+        [
+          "root",
+          0.29959622708303696
+        ],
+        [
+          "leg3FarKnee",
+          0.033430651016005564
+        ],
+        [
+          "leg2FarFoot",
+          0.0008449814280627124
+        ],
+        [
+          "leg4FarFoot",
+          0.000658332965110367
+        ],
+        [
+          "leg3NearFoot",
+          0.00003539922400687971
+        ],
+        [
+          "leg4NearFoot",
+          0.000021272999034162087
+        ],
+        [
+          "leg2FarKnee",
+          0.000010711846997309191
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1627,
+      "sourcePx": [
+        851,
+        612
+      ],
+      "sourcePixel": {
+        "sample": [
+          851,
+          612
+        ],
+        "label": 18,
+        "rgba": [
+          189,
+          110,
+          30,
+          251
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.6908275383103661
+        ],
+        [
+          "root",
+          0.28825299680518207
+        ],
+        [
+          "leg3FarKnee",
+          0.019041012146910972
+        ],
+        [
+          "leg2FarFoot",
+          0.0014955298107269261
+        ],
+        [
+          "leg4FarFoot",
+          0.00030459735775980993
+        ],
+        [
+          "leg2FarKnee",
+          0.00003313424603481362
+        ],
+        [
+          "leg3NearFoot",
+          0.0000299048248174022
+        ],
+        [
+          "leg4NearFoot",
+          0.00001528649820183906
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1630,
+      "sourcePx": [
+        856,
+        612
+      ],
+      "sourcePixel": {
+        "sample": [
+          856,
+          612
+        ],
+        "label": 18,
+        "rgba": [
+          178,
+          95,
+          34,
+          67
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.6530254282008028
+        ],
+        [
+          "root",
+          0.33306743815783596
+        ],
+        [
+          "leg3FarKnee",
+          0.01070366916413815
+        ],
+        [
+          "leg2FarFoot",
+          0.002901649529791111
+        ],
+        [
+          "leg4FarFoot",
+          0.00014757567198665116
+        ],
+        [
+          "leg2FarKnee",
+          0.0001212281888828262
+        ],
+        [
+          "leg3NearFoot",
+          0.000022878238827556947
+        ],
+        [
+          "leg4NearFoot",
+          0.000010132847734785357
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1633,
+      "sourcePx": [
+        861,
+        612
+      ],
+      "sourcePixel": {
+        "sample": [
+          861,
+          612
+        ],
+        "label": 18,
+        "rgba": [
+          127,
+          127,
+          0,
+          2
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.5047300814010058
+        ],
+        [
+          "root",
+          0.48360922902854486
+        ],
+        [
+          "leg2FarFoot",
+          0.00628645068788615
+        ],
+        [
+          "leg3FarKnee",
+          0.004807830423051119
+        ],
+        [
+          "leg2FarKnee",
+          0.0004787267170334182
+        ],
+        [
+          "leg4FarFoot",
+          0.00006282092279298501
+        ],
+        [
+          "leg3NearFoot",
+          0.00001802924260355622
+        ],
+        [
+          "leg4NearFoot",
+          0.00000683157708213485
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1649,
+      "sourcePx": [
+        865,
+        612
+      ],
+      "sourcePixel": {
+        "sample": [
+          865,
+          612
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1652,
+      "sourcePx": [
+        870,
+        612
+      ],
+      "sourcePixel": {
+        "sample": [
+          870,
+          612
+        ],
+        "label": 32,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1578,
+      "sourcePx": [
+        819.5,
+        614.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          819,
+          614
+        ],
+        "label": 32,
+        "rgba": [
+          204,
+          102,
+          102,
+          5
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1609,
+      "sourcePx": [
+        824,
+        614.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          824,
+          614
+        ],
+        "label": 18,
+        "rgba": [
+          127,
+          127,
+          127,
+          2
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.6846601514785688
+        ],
+        [
+          "leg3FarFoot",
+          0.28475874667323625
+        ],
+        [
+          "leg3FarKnee",
+          0.019935469168817346
+        ],
+        [
+          "leg4FarFoot",
+          0.010577457073883497
+        ],
+        [
+          "leg2FarFoot",
+          0.000024756283502293735
+        ],
+        [
+          "leg4NearFoot",
+          0.000024048151287091166
+        ],
+        [
+          "leg3NearFoot",
+          0.000010916870191072076
+        ],
+        [
+          "leg5NearFoot",
+          0.000008454300513663706
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1611,
+      "sourcePx": [
+        828.5,
+        614.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          828,
+          614
+        ],
+        "label": 18,
+        "rgba": [
+          170,
+          85,
+          85,
+          3
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.545916141855627
+        ],
+        [
+          "leg3FarFoot",
+          0.4244728847644117
+        ],
+        [
+          "leg3FarKnee",
+          0.024692461698936633
+        ],
+        [
+          "leg4FarFoot",
+          0.0048097441261600775
+        ],
+        [
+          "leg2FarFoot",
+          0.00006661228965101405
+        ],
+        [
+          "leg4NearFoot",
+          0.000021548480452472184
+        ],
+        [
+          "leg3NearFoot",
+          0.00001666352191394393
+        ],
+        [
+          "leg5NearFoot",
+          0.0000039432628470760335
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1634,
+      "sourcePx": [
+        853.5,
+        614.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          853,
+          614
+        ],
+        "label": 18,
+        "rgba": [
+          189,
+          111,
+          45,
+          249
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.6475258205696969
+        ],
+        [
+          "root",
+          0.33895547881573446
+        ],
+        [
+          "leg3FarKnee",
+          0.011207470850054529
+        ],
+        [
+          "leg2FarFoot",
+          0.001983769400753182
+        ],
+        [
+          "leg4FarFoot",
+          0.0002177144615745602
+        ],
+        [
+          "leg2FarKnee",
+          0.000053420872950833405
+        ],
+        [
+          "leg3NearFoot",
+          0.0000381631745583099
+        ],
+        [
+          "leg4NearFoot",
+          0.00001816185467717775
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1636,
+      "sourcePx": [
+        858.5,
+        614.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          858,
+          614
+        ],
+        "label": 18,
+        "rgba": [
+          177,
+          97,
+          36,
+          224
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.5678612882879442
+        ],
+        [
+          "root",
+          0.4218741702087085
+        ],
+        [
+          "leg3FarKnee",
+          0.005719655490370588
+        ],
+        [
+          "leg2FarFoot",
+          0.004195353261077307
+        ],
+        [
+          "leg2FarKnee",
+          0.00021717641895251216
+        ],
+        [
+          "leg4FarFoot",
+          0.00009225433253135127
+        ],
+        [
+          "leg3NearFoot",
+          0.000028732007562314468
+        ],
+        [
+          "leg4NearFoot",
+          0.000011369992853124193
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1653,
+      "sourcePx": [
+        863,
+        614.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          863,
+          614
+        ],
+        "label": 18,
+        "rgba": [
+          127,
+          127,
+          0,
+          2
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.6095745747942298
+        ],
+        [
+          "leg3FarFoot",
+          0.37837575231743015
+        ],
+        [
+          "leg2FarFoot",
+          0.008757256254827678
+        ],
+        [
+          "leg3FarKnee",
+          0.0024053290676278303
+        ],
+        [
+          "leg2FarKnee",
+          0.0008231766600548783
+        ],
+        [
+          "leg4FarFoot",
+          0.00003563250611600132
+        ],
+        [
+          "leg3NearFoot",
+          0.000021053041889366036
+        ],
+        [
+          "leg4NearFoot",
+          0.00000722535782438514
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1655,
+      "sourcePx": [
+        867.5,
+        614.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          867,
+          614
+        ],
+        "label": 18,
+        "rgba": [
+          255,
+          0,
+          0,
+          1
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1579,
+      "sourcePx": [
+        822,
+        617
+      ],
+      "sourcePixel": {
+        "sample": [
+          822,
+          617
+        ],
+        "label": 32,
+        "rgba": [
+          123,
+          57,
+          35,
+          246
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1610,
+      "sourcePx": [
+        826,
+        617
+      ],
+      "sourcePixel": {
+        "sample": [
+          826,
+          617
+        ],
+        "label": 18,
+        "rgba": [
+          122,
+          55,
+          27,
+          236
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1612,
+      "sourcePx": [
+        831,
+        617
+      ],
+      "sourcePixel": {
+        "sample": [
+          831,
+          617
+        ],
+        "label": 18,
+        "rgba": [
+          148,
+          85,
+          44,
+          120
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.5582526678691127
+        ],
+        [
+          "leg3FarFoot",
+          0.4176736465174573
+        ],
+        [
+          "leg3FarKnee",
+          0.02064386689195564
+        ],
+        [
+          "leg4FarFoot",
+          0.003233661218299881
+        ],
+        [
+          "leg2FarFoot",
+          0.00012377154940942117
+        ],
+        [
+          "leg4NearFoot",
+          0.00003571932885523553
+        ],
+        [
+          "leg3NearFoot",
+          0.00003269172261109323
+        ],
+        [
+          "leg5NearFoot",
+          0.000003974902298818013
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1614,
+      "sourcePx": [
+        841,
+        617
+      ],
+      "sourcePixel": {
+        "sample": [
+          841,
+          617
+        ],
+        "label": 18,
+        "rgba": [
+          152,
+          69,
+          10,
+          252
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.5341412397541496
+        ],
+        [
+          "root",
+          0.43812717995139233
+        ],
+        [
+          "leg3FarKnee",
+          0.025940338760740405
+        ],
+        [
+          "leg4FarFoot",
+          0.001234487241869611
+        ],
+        [
+          "leg2FarFoot",
+          0.000438987626372368
+        ],
+        [
+          "leg3NearFoot",
+          0.00006310616820255312
+        ],
+        [
+          "leg4NearFoot",
+          0.000046768754949779446
+        ],
+        [
+          "leg2NearFoot",
+          0.000007891742323362559
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1628,
+      "sourcePx": [
+        851,
+        617
+      ],
+      "sourcePixel": {
+        "sample": [
+          851,
+          617
+        ],
+        "label": 18,
+        "rgba": [
+          203,
+          115,
+          43,
+          251
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.5785174215466288
+        ],
+        [
+          "root",
+          0.40658693421207753
+        ],
+        [
+          "leg3FarKnee",
+          0.013010006246660885
+        ],
+        [
+          "leg2FarFoot",
+          0.0013687768556631548
+        ],
+        [
+          "leg4FarFoot",
+          0.00037874253436520877
+        ],
+        [
+          "leg3NearFoot",
+          0.00007246546869460337
+        ],
+        [
+          "leg4NearFoot",
+          0.000037668137766338416
+        ],
+        [
+          "leg2FarKnee",
+          0.00002798499814354127
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1635,
+      "sourcePx": [
+        856,
+        617
+      ],
+      "sourcePixel": {
+        "sample": [
+          856,
+          617
+        ],
+        "label": 18,
+        "rgba": [
+          214,
+          125,
+          37,
+          249
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "leg3FarFoot",
+          0.5797234858752456
+        ],
+        [
+          "root",
+          0.40986873166166465
+        ],
+        [
+          "leg3FarKnee",
+          0.007136685445992482
+        ],
+        [
+          "leg2FarFoot",
+          0.0029382253628110226
+        ],
+        [
+          "leg4FarFoot",
+          0.00014906476850255933
+        ],
+        [
+          "leg2FarKnee",
+          0.00011700624280546543
+        ],
+        [
+          "leg3NearFoot",
+          0.000046866269021562414
+        ],
+        [
+          "leg4NearFoot",
+          0.00001993437395669352
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1637,
+      "sourcePx": [
+        861,
+        617
+      ],
+      "sourcePixel": {
+        "sample": [
+          861,
+          617
+        ],
+        "label": 18,
+        "rgba": [
+          169,
+          89,
+          29,
+          196
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.5464075955668987
+        ],
+        [
+          "leg3FarFoot",
+          0.4440644539363305
+        ],
+        [
+          "leg2FarFoot",
+          0.005865076999250248
+        ],
+        [
+          "leg3FarKnee",
+          0.0031375700054123777
+        ],
+        [
+          "leg2FarKnee",
+          0.00041028563960468923
+        ],
+        [
+          "leg4FarFoot",
+          0.000057818055925713314
+        ],
+        [
+          "leg3NearFoot",
+          0.000042121958954090864
+        ],
+        [
+          "leg4NearFoot",
+          0.000015077837623769851
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1654,
+      "sourcePx": [
+        865,
+        617
+      ],
+      "sourcePixel": {
+        "sample": [
+          865,
+          617
+        ],
+        "label": 18,
+        "rgba": [
+          170,
+          85,
+          85,
+          3
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1656,
+      "sourcePx": [
+        870,
+        617
+      ],
+      "sourcePixel": {
+        "sample": [
+          870,
+          617
+        ],
+        "label": 32,
+        "rgba": [
+          127,
+          127,
+          0,
+          2
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1615,
+      "sourcePx": [
+        824,
+        619.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          824,
+          619
+        ],
+        "label": 18,
+        "rgba": [
+          177,
+          105,
+          80,
+          250
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1618,
+      "sourcePx": [
+        828.5,
+        619.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          828,
+          619
+        ],
+        "label": 18,
+        "rgba": [
+          163,
+          96,
+          72,
+          247
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.7010405476660976
+        ],
+        [
+          "leg3FarFoot",
+          0.2826576053034021
+        ],
+        [
+          "leg3FarKnee",
+          0.011764630729514058
+        ],
+        [
+          "leg4FarFoot",
+          0.004395646971290704
+        ],
+        [
+          "leg2FarFoot",
+          0.000055965007184647913
+        ],
+        [
+          "leg4NearFoot",
+          0.000045398035380299684
+        ],
+        [
+          "leg3NearFoot",
+          0.000029182542944657278
+        ],
+        [
+          "leg5NearFoot",
+          0.000011023744185786082
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1657,
+      "sourcePx": [
+        863,
+        619.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          863,
+          619
+        ],
+        "label": 18,
+        "rgba": [
+          176,
+          98,
+          47,
+          91
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.6700432327804672
+        ],
+        [
+          "leg3FarFoot",
+          0.3202566759245065
+        ],
+        [
+          "leg2FarFoot",
+          0.007547680344401418
+        ],
+        [
+          "leg3FarKnee",
+          0.0014541170023065057
+        ],
+        [
+          "leg2FarKnee",
+          0.0006155660799826097
+        ],
+        [
+          "leg3NearFoot",
+          0.00004546333308323488
+        ],
+        [
+          "leg4FarFoot",
+          0.000023135087567160277
+        ],
+        [
+          "leg4NearFoot",
+          0.000014129447685374916
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1659,
+      "sourcePx": [
+        867.5,
+        619.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          867,
+          619
+        ],
+        "label": 18,
+        "rgba": [
+          191,
+          95,
+          31,
+          8
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1617,
+      "sourcePx": [
+        822,
+        622
+      ],
+      "sourcePixel": {
+        "sample": [
+          822,
+          622
+        ],
+        "label": 32,
+        "rgba": [
+          105,
+          39,
+          24,
+          251
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1616,
+      "sourcePx": [
+        826,
+        622
+      ],
+      "sourcePixel": {
+        "sample": [
+          826,
+          622
+        ],
+        "label": 18,
+        "rgba": [
+          89,
+          31,
+          20,
+          251
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1619,
+      "sourcePx": [
+        831,
+        622
+      ],
+      "sourcePixel": {
+        "sample": [
+          831,
+          622
+        ],
+        "label": 18,
+        "rgba": [
+          96,
+          42,
+          31,
+          252
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1623,
+      "sourcePx": [
+        836,
+        622
+      ],
+      "sourcePixel": {
+        "sample": [
+          836,
+          622
+        ],
+        "label": 18,
+        "rgba": [
+          89,
+          38,
+          24,
+          252
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.6351333393349713
+        ],
+        [
+          "leg3FarFoot",
+          0.3520142055388433
+        ],
+        [
+          "leg3FarKnee",
+          0.010782139366131763
+        ],
+        [
+          "leg4FarFoot",
+          0.0017442446890546766
+        ],
+        [
+          "leg2FarFoot",
+          0.00014880432473441386
+        ],
+        [
+          "leg3NearFoot",
+          0.0000840617564045361
+        ],
+        [
+          "leg4NearFoot",
+          0.00008332540302707748
+        ],
+        [
+          "leg2NearFoot",
+          0.000009879586832922045
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1638,
+      "sourcePx": [
+        846,
+        622
+      ],
+      "sourcePixel": {
+        "sample": [
+          846,
+          622
+        ],
+        "label": 18,
+        "rgba": [
+          112,
+          44,
+          11,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.5151839170401968
+        ],
+        [
+          "leg3FarFoot",
+          0.47348039939467407
+        ],
+        [
+          "leg3FarKnee",
+          0.009978861299832028
+        ],
+        [
+          "leg2FarFoot",
+          0.0006135079717548085
+        ],
+        [
+          "leg4FarFoot",
+          0.0005119607539626803
+        ],
+        [
+          "leg3NearFoot",
+          0.00012782790358478754
+        ],
+        [
+          "leg4NearFoot",
+          0.00007955667463214374
+        ],
+        [
+          "leg2NearFoot",
+          0.00002396896136267342
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1641,
+      "sourcePx": [
+        856,
+        622
+      ],
+      "sourcePixel": {
+        "sample": [
+          856,
+          622
+        ],
+        "label": 18,
+        "rgba": [
+          131,
+          62,
+          26,
+          252
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.5437466992673794
+        ],
+        [
+          "leg3FarFoot",
+          0.44894387218872417
+        ],
+        [
+          "leg3FarKnee",
+          0.004154855555176846
+        ],
+        [
+          "leg2FarFoot",
+          0.0027772274551695706
+        ],
+        [
+          "leg3NearFoot",
+          0.00011284376963444048
+        ],
+        [
+          "leg4FarFoot",
+          0.000112819617136579
+        ],
+        [
+          "leg2FarKnee",
+          0.00010696797470766184
+        ],
+        [
+          "leg4NearFoot",
+          0.00004471417207138006
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1642,
+      "sourcePx": [
+        861,
+        622
+      ],
+      "sourcePixel": {
+        "sample": [
+          861,
+          622
+        ],
+        "label": 18,
+        "rgba": [
+          179,
+          105,
+          72,
+          251
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.6458892047768775
+        ],
+        [
+          "leg3FarFoot",
+          0.3467365545212173
+        ],
+        [
+          "leg2FarFoot",
+          0.005240541375788925
+        ],
+        [
+          "leg3FarKnee",
+          0.0016725831910653936
+        ],
+        [
+          "leg2FarKnee",
+          0.00031998753148807635
+        ],
+        [
+          "leg3NearFoot",
+          0.00008483273860157632
+        ],
+        [
+          "leg4FarFoot",
+          0.000028922481924971018
+        ],
+        [
+          "leg4NearFoot",
+          0.000027373383036208468
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1658,
+      "sourcePx": [
+        865,
+        622
+      ],
+      "sourcePixel": {
+        "sample": [
+          865,
+          622
+        ],
+        "label": 18,
+        "rgba": [
+          178,
+          109,
+          80,
+          244
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1660,
+      "sourcePx": [
+        870,
+        622
+      ],
+      "sourcePixel": {
+        "sample": [
+          870,
+          622
+        ],
+        "label": 32,
+        "rgba": [
+          173,
+          108,
+          77,
+          243
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1620,
+      "sourcePx": [
+        828.5,
+        624.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          828,
+          624
+        ],
+        "label": 18,
+        "rgba": [
+          88,
+          39,
+          27,
+          252
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1661,
+      "sourcePx": [
+        863,
+        624.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          863,
+          624
+        ],
+        "label": 18,
+        "rgba": [
+          100,
+          38,
+          21,
+          252
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.7337825246019402
+        ],
+        [
+          "leg3FarFoot",
+          0.2595420858706222
+        ],
+        [
+          "leg2FarFoot",
+          0.005304506032999481
+        ],
+        [
+          "leg3FarKnee",
+          0.0008618726510485354
+        ],
+        [
+          "leg2FarKnee",
+          0.00033525731197298016
+        ],
+        [
+          "leg3NearFoot",
+          0.00011123706817031029
+        ],
+        [
+          "leg4NearFoot",
+          0.00003287786117802161
+        ],
+        [
+          "leg2NearFoot",
+          0.000029638602068221304
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1663,
+      "sourcePx": [
+        867.5,
+        624.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          867,
+          624
+        ],
+        "label": 18,
+        "rgba": [
+          104,
+          37,
+          20,
+          250
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1622,
+      "sourcePx": [
+        826,
+        627
+      ],
+      "sourcePixel": {
+        "sample": [
+          826,
+          627
+        ],
+        "label": 32,
+        "rgba": [
+          166,
+          117,
+          106,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1621,
+      "sourcePx": [
+        831,
+        627
+      ],
+      "sourcePixel": {
+        "sample": [
+          831,
+          627
+        ],
+        "label": 18,
+        "rgba": [
+          108,
+          77,
+          69,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1625,
+      "sourcePx": [
+        836,
+        627
+      ],
+      "sourcePixel": {
+        "sample": [
+          836,
+          627
+        ],
+        "label": 18,
+        "rgba": [
+          63,
+          36,
+          29,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.7267155556050438
+        ],
+        [
+          "leg3FarFoot",
+          0.26713687271274356
+        ],
+        [
+          "leg3FarKnee",
+          0.004576261685309088
+        ],
+        [
+          "leg4FarFoot",
+          0.001140430693207835
+        ],
+        [
+          "leg4NearFoot",
+          0.00015684819173629604
+        ],
+        [
+          "leg3NearFoot",
+          0.00015649198780189814
+        ],
+        [
+          "leg2FarFoot",
+          0.00009255009476254858
+        ],
+        [
+          "leg2NearFoot",
+          0.000024989029394825465
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1624,
+      "sourcePx": [
+        841,
+        627
+      ],
+      "sourcePixel": {
+        "sample": [
+          841,
+          627
+        ],
+        "label": 18,
+        "rgba": [
+          40,
+          11,
+          4,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.6261954450326577
+        ],
+        [
+          "leg3FarFoot",
+          0.36513124579282563
+        ],
+        [
+          "leg3FarKnee",
+          0.007370972361525112
+        ],
+        [
+          "leg4FarFoot",
+          0.0007243383718260138
+        ],
+        [
+          "leg2FarFoot",
+          0.00023879834234006493
+        ],
+        [
+          "leg3NearFoot",
+          0.00017055146076281024
+        ],
+        [
+          "leg4NearFoot",
+          0.00013485048808085107
+        ],
+        [
+          "leg2NearFoot",
+          0.00003379814998173993
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1640,
+      "sourcePx": [
+        846,
+        627
+      ],
+      "sourcePixel": {
+        "sample": [
+          846,
+          627
+        ],
+        "label": 18,
+        "rgba": [
+          144,
+          70,
+          44,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.6299707901156482
+        ],
+        [
+          "leg3FarFoot",
+          0.3643862042073315
+        ],
+        [
+          "leg3FarKnee",
+          0.00451737719694011
+        ],
+        [
+          "leg2FarFoot",
+          0.00040576543458155584
+        ],
+        [
+          "leg4FarFoot",
+          0.000327504369718329
+        ],
+        [
+          "leg3NearFoot",
+          0.00021022097268729033
+        ],
+        [
+          "leg4NearFoot",
+          0.00013408534162335798
+        ],
+        [
+          "leg2NearFoot",
+          0.00004805236146971033
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1639,
+      "sourcePx": [
+        851,
+        627
+      ],
+      "sourcePixel": {
+        "sample": [
+          851,
+          627
+        ],
+        "label": 18,
+        "rgba": [
+          156,
+          71,
+          38,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.5939399054405409
+        ],
+        [
+          "leg3FarFoot",
+          0.4000801479507108
+        ],
+        [
+          "leg3FarKnee",
+          0.004480436107071489
+        ],
+        [
+          "leg2FarFoot",
+          0.0009571552887470664
+        ],
+        [
+          "leg4FarFoot",
+          0.00019970541069260801
+        ],
+        [
+          "leg3NearFoot",
+          0.0001969074292483531
+        ],
+        [
+          "leg4NearFoot",
+          0.00009915111629982888
+        ],
+        [
+          "leg2NearFoot",
+          0.000046591256689072695
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1644,
+      "sourcePx": [
+        856,
+        627
+      ],
+      "sourcePixel": {
+        "sample": [
+          856,
+          627
+        ],
+        "label": 18,
+        "rgba": [
+          133,
+          58,
+          28,
+          252
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.661062747867203
+        ],
+        [
+          "leg3FarFoot",
+          0.3349120890958114
+        ],
+        [
+          "leg3FarKnee",
+          0.0020264513490162407
+        ],
+        [
+          "leg2FarFoot",
+          0.001533062932730644
+        ],
+        [
+          "leg3NearFoot",
+          0.00023479973207077105
+        ],
+        [
+          "leg4NearFoot",
+          0.00009267152367788204
+        ],
+        [
+          "leg4FarFoot",
+          0.00007191105487372008
+        ],
+        [
+          "leg2NearFoot",
+          0.00006626644461640122
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1643,
+      "sourcePx": [
+        861,
+        627
+      ],
+      "sourcePixel": {
+        "sample": [
+          861,
+          627
+        ],
+        "label": 18,
+        "rgba": [
+          91,
+          28,
+          11,
+          252
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.7094710700876414
+        ],
+        [
+          "leg3FarFoot",
+          0.28577179676878445
+        ],
+        [
+          "leg2FarFoot",
+          0.003084906680773951
+        ],
+        [
+          "leg3FarKnee",
+          0.0012124649673643626
+        ],
+        [
+          "leg3NearFoot",
+          0.0002056578037916683
+        ],
+        [
+          "leg2FarKnee",
+          0.00012354956628586182
+        ],
+        [
+          "leg4NearFoot",
+          0.0000673849523102309
+        ],
+        [
+          "leg2NearFoot",
+          0.00006316917304812595
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1662,
+      "sourcePx": [
+        865,
+        627
+      ],
+      "sourcePixel": {
+        "sample": [
+          865,
+          627
+        ],
+        "label": 18,
+        "rgba": [
+          128,
+          59,
+          36,
+          252
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1664,
+      "sourcePx": [
+        870,
+        627
+      ],
+      "sourcePixel": {
+        "sample": [
+          870,
+          627
+        ],
+        "label": 32,
+        "rgba": [
+          101,
+          38,
+          24,
+          251
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1665,
+      "sourcePx": [
+        828.5,
+        629
+      ],
+      "sourcePixel": {
+        "sample": [
+          828,
+          629
+        ],
+        "label": 32,
+        "rgba": [
+          159,
+          120,
+          114,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1668,
+      "sourcePx": [
+        833.5,
+        629
+      ],
+      "sourcePixel": {
+        "sample": [
+          833,
+          629
+        ],
+        "label": 18,
+        "rgba": [
+          96,
+          68,
+          63,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.8098130784140782
+        ],
+        [
+          "leg3FarFoot",
+          0.1856477799826471
+        ],
+        [
+          "leg3FarKnee",
+          0.0027143123430095027
+        ],
+        [
+          "leg4FarFoot",
+          0.0013777471093055044
+        ],
+        [
+          "leg4NearFoot",
+          0.0002062073919835372
+        ],
+        [
+          "leg3NearFoot",
+          0.00017558545212447197
+        ],
+        [
+          "leg2FarFoot",
+          0.00003991315890818716
+        ],
+        [
+          "leg2NearFoot",
+          0.000025376147943391562
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1670,
+      "sourcePx": [
+        838.5,
+        629
+      ],
+      "sourcePixel": {
+        "sample": [
+          838,
+          629
+        ],
+        "label": 18,
+        "rgba": [
+          73,
+          46,
+          43,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.7350865251503865
+        ],
+        [
+          "leg3FarFoot",
+          0.2599833685449712
+        ],
+        [
+          "leg3FarKnee",
+          0.0036465058105866746
+        ],
+        [
+          "leg4FarFoot",
+          0.00070039170512047
+        ],
+        [
+          "leg3NearFoot",
+          0.00022638831215774342
+        ],
+        [
+          "leg4NearFoot",
+          0.00020368402434934108
+        ],
+        [
+          "leg2FarFoot",
+          0.00010782148632970747
+        ],
+        [
+          "leg2NearFoot",
+          0.00004531496609829718
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1677,
+      "sourcePx": [
+        843.5,
+        629
+      ],
+      "sourcePixel": {
+        "sample": [
+          843,
+          629
+        ],
+        "label": 18,
+        "rgba": [
+          20,
+          5,
+          3,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.6975439081803837
+        ],
+        [
+          "leg3FarFoot",
+          0.2977076543913311
+        ],
+        [
+          "leg3FarKnee",
+          0.0036480623065916883
+        ],
+        [
+          "leg4FarFoot",
+          0.0003767840169379838
+        ],
+        [
+          "leg3NearFoot",
+          0.00025761075968181514
+        ],
+        [
+          "leg2FarFoot",
+          0.00021924355918405186
+        ],
+        [
+          "leg4NearFoot",
+          0.00018766379812857738
+        ],
+        [
+          "leg2NearFoot",
+          0.00005907298776111644
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1679,
+      "sourcePx": [
+        848.5,
+        629
+      ],
+      "sourcePixel": {
+        "sample": [
+          848,
+          629
+        ],
+        "label": 18,
+        "rgba": [
+          160,
+          73,
+          43,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.6852262904745458
+        ],
+        [
+          "leg3FarFoot",
+          0.31082582655200935
+        ],
+        [
+          "leg3FarKnee",
+          0.0028014557629665064
+        ],
+        [
+          "leg2FarFoot",
+          0.00045853283546231364
+        ],
+        [
+          "leg3NearFoot",
+          0.00027214872117432674
+        ],
+        [
+          "leg4FarFoot",
+          0.00018867142085186102
+        ],
+        [
+          "leg4NearFoot",
+          0.00015682346550655756
+        ],
+        [
+          "leg2NearFoot",
+          0.00007025076748329262
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1685,
+      "sourcePx": [
+        853.5,
+        629
+      ],
+      "sourcePixel": {
+        "sample": [
+          853,
+          629
+        ],
+        "label": 18,
+        "rgba": [
+          166,
+          86,
+          51,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.6976595111347348
+        ],
+        [
+          "leg3FarFoot",
+          0.2988912873466823
+        ],
+        [
+          "leg3FarKnee",
+          0.0019966953403972388
+        ],
+        [
+          "leg2FarFoot",
+          0.0008474957114153178
+        ],
+        [
+          "leg3NearFoot",
+          0.00029239171810162534
+        ],
+        [
+          "leg4NearFoot",
+          0.00013114888211882095
+        ],
+        [
+          "leg4FarFoot",
+          0.00009554416438473398
+        ],
+        [
+          "leg2NearFoot",
+          0.00008592570216511696
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1687,
+      "sourcePx": [
+        858.5,
+        629
+      ],
+      "sourcePixel": {
+        "sample": [
+          858,
+          629
+        ],
+        "label": 18,
+        "rgba": [
+          168,
+          85,
+          53,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.7411868657104546
+        ],
+        [
+          "leg3FarFoot",
+          0.25563632752055887
+        ],
+        [
+          "leg2FarFoot",
+          0.001602890032773999
+        ],
+        [
+          "leg3FarKnee",
+          0.0010127728056517776
+        ],
+        [
+          "leg3NearFoot",
+          0.0003153807034943015
+        ],
+        [
+          "leg4NearFoot",
+          0.00011304868349970008
+        ],
+        [
+          "leg2NearFoot",
+          0.00010540475568916429
+        ],
+        [
+          "leg4FarFoot",
+          0.000027309787877594714
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1693,
+      "sourcePx": [
+        863,
+        629
+      ],
+      "sourcePixel": {
+        "sample": [
+          863,
+          629
+        ],
+        "label": 18,
+        "rgba": [
+          144,
+          74,
+          50,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.8156600306258308
+        ],
+        [
+          "leg3FarFoot",
+          0.180142573222445
+        ],
+        [
+          "leg2FarFoot",
+          0.0030721263798575613
+        ],
+        [
+          "leg3FarKnee",
+          0.0004986299229573705
+        ],
+        [
+          "leg3NearFoot",
+          0.00029590053819278725
+        ],
+        [
+          "leg2FarKnee",
+          0.00012982797736208132
+        ],
+        [
+          "leg2NearFoot",
+          0.00011198388392489373
+        ],
+        [
+          "leg4NearFoot",
+          0.00008892744942938741
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1695,
+      "sourcePx": [
+        867.5,
+        629
+      ],
+      "sourcePixel": {
+        "sample": [
+          867,
+          629
+        ],
+        "label": 18,
+        "rgba": [
+          139,
+          71,
+          51,
+          252
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1667,
+      "sourcePx": [
+        826,
+        631
+      ],
+      "sourcePixel": {
+        "sample": [
+          826,
+          631
+        ],
+        "label": 32,
+        "rgba": [
+          185,
+          152,
+          157,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.8881022228931424
+        ],
+        [
+          "leg3FarFoot",
+          0.10645108111137061
+        ],
+        [
+          "leg4FarFoot",
+          0.0031927794195879735
+        ],
+        [
+          "leg3FarKnee",
+          0.0018260018206321471
+        ],
+        [
+          "leg4NearFoot",
+          0.00022451614722753546
+        ],
+        [
+          "leg3NearFoot",
+          0.000137302568634071
+        ],
+        [
+          "leg5NearFoot",
+          0.000055747679297891205
+        ],
+        [
+          "leg2NearFoot",
+          0.000010348360107384844
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1666,
+      "sourcePx": [
+        831,
+        631
+      ],
+      "sourcePixel": {
+        "sample": [
+          831,
+          631
+        ],
+        "label": 32,
+        "rgba": [
+          131,
+          106,
+          101,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1669,
+      "sourcePx": [
+        836,
+        631
+      ],
+      "sourcePixel": {
+        "sample": [
+          836,
+          631
+        ],
+        "label": 18,
+        "rgba": [
+          109,
+          88,
+          85,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1671,
+      "sourcePx": [
+        841,
+        631
+      ],
+      "sourcePixel": {
+        "sample": [
+          841,
+          631
+        ],
+        "label": 18,
+        "rgba": [
+          63,
+          34,
+          24,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1678,
+      "sourcePx": [
+        846,
+        631
+      ],
+      "sourcePixel": {
+        "sample": [
+          846,
+          631
+        ],
+        "label": 18,
+        "rgba": [
+          176,
+          94,
+          68,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1680,
+      "sourcePx": [
+        851,
+        631
+      ],
+      "sourcePixel": {
+        "sample": [
+          851,
+          631
+        ],
+        "label": 18,
+        "rgba": [
+          199,
+          121,
+          89,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1686,
+      "sourcePx": [
+        856,
+        631
+      ],
+      "sourcePixel": {
+        "sample": [
+          856,
+          631
+        ],
+        "label": 18,
+        "rgba": [
+          148,
+          70,
+          46,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1688,
+      "sourcePx": [
+        861,
+        631
+      ],
+      "sourcePixel": {
+        "sample": [
+          861,
+          631
+        ],
+        "label": 18,
+        "rgba": [
+          192,
+          108,
+          77,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1694,
+      "sourcePx": [
+        865,
+        631
+      ],
+      "sourcePixel": {
+        "sample": [
+          865,
+          631
+        ],
+        "label": 18,
+        "rgba": [
+          161,
+          88,
+          66,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1696,
+      "sourcePx": [
+        870,
+        631
+      ],
+      "sourcePixel": {
+        "sample": [
+          870,
+          631
+        ],
+        "label": 32,
+        "rgba": [
+          165,
+          101,
+          86,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1672,
+      "sourcePx": [
+        833.5,
+        633.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          833,
+          633
+        ],
+        "label": 32,
+        "rgba": [
+          113,
+          83,
+          82,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1675,
+      "sourcePx": [
+        838.5,
+        633.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          838,
+          633
+        ],
+        "label": 32,
+        "rgba": [
+          115,
+          93,
+          90,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1681,
+      "sourcePx": [
+        843.5,
+        633.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          843,
+          633
+        ],
+        "label": 32,
+        "rgba": [
+          189,
+          146,
+          126,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1683,
+      "sourcePx": [
+        848.5,
+        633.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          848,
+          633
+        ],
+        "label": 32,
+        "rgba": [
+          182,
+          104,
+          75,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1689,
+      "sourcePx": [
+        853.5,
+        633.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          853,
+          633
+        ],
+        "label": 32,
+        "rgba": [
+          223,
+          157,
+          116,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1691,
+      "sourcePx": [
+        858.5,
+        633.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          858,
+          633
+        ],
+        "label": 32,
+        "rgba": [
+          204,
+          131,
+          93,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1697,
+      "sourcePx": [
+        863,
+        633.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          863,
+          633
+        ],
+        "label": 32,
+        "rgba": [
+          204,
+          128,
+          94,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1699,
+      "sourcePx": [
+        867.5,
+        633.5
+      ],
+      "sourcePixel": {
+        "sample": [
+          867,
+          633
+        ],
+        "label": 32,
+        "rgba": [
+          186,
+          118,
+          88,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1674,
+      "sourcePx": [
+        831,
+        636
+      ],
+      "sourcePixel": {
+        "sample": [
+          831,
+          636
+        ],
+        "label": 32,
+        "rgba": [
+          112,
+          78,
+          77,
+          253
+        ]
+      },
+      "pinned": false,
+      "inheritedPin": false,
+      "weights": [
+        [
+          "root",
+          0.8927967820910864
+        ],
+        [
+          "leg3FarFoot",
+          0.10396982541179603
+        ],
+        [
+          "leg4FarFoot",
+          0.0014115343148929367
+        ],
+        [
+          "leg3FarKnee",
+          0.0010692692367068584
+        ],
+        [
+          "leg4NearFoot",
+          0.00036716374706206384
+        ],
+        [
+          "leg3NearFoot",
+          0.00028364890092463845
+        ],
+        [
+          "leg5NearFoot",
+          0.00005534571844648909
+        ],
+        [
+          "leg2NearFoot",
+          0.00004643057908461126
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1673,
+      "sourcePx": [
+        836,
+        636
+      ],
+      "sourcePixel": {
+        "sample": [
+          836,
+          636
+        ],
+        "label": 32,
+        "rgba": [
+          121,
+          93,
+          85,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1676,
+      "sourcePx": [
+        841,
+        636
+      ],
+      "sourcePixel": {
+        "sample": [
+          841,
+          636
+        ],
+        "label": 32,
+        "rgba": [
+          15,
+          6,
+          4,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1682,
+      "sourcePx": [
+        846,
+        636
+      ],
+      "sourcePixel": {
+        "sample": [
+          846,
+          636
+        ],
+        "label": 32,
+        "rgba": [
+          204,
+          150,
+          131,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1684,
+      "sourcePx": [
+        851,
+        636
+      ],
+      "sourcePixel": {
+        "sample": [
+          851,
+          636
+        ],
+        "label": 32,
+        "rgba": [
+          225,
+          169,
+          143,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1690,
+      "sourcePx": [
+        856,
+        636
+      ],
+      "sourcePixel": {
+        "sample": [
+          856,
+          636
+        ],
+        "label": 32,
+        "rgba": [
+          241,
+          195,
+          169,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1692,
+      "sourcePx": [
+        861,
+        636
+      ],
+      "sourcePixel": {
+        "sample": [
+          861,
+          636
+        ],
+        "label": 32,
+        "rgba": [
+          239,
+          193,
+          163,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1698,
+      "sourcePx": [
+        865,
+        636
+      ],
+      "sourcePixel": {
+        "sample": [
+          865,
+          636
+        ],
+        "label": 32,
+        "rgba": [
+          242,
+          216,
+          194,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    },
+    {
+      "index": 1700,
+      "sourcePx": [
+        870,
+        636
+      ],
+      "sourcePixel": {
+        "sample": [
+          870,
+          636
+        ],
+        "label": 32,
+        "rgba": [
+          232,
+          195,
+          176,
+          253
+        ]
+      },
+      "pinned": true,
+      "inheritedPin": true,
+      "weights": [
+        [
+          "root",
+          1
+        ]
+      ],
+      "selectedRegions": [],
+      "partsPartLabel": 18
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-08/binding.json",
+      "sha256": "4aa64efddc0f7e5ada91f721fcb7ac468d73d2f879fe656e459fcd729168dfb5",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-08/pre-regional-binding.json",
+      "sha256": "4deca7570a8ada8b832481a668cc6fa162144fbfa5d489e614b2f28408da9596",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-08/regional-authoring-receipt.json",
+      "sha256": "21829804055a29e7d2903138c3b4d989422131a31e20becc758a3ecdbde81585",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/authoring.json",
+      "sha256": "a0477b00a8dbd7c0ed77f5d9e6f696af5f94fc913c002589caf40f13242a2184",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-10/master.png",
+      "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-08/labels.png",
+      "sha256": "4c133c6cab717ae73a07a7859b5636e617c939dc8c1e449187513877dd0395a1",
+      "unchanged": true
+    }
+  ]
+}

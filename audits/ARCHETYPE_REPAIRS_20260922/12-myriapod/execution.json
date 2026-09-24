@@ -1,0 +1,139 @@
+{
+  "schema": "cf.archetype-repair-execution/v1",
+  "sourceHead": "330e060b7629fc7851c7964e1e64838e1966beb7",
+  "item": 12,
+  "name": "Centipede",
+  "status": "STOPPED_PROTECTED_CONTACT_REPRESENTATION",
+  "disposition": "Stopped at protected contact-representation boundary; signed packet pending",
+  "capacityProbe": {
+    "command": "node audits/ARCHETYPE_REPAIRS_20260922/12-myriapod/capacity-analysis.mjs",
+    "executionCount": 1,
+    "producer": "capacity-analysis.mjs",
+    "report": "capacity-analysis.json",
+    "log": "capacity-analysis.log",
+    "findings": "capacity-analysis.md",
+    "scope": "Fresh proposed 15-pair graph capacity probes only. No call to appendageCounts, no repeat of original unsupported-topology attempt, no painted record/landmarks/parts admission, static battery, native film, or art judgement.",
+    "pairCountPremise": {
+      "requestedMinimumCapacity": 15,
+      "exactPaintedCountCertified": false,
+      "explanation": "Parent-requested lower-bound capacity case, not a new full image census. More pairs cannot reduce required graph or part counts."
+    },
+    "current": {
+      "jointCount": 29,
+      "legCount": 8,
+      "legPairs": 4,
+      "coreJointCount": 13,
+      "coreJoints": [
+        "root",
+        "head",
+        "mandible",
+        "seg0",
+        "seg1",
+        "seg2",
+        "seg3",
+        "seg4",
+        "seg5",
+        "seg6",
+        "seg7",
+        "antennaFar",
+        "antennaNear"
+      ]
+    },
+    "unchangedLimits": {
+      "jointBudget": 64,
+      "partBudget": 32,
+      "compressionFraction": 0.08,
+      "existingTwoBoneContact": true
+    },
+    "twoJoint": {
+      "joints": 73,
+      "contactChains": 30,
+      "maximumPairsWithinJointBudget": 12,
+      "refusal": "Error: Skeleton pose: joint budget",
+      "owner": "createSkeletonPoseProgram"
+    },
+    "compact": {
+      "joints": 43,
+      "proposedParts": 32,
+      "numericJointBudgetFits": true,
+      "numericPartBudgetFits": true,
+      "refusal": "Error: Contact contract: unsupported leg leg0Far",
+      "owner": "familyContactChains"
+    },
+    "sourceCount": 16,
+    "allSourcesUnchanged": true,
+    "status": "REFUSED_WITH_UNCHANGED_GATES"
+  },
+  "manualObservation": {
+    "file": "presence-observation-02.json",
+    "declaration": "declaration-02.txt",
+    "admittedPresence": false,
+    "nearWalkingLegsAtLeast": 15,
+    "fullLegCount": null,
+    "fullPairCount": null,
+    "originalFiveWitnessObservationPreserved": true
+  },
+  "originalImage": {
+    "master": "master.png",
+    "sha256": "fb30b035194749af6fbb66325dceb9da69a8f4b6ace53aa94ccde5aa209da2f2",
+    "prompt": "prompt.txt",
+    "promptSha256": "3887f599797cea0ade50c98fa28d64608bee16b2d67ef2c4f088468e1a340323",
+    "request": "request.json",
+    "requestSourceHead": "9089d3009fc5929a3ed35590c6ad7530f3eb14fa",
+    "generationReceipt": "generation-receipt.json",
+    "generation": 1
+  },
+  "historicalProbe": {
+    "packet": "../../ARCHETYPE_SPRINT_20260922/12-myriapod",
+    "runId": "archetype-sprint-12-myriapod-01",
+    "error": "Anatomy inventory: unsupported repeated topology myriapod",
+    "minimumRequestedPairs": 5,
+    "exactCountClaim": false,
+    "repeatedByCurrentProbe": false
+  },
+  "productionSourceChanged": false,
+  "correctivePaintConsumed": false,
+  "intake": null,
+  "exactRest": null,
+  "static": null,
+  "native": null,
+  "rigRefusals": null,
+  "cpuP95Ms": null,
+  "reviewSheet": "review-sheet-02.png",
+  "evidenceHashes": [
+    {
+      "path": "capacity-analysis.mjs",
+      "sha256": "22d70ff723cae1164bc5e342df0f7da936f0747fe49d149751b6b73022b31cfa"
+    },
+    {
+      "path": "capacity-analysis.json",
+      "sha256": "7aaa2ec2349b7c48a0a40c7d072d637cb016a5e2bcb7365a9a8a9222ebe7a8ef"
+    },
+    {
+      "path": "capacity-analysis.log",
+      "sha256": "25ea242dcfa07d6b950b221d1cbc16d511f3f133f8c35ccb99e4dd4c65e9af2d"
+    },
+    {
+      "path": "capacity-analysis.md",
+      "sha256": "fd81fc438611ffcac1770254489c440e5f895eb6c26d510ca9e3c2c2f1d721ff"
+    },
+    {
+      "path": "visual-inventory.md",
+      "sha256": "aaa503501f05ed77bba63dbecd6167a10178631d00836ede3066582f3ee8359b"
+    },
+    {
+      "path": "presence-observation-02.json",
+      "sha256": "9f588c4171fca9970c8b2b79d751c237aedc866895e6bbde9f36c9a4a077dc68"
+    },
+    {
+      "path": "declaration-02.txt",
+      "sha256": "08fda6fdf7ed83cd4f1ab07109cd8eb53a110561a3d45d0c2cf0bb65a42ec701"
+    },
+    {
+      "path": "review-sheet-02.png",
+      "sha256": "ff5573b8914dd1d6fe309e5b5fee4057c7bc7d315a163e583b5d46d317911da6"
+    }
+  ],
+  "next": "Sign Centipede refusal packet, then close retained passing fish-mask evidence without unchanged rerun",
+  "runId": "20260922-centipede-capacity-02"
+}

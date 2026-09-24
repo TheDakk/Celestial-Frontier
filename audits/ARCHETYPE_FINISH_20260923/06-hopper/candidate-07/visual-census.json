@@ -1,0 +1,18 @@
+{
+  "masterSha256": "aa1ad50d8ac1e354d0f0ba5beeb211a22519461ac36802ca621022f2418c65eb",
+  "width": 1254,
+  "height": 1254,
+  "channels": 4,
+  "alphaGreaterThan127": {
+    "pixels": 234165,
+    "bounds": [
+      18,
+      278,
+      1236,
+      995
+    ]
+  },
+  "parentDeclaration": "Four visible connected limb chains and four orange pad-bearing extremities; tail/external ears absent, hidden/folded arrays empty. Far proximal attachments partly occluded, estimated explicitly.",
+  "independentVisualReview": "triage_anatomy inspected candidate07 vs05: nearelbow837560 andwrist1004621 match visible bends; masks broadlyfollowactualcontours; no new anatomy concern; tipsappearintact; marginsremainshort.",
+  "scope": "Raster count measures alpha only, never infers anatomy or clipping."
+}

@@ -1,0 +1,18 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation": 2,
+  "toolOutput": "exec-603d0901-e88d-4c1f-b9c3-2bead9cea167.png",
+  "sourceFile": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-603d0901-e88d-4c1f-b9c3-2bead9cea167.png",
+  "promptFile": "prompt.txt",
+  "promptSha256": "e4d9c972979a81a0b2ec2a68668a3945c44bf28113c997a4fb8f11e03ffde1a7",
+  "masterSha256": "1322d8099bd6f24143d55c8c21510de02740407fd08221268078bc20379e7793",
+  "measuredMetadata": {
+    "width": 1254,
+    "height": 1254,
+    "channels": 4,
+    "hasAlpha": true
+  },
+  "inspected": true,
+  "accepted": false,
+  "rejection": "Only five independently traceable walking leg chains; no separate far-front leg or sixth foot. Two membranous wings now visible. Second painting failure; no further repaint."
+}

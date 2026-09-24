@@ -1,0 +1,3959 @@
+{
+  "schema": "cf.failed-pose-fold-diagnosis/v1",
+  "scope": "One targeted diagnostic of stored failed poses; private rejected ARAP scratch only, no published fit/acceptance claim",
+  "recordRecipeHash": "ab9bfdecb935bc8cb5820b1bba5f47a1c3496ff3befb72ce1e4defd92b831b71",
+  "bindingHash": "4fae219fadd1e2f8bcbdd57b9b76a7093b941cf7cb8e1cf18857e7ac7841ae9f",
+  "findings": [
+    {
+      "row": "presentation",
+      "recordedMs": 12000,
+      "recordedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 13",
+      "replayedError": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 13",
+      "stats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 62.31350975145284,
+        "rmsTargetErrorPx": 5.222474272702189,
+        "maximumProjectionPx": 63.17381595319616,
+        "flippedTriangles": 13,
+        "minimumAreaRatio": -0.16467070152826163,
+        "orientationPasses": 128
+      },
+      "outputUnpublished": true,
+      "partCounts": {
+        "far-thigh": 13
+      },
+      "folded": [
+        {
+          "triangle": 1022,
+          "indices": [
+            606,
+            600,
+            607
+          ],
+          "parts": [
+            "far-thigh"
+          ],
+          "ratio": -0.023073382114123735,
+          "vertices": [
+            {
+              "index": 606,
+              "restPx": [
+                812,
+                773
+              ],
+              "targetPx": [
+                735.7686924934387,
+                851.3116782903671
+              ],
+              "privateFailedPx": [
+                761.1520548144165,
+                863.5531401804882
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8551638789686068
+                ],
+                [
+                  "root",
+                  0.0983726721604647
+                ],
+                [
+                  "legNearKnee",
+                  0.040696880346951715
+                ],
+                [
+                  "chest",
+                  0.0028062586408181965
+                ],
+                [
+                  "legFarAnkle",
+                  0.0023048857607254314
+                ],
+                [
+                  "legNearAnkle",
+                  0.0006386323317583341
+                ],
+                [
+                  "legFarFoot",
+                  0.000013779194115765235
+                ],
+                [
+                  "tailFan",
+                  0.000003012596559245507
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 600,
+              "restPx": [
+                822,
+                763
+              ],
+              "targetPx": [
+                748.2877521514893,
+                850.1670452356339
+              ],
+              "privateFailedPx": [
+                758.8925337076438,
+                864.7546886252388
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.9100021642072651
+                ],
+                [
+                  "root",
+                  0.06262401760473775
+                ],
+                [
+                  "legNearKnee",
+                  0.022647067932109508
+                ],
+                [
+                  "chest",
+                  0.002461371753771605
+                ],
+                [
+                  "legFarAnkle",
+                  0.0019625742140751148
+                ],
+                [
+                  "legNearAnkle",
+                  0.000290395382279534
+                ],
+                [
+                  "legFarFoot",
+                  0.000011415489183011335
+                ],
+                [
+                  "tailFan",
+                  9.934165786058936e-7
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 607,
+              "restPx": [
+                822,
+                783
+              ],
+              "targetPx": [
+                738.5576237440109,
+                864.8284986019135
+              ],
+              "privateFailedPx": [
+                764.4172054711669,
+                863.8591518071365
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8325145928776103
+                ],
+                [
+                  "root",
+                  0.1169200772546214
+                ],
+                [
+                  "legNearKnee",
+                  0.04082584454113947
+                ],
+                [
+                  "legFarAnkle",
+                  0.005231295436558545
+                ],
+                [
+                  "chest",
+                  0.0036755196099580324
+                ],
+                [
+                  "legNearAnkle",
+                  0.0007829541052038937
+                ],
+                [
+                  "legFarFoot",
+                  0.00004674510799634391
+                ],
+                [
+                  "tailFan",
+                  0.0000029710669120574175
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 592,
+              "restPx": [
+                802,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 599,
+              "restPx": [
+                822,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 608,
+              "restPx": [
+                831.5,
+                753.5
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 609,
+              "restPx": [
+                841,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 610,
+              "restPx": [
+                841,
+                763
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 611,
+              "restPx": [
+                851,
+                753.5
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 616,
+              "restPx": [
+                851,
+                773
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 1027,
+          "indices": [
+            614,
+            600,
+            610
+          ],
+          "parts": [
+            "far-thigh"
+          ],
+          "ratio": -0.004380961128781072,
+          "vertices": [
+            {
+              "index": 614,
+              "restPx": [
+                831.5,
+                773
+              ],
+              "targetPx": [
+                749.9179984331131,
+                863.6497821807861
+              ],
+              "privateFailedPx": [
+                761.0163851872107,
+                863.0246912976719
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.9039706219244448
+                ],
+                [
+                  "root",
+                  0.06825905111689647
+                ],
+                [
+                  "legNearKnee",
+                  0.02059770427135557
+                ],
+                [
+                  "legFarAnkle",
+                  0.003530221466932357
+                ],
+                [
+                  "chest",
+                  0.003310904019566925
+                ],
+                [
+                  "legNearAnkle",
+                  0.00030382251282720977
+                ],
+                [
+                  "legFarFoot",
+                  0.000026862285760413716
+                ],
+                [
+                  "tailFan",
+                  8.124022163001773e-7
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 600,
+              "restPx": [
+                822,
+                763
+              ],
+              "targetPx": [
+                748.2877521514893,
+                850.1670452356339
+              ],
+              "privateFailedPx": [
+                758.8925337076438,
+                864.7546886252388
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.9100021642072651
+                ],
+                [
+                  "root",
+                  0.06262401760473775
+                ],
+                [
+                  "legNearKnee",
+                  0.022647067932109508
+                ],
+                [
+                  "chest",
+                  0.002461371753771605
+                ],
+                [
+                  "legFarAnkle",
+                  0.0019625742140751148
+                ],
+                [
+                  "legNearAnkle",
+                  0.000290395382279534
+                ],
+                [
+                  "legFarFoot",
+                  0.000011415489183011335
+                ],
+                [
+                  "tailFan",
+                  9.934165786058936e-7
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 610,
+              "restPx": [
+                841,
+                763
+              ],
+              "targetPx": [
+                760.674066066742,
+                863.6954509019852
+              ],
+              "privateFailedPx": [
+                760.674066066742,
+                863.6954509019852
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 599,
+              "restPx": [
+                822,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 608,
+              "restPx": [
+                831.5,
+                753.5
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 609,
+              "restPx": [
+                841,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 610,
+              "restPx": [
+                841,
+                763
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 611,
+              "restPx": [
+                851,
+                753.5
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 612,
+              "restPx": [
+                861,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 616,
+              "restPx": [
+                851,
+                773
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 1045,
+          "indices": [
+            634,
+            625,
+            635
+          ],
+          "parts": [
+            "far-thigh"
+          ],
+          "ratio": -0.0007347466361513972,
+          "vertices": [
+            {
+              "index": 634,
+              "restPx": [
+                910,
+                753.5
+              ],
+              "targetPx": [
+                834.3876425027847,
+                884.7553836107254
+              ],
+              "privateFailedPx": [
+                843.54581569142,
+                871.8096852641561
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.6922617828162936
+                ],
+                [
+                  "root",
+                  0.15978953096435472
+                ],
+                [
+                  "chest",
+                  0.1467073964336955
+                ],
+                [
+                  "legFarAnkle",
+                  0.0008826038404515341
+                ],
+                [
+                  "legNearKnee",
+                  0.0003436742097265091
+                ],
+                [
+                  "neck0",
+                  0.000005982652431937779
+                ],
+                [
+                  "wingNearRoot",
+                  0.000005674427607578086
+                ],
+                [
+                  "wingNearTip",
+                  0.0000033546554385212744
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 625,
+              "restPx": [
+                920,
+                744
+              ],
+              "targetPx": [
+                848.2143523693085,
+                881.7294384241104
+              ],
+              "privateFailedPx": [
+                853.0473957181426,
+                866.4384521546168
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.6801897564297594
+                ],
+                [
+                  "chest",
+                  0.15964790344756574
+                ],
+                [
+                  "root",
+                  0.159482649206872
+                ],
+                [
+                  "legFarAnkle",
+                  0.0004892306011662662
+                ],
+                [
+                  "legNearKnee",
+                  0.00017424650421790476
+                ],
+                [
+                  "neck0",
+                  0.0000070624422425743934
+                ],
+                [
+                  "wingNearRoot",
+                  0.000005493537103800402
+                ],
+                [
+                  "wingNearTip",
+                  0.0000036578310723696198
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 635,
+              "restPx": [
+                920,
+                763
+              ],
+              "targetPx": [
+                882.2066802978516,
+                849.9400470256805
+              ],
+              "privateFailedPx": [
+                882.2066802978516,
+                849.9400470256805
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "chest",
+                "body"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 635,
+              "restPx": [
+                920,
+                763
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "chest",
+                "body"
+              ]
+            },
+            {
+              "index": 638,
+              "restPx": [
+                940,
+                763
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "chest",
+                "body"
+              ]
+            },
+            {
+              "index": 640,
+              "restPx": [
+                920,
+                783
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "chest",
+                "body"
+              ]
+            },
+            {
+              "index": 641,
+              "restPx": [
+                930,
+                773
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "chest",
+                "body"
+              ]
+            },
+            {
+              "index": 642,
+              "restPx": [
+                940,
+                783
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "chest",
+                "body"
+              ]
+            },
+            {
+              "index": 664,
+              "restPx": [
+                920,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 665,
+              "restPx": [
+                930,
+                792.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 1057,
+          "indices": [
+            644,
+            604,
+            607
+          ],
+          "parts": [
+            "far-thigh"
+          ],
+          "ratio": -0.03405923004011183,
+          "vertices": [
+            {
+              "index": 644,
+              "restPx": [
+                812,
+                792.5
+              ],
+              "targetPx": [
+                729.2361220121384,
+                865.2260631322861
+              ],
+              "privateFailedPx": [
+                758.9679299608591,
+                860.3207402329263
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.7027170637515776
+                ],
+                [
+                  "root",
+                  0.20294967949663198
+                ],
+                [
+                  "legNearKnee",
+                  0.08164179333145402
+                ],
+                [
+                  "chest",
+                  0.0060359032886854996
+                ],
+                [
+                  "legFarAnkle",
+                  0.0049455922254905095
+                ],
+                [
+                  "legNearAnkle",
+                  0.001664325645515022
+                ],
+                [
+                  "legFarFoot",
+                  0.00003639426237664238
+                ],
+                [
+                  "tailFan",
+                  0.000009247998268616389
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 604,
+              "restPx": [
+                802,
+                783
+              ],
+              "targetPx": [
+                724.9707680940628,
+                852.3476332426071
+              ],
+              "privateFailedPx": [
+                759.6614308713854,
+                861.9585993096549
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.7428678055710171
+                ],
+                [
+                  "root",
+                  0.17032068182850352
+                ],
+                [
+                  "legNearKnee",
+                  0.07765994830329485
+                ],
+                [
+                  "chest",
+                  0.0050946787151596356
+                ],
+                [
+                  "legFarAnkle",
+                  0.0025290069785318067
+                ],
+                [
+                  "legNearAnkle",
+                  0.0015039968781307381
+                ],
+                [
+                  "legFarFoot",
+                  0.00001380430582589555
+                ],
+                [
+                  "tailFan",
+                  0.000010077419536653602
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 607,
+              "restPx": [
+                822,
+                783
+              ],
+              "targetPx": [
+                738.5576237440109,
+                864.8284986019135
+              ],
+              "privateFailedPx": [
+                764.4172054711669,
+                863.8591518071365
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8325145928776103
+                ],
+                [
+                  "root",
+                  0.1169200772546214
+                ],
+                [
+                  "legNearKnee",
+                  0.04082584454113947
+                ],
+                [
+                  "legFarAnkle",
+                  0.005231295436558545
+                ],
+                [
+                  "chest",
+                  0.0036755196099580324
+                ],
+                [
+                  "legNearAnkle",
+                  0.0007829541052038937
+                ],
+                [
+                  "legFarFoot",
+                  0.00004674510799634391
+                ],
+                [
+                  "tailFan",
+                  0.0000029710669120574175
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 569,
+              "restPx": [
+                783,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 592,
+              "restPx": [
+                802,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 593,
+              "restPx": [
+                792.5,
+                812
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 594,
+              "restPx": [
+                802,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 599,
+              "restPx": [
+                822,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 608,
+              "restPx": [
+                831.5,
+                753.5
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 610,
+              "restPx": [
+                841,
+                763
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 616,
+              "restPx": [
+                851,
+                773
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 1061,
+          "indices": [
+            648,
+            607,
+            615
+          ],
+          "parts": [
+            "far-thigh"
+          ],
+          "ratio": -0.005889590375480295,
+          "vertices": [
+            {
+              "index": 648,
+              "restPx": [
+                841.5,
+                802.5
+              ],
+              "targetPx": [
+                744.0682911872864,
+                891.1658967733383
+              ],
+              "privateFailedPx": [
+                759.0362243410433,
+                863.8400523469114
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8033016947839979
+                ],
+                [
+                  "root",
+                  0.1427285917950822
+                ],
+                [
+                  "legNearKnee",
+                  0.03125593012498633
+                ],
+                [
+                  "legFarAnkle",
+                  0.016268516942483834
+                ],
+                [
+                  "chest",
+                  0.005172865702610908
+                ],
+                [
+                  "legNearAnkle",
+                  0.0010483524528528642
+                ],
+                [
+                  "legFarFoot",
+                  0.00022217149451939758
+                ],
+                [
+                  "tailFan",
+                  0.000001876703466600629
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 607,
+              "restPx": [
+                822,
+                783
+              ],
+              "targetPx": [
+                738.5576237440109,
+                864.8284986019135
+              ],
+              "privateFailedPx": [
+                764.4172054711669,
+                863.8591518071365
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8325145928776103
+                ],
+                [
+                  "root",
+                  0.1169200772546214
+                ],
+                [
+                  "legNearKnee",
+                  0.04082584454113947
+                ],
+                [
+                  "legFarAnkle",
+                  0.005231295436558545
+                ],
+                [
+                  "chest",
+                  0.0036755196099580324
+                ],
+                [
+                  "legNearAnkle",
+                  0.0007829541052038937
+                ],
+                [
+                  "legFarFoot",
+                  0.00004674510799634391
+                ],
+                [
+                  "tailFan",
+                  0.0000029710669120574175
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 615,
+              "restPx": [
+                841,
+                783
+              ],
+              "targetPx": [
+                751.8758486509323,
+                876.940127491951
+              ],
+              "privateFailedPx": [
+                758.1336319737488,
+                863.4313290661659
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8905487491304331
+                ],
+                [
+                  "root",
+                  0.07903311783367761
+                ],
+                [
+                  "legNearKnee",
+                  0.018318577862760786
+                ],
+                [
+                  "legFarAnkle",
+                  0.006596012557634167
+                ],
+                [
+                  "chest",
+                  0.005076626029260662
+                ],
+                [
+                  "legNearAnkle",
+                  0.0003577590143136713
+                ],
+                [
+                  "legFarFoot",
+                  0.00006845382228723058
+                ],
+                [
+                  "tailFan",
+                  7.037496327040437e-7
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 592,
+              "restPx": [
+                802,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 594,
+              "restPx": [
+                802,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 599,
+              "restPx": [
+                822,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 608,
+              "restPx": [
+                831.5,
+                753.5
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 609,
+              "restPx": [
+                841,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 610,
+              "restPx": [
+                841,
+                763
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 611,
+              "restPx": [
+                851,
+                753.5
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 616,
+              "restPx": [
+                851,
+                773
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 1123,
+          "indices": [
+            606,
+            607,
+            604
+          ],
+          "parts": [
+            "far-thigh"
+          ],
+          "ratio": -0.023751339570443432,
+          "vertices": [
+            {
+              "index": 606,
+              "restPx": [
+                812,
+                773
+              ],
+              "targetPx": [
+                735.7686924934387,
+                851.3116782903671
+              ],
+              "privateFailedPx": [
+                761.1520548144165,
+                863.5531401804882
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8551638789686068
+                ],
+                [
+                  "root",
+                  0.0983726721604647
+                ],
+                [
+                  "legNearKnee",
+                  0.040696880346951715
+                ],
+                [
+                  "chest",
+                  0.0028062586408181965
+                ],
+                [
+                  "legFarAnkle",
+                  0.0023048857607254314
+                ],
+                [
+                  "legNearAnkle",
+                  0.0006386323317583341
+                ],
+                [
+                  "legFarFoot",
+                  0.000013779194115765235
+                ],
+                [
+                  "tailFan",
+                  0.000003012596559245507
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 607,
+              "restPx": [
+                822,
+                783
+              ],
+              "targetPx": [
+                738.5576237440109,
+                864.8284986019135
+              ],
+              "privateFailedPx": [
+                764.4172054711669,
+                863.8591518071365
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8325145928776103
+                ],
+                [
+                  "root",
+                  0.1169200772546214
+                ],
+                [
+                  "legNearKnee",
+                  0.04082584454113947
+                ],
+                [
+                  "legFarAnkle",
+                  0.005231295436558545
+                ],
+                [
+                  "chest",
+                  0.0036755196099580324
+                ],
+                [
+                  "legNearAnkle",
+                  0.0007829541052038937
+                ],
+                [
+                  "legFarFoot",
+                  0.00004674510799634391
+                ],
+                [
+                  "tailFan",
+                  0.0000029710669120574175
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 604,
+              "restPx": [
+                802,
+                783
+              ],
+              "targetPx": [
+                724.9707680940628,
+                852.3476332426071
+              ],
+              "privateFailedPx": [
+                759.6614308713854,
+                861.9585993096549
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.7428678055710171
+                ],
+                [
+                  "root",
+                  0.17032068182850352
+                ],
+                [
+                  "legNearKnee",
+                  0.07765994830329485
+                ],
+                [
+                  "chest",
+                  0.0050946787151596356
+                ],
+                [
+                  "legFarAnkle",
+                  0.0025290069785318067
+                ],
+                [
+                  "legNearAnkle",
+                  0.0015039968781307381
+                ],
+                [
+                  "legFarFoot",
+                  0.00001380430582589555
+                ],
+                [
+                  "tailFan",
+                  0.000010077419536653602
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 569,
+              "restPx": [
+                783,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 592,
+              "restPx": [
+                802,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 593,
+              "restPx": [
+                792.5,
+                812
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 594,
+              "restPx": [
+                802,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 599,
+              "restPx": [
+                822,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 608,
+              "restPx": [
+                831.5,
+                753.5
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 610,
+              "restPx": [
+                841,
+                763
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 616,
+              "restPx": [
+                851,
+                773
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 1124,
+          "indices": [
+            606,
+            604,
+            601
+          ],
+          "parts": [
+            "far-thigh"
+          ],
+          "ratio": -0.007748573176996025,
+          "vertices": [
+            {
+              "index": 606,
+              "restPx": [
+                812,
+                773
+              ],
+              "targetPx": [
+                735.7686924934387,
+                851.3116782903671
+              ],
+              "privateFailedPx": [
+                761.1520548144165,
+                863.5531401804882
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8551638789686068
+                ],
+                [
+                  "root",
+                  0.0983726721604647
+                ],
+                [
+                  "legNearKnee",
+                  0.040696880346951715
+                ],
+                [
+                  "chest",
+                  0.0028062586408181965
+                ],
+                [
+                  "legFarAnkle",
+                  0.0023048857607254314
+                ],
+                [
+                  "legNearAnkle",
+                  0.0006386323317583341
+                ],
+                [
+                  "legFarFoot",
+                  0.000013779194115765235
+                ],
+                [
+                  "tailFan",
+                  0.000003012596559245507
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 604,
+              "restPx": [
+                802,
+                783
+              ],
+              "targetPx": [
+                724.9707680940628,
+                852.3476332426071
+              ],
+              "privateFailedPx": [
+                759.6614308713854,
+                861.9585993096549
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.7428678055710171
+                ],
+                [
+                  "root",
+                  0.17032068182850352
+                ],
+                [
+                  "legNearKnee",
+                  0.07765994830329485
+                ],
+                [
+                  "chest",
+                  0.0050946787151596356
+                ],
+                [
+                  "legFarAnkle",
+                  0.0025290069785318067
+                ],
+                [
+                  "legNearAnkle",
+                  0.0015039968781307381
+                ],
+                [
+                  "legFarFoot",
+                  0.00001380430582589555
+                ],
+                [
+                  "tailFan",
+                  0.000010077419536653602
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 601,
+              "restPx": [
+                802,
+                763
+              ],
+              "targetPx": [
+                733.4975892305374,
+                837.5669628381729
+              ],
+              "privateFailedPx": [
+                762.712141722394,
+                866.2616281201167
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8651312169828566
+                ],
+                [
+                  "root",
+                  0.0899709447165336
+                ],
+                [
+                  "legNearKnee",
+                  0.040530754289664565
+                ],
+                [
+                  "chest",
+                  0.002441785307661245
+                ],
+                [
+                  "legFarAnkle",
+                  0.0013047025827238419
+                ],
+                [
+                  "legNearAnkle",
+                  0.0006121218438304232
+                ],
+                [
+                  "legFarFoot",
+                  0.000005227141562001542
+                ],
+                [
+                  "tailFan",
+                  0.000003247135167723755
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 569,
+              "restPx": [
+                783,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 592,
+              "restPx": [
+                802,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 593,
+              "restPx": [
+                792.5,
+                812
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 594,
+              "restPx": [
+                802,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 599,
+              "restPx": [
+                822,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 608,
+              "restPx": [
+                831.5,
+                753.5
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 610,
+              "restPx": [
+                841,
+                763
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 1129,
+          "indices": [
+            614,
+            615,
+            607
+          ],
+          "parts": [
+            "far-thigh"
+          ],
+          "ratio": -0.019939187823595647,
+          "vertices": [
+            {
+              "index": 614,
+              "restPx": [
+                831.5,
+                773
+              ],
+              "targetPx": [
+                749.9179984331131,
+                863.6497821807861
+              ],
+              "privateFailedPx": [
+                761.0163851872107,
+                863.0246912976719
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.9039706219244448
+                ],
+                [
+                  "root",
+                  0.06825905111689647
+                ],
+                [
+                  "legNearKnee",
+                  0.02059770427135557
+                ],
+                [
+                  "legFarAnkle",
+                  0.003530221466932357
+                ],
+                [
+                  "chest",
+                  0.003310904019566925
+                ],
+                [
+                  "legNearAnkle",
+                  0.00030382251282720977
+                ],
+                [
+                  "legFarFoot",
+                  0.000026862285760413716
+                ],
+                [
+                  "tailFan",
+                  8.124022163001773e-7
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 615,
+              "restPx": [
+                841,
+                783
+              ],
+              "targetPx": [
+                751.8758486509323,
+                876.940127491951
+              ],
+              "privateFailedPx": [
+                758.1336319737488,
+                863.4313290661659
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8905487491304331
+                ],
+                [
+                  "root",
+                  0.07903311783367761
+                ],
+                [
+                  "legNearKnee",
+                  0.018318577862760786
+                ],
+                [
+                  "legFarAnkle",
+                  0.006596012557634167
+                ],
+                [
+                  "chest",
+                  0.005076626029260662
+                ],
+                [
+                  "legNearAnkle",
+                  0.0003577590143136713
+                ],
+                [
+                  "legFarFoot",
+                  0.00006845382228723058
+                ],
+                [
+                  "tailFan",
+                  7.037496327040437e-7
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 607,
+              "restPx": [
+                822,
+                783
+              ],
+              "targetPx": [
+                738.5576237440109,
+                864.8284986019135
+              ],
+              "privateFailedPx": [
+                764.4172054711669,
+                863.8591518071365
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8325145928776103
+                ],
+                [
+                  "root",
+                  0.1169200772546214
+                ],
+                [
+                  "legNearKnee",
+                  0.04082584454113947
+                ],
+                [
+                  "legFarAnkle",
+                  0.005231295436558545
+                ],
+                [
+                  "chest",
+                  0.0036755196099580324
+                ],
+                [
+                  "legNearAnkle",
+                  0.0007829541052038937
+                ],
+                [
+                  "legFarFoot",
+                  0.00004674510799634391
+                ],
+                [
+                  "tailFan",
+                  0.0000029710669120574175
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 592,
+              "restPx": [
+                802,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 599,
+              "restPx": [
+                822,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 608,
+              "restPx": [
+                831.5,
+                753.5
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 609,
+              "restPx": [
+                841,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 610,
+              "restPx": [
+                841,
+                763
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 611,
+              "restPx": [
+                851,
+                753.5
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 616,
+              "restPx": [
+                851,
+                773
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 1150,
+          "indices": [
+            644,
+            592,
+            604
+          ],
+          "parts": [
+            "far-thigh"
+          ],
+          "ratio": -0.005682490057526928,
+          "vertices": [
+            {
+              "index": 644,
+              "restPx": [
+                812,
+                792.5
+              ],
+              "targetPx": [
+                729.2361220121384,
+                865.2260631322861
+              ],
+              "privateFailedPx": [
+                758.9679299608591,
+                860.3207402329263
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.7027170637515776
+                ],
+                [
+                  "root",
+                  0.20294967949663198
+                ],
+                [
+                  "legNearKnee",
+                  0.08164179333145402
+                ],
+                [
+                  "chest",
+                  0.0060359032886854996
+                ],
+                [
+                  "legFarAnkle",
+                  0.0049455922254905095
+                ],
+                [
+                  "legNearAnkle",
+                  0.001664325645515022
+                ],
+                [
+                  "legFarFoot",
+                  0.00003639426237664238
+                ],
+                [
+                  "tailFan",
+                  0.000009247998268616389
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 592,
+              "restPx": [
+                802,
+                802
+              ],
+              "targetPx": [
+                758.3766528367996,
+                860.4811502695084
+              ],
+              "privateFailedPx": [
+                758.3766528367996,
+                860.4811502695084
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 604,
+              "restPx": [
+                802,
+                783
+              ],
+              "targetPx": [
+                724.9707680940628,
+                852.3476332426071
+              ],
+              "privateFailedPx": [
+                759.6614308713854,
+                861.9585993096549
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.7428678055710171
+                ],
+                [
+                  "root",
+                  0.17032068182850352
+                ],
+                [
+                  "legNearKnee",
+                  0.07765994830329485
+                ],
+                [
+                  "chest",
+                  0.0050946787151596356
+                ],
+                [
+                  "legFarAnkle",
+                  0.0025290069785318067
+                ],
+                [
+                  "legNearAnkle",
+                  0.0015039968781307381
+                ],
+                [
+                  "legFarFoot",
+                  0.00001380430582589555
+                ],
+                [
+                  "tailFan",
+                  0.000010077419536653602
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 569,
+              "restPx": [
+                783,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 570,
+              "restPx": [
+                783,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 592,
+              "restPx": [
+                802,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 593,
+              "restPx": [
+                792.5,
+                812
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 594,
+              "restPx": [
+                802,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 595,
+              "restPx": [
+                792.5,
+                831.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 650,
+              "restPx": [
+                802,
+                841
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 1152,
+          "indices": [
+            646,
+            594,
+            592
+          ],
+          "parts": [
+            "far-thigh"
+          ],
+          "ratio": -0.16467070152826163,
+          "vertices": [
+            {
+              "index": 646,
+              "restPx": [
+                812,
+                812
+              ],
+              "targetPx": [
+                725.0118026733398,
+                879.9124063253403
+              ],
+              "privateFailedPx": [
+                756.707921874279,
+                860.3796400614921
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.5634863373293778
+                ],
+                [
+                  "root",
+                  0.3196501307079193
+                ],
+                [
+                  "legNearKnee",
+                  0.09493809873532612
+                ],
+                [
+                  "legFarAnkle",
+                  0.0122467817405372
+                ],
+                [
+                  "chest",
+                  0.005926873166473009
+                ],
+                [
+                  "legNearAnkle",
+                  0.003623794302672477
+                ],
+                [
+                  "legFarFoot",
+                  0.00011648801718902694
+                ],
+                [
+                  "tailFan",
+                  0.00001149600050515482
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 594,
+              "restPx": [
+                802,
+                822
+              ],
+              "targetPx": [
+                753.7336910963058,
+                879.9347548484802
+              ],
+              "privateFailedPx": [
+                753.7336910963058,
+                879.9347548484802
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 592,
+              "restPx": [
+                802,
+                802
+              ],
+              "targetPx": [
+                758.3766528367996,
+                860.4811502695084
+              ],
+              "privateFailedPx": [
+                758.3766528367996,
+                860.4811502695084
+              ],
+              "pinned": true,
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 569,
+              "restPx": [
+                783,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 570,
+              "restPx": [
+                783,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 571,
+              "restPx": [
+                763,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 576,
+              "restPx": [
+                773,
+                831.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 577,
+              "restPx": [
+                783,
+                841
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 592,
+              "restPx": [
+                802,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 593,
+              "restPx": [
+                792.5,
+                812
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 594,
+              "restPx": [
+                802,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 595,
+              "restPx": [
+                792.5,
+                831.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 650,
+              "restPx": [
+                802,
+                841
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 653,
+              "restPx": [
+                792.5,
+                851
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 654,
+              "restPx": [
+                802,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 1153,
+          "indices": [
+            648,
+            615,
+            617
+          ],
+          "parts": [
+            "far-thigh"
+          ],
+          "ratio": -0.03470225918188638,
+          "vertices": [
+            {
+              "index": 648,
+              "restPx": [
+                841.5,
+                802.5
+              ],
+              "targetPx": [
+                744.0682911872864,
+                891.1658967733383
+              ],
+              "privateFailedPx": [
+                759.0362243410433,
+                863.8400523469114
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8033016947839979
+                ],
+                [
+                  "root",
+                  0.1427285917950822
+                ],
+                [
+                  "legNearKnee",
+                  0.03125593012498633
+                ],
+                [
+                  "legFarAnkle",
+                  0.016268516942483834
+                ],
+                [
+                  "chest",
+                  0.005172865702610908
+                ],
+                [
+                  "legNearAnkle",
+                  0.0010483524528528642
+                ],
+                [
+                  "legFarFoot",
+                  0.00022217149451939758
+                ],
+                [
+                  "tailFan",
+                  0.000001876703466600629
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 615,
+              "restPx": [
+                841,
+                783
+              ],
+              "targetPx": [
+                751.8758486509323,
+                876.940127491951
+              ],
+              "privateFailedPx": [
+                758.1336319737488,
+                863.4313290661659
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8905487491304331
+                ],
+                [
+                  "root",
+                  0.07903311783367761
+                ],
+                [
+                  "legNearKnee",
+                  0.018318577862760786
+                ],
+                [
+                  "legFarAnkle",
+                  0.006596012557634167
+                ],
+                [
+                  "chest",
+                  0.005076626029260662
+                ],
+                [
+                  "legNearAnkle",
+                  0.0003577590143136713
+                ],
+                [
+                  "legFarFoot",
+                  0.00006845382228723058
+                ],
+                [
+                  "tailFan",
+                  7.037496327040437e-7
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 617,
+              "restPx": [
+                861,
+                783
+              ],
+              "targetPx": [
+                768.6002426147461,
+                888.0781381130219
+              ],
+              "privateFailedPx": [
+                759.722971582279,
+                879.1454894046454
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.8709896727389395
+                ],
+                [
+                  "root",
+                  0.09404275912209765
+                ],
+                [
+                  "legFarAnkle",
+                  0.01223994145364414
+                ],
+                [
+                  "chest",
+                  0.011921277961261753
+                ],
+                [
+                  "legNearKnee",
+                  0.010336951392637331
+                ],
+                [
+                  "legNearAnkle",
+                  0.0003002839592207689
+                ],
+                [
+                  "legFarFoot",
+                  0.00016883852628552472
+                ],
+                [
+                  "tailFan",
+                  2.7484591319184137e-7
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 592,
+              "restPx": [
+                802,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 594,
+              "restPx": [
+                802,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 608,
+              "restPx": [
+                831.5,
+                753.5
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 609,
+              "restPx": [
+                841,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 610,
+              "restPx": [
+                841,
+                763
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 611,
+              "restPx": [
+                851,
+                753.5
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 612,
+              "restPx": [
+                861,
+                744
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 616,
+              "restPx": [
+                851,
+                773
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 1164,
+          "indices": [
+            657,
+            652,
+            647
+          ],
+          "parts": [
+            "far-thigh"
+          ],
+          "ratio": -0.006988543774948143,
+          "vertices": [
+            {
+              "index": 657,
+              "restPx": [
+                841.5,
+                841.5
+              ],
+              "targetPx": [
+                730.9592006206512,
+                921.6388181447983
+              ],
+              "privateFailedPx": [
+                754.884788940238,
+                880.5365291039778
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.6285267668051873
+                ],
+                [
+                  "root",
+                  0.2625943851636433
+                ],
+                [
+                  "legFarAnkle",
+                  0.0785094260162618
+                ],
+                [
+                  "legNearKnee",
+                  0.023656728940251927
+                ],
+                [
+                  "legNearAnkle",
+                  0.0031299396765139677
+                ],
+                [
+                  "chest",
+                  0.002168236415126912
+                ],
+                [
+                  "legFarFoot",
+                  0.0014128639926000016
+                ],
+                [
+                  "legNearFoot",
+                  0.0000016529904147248735
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 652,
+              "restPx": [
+                822,
+                841
+              ],
+              "targetPx": [
+                723.4554784297943,
+                909.6281687021255
+              ],
+              "privateFailedPx": [
+                754.9363352973699,
+                881.5703783472659
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.5201799244058403
+                ],
+                [
+                  "root",
+                  0.38114338410398635
+                ],
+                [
+                  "legFarAnkle",
+                  0.04572696601816293
+                ],
+                [
+                  "legNearKnee",
+                  0.044610686040443596
+                ],
+                [
+                  "legNearAnkle",
+                  0.006209302599464306
+                ],
+                [
+                  "chest",
+                  0.0015369354304711237
+                ],
+                [
+                  "legFarFoot",
+                  0.0005905918687474805
+                ],
+                [
+                  "tailFan",
+                  0.0000022095328839088703
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 647,
+              "restPx": [
+                822,
+                822
+              ],
+              "targetPx": [
+                725.3509919643402,
+                894.3993319272995
+              ],
+              "privateFailedPx": [
+                756.7511572139366,
+                867.7381069095591
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.637631878714733
+                ],
+                [
+                  "root",
+                  0.2740998994561462
+                ],
+                [
+                  "legNearKnee",
+                  0.05324678633221762
+                ],
+                [
+                  "legFarAnkle",
+                  0.02772076044121118
+                ],
+                [
+                  "chest",
+                  0.0036068893999580474
+                ],
+                [
+                  "legNearAnkle",
+                  0.003318862380897721
+                ],
+                [
+                  "legFarFoot",
+                  0.0003704256678092587
+                ],
+                [
+                  "tailFan",
+                  0.00000449760702690812
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 393,
+              "restPx": [
+                822,
+                880
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-shin",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 570,
+              "restPx": [
+                783,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 577,
+              "restPx": [
+                783,
+                841
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 592,
+              "restPx": [
+                802,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 593,
+              "restPx": [
+                792.5,
+                812
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 594,
+              "restPx": [
+                802,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 595,
+              "restPx": [
+                792.5,
+                831.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 650,
+              "restPx": [
+                802,
+                841
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 653,
+              "restPx": [
+                792.5,
+                851
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 654,
+              "restPx": [
+                802,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 656,
+              "restPx": [
+                822,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 684,
+              "restPx": [
+                812,
+                870.5
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            }
+          ]
+        },
+        {
+          "triangle": 1166,
+          "indices": [
+            660,
+            662,
+            649
+          ],
+          "parts": [
+            "far-thigh"
+          ],
+          "ratio": -0.008095424982629985,
+          "vertices": [
+            {
+              "index": 660,
+              "restPx": [
+                880.5,
+                802.5
+              ],
+              "targetPx": [
+                777.2497937679291,
+                912.2192519903183
+              ],
+              "privateFailedPx": [
+                760.0330436903325,
+                884.897245499704
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.7994608534707845
+                ],
+                [
+                  "root",
+                  0.15319203685876764
+                ],
+                [
+                  "chest",
+                  0.023365448218994316
+                ],
+                [
+                  "legFarAnkle",
+                  0.01813416543726957
+                ],
+                [
+                  "legNearKnee",
+                  0.005352549917552266
+                ],
+                [
+                  "legFarFoot",
+                  0.00027363575381163816
+                ],
+                [
+                  "legNearAnkle",
+                  0.00022110419799563808
+                ],
+                [
+                  "wingNearRoot",
+                  2.0614482422925468e-7
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 662,
+              "restPx": [
+                900,
+                822
+              ],
+              "targetPx": [
+                786.9279001951218,
+                935.5453548431396
+              ],
+              "privateFailedPx": [
+                762.9371378729589,
+                888.4237032674706
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.7278450971337783
+                ],
+                [
+                  "root",
+                  0.2181527533658014
+                ],
+                [
+                  "legFarAnkle",
+                  0.03523310563057692
+                ],
+                [
+                  "chest",
+                  0.01428288844544712
+                ],
+                [
+                  "legNearKnee",
+                  0.0036438620767567636
+                ],
+                [
+                  "legFarFoot",
+                  0.0006539760114953259
+                ],
+                [
+                  "legNearAnkle",
+                  0.00018826222634072998
+                ],
+                [
+                  "tailFan",
+                  5.510980334397117e-8
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 649,
+              "restPx": [
+                861,
+                822
+              ],
+              "targetPx": [
+                750.4290994405746,
+                917.0137202739716
+              ],
+              "privateFailedPx": [
+                757.949915547023,
+                880.2477288957674
+              ],
+              "pinned": false,
+              "weights": [
+                [
+                  "legFarKnee",
+                  0.7581089528027711
+                ],
+                [
+                  "root",
+                  0.16909408234164294
+                ],
+                [
+                  "legFarAnkle",
+                  0.04815814742177612
+                ],
+                [
+                  "legNearKnee",
+                  0.01555365188505337
+                ],
+                [
+                  "chest",
+                  0.007162952486778012
+                ],
+                [
+                  "legNearAnkle",
+                  0.0009910856734078744
+                ],
+                [
+                  "legFarFoot",
+                  0.0009305497148842345
+                ],
+                [
+                  "tailFan",
+                  5.776736863787379e-7
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            }
+          ],
+          "nearbyPins": [
+            {
+              "index": 594,
+              "restPx": [
+                802,
+                822
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "near-thigh",
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 616,
+              "restPx": [
+                851,
+                773
+              ],
+              "weights": [
+                [
+                  "legFarKnee",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh"
+              ]
+            },
+            {
+              "index": 640,
+              "restPx": [
+                920,
+                783
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "chest",
+                "body"
+              ]
+            },
+            {
+              "index": 656,
+              "restPx": [
+                822,
+                861
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 664,
+              "restPx": [
+                920,
+                802
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            },
+            {
+              "index": 676,
+              "restPx": [
+                920,
+                841
+              ],
+              "weights": [
+                [
+                  "root",
+                  1
+                ]
+              ],
+              "parts": [
+                "far-thigh",
+                "body"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-03/record.json",
+      "sha256": "5d4bbc544154dbcfb640a5831165cad69934ac39f249d58eec7fb82587e3eb22",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-03/binding.json",
+      "sha256": "5fa27e3f320b07bfc559890da46bb5a69a3fa9be4161c96dc66065213f5da0b8",
+      "unchanged": true
+    },
+    {
+      "file": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/static-03.json",
+      "sha256": "843b32d160e3c57182b15b959b2faed3670c939d2b176e4f87e2acd784ee8910",
+      "unchanged": true
+    }
+  ]
+}

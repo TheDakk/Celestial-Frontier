@@ -1,0 +1,22 @@
+✔ retained five-pixel tie keeps exact runtime winner and independent static observation (1.214417ms)
+✔ truly identical distance retains the first vertex rather than last-on-equality (0.151917ms)
+✔ valid nonsquare and fractional geometry keeps runtime operation order bit-for-bit (0.495ms)
+✔ empty surfaces remain empty and invalid numeric geometry cannot certify a support (0.155542ms)
+✔ ordinary split locks the actual observer support, with no coordinate or source-UV changes (4.049708ms)
+✔ existing-field refresh pins the missing contributing support and preserves all other source state (0.814334ms)
+✔ projected independent surfaces retain exact source coordinates and cannot inherit opposing paint (6.791541ms)
+✔ observed attachments weld all source-supported faces, not independent overlaps (0.612125ms)
+✔ corrupted binding/probe, missing source face and conflicting fixed owners refuse (0.932958ms)
+✔ flat source ownership boundaries weld only when explicitly requested (0.809708ms)
+✔ mutated source recipe and unknown anatomy refuse before compilation (0.295334ms)
+✔ contact endpoint locks survive diffusion; unpinned shared paint retains mixed influence (0.965667ms)
+✔ existing-field contact refresh preserves every non-contact weight, pin and triangle (0.76175ms)
+✔ contact conflict repair releases only neighbouring non-contact pins without changing weights (0.4975ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 141.024208

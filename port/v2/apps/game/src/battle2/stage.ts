@@ -38,12 +38,28 @@ export interface BattleStageEffects {
 }
 /** Sound cues synced to the turn beats (B1): the sink receives each admitted cue once, on its beat, from the stage's own clock. */
 export interface BattleStageCues { readonly sink: CueSink; readonly phone?: boolean; }
+/** Optional diagnostic timing. Shared sampling covers both producers; rig timings cover
+ * each applyPose (performance/contact/publication). Consumers sum every event in a frame,
+ * including play()'s implicit tick, before computing any per-frame percentile. */
+export interface StageCpuSample {
+  readonly kind: 'tick' | 'rest';
+  readonly sampleTurnMs: number;
+  readonly rigMs: Readonly<Record<Side, number>>;
+}
+export interface BattleStageTiming {
+  readonly now: () => number;
+  readonly sample: (sample: StageCpuSample) => void;
+}
 export interface BattleStageOptions {
   readonly factory: BattleStageFactory; readonly clock: () => number; readonly layout: ArenaLayout;
   readonly plates: Readonly<Record<PlateId, EffectTextureLike>>;
   readonly rigs: Readonly<Record<Side, BattleRigV1>>; readonly masses: Readonly<Record<Side, number>>;
   readonly worldLife?: WorldLifeLayerLike | null; readonly effects?: BattleStageEffects | null; readonly reducedMotion?: boolean;
   readonly cues?: BattleStageCues | null;
+  /** Explicit, measured presentation scales. Placement, width and cadence all use
+   * these same values; absent preserves the mass/guardian rule exactly. */
+  readonly presentationScales?: Readonly<Record<Side, number>>;
+  readonly timing?: BattleStageTiming;
 }
 export interface StageFrame { readonly sample: StageSample; readonly done: boolean; readonly label: string; readonly cuesFired: number; }
 export const HUD = Object.freeze({ barX: 16, barY: 12, barH: 8, cursorH: 14 });
@@ -60,6 +76,10 @@ export class BattleStage {
   #cues: TurnCuePlayer | null = null;
 
   constructor(o: BattleStageOptions) {
+    if (o.presentationScales && ['left', 'right'].some(side => {
+      const value = o.presentationScales![side as Side];
+      return !Number.isFinite(value) || value <= 0;
+    })) throw new TypeError('battle2 stage: presentation scales must be finite and positive for both sides');
     this.#o = o;
     const f = o.factory, L = o.layout, w = L.frame.width;
     this.root = f.container();
@@ -72,7 +92,7 @@ export class BattleStage {
       r.x = -rig.foot.x * rig.cutout.width; r.y = -rig.foot.y * rig.cutout.height; h.addChild(r as object);
       this.root.addChild(h); return h;
     };
-    this.#scales = { left: combatantScale(o.rigs.left.bounds, o.rigs.left.cutout.height, o.masses.left, L.frame.height, o.rigs.left.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(o.rigs.left.tallestHeight !== undefined ? { tallestHeight: o.rigs.left.tallestHeight } : {}) } : {}).scale, right: combatantScale(o.rigs.right.bounds, o.rigs.right.cutout.height, o.masses.right, L.frame.height, o.rigs.right.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(o.rigs.right.tallestHeight !== undefined ? { tallestHeight: o.rigs.right.tallestHeight } : {}) } : {}).scale };
+    this.#scales = o.presentationScales ? { ...o.presentationScales } : { left: combatantScale(o.rigs.left.bounds, o.rigs.left.cutout.height, o.masses.left, L.frame.height, o.rigs.left.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(o.rigs.left.tallestHeight !== undefined ? { tallestHeight: o.rigs.left.tallestHeight } : {}) } : {}).scale, right: combatantScale(o.rigs.right.bounds, o.rigs.right.cutout.height, o.masses.right, L.frame.height, o.rigs.right.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(o.rigs.right.tallestHeight !== undefined ? { tallestHeight: o.rigs.right.tallestHeight } : {}) } : {}).scale };
     this.#holders = { left: holder('left'), right: holder('right') };
     this.#fx = f.container(); this.root.addChild(this.#fx);
     this.root.addChild(this.#plates.near);
@@ -81,7 +101,7 @@ export class BattleStage {
     this.root.addChild(this.#bar); this.root.addChild(this.#cursor); this.root.addChild(this.#number);
     this.label = `battle2 stage · left: ${o.rigs.left.label} · right: ${o.rigs.right.label}`;
     this.#place('left', 0, 1); this.#place('right', 0, -1);
-    o.rigs.left.applyPose({}); o.rigs.right.applyPose({});
+    this.#applyRest();
   }
 
   get plan(): TurnPlan | null { return this.#plan; }
@@ -102,7 +122,7 @@ export class BattleStage {
     this.#clearEffect();
     this.#plan = plan; this.#startMs = this.#o.clock();
     // Reduced motion (E1 §1.6): both rigs take the rest pose once per turn here and are never updated per tick.
-    if (plan.reducedMotion) { this.#o.rigs.left.applyPose({}); this.#o.rigs.right.applyPose({}); }
+    if (plan.reducedMotion) this.#applyRest();
     const cues = this.#o.cues;
     if (cues) this.#cues = new TurnCuePlayer(buildTurnCuePlan(plan, cues.phone !== undefined ? { phone: cues.phone } : {}), cues.sink, () => this.#o.clock() - this.#startMs);
     const fx = this.#o.effects;
@@ -125,14 +145,30 @@ export class BattleStage {
     this.#assertLive();
     const plan = this.#plan;
     if (!plan) return null;
-    const ms = this.#o.clock() - this.#startMs, s = sampleTurn(plan, ms), L = this.#o.layout, w = L.frame.width, h = L.frame.height;
+    const ms = this.#o.clock() - this.#startMs, timing = this.#o.timing;
+    const sampleStart = timing?.now();
+    const s = sampleTurn(plan, ms), sampleTurnMs = timing ? timing.now() - sampleStart! : 0;
+    const L = this.#o.layout, w = L.frame.width, h = L.frame.height;
+    const rigMs = timing ? { left: 0, right: 0 } : null;
     this.root.x = s.camera.shake.x; this.root.y = s.camera.shake.y;
     const off = parallaxOffset(s.runUpX * w);
     for (const id of PLATE_ORDER) this.#plates[id].x = L.plates.find((p) => p.id === id)!.x + off[id];
     this.#place(plan.attacker.side, s.attacker.displacementX, s.attacker.facing);
     this.#place(plan.target.side, s.target.displacementX, s.target.facing);
     // Reduced motion: both rigs stay at the rest pose applied at construction / the previous turn's end (E1 §1.6); no per-tick update.
-    if (!plan.reducedMotion) { this.#o.rigs[plan.attacker.side].applyPose(s.attacker.pose, s.attacker.context); this.#o.rigs[plan.target.side].applyPose(s.target.pose, s.target.context); }
+    if (!plan.reducedMotion) {
+      if (timing && rigMs) {
+        const start = timing.now();
+        this.#o.rigs[plan.attacker.side].applyPose(s.attacker.pose, s.attacker.context);
+        const middle = timing.now();
+        this.#o.rigs[plan.target.side].applyPose(s.target.pose, s.target.context);
+        const end = timing.now();
+        rigMs[plan.attacker.side] = middle - start; rigMs[plan.target.side] = end - middle;
+      } else {
+        this.#o.rigs[plan.attacker.side].applyPose(s.attacker.pose, s.attacker.context);
+        this.#o.rigs[plan.target.side].applyPose(s.target.pose, s.target.context);
+      }
+    }
     if (this.#player && plan.effect && ms >= plan.effect.startMs) {
       this.#player.tick();
       s.effect?.tracks.forEach((t, i) => { const sp = this.#player!.spriteForTrack(i); if (sp) sp.alpha = t.transform.alpha; });
@@ -146,6 +182,7 @@ export class BattleStage {
     if (this.#cursor.visible) { const st = L.stands[s.cursor.side]; this.#cursor.clear(); this.#cursor.rect(st.x * w - 6, st.y * h - h * 0.5, 12, HUD.cursorH); this.#cursor.fill({ color: 0xffd166, alpha: 1 }); }
     this.#o.worldLife?.update();
     const cues = this.#cues?.tick();
+    if (timing && rigMs) timing.sample(Object.freeze({ kind: 'tick', sampleTurnMs, rigMs: Object.freeze(rigMs) }));
     return Object.freeze({ sample: s, done: ms >= plan.beats.end, label: this.label, cuesFired: cues?.fired ?? 0 });
   }
 
@@ -167,6 +204,14 @@ export class BattleStage {
   #place(side: Side, displacementX: number, facing: 1 | -1): void {
     const L = this.#o.layout, st = L.stands[side], h = this.#holders[side], k = this.#scales[side];
     h.x = (st.x + displacementX) * L.frame.width; h.y = st.y * L.frame.height; h.scale.set(facing * k, k);
+  }
+  #applyRest(): void {
+    const timing = this.#o.timing;
+    if (!timing) { this.#o.rigs.left.applyPose({}); this.#o.rigs.right.applyPose({}); return; }
+    const start = timing.now(); this.#o.rigs.left.applyPose({});
+    const middle = timing.now(); this.#o.rigs.right.applyPose({});
+    const end = timing.now();
+    timing.sample(Object.freeze({ kind: 'rest', sampleTurnMs: 0, rigMs: Object.freeze({ left: middle - start, right: end - middle }) }));
   }
   #clearEffect(): void {
     if (this.#player) { this.#player.dispose(); for (const n of this.#fxNodes) this.#fx.removeChild(n); this.#fxNodes = []; this.#player = null; }

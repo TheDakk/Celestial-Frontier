@@ -1,0 +1,16 @@
+{
+  "runId": "20260923-tree-frog-paint-03",
+  "tool": "image_gen.imagegen",
+  "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-d12b671c-e2fe-4bc3-9d75-60f49f37d8ee.png",
+  "width": 1254,
+  "height": 1254,
+  "channels": 4,
+  "sha256": "bf0956ef30a7072f0ad5cbdf484d6c7291ddc22eb596a7e736f87d2e20549185",
+  "alphaOver127Bounds": [
+    88,
+    272,
+    1203,
+    998
+  ],
+  "alphaOver127Pixels": 362493
+}

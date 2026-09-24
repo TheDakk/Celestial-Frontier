@@ -1,0 +1,35 @@
+{
+  "schema": "cf.qualitative-art-review/v1",
+  "status": "REJECTED_CORRECTIVE_POSE_NOT_ACHIEVED",
+  "reviewer": "Codex triage_anatomy independent visual review",
+  "scope": "Visual inspection of the actual corrected master against its retained prompt; no new landmark fit, numerical anatomy measurement, static run or native run.",
+  "inputs": [
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/master.png",
+      "sha256": "67d17f2769afbcc1752ce2fb431dcb6fd9944f9e3a008a2b75e92b0a2d5293b3"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/06-hopper/candidate-03/prompt.txt",
+      "sha256": "045756be416b58af138bd5959ec6cc225897b932ee7bc0d262468396846ab98c"
+    }
+  ],
+  "findings": [
+    {
+      "requirement": "Shallower hind crouch with hocks below hips and no severely crossed tight Z.",
+      "observed": "The near hind limb retains a pronounced high rear hock with a long diagonal lower segment crossing in front of the tightly folded upper segment. The hock remains high relative to the visible hind limb emergence from the flank. The requested open, lower-hock configuration is not achieved.",
+      "verdict": "FAIL"
+    },
+    {
+      "requirement": "Both forearms visibly bent with relaxed elbows rather than nearly straight load-bearing columns.",
+      "observed": "The far forelimb remains visually close to a straight descending support chain; the requested visibly relaxed elbow bend is not established.",
+      "verdict": "FAIL"
+    },
+    {
+      "requirement": "Species and diagnostic toe-pad appearance retained.",
+      "observed": "Green red-eyed frog appearance and orange adhesive toe pads remain visibly present.",
+      "verdict": "OBSERVED"
+    }
+  ],
+  "uncertainty": "These are qualitative paint findings. No original-master landmark coordinates, lengths or reach margins are reused as measurements of this corrected image. This review does not predict a particular solver refusal or numerical outcome.",
+  "disposition": "Retain this rejected corrected master and exact prompt. The single permitted corrected repaint has been used; stop this item under the existing second-paint-failure rule. No third repaint or rig attempt is authorized by this review."
+}

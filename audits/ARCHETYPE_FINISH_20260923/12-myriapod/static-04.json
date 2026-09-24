@@ -1,0 +1,2932 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "RED",
+  "sourceHead": "1285ba2ecc0548e0a299e2b855168ff9616c8496",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [
+    {
+      "id": "idle",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.000439844705909553,
+      "maxGapPx": 0.00005285214803266112,
+      "maxEndpointError": 4.0029660424867215e-16,
+      "exactRest": true
+    },
+    {
+      "id": "alert",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.000470989631913742,
+      "maxGapPx": 0.00005285214803266112,
+      "maxEndpointError": 3.510833468576701e-16,
+      "exactRest": true
+    },
+    {
+      "id": "approach:crawl",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0006494099699367564,
+      "maxGapPx": 0.00005285214803266112,
+      "maxEndpointError": 3.510833468576701e-16,
+      "exactRest": true
+    },
+    {
+      "id": "melee:mandible",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00003759101968472342,
+      "maxGapPx": 0.00005285214803266112,
+      "maxEndpointError": 5.551115123125783e-17,
+      "exactRest": true
+    },
+    {
+      "id": "melee:body",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.00003759101968472342,
+      "maxGapPx": 0.00005285214803266112,
+      "maxEndpointError": 5.551115123125783e-17,
+      "exactRest": true
+    },
+    {
+      "id": "cast",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.000439844705909553,
+      "maxGapPx": 0.00005285214803266112,
+      "maxEndpointError": 4.0029660424867215e-16,
+      "exactRest": true
+    },
+    {
+      "id": "hit",
+      "samples": 7,
+      "attemptedSamples": 8,
+      "status": "RED",
+      "maxPaintDriftPx": 0.0007938154670376388,
+      "maxGapPx": 0.00005285214803266112,
+      "maxEndpointError": 2.2887833992611187e-16,
+      "exactRest": true,
+      "firstRefusal": {
+        "sampleIndex": 7,
+        "sampleNumber": 8,
+        "ms": 26.25,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 20\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:25356:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:25833:5)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:15646:9)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:26000:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:26117:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+        "contact": {
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.019090876033057848,
+              "dy": 0.000841
+            },
+            "head": {
+              "rotation": -0.132049,
+              "dx": 0,
+              "dy": 0
+            },
+            "mandible": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "antennaFar": {
+              "rotation": 0.146721,
+              "dx": 0,
+              "dy": 0
+            },
+            "antennaNear": {
+              "rotation": 0.146721,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg0FarKnee": {
+              "rotation": 0.24620635454604003
+            },
+            "leg0FarFoot": {
+              "rotation": -0.2317660377530624
+            },
+            "leg0NearKnee": {
+              "rotation": 0.05530892911788965
+            },
+            "leg0NearFoot": {
+              "rotation": 0.1831273104090696
+            },
+            "leg1FarKnee": {
+              "rotation": -0.4822088895990384
+            },
+            "leg1FarFoot": {
+              "rotation": 0.4409091191677818
+            },
+            "leg1NearKnee": {
+              "rotation": -0.05735508359706075
+            },
+            "leg1NearFoot": {
+              "rotation": -0.01793384548878841
+            },
+            "leg2FarKnee": {
+              "rotation": 0.18056037473704856
+            },
+            "leg2FarFoot": {
+              "rotation": -0.1373759815871497
+            },
+            "leg2NearKnee": {
+              "rotation": 0.016827627962748386
+            },
+            "leg2NearFoot": {
+              "rotation": 0.2552364804787321
+            },
+            "leg3FarKnee": {
+              "rotation": -0.41163876323752613
+            },
+            "leg3FarFoot": {
+              "rotation": 0.3998655426981896
+            },
+            "leg3NearKnee": {
+              "rotation": -0.08243616468298964
+            },
+            "leg3NearFoot": {
+              "rotation": 0.013649042394184865
+            },
+            "leg4FarKnee": {
+              "rotation": 0.1612065080339677
+            },
+            "leg4FarFoot": {
+              "rotation": -0.12156706777698464
+            },
+            "leg4NearKnee": {
+              "rotation": -0.1907647481235032
+            },
+            "leg4NearFoot": {
+              "rotation": 0.3191843415901684
+            },
+            "leg5FarKnee": {
+              "rotation": -0.41329741934455855
+            },
+            "leg5FarFoot": {
+              "rotation": 0.3899920470660207
+            },
+            "leg5NearKnee": {
+              "rotation": -0.0882885468320953
+            },
+            "leg5NearFoot": {
+              "rotation": 0.027200537378192495
+            },
+            "leg6FarKnee": {
+              "rotation": 0.13941665359927868
+            },
+            "leg6FarFoot": {
+              "rotation": -0.08679383020881293
+            },
+            "leg6NearKnee": {
+              "rotation": 0.025422107592458443
+            },
+            "leg6NearFoot": {
+              "rotation": 0.21079278081138045
+            },
+            "leg7FarKnee": {
+              "rotation": -0.40339258548363066
+            },
+            "leg7FarFoot": {
+              "rotation": 0.3804912136351988
+            },
+            "leg7NearKnee": {
+              "rotation": -0.0787628218878128
+            },
+            "leg7NearFoot": {
+              "rotation": 0.0045808361370950346
+            },
+            "leg8FarKnee": {
+              "rotation": 0.13222915544763136
+            },
+            "leg8FarFoot": {
+              "rotation": -0.085635985888313
+            },
+            "leg8NearKnee": {
+              "rotation": -0.16686153328777753
+            },
+            "leg8NearFoot": {
+              "rotation": 0.28097530434860657
+            },
+            "leg9FarKnee": {
+              "rotation": -0.40350537590241453
+            },
+            "leg9FarFoot": {
+              "rotation": 0.37230596663198146
+            },
+            "leg9NearKnee": {
+              "rotation": -0.08738099730424043
+            },
+            "leg9NearFoot": {
+              "rotation": 0.020826832025160225
+            },
+            "leg10FarKnee": {
+              "rotation": 0.1422669271972981
+            },
+            "leg10FarFoot": {
+              "rotation": -0.08619460611623112
+            },
+            "leg10NearKnee": {
+              "rotation": -0.19993142188438717
+            },
+            "leg10NearFoot": {
+              "rotation": 0.3254458018468659
+            },
+            "leg11FarKnee": {
+              "rotation": -0.40778549488084176
+            },
+            "leg11FarFoot": {
+              "rotation": 0.4004678238438845
+            },
+            "leg11NearKnee": {
+              "rotation": -0.11858735585073155
+            },
+            "leg11NearFoot": {
+              "rotation": 0.07222256919477733
+            },
+            "leg12FarKnee": {
+              "rotation": 0.16149102505854465
+            },
+            "leg12FarFoot": {
+              "rotation": -0.1220175300937957
+            },
+            "leg12NearKnee": {
+              "rotation": -0.2106103176287708
+            },
+            "leg12NearFoot": {
+              "rotation": 0.3393212876091658
+            },
+            "leg13FarKnee": {
+              "rotation": -0.46120136815712365
+            },
+            "leg13FarFoot": {
+              "rotation": 0.4465904938980701
+            },
+            "leg13NearKnee": {
+              "rotation": -0.11128964019580992
+            },
+            "leg13NearFoot": {
+              "rotation": 0.06839630105915306
+            },
+            "ultimateFar": {
+              "rotation": -0.058688,
+              "dx": 0,
+              "dy": 0
+            },
+            "ultimateNear": {
+              "rotation": 0.058688,
+              "dx": 0,
+              "dy": 0
+            }
+          },
+          "contacts": [
+            {
+              "joint": "leg0FarFoot",
+              "target": {
+                "x": 0.8429027113237639,
+                "y": 0.4449760765550239
+              },
+              "endpointTarget": {
+                "x": 0.8429629647377053,
+                "y": 0.44493041690564117
+              },
+              "paintedTarget": {
+                "x": 0.8460925039872407,
+                "y": 0.44912280701754387
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg0NearFoot",
+              "target": {
+                "x": 0.7999397046544866,
+                "y": 0.6489072928549942
+              },
+              "endpointTarget": {
+                "x": 0.799382337480014,
+                "y": 0.6503692869429133
+              },
+              "paintedTarget": {
+                "x": 0.7935601193275328,
+                "y": 0.6473123965232557
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg1FarFoot",
+              "target": {
+                "x": 0.774596527312556,
+                "y": 0.44891608559809293
+              },
+              "endpointTarget": {
+                "x": 0.7747640369918436,
+                "y": 0.4490445065904537
+              },
+              "paintedTarget": {
+                "x": 0.7777863199760329,
+                "y": 0.44492884476874683
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg1NearFoot",
+              "target": {
+                "x": 0.7719298245614035,
+                "y": 0.6547049441786283
+              },
+              "endpointTarget": {
+                "x": 0.7715212428180482,
+                "y": 0.6550206699784825
+              },
+              "paintedTarget": {
+                "x": 0.7759170653907496,
+                "y": 0.6602870813397129
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg2FarFoot",
+              "target": {
+                "x": 0.7440191387559809,
+                "y": 0.43301435406698563
+              },
+              "endpointTarget": {
+                "x": 0.7441966366772297,
+                "y": 0.43277687959188904
+              },
+              "paintedTarget": {
+                "x": 0.7496012759170654,
+                "y": 0.4370015948963317
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg2NearFoot",
+              "target": {
+                "x": 0.705489543163778,
+                "y": 0.642000790650829
+              },
+              "endpointTarget": {
+                "x": 0.7046911909313934,
+                "y": 0.6414550163033415
+              },
+              "paintedTarget": {
+                "x": 0.7070844394955164,
+                "y": 0.6388109979873522
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg3FarFoot",
+              "target": {
+                "x": 0.6727296812621211,
+                "y": 0.4350496880070787
+              },
+              "endpointTarget": {
+                "x": 0.6727763465143716,
+                "y": 0.43500247009483184
+              },
+              "paintedTarget": {
+                "x": 0.668742440432775,
+                "y": 0.4310624471777326
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg3NearFoot",
+              "target": {
+                "x": 0.6754385964912281,
+                "y": 0.6475279106858054
+              },
+              "endpointTarget": {
+                "x": 0.6754461379475435,
+                "y": 0.6477471240304956
+              },
+              "paintedTarget": {
+                "x": 0.6786283891547049,
+                "y": 0.6475279106858054
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg4FarFoot",
+              "target": {
+                "x": 0.6475279106858054,
+                "y": 0.42424242424242425
+              },
+              "endpointTarget": {
+                "x": 0.6473732077990383,
+                "y": 0.42404909248530764
+              },
+              "paintedTarget": {
+                "x": 0.6523125996810208,
+                "y": 0.42025518341307816
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg4NearFoot",
+              "target": {
+                "x": 0.6201351372574868,
+                "y": 0.637545969723759
+              },
+              "endpointTarget": {
+                "x": 0.6207594404567888,
+                "y": 0.637406639289628
+              },
+              "paintedTarget": {
+                "x": 0.6215306715477579,
+                "y": 0.6423306587189743
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg5FarFoot",
+              "target": {
+                "x": 0.5785368435234189,
+                "y": 0.430405930261065
+              },
+              "endpointTarget": {
+                "x": 0.5785934861131365,
+                "y": 0.430479647410397
+              },
+              "paintedTarget": {
+                "x": 0.5817266361868958,
+                "y": 0.4280135857634573
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg5NearFoot",
+              "target": {
+                "x": 0.5773524720893142,
+                "y": 0.6451355661881978
+              },
+              "endpointTarget": {
+                "x": 0.5776932160214965,
+                "y": 0.645125156663838
+              },
+              "paintedTarget": {
+                "x": 0.5773524720893142,
+                "y": 0.6395534290271132
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg6FarFoot",
+              "target": {
+                "x": 0.5478468899521531,
+                "y": 0.4218500797448166
+              },
+              "endpointTarget": {
+                "x": 0.547824262122971,
+                "y": 0.4219124439812909
+              },
+              "paintedTarget": {
+                "x": 0.5466507177033493,
+                "y": 0.42145135566188197
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg6NearFoot",
+              "target": {
+                "x": 0.5102055869064208,
+                "y": 0.63854854047532
+              },
+              "endpointTarget": {
+                "x": 0.5098417561412492,
+                "y": 0.640019512370535
+              },
+              "paintedTarget": {
+                "x": 0.5038260015794671,
+                "y": 0.6377510923094507
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg7FarFoot",
+              "target": {
+                "x": 0.4811136129924199,
+                "y": 0.4345950025328426
+              },
+              "endpointTarget": {
+                "x": 0.48124175214699694,
+                "y": 0.43461181208607963
+              },
+              "paintedTarget": {
+                "x": 0.48191106115828913,
+                "y": 0.42901286537175803
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg7NearFoot",
+              "target": {
+                "x": 0.4784688995215311,
+                "y": 0.6515151515151515
+              },
+              "endpointTarget": {
+                "x": 0.4787578290270698,
+                "y": 0.6513268804601638
+              },
+              "paintedTarget": {
+                "x": 0.47607655502392343,
+                "y": 0.6475279106858054
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg8FarFoot",
+              "target": {
+                "x": 0.45374800637958534,
+                "y": 0.4298245614035088
+              },
+              "endpointTarget": {
+                "x": 0.4535608751711001,
+                "y": 0.42988118548899945
+              },
+              "paintedTarget": {
+                "x": 0.4524393734920051,
+                "y": 0.4258373205741627
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg8NearFoot",
+              "target": {
+                "x": 0.41626880893923196,
+                "y": 0.6474921926636612
+              },
+              "endpointTarget": {
+                "x": 0.4160768309952537,
+                "y": 0.6476634244742924
+              },
+              "paintedTarget": {
+                "x": 0.4146739126074935,
+                "y": 0.6458972963319227
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg9FarFoot",
+              "target": {
+                "x": 0.3830949345013406,
+                "y": 0.4472530043204983
+              },
+              "endpointTarget": {
+                "x": 0.383171961704305,
+                "y": 0.44740122696940526
+              },
+              "paintedTarget": {
+                "x": 0.38787962349655586,
+                "y": 0.44486065982289064
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg9NearFoot",
+              "target": {
+                "x": 0.372408293460925,
+                "y": 0.6602870813397129
+              },
+              "endpointTarget": {
+                "x": 0.37273164407606785,
+                "y": 0.6604355277866369
+              },
+              "paintedTarget": {
+                "x": 0.3748006379585327,
+                "y": 0.6555023923444976
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg10FarFoot",
+              "target": {
+                "x": 0.3532695374800638,
+                "y": 0.4449760765550239
+              },
+              "endpointTarget": {
+                "x": 0.3532434361477681,
+                "y": 0.4451095050556216
+              },
+              "paintedTarget": {
+                "x": 0.3508771929824561,
+                "y": 0.4445773524720893
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg10NearFoot",
+              "target": {
+                "x": 0.31036312072337857,
+                "y": 0.6528419530576167
+              },
+              "endpointTarget": {
+                "x": 0.31062508499779523,
+                "y": 0.6534600789237469
+              },
+              "paintedTarget": {
+                "x": 0.30557843172816324,
+                "y": 0.6552342975552244
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg11FarFoot",
+              "target": {
+                "x": 0.29076690589976195,
+                "y": 0.4477865145274914
+              },
+              "endpointTarget": {
+                "x": 0.2907903514300926,
+                "y": 0.44780978898195
+              },
+              "paintedTarget": {
+                "x": 0.2939566985632388,
+                "y": 0.4445967218640145
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg11NearFoot",
+              "target": {
+                "x": 0.26555023923444976,
+                "y": 0.6570972886762361
+              },
+              "endpointTarget": {
+                "x": 0.2656233027905366,
+                "y": 0.6570586144456702
+              },
+              "paintedTarget": {
+                "x": 0.2647527910685805,
+                "y": 0.6555023923444976
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg12FarFoot",
+              "target": {
+                "x": 0.2631578947368421,
+                "y": 0.43221690590111644
+              },
+              "endpointTarget": {
+                "x": 0.26300191697956915,
+                "y": 0.4321419608468561
+              },
+              "paintedTarget": {
+                "x": 0.2649777123461334,
+                "y": 0.42822966507177035
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg12NearFoot",
+              "target": {
+                "x": 0.21310174198496767,
+                "y": 0.6424341806548661
+              },
+              "endpointTarget": {
+                "x": 0.21349803202491577,
+                "y": 0.6426653168025959
+              },
+              "paintedTarget": {
+                "x": 0.21150684565322925,
+                "y": 0.645623973318343
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg13FarFoot",
+              "target": {
+                "x": 0.19403227327950123,
+                "y": 0.4353924506987118
+              },
+              "endpointTarget": {
+                "x": 0.1940912593241705,
+                "y": 0.4354737656895071
+              },
+              "paintedTarget": {
+                "x": 0.19961441044058575,
+                "y": 0.4314052098693657
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg13NearFoot",
+              "target": {
+                "x": 0.17065390749601275,
+                "y": 0.6499202551834131
+              },
+              "endpointTarget": {
+                "x": 0.1704829290086586,
+                "y": 0.6499239227690411
+              },
+              "paintedTarget": {
+                "x": 0.17065390749601275,
+                "y": 0.6539074960127592
+              },
+              "stance": true
+            }
+          ],
+          "maxError": 2.220446049250313e-16,
+          "compression": 0,
+          "maxPaintTargetErrorPx": 0.0009280465822131946
+        },
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": -0.019090876033057848,
+            "dy": 0.000841
+          },
+          "head": {
+            "rotation": -0.132049,
+            "dx": 0,
+            "dy": 0
+          },
+          "mandible": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "antennaFar": {
+            "rotation": 0.146721,
+            "dx": 0,
+            "dy": 0
+          },
+          "antennaNear": {
+            "rotation": 0.146721,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg0FarKnee": {
+            "rotation": 0.24620635454604003
+          },
+          "leg0FarFoot": {
+            "rotation": -0.2317660377530624
+          },
+          "leg0NearKnee": {
+            "rotation": 0.05530892911788965
+          },
+          "leg0NearFoot": {
+            "rotation": 0.1831273104090696
+          },
+          "leg1FarKnee": {
+            "rotation": -0.4822088895990384
+          },
+          "leg1FarFoot": {
+            "rotation": 0.4409091191677818
+          },
+          "leg1NearKnee": {
+            "rotation": -0.05735508359706075
+          },
+          "leg1NearFoot": {
+            "rotation": -0.01793384548878841
+          },
+          "leg2FarKnee": {
+            "rotation": 0.18056037473704856
+          },
+          "leg2FarFoot": {
+            "rotation": -0.1373759815871497
+          },
+          "leg2NearKnee": {
+            "rotation": 0.016827627962748386
+          },
+          "leg2NearFoot": {
+            "rotation": 0.2552364804787321
+          },
+          "leg3FarKnee": {
+            "rotation": -0.41163876323752613
+          },
+          "leg3FarFoot": {
+            "rotation": 0.3998655426981896
+          },
+          "leg3NearKnee": {
+            "rotation": -0.08243616468298964
+          },
+          "leg3NearFoot": {
+            "rotation": 0.013649042394184865
+          },
+          "leg4FarKnee": {
+            "rotation": 0.1612065080339677
+          },
+          "leg4FarFoot": {
+            "rotation": -0.12156706777698464
+          },
+          "leg4NearKnee": {
+            "rotation": -0.1907647481235032
+          },
+          "leg4NearFoot": {
+            "rotation": 0.3191843415901684
+          },
+          "leg5FarKnee": {
+            "rotation": -0.41329741934455855
+          },
+          "leg5FarFoot": {
+            "rotation": 0.3899920470660207
+          },
+          "leg5NearKnee": {
+            "rotation": -0.0882885468320953
+          },
+          "leg5NearFoot": {
+            "rotation": 0.027200537378192495
+          },
+          "leg6FarKnee": {
+            "rotation": 0.13941665359927868
+          },
+          "leg6FarFoot": {
+            "rotation": -0.08679383020881293
+          },
+          "leg6NearKnee": {
+            "rotation": 0.025422107592458443
+          },
+          "leg6NearFoot": {
+            "rotation": 0.21079278081138045
+          },
+          "leg7FarKnee": {
+            "rotation": -0.40339258548363066
+          },
+          "leg7FarFoot": {
+            "rotation": 0.3804912136351988
+          },
+          "leg7NearKnee": {
+            "rotation": -0.0787628218878128
+          },
+          "leg7NearFoot": {
+            "rotation": 0.0045808361370950346
+          },
+          "leg8FarKnee": {
+            "rotation": 0.13222915544763136
+          },
+          "leg8FarFoot": {
+            "rotation": -0.085635985888313
+          },
+          "leg8NearKnee": {
+            "rotation": -0.16686153328777753
+          },
+          "leg8NearFoot": {
+            "rotation": 0.28097530434860657
+          },
+          "leg9FarKnee": {
+            "rotation": -0.40350537590241453
+          },
+          "leg9FarFoot": {
+            "rotation": 0.37230596663198146
+          },
+          "leg9NearKnee": {
+            "rotation": -0.08738099730424043
+          },
+          "leg9NearFoot": {
+            "rotation": 0.020826832025160225
+          },
+          "leg10FarKnee": {
+            "rotation": 0.1422669271972981
+          },
+          "leg10FarFoot": {
+            "rotation": -0.08619460611623112
+          },
+          "leg10NearKnee": {
+            "rotation": -0.19993142188438717
+          },
+          "leg10NearFoot": {
+            "rotation": 0.3254458018468659
+          },
+          "leg11FarKnee": {
+            "rotation": -0.40778549488084176
+          },
+          "leg11FarFoot": {
+            "rotation": 0.4004678238438845
+          },
+          "leg11NearKnee": {
+            "rotation": -0.11858735585073155
+          },
+          "leg11NearFoot": {
+            "rotation": 0.07222256919477733
+          },
+          "leg12FarKnee": {
+            "rotation": 0.16149102505854465
+          },
+          "leg12FarFoot": {
+            "rotation": -0.1220175300937957
+          },
+          "leg12NearKnee": {
+            "rotation": -0.2106103176287708
+          },
+          "leg12NearFoot": {
+            "rotation": 0.3393212876091658
+          },
+          "leg13FarKnee": {
+            "rotation": -0.46120136815712365
+          },
+          "leg13FarFoot": {
+            "rotation": 0.4465904938980701
+          },
+          "leg13NearKnee": {
+            "rotation": -0.11128964019580992
+          },
+          "leg13NearFoot": {
+            "rotation": 0.06839630105915306
+          },
+          "ultimateFar": {
+            "rotation": -0.058688,
+            "dx": 0,
+            "dy": 0
+          },
+          "ultimateNear": {
+            "rotation": 0.058688,
+            "dx": 0,
+            "dy": 0
+          }
+        },
+        "arapStats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 24.12137791283971,
+          "rmsTargetErrorPx": 1.2753410366226017,
+          "maximumProjectionPx": 24.367171967379388,
+          "flippedTriangles": 20,
+          "minimumAreaRatio": -0.04519582559501848,
+          "orientationPasses": 128
+        }
+      }
+    },
+    {
+      "id": "dodge",
+      "samples": 10,
+      "attemptedSamples": 11,
+      "status": "RED",
+      "maxPaintDriftPx": 0.001167536331199088,
+      "maxGapPx": 0.00005285214803266112,
+      "maxEndpointError": 2.482534153247273e-16,
+      "exactRest": true,
+      "firstRefusal": {
+        "sampleIndex": 10,
+        "sampleNumber": 11,
+        "ms": 23.333333333333332,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 7\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:25356:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:25833:5)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:15646:9)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:26000:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:26117:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+        "contact": {
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.02333370370370371,
+              "dy": 0
+            },
+            "head": {
+              "rotation": -0.030637,
+              "dx": 0,
+              "dy": 0
+            },
+            "mandible": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "antennaFar": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "antennaNear": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "leg0FarKnee": {
+              "rotation": 0.2944739811762265
+            },
+            "leg0FarFoot": {
+              "rotation": -0.27277698622252805
+            },
+            "leg0NearKnee": {
+              "rotation": 0.053035886068070526
+            },
+            "leg0NearFoot": {
+              "rotation": 0.15811987361847848
+            },
+            "leg1FarKnee": {
+              "rotation": -0.4436621742001736
+            },
+            "leg1FarFoot": {
+              "rotation": 0.41085441442032133
+            },
+            "leg1NearKnee": {
+              "rotation": -0.06236166431589753
+            },
+            "leg1NearFoot": {
+              "rotation": -0.03471747832408222
+            },
+            "leg2FarKnee": {
+              "rotation": 0.21317716573165701
+            },
+            "leg2FarFoot": {
+              "rotation": -0.15592137325886068
+            },
+            "leg2NearKnee": {
+              "rotation": 0.018291812130027514
+            },
+            "leg2NearFoot": {
+              "rotation": 0.22361951610602593
+            },
+            "leg3FarKnee": {
+              "rotation": -0.3815680649446713
+            },
+            "leg3FarFoot": {
+              "rotation": 0.3761122594457244
+            },
+            "leg3NearKnee": {
+              "rotation": -0.09112715653354231
+            },
+            "leg3NearFoot": {
+              "rotation": -0.000047874424631721986
+            },
+            "leg4FarKnee": {
+              "rotation": 0.18855892490739956
+            },
+            "leg4FarFoot": {
+              "rotation": -0.13525286178637874
+            },
+            "leg4NearKnee": {
+              "rotation": -0.16249268426526953
+            },
+            "leg4NearFoot": {
+              "rotation": 0.2779340479383897
+            },
+            "leg5FarKnee": {
+              "rotation": -0.3810048952592897
+            },
+            "leg5FarFoot": {
+              "rotation": 0.3643901814883392
+            },
+            "leg5NearKnee": {
+              "rotation": -0.10011809865236643
+            },
+            "leg5NearFoot": {
+              "rotation": 0.019233470621603282
+            },
+            "leg6FarKnee": {
+              "rotation": 0.16122320783880933
+            },
+            "leg6FarFoot": {
+              "rotation": -0.09105364875699935
+            },
+            "leg6NearKnee": {
+              "rotation": 0.02618158882977451
+            },
+            "leg6NearFoot": {
+              "rotation": 0.18381534627916007
+            },
+            "leg7FarKnee": {
+              "rotation": -0.37222758093677966
+            },
+            "leg7FarFoot": {
+              "rotation": 0.3557531171860828
+            },
+            "leg7NearKnee": {
+              "rotation": -0.08910993617567331
+            },
+            "leg7NearFoot": {
+              "rotation": -0.00639328233114811
+            },
+            "leg8FarKnee": {
+              "rotation": 0.1527912946472027
+            },
+            "leg8FarFoot": {
+              "rotation": -0.09061073010329765
+            },
+            "leg8NearKnee": {
+              "rotation": -0.14089742659625015
+            },
+            "leg8NearFoot": {
+              "rotation": 0.24374762962675597
+            },
+            "leg9FarKnee": {
+              "rotation": -0.37156240747436486
+            },
+            "leg9FarFoot": {
+              "rotation": 0.34746017148803093
+            },
+            "leg9NearKnee": {
+              "rotation": -0.09933593823924416
+            },
+            "leg9NearFoot": {
+              "rotation": 0.011934693321528867
+            },
+            "leg10FarKnee": {
+              "rotation": 0.16554438560937806
+            },
+            "leg10FarFoot": {
+              "rotation": -0.09067251023179299
+            },
+            "leg10NearKnee": {
+              "rotation": -0.16981802189614226
+            },
+            "leg10NearFoot": {
+              "rotation": 0.2820963675297976
+            },
+            "leg11FarKnee": {
+              "rotation": -0.3760419628430496
+            },
+            "leg11FarFoot": {
+              "rotation": 0.3741390875751004
+            },
+            "leg11NearKnee": {
+              "rotation": -0.13513595474495577
+            },
+            "leg11NearFoot": {
+              "rotation": 0.07186743284911068
+            },
+            "leg12FarKnee": {
+              "rotation": 0.18894343026088717
+            },
+            "leg12FarFoot": {
+              "rotation": -0.13586412216764862
+            },
+            "leg12NearKnee": {
+              "rotation": -0.17922015999750968
+            },
+            "leg12NearFoot": {
+              "rotation": 0.2944714813222131
+            },
+            "leg13FarKnee": {
+              "rotation": -0.4251364566884812
+            },
+            "leg13FarFoot": {
+              "rotation": 0.416664344939371
+            },
+            "leg13NearKnee": {
+              "rotation": -0.12564167242535568
+            },
+            "leg13NearFoot": {
+              "rotation": 0.06702425322746873
+            },
+            "ultimateFar": {
+              "rotation": -0.061275,
+              "dx": 0,
+              "dy": 0
+            },
+            "ultimateNear": {
+              "rotation": 0.061275,
+              "dx": 0,
+              "dy": 0
+            }
+          },
+          "contacts": [
+            {
+              "joint": "leg0FarFoot",
+              "target": {
+                "x": 0.8429027113237639,
+                "y": 0.4449760765550239
+              },
+              "endpointTarget": {
+                "x": 0.8429935152753758,
+                "y": 0.4449077839181416
+              },
+              "paintedTarget": {
+                "x": 0.8460925039872407,
+                "y": 0.44912280701754387
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg0NearFoot",
+              "target": {
+                "x": 0.7995062603069244,
+                "y": 0.6498283466974023
+              },
+              "endpointTarget": {
+                "x": 0.799030110209674,
+                "y": 0.651130389395325
+              },
+              "paintedTarget": {
+                "x": 0.7931266749799706,
+                "y": 0.6482334503656638
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg1FarFoot",
+              "target": {
+                "x": 0.7741433838775522,
+                "y": 0.4480245803868473
+              },
+              "endpointTarget": {
+                "x": 0.7742760198235611,
+                "y": 0.4481271634500442
+              },
+              "paintedTarget": {
+                "x": 0.7773331765410291,
+                "y": 0.4440373395575012
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg1NearFoot",
+              "target": {
+                "x": 0.7719298245614035,
+                "y": 0.6547049441786283
+              },
+              "endpointTarget": {
+                "x": 0.7714075393532328,
+                "y": 0.6551176984332796
+              },
+              "paintedTarget": {
+                "x": 0.7759170653907496,
+                "y": 0.6602870813397129
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg2FarFoot",
+              "target": {
+                "x": 0.7440191387559809,
+                "y": 0.43301435406698563
+              },
+              "endpointTarget": {
+                "x": 0.7442566996478827,
+                "y": 0.43270114733598947
+              },
+              "paintedTarget": {
+                "x": 0.7496012759170654,
+                "y": 0.4370015948963317
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg2NearFoot",
+              "target": {
+                "x": 0.7050956038273682,
+                "y": 0.6429811020099658
+              },
+              "endpointTarget": {
+                "x": 0.7043780340684627,
+                "y": 0.6425062627760316
+              },
+              "paintedTarget": {
+                "x": 0.7066905001591066,
+                "y": 0.639791309346489
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg3FarFoot",
+              "target": {
+                "x": 0.6722533125057396,
+                "y": 0.4341930207778995
+              },
+              "endpointTarget": {
+                "x": 0.6722750066666767,
+                "y": 0.4341712079337893
+              },
+              "paintedTarget": {
+                "x": 0.6682660716763935,
+                "y": 0.4302057799485534
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg3NearFoot",
+              "target": {
+                "x": 0.6754385964912281,
+                "y": 0.6475279106858054
+              },
+              "endpointTarget": {
+                "x": 0.6754518416977283,
+                "y": 0.6478182957569549
+              },
+              "paintedTarget": {
+                "x": 0.6786283891547049,
+                "y": 0.6475279106858054
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg4FarFoot",
+              "target": {
+                "x": 0.6475279106858054,
+                "y": 0.42424242424242425
+              },
+              "endpointTarget": {
+                "x": 0.6473216601598355,
+                "y": 0.4239810203536877
+              },
+              "paintedTarget": {
+                "x": 0.6523125996810208,
+                "y": 0.42025518341307816
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg4NearFoot",
+              "target": {
+                "x": 0.6183990598072765,
+                "y": 0.6385788655353232
+              },
+              "endpointTarget": {
+                "x": 0.6189595119805931,
+                "y": 0.6384499608767856
+              },
+              "paintedTarget": {
+                "x": 0.6197945940975476,
+                "y": 0.6433635545305385
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg5FarFoot",
+              "target": {
+                "x": 0.5780710409318582,
+                "y": 0.4295334137846547
+              },
+              "endpointTarget": {
+                "x": 0.578111247096666,
+                "y": 0.42958610391228347
+              },
+              "paintedTarget": {
+                "x": 0.5812608335953351,
+                "y": 0.42714106928704704
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg5NearFoot",
+              "target": {
+                "x": 0.5773524720893142,
+                "y": 0.6451355661881978
+              },
+              "endpointTarget": {
+                "x": 0.5778034293104297,
+                "y": 0.6451173209086908
+              },
+              "paintedTarget": {
+                "x": 0.5773524720893142,
+                "y": 0.6395534290271132
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg6FarFoot",
+              "target": {
+                "x": 0.5478468899521531,
+                "y": 0.4218500797448166
+              },
+              "endpointTarget": {
+                "x": 0.5478159914004912,
+                "y": 0.4219329635458182
+              },
+              "paintedTarget": {
+                "x": 0.5466507177033493,
+                "y": 0.42145135566188197
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg6NearFoot",
+              "target": {
+                "x": 0.5098911128280755,
+                "y": 0.6396480497215533
+              },
+              "endpointTarget": {
+                "x": 0.5095846801043098,
+                "y": 0.6409605423082935
+              },
+              "paintedTarget": {
+                "x": 0.5035115275011218,
+                "y": 0.6388506015556841
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg7FarFoot",
+              "target": {
+                "x": 0.4806629424904335,
+                "y": 0.43369978792207087
+              },
+              "endpointTarget": {
+                "x": 0.48075508022680624,
+                "y": 0.4337121763048062
+              },
+              "paintedTarget": {
+                "x": 0.48146039065630275,
+                "y": 0.4281176507609863
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg7NearFoot",
+              "target": {
+                "x": 0.4784688995215311,
+                "y": 0.6515151515151515
+              },
+              "endpointTarget": {
+                "x": 0.4788382119853496,
+                "y": 0.6512688534084149
+              },
+              "paintedTarget": {
+                "x": 0.47607655502392343,
+                "y": 0.6475279106858054
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg8FarFoot",
+              "target": {
+                "x": 0.45374800637958534,
+                "y": 0.4298245614035088
+              },
+              "endpointTarget": {
+                "x": 0.45349770816825674,
+                "y": 0.42989817481664716
+              },
+              "paintedTarget": {
+                "x": 0.4524393734920051,
+                "y": 0.4258373205741627
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg8NearFoot",
+              "target": {
+                "x": 0.41450119722721845,
+                "y": 0.6485723898679302
+              },
+              "endpointTarget": {
+                "x": 0.4143290227635362,
+                "y": 0.6487277081242181
+              },
+              "paintedTarget": {
+                "x": 0.41290630089547997,
+                "y": 0.6469774935361917
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg9FarFoot",
+              "target": {
+                "x": 0.38263667897529746,
+                "y": 0.4463691672458117
+              },
+              "endpointTarget": {
+                "x": 0.38269578062290377,
+                "y": 0.44648388979882037
+              },
+              "paintedTarget": {
+                "x": 0.38742136797051274,
+                "y": 0.44397682274820405
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg9NearFoot",
+              "target": {
+                "x": 0.372408293460925,
+                "y": 0.6602870813397129
+              },
+              "endpointTarget": {
+                "x": 0.3728348796872927,
+                "y": 0.6604775662505254
+              },
+              "paintedTarget": {
+                "x": 0.3748006379585327,
+                "y": 0.6555023923444976
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg10FarFoot",
+              "target": {
+                "x": 0.3532695374800638,
+                "y": 0.4449760765550239
+              },
+              "endpointTarget": {
+                "x": 0.35323301606257734,
+                "y": 0.44515388582300125
+              },
+              "paintedTarget": {
+                "x": 0.3508771929824561,
+                "y": 0.4445773524720893
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg10NearFoot",
+              "target": {
+                "x": 0.30857808681979354,
+                "y": 0.653948283549243
+              },
+              "endpointTarget": {
+                "x": 0.30881612051748875,
+                "y": 0.6544997538723645
+              },
+              "paintedTarget": {
+                "x": 0.3037933978245782,
+                "y": 0.6563406280468507
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg11FarFoot",
+              "target": {
+                "x": 0.2902888619166397,
+                "y": 0.44693236013842347
+              },
+              "endpointTarget": {
+                "x": 0.2902949423117166,
+                "y": 0.4469384289650586
+              },
+              "paintedTarget": {
+                "x": 0.29347865458011657,
+                "y": 0.44374256747494656
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg11NearFoot",
+              "target": {
+                "x": 0.26555023923444976,
+                "y": 0.6570972886762361
+              },
+              "endpointTarget": {
+                "x": 0.2656494831387407,
+                "y": 0.6570436779175025
+              },
+              "paintedTarget": {
+                "x": 0.2647527910685805,
+                "y": 0.6555023923444976
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg12FarFoot",
+              "target": {
+                "x": 0.2631578947368421,
+                "y": 0.43221690590111644
+              },
+              "endpointTarget": {
+                "x": 0.2629488573279704,
+                "y": 0.43211470984340006
+              },
+              "paintedTarget": {
+                "x": 0.2649777123461334,
+                "y": 0.42822966507177035
+              },
+              "stance": true
+            },
+            {
+              "joint": "leg12NearFoot",
+              "target": {
+                "x": 0.21131363818175974,
+                "y": 0.6435451159959269
+              },
+              "endpointTarget": {
+                "x": 0.21166991968135182,
+                "y": 0.6437497157652196
+              },
+              "paintedTarget": {
+                "x": 0.20971874185002132,
+                "y": 0.6467349086594038
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg13FarFoot",
+              "target": {
+                "x": 0.1935816027775149,
+                "y": 0.43449723608794005
+              },
+              "endpointTarget": {
+                "x": 0.19361566385821008,
+                "y": 0.4345444960359612
+              },
+              "paintedTarget": {
+                "x": 0.19916373993859943,
+                "y": 0.43050999525859396
+              },
+              "stance": false
+            },
+            {
+              "joint": "leg13NearFoot",
+              "target": {
+                "x": 0.17065390749601275,
+                "y": 0.6499202551834131
+              },
+              "endpointTarget": {
+                "x": 0.17042031286378626,
+                "y": 0.6499271036980496
+              },
+              "paintedTarget": {
+                "x": 0.17065390749601275,
+                "y": 0.6539074960127592
+              },
+              "stance": true
+            }
+          ],
+          "maxError": 2.220446049250313e-16,
+          "compression": 0,
+          "maxPaintTargetErrorPx": 0.0012646992623187203
+        },
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": -0.02333370370370371,
+            "dy": 0
+          },
+          "head": {
+            "rotation": -0.030637,
+            "dx": 0,
+            "dy": 0
+          },
+          "mandible": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "antennaFar": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "antennaNear": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg0FarKnee": {
+            "rotation": 0.2944739811762265
+          },
+          "leg0FarFoot": {
+            "rotation": -0.27277698622252805
+          },
+          "leg0NearKnee": {
+            "rotation": 0.053035886068070526
+          },
+          "leg0NearFoot": {
+            "rotation": 0.15811987361847848
+          },
+          "leg1FarKnee": {
+            "rotation": -0.4436621742001736
+          },
+          "leg1FarFoot": {
+            "rotation": 0.41085441442032133
+          },
+          "leg1NearKnee": {
+            "rotation": -0.06236166431589753
+          },
+          "leg1NearFoot": {
+            "rotation": -0.03471747832408222
+          },
+          "leg2FarKnee": {
+            "rotation": 0.21317716573165701
+          },
+          "leg2FarFoot": {
+            "rotation": -0.15592137325886068
+          },
+          "leg2NearKnee": {
+            "rotation": 0.018291812130027514
+          },
+          "leg2NearFoot": {
+            "rotation": 0.22361951610602593
+          },
+          "leg3FarKnee": {
+            "rotation": -0.3815680649446713
+          },
+          "leg3FarFoot": {
+            "rotation": 0.3761122594457244
+          },
+          "leg3NearKnee": {
+            "rotation": -0.09112715653354231
+          },
+          "leg3NearFoot": {
+            "rotation": -0.000047874424631721986
+          },
+          "leg4FarKnee": {
+            "rotation": 0.18855892490739956
+          },
+          "leg4FarFoot": {
+            "rotation": -0.13525286178637874
+          },
+          "leg4NearKnee": {
+            "rotation": -0.16249268426526953
+          },
+          "leg4NearFoot": {
+            "rotation": 0.2779340479383897
+          },
+          "leg5FarKnee": {
+            "rotation": -0.3810048952592897
+          },
+          "leg5FarFoot": {
+            "rotation": 0.3643901814883392
+          },
+          "leg5NearKnee": {
+            "rotation": -0.10011809865236643
+          },
+          "leg5NearFoot": {
+            "rotation": 0.019233470621603282
+          },
+          "leg6FarKnee": {
+            "rotation": 0.16122320783880933
+          },
+          "leg6FarFoot": {
+            "rotation": -0.09105364875699935
+          },
+          "leg6NearKnee": {
+            "rotation": 0.02618158882977451
+          },
+          "leg6NearFoot": {
+            "rotation": 0.18381534627916007
+          },
+          "leg7FarKnee": {
+            "rotation": -0.37222758093677966
+          },
+          "leg7FarFoot": {
+            "rotation": 0.3557531171860828
+          },
+          "leg7NearKnee": {
+            "rotation": -0.08910993617567331
+          },
+          "leg7NearFoot": {
+            "rotation": -0.00639328233114811
+          },
+          "leg8FarKnee": {
+            "rotation": 0.1527912946472027
+          },
+          "leg8FarFoot": {
+            "rotation": -0.09061073010329765
+          },
+          "leg8NearKnee": {
+            "rotation": -0.14089742659625015
+          },
+          "leg8NearFoot": {
+            "rotation": 0.24374762962675597
+          },
+          "leg9FarKnee": {
+            "rotation": -0.37156240747436486
+          },
+          "leg9FarFoot": {
+            "rotation": 0.34746017148803093
+          },
+          "leg9NearKnee": {
+            "rotation": -0.09933593823924416
+          },
+          "leg9NearFoot": {
+            "rotation": 0.011934693321528867
+          },
+          "leg10FarKnee": {
+            "rotation": 0.16554438560937806
+          },
+          "leg10FarFoot": {
+            "rotation": -0.09067251023179299
+          },
+          "leg10NearKnee": {
+            "rotation": -0.16981802189614226
+          },
+          "leg10NearFoot": {
+            "rotation": 0.2820963675297976
+          },
+          "leg11FarKnee": {
+            "rotation": -0.3760419628430496
+          },
+          "leg11FarFoot": {
+            "rotation": 0.3741390875751004
+          },
+          "leg11NearKnee": {
+            "rotation": -0.13513595474495577
+          },
+          "leg11NearFoot": {
+            "rotation": 0.07186743284911068
+          },
+          "leg12FarKnee": {
+            "rotation": 0.18894343026088717
+          },
+          "leg12FarFoot": {
+            "rotation": -0.13586412216764862
+          },
+          "leg12NearKnee": {
+            "rotation": -0.17922015999750968
+          },
+          "leg12NearFoot": {
+            "rotation": 0.2944714813222131
+          },
+          "leg13FarKnee": {
+            "rotation": -0.4251364566884812
+          },
+          "leg13FarFoot": {
+            "rotation": 0.416664344939371
+          },
+          "leg13NearKnee": {
+            "rotation": -0.12564167242535568
+          },
+          "leg13NearFoot": {
+            "rotation": 0.06702425322746873
+          },
+          "ultimateFar": {
+            "rotation": -0.061275,
+            "dx": 0,
+            "dy": 0
+          },
+          "ultimateNear": {
+            "rotation": 0.061275,
+            "dx": 0,
+            "dy": 0
+          }
+        },
+        "arapStats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 22.80784072573861,
+          "rmsTargetErrorPx": 0.9740546232320055,
+          "maximumProjectionPx": 23.00157011656067,
+          "flippedTriangles": 7,
+          "minimumAreaRatio": -0.16961068083788644,
+          "orientationPasses": 128
+        }
+      }
+    },
+    {
+      "id": "faint",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.0016798442345614282,
+      "maxGapPx": 0.00005285214803266112,
+      "maxEndpointError": 4.0029660424867215e-16,
+      "exactRest": true
+    },
+    {
+      "id": "victory",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.000439844705909553,
+      "maxGapPx": 0.00005285214803266112,
+      "maxEndpointError": 3.376611507232129e-16,
+      "exactRest": true
+    },
+    {
+      "id": "tame",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.005281516827429729,
+      "maxGapPx": 0.00005285214803266112,
+      "maxEndpointError": 4.0029660424867215e-16,
+      "exactRest": true
+    },
+    {
+      "id": "feed",
+      "samples": 121,
+      "attemptedSamples": 121,
+      "status": "PASS",
+      "maxPaintDriftPx": 0.006229180775251116,
+      "maxGapPx": 0.00005285214803266112,
+      "maxEndpointError": 3.510833468576701e-16,
+      "exactRest": true
+    }
+  ],
+  "exactRest": true,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "87434dc5b868915b31575e47ba8deab0006eb16a100c6e496512a54019607791",
+  "bindingHash": "541cc0657e235e5a3d7586a877200312ab3f6aeb9380b08442b8d64e03a97ab0",
+  "family": "myriapod",
+  "contacts": [
+    "leg0FarFoot",
+    "leg0NearFoot",
+    "leg1FarFoot",
+    "leg1NearFoot",
+    "leg2FarFoot",
+    "leg2NearFoot",
+    "leg3FarFoot",
+    "leg3NearFoot",
+    "leg4FarFoot",
+    "leg4NearFoot",
+    "leg5FarFoot",
+    "leg5NearFoot",
+    "leg6FarFoot",
+    "leg6NearFoot",
+    "leg7FarFoot",
+    "leg7NearFoot",
+    "leg8FarFoot",
+    "leg8NearFoot",
+    "leg9FarFoot",
+    "leg9NearFoot",
+    "leg10FarFoot",
+    "leg10NearFoot",
+    "leg11FarFoot",
+    "leg11NearFoot",
+    "leg12FarFoot",
+    "leg12NearFoot",
+    "leg13FarFoot",
+    "leg13NearFoot"
+  ],
+  "realm": "land",
+  "actionInventory": [
+    "idle",
+    "alert",
+    "approach:crawl",
+    "melee:mandible",
+    "melee:body",
+    "cast",
+    "hit",
+    "dodge",
+    "faint",
+    "victory",
+    "tame",
+    "feed"
+  ],
+  "presentation": {
+    "id": "presentation",
+    "samples": 482,
+    "attemptedSamples": 483,
+    "status": "RED",
+    "maxPaintDriftPx": 0.0006494099699367564,
+    "maxGapPx": 0.00005285214803266112,
+    "maxEndpointError": 3.510833468576701e-16,
+    "exactRest": true,
+    "firstRefusal": {
+      "sampleIndex": 482,
+      "sampleNumber": 483,
+      "ms": 8033.333333333333,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 17\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:25356:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:25833:5)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:15646:9)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:26076:23\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-u1XBCN/run.mjs:26117:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+      "contact": {
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": -0.023771192157265773,
+            "dy": 0.001012
+          },
+          "head": {
+            "rotation": -0.15896,
+            "dx": 0,
+            "dy": 0
+          },
+          "mandible": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "antennaFar": {
+            "rotation": 0.176623,
+            "dx": 0,
+            "dy": 0
+          },
+          "antennaNear": {
+            "rotation": 0.176623,
+            "dx": 0,
+            "dy": 0
+          },
+          "leg0FarKnee": {
+            "rotation": 0.31458840876798516
+          },
+          "leg0FarFoot": {
+            "rotation": -0.3025758951584045
+          },
+          "leg0NearKnee": {
+            "rotation": 0.10071323583819636
+          },
+          "leg0NearFoot": {
+            "rotation": 0.15350310852877014
+          },
+          "leg1FarKnee": {
+            "rotation": -0.5141517332656673
+          },
+          "leg1FarFoot": {
+            "rotation": 0.4266066959287931
+          },
+          "leg1NearKnee": {
+            "rotation": -0.06989328232549571
+          },
+          "leg1NearFoot": {
+            "rotation": -0.02482412185462847
+          },
+          "leg2FarKnee": {
+            "rotation": 0.22782162750300314
+          },
+          "leg2FarFoot": {
+            "rotation": -0.1770390858066355
+          },
+          "leg2NearKnee": {
+            "rotation": 0.06069236632388486
+          },
+          "leg2NearFoot": {
+            "rotation": 0.2338892018365485
+          },
+          "leg3FarKnee": {
+            "rotation": -0.4236271039020013
+          },
+          "leg3FarFoot": {
+            "rotation": 0.36135899343259986
+          },
+          "leg3NearKnee": {
+            "rotation": -0.10072776379012438
+          },
+          "leg3NearFoot": {
+            "rotation": 0.013526488747827596
+          },
+          "leg4FarKnee": {
+            "rotation": 0.2038128473079286
+          },
+          "leg4FarFoot": {
+            "rotation": -0.15702379704439418
+          },
+          "leg4NearKnee": {
+            "rotation": -0.12929614338258633
+          },
+          "leg4NearFoot": {
+            "rotation": 0.2865195326212162
+          },
+          "leg5FarKnee": {
+            "rotation": -0.439739434709586
+          },
+          "leg5FarFoot": {
+            "rotation": 0.36999204871478986
+          },
+          "leg5NearKnee": {
+            "rotation": -0.10844652322470771
+          },
+          "leg5NearFoot": {
+            "rotation": 0.03097021790644071
+          },
+          "leg6FarKnee": {
+            "rotation": 0.17644214218846432
+          },
+          "leg6FarFoot": {
+            "rotation": -0.11335344486343014
+          },
+          "leg6NearKnee": {
+            "rotation": 0.0707144050100943
+          },
+          "leg6NearFoot": {
+            "rotation": 0.18356517443155718
+          },
+          "leg7FarKnee": {
+            "rotation": -0.4221396305595561
+          },
+          "leg7FarFoot": {
+            "rotation": 0.35442130129518906
+          },
+          "leg7NearKnee": {
+            "rotation": -0.09663034111804428
+          },
+          "leg7NearFoot": {
+            "rotation": 0.0031867205854099194
+          },
+          "leg8FarKnee": {
+            "rotation": 0.16709564520269177
+          },
+          "leg8FarFoot": {
+            "rotation": -0.11106759613982323
+          },
+          "leg8NearKnee": {
+            "rotation": -0.10233051323209974
+          },
+          "leg8NearFoot": {
+            "rotation": 0.24936118932451465
+          },
+          "leg9FarKnee": {
+            "rotation": -0.4295771116229741
+          },
+          "leg9FarFoot": {
+            "rotation": 0.352727959706189
+          },
+          "leg9NearKnee": {
+            "rotation": -0.10734426709950429
+          },
+          "leg9NearFoot": {
+            "rotation": 0.02308064259359112
+          },
+          "leg10FarKnee": {
+            "rotation": 0.17990277796856402
+          },
+          "leg10FarFoot": {
+            "rotation": -0.11291123973946769
+          },
+          "leg10NearKnee": {
+            "rotation": -0.12414639663657637
+          },
+          "leg10NearFoot": {
+            "rotation": 0.2717694400392261
+          },
+          "leg11FarKnee": {
+            "rotation": -0.43878741534381754
+          },
+          "leg11FarFoot": {
+            "rotation": 0.38627432114989474
+          },
+          "leg11NearKnee": {
+            "rotation": -0.14567676347526043
+          },
+          "leg11NearFoot": {
+            "rotation": 0.08619849618888216
+          },
+          "leg12FarKnee": {
+            "rotation": 0.20415682289457404
+          },
+          "leg12FarFoot": {
+            "rotation": -0.15757096055976003
+          },
+          "leg12NearKnee": {
+            "rotation": -0.1333418210261511
+          },
+          "leg12NearFoot": {
+            "rotation": 0.28454624867140355
+          },
+          "leg13FarKnee": {
+            "rotation": -0.49038489136403135
+          },
+          "leg13FarFoot": {
+            "rotation": 0.43246917306273186
+          },
+          "leg13NearKnee": {
+            "rotation": -0.13653903469896678
+          },
+          "leg13NearFoot": {
+            "rotation": 0.08159729222657042
+          },
+          "ultimateFar": {
+            "rotation": -0.070649,
+            "dx": 0,
+            "dy": 0
+          },
+          "ultimateNear": {
+            "rotation": 0.070649,
+            "dx": 0,
+            "dy": 0
+          }
+        },
+        "contacts": [
+          {
+            "joint": "leg0FarFoot",
+            "target": {
+              "x": 0.8429027113237639,
+              "y": 0.4449760765550239
+            },
+            "endpointTarget": {
+              "x": 0.8429528140364202,
+              "y": 0.444938013381356
+            },
+            "paintedTarget": {
+              "x": 0.8460925039872407,
+              "y": 0.44912280701754387
+            },
+            "stance": true
+          },
+          {
+            "joint": "leg0NearFoot",
+            "target": {
+              "x": 0.7956111008749349,
+              "y": 0.6495666783279964
+            },
+            "endpointTarget": {
+              "x": 0.7950047219557391,
+              "y": 0.651120256392898
+            },
+            "paintedTarget": {
+              "x": 0.7892315155479811,
+              "y": 0.6479717819962579
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg1FarFoot",
+            "target": {
+              "x": 0.77025382089156,
+              "y": 0.4482778540872572
+            },
+            "endpointTarget": {
+              "x": 0.7706150141254455,
+              "y": 0.4485417180477382
+            },
+            "paintedTarget": {
+              "x": 0.7734436135550369,
+              "y": 0.4442906132579111
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg1NearFoot",
+            "target": {
+              "x": 0.7719298245614035,
+              "y": 0.6547049441786283
+            },
+            "endpointTarget": {
+              "x": 0.7714197604193166,
+              "y": 0.6551070627383669
+            },
+            "paintedTarget": {
+              "x": 0.7759170653907496,
+              "y": 0.6602870813397129
+            },
+            "stance": true
+          },
+          {
+            "joint": "leg2FarFoot",
+            "target": {
+              "x": 0.7440191387559809,
+              "y": 0.43301435406698563
+            },
+            "endpointTarget": {
+              "x": 0.7442289777224285,
+              "y": 0.43273582921778514
+            },
+            "paintedTarget": {
+              "x": 0.7496012759170654,
+              "y": 0.4370015948963317
+            },
+            "stance": true
+          },
+          {
+            "joint": "leg2NearFoot",
+            "target": {
+              "x": 0.7011892211515512,
+              "y": 0.6427025987748187
+            },
+            "endpointTarget": {
+              "x": 0.7003319539539465,
+              "y": 0.6421022781753585
+            },
+            "paintedTarget": {
+              "x": 0.7027841174832896,
+              "y": 0.6395128061113419
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg3FarFoot",
+            "target": {
+              "x": 0.6683703477572163,
+              "y": 0.43443639712210613
+            },
+            "endpointTarget": {
+              "x": 0.6686107378983389,
+              "y": 0.4341805521763326
+            },
+            "paintedTarget": {
+              "x": 0.6643831069278702,
+              "y": 0.43044915629276004
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg3NearFoot",
+            "target": {
+              "x": 0.6754385964912281,
+              "y": 0.6475279106858054
+            },
+            "endpointTarget": {
+              "x": 0.6754507131682608,
+              "y": 0.6478056741843913
+            },
+            "paintedTarget": {
+              "x": 0.6786283891547049,
+              "y": 0.6475279106858054
+            },
+            "stance": true
+          },
+          {
+            "joint": "leg4FarFoot",
+            "target": {
+              "x": 0.6475279106858054,
+              "y": 0.42424242424242425
+            },
+            "endpointTarget": {
+              "x": 0.647346105928726,
+              "y": 0.424013544494794
+            },
+            "paintedTarget": {
+              "x": 0.6523125996810208,
+              "y": 0.42025518341307816
+            },
+            "stance": true
+          },
+          {
+            "joint": "leg4NearFoot",
+            "target": {
+              "x": 0.6148739741583927,
+              "y": 0.6382854232300704
+            },
+            "endpointTarget": {
+              "x": 0.615640409151163,
+              "y": 0.6381259238378817
+            },
+            "paintedTarget": {
+              "x": 0.6162695084486638,
+              "y": 0.6430701122252858
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg5FarFoot",
+            "target": {
+              "x": 0.574185074370637,
+              "y": 0.42978129284790806
+            },
+            "endpointTarget": {
+              "x": 0.5743596413352916,
+              "y": 0.4299978759875426
+            },
+            "paintedTarget": {
+              "x": 0.5773748670341139,
+              "y": 0.4273889483503004
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg5NearFoot",
+            "target": {
+              "x": 0.5773524720893142,
+              "y": 0.6451355661881978
+            },
+            "endpointTarget": {
+              "x": 0.5777844636600247,
+              "y": 0.6451188255599756
+            },
+            "paintedTarget": {
+              "x": 0.5773524720893142,
+              "y": 0.6395534290271132
+            },
+            "stance": true
+          },
+          {
+            "joint": "leg6FarFoot",
+            "target": {
+              "x": 0.5478468899521531,
+              "y": 0.4218500797448166
+            },
+            "endpointTarget": {
+              "x": 0.547819372357163,
+              "y": 0.421924700402256
+            },
+            "paintedTarget": {
+              "x": 0.5466507177033493,
+              "y": 0.42145135566188197
+            },
+            "stance": true
+          },
+          {
+            "joint": "leg6NearFoot",
+            "target": {
+              "x": 0.5059621543336205,
+              "y": 0.6393356827584491
+            },
+            "endpointTarget": {
+              "x": 0.505556351032431,
+              "y": 0.6409149888562318
+            },
+            "paintedTarget": {
+              "x": 0.49958256900666675,
+              "y": 0.6385382345925799
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg7FarFoot",
+            "target": {
+              "x": 0.47677267695229886,
+              "y": 0.43395411545069446
+            },
+            "endpointTarget": {
+              "x": 0.47715252624214466,
+              "y": 0.4339953038218153
+            },
+            "paintedTarget": {
+              "x": 0.4775701251181681,
+              "y": 0.4283719782896099
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg7NearFoot",
+            "target": {
+              "x": 0.4784688995215311,
+              "y": 0.6515151515151515
+            },
+            "endpointTarget": {
+              "x": 0.478830501144966,
+              "y": 0.6512745334835838
+            },
+            "paintedTarget": {
+              "x": 0.47607655502392343,
+              "y": 0.6475279106858054
+            },
+            "stance": true
+          },
+          {
+            "joint": "leg8FarFoot",
+            "target": {
+              "x": 0.45374800637958534,
+              "y": 0.4298245614035088
+            },
+            "endpointTarget": {
+              "x": 0.45352267245973665,
+              "y": 0.42989158657581744
+            },
+            "paintedTarget": {
+              "x": 0.4524393734920051,
+              "y": 0.4258373205741627
+            },
+            "stance": true
+          },
+          {
+            "joint": "leg8NearFoot",
+            "target": {
+              "x": 0.4109850703584695,
+              "y": 0.6482655093924753
+            },
+            "endpointTarget": {
+              "x": 0.4107342074507901,
+              "y": 0.6484819558700906
+            },
+            "paintedTarget": {
+              "x": 0.409390174026731,
+              "y": 0.6466706130607368
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg9FarFoot",
+            "target": {
+              "x": 0.37874856831756765,
+              "y": 0.44662026245382797
+            },
+            "endpointTarget": {
+              "x": 0.37894655359621365,
+              "y": 0.44698086364994133
+            },
+            "paintedTarget": {
+              "x": 0.3835332573127829,
+              "y": 0.4442279179562203
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg9NearFoot",
+            "target": {
+              "x": 0.372408293460925,
+              "y": 0.6602870813397129
+            },
+            "endpointTarget": {
+              "x": 0.372819285322101,
+              "y": 0.660471376416345
+            },
+            "paintedTarget": {
+              "x": 0.3748006379585327,
+              "y": 0.6555023923444976
+            },
+            "stance": true
+          },
+          {
+            "joint": "leg10FarFoot",
+            "target": {
+              "x": 0.3532695374800638,
+              "y": 0.4449760765550239
+            },
+            "endpointTarget": {
+              "x": 0.3532374859615412,
+              "y": 0.4451353042105285
+            },
+            "paintedTarget": {
+              "x": 0.3508771929824561,
+              "y": 0.4445773524720893
+            },
+            "stance": true
+          },
+          {
+            "joint": "leg10NearFoot",
+            "target": {
+              "x": 0.30506690953840865,
+              "y": 0.6536339786927419
+            },
+            "endpointTarget": {
+              "x": 0.30536689344604806,
+              "y": 0.6543641973084914
+            },
+            "paintedTarget": {
+              "x": 0.3002822205431933,
+              "y": 0.6560263231903496
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg11FarFoot",
+            "target": {
+              "x": 0.2864063730945275,
+              "y": 0.4471750225930134
+            },
+            "endpointTarget": {
+              "x": 0.2865783385469328,
+              "y": 0.44733817988383917
+            },
+            "paintedTarget": {
+              "x": 0.28959616575800434,
+              "y": 0.4439852299295365
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg11NearFoot",
+            "target": {
+              "x": 0.26555023923444976,
+              "y": 0.6570972886762361
+            },
+            "endpointTarget": {
+              "x": 0.2656436348469778,
+              "y": 0.6570470655295862
+            },
+            "paintedTarget": {
+              "x": 0.2647527910685805,
+              "y": 0.6555023923444976
+            },
+            "stance": true
+          },
+          {
+            "joint": "leg12FarFoot",
+            "target": {
+              "x": 0.2631578947368421,
+              "y": 0.43221690590111644
+            },
+            "endpointTarget": {
+              "x": 0.2629741358044192,
+              "y": 0.43212780650119337
+            },
+            "paintedTarget": {
+              "x": 0.2649777123461334,
+              "y": 0.42822966507177035
+            },
+            "stance": true
+          },
+          {
+            "joint": "leg12NearFoot",
+            "target": {
+              "x": 0.20780333304876786,
+              "y": 0.6432295029168362
+            },
+            "endpointTarget": {
+              "x": 0.20826567104520874,
+              "y": 0.6435061772401278
+            },
+            "paintedTarget": {
+              "x": 0.20620843671702943,
+              "y": 0.6464192955803131
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg13FarFoot",
+            "target": {
+              "x": 0.18969133723938023,
+              "y": 0.43475156361656364
+            },
+            "endpointTarget": {
+              "x": 0.18993206654812786,
+              "y": 0.4350687050740688
+            },
+            "paintedTarget": {
+              "x": 0.19527347440046475,
+              "y": 0.43076432278721755
+            },
+            "stance": false
+          },
+          {
+            "joint": "leg13NearFoot",
+            "target": {
+              "x": 0.17065390749601275,
+              "y": 0.6499202551834131
+            },
+            "endpointTarget": {
+              "x": 0.17043494508304705,
+              "y": 0.649926271968208
+            },
+            "paintedTarget": {
+              "x": 0.17065390749601275,
+              "y": 0.6539074960127592
+            },
+            "stance": true
+          }
+        ],
+        "maxError": 2.482534153247273e-16,
+        "compression": 0,
+        "maxPaintTargetErrorPx": 0.0011496251320186346
+      },
+      "pose": {
+        "root": {
+          "rotation": 0,
+          "dx": -0.023771192157265773,
+          "dy": 0.001012
+        },
+        "head": {
+          "rotation": -0.15896,
+          "dx": 0,
+          "dy": 0
+        },
+        "mandible": {
+          "rotation": 0,
+          "dx": 0,
+          "dy": 0
+        },
+        "antennaFar": {
+          "rotation": 0.176623,
+          "dx": 0,
+          "dy": 0
+        },
+        "antennaNear": {
+          "rotation": 0.176623,
+          "dx": 0,
+          "dy": 0
+        },
+        "leg0FarKnee": {
+          "rotation": 0.31458840876798516
+        },
+        "leg0FarFoot": {
+          "rotation": -0.3025758951584045
+        },
+        "leg0NearKnee": {
+          "rotation": 0.10071323583819636
+        },
+        "leg0NearFoot": {
+          "rotation": 0.15350310852877014
+        },
+        "leg1FarKnee": {
+          "rotation": -0.5141517332656673
+        },
+        "leg1FarFoot": {
+          "rotation": 0.4266066959287931
+        },
+        "leg1NearKnee": {
+          "rotation": -0.06989328232549571
+        },
+        "leg1NearFoot": {
+          "rotation": -0.02482412185462847
+        },
+        "leg2FarKnee": {
+          "rotation": 0.22782162750300314
+        },
+        "leg2FarFoot": {
+          "rotation": -0.1770390858066355
+        },
+        "leg2NearKnee": {
+          "rotation": 0.06069236632388486
+        },
+        "leg2NearFoot": {
+          "rotation": 0.2338892018365485
+        },
+        "leg3FarKnee": {
+          "rotation": -0.4236271039020013
+        },
+        "leg3FarFoot": {
+          "rotation": 0.36135899343259986
+        },
+        "leg3NearKnee": {
+          "rotation": -0.10072776379012438
+        },
+        "leg3NearFoot": {
+          "rotation": 0.013526488747827596
+        },
+        "leg4FarKnee": {
+          "rotation": 0.2038128473079286
+        },
+        "leg4FarFoot": {
+          "rotation": -0.15702379704439418
+        },
+        "leg4NearKnee": {
+          "rotation": -0.12929614338258633
+        },
+        "leg4NearFoot": {
+          "rotation": 0.2865195326212162
+        },
+        "leg5FarKnee": {
+          "rotation": -0.439739434709586
+        },
+        "leg5FarFoot": {
+          "rotation": 0.36999204871478986
+        },
+        "leg5NearKnee": {
+          "rotation": -0.10844652322470771
+        },
+        "leg5NearFoot": {
+          "rotation": 0.03097021790644071
+        },
+        "leg6FarKnee": {
+          "rotation": 0.17644214218846432
+        },
+        "leg6FarFoot": {
+          "rotation": -0.11335344486343014
+        },
+        "leg6NearKnee": {
+          "rotation": 0.0707144050100943
+        },
+        "leg6NearFoot": {
+          "rotation": 0.18356517443155718
+        },
+        "leg7FarKnee": {
+          "rotation": -0.4221396305595561
+        },
+        "leg7FarFoot": {
+          "rotation": 0.35442130129518906
+        },
+        "leg7NearKnee": {
+          "rotation": -0.09663034111804428
+        },
+        "leg7NearFoot": {
+          "rotation": 0.0031867205854099194
+        },
+        "leg8FarKnee": {
+          "rotation": 0.16709564520269177
+        },
+        "leg8FarFoot": {
+          "rotation": -0.11106759613982323
+        },
+        "leg8NearKnee": {
+          "rotation": -0.10233051323209974
+        },
+        "leg8NearFoot": {
+          "rotation": 0.24936118932451465
+        },
+        "leg9FarKnee": {
+          "rotation": -0.4295771116229741
+        },
+        "leg9FarFoot": {
+          "rotation": 0.352727959706189
+        },
+        "leg9NearKnee": {
+          "rotation": -0.10734426709950429
+        },
+        "leg9NearFoot": {
+          "rotation": 0.02308064259359112
+        },
+        "leg10FarKnee": {
+          "rotation": 0.17990277796856402
+        },
+        "leg10FarFoot": {
+          "rotation": -0.11291123973946769
+        },
+        "leg10NearKnee": {
+          "rotation": -0.12414639663657637
+        },
+        "leg10NearFoot": {
+          "rotation": 0.2717694400392261
+        },
+        "leg11FarKnee": {
+          "rotation": -0.43878741534381754
+        },
+        "leg11FarFoot": {
+          "rotation": 0.38627432114989474
+        },
+        "leg11NearKnee": {
+          "rotation": -0.14567676347526043
+        },
+        "leg11NearFoot": {
+          "rotation": 0.08619849618888216
+        },
+        "leg12FarKnee": {
+          "rotation": 0.20415682289457404
+        },
+        "leg12FarFoot": {
+          "rotation": -0.15757096055976003
+        },
+        "leg12NearKnee": {
+          "rotation": -0.1333418210261511
+        },
+        "leg12NearFoot": {
+          "rotation": 0.28454624867140355
+        },
+        "leg13FarKnee": {
+          "rotation": -0.49038489136403135
+        },
+        "leg13FarFoot": {
+          "rotation": 0.43246917306273186
+        },
+        "leg13NearKnee": {
+          "rotation": -0.13653903469896678
+        },
+        "leg13NearFoot": {
+          "rotation": 0.08159729222657042
+        },
+        "ultimateFar": {
+          "rotation": -0.070649,
+          "dx": 0,
+          "dy": 0
+        },
+        "ultimateNear": {
+          "rotation": 0.070649,
+          "dx": 0,
+          "dy": 0
+        }
+      },
+      "arapStats": {
+        "rigid": false,
+        "maximumTargetErrorPx": 25.549371751949927,
+        "rmsTargetErrorPx": 1.3848366671612002,
+        "maximumProjectionPx": 25.7882308483597,
+        "flippedTriangles": 17,
+        "minimumAreaRatio": -0.14586686832848697,
+        "orientationPasses": 128
+      },
+      "action": "hit"
+    }
+  },
+  "schedule": {
+    "rows": [
+      {
+        "id": "idle",
+        "startMs": 1000,
+        "endMs": 4117.3146602883935
+      },
+      {
+        "id": "alert",
+        "startMs": 4117.3146602883935,
+        "endMs": 4717.3146602883935
+      },
+      {
+        "id": "approach:crawl",
+        "startMs": 4717.3146602883935,
+        "endMs": 5417.3146602883935
+      },
+      {
+        "id": "melee:mandible",
+        "startMs": 5417.3146602883935,
+        "endMs": 6203.9813269550605
+      },
+      {
+        "id": "melee:body",
+        "startMs": 6203.9813269550605,
+        "endMs": 6990.647993621727
+      },
+      {
+        "id": "cast",
+        "startMs": 6990.647993621727,
+        "endMs": 7880.647993621727
+      },
+      {
+        "id": "hit",
+        "startMs": 7880.647993621727,
+        "endMs": 8610.647993621727
+      },
+      {
+        "id": "dodge",
+        "startMs": 8610.647993621727,
+        "endMs": 9210.647993621727
+      },
+      {
+        "id": "faint",
+        "startMs": 9210.647993621727,
+        "endMs": 10010.647993621727
+      },
+      {
+        "id": "victory",
+        "startMs": 10010.647993621727,
+        "endMs": 10890.647993621727
+      },
+      {
+        "id": "tame",
+        "startMs": 10890.647993621727,
+        "endMs": 11810.647993621727
+      },
+      {
+        "id": "feed",
+        "startMs": 11810.647993621727,
+        "endMs": 12670.647993621727
+      }
+    ],
+    "durationMs": 13670.647993621727
+  },
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-07/record.json",
+      "sha256": "eef94239c71e9941230af757226839e80040e065ccd4612422f83b30d098f732",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-07/binding.json",
+      "sha256": "49e196962e0d20badda353509ac10a7c05283112e3ec269aeb29c73abb4cf648",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-07/parts/manifest.json",
+      "sha256": "4d7c3b084bad736ceb8002f806340702b0aaf834006f81a56b7db4f5490f525b",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-07/parts/atlas/centipede.png",
+      "sha256": "1a685dcf26e57a3f3f87b75ba4a4a642153e7504fb4ce06d3e63f41d861e052a",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-07/parts/keyed.png",
+      "sha256": "2e5b90fe110deefac59fa32e471a540b9e35e3d98d2a687be548ba13ec44fdd3",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+COMMAND: node --test tools/creature-animation/family-record-terminal-legacy.test.mjs
+CWD: /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+✔ legacy quadruped without a pad declaration retains its original bounds, seal and source admission (4.224542ms)
+✔ legacy quadruped refuses present undefined pads in geometry, sealing and runtime admission (0.63125ms)
+✔ legacy quadruped refuses null pads in geometry, sealing and runtime admission (0.294417ms)
+✔ legacy quadruped refuses malformed pads in geometry, sealing and runtime admission (0.324042ms)
+✔ legacy quadruped refuses complete valid-looking pads in geometry, sealing and runtime admission (0.294541ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 120.8525

@@ -1,0 +1,73 @@
+{
+  "schema": "cf.compact-contact-diagnosis-findings/v1",
+  "source": "static-contact-diagnosis02.json",
+  "findings": [
+    {
+      "action": "hit",
+      "ms": 356.25,
+      "chain": "leg13Far",
+      "firstPass": 0,
+      "stance": false,
+      "swingAt": 0.9583333333333334,
+      "sourceStepProgress": 0.4791666666666667,
+      "sourceStepStridePx": 60.20260459481801,
+      "bodyShiftXPx": -31.35536081076765,
+      "footShiftXPx": -0.4188029733903136,
+      "footLiftYPx": 0.17093641303279128,
+      "endpointDistancePx": 104.10069283467372,
+      "maximumEndpointReachPx": 104.0497743848867,
+      "endpointOuterExcessPx": 0.05091844978702695,
+      "maximumHorizontalAtCurrentYPx": 50.83241313578591,
+      "horizontalExcessAtCurrentYPx": 0.10414470159140876,
+      "rawDx": 0.011185,
+      "expectedEasedDx": 0.011184622305410896,
+      "retainedExternalResidualPx": 0.00016241570003891945,
+      "paintedTarget": {
+        "x": 272.5811970266097,
+        "y": 531.1709364130328
+      },
+      "paintedTargetDistancePx": 111.94616508122094,
+      "hypotheticalRigidReachMaxPx": 112.04838925952033,
+      "endpointOnly": true,
+      "boundUnchangedPx": 34.401488339896005
+    },
+    {
+      "action": "dodge",
+      "ms": 46.666666666666664,
+      "chain": "leg0Far",
+      "firstPass": 0,
+      "stance": true,
+      "swingAt": 0,
+      "sourceStepProgress": 0.3888888888888889,
+      "sourceStepStridePx": -51.60223250984401,
+      "bodyShiftXPx": -20.06745523186453,
+      "footShiftXPx": 0.0,
+      "footLiftYPx": 0.0,
+      "endpointDistancePx": 97.94602914724727,
+      "maximumEndpointReachPx": 97.75666971315175,
+      "endpointOuterExcessPx": 0.18935943409551875,
+      "maximumHorizontalAtCurrentYPx": 54.72994128816714,
+      "horizontalExcessAtCurrentYPx": 0.33751394369734555,
+      "rawDx": -0.075185,
+      "expectedEasedDx": -0.07518518518518517,
+      "retainedExternalResidualPx": 7.963307485542436e-05,
+      "paintedTarget": {
+        "x": 1060.9999999999998,
+        "y": 563.2
+      },
+      "paintedTargetDistancePx": 96.0968483747948,
+      "hypotheticalRigidReachMaxPx": 96.673344630615,
+      "endpointOnly": false,
+      "boundUnchangedPx": 34.401488339896005
+    }
+  ],
+  "limitations": [
+    "The painted-target reach comparison is geometric only; no alternate solve, changed target, changed policy, or changed gate was executed.",
+    "All-contact analytic fallback is unavailable while any current support has nonzero mixed contributors. This is not proof of global painted-contact infeasibility."
+  ],
+  "mixedSupportChains": [
+    "leg0Far",
+    "leg8Far",
+    "leg12Far"
+  ]
+}

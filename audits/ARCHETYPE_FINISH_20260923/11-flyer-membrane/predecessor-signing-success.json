@@ -1,0 +1,14 @@
+{
+  "schema": "cf.predecessor-signing-resolution/v1",
+  "item": "09-arachnid",
+  "commit": "aaef06aff92852cd4caf711769ea80339a423605",
+  "signature": "G",
+  "commitToolChunk": "b8dc6f",
+  "verificationToolChunk": "755052",
+  "authority": "Nick: Continue",
+  "resolves": [
+    "060985",
+    "7725ac"
+  ],
+  "historicalPacketUnchanged": true
+}

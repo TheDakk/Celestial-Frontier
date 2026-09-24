@@ -1,0 +1,9 @@
+{
+  "status": "REFUSED",
+  "toolChunk": "f95a9f",
+  "exitCode": 128,
+  "client": "standard ssh-keygen via explicit 1Password agent socket",
+  "message": "agent refused operation; failed to write commit object",
+  "unsignedFallback": false,
+  "scope": "Eagle and Beetle signing succeeded after latest user availability confirmation; Tree Frog later refused. Trying configured helper."
+}

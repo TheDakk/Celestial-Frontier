@@ -1,0 +1,38 @@
+{
+  "schema":"cf.sprint-observed-inventory/v1",
+  "species":"Centipede",
+  "master":"master.png",
+  "method":"Manual visual inspection of the delivered 1254-square master; minimum witness set, not full appendage census",
+  "countKind":"lower-bound",
+  "observedNearWalkingLegsAtLeast":5,
+  "fullWalkingLegCount":null,
+  "fullLegPairCount":null,
+  "nearLegWitnesses":[
+    {"id":"visible-near-witness-1","proximalPx":[429,686],"bendPx":[397,742],"tipPx":[417,798]},
+    {"id":"visible-near-witness-2","proximalPx":[496,704],"bendPx":[466,746],"tipPx":[491,811]},
+    {"id":"visible-near-witness-3","proximalPx":[567,715],"bendPx":[537,755],"tipPx":[573,825]},
+    {"id":"visible-near-witness-4","proximalPx":[635,707],"bendPx":[610,745],"tipPx":[651,816]},
+    {"id":"visible-near-witness-5","proximalPx":[687,693],"bendPx":[674,736],"tipPx":[711,804]}
+  ],
+  "coordinateMeaning":"Approximate manually observed pixel centres of five separately traceable near-side walking legs. These are witness annotations, not admitted rig joint values.",
+  "existingContract":{
+    "id":"myriapod",
+    "walkingPairSlots":["legA","legB","legC","legD"],
+    "nearWalkingLegSlots":["legANear","legBNear","legCNear","legDNear"],
+    "nearWalkingLegSlotCount":4,
+    "source":"subject-source.json resolved contract"
+  },
+  "finding":"The five separately visible near-side walking legs already exceed the four near-side contract slots. Mapping several of them to a single slot or hiding visible legs would misrepresent this painting.",
+  "repeatCapability":{
+    "source":"port/v2/tools/creature-animation/repeated-anatomy.mjs appendageCounts",
+    "supportedFamilies":["radial","cephalopod"],
+    "myriapodRepeatedTopologySupported":false,
+    "sourceRefusal":"Anatomy inventory: unsupported repeated topology myriapod",
+    "refusalEvidence":"Read-only source inspection; not an executed refusal receipt"
+  },
+  "admissionExecuted":false,
+  "presenceWritten":false,
+  "presenceReason":"No supported repeated myriapod presence field exists. A legPairs integer would falsely imply an exact total that this lower-bound observation does not establish.",
+  "authoringWritten":false,
+  "authoringReason":"Stop before inventing a four-pair fit or changing the family contract. Full source-image inventory and a sanctioned count-preserving contract extension are separate future work."
+}

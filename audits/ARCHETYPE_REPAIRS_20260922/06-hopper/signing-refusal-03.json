@@ -1,0 +1,9 @@
+{
+  "status": "REFUSED",
+  "toolChunk": "da7bc4",
+  "exitCode": 128,
+  "client": "standard ssh-keygen after runtime key-use request and wait",
+  "message": "agent refused operation; failed to write commit object",
+  "unsignedFallback": false,
+  "unchangedHead": "4207748479e1ddeccb2f2f9f24c45e219f73956f"
+}

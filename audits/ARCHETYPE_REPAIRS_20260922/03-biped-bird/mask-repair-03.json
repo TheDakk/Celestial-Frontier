@@ -1,0 +1,50 @@
+{
+  "basis": "fold-diagnosis-02.json reproduces all four folded-tail refusals; independent read-only pixel inventory identifies fixed-body-owned tail fringe",
+  "changes": {
+    "part": "tail",
+    "lowerContour": [
+      [
+        [
+          564,
+          830
+        ],
+        [
+          564,
+          858
+        ]
+      ],
+      [
+        [
+          438,
+          860
+        ],
+        [
+          438,
+          875
+        ]
+      ]
+    ]
+  },
+  "observedLabelDelta": {
+    "positiveAlphaRootPixelsToTail": 655,
+    "boundingBox": [
+      486,
+      812,
+      593,
+      852
+    ],
+    "lostTailPixels": 0,
+    "capturedChestPixels": 0
+  },
+  "preserved": [
+    "upper tail attachment [670,765]",
+    "all earlier priority wings/legs/head/neck polygons",
+    "all landmarks",
+    "fixedJoints=root",
+    "all original shapeJoints",
+    "contactEndpoints",
+    "solver options",
+    "all acceptance gates"
+  ],
+  "sourcePixelsEdited": false
+}

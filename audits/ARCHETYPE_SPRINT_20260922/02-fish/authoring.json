@@ -1,0 +1,388 @@
+{
+  "id": "salmon",
+  "family": "fish",
+  "landmarksPx": {
+    "root": [
+      944,
+      641
+    ],
+    "head": [
+      1087,
+      626
+    ],
+    "jaw": [
+      1173,
+      665
+    ],
+    "spine0": [
+      900,
+      620
+    ],
+    "spine1": [
+      752,
+      610
+    ],
+    "spine2": [
+      625,
+      604
+    ],
+    "spine3": [
+      498,
+      603
+    ],
+    "spine4": [
+      375,
+      611
+    ],
+    "spine5": [
+      251,
+      619
+    ],
+    "caudal": [
+      108,
+      620
+    ],
+    "dorsal": [
+      604,
+      427
+    ],
+    "pectoralNear": [
+      868,
+      771
+    ],
+    "pectoralFar": [
+      970,
+      780
+    ]
+  },
+  "groundLineY": 0.9,
+  "materials": {
+    "surface": "silvery scales, painted natural salmon"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "polygonPx": [
+        [
+          805,
+          730
+        ],
+        [
+          861,
+          706
+        ],
+        [
+          947,
+          691
+        ],
+        [
+          900,
+          783
+        ],
+        [
+          842,
+          844
+        ],
+        [
+          805,
+          823
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "polygonPx": [
+        [
+          935,
+          737
+        ],
+        [
+          997,
+          726
+        ],
+        [
+          987,
+          782
+        ],
+        [
+          967,
+          811
+        ],
+        [
+          942,
+          779
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "polygonPx": [
+        [
+          493,
+          489
+        ],
+        [
+          578,
+          342
+        ],
+        [
+          692,
+          451
+        ],
+        [
+          682,
+          470
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "polygonPx": [
+        [
+          1102,
+          646
+        ],
+        [
+          1160,
+          637
+        ],
+        [
+          1253,
+          615
+        ],
+        [
+          1253,
+          679
+        ],
+        [
+          1102,
+          714
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "polygonPx": [
+        [
+          1010,
+          544
+        ],
+        [
+          1253,
+          574
+        ],
+        [
+          1253,
+          727
+        ],
+        [
+          1005,
+          744
+        ],
+        [
+          954,
+          667
+        ],
+        [
+          972,
+          592
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "polygonPx": [
+        [
+          0,
+          394
+        ],
+        [
+          205,
+          535
+        ],
+        [
+          218,
+          672
+        ],
+        [
+          0,
+          817
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "spine5",
+      "joint": "spine5",
+      "polygonPx": [
+        [
+          204,
+          514
+        ],
+        [
+          325,
+          507
+        ],
+        [
+          325,
+          808
+        ],
+        [
+          204,
+          808
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "spine4",
+      "joint": "spine4",
+      "polygonPx": [
+        [
+          325,
+          470
+        ],
+        [
+          446,
+          470
+        ],
+        [
+          446,
+          858
+        ],
+        [
+          325,
+          858
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "spine3",
+      "joint": "spine3",
+      "polygonPx": [
+        [
+          446,
+          470
+        ],
+        [
+          565,
+          470
+        ],
+        [
+          565,
+          860
+        ],
+        [
+          446,
+          860
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "spine2",
+      "joint": "spine2",
+      "polygonPx": [
+        [
+          565,
+          470
+        ],
+        [
+          695,
+          470
+        ],
+        [
+          695,
+          835
+        ],
+        [
+          565,
+          835
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "spine1",
+      "joint": "spine1",
+      "polygonPx": [
+        [
+          695,
+          470
+        ],
+        [
+          808,
+          470
+        ],
+        [
+          808,
+          817
+        ],
+        [
+          695,
+          817
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "spine0",
+      "joint": "spine0",
+      "polygonPx": [
+        [
+          808,
+          465
+        ],
+        [
+          956,
+          465
+        ],
+        [
+          956,
+          738
+        ],
+        [
+          808,
+          738
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "layer": "near"
+    }
+  ],
+  "coverage": {
+    "declarations": "One head, jaw, forked caudal, dorsal and both pectoral fins visible. Small adipose/pelvic/anal fins stay body-attached. No hidden contracted appendages or folded chains. Far eye naturally occluded; no separate eye joint in fish contract.",
+    "visualAcceptance": "candidate for Nick; first acceptable paint"
+  }
+}

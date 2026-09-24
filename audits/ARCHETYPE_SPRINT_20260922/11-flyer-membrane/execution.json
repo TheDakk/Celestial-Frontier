@@ -1,0 +1,76 @@
+{
+  "id": "archetype-sprint-11-flyer-membrane-01",
+  "stages": [
+    {
+      "name": "intake",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/intake.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/11-flyer-membrane",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/11-flyer-membrane/fit-01"
+      ],
+      "startedAt": "2026-09-22T12:35:33.389Z",
+      "endedAt": "2026-09-22T12:35:35.090Z",
+      "durationMs": 1699.761792,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "static",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/static-runner.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/11-flyer-membrane/fit-01",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/11-flyer-membrane/static.json"
+      ],
+      "startedAt": "2026-09-22T12:35:35.091Z",
+      "endedAt": "2026-09-22T12:35:47.898Z",
+      "durationMs": 12806.53275,
+      "exitCode": 1,
+      "signal": null
+    },
+    {
+      "name": "native",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-runner.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/11-flyer-membrane/fit-01",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/11-flyer-membrane/fit-01",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/11-flyer-membrane/native-01"
+      ],
+      "startedAt": "2026-09-22T12:35:47.898Z",
+      "endedAt": "2026-09-22T12:35:52.082Z",
+      "durationMs": 4184.32475,
+      "exitCode": 1,
+      "signal": null
+    },
+    {
+      "name": "sheet",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/review-sheet.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/11-flyer-membrane"
+      ],
+      "startedAt": "2026-09-22T12:35:52.082Z",
+      "endedAt": "2026-09-22T12:35:52.459Z",
+      "durationMs": 376.252625000001,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "finish",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.9.0/bin/node",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/finish-item.mjs",
+        "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/11-flyer-membrane",
+        "11"
+      ],
+      "startedAt": "2026-09-22T12:35:52.459Z",
+      "endedAt": "2026-09-22T12:35:52.562Z",
+      "durationMs": 102.79795899999954,
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "noRetry": true
+}

@@ -1,0 +1,11 @@
+COMMAND: npx vitest run apps/game/src/creature-rig-contact-terminal.test.ts
+CWD: /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  02:59:50
+   Duration  306ms (transform 131ms, setup 0ms, import 176ms, tests 26ms, environment 0ms)
+

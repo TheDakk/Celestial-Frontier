@@ -1,0 +1,57 @@
+COMMAND: npx vitest run apps/game/src/creature-rig-contact-arachnid.test.ts
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-contact-arachnid.test.ts (18 tests | 3 failed) 16ms
+   × hit uses the existing signed planner with two honest alternating tetrapods 2ms
+   × tame uses the existing signed planner with two honest alternating tetrapods 0ms
+   × an absent named group retains the historical hopper hind-name selection 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-contact-arachnid.test.ts > hit uses the existing signed planner with two honest alternating tetrapods
+Error: Contact: hit@27.5 leg2Far RangeError: target outside two-bone reach
+ ❯ Object.resolve apps/game/src/creature-rig-contact.ts:237:74
+    235|    if(shift>0){compression+=shift;pose.root={rotation:0,...pose.root,d…
+    236|    for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,tar…
+    237|     let solved;try{solved=c.chain.solve(root,target);}catch(error){thr…
+       |                                                                          ^
+    238|     const upper=wrapped(angle(solved.root,solved.joint)-angle(c.root,c…
+    239|     const lower=wrapped(angle(solved.joint,solved.end)-angle(c.joint,c…
+ ❯ apps/game/src/creature-rig-contact-arachnid.test.ts:62:104
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  apps/game/src/creature-rig-contact-arachnid.test.ts > tame uses the existing signed planner with two honest alternating tetrapods
+Error: Contact: tame@65 leg2Far RangeError: target outside two-bone reach
+ ❯ Object.resolve apps/game/src/creature-rig-contact.ts:237:74
+    235|    if(shift>0){compression+=shift;pose.root={rotation:0,...pose.root,d…
+    236|    for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,tar…
+    237|     let solved;try{solved=c.chain.solve(root,target);}catch(error){thr…
+       |                                                                          ^
+    238|     const upper=wrapped(angle(solved.root,solved.joint)-angle(c.root,c…
+    239|     const lower=wrapped(angle(solved.joint,solved.end)-angle(c.joint,c…
+ ❯ apps/game/src/creature-rig-contact-arachnid.test.ts:62:104
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  apps/game/src/creature-rig-contact-arachnid.test.ts > an absent named group retains the historical hopper hind-name selection
+Error: Contact: source bend direction missing foreFar
+ ❯ apps/game/src/creature-rig-contact.ts:101:34
+     99|   const root=point(record.landmarks[c.hip]!),joint=point(record.landma…
+    100|   const cross=(end.x-root.x)*(joint.y-root.y)-(end.y-root.y)*(joint.x-…
+    101|   if(Math.abs(cross)<1e-12)throw Error('Contact: source bend direction…
+       |                                  ^
+    102|   const declaration=paintedSupports[c.end]??record.landmarks[c.end]!;
+    103|   const model:WeightedContactSupport='rest' in declaration?declaration…
+ ❯ createFamilyContactSolver apps/game/src/creature-rig-contact.ts:98:45
+ ❯ apps/game/src/creature-rig-contact-arachnid.test.ts:74:73
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 15 passed (18)
+   Start at  09:20:17
+   Duration  276ms (transform 107ms, setup 0ms, import 141ms, tests 16ms, environment 0ms)
+

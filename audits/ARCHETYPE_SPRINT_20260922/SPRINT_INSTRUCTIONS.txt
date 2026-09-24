@@ -1,0 +1,47 @@
+Codex — FULL ARCHETYPE SPRINT on openai/mac (Nick, 2026-09-22). This is a sprint, not a task list: run it START TO FINISH without pausing.
+
+CONTINUOUS-RUN AUTHORITY (read twice):
+• You already have authority for every action in this sprint. Do NOT stop to ask for approval, a decision, a push, a merge, a label, a hosted run or a "go".
+• Do NOT report between items. Work → commit (signed) → immediately start the next item. ONE report, at the very end.
+• A RED IS DATA, NOT A STOP. Record the exact numbers and continue to the next item.
+• Ambiguity is not a stop: choose the option that keeps the sprint moving, write down the choice and the reason, continue.
+• If 1Password refuses a signature, keep working and retry it until it answers. Never commit unsigned.
+• The sprint is COMPLETE only when every item below has been attempted and committed. Finishing three of eleven is not finishing.
+• If you are interrupted or run out of room, stop only BETWEEN plans, with the current plan committed, and the next session resumes at the next unticked line of the ledger.
+
+SPRINT POSTURE: breadth beats polish. Getting all eleven plans painted and rigged matters more than perfecting any one of them — Nick reviews and fixes afterwards. Take the first acceptable paint, do not iterate for beauty, do not tune a rig beyond what its static rows and one film need, do not chase a red you have already recorded with its number, and never spend a second night on one plan. A usable archetype with known reds is a WIN — ledger it and move on. The only things never traded for speed: signed commits, declared (not inferred) presence, no gate/contract/limit/threshold changes, no weakened tests, and evidence written after the run that produced it.
+
+LEDGER (create it first, update it after every plan, commit it with that plan): audits/ARCHETYPE_SPRINT_20260922/LEDGER.md — one line per item: plan · exemplar · commit · static rows · film refusals · CPU p95 · sheet path · PASS/RED with the number. This file is how the sprint resumes without losing position.
+
+LANE AND RULES: work only in /Users/nick/Projects/celestial-frontier-openai-mac on branch openai/mac; Claude's lane /Users/nick/Projects/celestial-frontier-anthropic-mac is READ ONLY by absolute path. Signed commits only. No fetch, sync, push, PR, merge, release or deploy at any point — Nick does those after your report. S2 (five crabs + Civet solver-mode receipts) is the only battery halt. No repeated batteries, no unchanged retry; every number written after the run that produced it. "One commit per item" is a default, not a law — where an instrument needs a commit sequence (item 1), use it.
+
+CONTEXT: Claude's lane head is 0190e2ff; its ROADMAP's 2026-09-23 handoff is the full picture (read-only). The morph system is finished there — one painted archetype becomes a per-genome individual (palette, painted marking masks, proportion) on the battle stage AND the Compendium card, on every device. Your Glass fix, Civet masks, borrowed-atlas option and rigid-support IK are merged. The 631 Earth fauna fall into 13 body plans; ALL 13 already have family contracts; only brachyuran (5 crabs) and quadruped (Civet + Bear) are painted, covering 218 species. The other ELEVEN cover 413. The multiplier is done; the painted library is the bottleneck. This sprint paints all eleven.
+
+ITEM 1 — I5, the Compendium measured re-seal (the last red on PR #43; it blocks develop).
+Why it is stuck: tests/current-producer-authorities.test.ts requires budgets/compendium-memory-v1.json's producerAuthority to equal the current build's producer (mismatching paths: inputs.index.sha256, inputs.owner.relativePath/sha256, inputs.worker.relativePath/sha256, inputs.painter.relativePath/sha256, inputs.serviceWorker.sha256, composite). The budget carries the 2026-09-02 producer 357ad8db3729ad3252b9c67bcf4a629328cd9e90cb35c1e88d6ed7476cb00ece; the current evidence build produces 9bfcefcec871e0d4fcfdb03847021f7dbe0a40e6c4c0596eb5023722d4b50a7d (index 5167e2f2…, owner assets/tame-greeting-audio-de5qrXzU.js, worker/painter assets/species-art.worker-BpAtCvTQ.js). tests/compendium-budget.test.ts PINS the old value, so the two agree only after a measured re-seal of the budget AND its historical samples together. A hand re-bind was tried on Claude's lane and correctly refused by those pins (reverted). Both entry points refuse by design: `--calibrate` → "candidate calibration is closed because the measured Compendium budget is active"; `npm run compendiummem` → "built index/owner/worker/painter does not match the Compendium calibration authority".
+Authorized sequence:
+  A. COMMIT A (signed) — authority repair only: re-bind the budget's producerAuthority to the current evidence build's producer, nothing else. Disclose in the message that compendium-budget's "fails closed without rebinding historical samples" pin is RED by construction in this intermediate state and is resolved by commit B. Never weaken or delete that pin.
+  B. MEASURE — one standalone measurement on the clean committed tree, exact Edge, no retry.
+  C. COMMIT B (signed) — the measured evidence, the re-sealed historical samples and ceilings, and the pinned values in tests/compendium-budget.test.ts brought to the measured truth. End state: `npx vitest run tests/current-producer-authorities.test.ts tests/compendium-budget.test.ts` green AND `node tools/check-profile.mjs --profile=develop` green. Say which pins changed and why the measurement is the reason.
+If the measurement is RED: commit the evidence anyway, restore the budget to the sealed 357ad8db… in that same commit so the repo is not half-repaired, name the refusal in the ledger, and go straight to item 2. No retry, no stop.
+
+ITEMS 2–12 — ELEVEN painted archetypes, one per uncovered body plan, in this exact order (largest species coverage first). Exemplars are verified to exist in reference/fauna.json:
+   2. fish (132 species) — Salmon
+   3. biped-bird (102) — Eagle
+   4. insect (41) — Beetle
+   5. serpent (26) — Python
+   6. hopper (18) — Tree Frog
+   7. primate (17) — Chimpanzee
+   8. radial (12) — Starfish
+   9. arachnid (9) — Tarantula
+  10. cephalopod (8) — Octopus
+  11. flyer-membrane (4) — Fruit Bat
+  12. myriapod (3) — Centipede
+For EACH, the chain you have already run twice: compile the prompt from the retained kit prompt + that species' genome + its family contract's part list (the method used for the crabs and the Civet); paint the master at 1254² side-on in the kit's one hand (magenta key or alpha); write the presence declaration yourself (hidden / absent / folded — declared, never inferred); run the IC-3 writers (record, masks, observed split, binding); run the static rows; run ONE native film on the battle2 harness; produce a review sheet for Nick (master, labels, fit, film still); update the ledger; commit signed; CONTINUE IMMEDIATELY to the next plan.
+Acceptance per archetype (recorded, never a stop): exact rest PASS; static rows green or every red named per row with its first-refusal number; zero rig refusals in the film; CPU inside the painted tier (3.5 ms desktop p95) or the measured number reported honestly.
+
+ITEM 13 — marking masks for the fish archetype (Salmon), same contract as the crab and Civet sets: striped, spotted, banded, mottled, marbled, eye-spotted (plain and iridescent get none), master pixel space, never outside the keyed alpha, markings.json with pattern → file → sha256 → exact prompt bytes, plus a six-mask composite sheet.
+
+HARD STOP RULES — the ONLY reasons to stop, and each ends only ITS item unless stated: (a) a family contract, solver, limit, gate or threshold would have to change to admit an archetype — record the exact refusal in the ledger and move to the NEXT plan; never edit a contract or loosen a gate in this sprint; (b) a paint comes back wrong — ONE corrected re-prompt (retain the rejected original and its prompt bytes); a second failure ends that plan only, ledger it and move on; (c) an S2 sentinel red — stop the WHOLE sprint and report at once; (d) a destructive or irreversible operation would be required — stop and report. Do not touch S2 sentinels, accepted bindings, the solver, or budgets outside item 1; do not modify Claude's lane.
+
+FINAL REPORT (once, at the very end): the completed ledger, one packet README per item under audits/ with hashes, run ids, films and sheets, and a single summary naming what passed, what is red with its numbers, and paired next steps for Nick and Claude. Then hold.

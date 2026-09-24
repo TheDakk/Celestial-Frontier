@@ -1,0 +1,366 @@
+{
+  "schema": "cf.sprint-refusal-findings/v1",
+  "report": "static-01.json",
+  "sourceHead": "2398916ea8941af484dbbfb25591dd56e2b0bcb5",
+  "recipe": "49fcaa4a87a2c1210f5c4fa550ede4da2312a9f3d5ebea62d963db86ee20c3d9",
+  "binding": "7af573437412e3a82de82f412fb0320506a7e06b66b93afc19fc6411cf87ec43",
+  "exactRest": true,
+  "changedVisibleRgbaChannels": 0,
+  "refusals": [
+    {
+      "id": "dodge",
+      "samples": 16,
+      "firstRefusal": {
+        "sampleIndex": 16,
+        "sampleNumber": 17,
+        "ms": 37.333333333333336,
+        "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 8\n    at solveArapSkin (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:24965:27)\n    at Object.applyPose (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:25442:5)\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:15289:9)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:25609:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:25726:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+        "contact": {
+          "pose": {
+            "root": {
+              "rotation": 0,
+              "dx": -0.131358,
+              "dy": -0.026272
+            },
+            "pelvis": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "spine": {
+              "rotation": -0.055023,
+              "dx": 0,
+              "dy": 0
+            },
+            "chest": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "neck": {
+              "rotation": -0.055023,
+              "dx": 0,
+              "dy": 0
+            },
+            "head": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "jaw": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarShoulder": {
+              "rotation": -0.275115,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarElbow": {
+              "rotation": -0.18341,
+              "dx": 0,
+              "dy": 0
+            },
+            "armFarHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearShoulder": {
+              "rotation": -0.275115,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearElbow": {
+              "rotation": -0.18341,
+              "dx": 0,
+              "dy": 0
+            },
+            "armNearHand": {
+              "rotation": 0,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarHip": {
+              "rotation": 0.229263,
+              "dx": 0,
+              "dy": 0
+            },
+            "legFarKnee": {
+              "rotation": -0.40070026967088007
+            },
+            "legFarFoot": {
+              "rotation": -0.12451008073088077
+            },
+            "legNearHip": {
+              "rotation": 0.229263,
+              "dx": 0,
+              "dy": 0
+            },
+            "legNearKnee": {
+              "rotation": 0.051168936891786566
+            },
+            "legNearFoot": {
+              "rotation": -0.7051612345730275
+            }
+          },
+          "contacts": [
+            {
+              "joint": "legFarFoot",
+              "target": {
+                "x": 0.11802232854864433,
+                "y": 0.8333333333333334
+              },
+              "endpointTarget": {
+                "x": 0.12016000388796784,
+                "y": 0.8349164370964176
+              },
+              "paintedTarget": {
+                "x": 0.12440191387559808,
+                "y": 0.8269537480063796
+              },
+              "stance": true
+            },
+            {
+              "joint": "legNearFoot",
+              "target": {
+                "x": 0.3843700159489633,
+                "y": 0.8580542264752791
+              },
+              "endpointTarget": {
+                "x": 0.3845713097009766,
+                "y": 0.8605846560036584
+              },
+              "paintedTarget": {
+                "x": 0.39035087719298245,
+                "y": 0.8588516746411483
+              },
+              "stance": true
+            }
+          ],
+          "maxError": 1.2412670766236366e-16,
+          "compression": 0,
+          "maxPaintTargetErrorPx": 0.0065227870574569155
+        },
+        "pose": {
+          "root": {
+            "rotation": 0,
+            "dx": -0.131358,
+            "dy": -0.026272
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": -0.055023,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": -0.055023,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": -0.275115,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": -0.18341,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarHand": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearShoulder": {
+            "rotation": -0.275115,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": -0.18341,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearHand": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarHip": {
+            "rotation": 0.229263,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.40070026967088007
+          },
+          "legFarFoot": {
+            "rotation": -0.12451008073088077
+          },
+          "legNearHip": {
+            "rotation": 0.229263,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": 0.051168936891786566
+          },
+          "legNearFoot": {
+            "rotation": -0.7051612345730275
+          }
+        },
+        "arapStats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 74.06186117866609,
+          "rmsTargetErrorPx": 3.974131368123677,
+          "maximumProjectionPx": 73.79906071643153,
+          "flippedTriangles": 8,
+          "minimumAreaRatio": -0.03548368563274386,
+          "orientationPasses": 128
+        }
+      }
+    },
+    {
+      "id": "faint",
+      "samples": 89,
+      "firstRefusal": {
+        "sampleIndex": 89,
+        "sampleNumber": 90,
+        "ms": 385.6666666666667,
+        "error": "Error: Contact: faint@385.6666666666667 exceeds scale compression bound\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:15985:57)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:25499:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:25609:45\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:15283:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:25609:17\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:25726:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+        "contact": null,
+        "pose": {
+          "root": {
+            "rotation": 0.186906,
+            "dx": -0.015298,
+            "dy": 0.25111107015874684
+          },
+          "pelvis": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "spine": {
+            "rotation": 0.193028,
+            "dx": 0,
+            "dy": 0
+          },
+          "chest": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "neck": {
+            "rotation": 0.293709,
+            "dx": 0,
+            "dy": 0
+          },
+          "head": {
+            "rotation": 0.371728,
+            "dx": 0,
+            "dy": 0
+          },
+          "jaw": {
+            "rotation": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarShoulder": {
+            "rotation": 0.549322,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarElbow": {
+            "rotation": -0.657103,
+            "dx": 0,
+            "dy": 0
+          },
+          "armFarHand": {
+            "rotation": 0.133504,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearShoulder": {
+            "rotation": 0.549322,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearElbow": {
+            "rotation": -0.657103,
+            "dx": 0,
+            "dy": 0
+          },
+          "armNearHand": {
+            "rotation": 0.133504,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarHip": {
+            "rotation": 0.657103,
+            "dx": 0,
+            "dy": 0
+          },
+          "legFarKnee": {
+            "rotation": -0.6284841684339537
+          },
+          "legFarFoot": {
+            "rotation": -0.7235824562688633
+          },
+          "legNearHip": {
+            "rotation": 0.657103,
+            "dx": 0,
+            "dy": 0
+          },
+          "legNearKnee": {
+            "rotation": -0.8599902302294732
+          },
+          "legNearFoot": {
+            "rotation": -0.08258925019697703
+          }
+        },
+        "arapStats": {
+          "rigid": false,
+          "maximumTargetErrorPx": 79.34781149196354,
+          "rmsTargetErrorPx": 5.111277454893996,
+          "maximumProjectionPx": 50.91746269133732,
+          "flippedTriangles": 0,
+          "minimumAreaRatio": 0.06485730390191591,
+          "orientationPasses": 65
+        }
+      }
+    },
+    {
+      "id": "presentation",
+      "samples": 593,
+      "firstRefusal": {
+        "ms": 9883.333333333334,
+        "sampleNumber": 594,
+        "error": "Error: Contact: dodge@80.9774124622345 exceeds scale compression bound\n    at Object.resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:15985:57)\n    at resolve (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:25499:26)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:25685:44\n    at Object.update (file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:15283:32)\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:25685:23\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-GS7o8L/run.mjs:25726:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+      }
+    }
+  ],
+  "interpretation": "Current signed runtime reproduces all three retained first refusals; no native film consumed. Initial dodge fold is at the manually reviewed proximal near-haunch ownership seam. Presentation dodge also contradicts the battle choreography unplanted convention. Faint remains grounded; source far-hip estimate needs anatomical review."
+}

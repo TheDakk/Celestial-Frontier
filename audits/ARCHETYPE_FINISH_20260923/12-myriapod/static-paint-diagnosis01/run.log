@@ -1,0 +1,40 @@
+{
+  "output": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis01/report.json",
+  "findings": [
+    {
+      "action": "tame",
+      "reproduced": true,
+      "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2",
+      "foldParts": {
+        "leg4-near": 2
+      },
+      "foldBounds": [
+        822,
+        724,
+        841,
+        744
+      ],
+      "drifts": []
+    },
+    {
+      "action": "feed",
+      "reproduced": true,
+      "error": "Error: Contact paint drift leg5FarFoot: 0.25360331204294534",
+      "foldParts": {},
+      "foldBounds": null,
+      "drifts": [
+        {
+          "joint": "leg5FarFoot",
+          "drift": 0.25360331204294534,
+          "sameVertex": true,
+          "lbs": 0.000023027638322675856,
+          "float32": 0.000001526623722715435,
+          "arapDisplacement": [
+            -0.20210838317871094,
+            -0.1531882882118225
+          ]
+        }
+      ]
+    }
+  ]
+}

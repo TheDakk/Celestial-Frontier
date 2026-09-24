@@ -1,0 +1,488 @@
+{
+  "id": "starfish",
+  "family": "radial",
+  "landmarksPx": {
+    "root": [
+      614,
+      653
+    ],
+    "centre": [
+      636,
+      606
+    ],
+    "bell": [
+      641,
+      510
+    ],
+    "arm0Seg0": [
+      646,
+      430
+    ],
+    "arm0Seg1": [
+      650,
+      245
+    ],
+    "arm0Seg2": [
+      646,
+      76
+    ],
+    "arm1Seg0": [
+      435,
+      562
+    ],
+    "arm1Seg1": [
+      246,
+      482
+    ],
+    "arm1Seg2": [
+      61,
+      386
+    ],
+    "arm2Seg0": [
+      751,
+      747
+    ],
+    "arm2Seg1": [
+      894,
+      948
+    ],
+    "arm2Seg2": [
+      1069,
+      1148
+    ],
+    "arm3Seg0": [
+      509,
+      765
+    ],
+    "arm3Seg1": [
+      332,
+      960
+    ],
+    "arm3Seg2": [
+      181,
+      1118
+    ],
+    "arm4Seg0": [
+      833,
+      555
+    ],
+    "arm4Seg1": [
+      1020,
+      484
+    ],
+    "arm4Seg2": [
+      1183,
+      390
+    ]
+  },
+  "groundLineY": 0.97,
+  "materials": {
+    "surface": "warty"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "central-disc-upper",
+      "joint": "bell",
+      "layer": "near",
+      "polygonPx": [
+        [
+          563,
+          500
+        ],
+        [
+          704,
+          511
+        ],
+        [
+          735,
+          541
+        ],
+        [
+          690,
+          579
+        ],
+        [
+          635,
+          592
+        ],
+        [
+          566,
+          557
+        ]
+      ]
+    },
+    {
+      "id": "arm0-base",
+      "joint": "arm0Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          905.7311608961304,
+          360
+        ],
+        [
+          779,
+          491
+        ],
+        [
+          509,
+          470
+        ],
+        [
+          389.8723404255319,
+          360
+        ]
+      ]
+    },
+    {
+      "id": "arm0-middle",
+      "joint": "arm0Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1070.1914460285134,
+          190
+        ],
+        [
+          905.7311608961304,
+          360
+        ],
+        [
+          389.8723404255319,
+          360
+        ],
+        [
+          205.7659574468085,
+          190
+        ]
+      ]
+    },
+    {
+      "id": "arm0-tip",
+      "joint": "arm0Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1254,
+          0
+        ],
+        [
+          1070.1914460285132,
+          190
+        ],
+        [
+          205.7659574468085,
+          190
+        ]
+      ]
+    },
+    {
+      "id": "arm4-base",
+      "joint": "arm4Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1254,
+          1106.25
+        ],
+        [
+          1254,
+          1254
+        ],
+        [
+          858,
+          722
+        ],
+        [
+          779,
+          491
+        ],
+        [
+          856.5950085082246,
+          410.79126488939306
+        ]
+      ]
+    },
+    {
+      "id": "arm4-middle",
+      "joint": "arm4Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1254,
+          802.5679012345679
+        ],
+        [
+          1254,
+          1106.25
+        ],
+        [
+          856.5950085082246,
+          410.79126488939306
+        ],
+        [
+          999.792822978324,
+          262.7699450897745
+        ]
+      ]
+    },
+    {
+      "id": "arm4-tip",
+      "joint": "arm4Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1254,
+          0
+        ],
+        [
+          1254,
+          802.5679012345679
+        ],
+        [
+          999.792822978324,
+          262.7699450897745
+        ]
+      ]
+    },
+    {
+      "id": "arm2-base",
+      "joint": "arm2Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          632,
+          965.7533333333333
+        ],
+        [
+          632,
+          827
+        ],
+        [
+          858,
+          722
+        ],
+        [
+          896.4168049185128,
+          773.6104550925475
+        ]
+      ]
+    },
+    {
+      "id": "arm2-middle",
+      "joint": "arm2Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          632,
+          1175.827868852459
+        ],
+        [
+          632,
+          965.7533333333333
+        ],
+        [
+          896.4168049185128,
+          773.6104550925475
+        ],
+        [
+          1015.5971738856975,
+          933.7214558262401
+        ]
+      ]
+    },
+    {
+      "id": "arm2-tip",
+      "joint": "arm2Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1254,
+          1254
+        ],
+        [
+          632,
+          1254
+        ],
+        [
+          632,
+          1175.827868852459
+        ],
+        [
+          1015.5971738856975,
+          933.7214558262401
+        ]
+      ]
+    },
+    {
+      "id": "arm3-base",
+      "joint": "arm3Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          357.48327408764226,
+          772.6010772884619
+        ],
+        [
+          401,
+          714
+        ],
+        [
+          632,
+          827
+        ],
+        [
+          632,
+          998.8918918918919
+        ]
+      ]
+    },
+    {
+      "id": "arm3-middle",
+      "joint": "arm3Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          632,
+          1254
+        ],
+        [
+          597.4470588235295,
+          1254
+        ],
+        [
+          201.53380177148796,
+          982.60784798852
+        ],
+        [
+          357.48327408764226,
+          772.6010772884619
+        ],
+        [
+          632,
+          998.8918918918919
+        ]
+      ]
+    },
+    {
+      "id": "arm3-tip",
+      "joint": "arm3Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          597.4470588235295,
+          1254
+        ],
+        [
+          0,
+          1254
+        ],
+        [
+          201.53380177148796,
+          982.60784798852
+        ]
+      ]
+    },
+    {
+      "id": "arm1-base",
+      "joint": "arm1Seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          396.27313944857195,
+          365.9103645202924
+        ],
+        [
+          509,
+          470
+        ],
+        [
+          401,
+          714
+        ],
+        [
+          223.40414229758008,
+          953.15651660675
+        ]
+      ]
+    },
+    {
+      "id": "arm1-middle",
+      "joint": "arm1Seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          1254
+        ],
+        [
+          0,
+          946.4285714285714
+        ],
+        [
+          265.38582615196947,
+          245.051745169795
+        ],
+        [
+          396.27313944857195,
+          365.9103645202924
+        ],
+        [
+          223.40414229758008,
+          953.15651660675
+        ]
+      ]
+    },
+    {
+      "id": "arm1-tip",
+      "joint": "arm1Seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          946.4285714285714
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          265.3858261519694,
+          245.05174516979497
+        ]
+      ]
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "declarations": "Five visible arms: arm0 upper (nearly centred), arm4 upper-right, arm2 lower-right, arm3 lower-left, arm1 upper-left. Swap original1/4 identities to existing even-right/odd-left motion semantics; do not claim a strong handedness for the nearly central upper arm. No absent, hidden or folded chains. Bell is the existing template upper-core slot, not a jellyfish anatomy claim.",
+    "visualAcceptance": "candidate for Nick; first acceptable paint",
+    "landmarkMethod": "Manual observation of this face-on master. The species reference expressly has no true side profile. No other master coordinates, hidden surfaces or anatomy are copied.",
+    "materialAuthority": "warty is accepted by materialFromSkinName in motion/secondary.ts; it represents the painted pebbled/granular surface.",
+    "repair": "Manual coherent disc defined by five visible inter-arm valleys. Continuous outer sectors and shared cross-lines replace narrow arm polygons so complete arm edges and tube feet remain on their arm. Bell pivot641,510 and patch are inside upper central disc. Coordinates are authored visual choices, not measured anatomical hinges.",
+    "supportPolicy": "Root-owned central core remains fixed. Bell and five arm tips keep shape joints; continuous soft arm base/middle surfaces use existing flexible observed collars/weights. No pin deletion after compilation, solver/gate change or contact invention."
+  }
+}

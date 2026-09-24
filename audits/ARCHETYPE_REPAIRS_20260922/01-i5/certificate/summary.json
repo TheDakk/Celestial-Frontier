@@ -1,0 +1,177 @@
+{
+  "runId": "20260922-i5-focus-89b5da95c185",
+  "status": "pass",
+  "lifecycle": {
+    "schema": "cf-v2-compendium-report-lifecycle/v1",
+    "status": "complete"
+  },
+  "source": {
+    "begin": {
+      "commit": "89b5da95c185a1e8f08080ed3f42bab8a0494ec7",
+      "branch": "openai/mac",
+      "state": "committed",
+      "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+    },
+    "end": {
+      "commit": "89b5da95c185a1e8f08080ed3f42bab8a0494ec7",
+      "branch": "openai/mac",
+      "state": "committed",
+      "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+    }
+  },
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.48",
+    "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.7",
+    "protocol_version": "1.3"
+  },
+  "durationMs": 56765,
+  "expectedOutcomes": 78,
+  "passingOutcomes": 78,
+  "findings": [],
+  "producerAuthority": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "bd8edd1b570d4bc4e1933a87a9e0552e75208d18ca43c40d2ffcd6712ebc1a5b",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "55e439ce77ee0440e0038de9802d4cb8746504438e8e97224c8a6dd7b4e7c79e"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-CYnzTOVq.js",
+        "sha256": "565e33887fa37e962a95a6cfa2ab0ef5d28fc2baa5cdde4b1e770f2cd20ab800"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-BtRvoDhH.js",
+        "sha256": "efb212d2336903157a32e998096c4b4fc4adf728dcee2fd89719574daa48d0ef"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-BtRvoDhH.js",
+        "sha256": "efb212d2336903157a32e998096c4b4fc4adf728dcee2fd89719574daa48d0ef"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "a514f038dab983359e0e5f9d0d7e3d9fc719815a1ef938eff3c834d8e3405ebf"
+      }
+    }
+  },
+  "measurementAuthority": {
+    "schema": "cf-v2-compendium-measurement-authority/v1",
+    "sha256": "6a829fb18eab4c171afaace0f49ad2a987cfcdc520d33dbc05337c379df85ee2",
+    "inputs": {
+      "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
+      "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+      "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
+      "budgetSchema": "9601a25a6193bc19b2b7ab09ff68a819bdc0e87241c041d90f0bfb1d9d02620f",
+      "outcomeContract": "1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692",
+      "collector": "3ce7ed13c57f7feabc2653b9f7ce5eb323bc3305a19646f2cd93af5032d2dc5e",
+      "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
+      "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
+      "workspaceLock": "ceb20c120f1c2a889124f5e90050cf0df44768cd9c5a61cb1558ca5373371ae8",
+      "package": "c55abed7f6669694d53e2e756e6f743ecf9a88228eb8a1702d19e9ebc732efc0",
+      "packageLock": "744f7c5079d0892fee85d6d2af20c343955ff0d47bda9cce8368d9babd6d1402",
+      "appPackage": "282354469f5a4b5bfac27bd33b0d6d1605ff15c3309c09f0b3d25a794cbb1513",
+      "baselineSaveFixtures": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+      "speciesArtBuildGraph": "e591551391f3ed31a494c94d7e1f659633daa460f0571b973bc81cd6888a9c66",
+      "outcomeInventory": "bd4f8a9ef37538b09582c316837dae05b1bc682cf6cb5f6df0fee4a2621929b0"
+    }
+  },
+  "reportRawBytes": 9531555,
+  "reportRawSha256": "11c67b20cfa1b974b9e75794a85591a577013e4d064af35e986b580d3d183a97",
+  "reportGzipSha256": "d1708fe9fa39dfbb6d7ab2dc696eb1749d08ebcd4959d1fdad54b9fe9ba211de",
+  "memoryOutcomes": [
+    {
+      "id": "phone/heap-ceiling",
+      "profile": "phone",
+      "check": "heap-ceiling",
+      "status": "pass",
+      "diagnosis": null,
+      "evidence": {
+        "observed": {
+          "used": 8768724,
+          "embedder": 2536376,
+          "backing": 2691053,
+          "aggregate": 13911769
+        },
+        "ceilings": {
+          "used": 11534336,
+          "embedder": 4194304,
+          "backing": 5242880,
+          "aggregate": 17825792
+        }
+      }
+    },
+    {
+      "id": "desktop/heap-ceiling",
+      "profile": "desktop",
+      "check": "heap-ceiling",
+      "status": "pass",
+      "diagnosis": null,
+      "evidence": {
+        "observed": {
+          "used": 8757124,
+          "embedder": 2777136,
+          "backing": 2706931,
+          "aggregate": 14200203
+        },
+        "ceilings": {
+          "used": 15728640,
+          "embedder": 4194304,
+          "backing": 6815744,
+          "aggregate": 23068672
+        }
+      }
+    }
+  ],
+  "reviewPacket": [
+    {
+      "profile": "phone",
+      "state": "list",
+      "file": "apps/game/smoke/compendiummem-20260922-i5-focus-89b5da95c185-phone-list.png",
+      "bytes": 834506,
+      "sha256": "2af704182fe1e8b9c04133616ceccb70943d276d0359449c97a853ad464b6b66"
+    },
+    {
+      "profile": "phone",
+      "state": "focus-pinned",
+      "file": "apps/game/smoke/compendiummem-20260922-i5-focus-89b5da95c185-phone-focus-pinned.png",
+      "bytes": 790211,
+      "sha256": "f8ec6c9cb032884b7765f451cecbd34790c57f8c48d337756c3532094170ed4e"
+    },
+    {
+      "profile": "phone",
+      "state": "detail",
+      "file": "apps/game/smoke/compendiummem-20260922-i5-focus-89b5da95c185-phone-detail.png",
+      "bytes": 925561,
+      "sha256": "aa5da36fa71fb88364ff67ba35ded8068c7f9f0b998f4b1ffbdd8a440e47a803"
+    },
+    {
+      "profile": "desktop",
+      "state": "list",
+      "file": "apps/game/smoke/compendiummem-20260922-i5-focus-89b5da95c185-desktop-list.png",
+      "bytes": 638029,
+      "sha256": "1430872bc194221dfad93a503f7b43f6ec4f0add2fdd514ae4cddacb2b75e09e"
+    },
+    {
+      "profile": "desktop",
+      "state": "focus-pinned",
+      "file": "apps/game/smoke/compendiummem-20260922-i5-focus-89b5da95c185-desktop-focus-pinned.png",
+      "bytes": 628972,
+      "sha256": "e30cc09a3504fd5ccc389cf707be0590c12e1e977afa285cfdd26e9eb36c8b17"
+    },
+    {
+      "profile": "desktop",
+      "state": "detail",
+      "file": "apps/game/smoke/compendiummem-20260922-i5-focus-89b5da95c185-desktop-detail.png",
+      "bytes": 634364,
+      "sha256": "5ae158fcbcb7e7979f8805c415fd8aa3bb4e13fc14eaa4bcabaf47f04dc4fb32"
+    }
+  ],
+  "historicalCalibration": "Unchanged; current certification is separate and does not rebind old samples.",
+  "verificationExitCode": 0,
+  "automaticRetries": 0
+}

@@ -1,0 +1,15 @@
+{
+  "runId": "20260923-beetle-paint-03",
+  "verdict": "REJECTED",
+  "reviewer": "Codex parent visual inspection",
+  "traceableWalkingLegs": 5,
+  "hidden": [
+    "legFrontFar"
+  ],
+  "flightWings": 2,
+  "elytra": 2,
+  "finding": "Edit preserved the obscured far-front leg and tight framing; requested six continuous legs not delivered. No intake attempted.",
+  "masterSha256": "8487f4ed2a0e061219ffa1f64d5c99fea399a6949d6cb5735d66742b0476449b",
+  "tool": "image_gen.imagegen",
+  "toolOutputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-8f650a9b-3499-4c09-ba48-7bf597d2b6a6.png"
+}

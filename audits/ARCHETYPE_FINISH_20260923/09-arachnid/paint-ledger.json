@@ -1,0 +1,44 @@
+{
+  "schema": "cf.sprint-paint-ledger/v1",
+  "retainedEarlier": [
+    {
+      "run": "20260922-original",
+      "packet": "audits/ARCHETYPE_SPRINT_20260922/09-arachnid",
+      "result": "seven-tip painting; hidden-chain admission refused"
+    },
+    {
+      "run": "20260922-tarantula-repair-02",
+      "packet": "audits/ARCHETYPE_REPAIRS_20260922/09-arachnid",
+      "result": "six traceablewalking tips; refusedbeforeintake"
+    }
+  ],
+  "attempts": [
+    {
+      "run": "20260923-tarantula-paint-03",
+      "directory": ".",
+      "result": "REJECTED:7separablewalkingtips; nofit"
+    },
+    {
+      "run": "20260923-tarantula-paint-04",
+      "directory": "candidate-04",
+      "result": "REJECTED:7walkingtips; onefararchmissingdistal; nofit"
+    },
+    {
+      "run": "20260923-tarantula-paint-05",
+      "directory": "candidate-05",
+      "result": "REJECTED:preciseeditmergesneighboringfarlegs; nofit"
+    },
+    {
+      "run": "20260923-tarantula-paint-06",
+      "directory": "candidate-06",
+      "result": "Eight visible walking tips; fit02 exact rest passes but victory exceeds the unchanged displacement cap. Painting retained; replaced by an actual articulation correction, not fabricated landmarks."
+    },
+    {
+      "run": "20260923-tarantula-paint-07",
+      "directory": "candidate-08",
+      "result": "Selected final source; manualfit03/static04PASS13actions+896presentation,rest0; native20260923-tarantula-native-01PASS0/0. Art margin and multi-segment approximation remain for Nick review."
+    }
+  ],
+  "allGeneratedBytesRetained": true,
+  "scope": "Painting history plus pointers to measured final local qualification; no production roster or PR43 claim."
+}

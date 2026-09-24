@@ -1,0 +1,36 @@
+✖ retained fit11 key includes its positive-alpha fringe without modifying source bytes (25.439875ms)
+✔ alpha 1 and 8 pixels expand sizing while transparent coloured pixels do not (0.595042ms)
+✔ opaque legacy input retains the exact former bounding box (0.093584ms)
+✔ one positive corner pixel is retained and empty alpha refuses (0.144542ms)
+✔ malformed dimensions cannot yield a misleading box (0.327875ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 117.964125
+
+✖ failing tests:
+
+test at audits/ARCHETYPE_FINISH_20260923/12-myriapod/native-alpha-real-01.test.mjs:4:1
+✖ retained fit11 key includes its positive-alpha fringe without modifying source bytes (25.439875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'aff02aaa8588b383406d2ce6cbbbf57930fc3b7a44868afde473d032d5220676'
+  - 'a299d613f2bc2f8773fa067b7f9c190493cfff7735ebf397e4fb5c78ce01ab9f'
+  
+      at TestContext.<anonymous> (file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/native-alpha-real-01.test.mjs:8:197)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'aff02aaa8588b383406d2ce6cbbbf57930fc3b7a44868afde473d032d5220676',
+    expected: 'a299d613f2bc2f8773fa067b7f9c190493cfff7735ebf397e4fb5c78ce01ab9f',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

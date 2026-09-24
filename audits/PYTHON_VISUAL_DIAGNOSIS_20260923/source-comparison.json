@@ -1,0 +1,79 @@
+[
+  {
+    "historical": {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-entry.mjs",
+      "sha256": "16aec742557b01ca11d00f3a24e3e67969fbfe681282ce687a0c16f79d958a4e"
+    },
+    "currentReadOnlyHistoricalLane": "16aec742557b01ca11d00f3a24e3e67969fbfe681282ce687a0c16f79d958a4e",
+    "local": {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-entry.mjs",
+      "sha256": "4674ba473bc325cc2d2870a5fd0b6653f52e4152354f917d7ad6c1b49543af62"
+    }
+  },
+  {
+    "historical": {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/creature-rig.ts",
+      "sha256": "6545e1d240242f4f9c4c7d57b8fa23fec11d6cc59a95b6de10f371fefead23e8"
+    },
+    "currentReadOnlyHistoricalLane": "6545e1d240242f4f9c4c7d57b8fa23fec11d6cc59a95b6de10f371fefead23e8",
+    "local": {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig.ts",
+      "sha256": "8ecbe80466e8c5ed16ed6439ba2768757b9a02b3859736a5b2e3711c328b2f84"
+    }
+  },
+  {
+    "historical": {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "19a4f6a8e597ab5ca801a685908dcc65ceae316ca989038cddf541ee866acaed"
+    },
+    "currentReadOnlyHistoricalLane": "19a4f6a8e597ab5ca801a685908dcc65ceae316ca989038cddf541ee866acaed",
+    "local": {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "375b9e2cd331676ed6b17f5435a55fce9f59693118354ece9a99cabcfb0cd390"
+    }
+  },
+  {
+    "historical": {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "964e3b5c1a9c13c1f5d35a4ece8f69eca315dfaa12913d488d6daf229e14d3cb"
+    },
+    "currentReadOnlyHistoricalLane": "964e3b5c1a9c13c1f5d35a4ece8f69eca315dfaa12913d488d6daf229e14d3cb",
+    "local": {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "sha256": "9b23b08d8800ac634ec9dd3fff7b8939ada5747f7052e1f2be08818991056215"
+    }
+  },
+  {
+    "historical": {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/paint-skin.mjs",
+      "sha256": "c000e8f6ca3b1e5db8af82eba060a321c2522fb421dd09349654701a0a0ee9d2"
+    },
+    "currentReadOnlyHistoricalLane": "c000e8f6ca3b1e5db8af82eba060a321c2522fb421dd09349654701a0a0ee9d2",
+    "local": {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/paint-skin.mjs",
+      "sha256": "c000e8f6ca3b1e5db8af82eba060a321c2522fb421dd09349654701a0a0ee9d2"
+    }
+  },
+  {
+    "historical": {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/arap-skin.mjs",
+      "sha256": "4e6a6e7d2c0a4c7d24174758373c707a85527a535d3a3516078764fe35eb4db4"
+    },
+    "currentReadOnlyHistoricalLane": "4e6a6e7d2c0a4c7d24174758373c707a85527a535d3a3516078764fe35eb4db4",
+    "local": {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-skin.mjs",
+      "sha256": "92fcaaf491e28a99e33bc62b762816fa790ed087de963aa2dcd0636d648ce399"
+    }
+  },
+  {
+    "historical": {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/creature-animation/compiled-skin-field.mjs",
+      "sha256": "2edb8045988f97c00ac7983af24d33c0631d21f88eade72f57fc2e247f3847a8"
+    },
+    "currentReadOnlyHistoricalLane": "2edb8045988f97c00ac7983af24d33c0631d21f88eade72f57fc2e247f3847a8",
+    "local": {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/compiled-skin-field.mjs",
+      "sha256": "2edb8045988f97c00ac7983af24d33c0631d21f88eade72f57fc2e247f3847a8"
+    }
+  }
+]

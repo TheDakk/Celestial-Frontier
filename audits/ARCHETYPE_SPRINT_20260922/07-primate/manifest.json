@@ -1,0 +1,314 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3611,
+      "sha256": "1ae45d7bffc177d832f3da3a5d29236f46fd97bf1629885cd86e298a98751a4f"
+    },
+    {
+      "path": "authoring.json",
+      "bytes": 3978,
+      "sha256": "2db59e9bd0718ce1ad24e89f0643e2f34a98d876ffbe1dad072fcb164ee0cdd2"
+    },
+    {
+      "path": "declaration.txt",
+      "bytes": 1431,
+      "sha256": "6529259bc0b6f52a41be1ed8b0fe27b72b1619cb2ffaa6ab90d4b835db8b8e72"
+    },
+    {
+      "path": "execution.json",
+      "bytes": 3090,
+      "sha256": "d3ed90077df280c071f530486cece0a86f2b722d4333712b0664cdb5635eedc1"
+    },
+    {
+      "path": "finish.log",
+      "bytes": 947,
+      "sha256": "c4bea4059572ff5f0ecbf7deb392624220964d2989b93919110014662f786237"
+    },
+    {
+      "path": "fit-01/binding.json",
+      "bytes": 3212903,
+      "sha256": "953a41c7893a1d58bcdeb451e1fc2ffbf78b3a0ccc0d922bd7ec489d606755d2"
+    },
+    {
+      "path": "fit-01/declaration.json",
+      "bytes": 1602,
+      "sha256": "3282370af10525cfd9560cce61447c23060d90e3186cd50d323d76b321fd86f5"
+    },
+    {
+      "path": "fit-01/intake-provenance.json",
+      "bytes": 3010,
+      "sha256": "e630000f8864b6a435d8fe9f7bb3a04e4bc9beacf5af954704b795fed0d70687"
+    },
+    {
+      "path": "fit-01/label-authoring-receipt.json",
+      "bytes": 557,
+      "sha256": "83404cf3b6d50dbfc451f5ccb196831541d479a88f01597832822c1c5522dad1"
+    },
+    {
+      "path": "fit-01/labels.png",
+      "bytes": 59907,
+      "sha256": "898ec54e7af78b04cf0b4c6c9db0fa04ac4bced0e7cf1400df5bd720f675f0ca"
+    },
+    {
+      "path": "fit-01/parts/atlas/chimpanzee.json",
+      "bytes": 5475,
+      "sha256": "822da24081dc101a51cc951493eacd159f64212be2c629b0a439808108d9dc1f"
+    },
+    {
+      "path": "fit-01/parts/atlas/chimpanzee.png",
+      "bytes": 1899080,
+      "sha256": "27962090d0662eed174783f17bb87897e381b633895c1745b1a3bb4dc7cd509c"
+    },
+    {
+      "path": "fit-01/parts/atlas/receipt.json",
+      "bytes": 2439,
+      "sha256": "ceac8843be0912d42c8f8411dcd64277154cb3d9c9fdd21fc5d0c9a404b7ef03"
+    },
+    {
+      "path": "fit-01/parts/binding.json",
+      "bytes": 4597,
+      "sha256": "aebda404cb3b220242032970803a3ee21d71a20ee9b68656054a31c7ae61427b"
+    },
+    {
+      "path": "fit-01/parts/keyed.png",
+      "bytes": 2142185,
+      "sha256": "0298be8bc262084da12c70bdf0847ee9c1f44111475125e7d870bbb0f986d85d"
+    },
+    {
+      "path": "fit-01/parts/manifest.json",
+      "bytes": 2244,
+      "sha256": "2bf5634b93a62097b720df261d29f542c5a70922be200398f50ca3ce6ee80d72"
+    },
+    {
+      "path": "fit-01/parts/ownership.png",
+      "bytes": 270739,
+      "sha256": "603f0eb0ce1114e8a3acd6ad2aab933bbbc738e85e22dfc9ecf6b4b3937b9984"
+    },
+    {
+      "path": "fit-01/parts/parts/body.png",
+      "bytes": 437180,
+      "sha256": "fef671e5fda6c0e29aba66e1d11eb437361041c327373509775b8652637aa61d"
+    },
+    {
+      "path": "fit-01/parts/parts/chest.png",
+      "bytes": 121576,
+      "sha256": "b4e855b9a5809da1bfa66649810cd27132603ac26cedc25df17c8badd64e0fc2"
+    },
+    {
+      "path": "fit-01/parts/parts/far-arm-lower-hand.png",
+      "bytes": 170238,
+      "sha256": "fac448fa488d377451ca0cf6571a96402ce3db8ce69b72e45cf111fbd4f93312"
+    },
+    {
+      "path": "fit-01/parts/parts/far-arm-upper.png",
+      "bytes": 87056,
+      "sha256": "d7531fe3b0b7839c47d786c2a2afd0f984567a5997c358716a27bdabd9b8c555"
+    },
+    {
+      "path": "fit-01/parts/parts/far-leg-lower-foot.png",
+      "bytes": 178500,
+      "sha256": "5ca72d0ac3933d5823d418cf62a2f55a84b83b93f76d24864cd31adb5eec3e8a"
+    },
+    {
+      "path": "fit-01/parts/parts/far-leg-upper.png",
+      "bytes": 15755,
+      "sha256": "b5cb6a02b3600a5f9facc348015636d0b62c8b077541f68b86cf8624bad3adb3"
+    },
+    {
+      "path": "fit-01/parts/parts/head.png",
+      "bytes": 185867,
+      "sha256": "e06912515c6ae056d40d639c0fdc7be8f94aa6c5bf29d1918c6706c678238cfc"
+    },
+    {
+      "path": "fit-01/parts/parts/jaw.png",
+      "bytes": 45551,
+      "sha256": "c5752b02c40bbac14d8d69bf7c76106feaa632aa1b9c2e1b3ec5d9fc30be10cf"
+    },
+    {
+      "path": "fit-01/parts/parts/near-arm-lower-hand.png",
+      "bytes": 208624,
+      "sha256": "8f4314a0c731baec8efd4e161912027505a2d9032fce03d62c0a785f95156bd4"
+    },
+    {
+      "path": "fit-01/parts/parts/near-arm-upper.png",
+      "bytes": 181797,
+      "sha256": "6ee2a58506589db024d01b4dec85789ea51818fef8be91faccaa23020ceb0343"
+    },
+    {
+      "path": "fit-01/parts/parts/near-leg-lower-foot.png",
+      "bytes": 211914,
+      "sha256": "91858f166327d789f79610827fdc7adb61629a0f148ecf6ede7d23be976446e3"
+    },
+    {
+      "path": "fit-01/parts/parts/near-leg-upper.png",
+      "bytes": 211996,
+      "sha256": "8ae43052f813cc46f20109ce42e0196f10fee123756f7f36b6cbcab90dee97c4"
+    },
+    {
+      "path": "fit-01/parts/parts/neck.png",
+      "bytes": 46306,
+      "sha256": "99928af02b891fc6ca997d7c146bdfc183f205161f03b3cfb3e4c41565e482a9"
+    },
+    {
+      "path": "fit-01/parts/receipt.json",
+      "bytes": 3761,
+      "sha256": "a92295549665b9cb2e5e4ee4461d6ea7dea8ad5f7c4959dae215298a627118b2"
+    },
+    {
+      "path": "fit-01/pre-split-binding.json",
+      "bytes": 2445344,
+      "sha256": "1cc8f1f891721a0e22b9932dc19b0bba90a0ccdc24b7768c8a82216adb27e2fa"
+    },
+    {
+      "path": "fit-01/receipt.json",
+      "bytes": 2450,
+      "sha256": "4de8ff490921665cf857967331b63ee71754343ed53fa3045012cf5236ee114d"
+    },
+    {
+      "path": "fit-01/record.json",
+      "bytes": 6477,
+      "sha256": "ff606c057e360f5e2072aeeab346f34acfca159a5a796abfec735be6d4f2a633"
+    },
+    {
+      "path": "generation-receipt.json",
+      "bytes": 832,
+      "sha256": "69368737d0e1cbfc55b4f831f36b4d964ee94a896e18414b1f3f2a454a360317"
+    },
+    {
+      "path": "intake.log",
+      "bytes": 314,
+      "sha256": "fbb1838f9279fe24d2068f9c8719e1d86bac36b62715aacfdc9c5b3e13af8ccd"
+    },
+    {
+      "path": "master.png",
+      "bytes": 1847210,
+      "sha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408"
+    },
+    {
+      "path": "native-01/battle-10s.webm",
+      "bytes": 6829258,
+      "sha256": "1bd5cf9d21fe42a98aadc1ea4c6b520b053b5743c961efe4d95796fc90fcb091"
+    },
+    {
+      "path": "native-01/report.json",
+      "bytes": 224661,
+      "sha256": "fb0a7532bef2f19fcfd3508f1b72a9285b6eed73521d339fb117d099e318597a"
+    },
+    {
+      "path": "native-01/turn0-hit-approach-50.png",
+      "bytes": 1550525,
+      "sha256": "76b57b64377fa6f4e0f679c46da07a9f59c7f1fc4d98ebf1a0ffabe3d7154d22"
+    },
+    {
+      "path": "native-01/turn0-hit-impact.png",
+      "bytes": 986213,
+      "sha256": "68a1d3fd07c078f39502e4b1de6d7dcd9836db70e9a26ec01c7a2cdc62800afa"
+    },
+    {
+      "path": "native-01/turn0-hit-reaction-50.png",
+      "bytes": 1555660,
+      "sha256": "d77ede9f9ea2bbba33458d086d6dbdbd34a26e6380d599496fd62cc52bf46d7c"
+    },
+    {
+      "path": "native-01/turn0-hit-return-end.png",
+      "bytes": 1549721,
+      "sha256": "d36bd91c6011e77819391fec4536a2fcc5445dbffd849ba5d163332d3994bd11"
+    },
+    {
+      "path": "native-01/turn1-dodge-approach-50.png",
+      "bytes": 1550492,
+      "sha256": "3bf5788d96d05ec2154679b437b4f3f17b835d0a65216b005aaecfcd539e8155"
+    },
+    {
+      "path": "native-01/turn1-dodge-impact.png",
+      "bytes": 1553354,
+      "sha256": "3adecad179ffea0d0677fe0a37c2084905a7b6694d3e04f5cf2a91a9be3b88c5"
+    },
+    {
+      "path": "native-01/turn1-dodge-reaction-50.png",
+      "bytes": 1554365,
+      "sha256": "fc97b1cf5ecc8fbb9c524ca9786562e098ba539507c5410b2fc5fb5722e641d5"
+    },
+    {
+      "path": "native-01/turn1-dodge-return-end.png",
+      "bytes": 1549721,
+      "sha256": "d36bd91c6011e77819391fec4536a2fcc5445dbffd849ba5d163332d3994bd11"
+    },
+    {
+      "path": "native-01/turn2-hit-approach-50.png",
+      "bytes": 1550525,
+      "sha256": "76b57b64377fa6f4e0f679c46da07a9f59c7f1fc4d98ebf1a0ffabe3d7154d22"
+    },
+    {
+      "path": "native-01/turn2-hit-impact.png",
+      "bytes": 985842,
+      "sha256": "121450faed722337859018f848a28174eb32d8c6f936c61fcb69c64049b5db92"
+    },
+    {
+      "path": "native-01/turn2-hit-reaction-50.png",
+      "bytes": 1552222,
+      "sha256": "2bf4c791fdd1a2957bdc738a283c4f8af72500e7f638daf3af4df1e3c5e8e2c8"
+    },
+    {
+      "path": "native-01/turn2-hit-return-end.png",
+      "bytes": 1548367,
+      "sha256": "3eca07b40ebee81e6870d918769f25534e524a87357a99ce3ad441314149a480"
+    },
+    {
+      "path": "native.log",
+      "bytes": 667,
+      "sha256": "335e93e4c297e5104b1b39f0deb307d09fef1d75200832d76a5279214e73100f"
+    },
+    {
+      "path": "presence.json",
+      "bytes": 91,
+      "sha256": "d986f997305b8791db32ac13a99a9368060f4df703b93b8cae4f9a6583b299ee"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 7885,
+      "sha256": "4d454642e662b3382b990e5dcc9a2da4e12aa4cc30cc29f4f13bc53cf1e19b47"
+    },
+    {
+      "path": "request.json",
+      "bytes": 641,
+      "sha256": "8953a045cd8153b08537221f62ef45cb004affe08c7759f47e6aefc9205ecc61"
+    },
+    {
+      "path": "result.json",
+      "bytes": 1081,
+      "sha256": "aad5a6ff9a5ac83ececbc4170c0b3f0bae59787c8b040b358b99a35ce74b8cd8"
+    },
+    {
+      "path": "review-sheet.png",
+      "bytes": 1292683,
+      "sha256": "8f48e4a68c9d6c10b78dacf7dbcb7bee9212dfc40666eb392479c04ee79d86c7"
+    },
+    {
+      "path": "sheet.log",
+      "bytes": 112,
+      "sha256": "4e2e1fde3f5ad5af4b68bc2bccb75a6fab8753f2f2cfcd6a2f84a06b7d0bb034"
+    },
+    {
+      "path": "static.json",
+      "bytes": 18713,
+      "sha256": "d476b2883ece23fb88d9b3992c48b0bc4c5aec9daeb03644040235b16dd06897"
+    },
+    {
+      "path": "static.json.sources.json",
+      "bytes": 11387,
+      "sha256": "5eabdd6b40f5c88ec8a5d7a9c5d308f1ee98854ad20b25d20de362526985fbc1"
+    },
+    {
+      "path": "static.log",
+      "bytes": 2319,
+      "sha256": "88903a5ad436f46b2d930cc284596fac128bc644e02653e0c229b373224b656a"
+    },
+    {
+      "path": "subject-source.json",
+      "bytes": 6431,
+      "sha256": "9652f406d364002c708254c8e3abdc4828d9d408f4ac421cadfeeaffc9a7bbbe"
+    }
+  ]
+}

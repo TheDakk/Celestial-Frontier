@@ -1,0 +1,88 @@
+{
+  "schema": "cf.bounded-diagnostic-execution/v1",
+  "diagnostic": {
+    "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis01/run.mjs",
+    "toolReceipt": "00630f",
+    "exitCode": 0,
+    "scope": "Exactly two canonical attempted poses: tame 48ms and feed 58ms; no other motion samples",
+    "reproduced": 2,
+    "loadedSources": 57,
+    "staticSourcesCompared": 61,
+    "allSourceHashesMatchedAtExecution": true
+  },
+  "readOnlyFollowups": [
+    {
+      "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis01/selection-inspection.mjs",
+      "toolReceipt": "06375b",
+      "exitCode": 0,
+      "scope": "One leg5FarFoot geometry selection comparison; no pose execution"
+    },
+    {
+      "command": "node audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis01/root-edge-inspection.mjs",
+      "toolReceipt": "1ab8cb",
+      "exitCode": 0,
+      "scope": "Two root pins traced through retained source-join samples; no graph or pose execution"
+    }
+  ],
+  "targetedTests": {
+    "command": "node --test port/v2/tools/creature-animation/painted-contact-selector.test.mjs port/v2/tools/creature-animation/split-observed-surfaces.test.mjs",
+    "toolReceipt": "a29d8f",
+    "shellExitCode": 0,
+    "tests": 14,
+    "pass": 14,
+    "fail": 0,
+    "skipped": 0,
+    "log": "selector-tests-01.log",
+    "scope": "Changed selector/writer and existing split regression controls only; not runtime integration/S2/static/native acceptance"
+  },
+  "setupReadRefusals": [
+    {
+      "toolReceipt": "1fade6",
+      "exitCode": 1,
+      "error": "sed: port/v2/apps/game/src/motion/gsap-player.ts: No such file or directory",
+      "scope": "Read-only source lookup; no diagnostic or test executed"
+    },
+    {
+      "toolReceipt": "4a336d",
+      "exitCode": 2,
+      "error": "rg: port/v2/tools/quadruped-proof/observed-surface-split.mjs: IO error for operation on port/v2/tools/quadruped-proof/observed-surface-split.mjs: No such file or directory (os error 2)",
+      "scope": "Read-only source lookup; no diagnostic or test executed"
+    },
+    {
+      "toolReceipt": "c09e07",
+      "exitCode": 1,
+      "error": "cat: audits/ARCHETYPE_FINISH_20260923/12-myriapod/swing-selector-before-01/receipt.json: No such file or directory",
+      "scope": "Read-only snapshot filename lookup; actual receipt is manifest.json. No test or motion execution."
+    }
+  ],
+  "selectorFiles": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/painted-contact-selector.mjs",
+      "sha256": "80d67c470c44a562242359c670d66a122a9b7ee2f7451d66a5a31416628c5522"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/painted-contact-selector.d.mts",
+      "sha256": "92afc7e55ce8c5d0a0031b0c1e471c1324c868d078bad41a2678eff320e514b2"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/painted-contact-selector.test.mjs",
+      "sha256": "1f5774b10add491d56c260c99bcf39f0a18d6a4550c20c2fe8fb7854c071db0f"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs",
+      "sha256": "4d0280d20b8a1b3032595d89e28ace3c56f2c2c570458e12efc6a79423daa084"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.test.mjs",
+      "sha256": "f326f3e59197a10092c8ddce6cb5a5c98a71a0fd1b27fbd86df3c69aba31a137"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis01/selector-before/split-observed-surfaces.mjs",
+      "sha256": "b747e26e58700dba92de54a33ad22b7acfeb6a01772c19cacb6aab0ee1af63a4"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis01/selector-tests-01.log",
+      "sha256": "dc61e23ea518fd383e9f28a0aed8ff4832a2c554f8d48af01238c20bed24c02c"
+    }
+  ]
+}

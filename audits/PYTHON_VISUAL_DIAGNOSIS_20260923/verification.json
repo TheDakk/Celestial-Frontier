@@ -1,0 +1,3830 @@
+{
+  "status": "PASS",
+  "links": [
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/README.md",
+      "link": "review-push-recovery.json",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/README.md",
+      "link": "native-01/report.json",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/README.md",
+      "link": "native-01/battle-10s.webm",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/README.md",
+      "link": "review.html",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/README.md",
+      "link": "native-01/turn0-hit-approach-50.png",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/README.md",
+      "link": "native-01/turn1-dodge-reaction-50.png",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/README.md",
+      "link": "native-01/turn0-hit-return-end.png",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/README.md",
+      "link": "join-diagnosis.json",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/README.md",
+      "link": "candidate-01/receipt.json",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/README.md",
+      "link": "candidate-static-01.json",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/review.html",
+      "link": "README.md",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/review.html",
+      "link": "../ARCHETYPE_SPRINT_20260922/05-serpent/master.png",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/review.html",
+      "link": "../ARCHETYPE_SPRINT_20260922/05-serpent/fit-01/labels.png",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/review.html",
+      "link": "native-01/turn0-hit-approach-50.png",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/review.html",
+      "link": "native-01/turn1-dodge-reaction-50.png",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/review.html",
+      "link": "native-01/turn0-hit-return-end.png",
+      "exists": true
+    },
+    {
+      "from": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/review.html",
+      "link": "native-01/battle-10s.webm",
+      "exists": true
+    }
+  ],
+  "unchangedCopiedParts": [
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/atlas/python.json",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/atlas/python.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/atlas/receipt.json",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/binding.json",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/keyed.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/manifest.json",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/ownership.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/parts/body.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/parts/coil-crest.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/parts/coil-front.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/parts/coil-left-turn.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/parts/coil-middle-crossing.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/parts/coil-rear-left.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/parts/coil-rear-neck-link.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/parts/coil-right-turn.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/parts/head.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/parts/jaw.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/parts/neck-lower-curve.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/parts/neck-upper-curve.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/parts/tail-tip.png",
+      "unchanged": true
+    },
+    {
+      "file": "audits/PYTHON_VISUAL_DIAGNOSIS_20260923/candidate-01/parts/receipt.json",
+      "unchanged": true
+    }
+  ],
+  "nativeSources": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_KIT_ENGINE_FIRST_20260912/canonical-snapshot.json",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_KIT_ENGINE_FIRST_20260912/family-compiled-inputs.json",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-entry.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/capture-contract.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/positive-alpha-box.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/body-card.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle-habitat.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/particle-texture.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/anchors.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/painted-envelope.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/arena.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/parts-rig.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/stage.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/theme-library.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/habitat-arena.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/anatomy-attacks.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/pixi-adapter.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/emitter.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/effects/sequencer.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/choreography.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/cue-plan.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-performance.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-contracts.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/kinematics.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/earth-fauna-profiles.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-frame.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/paint-skin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timeline.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-skin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/seam-bridge.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/rigid-parent-frame.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/hidden-anatomy.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/compiled-skin-field.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/seam-sampling-guard.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/quadruped-template.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timing.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/rand/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/amplitude-profile.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/templates.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/pose-projection.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/motion-scale.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/biome-profile/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/secondary.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-templates.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/soundkit/mix.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/soundkit/cues.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/pose-refusal.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-projector.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle2/fallback.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/wasm-arap-sweep.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/terminal-contact-pads.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/wasm-orientation-forward.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-contact-travel.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/painted-contact-selector.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/wasm-orientation-active.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-terminal-contact.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/plant-anatomy.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/ownership-junctions.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-terminal-support.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/specialized-actions.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/additional-actions.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-active-reference.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-forward-bytes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-active-bytes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/stings.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/identity.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/combat-cues.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/rights.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/lab.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/distant-ecology-voice.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/runtime.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/events.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/combat-gameplay-voice.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/purity.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/creature-expression-voice.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/sound-witness.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/taxonomy.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/pilot-rights-data.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/ecology.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/audio/src/finite-voice-lifetime.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genome/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/describe-pick.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/creature-level-progress.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/guardian-prime.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/lineage-codec.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/combatcore/src/combat-settlement.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldconfig/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/planetgen/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/encutil/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/naming/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldidentity/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/naming/src/cleanname.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/surveyphrases/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldidentity/src/authority.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/starcatalog/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/strays/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldgen/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genetics/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/surveyphrases/src/surveyphrases.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/civilization.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/strays/src/strays.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/explicit-epoch.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/ecology/src/ecology.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/worldgen/src/worldgen.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/genetics/src/genetics.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/accessibility/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment-browser/browserExt.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/spritesheet/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment-browser/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/app/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/color/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/culling/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/dom/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/LinearBurnBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/extensions/Extensions.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment-webworker/webworkerExt.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/HardLightBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/ExclusionBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/DivideBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/HardMixBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment-webworker/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/LightenBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/ColorDodgeBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/ColorBurnBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/events/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/LinearDodgeBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/LinearLightBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/extensions/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/DarkenBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/DifferenceBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/app/Application.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/LuminosityBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/spritesheet/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/NegationBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/OverlayBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/ticker/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/prepare/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/loader/Loader.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/detections/parsers/detectDefaults.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/PinLightBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/SaturationBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/detections/parsers/detectMp4.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/SoftLightBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/detections/parsers/detectAvif.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/accessibility/AccessibilitySystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/accessibility/accessibilityTarget.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/app/ResizePlugin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/detections/parsers/detectOgv.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/SubtractBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/detections/parsers/detectWebm.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/VividLightBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/advanced-blend-modes/ColorBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/cache/Cache.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/cache/parsers/cacheTextureArray.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/app/TickerPlugin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/BackgroundLoader.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/basis/detectBasis.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/utils/checkDataUrl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/detections/parsers/detectWebp.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/utils/checkExtension.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/Assets.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/utils/convertToList.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/utils/copySearchParams.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/resolver/Resolver.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/loader/parsers/LoaderParser.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/basis/worker/loadBasisOnWorker.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/color/Color.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/loader/parsers/loadTxt.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/utils/createStringVariations.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/basis/utils/createLevelBuffers.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/loader/parsers/loadJson.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/basis/loadBasis.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/utils/isSingleItem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/loader/parsers/loadWebFont.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/basis/utils/setBasisTranscoderPath.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/loader/parsers/textures/loadTextures.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/detections/utils/testVideoFormat.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/loader/parsers/textures/loadSVG.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/basis/utils/gpuFormatToBasisTranscoderFormat.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/dds/parseDDS.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/loader/parsers/textures/utils/createTexture.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/loader/workers/WorkerManager.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/loader/parsers/textures/loadVideoTextures.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/resolver/parsers/resolveJsonUrl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/dds/loadDDS.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/resolver/parsers/resolveTextureUrl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/detections/utils/testImageFormat.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/ktx/loadKTX.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/loadKTX2.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/shared/detectCompressed.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/dds/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/culling/cullingMixin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/gpuFormatToKTXBasisTranscoderFormat.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/glFormatToGPUFormat.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/shared/resolveCompressedTextureUrl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/getTextureFormatFromKTXTexture.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/culling/Culler.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/convertFormatIfRequired.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/dom/DOMPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment/autoDetectEnvironment.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/ktx/parseKTX.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/dom/CanvasObserver.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/culling/CullerPlugin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/dom/DOMContainer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/worker/loadKTX2onWorker.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment/adapter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/events/EventTicker.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/vkFormatToGPUFormat.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/events/EventBoundary.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/createLevelBuffersFromKTX.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/events/FederatedEvent.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/events/FederatedMouseEvent.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/setKTXTranscoderPath.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/events/FederatedPointerEvent.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment-browser/BrowserAdapter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment-webworker/WebWorkerAdapter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/events/FederatedWheelEvent.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/events/EventSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/blend-modes/blend-template.vert.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/blend-modes/blend-template.frag.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/blend-modes/hsl.wgsl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/alpha/alpha.frag.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/alpha/alpha.wgsl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/blur/gpu/blur-template.wgsl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/blend-modes/blend-template.wgsl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/color-matrix/colorMatrixFilter.frag.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/color-matrix/colorMatrixFilter.wgsl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/events/FederatedEventTarget.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/defaultFilter.vert.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/displacement/displacement.vert.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/displacement/displacement.wgsl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/noise/noise.wgsl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/passthrough/passthrough.wgsl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/blend-modes/hls/GLhls.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/displacement/displacement.frag.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/blend-modes/hls/GPUhls.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/noise/noise.frag.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/alpha/AlphaFilter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/passthrough/passthrough.frag.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/blur/BlurFilter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/blend-modes/BlendModeFilter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/mask/mask.wgsl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/mask/mask.frag.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/blur/BlurFilterPass.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/mask/mask.vert.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/blur/gl/generateBlurGlProgram.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/CanvasFilterSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/blur/gpu/generateBlurProgram.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/blur/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/blur/gl/generateBlurFragSource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/displacement/DisplacementFilter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/Filter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/blur/gl/generateBlurVertSource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/passthrough/PassthroughFilter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/FilterPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/noise/NoiseFilter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/defaults/color-matrix/ColorMatrixFilter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/mask/MaskFilter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/FilterEffect.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/misc/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/FilterSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/matrix/groupD8.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/point/Point.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/shapes/Circle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/matrix/Matrix.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/misc/pow2.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/point/pointInTriangle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/shapes/Rectangle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/misc/squaredDistanceToLineSegment.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/shapes/Polygon.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/shapes/RoundedRectangle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/point/ObservablePoint.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/prepare/PrepareBase.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/prepare/PrepareQueue.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/shapes/Ellipse.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/prepare/PrepareSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/prepare/PrepareUpload.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/canvas/CanvasBatchAdaptor.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/shapes/Triangle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/gl/utils/checkMaxIfStatementsInShader.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/gl/utils/maxRecommendedTextures.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/gl/GlBatchAdaptor.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/gpu/getTextureBatchBindGroup.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/shared/BatcherPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/shared/BatchTextureArray.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/shared/BatchGeometry.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/gpu/generateLayout.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/gpu/GpuBatchAdaptor.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/gpu/generateGPULayout.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/shared/DefaultBatcher.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/shared/Batcher.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/compileHighShaderToProgram.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/batcher/shared/DefaultShader.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/addBits.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/compileInputs.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/shader-bits/colorBit.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/compileHighShader.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/compileHooks.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/defaultProgramTemplate.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/formatShader.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/compileOutputs.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/shader-bits/globalUniformsBit.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/injectBits.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/shader-bits/generateTextureBatchBit.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/shader-bits/localUniformBit.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/shader-bits/roundPixelsBit.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/color/ColorMask.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/alpha/AlphaMask.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/shader-bits/textureBit.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/color/CanvasColorMaskPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/alpha/AlphaMaskPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/color/ColorMaskPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/MaskEffectManager.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/stencil/StencilMaskPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/scissor/ScissorMask.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/stencil/CanvasStencilMaskPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/utils/addMaskBounds.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/stencil/StencilMask.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/autoDetectRenderer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/CanvasContextSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/utils/addMaskLocalBounds.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/CanvasRenderer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/CanvasLimitsSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/renderTarget/CanvasRenderTargetAdaptor.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/renderTarget/CanvasRenderTargetSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/texture/CanvasTextureSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/utils/canUseNewCanvasBlendModes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/utils/canvasUtils.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/buffer/GlBufferSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/buffer/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/buffer/GlBuffer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/utils/mapCanvasBlendModesToPixi.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlBackBufferSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/geometry/GlGeometrySystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/geometry/utils/getGlTypeFromFormat.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlColorMaskSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlEncoderSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlUboSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlRenderTarget.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlLimitsSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/renderTarget/GlRenderTargetAdaptor.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/GenerateShaderSyncCode.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/GlProgram.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/context/GlContextSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/GlUniformGroupSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/GlProgramData.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlStencilSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/getBatchSamplersUniformGroup.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/GlShaderSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/compileShader.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/renderTarget/GlRenderTargetSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/generateProgram.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/defaultValue.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/migrateFragmentFromV7toV8.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/ensureAttributes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/extractAttributesFromGlProgram.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/getUboData.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/getMaxFragmentPrecision.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/getTestContext.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/getUniformData.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/logProgramError.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/preprocessors/ensurePrecision.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/preprocessors/addProgramDefines.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/preprocessors/stripVersion.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/preprocessors/insertVersion.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/preprocessors/setProgramName.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/mapSize.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/mapType.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/utils/createUboSyncSTD40.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/utils/generateArraySyncSTD40.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/utils/createUboElementsSTD40.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/utils/generateUniformsSync.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/state/GlStateSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/state/mapWebGLBlendModesToPixi.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/utils/generateUniformsSyncTypes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/uploaders/glUploadBufferImageResource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/uploaders/glUploadCubeTextureResource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/uploaders/glUploadCompressedTextureResource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/GlTextureSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/uploaders/glUploadVideoResource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/uploaders/glUploadImageResource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/mapFormatToGlFormat.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/mapFormatToGlType.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/mapFormatToGlInternalFormat.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/pixiToGlMaps.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/mapViewDimensionToGlTarget.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/getSupportedGlCompressedTextureFormats.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/unpremultiplyAlpha.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/GlTexture.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/WebGLRenderer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/buffer/GpuBufferSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuColorMaskSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuDeviceSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/buffer/UboBatch.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuLimitsSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/applyStyleParams.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/BindGroupSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuStencilSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/renderTarget/GpuRenderTarget.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuEncoderSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuUboSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuUniformBatchPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/BindGroup.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/renderTarget/calculateProjection.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/GpuProgram.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/GpuShaderSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/pipeline/PipelineSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/renderTarget/GpuRenderTargetAdaptor.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/createUboElementsWGSL.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/createUboSyncFunctionWGSL.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/renderTarget/GpuRenderTargetSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/generateGpuLayoutGroups.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/extractStructAndGroups.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/state/GpuBlendModesToPixi.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/extractAttributesFromGpuProgram.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/generateArraySyncWGSL.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/generateLayoutHash.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/removeStructAndGroupDuplicates.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/uploaders/gpuUploadBufferImageResource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/state/GpuStencilModesToPixi.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/state/GpuStateSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/uploaders/gpuUploadCompressedTextureResource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/uploaders/gpuUploadCubeTextureResource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/uploaders/gpuUploadImageSource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/GpuTextureSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/utils/getSupportedGPUCompressedTextureFormats.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/utils/GpuMipmapGenerator.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/background/BackgroundSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/buffer/utils/fastCopy.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/WebGPURenderer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/buffer/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/extract/GenerateTextureSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/extract/ExtractSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/buffer/BufferResource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/GCSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/utils/buildUvs.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/Geometry.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/buffer/Buffer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/blendModes/BlendModePipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/utils/getAttributeInfoFromFormat.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/utils/ensureIsBuffer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/utils/getGeometryBounds.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/instructions/InstructionSet.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/renderTarget/RenderTarget.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/utils/transformVertices.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/uploaders/gpuUploadVideoSource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/renderTarget/GlobalUniformSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/types.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/renderTarget/isRenderingToScreen.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/UniformGroup.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/renderTarget/RenderTargetSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/utils/getDefaultUniformValue.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/utils/createUboSyncFunction.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/Shader.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/utils/uniformParsers.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/utils/uboSyncFunctions.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/startup/HelloSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/state/State.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/state/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/state/getAdjustedBlendModeBlend.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/system/SystemRunner.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/system/AbstractRenderer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/system/SharedSystems.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/CanvasPool.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/CubeTexture.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/RenderTexture.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/RenderableGCSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/UboSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/CanvasSource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/CompressedSource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/BufferImageSource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/CubeTextureSource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/ImageSource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/ExternalSource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/SchedulerSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/TextureSource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/Texture.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/TextureGCSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/TexturePool.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/TextureStyle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/TextureMatrix.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/VideoSource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/TextureUvs.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/utils/textureFrom.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/utils/createIdFromString.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/utils/getCanvasTexture.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/utils/getSupportedCompressedTextureFormats.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/view/ViewSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/types.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/utils/parseFunctionBody.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/shader/particles.frag.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/shader/particles.wgsl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/shader/particles.vert.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/utils/getSupportedTextureFormats.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/bounds/getFastGlobalBounds.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/bounds/getLocalBounds.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/bounds/getGlobalBounds.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/bounds/utils/matrixAndBoundsPool.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/bounds/getRenderableBounds.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/cacheAsTextureMixin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/effectsMixin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/collectRenderablesMixin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/bounds/Bounds.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/findMixin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/childrenHelperMixin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/getFastGlobalBoundsMixin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/getGlobalMixin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/onRenderMixin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/measureMixin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/CustomRenderPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/toLocalGlobalMixin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/RenderGroupPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/RenderContainer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/Container.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/sortMixin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/RenderGroupSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/utils/checkChildrenDidChange.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/RenderGroup.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/utils/collectAllRenderables.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/utils/clearList.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/utils/definedProps.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/utils/multiplyColors.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/utils/executeInstructions.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/utils/multiplyHexColors.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/utils/assignWithIgnore.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/utils/updateWorldTransform.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/utils/updateLocalTransform.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/utils/validateRenderables.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/utils/updateRenderGroupTransforms.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/canvas/CanvasGraphicsPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/gpu/colorToUniform.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/gl/GlGraphicsAdaptor.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/canvas/CanvasGraphicsContextSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/canvas/CanvasGraphicsAdaptor.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildAdaptiveQuadratic.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildAdaptiveBezier.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/gpu/GpuGraphicsAdaptor.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildArcTo.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/BatchableGraphics.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildCircle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildPixelLine.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildArc.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildPolygon.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildArcToSvg.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildLine.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildRectangle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildTriangle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/fill/FillPattern.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/fill/FillGradient.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/GraphicsPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/GraphicsContextSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/GraphicsContext.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/buildSVGDefinitions.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/buildSVGStyle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/path/roundShape.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/path/ShapePath.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/buildSVGPath.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/parseSVGFloatAttribute.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/path/GraphicsPath.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/parseSVGPath.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/parseSVGDefinitions.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/Graphics.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/parseSVGStyle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/SVGExporter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/utils/extractSvgUrlId.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/utils/fillOperations.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/utils/pathOperations.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/SVGParser.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/generateTextureFillMatrix.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/buildContextBatches.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/getMaxMiterRatio.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/convertFillInputToFillStyle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/getOrientationOfPoints.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/buildGeometryFromPath.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/triangulateWithHoles.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh-perspective/PerspectiveMesh.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh-perspective/utils/applyProjectiveTransformationToPlane.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/layers/RenderLayer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh-plane/MeshPlane.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh-perspective/PerspectivePlaneGeometry.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh-perspective/utils/compute2DProjections.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh-plane/PlaneGeometry.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh/gl/GlMeshAdaptor.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh/gpu/GpuMeshAdapter.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh-simple/MeshSimple.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh/shared/Mesh.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh-simple/MeshRope.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh-simple/RopeGeometry.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh/shared/MeshGeometry.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/canvas/CanvasParticleContainerAdaptor.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh/shared/getTextureDefaultMatrix.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/canvas/CanvasParticleContainerPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh/shared/BatchableMesh.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/gl/GlParticleContainerPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/gl/GlParticleContainerAdaptor.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/gpu/GpuParticleContainerPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/gpu/GpuParticleContainerAdaptor.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/utils/createIndicesForQuads.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/Particle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/shader/ParticleShader.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/ParticleBuffer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/particleData.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainerPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-nine-slice/NineSliceGeometry.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-nine-slice/canvas/CanvasNineSliceSpritePipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/utils/generateParticleUpdateFunction.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-nine-slice/NineSliceSpritePipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/canvas/CanvasTilingSpritePipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-nine-slice/NineSliceSprite.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-animated/AnimatedSprite.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/shader/tilingBit.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/shader/TilingSpriteShader.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/TilingSpritePipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/utils/setUvs.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/TilingSprite.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/utils/applyMatrix.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/utils/QuadGeometry.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/utils/setPositions.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/asset/bitmapFontTextParser.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/AbstractBitmapTextPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite/BatchableSprite.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/AbstractBitmapFont.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/asset/bitmapFontXMLParser.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/asset/bitmapFontXMLStringParser.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/BitmapFont.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite/SpritePipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/BitmapText.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/asset/loadBitmapFont.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/BitmapFontManager.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite/Sprite.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/CanvasBitmapTextPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/GpuBitmapTextPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/utils/resolveCharacters.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/utils/getBitmapTextLayout.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/DynamicBitmapFont.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/BatchableHTMLText.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/utils/bitmapTextSplit.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/HTMLText.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/HTMLTextPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/utils/extractFontFamilies.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/HTMLTextRenderData.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/HTMLTextSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/HTMLTextStyle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/utils/loadFontAsBase64.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/utils/getFontCss.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/utils/getSVGUrl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/utils/measureHtmlText.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-split/SplitText.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-split/SplitBitmapText.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/canvas/BatchableText.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/utils/getTemporaryCanvasFromImage.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/utils/textStyleToCSS.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/AbstractText.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-split/AbstractSplitText.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/canvas/CanvasTextPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/canvas/CanvasTextGenerator.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/utils/loadSVGImage.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/fontStringFromTextStyle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/getCanvasFillStyle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/utils/loadFontCSS.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/canvas/CanvasTextSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/parseTaggedText.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/canvas/CanvasTextMetrics.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/measureTaggedText.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/wordWrap.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/shared/AbstractTextSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/textTokenization.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/sdfShader/shader-bits/mSDFBit.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/Text.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/sdfShader/shader-bits/localUniformMSDFBit.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/utils/canvasTextSplit.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/utils/generateTextStyleKey.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/sdfShader/SdfShader.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/spritesheet/Spritesheet.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/TextStyle.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/utils/getPo2TextureFromSource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/utils/updateTextBounds.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/view/ViewContainer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/ticker/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/ticker/TickerListener.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/browser/detectVideoAlphaMode.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/shared/GpuTextSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/browser/isMobile.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/spritesheet/spritesheetAsset.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/browser/isWebGLSupported.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/canvas/getCanvasBoundingBox.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/browser/unsafeEvalSupported.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/browser/isWebGPUSupported.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/data/clean.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/ticker/Ticker.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/data/uid.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/data/GCManagedHash.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/data/removeItems.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/browser/isSafari.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/global/globalHooks.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/eventemitter3/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/logging/logDebugTexture.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/data/updateQuadBounds.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/data/ViewableBuffer.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/misc/Transform.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/misc/NOOP.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/logging/deprecation.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/logging/warn.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/pool/GlobalResourceRegistry.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/logging/logScene.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/pool/Pool.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/network/getResolutionOfUrl.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/path.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/sayHello.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/pool/PoolGroup.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/utils.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment-browser/browserAll.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/types.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/loader/types.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/detections/types.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/resolver/types.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/cache/CacheParser.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/assets/AssetExtension.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/types.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/compressed-textures/basis/types.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment-webworker/webworkerAll.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment/ImageLike.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment/canvas/ICanvasRenderingContext2D.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/events/FederatedEventMap.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/events/EventBoundaryTypes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/environment/canvas/ICanvas.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/app/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/events/deprecatedTypes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/point/PointLike.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/shapes/ShapePrimitive.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/point/PointData.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/maths/misc/Size.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/utils/types.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/ShapeBuildCommand.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/Effect.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/types.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/shared/FillTypes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/container/destroyTypes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-split/types.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/uploaders/GLTextureUploader.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/types.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/color/ColorMaskTypes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/mask/stencil/StencilMaskTypes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/uploaders/GpuTextureUploader.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/instructions/Instruction.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/BindResource.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/instructions/RenderPipe.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/context/WebGLExtensions.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/view/View.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/system/System.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/system/utils/typeUtils.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/GenerateCanvas.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/Renderable.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/const.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/context/GlRenderingContext.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuExtensions.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/ShaderSystem.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/_virtual/checkImageBitmap.worker.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/_virtual/loadImageBitmap.worker.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/_virtual/basis.worker.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@pixi/colord/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@pixi/colord/plugins/names.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/_virtual/ktx.worker.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@xmldom/xmldom/lib/index.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/graphics/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/mesh/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/particle-container/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-nine-slice/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/parse-svg-path/dist/index.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-bitmap/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text-html/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/scene/text/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/filters/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/accessibility/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/events/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/pixi.js/lib/dom/init.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/tiny-lru/dist/tiny-lru.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@xmldom/xmldom/lib/dom-parser.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/eventemitter3/index.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/earcut/src/earcut.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@xmldom/xmldom/lib/dom.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/ismobilejs/esm/index.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/ismobilejs/esm/isMobile.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@xmldom/xmldom/lib/sax.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@xmldom/xmldom/lib/entities.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/@xmldom/xmldom/lib/conventions.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01/parts/manifest.json",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01/record.json",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01/binding.json",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01/parts/keyed.png",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01/parts/atlas/python.png",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/master.png",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/wild-anchors.json",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.png",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-mid.png",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.png",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/wild-launch.png",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/wild-travel.png",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/wild-impact.png",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PYTHON_VISUAL_DIAGNOSIS_20260923/native-script-01.json",
+      "unchanged": true
+    }
+  ],
+  "staticSources": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/static.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-contracts.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-skin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-performance.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/quadruped-proof/source-join-continuity.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/skeleton-pose.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/compiled-skin-field.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/paint-skin.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion-pose-blend.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/part-masks.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/animation-completion/review-schedule.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/templates.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/body-card.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/secondary.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timeline.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/budget.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-actions.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timing.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/actions.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/pose-refusal.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/family-templates.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/fixed-attachments.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/kinematics.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/gsap-adapter.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-projector.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/wasm-arap-sweep.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/wasm-orientation-forward.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/anatomy-inventory.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/wasm-orientation-active.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/specialized-templates.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/pose-projection.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/quadruped-template.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/hidden-anatomy.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/rand/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/terminal-contact-pads.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/painted-contact-selector.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/motion-scale.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-contact-travel.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-terminal-contact.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-terminal-support.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/amplitude-profile.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/battle-habitat.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/earth-fauna-profiles.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/repeated-anatomy.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/plant-anatomy.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/arap-sweep-bytes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-forward-bytes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-active-reference.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/orientation-active-bytes.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/additional-actions.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/specialized-actions.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/gsap/index.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/myriapod-anatomy.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/packages/domain/biome-profile/src/index.ts",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/gsap/gsap-core.js",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/gsap/CSSPlugin.js",
+      "unchanged": true
+    }
+  ],
+  "originalRuntimeAndSprintDiff": "",
+  "recordBytesIdentical": true
+}
