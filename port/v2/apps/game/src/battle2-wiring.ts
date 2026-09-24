@@ -69,7 +69,8 @@ export const BATTLE2_FLAG = 'battle2' as const;
 export const BATTLE2_FRAME = Object.freeze({ width: 1024, height: 576 });
 /** Audit paths (relative to the arena proof directory) of the accepted plates, anchors, the landmark records and the
  * source paint-skin fits (E1 §1.1): every painted archetype (`battle2-archetypes.ts`, generated). Each fit
- * directory holds `record.json`, `binding.json`, `parts/keyed.png`, `parts/manifest.json` and `parts/atlas/<id>.png`;
+ * directory holds `record.json`, `binding.json`, `parts/alpha.png` (the keyed cut-out's alpha only, shipped by
+ * build-shipped-battle2.mjs), `parts/manifest.json` and `parts/atlas/<id>.png`;
  * the painter master is `record.source` (repo-relative). */
 export const BATTLE2_ASSETS = Object.freeze({
   recipe: 'arena-recipe.json', anchors: 'wild-anchors.json',
@@ -315,13 +316,13 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
         if (fit && assets.bytes) {
           try {
             const card = compileBodyCard(record, (genome ?? undefined) as MotionGenomeFields | undefined);
-            const [binding, keyed, manifest] = await Promise.all([assets.json(fit.dir + 'binding.json') as Promise<CreaturePartsBindingV1>, assets.image(fit.dir + 'parts/keyed.png'), assets.json(fit.dir + 'parts/manifest.json') as Promise<{ creatureId?: string }>]);
+            const [binding, keyed, manifest] = await Promise.all([assets.json(fit.dir + 'binding.json') as Promise<CreaturePartsBindingV1>, assets.image(fit.dir + 'parts/alpha.png'), assets.json(fit.dir + 'parts/manifest.json') as Promise<{ creatureId?: string }>]);
             if (typeof manifest.creatureId !== 'string') throw new Error('parts manifest lacks creatureId');
             const source = (record as { source?: unknown }).source;
             if (typeof source !== 'string') throw new Error('record has no painter master source');
             const [master, atlas] = await Promise.all([assets.bytes(auditAssetPath(repoRelativeSource(source))), assets.bytes(fit.dir + 'parts/atlas/' + manifest.creatureId + '.png')]);
             const pixels = keyed.pixels(), alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = pixels[i * 4 + 3] ?? 0;
-            if (keyed.width !== record.geometry.width || keyed.height !== record.geometry.height) throw new Error('keyed cut-out size disagrees with the record geometry');
+            if (keyed.width !== record.geometry.width || keyed.height !== record.geometry.height) throw new Error('alpha cut-out size disagrees with the record geometry');
             // the morph system: this genome's individual on the accepted archetype (identity genome → the archetype's own path)
             const markingMask = await loadMarkingMask(assets, fit.markingsDir ?? fit.dir, record as unknown as { recipeHash: string; genome?: Record<string, unknown> | null; identity?: { speciesVisualKey?: string }; geometry: { width: number; height: number } }, genome);
             const morph = individualFromGenomeV1({ record: record as unknown as { recipeHash: string; genome?: Record<string, unknown> | null; identity?: { speciesVisualKey?: string }; geometry: { width: number; height: number } }, binding, card, genome, markingMask });

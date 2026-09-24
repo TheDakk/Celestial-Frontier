@@ -1,8 +1,9 @@
 /** OUTCOME: every painted archetype can be loaded by the SHIPPED arena — each file the battle2 wiring asks for (record,
- * binding, keyed cut-out, parts manifest, atlas, painter master via the record's source, and the painted masks) exists in
+ * binding, alpha-only cut-out, parts manifest, atlas, painter master via the record's source, and the painted masks) exists in
  * `public/battle2/` at the exact path the wiring resolves against the recipe URL. A path bug (an absolute record source, a
  * mask set outside its fit) fails here, not in a playtest. */
 import { existsSync, readFileSync } from 'node:fs';
+import { PNG } from 'pngjs';
 import { describe, expect, it } from 'vitest';
 import { REPO_ROOT } from './battle2/parts-rig.fixtures.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
@@ -22,7 +23,7 @@ describe('the shipped arena carries every painted archetype', () => {
     const missing: string[] = []; let masks = 0;
     for (const fit of BATTLE2_PARTS_FITS) {
       const need = (rel: string) => { if (!existsSync(served(rel))) missing.push(`${fit.earthName}: ${rel}`); };
-      for (const f of ['record.json', 'binding.json', 'parts/keyed.png', 'parts/manifest.json']) need(fit.dir + f);
+      for (const f of ['record.json', 'binding.json', 'parts/alpha.png', 'parts/manifest.json']) need(fit.dir + f);
       if (!existsSync(served(fit.dir + 'record.json'))) continue;
       const record = JSON.parse(readFileSync(served(fit.dir + 'record.json'), 'utf8')) as { source: string; recipeHash: string }, manifest = JSON.parse(readFileSync(served(fit.dir + 'parts/manifest.json'), 'utf8')) as { creatureId: string };
       need(fit.dir + 'parts/atlas/' + manifest.creatureId + '.png'); need(auditAssetPath(repoRelativeSource(record.source)));
@@ -33,6 +34,26 @@ describe('the shipped arena carries every painted archetype', () => {
     }
     expect(missing).toEqual([]);
     expect(masks).toBeGreaterThanOrEqual(18); // crab + Civet + Salmon × 6 — the Salmon's masks live outside its fit and must still ship
+  });
+  it('each shipped alpha-only cut-out carries EXACTLY its keyed cut-out\'s alpha (RGB zero), and the manifest names the source it was derived from', () => {
+    // the arena reads only the alpha (rig alpha + alpha box); the colour comes from the atlas. Compare every alpha byte.
+    const alphaOf = (bytes: Buffer) => { const p = PNG.sync.read(bytes), a = new Uint8Array(p.width * p.height); let rgb = 0; for (let i = 0; i < a.length; i++) { a[i] = p.data[i * 4 + 3]!; rgb |= p.data[i * 4]! | p.data[i * 4 + 1]! | p.data[i * 4 + 2]!; } return { w: p.width, h: p.height, a, rgb }; };
+    const firstDiff = (x: Uint8Array, y: Uint8Array) => { if (x.length !== y.length) return -2; for (let i = 0; i < x.length; i++) if (x[i] !== y[i]) return i; return -1; };
+    const shipped = JSON.parse(readFileSync(served('../../MANIFEST.json'), 'utf8')) as { files: { path: string; derivedFrom?: { path: string; sha256: string } }[] };
+    let checked = 0, control = -1;
+    for (const fit of BATTLE2_PARTS_FITS) {
+      const source = readFileSync(new URL(fit.dir.replace(/^\.\.\//, 'audits/') + 'parts/keyed.png', REPO_ROOT)), cut = alphaOf(readFileSync(served(fit.dir + 'parts/alpha.png'))), want = alphaOf(source);
+      expect([cut.w, cut.h], fit.earthName).toEqual([want.w, want.h]);
+      expect(firstDiff(cut.a, want.a), fit.earthName + ': first differing alpha byte').toBe(-1);
+      expect(cut.rgb, fit.earthName + ': RGB must be zero').toBe(0);
+      expect(existsSync(served(fit.dir + 'parts/keyed.png')), fit.earthName + ': the full keyed cut-out no longer ships').toBe(false);
+      const entry = shipped.files.find((f) => f.path === fit.dir.replace(/^\.\.\//, 'audits/') + 'parts/alpha.png');
+      expect(entry?.derivedFrom?.path, fit.earthName).toBe(fit.dir.replace(/^\.\.\//, 'audits/') + 'parts/keyed.png');
+      if (control < 0) { const bad = cut.a.slice(); bad[bad.length >> 1] ^= 1; control = firstDiff(bad, want.a); } // mutation control: one flipped bit is found
+      checked++;
+    }
+    expect(checked).toBe(BATTLE2_PARTS_FITS.length);
+    expect(control).toBeGreaterThanOrEqual(0);
   });
   it('the negative control: an absolute record source only resolves through the shared resolver', () => {
     const abs = '/Users/someone/Projects/celestial-frontier-openai-mac/audits/X/master.png';

@@ -44,14 +44,19 @@
    "sha256": "dcdb3eb5a11eeeb9fc3a3758018100cb474fc08456c49f20d53510129ccb05ac"
   },
   {
+   "path": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/alpha.png",
+   "bytes": 14043,
+   "sha256": "51d6fdba3ee24b0c73568562957b8790f68d9ef15fefa3e3b7ed734dcc05d11d",
+   "derivedFrom": {
+    "path": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/keyed.png",
+    "sha256": "b1888b586cb67809420eb0ed3a85c67a9c7327843307afee9c6971db88630a0a",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/atlas/civet.png",
    "bytes": 2349625,
    "sha256": "f8303ad0cf3a04797cd6df501571ff7b2b54d8796f0af86cd25a755e2d890d79"
-  },
-  {
-   "path": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/keyed.png",
-   "bytes": 2479044,
-   "sha256": "b1888b586cb67809420eb0ed3a85c67a9c7327843307afee9c6971db88630a0a"
   },
   {
    "path": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/parts/manifest.json",
@@ -69,14 +74,19 @@
    "sha256": "7ac8b5345f1155a97acb9de087b0c3ba0b34320d73419bad673752e04e9e34f7"
   },
   {
+   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/parts/alpha.png",
+   "bytes": 13548,
+   "sha256": "9db295a498a4f2369cb2ef1d0fdedb9e1931a96ab2cb0b401ca6d0a4b6507ebc",
+   "derivedFrom": {
+    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/parts/keyed.png",
+    "sha256": "36c25de134d09c0a99037baebcc08f3aa60a83a12bfc416b29ba2cb741b1bf14",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/parts/atlas/coconut-crab.png",
    "bytes": 55028,
    "sha256": "b1bb0a484e5fc531aee512b2fd92fe4ff6797f2a5bb3e3ec3e6ad2c1386722e2"
-  },
-  {
-   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/parts/keyed.png",
-   "bytes": 40246,
-   "sha256": "36c25de134d09c0a99037baebcc08f3aa60a83a12bfc416b29ba2cb741b1bf14"
   },
   {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/parts/manifest.json",
@@ -129,14 +139,19 @@
    "sha256": "5c3ac9188d3a06b2a02fa11b2180453c650f2356ab6c29ed23796a5ebd780b39"
   },
   {
+   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/parts/alpha.png",
+   "bytes": 9464,
+   "sha256": "f2ab97a025924d9d667e5056f34c17baa61f8fa1fe5d93aba9c44932b8a65daa",
+   "derivedFrom": {
+    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/parts/keyed.png",
+    "sha256": "018862eaf6d1cbc4ea45e18537910832eb2542ed9708c519ee60e3f91bb5cdb2",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/parts/atlas/crab.png",
    "bytes": 31913,
    "sha256": "7d4ebb89db341e158a74f919d4e608691ce4b48a714cb116ba142ee2bfe73d15"
-  },
-  {
-   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/parts/keyed.png",
-   "bytes": 29315,
-   "sha256": "018862eaf6d1cbc4ea45e18537910832eb2542ed9708c519ee60e3f91bb5cdb2"
   },
   {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/parts/manifest.json",
@@ -154,14 +169,19 @@
    "sha256": "075341dac4101bf8b0d641424cb7a7514277f9044a71b96a2b546228850a5f40"
   },
   {
+   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/parts/alpha.png",
+   "bytes": 15465,
+   "sha256": "4f6949fc7609849d540ecb0e300c4aa6823d161911a90b4505d642ddcd1d07a6",
+   "derivedFrom": {
+    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/parts/keyed.png",
+    "sha256": "13792f715eeb0574982b8f7c963ab25b494a198895d9d9d0095f05e40478e449",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/parts/atlas/freshwater-crab.png",
    "bytes": 47389,
    "sha256": "61e3f21fc2ad035d06975af33c03188c1ffee6d107a2ed8e714821b6cda49d4c"
-  },
-  {
-   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/parts/keyed.png",
-   "bytes": 38357,
-   "sha256": "13792f715eeb0574982b8f7c963ab25b494a198895d9d9d0095f05e40478e449"
   },
   {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/parts/manifest.json",
@@ -179,14 +199,19 @@
    "sha256": "6d89da7ba04b98fd5c4d45ef38acbe4a44e28dd2e903d0cc057a6cd5792b4c04"
   },
   {
+   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/parts/alpha.png",
+   "bytes": 15651,
+   "sha256": "4b23a100e629a493930e9c4d18ebe3b9d043c6b66f3830a32d2d6d0da1b7bd26",
+   "derivedFrom": {
+    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/parts/keyed.png",
+    "sha256": "e4047a05dd7214cc72b3a6c1d5e6bccbb9dd3016f02627589521aeb55ef16e45",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/parts/atlas/mud-crab.png",
    "bytes": 51702,
    "sha256": "4502aafee3ba0e9cd82dd6e5bfa173dd098bf7f917d5c6792bcc2386bb070251"
-  },
-  {
-   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/parts/keyed.png",
-   "bytes": 37047,
-   "sha256": "e4047a05dd7214cc72b3a6c1d5e6bccbb9dd3016f02627589521aeb55ef16e45"
   },
   {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/parts/manifest.json",
@@ -204,14 +229,19 @@
    "sha256": "d0c46782a73d9cc94a28ae258dd940af078787a287e2d8b7b5fc96fa9f9673dd"
   },
   {
+   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/parts/alpha.png",
+   "bytes": 14798,
+   "sha256": "5aab2b5fd9f86ca83b6149558acf78275be7267c1ed3c63a25af48481cffea3d",
+   "derivedFrom": {
+    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/parts/keyed.png",
+    "sha256": "5c0c0584b452b90e61ff7d1ccde5a21bc3fb4de65018f72ce1a6e161a32e8f71",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/parts/atlas/vent-crab.png",
    "bytes": 42833,
    "sha256": "89f839d7a6e195d6bf25ef5cd04a91fc0ae08022bd38078a3333422e2a024288"
-  },
-  {
-   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/parts/keyed.png",
-   "bytes": 26226,
-   "sha256": "5c0c0584b452b90e61ff7d1ccde5a21bc3fb4de65018f72ce1a6e161a32e8f71"
   },
   {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/parts/manifest.json",
@@ -259,14 +289,19 @@
    "sha256": "d23162df16d6c89d1f1b16d19acf52984ff73dc5e1bddf31e6430bb955464c8e"
   },
   {
+   "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/parts/alpha.png",
+   "bytes": 194204,
+   "sha256": "ba5f94002fce5a413cbb424033fcbb2b03ca5b1ea794cd326320eaa596440e07",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/parts/keyed.png",
+    "sha256": "174c2c38171d473825d38b3539507265431a63c95173bec621ff9fbd4c1c777a",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/parts/atlas/beetle.png",
    "bytes": 1233279,
    "sha256": "380f4a36492e964eb94c835ff5659db7d15d50c28f97ec7a63c2974a4d1521aa"
-  },
-  {
-   "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/parts/keyed.png",
-   "bytes": 1407096,
-   "sha256": "174c2c38171d473825d38b3539507265431a63c95173bec621ff9fbd4c1c777a"
   },
   {
    "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/parts/manifest.json",
@@ -289,14 +324,19 @@
    "sha256": "3e1c8a51b676614db4002339c6b6d02901f4bb9e914abff85b8de26a7158d8c4"
   },
   {
+   "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/parts/alpha.png",
+   "bytes": 87645,
+   "sha256": "8f554b7cb61a7c5ae9d987e094ca62d11329ac54670c47900101e7ddc950e67c",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/parts/keyed.png",
+    "sha256": "8ee181697ff1a4f303bebda057ed86ce61932c0e9a0efd6c6395c63098d509df",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/parts/atlas/tree-frog.png",
    "bytes": 726291,
    "sha256": "f72f94efa9e4de5012186be9f4450e128a03dc7f8d343c4753e6395877363b42"
-  },
-  {
-   "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/parts/keyed.png",
-   "bytes": 890190,
-   "sha256": "8ee181697ff1a4f303bebda057ed86ce61932c0e9a0efd6c6395c63098d509df"
   },
   {
    "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/parts/manifest.json",
@@ -319,14 +359,19 @@
    "sha256": "2d40f5cb65fad7ae0e020794ca38f333aff4a308faecebb93bbede039b8d0451"
   },
   {
+   "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/parts/alpha.png",
+   "bytes": 232131,
+   "sha256": "d312ee870f97845fed4f6f1980dd1f7170b19de07f6a68856fcc3aff56240487",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/parts/keyed.png",
+    "sha256": "0298be8bc262084da12c70bdf0847ee9c1f44111475125e7d870bbb0f986d85d",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/parts/atlas/chimpanzee.png",
    "bytes": 1897535,
    "sha256": "b00b3da86d0a31906a9f6894109f9298a06587959f7459628f33419e87386484"
-  },
-  {
-   "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/parts/keyed.png",
-   "bytes": 2142185,
-   "sha256": "0298be8bc262084da12c70bdf0847ee9c1f44111475125e7d870bbb0f986d85d"
   },
   {
    "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/parts/manifest.json",
@@ -349,14 +394,19 @@
    "sha256": "1340a8f5f1b7b52e2e75fd6c0c756edcf196544c0183038826275b9ffd320f22"
   },
   {
+   "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/parts/alpha.png",
+   "bytes": 191050,
+   "sha256": "7eb85f073d4d14d7c24ee753512a6da06a6b77fbb6637b63751ee0338a31606a",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/parts/keyed.png",
+    "sha256": "81b4de42b2d0629f441a8861823fbacfc21c1e6bee99aaaef4bdc54b7a83c199",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/parts/atlas/tarantula.png",
    "bytes": 1350000,
    "sha256": "00852a20606dda93f40d6bda50597fa8c920802755d0be93448d0b622adf1cf1"
-  },
-  {
-   "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/parts/keyed.png",
-   "bytes": 1593281,
-   "sha256": "81b4de42b2d0629f441a8861823fbacfc21c1e6bee99aaaef4bdc54b7a83c199"
   },
   {
    "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/parts/manifest.json",
@@ -379,14 +429,19 @@
    "sha256": "ffc7fc4056e51b9d36edc228063adbab50a6c79c369ccd4fc671016368504240"
   },
   {
+   "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/parts/alpha.png",
+   "bytes": 107473,
+   "sha256": "2ba6fbe6f2ad5483a303c4c50dba0bbe87468cdeebef59b68b22eef0529ca1e1",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/parts/keyed.png",
+    "sha256": "eb7ba63e96ff654995676a968bbf5914ad36ed75ce2702dd2699df3500c0d39c",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/parts/atlas/fruit-bat.png",
    "bytes": 915183,
    "sha256": "675a84500f3b80f151f78e843cec0e63106e0290040a940b538d694abb6689fd"
-  },
-  {
-   "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/parts/keyed.png",
-   "bytes": 1155164,
-   "sha256": "eb7ba63e96ff654995676a968bbf5914ad36ed75ce2702dd2699df3500c0d39c"
   },
   {
    "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/parts/manifest.json",
@@ -409,14 +464,19 @@
    "sha256": "4ebf5d0067f2062b1fd1ec4128a2b6f0f837d4f950aa6ac39ffd4bbf019ff56c"
   },
   {
+   "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/parts/alpha.png",
+   "bytes": 127271,
+   "sha256": "61a4697ba488187c0a79d3200943b296a06e54a049c818476987aeb984bd6776",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/parts/keyed.png",
+    "sha256": "2e5b90fe110deefac59fa32e471a540b9e35e3d98d2a687be548ba13ec44fdd3",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/parts/atlas/centipede.png",
    "bytes": 519944,
    "sha256": "979bc56d1662543762d4e25e09d83d1c77098ea36333c3b1053edb0d1e9d6341"
-  },
-  {
-   "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/parts/keyed.png",
-   "bytes": 579536,
-   "sha256": "2e5b90fe110deefac59fa32e471a540b9e35e3d98d2a687be548ba13ec44fdd3"
   },
   {
    "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/parts/manifest.json",
@@ -439,14 +499,19 @@
    "sha256": "2ca72744f94ad11896b15dcdc0261e177dd4016cea5e19d384bb98e0b8fba74f"
   },
   {
+   "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/parts/alpha.png",
+   "bytes": 200957,
+   "sha256": "25dc2cca3aa8f61355f47a510a1aee6b84424d82eceea1324681a023f1af8dc9",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/parts/keyed.png",
+    "sha256": "9fa51a95834205a5faf850b98ea60e77f57da16b1d4dbdb3669c55d19a452735",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/parts/atlas/eagle.png",
    "bytes": 1654281,
    "sha256": "b77d7b20a1dd776f53ee92c4a8e253af37a70214501a571a57d0ed40bb301137"
-  },
-  {
-   "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/parts/keyed.png",
-   "bytes": 1982442,
-   "sha256": "9fa51a95834205a5faf850b98ea60e77f57da16b1d4dbdb3669c55d19a452735"
   },
   {
    "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/parts/manifest.json",
@@ -464,14 +529,19 @@
    "sha256": "34ef6423127b867f9aaa7a6317b8be26c07bcb153820818c3588a8ad7f686050"
   },
   {
+   "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/alpha.png",
+   "bytes": 205309,
+   "sha256": "6427aa27c6cb63cdd07adb48bc37630f1aadff83c6ffdfccd4fb7cb8705a0819",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/keyed.png",
+    "sha256": "97f4a9f92095823d6ca725ac4ba949f62245d4efb769df10dcfa772e537fa4e0",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/atlas/starfish.png",
    "bytes": 1684409,
    "sha256": "f3db8ab96f2490e93bd7b96bb75abd4a0bd4f2d5797a9635e38c47cd1dad4ae2"
-  },
-  {
-   "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/keyed.png",
-   "bytes": 2076870,
-   "sha256": "97f4a9f92095823d6ca725ac4ba949f62245d4efb769df10dcfa772e537fa4e0"
   },
   {
    "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/manifest.json",
@@ -494,14 +564,19 @@
    "sha256": "978a7f26cdeedfa58792fe1a976d3db6db27d2f4e6f35689b48a9d65386a3015"
   },
   {
+   "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/alpha.png",
+   "bytes": 222075,
+   "sha256": "333ceafaf511bb51ef35055ff1c0f0dac5f504c4ae14f712e3f149aa12e64f9c",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/keyed.png",
+    "sha256": "ff4bbe1c798744b79927777aa88e4d88d6533e53c76698127fc9c450b1db5aab",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/atlas/octopus.png",
    "bytes": 1812477,
    "sha256": "9b3be6b71f6736f6640009923c58c2b9fe3a9bf796c8cbdd411a5973795f762e"
-  },
-  {
-   "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/keyed.png",
-   "bytes": 2164138,
-   "sha256": "ff4bbe1c798744b79927777aa88e4d88d6533e53c76698127fc9c450b1db5aab"
   },
   {
    "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/manifest.json",
@@ -524,14 +599,19 @@
    "sha256": "4d9eb64b3af20f1a78cae84b7a77ca5f2b2b27d7361e5b6620fca65f44ed3734"
   },
   {
+   "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/parts/alpha.png",
+   "bytes": 111832,
+   "sha256": "b4c51c3770396dafc946a7fca73d96ed4ce1bdae76436c9594d710942201f3f4",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/parts/keyed.png",
+    "sha256": "8010343d7137839570b2852ce5480e1f0104a645de52392a9132a47ce6b01574",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/parts/atlas/salmon.png",
    "bytes": 880530,
    "sha256": "5aaa0e3364d85357c81120245a9bcf0707456fe59ca28a71d38fde1eae52894b"
-  },
-  {
-   "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/parts/keyed.png",
-   "bytes": 1058167,
-   "sha256": "8010343d7137839570b2852ce5480e1f0104a645de52392a9132a47ce6b01574"
   },
   {
    "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/parts/manifest.json",
@@ -639,14 +719,19 @@
    "sha256": "e6dc380c4414359c1420fa34240393aad0d9f231d0899f69fe67f8643a5cb396"
   },
   {
+   "path": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/parts/alpha.png",
+   "bytes": 48759,
+   "sha256": "eb0ceaaef8b6016dad0c9b0ac6921a1ce10e3b776e182c3f33a8f30a7af861e2",
+   "derivedFrom": {
+    "path": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/parts/keyed.png",
+    "sha256": "773cfdda8aab476d6b2b6c66e3cf4c8dd352128f62016b28aaef344b6942d3f1",
+    "keep": "alpha"
+   }
+  },
+  {
    "path": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/parts/atlas/python-open.png",
    "bytes": 401552,
    "sha256": "7db569301d8a4d8c460f74e0f6932c75b976d45a8a75d58e2ac5a0808dc5ee78"
-  },
-  {
-   "path": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/parts/keyed.png",
-   "bytes": 451206,
-   "sha256": "773cfdda8aab476d6b2b6c66e3cf4c8dd352128f62016b28aaef344b6942d3f1"
   },
   {
    "path": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/parts/manifest.json",
