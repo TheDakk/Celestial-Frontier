@@ -92,7 +92,7 @@ export function mountBattle2Matchup(input: MatchupMountInput): MatchupHandle {
   const leftSel = pick('Left creature', choice.left), rightSel = pick('Right creature', choice.right);
   const worldSel = el('select', 'min-height:44px;font:inherit;padding:0 8px;border-radius:8px'); worldSel.setAttribute('aria-label', 'World');
   for (const [v, t] of [['auto', 'World: auto'], ['land', 'World: land'], ['lake', 'World: lake']] as const) { const o = el('option', '', t); o.value = v; worldSel.append(o); } worldSel.value = choice.world;
-  const seedIn = el('input', 'min-height:44px;width:9em;font:inherit;padding:0 8px;border-radius:8px'); seedIn.type = 'number'; seedIn.min = '0'; seedIn.placeholder = 'seed (own colours)'; seedIn.setAttribute('aria-label', 'Individual seed'); if (choice.seed !== null) seedIn.value = String(choice.seed);
+  const seedIn = el('input', 'min-height:44px;width:9em;font:inherit;padding:0 8px;border-radius:8px'); seedIn.type = 'number'; seedIn.min = '0'; seedIn.placeholder = 'seed'; seedIn.title = 'Empty = the archetypes in their own colours; a number = two morphed individuals'; seedIn.setAttribute('aria-label', 'Individual seed'); if (choice.seed !== null) seedIn.value = String(choice.seed);
   const playBtn = el('button', 'min-height:44px;min-width:88px;font:inherit;font-weight:600;border-radius:8px;cursor:pointer', 'Play'), closeBtn = el('button', 'min-height:44px;min-width:88px;font:inherit;border-radius:8px;cursor:pointer', 'Close');
   bar.append(leftSel, el('span', 'opacity:.7', 'vs'), rightSel, worldSel, seedIn, playBtn, closeBtn);
   const status = el('output', 'min-height:1.3em;opacity:.85'); status.setAttribute('aria-live', 'polite');
