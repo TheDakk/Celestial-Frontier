@@ -8,7 +8,7 @@ import { compileAnatomyAttack } from 'cf-proof/anatomy-attacks.ts';
 import { combatantScale, composeArena } from 'cf-proof/battle2/arena.ts';
 import { defaultArenaWorld, selectHabitatArena } from 'cf-proof/battle2/habitat-arena.ts';
 import { createPartsRig } from 'cf-proof/battle2/parts-rig.ts';
-import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, turnPlanInputFromTranscriptEvent } from 'cf-proof/battle2/stage.ts';
+import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShift, turnPlanInputFromTranscriptEvent } from 'cf-proof/battle2/stage.ts';
 import { individualFromGenomeV1 } from 'cf-proof/morph/morph-individual.ts';
 import { markingNameV1, maskAlphaOf } from 'cf-proof/morph/morph-markings.ts';
 import { archetypeGenomeV1, morphParamsV1 } from 'cf-proof/morph/morph-params.ts';
@@ -58,7 +58,9 @@ try {
   const habitat = selectHabitatArena({ contextId: 'battle2-proof', seed: recipe.seed, round: 0, kind: 'wild', worlds: scriptWorld ? { home: scriptWorld, visitor: scriptWorld } : null, groundLineY: layout.groundLineY, fitToBand: true,
     left: { record: left.record, genome: null, label: left.name, painted: paintedL }, right: { record: right.record, genome: null, label: right.name, painted: paintedR } });
   if (habitat.status !== 'READY') throw Error('habitat: ' + habitat.reason);
-  const stagedLayout = { ...layout, stands: { left: { x: layout.stands.left.x, y: habitat.stands.left.y }, right: { x: layout.stands.right.x, y: habitat.stands.right.y } } };
+  // the app's rule (battle2-wiring): each painted box centred on its stand at the drawn scale
+  const drawnL = paintedL.scale * habitat.stands.left.fit, drawnR = paintedR.scale * habitat.stands.right.fit;
+  const stagedLayout = { ...layout, stands: { left: { x: layout.stands.left.x + standCentreShift(left.rig, drawnL, FRAME.width, 1), y: habitat.stands.left.y }, right: { x: layout.stands.right.x + standCentreShift(right.rig, drawnR, FRAME.width, -1), y: habitat.stands.right.y } } };
   const phaseTextures = new Map(); for (const p of anchors.phases) if (!isProceduralImage(p.keyedImage)) phaseTextures.set(p.keyedImage, texture(await image(p.keyedImage.split('/').pop())));
   const dot = particleDiscRgba(PARTICLE_DISC_SIZE), dotCanvas = new OffscreenCanvas(PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE), dotImage = dotCanvas.getContext('2d').createImageData(PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE); dotImage.data.set(dot); dotCanvas.getContext('2d').putImageData(dotImage, 0, 0);
   const style = { fontFamily: 'system-ui', fontSize: 34, fontWeight: '700', fill: '#fff2c8', stroke: { color: '#2a1a0a', width: 4 } };

@@ -34,7 +34,7 @@ import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-c
  * proof folders' relative layout, so every path below resolves against this recipe URL unchanged. */
 const arenaRecipeUrl = '/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json';
 import { speciesVisualKey } from '@cf/art/species-identity';
-import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, lakeArenaWorld, selectHabitatArena, turnPlanInputFromTranscriptEvent,
+import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShift, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, lakeArenaWorld, selectHabitatArena, turnPlanInputFromTranscriptEvent,
   type BattleRigV1, type BattleStageFactory, type FixturePartCut, type RigContainerLike, type RigSpriteLike,
   type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnAttack, type TurnOutcomeContext, type TurnPlanInput } from './battle2/index.js';
 // parts-rig (and Codex's pixi-backed creature-rig behind it) is imported by path, not through battle2/index: the root
@@ -377,7 +377,11 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const wet = habitat.stands.left.medium === 'water' || habitat.stands.right.medium === 'water'; // the wet arena: water behind the swimmers, no dry foreground
     const fitted = paintedLeft.capped || paintedRight.capped || habitat.stands.left.fit < 1 || habitat.stands.right.fit < 1;
     const presentationScales = { left: paintedLeft.scale * habitat.stands.left.fit, right: paintedRight.scale * habitat.stands.right.fit };
-    const stagedLayout = { ...layout, stands: Object.freeze({ left: Object.freeze({ x: layout.stands.left.x, y: habitat.stands.left.y }), right: Object.freeze({ x: layout.stands.right.x, y: habitat.stands.right.y }) }) };
+    // each painted box is CENTRED on its stand (not hung off its foot anchor), at the scale the stage draws — the choreography
+    // reads the same shifted stands, so run-up distances agree with what is drawn
+    const drawnScale = { left: fitted ? presentationScales.left : paintedLeft.scale, right: fitted ? presentationScales.right : paintedRight.scale };
+    const shiftX = { left: standCentreShift(left.rig, drawnScale.left, BATTLE2_FRAME.width, 1), right: standCentreShift(right.rig, drawnScale.right, BATTLE2_FRAME.width, -1) };
+    const stagedLayout = { ...layout, stands: Object.freeze({ left: Object.freeze({ x: layout.stands.left.x + shiftX.left, y: habitat.stands.left.y }), right: Object.freeze({ x: layout.stands.right.x + shiftX.right, y: habitat.stands.right.y }) }) };
     const mediums = { A: habitat.stands.left.medium, B: habitat.stands.right.medium } as const;
     // E1 §1.2: one anatomy attack per staged attack, chosen deterministically by Codex's compiler; a refusal leaves the family delivery clip and is labelled once.
     const attackFor = (side: 'A' | 'B', ordinal: number): TurnAttack | null => {

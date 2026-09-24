@@ -19,6 +19,13 @@ export const GUARDIAN_FRAME_FILL = 0.96;
 /** The wet arena's depth bands, surface → floor (lit teal to deep blue-green, near-opaque), and its surface line. */
 export const WATER_BANDS: ReadonlyArray<Readonly<{ color: number; alpha: number }>> = Object.freeze([0x1f6272, 0x1c5a6a, 0x1a5262, 0x184b5a, 0x164452, 0x143d4a, 0x123642, 0x10303b, 0x0e2a34, 0x0c252e].map((color, i) => Object.freeze({ color, alpha: 0.9 + i * 0.008 })));
 export const WATER_SURFACE = Object.freeze({ color: 0xa7dcc2, alpha: 0.9 });
+/** The stand shift (frame-width fraction) that CENTRES a combatant's painted box on its stand instead of its foot: the stage
+ * places the foot at `stand.x` and mirrors the right side (facing −1), so the box centre sits at
+ * facing × (right − left) / 2 × cut-out width × scale from the foot. Zero for a rig without `extent` (symmetric). */
+export function standCentreShift(rig: Pick<BattleRigV1, 'extent' | 'cutout'>, scale: number, frameWidth: number, facing: 1 | -1): number {
+  if (!rig.extent) return 0;
+  return (-facing * ((rig.extent.right - rig.extent.left) / 2) * rig.cutout.width * scale) / frameWidth;
+}
 /** ONE sizing rule for a combatant's presentation (2026-09-24; used by the app wiring, the film harness and the tests — two
  * copies could disagree): the mass rule (or the guardian's decided tallest-pose fill), then the arena WIDTH cap for a long
  * body (guardians exempt). `height`/`footBelowCentre` are frame fractions at the returned scale, ready for the habitat's
