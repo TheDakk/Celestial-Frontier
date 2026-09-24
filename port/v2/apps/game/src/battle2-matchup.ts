@@ -153,18 +153,25 @@ export function mountBattle2Matchup(input: MatchupMountInput): MatchupHandle {
       study = mountStudy({ mount, generation: chronicleGeneration, pacer: gate, ticker: input.ticker, clock: input.clock, reducedMotion: input.reducedMotion, deviceTier: input.deviceTier, pixi: input.pixi, artLoader: input.artLoader, assets,
         ...(input.audio !== undefined ? { audio: input.audio } : {}), ...(input.win ? { win: input.win } : {}), ...(input.keyer ? { keyer: input.keyer } : {}), ...(input.raster ? { raster: input.raster } : {}), ...(world === 'lake' ? { worldPreset: 'lake' as const } : {}),
         chronicle: { championName: chronicle.championName, defenderName: chronicle.defenderName }, settlement: settlement as unknown as Battle2StudyInput['settlement'] });
-      const st = await study.ready; if (gen === generation) status.textContent = `real duel · ${chronicle.championName} vs ${chronicle.defenderName} (${choice.right}) · ${summary(st)}`; return st;
+      lead = `real duel · ${chronicle.championName} vs ${chronicle.defenderName} (${choice.right}) · `;
+      const st = await study.ready; if (gen === generation) status.textContent = `${lead}${summary(st)}`; return st;
     }
     study = mountStudy({ mount: arena, generation: gen, ticker: input.ticker, clock: input.clock, reducedMotion: input.reducedMotion, deviceTier: input.deviceTier, pixi: input.pixi, artLoader: input.artLoader, assets,
       ...(input.audio !== undefined ? { audio: input.audio } : {}), ...(input.win ? { win: input.win } : {}), ...(input.keyer ? { keyer: input.keyer } : {}), ...(input.raster ? { raster: input.raster } : {}), ...(world === 'lake' ? { worldPreset: 'lake' as const } : {}),
       chronicle: { championName: choice.left, defenderName: choice.right },
       settlement: { battleId: `matchup:${choice.left}:${choice.right}:${world}:${choice.seed ?? 'own'}`, champion: { kind: 'owned-fauna', name: choice.left, genome: matchupGenome(lr, choice.left, choice.seed, 'left') },
         encounter: { defender: { battleGenome: matchupGenome(rr, choice.right, choice.seed, 'right') } }, transcript: { log: matchupTranscript(choice.left, choice.right) } } });
+    lead = '';
     const st = await study.ready; if (gen === generation) status.textContent = summary(st); return st;
   };
   const fromControls = (): Partial<MatchupChoice> => ({ left: leftSel.value, right: rightSel.value, world: worldSel.value as MatchupWorld, seed: /^\d{1,9}$/.test(seedIn.value) ? Number(seedIn.value) : null, duel: duelBox.checked });
+  // the status line follows the study (finished / failed) instead of freezing at its first "playing"
+  const Observer = (doc.defaultView as (Window & typeof globalThis) | null)?.MutationObserver;
+  let lead = '';
+  const follow = Observer ? new Observer(() => { const st = study?.status(); if (st && (st.phase === 'finished' || st.phase === 'failed')) status.textContent = `${lead}${summary(st)}`; }) : null;
+  follow?.observe(arena, { subtree: true, attributes: true, attributeFilter: ['data-battle2-status'] });
   const onPlay = (): void => { void play(fromControls()).catch((e: unknown) => { const m = e instanceof Error ? e.message : String(e); if (!disposed && !/superseded/.test(m)) status.textContent = `could not stage: ${m}`; }); };
-  const dispose = (): void => { if (disposed) return; disposed = true; study?.dispose('matchup closed'); study = null; chronicleController?.dispose(); chronicleController = null; playBtn.removeEventListener('click', onPlay); closeBtn.removeEventListener('click', dispose); root.remove(); };
+  const dispose = (): void => { if (disposed) return; disposed = true; follow?.disconnect(); study?.dispose('matchup closed'); study = null; chronicleController?.dispose(); chronicleController = null; playBtn.removeEventListener('click', onPlay); closeBtn.removeEventListener('click', dispose); root.remove(); };
   playBtn.addEventListener('click', onPlay); closeBtn.addEventListener('click', dispose);
   onPlay();
   return { root, current: () => choice, play, dispose };

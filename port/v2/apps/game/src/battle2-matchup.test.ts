@@ -126,6 +126,23 @@ describe('matchup picker — DOM', () => {
   });
 });
 
+describe('matchup picker — the status line follows the study', () => {
+  it('reads "finished" (or the failure) when the study ends, not "playing" forever', async () => {
+    const dom = new JSDOM('<!doctype html><body></body>'), doc = dom.window.document; let phase = 'playing'; let section: HTMLElement | null = null;
+    const fakeStudy = (input: Battle2StudyInput): Battle2StudyHandle => { section = doc.createElement('section'); section.dataset.battle2Status = 'playing'; input.mount.append(section);
+      const st = () => ({ phase, reason: phase === 'failed' ? 'stage tick failed: x' : null, label: null, turns: 3, turnIndex: 0, skipped: [], rigs: { left: 'parts', right: 'parts' }, ticks: 0, effects: { left: null, right: null }, arena: 'earth', attacks: { left: null, right: null }, refusals: { left: 0, right: 0 }, audio: 'none' }) as unknown as Battle2Status;
+      return { ready: Promise.resolve(st()), status: st, dispose: () => {} }; };
+    const h = mountBattle2Matchup({ doc, search: '?battle2=1&vs=Civet,Crab', assets: diskAssets, mountStudy: fakeStudy, ticker: { add() {}, remove() {} }, clock: () => 0, reducedMotion: false, deviceTier: 'high', pixi: {} as never, artLoader: null });
+    await new Promise((r) => setTimeout(r, 20));
+    const out = doc.querySelector('output')!; expect(out.textContent).toMatch(/^playing/);
+    phase = 'finished'; section!.dataset.battle2Status = 'finished'; await new Promise((r) => setTimeout(r, 0));
+    expect(out.textContent).toMatch(/^finished · earth/);
+    phase = 'failed'; section!.dataset.battle2Status = 'failed'; await new Promise((r) => setTimeout(r, 0));
+    expect(out.textContent).toBe('could not stage: stage tick failed: x');
+    h.dispose();
+  });
+});
+
 describe('matchup picker — the REAL duel (Nick 2026-09-24: the stage paces the Chronicle, shown in the picker)', () => {
   it('?duel=1 turns it on; absent it is off', () => {
     expect(parseMatchup('?battle2=1&vs=Civet,Python&duel=1').duel).toBe(true); expect(parseMatchup('?battle2=1&vs=Civet,Python').duel).toBe(false);
