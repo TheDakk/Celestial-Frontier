@@ -6,7 +6,7 @@
 import { Application, Container, Graphics, Particle, ParticleContainer, Sprite, Text, Texture } from 'pixi.js';
 import { compileAnatomyAttack } from 'cf-proof/anatomy-attacks.ts';
 import { combatantScale, composeArena } from 'cf-proof/battle2/arena.ts';
-import { selectHabitatArena } from 'cf-proof/battle2/habitat-arena.ts';
+import { defaultArenaWorld, selectHabitatArena } from 'cf-proof/battle2/habitat-arena.ts';
 import { createPartsRig } from 'cf-proof/battle2/parts-rig.ts';
 import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, turnPlanInputFromTranscriptEvent } from 'cf-proof/battle2/stage.ts';
 import { individualFromGenomeV1 } from 'cf-proof/morph/morph-individual.ts';
@@ -53,7 +53,9 @@ try {
   const painted = (s, mass) => combatantPresentation(s.rig, mass, FRAME); // the app's one sizing rule (battle2/stage.ts)
   const paintedL = painted(left, masses.left), paintedR = painted(right, masses.right);
   // the app's rule (battle2-wiring): an air/water body too tall for its band is scaled to fit it, and the stage takes that scale
-  const habitat = selectHabitatArena({ contextId: 'battle2-proof', seed: recipe.seed, round: 0, kind: 'wild', worlds: null, groundLineY: layout.groundLineY, fitToBand: true,
+  // script.world (optional): an ArenaWorld to fight on (e.g. a lake, so swimmers can be filmed); absent = the default dry arena
+  const scriptWorld = script.world ? { ...defaultArenaWorld(layout.groundLineY), ...script.world } : null;
+  const habitat = selectHabitatArena({ contextId: 'battle2-proof', seed: recipe.seed, round: 0, kind: 'wild', worlds: scriptWorld ? { home: scriptWorld, visitor: scriptWorld } : null, groundLineY: layout.groundLineY, fitToBand: true,
     left: { record: left.record, genome: null, label: left.name, painted: paintedL }, right: { record: right.record, genome: null, label: right.name, painted: paintedR } });
   if (habitat.status !== 'READY') throw Error('habitat: ' + habitat.reason);
   const stagedLayout = { ...layout, stands: { left: { x: layout.stands.left.x, y: habitat.stands.left.y }, right: { x: layout.stands.right.x, y: habitat.stands.right.y } } };
@@ -62,7 +64,7 @@ try {
   const style = { fontFamily: 'system-ui', fontSize: 34, fontWeight: '700', fill: '#fff2c8', stroke: { color: '#2a1a0a', width: 4 } };
   let clockMs = 0;
   const stage = new BattleStage({ factory: { container: () => new Container(), sprite: (t) => new Sprite(t), text: (t) => new Text({ text: t, style, anchor: 0.5 }), graphics: () => new Graphics() }, clock: () => clockMs, layout: stagedLayout,
-    plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses, worldLife: null, cues: null, ...(paintedL.capped || paintedR.capped || habitat.stands.left.fit < 1 || habitat.stands.right.fit < 1 ? { presentationScales: { left: paintedL.scale * habitat.stands.left.fit, right: paintedR.scale * habitat.stands.right.fit } } : {}),
+    plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses, worldLife: null, cues: null, ...(habitat.stands.left.medium === 'water' || habitat.stands.right.medium === 'water' ? { water: { surfaceY: habitat.surfaceY } } : {}), ...(paintedL.capped || paintedR.capped || habitat.stands.left.fit < 1 || habitat.stands.right.fit < 1 ? { presentationScales: { left: paintedL.scale * habitat.stands.left.fit, right: paintedR.scale * habitat.stands.right.fit } } : {}),
     effects: { host: createPixiEffectHost({ Sprite, Particle, ParticleContainer }), particleTexture: Texture.from(dotCanvas), seed: recipe.seed,
       phaseTextures: (a) => a.phases.map((p) => (isProceduralImage(p.keyedImage) ? null : phaseTextures.get(p.keyedImage) ?? (() => { throw Error('phase image ' + p.keyedImage); })())),
       emittersForTheme: (t) => themes.emittersFor(t, 'desktop'), tintForTheme: (t) => themes.tintFor(t) } });

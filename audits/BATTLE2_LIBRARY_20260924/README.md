@@ -44,3 +44,21 @@ all 17 painted archetypes; the arena still knew only the 5 crabs and the Civet. 
 - **Next (Claude):** a WET arena — the app's plates are the dry Earth-temperate set, so the swimmers can only fight on a
   world with water, where they are placed correctly but drawn over the forest floor. Codex's archetype harness already
   overlays procedural water; the stage needs its own.
+
+## The WET arena (same day, next batch)
+
+The swimmers could only fight on a world with water, where the habitat placed them correctly but the stage drew them over
+the dry forest floor. `BattleStage` now takes `water: { surfaceY }`: a procedural, depth-banded body of water
+(`WATER_BANDS`, no texture, deterministic) from the habitat's surface to the frame bottom, BEHIND the combatants and above
+the mid plate, moving with the mid plate's parallax, three frames wide; the dry near plate is hidden. The app wiring and the
+film harness pass it whenever either side fights in water (`selectHabitatArena` now returns the compiler's `surfaceY`); the
+film harness takes an optional `script.world` (a lake) so swimmers can be filmed.
+
+- Outcome test (`library-arena.test.ts`, "the WET arena"): one extra layer at index 2 (far, mid, water, …) behind the
+  swimmer; near plate hidden only when wet; the water tracks the mid plate through a real run-up; destroyed on dispose;
+  out-of-frame `surfaceY` refused. Negative control: detaching the water from the mid plate fails with the exact offset.
+- Films on a lake world (`<pair>-01/`, sheet `library-battles-sheet-water-01.png`): **Salmon vs Octopus** (both in water;
+  bite / bite), **Eagle vs Salmon** (air over water — talons / bite, surface-ranged), **Crab vs Starfish** (both in water;
+  pinch / body) — all DIAGNOSTIC_PASS, **0/0 refusals**, CPU p95 2.7 / 2.5 / 3.4 ms (inside the 3.5 ms painted tier).
+- Look note: the crab paintings carry a painted ground shadow (label 0) that floats under a submerged crab — a
+  painting-side / presentation item, not blocking.

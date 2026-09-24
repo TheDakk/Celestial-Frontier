@@ -31,7 +31,7 @@ export interface HabitatArenaInput {
 export const BAND_FILL = 0.9;
 export interface HabitatStand { readonly x: number; readonly y: number; readonly medium: BattleMedium; readonly band: Readonly<{ minY: number; maxY: number }>; readonly habitat: PhysicalHabitat; /** Presentation scale factor the caller applies (1 = as sized by mass; < 1 only with `fitToBand`). */ readonly fit: number; }
 export type HabitatArenaResult =
-  | Readonly<{ status: 'READY'; worldKey: string; seed: number; source: 'worlds' | 'default'; label: string; stands: Readonly<Record<Side, HabitatStand>>; interaction: 'same-medium' | 'surface-ranged' }>
+  | Readonly<{ status: 'READY'; worldKey: string; seed: number; source: 'worlds' | 'default'; label: string; stands: Readonly<Record<Side, HabitatStand>>; interaction: 'same-medium' | 'surface-ranged'; /** The water surface (frame fraction) the habitat compiler placed; the stage's wet arena starts there. */ surfaceY: number }>
   | Readonly<{ status: 'UNSUPPORTED'; worldKey: string; reason: string; label: string }>;
 
 /** The accepted Earth-temperate arena (three plates, ground line from the recipe) as a world, used when the battle carries no
@@ -69,5 +69,5 @@ export function selectHabitatArena(input: HabitatArenaInput): HabitatArenaResult
   };
   const stands = Object.freeze({ left: stand('left', left, input.left), right: stand('right', right, input.right) });
   const label = `${worldLabel} · left ${input.left.label}: ${stands.left.medium} (${left.source}) · right ${input.right.label}: ${stands.right.medium} (${right.source})`;
-  return Object.freeze({ status: 'READY', worldKey: compiled.worldKey, seed: compiled.seed, source, label, stands, interaction: compiled.interaction });
+  return Object.freeze({ status: 'READY', worldKey: compiled.worldKey, seed: compiled.seed, source, label, stands, interaction: compiled.interaction, surfaceY: compiled.surfaceY });
 }

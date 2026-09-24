@@ -16,6 +16,9 @@ import { PLATE_ORDER, combatantScale, fitCombatantWidth, parallaxOffset, type Ar
  * (tallest = 1.38 × rest): rest height 0.70 of the frame at 0.96. Film -01 (rest at 0.9, head leaves the frame when
  * rearing) is kept beside film -02 for Nick's eye. */
 export const GUARDIAN_FRAME_FILL = 0.96;
+/** The wet arena's depth bands, surface → floor (lit teal to deep blue-green, near-opaque), and its surface line. */
+export const WATER_BANDS: ReadonlyArray<Readonly<{ color: number; alpha: number }>> = Object.freeze([0x1f6272, 0x1c5a6a, 0x1a5262, 0x184b5a, 0x164452, 0x143d4a, 0x123642, 0x10303b, 0x0e2a34, 0x0c252e].map((color, i) => Object.freeze({ color, alpha: 0.9 + i * 0.008 })));
+export const WATER_SURFACE = Object.freeze({ color: 0xa7dcc2, alpha: 0.9 });
 /** ONE sizing rule for a combatant's presentation (2026-09-24; used by the app wiring, the film harness and the tests — two
  * copies could disagree): the mass rule (or the guardian's decided tallest-pose fill), then the arena WIDTH cap for a long
  * body (guardians exempt). `height`/`footBelowCentre` are frame fractions at the returned scale, ready for the habitat's
@@ -69,6 +72,10 @@ export interface BattleStageOptions {
    * these same values; absent preserves the mass/guardian rule exactly. */
   readonly presentationScales?: Readonly<Record<Side, number>>;
   readonly timing?: BattleStageTiming;
+  /** A WET arena (2026-09-24): when a side fights in water the stage draws a procedural body of water from `surfaceY` (a frame
+   * fraction — the habitat's surface) to the frame bottom BEHIND the combatants (above the mid plate, moving with it) and hides
+   * the dry near plate, so a swimmer is no longer drawn over the forest floor. Depth-banded, no texture, deterministic. */
+  readonly water?: Readonly<{ surfaceY: number }>;
 }
 export interface StageFrame { readonly sample: StageSample; readonly done: boolean; readonly label: string; readonly cuesFired: number; }
 export const HUD = Object.freeze({ barX: 16, barY: 12, barH: 8, cursorH: 14 });
@@ -83,6 +90,7 @@ export class BattleStage {
   readonly #fx: StageContainerLike; readonly #flash: StageGraphicsLike; readonly #bar: StageGraphicsLike; readonly #cursor: StageGraphicsLike; readonly #number: StageTextLike;
   #plan: TurnPlan | null = null; #startMs = 0; #player: EffectSequencePlayer | null = null; #fxNodes: object[] = []; #disposed = false;
   #cues: TurnCuePlayer | null = null;
+  readonly #water: StageGraphicsLike | null = null;
 
   constructor(o: BattleStageOptions) {
     if (o.presentationScales && ['left', 'right'].some(side => {
@@ -95,6 +103,14 @@ export class BattleStage {
     const plate = (id: PlateId): StageSpriteLike => { const p = L.plates.find((x) => x.id === id)!, s = f.sprite(o.plates[id]); s.anchor.set(0, 0); s.scale.set(p.scale, p.scale); s.x = p.x; s.y = p.y; return s; };
     this.#plates = { far: plate('far'), mid: plate('mid'), near: plate('near') };
     this.root.addChild(this.#plates.far); this.root.addChild(this.#plates.mid);
+    if (o.water) {
+      if (!(o.water.surfaceY > 0 && o.water.surfaceY < 1)) throw new TypeError('battle2 stage: water surfaceY must lie inside the frame');
+      const g = f.graphics(), H = L.frame.height, top = o.water.surfaceY * H, bands = WATER_BANDS.length;
+      // three frames wide so the parallax run-up never uncovers an edge; banded depth from the lit surface to the dark floor
+      for (let i = 0; i < bands; i++) { const y0 = top + ((H - top) * i) / bands, y1 = top + ((H - top) * (i + 1)) / bands; g.rect(-w, y0, 3 * w, y1 - y0 + 0.5); g.fill(WATER_BANDS[i]!); }
+      g.rect(-w, top - 1, 3 * w, 2); g.fill(WATER_SURFACE);
+      this.#water = g; this.root.addChild(g); this.#plates.near.visible = false;
+    }
     if (o.worldLife) this.root.addChild(o.worldLife.container);
     const holder = (side: Side): StageContainerLike => {
       const rig = o.rigs[side], h = f.container(), r = rig.root as StageNodeLike;
@@ -162,6 +178,7 @@ export class BattleStage {
     this.root.x = s.camera.shake.x; this.root.y = s.camera.shake.y;
     const off = parallaxOffset(s.runUpX * w);
     for (const id of PLATE_ORDER) this.#plates[id].x = L.plates.find((p) => p.id === id)!.x + off[id];
+    if (this.#water) this.#water.x = off.mid;
     this.#place(plan.attacker.side, s.attacker.displacementX, s.attacker.facing);
     this.#place(plan.target.side, s.target.displacementX, s.target.facing);
     // Reduced motion: both rigs stay at the rest pose applied at construction / the previous turn's end (E1 §1.6); no per-tick update.
@@ -200,6 +217,7 @@ export class BattleStage {
     this.#clearEffect(); this.#o.worldLife?.dispose();
     for (const side of ['left', 'right'] as const) { this.#o.rigs[side].dispose(); this.#holders[side].destroy(); }
     for (const n of [this.#plates.far, this.#plates.mid, this.#plates.near, this.#fx, this.#flash, this.#bar, this.#cursor, this.#number]) n.destroy();
+    this.#water?.destroy();
     this.root.destroy(); this.#plan = null; this.#disposed = true;
   }
 
