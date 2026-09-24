@@ -58,6 +58,7 @@ import { createTurnCueSink, type TurnAudioRuntime, type TurnCueSink } from './so
 import { createCreatureVoiceHook, type CreatureVoiceHook } from './soundkit/creature-voices.js';
 import { synthesizePlaceholderQuadruped } from './soundkit/placeholder-archetype.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
+import { placeCombatants } from './battle2/placement.js';
 import { repoRelativeSource } from '../../../tools/creature-animation/record-source.mjs';
 import { MASS_BY_SIZE_INDEX, MASS_CLASS } from './motion/timing.js';
 import type { SpeciesArtLoader } from './species-art-loader.js';
@@ -206,7 +207,8 @@ function browserRaster(): Battle2Raster {
     return { width: canvas.width, height: canvas.height, source: canvas, pixels: () => canvas.getContext('2d')!.getImageData(0, 0, canvas.width, canvas.height).data };
   };
 }
-/** Dev-only fetch relative to the `?url` location of arena-recipe.json (see the module note). */
+/** Fetches each arena file relative to arena-recipe.json (`/battle2/…`, served from `public/`). A built game's service worker
+ * refuses these today (they are outside the build marker, pwa-build.ts), so the arena stages only on an uncontrolled page. */
 export function devAssetSource(recipeUrl: string = arenaRecipeUrl, base: string = location.href): Battle2AssetSource {
   if (/^data:/.test(recipeUrl)) throw new Error('battle2 assets unavailable: this build inlined arena-recipe.json; the proof plates are a dev-only fetch');
   const dir = new URL('.', new URL(recipeUrl, base));
@@ -294,7 +296,9 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       const out: ResolvedAnatomyRecord[] = [], seen = new Set<string>();
       const admit = (r: ResolvedAnatomyRecord): void => { const key = r.recipeHash ?? r.identity.speciesVisualKey; if (!seen.has(key)) { seen.add(key); out.push(r); } };
       try { admit(await assets.json(BATTLE2_ASSETS.civetRecord) as ResolvedAnatomyRecord); } catch (error) { skipped.push(`Civet: landmark record unavailable (${error instanceof Error ? error.message : String(error)})`); }
-      for (const fit of BATTLE2_ASSETS.partsFits) { try { admit(await assets.json(fit.dir + 'record.json') as ResolvedAnatomyRecord); } catch (error) { skipped.push(`${fit.earthName}: fit record unavailable (${error instanceof Error ? error.message : String(error)})`); } }
+      // all registered fits' records in parallel (17 archetypes: one round trip, not seventeen), admitted in registry order
+      const fetched = await Promise.allSettled(BATTLE2_ASSETS.partsFits.map((fit) => assets.json(fit.dir + 'record.json') as Promise<ResolvedAnatomyRecord>));
+      fetched.forEach((r, i) => { const fit = BATTLE2_ASSETS.partsFits[i]!; if (r.status === 'fulfilled') admit(r.value); else skipped.push(`${fit.earthName}: fit record unavailable (${r.reason instanceof Error ? r.reason.message : String(r.reason)})`); });
       return out;
     };
     const records = input.records ?? await loadRecords();
@@ -361,27 +365,15 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     if (disposed) { left.rig.dispose(); right.rig.dispose(); throw new Error('disposed while rigging'); }
     rigLabels.left = left.rig.label; rigLabels.right = right.rig.label;
     refusalsOf = () => Object.freeze({ left: left.rig.refusals?.() ?? null, right: right.rig.refusals?.() ?? null });
-    // E1 §1.4: the habitat decides each side's medium and band on the selected world; UNSUPPORTED keeps the Chronicle path with its reason.
-    // sized by the mass rule, then capped to the arena WIDTH (a long body) — guardians keep their decided fill — then fitted to
-    // its medium band by the habitat below; the stage takes the resulting scale whenever it differs from its own mass rule
-    const paintedLeft = combatantPresentation(left.rig, left.mass, BATTLE2_FRAME, layout.stands.left.y), paintedRight = combatantPresentation(right.rig, right.mass, BATTLE2_FRAME, layout.stands.right.y);
-    const habitat = selectHabitatArena({ contextId: input.settlement.battleId, seed: recipe.seed, round: 0, kind: 'wild', worlds: input.worlds ?? (input.worldPreset === 'lake' ? { home: lakeArenaWorld(layout.groundLineY), visitor: lakeArenaWorld(layout.groundLineY) } : null), groundLineY: layout.groundLineY, fitToBand: true,
-      left: { record: matchRecord(records, championGenome), genome: championGenome, label: input.chronicle.championName, painted: paintedLeft },
-      right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, label: input.chronicle.defenderName, painted: paintedRight } });
-    arenaLabel = habitat.label;
-    if (habitat.status === 'UNSUPPORTED') { left.rig.dispose(); right.rig.dispose(); throw new Error(`battle2 habitat: ${habitat.reason}`); }
-    // The kit's stand x (§7, the accepted three-plate composition) is kept; the habitat supplies the medium and the vertical band.
-    // a flyer or swimmer too tall for its band is scaled to fit it (habitat `fit`); the stage takes that exact scale, so the
-    // habitat's containment and the drawn size agree. Nothing fitted → the stage's own mass rule, byte-identical to before.
-    const wet = habitat.stands.left.medium === 'water' || habitat.stands.right.medium === 'water'; // the wet arena: water behind the swimmers, no dry foreground
-    const fitted = paintedLeft.capped || paintedRight.capped || habitat.stands.left.fit < 1 || habitat.stands.right.fit < 1;
-    const presentationScales = { left: paintedLeft.scale * habitat.stands.left.fit, right: paintedRight.scale * habitat.stands.right.fit };
-    // each painted box is CENTRED on its stand (not hung off its foot anchor), at the scale the stage draws — the choreography
-    // reads the same shifted stands, so run-up distances agree with what is drawn
-    const drawnScale = { left: fitted ? presentationScales.left : paintedLeft.scale, right: fitted ? presentationScales.right : paintedRight.scale };
-    const shiftX = { left: standCentreShift(left.rig, drawnScale.left, BATTLE2_FRAME.width, 1), right: standCentreShift(right.rig, drawnScale.right, BATTLE2_FRAME.width, -1) };
-    const stagedLayout = { ...layout, stands: Object.freeze({ left: Object.freeze({ x: layout.stands.left.x + shiftX.left, y: habitat.stands.left.y }), right: Object.freeze({ x: layout.stands.right.x + shiftX.right, y: habitat.stands.right.y }) }) };
-    const mediums = { A: habitat.stands.left.medium, B: habitat.stands.right.medium } as const;
+    // E1 §1.4 + 2026-09-24: ONE placement pipeline (battle2/placement.ts — the film harness and the tests use the same): size, habitat, band
+    // fit, drawn scale, each painted box centred on its stand, the wet arena. UNSUPPORTED keeps the Chronicle path with its reason.
+    const placed = placeCombatants({ contextId: input.settlement.battleId, seed: recipe.seed, layout, worlds: input.worlds ?? (input.worldPreset === 'lake' ? { home: lakeArenaWorld(layout.groundLineY), visitor: lakeArenaWorld(layout.groundLineY) } : null),
+      left: { rig: left.rig, mass: left.mass, record: matchRecord(records, championGenome), genome: championGenome, label: input.chronicle.championName },
+      right: { rig: right.rig, mass: right.mass, record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, label: input.chronicle.defenderName } });
+    const habitat = placed.habitat; arenaLabel = habitat.label;
+    if (placed.status === 'UNSUPPORTED') { left.rig.dispose(); right.rig.dispose(); throw new Error(`battle2 habitat: ${placed.habitat.reason}`); }
+    const stagedLayout = placed.layout;
+    const mediums = { A: placed.habitat.stands.left.medium, B: placed.habitat.stands.right.medium } as const;
     // E1 §1.2: one anatomy attack per staged attack, chosen deterministically by Codex's compiler; a refusal leaves the family delivery clip and is labelled once.
     const attackFor = (side: 'A' | 'B', ordinal: number): TurnAttack | null => {
       const card = side === 'A' ? left.card : right.card, key = side === 'A' ? 'left' : 'right'; if (!card) return null;
@@ -402,7 +394,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       sides: { left: { record: matchRecord(records, championGenome), genome: championGenome, seed: left.seed, label: input.chronicle.championName },
         right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, seed: right.seed, label: input.chronicle.defenderName } } });
     cueSink = input.audio ? createTurnCueSink({ runtime: input.audio, seed: recipe.seed ^ fnv1a32(input.settlement.battleId), phone: input.deviceTier === 'low', creatureVoice: voices }) : null;
-    const built = new BattleStage({ factory, clock: input.clock, layout: stagedLayout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass }, ...(fitted ? { presentationScales } : {}), ...(wet ? { water: { surfaceY: habitat.surfaceY } } : {}),
+    const built = new BattleStage({ factory, clock: input.clock, layout: stagedLayout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass }, ...(placed.presentationScales ? { presentationScales: placed.presentationScales } : {}), ...(placed.water ? { water: placed.water } : {}),
       worldLife, reducedMotion: input.reducedMotion, cues: cueSink ? { sink: cueSink, phone: input.deviceTier === 'low' } : null, effects: input.reducedMotion ? null : { host: createPixiEffectHost({ Sprite: pixi.Sprite, Particle: pixi.Particle, ParticleContainer: pixi.ParticleContainer } as unknown as Parameters<typeof createPixiEffectHost>[0]),
         particleTexture: texture(raster(dot, PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE)), seed: recipe.seed,
         phaseTextures: (a) => a.phases.map((p) => { if (isProceduralImage(p.keyedImage)) return null; const t = resolvedPhaseTextures.get(p.keyedImage); if (!t) throw new Error(`battle2 phase image ${p.keyedImage} was not loaded`); return t; }),

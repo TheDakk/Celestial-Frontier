@@ -5,6 +5,7 @@ import { CARD_ARCHETYPES } from './morph/card-archetypes.js';
 import { decodePng } from './morph/png-decode.js';
 import { CARD_ASSET_URLS, cardAssetUrl, createPaintedCardsForApp } from './painted-cards.js';
 import { REPO_ROOT } from './battle2/parts-rig.fixtures.js';
+import { CARD_ARCHETYPES as BUILD_LIST } from '../../../tools/morph/build-card-masters.mjs';
 /** Under vitest a `?url` import resolves to a path on disk; a production build resolves it to the shipped asset URL. */
 const fetchFromDisk: typeof fetch = async (input) => { let p = String(input).replace(/^\/@fs/, '').replace(/^file:\/\//, ''); if (!existsSync(p)) p = fileURLToPath(new URL('port/v2' + p, REPO_ROOT)); /* vitest serves app assets at their vite-root (port/v2) path */ const bytes = readFileSync(p); return new Response(bytes, { status: 200 }); };
 describe('the card masters ship with the app', () => {
@@ -19,8 +20,10 @@ describe('the card masters ship with the app', () => {
     expect(src.card({ kingdom: 'fauna', seed: 1 }, 'thumb')).toBeNull();
   });
   it('OUTCOME: the painted marking reaches the APP card — through the shipped asset path, a striped individual differs from the plain one for every archetype that ships masks (found 2026-09-23: the asset map had no markings entries, the fetch threw, was swallowed, and every in-app card rendered plain while the disk-fed sheets showed the masks)', async () => {
-    const src = createPaintedCardsForApp(fetchFromDisk), shipsMasks = CARD_ARCHETYPES.filter((a) => existsSync(fileURLToPath(new URL(a.dir + 'markings.json', REPO_ROOT))));
-    expect(shipsMasks.length).toBeGreaterThanOrEqual(2); // crab + Civet at least; a vacuous pass over zero archetypes is refused
+    // the archetypes that SHOULD ship masks come from the source of truth (the builder list and each fit's markings), not from the shipped dirs
+    const shouldShip = BUILD_LIST.filter((b) => existsSync(fileURLToPath(new URL((b.markings ?? b.dir) + 'markings.json', REPO_ROOT)))).map((b) => b.earthName).sort();
+    const src = createPaintedCardsForApp(fetchFromDisk), shipsMasks = CARD_ARCHETYPES.filter((a) => shouldShip.includes(a.earthName));
+    expect(shouldShip).toEqual(['Civet', 'Crab', 'Salmon']); expect(shipsMasks.map((a) => a.earthName).sort()).toEqual(shouldShip);
     for (const a of shipsMasks) {
       const plain = await src.card({ _earthName: a.earthName, kingdom: 'fauna', seed: 9, pattern: 0 }, 'thumb')!, striped = await src.card({ _earthName: a.earthName, kingdom: 'fauna', seed: 9, pattern: 1 }, 'thumb')!;
       expect(striped.url, a.earthName + ': striped equals plain — the marking never reached the app card').not.toBe(plain.url);

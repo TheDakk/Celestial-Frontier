@@ -88,6 +88,17 @@ export const ACCENT_GROUPS: Readonly<Record<string, readonly string[]>> = Object
   serpent: ['head'], hopper: ['head'], primate: [], radial: ['body'], arachnid: ['tail'], cephalopod: ['head'],
   'flyer-membrane': ['ears', 'head'], myriapod: ['head'],
 });
+/** Where an emissive individual (lumin gene / iridescent pattern, no painted mask) glows: its accent set, or — for a body plan whose
+ * accent set is EMPTY (the primate, one coat) — its base coat (2026-09-24, review finding: a lumin Chimpanzee changed 0 pixels). */
+export function emissiveRoleV1(roles: Iterable<PaletteRole>): 'accent' | 'base' { for (const r of roles) if (r === 'accent') return 'accent'; return 'base'; }
+/** A part's palette role from the PART itself (2026-09-24, found by the adversarial review): the body card has no group for
+ * joint `root`, so a part bound to it fell to 'keep' — on the crabs that is the painted ground SHADOW (keep is right), but on all
+ * eleven sprint archetypes it is the BODY, their torso, which never took the colour gene on the card or the stage (up to a third
+ * of the Centipede). A root part is the base coat unless it is the shadow. Card (labels) and stage (binding parts) both use this. */
+export function paletteRoleOfPart(part: Readonly<{ id: string; joint: string }>, group: string | undefined, templateId?: string): PaletteRole {
+  if (group === undefined && part.joint === 'root') return /shadow/i.test(part.id) ? 'keep' : paletteRoleOfGroup('body', templateId);
+  return paletteRoleOfGroup(group, templateId);
+}
 /** A part's palette role. With a template in ACCENT_GROUPS the table decides; without one (plants, specialized plans) the
  * original default stands — body and legs base, every other group accent. A part with no joint group (the shadow) is kept. */
 export function paletteRoleOfGroup(group: string | undefined, templateId?: string): PaletteRole {

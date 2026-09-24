@@ -9,6 +9,7 @@ import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
 import { BATTLE2_ASSETS, auditAssetPath } from './battle2-wiring.js';
 import { CARD_ARCHETYPES } from './morph/card-archetypes.js';
 import { repoRelativeSource } from '../../../tools/creature-animation/record-source.mjs';
+import { CARD_ARCHETYPES as BUILD_LIST, SHIPPED_ROOT, generatedSources } from '../../../tools/morph/build-card-masters.mjs';
 const SERVED = new URL('port/v2/apps/game/public/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/', REPO_ROOT); // the recipe's directory, as served
 const served = (rel: string): URL => new URL(rel, SERVED);
 describe('the shipped arena carries every painted archetype', () => {
@@ -39,4 +40,19 @@ describe('the shipped arena carries every painted archetype', () => {
     expect(auditAssetPath(repoRelativeSource(abs))).toBe('../X/master.png');
     expect(() => repoRelativeSource('/etc/passwd')).toThrow(/outside a Celestial Frontier worktree/);
   });
+  it('NO DRIFT: the three generated files are exactly what the builder generates from its one list, and every shipped mirror names its fit and seals its record (review 2026-09-24: nothing tied them together)', () => {
+    const markingsFilesOf = (a: { key: string }) => { const dir = new URL(SHIPPED_ROOT + a.key + '/', REPO_ROOT), mj = new URL('markings.json', dir);
+      if (!existsSync(mj)) return []; const j = JSON.parse(readFileSync(mj, 'utf8')) as { patterns: Record<string, { file?: string }> }; return ['markings.json', ...Object.values(j.patterns).map((v) => v.file!).filter(Boolean)]; };
+    const gen = generatedSources(BUILD_LIST, markingsFilesOf), src = (f: string) => readFileSync(new URL('port/v2/apps/game/src/' + f, REPO_ROOT), 'utf8');
+    expect(src('morph/card-archetypes.ts')).toBe(gen.registry); expect(src('painted-cards.assets.ts')).toBe(gen.assets); expect(src('battle2-archetypes.ts')).toBe(gen.arena);
+    for (const a of BUILD_LIST) { const mirror = JSON.parse(readFileSync(new URL(SHIPPED_ROOT + a.key + '/SOURCE.json', REPO_ROOT), 'utf8')) as { fitDir: string; recordRecipeHash: string; markingsDir?: string };
+      expect(mirror.fitDir, a.earthName).toBe(a.dir); expect(mirror.markingsDir ?? null, a.earthName).toBe(a.markings ?? null);
+      const fit = JSON.parse(readFileSync(new URL(a.dir + 'record.json', REPO_ROOT), 'utf8')) as { recipeHash: string }, shipped = JSON.parse(readFileSync(new URL(SHIPPED_ROOT + a.key + '/record.json', REPO_ROOT), 'utf8')) as { recipeHash: string };
+      expect(mirror.recordRecipeHash, a.earthName).toBe(fit.recipeHash); expect(shipped.recipeHash, a.earthName + ' shipped record').toBe(fit.recipeHash);
+      const arenaFit = BATTLE2_PARTS_FITS.find((f) => f.earthName === a.earthName)!, served = JSON.parse(readFileSync(served_(arenaFit.dir + 'record.json'), 'utf8')) as { recipeHash: string };
+      expect(served.recipeHash, a.earthName + ' arena record').toBe(fit.recipeHash); }
+    // mutation control: a hand edit to a generated file is caught
+    expect(src('battle2-archetypes.ts').replace("'Python'", "'Pythn'")).not.toBe(gen.arena);
+  });
 });
+const served_ = (rel: string): URL => new URL(rel, SERVED);

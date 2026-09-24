@@ -6,15 +6,18 @@
 import fs from 'node:fs'; import path from 'node:path'; import http from 'node:http';
 import { openChromiumCdp } from '../../port/v2/tools/browsercdp.mjs';
 
-const [pkgArg, outArg, firstArg = 'Salmon,Octopus', secondArg = 'Eagle,Python'] = process.argv.slice(2);
+// --no-sw: answer 404 for /service-worker.js so the page is never worker-controlled — separates the arena from the production worker's
+// known /battle2/ 503 (Codex's pwa-build.ts; picker-smoke-03-sw-503 is that run). Mirrors the dev server, which registers no worker.
+const NO_SW = process.argv.includes('--no-sw');
+const [pkgArg, outArg, firstArg = 'Salmon,Octopus', secondArg = 'Eagle,Python'] = process.argv.slice(2).filter((a) => a !== '--no-sw');
 if (!pkgArg || !outArg) throw Error('usage: picker-smoke.mjs <packageDir> <outDir> [Left,Right] [Left2,Right2]');
 const root = path.resolve(pkgArg), out = path.resolve(outArg); fs.mkdirSync(out, { recursive: true });
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.webmanifest': 'application/manifest+json', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.wasm': 'application/wasm', '.webm': 'video/webm', '.mp3': 'audio/mpeg', '.ogg': 'audio/ogg', '.wav': 'audio/wav', '.woff2': 'font/woff2' };
 const server = http.createServer((req, res) => { let rel = decodeURIComponent(new URL(req.url, 'http://x').pathname); if (rel.endsWith('/')) rel += 'index.html'; const file = path.join(root, rel);
-  if (!file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) { res.writeHead(404).end(); return; }
+  if ((NO_SW && rel === '/service-worker.js') || !file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) { res.writeHead(404).end(); return; }
   res.setHeader('Content-Type', TYPES[path.extname(file)] ?? 'application/octet-stream'); res.end(fs.readFileSync(file)); });
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
-const port = server.address().port, report = { package: path.basename(root), runs: [] };
+const port = server.address().port, report = { package: path.basename(root), serviceWorker: NO_SW ? 'refused (--no-sw)' : 'served', runs: [] };
 let browser;
 try {
   browser = await openChromiumCdp({ label: 'battle2 matchup picker smoke', userDataPrefix: 'cf-battle2-picker', commandTimeoutMs: 60000 }); report.browser = browser.browser;

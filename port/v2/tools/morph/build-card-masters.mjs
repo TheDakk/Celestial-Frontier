@@ -5,6 +5,8 @@
 import fs from 'node:fs'; import path from 'node:path'; import { createHash } from 'node:crypto';
 import { readPng, writePng } from '../anatomy-verify/png.mjs';
 import { repoRelativeSource } from '../creature-animation/record-source.mjs';
+import { familyContractForRecord } from '../creature-animation/family-contracts.mjs';
+import { validateFixedPivots } from '../creature-animation/fixed-attachments.mjs';
 export const CARD_MASTER_SIDE = 512;
 const R = path.resolve(import.meta.dirname, '../../../..');
 /** Shipped copies live INSIDE port/v2 (the preview producer archives only the v2 subtree; the app never imports evidence
@@ -41,6 +43,9 @@ const box = (img, dw, dh) => { const o = new Uint8Array(dw * dh * 4), sx = img.w
     for (let yy = y0; yy < y1; yy++) for (let xx = x0; xx < x1; xx++) { const i = (yy * img.width + xx) * 4, al = img.data[i + 3]; r += img.data[i] * al; g += img.data[i + 1] * al; b += img.data[i + 2] * al; a += al; n++; }
     const j = (y * dw + x) * 4; if (a > 0) { o[j] = Math.round(r / a); o[j + 1] = Math.round(g / a); o[j + 2] = Math.round(b / a); o[j + 3] = Math.round(a / n); } } return o; };
 const nearest = (img, dw, dh) => { const o = new Uint8Array(dw * dh * 4), sx = img.width / dw, sy = img.height / dh; for (let y = 0; y < dh; y++) for (let x = 0; x < dw; x++) { const i = (Math.floor((y + 0.5) * sy) * img.width + Math.floor((x + 0.5) * sx)) * 4, j = (y * dw + x) * 4; o[j] = img.data[i]; o[j + 1] = img.data[i + 1]; o[j + 2] = img.data[i + 2]; o[j + 3] = img.data[i + 3]; } return o; };
+/** The stage's source-fixed joint sockets (Codex's compact myriapod) — baked into the card receipt so the card pivots those joints
+ * exactly where the stage's skeleton program does (2026-09-24 review finding). Absent when the family declares none. */
+function fixedPivotsOf(record) { const fp = validateFixedPivots(familyContractForRecord(record)); return fp && Object.keys(fp).length ? { fixedPivots: fp } : {}; }
 const SHIPPED_FILES = ['card/card.json', 'record.json', 'card/master-512.png', 'card/labels-512.png'];
 /** The generated app registry and explicit `?url` asset map (text only — deterministic from the list and the shipped markings). */
 /** `name: 'value'` — built by a helper so this file's text holds exactly ONE `earthName` literal per archetype (the registry test counts them). */
@@ -90,7 +95,7 @@ if (import.meta.url === new URL(process.argv[1], 'file:').href) {
     const ship = path.join(R, SHIPPED_ROOT, a.key); fs.mkdirSync(path.join(ship, 'card'), { recursive: true });
     const m = writePng(dw, dh, box(master, dw, dh)), l = writePng(dw, dh, nearest(labels, dw, dh));
     fs.writeFileSync(path.join(ship, 'card/master-512.png'), m); fs.writeFileSync(path.join(ship, 'card/labels-512.png'), l);
-    const receipt = { schema: 'cf.card-master/v1', earthName: a.earthName, recordRecipeHash: record.recipeHash, source: { master: repoRelativeSource(record.source), masterSha256: sha(masterBytes), keyedSha256: sha(keyedBytes), alpha: 'parts/keyed.png', labelsSha256, labelSource, width: master.width, height: master.height }, labels: labelList, landmarks: record.landmarks, card: { width: dw, height: dh, scale: s, masterSha256: sha(m), labelsSha256: sha(l), filter: 'alpha-weighted box; labels nearest' } };
+    const receipt = { schema: 'cf.card-master/v1', earthName: a.earthName, recordRecipeHash: record.recipeHash, source: { master: repoRelativeSource(record.source), masterSha256: sha(masterBytes), keyedSha256: sha(keyedBytes), alpha: 'parts/keyed.png', labelsSha256, labelSource, width: master.width, height: master.height }, labels: labelList, landmarks: record.landmarks, ...fixedPivotsOf(record), card: { width: dw, height: dh, scale: s, masterSha256: sha(m), labelsSha256: sha(l), filter: 'alpha-weighted box; labels nearest' } };
     fs.writeFileSync(path.join(ship, 'card/card.json'), JSON.stringify(receipt, null, 1) + '\n');
     fs.copyFileSync(path.join(dir, 'record.json'), path.join(ship, 'record.json'));
     // the painted masks: bound to THIS record (a mask set painted for another fit is refused), json + every pattern file

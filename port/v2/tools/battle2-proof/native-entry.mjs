@@ -6,7 +6,8 @@
 import { Application, Container, Graphics, Particle, ParticleContainer, Sprite, Text, Texture } from 'pixi.js';
 import { compileAnatomyAttack } from 'cf-proof/anatomy-attacks.ts';
 import { combatantScale, composeArena } from 'cf-proof/battle2/arena.ts';
-import { defaultArenaWorld, selectHabitatArena } from 'cf-proof/battle2/habitat-arena.ts';
+import { defaultArenaWorld } from 'cf-proof/battle2/habitat-arena.ts';
+import { placeCombatants } from 'cf-proof/battle2/placement.ts';
 import { createPartsRig } from 'cf-proof/battle2/parts-rig.ts';
 import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShift, turnPlanInputFromTranscriptEvent } from 'cf-proof/battle2/stage.ts';
 import { individualFromGenomeV1 } from 'cf-proof/morph/morph-individual.ts';
@@ -50,23 +51,21 @@ try {
   const guardianSide = left.rig.guardian ? 'left' : right.rig.guardian ? 'right' : undefined;
   const layout = composeArena({ id: recipe.battleContext?.worldKey ?? 'arena', groundLineNormalized: recipe.groundLineNormalized, plates: { far, mid, near } }, FRAME, guardianSide ? { guardianSide } : {});
   const masses = { left: left.card.massClass.multiplier, right: right.card.massClass.multiplier };
-  // the app's one sizing rule (battle2/stage.ts), with each side's stand line for the tallest-pose top cap
-  const paintedL = combatantPresentation(left.rig, masses.left, FRAME, layout.stands.left.y), paintedR = combatantPresentation(right.rig, masses.right, FRAME, layout.stands.right.y);
-  // the app's rule (battle2-wiring): an air/water body too tall for its band is scaled to fit it, and the stage takes that scale
-  // script.world (optional): an ArenaWorld to fight on (e.g. a lake, so swimmers can be filmed); absent = the default dry arena
+  // the app's ONE placement pipeline (battle2/placement.ts — the same the wiring and the tests use); script.world (optional) is an
+  // ArenaWorld to fight on (e.g. a lake, so swimmers can be filmed); absent = the default dry arena
   const scriptWorld = script.world ? { ...defaultArenaWorld(layout.groundLineY), ...script.world } : null;
-  const habitat = selectHabitatArena({ contextId: 'battle2-proof', seed: recipe.seed, round: 0, kind: 'wild', worlds: scriptWorld ? { home: scriptWorld, visitor: scriptWorld } : null, groundLineY: layout.groundLineY, fitToBand: true,
-    left: { record: left.record, genome: null, label: left.name, painted: paintedL }, right: { record: right.record, genome: null, label: right.name, painted: paintedR } });
-  if (habitat.status !== 'READY') throw Error('habitat: ' + habitat.reason);
-  // the app's rule (battle2-wiring): each painted box centred on its stand at the drawn scale
-  const drawnL = paintedL.scale * habitat.stands.left.fit, drawnR = paintedR.scale * habitat.stands.right.fit;
-  const stagedLayout = { ...layout, stands: { left: { x: layout.stands.left.x + standCentreShift(left.rig, drawnL, FRAME.width, 1), y: habitat.stands.left.y }, right: { x: layout.stands.right.x + standCentreShift(right.rig, drawnR, FRAME.width, -1), y: habitat.stands.right.y } } };
+  const placed = placeCombatants({ contextId: 'battle2-proof', seed: recipe.seed, layout, worlds: scriptWorld ? { home: scriptWorld, visitor: scriptWorld } : null,
+    left: { rig: left.rig, mass: masses.left, record: left.record, genome: null, label: left.name }, right: { rig: right.rig, mass: masses.right, record: right.record, genome: null, label: right.name } });
+  if (placed.status !== 'READY') throw Error('habitat: ' + placed.habitat.reason);
+  const habitat = placed.habitat, stagedLayout = placed.layout;
+  const paintedL = { capped: !!placed.presentationScales }, paintedR = paintedL; // report fields (widthCapped)
   const phaseTextures = new Map(); for (const p of anchors.phases) if (!isProceduralImage(p.keyedImage)) phaseTextures.set(p.keyedImage, texture(await image(p.keyedImage.split('/').pop())));
   const dot = particleDiscRgba(PARTICLE_DISC_SIZE), dotCanvas = new OffscreenCanvas(PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE), dotImage = dotCanvas.getContext('2d').createImageData(PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE); dotImage.data.set(dot); dotCanvas.getContext('2d').putImageData(dotImage, 0, 0);
   const style = { fontFamily: 'system-ui', fontSize: 34, fontWeight: '700', fill: '#fff2c8', stroke: { color: '#2a1a0a', width: 4 } };
   let clockMs = 0;
   const stage = new BattleStage({ factory: { container: () => new Container(), sprite: (t) => new Sprite(t), text: (t) => new Text({ text: t, style, anchor: 0.5 }), graphics: () => new Graphics() }, clock: () => clockMs, layout: stagedLayout,
-    plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses, worldLife: null, cues: null, ...(habitat.stands.left.medium === 'water' || habitat.stands.right.medium === 'water' ? { water: { surfaceY: habitat.surfaceY } } : {}), ...(paintedL.capped || paintedR.capped || habitat.stands.left.fit < 1 || habitat.stands.right.fit < 1 ? { presentationScales: { left: paintedL.scale * habitat.stands.left.fit, right: paintedR.scale * habitat.stands.right.fit } } : {}),
+    plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses, worldLife: null, cues: null, ...(placed.presentationScales ? { presentationScales: placed.presentationScales } : {}), ...(placed.water ? { water: placed.water } : {}),
+    
     effects: { host: createPixiEffectHost({ Sprite, Particle, ParticleContainer }), particleTexture: Texture.from(dotCanvas), seed: recipe.seed,
       phaseTextures: (a) => a.phases.map((p) => (isProceduralImage(p.keyedImage) ? null : phaseTextures.get(p.keyedImage) ?? (() => { throw Error('phase image ' + p.keyedImage); })())),
       emittersForTheme: (t) => themes.emittersFor(t, 'desktop'), tintForTheme: (t) => themes.tintFor(t) } });
