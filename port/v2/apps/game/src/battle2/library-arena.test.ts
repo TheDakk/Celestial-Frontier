@@ -16,7 +16,7 @@ import type { TurnAttack, TurnPlanInput } from './choreography.js';
 import { createPortraitRig } from './fallback.js';
 import type { BattleRigV1, RigContainerLike, RigSpriteLike } from './fixture-rig.js';
 import { REPO_ROOT, loadFitDir } from './parts-rig.fixtures.js';
-import { BattleStage, WATER_BANDS, combatantPresentation, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext } from './stage.js';
+import { BattleStage, WATER_BANDS, combatantPresentation, standCentreShift, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext } from './stage.js';
 
 class Node { x = 0; y = 0; rotation = 0; alpha = 1; visible = true; destroyed = false; text = ''; readonly scale = { set: () => {} }; readonly anchor = { set: () => {} };
   children: object[] = []; addChild(c: object) { this.children.push(c); } removeChild(c: object) { this.children = this.children.filter((x) => x !== c); } clear() {} rect() {} fill() {} destroy() { this.destroyed = true; } }
@@ -115,5 +115,24 @@ describe('the painted library in the arena', () => {
     expect(WATER_BANDS.length).toBeGreaterThanOrEqual(8);
     dry.stage.dispose();
     expect(() => new BattleStage({ factory, clock: () => 0, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: portraitRig(), right: portraitRig() }, masses: { left: 1, right: 1 }, water: { surfaceY: 1.2 } })).toThrow(/surfaceY/);
+  }, 300_000);
+  it('every archetype stands INSIDE the frame on BOTH sides: its painted box is centred on its stand, not hung off its foot (the picker filmed a right-hand Python whose tail left the frame) — the uncentred control reproduces that exit', async () => {
+    const EDGE = 0.01, out: string[] = [], uncentredExits: string[] = [];
+    for (const a of CARD_ARCHETYPES) {
+      const { rig, card } = await loadFitDir(fitDirOf(a.dir)), p = combatantPresentation(rig, card.massClass.multiplier, FRAME);
+      expect(rig.extent, a.earthName + ' extent').toBeDefined();
+      for (const [side, facing] of [['left', 1], ['right', -1]] as const) {
+        const box = (shift: number) => { const x = layout.stands[side].x + shift, px = (u: number) => (u * rig.cutout.width * p.scale) / FRAME.width;
+          // the stage mirrors the right side (holder scale.x = facing·k): source [foot − L, foot + R] lands on [x − L, x + R] facing +1, [x − R, x + L] facing −1
+          const L = px(rig.extent!.left), R = px(rig.extent!.right);
+          return facing === 1 ? { x0: x - L, x1: x + R } : { x0: x - R, x1: x + L }; };
+        const centred = box(standCentreShift(rig, p.scale, FRAME.width, facing)), raw = box(0);
+        if (centred.x0 < EDGE || centred.x1 > 1 - EDGE) out.push(`${a.earthName} ${side}: ${centred.x0.toFixed(3)}–${centred.x1.toFixed(3)}`);
+        expect((centred.x0 + centred.x1) / 2, `${a.earthName} ${side} centred`).toBeCloseTo(layout.stands[side].x, 9);
+        if (raw.x0 < 0 || raw.x1 > 1) uncentredExits.push(`${a.earthName} ${side}`);
+      }
+    }
+    expect(out).toEqual([]);
+    expect(uncentredExits).toContain('Python right'); // the reported geometry, reproduced by the uncentred placement
   }, 300_000);
 });
