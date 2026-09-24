@@ -1,0 +1,1776 @@
+{
+  "schema": "cf.sprint-fit/v1",
+  "intake": {
+    "id": "centipede",
+    "parts": 32,
+    "atlasSize": {
+      "width": 1159,
+      "height": 2047
+    },
+    "restDifferentChannels": 0,
+    "atlasDifferentChannels": 0
+  },
+  "paintSkin": {
+    "schema": "cf.paint-skin-intake/v1",
+    "refinements": [
+      {
+        "x": 205,
+        "y": 570,
+        "width": 885,
+        "height": 90,
+        "boundaryStep": 24,
+        "interiorStep": 56
+      },
+      {
+        "x": 200,
+        "y": 680,
+        "width": 895,
+        "height": 120,
+        "boundaryStep": 24,
+        "interiorStep": 56
+      },
+      {
+        "x": 933,
+        "y": 582,
+        "width": 61,
+        "height": 71,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 872,
+        "y": 574,
+        "width": 65,
+        "height": 74,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 266,
+        "y": 572,
+        "width": 64,
+        "height": 77,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 445,
+        "y": 584,
+        "width": 66,
+        "height": 75,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 208,
+        "y": 570,
+        "width": 60,
+        "height": 74,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 991,
+        "y": 586,
+        "width": 56,
+        "height": 69,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 812,
+        "y": 570,
+        "width": 62,
+        "height": 74,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 752,
+        "y": 566,
+        "width": 62,
+        "height": 72,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 690,
+        "y": 563,
+        "width": 64,
+        "height": 73,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 630,
+        "y": 565,
+        "width": 64,
+        "height": 73,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 568,
+        "y": 570,
+        "width": 65,
+        "height": 74,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 507,
+        "y": 578,
+        "width": 65,
+        "height": 75,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 386,
+        "y": 585,
+        "width": 63,
+        "height": 75,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      },
+      {
+        "x": 327,
+        "y": 581,
+        "width": 63,
+        "height": 76,
+        "boundaryStep": 8,
+        "interiorStep": 32
+      }
+    ],
+    "sourceBindingHash": "c73a6b686050b55bb747be6fe6d231fe0e23af5afe57e6f6823bf5651dc66a05",
+    "recordRecipeHash": "87434dc5b868915b31575e47ba8deab0006eb16a100c6e496512a54019607791",
+    "packedPixels": {
+      "schema": "cf.parts-byte-verification/v1",
+      "bindingHash": "c73a6b686050b55bb747be6fe6d231fe0e23af5afe57e6f6823bf5651dc66a05",
+      "atlasSha256": "1a685dcf26e57a3f3f87b75ba4a4a642153e7504fb4ce06d3e63f41d861e052a",
+      "parts": 32,
+      "comparedChannels": 6678476,
+      "changedChannels": 0
+    },
+    "vertices": 4813,
+    "partVertices": 6410,
+    "parts": 32,
+    "leaves": 2048,
+    "triangles": 8752,
+    "ownershipEdges": 2404,
+    "ownershipAlphaRule": "every nonzero original alpha",
+    "originalInkOnly": true,
+    "method": "alpha-adaptive conforming cells; shared vertex field; per-part clipped atlas UVs; no overlap patches",
+    "nativeAcceptance": false
+  },
+  "surfaces": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "leg0FarFoot",
+        "part": "leg0-far",
+        "vertex": 122,
+        "distancePx": 6.560487786742607,
+        "supports": [
+          880,
+          849
+        ]
+      },
+      {
+        "joint": "leg0NearFoot",
+        "part": "leg0-near",
+        "vertex": 56,
+        "distancePx": 8.246211251235422,
+        "supports": [
+          39
+        ]
+      },
+      {
+        "joint": "leg1FarFoot",
+        "part": "leg1-far",
+        "vertex": 18,
+        "distancePx": 6.403124237432834,
+        "supports": [
+          1016
+        ]
+      },
+      {
+        "joint": "leg1NearFoot",
+        "part": "leg1-near",
+        "vertex": 70,
+        "distancePx": 8.602325267042676,
+        "supports": [
+          105,
+          97
+        ]
+      },
+      {
+        "joint": "leg2FarFoot",
+        "part": "leg2-far",
+        "vertex": 1,
+        "distancePx": 8.602325267042565,
+        "supports": [
+          1240
+        ]
+      },
+      {
+        "joint": "leg2NearFoot",
+        "part": "leg2-near",
+        "vertex": 47,
+        "distancePx": 4.47213595499952,
+        "supports": [
+          146
+        ]
+      },
+      {
+        "joint": "leg3FarFoot",
+        "part": "leg3-far",
+        "vertex": 0,
+        "distancePx": 7.071067811865479,
+        "supports": [
+          1487,
+          1488
+        ]
+      },
+      {
+        "joint": "leg3NearFoot",
+        "part": "leg3-near",
+        "vertex": 55,
+        "distancePx": 3.9999999999999742,
+        "supports": [
+          212
+        ]
+      },
+      {
+        "joint": "leg4FarFoot",
+        "part": "leg4-far",
+        "vertex": 158,
+        "distancePx": 7.810249675906786,
+        "supports": [
+          1836,
+          1837,
+          1838
+        ]
+      },
+      {
+        "joint": "leg4NearFoot",
+        "part": "leg4-near",
+        "vertex": 63,
+        "distancePx": 6.250000000000004,
+        "supports": [
+          263,
+          258
+        ]
+      },
+      {
+        "joint": "leg5FarFoot",
+        "part": "leg5-far",
+        "vertex": 12,
+        "distancePx": 4.999999999999989,
+        "supports": [
+          1954,
+          1949,
+          1948
+        ]
+      },
+      {
+        "joint": "leg5NearFoot",
+        "part": "leg5-near",
+        "vertex": 59,
+        "distancePx": 7.0000000000000595,
+        "supports": [
+          314
+        ]
+      },
+      {
+        "joint": "leg6FarFoot",
+        "part": "leg6-far",
+        "vertex": 10,
+        "distancePx": 1.5811388300842346,
+        "supports": [
+          2204
+        ]
+      },
+      {
+        "joint": "leg6NearFoot",
+        "part": "leg6-near",
+        "vertex": 53,
+        "distancePx": 8.062257748298503,
+        "supports": [
+          366
+        ]
+      },
+      {
+        "joint": "leg7FarFoot",
+        "part": "leg7-far",
+        "vertex": 3,
+        "distancePx": 7.071067811865539,
+        "supports": [
+          2429,
+          2430
+        ]
+      },
+      {
+        "joint": "leg7NearFoot",
+        "part": "leg7-near",
+        "vertex": 36,
+        "distancePx": 5.8309518948453105,
+        "supports": [
+          412
+        ]
+      },
+      {
+        "joint": "leg8FarFoot",
+        "part": "leg8-far",
+        "vertex": 14,
+        "distancePx": 5.2624105839913025,
+        "supports": [
+          2646,
+          2649
+        ]
+      },
+      {
+        "joint": "leg8NearFoot",
+        "part": "leg8-near",
+        "vertex": 52,
+        "distancePx": 2.8284271247462707,
+        "supports": [
+          475
+        ]
+      },
+      {
+        "joint": "leg9FarFoot",
+        "part": "leg9-far",
+        "vertex": 100,
+        "distancePx": 6.708203932499341,
+        "supports": [
+          2969
+        ]
+      },
+      {
+        "joint": "leg9NearFoot",
+        "part": "leg9-near",
+        "vertex": 55,
+        "distancePx": 6.708203932499404,
+        "supports": [
+          527
+        ]
+      },
+      {
+        "joint": "leg10FarFoot",
+        "part": "leg10-far",
+        "vertex": 41,
+        "distancePx": 3.041381265149127,
+        "supports": [
+          3146
+        ]
+      },
+      {
+        "joint": "leg10NearFoot",
+        "part": "leg10-near",
+        "vertex": 55,
+        "distancePx": 6.708203932499435,
+        "supports": [
+          578,
+          579
+        ]
+      },
+      {
+        "joint": "leg11FarFoot",
+        "part": "leg11-far",
+        "vertex": 1,
+        "distancePx": 5.656854249492394,
+        "supports": [
+          3358
+        ]
+      },
+      {
+        "joint": "leg11NearFoot",
+        "part": "leg11-near",
+        "vertex": 56,
+        "distancePx": 2.2360679774998533,
+        "supports": [
+          637
+        ]
+      },
+      {
+        "joint": "leg12FarFoot",
+        "part": "leg12-far",
+        "vertex": 204,
+        "distancePx": 5.496158481513418,
+        "supports": [
+          3786,
+          3788
+        ]
+      },
+      {
+        "joint": "leg12NearFoot",
+        "part": "leg12-near",
+        "vertex": 27,
+        "distancePx": 4.472135954999551,
+        "supports": [
+          675
+        ]
+      },
+      {
+        "joint": "leg13FarFoot",
+        "part": "leg13-far",
+        "vertex": 0,
+        "distancePx": 8.602325267042621,
+        "supports": [
+          3844,
+          3845
+        ]
+      },
+      {
+        "joint": "leg13NearFoot",
+        "part": "leg13-near",
+        "vertex": 55,
+        "distancePx": 5.000000000000003,
+        "supports": [
+          755,
+          758
+        ]
+      }
+    ],
+    "sourceBindingHash": "bd3779f01eab5b2c6b5ed27193838a2861315d18188da39ecd8e31a0512d8ce2",
+    "sourceVertices": 4813,
+    "vertices": 5074,
+    "sharedSupports": 753,
+    "pins": 1604,
+    "independentSurfaceParts": 32,
+    "sourceJoins": 31,
+    "excludedOverlaps": 6,
+    "observedExcludedBoundaries": 6,
+    "weldedExcludedBoundaries": 0,
+    "independentExcludedBoundaries": 6,
+    "preservePaintBoundaries": false,
+    "sourceCoordinateChanges": 0
+  },
+  "regional": {
+    "schema": "cf.packet-regional-influences/v1",
+    "status": "COMPILED_NOT_MOTION_ACCEPTED",
+    "sourceBindingHash": "f242ea90511555b827a61199e166d48118a20a5ec99ef992edb1cb7e4519268b",
+    "bindingHash": "541cc0657e235e5a3d7586a877200312ab3f6aeb9380b08442b8d64e03a97ab0",
+    "recordRecipeHash": "87434dc5b868915b31575e47ba8deab0006eb16a100c6e496512a54019607791",
+    "atlasSha256": "1a685dcf26e57a3f3f87b75ba4a4a642153e7504fb4ce06d3e63f41d861e052a",
+    "regionsHash": "d5bcca02f33167f2c6e2dfc5125aed23c5dff55dd463b60d71888b9887a8026f",
+    "regions": [
+      {
+        "id": "leg0-near-knee-bend-observed-paint",
+        "partId": "leg0-near",
+        "joint": "leg0NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            1054,
+            756
+          ],
+          [
+            1078,
+            756
+          ],
+          [
+            1078,
+            780
+          ],
+          [
+            1054,
+            780
+          ]
+        ],
+        "paintedPixels": 433,
+        "selectedSupports": 3,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          27,
+          34,
+          35
+        ]
+      },
+      {
+        "id": "leg1-near-knee-bend-observed-paint",
+        "partId": "leg1-near",
+        "joint": "leg1NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            995,
+            746
+          ],
+          [
+            1019,
+            746
+          ],
+          [
+            1019,
+            770
+          ],
+          [
+            995,
+            770
+          ]
+        ],
+        "paintedPixels": 566,
+        "selectedSupports": 3,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          78,
+          80,
+          81
+        ]
+      },
+      {
+        "id": "leg2-near-knee-bend-observed-paint",
+        "partId": "leg2-near",
+        "joint": "leg2NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            935,
+            742
+          ],
+          [
+            959,
+            742
+          ],
+          [
+            959,
+            766
+          ],
+          [
+            935,
+            766
+          ]
+        ],
+        "paintedPixels": 566,
+        "selectedSupports": 5,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          131,
+          133,
+          155,
+          159,
+          160
+        ]
+      },
+      {
+        "id": "leg3-near-knee-bend-observed-paint",
+        "partId": "leg3-near",
+        "joint": "leg3NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            873,
+            739
+          ],
+          [
+            897,
+            739
+          ],
+          [
+            897,
+            763
+          ],
+          [
+            873,
+            763
+          ]
+        ],
+        "paintedPixels": 547,
+        "selectedSupports": 3,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          188,
+          196,
+          197
+        ]
+      },
+      {
+        "id": "leg4-near-knee-bend-observed-paint",
+        "partId": "leg4-near",
+        "joint": "leg4NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            814,
+            733
+          ],
+          [
+            838,
+            733
+          ],
+          [
+            838,
+            757
+          ],
+          [
+            814,
+            757
+          ]
+        ],
+        "paintedPixels": 557,
+        "selectedSupports": 3,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          236,
+          240,
+          251
+        ]
+      },
+      {
+        "id": "leg5-near-knee-bend-observed-paint",
+        "partId": "leg5-near",
+        "joint": "leg5NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            756,
+            730
+          ],
+          [
+            780,
+            730
+          ],
+          [
+            780,
+            754
+          ],
+          [
+            756,
+            754
+          ]
+        ],
+        "paintedPixels": 571,
+        "selectedSupports": 3,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          290,
+          291,
+          301
+        ]
+      },
+      {
+        "id": "leg6-near-knee-bend-observed-paint",
+        "partId": "leg6-near",
+        "joint": "leg6NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            695,
+            731
+          ],
+          [
+            719,
+            731
+          ],
+          [
+            719,
+            755
+          ],
+          [
+            695,
+            755
+          ]
+        ],
+        "paintedPixels": 571,
+        "selectedSupports": 5,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          346,
+          347,
+          351,
+          360,
+          362
+        ]
+      },
+      {
+        "id": "leg7-near-knee-bend-observed-paint",
+        "partId": "leg7-near",
+        "joint": "leg7NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            630,
+            739
+          ],
+          [
+            654,
+            739
+          ],
+          [
+            654,
+            763
+          ],
+          [
+            630,
+            763
+          ]
+        ],
+        "paintedPixels": 563,
+        "selectedSupports": 3,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          420,
+          424,
+          425
+        ]
+      },
+      {
+        "id": "leg8-near-knee-bend-observed-paint",
+        "partId": "leg8-near",
+        "joint": "leg8NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            563,
+            745
+          ],
+          [
+            587,
+            745
+          ],
+          [
+            587,
+            769
+          ],
+          [
+            563,
+            769
+          ]
+        ],
+        "paintedPixels": 574,
+        "selectedSupports": 3,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          456,
+          458,
+          459
+        ]
+      },
+      {
+        "id": "leg9-near-knee-bend-observed-paint",
+        "partId": "leg9-near",
+        "joint": "leg9NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            502,
+            753
+          ],
+          [
+            526,
+            753
+          ],
+          [
+            526,
+            777
+          ],
+          [
+            502,
+            777
+          ]
+        ],
+        "paintedPixels": 542,
+        "selectedSupports": 3,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          509,
+          515,
+          520
+        ]
+      },
+      {
+        "id": "leg10-near-knee-bend-observed-paint",
+        "partId": "leg10-near",
+        "joint": "leg10NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            432,
+            751
+          ],
+          [
+            456,
+            751
+          ],
+          [
+            456,
+            775
+          ],
+          [
+            432,
+            775
+          ]
+        ],
+        "paintedPixels": 555,
+        "selectedSupports": 3,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          568,
+          569,
+          572
+        ]
+      },
+      {
+        "id": "leg11-near-knee-bend-observed-paint",
+        "partId": "leg11-near",
+        "joint": "leg11NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            369,
+            746
+          ],
+          [
+            393,
+            746
+          ],
+          [
+            393,
+            770
+          ],
+          [
+            369,
+            770
+          ]
+        ],
+        "paintedPixels": 568,
+        "selectedSupports": 3,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          613,
+          615,
+          616
+        ]
+      },
+      {
+        "id": "leg12-near-knee-bend-observed-paint",
+        "partId": "leg12-near",
+        "joint": "leg12NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            312,
+            739
+          ],
+          [
+            336,
+            739
+          ],
+          [
+            336,
+            763
+          ],
+          [
+            312,
+            763
+          ]
+        ],
+        "paintedPixels": 558,
+        "selectedSupports": 5,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          664,
+          667,
+          695,
+          699,
+          700
+        ]
+      },
+      {
+        "id": "leg13-near-knee-bend-observed-paint",
+        "partId": "leg13-near",
+        "joint": "leg13NearKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            251,
+            734
+          ],
+          [
+            275,
+            734
+          ],
+          [
+            275,
+            758
+          ],
+          [
+            251,
+            758
+          ]
+        ],
+        "paintedPixels": 563,
+        "selectedSupports": 4,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          734,
+          736,
+          737,
+          745
+        ]
+      },
+      {
+        "id": "leg0-far-knee-bend-observed-paint",
+        "partId": "leg0-far",
+        "joint": "leg0FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            1006,
+            601
+          ],
+          [
+            1022,
+            601
+          ],
+          [
+            1022,
+            617
+          ],
+          [
+            1006,
+            617
+          ]
+        ],
+        "paintedPixels": 256,
+        "selectedSupports": 17,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          805,
+          809,
+          810,
+          811,
+          812,
+          819,
+          824,
+          825,
+          826,
+          827,
+          891,
+          894,
+          895,
+          912,
+          913,
+          916,
+          917
+        ]
+      },
+      {
+        "id": "leg1-far-knee-bend-observed-paint",
+        "partId": "leg1-far",
+        "joint": "leg1FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            947,
+            599
+          ],
+          [
+            963,
+            599
+          ],
+          [
+            963,
+            615
+          ],
+          [
+            947,
+            615
+          ]
+        ],
+        "paintedPixels": 253,
+        "selectedSupports": 17,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          1084,
+          1088,
+          1089,
+          1090,
+          1091,
+          1092,
+          1109,
+          1113,
+          1124,
+          1128,
+          1129,
+          1130,
+          1131,
+          1132,
+          1134,
+          1153,
+          1157
+        ]
+      },
+      {
+        "id": "leg2-far-knee-bend-observed-paint",
+        "partId": "leg2-far",
+        "joint": "leg2FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            887,
+            592
+          ],
+          [
+            903,
+            592
+          ],
+          [
+            903,
+            608
+          ],
+          [
+            887,
+            608
+          ]
+        ],
+        "paintedPixels": 254,
+        "selectedSupports": 22,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          1320,
+          1324,
+          1325,
+          1326,
+          1327,
+          1328,
+          1329,
+          1333,
+          1334,
+          1338,
+          1339,
+          1340,
+          1341,
+          1342,
+          1343,
+          1344,
+          1345,
+          1346,
+          1347,
+          1386,
+          1398,
+          1402
+        ]
+      },
+      {
+        "id": "leg3-far-knee-bend-observed-paint",
+        "partId": "leg3-far",
+        "joint": "leg3FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            827,
+            584
+          ],
+          [
+            843,
+            584
+          ],
+          [
+            843,
+            600
+          ],
+          [
+            827,
+            600
+          ]
+        ],
+        "paintedPixels": 256,
+        "selectedSupports": 6,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          1536,
+          1537,
+          1540,
+          1575,
+          1576,
+          1577
+        ]
+      },
+      {
+        "id": "leg4-far-knee-bend-observed-paint",
+        "partId": "leg4-far",
+        "joint": "leg4FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            767,
+            580
+          ],
+          [
+            783,
+            580
+          ],
+          [
+            783,
+            596
+          ],
+          [
+            767,
+            596
+          ]
+        ],
+        "paintedPixels": 256,
+        "selectedSupports": 12,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          1758,
+          1759,
+          1760,
+          1761,
+          1762,
+          1763,
+          1773,
+          1774,
+          1775,
+          1778,
+          1780,
+          1781
+        ]
+      },
+      {
+        "id": "leg5-far-knee-bend-observed-paint",
+        "partId": "leg5-far",
+        "joint": "leg5FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            705,
+            577
+          ],
+          [
+            721,
+            577
+          ],
+          [
+            721,
+            593
+          ],
+          [
+            705,
+            593
+          ]
+        ],
+        "paintedPixels": 256,
+        "selectedSupports": 20,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          1974,
+          1985,
+          1989,
+          1994,
+          2047,
+          2049,
+          2053,
+          2054,
+          2055,
+          2056,
+          2057,
+          2058,
+          2059,
+          2062,
+          2063,
+          2076,
+          2077,
+          2078,
+          2079,
+          2084
+        ]
+      },
+      {
+        "id": "leg6-far-knee-bend-observed-paint",
+        "partId": "leg6-far",
+        "joint": "leg6FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            645,
+            579
+          ],
+          [
+            661,
+            579
+          ],
+          [
+            661,
+            595
+          ],
+          [
+            645,
+            595
+          ]
+        ],
+        "paintedPixels": 256,
+        "selectedSupports": 15,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          2245,
+          2250,
+          2267,
+          2268,
+          2269,
+          2270,
+          2271,
+          2274,
+          2275,
+          2305,
+          2317,
+          2318,
+          2321,
+          2322,
+          2325
+        ]
+      },
+      {
+        "id": "leg7-far-knee-bend-observed-paint",
+        "partId": "leg7-far",
+        "joint": "leg7FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            583,
+            584
+          ],
+          [
+            599,
+            584
+          ],
+          [
+            599,
+            600
+          ],
+          [
+            583,
+            600
+          ]
+        ],
+        "paintedPixels": 256,
+        "selectedSupports": 11,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          2455,
+          2456,
+          2476,
+          2492,
+          2493,
+          2497,
+          2498,
+          2502,
+          2523,
+          2524,
+          2525
+        ]
+      },
+      {
+        "id": "leg8-far-knee-bend-observed-paint",
+        "partId": "leg8-far",
+        "joint": "leg8FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            522,
+            592
+          ],
+          [
+            538,
+            592
+          ],
+          [
+            538,
+            608
+          ],
+          [
+            522,
+            608
+          ]
+        ],
+        "paintedPixels": 254,
+        "selectedSupports": 21,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          2702,
+          2704,
+          2706,
+          2707,
+          2708,
+          2719,
+          2720,
+          2721,
+          2722,
+          2723,
+          2724,
+          2725,
+          2726,
+          2735,
+          2736,
+          2737,
+          2738,
+          2739,
+          2740,
+          2741,
+          2742
+        ]
+      },
+      {
+        "id": "leg9-far-knee-bend-observed-paint",
+        "partId": "leg9-far",
+        "joint": "leg9FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            460,
+            599
+          ],
+          [
+            476,
+            599
+          ],
+          [
+            476,
+            615
+          ],
+          [
+            460,
+            615
+          ]
+        ],
+        "paintedPixels": 256,
+        "selectedSupports": 15,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          2928,
+          2933,
+          2934,
+          2935,
+          2936,
+          2941,
+          2947,
+          2948,
+          3016,
+          3017,
+          3020,
+          3021,
+          3027,
+          3028,
+          3031
+        ]
+      },
+      {
+        "id": "leg10-far-knee-bend-observed-paint",
+        "partId": "leg10-far",
+        "joint": "leg10FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            401,
+            600
+          ],
+          [
+            417,
+            600
+          ],
+          [
+            417,
+            616
+          ],
+          [
+            401,
+            616
+          ]
+        ],
+        "paintedPixels": 256,
+        "selectedSupports": 16,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          3182,
+          3183,
+          3184,
+          3185,
+          3199,
+          3202,
+          3203,
+          3217,
+          3218,
+          3219,
+          3220,
+          3221,
+          3223,
+          3235,
+          3236,
+          3239
+        ]
+      },
+      {
+        "id": "leg11-far-knee-bend-observed-paint",
+        "partId": "leg11-far",
+        "joint": "leg11FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            342,
+            596
+          ],
+          [
+            358,
+            596
+          ],
+          [
+            358,
+            612
+          ],
+          [
+            342,
+            612
+          ]
+        ],
+        "paintedPixels": 255,
+        "selectedSupports": 19,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          3424,
+          3427,
+          3432,
+          3437,
+          3438,
+          3439,
+          3440,
+          3441,
+          3446,
+          3450,
+          3451,
+          3452,
+          3453,
+          3477,
+          3486,
+          3487,
+          3490,
+          3491,
+          3498
+        ]
+      },
+      {
+        "id": "leg12-far-knee-bend-observed-paint",
+        "partId": "leg12-far",
+        "joint": "leg12FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            281,
+            590
+          ],
+          [
+            297,
+            590
+          ],
+          [
+            297,
+            606
+          ],
+          [
+            281,
+            606
+          ]
+        ],
+        "paintedPixels": 255,
+        "selectedSupports": 11,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          3684,
+          3689,
+          3690,
+          3691,
+          3692,
+          3697,
+          3703,
+          3704,
+          3711,
+          3717,
+          3721
+        ]
+      },
+      {
+        "id": "leg13-far-knee-bend-observed-paint",
+        "partId": "leg13-far",
+        "joint": "leg13FarKnee",
+        "pin": true,
+        "polygonPx": [
+          [
+            223,
+            585
+          ],
+          [
+            239,
+            585
+          ],
+          [
+            239,
+            601
+          ],
+          [
+            223,
+            601
+          ]
+        ],
+        "paintedPixels": 255,
+        "selectedSupports": 15,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          3882,
+          3885,
+          3890,
+          3895,
+          3896,
+          3897,
+          3898,
+          3899,
+          3906,
+          3908,
+          3961,
+          3970,
+          3971,
+          3974,
+          3975
+        ]
+      },
+      {
+        "id": "head-far-antenna-observed-paint",
+        "partId": "head",
+        "joint": "antennaFar",
+        "pin": false,
+        "polygonPx": [
+          [
+            1123,
+            627
+          ],
+          [
+            1109,
+            602
+          ],
+          [
+            1140,
+            574
+          ],
+          [
+            1159,
+            528
+          ],
+          [
+            1177,
+            466
+          ],
+          [
+            1197,
+            415
+          ],
+          [
+            1225,
+            401
+          ],
+          [
+            1234,
+            436
+          ],
+          [
+            1210,
+            500
+          ],
+          [
+            1193,
+            559
+          ],
+          [
+            1167,
+            605
+          ]
+        ],
+        "paintedPixels": 4297,
+        "selectedSupports": 12,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          4107,
+          4110,
+          4111,
+          4134,
+          4137,
+          4139,
+          4141,
+          4143,
+          4144,
+          4145,
+          4146,
+          4149
+        ]
+      },
+      {
+        "id": "head-near-antenna-observed-paint",
+        "partId": "head",
+        "joint": "antennaNear",
+        "pin": false,
+        "polygonPx": [
+          [
+            1141,
+            688
+          ],
+          [
+            1154,
+            702
+          ],
+          [
+            1179,
+            746
+          ],
+          [
+            1196,
+            803
+          ],
+          [
+            1238,
+            881
+          ],
+          [
+            1207,
+            889
+          ],
+          [
+            1176,
+            819
+          ],
+          [
+            1154,
+            762
+          ],
+          [
+            1129,
+            724
+          ]
+        ],
+        "paintedPixels": 2614,
+        "selectedSupports": 9,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          4237,
+          4242,
+          4243,
+          4244,
+          4245,
+          4252,
+          4255,
+          4256,
+          4264
+        ]
+      },
+      {
+        "id": "head-mouth-forcipules-observed-paint",
+        "partId": "head",
+        "joint": "mandible",
+        "pin": false,
+        "polygonPx": [
+          [
+            1100,
+            710
+          ],
+          [
+            1113,
+            693
+          ],
+          [
+            1130,
+            704
+          ],
+          [
+            1137,
+            724
+          ],
+          [
+            1124,
+            746
+          ],
+          [
+            1105,
+            746
+          ],
+          [
+            1096,
+            731
+          ]
+        ],
+        "paintedPixels": 1325,
+        "selectedSupports": 1,
+        "sharedSupports": 0,
+        "reusedInheritedLocks": 0,
+        "vertexIndices": [
+          4240
+        ]
+      }
+    ],
+    "seededSupports": 288,
+    "changedWeightVectors": 3470,
+    "inheritedPins": 1604,
+    "additionalPins": 266,
+    "totalPins": 1870,
+    "sourceGeometryHashBefore": "8c83569db59ed26d84c1abf2face0f395bbafbe428702017fdafd78405eeb0f6",
+    "sourceGeometryHashAfter": "8c83569db59ed26d84c1abf2face0f395bbafbe428702017fdafd78405eeb0f6",
+    "sourceCoordinateChanges": 0,
+    "topologyChanges": 0,
+    "sourceUvChanges": 0,
+    "textureOwnershipChanges": 0,
+    "solverProfileChanges": 0,
+    "smoothing": {
+      "owner": "smooth-skin-weights.mjs",
+      "iterations": 32,
+      "locksRestoredAfterDiffusion": true
+    },
+    "uncoveredSupports": "retain observed-split seed weights before shared diffusion; no required full regional tiling",
+    "validated": {
+      "vertices": 5074,
+      "partVertices": 6410,
+      "parts": 32
+    },
+    "nativeAcceptance": false
+  },
+  "sourceJoinProbe": {
+    "sourceBindingHash": "bd3779f01eab5b2c6b5ed27193838a2861315d18188da39ecd8e31a0512d8ce2",
+    "bindingHash": "541cc0657e235e5a3d7586a877200312ab3f6aeb9380b08442b8d64e03a97ab0",
+    "geometryHash": "66ef790c28e76c2f2d992888d06868120a184e19ec84511b47f5f21e45dfab70",
+    "joins": 31,
+    "sourceSamples": 2530,
+    "unchangedSourceInventory": true
+  },
+  "recordRecipeHash": "87434dc5b868915b31575e47ba8deab0006eb16a100c6e496512a54019607791",
+  "bindingHash": "541cc0657e235e5a3d7586a877200312ab3f6aeb9380b08442b8d64e03a97ab0",
+  "masterSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+  "manualAuthoring": true,
+  "nativeAcceptance": false
+}

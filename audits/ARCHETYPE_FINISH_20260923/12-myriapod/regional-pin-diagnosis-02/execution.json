@@ -1,0 +1,55 @@
+{
+  "schema": "cf.regional-pin-diagnosis-execution/v1",
+  "regionInspection": {
+    "toolReceipt": "01cb28",
+    "exitCode": 0,
+    "inputs": 9,
+    "unchanged": true
+  },
+  "rootWeldTrace": {
+    "toolReceipt": "cf42a0",
+    "exitCode": 0,
+    "inputs": 9,
+    "unchanged": true
+  },
+  "visualization": {
+    "toolReceipt": "5ee906",
+    "exitCode": 0
+  },
+  "realIntakeExecuted": false,
+  "sourceOrGateEdits": false,
+  "files": [
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-02/report.json",
+      "sha256": "7526f3a234a06d938546f4ac429e44d9589d52a3c6cfcd0a6e5ff330a4393582"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-02/root-welds.json",
+      "sha256": "d24fe4417bdf36c629c60e00fc28a8b211a0b8a7ae9dbc9ac1afc9e01bfae759"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-02/findings.md",
+      "sha256": "36a0b28fe717ddaa59b9caae654952b39afca7b5572b0288ef9c9d73d3e48c4f"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-02.mjs",
+      "sha256": "5579f8f20891522eff55779025e7e354d3ec98947d0dd6757e021aaed02dc305"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-02.log",
+      "sha256": "13c6a8597e6269398ca99622d3d3f1942c7c375cb61f078a9201869542f2d226"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-02/trace-root-welds.mjs",
+      "sha256": "2061c0c41e41a9ceb1574981e673b1096d78c9b472fbed5c63c657b0ed50da38"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-02/root-welds.log",
+      "sha256": "5382a20f73db97b7c78041ffb69f7b251d545ea485568b292f98340a3a6aa1de"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/regional-pin-diagnosis-02/root-leakage-footpoints.png",
+      "sha256": "5c92440e8f839de8a357bb3d3ef88d4d0b26626a7e4e058f395ba6b5c7f090ed"
+    }
+  ]
+}

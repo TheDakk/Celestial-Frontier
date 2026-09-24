@@ -8,6 +8,7 @@ import {poseProjectionSigns,poseProjectionScales} from '../../../../tools/creatu
  * templates and out-of-envelope proportions refuse with a named reason.
  * Pure and clock-free; identical inputs give identical cards. */
 import {resolveAnatomyInventory,type AnatomyPresence} from '../../../../tools/creature-animation/anatomy-inventory.mjs';
+import {resolveFixedAttachments} from '../../../../tools/creature-animation/fixed-attachments.mjs';
 import {resolvePhysicalHabitat} from '../battle-habitat.js';
 import {earthFaunaProfile} from '../earth-fauna-profiles.js';
 import { FA_HEAD, FA_LOCO, FA_SKIN, FA_TAIL } from '@cf/domain-speciestraits';
@@ -27,7 +28,7 @@ export interface ResolvedAnatomyRecord {
   /** A11: painter/rig family (mammal, bird, fish, tree, …); routed through TEMPLATE_BY_FAMILY and cross-checked against `template`. */
   readonly family?: string;
   readonly geometry: { readonly cutoutAssetHash: string; readonly width: number; readonly height: number; readonly groundLineY: number;
-    readonly depthLayers: readonly { readonly id: string; readonly order: number }[]; readonly contactPolicy?: string };
+    readonly depthLayers: readonly { readonly id: string; readonly order: number }[]; readonly contactPolicy?: string; readonly fixedAttachments?:Readonly<Record<string,readonly [number,number]>> };
   readonly landmarks: Readonly<Record<string, readonly number[]>>;
   readonly materials?: { readonly surface: string; readonly sheenTier?: string; readonly paletteSource?: string; readonly joints?: Readonly<Record<string,string>> };
   readonly clipSetId?: string;
@@ -121,7 +122,7 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   const templateId = record.template ? String(record.template.id) : familyTemplate as string, templateVersion = record.template ? Number(record.template.version) : 1;
   const baseTemplate = resolveTemplate(templateId, templateVersion);
   if (isMotionFallback(baseTemplate)) throw new MotionCompileError('unsupported-template', baseTemplate.reason, baseTemplate);
-  const resolved = resolveAnatomyInventory(baseTemplate,record.anatomy);
+  const resolved = resolveFixedAttachments(resolveAnatomyInventory(baseTemplate,record.anatomy),record);
   if (isMotionFallback(resolved)) throw new MotionCompileError('unsupported-template', resolved.reason, resolved);
   if (record.kind !== resolved.id) throw new MotionCompileError('unsupported-template', `record kind "${record.kind}" is not ${resolved.id}`, { kind: 'whole-portrait', templateId, reason: `kind ${record.kind} does not match template ${resolved.id}` });
   const lmIn = record.landmarks;
@@ -141,7 +142,7 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
    return role==='legs'?'legs':role==='sensors'?'antennae':role==='head'?'head':role==='claws'||role==='reach'?'arms':'body';
   };
   const parts: BodyPart[] = resolved.graph.map(([child, parent]) => {
-    const pivot = landmarks[parent] as Vec2, tip = landmarks[child] as Vec2, boneLength = Math.hypot(tip[0] - pivot[0], tip[1] - pivot[1]);
+    const pivot = (resolved.fixedPivots?.[child] ?? landmarks[parent]) as Vec2, tip = landmarks[child] as Vec2, boneLength = Math.hypot(tip[0] - pivot[0], tip[1] - pivot[1]);
     bones[child] = boneLength;
     return { joint: child, parent, group: specialized?specialtyGroup(child):groupOf(child), pivot, tip, boneLength };
   });
@@ -214,7 +215,7 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   const legSlack: Record<string, number> = {};
   for (const leg of resolved.legs) {
     const kneeJoint=leg+'Knee', kneeParent=resolved.graph.find(([j])=>j===kneeJoint)?.[1];
-    const r = landmarks[leg + 'Root'] ?? (kneeParent?landmarks[kneeParent]:undefined), k = landmarks[kneeJoint], a = landmarks[leg + 'Ankle'] ?? landmarks[leg+'Foot'];
+    const r = resolved.fixedPivots?.[kneeJoint] ?? landmarks[leg + 'Root'] ?? (kneeParent?landmarks[kneeParent]:undefined), k = landmarks[kneeJoint], a = landmarks[leg + 'Ankle'] ?? landmarks[leg+'Foot'];
     if (!r || !k || !a) { notes.push('leg slack unavailable: '+leg+' lacks an observed two-bone chain'); continue; }
     const upper = Math.hypot(k[0] - r[0], k[1] - r[1]), lower = Math.hypot(a[0] - k[0], a[1] - k[1]), dx = a[0] - r[0], vertical = a[1] - r[1];
     const reach = Math.sqrt(Math.max(0, (upper + lower) ** 2 - dx * dx));

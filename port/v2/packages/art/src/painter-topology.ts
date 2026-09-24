@@ -40,7 +40,11 @@ export function emitPainterTopology(context:ArtContext2D,value:PainterTopology):
   ids.add(f.id);
  }
  const counts=appendageCounts(value.family,value.anatomy);
- if(counts){
+ if(counts&&'walkingLegPairs' in counts){
+  const expected=[...Array.from({length:counts.walkingLegPairs},(_,i)=>['leg'+i+'Far','leg'+i+'Near']).flat(),'ultimateFar','ultimateNear'];
+  const actual=value.features.filter(f=>f.kind==='leg');
+  if(actual.length!==expected.length||!expected.every(id=>actual.some(f=>f.id===id)))throw Error('Painter topology: count/feature mismatch leg');
+ }else if(counts){
   for(const [kind,prefix,count]of [['arm','arm',counts.arms],['tentacle','tentacle',counts.feedingTentacles]]as const){
    const actual=value.features.filter(f=>f.kind===kind);
    if(actual.length!==count||!Array.from({length:count},(_,i)=>prefix+i).every(id=>actual.some(f=>f.id===id)))throw Error('Painter topology: count/feature mismatch '+kind);

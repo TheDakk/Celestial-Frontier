@@ -1,0 +1,41 @@
+{
+  "status": "FROZEN_FOCUSED_PASS",
+  "scope": "Rest-size positive-alpha inventory only. No ground viewport cap, battle2 app change, altered numeric gate, crop, image rewrite, static/S2/TypeScript/native execution.",
+  "files": [
+    {
+      "file": "port/v2/tools/battle2-proof/native-entry.mjs",
+      "sha256": "4674ba473bc325cc2d2870a5fd0b6653f52e4152354f917d7ad6c1b49543af62"
+    },
+    {
+      "file": "port/v2/tools/battle2-proof/positive-alpha-box.mjs",
+      "sha256": "e5c1d074f7d4abf35abbb2f993ef210937e66ba4edd9bd516faca20500e12b01"
+    },
+    {
+      "file": "port/v2/tools/battle2-proof/positive-alpha-box.test.mjs",
+      "sha256": "11bef51eef07d679f661e8028db7bf561104d8b321bbab3797bbf6b97a5822dd"
+    },
+    {
+      "file": "CREATURE_ANIMATION.md",
+      "sha256": "99af7084672fac4d7166f75b3e9e2f63cbaa50620e6492038c546e7b0bd403b5"
+    },
+    {
+      "file": "celestial-frontier-codebase-reference.md",
+      "sha256": "1089a2de121a8c5313d5d25145f38eba65daf5be5d2e1c25a5e3ab467859f5fe"
+    }
+  ],
+  "tests": {
+    "pureHelper": {
+      "passed": 4,
+      "log": "native-alpha-tests01.log"
+    },
+    "retainedRealKey": {
+      "passed": 1,
+      "log": "native-alpha-tests02.log"
+    },
+    "firstFailure": "native-alpha-tests01.log retains Buffer.slice negative-control aliasing failure; corrected test only rerun",
+    "realResult": "native-alpha-real-01.json"
+  },
+  "refs": {
+    "exactInsertedParagraph": "The local battle2 native proof sizes the rest image from every positive alpha byte through `positive-alpha-box.mjs`; transparent RGB is excluded, but alpha 1\u20138 paint is retained. This is an observation-only sizing fix: source bytes, ground registration, mass-class formula, shared placement/render scale and final published-mesh containment/CPU gates are unchanged. The retained Centipede key contains 178,726 positive-alpha pixels; the prior >8 sizing rule omitted 38,320 of them and measured a 460-pixel height instead of the full 1,148-pixel extent. Native01 stopped at viewport containment before film/CPU measurement. Its refusal and the focused sizing controls remain in the item12 packet; native acceptance requires a fresh run on this changed harness."
+  }
+}

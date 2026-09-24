@@ -1,0 +1,63 @@
+{
+  "schema": "cf.source-mask-delta/v1",
+  "inputs": [
+    {
+      "path": "fit-03/labels.png",
+      "sha256": "401e153293f91bd04484f4203c14bbd4f894ed11bfea50b203141db7f457d0cf"
+    },
+    {
+      "path": "fit-04/labels.png",
+      "sha256": "abfe02747439423c25898e0763baba2d96994f9407525502c72162342d6879af"
+    }
+  ],
+  "masterSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+  "masterByteIdentical": true,
+  "changedLabelPixels": 1275,
+  "changes": [
+    {
+      "from": "body",
+      "to": "ultimate-far",
+      "pixels": 461,
+      "x0": 47,
+      "y0": 532,
+      "x1": 192,
+      "y1": 628
+    },
+    {
+      "from": "body",
+      "to": "ultimate-near",
+      "pixels": 461,
+      "x0": 64,
+      "y0": 679,
+      "x1": 173,
+      "y1": 800
+    },
+    {
+      "from": "body",
+      "to": "leg6-near",
+      "pixels": 57,
+      "x0": 681,
+      "y0": 693,
+      "x1": 717,
+      "y1": 724
+    },
+    {
+      "from": "body",
+      "to": "leg2-near",
+      "pixels": 234,
+      "x0": 919,
+      "y0": 698,
+      "x1": 964,
+      "y1": 742
+    },
+    {
+      "from": "body",
+      "to": "leg1-near",
+      "pixels": 62,
+      "x0": 943,
+      "y0": 705,
+      "x1": 963,
+      "y1": 738
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "scope": "Read-only guards for later acceptance-dependent closure; no success asserted",
+  "files": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "ee1b3c4b5c7cf0c74c447a47122f9977de97bbd568ee6caf39b08588c792b83b"
+    },
+    {
+      "path": "ROADMAP_ARCHIVE.md",
+      "sha256": "c23cdbc95289b7e1044d09a9303517b58eb13090ac598d56790af58f31d47591"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/README.md",
+      "sha256": "131ed6194293deb73021b740a8d02d78888a8ee4def81bcb40f3ce5cd9e8144c"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/LEDGER.md",
+      "sha256": "c08055099d10b2b8c247600862336ef51e5fa331cdced29f65962e45c8624295"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/manifest.json",
+      "sha256": "126df25a571eb9aeea495e6dd4155dca8f98c024380d481983821ae4e6b34bbd"
+    }
+  ]
+}

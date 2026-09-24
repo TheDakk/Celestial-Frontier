@@ -2,6 +2,7 @@
  * Preserves each authored paw's perspective offset. No creature names/genes,
  * clocks, curve edits, or nearest-bone fitting. Flight passes through unchanged. */
 import type {CreaturePoseV1,CreatureRigRecordV1,CreaturePartsBindingV1} from './creature-rig.js';
+import {selectPaintedContactVertex} from '../../../tools/creature-animation/painted-contact-selector.mjs';
 import {measureMotionScale} from '../../../tools/creature-animation/motion-scale.mjs';
 import {familyContractForRecord,familyContactChains,contactStanceForAction} from '../../../tools/creature-animation/family-contracts.mjs';
 import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
@@ -83,10 +84,9 @@ export function observedContactSupports(record:CreatureRigRecordV1,binding:Creat
   if(pads){supports[chain.end]=terminalPaintedSupport(record,binding,chain,pads.points[chain.end]!);continue;}
   const owner=binding.parts.find(p=>p.joint===chain.end),part=skin.parts.find(p=>p.id===owner?.id),end=record.landmarks[chain.end]!;
   if(!part)throw Error('Contact: missing painted surface '+chain.end);
-  let best:WeightedContactSupport|undefined,distance=Infinity;
-  for(const [vertexIndex,v] of part.vertices.entries()){let x=0,y=0;for(let k=0;k<3;k++){const p=skin.vertices[v.triangle[k]!]!,weight=v.barycentric[k]!;x+=p.x*weight/record.geometry.width;y+=p.y*weight/record.geometry.height;}
-   const d=Math.hypot((x-end[0])*record.geometry.width,(y-end[1])*record.geometry.height);if(d<distance){distance=d;best={rest:[x,y],surface:{partId:part.id,vertexIndex},vertices:v.triangle.map((index,k)=>{const vertex=skin.vertices[index]!;return{rest:[vertex.x/record.geometry.width,vertex.y/record.geometry.height] as const,barycentric:v.barycentric[k]!,weights:vertex.weights.map(([j,w])=>[j,w] as const)};})};}}
-  if(!best)throw Error('Contact: empty painted surface '+chain.end);supports[chain.end]=best;
+  const best=selectPaintedContactVertex(skin.vertices,part,end,record.geometry.width,record.geometry.height);
+  if(!best)throw Error('Contact: empty painted surface '+chain.end);
+  const v=best.vertex;supports[chain.end]={rest:best.rest,surface:{partId:part.id,vertexIndex:best.vertexIndex},vertices:v.triangle.map((index,k)=>{const vertex=skin.vertices[index]!;return{rest:[vertex.x/record.geometry.width,vertex.y/record.geometry.height] as const,barycentric:v.barycentric[k]!,weights:vertex.weights.map(([j,w])=>[j,w] as const)};})};
  }return Object.freeze(supports);
 }
 export interface ContactPhase {readonly actionId:string;readonly elapsedMs:number;readonly durationMs:number;readonly realm?:string;readonly weight?:number;readonly travel?:'solver'|'stage';/** Signed stage translation already applied, in measured body-length units. */readonly stageDisplacement?:number;}
@@ -96,7 +96,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
  const template=familyContractForRecord(record),program=createSkeletonPoseProgram(template,record.landmarks),padDeclaration=validateTerminalContactPads(record,familyContactChains(template));
  if(padDeclaration&&!Object.keys(paintedSupports).length)throw Error('Contact pad: observed painted supports required');
  const chains=familyContactChains(template).map(c=>{
-  const root=point(record.landmarks[c.hip]!),joint=point(record.landmarks[c.knee]!),end=point(record.landmarks[c.end]!);
+  const root=template.fixedPivots?.[c.knee]?program.pivot(c.knee):point(record.landmarks[c.hip]!),joint=point(record.landmarks[c.knee]!),end=point(record.landmarks[c.end]!);
   const cross=(end.x-root.x)*(joint.y-root.y)-(end.y-root.y)*(joint.x-root.x);
   if(Math.abs(cross)<1e-12)throw Error('Contact: source bend direction missing '+c.id);
   const declaration=paintedSupports[c.end]??record.landmarks[c.end]!;
@@ -111,6 +111,16 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   return {...c,root,joint,endPoint:end,support:point(support),model,endpointOnly,terminalSolver,offset:{x:support[0]-end.x,y:support[1]-end.y},chain:createTwoBoneChain({root,joint,end,bend:cross<0?-1:1})};
  });
  if(Object.keys(paintedSupports).length&&(Object.keys(paintedSupports).length!==chains.length||chains.some(c=>!Object.hasOwn(paintedSupports,c.end))))throw Error('Contact: exact painted support inventory required');
+ // An explicit compact source-layout convention retracts upper-side feet
+ // toward their fixed socket. No declaration retains the exact screen-up path.
+ const swingLift=template.contactStance?.swingLift;
+ if(template.contactStance&&Object.hasOwn(template.contactStance,'swingLift')&&
+  (swingLift!=='toward-socket'||template.id!=='myriapod'||template.anatomyModel!=='myriapod-rigid-trunk-v1'||!template.fixedPivots||chains.some(c=>!Object.hasOwn(template.fixedPivots!,c.knee))))throw Error('Contact: invalid swing lift declaration');
+ // Step cadence is an explicit compact-model choice, not a reach-based
+ // adjustment. Only declared hit, dodge and tame source-step actions subdivide.
+ const travelSubsteps=template.contactStance?.travelSubsteps;
+ if(template.contactStance&&Object.hasOwn(template.contactStance,'travelSubsteps')&&
+  (template.id!=='myriapod'||template.anatomyModel!=='myriapod-rigid-trunk-v1'||!travelSubsteps||typeof travelSubsteps!=='object'||Array.isArray(travelSubsteps)||![Object.prototype,null].includes(Object.getPrototypeOf(travelSubsteps))||!Reflect.ownKeys(travelSubsteps).length||Reflect.ownKeys(travelSubsteps).some(id=>(id!=='hit'&&id!=='dodge'&&id!=='tame')||travelSubsteps[id]!==2||template.contactStance?.travel?.[id]!=='source-steps')))throw Error('Contact: invalid travel substeps declaration');
  // Explicit named support groups must resolve to complete existing chains.
  // An absent declaration retains the historical hind-name convention exactly.
  const declaredHind=template.contactStance?.hind,hasDeclaredHind=!!template.contactStance&&Object.hasOwn(template.contactStance,'hind');
@@ -120,7 +130,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
  const stride=chains.length?Math.min(...chains.map(c=>c.chain.lengths.upper+c.chain.lengths.lower))*.04:0;
  const direction=template.id==='brachyuran'?Math.sign(record.landmarks.leg0NearRoot![0]-record.landmarks.leg0FarRoot![0]):1;
  const hasOffset=chains.some(c=>c.offset.x!==0||c.offset.y!==0||!c.endpointOnly);
- const rigidSupportChains=new Map<string,ReturnType<typeof createTwoBoneChain>>();
+ const supportCandidateChains=new Map<string,ReturnType<typeof createTwoBoneChain>>();
  const travelPlans=new Map<string,{timeline:ReturnType<typeof buildTimeline>;path:ReturnType<typeof createContactTravel>}>();
  const travelFor=(phase:ContactPhase,weight:number)=>{
   if(phase.travel==='stage'||template.contactStance?.travel?.[phase.actionId]!=='source-steps')return null;
@@ -142,7 +152,14 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   // with a final signed step, so feet do not snap when its weight reaches zero.
   const step=phase.elapsedMs>=plan.timeline.durationMs&&weight<1&&at.base!==0
    ?{base:at.base,stride:-at.base,progress:1-weight}:at;
-  return {...step,authoredDx:sampleKeys(plan.timeline.root.dx,phase.elapsedMs)*weight};
+  const authoredDx=sampleKeys(plan.timeline.root.dx,phase.elapsedMs)*weight;
+  if((phase.actionId==='hit'||phase.actionId==='dodge'||phase.actionId==='tame')&&travelSubsteps?.[phase.actionId]===2&&step.stride!==0){
+   // Preserve the original body expression before subdividing the feet. Rebuilding
+   // it from halves could change a waypoint by floating-point reassociation.
+   const rootDisplacement=step.base+step.stride*step.progress,half=step.stride/2,doubled=step.progress*2,index=doubled<1?0:1;
+   return {base:step.base+half*index,stride:half,progress:doubled-index,rootDisplacement,authoredDx};
+  }
+  return {...step,authoredDx};
  };
  return {chains,scaleLength,stride,resolve(input:CreaturePoseV1,phase:ContactPhase){
   if(!Number.isFinite(phase.elapsedMs)||phase.elapsedMs<0||!Number.isFinite(phase.durationMs)||phase.durationMs<=0)throw Error('Contact: invalid phase');
@@ -171,7 +188,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   const smooth=(v:number)=>v*v*(3-2*v);
   // Replace only the authored horizontal curve; preserve any external offset.
   // Invalid translations must still reach the unchanged reach guard.
-  if(gait)pose.root={rotation:0,...pose.root,dx:sourceTravel?(sourceTravel.base+sourceTravel.stride*progress)/program.bodyLength+(pose.root?.dx??0)-sourceTravel.authoredDx:phase.travel==='stage'?0:direction*stride*progress/program.bodyLength};
+  if(gait)pose.root={rotation:0,...pose.root,dx:sourceTravel?(sourceTravel.rootDisplacement??(sourceTravel.base+sourceTravel.stride*progress))/program.bodyLength+(pose.root?.dx??0)-sourceTravel.authoredDx:phase.travel==='stage'?0:direction*stride*progress/program.bodyLength};
   const contacts=activeChains.map(c=>{
    const bodyPlanted=phase.travel==='stage'&&record.anatomy?.schema==='cf.anatomy-presence/v2'&&record.anatomy.folded?.includes(c.id)===true;
    const swing=!bodyPlanted&&gait&&!gaitPolicy&&(!sourceTravel||(sourceTravel.stride!==0&&progress<1))&&(c.group===1?cycle<.5:cycle>=.5),at=swing?(c.group===1?cycle*2:(cycle-.5)*2):0;
@@ -180,7 +197,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
    // Stage translation is signed and supplied by the caller, never inferred
    // from elapsed time. Only stance targets recede; airborne keys keep their
    // authored swing. Use the same measured scale as the stage adapter.
-   const target={x:c.endPoint.x+(sourceTravel?sourceTravel.base+sourceTravel.stride*step:gait&&phase.travel!=='stage'?direction*stride*(completed+step):0)-(swing?Math.sign(c.endPoint.x-c.root.x)*c.chain.lengths.lower*.10*Math.sin(Math.PI*at)**2*weight:0),y:c.endPoint.y-(swing?Math.sin(Math.PI*at)**2*lift:0)};
+   const target={x:c.endPoint.x+(sourceTravel?sourceTravel.base+sourceTravel.stride*step:gait&&phase.travel!=='stage'?direction*stride*(completed+step):0)-(swing?Math.sign(c.endPoint.x-c.root.x)*c.chain.lengths.lower*.10*Math.sin(Math.PI*at)**2*weight:0),y:swingLift==='toward-socket'?c.endPoint.y+Math.sign(c.root.y-c.endPoint.y)*(swing?Math.sin(Math.PI*at)**2*lift:0):c.endPoint.y-(swing?Math.sin(Math.PI*at)**2*lift:0)};
    if(!swing&&!bodyPlanted&&phase.travel==='stage'&&phase.stageDisplacement!==undefined)target.x-=phase.stageDisplacement*scaleLength;
    return {joint:c.end,target,endpointTarget:{...target},paintedTarget:{x:target.x+c.offset.x,y:target.y+c.offset.y},stance:!swing,...bodyPlanted?{space:'body' as const}:{}};
   });
@@ -216,7 +233,10 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   }
   const uncompressedRoot=pose.root;
   let compression=0,final=program.evaluate(pose);
-  const rigidEligible=hasOffset&&activeChains.every(c=>c.endpointOnly);
+  const rigidEligible=hasOffset&&activeChains.every(c=>c.endpointOnly),candidateEligible=hasOffset;
+  // Mixed skin weights stay mixed. Keep the complete authored/travel-adjusted
+  // pose for one geometric candidate after failure, not an exact rigid claim.
+  const candidateBaseline=rigidEligible?null:{...pose};
   let iterativeFailure:unknown;
   // Initial endpoint solve, then at most three fixed-point support corrections.
   // Every pass solves exactly to its declared endpoint target; no reach clamp.
@@ -241,7 +261,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
     if(c.terminal)pose[c.terminal]={rotation:wrapped(-lower)};
    }
    final=program.evaluate(pose);
-  }}catch(error){if(!rigidEligible)throw error;iterativeFailure=error;}
+  }}catch(error){if(!candidateEligible)throw error;iterativeFailure=error;}
   const measure=()=>{
    let maxError=0,maxPaintTargetErrorPx=0;
    for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,contact=contacts[i]!;
@@ -254,19 +274,22 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
    return {maxError,maxPaintTargetErrorPx};
   };
   let measured={maxError:0,maxPaintTargetErrorPx:Infinity};
-  if(iterativeFailure===undefined){try{measured=measure();}catch(error){if(!rigidEligible)throw error;iterativeFailure=error;}}
+  if(iterativeFailure===undefined){try{measured=measure();}catch(error){if(!candidateEligible)throw error;iterativeFailure=error;}}
   // Preserve the exact accepted three-pass path. A rigid offset near a straight
   // knee can oscillate instead of converging. When every active support belongs
-  // solely to its endpoint, solve that rigid point analytically. Mixed weights
-  // retain their existing fixed-point path and refusal; no fit-specific rule.
+  // solely to its endpoint, solve that rigid point analytically. For mixed
+  // supports the same geometry is only a candidate: all original contributors
+  // (including foreign joints) remain in the final full-ensemble measurement.
   // An iterative reach/limit refusal can precede its residual assessment.
   // A rigid painted support still has an exact analytic solution to attempt;
   // it must independently satisfy every original bound from the authored root.
-  if((iterativeFailure!==undefined||measured.maxPaintTargetErrorPx>.25)&&rigidEligible){try{
+  if((iterativeFailure!==undefined||measured.maxPaintTargetErrorPx>.25)&&candidateEligible){try{
+   if(candidateBaseline){for(const joint of Object.keys(pose))delete pose[joint];Object.assign(pose,candidateBaseline);}
+   const supportKind=rigidEligible?'rigid support':'support candidate';
    const rigid=activeChains.map(c=>{
-    let chain=rigidSupportChains.get(c.id);
+    let chain=supportCandidateChains.get(c.id);
     if(!chain){const cross=(c.support.x-c.root.x)*(c.joint.y-c.root.y)-(c.support.y-c.root.y)*(c.joint.x-c.root.x);
-     chain=createTwoBoneChain({root:c.root,joint:c.joint,end:c.support,bend:cross<0?-1:1});rigidSupportChains.set(c.id,chain);}
+     chain=createTwoBoneChain({root:c.root,joint:c.joint,end:c.support,bend:cross<0?-1:1});supportCandidateChains.set(c.id,chain);}
     return chain;
    });
    // Recompute accommodation from the authored root, not from corrections that
@@ -275,10 +298,10 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
    let matrices=program.evaluate(pose),shift=0;
    for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,target=contacts[i]!.paintedTarget,root=transformPoint(matrices[c.hip]!,c.root),dx=target.x-root.x,max=rigid[i]!.lengths.upper+rigid[i]!.lengths.lower;
     if(Math.hypot(dx,target.y-root.y)<=max)continue;
-    if(Math.abs(dx)>=max||target.y<root.y)throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' '+c.id+' rigid support outside accommodatable reach');
+    if(Math.abs(dx)>=max||target.y<root.y)throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' '+c.id+' '+supportKind+' outside accommodatable reach');
     shift=Math.max(shift,target.y-Math.sqrt(max*max-dx*dx)+1e-10-root.y);
    }
-   if(shift>scaleLength*.08)throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' rigid support exceeds scale compression bound');
+   if(shift>scaleLength*.08)throw Error('Contact: '+phase.actionId+'@'+phase.elapsedMs+' '+supportKind+' exceeds scale compression bound');
    compression=shift;
    if(shift>0){pose.root={rotation:0,...pose.root,dy:(pose.root?.dy??0)+shift/program.bodyLength};matrices=program.evaluate(pose);}
    for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,contact=contacts[i]!,parent=matrices[c.hip]!,root=transformPoint(parent,c.root),solved=rigid[i]!.solve(root,contact.paintedTarget);
@@ -292,6 +315,9 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
     contact.endpointTarget={x:solved.joint.x+cos*dx-sin*dy,y:solved.joint.y+sin*dx+cos*dy};
    }
    final=program.evaluate(pose);measured=measure();
+   // A geometric seed never grants rigid eligibility. Reject against the actual
+   // unchanged mixed LBS support of every chain, after every candidate is posed.
+   if(!rigidEligible&&measured.maxPaintTargetErrorPx>.25)throw Error('Contact: painted support candidate residual '+measured.maxPaintTargetErrorPx);
   }catch(error){if(iterativeFailure!==undefined){if(iterativeFailure instanceof Error)iterativeFailure.cause=error;throw iterativeFailure;}throw error;}}
   if(measured.maxPaintTargetErrorPx>.25)throw Error('Contact: painted support iteration residual '+measured.maxPaintTargetErrorPx);
   return {pose,contacts,maxError:measured.maxError,compression,maxPaintTargetErrorPx:measured.maxPaintTargetErrorPx};

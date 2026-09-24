@@ -1,0 +1,1226 @@
+{
+  "schema": "cf.authored-count-guide/v1",
+  "subject": "Centipede",
+  "representation": "Adult stone centipede (Lithobiomorpha). Generic Centipede genomic identity retained; original scolopendrid interpretation remains historical and is not rewritten.",
+  "scope": "New composition geometry only, for parent rendering/image generation. These are manually planned guide coordinates, not observed anatomy, actual master landmarks, a presence declaration, fitted record or admission result. Never automatically reuse them as landmarks after painting.",
+  "canvas": {
+    "width": 1254,
+    "height": 1254,
+    "minimumRequestedMarginPx": 101,
+    "guideBackground": "white",
+    "guideStyle": "Neutral gray count/pose geometry only; approved Discovery Atlas remains the painting-style reference."
+  },
+  "view": {
+    "facing": "right",
+    "composition": "Long, flattened shallow lateral body, modestly elevated view sufficient to expose the entire far fan beyond the opposite body outline. No coil or segment overlap.",
+    "farRow": "Fourteen distinct far walking chains fan into the upper image row in projection. Every exposed attachment, knee and foot must be visible. This is an elevated-view projection, not a request for appendages to emerge dorsally or point into the air.",
+    "nearRow": "Fourteen near walking chains fan into the lower image row, with negative space between neighboring shafts and tips.",
+    "anatomy": "One near/far pair per attachment station; roots attach to opposite lateral/ventral body margins. Legs show a clear major knee direction change, not nearly straight shafts or additional S-bends."
+  },
+  "body": {
+    "centerline": [
+      [
+        215,
+        596
+      ],
+      [
+        268,
+        600
+      ],
+      [
+        322,
+        605
+      ],
+      [
+        376,
+        609
+      ],
+      [
+        430,
+        610
+      ],
+      [
+        484,
+        608
+      ],
+      [
+        538,
+        604
+      ],
+      [
+        592,
+        599
+      ],
+      [
+        646,
+        594
+      ],
+      [
+        700,
+        590
+      ],
+      [
+        754,
+        588
+      ],
+      [
+        808,
+        589
+      ],
+      [
+        862,
+        592
+      ],
+      [
+        916,
+        597
+      ],
+      [
+        970,
+        601
+      ],
+      [
+        1012,
+        598
+      ]
+    ],
+    "nearHalfThicknessPx": 24,
+    "farHalfThicknessPx": 21,
+    "terminalStation": [
+      215,
+      596
+    ],
+    "paintInstruction": "One continuous flattened segmented trunk with natural stone-centipede plate proportions. Attachment stations are not a command to paint identical dorsal plates. Exactly fifteen total leg-bearing stations, including the ultimate pair. No extra walking pair behind station14."
+  },
+  "head": {
+    "center": [
+      1032,
+      596
+    ],
+    "ellipseRadii": [
+      37,
+      32
+    ],
+    "neckJoin": [
+      1004,
+      598
+    ],
+    "antennae": [
+      {
+        "id": "antennaFar",
+        "path": [
+          [
+            1054,
+            575
+          ],
+          [
+            1094,
+            545
+          ],
+          [
+            1126,
+            482
+          ],
+          [
+            1139,
+            426
+          ]
+        ]
+      },
+      {
+        "id": "antennaNear",
+        "path": [
+          [
+            1066,
+            603
+          ],
+          [
+            1106,
+            644
+          ],
+          [
+            1128,
+            708
+          ],
+          [
+            1144,
+            756
+          ]
+        ]
+      }
+    ],
+    "forcipules": {
+      "instruction": "Small natural paired mouth claws beneath head, distinct from antennae and first walking pair; not an extra pair of walking legs.",
+      "paths": [
+        [
+          [
+            1051,
+            617
+          ],
+          [
+            1073,
+            631
+          ],
+          [
+            1067,
+            643
+          ]
+        ],
+        [
+          [
+            1060,
+            615
+          ],
+          [
+            1083,
+            629
+          ],
+          [
+            1079,
+            641
+          ]
+        ]
+      ]
+    }
+  },
+  "walkingPairs": [
+    {
+      "pair": 1,
+      "attachmentStation": [
+        970,
+        601
+      ],
+      "near": {
+        "id": "leg1Near",
+        "hipSocket": [
+          970,
+          625
+        ],
+        "knee": [
+          990,
+          681
+        ],
+        "foot": [
+          965,
+          743
+        ],
+        "path": [
+          [
+            970,
+            625
+          ],
+          [
+            990,
+            681
+          ],
+          [
+            965,
+            743
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg1Far",
+        "hipSocket": [
+          970,
+          580
+        ],
+        "knee": [
+          950,
+          537
+        ],
+        "foot": [
+          975,
+          483
+        ],
+        "path": [
+          [
+            970,
+            580
+          ],
+          [
+            950,
+            537
+          ],
+          [
+            975,
+            483
+          ]
+        ]
+      }
+    },
+    {
+      "pair": 2,
+      "attachmentStation": [
+        916,
+        597
+      ],
+      "near": {
+        "id": "leg2Near",
+        "hipSocket": [
+          916,
+          621
+        ],
+        "knee": [
+          936,
+          677
+        ],
+        "foot": [
+          911,
+          739
+        ],
+        "path": [
+          [
+            916,
+            621
+          ],
+          [
+            936,
+            677
+          ],
+          [
+            911,
+            739
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg2Far",
+        "hipSocket": [
+          916,
+          576
+        ],
+        "knee": [
+          896,
+          533
+        ],
+        "foot": [
+          921,
+          479
+        ],
+        "path": [
+          [
+            916,
+            576
+          ],
+          [
+            896,
+            533
+          ],
+          [
+            921,
+            479
+          ]
+        ]
+      }
+    },
+    {
+      "pair": 3,
+      "attachmentStation": [
+        862,
+        592
+      ],
+      "near": {
+        "id": "leg3Near",
+        "hipSocket": [
+          862,
+          616
+        ],
+        "knee": [
+          882,
+          672
+        ],
+        "foot": [
+          857,
+          734
+        ],
+        "path": [
+          [
+            862,
+            616
+          ],
+          [
+            882,
+            672
+          ],
+          [
+            857,
+            734
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg3Far",
+        "hipSocket": [
+          862,
+          571
+        ],
+        "knee": [
+          842,
+          528
+        ],
+        "foot": [
+          867,
+          474
+        ],
+        "path": [
+          [
+            862,
+            571
+          ],
+          [
+            842,
+            528
+          ],
+          [
+            867,
+            474
+          ]
+        ]
+      }
+    },
+    {
+      "pair": 4,
+      "attachmentStation": [
+        808,
+        589
+      ],
+      "near": {
+        "id": "leg4Near",
+        "hipSocket": [
+          808,
+          613
+        ],
+        "knee": [
+          828,
+          669
+        ],
+        "foot": [
+          803,
+          731
+        ],
+        "path": [
+          [
+            808,
+            613
+          ],
+          [
+            828,
+            669
+          ],
+          [
+            803,
+            731
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg4Far",
+        "hipSocket": [
+          808,
+          568
+        ],
+        "knee": [
+          788,
+          525
+        ],
+        "foot": [
+          813,
+          471
+        ],
+        "path": [
+          [
+            808,
+            568
+          ],
+          [
+            788,
+            525
+          ],
+          [
+            813,
+            471
+          ]
+        ]
+      }
+    },
+    {
+      "pair": 5,
+      "attachmentStation": [
+        754,
+        588
+      ],
+      "near": {
+        "id": "leg5Near",
+        "hipSocket": [
+          754,
+          612
+        ],
+        "knee": [
+          774,
+          668
+        ],
+        "foot": [
+          749,
+          730
+        ],
+        "path": [
+          [
+            754,
+            612
+          ],
+          [
+            774,
+            668
+          ],
+          [
+            749,
+            730
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg5Far",
+        "hipSocket": [
+          754,
+          567
+        ],
+        "knee": [
+          734,
+          524
+        ],
+        "foot": [
+          759,
+          470
+        ],
+        "path": [
+          [
+            754,
+            567
+          ],
+          [
+            734,
+            524
+          ],
+          [
+            759,
+            470
+          ]
+        ]
+      }
+    },
+    {
+      "pair": 6,
+      "attachmentStation": [
+        700,
+        590
+      ],
+      "near": {
+        "id": "leg6Near",
+        "hipSocket": [
+          700,
+          614
+        ],
+        "knee": [
+          720,
+          670
+        ],
+        "foot": [
+          695,
+          732
+        ],
+        "path": [
+          [
+            700,
+            614
+          ],
+          [
+            720,
+            670
+          ],
+          [
+            695,
+            732
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg6Far",
+        "hipSocket": [
+          700,
+          569
+        ],
+        "knee": [
+          680,
+          526
+        ],
+        "foot": [
+          705,
+          472
+        ],
+        "path": [
+          [
+            700,
+            569
+          ],
+          [
+            680,
+            526
+          ],
+          [
+            705,
+            472
+          ]
+        ]
+      }
+    },
+    {
+      "pair": 7,
+      "attachmentStation": [
+        646,
+        594
+      ],
+      "near": {
+        "id": "leg7Near",
+        "hipSocket": [
+          646,
+          618
+        ],
+        "knee": [
+          666,
+          674
+        ],
+        "foot": [
+          641,
+          736
+        ],
+        "path": [
+          [
+            646,
+            618
+          ],
+          [
+            666,
+            674
+          ],
+          [
+            641,
+            736
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg7Far",
+        "hipSocket": [
+          646,
+          573
+        ],
+        "knee": [
+          626,
+          530
+        ],
+        "foot": [
+          651,
+          476
+        ],
+        "path": [
+          [
+            646,
+            573
+          ],
+          [
+            626,
+            530
+          ],
+          [
+            651,
+            476
+          ]
+        ]
+      }
+    },
+    {
+      "pair": 8,
+      "attachmentStation": [
+        592,
+        599
+      ],
+      "near": {
+        "id": "leg8Near",
+        "hipSocket": [
+          592,
+          623
+        ],
+        "knee": [
+          612,
+          679
+        ],
+        "foot": [
+          587,
+          741
+        ],
+        "path": [
+          [
+            592,
+            623
+          ],
+          [
+            612,
+            679
+          ],
+          [
+            587,
+            741
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg8Far",
+        "hipSocket": [
+          592,
+          578
+        ],
+        "knee": [
+          572,
+          535
+        ],
+        "foot": [
+          597,
+          481
+        ],
+        "path": [
+          [
+            592,
+            578
+          ],
+          [
+            572,
+            535
+          ],
+          [
+            597,
+            481
+          ]
+        ]
+      }
+    },
+    {
+      "pair": 9,
+      "attachmentStation": [
+        538,
+        604
+      ],
+      "near": {
+        "id": "leg9Near",
+        "hipSocket": [
+          538,
+          628
+        ],
+        "knee": [
+          558,
+          684
+        ],
+        "foot": [
+          533,
+          746
+        ],
+        "path": [
+          [
+            538,
+            628
+          ],
+          [
+            558,
+            684
+          ],
+          [
+            533,
+            746
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg9Far",
+        "hipSocket": [
+          538,
+          583
+        ],
+        "knee": [
+          518,
+          540
+        ],
+        "foot": [
+          543,
+          486
+        ],
+        "path": [
+          [
+            538,
+            583
+          ],
+          [
+            518,
+            540
+          ],
+          [
+            543,
+            486
+          ]
+        ]
+      }
+    },
+    {
+      "pair": 10,
+      "attachmentStation": [
+        484,
+        608
+      ],
+      "near": {
+        "id": "leg10Near",
+        "hipSocket": [
+          484,
+          632
+        ],
+        "knee": [
+          504,
+          688
+        ],
+        "foot": [
+          479,
+          750
+        ],
+        "path": [
+          [
+            484,
+            632
+          ],
+          [
+            504,
+            688
+          ],
+          [
+            479,
+            750
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg10Far",
+        "hipSocket": [
+          484,
+          587
+        ],
+        "knee": [
+          464,
+          544
+        ],
+        "foot": [
+          489,
+          490
+        ],
+        "path": [
+          [
+            484,
+            587
+          ],
+          [
+            464,
+            544
+          ],
+          [
+            489,
+            490
+          ]
+        ]
+      }
+    },
+    {
+      "pair": 11,
+      "attachmentStation": [
+        430,
+        610
+      ],
+      "near": {
+        "id": "leg11Near",
+        "hipSocket": [
+          430,
+          634
+        ],
+        "knee": [
+          450,
+          690
+        ],
+        "foot": [
+          425,
+          752
+        ],
+        "path": [
+          [
+            430,
+            634
+          ],
+          [
+            450,
+            690
+          ],
+          [
+            425,
+            752
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg11Far",
+        "hipSocket": [
+          430,
+          589
+        ],
+        "knee": [
+          410,
+          546
+        ],
+        "foot": [
+          435,
+          492
+        ],
+        "path": [
+          [
+            430,
+            589
+          ],
+          [
+            410,
+            546
+          ],
+          [
+            435,
+            492
+          ]
+        ]
+      }
+    },
+    {
+      "pair": 12,
+      "attachmentStation": [
+        376,
+        609
+      ],
+      "near": {
+        "id": "leg12Near",
+        "hipSocket": [
+          376,
+          633
+        ],
+        "knee": [
+          396,
+          689
+        ],
+        "foot": [
+          371,
+          751
+        ],
+        "path": [
+          [
+            376,
+            633
+          ],
+          [
+            396,
+            689
+          ],
+          [
+            371,
+            751
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg12Far",
+        "hipSocket": [
+          376,
+          588
+        ],
+        "knee": [
+          356,
+          545
+        ],
+        "foot": [
+          381,
+          491
+        ],
+        "path": [
+          [
+            376,
+            588
+          ],
+          [
+            356,
+            545
+          ],
+          [
+            381,
+            491
+          ]
+        ]
+      }
+    },
+    {
+      "pair": 13,
+      "attachmentStation": [
+        322,
+        605
+      ],
+      "near": {
+        "id": "leg13Near",
+        "hipSocket": [
+          322,
+          629
+        ],
+        "knee": [
+          342,
+          685
+        ],
+        "foot": [
+          317,
+          747
+        ],
+        "path": [
+          [
+            322,
+            629
+          ],
+          [
+            342,
+            685
+          ],
+          [
+            317,
+            747
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg13Far",
+        "hipSocket": [
+          322,
+          584
+        ],
+        "knee": [
+          302,
+          541
+        ],
+        "foot": [
+          327,
+          487
+        ],
+        "path": [
+          [
+            322,
+            584
+          ],
+          [
+            302,
+            541
+          ],
+          [
+            327,
+            487
+          ]
+        ]
+      }
+    },
+    {
+      "pair": 14,
+      "attachmentStation": [
+        268,
+        600
+      ],
+      "near": {
+        "id": "leg14Near",
+        "hipSocket": [
+          268,
+          624
+        ],
+        "knee": [
+          288,
+          680
+        ],
+        "foot": [
+          263,
+          742
+        ],
+        "path": [
+          [
+            268,
+            624
+          ],
+          [
+            288,
+            680
+          ],
+          [
+            263,
+            742
+          ]
+        ]
+      },
+      "far": {
+        "id": "leg14Far",
+        "hipSocket": [
+          268,
+          579
+        ],
+        "knee": [
+          248,
+          536
+        ],
+        "foot": [
+          273,
+          482
+        ],
+        "path": [
+          [
+            268,
+            579
+          ],
+          [
+            248,
+            536
+          ],
+          [
+            273,
+            482
+          ]
+        ]
+      }
+    }
+  ],
+  "terminalPair": {
+    "pair": 15,
+    "includedInTotalLegPairs": true,
+    "ordinaryWalkingSupport": false,
+    "instruction": "One elongated ultimate pair at the final station, rear-directed and separately visible. These are the fifteenth leg pair, not a sixteenth pair or rear antennae.",
+    "near": {
+      "id": "terminalNear",
+      "path": [
+        [
+          215,
+          620
+        ],
+        [
+          168,
+          671
+        ],
+        [
+          113,
+          719
+        ]
+      ]
+    },
+    "far": {
+      "id": "terminalFar",
+      "path": [
+        [
+          215,
+          575
+        ],
+        [
+          163,
+          534
+        ],
+        [
+          113,
+          481
+        ]
+      ]
+    }
+  },
+  "requestedInventory": {
+    "walkingPairs": 14,
+    "walkingLegs": 28,
+    "terminalPairs": 1,
+    "terminalLegs": 2,
+    "totalLegPairs": 15,
+    "totalLegs": 30,
+    "antennae": 2,
+    "head": 1,
+    "body": 1,
+    "tail": 0
+  },
+  "representationPlanning": {
+    "authority": "Parent revised model communicated2026-09-23; design planning only, not verified implementation or admission.",
+    "model": "Rigid trunk with fixed source hip sockets and two independently articulated spans for each of the28 walking legs.",
+    "coreJoints": [
+      "root",
+      "head",
+      "mandible",
+      "antennaFar",
+      "antennaNear"
+    ],
+    "coreJointCount": 5,
+    "walkingJointCount": 56,
+    "terminalControllerCount": 2,
+    "totalJoints": 63,
+    "unchangedJointCap": 64,
+    "hipSockets": "Twenty-eight source hip locations are fixed sockets in the rigid trunk frame, not additional degrees of freedom. Guide hipSocket and knee fields support visibly bent two-link paint; final sockets and landmarks must be authored from actual generated pixels.",
+    "paintOwnerInventory": [
+      "body",
+      "head",
+      "leg1Near",
+      "leg1Far",
+      "leg2Near",
+      "leg2Far",
+      "leg3Near",
+      "leg3Far",
+      "leg4Near",
+      "leg4Far",
+      "leg5Near",
+      "leg5Far",
+      "leg6Near",
+      "leg6Far",
+      "leg7Near",
+      "leg7Far",
+      "leg8Near",
+      "leg8Far",
+      "leg9Near",
+      "leg9Far",
+      "leg10Near",
+      "leg10Far",
+      "leg11Near",
+      "leg11Far",
+      "leg12Near",
+      "leg12Far",
+      "leg13Near",
+      "leg13Far",
+      "leg14Near",
+      "leg14Far",
+      "terminalNear",
+      "terminalFar"
+    ],
+    "paintOwnerCount": 32,
+    "unchangedPaintOwnerCap": 32,
+    "regionalWeights": "Body and head surface owners require explicit regional skin weights. Head includes the visibly separate antennae and mouth structures while retaining their distinct controllers. The28 walking surfaces and2 terminal surfaces remain individually identified; no leg merging to meet the cap.",
+    "trunkTradeoff": "The proposed model deliberately uses one rigid-body trunk approximation. Eight former trunk controllers are not retained; no eight-segment wave or independent trunk deformation is claimed. The painting may show all natural plates while the representation documents rigid trunk motion.",
+    "contactTradeoff": "All28 ordinary walking feet remain distinct two-bone support endpoints. The elongated terminal pair is separately represented and is not silently counted as two more walking supports."
+  },
+  "renderingNotes": [
+    "Render legs as separate gray shafts with leg hip, knee and foot positions visually readable. Dark near and light far gray may aid counting; keep the final painting in the approved style.",
+    "Each guide path has a clear change at its knee; the intermediate point is geometry for the two-link representation, not an invitation to add extra appendages.",
+    "The modest elevated view must expose the far legs completely; a strict flat profile that buries the far distal chains would defeat this guide.",
+    "Optional guide numbers1–15 are count annotations only and must never appear in the painting.",
+    "Keep antennae and terminal legs inside the safe inset, never touching canvas edges.",
+    "Count the actual returned painting independently before declaring presence or compiling fit; guide count does not certify generated count."
+  ],
+  "anatomyReferences": [
+    {
+      "title": "Stone Centipedes — Australian Museum",
+      "url": "https://australian.museum/learn/animals/centipedes/centipedes-stone-centipede-living-fossils/",
+      "supports": "Fifteen leg-bearing segments, one pair per segment."
+    },
+    {
+      "title": "Introducing the taxa — British Myriapod and Isopod Group",
+      "url": "https://bmig.org.uk/page/introducing-taxa",
+      "supports": "Stone-centipede fifteen-pair morphology distinct from historical scolopendromorph interpretation."
+    }
+  ]
+}

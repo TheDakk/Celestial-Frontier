@@ -1,0 +1,36 @@
+{
+  "schema": "cf.sprint-signing-status-doc-update/v1",
+  "scope": "Refresh live handoff only after actual signed-commit refusals; historical generation/source receipts retain their earlier hashes.",
+  "files": [
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/README.md",
+      "beforeSha256": "1e9036759d1803c3f42dbbf56dba5f9a1978f153f7742c7a106fb92d93896f1b",
+      "sha256": "f2d8e9bb58e26e34548a4f5f9d66166781d4f8f0db329de8e48c3d3cfc760917"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/README.md",
+      "beforeSha256": "f2eb9c11e62d3baebc36ea298900f98f355e4e05f896026dbfa70eca18882590",
+      "sha256": "afbaac0df8a4d11172d18eec29651104444da74df86723cb55cfc96bbbcb1b10"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/final-sprint-review-index.md",
+      "beforeSha256": "1fff0f1ce0517cc2e865af9a12841952de3b999f877098324927c4ae6e36ad8c",
+      "sha256": "4475dd75033d8df01489ca96df9614602c65ec3f7f47e924a8bb23f5a27d6589"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/final-sprint-index.json",
+      "beforeSha256": "d8e1e171f46a9bd244cc20466608d86c337d2f065e296be28cae7ecd4f3ffa7e",
+      "sha256": "76a160b1e452ce35f5bc9d221321124729519cdee6d42eb00b6c45e90a5e812f"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/LEDGER.md",
+      "beforeSha256": "65ce80649f147dadd4151df1f4d4247055bb7216d6cb7bfc2ff10054bbb440e6",
+      "sha256": "b3f3d93a983e1313baf4d1bf9a37098cc3688b8223a54723c03f5d089a42174c"
+    },
+    {
+      "path": "ROADMAP.md",
+      "beforeSha256": "79744f4a2e0c4f288f7e42bf702699d98672e39704bcaea32a1f9e7ddc56a227",
+      "sha256": "ee789b026b6d1e35593e2d8a54300cb74cf72e906a5e71d5fdf0266c4211ade2"
+    }
+  ]
+}

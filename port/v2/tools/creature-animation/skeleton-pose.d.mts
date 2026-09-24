@@ -1,6 +1,8 @@
 import type {Affine2, Point2} from './kinematics.js';
 export const MAX_SKELETON_JOINTS: number;
 export interface SkeletonDefinition {
+  readonly id?:string;readonly anatomyModel?:string;readonly legs?:readonly string[];
+  readonly fixedPivots?:import('./fixed-attachments.mjs').FixedPivotMap;
   readonly graph: ReadonlyArray<readonly [string, string]>;
   readonly bodyAxis: readonly [string, string];
 }

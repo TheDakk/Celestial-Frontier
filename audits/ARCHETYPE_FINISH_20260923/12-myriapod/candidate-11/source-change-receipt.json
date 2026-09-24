@@ -1,0 +1,128 @@
+{
+  "schema": "cf.centipede-soft-upper-region-amendment/v1",
+  "candidate": "candidate-11",
+  "sourceCandidate": "candidate-10",
+  "samePaint": true,
+  "sourceAuthoringSha256": "a0477b00a8dbd7c0ed77f5d9e6f696af5f94fc913c002589caf40f13242a2184",
+  "authoringSha256": "f9340f385333ab4a6f8ca53b277a7fdf3470b53f3a9b37457c1c1d6f42720d93",
+  "copied": {
+    "master.png": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+    "prompt.txt": "006bf5fce063cad08371df26b4e44975049cd480dd305e248eec1f7b64c83019",
+    "request.json": "eee818a3eedb39e1213426c05e8ea8ea9dda1576f22c12dfbab5ba6e93c5b9de",
+    "subject-source.json": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67",
+    "presence.json": "cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c",
+    "generation-receipt.json": "a95cf62f9b8fd9770549804a6f4e2e6ec0a337b522546a2785d1f383c2fd801f"
+  },
+  "proposal": {
+    "source": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/static-paint-diagnosis05/source-upper-review/proposal.json",
+    "copy": "upper-shaft-proposal.json",
+    "sha256": "c520c37a4bdf426268c74c0a6cabd8831ce1f1d03c2fc92b75c76679eeb131a0",
+    "region": {
+      "id": "leg3-far-upper-shaft-observed-gold-proposal",
+      "partId": "leg3-far",
+      "joint": "leg3FarKnee",
+      "polygonPx": [
+        [
+          830,
+          590
+        ],
+        [
+          841,
+          588
+        ],
+        [
+          845,
+          594
+        ],
+        [
+          846,
+          603
+        ],
+        [
+          853,
+          612
+        ],
+        [
+          859,
+          618
+        ],
+        [
+          854,
+          622
+        ],
+        [
+          847,
+          622
+        ],
+        [
+          840,
+          617
+        ],
+        [
+          835,
+          610
+        ],
+        [
+          831,
+          603
+        ],
+        [
+          828,
+          596
+        ]
+      ],
+      "pin": false
+    },
+    "selectedFit": "fit-08",
+    "selectedSupports": [
+      1581,
+      1582,
+      1583,
+      1584,
+      1591,
+      1614,
+      1626,
+      1627,
+      1628,
+      1634,
+      1635
+    ],
+    "sameKneeCorePins": [
+      1581,
+      1582,
+      1583
+    ],
+    "freeSupports": [
+      1584,
+      1591,
+      1614,
+      1626,
+      1627,
+      1628,
+      1634,
+      1635
+    ],
+    "inheritedConflicts": [],
+    "scope": "Manual source polygon and existing support membership only; no compiler, diffusion, skeleton, ARAP or pose execution"
+  },
+  "preserved": {
+    "masterPixels": true,
+    "masks": 32,
+    "landmarks": 63,
+    "sockets": 31,
+    "previousRegions": 31,
+    "refinements": 16,
+    "contactDefinitions": true,
+    "materials": true,
+    "partIdentityAndOrder": true,
+    "inheritedPins": true,
+    "numericalLimits": true
+  },
+  "added": {
+    "regions": 1,
+    "joint": "leg3FarKnee",
+    "pin": false,
+    "newHardPins": 0
+  },
+  "qualification": "Authoring only; no compiler, diffusion, pose, solver, intake or test run"
+}

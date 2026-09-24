@@ -1,0 +1,26 @@
+{
+  "schema": "cf.sprint-root-doc-closure/v1",
+  "resultSha256": "2937cb760b7394072ac8625ad6acc6d64ed4db25b55382ad14553559d44af559",
+  "historicalReadmeAndLedgerPreserved": true,
+  "oldRoadmapHandoffArchivedVerbatim": true,
+  "signingAsserted": false,
+  "pushAsserted": false,
+  "outputs": [
+    {
+      "path": "ROADMAP.md",
+      "sha256": "79744f4a2e0c4f288f7e42bf702699d98672e39704bcaea32a1f9e7ddc56a227"
+    },
+    {
+      "path": "ROADMAP_ARCHIVE.md",
+      "sha256": "3cb8ea345bdfe54712f780dc8af84ac3c27bdce1c079ac1faaf6b5970cbda0e3"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/README.md",
+      "sha256": "f2eb9c11e62d3baebc36ea298900f98f355e4e05f896026dbfa70eca18882590"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/LEDGER.md",
+      "sha256": "65ce80649f147dadd4151df1f4d4247055bb7216d6cb7bfc2ff10054bbb440e6"
+    }
+  ]
+}

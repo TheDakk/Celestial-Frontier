@@ -14,13 +14,13 @@ import { createPixiEffectHost } from 'cf-proof/effects/pixi-adapter.ts';
 import { EffectThemeLibrary, isProceduralImage } from 'cf-proof/effects/theme-library.ts';
 import { compileBodyCard } from 'cf-proof/motion/body-card.ts';
 import { primeRecorder } from '../quadruped-proof/capture-contract.mjs';
+import { positiveAlphaBox as alphaBox } from './positive-alpha-box.mjs';
 import { publishedMeshBounds, mergePaintedBounds, fitPaintedEnvelope, placedPaintedBounds, assessPaintedContainment, assertPublishedSample } from './painted-envelope.mjs';
 
 const FRAME = { width: 1024, height: 576 }, SIDES = ['left', 'right'];
 const get = n => fetch(n).then(r => { if (!r.ok) throw Error(n); return r; });
 const json = n => get(n).then(r => r.json()), bytes = async n => new Uint8Array(await (await get(n)).arrayBuffer());
 const image = async n => { const b = await bytes(n), bmp = await createImageBitmap(new Blob([b])), c = new OffscreenCanvas(bmp.width, bmp.height); c.getContext('2d').drawImage(bmp, 0, 0); bmp.close(); return { bytes:b, canvas:c, width:c.width, height:c.height, rgba:c.getContext('2d').getImageData(0, 0, c.width, c.height).data }; };
-const alphaBox = (rgba,w,h) => { let x0=w,y0=h,x1=-1,y1=-1; for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(rgba[(y*w+x)*4+3]>8){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y);} if(x1<0)throw Error('empty alpha');return{x:x0,y:y0,width:x1-x0+1,height:y1-y0+1}; };
 const percentile = xs => { const a=[...xs].sort((a,b)=>a-b);if(!a.length)throw Error('missing measured samples');return a[Math.floor(a.length*.95)]; };
 const transform=n=>({x:n.x,y:n.y,scaleX:n.scale.x,scaleY:n.scale.y,rotation:n.rotation??0,pivotX:n.pivot?.x??0,pivotY:n.pivot?.y??0});
 const state={status:'LOADING'};window.cfBattle2Proof={state};

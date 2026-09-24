@@ -1,0 +1,379 @@
+{
+  "schema": "cf.centipede-complete-near-fringe-amendment/v1",
+  "candidate": "candidate-10",
+  "sourceCandidate": "candidate-09",
+  "samePaint": true,
+  "sourceAuthoringSha256": "310670dd1af38c5fd33f8df6d1eee956ba399423ff7910165407e1b9d0bc90ad",
+  "authoringSha256": "a0477b00a8dbd7c0ed77f5d9e6f696af5f94fc913c002589caf40f13242a2184",
+  "copied": {
+    "master.png": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+    "prompt.txt": "006bf5fce063cad08371df26b4e44975049cd480dd305e248eec1f7b64c83019",
+    "request.json": "eee818a3eedb39e1213426c05e8ea8ea9dda1576f22c12dfbab5ba6e93c5b9de",
+    "subject-source.json": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67",
+    "presence.json": "cae77bbdf0505d7019f67276201e7b965fde5cb305d5d7caffe4c43caff0117c",
+    "generation-receipt.json": "a95cf62f9b8fd9770549804a6f4e2e6ec0a337b522546a2785d1f383c2fd801f"
+  },
+  "maskChanges": [
+    {
+      "partId": "leg1-near",
+      "before": [
+        [
+          942,
+          703
+        ],
+        [
+          980,
+          703
+        ],
+        [
+          1018,
+          737
+        ],
+        [
+          1037,
+          763
+        ],
+        [
+          997,
+          823
+        ],
+        [
+          997,
+          850
+        ],
+        [
+          938,
+          850
+        ],
+        [
+          938,
+          819
+        ],
+        [
+          977,
+          756
+        ],
+        [
+          953,
+          726
+        ]
+      ],
+      "after": [
+        [
+          942,
+          703
+        ],
+        [
+          980,
+          703
+        ],
+        [
+          995,
+          706
+        ],
+        [
+          1007,
+          708
+        ],
+        [
+          1017,
+          715
+        ],
+        [
+          1026,
+          741
+        ],
+        [
+          1037,
+          763
+        ],
+        [
+          997,
+          823
+        ],
+        [
+          997,
+          850
+        ],
+        [
+          938,
+          850
+        ],
+        [
+          938,
+          819
+        ],
+        [
+          977,
+          756
+        ],
+        [
+          953,
+          726
+        ]
+      ]
+    },
+    {
+      "partId": "leg6-near",
+      "before": [
+        [
+          639,
+          690
+        ],
+        [
+          677,
+          690
+        ],
+        [
+          707,
+          709
+        ],
+        [
+          721,
+          724
+        ],
+        [
+          738,
+          743
+        ],
+        [
+          694,
+          811
+        ],
+        [
+          694,
+          842
+        ],
+        [
+          632,
+          842
+        ],
+        [
+          632,
+          815
+        ],
+        [
+          675,
+          747
+        ]
+      ],
+      "after": [
+        [
+          639,
+          690
+        ],
+        [
+          677,
+          690
+        ],
+        [
+          694,
+          694
+        ],
+        [
+          709,
+          698
+        ],
+        [
+          716,
+          712
+        ],
+        [
+          721,
+          724
+        ],
+        [
+          738,
+          743
+        ],
+        [
+          694,
+          811
+        ],
+        [
+          694,
+          842
+        ],
+        [
+          632,
+          842
+        ],
+        [
+          632,
+          815
+        ],
+        [
+          675,
+          747
+        ]
+      ]
+    },
+    {
+      "partId": "leg13-near",
+      "before": [
+        [
+          225,
+          696
+        ],
+        [
+          263,
+          696
+        ],
+        [
+          274,
+          708
+        ],
+        [
+          294,
+          749
+        ],
+        [
+          245,
+          817
+        ],
+        [
+          245,
+          844
+        ],
+        [
+          181,
+          844
+        ],
+        [
+          181,
+          815
+        ],
+        [
+          232,
+          746
+        ]
+      ],
+      "after": [
+        [
+          225,
+          696
+        ],
+        [
+          263,
+          696
+        ],
+        [
+          265,
+          700
+        ],
+        [
+          284,
+          702
+        ],
+        [
+          288,
+          710
+        ],
+        [
+          294,
+          749
+        ],
+        [
+          245,
+          817
+        ],
+        [
+          245,
+          844
+        ],
+        [
+          181,
+          844
+        ],
+        [
+          181,
+          815
+        ],
+        [
+          232,
+          746
+        ]
+      ]
+    }
+  ],
+  "diagnosis": "../static-paint-diagnosis04/root-edge-inspection.json",
+  "coverageCorrection": "../static-paint-diagnosis04/refinement-coverage.json",
+  "inspectionRectangles": [
+    {
+      "partId": "leg1-near",
+      "x": 938,
+      "y": 695,
+      "width": 111,
+      "height": 85
+    },
+    {
+      "partId": "leg6-near",
+      "x": 642,
+      "y": 680,
+      "width": 101,
+      "height": 83
+    },
+    {
+      "partId": "leg13-near",
+      "x": 219,
+      "y": 688,
+      "width": 83,
+      "height": 80
+    }
+  ],
+  "retainedPersistentFringe": {
+    "leg1-near": [
+      [
+        1012,
+        731
+      ],
+      [
+        1013,
+        732
+      ]
+    ],
+    "leg6-near": [
+      [
+        703,
+        706
+      ],
+      [
+        704,
+        706
+      ],
+      [
+        705,
+        707
+      ],
+      [
+        706,
+        708
+      ]
+    ],
+    "leg13-near": [
+      [
+        272,
+        705
+      ],
+      [
+        273,
+        706
+      ]
+    ]
+  },
+  "preserved": {
+    "masterPixels": true,
+    "hipCutEndpoints": true,
+    "otherMasks": 29,
+    "far3MaskWeightsAndRefinement": true,
+    "allRegions": 31,
+    "allRefinements": 16,
+    "landmarks": 63,
+    "sockets": 31,
+    "contactDefinitions": true,
+    "materials": true,
+    "inheritedPins": true,
+    "numericalLimits": true
+  },
+  "qualification": "Source inspection and new authoring only; no intake, pose, solver or test execution"
+}

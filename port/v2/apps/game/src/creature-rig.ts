@@ -40,7 +40,7 @@ export interface CreatureRigRecordV1 {
   readonly anatomy?:import('../../../tools/creature-animation/anatomy-inventory.mjs').AnatomyPresence;
   readonly recipeHash:string;
   readonly template:{id:string;version:number};
-  readonly geometry:{width:number;height:number;groundLineY:number;cutoutAssetHash:string;contactPads?:{readonly schema:'cf.terminal-pad-support/v1';readonly kind:'adhesive';readonly points:Readonly<Record<string,readonly [number,number]>>}};
+  readonly geometry:{width:number;height:number;groundLineY:number;cutoutAssetHash:string;fixedAttachments?:Readonly<Record<string,readonly [number,number]>>;contactPads?:{readonly schema:'cf.terminal-pad-support/v1';readonly kind:'adhesive';readonly points:Readonly<Record<string,readonly [number,number]>>}};
   readonly landmarks:Readonly<Record<string,readonly [number,number]>>;
 }
 interface Box {readonly x:number;readonly y:number;readonly width:number;readonly height:number;}
