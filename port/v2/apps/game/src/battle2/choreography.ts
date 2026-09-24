@@ -31,6 +31,10 @@ export interface TurnArena {
   readonly groundLineY: number; readonly stands: Readonly<{ left: NormalizedPoint; right: NormalizedPoint }>;
   /** Half the standing width of each combatant at stage scale, as a fraction of frame width; the run-up stops at contact. Absent → RUN_UP_FRACTION. */
   readonly halfWidths?: Readonly<{ left: number; right: number }>;
+  /** Each combatant's painted box at rest (frame-height fractions: centre and top). The stage fills it (like halfWidths). A target that does not
+   * stand on the ground line (a flyer, a swimmer) takes the impact and the damage number at its BODY, not on the dry ground line (review
+   * 2026-09-24: a Fruit Bat's hit burst landed on the ground under it). Absent, or a grounded target → the ground line as before. */
+  readonly bodies?: Readonly<{ left: Readonly<{ centreY: number; topY: number }>; right: Readonly<{ centreY: number; topY: number }> }>;
 }
 /** An anatomy attack selected for the turn (E1 §1.2): its motion replaces the delivery clip and its contact instant is the
  * impact beat. Built by `compileAnatomyAttack` in the wiring; the plan never selects verbs. */
@@ -141,6 +145,13 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
     target: { idle: makeClip(T, 'idle', seedT), reaction: hit ? makeClip(T, targetFaints ? 'faint' : 'hit', seedT) : input.outcome === 'dodge' ? makeClip(T, 'dodge', seedT) : null },
   };
   const readyEnd = input.readyMs, commandEnd = readyEnd + input.commandMs;
+  // where the hit lands: the ground line for a grounded target (unchanged), the target's painted body for a flyer or swimmer
+  // effects aim at a fighter's BODY when it does not stand on the ground line: its stand is a FOOT anchor, which for a swimmer can sit
+  // below the frame (the Salmon's is at y 1.001 on a lake; the matchup picker's browser run refused Tree Frog vs Salmon on it)
+  const bodyPoint = (side: Side, stand: NormalizedPoint): NormalizedPoint => { const b = input.arena.bodies?.[side]; return b && Math.abs(stand.y - input.arena.groundLineY) >= 1e-9 ? { x: stand.x, y: Math.min(0.98, Math.max(0.02, b.centreY)) } : stand; };
+  const targetBody = input.arena.bodies?.[T.side], grounded = !targetBody || Math.abs(standT.y - input.arena.groundLineY) < 1e-9;
+  const impactY = grounded ? input.arena.groundLineY : Math.min(0.98, Math.max(0.02, targetBody.centreY));
+  const numberY = grounded ? input.arena.groundLineY - NUMBER_LIFT : Math.max(0.04, targetBody.topY - 0.04);
   // A2 cadence: whole gait cycles (unmodified gait duration) up to the cap; feet planted; the lunge does the rest
   let cadence: TurnCadence | null = null;
   if (A.cadence) {
@@ -157,7 +168,7 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
   const stop = hit ? hitstopMs(massA) : 0;
   let effect: TurnPlan['effect'] = null, impactLocal = attack ? attack.contactMs : impactOffset(input.delivery, massA);
   if (input.effect) {
-    const raw = placeEffectSequence(input.effect, { attacker: { x: standA.x + runUp, y: standA.y }, target: standT }, { groundLineY: input.arena.groundLineY });
+    const raw = placeEffectSequence(input.effect, { attacker: { x: standA.x + runUp, y: bodyPoint(A.side, standA).y }, target: bodyPoint(T.side, standT) }, { groundLineY: impactY });
     // Melee themes hold the sweep across both stands (revealed by alpha in sampleTurn); cast themes slide origin→contact.
     const placement: SequencePlacement = input.delivery === 'melee' ? { ...raw, travel: raw.travel.map((p) => ({ ...p, from: raw.launch.from, to: raw.launch.from })) } : raw;
     const schedule = buildEffectSchedule(input.effect, { delivery: input.delivery, attackerMassClass: massA, ...(attack ? { impactAtMs: attack.contactMs } : {}) }, placement);
@@ -183,7 +194,7 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
     kind: 'turn-plan', seed: input.seed,
     attacker: { side: A.side, facing, mass: massA, label: A.label, rigged: A.card !== null }, target: { side: T.side, facing: facingOf(T.side), mass: massT, label: T.label, rigged: T.card !== null },
     delivery: input.delivery, theme: input.theme, outcome: input.outcome, targetFaints, beats, phases: Object.freeze(phases), hitstopMs: stop, runUp, cadence, arena: input.arena, clips, effect,
-    number: { text, x: standT.x, y: input.arena.groundLineY - NUMBER_LIFT }, reducedMotion: input.reducedMotion === true, attack,
+    number: { text, x: standT.x, y: numberY }, reducedMotion: input.reducedMotion === true, attack,
   });
 }
 

@@ -3,18 +3,19 @@
  * where native-runner.mjs is the E1.5 morph/guardian harness). Bundles `archetype-native-entry.mjs` against THIS lane's `apps/game/src`, serves the
  * two fits + arena proof assets flat, drives Microsoft Edge over the shared CDP launcher, writes report.json, per-turn
  * stills (approach 50 %, impact, reaction 50 %) and a 10 s webm, and hashes every source it read. Diagnostic study.
- * Usage: node tools/battle2-proof/native-runner.mjs <leftFitDir> <rightFitDir> <outDir> [script.json]
+ * Usage: node tools/battle2-proof/archetype-native-runner.mjs <leftFitDir> <rightFitDir> <outDir> [script.json]
  * A fit dir holds record.json, binding.json, parts/keyed.png, parts/manifest.json, parts/atlas/<id>.png; the painter
  * master is `record.source` (repo-relative). Browser-owning: on macOS run with approved out-of-sandbox execution. */
 import fs from 'node:fs'; import path from 'node:path'; import os from 'node:os'; import http from 'node:http'; import { execFileSync } from 'node:child_process'; import { createHash } from 'node:crypto';
 import { rolldown } from 'rolldown';
+import { repoRelativeSource } from '../creature-animation/record-source.mjs';
 import { openChromiumCdp } from '../browsercdp.mjs';
 import { acquireWorkspaceLock } from '../workspacelock.mjs';
 import { requireTenSecondMedia } from '../quadruped-proof/capture-contract.mjs';
 import { inspectEncodedFrames } from '../quadruped-proof/motion-proof-contract.mjs';
 
 const [leftArg, rightArg, outArg, scriptArg] = process.argv.slice(2);
-if (!leftArg || !rightArg || !outArg) throw Error('usage: native-runner.mjs <leftFitDir> <rightFitDir> <outDir> [script.json]');
+if (!leftArg || !rightArg || !outArg) throw Error('usage: archetype-native-runner.mjs <leftFitDir> <rightFitDir> <outDir> [script.json]');
 const repo = path.resolve(import.meta.dirname, '../../../..'), producer = path.resolve(repo, 'port/v2/apps/game/src'), arena = path.resolve(repo, 'audits/ARENA_EFFECTS_V42_PROOF_20260912');
 const left = path.resolve(leftArg), right = path.resolve(rightArg), out = path.resolve(outArg);
 if (fs.existsSync(out)) throw Error('New output directory required'); fs.mkdirSync(out, { recursive: true });
@@ -33,7 +34,7 @@ try {
   try { await bundle.write({ dir: scratch, format: 'es', entryFileNames: 'bundle.js' }); } finally { await bundle.close(); }
   const side = (dir, name) => { remember(path.join(dir, 'parts/manifest.json')); const record = JSON.parse(fs.readFileSync(path.join(dir, 'record.json'))), id = JSON.parse(fs.readFileSync(path.join(dir, 'parts/manifest.json'))).creatureId;
     const markings = {}; if (fs.existsSync(path.join(dir, 'markings.json'))) { markings[name + '-markings.json'] = path.join(dir, 'markings.json'); const mj = JSON.parse(fs.readFileSync(path.join(dir, 'markings.json'))); for (const [k, v] of Object.entries(mj.patterns ?? {})) if (v?.file) markings[name + '-marking-' + k + '.png'] = path.join(dir, v.file); }
-    return { ...markings, [name + '-record.json']: path.join(dir, 'record.json'), [name + '-binding.json']: path.join(dir, 'binding.json'), [name + '-keyed.png']: path.join(dir, 'parts/keyed.png'), [name + '-atlas.png']: path.join(dir, 'parts/atlas/' + id + '.png'), [name + '-master.png']: path.resolve(repo, record.source) }; };
+    return { ...markings, [name + '-record.json']: path.join(dir, 'record.json'), [name + '-binding.json']: path.join(dir, 'binding.json'), [name + '-keyed.png']: path.join(dir, 'parts/keyed.png'), [name + '-atlas.png']: path.join(dir, 'parts/atlas/' + id + '.png'), [name + '-master.png']: path.resolve(repo, repoRelativeSource(record.source)) }; };
   const anchors = JSON.parse(fs.readFileSync(path.join(arena, 'wild-anchors.json')));
   const assets = { ...side(left, 'left'), ...side(right, 'right'), 'arena-recipe.json': path.join(arena, 'arena-recipe.json'), 'wild-anchors.json': path.join(arena, 'wild-anchors.json'), 'arena-far.png': path.join(arena, 'arena-far.png'), 'arena-mid.png': path.join(arena, 'keyed/arena-mid.png'), 'arena-near.png': path.join(arena, 'keyed/arena-near.png') };
   for (const p of anchors.phases) if (p.keyedImage && !/^procedural:/.test(p.keyedImage)) assets[path.basename(p.keyedImage)] = path.join(arena, p.keyedImage);

@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { REPO_ROOT } from '../battle2/parts-rig.fixtures.js';
 import { CARD_SIZES, PaintedCardSource, type PaintedCardAssets } from './painted-card-source.js';
+import { CARD_ARCHETYPES } from './card-archetypes.js';
 import { decodePng } from './png-decode.js';
 const assets: PaintedCardAssets = { json: async (p) => JSON.parse(readFileSync(new URL(p, REPO_ROOT), 'utf8')), bytes: async (p) => new Uint8Array(readFileSync(new URL(p, REPO_ROOT))) };
 const REGISTRY = [{ earthName: 'Crab', dir: 'audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/' }, { earthName: 'Civet', dir: 'audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/' }];
@@ -35,5 +36,12 @@ describe('painted card source — the individual on the card', () => {
     const c = await s.card(civet, 'thumb')!; expect(c.width).toBe(132);
     await s.card(crabGenome(), 'thumb'); await s.card(crabGenome({ color: 2 }), 'thumb');
     const again = await s.card(civet, 'thumb')!; expect(again).not.toBe(c); expect(again.url).toBe(c.url); // evicted, re-rendered, identical bytes (determinism)
+  });
+  it('renders ONE card per host task: five simultaneous requests yield before each render, so a grid never freezes the page (review 2026-09-24: all renders ran in one task)', async () => {
+    const seen: number[] = []; let src!: PaintedCardSource;
+    src = new PaintedCardSource({ assets, registry: CARD_ARCHETYPES, cacheEntries: { thumb: 64, portrait: 8 }, yieldToHost: async () => { seen.push(src.renders); } });
+    const names = ['Crab', 'Civet', 'Salmon', 'Python', 'Eagle'], out = await Promise.all(names.map((n, i) => src.card({ _earthName: n, kingdom: 'fauna', seed: 40 + i, color: i + 2 }, 'thumb')!));
+    expect(out.every((a) => a.width === 132)).toBe(true); expect(src.renders).toBe(5);
+    expect(seen).toEqual([0, 1, 2, 3, 4]); // at every yield exactly the earlier renders have finished — strictly one render per task
   });
 });

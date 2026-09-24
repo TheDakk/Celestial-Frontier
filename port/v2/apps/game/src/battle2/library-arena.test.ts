@@ -16,10 +16,10 @@ import type { TurnAttack, TurnPlanInput } from './choreography.js';
 import { createPortraitRig } from './fallback.js';
 import type { BattleRigV1, RigContainerLike, RigSpriteLike } from './fixture-rig.js';
 import { REPO_ROOT, loadFitDir } from './parts-rig.fixtures.js';
-import { BattleStage, WATER_BANDS, combatantPresentation, standCentreShift, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext } from './stage.js';
+import { BattleStage, SHORE_FADE, WATER_BANDS, combatantPresentation, standCentreShift, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext } from './stage.js';
 
-class Node { x = 0; y = 0; rotation = 0; alpha = 1; visible = true; destroyed = false; text = ''; readonly scale = { set: () => {} }; readonly anchor = { set: () => {} };
-  children: object[] = []; addChild(c: object) { this.children.push(c); } removeChild(c: object) { this.children = this.children.filter((x) => x !== c); } clear() {} rect() {} fill() {} destroy() { this.destroyed = true; } }
+class Node { x = 0; y = 0; rotation = 0; alpha = 1; visible = true; destroyed = false; text = ''; readonly scale = { set: () => {} }; readonly anchor = { set: () => {} }; rects: [number, number, number, number][] = []; fills: number[] = [];
+  children: object[] = []; addChild(c: object) { this.children.push(c); } removeChild(c: object) { this.children = this.children.filter((x) => x !== c); } clear() { this.rects = []; this.fills = []; } rect(x: number, y: number, w: number, h: number) { this.rects.push([x, y, w, h]); } fill(st: { color: number }) { this.fills.push(st.color); } destroy() { this.destroyed = true; } }
 const factory: BattleStageFactory = { container: () => new Node(), sprite: (): StageSpriteLike => new Node(), text: (t): StageTextLike => { const n = new Node(); n.text = t; return n; }, graphics: (): StageGraphicsLike => new Node() };
 const rigFactory = { container: (): RigContainerLike => new Node(), portraitSprite: (): RigSpriteLike => new Node() };
 const portraitRig = (): BattleRigV1 => createPortraitRig({ templateId: 'portrait', recipeHash: 'thumb:platypus', cutout: { width: 132, height: 132 }, alphaBox: { x: 20, y: 30, width: 90, height: 96 }, factory: rigFactory });
@@ -64,7 +64,7 @@ describe('the painted library in the arena', () => {
     const report = rows.map((r) => `${r.earthName.padEnd(16)} ${r.template.padEnd(15)} ${r.medium.padEnd(6)} ticks ${String(r.ticks).padStart(4)} refusals ${r.refusals}  attack: ${r.attack || '-'}${r.error ? '  ERROR: ' + r.error : ''}${r.refusals ? '  last: ' + (r.last ?? '').slice(0, 160) : ''}`).join('\n');
     console.log('\n' + report);
     expect(rows.length).toBe(CARD_ARCHETYPES.length);
-    for (const r of rows) { expect(r.error, `${r.earthName}\n${report}`).toBeNull(); expect(r.refusals, `${r.earthName}\n${report}`).toBe(0); expect(r.ticks, r.earthName).toBeGreaterThan(300); expect(r.attack.startsWith('REFUSED') ? r.attack : 'ok', r.earthName).toBe('ok'); }
+    for (const r of rows) { expect(r.error, `${r.earthName}\n${report}`).toBeNull(); expect(r.refusals, `${r.earthName}\n${report}`).toBe(0); expect(r.ticks, r.earthName).toBeGreaterThan(300); expect(r.attack, `${r.earthName}: an anatomy attack must be compiled and staged`).toMatch(/^\S+ \(\S+\)$/); }
   }, 900_000);
   it('every archetype is SIZED to its place: no body wider than its arena share; a flyer fits the air band; a swimmer is refused on the dry arena and fits the water band on a lake world — whole painted box inside, scaled never clipped', async () => {
     const lake: ArenaWorld = { ...defaultArenaWorld(layout.groundLineY), key: 'lake', liquid: 'water', surfaceWater: true, cardHash: 'lake-1' };
@@ -154,4 +154,56 @@ describe('the painted library in the arena', () => {
     for (const [k, why] of Object.entries(KNOWN)) { const hit = found.find((f) => f.startsWith(k)); expect(hit, `${k} no longer refuses — remove its KNOWN pin`).toBeDefined(); expect(hit).toMatch(why); }
     expect(lines.length).toBe(CARD_ARCHETYPES.length * 3); // every archetype at every scale was run
   }, 900_000);
+  it('WET arena DRAWING: a full lake from surfaceY to the floor, three frames wide in the depth bands; a swimmer facing a GROUND fighter gets its own half and the ground fighter keeps its floor (review 2026-09-24: the land fighter stood underwater)', async () => {
+    const H = FRAME.height, w = FRAME.width, surfaceY = 0.52;
+    const mk = async (water: { surfaceY: number; side?: 'left' | 'right' }) => { const salmon = await loadFitDir(fitDirOf(CARD_ARCHETYPES.find((a) => a.earthName === 'Salmon')!.dir)); const nodes: Node[] = [];
+      const f: BattleStageFactory = { container: () => { const n = new Node(); nodes.push(n); return n; }, sprite: (): StageSpriteLike => { const n = new Node(); nodes.push(n); return n; }, text: (t): StageTextLike => { const n = new Node(); n.text = t; nodes.push(n); return n; }, graphics: (): StageGraphicsLike => { const n = new Node(); nodes.push(n); return n; } };
+      const stage = new BattleStage({ factory: f, clock: () => 0, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: salmon.rig, right: portraitRig() }, masses: { left: salmon.card.massClass.multiplier, right: 0.85 }, water });
+      const kids = (stage.root as unknown as Node).children as Node[]; return { stage, water: kids[2]!, near: kids.find((n, i) => i > 2 && n.fills.length === 0 && n.rects.length === 0 && n !== kids[2] && kids.indexOf(n) === kids.length - 5)!, kids }; };
+    const full = await mk({ surfaceY });
+    expect(full.water.rects.length).toBe(WATER_BANDS.length + 1); expect(full.water.fills.slice(0, WATER_BANDS.length)).toEqual(WATER_BANDS.map((b) => b.color));
+    expect(full.water.rects[0]![1]).toBeCloseTo(surfaceY * H, 9); const last = full.water.rects[WATER_BANDS.length - 1]!; expect(last[1] + last[3]).toBeGreaterThanOrEqual(H);
+    for (const r of full.water.rects.slice(0, WATER_BANDS.length)) { expect(r[0]).toBe(-w); expect(r[2]).toBe(3 * w); }
+    expect(full.kids.at(-5)!.visible).toBe(false); // the dry foreground hides under a full lake
+    const half = await mk({ surfaceY, side: 'left' });
+    for (const r of half.water.rects.slice(0, WATER_BANDS.length + 1)) { expect(r[0]).toBe(-w); expect(r[0] + r[2]).toBeCloseTo(0.5 * w, 9); } // the swimmer's half only
+    const shore = half.water.rects.slice(WATER_BANDS.length + 1); expect(shore.length).toBeGreaterThan(0); expect(Math.max(...shore.map((r) => r[0] + r[2]))).toBeLessThanOrEqual((0.5 + SHORE_FADE) * w + 1); // a soft shore, short of the ground fighter
+    expect(half.kids.at(-5)!.visible).toBe(true); // the ground fighter's foreground stays
+    const groundFootX = layout.stands.right.x * w; expect(half.water.rects.every((r) => groundFootX < r[0] || groundFootX > r[0] + r[2])).toBe(true);
+    full.stage.dispose(); half.stage.dispose();
+  }, 300_000);
+  it('a FLYER target takes the hit at its body and its cursor stays on screen; a grounded target is exactly as before (review 2026-09-24: the bat\'s burst landed on the ground, the eagle\'s cursor at y −26 px)', async () => {
+    const bat = await loadFitDir(fitDirOf(CARD_ARCHETYPES.find((a) => a.earthName === 'Fruit Bat')!.dir)), frog = await loadFitDir(fitDirOf(CARD_ARCHETYPES.find((a) => a.earthName === 'Tree Frog')!.dir));
+    const airY = 0.4555, airLayout = { ...layout, stands: { left: layout.stands.left, right: { x: layout.stands.right.x, y: airY } } };
+    const nodes: Node[] = []; const f: BattleStageFactory = { container: () => { const n = new Node(); nodes.push(n); return n; }, sprite: (): StageSpriteLike => new Node(), text: (t): StageTextLike => { const n = new Node(); n.text = t; return n; }, graphics: (): StageGraphicsLike => { const n = new Node(); nodes.push(n); return n; } };
+    let now = 0; const stage = new BattleStage({ factory: f, clock: () => now, layout: airLayout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: frog.rig, right: bat.rig }, masses: { left: frog.card.massClass.multiplier, right: bat.card.massClass.multiplier } });
+    const c: TurnOutcomeContext = { ...ctx('A', 'Tree Frog', frog.card.massClass.multiplier, frog.card, undefined, 9), arena: { groundLineY: layout.groundLineY, stands: airLayout.stands } };
+    const plan = stage.play(turn(c, { side: 'A', an: 'Tree Frog', dn: 'Platypus', dmg: 7, crit: false, hpA: 30, hpB: 20 }, 0)), body = stage.bodies().right;
+    expect(plan.effect).not.toBeNull(); const contactY = plan.effect!.placement.impact.from.y; expect(plan.effect!.placement.groundLineY).toBeCloseTo(contactY, 9); // the impact is placed on the target's body line
+    expect(contactY).toBeGreaterThanOrEqual(body.topY); expect(contactY).toBeLessThanOrEqual(2 * body.centreY - body.topY); // inside the bat's painted box
+    expect(plan.number.y).toBeLessThan(body.topY); expect(plan.number.y).toBeGreaterThan(0);
+    let cursorOk = true, cursorSeen = false; for (let ms = 0; ms < plan.beats.end; ms += 1000 / 30) { now = ms; stage.tick(); const cur = nodes.find((n) => n.fills.includes(0xffd166)); if (cur && cur.visible && cur.rects.length) { cursorSeen = true; const y = cur.rects.at(-1)![1]!; if (y < 0 || y > FRAME.height) cursorOk = false; } }
+    expect(cursorSeen).toBe(true); expect(cursorOk).toBe(true);
+    stage.dispose();
+    // control: a GROUNDED target keeps the ground-line contact and number exactly
+    now = 0; const g = new BattleStage({ factory, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: (await loadFitDir(fitDirOf(CARD_ARCHETYPES.find((a) => a.earthName === 'Tree Frog')!.dir))).rig, right: portraitRig() }, masses: { left: 1, right: 0.85 } });
+    const gp = g.play(turn(ctx('A', 'Tree Frog', frog.card.massClass.multiplier, frog.card, undefined, 9), { side: 'A', an: 'Tree Frog', dn: 'Platypus', dmg: 7, crit: false, hpA: 30, hpB: 20 }, 0));
+    expect(gp.number.y).toBeCloseTo(layout.groundLineY - 0.30, 9); g.dispose();
+  }, 300_000);
+  it('BAND CONTAINMENT from the real alpha box: on a lake world every archetype that swims or flies has its WHOLE painted box inside its band — the box taken from the rig\'s measured extent, not from the placement formula (review 2026-09-24: the Vent Crab sat 21 px below the water band floor)', async () => {
+    const lake: ArenaWorld = { ...defaultArenaWorld(layout.groundLineY), key: 'lake', liquid: 'water', surfaceWater: true, cardHash: 'lake-1' }, H = FRAME.height, out: string[] = []; let checked = 0, centredWouldFail = 0;
+    for (const a of CARD_ARCHETYPES) {
+      const { rig, record, card } = await loadFitDir(fitDirOf(a.dir)), p = combatantPresentation(rig, card.massClass.multiplier, FRAME, layout.stands.left.y);
+      const r = selectHabitatArena({ contextId: 'band', seed: 7, round: 0, kind: 'wild', worlds: { home: lake, visitor: lake }, groundLineY: layout.groundLineY, fitToBand: true, left: { record: record as never, genome: null, label: a.earthName, painted: p }, right: { record: null, genome: null, label: 'Portrait', painted: { height: 0.4, footBelowCentre: 0.05 } } });
+      if (r.status !== 'READY' || r.stands.left.medium === 'ground') continue;
+      const st = r.stands.left, k = p.scale * st.fit, top = st.y - (rig.extent!.up! * rig.cutout.height * k) / H, bottom = top + (rig.bounds.height * rig.cutout.height * k) / H; checked++;
+      if (top < st.band.minY - 1e-9 || bottom > st.band.maxY + 1e-9) out.push(`${a.earthName} ${st.medium}: box ${top.toFixed(3)}–${bottom.toFixed(3)} band ${st.band.minY}–${st.band.maxY}`);
+      // the old centred assumption, for the record: which boxes it would have pushed out
+      const oldCentre = st.y - ((rig.foot.y - 0.5) * rig.cutout.height * k) / H, oldTop = oldCentre - (rig.bounds.height * rig.cutout.height * k) / (2 * H);
+      if (Math.abs(oldTop - top) * H > 2 && (top + (oldTop - top) < st.band.minY || bottom + (oldTop - top) > st.band.maxY)) centredWouldFail++;
+    }
+    expect(out).toEqual([]); expect(checked).toBeGreaterThanOrEqual(8); // every swimmer and flyer (crabs swim on the lake)
+    console.log(JSON.stringify({ bandChecked: checked, oldAssumptionWouldBreach: centredWouldFail }));
+    expect(centredWouldFail).toBeGreaterThan(0); // the negative control: the old centred-box assumption DOES breach bands with these fits
+  }, 300_000);
 });

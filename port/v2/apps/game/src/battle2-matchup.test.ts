@@ -8,6 +8,12 @@ import { REPO_ROOT, loadFitDir } from './battle2/parts-rig.fixtures.js';
 import { combatantPresentation, turnPlanInputFromTranscriptEvent, type TurnOutcomeContext } from './battle2/stage.js';
 import { composeArena } from './battle2/arena.js';
 import { lakeArenaWorld, selectHabitatArena } from './battle2/habitat-arena.js';
+import { placeCombatants } from './battle2/placement.js';
+import { BattleStage, type BattleStageFactory, type StageGraphicsLike, type StageSpriteLike, type StageTextLike } from './battle2/stage.js';
+import { compileAnatomyAttack } from './anatomy-attacks.js';
+import { resolvePhysicalHabitat } from './battle-habitat.js';
+import type { TurnAttack } from './battle2/choreography.js';
+import { parseEffectSequenceAnchors } from './effects/anchors.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
 import { MATCHUP_NAMES, matchupEnabled, matchupGenome, matchupTranscript, matchupWorld, mountBattle2Matchup, parseMatchup, swimsOnly } from './battle2-matchup.js';
 import type { Battle2AssetSource, Battle2StudyHandle, Battle2StudyInput, Battle2Status } from './battle2-wiring.js';
@@ -64,6 +70,32 @@ describe('matchup picker — every offered pair is playable', () => {
   }, 300_000);
 });
 
+
+describe('matchup picker — every offered pair STAGES', () => {
+  const WILD = (() => { const p = parseEffectSequenceAnchors(JSON.parse(readFileSync(new URL('audits/ARENA_EFFECTS_V42_PROOF_20260912/wild-anchors.json', REPO_ROOT), 'utf8'))); if (!p.ok) throw new Error(p.reason); return p.anchors; })();
+  it('all 17 × 17 pairs go through the ONE placement pipeline and build real turn plans both ways (attack, counter-attack, dodge) on a real stage — no refusal, no throw (the browser run found Tree Frog vs Salmon refused: a swimmer\'s foot anchor below the frame)', async () => {
+    class N { x = 0; y = 0; rotation = 0; alpha = 1; visible = true; text = ''; readonly scale = { set: () => {} }; readonly anchor = { set: () => {} }; children: object[] = []; addChild(c: object) { this.children.push(c); } removeChild() {} clear() {} rect() {} fill() {} destroy() {} }
+    const factory: BattleStageFactory = { container: () => new N(), sprite: (): StageSpriteLike => new N(), text: (t): StageTextLike => { const n = new N(); n.text = t; return n; }, graphics: (): StageGraphicsLike => new N() };
+    const loaded = new Map<string, Awaited<ReturnType<typeof loadFitDir>>>();
+    for (const a of CARD_ARCHETYPES) loaded.set(a.earthName, await loadFitDir((JSON.parse(readFileSync(new URL(a.dir + 'SOURCE.json', REPO_ROOT), 'utf8')) as { fitDir: string }).fitDir));
+    const failures: string[] = []; let plans = 0;
+    for (const L of MATCHUP_NAMES) for (const R of MATCHUP_NAMES) {
+      const l = loaded.get(L)!, r = loaded.get(R)!, world = matchupWorld({ left: L, right: R, world: 'auto' });
+      const worlds = world === 'lake' ? { home: lakeArenaWorld(layout.groundLineY), visitor: lakeArenaWorld(layout.groundLineY) } : null;
+      try {
+        const placed = placeCombatants({ contextId: `pairs:${L}:${R}`, seed: 7, layout, worlds, left: { rig: l.rig, mass: l.card.massClass.multiplier, record: l.record as never, genome: null, label: L }, right: { rig: r.rig, mass: r.card.massClass.multiplier, record: r.record as never, genome: null, label: R } });
+        if (placed.status !== 'READY') { failures.push(`${L} vs ${R}: ${placed.habitat.reason}`); continue; }
+        const stage = new BattleStage({ factory, clock: () => 0, layout: placed.layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: l.rig, right: r.rig }, masses: { left: l.card.massClass.multiplier, right: r.card.massClass.multiplier }, ...(placed.presentationScales ? { presentationScales: placed.presentationScales } : {}), ...(placed.water ? { water: placed.water } : {}) });
+        const medium = { A: placed.habitat.stands.left.medium, B: placed.habitat.stands.right.medium } as const, cards = { A: l.card, B: r.card };
+        const attackFor = (side: 'A' | 'B', ordinal: number): TurnAttack | null => { try { const c = compileAnatomyAttack(cards[side], medium[side], ordinal); return { verb: c.attack.verb, timeline: c.timeline, contactMs: c.contactMs, contactJoint: c.attack.contactJoint }; } catch { return null; } };
+        const ctx: TurnOutcomeContext = { A: { side: 'A', name: L, mass: l.card.massClass.multiplier, card: l.card, theme: 'wild', seed: 1 }, B: { side: 'B', name: R, mass: r.card.massClass.multiplier, card: r.card, theme: 'wild', seed: 2 }, arena: { groundLineY: layout.groundLineY, stands: placed.layout.stands }, seed: 5, anchorsForTheme: (t) => (t === 'wild' ? WILD : null), readyMs: 600, commandMs: 300, attackFor }; // the REAL effect anchors: effect placement is where a bad stand point is refused
+        const rows = [{ side: 'A', an: L, dn: R, dmg: 9, crit: false, hpA: 30, hpB: 21 }, { side: 'B', an: R, dn: L, dmg: 6, crit: false, hpA: 24, hpB: 21 }, { an: L, dn: R, dodge: true }];
+        for (const [i, row] of rows.entries()) { const t = turnPlanInputFromTranscriptEvent(row, ctx, i); if (t.kind !== 'turn') throw new Error(t.reason); const plan = stage.play(t.input); plans++; if (!row.dodge && !plan.effect) throw new Error('no effect was placed — the check would be vacuous'); }
+      } catch (e) { failures.push(`${L} vs ${R} (${world}): ${e instanceof Error ? e.message : String(e)}`); }
+    }
+    expect(failures).toEqual([]); expect(plans).toBe(MATCHUP_NAMES.length ** 2 * 3);
+  }, 900_000);
+});
 
 describe('matchup picker — DOM', () => {
   it('mounts the chosen pair, replays a new choice (disposing the old study), and Close tears everything down', async () => {
