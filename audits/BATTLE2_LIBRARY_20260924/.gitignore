@@ -1,0 +1,11 @@
+# Retention (Nick 2026-09-24: one PR, no LFS — keep the repo lean). Every take is reproducible from film-all.mjs + its script.
+# Accepted takes (-03): the 10 s film, report.json and the three stills the review sheet uses are committed.
+# Superseded takes (-00 … -02): report.json and the run log carry the findings; their films and stills stay local.
+*/turn*.png
+!*-03/turn0-hit-approach-50.png
+!*-03/turn0-hit-impact.png
+!*-03/turn1-hit-impact.png
+*-00-*/battle-10s.webm
+*-01/battle-10s.webm
+*-02/battle-10s.webm
+library-battles-sheet-01.png

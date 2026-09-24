@@ -20,8 +20,16 @@ export interface HabitatArenaInput {
   /** Ground line of the arena layout (the plates' painted ground). */
   readonly groundLineY: number;
   readonly left: HabitatSideInput; readonly right: HabitatSideInput;
+  /** Size an air/water body DOWN to fit its medium band (2026-09-24): the mass rule gives every combatant 1/3–1/2 of the
+   * frame, but the air band is 0.38 tall and the water band 0.29, so a real flyer or swimmer was refused for size — the
+   * whole painted library could not fly or swim. With this set, an oversized body takes `stand.fit` (< 1) and the caller
+   * scales its presentation by it; the whole box still sits inside the band — scaled, never clipped. Default off: the
+   * refusal stands for callers that do not scale. */
+  readonly fitToBand?: boolean;
 }
-export interface HabitatStand { readonly x: number; readonly y: number; readonly medium: BattleMedium; readonly band: Readonly<{ minY: number; maxY: number }>; readonly habitat: PhysicalHabitat; }
+/** Share of its band an air/water body may fill when fitted (a margin for its moving poses). */
+export const BAND_FILL = 0.9;
+export interface HabitatStand { readonly x: number; readonly y: number; readonly medium: BattleMedium; readonly band: Readonly<{ minY: number; maxY: number }>; readonly habitat: PhysicalHabitat; /** Presentation scale factor the caller applies (1 = as sized by mass; < 1 only with `fitToBand`). */ readonly fit: number; }
 export type HabitatArenaResult =
   | Readonly<{ status: 'READY'; worldKey: string; seed: number; source: 'worlds' | 'default'; label: string; stands: Readonly<Record<Side, HabitatStand>>; interaction: 'same-medium' | 'surface-ranged' }>
   | Readonly<{ status: 'UNSUPPORTED'; worldKey: string; reason: string; label: string }>;
@@ -54,8 +62,10 @@ export function selectHabitatArena(input: HabitatArenaInput): HabitatArenaResult
   const stand = (side: Side, habitat: PhysicalHabitat, s: HabitatSideInput): HabitatStand => {
     const placed = compiled[side];
     // Ground: the foot point stands on the painted ground line. Air/water: the whole painted box sits inside its band (never clipped).
-    const y = placed.medium === 'ground' ? input.groundLineY : containHabitatBody(placed.band, (placed.band.minY + placed.band.maxY) / 2, s.painted.height) + s.painted.footBelowCentre;
-    return Object.freeze({ x: placed.x, y, medium: placed.medium, band: Object.freeze({ ...placed.band }), habitat });
+    const bandHeight = placed.band.maxY - placed.band.minY;
+    const fit = placed.medium !== 'ground' && input.fitToBand && s.painted.height > bandHeight * BAND_FILL ? (bandHeight * BAND_FILL) / s.painted.height : 1;
+    const y = placed.medium === 'ground' ? input.groundLineY : containHabitatBody(placed.band, (placed.band.minY + placed.band.maxY) / 2, s.painted.height * fit) + s.painted.footBelowCentre * fit;
+    return Object.freeze({ x: placed.x, y, medium: placed.medium, band: Object.freeze({ ...placed.band }), habitat, fit });
   };
   const stands = Object.freeze({ left: stand('left', left, input.left), right: stand('right', right, input.right) });
   const label = `${worldLabel} · left ${input.left.label}: ${stands.left.medium} (${left.source}) · right ${input.right.label}: ${stands.right.medium} (${right.source})`;

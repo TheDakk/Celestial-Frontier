@@ -4,6 +4,7 @@
 //   node tools/morph/build-card-masters.mjs
 import fs from 'node:fs'; import path from 'node:path'; import { createHash } from 'node:crypto';
 import { readPng, writePng } from '../anatomy-verify/png.mjs';
+import { repoRelativeSource } from '../creature-animation/record-source.mjs';
 export const CARD_MASTER_SIDE = 512;
 const R = path.resolve(import.meta.dirname, '../../../..');
 /** Shipped copies live INSIDE port/v2 (the preview producer archives only the v2 subtree; the app never imports evidence
@@ -35,15 +36,6 @@ export const CARD_ARCHETYPES = Object.freeze([
   { earthName: 'Centipede', dir: 'audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/', key: 'centipede' },
 ]);
 const sha = (b) => createHash('sha256').update(b).digest('hex');
-/** A record's `source`, repo-relative. The archetype sprint's records (Codex, 2026-09-22/23) carry ABSOLUTE paths into the
- * OpenAI worktree; the same repo-relative file exists in every clone. Only a path under a Celestial Frontier worktree root is
- * rewritten; anything else is refused. The card receipt seals the bytes actually read (`source.masterSha256`). */
-export function repoRelativeSource(source) {
-  if (!path.isAbsolute(source)) return source;
-  const m = /^\/.+?\/celestial-frontier-(?:anthropic|openai)-mac\/(.+)$/.exec(source) ?? /^\/.+?\/Celestial-Frontier\/(.+)$/.exec(source);
-  if (!m) throw Error('record source is an absolute path outside a Celestial Frontier worktree: ' + source);
-  return m[1];
-}
 const box = (img, dw, dh) => { const o = new Uint8Array(dw * dh * 4), sx = img.width / dw, sy = img.height / dh;
   for (let y = 0; y < dh; y++) for (let x = 0; x < dw; x++) { const x0 = Math.floor(x * sx), x1 = Math.max(x0 + 1, Math.floor((x + 1) * sx)), y0 = Math.floor(y * sy), y1 = Math.max(y0 + 1, Math.floor((y + 1) * sy)); let r = 0, g = 0, b = 0, a = 0, n = 0;
     for (let yy = y0; yy < y1; yy++) for (let xx = x0; xx < x1; xx++) { const i = (yy * img.width + xx) * 4, al = img.data[i + 3]; r += img.data[i] * al; g += img.data[i + 1] * al; b += img.data[i + 2] * al; a += al; n++; }
@@ -63,7 +55,14 @@ export function generatedSources(archetypes, markingsFilesOf) {
     rows.push(`  ['${SHIPPED_ROOT}${a.key}/', { ${entries.join(', ')} }],`); });
   const assets = head + imports.join('\n') + '\n/** Repo-relative shipped archetype dir → its shipped asset URLs by file (card, record, and the painted masks when it has them). */\n'
     + 'export const CARD_ASSET_URLS: ReadonlyMap<string, Readonly<Record<string, string>>> = new Map([\n' + rows.join('\n') + '\n]);\n';
-  return { registry, assets };
+  // the ARENA's parts-fit list (battle2-wiring.ts): fit dirs relative to the arena proof directory, the markings dir when the
+  // masks live outside the fit (the Salmon) — the same archetypes, so a creature on the card can always fight
+  const rel = (repo) => '../' + repo.slice('audits/'.length);
+  const arena = head + "/** One entry per painted archetype that can FIGHT: its source paint-skin fit (and its painted masks' folder when they\n * live outside the fit), relative to the arena proof directory the battle2 wiring resolves against. */\n"
+    + 'export interface Battle2PartsFit { readonly earthName: string; readonly dir: string; readonly markingsDir?: string; }\n'
+    + 'export const BATTLE2_PARTS_FITS: readonly Battle2PartsFit[] = Object.freeze([\n'
+    + archetypes.map((a) => `  Object.freeze({ ${field('earthName', a.earthName)}, ${field('dir', rel(a.dir))}${a.markings ? ', ' + field('markingsDir', rel(a.markings)) : ''} }),\n`).join('') + ']);\n';
+  return { registry, assets, arena };
 }
 if (import.meta.url === new URL(process.argv[1], 'file:').href) {
   const shippedMarkings = new Map();
@@ -107,4 +106,5 @@ if (import.meta.url === new URL(process.argv[1], 'file:').href) {
   const gen = generatedSources(CARD_ARCHETYPES, (a) => shippedMarkings.get(a.key) ?? []);
   fs.writeFileSync(path.join(R, 'port/v2/apps/game/src/morph/card-archetypes.ts'), gen.registry);
   fs.writeFileSync(path.join(R, 'port/v2/apps/game/src/painted-cards.assets.ts'), gen.assets);
+  fs.writeFileSync(path.join(R, 'port/v2/apps/game/src/battle2-archetypes.ts'), gen.arena);
 }

@@ -8,7 +8,7 @@ import { compileAnatomyAttack } from 'cf-proof/anatomy-attacks.ts';
 import { combatantScale, composeArena } from 'cf-proof/battle2/arena.ts';
 import { selectHabitatArena } from 'cf-proof/battle2/habitat-arena.ts';
 import { createPartsRig } from 'cf-proof/battle2/parts-rig.ts';
-import { BattleStage, GUARDIAN_FRAME_FILL, turnPlanInputFromTranscriptEvent } from 'cf-proof/battle2/stage.ts';
+import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, turnPlanInputFromTranscriptEvent } from 'cf-proof/battle2/stage.ts';
 import { individualFromGenomeV1 } from 'cf-proof/morph/morph-individual.ts';
 import { markingNameV1, maskAlphaOf } from 'cf-proof/morph/morph-markings.ts';
 import { archetypeGenomeV1, morphParamsV1 } from 'cf-proof/morph/morph-params.ts';
@@ -50,9 +50,11 @@ try {
   const guardianSide = left.rig.guardian ? 'left' : right.rig.guardian ? 'right' : undefined;
   const layout = composeArena({ id: recipe.battleContext?.worldKey ?? 'arena', groundLineNormalized: recipe.groundLineNormalized, plates: { far, mid, near } }, FRAME, guardianSide ? { guardianSide } : {});
   const masses = { left: left.card.massClass.multiplier, right: right.card.massClass.multiplier };
-  const painted = (s, mass) => { const k = combatantScale(s.rig.bounds, s.rig.cutout.height, mass, FRAME.height, s.rig.guardian ? { frameFill: GUARDIAN_FRAME_FILL, tallestHeight: s.rig.tallestHeight } : {}); return { height: k.heightFraction, footBelowCentre: (s.rig.foot.y - 0.5) * s.rig.cutout.height * k.scale / FRAME.height }; };
-  const habitat = selectHabitatArena({ contextId: 'battle2-proof', seed: recipe.seed, round: 0, kind: 'wild', worlds: null, groundLineY: layout.groundLineY,
-    left: { record: left.record, genome: null, label: left.name, painted: painted(left, masses.left) }, right: { record: right.record, genome: null, label: right.name, painted: painted(right, masses.right) } });
+  const painted = (s, mass) => combatantPresentation(s.rig, mass, FRAME); // the app's one sizing rule (battle2/stage.ts)
+  const paintedL = painted(left, masses.left), paintedR = painted(right, masses.right);
+  // the app's rule (battle2-wiring): an air/water body too tall for its band is scaled to fit it, and the stage takes that scale
+  const habitat = selectHabitatArena({ contextId: 'battle2-proof', seed: recipe.seed, round: 0, kind: 'wild', worlds: null, groundLineY: layout.groundLineY, fitToBand: true,
+    left: { record: left.record, genome: null, label: left.name, painted: paintedL }, right: { record: right.record, genome: null, label: right.name, painted: paintedR } });
   if (habitat.status !== 'READY') throw Error('habitat: ' + habitat.reason);
   const stagedLayout = { ...layout, stands: { left: { x: layout.stands.left.x, y: habitat.stands.left.y }, right: { x: layout.stands.right.x, y: habitat.stands.right.y } } };
   const phaseTextures = new Map(); for (const p of anchors.phases) if (!isProceduralImage(p.keyedImage)) phaseTextures.set(p.keyedImage, texture(await image(p.keyedImage.split('/').pop())));
@@ -60,7 +62,7 @@ try {
   const style = { fontFamily: 'system-ui', fontSize: 34, fontWeight: '700', fill: '#fff2c8', stroke: { color: '#2a1a0a', width: 4 } };
   let clockMs = 0;
   const stage = new BattleStage({ factory: { container: () => new Container(), sprite: (t) => new Sprite(t), text: (t) => new Text({ text: t, style, anchor: 0.5 }), graphics: () => new Graphics() }, clock: () => clockMs, layout: stagedLayout,
-    plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses, worldLife: null, cues: null,
+    plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses, worldLife: null, cues: null, ...(paintedL.capped || paintedR.capped || habitat.stands.left.fit < 1 || habitat.stands.right.fit < 1 ? { presentationScales: { left: paintedL.scale * habitat.stands.left.fit, right: paintedR.scale * habitat.stands.right.fit } } : {}),
     effects: { host: createPixiEffectHost({ Sprite, Particle, ParticleContainer }), particleTexture: Texture.from(dotCanvas), seed: recipe.seed,
       phaseTextures: (a) => a.phases.map((p) => (isProceduralImage(p.keyedImage) ? null : phaseTextures.get(p.keyedImage) ?? (() => { throw Error('phase image ' + p.keyedImage); })())),
       emittersForTheme: (t) => themes.emittersFor(t, 'desktop'), tintForTheme: (t) => themes.tintFor(t) } });
@@ -84,7 +86,7 @@ try {
       if (plan.attack) { stageAt(o + b.impactAt); const c = contactWorld(side, plan.attack.contactJoint), targetStand = stagedLayout.stands[plan.target.side]; row.contactAtImpact = c ? { x: c.x / FRAME.width, y: c.y / FRAME.height, targetStandX: targetStand.x, gapToTargetStand: Math.abs(targetStand.x - c.x / FRAME.width) } : null; }
       return row; });
     stageAt(0);
-    return { status: 'DIAGNOSTIC', frame: FRAME, rigs: { left: left.rig.label, right: right.rig.label }, names: { left: left.name, right: right.name }, habitat: habitat.label, stands: stagedLayout.stands, attacks: { ...attackLabels }, turns: rows, skipped, totalMs, refusals: { left: left.rig.refusals(), right: right.rig.refusals() }, lastRefusal: { left: left.rig.lastRefusal(), right: right.rig.lastRefusal() } };
+    return { status: 'DIAGNOSTIC', frame: FRAME, rigs: { left: left.rig.label, right: right.rig.label }, names: { left: left.name, right: right.name }, habitat: habitat.label, fit: { left: habitat.stands.left.fit, right: habitat.stands.right.fit }, widthCapped: { left: paintedL.capped, right: paintedR.capped }, mediums: { left: habitat.stands.left.medium, right: habitat.stands.right.medium }, stands: stagedLayout.stands, attacks: { ...attackLabels }, turns: rows, skipped, totalMs, refusals: { left: left.rig.refusals(), right: right.rig.refusals() }, lastRefusal: { left: left.rig.lastRefusal(), right: right.rig.lastRefusal() } };
   };
   const still = (g) => { stageAt(g); return app.canvas.toDataURL('image/png').split(',')[1]; };
   async function capture() {

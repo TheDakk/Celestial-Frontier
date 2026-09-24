@@ -8,6 +8,7 @@ import { loadCreatureRigV1, type CreaturePartsBindingV1, type CreatureRigRecordV
 import { compileBodyCard, type BodyCard, type MotionGenomeFields, type ResolvedAnatomyRecord } from '../motion/body-card.js';
 import type { PixelBox } from './fixture-rig.js';
 import { createPartsRig, type PartsRig } from './parts-rig.js';
+import { repoRelativeSource } from '../../../../tools/creature-animation/record-source.mjs';
 
 const require = createRequire(import.meta.url);
 const { PNG } = createRequire(require.resolve('free-tex-packer-core'))('pngjs') as { PNG: { sync: { read(bytes: Buffer): { width: number; height: number; data: Uint8Array } } } };
@@ -35,7 +36,7 @@ export async function loadFitDir(dirIn: string, contact?: 'family' | 'quadruped-
   const record = repoJson<FitRecord>(dir + 'record.json'), binding = repoJson<CreaturePartsBindingV1>(dir + 'binding.json'), manifest = repoJson<{ creatureId: string }>(dir + 'parts/manifest.json');
   const keyed = PNG.sync.read(readFileSync(new URL(dir + 'parts/keyed.png', REPO_ROOT)));
   const alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = keyed.data[i * 4 + 3] ?? 0;
-  const master = new Uint8Array(readFileSync(new URL(record.source, REPO_ROOT))), atlas = new Uint8Array(readFileSync(new URL(dir + 'parts/atlas/' + manifest.creatureId + '.png', REPO_ROOT)));
+  const master = new Uint8Array(readFileSync(new URL(repoRelativeSource(record.source), REPO_ROOT))), atlas = new Uint8Array(readFileSync(new URL(dir + 'parts/atlas/' + manifest.creatureId + '.png', REPO_ROOT)));
   const decoder = (): Promise<Texture> => Promise.resolve(new Texture({ source: new TextureSource({ width: binding.atlasSize.width, height: binding.atlasSize.height }) }));
   const paintRig = await loadCreatureRigV1(record, binding, master, alpha, atlas, decoder, jointScale ? { jointScale } : {});
   const card = compileBodyCard(record, record.genome);

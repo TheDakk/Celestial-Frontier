@@ -9,13 +9,22 @@ import { EMITTER_PRESETS, type EmitterConfig } from '../effects/emitter.js';
 import { EffectSequencePlayer, type EffectPixiHost, type EffectTextureLike } from '../effects/pixi-adapter.js';
 import type { EffectDelivery } from '../effects/sequencer.js';
 import type { BodyCard } from '../motion/body-card.js';
-import { PLATE_ORDER, combatantScale, parallaxOffset, type ArenaLayout, type PlateId } from './arena.js';
+import { PLATE_ORDER, combatantScale, fitCombatantWidth, parallaxOffset, type ArenaLayout, type PlateId } from './arena.js';
 /** D2 G6 — a guardian rig fills the frame (kit GUARDIAN RULE: "fills the battle screen"): its TALLEST pose
  * (`BattleRigV1.tallestHeight`, measured by the parts rig at load) spans this fraction of the frame height, so a rearing
  * melee stays inside the frame and under the HUD band. An option of `combatantScale`, not a species branch. Bear
  * (tallest = 1.38 × rest): rest height 0.70 of the frame at 0.96. Film -01 (rest at 0.9, head leaves the frame when
  * rearing) is kept beside film -02 for Nick's eye. */
 export const GUARDIAN_FRAME_FILL = 0.96;
+/** ONE sizing rule for a combatant's presentation (2026-09-24; used by the app wiring, the film harness and the tests — two
+ * copies could disagree): the mass rule (or the guardian's decided tallest-pose fill), then the arena WIDTH cap for a long
+ * body (guardians exempt). `height`/`footBelowCentre` are frame fractions at the returned scale, ready for the habitat's
+ * band fit; `capped` says the scale differs from the stage's own mass rule. */
+export function combatantPresentation(rig: Pick<BattleRigV1, 'bounds' | 'cutout' | 'foot' | 'guardian' | 'tallestHeight'>, mass: number, frame: Readonly<{ width: number; height: number }>): Readonly<{ scale: number; capped: boolean; height: number; footBelowCentre: number }> {
+  const k = combatantScale(rig.bounds, rig.cutout.height, mass, frame.height, rig.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(rig.tallestHeight !== undefined ? { tallestHeight: rig.tallestHeight } : {}) } : {});
+  const scale = rig.guardian ? k.scale : fitCombatantWidth(k.scale, rig.bounds, rig.cutout.width, frame.width), f = scale / k.scale;
+  return Object.freeze({ scale, capped: f < 1, height: k.heightFraction * f, footBelowCentre: ((rig.foot.y - 0.5) * rig.cutout.height * scale) / frame.height });
+}
 import { buildTurnPlan, sampleTurn, type Side, type StageSample, type TurnArena, type TurnAttack, type TurnPlan, type TurnPlanInput } from './choreography.js';
 import { TurnCuePlayer, buildTurnCuePlan, type CueSink, type TurnCuePlan } from './cue-plan.js';
 import type { BattleRigV1, RigNodeLike } from './fixture-rig.js';

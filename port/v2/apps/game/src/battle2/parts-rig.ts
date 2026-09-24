@@ -98,7 +98,11 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
   // R3 re-merge (2026-09-21): the family solver models the painted support by its observed skin weights
   // (`observedContactSupports(record, binding)`, Codex's R2c″ rule) and owns nothing of the run-up when the context
   // says `travel: 'stage'`.
-  const family = contactMode === 'family' ? createFamilyContactSolver(record, options.contactSupports === 'observed' && options.binding ? observedContactSupports(record, options.binding) : {}) : null;
+  // A record that DECLARES adhesive contact pads (Codex's Tree Frog) is only solvable on its observed painted supports — the
+  // pad contract says so — so it defaults to them; every other record keeps the rest-support default unchanged (2026-09-24,
+  // found when the whole painted library was staged: the Tree Frog was the one archetype that could not load in the arena).
+  const supports = options.contactSupports ?? (record.geometry.contactPads ? 'observed' : 'rest');
+  const family = contactMode === 'family' ? createFamilyContactSolver(record, supports === 'observed' && options.binding ? observedContactSupports(record, options.binding) : {}) : null;
   const compat = contactMode === 'quadruped-compat' ? createQuadrupedContactSolver(record) : null;
   const program: SkeletonPoseProgram = createSkeletonPoseProgram(familyContractForRecord(record as { template: { id: string } }), record.landmarks, options.jointScale ? { jointScale: options.jointScale } : {});
   let pending: RigPose = {}, frame = 0, refused = 0, lastError: string | null = null, applied = 0, last: CreaturePoseV1 | null = null, disposed = false;
