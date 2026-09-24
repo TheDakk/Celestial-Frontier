@@ -1,0 +1,30 @@
+(node:86454) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all published Float32 meshes contribute extrema, including a remote seam vertex (0.891875ms)
+✔ invalid geometry cannot yield passing bounds: empty inventory (0.149ms)
+✔ invalid geometry cannot yield passing bounds: wrong numeric type (0.038708ms)
+✔ invalid geometry cannot yield passing bounds: odd coordinate count (0.033083ms)
+✔ invalid geometry cannot yield passing bounds: NaN (0.044625ms)
+✔ invalid geometry cannot yield passing bounds: infinity (0.043ms)
+✔ invalid geometry cannot yield passing bounds: zero height (0.042083ms)
+✔ invalid geometry cannot yield passing bounds: duplicate mesh id (0.0335ms)
+✔ the full sweep expands from actual extrema; invalid samples are not skipped (0.143292ms)
+✔ a refused or unchanged pose cannot contribute its stale mesh as a measured sample (0.111584ms)
+✔ off-centre painted bounds use their actual centre and foot, not half the cutout (0.306833ms)
+✔ water and air cap only oversized scale; ground and already-small mass scale stay unchanged (0.047125ms)
+✔ full swept geometry, rather than rest height, determines the medium scale (0.085541ms)
+✔ the existing source-owned habitat gate still refuses an oversized organism (26.698834ms)
+✔ holder facing, root dynamic scale and camera shake all enter the current frame receipt (0.163833ms)
+✔ ground skips medium-band height only and cannot hide an offscreen body (0.061667ms)
+✔ frame assessment has no epsilon and rejects malformed or collapsed transforms (0.121042ms)
+✔ ground framing closes the retained Python bottom breach without changing its foot or gate (0.148958ms)
+✔ ground fit accounts for upward motion, off-centre foot and both camera extrema (0.07625ms)
+✔ ground framing refuses unavailable or malformed placement and camera evidence (0.0715ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 127.144208

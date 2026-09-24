@@ -1,0 +1,58 @@
+{
+  "status": "LOCAL_TECHNICAL_PASS_HUMAN_ART_REVIEW_PENDING",
+  "selectedFit": "candidate-02/fit-01",
+  "masterSha256": "d0a777d5186a6787461d795b41b34b8ce4569af1efd10b14f98524fc92ef8cae",
+  "recordRecipeHash": "b287ddc58c565fb9cfaae5f8c474177e38ad9dd07b4bf9ad959dbeb9aecf9b41",
+  "bindingHash": "a9524c5a617cf26d01d4697ed0164a07b5dc31ee83e2418a4a4b705195f21c90",
+  "atlasSha256": "7db569301d8a4d8c460f74e0f6932c75b976d45a8a75d58e2ac5a0808dc5ee78",
+  "promptSha256": "e844bf4a0ee7caf3585a7d17e5e75f95df0136c236f3a1b96c85999f683902ef",
+  "static": {
+    "report": "static-02.json",
+    "actions": 12,
+    "samplesPerAction": 121,
+    "presentationSamples": 968,
+    "exactRest": true,
+    "sourcePixelRest": {
+      "status": "PASS",
+      "changedVisibleRgbaChannels": 0,
+      "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+    }
+  },
+  "joins": {
+    "required": 12,
+    "excluded": 0
+  },
+  "native": {
+    "report": "native-03/report.json",
+    "runId": "20260923-python-open-native-03",
+    "status": "DIAGNOSTIC_PASS",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "perRigP95Ms": {
+      "left": 0.5,
+      "right": 0.5
+    },
+    "wholeStageP95Ms": 1.100000023841858,
+    "frames": 602,
+    "encodedFrames": 605,
+    "durationMs": 10016.300000000001,
+    "denseSamples": 1268,
+    "scales": {
+      "left": 145.82590780006032,
+      "right": 145.82590780006032
+    }
+  },
+  "validation": {
+    "groundFramingTests": 21,
+    "validate": "PASS"
+  },
+  "limitations": [
+    "Generated safe margins missed; every delivered alpha byte retained including faint specks and fringe.",
+    "Ground framing reduces both identical creatures equally, so they appear small in the wide arena.",
+    "Approximate internal joints and exaggerated family poses need Nick’s full-film art review.",
+    "No physical phone qualification, production roster admission or new certificate."
+  ],
+  "history": "Original coiled art and accepted binding remain immutable. Candidate01 and all framing/test failures are retained. Prior diagnosis presentation omission is corrected in prior-packet-correction.json."
+}

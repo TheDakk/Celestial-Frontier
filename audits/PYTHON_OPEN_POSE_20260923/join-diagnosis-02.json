@@ -1,0 +1,989 @@
+{
+  "scope": "Three synthetic pose diagnostics of unchanged source-owned mesh, not a native pose reproduction, threshold or new admission test. Root rigid motion is the negative control for differential separation.",
+  "recordRecipeHash": "b287ddc58c565fb9cfaae5f8c474177e38ad9dd07b4bf9ad959dbeb9aecf9b41",
+  "bindingHash": "a9524c5a617cf26d01d4697ed0164a07b5dc31ee83e2418a4a4b705195f21c90",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/record.json",
+      "sha256": "6f6e63380f15841030dd15177acf15cfcb2f052a9eeb52d186418adb26d6bd77"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/binding.json",
+      "sha256": "e6dc380c4414359c1420fa34240393aad0d9f231d0899f69fe67f8643a5cb396"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/parts/atlas/python-open.png",
+      "sha256": "7db569301d8a4d8c460f74e0f6932c75b976d45a8a75d58e2ac5a0808dc5ee78"
+    }
+  ],
+  "results": [
+    {
+      "id": "rest",
+      "pose": {},
+      "error": null,
+      "shapeAccepted": true,
+      "joins": {
+        "schema": "cf.source-join-continuity/v1",
+        "units": "native cut-out pixels",
+        "epsilonNativePx": 0.0011959075927734375,
+        "epsilonReason": "Eight Float32 ulps at the native image extent cover published-buffer rounding, not a visible-pixel allowance.",
+        "sourceEdges": 1382,
+        "samples": 1473,
+        "maxGapPx": 0.00003933906555175781,
+        "joins": [
+          {
+            "name": "body-segment-0--body-segment-1",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg0",
+            "descendantJoint": "seg1",
+            "sourceEdges": 155,
+            "samples": 163,
+            "maxGapPx": 2.2737367544323206e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1000,
+                534
+              ],
+              "ancestor": [
+                999.9999904632566,
+                534.0000031292439
+              ],
+              "descendant": [
+                999.9999904632568,
+                534.0000031292439
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-1--body-segment-2",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg1",
+            "descendantJoint": "seg2",
+            "sourceEdges": 116,
+            "samples": 121,
+            "maxGapPx": 0.000034989906615552183,
+            "violations": 0,
+            "worst": {
+              "source": [
+                890,
+                707
+              ],
+              "ancestor": [
+                889.999977350235,
+                707.0000063180923
+              ],
+              "descendant": [
+                890.0000114440919,
+                707.0000141859056
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-2--body-segment-3",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg2",
+            "descendantJoint": "seg3",
+            "sourceEdges": 113,
+            "samples": 119,
+            "maxGapPx": 2.5421149729252077e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                780,
+                634
+              ],
+              "ancestor": [
+                780.0000075101851,
+                633.9999933242796
+              ],
+              "descendant": [
+                780.0000075101854,
+                633.9999933242797
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-3--body-segment-4",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg3",
+            "descendantJoint": "seg4",
+            "sourceEdges": 129,
+            "samples": 140,
+            "maxGapPx": 1.6077746776921858e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                670,
+                579
+              ],
+              "ancestor": [
+                669.9999786615372,
+                578.9999969244003
+              ],
+              "descendant": [
+                669.9999786615373,
+                578.9999969244004
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-4--body-segment-5",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg4",
+            "descendantJoint": "seg5",
+            "sourceEdges": 136,
+            "samples": 146,
+            "maxGapPx": 1.6077746776921858e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                560,
+                622
+              ],
+              "ancestor": [
+                560.0000125446489,
+                622.0000157973595
+              ],
+              "descendant": [
+                560.000012544649,
+                622.0000157973597
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-5--body-segment-6",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg5",
+            "descendantJoint": "seg6",
+            "sourceEdges": 132,
+            "samples": 134,
+            "maxGapPx": 0.000020762284520969843,
+            "violations": 0,
+            "worst": {
+              "source": [
+                450,
+                729
+              ],
+              "ancestor": [
+                449.9999957084656,
+                728.9999842445056
+              ],
+              "descendant": [
+                449.9999957084656,
+                729.0000050067902
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-6--body-segment-7",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg6",
+            "descendantJoint": "seg7",
+            "sourceEdges": 111,
+            "samples": 118,
+            "maxGapPx": 1.1368683772161603e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                340,
+                553
+              ],
+              "ancestor": [
+                340.0000042319298,
+                553.0000086128713
+              ],
+              "descendant": [
+                340.0000042319298,
+                553.0000086128712
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-7--body-segment-8",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg7",
+            "descendantJoint": "seg8",
+            "sourceEdges": 89,
+            "samples": 95,
+            "maxGapPx": 0.00003933906555175781,
+            "violations": 0,
+            "worst": {
+              "source": [
+                220,
+                675
+              ],
+              "ancestor": [
+                220.00000163912773,
+                674.9999935626984
+              ],
+              "descendant": [
+                220.00000163912773,
+                675.0000329017639
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-8--body-segment-9",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg8",
+            "descendantJoint": "seg9",
+            "sourceEdges": 54,
+            "samples": 61,
+            "maxGapPx": 1.1457157353758233e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                110,
+                647
+              ],
+              "ancestor": [
+                110.00000081956388,
+                646.9999848604203
+              ],
+              "descendant": [
+                110.00000081956387,
+                646.9999848604202
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "head--jaw",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "head",
+            "descendantJoint": "jaw",
+            "sourceEdges": 118,
+            "samples": 131,
+            "maxGapPx": 0.00003273662687802773,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1148,
+                535.3684210526316
+              ],
+              "ancestor": [
+                1148.0000106096268,
+                535.3684194087982
+              ],
+              "descendant": [
+                1147.9999830722809,
+                535.3684017062187
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "neck-root--body-segment-0",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "seg0",
+            "sourceEdges": 146,
+            "samples": 155,
+            "maxGapPx": 0.000010904250302701259,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1060,
+                642
+              ],
+              "ancestor": [
+                1060.0000197887423,
+                641.999974790635
+              ],
+              "descendant": [
+                1060.000019788742,
+                641.9999856948853
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "neck-root--head",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "head",
+            "sourceEdges": 83,
+            "samples": 90,
+            "maxGapPx": 0.000005900859889607091,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1120,
+                478
+              ],
+              "ancestor": [
+                1120.0000491142273,
+                478.0000044107437
+              ],
+              "descendant": [
+                1120.0000491142273,
+                478.0000103116036
+              ]
+            },
+            "status": "CONTINUOUS"
+          }
+        ],
+        "excluded": [],
+        "status": "PASS",
+        "scope": "Nearest anatomical attachments and proximal limb-to-axial body-skin attachments, independently enumerated from every nonzero source-alpha edge. Distinct limb-to-limb and distal limb-to-body silhouette boundaries are observation-only; they are not required welds."
+      }
+    },
+    {
+      "id": "rigid-root-control",
+      "pose": {
+        "root": {
+          "rotation": 0.1
+        }
+      },
+      "error": null,
+      "shapeAccepted": true,
+      "joins": {
+        "schema": "cf.source-join-continuity/v1",
+        "units": "native cut-out pixels",
+        "epsilonNativePx": 0.0011959075927734375,
+        "epsilonReason": "Eight Float32 ulps at the native image extent cover published-buffer rounding, not a visible-pixel allowance.",
+        "sourceEdges": 1382,
+        "samples": 1473,
+        "maxGapPx": 0.00005026325791305806,
+        "joins": [
+          {
+            "name": "body-segment-0--body-segment-1",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg0",
+            "descendantJoint": "seg1",
+            "sourceEdges": 155,
+            "samples": 163,
+            "maxGapPx": 2.5421149729252077e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1000,
+                648
+              ],
+              "ancestor": [
+                988.5894623994827,
+                638.0211853981017
+              ],
+              "descendant": [
+                988.5894623994825,
+                638.0211853981018
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-1--body-segment-2",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg1",
+            "descendantJoint": "seg2",
+            "sourceEdges": 116,
+            "samples": 121,
+            "maxGapPx": 0.000015952679500895186,
+            "violations": 0,
+            "worst": {
+              "source": [
+                890,
+                707
+              ],
+              "ancestor": [
+                873.2487816810608,
+                685.7447158098221
+              ],
+              "descendant": [
+                873.2487843036653,
+                685.744700074196
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-2--body-segment-3",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg2",
+            "descendantJoint": "seg3",
+            "sourceEdges": 113,
+            "samples": 119,
+            "maxGapPx": 2.2737367544323206e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                780,
+                577
+              ],
+              "ancestor": [
+                776.7766628265383,
+                545.4125119149685
+              ],
+              "descendant": [
+                776.7766628265381,
+                545.4125119149685
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-3--body-segment-4",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg3",
+            "descendantJoint": "seg4",
+            "sourceEdges": 129,
+            "samples": 140,
+            "maxGapPx": 0.00003342492806917955,
+            "violations": 0,
+            "worst": {
+              "source": [
+                670,
+                677
+              ],
+              "ancestor": [
+                657.3428913354874,
+                633.9312395652134
+              ],
+              "descendant": [
+                657.3428596258163,
+                633.9312289953232
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-4--body-segment-5",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg4",
+            "descendantJoint": "seg5",
+            "sourceEdges": 136,
+            "samples": 146,
+            "maxGapPx": 1.6077746776921858e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                560,
+                622
+              ],
+              "ancestor": [
+                553.3832667193242,
+                568.2243384655033
+              ],
+              "descendant": [
+                553.3832667193243,
+                568.2243384655034
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-5--body-segment-6",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg5",
+            "descendantJoint": "seg6",
+            "sourceEdges": 132,
+            "samples": 134,
+            "maxGapPx": 0.000043352923075678395,
+            "violations": 0,
+            "worst": {
+              "source": [
+                450,
+                729
+              ],
+              "ancestor": [
+                433.2506496310234,
+                663.7081261078517
+              ],
+              "descendant": [
+                433.25063717365265,
+                663.7080845832825
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-6--body-segment-7",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg6",
+            "descendantJoint": "seg7",
+            "sourceEdges": 111,
+            "samples": 118,
+            "maxGapPx": 1.2710574864626038e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                340,
+                640
+              ],
+              "ancestor": [
+                332.68534362316126,
+                564.1710492968559
+              ],
+              "descendant": [
+                332.6853436231613,
+                564.171049296856
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-7--body-segment-8",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg7",
+            "descendantJoint": "seg8",
+            "sourceEdges": 89,
+            "samples": 95,
+            "maxGapPx": 0.000013376728498586109,
+            "violations": 0,
+            "worst": {
+              "source": [
+                220,
+                675
+              ],
+              "ancestor": [
+                209.79068800807,
+                587.0162124037743
+              ],
+              "descendant": [
+                209.7906752228737,
+                587.0162084698677
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-8--body-segment-9",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg8",
+            "descendantJoint": "seg9",
+            "sourceEdges": 54,
+            "samples": 61,
+            "maxGapPx": 1.1457157353758233e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                110,
+                663
+              ],
+              "ancestor": [
+                101.53822450978416,
+                564.0944811446327
+              ],
+              "descendant": [
+                101.53822450978414,
+                564.0944811446326
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "head--jaw",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "head",
+            "descendantJoint": "jaw",
+            "sourceEdges": 118,
+            "samples": 131,
+            "maxGapPx": 0.000025189292411242012,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1148,
+                548
+              ],
+              "ancestor": [
+                1145.833391904831,
+                553.2960813045502
+              ],
+              "descendant": [
+                1145.8333722352982,
+                553.296065568924
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "neck-root--body-segment-0",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "seg0",
+            "sourceEdges": 146,
+            "samples": 155,
+            "maxGapPx": 0.000027575610827930096,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1060,
+                642
+              ],
+              "ancestor": [
+                1048.888673530332,
+                638.041132443305
+              ],
+              "descendant": [
+                1048.8886981947082,
+                638.0411447754927
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "neck-root--head",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "head",
+            "sourceEdges": 83,
+            "samples": 90,
+            "maxGapPx": 0.00005026325791305806,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1120,
+                478
+              ],
+              "ancestor": [
+                1124.9616454839706,
+                480.8504501581192
+              ],
+              "descendant": [
+                1124.9616022109985,
+                480.85047572851187
+              ]
+            },
+            "status": "CONTINUOUS"
+          }
+        ],
+        "excluded": [],
+        "status": "PASS",
+        "scope": "Nearest anatomical attachments and proximal limb-to-axial body-skin attachments, independently enumerated from every nonzero source-alpha edge. Distinct limb-to-limb and distal limb-to-body silhouette boundaries are observation-only; they are not required welds."
+      }
+    },
+    {
+      "id": "seg5-differential-control",
+      "pose": {
+        "seg5": {
+          "rotation": 0.1
+        }
+      },
+      "error": null,
+      "shapeAccepted": true,
+      "joins": {
+        "schema": "cf.source-join-continuity/v1",
+        "units": "native cut-out pixels",
+        "epsilonNativePx": 0.0011959075927734375,
+        "epsilonReason": "Eight Float32 ulps at the native image extent cover published-buffer rounding, not a visible-pixel allowance.",
+        "sourceEdges": 1382,
+        "samples": 1473,
+        "maxGapPx": 0.000041276741253317606,
+        "joins": [
+          {
+            "name": "body-segment-0--body-segment-1",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg0",
+            "descendantJoint": "seg1",
+            "sourceEdges": 155,
+            "samples": 163,
+            "maxGapPx": 2.2737367544323206e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1000,
+                534
+              ],
+              "ancestor": [
+                999.9999904632566,
+                534.0000031292439
+              ],
+              "descendant": [
+                999.9999904632568,
+                534.0000031292439
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-1--body-segment-2",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg1",
+            "descendantJoint": "seg2",
+            "sourceEdges": 116,
+            "samples": 121,
+            "maxGapPx": 0.000034989906615552183,
+            "violations": 0,
+            "worst": {
+              "source": [
+                890,
+                707
+              ],
+              "ancestor": [
+                889.999977350235,
+                707.0000063180923
+              ],
+              "descendant": [
+                890.0000114440919,
+                707.0000141859056
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-2--body-segment-3",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg2",
+            "descendantJoint": "seg3",
+            "sourceEdges": 113,
+            "samples": 119,
+            "maxGapPx": 2.5421149729252077e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                780,
+                602
+              ],
+              "ancestor": [
+                780.0000075101855,
+                602.0001870989801
+              ],
+              "descendant": [
+                780.0000075101854,
+                602.0001870989798
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-3--body-segment-4",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg3",
+            "descendantJoint": "seg4",
+            "sourceEdges": 129,
+            "samples": 140,
+            "maxGapPx": 0.000041276741253317606,
+            "violations": 0,
+            "worst": {
+              "source": [
+                670,
+                677
+              ],
+              "ancestor": [
+                669.9303419589996,
+                677.0517640511196
+              ],
+              "descendant": [
+                669.9303102493286,
+                677.0517904758453
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-4--body-segment-5",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg4",
+            "descendantJoint": "seg5",
+            "sourceEdges": 136,
+            "samples": 146,
+            "maxGapPx": 2.2737367544323206e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                560,
+                679
+              ],
+              "ancestor": [
+                557.6736426012857,
+                676.2549063818797
+              ],
+              "descendant": [
+                557.6736426012857,
+                676.2549063818794
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-5--body-segment-6",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg5",
+            "descendantJoint": "seg6",
+            "sourceEdges": 132,
+            "samples": 134,
+            "maxGapPx": 0.000014971896362900345,
+            "violations": 0,
+            "worst": {
+              "source": [
+                450,
+                729
+              ],
+              "ancestor": [
+                440.44408778349555,
+                712.0591393113136
+              ],
+              "descendant": [
+                440.4440960884094,
+                712.0591517686844
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-6--body-segment-7",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg6",
+            "descendantJoint": "seg7",
+            "sourceEdges": 111,
+            "samples": 118,
+            "maxGapPx": 1.1368683772161603e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                340,
+                557
+              ],
+              "ancestor": [
+                348.0677896142006,
+                529.7809444069862
+              ],
+              "descendant": [
+                348.0677896142006,
+                529.7809444069864
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-7--body-segment-8",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg7",
+            "descendantJoint": "seg8",
+            "sourceEdges": 89,
+            "samples": 95,
+            "maxGapPx": 0.000013376728498586109,
+            "violations": 0,
+            "worst": {
+              "source": [
+                220,
+                675
+              ],
+              "ancestor": [
+                216.88684862852097,
+                635.211176276207
+              ],
+              "descendant": [
+                216.88683584332466,
+                635.2111723423004
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body-segment-8--body-segment-9",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg8",
+            "descendantJoint": "seg9",
+            "sourceEdges": 54,
+            "samples": 61,
+            "maxGapPx": 2.278173318171838e-13,
+            "violations": 0,
+            "worst": {
+              "source": [
+                110,
+                660
+              ],
+              "ancestor": [
+                108.93389191159181,
+                609.3044596655029
+              ],
+              "descendant": [
+                108.9338919115918,
+                609.3044596655027
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "head--jaw",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "head",
+            "descendantJoint": "jaw",
+            "sourceEdges": 118,
+            "samples": 131,
+            "maxGapPx": 0.00003273662687802773,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1148,
+                535.3684210526316
+              ],
+              "ancestor": [
+                1148.0000106096268,
+                535.3684194087982
+              ],
+              "descendant": [
+                1147.9999830722809,
+                535.3684017062187
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "neck-root--body-segment-0",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "seg0",
+            "sourceEdges": 146,
+            "samples": 155,
+            "maxGapPx": 0.000010904250302701259,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1060,
+                642
+              ],
+              "ancestor": [
+                1060.0000197887423,
+                641.999974790635
+              ],
+              "descendant": [
+                1060.000019788742,
+                641.9999856948853
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "neck-root--head",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "head",
+            "sourceEdges": 83,
+            "samples": 90,
+            "maxGapPx": 0.000005900859889607091,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1120,
+                478
+              ],
+              "ancestor": [
+                1120.0000491142273,
+                478.0000044107437
+              ],
+              "descendant": [
+                1120.0000491142273,
+                478.0000103116036
+              ]
+            },
+            "status": "CONTINUOUS"
+          }
+        ],
+        "excluded": [],
+        "status": "PASS",
+        "scope": "Nearest anatomical attachments and proximal limb-to-axial body-skin attachments, independently enumerated from every nonzero source-alpha edge. Distinct limb-to-limb and distal limb-to-body silhouette boundaries are observation-only; they are not required welds."
+      }
+    }
+  ]
+}
