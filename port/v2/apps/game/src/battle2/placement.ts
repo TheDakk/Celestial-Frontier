@@ -25,7 +25,9 @@ export function placeCombatants(input: PlacementInput): Placement {
   const L = habitat.stands.left, R = habitat.stands.right;
   const fitted = pl.capped || pr.capped || L.fit < 1 || R.fit < 1, scales = { left: pl.scale * L.fit, right: pr.scale * R.fit };
   const shift = { left: standCentreShift(input.left.rig, scales.left, frame.width, 1), right: standCentreShift(input.right.rig, scales.right, frame.width, -1) };
-  const staged: ArenaLayout = { ...layout, stands: Object.freeze({ left: Object.freeze({ x: layout.stands.left.x + shift.left, y: L.y }), right: Object.freeze({ x: layout.stands.right.x + shift.right, y: R.y }) }) };
+  // a GROUND fighter stands on its composed stand line (the ground line, or a guardian's foreground line); air/water take their band
+  const yOf = (side: 'left' | 'right', h: typeof L) => (h.medium === 'ground' ? layout.stands[side].y : h.y);
+  const staged: ArenaLayout = { ...layout, stands: Object.freeze({ left: Object.freeze({ x: layout.stands.left.x + shift.left, y: yOf('left', L) }), right: Object.freeze({ x: layout.stands.right.x + shift.right, y: yOf('right', R) }) }) };
   const wet = L.medium === 'water' || R.medium === 'water';
   const side = L.medium === 'water' && R.medium === 'ground' ? ('left' as const) : R.medium === 'water' && L.medium === 'ground' ? ('right' as const) : undefined;
   return Object.freeze({ status: 'READY', habitat, layout: staged, ...(fitted ? { presentationScales: Object.freeze(scales) } : {}), ...(wet ? { water: Object.freeze({ surfaceY: habitat.surfaceY, ...(side ? { side } : {}) }) } : {}) });
