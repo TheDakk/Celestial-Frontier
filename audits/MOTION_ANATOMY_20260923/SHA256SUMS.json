@@ -23,13 +23,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 7574,
-      "sha256": "f4061d22ea627fe332e063bce4d99eef55eebd6fcf778e3cd5a5c26da3db81f6"
+      "bytes": 7871,
+      "sha256": "56ddb01b527aa598ab0b41114550b572eab3eea5542cf5628c95973a5c85800f"
     },
     {
       "path": "REQUEST.md",
       "bytes": 10044,
       "sha256": "7ce6418ded1d959ea0ebba0ed7bdcc9b91b84922789cd4d3e38645a2ae918153"
+    },
+    {
+      "path": "SIGNING_COMPLETE.md",
+      "bytes": 929,
+      "sha256": "d623441604b36d54b9eeda92fc77ca2914c9a407042de6a185a1eae3f5058c02"
     },
     {
       "path": "SPEC.md",
@@ -40,6 +45,16 @@
       "path": "action-inventory.json",
       "bytes": 2839,
       "sha256": "686e1abd36f60104a9392bb18901390d3167c34bd9665cecee6d9d5f50bb2376"
+    },
+    {
+      "path": "after-compact-films/beetle-script.json",
+      "bytes": 535,
+      "sha256": "1445a7dd19361f4567142a560901746ec1cec988f74bc192f5500b6c511bb8bf"
+    },
+    {
+      "path": "after-compact-films/beetle.log",
+      "bytes": 206,
+      "sha256": "c1744fb8dcd712e0de7ef97412ebaeb713f521c7ad0175918c811daf38c77cae"
     },
     {
       "path": "after-compact-films/beetle/battle-10s.webm",
@@ -122,14 +137,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "after-compact-films/beetle-script.json",
-      "bytes": 535,
-      "sha256": "1445a7dd19361f4567142a560901746ec1cec988f74bc192f5500b6c511bb8bf"
+      "path": "after-compact-films/centipede-script.json",
+      "bytes": 556,
+      "sha256": "b0de8a24a401562ad26b71c9339dfb84e99366d789687e21ad030ee782394bf2"
     },
     {
-      "path": "after-compact-films/beetle.log",
+      "path": "after-compact-films/centipede.log",
       "bytes": 206,
-      "sha256": "c1744fb8dcd712e0de7ef97412ebaeb713f521c7ad0175918c811daf38c77cae"
+      "sha256": "40998114576d3202b2fc453ce71a9f7c9d808faad11ee3d95e6f616f4cf7fda7"
     },
     {
       "path": "after-compact-films/centipede/battle-10s.webm",
@@ -212,14 +227,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "after-compact-films/centipede-script.json",
-      "bytes": 556,
-      "sha256": "b0de8a24a401562ad26b71c9339dfb84e99366d789687e21ad030ee782394bf2"
+      "path": "after-compact-films/chimpanzee-script.json",
+      "bytes": 563,
+      "sha256": "0bf2fc5acd2a59778234386e1525b37642de1700a89125551a5f6cd33770b912"
     },
     {
-      "path": "after-compact-films/centipede.log",
-      "bytes": 206,
-      "sha256": "40998114576d3202b2fc453ce71a9f7c9d808faad11ee3d95e6f616f4cf7fda7"
+      "path": "after-compact-films/chimpanzee.log",
+      "bytes": 183,
+      "sha256": "563fbc837a56543c705dae6bb72dbc0e78b63a0ebc0a89da1849001ef7f9990e"
     },
     {
       "path": "after-compact-films/chimpanzee/battle-10s.webm",
@@ -302,14 +317,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "after-compact-films/chimpanzee-script.json",
-      "bytes": 563,
-      "sha256": "0bf2fc5acd2a59778234386e1525b37642de1700a89125551a5f6cd33770b912"
+      "path": "after-compact-films/civet-script.json",
+      "bytes": 528,
+      "sha256": "5023e01fbf5af23f6a8aa565cb9dfcda9d816eef200d9f21d9711cea27862024"
     },
     {
-      "path": "after-compact-films/chimpanzee.log",
-      "bytes": 183,
-      "sha256": "563fbc837a56543c705dae6bb72dbc0e78b63a0ebc0a89da1849001ef7f9990e"
+      "path": "after-compact-films/civet.log",
+      "bytes": 205,
+      "sha256": "081fa1cb2edf33dd953d6d3475e3691fc2bff16f3dbdbf8a387882d92fcf3f98"
     },
     {
       "path": "after-compact-films/civet/battle-10s.webm",
@@ -392,14 +407,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "after-compact-films/civet-script.json",
+      "path": "after-compact-films/eagle-script.json",
       "bytes": 528,
-      "sha256": "5023e01fbf5af23f6a8aa565cb9dfcda9d816eef200d9f21d9711cea27862024"
+      "sha256": "2510598b02342e5b23c08d7ec7ab26a148cd4bc67005fb4f3c5e70c7952326e7"
     },
     {
-      "path": "after-compact-films/civet.log",
-      "bytes": 205,
-      "sha256": "081fa1cb2edf33dd953d6d3475e3691fc2bff16f3dbdbf8a387882d92fcf3f98"
+      "path": "after-compact-films/eagle.log",
+      "bytes": 199,
+      "sha256": "68add1bdec5286cee723d6309922028a4fdf3a7fe80440cf30cd6633d7049f28"
     },
     {
       "path": "after-compact-films/eagle/battle-10s.webm",
@@ -482,19 +497,19 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "after-compact-films/eagle-script.json",
-      "bytes": 528,
-      "sha256": "2510598b02342e5b23c08d7ec7ab26a148cd4bc67005fb4f3c5e70c7952326e7"
-    },
-    {
-      "path": "after-compact-films/eagle.log",
-      "bytes": 199,
-      "sha256": "68add1bdec5286cee723d6309922028a4fdf3a7fe80440cf30cd6633d7049f28"
-    },
-    {
       "path": "after-compact-films/execution.json",
       "bytes": 647,
       "sha256": "f0712bf255a20cb41a5880a1371e6078b2fc91ba465a2450f662cfc8e6bf937e"
+    },
+    {
+      "path": "after-compact-films/fruit-bat-script.json",
+      "bytes": 556,
+      "sha256": "5192349d831eeec81f1cbefd7724ab23c883728ca61ddcc6f6b97f0f800308e2"
+    },
+    {
+      "path": "after-compact-films/fruit-bat.log",
+      "bytes": 198,
+      "sha256": "6ccb1fe38d1815502e15e6f27fd0d93eb801a131776416874a5e4041aa705aa1"
     },
     {
       "path": "after-compact-films/fruit-bat/battle-10s.webm",
@@ -577,14 +592,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "after-compact-films/fruit-bat-script.json",
-      "bytes": 556,
-      "sha256": "5192349d831eeec81f1cbefd7724ab23c883728ca61ddcc6f6b97f0f800308e2"
+      "path": "after-compact-films/octopus-script.json",
+      "bytes": 542,
+      "sha256": "1f3384d50f588efeed3af6a25d7ad97fc013d15d8ffa61a760e94d7121828998"
     },
     {
-      "path": "after-compact-films/fruit-bat.log",
-      "bytes": 198,
-      "sha256": "6ccb1fe38d1815502e15e6f27fd0d93eb801a131776416874a5e4041aa705aa1"
+      "path": "after-compact-films/octopus.log",
+      "bytes": 202,
+      "sha256": "dc8cfe427b85086e91ab58984d0a2f533dc501456aff781697c94eb2ef0259af"
     },
     {
       "path": "after-compact-films/octopus/battle-10s.webm",
@@ -667,14 +682,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "after-compact-films/octopus-script.json",
-      "bytes": 542,
-      "sha256": "1f3384d50f588efeed3af6a25d7ad97fc013d15d8ffa61a760e94d7121828998"
+      "path": "after-compact-films/python-script.json",
+      "bytes": 535,
+      "sha256": "3577034c39a529a0b295fa482d2ca0ce4de93aa786d8688a2a01b3a18e352f45"
     },
     {
-      "path": "after-compact-films/octopus.log",
-      "bytes": 202,
-      "sha256": "dc8cfe427b85086e91ab58984d0a2f533dc501456aff781697c94eb2ef0259af"
+      "path": "after-compact-films/python.log",
+      "bytes": 200,
+      "sha256": "ed83865e87a50898c792adb775e04cecebfb3e97f85b16d6f536e7f87b9d9109"
     },
     {
       "path": "after-compact-films/python/battle-10s.webm",
@@ -757,14 +772,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "after-compact-films/python-script.json",
-      "bytes": 535,
-      "sha256": "3577034c39a529a0b295fa482d2ca0ce4de93aa786d8688a2a01b3a18e352f45"
+      "path": "after-compact-films/starfish-script.json",
+      "bytes": 549,
+      "sha256": "ae20361f55bcb07c1c3814f3f236ce3eaa5f1dfd6052758fcb046dc546ad884e"
     },
     {
-      "path": "after-compact-films/python.log",
-      "bytes": 200,
-      "sha256": "ed83865e87a50898c792adb775e04cecebfb3e97f85b16d6f536e7f87b9d9109"
+      "path": "after-compact-films/starfish.log",
+      "bytes": 199,
+      "sha256": "34a47b154a4bcbef1f215586cc8f353b1972564a61d0d6e8d2e4c16aa7590948"
     },
     {
       "path": "after-compact-films/starfish/battle-10s.webm",
@@ -847,14 +862,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "after-compact-films/starfish-script.json",
-      "bytes": 549,
-      "sha256": "ae20361f55bcb07c1c3814f3f236ce3eaa5f1dfd6052758fcb046dc546ad884e"
+      "path": "after-compact-films/tarantula-script.json",
+      "bytes": 556,
+      "sha256": "102d2cb105c8832f7d0f9b9486030e9a8ebd845ff2d081ce88ab9d6b55846f4b"
     },
     {
-      "path": "after-compact-films/starfish.log",
-      "bytes": 199,
-      "sha256": "34a47b154a4bcbef1f215586cc8f353b1972564a61d0d6e8d2e4c16aa7590948"
+      "path": "after-compact-films/tarantula.log",
+      "bytes": 207,
+      "sha256": "b1a914f61ad5ece52059eb4e7e7db9b464701cf536a105e46f4d175c3e86e679"
     },
     {
       "path": "after-compact-films/tarantula/battle-10s.webm",
@@ -937,14 +952,9 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "after-compact-films/tarantula-script.json",
-      "bytes": 556,
-      "sha256": "102d2cb105c8832f7d0f9b9486030e9a8ebd845ff2d081ce88ab9d6b55846f4b"
-    },
-    {
-      "path": "after-compact-films/tarantula.log",
-      "bytes": 207,
-      "sha256": "b1a914f61ad5ece52059eb4e7e7db9b464701cf536a105e46f4d175c3e86e679"
+      "path": "after-gait-01.log",
+      "bytes": 67,
+      "sha256": "6acdd5f3e9777a26127481d9c448c752bc985639c83751e073ba6d376646c975"
     },
     {
       "path": "after-gait-01/TABLE.md",
@@ -992,9 +1002,9 @@
       "sha256": "94259e43369f03365d1803ba5414f2451b460348aaf895f2fa7f28327c4ecd52"
     },
     {
-      "path": "after-gait-01.log",
-      "bytes": 67,
-      "sha256": "6acdd5f3e9777a26127481d9c448c752bc985639c83751e073ba6d376646c975"
+      "path": "after-wave-01.log",
+      "bytes": 70,
+      "sha256": "8a69dd936a45e77720f48ceea5c7af462e2fb952ed343ae9a61657211ce9abcd"
     },
     {
       "path": "after-wave-01/TABLE.md",
@@ -1102,9 +1112,9 @@
       "sha256": "9f292054184f0ea2d290594f76872bf26cef098ce6ba01c3ccc3aa0857bc0b64"
     },
     {
-      "path": "after-wave-01.log",
+      "path": "after-wave-02.log",
       "bytes": 70,
-      "sha256": "8a69dd936a45e77720f48ceea5c7af462e2fb952ed343ae9a61657211ce9abcd"
+      "sha256": "0e8626f1aa6d024137546498d43831b91bfbec9b70e8fce6c1842c011b37f70e"
     },
     {
       "path": "after-wave-02/TABLE.md",
@@ -1212,14 +1222,19 @@
       "sha256": "9f292054184f0ea2d290594f76872bf26cef098ce6ba01c3ccc3aa0857bc0b64"
     },
     {
-      "path": "after-wave-02.log",
-      "bytes": 70,
-      "sha256": "0e8626f1aa6d024137546498d43831b91bfbec9b70e8fce6c1842c011b37f70e"
-    },
-    {
       "path": "after-wave-films/execution.json",
       "bytes": 129,
       "sha256": "369de7e80d2cc149daeb9f241bd8661b803b3b1d54f7915ff9316a8929273f0b"
+    },
+    {
+      "path": "after-wave-films/python-script.json",
+      "bytes": 532,
+      "sha256": "1c559ca4511d9ba6142d589b80707865a71f5fa46c82eb6c788d368ea4670423"
+    },
+    {
+      "path": "after-wave-films/python.log",
+      "bytes": 255,
+      "sha256": "025e954c1656cb2b8fd06701538f4e07aabd9b4760e43d26affac7fc1b09297b"
     },
     {
       "path": "after-wave-films/python/report.json",
@@ -1237,14 +1252,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "after-wave-films/python-script.json",
+      "path": "after-wave-films/salmon-script.json",
       "bytes": 532,
-      "sha256": "1c559ca4511d9ba6142d589b80707865a71f5fa46c82eb6c788d368ea4670423"
+      "sha256": "3ea525acf9cd9ea6f22282007b0e016169d762b6a468a4025379d5ca70ed43b0"
     },
     {
-      "path": "after-wave-films/python.log",
-      "bytes": 255,
-      "sha256": "025e954c1656cb2b8fd06701538f4e07aabd9b4760e43d26affac7fc1b09297b"
+      "path": "after-wave-films/salmon.log",
+      "bytes": 197,
+      "sha256": "617bd9fa844150fea13e35c1e0ff46c6a5d5f5242f158f6d8a2886389e80eef4"
     },
     {
       "path": "after-wave-films/salmon/battle-10s.webm",
@@ -1327,14 +1342,9 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "after-wave-films/salmon-script.json",
-      "bytes": 532,
-      "sha256": "3ea525acf9cd9ea6f22282007b0e016169d762b6a468a4025379d5ca70ed43b0"
-    },
-    {
-      "path": "after-wave-films/salmon.log",
-      "bytes": 197,
-      "sha256": "617bd9fa844150fea13e35c1e0ff46c6a5d5f5242f158f6d8a2886389e80eef4"
+      "path": "baseline-01.log",
+      "bytes": 70,
+      "sha256": "a8089e50bbecd4a89ef964a876eda7ecd877cd424a5cf061bfdd0889b8ac66de"
     },
     {
       "path": "baseline/TABLE.md",
@@ -1452,11 +1462,6 @@
       "sha256": "9f292054184f0ea2d290594f76872bf26cef098ce6ba01c3ccc3aa0857bc0b64"
     },
     {
-      "path": "baseline-01.log",
-      "bytes": 70,
-      "sha256": "a8089e50bbecd4a89ef964a876eda7ecd877cd424a5cf061bfdd0889b8ac66de"
-    },
-    {
       "path": "beetle-gait-static-01.json",
       "bytes": 7950,
       "sha256": "853c65455a0691359b142f3792e123180ae3445f94ecfed1a21664cc8001a9ab"
@@ -1470,6 +1475,16 @@
       "path": "beetle-gait-static-01.log",
       "bytes": 2034,
       "sha256": "ed8fb174b066ec583180682713c1ed52310c0f617c86c39a40db5cb774827aa2"
+    },
+    {
+      "path": "before-films/bear-script.json",
+      "bytes": 568,
+      "sha256": "4980cf9bc6cb66e07b8c88e153b512e9b91b5e1414ff79a5e6b4b1b185330681"
+    },
+    {
+      "path": "before-films/bear.log",
+      "bytes": 330,
+      "sha256": "cdb248df8f7b20aa355575d75a5a1d24ec38a3ff661875fdcd0a2669329cafe5"
     },
     {
       "path": "before-films/bear/report.json",
@@ -1487,14 +1502,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/bear-script.json",
-      "bytes": 568,
-      "sha256": "4980cf9bc6cb66e07b8c88e153b512e9b91b5e1414ff79a5e6b4b1b185330681"
+      "path": "before-films/beetle-script.json",
+      "bytes": 528,
+      "sha256": "5a0ba1903f65c121b88905910d64fee8c27f0c0408b416df7c25b38dd3ff777f"
     },
     {
-      "path": "before-films/bear.log",
-      "bytes": 330,
-      "sha256": "cdb248df8f7b20aa355575d75a5a1d24ec38a3ff661875fdcd0a2669329cafe5"
+      "path": "before-films/beetle.log",
+      "bytes": 207,
+      "sha256": "48da14c7b65764b488fa8a3194b60b0662b101ca4c4f556503891bd25af06691"
     },
     {
       "path": "before-films/beetle/battle-10s.webm",
@@ -1577,14 +1592,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/beetle-script.json",
-      "bytes": 528,
-      "sha256": "5a0ba1903f65c121b88905910d64fee8c27f0c0408b416df7c25b38dd3ff777f"
+      "path": "before-films/centipede-script.json",
+      "bytes": 549,
+      "sha256": "28e2152d1c81dedcb6e358c76bd1a054a3459112886815c2a7c7cb3544bcf0b1"
     },
     {
-      "path": "before-films/beetle.log",
-      "bytes": 207,
-      "sha256": "48da14c7b65764b488fa8a3194b60b0662b101ca4c4f556503891bd25af06691"
+      "path": "before-films/centipede.log",
+      "bytes": 534,
+      "sha256": "3b1648063d6b4bf6af867cbfa82f0738b5069bf9c7ee35aaf99d28fb9b404abf"
     },
     {
       "path": "before-films/centipede/report.json",
@@ -1602,14 +1617,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/centipede-script.json",
-      "bytes": 549,
-      "sha256": "28e2152d1c81dedcb6e358c76bd1a054a3459112886815c2a7c7cb3544bcf0b1"
+      "path": "before-films/chimpanzee-script.json",
+      "bytes": 556,
+      "sha256": "b61915442670110cd45ac8e7fa14336f7d6287b49985e897fd205bd191d39f32"
     },
     {
-      "path": "before-films/centipede.log",
-      "bytes": 534,
-      "sha256": "3b1648063d6b4bf6af867cbfa82f0738b5069bf9c7ee35aaf99d28fb9b404abf"
+      "path": "before-films/chimpanzee.log",
+      "bytes": 183,
+      "sha256": "563fbc837a56543c705dae6bb72dbc0e78b63a0ebc0a89da1849001ef7f9990e"
     },
     {
       "path": "before-films/chimpanzee/battle-10s.webm",
@@ -1692,14 +1707,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/chimpanzee-script.json",
-      "bytes": 556,
-      "sha256": "b61915442670110cd45ac8e7fa14336f7d6287b49985e897fd205bd191d39f32"
+      "path": "before-films/civet-script.json",
+      "bytes": 521,
+      "sha256": "a3621773bd66048c1484ee69eed44cc79c235cfaaa8e0bc6dcdc0da41bb7445c"
     },
     {
-      "path": "before-films/chimpanzee.log",
-      "bytes": 183,
-      "sha256": "563fbc837a56543c705dae6bb72dbc0e78b63a0ebc0a89da1849001ef7f9990e"
+      "path": "before-films/civet.log",
+      "bytes": 255,
+      "sha256": "d82025881ad7d2fc8b04156245619461bd36c3fa30a395eaf6cb35fe09216829"
     },
     {
       "path": "before-films/civet/report.json",
@@ -1717,14 +1732,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/civet-script.json",
-      "bytes": 521,
-      "sha256": "a3621773bd66048c1484ee69eed44cc79c235cfaaa8e0bc6dcdc0da41bb7445c"
+      "path": "before-films/coconut-crab-script.json",
+      "bytes": 570,
+      "sha256": "5c3bb54b27388dd5b9b8384f5da1af59c158b5d4f717eb2211d4c59b2c8a8463"
     },
     {
-      "path": "before-films/civet.log",
-      "bytes": 255,
-      "sha256": "d82025881ad7d2fc8b04156245619461bd36c3fa30a395eaf6cb35fe09216829"
+      "path": "before-films/coconut-crab.log",
+      "bytes": 196,
+      "sha256": "895c98e0a16d641bbdca6440a1d92b3e63be93b8ba44172742d35da6401056b0"
     },
     {
       "path": "before-films/coconut-crab/battle-10s.webm",
@@ -1807,14 +1822,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/coconut-crab-script.json",
-      "bytes": 570,
-      "sha256": "5c3bb54b27388dd5b9b8384f5da1af59c158b5d4f717eb2211d4c59b2c8a8463"
+      "path": "before-films/crab-script.json",
+      "bytes": 514,
+      "sha256": "ece248b1b8a72c699cbd21008ed7502d2c67ec715dba325ccce2589ed5a0ffea"
     },
     {
-      "path": "before-films/coconut-crab.log",
-      "bytes": 196,
-      "sha256": "895c98e0a16d641bbdca6440a1d92b3e63be93b8ba44172742d35da6401056b0"
+      "path": "before-films/crab.log",
+      "bytes": 198,
+      "sha256": "1e5c1a25de6e9fe8560b775b6f8c2112befa596bed3caa23aa4bff28ae2372fc"
     },
     {
       "path": "before-films/crab/battle-10s.webm",
@@ -1897,14 +1912,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/crab-script.json",
-      "bytes": 514,
-      "sha256": "ece248b1b8a72c699cbd21008ed7502d2c67ec715dba325ccce2589ed5a0ffea"
+      "path": "before-films/eagle-script.json",
+      "bytes": 521,
+      "sha256": "338b4cb565535445c5833e77fbccfc73845304c59408329ef4e466c3c8c0cebe"
     },
     {
-      "path": "before-films/crab.log",
+      "path": "before-films/eagle.log",
       "bytes": 198,
-      "sha256": "1e5c1a25de6e9fe8560b775b6f8c2112befa596bed3caa23aa4bff28ae2372fc"
+      "sha256": "b8f3219a43e6049468f9b12ce2e7233050cff60512c8ce51cec76b29e6f8aa92"
     },
     {
       "path": "before-films/eagle/battle-10s.webm",
@@ -1987,19 +2002,19 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/eagle-script.json",
-      "bytes": 521,
-      "sha256": "338b4cb565535445c5833e77fbccfc73845304c59408329ef4e466c3c8c0cebe"
-    },
-    {
-      "path": "before-films/eagle.log",
-      "bytes": 198,
-      "sha256": "b8f3219a43e6049468f9b12ce2e7233050cff60512c8ce51cec76b29e6f8aa92"
-    },
-    {
       "path": "before-films/execution.json",
       "bytes": 1170,
       "sha256": "f45bd6de5c6c53dbb662df4e499d1588fcb1401a8d7f66a07b0f1b07574f2596"
+    },
+    {
+      "path": "before-films/freshwater-crab-script.json",
+      "bytes": 591,
+      "sha256": "3453a1c3d11da96696c437a66cad7b9ac616cddc36c8c834333832abce7810bf"
+    },
+    {
+      "path": "before-films/freshwater-crab.log",
+      "bytes": 213,
+      "sha256": "fb5d279dedbd30e241fc08d761dbd18e17c5d59c02b29e4665eac975582cbe6e"
     },
     {
       "path": "before-films/freshwater-crab/battle-10s.webm",
@@ -2082,14 +2097,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/freshwater-crab-script.json",
-      "bytes": 591,
-      "sha256": "3453a1c3d11da96696c437a66cad7b9ac616cddc36c8c834333832abce7810bf"
+      "path": "before-films/fruit-bat-script.json",
+      "bytes": 549,
+      "sha256": "47449d192aa1a4ccd089174f1719491dae16b01cfa2088566cda7038c572bbea"
     },
     {
-      "path": "before-films/freshwater-crab.log",
-      "bytes": 213,
-      "sha256": "fb5d279dedbd30e241fc08d761dbd18e17c5d59c02b29e4665eac975582cbe6e"
+      "path": "before-films/fruit-bat.log",
+      "bytes": 255,
+      "sha256": "ea58ad021852524e97e8bb6ca3a53327d81608441edd040eda67ebf1eb70d18b"
     },
     {
       "path": "before-films/fruit-bat/report.json",
@@ -2107,14 +2122,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/fruit-bat-script.json",
-      "bytes": 549,
-      "sha256": "47449d192aa1a4ccd089174f1719491dae16b01cfa2088566cda7038c572bbea"
+      "path": "before-films/mud-crab-script.json",
+      "bytes": 542,
+      "sha256": "94a0560acac3321046a79583437021e69da5411fa4d5349f89f4e6dd51db8423"
     },
     {
-      "path": "before-films/fruit-bat.log",
-      "bytes": 255,
-      "sha256": "ea58ad021852524e97e8bb6ca3a53327d81608441edd040eda67ebf1eb70d18b"
+      "path": "before-films/mud-crab.log",
+      "bytes": 213,
+      "sha256": "d0385506326a5b8b29a04db52e664d3e65f8f3d4f8f39839553d52049e934916"
     },
     {
       "path": "before-films/mud-crab/battle-10s.webm",
@@ -2197,14 +2212,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/mud-crab-script.json",
-      "bytes": 542,
-      "sha256": "94a0560acac3321046a79583437021e69da5411fa4d5349f89f4e6dd51db8423"
+      "path": "before-films/octopus-script.json",
+      "bytes": 535,
+      "sha256": "251074cda3ce020706527b2019439936c3531ba9c266bc36696cc2125b3f50d2"
     },
     {
-      "path": "before-films/mud-crab.log",
-      "bytes": 213,
-      "sha256": "d0385506326a5b8b29a04db52e664d3e65f8f3d4f8f39839553d52049e934916"
+      "path": "before-films/octopus.log",
+      "bytes": 255,
+      "sha256": "f60cbd3d154779bc8532283a8e38961975bbb0d3faeb0e5f47aa21f4cfa6f119"
     },
     {
       "path": "before-films/octopus/report.json",
@@ -2222,14 +2237,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/octopus-script.json",
-      "bytes": 535,
-      "sha256": "251074cda3ce020706527b2019439936c3531ba9c266bc36696cc2125b3f50d2"
+      "path": "before-films/python-script.json",
+      "bytes": 528,
+      "sha256": "5484f9e0c35684dacd75114429a95231edcab9252902566613c60057d58b1e08"
     },
     {
-      "path": "before-films/octopus.log",
-      "bytes": 255,
-      "sha256": "f60cbd3d154779bc8532283a8e38961975bbb0d3faeb0e5f47aa21f4cfa6f119"
+      "path": "before-films/python.log",
+      "bytes": 199,
+      "sha256": "6a09aa909c317f1c8acf89e3e1cdddb99d066736d2c01622c39ddcd52ce8018b"
     },
     {
       "path": "before-films/python/battle-10s.webm",
@@ -2312,14 +2327,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/python-script.json",
+      "path": "before-films/salmon-script.json",
       "bytes": 528,
-      "sha256": "5484f9e0c35684dacd75114429a95231edcab9252902566613c60057d58b1e08"
+      "sha256": "44b975c591f7e10635989739e644eb41b910c4ff3549efe15a636916db31696e"
     },
     {
-      "path": "before-films/python.log",
-      "bytes": 199,
-      "sha256": "6a09aa909c317f1c8acf89e3e1cdddb99d066736d2c01622c39ddcd52ce8018b"
+      "path": "before-films/salmon.log",
+      "bytes": 181,
+      "sha256": "96cf84bad746fdd5fcd3efaafcb7005b1f3be748e260ae244239d0e86fede77e"
     },
     {
       "path": "before-films/salmon/battle-10s.webm",
@@ -2402,14 +2417,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/salmon-script.json",
-      "bytes": 528,
-      "sha256": "44b975c591f7e10635989739e644eb41b910c4ff3549efe15a636916db31696e"
+      "path": "before-films/starfish-script.json",
+      "bytes": 542,
+      "sha256": "894db7b380d7bb89c944baecfd2afd3f03c6ed859433ad7f0d7189d3de3d7cbb"
     },
     {
-      "path": "before-films/salmon.log",
-      "bytes": 181,
-      "sha256": "96cf84bad746fdd5fcd3efaafcb7005b1f3be748e260ae244239d0e86fede77e"
+      "path": "before-films/starfish.log",
+      "bytes": 255,
+      "sha256": "8c2f159f692e6b0303752264c3f957851da57528f4a5e88132277e568e6d00ee"
     },
     {
       "path": "before-films/starfish/report.json",
@@ -2427,14 +2442,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/starfish-script.json",
-      "bytes": 542,
-      "sha256": "894db7b380d7bb89c944baecfd2afd3f03c6ed859433ad7f0d7189d3de3d7cbb"
+      "path": "before-films/tarantula-script.json",
+      "bytes": 549,
+      "sha256": "52480f500a422eb036402b38674b144d5a9660aea611f2e7313d77fef10befba"
     },
     {
-      "path": "before-films/starfish.log",
-      "bytes": 255,
-      "sha256": "8c2f159f692e6b0303752264c3f957851da57528f4a5e88132277e568e6d00ee"
+      "path": "before-films/tarantula.log",
+      "bytes": 191,
+      "sha256": "b330fb059c53e74f0097038fd45afe260756d8c5110e0e9bf273b2b22bcfa7e2"
     },
     {
       "path": "before-films/tarantula/battle-10s.webm",
@@ -2517,14 +2532,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/tarantula-script.json",
+      "path": "before-films/tree-frog-script.json",
       "bytes": 549,
-      "sha256": "52480f500a422eb036402b38674b144d5a9660aea611f2e7313d77fef10befba"
+      "sha256": "1c9a39da5cde32a560fcf22b08cd1d251697f27132695b1f6fd07ad403c04619"
     },
     {
-      "path": "before-films/tarantula.log",
-      "bytes": 191,
-      "sha256": "b330fb059c53e74f0097038fd45afe260756d8c5110e0e9bf273b2b22bcfa7e2"
+      "path": "before-films/tree-frog.log",
+      "bytes": 469,
+      "sha256": "6f075b13c0ead1327216003a8ac1d881e4d706f87150694ba662bc4f967e3025"
     },
     {
       "path": "before-films/tree-frog/report.json",
@@ -2542,14 +2557,14 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/tree-frog-script.json",
+      "path": "before-films/vent-crab-script.json",
       "bytes": 549,
-      "sha256": "1c9a39da5cde32a560fcf22b08cd1d251697f27132695b1f6fd07ad403c04619"
+      "sha256": "c8cb3bd5e4ebd83ac597c28755927aba6013bdc40c0af50ccd79055b726acfe0"
     },
     {
-      "path": "before-films/tree-frog.log",
-      "bytes": 469,
-      "sha256": "6f075b13c0ead1327216003a8ac1d881e4d706f87150694ba662bc4f967e3025"
+      "path": "before-films/vent-crab.log",
+      "bytes": 213,
+      "sha256": "e2e363b98680464add1c8e77d0688eddd763274ff92d61a0e359a444e864dfd9"
     },
     {
       "path": "before-films/vent-crab/battle-10s.webm",
@@ -2632,16 +2647,6 @@
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
     },
     {
-      "path": "before-films/vent-crab-script.json",
-      "bytes": 549,
-      "sha256": "c8cb3bd5e4ebd83ac597c28755927aba6013bdc40c0af50ccd79055b726acfe0"
-    },
-    {
-      "path": "before-films/vent-crab.log",
-      "bytes": 213,
-      "sha256": "e2e363b98680464add1c8e77d0688eddd763274ff92d61a0e359a444e864dfd9"
-    },
-    {
       "path": "build-review.py",
       "bytes": 12157,
       "sha256": "64225660c1d48b6b15290d75bcbdc00709f2555f39d0e1ae9f8b518f97e1fe99"
@@ -2700,6 +2705,11 @@
       "path": "contact-defects-after-02.log",
       "bytes": 245,
       "sha256": "4ef2c8006ff6e13e3928c080cab6ba471cc611d8b13137c04e63933bae7a5534"
+    },
+    {
+      "path": "context-audit.log",
+      "bytes": 70,
+      "sha256": "7cdeb3c102708c0071ddcdb0c0caaa5ed82fd2599b34c3bed127b5978197c184"
     },
     {
       "path": "context-audit/TABLE.md",
@@ -2807,11 +2817,6 @@
       "sha256": "9f292054184f0ea2d290594f76872bf26cef098ce6ba01c3ccc3aa0857bc0b64"
     },
     {
-      "path": "context-audit.log",
-      "bytes": 70,
-      "sha256": "7cdeb3c102708c0071ddcdb0c0caaa5ed82fd2599b34c3bed127b5978197c184"
-    },
-    {
       "path": "crab-before.log",
       "bytes": 858,
       "sha256": "403805cce421b9cbcd705baa987cd59a2e6d9de113b59b4b0e4ad982ab37f9ce"
@@ -2835,6 +2840,11 @@
       "path": "film-batch.mjs",
       "bytes": 1537,
       "sha256": "5b5c4057d29854aed4f7fdba3d28b0514c1561d2937d7a79736b59dca13e479e"
+    },
+    {
+      "path": "final-audit.log",
+      "bytes": 70,
+      "sha256": "6f7f0162ad7872c88f282d5f101089ad49f829d858e4a85887ec5441be75df7b"
     },
     {
       "path": "final-audit/TABLE.md",
@@ -2942,11 +2952,6 @@
       "sha256": "9f292054184f0ea2d290594f76872bf26cef098ce6ba01c3ccc3aa0857bc0b64"
     },
     {
-      "path": "final-audit.log",
-      "bytes": 70,
-      "sha256": "6f7f0162ad7872c88f282d5f101089ad49f829d858e4a85887ec5441be75df7b"
-    },
-    {
       "path": "fixes/01-defects.md",
       "bytes": 2753,
       "sha256": "13f3f7a733f17de7b90a2d2b749a7e239899f0446ebc301253871bf6936a43ce"
@@ -3015,6 +3020,16 @@
       "path": "observed-compact-films/execution.json",
       "bytes": 69,
       "sha256": "28fb912efe530dad20d9a2178123d749a2edf061161462c1fd086516d97714cf"
+    },
+    {
+      "path": "observed-compact-films/tree-frog-script.json",
+      "bytes": 585,
+      "sha256": "2b4950136ddb0c9168f984b979a197202f67bfcb3332a8d08fcc21dc2dfb8948"
+    },
+    {
+      "path": "observed-compact-films/tree-frog.log",
+      "bytes": 198,
+      "sha256": "61e629355727c8667df0143c2a09bab0305d6489e48ef0dbd4db637df647556f"
     },
     {
       "path": "observed-compact-films/tree-frog/battle-10s.webm",
@@ -3095,16 +3110,6 @@
       "path": "observed-compact-films/tree-frog/world.json",
       "bytes": 247,
       "sha256": "b99df3dd10555b5fdef843b933d48578f321c13310eb3a73e2d4a33b36c822ee"
-    },
-    {
-      "path": "observed-compact-films/tree-frog-script.json",
-      "bytes": 585,
-      "sha256": "2b4950136ddb0c9168f984b979a197202f67bfcb3332a8d08fcc21dc2dfb8948"
-    },
-    {
-      "path": "observed-compact-films/tree-frog.log",
-      "bytes": 198,
-      "sha256": "61e629355727c8667df0143c2a09bab0305d6489e48ef0dbd4db637df647556f"
     },
     {
       "path": "override-after-01.log",
@@ -3247,6 +3252,16 @@
       "sha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe"
     },
     {
+      "path": "s2-checks/s2-execution.json",
+      "bytes": 61140,
+      "sha256": "e879b209b5c5b294e919d4c8f11b73a0dc3f65744a347664919ce3ccb606289e"
+    },
+    {
+      "path": "s2-checks/s2-run.log",
+      "bytes": 5147,
+      "sha256": "6046632ae7a68e89ea8b68a104de96f8b6674d04bfee1b92f1fb8a7c1489f6ac"
+    },
+    {
       "path": "s2-checks/s2/civet-static.json",
       "bytes": 7400,
       "sha256": "452fa278586993592c7f171e93dd64cbc9dd5bbf5e3fc7f4897c6553e07b8396"
@@ -3320,16 +3335,6 @@
       "path": "s2-checks/s2/vent-crab-support-samples.jsonl.gz",
       "bytes": 475748,
       "sha256": "1b6588bbd35d7f75ea8c31b301508243a80d725bd75a9cfe297b48176137d7a2"
-    },
-    {
-      "path": "s2-checks/s2-execution.json",
-      "bytes": 61140,
-      "sha256": "e879b209b5c5b294e919d4c8f11b73a0dc3f65744a347664919ce3ccb606289e"
-    },
-    {
-      "path": "s2-checks/s2-run.log",
-      "bytes": 5147,
-      "sha256": "6046632ae7a68e89ea8b68a104de96f8b6674d04bfee1b92f1fb8a7c1489f6ac"
     },
     {
       "path": "salmon-wave-static-01.json",
