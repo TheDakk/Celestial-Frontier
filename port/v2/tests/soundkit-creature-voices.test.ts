@@ -30,6 +30,18 @@ describe('B5 creature voice hook', () => {
     expect(plant.status.left).toMatch(/no voice \((unknown-archetype:plant-woody|no-voice:plants)\)/); // plants never get a voice, whichever gate refuses first
     expect(genomeOnlyRecord(genomeA, 4242).identity?.speciesVisualKey).toBe('genome:4242');
   });
+  it('a body plan with no source set yet has NO voice (labelled) and never throws — a throw here ran inside the stage tick and froze the game\'s shared ticker on a Python in a real browser (2026-09-24)', async () => {
+    const { readFileSync } = await import('node:fs');
+    const python = JSON.parse(readFileSync(new URL('../apps/game/public/battle2/audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/record.json', import.meta.url), 'utf8'));
+    const hook = createCreatureVoiceHook({ seed: 9, sources, sides: { left: { record: python, genome: null, seed: 1, label: 'Python' }, right: { record: civetRecord(), genome: null, seed: 2, label: 'Civet' } } });
+    expect(hook.cards.left).toBeNull(); expect(hook.status.left).toMatch(/Python: no voice \(no source set for the \w+ archetype yet\)/);
+    expect(() => hook(cue('creature:hurt', 'left'))).not.toThrow(); expect(hook(cue('creature:hurt', 'left'))).toBeNull();
+    expect(hook(cue('creature:hurt', 'right'))).not.toBeNull(); // the quadruped still speaks
+    // control: give that archetype a source set and the same record gets a voice
+    const archetype = /for the (\w+) archetype/.exec(hook.status.left)![1]!;
+    const withSet = createCreatureVoiceHook({ seed: 9, sources: { ...sources, [archetype]: Object.values(sources)[0]! }, sides: { left: { record: python, genome: null, seed: 1, label: 'Python' }, right: { record: null, genome: null, seed: 2, label: 'x' } } });
+    expect(withSet.cards.left).not.toBeNull(); expect(withSet(cue('creature:hurt', 'left'))).not.toBeNull();
+  });
   it('the turn sink plays a creature cue through the hook and skips a silent side with a reason', () => {
     const requests: string[] = [];
     const hook = createCreatureVoiceHook({ seed: 3, sources, sides: { left: { record: null, genome: null, seed: 1, label: 'Explorer' }, right: { record: civetRecord(), genome: null, seed: 2, label: 'Civet' } } });

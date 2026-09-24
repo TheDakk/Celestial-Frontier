@@ -42,6 +42,9 @@ export function createCreatureVoiceHook(options: CreatureVoiceOptions): Creature
     if (!record) return { card: null, status: `${side.label}: no voice (no record and no genome)` };
     const result = compileVoiceCard(record, (side.genome ?? null) as Parameters<typeof compileVoiceCard>[1], options.systemCard ?? null);
     if (!result.ok) return { card: null, status: `${side.label}: no voice (${result.reason})` };
+    // a body plan with no source set yet has no voice (labelled): deriveCue would throw INSIDE the stage's tick, and a throw in a
+    // ticker callback stops Pixi's shared ticker — the whole game froze on a Python in a real browser (2026-09-24)
+    if (options.sources[result.card.archetype] === undefined) return { card: null, status: `${side.label}: no voice (no source set for the ${result.card.archetype} archetype yet)` };
     return { card: result.card, status: `${side.label}: ${result.card.archetype} voice, ${result.card.material}, ${result.card.pitchSemitones >= 0 ? '+' : ''}${result.card.pitchSemitones.toFixed(1)} st${result.card.flags.length ? ` (${result.card.flags.join(', ')})` : ''}` };
   };
   const left = compile(options.sides.left), right = compile(options.sides.right);

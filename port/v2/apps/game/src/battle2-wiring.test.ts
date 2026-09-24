@@ -198,6 +198,14 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
     expect((await mountBattle2Study(empty.input).ready).phase).toBe('failed'); expect(failedAll).toBe(1);
   });
 
+  it('a throw inside the stage tick fails the STUDY (labelled) and never escapes into the game\'s shared ticker (a throw there stops Pixi\'s ticker and freezes the game, 2026-09-24)', async () => {
+    let boom = false; const h = harness(); const clock = h.input.clock; const input = { ...h.input, clock: () => { if (boom) throw new Error('boom from the clock'); return clock(); } };
+    const handle = mountBattle2Study(input); expect((await handle.ready).phase).toBe('playing');
+    h.setNow(10); h.ticker.step(); expect(handle.status().phase).toBe('playing');
+    boom = true; expect(() => h.ticker.step()).not.toThrow();
+    expect(handle.status().phase).toBe('failed'); expect(handle.status().reason).toMatch(/stage tick failed: boom from the clock/); expect(h.ticker.fns.size).toBe(0);
+  });
+
   it('a player champion gets the labelled placeholder; a genome matched by _earthName also takes the fixture rig; themes follow the combat domain', async () => {
     const h = harness({ settlement: { battleId: 'battle-2', champion: { kind: 'player', name: 'Explorer' }, encounter: { defender: { battleGenome: { _earthName: 'Civet', seed: 9, size: 1, loco: 3 } } }, transcript: { log: [{ side: 'A', an: 'Explorer', dn: 'Civet', dmg: 3, hpA: 10, hpB: 5 }, { side: 'B', an: 'Civet', dn: 'Explorer', dmg: 2, hpA: 8, hpB: 5 }] } }, chronicle: { championName: 'Explorer', defenderName: 'Civet' } });
     const handle = mountBattle2Study(h.input); const s = await handle.ready;
