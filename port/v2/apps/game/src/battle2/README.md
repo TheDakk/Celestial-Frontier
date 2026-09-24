@@ -193,6 +193,13 @@ sits just above the target's painted top, clamped inside the frame.
 - **Pacing.** With `input.pacer` (a `CombatChroniclePacerGateV1`; `main.ts` passes one under `?battle2=1` with motion on), the study
   releases each staged turn's Chronicle row at the turn's impact, and everything on finish, failure or dispose.
 
+### The real-duel picker and the ticker guard (matches code as of 2026-09-24, late)
+- `?battle2=1&vs=A,B&duel=1` (or the "Real duel + Chronicle" checkbox): `matchupDuel` builds full genomes carrying each painting's visual genes
+  and runs a real duel through the combat domain, the settlement, the cue plan and the Combat Chronicle. The picker mounts the Chronicle and the
+  stage in `main.ts`'s order (pacer, start, stage), so the log is paced exactly as in the game.
+- The study's tick is guarded: a throw fails the study (labelled) and never reaches the game's shared Pixi ticker. A body plan without a
+  voice source set has no creature voice (labelled). `data-battle2-turn` and `data-battle2-ticks` on the section are smoke diagnostics.
+
 ### Known limits
 - The Centipede's ARAP skin folds a triangle at 0.85× its default presentation scale (Codex's anatomy chain). The
   `SCALE SWEEP` in `library-arena.test.ts` pins it by its reason (`Centipede ×0.85` → `ARAP skin: unresolved folded
