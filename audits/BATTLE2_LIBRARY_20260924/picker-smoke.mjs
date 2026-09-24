@@ -11,15 +11,21 @@ import { openChromiumCdp } from '../../port/v2/tools/browsercdp.mjs';
 const NO_SW = process.argv.includes('--no-sw');
 // --phone: an iPhone-class portrait viewport (390×844 CSS px, DPR 3, touch) instead of the 1280×800 desktop (mobile-first law)
 const PHONE = process.argv.includes('--phone');
-const [pkgArg, outArg, firstArg = 'Salmon,Octopus', secondArg = 'Eagle,Python'] = process.argv.slice(2).filter((a) => a !== '--no-sw' && a !== '--phone');
+// --sw-control: the page must be CONTROLLED by the production service worker for every run (register, wait until ready, reload),
+// then a third run reloads with the server refusing every /battle2/ file: the arena must stage from the worker's first-use cache.
+const SW_CONTROL = process.argv.includes('--sw-control');
+if (SW_CONTROL && NO_SW) throw Error('--sw-control and --no-sw are exclusive');
+let refuseArena = false; const arenaHits = { served: 0, refused: 0 };
+const [pkgArg, outArg, firstArg = 'Salmon,Octopus', secondArg = 'Eagle,Python'] = process.argv.slice(2).filter((a) => !a.startsWith('--'));
 if (!pkgArg || !outArg) throw Error('usage: picker-smoke.mjs <packageDir> <outDir> [Left,Right] [Left2,Right2]');
 const root = path.resolve(pkgArg), out = path.resolve(outArg); fs.mkdirSync(out, { recursive: true });
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.webmanifest': 'application/manifest+json', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.wasm': 'application/wasm', '.webm': 'video/webm', '.mp3': 'audio/mpeg', '.ogg': 'audio/ogg', '.wav': 'audio/wav', '.woff2': 'font/woff2' };
 const server = http.createServer((req, res) => { let rel = decodeURIComponent(new URL(req.url, 'http://x').pathname); if (rel.endsWith('/')) rel += 'index.html'; const file = path.join(root, rel);
+  if (rel.startsWith('/battle2/')) { if (refuseArena) { arenaHits.refused++; res.writeHead(404).end(); return; } arenaHits.served++; }
   if ((NO_SW && rel === '/service-worker.js') || !file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) { res.writeHead(404).end(); return; }
   res.setHeader('Content-Type', TYPES[path.extname(file)] ?? 'application/octet-stream'); res.end(fs.readFileSync(file)); });
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
-const port = server.address().port, report = { package: path.basename(root), serviceWorker: NO_SW ? 'refused (--no-sw)' : 'served', viewport: PHONE ? 'phone 390x844@3 touch' : 'desktop 1280x800@1', runs: [] };
+const port = server.address().port, report = { package: path.basename(root), serviceWorker: NO_SW ? 'refused (--no-sw)' : 'served', viewport: PHONE ? 'phone 390x844@3 touch' : 'desktop 1280x800@1', swControl: SW_CONTROL, runs: [] };
 let browser;
 try {
   browser = await openChromiumCdp({ label: 'battle2 matchup picker smoke', userDataPrefix: 'cf-battle2-picker', commandTimeoutMs: 60000 }); report.browser = browser.browser;
@@ -33,8 +39,18 @@ try {
       if ((s.status === 'playing' || s.status === 'finished') && (generation === undefined || s.generation === String(generation))) return s;
       if (Date.now() > deadline) throw Error(`${label}: study did not start (${JSON.stringify(s)})`); await sleep(250); } };
   const shot = async (file) => { const { data } = await send('Page.captureScreenshot', { format: 'png' }); fs.writeFileSync(path.join(out, file), Buffer.from(data, 'base64')); return file; };
+  const controlled = () => evaluate('!!(navigator.serviceWorker && navigator.serviceWorker.controller)');
+  // how many sides are PAINTED parts rigs (not the fixture/portrait fallback): the stage label names each side's rig
+  const paintedSides = async () => { const l = await evaluate(`document.querySelector('section[data-battle2-stage]')?.dataset.battle2Label ?? ''`); return { label: l, painted: (l.match(/contact: /g) ?? []).length }; };
+  const firstUrl = `http://127.0.0.1:${port}/?battle2=1&vs=${encodeURIComponent(firstArg)}`;
+  if (SW_CONTROL) { // install the worker on a plain page first, then come back controlled
+    await send('Page.navigate', { url: `http://127.0.0.1:${port}/` }); const until = Date.now() + 120000;
+    for (;;) { const ok = await evaluate('navigator.serviceWorker ? navigator.serviceWorker.ready.then(() => true) : false').catch(() => false); if (ok) break; if (Date.now() > until) throw Error('service worker never became ready'); await sleep(500); }
+    await send('Page.navigate', { url: `http://127.0.0.1:${port}/` }); await sleep(1500);
+    if (!(await controlled())) throw Error('page is not controlled by the service worker after reload');
+  }
   // run 1: from the URL
-  await send('Page.navigate', { url: `http://127.0.0.1:${port}/?battle2=1&vs=${encodeURIComponent(firstArg)}` });
+  await send('Page.navigate', { url: firstUrl });
   const s1 = await waitStudy('first matchup'); await sleep(2500);
   report.runs.push({ from: 'url', vs: firstArg, status: s1.status, generation: s1.generation, text: await evaluate(`document.querySelector('[data-battle2-matchup] output').textContent`), still: await shot('picker-1.png') });
   // run 2: through the picker's own controls
@@ -42,6 +58,26 @@ try {
   await evaluate(`(() => { const root = document.querySelector('[data-battle2-matchup]'); const [a, b] = root.querySelectorAll('select'); a.value = ${JSON.stringify(l2)}; b.value = ${JSON.stringify(r2)}; root.querySelector('button').click(); return true; })()`);
   const s2 = await waitStudy('second matchup', Number(s1.generation) + 1); await sleep(2500);
   report.runs.push({ from: 'controls', vs: secondArg, status: s2.status, generation: s2.generation, text: await evaluate(`document.querySelector('[data-battle2-matchup] output').textContent`), still: await shot('picker-2.png') });
+  if (SW_CONTROL) {
+    report.runs[0].controlled = report.runs[1].controlled = await controlled(); report.arenaHitsBeforeOffline = { ...arenaHits };
+    report.runs[1].rigs = await paintedSides(); if (report.runs[1].rigs.painted !== 2) throw Error('run 2 is not two painted rigs: ' + report.runs[1].rigs.label);
+    if (!report.runs[0].controlled) throw Error('the arena was not staged under the service worker');
+    // run 3: the server now refuses every arena file; a controlled reload must stage from the first-use cache
+    refuseArena = true; await send('Page.navigate', { url: firstUrl });
+    const s3 = await waitStudy('offline reuse'); await sleep(2500);
+    report.runs.push({ from: 'reload, arena refused by the server', vs: firstArg, status: s3.status, controlled: await controlled(), text: await evaluate(`document.querySelector('[data-battle2-matchup] output').textContent`), still: await shot('picker-3-offline.png') });
+    report.arenaHits = { ...arenaHits }; report.runs[2].rigs = await paintedSides();
+    if (!report.runs[2].controlled) throw Error('offline run was not controlled');
+    if (report.runs[2].rigs.painted !== 2 || arenaHits.refused !== 0) throw Error('offline reuse did not stage both painted rigs from the cache: ' + JSON.stringify({ rigs: report.runs[2].rigs, arenaHits }));
+    // control: a pair never staged before has nothing cached, so with the arena refused it must FAIL (else run 3 proved nothing)
+    const cold = 'Python,Eagle'; let coldFailed = null;
+    await send('Page.navigate', { url: `http://127.0.0.1:${port}/?battle2=1&vs=${encodeURIComponent(cold)}` });
+    let coldRigs = null; try { await waitStudy('cold control'); coldRigs = await paintedSides(); } catch (e) { coldFailed = String(e.message).slice(0, 300); }
+    report.coldControl = { vs: cold, failed: coldFailed, rigs: coldRigs, arenaHits: { ...arenaHits } };
+    // an uncached pair cannot stage PAINTED rigs with the arena refused (it fails, or falls back to fixture/portrait rigs)
+    if (coldFailed === null && coldRigs?.painted === 2) throw Error('control: an uncached pair staged two painted rigs with the arena refused — the refusal never applied');
+    if (arenaHits.refused === 0) throw Error('control: the server refused nothing');
+  }
   report.status = 'PASS';
 } catch (e) { report.status = 'FAIL'; report.error = String(e?.stack ?? e).slice(0, 1200); process.exitCode = 1; }
 finally { fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify(report, null, 1) + '\n'); try { await browser?.close(); } catch { /* closing */ } server.close(); }

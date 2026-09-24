@@ -4,9 +4,14 @@
  "recipe": "/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
  "files": [
   {
-   "path": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json",
-   "bytes": 3209995,
-   "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178"
+   "path": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json.gz",
+   "bytes": 319004,
+   "sha256": "9c28e5b397c76302dae6890041f3e9c2d8ab877917c0382b55da5f6ca839bfd2",
+   "derivedFrom": {
+    "path": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json",
+    "sha256": "65ff9709ee1f1a8cbc0f2afee0a2c547724728afdff18da757bfaa5b0d694178",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/markings.json",
@@ -69,9 +74,14 @@
    "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
   },
   {
-   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/binding.json",
-   "bytes": 2348037,
-   "sha256": "7ac8b5345f1155a97acb9de087b0c3ba0b34320d73419bad673752e04e9e34f7"
+   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/binding.json.gz",
+   "bytes": 197954,
+   "sha256": "f2fb5d50258d1ca9ac5fe63ac2dba0db25749b4b4da28e45fabf1fa115b06830",
+   "derivedFrom": {
+    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/binding.json",
+    "sha256": "7ac8b5345f1155a97acb9de087b0c3ba0b34320d73419bad673752e04e9e34f7",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/parts/alpha.png",
@@ -99,9 +109,14 @@
    "sha256": "65a117c20f6de4bea7c7074d7b1214abebc42813e57f4b95818723d5bd0ff5ef"
   },
   {
-   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/binding.json",
-   "bytes": 1365297,
-   "sha256": "227ec4b53559c38424ed8b243d88b2caf664e2804ba7f65986afb69f8482009b"
+   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/binding.json.gz",
+   "bytes": 120759,
+   "sha256": "1cf301d9561107b29665fc4608ff160c3ae4c65c76fa56198cecbf4128c64c10",
+   "derivedFrom": {
+    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/binding.json",
+    "sha256": "227ec4b53559c38424ed8b243d88b2caf664e2804ba7f65986afb69f8482009b",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/markings.json",
@@ -164,9 +179,14 @@
    "sha256": "625309b27b17aff36a12ed6eedc4b882c14e1b4dd93c9e94e90c603dc021f2b4"
   },
   {
-   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/binding.json",
-   "bytes": 1646548,
-   "sha256": "075341dac4101bf8b0d641424cb7a7514277f9044a71b96a2b546228850a5f40"
+   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/binding.json.gz",
+   "bytes": 147335,
+   "sha256": "8f85aaf63fda3f23b15886ec1d7cf64fe83e78159bd0640787bc8664525dcb63",
+   "derivedFrom": {
+    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/binding.json",
+    "sha256": "075341dac4101bf8b0d641424cb7a7514277f9044a71b96a2b546228850a5f40",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/parts/alpha.png",
@@ -194,9 +214,14 @@
    "sha256": "3ed3407e87adf664775629811a7845f1a3c3b2b94bad402fadb2262f4edf6202"
   },
   {
-   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/binding.json",
-   "bytes": 1794160,
-   "sha256": "6d89da7ba04b98fd5c4d45ef38acbe4a44e28dd2e903d0cc057a6cd5792b4c04"
+   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/binding.json.gz",
+   "bytes": 162617,
+   "sha256": "69dc4a312818045b69515562acc7761b6f484b9c27a78efede46949df38bfffc",
+   "derivedFrom": {
+    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/binding.json",
+    "sha256": "6d89da7ba04b98fd5c4d45ef38acbe4a44e28dd2e903d0cc057a6cd5792b4c04",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/parts/alpha.png",
@@ -224,9 +249,14 @@
    "sha256": "c2ac58531ad3585b433343a9f03e3c1bae766efb1f69e68dd6c11fe062debdd0"
   },
   {
-   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/binding.json",
-   "bytes": 1595429,
-   "sha256": "d0c46782a73d9cc94a28ae258dd940af078787a287e2d8b7b5fc96fa9f9673dd"
+   "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/binding.json.gz",
+   "bytes": 139950,
+   "sha256": "1575be5967a6293eb8506e3149f73f35d82fab9278d1ab7b1631838c6fbb806d",
+   "derivedFrom": {
+    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/binding.json",
+    "sha256": "d0c46782a73d9cc94a28ae258dd940af078787a287e2d8b7b5fc96fa9f9673dd",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/parts/alpha.png",
@@ -284,9 +314,14 @@
    "sha256": "cb070ea758ceed1738c1f25119b4367c98661f8a1dfbdba0f7341bad78a941fb"
   },
   {
-   "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/binding.json",
-   "bytes": 1369917,
-   "sha256": "d23162df16d6c89d1f1b16d19acf52984ff73dc5e1bddf31e6430bb955464c8e"
+   "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/binding.json.gz",
+   "bytes": 101403,
+   "sha256": "3f0b4a31bb8aae104f62f6de63a89ac6d1fdea16dbdd08a6ca31d4e21d16f36d",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/binding.json",
+    "sha256": "d23162df16d6c89d1f1b16d19acf52984ff73dc5e1bddf31e6430bb955464c8e",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/parts/alpha.png",
@@ -319,9 +354,14 @@
    "sha256": "aa1ad50d8ac1e354d0f0ba5beeb211a22519461ac36802ca621022f2418c65eb"
   },
   {
-   "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/binding.json",
-   "bytes": 993151,
-   "sha256": "3e1c8a51b676614db4002339c6b6d02901f4bb9e914abff85b8de26a7158d8c4"
+   "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/binding.json.gz",
+   "bytes": 83790,
+   "sha256": "a041787cd18e9ee8e1a0932cd023ddd64e60c03dd8ed266b8d69bb5ee8374fcb",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/binding.json",
+    "sha256": "3e1c8a51b676614db4002339c6b6d02901f4bb9e914abff85b8de26a7158d8c4",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/parts/alpha.png",
@@ -354,9 +394,14 @@
    "sha256": "27331ceeb3353de388c97e1c4ecc62b11fd75fa6421852ae4e7a22cba971c408"
   },
   {
-   "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/binding.json",
-   "bytes": 1384381,
-   "sha256": "2d40f5cb65fad7ae0e020794ca38f333aff4a308faecebb93bbede039b8d0451"
+   "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/binding.json.gz",
+   "bytes": 113147,
+   "sha256": "13289e044bd67d322371ba1c5a24f47184d9a6a22abc9ce310a15f47efa0c91a",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/binding.json",
+    "sha256": "2d40f5cb65fad7ae0e020794ca38f333aff4a308faecebb93bbede039b8d0451",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/parts/alpha.png",
@@ -389,9 +434,14 @@
    "sha256": "55d8a5d00e4eabd761fc64cc42d82da1d3837b0448651d8c78820b9cfe9fb19b"
   },
   {
-   "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/binding.json",
-   "bytes": 1492134,
-   "sha256": "1340a8f5f1b7b52e2e75fd6c0c756edcf196544c0183038826275b9ffd320f22"
+   "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/binding.json.gz",
+   "bytes": 117999,
+   "sha256": "d41eb8f2d5c541e06087f8113f8297b7bc20aa3cd432c796cb27b73b1e850f32",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/binding.json",
+    "sha256": "1340a8f5f1b7b52e2e75fd6c0c756edcf196544c0183038826275b9ffd320f22",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/parts/alpha.png",
@@ -424,9 +474,14 @@
    "sha256": "ba6037964ac289b10cb7ccac9c44bdf05395deeec827a412fa4e97be5f7ca1a7"
   },
   {
-   "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/binding.json",
-   "bytes": 1054491,
-   "sha256": "ffc7fc4056e51b9d36edc228063adbab50a6c79c369ccd4fc671016368504240"
+   "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/binding.json.gz",
+   "bytes": 91879,
+   "sha256": "0fb11d3cf4e977f1d7185f60520654c95654e5965e7ffb0ac69db44b0432dedb",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/binding.json",
+    "sha256": "ffc7fc4056e51b9d36edc228063adbab50a6c79c369ccd4fc671016368504240",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/parts/alpha.png",
@@ -459,9 +514,14 @@
    "sha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e"
   },
   {
-   "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/binding.json",
-   "bytes": 5700736,
-   "sha256": "4ebf5d0067f2062b1fd1ec4128a2b6f0f837d4f950aa6ac39ffd4bbf019ff56c"
+   "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/binding.json.gz",
+   "bytes": 532278,
+   "sha256": "0071365305feda8158890cdb3c1616d33feb2c67e13472f0b706a78f6af9ad47",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/binding.json",
+    "sha256": "4ebf5d0067f2062b1fd1ec4128a2b6f0f837d4f950aa6ac39ffd4bbf019ff56c",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/parts/alpha.png",
@@ -494,9 +554,14 @@
    "sha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a"
   },
   {
-   "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/binding.json",
-   "bytes": 1473071,
-   "sha256": "2ca72744f94ad11896b15dcdc0261e177dd4016cea5e19d384bb98e0b8fba74f"
+   "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/binding.json.gz",
+   "bytes": 130688,
+   "sha256": "cae06ee1284284ffdc7cd06711176399f0a697e392f34c061ee2f9a3615cf2eb",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/binding.json",
+    "sha256": "2ca72744f94ad11896b15dcdc0261e177dd4016cea5e19d384bb98e0b8fba74f",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/parts/alpha.png",
@@ -524,9 +589,14 @@
    "sha256": "5327906d70d258adef8e40514643df9aa17516c98c11e328c2f2a3e9216683bb"
   },
   {
-   "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/binding.json",
-   "bytes": 3517296,
-   "sha256": "34ef6423127b867f9aaa7a6317b8be26c07bcb153820818c3588a8ad7f686050"
+   "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/binding.json.gz",
+   "bytes": 335603,
+   "sha256": "40b32fbe49b3f5b360e92a260c1bd69994a0e5fcf3c0b7cf476931e2256349c6",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/binding.json",
+    "sha256": "34ef6423127b867f9aaa7a6317b8be26c07bcb153820818c3588a8ad7f686050",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/alpha.png",
@@ -559,9 +629,14 @@
    "sha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687"
   },
   {
-   "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/binding.json",
-   "bytes": 1956447,
-   "sha256": "978a7f26cdeedfa58792fe1a976d3db6db27d2f4e6f35689b48a9d65386a3015"
+   "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/binding.json.gz",
+   "bytes": 168779,
+   "sha256": "979ffcb54ad2de6ef7c7d3823e69aa2c7585c28ed1c593b7e5784038c8157fe4",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/binding.json",
+    "sha256": "978a7f26cdeedfa58792fe1a976d3db6db27d2f4e6f35689b48a9d65386a3015",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/parts/alpha.png",
@@ -594,9 +669,14 @@
    "sha256": "48a6ab472bdf161913f540a2ade5907be2bebedaa600348877adb269c01b0a2e"
   },
   {
-   "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/binding.json",
-   "bytes": 2044039,
-   "sha256": "4d9eb64b3af20f1a78cae84b7a77ca5f2b2b27d7361e5b6620fca65f44ed3734"
+   "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/binding.json.gz",
+   "bytes": 189176,
+   "sha256": "0576e6e45f75c18ae5bb569715d021a4cd8612ca031ecb980d5516805aaf8ea5",
+   "derivedFrom": {
+    "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/binding.json",
+    "sha256": "4d9eb64b3af20f1a78cae84b7a77ca5f2b2b27d7361e5b6620fca65f44ed3734",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/parts/alpha.png",
@@ -714,9 +794,14 @@
    "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
   },
   {
-   "path": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/binding.json",
-   "bytes": 1137629,
-   "sha256": "e6dc380c4414359c1420fa34240393aad0d9f231d0899f69fe67f8643a5cb396"
+   "path": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/binding.json.gz",
+   "bytes": 116356,
+   "sha256": "6b5bd6764bdc244768892888d25f4405870f23a053761994c870a29e92b635e9",
+   "derivedFrom": {
+    "path": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/binding.json",
+    "sha256": "e6dc380c4414359c1420fa34240393aad0d9f231d0899f69fe67f8643a5cb396",
+    "encoding": "gzip"
+   }
   },
   {
    "path": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/parts/alpha.png",
