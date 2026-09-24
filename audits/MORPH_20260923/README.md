@@ -66,3 +66,40 @@ node --experimental-strip-types --import ./tools/ts-resolve-hook.mjs ../../audit
 node --experimental-strip-types --import ./tools/ts-resolve-hook.mjs ../../audits/MORPH_20260923/archetype-sheet.mjs Crab crab
 node --experimental-strip-types --import ./tools/ts-resolve-hook.mjs ../../audits/MORPH_20260923/accent-option-sheet.mjs
 ```
+
+---
+
+# The painted LIBRARY on the card — all 17 archetypes after the sprint merge (2026-09-23, later)
+
+Nick accepted Codex's archetype-sprint art. Merged locally (`openai/mac` `236b9846`), then wired into the card:
+`port/v2/tools/morph/build-card-masters.mjs` now lists all 17 archetypes (the Python at its open-pose correction
+`candidate-02/fit-01`, record `b287ddc5…`; the Salmon with its six masks from the separate `13-fish-markings/` packet, bound
+to its record — a mask set sealed for another record is refused), writes ONLY into the shipped mirror inside `port/v2`
+(never into another owner's evidence folder), and **generates** the app registry (`morph/card-archetypes.ts`) and the
+explicit `?url` asset map (`painted-cards.assets.ts`) from that one list. Control: re-running it left the six existing
+archetypes' shipped files byte-identical.
+
+**Bug found and fixed (mine): the painted markings never reached the APP card.** The hand-kept asset map in
+`painted-cards.ts` listed card/record/master/labels only, so `PaintedCardSource`'s `markings.json` fetch threw, was
+swallowed, and every in-app card rendered plain — while every sheet (fed from disk) showed the masks. The new OUTCOME test
+in `painted-cards.test.ts` goes through `createPaintedCardsForApp` and requires a striped individual to differ from the plain
+one for every archetype that ships masks (and refuses to pass over zero archetypes); it failed on the old wiring (the
+striped crab equalled the plain crab) and passes now for the crab, the Civet and the Salmon.
+
+**Also fixed (mine): the root `tsc` project was red** since the card path landed — `morph-markings.ts` imported one TYPE
+from the Pixi-bound `creature-rig.ts`, which dragged Pixi's DOM/WebGPU declarations into the node-only root program (184
+`node_modules` errors). The binding shape it reads is now declared structurally; all three typecheck projects pass.
+
+`library-card-sheet-01.png` (+ `.json`, `library-card-sheet.mjs`): one row per archetype through the card source — as
+painted · three palette morphs · striped. Every archetype renders; the four tiles of every row are distinct; masks land
+wherever they ship. **Three look findings for Nick, measured on the card masters:**
+
+| finding | measured | affected |
+|---|---|---|
+| near-grey paintings barely morph (the remap moves hue/chroma; a grey has neither) | share of opaque pixels with saturation < 0.15 | Salmon **74 %**, Vent Crab **73 %**, Chimpanzee **63 %** (the rest ≤ 24 %) |
+| the head/body graft (finding 1 above) is not Civet-specific | visible on the sheet | Eagle, Beetle, Fruit Bat, Chimpanzee — same fix (head group on the base coat) |
+| long bodies read tiny on a square card (the crop is the alpha box, squared) | fill of the square | Python **8 %** (aspect 0.21), Centipede 9 %, Vent Crab 9 % |
+
+Options for the grey ones: a chroma floor in the remap for low-saturation archetypes, or let those species vary by marking
+(the Salmon already has six masks) rather than palette. For the long ones: a card crop that follows the body's long axis.
+Nothing is changed until Nick picks.

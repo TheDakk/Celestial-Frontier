@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Chimpanzee",
+ "fitDir": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "7b6ee65a8fd5789aa3b62aa0e582c619883fd105a8cd1e7fa8019731d912f532"
+}

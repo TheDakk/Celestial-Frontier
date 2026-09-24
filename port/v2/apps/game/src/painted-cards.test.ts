@@ -18,4 +18,12 @@ describe('the card masters ship with the app', () => {
     const png = await decodePng(new Uint8Array(Buffer.from(asset.url.slice('data:image/png;base64,'.length), 'base64'))); expect([png.width, png.height]).toEqual([132, 132]);
     expect(src.card({ kingdom: 'fauna', seed: 1 }, 'thumb')).toBeNull();
   });
+  it('OUTCOME: the painted marking reaches the APP card — through the shipped asset path, a striped individual differs from the plain one for every archetype that ships masks (found 2026-09-23: the asset map had no markings entries, the fetch threw, was swallowed, and every in-app card rendered plain while the disk-fed sheets showed the masks)', async () => {
+    const src = createPaintedCardsForApp(fetchFromDisk), shipsMasks = CARD_ARCHETYPES.filter((a) => existsSync(fileURLToPath(new URL(a.dir + 'markings.json', REPO_ROOT))));
+    expect(shipsMasks.length).toBeGreaterThanOrEqual(2); // crab + Civet at least; a vacuous pass over zero archetypes is refused
+    for (const a of shipsMasks) {
+      const plain = await src.card({ _earthName: a.earthName, kingdom: 'fauna', seed: 9, pattern: 0 }, 'thumb')!, striped = await src.card({ _earthName: a.earthName, kingdom: 'fauna', seed: 9, pattern: 1 }, 'thumb')!;
+      expect(striped.url, a.earthName + ': striped equals plain — the marking never reached the app card').not.toBe(plain.url);
+    }
+  });
 });
