@@ -1,7 +1,7 @@
 {
   "schema": "cf.final-sprint-index/v1",
-  "status": "13_TECHNICAL_PASS_SIGNED",
-  "gitClosureStatus": "audits/ARCHETYPE_FINISH_20260923/git-closure/README.md",
+  "status": "13_TECHNICAL_PASS_SIGNING_BLOCKED",
+  "gitClosureStatus": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/git-closure-status.md",
   "pathBase": "repository root",
   "scope": "Read-only extraction of retained evidence, plus artifact-path existence checks. No hash battery, source replay, static/native run or signature re-verification performed for this index. Historical measurements remain bound to their recorded source.",
   "selectionCount": 13,
@@ -1008,11 +1008,11 @@
     {
       "item": 12,
       "name": "Centipede",
-      "selectionStatus": "LOCAL_TECHNICAL_PASS_SIGNED",
+      "selectionStatus": "LOCAL_TECHNICAL_PASS_SIGNING_PENDING",
       "packet": "audits/ARCHETYPE_FINISH_20260923/12-myriapod",
       "readme": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/README.md",
-      "signedResultCommit": "d379e61dae8d50e3ed0c68cdc8368f321431491c",
-      "signingStatus": "G",
+      "signedResultCommit": null,
+      "signingStatus": "PENDING_SIGNING",
       "result": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/result.json",
       "fit": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11",
       "master": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/candidate-13/master.png",
@@ -1104,7 +1104,7 @@
       "bindingAuthorityHash": "c67037345e169e813839fc96b66b0f1c05758cb0c9124a8326c2e42fa15a10aa",
       "masterSha256FromRecord": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
       "artAcceptance": "Nick review pending; technical PASS does not replace art acceptance.",
-      "note": "Signed item verified by e9b037 after authorized retry b86b5f. Measured source hashes retain their exact original scope; no clean-source Compendium or PR43 certification claim."
+      "note": "Signing is pending. This index makes no inferred signed-commit, clean-source or PR43 certification claim."
     },
     {
       "item": 13,
@@ -1222,8 +1222,10 @@
       "artAcceptance": "Nick review pending; historical tiny alpha residues remain disclosed."
     }
   ],
-  "handoff": "Codex performs the authorized final normal branch push and verifies remote equality, then holds. Claude reviews signed packets only under Nick direction; Nick reviews art. No PR43 certification or integration claim.",
-  "pendingSigningItems": [],
+  "handoff": "Codex completes and signs Centipede, then updates final ledger and performs only the authorized Git handoff. Claude consumes signed packets under Nick direction; Nick reviews art. No PR43 certification claim.",
+  "pendingSigningItems": [
+    12
+  ],
   "indexEvidence": {
     "draft": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/final-sprint-index-draft.json",
     "draftSha256": "30d5dd787dccd5e935073bf362360b3df8b099ca9758e283be9e7d19a9ff5047",
