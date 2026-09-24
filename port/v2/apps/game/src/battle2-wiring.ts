@@ -372,6 +372,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     // The kit's stand x (§7, the accepted three-plate composition) is kept; the habitat supplies the medium and the vertical band.
     // a flyer or swimmer too tall for its band is scaled to fit it (habitat `fit`); the stage takes that exact scale, so the
     // habitat's containment and the drawn size agree. Nothing fitted → the stage's own mass rule, byte-identical to before.
+    const wet = habitat.stands.left.medium === 'water' || habitat.stands.right.medium === 'water'; // the wet arena: water behind the swimmers, no dry foreground
     const fitted = paintedLeft.capped || paintedRight.capped || habitat.stands.left.fit < 1 || habitat.stands.right.fit < 1;
     const presentationScales = { left: paintedLeft.scale * habitat.stands.left.fit, right: paintedRight.scale * habitat.stands.right.fit };
     const stagedLayout = { ...layout, stands: Object.freeze({ left: Object.freeze({ x: layout.stands.left.x, y: habitat.stands.left.y }), right: Object.freeze({ x: layout.stands.right.x, y: habitat.stands.right.y }) }) };
@@ -396,7 +397,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       sides: { left: { record: matchRecord(records, championGenome), genome: championGenome, seed: left.seed, label: input.chronicle.championName },
         right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, seed: right.seed, label: input.chronicle.defenderName } } });
     cueSink = input.audio ? createTurnCueSink({ runtime: input.audio, seed: recipe.seed ^ fnv1a32(input.settlement.battleId), phone: input.deviceTier === 'low', creatureVoice: voices }) : null;
-    const built = new BattleStage({ factory, clock: input.clock, layout: stagedLayout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass }, ...(fitted ? { presentationScales } : {}),
+    const built = new BattleStage({ factory, clock: input.clock, layout: stagedLayout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass }, ...(fitted ? { presentationScales } : {}), ...(wet ? { water: { surfaceY: habitat.surfaceY } } : {}),
       worldLife, reducedMotion: input.reducedMotion, cues: cueSink ? { sink: cueSink, phone: input.deviceTier === 'low' } : null, effects: input.reducedMotion ? null : { host: createPixiEffectHost({ Sprite: pixi.Sprite, Particle: pixi.Particle, ParticleContainer: pixi.ParticleContainer } as unknown as Parameters<typeof createPixiEffectHost>[0]),
         particleTexture: texture(raster(dot, PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE)), seed: recipe.seed,
         phaseTextures: (a) => a.phases.map((p) => { if (isProceduralImage(p.keyedImage)) return null; const t = resolvedPhaseTextures.get(p.keyedImage); if (!t) throw new Error(`battle2 phase image ${p.keyedImage} was not loaded`); return t; }),

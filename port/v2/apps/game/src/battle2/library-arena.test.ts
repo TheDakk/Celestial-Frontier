@@ -16,7 +16,7 @@ import type { TurnAttack, TurnPlanInput } from './choreography.js';
 import { createPortraitRig } from './fallback.js';
 import type { BattleRigV1, RigContainerLike, RigSpriteLike } from './fixture-rig.js';
 import { REPO_ROOT, loadFitDir } from './parts-rig.fixtures.js';
-import { BattleStage, combatantPresentation, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext } from './stage.js';
+import { BattleStage, WATER_BANDS, combatantPresentation, turnPlanInputFromTranscriptEvent, type BattleStageFactory, type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnOutcomeContext } from './stage.js';
 
 class Node { x = 0; y = 0; rotation = 0; alpha = 1; visible = true; destroyed = false; text = ''; readonly scale = { set: () => {} }; readonly anchor = { set: () => {} };
   children: object[] = []; addChild(c: object) { this.children.push(c); } removeChild(c: object) { this.children = this.children.filter((x) => x !== c); } clear() {} rect() {} fill() {} destroy() { this.destroyed = true; } }
@@ -90,5 +90,30 @@ describe('the painted library in the arena', () => {
     }
     console.log('\n' + report.join('\n'));
     expect(flyers).toBeGreaterThanOrEqual(2); expect(swimmers).toBeGreaterThanOrEqual(3); // Eagle + Fruit Bat; Salmon, Starfish, Octopus — the branches are exercised
+  }, 300_000);
+  it('the WET arena: water behind the swimmer and above the mid plate, the dry foreground hidden, moving with the mid plate, destroyed on dispose — and without it the stage is exactly as before', async () => {
+    const salmonDir = CARD_ARCHETYPES.find((a) => a.earthName === 'Salmon')!.dir;
+    const build = async (water: boolean) => { const { rig, card } = await loadFitDir(fitDirOf(salmonDir)); const nodes: Node[] = []; const mk = () => { const n = new Node(); nodes.push(n); return n; };
+      const f: BattleStageFactory = { container: mk, sprite: (): StageSpriteLike => mk(), text: (t): StageTextLike => { const n = mk(); n.text = t; return n; }, graphics: (): StageGraphicsLike => mk() };
+      let now = 0; const stage = new BattleStage({ factory: f, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: rig, right: portraitRig() }, masses: { left: card.massClass.multiplier, right: 0.85 }, ...(water ? { water: { surfaceY: 0.52 } } : {}) });
+      return { stage, nodes, rig, card, setNow: (ms: number) => { now = ms; } }; };
+    const dry = await build(false), wet = await build(true);
+    const kids = (st: BattleStage) => (st.root as unknown as Node).children as Node[];
+    expect(kids(wet.stage).length).toBe(kids(dry.stage).length + 1); // exactly one extra layer
+    const order = kids(wet.stage), water = order[2]!; // far, mid, WATER, …
+    const wi = 2; expect(kids(dry.stage)[2]).not.toBe(water);
+    const holderIndex = order.findIndex((n) => n.children.includes(wet.rig.root as object)); expect(holderIndex).toBeGreaterThan(wi); // behind the swimmer
+    const nearWet = order.at(-5) as Node, nearDry = kids(dry.stage).at(-5) as Node; // near plate: before flash, bar, cursor, number
+    expect(nearWet.visible).toBe(false); expect(nearDry.visible).toBe(true);
+    // drawn as WATER_BANDS depth bands + the surface line, three frames wide
+    expect(water).toBeDefined();
+    // it moves with the mid plate during a run-up
+    const plan = wet.stage.play(turn(ctx('A', 'Salmon', wet.card.massClass.multiplier, wet.card, undefined, 7), { side: 'A', an: 'Salmon', dn: 'Platypus', dmg: 5, crit: false, hpA: 30, hpB: 25 }, 0));
+    let moved = false; for (let ms = 0; ms <= plan.beats.end; ms += 1000 / 30) { wet.setNow(ms); wet.stage.tick(); const mid = order[1]!, w2 = order[2]!; if (w2.x !== 0) moved = true; expect(w2.x).toBeCloseTo(mid.x - (layout.plates.find((p) => p.id === 'mid')!.x), 9); }
+    expect(moved).toBe(true);
+    wet.stage.dispose(); expect(order[2]!.destroyed).toBe(true);
+    expect(WATER_BANDS.length).toBeGreaterThanOrEqual(8);
+    dry.stage.dispose();
+    expect(() => new BattleStage({ factory, clock: () => 0, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: portraitRig(), right: portraitRig() }, masses: { left: 1, right: 1 }, water: { surfaceY: 1.2 } })).toThrow(/surfaceY/);
   }, 300_000);
 });
