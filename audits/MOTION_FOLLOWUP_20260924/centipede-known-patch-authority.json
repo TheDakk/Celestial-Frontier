@@ -1,0 +1,5 @@
+{
+  "source": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/battle2/library-arena.test.ts",
+  "sha256": "7682692b1b68e25b048348de643683c42fa7c3880116fc56c575a4cfb1d6f496",
+  "note": "Patch retained with local motion fix; target test is absent in openai/mac and Claude lane is read-only. Apply together in Claude integration commit after full scale sweep."
+}

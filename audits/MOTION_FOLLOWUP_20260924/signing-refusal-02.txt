@@ -1,0 +1,7 @@
+Centipede commit attempt2 (the one allowed retry), outside sandbox, approved wrapper, exited128:
+error: Signing file /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmpSDcxj7
+Couldn't sign message (signer): communication with agent failed?
+Signing /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmpSDcxj7 failed: communication with agent failed?
+fatal: failed to write commit object
+
+No further signing attempted. Asked Nick to approve until quit. No unsigned commit or signing configuration change. Continued non-commit work under sprint-mode instruction. A read-only ps check was denied by the sandbox; no permission bypass was attempted.

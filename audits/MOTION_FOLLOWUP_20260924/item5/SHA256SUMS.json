@@ -1,0 +1,145 @@
+{
+  "scope": "Local item5 files before commit; excludes this inventory",
+  "files": [
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "sha256": "ce7ebf4e06ee82e91a74128701e5e0bebb637817bb2012e96d6ba33b791bd201"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-claude-01.json.sources.json",
+      "sha256": "b9c802ff2efde118c3e98f97a57ef0e5982bcd06bd0495def061885a9bc60280"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-claude-01.log",
+      "sha256": "773f7a0de9c2156a2e9236370397ecd77d20cb910dce59bce3696aa72ea91ee4"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-claude-02.json",
+      "sha256": "7a2738219bb09ad00a7b1c291c5ad5efffee67f85093c8cf58c8dc7dfcd819c0"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-claude-02.json.sources.json",
+      "sha256": "986c4c65039d103d01179e1c50383c12f167d9969f161901d73b1da02fb46ec1"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-claude-02.log",
+      "sha256": "36bd130974aaf221150a81f764c784e533a6984caf6ab3cd006760d4f7133cea"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe-01.json",
+      "sha256": "fbfa4de0a6e5a45d95e1eaf1b5875e335d6e195da2188716edd300e7633dbe46"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe-01.log",
+      "sha256": "24bd5df7bdc4c313eb836a55fa32d72598fe87e7982544cfa792fd7cadd9437d"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe-02.json",
+      "sha256": "659ca3fe8a12870dacad52eb7105db9e505cf190f7ccbe37085ef47520ece22c"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe-02.log",
+      "sha256": "5acf386a514fdf1ceed784e8a34ad32237eaeafdf435d91d1743212f4868d748"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe-03.json",
+      "sha256": "a644f3ebdd22c718e178fe8174b6d45db33c1c903dd8646a5223343a1615eec2"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe-03.log",
+      "sha256": "e558a5f29d11f716e98c10cc20e8397eac0e8e46fbdb51989570c8fc814bc2cc"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe.ts",
+      "sha256": "91c9f887d6596dee03b1040510f05d78dbdc0796b259a99d7dcafa5cfdbac292"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-known-patch-authority.json",
+      "sha256": "a88365db4cd7f26473fa3e33193f35688c838d3e30018c1753739a2cd8aa471f"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-level-crawl-01.json",
+      "sha256": "2e0fe9564ae95ac8c05eb48e42b8a74d2bd3f9282f1f00149b8185a2abe65e80"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-level-crawl-01.json.sources.json",
+      "sha256": "d58abe3731e3ae279af1ea5a6f27a86d8ea979c70d5f5c5d120987eee9366741"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-level-crawl-01.log",
+      "sha256": "f59663486917f23a2681d907183c8aaab4a0164e26d3456c6e680d000f3d14b2"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-local-motion-01.json",
+      "sha256": "0da477a99b5b845baf9a7251006c959fa8145559e634748e5c80cd9e0c10546b"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-local-motion-01.json.sources.json",
+      "sha256": "12630e75b250939330a10bade38a4f30b237f0fa07a17e8b7ae0f7eeff6216f4"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-local-motion-01.log",
+      "sha256": "fc9e4c411fcedc5f48382cc2c947b15340df87560ba86d8a1fa348ee05148fbd"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-observed-01.json",
+      "sha256": "14ad3696c7d9c345da252ab0f598881a96ef09bcf8c4a7f587212b0b7e205283"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-observed-01.json.sources.json",
+      "sha256": "ff27c55a496730aa5733ab4eca3fb89a1b9a8b2bec7020b9520e0da885055b6d"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-observed-01.log",
+      "sha256": "698e626e6e5ca81f8bb5c83f7ce11d4ccf7233d4f8da6e95795f61c5b17af546"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-protected-inputs.json",
+      "sha256": "2c846e4a53930a71f48ecfbc009a43850156700550da3b121e92736091994af7"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-remove-known.patch",
+      "sha256": "d534382a6529bc85bb63ed6464be8737d26296d1dd77fdf895473e6b79f830b6"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-scale-original.txt",
+      "sha256": "b1d98cf716d02353a2a8cbe80d9606a6b0ad4ee29fc7b90cf68d57773332b5bb"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-scale.ts",
+      "sha256": "ff8ad588ce779da507fa7cdd97dd60d8a89ae775125f10677fc5e5c3d2e916b8"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-tests-01.log",
+      "sha256": "b7cd470c2b899dbac5921062974658e4c596f2117abd226cbd6970e7acc55854"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/centipede-validate.log",
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/run-centipede-scale.mjs",
+      "sha256": "cffde14cb7d435001265ac1cc4066a1a94e5913d158db6bf67773d8215ede2bd"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/ITEM5.md",
+      "sha256": "8d796f8b364bcfc23fecc5ce2a897a68a23174ff41c22d504e6b349040397196"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/item5/README.md",
+      "sha256": "cd1086bc32a1dd7f233037cf9cc53dbca6f377147394c40f0e226f65c4c6f21b"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/signing-refusal-01.txt",
+      "sha256": "a30831cef5f2d999e8d0015db2be3ce890303eb0ff14ce882bf534f49ca00a27"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/signing-refusal-02.txt",
+      "sha256": "8dbd87f8e7e41fc0b944820d7c621653828525bc8b6763478aeaffdd306fbd8e"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/item5/CLAUDE_COMMIT.json",
+      "sha256": "faf8f749f623097f148fb45545c39275ba035a8789ab7d5e2735d1a87d1efd5e"
+    }
+  ]
+}
