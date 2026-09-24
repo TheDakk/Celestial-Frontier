@@ -34,7 +34,7 @@ import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-c
  * proof folders' relative layout, so every path below resolves against this recipe URL unchanged. */
 const arenaRecipeUrl = '/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json';
 import { speciesVisualKey } from '@cf/art/species-identity';
-import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, selectHabitatArena, turnPlanInputFromTranscriptEvent,
+import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, lakeArenaWorld, selectHabitatArena, turnPlanInputFromTranscriptEvent,
   type BattleRigV1, type BattleStageFactory, type FixturePartCut, type RigContainerLike, type RigSpriteLike,
   type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnAttack, type TurnOutcomeContext, type TurnPlanInput } from './battle2/index.js';
 // parts-rig (and Codex's pixi-backed creature-rig behind it) is imported by path, not through battle2/index: the root
@@ -139,6 +139,8 @@ export interface Battle2StudyInput {
   readonly audio?: TurnAudioRuntime | null;
   /** The battle's home and visitor worlds for habitat arena selection (E1 §1.4). Absent = the accepted Earth-temperate plates, labelled as the default. */
   readonly worlds?: Readonly<{ home: ArenaWorld; visitor: ArenaWorld }> | null;
+  /** A named world built on the study's own ground line (the matchup picker): `lake` = liquid water with a surface. Ignored when `worlds` is given. */
+  readonly worldPreset?: 'lake';
 }
 export type Battle2Phase = 'loading' | 'playing' | 'finished' | 'failed' | 'disposed';
 export interface Battle2Status {
@@ -364,7 +366,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     // its medium band by the habitat below; the stage takes the resulting scale whenever it differs from its own mass rule
     const painted = (r: { rig: BattleRigV1; mass: number }) => combatantPresentation(r.rig, r.mass, BATTLE2_FRAME);
     const paintedLeft = painted(left), paintedRight = painted(right);
-    const habitat = selectHabitatArena({ contextId: input.settlement.battleId, seed: recipe.seed, round: 0, kind: 'wild', worlds: input.worlds ?? null, groundLineY: layout.groundLineY, fitToBand: true,
+    const habitat = selectHabitatArena({ contextId: input.settlement.battleId, seed: recipe.seed, round: 0, kind: 'wild', worlds: input.worlds ?? (input.worldPreset === 'lake' ? { home: lakeArenaWorld(layout.groundLineY), visitor: lakeArenaWorld(layout.groundLineY) } : null), groundLineY: layout.groundLineY, fitToBand: true,
       left: { record: matchRecord(records, championGenome), genome: championGenome, label: input.chronicle.championName, painted: paintedLeft },
       right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, label: input.chronicle.defenderName, painted: paintedRight } });
     arenaLabel = habitat.label;

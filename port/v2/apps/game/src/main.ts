@@ -19233,6 +19233,8 @@ async function loadSave(): Promise<void> {
   emitBootPhase('wiring-complete');
   app.start();
   emitBootPhase('ticker-started');
+  // Matchup picker (?battle2=1&vs=Python,Eagle): any two painted archetypes on the battle2 stage with no battle played first; the same study gate, dynamic import only, never on the default path.
+  if (new URLSearchParams(location.search).get('battle2') === '1' && new URLSearchParams(location.search).get('vs') !== null) void import('./battle2-matchup.js').then(m => m.mountBattle2Matchup({ doc: document, search: location.search, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: tameGreetingAudioOwner?.decorativeVoicePort() ?? null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { /* the flagged picker never blocks the game */ });
   if (document.querySelector('meta[name="cf-pwa-enabled"][content="true"]')) {
     pwaUpdateControl = mountPwaUpdateControl({
       document,
