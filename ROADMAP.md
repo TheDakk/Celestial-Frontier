@@ -55,12 +55,12 @@ handoff, signed and verified G, then pushes `anthropic/mac`. Then rebuild the pl
 painted arena works offline in it. Codex's items 5 and 7 are staged unsigned in its lane, blocked by the same error.
 
 **Next, by owner.**
-- **Nick:** renew 1Password approval (both lanes are blocked on it); after I5 lands, cycle the label on PR #43.
+- **Nick:** play the new package (item -85); keep 1Password approved for Codex's signing; after I5 lands, cycle the label on PR #43.
 - **Codex:** sign items 5 and 7; fix the five `fb1922a0` reds above; then I5 on the final clean integrated source. Item 5 comes with
   removing Claude's KNOWN Centipede pin in `library-arena.test.ts`, in the same commit. Proposal (item 8): admit the painter master by its pinned
   hash instead of shipping 13 MB of masters.
-- **Claude:** after signing, push the queue; rebuild the playtest package (its worker now installs) and run
-  `picker-smoke --sw-control --duel` on the package itself; integrate Codex's signed items 5 and 7 when they land.
+- **Claude:** merge Codex's signed items 5 (identical motion line already here), 7 and the five-red repair when they land, re-run the
+  battery and the package smoke; each new painted archetype joins the card and arena the day it lands.
 
 **Traps (obey them).**
 - A browser smoke must watch a bout to its END and assert zero page errors: a throw inside a ticker callback freezes the whole page
@@ -77,6 +77,11 @@ painted arena works offline in it. Codex's items 5 and 7 are staged unsigned in 
 - Run `npm run overridecontrol` and the whole gate list locally before any hosted attempt.
 
 ### What Claude owes next
+-85. **Playtest package on `3201cd86`: the first whose worker installs (2026-09-24).** `port/v2/apps/game/smoke/dev-preview-3201cd86834e-20260924200110/`:
+`preview:package`, `preview:verify` and `preview:smoke` PASS, and all 305 worker pins match. `picker-smoke-09-package --sw-control --duel` on the package itself:
+the worker controls the page; a real duel between Salmon and Octopus on the lake has its log paced by the stage (2.0 / 5.7 / 9.5 s); two painted rigs in each
+run; the arena reload uses 0 server requests; cold-pair control; zero page errors. **Play:** serve the folder on loopback (`python3 -m http.server 8080`
+inside it) and open `http://127.0.0.1:8080/?battle2=1&vs=Civet,Python&duel=1`. Supersedes `dev-preview-23e5f4ce5ec9-20260924143808`.
 -84. **Codex's item 5 applied (2026-09-24).** Codex's prepared patch was applied verbatim, and the Centipede's KNOWN pin removed in the same commit: its crawl no longer
 bobs the trunk, and the scale sweep demands zero refusals for all 17 at every scale. Control: the old crawl line reproduces the 0.85× fold. Codex commits the
 same line in `openai/mac`, so the identical change merges clean.
