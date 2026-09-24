@@ -1,0 +1,114 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-contact-rigid-refusal.test.ts (3 tests | 2 failed) 10ms
+   × tries exact rigid paint after the measured iterative compression or joint-limit refusal 7ms
+   × independently rejects a rigid-eligible final joint limit and preserves both refusal causes 1ms
+ ❯ tests/exceptional-crafting-evidence-contract.test.ts (8 tests | 2 failed) 418ms
+     × replays every current rendered release control and preserves the Research reach boundary 137ms
+     × rejects the historical generic Research-reach false green and restores the bulletin 80ms
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts (29 tests | 1 failed) 372ms
+     × keeps every rendered Guide and release oracle green on current exact copy before browser spend 120ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/exceptional-crafting-evidence-contract.test.ts > Pureforged browser-evidence truth > replays every current rendered release control and preserves the Research reach boundary
+AssertionError: expected 'development-detail baseline red befor…' to be null
+
+- Expected:
+null
+
++ Received:
+"development-detail baseline red before mutation controls: {\"ok\":false,\"identity\":true,\"honest\":true,\"overclaim\":false,\"headings\":[\"New Features & Systems\",\"UI Enhancements\",\"Gameplay\",\"Bug Fixes\",\"Under the Hood\"],\"bulletCount\":86,\"populated\":true,\"charterPlacement\":true,\"firstHeading\":\"Gameplay\",\"recoveryHeading\":\"Bug Fixes\",\"ingressPlacement\":true,\"worldCodeHeading\":\"Gameplay\",\"atlasRouteHeading\":\"Gameplay\",\"worldCodeContract\":true,\"atlasRouteContract\":true,\"captureHeading\":\"Gameplay\",\"captureContract\":true,\"captureContradiction\":false,\"captureBioscanContradiction\":false,\"discoverLifeContradiction\":false,\"scoutHeading\":\"Gameplay\",\"scoutContract\":true,\"scoutContradiction\":false,\"recordsHeading\":\"UI Enhancements\",\"recordsContract\":true,\"recordsContradiction\":false,\"frontierAudioHeading\":\"New Features & Systems\",\"creatureListenHeading\":\"Gameplay\",\"biosphereListenHeading\":\"Gameplay\",\"audioContract\":true,\"audioContradiction\":false,\"mealHeading\":\"Gameplay\",\"mealContract\":true,\"mealContradiction\":false,\"breedHeading\":\"Gameplay\",\"breedContract\":true,\"breedContradiction\":false,\"renameHeading\":\"Gameplay\",\"renameContract\":true,\"renameContradiction\":false,\"lessonHeading\":\"Bug Fixes\",\"lessonContract\":true,\"lessonContradiction\":false,\"trainingHeading\":\"Gameplay\",\"trainingContract\":true,\"trainingContradiction\":false,\"artHeading\":\"Under the Hood\",\"artContract\":true,\"artContradiction\":false,\"workspaceContract\":true,\"coldArtContract\":true,\"workerContract\":true,\"shipyardHeading\":\"New Features & Systems\",\"shipyardContract\":true,\"shipyardContradiction\":false,\"hdSurfaceHeading\":\"Under the Hood\",\"hdSurfaceContract\":true,\"publishingHeading\":\"Under the Hood\",\"publishingContract\":true,\"publishingContradiction\":false,\"rnSeen\":\"1.8.9\",\"releasePending\":null}"
+
+ ❯ tests/exceptional-crafting-evidence-contract.test.ts:346:26
+    344|   it('replays every current rendered release control and preserves the…
+    345|     const { result, after, reachClaims, launcherClaims, final } = awai…
+    346|     expect(result.error).toBeNull();
+       |                          ^
+    347|     expect(result.baseline.ok).toBe(true);
+    348|     expect(result.ok).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/exceptional-crafting-evidence-contract.test.ts > Pureforged browser-evidence truth > rejects the historical generic Research-reach false green and restores the bulletin
+AssertionError: expected 'development-detail baseline red befor…' to be null
+
+- Expected:
+null
+
++ Received:
+"development-detail baseline red before mutation controls: {\"ok\":false,\"identity\":true,\"honest\":true,\"overclaim\":false,\"headings\":[\"New Features & Systems\",\"UI Enhancements\",\"Gameplay\",\"Bug Fixes\",\"Under the Hood\"],\"bulletCount\":86,\"populated\":true,\"charterPlacement\":true,\"firstHeading\":\"Gameplay\",\"recoveryHeading\":\"Bug Fixes\",\"ingressPlacement\":true,\"worldCodeHeading\":\"Gameplay\",\"atlasRouteHeading\":\"Gameplay\",\"worldCodeContract\":true,\"atlasRouteContract\":true,\"captureHeading\":\"Gameplay\",\"captureContract\":true,\"captureContradiction\":false,\"captureBioscanContradiction\":false,\"discoverLifeContradiction\":false,\"scoutHeading\":\"Gameplay\",\"scoutContract\":true,\"scoutContradiction\":false,\"recordsHeading\":\"UI Enhancements\",\"recordsContract\":true,\"recordsContradiction\":false,\"frontierAudioHeading\":\"New Features & Systems\",\"creatureListenHeading\":\"Gameplay\",\"biosphereListenHeading\":\"Gameplay\",\"audioContract\":true,\"audioContradiction\":false,\"mealHeading\":\"Gameplay\",\"mealContract\":true,\"mealContradiction\":false,\"breedHeading\":\"Gameplay\",\"breedContract\":true,\"breedContradiction\":false,\"renameHeading\":\"Gameplay\",\"renameContract\":true,\"renameContradiction\":false,\"lessonHeading\":\"Bug Fixes\",\"lessonContract\":true,\"lessonContradiction\":false,\"trainingHeading\":\"Gameplay\",\"trainingContract\":true,\"trainingContradiction\":false,\"artHeading\":\"Under the Hood\",\"artContract\":true,\"artContradiction\":false,\"workspaceContract\":true,\"coldArtContract\":true,\"workerContract\":true,\"shipyardHeading\":\"New Features & Systems\",\"shipyardContract\":true,\"shipyardContradiction\":false,\"hdSurfaceHeading\":\"Under the Hood\",\"hdSurfaceContract\":true,\"publishingHeading\":\"Under the Hood\",\"publishingContract\":true,\"publishingContradiction\":false,\"rnSeen\":\"1.8.9\",\"releasePending\":null}"
+
+ ❯ tests/exceptional-crafting-evidence-contract.test.ts:377:26
+    375|     expect(occurrences(glassSource, marker)).toBe(1);
+    376|     const { result, after, final } = await replayRenderedReleaseContro…
+    377|     expect(result.error).toBeNull();
+       |                          ^
+    378|     expect(result.baseline.ok).toBe(true);
+    379|     expect(result.ok).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps every rendered Guide and release oracle green on current exact copy before browser spend
+AssertionError: expected Object{ …(55) } to match object { complete: true, honest: true, …(4) }
+(49 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -2,7 +2,7 @@
+    "canonical": true,
+    "complete": true,
+    "honest": true,
+    "liveProgressionContract": true,
+    "liveProgressionContradiction": false,
+-   "populated": true,
++   "populated": false,
+  }
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:377:29
+    375|       readonly liveProgressionContradiction: boolean;
+    376|     };
+    377|     expect(releaseBaseline).toMatchObject({
+       |                             ^
+    378|       complete: true,
+    379|       honest: true,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  apps/game/src/creature-rig-contact-rigid-refusal.test.ts > tries exact rigid paint after the measured iterative compression or joint-limit refusal
+Error: Contact: cast@157.58333333333334 exceeds scale compression bound
+ ❯ Object.resolve apps/game/src/creature-rig-contact.ts:260:47
+    258|     shift=Math.max(shift,target.y-Math.sqrt(max*max-dx*dx)+1e-10-root.…
+    259|    }
+    260|    if(compression+shift>scaleLength*.08)throw Error('Contact: '+phase.…
+       |                                               ^
+    261|    if(shift>0){compression+=shift;pose.root={rotation:0,...pose.root,d…
+    262|    for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,tar…
+ ❯ apps/game/src/creature-rig-contact-rigid-refusal.test.ts:21:23
+ ❯ allSix apps/game/src/creature-rig-contact-rigid-refusal.test.ts:15:6
+ ❯ apps/game/src/creature-rig-contact-rigid-refusal.test.ts:17:98
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  apps/game/src/creature-rig-contact-rigid-refusal.test.ts > independently rejects a rigid-eligible final joint limit and preserves both refusal causes
+AssertionError: expected undefined to be an instance of Error
+ ❯ apps/game/src/creature-rig-contact-rigid-refusal.test.ts:57:22
+     55|  const outer=refusal as Error;
+     56|  expect(String(outer)).toBe(sample.error);
+     57|  expect(outer.cause).toBeInstanceOf(Error);
+       |                      ^
+     58|  const final=outer.cause as Error;
+     59|  expect(final.message).toContain('Contact: joint limit '+joint);
+ ❯ allSix apps/game/src/creature-rig-contact-rigid-refusal.test.ts:15:6
+ ❯ apps/game/src/creature-rig-contact-rigid-refusal.test.ts:41:101
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  5 failed | 35 passed (40)
+   Start at  15:29:01
+   Duration  2.33s (transform 618ms, setup 0ms, import 2.74s, tests 800ms, environment 0ms)
+

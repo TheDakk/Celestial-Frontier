@@ -1,5 +1,46 @@
 ## Archived 2026-09-23 — Python diagnosis before approved open-pose correction
 
+## Live handoff — 2026-09-24 five regressions repaired, source/signing gates pending
+
+Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac; tracks origin/openai/mac (cached0 behind/9 ahead, no fetch). Last signed HEAD1e9f5920 G. Claude absolute lane read-only, observed clean signed4c2bd1ec6d052ef3081bd6aa0848e33b15db010f. No GitHub write, sync, merge, release or deployment. .DS_Store untouched; existing Node26.9.0 session receipt reused.
+
+Current packet: audits/MOTION_FIVE_REDS_20260924/README.md. Exactly five reported regressions reproduced. Insect exact-rigid recovery is now restored independently of travel, without re-expanding protected crab/quadruped refusal boundaries. Current86-bullet rendered release inventory is independently measured and exact count/hash/removal controls agree. Final focused runs pass all60 unique tests; all3 typechecks and root validation pass. All90 protected inputs unchanged. Rejected candidates and every actual failed test run retained; no repeated unchanged S2/override/browser battery.
+
+Item4 is integrated on Claude: generated133-file list totals50,426,871 bytes; gzip bindings fit the unchanged128MiB package cap. Read-only report records Edge worker control and successful cached-arena reload with no extra server requests. Local lane has not imported that integrated source. Signed worker1e9f5920 remains available; this is no PR43 certification claim.
+
+Items5 and7 remain prepared/staged, unsigned after the prior two “communication with agent failed?” refusals. No new signing attempt until Nick renews until-quit approval. The Centipede level-crawl fix now also gives0 refusals at0.85×/1×/1.15× on current Claude stage via the read-only hashed overlay probe. Its actual library-arena.test.ts is absent locally; exact pin-removal patch applies cleanly. Nick must select Claude's same-integration-commit application or authorize exact local integration of4c2bd1ec (1544 changed files; fast-forward ancestry available). Do not copy an orphan test or edit Claude. Item7 routes53 candidates, with all53 still explicitly pending painted qualification and no new art.
+
+After those two signed items and a separate signed five-regression repair, run I5 on final clean committed source. Existing local-only source authority remains; PR43 different bytes require their own certification. No fresh I5 attempt or current-producer budget/test rewrite in this batch. Historical calibration stays untouched. New full develop profile waits for final source, rather than paying an unchanged/dirty battery now.
+
+Paired next steps: Codex holds staged reviewable work, awaits renewed signing approval and pin-removal integration route, then signs in order and finishes I5. Claude consumes the signed repairs and actual fix+pin removal together, preserving its integrated item4 assets. Nick can open Claude for this handoff. PR43 remains anthropic/mac→develop; no new PR or hosted attempt requested. Original Python-first motion review remains audits/MOTION_ANATOMY_20260923/review.html; no new film/CPU number claimed.
+
+
+## Live handoff — 2026-09-24 expanded sprint, signing blocked
+
+Own checkout /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac. Last signed HEAD1e9f5920; signedef45f97b records the expanded request/I5 source check. Claude's absolute lane remains read-only. Full current review/receipts: audits/MOTION_FOLLOWUP_20260924/README.md and one item README per4–7. No fetch/sync/push/PR/label/merge/hosted/release/deploy occurred. Pre-existing .DS_Store untouched.
+
+Item4 is signed: SHA256-pinned first-use battle2 cache, strict external manifest, original128MiB aggregate cap.45 PWA tests,35 release tests, typechecks and evidence build pass. CLAUDE_BATTLE2_MANIFEST.md supplies the exact list shape; Claude must generate it from its builder and run the integrated controlled-worker picker. Local producer differs from the old budget and is not hand-rebound.
+
+Item5 is fixed locally: compact crawl keeps the rigid trunk level; exact read-only Claude stage reproduction gives0 refusals at0.85×/1×/1.15×. Eight compact tests and root validation pass;90 protected inputs unchanged. Its actual library-arena.test.ts is absent here, so the exact KNOWN-pin removal patch is retained for Claude to apply in the same integration commit. No new native film or CPU claim. Item6 is unchanged signedfb1922a0 stance/override repair; current source hash comparisons preserve it, without repeating an unchanged battery.
+
+Item7 wires all53 empty profiles to existing specialized templates, preserving habitat/weapons and all53 pending-fit ledger entries. Twelve tests, all three typechecks and root validation pass. No art was generated or accepted by this routing change. Existing Python-first review: audits/MOTION_ANATOMY_20260923/review.html.
+
+Signing attempts for item5 failed twice with “communication with agent failed?” through /Users/nick/.local/bin/git-ssh-sign outside sandbox; exact errors retained. No unsigned commit/config change. All completed non-commit work is retained for review; further signing waits for Nick to renew approval until quit. Keep item5 and item7 separate signed commits. I5 has consumed no fresh certificate attempt: final clean committed bytes are unavailable while signing is blocked. Nick's local-only source choice remains authorization for local I5 after signing; it cannot certify PR43's different integrated source (read-only observed202191a1). Budget/test and old calibration remain unchanged.
+
+Paired next steps: Codex holds, resumes signing only after renewed approval, then measures the final clean local source. Claude can consume signed1e9f5920 andfb1922a0 and generate the manifest now; wait for signed item5/7, apply fix+pin removal together and run the actual integrated scale/picker checks. Nick should open Claude to relay the manifest contract. Claude must finish its own uncommitted files before any integration. No new PR or GitHub write is authorized; PR43 remains anthropic/mac→develop, not declared green. Startup receipt reused in this uninterrupted session; Node26.9.0.
+
+
+## Live handoff — 2026-09-24 expanded sprint in progress
+
+Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. Claude’s absolute worktree remains read-only. Nick added items4–7 from Claude’s uncommitted CODEX_PROMPT.md; its exact snapshot and hash are retained at audits/MOTION_FOLLOWUP_20260924. Signedef45f97b records I5 source triage first. PR43 was read-only verified OPEN at anthropic/mac202191a1efe47ca173ce0bbd32809def910b7a45 → develop; it differs from this local source. Standing no-sync/no-merge remains; no certificate attempt or hosted action consumed. I5-FIRST.md explains the exact source gate.
+
+Item4 implemented here: external battle2-assets.json with schema cf-battle2-assets/v1 and files[{path,bytes,sha256}], exact source/final-output inventory validation, digest-verified first-use caching per retained build, no eager arena download. The unchanged128MiB shipped limit includes lazy assets.45 PWA tests,35 release tests and all3 typechecks pass; one local evidence build succeeds. The authority printer then exits2 for stale budget producer, explicitly retained; no rebind. Claude must generate the actual pinned list from its builder and run the integrated controlled-worker picker. Exact shape/next steps: CLAUDE_BATTLE2_MANIFEST.md.
+
+Item5 local motion fix now clears the exact read-only Claude stage bout at 0.85×/1×/1.15× (zero refusals each), by keeping compact crawl trunk height level. Eight compact tests pass and protected inputs remain identical. ITEM5.md retains refusals, source receipts and the exact KNOWN-pin removal patch, which Claude must adopt in the same integration commit because its test is absent locally. Item7 unused-template wiring is next. Item6 remains the signedfb1922a0 stance/override repair, no changed seals or repeated unchanged battery. Existing motion review is audits/MOTION_ANATOMY_20260923/review.html, signedfb1922a0 plus4c23bffc handoff; its unresolved anatomy gates remain explicit.
+
+Codex continues independent work; Claude consumes signed changes and generates the manifest when handed this contract. Nick need not open Claude before this sprint finishes, but may relay the contract now. No push/PR/label/hosted/merge/release/deploy; no new art commissioned. Current Node26.9.0 identity rechecked; startup receipt reused within the same uninterrupted session. Signed commits only through existing wrapper; pre-existing .DS_Store untouched.
+
+
 ## Live handoff — 2026-09-24 motion anatomy local review
 
 OpenAI/Codex macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`. Nick accepted all thirteen prior art selections. Current request is audits/MOTION_ANATOMY_20260923/REQUEST.md: M0–M4 anatomy study and three reported defects, signed local work only. Claude’s absolute lane stays read-only; no push/PR/label/hosted/merge/release/deploy authority. Budget UNFROZEN, last verified PUBLIC; no fresh visibility claim or hosted attempt. Pre-existing `.DS_Store` untouched.

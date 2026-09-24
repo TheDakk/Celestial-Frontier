@@ -1,0 +1,30 @@
+{
+  "head": "4c2bd1ec6d052ef3081bd6aa0848e33b15db010f",
+  "worktreeCleanAtRead": false,
+  "sources": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/MOTION_ANATOMY_20260923/CODEX_PROMPT.md",
+      "sha256": "1156b10768934428cbb58c58731193c2d276b1a115bd99a49a588b30935977af",
+      "bytes": 15270
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/BATTLE2_LIBRARY_20260924/picker-smoke-06-sw/report.json",
+      "sha256": "d2dce2125a489024b9db98a8af8819256b8fa47fd4c4d9106b98a07ea3794710",
+      "bytes": 2674
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/battle2-assets.json",
+      "sha256": "7931656bc0a40454bb20636e8853ec98180b7e0597e72d70e737f8f003e0aed7",
+      "bytes": 26765
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src/battle2/library-arena.test.ts",
+      "sha256": "7682692b1b68e25b048348de643683c42fa7c3880116fc56c575a4cfb1d6f496",
+      "bytes": 27833
+    }
+  ],
+  "manifestFiles": 133,
+  "manifestAssetBytes": 50426871,
+  "scope": "Read-only observation of Claude evidence; no local rerun or certification claim",
+  "knownPinPatchCheck": "git apply --check passed against current read-only Claude test"
+}

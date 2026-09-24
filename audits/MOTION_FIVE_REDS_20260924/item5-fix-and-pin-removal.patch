@@ -1,0 +1,30 @@
+diff --git a/port/v2/apps/game/src/motion/family-actions.ts b/port/v2/apps/game/src/motion/family-actions.ts
+index 4560bcbb..618c3ac5 100644
+--- a/port/v2/apps/game/src/motion/family-actions.ts
++++ b/port/v2/apps/game/src/motion/family-actions.ts
+@@ -224,7 +224,9 @@ function compactMyriapodActions(pairs:number):Readonly<Record<string,MotionActio
+  return fauna({
+   idle:[{...ant(-3),...ultimate(2)},{head:-2},{...ant(3),...ultimate(-2)},0,-.001,-.002],
+   alert:[{head:-12,...ant(-24),...ultimate(5)},-.002],
+-  approach:{crawl:loop4(wave(22,12),wave(-3,5),wave(-22,-12),0,-.002,.001)},
++  // A rigid trunk stays level during crawl; stance/swing owns leg clearance.
++  // Stacking a body bob over idle lifts the front stance limb into a skin fold.
++  approach:{crawl:loop4(wave(22,12),wave(-3,5),wave(-22,-12))},
+   melee:{mandible:melee({head:-12},{head:8,mandible:-20},{head:16,mandible:-38},{head:2},[-.02,.10,.12,.03],[0,0,0,0]),
+    body:melee({head:-4,...ultimate(3)},{head:3},{head:6,...ultimate(-3)},{head:1},[-.01,.07,.09,.02],[0,0,0,0])},
+   cast:[P(tAt('cast','rise'),'ease-in',{head:-16,...ant(-15)},0,-.002),P(tAt('cast','hold'),'sine-in-out',{head:-20,...ant(-25),...ultimate(8)},0,-.002),P(tAt('cast','release'),'ease-out',{head:14,mandible:-15},0,0),take(REST)],
+--- a/port/v2/apps/game/src/battle2/library-arena.test.ts
++++ b/port/v2/apps/game/src/battle2/library-arena.test.ts
+@@ -147,11 +147,7 @@
+       const n = rig.refusals(); if (n) found.push(`${a.earthName} ×${k}: ${n} (${(rig.lastRefusal() ?? '').slice(0, 90)})`); lines.push(`${a.earthName} ×${k}: ${n}`); stage.dispose();
+     }
+     console.log('\nSWEEP\n' + found.join('\n'));
+-    // KNOWN, owned by Codex (the anatomy chain), measured by this sweep 2026-09-24: the Centipede's ARAP skin folds one triangle at 0.85×
+-    // (also film chimpanzee-vs-centipede-02). The pin demands it with its reason, so the day Codex fixes the skin this test goes red and says so.
+-    const KNOWN: Readonly<Record<string, RegExp>> = { 'Centipede ×0.85:': /ARAP skin: unresolved folded triangles/ };
+-    expect(found.filter((f) => !Object.keys(KNOWN).some((k) => f.startsWith(k)))).toEqual([]);
+-    for (const [k, why] of Object.entries(KNOWN)) { const hit = found.find((f) => f.startsWith(k)); expect(hit, `${k} no longer refuses — remove its KNOWN pin`).toBeDefined(); expect(hit).toMatch(why); }
++    expect(found).toEqual([]);
+     expect(lines.length).toBe(CARD_ARCHETYPES.length * 3); // every archetype at every scale was run
+   }, 900_000);
+   it('WET arena DRAWING: a full lake from surfaceY to the floor, three frames wide in the depth bands; a swimmer facing a GROUND fighter gets its own half and the ground fighter keeps its floor (review 2026-09-24: the land fighter stood underwater)', async () => {
