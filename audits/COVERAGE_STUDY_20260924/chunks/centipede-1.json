@@ -1,0 +1,76 @@
+{
+ "id": "centipede-1",
+ "standIn": "Centipede",
+ "template": "myriapod",
+ "accentGroups": [
+  "head"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/centipede/card/master-512.png",
+  "joints": [
+   "leg0NearFoot",
+   "leg1NearFoot",
+   "leg2NearFoot",
+   "leg3NearFoot",
+   "leg4NearFoot",
+   "leg5NearFoot",
+   "leg6NearFoot",
+   "leg7NearFoot",
+   "leg8NearFoot",
+   "leg9NearFoot",
+   "leg10NearFoot",
+   "leg11NearFoot",
+   "leg12NearFoot",
+   "leg13NearFoot",
+   "leg0FarFoot",
+   "leg1FarFoot",
+   "leg2FarFoot",
+   "leg3FarFoot",
+   "leg4FarFoot",
+   "leg5FarFoot",
+   "leg6FarFoot",
+   "leg7FarFoot",
+   "leg8FarFoot",
+   "leg9FarFoot",
+   "leg10FarFoot",
+   "leg11FarFoot",
+   "leg12FarFoot",
+   "leg13FarFoot",
+   "ultimateNear",
+   "ultimateFar",
+   "head",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Millipede",
+   "group": "millipede",
+   "posture": "crawling",
+   "aspect": 6,
+   "headFrac": 0.05,
+   "eyes": "small",
+   "mustRead": [
+    "cylindrical tube body of many identical rings",
+    "two pairs of short legs per segment in a rippling fringe",
+    "short clubbed antennae on a rounded head"
+   ],
+   "note": "Legs are short and hidden under the body, unlike a centipede's long splayed legs."
+  },
+  {
+   "name": "Giant Centipede",
+   "group": "centipede",
+   "posture": "crawling",
+   "aspect": 9,
+   "headFrac": 0.05,
+   "eyes": "small",
+   "mustRead": [
+    "exactly one pair of legs per body segment",
+    "long trailing antennae and matching rear legs",
+    "curved venom claws under the head"
+   ],
+   "note": "One leg pair per segment, not two - that would be a millipede; body is flattened, not tubular."
+  }
+ ]
+}

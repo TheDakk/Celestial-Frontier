@@ -1,0 +1,370 @@
+{
+ "id": "eagle-4",
+ "standIn": "Eagle",
+ "template": "biped-bird",
+ "accentGroups": [
+  "head",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/eagle/card/master-512.png",
+  "joints": [
+   "legNearFoot",
+   "legFarFoot",
+   "legNearAnkle",
+   "legFarAnkle",
+   "legNearKnee",
+   "legFarKnee",
+   "beak",
+   "head",
+   "neck1",
+   "neck0",
+   "wingNearRoot",
+   "wingNearTip",
+   "wingFarRoot",
+   "wingFarTip",
+   "tailFan",
+   "chest",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Coot",
+   "group": "swimming-bird",
+   "posture": "swimming",
+   "aspect": 2.2,
+   "headFrac": 0.2,
+   "eyes": "prominent",
+   "mustRead": [
+    "white bill running up into a white forehead shield",
+    "sooty black rounded body",
+    "big lobed grey-green toes"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Moorhen",
+   "group": "swimming-bird",
+   "posture": "swimming",
+   "aspect": 2.2,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "red bill with a yellow tip and red forehead shield",
+    "white streak along the flank",
+    "white undertail flashes with a cocked tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Rail",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 2,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "long slightly downcurved bill",
+    "narrow laterally flattened body for slipping through reeds",
+    "outsized long toes and a cocked short tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Bittern",
+   "group": "wading-bird",
+   "posture": "upright",
+   "aspect": 1.3,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "dagger bill pointed straight up in the reed-mimic freeze pose",
+    "brown-and-buff streaked camouflage",
+    "thick hunched retractable neck"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Oystercatcher",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 1.9,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "long straight orange-red chisel bill",
+    "bold black-and-white blocked plumage",
+    "stout pink legs and a red eye ring"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Godwit",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 1.9,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "very long straight bill with a faint upward tilt and a pale base",
+    "long dark legs trailing behind in flight",
+    "cinnamon breast barred with dark chevrons"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Avocet",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 1.8,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "thin needle bill sweeping strongly upward",
+    "crisp black-and-white pied patterning",
+    "long blue-grey legs"
+   ],
+   "note": "The bill curves up, not down - the opposite of a curlew's."
+  },
+  {
+   "name": "Gannet",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 2,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "long straight dagger bill with dark facial mask",
+    "buff-yellow wash over the head",
+    "white body with jet-black wingtips"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Frigatebird",
+   "group": "bird",
+   "posture": "flying",
+   "aspect": 2,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "deeply forked scissor tail",
+    "very long crooked M-shaped wings",
+    "hooked bill and, on males, an inflated scarlet throat pouch"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Seabird",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.9,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "long pointed wings folded over a streamlined body",
+    "stout hooked or dagger bill",
+    "webbed feet"
+   ],
+   "note": "generic name - drawn as a representative gull"
+  },
+  {
+   "name": "Booby",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 2,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "vividly coloured blue or red webbed feet",
+    "long tapered dagger bill running straight into the forehead",
+    "forward-set eyes flanking the bill giving a binocular stare"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tropicbird",
+   "group": "bird",
+   "posture": "flying",
+   "aspect": 3,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "two extremely long ribbon tail streamers doubling the body length",
+    "black wedge stripe through the eye",
+    "stout red or yellow bill on a white pigeon-like body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Snow Petrel",
+   "group": "bird",
+   "posture": "flying",
+   "aspect": 2,
+   "headFrac": 0.24,
+   "eyes": "small",
+   "mustRead": [
+    "entirely pure white plumage",
+    "short black hooked bill with tube nostrils",
+    "long narrow pointed seabird wings"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Chicken",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 1.1,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "plump rounded body on scaly legs",
+    "small comb and wattles",
+    "short upswept fan of tail feathers"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Rooster",
+   "group": "ground-foraging-bird",
+   "posture": "biped",
+   "aspect": 1,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "tall red comb and long wattles",
+    "arching sickle tail plumes",
+    "upright puffed chest with hackle cape"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Kestrel",
+   "group": "raptor",
+   "posture": "flying",
+   "aspect": 0.85,
+   "headFrac": 0.2,
+   "eyes": "prominent",
+   "mustRead": [
+    "hooked bill with dark moustache stripe",
+    "rufous back spotted with black",
+    "long barred tail and pointed falcon wings"
+   ],
+   "note": "Slim and small-headed - not the bulky broad-winged silhouette of a hawk or buzzard."
+  },
+  {
+   "name": "Starling",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.6,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "glossy iridescent black plumage flecked with pale spots",
+    "sharp straight pointed bill",
+    "short square tail with triangular wings"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Desert Owl",
+   "group": "raptor",
+   "posture": "biped",
+   "aspect": 0.8,
+   "headFrac": 0.34,
+   "eyes": "prominent",
+   "mustRead": [
+    "flat facial disc with huge forward-facing eyes",
+    "pale sandy-buff plumage",
+    "feathered legs and hooked bill nearly hidden in face feathers"
+   ],
+   "note": "Generic - interpreted as a pale desert-dwelling owl (desert tawny owl type). Owls are taller than wide when perched."
+  },
+  {
+   "name": "Emu",
+   "group": "flightless-bird",
+   "posture": "biped",
+   "aspect": 0.9,
+   "headFrac": 0.12,
+   "eyes": "normal",
+   "mustRead": [
+    "shaggy drooping hair-like double plumage",
+    "long bare blue-grey neck",
+    "no visible wings, long three-toed legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cassowary",
+   "group": "flightless-bird",
+   "posture": "biped",
+   "aspect": 0.95,
+   "headFrac": 0.15,
+   "eyes": "normal",
+   "mustRead": [
+    "tall bony helmet casque on the head",
+    "vivid blue neck with red hanging wattles",
+    "glossy black hair-like plumage over a bulky body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Kiwi",
+   "group": "flightless-bird",
+   "posture": "biped",
+   "aspect": 1.4,
+   "headFrac": 0.35,
+   "eyes": "small",
+   "mustRead": [
+    "extremely long slender probing bill",
+    "round tailless body of shaggy hair-like feathers",
+    "stout short legs set far back"
+   ],
+   "note": "The bill can be a third of the body length and nostrils sit at its very tip; wings are invisible under the plumage."
+  },
+  {
+   "name": "Kakapo",
+   "group": "flightless-bird",
+   "posture": "biped",
+   "aspect": 1.5,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "moss-green plumage mottled with black and yellow",
+    "owl-like whiskered facial disc",
+    "heavy squat flightless parrot body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cockatoo",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 0.9,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "raised fan crest of feathers on the crown",
+    "heavy dark hooked bill",
+    "two-forward two-back gripping toes"
+   ],
+   "note": "Generic - interpreted as a sulphur-crested cockatoo. The crest folds flat when relaxed and is the key identifying feature."
+  },
+  {
+   "name": "Harpy Eagle",
+   "group": "raptor",
+   "posture": "upright",
+   "aspect": 0.85,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "split double crest raised on the grey head",
+    "enormous grey talons thicker than a human finger",
+    "black chest band over a white belly"
+   ],
+   "note": "Wings are broad and short for forest flight, not long and soaring; the head is owl-like and pale."
+  }
+ ]
+}

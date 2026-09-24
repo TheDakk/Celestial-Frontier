@@ -1,0 +1,382 @@
+{
+ "id": "civet-1",
+ "standIn": "Civet",
+ "template": "quadruped",
+ "accentGroups": [
+  "ears",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/civet-sentinel-input-01/card/master-512.png",
+  "joints": [
+   "earFarTip",
+   "earNearTip",
+   "jaw",
+   "head",
+   "foreNearPaw",
+   "foreNearAnkle",
+   "foreNearKnee",
+   "foreFarPaw",
+   "foreFarAnkle",
+   "foreFarKnee",
+   "hindNearPaw",
+   "hindNearAnkle",
+   "hindNearKnee",
+   "hindFarPaw",
+   "hindFarAnkle",
+   "hindFarKnee",
+   "tail3",
+   "tail2",
+   "tail1",
+   "neck",
+   "chest",
+   "spine"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Jaguar",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.23,
+   "eyes": "normal",
+   "mustRead": [
+    "stocky muscular build on short legs",
+    "rosettes with spots inside them",
+    "massive broad blocky jaw"
+   ],
+   "note": "often drawn as a leopard; the jaguar is far heavier-headed and its rosettes contain central spots"
+  },
+  {
+   "name": "Leopard",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 2.2,
+   "headFrac": 0.21,
+   "eyes": "normal",
+   "mustRead": [
+    "long thick tail nearly as long as the body",
+    "hollow ring rosettes with empty centres",
+    "low-slung slender body"
+   ],
+   "note": "rosettes are open rings with no spot in the middle, unlike a jaguar's"
+  },
+  {
+   "name": "Tiger",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 2.1,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "vertical black stripes over orange",
+    "white cheek ruff and white eyebrow spots",
+    "long ringed tail"
+   ],
+   "note": "stripes are vertical on the flank and continue onto the skin, not just a few token bands"
+  },
+  {
+   "name": "Clouded Leopard",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 2.3,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "large cloud-shaped dark-edged blotches",
+    "tail as long as head and body combined",
+    "very short stout legs"
+   ],
+   "note": "the tail equals the whole head-body length; drawings usually make it far too short"
+  },
+  {
+   "name": "Ocelot",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 2.1,
+   "headFrac": 0.23,
+   "eyes": "normal",
+   "mustRead": [
+    "chain-like rosettes running in streaks along the flank",
+    "two black stripes on each cheek",
+    "housecat-sized build with a shortish tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tapir",
+   "group": "tapir",
+   "posture": "quadruped",
+   "aspect": 1.8,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "short flexible prehensile snout",
+    "rounded high rump with a sloping back",
+    "stubby nub of a tail"
+   ],
+   "note": "generic representative: a lowland tapir. Not a pig - the nose is a short mobile proboscis, not a flat disc snout"
+  },
+  {
+   "name": "Forest Elephant",
+   "group": "elephant",
+   "posture": "quadruped",
+   "aspect": 1.3,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "trunk reaching the ground",
+    "straight downward-pointing tusks",
+    "rounded ears smaller than a savanna elephant's"
+   ],
+   "note": "smaller and darker than the savanna elephant, with straighter tusks and oval ears"
+  },
+  {
+   "name": "Wild Boar",
+   "group": "suid",
+   "posture": "quadruped",
+   "aspect": 1.8,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "high shoulder hump sloping down to a low rump",
+    "upward-curving tusks from the lower jaw",
+    "bristly mane along the spine"
+   ],
+   "note": "front-heavy wedge silhouette; not the round barrel body of a farm pig"
+  },
+  {
+   "name": "Peccary",
+   "group": "suid",
+   "posture": "quadruped",
+   "aspect": 1.7,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "straight downward-pointing tusks",
+    "pig-like body on slim delicate legs",
+    "no visible tail"
+   ],
+   "note": "tusks point straight down, not curled upward like a boar's"
+  },
+  {
+   "name": "Okapi",
+   "group": "hoofed-unhorned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "horizontal white stripes on the hindquarters and upper legs",
+    "deep chocolate body with a sloping back",
+    "giraffe-like head with short skin-covered ossicones"
+   ],
+   "note": "a short-necked giraffe relative, not a zebra; only the rear half is striped"
+  },
+  {
+   "name": "Sloth",
+   "group": "xenarthran",
+   "posture": "quadruped",
+   "aspect": 1.2,
+   "headFrac": 0.26,
+   "eyes": "small",
+   "mustRead": [
+    "long hooked scythe claws",
+    "small round flat face with a faint smile",
+    "shaggy coarse greenish fur"
+   ],
+   "note": "generic representative: a three-toed sloth. Normally hangs upside down beneath a branch, so the limbs read above the body"
+  },
+  {
+   "name": "Giant Anteater",
+   "group": "toothless-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.6,
+   "headFrac": 0.33,
+   "eyes": "small",
+   "mustRead": [
+    "long tapered tubular snout with a pin-hole mouth",
+    "enormous bushy flag-like tail",
+    "black-and-white diagonal shoulder wedge"
+   ],
+   "note": "walks on the knuckles of the forefeet to keep the huge claws curled inward"
+  },
+  {
+   "name": "Kinkajou",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "long prehensile tail thick at the base",
+    "round teddy-bear face with huge dark eyes",
+    "golden-brown woolly fur"
+   ],
+   "note": "a raccoon relative, not a monkey; it is the only carnivoran in the Americas with a truly prehensile tail"
+  },
+  {
+   "name": "Coati",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "long upturned flexible snout",
+    "faintly banded tail held straight up like a flagpole",
+    "long low body with plantigrade feet"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Pangolin",
+   "group": "toothless-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "overlapping keratin scales like a pinecone",
+    "thick tapering tail as long as the body",
+    "tiny smooth conical head with no visible teeth"
+   ],
+   "note": "the head and belly are bare skin; only the back, flanks and tail are scaled"
+  },
+  {
+   "name": "Caiman",
+   "group": "crocodilian",
+   "posture": "sprawling",
+   "aspect": 4.5,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "bony ridge between the eyes",
+    "heavily scuted armoured back and neck",
+    "broad blunt snout with the teeth hidden when shut"
+   ],
+   "note": "snout is broad and rounded like an alligator's; the lower teeth do not show when the mouth is closed"
+  },
+  {
+   "name": "Crocodile",
+   "group": "crocodilian",
+   "posture": "sprawling",
+   "aspect": 5,
+   "headFrac": 0.32,
+   "eyes": "normal",
+   "mustRead": [
+    "long narrow V-shaped snout",
+    "enlarged fourth lower tooth visible with the jaws shut",
+    "double-crested laterally flattened tail"
+   ],
+   "note": "teeth interlock and stay visible when the mouth is closed, unlike an alligator's"
+  },
+  {
+   "name": "Elephant",
+   "group": "elephant",
+   "posture": "quadruped",
+   "aspect": 1.3,
+   "headFrac": 0.26,
+   "eyes": "small",
+   "mustRead": [
+    "trunk reaching the ground with two grasping lips",
+    "huge fan-shaped ears",
+    "pillar legs and a dipped saddle back"
+   ],
+   "note": "generic representative: an African savanna elephant - big ears, dipped back, both sexes tusked"
+  },
+  {
+   "name": "Rhinoceros",
+   "group": "rhino",
+   "posture": "quadruped",
+   "aspect": 1.7,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "horn (or two) rising from the nose, not the forehead",
+    "thick plated hide with deep folds",
+    "barrel body carried low on stumpy three-toed legs"
+   ],
+   "note": "the horn grows from the nose; small eyes sit far back on the sides of the head"
+  },
+  {
+   "name": "Gaur",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "tall muscular ridge running along the shoulders",
+    "white stockings on all four legs",
+    "pale grey forehead patch between upcurving horns"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Banteng",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "white rump patch and white lower legs",
+    "white band above the muzzle",
+    "smooth crescent horns joined by a bald forehead plate"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Water Buffalo",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.7,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "enormous swept-back crescent horns",
+    "heavy low-slung body with a straight back",
+    "broad flat wet muzzle held low"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Deer",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "branched sweeping antlers",
+    "slender legs and a long thin neck",
+    "large upright cupped ears"
+   ],
+   "note": "generic representative: a red / white-tailed deer type. Antlers are branched bone shed each year and only males carry them"
+  },
+  {
+   "name": "Antelope",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.23,
+   "eyes": "normal",
+   "mustRead": [
+    "unbranched ringed horns swept back or lyre-shaped",
+    "deep chest on very fine legs",
+    "short flicking tail and tan flank with a white belly"
+   ],
+   "note": "generic representative: an impala/gazelle-type antelope. Horns are permanent and unbranched, not deer antlers"
+  }
+ ]
+}

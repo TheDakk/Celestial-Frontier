@@ -1,0 +1,372 @@
+{
+ "id": "salmon-2",
+ "standIn": "Salmon",
+ "template": "fish",
+ "accentGroups": [
+  "fins"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/salmon/card/master-512.png",
+  "joints": [
+   "pectoralNear",
+   "pectoralFar",
+   "dorsal",
+   "jaw",
+   "head",
+   "caudal",
+   "spine5",
+   "spine4",
+   "spine3",
+   "spine2",
+   "spine1",
+   "spine0",
+   "root"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Grayling",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.8,
+   "headFrac": 0.22,
+   "eyes": "prominent",
+   "mustRead": [
+    "tall sail-like spotted dorsal fin",
+    "small mouth on a trout-shaped body",
+    "adipose fin and forked tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Minnow",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "small slim silvery body",
+    "single soft dorsal fin set mid-back",
+    "dark lateral stripe"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Sculpin",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.2,
+   "headFrac": 0.35,
+   "eyes": "prominent",
+   "mustRead": [
+    "oversized broad flattened head",
+    "huge fan-like pectoral fins propping it on the bottom",
+    "scaleless tapering tadpole-shaped body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Sturgeon",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 5,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "rows of bony scutes ridging the back and flanks",
+    "four barbels under a long pointed snout",
+    "shark-like upturned asymmetric tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Paddlefish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.4,
+   "eyes": "small",
+   "mustRead": [
+    "long flat paddle-shaped rostrum a third of the body length",
+    "cavernous gaping toothless mouth",
+    "smooth scaleless skin and shark-like tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Perch",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.8,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "two separate dorsal fins, the front one spiny",
+    "dark vertical bars down green-gold flanks",
+    "orange-red pelvic and anal fins"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Pacu",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.8,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "deep coin-shaped compressed body",
+    "blunt steep forehead with an underslung jaw",
+    "flat square human-like teeth"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Arapaima",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4.5,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "dorsal and anal fins set far back framing the tail like a paddle",
+    "large armoured scales edged in red at the rear",
+    "bony flattened head with a small upward mouth"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Arowana",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 5,
+   "headFrac": 0.2,
+   "eyes": "prominent",
+   "mustRead": [
+    "steeply upturned drawbridge mouth",
+    "two barbels projecting from the chin",
+    "long ribbon dorsal and anal fins running to the tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Electric Eel",
+   "group": "eel",
+   "posture": "swimming",
+   "aspect": 8,
+   "headFrac": 0.12,
+   "eyes": "small",
+   "mustRead": [
+    "single long ribbon anal fin running the whole underside",
+    "no dorsal fin and no pelvic fins",
+    "blunt rounded flattened head"
+   ],
+   "note": "Not a true eel but a knifefish - it undulates the belly fin and has a flat-topped head, not an eel's continuous dorsal fringe."
+  },
+  {
+   "name": "Stingray",
+   "group": "stingray",
+   "posture": "swimming",
+   "aspect": 2.2,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "flat kite-shaped disc of fused wing-like pectorals",
+    "long whip tail carrying a serrated barb",
+    "eyes on top with the mouth and gills underneath"
+   ],
+   "note": "Almost always drawn from above; in true side profile it is a thin wafer with a trailing whip."
+  },
+  {
+   "name": "Cichlid",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.4,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "single long dorsal fin, spiny in front and soft behind",
+    "deep oval body with pointed trailing fin tips",
+    "thick-lipped sloping face"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tetra",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.5,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "small deep-bodied silvery fish",
+    "tiny adipose fin behind the dorsal",
+    "bright lateral stripe from eye to tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "River Dolphin",
+   "group": "toothed-cetacean",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "very long narrow tweezer beak crowded with teeth",
+    "low ridge or hump instead of a tall dorsal fin",
+    "bulging flexible melon and a mobile neck"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Manatee",
+   "group": "sirenian",
+   "posture": "swimming",
+   "aspect": 2.8,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "rounded spatula paddle tail",
+    "blunt bristly downturned muzzle with a split upper lip",
+    "barrel body with front flippers and no hind limbs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Sunfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.5,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "very deep round pancake-flat body",
+    "dark ear flap tab on the gill cover",
+    "tiny mouth on a small head"
+   ],
+   "note": "Ambiguous name - interpreted as a freshwater sunfish (bluegill type), not the oceanic mola."
+  },
+  {
+   "name": "Walleye",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "large cloudy glassy reflective eye",
+    "two dorsal fins with a spiny front one",
+    "white tip on the lower lobe of the tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Whitefish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "small blunt overhanging snout above a tiny mouth",
+    "adipose fin behind the dorsal",
+    "large silvery scales and a deeply forked tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Lungfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 6,
+   "headFrac": 0.15,
+   "eyes": "small",
+   "mustRead": [
+    "eel-like body ending in a pointed continuous tail fin",
+    "thread-like filamentous limb fins",
+    "smooth scaled skin and a small blunt head"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tigerfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.5,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "huge interlocking dagger fangs visible with the mouth closed",
+    "horizontal dark stripes along silver flanks",
+    "deeply forked red-tinged tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Goldfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.2,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "stubby deep orange body",
+    "flowing double fan tail",
+    "high arched back with a long dorsal fin"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Mullet",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "blunt flat-topped head with a tiny triangular mouth",
+    "two widely separated small dorsal fins",
+    "silvery torpedo body with faint stripes"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tarpon",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.5,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "huge silver-dollar plate scales",
+    "upturned bulldog lower jaw",
+    "long trailing filament off the rear of the dorsal fin"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Snapper",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.8,
+   "headFrac": 0.32,
+   "eyes": "prominent",
+   "mustRead": [
+    "sloping forehead running to a pointed snout",
+    "pair of canine teeth at the front of the jaw",
+    "continuous spiny dorsal fin over a stout body"
+   ],
+   "note": ""
+  }
+ ]
+}

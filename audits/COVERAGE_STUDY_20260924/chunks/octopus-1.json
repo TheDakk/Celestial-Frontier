@@ -1,0 +1,144 @@
+{
+ "id": "octopus-1",
+ "standIn": "Octopus",
+ "template": "cephalopod",
+ "accentGroups": [
+  "head"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/octopus/card/master-512.png",
+  "joints": [
+   "eyeNear",
+   "eyeFar",
+   "siphon",
+   "arm4Seg2",
+   "arm4Seg1",
+   "arm4Seg0",
+   "arm2Seg2",
+   "arm2Seg1",
+   "arm2Seg0",
+   "arm6Seg2",
+   "arm6Seg1",
+   "arm6Seg0",
+   "arm0Seg2",
+   "arm0Seg1",
+   "arm0Seg0",
+   "arm7Seg2",
+   "arm7Seg1",
+   "arm7Seg0",
+   "arm1Seg2",
+   "arm1Seg1",
+   "arm1Seg0",
+   "arm3Seg2",
+   "arm3Seg1",
+   "arm3Seg0",
+   "arm5Seg2",
+   "arm5Seg1",
+   "arm5Seg0",
+   "mantle",
+   "head",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Squid",
+   "group": "cephalopod",
+   "posture": "swimming",
+   "aspect": 3.2,
+   "headFrac": 0.15,
+   "eyes": "prominent",
+   "mustRead": [
+    "torpedo mantle with triangular fins at the pointed rear",
+    "eight arms plus two longer clubbed tentacles",
+    "large eye at the base of the arms"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cuttlefish",
+   "group": "cephalopod",
+   "posture": "swimming",
+   "aspect": 2,
+   "headFrac": 0.35,
+   "eyes": "prominent",
+   "mustRead": [
+    "W-shaped horizontal pupil",
+    "undulating fin skirt running the full length of the mantle",
+    "eight short arms plus two longer retractable tentacles"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Giant Octopus",
+   "group": "cephalopod",
+   "posture": "crawling",
+   "aspect": 1.6,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "bulbous bag-like mantle sitting above the eyes",
+    "eight suckered arms of unequal length",
+    "horizontal slit pupil in a bulging eye"
+   ],
+   "note": "the big 'head' bulb is the mantle - the eyes sit below it, where the arms attach; no tentacles, only eight arms"
+  },
+  {
+   "name": "Giant Squid",
+   "group": "cephalopod",
+   "posture": "swimming",
+   "aspect": 5.5,
+   "headFrac": 0.15,
+   "eyes": "prominent",
+   "mustRead": [
+    "two feeding tentacles far longer than the eight arms, with clubbed toothed tips",
+    "torpedo mantle with a small triangular fin pair at the tail end",
+    "dinner-plate eyes"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Vampire Squid",
+   "group": "cephalopod",
+   "posture": "swimming",
+   "aspect": 1.3,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "webbed cloak joining all eight arms into a cape",
+    "huge red-glowing eyes",
+    "pair of ear-like flap fins on the mantle"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Deep-Sea Octopus",
+   "group": "cephalopod",
+   "posture": "swimming",
+   "aspect": 1.4,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "ear-like fins flapping from the top of the mantle",
+    "webbed umbrella of skin between the eight arms",
+    "soft translucent gelatinous body"
+   ],
+   "note": "generic name - drawn as a finned dumbo-type deep-water octopus"
+  },
+  {
+   "name": "Nautilus",
+   "group": "cephalopod",
+   "posture": "swimming",
+   "aspect": 1.2,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "coiled chambered shell striped with red-brown flames",
+    "dozens of short tentacles fanning from the opening",
+    "leathery hood over the head"
+   ],
+   "note": "Around ninety small suckerless tentacles, not eight arms; the eye is a pinhole with no lens."
+  }
+ ]
+}

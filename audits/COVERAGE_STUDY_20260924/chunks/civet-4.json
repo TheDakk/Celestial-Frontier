@@ -1,0 +1,382 @@
+{
+ "id": "civet-4",
+ "standIn": "Civet",
+ "template": "quadruped",
+ "accentGroups": [
+  "ears",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/civet-sentinel-input-01/card/master-512.png",
+  "joints": [
+   "earFarTip",
+   "earNearTip",
+   "jaw",
+   "head",
+   "foreNearPaw",
+   "foreNearAnkle",
+   "foreNearKnee",
+   "foreFarPaw",
+   "foreFarAnkle",
+   "foreFarKnee",
+   "hindNearPaw",
+   "hindNearAnkle",
+   "hindNearKnee",
+   "hindFarPaw",
+   "hindFarAnkle",
+   "hindFarKnee",
+   "tail3",
+   "tail2",
+   "tail1",
+   "neck",
+   "chest",
+   "spine"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Mole",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.6,
+   "headFrac": 0.24,
+   "eyes": "hidden",
+   "mustRead": [
+    "huge outward-turned spade forepaws",
+    "pink pointed fleshy snout",
+    "cylindrical neckless velvet body"
+   ],
+   "note": "No visible eyes or external ears; the forelimbs sit at the very front, almost beside the head."
+  },
+  {
+   "name": "Shrew",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.8,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "long mobile pointed proboscis-like snout",
+    "tiny bead eyes",
+    "short velvety body and thin tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Hedgehog",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "dense cape of spines over the back",
+    "pointed pink snout poking out in front",
+    "rounded loaf-shaped body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Box Turtle",
+   "group": "tortoise",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "high domed shell",
+    "hinged underside that shuts like a box",
+    "scaly clawed elephantine feet"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Newt",
+   "group": "salamander",
+   "posture": "sprawling",
+   "aspect": 4,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "laterally flattened paddle tail",
+    "four small splayed limbs",
+    "moist granular skin"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Fisher",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.8,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "long low mustelid body with bushy tapering tail",
+    "dark grizzled coat",
+    "broad rounded ears and blunt muzzle"
+   ],
+   "note": ""
+  },
+  {
+   "name": "River Otter",
+   "group": "aquatic-pawed-mammal",
+   "posture": "quadruped",
+   "aspect": 3.2,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "thick muscular tail tapering to a point",
+    "webbed feet",
+    "blunt whiskered face with small ears"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Beaver",
+   "group": "aquatic-pawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.2,
+   "headFrac": 0.24,
+   "eyes": "small",
+   "mustRead": [
+    "flat scaly paddle tail",
+    "big orange chisel incisors",
+    "stocky humped body on short legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Alligator Lizard",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 6,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "very long tail far exceeding the body",
+    "stubby short legs on an elongate trunk",
+    "squared armoured scale rows with a fold along the flank"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Giant Salamander",
+   "group": "salamander",
+   "posture": "sprawling",
+   "aspect": 5.5,
+   "headFrac": 0.24,
+   "eyes": "small",
+   "mustRead": [
+    "broad flattened shovel head",
+    "wrinkled fleshy skin folds along the flanks",
+    "tiny lidless dot eyes"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Wolverine",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.2,
+   "headFrac": 0.24,
+   "eyes": "small",
+   "mustRead": [
+    "heavy bear-like build with humped shoulders",
+    "pale stripe sweeping along each flank to the tail",
+    "bushy tail and huge clawed paws"
+   ],
+   "note": "It is a giant mustelid, not a small bear: body still long and low, legs short and stout."
+  },
+  {
+   "name": "Moose",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.4,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "broad palmate shovel antlers",
+    "long overhanging drooping muzzle",
+    "dewlap bell under the throat and humped shoulders"
+   ],
+   "note": "Legs are extremely long relative to the body; the animal is nearly as tall as it is long."
+  },
+  {
+   "name": "Reindeer",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "antlers with a forward-sweeping brow shovel over the face",
+    "thick pale neck mane",
+    "broad splayed hooves"
+   ],
+   "note": "Both sexes carry antlers, unlike other deer."
+  },
+  {
+   "name": "Caribou",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "tall sweeping antlers with a forward brow shovel",
+    "white neck ruff",
+    "wide splayed snowshoe hooves"
+   ],
+   "note": "Same species as reindeer (wild North American form) - slightly leggier and leaner."
+  },
+  {
+   "name": "Red Fox",
+   "group": "canid",
+   "posture": "quadruped",
+   "aspect": 2.3,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "enormous bushy white-tipped brush tail",
+    "black stockings on the legs",
+    "sharp pointed ears and narrow muzzle"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Arctic Fox",
+   "group": "canid",
+   "posture": "quadruped",
+   "aspect": 2.1,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "short rounded ears",
+    "blunt short muzzle",
+    "thick fluffy all-white coat and dense round tail"
+   ],
+   "note": "Everything is shortened and rounded compared to a red fox - ears, muzzle and legs."
+  },
+  {
+   "name": "Lemming",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "fat round furry body",
+    "almost invisible stub tail",
+    "ears buried in the coat"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Snow Leopard",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 2.2,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "enormously long thick ropy tail",
+    "pale smoky coat with large open rosettes",
+    "short stout legs and big paws"
+   ],
+   "note": "Tail is as long as the head and body; the muzzle is short and the skull domed, unlike other big cats."
+  },
+  {
+   "name": "Mountain Goat",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "shaggy white coat with pantaloons on the legs",
+    "short slightly curved black dagger horns",
+    "humped shoulder and beard"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Ibex",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "massive backward-arcing horns with knobbed ridges",
+    "goat beard under the chin",
+    "stocky muscular body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Chamois",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "short vertical horns hooked sharply backward at the tips",
+    "black-and-white facial mask stripes",
+    "slim antelope-like legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Marmot",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "fat barrel body on very short legs",
+    "short furry tail",
+    "blunt rounded head with small ears"
+   ],
+   "note": "Frequently drawn rearing upright on the haunches; the natural profile is low and squat."
+  },
+  {
+   "name": "Mountain Lizard",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 4.5,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "tail longer than head and body combined",
+    "splayed sprawling legs with long clawed toes",
+    "flattened granular-scaled body"
+   ],
+   "note": "Not a specific taxon - read as a generic alpine rock lizard (lacertid type)."
+  },
+  {
+   "name": "Otter",
+   "group": "aquatic-pawed-mammal",
+   "posture": "quadruped",
+   "aspect": 3.2,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "thick tapering muscular tail",
+    "sleek streamlined tube body",
+    "broad whiskered muzzle with tiny ears"
+   ],
+   "note": ""
+  }
+ ]
+}

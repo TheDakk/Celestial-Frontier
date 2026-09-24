@@ -1,0 +1,104 @@
+{
+ "id": "eagle-5",
+ "standIn": "Eagle",
+ "template": "biped-bird",
+ "accentGroups": [
+  "head",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/eagle/card/master-512.png",
+  "joints": [
+   "legNearFoot",
+   "legFarFoot",
+   "legNearAnkle",
+   "legFarAnkle",
+   "legNearKnee",
+   "legFarKnee",
+   "beak",
+   "head",
+   "neck1",
+   "neck0",
+   "wingNearRoot",
+   "wingNearTip",
+   "wingFarRoot",
+   "wingFarTip",
+   "tailFan",
+   "chest",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Kookaburra",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.4,
+   "headFrac": 0.34,
+   "eyes": "normal",
+   "mustRead": [
+    "huge dagger bill on an oversized head",
+    "dark brown eye stripe on a whitish head",
+    "stocky short-tailed compact body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Hoatzin",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.5,
+   "headFrac": 0.2,
+   "eyes": "prominent",
+   "mustRead": [
+    "spiky rufous punk crest",
+    "bare blue face with a staring red eye",
+    "long broad tail and heavy chest over a slim neck"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Quetzal",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 0.35,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "two streaming tail plumes far longer than the body",
+    "metallic emerald green plumage over a crimson belly",
+    "round bristly helmet crest above a yellow bill"
+   ],
+   "note": "Interpreted as the resplendent quetzal. The streamers are elongated upper tail coverts, not the tail itself, and they hang far below a perched bird."
+  },
+  {
+   "name": "Weaverbird",
+   "group": "bird",
+   "posture": "biped",
+   "aspect": 1.4,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "bright yellow plumage with a black face mask",
+    "thick conical seed-cracking bill",
+    "clinging upside down to a woven grass nest"
+   ],
+   "note": "Generic - interpreted as a representative male village/southern masked weaver in breeding plumage."
+  },
+  {
+   "name": "Screamer",
+   "group": "wading-bird",
+   "posture": "biped",
+   "aspect": 1.4,
+   "headFrac": 0.18,
+   "eyes": "normal",
+   "mustRead": [
+    "thin curved horn projecting from the forehead",
+    "goose-like bulky body with a small chicken-like bill",
+    "sharp bony spurs on the wing bends"
+   ],
+   "note": "Interpreted as the horned screamer. Despite being related to waterfowl the feet are only partly webbed and the bill is short and hooked, not flat."
+  }
+ ]
+}

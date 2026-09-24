@@ -1,0 +1,382 @@
+{
+ "id": "civet-2",
+ "standIn": "Civet",
+ "template": "quadruped",
+ "accentGroups": [
+  "ears",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/civet-sentinel-input-01/card/master-512.png",
+  "joints": [
+   "earFarTip",
+   "earNearTip",
+   "jaw",
+   "head",
+   "foreNearPaw",
+   "foreNearAnkle",
+   "foreNearKnee",
+   "foreFarPaw",
+   "foreFarAnkle",
+   "foreFarKnee",
+   "hindNearPaw",
+   "hindNearAnkle",
+   "hindNearKnee",
+   "hindFarPaw",
+   "hindFarAnkle",
+   "hindFarKnee",
+   "tail3",
+   "tail2",
+   "tail1",
+   "neck",
+   "chest",
+   "spine"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Sloth Bear",
+   "group": "bear",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "shaggy unkempt black coat with a shoulder mane",
+    "pale U or Y-shaped chest blaze",
+    "long pale mobile snout with huge curved claws"
+   ],
+   "note": "the muzzle is long, grey and flexible with protrusible lips - unlike any other bear's short face"
+  },
+  {
+   "name": "Mongoose",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.4,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "very long low tubular body on short legs",
+    "pointed tapering snout with small round ears",
+    "thick tail tapering to a point"
+   ],
+   "note": "generic representative: an Indian grey mongoose"
+  },
+  {
+   "name": "Jackal",
+   "group": "canid",
+   "posture": "quadruped",
+   "aspect": 1.8,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "large pointed erect ears",
+    "slender fox-like muzzle",
+    "bushy dark-tipped tail carried low"
+   ],
+   "note": "generic representative: a golden/black-backed jackal - lighter and leggier than a wolf"
+  },
+  {
+   "name": "Porcupine",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "long banded quills laid back over the rump",
+    "blunt rounded rodent snout",
+    "stocky body carried low with a short quilled tail"
+   ],
+   "note": "generic representative: an Old World crested porcupine. Quills are longest over the hips, not evenly spiky like a hedgehog"
+  },
+  {
+   "name": "Squirrel",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 0.9,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "bushy plumed tail arched up over the back",
+    "sitting on the haunches holding food in the forepaws",
+    "large dark eye and rounded ears"
+   ],
+   "note": "generic representative: a tree squirrel; the arched tail makes it read taller than long"
+  },
+  {
+   "name": "Monitor Lizard",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 3.5,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "long deeply forked flicking tongue",
+    "laterally flattened tail longer than the body",
+    "muscular sprawled limbs with large hooked claws"
+   ],
+   "note": "the neck is long and snake-like, unlike the neckless build of most lizards"
+  },
+  {
+   "name": "Pond Turtle",
+   "group": "freshwater-turtle",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "low flattened domed shell with a scute mosaic",
+    "webbed clawed feet",
+    "head extended forward on a wrinkled neck"
+   ],
+   "note": "generic representative: a freshwater slider/terrapin type; the shell is low and streamlined, not high-domed like a tortoise"
+  },
+  {
+   "name": "Lion",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 2.1,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "full mane framing the head and shoulders (males)",
+    "black tuft at the tail tip",
+    "plain tawny coat with a level back"
+   ],
+   "note": "the tail tuft is unique among big cats; females have no mane at all"
+  },
+  {
+   "name": "Giraffe",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 0.7,
+   "headFrac": 0.13,
+   "eyes": "normal",
+   "mustRead": [
+    "enormously long neck",
+    "skin-covered ossicone horns on the crown",
+    "back sloping steeply from high shoulders down to the hips"
+   ],
+   "note": "far taller than long - the only common land animal that must be drawn portrait rather than landscape"
+  },
+  {
+   "name": "Zebra",
+   "group": "hoofed-unhorned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "bold black-and-white stripes continuing onto the legs and belly",
+    "stiff upright brush mane",
+    "tufted tail with a bare upper half"
+   ],
+   "note": "the mane stands erect - it does not flow like a horse's, and the tail is tufted, not full-length hair"
+  },
+  {
+   "name": "Kudu",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.2,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "towering corkscrew spiral horns",
+    "6-10 thin white vertical stripes on the flank",
+    "enormous rounded satellite-dish ears"
+   ],
+   "note": "the horns make it far taller than a typical antelope; only males carry them"
+  },
+  {
+   "name": "Impala",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "lyre-shaped ringed horns curving out then up",
+    "vertical black stripes down each side of the white rump",
+    "extremely fine legs with a black tuft above the hind hoof"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Warthog",
+   "group": "suid",
+   "posture": "quadruped",
+   "aspect": 1.7,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "upward-curving tusks and fleshy facial warts",
+    "erect bristly mane along the neck and spine",
+    "thin tufted tail carried straight up"
+   ],
+   "note": "the head is large, flat-fronted and wedge-like; the body is leggier than a domestic pig's"
+  },
+  {
+   "name": "Buffalo",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.7,
+   "headFrac": 0.27,
+   "eyes": "normal",
+   "mustRead": [
+    "horns fused into a solid helmet boss across the forehead",
+    "massive shoulders and thick neck",
+    "large fringed drooping ears hanging below the horns"
+   ],
+   "note": "generic representative: an African Cape buffalo"
+  },
+  {
+   "name": "Hyena",
+   "group": "hyena",
+   "posture": "quadruped",
+   "aspect": 1.7,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "back sloping steeply down from high shoulders to low hindquarters",
+    "large rounded ears",
+    "thick neck with massive bone-crushing jaws"
+   ],
+   "note": "generic representative: a spotted hyena. The forelegs are genuinely longer than the hind legs - the slope is skeletal, not a crouch"
+  },
+  {
+   "name": "Meerkat",
+   "group": "small-clawed-mammal",
+   "posture": "upright",
+   "aspect": 0.5,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "standing bolt upright, propped on the hind legs and tail",
+    "dark rings around the eyes",
+    "thin tapering tail with a black tip"
+   ],
+   "note": "much taller than wide when sentinel-standing; the ears are small and set low on the sides of the head"
+  },
+  {
+   "name": "Caracal",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.23,
+   "eyes": "normal",
+   "mustRead": [
+    "long black tufts trailing from the ear tips",
+    "plain unmarked reddish-tan coat",
+    "long powerful hind legs with a short tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tortoise",
+   "group": "tortoise",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "tall domed shell with pyramid-growth scutes",
+    "columnar elephantine scaly legs",
+    "blunt beaked head on a wrinkled retractable neck"
+   ],
+   "note": "the feet are stumpy and clubbed with no webbing, unlike a turtle's"
+  },
+  {
+   "name": "Spectacled Bear",
+   "group": "bear",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.26,
+   "eyes": "small",
+   "mustRead": [
+    "pale cream rings or patches around the eyes",
+    "shaggy blackish coat",
+    "short rounded face with a heavy muzzle"
+   ],
+   "note": "the 'spectacle' markings vary and may extend down the chest; some individuals have almost none"
+  },
+  {
+   "name": "Mountain Tapir",
+   "group": "tapir",
+   "posture": "quadruped",
+   "aspect": 1.7,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "short flexible prehensile snout",
+    "thick woolly black coat",
+    "white-rimmed lips and a stocky arched back"
+   ],
+   "note": "the only long-haired tapir - it should read as woolly, not smooth-skinned"
+  },
+  {
+   "name": "Cougar",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 2.2,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "very long heavy black-tipped tail",
+    "completely plain unmarked tawny coat",
+    "small round head with black muzzle bars"
+   ],
+   "note": "no spots, no mane, no rosettes - the plainness is the identity; the hindquarters sit higher than the shoulders"
+  },
+  {
+   "name": "Possum",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.26,
+   "eyes": "small",
+   "mustRead": [
+    "naked scaly rat-like prehensile tail",
+    "pointed white face with a pink nose",
+    "grizzled grey shaggy coat and thin bare ears"
+   ],
+   "note": "read as the Virginia opossum; the tail is bare and scaly, not furred like an Australian possum's"
+  },
+  {
+   "name": "Anole",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 2.6,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "extendable coloured throat fan (dewlap)",
+    "tail longer than the head and body together",
+    "adhesive toe pads on long slender limbs"
+   ],
+   "note": "generic representative: a green/Carolina anole; the pointed wedge head is longer and narrower than a gecko's"
+  },
+  {
+   "name": "Salamander",
+   "group": "salamander",
+   "posture": "sprawling",
+   "aspect": 3.5,
+   "headFrac": 0.17,
+   "eyes": "small",
+   "mustRead": [
+    "moist smooth scaleless skin",
+    "four short splayed limbs of roughly equal size",
+    "long rounded tail as long as the body"
+   ],
+   "note": "generic representative: a fire/spotted salamander. Not a lizard - no scales, no claws, and the toes are soft and blunt"
+  }
+ ]
+}

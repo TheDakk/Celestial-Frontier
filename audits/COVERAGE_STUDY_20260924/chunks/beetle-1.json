@@ -1,0 +1,374 @@
+{
+ "id": "beetle-1",
+ "standIn": "Beetle",
+ "template": "insect",
+ "accentGroups": [
+  "wings",
+  "antennae"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/beetle/card/master-512.png",
+  "joints": [
+   "legHindNearFoot",
+   "legMidNearFoot",
+   "legFrontNearFoot",
+   "legHindNearKnee",
+   "legMidNearKnee",
+   "legFrontNearKnee",
+   "legHindFarFoot",
+   "legMidFarFoot",
+   "legFrontFarFoot",
+   "legFrontFarKnee",
+   "legMidFarKnee",
+   "legHindFarKnee",
+   "antennaFar",
+   "antennaNear",
+   "mandible",
+   "head",
+   "thorax",
+   "wingNear",
+   "wingFar",
+   "abdomen",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Leafcutter Ant",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 1.8,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "three-part body with a pinched narrow waist",
+    "elbowed antennae",
+    "spined thorax carrying a leaf fragment overhead"
+   ],
+   "note": "the thorax bears distinct backward-pointing spines; the head is oversized with big cutting jaws"
+  },
+  {
+   "name": "Butterfly",
+   "group": "soft-mouth-insect",
+   "posture": "flying",
+   "aspect": 1.1,
+   "headFrac": 0.2,
+   "eyes": "prominent",
+   "mustRead": [
+    "two pairs of broad scaled wings",
+    "clubbed knob-tipped antennae",
+    "coiled watch-spring proboscis"
+   ],
+   "note": "six legs attach only to the thorax, and the antennae end in clubs, not the feathery plumes of a moth"
+  },
+  {
+   "name": "Termite",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 2.2,
+   "headFrac": 0.25,
+   "eyes": "hidden",
+   "mustRead": [
+    "pale soft translucent segmented body",
+    "straight bead-string antennae",
+    "broad joint where the abdomen meets the thorax"
+   ],
+   "note": "workers are blind and unpigmented; there is no wasp waist and the antennae are straight, unlike an ant's elbowed pair"
+  },
+  {
+   "name": "Cicada",
+   "group": "soft-mouth-insect",
+   "posture": "crawling",
+   "aspect": 1.8,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "broad transparent veined wings tented roof-like over the body",
+    "blunt wide head with eyes pushed to the corners",
+    "short stout barrel body"
+   ],
+   "note": "wings are held tent-like over the back at rest, not spread flat"
+  },
+  {
+   "name": "Mantis",
+   "group": "mandibulate-insect",
+   "posture": "upright",
+   "aspect": 1,
+   "headFrac": 0.15,
+   "eyes": "prominent",
+   "mustRead": [
+    "spined raptorial forelegs folded in prayer",
+    "triangular head that swivels on a neck",
+    "long slender prothorax raising the front of the body"
+   ],
+   "note": "only a mantis truly has a neck - the head turns independently of the body"
+  },
+  {
+   "name": "Locust",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 2,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "hugely enlarged folded hind jumping legs",
+    "long narrow wings folded flat along the back",
+    "short antennae and a tall flat-sided head"
+   ],
+   "note": "antennae are short - long thread antennae belong to katydids and crickets, not locusts"
+  },
+  {
+   "name": "Dung Beetle",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 1.6,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "glossy armoured domed black body",
+    "flat spade-shaped head used as a rake",
+    "toothed rake-like digging forelegs"
+   ],
+   "note": "many species carry a horn on the head or thorax; the wing cases are smooth and hard, not textured"
+  },
+  {
+   "name": "Orchid Bee",
+   "group": "mandibulate-insect",
+   "posture": "flying",
+   "aspect": 1.9,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "brilliant metallic green, blue or gold body",
+    "extremely long tongue trailing back beneath the body",
+    "swollen polished hind tibia on males"
+   ],
+   "note": "shiny and jewel-like rather than fuzzy - it should not read as a striped honeybee"
+  },
+  {
+   "name": "Bee",
+   "group": "mandibulate-insect",
+   "posture": "flying",
+   "aspect": 2.2,
+   "headFrac": 0.24,
+   "eyes": "prominent",
+   "mustRead": [
+    "furry thorax with banded amber-and-black abdomen",
+    "two pairs of clear veined wings",
+    "pollen basket on the hind leg"
+   ],
+   "note": "Read as a honeybee. Four wings, not two; the body is fuzzy, not smooth like a wasp's."
+  },
+  {
+   "name": "Mosquito",
+   "group": "soft-mouth-insect",
+   "posture": "flying",
+   "aspect": 1.6,
+   "headFrac": 0.16,
+   "eyes": "normal",
+   "mustRead": [
+    "long needle proboscis jutting straight forward",
+    "six very long dangling legs",
+    "narrow scale-fringed wings"
+   ],
+   "note": "Body hangs at an angle with the hind legs kicked up; only two wings, not four."
+  },
+  {
+   "name": "Black Fly",
+   "group": "soft-mouth-insect",
+   "posture": "flying",
+   "aspect": 1.5,
+   "headFrac": 0.24,
+   "eyes": "prominent",
+   "mustRead": [
+    "strongly humped thorax over a bowed head",
+    "short broad clear wings",
+    "stubby compact dark body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Dragonfly",
+   "group": "mandibulate-insect",
+   "posture": "flying",
+   "aspect": 3.2,
+   "headFrac": 0.16,
+   "eyes": "prominent",
+   "mustRead": [
+    "two pairs of long transparent net-veined wings held out flat",
+    "huge globe compound eyes filling the head",
+    "long slender rod abdomen"
+   ],
+   "note": "Wings stay spread at rest, never folded back over the body like a damselfly's."
+  },
+  {
+   "name": "Grasshopper",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 2.6,
+   "headFrac": 0.2,
+   "eyes": "prominent",
+   "mustRead": [
+    "huge angled jumping hind legs rising above the back",
+    "long tapered abdomen",
+    "short stout antennae and slanted face"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cricket",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 2.3,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "antennae longer than the whole body",
+    "flat wings laid over a rounded back",
+    "cranked jumping hind legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Ant",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 2.4,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "three distinct body lumps pinched by a narrow waist",
+    "elbowed antennae",
+    "six thin legs splayed from the middle segment"
+   ],
+   "note": "Generic name read as a representative worker ant. The waist petiole between thorax and abdomen is the read; drawing it as a smooth two-part body makes it a beetle."
+  },
+  {
+   "name": "Honeybee",
+   "group": "mandibulate-insect",
+   "posture": "flying",
+   "aspect": 2.4,
+   "headFrac": 0.22,
+   "eyes": "prominent",
+   "mustRead": [
+    "furry thorax with a banded amber-and-black abdomen",
+    "two pairs of clear veined wings",
+    "pollen baskets on the hind legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Bumblebee",
+   "group": "mandibulate-insect",
+   "posture": "flying",
+   "aspect": 1.9,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "fat rounded fully furry body",
+    "broad bands of black and yellow fuzz",
+    "wings small relative to the bulky body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Ladybug",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 1.6,
+   "headFrac": 0.15,
+   "eyes": "small",
+   "mustRead": [
+    "strongly domed hemispherical shell",
+    "spotted red wing cases split down the middle",
+    "tiny black head tucked under a shield"
+   ],
+   "note": "Almost always drawn from above; in true side profile it is a low dome and the spots barely read, so the silhouette must carry the arc of the shell."
+  },
+  {
+   "name": "Water Beetle",
+   "group": "mandibulate-insect",
+   "posture": "swimming",
+   "aspect": 1.6,
+   "headFrac": 0.15,
+   "eyes": "small",
+   "mustRead": [
+    "smooth oval domed wing cases",
+    "flattened hair-fringed hind legs used as oars",
+    "short clubbed antennae on a tucked head"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Caddisfly",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 2.2,
+   "headFrac": 0.15,
+   "eyes": "normal",
+   "mustRead": [
+    "hairy wings folded tent-like over the back",
+    "very long thread-thin antennae held forward",
+    "moth-like drab body"
+   ],
+   "note": "Commonly drawn as the larva in its pebble case; the adult is a moth-like insect with roof-folded wings and no coiled proboscis."
+  },
+  {
+   "name": "Mayfly",
+   "group": "soft-mouth-insect",
+   "posture": "flying",
+   "aspect": 2.5,
+   "headFrac": 0.12,
+   "eyes": "prominent",
+   "mustRead": [
+    "two or three long hair-thin tail filaments",
+    "triangular wings held upright together over the back",
+    "slender upcurved abdomen"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Stonefly",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 2.8,
+   "headFrac": 0.12,
+   "eyes": "normal",
+   "mustRead": [
+    "wings folded flat and overlapping down the back",
+    "two short stout tail cerci",
+    "long antennae on a flat squarish head"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Damselfly",
+   "group": "mandibulate-insect",
+   "posture": "flying",
+   "aspect": 4,
+   "headFrac": 0.12,
+   "eyes": "prominent",
+   "mustRead": [
+    "needle-thin stick abdomen",
+    "wings held closed together over the back at rest",
+    "hammerhead face with widely separated eyes"
+   ],
+   "note": "Not a dragonfly - the eyes are set apart on the sides and the wings fold rather than staying spread."
+  },
+  {
+   "name": "Water Strider",
+   "group": "aquatic-insect",
+   "posture": "crawling",
+   "aspect": 2,
+   "headFrac": 0.12,
+   "eyes": "prominent",
+   "mustRead": [
+    "extremely long splayed middle and hind legs",
+    "dimples denting the water surface under the feet",
+    "narrow slim boat-shaped body"
+   ],
+   "note": ""
+  }
+ ]
+}

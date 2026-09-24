@@ -1,0 +1,148 @@
+{
+ "id": "tarantula-1",
+ "standIn": "Tarantula",
+ "template": "arachnid",
+ "accentGroups": [
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/tarantula/card/master-512.png",
+  "joints": [
+   "cheliceraNear",
+   "cheliceraFar",
+   "leg1NearFoot",
+   "leg1NearKnee",
+   "leg2NearFoot",
+   "leg2NearKnee",
+   "leg3NearFoot",
+   "leg3NearKnee",
+   "leg4NearFoot",
+   "leg4NearKnee",
+   "abdomen",
+   "leg1FarFoot",
+   "leg1FarKnee",
+   "leg2FarFoot",
+   "leg2FarKnee",
+   "leg3FarFoot",
+   "leg3FarKnee",
+   "leg4FarFoot",
+   "leg4FarKnee",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Scorpion",
+   "group": "scorpion",
+   "posture": "crawling",
+   "aspect": 2,
+   "headFrac": 0.15,
+   "eyes": "small",
+   "mustRead": [
+    "pincer claws held forward on long arms",
+    "segmented tail arched over the back ending in a sting",
+    "flat broad body on eight legs"
+   ],
+   "note": "the eyes are tiny and sit on top of the carapace - the pincers, not the face, carry the expression"
+  },
+  {
+   "name": "Deer Tick",
+   "group": "other-arachnid",
+   "posture": "crawling",
+   "aspect": 2.2,
+   "headFrac": 0.2,
+   "eyes": "hidden",
+   "mustRead": [
+    "eight legs bunched toward the front",
+    "flat teardrop unsegmented body",
+    "barbed spear mouthparts jutting ahead"
+   ],
+   "note": "Almost always drawn from above; in true side profile an unfed tick is a very low flat wedge. Eight legs, not six."
+  },
+  {
+   "name": "Spider",
+   "group": "spider",
+   "posture": "sprawling",
+   "aspect": 1.4,
+   "headFrac": 0.35,
+   "eyes": "small",
+   "mustRead": [
+    "two-part body: small front section and large round abdomen",
+    "eight jointed legs arching up then down",
+    "legs all attached to the front section only"
+   ],
+   "note": "Generic name read as a representative orb-weaver/house spider. Legs must all spring from the front body part, never from the abdomen."
+  },
+  {
+   "name": "Camel Spider",
+   "group": "other-arachnid",
+   "posture": "crawling",
+   "aspect": 1.7,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "enormous forward-jutting pincer jaws",
+    "long leg-like pedipalps held out in front like extra legs",
+    "hairy segmented tan abdomen"
+   ],
+   "note": "Not a true spider: no tail, no venom fangs, and it appears to have ten legs because the palps are held forward as feelers."
+  },
+  {
+   "name": "Harvestman",
+   "group": "other-arachnid",
+   "posture": "sprawling",
+   "aspect": 2,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "single pea-like body with no waist",
+    "eight thread-thin legs many times body length",
+    "tiny eye turret on top of body"
+   ],
+   "note": "Not a spider: one fused body segment, no silk, no separate abdomen."
+  },
+  {
+   "name": "Pseudoscorpion",
+   "group": "other-arachnid",
+   "posture": "crawling",
+   "aspect": 2.2,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "oversized scorpion-like pincer arms held forward",
+    "flat teardrop segmented abdomen",
+    "no tail and no sting"
+   ],
+   "note": "Commonly drawn with a stinging tail - it has none; the abdomen ends bluntly."
+  },
+  {
+   "name": "Mite",
+   "group": "other-arachnid",
+   "posture": "crawling",
+   "aspect": 1.3,
+   "headFrac": 0.1,
+   "eyes": "hidden",
+   "mustRead": [
+    "featureless bag-like unsegmented body",
+    "eight short legs bunched at the front",
+    "tiny protruding mouth cone"
+   ],
+   "note": "Generic - interpreted as a typical dust/velvet mite. No waist, no separate head, no visible eyes."
+  },
+  {
+   "name": "Sea Spider",
+   "group": "other-arachnid",
+   "posture": "sprawling",
+   "aspect": 1.8,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "body reduced to a thin stick between the legs",
+    "enormously long spindly legs holding the organs",
+    "long tubular sucking proboscis at the front"
+   ],
+   "note": "Not a spider - the body is so shrunken the gut and gonads extend into the legs; four eyes sit on a small turret."
+  }
+ ]
+}

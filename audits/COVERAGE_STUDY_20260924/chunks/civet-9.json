@@ -1,0 +1,214 @@
+{
+ "id": "civet-9",
+ "standIn": "Civet",
+ "template": "quadruped",
+ "accentGroups": [
+  "ears",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/civet-sentinel-input-01/card/master-512.png",
+  "joints": [
+   "earFarTip",
+   "earNearTip",
+   "jaw",
+   "head",
+   "foreNearPaw",
+   "foreNearAnkle",
+   "foreNearKnee",
+   "foreFarPaw",
+   "foreFarAnkle",
+   "foreFarKnee",
+   "hindNearPaw",
+   "hindNearAnkle",
+   "hindNearKnee",
+   "hindFarPaw",
+   "hindFarAnkle",
+   "hindFarKnee",
+   "tail3",
+   "tail2",
+   "tail1",
+   "neck",
+   "chest",
+   "spine"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Colugo",
+   "group": "gliding-mammal",
+   "posture": "flying",
+   "aspect": 1.6,
+   "headFrac": 0.22,
+   "eyes": "prominent",
+   "mustRead": [
+    "gliding membrane spanning neck to fingertips to tail tip",
+    "huge round forward eyes",
+    "mottled lichen-like camouflage fur"
+   ],
+   "note": "The most complete gliding membrane of any mammal - it encloses the fingers, toes and the whole tail, unlike a flying squirrel's."
+  },
+  {
+   "name": "Sun Bear",
+   "group": "bear",
+   "posture": "quadruped",
+   "aspect": 1.7,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "golden-cream crescent patch on the chest",
+    "short sleek jet-black coat",
+    "very long curved climbing claws and blunt short muzzle"
+   ],
+   "note": "The smallest bear - stocky and loose-skinned with a short face, not a scaled-down grizzly."
+  },
+  {
+   "name": "Dingo",
+   "group": "canid",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "sandy-ginger coat with white feet",
+    "erect pointed triangular ears",
+    "lean wolfish frame with a bushy straight tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Grizzly Bear",
+   "group": "bear",
+   "posture": "quadruped",
+   "aspect": 1.8,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "muscular hump over the shoulders",
+    "dished concave facial profile",
+    "long pale front claws and grizzled fur"
+   ],
+   "note": "The shoulder hump sits higher than the rump - the opposite of a black bear's silhouette."
+  },
+  {
+   "name": "Pronghorn",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "forward-hooked horns each with one short prong",
+    "white throat bands and white rump patch",
+    "slim deep-chested body on fine legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Springbok",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "lyre-shaped ringed horns curving in at the tips",
+    "dark chocolate side stripe dividing tan from white",
+    "white face with a dark eye stripe"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Bongo",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "chestnut-red coat with ten or more vertical white stripes",
+    "heavy backswept spiral horns",
+    "white chevron between the eyes"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Duiker",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "hunched arched back higher at the rump",
+    "tiny backswept spike horns with a forehead tuft",
+    "very small antelope on short legs"
+   ],
+   "note": "Generic - interpreted as a representative forest duiker; the crouching hump-backed posture is diagnostic."
+  },
+  {
+   "name": "Gerenuk",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.2,
+   "headFrac": 0.15,
+   "eyes": "prominent",
+   "mustRead": [
+    "giraffe-like extremely elongated neck",
+    "tiny wedge-shaped head with huge ears",
+    "stilt-thin legs, often reared upright to browse"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Nilgai",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "slate blue-grey coat on bulls",
+    "back sloping down from high shoulders",
+    "short straight forward horns and a throat beard tuft"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tahr",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "shaggy mane hanging over neck and shoulders",
+    "short thick horns curving back and down",
+    "stocky goat body on short strong legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Serow",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "coarse shaggy grizzled coat with a neck mane",
+    "short straight backswept spike horns",
+    "large donkey-like ears on a heavy blunt head"
+   ],
+   "note": ""
+  }
+ ]
+}
