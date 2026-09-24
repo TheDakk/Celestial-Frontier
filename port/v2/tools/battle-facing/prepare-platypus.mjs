@@ -1,6 +1,7 @@
 /** Authored geometry over the accepted Platypus. No genes or clip overrides. */
 import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';
-import {sealRecord,hashBytes,hashJSON} from '../creature-animation/quadruped-template.mjs';
+import {hashBytes,hashJSON} from '../creature-animation/quadruped-template.mjs';
+import {sealPortableQuadrupedRecord as sealRecord} from '../creature-animation/portable-record-writer.mjs';
 import {buildAuthoredParts} from '../creature-animation/build-authored-parts.mjs';
 import {buildPaintSkin} from '../creature-animation/build-paint-skin.mjs';
 import {splitSkinBranches} from '../creature-animation/split-skin-branches.mjs';

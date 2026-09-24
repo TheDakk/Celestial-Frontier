@@ -2,7 +2,7 @@
 import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';
 import {familyContractForRecord,familyContactChains} from '../creature-animation/family-contracts.mjs';
 import {inferHiddenLandmarks} from '../creature-animation/hidden-anatomy.mjs';
-import {sealFamilyRecord} from '../creature-animation/family-record.mjs';
+import {sealPortableFamilyRecord as sealFamilyRecord} from '../creature-animation/portable-record-writer.mjs';
 import {hashBytes,hashJSON} from '../creature-animation/quadruped-template.mjs';
 import {intakeAuthoredPixels} from '../creature-animation/authored-intake.mjs';
 import {cutPainterParts} from '../creature-animation/part-masks.mjs';

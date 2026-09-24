@@ -93,6 +93,9 @@ export function buildActionTimeline(card:BodyCard,action:MotionAction,seed:numbe
   for (const part of card.secondaryParts) {
     let prev: readonly Keyframe[] = [REST_KEY];
     for (const prm of secondaryParams(part, card.realm, card.luminous)) {
+      // A travelling-wave owner already supplies physical chain phase. Adding
+      // material lag again changes its wavelength and doubles the caudal delay.
+      if (action.phaseOwnedJoints?.includes(prm.joint)) continue;
       // A chain joint with no authored keys inherits its predecessor's motion, attenuated, so the chain lashes base→tip.
       const own = tracks[prm.joint] ?? [REST_KEY];
       const src: readonly Keyframe[] = own.some((k) => k.value !== 0) ? own : prev.map((k) => ({ ...k, value: k.value * CHAIN_ATTENUATION }));

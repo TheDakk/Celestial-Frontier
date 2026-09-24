@@ -1,0 +1,201 @@
+[
+  {
+    "rig": "python",
+    "failures": 2,
+    "unmeasured": 12,
+    "criteria": [
+      "travelling-wave:approach:slither",
+      "world-path-following:approach:slither"
+    ]
+  },
+  {
+    "rig": "civet",
+    "failures": 11,
+    "unmeasured": 19,
+    "criteria": [
+      "authored-rest-start:idle",
+      "footfall-duty-lift:approach:walk",
+      "footfall-duty-lift:approach:trot",
+      "footfall-duty-lift:approach:gallop",
+      "head-stabilization:approach:gallop",
+      "head-stabilization:approach:hop",
+      "contact-owner:melee:bite",
+      "contact-owner:melee:claw",
+      "contact-owner:melee:gore",
+      "contact-owner:melee:tail",
+      "contact-owner:melee:headbutt"
+    ]
+  },
+  {
+    "rig": "bear",
+    "failures": 11,
+    "unmeasured": 19,
+    "criteria": [
+      "footfall-duty-lift:approach:walk",
+      "footfall-duty-lift:approach:trot",
+      "contact-owner:approach:gallop",
+      "footfall-duty-lift:approach:gallop",
+      "head-stabilization:approach:gallop",
+      "head-stabilization:approach:hop",
+      "contact-owner:melee:bite",
+      "contact-owner:melee:claw",
+      "contact-owner:melee:gore",
+      "contact-owner:melee:tail",
+      "contact-owner:melee:headbutt"
+    ]
+  },
+  {
+    "rig": "eagle",
+    "failures": 7,
+    "unmeasured": 14,
+    "criteria": [
+      "authored-rest-start:idle",
+      "footfall-duty-lift:approach:walk",
+      "head-stabilization:approach:flight",
+      "contact-owner:melee:peck",
+      "contact-owner:melee:claw",
+      "contact-owner:hit",
+      "contact-owner:dodge"
+    ]
+  },
+  {
+    "rig": "fruit-bat",
+    "failures": 7,
+    "unmeasured": 13,
+    "criteria": [
+      "authored-rest-start:idle",
+      "head-stabilization:approach:flight",
+      "footfall-duty-lift:approach:crawl",
+      "contact-owner:melee:bite",
+      "contact-owner:melee:claw",
+      "contact-owner:dodge",
+      "contact-owner:tame"
+    ]
+  },
+  {
+    "rig": "starfish",
+    "failures": 6,
+    "unmeasured": 10,
+    "criteria": [
+      "authored-rest-start:idle",
+      "footfall-duty-lift:approach:drift",
+      "anatomical-verb:approach:drift",
+      "footfall-duty-lift:approach:pulse",
+      "anatomical-verb:approach:pulse",
+      "anatomical-verb:melee:sting-arms"
+    ]
+  },
+  {
+    "rig": "chimpanzee",
+    "failures": 5,
+    "unmeasured": 12,
+    "criteria": [
+      "footfall-duty-lift:approach:walk",
+      "head-stabilization:approach:climb",
+      "anatomical-verb:approach:climb",
+      "contact-owner:melee:punch",
+      "contact-owner:melee:bite"
+    ]
+  },
+  {
+    "rig": "tarantula",
+    "failures": 5,
+    "unmeasured": 12,
+    "criteria": [
+      "footfall-duty-lift:approach:scuttle",
+      "contact-owner:melee:sting",
+      "anatomical-verb:melee:sting",
+      "contact-owner:melee:bite",
+      "contact-owner:melee:body"
+    ]
+  },
+  {
+    "rig": "salmon",
+    "failures": 3,
+    "unmeasured": 13,
+    "criteria": [
+      "authored-rest-start:idle",
+      "travelling-wave:approach:swim",
+      "world-path-following:approach:swim"
+    ]
+  },
+  {
+    "rig": "beetle",
+    "failures": 3,
+    "unmeasured": 13,
+    "criteria": [
+      "footfall-duty-lift:approach:crawl",
+      "contact-owner:melee:mandible",
+      "contact-owner:melee:body"
+    ]
+  },
+  {
+    "rig": "octopus",
+    "failures": 3,
+    "unmeasured": 13,
+    "criteria": [
+      "authored-rest-start:idle",
+      "footfall-duty-lift:approach:jet",
+      "footfall-duty-lift:approach:crawl"
+    ]
+  },
+  {
+    "rig": "centipede",
+    "failures": 3,
+    "unmeasured": 12,
+    "criteria": [
+      "travelling-wave:approach:crawl",
+      "world-path-following:approach:crawl",
+      "footfall-duty-lift:approach:crawl"
+    ]
+  },
+  {
+    "rig": "tree-frog",
+    "failures": 2,
+    "unmeasured": 12,
+    "criteria": [
+      "head-stabilization:approach:hop",
+      "contact-owner:melee:bite"
+    ]
+  },
+  {
+    "rig": "crab",
+    "failures": 1,
+    "unmeasured": 11,
+    "criteria": [
+      "footfall-duty-lift:approach:scuttle"
+    ]
+  },
+  {
+    "rig": "freshwater-crab",
+    "failures": 1,
+    "unmeasured": 11,
+    "criteria": [
+      "footfall-duty-lift:approach:scuttle"
+    ]
+  },
+  {
+    "rig": "coconut-crab",
+    "failures": 1,
+    "unmeasured": 11,
+    "criteria": [
+      "footfall-duty-lift:approach:scuttle"
+    ]
+  },
+  {
+    "rig": "vent-crab",
+    "failures": 1,
+    "unmeasured": 11,
+    "criteria": [
+      "footfall-duty-lift:approach:scuttle"
+    ]
+  },
+  {
+    "rig": "mud-crab",
+    "failures": 1,
+    "unmeasured": 11,
+    "criteria": [
+      "footfall-duty-lift:approach:scuttle"
+    ]
+  }
+]

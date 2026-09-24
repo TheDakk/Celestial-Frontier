@@ -1,0 +1,1 @@
+{"status":"FAIL","error":"Error: Error: Ten-second film cannot cover 10576ms script\n    at http://127.0.0.1:55212/bundle.js:33949:27\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/battle2-proof/native-runner.mjs:53:148"}

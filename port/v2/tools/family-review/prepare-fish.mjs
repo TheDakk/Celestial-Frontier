@@ -1,6 +1,6 @@
 /** Source-bound fish trial. All masks are declared against the accepted master. */
 import fs from 'node:fs';import path from 'node:path';
-import {sealFamilyRecord} from '../creature-animation/family-record.mjs';
+import {sealPortableFamilyRecord as sealFamilyRecord} from '../creature-animation/portable-record-writer.mjs';
 import {hashBytes,hashJSON} from '../creature-animation/quadruped-template.mjs';
 import {buildAuthoredParts} from '../creature-animation/build-authored-parts.mjs';
 import {buildPaintSkin} from '../creature-animation/build-paint-skin.mjs';

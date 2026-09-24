@@ -9,6 +9,7 @@ import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skele
 import {compileBodyCard,type ResolvedAnatomyRecord,type MotionGenomeFields} from './motion/body-card.js';
 import {buildTimeline,sampleKeys} from './motion/timeline.js';
 import {createContactTravel} from './creature-contact-travel.js';
+import {gaitTiming,gaitStep} from './motion/gait-phase.js';
 import {createTerminalContactSolver} from './creature-terminal-contact.js';
 import {terminalPaintedSupport} from './creature-terminal-support.js';
 import {validateTerminalContactPads} from '../../../tools/creature-animation/terminal-contact-pads.mjs';
@@ -170,10 +171,11 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   const stance=contactStanceForAction(template,phase.actionId),selected=free||stance==='none'?[]:chains.filter(c=>stance==='all'||(hindGroup?hindGroup.has(c.id):c.id.startsWith('hind')||c.id.startsWith('legHind')));
   if(!free&&stance==='hind'&&!selected.length)throw Error('Contact: declared hind stance has no chains');
   const gaitPolicy=template.contactStance?.gaits?.[phase.actionId],cycleAt=(phase.elapsedMs/phase.durationMs)%1;
+  const timing=gaitTiming(template.id,phase.actionId,chains.map(c=>c.id));
   // Bounding lifts the forequarters during the authored upward spine stroke.
   // Other gait phases retain the established diagonal stance group. Lifted
   // limbs keep their authored keys rather than a second synthetic swing owner.
-  const activeChains=!gaitPolicy?selected:gaitPolicy==='bounding'&&(input.spine?.rotation??0)<0?selected.filter(c=>c.id.startsWith('hind')):selected.filter(c=>!(c.group===1?cycleAt<.5:cycleAt>=.5));
+  const activeChains=timing||!gaitPolicy?selected:gaitPolicy==='bounding'&&(input.spine?.rotation??0)<0?selected.filter(c=>c.id.startsWith('hind')):selected.filter(c=>!(c.group===1?cycleAt<.5:cycleAt>=.5));
   // A lifted leg keeps the authored pose and its original raw-clip guard.
   if(template.contactStance)for(const c of chains)if(!activeChains.includes(c))for(const j of [c.hip,c.knee,c.end,...c.terminal?[c.terminal]:[]]){const v=input[j];if(!v)continue;const l=template.limitsDeg[j]!,deg=v.rotation*180/Math.PI;if(deg<l.min-1e-7||deg>l.max+1e-7)throw Error('Contact: raw clip joint limit '+j+' '+phase.actionId+'@'+phase.elapsedMs+': '+deg);}
   if(!activeChains.length){program.evaluate(input);return {pose:input,contacts:[],maxError:0};}
@@ -191,8 +193,9 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   if(gait)pose.root={rotation:0,...pose.root,dx:sourceTravel?(sourceTravel.rootDisplacement??(sourceTravel.base+sourceTravel.stride*progress))/program.bodyLength+(pose.root?.dx??0)-sourceTravel.authoredDx:phase.travel==='stage'?0:direction*stride*progress/program.bodyLength};
   const contacts=activeChains.map(c=>{
    const bodyPlanted=phase.travel==='stage'&&record.anatomy?.schema==='cf.anatomy-presence/v2'&&record.anatomy.folded?.includes(c.id)===true;
-   const swing=!bodyPlanted&&gait&&!gaitPolicy&&(!sourceTravel||(sourceTravel.stride!==0&&progress<1))&&(c.group===1?cycle<.5:cycle>=.5),at=swing?(c.group===1?cycle*2:(cycle-.5)*2):0;
-   const step=c.group===1?(cycle<.5?smooth(cycle*2):1):(cycle<.5?0:smooth((cycle-.5)*2));
+   const scheduled=timing?gaitStep(progress,timing.offsets[c.id]!,timing.duty):null;
+   const swing=!bodyPlanted&&gait&&(scheduled?scheduled.swing:!gaitPolicy&&(!sourceTravel||(sourceTravel.stride!==0&&progress<1))&&(c.group===1?cycle<.5:cycle>=.5)),at=swing?(scheduled?scheduled.at:c.group===1?cycle*2:(cycle-.5)*2):0;
+   const step=scheduled?scheduled.step-completed:c.group===1?(cycle<.5?smooth(cycle*2):1):(cycle<.5?0:smooth((cycle-.5)*2));
    const lift=c.chain.lengths.lower*.15*weight;
    // Stage translation is signed and supplied by the caller, never inferred
    // from elapsed time. Only stance targets recede; airborne keys keep their
@@ -234,6 +237,9 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   const uncompressedRoot=pose.root;
   let compression=0,final=program.evaluate(pose);
   const rigidEligible=hasOffset&&activeChains.every(c=>c.endpointOnly),candidateEligible=hasOffset;
+  // Recovery from an iterative refusal is scoped to explicit source-step families.
+  // Legacy crab/quadruped reach refusals keep their pre-sprint boundary.
+  const recoverIterativeRefusal=candidateEligible&&!!template.contactStance?.travel;
   // Mixed skin weights stay mixed. Keep the complete authored/travel-adjusted
   // pose for one geometric candidate after failure, not an exact rigid claim.
   const candidateBaseline=rigidEligible?null:{...pose};
@@ -261,7 +267,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
     if(c.terminal)pose[c.terminal]={rotation:wrapped(-lower)};
    }
    final=program.evaluate(pose);
-  }}catch(error){if(!candidateEligible)throw error;iterativeFailure=error;}
+  }}catch(error){if(!recoverIterativeRefusal)throw error;iterativeFailure=error;}
   const measure=()=>{
    let maxError=0,maxPaintTargetErrorPx=0;
    for(let i=0;i<activeChains.length;i++){const c=activeChains[i]!,contact=contacts[i]!;
@@ -274,7 +280,7 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
    return {maxError,maxPaintTargetErrorPx};
   };
   let measured={maxError:0,maxPaintTargetErrorPx:Infinity};
-  if(iterativeFailure===undefined){try{measured=measure();}catch(error){if(!candidateEligible)throw error;iterativeFailure=error;}}
+  if(iterativeFailure===undefined){try{measured=measure();}catch(error){if(!recoverIterativeRefusal)throw error;iterativeFailure=error;}}
   // Preserve the exact accepted three-pass path. A rigid offset near a straight
   // knee can oscillate instead of converging. When every active support belongs
   // solely to its endpoint, solve that rigid point analytically. For mixed

@@ -7,6 +7,7 @@ import { type Ease, type KeyPose, type MotionAction, QUADRUPED_ACTIONS } from '.
 import type { FamilyTemplateId } from './family-templates.js';
 import {specializedActions} from './specialized-actions.js';
 import {ADDITIONAL_ACTIONS} from './additional-actions.js';
+import {travellingWave} from './travelling-wave.js';
 
 import {plantBranchCount} from '../../../../tools/creature-animation/plant-anatomy.mjs';
 import {appendageCounts} from '../../../../tools/creature-animation/repeated-anatomy.mjs';
@@ -36,13 +37,14 @@ const feed = (down: J, open: J, closed: J): KeyPose[] => [P(tAt('feed', 'down'),
   P(tAt('feed', 'chew'), 'sine-in-out', { ...down, ...closed }, 0.02, 0.012), P(tAt('feed', 'chew2', 0.5), 'sine-in-out', { ...down, ...open }, 0.02, 0.012), P(tAt('feed', 'chew2'), 'sine-in-out', { ...down, ...closed }, 0.02, 0.012), P(1, 'back-out', REST)];
 
 interface FaunaSpec {
+  readonly phaseOwnedGaits?: Readonly<Record<string,readonly string[]>>;
   readonly idle: readonly [J, J, J, number, number, number]; readonly alert: readonly [J, number];
   readonly approach: Readonly<Record<string, KeyPose[]>>; readonly melee: Readonly<Record<string, KeyPose[]>>;
   readonly cast: KeyPose[]; readonly hit: KeyPose[]; readonly dodge: KeyPose[]; readonly faint: KeyPose[]; readonly victory: KeyPose[]; readonly tame: KeyPose[]; readonly feed: KeyPose[];
 }
 const fauna = (s: FaunaSpec): Readonly<Record<string, MotionAction>> => Object.freeze(Object.fromEntries([
   A('idle', 'idle', loop4(s.idle[0], s.idle[1], s.idle[2], s.idle[3], s.idle[4], s.idle[5]), true), A('alert', 'alert', [P(1, 'back-out', s.alert[0], 0, s.alert[1])]),
-  ...Object.entries(s.approach).map(([g, poses]) => A('approach:' + g, 'approach', poses)), ...Object.entries(s.melee).map(([w, poses]) => A('melee:' + w, 'melee', poses)),
+  ...Object.entries(s.approach).map(([g, poses]) => ({...A('approach:' + g, 'approach', poses),...s.phaseOwnedGaits?.[g]?{phaseOwnedJoints:s.phaseOwnedGaits[g]}:{}})), ...Object.entries(s.melee).map(([w, poses]) => A('melee:' + w, 'melee', poses)),
   A('cast', 'cast', s.cast), A('hit', 'hit', s.hit), A('dodge', 'dodge', s.dodge), A('faint', 'faint', s.faint), A('victory', 'victory', s.victory), A('tame', 'tame', s.tame), A('feed', 'feed', s.feed),
 ].map((a) => [a.id, a])));
 
@@ -92,9 +94,10 @@ const BIRD = fauna({
 const wave = (k: number): J => mul({ spine0: -6, spine1: -10, spine2: -4, spine3: 6, spine4: 12, spine5: 16, caudal: 20 }, k);
 const pect = (v: number): J => ({ pectoralFar: -v, pectoralNear: v });
 const FISH = fauna({
+  phaseOwnedGaits: {swim:['spine0','spine1','spine2','spine3','spine4','spine5','caudal']},
   idle: [wave(0.4), { ...pect(6), dorsal: -3, head: 1 }, wave(-0.4), 0.004, -0.004, -0.008],
   alert: [{ head: -8, dorsal: -12, ...pect(20), spine4: 6, spine5: 10, caudal: 14 }, -0.010],
-  approach: { swim: loop4(wave(1), { ...pect(12), dorsal: 4 }, wave(-1), 0, -0.010, -0.014) },
+  approach: { swim: travellingWave(['spine0','spine1','spine2','spine3','spine4','spine5','caudal'], [2,3,4,5,7,9,11]) },
   melee: { bite: melee({ ...wave(-0.8), head: -6, ...pect(-10) }, { ...wave(0.6), head: -4, jaw: -15, ...pect(15) }, { head: 8, jaw: -30, spine0: -6, spine1: -4, ...pect(20) }, { ...wave(0.2), head: 2 }, [-0.05, 0.30, 0.36, 0.10], [0.01, -0.02, -0.01, 0]) },
   cast: cast({ head: -18, spine0: -8, spine1: -6, ...pect(35), dorsal: -10 }, { head: -20, spine0: -8, spine1: -6, ...pect(38), dorsal: -12 }, { head: 22, jaw: -20, spine0: 6, ...pect(10) }, -0.05),
   hit: hit({ head: -14, spine0: 8, spine1: 10, spine2: 6, caudal: -10, ...pect(-15) }, { ...wave(-0.5), root: -6, head: -4 }, 0.01),
@@ -131,9 +134,10 @@ const INSECT = fauna({
 /* ---- serpent: seg0 is nearest the head; wave(k) is one slither S-curve ---- */
 const swave = (k: number): J => mul({ seg0: 8, seg1: 14, seg2: 8, seg3: -8, seg4: -14, seg5: -8, seg6: 8, seg7: 14, seg8: 8, seg9: -8 }, k);
 const SERPENT = fauna({
+  phaseOwnedGaits: {slither:Array.from({length:10},(_,i)=>'seg'+i)},
   idle: [{ head: -2, seg0: 2, seg1: 3 }, { head: 2, seg8: 3, seg9: 4 }, { head: -1, seg0: -2, seg1: -3 }, 0.003, -0.002, -0.004],
   alert: [{ head: -25, seg0: -15, seg1: -10, seg2: -4 }, -0.030],
-  approach: { slither: loop4(swave(1), { head: 2, seg0: 2 }, swave(-1), 0, -0.004, 0) },
+  approach: { slither: travellingWave(Array.from({length:10},(_,i)=>'seg'+i),Array(10).fill(6)) },
   melee: { strike: melee({ head: -20, seg0: -18, seg1: -12, seg2: -6, seg3: 6, seg4: 8 }, { head: 5, seg0: -5, seg1: 5, seg2: 12, seg3: 4, jaw: -20 }, { head: 15, jaw: -42, seg0: 4, seg1: 2 }, { head: -5, seg0: -10, seg1: -8 }, [-0.08, 0.40, 0.48, 0.12], [0.01, -0.03, -0.01, 0]),
     constrict: melee({ ...swave(1), head: -10 }, { seg0: 20, seg1: 30, seg2: 35, seg3: 30, seg4: 20, seg5: 10, head: 10 }, { seg0: 30, seg1: 42, seg2: 44, seg3: 40, seg4: 32, seg5: 25, seg6: 15, head: 20, jaw: -10 }, { seg0: 15, seg1: 20, seg2: 22, seg3: 20, seg4: 15, head: 8 }, [-0.05, 0.30, 0.34, 0.14], [0.01, -0.02, 0, 0]) },
   cast: cast({ head: -30, seg0: -30, seg1: -25, seg2: -15, seg3: -5 }, { head: -32, seg0: -30, seg1: -25, seg2: -15, seg3: -5, jaw: -8 }, { head: 25, jaw: -30, seg0: 5, seg1: 5 }),

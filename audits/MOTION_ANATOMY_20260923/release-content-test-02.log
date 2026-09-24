@@ -1,0 +1,41 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/guide-release.test.ts (35 tests | 1 failed) 92ms
+     × keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes 22ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/guide-release.test.ts > legacy and v2 release channels > keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes
+AssertionError: expected { categories: true, …(6) } to deeply equal { categories: true, …(6) }
+
+- Expected
++ Received
+
+  {
+    "canonical": true,
+    "categories": true,
+    "honest": true,
+-   "inventory": true,
++   "inventory": false,
+    "populated": true,
+    "publishingContradiction": false,
+    "required": true,
+  }
+
+ ❯ tests/guide-release.test.ts:2849:21
+    2847|       .toEqual([]);
+    2848|     const outcome = bulletinOutcome(V2_DRAFT_RELEASE.sections);
+    2849|     expect(outcome).toEqual({
+       |                     ^
+    2850|       categories: true, canonical: true, inventory: true, populated: t…
+    2851|       publishingContradiction: false, honest: true,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 34 passed (35)
+   Start at  00:41:44
+   Duration  363ms (transform 98ms, setup 0ms, import 164ms, tests 92ms, environment 0ms)
+

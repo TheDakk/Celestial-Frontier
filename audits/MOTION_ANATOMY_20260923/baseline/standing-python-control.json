@@ -1,0 +1,107 @@
+{
+  "status": "PASS",
+  "control": "Actual baseline Python must fail prospective travelling-wave target",
+  "row": {
+    "rig": "python",
+    "action": "approach:slither",
+    "criterion": "travelling-wave",
+    "status": "FAIL",
+    "measurement": {
+      "status": "FAIL",
+      "chain": [
+        "seg0",
+        "seg1",
+        "seg2",
+        "seg3",
+        "seg4",
+        "seg5",
+        "seg6",
+        "seg7",
+        "seg8",
+        "seg9"
+      ],
+      "amplitudesRad": [
+        0.13959802416809913,
+        0.24429654229417347,
+        0.13959802416809913,
+        0.13959802416809913,
+        0.24429654229417347,
+        0.13959802416809913,
+        0.13959802416809913,
+        0.2565408103158625,
+        0.1455571561674075,
+        0.1445118327211966
+      ],
+      "links": [
+        {
+          "from": "seg0",
+          "to": "seg1",
+          "lagCycles": -0.008333333333333333,
+          "correlation": 0.9920879032606347,
+          "phaseLagCycles": -0.0234767132227236
+        },
+        {
+          "from": "seg1",
+          "to": "seg2",
+          "lagCycles": 0,
+          "correlation": 0.999999999999996,
+          "phaseLagCycles": 0
+        },
+        {
+          "from": "seg2",
+          "to": "seg3",
+          "lagCycles": -0.31666666666666665,
+          "correlation": 0.4999254051224303,
+          "phaseLagCycles": -0.5
+        },
+        {
+          "from": "seg3",
+          "to": "seg4",
+          "lagCycles": 0,
+          "correlation": 0.9999999999999961,
+          "phaseLagCycles": 0
+        },
+        {
+          "from": "seg4",
+          "to": "seg5",
+          "lagCycles": 0,
+          "correlation": 0.999999999999996,
+          "phaseLagCycles": 0
+        },
+        {
+          "from": "seg5",
+          "to": "seg6",
+          "lagCycles": -0.31666666666666665,
+          "correlation": 0.4999254051224303,
+          "phaseLagCycles": -0.5
+        },
+        {
+          "from": "seg6",
+          "to": "seg7",
+          "lagCycles": 0.07916666666666666,
+          "correlation": 0.9810511290642084,
+          "phaseLagCycles": 0.08041130880005776
+        },
+        {
+          "from": "seg7",
+          "to": "seg8",
+          "lagCycles": 0.0875,
+          "correlation": 0.9842866652413738,
+          "phaseLagCycles": 0.07817761712842164
+        },
+        {
+          "from": "seg8",
+          "to": "seg9",
+          "lagCycles": -0.48333333333333334,
+          "correlation": 0.591792841377952,
+          "phaseLagCycles": -0.4232019720143194
+        }
+      ],
+      "medianLagCycles": 0,
+      "travelIndex": 0.03830038854328961,
+      "wavelengthBodyLengths": null,
+      "reason": "standing, reversed or incoherent wave"
+    },
+    "reason": null
+  }
+}
