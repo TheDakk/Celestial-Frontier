@@ -57,7 +57,8 @@ Nick is tired of "stop, generate something, stop." For this run and every run af
    `/battle2/`, every file SHA-256-pinned in the marker like the model delivery lane and cached on first use, and
    leaner arena files. The worker graph is sealed and feeds I5's producer authority, so this is yours. Claude can
    generate the pinned list from the same builder list that ships the files (`tools/morph/build-card-masters.mjs`).
-   Tell Claude the shape you want.
+   Tell Claude the shape you want. **Update (day):** `apps/game/public/battle2/MANIFEST.json` already lists every shipped arena file
+   with its bytes and SHA-256 (81.4 MB after Claude shipped each keyed cut-out as its alpha only), so the pin list exists.
 5. **The Centipede's skin folds at 0.85× presentation scale.** `library-arena.test.ts` SCALE SWEEP plays all 17 archetypes
    through a full bout at 0.85×/1×/1.15×: 16 are clean at every scale; the Centipede refuses at 0.85× with *"ARAP skin:
    unresolved folded triangles"* (also film `chimpanzee-vs-centipede-02`). That one case is pinned as KNOWN with its reason
@@ -73,6 +74,11 @@ Nick is tired of "stop, generate something, stop." For this run and every run af
    their presentation profiles have `candidateTemplates: []`, although the specialized templates exist (crustacean-small,
    annelid, gastropod, bivalve, sessile-filter…). Wiring those profiles is mechanical anatomy-chain work, and you may do
    it in this run.
+8. **The painter master ships only to be hashed.** `admitFamilyRecord` (and `admitRecord` for the quadruped) reads the painter
+   master's bytes only to compare `hashBytes(cutoutBytes)` with `record.geometry.cutoutAssetHash`; the pixels come from the part
+   atlas. That costs 13 MB of shipped arena (16 masters). A proposal for your loader: accept a verified hash from the shipped,
+   SHA-256-pinned manifest in place of the bytes (or bind the record to the atlas/binding chain it already checks). Only if you
+   agree it keeps the admission's guarantee; Claude will not touch the loader.
 
 **Nick accepted the archetype sprint art (all thirteen selections).** His direction: *"Animations can be fine-tuned
 more. The snake doesn't move exactly like a snake — we need to double-check all the animals and make sure they're

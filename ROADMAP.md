@@ -35,7 +35,7 @@ regression (`1dfeec2a`) and Codex's own override gate. Codex is running the moti
 
 **The new blocker for playtesting the arena (item -70).** In a BUILT game the service worker refuses every `/battle2/` file (503),
 because they live in `public/` and never enter its build marker. So the painted arena does not stage once the worker controls the
-page, and that includes the -67 playtest package. Until Codex's worker gains a lane for them, play the arena on the dev server:
+page, and that includes the -67 playtest packages (the current one is item -76). Until Codex's worker gains a lane for them, play the arena on the dev server:
 `cd port/v2/apps/game && npm run dev`, then open `http://localhost:5173/?battle2=1&vs=Tree%20Frog,Salmon`. The dev server has no
 worker.
 
@@ -51,8 +51,12 @@ is Nick's call.
   I5 lands, cycle the label on PR #43.
 - **Codex:** the motion-anatomy program plus items 1–7 of its prompt: the SW lane for `/battle2/` and the Centipede fold at 0.85×
   are new; I5 stays first for the PR.
-- **Claude:** when Codex names the worker lane's shape, generate the pinned `/battle2/` list from the builder list; add each new
-  archetype to the card and arena the day it lands; rebuild the playtest package once the worker serves the arena.
+- **Claude:** wire the arena into Codex's worker lane once it names the shape (the pinned list already exists: `public/battle2/MANIFEST.json`);
+  add each new archetype to the card and arena the day it lands; rebuild the playtest package once the worker serves the arena.
+- **Two more questions for Nick (battle2):** (a) portrait-phone framing (item -75); (b) turn pacing: today the painted stage plays
+  the whole transcript at its own pace while the Chronicle text log reveals a row every 240 ms. Should the stage pace the log (each
+  row appears at its turn's impact) or stay independent? Pacing the log changes the Chronicle, which owns accessibility and audio,
+  so Claude has not built it.
 
 **Traps this session paid for (obey them).**
 - `stage.play()` stamps a turn's start from the clock. A test loop that rewinds the clock plays every later turn at negative
@@ -67,6 +71,20 @@ is Nick's call.
   attempt.
 
 ### What Claude owes next
+-76. **Playtest package rebuilt on `23e5f4ce` (2026-09-24, day):** `port/v2/apps/game/smoke/dev-preview-23e5f4ce5ec9-20260924143808/`. `preview:selftest`,
+`preview:package`, `preview:verify` and `preview:smoke` (Edge 153) all PASS. It carries tonight's card fixes (bodies recolour, card = stage)
+and the slimmer arena. The ARENA inside it still needs an uncontrolled page (item -70); use the dev server for `?battle2=1`.
+Supersedes `dev-preview-c0e852320627-20260924043607`.
+-75. **Picker on an iPhone-class viewport (2026-09-24, `picker-smoke-05-phone/`, `23e5f4ce`).** At 390×844 @3 with touch, both matchups stage (PASS).
+**Look question for Nick:** on a portrait phone the 16:9 stage is a strip about a quarter of the screen high. A portrait battle framing
+(taller frame, or a stage that fills the width and height of the Chronicle mount) is a design decision.
+-74. **Arena files slimmed 97.7 → 81.4 MB (2026-09-24, `1e87a40a`).** The stage reads only the ALPHA of each keyed cut-out; the colour
+comes from the part atlas. So each keyed cut-out now ships as `parts/alpha.png` (RGB zero, alpha byte-identical, same decode path;
+18.2 → 1.8 MB), recorded as `derivedFrom` in `public/battle2/MANIFEST.json`. The test compares every alpha byte to the source for all 17,
+with a mutation control; an Edge build smoke passes (`picker-smoke-04-alpha/`). Measured and not done: the arena plates in lossless WebP
+would save about 5 MB, but `wild-anchors.json` pins each PNG's SHA-256, so it would mean re-sealing. The painter master (13 MB across 16)
+ships only so `admitFamilyRecord` can hash it (Codex's loader: prompt item 8). `MANIFEST.json` already lists every arena file with its
+bytes and SHA-256, which is the pinned list a worker lane needs (prompt item 4).
 -73. **Guardian size, one look for Nick (2026-09-24, `audits/BATTLE2_GUARDIAN_SIZE_20260924/README.md`).** The top cap (-69a) keeps the bear's
 victory rear-up inside the frame, but shrank it at rest from 0.70 to 0.55. The one lever that wins the size back without leaving the frame
 is to stand the guardian lower, in the foreground. Three Edge films on the real stage (bear vs crab, 0 / 0 refusals, CPU p95 2.5–2.6 ms):
