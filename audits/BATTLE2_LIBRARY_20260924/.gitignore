@@ -22,3 +22,5 @@ library-battles-sheet-01.png
 !salmon-vs-octopus-01/battle-10s.webm
 !eagle-vs-salmon-01/battle-10s.webm
 !crab-vs-starfish-01/battle-10s.webm
+# phone-tier study (take phone4x, 2026-09-24): reports and logs are committed; films and stills stay local (rerun: CF_CPU_THROTTLE=4 film-all.mjs all phone4x)
+*-phone4x/battle-10s.webm

@@ -62,3 +62,21 @@ film harness takes an optional `script.world` (a lake) so swimmers can be filmed
   pinch / body) — all DIAGNOSTIC_PASS, **0/0 refusals**, CPU p95 2.7 / 2.5 / 3.4 ms (inside the 3.5 ms painted tier).
 - Look note: the crab paintings carry a painted ground shadow (label 0) that floats under a submerged crab — a
   painting-side / presentation item, not blocking.
+
+## Phone-tier CPU study (2026-09-24, take `phone4x`)
+
+`CF_CPU_THROTTLE=4 node ../../audits/BATTLE2_LIBRARY_20260924/film-all.mjs all phone4x` (from `port/v2`) films the seven library pairs with Chrome's
+CPU slowed 4× (`Emulation.setCPUThrottlingRate`, a phone-class approximation, not a device). Stage CPU per frame, p95:
+
+| pair | desktop | 4× CPU | frame p95 at 4× | refusals |
+|---|---|---|---|---|
+| Python vs Tarantula | 1.90 ms | 3.50 ms | 16.7 ms | 0 / 0 |
+| Eagle vs Beetle | 2.10 ms | 3.90 ms | 16.7 ms | 0 / 0 |
+| Chimpanzee vs Centipede | 4.30 ms | **10.70 ms** | 16.8 ms | 0 / 0 |
+| Tree Frog vs Fruit Bat | 2.10 ms | 3.70 ms | 16.8 ms | 0 / 0 |
+| Salmon vs Octopus (lake) | 2.70 ms | 4.70 ms | 16.8 ms | 0 / 0 |
+| Eagle vs Salmon (lake) | 2.50 ms | 4.30 ms | 16.8 ms | 0 / 0 |
+| Crab vs Starfish (lake) | 3.40 ms | 6.50 ms | 16.7 ms | 0 / 0 |
+
+Every pair holds 60 fps at 4× CPU. The outlier is the Centipede: its ARAP skin costs about two-thirds of a 60 fps frame at 4× (the Chimpanzee alone
+is under 4 ms). For the phone tier (D1) this is the one to budget or simplify first (Codex's skin). The real iPhone probe remains the gate.
