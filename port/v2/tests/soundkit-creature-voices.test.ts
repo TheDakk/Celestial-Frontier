@@ -1,7 +1,13 @@
 /* Batch 3: creature voices per combatant (B5), phone particle budget (B10), leg-slack diagnostic (B11). */
 import { describe, expect, it } from 'vitest';
 import { createCreatureVoiceHook, genomeOnlyRecord } from '../apps/game/src/soundkit/creature-voices.js';
-import { synthesizePlaceholderQuadruped } from '../apps/game/src/soundkit/placeholder-archetype.js';
+import { synthesizePlaceholderLibrary, synthesizePlaceholderQuadruped } from '../apps/game/src/soundkit/placeholder-archetype.js';
+import { compileVoiceCard, VOICE_ARCHETYPES } from '../apps/game/src/soundkit/voice-card.js';
+import { deriveCue } from '../apps/game/src/soundkit/derive.js';
+import { CREATURE_CUES } from '../apps/game/src/soundkit/cues.js';
+import { BATTLE2_PARTS_FITS } from '../apps/game/src/battle2-archetypes.js';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { createTurnCueSink } from '../apps/game/src/soundkit/turn-audio.js';
 import type { TurnCue } from '../apps/game/src/battle2/cue-plan.js';
 import { EMITTER_PRESETS, PHONE_PARTICLE_SCALE, scaleEmitterBudget } from '../apps/game/src/effects/emitter.js';
@@ -48,6 +54,40 @@ describe('B5 creature voice hook', () => {
     const sink = createTurnCueSink({ runtime: { playVoice: (r) => { requests.push(r.key); return { kind: 'started', voiceId: 'v' }; } }, seed: 3, creatureVoice: hook });
     sink.play(cue('creature:hurt', 'right'), 0); sink.play(cue('creature:attack-vocal', 'left'), 0);
     expect(requests).toEqual(['soundkit:creature:hurt']); expect(sink.log.map((e) => e.result)).toEqual(['started', 'skipped: no creature voice for this side']);
+  });
+});
+
+describe('placeholder voices for every body plan (2026-09-24)', () => {
+  const lib = synthesizePlaceholderLibrary();
+  const peak = (x: Float32Array) => { let m = 0; for (const v of x) { if (!Number.isFinite(v)) return NaN; m = Math.max(m, Math.abs(v)); } return m; };
+  const first = (e: Float32Array | readonly Float32Array[]) => (e instanceof Float32Array ? e : e[0]!);
+  it('covers every voiced archetype with every creature cue source; finite, audible, within full scale; labelled placeholder, never shippable', () => {
+    expect(lib).toMatchObject({ placeholder: true, shippable: false, label: 'placeholder-synthesized-not-a-recording' });
+    expect(Object.keys(lib.sources).sort()).toEqual([...VOICE_ARCHETYPES].sort());
+    for (const a of VOICE_ARCHETYPES) { const set = lib.sources[a]!;
+      for (const cueKey of CREATURE_CUES) { const key = cueKey === 'footfall-set' ? 'footfall' : cueKey; const e = set[key]; expect(e, `${a}/${key}`).toBeDefined();
+        const p = peak(first(e!)); expect(p, `${a}/${key} finite`).not.toBeNaN(); expect(p, `${a}/${key} audible`).toBeGreaterThan(0.05); expect(p, `${a}/${key} in range`).toBeLessThanOrEqual(1); } }
+  });
+  it('the quadruped set is byte-identical to the original placeholder; sets are deterministic and differ between archetypes', () => {
+    const q = synthesizePlaceholderQuadruped().sources.quadruped!;
+    for (const k of Object.keys(q)) expect(Buffer.from(first(lib.sources.quadruped![k]!).buffer).equals(Buffer.from(first(q[k]!).buffer)), k).toBe(true);
+    const again = synthesizePlaceholderLibrary();
+    expect(Buffer.from(first(again.sources.serpent!.call!).buffer).equals(Buffer.from(first(lib.sources.serpent!.call!).buffer))).toBe(true);
+    const calls = VOICE_ARCHETYPES.map((a) => createHash('sha256').update(Buffer.from(first(lib.sources[a]!.call!).buffer)).digest('hex'));
+    expect(new Set(calls).size).toBe(VOICE_ARCHETYPES.length);
+  });
+  it('every archetype derives every creature cue (no throw) through the real engine', () => {
+    for (const a of VOICE_ARCHETYPES) {
+      const card = compileVoiceCard({ template: { id: a }, identity: { seed: 7, speciesVisualKey: `test:${a}` } }, null, null);
+      expect(card.ok, a).toBe(true); if (!card.ok) continue;
+      for (const cue of CREATURE_CUES) { const d = deriveCue(card.card, cue, lib.sources, 11); expect(d.samples.length, `${a}/${cue}`).toBeGreaterThan(0); expect(peak(d.samples), `${a}/${cue}`).toBeGreaterThan(0); }
+    }
+  });
+  it('all 17 painted archetypes now have a voice in the battle (each record through the hook)', () => {
+    const SERVED = new URL('../apps/game/public/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/', import.meta.url);
+    for (const fit of BATTLE2_PARTS_FITS) { const record = JSON.parse(readFileSync(new URL(fit.dir + 'record.json', SERVED), 'utf8'));
+      const hook = createCreatureVoiceHook({ seed: 5, sources: lib.sources, sides: { left: { record, genome: null, seed: 1, label: fit.earthName }, right: { record: null, genome: null, seed: 2, label: 'x' } } });
+      expect(hook.cards.left, `${fit.earthName}: ${hook.status.left}`).not.toBeNull(); expect(hook(cue('creature:hurt', 'left')), fit.earthName).not.toBeNull(); }
   });
 });
 
