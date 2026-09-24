@@ -2,7 +2,11 @@
 // audits/MORPH_CRAB_MARKINGS_20260922 — master-space alpha masks, one per v1 pattern name that the kit hand paints), blended
 // with the individual's accent colour; `iridescent` and `lumin` add an emissive lift on the marking (M4). A pattern
 // with no painted mask renders plain (the law: a feature nobody painted does not appear). Masks never touch alpha.
-import type { CreaturePartsBindingV1 } from '../creature-rig.js';
+/** The binding fields the marking map reads, declared STRUCTURALLY: this module is reached by the Pixi-free card path
+ * (species-art-loader → painted-card-source), and a type import of the rig module drags Pixi's DOM/WebGPU declarations into the
+ * node-only root typecheck (found 2026-09-23: root tsc red with 184 node_modules errors). CreaturePartsBindingV1 satisfies it. */
+type MarkingBox = Readonly<{ x: number; y: number; width: number; height: number }>;
+export interface MarkingBindingV1 { readonly atlasSize: Readonly<{ width: number; height: number }>; readonly parts: ReadonlyArray<Readonly<{ id: string; kind: 'part' | 'joint-patch'; frame: MarkingBox; cutout: MarkingBox }>>; }
 import type { MorphParamsV1, PaletteParamsV1 } from './morph-params.js';
 import { GREY_SATURATION, hslToRgb, rgbToHsl } from './morph-palette.js';
 /** v1 `FA_PATTERN` order (main.js). */
@@ -18,7 +22,7 @@ export interface AlphaMask { readonly alpha: Uint8Array; readonly width: number;
 /** A master-space mask (RGBA PNG, alpha = the marking) → an atlas-space alpha mask through the binding's parts: each
  * part was cut from the master at its `cutout` box and pinned unrotated at its atlas `frame` (same size), so the map
  * is a translation per part. Joint patches and bridges carry no marking. */
-export function masterMaskToAtlasV1(mask: AlphaMask, binding: Pick<CreaturePartsBindingV1, 'parts' | 'atlasSize'>, masterWidth: number, masterHeight: number, atlasRgba: Uint8Array): AlphaMask {
+export function masterMaskToAtlasV1(mask: AlphaMask, binding: MarkingBindingV1, masterWidth: number, masterHeight: number, atlasRgba: Uint8Array): AlphaMask {
   if (mask.width !== masterWidth || mask.height !== masterHeight) throw new TypeError('marking: mask is not in master space');
   const W = binding.atlasSize.width, H = binding.atlasSize.height, out = new Uint8Array(W * H); if (atlasRgba.length !== W * H * 4) throw new TypeError('marking: atlas size');
   // cut-out boxes OVERLAP (a carapace marking falls inside a claw's box): a mask pixel maps into a part's frame only
