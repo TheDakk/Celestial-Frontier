@@ -44,6 +44,11 @@ export function defaultArenaWorld(groundLineY: number): ArenaWorld {
 /** A combatant without an anatomy record stands on the ground; the report says so. */
 export const PORTRAIT_GROUND_HABITAT: PhysicalHabitat = Object.freeze({ realm: 'land', preferred: 'ground', allowed: Object.freeze(['ground'] as const), source: 'portrait combatant without an anatomy record: ground', liquid: null });
 
+/** A lake world on the accepted plates (2026-09-24): liquid water with a surface, so swimmers fight in water (the stage's wet
+ * arena) and flyers/walkers keep the air and the ground. Used by the matchup picker and the film harness. */
+export function lakeArenaWorld(groundLineY: number): ArenaWorld {
+  return Object.freeze({ ...defaultArenaWorld(groundLineY), key: 'lake', liquid: 'water', surfaceWater: true, cardHash: 'lake-1' });
+}
 export function habitatFor(side: HabitatSideInput): PhysicalHabitat {
   if (!side.record) return PORTRAIT_GROUND_HABITAT;
   return resolvePhysicalHabitat(side.record, side.genome ?? undefined);
