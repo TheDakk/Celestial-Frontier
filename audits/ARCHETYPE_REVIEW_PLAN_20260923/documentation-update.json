@@ -1,0 +1,17 @@
+{
+  "schema": "cf.review-doc-update/v1",
+  "files": [
+    {
+      "path": "ART_DIRECTION.md",
+      "beforeSha256": "35de32dda064180ae4d65618d31328adef05d2590e50182acb85027af35ebb2c",
+      "sha256": "77db40efa0d6ebd40eb50545724c034c6a8bad542b4a0ea8f9d8eb32e804f529"
+    },
+    {
+      "path": "ROADMAP.md",
+      "beforeSha256": "464b708a2e8f972e8a9b70d8bb5e7025b7cf3b80fea7b5528b76dcbd8dd519c8",
+      "sha256": "1963e3ca687abc64f7cc31b43d460d318028d89c6610677b9b622b6684278182"
+    }
+  ],
+  "previousRoadmapHandoffArchivedVerbatim": true,
+  "runtimeUnchanged": true
+}
