@@ -1,5 +1,9 @@
 # Celestial Frontier — Master Art Direction
 
+**Matches code as of: morph system (painted individual on the card and the arena) section, September 24, 2026.**
+The whole doc was not re-verified; every other section keeps its own date. See
+[Painted individual (the morph system)](#painted-individual-the-morph-system--matches-code-as-of-september-24-2026).
+
 **Python corrected open-pose candidate — matches retained source 2026-09-23.** Nick authorized the [new1254-square master and P1 proof](audits/PYTHON_OPEN_POSE_20260923/README.md). The [review sheet](audits/PYTHON_OPEN_POSE_20260923/review-sheet.png) and native03 film retain a connected open body in the inspected views; static12×121+968 and exact rest pass, with zero native refusals and0.5/0.5ms per-rig p95. A bounded harness framing repair keeps both identical creatures at equal scale inside the viewport. Original coiled paint/binding, rejected continuity candidate and all intermediate attempts remain immutable. The missed margins, faint alpha/fringe, small wide-arena presentation and exaggerated poses still need Nick’s full-film art review. The prior diagnosis’s presentation-not-run statement is corrected: its static presentation actually failed after254 samples, as its unchanged raw report records. Other ten creature sheets and six-mask composite retain their original review notes. Technical success is not production roster admission or final visual approval.
 
 [Animation library and shared deformation review](audits/ANIMATION_COMPLETION_20260916/README.md),
@@ -166,6 +170,134 @@ shareable discoveries. [Current source and proposed appearance recipe](audits/MI
 keep those future conditions separate from full organism identity, biome authority and protected
 gameplay time. Current painted examples are authored review images; universal procedural quality,
 dynamic daylight/seasons and exact-view sharing are not implemented by these images.
+
+
+## Painted individual (the morph system) — matches code as of September 24, 2026
+
+The painted library is the art for 17 Earth species: the five crabs (Crab, Coconut Crab,
+Freshwater Crab, Mud Crab, Vent Crab), the Civet, and one accepted archetype for each other body
+plan (Salmon, Eagle, Beetle, Python, Tree Frog, Chimpanzee, Starfish, Tarantula, Octopus, Fruit
+Bat, Centipede). One list, `CARD_ARCHETYPES` in `port/v2/tools/morph/build-card-masters.mjs`,
+generates the app registry (`morph/card-archetypes.ts`), the shipped asset map with
+its marking masks (`painted-cards.assets.ts`) and the arena list
+(`battle2-archetypes.ts`). A genome whose `_earthName` names one of them is drawn as
+a painted individual on the Compendium thumb (132 px) and portrait (440 px) on every device, phone
+included (`morph/painted-card-source.ts`, asked first by `species-art-loader.ts`); every other
+species keeps the painter tier. The card renders from a sealed card master of at most 512 px per
+side plus a nearest-sampled label map, one render per host task, cropped square about the alpha
+box with a 6 % margin. Paths in this section are under `port/v2/apps/game/src/` unless given in
+full from the repository root.
+
+**The painting is its own genome.** `morphParamsV1` (`morph/morph-params.ts`) is a pure function
+of the genome, the archetype's recipe hash and the archetype's own genome; no clock, no
+`Math.random`. The archetype's own genes (`archetypeGenomeV1`) come from its record's
+`identity.speciesVisualKey`, with the record's own `genome` block laid over it where there is one
+(the eleven sprint archetypes carry a full genome there; the crabs and the Civet carry none). A
+colour, accent, pattern, head or tail gene equal to the archetype's own is the identity for that
+channel, so the archetype's own genome renders exactly as painted and every other genome morphs
+relative to the painting. The same holds for `lumin`: the gene changes nothing on an archetype
+whose own genome is lumin (the Crab, the Civet, the Beetle, the Python and the Tarantula).
+
+**Palette.** The colour and accent genes index the v1 17-colour table (`COLOR_TABLE`): a hue and
+chroma multiplier per colour, with a seeded hue jitter of up to 12°. Obsidian-black, bone-white
+and glass-clear carry no hue and only desaturate. The remap (`remapAtlasPaletteV1`,
+`morph/morph-palette.ts`) preserves each pixel's HSL lightness and never touches alpha, so the
+painted shading, edges and fur or chitin structure survive (`morph/morph-palette.test.ts` allows
+at most 2/255 of lightness drift and no alpha change). It rotates the role's own dominant hue onto the target instead of flattening
+every pixel to one hue, and pixels below saturation 0.08 (eyes, claws, whites, blacks) keep their
+colour (except in tint mode, below).
+
+The accent is trim, not half the animal. `ACCENT_GROUPS` names, per body plan, the few groups
+that take the accent colour: brachyuran `arms` (the claws); quadruped `ears` and `tail`; fish
+`fins`; biped-bird `head` and `tail`; insect `wings` and `antennae`; serpent, hopper, cephalopod
+and myriapod `head`; radial `body` (the central disc); arachnid `tail` (the abdomen);
+flyer-membrane `ears` and `head`; primate none (one coat). Every other labelled group is the base
+coat. A part bound to joint `root` counts as the `body` group (`paletteRoleOfPart`), so the torso
+takes the colour gene (on the Starfish, whose `body` group is the accent, the accent gene); a
+painted shadow on `root` keeps its painted colour. `morph/morph-library.test.ts`
+holds every archetype's accent at or below 33 % of its labelled card pixels.
+
+**Tint for near-grey paintings.** A role whose alpha-weighted mean saturation is below 0.18
+(`LOW_CHROMA_ROLE`) has no hue worth rotating. Every pixel in that role instead takes the target
+hue with its saturation raised to at least 0.3 (`TINT_SATURATION`) before the colour's chroma
+multiplier, lightness still kept (within 2/255 of rounding). On the shipped card masters this
+applies to both roles of the Vent Crab and the Salmon and to the Chimpanzee's single coat; every other role measures at least
+0.23. A hue-less colour still only desaturates.
+
+**Painted markings.** The pattern gene follows v1 `FA_PATTERN`: plain, striped, spotted, banded,
+mottled, iridescent, marbled, eye-spotted. The six named markings (all but plain and iridescent)
+come only from a hand-painted, master-space alpha mask (`morph/morph-markings.ts`). A pattern with
+no painted mask renders plain; nothing procedural stands in for it. Masks exist for three
+archetypes, each with all six: the Crab (only the base Crab; the other four crabs have none), the
+Civet and the Salmon (`port/v2/apps/game/assets/painted-cards/{crab,civet-sentinel-input-01,salmon}/markings.json`;
+the Salmon's masks are their own packet, `audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/`).
+The Salmon's own pattern gene is banded, so a banded Salmon is the painting and its banded mask
+never shows. A marked pixel is blended toward its target by mask × 0.85: the target takes the
+accent hue with lightness kept, or, when the accent carries no hue (no accent gene, the
+archetype's own accent, or a hue-less colour), keeps the pixel's hue and shifts its lightness by
+0.3 toward the opposite end. Masks never
+touch alpha. On the arena a mask maps into the atlas part by part and lands only where that part
+has pixels of its own; on the card it is box-downscaled to the card master and applied before
+proportion, so it grows with a scaled head or tail.
+
+**Emissive.** The `lumin` gene or the iridescent pattern makes an individual emissive
+(`emissiveV1`). With a painted marking, the marking itself lifts by 0.28 lightness and 1.2×
+saturation. Without one, a half-strength lift (0.14) goes on the accent set, or on the base coat
+for a body plan with no accent set (`emissiveRoleV1`), so an emissive Chimpanzee glows on its
+coat. `morph/morph-library.test.ts` checks that a lumin and an iridescent individual differ from
+the plain one on every archetype's card, skipping a gene that is the archetype's own (lumin on the
+Crab, Civet, Beetle, Python and Tarantula; iridescent on the Coconut Crab, Eagle and Vent Crab), so
+every archetype is checked on at least one of the two.
+
+**Proportion limits.** The head gene scales the head sub-tree within 0.85–1.2 and the tail gene
+the tail sub-tree within 0.7–1.35, each linear over its v1 table; ears and antennae have no gene
+of their own and follow the head gene at a gentler slope, 1 + 0.6 × (the head gene mapped over
+0.8–1.3, minus 1), so 0.88–1.18, inside a 0.8–1.3 envelope (`PROPORTION_ENVELOPE`,
+`morph/morph-params.ts`). A value outside is clamped and the clamp recorded. Only these
+non-contact sub-trees scale, each by one uniform scale at its root joint
+(`morph/morph-skeleton.ts`); legs and every contact chain are untouched, so the family contact
+solver's plants stay exact. A sub-tree is everything below its root joint: the Octopus's arms hang
+from its head, so its head gene scales them too. The Crab has no head or tail group, so its
+proportion genes scale only its eyes (its antennae group). On the card, proportion is exactly the arena's transform
+(`cardProportionV1`, `morph/morph-card.ts`): nested scaled sub-trees compose, and a joint pivots at
+its source-fixed socket where the family contract declares one (baked into the card receipt as
+`fixedPivots`; only the Centipede has any) or else at its parent's landmark.
+`morph/morph-library.test.ts` holds every scaled landmark on the card to the arena's skeleton
+program within 1e-9 for a head and tail morph at the tops of their tables, on every archetype that
+morph scales (all but the Vent Crab and the Tree Frog, whose own head gene is the top, and the
+Starfish, which has no head, tail, ear or antenna group).
+
+**Card = arena.** The card and the arena use the same role map (`paletteRoleOfPart`), the same
+grey/tint decision per role (pinned for every archetype in `morph/morph-library.test.ts`), the
+same marking masks and the same proportion; the arena builds the individual through
+`individualFromGenomeV1` (`morph/morph-individual.ts`, called from `battle2-wiring.ts`). The
+matchup picker (`?battle2=1&vs=Left,Right&seed=N`, `battle2-matchup.ts`) is the quickest way to
+review morphs on the stage: a seed varies colour, accent and pattern, each side on its own lane;
+with no seed both fighters are their archetypes as painted. Arena framing and scale belong to
+`battle2/stage.ts` (`combatantPresentation`), not to the morph.
+
+**The card diagonal for long bodies.** A horizontal body whose alpha box is thinner than 0.42
+(short side over long side, `LONG_BODY_ASPECT`) is turned 45° on the card about its alpha-box
+centre, head end up, using the exact constant √½ (no trigonometry) and premultiplied bilinear
+resampling (`diagonalLongBodyV1`). As painted, exactly three archetypes turn: the Python (aspect
+0.21), the Centipede (0.39) and the Salmon (0.40). The aspect is measured on each individual after
+proportion, so a Centipede whose head gene is 5 or higher (head 1.1–1.2×) measures 0.42–0.44 and
+stays level. At each archetype's own genome every other card is byte-identical with the turn switched
+off, and each turned card covers more than 1.15× the pixels of the unturned one
+(`morph/morph-library.test.ts`, which also checks on a synthetic bar that the head end goes up in
+both facings). The turn is card-only: outside that test, `diagonalLongBodyV1` has no caller but
+`renderCardIndividualV1`.
+
+**What a morph cannot change.** A morph never adds, removes or redraws a part; it works only on
+the archetype's own parts, labels and pixels. Palette, markings and emissive write colour, never
+alpha (`paletteConservationV1` counts alpha changes, and `morph/morph-card.test.ts` asserts on the
+five crabs and the Civet that a colour morph keeps the card's alpha plane), so the silhouette stays
+the painting's. Apart from the card's diagonal turn, which rotates a long body without reshaping
+it, the only outline change is proportion: uniform scaling of the existing head, tail, ears and
+antennae sub-trees inside the envelope, with legs and contact chains fixed. A new body shape, a new part, or
+a marking on an archetype without a painted mask needs new painted art and its fit, not a morph.
+Anatomy, motion and painting internals are owned by the fit and painting records these files
+read; see the sprint audits named in `build-card-masters.mjs`.
 
 
 ## Local fidelity and inspection — matches code as of 2026-09-09

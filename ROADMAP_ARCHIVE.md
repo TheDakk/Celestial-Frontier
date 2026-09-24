@@ -1,3 +1,197 @@
+## Archived 2026-09-24 (Claude) — ROADMAP hygiene: the 2026-09-19 (night) handoff with its lane-state sub-blocks, and the 2026-09-17…19 batch blocks, verbatim
+
+## SESSION HANDOFF — September 19, 2026 (night) · E1 CODED ON THE MERGED LANE; CODEX RUNNING THE SINGLE-RUN PROGRAM
+
+Self-contained. Either lane can resume from this block alone. Earlier handoffs of the day are archived verbatim at the top of
+`ROADMAP_ARCHIVE.md`.
+
+### Lane state — 2026-09-21 re-merge (this commit merges `openai/mac` `db8858bb` into `anthropic/mac` locally)
+Codex's R3-S → §8 chain (signed, 20 stages verified in its packet `audits/R3S_RESUME_20260921/`) is now in this lane. Resolution
+rule as recorded: Codex's R9/finisher files canonical (`creature-originals.ts`+test, `finish-master.mjs`, `finish-conservation.mjs`+test,
+`prepare-observed-crabs.mjs`, `kit-worker-engine.mjs`, `landfall-conditioning.ts` — the duplicated `compileCreatureFinishV1` resolved to
+Codex's); `ROADMAP.md`/`ROADMAP_ARCHIVE.md` kept from this lane. Test state on the merged tree: `tsc` clean; battle2 33 pass + 1 expected
+fail; the two E1 R3 pins FLIPPED green (crab pinch admitted; a crab attacks through the stage); the parts rig now forwards
+`travel:'stage'` and takes an optional binding for observed supports (off by default). **Two solver findings for Codex, measured:**
+(1) under `travel:'stage'` the family solver zeroes root dx but its stance targets still advance by stride×(completed+step), so feet
+march in body space while the stage moves the body — the double count; arena-planting needs targets that recede by the stage
+displacement (the third pin stays `it.fails` with this reason, 185 px spread); (2) with `observedContactSupports` on the crab, foot
+JOINTS drift up to 5.3 px under hit loading (the surface, not the joint, is what that model pins; a support-position accessor is needed
+to test the true invariant). Three sealed tests are red on the merged tree and none is merge-caused: `biome-vista` (identical bytes on
+both lanes), `training-checkpoint` (this lane's TypeSafe batch `a3bd835d` changed the v1.8.9 html by 8 lines — Codex's html matches the
+seal; Nick decides re-seal vs revert), `current-producer-authorities` (a local `dist/` build artifact). `node tools/validate.js` PASS
+(fingerprint match). Anatomy-verify runners own their PNG helper now (`png.mjs`).
+
+### Lane state (both lanes pushed to origin 2026-09-19 evening under Nick's explicit "push anthropic/mac and openai/mac")
+
+| Lane | HEAD | Note |
+|---|---|---|
+| `openai/mac` (Codex) | `ddb51313` local (origin at `7dd884f0`): R2c-L step 1 ran (crabs zero exceedances, bit-identical) and stopped S2 at the 8 % compression bound on the Civet bite lunge (157 ms). Review §13 maps the whole conflict (every body-moving quadruped row breaks the all-feet-planted solve: lunge/rear-up/hop need 70–297 px of compression vs 28 px; faint needs ±92° elbow) and issues **R3-S** as ONE run without internal stops: report-all ledger → per-template per-action stance contract (quadruped hind-only for melee/cast/victory, none for dodge/kick, all otherwise; brachyuran all) → contactLimitsDeg from planted folds → after ledger → controls → rest of §8 | awaiting the §13 paste + Nick's authorization line |
+| `anthropic/mac` (Claude) | this commit (slice 18, intake compiler; pushed to `origin/anthropic/mac` under Nick's standing lane-push authorization) on top of `13d4406a`: **R9 finished textures delivered** (tooling `8b901e6c`; evidence `audits/ANATOMY_COMPLETION_20260917/crab-finish-01/`, five crabs PASS on every gate, bindings byte-identical in `crab-fits-finished-01/`, offline rebind test 5 PASS; quality not accepted — see the README's findings for Nick: the accepted 0.35 × 1-step finish is subtle; strength/steps study needs Nick's word; coconut-crab at 1×; Civet needs its ownership map; native rebind rows at the R3 re-merge). E1.1–E1.5 coded and filmed; two TypeSafe batteries; tree clean apart from `.DS_Store` |
+
+Pushed as plain branch pushes only (no workflow runs on a branch push per `GITHUB_ACTIONS_BUDGET.md`; `origin/openai/mac` = 140 commits, `origin/anthropic/mac` = 72 first-parent commits, pushed in fast-forward chunks along the first-parent chain — pushing a `rev-list --reverse` order without `--first-parent` rejects at the merge's side commits, which is what the first attempt hit). PR42 parked, no PR opened, no merge to develop, no release. Lanes still read each other by absolute path.
+
+### The program in flight (Nick, 2026-09-19: "most work possible before a stop")
+
+`audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md` §8: ONE Codex run — toolchain → R1c-b/c → R2c → R2d → R3 → R4 →
+re-capture → R9 → R5–R8 → roster by family → PR42 split prepared → ONE stop with an accumulated review packet. S2 (a
+shared-path red: Civet sentinel or any of the five crabs regressing after a solver change) is the only halt. Claude runs E1 in
+parallel on local merges of Codex's signed producers.
+
+### Codex's run stopped at S2 in R2c (its packet `audits/ANATOMY_SINGLE_RUN_20260919/`)
+R2c closes Mud/Vent (five crabs ≤ 0.0094 px) and adds the root accommodation R1c-b proved missing, but the Civet
+sentinel fails idle at 0.2608 px: its support is unpinned and ~85 % paw-weighted, so R2c's rigid-to-endpoint
+correction over-corrects (Claude's derivation in review §9). Direction issued: **R2c′** — model the support by its
+actual skin weights, crabs must reproduce bit-for-bit, Civet must pass unchanged, then resume §8. Codex's R2c
+packet is staged UNSIGNED (1Password refused both lanes tonight; now unlocked) — sign it first. R1c-c attributed
+most cold flora CPU to the declared scale (per-pass cost, `normalPasses` 4 everywhere): leaf red for R8/Q4.
+
+### R2c′ ran, S2 fired again (Codex `R2c-prime/`, signed `dd33865c`) — direction R2c″ issued (review §10)
+Crabs bit-for-bit; Civet idle/approach pass; `melee:bite` 0.266 px = covariance 0.100 + ARAP 0.181. The retained
+samples show the crabs' ARAP residual at their (R1b-pinned) supports is 0.0000 px in every row while the unpinned
+candidate-10 Civet carries 0.02–0.20 px even in passing rows. R2c″: exact per-vertex LBS at the support, and
+regenerate the Civet binding through the current shared split with contact locks (candidate-10 kept as history);
+control: unpinned candidate-10 under the new model must still fail. E1 then loads the regenerated Civet binding.
+
+### E1.5 done — the films exist (`audits/BATTLE2_E1_PROOF_20260919/`)
+`tools/battle2-proof/native-runner.mjs` films two real fits on the real stage in Edge. Five Civet-vs-crab runs pass
+(zero refusals, CPU p95 ≈ 2.2 ms at 60 fps); `review-sheet.png` is the packet row. **The film found what the gates
+could not:** the parts rig was invisible (normalized display units drawn 0.3 px tall — fixed, `cutout` 1×1 +
+`sourceSize`), and the quadruped victory rear-up was refused as a planted stance (fixed, `plantedFor` frees it).
+For Nick's eye: the contact gap stops at a crab's leg tips (silhouette box vs body box — kit question); the fainted
+crab stands back up (V2 on the stage); crabs are raw painter texture until R9.
+
+### TypeSafe tooling live on this lane — both batteries done (log §1–§5)
+Eight tools (`npm run typesafe:rig|reference|judgetag|reference2|biome|text|procedural|universe`), ≈ $0.11 for the
+whole day. Table fixes: 3 regex + 14 fauna postures + 4 flora forms, all gates green. **Findings that need Nick's
+decision, not edits:** (1) "A omnivore" article bug at `main.js:2165` — fix is one line but changes the determinism
+fingerprint (re-baseline decision); (2) 12/60 sampled procedural fauna are swimmers/drifters in dunes/ridges/canopy —
+`loco` and `habitat` roll independently; (3) `climateBand` is orbit-only, so molten/Venusian worlds land in cold/
+temperate bands that seed species; (4) biome atlas family lists are subsets (design or gap?); (5) `tuber`/`rosette`
+conventions in `flora.json`. **Safety:** all three checkouts are worktrees of ONE `.git`; 455 commits (315 + 140) exist
+only on this Mac — bundle backup written to `~/Projects/celestial-frontier-lanes-backup-20260919.bundle`; the plain
+branch push of both lanes Nick then authorized is done (see Lane state), so origin now holds every commit on this Mac.
+
+
+### Codex lane handoff, verbatim at the sprint merge (openai/mac `236b9846`) — 2026-09-23 Python open-pose correction
+
+> Merge note (Claude): in `anthropic/mac` Codex's archetype harness lives at `tools/battle2-proof/archetype-native-{entry,runner}.mjs`; `native-{entry,runner}.mjs` stays the E1.5 morph/guardian harness. The two lanes had written different instruments at one path.
+
+
+OpenAI/Codex on macOS: /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac, upstream origin/openai/mac. Claude’s /Users/nick/Projects/celestial-frontier-anthropic-mac remains read-only. Pre-existing .DS_Store is untouched. Uninterrupted toolchain startup receipt and Node26.9.0 reused. Nick’s latest continue authorized the proposed open-pose repaint and one renewed signed retry.
+
+The prior diagnosis is now signed as4ff2fad720e1d5734ce95a77c8a401cd8884e24e, signature G (e6288e/47fedf). Its old signing-wait statements are historical; recovery receipt is in audits/PYTHON_OPEN_POSE_20260923/diagnosis-signing-recovery.json. Prior reviewfe8f6ca1 was successfully pushed with actual remote equality. No push of4ff2fad7 or this correction is claimed.
+
+**Completed bounded Python correction:** audits/PYTHON_OPEN_POSE_20260923/README.md, result.json and review-sheet.png. One corrected built-in imagegen master, exact kit prompt/genome/reference hashes, manual declaration, candidate02/fit01, all refusals and films retained. Static02 passes12 actions×121 plus968 presentation samples; exact geometry rest and source-pixel rest0. Selected bindinga9524c5a617cf26d01d4697ed0164a07b5dc31ee83e2418a4a4b705195f21c90; recordb287ddc58c565fb9cfaae5f8c474177e38ad9dd07b4bf9ad959dbeb9aecf9b41. Selected topology has12 required joins and zero observation-only cut boundaries.
+
+Native20260923-python-open-native-03: zero left/right rig refusals,602 live/605 encoded frames,1268 dense containment observations, per-rig p950.5/0.5ms and whole-stage1.100000023841858ms. Both identical snakes use scale145.82590780006032. Reviewed stills and decoded movie samples retain connected paint without the old broad gaps. Nick retains final art acceptance: requested margins missed, faint alpha specks/fringe preserved, wide-arena scale small and family poses exaggerated. No further intake or repaint is needed for this bounded correction unless Nick requests art changes.
+
+Harness-only source changes: painted-envelope.mjs fits ground motion to the viewport around its unchanged ground line using measured camera extrema; shared reduction preserves source mass ratios. native-entry.mjs supplies that evidence. Ground-framing controls pass21/21; validate passes with zero boot errors and unchanged50-probe fingerprint. Native01 viewport refusal, native02 unequal role scales, test01 rounding-oracle failure and both mask candidates are preserved. No numerical gate/solver/threshold, accepted binding or S2 input changed; no unrelated battery replay. Source-manifest.json binds the three changed harness source files to predecessor4ff2fad7. This is local diagnostic proof, not a clean committed-source certificate.
+
+Correction to previous narrative: the rejected coiled candidate’s static owner DID run its presentation row, failing after254 successful samples with55 unresolved folded triangles. The raw report always retained this; prior-packet-correction.json records the correction. No native film ran for that rejected candidate.
+
+All13 sprint selections retain their signed technical packets in audits/ARCHETYPE_FINISH_20260923/final-sprint-review-index.md; the Python follow-up above supersedes its art-review hold on broad moving-body gaps, while human appearance acceptance remains open. Integration stays parked: PR42 draft openai/mac→develop; no PR43 green/certification claim. No fetch/sync, PR mutation, label, hosted run, merge, release or deploy. Budget UNFROZEN, last verified PUBLIC, private fallback3,000, zero hosted attempts authorized. Current correction has signed-local-commit authority; no new exact push or hosted attempt is inferred.
+
+I5 certificate20260922-i5-focus-89b5da95c185 certifies only89b5da95c185a1e8f08080ed3f42bab8a0494ec7. Build authoritybd8edd1b570d4bc4e1933a87a9e0552e75208d18ca43c40d2ffcd6712ebc1a5b; measurement6a829fb18eab4c171afaace0f49ad2a987cfcdc520d33dbc05337c379df85ee2. Never rebind it to current head or PR43.
+
+Paired next steps: the correction is signed as 469982364ee6d365806280bedcba7f52bc694f0c, verified G after Nick renewed approval. Signing is resolved; the refusal receipts remain historical. See audits/PYTHON_SIGNED_HANDOFF_20260923/README.md for the Git closure. Codex holds for Nick’s sheet/full-film art review; no art/test work remains for this bounded correction. Claude consumes the signed results under Nick’s integration direction; no manual copying or sync is authorized. Nick does not need to open Claude now. No new PR is requested. The correction and diagnosis remain local; no new push or hosted attempt is authorized by this handoff. Physical phone qualification and develop/main promotion remain separate.
+
+## 2026-09-17 · Claude read-only review of openai/mac (docs-only commit on anthropic/mac)
+
+Nick requested a consolidated review of the Codex worktree at `0426ef4d` plus its staged, unsigned
+September 17 batch (5 crab fits, 3 flora fits, 7 observations, C1–C5 continuation). Two passes are
+committed verbatim in `audits/ANATOMY_REVIEW_20260917/CLAUDE_REVIEW_RESPONSE.md`; the copy-ready
+plan-only prompt for Codex is `CODEX_PLANNING_PROMPT.md` beside it. Headline: input manifest verified
+(1,271/1,275 + 4 declared pointer diffs); five systemic findings (S1 frame-refusal policy, S2 amplitude
+not bone-length-relative, S3 no planted contact outside quadruped, S4 pinch unreachable by resolvers,
+S5 phone budget) plus the Pass 1 register. No lane was edited or synced; no push; PR42 parked.
+Nothing on anthropic/mac changed except this note and the two audit files.
+
+Later the same day: Codex’s approved plan (`9769d299`) and R1/R2 producer (`6b11407d`) were reviewed
+against the eight-subject native evidence (`r1-r2-native-01`, commit `57dfe112`). Review committed as
+`audits/ANATOMY_REVIEW_20260917/CLAUDE_R1R2_REVIEW.md`: tears and floating legs are gone, but motion
+is now unreadable because body-length-relative motion uses a 4 % root→carapace axis (N1); recommended
+a bounded R1b/R2b (N1–N4 + one quadruped sentinel) before R3–R8; Q4 kit paragraph recommended for
+approval. Still no push; PR42 parked.
+
+## 2026-09-17 (later) · vision program approved; E1 design started
+
+Nick restated the full vision and approved the master program's decisions D1–D4
+(`audits/ANATOMY_REVIEW_20260917/MASTER_PROGRAM_20260917.md`): D1 phone tier = delivered finished
+originals with painter-only fallback (no on-device inference); D2 first guardian = Earth-temperate apex
+at 1536 on the same pipeline; D3 arenas by biome family, Earth temperate first; D4 E1 design now, code
+after R3 reaches develop. Track B design is `E1_BATTLE2_INTEGRATION_DESIGN.md` (parts-rig adapter,
+attack-driven turn plan, habitat arena selection, five outcome tests; Codex owes `ContactPhase.travel`
+and the brachyuran attack row in R3). Codex is mid-R1b/R2b (N1 decision + N11/N12 given). No push.
+
+## 2026-09-19 · Claude review of R1b/R2b re-capture; N3 withdrawn; R1c direction; R9 addendum
+
+Read-only review of `openai/mac` evidence `d0437436` on producer `6a58e40e`, committed as
+`audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md` with the contact sheets Claude looked at in
+`r1b-r2b-look/`. Integrity verified (README ↔ JSON, producer diff scope, zero pin deltas). Visual: scuttle
+is readable for the first time (V1); **faint recovers to rest by 75 %** (V2) and **pinch is static** (V3);
+N8 fringes persist (V5). **N3 withdrawn and owned:** the vertex was already rigid; the gate reduces to
+`2·|o|·sin(θ/2)` (rest offset × stance rotation) and the pin receipts' |o| (1.3–3.1 px) are consistent with
+every pass/fail — a derivation, not a proof, so R1c (a) measures it with three negative controls. R1c (b)
+discriminates a Civet adapter artifact from a family-solver gap (hypothesis: no root accommodation) without
+clearance; R1c (c) is a variance floor + 2×2 {harness order × scale reference} attribution, plus the
+persimmon fold ownership dump (the fold pre-exists on `6b11407d`; `normalPasses` unchanged). Gate stays
+0.25 px; no repair chosen. `R9_ADDENDUM_FINISHED_TEXTURES.md` written in the plan's format (desktop only,
+D1). No sync, no push, PR42 parked.
+
+## 2026-09-19 (night) · openai/mac merged locally; E1 battle2 integration coded on the real fits
+
+Nick relaxed D4 ("go"): E1 codes against Codex's signed producer by local merge. `openai/mac` `4cb5f7a3` merged into
+`anthropic/mac` as `e86a66ab` (Codex's nine motion files win; lane docs kept; four merge repairs recorded in the commit —
+Codex's absolute-path pose probe re-pinned, its stale blender span repointed, the battle2 keyer made a static import per the
+Arc 4 law, my motion tests retargeted to Codex's contracts, synthetic fixtures given source habitats). Then E1.1–E1.4:
+`battle2/parts-rig.ts` (Codex's paint-skin rig through its owner + contact solver, refusal policy, joint read-out),
+`TurnAttack` on the turn plan with `impactAtMs` on the effect schedule, `battle2/habitat-arena.ts`, reduced-motion rule,
+`RigPoseContext` hand-over, wiring of the six fits + per-turn `compileAnatomyAttack` + `status().arena/attacks/refusals`.
+Outcome tests run on the REAL fits in vitest: Civet bite pays; no refusal in play (Civet both roles, five crabs as targets);
+habitat refusal visible; reduced motion holds. Three `it.fails` pins flip when R3 lands (travel:'stage', crab attack, pinch).
+Battery: typecheck ×3, 210 tool tests, evidence build, vitest 4,736 pass / 3 expected-fail / 1 red = I5 stale certificate.
+
+## 2026-09-19 · TypeSafe second-opinion tooling landed (from the Windows build, via zip) and its first live battery
+
+The Windows-side batch's own handoff, verbatim (it was written against the Sept-5 roadmap base; the tooling
+arrived here as a zip and was installed after a full read; nothing else from that ROADMAP was taken):
+
+> **What landed:** TypeSafe's Jev model (text-only typed Choice/Noul answers with probabilities) is wired in as
+> **offline audit tooling only** — see `TYPESAFE_START_HERE.md` for the fit decision, the laws, and the
+> copy-ready prompt. It is NOT the art judge (Jev cannot see PNGs) and never enters `main.js` or the v2
+> runtime. `tools/_earthart-load.js` (loaders shared by `rig-audit.js` and `rig-secondopinion.js`),
+> `tools/typesafe-client.js` (key from `TYPESAFE_API_KEY` only, `--dry-run`, gitignored cache),
+> `npm run typesafe:rig` / `typesafe:reference` / `typesafe:judgetag`, `@typesafe-ai/sdk` 0.6.0 dev dependency,
+> `tools/README.md` section. Verified there: `node --check`, `validate.js` PASS, all three tools under `--dry-run`.
+
+**Battery (this lane, Nick's go):** `audits/TYPESAFE_BATTERY_20260919/README.md`. Spend 54 requests /
+1.73 M input tokens (~$0.073). Rig: 8 disagreements → 3 confirmed regex misses fixed in `main.js` (Whale Shark,
+Viperfish → fish; Nudibranch → gastropod) with sentinels (196), 5 model misses left alone. Reference: 272
+disagreements → 14 posture corrections in `fauna.json`, each justified by the row's own text or its family
+convention; eyes untouched (fish-`prominent` is a convention). `rig-audit`, `validate.js`, `referencecheck.mjs`
+PASS. `artlock.mjs` is stale (1250/1250 since 2026-08-06, identical on the pre-change html) — Nick's re-bless
+decision, not this batch. Judgetag skipped (no judge run on this Mac). §4 of the log answers "can it check
+everything?" — yes for text/JSON (flora rows, biomes, procedural records, universe cards), no for art/numbers.
+
+## Archived 2026-09-24 (Claude) — superseded handoff of 2026-09-23
+
+## SESSION HANDOFF — September 23, 2026 · MORPH SYSTEM SHIPPED; PR #43 OPEN; I5 IS THE LAST RED
+Self-contained: either lane can resume from this block alone. Older handoffs are archived verbatim at the top of `ROADMAP_ARCHIVE.md`.
+
+**Where the work stands (2026-09-24).** `anthropic/mac` pushed and equal to origin; PR #43 is the ONE combined PR (both lanes; #42 closed as superseded). Remaining reds are Codex's: I5, the freshwater-crab reach regression (`1dfeec2a`), Codex's own override gate. Codex is running the motion-anatomy program in sprint mode.
+
+**What is built and proven (items -39…-60 below).** The morph system end to end: deterministic params from the genome (`morphParamsV1`, golden-sealed; the archetype's own visual genes come from `identity.speciesVisualKey`), luminance-preserving palette remap, M1 proportion through `jointScale` on the pose program (non-contact sub-trees only), M3/M4 painted markings for the crab and the Civet, a ref-counted morph texture cache on Codex's borrowed-atlas option, and the same individual on the Compendium CARD on every device (Nick's option 3; sealed ≤512² card masters shipped under `apps/game/assets/painted-cards/`). D2's first guardian (Brown Bear) fills the frame by its tallest pose, stands on guardian stands, and films at 2.8–3.1 ms inside its 5 ms tier. A2 planted cadence runs on all seven rigs. The playtest package is built, verified and browser-smoked: `port/v2/apps/game/smoke/dev-preview-f27c9052cf82-20260921151144/` — serve it on loopback and add `?battle2=1` for the arena.
+
+**Verified locally on this head:** unit battery 4,875 pass / 2 expected red / **1 red = I5**; Glass small-phone PASS ×2 and large-phone PASS; `overridecheck` 1014/1014 routes + 137 mutation controls; legacy root gates green; root layout 787/787; `vite build --mode evidence` green.
+
+**The one blocker — I5 (Codex's instrument).** `tests/current-producer-authorities.test.ts` requires `budgets/compendium-memory-v1.json`'s `producerAuthority` to equal the current build's producer; `tests/compendium-budget.test.ts` pins the sealed 2026-09-02 value `357ad8db…` and asserts a mismatch fails closed. They only agree after a MEASURED re-seal that updates the budget and its historical samples together — a hand re-bind was tried here and correctly refused by those pins (reverted). Both entry points refuse by design (`--calibrate`: "candidate calibration is closed because the measured Compendium budget is active"; `npm run compendiummem`: "built index/owner/worker/painter does not match the Compendium calibration authority"). Until it lands, every hosted attempt reds at `v2 base-profile static gates`; PR #43's run `35669457751` is the retained evidence (4,873 pass / 3 failed; the other two were hosted-only 5 s timeouts, now given explicit 30 s limits).
+
+**How close the vision is, measured.** The 631 Earth fauna fall into 13 body plans and **all 13 already have family contracts**; only two have painted archetypes — brachyuran (5 crabs) and quadruped (Civet + the Bear guardian) — covering 218 species. The other eleven cover 413: fish 132, biped-bird 102, insect 41, serpent 26, hopper 18, primate 17, radial 12, arachnid 9, cephalopod 8, flyer-membrane 4, myriapod 3. The multiplier (morphs) is finished; the painted library is the bottleneck, and each new archetype is worth its whole body plan.
+
+**Next, by owner (updated 2026-09-23, late).** Codex's lane head `6910f2bf` is fully merged here — nothing of its overnight sprint has landed yet, so Claude took the one unblocked item on its own list: the SECOND archetype's sheets (item -61; two findings await Nick's eye, one of them his own open question (2)). Codex: I5 first, then one painted archetype per body plan in coverage order (fish/Clownfish, biped-bird/Eagle, insect/Dragonfly) through its proven chain — the overnight sprint prompt is in the Codex block below. Nick: after I5 lands, cycle the label on PR #43 for attempt #3 (the workflow fires only on `labeled`), then the merge to `develop` and, if wanted, the publication-candidate preview for the dev site; the local playtest package is ready now. Claude: merge and verify Codex's packets, re-film what they change, and keep the morph/card path green; the roster batch through the intake compiler still waits on IC-4 passing the crabs (two merged near-claw fingers and the crab's `leg3Far` are painting-side, every matcher lever measured and rejected).
+
+**Traps this session paid for (obey them).** A note placed INSIDE the training-restart fixture broke the hosted battery — that file is exact capture output, notes live in `training-restart-fixture.RESEAL.md`. A backtick inside a comment in `ui-sheet-style.ts` ends the CSS template literal and breaks the evidence build. `expect(x).not.toBe(y)` on a 16 MB typed array makes vitest pretty-print both and kill the worker. A sealed budget is never re-bound by hand. Run `npm run overridecontrol` and the workflow's whole gate list locally before any hosted attempt — `overridecheck` had been silently red since Codex's resolver restructure of 2026-09-16.
+
 ## Archived 2026-09-23 — Python diagnosis before approved open-pose correction
 
 ## 2026-09-23 — Superseded Python signing-wait handoff

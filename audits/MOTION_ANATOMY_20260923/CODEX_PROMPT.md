@@ -44,6 +44,36 @@ Nick is tired of "stop, generate something, stop." For this run and every run af
    `/Users/nick/Projects/celestial-frontier-openai-mac/…`; nothing else can resolve it. Make the writers emit
    repo-relative sources (Claude's card builder works around it today, and records the master SHA-256 it read).
 
+## Added 2026-09-24 (Claude's night sprint) — four more, verify each
+
+4. **The service worker refuses every painted-arena file.** In a built game, once `service-worker.js` controls the page,
+   every same-origin GET that is not in the build marker answers 503 (`pwa-build.ts` fetch handler: *"Resource is not
+   part of the selected Celestial Frontier build."*). The marker is `Object.keys(bundle)` at `generateBundle`, and Vite's
+   `public/` files never enter the bundle, so all of `apps/game/public/battle2/**` (**133 files, 117 MB**) is refused and
+   the painted arena cannot stage: `audits/BATTLE2_LIBRARY_20260924/picker-smoke-03-sw-503/report.json` (*"battle2 asset
+   keyed/wild-launch.png: HTTP 503"*). The same run with the worker refused (`--no-sw`, `picker-smoke-03/`) passes. Earlier
+   runs `-01`/`-02` passed with the worker served, so a first visit can race ahead of the worker; a controlled page
+   always fails. Precaching 117 MB at install is not a phone answer. Recommended: a declared lazy lane in the worker for
+   `/battle2/`, every file SHA-256-pinned in the marker like the model delivery lane and cached on first use, and
+   leaner arena files. The worker graph is sealed and feeds I5's producer authority, so this is yours. Claude can
+   generate the pinned list from the same builder list that ships the files (`tools/morph/build-card-masters.mjs`).
+   Tell Claude the shape you want.
+5. **The Centipede's skin folds at 0.85× presentation scale.** `library-arena.test.ts` SCALE SWEEP plays all 17 archetypes
+   through a full bout at 0.85×/1×/1.15×: 16 are clean at every scale; the Centipede refuses at 0.85× with *"ARAP skin:
+   unresolved folded triangles"* (also film `chimpanzee-vs-centipede-02`). That one case is pinned as KNOWN with its reason
+   and **goes red when you fix it**. Delete the pin in the same commit.
+6. **`creature-stance-reach` (item 1) is still open on Claude's tree**, and item 2 (your override gate) still blocks
+   adopting your gate. Nothing changed there tonight.
+7. **For when Nick picks paintings (not before):** `audits/COVERAGE_STUDY_20260924/README.md`. One painting per body plan
+   leaves 454 of 561 Earth species misleading. The ranked plan (138 archetypes) is in `painting-plan.json`: the top 10 (Wall
+   Lizard, Cougar, Impala, Marmot, Bass, Cattle, Capuchin, Tang, Wolf, Gull) fix 120 and the top 20 fix 195. Each entry
+   carries a `mustPaint` brief. Rules for every new painting: a PLAIN base coat plus its own six-mask set (the morph keeps
+   luminance, so a painted mark shows on every species it stands in for). Five rig changes are needed first (primate +
+   tail, hopper + tail, decapod cephalopod, arachnid + tail, shelled cephalopod). Also, 53 species have no stand-in because
+   their presentation profiles have `candidateTemplates: []`, although the specialized templates exist (crustacean-small,
+   annelid, gastropod, bivalve, sessile-filter…). Wiring those profiles is mechanical anatomy-chain work, and you may do
+   it in this run.
+
 **Nick accepted the archetype sprint art (all thirteen selections).** His direction: *"Animations can be fine-tuned
 more. The snake doesn't move exactly like a snake — we need to double-check all the animals and make sure they're
 moving appropriately for their anatomy."* This run is **MOTION ANATOMY**: every rigged animal must move the way its
