@@ -50,8 +50,8 @@ try {
   const guardianSide = left.rig.guardian ? 'left' : right.rig.guardian ? 'right' : undefined;
   const layout = composeArena({ id: recipe.battleContext?.worldKey ?? 'arena', groundLineNormalized: recipe.groundLineNormalized, plates: { far, mid, near } }, FRAME, guardianSide ? { guardianSide } : {});
   const masses = { left: left.card.massClass.multiplier, right: right.card.massClass.multiplier };
-  const painted = (s, mass) => combatantPresentation(s.rig, mass, FRAME); // the app's one sizing rule (battle2/stage.ts)
-  const paintedL = painted(left, masses.left), paintedR = painted(right, masses.right);
+  // the app's one sizing rule (battle2/stage.ts), with each side's stand line for the tallest-pose top cap
+  const paintedL = combatantPresentation(left.rig, masses.left, FRAME, layout.stands.left.y), paintedR = combatantPresentation(right.rig, masses.right, FRAME, layout.stands.right.y);
   // the app's rule (battle2-wiring): an air/water body too tall for its band is scaled to fit it, and the stage takes that scale
   // script.world (optional): an ArenaWorld to fight on (e.g. a lake, so swimmers can be filmed); absent = the default dry arena
   const scriptWorld = script.world ? { ...defaultArenaWorld(layout.groundLineY), ...script.world } : null;

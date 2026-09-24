@@ -364,8 +364,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     // E1 §1.4: the habitat decides each side's medium and band on the selected world; UNSUPPORTED keeps the Chronicle path with its reason.
     // sized by the mass rule, then capped to the arena WIDTH (a long body) — guardians keep their decided fill — then fitted to
     // its medium band by the habitat below; the stage takes the resulting scale whenever it differs from its own mass rule
-    const painted = (r: { rig: BattleRigV1; mass: number }) => combatantPresentation(r.rig, r.mass, BATTLE2_FRAME);
-    const paintedLeft = painted(left), paintedRight = painted(right);
+    const paintedLeft = combatantPresentation(left.rig, left.mass, BATTLE2_FRAME, layout.stands.left.y), paintedRight = combatantPresentation(right.rig, right.mass, BATTLE2_FRAME, layout.stands.right.y);
     const habitat = selectHabitatArena({ contextId: input.settlement.battleId, seed: recipe.seed, round: 0, kind: 'wild', worlds: input.worlds ?? (input.worldPreset === 'lake' ? { home: lakeArenaWorld(layout.groundLineY), visitor: lakeArenaWorld(layout.groundLineY) } : null), groundLineY: layout.groundLineY, fitToBand: true,
       left: { record: matchRecord(records, championGenome), genome: championGenome, label: input.chronicle.championName, painted: paintedLeft },
       right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, label: input.chronicle.defenderName, painted: paintedRight } });

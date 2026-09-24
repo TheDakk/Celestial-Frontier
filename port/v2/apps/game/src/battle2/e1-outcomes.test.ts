@@ -86,9 +86,13 @@ describe('E1 outcome 1 — the attack pays: anatomy contact, effect impact, abil
 });
 
 describe('E1 outcome 2 — no refusal in play', () => {
+  // Each turn starts at clock 0 (stage.play stamps its start from the clock) and must reach its end frame. Found 2026-09-24 by the
+  // adversarial review: without the reset every turn after the first ran at negative time — rest poses, zero refusals, vacuous.
   const playTurns = (stage: BattleStage, plans: TurnPlanInput[], setNow: (ms: number) => void): number => {
     let ticks = 0;
-    for (const input of plans) { const plan = stage.play(input); for (let ms = 0; ms <= plan.beats.end; ms += 1000 / 30) { setNow(ms); const frame = stage.tick(); if (!frame) throw new Error('no frame'); ticks++; } }
+    for (const input of plans) { setNow(0); const plan = stage.play(input);
+      for (let ms = 0; ms < plan.beats.end; ms += 1000 / 30) { setNow(ms); const frame = stage.tick(); if (!frame) throw new Error('no frame'); ticks++; }
+      setNow(plan.beats.end); const end = stage.tick(); if (!end?.done) throw new Error('turn never reached its end'); ticks++; }
     return ticks;
   };
   it('the Civet attacks (anatomy bite) and is attacked, dodges and faints across seeded turns at 30 Hz: zero rig refusals, no exception reaches tick', async () => {
@@ -129,7 +133,8 @@ describe('E1 outcome 2 — no refusal in play', () => {
     const plans = rows.map((row, i) => turnOf(contextFor('Bear', card.massClass.multiplier, card, attackFor, { seed: (0xA11 + i * 7919) >>> 0, arena: { groundLineY: gLayout.groundLineY, stands: gLayout.stands } }), row, i));
     expect(plans[0]!.attack?.verb).toBe('claw');
     const holder = nodes.find((n) => n.children.includes(rig.root as object))!; const joints = Object.keys(record.landmarks); let topMin = Infinity, ticks = 0;
-    for (const input of plans) { const plan = stage.play(input); for (let ms = 0; ms <= plan.beats.end; ms += 1000 / 30) { now = ms; if (!stage.tick()) throw new Error('no frame'); ticks++;
+    for (const input of plans) { now = 0; const plan = stage.play(input); const times = [...Array.from({ length: Math.ceil(plan.beats.end / (1000 / 30)) }, (_, k) => k * (1000 / 30)), plan.beats.end]; // each turn from clock 0, ending on its end frame
+      for (const ms of times) { now = ms; const fr = stage.tick(); if (!fr) throw new Error('no frame'); if (ms === plan.beats.end && !fr.done) throw new Error('turn never reached its end'); ticks++;
       for (const j of joints) { const p = rig.jointPosition(j); if (!p) continue; const y = holder.y + holder.scaleSet[1] * (p.y - rig.foot.y) * rig.cutout.height; if (y < topMin) topMin = y; } } }
     expect(ticks).toBeGreaterThan(300); expect(rig.refusals(), rig.lastRefusal() ?? '').toBe(0);
     expect(topMin).toBeGreaterThanOrEqual(FRAME.height * (1 - GUARDIAN_FRAME_FILL) - FRAME.height * 0.02); // the guardian never leaves the frame across attack / hit / dodge / victory / faint
