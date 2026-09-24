@@ -47,6 +47,7 @@ import { morphAtlasCache, morphAtlasKey, type MorphAtlasLease } from './morph/mo
 import { markingNameV1, maskAlphaOf, type AlphaMask } from './morph/morph-markings.js';
 import { archetypeGenomeV1, morphParamsV1 } from './morph/morph-params.js';
 import { decodePng } from './morph/png-decode.js';
+import type { CombatChroniclePacerGateV1 } from './combat-chronicle.js';
 import { decodeMorphedAtlas, loadCreatureRigV1, type CreaturePartsBindingV1, type CreatureRigRecordV1, type CreatureRigV1 } from './creature-rig.js';
 import { abilityTheme } from '@cf/domain-combatcore';
 import { parseEffectSequenceAnchors, type EffectSequenceAnchors } from './effects/anchors.js';
@@ -133,6 +134,9 @@ export interface Battle2StudyInput {
   /** Keyed alpha for a master (default: Codex's kit-contact-math keyAndDespill from the kit runtime route). */
   readonly keyer?: Battle2Keyer;
   readonly raster?: Battle2Raster;
+  /** Nick 2026-09-24: the stage paces the Chronicle log — each transcript row is released at its turn's impact (every row on
+   * finish, failure or dispose). main.ts passes a gate only when motion is on; absent = the log keeps its own cadence. */
+  readonly pacer?: CombatChroniclePacerGateV1 | null;
   readonly records?: readonly ResolvedAnatomyRecord[];
   /** Portrait art for combatants without a landmark record (default: the species art loader's 132 px thumb). */
   readonly portrait?: (genome: Readonly<Record<string, unknown>>) => Promise<Battle2Image>;
@@ -248,7 +252,8 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   section.setAttribute('aria-hidden', 'true'); section.style.cssText = 'display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#141d22';
   input.mount.prepend(section);
   let phase: Battle2Phase = 'loading', reason: string | null = null, label: string | null = null, ticks = 0, turnIndex = -1;
-  const skipped: string[] = []; let turns: TurnPlanInput[] = []; const rigLabels = { left: null as string | null, right: null as string | null }, effectLabels = { left: null as string | null, right: null as string | null };
+  const skipped: string[] = []; let turns: TurnPlanInput[] = []; const turnRows: number[] = []; let turnStart = 0, impactAt = Infinity, releasedTurn = -1;
+  const releaseThrough = (turn: number): void => { if (turn <= releasedTurn) return; releasedTurn = turn; input.pacer?.release(turnRows[turn]!); }; const rigLabels = { left: null as string | null, right: null as string | null }, effectLabels = { left: null as string | null, right: null as string | null };
   const attackLabels = { left: null as string | null, right: null as string | null }; let arenaLabel: string | null = null; let refusalsOf: () => Readonly<{ left: number | null; right: number | null }> = () => Object.freeze({ left: null, right: null });
   let app: Battle2AppLike | null = null, stage: BattleStage | null = null, ticking = false, disposed = false, cueSink: TurnCueSink | null = null;
   const audioSummary = (): string => (cueSink ? `${cueSink.log.length} cues: ${cueSink.log.map((e) => `${e.cueId}=${e.result}`).join(', ')}` : 'none');
@@ -259,11 +264,14 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     if (disposed || !stage || !app) return;
     if (!input.mount.isConnected || section.parentElement !== input.mount) { dispose('mount left the document'); return; }
     ticks++;
-    if (turnIndex < 0) { turnIndex = 0; stage.play(turns[0]!); }
+    const play = (i: number): void => { turnStart = input.clock(); impactAt = stage!.play(turns[i]!).beats.impactAt; };
+    if (turnIndex < 0) { turnIndex = 0; play(0); }
     const frame = stage.tick();
+    if (input.clock() - turnStart >= impactAt) releaseThrough(turnIndex); // this turn's Chronicle row appears at its impact
     if (frame?.done) {
-      if (turnIndex + 1 < turns.length) { turnIndex++; stage.play(turns[turnIndex]!); }
-      else if (phase === 'playing') { setPhase('finished'); stopTicking(); }
+      releaseThrough(turnIndex);
+      if (turnIndex + 1 < turns.length) { turnIndex++; play(turnIndex); }
+      else if (phase === 'playing') { setPhase('finished'); stopTicking(); input.pacer?.releaseAll(); }
     }
     app.renderer.render(app.stage);
   };
@@ -277,7 +285,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   observer?.observe(input.mount, { attributes: true, attributeFilter: ['data-combat-chronicle-generation'] });
   const atlasLeases: MorphAtlasLease[] = [];
   const dispose = (why = 'disposed'): void => {
-    if (disposed) return; disposed = true; stopTicking();
+    if (disposed) return; disposed = true; stopTicking(); input.pacer?.releaseAll();
     win.removeEventListener('pagehide', onPageHide); win.removeEventListener('pageshow', onPageShow); observer?.disconnect();
     try { stage?.dispose(); } catch { /* total teardown continues */ }
     for (const lease of atlasLeases.splice(0)) { try { lease.release(); } catch { /* teardown continues */ } }
@@ -411,7 +419,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       arena: { groundLineY: layout.groundLineY, stands: stagedLayout.stands }, seed: fnv1a32(input.settlement.battleId) ^ recipe.seed, anchorsForTheme: (t) => themes.anchorsFor(t), readyMs: 900, commandMs: 400, reducedMotion: input.reducedMotion, attackFor,
     };
     const ordinals = { A: 0, B: 0 };
-    for (const row of input.settlement.transcript.log) { const side = row.side === 'B' || (row.dodge === true && row.an === input.chronicle.defenderName) ? 'B' : 'A'; const t = turnPlanInputFromTranscriptEvent(row, ctx, ordinals[side]); if (t.kind === 'turn') { turns.push(t.input); ordinals[side] += 1; } else skipped.push(t.reason); }
+    for (const [rowIndex, row] of input.settlement.transcript.log.entries()) { const side = row.side === 'B' || (row.dodge === true && row.an === input.chronicle.defenderName) ? 'B' : 'A'; const t = turnPlanInputFromTranscriptEvent(row, ctx, ordinals[side]); if (t.kind === 'turn') { turnRows.push(rowIndex); turns.push(t.input); ordinals[side] += 1; } else skipped.push(t.reason); }
     if (turns.length === 0) { built.dispose(); throw new Error('battle2: the transcript has no stageable turn'); }
     const application = new pixi.Application();
     await application.init({ width: BATTLE2_FRAME.width, height: BATTLE2_FRAME.height, resolution: input.deviceTier === 'high' ? 2 : 1, autoDensity: false, background: '#141d22', antialias: true, autoStart: false, sharedTicker: false });
@@ -421,7 +429,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     setPhase('playing'); startTicking(); tick();
     return status();
   };
-  const ready = build().catch((error: unknown) => { if (!disposed) setPhase('failed', error instanceof Error ? error.message : String(error)); return status(); });
+  const ready = build().catch((error: unknown) => { input.pacer?.releaseAll(); if (!disposed) setPhase('failed', error instanceof Error ? error.message : String(error)); return status(); });
   const handle: Battle2StudyHandle = { ready, status, dispose };
   current = handle; return handle;
 }

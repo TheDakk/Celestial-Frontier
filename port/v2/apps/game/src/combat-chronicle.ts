@@ -21,6 +21,30 @@ import {
 export const COMBAT_CHRONICLE_SCHEMA_V1 = 'cf-v2-combat-chronicle/v1' as const;
 export const COMBAT_CHRONICLE_START_DELAY_MS = 420 as const;
 export const COMBAT_CHRONICLE_ROW_DELAY_MS = 240 as const;
+/** With a pacer (the flagged battle2 stage), a row never waits longer than this for its release: a stalled or failed stage
+ * cannot hold the accessible log. */
+export const COMBAT_CHRONICLE_PACER_MAX_WAIT_MS = 12000 as const;
+
+/** An optional presentation that paces the log (Nick 2026-09-24: each row appears at its turn's impact on the painted
+ * stage). `waitFor` resolves when transcript row `transcriptIndex` may appear. Skip, hide, close and reduced motion are
+ * unchanged; without a pacer the fixed cadence is byte-for-byte the same. */
+export interface CombatChroniclePacerV1 { waitFor(transcriptIndex: number): Promise<void>; }
+export interface CombatChroniclePacerGateV1 {
+  readonly pacer: CombatChroniclePacerV1;
+  /** Release every row up to and including this transcript index. */
+  release(throughTranscriptIndex: number): void;
+  /** Release everything (the stage finished, failed or went away). */
+  releaseAll(): void;
+}
+export function createCombatChroniclePacerGateV1(): CombatChroniclePacerGateV1 {
+  let through = -1, all = false; const waiters = new Set<{ readonly index: number; readonly resolve: () => void }>();
+  const flush = (): void => { for (const w of [...waiters]) if (all || w.index <= through) { waiters.delete(w); w.resolve(); } };
+  return Object.freeze({
+    pacer: Object.freeze({ waitFor: (index: number): Promise<void> => (all || index <= through ? Promise.resolve() : new Promise<void>((resolve) => { waiters.add({ index, resolve }); })) }),
+    release: (index: number): void => { if (index > through) { through = index; flush(); } },
+    releaseAll: (): void => { all = true; flush(); },
+  });
+}
 
 export type CombatChronicleRowKindV1 =
   | 'intro'
@@ -424,6 +448,9 @@ export class CombatChronicleController {
   #timer: ReturnType<typeof setTimeout> | null = null;
   #nextStep = 0;
   #generation = 0;
+  #pacer: CombatChroniclePacerV1 | null = null;
+  #pacerToken = 0;
+  #released = new Set<number>();
   #captionOwners = new Map<string, HTMLElement>();
   #playedCueIds = new Set<string>();
   #preludePending = false;
@@ -442,6 +469,12 @@ export class CombatChronicleController {
   }
 
   get presentationGeneration(): number { return this.#generation; }
+
+  /** Set BEFORE `start`: rows then wait for the pacer (max COMBAT_CHRONICLE_PACER_MAX_WAIT_MS each). null restores the cadence. */
+  setPacer(pacer: CombatChroniclePacerV1 | null): void {
+    this.#assertLive();
+    this.#pacer = pacer;
+  }
 
   attach(mount: HTMLElement): void {
     this.#assertLive();
@@ -467,6 +500,7 @@ export class CombatChronicleController {
     this.#captionOwners.clear();
     this.#playedCueIds.clear();
     this.#preludePending = true;
+    this.#released.clear();
     this.#mount.replaceChildren();
     this.#mount.dataset.combatChronicleGeneration = String(this.#generation);
     const log = this.#document.createElement('div');
@@ -640,9 +674,28 @@ export class CombatChronicleController {
       this.#finish(audible);
       return;
     }
+    const pending = chronicle.steps[this.#nextStep]!;
+    if (this.#pacer !== null && audible && !this.#released.has(pending.transcriptIndex)) {
+      this.#awaitPacer(this.#pacer, pending.transcriptIndex);
+      return;
+    }
     const step = chronicle.steps[this.#nextStep++]!;
     this.#renderStep(step, audible);
-    this.#schedule(COMBAT_CHRONICLE_ROW_DELAY_MS);
+    this.#schedule(this.#pacer !== null ? 0 : COMBAT_CHRONICLE_ROW_DELAY_MS);
+  }
+
+  #awaitPacer(pacer: CombatChroniclePacerV1, transcriptIndex: number): void {
+    const token = ++this.#pacerToken, generation = this.#generation;
+    const go = (): void => {
+      if (token !== this.#pacerToken || generation !== this.#generation || this.#chronicle === null) return;
+      this.#clearTimer();
+      this.#released.add(transcriptIndex);
+      this.#advance(true);
+    };
+    this.#timer = setTimeout(go, COMBAT_CHRONICLE_PACER_MAX_WAIT_MS);
+    let waited: Promise<void>;
+    try { waited = pacer.waitFor(transcriptIndex); } catch { waited = Promise.resolve(); }
+    waited.then(go, go);
   }
 
   #renderRemainderSynchronously(): void {
@@ -743,6 +796,7 @@ export class CombatChronicleController {
   #clearTimer(): void {
     if (this.#timer !== null) clearTimeout(this.#timer);
     this.#timer = null;
+    this.#pacerToken++;
   }
 
   #cancel(reason: CombatChronicleStopReasonV1, clearDom: boolean): void {
@@ -755,6 +809,7 @@ export class CombatChronicleController {
     this.#chronicle = null;
     this.#cuePlan = null;
     this.#nextStep = 0;
+    this.#released.clear();
     if (clearDom) this.#mount?.replaceChildren();
     if (hadPresentation) this.#onStopVoices?.(reason, generation);
   }

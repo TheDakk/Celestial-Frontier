@@ -39,7 +39,10 @@ describe('main.ts battle2 gate (source text)', () => {
   it('mutation controls: a static import, an ungated dynamic import, or a missing gate all fail the check', () => {
     expect(gateViolations(`${mainSource}\nimport { BattleStage } from './battle2/stage.js';\n`, 'battle2', 'battle2-wiring', 'battle2')).not.toEqual([]);
     expect(gateViolations(`${mainSource}\nvoid import('./battle2-wiring.js');\n`, 'battle2', 'battle2-wiring', 'battle2')).not.toEqual([]);
-    expect(gateViolations(mainSource.replace("get('battle2') === '1'", "get('battle2') !== null"), 'battle2', 'battle2-wiring', 'battle2')).not.toEqual([]);
+    // the gate ON THE IMPORT LINE is mutated (main.ts also reads the flag earlier to set the Chronicle pacer, 2026-09-24)
+    const ungate = (src: string) => src.split('\n').map((l) => (l.includes("import('./battle2-wiring.js')") ? l.replace("get('battle2') === '1'", "get('battle2') !== null") : l)).join('\n');
+    expect(ungate(mainSource)).not.toBe(mainSource);
+    expect(gateViolations(ungate(mainSource), 'battle2', 'battle2-wiring', 'battle2')).not.toEqual([]);
   });
   it('neither wiring module reads a wall clock or Math.random outside comments (the clock is injected by main.ts)', () => {
     for (const file of ['battle2-wiring.ts', 'worldlife-wiring.ts']) {
@@ -172,6 +175,27 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
     expect(app.destroyed).toBe(true); expect(h.mount.querySelector('[data-battle2-stage]')).toBeNull(); expect(handle.status()).toMatchObject({ phase: 'disposed', reason: 'test' });
     expect([...(h.listeners.get('pagehide') ?? [])]).toHaveLength(0);
     handle.dispose(); // idempotent
+  });
+
+  it('PACING (Nick 2026-09-24): the study releases each staged turn\'s Chronicle row at its IMPACT (before the turn ends), in order, and everything on finish; dispose and a failed build release everything', async () => {
+    const released: number[] = []; let all = 0;
+    const pacer = { pacer: { waitFor: async () => {} }, release: (i: number) => { released.push(i); }, releaseAll: () => { all++; } };
+    const h = harness({ pacer });
+    const handle = mountBattle2Study(h.input); expect((await handle.ready).phase).toBe('playing');
+    const log = (h.input.settlement.transcript.log as readonly Record<string, unknown>[]);
+    // walk turn 0 in 50 ms steps: its row must be released while turnIndex is still 0 (at impact), not only when the turn ends
+    h.setNow(10); h.ticker.step(); expect(released).toEqual([]);
+    let t = 10, releasedAt = -1, turnEndedAt = -1;
+    while (t < 60_000 && turnEndedAt < 0) { t += 50; h.setNow(t); h.ticker.step(); if (releasedAt < 0 && released.length === 1) releasedAt = t; if (handle.status().turnIndex > 0 || handle.status().phase === 'finished') turnEndedAt = t; }
+    expect(releasedAt).toBeGreaterThan(10); expect(turnEndedAt).toBeGreaterThan(releasedAt);
+    h.setNow(200_000); h.ticker.step(); h.setNow(400_000); h.ticker.step();
+    expect(handle.status().phase).toBe('finished');
+    expect(released).toHaveLength(2); expect(released[1]!).toBeGreaterThan(released[0]!); expect(released[1]!).toBeLessThan(log.length);
+    expect(all).toBe(1);
+    handle.dispose('test'); expect(all).toBe(2);
+    // a build that fails releases everything so the log is never held
+    let failedAll = 0; const empty = harness({ pacer: { ...pacer, releaseAll: () => { failedAll++; } }, settlement: { ...h.input.settlement, transcript: { log: [] } } as Battle2StudyInput['settlement'] });
+    expect((await mountBattle2Study(empty.input).ready).phase).toBe('failed'); expect(failedAll).toBe(1);
   });
 
   it('a player champion gets the labelled placeholder; a genome matched by _earthName also takes the fixture rig; themes follow the combat domain', async () => {
