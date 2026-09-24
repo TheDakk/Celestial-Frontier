@@ -1,14 +1,16 @@
 /** OUTCOME: every painted archetype can be loaded by the SHIPPED arena — each file the battle2 wiring asks for (record,
- * binding, alpha-only cut-out, parts manifest, atlas, painter master via the record's source, and the painted masks) exists in
+ * gzipped binding, alpha-only cut-out, parts manifest, atlas, painter master via the record's source, and the painted masks) exists in
  * `public/battle2/` at the exact path the wiring resolves against the recipe URL. A path bug (an absolute record source, a
  * mask set outside its fit) fails here, not in a playtest. */
-import { existsSync, readFileSync } from 'node:fs';
-import { PNG } from 'pngjs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { gunzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 import { REPO_ROOT } from './battle2/parts-rig.fixtures.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
 import { BATTLE2_ASSETS, auditAssetPath } from './battle2-wiring.js';
 import { CARD_ARCHETYPES } from './morph/card-archetypes.js';
+import { decodePng } from './morph/png-decode.js';
 import { repoRelativeSource } from '../../../tools/creature-animation/record-source.mjs';
 import { CARD_ARCHETYPES as BUILD_LIST, SHIPPED_ROOT, generatedSources } from '../../../tools/morph/build-card-masters.mjs';
 const SERVED = new URL('port/v2/apps/game/public/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/', REPO_ROOT); // the recipe's directory, as served
@@ -23,7 +25,7 @@ describe('the shipped arena carries every painted archetype', () => {
     const missing: string[] = []; let masks = 0;
     for (const fit of BATTLE2_PARTS_FITS) {
       const need = (rel: string) => { if (!existsSync(served(rel))) missing.push(`${fit.earthName}: ${rel}`); };
-      for (const f of ['record.json', 'binding.json', 'parts/alpha.png', 'parts/manifest.json']) need(fit.dir + f);
+      for (const f of ['record.json', 'binding.json.gz', 'parts/alpha.png', 'parts/manifest.json']) need(fit.dir + f);
       if (!existsSync(served(fit.dir + 'record.json'))) continue;
       const record = JSON.parse(readFileSync(served(fit.dir + 'record.json'), 'utf8')) as { source: string; recipeHash: string }, manifest = JSON.parse(readFileSync(served(fit.dir + 'parts/manifest.json'), 'utf8')) as { creatureId: string };
       need(fit.dir + 'parts/atlas/' + manifest.creatureId + '.png'); need(auditAssetPath(repoRelativeSource(record.source)));
@@ -35,25 +37,47 @@ describe('the shipped arena carries every painted archetype', () => {
     expect(missing).toEqual([]);
     expect(masks).toBeGreaterThanOrEqual(18); // crab + Civet + Salmon × 6 — the Salmon's masks live outside its fit and must still ship
   });
-  it('each shipped alpha-only cut-out carries EXACTLY its keyed cut-out\'s alpha (RGB zero), and the manifest names the source it was derived from', () => {
+  it('each shipped alpha-only cut-out carries EXACTLY its keyed cut-out\'s alpha (RGB zero), and the manifest names the source it was derived from', async () => {
     // the arena reads only the alpha (rig alpha + alpha box); the colour comes from the atlas. Compare every alpha byte.
-    const alphaOf = (bytes: Buffer) => { const p = PNG.sync.read(bytes), a = new Uint8Array(p.width * p.height); let rgb = 0; for (let i = 0; i < a.length; i++) { a[i] = p.data[i * 4 + 3]!; rgb |= p.data[i * 4]! | p.data[i * 4 + 1]! | p.data[i * 4 + 2]!; } return { w: p.width, h: p.height, a, rgb }; };
+    const alphaOf = async (bytes: Buffer) => { const p = await decodePng(new Uint8Array(bytes)), a = new Uint8Array(p.width * p.height); let rgb = 0; for (let i = 0; i < a.length; i++) { a[i] = p.rgba[i * 4 + 3]!; rgb |= p.rgba[i * 4]! | p.rgba[i * 4 + 1]! | p.rgba[i * 4 + 2]!; } return { w: p.width, h: p.height, a, rgb }; };
     const firstDiff = (x: Uint8Array, y: Uint8Array) => { if (x.length !== y.length) return -2; for (let i = 0; i < x.length; i++) if (x[i] !== y[i]) return i; return -1; };
     const shipped = JSON.parse(readFileSync(served('../../MANIFEST.json'), 'utf8')) as { files: { path: string; derivedFrom?: { path: string; sha256: string } }[] };
     let checked = 0, control = -1;
     for (const fit of BATTLE2_PARTS_FITS) {
-      const source = readFileSync(new URL(fit.dir.replace(/^\.\.\//, 'audits/') + 'parts/keyed.png', REPO_ROOT)), cut = alphaOf(readFileSync(served(fit.dir + 'parts/alpha.png'))), want = alphaOf(source);
+      const source = readFileSync(new URL(fit.dir.replace(/^\.\.\//, 'audits/') + 'parts/keyed.png', REPO_ROOT)), cut = await alphaOf(readFileSync(served(fit.dir + 'parts/alpha.png'))), want = await alphaOf(source);
       expect([cut.w, cut.h], fit.earthName).toEqual([want.w, want.h]);
       expect(firstDiff(cut.a, want.a), fit.earthName + ': first differing alpha byte').toBe(-1);
       expect(cut.rgb, fit.earthName + ': RGB must be zero').toBe(0);
       expect(existsSync(served(fit.dir + 'parts/keyed.png')), fit.earthName + ': the full keyed cut-out no longer ships').toBe(false);
       const entry = shipped.files.find((f) => f.path === fit.dir.replace(/^\.\.\//, 'audits/') + 'parts/alpha.png');
       expect(entry?.derivedFrom?.path, fit.earthName).toBe(fit.dir.replace(/^\.\.\//, 'audits/') + 'parts/keyed.png');
-      if (control < 0) { const bad = cut.a.slice(); bad[bad.length >> 1] ^= 1; control = firstDiff(bad, want.a); } // mutation control: one flipped bit is found
+      if (control < 0) { const bad = cut.a.slice(), mid = bad.length >> 1; bad[mid] = bad[mid]! ^ 1; control = firstDiff(bad, want.a); } // mutation control: one flipped bit is found
       checked++;
     }
     expect(checked).toBe(BATTLE2_PARTS_FITS.length);
     expect(control).toBeGreaterThanOrEqual(0);
+  });
+  it('each shipped binding.json.gz gunzips to its fit\'s binding.json byte for byte, and battle2-assets.json pins EVERY shipped file (the PWA build\'s first-use list)', () => {
+    const shipped = JSON.parse(readFileSync(served('../../MANIFEST.json'), 'utf8')) as { files: { path: string; derivedFrom?: { path: string; encoding?: string } }[] };
+    let checked = 0;
+    for (const fit of BATTLE2_PARTS_FITS) {
+      const rel = fit.dir.replace(/^\.\.\//, 'audits/'), gz = readFileSync(served(fit.dir + 'binding.json.gz')), src = readFileSync(new URL(rel + 'binding.json', REPO_ROOT));
+      expect(gunzipSync(gz).equals(src), fit.earthName + ': gunzipped binding differs from the fit').toBe(true);
+      expect(existsSync(served(fit.dir + 'binding.json')), fit.earthName + ': the uncompressed binding no longer ships').toBe(false);
+      expect(shipped.files.find((f) => f.path === rel + 'binding.json.gz')?.derivedFrom, fit.earthName).toMatchObject({ path: rel + 'binding.json', encoding: 'gzip' });
+      checked++;
+    }
+    expect(checked).toBe(BATTLE2_PARTS_FITS.length);
+    // the pin list: every regular file under public/battle2, exact bytes and digest (control: one changed byte is caught)
+    const pins = JSON.parse(readFileSync(new URL('port/v2/apps/game/battle2-assets.json', REPO_ROOT), 'utf8')) as { schema: string; files: { path: string; bytes: number; sha256: string }[] };
+    expect(pins.schema).toBe('cf-battle2-assets/v1');
+    const pub = new URL('port/v2/apps/game/public/', REPO_ROOT), found: string[] = [];
+    const walk = (rel: string) => { for (const e of readdirSync(new URL(rel, pub), { withFileTypes: true })) { const r = rel + e.name; if (e.isDirectory()) walk(r + '/'); else found.push(r); } };
+    walk('battle2/');
+    expect(pins.files.map((f) => f.path)).toEqual([...found].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0)));
+    for (const f of pins.files) { const b = readFileSync(new URL(f.path, pub)); expect([b.length, createHash('sha256').update(b).digest('hex')], f.path).toEqual([f.bytes, f.sha256]); }
+    const first = readFileSync(new URL(pins.files[0]!.path, pub)), bad = Buffer.from(first); bad[0] = bad[0]! ^ 1;
+    expect(createHash('sha256').update(bad).digest('hex')).not.toBe(pins.files[0]!.sha256);
   });
   it('the negative control: an absolute record source only resolves through the shared resolver', () => {
     const abs = '/Users/someone/Projects/celestial-frontier-openai-mac/audits/X/master.png';

@@ -230,6 +230,21 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
     await expect(src.json(BATTLE2_ASSETS.civetRecord)).rejects.toThrow(/HTTP 404/);
     expect(fetchSpy).toHaveBeenCalledWith('http://localhost:5173/@fs/repo/audits/CIVET_2D_PROOF_20260912/civet.landmarks.json');
   });
+
+  it('a .gz asset (the shipped part bindings) is gunzipped to the same JSON; a server that already decoded it still parses; plain JSON is untouched', async () => {
+    const { devAssetSource } = await import('./battle2-wiring.js');
+    const { gzipSync } = await import('node:zlib');
+    const value = { parts: [{ id: 'head', box: [1, 2, 3, 4] }], note: 'binding' }, text = JSON.stringify(value), gz = new Uint8Array(gzipSync(Buffer.from(text)));
+    const src = devAssetSource('/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json', 'http://localhost/');
+    const reply = (bytes: Uint8Array) => ({ ok: true, status: 200, arrayBuffer: async () => bytes.slice().buffer, json: async () => JSON.parse(new TextDecoder().decode(bytes)) } as unknown as Response);
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(reply(gz)).mockResolvedValueOnce(reply(new TextEncoder().encode(text))).mockResolvedValueOnce(reply(new TextEncoder().encode(text)));
+    expect(await src.json('../X/binding.json.gz')).toEqual(value);
+    expect(await src.json('../X/binding.json.gz')).toEqual(value); // already decoded by the server
+    expect(await src.json('../X/record.json')).toEqual(value);
+    // control: the gzip bytes are not JSON, so the .gz path really decompressed
+    expect(() => JSON.parse(new TextDecoder().decode(gz))).toThrow();
+    fetchSpy.mockRestore();
+  });
 });
 
 // Keeps the part type referenced so a rename in fixture-rig surfaces here as a type error.

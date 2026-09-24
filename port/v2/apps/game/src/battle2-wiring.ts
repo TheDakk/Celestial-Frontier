@@ -69,7 +69,7 @@ export const BATTLE2_FLAG = 'battle2' as const;
 export const BATTLE2_FRAME = Object.freeze({ width: 1024, height: 576 });
 /** Audit paths (relative to the arena proof directory) of the accepted plates, anchors, the landmark records and the
  * source paint-skin fits (E1 §1.1): every painted archetype (`battle2-archetypes.ts`, generated). Each fit
- * directory holds `record.json`, `binding.json`, `parts/alpha.png` (the keyed cut-out's alpha only, shipped by
+ * directory holds `record.json`, `binding.json.gz` (gzip of the fit's binding.json), `parts/alpha.png` (the keyed cut-out's alpha only, shipped by
  * build-shipped-battle2.mjs), `parts/manifest.json` and `parts/atlas/<id>.png`;
  * the painter master is `record.source` (repo-relative). */
 export const BATTLE2_ASSETS = Object.freeze({
@@ -215,7 +215,10 @@ export function devAssetSource(recipeUrl: string = arenaRecipeUrl, base: string 
   const dir = new URL('.', new URL(recipeUrl, base));
   const get = async (path: string): Promise<Response> => { const r = await fetch(new URL(path, dir).href); if (!r.ok) throw new Error(`battle2 asset ${path}: HTTP ${r.status}`); return r; };
   return {
-    json: async (path) => (await get(path)).json(),
+    // a `.gz` file (the shipped part bindings) is gunzipped here; the bytes are sniffed, so a server that already decoded it still works
+    json: async (path) => { const r = await get(path); if (!path.endsWith('.gz')) return r.json(); const b = new Uint8Array(await r.arrayBuffer());
+      if (b[0] !== 0x1f || b[1] !== 0x8b) return JSON.parse(new TextDecoder().decode(b));
+      return new Response(new Blob([b]).stream().pipeThrough(new DecompressionStream('gzip'))).json(); },
     bytes: async (path) => new Uint8Array(await (await get(path)).arrayBuffer()),
     image: async (path) => {
       const bitmap = await createImageBitmap(await (await get(path)).blob());
@@ -316,7 +319,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
         if (fit && assets.bytes) {
           try {
             const card = compileBodyCard(record, (genome ?? undefined) as MotionGenomeFields | undefined);
-            const [binding, keyed, manifest] = await Promise.all([assets.json(fit.dir + 'binding.json') as Promise<CreaturePartsBindingV1>, assets.image(fit.dir + 'parts/alpha.png'), assets.json(fit.dir + 'parts/manifest.json') as Promise<{ creatureId?: string }>]);
+            const [binding, keyed, manifest] = await Promise.all([assets.json(fit.dir + 'binding.json.gz') as Promise<CreaturePartsBindingV1>, assets.image(fit.dir + 'parts/alpha.png'), assets.json(fit.dir + 'parts/manifest.json') as Promise<{ creatureId?: string }>]);
             if (typeof manifest.creatureId !== 'string') throw new Error('parts manifest lacks creatureId');
             const source = (record as { source?: unknown }).source;
             if (typeof source !== 'string') throw new Error('record has no painter master source');
