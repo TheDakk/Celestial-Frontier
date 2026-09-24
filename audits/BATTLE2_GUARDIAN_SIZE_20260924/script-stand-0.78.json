@@ -1,0 +1,34 @@
+{
+ "readyMs": 600,
+ "commandMs": 300,
+ "themes": {
+  "A": "wild",
+  "B": "stone"
+ },
+ "supports": "observed",
+ "rows": [
+  {
+   "side": "A",
+   "an": "Brown Bear",
+   "dn": "Crab",
+   "dmg": 9,
+   "crit": false,
+   "hpA": 30,
+   "hpB": 21
+  },
+  {
+   "an": "Brown Bear",
+   "dn": "Crab",
+   "dodge": true
+  },
+  {
+   "side": "A",
+   "an": "Brown Bear",
+   "dn": "Crab",
+   "dmg": 21,
+   "crit": true,
+   "hpA": 30,
+   "hpB": 0
+  }
+ ]
+}
