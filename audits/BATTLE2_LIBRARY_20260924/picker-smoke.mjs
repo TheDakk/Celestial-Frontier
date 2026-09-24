@@ -9,7 +9,9 @@ import { openChromiumCdp } from '../../port/v2/tools/browsercdp.mjs';
 // --no-sw: answer 404 for /service-worker.js so the page is never worker-controlled — separates the arena from the production worker's
 // known /battle2/ 503 (Codex's pwa-build.ts; picker-smoke-03-sw-503 is that run). Mirrors the dev server, which registers no worker.
 const NO_SW = process.argv.includes('--no-sw');
-const [pkgArg, outArg, firstArg = 'Salmon,Octopus', secondArg = 'Eagle,Python'] = process.argv.slice(2).filter((a) => a !== '--no-sw');
+// --phone: an iPhone-class portrait viewport (390×844 CSS px, DPR 3, touch) instead of the 1280×800 desktop (mobile-first law)
+const PHONE = process.argv.includes('--phone');
+const [pkgArg, outArg, firstArg = 'Salmon,Octopus', secondArg = 'Eagle,Python'] = process.argv.slice(2).filter((a) => a !== '--no-sw' && a !== '--phone');
 if (!pkgArg || !outArg) throw Error('usage: picker-smoke.mjs <packageDir> <outDir> [Left,Right] [Left2,Right2]');
 const root = path.resolve(pkgArg), out = path.resolve(outArg); fs.mkdirSync(out, { recursive: true });
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.webmanifest': 'application/manifest+json', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.wasm': 'application/wasm', '.webm': 'video/webm', '.mp3': 'audio/mpeg', '.ogg': 'audio/ogg', '.wav': 'audio/wav', '.woff2': 'font/woff2' };
@@ -17,14 +19,14 @@ const server = http.createServer((req, res) => { let rel = decodeURIComponent(ne
   if ((NO_SW && rel === '/service-worker.js') || !file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) { res.writeHead(404).end(); return; }
   res.setHeader('Content-Type', TYPES[path.extname(file)] ?? 'application/octet-stream'); res.end(fs.readFileSync(file)); });
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
-const port = server.address().port, report = { package: path.basename(root), serviceWorker: NO_SW ? 'refused (--no-sw)' : 'served', runs: [] };
+const port = server.address().port, report = { package: path.basename(root), serviceWorker: NO_SW ? 'refused (--no-sw)' : 'served', viewport: PHONE ? 'phone 390x844@3 touch' : 'desktop 1280x800@1', runs: [] };
 let browser;
 try {
   browser = await openChromiumCdp({ label: 'battle2 matchup picker smoke', userDataPrefix: 'cf-battle2-picker', commandTimeoutMs: 60000 }); report.browser = browser.browser;
   const { targetId } = await browser.send('Target.createTarget', { url: 'about:blank' }), { sessionId } = await browser.send('Target.attachToTarget', { targetId, flatten: true }), send = (m, p = {}) => browser.send(m, p, sessionId);
   const evaluate = async (expression) => { const r = await send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true }); if (r.exceptionDetails) throw Error(JSON.stringify(r.exceptionDetails).slice(0, 600)); return r.result.value; };
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  await send('Page.enable'); await send('Runtime.enable'); await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false });
+  await send('Page.enable'); await send('Runtime.enable'); await send('Emulation.setDeviceMetricsOverride', PHONE ? { width: 390, height: 844, deviceScaleFactor: 3, mobile: true } : { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false }); if (PHONE) await send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 });
   const waitStudy = async (label, generation) => { const deadline = Date.now() + 120000; for (;;) {
       const s = await evaluate(`(() => { const sec = document.querySelector('section[data-battle2-stage]'); const o = document.querySelector('[data-battle2-matchup] output'); return sec ? { status: sec.dataset.battle2Status, generation: sec.dataset.battle2Generation, reason: sec.dataset.battle2Reason ?? null, text: o ? o.textContent : null } : { status: 'none', text: o ? o.textContent : null }; })()`);
       if (s.status === 'failed') throw Error(`${label}: study failed — ${s.reason} (${s.text})`);

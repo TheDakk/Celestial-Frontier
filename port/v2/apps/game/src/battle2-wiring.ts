@@ -12,10 +12,10 @@
  * feeds the settled transcript log through `turnPlanInputFromTranscriptEvent` → `stage.play` →
  * `stage.tick` on the injected ticker with the injected clock (main.ts passes `performance.now`).
  *
- * Assets are a DEV-ONLY FETCH: the audit directory is located from a `?url` import of the 3 KB
- * `arena-recipe.json` (Vite dev serves it at `/@fs/<repo>/audits/…`, so its siblings are fetchable);
- * a production build inlines that JSON as a data: URL and the study reports "assets unavailable"
- * instead of shipping 15 MB of proof plates. The keyer is Codex's `kit-contact-math.mjs`, imported
+ * Assets are fetched relative to `/battle2/…/arena-recipe.json`, served from `public/battle2/` (shipped by
+ * `tools/morph/build-shipped-battle2.mjs`, listed with SHA-256 in its MANIFEST.json; each keyed cut-out ships as its
+ * alpha only). In a built game the service worker refuses these files today (outside its build marker; Codex's lane
+ * item), so the arena stages on an uncontrolled page such as the dev server. The keyer is Codex's `kit-contact-math.mjs`, imported
  * statically (Arc 4 law: no computed dynamic imports in production source; the runtime-route load it
  * replaced was one). Everything pixi/DOM/asset-shaped is injectable so the tests drive the module with fakes.
  *
