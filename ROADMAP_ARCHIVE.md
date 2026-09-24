@@ -1,5 +1,9 @@
 ## Archived 2026-09-23 — Python diagnosis before approved open-pose correction
 
+## 2026-09-23 — Superseded Python signing-wait handoff
+
+Paired next steps: the correction is complete and staged but unsigned. Signing6f97f5 and the single retry14dd00 both exited128 with agent refused operation; see audits/PYTHON_OPEN_POSE_20260923/signing-refusal.json. Nick renews 1Password SSH request approval with until quit before one further signed retry. No art/test work remains for this bounded correction. After signing, Codex holds for Nick’s sheet/full-film art review; verify signature before handoff. Claude consumes signed results under Nick’s integration direction; no manual copying or sync is authorized. Nick does not need to open Claude now. No new PR is requested. Physical phone qualification and develop/main promotion remain separate.
+
 ## Live handoff — 2026-09-23 Python diagnosis and rejected candidate
 
 OpenAI/Codex on macOS: /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac, upstream origin/openai/mac. Claude’s /Users/nick/Projects/celestial-frontier-anthropic-mac remains read-only. Pre-existing .DS_Store is untouched. The uninterrupted session startup receipt and Node 26.9.0 remain in use.
