@@ -68,7 +68,10 @@ and retained-original/reload verification.
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the current v2 reset,
 ownership, four bounded companion writers, Guardian/Titan acquisition, rarity presentation and six
 explicit audio-surface overlays match the local `port/v2` candidate as of 2026-08-29. The offline
-Wolf export contract below matches code as of 2026-09-08. ⚠ v1.8.9: every reader of the
+Wolf export contract below matches code as of 2026-09-08. The §2.9 genome → painted-individual
+section (morph card + battle2 library), the §3 morph colour table and the §6 morph anchors match
+the local `port/v2` candidate on `anthropic/mac` as of September 24, 2026 (working tree, including
+that day's uncommitted morph review fixes). ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
@@ -572,6 +575,68 @@ The comment at ~1524 is a hard invariant: the original `FLORA_FORM`/`FUNGI_FORM`
 
 `_earthArt(name)` (~4378) and `_earthFlora(name)` (~5740) are keyword classifiers that map an Earth name to art dials (body plan, rig, botanical growth form) so a snake slithers and a fern isn't drawn as an oak — see **ART_DIRECTION.md**. Earth beasts also get `_cradle=1` (main.js ~2228), which clamps their rarity grade at Uncommon wherever they travel (see RARITY_AND_GRADES.md §2.4).
 
+### 2.9 Genome → painted individual (v2 morph system) — matches the local `port/v2` candidate as of September 24, 2026
+When a genome's `_earthName` names an accepted painted archetype, v2 draws that painting recoloured and reproportioned by the genome's own genes. The result is the **individual**. This section covers only the gene → appearance mapping. The archetypes' fits, rigs, motion and paintings are Codex-owned; see [CREATURE_ANIMATION.md](CREATURE_ANIMATION.md). Design: `audits/VISION_PROGRAM_20260920/MORPH_SYSTEM_DESIGN.md`; library decisions: `audits/MORPH_20260923/README.md`. Paths below are under `port/v2/apps/game/src/` unless stated.
+
+- **Library (17 archetypes).** Crab, Coconut Crab, Freshwater Crab, Mud Crab, Vent Crab, Civet, Salmon, Eagle, Beetle, Python, Tree Frog, Chimpanzee, Starfish, Tarantula, Octopus, Fruit Bat, Centipede. `CARD_ARCHETYPES` in `port/v2/tools/morph/build-card-masters.mjs` is the only list. It generates `morph/card-archetypes.ts`, `painted-cards.assets.ts` and `battle2-archetypes.ts`, and `battle2-archetypes.test.ts` pins the generated files against the list.
+- **Params.** `morphParamsV1(genome, archetypeRecipeHash, archetypeGenome)` (`morph/morph-params.ts`) returns a frozen `MorphParamsV1` (`schema: 'cf.morph-params/v1'`) with these fields: `identity`, `archetype` (the recipe hash), the `base`/`accent` palettes `{hue, chroma}`, `lumin`, `proportion {head, tail, ears, antennae}`, `clamped` and `pattern`. It reads only `seed`, `color`, `accent`, `pattern`, `head`, `tail` and `lumin`. It uses no clock and no `Math.random`, and it throws without a recipe hash. A null, missing or empty genome, or one without these genes, is the identity.
+- **Identity rule: the painting is its own genome.** For each channel, a gene equal to the archetype's own gene counts as absent, so that channel stays as painted. `archetypeGenomeV1(record)` reads the archetype's own genes from `identity.speciesVisualKey` (decoded by `genomeFromVisualKey`) and overlays the record's `genome` block. The five crab records and the Civet record have no `genome` block at all, which is why the key is needed. `identity` is true when both palettes are identity, `lumin` is false, `pattern` is null and every proportion is 1.
+- **Colour and accent → palette.** `COLOR_TABLE` follows `SP_COLOR` order (gene `% 17`): each colour name has a hue and a chroma multiplier. The table is in §3, "Morph colour table (v2)". Obsidian-black, bone-white and glass-clear have no hue: they keep the painting's hue and only desaturate. Otherwise the target hue is the table hue plus a jitter of up to ±12° (`HUE_JITTER_DEG`). The jitter comes from `hashInt(seed, lane, index)`, where seed is the FNV-1a hash of the recipe-hash string XORed with the genome `seed`, lane 1 is base, lane 2 is accent and index is the raw colour gene. So the same genome gets a different jitter on another archetype, as does another seed.
+- **Remap** (`remapAtlasPaletteV1`, `morph/morph-palette.ts`). Alpha and HSL lightness are kept (to within RGB rounding); only hue and saturation move. There are two modes:
+  - *Rotate mode*: each pixel in the role with saturation ≥ 0.08 (`GREY_SATURATION`) rotates by the target hue minus the role's dominant hue (a circular mean weighted by alpha and saturation). Its saturation is multiplied by chroma, capped at 1. Greyer pixels are left alone.
+  - *Tint mode*: applies when a role's alpha-weighted mean saturation is below 0.18 (`LOW_CHROMA_ROLE`) and the colour has a hue. Every pixel in the role takes the target hue at saturation `max(s, 0.3)·chroma` (`TINT_SATURATION`), capped at 1. The code comment names the Salmon's silver, the Vent Crab's white and the Chimpanzee's black. `morph-library.test.ts` checks that the Salmon tint raises mean saturation by more than 0.1 while lightness moves by at most 2/255.
+- **Palette roles.** Each part is `base`, `accent` or `keep`. `ACCENT_GROUPS` lists the accent groups by body-plan template id, never by species:
+
+  | Body plan (template id) | Accent groups |
+  |---|---|
+  | brachyuran | arms (the claws) |
+  | quadruped | ears, tail |
+  | fish | fins |
+  | biped-bird | head, tail |
+  | insect | wings, antennae |
+  | serpent, hopper, cephalopod, myriapod | head |
+  | radial | body (the centre disc) |
+  | arachnid | tail (the abdomen) |
+  | flyer-membrane | ears, head |
+  | primate | none (one coat) |
+
+  Every other labelled group is base. `paletteRoleOfPart` handles parts with no group on joint `root`: a part whose id names a shadow is `keep`; any other gets group `body`'s role for its plan. A part with no group on any other joint is `keep` on every plan. Plans missing from the table use the older default: body and legs are base, every other group accent. `morph-library.test.ts` checks two things on every archetype: the accent is at most 33 % of labelled pixels, and every non-shadow root part recolours (> 50 % of its pixels) while a crab's painted shadow does not change.
+- **Head and tail → proportion.** Each scale is `lo + (hi − lo)·min(1, gene/(L − 1))`:
+  - head: [0.85, 1.2], L = 8;
+  - tail: [0.7, 1.35], L = 7 (`PROPORTION_ENVELOPE`, `V1_TABLE_LENGTHS`);
+  - ears and antennae follow the head gene at 0.6 of its slope within [0.8, 1.3], so they range from 0.88 to 1.18.
+
+  `jointScalesV1` (`morph/morph-skeleton.ts`) scales only the roots of non-contact sub-trees: groups head, tail, ears and antennae. Legs and contact chains keep scale 1, so the family contact solver's plants stay exact. Known limit: `FA_HEAD` has 10 entries but the head scale uses L = 8. Head genes 7, 8 and 9 therefore all give 1.2, and `clamped` stays empty for any integer gene (`morph-params.test.ts`, the `head: 40` case).
+- **Pattern → painted marking masks** (`morph/morph-markings.ts`). The pattern is `pattern % 8` in `FA_PATTERN` order.
+  - Masked patterns (`MASKED_PATTERNS`): striped, spotted, banded, mottled, marbled and eye-spotted. Each uses the archetype's hand-painted master-space alpha mask when `markings.json` names one. Plain, iridescent and any pattern without a painted mask draw no marking.
+  - Masks ship only for Crab, Civet and Salmon, all six patterns each (`port/v2/apps/game/assets/painted-cards/{crab,civet-sentinel-input-01,salmon}/markings.json`). The Salmon's masks come from their own packet, `audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/`.
+  - `applyMarkingV1` moves masked pixels toward the accent hue, with saturation `max(s, 0.35)·chroma`, by mask × 0.85 (`MARKING_STRENGTH`). With a hue-less or identity accent it instead shifts lightness by 0.3 toward the opposite end. Masks never change alpha.
+- **Lumin and iridescent → emissive.** An individual is emissive when `lumin` is true or its pattern is iridescent (`emissiveV1`).
+  - On a marking: +0.28 lightness (`EMISSIVE_LIFT`) and ×1.2 saturation.
+  - Without a marking: +0.14 lightness (`EMISSIVE_ACCENT_LIFT`) over the accent set. A plan with no accent role (the Chimpanzee) glows on its base coat instead (`emissiveRoleV1`).
+  - Lumin identity: the `lumin` param is `genome.lumin === true && archetype.lumin !== true`. Five archetypes are lumin-painted by their visual keys: Crab, Civet, Beetle, Python and Tarantula. On them the lumin gene adds nothing, and a false gene does not darken the painting. The iridescent pattern still glows, except that a pattern gene equal to the archetype's own is the identity: the Eagle, the Coconut Crab and the Vent Crab are iridescent (pattern 5) by their visual keys.
+- **Card.** `PaintedCardSource.card(genome, 'thumb' | 'portrait')` (`morph/painted-card-source.ts`) answers only when `_earthName` names an archetype. `species-art-loader.ts` asks it first for every thumb and portrait; otherwise the painter tier answers. It renders `renderCardIndividualV1` (`morph/morph-card.ts`) from the archetype's sealed ≤512² `card/master-512.png` and `card/labels-512.png`. The receipt `card/card.json` must bind the record's `recipeHash`, and the master and labels must match its size. The steps are:
+  1. palette per label role (unlabelled fringe pixels, label 0, and `keep` parts such as a crab's shadow stay as painted);
+  2. marking or emissive;
+  3. proportion;
+  4. long-body diagonal;
+  5. square crop of the alpha box with a 6 % margin (`CARD_MARGIN`);
+  6. alpha-weighted box downscale to 132 or 440 px, encoded as a PNG data URL.
+
+  Cards are cached by `speciesVisualKey(genome)`, 64 thumbs and 8 portraits by default. There is one render per host task (`yieldToHost`, a macrotask by default). The assets ship with the app (`painted-cards.ts`), so the card works on every device.
+- **Long bodies on the card.** A body is turned when its alpha box is wider than tall and short/long < 0.42 (`LONG_BODY_ASPECT`). It turns 45° about the alpha-box centre using the exact constant `Math.SQRT1_2`, with the head end raised. `morph-library.test.ts` checks that exactly the Python, Centipede and Salmon turn and that every other card is byte-identical with rotation off.
+- **Card = stage.** The battle2 stage builds the same individual through `individualFromGenomeV1` (`morph/morph-individual.ts`, called from `battle2-wiring.ts`):
+  - the same params and `paletteRoleOfPart` over the fit atlas's part frames;
+  - the same emissive role;
+  - the marking mask mapped into the atlas by `masterMaskToAtlasV1`, only where the part has its own pixels;
+  - joint scales handed to the rig.
+
+  An identity genome yields no atlas transform and no joint scales, so it takes the archetype's own load path. On the card, `cardProportionV1` pivots each scaled sub-tree at its receipt `fixedPivots` socket (baked from the family contract; only the Centipede's receipt carries them) or else at its parent's landmark. Nested scaled sub-trees compose, and each pixel is drawn once, by its innermost owner. `morph-library.test.ts` pins that card and stage agree on:
+  - the grey/tint decision for every role (at least two roles tinted);
+  - every scaled landmark, within 1e-9 of the stage skeleton program;
+  - a visible emissive change on every archetype where lumin or iridescent is not its own gene.
+- **Determinism.** Output is a pure function of the genome and the archetype recipe. `morph-params.test.ts` holds 64 seeds × 2 archetype recipe hashes (no archetype genome passed) byte-for-byte against `morph/morph-params.golden.json`. The matchup picker's genomes come from `matchupGenome` (`battle2-matchup.ts`): without a seed it passes the archetype's own genome (identity); with a seed it sets `seed`, `color`, `accent` and `pattern` per side. Stage sizing and arenas belong to the battle2 code, not to this doc.
+
 ## 3. Key tables & numbers (REAL values from code)
 
 ### Genome field draw order (makeGenome, ~1617) — order is load-bearing
@@ -604,6 +669,21 @@ The comment at ~1524 is a hard invariant: the original `FLORA_FORM`/`FUNGI_FORM`
 | `FA_LIFE` | 6 | lifespan |
 | `FA_METAB` | 6 | metabolism |
 | `FLORA_DETAIL` | 10 | flora paragraph flavor |
+
+### Morph colour table (v2)
+`COLOR_TABLE` in `port/v2/apps/game/src/morph/morph-params.ts` is used by §2.9. The table below is its full contents.
+
+| Colour | Hue (°) | Chroma | | Colour | Hue (°) | Chroma |
+|---|---|---|---|---|---|---|
+| emerald | 145 | 1.05 | | obsidian-black | none | 0.3 |
+| crimson | 350 | 1.1 | | bone-white | none | 0.25 |
+| violet | 275 | 1.0 | | magenta | 315 | 1.1 |
+| golden | 45 | 1.1 | | teal | 185 | 0.9 |
+| turquoise | 175 | 1.0 | | ochre | 35 | 0.8 |
+| indigo | 245 | 0.95 | | jade | 150 | 0.85 |
+| amber | 38 | 1.05 | | bruise-purple | 290 | 0.7 |
+| rust-red | 15 | 0.95 | | glass-clear | none | 0.35 |
+| silver-blue | 210 | 0.45 | | | | |
 
 ### Plant / fungi / microbe form pools (read with `% length`)
 - **`FLORA_FORM`** (18): fern-analogues, fungal forests, lichen mats, reed thickets, bioluminescent groves, crystalline growths, moss carpets, canopy vines, bladder-leafed shrubs, spore-towers, sail-leafed trees, mirror-bark giants, tube-stalk gardens, balloon-pods, razor-grass plains, cushion-scrub, umbrella-canopy titans, glass-needle thickets.
@@ -647,6 +727,15 @@ it explicitly. It is render ownership metadata, not a new RNG draw.
 - `@module Genome [domain]` — main.js ~1610–1838. `makeGenome` ~1617; `REALM_ORDER`/`REALM_ICON` ~1654; `sapienceTier` ~1665; `realmBiome` ~1683; `classifyRealm` ~1689; `ecologyRole` ~1719; `realmModifiers` ~1731; `describeSpecies` ~1751; `faunaDesc` ~1790; `speciesGrade` ~1772 (see RARITY doc).
 - `@module Genetics [domain]` — `evolveGenome` ~1917, `crossGenome` ~1933.
 - Named-Earth overlay (app): `_earthArt` ~4378, `_earthFlora` ~5740, `_EARTH_NAMES` ~8625, `_earthNamePass` ~8631, `_storeSpecies` ~8640, `_cradle` flagging ~2222–2228.
+- v2 morph, genome → painted individual (§2.9), under `port/v2/apps/game/src/morph/`:
+  - `morph-params.ts`: `morphParamsV1`, `COLOR_TABLE`, `PROPORTION_ENVELOPE`, `V1_TABLE_LENGTHS`, `archetypeGenomeV1`;
+  - `morph-palette.ts`: `remapAtlasPaletteV1`, `ACCENT_GROUPS`, `paletteRoleOfPart`, `emissiveRoleV1`;
+  - `morph-markings.ts`: `MASKED_PATTERNS`, `applyMarkingV1`, `applyEmissiveAccentV1`;
+  - `morph-skeleton.ts`: `jointScalesV1`;
+  - `morph-individual.ts`: `individualFromGenomeV1` (the stage);
+  - `morph-card.ts` and `painted-card-source.ts`: the card.
+
+  The archetype list is in `port/v2/tools/morph/build-card-masters.mjs`. Tests: `morph-params.test.ts`, `morph-library.test.ts`, `morph-markings.test.ts`, `painted-card-source.test.ts`.
 
 ## 7. Open questions / pending
 - `FA_LIMBS` and `FA_EYES` are both length-6 arrays that intentionally alias `FA_SIZE`'s length, so a size roll and a limbs/eyes roll share the same modulus — deliberate, but worth remembering if `FA_SIZE` ever changes.
