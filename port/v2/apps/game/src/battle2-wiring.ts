@@ -57,7 +57,7 @@ import { createPixiEffectHost, type EffectParticleLike, type EffectSpriteLike, t
 import { compileBodyCard, MotionCompileError, type BodyCard, type MotionGenomeFields, type ResolvedAnatomyRecord } from './motion/body-card.js';
 import { createTurnCueSink, type TurnAudioRuntime, type TurnCueSink } from './soundkit/turn-audio.js';
 import { createCreatureVoiceHook, type CreatureVoiceHook } from './soundkit/creature-voices.js';
-import { synthesizePlaceholderQuadruped } from './soundkit/placeholder-archetype.js';
+import { synthesizePlaceholderLibrary } from './soundkit/placeholder-archetype.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
 import { placeCombatants } from './battle2/placement.js';
 import { repoRelativeSource } from '../../../tools/creature-animation/record-source.mjs';
@@ -406,7 +406,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const style = { fontFamily: 'system-ui', fontSize: 34, fontWeight: '700', fill: '#fff2c8', stroke: { color: '#2a1a0a', width: 4 } };
     const factory: BattleStageFactory = { container: () => new pixi.Container(), sprite: (t) => new pixi.Sprite(t), text: (t) => new pixi.Text({ text: t, style, anchor: 0.5 }), graphics: () => new pixi.Graphics() };
     // B5: one voice per side from its record (or genome), derived through the A4 engine from the labelled placeholder archetype until C3 lands.
-    voices = createCreatureVoiceHook({ sources: synthesizePlaceholderQuadruped().sources, seed: recipe.seed ^ fnv1a32(input.settlement.battleId),
+    voices = createCreatureVoiceHook({ sources: synthesizePlaceholderLibrary().sources, seed: recipe.seed ^ fnv1a32(input.settlement.battleId),
       sides: { left: { record: matchRecord(records, championGenome), genome: championGenome, seed: left.seed, label: input.chronicle.championName },
         right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, seed: right.seed, label: input.chronicle.defenderName } } });
     cueSink = input.audio ? createTurnCueSink({ runtime: input.audio, seed: recipe.seed ^ fnv1a32(input.settlement.battleId), phone: input.deviceTier === 'low', creatureVoice: voices }) : null;

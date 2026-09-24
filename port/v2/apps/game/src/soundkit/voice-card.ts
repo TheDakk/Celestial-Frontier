@@ -10,6 +10,8 @@ import { FA_LOCO, FA_SIZE, FA_SIZE_M, FA_SKIN } from '@cf/domain-speciestraits';
 export const VOICE_ARCHETYPES = Object.freeze([
   'quadruped', 'hopper', 'biped-bird', 'fish', 'insect', 'arachnid', 'serpent', 'myriapod',
   'radial', 'cephalopod', 'flyer-membrane', 'primate',
+  // appended 2026-09-24 (the five painted crabs had no voice): new entries go LAST so every existing card's seed is unchanged
+  'brachyuran',
 ] as const);
 export type VoiceArchetype = typeof VOICE_ARCHETYPES[number];
 export const VOICE_MATERIALS = Object.freeze([
@@ -48,7 +50,7 @@ const TEMPLATE_ARCHETYPE: Readonly<Record<string, VoiceArchetype | 'plant'>> = O
   quadruped: 'quadruped', 'quadruped-land': 'quadruped', hopper: 'hopper', 'biped-bird': 'biped-bird',
   bird: 'biped-bird', fish: 'fish', insect: 'insect', arachnid: 'arachnid', serpent: 'serpent',
   myriapod: 'myriapod', radial: 'radial', cephalopod: 'cephalopod', 'flyer-membrane': 'flyer-membrane',
-  primate: 'primate', plant: 'plant', flora: 'plant', fungi: 'plant',
+  primate: 'primate', brachyuran: 'brachyuran', plant: 'plant', flora: 'plant', fungi: 'plant',
 });
 
 export interface AnatomyRecordLike {
