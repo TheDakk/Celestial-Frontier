@@ -11,7 +11,7 @@ import { applyEmissiveAccentV1, applyMarkingV1, emissiveV1, type AlphaMask } fro
 export interface CardMasterV1 { readonly width: number; readonly height: number; readonly master: Uint8Array; readonly labels: Uint8Array; }
 export interface CardReceiptV1 { readonly labels: ReadonlyArray<Readonly<{ label: number; id: string; joint: string; layer: 'far' | 'near' }>>; readonly landmarks: Readonly<Record<string, readonly [number, number]>>; readonly card: Readonly<{ width: number; height: number }>; }
 export const CARD_MARGIN = 0.06;
-export interface CardRenderInput { readonly master: CardMasterV1; readonly receipt: CardReceiptV1; readonly card: Pick<BodyCard, 'parts'>; readonly params: MorphParamsV1; readonly size: number; /** the painted marking in CARD-master space (scaled from the master-space mask), when the archetype has one for this pattern */ readonly markingMask?: AlphaMask | null; }
+export interface CardRenderInput { readonly master: CardMasterV1; readonly receipt: CardReceiptV1; readonly card: Pick<BodyCard, 'parts'> & { readonly template?: Readonly<{ id: string }> }; readonly params: MorphParamsV1; readonly size: number; /** the painted marking in CARD-master space (scaled from the master-space mask), when the archetype has one for this pattern */ readonly markingMask?: AlphaMask | null; }
 /** Sub-tree membership from the body card's parent links: every joint under (and including) each scaled root. */
 function subtreesOf(card: Pick<BodyCard, 'parts'>, scales: Readonly<Record<string, number>>): ReadonlyArray<Readonly<{ root: string; scale: number; joints: ReadonlySet<string> }>> {
   const children = new Map<string, string[]>(); for (const p of card.parts) { const list = children.get(p.parent) ?? []; list.push(p.joint); children.set(p.parent, list); }
@@ -22,11 +22,12 @@ export function cardCompositeV1(input: Omit<CardRenderInput, 'size'>): Uint8Arra
   const { master: m, receipt, card, params, markingMask } = input; const W = m.width, H = m.height;
   if (m.master.length !== W * H * 4 || m.labels.length !== W * H * 4) throw new TypeError('card: master/labels size');
   const groupOf = new Map(card.parts.map((p) => [p.joint, p.group] as const)), parentOf = new Map(card.parts.map((p) => [p.joint, p.parent] as const));
-  const jointOfLabel = new Map(receipt.labels.map((l) => [l.label, l.joint] as const)), roleOfLabel = new Map<number, PaletteRole>(receipt.labels.map((l) => [l.label, paletteRoleOfGroup(groupOf.get(l.joint))] as const));
+  const jointOfLabel = new Map(receipt.labels.map((l) => [l.label, l.joint] as const)), roleOfLabel = new Map<number, PaletteRole>(receipt.labels.map((l) => [l.label, paletteRoleOfGroup(groupOf.get(l.joint), card.template?.id)] as const));
   // 1. palette: remap the whole master once per role, composite by each pixel's label role (label 0 = fringe/shadow: kept)
   let px = m.master;
   if (!params.identity) { const whole: PaletteFrame[] = [{ x: 0, y: 0, width: W, height: H, role: 'base' }]; const out = new Uint8Array(m.master);
-    for (const role of ['base', 'accent'] as const) { const full = remapAtlasPaletteV1(m.master, W, H, [{ ...whole[0]!, role }], params); for (let i = 0; i < W * H; i++) if (roleOfLabel.get(m.labels[i * 4]!) === role) { out[i * 4] = full[i * 4]!; out[i * 4 + 1] = full[i * 4 + 1]!; out[i * 4 + 2] = full[i * 4 + 2]!; } }
+    const select = (role: 'base' | 'accent') => (pixel: number) => roleOfLabel.get(m.labels[pixel * 4]!) === role;
+    for (const role of ['base', 'accent'] as const) { const full = remapAtlasPaletteV1(m.master, W, H, [{ ...whole[0]!, role }], params, select); for (let i = 0; i < W * H; i++) if (roleOfLabel.get(m.labels[i * 4]!) === role) { out[i * 4] = full[i * 4]!; out[i * 4 + 1] = full[i * 4 + 1]!; out[i * 4 + 2] = full[i * 4 + 2]!; } }
     px = out; }
   // 1b. the painted marking (M3/M4), before proportion so it scales with a grown head/tail
   if (markingMask) { const out = px === m.master ? new Uint8Array(m.master) : px; applyMarkingV1(out, W, H, markingMask, params.accent, emissiveV1(params)); px = out; }
@@ -52,9 +53,30 @@ export function cardCompositeV1(input: Omit<CardRenderInput, 'size'>): Uint8Arra
 }
 /** Alpha box of an RGBA image (pixels with alpha > 8). */
 export function alphaBoxV1(rgba: Uint8Array, W: number, H: number): Readonly<{ x0: number; y0: number; x1: number; y1: number }> { let x0 = W, y0 = H, x1 = -1, y1 = -1; for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (rgba[(y * W + x) * 4 + 3]! > 8) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; } return Object.freeze({ x0, y0, x1, y1 }); }
+/** A body whose alpha box is thinner than this (short side / long side) is drawn on the card's DIAGONAL, head end up (Nick
+ * 2026-09-23, Claude's recommendation): a square card showed a long snake as a thin line (the Python filled 8 % of it). At
+ * 45° the same body is ~1.2× larger. Measured aspects: Python 0.21, Centipede 0.39, Salmon 0.40; every other archetype ≥ 0.45. */
+export const LONG_BODY_ASPECT = 0.42;
+/** Rotate a horizontal long body 45° about its alpha-box centre (head end up; exact constant, no trig — deterministic),
+ * premultiplied bilinear resampling into a square buffer that holds the whole turned body. */
+export function diagonalLongBodyV1(px: Uint8Array, W: number, H: number, headX: number | null): Readonly<{ px: Uint8Array; width: number; height: number; rotated: boolean }> {
+  const b = alphaBoxV1(px, W, H); if (b.x1 < 0) return Object.freeze({ px, width: W, height: H, rotated: false });
+  const bw = b.x1 - b.x0 + 1, bh = b.y1 - b.y0 + 1; if (bh >= bw || bh / bw >= LONG_BODY_ASPECT) return Object.freeze({ px, width: W, height: H, rotated: false });
+  const cx = (b.x0 + b.x1 + 1) / 2, cy = (b.y0 + b.y1 + 1) / 2, up = headX === null || headX >= cx ? 1 : -1; // raise the head's end
+  const c = Math.SQRT1_2, sn = Math.SQRT1_2 * up, S = Math.ceil((bw + bh) * Math.SQRT1_2) + 4, half = S / 2, out = new Uint8Array(S * S * 4);
+  for (let Y = 0; Y < S; Y++) for (let X = 0; X < S; X++) {
+    const dX = X + 0.5 - half, dY = Y + 0.5 - half, sx = cx + dX * c - dY * sn - 0.5, sy = cy + dX * sn + dY * c - 0.5, x0 = Math.floor(sx), y0 = Math.floor(sy), fx = sx - x0, fy = sy - y0;
+    let r = 0, g = 0, bl = 0, a = 0;
+    for (const [xx, yy, w] of [[x0, y0, (1 - fx) * (1 - fy)], [x0 + 1, y0, fx * (1 - fy)], [x0, y0 + 1, (1 - fx) * fy], [x0 + 1, y0 + 1, fx * fy]] as const) {
+      if (xx < 0 || yy < 0 || xx >= W || yy >= H || w === 0) continue; const i = (yy * W + xx) * 4, al = px[i + 3]! * w; r += px[i]! * al; g += px[i + 1]! * al; bl += px[i + 2]! * al; a += al; }
+    if (a > 0) { const o = (Y * S + X) * 4; out[o] = Math.round(r / a); out[o + 1] = Math.round(g / a); out[o + 2] = Math.round(bl / a); out[o + 3] = Math.round(a); } }
+  return Object.freeze({ px: out, width: S, height: S, rotated: true });
+}
 export function renderCardIndividualV1(input: CardRenderInput): Uint8Array {
-  const { size } = input, W = input.master.width, H = input.master.height; if (!(size > 0 && Number.isInteger(size))) throw new TypeError('card: size');
-  const px = cardCompositeV1(input);
+  const { size } = input; if (!(size > 0 && Number.isInteger(size))) throw new TypeError('card: size');
+  const head = input.receipt.landmarks['head'] ?? null;
+  const turned = diagonalLongBodyV1(cardCompositeV1(input), input.master.width, input.master.height, head ? head[0] * input.master.width : null);
+  const px = turned.px, W = turned.width, H = turned.height;
   // 3. crop to the alpha box (square, centred) with a margin, alpha-weighted box downscale to size×size
   const { x0: bx0, y0: by0, x1: bx1, y1: by1 } = alphaBoxV1(px, W, H);
   if (bx1 < 0) throw new Error('card: empty master');

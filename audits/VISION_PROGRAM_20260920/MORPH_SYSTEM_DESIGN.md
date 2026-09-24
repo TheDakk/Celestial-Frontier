@@ -50,6 +50,16 @@ byte-identical across runs and devices (a `goldenseeds`-style sealed JSON in `po
 Leg-length morphs and archetype selection (P3/P4) follow; both are recorded here so nobody builds them by accident.
 
 ## 5. Decisions for Nick (none block step 1–3)
+
+> **Built 2026-09-23 (Nick: "give me your best suggestions", with standing authority to build them; `audits/MORPH_20260923/`).**
+> (2) is answered per BODY PLAN, not per species: `ACCENT_GROUPS` in `morph-palette.ts` names the few trim groups that carry
+> the accent (crab claws; quadruped ears + tail; fish fins; bird head + tail; insect wings + antennae; serpent/hopper/
+> cephalopod/myriapod head; radial centre disc; arachnid abdomen; bat ears + head; primate none) — every labelled part
+> otherwise takes the base coat; accent share ≤ 33 % on all 17 archetypes (was 38 % on the Civet with a shoulder seam).
+> A near-grey role (mean saturation < 0.18: Salmon, Vent Crab, Chimpanzee) is TINTED to the target hue at a 0.3 saturation
+> floor, luminance exact. On the card, a long body (alpha-box aspect < 0.42: Python, Centipede, Salmon) turns 45° onto the
+> diagonal, head end up. The card and the stage measure the same role pixels (the card passes its label map as a per-pixel
+> role selector), pinned per archetype against the real atlases in `morph-library.test.ts`.
 1. M3's marking-mask set: paint for the crab first (the accepted archetype with five variants) or the Civet?
 2. The palette law: does `color` recolour the WHOLE body or only the kit's designated "base" group per archetype,
    with `accent` on the rest? (Design assumes base + accent groups declared per archetype in a small JSON beside the

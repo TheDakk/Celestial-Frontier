@@ -3,9 +3,16 @@
 // once per individual at load; never per tick. Alpha is never touched; pixels outside every frame are never touched.
 import type { MorphParamsV1, PaletteParamsV1 } from './morph-params.js';
 export type PaletteRole = 'base' | 'accent' | 'keep';
+/** Pixel index (y·width + x) → whether it belongs to the role being remapped. */
+export type PixelSelect = (pixel: number) => boolean;
 export interface PaletteFrame { readonly x: number; readonly y: number; readonly width: number; readonly height: number; readonly role: PaletteRole; }
 /** Chroma floor below which a pixel is grey and keeps its hue (eyes, claws, whites, blacks): HSL saturation. */
 export const GREY_SATURATION = 0.08;
+/** A role whose mean saturation is below this is a near-grey painting → TINT mode. Measured on the card masters: the grey
+ * archetypes sit at 0.09–0.13, every other at ≥ 0.23 — a wide margin, so the atlas and the card master agree. */
+export const LOW_CHROMA_ROLE = 0.18;
+/** Saturation floor in TINT mode (before the colour's chroma multiplier): a clear tint, not a repaint. */
+export const TINT_SATURATION = 0.3;
 // scratch HSL/RGB triples: the remap visits every pixel of a 2048² atlas several times — no per-pixel allocation
 const HSL = new Float64Array(3), RGB = new Uint8ClampedArray(3);
 export const rgbToHsl = (r: number, g: number, b: number): Float64Array => {
@@ -22,22 +29,38 @@ export const hslToRgb = (h: number, s: number, l: number): Uint8ClampedArray => 
 };
 /** The archetype's own dominant hue over a role (alpha- and saturation-weighted circular mean), so the remap ROTATES
  * the painting's hue relationships onto the target instead of flattening every pixel to one hue. */
-export function dominantHue(rgba: Uint8Array, width: number, frames: readonly PaletteFrame[], role: PaletteRole): number | null {
+export function dominantHue(rgba: Uint8Array, width: number, frames: readonly PaletteFrame[], role: PaletteRole, select?: PixelSelect): number | null {
   let sx = 0, sy = 0;
-  for (const f of frames) { if (f.role !== role) continue; for (let y = f.y; y < f.y + f.height; y++) for (let x = f.x; x < f.x + f.width; x++) { const i = (y * width + x) * 4, a = rgba[i + 3]!; if (!a) continue; const hsl = rgbToHsl(rgba[i]!, rgba[i + 1]!, rgba[i + 2]!), h = hsl[0]!, s = hsl[1]!; if (s < GREY_SATURATION) continue; const w = a * s; sx += w * Math.cos(h * Math.PI / 180); sy += w * Math.sin(h * Math.PI / 180); } }
+  for (const f of frames) { if (f.role !== role) continue; for (let y = f.y; y < f.y + f.height; y++) for (let x = f.x; x < f.x + f.width; x++) { const i = (y * width + x) * 4, a = rgba[i + 3]!; if (!a || (select && !select(i / 4))) continue; const hsl = rgbToHsl(rgba[i]!, rgba[i + 1]!, rgba[i + 2]!), h = hsl[0]!, s = hsl[1]!; if (s < GREY_SATURATION) continue; const w = a * s; sx += w * Math.cos(h * Math.PI / 180); sy += w * Math.sin(h * Math.PI / 180); } }
   if (sx === 0 && sy === 0) return null; return ((Math.atan2(sy, sx) * 180 / Math.PI) % 360 + 360) % 360;
 }
-/** Remap one atlas. Returns a NEW buffer; identity params return a byte-identical copy. */
-export function remapAtlasPaletteV1(rgba: Uint8Array, width: number, height: number, frames: readonly PaletteFrame[], params: MorphParamsV1): Uint8Array {
+/** Alpha-weighted mean HSL saturation of a role's pixels (0 when the role has none). */
+export function meanSaturation(rgba: Uint8Array, width: number, frames: readonly PaletteFrame[], role: PaletteRole, select?: PixelSelect): number {
+  let sum = 0, weight = 0;
+  for (const f of frames) { if (f.role !== role) continue; for (let y = f.y; y < f.y + f.height; y++) for (let x = f.x; x < f.x + f.width; x++) { const i = (y * width + x) * 4, a = rgba[i + 3]!; if (!a || (select && !select(i / 4))) continue; sum += rgbToHsl(rgba[i]!, rgba[i + 1]!, rgba[i + 2]!)[1]! * a; weight += a; } }
+  return weight ? sum / weight : 0;
+}
+/** Remap one atlas. Returns a NEW buffer; identity params return a byte-identical copy. `select(role)` (optional) restricts a
+ * role to a pixel set inside its frames — the CARD passes its label map so hue/grey measurements read exactly the role's own
+ * pixels, as the stage's per-part frames do (card = stage). */
+export function remapAtlasPaletteV1(rgba: Uint8Array, width: number, height: number, frames: readonly PaletteFrame[], params: MorphParamsV1, select?: (role: 'base' | 'accent') => PixelSelect): Uint8Array {
   if (rgba.length !== width * height * 4) throw new TypeError('morph palette: rgba size');
   for (const f of frames) if (f.x < 0 || f.y < 0 || f.x + f.width > width || f.y + f.height > height) throw new RangeError('morph palette: frame outside the atlas');
   const out = new Uint8Array(rgba);
   if (params.identity) return out;
   const apply = (role: 'base' | 'accent', p: PaletteParamsV1): void => {
     if (p.hue === null && p.chroma === 1) return;
-    const from = p.hue === null ? null : dominantHue(rgba, width, frames, role); const delta = p.hue === null || from === null ? 0 : p.hue - from;
+    // TINT mode (Nick 2026-09-23, Claude's recommendation): a near-grey painting (the Salmon's silver, the Vent Crab's white,
+    // the Chimpanzee's black) has no hue to rotate, so a colour gene barely showed. When the ROLE's mean saturation is below
+    // LOW_CHROMA_ROLE, every pixel takes the target hue at a saturation floor — luminance still exact, so the painted
+    // finish survives; a hue-less colour (obsidian, bone, glass) still only desaturates.
+    const pick = select?.(role);
+    const tint = p.hue !== null && meanSaturation(rgba, width, frames, role, pick) < LOW_CHROMA_ROLE;
+    const from = p.hue === null || tint ? null : dominantHue(rgba, width, frames, role, pick); const delta = p.hue === null || from === null ? 0 : p.hue - from;
     for (const f of frames) { if (f.role !== role) continue; for (let y = f.y; y < f.y + f.height; y++) for (let x = f.x; x < f.x + f.width; x++) {
-      const i = (y * width + x) * 4; if (!rgba[i + 3]) continue; const hsl = rgbToHsl(rgba[i]!, rgba[i + 1]!, rgba[i + 2]!), h = hsl[0]!, s = hsl[1]!, l = hsl[2]!; if (s < GREY_SATURATION) continue;
+      const i = (y * width + x) * 4; if (!rgba[i + 3] || (pick && !pick(i / 4))) continue; const hsl = rgbToHsl(rgba[i]!, rgba[i + 1]!, rgba[i + 2]!), h = hsl[0]!, s = hsl[1]!, l = hsl[2]!;
+      if (tint) { const rgb = hslToRgb(p.hue!, Math.min(1, Math.max(s, TINT_SATURATION) * p.chroma), l); out[i] = rgb[0]!; out[i + 1] = rgb[1]!; out[i + 2] = rgb[2]!; continue; }
+      if (s < GREY_SATURATION) continue;
       const rgb = hslToRgb(((h + delta) % 360 + 360) % 360, Math.min(1, s * p.chroma), l); out[i] = rgb[0]!; out[i + 1] = rgb[1]!; out[i + 2] = rgb[2]!; } }
   };
   apply('base', params.base); apply('accent', params.accent);
@@ -53,7 +76,23 @@ export function paletteConservationV1(before: Uint8Array, after: Uint8Array, wid
     const lb = (Math.max(before[j]!, before[j + 1]!, before[j + 2]!) + Math.min(before[j]!, before[j + 1]!, before[j + 2]!)) / 2, la = (Math.max(after[j]!, after[j + 1]!, after[j + 2]!) + Math.min(after[j]!, after[j + 1]!, after[j + 2]!)) / 2; const d = Math.abs(lb - la); if (d > lMax) lMax = d; }
   return Object.freeze({ alphaChanged, outsideChanged, luminanceMaxDelta: lMax, changed });
 }
-/** Roles from a body card's part groups: body and legs are the base coat; head, arms (claws), tail, ears, antennae,
- * wings, fins, fronds are the accent set; a part with no joint group (the shadow) is kept. Default answer to
- * MORPH_SYSTEM_DESIGN §5.2 until an archetype declares its own. */
-export function paletteRoleOfGroup(group: string | undefined): PaletteRole { if (!group) return 'keep'; return group === 'body' || group === 'legs' ? 'base' : 'accent'; }
+/** The ACCENT is trim, not half the animal (Nick 2026-09-23, on Claude's measured recommendation — the Civet's head/neck
+ * seam, `audits/MORPH_20260923/`): per BODY PLAN (family-level, never a species branch) the few groups that carry the accent;
+ * every other labelled group is the base coat. A group name means different anatomy in different plans — a crab's `arms`
+ * are its claws (trim), a chimpanzee's or an octopus's are half the body — so the table is keyed by template. Measured
+ * accent share of labelled pixels: crab 2–6 %, Civet 20 %, Salmon 22 %, Eagle 22 %, Beetle 28 %, Python 6 %, Tree Frog
+ * 13 %, Chimpanzee 0 % (one coat), Starfish 2 %, Tarantula 20 %, Octopus 7 %, Fruit Bat 6 %, Centipede 10 %. */
+export const ACCENT_GROUPS: Readonly<Record<string, readonly string[]>> = Object.freeze({
+  brachyuran: ['arms'], quadruped: ['ears', 'tail'], fish: ['fins'], 'biped-bird': ['head', 'tail'], insect: ['wings', 'antennae'],
+  // primate: none — a primate's head in a second colour read as a graft on library sheet 02; one coat
+  serpent: ['head'], hopper: ['head'], primate: [], radial: ['body'], arachnid: ['tail'], cephalopod: ['head'],
+  'flyer-membrane': ['ears', 'head'], myriapod: ['head'],
+});
+/** A part's palette role. With a template in ACCENT_GROUPS the table decides; without one (plants, specialized plans) the
+ * original default stands — body and legs base, every other group accent. A part with no joint group (the shadow) is kept. */
+export function paletteRoleOfGroup(group: string | undefined, templateId?: string): PaletteRole {
+  if (!group) return 'keep';
+  const accent = templateId !== undefined ? ACCENT_GROUPS[templateId] : undefined;
+  if (accent) return accent.includes(group) ? 'accent' : 'base';
+  return group === 'body' || group === 'legs' ? 'base' : 'accent';
+}

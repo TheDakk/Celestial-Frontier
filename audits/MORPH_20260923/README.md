@@ -103,3 +103,24 @@ wherever they ship. **Three look findings for Nick, measured on the card masters
 Options for the grey ones: a chroma floor in the remap for low-saturation archetypes, or let those species vary by marking
 (the Salmon already has six masks) rather than palette. For the long ones: a card crop that follows the body's long axis.
 Nothing is changed until Nick picks.
+
+## Built — Nick's #4 (2026-09-23, latest): the three look findings, answered and shipped
+
+Nick asked for Claude's best suggestions and for no more per-step stops, so the recommendations are built (each reversible,
+each one constant or one table row):
+
+1. **The accent is trim, per body plan** — `ACCENT_GROUPS` (`morph-palette.ts`). Finding 1 above is closed: the Civet
+   reads as one animal with ears and ringed tail in the accent. The primate row is EMPTY because
+   `library-card-sheet-02.png` showed the chimpanzee's head as a graft.
+2. **Near-grey paintings tint** (`LOW_CHROMA_ROLE` 0.18, `TINT_SATURATION` 0.3): the Salmon, Vent Crab and Chimpanzee
+   now visibly take a colour gene; luminance stays exact (≤ 2/255 measured).
+3. **Long bodies on the diagonal** (`LONG_BODY_ASPECT` 0.42, `diagonalLongBodyV1`, exact √½ — no trig): Python, Centipede
+   and Salmon turn 45°, head end up, each > 1.15× larger on the card; no other archetype turns.
+
+`library-card-sheet-03.png` is the result (`-01` before, `-02` the intermediate that showed the primate graft).
+`morph-library.test.ts` pins all three as outcomes over every shipped archetype, with the old Civet split as the failing
+control, and asserts CARD = STAGE: per role, the card master and the real atlas make the same tint decision (non-vacuous:
+every archetype compared, the tint branch exercised). A slip of mine caught by that test before commit: a trailing comment
+swallowed three table rows (radial/arachnid/cephalopod fell back to the old default — the Starfish measured 98 % accent).
+
+Lumin (finding 2 above) is unchanged: the gene stays inert on lumin-painted archetypes — the painting wins, as with colour.
