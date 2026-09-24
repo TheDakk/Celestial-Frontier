@@ -7,6 +7,8 @@
  * master is `record.source` (repo-relative). Browser-owning: on macOS run with approved out-of-sandbox execution. */
 import fs from 'node:fs'; import path from 'node:path'; import os from 'node:os'; import http from 'node:http'; import { execFileSync } from 'node:child_process'; import { createHash } from 'node:crypto';
 import { rolldown } from 'rolldown';
+import { repoRelativeSource } from '../creature-animation/record-source.mjs';
+import { CARD_ARCHETYPES } from '../morph/build-card-masters.mjs';
 import { openChromiumCdp } from '../browsercdp.mjs';
 import { acquireWorkspaceLock } from '../workspacelock.mjs';
 import { requireTenSecondMedia } from '../quadruped-proof/capture-contract.mjs';
@@ -27,8 +29,10 @@ try {
   const bundle = await rolldown({ input: path.join(import.meta.dirname, 'native-entry.mjs'), platform: 'browser', plugins: [{ name: 'read-only-producer', resolveId(id) { if (id.startsWith('cf-proof/')) return path.resolve(producer, id.slice(9)); }, transform(_, id) { if (path.isAbsolute(id) && fs.existsSync(id) && fs.statSync(id).isFile()) remember(id); } }] });
   try { await bundle.write({ dir: scratch, format: 'es', entryFileNames: 'bundle.js' }); } finally { await bundle.close(); }
   const side = (dir, name) => { const record = JSON.parse(fs.readFileSync(path.join(dir, 'record.json'))), id = JSON.parse(fs.readFileSync(path.join(dir, 'parts/manifest.json'))).creatureId;
-    const markings = {}; if (fs.existsSync(path.join(dir, 'markings.json'))) { markings[name + '-markings.json'] = path.join(dir, 'markings.json'); const mj = JSON.parse(fs.readFileSync(path.join(dir, 'markings.json'))); for (const [k, v] of Object.entries(mj.patterns ?? {})) if (v?.file) markings[name + '-marking-' + k + '.png'] = path.join(dir, v.file); }
-    return { ...markings, [name + '-record.json']: path.join(dir, 'record.json'), [name + '-binding.json']: path.join(dir, 'binding.json'), [name + '-keyed.png']: path.join(dir, 'parts/keyed.png'), [name + '-atlas.png']: path.join(dir, 'parts/atlas/' + id + '.png'), [name + '-master.png']: path.resolve(repo, record.source) }; };
+    // the painted masks live in the fit, or in the archetype's registered markings folder (the Salmon's are their own packet)
+    const reg = CARD_ARCHETYPES.find((a) => path.resolve(repo, a.dir) === path.resolve(dir)), mdir = reg?.markings ? path.resolve(repo, reg.markings) : dir;
+    const markings = {}; if (fs.existsSync(path.join(mdir, 'markings.json'))) { markings[name + '-markings.json'] = path.join(mdir, 'markings.json'); const mj = JSON.parse(fs.readFileSync(path.join(mdir, 'markings.json'))); for (const [k, v] of Object.entries(mj.patterns ?? {})) if (v?.file) markings[name + '-marking-' + k + '.png'] = path.join(mdir, v.file); }
+    return { ...markings, [name + '-record.json']: path.join(dir, 'record.json'), [name + '-binding.json']: path.join(dir, 'binding.json'), [name + '-keyed.png']: path.join(dir, 'parts/keyed.png'), [name + '-atlas.png']: path.join(dir, 'parts/atlas/' + id + '.png'), [name + '-master.png']: path.resolve(repo, repoRelativeSource(record.source)) }; };
   const anchors = JSON.parse(fs.readFileSync(path.join(arena, 'wild-anchors.json')));
   const assets = { ...side(left, 'left'), ...side(right, 'right'), 'arena-recipe.json': path.join(arena, 'arena-recipe.json'), 'wild-anchors.json': path.join(arena, 'wild-anchors.json'), 'arena-far.png': path.join(arena, 'arena-far.png'), 'arena-mid.png': path.join(arena, 'keyed/arena-mid.png'), 'arena-near.png': path.join(arena, 'keyed/arena-near.png') };
   for (const p of anchors.phases) if (p.keyedImage && !/^procedural:/.test(p.keyedImage)) assets[path.basename(p.keyedImage)] = path.join(arena, p.keyedImage);

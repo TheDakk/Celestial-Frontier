@@ -34,7 +34,7 @@ import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-c
  * proof folders' relative layout, so every path below resolves against this recipe URL unchanged. */
 const arenaRecipeUrl = '/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json';
 import { speciesVisualKey } from '@cf/art/species-identity';
-import { BattleStage, GUARDIAN_FRAME_FILL, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, selectHabitatArena, turnPlanInputFromTranscriptEvent,
+import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, selectHabitatArena, turnPlanInputFromTranscriptEvent,
   type BattleRigV1, type BattleStageFactory, type FixturePartCut, type RigContainerLike, type RigSpriteLike,
   type StageGraphicsLike, type StageSpriteLike, type StageTextLike, type TurnAttack, type TurnOutcomeContext, type TurnPlanInput } from './battle2/index.js';
 // parts-rig (and Codex's pixi-backed creature-rig behind it) is imported by path, not through battle2/index: the root
@@ -57,6 +57,8 @@ import { compileBodyCard, MotionCompileError, type BodyCard, type MotionGenomeFi
 import { createTurnCueSink, type TurnAudioRuntime, type TurnCueSink } from './soundkit/turn-audio.js';
 import { createCreatureVoiceHook, type CreatureVoiceHook } from './soundkit/creature-voices.js';
 import { synthesizePlaceholderQuadruped } from './soundkit/placeholder-archetype.js';
+import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
+import { repoRelativeSource } from '../../../tools/creature-animation/record-source.mjs';
 import { MASS_BY_SIZE_INDEX, MASS_CLASS } from './motion/timing.js';
 import type { SpeciesArtLoader } from './species-art-loader.js';
 import { loaderPortrait } from './species-portrait.js';
@@ -65,21 +67,15 @@ import { compileWorldLife, WorldLifePixiAdapter, type WorldLifeGraphicsLike } fr
 export const BATTLE2_FLAG = 'battle2' as const;
 export const BATTLE2_FRAME = Object.freeze({ width: 1024, height: 576 });
 /** Audit paths (relative to the arena proof directory) of the accepted plates, anchors, the landmark records and the
- * source paint-skin fits (E1 §1.1): Codex's five crab fits (`crab-fits-03`) and the candidate-10 Civet binding. Each fit
+ * source paint-skin fits (E1 §1.1): every painted archetype (`battle2-archetypes.ts`, generated). Each fit
  * directory holds `record.json`, `binding.json`, `parts/keyed.png`, `parts/manifest.json` and `parts/atlas/<id>.png`;
  * the painter master is `record.source` (repo-relative). */
 export const BATTLE2_ASSETS = Object.freeze({
   recipe: 'arena-recipe.json', anchors: 'wild-anchors.json',
   far: 'arena-far.png', mid: 'keyed/arena-mid.png', near: 'keyed/arena-near.png',
   civetRecord: '../CIVET_2D_PROOF_20260912/civet.landmarks.json', civetMaster: '../ART_KIT_ENGINE_FIRST_20260912/masters/civet.png',
-  partsFits: Object.freeze([
-    Object.freeze({ earthName: 'Civet', dir: '../ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/' }),
-    Object.freeze({ earthName: 'Crab', dir: '../ANATOMY_COMPLETION_20260917/crab-fits-03/crab/' }),
-    Object.freeze({ earthName: 'Coconut Crab', dir: '../ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/' }),
-    Object.freeze({ earthName: 'Freshwater Crab', dir: '../ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/' }),
-    Object.freeze({ earthName: 'Mud Crab', dir: '../ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/' }),
-    Object.freeze({ earthName: 'Vent Crab', dir: '../ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/' }),
-  ]),
+  // every painted archetype (GENERATED from the card builder's list — one source for the card, the arena and the shipped assets)
+  partsFits: BATTLE2_PARTS_FITS,
 });
 /** A repo-relative `record.source` (e.g. `audits/X/master.png`) as an asset path relative to the arena proof directory. */
 export const auditAssetPath = (repoRelative: string): string => { if (!repoRelative.startsWith('audits/')) throw new Error(`battle2: record source ${repoRelative} is not under audits/`); return '../' + repoRelative.slice('audits/'.length); };
@@ -317,11 +313,11 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
             if (typeof manifest.creatureId !== 'string') throw new Error('parts manifest lacks creatureId');
             const source = (record as { source?: unknown }).source;
             if (typeof source !== 'string') throw new Error('record has no painter master source');
-            const [master, atlas] = await Promise.all([assets.bytes(auditAssetPath(source)), assets.bytes(fit.dir + 'parts/atlas/' + manifest.creatureId + '.png')]);
+            const [master, atlas] = await Promise.all([assets.bytes(auditAssetPath(repoRelativeSource(source))), assets.bytes(fit.dir + 'parts/atlas/' + manifest.creatureId + '.png')]);
             const pixels = keyed.pixels(), alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = pixels[i * 4 + 3] ?? 0;
             if (keyed.width !== record.geometry.width || keyed.height !== record.geometry.height) throw new Error('keyed cut-out size disagrees with the record geometry');
             // the morph system: this genome's individual on the accepted archetype (identity genome → the archetype's own path)
-            const markingMask = await loadMarkingMask(assets, fit.dir, record as unknown as { recipeHash: string; genome?: Record<string, unknown> | null; identity?: { speciesVisualKey?: string }; geometry: { width: number; height: number } }, genome);
+            const markingMask = await loadMarkingMask(assets, fit.markingsDir ?? fit.dir, record as unknown as { recipeHash: string; genome?: Record<string, unknown> | null; identity?: { speciesVisualKey?: string }; geometry: { width: number; height: number } }, genome);
             const morph = individualFromGenomeV1({ record: record as unknown as { recipeHash: string; genome?: Record<string, unknown> | null; identity?: { speciesVisualKey?: string }; geometry: { width: number; height: number } }, binding, card, genome, markingMask });
             // a morphed individual's texture comes from the app's cache (one decode + remap per individual, shared and borrowed;
             // released when this study is disposed); the archetype itself takes the loader's own guarded decode as before
@@ -364,13 +360,20 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     rigLabels.left = left.rig.label; rigLabels.right = right.rig.label;
     refusalsOf = () => Object.freeze({ left: left.rig.refusals?.() ?? null, right: right.rig.refusals?.() ?? null });
     // E1 §1.4: the habitat decides each side's medium and band on the selected world; UNSUPPORTED keeps the Chronicle path with its reason.
-    const painted = (r: { rig: BattleRigV1; mass: number }) => { const k = combatantScale(r.rig.bounds, r.rig.cutout.height, r.mass, BATTLE2_FRAME.height, r.rig.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(r.rig.tallestHeight !== undefined ? { tallestHeight: r.rig.tallestHeight } : {}) } : {}); return { height: k.heightFraction, footBelowCentre: (r.rig.foot.y - 0.5) * r.rig.cutout.height * k.scale / BATTLE2_FRAME.height }; };
-    const habitat = selectHabitatArena({ contextId: input.settlement.battleId, seed: recipe.seed, round: 0, kind: 'wild', worlds: input.worlds ?? null, groundLineY: layout.groundLineY,
-      left: { record: matchRecord(records, championGenome), genome: championGenome, label: input.chronicle.championName, painted: painted(left) },
-      right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, label: input.chronicle.defenderName, painted: painted(right) } });
+    // sized by the mass rule, then capped to the arena WIDTH (a long body) — guardians keep their decided fill — then fitted to
+    // its medium band by the habitat below; the stage takes the resulting scale whenever it differs from its own mass rule
+    const painted = (r: { rig: BattleRigV1; mass: number }) => combatantPresentation(r.rig, r.mass, BATTLE2_FRAME);
+    const paintedLeft = painted(left), paintedRight = painted(right);
+    const habitat = selectHabitatArena({ contextId: input.settlement.battleId, seed: recipe.seed, round: 0, kind: 'wild', worlds: input.worlds ?? null, groundLineY: layout.groundLineY, fitToBand: true,
+      left: { record: matchRecord(records, championGenome), genome: championGenome, label: input.chronicle.championName, painted: paintedLeft },
+      right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, label: input.chronicle.defenderName, painted: paintedRight } });
     arenaLabel = habitat.label;
     if (habitat.status === 'UNSUPPORTED') { left.rig.dispose(); right.rig.dispose(); throw new Error(`battle2 habitat: ${habitat.reason}`); }
     // The kit's stand x (§7, the accepted three-plate composition) is kept; the habitat supplies the medium and the vertical band.
+    // a flyer or swimmer too tall for its band is scaled to fit it (habitat `fit`); the stage takes that exact scale, so the
+    // habitat's containment and the drawn size agree. Nothing fitted → the stage's own mass rule, byte-identical to before.
+    const fitted = paintedLeft.capped || paintedRight.capped || habitat.stands.left.fit < 1 || habitat.stands.right.fit < 1;
+    const presentationScales = { left: paintedLeft.scale * habitat.stands.left.fit, right: paintedRight.scale * habitat.stands.right.fit };
     const stagedLayout = { ...layout, stands: Object.freeze({ left: Object.freeze({ x: layout.stands.left.x, y: habitat.stands.left.y }), right: Object.freeze({ x: layout.stands.right.x, y: habitat.stands.right.y }) }) };
     const mediums = { A: habitat.stands.left.medium, B: habitat.stands.right.medium } as const;
     // E1 §1.2: one anatomy attack per staged attack, chosen deterministically by Codex's compiler; a refusal leaves the family delivery clip and is labelled once.
@@ -393,7 +396,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
       sides: { left: { record: matchRecord(records, championGenome), genome: championGenome, seed: left.seed, label: input.chronicle.championName },
         right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, seed: right.seed, label: input.chronicle.defenderName } } });
     cueSink = input.audio ? createTurnCueSink({ runtime: input.audio, seed: recipe.seed ^ fnv1a32(input.settlement.battleId), phone: input.deviceTier === 'low', creatureVoice: voices }) : null;
-    const built = new BattleStage({ factory, clock: input.clock, layout: stagedLayout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass },
+    const built = new BattleStage({ factory, clock: input.clock, layout: stagedLayout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass }, ...(fitted ? { presentationScales } : {}),
       worldLife, reducedMotion: input.reducedMotion, cues: cueSink ? { sink: cueSink, phone: input.deviceTier === 'low' } : null, effects: input.reducedMotion ? null : { host: createPixiEffectHost({ Sprite: pixi.Sprite, Particle: pixi.Particle, ParticleContainer: pixi.ParticleContainer } as unknown as Parameters<typeof createPixiEffectHost>[0]),
         particleTexture: texture(raster(dot, PARTICLE_DISC_SIZE, PARTICLE_DISC_SIZE)), seed: recipe.seed,
         phaseTextures: (a) => a.phases.map((p) => { if (isProceduralImage(p.keyedImage)) return null; const t = resolvedPhaseTextures.get(p.keyedImage); if (!t) throw new Error(`battle2 phase image ${p.keyedImage} was not loaded`); return t; }),

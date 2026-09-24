@@ -18,6 +18,16 @@ export interface ComposeArenaOptions { readonly guardianSide?: 'left' | 'right';
 /** The attacker closes this fraction of the stand distance on its run-up (kit: "approach, distance-independent"). */
 export const RUN_UP_FRACTION = 0.55;
 export const COMBATANT_HEIGHT_FRACTION = Object.freeze({ min: 1 / 3, max: 1 / 2 });
+/** A combatant's painted WIDTH may fill at most this share of the frame (2026-09-24). The height rule alone made a long low
+ * body enormous lengthwise — the Python ran off the frame and the Centipede spanned half the arena (films -01). 0.36 (films
+ * -02) made the Python a thin worm beside the Tarantula; 0.42 keeps a body on the 0.30 stand inside the frame (0.09–0.51)
+ * and only just past the midline at rest. Guardians keep their own decided fill (D2). */
+export const COMBATANT_WIDTH_FRACTION_MAX = 0.42;
+/** The scale capped so the painted width fits COMBATANT_WIDTH_FRACTION_MAX of the frame (never raises a scale). */
+export function fitCombatantWidth(scale: number, bounds: Readonly<{ width: number }>, cutoutWidthPx: number, frameWidth: number): number {
+  if (!(scale > 0) || !(bounds.width > 0) || !(cutoutWidthPx > 0) || !(frameWidth > 0)) throw new TypeError('combatant width: sizes must be positive');
+  return Math.min(scale, (COMBATANT_WIDTH_FRACTION_MAX * frameWidth) / (bounds.width * cutoutWidthPx));
+}
 
 export interface ArenaTextureLike { readonly width: number; readonly height: number; }
 export interface ArenaRecipeInput {
