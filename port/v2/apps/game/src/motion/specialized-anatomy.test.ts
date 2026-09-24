@@ -53,9 +53,9 @@ it('shell-less and eye-less observations remove only declared optional structure
  expect((checkFamilyGeometry(slim) as {inside:boolean}).inside).toBe(true);expect(c.parts.some(p=>p.joint==='head')).toBe(true);expect(c.parts.some(p=>p.joint==='shell')).toBe(false);
  const wrong={...r,landmarks};expect(()=>compileBodyCard(wrong)).toThrow('landmark');
 });
-it('retains 53 missing identities after exactly five source-bound crab admissions',()=>{
+it('retains 53 pending painted identities even after their candidate templates are wired',()=>{
  const rows=missingBodyStructures(),admitted=['Crab','Coconut Crab','Freshwater Crab','Mud Crab','Vent Crab'];expect(rows).toHaveLength(53);expect(new Set([...rows.map(r=>r.name),...admitted]).size).toBe(58);
  for(const name of admitted){expect(rows.some(r=>r.name===name)).toBe(false);expect(earthFaunaProfile(name)!.candidateTemplates).toEqual(['brachyuran']);}
- for(const r of rows){expect(SPECIALIZED_TEMPLATES[r.target]).toBeDefined();expect(earthFaunaProfile(r.name)!.candidateTemplates).toEqual([]);expect(r.status).toBe('needs-observed-fit');}
+ for(const r of rows){expect(SPECIALIZED_TEMPLATES[r.target]).toBeDefined();expect(earthFaunaProfile(r.name)!.candidateTemplates).toEqual([r.target]);expect(earthFaunaProfile(r.name)!.needsObservedFit).toBe(true);expect(r.status).toBe('needs-observed-fit');}
  expect(rows.find(r=>r.name==='Sea Squirt')!.target).toBe('sessile-filter');expect(rows.find(r=>r.name==='Salp')!.target).toBe('colonial-filter');
 });

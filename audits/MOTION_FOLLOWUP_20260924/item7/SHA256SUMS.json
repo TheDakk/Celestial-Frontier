@@ -1,0 +1,61 @@
+{
+  "scope": "Item7 source/evidence before commit; excludes this inventory",
+  "files": [
+    {
+      "path": "port/v2/apps/game/src/earth-fauna-profiles.ts",
+      "sha256": "3c8e8c7c5ab5f86a870175f13f5a0ec16bf24be5f396872b5c264a1e15842054"
+    },
+    {
+      "path": "port/v2/apps/game/src/earth-fauna-profiles.test.ts",
+      "sha256": "c625a47049dc525efa4c82e82853d05faa2ca874a4d434aa4c2a2449d38e6847"
+    },
+    {
+      "path": "port/v2/apps/game/src/missing-body-structures.ts",
+      "sha256": "bf0990c4587aacbc561e29e137b27ff641685ef0188b299494541272251c6c7a"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/specialized-anatomy.test.ts",
+      "sha256": "e64320cb2ee6ab06b1aca03ce675f7f56bf2d8d844d700b9fa4ac894dc14af3c"
+    },
+    {
+      "path": "SPECIES_AND_GENOME.md",
+      "sha256": "1973bbc69ab31c26b87e2b6cd1757c55ce40d81a76c9adf1b343e9311790b705"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/ITEM7.md",
+      "sha256": "ab3205217a72e7fb96d2fabb546636e16a0a1a0946b84ebd6ebc24cc5d764b8c"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/item7/README.md",
+      "sha256": "6aab4915ad0ba79561db8f5656c0f5c3ae7ada9600758113fe64e6ca0a9ebb47"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/item7-before.json",
+      "sha256": "9f1ee6735a6e2b121ef60c6116689cdbffb59dba7d9732c6d303415930ba942f"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/item7-coverage.json",
+      "sha256": "ef1eb8fed34a0b0d174da6b9279fc272e966f202e53bc3a934bc83366ae2cdef"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/item7-coverage.log",
+      "sha256": "9a6cfb5718d365efc9375673bafb3cd9fdbf32a14fd835c67e425d79a685b4e3"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/item7-tests-01.log",
+      "sha256": "c046d50761a431265c366c7f00edb1067110a0243125a78012395e20ba6ee68a"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/item7-tests-02.log",
+      "sha256": "2ab56958ad0f69e41adc1d2ffb35f8a6234a55a8e824515a33b6296c89f4a1a3"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/item7-typecheck-01.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "path": "audits/MOTION_FOLLOWUP_20260924/item7-validate.log",
+      "sha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3"
+    }
+  ]
+}
