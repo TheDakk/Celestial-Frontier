@@ -1,0 +1,6485 @@
+{
+  "schema": "cf.motion-anatomy-audit/v1",
+  "head": "95c97b0811358d43a5f6e08ccfb0f82eae04b1d0",
+  "scope": "Actual library + contact owner + skeleton samples, 241/action. Not painted/native/CPU certification. UNMEASURED is not PASS.",
+  "subjects": 6,
+  "rows": [
+    {
+      "rig": "eagle",
+      "action": "idle",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.06544354149507424
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "idle",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "idle",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "idle",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "eagle",
+      "action": "idle",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "eagle",
+      "action": "idle",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "idle",
+      "criterion": "authored-rest-start",
+      "status": "FAIL",
+      "measurement": {
+        "zero": false
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "idle",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "eagle",
+      "action": "alert",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.14398898318300474
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "alert",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "alert",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "alert",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "eagle",
+      "action": "alert",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "eagle",
+      "action": "alert",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "alert",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "alert",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:walk",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.41187903670853065
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:walk",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:walk",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:walk",
+      "criterion": "footfall-duty-lift",
+      "status": "PASS",
+      "measurement": {
+        "status": "PASS",
+        "rows": [
+          {
+            "id": "legFar",
+            "duty": 0.65,
+            "touchdown": 0.5,
+            "touchdowns": 1,
+            "peakLift": 0.17052209767463714,
+            "phase": 0,
+            "expectedPhase": 0,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "legNear",
+            "duty": 0.65,
+            "touchdown": 0,
+            "touchdowns": 1,
+            "peakLift": 0.14641484944178068,
+            "phase": 0.5,
+            "expectedPhase": 0.5,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          }
+        ]
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:walk",
+      "criterion": "head-stabilization",
+      "status": "PASS",
+      "measurement": {
+        "rmsDegrees": 0.9911739138395721,
+        "rmsHeightBodyLengths": 0.007513372605464887
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:walk",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:walk",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:walk",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:flight",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 1.4177763954283205
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:flight",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:flight",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:flight",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "No eligible walking foot contacts; tube-foot/sucker coordination cannot be inferred."
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:flight",
+      "criterion": "head-stabilization",
+      "status": "FAIL",
+      "measurement": {
+        "rmsDegrees": 3.4198521311926022,
+        "rmsHeightBodyLengths": 0.04967849722227058
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:flight",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:flight",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "approach:flight",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:peck",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.6540039595431417
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:peck",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 16,
+        "first": {
+          "ms": 206.68888888888887,
+          "error": "Error: Contact: melee:peck@206.68888888888887 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:peck",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:peck",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:peck",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:peck",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:peck",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:peck",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:claw",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 1.4277385296995893
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:claw",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 23,
+        "first": {
+          "ms": 192.13333333333333,
+          "error": "Error: Contact: melee:claw@192.13333333333333 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:claw",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:claw",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:claw",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:claw",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:claw",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:claw",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "eagle",
+      "action": "cast",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 1.6580627893946132
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "cast",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "cast",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "cast",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "eagle",
+      "action": "cast",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "eagle",
+      "action": "cast",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "cast",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "cast",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "eagle",
+      "action": "hit",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.5453743317547822
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "hit",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 37,
+        "first": {
+          "ms": 179.225,
+          "error": "Error: Contact: hit@179.225 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "eagle",
+      "action": "hit",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "hit",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "eagle",
+      "action": "hit",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "eagle",
+      "action": "hit",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "hit",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "hit",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "eagle",
+      "action": "dodge",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.8726358663707731
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "dodge",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 64,
+        "first": {
+          "ms": 23.6,
+          "error": "Error: Contact: dodge@23.6 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "eagle",
+      "action": "dodge",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "dodge",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "eagle",
+      "action": "dodge",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "eagle",
+      "action": "dodge",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "dodge",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "dodge",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "eagle",
+      "action": "faint",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.6976844673487083
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "faint",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "faint",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "faint",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "eagle",
+      "action": "faint",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "eagle",
+      "action": "faint",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "faint",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "faint",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "eagle",
+      "action": "victory",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 1.6580627893946132
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "victory",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "victory",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "victory",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "eagle",
+      "action": "victory",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "eagle",
+      "action": "victory",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "victory",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "victory",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "eagle",
+      "action": "tame",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.34901558491640844
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "tame",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "tame",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "tame",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "eagle",
+      "action": "tame",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "eagle",
+      "action": "tame",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "tame",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "tame",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "eagle",
+      "action": "feed",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.5235987755982988
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "feed",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "feed",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "feed",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "eagle",
+      "action": "feed",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "eagle",
+      "action": "feed",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "feed",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "feed",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:kick",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 1.130174692626613
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:kick",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:kick",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:kick",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:kick",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:kick",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:kick",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "eagle",
+      "action": "melee:kick",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "beetle",
+      "action": "idle",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.06981317007977318
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "idle",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "idle",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "beetle",
+      "action": "idle",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "beetle",
+      "action": "idle",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "beetle",
+      "action": "idle",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "beetle",
+      "action": "idle",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "beetle",
+      "action": "idle",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "beetle",
+      "action": "alert",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "alert",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "alert",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "beetle",
+      "action": "alert",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "beetle",
+      "action": "alert",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "beetle",
+      "action": "alert",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "beetle",
+      "action": "alert",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "beetle",
+      "action": "alert",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:crawl",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.43633231299858244
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:crawl",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:crawl",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:crawl",
+      "criterion": "footfall-duty-lift",
+      "status": "PASS",
+      "measurement": {
+        "status": "PASS",
+        "rows": [
+          {
+            "id": "legFrontFar",
+            "duty": 0.65,
+            "touchdown": 0,
+            "touchdowns": 1,
+            "peakLift": 0.14281004931724448,
+            "phase": 0,
+            "expectedPhase": 0,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "legFrontNear",
+            "duty": 0.65,
+            "touchdown": 0.5,
+            "touchdowns": 1,
+            "peakLift": 0.14953767656073658,
+            "phase": 0.5,
+            "expectedPhase": 0.5,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "legMidFar",
+            "duty": 0.65,
+            "touchdown": 0.5,
+            "touchdowns": 1,
+            "peakLift": 0.15860883716713026,
+            "phase": 0.5,
+            "expectedPhase": 0.5,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "legMidNear",
+            "duty": 0.65,
+            "touchdown": 0,
+            "touchdowns": 1,
+            "peakLift": 0.15112302256443227,
+            "phase": 0,
+            "expectedPhase": 0,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "legHindFar",
+            "duty": 0.65,
+            "touchdown": 0,
+            "touchdowns": 1,
+            "peakLift": 0.11923631838114437,
+            "phase": 0,
+            "expectedPhase": 0,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "legHindNear",
+            "duty": 0.65,
+            "touchdown": 0.5,
+            "touchdowns": 1,
+            "peakLift": 0.14639099315261864,
+            "phase": 0.5,
+            "expectedPhase": 0.5,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          }
+        ]
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:crawl",
+      "criterion": "head-stabilization",
+      "status": "PASS",
+      "measurement": {
+        "rmsDegrees": 0.43211340143675797,
+        "rmsHeightBodyLengths": 0.0023893419838833373
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:crawl",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:crawl",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:crawl",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:flight",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 1.2217304763960306
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:flight",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:flight",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:flight",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "No eligible walking foot contacts; tube-foot/sucker coordination cannot be inferred."
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:flight",
+      "criterion": "head-stabilization",
+      "status": "PASS",
+      "measurement": {
+        "rmsDegrees": 0,
+        "rmsHeightBodyLengths": 0.03368696674454682
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:flight",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:flight",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "beetle",
+      "action": "approach:flight",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:mandible",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.5188320038484792
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:mandible",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 98,
+        "first": {
+          "ms": 160.44444444444443,
+          "error": "Error: Contact: melee:mandible@160.44444444444443 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:mandible",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:mandible",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:mandible",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:mandible",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:mandible",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:mandible",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "beetle",
+      "action": "cast",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 1.1344639099569622
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "cast",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "cast",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "beetle",
+      "action": "cast",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "beetle",
+      "action": "cast",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "beetle",
+      "action": "cast",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "beetle",
+      "action": "cast",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "beetle",
+      "action": "cast",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "beetle",
+      "action": "hit",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.4363323129985824
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "hit",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "hit",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "beetle",
+      "action": "hit",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "beetle",
+      "action": "hit",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "beetle",
+      "action": "hit",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "beetle",
+      "action": "hit",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "beetle",
+      "action": "hit",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "beetle",
+      "action": "dodge",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.5235624145722156
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "dodge",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "dodge",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "beetle",
+      "action": "dodge",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "beetle",
+      "action": "dodge",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "beetle",
+      "action": "dodge",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "beetle",
+      "action": "dodge",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "beetle",
+      "action": "dodge",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "beetle",
+      "action": "faint",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.9599160633794914
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "faint",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "faint",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "beetle",
+      "action": "faint",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "beetle",
+      "action": "faint",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "beetle",
+      "action": "faint",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "beetle",
+      "action": "faint",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "beetle",
+      "action": "faint",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "beetle",
+      "action": "victory",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 1.404988861071945
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "victory",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "victory",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "beetle",
+      "action": "victory",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "beetle",
+      "action": "victory",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "beetle",
+      "action": "victory",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "beetle",
+      "action": "victory",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "beetle",
+      "action": "victory",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "beetle",
+      "action": "tame",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.349061971889417
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "tame",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "tame",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "beetle",
+      "action": "tame",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "beetle",
+      "action": "tame",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "beetle",
+      "action": "tame",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "beetle",
+      "action": "tame",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "beetle",
+      "action": "tame",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "beetle",
+      "action": "feed",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.4363323129985824
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "feed",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "feed",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "beetle",
+      "action": "feed",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "beetle",
+      "action": "feed",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "beetle",
+      "action": "feed",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "beetle",
+      "action": "feed",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "beetle",
+      "action": "feed",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:body",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.2086451915041897
+      },
+      "reason": null
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:body",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 54,
+        "first": {
+          "ms": 166.77777777777777,
+          "error": "Error: Contact: melee:body@166.77777777777777 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:body",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:body",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:body",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:body",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:body",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "beetle",
+      "action": "melee:body",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "idle",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.03490658503988659
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "idle",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "idle",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "idle",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "idle",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "idle",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "idle",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "idle",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "alert",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "alert",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "alert",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "alert",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "alert",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "alert",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "alert",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "alert",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:walk",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.4363323129985824
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:walk",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:walk",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:walk",
+      "criterion": "footfall-duty-lift",
+      "status": "PASS",
+      "measurement": {
+        "status": "PASS",
+        "rows": [
+          {
+            "id": "legFar",
+            "duty": 0.65,
+            "touchdown": 0.5,
+            "touchdowns": 1,
+            "peakLift": 0.14275657897965577,
+            "phase": 0,
+            "expectedPhase": 0,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "legNear",
+            "duty": 0.65,
+            "touchdown": 0,
+            "touchdowns": 1,
+            "peakLift": 0.14173756193109072,
+            "phase": 0.5,
+            "expectedPhase": 0.5,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          }
+        ]
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:walk",
+      "criterion": "head-stabilization",
+      "status": "PASS",
+      "measurement": {
+        "rmsDegrees": 1.8333018983850986,
+        "rmsHeightBodyLengths": 0.023470899336149712
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:walk",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:walk",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:walk",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:climb",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.7853981633974483
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:climb",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:climb",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:climb",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "No eligible walking foot contacts; tube-foot/sucker coordination cannot be inferred."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:climb",
+      "criterion": "head-stabilization",
+      "status": "FAIL",
+      "measurement": {
+        "rmsDegrees": 4.406709332021966,
+        "rmsHeightBodyLengths": 0.0619296481455127
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:climb",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:climb",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "approach:climb",
+      "criterion": "anatomical-verb",
+      "status": "FAIL",
+      "measurement": null,
+      "reason": "Source anatomy/support cannot realize the advertised verb."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:punch",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.6050613258441612
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:punch",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 38,
+        "first": {
+          "ms": 187.88888888888886,
+          "error": "Error: Contact: melee:punch@187.88888888888886 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:punch",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:punch",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:punch",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:punch",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:punch",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:punch",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:bite",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.4521969680482659
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:bite",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 33,
+        "first": {
+          "ms": 190,
+          "error": "Error: Contact: melee:bite@190 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:bite",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:bite",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:bite",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:bite",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:bite",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "melee:bite",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "cast",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.2617312108752433
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "cast",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "cast",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "cast",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "cast",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "cast",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "cast",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "cast",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "hit",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.3490207747466966
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "hit",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "hit",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "hit",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "hit",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "hit",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "hit",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "hit",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "dodge",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.43630201214351305
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "dodge",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "dodge",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "dodge",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "dodge",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "dodge",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "dodge",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "dodge",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "faint",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.6981216839861386
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "faint",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "faint",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "faint",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "faint",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "faint",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "faint",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "faint",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "victory",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.17450918952962846
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "victory",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "victory",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "victory",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "victory",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "victory",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "victory",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "victory",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "tame",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.3490503363610704
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "tame",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "tame",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "tame",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "tame",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "tame",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "tame",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "tame",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "feed",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.4188790204786391
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "feed",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "feed",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "feed",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "feed",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "feed",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "feed",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "chimpanzee",
+      "action": "feed",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "tarantula",
+      "action": "idle",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.05235987755982989
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "idle",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "idle",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "tarantula",
+      "action": "idle",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "tarantula",
+      "action": "idle",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "tarantula",
+      "action": "idle",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "tarantula",
+      "action": "idle",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "tarantula",
+      "action": "idle",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "tarantula",
+      "action": "alert",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.1919866677327778
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "alert",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "alert",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "tarantula",
+      "action": "alert",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "tarantula",
+      "action": "alert",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "tarantula",
+      "action": "alert",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "tarantula",
+      "action": "alert",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "tarantula",
+      "action": "alert",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "tarantula",
+      "action": "approach:scuttle",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.22297862835709492
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "approach:scuttle",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "approach:scuttle",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "tarantula",
+      "action": "approach:scuttle",
+      "criterion": "footfall-duty-lift",
+      "status": "PASS",
+      "measurement": {
+        "status": "PASS",
+        "rows": [
+          {
+            "id": "leg1Far",
+            "duty": 0.65,
+            "touchdown": 0,
+            "touchdowns": 1,
+            "peakLift": 0.14969734373995924,
+            "phase": 0,
+            "expectedPhase": 0,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg1Near",
+            "duty": 0.65,
+            "touchdown": 0.5,
+            "touchdowns": 1,
+            "peakLift": 0.16193137359387927,
+            "phase": 0.5,
+            "expectedPhase": 0.5,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg2Far",
+            "duty": 0.65,
+            "touchdown": 0.5,
+            "touchdowns": 1,
+            "peakLift": 0.15513665841132807,
+            "phase": 0.5,
+            "expectedPhase": 0.5,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg2Near",
+            "duty": 0.65,
+            "touchdown": 0,
+            "touchdowns": 1,
+            "peakLift": 0.14720116618580717,
+            "phase": 0,
+            "expectedPhase": 0,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg3Far",
+            "duty": 0.65,
+            "touchdown": 0,
+            "touchdowns": 1,
+            "peakLift": 0.15458353144472206,
+            "phase": 0,
+            "expectedPhase": 0,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg3Near",
+            "duty": 0.65,
+            "touchdown": 0.5,
+            "touchdowns": 1,
+            "peakLift": 0.16681838518721795,
+            "phase": 0.5,
+            "expectedPhase": 0.5,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg4Far",
+            "duty": 0.65,
+            "touchdown": 0.5,
+            "touchdowns": 1,
+            "peakLift": 0.15008402104198695,
+            "phase": 0.5,
+            "expectedPhase": 0.5,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg4Near",
+            "duty": 0.65,
+            "touchdown": 0,
+            "touchdowns": 1,
+            "peakLift": 0.1415821693738703,
+            "phase": 0,
+            "expectedPhase": 0,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          }
+        ]
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "approach:scuttle",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "tarantula",
+      "action": "approach:scuttle",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "tarantula",
+      "action": "approach:scuttle",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "tarantula",
+      "action": "approach:scuttle",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:sting",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 1.0807140784500069
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:sting",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 58,
+        "first": {
+          "ms": 171,
+          "error": "Error: Contact: melee:sting@171 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:sting",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:sting",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:sting",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:sting",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:sting",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:sting",
+      "criterion": "anatomical-verb",
+      "status": "FAIL",
+      "measurement": null,
+      "reason": "Source anatomy/support cannot realize the advertised verb."
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:bite",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.6914582203479843
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:bite",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 73,
+        "first": {
+          "ms": 162.55555555555554,
+          "error": "Error: Contact: melee:bite@162.55555555555554 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:bite",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:bite",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:bite",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:bite",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:bite",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:bite",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "tarantula",
+      "action": "cast",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.5234760571352681
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "cast",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "cast",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "tarantula",
+      "action": "cast",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "tarantula",
+      "action": "cast",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "tarantula",
+      "action": "cast",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "tarantula",
+      "action": "cast",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "tarantula",
+      "action": "cast",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "tarantula",
+      "action": "hit",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.3490207747466966
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "hit",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "hit",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "tarantula",
+      "action": "hit",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "tarantula",
+      "action": "hit",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "tarantula",
+      "action": "hit",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "tarantula",
+      "action": "hit",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "tarantula",
+      "action": "hit",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "tarantula",
+      "action": "dodge",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.25119942787187505
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "dodge",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "dodge",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "tarantula",
+      "action": "dodge",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "tarantula",
+      "action": "dodge",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "tarantula",
+      "action": "dodge",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "tarantula",
+      "action": "dodge",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "tarantula",
+      "action": "dodge",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "tarantula",
+      "action": "faint",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.502424135066419
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "faint",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "faint",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "tarantula",
+      "action": "faint",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "tarantula",
+      "action": "faint",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "tarantula",
+      "action": "faint",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "tarantula",
+      "action": "faint",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "tarantula",
+      "action": "faint",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "tarantula",
+      "action": "victory",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.6283042893160758
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "victory",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "victory",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "tarantula",
+      "action": "victory",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "tarantula",
+      "action": "victory",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "tarantula",
+      "action": "victory",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "tarantula",
+      "action": "victory",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "tarantula",
+      "action": "victory",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "tarantula",
+      "action": "tame",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.20943020181664226
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "tame",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "tame",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "tarantula",
+      "action": "tame",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "tarantula",
+      "action": "tame",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "tarantula",
+      "action": "tame",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "tarantula",
+      "action": "tame",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "tarantula",
+      "action": "tame",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "tarantula",
+      "action": "feed",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.3490641889712099
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "feed",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "feed",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "tarantula",
+      "action": "feed",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "tarantula",
+      "action": "feed",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "tarantula",
+      "action": "feed",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "tarantula",
+      "action": "feed",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "tarantula",
+      "action": "feed",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:body",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.17413576583186802
+      },
+      "reason": null
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:body",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 49,
+        "first": {
+          "ms": 171,
+          "error": "Error: Contact: melee:body@171 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:body",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:body",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:body",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:body",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:body",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "tarantula",
+      "action": "melee:body",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "idle",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.03665177588376161
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "idle",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "idle",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "idle",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "idle",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "idle",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "idle",
+      "criterion": "authored-rest-start",
+      "status": "FAIL",
+      "measurement": {
+        "zero": false
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "idle",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "alert",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.40317246886525815
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "alert",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "alert",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "alert",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "alert",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "alert",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "alert",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "alert",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:flight",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 1.282542650174062
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:flight",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:flight",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:flight",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "No eligible walking foot contacts; tube-foot/sucker coordination cannot be inferred."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:flight",
+      "criterion": "head-stabilization",
+      "status": "FAIL",
+      "measurement": {
+        "rmsDegrees": 3.1702150294443823,
+        "rmsHeightBodyLengths": 0.055916237134087596
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:flight",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:flight",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:flight",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:crawl",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.6367593462159328
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:crawl",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:crawl",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:crawl",
+      "criterion": "footfall-duty-lift",
+      "status": "PASS",
+      "measurement": {
+        "status": "PASS",
+        "rows": [
+          {
+            "id": "legFar",
+            "duty": 0.65,
+            "touchdown": 0.5,
+            "touchdowns": 1,
+            "peakLift": 0.09784192686169765,
+            "phase": 0,
+            "expectedPhase": 0,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "legNear",
+            "duty": 0.6541666666666667,
+            "touchdown": 0,
+            "touchdowns": 1,
+            "peakLift": 0.10886343664150856,
+            "phase": 0.5,
+            "expectedPhase": 0.5,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          }
+        ]
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:crawl",
+      "criterion": "head-stabilization",
+      "status": "PASS",
+      "measurement": {
+        "rmsDegrees": 1.9267440301197971,
+        "rmsHeightBodyLengths": 0.03341448131215797
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:crawl",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:crawl",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "approach:crawl",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:bite",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.9161512496398556
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:bite",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 39,
+        "first": {
+          "ms": 165.24444444444444,
+          "error": "Error: Contact: melee:bite@165.24444444444444 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:bite",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:bite",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:bite",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:bite",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:bite",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:bite",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:claw",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 1.0994108210992601
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:claw",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 43,
+        "first": {
+          "ms": 162.06666666666666,
+          "error": "Error: Contact: melee:claw@162.06666666666666 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:claw",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:claw",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:claw",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:claw",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:claw",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "melee:claw",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "cast",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 1.64930653833879
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "cast",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "cast",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "cast",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "cast",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "cast",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "cast",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "cast",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "hit",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.45814887023890494
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "hit",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "hit",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "hit",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "hit",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "hit",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "hit",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "hit",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "dodge",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.7329794582425441
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "dodge",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 16,
+        "first": {
+          "ms": 87.1,
+          "error": "Error: Contact: joint limit legFarFoot dodge@87.1: -60.046986837534114"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "dodge",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "dodge",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "dodge",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "dodge",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "dodge",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "dodge",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "faint",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.6717639277998994
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "faint",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "faint",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "faint",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "faint",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "faint",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "faint",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "faint",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "victory",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 1.6658945846784994
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "victory",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "victory",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "victory",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "victory",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "victory",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "victory",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "victory",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "tame",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.3490602653452595
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "tame",
+      "criterion": "contact-owner",
+      "status": "FAIL",
+      "measurement": {
+        "refusals": 203,
+        "first": {
+          "ms": 141.86666666666667,
+          "error": "Error: Contact: tame@141.86666666666667 exceeds scale compression bound"
+        }
+      },
+      "reason": "actual contact solver refused"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "tame",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "tame",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "tame",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "tame",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "tame",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "tame",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "feed",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.5235987755982988
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "feed",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "feed",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "feed",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "feed",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "feed",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "feed",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "fruit-bat",
+      "action": "feed",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "centipede",
+      "action": "idle",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.05235987755982989
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "idle",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "idle",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "centipede",
+      "action": "idle",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "centipede",
+      "action": "idle",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "centipede",
+      "action": "idle",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "centipede",
+      "action": "idle",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "centipede",
+      "action": "idle",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "centipede",
+      "action": "alert",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.0959933338663889
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "alert",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "alert",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "centipede",
+      "action": "alert",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "centipede",
+      "action": "alert",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "centipede",
+      "action": "alert",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "centipede",
+      "action": "alert",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "centipede",
+      "action": "alert",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "centipede",
+      "action": "approach:crawl",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.3839724354387525
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "approach:crawl",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "approach:crawl",
+      "criterion": "travelling-wave",
+      "status": "FAIL",
+      "measurement": null,
+      "reason": "Error: Motion anatomy instrument: unidentified chain"
+    },
+    {
+      "rig": "centipede",
+      "action": "approach:crawl",
+      "criterion": "world-path-following",
+      "status": "FAIL",
+      "measurement": null,
+      "reason": "UNMEASURABLE: action sampler has no stage displacement or preceding head-path history; Claude stage owner must supply both."
+    },
+    {
+      "rig": "centipede",
+      "action": "approach:crawl",
+      "criterion": "footfall-duty-lift",
+      "status": "PASS",
+      "measurement": {
+        "status": "PASS",
+        "rows": [
+          {
+            "id": "leg0Far",
+            "duty": 0.65,
+            "touchdown": 0,
+            "touchdowns": 1,
+            "peakLift": 0.1448407449602429,
+            "phase": 0,
+            "expectedPhase": 0,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg0Near",
+            "duty": 0.65,
+            "touchdown": 0.5,
+            "touchdowns": 1,
+            "peakLift": 0.13178607012103033,
+            "phase": 0.5,
+            "expectedPhase": 0.5,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg1Far",
+            "duty": 0.6541666666666667,
+            "touchdown": 0.2,
+            "touchdowns": 1,
+            "peakLift": 0.1468095215769519,
+            "phase": 0.19999999999999996,
+            "expectedPhase": 0.19999999999999996,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg1Near",
+            "duty": 0.65,
+            "touchdown": 0.7,
+            "touchdowns": 1,
+            "peakLift": 0.16049862682551136,
+            "phase": 0.7,
+            "expectedPhase": 0.7,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg2Far",
+            "duty": 0.6541666666666667,
+            "touchdown": 0.4,
+            "touchdowns": 1,
+            "peakLift": 0.14192047175146416,
+            "phase": 0.3999999999999999,
+            "expectedPhase": 0.3999999999999999,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg2Near",
+            "duty": 0.65,
+            "touchdown": 0.9,
+            "touchdowns": 1,
+            "peakLift": 0.15620164362222685,
+            "phase": 0.8999999999999999,
+            "expectedPhase": 0.8999999999999999,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg3Far",
+            "duty": 0.65,
+            "touchdown": 0.6041666666666666,
+            "touchdowns": 1,
+            "peakLift": 0.15615351729047153,
+            "phase": 0.6041666666666665,
+            "expectedPhase": 0.6000000000000001,
+            "phaseError": 0.00416666666666643,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg3Near",
+            "duty": 0.65,
+            "touchdown": 0.10416666666666667,
+            "touchdowns": 1,
+            "peakLift": 0.15395171305292799,
+            "phase": 0.10416666666666674,
+            "expectedPhase": 0.10000000000000009,
+            "phaseError": 0.004166666666666652,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg4Far",
+            "duty": 0.6541666666666667,
+            "touchdown": 0.8,
+            "touchdowns": 1,
+            "peakLift": 0.14428668690851157,
+            "phase": 0.8,
+            "expectedPhase": 0.8,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg4Near",
+            "duty": 0.65,
+            "touchdown": 0.30416666666666664,
+            "touchdowns": 1,
+            "peakLift": 0.15088889886602375,
+            "phase": 0.3041666666666667,
+            "expectedPhase": 0.30000000000000004,
+            "phaseError": 0.004166666666666652,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg5Far",
+            "duty": 0.65,
+            "touchdown": 0,
+            "touchdowns": 1,
+            "peakLift": 0.14641291213224736,
+            "phase": 0,
+            "expectedPhase": 0,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg5Near",
+            "duty": 0.65,
+            "touchdown": 0.5,
+            "touchdowns": 1,
+            "peakLift": 0.15011442522954016,
+            "phase": 0.5,
+            "expectedPhase": 0.5,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg6Far",
+            "duty": 0.65,
+            "touchdown": 0.20416666666666666,
+            "touchdowns": 1,
+            "peakLift": 0.15158763296039757,
+            "phase": 0.2041666666666666,
+            "expectedPhase": 0.20000000000000018,
+            "phaseError": 0.00416666666666643,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg6Near",
+            "duty": 0.65,
+            "touchdown": 0.7041666666666667,
+            "touchdowns": 1,
+            "peakLift": 0.13346235993460304,
+            "phase": 0.7041666666666666,
+            "expectedPhase": 0.7000000000000002,
+            "phaseError": 0.00416666666666643,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg7Far",
+            "duty": 0.65,
+            "touchdown": 0.4041666666666667,
+            "touchdowns": 1,
+            "peakLift": 0.14846962085948792,
+            "phase": 0.4041666666666668,
+            "expectedPhase": 0.40000000000000013,
+            "phaseError": 0.004166666666666652,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg7Near",
+            "duty": 0.65,
+            "touchdown": 0.9041666666666667,
+            "touchdowns": 1,
+            "peakLift": 0.14405510080353104,
+            "phase": 0.9041666666666668,
+            "expectedPhase": 0.9000000000000001,
+            "phaseError": 0.004166666666666652,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg8Far",
+            "duty": 0.65,
+            "touchdown": 0.6041666666666666,
+            "touchdowns": 1,
+            "peakLift": 0.15133639821183298,
+            "phase": 0.6041666666666665,
+            "expectedPhase": 0.6000000000000001,
+            "phaseError": 0.00416666666666643,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg8Near",
+            "duty": 0.65,
+            "touchdown": 0.10416666666666667,
+            "touchdowns": 1,
+            "peakLift": 0.14892086034458737,
+            "phase": 0.10416666666666674,
+            "expectedPhase": 0.10000000000000009,
+            "phaseError": 0.004166666666666652,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg9Far",
+            "duty": 0.6541666666666667,
+            "touchdown": 0.8,
+            "touchdowns": 1,
+            "peakLift": 0.1452008691344716,
+            "phase": 0.8,
+            "expectedPhase": 0.8,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg9Near",
+            "duty": 0.65,
+            "touchdown": 0.3,
+            "touchdowns": 1,
+            "peakLift": 0.15150414777267746,
+            "phase": 0.30000000000000004,
+            "expectedPhase": 0.2999999999999998,
+            "phaseError": 2.220446049250313e-16,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg10Far",
+            "duty": 0.65,
+            "touchdown": 0,
+            "touchdowns": 1,
+            "peakLift": 0.1533736361883061,
+            "phase": 0,
+            "expectedPhase": 0,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg10Near",
+            "duty": 0.65,
+            "touchdown": 0.5,
+            "touchdowns": 1,
+            "peakLift": 0.1459706867707156,
+            "phase": 0.5,
+            "expectedPhase": 0.5,
+            "phaseError": 0,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg11Far",
+            "duty": 0.65,
+            "touchdown": 0.20416666666666666,
+            "touchdowns": 1,
+            "peakLift": 0.14493637864680037,
+            "phase": 0.2041666666666666,
+            "expectedPhase": 0.20000000000000018,
+            "phaseError": 0.00416666666666643,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg11Near",
+            "duty": 0.65,
+            "touchdown": 0.7041666666666667,
+            "touchdowns": 1,
+            "peakLift": 0.14906011571833755,
+            "phase": 0.7041666666666666,
+            "expectedPhase": 0.7000000000000002,
+            "phaseError": 0.00416666666666643,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg12Far",
+            "duty": 0.65,
+            "touchdown": 0.4041666666666667,
+            "touchdowns": 1,
+            "peakLift": 0.1469889767671805,
+            "phase": 0.4041666666666668,
+            "expectedPhase": 0.40000000000000036,
+            "phaseError": 0.00416666666666643,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg12Near",
+            "duty": 0.65,
+            "touchdown": 0.9041666666666667,
+            "touchdowns": 1,
+            "peakLift": 0.14827964624053366,
+            "phase": 0.9041666666666668,
+            "expectedPhase": 0.9000000000000004,
+            "phaseError": 0.00416666666666643,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg13Far",
+            "duty": 0.65,
+            "touchdown": 0.6041666666666666,
+            "touchdowns": 1,
+            "peakLift": 0.14281505642007455,
+            "phase": 0.6041666666666665,
+            "expectedPhase": 0.6000000000000001,
+            "phaseError": 0.00416666666666643,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          },
+          {
+            "id": "leg13Near",
+            "duty": 0.65,
+            "touchdown": 0.10416666666666667,
+            "touchdowns": 1,
+            "peakLift": 0.14980266111674528,
+            "phase": 0.10416666666666674,
+            "expectedPhase": 0.10000000000000009,
+            "phaseError": 0.004166666666666652,
+            "dutyPass": true,
+            "phasePass": true,
+            "liftPass": true
+          }
+        ]
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "approach:crawl",
+      "criterion": "head-stabilization",
+      "status": "PASS",
+      "measurement": {
+        "rmsDegrees": 0,
+        "rmsHeightBodyLengths": 0.0009347158042696555
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "approach:crawl",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "centipede",
+      "action": "approach:crawl",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "centipede",
+      "action": "approach:crawl",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:mandible",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.27766404284883295
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:mandible",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:mandible",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:mandible",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:mandible",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:mandible",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:mandible",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:mandible",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:body",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.10412401606831237
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:body",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:body",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:body",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:body",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:body",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:body",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "centipede",
+      "action": "melee:body",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "centipede",
+      "action": "cast",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.2443210964116876
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "cast",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "cast",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "centipede",
+      "action": "cast",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "centipede",
+      "action": "cast",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "centipede",
+      "action": "cast",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "centipede",
+      "action": "cast",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "centipede",
+      "action": "cast",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "centipede",
+      "action": "hit",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.3490207747466966
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "hit",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "hit",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "centipede",
+      "action": "hit",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "centipede",
+      "action": "hit",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "centipede",
+      "action": "hit",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "centipede",
+      "action": "hit",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "centipede",
+      "action": "hit",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "centipede",
+      "action": "dodge",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.3141374487433294
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "dodge",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "dodge",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "centipede",
+      "action": "dodge",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "centipede",
+      "action": "dodge",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "centipede",
+      "action": "dodge",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "centipede",
+      "action": "dodge",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "centipede",
+      "action": "dodge",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "centipede",
+      "action": "faint",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.523580745337431
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "faint",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "faint",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "centipede",
+      "action": "faint",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "centipede",
+      "action": "faint",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "centipede",
+      "action": "faint",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "centipede",
+      "action": "faint",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "centipede",
+      "action": "faint",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "centipede",
+      "action": "victory",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.2164198778205047
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "victory",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "victory",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "centipede",
+      "action": "victory",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "centipede",
+      "action": "victory",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "centipede",
+      "action": "victory",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "centipede",
+      "action": "victory",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "centipede",
+      "action": "victory",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "centipede",
+      "action": "tame",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.2443352354527493
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "tame",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "tame",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "centipede",
+      "action": "tame",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "centipede",
+      "action": "tame",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "centipede",
+      "action": "tame",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "centipede",
+      "action": "tame",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "centipede",
+      "action": "tame",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    },
+    {
+      "rig": "centipede",
+      "action": "feed",
+      "criterion": "finite-and-deterministic",
+      "status": "PASS",
+      "measurement": {
+        "samples": 241,
+        "replay": true,
+        "maxAngleRad": 0.3141592653589793
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "feed",
+      "criterion": "contact-owner",
+      "status": "PASS",
+      "measurement": {
+        "refusals": 0,
+        "first": null
+      },
+      "reason": null
+    },
+    {
+      "rig": "centipede",
+      "action": "feed",
+      "criterion": "travelling-wave",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not a chain locomotion action"
+    },
+    {
+      "rig": "centipede",
+      "action": "feed",
+      "criterion": "footfall-duty-lift",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not cyclic walking"
+    },
+    {
+      "rig": "centipede",
+      "action": "feed",
+      "criterion": "head-stabilization",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not locomotion or no head joint"
+    },
+    {
+      "rig": "centipede",
+      "action": "feed",
+      "criterion": "strike-extension-speed",
+      "status": "N/A",
+      "measurement": null,
+      "reason": "not serpent strike"
+    },
+    {
+      "rig": "centipede",
+      "action": "feed",
+      "criterion": "authored-rest-start",
+      "status": "PASS",
+      "measurement": {
+        "zero": true
+      },
+      "reason": "pose channels only; painted rest belongs to static owner"
+    },
+    {
+      "rig": "centipede",
+      "action": "feed",
+      "criterion": "anatomical-verb",
+      "status": "UNMEASURED",
+      "measurement": null,
+      "reason": "See SPEC family verb requirements; qualitative semantics require the paired film, not a finite-number proxy."
+    }
+  ],
+  "refusals": [],
+  "inputs": [
+    {
+      "path": "audits/MOTION_ANATOMY_20260923/gait-rigs.json",
+      "sha256": "c59d7314d759737aff510bc50558da138e24859f00228353cbe0fece580be12e"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/record.json",
+      "sha256": "5327906d70d258adef8e40514643df9aa17516c98c11e328c2f2a3e9216683bb"
+    },
+    {
+      "path": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/binding.json",
+      "sha256": "2ca72744f94ad11896b15dcdc0261e177dd4016cea5e19d384bb98e0b8fba74f"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/record.json",
+      "sha256": "4e935e3ab068c2ed17e5d993bb542cc4f7551e549772b0d3cce772df610d50b9"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/binding.json",
+      "sha256": "d23162df16d6c89d1f1b16d19acf52984ff73dc5e1bddf31e6430bb955464c8e"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/record.json",
+      "sha256": "333cacf0dac7834c820887404a7ba3f03593206110e51b639c7a33a89e49e7a2"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/binding.json",
+      "sha256": "2d40f5cb65fad7ae0e020794ca38f333aff4a308faecebb93bbede039b8d0451"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/record.json",
+      "sha256": "12b5ac9ce9d1f3986628253ecabdb97f7e4a772562703eebf9f543d56e6ed64a"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/binding.json",
+      "sha256": "1340a8f5f1b7b52e2e75fd6c0c756edcf196544c0183038826275b9ffd320f22"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/record.json",
+      "sha256": "474df06b02888a7e086ddb0a867c6f2357c64a40431e4df7defb2e6da057f27f"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/binding.json",
+      "sha256": "ffc7fc4056e51b9d36edc228063adbab50a6c79c369ccd4fc671016368504240"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/record.json",
+      "sha256": "19f7988daaa9054bed677f00abf2adb88b5b69dd91e5776e0462a9009e260d54"
+    },
+    {
+      "path": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/binding.json",
+      "sha256": "4ebf5d0067f2062b1fd1ec4128a2b6f0f837d4f950aa6ac39ffd4bbf019ff56c"
+    }
+  ]
+}

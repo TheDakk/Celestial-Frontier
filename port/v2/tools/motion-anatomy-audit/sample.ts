@@ -21,7 +21,7 @@ for(const subject of subjects){
     const tl=buildTimeline(card,action,record.identity.seed),frames:any[]=[],contactErrors:any[]=[],joints:any={};
     for(let i=0;i<=240;i++){
      const ms=tl.durationMs*i/240,p=sampleTimeline(tl,ms),raw:any=Object.fromEntries(Object.entries(p.joints).map(([j,rotation])=>[j,{rotation,dx:j==='root'?p.root.dx:0,dy:j==='root'?p.root.dy:0}]));
-     let resolved:any={pose:raw,contacts:[]};try{resolved=solver.resolve(raw,{actionId:action,elapsedMs:ms,durationMs:tl.durationMs,realm:record.habitat?.realm});}catch(e){contactErrors.push({ms,error:String(e)});}
+     let resolved:any={pose:raw,contacts:[]};try{resolved=solver.resolve(raw,{actionId:action,elapsedMs:ms,durationMs:tl.durationMs,realm:card.realm,...action.startsWith('melee:')?{travel:'stage' as const}:{}});}catch(e){contactErrors.push({ms,error:String(e)});}
      const matrices=program.evaluate(resolved.pose),world=Object.fromEntries(Object.entries(record.landmarks).map(([j,v]:any)=>[j,transformPoint(matrices[j],{x:v[0],y:v[1]})]));
      const feet=Object.fromEntries(chains.map((c:any)=>{const contact=resolved.contacts.find((v:any)=>v.joint===c.end),base=record.landmarks[c.end],knee=record.landmarks[c.knee],lower=Math.hypot(base[0]-knee[0],base[1]-knee[1]),sign=template.contactStance?.swingLift==='toward-socket'?Math.sign(record.landmarks[c.hip][1]-base[1]):-1;return[c.id,{stance:contact?.stance===true,lift:sign*((world[c.end] as any).y-base[1])/lower}];}));
      if(i<240)for(const[j,v]of Object.entries(p.joints)){(joints[j]??=[]).push(v);}
@@ -33,7 +33,10 @@ for(const subject of subjects){
     const locomotion=action.startsWith('approach:'),waveFamily=['serpent','fish','myriapod'].includes(record.template.id);
     if(locomotion&&waveFamily){
      const prefix=record.template.id==='fish'?'spine':'seg',chain=Object.keys(joints).filter(j=>new RegExp('^'+prefix+'[0-9]+$').test(j)).sort((a,b)=>Number(a.slice(prefix.length))-Number(b.slice(prefix.length)));const end=record.template.id==='fish'?'caudal':'tail';if(joints[end])chain.push(end);
-     try{const v=waveMetrics(joints,chain);add(subject.id,action,'travelling-wave',v.status,v);}catch(e){add(subject.id,action,'travelling-wave','FAIL',null,String(e));}
+     try{const v=waveMetrics(joints,chain);add(subject.id,action,'travelling-wave',v.status,v);
+      const amplitudes=v.amplitudesRad,ratio=amplitudes.at(-1)!/amplitudes[0]!,spread=Math.max(...amplitudes)/Math.min(...amplitudes),envelope=record.template.id==='fish'?ratio>=2:spread<=2.5;
+      add(subject.id,action,'wave-amplitude-envelope',envelope?'PASS':'FAIL',{tailHeadRatio:ratio,maximumMinimumRatio:spread});
+     }catch(e){add(subject.id,action,'travelling-wave','FAIL',null,String(e));}
      add(subject.id,action,'world-path-following','FAIL',null,'UNMEASURABLE: action sampler has no stage displacement or preceding head-path history; Claude stage owner must supply both.');
     }else add(subject.id,action,'travelling-wave','N/A',null,'not a chain locomotion action');
     if(locomotion&&chains.length&&!/:(flight|fly|swim|jet|hop|leap|climb)$/.test(action)){
@@ -44,6 +47,12 @@ for(const subject of subjects){
     }else add(subject.id,action,'footfall-duty-lift',locomotion&&['radial','cephalopod'].includes(record.template.id)?'FAIL':'N/A',null,locomotion?'No eligible walking foot contacts; tube-foot/sucker coordination cannot be inferred.':'not cyclic walking');
     if(locomotion&&frames[0].world.head){const ys=frames.map(f=>f.world.head.y),avg=ys.reduce((s,v)=>s+v,0)/ys.length,angle=rms(frames.map(f=>f.headAngle)),height=rms(ys.map(v=>v-avg))/program.bodyLength;add(subject.id,action,'head-stabilization',angle<=12*Math.PI/180&&height<=.04?'PASS':'FAIL',{rmsDegrees:angle*180/Math.PI,rmsHeightBodyLengths:height});}else add(subject.id,action,'head-stabilization','N/A',null,'not locomotion or no head joint');
     if(action==='melee:strike'&&record.template.id==='serpent'){const ordered=template.graph.filter(([j]:any)=>/^seg\d+$/.test(j)||j==='tail'),length=ordered.reduce((s:number,[j,parent]:any)=>s+Math.hypot(record.landmarks[j][0]-record.landmarks[parent][0],record.landmarks[j][1]-record.landmarks[parent][1]),0);const v=strikeMetrics(frames.map(f=>f.world.head),length,tl.durationMs);add(subject.id,action,'strike-extension-speed',v.status,v);}else add(subject.id,action,'strike-extension-speed','N/A',null,'not serpent strike');
+    if(['approach:walk','approach:crawl','approach:climb'].includes(action)&&['primate','flyer-membrane'].includes(record.template.id)&&!chains.some((c:any)=>/arm|wing/.test(c.id)))add(subject.id,action,'full-support-inventory','FAIL',{observed:chains.map((c:any)=>c.id)},'UNMEASURABLE: hindfeet are measured but knuckles/wing wrists are not contact chains; hindfoot PASS is not a full gait PASS.');
+    if(action==='melee:strike'&&record.template.id==='serpent'){
+     const relative=frames.map(f=>({x:f.world.head.x-f.world.root.x,y:f.world.head.y-f.world.root.y})),extension=(Math.max(...relative.map(p=>p.x))-Math.min(...relative.map(p=>p.x)))/program.bodyLength;
+     add(subject.id,action,'strike-neck-recruitment',extension>=.30?'PASS':'FAIL',{rootRelativeHeadExcursionBodyAxes:extension,headParent:template.graph.find(([j]:any)=>j==='head')?.[1]},'Root surge does not prove S-neck straightening; current head is a sibling of the body chain. Stage/head-path recruitment is required.');
+    }
+    if(['melee','hit','dodge','cast'].includes(tl.family)){const f=frames.at(-1)!,end=Math.max(...Object.values(f.raw.joints).map((v:any)=>Math.abs(v)),Math.abs(f.raw.root.dx),Math.abs(f.raw.root.dy));add(subject.id,action,'action-end-rest',end<=1e-8?'PASS':'FAIL',{maxResidual:end});}
     const rest=Object.values(frames[0].raw.joints).every(v=>v===0)&&frames[0].raw.root.dx===0&&frames[0].raw.root.dy===0;
     add(subject.id,action,'authored-rest-start',rest?'PASS':'FAIL',{zero:rest},'pose channels only; painted rest belongs to static owner');
     // No pretend automated proof of species-specific semantics unsupported by samples.
@@ -56,7 +65,7 @@ for(const subject of subjects){
  fs.writeFileSync(path.join(out,subject.id+'-samples.json.gz'),gzipSync(JSON.stringify({subject,actionIds,samples}),{level:6}));
 }
 for(const i of inputs)if(sha(fs.readFileSync(path.resolve(i.path)))!==i.sha256)throw Error('Input changed: '+i.path);
-const report={schema:'cf.motion-anatomy-audit/v1',head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),scope:'Actual library + contact owner + skeleton samples, 241/action. Not painted/native/CPU certification. UNMEASURED is not PASS.',subjects:subjects.length,rows,refusals,inputs};
+const report={schema:'cf.motion-anatomy-audit/v1',head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),scope:'Actual library + contact owner + skeleton samples, 241/action. Contact context matches static owner: compiled card realm and melee travel=stage. No stage displacement/history; not painted/native/CPU certification. Ground-only gait projections are separately retained. UNMEASURED is not PASS.',subjects:subjects.length,rows,refusals,inputs};
 fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');
 const table=['# Motion anatomy measurements','','Failures and unmeasured anatomy remain explicit. Numeric targets are prospective game-design choices, not re-sealed biological measurements.','','| Rig | Action | Criterion | Verdict | Measurement / reason |','|---|---|---|---|---|',...rows.map(r=>`| ${r.rig} | ${r.action} | ${r.criterion} | ${r.status} | ${JSON.stringify(r.measurement??r.reason).replaceAll('|','/')} |`)];fs.writeFileSync(path.join(out,'TABLE.md'),table.join('\n')+'\n');
 console.log(JSON.stringify({subjects:subjects.length,actions:rows.filter(r=>r.criterion==='finite-and-deterministic').length,rows:rows.length,failures:rows.filter(r=>r.status==='FAIL').length,refusals}));

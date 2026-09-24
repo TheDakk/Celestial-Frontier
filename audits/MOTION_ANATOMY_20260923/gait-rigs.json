@@ -1,0 +1,44 @@
+[
+  {
+    "id": "eagle",
+    "name": "Eagle",
+    "fit": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12",
+    "tierMs": 3.5,
+    "priorFilm": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/native-07/battle-10s.webm"
+  },
+  {
+    "id": "beetle",
+    "name": "Beetle",
+    "fit": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04",
+    "tierMs": 3.5,
+    "priorFilm": "audits/ARCHETYPE_FINISH_20260923/04-insect/native-01/battle-10s.webm"
+  },
+  {
+    "id": "chimpanzee",
+    "name": "Chimpanzee",
+    "fit": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02",
+    "tierMs": 3.5,
+    "priorFilm": "audits/ARCHETYPE_FINISH_20260923/07-primate/native-01/battle-10s.webm"
+  },
+  {
+    "id": "tarantula",
+    "name": "Tarantula",
+    "fit": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03",
+    "tierMs": 3.5,
+    "priorFilm": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/native-01/battle-10s.webm"
+  },
+  {
+    "id": "fruit-bat",
+    "name": "Fruit Bat",
+    "fit": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02",
+    "tierMs": 3.5,
+    "priorFilm": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/native-01/battle-10s.webm"
+  },
+  {
+    "id": "centipede",
+    "name": "Centipede",
+    "fit": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11",
+    "tierMs": 3.5,
+    "priorFilm": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/native-02/battle-10s.webm"
+  }
+]

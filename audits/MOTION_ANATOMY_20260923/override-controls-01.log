@@ -1,0 +1,38 @@
+✔ fixed sockets keep their source location under local rotation and inherit actual root rotation/translation (1.288625ms)
+✔ admission bone lengths measure socket-to-knee and knee-to-foot without adding geometry or mutating source (0.20725ms)
+✔ missing, malformed, extra, sparse and nonfinite socket data refuse without a parent-pivot fallback (0.223083ms)
+✔ foreign-model declarations and source-substituted resolved sockets refuse (0.125625ms)
+✔ source alpha validates the exact socket pixel rather than a nearby substitute (0.116875ms)
+✔ absent socket declarations preserve legacy definition identity and exact parent-pivot matrices (0.093042ms)
+✔ legacy quadruped shortcuts refuse present socket declarations in geometry, sealing and admission (6.487208ms)
+✔ static dependency closure follows real JS, TS fallbacks, re-exports and cycles beyond art (3.644458ms)
+✔ dependency discovery rejects missing dependency (1.168375ms)
+✔ dependency discovery rejects ambiguous runtime and typed files (1.227458ms)
+✔ dependency discovery rejects source boundary escape (1.3385ms)
+✔ dependency discovery rejects symlink directory escape (1.616708ms)
+✔ dependency discovery rejects declaration-only dependency (1.099334ms)
+✔ dependency discovery rejects malformed transitive JS (2.35325ms)
+▶ real sentinel audits transitive modules and exact null-prototype construction in an isolated source copy
+  ✔ transitive route mutation (345.440584ms)
+  ✔ arbitrary Object.create prototype (357.742292ms)
+  ✔ Object.create property descriptors (331.062833ms)
+  ✔ aliased Object.create (333.970666ms)
+  ✔ outside-art re-export cannot hide a second route owner (CC) (449.510375ms)
+  ✔ private route function reassignment (758.720333ms)
+  ✔ public ordinary branch disconnects (739.601583ms)
+  ✔ public capture branch returns replay ink (744.720708ms)
+  ✔ selected painter bypasses ink (749.829333ms)
+  ✔ topology helper skips painting (756.07575ms)
+  ✔ topology callback loses the painter (770.795625ms)
+  ✔ topology callback receives the wrong ink (735.446541ms)
+  ✔ topology callback changes painter genome (736.031ms)
+  ✔ route precedence remains enforced (739.610417ms)
+✔ real sentinel audits transitive modules and exact null-prototype construction in an isolated source copy (10123.635625ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10243.776584
