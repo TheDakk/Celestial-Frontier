@@ -1,0 +1,2223 @@
+{
+  "scope": "Three synthetic pose diagnostics of unchanged source-owned mesh, not a native pose reproduction, threshold or new admission test. Root rigid motion is the negative control for differential separation.",
+  "recordRecipeHash": "8c3dd500768f444c6d64df3f47b891ab903148becbf543ce8d4fccb5760ee49f",
+  "bindingHash": "745196a275ca26878f97fcd41adc98cdfcdb4b711b4d92982c349a8c9bf521d1",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01/record.json",
+      "sha256": "920fb85b070e3c9d3df937ac881aa724349fd9d5fcf8e19cd9caac058fe8038b"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01/binding.json",
+      "sha256": "139201fe33b2227c2abdd7437bdff5e991102e40a8c23a64eb212ba2d7e3de35"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ARCHETYPE_SPRINT_20260922/05-serpent/fit-01/parts/atlas/python.png",
+      "sha256": "e7ce81ff84aeee0acc2e5e33871c65b6b47b884be8a556a45ce9d2a52d778646"
+    }
+  ],
+  "results": [
+    {
+      "id": "rest",
+      "pose": {},
+      "error": null,
+      "shapeAccepted": true,
+      "joins": {
+        "schema": "cf.source-join-continuity/v1",
+        "units": "native cut-out pixels",
+        "epsilonNativePx": 0.0011959075927734375,
+        "epsilonReason": "Eight Float32 ulps at the native image extent cover published-buffer rounding, not a visible-pixel allowance.",
+        "sourceEdges": 2929,
+        "samples": 3201,
+        "maxGapPx": 0.00006040245479111291,
+        "joins": [
+          {
+            "name": "body--head",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "head",
+            "sourceEdges": 119,
+            "samples": 131,
+            "maxGapPx": 0.000026590724171358474,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1085,
+                393.1375
+              ],
+              "ancestor": [
+                1084.999998061359,
+                393.137504696846
+              ],
+              "descendant": [
+                1084.9999728351831,
+                393.13751310557126
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body--neck-upper-curve",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "seg0",
+            "sourceEdges": 474,
+            "samples": 533,
+            "maxGapPx": 0.000025364691031582433,
+            "violations": 0,
+            "worst": {
+              "source": [
+                874,
+                423
+              ],
+              "ancestor": [
+                874.0000122785568,
+                423.00001486837857
+              ],
+              "descendant": [
+                873.9999886751175,
+                423.0000241552081
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-crest--coil-middle-crossing",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg3",
+            "descendantJoint": "seg4",
+            "sourceEdges": 334,
+            "samples": 367,
+            "maxGapPx": 0.000017702579498291016,
+            "violations": 0,
+            "worst": {
+              "source": [
+                562,
+                553
+              ],
+              "ancestor": [
+                562.0000128149986,
+                553.000003695488
+              ],
+              "descendant": [
+                562.0000305175781,
+                553.000003695488
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-front--coil-left-turn",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg6",
+            "descendantJoint": "seg7",
+            "sourceEdges": 364,
+            "samples": 397,
+            "maxGapPx": 0.000028104951828612798,
+            "violations": 0,
+            "worst": {
+              "source": [
+                563,
+                795
+              ],
+              "ancestor": [
+                563.0000174811908,
+                794.9999774694443
+              ],
+              "descendant": [
+                563.0000118613243,
+                795.0000050067902
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-left-turn--coil-rear-left",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg7",
+            "descendantJoint": "seg8",
+            "sourceEdges": 291,
+            "samples": 317,
+            "maxGapPx": 0.00002118473513548835,
+            "violations": 0,
+            "worst": {
+              "source": [
+                518,
+                671
+              ],
+              "ancestor": [
+                518.0000115036964,
+                670.9999816417694
+              ],
+              "descendant": [
+                518.0000036358833,
+                671.0000013113022
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-middle-crossing--coil-right-turn",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg4",
+            "descendantJoint": "seg5",
+            "sourceEdges": 220,
+            "samples": 237,
+            "maxGapPx": 0.00006040245479111291,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1061,
+                740
+              ],
+              "ancestor": [
+                1060.999980057989,
+                740.0000057561057
+              ],
+              "descendant": [
+                1061.0000227689743,
+                739.9999630451202
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-rear-left--tail-tip",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg8",
+            "descendantJoint": "seg9",
+            "sourceEdges": 218,
+            "samples": 231,
+            "maxGapPx": 0.000026160478682868415,
+            "violations": 0,
+            "worst": {
+              "source": [
+                293,
+                731
+              ],
+              "ancestor": [
+                292.9999949634075,
+                731.0000109672546
+              ],
+              "descendant": [
+                292.9999949634075,
+                730.999984806776
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-rear-neck-link--coil-crest",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg2",
+            "descendantJoint": "seg3",
+            "sourceEdges": 124,
+            "samples": 141,
+            "maxGapPx": 0.000021859050237599473,
+            "violations": 0,
+            "worst": {
+              "source": [
+                796,
+                493
+              ],
+              "ancestor": [
+                796.0000040531158,
+                493.00001174211496
+              ],
+              "descendant": [
+                795.9999887545905,
+                492.999996128877
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-right-turn--coil-front",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg5",
+            "descendantJoint": "seg6",
+            "sourceEdges": 283,
+            "samples": 306,
+            "maxGapPx": 0.00002805011571098206,
+            "violations": 0,
+            "worst": {
+              "source": [
+                952,
+                856
+              ],
+              "ancestor": [
+                952.0000244379044,
+                856.0000097751617
+              ],
+              "descendant": [
+                951.9999969005584,
+                856.0000151140349
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "head--jaw",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "head",
+            "descendantJoint": "jaw",
+            "sourceEdges": 244,
+            "samples": 260,
+            "maxGapPx": 0.00001112676804707039,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1035,
+                354
+              ],
+              "ancestor": [
+                1035.0000278949738,
+                354.00000071525574
+              ],
+              "descendant": [
+                1035.0000200271606,
+                354.0000085830689
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "neck-lower-curve--coil-rear-neck-link",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg1",
+            "descendantJoint": "seg2",
+            "sourceEdges": 128,
+            "samples": 134,
+            "maxGapPx": 0.000021140859229142193,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1020,
+                687
+              ],
+              "ancestor": [
+                1019.9999827980996,
+                687.0000143766404
+              ],
+              "descendant": [
+                1019.9999678492546,
+                687.0000293254852
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "neck-upper-curve--neck-lower-curve",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg0",
+            "descendantJoint": "seg1",
+            "sourceEdges": 130,
+            "samples": 147,
+            "maxGapPx": 0.00001957586846401682,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1003.9999999999999,
+                534
+              ],
+              "ancestor": [
+                1004.0000023841858,
+                533.9999897820608
+              ],
+              "descendant": [
+                1004.0000023841858,
+                534.0000093579292
+              ]
+            },
+            "status": "CONTINUOUS"
+          }
+        ],
+        "excluded": [
+          {
+            "name": "body|coil-crest",
+            "sourceEdges": 176,
+            "samples": 186,
+            "maxGapPx": 0.000019683729055448534,
+            "violations": 0,
+            "worst": {
+              "source": [
+                797,
+                491
+              ],
+              "ancestor": [
+                797.0000030994415,
+                490.99999830722805
+              ],
+              "descendant": [
+                796.9999834299088,
+                490.9999975597858
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-crest"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-front",
+            "sourceEdges": 382,
+            "samples": 401,
+            "maxGapPx": 0.000028272788233167888,
+            "violations": 0,
+            "worst": {
+              "source": [
+                952,
+                855
+              ],
+              "ancestor": [
+                952.0000244379044,
+                855.0000067949295
+              ],
+              "descendant": [
+                951.9999969005585,
+                855.0000132015773
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-front"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-left-turn",
+            "sourceEdges": 367,
+            "samples": 396,
+            "maxGapPx": 0.000026160478569181578,
+            "violations": 0,
+            "worst": {
+              "source": [
+                662,
+                805
+              ],
+              "ancestor": [
+                661.9999809801578,
+                805.0000072717667
+              ],
+              "descendant": [
+                661.9999548196793,
+                805.0000072717667
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-left-turn"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-middle-crossing",
+            "sourceEdges": 624,
+            "samples": 655,
+            "maxGapPx": 0.000022423267409976688,
+            "violations": 0,
+            "worst": {
+              "source": [
+                998,
+                808
+              ],
+              "ancestor": [
+                997.9999845027922,
+                807.999993789196
+              ],
+              "descendant": [
+                997.9999845027924,
+                808.0000162124634
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-middle-crossing"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-rear-left",
+            "sourceEdges": 419,
+            "samples": 474,
+            "maxGapPx": 0.000014122436328787067,
+            "violations": 0,
+            "worst": {
+              "source": [
+                563,
+                642
+              ],
+              "ancestor": [
+                563.0000118613243,
+                641.9999856948853
+              ],
+              "descendant": [
+                563.0000018752538,
+                641.9999757088148
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-rear-left"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-rear-neck-link",
+            "sourceEdges": 380,
+            "samples": 413,
+            "maxGapPx": 0.00003057718276977539,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1087,
+                627
+              ],
+              "ancestor": [
+                1086.9999881386757,
+                627
+              ],
+              "descendant": [
+                1086.999957561493,
+                627
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-rear-neck-link"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-right-turn",
+            "sourceEdges": 98,
+            "samples": 102,
+            "maxGapPx": 0,
+            "violations": 0,
+            "worst": null,
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-right-turn"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|jaw",
+            "sourceEdges": 48,
+            "samples": 50,
+            "maxGapPx": 0,
+            "violations": 0,
+            "worst": null,
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "jaw"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|neck-lower-curve",
+            "sourceEdges": 211,
+            "samples": 229,
+            "maxGapPx": 0.000011737451423754895,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1071,
+                477
+              ],
+              "ancestor": [
+                1070.9999778270721,
+                477.00001126527786
+              ],
+              "descendant": [
+                1070.99998423372,
+                477.0000014305115
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "neck-lower-curve"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|tail-tip",
+            "sourceEdges": 261,
+            "samples": 289,
+            "maxGapPx": 0.00002568152793327245,
+            "violations": 0,
+            "worst": {
+              "source": [
+                298,
+                735.6666666666666
+              ],
+              "ancestor": [
+                298.00000052154064,
+                735.6666666269301
+              ],
+              "descendant": [
+                297.9999942928553,
+                735.6666915416719
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "tail-tip"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-crest|coil-rear-left",
+            "sourceEdges": 101,
+            "samples": 112,
+            "maxGapPx": 0.000008086666195904044,
+            "violations": 0,
+            "worst": {
+              "source": [
+                562,
+                629
+              ],
+              "ancestor": [
+                562.0000006198883,
+                629.0000059604645
+              ],
+              "descendant": [
+                562.0000024884939,
+                628.9999980926514
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-crest",
+              "coil-rear-left"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-middle-crossing|coil-rear-left",
+            "sourceEdges": 12,
+            "samples": 14,
+            "maxGapPx": 0.000014122436328787067,
+            "violations": 0,
+            "worst": {
+              "source": [
+                563,
+                631
+              ],
+              "ancestor": [
+                563.0000118613243,
+                630.9999961853027
+              ],
+              "descendant": [
+                563.0000018752538,
+                631.0000061713732
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-middle-crossing",
+              "coil-rear-left"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-middle-crossing|coil-rear-neck-link",
+            "sourceEdges": 341,
+            "samples": 364,
+            "maxGapPx": 0.000031711288883907655,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1015,
+                688
+              ],
+              "ancestor": [
+                1014.9999828457833,
+                688.0000098824501
+              ],
+              "descendant": [
+                1014.9999604225159,
+                688.0000323057175
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-middle-crossing",
+              "coil-rear-neck-link"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-middle-crossing|neck-lower-curve",
+            "sourceEdges": 97,
+            "samples": 112,
+            "maxGapPx": 0.000027181104619825877,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1063,
+                737
+              ],
+              "ancestor": [
+                1062.9999646629606,
+                737.0000219081129
+              ],
+              "descendant": [
+                1062.999983882904,
+                737.0000026881695
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-middle-crossing",
+              "neck-lower-curve"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-right-turn|neck-lower-curve",
+            "sourceEdges": 53,
+            "samples": 57,
+            "maxGapPx": 0.00003737211222869519,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1064,
+                740
+              ],
+              "ancestor": [
+                1064.0000130236149,
+                739.9999630451202
+              ],
+              "descendant": [
+                1063.9999906003475,
+                739.99999294281
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-right-turn",
+              "neck-lower-curve"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "head|neck-upper-curve",
+            "sourceEdges": 96,
+            "samples": 109,
+            "maxGapPx": 0.000043272972106933594,
+            "violations": 0,
+            "worst": {
+              "source": [
+                987,
+                329
+              ],
+              "ancestor": [
+                987.0000264644623,
+                329.0000088214874
+              ],
+              "descendant": [
+                986.9999831914902,
+                329.0000088214874
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "head",
+              "neck-upper-curve"
+            ],
+            "reason": "independent sibling adjacency"
+          }
+        ],
+        "status": "PASS",
+        "scope": "Nearest anatomical attachments and proximal limb-to-axial body-skin attachments, independently enumerated from every nonzero source-alpha edge. Distinct limb-to-limb and distal limb-to-body silhouette boundaries are observation-only; they are not required welds."
+      }
+    },
+    {
+      "id": "rigid-root-control",
+      "pose": {
+        "root": {
+          "rotation": 0.1
+        }
+      },
+      "error": null,
+      "shapeAccepted": true,
+      "joins": {
+        "schema": "cf.source-join-continuity/v1",
+        "units": "native cut-out pixels",
+        "epsilonNativePx": 0.0011959075927734375,
+        "epsilonReason": "Eight Float32 ulps at the native image extent cover published-buffer rounding, not a visible-pixel allowance.",
+        "sourceEdges": 2929,
+        "samples": 3201,
+        "maxGapPx": 0.000043994388072319186,
+        "joins": [
+          {
+            "name": "body--head",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "head",
+            "sourceEdges": 119,
+            "samples": 131,
+            "maxGapPx": 0.000026590724153383008,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1085,
+                393.1375
+              ],
+              "ancestor": [
+                1081.826326520741,
+                398.283108267188
+              ],
+              "descendant": [
+                1081.8263012945652,
+                398.28309985846283
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body--neck-upper-curve",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "seg0",
+            "sourceEdges": 474,
+            "samples": 533,
+            "maxGapPx": 0.00003525678003243076,
+            "violations": 0,
+            "worst": {
+              "source": [
+                991.35,
+                535
+              ],
+              "ancestor": [
+                974.4815348625184,
+                530.0874793231487
+              ],
+              "descendant": [
+                974.481564760208,
+                530.0874606370926
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-crest--coil-middle-crossing",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg3",
+            "descendantJoint": "seg4",
+            "sourceEdges": 334,
+            "samples": 367,
+            "maxGapPx": 0.000026408888292758477,
+            "violations": 0,
+            "worst": {
+              "source": [
+                666,
+                556
+              ],
+              "ancestor": [
+                648.6604671478271,
+                518.501773416996
+              ],
+              "descendant": [
+                648.6604918752398,
+                518.5017641442163
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-front--coil-left-turn",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg6",
+            "descendantJoint": "seg7",
+            "sourceEdges": 364,
+            "samples": 397,
+            "maxGapPx": 0.00003256129495871933,
+            "violations": 0,
+            "worst": {
+              "source": [
+                561,
+                796
+              ],
+              "ancestor": [
+                520.2249975800514,
+                746.8202133689608
+              ],
+              "descendant": [
+                520.2250093817711,
+                746.8202437162398
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-left-turn--coil-rear-left",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg7",
+            "descendantJoint": "seg8",
+            "sourceEdges": 291,
+            "samples": 317,
+            "maxGapPx": 0.000016859599554663873,
+            "violations": 0,
+            "worst": {
+              "source": [
+                489,
+                673
+              ],
+              "ancestor": [
+                460.86419687952315,
+                617.2467222384043
+              ],
+              "descendant": [
+                460.86421036720276,
+                617.2467323541641
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-middle-crossing--coil-right-turn",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg4",
+            "descendantJoint": "seg5",
+            "sourceEdges": 220,
+            "samples": 237,
+            "maxGapPx": 0.00004228171837789565,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1037,
+                740
+              ],
+              "ancestor": [
+                999.43765976429,
+                738.6207377672196
+              ],
+              "descendant": [
+                999.4376896619797,
+                738.6207078695297
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-rear-left--tail-tip",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg8",
+            "descendantJoint": "seg9",
+            "sourceEdges": 218,
+            "samples": 231,
+            "maxGapPx": 0.000028072305641024325,
+            "violations": 0,
+            "worst": {
+              "source": [
+                299,
+                733
+              ],
+              "ancestor": [
+                265.8234184682369,
+                657.978640794754
+              ],
+              "descendant": [
+                265.82342002540827,
+                657.9786688238382
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-rear-neck-link--coil-crest",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg2",
+            "descendantJoint": "seg3",
+            "sourceEdges": 124,
+            "samples": 141,
+            "maxGapPx": 0.0000308178331780204,
+            "violations": 0,
+            "worst": {
+              "source": [
+                765,
+                585
+              ],
+              "ancestor": [
+                744.2706985473633,
+                557.2403930425644
+              ],
+              "descendant": [
+                744.2706686496736,
+                557.2404005169868
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-right-turn--coil-front",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg5",
+            "descendantJoint": "seg6",
+            "sourceEdges": 283,
+            "samples": 306,
+            "maxGapPx": 0.00003452919612963575,
+            "violations": 0,
+            "worst": {
+              "source": [
+                840,
+                944
+              ],
+              "ancestor": [
+                783.0557800391141,
+                921.934383188977
+              ],
+              "descendant": [
+                783.0557992458344,
+                921.9344118833542
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "head--jaw",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "head",
+            "descendantJoint": "jaw",
+            "sourceEdges": 244,
+            "samples": 260,
+            "maxGapPx": 0.0000293216082229291,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1034,
+                354
+              ],
+              "ancestor": [
+                1034.9883087873459,
+                354.24962872266775
+              ],
+              "descendant": [
+                1034.9883350133896,
+                354.24964183568954
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "neck-lower-curve--coil-rear-neck-link",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg1",
+            "descendantJoint": "seg2",
+            "sourceEdges": 128,
+            "samples": 134,
+            "maxGapPx": 0.00004228171845828439,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1018,
+                689
+              ],
+              "ancestor": [
+                985.6240899324417,
+                685.978679394722
+              ],
+              "descendant": [
+                985.6240600347519,
+                685.9786494970322
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "neck-upper-curve--neck-lower-curve",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg0",
+            "descendantJoint": "seg1",
+            "sourceEdges": 130,
+            "samples": 147,
+            "maxGapPx": 0.000043994388072319186,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1005.6,
+                534
+              ],
+              "ancestor": [
+                988.7601790625712,
+                530.5150943418912
+              ],
+              "descendant": [
+                988.760223054886,
+                530.515094769001
+              ]
+            },
+            "status": "CONTINUOUS"
+          }
+        ],
+        "excluded": [
+          {
+            "name": "body|coil-crest",
+            "sourceEdges": 176,
+            "samples": 186,
+            "maxGapPx": 0.000028313278435114606,
+            "violations": 0,
+            "worst": {
+              "source": [
+                705,
+                440
+              ],
+              "ancestor": [
+                699.0462943911552,
+                406.97479087114334
+              ],
+              "descendant": [
+                699.0462685181544,
+                406.9747793720319
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-crest"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-front",
+            "sourceEdges": 382,
+            "samples": 401,
+            "maxGapPx": 0.000021132958586098594,
+            "violations": 0,
+            "worst": {
+              "source": [
+                952,
+                856
+              ],
+              "ancestor": [
+                903.2816188931465,
+                845.5553796887398
+              ],
+              "descendant": [
+                903.2815992236137,
+                845.5553719614234
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-front"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-left-turn",
+            "sourceEdges": 367,
+            "samples": 396,
+            "maxGapPx": 0.00003081783341239182,
+            "violations": 0,
+            "worst": {
+              "source": [
+                300,
+                770
+              ],
+              "ancestor": [
+                263.12459013462063,
+                694.893662238121
+              ],
+              "descendant": [
+                263.1245976090431,
+                694.893692135811
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-left-turn"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-middle-crossing",
+            "sourceEdges": 624,
+            "samples": 655,
+            "maxGapPx": 0.000030817833260739725,
+            "violations": 0,
+            "worst": {
+              "source": [
+                998,
+                808
+              ],
+              "ancestor": [
+                953.8437949061392,
+                802.3875172376632
+              ],
+              "descendant": [
+                953.8437874317169,
+                802.3875471353531
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-middle-crossing"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-rear-left",
+            "sourceEdges": 419,
+            "samples": 474,
+            "maxGapPx": 0.000013696814849951918,
+            "violations": 0,
+            "worst": {
+              "source": [
+                301,
+                732
+              ],
+              "ancestor": [
+                267.9132620036602,
+                657.183317399025
+              ],
+              "descendant": [
+                267.91325868169463,
+                657.1833041111628
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-rear-left"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-rear-neck-link",
+            "sourceEdges": 380,
+            "samples": 413,
+            "maxGapPx": 0.000025069975052339464,
+            "violations": 0,
+            "worst": {
+              "source": [
+                765,
+                587
+              ],
+              "ancestor": [
+                744.0710044026375,
+                559.230409437418
+              ],
+              "descendant": [
+                744.0709819793701,
+                559.2304206490516
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-rear-neck-link"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-right-turn",
+            "sourceEdges": 98,
+            "samples": 102,
+            "maxGapPx": 0,
+            "violations": 0,
+            "worst": null,
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-right-turn"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|jaw",
+            "sourceEdges": 48,
+            "samples": 50,
+            "maxGapPx": 0,
+            "violations": 0,
+            "worst": null,
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "jaw"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|neck-lower-curve",
+            "sourceEdges": 211,
+            "samples": 229,
+            "maxGapPx": 0.000017763940485590362,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1077,
+                480
+              ],
+              "ancestor": [
+                1065.1945309638977,
+                483.9129865765572
+              ],
+              "descendant": [
+                1065.194519162178,
+                483.91297329962254
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "neck-lower-curve"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|tail-tip",
+            "sourceEdges": 261,
+            "samples": 289,
+            "maxGapPx": 0.000025108633697959796,
+            "violations": 0,
+            "worst": {
+              "source": [
+                298,
+                735.6666666666666
+              ],
+              "ancestor": [
+                264.5621906518936,
+                660.5321526527404
+              ],
+              "descendant": [
+                264.562187537551,
+                660.5321775674821
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "tail-tip"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-crest|coil-rear-left",
+            "sourceEdges": 101,
+            "samples": 112,
+            "maxGapPx": 0.00001774460052553028,
+            "violations": 0,
+            "worst": {
+              "source": [
+                562,
+                629
+              ],
+              "ancestor": [
+                537.8921927690506,
+                580.7544028759003
+              ],
+              "descendant": [
+                537.8921753615141,
+                580.754399433732
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-crest",
+              "coil-rear-left"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-middle-crossing|coil-rear-left",
+            "sourceEdges": 12,
+            "samples": 14,
+            "maxGapPx": 0.000009704716157934839,
+            "violations": 0,
+            "worst": {
+              "source": [
+                563,
+                631
+              ],
+              "ancestor": [
+                538.6875193119049,
+                582.8442435264587
+              ],
+              "descendant": [
+                538.6875109901795,
+                582.844248519494
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-middle-crossing",
+              "coil-rear-left"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-middle-crossing|coil-rear-neck-link",
+            "sourceEdges": 341,
+            "samples": 364,
+            "maxGapPx": 0.00004228171845828439,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1018,
+                689
+              ],
+              "ancestor": [
+                985.6240899324417,
+                685.978679394722
+              ],
+              "descendant": [
+                985.6240600347519,
+                685.9786494970322
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-middle-crossing",
+              "coil-rear-neck-link"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-middle-crossing|neck-lower-curve",
+            "sourceEdges": 97,
+            "samples": 112,
+            "maxGapPx": 0.000028651400430238996,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1063,
+                738
+              ],
+              "ancestor": [
+                1025.5074394430435,
+                739.226392354284
+              ],
+              "descendant": [
+                1025.5074138164518,
+                739.2264051675797
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-middle-crossing",
+              "neck-lower-curve"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-right-turn|neck-lower-curve",
+            "sourceEdges": 53,
+            "samples": 57,
+            "maxGapPx": 0.000021791498841151124,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1064,
+                740
+              ],
+              "ancestor": [
+                1026.3027446866035,
+                741.3162275254726
+              ],
+              "descendant": [
+                1026.3027558982371,
+                741.3162462115288
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-right-turn",
+              "neck-lower-curve"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "head|neck-upper-curve",
+            "sourceEdges": 96,
+            "samples": 109,
+            "maxGapPx": 0.000032761168423278986,
+            "violations": 0,
+            "worst": {
+              "source": [
+                988,
+                327.84615384615387
+              ],
+              "ancestor": [
+                991.8291953527009,
+                323.6341011065703
+              ],
+              "descendant": [
+                991.8291645691945,
+                323.6341123168285
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "head",
+              "neck-upper-curve"
+            ],
+            "reason": "independent sibling adjacency"
+          }
+        ],
+        "status": "PASS",
+        "scope": "Nearest anatomical attachments and proximal limb-to-axial body-skin attachments, independently enumerated from every nonzero source-alpha edge. Distinct limb-to-limb and distal limb-to-body silhouette boundaries are observation-only; they are not required welds."
+      }
+    },
+    {
+      "id": "seg5-differential-control",
+      "pose": {
+        "seg5": {
+          "rotation": 0.1
+        }
+      },
+      "error": null,
+      "shapeAccepted": true,
+      "joins": {
+        "schema": "cf.source-join-continuity/v1",
+        "units": "native cut-out pixels",
+        "epsilonNativePx": 0.0011959075927734375,
+        "epsilonReason": "Eight Float32 ulps at the native image extent cover published-buffer rounding, not a visible-pixel allowance.",
+        "sourceEdges": 2929,
+        "samples": 3201,
+        "maxGapPx": 0.00006040245495189037,
+        "joins": [
+          {
+            "name": "body--head",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "head",
+            "sourceEdges": 119,
+            "samples": 131,
+            "maxGapPx": 0.000026590724171358474,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1085,
+                393.1375
+              ],
+              "ancestor": [
+                1084.999998061359,
+                393.137504696846
+              ],
+              "descendant": [
+                1084.9999728351831,
+                393.13751310557126
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "body--neck-upper-curve",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "root",
+            "descendantJoint": "seg0",
+            "sourceEdges": 474,
+            "samples": 533,
+            "maxGapPx": 0.000025364691031582433,
+            "violations": 0,
+            "worst": {
+              "source": [
+                874,
+                423
+              ],
+              "ancestor": [
+                874.0000122785568,
+                423.00001486837857
+              ],
+              "descendant": [
+                873.9999886751175,
+                423.0000241552081
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-crest--coil-middle-crossing",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg3",
+            "descendantJoint": "seg4",
+            "sourceEdges": 334,
+            "samples": 367,
+            "maxGapPx": 0.000017702579498291016,
+            "violations": 0,
+            "worst": {
+              "source": [
+                562,
+                553
+              ],
+              "ancestor": [
+                562.0000128149986,
+                553.000003695488
+              ],
+              "descendant": [
+                562.0000305175781,
+                553.000003695488
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-front--coil-left-turn",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg6",
+            "descendantJoint": "seg7",
+            "sourceEdges": 364,
+            "samples": 397,
+            "maxGapPx": 0.00003256129506467599,
+            "violations": 0,
+            "worst": {
+              "source": [
+                561,
+                796
+              ],
+              "ancestor": [
+                551.756446659565,
+                770.7166893993106
+              ],
+              "descendant": [
+                551.7564584612846,
+                770.7167197465897
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-left-turn--coil-rear-left",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg7",
+            "descendantJoint": "seg8",
+            "sourceEdges": 291,
+            "samples": 317,
+            "maxGapPx": 0.00003320955964794573,
+            "violations": 0,
+            "worst": {
+              "source": [
+                489,
+                673
+              ],
+              "ancestor": [
+                492.39564595903664,
+                641.1432623352323
+              ],
+              "descendant": [
+                492.3956594467163,
+                641.1432319879532
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-middle-crossing--coil-right-turn",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg4",
+            "descendantJoint": "seg5",
+            "sourceEdges": 220,
+            "samples": 237,
+            "maxGapPx": 0.00006040245495189037,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1061,
+                740
+              ],
+              "ancestor": [
+                1057.3602352993828,
+                755.1105971676963
+              ],
+              "descendant": [
+                1057.3602780103683,
+                755.1105544567108
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-rear-left--tail-tip",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg8",
+            "descendantJoint": "seg9",
+            "sourceEdges": 218,
+            "samples": 231,
+            "maxGapPx": 0.00002930834753041126,
+            "violations": 0,
+            "worst": {
+              "source": [
+                299,
+                733
+              ],
+              "ancestor": [
+                297.3548675477505,
+                681.8751168251038
+              ],
+              "descendant": [
+                297.35487611219287,
+                681.875144854188
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-rear-neck-link--coil-crest",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg2",
+            "descendantJoint": "seg3",
+            "sourceEdges": 124,
+            "samples": 141,
+            "maxGapPx": 0.000021859050237599473,
+            "violations": 0,
+            "worst": {
+              "source": [
+                796,
+                493
+              ],
+              "ancestor": [
+                796.0000040531158,
+                493.00001174211496
+              ],
+              "descendant": [
+                795.9999887545905,
+                492.999996128877
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "coil-right-turn--coil-front",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg5",
+            "descendantJoint": "seg6",
+            "sourceEdges": 283,
+            "samples": 306,
+            "maxGapPx": 0.000030224022091212144,
+            "violations": 0,
+            "worst": {
+              "source": [
+                840.1666666666666,
+                944
+              ],
+              "ancestor": [
+                814.753406047821,
+                945.8474883437159
+              ],
+              "descendant": [
+                814.7533994913101,
+                945.8474588394166
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "head--jaw",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "head",
+            "descendantJoint": "jaw",
+            "sourceEdges": 244,
+            "samples": 260,
+            "maxGapPx": 0.00001112676804707039,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1035,
+                354
+              ],
+              "ancestor": [
+                1035.0000278949738,
+                354.00000071525574
+              ],
+              "descendant": [
+                1035.0000200271606,
+                354.0000085830689
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "neck-lower-curve--coil-rear-neck-link",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg1",
+            "descendantJoint": "seg2",
+            "sourceEdges": 128,
+            "samples": 134,
+            "maxGapPx": 0.000021140859229142193,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1020,
+                687
+              ],
+              "ancestor": [
+                1019.9999827980996,
+                687.0000143766404
+              ],
+              "descendant": [
+                1019.9999678492546,
+                687.0000293254852
+              ]
+            },
+            "status": "CONTINUOUS"
+          },
+          {
+            "name": "neck-upper-curve--neck-lower-curve",
+            "rule": "nearest anatomical attachment",
+            "ancestorJoint": "seg0",
+            "descendantJoint": "seg1",
+            "sourceEdges": 130,
+            "samples": 147,
+            "maxGapPx": 0.00001957586846401682,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1003.9999999999999,
+                534
+              ],
+              "ancestor": [
+                1004.0000023841858,
+                533.9999897820608
+              ],
+              "descendant": [
+                1004.0000023841858,
+                534.0000093579292
+              ]
+            },
+            "status": "CONTINUOUS"
+          }
+        ],
+        "excluded": [
+          {
+            "name": "body|coil-crest",
+            "sourceEdges": 176,
+            "samples": 186,
+            "maxGapPx": 0.00003461837764007214,
+            "violations": 0,
+            "worst": {
+              "source": [
+                758,
+                591
+              ],
+              "ancestor": [
+                758.0000017404557,
+                590.9999898791314
+              ],
+              "descendant": [
+                758.0000363588333,
+                590.9999898791314
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-crest"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-front",
+            "sourceEdges": 382,
+            "samples": 401,
+            "maxGapPx": 40.307514151785426,
+            "violations": 401,
+            "worst": {
+              "source": [
+                460,
+                893
+              ],
+              "ancestor": [
+                459.9999937444925,
+                893.0000228762625
+              ],
+              "descendant": [
+                441.5771848976612,
+                857.1490004181861
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-front"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-left-turn",
+            "sourceEdges": 367,
+            "samples": 396,
+            "maxGapPx": 51.5033424072353,
+            "violations": 396,
+            "worst": {
+              "source": [
+                300,
+                771
+              ],
+              "ancestor": [
+                300.0000027447939,
+                770.9999993741512
+              ],
+              "descendant": [
+                294.5562133193016,
+                719.7851632833482
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-left-turn"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-middle-crossing",
+            "sourceEdges": 624,
+            "samples": 655,
+            "maxGapPx": 14.89684660768712,
+            "violations": 143,
+            "worst": {
+              "source": [
+                1002,
+                808
+              ],
+              "ancestor": [
+                1001.9999964237213,
+                808.000008738041
+              ],
+              "descendant": [
+                993.5995926856995,
+                820.3024172782898
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-middle-crossing"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-rear-left",
+            "sourceEdges": 419,
+            "samples": 474,
+            "maxGapPx": 69.07478085974597,
+            "violations": 474,
+            "worst": {
+              "source": [
+                118,
+                698
+              ],
+              "ancestor": [
+                118.00000302493572,
+                698.0000095903874
+              ],
+              "descendant": [
+                120.75328843519091,
+                628.9801228165626
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-rear-left"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-rear-neck-link",
+            "sourceEdges": 380,
+            "samples": 413,
+            "maxGapPx": 0.00003057718276977539,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1087,
+                627
+              ],
+              "ancestor": [
+                1086.9999881386757,
+                627
+              ],
+              "descendant": [
+                1086.999957561493,
+                627
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-rear-neck-link"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|coil-right-turn",
+            "sourceEdges": 98,
+            "samples": 102,
+            "maxGapPx": 21.320092489616556,
+            "violations": 102,
+            "worst": {
+              "source": [
+                963,
+                854
+              ],
+              "ancestor": [
+                962.9999997854234,
+                854.0000038146973
+              ],
+              "descendant": [
+                946.7104826688767,
+                867.7549293279648
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "coil-right-turn"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|jaw",
+            "sourceEdges": 48,
+            "samples": 50,
+            "maxGapPx": 0,
+            "violations": 0,
+            "worst": null,
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "jaw"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|neck-lower-curve",
+            "sourceEdges": 211,
+            "samples": 229,
+            "maxGapPx": 0.000011737451423754895,
+            "violations": 0,
+            "worst": {
+              "source": [
+                1071,
+                477
+              ],
+              "ancestor": [
+                1070.9999778270721,
+                477.00001126527786
+              ],
+              "descendant": [
+                1070.99998423372,
+                477.0000014305115
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "neck-lower-curve"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "body|tail-tip",
+            "sourceEdges": 261,
+            "samples": 289,
+            "maxGapPx": 81.05295295316809,
+            "violations": 289,
+            "worst": {
+              "source": [
+                0,
+                636
+              ],
+              "ancestor": [
+                1.054711904826762e-15,
+                635.9999914169312
+              ],
+              "descendant": [
+                9.532468012534084,
+                555.5095371007919
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "body",
+              "tail-tip"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-crest|coil-rear-left",
+            "sourceEdges": 101,
+            "samples": 112,
+            "maxGapPx": 30.857834000130698,
+            "violations": 112,
+            "worst": {
+              "source": [
+                529,
+                561
+              ],
+              "ancestor": [
+                529.0000069141388,
+                561.0000027318795
+              ],
+              "descendant": [
+                543.3771760314703,
+                533.6961032420397
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-crest",
+              "coil-rear-left"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-middle-crossing|coil-rear-left",
+            "sourceEdges": 12,
+            "samples": 14,
+            "maxGapPx": 25.45564494683689,
+            "violations": 14,
+            "worst": {
+              "source": [
+                562,
+                629
+              ],
+              "ancestor": [
+                562.0000076083576,
+                628.9999980926514
+              ],
+              "descendant": [
+                569.4236244410276,
+                604.6508754640818
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-middle-crossing",
+              "coil-rear-left"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-middle-crossing|coil-rear-neck-link",
+            "sourceEdges": 341,
+            "samples": 364,
+            "maxGapPx": 2.995357050349381,
+            "violations": 106,
+            "worst": {
+              "source": [
+                1018,
+                689
+              ],
+              "ancestor": [
+                1017.9280205726625,
+                691.9945281028748
+              ],
+              "descendant": [
+                1017.9999693632126,
+                689.0000352859497
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-middle-crossing",
+              "coil-rear-neck-link"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-middle-crossing|neck-lower-curve",
+            "sourceEdges": 97,
+            "samples": 112,
+            "maxGapPx": 16.19574709465775,
+            "violations": 112,
+            "worst": {
+              "source": [
+                1064,
+                740
+              ],
+              "ancestor": [
+                1060.2701027052744,
+                755.7603914226804
+              ],
+              "descendant": [
+                1063.9999906003475,
+                739.99999294281
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-middle-crossing",
+              "neck-lower-curve"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "coil-right-turn|neck-lower-curve",
+            "sourceEdges": 53,
+            "samples": 57,
+            "maxGapPx": 25.705483519841138,
+            "violations": 57,
+            "worst": {
+              "source": [
+                1087,
+                772
+              ],
+              "ancestor": [
+                1078.5662844249182,
+                796.2825766171728
+              ],
+              "descendant": [
+                1087.0000217735767,
+                771.9999911427496
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "coil-right-turn",
+              "neck-lower-curve"
+            ],
+            "reason": "non-nearest ancestral silhouette adjacency"
+          },
+          {
+            "name": "head|neck-upper-curve",
+            "sourceEdges": 96,
+            "samples": 109,
+            "maxGapPx": 0.000043272972106933594,
+            "violations": 0,
+            "worst": {
+              "source": [
+                987,
+                329
+              ],
+              "ancestor": [
+                987.0000264644623,
+                329.0000088214874
+              ],
+              "descendant": [
+                986.9999831914902,
+                329.0000088214874
+              ]
+            },
+            "status": "OBSERVATION_ONLY",
+            "parts": [
+              "head",
+              "neck-upper-curve"
+            ],
+            "reason": "independent sibling adjacency"
+          }
+        ],
+        "status": "PASS",
+        "scope": "Nearest anatomical attachments and proximal limb-to-axial body-skin attachments, independently enumerated from every nonzero source-alpha edge. Distinct limb-to-limb and distal limb-to-body silhouette boundaries are observation-only; they are not required welds."
+      }
+    }
+  ]
+}
