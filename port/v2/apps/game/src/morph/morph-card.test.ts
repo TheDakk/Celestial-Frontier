@@ -4,7 +4,7 @@ import { createRequire } from 'node:module';
 import { describe, expect, it } from 'vitest';
 import { FITS, REPO_ROOT, repoJson, type FitName, type FitRecord } from '../battle2/parts-rig.fixtures.js';
 import { compileBodyCard } from '../motion/body-card.js';
-import { alphaBoxV1, cardCompositeV1, renderCardIndividualV1, type CardMasterV1, type CardReceiptV1 } from './morph-card.js';
+import { alphaBoxV1, cardCompositeV1, padForProportionV1, renderCardIndividualV1, type CardMasterV1, type CardReceiptV1 } from './morph-card.js';
 import { morphParamsV1 } from './morph-params.js';
 const require = createRequire(import.meta.url);
 const { PNG } = createRequire(require.resolve('free-tex-packer-core'))('pngjs') as { PNG: { sync: { read(b: Buffer): { width: number; height: number; data: Uint8Array } } } };
@@ -14,6 +14,16 @@ const load = (name: FitName) => { const dir = FITS[name]; const m = PNG.sync.rea
   return { master: { width: m.width, height: m.height, master: new Uint8Array(m.data), labels: new Uint8Array(l.data) } as CardMasterV1, receipt, card: compileBodyCard(record, record.genome), recipe: receipt.recordRecipeHash }; };
 const alphaBox = (rgba: Uint8Array, s: number) => { let x0 = s, y0 = s, x1 = -1, y1 = -1; for (let y = 0; y < s; y++) for (let x = 0; x < s; x++) if (rgba[(y * s + x) * 4 + 3]! > 8) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; } return { x0, y0, x1, y1 }; };
 describe('the individual on the card — Pixi-free raster over the sealed card master', () => {
+  it('a grown tail is NEVER clipped by the card (2026-09-24, the stand-in sheet): with head 1.2× / tail 1.35× the padded composite\'s alpha box stays clear of its canvas edge on every archetype, where the unpadded composite touches it; identity is untouched', () => {
+    let clippedBefore = 0;
+    for (const name of Object.keys(FITS) as FitName[]) { const f = load(name), params = morphParamsV1({ head: 7, tail: 6 }, f.recipe);
+      const padded = padForProportionV1({ ...f, params, size: 132 }), W = padded.master.width, H = padded.master.height, b = alphaBoxV1(cardCompositeV1(padded), W, H);
+      expect(b.x0 > 0 && b.y0 > 0 && b.x1 < W - 1 && b.y1 < H - 1, `${name}: ${JSON.stringify(b)} in ${W}×${H}`).toBe(true);
+      const raw = alphaBoxV1(cardCompositeV1({ ...f, params }), f.master.width, f.master.height); if (raw.x0 <= 0 || raw.y0 <= 0 || raw.x1 >= f.master.width - 1 || raw.y1 >= f.master.height - 1) clippedBefore++;
+      const idInput = { ...f, params: morphParamsV1({}, f.recipe), size: 132 }; expect(padForProportionV1(idInput)).toBe(idInput); // identity: no pad, same bytes
+    }
+    expect(clippedBefore).toBeGreaterThan(0); // control: without the pad at least one archetype runs off its canvas
+  });
   for (const name of Object.keys(FITS) as FitName[]) it(`${name}: identity raster is deterministic; a colour morph keeps the alpha plane; a head/tail morph changes the silhouette; 132 and 440 both render`, () => {
     const f = load(name); const id = renderCardIndividualV1({ ...f, params: morphParamsV1({}, f.recipe), size: 132 });
     expect(sha(renderCardIndividualV1({ ...f, params: morphParamsV1({}, f.recipe), size: 132 }))).toBe(sha(id));
