@@ -1,0 +1,13 @@
+{
+  "parentHead": "0e9fcf18a3675227e4a842c863b66a1d46edd956",
+  "files": {
+    "README.md": "9f3595f393f44e58939b4df510d152363c0aff9b0d74d1c1d9748f81abf10b74",
+    "mailbox-read-end.json": "3f94642fec28aac85f9d27db28cdf2df72aa05d248a2bcd8f7c6ec61343f5f60",
+    "painting-plan-source.json": "a7eb874b076e1a482fc33229ef7173ead6091d4012325604a855512c7f4ce1b7",
+    "refusal.json": "b4f769b180e70efa152d56a40b7a58886c7719b6e5e5853cbc8953ab2de32c51"
+  },
+  "handoff": {
+    "ROADMAP.md": "d90aa7d8121411024c69836ceff222c26a78744663e1cf7e04b3ded2a8adb057",
+    "audits/MAILBOX/TO_CLAUDE.md": "3e4aee3d5b18cdd770b94ef247f575fdd6203ac0c8f443085fb79bfed21e897b"
+  }
+}

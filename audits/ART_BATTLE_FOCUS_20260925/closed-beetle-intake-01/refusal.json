@@ -1,0 +1,18 @@
+{
+  "subject": "Diving Beetle",
+  "declaration": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [
+      "wings"
+    ],
+    "folded": []
+  },
+  "status": "BLOCKED_BEFORE_PAINT",
+  "error": "Error: Hidden anatomy: unsupported hidden chain",
+  "sources": {
+    "port/v2/tools/creature-animation/family-contracts.mjs": "e8d11b939321928cc0ac61ce192a6f09378be528298760a710e1cfae3aec9a3a",
+    "port/v2/tools/creature-animation/anatomy-inventory.mjs": "d0d94cb62976f12357b91e66c5e661483a72224d8a4e950ba6ab6a06b852d4c3",
+    "port/v2/tools/creature-animation/hidden-anatomy.mjs": "a3cef7edff31f86a70f727f1433eeaabcabe2a1626929e65fbcbc0715b80a328"
+  }
+}
