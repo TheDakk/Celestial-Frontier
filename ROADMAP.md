@@ -17,14 +17,14 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — September 24, 2026 (day) · THE PAINTED ARENA PLAYS IN A BUILT GAME; NICK'S FOUR BATTLE2 DECISIONS BUILT; A REAL DUEL IN THE PICKER
+## SESSION HANDOFF — September 24, 2026 (evening) · CODEX'S ITEMS MERGED; EVERY CREATURE HAS A VOICE; THE PACKAGE'S WORKER INSTALLS
 Self-contained: either lane can resume from this block alone. Older handoffs are archived verbatim at the top of `ROADMAP_ARCHIVE.md`.
 
-**Where the work stands.** `anthropic/mac` merged Codex's signed `openai/mac` `1e9f5920` (merge `5229e4f1`), made the arena ship and play
-under Codex's service worker, built Nick's four decisions, then fixed three real defects that only real-browser runs surfaced (items -81…-83).
-Pushed through `4c2bd1ec`. **Local and signed, not yet pushed:** `86c9e3ed` and `f6ee445f`. **Staged, not yet committed:** the preview fix
-(item -83) and this handoff. 1Password signing and the SSH push dropped again ("communication with agent failed?") about 25 minutes after
-Nick unlocked it. The queue script is the "Signing" line below.
+**Where the work stands.** Pushed through `1902329c`. Signed locally since: `c2409c93` (voices), `87f374cd` (picker status), `3e34873a`
+(phone-tier study). The **merge of Codex's `4b56ef82`** (Centipede crawl, 53 species routed, the five `fb1922a0` reds repaired) is resolved and
+STAGED, but 1Password dropped signing again. Run `scratchpad/commit-day3.sh` (session 1c642229) once it answers: it commits the merge, then
+this handoff, then pushes. After that, **the only red is I5** (5,058 pass / 2 expected; typecheck ×3; overridecheck 1014/1014 + controls).
+Codex runs I5 once, on that pushed head.
 
 **Built today (items -77…-83 below).**
 - **The painted arena plays in a BUILT game with the service worker in control.** The builder writes `apps/game/battle2-assets.json`
@@ -56,11 +56,10 @@ painted arena works offline in it. Codex's items 5 and 7 are staged unsigned in 
 
 **Next, by owner.**
 - **Nick:** play the new package (item -85); keep 1Password approved for Codex's signing; after I5 lands, cycle the label on PR #43.
-- **Codex:** sign items 5 and 7; fix the five `fb1922a0` reds above; then I5 on the final clean integrated source. Item 5 comes with
-  removing Claude's KNOWN Centipede pin in `library-arena.test.ts`, in the same commit. Proposal (item 8): admit the painter master by its pinned
-  hash instead of shipping 13 MB of masters.
-- **Claude:** merge Codex's signed items 5 (identical motion line already here), 7 and the five-red repair when they land, re-run the
-  battery and the package smoke; each new painted archetype joins the card and arena the day it lands.
+- **Codex:** I5, once, on Claude's pushed head after the merge commit (the only red); the Centipede skin's phone-tier cost (item -88). Proposal (item 8): admit the
+  painter master by its pinned hash instead of shipping 13 MB of masters.
+- **Claude:** after signing: rebuild the playtest package on the pushed head and run the controlled-worker duel smoke on it; each new
+  painted archetype joins the card and arena the day it lands.
 
 **Traps (obey them).**
 - A browser smoke must watch a bout to its END and assert zero page errors: a throw inside a ticker callback freezes the whole page
@@ -77,6 +76,17 @@ painted arena works offline in it. Codex's items 5 and 7 are staged unsigned in 
 - Run `npm run overridecontrol` and the whole gate list locally before any hosted attempt.
 
 ### What Claude owes next
+-89. **Codex's three items merged (staged merge of `4b56ef82`).** The Centipede crawl is identical to `f7339401`, so it merged clean. 53 species are routed to
+existing templates (the Fiddler Crab now to brachyuran, so it shares the crab's pinch; `creature-rig-r3` was updated to match, and Crayfish,
+Lobster and Hermit Crab still refuse). The five `fb1922a0` reds are green. Edge on the merged tree (`picker-smoke-11-merged`, worker controlling
+the page, real duels): Chimpanzee vs Centipede and Fruit Bat vs Crab, painted rigs, paced log, cached reload, zero page errors.
+-88. **Phone-tier CPU study (`3e34873a`, `audits/BATTLE2_LIBRARY_20260924/README.md`).** At 4× CPU (Chrome throttle), all seven library pairs hold 60 fps
+with zero refusals; stage CPU p95 is 3.5–6.5 ms, except Chimpanzee vs Centipede at 10.7 ms. The Centipede's skin is the phone-tier budget item
+(Codex). A device probe remains the gate.
+-87. **Picker status follows the study (`87f374cd`).** It reads "finished" or the failure reason instead of "playing" forever.
+-86. **Every painted creature has a voice (`c2409c93`).** Placeholder synthesized sets for all 13 body plans (serpent hiss, insect clicks, fish bubbles,
+bird chirps, crab click-bubble…). The quadruped set is byte-identical; 'brachyuran' is appended last, so no existing seed moves. Edge: Python vs
+Crab real duel, zero page errors. Recorded C3 masters still replace these.
 -85. **Playtest package on `3201cd86`: the first whose worker installs (2026-09-24).** `port/v2/apps/game/smoke/dev-preview-3201cd86834e-20260924200110/`:
 `preview:package`, `preview:verify` and `preview:smoke` PASS, and all 305 worker pins match. `picker-smoke-09-package --sw-control --duel` on the package itself:
 the worker controls the page; a real duel between Salmon and Octopus on the lake has its log paced by the stage (2.0 / 5.7 / 9.5 s); two painted rigs in each
@@ -336,17 +346,3 @@ unbound; nothing visually qualified; Q1 crab gape candidate only.
 `E1_BATTLE2_INTEGRATION_DESIGN.md` (§5 status), `MASTER_PROGRAM_20260917.md`, `r1b-r2b-look/`. Code: `port/v2/apps/game/src/battle2/`
 (`README.md` E1 section, `parts-rig.ts`, `habitat-arena.ts`, `e1-outcomes.test.ts`, `parts-rig.test.ts`). Codex lane:
 `audits/ANATOMY_COMPLETION_20260917/` (its evidence folders as the run produces them).
-
-## Live handoff — 2026-09-24 three signed items, await Claude integration for I5
-
-Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac, tracking origin/openai/mac. Item5 signed `39e00aa02e50b139fd1dba23885f4a4a15f4dce1` (G); item7 signed `4cfd5584ec232a070a5c0a624710e2198a76c1e0` (G); the enclosing commit signs the five-regression repair separately. Current packet: audits/MOTION_FIVE_REDS_20260924/README.md and SIGNING_HANDOFF.json. No fetch/sync/push/PR/label/hosted/merge/release/deploy by Codex. Claude absolute lane remains read-only. .DS_Store untouched; Node26.9.0 uninterrupted session receipt reused.
-
-Claude resolved actual Centipede motion fix+KNOWN removal together in signed `f73394018950bcb24341008dd5efc6f9634a6a5e` (G). Local family-actions.ts matches its full bytes. Nick reports library-arena8/8 and old-line negative control; Codex's own current-stage overlay records0 refusals at0.85×/1×/1.15×. Item7 routes53 candidate templates while all53 remain explicitly pending painted qualification. No new art.
-
-The five-regression repair restores insect exact-rigid recovery independently of travel while preserving crab/quadruped refusal boundaries. Current86-bullet release inventory has independently measured ordered identity and matching exact/removal controls. Final focused runs pass all60 unique tests, all3 typechecks and root validation;90 protected inputs unchanged. Tested source hashes verified unchanged before signing. Every refusal/rejected trial remains in its packet; no unchanged battery repeated.
-
-Claude integrated item4:133 pinned files total50,426,871 bytes; gzip bindings meet the unchanged128MiB package cap. Its controlled-Edge cached-arena reload evidence is read-only recorded. Preserve signed preview fix `23490db397483ad8b6d0768b559bb079d0e595e9`: devPreviewHtmlPlugin() in vite.config.ts and its corresponding pwa-offline.test.ts plugin-list pin. This local repair does not touch those two files.
-
-Latest I5 instruction is FINAL INTEGRATED anthropic/mac source, once, AFTER Claude merges all three signed results. Earlier local-only next-run choice is superseded. No fresh I5 attempt, historical-authority rewrite or final develop profile ran in this signing batch. Await the exact final clean integrated head; no PR43 green claim from local diagnostics.
-
-Paired next steps: Codex holds signed results and awaits that source identity for I5. Nick opens Claude now with the three commits. Claude merges them, retaining its actual pin removal and preview plugin/pin, then supplies the final clean integrated head. Existing PR43 remains anthropic/mac→develop; no new PR or hosted attempt requested. Original Python-first motion review is audits/MOTION_ANATOMY_20260923/review.html; no new native film/CPU number claimed. Prior 1Password refusals are historical; signing now works through the unchanged wrapper.
