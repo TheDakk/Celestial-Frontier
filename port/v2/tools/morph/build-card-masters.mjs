@@ -57,6 +57,13 @@ export const CARD_ARCHETYPES = Object.freeze([
   { earthName: 'Pike', dir: 'audits/ART_BATTLE_FOCUS_20260925/20-pike/fit-02/', key: 'pike', markings: 'audits/ART_BATTLE_FOCUS_20260925/20-pike/' },
   { earthName: 'Goose', dir: 'audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/', key: 'goose', markings: 'audits/ART_BATTLE_FOCUS_20260925/15-goose/', contactSupports: 'observed' },
   { earthName: 'Gull', dir: 'audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/', key: 'gull', markings: 'audits/ART_BATTLE_FOCUS_20260925/12-gull/', contactSupports: 'observed' },
+  // C25 (Codex's actual-branch films on anthropic/mac, 0/0 refusals, 2026-09-25): Racer, Eel, Salamander, Rat, Reef Shark (Eel/Shark water
+  // containment now held by the motion-envelope band fit)
+  { earthName: 'Racer', dir: 'audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/', key: 'racer', markings: 'audits/ART_BATTLE_FOCUS_20260925/21-racer/' },
+  { earthName: 'Eel', dir: 'audits/ART_BATTLE_FOCUS_20260925/27-eel/fit-02/', key: 'eel', markings: 'audits/ART_BATTLE_FOCUS_20260925/27-eel/mask-set-03/' },
+  { earthName: 'Salamander', dir: 'audits/ART_BATTLE_FOCUS_20260925/26-salamander/fit-05/', key: 'salamander', markings: 'audits/ART_BATTLE_FOCUS_20260925/26-salamander/' },
+  { earthName: 'Rat', dir: 'audits/ART_BATTLE_FOCUS_20260925/29-rat/fit-03/', key: 'rat', markings: 'audits/ART_BATTLE_FOCUS_20260925/29-rat/' },
+  { earthName: 'Reef Shark', dir: 'audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/', key: 'reef-shark', markings: 'audits/ART_BATTLE_FOCUS_20260925/19-reef-shark/mask-set-02/' },
   { earthName: 'Jellyfish', dir: 'audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/', key: 'jellyfish', markings: 'audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/', weapons: 'audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/weapon-declaration.json' },
 ]);
 const sha = (b) => createHash('sha256').update(b).digest('hex');
