@@ -43,6 +43,7 @@ import {
 import { engineeringCommittedCopy, runFabricationBatchV1 } from './fabrication-batch.js';
 import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './recipe-pin.js';
 import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
+import { freshExpeditionPayloadV1 } from './expedition-reset.js';
 import {
   deviceAudioAccessibilityStorage,
   readAudioAccessibilityPrefsV1,
@@ -2861,7 +2862,11 @@ function fillSettings(): void {
       `<button data-motion="${v}" aria-pressed="${save.motionMode === v}" class="${save.motionMode === v ? 'on' : ''}">${t}</button>`).join('') +
     '</span></div>' +
     `<div class="row"><label>Panel tint</label><input id="setglass" aria-label="Panel tint" type="range" min="82" max="98" value="${Math.round(Math.max(save.glassTint, 0.82) * 100)}"></div>` +
-    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>`);
+    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>` +
+    /* D16 parity (v1 resetbtn/resetconfirm): an armed two-step erase; expedition-reset.ts */
+    `<div class="row"><label>Reset expedition</label><button id="setreset" data-sel="set-reset" aria-expanded="false" aria-controls="setresetconfirm">Reset…</button></div>` +
+    `<div class="row reset-confirm" id="setresetconfirm" role="group" aria-label="Confirm expedition reset" hidden><span class="sub">Erase this whole expedition — discoveries, companions, Charters and Stardust — and start over? This cannot be undone.</span>` +
+    `<button id="setresetyes" data-sel="set-reset-yes" class="danger">Erase and start over</button><button id="setresetno" data-sel="set-reset-no">Cancel</button></div>`);
   const el = document.getElementById('setpanel')!;
   const refillAndFocus = (selector: string): void => {
     fillSettings();
@@ -3056,6 +3061,26 @@ function fillSettings(): void {
       savedRouteWriteHeld = priorSavedRouteWriteHeld;
       button.disabled = false;
       toast('Save unavailable', 'Field Training was not restarted; your current expedition is unchanged.');
+    }
+  });
+  el.querySelector('#setreset')!.addEventListener('click', () => {
+    el.querySelector<HTMLElement>('#setresetconfirm')!.hidden = false;
+    el.querySelector<HTMLElement>('#setreset')!.setAttribute('aria-expanded', 'true');
+    el.querySelector<HTMLElement>('#setresetno')?.focus();
+  });
+  el.querySelector('#setresetno')!.addEventListener('click', () => {
+    el.querySelector<HTMLElement>('#setresetconfirm')!.hidden = true;
+    el.querySelector<HTMLElement>('#setreset')!.setAttribute('aria-expanded', 'false');
+    el.querySelector<HTMLElement>('#setreset')?.focus();
+  });
+  el.querySelector('#setresetyes')!.addEventListener('click', async (event) => {
+    const button = event.currentTarget as HTMLButtonElement;
+    button.disabled = true;
+    const sol = searchTravel.trainingSolSystemNav();
+    const error = await importBlob(freshExpeditionPayloadV1({ registry: REGISTRY, now: Date.now(), solView: sol ? navToView(sol) : null }));
+    if (error !== null) {
+      button.disabled = false;
+      toast('Reset unavailable', `${error} Your expedition is unchanged.`, true);
     }
   });
   el.querySelector('#setglass')!.addEventListener('input', (e) => {
@@ -17052,7 +17077,7 @@ let lastMutationBlockWitness: Readonly<{
 }> | null = null;
 const READ_ONLY_MUTATION_SELECTOR = [
   '#dockcharts', '#setsnd', '#setvol', '#setvoice', '[data-pref]', '[data-motion]',
-  '#setcharts', '#setfx', '#setshake', '#setglass', '#setrestart',
+  '#setcharts', '#setfx', '#setshake', '#setglass', '#setrestart', '#setresetyes',
   '[data-arc9-nameplate-choice]',
   '[data-frontier-ending-id]',
   '[data-starter-charter-accept]',

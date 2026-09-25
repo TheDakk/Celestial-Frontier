@@ -262,6 +262,11 @@
       transform: translateX(44px); }
     #guidepanel { z-index: 24; }   /* player-requested help must sit above the z23 survey card */
     #setpanel { z-index: 24; }   /* preferences must remain operable over a populated phone survey card */
+    /* D16 parity: Reset expedition's armed confirmation (.panel .row is display:flex, which would beat [hidden]) */
+    #setpanel .row.reset-confirm { flex-wrap: wrap; }
+    #setpanel .row.reset-confirm[hidden] { display: none !important; }
+    #setpanel .row.reset-confirm > .sub { flex: 1 0 100%; }
+    #setpanel button.danger { border-color: #d0604a; color: #ffd0c4; background: rgba(110,32,22,.55); }
     @media (max-width: 900px) {
       body:not(.training) :is(#codexpanel,#recpanel,#atlaspanel,#chpanel,#primepanel,#shipyardpanel,#inventorypanel,#combatpanel) { z-index: 24; }
     }
