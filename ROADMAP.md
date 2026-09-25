@@ -101,3 +101,5 @@ Salamander item26/Earthrank25:27parts finalfit05,sixmasks,17/19static/exactrest.
 
 
 Salamander motion01 repairscanonical gallop/cast by conditionalwhole-torsogain underunchangedcontact. Samefit05 now19/19+1557presentation/exactrest. Sevennew+18existingtests/appTS/rootPASS; S2six/13286identical; fullprofile5117pass/soleparkedI5red. Freshproposednative0/0,p954.1/max11.8ms4×zeroCPUover; heads stilloverlapreturn,Claude stage/picker/coveragepending. CodexcontinuesEel/ranking; C8/economyparked; nohostedwrite.
+
+Eel item27: audits/ART_BATTLE_FOCUS_20260925/27-eel, fit02 +mask-set03/markings.json,13parts,12/12static+1015presentation/exactrest, sixownmasks. Proposed waterfilm0/0,p952.3/max7ms4×,zeroCPUoverbudget,757live761encoded; returnheads overlap, integrated admission pendingClaude spacing/fulltravel/picker. Two rejectedmottled generations retained. Runtime6d195114 unchanged, no repeatedfull/S2. NextHoneybee/Rat/Hare and thirdten sheet; C8/economyparked.
