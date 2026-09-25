@@ -1,0 +1,36 @@
+{
+  "schema": "cf.imagegen-receipts/v1",
+  "attempt": 1,
+  "outputs": [
+    {
+      "kind": "striped",
+      "output_hint": "Generated images are saved to /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc as /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-2d9a65c2-47b2-4b2a-998e-71012fe4a0a5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-2d9a65c2-47b2-4b2a-998e-71012fe4a0a5.png"
+    },
+    {
+      "kind": "spotted",
+      "output_hint": "Generated images are saved to /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc as /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-5803aadc-a12f-48ee-9035-711861ce25ba.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-5803aadc-a12f-48ee-9035-711861ce25ba.png"
+    },
+    {
+      "kind": "banded",
+      "output_hint": "Generated images are saved to /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc as /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-7406ff3d-b78c-49c5-bb51-61e584263c46.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-7406ff3d-b78c-49c5-bb51-61e584263c46.png"
+    },
+    {
+      "kind": "mottled",
+      "output_hint": "Generated images are saved to /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc as /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-a1f97ed9-2571-48ef-9195-fcc1ab25bb3d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-a1f97ed9-2571-48ef-9195-fcc1ab25bb3d.png"
+    },
+    {
+      "kind": "marbled",
+      "output_hint": "Generated images are saved to /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc as /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-ebe09cbd-2fb1-4a34-bda5-f2ea4a008bc6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-ebe09cbd-2fb1-4a34-bda5-f2ea4a008bc6.png"
+    },
+    {
+      "kind": "eye-spotted",
+      "output_hint": "Generated images are saved to /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc as /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-2b10cfa6-010e-485b-bf28-331eff069ebe.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-2b10cfa6-010e-485b-bf28-331eff069ebe.png"
+    }
+  ]
+}

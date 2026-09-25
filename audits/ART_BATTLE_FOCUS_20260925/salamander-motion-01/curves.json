@@ -1,0 +1,20 @@
+[
+  {
+    "id": "approach:gallop",
+    "notes": [
+      "grounded-quadruped:torso-gain=0.67939453125"
+    ],
+    "hash": "057cde80",
+    "bodyMs": 420,
+    "durationMs": 804
+  },
+  {
+    "id": "cast",
+    "notes": [
+      "grounded-quadruped:torso-gain=0.8841796875"
+    ],
+    "hash": "76d6ebd7",
+    "bodyMs": 610,
+    "durationMs": 994
+  }
+]

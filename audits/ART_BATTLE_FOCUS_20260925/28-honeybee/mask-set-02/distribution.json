@@ -1,0 +1,10 @@
+{
+  "schema": "cf.authored-marking-distribution/v1",
+  "decision": "Codex explicit artistic declaration: all six Honeybee pattern masks belong to abdomen only. Wings, thorax, head, antennae and all legs keep the plain base coat.",
+  "allowedPartIds": [
+    "abdomen"
+  ],
+  "source": "../fit-02/parts/binding.json",
+  "automaticAnatomyInference": false,
+  "reason": "Generation prompts request abdomen marks; raw outputs spill onto nearby legs/thorax. Apply the declared existing authored abdomen owner as a data mask; do not move or repaint generated pixels."
+}

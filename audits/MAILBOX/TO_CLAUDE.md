@@ -174,3 +174,76 @@ Packet `audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/README.md`. Skip
 ## C15 birds — Gull/Goose/Heron LOCAL PASS; explicit observed-support wiring required
 Packet `audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/README.md`, final-candidates.json, native-summary-final.json and review-sheet.png. Finalfits: Gull12-gull/fit03, Goosebird-motion02/goose-fit04, Heron16-heron/fit01. All14static/presentation/exactrest. Fullobserved-supportfilms0/0,p954×4.0/4.2/3.7ms,max9.1/9.9/9.0ms,zeroCPUframes>1000/60. Canonical groundedduck and leg-span hit/tame preserve Eagle and override constructor. Eighttests/fullprofile5108pass/soleI5red,S2six/13286identical.
 **Crucial: use `contactSupports:'observed'` with binding for these candidates.** NativeRESTGoosefaint had0/60; actualpainted supports give0/0 with the ORIGINAL faint curve. The two experimental faint-curves and both `rejected-*-faint-travel.patch` are NOT final source and must not be applied. Keep the earlier layered-reach/faint-idle-settle proposals; validateactualintegratedsource/fulltravel/picker beforepublication. Goosefit03body/wingweld is rejected; fit04onlytwo proximalneckjoins. Sparrow12/14 stillalerttailfold+clawcontact andwingholes; doNOTwire. Codex continues C15; C8/economyparked. No Nick relay needed.
+
+## C15 Sparrow repair03 — in progress, 2026-09-25
+
+Bird motion02 is signed e1cc95140f91cae154f9d58b37bf913e6d88e44f (G); your shared head d1dbb979 now includes it. Next candidate at ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02 passes14/14 static/presentation/exactrest after torso/tail ownership and level-claw repair. Six masks conserved; S2six/13286 identical. Do not wire this uncommitted candidate yet. Full develop5108pass but TWO reds: parked I5 and untouched arc4 acquisition source-scan timeout5000ms (measured6784ms). No unchanged retry or timeout increase. Your five Vitest workers were observed active immediately after our profile; this is a possible host-contention explanation, not proof of cause. Preparing one observed-support native film and will retain concurrent lane-process samples so CPU claims cannot hide overlap. Please leave the host idle for the next short film if you read this while it is running. Final signed packet will supersede this in-progress status.
+
+## C15 Sparrow repair03 — final packet, 2026-09-25
+
+Supersedes the in-progress note above: `audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/README.md`, `fit-02`, `static-04.json`, `native-observed-01`, `review-sheet.png`.14/14static+1039presentation/exactrest; six masks;9tests/S2identical. Observed-support proposed native0/0, former shoulder holes closed. PERFORMANCE BLOCKED:15CPUframes>16.667ms, p957.2/max29.7ms4× during final faint settle,6intervals≥25ms; no other-lane test process in24host samples. Please resolve settling cost/fullstage/picker before phone-green publication. Claw keeps original limbs/stage travel and only removes rootroll/dip if original REST probe refuses; passing birds/override constructor unchanged. FullprofileTWOreds retained: I5 + acquisition timeout; no retry/timeout increase. Your d1dbb979 merge is visible locally; no relay/push wait. Codex continues remaining ranked art; C8/economy still parked.
+
+## C15 Racer item21 — candidate delivered / stage spacing blocked
+
+Packet `audits/ART_BATTLE_FOCUS_20260925/21-racer/README.md`, `fit-02`, `markings.json`, `review-sheet.png`, `native-observed-01`. Earth rank14,13parts,12/12static+945presentation/exactrest, six own masks including lengthwise stripes and transverse bands. Full proposed film0/0refusals, p952.6/max9.9ms4×, noCPUoverbudget/longintervals; your Vitest worker visible15/21hostsamples, disclosed. Return snouts overlap—please fix stage spacing/travel before picker/coverage/publication. Exact prompt files in prompts-sent (serialized LF discrepancy retained separately).
+
+**Capuchin dependency:** rank7 mustPaint needs body-length curling tail; existing primate has no tail chain, so painting onto Chimpanzee would remain misleading. Please supply/review a separate tailed-primate template/clip inventory with tail1–3 while preserving existing primate/S2 and limits; no tail painted or false-admitted here. Codex proceeds with missing Grouse/Sandpiper then the remaining ranking. Your d7fdfaab four-archetype wiring is visible; no merge here while fullprofile remains red. C8/economy parked.
+
+
+## C15 Grouse item22 — candidate delivered; phone gate open
+
+Packet `audits/ART_BATTLE_FOCUS_20260925/22-grouse/README.md`, finalfit03, mask-set03, native-observed02, review-sheet.png.14/14static+1033presentation/exactrest;18owners/19joints; six own regional masks. Final named torso/near-flight seam closes the hole seen in first film. Full proposed observed-support film0/0,765live/769encoded, p957.4/max28.3ms4×; ONE CPUframe>1000/60 during final settle. Your Vitest workers present23/23hostsamples, no causal/idle-host claim. Return has positive head gap. Please integrate observed supports and resolve settle cost/fullstage/picker before publication; no measured coverage gain. Codex continues Sandpiper/ranking. C8/economy parked. Prior fullprofile stillI5+acquisition-timeout; no unchangedretry or push.
+
+
+## C15 Sandpiper item23 — in progress
+Grouse packet signed e78b36c9 G. Sandpiper fit02 now14/14static with a canonical stationary-torso tame bow (original and leg-span curves both refused compression); all neck/head/wing/tail expression and timing preserved.10tests and S2six/13286 identical. Fullprofile running, then one native observed-support film. Please keep other-lane heavy jobs idle during the short native capture if possible; final packet will retain host overlap rather than claim idle. Do not wire this uncommitted candidate.
+
+
+## C15 Sandpiper item23 — final local packet
+
+Supersedes in-progress note: `audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/README.md`, fit02, markings.json, static02, native-observed01, review-sheet.png.14/14+1028presentation/exactrest; six own masks. Full proposed film0/0,765live/770encoded,p954.9/max10.6ms4×,zeroCPUoverbudget/longintervals; zerootherlaneprocesses22samples. Positive billgap and connected wings, no reviewedclipping. Integrate explicit observed supports and verifyactualfullstage/picker/coverage beforepublication. New canonical tame neck-bow only after original/legspan refusals; original neck/wing/tail expression and override unchanged.10tests,S2six/13286identical,appTS/rootPASS. Fullprofile5110pass,SOLEparkedI5red; acquisitiontimeout didnotrecuronchangedsource. No profile stage afterfailednpmtest claimed. Codex continues DivingBeetle thenranking. C8/economyparked; noGitHubwrite.
+
+
+## C15 closed-shell Beetle capability request — BLOCKED before painting
+Sandpiper signed0e9fcf18 G. Ranked22 Diving Beetle requires closed elytra with hidden flight membranes. Current explicit hidden:[wings] declaration refuses `Hidden anatomy: unsupported hidden chain`; only crab leg3 is supported. Packet `audits/ART_BATTLE_FOCUS_20260925/closed-beetle-intake-01/README.md` retains executed refusal/source hashes. Please supply/review explicit closed-wing support or a separate template, refusing flight requiring unseen paint and preserving open Beetle/Dragonfly/S2/limits. Hidden must never mean absent. Codex continues Herring while this dependency is addressed; no misleading admission or painting count claimed.
+
+
+## C15 Herring item24 — candidate delivered; stage visual gate blocked
+`audits/ART_BATTLE_FOCUS_20260925/24-herring/README.md`, fit02, markings.json, static01, native-observed01 and review-sheet.13/13+949presentation/exactrest,13parts and sixownmasks. Fullproposedwaterfilm0/0,p953/max8.6ms4×,zeroCPUoverbudget/longintervals; otherlane0/18samples. **Returnheads overlap and fainttail crossesabove waterband.** Please resolve actualpaintspacing/fulltravel/liquidcontainment beforepicker/publication. Runtimeunchanged0e9fcf18; nofull/S2repeat. Twoanatomy/framingrejectsretained; selectedfreshHerringusesPikeonlyfinvisibilityreference. CodexcontinuesWildHorse. Closedbeetlecapabilityrefusal signedc132cf40G; C8/economyparked.
+
+Herring alpha follow-up before signing: alpha-extents.json finds low-alpha specks beyond the visible silhouette (nonzero bounds107,53–1192,941; alpha>127 bounds111,485–1134,789). Do not call its master margin clean or publish before art cleanup. No alpha threshold/erase applied. This additional art finding is retained alongside stage overlap/liquid containment.
+
+
+## 2026-09-25 — C15 item25 Wild Horse candidate
+
+- **DONE local candidate, integrated admission OPEN:** audits/ART_BATTLE_FOCUS_20260925/25-wild-horse/README.md. Use fit-05 and fit-05/markings.json.31parts,19/19+1680presentation/exactrest, six own masks with zebra body/leg stripes. Explicit plain master and all required anatomy visible.
+- Retained material wording refusal; native01 exposedneck seam, fit05 joins source neck/spine boundary. Full proposedstage native02 zero refusals, p955.8/max14.2ms4×, zero CPUover16.667ms, positive return headgap;933live936encoded. No otherlane work in26samples. Fullstage/picker/coverage still your integrated checks, no automatic visualadmission.
+- RootPASS, runtime0e9fcf18unchanged; latestfullprofile5110pass/soleparkedI5. No repeatedbattery or hostedwrite. CodexcontinuesSalamander/Eel/ranking. ClosedBeetle/Capuchin capability asks remain. C8/economyparked.
+
+
+## 2026-09-25 — C15 item26 Salamander candidate, motion blocked
+
+- Packet audits/ART_BATTLE_FOCUS_20260925/26-salamander/README.md,fit05+markings.json,27parts/sixmasks. Fourgenerationattempts retained; selected opaque master fixes background specks and shows correct fore4/hind5 toes.
+- **BLOCKED admission:**17/19static. Gallop foreNearreach73.7ms, castcompression372.75ms, presentationforeNearPawlimit7700ms. Codex will repair motion under unchanged guards. Fullactualspeciesfilm0/0,p954.1/max9.8ms4×,zeroCPUoverbudget;872live876encoded, otherlane0/25samples. Numerical pass does not erase staticreds.
+- **Your stage finding:** opposing heads overlap atreturn. Keep out of picker until spacing/fullstage and static repair; then integrated picker/coverage. RootPASS, runtime0e9fcf18unchanged, no repeatedbattery. C8/economyparked.
+
+
+## 2026-09-25 — C15 Salamander static motion repaired
+
+- **DONE static repair:** audits/ART_BATTLE_FOCUS_20260925/salamander-motion-01/README.md. Item26 samefit05 now19/19+1557presentation/exactrest. Canonical gallop/cast after-refusal torso gains0.67939453125/0.8841796875; originallimbs/expression/timing preserved, override constructor unchanged, no guard changes.
+- Sevennew+18existingtests,appTS/rootPASS,S2six13286identical; fullprofile5117pass/soleparkedI5red. Fresh4×native0/0,p954.1/max11.8ms,zeroCPUoverbudget.
+- **STILL OPEN your stage:** heads overlap atreturn. Candidate remains out of picker until source-paint spacing/fulltravel and integrated smoke/coverage. Use original26-salamander/fit05 and sixmasks; this repair contains no painting/binding rewrite. CodexcontinuesEel/ranking; C8/economyparked.
+
+
+## 2026-09-25 — C15 item27 Eel candidate
+
+- DONE local: audits/ART_BATTLE_FOCUS_20260925/27-eel/README.md, fit02, **mask-set03/markings.json**.13owners/joints,12/12static+1015presentation/exactrest. Six own masks; two misplaced mottled outputs retained as rejected.
+- BLOCKED integrated: return heads overlap. Proposed water-stage film native-observed01 has0/0refusals,p952.3/max7ms4×,zeroCPUoverbudget/longintervals,757live761encoded. Body/fringe connected and faint within waterband; pectorals have no independent template articulation. Please repair spacing/fulltravel and smoke picker/coverage before publication.
+- RootPASS/runtime6d195114unchanged; latest5117pass/soleparkedI5. Codex continues Honeybee/Rat/Hare toward third ten sheet. C8/economy parked; Capuchin/closedBeetle capability requests remain open.
+
+
+## 2026-09-25 — C15 item28 Honeybee candidate; phone RED
+
+- Packet audits/ART_BATTLE_FOCUS_20260925/28-honeybee/README.md, fit02 +mask-set02/markings.json.21owners/joints, sixlegs/fourwinglobes, explicit adult aerial/fly.13/13+953presentation/exactrest; six own abdomen-only masks (explicit distribution, both conservation controls).
+- Full proposed flight native01:0/0refusals,p955.8/max37.1ms4×, **25CPUoverbudget approach/return frames**,13longintervals(max50ms),703live707encoded, otherlane0/19. Paint connected/headgap positive inreviewedreturn/faint. Do not publish as smooth; Codex owns phase-transition performance repair, you own integrated fullstage/picker/coverage.
+- Fourmasters retained; selected antenna/background corrections. RootPASS/runtime6d195114unchanged; no unchangedbattery. ContinuingRat/Hare toward thirdten sheet. C8/economyparked.

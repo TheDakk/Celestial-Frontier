@@ -1,0 +1,376 @@
+{
+  "id": "eel",
+  "family": "serpent",
+  "landmarksPx": {
+    "root": [
+      974,
+      648
+    ],
+    "head": [
+      1051,
+      642
+    ],
+    "jaw": [
+      1062,
+      658
+    ],
+    "seg0": [
+      937,
+      661
+    ],
+    "seg1": [
+      856,
+      677
+    ],
+    "seg2": [
+      773,
+      676
+    ],
+    "seg3": [
+      691,
+      650
+    ],
+    "seg4": [
+      607,
+      615
+    ],
+    "seg5": [
+      523,
+      608
+    ],
+    "seg6": [
+      439,
+      638
+    ],
+    "seg7": [
+      358,
+      678
+    ],
+    "seg8": [
+      278,
+      678
+    ],
+    "seg9": [
+      199,
+      642
+    ]
+  },
+  "habitat": {
+    "realm": "aquatic",
+    "source": "Explicit freshwater eel; continuous dorsal/caudal/anal fringe and two visible small pectoral fins, no pelvic fins or legs."
+  },
+  "groundLineY": 0.5797448165869219,
+  "materials": {
+    "surface": "plain olive-brown slick wet skin and fine fin membrane"
+  },
+  "remainderPart": "segment-0",
+  "parts": [
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "polygonPx": [
+        [
+          968,
+          642
+        ],
+        [
+          980,
+          642
+        ],
+        [
+          980,
+          654
+        ],
+        [
+          968,
+          654
+        ]
+      ]
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "polygonPx": [
+        [
+          1000,
+          653
+        ],
+        [
+          1108,
+          633
+        ],
+        [
+          1114,
+          689
+        ],
+        [
+          992,
+          695
+        ]
+      ]
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "polygonPx": [
+        [
+          981,
+          599
+        ],
+        [
+          1117,
+          602
+        ],
+        [
+          1115,
+          638
+        ],
+        [
+          1000,
+          656
+        ],
+        [
+          978,
+          663
+        ]
+      ]
+    },
+    {
+      "id": "segment-0",
+      "joint": "seg0",
+      "layer": "near",
+      "polygonPx": [
+        [
+          899,
+          430
+        ],
+        [
+          987,
+          430
+        ],
+        [
+          987,
+          790
+        ],
+        [
+          899,
+          790
+        ]
+      ]
+    },
+    {
+      "id": "segment-1",
+      "joint": "seg1",
+      "layer": "near",
+      "polygonPx": [
+        [
+          815,
+          430
+        ],
+        [
+          899,
+          430
+        ],
+        [
+          899,
+          790
+        ],
+        [
+          815,
+          790
+        ]
+      ]
+    },
+    {
+      "id": "segment-2",
+      "joint": "seg2",
+      "layer": "near",
+      "polygonPx": [
+        [
+          732,
+          430
+        ],
+        [
+          815,
+          430
+        ],
+        [
+          815,
+          790
+        ],
+        [
+          732,
+          790
+        ]
+      ]
+    },
+    {
+      "id": "segment-3",
+      "joint": "seg3",
+      "layer": "near",
+      "polygonPx": [
+        [
+          649,
+          430
+        ],
+        [
+          732,
+          430
+        ],
+        [
+          732,
+          790
+        ],
+        [
+          649,
+          790
+        ]
+      ]
+    },
+    {
+      "id": "segment-4",
+      "joint": "seg4",
+      "layer": "near",
+      "polygonPx": [
+        [
+          565,
+          430
+        ],
+        [
+          649,
+          430
+        ],
+        [
+          649,
+          790
+        ],
+        [
+          565,
+          790
+        ]
+      ]
+    },
+    {
+      "id": "segment-5",
+      "joint": "seg5",
+      "layer": "near",
+      "polygonPx": [
+        [
+          481,
+          430
+        ],
+        [
+          565,
+          430
+        ],
+        [
+          565,
+          790
+        ],
+        [
+          481,
+          790
+        ]
+      ]
+    },
+    {
+      "id": "segment-6",
+      "joint": "seg6",
+      "layer": "near",
+      "polygonPx": [
+        [
+          398,
+          430
+        ],
+        [
+          481,
+          430
+        ],
+        [
+          481,
+          790
+        ],
+        [
+          398,
+          790
+        ]
+      ]
+    },
+    {
+      "id": "segment-7",
+      "joint": "seg7",
+      "layer": "near",
+      "polygonPx": [
+        [
+          318,
+          430
+        ],
+        [
+          398,
+          430
+        ],
+        [
+          398,
+          790
+        ],
+        [
+          318,
+          790
+        ]
+      ]
+    },
+    {
+      "id": "segment-8",
+      "joint": "seg8",
+      "layer": "near",
+      "polygonPx": [
+        [
+          239,
+          430
+        ],
+        [
+          318,
+          430
+        ],
+        [
+          318,
+          790
+        ],
+        [
+          239,
+          790
+        ]
+      ]
+    },
+    {
+      "id": "segment-9",
+      "joint": "seg9",
+      "layer": "near",
+      "polygonPx": [
+        [
+          0,
+          430
+        ],
+        [
+          239,
+          430
+        ],
+        [
+          239,
+          790
+        ],
+        [
+          0,
+          790
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "scope": "One manually observed Eel painting; Lamprey/Moray/Oarfish remain documented caveats.",
+    "finOwnership": "Continuous fin fringe follows containing body segments; paired pectorals painted on proximal segment0, no independent fin articulation in serpent template."
+  }
+}

@@ -1,0 +1,1 @@
+Candidate ownership correction: root only interior12x12; existing spine owns torso remainder. Tail rotates about observed proximal attachment390,745 rather than distal feather tip189,727. This is new candidate authority, not rebinding any old sample. No contract/solver/limit changes. All original pixels and presence retained.

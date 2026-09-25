@@ -1,0 +1,56 @@
+[
+  {
+    "kind": "striped",
+    "tool": "image_gen.imagegen",
+    "path": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-e8f407e9-a045-471d-ae98-299c8744667c.png",
+    "retained": "raw/striped.png",
+    "prompt": "prompts/striped.txt",
+    "seed": null,
+    "model": "not exposed"
+  },
+  {
+    "kind": "spotted",
+    "tool": "image_gen.imagegen",
+    "path": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-4de0b4b3-314c-4851-9913-79b942b1bed1.png",
+    "retained": "raw/spotted.png",
+    "prompt": "prompts/spotted.txt",
+    "seed": null,
+    "model": "not exposed"
+  },
+  {
+    "kind": "banded",
+    "tool": "image_gen.imagegen",
+    "path": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-fc6fd029-96a4-4bca-ae69-7b86f4bfd955.png",
+    "retained": "raw/banded.png",
+    "prompt": "prompts/banded.txt",
+    "seed": null,
+    "model": "not exposed"
+  },
+  {
+    "kind": "mottled",
+    "tool": "image_gen.imagegen",
+    "path": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-4cedf255-da28-4071-b2bd-a52a495b7a76.png",
+    "retained": "raw/mottled.png",
+    "prompt": "prompts/mottled.txt",
+    "seed": null,
+    "model": "not exposed"
+  },
+  {
+    "kind": "marbled",
+    "tool": "image_gen.imagegen",
+    "path": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-eb9dc895-f9e3-4d07-8cd1-d3df8ad94b79.png",
+    "retained": "raw/marbled.png",
+    "prompt": "prompts/marbled.txt",
+    "seed": null,
+    "model": "not exposed"
+  },
+  {
+    "kind": "eye-spotted",
+    "tool": "image_gen.imagegen",
+    "path": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-731fe5bd-92e2-4b63-a5d0-0408f8ba6977.png",
+    "retained": "raw/eye-spotted.png",
+    "prompt": "prompts/eye-spotted.txt",
+    "seed": null,
+    "model": "not exposed"
+  }
+]

@@ -4,6 +4,7 @@
  * randomness beyond the seeded idle period, no renderer. */
 import { DEG, type Ease, type MotionAction } from './actions.js';
 import {groundedBirdAction} from './grounded-bird.js';
+import {groundedQuadrupedAction} from './grounded-quadruped.js';
 import {faintStanceEnvelope,applyStanceEnvelope,type StanceEnvelope} from './stance-envelope.js';
 import {stationaryContactEnvelope,type ContactStanceEnvelope} from './contact-envelope.js';
 import { actionsFor, MELEE_ALIAS, templateMelees } from './family-actions.js';
@@ -88,7 +89,9 @@ export function buildTimeline(card: BodyCard, actionId: string, seed: number): M
   if (!action) throw new Error(`motion: ${card.template.id} has no action "${resolved.id}"`);
   const notes=resolved.note?[...card.notes,resolved.note]:card.notes;
   const base=buildActionTimeline(card,action,seed,notes);
-  const selected=groundedBirdAction(card,action,base,sampleTimeline,a=>buildActionTimeline(card,a,seed,notes));
+  const selected=card.template.id==='quadruped'
+    ?groundedQuadrupedAction(card,action,base,sampleTimeline,a=>buildActionTimeline(card,a,seed,notes))
+    :groundedBirdAction(card,action,base,sampleTimeline,a=>buildActionTimeline(card,a,seed,notes));
   return selected.action===action?base:buildActionTimeline(card,selected.action,seed,[...notes,selected.note!]);
 }
 /** Shared constructor for ordinary playback and reviewed editor overlays. */

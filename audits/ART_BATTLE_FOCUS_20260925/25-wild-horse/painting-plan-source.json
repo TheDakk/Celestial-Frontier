@@ -1,0 +1,26 @@
+{
+  "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/COVERAGE_STUDY_20260924/painting-plan.json",
+  "sha256": "e05c97a4cd1ed6f33743dcd83f33a9aa66b6c38270155650df1d72ba0a89acf8",
+  "rank": 24,
+  "row": {
+    "name": "Equid",
+    "exemplar": "Wild Horse",
+    "covers": [
+      "Wild Horse",
+      "Horse",
+      "Wild Pony",
+      "Wild Ass",
+      "Donkey",
+      "Zebra",
+      "Okapi"
+    ],
+    "bodyPlan": "quadruped",
+    "mustPaint": [
+      "stiff upright brush mane; single hooves on slim legs",
+      "tufted tail; large head on an arched neck",
+      "plain unmarked dun coat",
+      "masks: striped = zebra stripes including the legs (the closest this can get to Okapi's leg stripes)"
+    ],
+    "why": "7 misleading. Zebra relies on the striped mask. Donkey and Wild Ass (long ears) and Okapi stay caveat."
+  }
+}

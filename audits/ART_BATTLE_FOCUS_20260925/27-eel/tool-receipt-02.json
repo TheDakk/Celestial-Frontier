@@ -1,0 +1,8 @@
+{
+  "tool": "image_gen.imagegen",
+  "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-1f8affb6-b46f-4afd-ada7-66e53a85cc7e.png",
+  "sha256": "77890d5b4b55daf076bfc6ca2da0b03fce16930feaca08223bc2d0822e2571cb",
+  "prompt": "sent-prompt-02.txt",
+  "reference": "generation-01/master.png",
+  "seed": null
+}

@@ -1,0 +1,417 @@
+{
+  "id": "herring",
+  "family": "fish",
+  "landmarksPx": {
+    "root": [
+      810.202,
+      627.98
+    ],
+    "head": [
+      987.525,
+      622.102
+    ],
+    "jaw": [
+      1059.042,
+      641.695
+    ],
+    "spine0": [
+      745.542,
+      627.98
+    ],
+    "spine1": [
+      662.269,
+      627.98
+    ],
+    "spine2": [
+      578.995,
+      627.98
+    ],
+    "spine3": [
+      495.722,
+      627.98
+    ],
+    "spine4": [
+      412.448,
+      627.98
+    ],
+    "spine5": [
+      329.175,
+      627.98
+    ],
+    "caudal": [
+      257.658,
+      626.02
+    ],
+    "dorsal": [
+      627.0,
+      539.808
+    ],
+    "pectoralNear": [
+      892.495,
+      667.167
+    ],
+    "pectoralFar": [
+      903.272,
+      700.477
+    ]
+  },
+  "groundLineY": 0.75,
+  "habitat": {
+    "realm": "aquatic",
+    "source": "Manually declared swimming Earth Herring, two pectorals separately visible below gill, two pelvics, single dorsal, anal and deeply forked caudal. No terrestrial support inferred."
+  },
+  "materials": {
+    "surface": "plain silver-blue scaled fish; soft reflective form shading and translucent fin membrane; no pigment pattern"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "polygonPx": [
+        [
+          787.669,
+          660.309
+        ],
+        [
+          897.394,
+          646.594
+        ],
+        [
+          924.825,
+          664.228
+        ],
+        [
+          903.272,
+          688.72
+        ],
+        [
+          874.861,
+          714.192
+        ],
+        [
+          820.978,
+          719.091
+        ],
+        [
+          777.872,
+          695.578
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "polygonPx": [
+        [
+          861.145,
+          690.68
+        ],
+        [
+          924.825,
+          679.903
+        ],
+        [
+          912.089,
+          723.989
+        ],
+        [
+          873.881,
+          771.014
+        ],
+        [
+          821.958,
+          791.588
+        ],
+        [
+          815.1,
+          745.542
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "polygonPx": [
+        [
+          530.991,
+          541.767
+        ],
+        [
+          578.995,
+          469.27
+        ],
+        [
+          598.589,
+          453.595
+        ],
+        [
+          664.228,
+          484.945
+        ],
+        [
+          704.395,
+          540.788
+        ],
+        [
+          668.147,
+          564.3
+        ],
+        [
+          560.381,
+          562.341
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "polygonPx": [
+        [
+          1010.058,
+          615.244
+        ],
+        [
+          1121.742,
+          604.467
+        ],
+        [
+          1149.173,
+          643.655
+        ],
+        [
+          1079.616,
+          680.883
+        ],
+        [
+          1002.22,
+          675.005
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "polygonPx": [
+        [
+          894.455,
+          544.706
+        ],
+        [
+          1156.031,
+          544.706
+        ],
+        [
+          1156.031,
+          690.68
+        ],
+        [
+          983.606,
+          714.192
+        ],
+        [
+          911.109,
+          700.477
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "polygonPx": [
+        [
+          57.802,
+          454.575
+        ],
+        [
+          213.572,
+          482.986
+        ],
+        [
+          293.906,
+          569.198
+        ],
+        [
+          294.886,
+          672.066
+        ],
+        [
+          214.552,
+          747.502
+        ],
+        [
+          65.639,
+          790.608
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "root",
+      "joint": "root",
+      "polygonPx": [
+        [
+          787.669,
+          480.047
+        ],
+        [
+          915.028,
+          480.047
+        ],
+        [
+          915.028,
+          734.766
+        ],
+        [
+          787.669,
+          734.766
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "tail-peduncle",
+      "joint": "spine5",
+      "polygonPx": [
+        [
+          291.947,
+          465.352
+        ],
+        [
+          366.403,
+          465.352
+        ],
+        [
+          366.403,
+          840.572
+        ],
+        [
+          291.947,
+          840.572
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "rear-body",
+      "joint": "spine4",
+      "polygonPx": [
+        [
+          366.403,
+          465.352
+        ],
+        [
+          448.697,
+          465.352
+        ],
+        [
+          448.697,
+          840.572
+        ],
+        [
+          366.403,
+          840.572
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "pelvic-body",
+      "joint": "spine3",
+      "polygonPx": [
+        [
+          448.697,
+          465.352
+        ],
+        [
+          534.909,
+          465.352
+        ],
+        [
+          534.909,
+          840.572
+        ],
+        [
+          448.697,
+          840.572
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "mid-body",
+      "joint": "spine2",
+      "polygonPx": [
+        [
+          534.909,
+          465.352
+        ],
+        [
+          622.102,
+          465.352
+        ],
+        [
+          622.102,
+          840.572
+        ],
+        [
+          534.909,
+          840.572
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "front-body",
+      "joint": "spine1",
+      "polygonPx": [
+        [
+          622.102,
+          465.352
+        ],
+        [
+          701.456,
+          465.352
+        ],
+        [
+          701.456,
+          840.572
+        ],
+        [
+          622.102,
+          840.572
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "spine0",
+      "polygonPx": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.98,
+          0.0
+        ],
+        [
+          0.0,
+          0.98
+        ]
+      ],
+      "layer": "near"
+    }
+  ],
+  "coverage": {
+    "declarations": "Both pectoral blades explicitly visible at gill; pelvic pair and anal follow their containing body segment. One dorsal and deep-fork tail. All required fish parts visible; no absent/hidden/folded. New observed joints/polygons; reference image used for composition only, never labels or binding.",
+    "sourceFacing": "right",
+    "visualAcceptance": "Nick pending"
+  }
+}

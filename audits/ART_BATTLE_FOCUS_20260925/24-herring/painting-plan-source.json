@@ -1,0 +1,26 @@
+{
+  "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/COVERAGE_STUDY_20260924/painting-plan.json",
+  "sha256": "e05c97a4cd1ed6f33743dcd83f33a9aa66b6c38270155650df1d72ba0a89acf8",
+  "rank": 23,
+  "row": {
+    "name": "Herring",
+    "exemplar": "Herring",
+    "covers": [
+      "Herring",
+      "Sardine",
+      "Anchovy",
+      "Tarpon",
+      "Bonefish",
+      "Whitefish",
+      "Mullet",
+      "Lanternfish"
+    ],
+    "bodyPlan": "fish",
+    "mustPaint": [
+      "slim mirror-silver body; a single mid-back dorsal",
+      "deeply forked tail; large eye",
+      "no spots (unlike the Salmon)"
+    ],
+    "why": "Caveat only (8). Second tier."
+  }
+}

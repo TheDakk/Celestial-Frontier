@@ -1,0 +1,25 @@
+{
+  "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/COVERAGE_STUDY_20260924/painting-plan.json",
+  "sha256": "e05c97a4cd1ed6f33743dcd83f33a9aa66b6c38270155650df1d72ba0a89acf8",
+  "rank": 26,
+  "row": {
+    "name": "Eel",
+    "exemplar": "Eel",
+    "covers": [
+      "Eel",
+      "Moray Eel",
+      "Electric Eel",
+      "Lamprey",
+      "Lungfish",
+      "Knifefish",
+      "Oarfish"
+    ],
+    "bodyPlan": "serpent (the eel profile already lists it; the undulation needs the segment chain)",
+    "mustPaint": [
+      "snake-like body with a continuous fin fringe along back, tail and belly",
+      "blunt-jawed head; no pelvic fins",
+      "plain olive-brown"
+    ],
+    "why": "7 misleading. Lamprey (sucker mouth), Moray (gape) and Oarfish (red crest) stay caveat."
+  }
+}

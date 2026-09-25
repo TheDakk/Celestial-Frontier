@@ -1,0 +1,92 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "40ab67628270a7e885b132c110994da4d459c8d4",
+  "helperSha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/28-honeybee/master.png",
+      "sha256": "0caa257567bef63fe3d66308e565bddb84175b47696315a3781e5a6994c876e6"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/28-honeybee/authoring.json",
+      "sha256": "608eb0f0354097899db51bd8b204a1a61f3ca715d074447267467b71e75f73fb"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/28-honeybee/subject-source.json",
+      "sha256": "fa22ff130e119a29864e2f91ad81e173a477fb8c26d0a7751e0c88266f4a3d97"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/28-honeybee/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "opaque source; established authored-mask key/despill",
+  "recordRecipeHash": "e2068d48666250b7b0cb10612465681282067ff5e7062261f30f603186238620",
+  "bindingHash": "1a4f5e8f7cc913a0ae54852cbb3b3617035d816bd2cde7e6b69d3554d43bb2c5",
+  "contactEndpoints": [
+    "legFrontFarFoot",
+    "legFrontNearFoot",
+    "legMidFarFoot",
+    "legMidNearFoot",
+    "legHindFarFoot",
+    "legHindNearFoot"
+  ],
+  "shapeJoints": [
+    "antennaFar",
+    "antennaNear",
+    "wingFar",
+    "wingNear",
+    "legFrontFarFoot",
+    "legFrontFarKnee",
+    "legFrontNearFoot",
+    "legFrontNearKnee",
+    "legMidFarFoot",
+    "legMidFarKnee",
+    "legMidNearFoot",
+    "legMidNearKnee",
+    "legHindFarFoot",
+    "legHindFarKnee",
+    "legHindNearFoot",
+    "legHindNearKnee",
+    "mandible",
+    "head",
+    "abdomen",
+    "thorax"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/28-honeybee/master.png",
+      "sha256": "0caa257567bef63fe3d66308e565bddb84175b47696315a3781e5a6994c876e6",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/28-honeybee/authoring.json",
+      "sha256": "608eb0f0354097899db51bd8b204a1a61f3ca715d074447267467b71e75f73fb",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/28-honeybee/subject-source.json",
+      "sha256": "fa22ff130e119a29864e2f91ad81e173a477fb8c26d0a7751e0c88266f4a3d97",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/28-honeybee/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

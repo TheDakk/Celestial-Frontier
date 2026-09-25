@@ -1,0 +1,381 @@
+{
+  "id": "racer",
+  "family": "serpent",
+  "landmarksPx": {
+    "root": [
+      900.333,
+      595.65
+    ],
+    "head": [
+      935.602,
+      584.873
+    ],
+    "jaw": [
+      943.439,
+      598.589
+    ],
+    "seg0": [
+      870.942,
+      609.366
+    ],
+    "seg1": [
+      832.734,
+      649.533
+    ],
+    "seg2": [
+      773.953,
+      676.964
+    ],
+    "seg3": [
+      705.375,
+      654.431
+    ],
+    "seg4": [
+      641.695,
+      621.122
+    ],
+    "seg5": [
+      577.036,
+      630.919
+    ],
+    "seg6": [
+      511.397,
+      669.127
+    ],
+    "seg7": [
+      437.92,
+      685.781
+    ],
+    "seg8": [
+      363.464,
+      677.944
+    ],
+    "seg9": [
+      319.378,
+      640.716
+    ]
+  },
+  "groundLineY": 0.5546875,
+  "habitat": {
+    "realm": "land",
+    "source": "Manually observed terrestrial Racer, shallow separated S curves and narrow right-facing head. No hidden segment or limb inferred."
+  },
+  "materials": {
+    "surface": "plain olive-grey smooth serpent scales with lighter ventral form shading, no pigment marking"
+  },
+  "remainderPart": "segment-0",
+  "parts": [
+    {
+      "id": "root-patch",
+      "joint": "root",
+      "polygonPx": [
+        [
+          896.414,
+          591.731
+        ],
+        [
+          904.252,
+          591.731
+        ],
+        [
+          904.252,
+          599.569
+        ],
+        [
+          896.414,
+          599.569
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "polygonPx": [
+        [
+          908.17,
+          594.67
+        ],
+        [
+          948.338,
+          592.711
+        ],
+        [
+          1038.469,
+          578.016
+        ],
+        [
+          1038.469,
+          646.594
+        ],
+        [
+          908.17,
+          634.837
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "polygonPx": [
+        [
+          896.414,
+          509.438
+        ],
+        [
+          1067.859,
+          509.438
+        ],
+        [
+          1067.859,
+          636.797
+        ],
+        [
+          904.252,
+          619.163
+        ],
+        [
+          887.597,
+          603.488
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-0",
+      "joint": "seg0",
+      "polygonPx": [
+        [
+          858.206,
+          0.0
+        ],
+        [
+          1254.0,
+          0.0
+        ],
+        [
+          1254.0,
+          1254.0
+        ],
+        [
+          858.206,
+          1254.0
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-1",
+      "joint": "seg1",
+      "polygonPx": [
+        [
+          803.344,
+          0.0
+        ],
+        [
+          858.206,
+          0.0
+        ],
+        [
+          858.206,
+          1254.0
+        ],
+        [
+          803.344,
+          1254.0
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-2",
+      "joint": "seg2",
+      "polygonPx": [
+        [
+          739.664,
+          0.0
+        ],
+        [
+          803.344,
+          0.0
+        ],
+        [
+          803.344,
+          1254.0
+        ],
+        [
+          739.664,
+          1254.0
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-3",
+      "joint": "seg3",
+      "polygonPx": [
+        [
+          675.984,
+          0.0
+        ],
+        [
+          739.664,
+          0.0
+        ],
+        [
+          739.664,
+          1254.0
+        ],
+        [
+          675.984,
+          1254.0
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-4",
+      "joint": "seg4",
+      "polygonPx": [
+        [
+          608.386,
+          0.0
+        ],
+        [
+          675.984,
+          0.0
+        ],
+        [
+          675.984,
+          1254.0
+        ],
+        [
+          608.386,
+          1254.0
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-5",
+      "joint": "seg5",
+      "polygonPx": [
+        [
+          540.788,
+          0.0
+        ],
+        [
+          608.386,
+          0.0
+        ],
+        [
+          608.386,
+          1254.0
+        ],
+        [
+          540.788,
+          1254.0
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-6",
+      "joint": "seg6",
+      "polygonPx": [
+        [
+          475.148,
+          0.0
+        ],
+        [
+          540.788,
+          0.0
+        ],
+        [
+          540.788,
+          1254.0
+        ],
+        [
+          475.148,
+          1254.0
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-7",
+      "joint": "seg7",
+      "polygonPx": [
+        [
+          401.672,
+          0.0
+        ],
+        [
+          475.148,
+          0.0
+        ],
+        [
+          475.148,
+          1254.0
+        ],
+        [
+          401.672,
+          1254.0
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-8",
+      "joint": "seg8",
+      "polygonPx": [
+        [
+          337.992,
+          0.0
+        ],
+        [
+          401.672,
+          0.0
+        ],
+        [
+          401.672,
+          1254.0
+        ],
+        [
+          337.992,
+          1254.0
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "segment-9",
+      "joint": "seg9",
+      "polygonPx": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          337.992,
+          0.0
+        ],
+        [
+          337.992,
+          1254.0
+        ],
+        [
+          0.0,
+          1254.0
+        ]
+      ],
+      "layer": "near"
+    }
+  ],
+  "coverage": {
+    "declarations": "One continuous slender body with10 segment owners, narrow head, closed jaw, forked tongue and tapering tail visibly present. All serpent contract anatomy present; no hidden, absent or folded required parts. No labels or joints borrowed from Python.",
+    "sourceFacing": "right",
+    "visualAcceptance": "Nick pending; this single painting only"
+  }
+}

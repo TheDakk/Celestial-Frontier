@@ -1,0 +1,38 @@
+[
+  {
+    "kind": "striped",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-b7e367d5-cd3d-4ae4-a207-c4a1bf31d535.png",
+    "tool": "image_gen.imagegen",
+    "prompt": "Generate EXACT1254 x 1254 PNG for a game creature's shader marking mask. Only WHITE pigment marks on genuinely transparent background. NO creature, outline, base fill, shadow, text or labels. All gaps between white marks are completely transparent. This mask is later clipped to a specific Wild Horse master, so marks may extend through currently empty space. Keep the full1254-square fixed canvas; don't crop or center a small patch. An anatomically zoned zebra pattern: upper zone x280..930,y300..720 has MANY irregular tapered mostly vertical curved white stripes, branching naturally with wide transparent gaps (body and neck stripes). Zone x930..1130,y310..560 has finer angled short facial stripes. Lower zone x260..930,y720..1000 has irregular thin HORIZONTAL white bands about8\u201315px thick spaced35px vertically (leg bands); these bands may span the whole lower zone because alpha clipping will retain only the four legs. Do not join stripes into a broad filled area. Pattern extends over body AND legs, never just a little chest patch. Flat white RGB255 with edge antialiasing only; opacity only in the pigment marks.\n"
+  },
+  {
+    "kind": "spotted",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-adc00b28-b874-44f5-b394-2d567163e516.png",
+    "tool": "image_gen.imagegen",
+    "prompt": "Generate EXACT1254 x 1254 PNG for a game creature's shader marking mask. Only WHITE pigment marks on genuinely transparent background. NO creature, outline, base fill, shadow, text or labels. All gaps between white marks are completely transparent. This mask is later clipped to a specific Wild Horse master, so marks may extend through currently empty space. Keep the full1254-square fixed canvas; don't crop or center a small patch. Across the entire canvas from edge to edge, a sparse organic all-over pattern of small and medium irregular rounded white spots, radii8\u201324px, varied spacing55\u2013100px, no grid alignment. Empty transparent space covers at least70percent. No large solid patches. Flat white RGB255 with edge antialiasing only; opacity only in the pigment marks.\n"
+  },
+  {
+    "kind": "banded",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-90f2bfcb-dc09-4a38-bae4-52bc06357c24.png",
+    "tool": "image_gen.imagegen",
+    "prompt": "Generate EXACT1254 x 1254 PNG for a game creature's shader marking mask. Only WHITE pigment marks on genuinely transparent background. NO creature, outline, base fill, shadow, text or labels. All gaps between white marks are completely transparent. This mask is later clipped to a specific Wild Horse master, so marks may extend through currently empty space. Keep the full1254-square fixed canvas; don't crop or center a small patch. Across the entire canvas, twelve narrow irregular gently curving roughly vertical white bands, varying8\u201320px wide, with broad transparent gaps between. Bands run full canvas height. No white base or connections between bands. Flat white RGB255 with edge antialiasing only; opacity only in the pigment marks.\n"
+  },
+  {
+    "kind": "mottled",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-71124283-7f16-494f-b414-f0b636542bb2.png",
+    "tool": "image_gen.imagegen",
+    "prompt": "Generate EXACT1254 x 1254 PNG for a game creature's shader marking mask. Only WHITE pigment marks on genuinely transparent background. NO creature, outline, base fill, shadow, text or labels. All gaps between white marks are completely transparent. This mask is later clipped to a specific Wild Horse master, so marks may extend through currently empty space. Keep the full1254-square fixed canvas; don't crop or center a small patch. An all-over organic camouflage pattern of scattered ragged white pigment islands, varied20\u201360px sizes with asymmetric lobes, distinct transparent gaps. Distribute across whole canvas, white covers about25percent. No circles, stars, filled background or illustration. Flat white RGB255 with edge antialiasing only; opacity only in the pigment marks.\n"
+  },
+  {
+    "kind": "marbled",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-576bba87-88ee-414e-ad13-4e009ee8ab4c.png",
+    "tool": "image_gen.imagegen",
+    "prompt": "Generate EXACT1254 x 1254 PNG for a game creature's shader marking mask. Only WHITE pigment marks on genuinely transparent background. NO creature, outline, base fill, shadow, text or labels. All gaps between white marks are completely transparent. This mask is later clipped to a specific Wild Horse master, so marks may extend through currently empty space. Keep the full1254-square fixed canvas; don't crop or center a small patch. Across whole canvas, a delicate sparse branching network of white marble veins, thin2\u20136px irregular flowing lines with occasional bifurcations. Transparent cells between veins, mostly empty canvas, no filled patches or underlying white wash. Flat white RGB255 with edge antialiasing only; opacity only in the pigment marks.\n"
+  },
+  {
+    "kind": "eye-spotted",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-c2c9af64-034e-4e85-8c44-5d01e2bfd848.png",
+    "tool": "image_gen.imagegen",
+    "prompt": "Generate EXACT1254 x 1254 PNG for a game creature's shader marking mask. Only WHITE pigment marks on genuinely transparent background. NO creature, outline, base fill, shadow, text or labels. All gaps between white marks are completely transparent. This mask is later clipped to a specific Wild Horse master, so marks may extend through currently empty space. Keep the full1254-square fixed canvas; don't crop or center a small patch. Across whole canvas, scattered irregular white oval rings, sizes24\u201355px, strokes3\u20136px. Every ring has a fully transparent interior, no center dot. Broad empty spacing65\u2013120px, varied orientation, no rectangular grid or filled background. Flat white RGB255 with edge antialiasing only; opacity only in the pigment marks.\n"
+  }
+]
