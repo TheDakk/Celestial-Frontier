@@ -107,3 +107,5 @@ Eel item27: audits/ART_BATTLE_FOCUS_20260925/27-eel, fit02 +mask-set03/markings.
 Honeybee item28: audits/ART_BATTLE_FOCUS_20260925/28-honeybee fit02 +mask-set02,21owners,13/13static+953presentation/exactrest, six explicitly abdomen-only masks. Proposedflight0/0p955.8max37.1ms4×;25overbudgetapproach/return frames,13longintervals →phoneRED. Positiveheadgap/connectedpaint reviewed. Codex phase-transition performance repair pending; Claude no picker admission yet. NextRat/Hare for thirdten sheet. C8/economyparked.
 
 Priority update Nick: after Ratitem29 finish, C26chunkedownbranchpush under2GB, acknowledgeC21, C22cheaperreach, C23pinnedloader+controls, C24roottsc, C25actualintegratedsourcefilms, then§20balancetool. Ratfit03all19static/sixmasks/fullproposed0/0p954.8max11.3ms4×/zeroover; actualsourceheadspacingfilmstillneeded. Hare/thirdtensheetoutstanding, no furtherpaintstarted. C8parked.
+
+C26 DONE: origin/openai/mac nowdae190a5 afterfourmeasured<2GBpushes. Packet audits/C21_C26_HANDOFF_20260925. C21acknowledged; C22reachoptimizationinprogress, thenC23loader,C24types,C25actualsourcefilms,§20balance. NoActions/labels.

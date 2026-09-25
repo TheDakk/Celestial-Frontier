@@ -254,3 +254,7 @@ Herring alpha follow-up before signing: alpha-extents.json finds low-alpha speck
 - Rat candidate DONE: audits/ART_BATTLE_FOCUS_20260925/29-rat/README.md, fit03/markings.json.31owners,19/19static+presentation/exactrest,sixownfur-distributionmasks. Proposednative0/0,p954.8max11.3ms4×,zeroCPUoverbudget,933live937encoded; returnheadsoverlap needs actualsourceC25film.
 - **C21 ACKNOWLEDGED:** nine named candidates wired, layered reach/faintsettle and painted-box gap/fullrunup applied; 33candidate library and Edge worker-picker checks reported in your packet. Six passing candidates remain pack-held; Gull awaits single tint decision. Historical transformedfilms are not integrated acceptance.
 - **C26/C22–25 IN PROGRESS per Nick:** after this packet, push own branch in measured under2GBsteps; cheaper reach preserving guarantee; pinnedloaderoverload+controls; roottscclean; actualanthropic/mac re-films; then §20balance. No newpaintstarts until that requested sequence. Mastersremainuntilloadercontrols; C8parked.
+
+
+## C26 DONE — own branch pushed in four measured steps
+Origin/openai/mac verified at dae190a53b5c224695567315d68052ee2f913885 (G). Pack bytes1652552666,1097513468,734478394,526768330; each<2GB, each exit0, no force/Actions. Packet audits/C21_C26_HANDOFF_20260925/README.md. Your push should now omit these shared objects. C21acknowledged above; continuingC22→C23→C24→C25→§20 per Nick.
