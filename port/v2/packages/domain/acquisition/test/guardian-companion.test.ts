@@ -2,7 +2,9 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import {
+  COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   PRIME_SIGNATURE_IDS_V1,
+  planCombatPartySettlementV1,
   planCombatSettlementV1,
   projectGuardianPrimeEncounterV1,
   runDuel,
@@ -28,6 +30,7 @@ import {
   encodeGuardianCompanionStateV1,
   guardianCompanionStateDigestV1,
   prepareGuardianCompanionCombatV1,
+  prepareGuardianPartyCompanionV1,
   projectGuardianCompanionsV1,
 } from '../src/guardian-companion.js';
 
@@ -266,3 +269,37 @@ describe('captured Guardian companion overlay', () => {
     expect(() => decodeGuardianCompanionStateV1(JSON.stringify(mirror))).toThrow();
   });
 });
+
+describe('§20 party overlay (S2b step 2): a captured Guardian who falls before the decisive leg recovers in the same receipt', () => {
+  it('the Guardian member enters Recovery in ONE overlay successor; an Arc 5 decisive champion is left to the ownership bridge', () => {
+    const source = capturedSource();
+    const guardian = source.entries[0]!.creature;
+    const guardianGenome = { ...guardian.genome } as Genome;
+    if (guardian.xp !== null) guardianGenome.xp = guardian.xp;
+    if (guardian.hurt !== null) guardianGenome.hurt = guardian.hurt;
+    const guardianMember = { champion: { kind: 'owned-fauna' as const, creatureId: guardian.creatureId, name: 'Captured', genome: guardianGenome, legacyBredLineage: false }, stance: 'balanced' as const };
+    for (let seed = 1; seed <= 600; seed++) {
+      const defender = makeGenome(seed, 'fauna', 0.95); defender.xp = 486; defender.fed = 200; defender.brood = 200;
+      const encounter = ordinaryEncounter(defender);
+      const helper = makeGenome(seed + 5000, 'fauna', 0.9); helper.xp = 486;
+      const arc5Member = { champion: { kind: 'owned-fauna' as const, creatureId: `arc5-helper-${seed}`, name: 'Helper', genome: helper, legacyBredLineage: false }, stance: 'balanced' as const };
+      const plan = planCombatPartySettlementV1({ battleId: `guardian-party-${seed}`, receiptOrdinal: 44, encounter, worldTier: 4, mode: 'auto',
+        party: [guardianMember, arc5Member],
+        authority: { worldConquered: false, claimedPrimeSignatureIds: PRIME_SIGNATURE_IDS_V1, lossXp: { kind: 'known-target', awardedTarget: 0 }, activePlayMs: 7_000 } });
+      if (plan.status !== 'planned' || !plan.party || plan.party.decisiveIndex !== 1 || plan.party.members[0]!.injury?.status !== 'set-recovery') continue;
+      const prepared = prepareGuardianPartyCompanionV1({ source, parent: createEmptyGuardianCompanionStateV1(), plan });
+      if (prepared.kind !== 'prepared') throw new Error(JSON.stringify(prepared));
+      expect(prepared.settlement.champion).toBeNull();   // the decisive Arc 5 helper belongs to the ownership bridge
+      expect(prepared.settlement.members).toHaveLength(1);
+      expect(prepared.settlement.members[0]!.creatureAfter.assignment).toEqual({ kind: 'recovery', readyAtActivePlayMs: 7_000 + COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1 });
+      expect(prepared.settlement.successor.revision).toBe(1);
+      const projected = projectGuardianCompanionsV1({ source, overlay: prepared.settlement.successor });
+      expect(projected).toMatchObject({ kind: 'projected', creatures: [{ creatureId: guardian.creatureId, assignment: { kind: 'recovery' } }], tombstones: [] });
+      const reread = decodeGuardianCompanionStateV1(encodeGuardianCompanionStateV1(prepared.settlement.successor));
+      expect(guardianCompanionStateDigestV1(reread)).toBe(prepared.settlement.successorDigest);
+      return;
+    }
+    throw new Error('no fixture where the captured Guardian falls first');
+  });
+});
+

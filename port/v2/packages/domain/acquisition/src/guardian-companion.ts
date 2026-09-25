@@ -437,15 +437,19 @@ export function projectGuardianCompanionsV1(input: Readonly<{
 }
 
 function sameChampionSource(creature: CreatureInstanceV1, plan: CombatSettlementPlanV1): boolean {
-  if (plan.champion.kind !== 'owned-fauna') return false;
+  return sameGuardianSource(creature, plan.champion);
+}
+
+function sameGuardianSource(creature: CreatureInstanceV1, champion: CombatSettlementPlanV1['champion']): boolean {
+  if (champion.kind !== 'owned-fauna') return false;
   try {
-    const identity = canonicalGenomeIdentityV1(plan.champion.genome);
-    return creature.creatureId === plan.champion.creatureId
+    const identity = canonicalGenomeIdentityV1(champion.genome);
+    return creature.creatureId === champion.creatureId
       && creature.speciesId === identity.speciesId
       && creature.genomeIdentity === identity.genomeIdentity
       && canonicalJson(creature.genome) === canonicalJson(identity.genome)
-      && (creature.xp ?? 0) === Number(plan.champion.genome.xp ?? 0)
-      && (creature.hurt ?? 0) === Number(plan.champion.genome.hurt ?? 0);
+      && (creature.xp ?? 0) === Number(champion.genome.xp ?? 0)
+      && (creature.hurt ?? 0) === Number(champion.genome.hurt ?? 0);
   } catch {
     return false;
   }
@@ -576,3 +580,95 @@ export function prepareGuardianCompanionCombatV1(input: Readonly<{
     return refused('settlement-shape-mismatch');
   }
 }
+
+/* ---- §20 Guardian parties (S2b step 2): the captured-Guardian side of ONE party receipt ----
+   The decisive champion (when it is a captured Guardian) settles exactly as a single fight; every other captured-Guardian member that
+   fought enters active-play Recovery; all in ONE overlay successor. Arc 5 members belong to the ownership bridge. */
+export interface GuardianPartyCompanionChangeV1 {
+  readonly creatureBefore: CreatureInstanceV1;
+  readonly creatureAfter: CreatureInstanceV1;
+}
+export interface GuardianPartyCompanionSettlementV1 {
+  readonly parentRevision: number;
+  readonly parentDigest: string;
+  readonly sourceDigest: string;
+  readonly receiptEvidence: F4ReceiptEvidenceV2;
+  readonly champion: GuardianPartyCompanionChangeV1 | null;
+  readonly members: readonly GuardianPartyCompanionChangeV1[];
+  readonly successor: GuardianCompanionStateV1;
+  readonly successorDigest: string;
+}
+export type GuardianPartyCompanionPreparationV1 =
+  | Readonly<{ kind: 'not-applicable'; reason: 'no-guardian-party-member' }>
+  | Readonly<{ kind: 'prepared'; settlement: GuardianPartyCompanionSettlementV1 }>
+  | Readonly<{ kind: 'refused'; reason: string }>;
+
+export function prepareGuardianPartyCompanionV1(input: Readonly<{
+  source: GuardianAcquisitionStateV1;
+  parent: GuardianCompanionStateV1;
+  plan: CombatSettlementPlanV1;
+}>): GuardianPartyCompanionPreparationV1 {
+  if (!isCombatSettlementPlanV1(input?.plan) || input.plan.party === undefined) return Object.freeze({ kind: 'refused', reason: 'plan-unregistered' });
+  if (!isGuardianAcquisitionStateV1(input.source)) return Object.freeze({ kind: 'refused', reason: 'source-unregistered' });
+  if (!isGuardianCompanionStateV1(input.parent)) return Object.freeze({ kind: 'refused', reason: 'overlay-unregistered' });
+  const projection = projectGuardianCompanionsV1({ source: input.source, overlay: input.parent });
+  if (projection.kind !== 'projected') return Object.freeze({ kind: 'refused', reason: 'overlay-protected' });
+  if (input.parent.revision === MAX_OWNERSHIP_REVISION) return Object.freeze({ kind: 'refused', reason: 'overlay-revision-exhausted' });
+  const inSource = (id: string): boolean => input.source.entries.some((entry) => entry.creature.creatureId === id);
+  let champion: GuardianPartyCompanionChangeV1 | null = null;
+  if (input.plan.champion.kind === 'owned-fauna' && inSource(input.plan.champion.creatureId)) {
+    const single = prepareGuardianCompanionCombatV1(input);
+    if (single.kind !== 'prepared' || single.settlement.creatureAfter === null) {
+      return Object.freeze({ kind: 'refused', reason: single.kind === 'refused' ? single.reason : 'settlement-shape-mismatch' });
+    }
+    champion = Object.freeze({ creatureBefore: single.settlement.creatureBefore, creatureAfter: single.settlement.creatureAfter });
+  }
+  const members: GuardianPartyCompanionChangeV1[] = [];
+  for (const member of input.plan.party.members) {
+    if (member.injury === null || member.injury.status !== 'set-recovery' || member.champion.kind !== 'owned-fauna') continue;
+    const memberId = member.champion.creatureId;
+    if (!inSource(memberId)) continue;   // an Arc 5 creature: the ownership bridge settles it
+    const creature = projection.creatures.find((row) => row.creatureId === memberId);
+    if (creature === undefined) return Object.freeze({ kind: 'refused', reason: 'champion-not-live' });
+    if (!sameGuardianSource(creature, member.champion)) return Object.freeze({ kind: 'refused', reason: 'champion-source-mismatch' });
+    const settledAt = member.injury.readyAtActivePlayMs - COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1;
+    const busy = creature.assignment !== null
+      && !(creature.assignment.kind === 'recovery' && creature.assignment.readyAtActivePlayMs <= settledAt);
+    if (busy || member.injury.hurtBefore !== (creature.hurt ?? 0)) return Object.freeze({ kind: 'refused', reason: 'settlement-shape-mismatch' });
+    members.push(Object.freeze({
+      creatureBefore: creature,
+      creatureAfter: createCreatureInstanceV2({ ...creature, assignment: { kind: 'recovery' as const, readyAtActivePlayMs: member.injury.readyAtActivePlayMs } }),
+    }));
+  }
+  if (champion === null && members.length === 0) return Object.freeze({ kind: 'not-applicable', reason: 'no-guardian-party-member' });
+  try {
+    const receiptEvidence = createF4ReceiptEvidenceV2({
+      ordinal: input.plan.receiptOrdinal,
+      actionKind: COMBAT_SETTLEMENT_RECEIPT_KIND_V1,
+      witnessDigest: sha256Hex(input.plan.witness),
+    });
+    const changes = [...(champion === null ? [] : [champion]), ...members];
+    const changedIds = new Set(changes.map((change) => change.creatureAfter.creatureId));
+    const replacements = changes.map((change) => {
+      const source = input.source.entries.find((entry) => entry.creature.creatureId === change.creatureAfter.creatureId)!;
+      return liveRow({ sourceRecordId: source.acquisition.recordId, creature: change.creatureAfter, lastReceipt: receiptEvidence });
+    });
+    const successor = registerState({
+      revision: input.parent.revision + 1,
+      rows: [...input.parent.rows.filter((row) => !changedIds.has(rowCreatureId(row))), ...replacements],
+    });
+    return Object.freeze({ kind: 'prepared', settlement: Object.freeze({
+      parentRevision: input.parent.revision,
+      parentDigest: guardianCompanionStateDigestV1(input.parent),
+      sourceDigest: guardianAcquisitionStateDigestV1(input.source),
+      receiptEvidence,
+      champion,
+      members: Object.freeze(members),
+      successor,
+      successorDigest: guardianCompanionStateDigestV1(successor),
+    }) });
+  } catch {
+    return Object.freeze({ kind: 'refused', reason: 'settlement-shape-mismatch' });
+  }
+}
+

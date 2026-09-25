@@ -13,10 +13,11 @@ import {
   type CreatureInstanceId,
   type DiscoveryRecordId,
 } from '@cf/domain-acquisition';
-import { prepareArc6CombatOwnershipV1 } from '@cf/domain-acquisition/combat-settlement-internal';
+import { prepareArc6CombatOwnershipV1, prepareArc6PartyOwnershipV1 } from '@cf/domain-acquisition/combat-settlement-internal';
 import {
   COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   COMBAT_DEFEAT_WOUND_STEP_V1,
+  planCombatPartySettlementV1,
   planCombatSettlementV1,
   projectGuardianPrimeEncounterV1,
   runDuel,
@@ -151,3 +152,81 @@ describe('Arc 6 internal ownership combat bridge', () => {
     expect(prepareArc6CombatOwnershipV1(busy.ownership, busy.plan)).toEqual({ kind: 'refused', reason: 'settlement-shape-mismatch' });
   });
 });
+
+describe('§20 party ownership (S2b step 2): one Arc 5 successor for a whole party', () => {
+  function partyFixture(seeds: readonly number[], assignments: readonly ({ kind: 'recovery'; readyAtActivePlayMs: number } | null)[] = []) {
+    const rows = seeds.map((seed, index) => {
+      const genome = makeGenome(seed, 'fauna', 0.15);
+      genome.xp = 0; genome.hurt = 0;
+      const identity = canonicalGenomeIdentityV1(genome);
+      const recordId = ownershipContentId('discovery', `party-${seed}`) as DiscoveryRecordId;
+      const creatureId = ownershipContentId('creature', `party-${seed}`) as CreatureInstanceId;
+      return { genome, identity, recordId, creatureId, assignment: assignments[index] ?? null };
+    });
+    const source = createInitialOwnershipStateV1({
+      catalogSpecies: rows.filter((r, i) => rows.findIndex((o) => o.identity.speciesId === r.identity.speciesId) === i)
+        .map((r) => createCatalogSpeciesV1({ identity: r.identity, alias: null, firstObservationId: r.recordId })),
+      discoveries: rows.map((r, i) => createLegacyDiscoveryRecordV1({ recordId: r.recordId, speciesId: r.identity.speciesId, legacyCodexId: `s${seeds[i]}`,
+        legacySourceIndex: i, from: 'Fixture wild', legacyLocation: null, firstForSpecies: true })),
+      creatures: rows.map((r) => createCreatureInstanceV1({ creatureId: r.creatureId, speciesId: r.identity.speciesId, genomeIdentity: r.identity.genomeIdentity,
+        genome: r.identity.genome, nickname: null, origin: 'legacy', acquisitionRecordId: r.recordId, lineage: { kind: 'none', generation: 0 },
+        xp: 0, hurt: 0, fed: null, brood: null, assignment: r.assignment, bond: null })),
+      specimenLots: [], biosphereProgress: [], legacyBioX: [], scoutCreatureId: null,
+    });
+    const ownership = migrateOwnershipStateV1ToV2(source);
+    const party = rows.map((r, i) => ({ champion: { kind: 'owned-fauna' as const, creatureId: r.creatureId, name: `P${i}`, genome: r.genome, legacyBredLineage: false }, stance: 'balanced' as const }));
+    const plan = planCombatPartySettlementV1({ battleId: `party-${seeds.join('-')}`, receiptOrdinal: 3, encounter, worldTier: 4, mode: 'auto', party,
+      authority: { worldConquered: false, claimedPrimeSignatureIds: [], lossXp: { kind: 'known-target', awardedTarget: 0 }, activePlayMs: 40_000 } });
+    return { ownership, plan, rows };
+  }
+  function findMulti() {
+    for (let base = 3; base < 400; base += 3) {
+      const f = partyFixture([base, base + 1000, base + 2000]);
+      if (f.plan.status === 'planned' && f.plan.party && f.plan.party.members.some((m) => m.injury?.status === 'set-recovery')) return f;
+    }
+    throw new Error('no multi-leg party fixture');
+  }
+
+  it('the decisive champion and every fallen member settle in ONE successor (revision +1); others are untouched', () => {
+    const f = findMulti();
+    if (f.plan.status !== 'planned' || !f.plan.party) throw new Error('fixture');
+    const prepared = prepareArc6PartyOwnershipV1(f.ownership, f.plan);
+    if (prepared.kind !== 'prepared') throw new Error(JSON.stringify(prepared));
+    expect(prepared.settlement.successor.revision).toBe(f.ownership.revision + 1);
+    const recovered = f.plan.party.members.filter((m) => m.injury?.status === 'set-recovery');
+    expect(prepared.settlement.members.map((c) => c.creatureAfter.creatureId).sort())
+      .toEqual(recovered.map((m) => (m.champion as { creatureId: string }).creatureId).sort());
+    for (const change of prepared.settlement.members) {
+      expect(change.creatureAfter.assignment).toEqual({ kind: 'recovery', readyAtActivePlayMs: 40_000 + COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1 });
+      expect(change.creatureAfter.hurt).toBe(change.creatureBefore.hurt);   // §20: no wound
+    }
+    expect(prepared.settlement.champion?.creatureAfter.creatureId).toBe((f.plan.champion as { creatureId: string }).creatureId);
+    const untouched = f.plan.party.members.filter((m) => m.legEnd === 'not-fought').map((m) => (m.champion as { creatureId: string }).creatureId);
+    for (const id of untouched) expect(prepared.settlement.successor.creatures.find((r) => r.creatureId === id)?.assignment).toBeNull();
+    expect(f.ownership.creatures.every((r) => r.assignment === null)).toBe(true);   // the parent is never mutated
+  });
+
+  it('a member still in an unfinished Recovery refuses the whole party settlement; a finished one is replaced', () => {
+    const probe = findMulti();
+    if (probe.plan.status !== 'planned' || !probe.plan.party) throw new Error('fixture');
+    const recoveredIndex = probe.plan.party.members.findIndex((m) => m.injury?.status === 'set-recovery');
+    const seeds = probe.rows.map((r) => r.genome.seed);
+    const busyAssignments = seeds.map((_, i) => (i === recoveredIndex ? { kind: 'recovery' as const, readyAtActivePlayMs: 40_001 } : null));
+    const busy = partyFixture(seeds, busyAssignments);
+    if (busy.plan.status !== 'planned') throw new Error('busy fixture');
+    expect(prepareArc6PartyOwnershipV1(busy.ownership, busy.plan)).toEqual({ kind: 'refused', reason: 'settlement-shape-mismatch' });
+    const finished = partyFixture(seeds, seeds.map((_, i) => (i === recoveredIndex ? { kind: 'recovery' as const, readyAtActivePlayMs: 40_000 } : null)));
+    if (finished.plan.status !== 'planned') throw new Error('finished fixture');
+    expect(prepareArc6PartyOwnershipV1(finished.ownership, finished.plan).kind).toBe('prepared');
+  });
+
+  it('refuses a single-champion plan (it has no party block) and is not-applicable when no member lives in Arc 5', () => {
+    const { ownership, plan } = fixture('-single');
+    expect(prepareArc6PartyOwnershipV1(ownership, plan)).toEqual({ kind: 'refused', reason: 'plan-unregistered' });
+    const f = findMulti();
+    if (f.plan.status !== 'planned') throw new Error('fixture');
+    const empty = migrateOwnershipStateV1ToV2(createInitialOwnershipStateV1({ catalogSpecies: [], discoveries: [], creatures: [], specimenLots: [], biosphereProgress: [], legacyBioX: [], scoutCreatureId: null }));
+    expect(prepareArc6PartyOwnershipV1(empty, f.plan)).toEqual({ kind: 'not-applicable', reason: 'no-arc5-party-member' });
+  });
+});
+
