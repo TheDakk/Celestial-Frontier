@@ -19,7 +19,9 @@ import {
   type OwnershipStateV2,
 } from '@cf/domain-acquisition';
 import {
+  ARC6_COMBAT_OWNERSHIP_SCHEMA_V1,
   prepareArc6CombatOwnershipV1,
+  prepareArc6PartyOwnershipV1,
   type Arc6CombatOwnershipSettlementV1,
 } from '@cf/domain-acquisition/combat-settlement-internal';
 import { projectCompanionAvailabilityV1 } from '@cf/domain-acquisition/companion-availability';
@@ -34,6 +36,7 @@ import {
   guardianCompanionStateDigestV1,
   isGuardianCompanionStateV1,
   prepareGuardianCompanionCombatV1,
+  prepareGuardianPartyCompanionV1,
   projectGuardianCompanionsV1,
   type GuardianCompanionCombatSettlementV1,
   type GuardianCompanionStateV1,
@@ -832,6 +835,10 @@ interface DerivedCombatSettlementV1 {
   readonly guardianSuccessorDigest: string | null;
   readonly guardianCompanionSettlement: GuardianCompanionCombatSettlementV1 | null;
   readonly guardianCompanionSuccessorDigest: string | null;
+  /** The committed Arc 5 successor digest whenever this receipt writes ownership (a party may write it with no Arc 5 champion). */
+  readonly ownershipSuccessorDigest: string | null;
+  /** §20 party: every captured-Guardian row this receipt changed (the decisive champion and fallen members); null for a single fight. */
+  readonly guardianPartyCreaturesAfter: readonly CreatureInstanceV1[] | null;
 }
 
 function deriveCombatSettlement(input: Readonly<{
@@ -887,7 +894,10 @@ function deriveCombatSettlement(input: Readonly<{
   let guardianCompanionSuccessorDigest: string | null = null;
   let championCreature: CreatureInstanceV1 | null = null;
   let championLegacyCodexId: string | null = null;
+  let ownershipSuccessorDigest: string | null = null;
+  let guardianPartyCreaturesAfter: readonly CreatureInstanceV1[] | null = null;
   const guardianCaptureRequired = plan.guardianCapture.status === 'ownership-writer-required';
+  const partyHasOwned = plan.party?.members.some((member) => member.champion.kind === 'owned-fauna') === true;
   const guardianRead = readGuardianAcquisitionCarrierV1(
     baseExtensions,
     SCENE_OWNERSHIP_ADDRESS_RESOLVER,
@@ -906,7 +916,7 @@ function deriveCombatSettlement(input: Readonly<{
   if (guardianCompanions.kind !== 'projected') {
     throw new Error(`Guardian companion projection is ${guardianCompanions.reason}`);
   }
-  if (guardianCaptureRequired || plan.champion.kind === 'owned-fauna') {
+  if (guardianCaptureRequired || plan.champion.kind === 'owned-fauna' || partyHasOwned) {
     if (ownershipV2 === null || !isOwnershipStateV2(ownershipV2)) {
       throw new Error('owned combat requires registered Arc 5 collision authority');
     }
@@ -919,7 +929,61 @@ function deriveCombatSettlement(input: Readonly<{
       throw new Error('owned combat Arc 5 collision authority is stale or protected');
     }
   }
-  if (plan.champion.kind === 'owned-fauna') {
+  if (plan.party !== undefined) {
+    /* §20 Guardian party (S2b): ONE receipt settles the decisive champion as a single fight and moves every fallen member into
+       active-play Recovery — Arc 5 members in one ownership successor, captured Guardians in one overlay successor. */
+    if (ownershipV2 !== null) {
+      const party = prepareArc6PartyOwnershipV1(ownershipV2, plan);
+      if (party.kind === 'refused') throw new Error(`combat party ownership refused ${party.reason}`);
+      if (party.kind === 'prepared') {
+        const prepared = prepareArc5OwnershipV2Successor({
+          baseExtensions: workingExtensions, parent: ownershipV2, successor: party.settlement.successor, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+        });
+        if (prepared.kind !== 'prepared') throw new Error(`combat party Arc 5 carrier refused ${prepared.reason}`);
+        ownershipPrepared = prepared;
+        workingExtensions = prepared.extensions;
+        ownershipSuccessorDigest = party.settlement.successorDigest;
+        if (party.settlement.champion !== null) {
+          ownershipSettlement = Object.freeze({
+            schema: ARC6_COMBAT_OWNERSHIP_SCHEMA_V1,
+            parentRevision: party.settlement.parentRevision,
+            parentDigest: party.settlement.parentDigest,
+            receiptEvidence: party.settlement.receiptEvidence,
+            creatureBefore: party.settlement.champion.creatureBefore,
+            creatureAfter: party.settlement.champion.creatureAfter,
+            creatureTombstone: null,
+            successor: party.settlement.successor,
+            successorDigest: party.settlement.successorDigest,
+          });
+          championCreature = party.settlement.champion.creatureBefore;
+          championLegacyCodexId = legacyCodexId(ownershipV2, championCreature);
+          changeCodexChampion(draft, ownershipV2, ownershipSettlement, plan);
+        }
+      }
+    }
+    const guardianParty = prepareGuardianPartyCompanionV1({ source: guardianRead.state, parent: guardianCompanionRead.state, plan });
+    if (guardianParty.kind === 'refused') throw new Error(`combat party Guardian overlay refused ${guardianParty.reason}`);
+    if (guardianParty.kind === 'prepared') {
+      const g = guardianParty.settlement;
+      guardianCompanionSuccessorDigest = g.successorDigest;
+      guardianPartyCreaturesAfter = Object.freeze([...(g.champion === null ? [] : [g.champion.creatureAfter]), ...g.members.map((m) => m.creatureAfter)]);
+      workingExtensions = applyV5ExtensionWrites(workingExtensions, [guardianCompanionCarrierWriteV1(g.successor)]).extensions;
+      if (g.champion !== null) {
+        if (championCreature !== null) throw new Error('combat party champion collides across carriers');
+        guardianCompanionSettlement = Object.freeze({
+          parentRevision: g.parentRevision, parentDigest: g.parentDigest, sourceDigest: g.sourceDigest, receiptEvidence: g.receiptEvidence,
+          creatureBefore: g.champion.creatureBefore, creatureAfter: g.champion.creatureAfter, creatureTombstone: null,
+          successor: g.successor, successorDigest: g.successorDigest,
+        });
+        championCreature = g.champion.creatureBefore;
+        championLegacyCodexId = `s${championCreature.genome.seed}`;
+        changeCodexGuardianChampion(draft, guardianCompanionSettlement, plan);
+      }
+    }
+    if (plan.champion.kind === 'owned-fauna' && championCreature === null) {
+      throw new Error('combat party decisive champion is on neither carrier');
+    }
+  } else if (plan.champion.kind === 'owned-fauna') {
     const championId = plan.champion.creatureId;
     const arc5Creature = ownershipV2!.creatures.find((row) => (
       row.creatureId === championId
@@ -949,6 +1013,7 @@ function deriveCombatSettlement(input: Readonly<{
       }
       ownershipPrepared = prepared;
       workingExtensions = prepared.extensions;
+      ownershipSuccessorDigest = ownership.settlement.successorDigest;
       changeCodexChampion(draft, ownershipV2!, ownership.settlement, plan);
     } else {
       const prepared = prepareGuardianCompanionCombatV1({
@@ -1175,6 +1240,8 @@ function deriveCombatSettlement(input: Readonly<{
     guardianSuccessorDigest,
     guardianCompanionSettlement,
     guardianCompanionSuccessorDigest,
+    ownershipSuccessorDigest,
+    guardianPartyCreaturesAfter,
   });
 }
 
@@ -1407,7 +1474,7 @@ export function verifyCommittedCombatSettlementV1(input: Readonly<{
     return mismatch('combat-authority-mismatch');
   }
   let ownershipV2: OwnershipStateV2 | null = null;
-  if (registered.derived.ownershipSettlement !== null) {
+  if (registered.derived.ownershipSuccessorDigest !== null) {
     const prepared = registered.derived.ownershipPrepared;
     if (!prepared || prepared.kind !== 'prepared') return mismatch('ownership-mismatch');
     const committedOwnership = committedArc5OwnershipState(
@@ -1417,7 +1484,7 @@ export function verifyCommittedCombatSettlementV1(input: Readonly<{
     );
     if (committedOwnership === null
       || ownershipStateDigestV2(committedOwnership.state)
-        !== registered.derived.ownershipSettlement.successorDigest) {
+        !== registered.derived.ownershipSuccessorDigest) {
       return mismatch('ownership-mismatch');
     }
     ownershipV2 = committedOwnership.state;
@@ -1453,7 +1520,13 @@ export function verifyCommittedCombatSettlementV1(input: Readonly<{
       overlay: read.state,
     });
     const settlement = registered.derived.guardianCompanionSettlement;
-    if (projection.kind !== 'projected' || settlement === null
+    const partyAfter = registered.derived.guardianPartyCreaturesAfter;
+    if (partyAfter !== null) {
+      if (projection.kind !== 'projected' || !partyAfter.every((after) => projection.creatures.some((row) => (
+        row.creatureId === after.creatureId && canonicalJson(row) === canonicalJson(after))))) {
+        return mismatch('guardian-companion-mismatch');
+      }
+    } else if (projection.kind !== 'projected' || settlement === null
       || (settlement.creatureAfter === null
         ? !projection.tombstones.some((row) => (
           row.creatureId === settlement.creatureBefore.creatureId
