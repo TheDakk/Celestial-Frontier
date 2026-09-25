@@ -1,0 +1,106 @@
+[
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/study.ts",
+    "sha256": "abc5ce46b2ec78e351c190817184af165ca21782d3831166737377fe47ca02fc"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/comparison-02.json",
+    "sha256": "3d8594663f4bca40d84af39437a94f34ebf813e97cafc140a445676db60e21b2"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/baseline-layered-reach.ts",
+    "sha256": "5f86501e3bece589f10d7e891c740a98f88aa32043391a95371385334b2e3306"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/comparison-02.log",
+    "sha256": "585cfff173bd1e937950ddf4e84115fbccc7c37b42db4f6bc4872374595dcefb"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/study-02.ts",
+    "sha256": "b514ae1f387aa5a46536b27c40ce9faf6a6902fef238d0a0f547bb95d840dd70"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/sources-01.json",
+    "sha256": "594149908afa344cc7f90a98ff1c77560e678e98115f01804419de5e15e6606c"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/candidate-02-layered-reach.ts",
+    "sha256": "83b8c103b1b7617df405100289092b5ecb610a100bcfb463871465dfe1d232a7"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/comparison-01.log",
+    "sha256": "62575116149fa6c741c898a66f917c2a7dcf106c5c63f651920382ec3ac2d786"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/run.mjs",
+    "sha256": "2e923fd9441f11a872f327fea33cacf669c0cc5c9e20b3ab89187baf58cc64a4"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/targeted-01.log",
+    "sha256": "8e24915f7c44f2ae1835914c80cb246961514491c5a76b9a5a0f4709b44cfc55"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/targeted-02.log",
+    "sha256": "fee2dc60d89965b2c98dc903d6a11a0339f0676e589a2f8625284f393c6c93d9"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/root-validate.log",
+    "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/README.md",
+    "sha256": "424698ca4ee9a52b0294e9642361b80fd0521ce9aedfce6f26100b83811a289c"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/run-02.mjs",
+    "sha256": "efaa50d9a694621887cb0de69baa09d4cc816380bce972b5c683e796b3419b93"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/candidate-layered-reach.ts",
+    "sha256": "5c6ecd291e12eedcc342ce596594b451cd39dfdf4a799b11c91ede3f3f1d475a"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/sources-02.json",
+    "sha256": "e32f43ccaf2aef51857c21b1ff2892a648db1a2af8c92be3514cf9dfa141ffeb"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/app-types.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/s2-dependency-identity.json",
+    "sha256": "7893ec26bcd584b26f0387f2c098a08c08f47ff674365a76671106f867e9a216"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/mutation-results.json",
+    "sha256": "be5a3cedab4adde1f2220d6db9f26d4fe52844742c965349e11d0871c503d9ef"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/comparison-01.json",
+    "sha256": "c19a2dded082ebbed1b3a93bcfa0d7d1a38f76562d9d2f5efe883a9345dd4a9b"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/develop-profile.log",
+    "sha256": "f62fd85cfb383bcf488197c23ceaf73b74af879db14c175c3b4d1c3eb17726d4"
+  },
+  {
+    "path": "audits/C22_LAYERED_REACH_20260925/mutation-controls.mjs",
+    "sha256": "3b82053e218fa2984ea03c8da7f7c361628b28205eb9fc2b47fd529f8d584c26"
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-layered-stance-reach.ts",
+    "sha256": "b29b7e3179c83e52ad7b9725ef250b099ffb25617c85b99af843a5b7f193a994"
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-layered-stance-reach.test.ts",
+    "sha256": "4feacc093cc7f9b75185d92efb537a5728ba179314e60c79f0e4b75f6f5780ac"
+  },
+  {
+    "path": "CREATURE_ANIMATION.md",
+    "sha256": "0d3555311a9e27bf84b667b2ecd4e11d7e76539e5d1119ad7c21a7f490f2471a"
+  },
+  {
+    "path": "celestial-frontier-codebase-reference.md",
+    "sha256": "bc0989b52ab380b266adbe680aef5a1e03a270009f681366786fc168fe5cc696"
+  }
+]
