@@ -1,0 +1,82 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/exceptional-crafting-evidence-contract.test.ts (8 tests | 1 failed) 1600ms
+     × replays every current rendered release control and preserves the Research reach boundary 720ms
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts (29 tests | 2 failed) 373ms
+     × keeps every rendered Guide and release oracle green on current exact copy before browser spend 120ms
+     × keeps a fixed 87-row Guide oracle with five independent population controls 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/exceptional-crafting-evidence-contract.test.ts > Pureforged browser-evidence truth > replays every current rendered release control and preserves the Research reach boundary
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/exceptional-crafting-evidence-contract.test.ts:348:23
+    346|     expect(result.error).toBeNull();
+    347|     expect(result.baseline.ok).toBe(true);
+    348|     expect(result.ok).toBe(true);
+       |                       ^
+    349|     expect(result.restored).toBe(true);
+    350|     expect(after.ok).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps every rendered Guide and release oracle green on current exact copy before browser spend
+AssertionError: expected Object{ …(55) } to match object { complete: true, honest: true, …(4) }
+(49 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -2,7 +2,7 @@
+    "canonical": true,
+    "complete": true,
+    "honest": true,
+    "liveProgressionContract": true,
+    "liveProgressionContradiction": false,
+-   "populated": true,
++   "populated": false,
+  }
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:377:29
+    375|       readonly liveProgressionContradiction: boolean;
+    376|     };
+    377|     expect(releaseBaseline).toMatchObject({
+       |                             ^
+    378|       complete: true,
+    379|       honest: true,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps a fixed 87-row Guide oracle with five independent population controls
+AssertionError: expected 85 to be 86 // Object.is equality
+
+- Expected
++ Received
+
+- 86
++ 85
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:1048:37
+    1046|     expect(glassExpectedBulletCount).toBe(87);
+    1047|     expect(glassMissingBulletCount).toBe(85);
+    1048|     expect(glassMissingBulletCount).toBe(glassExpectedBulletCount - 1);
+       |                                     ^
+    1049|     expect(glassSource).toContain('87-outcome development inventory');
+    1050|     expect(glassSource).not.toContain('55-outcome development inventor…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  3 failed | 34 passed (37)
+   Start at  23:52:37
+   Duration  2.31s (transform 294ms, setup 0ms, import 2.17s, tests 1.97s, environment 0ms)
+
