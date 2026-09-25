@@ -1,0 +1,136 @@
+{
+  "schema": "cf.marking-conservation/v1",
+  "status": "PASS",
+  "createdAt": "2026-09-25T14:36:30.140Z",
+  "sourceHashes": {
+    "master.png": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407",
+    "fit-02/record.json": "9ac68ce8e0fd7a4380e1e346f5711fc4ff890cb68867785e7c90f309e2855629",
+    "fit-02/binding.json": "8932cae929ac5de4583a2318889de6c17f86089e333b47b0695266b20962721a",
+    "fit-02/parts/keyed.png": "6ac498feaedb099262e8e6946f97eff33ecc91a3dd2b918b6988730d74c652f3",
+    "fit-02/parts/atlas/wild-horse.png": "62cdf6363079235cec96722d3094a2c9075c2131a704ac01254f161142b4f25f",
+    "fit-02/parts/manifest.json": "dd889627455c2fa1602c17d6e6fdc7886517542fa4be360a8e99db72f657a09e",
+    "prompt.txt": "3a595d0c4547df71050212003f130eacf0562a8f72daef820fbfc8f599d1ad5c",
+    "raw/striped.png": "ab6f66825a5e060c6e8c110bb3df99a145a84d834568d9abb59428c6ce37b848",
+    "prompts/striped.txt": "5b5e239d48af5d806dd5b6e835b2ac9b825c1ce8f5019d61db570b8bf3c51c7f",
+    "raw/spotted.png": "7d8d07328f018b97b3b8f0671b50ac7fa05314beb76bcd439a5ed3c859b39586",
+    "prompts/spotted.txt": "90722720401e7acb3cab957ecb16497c3b742951409a1df4e4aa5d6bb7f66102",
+    "raw/banded.png": "975c8167f2470ae377f6d4d8e9da7d226b8e8e0c23075b3698c68c9b080aff48",
+    "prompts/banded.txt": "2de20809d8a04b9e657e338f83ac8fe1d9761c88ccfa9335507c1d43a5499024",
+    "raw/mottled.png": "c0d309b69891a45ecc7094fcec4d6b25a0d4fd1be3b247650682959fe552b17a",
+    "prompts/mottled.txt": "e7a3117b8210a5bfa005bd993af7c28ba8ea0698d8e936421960583144742e99",
+    "raw/marbled.png": "f28ac991893e4550d17c156a14d2f299a16ed0427014078196ade50de0e3dbc7",
+    "prompts/marbled.txt": "6e1a957bb1310211ad063b9915ae36ea11bfeefd51b8e40d50235927a101522e",
+    "raw/eye-spotted.png": "b6a2d44fdc786c4d7923977d47d3d4db549d1bee864744530297902787c0e31c",
+    "prompts/eye-spotted.txt": "4acea0345af766e5e381755fad4bad91e07b6302858ad34d31352145bfeb90e7"
+  },
+  "helperSha256": "80187286ad6166b448b00f1b42910daee192623e8a0a20607c096760cc77f7ca",
+  "exclusion": {
+    "method": "none; every keyed-alpha pixel is eligible",
+    "excludedParts": []
+  },
+  "rows": [
+    {
+      "pattern": "striped",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 213048,
+      "opaqueEquivalentPixels": 89996.89411764705,
+      "rawOutsideAlphaPixels": 187206,
+      "sha256": "f67b6bc927c7132bc6b1b1c3a1c207eba01e1a2918b48cd42270b1cb7622e40e",
+      "compositeFile": "composites/striped.png",
+      "compositeSha256": "e11a79799f1a4a089433614aabbe446ca4c9db6017d43ec8787e20c589b14a07"
+    },
+    {
+      "pattern": "spotted",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 87204,
+      "opaqueEquivalentPixels": 10843.266666666666,
+      "rawOutsideAlphaPixels": 294739,
+      "sha256": "680e0e1a786c1741ce54172e3b0bca560fb2eccbc3c6cf59ab74617aad1798f9",
+      "compositeFile": "composites/spotted.png",
+      "compositeSha256": "0453a4aae40a91270e5af7a111d20110f97b35d54ec5fec41b6c9c6be5821eb8"
+    },
+    {
+      "pattern": "banded",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 97053,
+      "opaqueEquivalentPixels": 45689.58823529412,
+      "rawOutsideAlphaPixels": 427734,
+      "sha256": "d1367f9fa4f7b4c0ddf1d95bc25ea794a02db4568072f82743827491773353f1",
+      "compositeFile": "composites/banded.png",
+      "compositeSha256": "4f370746cc79f6a260d8f3b8d175cd9c1ec56bd9cd09ad1df20697617a3a6cb0"
+    },
+    {
+      "pattern": "mottled",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 259219,
+      "opaqueEquivalentPixels": 69520.24705882353,
+      "rawOutsideAlphaPixels": 1102697,
+      "sha256": "07c7d7ba519d62d34873c3cfa4339ede1dad0fb1b08532e1fc87977df5289b1c",
+      "compositeFile": "composites/mottled.png",
+      "compositeSha256": "2d13dff20fbd4c3538e2d53111cd59e28068a5df92c220d89c2b90d5e755a6af"
+    },
+    {
+      "pattern": "marbled",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 87951,
+      "opaqueEquivalentPixels": 5773.552941176471,
+      "rawOutsideAlphaPixels": 259965,
+      "sha256": "6af33691dcbe48cdc4f0e0e89efb7204a32a2593e3f283050937dd17fc93edec",
+      "compositeFile": "composites/marbled.png",
+      "compositeSha256": "8d71e88ee294023052b217469c9faebb46ce027d3bae4ce79b28818ec186ccf2"
+    },
+    {
+      "pattern": "eye-spotted",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 59908,
+      "opaqueEquivalentPixels": 13808.156862745098,
+      "rawOutsideAlphaPixels": 227907,
+      "sha256": "db91993fea011244f904ba5f68362ca67ab1da326ec6679988bf418b9edd8c74",
+      "compositeFile": "composites/eye-spotted.png",
+      "compositeSha256": "95658e8b5b6d6c35668c44c5bf5fdb75abf2f3dc3f464e5a7ef933c677c9e11e"
+    }
+  ],
+  "controls": {
+    "validAccepted": true,
+    "outsidePixelMutantRefused": true,
+    "outsidePixel": [
+      0,
+      0
+    ],
+    "mutantAssessment": {
+      "outsideAlphaPixels": 1,
+      "alphaExceedsKeyedPixels": 1,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 213049
+    }
+  },
+  "node": "v26.9.0",
+  "imageMagick": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org",
+  "sheetFile": "six-mask-sheet.png",
+  "sheetSha256": "8f69a1b085cd7c31b6080c86ad12a56572a13cf55d6389e92b482c914adbee99",
+  "previewOnly": "Sheet cells are thumbnails; masks and composites remain unchanged 1254-square master coordinates."
+}

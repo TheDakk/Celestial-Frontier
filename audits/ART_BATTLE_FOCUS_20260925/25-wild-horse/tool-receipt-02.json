@@ -1,0 +1,7 @@
+{
+  "output_hint": "Generated images are saved to /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc as /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-94dbba25-b97e-4344-bb19-c392d2f63d15.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-94dbba25-b97e-4344-bb19-c392d2f63d15.png",
+  "masterSha256": "3fea7a6e9ee2a421b39f516a42b1e9bfc4be10093ead8639182250a5bfb6e407",
+  "promptSha256": "e5787860b71791cdb9d8e13f488e098d82a9881c1d84f1fafab0c02500663ffe",
+  "selected": true
+}
