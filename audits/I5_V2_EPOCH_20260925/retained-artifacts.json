@@ -1,0 +1,93 @@
+[
+  {
+    "original": "calibration-1-report.json",
+    "retained": "epoch/calibration-1-report.json.gz",
+    "rawBytes": 293529,
+    "rawSha256": "857649ffd4b2fe38d1a2003c0f7f6af91dc33551a7a50b6f0d46985b5289b8c2",
+    "retainedSha256": "9f02dd4f8730f65820e929331ac544b420ca0c394088629f30c84ff79931582d"
+  },
+  {
+    "original": "calibration-1-verify.log",
+    "retained": "epoch/calibration-1-verify.log",
+    "rawBytes": 79,
+    "rawSha256": "3cdfa22e2d1d4e0eee56f3fa3c1ae83adbf8c9fa9c6de2ba3042dacdcb8f4e85",
+    "retainedSha256": "3cdfa22e2d1d4e0eee56f3fa3c1ae83adbf8c9fa9c6de2ba3042dacdcb8f4e85"
+  },
+  {
+    "original": "calibration-1.log",
+    "retained": "epoch/calibration-1.log",
+    "rawBytes": 18828,
+    "rawSha256": "6901d6bab76a6ab010170183d708c6257c580d3ed6780822fea545b7a0ccc614",
+    "retainedSha256": "6901d6bab76a6ab010170183d708c6257c580d3ed6780822fea545b7a0ccc614"
+  },
+  {
+    "original": "calibration-budget.json",
+    "retained": "epoch/calibration-budget.json",
+    "rawBytes": 7395,
+    "rawSha256": "206a60450f35cc900a04d1381d2231b8711382ee3ac9f920f9ff5a4a3125bf6a",
+    "retainedSha256": "206a60450f35cc900a04d1381d2231b8711382ee3ac9f920f9ff5a4a3125bf6a"
+  },
+  {
+    "original": "compendiummem-i5-v2-b4f191c3538f-calibration-1-phone-focus-pinned.png",
+    "retained": "epoch/compendiummem-i5-v2-b4f191c3538f-calibration-1-phone-focus-pinned.png",
+    "rawBytes": 790211,
+    "rawSha256": "f8ec6c9cb032884b7765f451cecbd34790c57f8c48d337756c3532094170ed4e",
+    "retainedSha256": "f8ec6c9cb032884b7765f451cecbd34790c57f8c48d337756c3532094170ed4e"
+  },
+  {
+    "original": "compendiummem-i5-v2-b4f191c3538f-calibration-1-phone-list.png",
+    "retained": "epoch/compendiummem-i5-v2-b4f191c3538f-calibration-1-phone-list.png",
+    "rawBytes": 834506,
+    "rawSha256": "2af704182fe1e8b9c04133616ceccb70943d276d0359449c97a853ad464b6b66",
+    "retainedSha256": "2af704182fe1e8b9c04133616ceccb70943d276d0359449c97a853ad464b6b66"
+  },
+  {
+    "original": "edge-preflight.log",
+    "retained": "epoch/edge-preflight.log",
+    "rawBytes": 876,
+    "rawSha256": "8c371e363670f682c9e20bb334169c073e24dae7bd979f0eee77df4da66146f4",
+    "retainedSha256": "8c371e363670f682c9e20bb334169c073e24dae7bd979f0eee77df4da66146f4"
+  },
+  {
+    "original": "execution.json",
+    "retained": "epoch/execution.json",
+    "rawBytes": 2104,
+    "rawSha256": "e9bd000dd0b3cc65676230045106eb91e9954382fb26f9559bd5ecd333a3eeba",
+    "retainedSha256": "e9bd000dd0b3cc65676230045106eb91e9954382fb26f9559bd5ecd333a3eeba"
+  },
+  {
+    "original": "instrument/collector.mjs",
+    "retained": "epoch/instrument/collector.mjs.gz",
+    "rawBytes": 186879,
+    "rawSha256": "fd0e3b85f42fffd43c68b21bf61ecf913d872acf914c0cea4ae2718081e1b915",
+    "retainedSha256": "4d2c0d83eb66b23549ba2b892525172905b412e475c06780ef0bc11850e9863b"
+  },
+  {
+    "original": "instrument/contract.mjs",
+    "retained": "epoch/instrument/contract.mjs.gz",
+    "rawBytes": 289423,
+    "rawSha256": "66602b49b641d049f383e9a7926c20a94fa568c0a81fbb58a408f0cfb41e2648",
+    "retainedSha256": "8d531c2d491bcebd2649e615616a3478fd03cde0d46a746ec044c4772ee6450c"
+  },
+  {
+    "original": "instrument/manifest.json",
+    "retained": "epoch/instrument/manifest.json",
+    "rawBytes": 391,
+    "rawSha256": "0b62549040d03e24bc429c7c41188e3c7cdbe22f6679dabf743ed2b14e07b794",
+    "retainedSha256": "0b62549040d03e24bc429c7c41188e3c7cdbe22f6679dabf743ed2b14e07b794"
+  },
+  {
+    "original": "instrument-authority.json",
+    "retained": "epoch/instrument-authority.json",
+    "rawBytes": 60412,
+    "rawSha256": "3e349cce7e5134efcadd0c19cf9b01469340bc57870bf54f88da39de5da4bc8d",
+    "retainedSha256": "3e349cce7e5134efcadd0c19cf9b01469340bc57870bf54f88da39de5da4bc8d"
+  },
+  {
+    "original": "prepare-build.log",
+    "retained": "epoch/prepare-build.log",
+    "rawBytes": 14984,
+    "rawSha256": "524de4d16d97590d64c71412d77e2d239a70b60c0af921aa3a4515b7f3bef5fe",
+    "retainedSha256": "524de4d16d97590d64c71412d77e2d239a70b60c0af921aa3a4515b7f3bef5fe"
+  }
+]
