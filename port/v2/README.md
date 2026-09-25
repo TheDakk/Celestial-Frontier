@@ -4792,3 +4792,15 @@ The consolidated audit is `audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md`; its th
 failures are repaired in `audits/C_LANE_REPAIRS_20260914`. Current source bindings were
 updated after input review, with collector/evaluator, fixed ruler, ceilings and historical
 samples unchanged. This is static admission, not a new native memory certificate.
+
+## §20 balance diagnostics — matches tooling 2026-09-25
+
+`node tools/s20-balance.mjs --source-root=/absolute/repository --out=/new/output`
+measures the committed source's encounter resolver using disjoint training/evaluation
+corpora, four single-fighter stances and384 full-party plans. `node --test tools/s20-balance.test.mjs`
+checks the instrument (also discovered by the Node tools owner). Output includes source
+hashes, declared policy, exact corpora, selected plans, Command decision-tree bounds and
+fail-closed findings. Source HEAD must verify G; port/v2 must be clean; no output reuse.
+The current local lane needs Claude's engine source via the read-only source-root option.
+This is an explicit diagnostic, not a develop-profile owner or campaign certificate.
+See [measured red results and limitations](../../audits/S20_BALANCE_20260925/README.md).
