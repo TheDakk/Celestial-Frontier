@@ -1,0 +1,49 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "world": {
+    "key": "temperate",
+    "liquid": "water",
+    "surfaceWater": false,
+    "cardHash": "temperate-1"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Honeybee",
+      "dn": "Honeybee",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "side": "B",
+      "an": "Honeybee",
+      "dn": "Honeybee",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 24,
+      "hpB": 21
+    },
+    {
+      "an": "Honeybee",
+      "dn": "Honeybee",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Honeybee",
+      "dn": "Honeybee",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 24,
+      "hpB": 0
+    }
+  ],
+  "supports": "observed"
+}

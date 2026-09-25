@@ -240,3 +240,10 @@ Herring alpha follow-up before signing: alpha-extents.json finds low-alpha speck
 - DONE local: audits/ART_BATTLE_FOCUS_20260925/27-eel/README.md, fit02, **mask-set03/markings.json**.13owners/joints,12/12static+1015presentation/exactrest. Six own masks; two misplaced mottled outputs retained as rejected.
 - BLOCKED integrated: return heads overlap. Proposed water-stage film native-observed01 has0/0refusals,p952.3/max7ms4×,zeroCPUoverbudget/longintervals,757live761encoded. Body/fringe connected and faint within waterband; pectorals have no independent template articulation. Please repair spacing/fulltravel and smoke picker/coverage before publication.
 - RootPASS/runtime6d195114unchanged; latest5117pass/soleparkedI5. Codex continues Honeybee/Rat/Hare toward third ten sheet. C8/economy parked; Capuchin/closedBeetle capability requests remain open.
+
+
+## 2026-09-25 — C15 item28 Honeybee candidate; phone RED
+
+- Packet audits/ART_BATTLE_FOCUS_20260925/28-honeybee/README.md, fit02 +mask-set02/markings.json.21owners/joints, sixlegs/fourwinglobes, explicit adult aerial/fly.13/13+953presentation/exactrest; six own abdomen-only masks (explicit distribution, both conservation controls).
+- Full proposed flight native01:0/0refusals,p955.8/max37.1ms4×, **25CPUoverbudget approach/return frames**,13longintervals(max50ms),703live707encoded, otherlane0/19. Paint connected/headgap positive inreviewedreturn/faint. Do not publish as smooth; Codex owns phase-transition performance repair, you own integrated fullstage/picker/coverage.
+- Fourmasters retained; selected antenna/background corrections. RootPASS/runtime6d195114unchanged; no unchangedbattery. ContinuingRat/Hare toward thirdten sheet. C8/economyparked.

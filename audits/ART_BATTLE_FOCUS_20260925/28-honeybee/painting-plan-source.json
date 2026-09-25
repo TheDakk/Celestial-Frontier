@@ -1,0 +1,20 @@
+{
+  "name": "Bee",
+  "exemplar": "Honeybee",
+  "covers": [
+    "Honeybee",
+    "Bee",
+    "Bumblebee",
+    "Orchid Bee",
+    "Wasp",
+    "Fly",
+    "Black Fly"
+  ],
+  "bodyPlan": "insect",
+  "mustPaint": [
+    "furry thorax; banded abdomen (shading only; the bands come from the banded mask)",
+    "two pairs of clear wings",
+    "pinched waist"
+  ],
+  "why": "7 misleading. Bumblebee, Wasp, Fly and Black Fly stay caveat."
+}

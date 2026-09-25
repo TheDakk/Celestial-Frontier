@@ -1,0 +1,99 @@
+Paste in every prompt. Attach the ONE reference the class calls for, never both.
+
+For cut-out classes (orbital planets, flora, fauna, ships, landmarks, items,
+emblems, Effects; inactive people excluded; Arena MID/NEAR use the rule below):
+  Match the exact visual language of the attached approved Discovery Atlas,
+  audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The atlas is
+  a reference only: never crop artwork out of it. Its background, lettering
+  and divided layout are not the output layout; use this class's own layout.
+  SHA-256: c53add2993caba39b6dc12dc75d5d767be86896a7c41cfaa6c94f356e8d92a62
+
+For scene classes (universe, stars, planet biomes, Arena FAR), and Arena
+MID/NEAR key-painted terrain so all arena layers match the same biome hand:
+  Match the exact visual language of the attached approved Living Worlds
+  triptych, audits/MIDGAME_ART_DIRECTION_20260908/02-inhabited-worlds.png,
+  style_id "frontier". Do not redesign or reinterpret the style. The triptych
+  is a reference only: never crop artwork out of it. Its lettering and panel
+  divisions are not the output layout; use this class's own layout.
+  SHA-256: 68f03f0233ec2ca89ddf39238cfaf1a30b83027a58beaea9fbb1735273720a38
+
+The four approved images in audits/MIDGAME_ART_DIRECTION_20260908 define the
+art direction: 01-discovery-atlas.png, 02-inhabited-worlds.png,
+03-earth-full-landfall.png and 04-alien-full-landfall.png. The existing atlas
+and triptych above are the production reference locks; do not paint new locks.
+Verify their original bytes against these SHA-256 values before use.
+The local model's current riverbank output is a gap to close, not a reference.
+
+Paste this paragraph verbatim in every prompt. Approved by Nick at 6f5c396e.
+Changes to the paragraph require a new kit version; never revise it at send time.
+
+  Rich natural-history fantasy painting, one hand across every subject,
+  tactile directional brushwork, believable connected anatomy, weathered rock,
+  individual but grouped foliage, deep atmospheric layers, readable silhouettes,
+  selective high detail, soft natural light shared by every subject, honest
+  ground and water contact, subtle foreground occlusion, premium painted
+  science-fiction with discovery and character; Earth species keep real
+  anatomy, fur, feather and botany; alien life keeps its data-driven form and
+  palette in the same hand; not plastic CGI, not photography, not cartoon,
+  not oversharpened, no glowing outlines.
+
+The scene-contact and occlusion language governs composed scenes. A cut-out
+retains the same hand and anatomy while obeying its no-ground/no-shadow layout;
+contact and shared atmosphere are resolved when composed and finished on a plate.
+The companion rule in section 4E is retained for companion-flagged game data;
+it does not change counts or the underlying genome.
+
+SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2
+  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.
+         Light: near-neutral yellow-white, natural diffuse fill.
+  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.
+  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.
+  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.
+  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.
+  Fauna adaptation: Earth Honeybee; real named anatomy and natural materials take priority over raw procedural genes. furry thorax with a banded amber-and-black abdomen; two pairs of clear veined wings; pollen baskets on the hind legs. Isolated library archetype, not a landing resident claim.
+  One signature: no biome hazard in source; no added hazard motif.
+
+SUBJECT
+One Earth Honeybee. furry thorax with a banded amber-and-black abdomen; two pairs of clear veined wings; pollen baskets on the hind legs. 
+Genomic identity and traits (Earth anatomy takes priority): {"seed":1783111945,"kingdom":"fauna","color":16,"form":4,"body":7,"loco":5,"trait":13,"size":4,"diet":3,"head":6,"limbs":4,"skin":3,"tail":1,"pattern":0,"eyes":1,"behavior":3,"habitat":14,"detail":9,"accent":16,"temper":8,"sense":2,"repro":7,"life":5,"metab":1,"lumin":true,"gen":0,"heat":1,"_earthName":"Honeybee"}
+Family contract insect, clip set insect-v1. Required rig joint/part inventory: root, thorax, head, mandible, abdomen, legFrontFarKnee, legFrontFarFoot, legFrontNearKnee, legFrontNearFoot, legMidFarKnee, legMidFarFoot, legMidNearKnee, legMidNearFoot, legHindFarKnee, legHindFarFoot, legHindNearKnee, legHindNearFoot, antennaFar, antennaNear, wingFar, wingNear. Connected organic painted subject, no equipment, no fantasy added limbs.
+Right-facing lateral view, head toward right. Entire bee x160–1090 y170–1040 on opaque RGB255,0,255 magenta. Plain unmarked tawny furry thorax and golden-brown abdomen, no stripes/bands/spots. Six separate bent legs staggered and countable; two near and two far translucent clear veined wings raised separately so all FOUR wing silhouettes can be counted. Far fore/hind wing are smaller but visible; hind wings shorter than forewings, coupled pairs rooted together at thorax. Pinched waist, rounded furry thorax, rounded segmented abdomen tapering at rear, elbowed antennae, two large compound eyes. Side-on anatomy, slightly offset far limbs for separation; do not use a top-down butterfly layout. No wings crossing or fused with another wing. Own six masks carry all markings later. Soft painterly natural-history brushwork matching retained atlas style; no photorealistic macro background.
+
+ACCURACY
+  Complete real Honeybee, one creature, anatomically accurate species proportions.
+  All normally visible limbs separately readable with far appendages visibly offset where the view permits; never invent extra anatomy.
+  No scenery, ground, shadow, text, duplicate creature, cropped anatomy.
+  
+
+LAYOUT
+  Right-facing lateral view, head toward right. Entire bee x160–1090 y170–1040 on opaque RGB255,0,255 magenta. Plain unmarked tawny furry thorax and golden-brown abdomen, no stripes/bands/spots. Six separate bent legs staggered and countable; two near and two far translucent clear veined wings raised separately so all FOUR wing silhouettes can be counted. Far fore/hind wing are smaller but visible; hind wings shorter than forewings, coupled pairs rooted together at thorax. Pinched waist, rounded furry thorax, rounded segmented abdomen tapering at rear, elbowed antennae, two large compound eyes. Side-on anatomy, slightly offset far limbs for separation; do not use a top-down butterfly layout. No wings crossing or fused with another wing. Own six masks carry all markings later. Soft painterly natural-history brushwork matching retained atlas style; no photorealistic macro background.
+  One whole creature centered, entire anatomy in frame, at least 8 percent safe margin. No floor plane.
+
+TECHNICAL OUTPUT
+  Create a square 1254 x 1254 PNG. Every pixel that is not the subject is one
+  flat, uniform, pure magenta fill (#FF00FF): no gradient, vignette, texture,
+  noise, checkerboard or transparency pattern, and no ground, base, frame,
+  scenery or cast shadow. The subject's outline is crisp and fully opaque
+  against the magenta, with no glow, haze, smoke or soft feathering bleeding
+  into it, and nothing on the subject is magenta or pink. The magenta is keyed
+  out afterwards to produce the transparent asset.
+
+NEGATIVE
+  No text, letters, numbers, watermark, signature, border, frame, grid, UI
+  element, health bar, minimap, waypoint, token ring, base, pedestal,
+  photorealism, anime, chibi styling, cel shading, 3D render, plastic toy
+  sheen, airbrushed gradients, duplicate subject, unintended companion, extra
+  limbs, missing limbs, malformed hands, cropped anatomy, or contact-sheet
+  layout. No lens flare, no chromatic aberration, no holographic UI
+  projections, no glowing outlines or rim light used as an effect.
+  No scenery, no floor plane, no cast shadow, no drop shadow, no white
+  background, no checkered background, no baked transparency pattern.
+  Background must be one flat uniform magenta fill and nothing else.
+  No default bipedal humanoid stance unless named, no armour plating the brief did
+  not ask for, no human eyes, no weapons held in hands unless named, no rider,
+  no second creature.
+  Do not add a blanket oversized-head ban that would fight a data-owned
+  companion brief.
+
+CORRECTION FOR THIS NEW PAINTING: Zoom out substantially. Four wings and SIX legs must be separately countable in one side-on bee. Wings in a fan above body: far forewing tip at (590,210), far hindwing at (740,330), near forewing at (240,260), near hindwing at (340,470), all rooted at thorax (720,610). Leave clearly visible magenta gaps between the four distal wing lobes. Body from abdomen tip(260,700) through furry thorax(730,620) to head(905,610). Two antennae remain entirely inside x1080. Six feet separate: hind far(360,860), hind near(410,1020), middle far(580,880), middle near(660,1030), front far(865,855), front near(990,930). Every leg must visibly connect to thorax, with at least20px background gap separating distal feet. No pollen balls, pollen baskets empty. ALL abdomen segments same plain honey brown, no dark band pattern. OPAQUE SOLID MAGENTA BACKGROUND, alpha255 EVERYWHERE. No transparent pixels anywhere in output, including wing interiors: translucent look is pale painted cream on magenta, never actual background-alpha. No outline flecks. Enforce at least125px margin on all sides. Do not copy the rejected prior bee. Retained reference only supplies painted art style.

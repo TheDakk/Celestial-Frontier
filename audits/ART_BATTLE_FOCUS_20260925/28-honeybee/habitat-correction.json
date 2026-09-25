@@ -1,0 +1,9 @@
+{
+  "old": "realm air, no gait",
+  "new": {
+    "realm": "aerial",
+    "source": "Manually observed adult Honeybee with four visible unfolded wings; retained master SHA256 0caa257567bef63fe3d66308e565bddb84175b47696315a3781e5a6994c876e6",
+    "gait": "fly"
+  },
+  "reason": "Before motion checks, corrected explicit flight declaration to existing aerial/fly schema; no gate or species selector changes."
+}
