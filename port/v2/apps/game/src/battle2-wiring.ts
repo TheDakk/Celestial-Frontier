@@ -118,7 +118,7 @@ export interface Battle2Champion { readonly kind: string; readonly name: string;
 export interface Battle2SettlementLike {
   readonly battleId: string;
   readonly champion: Battle2Champion;
-  readonly encounter: { readonly defender: { readonly battleGenome: Readonly<Record<string, unknown>> } };
+  readonly encounter: { readonly defender: { readonly battleGenome: Readonly<Record<string, unknown>>; readonly kind?: string } };
   readonly transcript: { readonly log: readonly Readonly<Record<string, unknown>>[] };
   /** §20 Guardian party: the settled plan's party block; the stage plays one relay beat per earlier fighter first. */
   readonly party?: CombatSettlementPlanV1['party'];
@@ -453,7 +453,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     if (disposed) { built.dispose(); application.destroy(true, { children: true }); throw new Error('disposed while initialising the renderer'); }
     application.canvas.style.cssText = 'display:block;width:100%;height:100%'; section.append(application.canvas);
     application.stage.addChild(built.root); app = application; stage = built; label = built.label; section.dataset.battle2Label = built.label;
-    beats = battle2SwapBeatsV1(input.settlement.party, { name: input.chronicle.defenderName, battleGenome: input.settlement.encounter.defender.battleGenome });
+    beats = battle2SwapBeatsV1(input.settlement.party, { name: input.chronicle.defenderName, battleGenome: input.settlement.encounter.defender.battleGenome, kind: input.settlement.encounter.defender.kind });
     if (beats.length > 0) {
       beatCaption = new pixi.Text({ text: '', style: { ...style, fontSize: 28 }, anchor: 0.5 });
       beatCaption.x = BATTLE2_FRAME.width / 2; beatCaption.y = 56; application.stage.addChild(beatCaption as unknown as object);

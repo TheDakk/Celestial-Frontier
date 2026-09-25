@@ -19,6 +19,7 @@ import {
   type CanonicalJsonObject,
 } from '@cf/domain-acquisition';
 import {
+  encounterHasGuardianPhaseV1,
   runEncounterV1,
   type CombatPartyMemberInputV1,
   type CombatSettlementChampionV1,
@@ -63,6 +64,8 @@ export interface CombatOpenEncounterRecordV1 {
   readonly worldKey: string;
   readonly defenderName: string;
   readonly defenderGenome: CanonicalJsonObject;
+  /** §20 Guardian phase: the sealed defender changes at half health (Guardians and Titans). */
+  readonly defenderPhase: boolean;
   readonly party: readonly CombatOpenEncounterMemberV1[];
   readonly openedAtReceiptOrdinal: number;
   readonly sealDigest: string;
@@ -126,6 +129,7 @@ export function combatOpenEncounterSealDigestV1(input: Readonly<{
   battleId: string;
   encounterDigest: string;
   defenderGenome: unknown;
+  defenderPhase: boolean;
   party: readonly CombatPartyMemberInputV1[];
 }>): string {
   return sha256Hex(canonicalJson({
@@ -133,6 +137,7 @@ export function combatOpenEncounterSealDigestV1(input: Readonly<{
     battleId: input.battleId,
     encounterDigest: input.encounterDigest,
     defenderGenome: canonicalizeData(input.defenderGenome),
+    defenderPhase: input.defenderPhase,
     party: input.party.map((member) => ({ champion: sealedChampion(member.champion), stance: member.stance })),
   }));
 }
@@ -151,19 +156,19 @@ export function simulateCombatOpenEncounterV1(
 ): EncounterResultV1 {
   return runEncounterV1({
     mode: 'command',
-    defender: { name: record.defenderName, genome: record.defenderGenome as never },
+    defender: { name: record.defenderName, genome: record.defenderGenome as never, phase: record.defenderPhase },
     party: record.party.map(engineFighter),
   }, decisions);
 }
 
 function validRecord(value: unknown): value is CombatOpenEncounterRecordV1 {
-  if (!isRecord(value) || !exactKeys(value, ['battleId', 'decisions', 'defenderGenome', 'defenderName', 'encounterDigest',
+  if (!isRecord(value) || !exactKeys(value, ['battleId', 'decisions', 'defenderGenome', 'defenderName', 'defenderPhase', 'encounterDigest',
     'openedAtReceiptOrdinal', 'party', 'sealDigest', 'worldKey'])) return false;
   if (!text(value.battleId, 192) || !text(value.defenderName, 96) || !text(value.worldKey, 2_048)
     || typeof value.encounterDigest !== 'string' || !DIGEST.test(value.encounterDigest)
     || typeof value.sealDigest !== 'string' || !DIGEST.test(value.sealDigest)
     || !Number.isSafeInteger(value.openedAtReceiptOrdinal) || (value.openedAtReceiptOrdinal as number) < 0
-    || !isRecord(value.defenderGenome) || !Number.isSafeInteger(value.defenderGenome.seed)
+    || !isRecord(value.defenderGenome) || !Number.isSafeInteger(value.defenderGenome.seed) || typeof value.defenderPhase !== 'boolean'
     || !Array.isArray(value.party) || value.party.length < 1 || value.party.length > 3
     || !Array.isArray(value.decisions) || value.decisions.length > 16
     || !value.decisions.every((d) => (DECISIONS as readonly unknown[]).includes(d))) return false;
@@ -178,7 +183,7 @@ function validRecord(value: unknown): value is CombatOpenEncounterRecordV1 {
     if (new Set(ids).size !== ids.length) return false;
     const record = value as unknown as CombatOpenEncounterRecordV1;
     if (combatOpenEncounterSealDigestV1({ battleId: record.battleId, encounterDigest: record.encounterDigest,
-      defenderGenome: record.defenderGenome, party: record.party }) !== record.sealDigest) return false;
+      defenderGenome: record.defenderGenome, defenderPhase: record.defenderPhase, party: record.party }) !== record.sealDigest) return false;
     // the appended decisions must all be answers the sealed fight actually offered (a forged row cannot pass)
     const simulated = simulateCombatOpenEncounterV1(record);
     return simulated.decisionsUsed === record.decisions.length;
@@ -270,11 +275,12 @@ export function deriveCombatOpenEncounterOpenV1(input: Readonly<{
     if (new Set(party.map((m) => memberId(m.champion))).size !== party.length) throw new Error('duplicate');
     const encounterDigest = sha256Hex(input.encounter.witness);
     const defenderGenome = canonicalizeData(input.encounter.defender.battleGenome) as CanonicalJsonObject;
+    const defenderPhase = encounterHasGuardianPhaseV1(input.encounter.defender.kind);
     record = Object.freeze({
       battleId: input.battleId, encounterDigest, worldKey: input.encounter.identity.world.key,
-      defenderName: input.encounter.defender.name, defenderGenome, party: Object.freeze(party),
+      defenderName: input.encounter.defender.name, defenderGenome, defenderPhase, party: Object.freeze(party),
       openedAtReceiptOrdinal: input.receiptOrdinal,
-      sealDigest: combatOpenEncounterSealDigestV1({ battleId: input.battleId, encounterDigest, defenderGenome, party }),
+      sealDigest: combatOpenEncounterSealDigestV1({ battleId: input.battleId, encounterDigest, defenderGenome, defenderPhase, party }),
       decisions: Object.freeze([]),
     });
   } catch {
@@ -334,6 +340,7 @@ export function consumeCombatOpenEncounterV1(extensions: V5Extensions, plan: Com
   if (!command) throw new Error('an open Command encounter must be answered before another fight settles');
   const seal = combatOpenEncounterSealDigestV1({
     battleId: plan.battleId, encounterDigest: sha256Hex(plan.encounter.witness), defenderGenome: plan.encounter.defender.battleGenome,
+    defenderPhase: encounterHasGuardianPhaseV1(plan.encounter.defender.kind),
     party: plan.party!.members.map((m) => ({ champion: m.champion, stance: m.stance })),
   });
   if (seal !== open.sealDigest) throw new Error('the Command settlement is not the sealed open encounter');

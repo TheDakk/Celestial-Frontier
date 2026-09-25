@@ -279,6 +279,14 @@ share one helper and the fingerprint held.
 >   persistence `packages/persistence/src/friendly-duel.ts`; app `apps/game/src/friendly-duel.ts`. Outcome test
 >   `tests/a5-friendly-duel-outcome.test.ts` (real paste + press, durable XP + mirror, device-clock swing, 2 Main mutants). CFB *export*
 >   (sharing your own code) is not ported yet.
+> - **Guardian phase change (N1 §4.3 / S7; same date; matches code).** When a Guardian or Titan first falls to half health, a **phase
+>   Break** announces the change BEFORE it applies (Hold / Swap / Withdraw; Auto holds), then for the rest of the fight, across legs, it
+>   hits 20% harder and takes 10% less (`ENCOUNTER_GUARDIAN_PHASE_V1`, placeholder for S4). The engine takes it as `defender.phase`
+>   (`encounterHasGuardianPhaseV1(kind)`); every caller derives it from the defender kind (planner, Chronicle prelude, card forecast,
+>   battle2 beats, the app probe) and the open-encounter record SEALS it (`defenderPhase`). **Parity law:** a lone Balanced Auto fighter
+>   still takes the verbatim v1 `runDuel` path, so it meets no phase; the phase applies whenever the fight is planned as an encounter
+>   (a stance, a party, or Command). The card says so. Tests: `packages/domain/combatcore/test/encounter-phase.test.ts` (announced at
+>   half health before the change and identical up to it; the defender changes after — mutation control; Command pause + Swap + reload).
 >   - **The explorer fights Guardians in Auto only:** the settlement binds the explorer's exact health, which moves between Breaks, so a
 >     sealed explorer could strand the record (even Withdraw settles through that binding). `openArc6CommandEncounterV1` refuses it.
 

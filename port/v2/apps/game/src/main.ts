@@ -9347,6 +9347,7 @@ async function runArc6CommandCardAction(request: CombatCardActionRequestV1): Pro
     } finally {
       productActionInFlight = false;
       actionClaim.settle(durable);
+      if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
       if (activePersist === actionBarrier) activePersist = null;
     }
     if (step.kind === 'committed') {

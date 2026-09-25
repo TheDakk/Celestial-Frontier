@@ -21,6 +21,7 @@ import {
   type DuelResult,
 } from './combatcore.verbatim.js';
 import {
+  encounterHasGuardianPhaseV1,
   runEncounterV1,
   type EncounterDecisionV1,
   type EncounterFighterV1,
@@ -708,7 +709,8 @@ export function planCombatPartySettlementV1(input: PlanCombatPartySettlementInpu
   const decisions = input.decisions ?? [];
   const ids = input.party.map(({ champion }) => (champion.kind === 'player' ? `player:${champion.explorerId}` : champion.creatureId));
   if (new Set(ids).size !== ids.length) return refused('input-invalid');
-  const defender = { name: input.encounter.defender.name, genome: input.encounter.defender.battleGenome as unknown as EncounterFighterV1['genome'] };
+  const defender = { name: input.encounter.defender.name, genome: input.encounter.defender.battleGenome as unknown as EncounterFighterV1['genome'],
+    phase: encounterHasGuardianPhaseV1(input.encounter.defender.kind) };
   const legacy = input.party.length === 1 && input.party[0]!.stance === 'balanced' && input.mode === 'auto' && decisions.length === 0;
   if (legacy) {
     const champion = input.party[0]!.champion;

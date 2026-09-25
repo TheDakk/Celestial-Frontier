@@ -31,6 +31,14 @@ export const ENCOUNTER_STANCE_TUNING_V1 = Object.freeze({
   evade: Object.freeze({ dealt: 0.90, dodge: 0.08 }),
 });
 
+/** §20 Guardian phase (N1 §4.3, S7): when a Guardian or Titan first falls to half health it changes to a telegraphed second behavior.
+ *  The change is announced at a Break BEFORE it applies (Hold / Swap / Withdraw), then lasts for the rest of the fight, across legs.
+ *  Placeholder numbers (one constant; Codex's S4 instrument owns them): the phased defender hits 20% harder and takes 10% less. */
+export const ENCOUNTER_GUARDIAN_PHASE_V1 = Object.freeze({ atFraction: 0.5, dealt: 1.2, taken: 0.9 });
+export type EncounterDefenderKindV1 = 'fauna' | 'guardian' | 'titan';
+/** Whether a defender of this kind has the phase change (Guardians and Titans only). */
+export function encounterHasGuardianPhaseV1(kind: string | undefined | null): boolean { return kind === 'guardian' || kind === 'titan'; }
+
 export type EncounterModeV1 = 'auto' | 'command';
 export type EncounterDecisionV1 = 'hold' | 'swap' | 'withdraw';
 
@@ -47,13 +55,15 @@ export interface EncounterFighterV1 extends EncounterCombatantV1 {
 }
 export interface EncounterPlanV1 {
   readonly party: readonly EncounterFighterV1[];
-  readonly defender: EncounterCombatantV1;
+  /** `phase: true` = a Guardian/Titan with the §20 phase change (absent = none; the v1 parity path never has it). */
+  readonly defender: EncounterCombatantV1 & { readonly phase?: boolean };
   readonly mode: EncounterModeV1;
 }
 
 export interface EncounterBreakV1 {
   readonly ordinal: number;
-  readonly kind: 'low-hp' | 'next-fighter';
+  /** `phase` = the defender is about to change (announced before the change applies). */
+  readonly kind: 'low-hp' | 'next-fighter' | 'phase';
   readonly fighterIndex: number;
   readonly nextIndex: number | null;
   readonly fighterHp: number;
@@ -145,6 +155,14 @@ export function runEncounterV1(plan: EncounterPlanV1, decisions: readonly Encoun
   const defender = plan.defender;
   const B0 = defender.stats || (battleStats(defender.genome as never) as BattleStats);
   const maxB = B0.vit * 3;
+  const phaseEnabled = defender.phase === true;
+  let phaseActive = false;
+  const phasedB = (): BattleStats => {
+    const ab = { ...B0.ab } as BattleStats['ab'];
+    ab.dmg = (typeof ab.dmg === 'number' ? ab.dmg : 1) * ENCOUNTER_GUARDIAN_PHASE_V1.dealt;
+    ab.taken = (typeof ab.taken === 'number' ? ab.taken : 1) * ENCOUNTER_GUARDIAN_PHASE_V1.taken;
+    return { ...B0, ab };
+  };
   let hpBCarried = maxB;
   const legs: EncounterLegV1[] = [];
   const breaks: EncounterBreakRecordV1[] = [];
@@ -173,7 +191,8 @@ export function runEncounterV1(plan: EncounterPlanV1, decisions: readonly Encoun
   for (let index = 0; index < plan.party.length && outcome === null; index++) {
     const mine = plan.party[index]!;
     const nextIndex = index + 1 < plan.party.length ? index + 1 : null;
-    const A = stanceStats(mine.stats || (battleStats(mine.genome as never) as BattleStats), mine.stance), B = B0;
+    const A = stanceStats(mine.stats || (battleStats(mine.genome as never) as BattleStats), mine.stance);
+    let B = phaseActive ? phasedB() : B0;
     const r = mulberry32(hashInt(mine.genome.seed >>> 0, defender.genome.seed >>> 0, 0xD0E1) >>> 0);
     const maxA = A.vit * 3;
     let hpA = mine.startHp === undefined ? maxA : Math.max(1, Math.min(maxA, Math.round(mine.startHp)));
@@ -186,7 +205,8 @@ export function runEncounterV1(plan: EncounterPlanV1, decisions: readonly Encoun
     let shredA = 0, shredB = 0, skipA = false, skipB = false;
     const log: Record<string, unknown>[] = [];
     const an0 = mine.name, dn0 = defender.name;
-    const abA = A.ab as Record<string, number | undefined>, abB = B.ab as Record<string, number | undefined>;
+    const abA = A.ab as Record<string, number | undefined>;
+    let abB = B.ab as Record<string, number | undefined>;
     const guardOpener = mine.stance === 'guard';
     const strike = (): void => {
       const att = turnA ? abA : abB, def = turnA ? abB : abA;
@@ -247,6 +267,17 @@ export function runEncounterV1(plan: EncounterPlanV1, decisions: readonly Encoun
       if (abB.burn && hpA > 0) { bA = Math.max(1, Math.round(maxA * abB.burn * 0.5)); hpA = Math.max(0, hpA - bA); }
       if (rA || rB || bA || bB) log.push({ tick: true, rA, rB, bA, bB, hpA, hpB });
       turnA = !turnA;
+      /* §20 Guardian phase: the first time the defender is at or below half health (and both still stand), a Break announces the change;
+         it applies after the answer (Hold/Swap/Withdraw), for the rest of the fight. Draws nothing. */
+      if (phaseEnabled && !phaseActive && hpA > 0 && hpB > 0 && hpB <= maxB * ENCOUNTER_GUARDIAN_PHASE_V1.atFraction) {
+        phaseActive = true;
+        const resolved = resolveBreak({ kind: 'phase', fighterIndex: index, nextIndex, fighterHp: hpA, fighterMax: maxA,
+          defenderHp: hpB, defenderMax: maxB, options: nextIndex !== null ? ['hold', 'swap', 'withdraw'] : ['hold', 'withdraw'] });
+        if ('paused' in resolved) { phaseActive = false; paused = resolved.paused; break; }
+        B = phasedB(); abB = B.ab as Record<string, number | undefined>;
+        if (resolved.decision === 'swap') { end = 'swapped'; break; }
+        if (resolved.decision === 'withdraw') { end = 'withdrew'; break; }
+      }
       // the low-HP Break: draws nothing, so Hold continues the identical fight
       if (hpA > 0 && hpB > 0 && !lowBreakDone.has(index) && hpA <= maxA * ENCOUNTER_LOW_HP_FRACTION_V1) {
         lowBreakDone.add(index);

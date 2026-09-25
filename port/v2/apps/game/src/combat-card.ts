@@ -10,6 +10,8 @@ import {
   battleStats,
   runDuel,
   runEncounterV1,
+  encounterHasGuardianPhaseV1,
+  ENCOUNTER_GUARDIAN_PHASE_V1,
   type EncounterDecisionV1,
   type EncounterStanceV1,
   type BattleStats,
@@ -101,7 +103,9 @@ export function combatCardCommandBreakV1(view: Arc6CommandBreakViewV1): CombatCa
     return Object.freeze({ battleId: view.battleId, decisionsSoFar: view.decisionsSoFar,
       headline: `Every choice is made. ${defender} Settle the fight to see how it ends.`, options: Object.freeze([]) });
   }
-  const headline = view.breakKind === 'low-hp'
+  const headline = view.breakKind === 'phase'
+    ? `⚠ ${view.defenderName} is changing — at half strength it will hit ${Math.round((ENCOUNTER_GUARDIAN_PHASE_V1.dealt - 1) * 100)}% harder and take ${Math.round((1 - ENCOUNTER_GUARDIAN_PHASE_V1.taken) * 100)}% less. ${view.fighterName} is at ${pct(view.fighterHp, view.fighterMax)}%.`
+    : view.breakKind === 'low-hp'
     ? `⏸ Break — ${view.fighterName} is down to ${pct(view.fighterHp, view.fighterMax)}%. ${defender}`
     : `⏸ Break — ${view.fighterName} is out. ${defender}${view.nextName === null ? '' : ` ${view.nextName} is ready.`}`;
   const label = (decision: EncounterDecisionV1): string => decision === 'swap' ? `Swap — send in ${view.nextName ?? 'the next fighter'}`
@@ -143,7 +147,7 @@ export function projectCombatPlanForecastV1(
   let wins = 0, decisive = 0;
   for (let index = 0; index < sampleSize; index++) {
     const result = runEncounterV1({ mode: 'auto',
-      defender: { name: encounter.defender.name, genome: encounter.defender.battleGenome as never },
+      defender: { name: encounter.defender.name, genome: encounter.defender.battleGenome as never, phase: encounterHasGuardianPhaseV1(encounter.defender.kind) },
       party: fighters.map((f) => ({ name: f.projected.name, stance: f.stance, stats: f.stats,
         genome: { ...f.projected.genome, seed: hashInt(f.projected.genome.seed >>> 0, index, 0x51ee) >>> 0 } as never })) });
     if (result.status !== 'finished' || result.outcome === 'draw' || result.outcome === 'withdrawn') continue;
@@ -442,7 +446,7 @@ export function projectCombatCardReadModelV1(input: Readonly<{
         ? 'Win: conquer the world, capture its Guardian, and earn exact Stardust and champion XP.'
         : 'Win: conquer the world and earn exact Stardust and champion XP.',
     policy: partyEnabled
-      ? 'Bring up to 3 fighters: they enter one at a time and the Guardian keeps its wounds between them. Auto plays every choice for you; rewards are the same either way. Command pauses at each Break for Hold, Swap or Withdraw, and Swap is never necessary.'
+      ? 'Bring up to 3 fighters: they enter one at a time and the Guardian keeps its wounds between them. Auto plays every choice for you; rewards are the same either way. Command pauses at each Break for Hold, Swap or Withdraw, and Swap is never necessary. With a stance or a party, the Guardian changes at half health, announced at a Break first.'
       : 'One champion fights this world. A stance trades damage for safety; Balanced is the classic fight.',
     unavailableReason: input.unavailableReason ?? selectedOption.disabledReason,
   });

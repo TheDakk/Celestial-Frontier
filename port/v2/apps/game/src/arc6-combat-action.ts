@@ -13,6 +13,7 @@ import {
   planCombatSettlementV1,
   runDuel,
   runEncounterV1,
+  encounterHasGuardianPhaseV1,
   type CombatPartyMemberInputV1,
   type EncounterDecisionV1,
   type EncounterResultV1,
@@ -604,7 +605,8 @@ export async function commitArc6CombatActionV1(
   let decisiveIndex = 0;
   if (!legacySingle) {
     try {
-      const probe = runEncounterV1({ mode, defender: { name: input.encounter.defender.name, genome: input.encounter.defender.battleGenome as never },
+      const probe = runEncounterV1({ mode, defender: { name: input.encounter.defender.name, genome: input.encounter.defender.battleGenome as never,
+        phase: encounterHasGuardianPhaseV1(input.encounter.defender.kind) },
         party: partyMembers.map((m) => (m.champion.kind === 'player'
           ? { name: m.champion.name, genome: { seed: m.champion.genomeSeed }, stats: m.champion.stats as never, stance: m.stance }
           : { name: m.champion.name, genome: m.champion.genome as never, stance: m.stance })) }, decisions);
@@ -921,7 +923,7 @@ export type Arc6CommandBreakViewV1 =
   | Readonly<{ kind: 'elsewhere'; defenderName: string }>
   | Readonly<{ kind: 'pending'; record: CombatOpenEncounterRecordV1; leadId: string; battleId: string; decisionsSoFar: number;
       /** null = every answer is appended but the settlement never landed (e.g. the tab closed): it settles with no further answer */
-      breakKind: 'low-hp' | 'next-fighter' | null; fighterName: string; fighterHp: number; fighterMax: number;
+      breakKind: 'low-hp' | 'next-fighter' | 'phase' | null; fighterName: string; fighterHp: number; fighterMax: number;
       defenderName: string; defenderHp: number; defenderMax: number; nextName: string | null;
       options: readonly EncounterDecisionV1[] }>;
 
