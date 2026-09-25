@@ -14,6 +14,8 @@ import {
 } from '@cf/domain-acquisition';
 import type { AudioCounterpartReceipt } from '@cf/audio';
 import { projectOwnedCreatureAudioIdentity } from './audio-identity-projector.js';
+import { creatureVoiceCardV1 } from './soundkit/voice-identity.js';
+import type { VoiceCard } from './soundkit/voice-card.js';
 
 export const COMPENDIUM_AUDITION_READ_MODEL_SCHEMA =
   'cf-v2-compendium-audition-read-model/v1' as const;
@@ -41,6 +43,9 @@ export interface CompendiumAuditionSurfaceReceiptV1 {
 export interface CompendiumAuditionCreatureV1 {
   readonly creatureId: CreatureInstanceId;
   readonly label: string;
+  /** D15 Stage 0: the companion's ONE voice card (voice-identity.ts) from the SAME AudioSignature this audition plays — the card the
+   * painted battle voices it with; null when its body plan has no voice. */
+  readonly voice: VoiceCard | null;
 }
 
 export interface CompendiumAuditionReadModelV1 {
@@ -206,9 +211,11 @@ export function projectCompendiumAuditionV1(
     .flatMap((row): readonly CompendiumAuditionCreatureV1[] => {
       const projection = projectOwnedCreatureAudioIdentity(ownership, row.creatureId);
       if (projection.kind !== 'projected' || projection.profile.kingdom !== 'fauna') return [];
+      const voice = creatureVoiceCardV1(row.genome as unknown as Readonly<Record<string, unknown>>, projection.signature);
       return [Object.freeze({
         creatureId: row.creatureId,
         label: `${row.nickname ?? recordName} · ${row.creatureId.slice(-8)}`,
+        voice: voice.ok ? voice.card : null,
       })];
     }));
   if (creatures.length === 0) {
