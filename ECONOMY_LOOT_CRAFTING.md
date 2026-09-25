@@ -392,6 +392,13 @@ an acceptance contract rather than current capability.
   deterministic output preview, explicit protection/favorite guards and a
   revision-checked destruction receipt. There is no bulk action that silently eats
   a unique, equipped, locked or pending-reward item.
+- **Salvage all + "don't ask again" (v2, matches code as of 2026-09-25, D16 parity with v1 `data-salvall` / `data-salvoff`):**
+  the Inventory list shows `♺ Salvage all Common/Uncommon (N)` while junk exists — `salvageAllCandidatesV1`: unequipped,
+  unfavorited, unlocked gear (never a relic or pending reward) at rarity tier ≤ 1. With Confirm salvage on, the first tap ARMS
+  (`Confirm — salvage N items`) and the second runs; a filter edit disarms. It is ordinary exact-instance salvages in sequence,
+  each its own receipt, stopping at the first that does not commit, then `♺ Salvaged N items.` The single-item confirmation
+  adds `Salvage — don't ask again`: it turns `save.salvageConfirm` off (the flag rides the salvage's own commit; `persistSoon`
+  covers a refusal) and proceeds. Outcome test: `tests/d16-salvage-all-outcome.test.ts`.
 - Targeted crafting names the desired base and allowed tag/family, fixed costs,
   possible tier/range and any drawback **before** spending. Its result is derived
   from the craft `sourceActionId` and ordinal. It is not an infinite paid reroll or
@@ -504,6 +511,19 @@ without adding item tables, random-loot policy or measurement authority.
 - `_canCraft(it)`: passes only if the Signature blueprint is held (`it.sig && !primeFill[it.sig]` fails), the `req` rung below is owned, `essence ≥ it.sd`, and every `cost` (elements) and `parts` (items) is in stock.
 - `craftItem(id)`: spends cost/parts/sd, mints the item, fires the right sting/toast, and **auto-equips into an empty matching socket** (`it.slot && !equip[it.slot]`). Systems build once (guarded). Crafting `autoext` restamps every mined world's timestamp so it doesn't pay a retroactive windfall.
 - **Recipes are fixed and identical for every explorer**; nothing waits on a timer.
+- **Craft ×5** (v1 `data-craft5`): parts and components only (`cat` part/comp), "craft up to five in one press", looping while
+  `_canCraft` holds. **v2 (matches code as of 2026-09-25, D16 parity):** the Shipyard Fabricator row shows a `×5` button beside
+  Fabricate for stackable part/comp recipes (`fabricationBatchOffered`, `engineering-panel.ts`). The press runs
+  `fabricateEngineeringBatch` → `runFabricationBatchV1` (`fabrication-batch.ts`): ordinary single fabrications in sequence, EACH its
+  own F4 receipt, stopping at the first press that does not commit (materials ran out) or at a converging outcome (kept as-is so the
+  pending latch holds until the reload). The toast names the count ("Fabricated ×N"). Outcome test:
+  `tests/d16-craft-batch-outcome.test.ts` (real button, five receipts, reboot, the shortage stop, two mutation controls).
+- **Pin a recipe** (v1 `data-pin`, `_pinChip`, save `pin`): one recipe at a time; a chip tracks the missing costs (first three)
+  and flips to READY; tapping it opens the Shipyard. **v2 (matches code as of 2026-09-25, D16 parity):** every not-yet-built
+  Fabricator row carries a 📌 (`recipePin` port on `EngineeringPanelController`; view state, never latched by a pending action).
+  The press sets `save.pinnedRecipe` (exported as `pin`, dropped on load unless it names a catalogue recipe) and checkpoints through
+  `persistView`. `recipe-pin.ts` quotes the canonical fixed recipe against the live save, so `updateChips` keeps the `#pinchip`
+  current from any material source; a built permanent system hides it. Outcome test: `tests/d16-recipe-pin-outcome.test.ts`.
 
 ### Signature Relics — the Pathfinders' Trail
 - Nine `cat:'relic'` items (`rl-stone`…`rl-prism`), one per socket, each `sig`-gated on `primeFill` (mastering that element recovers the blueprint). Endgame-tier gear whose **power is decoupled from rarity** — effects live inside the wired `eff` keys, same as any gear.

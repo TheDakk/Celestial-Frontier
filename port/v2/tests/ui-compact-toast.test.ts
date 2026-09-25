@@ -22,6 +22,7 @@ function fixture() {
     + ';({showToast,showCompendiumFeedVisualToast,toastDetailText})', {
     toastEl: toast, HTMLElement: dom.window.HTMLElement, Node: dom.window.Node,
     notificationHistory: { record }, invalidateTameToastCounterpart: vi.fn(),
+    save: { notifOn: true }, // D16: the pop-up switch (default on); off is covered by d16-notification-popups-outcome
     _toastSerial: 0, _toastHide: 0, _toastT: 0, performance: { now: () => 1 },
     window: { setTimeout: (callback: () => void, ms: number) => { expect(ms).toBe(3600); timers.push(callback); return timers.length; } },
     clearTimeout: vi.fn(), esc: (text: string) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'),

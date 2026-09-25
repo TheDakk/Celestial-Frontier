@@ -40,6 +40,11 @@ import {
   projectWorldHarvestV1,
   publishWorldHarvestFieldsV1,
 } from './world-harvest.js';
+import { engineeringCommittedCopy, runFabricationBatchV1 } from './fabrication-batch.js';
+import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './recipe-pin.js';
+import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
+import { freshExpeditionPayloadV1 } from './expedition-reset.js';
+import { TooltipOwnerV1 } from './tooltips.js';
 import {
   deviceAudioAccessibilityStorage,
   readAudioAccessibilityPrefsV1,
@@ -314,6 +319,7 @@ import { describeSpecies } from '@cf/domain-genome';
 import {
   COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   PRIME_SIGNATURE_IDS_V1,
+  PRIME_SIGNATURES_V1,
   type EncounterStanceV1,
   battleStats,
   projectGuardianPrimeEncounterV1,
@@ -857,6 +863,8 @@ let smokeF4LeaseReadCount = 0;
 let smokeF4RevisionReadCount = 0;
 /* Even an unarmed evidence hold is async. Keep that same await boundary in
    ordinary play without constructing any armable gate or retained latch. */
+/* Declared before any chip refresh can run (updateChips is reachable during boot): the pinned-recipe chip (recipe-pin.ts). */
+let recipePinChip: RecipePinChipV1 | null = null;
 const inactiveEvidenceHold: ReturnType<typeof createProductActionDiagnosticHold> = Object.freeze({
   arm: () => false,
   async holdIfArmed(_operation: string): Promise<void> {},
@@ -2825,6 +2833,8 @@ function fillSettings(): void {
     `<div class="row"><label>Sound</label><button id="setsnd" aria-label="Sound" aria-pressed="${save.sndOn}" class="${save.sndOn ? 'on' : ''}" data-sel="set-sound">${save.sndOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Volume</label><input id="setvol" data-sel="set-vol" aria-label="Sound volume" type="range" min="0" max="100" value="${Math.round(save.sfxVol * 100)}"></div>` +
     `<div class="row"><label>Creature voices</label><button id="setvoice" aria-label="Creature voices" aria-pressed="${save.voiceOn}" class="${save.voiceOn ? 'on' : ''}" data-sel="set-voice">${save.voiceOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Pop-up notifications</label><button id="setnotif" aria-label="Pop-up notifications" aria-pressed="${save.notifOn}" class="${save.notifOn ? 'on' : ''}" data-sel="set-notif" title="Off keeps every message in the 🔔 tray without popping it up (creature sounds still show their card).">${save.notifOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Tooltips</label><button id="settips" aria-label="Tooltips" aria-pressed="${save.tipsOn}" class="${save.tipsOn ? 'on' : ''}" data-sel="set-tips" title="Short hints: hover on a computer, press and hold on a phone.">${save.tipsOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Confirm salvage</label><button id="setsalv" aria-label="Confirm before salvaging" aria-pressed="${save.salvageConfirm}" class="${save.salvageConfirm ? 'on' : ''}" data-sel="set-salvage" title="Ask before breaking gear down into parts.">${save.salvageConfirm ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Battle sounds</label><button id="setcombat" aria-label="Battle sounds" aria-pressed="${save.combatSfxOn}" class="${save.combatSfxOn ? 'on' : ''}" data-sel="set-combat" title="Hits, dodges and effects in battles (creature voices have their own switch).">${save.combatSfxOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Mono audio</label><button id="setmono" aria-label="Mono audio" aria-pressed="${audioAccessibility.mono}" class="${audioAccessibility.mono ? 'on' : ''}" data-sel="set-mono" title="Both ears hear every sound (one earbud, one speaker). Saved on this device.">${audioAccessibility.mono ? 'On' : 'Off'}</button></div>` +
@@ -2855,7 +2865,11 @@ function fillSettings(): void {
       `<button data-motion="${v}" aria-pressed="${save.motionMode === v}" class="${save.motionMode === v ? 'on' : ''}">${t}</button>`).join('') +
     '</span></div>' +
     `<div class="row"><label>Panel tint</label><input id="setglass" aria-label="Panel tint" type="range" min="82" max="98" value="${Math.round(Math.max(save.glassTint, 0.82) * 100)}"></div>` +
-    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>`);
+    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>` +
+    /* D16 parity (v1 resetbtn/resetconfirm): an armed two-step erase; expedition-reset.ts */
+    `<div class="row"><label>Reset expedition</label><button id="setreset" data-sel="set-reset" aria-expanded="false" aria-controls="setresetconfirm">Reset…</button></div>` +
+    `<div class="row reset-confirm" id="setresetconfirm" role="group" aria-label="Confirm expedition reset" hidden><span class="sub">Erase this whole expedition — discoveries, companions, Charters and Stardust — and start over? This cannot be undone.</span>` +
+    `<button id="setresetyes" data-sel="set-reset-yes" class="danger">Erase and start over</button><button id="setresetno" data-sel="set-reset-no">Cancel</button></div>`);
   const el = document.getElementById('setpanel')!;
   const refillAndFocus = (selector: string): void => {
     fillSettings();
@@ -2954,6 +2968,15 @@ function fillSettings(): void {
     tameGreetingAudioOwner?.syncSettings();
     refillAndFocus('#setvoice'); void persistView();
   });
+  el.querySelector('#setnotif')!.addEventListener('click', () => {
+    save.notifOn = !save.notifOn;   /* v1.8.9 parity: the saved `notif` switch (absent ⇒ on) */
+    refillAndFocus('#setnotif'); void persistView();
+  });
+  el.querySelector('#settips')!.addEventListener('click', () => {
+    save.tipsOn = !save.tipsOn;   /* v1.8.9 parity: the saved `tips` switch (absent ⇒ on) */
+    if (!save.tipsOn) tooltipOwner.hide();
+    refillAndFocus('#settips'); void persistView();
+  });
   el.querySelector('#setsalv')!.addEventListener('click', () => {
     save.salvageConfirm = !save.salvageConfirm;   /* v1.8.9 parity: the saved `sv` switch the Inventory reads */
     refillAndFocus('#setsalv'); void persistView();
@@ -3050,6 +3073,26 @@ function fillSettings(): void {
       savedRouteWriteHeld = priorSavedRouteWriteHeld;
       button.disabled = false;
       toast('Save unavailable', 'Field Training was not restarted; your current expedition is unchanged.');
+    }
+  });
+  el.querySelector('#setreset')!.addEventListener('click', () => {
+    el.querySelector<HTMLElement>('#setresetconfirm')!.hidden = false;
+    el.querySelector<HTMLElement>('#setreset')!.setAttribute('aria-expanded', 'true');
+    el.querySelector<HTMLElement>('#setresetno')?.focus();
+  });
+  el.querySelector('#setresetno')!.addEventListener('click', () => {
+    el.querySelector<HTMLElement>('#setresetconfirm')!.hidden = true;
+    el.querySelector<HTMLElement>('#setreset')!.setAttribute('aria-expanded', 'false');
+    el.querySelector<HTMLElement>('#setreset')?.focus();
+  });
+  el.querySelector('#setresetyes')!.addEventListener('click', async (event) => {
+    const button = event.currentTarget as HTMLButtonElement;
+    button.disabled = true;
+    const sol = searchTravel.trainingSolSystemNav();
+    const error = await importBlob(freshExpeditionPayloadV1({ registry: REGISTRY, now: Date.now(), solView: sol ? navToView(sol) : null }));
+    if (error !== null) {
+      button.disabled = false;
+      toast('Reset unavailable', `${error} Your expedition is unchanged.`, true);
     }
   });
   el.querySelector('#setglass')!.addEventListener('input', (e) => {
@@ -4083,10 +4126,13 @@ function fillPrimeCodex(): void {
     && replacementTransaction === null && !replacementReloadPending
     && !trainingCheckpointWriteHeld && !trainingActive()
     && !ecologyEpochBlocksActions();
+  const claimedIds = Object.keys(save.primeFill);
   fillPanel('prime', renderPrimeCodexPanelV1(projectPrimeCodexV1(save), {
     pending: arc9FrontierEndingPending,
     writable,
     status: frontierEndingPanelStatus(),
+    travel: new Set(claimedIds.filter((id) => primeClaimWorldAddressV1(save.primeFill[id]?.where) !== null)),
+    track: trackablePrimeSignaturesV1({ ascentStage: ascStage(), claimedIds }),
   }));
 }
 /* THE STAR ATLAS ('log' in the game): every charted place, tap to TRAVEL
@@ -4355,6 +4401,8 @@ registerPanel({
 });
 document.getElementById('primepanel')!.addEventListener('click', (event) => {
   if (!(event.target instanceof Element)) return;
+  const travel = event.target.closest<HTMLButtonElement>('[data-prime-travel],[data-prime-track]');
+  if (travel !== null) { void runPrimeCodexTravel(travel); return; }
   const button = event.target.closest<HTMLButtonElement>('[data-frontier-ending-id]');
   if (button?.dataset.frontierEndingId === undefined) return;
   void runArc9FrontierEndingChoice(button.dataset.frontierEndingId);
@@ -4495,6 +4543,8 @@ const inventoryPanelController = new InventoryPanelController({
   openers: [document.getElementById('dockinventory'), document.getElementById('railinventory')],
   onAction: ({ operation, instanceId }) => commitArc2InventoryAction(operation, instanceId),
   requiresSalvageConfirmation: () => save.salvageConfirm,
+  /* v1 data-salvoff ("don't ask again"): the flag rides the salvage's own commit (its draft is the live save); persistSoon covers a refusal */
+  disableSalvageConfirmation: () => { save.salvageConfirm = false; persistSoon(); },
   deferWhileClosed: true,
 });
 registerPanel(inventoryPanelController.registration());
@@ -4505,6 +4555,7 @@ const engineeringPanelController = new EngineeringPanelController({
     engineeringPanelController.setPending(request);
     void runEngineeringPanelAction(request);
   },
+  recipePin: { pinned: () => save.pinnedRecipe, toggle: toggleRecipePin },
 });
 let engineeringPanelReleased = false;
 const engineeringPanelRegistration = engineeringPanelController.registration();
@@ -5200,7 +5251,10 @@ function showToast(title: string, msg: string, assertive: boolean): void {
   toastEl.removeAttribute('aria-hidden');
   toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><span data-sel="toast-message"><br>${esc(msg)}</span>`;   /* every sink escapes (audit #6) */
   _toastSerial++;
-  toastEl.style.opacity = '1';
+  /* D16 parity (v1 `notif`): with pop-ups off the toast stays in the tray and is still ANNOUNCED (the live region keeps its
+     text), but it is not painted. A sound that needs this carrier as its visible counterpart reveals it (bindTameToastCounterpart). */
+  toastEl.style.opacity = save.notifOn ? '1' : '0';
+  toastEl.dataset.quiet = String(!save.notifOn);
   clearTimeout(_toastHide);
   _toastHide = window.setTimeout(() => {
     invalidateTameToastCounterpart();
@@ -5219,7 +5273,9 @@ function showCompendiumFeedVisualToast(title: string, msg: string): void {
   toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><span data-sel="toast-message"><br>${esc(msg)}</span>`;
   _toastT = performance.now();
   _toastSerial++;
-  toastEl.style.opacity = '1';
+  /* supplemental visual only (Feed's inline status is the accessible result and the audio counterpart): pop-ups off hides it */
+  toastEl.style.opacity = save.notifOn ? '1' : '0';
+  toastEl.dataset.quiet = String(!save.notifOn);
   clearTimeout(_toastHide);
   _toastHide = window.setTimeout(() => { toastEl.style.opacity = '0'; }, 3600);
 }
@@ -5447,6 +5503,8 @@ function bindTameToastCounterpart(
     generation: _toastSerial,
   });
   tameToastCounterpart = Object.freeze({ receipt, title, detail });
+  /* The creature's voice needs a VISIBLE counterpart: with pop-ups off, this one toast is revealed rather than the sound lost. */
+  if (toastEl.dataset.quiet === 'true' && toastEl.style.opacity === '0') { toastEl.style.opacity = '1'; toastEl.dataset.quiet = 'revealed-for-counterpart'; }
   if (tameToastCounterpartIsCurrent(receipt)) return receipt;
   tameToastCounterpart = null;
   return null;
@@ -5628,6 +5686,7 @@ function updateChips(): void {
         ? { kind: 'boundary', name: projection.name }
         : null,
   });
+  refreshRecipePinChip();
 }
 function hudText(): void {
   /* the chrome per mode: trail (setTrail), hint pill, the caption line
@@ -9160,6 +9219,63 @@ async function runWorldHarvest(planetSeed: number): Promise<void> {
     if (!convergence) refreshPlanetSurveyCard();
   }
 }
+/** The hint bubble (D16 parity, tooltips.ts; v1 `tips`): hover/focus on desktop, long-press on touch (native titles too). */
+const tooltipOwner = new TooltipOwnerV1({
+  document, touch: TOUCH_DPR,
+  enabled: () => save?.tipsOn !== false,
+  blocked: () => trainingActive(),
+});
+
+/** Prime Codex travel (D16 parity, prime-travel.ts): a claimed Signature flies to its world; an in-reach Titan is tracked to the
+ * nearest world it waits on. Both go through the one proven-route owner, so the charter gates are unchanged. */
+async function runPrimeCodexTravel(button: HTMLButtonElement): Promise<boolean> {
+  const claimedIds = Object.keys(save.primeFill);
+  const trackId = button.dataset.primeTrack;
+  const definition = PRIME_SIGNATURES_V1.find(({ id }) => id === (trackId ?? button.dataset.primeTravel));
+  if (definition === undefined) return false;
+  let address: CanonicalCF1WorldAddress | null;
+  if (trackId !== undefined) {
+    if (!trackablePrimeSignaturesV1({ ascentStage: ascStage(), claimedIds }).has(definition.id)) return false;
+    address = nearestTitanWorldV1(definition.id, { ascentStage: ascStage(), claimedIds });
+    if (address === null) {
+      toast(`📡 ${definition.element} Resonance`, `The signal scatters — press your reach farther out and it will sharpen. Hunt ${definition.hunt}.`, true);
+      return false;
+    }
+  } else address = primeClaimWorldAddressV1(save.primeFill[definition.id]?.where);
+  if (address === null) return false;
+  const moved = await searchTravel.jumpToCanonicalAddress(address);
+  if (!moved) return false;
+  closePanels();
+  if (trackId !== undefined) {
+    toast(`📡 Tracking ${definition.element} Titan`, `The resonance sharpens — bearing set for ${definition.guardianName}. Land and survey where it leads.`, true);
+  }
+  return true;
+}
+
+/** The Fabricator's 📌 (D16 parity, recipe-pin.ts): one pinned recipe, saved as view state; the chip tracks what is missing. */
+function refreshRecipePinChip(): void {
+  recipePinChip ??= new RecipePinChipV1(document, () => openPanel('shipyard'));
+  recipePinChip.render(projectRecipePinChipV1(save.pinnedRecipe, {
+    cargo: save.cargo, items: save.items, stardust: save.essence, signatureIds: Object.keys(save.primeFill),
+  }));
+}
+function toggleRecipePin(baseId: string): void {
+  const next = sanitizeRecipePinV1(baseId);
+  save.pinnedRecipe = next === null || save.pinnedRecipe === next ? null : next;
+  refreshRecipePinChip();
+  void persistView();
+}
+
+/** The Fabricator's ×5 (D16 parity): ordinary single fabrications in sequence, each its own receipt (fabrication-batch.ts). */
+async function fabricateEngineeringBatch(baseId: string, repeat: number): Promise<Arc3AppActionOutcome> {
+  return (await runFabricationBatchV1({
+    repeat,
+    fabricate: () => fabricateFixedEngineeringRecipe(baseId),
+    converges: engineeringOutcomeConverges,
+    released: () => engineeringPanelReleased,
+  })).outcome;
+}
+
 const sideEl = document.createElement('div');
 sideEl.id = 'planetside';
 sideEl.className = 'glass';
@@ -16736,7 +16852,7 @@ async function runEngineeringPanelAction(request: EngineeringPanelActionRequest)
         : request.operation === 'research' && request.id !== undefined
           ? await purchaseEngineeringResearch(request.id)
           : request.operation === 'fabricate' && request.id !== undefined
-            ? await fabricateFixedEngineeringRecipe(request.id)
+            ? await (request.repeat === undefined ? fabricateFixedEngineeringRecipe(request.id) : fabricateEngineeringBatch(request.id, request.repeat))
             : Object.freeze({
               kind: 'unavailable',
               operation: request.operation === 'research' ? 'purchase-research' : 'fabricate-fixed',
@@ -16771,7 +16887,7 @@ async function runEngineeringPanelAction(request: EngineeringPanelActionRequest)
     updateChips();
     if (outcome.operation === 'purchase-research') refreshPlanetSurveyCard();
     if (openPanelId() === 'ch') fillCharters();
-    toast('Engineering committed', 'The durable expedition record now reflects this action.', true);
+    toast('Engineering committed', engineeringCommittedCopy(outcome.detail), true);
   } else if (outcome.kind !== 'committed' && !converging) {
     toast('Engineering unavailable', outcome.detail, true);
   }
@@ -16987,7 +17103,7 @@ let lastMutationBlockWitness: Readonly<{
 }> | null = null;
 const READ_ONLY_MUTATION_SELECTOR = [
   '#dockcharts', '#setsnd', '#setvol', '#setvoice', '[data-pref]', '[data-motion]',
-  '#setcharts', '#setfx', '#setshake', '#setglass', '#setrestart',
+  '#setcharts', '#setfx', '#setshake', '#setglass', '#setrestart', '#setresetyes', '#setnotif', '#settips',
   '[data-arc9-nameplate-choice]',
   '[data-frontier-ending-id]',
   '[data-starter-charter-accept]',

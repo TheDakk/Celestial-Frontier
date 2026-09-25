@@ -1858,6 +1858,12 @@ regression on a held run:
   key, resets memory, drops any share-link hash, and rebuilds the opening expedition in
   place (works in sandboxed frames where reload is blocked); explicitly hides the death
   and ending overlays first (a past soft-lock bug).
+- **v2 (matches code as of 2026-09-25, D16 parity):** Settings → **Reset expedition** is an armed two-step (`Reset…` reveals
+  `Erase and start over` / `Cancel`). The erase never deletes rows by hand: it is the ordinary audited REPLACEMENT a save
+  import uses (`importBlob` → `prepareV5Replacement` → F4 `replace`, which clears the old receipts in the same write, then
+  reloads), with the payload `freshExpeditionPayloadV1` (`expedition-reset.ts`) = the canonical export of `importSaveV2('{}')`
+  with Field Training pending and the route at Sol. No save shape changes; device preferences are untouched. Outcome test:
+  `tests/d16-reset-expedition-outcome.test.ts`.
 
 ### Versioning & migration policy
 Shape changes require **versioning + migration** (CLAUDE.md rule 5). The current schema
