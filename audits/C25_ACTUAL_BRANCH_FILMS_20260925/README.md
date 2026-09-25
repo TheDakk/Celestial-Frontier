@@ -2,7 +2,7 @@
 
 All fourteen final films use clean signed anthropic/mac `4093ebca66d80d4ef3bd73d19dbe82c330264d6b`; asset lane `0f4c2a04`. The copied native instrument resolves runtime and proof-contract imports directly from the read-only Claude worktree. Its transform only records hashes and returns no replacement source. Each run checks the source head and cleanliness. These are actual-source diagnostics, not a merged-source certificate or picker admission.
 
-Every run uses Edge at 4× CPU with explicit observed supports and retains the complete film, named stills, source/art hashes and browser provenance. `summaries.json` records recipe/binding/report/film hashes and per-frame exceptions. The narrow other-lane process sampler found no matching work during these films; it is not a claim that the entire host was idle.
+Every run uses Edge at 4× CPU with explicit observed supports and retains the complete film, named stills, source/art hashes and browser provenance. `summaries-final.json` records recipe/binding/report/film hashes and per-frame exceptions. The earlier `summaries.json` retained the obsolete Shark script metadata while pointing to its corrected film; final metadata explicitly distinguishes the rejected script from the actual second input. Films and measurements are unchanged. The narrow other-lane process sampler found no matching work during these films; it is not a claim that the entire host was idle.
 
 | Archetype / run | Rig refusals L/R | CPU p95 / max ms | CPU frames > 1000/60 ms | Long intervals ≥25 ms |
 |---|---:|---:|---:|---:|

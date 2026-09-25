@@ -1,5 +1,5 @@
 {
-  "README.md": "033afd6110fbd154e35832cac873ad5caf3b77b6ed2930ef25d62b4de3bb6625",
+  "README.md": "88ee34ea6ad33fa8f9838feff198839fa1b4c22caaba528ea90af0ef96ef815d",
   "batch-results-02.json": "c38efa4b44bf2ebecb47f99f99175471c068e950ed339784f83813c4ce3bec31",
   "batch-results.json": "b3051325e6b2480f175623ae4638f73c4e062b8bae8030d3a5b12375647cb83e",
   "bear-actual-01/battle-full.webm": "7a54d0230d6cee4bee09d0dcf430c260966437d8c4e409b140c28a01a627d53c",
@@ -337,5 +337,6 @@
   "sturgeon-actual-01-host.json": "9a2923ef6bc7d446b1b7660593af35e5a97e77f7582a2400434f8cf2ea548db9",
   "sturgeon-actual-01.log": "8cbb0ae63b34b977cf2add2c12ca356affcca31088e44fbc275e1e4e38338c54",
   "sturgeon-script.json": "4d6954a8487b80784a578d555f7a413c36bd25b8604a3533abe944e534972812",
+  "summaries-final.json": "4eadc97e02ac6592ec8c948b4f889375a165d2cdd37bda2487fb423600920bdd",
   "summaries.json": "f1d3efbda77b6c556814b65003acd330e03624088cea7199185ac0a575caf399"
 }
