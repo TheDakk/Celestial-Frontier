@@ -76,6 +76,10 @@ painted arena works offline in it. Codex's items 5 and 7 are staged unsigned in 
 - Run `npm run overridecontrol` and the whole gate list locally before any hosted attempt.
 
 ### What Claude owes next
+-92. **Playtest package on `fb82c32c` (2026-09-25):** `port/v2/apps/game/smoke/dev-preview-fb82c32cac67-20260925005333/`. `preview:package`, `verify` and `smoke`
+PASS. The controlled-worker smoke on the package (`audits/PAINTED_STAND_INS_20260924/package-smoke-01/`) passes: Alien #12 as a Civet vs Alien #11 as a Tarantula,
+two painted rigs, log paced 2.2 / 6.3 / 10.4 s, offline reload, zero errors. Play: `python3 -m http.server 8080` inside it, then
+`http://127.0.0.1:8080/?battle2=1&vs=alien:12,alien:11&duel=1`; the Compendium shows painted stand-ins. Supersedes `dev-preview-3201cd86834e-20260924200110`.
 -91. **…and on the battle stage (2026-09-24).** `matchRecord` falls back to the painted stand-in, so a fighter without its own painting fights as
 its stand-in's painted rig, morphed by its own genes. The picker takes `alien:<seed>`. Edge real duels with the worker in control: Alien #12
 (4 legs) fights as a Civet against Alien #11 (8 legs) as a Tarantula, and Alien #5 (fish) as a Salmon on the lake against the Octopus;
