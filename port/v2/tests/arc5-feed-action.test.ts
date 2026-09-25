@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { COMPANION_FEED_POLICY_V2 } from '@cf/domain-acquisition/companion-care';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
@@ -55,6 +56,8 @@ import {
   type Arc5FeedActionInputV1,
 } from '../apps/game/src/arc5-feed-action.js';
 import { createF4RuntimeAuthority } from '../apps/game/src/f4-runtime-authority.js';
+/** Feed policy v2 (D13): the taste decides the gain. */
+const policyGain = (t: { preference: 'loved' | 'neutral' | 'disliked'; floraTier: number }): number => { const r = COMPANION_FEED_POLICY_V2[t.preference]; return t.floraTier >= r.rareTier ? r.fedRare : r.fed; };
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const baseline = path.join(here, '..', '..', 'baseline-v1.8.9');
@@ -308,7 +311,7 @@ describe('Arc 5 headless durable feed action', () => {
       },
       settlement: {
         creatureBefore: { creatureId: fixture.ownership.creatureId, fed: 19 },
-        creatureAfter: { creatureId: fixture.ownership.creatureId, fed: 20 },
+        creatureAfter: { creatureId: fixture.ownership.creatureId, fed: 19 + policyGain(outcome.settlement.preflight.taste) },
         foodBefore: { lotId: fixture.ownership.foodLotId, quantity: 2 },
         foodAfter: { lotId: fixture.ownership.foodLotId, quantity: 1 },
       },
@@ -330,7 +333,7 @@ describe('Arc 5 headless durable feed action', () => {
     expect(beforeCreature.fed).toBe(19);
     expect(outcome.ownershipV2.creatures.find((row) => (
       row.creatureId === fixture.ownership.creatureId
-    ))?.fed).toBe(20);
+    ))?.fed).toBe(19 + policyGain(outcome.settlement.preflight.taste));
     expect(outcome.ownershipV2.creatures.find((row) => (
       row.creatureId === fixture.ownership.twinId
     ))).toEqual(beforeTwin);

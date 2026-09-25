@@ -3566,6 +3566,7 @@ function projectCurrentCompendiumFeed(
       ownership: arc5OwnershipState,
       protected: arc5OwnershipProtection !== null || !f4RuntimeMayMutate(),
       fixture: compendiumFixtureRows !== null,
+      ...(f4Runtime !== null ? { activePlayMs: f4Runtime.diagnostics().activePlayMs } : {}),
     });
   } catch {
     return null;
@@ -13731,9 +13732,10 @@ function compendiumFeedRequestIsCurrent(
     || ownershipStateDigestV2(parent) !== request.ownershipDigest) return false;
   const creature = model.creatures.find((candidate) => candidate.creatureId === request.creatureId);
   const flora = model.floraLots.find((candidate) => candidate.foodLotId === request.foodLotId);
+  const pair = model.pairs.find((candidate) => candidate.creatureId === request.creatureId && candidate.foodLotId === request.foodLotId);
   return creature?.status === 'ready'
     && creature.fedBefore === request.fedBefore
-    && creature.fedAfter === request.fedAfter
+    && pair?.fedAfter === request.fedAfter
     && flora?.quantityBefore === request.foodQuantityBefore
     && flora.quantityAfter === request.foodQuantityAfter;
 }
@@ -13861,6 +13863,7 @@ async function commitCompendiumFeedAction(
         creatureId: request.creatureId,
         foodLotId: request.foodLotId,
         codecNow: Date.now(),
+        activePlayMs: runtime.diagnostics().activePlayMs,
       });
     } finally {
       if (faultInjection === 'storage-failure') smokeRejectArc5FeedStorageBoundary = false;

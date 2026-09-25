@@ -421,7 +421,7 @@ describe('Arc 5 Compendium Feed projection and controller', () => {
       selectedFoodLotId: f.floraIds[1],
     });
     expect(view.mount.querySelector('[data-arc5-feed-summary]')?.textContent)
-      .toMatch(/Meals 91 → 92.*Use 1.*Quantity 1 → 0/u);
+      .toMatch(/A new taste: Meals 91 → \?.*Use 1.*Quantity 1 → 0/u); // D13: an untasted flavour keeps its gain hidden
     expect(view.mount.querySelector<HTMLButtonElement>('[data-arc5-feed-confirm]')!.disabled)
       .toBe(false);
     expect(onAction).not.toHaveBeenCalled();
@@ -577,7 +577,7 @@ describe('Arc 5 Compendium Feed projection and controller', () => {
     const focusedFlora = choose(view, 'flora', f.floraIds[1]);
     expect(view.document.activeElement).toBe(focusedFlora);
     expect(view.mount.querySelector('[data-arc5-feed-summary]')?.textContent)
-      .toMatch(/Meals 91 → 92.*Use 1.*Quantity 1 → 0/u);
+      .toMatch(/A new taste: Meals 91 → \?.*Use 1.*Quantity 1 → 0/u); // D13: an untasted flavour keeps its gain hidden
     expect(view.mount.querySelector<HTMLButtonElement>('[data-arc5-feed-confirm]')!.disabled)
       .toBe(false);
     expect(controller.diagnostics()).toMatchObject({
