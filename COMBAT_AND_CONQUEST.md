@@ -225,7 +225,7 @@ share one helper and the fingerprint held.
 >
 > **Implemented 2026-09-25 (matches code):**
 > - **Defeat is Recovery.** Every defeated companion, bred or wild, including a captured Guardian, gets the `set-recovery` injury: its
->   wound rises by `COMBAT_DEFEAT_WOUND_STEP_V1` (0.385, capped at 0.85), and it enters active-play Recovery for
+>   wound is unchanged (`COMBAT_DEFEAT_WOUND_STEP_V1` = 0: a wound on the fallen alone would make Swap necessary), and it enters active-play Recovery for
 >   `COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1` (10 min placeholder). It is never removed. v1's permanent loss and one-time bred crawl-home
 >   are retired.
 > - **Save carriers.** The Recovery lives on the v2 ownership row and on the captured-Guardian overlay (the only assignment that

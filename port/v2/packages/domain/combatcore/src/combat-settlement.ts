@@ -75,8 +75,9 @@ export interface CombatSettlementAuthorityV1 {
 
 /** Recovery after a defeat, in ACTIVE-PLAY milliseconds (placeholder: Codex's S4/economy owns the number; §20). */
 export const COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1 = 10 * 60 * 1000;
-/** A defeat wounds like a hard-won win at 0 HP (0.55 × 0.7), capped at the legacy Critical 0.85. */
-export const COMBAT_DEFEAT_WOUND_STEP_V1 = 0.385;
+/** §20: a defeat adds NO wound. A fallen fighter and one swapped out get the same Recovery, so a wound on the fallen alone would make
+ *  swapping necessary to avoid it (Nick: "I don't want them to feel the swap is necessary"), and v2 has no healing yet (D13). */
+export const COMBAT_DEFEAT_WOUND_STEP_V1 = 0;
 
 export interface PlanCombatSettlementInputV1 {
   readonly battleId: string;

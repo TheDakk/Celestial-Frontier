@@ -409,8 +409,9 @@ of 3 for guardians only. That's great."
   - Target gaps between Auto (Balanced) and the best plan: easy wild fights < 5 points of win rate, normal conquest ~10–20, and
     Guardians/Titans ~25–40, measured and tuned by the instrument.
   - The forecast shows both, e.g. "Auto: Even · With your plan: Favored".
-- **Defeat is Recovery, never loss.** A defeated companion is wounded and enters active-play Recovery (§16 carrier), with the length set
-  by Codex's economy. Companions already lost in old saves stay lost. The explorer keeps the 1 HP mercy floor.
+- **Defeat is Recovery, never loss.** A defeated companion enters active-play Recovery (§16 carrier), with the length set by Codex's
+  economy. **It adds no extra wound** (Claude, 2026-09-25, applying this decision): a fallen fighter and one swapped out get the same
+  Recovery, so a wound on the fallen alone would make swapping necessary to avoid it. v2 has no wound healing until D13 either. Companions already lost in old saves stay lost. The explorer keeps the 1 HP mercy floor.
 - **No rerolls:** the same plan always gives the same fight, and a reload cannot reroll it.
 - **Parity:** one fighter + Balanced + Auto reproduces v1's `runDuel` exactly.
 - **Order:** Guardian parties first, then v1's friendly duel (+8 XP), then the Guardian phase change.
