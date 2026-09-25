@@ -42,8 +42,9 @@ describe('ready spacing and full travel', () => {
     const L = box(a.rig, scales.left, placed.layout.stands.left.x, 1), R = box(b.rig, scales.right, placed.layout.stands.right.x, -1);
     expect(R.l - L.r, 'painted gap at rest').toBeGreaterThanOrEqual(READY_GAP - 1e-9);
     expect(L.l).toBeGreaterThanOrEqual(EDGE_MARGIN - 1e-9); expect(R.r).toBeLessThanOrEqual(1 - EDGE_MARGIN + 1e-9);
-    // control: the OLD composition (box centres on the 1/3–2/3 stands) overlapped — Codex's reported roots .439/.561 geometry
-    expect((2 / 3 - R.hw) - (1 / 3 + L.hw), 'old composition overlapped').toBeLessThan(0);
+    // control: the OLD composition (box centres on the 1/3–2/3 stands) had no ready gap at these scales (it overlapped outright before the
+    // motion-envelope band fit made the swimmer a little smaller — Codex's reported roots .439/.561 geometry)
+    expect((2 / 3 - R.hw) - (1 / 3 + L.hw), 'old composition lacked the ready gap').toBeLessThan(READY_GAP);
     // the real stage: the attacker travels box to box, ending CONTACT_GAP short of the target (not the 0.15 floor)
     let now = 0; const stage = new BattleStage({ factory, clock: () => now, layout: placed.layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: a.rig, right: b.rig }, masses: { left: a.card.massClass.multiplier, right: b.card.massClass.multiplier }, presentationScales: scales, ...(placed.water ? { water: placed.water } : {}) });
     const ctx: TurnOutcomeContext = { A: { side: 'A', name: 'Sturgeon A', mass: a.card.massClass.multiplier, card: a.card, theme: 'tide', seed: 1 }, B: { side: 'B', name: 'Sturgeon B', mass: b.card.massClass.multiplier, card: b.card, theme: 'tide', seed: 2 },
@@ -68,5 +69,24 @@ describe('the layered-reach cache (complete-input key)', () => {
     const heavy = { ...a.card, massClass: { ...a.card.massClass, multiplier: a.card.massClass.multiplier * 1.6 } } as typeof a.card;
     expect(layeredReachKey(a.record, null, heavy)).not.toBe(layeredReachKey(a.record, null, a.card));
     expect(layeredReachKey(a.record, { recordRecipeHash: a.record.recipeHash, parts: [1] }, a.card)).not.toBe(layeredReachKey(a.record, null, a.card)); // observed ≠ rest
+  }, 120_000);
+});
+
+describe('band containment in motion (C25)', () => {
+  it('a swimmer on a lake keeps its motion envelope (rest box + the rise its rig measured across the stage clips) inside the water band; control: the rest box alone would breach', async () => {
+    const { rig, record, card } = await loadFitDir(STURGEON);
+    expect(rig.tallestHeight! - rig.bounds.height, 'the rig measured a real rise (the faint tail lift)').toBeGreaterThan(0);
+    const layout = composeArena({ id: 'lake', groundLineNormalized: 0.78, plates: { far: TEX, mid: TEX, near: TEX } }, FRAME);
+    const side = { rig, mass: card.massClass.multiplier, record: record as never, genome: null, label: 'Sturgeon' };
+    const placed = placeCombatants({ contextId: 'band', seed: 7, layout, worlds: { home: lakeArenaWorld(layout.groundLineY), visitor: lakeArenaWorld(layout.groundLineY) }, left: side, right: { ...side, label: 'Sturgeon B' } });
+    expect(placed.status).toBe('READY'); if (placed.status !== 'READY') return;
+    const k = (placed.presentationScales ?? { left: 1 }).left, band = placed.habitat.stands.left.band, H = FRAME.height;
+    const restTop = placed.layout.stands.left.y - (rig.extent!.up! * rig.cutout.height * k) / H, rise = ((rig.tallestHeight! - rig.bounds.height) * rig.cutout.height * k) / H;
+    const bottom = restTop + (rig.bounds.height * rig.cutout.height * k) / H;
+    expect(restTop - rise, 'the highest pose stays under the surface').toBeGreaterThanOrEqual(band.minY - 1e-9);
+    expect(bottom).toBeLessThanOrEqual(band.maxY + 1e-9);
+    // control: centring the REST box alone in the band (the old rule) leaves no room for the rise
+    const restH = (rig.bounds.height * rig.cutout.height * k) / H, oldTop = (band.minY + band.maxY) / 2 - restH / 2;
+    expect(oldTop - rise, 'the rest-box rule breaches with this rise').toBeLessThan(band.minY);
   }, 120_000);
 });
