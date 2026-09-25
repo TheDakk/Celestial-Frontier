@@ -1,0 +1,103 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "fit-01",
+  "sourceRecordSha256": "7f7a1d10d7a58f722b48ee3e6ab033c71ce84eb8d46320aca62a07cfb9530c48",
+  "sourceBindingSha256": "c059f6f216ea1d18081d1d1279d653a54c774767989ee44d308e622df5ac025e",
+  "sourceAtlasSha256": "95775e5b9dc0614d3033480742553debb9fe93b9a32aac1b88efbea15d6e670d",
+  "helperSha256": "0be2f317094198c802c9f952897b8c5eaeaa1ac92a487b3eacbbe2cc2b7e73a6",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "legNearFoot",
+      "legFarFoot",
+      "legNearAnkle",
+      "legFarAnkle",
+      "legNearKnee",
+      "legFarKnee",
+      "beak",
+      "head",
+      "neck1",
+      "neck0",
+      "wingNearRoot",
+      "wingNearTip",
+      "wingFarRoot",
+      "wingFarTip",
+      "tailFan",
+      "chest"
+    ],
+    "contactEndpoints": [
+      "legFarAnkle",
+      "legNearAnkle"
+    ],
+    "paintBoundaryPairs": [
+      [
+        "far-wing-shoulder",
+        "neck-lower"
+      ],
+      [
+        "far-wing-shoulder",
+        "neck-upper"
+      ],
+      [
+        "near-wing-shoulder",
+        "neck-lower"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 45,
+        "distancePx": 8.897694930107031,
+        "supports": [
+          68,
+          69
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 50,
+        "distancePx": 12.041594578792338,
+        "supports": [
+          6,
+          151
+        ]
+      }
+    ],
+    "sourceBindingHash": "7c99075a5f6bc2e2e5dbd82ed112fca896d2cbab5fa9da9ce6f2cf382b2e937e",
+    "sourceVertices": 1382,
+    "vertices": 1876,
+    "sharedSupports": 311,
+    "pins": 1076,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 19,
+    "observedExcludedBoundaries": 19,
+    "weldedExcludedBoundaries": 3,
+    "independentExcludedBoundaries": 16,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "far-wing-shoulder",
+        "neck-lower"
+      ],
+      [
+        "far-wing-shoulder",
+        "neck-upper"
+      ],
+      [
+        "near-wing-shoulder",
+        "neck-lower"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "7a5cc081e76e7ff2cdb72f8f03bb5777456fe9c1fe82189608bc5fb638c85f99",
+  "scope": "Only this unadmitted Gull candidate. Manually declared shoulder/neck continuity only, matching visible angular holes. Distal wings and legs remain independent. No solver/gate/limit change; no hidden pixels invented. Prior intake receipts describe inherited fit-01 inputs, this receipt owns the new split."
+}
