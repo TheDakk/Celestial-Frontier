@@ -42,14 +42,20 @@ export const CARD_ARCHETYPES = Object.freeze([
   { earthName: 'Tang', dir: 'audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/', key: 'tang', markings: 'audits/ART_BATTLE_FOCUS_20260925/10-tang/' },
   { earthName: 'Dragonfly', dir: 'audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/fit-03/', key: 'dragonfly', markings: 'audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/' },
   // C15 (2026-09-25): candidates that waited only on the stage fixes (layered idle+approach reach, faint idle settle, READY spacing) and pass
-  // the integrated library check (zero refusals as attacker and target). Pike, Goose, Ibex, Cougar, Marmot and Wall Lizard ALSO pass it but are
-  // HELD by the 128 MiB shipped-pack cap (the Gull is held by CARD = STAGE: its accent sits at the grey/tint threshold) (the arena may hold ~73.5 MiB; the masters still ship until C13's loader controls pass) — re-add
+  // the integrated library check (zero refusals as attacker and target). the Gull is HELD by CARD = STAGE (its accent sits at the grey/tint threshold) (the arena may hold ~73.5 MiB; the masters still ship until C13's loader controls pass) — re-add
   // them when the masters leave the pack. Their exact rows are kept in tools/morph/budget-held-archetypes.json (data, so this file keeps one earthName literal per archetype).
   { earthName: 'Sturgeon', dir: 'audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/fit-02/', key: 'sturgeon', markings: 'audits/ART_BATTLE_FOCUS_20260925/sturgeon-facing-04/' },
   { earthName: 'Wolf', dir: 'audits/ART_BATTLE_FOCUS_20260925/11-wolf/fit-03/', key: 'wolf', markings: 'audits/ART_BATTLE_FOCUS_20260925/11-wolf/mask-set-02/' },
   { earthName: 'Impala', dir: 'audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/', key: 'impala' },
   { earthName: 'River Otter', dir: 'audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02/', key: 'river-otter', markings: 'audits/ART_BATTLE_FOCUS_20260925/13-river-otter/' },
   { earthName: 'Heron', dir: 'audits/ART_BATTLE_FOCUS_20260925/16-heron/fit-01/', key: 'heron', markings: 'audits/ART_BATTLE_FOCUS_20260925/16-heron/', contactSupports: 'observed' },
+  // restored 2026-09-25 once the masters left the pack (C23): they passed the integrated library check when held
+  { earthName: 'Marmot', dir: 'audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/', key: 'marmot' },
+  { earthName: 'Wall Lizard', dir: 'audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/', key: 'wall-lizard' },
+  { earthName: 'Cougar', dir: 'audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03/', key: 'cougar', markings: 'audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/' },
+  { earthName: 'Ibex', dir: 'audits/ART_BATTLE_FOCUS_20260925/18-ibex/fit-02/', key: 'ibex', markings: 'audits/ART_BATTLE_FOCUS_20260925/18-ibex/' },
+  { earthName: 'Pike', dir: 'audits/ART_BATTLE_FOCUS_20260925/20-pike/fit-02/', key: 'pike', markings: 'audits/ART_BATTLE_FOCUS_20260925/20-pike/' },
+  { earthName: 'Goose', dir: 'audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/', key: 'goose', markings: 'audits/ART_BATTLE_FOCUS_20260925/15-goose/', contactSupports: 'observed' },
   { earthName: 'Jellyfish', dir: 'audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/', key: 'jellyfish', markings: 'audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/', weapons: 'audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/weapon-declaration.json' },
 ]);
 const sha = (b) => createHash('sha256').update(b).digest('hex');
