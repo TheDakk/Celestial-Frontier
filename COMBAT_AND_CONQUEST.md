@@ -233,6 +233,17 @@ share one helper and the fingerprint held.
 >   The persistence owner refuses a champion in Recovery.
 > - **The engine.** `runEncounterV1` (relay, stances, Breaks, Auto/Command) is built and parity-locked to `runDuel`. It is not yet
 >   wired to the card.
+> - **Auto Guardian parties are live (same date).**
+>   - **Card:** a stance for every fight's lead. Guardians and Titans get two more relay slots, each with its own stance, and the
+>     forecast shows "Your plan (Auto)" beside "Balanced alone".
+>   - **Settlement:** `planCombatPartySettlementV1` → one receipt. The decisive leg is the top-level plan, and a `party` block carries
+>     every other member.
+>   - **Carriers:** every fallen member enters Recovery on its carrier (Arc 5 ownership or the captured-Guardian overlay) in the same
+>     CAS. Every owned fighter must be on exactly one carrier and free at the committed clock, and the explorer binds wherever it
+>     fights.
+>   - **Chronicle:** it names every earlier fighter before the decisive leg.
+>   - **Still to come:** Command (Breaks), which needs the open-encounter record; Codex's S4 balance numbers; friendly duels; and the
+>     Guardian phase change.
 
 The current landed-Surface card implements the minimum honest combat decision: select the explorer,
 one eligible ordinary owned-fauna champion or one live captured Guardian/Titan after reading the exact defender, abilities, deterministic

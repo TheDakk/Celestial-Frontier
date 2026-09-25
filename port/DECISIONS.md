@@ -416,7 +416,7 @@ of 3 for guardians only. That's great."
 - **Parity:** one fighter + Balanced + Auto reproduces v1's `runDuel` exactly.
 - **Order:** Guardian parties first, then v1's friendly duel (+8 XP), then the Guardian phase change.
 - Engineering plan: `audits/PROPOSALS_20260925/N1_COMBAT_MODEL.md` §5 (S0–S7), as amended here.
-- **Status (2026-09-25):** S1 engine done (parity-locked); defeat-is-Recovery live for every companion and captured Guardian. The Guardian party card, Breaks UI and Command persistence come next.
+- **Status (2026-09-25):** S1 engine done (parity-locked); defeat-is-Recovery live for every companion and captured Guardian; **Auto Guardian parties live end to end** (card, one-receipt settlement on both carriers, Chronicle prelude). Command (Breaks + the open-encounter record), Codex's S4 numbers, friendly duels and the Guardian phase change come next.
 
 ## Open implementation decisions exposed 2026-08-29 — Arc 6 reward carriers
 

@@ -64,6 +64,19 @@ proposals in `audits/PROPOSALS_20260925/`). The gate command, the same one Codex
 - Run `npm run overridecontrol` and the whole gate list locally before any hosted attempt.
 
 ### What Claude owes next
+-110. **§20 Auto Guardian parties live end to end:**
+- the engine (S1, parity-locked);
+- the party planner (one receipt);
+- the Recovery helpers for both carriers, plus the persistence routing and verification;
+- the card (stance, two Guardian party slots, "Your plan" forecast), with the plan state in Main;
+- the Chronicle prelude.
+
+The end-to-end persistence test found two real gaps: an unowned member, and an unchecked not-fought member in Recovery. Both are fixed.
+Next: Command (Breaks) through the open-encounter record, then S4 (Codex), friendly duels, and the Guardian phase change.
+-109. **Defeat adds no wound** (§20 applied): a wound on the fallen alone would make Swap necessary.
+-108. **Defeat is Recovery, never loss** for every companion and captured Guardian (the 9 tests that pinned permanent loss now prove the
+new law).
+-107. **A5 outcome tests:** Discover Life (10), Scavenge (7), Breed (10), Rename + Scout (12). No bugs.
 -106. **Play-time harvest ported (v1.8.9 parity, `9e4c5959`):** `world-harvest.ts`, conquered-world card button, active-play epochs (see
 `ECONOMY_LOOT_CRAFTING.md` v2 note). Owner and wiring tests include THE CLOCK LAW. Trap: an unpublished epoch is refused (the save clamps
 `e` to `EPOCH_BASE`), and the runner lives just before `const sideEl`, because tests execute the `surveyPlanet → buildCardActions` region
