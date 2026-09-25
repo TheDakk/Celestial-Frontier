@@ -16,6 +16,8 @@ import {
   type SpecimenLotId,
 } from '@cf/domain-acquisition';
 import { ARC5_FED_MAX_V1 } from '@cf/domain-acquisition/feed-internal';
+import { COMPANION_FLAVOUR_NAMES_V1, companionMealOutcomeV2, companionTasteMemoryIdV1 } from '@cf/domain-acquisition/companion-care';
+import { projectCompanionAvailabilityV1 } from '@cf/domain-acquisition/companion-availability';
 
 export const COMPENDIUM_FEED_READ_MODEL_SCHEMA =
   'cf-v2-compendium-feed-read-model/v1' as const;
@@ -53,6 +55,8 @@ export interface CompendiumFeedProjectionInputV1 {
   readonly protected: boolean;
   /** Diagnostic Compendium rows are presentation fixtures, never ownership. */
   readonly fixture: boolean;
+  /** D13: the current active-play clock (a finished Rest no longer blocks a meal); absent = the stored assignment. */
+  readonly activePlayMs?: number;
 }
 
 export interface CompendiumFeedSurfaceReceiptV1 {
@@ -79,6 +83,19 @@ export interface CompendiumFeedFloraReadModelV1 {
   readonly quantityAfter: number;
 }
 
+/** D13 Feed policy v2: the exact outcome of one companion eating one flora lot. The taste is shown only once this companion has tasted
+ * that flavour (`known`); the numbers always equal the committed settlement, so Main can verify the request. */
+export interface CompendiumFeedPairReadModelV1 {
+  readonly creatureId: CreatureInstanceId;
+  readonly foodLotId: SpecimenLotId;
+  readonly fedAfter: number;
+  readonly known: boolean;
+  readonly preference: 'loved' | 'neutral' | 'disliked' | null;
+  readonly flavourName: string | null;
+  readonly hurtBefore: number;
+  readonly hurtAfter: number;
+}
+
 export interface CompendiumFeedReadModelV1 {
   readonly schema: typeof COMPENDIUM_FEED_READ_MODEL_SCHEMA;
   readonly surface: CompendiumFeedSurfaceReceiptV1;
@@ -90,6 +107,7 @@ export interface CompendiumFeedReadModelV1 {
   readonly ownershipDigest: string | null;
   readonly creatures: readonly CompendiumFeedCreatureReadModelV1[];
   readonly floraLots: readonly CompendiumFeedFloraReadModelV1[];
+  readonly pairs: readonly CompendiumFeedPairReadModelV1[];
 }
 
 export interface CompendiumFeedActionRequestV1 {
@@ -178,6 +196,23 @@ function surfaceReceipt(
   return Object.freeze({ generation, logicalId, speciesId, surfaceKey });
 }
 
+/** Every ready companion × flora lot: the exact Feed policy v2 outcome (the same function the settlement uses). */
+function mealPairs(ownership: OwnershipStateV2, creatures: readonly CompendiumFeedCreatureReadModelV1[], floraLots: readonly CompendiumFeedFloraReadModelV1[]): readonly CompendiumFeedPairReadModelV1[] {
+  const out: CompendiumFeedPairReadModelV1[] = [];
+  for (const c of creatures) {
+    if (c.status !== 'ready') continue;
+    const creature = ownership.creatures.find((row) => row.creatureId === c.creatureId); if (creature === undefined) continue;
+    for (const f of floraLots) {
+      const species = ownership.catalogSpecies.find((row) => row.speciesId === f.speciesId); if (species === undefined || species.kingdom !== 'flora') continue;
+      let meal: ReturnType<typeof companionMealOutcomeV2>; try { meal = companionMealOutcomeV2(creature, species.genome as unknown as Record<string, unknown>); } catch { continue; }
+      const known = (creature.bond?.memories ?? []).some((m) => m.id === companionTasteMemoryIdV1(meal.taste.flavour));
+      out.push(Object.freeze({ creatureId: c.creatureId, foodLotId: f.foodLotId, fedAfter: Math.min(ARC5_FED_MAX_V1, c.fedBefore + meal.fedGain), known,
+        preference: known ? meal.taste.preference : null, flavourName: known ? COMPANION_FLAVOUR_NAMES_V1[meal.taste.flavour] : null, hurtBefore: meal.hurtBefore, hurtAfter: meal.hurtAfter }));
+    }
+  }
+  return Object.freeze(out);
+}
+
 function unavailableModel(
   surface: CompendiumFeedSurfaceReceiptV1,
   availability: Exclude<CompendiumFeedAvailability, 'ready'>,
@@ -199,6 +234,7 @@ function unavailableModel(
     ownershipDigest,
     creatures,
     floraLots,
+    pairs: Object.freeze([]),
   });
   READ_MODELS.add(model);
   return model;
@@ -296,12 +332,13 @@ export function projectCompendiumFeedV1(
       && row.genomeIdentity === identity.genomeIdentity)
     .map((row): CompendiumFeedCreatureReadModelV1 => {
       const fedBefore = row.fed ?? 0;
-      /* the same rule as preflightArc5FeedV1: only a mission blocks a meal; Recovery never does */
-      const status: CompendiumFeedCreatureStatus = row.assignment?.kind === 'mission'
+      /* the same rule as preflightArc5FeedV1: only a mission (a Rest still under way included) blocks a meal; Recovery never does */
+      const projected = typeof input.activePlayMs === 'number' ? projectCompanionAvailabilityV1(row, input.activePlayMs).assignment : row.assignment;
+      const status: CompendiumFeedCreatureStatus = projected?.kind === 'mission'
         ? 'assigned'
         : fedBefore >= ARC5_FED_MAX_V1 ? 'capped' : 'ready';
       const disabledReason = status === 'assigned'
-        ? 'This companion is away on a mission.'
+        ? (projected?.kind === 'mission' && projected.missionId.startsWith('rest:') ? 'This companion is resting.' : 'This companion is away on a mission.')
         : status === 'capped' ? `Meals are already at ${ARC5_FED_MAX_V1}.` : null;
       return Object.freeze({
         creatureId: row.creatureId,
@@ -376,6 +413,7 @@ export function projectCompendiumFeedV1(
     ownershipDigest,
     creatures,
     floraLots,
+    pairs: mealPairs(ownership, creatures, floraLots),
   });
   READ_MODELS.add(model);
   return model;
@@ -723,7 +761,7 @@ export class CompendiumFeedController {
         'span',
         '',
         `${row.label} · Meals ${row.fedBefore}${row.status === 'ready'
-          ? ` → ${row.fedAfter}`
+          ? ''
           : ` · ${row.disabledReason ?? 'Unavailable'}`}`,
       ));
       fieldset.append(label);
@@ -784,11 +822,15 @@ export class CompendiumFeedController {
     if (creature === undefined || flora === undefined) {
       summary.textContent = 'Choose one companion and one flora lot to preview Use 1.';
     } else {
-      summary.textContent = `${creature.label}: Meals ${creature.fedBefore} → ${creature.fedAfter}. Use 1 ${flora.label}: Quantity ${flora.quantityBefore} → ${flora.quantityAfter}.`;
+      const pair = state.pairs.find((row) => row.creatureId === creature.creatureId && row.foodLotId === flora.foodLotId);
+      const meal = pair === undefined ? `Meals ${creature.fedBefore}`
+        : pair.known ? `${pair.preference === 'loved' ? '♥ Loved' : pair.preference === 'disliked' ? '⊘ Disliked' : 'Neutral'} (${pair.flavourName}): Meals ${creature.fedBefore} → ${pair.fedAfter}${pair.hurtAfter < pair.hurtBefore ? ', mends wounds' : ''}`
+          : `A new taste: Meals ${creature.fedBefore} → ? (you will learn how it likes it)`;
+      summary.textContent = `${creature.label}: ${meal}. Use 1 ${flora.label}: Quantity ${flora.quantityBefore} → ${flora.quantityAfter}.`;
       summary.dataset.creatureId = creature.creatureId;
       summary.dataset.foodLotId = flora.foodLotId;
       summary.dataset.fedBefore = String(creature.fedBefore);
-      summary.dataset.fedAfter = String(creature.fedAfter);
+      summary.dataset.fedAfter = String(pair?.fedAfter ?? creature.fedAfter);
       summary.dataset.foodQuantityBefore = String(flora.quantityBefore);
       summary.dataset.foodQuantityAfter = String(flora.quantityAfter);
     }
@@ -883,6 +925,8 @@ export class CompendiumFeedController {
     const creature = state.creatures.find((row) => row.creatureId === this.#selectedCreatureId);
     const flora = state.floraLots.find((row) => row.foodLotId === this.#selectedFoodLotId);
     if (creature === undefined || creature.status !== 'ready' || flora === undefined) return null;
+    const pair = state.pairs.find((row) => row.creatureId === creature.creatureId && row.foodLotId === flora.foodLotId);
+    if (pair === undefined) return null;
     return copyRequest({
       surface: state.surface,
       contextKey: state.contextKey,
@@ -891,7 +935,7 @@ export class CompendiumFeedController {
       creatureId: creature.creatureId,
       foodLotId: flora.foodLotId,
       fedBefore: creature.fedBefore,
-      fedAfter: creature.fedAfter,
+      fedAfter: pair.fedAfter,
       foodQuantityBefore: flora.quantityBefore,
       foodQuantityAfter: flora.quantityAfter,
     });
