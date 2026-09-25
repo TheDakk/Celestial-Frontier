@@ -87,7 +87,8 @@ This is a recorded design requirement, not implemented climate/physics or all-wo
 > Eligibility, both result successors and complete-save capacity are certified before the one
 > `breedOutcome` draw. Every settled attempt is nonlethal: both parents remain owned and enter
 > F4-active-play Recovery for eight minutes on success or two minutes on failure. Recovery blocks
-> breed, combat and dispatch. Success admits the existing child successor with exactly half the
+> breed, combat and dispatch. *(2026-09-25 fix: Recovery never blocks Feed. A recovering or recovered parent eats and keeps its
+> Recovery. Only a mission blocks a meal: `preflightArc5FeedV1` and the Compendium Feed read model agree.)* Success admits the existing child successor with exactly half the
 > lower parent's bounded `fed` and gives that newborn **+2 XP**. It adds the one-time **+5 XP** only
 > when the exact unordered parent-species pair has never paid; failure creates no child and changes
 > no XP-first authority. New V2 firsts use one collision-resistant SHA-256 digest over the sorted

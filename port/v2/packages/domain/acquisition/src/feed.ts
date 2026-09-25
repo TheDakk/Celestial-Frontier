@@ -127,7 +127,10 @@ export function preflightArc5FeedV1(
   if (checkedTarget === null) return refused('input-invalid');
   const creature = parent.creatures.find((row) => row.creatureId === checkedTarget.creatureId);
   if (creature === undefined) return refused('creature-not-found');
-  if (creature.assignment !== null) return refused('creature-assigned');
+  /* Only a companion AWAY on a mission cannot be fed. Recovery locks breed, combat and dispatch only
+     (BREEDING_AND_SHARING.md; COMPANION_LOCKED_COMMANDS_V1), so a recovering or recovered parent eats, and the meal
+     keeps its Recovery assignment unchanged. */
+  if (creature.assignment !== null && creature.assignment.kind === 'mission') return refused('creature-assigned');
   const fedBefore = creature.fed ?? 0;
   if (fedBefore >= ARC5_FED_MAX_V1) return refused('creature-fed-cap');
   const food = parent.specimenLots.find((row) => row.lotId === checkedTarget.foodLotId);

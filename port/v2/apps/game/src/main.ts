@@ -33,7 +33,12 @@ import {
   combatCuePlan, initAudio, playRaritySting, playWhoosh, playSurveyPing,
   projectCombatCueParticipantsV1, applySfxGain,
 } from '@cf/audio';
-import type { AudioContextLike, AudioCounterpartReceipt } from '@cf/audio';
+import type { AudioAccessibilityModes, AudioContextLike, AudioCounterpartReceipt } from '@cf/audio';
+import {
+  deviceAudioAccessibilityStorage,
+  readAudioAccessibilityPrefsV1,
+  writeAudioAccessibilityPrefsV1,
+} from './audio-accessibility-prefs.js';
 import {
   registerPanel, fillPanel, openPanel, closePanels, openPanelId,
   createPanelOpenController,
@@ -803,6 +808,13 @@ let lastSmokeArc0LandingFaultWitness: Readonly<{
 }> | null = null;
 let currentCapturePresentationFence: string | null = null;
 let tameGreetingAudioOwner: TameGreetingAudioOwner | null = null;
+/* Mono audio / Reduced intensity: this device's listening preferences (never the save); the one shared audio runtime applies them. */
+let audioAccessibility: AudioAccessibilityModes = readAudioAccessibilityPrefsV1(deviceAudioAccessibilityStorage());
+function setAudioAccessibility(next: AudioAccessibilityModes): void {
+  audioAccessibility = Object.freeze({ mono: next.mono === true, reducedIntensity: next.reducedIntensity === true });
+  writeAudioAccessibilityPrefsV1(deviceAudioAccessibilityStorage(), audioAccessibility);
+  tameGreetingAudioOwner?.syncSettings();
+}
 let combatBattleScene: CombatBattleSceneController | null = null;
 let smokeRejectNextArc4ActionStorage = false;
 let smokeStaleNextArc4ActionAuthority = false;
@@ -2788,6 +2800,8 @@ function fillSettings(): void {
     `<div class="row"><label>Sound</label><button id="setsnd" aria-label="Sound" aria-pressed="${save.sndOn}" class="${save.sndOn ? 'on' : ''}" data-sel="set-sound">${save.sndOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Volume</label><input id="setvol" data-sel="set-vol" aria-label="Sound volume" type="range" min="0" max="100" value="${Math.round(save.sfxVol * 100)}"></div>` +
     `<div class="row"><label>Creature voices</label><button id="setvoice" aria-label="Creature voices" aria-pressed="${save.voiceOn}" class="${save.voiceOn ? 'on' : ''}" data-sel="set-voice">${save.voiceOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Mono audio</label><button id="setmono" aria-label="Mono audio" aria-pressed="${audioAccessibility.mono}" class="${audioAccessibility.mono ? 'on' : ''}" data-sel="set-mono" title="Both ears hear every sound (one earbud, one speaker). Saved on this device.">${audioAccessibility.mono ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Reduced intensity</label><button id="setsoft" aria-label="Reduced intensity" aria-pressed="${audioAccessibility.reducedIntensity}" class="${audioAccessibility.reducedIntensity ? 'on' : ''}" data-sel="set-soft" title="Quieter, gentler sound with no sudden loud peaks. Saved on this device.">${audioAccessibility.reducedIntensity ? 'On' : 'Off'}</button></div>` +
     renderArc9ExplorerNameSettingV1(
       explorerNameSettings,
       arc9ExplorerNameEditing,
@@ -2912,6 +2926,15 @@ function fillSettings(): void {
     save.voiceOn = !save.voiceOn;
     tameGreetingAudioOwner?.syncSettings();
     refillAndFocus('#setvoice'); void persistView();
+  });
+  /* Device preferences, not save state: no persistView (audio-accessibility-prefs.ts) */
+  el.querySelector('#setmono')!.addEventListener('click', () => {
+    setAudioAccessibility({ ...audioAccessibility, mono: !audioAccessibility.mono });
+    refillAndFocus('#setmono');
+  });
+  el.querySelector('#setsoft')!.addEventListener('click', () => {
+    setAudioAccessibility({ ...audioAccessibility, reducedIntensity: !audioAccessibility.reducedIntensity });
+    refillAndFocus('#setsoft');
   });
   for (const b of el.querySelectorAll<HTMLElement>('[data-pref]')) b.addEventListener('click', () => {
     const value = b.dataset.value || '';
@@ -5431,6 +5454,8 @@ tameGreetingAudioOwner = createTameGreetingAudioOwner({
       && !replacementTransaction
       && !replacementReloadPending,
     masterGain: save.sfxVol * save.sfxVol,
+    mono: audioAccessibility.mono,
+    reducedIntensity: audioAccessibility.reducedIntensity,
     routeKey: currentTameGreetingRouteKey(),
   }),
   verifyCounterpart: creatureExpressionCounterpartIsCurrent,

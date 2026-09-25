@@ -76,6 +76,8 @@ let controller: CompendiumFeedController | null = null;
 function fixture(options: Readonly<{
   matching?: 'mixed' | 'none' | 'unavailable';
   flora?: boolean;
+  /** readyIds[1] is a bred parent still in Recovery (Recovery never blocks a meal). */
+  recovering?: boolean;
 }> = {}): FeedFixture {
   const fauna = canonicalGenomeIdentityV1({ seed: 11, kingdom: 'fauna', form: 3 });
   const otherFauna = canonicalGenomeIdentityV1({ seed: 17, kingdom: 'fauna', form: 8 });
@@ -116,7 +118,8 @@ function fixture(options: Readonly<{
     discoveryIndex: number,
     fed: number,
     nickname: string | null,
-    assignment: { readonly kind: 'mission'; readonly missionId: string } | null = null,
+    assignment: { readonly kind: 'mission'; readonly missionId: string }
+      | { readonly kind: 'recovery'; readonly readyAtActivePlayMs: number } | null = null,
   ) => createCreatureInstanceV1({
     creatureId,
     speciesId: identity.speciesId,
@@ -143,7 +146,9 @@ function fixture(options: Readonly<{
     ]
     : [
       creature(readyIds[0], fauna, 0, 19, 'Aster'),
-      creature(readyIds[1], fauna, 1, 91, null),
+      options.recovering
+        ? creature(readyIds[1], fauna, 1, 91, null, { kind: 'recovery', readyAtActivePlayMs: 480_000 })
+        : creature(readyIds[1], fauna, 1, 91, null),
       creature(assignedId, fauna, 2, 30, 'Voyager', { kind: 'mission', missionId: 'mission-7' }),
       creature(cappedId, fauna, 3, 200, null),
     ];
@@ -420,6 +425,15 @@ describe('Arc 5 Compendium Feed projection and controller', () => {
     expect(view.mount.querySelector<HTMLButtonElement>('[data-arc5-feed-confirm]')!.disabled)
       .toBe(false);
     expect(onAction).not.toHaveBeenCalled();
+  });
+
+  it('a parent in Recovery is fed like any companion; only a mission blocks the meal (2026-09-25)', () => {
+    const f = fixture({ recovering: true });
+    const projected = model(f);
+    expect(projected.creatures.find((row) => row.creatureId === f.readyIds[1])).toMatchObject({
+      status: 'ready', fedBefore: 91, fedAfter: 92, disabledReason: null,
+    });
+    expect(projected.creatures.find((row) => row.creatureId === f.assignedId)).toMatchObject({ status: 'assigned' });
   });
 
   it('projects exact same-species individuals and flora-only lots from registered V2 authority', () => {
