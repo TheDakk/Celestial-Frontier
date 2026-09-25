@@ -27,7 +27,10 @@ export interface PaintedCardOwnershipV1 {
   readonly schema: 'cf-v2-painted-card-ownership/v1'; readonly leases: number;
   readonly keys: Readonly<{ leasedThumbs: readonly string[]; leasedPortraits: readonly string[]; cachedThumbs: readonly string[]; cachedPortraits: readonly string[]; pendingThumbs: readonly string[]; pendingPortraits: readonly string[] }>;
   readonly cacheEntries: number; readonly encodedBytes: number; readonly decodedPixels: number;
-  readonly residentArchetypes: Readonly<{ count: number; bytes: number; names: readonly string[] }>;
+  /** The same totals per card kind (C8 resume, 2026-09-25): the portrait counter reads `portrait` exactly. */
+  readonly byKind: Readonly<Record<CardKind, Readonly<{ entries: number; encodedBytes: number; decodedPixels: number }>>>;
+  /** `bytes` = masterLabelBytes + maskBytes: every decoded buffer the resident archetypes retain, masks included (C8 resume). */
+  readonly residentArchetypes: Readonly<{ count: number; bytes: number; masterLabelBytes: number; maskBytes: number; masks: number; names: readonly string[] }>;
   readonly totals: Readonly<{ renders: number; capEvictions: number; releasedUnowned: number }>;
 }
 /** Painted archetypes kept decoded at once (each: its ≤512² master + label map, ~2 MiB). */
@@ -36,6 +39,8 @@ export type CardKind = keyof typeof CARD_SIZES;
 interface Archetype { readonly master: CardMasterV1; readonly receipt: CardReceiptV1 & { recordRecipeHash: string }; readonly record: ResolvedAnatomyRecord & { recipeHash: string }; readonly markings: Readonly<Record<string, string>> | null; readonly masks: Map<string, Promise<AlphaMask | null>>; }
 export class PaintedCardSource {
   readonly #o: PaintedCardSourceOptions; readonly #byName: Map<string, PaintedCardArchetype>; readonly #archetypes = new Map<string, Promise<Archetype>>(); readonly #archetypeBytes = new Map<string, number>();
+  /** Retained decoded marking masks per resident archetype (pattern → alpha bytes); dropped with the archetype. */
+  readonly #maskBytes = new Map<string, Map<string, number>>();
   readonly #cache: Record<CardKind, Map<string, PaintedCardAsset>> = { thumb: new Map(), portrait: new Map() }; readonly #pending = new Map<string, Promise<PaintedCardAsset>>();
   #renders = 0; #evicted = 0; #released = 0; readonly #leases = new Map<string, number>(); #tail: Promise<unknown> = Promise.resolve();
   /** One render per host task: each waits for the previous one and a yield, so the page can paint between cards. */
@@ -55,7 +60,11 @@ export class PaintedCardSource {
   /** Resident archetypes (review of I5 2026-09-24: with painted stand-ins most Compendium rows use a painting, and an unbounded cache
    * would keep all 13 archetypes' 512² master + labels, ~2 MiB each, resident at once — over the phone Compendium budget). LRU of
    * `archetypeEntries` (default ARCHETYPE_RESIDENT_DEFAULT); an evicted archetype is re-read from the network/HTTP cache when needed. */
-  residentArchetypes(): Readonly<{ count: number; bytes: number }> { let bytes = 0; for (const b of this.#archetypeBytes.values()) bytes += b; return Object.freeze({ count: this.#archetypes.size, bytes }); }
+  residentArchetypes(): Readonly<{ count: number; bytes: number; masterLabelBytes: number; maskBytes: number; masks: number }> {
+    let masterLabelBytes = 0, maskBytes = 0, masks = 0; for (const b of this.#archetypeBytes.values()) masterLabelBytes += b;
+    for (const m of this.#maskBytes.values()) for (const b of m.values()) { maskBytes += b; masks++; }
+    return Object.freeze({ count: this.#archetypes.size, bytes: masterLabelBytes + maskBytes, masterLabelBytes, maskBytes, masks });
+  }
   async #archetype(a: PaintedCardArchetype): Promise<Archetype> {
     let p = this.#archetypes.get(a.earthName); if (p) { this.#archetypes.delete(a.earthName); this.#archetypes.set(a.earthName, p); return p; }
     p = (async () => { const dir = a.dir.endsWith('/') ? a.dir : a.dir + '/';
@@ -68,7 +77,7 @@ export class PaintedCardSource {
       return { master: { width: m.width, height: m.height, master: m.rgba, labels: l.rgba }, receipt, record, markings, masks: new Map() }; })();
     this.#archetypes.set(a.earthName, p);
     const limit = Math.max(1, this.#o.archetypeEntries ?? ARCHETYPE_RESIDENT_DEFAULT);
-    while (this.#archetypes.size > limit) { const oldest = this.#archetypes.keys().next().value as string; this.#archetypes.delete(oldest); this.#archetypeBytes.delete(oldest); }
+    while (this.#archetypes.size > limit) { const oldest = this.#archetypes.keys().next().value as string; this.#archetypes.delete(oldest); this.#archetypeBytes.delete(oldest); this.#maskBytes.delete(oldest); }
     const name = a.earthName; void p.then((arch) => { if (this.#archetypes.get(name) === p) this.#archetypeBytes.set(name, arch.master.master.byteLength + arch.master.labels.byteLength); }, () => { if (this.#archetypes.get(name) === p) this.#archetypes.delete(name); });
     return p;
   }
@@ -76,7 +85,11 @@ export class PaintedCardSource {
     const file = arch.markings?.[name]; if (!file) return null; let p = arch.masks.get(name); if (p) return p;
     const dir = a.dir.endsWith('/') ? a.dir : a.dir + '/';
     // a failed fetch is NOT cached as 'no marking' (review 2026-09-24): the entry is dropped so the next render retries
-    p = (async () => { try { const png = await decodePng(await this.#o.assets.bytes(dir + file)); return scaleMaskV1(maskAlphaOf(png.rgba, png.width, png.height), arch.master.width, arch.master.height); } catch { arch.masks.delete(name); return null; } })();
+    const owner = a.earthName, archetypePromise = this.#archetypes.get(owner);
+    p = (async () => { try { const png = await decodePng(await this.#o.assets.bytes(dir + file)); const mask = scaleMaskV1(maskAlphaOf(png.rgba, png.width, png.height), arch.master.width, arch.master.height);
+      // count it only while its archetype is still the resident one (an evicted archetype takes its masks with it)
+      if (this.#archetypes.get(owner) === archetypePromise) { let m = this.#maskBytes.get(owner); if (!m) this.#maskBytes.set(owner, m = new Map()); m.set(name, mask.alpha.byteLength); }
+      return mask; } catch { arch.masks.delete(name); return null; } })();
     arch.masks.set(name, p); return p;
   }
   /** A live lease on a painted card (the loader opens one per thumb lease / portrait request, and closes it on release, settle or
@@ -95,11 +108,13 @@ export class PaintedCardSource {
   ownership(): PaintedCardOwnershipV1 {
     const keys = (kind: CardKind) => Object.freeze([...this.#cache[kind].keys()].sort()), leased = (kind: CardKind) => Object.freeze([...this.#leases.keys()].filter((k) => k.startsWith(kind + ':')).map((k) => k.slice(kind.length + 1)).sort());
     const pending = (kind: CardKind) => Object.freeze([...this.#pending.keys()].filter((k) => k.startsWith(kind + ':')).map((k) => k.slice(kind.length + 1)).sort());
-    let encodedBytes = 0, decodedPixels = 0; for (const kind of ['thumb', 'portrait'] as const) for (const a of this.#cache[kind].values()) { encodedBytes += a.encodedBytes; decodedPixels += a.decodedPixels; }
+    let encodedBytes = 0, decodedPixels = 0; const byKind = {} as Record<CardKind, Readonly<{ entries: number; encodedBytes: number; decodedPixels: number }>>;
+    for (const kind of ['thumb', 'portrait'] as const) { let e = 0, d = 0; for (const a of this.#cache[kind].values()) { e += a.encodedBytes; d += a.decodedPixels; } encodedBytes += e; decodedPixels += d; byKind[kind] = Object.freeze({ entries: this.#cache[kind].size, encodedBytes: e, decodedPixels: d }); }
     let leases = 0; for (const n of this.#leases.values()) leases += n;
     const r = this.residentArchetypes();
     return Object.freeze({ schema: 'cf-v2-painted-card-ownership/v1' as const, leases, keys: Object.freeze({ leasedThumbs: leased('thumb'), leasedPortraits: leased('portrait'), cachedThumbs: keys('thumb'), cachedPortraits: keys('portrait'), pendingThumbs: pending('thumb'), pendingPortraits: pending('portrait') }),
-      cacheEntries: this.#cache.thumb.size + this.#cache.portrait.size, encodedBytes, decodedPixels, residentArchetypes: Object.freeze({ count: r.count, bytes: r.bytes, names: Object.freeze([...this.#archetypes.keys()]) }),
+      cacheEntries: this.#cache.thumb.size + this.#cache.portrait.size, encodedBytes, decodedPixels, byKind: Object.freeze(byKind),
+      residentArchetypes: Object.freeze({ count: r.count, bytes: r.bytes, masterLabelBytes: r.masterLabelBytes, maskBytes: r.maskBytes, masks: r.masks, names: Object.freeze([...this.#archetypes.keys()]) }),
       totals: Object.freeze({ renders: this.#renders, capEvictions: this.#evicted, releasedUnowned: this.#released }) });
   }
   /** Render (or serve from cache) the individual's card of `kind` for this genome; null when no archetype matches. */
