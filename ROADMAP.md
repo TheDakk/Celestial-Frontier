@@ -98,3 +98,6 @@ Wild Horse item25 /Earthrank24 finalfit05:19/19static+1680presentation/exactrest
 
 
 Salamander item26/Earthrank25:27parts finalfit05,sixmasks,17/19static/exactrest. Gallop foreNearreach73.7ms/castcompression372.75ms; presentationforefootlimit7700ms, allretained. Nativeobserved01 0/0,p954.1/max9.8ms4×zeroCPUover, butheadsoverlapreturn. NO pickeradmission. Fourmasterattempts retained; finalopaquekeycleanbounds. Codexrepairs shortlegmotion thenEel/ranking; Claude stagespacing/integrationpending. Runtimeunchanged0e9fcf18/rootPASS/no repeatedfull/S2.
+
+
+Salamander motion01 repairscanonical gallop/cast by conditionalwhole-torsogain underunchangedcontact. Samefit05 now19/19+1557presentation/exactrest. Sevennew+18existingtests/appTS/rootPASS; S2six/13286identical; fullprofile5117pass/soleparkedI5red. Freshproposednative0/0,p954.1/max11.8ms4×zeroCPUover; heads stilloverlapreturn,Claude stage/picker/coveragepending. CodexcontinuesEel/ranking; C8/economyparked; nohostedwrite.
