@@ -7145,3 +7145,9 @@ This section covers the Claude-lane owners of the painted library on the Compend
   - It is shared by both builders, `battle2-wiring.ts`, `battle2/parts-rig.fixtures.ts`, `battle2-archetypes.test.ts` and the `tools/battle2-proof` native runners.
 
 Arena presentation is not restated here. `apps/game/src/battle2/stage.ts` (`combatantPresentation`, `standCentreShift`) and `apps/game/src/battle2/habitat-arena.ts` (`selectHabitatArena`, `lakeArenaWorld`) own sizing, stand centring and wet arenas. `apps/game/src/battle2/placement.ts` (`placeCombatants`, new and not yet committed on 2026-09-24) chains them into the one placement pipeline that `battle2-wiring.ts`, `tools/battle2-proof/native-entry.mjs` and `battle2-matchup.test.ts` use.
+
+### Exact orientation sweep work reduction — matches code 2026-09-25
+
+The optional forward WebAssembly leaf now skips only a previously satisfied triangle whose vertices have not changed since its last ordered evaluation. Private incidence marks affected triangles dirty on every actual Float64 coordinate change (including signed zero); each solve resets all dirty flags. Violated, degenerate and unordered constraints keep their original visits. Arithmetic, sweep order, pass count, stalled state, hard pins, limits and JS fallback remain unchanged. Artifact admission now pins a ten-i32 memory-only ABI for the added private incidence/scratch arguments.
+
+`audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02` compares3,614 Cattle and2,248 Centipede real calls bit-for-bit to the prior kernel, including pass/stall outputs. Deliberately omitted invalidation and reset both refuse before caller mutation. S2's six subjects/13,286samples stay identical. Measured private linear-memory increase is65,536bytes per Cattle rig and131,072 per Centipede rig; these figures exclude unchanged owners and other kernels. Phone/frame acceptance remains the packet's measured native result, not host microbenchmark timing.

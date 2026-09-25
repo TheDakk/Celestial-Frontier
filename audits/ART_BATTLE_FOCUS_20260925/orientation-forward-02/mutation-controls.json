@@ -1,0 +1,16 @@
+{
+  "rows": [
+    {
+      "name": "missing-invalidation",
+      "status": "REJECTED_BEFORE_CALLER_MUTATION",
+      "sourceSha256": "cf86934945941997744fa17425ee7f041b4c411fa7b23810b46c44b5d97d5abc",
+      "moduleSha256": "7f3b1d83567ca51c9319979ac3ca04de99da9b1cf8fb8e4688b6f4b58604f835"
+    },
+    {
+      "name": "missing-reset",
+      "status": "REJECTED_BEFORE_CALLER_MUTATION",
+      "sourceSha256": "b4f7068f6eb769e7e0f1e327d297394c166d121b00b8bac915c09e50588d5cae",
+      "moduleSha256": "074bc1cfcb9b6549c9524957f942cc2305083f769cbf9e78d7e3291ea91aa552"
+    }
+  ]
+}
