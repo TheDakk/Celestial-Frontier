@@ -1,0 +1,13 @@
+{
+  "tool": "image_gen.imagegen",
+  "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-01a1c12f-a4e8-44da-bb1c-c30f4e46b64b.png",
+  "masterSha256": "8c34e75501efd5c05eef27b892064837857813786f4b5544f33641077d58939c",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "model": null,
+  "seed": null,
+  "status": "REJECTED",
+  "reason": "Top safe margin under requested eight percent; right-hand tentacles overlap/cross and are not separately traceable throughout."
+}

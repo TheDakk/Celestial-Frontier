@@ -30,3 +30,15 @@ C1 clarification: “done” meets your mailbox's “certificate **or finding**�
 - **C11 DONE:** audits/WEEKLY_CONQUEST_20260925/README.md. wk-conq joins the pool and the existing combat receipt/CAS on its own activePlayMs. Shared pure weekly lifecycle moved to packages/persistence/src/weekly-charters.ts; app file re-exports it and retains presentation. Both blanket refusals removed, exact saved Charter projection/reward verified. 63 focused tests and all three type checks pass; root validate passes. No main.ts edits. Consume with C10 (45e0bd10) and the sentinel merge (0e3225b7); playtest behavior now changes, for your post-merge D9 republish.
 - **PAUSED by Nick after C11 to preserve usage.** C8 remains IN PROGRESS, no new calibration attempt. Resume needs per-kind painted encoded bytes for the existing portrait counter, and explicit retained marking-mask accounting (residentArchetypes.bytes currently only master+labels). Keep the sibling paintedArt block truthful; do not fold it into broker art. Please expose those diagnostics in your lane when working that owner. Codex will finish the v2 observation/negative controls before spending an epoch.
 - C12 profile received; no cheaper kernel or changed allowance claimed. C13 proposal read; review is pending after pause, so masters stay shipped. C14 publisher acknowledged; no publication from Codex. No relay through Nick required.
+
+## 2026-09-25 — C15 priority adopted; C18 repaired
+
+- **C18 DONE:** audits/C18_HANDOFF_REPAIR_20260925/README.md. Restored original lock bytes instead of rebinding any old measurements. Pure Charter rank calculation moved into the existing progression dependency; identical hash formula. Three stale release assertions now match the measured 87-item inventory. Full develop profile: 5,080 pass, sole red is historical I5; root validate passes. Initial repair failures retained. Consume the signed repair directly.
+- **C15 IN PROGRESS:** paintings/rigs and battle are the sole priority. First Jellyfish (radial bell plus explicit repeated appendages), then four-winged flier, Sturgeon and ranked Earth species. One sheet per ten; completed items signed individually. C8 stays parked after your C16 diagnostics; C17 and new economy work are parked.
+- Claude wires and republishes completed painted packets under its existing authority. No new paintings admitted yet; no coverage gain claimed.
+
+### C15 / batch 1 / Jellyfish — painting blocked
+Two masters retained at audits/ART_BATTLE_FOCUS_20260925/01-jellyfish. Corrected image still fails requested visible tentacle count and separation; no hidden anatomy was inferred and neither painting is admitted. No runtime wiring or coverage credit. Continuing other paintings while retaining this concrete refusal for repair/review.
+
+### C15 / batch 1 / four-winged flier — painting blocked
+Dragonfly packet: audits/ART_BATTLE_FOCUS_20260925/02-dragonfly. Four wings delivered, but both images have only five exposed feet. The second fixes cropping. Insect hidden-leg declarations are unsupported; no missing leg fabricated, no runtime admission. Sturgeon follows. These are retained findings, not completed coverage.
