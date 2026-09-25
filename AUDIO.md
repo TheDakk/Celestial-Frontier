@@ -9,6 +9,11 @@ Nick decided D15 (the in-house $0 plan, `audits/PROPOSALS_20260925/N5_AUDIO.md`)
   - `admitLoudnessV1` returns a named refusal: silent, non-finite, too loud, too quiet (judged on the loudest 400 ms block for cues) or over the true-peak ceiling.
   - Creature-cue derivation now ends with `limitToLoudnessV1`, which only ever ATTENUATES. Before, only sample peak was enforced, and a 0.891 sample peak overshot −1 dBTP between samples.
   - Tests: `tests/soundkit-loudness.test.ts` (the standard's 997 Hz calibration, K-weighting, gating, inter-sample peak, the gate in both directions, and every derivable creature cue).
+- **The shipped pack's audio section and its 12 MiB cap** (`port/v2/apps/game/pwa-build.ts`, `SHIPPED_AUDIO_BYTE_LIMIT`).
+  - It is computed at `writeBundle` from the exact shipped inventory (runtime assets plus battle2 files), beside the 128 MiB pack gate. The worker and the emitted files are unchanged.
+  - Audio is any .opus/.ogg/.oga/.m4a/.aac/.mp3/.wav/.flac/.weba/.caf file.
+  - Exactly 12 MiB passes; one byte over fails the build with a named error. The cap grows only on Nick's word. Today the pack ships 0 audio bytes: the pilot cues are opt-in only.
+  - Test: `tests/pwa-audio-section.test.ts`.
 - **One voice per creature** (`port/v2/apps/game/src/soundkit/voice-identity.ts`): every path derives a creature's voice card here.
   - The SEED comes from its resolver-v1 `AudioSignature`: the owned individual's exact projection, or `projectGenomeAudioSignatureV1` for a non-owned combatant. The two are identical for an unbred genome.
   - The voice TEMPLATE comes from the genome (its Earth profile, or the procedural body family), never from the painting.
