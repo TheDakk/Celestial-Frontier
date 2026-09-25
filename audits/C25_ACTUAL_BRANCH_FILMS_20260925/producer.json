@@ -1,0 +1,8 @@
+{
+  "sourceRoot": "/Users/nick/Projects/celestial-frontier-anthropic-mac",
+  "sourceHead": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+  "sourceStatus": "",
+  "runnerSource": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-runner.mjs",
+  "runnerSourceSha256": "913749b824a0350ff1df59482b12cca6a6ec775acf47a19d3e0a89aa321b5be3",
+  "routingScope": "Only instrument paths: actual Claude native entry, CF-proof modules and contracts. Own signed assets/output. No runtime transforms."
+}
