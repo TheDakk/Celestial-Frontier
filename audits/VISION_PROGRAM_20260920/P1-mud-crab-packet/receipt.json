@@ -1,0 +1,50 @@
+{
+  "schema": "cf.painted-master-packet/v1",
+  "status": "PACKET",
+  "creatureId": "mud-crab",
+  "earthName": "Mud Crab",
+  "template": {
+    "id": "brachyuran",
+    "version": 1
+  },
+  "countsSource": "template inventory",
+  "recordRecipeHash": "cc71ff2d73f5482f16278a77a2bbff2d7e4d0888fb88883b57b21a5822f0cd35",
+  "painterMaster": {
+    "file": "audits/ANATOMY_COMPLETION_20260917/crab-masks-05/mud-crab-master.png",
+    "sha256": "c08d616382e86c4dfa21fd895a25f4eda1dd3ee9efa8ed9751ea978bc9ae3379",
+    "width": 880,
+    "height": 880
+  },
+  "pigment": {
+    "legs": {
+      "hex": "#30321d",
+      "pixels": 6719
+    },
+    "claws": {
+      "hex": "#494d2d",
+      "pixels": 3111
+    },
+    "carapace": {
+      "hex": "#565a3b",
+      "pixels": 12843
+    },
+    "eyes": {
+      "hex": "#232522",
+      "pixels": 386
+    }
+  },
+  "counts": "one carapace, exactly one carapace; eight walking legs, four on the near flank and four on the far, exactly eight legs; two clawed forelimbs, exactly two claws; two stalked eyes, exactly two eyes; no tail, zero tails",
+  "subject": "One Mud Crab, a crab (brachyuran); a fraction of human height; one carapace, exactly one carapace; eight walking legs, four on the near flank and four on the far, exactly eight legs; two clawed forelimbs, exactly two claws; two stalked eyes, exactly two eyes; no tail, zero tails; matte chitin with a faint mineral sheen; broad #565a3b chitin carapace wider than tall, eight jointed walking legs in two ranks with the far rank foreshortened behind the near rank, two heavy jointed claws held forward, two small dark stalked eyes; low crawling stance, weight on the leg tips, no ground plane; pigments: legs #30321d, claws #494d2d, carapace #565a3b; no armour, no harness, no gear, no added growth or bioluminescence; the pose, proportions and part layout of the supplied painter guide are the anatomy contract: same stance, same claw position, same leg arrangement, same facing.",
+  "promptSha256": "524c652dc2e776f8cd547965ca79b4e39d0c02a688690f76640c6a988e3abafd",
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "systemCard": "SYSTEM CARD - Sol / Earth; CF1|g:999@90,-60|s:424242@560,170|p:133#2\n  Star: G; a yellow sun-like star; #fff4d8; radius 26. #fff4d8  yellow sun-like star; Sol pinned. Pigment: ivory, warm white.\n         Light: near-neutral yellow-white, natural diffuse fill.\n  Light: day; rain; one primary, no companions; diffuse cloud-filtered light, soft neutral contact shadows; directional sun position absent from source, do not invent a visible second light.\n  Mineral palette: terran; seaHue 210, landHue 115, iceAmt 0.5; blue water, green land, pale ice; hue absent from source.\n  Atmosphere: vista palette rain, climate temperate, weather rain, water liquid; rain softens distant blue-grey layers.\n  Flora pigment: temperate; forms tree, shrub, flower, grass, fern; Persimmon: green leaves, orange fruit, brown wood; Devil's Club: green leaves and red berry cones; Cranberry: green leaves and red berries.\n  Fauna adaptation: families mammal, bird, insect, amphibian; Earth named anatomy and natural materials take priority over raw procedural genes: Civet: low long body, spotted natural fur; one pointed muzzle, small round ears, dark face mask; four short legs with paws; one long ringed tail; matte warm grey-ochre fur (#a8996f), dark spots, face mask and tail rings | Platypus: low sleek dark-brown furred body; broad flat rubbery duck bill; four short limbs with webbed clawed feet; broad flat blunt paddle tail; sleek dark-brown fur and a dark rubbery bill | Frog: small green crouched body; wide mouth and two domed eyes; four limbs, long folded hind legs; green skin.; painted-master authoring for the procedural roster, not an Earth landing resident: Mud Crab, crab (brachyuran), land; legs #30321d, claws #494d2d, carapace #565a3b.\n  One signature: no biome hazard in source; no added hazard motif.",
+  "head": "8fc3d5212ca2e69996553cee10e459073f024841",
+  "paintingInstructions": [
+    "Paint with the image tool that painted the accepted Earth masters and the 2026-09-16 procedural candidate; send prompt.txt verbatim and attach anatomy-guide.png as the anatomy reference.",
+    "Output: 1024×1024 cut-out on the magenta key per the kit TECHNICAL OUTPUT block; retain the exact sent prompt, the tool, the seed if any, and the PNG sha256 in the packet.",
+    "The painter guide is the anatomy contract: same stance, claw position, leg arrangement and facing; counts as stated.",
+    "Intake: key + despill, author part masks for the NEW painting (canvas labels must not be reused), landmarks, observed split, binding; native rows on the anatomy chain exactly as the Civet.",
+    "Failure on anatomy drift (count, merged limbs, wrong facing) is a finding for the T1/T2 trust track, not a retry with a changed prompt."
+  ],
+  "qualityAccepted": false
+}

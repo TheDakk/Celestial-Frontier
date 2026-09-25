@@ -16,6 +16,9 @@ export interface EarthLayeredLoadOptionsV1 {
 /** Both layers are required. Neither is published alone; a failed/stale pair
  * releases everything it owns before the caller restores the canonical scene.
  * Successful commit transfers both canvases to the display owner, without cache. */
+export const EARTH_LAYERED_DEADLINE_MS = 12_000;
+const EARTH_LAYERED_TIMEOUT = 'Earth resident layer timed out';
+
 export class EarthLayeredLoadV1 {
   private status: 'pending' | 'ready' | 'failed' | 'disposed' = 'pending';
   private worker: Worker | null = null;
@@ -23,12 +26,14 @@ export class EarthLayeredLoadV1 {
   private background: HTMLCanvasElement | null = null;
   private residents: HTMLCanvasElement | null = null;
   private deadline: ReturnType<typeof setTimeout> | null = null;
+  private expiresAt: number | null = null;
   private error: string | null = null;
   private workerStarts = 0;
 
   constructor(private readonly options: EarthLayeredLoadOptionsV1) {
     if (!this.current()) return;
-    this.deadline = setTimeout(() => this.fail(new Error('Earth resident layer timed out')), 12_000);
+    this.expiresAt = performance.now() + EARTH_LAYERED_DEADLINE_MS;
+    this.deadline = setTimeout(() => this.fail(new Error(EARTH_LAYERED_TIMEOUT)), EARTH_LAYERED_DEADLINE_MS);
     try {
       const worker = new Worker(new URL('./earth-resident.worker.ts', import.meta.url),
         { type: 'module', name: 'cf-earth-residents' });
@@ -56,6 +61,18 @@ export class EarthLayeredLoadV1 {
   }
 
   private current(): boolean {
+    if (!this.authorized()) return false;
+    // K27: timers can arrive late after throttling or a busy task. The
+    // monotonic boundary also governs every worker/background arrival and the
+    // pair publication, so a late result is never admitted (PaintedVistaLoadV1).
+    if (this.expiresAt !== null && performance.now() >= this.expiresAt) {
+      this.fail(new Error(EARTH_LAYERED_TIMEOUT));
+      return false;
+    }
+    return true;
+  }
+
+  private authorized(): boolean {
     if (this.status !== 'pending') return false;
     try { if (this.options.isCurrent()) return true; }
     catch (error) { this.error = String(error).slice(0, 512); }
@@ -122,7 +139,8 @@ export class EarthLayeredLoadV1 {
   }
 
   private fail(error: unknown): void {
-    if (!this.current()) return;
+    // Ownership only; re-entering the deadline transition here would recurse.
+    if (!this.authorized()) return;
     this.status = 'failed'; this.error = String(error).slice(0, 512);
     this.stop(); this.discard();
     try { if (this.options.isCurrent()) this.options.fallback(error); }

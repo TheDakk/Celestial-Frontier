@@ -1,0 +1,16 @@
+{
+ "generated": "2026-09-21",
+ "legend": "cyan ring endpoint candidate · magenta loop · white resting tip · orange interior · yellow square + label = assigned slot (F/N side, digit station; H/F hind/fore; T tail) · yellow ring = inferred hidden · amber squares = knees/ankles · blue rings = record landmarks (comparison only) · red = body ridge · green = leg ridges · orange = claw ridges · white cross = wrist · white line = spine axis",
+ "rows": [
+  {
+   "id": "brown-bear",
+   "file": "../../../../audits/INTAKE_COMPILER_20260921/sheet-01/brown-bear.png",
+   "score": {
+    "pos": "0/4",
+    "named": "0/4",
+    "hiddenOk": true
+   },
+   "hidden": []
+  }
+ ]
+}

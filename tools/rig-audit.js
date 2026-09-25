@@ -14,30 +14,9 @@
 //
 // Usage: node tools/rig-audit.js
 'use strict';
-const fs = require('fs');
-const path = require('path');
-const t = (f) => path.join(__dirname, f);
-const root = path.join(__dirname, '..');
 
-// --- extract _earthArt from source (main.js is the source of truth; fall back
-//     to the assembled html) and eval it standalone (it has no external deps) ---
-function loadEarthArt() {
-  const srcFile = fs.existsSync(path.join(root, 'main.js'))
-    ? path.join(root, 'main.js') : path.join(root, 'celestial-frontier.html');
-  const src = fs.readFileSync(srcFile, 'utf8');
-  const start = src.indexOf('function _earthArt(name){');
-  if (start < 0) throw new Error('_earthArt not found in ' + srcFile);
-  const end = src.indexOf('function hdGenesFor(', start);
-  if (end < 0) throw new Error('hdGenesFor (end marker) not found');
-  const body = src.slice(start, end);
-  return new Function(body + '\n;return _earthArt;')();
-}
-
-// --- roster (bare object body: fauna:[...], flora:[...], ...) ---
-function loadRoster() {
-  const raw = fs.readFileSync(t('_earthnames.js'), 'utf8').trim().replace(/,\s*$/, '');
-  return eval('({' + raw + '})');   // eslint-disable-line no-eval
-}
+// --- classifier + roster loaders are shared with rig-secondopinion.js (TypeSafe gate) ---
+const { loadEarthArt, loadRoster } = require("./_earthart-load");
 
 const _earthArt = loadEarthArt();
 const ROSTER = loadRoster();
@@ -57,6 +36,8 @@ const SENTINELS = [
   ['Flying Fish', 'fish'], ['Silverfish', 'insect'], ['Crayfish', 'crust'],
   ['Cuttlefish', 'ceph'], ['Starfish', 'sessile'], ['Jellyfish', 'jelly'],
   ['Sea Lion', 'marine'], ['Mountain Lion', 'mammal'], ['Sea Spider', 'arachnid'],
+  // TypeSafe second-opinion battery, 2026-09-19 (confirmed regex misses; see audits/TYPESAFE_BATTERY_20260919)
+  ['Whale Shark', 'fish'], ['Viperfish', 'fish'], ['Nudibranch', 'gastropod'],
   ['Dragonfish', 'fish'],
   // birds
   ['Eagle', 'bird'], ['Owl', 'bird'], ['Penguin', 'bird'], ['Ostrich', 'bird'],

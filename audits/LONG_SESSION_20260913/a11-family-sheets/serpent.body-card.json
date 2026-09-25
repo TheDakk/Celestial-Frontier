@@ -1,0 +1,347 @@
+{
+ "kind": "body-card",
+ "identity": {
+  "speciesVisualKey": "synthetic:serpent",
+  "seed": 659716,
+  "ownerId": "synthetic:a11-fixture",
+  "earthName": null
+ },
+ "recipeHash": null,
+ "template": {
+  "id": "serpent",
+  "version": 1,
+  "clipSetId": "serpent-v1"
+ },
+ "massClass": {
+  "name": "medium",
+  "multiplier": 1
+ },
+ "locomotion": {
+  "loco": "burrowers",
+  "gait": "walk",
+  "templateGait": "slither"
+ },
+ "realm": "land",
+ "materials": {
+  "body": "scaled",
+  "head": "scaled",
+  "legs": "scaled",
+  "tail": "scaled",
+  "ears": "scaled",
+  "wings": "scaled",
+  "fins": "scaled",
+  "antennae": "scaled",
+  "fronds": "scaled",
+  "arms": "scaled"
+ },
+ "parts": [
+  {
+   "joint": "head",
+   "parent": "root",
+   "group": "head",
+   "pivot": [
+    0.6,
+    0.6
+   ],
+   "tip": [
+    0.7,
+    0.55
+   ],
+   "boneLength": 0.11180339887498944
+  },
+  {
+   "joint": "jaw",
+   "parent": "head",
+   "group": "head",
+   "pivot": [
+    0.7,
+    0.55
+   ],
+   "tip": [
+    0.76,
+    0.59
+   ],
+   "boneLength": 0.07211102550927978
+  },
+  {
+   "joint": "seg0",
+   "parent": "root",
+   "group": "body",
+   "pivot": [
+    0.6,
+    0.6
+   ],
+   "tip": [
+    0.54,
+    0.62
+   ],
+   "boneLength": 0.06324555320336754
+  },
+  {
+   "joint": "seg1",
+   "parent": "seg0",
+   "group": "body",
+   "pivot": [
+    0.54,
+    0.62
+   ],
+   "tip": [
+    0.48,
+    0.66
+   ],
+   "boneLength": 0.07211102550927985
+  },
+  {
+   "joint": "seg2",
+   "parent": "seg1",
+   "group": "body",
+   "pivot": [
+    0.48,
+    0.66
+   ],
+   "tip": [
+    0.42,
+    0.7
+   ],
+   "boneLength": 0.07211102550927974
+  },
+  {
+   "joint": "seg3",
+   "parent": "seg2",
+   "group": "body",
+   "pivot": [
+    0.42,
+    0.7
+   ],
+   "tip": [
+    0.36,
+    0.72
+   ],
+   "boneLength": 0.06324555320336758
+  },
+  {
+   "joint": "seg4",
+   "parent": "seg3",
+   "group": "body",
+   "pivot": [
+    0.36,
+    0.72
+   ],
+   "tip": [
+    0.3,
+    0.7
+   ],
+   "boneLength": 0.06324555320336758
+  },
+  {
+   "joint": "seg5",
+   "parent": "seg4",
+   "group": "body",
+   "pivot": [
+    0.3,
+    0.7
+   ],
+   "tip": [
+    0.24,
+    0.66
+   ],
+   "boneLength": 0.07211102550927974
+  },
+  {
+   "joint": "seg6",
+   "parent": "seg5",
+   "group": "body",
+   "pivot": [
+    0.24,
+    0.66
+   ],
+   "tip": [
+    0.18,
+    0.62
+   ],
+   "boneLength": 0.07211102550927981
+  },
+  {
+   "joint": "seg7",
+   "parent": "seg6",
+   "group": "body",
+   "pivot": [
+    0.18,
+    0.62
+   ],
+   "tip": [
+    0.12,
+    0.6
+   ],
+   "boneLength": 0.06324555320336758
+  },
+  {
+   "joint": "seg8",
+   "parent": "seg7",
+   "group": "body",
+   "pivot": [
+    0.12,
+    0.6
+   ],
+   "tip": [
+    0.07,
+    0.63
+   ],
+   "boneLength": 0.05830951894845301
+  },
+  {
+   "joint": "seg9",
+   "parent": "seg8",
+   "group": "body",
+   "pivot": [
+    0.07,
+    0.63
+   ],
+   "tip": [
+    0.03,
+    0.68
+   ],
+   "boneLength": 0.06403124237432853
+  }
+ ],
+ "secondaryParts": [
+  {
+   "id": "tail",
+   "driver": "seg6",
+   "joints": [
+    "seg7",
+    "seg8",
+    "seg9"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "scaled",
+   "kind": "tail"
+  }
+ ],
+ "weapons": [
+  "bite",
+  "constrict"
+ ],
+ "luminous": false,
+ "bodyLength": 0.5135172830587107,
+ "groundLineY": 0.72,
+ "landmarks": {
+  "root": [
+   0.6,
+   0.6
+  ],
+  "head": [
+   0.7,
+   0.55
+  ],
+  "jaw": [
+   0.76,
+   0.59
+  ],
+  "seg0": [
+   0.54,
+   0.62
+  ],
+  "seg1": [
+   0.48,
+   0.66
+  ],
+  "seg2": [
+   0.42,
+   0.7
+  ],
+  "seg3": [
+   0.36,
+   0.72
+  ],
+  "seg4": [
+   0.3,
+   0.7
+  ],
+  "seg5": [
+   0.24,
+   0.66
+  ],
+  "seg6": [
+   0.18,
+   0.62
+  ],
+  "seg7": [
+   0.12,
+   0.6
+  ],
+  "seg8": [
+   0.07,
+   0.63
+  ],
+  "seg9": [
+   0.03,
+   0.68
+  ]
+ },
+ "bounds": {
+  "inside": true,
+  "clamped": [],
+  "limitsDeg": {
+   "root": {
+    "min": -25,
+    "max": 25
+   },
+   "head": {
+    "min": -50,
+    "max": 50
+   },
+   "jaw": {
+    "min": -45,
+    "max": 5
+   },
+   "seg0": {
+    "min": -45,
+    "max": 45
+   },
+   "seg1": {
+    "min": -45,
+    "max": 45
+   },
+   "seg2": {
+    "min": -45,
+    "max": 45
+   },
+   "seg3": {
+    "min": -45,
+    "max": 45
+   },
+   "seg4": {
+    "min": -45,
+    "max": 45
+   },
+   "seg5": {
+    "min": -45,
+    "max": 45
+   },
+   "seg6": {
+    "min": -45,
+    "max": 45
+   },
+   "seg7": {
+    "min": -45,
+    "max": 45
+   },
+   "seg8": {
+    "min": -45,
+    "max": 45
+   },
+   "seg9": {
+    "min": -45,
+    "max": 45
+   }
+  }
+ },
+ "notes": [
+  "gait \"walk\" has no serpent approach; using slither"
+ ]
+}

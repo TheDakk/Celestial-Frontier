@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { EarthResidentLayerPlanV1 } from '@cf/art/earth-resident-layer';
 import type { PaintedVistaLoadOptionsV1 } from './painted-vista-load.js';
-import { EarthLayeredLoadV1 } from './earth-layered-load.js';
+import { EarthLayeredLoadV1, EARTH_LAYERED_DEADLINE_MS } from './earth-layered-load.js';
 import { EARTH_LAYER_REQUEST, EARTH_LAYER_RESPONSE } from './earth-layered-protocol.js';
 
 const painted = vi.hoisted(() => ({
@@ -96,8 +96,10 @@ function failed(f: ReturnType<typeof fixture>) {
   expect(f.fallbackStops).toEqual([{ timers: 0, workerStopped: true, backgroundStopped: true }]);
   expect(vi.getTimerCount()).toBe(0);
 }
+const clock = { now: 0 };
 beforeEach(() => {
   vi.useFakeTimers(); vi.stubGlobal('Worker', FakeWorker);
+  clock.now = 0; vi.stubGlobal('performance', { now: () => clock.now });
   workers.length = 0; painted.instances.length = 0;
   faults.construct = faults.post = painted.constructorThrows = false;
 });
@@ -288,5 +290,62 @@ describe('EarthLayeredLoadV1 pair ownership', () => {
     const f = fixture({ fallbackThrows: true });
     expect(() => f.worker!.emit('error')).not.toThrow(); failed(f);
     expect(f.loader.snapshot().error).toContain('fallback mount failed');
+  });
+});
+
+describe('K27: monotonic deadline boundary', () => {
+  it.each(['residents', 'background'] as const)(
+    'refuses a %s arrival at the monotonic deadline before the throttled timer fires', first => {
+      const f = fixture();
+      expect(EARTH_LAYERED_DEADLINE_MS).toBe(12_000);
+      clock.now = EARTH_LAYERED_DEADLINE_MS; // the setTimeout has not been delivered
+      expect(vi.getTimerCount()).toBe(1);
+      expect(f.loader.snapshot().status).toBe('pending');
+      if (first === 'residents') {
+        const image = bitmap();
+        f.worker!.emit('message', result(image));
+        expect(image.close).toHaveBeenCalledOnce();
+      } else {
+        expect(background(f).accepted).toBe(false);
+      }
+      expect(f.loader.snapshot().error).toBe(String(new Error('Earth resident layer timed out')));
+      failed(f);
+      expect(f.commit).not.toHaveBeenCalled();
+      expect(f.drawImage).not.toHaveBeenCalled();
+      vi.advanceTimersByTime(EARTH_LAYERED_DEADLINE_MS);
+      expect(f.fallback).toHaveBeenCalledOnce(); expect(f.commit).not.toHaveBeenCalled();
+    },
+  );
+
+  it('admits the pair one millisecond before the boundary (direction control)', () => {
+    const f = fixture();
+    clock.now = EARTH_LAYERED_DEADLINE_MS - 1;
+    f.worker!.emit('message', result());
+    expect(f.loader.snapshot()).toMatchObject({ status: 'pending', retainedCanvases: 1 });
+    expect(background(f).accepted).toBe(true);
+    expect(f.loader.snapshot()).toMatchObject({ status: 'ready', deadlineActive: false, retainedCanvases: 0 });
+    expect(f.commit).toHaveBeenCalledOnce(); expect(f.fallback).not.toHaveBeenCalled();
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
+  it('checks the final pair publication at the boundary even when both parts arrived in time', () => {
+    const f = fixture();
+    clock.now = 100;
+    f.worker!.emit('message', result());
+    clock.now = EARTH_LAYERED_DEADLINE_MS + 1;
+    expect(background(f).accepted).toBe(false);
+    failed(f);
+    expect(f.commit).not.toHaveBeenCalled();
+  });
+
+  it('keeps a deadline-expired arrival silent after route authority is lost', () => {
+    const f = fixture();
+    f.state.current = false; clock.now = EARTH_LAYERED_DEADLINE_MS + 1;
+    const image = bitmap();
+    f.worker!.emit('message', result(image));
+    expect(image.close).toHaveBeenCalledOnce();
+    expect(f.loader.snapshot().status).toBe('disposed');
+    expect(f.fallback).not.toHaveBeenCalled(); expect(f.commit).not.toHaveBeenCalled();
+    expect(vi.getTimerCount()).toBe(0);
   });
 });

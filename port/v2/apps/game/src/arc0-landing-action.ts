@@ -887,6 +887,7 @@ function stageSuccessfulLanding(
   receiptOrdinal: number,
   context: Arc0DescentContext,
   descent: Extract<DescentAttemptOutcomeV1, { readonly kind: 'landed' }>,
+  activePlayMs?: number, // this transaction's committed active-play snapshot: the weekly Charter board rolls and counts on it
 ): StagedArc0Landing {
   const beforeState = context.identityState;
   const authority = context.landing;
@@ -978,6 +979,7 @@ function stageSuccessfulLanding(
       extensions,
       event: { kind: 'landfall', address: input.address },
       receiptOrdinal,
+      ...(activePlayMs !== undefined ? { activePlayMs } : {}),
     })
     : Object.freeze({
       kind: 'current' as const,
@@ -1551,7 +1553,7 @@ export async function commitArc0LandingAction(
         operation,
         receiptKind: ARC0_LANDING_RECEIPT_KIND,
         codecNow: input.codecNow,
-        derive: ({ draft, extensions, receiptOrdinal, canonicalizeState }) => {
+        derive: ({ draft, extensions, receiptOrdinal, canonicalizeState, activePlayMs }) => {
           try {
             const context = descentContext(input, draft, extensions, 'safe');
             const descent = resolveDescentAttemptV1(context.policy, Object.freeze([]), draft.hp);
@@ -1563,6 +1565,7 @@ export async function commitArc0LandingAction(
               receiptOrdinal,
               context,
               descent,
+              activePlayMs,
             );
             const canonicalState = canonicalizeState(staged.state);
             const productExtensions = applyV5ExtensionWrites(
@@ -1601,7 +1604,7 @@ export async function commitArc0LandingAction(
               ) as SaveStateV2;
               const staged = descent.kind === 'landed'
                 ? stageSuccessfulLanding(
-                  input, draft, preDraw.extensions, preDraw.receiptOrdinal, context, descent,
+                  input, draft, preDraw.extensions, preDraw.receiptOrdinal, context, descent, preDraw.activePlayMs,
                 )
                 : stageWaveOff(
                   input, draft, preDraw.extensions, preDraw.receiptOrdinal, context, descent,

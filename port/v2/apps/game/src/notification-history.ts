@@ -141,7 +141,7 @@ export function createNotificationHistory(options: NotificationHistoryOptions): 
 }
 
 export const NOTIFICATION_HISTORY_CSS = `
-#notificationpanel{left:auto;top:calc(var(--topbar-h) + 8px);right:calc(var(--safe-right) + 12px);width:min(380px,calc(100vw - 24px));max-height:calc(100dvh - var(--topbar-h) - 128px - var(--safe-bottom));box-sizing:border-box;overflow:auto;padding:14px 58px 14px 14px;font:var(--cf-type-body)/1.5 var(--ui);z-index:var(--cf-layer-utility-panel)}
+#notificationpanel{left:auto;right:calc(var(--safe-right) + 12px);width:min(380px,calc(100vw - 24px));box-sizing:border-box;overflow:auto;padding:14px 58px 14px 14px;font:var(--cf-type-body)/1.5 var(--ui);z-index:var(--cf-layer-utility-panel)}
 @media(max-width:900px) and (orientation:landscape){body.panel-open #notificationpanel{left:calc(var(--safe-left) + 8px);right:auto;top:calc(var(--safe-top) + 6px);width:calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2);max-height:calc(100dvh - var(--safe-top) - var(--safe-bottom) - 30px)}}
 #notificationpanel h2{margin:0 44px 8px 0;font-size:var(--cf-type-section)}
 .notification-list{padding:0;margin:12px 0 0;list-style:none}.notification-entry{padding:12px 0;border-top:1px solid var(--cf-color-border)}

@@ -1,0 +1,827 @@
+{
+ "generated": "2026-09-19T22:39:03.558Z",
+ "systems": 12,
+ "min": 0.7,
+ "usage": {
+  "input_tokens": 26017,
+  "output_tokens": 2783,
+  "requests": 5,
+  "cached": 0
+ },
+ "rows": [
+  {
+   "id": "star:424242",
+   "kind": "star",
+   "title": "Sun (Sol)",
+   "sub": "Yellow dwarf (class G)",
+   "p_rows_consistent": 0.93,
+   "p_params_match": 0.77,
+   "bandModel": null,
+   "bandConf": null,
+   "bandCode": null,
+   "params": {
+    "starKind": "G",
+    "binary": false
+   }
+  },
+  {
+   "id": "planet:424242:131",
+   "kind": "planet",
+   "title": "Mercury",
+   "sub": "Rocky world",
+   "p_rows_consistent": 0.72,
+   "p_params_match": 0.9,
+   "bandModel": "hot",
+   "bandConf": 1,
+   "bandCode": "hot",
+   "params": {
+    "type": "rocky",
+    "sizeMul": 0.55,
+    "ring": false,
+    "moons": 0,
+    "orbit": 58
+   }
+  },
+  {
+   "id": "planet:424242:132",
+   "kind": "planet",
+   "title": "Venus",
+   "sub": "Venusian hothouse",
+   "p_rows_consistent": 0.93,
+   "p_params_match": 0.88,
+   "bandModel": "hot",
+   "bandConf": 1,
+   "bandCode": "hot",
+   "params": {
+    "type": "venus",
+    "sizeMul": 0.8,
+    "ring": false,
+    "moons": 0,
+    "orbit": 84
+   }
+  },
+  {
+   "id": "planet:424242:133",
+   "kind": "planet",
+   "title": "Earth",
+   "sub": "Terran (Earth-like) world",
+   "p_rows_consistent": 0.89,
+   "p_params_match": 0.89,
+   "bandModel": "temperate",
+   "bandConf": 1,
+   "bandCode": "temperate",
+   "params": {
+    "type": "terran",
+    "sizeMul": 0.85,
+    "ring": false,
+    "moons": 1,
+    "orbit": 112
+   }
+  },
+  {
+   "id": "planet:424242:134",
+   "kind": "planet",
+   "title": "Mars",
+   "sub": "Desert world",
+   "p_rows_consistent": 0.94,
+   "p_params_match": 0.88,
+   "bandModel": "hot",
+   "bandConf": 0.5,
+   "bandCode": "temperate",
+   "params": {
+    "type": "desert",
+    "sizeMul": 0.65,
+    "ring": false,
+    "moons": 2,
+    "orbit": 140
+   }
+  },
+  {
+   "id": "star:1",
+   "kind": "star",
+   "title": "Star Saos-602",
+   "sub": "Blue giant (class B)",
+   "p_rows_consistent": 0.92,
+   "p_params_match": 0.5,
+   "bandModel": null,
+   "bandConf": null,
+   "bandCode": null,
+   "params": {
+    "starKind": "B",
+    "binary": false
+   }
+  },
+  {
+   "id": "planet:1:2416138383",
+   "kind": "planet",
+   "title": "Rium",
+   "sub": "Molten world",
+   "p_rows_consistent": 0.79,
+   "p_params_match": 0.85,
+   "bandModel": "hot",
+   "bandConf": 1,
+   "bandCode": "hot",
+   "params": {
+    "type": "lava",
+    "sizeMul": 0.9543493816163391,
+    "ring": false,
+    "moons": 0,
+    "orbit": 119.21704215789214
+   }
+  },
+  {
+   "id": "star:31337",
+   "kind": "star",
+   "title": "Star Kalon-373",
+   "sub": "Protostar",
+   "p_rows_consistent": 0.94,
+   "p_params_match": 0.79,
+   "bandModel": null,
+   "bandConf": null,
+   "bandCode": null,
+   "params": {
+    "starKind": "PROTO",
+    "binary": false
+   }
+  },
+  {
+   "id": "star:12",
+   "kind": "star",
+   "title": "Star Cyae-507",
+   "sub": "Yellow dwarf (class G)",
+   "p_rows_consistent": 0.95,
+   "p_params_match": 0.6,
+   "bandModel": null,
+   "bandConf": null,
+   "bandCode": null,
+   "params": {
+    "starKind": "G",
+    "binary": false
+   }
+  },
+  {
+   "id": "planet:12:3554301141",
+   "kind": "planet",
+   "title": "Kari",
+   "sub": "Venusian hothouse",
+   "p_rows_consistent": 0.91,
+   "p_params_match": 0.84,
+   "bandModel": "hot",
+   "bandConf": 1,
+   "bandCode": "temperate",
+   "params": {
+    "type": "venus",
+    "sizeMul": 1.2545425481628625,
+    "ring": false,
+    "moons": 1,
+    "orbit": 119.52836608560756
+   }
+  },
+  {
+   "id": "star:999",
+   "kind": "star",
+   "title": "Star Ionum-930",
+   "sub": "Yellow dwarf (class G)",
+   "p_rows_consistent": 0.94,
+   "p_params_match": 0.81,
+   "bandModel": null,
+   "bandConf": null,
+   "bandCode": null,
+   "params": {
+    "starKind": "G",
+    "binary": false
+   }
+  },
+  {
+   "id": "planet:999:3509794246",
+   "kind": "planet",
+   "title": "Aeur",
+   "sub": "Terran (Earth-like) world",
+   "p_rows_consistent": 0.96,
+   "p_params_match": 0.88,
+   "bandModel": "temperate",
+   "bandConf": 1,
+   "bandCode": "temperate",
+   "params": {
+    "type": "terran",
+    "sizeMul": 1.016639282554388,
+    "ring": false,
+    "moons": 3,
+    "orbit": 106.00616486743093
+   }
+  },
+  {
+   "id": "planet:999:3820430349",
+   "kind": "planet",
+   "title": "Ionae",
+   "sub": "Desert world",
+   "p_rows_consistent": 0.9,
+   "p_params_match": 0.88,
+   "bandModel": "hot",
+   "bandConf": 0.81,
+   "bandCode": "temperate",
+   "params": {
+    "type": "desert",
+    "sizeMul": 0.7088308922480792,
+    "ring": false,
+    "moons": 0,
+    "orbit": 146.6184596605599
+   }
+  },
+  {
+   "id": "planet:999:817479718",
+   "kind": "planet",
+   "title": "Kaion",
+   "sub": "Venusian hothouse",
+   "p_rows_consistent": 0.91,
+   "p_params_match": 0.86,
+   "bandModel": "hot",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "venus",
+    "sizeMul": 0.7426441773772239,
+    "ring": false,
+    "moons": 1,
+    "orbit": 191.07915546372533
+   }
+  },
+  {
+   "id": "planet:999:3915510357",
+   "kind": "planet",
+   "title": "Riur",
+   "sub": "Gas giant",
+   "p_rows_consistent": 0.91,
+   "p_params_match": 0.83,
+   "bandModel": "hot",
+   "bandConf": 0.24,
+   "bandCode": "cold",
+   "params": {
+    "type": "gas",
+    "sizeMul": 1.824652647599578,
+    "ring": false,
+    "moons": 9,
+    "orbit": 218.60380829498172
+   }
+  },
+  {
+   "id": "star:4242",
+   "kind": "star",
+   "title": "Star Aeze-197",
+   "sub": "Orange dwarf (class K)",
+   "p_rows_consistent": 0.79,
+   "p_params_match": 0.54,
+   "bandModel": null,
+   "bandConf": null,
+   "bandCode": null,
+   "params": {
+    "starKind": "K",
+    "binary": false
+   }
+  },
+  {
+   "id": "planet:4242:3540333618",
+   "kind": "planet",
+   "title": "Lonsei",
+   "sub": "Ocean world",
+   "p_rows_consistent": 0.76,
+   "p_params_match": 0.82,
+   "bandModel": "cold",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "ocean",
+    "sizeMul": 1.235031528910622,
+    "ring": true,
+    "moons": 3,
+    "orbit": 116.16822643950582
+   }
+  },
+  {
+   "id": "planet:4242:415120542",
+   "kind": "planet",
+   "title": "Rian",
+   "sub": "Gas giant",
+   "p_rows_consistent": 0.95,
+   "p_params_match": 0.88,
+   "bandModel": "temperate",
+   "bandConf": 0.09,
+   "bandCode": "cold",
+   "params": {
+    "type": "gas",
+    "sizeMul": 1.7353005491197109,
+    "ring": true,
+    "moons": 10,
+    "orbit": 163.56913140788674
+   }
+  },
+  {
+   "id": "star:8675309",
+   "kind": "star",
+   "title": "Star Ursei-300",
+   "sub": "Red dwarf (class M)",
+   "p_rows_consistent": 0.91,
+   "p_params_match": 0.57,
+   "bandModel": null,
+   "bandConf": null,
+   "bandCode": null,
+   "params": {
+    "starKind": "M",
+    "binary": false
+   }
+  },
+  {
+   "id": "planet:8675309:2414214923",
+   "kind": "planet",
+   "title": "Umcy",
+   "sub": "Gas giant",
+   "p_rows_consistent": 0.95,
+   "p_params_match": 0.71,
+   "bandModel": "hot",
+   "bandConf": 0.16,
+   "bandCode": "cold",
+   "params": {
+    "type": "gas",
+    "sizeMul": 1.8064058538526295,
+    "ring": true,
+    "moons": 8,
+    "orbit": 99.43549483176321
+   }
+  },
+  {
+   "id": "planet:8675309:2911916354",
+   "kind": "planet",
+   "title": "Lonur",
+   "sub": "Desert world",
+   "p_rows_consistent": 0.49,
+   "p_params_match": 0.76,
+   "bandModel": "cold",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "desert",
+    "sizeMul": 1.033905229298398,
+    "ring": false,
+    "moons": 2,
+    "orbit": 147.74038965906948
+   }
+  },
+  {
+   "id": "planet:8675309:162578804",
+   "kind": "planet",
+   "title": "Aeos",
+   "sub": "Ice world",
+   "p_rows_consistent": 0.94,
+   "p_params_match": 0.8,
+   "bandModel": "cold",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "ice",
+    "sizeMul": 0.782844081846997,
+    "ring": false,
+    "moons": 2,
+    "orbit": 203.21317931171507
+   }
+  },
+  {
+   "id": "star:2718",
+   "kind": "star",
+   "title": "Star Phyper-554",
+   "sub": "Yellow dwarf (class G)",
+   "p_rows_consistent": 0.95,
+   "p_params_match": 0.68,
+   "bandModel": null,
+   "bandConf": null,
+   "bandCode": null,
+   "params": {
+    "starKind": "G",
+    "binary": false
+   }
+  },
+  {
+   "id": "planet:2718:823540177",
+   "kind": "planet",
+   "title": "Riphy",
+   "sub": "Gas giant",
+   "p_rows_consistent": 0.94,
+   "p_params_match": 0.86,
+   "bandModel": "temperate",
+   "bandConf": 0.04,
+   "bandCode": "temperate",
+   "params": {
+    "type": "gas",
+    "sizeMul": 1.9931281078606844,
+    "ring": true,
+    "moons": 9,
+    "orbit": 116.21676798444241
+   }
+  },
+  {
+   "id": "planet:2718:1907812401",
+   "kind": "planet",
+   "title": "Sasei",
+   "sub": "Gas giant",
+   "p_rows_consistent": 0.95,
+   "p_params_match": 0.84,
+   "bandModel": "hot",
+   "bandConf": 0.19,
+   "bandCode": "temperate",
+   "params": {
+    "type": "gas",
+    "sizeMul": 1.9901225304231047,
+    "ring": true,
+    "moons": 10,
+    "orbit": 157.66259616147727
+   }
+  },
+  {
+   "id": "planet:2718:2625357735",
+   "kind": "planet",
+   "title": "Phylon",
+   "sub": "Gas giant",
+   "p_rows_consistent": 0.95,
+   "p_params_match": 0.83,
+   "bandModel": "hot",
+   "bandConf": 0.11,
+   "bandCode": "cold",
+   "params": {
+    "type": "gas",
+    "sizeMul": 2.483709478378296,
+    "ring": false,
+    "moons": 12,
+    "orbit": 214.68378640245646
+   }
+  },
+  {
+   "id": "planet:2718:3701291376",
+   "kind": "planet",
+   "title": "Tarvel",
+   "sub": "Ice world",
+   "p_rows_consistent": 0.92,
+   "p_params_match": 0.84,
+   "bandModel": "cold",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "ice",
+    "sizeMul": 0.8059395691845566,
+    "ring": false,
+    "moons": 1,
+    "orbit": 271.3087370945141
+   }
+  },
+  {
+   "id": "star:3141",
+   "kind": "star",
+   "title": "Star Zesa-250",
+   "sub": "Red dwarf (class M)",
+   "p_rows_consistent": 0.94,
+   "p_params_match": 0.58,
+   "bandModel": null,
+   "bandConf": null,
+   "bandCode": null,
+   "params": {
+    "starKind": "M",
+    "binary": false
+   }
+  },
+  {
+   "id": "planet:3141:1240842128",
+   "kind": "planet",
+   "title": "Lonze",
+   "sub": "Rocky world",
+   "p_rows_consistent": 0.89,
+   "p_params_match": 0.86,
+   "bandModel": "cold",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "rocky",
+    "sizeMul": 0.7566024981439113,
+    "ring": false,
+    "moons": 1,
+    "orbit": 102.42529731197283
+   }
+  },
+  {
+   "id": "planet:3141:1290338194",
+   "kind": "planet",
+   "title": "Phyion",
+   "sub": "Terran (Earth-like) world",
+   "p_rows_consistent": 0.76,
+   "p_params_match": 0.77,
+   "bandModel": "cold",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "terran",
+    "sizeMul": 1.1700293652247638,
+    "ring": false,
+    "moons": 4,
+    "orbit": 133.29498461587355
+   }
+  },
+  {
+   "id": "planet:3141:3803357080",
+   "kind": "planet",
+   "title": "Lonri",
+   "sub": "Ocean world",
+   "p_rows_consistent": 0.77,
+   "p_params_match": 0.82,
+   "bandModel": "cold",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "ocean",
+    "sizeMul": 0.9272271408233791,
+    "ring": false,
+    "moons": 1,
+    "orbit": 176.42803162289783
+   }
+  },
+  {
+   "id": "planet:3141:876470778",
+   "kind": "planet",
+   "title": "Orsei",
+   "sub": "Ocean world",
+   "p_rows_consistent": 0.78,
+   "p_params_match": 0.81,
+   "bandModel": "cold",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "ocean",
+    "sizeMul": 0.9178900246508419,
+    "ring": false,
+    "moons": 1,
+    "orbit": 231.32946457667276
+   }
+  },
+  {
+   "id": "star:1618",
+   "kind": "star",
+   "title": "Star Rian-792",
+   "sub": "Orange dwarf (class K)",
+   "p_rows_consistent": 0.7,
+   "p_params_match": 0.5,
+   "bandModel": null,
+   "bandConf": null,
+   "bandCode": null,
+   "params": {
+    "starKind": "K",
+    "binary": true
+   }
+  },
+  {
+   "id": "planet:1618:277700485",
+   "kind": "planet",
+   "title": "Zedro",
+   "sub": "Gas giant",
+   "p_rows_consistent": 0.94,
+   "p_params_match": 0.83,
+   "bandModel": "temperate",
+   "bandConf": 0.27,
+   "bandCode": "cold",
+   "params": {
+    "type": "gas",
+    "sizeMul": 2.011311387270689,
+    "ring": true,
+    "moons": 8,
+    "orbit": 110.40874475287274
+   }
+  },
+  {
+   "id": "planet:1618:1132333170",
+   "kind": "planet",
+   "title": "Kasei",
+   "sub": "Rocky world",
+   "p_rows_consistent": 0.92,
+   "p_params_match": 0.88,
+   "bandModel": "cold",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "rocky",
+    "sizeMul": 0.9406612556893378,
+    "ring": false,
+    "moons": 1,
+    "orbit": 158.58516565011814
+   }
+  },
+  {
+   "id": "planet:1618:1449718842",
+   "kind": "planet",
+   "title": "Seiper",
+   "sub": "Terran (Earth-like) world",
+   "p_rows_consistent": 0.68,
+   "p_params_match": 0.78,
+   "bandModel": "cold",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "terran",
+    "sizeMul": 1.1131182842422276,
+    "ring": false,
+    "moons": 3,
+    "orbit": 205.95422479556873
+   }
+  },
+  {
+   "id": "planet:1618:784767855",
+   "kind": "planet",
+   "title": "Orsa",
+   "sub": "Gas giant",
+   "p_rows_consistent": 0.9,
+   "p_params_match": 0.83,
+   "bandModel": "cold",
+   "bandConf": 0.17,
+   "bandCode": "cold",
+   "params": {
+    "type": "gas",
+    "sizeMul": 1.9313579995185137,
+    "ring": true,
+    "moons": 7,
+    "orbit": 253.3884446178563
+   }
+  },
+  {
+   "id": "star:5551212",
+   "kind": "star",
+   "title": "Star Kasa-126",
+   "sub": "Red dwarf (class M)",
+   "p_rows_consistent": 0.92,
+   "p_params_match": 0.53,
+   "bandModel": null,
+   "bandConf": null,
+   "bandCode": null,
+   "params": {
+    "starKind": "M",
+    "binary": false
+   }
+  },
+  {
+   "id": "planet:5551212:768807686",
+   "kind": "planet",
+   "title": "Satar",
+   "sub": "Molten world",
+   "p_rows_consistent": 0.83,
+   "p_params_match": 0.84,
+   "bandModel": "hot",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "lava",
+    "sizeMul": 1.223869123822078,
+    "ring": false,
+    "moons": 3,
+    "orbit": 107.90844990126789
+   }
+  },
+  {
+   "id": "planet:5551212:1660627678",
+   "kind": "planet",
+   "title": "Oska",
+   "sub": "Gas giant",
+   "p_rows_consistent": 0.95,
+   "p_params_match": 0.72,
+   "bandModel": "hot",
+   "bandConf": 0.22,
+   "bandCode": "cold",
+   "params": {
+    "type": "gas",
+    "sizeMul": 2.182225259765983,
+    "ring": false,
+    "moons": 12,
+    "orbit": 137.47285874001682
+   }
+  },
+  {
+   "id": "planet:5551212:1151728913",
+   "kind": "planet",
+   "title": "Gntar",
+   "sub": "Desert world",
+   "p_rows_consistent": 0.41,
+   "p_params_match": 0.78,
+   "bandModel": "cold",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "desert",
+    "sizeMul": 1.012645041523501,
+    "ring": false,
+    "moons": 1,
+    "orbit": 188.05820492468774
+   }
+  },
+  {
+   "id": "planet:5551212:4181716626",
+   "kind": "planet",
+   "title": "Cycy",
+   "sub": "Ice world",
+   "p_rows_consistent": 0.91,
+   "p_params_match": 0.81,
+   "bandModel": "cold",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "ice",
+    "sizeMul": 1.0743225840851665,
+    "ring": false,
+    "moons": 2,
+    "orbit": 242.65616280399263
+   }
+  },
+  {
+   "id": "star:77",
+   "kind": "star",
+   "title": "Star Phyos-836",
+   "sub": "Red dwarf (class M)",
+   "p_rows_consistent": 0.86,
+   "p_params_match": 0.74,
+   "bandModel": null,
+   "bandConf": null,
+   "bandCode": null,
+   "params": {
+    "starKind": "M",
+    "binary": false
+   }
+  }
+ ],
+ "rowsBad": [],
+ "paramsBad": [],
+ "bandBad": [
+  {
+   "id": "planet:12:3554301141",
+   "kind": "planet",
+   "title": "Kari",
+   "sub": "Venusian hothouse",
+   "p_rows_consistent": 0.91,
+   "p_params_match": 0.84,
+   "bandModel": "hot",
+   "bandConf": 1,
+   "bandCode": "temperate",
+   "params": {
+    "type": "venus",
+    "sizeMul": 1.2545425481628625,
+    "ring": false,
+    "moons": 1,
+    "orbit": 119.52836608560756
+   }
+  },
+  {
+   "id": "planet:999:3820430349",
+   "kind": "planet",
+   "title": "Ionae",
+   "sub": "Desert world",
+   "p_rows_consistent": 0.9,
+   "p_params_match": 0.88,
+   "bandModel": "hot",
+   "bandConf": 0.81,
+   "bandCode": "temperate",
+   "params": {
+    "type": "desert",
+    "sizeMul": 0.7088308922480792,
+    "ring": false,
+    "moons": 0,
+    "orbit": 146.6184596605599
+   }
+  },
+  {
+   "id": "planet:999:817479718",
+   "kind": "planet",
+   "title": "Kaion",
+   "sub": "Venusian hothouse",
+   "p_rows_consistent": 0.91,
+   "p_params_match": 0.86,
+   "bandModel": "hot",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "venus",
+    "sizeMul": 0.7426441773772239,
+    "ring": false,
+    "moons": 1,
+    "orbit": 191.07915546372533
+   }
+  },
+  {
+   "id": "planet:5551212:768807686",
+   "kind": "planet",
+   "title": "Satar",
+   "sub": "Molten world",
+   "p_rows_consistent": 0.83,
+   "p_params_match": 0.84,
+   "bandModel": "hot",
+   "bandConf": 1,
+   "bandCode": "cold",
+   "params": {
+    "type": "lava",
+    "sizeMul": 1.223869123822078,
+    "ring": false,
+    "moons": 3,
+    "orbit": 107.90844990126789
+   }
+  }
+ ]
+}

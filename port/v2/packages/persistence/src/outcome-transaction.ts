@@ -64,6 +64,8 @@ export interface F4OutcomeDeriveInput {
   readonly domain: string;
   readonly value: number;
   readonly receiptOrdinal: number;
+  /** Exact leased active-play snapshot committed by this same transaction (additive 2026-09-25: weekly Charters count on it). */
+  readonly activePlayMs: number;
   /** A fresh canonical state owned by this attempt. Mutating and returning
    * this draft cannot alter the caller's currently-rendered/save state. */
   readonly draft: SaveStateV2;
@@ -827,6 +829,7 @@ export function createF4OutcomeTransactionOwner(
           domain: plan.domain,
           value: plan.value,
           receiptOrdinal: plan.receiptOrdinal,
+          activePlayMs: input.snapshot.activePlayMs,
           draft,
           extensions,
         })),

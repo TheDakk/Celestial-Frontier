@@ -1,5 +1,130 @@
 # Celestial Frontier — UI / Presentation System
 
+Each section dates itself (most with a `matches code as of` marker; a section without one is not a verified
+description). Refreshed in place September 24, 2026: the painted Compendium card and matchup picker section only; the
+rest of this doc was not re-verified in that refresh.
+
+## Painted Compendium card and the matchup picker — matches code as of 2026-09-24 (anthropic/mac working copy over d643fc0e, including uncommitted changes)
+
+Scope: the card path of the morph system and the study-only matchup picker, both Claude-lane code under
+`port/v2/apps/game/src/`. Anatomy fits, motion, the parts rig and the painting pipeline are Codex's; see
+`CREATURE_ANIMATION.md` and `ART_KIT.md`. The morph design is `audits/VISION_PROGRAM_20260920/MORPH_SYSTEM_DESIGN.md`.
+
+**Which creatures are painted.** Seventeen archetypes: Crab, Coconut Crab, Freshwater Crab, Mud Crab, Vent Crab,
+Civet, Salmon, Eagle, Beetle, Python, Tree Frog, Chimpanzee, Starfish, Tarantula, Octopus, Fruit Bat and Centipede.
+One list, `CARD_ARCHETYPES` in `port/v2/tools/morph/build-card-masters.mjs`, generates the card registry
+(`morph/card-archetypes.ts`), the explicit `?url` asset map including the painted marking masks
+(`painted-cards.assets.ts`) and the arena's fit list (`battle2-archetypes.ts`). `tools/morph/build-shipped-battle2.mjs`
+ships the arena's files from the same list. `battle2-archetypes.test.ts` fails when a generated file differs from what
+the builder produces, or when a shipped mirror names another fit or record.
+
+**The card is the individual, on every device.** `main.ts` builds one `PaintedCardSource`
+(`painted-cards.ts` `createPaintedCardsForApp`) and passes it to the `SpeciesArtLoader`. The loader asks it first for
+every 132px thumb (`leaseThumb`) and 440px portrait (`requestPortrait`). That covers the Compendium row image
+(`.compendium-thumb`), the Compendium detail portrait (owner `codex-detail`) and the loader's other thumb consumers,
+such as Planetside. When a genome's `_earthName` names a painted archetype, the card shows that individual, rendered
+from the archetype's sealed card master. Every other genome gets `null`, and the painter tier answers as before:
+procedural species and Earth species without a painting. The path has no device-class branch. The loader test runs
+with the phone device class and asserts that the painter producer is never asked for a painted crab
+(`morph/painted-cards.test.ts`). If `createPaintedCardsForApp` throws (an archetype without shipped assets), `main.ts`
+continues with the painter tier for every species.
+
+**Card master and render.** Each archetype ships four card files under
+`port/v2/apps/game/assets/painted-cards/<key>/`, plus its marking masks where they were painted:
+- `card/master-512.png`: the painted master, alpha-weighted box downscale, longest side at most 512.
+- `card/labels-512.png`: the part labels, nearest-neighbour downscale.
+- `card/card.json`: a `cf.card-master/v1` receipt. It is sealed to the fit record's `recipeHash` and carries the
+  landmarks, plus the family's fixed joint sockets when the family declares any.
+- `record.json`: the fit record.
+
+A `SOURCE.json` beside them names the fit the folder mirrors; the drift test reads it, and the app never loads it.
+
+`PaintedCardSource` refuses a master or labels file whose size disagrees with the receipt, and a receipt sealed for
+another record. `morph/morph-card.ts` `renderCardIndividualV1` then runs these steps:
+1. Remap the palette by each pixel's label role.
+2. Apply the painted marking, or the emissive glow.
+3. Apply proportion.
+4. Turn a long body onto the diagonal.
+5. Crop to the alpha box with a 6% margin (`CARD_MARGIN`).
+6. Box-downscale to a square of the requested size.
+
+The result is served as a PNG data URL. Renders run one per host task (`yieldToHost`, a macrotask by default), so a
+Compendium grid never renders a page of cards in one task. Results are cached per kind by `speciesVisualKey`: 64 thumbs
+and 8 portraits by default, with the oldest evicted. Concurrent requests for the same card share one render.
+
+**What the genome changes** (`morph/morph-params.ts`, `morph-palette.ts`, `morph-markings.ts`, `morph-skeleton.ts`):
+- **Colour:** colour and accent genes pick from a 17-entry colour table with a deterministic ±12° hue jitter. Three
+  entries have no hue (obsidian-black, bone-white, glass-clear); they keep the painting's hue and only lower chroma. The
+  remap keeps luminance, so the painted finish survives. A gene equal to the archetype's own gene is identity, because the
+  painting is its own genome. `archetypeGenomeV1` reads that genome from the record's `genome` and
+  `identity.speciesVisualKey`.
+- **Accent:** the accent is trim, set per body plan in `ACCENT_GROUPS`. It covers crab claws; quadruped ears and tail;
+  fish fins; bird head and tail; insect wings and antennae; the head of serpents, hoppers, cephalopods and myriapods;
+  the radial centre disc (`body`); the arachnid abdomen (`tail`); and flying-membrane ears and head. Primates have no
+  accent (one coat). Every other joint group is the base coat. A part on joint `root` with no group takes the `body`
+  group's role, unless its id names a shadow, which stays as painted (`paletteRoleOfPart`). That makes the torso base
+  coat on every plan except the radial, where the Starfish's root `body` part is accent with its centre disc.
+- **Near-grey tint:** a role with mean saturation below 0.18 (`LOW_CHROMA_ROLE`) is tinted when the colour has a hue:
+  it takes the target hue at a saturation floor of 0.3 (`TINT_SATURATION`, before the colour's chroma multiplier), with
+  luminance kept. On the card masters this covers the Salmon's silver, the Vent Crab's white and the Chimpanzee's black.
+- **Proportion:** head and tail genes scale only non-contact sub-trees: head 0.85–1.2 and tail 0.7–1.35. Ears and
+  antennae follow the head at a gentler slope. Legs and contact chains never scale. A scaled sub-tree carries every joint
+  under it: the Octopus's arms and siphon hang from its head, so its head gene scales them too.
+- **Pattern:** the pattern gene draws a painted marking mask where one exists. Crab, Civet and Salmon ship striped,
+  spotted, banded, mottled, marbled and eye-spotted masks. A pattern nobody painted renders plain.
+- **Emissive:** the lumin gene or the iridescent pattern adds an emissive lift on the marking. With no marking, the lift
+  goes on the accent set, or on the base coat for a plan with no accent set (`emissiveRoleV1`).
+
+**Long bodies on the diagonal.** `diagonalLongBodyV1` checks the composite's alpha box. When the box is horizontal and
+its short side divided by its long side is below 0.42 (`LONG_BODY_ASPECT`), the body is rotated 45° about its centre
+with the head end raised. The rotation uses the exact constant √½ (`Math.SQRT1_2`), with no trigonometry. Today exactly
+three archetypes turn as painted: the Python, the Centipede and the Salmon. `morph/morph-library.test.ts` pins that list and
+requires each turned card to be more than 1.15× fuller. Every other card must be byte-identical with the rotation
+switched off.
+
+**Card = stage.** The card and the battle stage use the same part-role rule (`paletteRoleOfPart`: the card through
+`cardRolesV1`, the stage through `morph/morph-individual.ts` `paletteFramesV1`) and the same joint scales
+(`jointScalesV1`). The card's proportion transform (`cardProportionV1`) matches the stage's skeleton program: nested
+scaled parts compose, and a fixed socket from the receipt is the pivot, otherwise the parent's landmark (only the
+Centipede's receipt has fixed sockets today). `morph/morph-library.test.ts` checks the
+grey/tint decision against the stage's atlas on every archetype. It also checks the proportion transform against the
+stage's skeleton program, landmark by landmark, with mutation controls.
+
+**Matchup picker (study-only).** The picker is a playtest surface, not a player feature. It opens from
+`?battle2=1&vs=Left,Right`, with optional `&world=lake|land` and `&seed=N`. `main.ts` imports `battle2-matchup.ts`
+dynamically only when both `battle2=1` and `vs` are present: the battle2 study's flag plus `vs`.
+`battle2-matchup.test.ts` checks that gate from the source text, with mutation controls.
+
+The picker is a fixed full-screen layer over the game (`role="dialog"`, labelled "Painted creature matchup"). It holds
+two creature lists of the 17 archetypes, a World list (auto, land, lake), a seed field, and Play and Close buttons.
+Every control is at least 44px tall. A polite live `<output>` shows the status line. Names in the URL are
+case-insensitive. An unknown or missing left name falls back to the first archetype in the list, and the right one to
+the first other archetype. A seed that is not a whole number of at most nine digits falls back to the archetypes' own
+colours. `parseMatchup` records a note for an unknown name or a bad seed and the picker writes it to the status line,
+but the first Play's "loading" line replaces it in the same task, so today nobody sees it. Auto picks the lake when
+either side can only swim (Salmon, Octopus, Starfish). An explicit Land with a swimmer reports the habitat refusal as "could not stage". Without a seed,
+both fighters are their archetypes as painted (identity morph). With a seed, each side is a morphed individual from its
+own lane, so a mirror match shows two different individuals.
+
+Play mounts the real battle2 study (`mountBattle2Study`, `battle2-wiring.ts`) with a scripted five-turn bout: left
+hits, right hits back, right dodges, right crits, and left wins. The stage changes no HP or rewards. A new Play disposes
+the previous study. Close disposes the study and removes the layer. The picker has no Escape handling or focus trap.
+The module reads no clock and no `Math.random` (tested). Under Auto, all 17×17 pairs resolve to a ready habitat
+(`battle2-matchup.test.ts`). Sizing, stand centring and the wet arena are the stage's own rules (`battle2/stage.ts`
+`combatantPresentation` and `standCentreShift`; `battle2/habitat-arena.ts`), composed by the one placement pipeline
+`battle2/placement.ts` `placeCombatants`, which `battle2-wiring.ts` calls; the picker adds none. Real-browser
+evidence: `audits/BATTLE2_LIBRARY_20260924/picker-smoke-02/report.json` (Edge, PASS, on the committed f95fb1c1
+dev-preview package).
+
+Known issue, Codex-owned: the production service worker (`apps/game/pwa-build.ts`) answers 503 to any same-origin
+request outside the selected build's asset list. That list is built from the Rollup bundle. The card assets are `?url`
+imports: Vite emits each into the bundle, so it is in that list, or inlines one under its 4 KB default limit (six of the
+receipts) as a data URL that needs no fetch. The arena's files are copied from `apps/game/public/battle2/`, so they are
+not in the list. On a page the worker controls, the picker cannot load the arena until the worker passes the study files
+through to the network. Evidence: `audits/BATTLE2_LIBRARY_20260924/picker-smoke-03-sw-503/report.json` (FAIL,
+`battle2 asset keyed/wild-launch.png: HTTP 503`), and `picker-smoke-03/report.json`, which passes on a production
+build (`dist-picker`) with the worker refused (`--no-sw`).
+
 **Development bulletin evidence — matches code 2026-09-24.** The current authored draft has86 rendered bullets, independently measured orderedSHA256 `ab2cc349195fee0fd22fcc6de75e246c67ce3a61e6cdfc3d17d005afacb8ceaa`. Slice/Glass require that exact count and identity, and the missing-row control requires85. Semantic, duplicate/reorder/empty and restoration controls remain intact; no player copy or legacy history changed in this evidence repair. Packet: `audits/MOTION_FIVE_REDS_20260924/README.md`.
 
 

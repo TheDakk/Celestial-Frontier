@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { SurfacePlanetTurnViewV1 } from './planet-surface-turn-view.js';
+import { SurfacePlanetTurnViewV1, PLANET_SURFACE_TURN_DEADLINE_MS,
+  PLANET_SURFACE_TURN_ERROR_SCHEMA } from './planet-surface-turn-view.js';
 import { surfaceTurnAngleV1 } from './planet-surface-turn-math.js';
 import { PLANET_TURN_ATLAS_WIDTH as WIDTH, PLANET_TURN_ATLAS_HEIGHT as HEIGHT,
   PLANET_TURN_ATLAS_U_EXTENT as EXTENT } from './planet-surface-atlas.js';
@@ -107,9 +108,11 @@ function mounted(material?: boolean) {
     uniforms: mesh.options.shader.options.resources.turnUniforms, canvas: canvases.at(-1)! };
 }
 
+const clock = { now: 0 };
 beforeEach(() => {
   vi.useFakeTimers(); FakeWorker.instances.length = 0; canvases.length = 0;
   vi.stubGlobal('Worker', FakeWorker);
+  clock.now = 0; vi.stubGlobal('performance', { now: () => clock.now });
   vi.stubGlobal('document', { createElement: vi.fn((tag: string) => {
     expect(tag).toBe('canvas'); const canvas = makeCanvas(); canvases.push(canvas); return canvas;
   }) });
@@ -289,5 +292,52 @@ describe('SurfacePlanetTurnViewV1 lifetime', () => {
     for (const release of [f.mesh.destroy, f.shader.destroy, f.geometry.destroy, f.lease.release]) {
       expect(release).toHaveBeenCalledTimes(1);
     }
+  });
+});
+
+describe('K27/K28: monotonic deadline and the worker error reason', () => {
+  it('refuses an atlas at the monotonic deadline before the throttled timer fires', () => {
+    const f = fixture();
+    expect(PLANET_SURFACE_TURN_DEADLINE_MS).toBe(12_000);
+    clock.now = PLANET_SURFACE_TURN_DEADLINE_MS;
+    expect(vi.getTimerCount()).toBe(1);
+    f.worker.emit(atlas());
+    expect(f.view.snapshot()).toMatchObject({ status: 'failed', error: 'Earth surface atlas timed out',
+      workerActive: false, meshLive: false, textureLive: false, canvasPixels: 0, canonicalVisible: true });
+    expect(f.worker.terminate).toHaveBeenCalledOnce();
+    expect(f.acquireLease).not.toHaveBeenCalled();
+    expect(vi.getTimerCount()).toBe(0);
+    vi.advanceTimersByTime(PLANET_SURFACE_TURN_DEADLINE_MS);
+    expect(f.view.snapshot()).toMatchObject({ status: 'failed', error: 'Earth surface atlas timed out' });
+    expect(f.parent.children).toEqual([f.fallback, f.sibling]);
+  });
+
+  it('mounts an atlas one millisecond before the boundary (direction control)', () => {
+    const f = fixture();
+    clock.now = PLANET_SURFACE_TURN_DEADLINE_MS - 1;
+    f.worker.emit(atlas());
+    expect(f.view.snapshot()).toMatchObject({ status: 'ready', workerActive: false, meshLive: true, textureLive: true });
+    expect(f.acquireLease).toHaveBeenCalledOnce();
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
+  it('surfaces the worker error reason instead of the generic shape refusal', () => {
+    const f = fixture();
+    f.worker.emit({ schema: PLANET_SURFACE_TURN_ERROR_SCHEMA, message: 'atlas facts refused: missing coastline' });
+    expect(f.view.snapshot()).toMatchObject({ status: 'failed',
+      error: 'Earth surface atlas worker error: atlas facts refused: missing coastline',
+      workerActive: false, meshLive: false, canonicalVisible: true });
+    expect(f.acquireLease).not.toHaveBeenCalled();
+    expect(vi.getTimerCount()).toBe(0);
+    const blank = fixture();
+    blank.worker.emit({ schema: PLANET_SURFACE_TURN_ERROR_SCHEMA, message: 42 });
+    expect(blank.view.snapshot().error).toBe('Earth surface atlas worker error: no reason given');
+    const long = fixture();
+    long.worker.emit({ schema: PLANET_SURFACE_TURN_ERROR_SCHEMA, message: 'x'.repeat(400) });
+    expect(long.view.snapshot().error).toHaveLength(256);
+    // Negative control: a message under any other schema is still the shape refusal.
+    const other = fixture();
+    other.worker.emit({ schema: 'cf-earth-turn-error/v2', message: 'atlas facts refused' });
+    expect(other.view.snapshot().error).toBe('invalid Earth surface atlas response');
   });
 });

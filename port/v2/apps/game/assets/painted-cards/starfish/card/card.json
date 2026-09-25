@@ -1,0 +1,201 @@
+{
+ "schema": "cf.card-master/v1",
+ "earthName": "Starfish",
+ "recordRecipeHash": "7b02d178f4c3ff04c7801e70613a66f3f82a238647dcd4fe73ba593e37470dca",
+ "source": {
+  "master": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/master.png",
+  "masterSha256": "89d45d5d3410191fe0e0364216ab9005ee28db1910fb4c509e03f8b38c738687",
+  "keyedSha256": "97f4a9f92095823d6ca725ac4ba949f62245d4efb769df10dcfa772e537fa4e0",
+  "alpha": "parts/keyed.png",
+  "labelsSha256": "7e5c10d96ef98da4260f60d14d885a5bb0357a1d171e88a7f4de020848643f87",
+  "labelSource": "labels.png + declaration.json",
+  "width": 1254,
+  "height": 1254
+ },
+ "labels": [
+  {
+   "label": 1,
+   "id": "central-disc-upper",
+   "joint": "bell",
+   "layer": "near"
+  },
+  {
+   "label": 2,
+   "id": "arm0-base",
+   "joint": "arm0Seg0",
+   "layer": "near"
+  },
+  {
+   "label": 3,
+   "id": "arm0-middle",
+   "joint": "arm0Seg1",
+   "layer": "near"
+  },
+  {
+   "label": 4,
+   "id": "arm0-tip",
+   "joint": "arm0Seg2",
+   "layer": "near"
+  },
+  {
+   "label": 5,
+   "id": "arm4-base",
+   "joint": "arm4Seg0",
+   "layer": "near"
+  },
+  {
+   "label": 6,
+   "id": "arm4-middle",
+   "joint": "arm4Seg1",
+   "layer": "near"
+  },
+  {
+   "label": 7,
+   "id": "arm4-tip",
+   "joint": "arm4Seg2",
+   "layer": "near"
+  },
+  {
+   "label": 8,
+   "id": "arm2-base",
+   "joint": "arm2Seg0",
+   "layer": "near"
+  },
+  {
+   "label": 9,
+   "id": "arm2-middle",
+   "joint": "arm2Seg1",
+   "layer": "near"
+  },
+  {
+   "label": 10,
+   "id": "arm2-tip",
+   "joint": "arm2Seg2",
+   "layer": "near"
+  },
+  {
+   "label": 11,
+   "id": "arm3-base",
+   "joint": "arm3Seg0",
+   "layer": "near"
+  },
+  {
+   "label": 12,
+   "id": "arm3-middle",
+   "joint": "arm3Seg1",
+   "layer": "near"
+  },
+  {
+   "label": 13,
+   "id": "arm3-tip",
+   "joint": "arm3Seg2",
+   "layer": "near"
+  },
+  {
+   "label": 14,
+   "id": "arm1-base",
+   "joint": "arm1Seg0",
+   "layer": "near"
+  },
+  {
+   "label": 15,
+   "id": "arm1-middle",
+   "joint": "arm1Seg1",
+   "layer": "near"
+  },
+  {
+   "label": 16,
+   "id": "arm1-tip",
+   "joint": "arm1Seg2",
+   "layer": "near"
+  },
+  {
+   "label": 17,
+   "id": "body",
+   "joint": "root",
+   "layer": "near"
+  }
+ ],
+ "landmarks": {
+  "root": [
+   0.48963317384370014,
+   0.5207336523125997
+  ],
+  "centre": [
+   0.507177033492823,
+   0.48325358851674644
+  ],
+  "bell": [
+   0.511164274322169,
+   0.40669856459330145
+  ],
+  "arm0Seg0": [
+   0.5151515151515151,
+   0.34290271132376393
+  ],
+  "arm0Seg1": [
+   0.518341307814992,
+   0.19537480063795853
+  ],
+  "arm0Seg2": [
+   0.5151515151515151,
+   0.06060606060606061
+  ],
+  "arm1Seg0": [
+   0.34688995215311,
+   0.4481658692185008
+  ],
+  "arm1Seg1": [
+   0.19617224880382775,
+   0.3843700159489633
+  ],
+  "arm1Seg2": [
+   0.04864433811802233,
+   0.3078149920255183
+  ],
+  "arm2Seg0": [
+   0.5988835725677831,
+   0.5956937799043063
+  ],
+  "arm2Seg1": [
+   0.7129186602870813,
+   0.7559808612440191
+  ],
+  "arm2Seg2": [
+   0.8524720893141946,
+   0.9154704944178629
+  ],
+  "arm3Seg0": [
+   0.4059011164274322,
+   0.6100478468899522
+  ],
+  "arm3Seg1": [
+   0.2647527910685805,
+   0.7655502392344498
+  ],
+  "arm3Seg2": [
+   0.14433811802232854,
+   0.8915470494417863
+  ],
+  "arm4Seg0": [
+   0.664274322169059,
+   0.44258373205741625
+  ],
+  "arm4Seg1": [
+   0.8133971291866029,
+   0.38596491228070173
+  ],
+  "arm4Seg2": [
+   0.9433811802232854,
+   0.31100478468899523
+  ]
+ },
+ "card": {
+  "width": 512,
+  "height": 512,
+  "scale": 0.4082934609250399,
+  "masterSha256": "42444aa631f884c816adff2655ba82d006dcca2b63a2623ce202c3458f9811f2",
+  "labelsSha256": "03191281edf7695e3f8e576be53e58241b1fcfa6449105c31330220378ea1227",
+  "filter": "alpha-weighted box; labels nearest"
+ }
+}

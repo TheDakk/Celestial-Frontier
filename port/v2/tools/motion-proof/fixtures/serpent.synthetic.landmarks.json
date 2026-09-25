@@ -1,0 +1,94 @@
+{
+  "kind": "serpent",
+  "identity": {
+    "speciesVisualKey": "synthetic:serpent",
+    "seed": 659716,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "serpent",
+    "version": 1
+  },
+  "family": "snake",
+  "geometry": {
+    "cutoutAssetHash": "synthetic-no-cutout",
+    "width": 1024,
+    "height": 1024,
+    "groundLineY": 0.72,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.6,
+      0.6
+    ],
+    "head": [
+      0.7,
+      0.55
+    ],
+    "jaw": [
+      0.76,
+      0.59
+    ],
+    "seg0": [
+      0.54,
+      0.62
+    ],
+    "seg1": [
+      0.48,
+      0.66
+    ],
+    "seg2": [
+      0.42,
+      0.7
+    ],
+    "seg3": [
+      0.36,
+      0.72
+    ],
+    "seg4": [
+      0.3,
+      0.7
+    ],
+    "seg5": [
+      0.24,
+      0.66
+    ],
+    "seg6": [
+      0.18,
+      0.62
+    ],
+    "seg7": [
+      0.12,
+      0.6
+    ],
+    "seg8": [
+      0.07,
+      0.63
+    ],
+    "seg9": [
+      0.03,
+      0.68
+    ]
+  },
+  "materials": {
+    "surface": "scaled",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "serpent-v1",
+  "habitat": {
+    "realm": "land",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
+}

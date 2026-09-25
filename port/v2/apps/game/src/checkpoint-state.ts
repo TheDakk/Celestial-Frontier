@@ -193,11 +193,20 @@ export type CheckpointStateRefusalDetail =
   | `live-field:${(typeof CHECKPOINT_STATE_LIVE_OVERLAY_FIELDS)[number]}:invalid`
   | `training-field:${(typeof CHECKPOINT_STATE_TRAINING_REPLACEMENT_FIELDS)[number]}:invalid`;
 
+/** K22: a presentation-only overlay field that could not be projected. The
+ * checkpoint still carries route, epoch and preferences; the durable parent's
+ * copy of the dropped field is retained and the reason travels with the result. */
+export type CheckpointStateDroppedFieldV1 = Readonly<{
+  field: 'notifications';
+  detail: 'live-field:notifications:invalid';
+}>;
+
 export type CheckpointStateProjection =
   | Readonly<{
     kind: 'projected';
     state: SaveStateV2;
     appliedFields: readonly (keyof SaveStateV2)[];
+    droppedFields: readonly CheckpointStateDroppedFieldV1[];
   }>
   | Readonly<{ kind: 'refused'; detail: CheckpointStateRefusalDetail }>;
 
@@ -410,25 +419,37 @@ export function projectCheckpointState(inputValue: CheckpointStateInput): Checkp
       return refused('saved-view:invalid');
     }
 
+    const droppedFields: CheckpointStateDroppedFieldV1[] = [];
     for (const field of CHECKPOINT_STATE_LIVE_OVERLAY_FIELDS) {
       const value = liveFields[field];
       let detached: unknown;
+      let valid = true;
       try {
-        if (field === 'notifications' && !boundedNotificationArray(value)) {
-          return refused('live-field:notifications:invalid');
-        }
+        if (field === 'notifications' && !boundedNotificationArray(value)) valid = false;
         // Inspect only detached plain data; no live notification accessor runs.
-        detached = clonePlainData(value, new Set<object>(), { nodes: 0 }, 0);
+        else detached = clonePlainData(value, new Set<object>(), { nodes: 0 }, 0);
       } catch {
+        valid = false;
+      }
+      if (valid && !validLiveField(field, detached)) valid = false;
+      if (!valid) {
+        /* K22: one malformed notification row must not refuse the route,
+           epoch and preference checkpoint (a refusal forces a convergence
+           reload). Presentation history degrades to the durable parent's
+           rows and the reason is recorded on the projection. */
+        if (field === 'notifications') {
+          droppedFields.push(Object.freeze({ field, detail: 'live-field:notifications:invalid' }));
+          continue;
+        }
         return refused(`live-field:${field}:invalid`);
       }
-      if (!validLiveField(field, detached)) return refused(`live-field:${field}:invalid`);
       (state as unknown as Record<string, unknown>)[field] = detached;
     }
     state.EPOCH_BASE = epoch;
     state.savedView = savedView;
 
-    const appliedFields: (keyof SaveStateV2)[] = [...CHECKPOINT_STATE_OVERLAY_FIELDS];
+    const appliedFields: (keyof SaveStateV2)[] = CHECKPOINT_STATE_OVERLAY_FIELDS
+      .filter((field) => !droppedFields.some((dropped) => dropped.field === field));
     if (input.trainingReplacement) {
       if (typeof liveFields.tutDone !== 'boolean') {
         return refused('training-field:tutDone:invalid');
@@ -453,6 +474,7 @@ export function projectCheckpointState(inputValue: CheckpointStateInput): Checkp
       kind: 'projected',
       state,
       appliedFields: Object.freeze(appliedFields),
+      droppedFields: Object.freeze(droppedFields),
     });
   } catch {
     return refused('input:invalid');

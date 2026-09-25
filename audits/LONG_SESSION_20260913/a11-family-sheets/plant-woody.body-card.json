@@ -1,0 +1,330 @@
+{
+ "kind": "body-card",
+ "identity": {
+  "speciesVisualKey": "synthetic:plant-woody",
+  "seed": 659719,
+  "ownerId": "synthetic:a11-fixture",
+  "earthName": null
+ },
+ "recipeHash": null,
+ "template": {
+  "id": "plant-woody",
+  "version": 1,
+  "clipSetId": "plant-woody-v1"
+ },
+ "massClass": {
+  "name": "medium",
+  "multiplier": 1
+ },
+ "locomotion": {
+  "loco": "grazers",
+  "gait": "walk",
+  "templateGait": "none"
+ },
+ "realm": "land",
+ "materials": {
+  "body": "warty",
+  "head": "warty",
+  "legs": "warty",
+  "tail": "warty",
+  "ears": "warty",
+  "wings": "warty",
+  "fins": "warty",
+  "antennae": "warty",
+  "fronds": "warty",
+  "arms": "warty"
+ },
+ "parts": [
+  {
+   "joint": "trunk",
+   "parent": "root",
+   "group": "body",
+   "pivot": [
+    0.5,
+    0.9
+   ],
+   "tip": [
+    0.5,
+    0.55
+   ],
+   "boneLength": 0.35
+  },
+  {
+   "joint": "branch0Base",
+   "parent": "trunk",
+   "group": "fronds",
+   "pivot": [
+    0.5,
+    0.55
+   ],
+   "tip": [
+    0.62,
+    0.45
+   ],
+   "boneLength": 0.1562049935181331
+  },
+  {
+   "joint": "branch0Tip",
+   "parent": "branch0Base",
+   "group": "fronds",
+   "pivot": [
+    0.62,
+    0.45
+   ],
+   "tip": [
+    0.72,
+    0.34
+   ],
+   "boneLength": 0.14866068747318503
+  },
+  {
+   "joint": "leaf0",
+   "parent": "branch0Tip",
+   "group": "fronds",
+   "pivot": [
+    0.72,
+    0.34
+   ],
+   "tip": [
+    0.78,
+    0.26
+   ],
+   "boneLength": 0.10000000000000006
+  },
+  {
+   "joint": "branch1Base",
+   "parent": "trunk",
+   "group": "fronds",
+   "pivot": [
+    0.5,
+    0.55
+   ],
+   "tip": [
+    0.38,
+    0.42
+   ],
+   "boneLength": 0.17691806012954137
+  },
+  {
+   "joint": "branch1Tip",
+   "parent": "branch1Base",
+   "group": "fronds",
+   "pivot": [
+    0.38,
+    0.42
+   ],
+   "tip": [
+    0.28,
+    0.32
+   ],
+   "boneLength": 0.14142135623730948
+  },
+  {
+   "joint": "leaf1",
+   "parent": "branch1Tip",
+   "group": "fronds",
+   "pivot": [
+    0.28,
+    0.32
+   ],
+   "tip": [
+    0.22,
+    0.24
+   ],
+   "boneLength": 0.10000000000000003
+  },
+  {
+   "joint": "branch2Base",
+   "parent": "trunk",
+   "group": "fronds",
+   "pivot": [
+    0.5,
+    0.55
+   ],
+   "tip": [
+    0.56,
+    0.36
+   ],
+   "boneLength": 0.19924858845171284
+  },
+  {
+   "joint": "branch2Tip",
+   "parent": "branch2Base",
+   "group": "fronds",
+   "pivot": [
+    0.56,
+    0.36
+   ],
+   "tip": [
+    0.6,
+    0.22
+   ],
+   "boneLength": 0.14560219778561032
+  },
+  {
+   "joint": "leaf2",
+   "parent": "branch2Tip",
+   "group": "fronds",
+   "pivot": [
+    0.6,
+    0.22
+   ],
+   "tip": [
+    0.64,
+    0.12
+   ],
+   "boneLength": 0.1077032961426901
+  }
+ ],
+ "secondaryParts": [
+  {
+   "id": "branch0",
+   "driver": "trunk",
+   "joints": [
+    "branch0Base",
+    "branch0Tip",
+    "leaf0"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "warty",
+   "kind": "frond"
+  },
+  {
+   "id": "branch1",
+   "driver": "trunk",
+   "joints": [
+    "branch1Base",
+    "branch1Tip",
+    "leaf1"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "warty",
+   "kind": "frond"
+  },
+  {
+   "id": "branch2",
+   "driver": "trunk",
+   "joints": [
+    "branch2Base",
+    "branch2Tip",
+    "leaf2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "warty",
+   "kind": "frond"
+  }
+ ],
+ "weapons": [],
+ "luminous": false,
+ "bodyLength": 0.35,
+ "groundLineY": 0.9,
+ "landmarks": {
+  "root": [
+   0.5,
+   0.9
+  ],
+  "trunk": [
+   0.5,
+   0.55
+  ],
+  "branch0Base": [
+   0.62,
+   0.45
+  ],
+  "branch0Tip": [
+   0.72,
+   0.34
+  ],
+  "leaf0": [
+   0.78,
+   0.26
+  ],
+  "branch1Base": [
+   0.38,
+   0.42
+  ],
+  "branch1Tip": [
+   0.28,
+   0.32
+  ],
+  "leaf1": [
+   0.22,
+   0.24
+  ],
+  "branch2Base": [
+   0.56,
+   0.36
+  ],
+  "branch2Tip": [
+   0.6,
+   0.22
+  ],
+  "leaf2": [
+   0.64,
+   0.12
+  ]
+ },
+ "bounds": {
+  "inside": true,
+  "clamped": [],
+  "limitsDeg": {
+   "root": {
+    "min": -5,
+    "max": 5
+   },
+   "trunk": {
+    "min": -12,
+    "max": 12
+   },
+   "branch0Base": {
+    "min": -25,
+    "max": 25
+   },
+   "branch0Tip": {
+    "min": -35,
+    "max": 35
+   },
+   "leaf0": {
+    "min": -45,
+    "max": 45
+   },
+   "branch1Base": {
+    "min": -25,
+    "max": 25
+   },
+   "branch1Tip": {
+    "min": -35,
+    "max": 35
+   },
+   "leaf1": {
+    "min": -45,
+    "max": 45
+   },
+   "branch2Base": {
+    "min": -25,
+    "max": 25
+   },
+   "branch2Tip": {
+    "min": -35,
+    "max": 35
+   },
+   "leaf2": {
+    "min": -45,
+    "max": 45
+   }
+  }
+ },
+ "notes": []
+}

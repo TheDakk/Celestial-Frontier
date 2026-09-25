@@ -19,11 +19,56 @@ interface PcmContextLike extends AudioContextLike {
 export interface PilotPcm {
   readonly sampleRate: 48000;
   readonly frames: number;
+  /** Planar Float32 samples until the full-channel AudioBuffer is first built;
+   * afterwards the buffer's own channel views, so decoded audio is held once
+   * (K30). Always frozen, always `frames` long per channel. */
   readonly channels: readonly Float32Array[];
   readonly durationMs: number;
   readonly decodedBytes: number;
 }
 export const PILOT_PCM_FILE_LIMIT = 4_700_000;
+
+/* K30: the full-channel and mono AudioBuffers are built once per decoded cue and
+   reused by every later play. Once the full buffer exists the planar copies are
+   released in favour of its channel views. Keyed weakly so a disposed cache
+   releases everything. */
+interface PilotPcmSlot {
+  channels: readonly Float32Array[];
+  full: PcmBufferLike | null;
+  mono: PcmBufferLike | null;
+}
+const SLOTS = new WeakMap<PilotPcm, PilotPcmSlot>();
+const LITTLE_ENDIAN = new Uint8Array(new Uint16Array([1]).buffer)[0] === 1;
+
+export function pilotPcmBufferDiagnostics(pcm: PilotPcm): Readonly<{ full: boolean; mono: boolean; planarReleased: boolean }> {
+  const slot = SLOTS.get(pcm);
+  return Object.freeze({ full: slot?.full !== null && slot?.full !== undefined,
+    mono: slot?.mono !== null && slot?.mono !== undefined,
+    planarReleased: slot?.full !== null && slot?.full !== undefined });
+}
+
+function pilotPcmBuffer(native: PcmContextLike, pcm: PilotPcm, channelCount: number): PcmBufferLike {
+  const slot = SLOTS.get(pcm);
+  const variant = channelCount === pcm.channels.length ? 'full' : 'mono';
+  const cached = slot?.[variant];
+  if (cached) return cached;
+  const sources = pcm.channels;
+  const buffer = native.createBuffer(channelCount, pcm.frames, pcm.sampleRate);
+  for (let channel = 0; channel < channelCount; channel++) {
+    const target = buffer.getChannelData(channel);
+    if (variant === 'mono' && sources.length === 2) {
+      const left = sources[0]!, right = sources[1]!;
+      for (let frame = 0; frame < pcm.frames; frame++) target[frame] = (left[frame]! + right[frame]!) / 2;
+    } else target.set(sources[channel]!);
+  }
+  if (slot) {
+    slot[variant] = buffer;
+    if (variant === 'full') {
+      slot.channels = Object.freeze(Array.from({ length: channelCount }, (_, channel) => buffer.getChannelData(channel)));
+    }
+  }
+  return buffer;
+}
 export function parsePilotPcm(bytes: ArrayBuffer, decodedByteLimit = 48_000 * 24 * 2 * 4): PilotPcm {
   if (!Number.isSafeInteger(decodedByteLimit) || decodedByteLimit < 0) throw new RangeError('Pilot decoded byte limit');
   if (bytes.byteLength < 44 || bytes.byteLength > PILOT_PCM_FILE_LIMIT) throw new RangeError('Pilot PCM byte limit');
@@ -63,13 +108,31 @@ export function parsePilotPcm(bytes: ArrayBuffer, decodedByteLimit = 48_000 * 24
   const decodedBytes = frames * count * 4;
   if (decodedBytes > decodedByteLimit) throw new RangeError('Pilot decoded byte limit');
   const channels = Array.from({ length: count }, () => new Float32Array(frames));
-  for (let frame = 0; frame < frames; frame++) {
+  if (LITTLE_ENDIAN && (start & 1) === 0) {
+    // K31: one aligned little-endian view over the interleaved data chunk; no
+    // per-sample DataView call and no intermediate copy.
+    const samples = new Int16Array(bytes, start, frames * count);
     for (let channel = 0; channel < count; channel++) {
-      channels[channel]![frame] = view.getInt16(start + (frame * count + channel) * 2, true) / 32768;
+      const target = channels[channel]!;
+      for (let frame = 0, index = channel; frame < frames; frame++, index += count) {
+        target[frame] = samples[index]! / 32768;
+      }
+    }
+  } else {
+    for (let frame = 0; frame < frames; frame++) {
+      for (let channel = 0; channel < count; channel++) {
+        channels[channel]![frame] = view.getInt16(start + (frame * count + channel) * 2, true) / 32768;
+      }
     }
   }
-  return Object.freeze({ sampleRate: 48000, frames, channels: Object.freeze(channels),
-    durationMs: frames / 48, decodedBytes });
+  const slot: PilotPcmSlot = { channels: Object.freeze(channels), full: null, mono: null };
+  const pcm: PilotPcm = Object.freeze({
+    sampleRate: 48000 as const, frames,
+    get channels(): readonly Float32Array[] { return slot.channels; },
+    durationMs: frames / 48, decodedBytes,
+  });
+  SLOTS.set(pcm, slot);
+  return pcm;
 }
 
 /** Finite playback: the score deliberately returns to silence, never schedules
@@ -97,13 +160,7 @@ export function pilotPcmVoice(
     create: (context, reservation) => {
       const native = context as PcmContextLike;
       const channelCount = mono ? 1 : pcm.channels.length;
-      const buffer = native.createBuffer(channelCount, pcm.frames, pcm.sampleRate);
-      for (let channel = 0; channel < channelCount; channel++) {
-        const target = buffer.getChannelData(channel);
-        if (mono && pcm.channels.length === 2) {
-          for (let frame = 0; frame < pcm.frames; frame++) target[frame] = (pcm.channels[0]![frame]! + pcm.channels[1]![frame]!) / 2;
-        } else target.set(pcm.channels[channel]!);
-      }
+      const buffer = pilotPcmBuffer(native, pcm, channelCount);
       const source = native.createBufferSource();
       const gain = native.createGain();
       source.buffer = buffer;

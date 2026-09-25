@@ -1169,7 +1169,10 @@ describe('PWA production wiring', () => {
     const main = readFileSync(new URL('../apps/game/src/main.ts', import.meta.url), 'utf8');
     const config = readFileSync(new URL('../apps/game/vite.config.ts', import.meta.url), 'utf8');
     expect(config).toContain("import { celestialFrontierPwaPlugin } from './pwa-build.js';");
-    expect(config).toMatch(/plugins:\s*\[celestialFrontierPwaPlugin\(\),\s*kitRuntimeAssets\(\),\s*audioProductionAssets\(\)\]/);
+    // + the dev-preview HTML stamp (2026-09-24, Claude): inert unless tools/devpreview.mjs sets CF_DEV_PREVIEW_HTML; it stamps HTML BEFORE
+    // this plugin pins it (tests/dev-preview-html-plugin.test.ts; picker-smoke-08-stamped: 309/309 pins match)
+    expect(config).toMatch(/plugins:\s*\[celestialFrontierPwaPlugin\(\),\s*kitRuntimeAssets\(\),\s*audioProductionAssets\(\),\s*devPreviewHtmlPlugin\(\)\]/);
+    expect(config).toContain("import { devPreviewHtmlPlugin } from './dev-preview-html-plugin.js';");
     expect(main).toContain("type ReplacementReloadReason = 'training-restart' | 'training-complete' | 'training-recovery' | 'save-import' | 'storage-retry' | 'pwa-update';");
     expect(main).toContain('if (pwaUpdateControl) el.append(pwaUpdateControl.element);');
     expect(ordered(main, [
