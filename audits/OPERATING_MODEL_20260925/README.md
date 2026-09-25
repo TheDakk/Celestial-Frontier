@@ -18,13 +18,13 @@ time just going back and forth."*
 Both worktrees share one git config: signing uses `~/.local/bin/git-ssh-sign`, and `~/.ssh/config` sends every SSH connection to the
 1Password agent. When 1Password auto-locks, both lanes stop.
 
-**Push: use HTTPS via the GitHub CLI (already logged in, token in the macOS keychain).** One command, both lanes:
+**Push: DONE 2026-09-25 (Nick: yes).** `origin` is HTTPS via the GitHub CLI (already logged in, token in the macOS keychain); both lanes. The command was:
 ```sh
 cd /Users/nick/Projects/celestial-frontier-anthropic-mac && git remote set-url origin https://github.com/TheDakk/Celestial-Frontier.git && gh auth setup-git
 ```
 Revert with `git remote set-url origin git@github.com:TheDakk/Celestial-Frontier.git`.
 
-**Sign: one dedicated agent signing key in the macOS keychain (still SIGNED and Verified; 1Password keeps everything else).**
+**Sign: one dedicated agent signing key in the macOS keychain (Nick: yes; still SIGNED and Verified; 1Password keeps everything else).** Run once in Terminal: `bash audits/OPERATING_MODEL_20260925/setup-agent-signing.sh` (it adds a reboot-proof wrapper and proves a signed commit). The steps it performs:
 ```sh
 ssh-keygen -t ed25519 -C "celestial-frontier agents (signing)" -f ~/.ssh/cf_agents_signing        # set a passphrase
 ssh-add --apple-use-keychain ~/.ssh/cf_agents_signing                                              # the passphrase goes into the login keychain
