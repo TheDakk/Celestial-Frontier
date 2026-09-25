@@ -1,0 +1,23 @@
+{
+  "name": "Goose (waterfowl)",
+  "exemplar": "Goose",
+  "covers": [
+    "Goose",
+    "Duck",
+    "Eider Duck",
+    "Swan",
+    "Screamer",
+    "Loon",
+    "Grebe",
+    "Coot",
+    "Moorhen"
+  ],
+  "bodyPlan": "biped-bird",
+  "mustPaint": [
+    "heavy body on webbed feet set well back",
+    "medium-long upright neck, between duck and swan",
+    "flat rounded bill",
+    "plain grey-brown"
+  ],
+  "why": "9 misleading. Swan (longer neck), Loon/Grebe (dagger bill) and Coot/Moorhen (frontal shield) stay caveat. All of them lose the raptor bill and talons."
+}

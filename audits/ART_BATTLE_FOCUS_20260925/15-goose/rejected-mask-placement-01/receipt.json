@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen.imagegen",
+  "outputs": {
+    "striped": "016f6981-bec8-4257-8c33-9801ae385376",
+    "spotted": "a8525c8c-0840-4096-ad78-0b9cc8401f53"
+  },
+  "status": "REJECTED",
+  "finding": "Actual generated mask clusters around y860..970 overlap belly edge/legs rather than requested flank. Retain exact prompts/outputs; new prompt moves requested region upward. No mechanical translation."
+}

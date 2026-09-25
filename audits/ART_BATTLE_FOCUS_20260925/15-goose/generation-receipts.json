@@ -1,0 +1,26 @@
+{
+  "tool": "image_gen.imagegen",
+  "sourceHead": "47f05636473f1e1b5a0bc54db54cc809c30bd6e8",
+  "calls": [
+    {
+      "generation": 1,
+      "prompt": "prompt.txt",
+      "promptSha256": "bd8c372a78482e041d1727a627c8d3cdf847d64fe0e4432aaf6c8ed687531b04",
+      "retained": "master-generation-01.png",
+      "output": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-e9b2716f-eae4-422d-b066-db80c2dcb0e3.png",
+      "sha256": "e4e9bdb8c1d118e2ba8109ef0c9cde5df30cdad1f931f39409e8ce69a30f8101",
+      "assessment": "REJECTED: black neck and white cheek/belly Canada Goose markings violate plain base coat; framing too large",
+      "reference": "audits/MIDGAME_ART_DIRECTION_20260908/01-discovery-atlas.png"
+    },
+    {
+      "generation": 2,
+      "prompt": "prompt-correction-02.txt",
+      "promptSha256": "62a2c5132bbe638be3cacd43d50ae372bbc1c0fe611b2670658d88338b4e4e21",
+      "retained": "master.png",
+      "output": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-937acab4-be61-4c43-bc66-03daa566ab76.png",
+      "sha256": "0f3575a5fe537ced0a819a5bb181a1115914c3eef824bcad3440bf541e16cfd1",
+      "assessment": "Candidate: plain grey-brown corrected coat, orange bill/feet, both spread wings and padding; Nick review pending",
+      "reference": "master-generation-01.png"
+    }
+  ]
+}
