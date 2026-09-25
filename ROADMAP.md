@@ -17,49 +17,28 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — September 24, 2026 (evening) · CODEX'S ITEMS MERGED; EVERY CREATURE HAS A VOICE; THE PACKAGE'S WORKER INSTALLS
+## SESSION HANDOFF — September 25, 2026 · THE PLAYTEST BUILD IS LIVE ON THE DEV URL; WEEKLY CHARTERS ON THE GAME'S OWN CLOCK
 Self-contained: either lane can resume from this block alone. Older handoffs are archived verbatim at the top of `ROADMAP_ARCHIVE.md`.
 
-**Where the work stands.** Pushed through `1902329c`. Signed locally since: `c2409c93` (voices), `87f374cd` (picker status), `3e34873a`
-(phone-tier study). The **merge of Codex's `4b56ef82`** (Centipede crawl, 53 species routed, the five `fb1922a0` reds repaired) is resolved and
-STAGED, but 1Password dropped signing again. Run `scratchpad/commit-day3.sh` (session 1c642229) once it answers: it commits the merge, then
-this handoff, then pushes. After that, **the only red is I5** (5,058 pass / 2 expected; typecheck ×3; overridecheck 1014/1014 + controls).
-Codex runs I5 once, on that pushed head.
+**Where the work stands.** `anthropic/mac` is pushed through this handoff's commit. Signing uses the repo's keychain key (`git-ssh-sign-cf`,
+`~/.ssh/cf_agents_signing.pub`, Verified on GitHub), with no 1Password stops. `origin` is HTTPS via `gh`. The lanes talk through the mailboxes
+(`audits/MAILBOX/TO_CODEX.md` here, `TO_CLAUDE.md` in `openai/mac`), and the decisions queue is `audits/MAILBOX/DECISIONS.md` (D1 yes, D5 yes,
+D6 not yet, D8 default applied, D9 yes and done). **The only unit red is I5** (5,076 pass; typecheck ×3; overridecheck 1014/1014 + controls).
+Codex owns the v2 epoch (C1/C8).
 
-**Built today (items -77…-83 below).**
-- **The painted arena plays in a BUILT game with the service worker in control.** The builder writes `apps/game/battle2-assets.json`
-  (Codex's `cf-battle2-assets/v1` contract: every shipped arena file pinned by bytes and SHA-256). The worker caches each file on
-  first use. A reload with the arena blocked at the server stages from that cache with zero requests (`picker-smoke-06-sw`).
-- **The arena fits the 128 MiB pack.** The cap counts the lazy arena. The shell is ~47 MiB and the arena was 77.6 MiB, so ~125 of 128
-  MiB was used. Part bindings now ship gzip-compressed and the arena is 48.1 MiB, leaving **~33 MiB of headroom for new paintings**
-  (roughly 8–15 archetypes at today's per-archetype size).
-- **Nick's four battle2 decisions (2026-09-24, "I'll take your best recommendation"):**
-  (1) the guardian stands in the foreground (`GUARDIAN_STANDS.groundY` 0.95), so the Bear rests at 0.67 of the frame;
-  (2) painting order: the Python/Beetle mask sets first, then the ten no-rig-change archetypes (Wall Lizard, Cougar, Impala, Marmot,
-  Bass, Cattle, Tang, Wolf, Gull, River Otter), with Capuchin after its rig; new paintings must fit the pack headroom;
-  (3) portrait phone: a full-width 16:9 stage above the Chronicle log (already the study's layout, so no change);
-  (4) the stage paces the Chronicle log: each row appears at its turn's impact (`?battle2=1` with motion on; 12 s maximum per row;
-  Skip, hide, close and reduced motion unchanged).
-
-**Verified locally on the working tree.** Unit 5,041 pass / 2 expected / **6 red**: I5, plus **five of Codex's that first fail at its
-`fb1922a0`**, bisected in a scratch worktree (`95c97b08` clean):
-- `creature-rig-contact-rigid-refusal` ×2 (`creature-rig-contact.ts`: "Contact: cast@157.58 exceeds scale compression bound"; the refusal
-  no longer carries its cause);
-- `exceptional-crafting-evidence-contract` ×2 and `slicesmoke-sixth-red-contract` ×1 (its one-line `release-content.ts` addition: the
-  rendered release oracle reports `populated: false`).
-
-The freshwater-crab reach red is now green. Typecheck ×3 PASS; `overridecheck` 1014/1014 and `overridecontrol` PASS.
-
-**Signing (blocked again).** Run `scratchpad/commit-day2.sh` of session 1c642229 once 1Password answers. It commits the preview fix and this
-handoff, signed and verified G, then pushes `anthropic/mac`. Then rebuild the playtest package: it is the first whose worker can install, so the
-painted arena works offline in it. Codex's items 5 and 7 are staged unsigned in its lane, blocked by the same error.
+**Live now: https://dev-celestialfrontier.github.io serves `652790a4` (item -95).** The dev site was last updated 2026-08-16. It now carries
+the painted arena (`?battle2=1`), painted cards and stand-ins, every voice, the paced Chronicle, and Weekly Charters. It was published by the
+new LOCAL publisher `port/v2/tools/deploy-dev.mjs`, with no Actions and no wait for PR #43. Production is untouched.
 
 **Next, by owner.**
-- **Nick:** play the new package (item -85); keep 1Password approved for Codex's signing; after I5 lands, cycle the label on PR #43.
-- **Codex:** I5, once, on Claude's pushed head after the merge commit (the only red); the Centipede skin's phone-tier cost (item -88). Proposal (item 8): admit the
-  painter master by its pinned hash instead of shipping 13 MB of masters.
-- **Claude:** after signing: rebuild the playtest package on the pushed head and run the controlled-worker duel smoke on it; each new
-  painted archetype joins the card and arena the day it lands.
+- **Nick:** play the dev URL on the iPhone. That is H1, the device evidence D6 waits on (battle2 becomes the default only after it and the v2
+  certificate). Try `https://dev-celestialfrontier.github.io/?battle2=1` for the painted arena, and `&duel=1` for a real duel with the Chronicle.
+- **Codex (mailbox):** C8 (observe `paintedArt`, then calibrate/certify v2 once), C10 (the weekly release bullet + inventory 86→87), C11 (a
+  weekly conquest via Arc 6's settlement), C12 (the Centipede orientation kernel, ~2.4 ms/frame at 4×), and C4 (review Claude's pin
+  contract, item -96).
+- **Claude:** A2 achievement rewards, A3 audio close-out, A5 outcome tests; the proposals for N1, N3, N4 and N5; each new painting joins the
+  cards and arena the day it lands. Re-publish the dev site with `node tools/deploy-dev.mjs` (from `port/v2`, out of the sandbox, on a clean
+  signed head) whenever a batch changes what Nick plays.
 
 **Traps (obey them).**
 - A browser smoke must watch a bout to its END and assert zero page errors: a throw inside a ticker callback freezes the whole page
@@ -76,6 +55,23 @@ painted arena works offline in it. Codex's items 5 and 7 are staged unsigned in 
 - Run `npm run overridecontrol` and the whole gate list locally before any hosted attempt.
 
 ### What Claude owes next
+-96. **C4 answered: the build-generated master pin and its trust boundary (2026-09-25, `audits/C4_PIN_PROPOSAL_20260925/README.md`).** The pin table
+is compiled into the bundle (never fetched), and the builder emits a pin only after full byte admission of the retained master passes. Codex's
+overload checks the record, recipe, cutout hash, path, alpha, binding and atlas against it before decode. Masters stay in the package until
+Codex's negative controls are green.
+-95. **The dev URL is live on `652790a4` (2026-09-25; Nick: "D9 yes").** `port/v2/tools/deploy-dev.mjs` does the whole chain, stopping at the
+first failure:
+  1. a clean tree whose HEAD verifies G;
+  2. `devpreview.mjs --approved-publication-candidate` for the dev origin (the package must say publishable, committed, and this exact commit);
+  3. `--verify`, `devpreviewcheck`, and the controlled-worker real-duel `picker-smoke --sw-control --duel` (painted rigs, offline reuse,
+     cold control, zero page errors);
+  4. a fresh clone of `Dev-CelestialFrontier/dev-celestialfrontier.github.io`, its files replaced by the package, one signed commit, a push
+     to `main`;
+  5. a poll until the live `version.json` reports the exact commit.
+
+The target repo and origin are hard-coded and checked. Site commit `56215bc`; evidence `audits/DEV_PUBLISH/652790a4586c/` (report.json PASS,
+48 arena files served, 0 refused, 0 page errors; a mid-duel still). Traps: the packager re-checks the tree at the end, so write nothing
+into the worktree while it runs. `--skip-duel-smoke` exists for a docs-only republish.
 -94. **Weekly Charters, live on the expedition's own clock (2026-09-25; Nick: "moving the clock must not reset the charter… record the time… don't use V1").**
 `weekly-charters.ts`: a cycle is 4 h of F4 ACTIVE PLAY. That clock is persisted in the save and committed with every action; it accrues from
 `performance.now()` only while the game is visible and answerable, and the device clock never enters it. The save records the cycle the weekly

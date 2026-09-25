@@ -902,6 +902,14 @@ both jobs are hard parked. A future separately reviewed promotion must bind one 
 re-prove source/package/origin/manifest integrity, and use only the isolated target credential;
 standing proceed authority is not publication or Actions-spend authority.
 
+**Local dev publisher (Nick 2026-09-25, D9: "D9 yes"; matches code as of 2026-09-25).** `node tools/deploy-dev.mjs`, run from `port/v2`
+outside the macOS sandbox because it owns a browser, publishes to `https://dev-celestialfrontier.github.io` only, and uses no Actions. It
+refuses a dirty tree or a HEAD that does not verify G. It builds the approved publication candidate for the dev origin and requires
+`publishable:true` bound to that exact committed source. It then runs `--verify`, `devpreviewcheck`, and the controlled-worker real-duel
+picker smoke. It clones `Dev-CelestialFrontier/dev-celestialfrontier.github.io` over HTTPS, replaces the files with the package, makes one
+signed commit, pushes `main`, and polls until the live `version.json` reports the exact commit. The target repository and origin are hard-coded
+and asserted, so it cannot reach production. Evidence goes to `audits/DEV_PUBLISH/<shortsha>/`. The hosted publisher stays hard-parked.
+
 A published v2.0 site is still only a play surface. Human findings must bind the URL, full commit,
 `preview.json` content hash, device/browser lens, starting save, outcome and retest. Resolve the
 current branch tip, checks and hosted commit live; this reference does not freeze a “latest” run.

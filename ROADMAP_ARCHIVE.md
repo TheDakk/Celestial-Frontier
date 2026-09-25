@@ -1,3 +1,50 @@
+## Archived 2026-09-25 (Claude) — Claude's "Codex's items merged; every creature has a voice" handoff, superseded by the dev publish, verbatim
+
+### SESSION HANDOFF — September 24, 2026 (evening) · CODEX'S ITEMS MERGED; EVERY CREATURE HAS A VOICE; THE PACKAGE'S WORKER INSTALLS
+Self-contained: either lane can resume from this block alone. Older handoffs are archived verbatim at the top of `ROADMAP_ARCHIVE.md`.
+
+**Where the work stands.** Pushed through `1902329c`. Signed locally since: `c2409c93` (voices), `87f374cd` (picker status), `3e34873a`
+(phone-tier study). The **merge of Codex's `4b56ef82`** (Centipede crawl, 53 species routed, the five `fb1922a0` reds repaired) is resolved and
+STAGED, but 1Password dropped signing again. Run `scratchpad/commit-day3.sh` (session 1c642229) once it answers: it commits the merge, then
+this handoff, then pushes. After that, **the only red is I5** (5,058 pass / 2 expected; typecheck ×3; overridecheck 1014/1014 + controls).
+Codex runs I5 once, on that pushed head.
+
+**Built today (items -77…-83 below).**
+- **The painted arena plays in a BUILT game with the service worker in control.** The builder writes `apps/game/battle2-assets.json`
+  (Codex's `cf-battle2-assets/v1` contract: every shipped arena file pinned by bytes and SHA-256). The worker caches each file on
+  first use. A reload with the arena blocked at the server stages from that cache with zero requests (`picker-smoke-06-sw`).
+- **The arena fits the 128 MiB pack.** The cap counts the lazy arena. The shell is ~47 MiB and the arena was 77.6 MiB, so ~125 of 128
+  MiB was used. Part bindings now ship gzip-compressed and the arena is 48.1 MiB, leaving **~33 MiB of headroom for new paintings**
+  (roughly 8–15 archetypes at today's per-archetype size).
+- **Nick's four battle2 decisions (2026-09-24, "I'll take your best recommendation"):**
+  (1) the guardian stands in the foreground (`GUARDIAN_STANDS.groundY` 0.95), so the Bear rests at 0.67 of the frame;
+  (2) painting order: the Python/Beetle mask sets first, then the ten no-rig-change archetypes (Wall Lizard, Cougar, Impala, Marmot,
+  Bass, Cattle, Tang, Wolf, Gull, River Otter), with Capuchin after its rig; new paintings must fit the pack headroom;
+  (3) portrait phone: a full-width 16:9 stage above the Chronicle log (already the study's layout, so no change);
+  (4) the stage paces the Chronicle log: each row appears at its turn's impact (`?battle2=1` with motion on; 12 s maximum per row;
+  Skip, hide, close and reduced motion unchanged).
+
+**Verified locally on the working tree.** Unit 5,041 pass / 2 expected / **6 red**: I5, plus **five of Codex's that first fail at its
+`fb1922a0`**, bisected in a scratch worktree (`95c97b08` clean):
+- `creature-rig-contact-rigid-refusal` ×2 (`creature-rig-contact.ts`: "Contact: cast@157.58 exceeds scale compression bound"; the refusal
+  no longer carries its cause);
+- `exceptional-crafting-evidence-contract` ×2 and `slicesmoke-sixth-red-contract` ×1 (its one-line `release-content.ts` addition: the
+  rendered release oracle reports `populated: false`).
+
+The freshwater-crab reach red is now green. Typecheck ×3 PASS; `overridecheck` 1014/1014 and `overridecontrol` PASS.
+
+**Signing (blocked again).** Run `scratchpad/commit-day2.sh` of session 1c642229 once 1Password answers. It commits the preview fix and this
+handoff, signed and verified G, then pushes `anthropic/mac`. Then rebuild the playtest package: it is the first whose worker can install, so the
+painted arena works offline in it. Codex's items 5 and 7 are staged unsigned in its lane, blocked by the same error.
+
+**Next, by owner.**
+- **Nick:** play the new package (item -85); keep 1Password approved for Codex's signing; after I5 lands, cycle the label on PR #43.
+- **Codex:** I5, once, on Claude's pushed head after the merge commit (the only red); the Centipede skin's phone-tier cost (item -88). Proposal (item 8): admit the
+  painter master by its pinned hash instead of shipping 13 MB of masters.
+- **Claude:** after signing: rebuild the playtest package on the pushed head and run the controlled-worker duel smoke on it; each new
+  painted archetype joins the card and arena the day it lands.
+
+
 ## Archived 2026-09-24 (evening, Claude) — Codex's "three signed items" handoff, merged in at 4b56ef82, verbatim
 
 ## Live handoff — 2026-09-24 three signed items, await Claude integration for I5
