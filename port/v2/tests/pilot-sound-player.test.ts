@@ -3,7 +3,7 @@ import type { AudioVoiceRequest } from '@cf/audio';
 import type { TameGreetingAudioOwner, TameGreetingPlayResult } from '../apps/game/src/tame-greeting-audio.js';
 import { PILOT_CUES } from '../apps/game/src/pilot-assets.js';
 import { PILOT_PCM_FILE_LIMIT } from '../apps/game/src/pilot-pcm.js';
-import { PilotSoundPlayer, PILOT_PCM_CACHE_LIMIT } from '../apps/game/src/pilot-sound-player.js';
+import { PilotSoundPlayer, PILOT_PCM_CACHE_LIMIT, assertPilotReadNotAborted, readPilotBytes } from '../apps/game/src/pilot-sound-player.js';
 
 function wav(durationMs = 280, channels = 1): ArrayBuffer {
   const length = durationMs * 48 * channels * 2;
@@ -155,5 +155,44 @@ describe('pilot load and playback generation cancellation', () => {
     await expect(pending).resolves.toBe(false); expect(h.play).not.toHaveBeenCalled();
     expect(h.player.diagnostics()).toEqual({ entries: 0, decodedBytes: 0, pending: 0 });
     await expect(h.player.play(navigation, options)).resolves.toBe(false);
+  });
+});
+
+describe('K29: cancellation on signals without AbortSignal.throwIfAborted (Safari before 16.4)', () => {
+  type LegacySignal = { aborted: boolean; reason: unknown };
+  const legacySignal = (aborted = false, reason: unknown = undefined): LegacySignal => ({ aborted, reason });
+
+  it('reads a complete body on a legacy signal and names the reason once aborted', async () => {
+    const signal = legacySignal();
+    expect('throwIfAborted' in signal).toBe(false);
+    const bytes = await readPilotBytes(new Response(wav()), signal);
+    expect(new Uint8Array(bytes)).toEqual(new Uint8Array(wav()));
+    const cancelled = new Error('Listen stopped');
+    await expect(readPilotBytes(new Response(wav()), legacySignal(true, cancelled)))
+      .rejects.toThrow('Pilot audio read cancelled before a chunk read: Listen stopped');
+    await expect(readPilotBytes(new Response(wav()), legacySignal(true, 'route left')))
+      .rejects.toThrow('Pilot audio read cancelled before a chunk read: route left');
+    await expect(readPilotBytes(new Response(wav()), legacySignal(true)))
+      .rejects.toThrow('Pilot audio read cancelled before a chunk read: no reason given');
+  });
+
+  it('stops after the chunk during which the signal aborted, cancels the reader, and is never a TypeError', async () => {
+    const signal = legacySignal();
+    const cancel = vi.fn();
+    const body = new ReadableStream<Uint8Array>({
+      pull(controller) { controller.enqueue(new Uint8Array([1, 2, 3])); signal.aborted = true; signal.reason = 'stopped mid-stream'; },
+      cancel,
+    });
+    const failure = await readPilotBytes(new Response(body), signal).catch((error: unknown) => error);
+    expect(failure).toBeInstanceOf(Error);
+    expect(failure).not.toBeInstanceOf(TypeError);
+    expect((failure as Error).message).toBe('Pilot audio read cancelled after a chunk read: stopped mid-stream');
+    expect(cancel).toHaveBeenCalledOnce();
+    // Negative control: the pre-fix call on this signal shape is the TypeError older iOS produced.
+    expect(() => (signal as unknown as AbortSignal).throwIfAborted()).toThrow(TypeError);
+    // A real, current AbortSignal reports through the same path.
+    const controller = new AbortController(); controller.abort(new Error('native abort'));
+    expect(() => assertPilotReadNotAborted(controller.signal, 'here')).toThrow('Pilot audio read cancelled here: native abort');
+    expect(() => assertPilotReadNotAborted(new AbortController().signal, 'here')).not.toThrow();
   });
 });

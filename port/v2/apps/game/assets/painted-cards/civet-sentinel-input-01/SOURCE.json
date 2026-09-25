@@ -1,0 +1,7 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Civet",
+ "fitDir": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "d092bfccbce7913467ff6cb926d299ca8cdc197dc0960b3aa4db922317f32a7f"
+}

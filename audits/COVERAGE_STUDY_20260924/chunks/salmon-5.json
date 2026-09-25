@@ -1,0 +1,372 @@
+{
+ "id": "salmon-5",
+ "standIn": "Salmon",
+ "template": "fish",
+ "accentGroups": [
+  "fins"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/salmon/card/master-512.png",
+  "joints": [
+   "pectoralNear",
+   "pectoralFar",
+   "dorsal",
+   "jaw",
+   "head",
+   "caudal",
+   "spine5",
+   "spine4",
+   "spine3",
+   "spine2",
+   "spine1",
+   "spine0",
+   "root"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Tiger Shark",
+   "group": "predatory-shark",
+   "posture": "swimming",
+   "aspect": 4.2,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "blunt square-fronted snout",
+    "dark vertical tiger stripes on the flank",
+    "long trailing upper tail lobe"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Mako Shark",
+   "group": "predatory-shark",
+   "posture": "swimming",
+   "aspect": 4.5,
+   "headFrac": 0.22,
+   "eyes": "prominent",
+   "mustRead": [
+    "sharply pointed conical snout",
+    "nearly symmetric crescent tail with a keeled stalk",
+    "large black eye and metallic indigo-blue back"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Whale Shark",
+   "group": "filter-shark",
+   "posture": "swimming",
+   "aspect": 4.5,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "huge flat mouth spanning the very front of a boxy flattened head",
+    "checkerboard of white spots and lines",
+    "prominent ridges running along the flanks"
+   ],
+   "note": "mouth is terminal at the front of the head, not slung underneath like other sharks; tiny eyes sit at the corners of the head"
+  },
+  {
+   "name": "Basking Shark",
+   "group": "filter-shark",
+   "posture": "swimming",
+   "aspect": 5,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "cavernous round gaping mouth held open while feeding",
+    "gill slits so long they nearly encircle the head",
+    "pointed conical snout and a large drooping dorsal fin"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Marlin",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "long round spear bill",
+    "rigid pointed sickle dorsal fin at the front",
+    "stiff keeled crescent tail and cobalt vertical bars"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Sailfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.5,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "enormous sail dorsal fin taller than the body is deep, running most of the back",
+    "long thin spear bill",
+    "thread-like pelvic fins"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Swordfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.5,
+   "headFrac": 0.35,
+   "eyes": "prominent",
+   "mustRead": [
+    "flat broad sword nearly a third of the total length",
+    "tall stiff crescent dorsal fin",
+    "no pelvic fins and a smooth scaleless body"
+   ],
+   "note": "the bill is flat and blade-like, not round like a marlin's spear"
+  },
+  {
+   "name": "Mahi-Mahi",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.4,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "blunt vertical forehead on males",
+    "single dorsal fin running from just behind the eye to the tail",
+    "deeply forked tail on a body tapering hard to the rear"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Wahoo",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 6.5,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "very elongate body with blue vertical bars",
+    "long beak-like pointed jaws",
+    "row of finlets to a stiff forked tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Sardine",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 4.5,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "mirror-silver flank under a dark blue back",
+    "single small dorsal fin at mid-back",
+    "deeply forked tail and large loose scales"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Anchovy",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 5.5,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "pointed snout overhanging a huge underslung mouth reaching past the eye",
+    "bright silver lateral stripe",
+    "large eye set far forward"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Flying Fish",
+   "group": "fish",
+   "posture": "flying",
+   "aspect": 2.6,
+   "headFrac": 0.22,
+   "eyes": "prominent",
+   "mustRead": [
+    "huge wing-like pectoral fins spread out from the body",
+    "unevenly forked tail with a much longer lower lobe",
+    "blunt-nosed torpedo body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Anglerfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.4,
+   "headFrac": 0.45,
+   "eyes": "small",
+   "mustRead": [
+    "glowing lure on a stalk arching over the mouth",
+    "enormous upturned jaw of long needle fangs",
+    "round globular soft body with tiny fins"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Lanternfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3.5,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "rows of light-producing photophore dots along the belly and flank",
+    "oversized eyes on a blunt short snout",
+    "adipose fin before a forked tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Viperfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 6,
+   "headFrac": 0.2,
+   "eyes": "prominent",
+   "mustRead": [
+    "fangs so long they close outside the mouth, past the eyes",
+    "first dorsal ray drawn out into a long lure whip over the head",
+    "photophore rows on a slim dark body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Fangtooth",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.8,
+   "headFrac": 0.4,
+   "eyes": "small",
+   "mustRead": [
+    "absurdly oversized lower fangs in a huge blunt head",
+    "deep pitted grooves and ridges on the skull",
+    "short stocky dark-brown body with small eyes"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Dragonfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 7,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "long glowing barbel dangling from the chin",
+    "mouth of transparent needle fangs",
+    "eel-like black body with photophore rows"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Oarfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 18,
+   "headFrac": 0.07,
+   "eyes": "prominent",
+   "mustRead": [
+    "ribbon-flat silver body many times longer than it is deep",
+    "crimson crest of elongated dorsal rays rising over the head",
+    "long trailing oar-like pelvic streamers and no tail fin"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Barreleye",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 1.8,
+   "headFrac": 0.45,
+   "eyes": "prominent",
+   "mustRead": [
+    "transparent fluid-filled dome over the top of the head",
+    "tubular green eyes inside the dome pointing upward",
+    "two dark scent pits at the front that look like eyes but are not"
+   ],
+   "note": "the two spots on the front of the face are nostrils - the real eyes are the green barrels inside the clear dome"
+  },
+  {
+   "name": "Blobfish",
+   "group": "fish",
+   "posture": "sprawling",
+   "aspect": 1.6,
+   "headFrac": 0.4,
+   "eyes": "small",
+   "mustRead": [
+    "slumped gelatinous face with a bulbous drooping nose",
+    "downturned frowning mouth",
+    "tadpole body with no scales and flimsy fins"
+   ],
+   "note": "the melted look is a decompression artifact; at depth it is a normal bulbous-headed tadpole-shaped fish"
+  },
+  {
+   "name": "Gulper Eel",
+   "group": "eel",
+   "posture": "swimming",
+   "aspect": 7,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "enormous loose pelican pouch mouth far bigger than the body",
+    "whip-thin tail tapering to a luminous tip",
+    "pinhead eyes right at the tip of the snout"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tripod Fish",
+   "group": "fish",
+   "posture": "sprawling",
+   "aspect": 1.1,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "three long stiff stilt fin rays holding the body up off the seabed",
+    "long feeler pectoral fins held forward like antennae",
+    "slim tapering body with tiny useless eyes"
+   ],
+   "note": "the stilts make it much taller than a fish silhouette suggests - it stands, it does not swim"
+  },
+  {
+   "name": "Snailfish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 3,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "translucent scaleless tadpole body",
+    "sucker disc on the belly",
+    "fins merging into a tapering pointed tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Deep-Sea Fish",
+   "group": "fish",
+   "posture": "swimming",
+   "aspect": 2.2,
+   "headFrac": 0.35,
+   "eyes": "prominent",
+   "mustRead": [
+    "oversized jaw crowded with needle fangs",
+    "large light-gathering eyes",
+    "specks of photophores on a black soft body"
+   ],
+   "note": "generic name - drawn as a representative bathypelagic predator"
+  }
+ ]
+}

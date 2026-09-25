@@ -1,0 +1,262 @@
+{
+ "id": "beetle-2",
+ "standIn": "Beetle",
+ "template": "insect",
+ "accentGroups": [
+  "wings",
+  "antennae"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/beetle/card/master-512.png",
+  "joints": [
+   "legHindNearFoot",
+   "legMidNearFoot",
+   "legFrontNearFoot",
+   "legHindNearKnee",
+   "legMidNearKnee",
+   "legFrontNearKnee",
+   "legHindFarFoot",
+   "legMidFarFoot",
+   "legFrontFarFoot",
+   "legFrontFarKnee",
+   "legMidFarKnee",
+   "legHindFarKnee",
+   "antennaFar",
+   "antennaNear",
+   "mandible",
+   "head",
+   "thorax",
+   "wingNear",
+   "wingFar",
+   "abdomen",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Diving Beetle",
+   "group": "mandibulate-insect",
+   "posture": "swimming",
+   "aspect": 1.7,
+   "headFrac": 0.15,
+   "eyes": "normal",
+   "mustRead": [
+    "smooth domed oval shell with a pale yellow rim",
+    "hair-fringed oar-like hind legs",
+    "silver air bubble held under the wing cases"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Giant Water Bug",
+   "group": "aquatic-insect",
+   "posture": "crawling",
+   "aspect": 1.8,
+   "headFrac": 0.12,
+   "eyes": "prominent",
+   "mustRead": [
+    "flat oval brown leaf-shaped body",
+    "raptorial hooked grasping front legs",
+    "short piercing beak tucked under the head"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cave Cricket",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 1.4,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "strongly humped arched back",
+    "whip antennae far longer than the body",
+    "hugely long folded hind legs"
+   ],
+   "note": "Wingless - do not give it the folded wing-covers of a field cricket."
+  },
+  {
+   "name": "Cockroach",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 2.5,
+   "headFrac": 0.14,
+   "eyes": "normal",
+   "mustRead": [
+    "flat glossy oval wing-covers",
+    "shield-shaped pronotum hiding the head",
+    "long backswept threadlike antennae"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Moth",
+   "group": "soft-mouth-insect",
+   "posture": "flying",
+   "aspect": 1.5,
+   "headFrac": 0.2,
+   "eyes": "prominent",
+   "mustRead": [
+    "feathery comb-like antennae",
+    "thick furry body",
+    "broad dusty wings held roof-like over the back"
+   ],
+   "note": "Generic - interpreted as a representative large-bodied nocturnal moth. Antennae are feathered or thread-like, never clubbed like a butterfly's."
+  },
+  {
+   "name": "Wasp",
+   "group": "mandibulate-insect",
+   "posture": "flying",
+   "aspect": 3,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "pinched thread-thin waist",
+    "yellow-and-black banded pointed abdomen",
+    "narrow smooth hairless wings"
+   ],
+   "note": "Sleek and shiny - do not draw the fat furry body of a bee."
+  },
+  {
+   "name": "Aphid",
+   "group": "soft-mouth-insect",
+   "posture": "crawling",
+   "aspect": 1.5,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "soft pear-shaped bulbous body",
+    "pair of tube-like cornicles on the rear",
+    "needle beak stuck into a stem"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Fly",
+   "group": "soft-mouth-insect",
+   "posture": "flying",
+   "aspect": 2.2,
+   "headFrac": 0.27,
+   "eyes": "prominent",
+   "mustRead": [
+    "huge red compound eyes filling the head",
+    "only two clear wings plus knob halteres",
+    "bristly grey-striped thorax"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Carrion Beetle",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 2,
+   "headFrac": 0.15,
+   "eyes": "small",
+   "mustRead": [
+    "flat oval elytra blotched black and orange",
+    "clubbed knobbed antennae",
+    "abdomen tip left exposed past the short wing-covers"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cold-Adapted Insect",
+   "group": "soft-mouth-insect",
+   "posture": "crawling",
+   "aspect": 2,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "stout dark heat-absorbing body",
+    "dense insulating hair over thorax",
+    "reduced or absent wings"
+   ],
+   "note": "Generic - interpreted as a representative polar/alpine insect (snow fly or Antarctic midge type): small, dark, hairy and flightless."
+  },
+  {
+   "name": "Stick Insect",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 5,
+   "headFrac": 0.08,
+   "eyes": "small",
+   "mustRead": [
+    "twig-thin cylindrical elongated body",
+    "spindly legs held stretched in line with the body",
+    "long thin straight antennae"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Firefly",
+   "group": "mandibulate-insect",
+   "posture": "crawling",
+   "aspect": 2.6,
+   "headFrac": 0.12,
+   "eyes": "prominent",
+   "mustRead": [
+    "glowing pale yellow-green lantern at the abdomen tip",
+    "soft leathery elytra with the head hidden under a shield",
+    "thread-like antennae"
+   ],
+   "note": "A beetle, not a fly - it has hard wing-covers and only glows from the underside of the rear segments."
+  },
+  {
+   "name": "Springtail",
+   "group": "springtail",
+   "posture": "crawling",
+   "aspect": 2,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "stubby soft six-legged body",
+    "forked jumping furcula folded under the abdomen",
+    "short beaded antennae"
+   ],
+   "note": "Not an insect proper - wingless with only six abdominal segments and a spring-loaded tail latch."
+  },
+  {
+   "name": "Dobsonfly",
+   "group": "mandibulate-insect",
+   "posture": "flying",
+   "aspect": 2.8,
+   "headFrac": 0.15,
+   "eyes": "normal",
+   "mustRead": [
+    "huge crossed sickle mandibles in the male",
+    "long smoky net-veined wings folded well past the abdomen",
+    "soft elongated flabby body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Scorpionfly",
+   "group": "soft-mouth-insect",
+   "posture": "flying",
+   "aspect": 2.6,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "long downward beak-like snout with jaws at the tip",
+    "bulbous upcurled scorpion-like tail tip in the male",
+    "narrow wings blotched with black"
+   ],
+   "note": "The upturned tail is harmless male genitalia, not a sting."
+  },
+  {
+   "name": "Thrips",
+   "group": "soft-mouth-insect",
+   "posture": "crawling",
+   "aspect": 3.5,
+   "headFrac": 0.2,
+   "eyes": "small",
+   "mustRead": [
+    "slender cigar-shaped body",
+    "narrow strap wings fringed with long hairs",
+    "asymmetrical cone-shaped rasping mouth"
+   ],
+   "note": ""
+  }
+ ]
+}

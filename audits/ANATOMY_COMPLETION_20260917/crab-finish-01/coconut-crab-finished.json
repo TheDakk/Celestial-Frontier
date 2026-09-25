@@ -1,0 +1,29 @@
+{
+  "schema": "cf.creature-finished-original.v1",
+  "creatureId": "coconut-crab",
+  "recordRecipeHash": "e73140997301d696a49373f0f5b2525468bb5d0abe337be566fb04e2e84a7e04",
+  "cutoutAssetHash": "a0f681a8e44f374407424e5e60b2e5deffb8a23162cfefe3ace96b8cfb4d4832",
+  "finishedSha256": "d3349849392af009de26ebd7c549ecb54286b13c1ddc258a2c33138ffd01c06b",
+  "seed": 4281151498,
+  "finisherStrength": 0.35,
+  "finisherSteps": 1,
+  "interiorErosionPixels": 4,
+  "backgroundGrey": 128,
+  "promptSha256": "c3faac131a8e2fb8f25cffa860731621fac4f1d035b66ccb98fbbbb8198f1a86",
+  "model": {
+    "modelId": "cgb/flux2-klein-4b-onnx-webgpu",
+    "revision": "3bffc0efef1d9f84727036cdbc44df3b6ab51131",
+    "manifestSha256": "af5704496359448a4cea933cc57c01e9fe08c405b987dc17ffa32b256c1c4aef"
+  },
+  "kitSha256": "c5eff9488753ffadbacc45a23c0ffb31d1cc3c251ee28b80e23ce9b9510f871c",
+  "triptych": null,
+  "head": "8b901e6c8a94ed5b45b62f341e08200fefeb37f7",
+  "dirtyDiagnostic": false,
+  "conservation": {
+    "alpha": "PASS",
+    "counts": "PASS",
+    "gradient": "PASS",
+    "gradientRatio": 0.958773740703484
+  },
+  "qualityAccepted": false
+}

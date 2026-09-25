@@ -1,0 +1,1 @@
+{"status":"DIAGNOSTIC_PASS","refusals":{"left":0,"right":0},"attacks":{"left":"constrict (seg2)","right":"bite (cheliceraNear)"},"capture":{"frames":602,"cpuP95Ms":1.4000000953674316,"frameDeltaP95Ms":16.799999999999272}}

@@ -1,0 +1,382 @@
+{
+ "id": "civet-7",
+ "standIn": "Civet",
+ "template": "quadruped",
+ "accentGroups": [
+  "ears",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/civet-sentinel-input-01/card/master-512.png",
+  "joints": [
+   "earFarTip",
+   "earNearTip",
+   "jaw",
+   "head",
+   "foreNearPaw",
+   "foreNearAnkle",
+   "foreNearKnee",
+   "foreFarPaw",
+   "foreFarAnkle",
+   "foreFarKnee",
+   "hindNearPaw",
+   "hindNearAnkle",
+   "hindNearKnee",
+   "hindFarPaw",
+   "hindFarAnkle",
+   "hindFarKnee",
+   "tail3",
+   "tail2",
+   "tail1",
+   "neck",
+   "chest",
+   "spine"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Gerbil",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.1,
+   "headFrac": 0.29,
+   "eyes": "prominent",
+   "mustRead": [
+    "furred tail as long as the body with a dark tuft at the tip",
+    "elongated hind feet",
+    "large dark eyes on a pointed face"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Wild Sheep",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "massive spiralling horns curling beside the head",
+    "short coarse hair coat, not woolly fleece",
+    "muscular blocky body on sturdy legs"
+   ],
+   "note": "Read as a representative argali/bighorn type. Wild sheep are hair-coated and athletic, not fluffy like a domestic sheep."
+  },
+  {
+   "name": "Hyrax",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "tailless rounded guinea-pig-like body",
+    "short blunt muzzle with long whiskers",
+    "small rounded ears and stubby legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Bactrian Camel",
+   "group": "hoofed-unhorned",
+   "posture": "quadruped",
+   "aspect": 1.4,
+   "headFrac": 0.24,
+   "eyes": "prominent",
+   "mustRead": [
+    "two separate humps",
+    "shaggy hanging hair on the neck, chest and hump crowns",
+    "long curved neck and long legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Wildcat",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.24,
+   "eyes": "prominent",
+   "mustRead": [
+    "thick blunt-ended tail with dark rings and a black tip",
+    "broad head with a striped tabby coat",
+    "sturdy build heavier than a house cat"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Polar Bear",
+   "group": "bear",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.21,
+   "eyes": "small",
+   "mustRead": [
+    "long neck with a small narrow Roman-nosed head",
+    "huge furred paws",
+    "sloping shoulders on a long body"
+   ],
+   "note": "Head is smaller and the neck far longer than on a brown bear, and there is no shoulder hump."
+  },
+  {
+   "name": "Musk Ox",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "curtain of hair hanging almost to the hooves",
+    "horns meeting in a helmet-like boss across the forehead then hooking down and out",
+    "humped shoulders with the head carried low"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Walrus",
+   "group": "pinniped",
+   "posture": "sprawling",
+   "aspect": 2.2,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "pair of long downward tusks",
+    "dense bristle moustache on a squared muzzle",
+    "vast wrinkled blubbery body on short flippers"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Seal",
+   "group": "pinniped",
+   "posture": "sprawling",
+   "aspect": 3,
+   "headFrac": 0.18,
+   "eyes": "prominent",
+   "mustRead": [
+    "smooth torpedo body with no external ear flaps",
+    "hind flippers trailing straight back, unable to fold under the body",
+    "round dog-like head with large dark eyes and whiskers"
+   ],
+   "note": "Generic name read as a representative true seal (harbour seal). It humps along on its belly; drawing it propped up on rotated hind flippers makes it a sea lion."
+  },
+  {
+   "name": "Fur Seal",
+   "group": "pinniped",
+   "posture": "quadruped",
+   "aspect": 2.2,
+   "headFrac": 0.18,
+   "eyes": "prominent",
+   "mustRead": [
+    "small external ear flaps",
+    "very long fore-flippers propping the chest up",
+    "dog-like whiskered muzzle"
+   ],
+   "note": "Unlike a true seal it walks on all fours with hind flippers rotated forward."
+  },
+  {
+   "name": "Bear",
+   "group": "bear",
+   "posture": "quadruped",
+   "aspect": 1.8,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "muscular shoulder hump over the forelegs",
+    "small rounded ears on a broad dished head",
+    "flat-footed plantigrade paws and a stub tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Olm",
+   "group": "salamander",
+   "posture": "swimming",
+   "aspect": 8,
+   "headFrac": 0.12,
+   "eyes": "hidden",
+   "mustRead": [
+    "pale pink translucent eel-like body",
+    "bushy red external gills behind the head",
+    "tiny spindly legs with three toes"
+   ],
+   "note": "Eyes are skinned over and invisible; the limbs are vestigially thin, not lizard-like."
+  },
+  {
+   "name": "Wild Pig",
+   "group": "suid",
+   "posture": "quadruped",
+   "aspect": 1.8,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "long wedge snout ending in a flat disc nose",
+    "high shoulder hump with a bristly crest mane",
+    "short upward-curving tusks"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Gharial",
+   "group": "crocodilian",
+   "posture": "sprawling",
+   "aspect": 5.5,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "extremely long needle-thin snout studded with interlocking teeth",
+    "bulbous pot knob on the snout tip of males",
+    "tall laterally flattened paddle tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Giant Otter",
+   "group": "aquatic-pawed-mammal",
+   "posture": "quadruped",
+   "aspect": 3,
+   "headFrac": 0.18,
+   "eyes": "prominent",
+   "mustRead": [
+    "broad flattened paddle-like tail",
+    "cream throat bib patch",
+    "flat whiskered head with short round ears"
+   ],
+   "note": "Its tail is wide and flattened like a rudder, not round and tapering like a river otter's."
+  },
+  {
+   "name": "Water Vole",
+   "group": "aquatic-pawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.2,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "blunt rounded muzzle with a chubby face",
+    "small ears almost buried in fur",
+    "short furred tail about half the body length"
+   ],
+   "note": "Not a rat - blunt face, tiny hidden ears, and a furry rather than scaly tail."
+  },
+  {
+   "name": "Sea Turtle",
+   "group": "sea-turtle",
+   "posture": "swimming",
+   "aspect": 1.6,
+   "headFrac": 0.18,
+   "eyes": "normal",
+   "mustRead": [
+    "flattened teardrop shell",
+    "long wing-like front flippers",
+    "blunt beaked head that cannot retract"
+   ],
+   "note": "Unlike a land tortoise the shell is low and streamlined and the head and limbs never withdraw."
+  },
+  {
+   "name": "Sea Lion",
+   "group": "pinniped",
+   "posture": "quadruped",
+   "aspect": 2.4,
+   "headFrac": 0.18,
+   "eyes": "prominent",
+   "mustRead": [
+    "small external ear flaps",
+    "long fore-flippers lifting the chest clear of the ground",
+    "blunt dog-like whiskered muzzle"
+   ],
+   "note": "Walks on all fours with hind flippers rotated forward - a true seal cannot, and has no ear flaps."
+  },
+  {
+   "name": "Coastal Lizard",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 3.5,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "long tapering tail longer than the body",
+    "sprawling bent-elbow limbs with splayed clawed toes",
+    "scaly wedge head with a visible ear opening"
+   ],
+   "note": "Generic name - interpreted as a rock/side-blotched lizard type."
+  },
+  {
+   "name": "Sea Otter",
+   "group": "aquatic-pawed-mammal",
+   "posture": "swimming",
+   "aspect": 2.6,
+   "headFrac": 0.2,
+   "eyes": "prominent",
+   "mustRead": [
+    "floats belly-up on its back, often with a rock on the chest",
+    "blunt round face packed with pale whiskers",
+    "webbed flipper-like hind feet"
+   ],
+   "note": "Much bulkier and blunter-faced than a river otter, and habitually drawn on its back rather than running."
+  },
+  {
+   "name": "Marsh Rodent",
+   "group": "aquatic-pawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.4,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "blunt rounded head with large orange incisors",
+    "long scaly rope-like tail",
+    "partly webbed hind feet"
+   ],
+   "note": "Generic name - interpreted as a muskrat/coypu type semi-aquatic rodent."
+  },
+  {
+   "name": "Rat",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 4.4,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "long naked scaly tail about as long as the body",
+    "pointed twitching snout with long whiskers",
+    "rounded ears and hunched arched back"
+   ],
+   "note": "aspect includes the tail; body alone is about 2.6 wide to tall"
+  },
+  {
+   "name": "Cat",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 2.2,
+   "headFrac": 0.22,
+   "eyes": "prominent",
+   "mustRead": [
+    "triangular upright ears on a round short-muzzled head",
+    "long expressive tail",
+    "vertical slit pupils and long whiskers"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Iguana",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 4.5,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "row of spiny crest scales from the nape down the back",
+    "loose dewlap flap under the chin",
+    "banded tail far longer than the body"
+   ],
+   "note": "aspect includes the tail, which is roughly two-thirds of the total length"
+  }
+ ]
+}

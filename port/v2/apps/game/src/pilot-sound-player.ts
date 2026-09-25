@@ -5,7 +5,20 @@ import { PILOT_CUES } from './pilot-assets.js';
 /** Two 24s stereo cues plus the six authored mono cues at 48kHz Float32. */
 export const PILOT_PCM_CACHE_LIMIT = 19_503_360;
 
-async function readPilotBytes(response: Response, signal: AbortSignal): Promise<ArrayBuffer> {
+/** K29: `AbortSignal.throwIfAborted` is Safari 16.4+. Older iOS threw a
+ * TypeError here that the player reported as a generic unavailable cue. An
+ * explicit `aborted` check carries the cancellation reason instead. */
+export function assertPilotReadNotAborted(signal: Pick<AbortSignal, 'aborted' | 'reason'>, phase: string): void {
+  if (!signal.aborted) return;
+  const reason = signal.reason;
+  const detail = reason instanceof Error ? reason.message
+    : typeof reason === 'string' && reason.length > 0 ? reason : 'no reason given';
+  throw new Error(`Pilot audio read cancelled ${phase}: ${detail.slice(0, 128)}`);
+}
+
+export async function readPilotBytes(
+  response: Response, signal: Pick<AbortSignal, 'aborted' | 'reason'>,
+): Promise<ArrayBuffer> {
   const declared = response.headers.get('content-length');
   if (declared !== null && (!/^\d+$/u.test(declared) || Number(declared) > PILOT_PCM_FILE_LIMIT)) {
     void response.body?.cancel().catch(() => {});
@@ -18,9 +31,9 @@ async function readPilotBytes(response: Response, signal: AbortSignal): Promise<
   let complete = false;
   try {
     for (;;) {
-      signal.throwIfAborted();
+      assertPilotReadNotAborted(signal, 'before a chunk read');
       const next = await reader.read();
-      signal.throwIfAborted();
+      assertPilotReadNotAborted(signal, 'after a chunk read');
       if (next.done) { complete = true; break; }
       size += next.value.byteLength;
       if (size > PILOT_PCM_FILE_LIMIT) throw new RangeError('Pilot PCM byte limit');

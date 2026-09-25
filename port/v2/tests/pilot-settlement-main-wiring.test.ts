@@ -47,6 +47,10 @@ function action(completed = false) {
     lastStarterCharterAcceptOutcome: null, lastStarterCharterAcceptStatus: null,
     openPanelId: () => 'ch', fillCharters, toast,
     projectStarterCharterBoardV1: () => projection, operationForStarterCharterAcceptV1: () => 'accept',
+    // the weekly branch of the shared accept path (2026-09-25); a starter id never takes it
+    isWeeklyCharterIdV1: (candidate: string) => candidate.startsWith('wk-'), liveActivePlayMs: () => null,
+    projectWeeklyCharterBoardV1: () => { throw new Error('a starter accept never projects the weekly board'); },
+    operationForWeeklyCharterAcceptV1: () => { throw new Error('a starter accept never names a weekly operation'); }, weeklyCharterCycleV1: () => 0,
     productActionCoordinator: { tryClaim: () => ({ barrier, operation: 'accept', settle }) },
     arc2LootState: {}, inventoryPanelController: { setState: vi.fn() }, productActionInFlight: false,
     smokeProductActionHold: { holdIfArmed: vi.fn(async () => undefined) }, settleF4Heartbeat: vi.fn(async () => undefined),

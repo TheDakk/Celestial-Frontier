@@ -1,0 +1,4166 @@
+{
+  "sources": [
+    {
+      "path": "port/v2/tools/battle2-proof/entry.mjs",
+      "bytes": 12723,
+      "sha256": "17cc4200196c7486ae216c5c52f98218e61a7e77ea1df519c3407d608033cc37"
+    },
+    {
+      "path": "port/v2/tools/battle2-proof/index.html",
+      "bytes": 472,
+      "sha256": "a7fbec2bc4222c5b13f772264c6792832292eab626bae445441900e1b2a68dac"
+    },
+    {
+      "path": "port/v2/tools/battle2-proof/build.mjs",
+      "bytes": 2696,
+      "sha256": "669adad2fb175a4aeb7e57a4acd166dfd954fe87ee6e4cee16bcf50448cc0650"
+    },
+    {
+      "path": "port/v2/tools/battle2-proof/runner.mjs",
+      "bytes": 7867,
+      "sha256": "fc6b1217477e5c82f1470f89def5ea6bf5536eb5ca9d95b466059f0b65376379"
+    },
+    {
+      "path": "port/v2/tools/quadruped-proof/capture-contract.mjs",
+      "bytes": 878,
+      "sha256": "18a31d03cd09992d13ccf9bb00b5c901684213a3cea676099d33fa6effa44e1d"
+    },
+    {
+      "path": "port/v2/apps/game/src/worldlife/pixi-adapter.ts",
+      "bytes": 6869,
+      "sha256": "2b1211ae895c2b5df1952e194d4e2b0c54111ba4dd509c0d631e14bf661f0703"
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/anchors.ts",
+      "bytes": 10684,
+      "sha256": "3f26b0c6c40f4b210080e18d347d0ede86df2b3f4f018eb70cb9d344ef870870"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/body-card.ts",
+      "bytes": 17472,
+      "sha256": "ad6070db8fda3a89d95be0ea21b1cbd735e63fdc85c10ed3697cc981f38abc2b"
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/particle-texture.ts",
+      "bytes": 1591,
+      "sha256": "bff16a74484673501654a51cba1e39f50162d42d1440348999ce9599c952074e"
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/pixi-adapter.ts",
+      "bytes": 9412,
+      "sha256": "7694ad3a30cf7604f6d9fd238a5b07ce51007dd2a83968959e3a020a746171bf"
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/theme-library.ts",
+      "bytes": 10418,
+      "sha256": "acf670bdb76cd64d1f0fde0df7575bf72ce7898c43e6f78047e5cc370fa82a08"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/index.ts",
+      "bytes": 486,
+      "sha256": "ef8c37f0e8d0070335c8f9f3965108ee7c60aba421ad7f99a9265c74950087b9"
+    },
+    {
+      "path": "port/v2/apps/game/src/worldlife/spec.ts",
+      "bytes": 15090,
+      "sha256": "d4660978f797179e3003afd1aa75ecfb6d351890fd82b94ebe3c1c9bfc4fdee6"
+    },
+    {
+      "path": "tools/local-image-generation/kit-contact-math.mjs",
+      "bytes": 6195,
+      "sha256": "3f4038c064cd5993fa2b97e0621d0e7caa6ead6ca38feb70cd712540ebf64059"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/index.mjs",
+      "bytes": 53423,
+      "sha256": "6b55b777814c0f840d9584fe93b94e39c5d4334a48ab3c90e2b931a88c3292f9"
+    },
+    {
+      "path": "port/v2/apps/game/src/worldlife/sampler.ts",
+      "bytes": 3500,
+      "sha256": "c7307d7d03c0a496bc94227e672e979405d824531009e075c8e1b7b39ae9b272"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/cue-plan.ts",
+      "bytes": 6758,
+      "sha256": "abcd1b2dde08a12647bb4ef73ecf9f35a998017a61b7183b142ac0ee28054e6e"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/fixture-rig.ts",
+      "bytes": 12458,
+      "sha256": "9da4f4b7acd5bc7990beb2a3e31cc4665faa34c572d5f3f2f0a459eb10a980d6"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/fallback.ts",
+      "bytes": 4811,
+      "sha256": "95df5dd46cee3cd805628c28559632da86efafaf1e29ecbbde019a807cc982e7"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/arena.ts",
+      "bytes": 7471,
+      "sha256": "2445eaffd1d4d9d25858a487b06c70b70b674d6cf4e9eeaf1243b5291eb19979"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/choreography.ts",
+      "bytes": 17836,
+      "sha256": "5d416ef1969ba5e3bf5e947f588807c28d977243131a71ea87b66a5ea398a840"
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/sequencer.ts",
+      "bytes": 8142,
+      "sha256": "3fdd7822ab2b6bc9ab9e89aa547a14c44e785cb79e5690baa209805496a47e59"
+    },
+    {
+      "path": "port/v2/apps/game/src/effects/emitter.ts",
+      "bytes": 7646,
+      "sha256": "edcccfb7ec699d21cbc1ed098e4cfa115497b1811016d966b4b62a9ed04c811d"
+    },
+    {
+      "path": "port/v2/apps/game/src/battle2/stage.ts",
+      "bytes": 15336,
+      "sha256": "826a2be9ec06fda29f63e3c6cbba1367b0b8f83867623b07eaf2c7002f0992ed"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/secondary.ts",
+      "bytes": 6306,
+      "sha256": "a3b07b1ab839db68669e5ae2fcd24e9314c7d6495a01d2b009e8b3f2d5a0b361"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/index.ts",
+      "bytes": 170,
+      "sha256": "1a812ff55e9fd49ec45c16c4e9eb0f5835c9258b2e82b02a304c222ed56c704f"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timing.ts",
+      "bytes": 4203,
+      "sha256": "135ad4c2752d8941ef4cad337d900ecfd58125dfe1bd7afbf4608c80b68534fa"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/templates.ts",
+      "bytes": 6885,
+      "sha256": "6a10af5e4b07fc49ba7a6a27ce58e96ffad983b3182549aecc8309a9d0e18c97"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-actions.ts",
+      "bytes": 37358,
+      "sha256": "ea1a4a57a65aa10cc1872304c9e87f31f47fcea0081f7bb7f947afab46d8bbbc"
+    },
+    {
+      "path": "port/v2/packages/domain/genome/src/index.ts",
+      "bytes": 116,
+      "sha256": "f2936929b86938c7236d093320b52202b90169abea4c4ce4d90b55f4ec477f72"
+    },
+    {
+      "path": "port/v2/apps/game/src/soundkit/mix.ts",
+      "bytes": 4755,
+      "sha256": "f9afb4df123fc018ffb2e78d08ef157c1fa5d3f9de52f7078acef7a9de883a1f"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/family-templates.ts",
+      "bytes": 22414,
+      "sha256": "f8091e7cec3ec55fc5da48f8d996fdf0e1545fa1adf593e5bbe60f9c11c9ba3d"
+    },
+    {
+      "path": "port/v2/packages/domain/biome-profile/src/index.ts",
+      "bytes": 14498,
+      "sha256": "cdffacfbf0a19609df2bae648de95bf88b13e516cc0dfdb91904a78aae850874"
+    },
+    {
+      "path": "port/v2/packages/domain/rand/src/index.ts",
+      "bytes": 3639,
+      "sha256": "bc7f34ccfec3fb74e46fd01c3e71f26522a591bd1a9ec2b2bef40b0f42c6d927"
+    },
+    {
+      "path": "port/v2/apps/game/src/soundkit/cues.ts",
+      "bytes": 5204,
+      "sha256": "b7bbabf3389616cd2e8e669c1fe21ddc06bf38416be0dbedd197c7373fda1dc2"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/actions.ts",
+      "bytes": 9051,
+      "sha256": "dc1ef0becac76be8997789b08e1058fcddd04fcdd12edfff71d10a3ce02abcac"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/speciestraits.verbatim.js",
+      "bytes": 20728,
+      "sha256": "f455d20cbb1194849aef0dab0c5ea8fa16a88084c67e3386b57450937039a00d"
+    },
+    {
+      "path": "port/v2/packages/domain/speciestraits/src/statkeys.verbatim.js",
+      "bytes": 271,
+      "sha256": "714970e3b1b97cc76785a2d30a5d8437172f38b774e86395f9a42174477ce749"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timeline.ts",
+      "bytes": 8755,
+      "sha256": "5aff1698c63fdd66f1f83f28b61912d477593c8af4a8b96761c91d8460277566"
+    },
+    {
+      "path": "port/v2/packages/domain/genome/src/genome.verbatim.js",
+      "bytes": 13307,
+      "sha256": "9db95f5d9db343367244448c9e56edcd59c7ea8c796131f59e118223eefe5ea7"
+    },
+    {
+      "path": "port/v2/packages/audio/src/index.ts",
+      "bytes": 9813,
+      "sha256": "1f9d6a8f245b80523c204b310a443f098baf7bd872feee9fe95b7ea46fa37797"
+    },
+    {
+      "path": "port/v2/packages/audio/src/sound-witness.ts",
+      "bytes": 16389,
+      "sha256": "88c436388b4a50bf7943c0bc287d8cc03606489fa56ae753cef31d0ae216a198"
+    },
+    {
+      "path": "port/v2/packages/audio/src/identity.ts",
+      "bytes": 16434,
+      "sha256": "4ca7621bad99450f8142b2fdc3dc2ab44791f1a5a7202b9d8191d0238096591c"
+    },
+    {
+      "path": "port/v2/packages/audio/src/rights.ts",
+      "bytes": 25849,
+      "sha256": "e15e5996c42a38f7a8dcd79a63c9b6dc6f10b76bf3b368a42728e3d3cd01adfd"
+    },
+    {
+      "path": "port/v2/packages/audio/src/stings.verbatim.js",
+      "bytes": 5395,
+      "sha256": "af91ae822a8c8e1db08eda8fa7e9eb51a51fda5e9d42c3dadd7efa79eedac97d"
+    },
+    {
+      "path": "port/v2/packages/audio/src/taxonomy.ts",
+      "bytes": 12398,
+      "sha256": "f7ff05d11ee1b1f654a3992b3a9926fbdfa2a1fb3047376a973dd0d601bdd0d2"
+    },
+    {
+      "path": "port/v2/packages/audio/src/events.ts",
+      "bytes": 7654,
+      "sha256": "7d4d00412e8b4e7e9d3a2efb9c1408634503e4f3a2e4e11e64de21794e0bbd4e"
+    },
+    {
+      "path": "port/v2/packages/audio/src/combat-gameplay-voice.ts",
+      "bytes": 25730,
+      "sha256": "39cb4107094fc6f16b23b4d49b5b6a130062ad64aef9421f7e442d6d7354e175"
+    },
+    {
+      "path": "port/v2/packages/audio/src/lab.ts",
+      "bytes": 30071,
+      "sha256": "d0161a77d0fc78dc1ff6274db2ec8a383f8020f64653637fb5e2e5759de3b5f7"
+    },
+    {
+      "path": "port/v2/packages/audio/src/combat-cues.ts",
+      "bytes": 24079,
+      "sha256": "e7a6dd0176918d715c5df4a3ccbcf5706fada3494f79d18d962e4628a93acc78"
+    },
+    {
+      "path": "port/v2/packages/audio/src/runtime.ts",
+      "bytes": 93976,
+      "sha256": "3e245551b2f36749efc4e3444f25ad1403546e2ef55f575d08ee5ec725a41acc"
+    },
+    {
+      "path": "port/v2/packages/audio/src/purity.ts",
+      "bytes": 14604,
+      "sha256": "68b8181b3103bf1c02709aff4835a472b30db9de9d94603bdcbe1de5d3e3713a"
+    },
+    {
+      "path": "port/v2/packages/audio/src/distant-ecology-voice.ts",
+      "bytes": 9855,
+      "sha256": "5636a50dbc320ade85f398386964876eb74440c4a1cd4da2904234ab0ba44975"
+    },
+    {
+      "path": "port/v2/packages/audio/src/creature-expression-voice.ts",
+      "bytes": 13676,
+      "sha256": "94a890759e428fb15adf12480beae893bbf590d62c09c1902c77151133f151f0"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/index.ts",
+      "bytes": 1080,
+      "sha256": "70a8fc4bd7c188b3e26e699e2644f8a57587cb14b6a0bf2a927f48dd4d18b96a"
+    },
+    {
+      "path": "port/v2/packages/audio/src/pilot-rights-data.ts",
+      "bytes": 12183,
+      "sha256": "0dd189915662152106e57e9b3642998c14e7a0f228413ed11134c7c8811b54d2"
+    },
+    {
+      "path": "port/v2/packages/audio/src/ecology.ts",
+      "bytes": 8576,
+      "sha256": "1347d2b75966923d8a631c98bc961fd49c25ad82e61e312ab1397c7a02f563ce"
+    },
+    {
+      "path": "port/v2/packages/audio/src/finite-voice-lifetime.ts",
+      "bytes": 428,
+      "sha256": "2cbaade9193bf33de57727c6d3dcda31dab1ed02d0827c2282e64fde31d79576"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/apphooks.ts",
+      "bytes": 6433,
+      "sha256": "c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/descriptors.verbatim.js",
+      "bytes": 31511,
+      "sha256": "259c6a1cfca72f26f134c22d2ecfe3646ff08b4c58ae8cd4d44b9b2a17cd4432"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/index.ts",
+      "bytes": 668,
+      "sha256": "c5b2f122c642e53630b826ed101feb82f775c208336d6d544f5919939a15595f"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/describe-pick.ts",
+      "bytes": 6919,
+      "sha256": "2e689f6c986c5a0c5d1ad877caf6e48c814fadd47550aa6555612282ed6895d1"
+    },
+    {
+      "path": "port/v2/packages/domain/descriptors/src/apphooks.verbatim.js",
+      "bytes": 13811,
+      "sha256": "c8254bd2c0bb0ce5fdc922c75fb177319c93340283abab99249ff2b221231eff"
+    },
+    {
+      "path": "port/v2/packages/domain/planetgen/src/index.ts",
+      "bytes": 212,
+      "sha256": "92c0b25b750c9457a7365e482d9423400a54150019997a5d1c96c1ea96e203e0"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/player-ability.ts",
+      "bytes": 836,
+      "sha256": "057f6f7508f91cad9bd54bb2f922d06dfa7c7dce6649e9409b1af896cc270c25"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/creature-level-progress.ts",
+      "bytes": 4537,
+      "sha256": "e41c72f116358fa46d04d79b399e179bab201094383a8ddd9ace87e2c79a2ed6"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/lineage-codec.ts",
+      "bytes": 4041,
+      "sha256": "7c80826744c22230263e53facefb05d28c3968d3defabb070a6d9a6f19a9f8f4"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/guardian-prime.ts",
+      "bytes": 24350,
+      "sha256": "fcbb7ea8bea461e2fab76aedd66cb98d56794b11768acce343f9eee4723ccf70"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/combat-settlement.ts",
+      "bytes": 28625,
+      "sha256": "0add16e8b7c45789665542ef1ed0a420bfcfc8438421a0d456fffda8d852be13"
+    },
+    {
+      "path": "port/v2/packages/domain/combatcore/src/combatcore.verbatim.js",
+      "bytes": 54698,
+      "sha256": "67f5e05d8b985129fec59fe87518965bf4a56d02fd1e3e150b3fa168806ef7c1"
+    },
+    {
+      "path": "port/v2/packages/domain/worldconfig/src/index.ts",
+      "bytes": 599,
+      "sha256": "4ce4e39da1afe2f97baaa2105c2aa209e4d65d10443dfc81a960deeb8ccf0079"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment-webworker/webworkerExt.mjs",
+      "bytes": 413,
+      "sha256": "fabbe2b53de9dc9314284bec69343fb864995092bbbbc0ccb2494c099dd020f1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/index.mjs",
+      "bytes": 1888,
+      "sha256": "e8cfbcc4764b1ebc06c6e69fe659eed6b7fd8a803c14182e169aa8681bae9880"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/extensions/Extensions.mjs",
+      "bytes": 9014,
+      "sha256": "141ec5f5c9d69a144a206214cc0cb473ae2ff6e1effcb36228e415f1d217dff0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment-browser/browserExt.mjs",
+      "bytes": 344,
+      "sha256": "80268632767ebd090a9cd3fa594812f58d7b576dcfd8e49c6bab23de8c8689f9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/culling/index.mjs",
+      "bytes": 191,
+      "sha256": "a79c3e14b0be73a94a1f75365d9e6a5a20322343c799c656347b84658e33483d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/spritesheet/init.mjs",
+      "bytes": 201,
+      "sha256": "7471ccb5a58b22f15c928f46ab84d1962d33b4197916b6d20e6c383867161cd1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/init.mjs",
+      "bytes": 848,
+      "sha256": "7e2d650b16c696acf6682104a18615168d810c9ae4380ba19660cbd64945b904"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/app/index.mjs",
+      "bytes": 201,
+      "sha256": "ef7ce6be0bc3ac4af3806a5c3bbdd2580bf4e8c8c60665cefd465f8e1ea877ad"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/dom/index.mjs",
+      "bytes": 197,
+      "sha256": "84717d36e2a8ba00e90385b158e6c2113e74345aa805313188f9aec8d08c245e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment/index.mjs",
+      "bytes": 296,
+      "sha256": "7caafdd64cbfefe3aac4fb00837100f344a98a844891eb5633fdbf797a77299c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/index.mjs",
+      "bytes": 2361,
+      "sha256": "cf738a02d0aca490bb9df7caa696a7bee1bd0cd1c656d2464c2094f565c59e45"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/index.mjs",
+      "bytes": 1187,
+      "sha256": "ae9f0bff854e3a461c4ab2ea70a17f1871edcb7335a721a62abcd3d72d17f9b3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/color/index.mjs",
+      "bytes": 87,
+      "sha256": "b5507dd2307021d2a1e92cbf9e123ae9d6305519560f5c8a92807c2db967f700"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment-browser/index.mjs",
+      "bytes": 152,
+      "sha256": "e25620c9bc747123ec505f1cfdab975c4ff860b85844075e19c28e1ed1a5d44c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/prepare/index.mjs",
+      "bytes": 256,
+      "sha256": "92a53f360d2dc7979f23cd382762c2604c1a920ef8dc584336157ef52b212b95"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/accessibility/AccessibilitySystem.mjs",
+      "bytes": 18966,
+      "sha256": "b21e2d220e89dc5bf3472a032dc32b918c7363a23897e6257bef5494b3a2afb0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/spritesheet/index.mjs",
+      "bytes": 158,
+      "sha256": "87f652a033ddb554f850e8c02b2844a3cfcc875769e18fb3ada2c06e342d4c23"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/index.mjs",
+      "bytes": 19934,
+      "sha256": "99b303d7084677aa224a0c80c0292444edca2bee2e8d8ae6657412eb346ba97c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/index.mjs",
+      "bytes": 15922,
+      "sha256": "e607e2d4abb913f0481ff551b3052fe6e8c998d40b0e3f887a5b77b53626f951"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment-webworker/index.mjs",
+      "bytes": 160,
+      "sha256": "922f01beb41bf7b1dd9fa7ef4d115f0e5f46b35403828ed7ee582b9e3da56018"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/index.mjs",
+      "bytes": 1716,
+      "sha256": "db6bb584051f6810d0dfe5854e27cbdc552c390f121d23f907fd91366f613a48"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/ticker/index.mjs",
+      "bytes": 191,
+      "sha256": "747152be3f7daa3583c9f269c86c14b1c6fb029a268fc2a9540e44287347a5fa"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/HardLightBlend.mjs",
+      "bytes": 2057,
+      "sha256": "801e4152d17b613d75363efefa7d56b626f12d0671fbacd36bbb1899f81a9d58"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/events/index.mjs",
+      "bytes": 622,
+      "sha256": "024b054166903f91a1f2427ff978aa3e006c19439e58a21082293f51295ce5ad"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/accessibility/accessibilityTarget.mjs",
+      "bytes": 397,
+      "sha256": "a8b6b6152813e0fe04b244765621ca133412a6a345d82f5545d574dcee646bd3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/extensions/index.mjs",
+      "bytes": 140,
+      "sha256": "c35d9c89c14219d5172e5bea675e87d72f80b2463a39323f9c2d42ea618d87bb"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/ColorBlend.mjs",
+      "bytes": 1440,
+      "sha256": "e026022e9059f1162479b4ef746ba2625d0086757a5fdfbb0678ebe488530e84"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/ColorBurnBlend.mjs",
+      "bytes": 1963,
+      "sha256": "8c45edc55d2214331ed4c06cabb17e76fabcfb6aa426d59af08368613fddc67e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/index.mjs",
+      "bytes": 3095,
+      "sha256": "5445cc678beb9658da40b9cdc4fe5beb0293ea081a36955bd8818e354e5c68d1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/ColorDodgeBlend.mjs",
+      "bytes": 1969,
+      "sha256": "707cd5273ea1f01ea6aef7e0ace8b6801d39e74e2c03e1a8c76f6f96b953ec96"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/DarkenBlend.mjs",
+      "bytes": 1204,
+      "sha256": "fc5c575d91b6cc5138bd2553a42a8c65ef35baddcf6c0ad04d8f926f826a0d5d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/DifferenceBlend.mjs",
+      "bytes": 1228,
+      "sha256": "16073c7f9e1177f5100c70037c83b9279b71fd381cfebfd2b7047a05dc85ad91"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/DivideBlend.mjs",
+      "bytes": 1953,
+      "sha256": "a41c47f257bc960c08f9ca731a6ebca5b3a07c88dd0cc2d943f9a2e1fae7cd42"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/index.mjs",
+      "bytes": 962,
+      "sha256": "7fcbc1dc511d79c371a5cb18b9c1c1b9cd190aef90acc77a9dbda046c5a20968"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/ExclusionBlend.mjs",
+      "bytes": 1558,
+      "sha256": "cd776865b39358e8620f2ea07e36030a618766b5d86d41acd60ed51222c904e7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/SoftLightBlend.mjs",
+      "bytes": 2195,
+      "sha256": "0825cb6f990b1bd00a08ca5d6590e35673bca21e25e772f664115b646da9cd43"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/Assets.mjs",
+      "bytes": 25895,
+      "sha256": "42bfe5c4da036ab540691e581d891873b43eb56a67e5b44575785b10516275e2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/SubtractBlend.mjs",
+      "bytes": 1932,
+      "sha256": "057b3fa3291ba69c4df1ce292718a7a148a643170cc7a01c3f8dcf6ba780ea24"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/VividLightBlend.mjs",
+      "bytes": 2708,
+      "sha256": "fa657453d78aaea74dc0c1dfa9d6c044754424144c5d7dc8861cd22f52f22374"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/app/Application.mjs",
+      "bytes": 7000,
+      "sha256": "8b4ad57b5b4ea1aa0ee104c4405c25716c5f7de6c8df71c71b6c2f2b3e4bb9ed"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/app/ResizePlugin.mjs",
+      "bytes": 2063,
+      "sha256": "6614bbc4190c41c788b88e08c012afdcf00cfce1b9758b78477b96da318a7002"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/HardMixBlend.mjs",
+      "bytes": 1937,
+      "sha256": "f50407e1287acd4ebc612e20c5646a5cda9b504754f6f617e209dda86e473280"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/cache/parsers/cacheTextureArray.mjs",
+      "bytes": 659,
+      "sha256": "8ea0d3693400b3cb260656bd1304da52059bdb393b850530ee84802f824a8052"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/LightenBlend.mjs",
+      "bytes": 1206,
+      "sha256": "56bb699180b1b6fce69dc55f8c2e61b275d510d2e332109cd0ea19410f34172e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/cache/Cache.mjs",
+      "bytes": 2672,
+      "sha256": "dd521792c151a24ea8e720c5b4fcd9f85f7022b37ce2db2938ee03b06b0b7337"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/app/TickerPlugin.mjs",
+      "bytes": 1520,
+      "sha256": "bb1c1e6c1cee827336f6344602273b555cab8a9a5d7a7d131a2d96ad26aaa49d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/detections/parsers/detectMp4.mjs",
+      "bytes": 492,
+      "sha256": "5ed9d557d9d0bfe53602f224db94e7464a379c9397ea3b97f11fd33084e2dc98"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/detections/parsers/detectAvif.mjs",
+      "bytes": 953,
+      "sha256": "700a60990b656ed3590b0f3aa2a3f010574afc95850e5cb13316e84860983613"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/detections/parsers/detectDefaults.mjs",
+      "bytes": 478,
+      "sha256": "abe1c8e32122c3cfa0f33fae3e1f78fc2f3a5985eac9e5c72ab65472d8a7781f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/detections/utils/testImageFormat.mjs",
+      "bytes": 656,
+      "sha256": "faaf0edd2a45346c248b0258f26ecc4a14232fd4d413e68fd1d5a2a1dfa03a95"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/BackgroundLoader.mjs",
+      "bytes": 3329,
+      "sha256": "0e444c99da8f58143af1515a89480dc9d3ecf02c486e7658e062ece4438e46b1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/LinearBurnBlend.mjs",
+      "bytes": 1980,
+      "sha256": "1526f4df238959d506fc4ceb3fc8b3bdb198aabb3f5f2c4a4b1aa138cb08e4e5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/detections/parsers/detectWebp.mjs",
+      "bytes": 549,
+      "sha256": "87034671ade7902c92669c530591e107c3dd9c14585183b86f40e0bf1c8e50c3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/LinearDodgeBlend.mjs",
+      "bytes": 1941,
+      "sha256": "93622e6187ed5abb5b085cf5c22de8739bcfbf2a21d6bc953263e07450e45d33"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/LinearLightBlend.mjs",
+      "bytes": 2641,
+      "sha256": "7027529b8033350fa17a40d6def69bb1bcbbb7b6315f12b3bf8221e1446f1bfb"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/detections/parsers/detectWebm.mjs",
+      "bytes": 476,
+      "sha256": "42daa57242fd5224977a8b69c0be91a293453eb4e7eadd960e533bbb2130363f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/detections/parsers/detectOgv.mjs",
+      "bytes": 470,
+      "sha256": "607accfd221f5cd604eb8a0802319c6c25eba8f06a0c28f6b5f741af432c905e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/PinLightBlend.mjs",
+      "bytes": 2027,
+      "sha256": "81362c1f09022045752ab443c4696011b68d2098e3a1f28d6bd000154ebdf781"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/loader/parsers/loadJson.mjs",
+      "bytes": 903,
+      "sha256": "8880fd01240820f444fb9350a8e46343f9eaff31694685e9387876c4a716d284"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/detections/utils/testVideoFormat.mjs",
+      "bytes": 367,
+      "sha256": "3b44e17309d1034341c5d2fe979b123ad7e789404fd421273e671f86a575535f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/SaturationBlend.mjs",
+      "bytes": 1647,
+      "sha256": "ec1efb4c6c9bdb7d5c7de809d7d476feb23a9df9e6fe2ee79fb192a202545f3e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/accessibility/index.mjs",
+      "bytes": 180,
+      "sha256": "afe2170ae0b30460907faca8806fe16cd4baf1c4d4209211d15357588023ef21"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/LuminosityBlend.mjs",
+      "bytes": 1593,
+      "sha256": "ad7bd8011e25b1bd554506db321b72bc37e8302b9d34c2d7d528972bb7761da5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/loader/parsers/LoaderParser.mjs",
+      "bytes": 436,
+      "sha256": "198aa19846a67f29e8fe0a271ea98e7b45fcb92086147b5e29e5444251c065b4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/NegationBlend.mjs",
+      "bytes": 1558,
+      "sha256": "2a259f1b20442ba28144edb2f15253fcef1de341e326ebf3253253169ecc26a1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/loader/Loader.mjs",
+      "bytes": 7912,
+      "sha256": "602b516592839e9d8c1980c5a0487b692f15e1fc8b8c13d48d06e475179ad2cd"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/loader/parsers/loadWebFont.mjs",
+      "bytes": 3736,
+      "sha256": "b19235084a0a54c548ca4e77b052223fccc006019eb1de0ecd660ea82ad4bebd"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/loader/parsers/textures/loadTextures.mjs",
+      "bytes": 2822,
+      "sha256": "8f20c4b19f52e0f677c221fce2a77c9f1e35161a65bcd0babb39aeccb7680b5b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/loader/parsers/textures/loadSVG.mjs",
+      "bytes": 2834,
+      "sha256": "550a4ca76f0562654fd81a7686c98f59b95663aa281600879abf9687b4623c83"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/loader/parsers/loadTxt.mjs",
+      "bytes": 907,
+      "sha256": "a94239680026e0007d3770e1960e07851a86a68822384854657261be3214b48a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/loader/parsers/textures/loadVideoTextures.mjs",
+      "bytes": 5676,
+      "sha256": "1091fee98f71f777d4696bf0a375464fe1c7e70bc3312bc7d19164cd6d63af75"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/resolver/parsers/resolveJsonUrl.mjs",
+      "bytes": 504,
+      "sha256": "02771314a442982ed8dccc4ad2662c89ecb1a9a50d2cf2105d6d71419d47d011"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/loader/parsers/textures/utils/createTexture.mjs",
+      "bytes": 1088,
+      "sha256": "f18d31362ec15ed30c9b2afd2ed161869a9d65357086c658132829d1dadb4af2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/resolver/Resolver.mjs",
+      "bytes": 19754,
+      "sha256": "daeb5a7778eeaa4ca660d652540fc5143389e8897c0fb7d874f2d67ea871fd3c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/loader/workers/WorkerManager.mjs",
+      "bytes": 5702,
+      "sha256": "db6264e53585861314af18c866eaf64807759c7bb6447ca4d5afec882a1ca41d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/utils/copySearchParams.mjs",
+      "bytes": 277,
+      "sha256": "53029339e7b8589312d68bc329f69d743c0860f4ea7cd66d370d165ecc76ff5b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/utils/checkDataUrl.mjs",
+      "bytes": 307,
+      "sha256": "8cbdb7cc391fce515bd06b149e779a37be95f9c6a8a3dde15ddf1979ece389ae"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/utils/checkExtension.mjs",
+      "bytes": 366,
+      "sha256": "6b7d938acc68adebaaefb48707dd53cc6ba241ec1a39f0abb5b0f7bdd4a40f4d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/resolver/parsers/resolveTextureUrl.mjs",
+      "bytes": 583,
+      "sha256": "60dfeef6585d4a460b702a34db1f82f9a2dd1b7037321aadb633629b2115f28f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/utils/createStringVariations.mjs",
+      "bytes": 831,
+      "sha256": "710335bd255774fa93200c88405f343f37edeb178a96ca3bde63a4b28c196188"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/utils/convertToList.mjs",
+      "bytes": 399,
+      "sha256": "bc3a1c56fabe2b59e2a97db35573979914b9c6bdc8de96eb2ef198c8826b51be"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/utils/isSingleItem.mjs",
+      "bytes": 135,
+      "sha256": "c920ebe88a868a8d531b211c3fc1d05af6c56ffcd9337382e0cb4abf42cdfef1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/color/Color.mjs",
+      "bytes": 27580,
+      "sha256": "6e9c6d1d083af95fbe3c3a302594c24c351474dc426ae168a83f1c9bcaa05267"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/basis/loadBasis.mjs",
+      "bytes": 1611,
+      "sha256": "b43654d604c5cc2ded7107e65b8abb6961c64466c2cdebfe2d735252a17df69b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/basis/utils/setBasisTranscoderPath.mjs",
+      "bytes": 423,
+      "sha256": "f924e52d23db48c8a407cef51370ac4a7cbfe64328ea2681c285cfdd0523d508"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/basis/utils/createLevelBuffers.mjs",
+      "bytes": 980,
+      "sha256": "8899dbb4acb586d495bc040949db27a04e968eeef268b32dcbd1f68de25a3e81"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/basis/detectBasis.mjs",
+      "bytes": 653,
+      "sha256": "4369b3c765b44fb769e3f14613d0f6be293f114072ba3c2e6b5948b01c9fa343"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/basis/utils/gpuFormatToBasisTranscoderFormat.mjs",
+      "bytes": 676,
+      "sha256": "4719d03e8c1303a3f445385c9bc41348cd11c60c13c2402527f7389231407e73"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/dds/const.mjs",
+      "bytes": 19379,
+      "sha256": "47a69e8a3d0a7210e0d9500221229af4c57933e72c677d7d607f16bbe1136f32"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/ktx/loadKTX.mjs",
+      "bytes": 1668,
+      "sha256": "688a724648451d41180adb799d88fbb166c2199a2a3b755195c538918325cbc8"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/basis/worker/loadBasisOnWorker.mjs",
+      "bytes": 1054,
+      "sha256": "70b50ec0c92a412c86fc7d8f18d48e40f62610c9208687e17083a5c499392777"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/const.mjs",
+      "bytes": 17916,
+      "sha256": "4bff005548490523130b852874f240438b50be650795e05db2b37ad4bd5b94c4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/ktx/parseKTX.mjs",
+      "bytes": 4891,
+      "sha256": "5d492461413b406030c0935616f24356eac8f90d32242a18fce19507e5a1cbc3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/dds/loadDDS.mjs",
+      "bytes": 1670,
+      "sha256": "b49f48fe42a6340091f135d15d55f7be7b17bc5360e4d9b48020dd20584db53a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/dds/parseDDS.mjs",
+      "bytes": 7422,
+      "sha256": "5979ed2cd23372768cfeaea53b6270988a270381827a2522f1b5a8d9b8641478"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/loadKTX2.mjs",
+      "bytes": 1605,
+      "sha256": "886a9de031d4d952c758cbfc13f23a54410abdd7878fa9d707f20c48766aef63"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/createLevelBuffersFromKTX.mjs",
+      "bytes": 450,
+      "sha256": "04cd2442b12a864891ff2e2baa00ce914eb88e21121169983c2ceef49a2c3abf"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/gpuFormatToKTXBasisTranscoderFormat.mjs",
+      "bytes": 641,
+      "sha256": "3c3f61836708ec125b96da6944a43561e849ca4d22d0feefdc6c766303819f72"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/setKTXTranscoderPath.mjs",
+      "bytes": 387,
+      "sha256": "0ce22c96696afc9679c9b891fe84e7e19df476360655067de8978fec0abdc7d2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/convertFormatIfRequired.mjs",
+      "bytes": 1123,
+      "sha256": "1f753b7d25afd6d27d953e4390d20280404c57d2dac1993d61961c445fb4ff1f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/glFormatToGPUFormat.mjs",
+      "bytes": 1442,
+      "sha256": "76f65398ee5041cfa8ae1c616652d21da1434a4058c5fa1b29acc49d117f676c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/vkFormatToGPUFormat.mjs",
+      "bytes": 491,
+      "sha256": "feec82a5958cfefff70f6750744d9f12268b001c1b25b8d57ccddc55309ac10e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/worker/loadKTX2onWorker.mjs",
+      "bytes": 1161,
+      "sha256": "dbb43dd2c40646ee49d2ff6c88cd0b341423ce0ebe9738421caa60a5a9f104c9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/utils/getTextureFormatFromKTXTexture.mjs",
+      "bytes": 455,
+      "sha256": "781609445a5a0b1625dba38bc7e237bd61ef7c53e08179e2dc87c59b4eeb1c79"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/shared/resolveCompressedTextureUrl.mjs",
+      "bytes": 1039,
+      "sha256": "f7762306b4811ae5129ceb324bd4fc5e3ef8bd5422acd989f85a0d4b70762395"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/advanced-blend-modes/OverlayBlend.mjs",
+      "bytes": 2009,
+      "sha256": "1a8c4c8123c0ce994555e37a491448fb1848ce92b79b004df54aed10d67c8b09"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/culling/Culler.mjs",
+      "bytes": 3260,
+      "sha256": "69d3b8b5ce31112e437ab69e4e636c5576e09b82bdf25fab20fbff6b99d001a6"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/shared/detectCompressed.mjs",
+      "bytes": 1854,
+      "sha256": "9c209f8422ffb6cff71c3b5afae311b4f03ad5f6485fbecb9647e32ee883fa2f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/culling/CullerPlugin.mjs",
+      "bytes": 857,
+      "sha256": "de9e8cb0420cf1911be44d1b0e128c3bef7f250da436770396125f92c0f87066"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment-browser/BrowserAdapter.mjs",
+      "bytes": 734,
+      "sha256": "8189834e2098390293e040d2ad05163cbef12505c80632393888d88542d21849"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/events/FederatedEvent.mjs",
+      "bytes": 6154,
+      "sha256": "69dcf0102dcb7646affdad326e7e2d2edcb0ecbd88fb36dc16ba14c0e07e72a8"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/dom/DOMPipe.mjs",
+      "bytes": 3963,
+      "sha256": "d30c7b85f0e4e3568fc52ee5b3d9c0716d0886a294b709ae48e2f4bd7e54cd53"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/dom/DOMContainer.mjs",
+      "bytes": 3316,
+      "sha256": "2183fe689d8eb6511be29afe098143d3f03fa6e06232290593551e7154e1d847"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment/adapter.mjs",
+      "bytes": 491,
+      "sha256": "6676c9aee29d909119be5943010622894001ddf8edb83fd27d7a7b72b5675a63"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment/autoDetectEnvironment.mjs",
+      "bytes": 622,
+      "sha256": "8ad97680860f0ad88865558ca18cc1825aa310a10a5fa39b284c53e77a7c0398"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/culling/cullingMixin.mjs",
+      "bytes": 170,
+      "sha256": "87258f5a430c03a73f04cc2c6ae09603495ac6c559a9f30028cbdbc925c2f5d5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/events/EventTicker.mjs",
+      "bytes": 3063,
+      "sha256": "2c7e5694c769d24dd49de2bcecf0e51afa26e0747e5761ee7d9b4855c441a2f7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/dom/CanvasObserver.mjs",
+      "bytes": 3773,
+      "sha256": "14dafcf0abf79f9cd373ffcb1db19b1f6fa709dc199d24dbafc97481c5a48aeb"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/blend-modes/blend-template.frag.mjs",
+      "bytes": 499,
+      "sha256": "13047598c63a62aaa5398738e7e8fbc2bb0e9904a18e244cfeeff0852e2eef15"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment-webworker/WebWorkerAdapter.mjs",
+      "bytes": 693,
+      "sha256": "e670e7cb263b945c32453f86cdbf3e092a1c502fe39cdee0b224b7392615248b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/events/EventSystem.mjs",
+      "bytes": 24546,
+      "sha256": "3d3eb9b73fe2599a71e52098236ed36309878b4f66a852231272279d949dce07"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/events/FederatedMouseEvent.mjs",
+      "bytes": 4635,
+      "sha256": "92a264594c6a3a39d651777b88ed35bb1381abb9623d308401c485fb53fcbc1c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/blend-modes/hsl.wgsl.mjs",
+      "bytes": 2689,
+      "sha256": "85915152bab21e357aee9bf1aca3f79e68d8e165292e64153daa3ab4195d7257"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/events/FederatedPointerEvent.mjs",
+      "bytes": 1428,
+      "sha256": "3315bbb512f408497ad09f583955fcfe74ef858f6b17f820589263a4543363c1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/events/EventBoundary.mjs",
+      "bytes": 36658,
+      "sha256": "b92fd983918a3399cd2961b1baf3e595a7d4cc6730e0228325e8be4eee559adb"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/events/FederatedEventTarget.mjs",
+      "bytes": 2999,
+      "sha256": "d2d61346dc13f5d879a269ec02ddefb1cb2855b0003d02c72688a1920083ea6b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/events/FederatedWheelEvent.mjs",
+      "bytes": 814,
+      "sha256": "36fea4666d0c66b06b92bae3103131f062d6c4a41dbe730c72ab2a94dfb45514"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/blend-modes/blend-template.wgsl.mjs",
+      "bytes": 1956,
+      "sha256": "0c97c8b5632a68b180c9c0c949572878018b3d8ffd4e7f7d5a1d3479986c20de"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/blend-modes/blend-template.vert.mjs",
+      "bytes": 798,
+      "sha256": "aa1b0f135aca3c3becaeff047199c18067630c9123e253e280ab1bf17c680e94"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/alpha/alpha.frag.mjs",
+      "bytes": 279,
+      "sha256": "e369134eb98b5047289edcffecb9d3232dc2d7b7c6f4518cdde84b363d1cce98"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/alpha/alpha.wgsl.mjs",
+      "bytes": 1819,
+      "sha256": "6266af67fe98befc87367fa3e79e3b625f89072617838c2d60ae08d71fe30659"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/color-matrix/colorMatrixFilter.wgsl.mjs",
+      "bytes": 2739,
+      "sha256": "701fc617699e761389a0d1651162b3bd6a4588edafc66cef8dc47650127cf611"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/blur/gpu/blur-template.wgsl.mjs",
+      "bytes": 1911,
+      "sha256": "00aabd12936248cd95678c8c577173c356c9f61fbb064f5846f5db916206db12"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/defaultFilter.vert.mjs",
+      "bytes": 751,
+      "sha256": "f0afce4bb797d82f661f1d9869d9d646a0fe23a6396ecf2f55e3a42cb4778d39"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/displacement/displacement.frag.mjs",
+      "bytes": 593,
+      "sha256": "16aa8874aa5a1a029e5d000adf299bc12c04c5020eae08b8a4122a237af0adf8"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/displacement/displacement.vert.mjs",
+      "bytes": 946,
+      "sha256": "8cfa91065bbce699dbce3b180b16313f4eb3bcab43806d7077cab55f3c8e596f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/displacement/displacement.wgsl.mjs",
+      "bytes": 2466,
+      "sha256": "7b7af50e183f62a916ab9995e64d22d8731ccf9e130337cb24235d5296b1419f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/noise/noise.frag.mjs",
+      "bytes": 817,
+      "sha256": "bceca1319d3e4db6f2641de2814c3b99366dd2af04c7ddfa224bcea20f7fcf44"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/mask/mask.wgsl.mjs",
+      "bytes": 2835,
+      "sha256": "05816a96a6a3ff7f71e8cef7a3f889780878846afd9a786b6b8269410b0db63e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/color-matrix/colorMatrixFilter.frag.mjs",
+      "bytes": 1795,
+      "sha256": "eb0e7b40bb1c4334996ec7a97d3d284f9eb70d0d55afb4607d36884dfc242ce4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/passthrough/passthrough.frag.mjs",
+      "bytes": 243,
+      "sha256": "a7737f3a20c4329af32224f70a77ca1dac09db6ba32e8561d39722aa70e7ddbe"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/passthrough/passthrough.wgsl.mjs",
+      "bytes": 1380,
+      "sha256": "916dc18dc43e09cdeceac46ef324297ee25bb5a6b4b4b77917336dbe7452920a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/mask/mask.frag.mjs",
+      "bytes": 1045,
+      "sha256": "3a65c1b34d8b5cd39a221bb8bc1012d4e5fd51c9ea5386be683a3e18183ef9b6"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/mask/mask.vert.mjs",
+      "bytes": 1015,
+      "sha256": "3c352c7ac69097bd2e22edd90e57b42388e08537003b2b7dbaf92f2e2efb68eb"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/blur/const.mjs",
+      "bytes": 470,
+      "sha256": "a732fec7ff35ff762001da3538f23c6cac9f21283e720ed4708cf2b8ce3ec5f4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/blur/gl/generateBlurGlProgram.mjs",
+      "bytes": 636,
+      "sha256": "1b4089665cacfaa02f6ecc38d4b33f3460fd225a7356bf96912dd8d445f739d3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/blur/gl/generateBlurFragSource.mjs",
+      "bytes": 1029,
+      "sha256": "5bb36518e1c592c57877b1f8fc13d4aba7ed1907a315093b3117f55a238b332c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/noise/noise.wgsl.mjs",
+      "bytes": 2559,
+      "sha256": "892c8236c56ad7c84d16699f90255d40ddf32f3f893cbce77da2122fb8cec9af"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/alpha/AlphaFilter.mjs",
+      "bytes": 2278,
+      "sha256": "88f29b98c63a666c2f5f6904409f4ea678a4aaac75ecb900fa7b46948b7dec03"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/blur/BlurFilterPass.mjs",
+      "bytes": 5497,
+      "sha256": "3feb2f01ecf08c526b1f2e95cd9b5ec8405b37eff9fe972b202226a955c9fa63"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/blend-modes/hls/GLhls.mjs",
+      "bytes": 1855,
+      "sha256": "ca969e78a408902aceefef8a756455e054cbf2bf52ad221d549680d6d5ce8c4f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/blur/BlurFilter.mjs",
+      "bytes": 7844,
+      "sha256": "877b9d21e4745510634db99d1532ea71a676388224c95414ea941e6786dc3b23"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/blend-modes/BlendModeFilter.mjs",
+      "bytes": 1740,
+      "sha256": "ece88a2b1515a7281ec6d153feb917666be305b0f56c56f77525b2c4e5eef095"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/noise/NoiseFilter.mjs",
+      "bytes": 3262,
+      "sha256": "d058f4cf37eb3bd2d0b3e5a1bad244c7b3acc0709e2d9e6df214b013c83e4c82"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/blur/gl/generateBlurVertSource.mjs",
+      "bytes": 1764,
+      "sha256": "a9e88ccec6ea76ac4cd941e050cc44f0093730669dcc52033dcf49c2f23e4910"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/blend-modes/hls/GPUhls.mjs",
+      "bytes": 2033,
+      "sha256": "3d9a045041f90ca09651338b1907791043f5c94055dee92b6a8db0dcdb007f96"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/blur/gpu/generateBlurProgram.mjs",
+      "bytes": 1658,
+      "sha256": "7e65c1104c53b21d1d5c25b48a63eada78841b4596a053655d71d4e238c438e2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/color-matrix/ColorMatrixFilter.mjs",
+      "bytes": 34585,
+      "sha256": "046948ca8b63ad09610f04439484db5c2e6cc0c67a6d2f573faaf1319d35d455"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/displacement/DisplacementFilter.mjs",
+      "bytes": 3700,
+      "sha256": "af441eebde935f59e1ac19f06054b115c325218bf7c83fbb03fe0cadcc89eb81"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/FilterEffect.mjs",
+      "bytes": 434,
+      "sha256": "08262b661d2029b16335ae7a396d53c421538dee97c51bc1086ef6b59cc190b7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/CanvasFilterSystem.mjs",
+      "bytes": 8527,
+      "sha256": "addb5d96503b700adc33cfbf483c608a98b4420eaa5fc4c0f0dba9a098a359a1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/Filter.mjs",
+      "bytes": 2640,
+      "sha256": "8e1316408e2f85f13fb97877ffa54025d94c71db8d5014c364a19fb98309a803"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/FilterPipe.mjs",
+      "bytes": 1166,
+      "sha256": "99d80462b0b6f88cccd284f5d8693f325de1096520feb7019a87ceb46662a151"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/defaults/passthrough/PassthroughFilter.mjs",
+      "bytes": 862,
+      "sha256": "75ee7d1ae250ce34c129607dcde82fa987491e982d983caf1d34df0729aa4cae"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/mask/MaskFilter.mjs",
+      "bytes": 2539,
+      "sha256": "ddff5c4f6b88c036741ab25d0f9f2d41cf74b09919722e517647d988be457a1b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/misc/const.mjs",
+      "bytes": 185,
+      "sha256": "442ad63d4c09213a2fc7498ea7dfa89d70136158bdf8dbbd055dbd3876bb9047"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/misc/pow2.mjs",
+      "bytes": 573,
+      "sha256": "f678585c56d16534a9d1df70057bb09ad9d12e64077ca60130c5e4557ee75205"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/misc/squaredDistanceToLineSegment.mjs",
+      "bytes": 640,
+      "sha256": "edc95bae0c4a23ef858078782e671cb56797fb7512bb0c6712fb432aa4f4a856"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/point/pointInTriangle.mjs",
+      "bytes": 690,
+      "sha256": "c7304004c8d7bf0f30e2fce1f0b513ee8fb86d73830adac0bffc0da88b744038"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/matrix/Matrix.mjs",
+      "bytes": 25370,
+      "sha256": "dc223587e4d3fcfc11bb7647666b678d419358842603bbd60ec8763edb9ff490"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/point/ObservablePoint.mjs",
+      "bytes": 5534,
+      "sha256": "6c09831fabab38946c2a5f8540e0e7fef7a481522b9635fe2adf8412e165cc69"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/point/Point.mjs",
+      "bytes": 5403,
+      "sha256": "1a2a281c40b0b5382ede51219021b19365a22370c8105aaaca94c0c82f97f9e1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/matrix/groupD8.mjs",
+      "bytes": 9619,
+      "sha256": "280ae59b8f5ae7e5083d042ef622e2ce11ac40c3a1c1be2ff761fb67ee64166e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/shapes/RoundedRectangle.mjs",
+      "bytes": 9628,
+      "sha256": "90714cec7d7e5776468baba0cfebaf0950ac4850572366bce146979035b6f312"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/shapes/Ellipse.mjs",
+      "bytes": 7260,
+      "sha256": "72c6692d44c5d2530b04fd2046ab7ec2c8da2a942983a2f8eb8b3496b866abe7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/shapes/Circle.mjs",
+      "bytes": 6188,
+      "sha256": "e811c63f30db672b580a64a5befba5f161a3f0ed17d748df429aa13a7c00bb0e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/shapes/Polygon.mjs",
+      "bytes": 12881,
+      "sha256": "290ce35624e7fb886316b983e788b038a773e4062b03652a2e77b3d368c7a8a5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/prepare/PrepareSystem.mjs",
+      "bytes": 585,
+      "sha256": "4720d962a58106bbe569b8aba0970970c0e8d9a1bdb3c990a6b5ebd78c13ae8a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/gl/GlBatchAdaptor.mjs",
+      "bytes": 1719,
+      "sha256": "a708cdfcc79ec4e3887ec7a72264b3eab8e9ad5de97384f593f3083410e724e4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/canvas/CanvasBatchAdaptor.mjs",
+      "bytes": 6996,
+      "sha256": "42b693855aa1070c85c213364f2abc478fac5277cc9307ee44323de6d37b0bf6"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/prepare/PrepareUpload.mjs",
+      "bytes": 2020,
+      "sha256": "a466276774526c0f2d91b5af3a05d4635d08b13f2a6472c2eecd6326f7bb5b16"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/prepare/PrepareQueue.mjs",
+      "bytes": 2700,
+      "sha256": "47e142248d595103778d047d6d1bc3f24cd6763a4b558281fe6985bb17043942"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/prepare/PrepareBase.mjs",
+      "bytes": 3450,
+      "sha256": "cbc11cb796e525cb392c5b5cae4b1a8960eb51e777a85d2883cf7b8277a44613"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/shapes/Triangle.mjs",
+      "bytes": 7280,
+      "sha256": "34944cca62e81eba2844f6f55b13f6611c07563e54cd659f9c173813cbaffc8d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/gl/utils/maxRecommendedTextures.mjs",
+      "bytes": 713,
+      "sha256": "60986dca1619927428902ce545577b1ed05d081341a69520452a4a1754f0d9ca"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/gpu/generateLayout.mjs",
+      "bytes": 335,
+      "sha256": "03a590822695efbce90ebc0fb453a482f5f1b14ea6dfa74d687742810996162b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/gpu/getTextureBatchBindGroup.mjs",
+      "bytes": 1036,
+      "sha256": "3429ffe1db24f0987db955ca75926cd12b9d038ec077cdbc786ebdcd5de6d3b0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/shared/BatcherPipe.mjs",
+      "bytes": 3597,
+      "sha256": "0bda64725a3b84d85dd685e2584b70d7c7e136a2ab01cf0c889223ad00dbe42f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/gl/utils/checkMaxIfStatementsInShader.mjs",
+      "bytes": 1121,
+      "sha256": "09dbdf49c1ae89f402f2acf371f008af8ac7bbc07f0e52d180daddaa18a29461"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/shared/BatchTextureArray.mjs",
+      "bytes": 513,
+      "sha256": "c80a652e9e3c9e12034547a365348b1b9235aaa00c2a273adba1d4ef9d8f508b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/gpu/GpuBatchAdaptor.mjs",
+      "bytes": 1937,
+      "sha256": "2c3d12756231074fae49fc463520c5ca92835c5a9af6a1359b779cb1ab44502a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/FilterSystem.mjs",
+      "bytes": 23425,
+      "sha256": "9eb7741ffa6742eace934b364a919f073426bf4f540189bfe61d744924069f0b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/shared/BatchGeometry.mjs",
+      "bytes": 1569,
+      "sha256": "31807130e128ea0f672c0e5538e94afbf52ec0e3471b6bb3d6797ad7584aeb02"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/shared/DefaultShader.mjs",
+      "bytes": 1336,
+      "sha256": "26a0b890aaccfc755a69d736c3c3fa4e2f1114a811230eff5326cab235ad5aaf"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/shared/Batcher.mjs",
+      "bytes": 12381,
+      "sha256": "aaf2400fc4ecfd0ff17adcb82f842a4f201307e392e56730937e0b0cbc9f96d1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/shared/DefaultBatcher.mjs",
+      "bytes": 4585,
+      "sha256": "b22a9a471384f82ebae5312edca6d731f096a02d879cb6d3f62d672c3fb30654"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/addBits.mjs",
+      "bytes": 704,
+      "sha256": "afa86b7524273e7ea23080d6813b4189857b4a1dddf4fc45d52e1249b512a2c3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/compileHighShaderToProgram.mjs",
+      "bytes": 1328,
+      "sha256": "c5a3bc1ad44d77348678fdfca88437ea46babef05072e3e718ffb6df0c5919a2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/compileHighShader.mjs",
+      "bytes": 2344,
+      "sha256": "df7dd8415db65ad6792e9c0ffab5f1caf75156a0b81f7e7202b1a321fe6c64f4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/shapes/Rectangle.mjs",
+      "bytes": 22649,
+      "sha256": "659d102db5ca195a8c422f039932f7a768bf8010061ac56d2512e50a45d2d9bf"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/compileHooks.mjs",
+      "bytes": 359,
+      "sha256": "919b77a05c51177a01f65f51e9af36150061f8b08ceaf33439eb6933e2d0869c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/compileOutputs.mjs",
+      "bytes": 1483,
+      "sha256": "7fb232cda7cba9a724119503be4925113d4d4a89276e0aa83e2b87a7ce3bbf42"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/compileInputs.mjs",
+      "bytes": 838,
+      "sha256": "81aa6064bafde0df9f140649e988773dce51071ea02382c71c831401e25e6c85"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/batcher/gpu/generateGPULayout.mjs",
+      "bytes": 653,
+      "sha256": "f99b7b2873e41412d4863e1e1de8b53cbda9f03e401792b53cc80d7a5af0caf1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/shader-bits/colorBit.mjs",
+      "bytes": 614,
+      "sha256": "6f2d6d0bd62be27b62c81f6edc51e662bb1fb7fa4933fc5d163cd725c0dce14f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/defaultProgramTemplate.mjs",
+      "bytes": 2558,
+      "sha256": "ecbd7e729c04565420dacf06be05fa9bfd13d56a65b729f583be22f7aff6a531"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/shader-bits/generateTextureBatchBit.mjs",
+      "bytes": 3635,
+      "sha256": "e583f181713c997c68cc01a0deb9842dfe3c10162ed95ea0745bd8abfa0402d5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/injectBits.mjs",
+      "bytes": 479,
+      "sha256": "510917ebbe39714845f0da960e0cfe4aeda49bb6dd559b4d33e48f19fc5ee7fc"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/shader-bits/globalUniformsBit.mjs",
+      "bytes": 1187,
+      "sha256": "1dc6db22d9a07f939f1caf67d77e52d7fd6677c59111e5c6f64e0bcf1070ad4e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/shader-bits/textureBit.mjs",
+      "bytes": 1294,
+      "sha256": "23f03e4d44ddc8f31a571ecd80fb864cd163f4d0238aa5cc4cef2d3609cc5604"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/utils/formatShader.mjs",
+      "bytes": 519,
+      "sha256": "7662ad01044384c030fdcbf32021e14cb68d72755ce893457ed1aa5df0ead26a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/shader-bits/roundPixelsBit.mjs",
+      "bytes": 765,
+      "sha256": "968aca459b8cc068e4465f2528c27d88e71c830c8e349791ad521f93540ec721"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/color/ColorMaskPipe.mjs",
+      "bytes": 1856,
+      "sha256": "7e5f217edc01b1656382e8a63b1c02d7e52d9d3f6e03f3e873f3f4528ced40f2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/color/CanvasColorMaskPipe.mjs",
+      "bytes": 1697,
+      "sha256": "e68e24b3da51a34c1ac39f6334f2cd60a968c12bab245a1e2aec38761989b1f1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/color/ColorMask.mjs",
+      "bytes": 478,
+      "sha256": "c6469e9cb1d4675c49e57450cf219179f5d653ee00cf281e83f5427f8f050847"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/shader-bits/localUniformBit.mjs",
+      "bytes": 1638,
+      "sha256": "e8cba4c0b841fa9b2ecfb9edd986eff35167db71820c56b6523b4edb362c3e42"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/stencil/StencilMask.mjs",
+      "bytes": 1226,
+      "sha256": "c173ba8472a054dd16c93aac95ee780037ee75a00b20f996659b5b1a05e35069"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/alpha/AlphaMask.mjs",
+      "bytes": 1383,
+      "sha256": "0f3a092d7213c0e8894e28dfba4606671203c77d88377ba43665cff77f75ed25"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/scissor/ScissorMask.mjs",
+      "bytes": 851,
+      "sha256": "088aaa00b67ea7930fd7fd6cbb184d66e69042954d556d04379277acc69ea639"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/MaskEffectManager.mjs",
+      "bytes": 1131,
+      "sha256": "acdf6a1001394d239a009790e0528e542fad8420ecc40eef68e7872c3b2b744b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/alpha/AlphaMaskPipe.mjs",
+      "bytes": 5523,
+      "sha256": "c8ba669969ad486a5398595ebac8848b33ce254cbe4b05f41fe190cf71e403ab"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/autoDetectRenderer.mjs",
+      "bytes": 2127,
+      "sha256": "24f624db8145eb1407cbed5c385bca718fb4533d53504d4ed3877a3098ee2b0c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/utils/addMaskBounds.mjs",
+      "bytes": 522,
+      "sha256": "5f9d497c53e96064738bc03f67ddac51194450d7ae62b68c9417f2801c86112e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/renderTarget/CanvasRenderTargetAdaptor.mjs",
+      "bytes": 5118,
+      "sha256": "513b16e6bec52f0aa5bd2015ba0f0309226fa6eeb0830b248e464753a2d4fbaa"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/CanvasRenderer.mjs",
+      "bytes": 2468,
+      "sha256": "00eecaf88694744c5e2b93d2df604aed3dc782dc464a7a787bb7c042b5181dd8"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/utils/addMaskLocalBounds.mjs",
+      "bytes": 1132,
+      "sha256": "4cd066ee710468f59242151e040d7520cf36c7d761a26a58c7a8c7b14578df85"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/utils/mapCanvasBlendModesToPixi.mjs",
+      "bytes": 2154,
+      "sha256": "6d55e9cec3881d57773c0ecce713ff4d4717f2076e3e6fe2236760cb186d91a5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/CanvasContextSystem.mjs",
+      "bytes": 5308,
+      "sha256": "989b0e78cf2137ea96111d2eae614db5cff63d385d2378abb126da36c2595cbc"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/renderTarget/CanvasRenderTargetSystem.mjs",
+      "bytes": 664,
+      "sha256": "1831188c8557a66f47640f0ea83fd1d192e989d578a8889e8f1f9cb15ed2e2d6"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/CanvasLimitsSystem.mjs",
+      "bytes": 439,
+      "sha256": "d2abcbb706e03cb2f6b5ac67a07f908ffc71e7bda5d0ec617b33a9afe6cbdb06"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/buffer/const.mjs",
+      "bytes": 408,
+      "sha256": "164cd12cc3fe9d6815390808df4b599f446f44b0122a196cce72afc0a3b72e8d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/utils/canvasUtils.mjs",
+      "bytes": 11962,
+      "sha256": "98d6e18094b39b578ddce6ffed3f7981f0ecd54f798f3d76ec5cec34ddbd8a8e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/utils/canUseNewCanvasBlendModes.mjs",
+      "bytes": 1281,
+      "sha256": "ac3de8aff9b376dc04c6bc2f6b03f6605db5ca26355deff360f667ca7813889f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/canvas/texture/CanvasTextureSystem.mjs",
+      "bytes": 2060,
+      "sha256": "dd6aca5fda8ad4d9ad8d0ba8afe972c70cf83a1df56c3656df8b83e46a229012"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/const.mjs",
+      "bytes": 539,
+      "sha256": "d39e4950fd279fd05dfcb94db8099c53f228911443782e56bc4481a75cce5bbd"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/buffer/GlBuffer.mjs",
+      "bytes": 481,
+      "sha256": "d3f7021a4eb9e1f203e94a8c90f404828054a361c83e57ea13e79fe85ef75939"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/buffer/GlBufferSystem.mjs",
+      "bytes": 6515,
+      "sha256": "97b5d052a71d15574a7746e4f7ad2746204ef7e6a1a06605486e3ffa98b43b18"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/stencil/CanvasStencilMaskPipe.mjs",
+      "bytes": 8067,
+      "sha256": "1f5134c29c7ce66d924a5b4e0f7cb69a1bcfadfd762b723b6edad927c0fc0e02"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlLimitsSystem.mjs",
+      "bytes": 840,
+      "sha256": "e2e9b34822386740b9ae19078c234efda821c5573de63ae2f51f715a1765adb1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlBackBufferSystem.mjs",
+      "bytes": 4505,
+      "sha256": "99a4daa32d80d7a34642a8b2ae2f8f66ada7a1f0ee0502acc681274fb5010a24"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/stencil/StencilMaskPipe.mjs",
+      "bytes": 4658,
+      "sha256": "c273eac86756c349b92747fcb5689c6e198635f041ebce3dfca23822be357676"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlColorMaskSystem.mjs",
+      "bytes": 652,
+      "sha256": "c847552e7e53a8df3651bd21b13788963beb62abd9de1e1594d6b1af8c10585c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/context/GlContextSystem.mjs",
+      "bytes": 9802,
+      "sha256": "7ff85229c7a47b1fbb2d4c29bcc2f3ab1304902ee704f9ce3e3f14431fa64945"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/renderTarget/GlRenderTargetAdaptor.mjs",
+      "bytes": 15214,
+      "sha256": "64f126a964365de77bea17db76fca2a32e32fdfcf4a0afe82bc44300c14e1d03"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlStencilSystem.mjs",
+      "bytes": 3058,
+      "sha256": "3435a3ec83c8a677a49c7f23eedce0d9c0b06db22390f62c4a58fda1c6bdb84c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlEncoderSystem.mjs",
+      "bytes": 993,
+      "sha256": "5a7febf4a832b1821a234a9ff580da9af4e5516f0e2d29d6c26836abb441da61"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/geometry/utils/getGlTypeFromFormat.mjs",
+      "bytes": 1189,
+      "sha256": "4b15fc356031639a7ec4b1982a00e22c172b5a38a19b5dcc8c01fd93ffa8b1f2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/geometry/GlGeometrySystem.mjs",
+      "bytes": 10624,
+      "sha256": "6c95c8327d4f603148e504fecd2f702d09f68267e371f5c67134b46004f1dddd"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/getBatchSamplersUniformGroup.mjs",
+      "bytes": 776,
+      "sha256": "34c648bd4bb329f4959f949a7215f7fe9dc3a605fd77a15069f8c487b0e95740"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/GlProgramData.mjs",
+      "bytes": 677,
+      "sha256": "36dd8aca215e03c1ae8d1af2849281990e3b262f80f27557cf39a76bfe078753"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/GenerateShaderSyncCode.mjs",
+      "bytes": 2699,
+      "sha256": "d207fb03e95e3d77b7ffd5aa96ba49a8f2c3213ab5fbe588ecc32729a94a44b5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/generateProgram.mjs",
+      "bytes": 2237,
+      "sha256": "c44a504494a23b29f9577fb2c3e43c6c05ca3ebfc8e3c1b39e75bdaca2639f81"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/GlShaderSystem.mjs",
+      "bytes": 4834,
+      "sha256": "09748b4c9929e246041ebb240f2b51233a1dfb64829c4d6cab4f6b8673f64231"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlRenderTarget.mjs",
+      "bytes": 697,
+      "sha256": "c72dc34ee8fe52977d69ce5cf38e4efbc57c83e3e364a295a30325753930c5e1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/GlUboSystem.mjs",
+      "bytes": 653,
+      "sha256": "42161361403df0fae763327781881b23abf94c95b6fad68c391e45a5b1b19931"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/GlProgram.mjs",
+      "bytes": 3445,
+      "sha256": "6cd38d2da8e6e73f913a1f8451359c190f973aef4f79e96abafc45d3b881d08c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/GlUniformGroupSystem.mjs",
+      "bytes": 3058,
+      "sha256": "31b08ea8e377c79a1d098e66076db689aba822abf043b373d15c5bc1034344f9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/migrateFragmentFromV7toV8.mjs",
+      "bytes": 406,
+      "sha256": "dc80594c9680f5264fcfa070c79045b22df67fe13c3e8fcc5ca1b5287922cfe8"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/logProgramError.mjs",
+      "bytes": 1786,
+      "sha256": "9b3bf5fbf6f855d5a8ea0c1ffa478dee563c3600d5629454b40fba1677867267"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/defaultValue.mjs",
+      "bytes": 1653,
+      "sha256": "7d0157c899f5a97fd076dac5d10804737c549a93a63be866b842d29a4d74ac05"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/getUboData.mjs",
+      "bytes": 665,
+      "sha256": "c1efcb22dc85add988ed865f60ea8104ffa1705e53bf472ac8e4abe55f9f8c7b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/ensureAttributes.mjs",
+      "bytes": 1619,
+      "sha256": "833b6797240d72c4c7b8090c66823ba9b03a154a773cc3257a19e5b23cf597b0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/mapSize.mjs",
+      "bytes": 388,
+      "sha256": "de522622379b9a77c29fd5581e4d040fa6fe1f98a1a6f1c3d7638ad38b96cf8f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/mapType.mjs",
+      "bytes": 1684,
+      "sha256": "8232ec27771d6c986f30bd57bd2c781f58a23a67cce26ff22aca128c38e693dd"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/getMaxFragmentPrecision.mjs",
+      "bytes": 605,
+      "sha256": "9b1f63abe7ebc267130ab4adae6dbd06c7181e79184660c8f19fc8d117b8e2d2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/compileShader.mjs",
+      "bytes": 243,
+      "sha256": "cec6be5270947a2f532dd01c216d2a465b18bb39cc0682af3ebf3fcf157f88c2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/extractAttributesFromGlProgram.mjs",
+      "bytes": 1353,
+      "sha256": "0f9a8b30abbf326dbaea0f5b07718f7b0257b4741f4095d71a5877ac28b62f0b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/getUniformData.mjs",
+      "bytes": 774,
+      "sha256": "d2488a53ba2b9e9c8b8e1fddd47a38a821a8965d09a02989cd079550c4af1611"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/preprocessors/ensurePrecision.mjs",
+      "bytes": 748,
+      "sha256": "4d1cde718eb116a40eb65d27525f24d4b2be054aae1f1781076fcfbfda13aebb"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/getTestContext.mjs",
+      "bytes": 365,
+      "sha256": "7b04d25151c3d89f01f5844b74d5650353bcb0e79848c4c4a35c45288aaa3a9d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/preprocessors/setProgramName.mjs",
+      "bytes": 646,
+      "sha256": "dccffed7092fff7353339bb7b9fa990851633435ea0035780fedd8d4986cd661"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/renderTarget/GlRenderTargetSystem.mjs",
+      "bytes": 635,
+      "sha256": "284d935aa347044df2bb51b4c9932f1480d9f52ce6632bdf7ff706649115f910"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/utils/generateArraySyncSTD40.mjs",
+      "bytes": 934,
+      "sha256": "0ceb44e53edc8207820561e89cb5e9aab987070e732b9b49547c640af6bb5cd2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/state/GlStateSystem.mjs",
+      "bytes": 7134,
+      "sha256": "1f4167188feed60d1563958aceffe68c0e622a3be53d78267000f5ebe794fa74"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/preprocessors/addProgramDefines.mjs",
+      "bytes": 621,
+      "sha256": "bd1113a58b1ab07d79613c6d785975059b8dbacc7bcc10ca522a7d56adc86c7e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/preprocessors/stripVersion.mjs",
+      "bytes": 195,
+      "sha256": "e268e3a83320574f78542ba8d13cb174bda05feb99b00d6001e4de6611546375"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/utils/createUboSyncSTD40.mjs",
+      "bytes": 538,
+      "sha256": "23cb4204a17c5a5cfe041edbc8cec302cbdb6eaa58386ffca0104249ca6709c4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/utils/generateUniformsSync.mjs",
+      "bytes": 2129,
+      "sha256": "d1ab2052eb16d6a40bc9f5876388946d5fe0a0fe56a7cd1cd255fa483c8a1c9d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/utils/createUboElementsSTD40.mjs",
+      "bytes": 1679,
+      "sha256": "b213d77036f428c5942418b215614a88351e9e51b4384e2a6ba3d7e2f3a4b307"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/GlTexture.mjs",
+      "bytes": 706,
+      "sha256": "8e5f67e8ca9539fba62276712baa42df53634d3ed0e593edef2d7745b78e025f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/uploaders/glUploadBufferImageResource.mjs",
+      "bytes": 937,
+      "sha256": "9e1b5cb7c0e9913e0ccbfb10ece8550e92d9f9772da9e6f318a013b286239a6c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/state/mapWebGLBlendModesToPixi.mjs",
+      "bytes": 1356,
+      "sha256": "614033f0cf1244d118d20343f07bef9126f136b85017555fcac4dc50d548fc24"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/utils/generateUniformsSyncTypes.mjs",
+      "bytes": 4311,
+      "sha256": "25bf60ea47772235d75c9a26a5849a0f4596fd4c27e4bcb1b057e27a02f0fc16"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/uploaders/glUploadCompressedTextureResource.mjs",
+      "bytes": 2966,
+      "sha256": "74d50988c02b90d22085d4c33582d53b6148e3f404956fc67e3897f95678dbe9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/const.mjs",
+      "bytes": 3484,
+      "sha256": "3bd31c08a2e4d47efd9665c23e9ca60c957bb6729bfa457765677f6823062c30"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/uploaders/glUploadImageResource.mjs",
+      "bytes": 3001,
+      "sha256": "1f666d41a6970a7a960999650b73d175177f901414a7c45f277771145fd5ddc7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/uploaders/glUploadCubeTextureResource.mjs",
+      "bytes": 1257,
+      "sha256": "856765c0c0556497fc38f9c33f17b2afb6798d69ed59ab0bf2066c52ebe35c60"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/GlTextureSystem.mjs",
+      "bytes": 15698,
+      "sha256": "83a69b7fb2162cab2c46cc5e2364d72bf52967730863b8d453e0d8f66c49e94b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/mapFormatToGlFormat.mjs",
+      "bytes": 1394,
+      "sha256": "cd2994f315fe34dddaf70860d243b091c0c12b881872cf1985fd442f5b4028a1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/uploaders/glUploadVideoResource.mjs",
+      "bytes": 838,
+      "sha256": "9ad7332d58dc8dadceaba606bbec8f49f76a7a05f07931456f02949c255a4acf"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/applyStyleParams.mjs",
+      "bytes": 1902,
+      "sha256": "3a9f0003e8e7f6778947dd5a05721f05047da1b22123123d9381b0bcbb5dffd7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/getSupportedGlCompressedTextureFormats.mjs",
+      "bytes": 3226,
+      "sha256": "81035ac91c62caf07748153948823b381b6577d0423673acf0b9d2d641721d2a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/pixiToGlMaps.mjs",
+      "bytes": 644,
+      "sha256": "33b3e05a8e33b56e2a4af51a5714c84eca7b5ffe443cd4902c02e08da08ffb3e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/mapViewDimensionToGlTarget.mjs",
+      "bytes": 394,
+      "sha256": "b214f2ce121aaf067a82285a320e9b45c7f26885b9c32762d88c190d2298bd93"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/mapFormatToGlType.mjs",
+      "bytes": 1649,
+      "sha256": "15ac8f56d37c8bb7edd44cb6f31cc9ed6b87b27bbabe5de846ff2dd8b3f3afe7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/WebGLRenderer.mjs",
+      "bytes": 2556,
+      "sha256": "f176d8c560ac8901a0fd8eaf84c748cec1517d3961ec03f9e1b1ae9f3b294240"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/unpremultiplyAlpha.mjs",
+      "bytes": 521,
+      "sha256": "fa1019373ef3f65e0e0870cc4232a29fa7a284206e3e2f07bb81ffa6de9935b7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/buffer/GpuBufferSystem.mjs",
+      "bytes": 2640,
+      "sha256": "05bce0f00f5327c55a455c6224cca78836bfa535f97c941dea908a020a234b26"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/BindGroupSystem.mjs",
+      "bytes": 2622,
+      "sha256": "1dc1b5b06a57e7f571f7ecc5164611e0676462989263353c30881bc9411246cd"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuColorMaskSystem.mjs",
+      "bytes": 649,
+      "sha256": "15d35d664fa4dfdf4fb5ee2b4b938b53f3b31c40660a60eccef6b534364ce3ba"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/program/preprocessors/insertVersion.mjs",
+      "bytes": 188,
+      "sha256": "dc8b91a1e3e1e5ba169d27a77f1ac69ca15a04265c7ccae4537c67d686448ef1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuDeviceSystem.mjs",
+      "bytes": 2336,
+      "sha256": "1cc94caaded33865e0c165e42dc5cc9d87c4c0d279fd04b8a4a9eebb52edfb0f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuStencilSystem.mjs",
+      "bytes": 1578,
+      "sha256": "46fd77d87ef6a65ec67192a0e5d3b054e7687c0c64297ac94d0ff6978dd0a81a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuUboSystem.mjs",
+      "bytes": 660,
+      "sha256": "bc392a52183b1ffbea4bf5e881a38478339d4ab0f59533d5ff7d26d79060b2ff"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuEncoderSystem.mjs",
+      "bytes": 5998,
+      "sha256": "16cb42eb2aaa258524783c95f68559687f124c9ddc9a09d220ddf6d46e205d4a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/utils/mapFormatToGlInternalFormat.mjs",
+      "bytes": 6091,
+      "sha256": "7fdfb21d3d086c9978a34989798d677512c444808e027d7d8c8743665455109f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuLimitsSystem.mjs",
+      "bytes": 544,
+      "sha256": "e9865adbc0876f1627ab5b4f13207fa6e515012dc90b6e5c6c6c55230d8e4f80"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/buffer/UboBatch.mjs",
+      "bytes": 1090,
+      "sha256": "3413a0752a80f0d70d616c4f76db7eb830d4eb0dbba1bf199ee9b27f6e75507b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/renderTarget/calculateProjection.mjs",
+      "bytes": 333,
+      "sha256": "3e6d7169840f065d27c7d302f025f5261989b32d17d65a50b967eb812a5e6243"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuUniformBatchPipe.mjs",
+      "bytes": 4373,
+      "sha256": "ecefb2c44651a025f295bd9247cc268746237390a7b014c5717f7c8975683a85"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/createUboElementsWGSL.mjs",
+      "bytes": 2336,
+      "sha256": "24be4ed746c4a2215097c69d2640b9ff92fdb39d87a9b12e0233b778f6866c27"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/pipeline/PipelineSystem.mjs",
+      "bytes": 9246,
+      "sha256": "ce0456231ca9d3e70492c0c5690a2b8475b596adaf588e2b1a635d3c0b1ffe81"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/renderTarget/GpuRenderTarget.mjs",
+      "bytes": 214,
+      "sha256": "395bb98856a63811c629503f5044a32b938b81c420fe0bd528625f5d02f3eb42"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/renderTarget/GpuRenderTargetAdaptor.mjs",
+      "bytes": 9615,
+      "sha256": "6e6d580e887bdbbf2ba3b0e4dd98b82564c7b7e3937ad45ed0c83ea7a34689d1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/GpuProgram.mjs",
+      "bytes": 3112,
+      "sha256": "af7198c5710d9d65ecf0c7f68f9e61eb249747d48da3411138a93e26ed83a81a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/GpuShaderSystem.mjs",
+      "bytes": 1067,
+      "sha256": "39af51ef5a6d28fb4479c088192238dd3845678883ff92d297c06fdc73b87b1f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/BindGroup.mjs",
+      "bytes": 2690,
+      "sha256": "6b34e77434c28c5913cd8df96e660b8aaecfaad241e64157003c4607b1991f51"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/extractAttributesFromGpuProgram.mjs",
+      "bytes": 2437,
+      "sha256": "b7f40b9280b1af0898f86d3bcdb1a48eb7e3b8a0cc2a49ebb89d052cd9b2427f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/renderTarget/GpuRenderTargetSystem.mjs",
+      "bytes": 643,
+      "sha256": "3a8dc70179da75fd9a752687e59fef465f7cf471df5da9dc68ecde12712d8fb8"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/generateArraySyncWGSL.mjs",
+      "bytes": 885,
+      "sha256": "9421d4706e1aa16767d799956cad48c3704bf9e3db42b7f2f0ab20c0fd1afd55"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/generateGpuLayoutGroups.mjs",
+      "bytes": 1924,
+      "sha256": "3e1808e1164f38af616fadb62eda59c97804c339e12e40f0361931eb76eb58f7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/state/GpuStateSystem.mjs",
+      "bytes": 1098,
+      "sha256": "992c2da23219db713cd5e4c05c6465dbf68daee0f914cb0c8b2c83320ff85624"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/state/GpuBlendModesToPixi.mjs",
+      "bytes": 2737,
+      "sha256": "ca1250d5bcc20ad46762f1cd057299d6a484e7cbf1239de879938a825fbf6e6b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/GpuTextureSystem.mjs",
+      "bytes": 9864,
+      "sha256": "e49cac372b7d0735a883f7fde8e8cefdb51203f6c47c7d3b8faec9def013d16f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/extractStructAndGroups.mjs",
+      "bytes": 1559,
+      "sha256": "e2d74efca729832aa2d2b8a202be0fae4eda4d7bb762a903b04bb1ec17381549"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/generateLayoutHash.mjs",
+      "bytes": 376,
+      "sha256": "bf83a9a4cb851a08922c0ae803b580ee5f81f4bb6e3f7e4764d3d11bf73d1b47"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/createUboSyncFunctionWGSL.mjs",
+      "bytes": 537,
+      "sha256": "baae4d937672ebfd906549e5fcadd9bfb4f7edd93b75ab9ee1e4786336451550"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/utils/removeStructAndGroupDuplicates.mjs",
+      "bytes": 858,
+      "sha256": "4584497e2e124e4217c878a64cbbfa54280b43515e1dafe6846783bd8f3ffe1a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/uploaders/gpuUploadCompressedTextureResource.mjs",
+      "bytes": 1791,
+      "sha256": "f65cde89297f7538531fcebdbe803c6205ebc1f032bcdc9cf4db31ca927a4a10"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/state/GpuStencilModesToPixi.mjs",
+      "bytes": 1197,
+      "sha256": "afb255084ebe5a3a23c6839a5d7520916a9f98fae8fbdad46cb1a42879ae9a43"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/uploaders/gpuUploadImageSource.mjs",
+      "bytes": 1319,
+      "sha256": "3522c313c2acdcb1c66152f4a24fb537dbdbf43e12a5a4d8d51e49dc69b75ffa"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/uploaders/gpuUploadVideoSource.mjs",
+      "bytes": 357,
+      "sha256": "6f9949562cb5ee4bf7a1e46e6ccb7e741dc068ad738ab6ef1f0d74b5440c0ab2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/utils/GpuMipmapGenerator.mjs",
+      "bytes": 5507,
+      "sha256": "e7857074405e931a0c2c59a3ac0469f2788b3bf43ac63eb912ca31f4b7208f4b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/WebGPURenderer.mjs",
+      "bytes": 2577,
+      "sha256": "ed4e21b712a135247cda03c0fa3da152c744618ae77f26af14344b2996b437ff"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/uploaders/gpuUploadBufferImageResource.mjs",
+      "bytes": 779,
+      "sha256": "b3e5fc77e58b8054fc179c81f00964235ca9d82fbcc344c86fbe8af2d01ad88c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/blendModes/BlendModePipe.mjs",
+      "bytes": 5242,
+      "sha256": "38f4938527fabd5bcb524965e43006036de0c118d0f1c94c6fa8536e1db36347"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/utils/getSupportedGPUCompressedTextureFormats.mjs",
+      "bytes": 2595,
+      "sha256": "c99dbc11ed71df0188532e05cd66dbc8ca602f2a1cf00433e4806342c5472e52"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/buffer/utils/fastCopy.mjs",
+      "bytes": 797,
+      "sha256": "7bd95431ab5b41f39f2a3efe5505e4a9eceb63f800d9e3103540881691475850"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/background/BackgroundSystem.mjs",
+      "bytes": 2442,
+      "sha256": "88e50624b5faae465af2a4f24a0d2b1930c9529271289134dafb19933a45200e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/buffer/Buffer.mjs",
+      "bytes": 5389,
+      "sha256": "6fd5888e41b98d1c5e3e7a70ab4619dacd247d1f1b4d5e0f1a14eca4f5857453"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/buffer/BufferResource.mjs",
+      "bytes": 2474,
+      "sha256": "6bf7656a967205eb28a487cdf23fe42866394a803396d11486c9bc0dbe6e5303"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/Geometry.mjs",
+      "bytes": 4740,
+      "sha256": "c2528d15ad4b4cb423d5221d3b3cb6a38c0ae6002919a6bc0a2acaf387331158"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/GCSystem.mjs",
+      "bytes": 10198,
+      "sha256": "636a8a563ccefac9216e3e500edd12815102c5a1226d74402ffb3258de88cb58"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/uploaders/gpuUploadCubeTextureResource.mjs",
+      "bytes": 618,
+      "sha256": "da6b3950ef6c00a4c0584fe08bf94f47a9665bf27a87d559f39653ba362ceb98"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/buffer/const.mjs",
+      "bytes": 830,
+      "sha256": "1ff5104ec1b8c5bc7ae963a3d6679f11063d627106f461581181559e7e19e010"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/const.mjs",
+      "bytes": 545,
+      "sha256": "40448c25656eaad2e727a20ac5784928cf0c484de8d4ee927a526e28dd35f187"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/extract/GenerateTextureSystem.mjs",
+      "bytes": 3916,
+      "sha256": "e3eabab497845b654db6479ee71bd3b548c3eef72e813489e2766196966be08e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/utils/ensureIsBuffer.mjs",
+      "bytes": 772,
+      "sha256": "2972725b281ed850066be145a5978243d9cfaed3ac9b60dc6cbf5769fc15bcd5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/utils/getGeometryBounds.mjs",
+      "bytes": 948,
+      "sha256": "26097cc5ebed6352c91b6c97b3a8c78dd10032f06e548c763dfa7e1f33f51d2c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/utils/getAttributeInfoFromFormat.mjs",
+      "bytes": 1907,
+      "sha256": "1522035b1ff74f7a506e299e0335aa4e4d9a4b216d064caead8ae4059c517645"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/renderTarget/GlobalUniformSystem.mjs",
+      "bytes": 4773,
+      "sha256": "b3803ce707e922e55ffbdcee8fc0974b93ab6bacacedaa246d9a5756b8956c79"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/extract/ExtractSystem.mjs",
+      "bytes": 13172,
+      "sha256": "ceb3a8f6cfffa60f1bcbac1971a915c60bd00524221367e95f26fa047a23473c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/utils/buildUvs.mjs",
+      "bytes": 921,
+      "sha256": "708d07a8cadf6efa84e2ff2f7246fc08eb8fc5d43d2ee2ab48c4a5f7f424c1e1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/geometry/utils/transformVertices.mjs",
+      "bytes": 615,
+      "sha256": "c1ab98b56f6ba99a96242d1c62b66068dbec860efece82fcf9a8eda4b252c5d9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/instructions/InstructionSet.mjs",
+      "bytes": 1378,
+      "sha256": "17eff0185be1756c979a5f033fc650e97ed04558df06066552309102d1fee8a8"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/renderTarget/isRenderingToScreen.mjs",
+      "bytes": 321,
+      "sha256": "6d8eeaabde7390d75872772830920a340a03b37b657fa15acbbdf5f164d426fa"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/renderTarget/RenderTarget.mjs",
+      "bytes": 4940,
+      "sha256": "74d5006b3b356d95d3520e2b55178e0bacad18238add57ccce397756d19b22f6"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/const.mjs",
+      "bytes": 346,
+      "sha256": "5ae32f004893a3ec8a2b1d0933e2932c306a1f8632ecec7c63255af1641d416c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/renderTarget/RenderTargetSystem.mjs",
+      "bytes": 14835,
+      "sha256": "b6ef46c86828ed5321e2b5281c3a4743e044770a97aa8d95f44a6922334eb089"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/SchedulerSystem.mjs",
+      "bytes": 2250,
+      "sha256": "702316ae2acaad4a3765112a8f3a7230c3190f03a617b5de6a7cfad6148aac25"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/UboSystem.mjs",
+      "bytes": 2909,
+      "sha256": "8875812de2e3e49c3817dbad8b35aa472b686643059964e084d09d3c6245c3c3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/utils/getDefaultUniformValue.mjs",
+      "bytes": 922,
+      "sha256": "d32a7dbd626d4ec474e9c2928d33a050624cd04de8e0a764814956745e192d2e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/types.mjs",
+      "bytes": 509,
+      "sha256": "e518940e20a63fa31e8c2f7cc98087062a12527ca96d6a4bf97b8732fe4a694f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/Shader.mjs",
+      "bytes": 6067,
+      "sha256": "9680c98f394567b5fdbdf18d2dccdc2fa1ad84fbbe8c064ba4bce0591067ad00"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/UniformGroup.mjs",
+      "bytes": 3296,
+      "sha256": "2d243bd542c02bd5e26d41e3395dd4638d02dbd386310fe74816def835640cb4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/utils/createUboSyncFunction.mjs",
+      "bytes": 1729,
+      "sha256": "4592858b097a24896e77f29ba34804f699ed0ea758d8921f7ed602fc4424aa6b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/utils/uboSyncFunctions.mjs",
+      "bytes": 2162,
+      "sha256": "0ce3020740a08f7dcf6d61d8398de2570915be723d12c2fcbef62856747b2742"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/state/getAdjustedBlendModeBlend.mjs",
+      "bytes": 351,
+      "sha256": "6f07a836e70ee56554a678f1519d61c5dc08384efa7b3f08354132362c2dad47"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/state/const.mjs",
+      "bytes": 734,
+      "sha256": "ff91c748637f9a9b93e1dae7c3185db43028639a4cf8f380d9c36a72579b6993"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/utils/uniformParsers.mjs",
+      "bytes": 3584,
+      "sha256": "beabde311800079bf24145277fd68fc939166ad508e48f55086e2874d7071755"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/startup/HelloSystem.mjs",
+      "bytes": 1074,
+      "sha256": "94688fb448447bde86198ecf9a2a1a14c160866fae2c2146193779c7a8ee061c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/state/State.mjs",
+      "bytes": 3917,
+      "sha256": "4e30c07e6a50b05177a93e99843499d4d69cc3b0d86b14a3de9d02d74a8ab67a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/system/SharedSystems.mjs",
+      "bytes": 1923,
+      "sha256": "e93a5ff863e0df5ddc8badb6f322ad728ce51f73541efdb7cb9ca6acee3e5fae"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/CanvasPool.mjs",
+      "bytes": 2401,
+      "sha256": "1acc5ad13c491396dba76631f07da7b9b72a6adae41ccbfe092c8e9d60f6f687"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/system/SystemRunner.mjs",
+      "bytes": 2436,
+      "sha256": "644de895da3638362d5e5820ae8cdbb1601c21c4b9845f680693b863bd6f46e7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/const.mjs",
+      "bytes": 1197,
+      "sha256": "64d4f703061f5f87ac3d19c3657f2febabdb953cbe11afaab1c083243f034c8e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/system/AbstractRenderer.mjs",
+      "bytes": 12510,
+      "sha256": "64d24a58b4acfd957deab121b44bea9ccfa2c4fdf22e6cfd7e726fad68dd1787"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/CubeTexture.mjs",
+      "bytes": 2638,
+      "sha256": "a1218079a84182b3511747f8e5e147f5566596bee2ea09c2bbbe686273f6b895"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/CompressedSource.mjs",
+      "bytes": 345,
+      "sha256": "54ae2ef79a44d10e46e3cff19d2c90eac2e1045b966e6a6ded68d09142a0b89d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/BufferImageSource.mjs",
+      "bytes": 1472,
+      "sha256": "ffa8152570167203292e27a995dc5156555e8f0b720be50d4274b6025da4c790"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/CanvasSource.mjs",
+      "bytes": 2068,
+      "sha256": "0a0eba7a95d4ae4679136b4024f87678a42267956da0eaca1e56a10a31e3edf9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/RenderableGCSystem.mjs",
+      "bytes": 3889,
+      "sha256": "8dd7235f1b7041b34b824a659978a6497f649e885241c0b541c95668b344dd2c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/RenderTexture.mjs",
+      "bytes": 1281,
+      "sha256": "bd541f0f3df3594841c9ca38c0392ed78610e2590c80e78ce63ac0f7cd88ac31"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/CubeTextureSource.mjs",
+      "bytes": 3487,
+      "sha256": "fdceacdce6b614616afbcda9d1ac59df6de1a68f8516dbe33cb82dfdafd142ac"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/TextureGCSystem.mjs",
+      "bytes": 3717,
+      "sha256": "a49ff50b6f5ea0587424b290cec2e2a0a4099164a69a69c2e0bc3de32ea0f15a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/ExternalSource.mjs",
+      "bytes": 4472,
+      "sha256": "46152adab08aebbac69a7d094402ecccb88052085c8b246b94ec924290bcd4f5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/VideoSource.mjs",
+      "bytes": 11449,
+      "sha256": "c208801e1781a5da393889cc0a86d29bb1302e26ff2c5523cf020ff35104ebda"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/Texture.mjs",
+      "bytes": 6194,
+      "sha256": "f1c8f2a7160b46f2de0993ac1bbc4ee17b4396f93d6c004b9765d5165c03b080"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/utils/getCanvasTexture.mjs",
+      "bytes": 986,
+      "sha256": "514c269a9d5e39b0f0cd7ac68ad984728672f1855202d236314edb3cff5dedd3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/ImageSource.mjs",
+      "bytes": 667,
+      "sha256": "403aa7f0412e23480a2a866add1014a80a898324ac1ac0f6479ef506c327eefa"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/TextureMatrix.mjs",
+      "bytes": 2893,
+      "sha256": "9089a6cd2ba889021d6c664e22255da215a112b094996c99ed69a99d117d3995"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/TextureStyle.mjs",
+      "bytes": 3805,
+      "sha256": "2459b3f414d1d896f1aaa34d71efc2f3e1030c78fe1f54660536f2eb50cdead4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/utils/textureFrom.mjs",
+      "bytes": 1847,
+      "sha256": "1c491e2a4fca523f929cfb452b66d696d8561696aad4654117feb0f72667dea7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/TexturePool.mjs",
+      "bytes": 5587,
+      "sha256": "c44ec9279b0f32c5e55d737b1ab5c72a2a3c7c6ac553fd1d646388a535541d4c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/TextureUvs.mjs",
+      "bytes": 2189,
+      "sha256": "cd26ebf9edc33fb2007eab01aaf14cc3d5ba697913708637d7abb27b2319355a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/sources/TextureSource.mjs",
+      "bytes": 12869,
+      "sha256": "1b28169f369e783460f95a7e0950ca88926d88532e8cef7b24ab613a697e4855"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/types.mjs",
+      "bytes": 402,
+      "sha256": "2e5616ed8deab93d2d71b16924a4dce082f5e9c14d26c7ec5b5598bcf8da6a5f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/view/ViewSystem.mjs",
+      "bytes": 3694,
+      "sha256": "0f4ab4ec4845cb0bee6c4353e29bcaa1ef24e91594ebab44a5e58cb17b2f001b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/utils/parseFunctionBody.mjs",
+      "bytes": 419,
+      "sha256": "0a7a98e65a68132e4e7b3422daa79778eab2dac0394d0ea3b98db0294d9c3502"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/shader/particles.wgsl.mjs",
+      "bytes": 1704,
+      "sha256": "feb7e06566c2c08df607d41bc383af1a0fd36f6cbfdf97c3c2c2ef3aead1fc48"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/utils/getSupportedCompressedTextureFormats.mjs",
+      "bytes": 1474,
+      "sha256": "a5a45533781945d2cf6db4093c4753203cbbf26cf707634554b4368ed51d72f5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/shader/particles.vert.mjs",
+      "bytes": 1079,
+      "sha256": "e0ecc697ca27de572a8d78848a375aa8203785f41f4ac32ece554707c57ea227"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/bounds/Bounds.mjs",
+      "bytes": 25173,
+      "sha256": "cb0e07cfc6a02a2c7a3fd688317c55c9fa161d46f255d904f63c5477879c8567"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/utils/createIdFromString.mjs",
+      "bytes": 435,
+      "sha256": "a4cc848c31d7d54b2f3d8bd2ff8f9792cc7352b6f1272f5c09ba9f84c44e6207"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/shader/particles.frag.mjs",
+      "bytes": 269,
+      "sha256": "c897c711905e025340a1d9bb748b7d7ffd1cb31408ac2679b15952337b3ed509"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/utils/getSupportedTextureFormats.mjs",
+      "bytes": 1481,
+      "sha256": "7583b69747677997b54bad278a1117f4f9e195c3d1b25ac280148680dd81b4e5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/bounds/getGlobalBounds.mjs",
+      "bytes": 2439,
+      "sha256": "c3b22c3c5ab199c2f0ab35b8881d27282c97530394c65c3198d10121d269fc7b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/bounds/utils/matrixAndBoundsPool.mjs",
+      "bytes": 354,
+      "sha256": "8d033e79b42a5a63e7166652ed8ce22c867b38587fbe2d43dc831e7c60d93491"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/childrenHelperMixin.mjs",
+      "bytes": 4805,
+      "sha256": "c477c800262a10655c56216b270f94398adc0850028a155d1fea4a2134d480e0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/bounds/getFastGlobalBounds.mjs",
+      "bytes": 338,
+      "sha256": "a6cdbc7e549eb758473dbb4261ed3cc1d2905c1be770dd26d27cc324a8e300cd"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/bounds/getRenderableBounds.mjs",
+      "bytes": 1145,
+      "sha256": "98ea4db9cb4ccb3554429bbabffdf81ec4e6206d42514a3fd26201376f5a4f61"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/bounds/getLocalBounds.mjs",
+      "bytes": 1812,
+      "sha256": "e2abb40fcc4e5c5a28b4c437cf361d2543f1d123912db52159d0bef26d9395c7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/cacheAsTextureMixin.mjs",
+      "bytes": 805,
+      "sha256": "fab8b5726565768a882f96b56511ede7e9509eeb0e51fd7cc103f99af8eae49c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/findMixin.mjs",
+      "bytes": 1542,
+      "sha256": "07db58cdd6e0777471b1785c2cdfcf2f9e4130d5d34cf7fcd08335c421448b6c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/getFastGlobalBoundsMixin.mjs",
+      "bytes": 2518,
+      "sha256": "221716c2d54a35ef6cf6daee08bc638b054182657a5fbf0661ad1bbddc837c92"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/effectsMixin.mjs",
+      "bytes": 2558,
+      "sha256": "b296d9a3eb5607416b00e186e370457c966828e21a05f717d4c567b5cd075b2e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/getGlobalMixin.mjs",
+      "bytes": 1854,
+      "sha256": "4b3b344f6a4ca2a8123204a2b342a402a84d740f65d02160772412c720808c45"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/onRenderMixin.mjs",
+      "bytes": 519,
+      "sha256": "dcfc4a95af203c0dfb92b8d25b0473d46108a3f6ab1aaa5898dc985fa7d08023"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/toLocalGlobalMixin.mjs",
+      "bytes": 1076,
+      "sha256": "46bd20fbe48953b5a6678cbbee4badf48a7389b3874cb77a1ebd03d2deb7c852"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/measureMixin.mjs",
+      "bytes": 1796,
+      "sha256": "620b30e80cb6998dad41c810c865f13a1b74f77e615f13757b3224d02cece7bd"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/sortMixin.mjs",
+      "bytes": 755,
+      "sha256": "1be252f2751b941304825ebd1ce21b5949ddc035b5c70fcace14793eed6f8e84"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/container-mixins/collectRenderablesMixin.mjs",
+      "bytes": 1581,
+      "sha256": "5f969175b698094b7b35535832bef0a7c3406bf4c882b17dbd7299b73ffd6b6e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/RenderContainer.mjs",
+      "bytes": 1028,
+      "sha256": "7b17f2840203281e49780c79771ad2996b1bd1ce176bf04740cfabc1c4aaa12e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/RenderGroupSystem.mjs",
+      "bytes": 6136,
+      "sha256": "ba508bcbaa9b35662af065a6ae4b074e5e6104d4d3c3eab7b709b307c2b302a1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/RenderGroupPipe.mjs",
+      "bytes": 3459,
+      "sha256": "117ae3d76dff00a1a7bac276e2d3893b580efa2f2d44bfa536393a5a6c5279b7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/CustomRenderPipe.mjs",
+      "bytes": 804,
+      "sha256": "750e8ea823831d7e86661e180bdfe00452bfdbd6608ddce86c384595be994f0f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/RenderGroup.mjs",
+      "bytes": 9210,
+      "sha256": "179b40bb92a7bb709bf897a352b1ff1c2f4876785fa8734981607ef38f776b4e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/utils/clearList.mjs",
+      "bytes": 259,
+      "sha256": "8fb4923cfb5f6e2f2bbdc8ce59bd67875c3bc654aa0cce2922ed4eb95c6560ae"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/Container.mjs",
+      "bytes": 38677,
+      "sha256": "a475c1f5fb2c941bd8b3fdaed4a8e4a5b1485e634d0b21c6ed998e86baefc822"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/utils/definedProps.mjs",
+      "bytes": 249,
+      "sha256": "eebd25c13d31f10de7a040978684fdcb902e31831fb0504320289cd5bea85195"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/utils/checkChildrenDidChange.mjs",
+      "bytes": 856,
+      "sha256": "557916a4b186b6ffde4965abc8ab2a2c9c764b7a2b24a99415600f42e2e5bf11"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/utils/collectAllRenderables.mjs",
+      "bytes": 496,
+      "sha256": "840c0463aee3b1424b357f2cfa7dc73633c8f8752d47e7b641786f19baad287f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/utils/executeInstructions.mjs",
+      "bytes": 424,
+      "sha256": "fdb1fafa08b617c4bbeb08e77b3939f39c96a456ef709169620248cbd2d60014"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/utils/assignWithIgnore.mjs",
+      "bytes": 276,
+      "sha256": "0a263786d038720de6bc8522e19187b78207c45482e8c8eaf2b15c4e52aebfd7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/utils/multiplyHexColors.mjs",
+      "bytes": 557,
+      "sha256": "948ed92c064a7dbafd7858ad00fc40209b2cc15c5a31fa0eea53f4c0105ed4bd"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/utils/multiplyColors.mjs",
+      "bytes": 430,
+      "sha256": "6ef7340397a2319f95ceb51542af41cd0b2d897d871d2906e091c95ed6f66a78"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/utils/updateLocalTransform.mjs",
+      "bytes": 561,
+      "sha256": "1e9479257639756bc9f1f46022caf58c7755fb2fbdb52f5dde8934e1e559093f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/utils/updateRenderGroupTransforms.mjs",
+      "bytes": 4429,
+      "sha256": "c73beac8640b7cde8e0ddae11d8bfebb6f441d4945e3233835dd487e3df8a778"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/utils/updateWorldTransform.mjs",
+      "bytes": 632,
+      "sha256": "b503b2f1a101e6fc60bf0396e83a31b4c77f88bfdbd7adabf38be36319ce22ba"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/canvas/CanvasGraphicsContextSystem.mjs",
+      "bytes": 4128,
+      "sha256": "83877d681ae40580e91ca730ace71a659d4bc806445a6327b440d754756a794e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/utils/validateRenderables.mjs",
+      "bytes": 628,
+      "sha256": "3a9652495b4f5bfbf80462cff37c38e4beafc8dd0cb90f8327e6066c1c54fc82"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/canvas/CanvasGraphicsPipe.mjs",
+      "bytes": 1340,
+      "sha256": "38e0656711fd1777c1332e95a2de01f279b8bbc946ada5038358d9fbda268cf3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/canvas/CanvasGraphicsAdaptor.mjs",
+      "bytes": 12812,
+      "sha256": "154b2c661b75be4dc9db3e0c5ffb7678469af5f7364e7b78d26b998c69f36ec6"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/gl/GlGraphicsAdaptor.mjs",
+      "bytes": 2890,
+      "sha256": "ce88402e505f19d137d92c0fd05c456b832c737084a34c062ec89775de80f5dd"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildAdaptiveQuadratic.mjs",
+      "bytes": 2189,
+      "sha256": "112ecdfc4766ea1326350fe0bd3c048d554f78f816c906fd3e0480f664c59a2c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildArc.mjs",
+      "bytes": 719,
+      "sha256": "791a17de95868dcb4e4ea5637cc55f4c0a0a835902ffb6044025ad78b59682b3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildArcToSvg.mjs",
+      "bytes": 4099,
+      "sha256": "bc4bb9b3b683c59057e9286175aa41701a529959052288bca9aa605fb54e28f6"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildArcTo.mjs",
+      "bytes": 1197,
+      "sha256": "74e84b525dd3c82f8aa54f8944b000e8800ff01d7317dbff0479fab45ce3ba8d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildAdaptiveBezier.mjs",
+      "bytes": 4310,
+      "sha256": "0fa9e772dd7201033901d6a48078642fe429cab9a70136ae3a2000d290c966ae"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildTriangle.mjs",
+      "bytes": 1189,
+      "sha256": "d798d071f6fcda800968716fc1472f4eb331ba5d66b6b409244321cd8e5de3da"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/gpu/colorToUniform.mjs",
+      "bytes": 575,
+      "sha256": "cd1a8c16e431a75a70833078ee092ed376df761d40f073e0e98c2936ba921903"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/gpu/GpuGraphicsAdaptor.mjs",
+      "bytes": 3735,
+      "sha256": "b76c1e510de33e336f2af8228e6253df58d49a4cdb25d8565208742067883548"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/BatchableGraphics.mjs",
+      "bytes": 1954,
+      "sha256": "344bf17c1a85721aac545460c8269466aaa6bc04ae7b6968b5c6a5f7d7f0949b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildCircle.mjs",
+      "bytes": 4089,
+      "sha256": "25b4321948b3fb90bc4be83ddaece79cb471d08f3f61296ce4ce932d4a73b2fe"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildPolygon.mjs",
+      "bytes": 701,
+      "sha256": "7e8a83b6d6f2d97d63c91e103f400b5a26a75507536993419816b6ec65c7f271"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildPixelLine.mjs",
+      "bytes": 865,
+      "sha256": "2f3ef436f419b70fa308edb0e273c4d3dbe25e7eef95cd2b64d2d43c42363010"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildRectangle.mjs",
+      "bytes": 1751,
+      "sha256": "83826ab88df7d61f86bf1831b9dc83202e9efda42a740ef29b6e3c94a4652b27"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/fill/FillPattern.mjs",
+      "bytes": 2594,
+      "sha256": "9e789ddead1f05e2a9e2f9bc9143235b46144df98afe41e425046b45d4c4214a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/fill/FillGradient.mjs",
+      "bytes": 7928,
+      "sha256": "b0e3ee3fcea5c9454427be1cbffbdb8a782d9fbac2981354f5dc6fe4fa120ae0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/GraphicsPipe.mjs",
+      "bytes": 4753,
+      "sha256": "2df1d0ece9d8ef08b49ae054c3f94a936a263328b1a2d02a30a7c058f22b1be3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/GraphicsContext.mjs",
+      "bytes": 33201,
+      "sha256": "3bdb002575342bae4207fd2523f75685cd1d7f5487af7d512438ee54d6b65dd7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/const.mjs",
+      "bytes": 137,
+      "sha256": "54474015f2c4e450e19a6bed992e3253e7ffff31f31a3d367ac35b8fdfe85ae0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/GraphicsContextSystem.mjs",
+      "bytes": 6561,
+      "sha256": "4bb896795e190daf33d49866d2dcb25d13edddb2d1bd323dd365b90b8e4c9a92"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/path/GraphicsPath.mjs",
+      "bytes": 16662,
+      "sha256": "e07003a9fd9131966e080adba654ba1be0691942e64d5d74fd532a9477e2837e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/Graphics.mjs",
+      "bytes": 25447,
+      "sha256": "e48e3abb7872b9de840da7bed6df220a002654798d698049865f2c170edb73ac"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/buildSVGDefinitions.mjs",
+      "bytes": 2283,
+      "sha256": "13ad24670a21d94b47cc75a62c1fa2a9fd22d0bdcc7da4bad31bcda823c3d631"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/buildLine.mjs",
+      "bytes": 11405,
+      "sha256": "9388e8402f0b7ac9eb4cae8bd05303f102ba584acb0b3185aecd26343c5fdac0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/path/roundShape.mjs",
+      "bytes": 3821,
+      "sha256": "806507a60547fa07260106111976822486a4408a4a1a5e2a5466df43f1daa07d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/path/ShapePath.mjs",
+      "bytes": 22091,
+      "sha256": "f8f42337d91c2d1b7241b4448da820ddb5669370eef7ecddae2a2ec4a020f9e1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/buildSVGStyle.mjs",
+      "bytes": 1234,
+      "sha256": "aaaad4143f94124895d1b0437225a44e57af7817856f236546ae78b653d08195"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/buildSVGPath.mjs",
+      "bytes": 9181,
+      "sha256": "65020c0713d81ef5140c011a1735f55ecd17d8de7c2cb2d6e81ba75515a65889"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/parseSVGDefinitions.mjs",
+      "bytes": 1861,
+      "sha256": "5604a96431de50930f2e073fa57edcb367229fa273ba14acd1031b73c6d96247"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/parseSVGFloatAttribute.mjs",
+      "bytes": 246,
+      "sha256": "0d2ddbfb2e8bebb529161449677c2e27bb239a747257783ab24981283d27a741"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/utils/extractSvgUrlId.mjs",
+      "bytes": 230,
+      "sha256": "fda2b4d2f16ef7eeb664a145b2047fa1c3ef78ca211a78d121ac2f7252d374c4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/SVGExporter.mjs",
+      "bytes": 2151,
+      "sha256": "87323e610d26022e78910eeff52b9c4755421513bc0701faf277b8481ac11091"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/parseSVGPath.mjs",
+      "bytes": 4893,
+      "sha256": "b3fd1bb375f4005907f71f97e700d768deb6643698537c4a4fb4985f43e66e89"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/utils/pathOperations.mjs",
+      "bytes": 1170,
+      "sha256": "d08b4e8ee7646a13121c831774360cd351b99a93deee4f8898023e267819f8de"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/parseSVGStyle.mjs",
+      "bytes": 3230,
+      "sha256": "c07188b65273e55f50e7d9b0e5a6265dd11eb9ece22eee910561333db77ce628"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/SVGParser.mjs",
+      "bytes": 6905,
+      "sha256": "2f61e11c2f0b20f1c1120fc86477a55e0df9bec963fa6c77cd9155b2e0a5312c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/buildContextBatches.mjs",
+      "bytes": 6665,
+      "sha256": "1bd79f565f83bf2b350a30910d7f720370753a4591a7b37c816ed8f33e900d23"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/buildGeometryFromPath.mjs",
+      "bytes": 1960,
+      "sha256": "169d2b669e9122bfa989159a8a067b1c7828899bb4fc380ec2f2557eae1a65dd"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/svg/utils/fillOperations.mjs",
+      "bytes": 915,
+      "sha256": "2318bff370bbbf68023b865da158feaa54a42054749ffc566db2ee7cba18ccc0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/convertFillInputToFillStyle.mjs",
+      "bytes": 2973,
+      "sha256": "05a28c943348b950044fa45307349e6c759180e52cceafd70da2879bb9928740"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/generateTextureFillMatrix.mjs",
+      "bytes": 1694,
+      "sha256": "8b51d6324dd35712c3adc11a7afb3f278c41122deb63b7b9a5066efe876df45f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/getMaxMiterRatio.mjs",
+      "bytes": 1577,
+      "sha256": "adb36c18229a20b7c96694638e30706818d394d2a25869a0fe0290c73434862e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh-perspective/PerspectivePlaneGeometry.mjs",
+      "bytes": 2536,
+      "sha256": "8a9bbbf9cc3f3fa2b308381e1dfc8a60bb0049746b431e00abff04f95cec4500"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh-perspective/PerspectiveMesh.mjs",
+      "bytes": 4923,
+      "sha256": "686e5407c0875c4f79f3ae1d6f6a7ebd967499b421fedb4d46a9b4dfa5258021"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh-perspective/utils/applyProjectiveTransformationToPlane.mjs",
+      "bytes": 1149,
+      "sha256": "1b14440cdb6e170a76714fb28d95e9267bf9e405ddacc9c6621acf388ec10fec"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/triangulateWithHoles.mjs",
+      "bytes": 799,
+      "sha256": "579559ab7cfc4501ef4ab227c69ac6bb69686ebe8368c921226489a920d9e0e5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/utils/getOrientationOfPoints.mjs",
+      "bytes": 467,
+      "sha256": "df7ce1e9edc5cd9ab148bbbf55b418c86bdc92736eaa532a6adcca5dfcd65312"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/layers/RenderLayer.mjs",
+      "bytes": 15645,
+      "sha256": "ebf2b66e895703631545827f793a098fd3d347ffef040ef82ec69b43f291c8fe"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh-plane/MeshPlane.mjs",
+      "bytes": 2555,
+      "sha256": "a6ad3ff3f1691d510897694800db9acbb938340f5d8ee560e191d4c18600879a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh/gl/GlMeshAdaptor.mjs",
+      "bytes": 2193,
+      "sha256": "ec6b23110f2b9ce37a2ac621ce307f7d1c3df8cd3a8712937012398d7657fda1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh-plane/PlaneGeometry.mjs",
+      "bytes": 2483,
+      "sha256": "d652bda3121712bdb871b4dbc65291bf4095052c0920c22296296f188a323176"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh-simple/MeshRope.mjs",
+      "bytes": 2297,
+      "sha256": "c3944856ade14cb0879d14e3d1ad2eb7b643127201812e188ed1f21f31ff6e83"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh-perspective/utils/compute2DProjections.mjs",
+      "bytes": 3198,
+      "sha256": "ddb942c4ac63f4d2655faaafe4e89792968249f36d1c94821d97237ba7be4fe4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh-simple/MeshSimple.mjs",
+      "bytes": 1962,
+      "sha256": "2a4b8ba99f71706861fe64bf25b749ba3b89feeec6cda7d948aa129edcaae63c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh/shared/Mesh.mjs",
+      "bytes": 5961,
+      "sha256": "c8fec8fe04763ed1529f70a13bdd194270e68bb456b68032162ad1a6ca6cb6ea"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh-simple/RopeGeometry.mjs",
+      "bytes": 4357,
+      "sha256": "2cdac6ec480faf5e36b83c89b690d9ae73f4dc8c3c18a6e21ea4c4dd41ff22e5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh/shared/getTextureDefaultMatrix.mjs",
+      "bytes": 248,
+      "sha256": "6995972970c0d2912a8b09eeab85933acbb87687029290494f1218bec7e90c41"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh/gpu/GpuMeshAdapter.mjs",
+      "bytes": 2314,
+      "sha256": "a40c80e83338c45c36bce8e15544b2850ad8f613ca21f062d651ef51bda9c803"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+      "bytes": 4756,
+      "sha256": "625e020c0b6739ca59a98ec19f281171483c25ca65aaa3e0e50081a502a71d9c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh/shared/BatchableMesh.mjs",
+      "bytes": 2345,
+      "sha256": "1723a1be7677c5f20f495bad82de6645f74f84348c5b9906b698be95b1f2e316"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh/shared/MeshGeometry.mjs",
+      "bytes": 3324,
+      "sha256": "7e874f590152e042c47753c2c0be81d79dcabf3c9197d900ed1e02f941ecadf1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/canvas/CanvasParticleContainerAdaptor.mjs",
+      "bytes": 2405,
+      "sha256": "d58c0050fa85226e462d7b64b63a4113d670e372fd05730a3286100935c4ddbc"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/canvas/CanvasParticleContainerPipe.mjs",
+      "bytes": 626,
+      "sha256": "0c965f42f214c4ca4735188c41ab26433c0b3e52b45b4f9341092387f2f61769"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/gl/GlParticleContainerPipe.mjs",
+      "bytes": 597,
+      "sha256": "824f32144f99b478da5181607ef4cf57f7e6de6813ff9b41a7a0952560348003"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/gl/GlParticleContainerAdaptor.mjs",
+      "bytes": 952,
+      "sha256": "63eaf082d58a019cd0a29950e641dd9a58f7efb343b5874d31b2b9c29b353f0d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/Particle.mjs",
+      "bytes": 3938,
+      "sha256": "1d2c9e1021a08957b87a32f64568b024c033593a7715897ec7af9423ea722b05"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/ParticleBuffer.mjs",
+      "bytes": 5101,
+      "sha256": "6538adf0f9a3bd6c35d099497e39f5aba5eb10cf1e3dc14b3f32c8e60674f329"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainerPipe.mjs",
+      "bytes": 3793,
+      "sha256": "180d095b2064234c305f71fd0a7d6fad3e958e25863ead35c4afd072cb265425"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/gpu/GpuParticleContainerPipe.mjs",
+      "bytes": 605,
+      "sha256": "4474d5cde436c5581dc5930a096c96565defc22f749147989937df496e55d1e9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/gpu/GpuParticleContainerAdaptor.mjs",
+      "bytes": 844,
+      "sha256": "dee67ea096bc2873bc6e2e5ff7dcb5281434d85ccec7b771e4c93ce010f1ce3f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/particleData.mjs",
+      "bytes": 3027,
+      "sha256": "2199108ce23c82b7e34a9e65fe1ae1244a63783de2d054d96ce8a5969fd889a7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/utils/createIndicesForQuads.mjs",
+      "bytes": 782,
+      "sha256": "da6ae6b2250474fd6d4f8131adfed0bcbc63fd6911cab3e9c9e4dd10da14f71b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainer.mjs",
+      "bytes": 14530,
+      "sha256": "3885aae31d88cb0f268505c52f68be72d3c35ae895fbadec95efb8c742e4c438"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-nine-slice/NineSliceSprite.mjs",
+      "bytes": 14231,
+      "sha256": "d8106e1c7777e7a37d0b4f4a3f6cb0b41e75180569b9504c737dab6fa41bab43"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/shader/ParticleShader.mjs",
+      "bytes": 1808,
+      "sha256": "5c937f48eba8946bdd2a93529288a49e42478fce4c1067e458ecdf3641f0471a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-animated/AnimatedSprite.mjs",
+      "bytes": 17128,
+      "sha256": "56b144201d201fd73f7e0425d6ef75283d6341abbb2faf2208450ade37817b0e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/canvas/CanvasTilingSpritePipe.mjs",
+      "bytes": 3731,
+      "sha256": "816ed265eb80232615ff85b6e54ca701fa2e4d13bb2d6ff77661f9f5a3788d1c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-nine-slice/canvas/CanvasNineSliceSpritePipe.mjs",
+      "bytes": 5736,
+      "sha256": "ccfe1cd90bda36b59463d2e82e4b4058353afc13c3c08922b9fa7f2f4fb26b3f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/shared/utils/generateParticleUpdateFunction.mjs",
+      "bytes": 1270,
+      "sha256": "c4c9e3fc38d44f304e5b5441c309f748e43679c21376d98a08c7ae918884cfdf"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-nine-slice/NineSliceGeometry.mjs",
+      "bytes": 4670,
+      "sha256": "cc25c5b5de76bcc629bc71f550809f85ee94040226f1b91031522b5f482f4815"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/shader/TilingSpriteShader.mjs",
+      "bytes": 3425,
+      "sha256": "9d4287f207e692a0c646210de8ebf9e066801c117133c5f0c322473248b527a9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-nine-slice/NineSliceSpritePipe.mjs",
+      "bytes": 2426,
+      "sha256": "77218f636957fd33f40557d14b5eb8b36ad84c781d8c6df68e45ee5adeb8c168"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/TilingSprite.mjs",
+      "bytes": 16228,
+      "sha256": "fbd7b9153132755fd9fb70f4af18e4fadd3be9010282a6e7f36375ad4b5ab479"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/shader/tilingBit.mjs",
+      "bytes": 2955,
+      "sha256": "fd3306ed3c4292955f4924aff8e653e2b4c2b90dbf2f42747e3a942f4785fc04"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/utils/QuadGeometry.mjs",
+      "bytes": 403,
+      "sha256": "e21e2346061c5362c333701326557a5ddb3a69939de0cf47ce94afa3e5b69d14"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite/BatchableSprite.mjs",
+      "bytes": 757,
+      "sha256": "ebd9375de8efc6e43bc0ef980f7c0a8bca5e00a9924b3f6c640ba06ac98193f8"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/utils/setUvs.mjs",
+      "bytes": 1080,
+      "sha256": "5dc215b5809c62e8ac434d75a280e0c13966918d238ce0da252471ee4c15d958"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite/Sprite.mjs",
+      "bytes": 11379,
+      "sha256": "4ba49186e0fc267775959ce5b949823fab0d3228f4453e9e87c47a87b3bb6497"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite/SpritePipe.mjs",
+      "bytes": 1848,
+      "sha256": "79dbc42b0aded4ba44940bb85b1f4c0b33622faa6ee24cc23d0450ac4aa6ef6d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/TilingSpritePipe.mjs",
+      "bytes": 6065,
+      "sha256": "1a1e24614d918664739a108a086797234c77ac04c395567546fff64d1bc853af"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/AbstractBitmapFont.mjs",
+      "bytes": 3074,
+      "sha256": "d352a8258bc761b8daa82bb39365b687131c0e16c2a7b92473e041938f06fb66"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/AbstractBitmapTextPipe.mjs",
+      "bytes": 5798,
+      "sha256": "f1b94c7e83dbf287c19151cdfa690b3f060fe35c47ee49c423700e5cc7509d98"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/utils/setPositions.mjs",
+      "bytes": 623,
+      "sha256": "30d18e6695e7d6a053a8d47836dc946ec7cc7216942e9eb54eddd476b88bd1bd"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/utils/applyMatrix.mjs",
+      "bytes": 564,
+      "sha256": "843e66673d6a26a715f6df89658b0f6941f22cb5d41f5b82d286c4a7bd8042a4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/asset/bitmapFontTextParser.mjs",
+      "bytes": 3023,
+      "sha256": "ffbc06a0ad5df45a2c45ada209ede6ca76b6885cc70f1afef27ee865cb5bcd33"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/asset/bitmapFontXMLParser.mjs",
+      "bytes": 2890,
+      "sha256": "15ec749efb4a625edaf7f13bbfc722aef48a17a39e555dbbb420ef7836771c8e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/utils/bitmapTextSplit.mjs",
+      "bytes": 2661,
+      "sha256": "c6a98b8eda7aa233e5b2debe80f762611ae91b9066362a6ae9d25a0ab99e779d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/CanvasBitmapTextPipe.mjs",
+      "bytes": 456,
+      "sha256": "ad79ace268a981a01c021cdc9f6ce21db936e4ecea522242f4b252b050d92067"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/asset/bitmapFontXMLStringParser.mjs",
+      "bytes": 548,
+      "sha256": "f45e182d25bb2c0ebb9523cecfe679dbadc91f0e4075591210fb1e0ed8dac439"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/utils/getBitmapTextLayout.mjs",
+      "bytes": 7161,
+      "sha256": "d3cb0fb742619e3a28c42f006cdd7ce9b0b7c400fb052342f041f45af3da151e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/DynamicBitmapFont.mjs",
+      "bytes": 11923,
+      "sha256": "4fc9f428be34ded4e04e761cbd3e4f3d07894c662899316cc483e194e7b68c2e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/utils/resolveCharacters.mjs",
+      "bytes": 1147,
+      "sha256": "cd01c8ecde01a4d10f0dd1d7412c71d8c31efac45650e3ba43da33cb95dfad6d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/GpuBitmapTextPipe.mjs",
+      "bytes": 579,
+      "sha256": "d584ffc13acdca13e7aa9fcbf3340ebd8433ebc6c5936460b5a0f787ecb923b9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/BatchableHTMLText.mjs",
+      "bytes": 576,
+      "sha256": "c962a972a12235ee249ceca7f4c24fe0b16cdafd7976b913a2cc6eda1e061149"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/HTMLText.mjs",
+      "bytes": 2894,
+      "sha256": "6123e09619c89728dca8ddce43af470ea57215517dac151825b113f15ce87ae5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/HTMLTextRenderData.mjs",
+      "bytes": 1319,
+      "sha256": "be42b37127cb6023fd7053e216bd29b94333f85f88bb3fa272f1a3797fd1d9fb"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/BitmapFontManager.mjs",
+      "bytes": 6766,
+      "sha256": "da3fc9a53050764877f9869a50433221aa364f60599fb45c66ebc75befe89bb7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/BitmapFont.mjs",
+      "bytes": 3674,
+      "sha256": "b72301576cfd2ebff13df3884f7cb3d605361c2dc063c6f468fa2949485ef4af"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/HTMLTextPipe.mjs",
+      "bytes": 4427,
+      "sha256": "9d0f790951b1c4cac0ecda06cee0e767be0ef737ac2c0018215220d38eb47e8a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/HTMLTextSystem.mjs",
+      "bytes": 5845,
+      "sha256": "59386b318ff09a0fa5c01d5f88ab0ca81250e526773c0218a8280bc0a0d6e54b"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/HTMLTextStyle.mjs",
+      "bytes": 8328,
+      "sha256": "4dc8154d3ab2f955708ec86d8dcbbac4b39d336bb3a6070e3ca21556f366bf7a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/asset/loadBitmapFont.mjs",
+      "bytes": 2925,
+      "sha256": "7cd4324009841c3aa558f5f1feb8c7dd198bf1a7c9b26290b1e5cd8d2cc8009f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/BitmapText.mjs",
+      "bytes": 2886,
+      "sha256": "35398b795225ea782e8a7bb906edd3bdf497bd5a1f584253539667977d26c8e7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/utils/extractFontFamilies.mjs",
+      "bytes": 937,
+      "sha256": "43fb7e0e84102ac36b6bfee7d093752737b02b0d52af6f13dea552b61ffc25c0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/utils/getSVGUrl.mjs",
+      "bytes": 675,
+      "sha256": "167da8feb5ede7edefc4c1cbd79ad7a77b463229e5c500d49d95d4fc3ecd0a17"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/utils/loadSVGImage.mjs",
+      "bytes": 430,
+      "sha256": "3171d0bdbf01b371339e746c2c3e57af10d4eecdf9f5e60d49fda0b466d49ab3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/utils/getFontCss.mjs",
+      "bytes": 1280,
+      "sha256": "03adae0c82a9ad62cbb1a33f3c20f0c17db6ac327ca4c725b791ca1b24605442"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/utils/getTemporaryCanvasFromImage.mjs",
+      "bytes": 538,
+      "sha256": "41a3ba7a7feddbfc59893800ece124b6265a2e814f47b778f1cb9d97b9fe35c6"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/utils/loadFontAsBase64.mjs",
+      "bytes": 519,
+      "sha256": "868be97cfb16c0d6d4f1b0193a487c10faa49f1b8a8cd35c2af12158c60c09ae"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/utils/loadFontCSS.mjs",
+      "bytes": 419,
+      "sha256": "3ddd02d151aa43e09fd4e444da0c0decddc33f3d5f70ce15593a787f42215e17"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-split/SplitBitmapText.mjs",
+      "bytes": 2860,
+      "sha256": "6f30c1f480de3df9a398af779dcc202dc4428c9400610da5ec40ff2af027de73"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/utils/textStyleToCSS.mjs",
+      "bytes": 3592,
+      "sha256": "27d5a97bdea84eede288856c74810bf806168a94df7b5e01372936d9c761aeda"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/utils/measureHtmlText.mjs",
+      "bytes": 1324,
+      "sha256": "3ed6229f98028b43af59571639bd30ce431622338d114ab3ead1544fdefa6ddc"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-split/AbstractSplitText.mjs",
+      "bytes": 7319,
+      "sha256": "28bcc28b066310b083d21f0787de51378068fbf17ffd79649ff6f8a4bfff26be"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-split/SplitText.mjs",
+      "bytes": 2359,
+      "sha256": "7b6bd6e800117eb84402e9ca60805ab30c99bb27ce990ec71f728ba25270a805"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/canvas/BatchableText.mjs",
+      "bytes": 201,
+      "sha256": "71c53d1ee0c9c4a2665b23a9dc4998521e92e55ab7800de96b4bbc1aae94b448"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/canvas/CanvasTextPipe.mjs",
+      "bytes": 3302,
+      "sha256": "7d077b6a9ee4806e3e74f35e1abfc3f9eff083744544ee58b1ffe570c72c46f3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/canvas/CanvasTextMetrics.mjs",
+      "bytes": 17349,
+      "sha256": "eb6aef85e6211e357efa145177cafaf7f30a7c06600a7b2f13cb56b7a6ab2a94"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/canvas/CanvasTextGenerator.mjs",
+      "bytes": 19284,
+      "sha256": "973cb86d69f57db4a90ac58e1c717423e8ba8b7832844363f04fe25c2311661c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/AbstractText.mjs",
+      "bytes": 11159,
+      "sha256": "058bdfed0f35ef37a0639c698b10bdc851f17f02cd6fc5f87810b769604a6fe9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/canvas/CanvasTextSystem.mjs",
+      "bytes": 481,
+      "sha256": "84402263a02f6b2c163b5389ed879a5b77ffbaa97959e545966bf65f6f2e15d8"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/fontStringFromTextStyle.mjs",
+      "bytes": 891,
+      "sha256": "164d7784bab1cd2a5d9b347b162fccbf2cf80adb7ea53ecd8eabe97b8027b0b0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/getCanvasFillStyle.mjs",
+      "bytes": 3566,
+      "sha256": "ae6052cebe80548caebacbafcc2f3e83f84648a8e952b58bb028363a26bbbe76"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/parseTaggedText.mjs",
+      "bytes": 2916,
+      "sha256": "99fd43ba7c8deff05e95e4a87c6ce054b76f0a34d7883afda65aef3e1b7341f7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/textTokenization.mjs",
+      "bytes": 3847,
+      "sha256": "b346bbf429f2ab7932e1892de93e06e679e4f89e96cb0f3511b8320c073d6fdd"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/sdfShader/shader-bits/localUniformMSDFBit.mjs",
+      "bytes": 2181,
+      "sha256": "44b664f593f9c45d93973e9f7873dc4d45a6133b31da88bacbb57a1baeef2690"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/sdfShader/SdfShader.mjs",
+      "bytes": 2148,
+      "sha256": "bed361224ce9ea054c99f8c6ff7950333dc8db52b036de02681b500683bd82ff"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/measureTaggedText.mjs",
+      "bytes": 10833,
+      "sha256": "54265083e0f6c74c33b320028d0f241982a37b0cb64822c2d8bf7d51705f801c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/wordWrap.mjs",
+      "bytes": 3338,
+      "sha256": "bc370a1b9e4af388b1e19f7bd5ab9d9e29d8c2a89f6b433c7afeaaf50f41ff02"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/shared/GpuTextSystem.mjs",
+      "bytes": 478,
+      "sha256": "88b642d86caa5a5ce68d6cc514fd79a032099396f1ec8cf4d3562b654981916f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/sdfShader/shader-bits/mSDFBit.mjs",
+      "bytes": 2389,
+      "sha256": "d2d25dc63eb9c688746e339ac20b2bb932c2163f1c716ef4d3f6fae9dac2ed1f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/Text.mjs",
+      "bytes": 1855,
+      "sha256": "dd1701e86fe9317fc7da526dc4b572daec6d00c2f6e9fe38d2c320854aed8a01"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/utils/generateTextStyleKey.mjs",
+      "bytes": 1939,
+      "sha256": "f2786d34f7e1e118a3998c409d9ea05a316ec12a785fe95188a50022a078cf49"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/shared/AbstractTextSystem.mjs",
+      "bytes": 6886,
+      "sha256": "72d29fed253a20c4eed44791769c6eec75d582b5f966fbca508a893d53c3d1e5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/TextStyle.mjs",
+      "bytes": 19016,
+      "sha256": "19d33d6c5fcafa3634ac9ef7e0a778088e6d7a48b3b3131da4af29001be4821c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/utils/updateTextBounds.mjs",
+      "bytes": 650,
+      "sha256": "85c6dc78a5df27916a413c3afdfcf390959db6ef0c01c7a750c4b66e37ebbfb4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/utils/getPo2TextureFromSource.mjs",
+      "bytes": 1009,
+      "sha256": "c149215c448de7b695f26a13ea64d20fa32b9c208fc76b9aff0d185bfd6c3026"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/spritesheet/Spritesheet.mjs",
+      "bytes": 6289,
+      "sha256": "8a61bfb1016407fd976cce3b11f4cfbf4c224e5a491c4e38be99027c024878ab"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/view/ViewContainer.mjs",
+      "bytes": 4176,
+      "sha256": "f5bfadb02be1735b8318460261d965f92fad2563c3ac06774d9b66bf2ecc9d18"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/spritesheet/spritesheetAsset.mjs",
+      "bytes": 4983,
+      "sha256": "00280641ea1a230a555724f4ef40ce967e42df257280c2ba9b6d57f150735cec"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/utils/canvasTextSplit.mjs",
+      "bytes": 12274,
+      "sha256": "8b0ed8afe092c0941ece3ece0fbcb6d02e3d4117c0b7dbe3dff5b84f9ef7cb6a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/ticker/TickerListener.mjs",
+      "bytes": 2447,
+      "sha256": "956b672713c70376febd7fbd4f7576f076997991abfc609631854193c48cc8e9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/browser/isSafari.mjs",
+      "bytes": 275,
+      "sha256": "37dc9a0bab1e7222b19ea7f9771066d8ae3913e10d7a584c1e60057a801bf9a7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/browser/isMobile.mjs",
+      "bytes": 220,
+      "sha256": "2dc3bb2a325856fb42322f3b7bce8a75544acfce1f806126156503e88493834d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/browser/detectVideoAlphaMode.mjs",
+      "bytes": 2421,
+      "sha256": "bf6505b1c124f380356e6fff1c513d0acdaf3119f37d1bc6dd0a827d206f2ad4"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/ticker/const.mjs",
+      "bytes": 518,
+      "sha256": "5f4dcf4bd89d7fc33e4c5c08d7ae6c70463ecb820cf0c9602feab3d9c5dbe02a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/browser/isWebGPUSupported.mjs",
+      "bytes": 636,
+      "sha256": "6441f3dc40cec4d490b282290cb104bf038a27de9b750dc1ab05c92c954eda2a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/browser/unsafeEvalSupported.mjs",
+      "bytes": 441,
+      "sha256": "43e8761e70d5a1dbfaf4ddc0c4857ac9a860a7b1ddb86935d361c09729fac16a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/ticker/Ticker.mjs",
+      "bytes": 20191,
+      "sha256": "596910a4265c92fbf2d37a9a66001ba6b0c2585dfb74256a05f9069b1c4a3ce7"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/const.mjs",
+      "bytes": 261,
+      "sha256": "8fb275a198ad14fdbff229e6b183dc84824336dd3cbb0bbf113f5f065136f222"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/canvas/getCanvasBoundingBox.mjs",
+      "bytes": 2719,
+      "sha256": "03e386318ca3ee225ac2067d0e58ec0c091ee7345173c9ea488b103db343a9f2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/data/removeItems.mjs",
+      "bytes": 451,
+      "sha256": "1b3eaaaafbc6bd076b840c2bf951c623beae7eca0e61be890e42c4339e4bd351"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/data/uid.mjs",
+      "bytes": 324,
+      "sha256": "c89cb0657df79d565f1e0936ea6eb2f694ee2da1b353e669ab45d74bf913a49e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/data/updateQuadBounds.mjs",
+      "bytes": 659,
+      "sha256": "b9449ae36134c2ac51a0916f3ee7efa4db0ad7dc11eefcc62dacdbc6402a1c98"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/data/GCManagedHash.mjs",
+      "bytes": 1381,
+      "sha256": "5763eeb3aec5708ebb5c344c98046673d7b8dc986fdb000179de4a6a8d2a54ce"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/data/clean.mjs",
+      "bytes": 672,
+      "sha256": "bd44274582ca2116b1a4f0af56da1cbae561898574df0305d47351b3530ba5f5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/browser/isWebGLSupported.mjs",
+      "bytes": 1167,
+      "sha256": "112c9bc37578ebf6e22b3dca0144e3bec512f65fe3f84f2904eac79cb447ebf9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/data/ViewableBuffer.mjs",
+      "bytes": 2988,
+      "sha256": "39a4e6d26ba2abf6d9fc69d4edcd702cf88645737dadbe9b385ad8c13dcac179"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/logging/logDebugTexture.mjs",
+      "bytes": 683,
+      "sha256": "5d24211d7b4841e7a4b166d95f2916f6ad1c92becabd1b3206b0f1da9d800508"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/logging/deprecation.mjs",
+      "bytes": 1583,
+      "sha256": "b1c57e30ab05bdf8ba9864743ed4a661e48cbbde7727af6c94d2b6128a4ef5ab"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/misc/NOOP.mjs",
+      "bytes": 90,
+      "sha256": "33208281d21f1576177f777887436d2945d4383f96f0c5edd1c57a54a6bee136"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/logging/warn.mjs",
+      "bytes": 406,
+      "sha256": "637dfea10c6b43fcf866042fd02124dc836d7646e50f2c4b179d4b3ae2303892"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/global/globalHooks.mjs",
+      "bytes": 790,
+      "sha256": "9f447c3b0a507b6c8b97b9396150f4f5bf0a2053660410b0fead12a5b596432e"
+    },
+    {
+      "path": "port/v2/node_modules/eventemitter3/index.mjs",
+      "bytes": 91,
+      "sha256": "82d15c8c0058e5795a5c19540d0713416ff65edd4fd6aa8f79ee1fb5ade78cd5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/network/getResolutionOfUrl.mjs",
+      "bytes": 354,
+      "sha256": "c4b69493dc8cc0d4b00b90fb4f3b55cc92ed987599cb0381c50af045e2a96520"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/misc/Transform.mjs",
+      "bytes": 3841,
+      "sha256": "b27610b131652692451ec5fbf5399b0f25763f352fe2e2c11c4b1105f0e545b1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/pool/GlobalResourceRegistry.mjs",
+      "bytes": 1550,
+      "sha256": "b28974b011498229f5096b6fdf0fff950eab11844673827699aeebe03a4ed907"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/logging/logScene.mjs",
+      "bytes": 1934,
+      "sha256": "db11c8a6777c7a75786e41ea6c5032a38eba68a6a8f66c6787657f9421b2d73e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/pool/Pool.mjs",
+      "bytes": 2169,
+      "sha256": "8f284d71d518e004f5cafb1ea609dc8fc5dca2a53d46e0b2a45fbdf5e6ae7cb3"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/sayHello.mjs",
+      "bytes": 937,
+      "sha256": "d356228b530d6741fdec657e538810e31cdc1e71d67203d42f7abb429ad9e6cc"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/pool/PoolGroup.mjs",
+      "bytes": 2571,
+      "sha256": "9c9ccba3facdc65111f19b16a601536e8442cf977b9af8ee4a3db23c914e4b19"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/utils.mjs",
+      "bytes": 215,
+      "sha256": "ddeac15b472f94537790bd5c12cd4fe879a20e55ed6a6ba1bb03ba81ceb5e33c"
+    },
+    {
+      "path": "port/v2/packages/domain/planetgen/src/planetgen.verbatim.js",
+      "bytes": 9441,
+      "sha256": "cecd467dcd7be24d7ff56bc6617fb7f6c835ebd9c0e723e4960968824c7b5fa5"
+    },
+    {
+      "path": "port/v2/packages/domain/naming/src/index.ts",
+      "bytes": 1116,
+      "sha256": "f485458ba79dfa6bbe96838eb831506dc7d01bc80f27b2a2d8c8f4edc039c11e"
+    },
+    {
+      "path": "port/v2/packages/domain/encutil/src/index.ts",
+      "bytes": 2086,
+      "sha256": "ef7ca91752c270c5452c6cc6595574f9bf6b754b950494b21302768e2d5de94e"
+    },
+    {
+      "path": "port/v2/packages/domain/starcatalog/src/index.ts",
+      "bytes": 3410,
+      "sha256": "da886e9f3a2be6ce7e609e031e3a0e4c325d272f8926803f2d0e33b2d7ed1b13"
+    },
+    {
+      "path": "port/v2/packages/domain/worldgen/src/index.ts",
+      "bytes": 775,
+      "sha256": "d81b384a57674c39146726f1b05acec3eddc86fe06da36d80b1bcd5f3c8d4673"
+    },
+    {
+      "path": "port/v2/packages/domain/surveyphrases/src/index.ts",
+      "bytes": 130,
+      "sha256": "8c8ec0c8f6b2d76b326daf994f2f4042f0c09e78f1772046f0df1ebc1168989c"
+    },
+    {
+      "path": "port/v2/packages/domain/ecology/src/index.ts",
+      "bytes": 311,
+      "sha256": "9ae354c71f86794966f928a8e3c27c3d34a05b23093f3bfdf5c77909979acc3b"
+    },
+    {
+      "path": "port/v2/packages/domain/strays/src/index.ts",
+      "bytes": 285,
+      "sha256": "fa905124c4d182f361b868cf0319fdb9279bd8d13cfb1f85c991d00f83d225ec"
+    },
+    {
+      "path": "port/v2/packages/domain/worldidentity/src/index.ts",
+      "bytes": 99,
+      "sha256": "90d44680a1da815afcf04bfed995dd46cb8522b2ba19bd856040da42b6d71141"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/path.mjs",
+      "bytes": 17138,
+      "sha256": "16169fd3cf466112ffae7d9c5baf04090e5d0b23f69449bbcf2b7e582a7410e9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/basis/types.mjs",
+      "bytes": 49,
+      "sha256": "f3c7ba584398746c25225fae3dbec1bcca590db5925ca562457fb8d99c9baa08"
+    },
+    {
+      "path": "port/v2/packages/domain/genetics/src/index.ts",
+      "bytes": 3281,
+      "sha256": "eee2058546ab009b6b33376bad1005d6a597bd2b336506851d9be562d8cbef61"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/compressed-textures/ktx2/types.mjs",
+      "bytes": 49,
+      "sha256": "f3c7ba584398746c25225fae3dbec1bcca590db5925ca562457fb8d99c9baa08"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment/canvas/ICanvas.mjs",
+      "bytes": 51,
+      "sha256": "e7a6ef6be6efc30e360361c57bb1e4aac81347e0309a41ec0cc5f4a91cf8c999"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment-browser/browserAll.mjs",
+      "bytes": 242,
+      "sha256": "36f747a6fb84d01042f164e6293c811d6bd206124d167d5f572591c50e478d74"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment/ImageLike.mjs",
+      "bytes": 53,
+      "sha256": "6edd044fc3d6f13ecc3abaac543a276cbdc1d1fd7606150ff1ec32bc0189d12d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment-webworker/webworkerAll.mjs",
+      "bytes": 153,
+      "sha256": "a3c4a64e78ea810465998d177828d8808dfe2b73d4781f0e2592fd8aa7123547"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/environment/canvas/ICanvasRenderingContext2D.mjs",
+      "bytes": 69,
+      "sha256": "2136ab62aede83de41f1e76efd1cd69c02bd9761a0108efb1f4b95afd70af83a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/types.mjs",
+      "bytes": 49,
+      "sha256": "f3c7ba584398746c25225fae3dbec1bcca590db5925ca562457fb8d99c9baa08"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/detections/types.mjs",
+      "bytes": 49,
+      "sha256": "f3c7ba584398746c25225fae3dbec1bcca590db5925ca562457fb8d99c9baa08"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/loader/types.mjs",
+      "bytes": 49,
+      "sha256": "f3c7ba584398746c25225fae3dbec1bcca590db5925ca562457fb8d99c9baa08"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/resolver/types.mjs",
+      "bytes": 49,
+      "sha256": "f3c7ba584398746c25225fae3dbec1bcca590db5925ca562457fb8d99c9baa08"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/cache/CacheParser.mjs",
+      "bytes": 55,
+      "sha256": "c920e09a980b294cea02dbfa34254c21507f1804ef78fb389b2f374f08a945ea"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/utils/types.mjs",
+      "bytes": 49,
+      "sha256": "f3c7ba584398746c25225fae3dbec1bcca590db5925ca562457fb8d99c9baa08"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/assets/AssetExtension.mjs",
+      "bytes": 58,
+      "sha256": "1ab9fc44965780c9953a7764bf84cac2d965c9752323ab481adf821d6ff53fb5"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/events/deprecatedTypes.mjs",
+      "bytes": 59,
+      "sha256": "6af28bf8534b0bdb30a82f39f11f4d14d4ab0813c6e02ef0bc9330396ce131e1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/events/FederatedEventMap.mjs",
+      "bytes": 61,
+      "sha256": "ed55c0db6e1795675f9280d5bc13046b8ee50a6879e30cd490b0fd3474e315b2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/events/EventBoundaryTypes.mjs",
+      "bytes": 62,
+      "sha256": "06c09e8cb48bc2efa4f5760df7d43d856e0f275726587097300f55a9fee69d49"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/destroyTypes.mjs",
+      "bytes": 56,
+      "sha256": "b161ec87bdb33155d6a38426e9e49109f80261ea92a79059a431c0c00295c1ac"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/container/Effect.mjs",
+      "bytes": 50,
+      "sha256": "f039b565a8d9c021dab6fd980cdedf76d02d0f7f77e985af93a9ca1a131cb92d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/FillTypes.mjs",
+      "bytes": 53,
+      "sha256": "97b8afe7eb997d429efc4f3d21e6b01d935060b43ea18c6fd099dceef86ea617"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/shared/buildCommands/ShapeBuildCommand.mjs",
+      "bytes": 61,
+      "sha256": "b3062ffc497ddfc0b0f6fdc30abda3d54c0145a5624c3b7858ab8552cb1abc35"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/view/View.mjs",
+      "bytes": 48,
+      "sha256": "b6e032330da15394dce8063187a0a24e4cb56a65316f9fea839c0488f24b5497"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/canvas/utils/types.mjs",
+      "bytes": 49,
+      "sha256": "f3c7ba584398746c25225fae3dbec1bcca590db5925ca562457fb8d99c9baa08"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-split/types.mjs",
+      "bytes": 49,
+      "sha256": "f3c7ba584398746c25225fae3dbec1bcca590db5925ca562457fb8d99c9baa08"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/high-shader/compiler/types.mjs",
+      "bytes": 49,
+      "sha256": "f3c7ba584398746c25225fae3dbec1bcca590db5925ca562457fb8d99c9baa08"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/stencil/StencilMaskTypes.mjs",
+      "bytes": 60,
+      "sha256": "09465d82546687cc5351af3e87ef28d7a8022b24eb53688148bd17119bc45a67"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/mask/color/ColorMaskTypes.mjs",
+      "bytes": 58,
+      "sha256": "f55ea97e18fec3195a54e9332228a9afaec677410df8c547fe4fe73eb569d4e0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/context/GlRenderingContext.mjs",
+      "bytes": 62,
+      "sha256": "342d770c95c2c6e7dae39bd8b3bc6ce3ed3770288c464abf29edccb9ccd6ed3c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/context/WebGLExtensions.mjs",
+      "bytes": 59,
+      "sha256": "3a713a4b6e687f269861b3c844c7c46f85cdfd243986e266ee8ea47379b25acf"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/texture/uploaders/GLTextureUploader.mjs",
+      "bytes": 61,
+      "sha256": "4cc93806c3b2c0019fd37af76becd24f2e9281c8c284f25e00740b68f26caff2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/GpuExtensions.mjs",
+      "bytes": 57,
+      "sha256": "0630b10a01a8f2f42dadf5c5c35a1925dbf5be13a2c765a83ca05021bb38d9f0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/shader/BindResource.mjs",
+      "bytes": 56,
+      "sha256": "ff6d1c0f1769e2d26e4cca3b9342784efa67dbf6863ba1c825750884dcd61e55"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gpu/texture/uploaders/GpuTextureUploader.mjs",
+      "bytes": 62,
+      "sha256": "1d6e144d45f094e988edc6d22105681b969ed3e4ce2fb76dd6e1fc047ed0d0f1"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/instructions/Instruction.mjs",
+      "bytes": 55,
+      "sha256": "99064e852f74ef276a042cdc0c1e299653bcb9b98150f4d668c299ccbfae40ec"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/shader/ShaderSystem.mjs",
+      "bytes": 56,
+      "sha256": "7126e5b831f5bc4998fd6c6b6fd76c8f31d2479141450b24a3e872308555a9ae"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/system/System.mjs",
+      "bytes": 50,
+      "sha256": "28e02aa47c966c2e185f0a577290bad39c32f6487b96973fc8a49c8e875b2471"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/Renderable.mjs",
+      "bytes": 54,
+      "sha256": "66fec106dced7588d0df6a3bea955237d14e093e702548723dba8d218b8aabd0"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/instructions/RenderPipe.mjs",
+      "bytes": 54,
+      "sha256": "b141fac51aea0973bf9bd8a3c2d4dfe06e08a1fc01e26ad4d29e0b59ad30ae5c"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/system/utils/typeUtils.mjs",
+      "bytes": 53,
+      "sha256": "3d600fdb73ebaa2abf85439e6a9bda69655fe81b9a09ea8f8e8a97446fd9e059"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/shared/texture/GenerateCanvas.mjs",
+      "bytes": 58,
+      "sha256": "5660bcd82198fccd9372b4c1914e4c71b1a3badee4ed84523b30c7eb700747e2"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/shapes/ShapePrimitive.mjs",
+      "bytes": 58,
+      "sha256": "8fc2a9e1c020793be2dcae8853b524de2746cd94526af73ac3453726bf06bc87"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/misc/Size.mjs",
+      "bytes": 48,
+      "sha256": "ae463f93f0f9be859b66dd72f05125da8abaee4b48e49e087026a8206c20c63f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/rendering/renderers/gl/shader/const.mjs",
+      "bytes": 49,
+      "sha256": "ad3ffde0391bf9c991abc6805065c5184a63c788f3d4ddb825f0bdf9378a1370"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/app/init.mjs",
+      "bytes": 270,
+      "sha256": "5fc9a7fa0da36862c42007c1c9a2322700dc171d5b551db8eead0d18e115398d"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/point/PointLike.mjs",
+      "bytes": 53,
+      "sha256": "9c0fc9db113e933acfe97f978612eb0dce087ee355e6af84f8a7db128edf3548"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/_virtual/loadImageBitmap.worker.mjs",
+      "bytes": 1521,
+      "sha256": "4ea840e2e646752a3c258558dc06423954aa2df8c6484e897d3808002f24f576"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/maths/point/PointData.mjs",
+      "bytes": 53,
+      "sha256": "e0f3b8784d4d52dd650af50e3eaedaa69c019665d6b5872795d391b28ee911ac"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/_virtual/checkImageBitmap.worker.mjs",
+      "bytes": 1255,
+      "sha256": "eb2f43ca4236dff08fa60f7372ec17292b7b301c9d32302f654090dc2d996aab"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/_virtual/basis.worker.mjs",
+      "bytes": 5330,
+      "sha256": "4c3749e2af4559103dec76ba27b24bf9f8e1a4056702a428a08d9bf02e405f27"
+    },
+    {
+      "path": "port/v2/node_modules/@pixi/colord/index.mjs",
+      "bytes": 5868,
+      "sha256": "e83f97abe065db9490ba5abfffded254f0cac0b83a3a04f68bc1c0e9997c1168"
+    },
+    {
+      "path": "port/v2/node_modules/@pixi/colord/plugins/names.mjs",
+      "bytes": 3536,
+      "sha256": "6f60e71eb2c32fecf62d173509946241aa9e4017159d51d9630245cefa158cf7"
+    },
+    {
+      "path": "port/v2/node_modules/@xmldom/xmldom/lib/index.js",
+      "bytes": 173,
+      "sha256": "9deb4e9d6d730a51c1c2b05238f8684d01e87f72b9861ba2adcad537ffc56586"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/_virtual/ktx.worker.mjs",
+      "bytes": 8846,
+      "sha256": "858234a483a1ac321dcce4f08a4f7c6d2b8e75ac75d666b77c1a9c6c14547384"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/graphics/init.mjs",
+      "bytes": 553,
+      "sha256": "0d3adcddb5908297107c50f7802ae19b591b56b3d2080f214933bdeaf08854f3"
+    },
+    {
+      "path": "port/v2/node_modules/parse-svg-path/dist/index.mjs",
+      "bytes": 1791,
+      "sha256": "14ae8d2e82e786a7bf7b6a31043bd4c31a774520ed1ce17f9b166584a8672a5f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/mesh/init.mjs",
+      "bytes": 187,
+      "sha256": "61e9edf703dfe9fe42f2c0bea30235d7ee41a91b6550a0a69158faeb645b4b9e"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/particle-container/init.mjs",
+      "bytes": 482,
+      "sha256": "9a480646587b88cae74b563145f183944e71dcedf28a93d2afc1263044413f3f"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-nine-slice/init.mjs",
+      "bytes": 340,
+      "sha256": "37b1ac7a4edb242b29339faca478dfe448cf9c5116a5ee1f64113f4fa04c5a20"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/sprite-tiling/init.mjs",
+      "bytes": 322,
+      "sha256": "8bf93eac4e60d2ac97e348151092abdd271cea7c0927368048a8d58c854b66c9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-html/init.mjs",
+      "bytes": 279,
+      "sha256": "b7b1d7b729c9faafa4328a35f05651c71b02cf6556d960013e99f5a2c8cc2cb3"
+    },
+    {
+      "path": "port/v2/node_modules/tiny-lru/dist/tiny-lru.js",
+      "bytes": 12541,
+      "sha256": "69e4786f84f6770759b1515b3cf14d05274426271b71892604ab0aaf20fa84ec"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text-bitmap/init.mjs",
+      "bytes": 306,
+      "sha256": "7618dd9970ebe670ea778b7ed4385425a899a4fef2c9d3323a356022447d295a"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/scene/text/init.mjs",
+      "bytes": 418,
+      "sha256": "0514f89cc7e64ffa9dfb9a58283b0142ae1404b2a30531c54791d78a706ae529"
+    },
+    {
+      "path": "port/v2/node_modules/ismobilejs/esm/index.js",
+      "bytes": 99,
+      "sha256": "4392c4ba9af8e08082fc54087c09663b0441d2d3350daeb375209caa7812230a"
+    },
+    {
+      "path": "port/v2/node_modules/eventemitter3/index.js",
+      "bytes": 9141,
+      "sha256": "1560f251de5d28d2c15ff070215d2c5c0fa06f1a92e8d6522bbee37e06d2a6b5"
+    },
+    {
+      "path": "port/v2/packages/domain/naming/src/cleanname.verbatim.js",
+      "bytes": 362,
+      "sha256": "9d5f6685bdd96563bf48dc293b4f8b5fd9dacbd7ec2afd40b0a7174b2eada30a"
+    },
+    {
+      "path": "port/v2/node_modules/earcut/src/earcut.js",
+      "bytes": 42552,
+      "sha256": "1b27d3d4a33f13425b10c446aede03b4e834355eacd8afd012758137f4563013"
+    },
+    {
+      "path": "port/v2/packages/domain/worldgen/src/worldgen.verbatim.js",
+      "bytes": 13969,
+      "sha256": "95f0acec80a37c67cc829dc0d71e6719768e5a975d030fe9b89457c23da00eff"
+    },
+    {
+      "path": "port/v2/packages/domain/surveyphrases/src/surveyphrases.verbatim.js",
+      "bytes": 4078,
+      "sha256": "8915e785a7e5c67f7bcec720ada0f24466082e9ce0c6a9329d18affc251cfd58"
+    },
+    {
+      "path": "port/v2/packages/domain/ecology/src/explicit-epoch.ts",
+      "bytes": 4988,
+      "sha256": "d0c2daee6e4d9a668eb98b677bf668f77587d83574173bdf234e4dde531cec5f"
+    },
+    {
+      "path": "port/v2/packages/domain/ecology/src/civilization.ts",
+      "bytes": 1313,
+      "sha256": "faed945d2a4ff864fded1d8b0d80fd4cc4f2bb4a5ec4f11a38b045d92593553d"
+    },
+    {
+      "path": "port/v2/packages/domain/ecology/src/ecology.verbatim.js",
+      "bytes": 11513,
+      "sha256": "d50aa3dc9e9d4e2d5f56b94ac9345f62b19bd462e0df40fed35b14934dad467c"
+    },
+    {
+      "path": "port/v2/packages/domain/strays/src/strays.verbatim.js",
+      "bytes": 22644,
+      "sha256": "4f567f7a9e4802201a753abd5c9fd461b7253ee200b68245ab5984113ef04a03"
+    },
+    {
+      "path": "port/v2/packages/domain/worldidentity/src/authority.ts",
+      "bytes": 2732,
+      "sha256": "8bfff96bbcb569c32e3d3b0a4a7f0c6c9eec0b06940d72e3041477a785d75875"
+    },
+    {
+      "path": "port/v2/packages/domain/genetics/src/genetics.verbatim.js",
+      "bytes": 4570,
+      "sha256": "4ef5f904d87358ecd49fd146b6bc5715a189913ef7948afa3c15c9d6c7045d12"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/accessibility/init.mjs",
+      "bytes": 387,
+      "sha256": "cd476ce149a2592839a661f15cf7bb39f26dc5180f6b853d29bfe0d083f648f9"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/events/init.mjs",
+      "bytes": 362,
+      "sha256": "84bdb9de3a59c508d197a8ce58a145fd34fc7e3904a8ef75b54adf15c0007258"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/dom/init.mjs",
+      "bytes": 323,
+      "sha256": "2b04325c086d7339be06bf98a66a3923d5e9d42541e487e62ebe867cad2f6a78"
+    },
+    {
+      "path": "port/v2/node_modules/pixi.js/lib/filters/init.mjs",
+      "bytes": 347,
+      "sha256": "d0bf500281b437ca77176b6a12e302a5a1af4d03031b7e0c45076f1a59a2a570"
+    },
+    {
+      "path": "port/v2/node_modules/@xmldom/xmldom/lib/dom-parser.js",
+      "bytes": 10312,
+      "sha256": "03915c54c4bf44cfee38807af253abaabb022c27652918e8a233fae2d92fe1d2"
+    },
+    {
+      "path": "port/v2/node_modules/@xmldom/xmldom/lib/dom.js",
+      "bytes": 72860,
+      "sha256": "158effa6032e9ae3d030926c3ca4781bb8f3828bc25c85e4a885bdf843be0c19"
+    },
+    {
+      "path": "port/v2/node_modules/ismobilejs/esm/isMobile.js",
+      "bytes": 4392,
+      "sha256": "82768e2da59d07d7da7403ba1b368b6ca0cbf863750b42e1ee973f2e620db773"
+    },
+    {
+      "path": "port/v2/node_modules/@xmldom/xmldom/lib/sax.js",
+      "bytes": 19594,
+      "sha256": "b12589c4f672a9ae1e03de837f574d6cdf6b41f270b7efb85cec89c31e157f0b"
+    },
+    {
+      "path": "port/v2/node_modules/@xmldom/xmldom/lib/conventions.js",
+      "bytes": 6325,
+      "sha256": "fca02624b9b84b1709b73afd83a4d1c4dbc99baacc5b5f74a56e5999fbeaac49"
+    },
+    {
+      "path": "port/v2/node_modules/@xmldom/xmldom/lib/entities.js",
+      "bytes": 44465,
+      "sha256": "332cda4081c610fdadc0266867ee5ed9f945c99d471ea7234ec61ba00cbf0e40"
+    },
+    {
+      "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json",
+      "bytes": 3449,
+      "sha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4"
+    },
+    {
+      "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/wild-anchors.json",
+      "bytes": 2800,
+      "sha256": "efe2405f0168299d429debc35ed72ee0dbbca7f602ee03f957a8bec3f49e26c2"
+    },
+    {
+      "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-far.png",
+      "bytes": 2560302,
+      "sha256": "c0738eb03f60aa43e367d93ba03e79153c281d4ac5e9acfb7e655573b37807e2"
+    },
+    {
+      "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-mid.png",
+      "bytes": 2865724,
+      "sha256": "f60de65e6f4592a4b7d8890e92d986930be8521e1c7d768d8b39548d4c5fa377"
+    },
+    {
+      "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/arena-near.png",
+      "bytes": 1686808,
+      "sha256": "83eca67c68d9a7d72a009d26ee3734c83b4ee547446b0e2241ba8fc4ec51f5d2"
+    },
+    {
+      "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/wild-launch.png",
+      "bytes": 1912383,
+      "sha256": "7ba832b64c4da426d7329be77f433888bc0242fdcba3813f6b4da9599abf64b3"
+    },
+    {
+      "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/wild-travel.png",
+      "bytes": 1987496,
+      "sha256": "7134cd4576c5db8db79de92079af01842ca63a56c5d2cfc654fda5d79036166b"
+    },
+    {
+      "path": "audits/ARENA_EFFECTS_V42_PROOF_20260912/keyed/wild-impact.png",
+      "bytes": 2179349,
+      "sha256": "f2339b0a20db313735e5c8c5aba3133d414e307eec19e42e4367d47d9f03c1db"
+    },
+    {
+      "path": "audits/CIVET_2D_PROOF_20260912/civet.landmarks.json",
+      "bytes": 4720,
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",
+      "bytes": 1931944,
+      "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b"
+    },
+    {
+      "path": "audits/ART_KIT_ENGINE_FIRST_20260912/masters/platypus.png",
+      "bytes": 1744237,
+      "sha256": "55ed1d0549f4b74d0300e1c3428ca36e07a576b4e39a9c1f357e0da188bd39f9"
+    }
+  ],
+  "files": [
+    {
+      "path": "arena-far.png",
+      "bytes": 2560302,
+      "sha256": "c0738eb03f60aa43e367d93ba03e79153c281d4ac5e9acfb7e655573b37807e2"
+    },
+    {
+      "path": "arena-mid.png",
+      "bytes": 2865724,
+      "sha256": "f60de65e6f4592a4b7d8890e92d986930be8521e1c7d768d8b39548d4c5fa377"
+    },
+    {
+      "path": "arena-near.png",
+      "bytes": 1686808,
+      "sha256": "83eca67c68d9a7d72a009d26ee3734c83b4ee547446b0e2241ba8fc4ec51f5d2"
+    },
+    {
+      "path": "arena-recipe.json",
+      "bytes": 3449,
+      "sha256": "720895b37016290da37260d4b03d0cdbb5e33173d5e1245ff37fde0aac6714f4"
+    },
+    {
+      "path": "bundle.js",
+      "bytes": 456823,
+      "sha256": "9e7c87f80f5b055a712eeef51bef3925387edbae2cce2b58d0ff664dbf10ac74"
+    },
+    {
+      "path": "chunk-BLXW3KWG.js",
+      "bytes": 2177,
+      "sha256": "ca4ab3353557030e60a92532565e2573bb1b0fab2f77be1d7fb5d7b5a6b8f355"
+    },
+    {
+      "path": "chunk-BSLu9sf7.js",
+      "bytes": 65241,
+      "sha256": "99c467eea07f66d603e312c05180c7f487ac19f2f94c208a80eddefafd4800b3"
+    },
+    {
+      "path": "chunk-Bgl2askh.js",
+      "bytes": 101974,
+      "sha256": "05fb3d5b256e762372f115efa9dd1cc9644b1cc992dbf8f02cf551649a66712e"
+    },
+    {
+      "path": "chunk-C-I_w4J-.js",
+      "bytes": 86,
+      "sha256": "293262139165a1bffed7989aaed3ef472556551388728f1e4861ab5a89abeebd"
+    },
+    {
+      "path": "chunk-C8R7S0PZ.js",
+      "bytes": 162013,
+      "sha256": "4e455728d4b9b10bb8ba2b32bd107bf3e15127ec923d2c7d2e5dd41dbb995488"
+    },
+    {
+      "path": "chunk-CRZeIo9E.js",
+      "bytes": 17240,
+      "sha256": "9507967707a920c184547ff3772a6781a23a0e513b14193b6c9622911d5a5635"
+    },
+    {
+      "path": "chunk-Cl6ZRATi.js",
+      "bytes": 267890,
+      "sha256": "a95c22339f0ca87af04627632cfefcf26ba3b64d63be001629e572aeafd00e07"
+    },
+    {
+      "path": "chunk-CnkM7F9G.js",
+      "bytes": 86,
+      "sha256": "67ce0dcb982885d16cae4f37e5ce69fdec37f803f48c5d6c1ccc28277ea6f604"
+    },
+    {
+      "path": "chunk-D0dLG-sf.js",
+      "bytes": 125198,
+      "sha256": "68e898267e7b6f417b77631c59fe0b83c5231886af26db75e96aa9cb7344056f"
+    },
+    {
+      "path": "chunk-D5w553Du.js",
+      "bytes": 84,
+      "sha256": "2067afa226b00f205ed9d250b5d21ecf2f00c497f89ff67d907e5b78d245cc67"
+    },
+    {
+      "path": "chunk-DX10sjF9.js",
+      "bytes": 60,
+      "sha256": "5050e886f2410fa306dfb6ad2dab4dbf9e949b79b7f97dbd9274c12e4562cbe8"
+    },
+    {
+      "path": "chunk-DZ_l7nv7.js",
+      "bytes": 334337,
+      "sha256": "bebeb2c7766746bcd0d13aa8ec730421bb95b9f72f9d9a4998b9a021d705f80a"
+    },
+    {
+      "path": "chunk-DcFaHTeZ.js",
+      "bytes": 33379,
+      "sha256": "6071d4568409ac5956564648da58115265a91b740c9860f2ea7ace87429f9268"
+    },
+    {
+      "path": "chunk-DpM3Jnmb.js",
+      "bytes": 69365,
+      "sha256": "6504b4377737316aeff3bf79797e7fb900a85ab3070f8d891055fa3a27185a4b"
+    },
+    {
+      "path": "chunk-hVnk4N2F.js",
+      "bytes": 12661,
+      "sha256": "d3db5e7f66fb484807451f6cfcff3dd48d38ab823d52996d49945ede47a86f1a"
+    },
+    {
+      "path": "chunk-j_NsIHin.js",
+      "bytes": 983,
+      "sha256": "c1de59d818c333a04bf6e07334358dda47f4a14fa5e91a58b4781abb55747daa"
+    },
+    {
+      "path": "civet.landmarks.json",
+      "bytes": 4720,
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "civet.png",
+      "bytes": 1931944,
+      "sha256": "a5e62568dfa010d8d646124ce641c72d42686bff5329bba40cfdfc21fa25a76b"
+    },
+    {
+      "path": "index.html",
+      "bytes": 472,
+      "sha256": "a7fbec2bc4222c5b13f772264c6792832292eab626bae445441900e1b2a68dac"
+    },
+    {
+      "path": "keyed-wild-impact.png",
+      "bytes": 2179349,
+      "sha256": "f2339b0a20db313735e5c8c5aba3133d414e307eec19e42e4367d47d9f03c1db"
+    },
+    {
+      "path": "keyed-wild-launch.png",
+      "bytes": 1912383,
+      "sha256": "7ba832b64c4da426d7329be77f433888bc0242fdcba3813f6b4da9599abf64b3"
+    },
+    {
+      "path": "keyed-wild-travel.png",
+      "bytes": 1987496,
+      "sha256": "7134cd4576c5db8db79de92079af01842ca63a56c5d2cfc654fda5d79036166b"
+    },
+    {
+      "path": "platypus.png",
+      "bytes": 1744237,
+      "sha256": "55ed1d0549f4b74d0300e1c3428ca36e07a576b4e39a9c1f357e0da188bd39f9"
+    },
+    {
+      "path": "wild-anchors.json",
+      "bytes": 2800,
+      "sha256": "efe2405f0168299d429debc35ed72ee0dbbca7f602ee03f957a8bec3f49e26c2"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+ "codexDeclaration": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/VISION_P1_FOUR_CRABS_20260920/intake-02/crab-fit-01/declaration.json",
+ "perPart": {
+  "leg0far-lower": {
+   "iou": 0.472,
+   "compiler": 4734,
+   "codex": 2805
+  },
+  "body": {
+   "iou": 0.377,
+   "compiler": 144237,
+   "codex": 170962
+  },
+  "leg0far-upper": {
+   "iou": 0,
+   "compiler": 15569,
+   "codex": 1929
+  },
+  "leg0near-upper": {
+   "iou": 0.377,
+   "compiler": 18042,
+   "codex": 9814
+  },
+  "leg1far-upper": {
+   "iou": 0.414,
+   "compiler": 18838,
+   "codex": 11705
+  },
+  "leg1far-lower": {
+   "iou": 0.596,
+   "compiler": 10366,
+   "codex": 10714
+  },
+  "leg0near-lower": {
+   "iou": 0.627,
+   "compiler": 9938,
+   "codex": 9915
+  },
+  "leg2far-upper": {
+   "iou": 0.509,
+   "compiler": 22474,
+   "codex": 15164
+  },
+  "leg1near-upper": {
+   "iou": 0.38,
+   "compiler": 23074,
+   "codex": 11868
+  },
+  "claw-far-palm": {
+   "iou": 0.227,
+   "compiler": 23075,
+   "codex": 42474
+  },
+  "leg2far-lower": {
+   "iou": 0.804,
+   "compiler": 14032,
+   "codex": 15690
+  },
+  "claw-far-finger": {
+   "iou": 0,
+   "compiler": 20780,
+   "codex": 9900
+  },
+  "leg1near-lower": {
+   "iou": 0.657,
+   "compiler": 10088,
+   "codex": 14766
+  },
+  "leg2near-upper": {
+   "iou": 0.205,
+   "compiler": 7240,
+   "codex": 13743
+  },
+  "claw-near-palm": {
+   "iou": 0.332,
+   "compiler": 33298,
+   "codex": 40458
+  },
+  "leg2near-lower": {
+   "iou": 0.71,
+   "compiler": 14851,
+   "codex": 18317
+  },
+  "claw-near-finger": {
+   "iou": 0.212,
+   "compiler": 26439,
+   "codex": 11438
+  },
+  "eye-far": {
+   "iou": 0,
+   "compiler": 0,
+   "codex": 2787
+  },
+  "eye-near": {
+   "iou": 0,
+   "compiler": 0,
+   "codex": 3210
+  },
+  "claw-far-arm": {
+   "iou": 0,
+   "compiler": 0,
+   "codex": 25770
+  },
+  "claw-near-arm": {
+   "iou": 0,
+   "compiler": 0,
+   "codex": 26432
+  },
+  "leg3far-upper": {
+   "iou": 0,
+   "compiler": 0,
+   "codex": 1274
+  },
+  "leg3far-lower": {
+   "iou": 0,
+   "compiler": 0,
+   "codex": 1631
+  }
+ }
+}

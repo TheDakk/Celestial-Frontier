@@ -1,0 +1,6374 @@
+{
+ "generated": "2026-09-19T22:19:14.048Z",
+ "minConfidence": 0.9,
+ "usage": {
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "requests": 0,
+  "cached": 631
+ },
+ "rows": [
+  {
+   "name": "Jaguar",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Leopard",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tiger",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Clouded Leopard",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Ocelot",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tapir",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Forest Elephant",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Gorilla",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "mammal 0.01",
+   "agree": true
+  },
+  {
+   "name": "Chimpanzee",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Orangutan",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wild Boar",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Peccary",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Okapi",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sloth",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.93,
+   "p_model": 0.94,
+   "p_code": 0.94,
+   "runnerUp": "primate 0.04",
+   "agree": true
+  },
+  {
+   "name": "Giant Anteater",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Capuchin",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Howler Monkey",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Spider Monkey",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tamarin",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Kinkajou",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.93,
+   "p_model": 0.93,
+   "p_code": 0.93,
+   "runnerUp": "primate 0.05",
+   "agree": true
+  },
+  {
+   "name": "Coati",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.97,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "primate 0.02",
+   "agree": true
+  },
+  {
+   "name": "Civet",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pangolin",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.98,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "reptile 0.01",
+   "agree": true
+  },
+  {
+   "name": "Fruit Bat",
+   "code": "bat",
+   "model": "bat",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Macaw",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Parrot",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Toucan",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Hornbill",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Hummingbird",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "ceph 0.00",
+   "agree": true
+  },
+  {
+   "name": "Kingfisher",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "fish 0.01",
+   "agree": true
+  },
+  {
+   "name": "Eagle",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Owl",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Anaconda",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "reptile 0.01",
+   "agree": true
+  },
+  {
+   "name": "Boa",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Python",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Caiman",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Crocodile",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tree Frog",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Poison Dart Frog",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Leafcutter Ant",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "mammal 0.00",
+   "agree": true
+  },
+  {
+   "name": "Butterfly",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "mammal 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tarantula",
+   "code": "arachnid",
+   "model": "arachnid",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Elephant",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Rhinoceros",
+   "code": "legacy",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Gaur",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Banteng",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Water Buffalo",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "marine 0.01",
+   "agree": true
+  },
+  {
+   "name": "Deer",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Antelope",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sloth Bear",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Macaque",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Langur",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "mammal 0.01",
+   "agree": true
+  },
+  {
+   "name": "Mongoose",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "primate 0.01",
+   "agree": true
+  },
+  {
+   "name": "Jackal",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Porcupine",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Squirrel",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Peacock",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cobra",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Monitor Lizard",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pond Turtle",
+   "code": "turtle",
+   "model": "turtle",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Bullfrog",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Termite",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cicada",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mantis",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Lion",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Giraffe",
+   "code": "legacy",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Zebra",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Kudu",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Impala",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Warthog",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Buffalo",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Hyena",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Baboon",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Meerkat",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.94,
+   "p_model": 0.95,
+   "p_code": 0.95,
+   "runnerUp": "primate 0.05",
+   "agree": true
+  },
+  {
+   "name": "Caracal",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Vulture",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Guineafowl",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Viper",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tortoise",
+   "code": "turtle",
+   "model": "turtle",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Locust",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Dung Beetle",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Scorpion",
+   "code": "arachnid",
+   "model": "arachnid",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Spectacled Bear",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mountain Tapir",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cougar",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Possum",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.97,
+   "p_model": 0.97,
+   "p_code": 0.97,
+   "runnerUp": "primate 0.02",
+   "agree": true
+  },
+  {
+   "name": "Tanager",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tree Snake",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.98,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "reptile 0.02",
+   "agree": true
+  },
+  {
+   "name": "Anole",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 0.98,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "amphibian 0.02",
+   "agree": true
+  },
+  {
+   "name": "Glass Frog",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Salamander",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bat 0.00",
+   "agree": true
+  },
+  {
+   "name": "Orchid Bee",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Land Snail",
+   "code": "gastropod",
+   "model": "gastropod",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Panda",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "primate 0.01",
+   "agree": true
+  },
+  {
+   "name": "Red Panda",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Asian Elephant",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Takin",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pika",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pheasant",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Woodpecker",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Rat Snake",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "reptile 0.01",
+   "agree": true
+  },
+  {
+   "name": "Gecko",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Skink",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Black Bear",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Brown Bear",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wolf",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Coyote",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Bobcat",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Lynx",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Elk",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Fox",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Raccoon",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.96,
+   "p_model": 0.97,
+   "p_code": 0.97,
+   "runnerUp": "primate 0.03",
+   "agree": true
+  },
+  {
+   "name": "Badger",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Weasel",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Stoat",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mink",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.78,
+   "p_model": 0.8,
+   "p_code": 0.8,
+   "runnerUp": "marine 0.20",
+   "agree": true
+  },
+  {
+   "name": "Marten",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Flying Squirrel",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Chipmunk",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Rabbit",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Hare",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mouse",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Vole",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mole",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Shrew",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Hedgehog",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Hawk",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Crow",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Raven",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Robin",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cardinal",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Turkey",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Garter Snake",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.78,
+   "p_model": 0.79,
+   "p_code": 0.79,
+   "runnerUp": "reptile 0.21",
+   "agree": true
+  },
+  {
+   "name": "Box Turtle",
+   "code": "turtle",
+   "model": "turtle",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "reptile 0.01",
+   "agree": true
+  },
+  {
+   "name": "Newt",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Frog",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Deer Tick",
+   "code": "arachnid",
+   "model": "arachnid",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Bee",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Earthworm",
+   "code": "legacy",
+   "model": "worm",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Fisher",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "River Otter",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.59,
+   "p_model": 0.62,
+   "p_code": 0.62,
+   "runnerUp": "marine 0.37",
+   "agree": true
+  },
+  {
+   "name": "Beaver",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Heron",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Alligator Lizard",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Giant Salamander",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Salmon",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Trout",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Char",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Lamprey",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.89,
+   "p_model": 0.9,
+   "p_code": 0.9,
+   "runnerUp": "fish 0.10",
+   "agree": true
+  },
+  {
+   "name": "Crayfish",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Banana Slug",
+   "code": "gastropod",
+   "model": "gastropod",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Beetle",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wolverine",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Moose",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Reindeer",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Caribou",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Red Fox",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Arctic Fox",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Snowshoe Hare",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Lemming",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Grouse",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Ptarmigan",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Goose",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Duck",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wood Frog",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pike",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mosquito",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Black Fly",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Snow Leopard",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mountain Goat",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Ibex",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Chamois",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Marmot",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Falcon",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "primate 0.00",
+   "agree": true
+  },
+  {
+   "name": "Chough",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mountain Lizard",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "other 0.01",
+   "agree": true
+  },
+  {
+   "name": "Otter",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.46,
+   "p_model": 0.49,
+   "p_code": 0.49,
+   "runnerUp": "mammal 0.49",
+   "agree": true
+  },
+  {
+   "name": "Capybara",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Fishing Cat",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "fish 0.01",
+   "agree": true
+  },
+  {
+   "name": "Egret",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "turtle 0.00",
+   "agree": true
+  },
+  {
+   "name": "Ibis",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Stork",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "marine 0.00",
+   "agree": true
+  },
+  {
+   "name": "Alligator",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "marine 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cottonmouth",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.95,
+   "p_model": 0.95,
+   "p_code": 0.95,
+   "runnerUp": "reptile 0.04",
+   "agree": true
+  },
+  {
+   "name": "Water Snake",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.97,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "reptile 0.02",
+   "agree": true
+  },
+  {
+   "name": "Snapping Turtle",
+   "code": "turtle",
+   "model": "turtle",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "marine 0.00",
+   "agree": true
+  },
+  {
+   "name": "Softshell Turtle",
+   "code": "turtle",
+   "model": "turtle",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "reptile 0.01",
+   "agree": true
+  },
+  {
+   "name": "Catfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Gar",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "reptile 0.01",
+   "agree": true
+  },
+  {
+   "name": "Bowfin",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.97,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "serpent 0.02",
+   "agree": true
+  },
+  {
+   "name": "Bass",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Eel",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.94,
+   "p_model": 0.95,
+   "p_code": 0.95,
+   "runnerUp": "fish 0.05",
+   "agree": true
+  },
+  {
+   "name": "Dragonfly",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "marine 0.00",
+   "agree": true
+  },
+  {
+   "name": "Leech",
+   "code": "legacy",
+   "model": "worm",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cheetah",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Spotted Hyena",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "African Wild Dog",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "African Elephant",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wildebeest",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Hippopotamus",
+   "code": "legacy",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Eland",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "marine 0.00",
+   "agree": true
+  },
+  {
+   "name": "Gazelle",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Hartebeest",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "marine 0.00",
+   "agree": true
+  },
+  {
+   "name": "Oryx",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "marine 0.00",
+   "agree": true
+  },
+  {
+   "name": "Serval",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Aardvark",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Ostrich",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "marine 0.00",
+   "agree": true
+  },
+  {
+   "name": "Secretary Bird",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "marine 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mamba",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Crane",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Spoonbill",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Flamingo",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Turtle",
+   "code": "turtle",
+   "model": "turtle",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Carp",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tilapia",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Piranha",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Bison",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Prairie Dog",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Jackrabbit",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Ground Squirrel",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Gopher",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Lark",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Rattlesnake",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.98,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "reptile 0.02",
+   "agree": true
+  },
+  {
+   "name": "Horned Lizard",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Grasshopper",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "mammal 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cricket",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "mammal 0.00",
+   "agree": true
+  },
+  {
+   "name": "Ant",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "mammal 0.00",
+   "agree": true
+  },
+  {
+   "name": "Spider",
+   "code": "arachnid",
+   "model": "arachnid",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Saiga",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wild Horse",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wild Ass",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Camel",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Yak",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Jerboa",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Hamster",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Bustard",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sandgrouse",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Racer",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.69,
+   "p_model": 0.71,
+   "p_code": 0.71,
+   "runnerUp": "reptile 0.27",
+   "agree": true
+  },
+  {
+   "name": "Agama",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Maned Wolf",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "insect 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pampas Fox",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Armadillo",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mara",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Agouti",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Guinea Pig",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Rhea",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Seriema",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tegu",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cattle",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sheep",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Goat",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sparrow",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Finch",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Swallow",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Quail",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Honeybee",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Bumblebee",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Ladybug",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mountain Viper",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "reptile 0.01",
+   "agree": true
+  },
+  {
+   "name": "Alpine Salamander",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Magpie",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Jay",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Partridge",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Dove",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Whip Snake",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "reptile 0.01",
+   "agree": true
+  },
+  {
+   "name": "Wall Lizard",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wild Pony",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Curlew",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Snipe",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Grass Snake",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "reptile 0.01",
+   "agree": true
+  },
+  {
+   "name": "Lizard",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Toad",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Whiptail",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Dromedary Camel",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Fennec Fox",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sand Cat",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Striped Hyena",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Gerbil",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Roadrunner",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "reptile 0.01",
+   "agree": true
+  },
+  {
+   "name": "Sand Boa",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "reptile 0.01",
+   "agree": true
+  },
+  {
+   "name": "Camel Spider",
+   "code": "arachnid",
+   "model": "arachnid",
+   "confidence": 0.97,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "insect 0.02",
+   "agree": true
+  },
+  {
+   "name": "Wild Sheep",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Hyrax",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "other 0.01",
+   "agree": true
+  },
+  {
+   "name": "Centipede",
+   "code": "legacy",
+   "model": "worm",
+   "confidence": 0.98,
+   "p_model": 0.99,
+   "p_code": 0,
+   "runnerUp": "arachnid 0.01",
+   "agree": true
+  },
+  {
+   "name": "Bactrian Camel",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Gull",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Plover",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sandpiper",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Brine Shrimp",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Water Flea",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wildcat",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Bat",
+   "code": "bat",
+   "model": "bat",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pigeon",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Killifish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Freshwater Snail",
+   "code": "gastropod",
+   "model": "gastropod",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "King Snake",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.98,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "reptile 0.02",
+   "agree": true
+  },
+  {
+   "name": "Polar Bear",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.9,
+   "p_model": 0.91,
+   "p_code": 0.91,
+   "runnerUp": "marine 0.09",
+   "agree": true
+  },
+  {
+   "name": "Musk Ox",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "marine 0.01",
+   "agree": true
+  },
+  {
+   "name": "Arctic Hare",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Snowy Owl",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Swan",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Walrus",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Seal",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Beluga",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Narwhal",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Orca",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Right Whale",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tern",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Auk",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Puffin",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Guillemot",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Eider Duck",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Arctic Cod",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Herring",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Krill",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Copepod",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Amphipod",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Jellyfish",
+   "code": "jelly",
+   "model": "jelly",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Fur Seal",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Blue Whale",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Humpback Whale",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Penguin",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Albatross",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Petrel",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Skua",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Squid",
+   "code": "ceph",
+   "model": "ceph",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Octopus",
+   "code": "ceph",
+   "model": "ceph",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Starfish",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sea Urchin",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sea Cucumber",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "worm 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cold-Water Fish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.97,
+   "p_model": 0.97,
+   "p_code": 0.97,
+   "runnerUp": "other 0.03",
+   "agree": true
+  },
+  {
+   "name": "Monkey",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Condor",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "mammal 0.00",
+   "agree": true
+  },
+  {
+   "name": "Bear",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Swift",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 0.94,
+   "p_model": 0.95,
+   "p_code": 0.95,
+   "runnerUp": "insect 0.04",
+   "agree": true
+  },
+  {
+   "name": "Cave Snake",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.93,
+   "p_model": 0.93,
+   "p_code": 0.93,
+   "runnerUp": "reptile 0.03",
+   "agree": true
+  },
+  {
+   "name": "Olm",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Blind Fish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.96,
+   "p_model": 0.96,
+   "p_code": 0.96,
+   "runnerUp": "amphibian 0.03",
+   "agree": true
+  },
+  {
+   "name": "Cave Shrimp",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Millipede",
+   "code": "legacy",
+   "model": "worm",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Snake",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wild Pig",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Small Fish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "other 0.01",
+   "agree": true
+  },
+  {
+   "name": "Water Beetle",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Fly Larvae",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 0.96,
+   "p_model": 0.97,
+   "p_code": 0.97,
+   "runnerUp": "worm 0.03",
+   "agree": true
+  },
+  {
+   "name": "Grayling",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Minnow",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sculpin",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Caddisfly",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 0.97,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "other 0.01",
+   "agree": true
+  },
+  {
+   "name": "Mayfly",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Stonefly",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 0.98,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "crust 0.01",
+   "agree": true
+  },
+  {
+   "name": "Gharial",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 0.96,
+   "p_model": 0.96,
+   "p_code": 0.96,
+   "runnerUp": "fish 0.04",
+   "agree": true
+  },
+  {
+   "name": "Sturgeon",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Paddlefish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Perch",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pacu",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Arapaima",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Arowana",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Freshwater Shrimp",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mussel",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Giant Otter",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.83,
+   "p_model": 0.84,
+   "p_code": 0.84,
+   "runnerUp": "marine 0.13",
+   "agree": true
+  },
+  {
+   "name": "Electric Eel",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.79,
+   "p_model": 0.81,
+   "p_code": 0.81,
+   "runnerUp": "fish 0.18",
+   "agree": true
+  },
+  {
+   "name": "Stingray",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cichlid",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tetra",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Caecilian",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.94,
+   "p_model": 0.95,
+   "p_code": 0.95,
+   "runnerUp": "amphibian 0.05",
+   "agree": true
+  },
+  {
+   "name": "River Dolphin",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 0.98,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "fish 0.01",
+   "agree": true
+  },
+  {
+   "name": "Manatee",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Loon",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Grebe",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cormorant",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pelican",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Osprey",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sunfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Walleye",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Whitefish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Lungfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tigerfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.98,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "other 0.01",
+   "agree": true
+  },
+  {
+   "name": "Freshwater Crab",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Coot",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Moorhen",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Goldfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Damselfly",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Water Strider",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Diving Beetle",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Water Snail",
+   "code": "gastropod",
+   "model": "gastropod",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Water Vole",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Rail",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Bittern",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "arachnid 0.00",
+   "agree": true
+  },
+  {
+   "name": "Giant Water Bug",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 0.9,
+   "p_model": 0.91,
+   "p_code": 0.91,
+   "runnerUp": "other 0.09",
+   "agree": true
+  },
+  {
+   "name": "Sea Turtle",
+   "code": "turtle",
+   "model": "turtle",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "reptile 0.01",
+   "agree": true
+  },
+  {
+   "name": "Mullet",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "mammal 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tarpon",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Snapper",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Juvenile Shark",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "crust 0.00",
+   "agree": true
+  },
+  {
+   "name": "Ray",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "mammal 0.00",
+   "agree": true
+  },
+  {
+   "name": "Crab",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "other 0.00",
+   "agree": true
+  },
+  {
+   "name": "Shrimp",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "mammal 0.00",
+   "agree": true
+  },
+  {
+   "name": "Oyster",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cave Fish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sea Lion",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Oystercatcher",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Coastal Lizard",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Hermit Crab",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "gastropod 0.01",
+   "agree": true
+  },
+  {
+   "name": "Clam",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "other 0.00",
+   "agree": true
+  },
+  {
+   "name": "Razor Clam",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 0.98,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "worm 0.01",
+   "agree": true
+  },
+  {
+   "name": "Sea Snail",
+   "code": "gastropod",
+   "model": "gastropod",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "crust 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sand Dollar",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sea Otter",
+   "code": "mammal",
+   "model": "marine",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.01,
+   "runnerUp": "mammal 0.01",
+   "agree": false
+  },
+  {
+   "name": "Goby",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "crust 0.00",
+   "agree": true
+  },
+  {
+   "name": "Blenny",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Limpet",
+   "code": "gastropod",
+   "model": "gastropod",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Chiton",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "gastropod 0.01",
+   "agree": true
+  },
+  {
+   "name": "Barnacle",
+   "code": "sessile",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "mammal 0.00",
+   "agree": false
+  },
+  {
+   "name": "Sea Anemone",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "mammal 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sponge",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Nudibranch",
+   "code": "gastropod",
+   "model": "gastropod",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Dolphin",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Flounder",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "mammal 0.00",
+   "agree": true
+  },
+  {
+   "name": "Prawn",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "mammal 0.00",
+   "agree": true
+  },
+  {
+   "name": "Marine Worm",
+   "code": "legacy",
+   "model": "worm",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Marsh Rodent",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.98,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "other 0.01",
+   "agree": true
+  },
+  {
+   "name": "Godwit",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Avocet",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mudskipper",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.92,
+   "p_model": 0.93,
+   "p_code": 0.93,
+   "runnerUp": "reptile 0.06",
+   "agree": true
+  },
+  {
+   "name": "Fiddler Crab",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Snail",
+   "code": "gastropod",
+   "model": "gastropod",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Grouper",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mud Crab",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Dugong",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Bonefish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Barracuda",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Reef Fish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "other 0.01",
+   "agree": true
+  },
+  {
+   "name": "Shark",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Lobster",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Porpoise",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Gannet",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cod",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mackerel",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Halibut",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cold-Water Coral",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Reef Shark",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Hammerhead Shark",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Manta Ray",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Eagle Ray",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Clownfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Damselfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Butterflyfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Angelfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Surgeonfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tang",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "other 0.01",
+   "agree": true
+  },
+  {
+   "name": "Triggerfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Parrotfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wrasse",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cardinalfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Lionfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pufferfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Boxfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Seahorse",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Moray Eel",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.93,
+   "p_model": 0.93,
+   "p_code": 0.93,
+   "runnerUp": "fish 0.07",
+   "agree": true
+  },
+  {
+   "name": "Cuttlefish",
+   "code": "ceph",
+   "model": "ceph",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Giant Clam",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cowrie",
+   "code": "gastropod",
+   "model": "gastropod",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Brittle Star",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Coral",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pipefish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Rabbitfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Conch",
+   "code": "gastropod",
+   "model": "gastropod",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sea Bass",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Giant Octopus",
+   "code": "ceph",
+   "model": "ceph",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Abalone",
+   "code": "gastropod",
+   "model": "gastropod",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Gray Whale",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tuna",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Haddock",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pollock",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Scallop",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sperm Whale",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pilot Whale",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Beaked Whale",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Great White Shark",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "sessile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tiger Shark",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mako Shark",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Whale Shark",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Basking Shark",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Marlin",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sailfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Swordfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mahi-Mahi",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wahoo",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sardine",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Anchovy",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Flying Fish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Giant Squid",
+   "code": "ceph",
+   "model": "ceph",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Portuguese Man-of-War",
+   "code": "jelly",
+   "model": "jelly",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Frigatebird",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Anglerfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Lanternfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Viperfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Fangtooth",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Dragonfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Oarfish",
+   "code": "serpent",
+   "model": "fish",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "amphibian 0.00",
+   "agree": false
+  },
+  {
+   "name": "Barreleye",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Blobfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Gulper Eel",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.74,
+   "p_model": 0.76,
+   "p_code": 0.76,
+   "runnerUp": "fish 0.24",
+   "agree": true
+  },
+  {
+   "name": "Vampire Squid",
+   "code": "ceph",
+   "model": "ceph",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Deep-Sea Octopus",
+   "code": "ceph",
+   "model": "ceph",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Comb Jelly",
+   "code": "jelly",
+   "model": "jelly",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Giant Isopod",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tube Worm",
+   "code": "legacy",
+   "model": "worm",
+   "confidence": 0.77,
+   "p_model": 0.79,
+   "p_code": 0,
+   "runnerUp": "sessile 0.19",
+   "agree": true
+  },
+  {
+   "name": "Tripod Fish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "amphibian 0.00",
+   "agree": true
+  },
+  {
+   "name": "Snailfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.92,
+   "p_model": 0.93,
+   "p_code": 0.93,
+   "runnerUp": "gastropod 0.07",
+   "agree": true
+  },
+  {
+   "name": "Isopod",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Polychaete Worm",
+   "code": "legacy",
+   "model": "worm",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Giant Tube Worm",
+   "code": "legacy",
+   "model": "worm",
+   "confidence": 0.95,
+   "p_model": 0.96,
+   "p_code": 0,
+   "runnerUp": "sessile 0.03",
+   "agree": true
+  },
+  {
+   "name": "Vent Shrimp",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Vent Crab",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Scale Worm",
+   "code": "legacy",
+   "model": "worm",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Deep-Sea Fish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "other 0.01",
+   "agree": true
+  },
+  {
+   "name": "Whale",
+   "code": "marine",
+   "model": "marine",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Monkfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Deep-Water Coral",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Rat",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cat",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Seabird",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Iguana",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Marine Iguana",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Land Iguana",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Coconut Crab",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Booby",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tropicbird",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Blind Salamander",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cave Cricket",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 0.98,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "arachnid 0.02",
+   "agree": true
+  },
+  {
+   "name": "Harvestman",
+   "code": "arachnid",
+   "model": "arachnid",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pseudoscorpion",
+   "code": "arachnid",
+   "model": "arachnid",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cockroach",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Flatworm",
+   "code": "legacy",
+   "model": "worm",
+   "confidence": 0.98,
+   "p_model": 0.99,
+   "p_code": 0,
+   "runnerUp": "other 0.01",
+   "agree": true
+  },
+  {
+   "name": "Insect-Eating Bat",
+   "code": "bat",
+   "model": "bat",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "mammal 0.01",
+   "agree": true
+  },
+  {
+   "name": "Cave Frog",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Giant Centipede",
+   "code": "legacy",
+   "model": "worm",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Snow Petrel",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "fish 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mite",
+   "code": "arachnid",
+   "model": "arachnid",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Ice Worm",
+   "code": "legacy",
+   "model": "worm",
+   "confidence": 0.88,
+   "p_model": 0.89,
+   "p_code": 0,
+   "runnerUp": "crust 0.04",
+   "agree": true
+  },
+  {
+   "name": "Cow",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Bull",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Horse",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Donkey",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pig",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Chicken",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Rooster",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Kestrel",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Starling",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Llama",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Alpaca",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Moth",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wasp",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Aphid",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "arachnid 0.01",
+   "agree": true
+  },
+  {
+   "name": "Dog",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Fly",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Carrion Beetle",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cold-Adapted Insect",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 0.68,
+   "p_model": 0.71,
+   "p_code": 0.71,
+   "runnerUp": "other 0.17",
+   "agree": true
+  },
+  {
+   "name": "Desert Owl",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "reptile 0.00",
+   "agree": true
+  },
+  {
+   "name": "Vine Snake",
+   "code": "serpent",
+   "model": "serpent",
+   "confidence": 0.88,
+   "p_model": 0.89,
+   "p_code": 0.89,
+   "runnerUp": "reptile 0.11",
+   "agree": true
+  },
+  {
+   "name": "Stick Insect",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Kangaroo",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "bird 0.00",
+   "agree": true
+  },
+  {
+   "name": "Koala",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.77,
+   "p_model": 0.79,
+   "p_code": 0.79,
+   "runnerUp": "primate 0.21",
+   "agree": true
+  },
+  {
+   "name": "Platypus",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.98,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "marine 0.01",
+   "agree": true
+  },
+  {
+   "name": "Echidna",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "other 0.01",
+   "agree": true
+  },
+  {
+   "name": "Wombat",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tasmanian Devil",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Wallaby",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "serpent 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sugar Glider",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.97,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "primate 0.01",
+   "agree": true
+  },
+  {
+   "name": "Quoll",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Komodo Dragon",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Chameleon",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Gila Monster",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Axolotl",
+   "code": "amphibian",
+   "model": "amphibian",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Frilled Lizard",
+   "code": "reptile",
+   "model": "reptile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Lemur",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Gibbon",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mandrill",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Marmoset",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "mammal 0.01",
+   "agree": true
+  },
+  {
+   "name": "Aye-Aye",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "mammal 0.01",
+   "agree": true
+  },
+  {
+   "name": "Proboscis Monkey",
+   "code": "primate",
+   "model": "primate",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tree Shrew",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.88,
+   "p_model": 0.89,
+   "p_code": 0.89,
+   "runnerUp": "primate 0.10",
+   "agree": true
+  },
+  {
+   "name": "Colugo",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.7,
+   "p_model": 0.73,
+   "p_code": 0.73,
+   "runnerUp": "bat 0.17",
+   "agree": true
+  },
+  {
+   "name": "Emu",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cassowary",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Kiwi",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Kakapo",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "mammal 0.01",
+   "agree": true
+  },
+  {
+   "name": "Sun Bear",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Dingo",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Cockatoo",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Firefly",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Vampire Bat",
+   "code": "bat",
+   "model": "bat",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "mammal 0.01",
+   "agree": true
+  },
+  {
+   "name": "Grizzly Bear",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Coelacanth",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Nautilus",
+   "code": "ceph",
+   "model": "ceph",
+   "confidence": 0.96,
+   "p_model": 0.96,
+   "p_code": 0.96,
+   "runnerUp": "fish 0.04",
+   "agree": true
+  },
+  {
+   "name": "Tardigrade",
+   "code": "arachnid",
+   "model": "arachnid",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Horseshoe Crab",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 0.69,
+   "p_model": 0.72,
+   "p_code": 0.72,
+   "runnerUp": "arachnid 0.17",
+   "agree": true
+  },
+  {
+   "name": "Pronghorn",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Springbok",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Bongo",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Duiker",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Gerenuk",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Nilgai",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tahr",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Serow",
+   "code": "mammal",
+   "model": "mammal",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Harpy Eagle",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Kookaburra",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Hoatzin",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Quetzal",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Weaverbird",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "insect 0.01",
+   "agree": true
+  },
+  {
+   "name": "Screamer",
+   "code": "bird",
+   "model": "bird",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Ocean Sunfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Remora",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.92,
+   "p_model": 0.93,
+   "p_code": 0.93,
+   "runnerUp": "crust 0.06",
+   "agree": true
+  },
+  {
+   "name": "Archerfish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Knifefish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "serpent 0.01",
+   "agree": true
+  },
+  {
+   "name": "Icefish",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Mudminnow",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Flying Gurnard",
+   "code": "fish",
+   "model": "fish",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Sea Squirt",
+   "code": "sessile",
+   "model": "sessile",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Salp",
+   "code": "jelly",
+   "model": "jelly",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Pyrosome",
+   "code": "jelly",
+   "model": "jelly",
+   "confidence": 0.92,
+   "p_model": 0.93,
+   "p_code": 0.93,
+   "runnerUp": "sessile 0.04",
+   "agree": true
+  },
+  {
+   "name": "Lancelet",
+   "code": "fish",
+   "model": "other",
+   "confidence": 0.73,
+   "p_model": 0.76,
+   "p_code": 0.04,
+   "runnerUp": "worm 0.19",
+   "agree": false
+  },
+  {
+   "name": "Sea Spider",
+   "code": "arachnid",
+   "model": "arachnid",
+   "confidence": 0.98,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "crust 0.02",
+   "agree": true
+  },
+  {
+   "name": "Fairy Shrimp",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 1,
+   "runnerUp": "gastropod 0.00",
+   "agree": true
+  },
+  {
+   "name": "Tadpole Shrimp",
+   "code": "crust",
+   "model": "crust",
+   "confidence": 0.97,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "fish 0.01",
+   "agree": true
+  },
+  {
+   "name": "Springtail",
+   "code": "insect",
+   "model": "other",
+   "confidence": 0.47,
+   "p_model": 0.51,
+   "p_code": 0.26,
+   "runnerUp": "insect 0.26",
+   "agree": false
+  },
+  {
+   "name": "Dobsonfly",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 0.98,
+   "p_model": 0.99,
+   "p_code": 0.99,
+   "runnerUp": "arachnid 0.01",
+   "agree": true
+  },
+  {
+   "name": "Scorpionfly",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 0.97,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "arachnid 0.02",
+   "agree": true
+  },
+  {
+   "name": "Thrips",
+   "code": "insect",
+   "model": "insect",
+   "confidence": 0.99,
+   "p_model": 0.98,
+   "p_code": 0.98,
+   "runnerUp": "other 0.01",
+   "agree": true
+  }
+ ],
+ "disagree": [
+  {
+   "name": "Barnacle",
+   "code": "sessile",
+   "model": "crust",
+   "confidence": 1,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "mammal 0.00",
+   "agree": false
+  },
+  {
+   "name": "Sea Otter",
+   "code": "mammal",
+   "model": "marine",
+   "confidence": 0.99,
+   "p_model": 0.99,
+   "p_code": 0.01,
+   "runnerUp": "mammal 0.01",
+   "agree": false
+  },
+  {
+   "name": "Oarfish",
+   "code": "serpent",
+   "model": "fish",
+   "confidence": 0.99,
+   "p_model": 1,
+   "p_code": 0,
+   "runnerUp": "amphibian 0.00",
+   "agree": false
+  },
+  {
+   "name": "Lancelet",
+   "code": "fish",
+   "model": "other",
+   "confidence": 0.73,
+   "p_model": 0.76,
+   "p_code": 0.04,
+   "runnerUp": "worm 0.19",
+   "agree": false
+  },
+  {
+   "name": "Springtail",
+   "code": "insect",
+   "model": "other",
+   "confidence": 0.47,
+   "p_model": 0.51,
+   "p_code": 0.26,
+   "runnerUp": "insect 0.26",
+   "agree": false
+  }
+ ]
+}

@@ -1,0 +1,486 @@
+{
+ "kind": "body-card",
+ "identity": {
+  "speciesVisualKey": "synthetic:plant-herb",
+  "seed": 659720,
+  "ownerId": "synthetic:a11-fixture",
+  "earthName": null
+ },
+ "recipeHash": null,
+ "template": {
+  "id": "plant-herb",
+  "version": 1,
+  "clipSetId": "plant-herb-v1"
+ },
+ "massClass": {
+  "name": "medium",
+  "multiplier": 1
+ },
+ "locomotion": {
+  "loco": "grazers",
+  "gait": "walk",
+  "templateGait": "none"
+ },
+ "realm": "land",
+ "materials": {
+  "body": "slick",
+  "head": "slick",
+  "legs": "slick",
+  "tail": "slick",
+  "ears": "slick",
+  "wings": "slick",
+  "fins": "slick",
+  "antennae": "slick",
+  "fronds": "slick",
+  "arms": "slick"
+ },
+ "parts": [
+  {
+   "joint": "stem0Seg0",
+   "parent": "root",
+   "group": "fronds",
+   "pivot": [
+    0.5,
+    0.9
+   ],
+   "tip": [
+    0.54,
+    0.74
+   ],
+   "boneLength": 0.16492422502470647
+  },
+  {
+   "joint": "stem0Seg1",
+   "parent": "stem0Seg0",
+   "group": "fronds",
+   "pivot": [
+    0.54,
+    0.74
+   ],
+   "tip": [
+    0.6,
+    0.58
+   ],
+   "boneLength": 0.17088007490635065
+  },
+  {
+   "joint": "stem0Seg2",
+   "parent": "stem0Seg1",
+   "group": "fronds",
+   "pivot": [
+    0.6,
+    0.58
+   ],
+   "tip": [
+    0.68,
+    0.44
+   ],
+   "boneLength": 0.161245154965971
+  },
+  {
+   "joint": "frond0",
+   "parent": "stem0Seg2",
+   "group": "fronds",
+   "pivot": [
+    0.68,
+    0.44
+   ],
+   "tip": [
+    0.78,
+    0.36
+   ],
+   "boneLength": 0.12806248474865697
+  },
+  {
+   "joint": "stem1Seg0",
+   "parent": "root",
+   "group": "fronds",
+   "pivot": [
+    0.5,
+    0.9
+   ],
+   "tip": [
+    0.46,
+    0.74
+   ],
+   "boneLength": 0.16492422502470647
+  },
+  {
+   "joint": "stem1Seg1",
+   "parent": "stem1Seg0",
+   "group": "fronds",
+   "pivot": [
+    0.46,
+    0.74
+   ],
+   "tip": [
+    0.4,
+    0.58
+   ],
+   "boneLength": 0.17088007490635065
+  },
+  {
+   "joint": "stem1Seg2",
+   "parent": "stem1Seg1",
+   "group": "fronds",
+   "pivot": [
+    0.4,
+    0.58
+   ],
+   "tip": [
+    0.32,
+    0.44
+   ],
+   "boneLength": 0.16124515496597097
+  },
+  {
+   "joint": "frond1",
+   "parent": "stem1Seg2",
+   "group": "fronds",
+   "pivot": [
+    0.32,
+    0.44
+   ],
+   "tip": [
+    0.22,
+    0.36
+   ],
+   "boneLength": 0.12806248474865697
+  },
+  {
+   "joint": "stem2Seg0",
+   "parent": "root",
+   "group": "fronds",
+   "pivot": [
+    0.5,
+    0.9
+   ],
+   "tip": [
+    0.52,
+    0.72
+   ],
+   "boneLength": 0.18110770276274837
+  },
+  {
+   "joint": "stem2Seg1",
+   "parent": "stem2Seg0",
+   "group": "fronds",
+   "pivot": [
+    0.52,
+    0.72
+   ],
+   "tip": [
+    0.55,
+    0.54
+   ],
+   "boneLength": 0.18248287590894655
+  },
+  {
+   "joint": "stem2Seg2",
+   "parent": "stem2Seg1",
+   "group": "fronds",
+   "pivot": [
+    0.55,
+    0.54
+   ],
+   "tip": [
+    0.58,
+    0.36
+   ],
+   "boneLength": 0.18248287590894663
+  },
+  {
+   "joint": "frond2",
+   "parent": "stem2Seg2",
+   "group": "fronds",
+   "pivot": [
+    0.58,
+    0.36
+   ],
+   "tip": [
+    0.62,
+    0.24
+   ],
+   "boneLength": 0.12649110640673517
+  },
+  {
+   "joint": "stem3Seg0",
+   "parent": "root",
+   "group": "fronds",
+   "pivot": [
+    0.5,
+    0.9
+   ],
+   "tip": [
+    0.48,
+    0.72
+   ],
+   "boneLength": 0.18110770276274837
+  },
+  {
+   "joint": "stem3Seg1",
+   "parent": "stem3Seg0",
+   "group": "fronds",
+   "pivot": [
+    0.48,
+    0.72
+   ],
+   "tip": [
+    0.45,
+    0.54
+   ],
+   "boneLength": 0.1824828759089465
+  },
+  {
+   "joint": "stem3Seg2",
+   "parent": "stem3Seg1",
+   "group": "fronds",
+   "pivot": [
+    0.45,
+    0.54
+   ],
+   "tip": [
+    0.42,
+    0.36
+   ],
+   "boneLength": 0.18248287590894666
+  },
+  {
+   "joint": "frond3",
+   "parent": "stem3Seg2",
+   "group": "fronds",
+   "pivot": [
+    0.42,
+    0.36
+   ],
+   "tip": [
+    0.38,
+    0.24
+   ],
+   "boneLength": 0.12649110640673514
+  }
+ ],
+ "secondaryParts": [
+  {
+   "id": "stem0",
+   "driver": "root",
+   "joints": [
+    "stem0Seg0",
+    "stem0Seg1",
+    "stem0Seg2",
+    "frond0"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "material": "slick",
+   "kind": "frond"
+  },
+  {
+   "id": "stem1",
+   "driver": "root",
+   "joints": [
+    "stem1Seg0",
+    "stem1Seg1",
+    "stem1Seg2",
+    "frond1"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "material": "slick",
+   "kind": "frond"
+  },
+  {
+   "id": "stem2",
+   "driver": "root",
+   "joints": [
+    "stem2Seg0",
+    "stem2Seg1",
+    "stem2Seg2",
+    "frond2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "material": "slick",
+   "kind": "frond"
+  },
+  {
+   "id": "stem3",
+   "driver": "root",
+   "joints": [
+    "stem3Seg0",
+    "stem3Seg1",
+    "stem3Seg2",
+    "frond3"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "material": "slick",
+   "kind": "frond"
+  }
+ ],
+ "weapons": [],
+ "luminous": false,
+ "bodyLength": 0.33105890714493696,
+ "groundLineY": 0.9,
+ "landmarks": {
+  "root": [
+   0.5,
+   0.9
+  ],
+  "stem0Seg0": [
+   0.54,
+   0.74
+  ],
+  "stem0Seg1": [
+   0.6,
+   0.58
+  ],
+  "stem0Seg2": [
+   0.68,
+   0.44
+  ],
+  "frond0": [
+   0.78,
+   0.36
+  ],
+  "stem1Seg0": [
+   0.46,
+   0.74
+  ],
+  "stem1Seg1": [
+   0.4,
+   0.58
+  ],
+  "stem1Seg2": [
+   0.32,
+   0.44
+  ],
+  "frond1": [
+   0.22,
+   0.36
+  ],
+  "stem2Seg0": [
+   0.52,
+   0.72
+  ],
+  "stem2Seg1": [
+   0.55,
+   0.54
+  ],
+  "stem2Seg2": [
+   0.58,
+   0.36
+  ],
+  "frond2": [
+   0.62,
+   0.24
+  ],
+  "stem3Seg0": [
+   0.48,
+   0.72
+  ],
+  "stem3Seg1": [
+   0.45,
+   0.54
+  ],
+  "stem3Seg2": [
+   0.42,
+   0.36
+  ],
+  "frond3": [
+   0.38,
+   0.24
+  ]
+ },
+ "bounds": {
+  "inside": true,
+  "clamped": [],
+  "limitsDeg": {
+   "root": {
+    "min": -5,
+    "max": 5
+   },
+   "stem0Seg0": {
+    "min": -25,
+    "max": 25
+   },
+   "stem0Seg1": {
+    "min": -40,
+    "max": 40
+   },
+   "stem0Seg2": {
+    "min": -40,
+    "max": 40
+   },
+   "frond0": {
+    "min": -50,
+    "max": 50
+   },
+   "stem1Seg0": {
+    "min": -25,
+    "max": 25
+   },
+   "stem1Seg1": {
+    "min": -40,
+    "max": 40
+   },
+   "stem1Seg2": {
+    "min": -40,
+    "max": 40
+   },
+   "frond1": {
+    "min": -50,
+    "max": 50
+   },
+   "stem2Seg0": {
+    "min": -25,
+    "max": 25
+   },
+   "stem2Seg1": {
+    "min": -40,
+    "max": 40
+   },
+   "stem2Seg2": {
+    "min": -40,
+    "max": 40
+   },
+   "frond2": {
+    "min": -50,
+    "max": 50
+   },
+   "stem3Seg0": {
+    "min": -25,
+    "max": 25
+   },
+   "stem3Seg1": {
+    "min": -40,
+    "max": 40
+   },
+   "stem3Seg2": {
+    "min": -40,
+    "max": 40
+   },
+   "frond3": {
+    "min": -50,
+    "max": 50
+   }
+  }
+ },
+ "notes": []
+}

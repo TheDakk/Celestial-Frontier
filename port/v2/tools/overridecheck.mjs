@@ -660,8 +660,8 @@ const ART_SOURCE_ROOT = path.join(root, 'packages/art/src');
 const KNOWN_VERBATIM_JS_HASHES = new Map([
   ['artextras.verbatim.js', 'dadfd860bc21b4472efb80f91399ddb89b704bc2b0396fe848aa8628b21cc2c7'],
   ['galaxyart.verbatim.js', '789a9f4e326896f6e8f9f142a6128ac8ec48a5388e2304afd4114a981ff14d27'],
-  ['hdart.verbatim.js', '8ab222a3c63a0db04c28a7e5d51a5af4e34e7dbdfe1573eaaaa2c50bed086e49'],
-  ['hdportrait.worker.verbatim.js', 'e219d4a0aa8c69fe540ebbe6ebc9beb13abc060ada2c5d3b6cf8c76aa1ad05d1'],
+  ['hdart.verbatim.js', '93d1e79292e68cd2cceab14617005900b1ccf649d2284a83f0ec497ec8e34bcd'],
+  ['hdportrait.worker.verbatim.js', '50c43aa81272cc3e7950b85cf957d0e5657b3fd2c174fa38b16dd11cdc1b67e3'],
   ['thumbart.verbatim.js', '85b54edf7f32a174da90f6f68ea474dcebe8d31997dad683c6f5b88cb5587544'],
   /* Generator/source-slice contracts and forbidden-owner negative controls
      live in the paired biome-vista tests; these whole-file hashes make the

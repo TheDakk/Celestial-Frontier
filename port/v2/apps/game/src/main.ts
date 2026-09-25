@@ -17,7 +17,8 @@
    on the V2 program roadmap. Atlas charting/favorites and rarity stings are live.
    Static deterministic Canvas species portraits and the preserved 43-biome landing vistas are live;
    retained Pixi actors, meshes, and portrait animation remain later work. */
-import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin, RendererType, MeshPipe } from 'pixi.js';
+import { createPaintedCardsForApp } from './painted-cards.js';
+import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin, RendererType, MeshPipe, Particle, ParticleContainer } from 'pixi.js';
 import { createSystemStarField } from './system-star-field.js';
 import { createSystemProtostarCanvas, SYSTEM_PROTOSTAR_WIDTH, SYSTEM_PROTOSTAR_HEIGHT } from './system-protostar.js';
 import {
@@ -478,6 +479,7 @@ import {
 } from './combat-card.js';
 import {
   CombatChronicleController,
+  createCombatChroniclePacerGateV1,
   projectCombatChronicleV1,
   type CombatChronicleCueEmissionV1,
 } from './combat-chronicle.js';
@@ -510,12 +512,16 @@ import {
   STARTER_CHARTER_IDS_V1,
   commitStarterCharterAcceptV1,
   operationForStarterCharterAcceptV1,
+  operationForWeeklyCharterAcceptV1,
+  isWeeklyCharterIdV1,
+  type CharterAcceptIdV1,
   projectStarterCharterBoardV1,
   publishStarterCharterAcceptFieldsV1,
   renderStarterCharterBoardV1,
   type StarterCharterAcceptActionOutcomeV1,
   type StarterCharterIdV1,
 } from './starter-charters.js';
+import { projectWeeklyCharterBoardV1, renderWeeklyCharterBoardV1, weeklyCharterCycleV1 } from './weekly-charters.js';
 import {
   ARC9_BINDER_CLAIMABLE_SET_IDS_V1,
   commitArc9BinderSetClaimV1,
@@ -662,7 +668,9 @@ const DOCUMENT_TOKEN = crypto.randomUUID();
    may clone sessionStorage into a duplicated/opener tab. BFCache retains this
    same JS realm and therefore correctly retains this token. */
 const F4_TAB_TOKEN = DOCUMENT_TOKEN;
-const speciesArtLoader = new SpeciesArtLoader(DOCUMENT_TOKEN);
+// the painted individual on the card (morph system): asked first for every thumb/portrait; painter tier otherwise
+const paintedCards = (() => { try { return createPaintedCardsForApp(); } catch { return null; } })();
+const speciesArtLoader = new SpeciesArtLoader(DOCUMENT_TOKEN, paintedCards ? { paintedCards } : {});
 /* Keep one exact SceneMemory route's 9 Compendium + 8 Planetside thumbs warm.
    Repainting the same bounded set on every navigation grows V8's worker/task
    churn even after every cache, lease and DOM owner has been released. */
@@ -3929,7 +3937,7 @@ function binderClaimPanelStatus(): string | null {
 }
 function syncBoundedCollectionButtons(
   root: HTMLElement,
-  selector: '[data-starter-charter-accept]' | '[data-binder-claim]',
+  selector: '[data-starter-charter-accept]' | '[data-weekly-charter-accept]' | '[data-binder-claim]',
   pending: boolean,
   unavailable = false,
 ): void {
@@ -4241,8 +4249,11 @@ function fillCharters(): void {
     ? renderStarterCharterBoardV1(starterProjection.board)
     : '<section data-starter-charter-board-protected><h3>Starter Charters</h3>'
       + '<div class="empty">Starter Charters are protected because their saved authority could not be verified. Nothing was changed.</div></section>';
+  const weeklyActivePlayMs = liveActivePlayMs();
+  const weeklyBoard = weeklyActivePlayMs === null ? null : projectWeeklyCharterBoardV1(save, weeklyActivePlayMs);
+  const weekly = weeklyBoard === null ? '' : renderWeeklyCharterBoardV1(weeklyBoard);
   const starterStatus = starterCharterPanelStatus();
-  fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter + starter
+  fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter + starter + weekly
     + (starterStatus === null ? ''
       : `<p class="starter-charter-status" role="status" aria-live="polite" aria-atomic="true">${esc(starterStatus)}</p>`));
   syncBoundedCollectionButtons(
@@ -4252,11 +4263,23 @@ function fillCharters(): void {
     starterProjection.kind !== 'projected'
       || starterProjection.board.acceptedCount >= starterProjection.board.cap,
   );
+  syncBoundedCollectionButtons(
+    document.getElementById('chpanel')!,
+    '[data-weekly-charter-accept]',
+    starterCharterAcceptPendingId !== null,
+    weeklyBoard === null || weeklyBoard.acceptedCount >= weeklyBoard.cap,
+  );
   restoreFocus();
 }
 registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('objchip')], onOpen: fillCharters });
 document.getElementById('chpanel')!.addEventListener('click', (event) => {
   if (!(event.target instanceof Element)) return;
+  const weeklyButton = event.target.closest<HTMLButtonElement>('[data-weekly-charter-accept]');
+  if (weeklyButton !== null && !weeklyButton.disabled) {
+    const weeklyId = weeklyButton.dataset.weeklyCharterAccept ?? '';
+    if (isWeeklyCharterIdV1(weeklyId)) void acceptStarterCharterWithPilot(weeklyId, event.isTrusted);
+    return;
+  }
   const button = event.target.closest<HTMLButtonElement>('[data-starter-charter-accept]');
   if (button === null || button.disabled) return;
   const id = STARTER_CHARTER_IDS_V1.find(
@@ -6189,6 +6212,8 @@ function requestSurfaceVista(
   }
   audiovisualPilotBiomeKey = request.biomeKey;
   audiovisualPilotVistaBinding = JSON.stringify(request);
+  // A6 study flag (?worldlife=1): the A5 world-life layer over the vista sprite of this landfall; dynamic import only under the flag, never on the default path.
+  if (new URLSearchParams(location.search).get('worldlife') === '1') void import('./worldlife-wiring.js').then(m => m.mountWorldLifeStudy({ request, roster, stage: app.stage, vistaSprite: () => surfaceVistaSprite, ticker: app.ticker, clock: () => performance.now(), reducedMotion: () => !motionOK(), tier: TOUCH_DPR ? 'phone' : 'desktop', pixi: { Container, Graphics }, residents: { rows: roster.view.all, artLoader: speciesArtLoader, pixi: { Sprite, Texture } } })).catch(() => { /* the flagged study never blocks the vista */ });
   surfaceVistaWorldKey = request.worldKey;
   surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;
   if (currentAiLandfallInput()) { restoreCurrentAiLandfall(); return; }
@@ -8084,6 +8109,7 @@ function publishArc0LandingFields(
     save.chacc = committed.chacc.slice();
     save.chDone = committed.chDone.slice();
     save.chProg = { ...committed.chProg };
+    save.chWeek = committed.chWeek;
     save.items = committed.items.map(([baseId, count]) => [baseId, count]);
     save.equip = { ...committed.equip };
     save.equipAff = Object.fromEntries(Object.entries(committed.equipAff).map(([slot, affix]) => [
@@ -8178,6 +8204,7 @@ async function doLand(): Promise<boolean> {
     chacc: save.chacc,
     chDone: save.chDone,
     chProg: save.chProg,
+    chWeek: save.chWeek,
     cargo: save.cargo,
     essence: save.essence,
     stats: save.stats,
@@ -8202,6 +8229,7 @@ async function doLand(): Promise<boolean> {
     save.chacc = priorLandingPublication.chacc;
     save.chDone = priorLandingPublication.chDone;
     save.chProg = priorLandingPublication.chProg;
+    save.chWeek = priorLandingPublication.chWeek;
     save.cargo = priorLandingPublication.cargo;
     save.essence = priorLandingPublication.essence;
     save.stats = priorLandingPublication.stats;
@@ -9458,6 +9486,8 @@ function compendiumDiagnostics(): unknown {
     explorerMeal: compendiumExplorerMealController.diagnostics(),
     lazyArt: speciesArtLoader.diagnostics(),
     art: speciesArtLoader.artDiagnostics(),
+    // the painted card path (stand-ins, 2026-09-24): its own leases/cache/pending/resident archetypes, beside the broker's `art`
+    paintedArt: speciesArtLoader.paintedDiagnostics(),
   });
 }
 function drawSurface(
@@ -10168,6 +10198,9 @@ function smokeResumeSettingsPersistence(): Readonly<{
   });
 }
 const productActionCoordinator = createProductActionCoordinator();
+/* K20: deferred notices drain when the receipt-bearing action settles, not only
+   inside a later checkpoint. Every settle site clears productActionInFlight first. */
+productActionCoordinator.bindSettleHook(() => notificationHistory.flushPending());
 const smokeProductActionHold = __CF_EVIDENCE_BUILD__
   ? createProductActionDiagnosticHold() : inactiveEvidenceHold;
 let arc9ProgressionRefreshQueued = false;
@@ -10179,7 +10212,7 @@ let arc9NameplateChoicePending = false;
 let lastArc9NameplateOutcome: string | null = null;
 let arc9FrontierEndingPending = false;
 let lastArc9FrontierEndingOutcome: string | null = null;
-let starterCharterAcceptPendingId: StarterCharterIdV1 | null = null;
+let starterCharterAcceptPendingId: CharterAcceptIdV1 | null = null;
 let lastStarterCharterAcceptOutcome: string | null = null;
 let lastStarterCharterAcceptStatus: string | null = null;
 let arc9BinderClaimPendingId: Arc9BinderClaimableSetIdV1 | null = null;
@@ -10218,7 +10251,11 @@ function boundedCollectionRefusalNeedsReload(outcome: BoundedCollectionRefusalV1
     || kind === 'storage-error';
 }
 
-async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean> {
+/** The expedition's own active-play clock (F4), live; null before the runtime exists. Never the device clock. */
+function liveActivePlayMs(): number | null {
+  try { const ms = f4Runtime?.diagnostics().activePlayMs; return typeof ms === 'number' && Number.isSafeInteger(ms) && ms >= 0 ? ms : null; } catch { return null; }
+}
+async function runStarterCharterAccept(id: CharterAcceptIdV1): Promise<boolean> {
   const runtime = f4Runtime;
   if (starterCharterAcceptPendingId !== null || smokeForceReadOnly
     || !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
@@ -10230,6 +10267,9 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
     toast('Charter acceptance unavailable', 'Finish the current expedition save, then try again.');
     return false;
   }
+  const weeklyAtClick = isWeeklyCharterIdV1(id) ? liveActivePlayMs() : null;
+  const weeklyRow = isWeeklyCharterIdV1(id) && weeklyAtClick !== null
+    ? projectWeeklyCharterBoardV1(save, weeklyAtClick).rows.find(({ definition }) => definition.id === id) : undefined;
   const projection = projectStarterCharterBoardV1(save);
   if (projection.kind !== 'projected') {
     lastStarterCharterAcceptOutcome = `refused:protected:${projection.reason}`;
@@ -10238,13 +10278,14 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
     toast('Starter Charters protected', 'Nothing changed. Reload after restoring save authority.', true);
     return false;
   }
-  if (save.chacc.includes(id) || save.chDone.includes(id)) {
+  if (save.chacc.includes(id) || save.chDone.includes(id) || weeklyRow?.status === 'completed') {
     lastStarterCharterAcceptOutcome = `current:${id}`;
     lastStarterCharterAcceptStatus = 'That Starter Charter is already accepted or complete.';
     if (openPanelId() === 'ch') fillCharters();
     return false;
   }
-  const row = projection.board.rows.find(({ definition }) => definition.id === id);
+  // the starter board's acceptedCount counts every accepted Charter, weekly included: one shared cap
+  const row = isWeeklyCharterIdV1(id) ? weeklyRow : projection.board.rows.find(({ definition }) => definition.id === id);
   if (row === undefined || row.status !== 'available'
     || projection.board.acceptedCount >= projection.board.cap) {
     lastStarterCharterAcceptOutcome = `refused:locked:${id}`;
@@ -10253,7 +10294,9 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
     toast('Charter unavailable', row?.lockedReason ?? 'Three accepted Charters is the exact active cap.');
     return false;
   }
-  const operation = operationForStarterCharterAcceptV1(id);
+  const operation = isWeeklyCharterIdV1(id)
+    ? operationForWeeklyCharterAcceptV1(id, weeklyCharterCycleV1(weeklyAtClick!))
+    : operationForStarterCharterAcceptV1(id);
   const actionClaim = productActionCoordinator.tryClaim(operation);
   if (actionClaim === null) {
     lastStarterCharterAcceptOutcome = 'unavailable:product-action-pending';
@@ -10269,6 +10312,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
     chacc: sourceState.chacc,
     chDone: sourceState.chDone,
     chProg: sourceState.chProg,
+    chWeek: sourceState.chWeek,
     essence: sourceState.essence,
     stats: sourceState.stats,
     items: sourceState.items,
@@ -10282,6 +10326,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
     sourceState.chacc = prior.chacc;
     sourceState.chDone = prior.chDone;
     sourceState.chProg = prior.chProg;
+    sourceState.chWeek = prior.chWeek;
     sourceState.essence = prior.essence;
     sourceState.stats = prior.stats;
     sourceState.items = prior.items;
@@ -10321,6 +10366,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
       state: sourceState,
       id,
       codecNow: Date.now(),
+      ...(weeklyAtClick !== null ? { activePlayMs: weeklyAtClick } : {}),
     });
     if (outcome.kind === 'current') {
       lastStarterCharterAcceptOutcome = `current:${outcome.id}`;
@@ -10367,6 +10413,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
         || JSON.stringify(checkpoint.chacc) !== JSON.stringify(successor.chacc)
         || JSON.stringify(checkpoint.chDone) !== JSON.stringify(successor.chDone)
         || JSON.stringify(checkpoint.chProg) !== JSON.stringify(successor.chProg)
+        || checkpoint.chWeek !== successor.chWeek
         || checkpoint.essence !== successor.essence
         || JSON.stringify(checkpoint.stats) !== JSON.stringify(successor.stats)
         || JSON.stringify(checkpoint.items) !== JSON.stringify(successor.items)
@@ -10469,7 +10516,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
     && !replacementTransaction && !replacementReloadPending && !importWriteInFlight;
 }
 
-async function acceptStarterCharterWithPilot(id: StarterCharterIdV1, trusted: boolean): Promise<void> {
+async function acceptStarterCharterWithPilot(id: CharterAcceptIdV1, trusted: boolean): Promise<void> {
   const pilot = audiovisualPilot;
   let presentation: ReturnType<AudiovisualPilot['beginSettlement']> = null;
   try { presentation = pilot?.beginSettlement(trusted) ?? null; }
@@ -11515,6 +11562,7 @@ async function runArc9Bioscan(): Promise<boolean> {
     chacc: save.chacc,
     chDone: save.chDone,
     chProg: save.chProg,
+    chWeek: save.chWeek,
     essence: save.essence,
     items: save.items,
     equip: save.equip,
@@ -11542,6 +11590,7 @@ async function runArc9Bioscan(): Promise<boolean> {
     sourceState.chacc = priorPublication.chacc;
     sourceState.chDone = priorPublication.chDone;
     sourceState.chProg = priorPublication.chProg;
+    sourceState.chWeek = priorPublication.chWeek;
     sourceState.essence = priorPublication.essence;
     sourceState.items = priorPublication.items;
     sourceState.equip = priorPublication.equip;
@@ -14764,6 +14813,7 @@ async function commitCompendiumScoutAction(
     chacc: sourceState.chacc,
     chDone: sourceState.chDone,
     chProg: sourceState.chProg,
+    chWeek: sourceState.chWeek,
     essence: sourceState.essence,
     stats: sourceState.stats,
     items: sourceState.items,
@@ -14777,6 +14827,7 @@ async function commitCompendiumScoutAction(
     sourceState.chacc = priorScoutCharterPublication.chacc;
     sourceState.chDone = priorScoutCharterPublication.chDone;
     sourceState.chProg = priorScoutCharterPublication.chProg;
+    sourceState.chWeek = priorScoutCharterPublication.chWeek;
     sourceState.essence = priorScoutCharterPublication.essence;
     sourceState.stats = priorScoutCharterPublication.stats;
     sourceState.items = priorScoutCharterPublication.items;
@@ -16340,6 +16391,11 @@ function presentCommittedCombatChronicle(
   if (openPanelId() !== 'combat') {
     throw new Error('Combat Chronicle panel did not open');
   }
+  // ?battle2=1 only (Nick 2026-09-24): the painted stage paces the Chronicle log — a gate set BEFORE start, released by the stage
+  // at each turn's impact (the log never waits more than COMBAT_CHRONICLE_PACER_MAX_WAIT_MS per row); reduced motion keeps the cadence.
+  const battle2Flag = new URLSearchParams(location.search).get('battle2') === '1';
+  const battle2Pacer = battle2Flag && motionOK() ? createCombatChroniclePacerGateV1() : null;
+  if (battle2Flag) combatChronicleController.setPacer(battle2Pacer?.pacer ?? null);
   const generation = combatChronicleController.start(chronicle, cuePlan);
   combatChronicleAudioSession = null;
   if (openPanelId() !== 'combat'
@@ -16356,6 +16412,8 @@ function presentCommittedCombatChronicle(
     combatBattleScene?.stop('close');
     /* The verified settlement and its Chronicle remain usable without art. */
   }
+  // A6 study flag (?battle2=1): the A3 battle stage v2 over the same Chronicle mount; dynamic import only under the flag, never on the default path.
+  if (new URLSearchParams(location.search).get('battle2') === '1') void import('./battle2-wiring.js').then(m => m.mountBattle2Study({ mount: combatChronicleMount, settlement, chronicle, generation, pacer: battle2Pacer, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: tameGreetingAudioOwner?.decorativeVoicePort() ?? null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { battle2Pacer?.releaseAll(); /* the flagged study never blocks the Chronicle */ });
   try {
     const claim = tameGreetingAudioOwner?.claimCommittedCombatSession(outcome, cuePlan) ?? null;
     if (claim !== null) {
@@ -19223,6 +19281,8 @@ async function loadSave(): Promise<void> {
   emitBootPhase('wiring-complete');
   app.start();
   emitBootPhase('ticker-started');
+  // Matchup picker (?battle2=1&vs=Python,Eagle): any two painted archetypes on the battle2 stage with no battle played first; the same study gate, dynamic import only, never on the default path.
+  if (new URLSearchParams(location.search).get('battle2') === '1' && new URLSearchParams(location.search).get('vs') !== null) void import('./battle2-matchup.js').then(m => m.mountBattle2Matchup({ doc: document, search: location.search, ticker: app.ticker, clock: () => performance.now(), reducedMotion: !motionOK(), deviceTier: visualPolicyDeviceTier(), artLoader: speciesArtLoader, audio: tameGreetingAudioOwner?.decorativeVoicePort() ?? null, pixi: { Application, Container, Sprite, Text, Graphics, Texture, Particle, ParticleContainer } })).catch(() => { /* the flagged picker never blocks the game */ });
   if (document.querySelector('meta[name="cf-pwa-enabled"][content="true"]')) {
     pwaUpdateControl = mountPwaUpdateControl({
       document,

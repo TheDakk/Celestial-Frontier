@@ -118,6 +118,8 @@ export function stageStarterCharterActionV1(input: Readonly<{
   predecessorWitness: string;
   event: StarterCharterEventV1;
   receiptOrdinal: number;
+  /** This transaction's committed active-play snapshot (weekly Charters roll and count on it). */
+  activePlayMs?: number;
 }>): StarterCharterActionStageOutcomeV1 {
   try {
     const predecessor = applyV5ExtensionWrites(input.extensions, input.predecessorWrites);
@@ -126,6 +128,7 @@ export function stageStarterCharterActionV1(input: Readonly<{
       extensions: predecessor.extensions,
       event: input.event,
       receiptOrdinal: input.receiptOrdinal,
+      ...(input.activePlayMs !== undefined ? { activePlayMs: input.activePlayMs } : {}),
     });
     if (staged.kind === 'refused') {
       return Object.freeze({ kind: 'refused', reason: staged.reason });
@@ -166,6 +169,7 @@ export function publishStarterCharterActionFieldsV1(
   target.chacc = [...committed.chacc];
   target.chDone = [...committed.chDone];
   target.chProg = { ...committed.chProg };
+  target.chWeek = committed.chWeek;
   target.essence = committed.essence;
   target.stats = { ...committed.stats };
   target.items = committed.items.map(([id, count]) => [id, count]);

@@ -1,0 +1,612 @@
+{
+ "kind": "body-card",
+ "identity": {
+  "speciesVisualKey": "synthetic:radial",
+  "seed": 659718,
+  "ownerId": "synthetic:a11-fixture",
+  "earthName": null
+ },
+ "recipeHash": null,
+ "template": {
+  "id": "radial",
+  "version": 1,
+  "clipSetId": "radial-v1"
+ },
+ "massClass": {
+  "name": "medium",
+  "multiplier": 1
+ },
+ "locomotion": {
+  "loco": "drifters",
+  "gait": "drift",
+  "templateGait": "drift"
+ },
+ "realm": "aquatic",
+ "materials": {
+  "body": "translucent",
+  "head": "translucent",
+  "legs": "translucent",
+  "tail": "translucent",
+  "ears": "translucent",
+  "wings": "translucent",
+  "fins": "translucent",
+  "antennae": "translucent",
+  "fronds": "translucent",
+  "arms": "translucent"
+ },
+ "parts": [
+  {
+   "joint": "centre",
+   "parent": "root",
+   "group": "body",
+   "pivot": [
+    0.5,
+    0.3
+   ],
+   "tip": [
+    0.5,
+    0.34
+   ],
+   "boneLength": 0.040000000000000036
+  },
+  {
+   "joint": "bell",
+   "parent": "centre",
+   "group": "body",
+   "pivot": [
+    0.5,
+    0.34
+   ],
+   "tip": [
+    0.5,
+    0.22
+   ],
+   "boneLength": 0.12000000000000002
+  },
+  {
+   "joint": "arm0Seg0",
+   "parent": "centre",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.34
+   ],
+   "tip": [
+    0.58,
+    0.44
+   ],
+   "boneLength": 0.12806248474865692
+  },
+  {
+   "joint": "arm0Seg1",
+   "parent": "arm0Seg0",
+   "group": "arms",
+   "pivot": [
+    0.58,
+    0.44
+   ],
+   "tip": [
+    0.62,
+    0.56
+   ],
+   "boneLength": 0.12649110640673522
+  },
+  {
+   "joint": "arm0Seg2",
+   "parent": "arm0Seg1",
+   "group": "arms",
+   "pivot": [
+    0.62,
+    0.56
+   ],
+   "tip": [
+    0.64,
+    0.7
+   ],
+   "boneLength": 0.14142135623730942
+  },
+  {
+   "joint": "arm1Seg0",
+   "parent": "centre",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.34
+   ],
+   "tip": [
+    0.42,
+    0.44
+   ],
+   "boneLength": 0.12806248474865697
+  },
+  {
+   "joint": "arm1Seg1",
+   "parent": "arm1Seg0",
+   "group": "arms",
+   "pivot": [
+    0.42,
+    0.44
+   ],
+   "tip": [
+    0.38,
+    0.56
+   ],
+   "boneLength": 0.12649110640673522
+  },
+  {
+   "joint": "arm1Seg2",
+   "parent": "arm1Seg1",
+   "group": "arms",
+   "pivot": [
+    0.38,
+    0.56
+   ],
+   "tip": [
+    0.36,
+    0.7
+   ],
+   "boneLength": 0.14142135623730942
+  },
+  {
+   "joint": "arm2Seg0",
+   "parent": "centre",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.34
+   ],
+   "tip": [
+    0.54,
+    0.46
+   ],
+   "boneLength": 0.12649110640673517
+  },
+  {
+   "joint": "arm2Seg1",
+   "parent": "arm2Seg0",
+   "group": "arms",
+   "pivot": [
+    0.54,
+    0.46
+   ],
+   "tip": [
+    0.56,
+    0.6
+   ],
+   "boneLength": 0.14142135623730948
+  },
+  {
+   "joint": "arm2Seg2",
+   "parent": "arm2Seg1",
+   "group": "arms",
+   "pivot": [
+    0.56,
+    0.6
+   ],
+   "tip": [
+    0.57,
+    0.74
+   ],
+   "boneLength": 0.14035668847618202
+  },
+  {
+   "joint": "arm3Seg0",
+   "parent": "centre",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.34
+   ],
+   "tip": [
+    0.46,
+    0.46
+   ],
+   "boneLength": 0.12649110640673514
+  },
+  {
+   "joint": "arm3Seg1",
+   "parent": "arm3Seg0",
+   "group": "arms",
+   "pivot": [
+    0.46,
+    0.46
+   ],
+   "tip": [
+    0.44,
+    0.6
+   ],
+   "boneLength": 0.14142135623730948
+  },
+  {
+   "joint": "arm3Seg2",
+   "parent": "arm3Seg1",
+   "group": "arms",
+   "pivot": [
+    0.44,
+    0.6
+   ],
+   "tip": [
+    0.43,
+    0.74
+   ],
+   "boneLength": 0.14035668847618202
+  },
+  {
+   "joint": "arm4Seg0",
+   "parent": "centre",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.34
+   ],
+   "tip": [
+    0.62,
+    0.4
+   ],
+   "boneLength": 0.1341640786499874
+  },
+  {
+   "joint": "arm4Seg1",
+   "parent": "arm4Seg0",
+   "group": "arms",
+   "pivot": [
+    0.62,
+    0.4
+   ],
+   "tip": [
+    0.68,
+    0.5
+   ],
+   "boneLength": 0.11661903789690602
+  },
+  {
+   "joint": "arm4Seg2",
+   "parent": "arm4Seg1",
+   "group": "arms",
+   "pivot": [
+    0.68,
+    0.5
+   ],
+   "tip": [
+    0.72,
+    0.62
+   ],
+   "boneLength": 0.12649110640673514
+  },
+  {
+   "joint": "arm5Seg0",
+   "parent": "centre",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.34
+   ],
+   "tip": [
+    0.38,
+    0.4
+   ],
+   "boneLength": 0.1341640786499874
+  },
+  {
+   "joint": "arm5Seg1",
+   "parent": "arm5Seg0",
+   "group": "arms",
+   "pivot": [
+    0.38,
+    0.4
+   ],
+   "tip": [
+    0.32,
+    0.5
+   ],
+   "boneLength": 0.11661903789690599
+  },
+  {
+   "joint": "arm5Seg2",
+   "parent": "arm5Seg1",
+   "group": "arms",
+   "pivot": [
+    0.32,
+    0.5
+   ],
+   "tip": [
+    0.28,
+    0.62
+   ],
+   "boneLength": 0.12649110640673514
+  }
+ ],
+ "secondaryParts": [
+  {
+   "id": "bell",
+   "driver": "centre",
+   "joints": [
+    "bell"
+   ],
+   "lagOrder": [
+    0
+   ],
+   "material": "translucent",
+   "kind": "bell"
+  },
+  {
+   "id": "arm0",
+   "driver": "centre",
+   "joints": [
+    "arm0Seg0",
+    "arm0Seg1",
+    "arm0Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "translucent",
+   "kind": "arm"
+  },
+  {
+   "id": "arm1",
+   "driver": "centre",
+   "joints": [
+    "arm1Seg0",
+    "arm1Seg1",
+    "arm1Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "translucent",
+   "kind": "arm"
+  },
+  {
+   "id": "arm2",
+   "driver": "centre",
+   "joints": [
+    "arm2Seg0",
+    "arm2Seg1",
+    "arm2Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "translucent",
+   "kind": "arm"
+  },
+  {
+   "id": "arm3",
+   "driver": "centre",
+   "joints": [
+    "arm3Seg0",
+    "arm3Seg1",
+    "arm3Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "translucent",
+   "kind": "arm"
+  },
+  {
+   "id": "arm4",
+   "driver": "centre",
+   "joints": [
+    "arm4Seg0",
+    "arm4Seg1",
+    "arm4Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "translucent",
+   "kind": "arm"
+  },
+  {
+   "id": "arm5",
+   "driver": "centre",
+   "joints": [
+    "arm5Seg0",
+    "arm5Seg1",
+    "arm5Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "translucent",
+   "kind": "arm"
+  }
+ ],
+ "weapons": [
+  "sting"
+ ],
+ "luminous": false,
+ "bodyLength": 0.12000000000000002,
+ "groundLineY": 0.95,
+ "landmarks": {
+  "root": [
+   0.5,
+   0.3
+  ],
+  "centre": [
+   0.5,
+   0.34
+  ],
+  "bell": [
+   0.5,
+   0.22
+  ],
+  "arm0Seg0": [
+   0.58,
+   0.44
+  ],
+  "arm0Seg1": [
+   0.62,
+   0.56
+  ],
+  "arm0Seg2": [
+   0.64,
+   0.7
+  ],
+  "arm1Seg0": [
+   0.42,
+   0.44
+  ],
+  "arm1Seg1": [
+   0.38,
+   0.56
+  ],
+  "arm1Seg2": [
+   0.36,
+   0.7
+  ],
+  "arm2Seg0": [
+   0.54,
+   0.46
+  ],
+  "arm2Seg1": [
+   0.56,
+   0.6
+  ],
+  "arm2Seg2": [
+   0.57,
+   0.74
+  ],
+  "arm3Seg0": [
+   0.46,
+   0.46
+  ],
+  "arm3Seg1": [
+   0.44,
+   0.6
+  ],
+  "arm3Seg2": [
+   0.43,
+   0.74
+  ],
+  "arm4Seg0": [
+   0.62,
+   0.4
+  ],
+  "arm4Seg1": [
+   0.68,
+   0.5
+  ],
+  "arm4Seg2": [
+   0.72,
+   0.62
+  ],
+  "arm5Seg0": [
+   0.38,
+   0.4
+  ],
+  "arm5Seg1": [
+   0.32,
+   0.5
+  ],
+  "arm5Seg2": [
+   0.28,
+   0.62
+  ]
+ },
+ "bounds": {
+  "inside": true,
+  "clamped": [],
+  "limitsDeg": {
+   "root": {
+    "min": -35,
+    "max": 35
+   },
+   "centre": {
+    "min": -15,
+    "max": 15
+   },
+   "bell": {
+    "min": -25,
+    "max": 25
+   },
+   "arm0Seg0": {
+    "min": -45,
+    "max": 45
+   },
+   "arm0Seg1": {
+    "min": -55,
+    "max": 55
+   },
+   "arm0Seg2": {
+    "min": -55,
+    "max": 55
+   },
+   "arm1Seg0": {
+    "min": -45,
+    "max": 45
+   },
+   "arm1Seg1": {
+    "min": -55,
+    "max": 55
+   },
+   "arm1Seg2": {
+    "min": -55,
+    "max": 55
+   },
+   "arm2Seg0": {
+    "min": -45,
+    "max": 45
+   },
+   "arm2Seg1": {
+    "min": -55,
+    "max": 55
+   },
+   "arm2Seg2": {
+    "min": -55,
+    "max": 55
+   },
+   "arm3Seg0": {
+    "min": -45,
+    "max": 45
+   },
+   "arm3Seg1": {
+    "min": -55,
+    "max": 55
+   },
+   "arm3Seg2": {
+    "min": -55,
+    "max": 55
+   },
+   "arm4Seg0": {
+    "min": -45,
+    "max": 45
+   },
+   "arm4Seg1": {
+    "min": -55,
+    "max": 55
+   },
+   "arm4Seg2": {
+    "min": -55,
+    "max": 55
+   },
+   "arm5Seg0": {
+    "min": -45,
+    "max": 45
+   },
+   "arm5Seg1": {
+    "min": -55,
+    "max": 55
+   },
+   "arm5Seg2": {
+    "min": -55,
+    "max": 55
+   }
+  }
+ },
+ "notes": []
+}

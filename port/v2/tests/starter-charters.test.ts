@@ -554,3 +554,107 @@ describe('starter Charters', () => {
     }
   });
 });
+
+/* ---------------- Weekly Charters on the expedition's own active-play clock (Nick 2026-09-25) ---------------- */
+import { vi } from 'vitest';
+import {
+  WEEKLY_CHARTER_CYCLE_ACTIVE_MS, WEEKLY_CHARTER_DEFINITIONS_V1, projectWeeklyCharterBoardV1, renderWeeklyCharterBoardV1,
+  rollWeeklyCharterCycleV1, stageWeeklyCharterAcceptV1, stageWeeklyCharterEventV1, weeklyCharterCycleV1, weeklyCharterSlateV1,
+} from '../apps/game/src/weekly-charters.js';
+import { operationForWeeklyCharterAcceptV1 } from '../apps/game/src/starter-charters.js';
+
+const WEEK = WEEKLY_CHARTER_CYCLE_ACTIVE_MS;
+const TRADES_DONE = ['st-land', 'st-mine', 'st-scan', 'st-scout', 'st-conq'];
+const veteran = (): SaveStateV2 => { const s = state(); s.chDone = [...TRADES_DONE]; return s; };
+async function fixtureAt(save: SaveStateV2, activePlayMs: number) {
+  const f4 = prepareF4AuthorityUpdate({}, { activePlayMs }, createSessionRNG(0xC4A7_0002).state());
+  const loot = prepareArc2LootLegacyMigration({ extensions: f4.extensions, legacy: { items: save.items, equip: save.equip, equipAff: save.equipAff }, capacity: 12 });
+  if (loot.kind !== 'prepared') throw new Error(`weekly Charter loot fixture was ${loot.kind}`);
+  const backend = createMemoryBackend(), initial = prepareV5SaveWrite({ state: save, extensions: loot.extensions }, REGISTRY, 10);
+  await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: initial.legacyV4Raw }]);
+  const migration = await migrateStoredV4ToV5(backend, REGISTRY, 10); if (migration.kind !== 'migrated') throw new Error(`weekly fixture was ${migration.kind}`);
+  await backend.apply(initial.operations);
+  const repository = createRevisionedRepository(backend);
+  const runtime = createF4RuntimeAuthority({ backend, repository, registry: REGISTRY, initialRevision: 0, initialExtensions: loot.extensions, initialState: initial.canonicalState,
+    restoredAuthority: f4.authority, freshSessionSeed: 0, ownerId: 'weekly-charter-test', token: 'weekly-charter-document', leaseTtlMs: 1_000_000, now: () => 10, visible: true, answerable: true });
+  expect((await runtime.heartbeat()).kind).toBe('owned');
+  return { runtime, state: initial.canonicalState };
+}
+
+describe('weekly Charters — the expedition keeps its own clock', () => {
+  it('cycles are whole blocks of ACTIVE PLAY; the slate is deterministic, three distinct live Charters, and varies between cycles', () => {
+    expect(weeklyCharterCycleV1(0)).toBe(0); expect(weeklyCharterCycleV1(WEEK - 1)).toBe(0); expect(weeklyCharterCycleV1(WEEK)).toBe(1);
+    expect(() => weeklyCharterCycleV1(-1)).toThrow(); expect(() => weeklyCharterCycleV1(1.5)).toThrow();
+    const live = new Set(WEEKLY_CHARTER_DEFINITIONS_V1.map((d) => d.id)), slates = new Set<string>();
+    for (let c = 0; c < 40; c++) { const s = weeklyCharterSlateV1(c); expect(s).toEqual(weeklyCharterSlateV1(c)); expect(new Set(s).size).toBe(3); for (const id of s) expect(live.has(id)).toBe(true); slates.add(s.join()); }
+    expect(slates.size).toBeGreaterThan(1);
+  });
+  it('THE CLOCK LAW: no weekly function reads the device clock — a ±10-year device-clock swing changes nothing; only active play rolls the board', () => {
+    const now = vi.spyOn(Date, 'now'); let calls = 0; now.mockImplementation(() => { calls++; return 0; });
+    try {
+      const s = veteran(); const a = structuredClone(s), b = structuredClone(s);
+      now.mockImplementation(() => { calls++; return 4_000_000_000_000; }); rollWeeklyCharterCycleV1(a, 3 * WEEK + 5);
+      now.mockImplementation(() => { calls++; return 1; }); rollWeeklyCharterCycleV1(b, 3 * WEEK + 5);
+      expect(a).toEqual(b); expect(calls).toBe(0);
+      expect(projectWeeklyCharterBoardV1(s, 3 * WEEK + 5)).toEqual(projectWeeklyCharterBoardV1(s, 3 * WEEK + 5)); expect(calls).toBe(0);
+    } finally { now.mockRestore(); }
+  });
+  it('rollover is forward-only and once per cycle: it expires weekly acceptances and progress, keeps starter acceptances, and normalizes a legacy calendar value with no payout', () => {
+    const s = veteran(); s.chacc = ['st-mercury', 'wk-land']; s.chProg = { 'wk-land': 2, 'st-mercury': 0 }; s.chWeek = 4; s.essence = 50;
+    const same = structuredClone(s); expect(rollWeeklyCharterCycleV1(same, 4 * WEEK + 1).rolled).toBe(false); expect(same).toEqual(s);
+    const next = structuredClone(s), r = rollWeeklyCharterCycleV1(next, 5 * WEEK);
+    expect(r).toMatchObject({ rolled: true, cycle: 5, expired: ['wk-land'] }); expect(next.chacc).toEqual(['st-mercury']); expect(next.chProg).toEqual({ 'st-mercury': 0 }); expect(next.chWeek).toBe(5); expect(next.essence).toBe(50);
+    expect(rollWeeklyCharterCycleV1(next, 5 * WEEK + 99).rolled).toBe(false);
+    const unopened = state(); const pristine = structuredClone(unopened); expect(rollWeeklyCharterCycleV1(unopened, 9 * WEEK).rolled).toBe(false); expect(unopened).toEqual(pristine); // no board yet → nothing written
+    const staleImport = state(); staleImport.chacc = ['wk-conq']; expect(rollWeeklyCharterCycleV1(staleImport, 9 * WEEK)).toMatchObject({ rolled: true, expired: ['wk-conq'] }); expect(staleImport.chacc).toEqual([]);
+    const legacy = structuredClone(s); legacy.chWeek = 2900; // a v1 calendar-week number
+    expect(rollWeeklyCharterCycleV1(legacy, 7 * WEEK).cycle).toBe(7); expect(legacy.chWeek).toBe(7); expect(legacy.essence).toBe(50);
+  });
+  it('accept → progress only after acceptance → complete pays Stardust and one honoured Charter exactly once; cannot re-accept this cycle; the next cycle offers it again', () => {
+    const at = 2 * WEEK + 10, cycleIds = weeklyCharterSlateV1(2), id = cycleIds[0]!, def = WEEKLY_CHARTER_DEFINITIONS_V1.find((d) => d.id === id)!;
+    const s = veteran(); s.chWeek = 2; s.essence = 0; s.stats = { charters: 5 };
+    expect(stageWeeklyCharterEventV1({ draft: s, event: { kind: def.event }, activePlayMs: at }).kind).toBe('ready');
+    expect(s.chProg[id]).toBeUndefined(); // a deed before acceptance counts for nothing
+    expect(stageWeeklyCharterAcceptV1({ draft: s, id, activePlayMs: at }).kind).toBe('ready'); expect(s.chacc).toContain(id);
+    for (let i = 0; i < def.count; i++) stageWeeklyCharterEventV1({ draft: s, event: { kind: def.event }, activePlayMs: at + i });
+    expect(s.essence).toBe(def.stardust); expect(s.stats.charters).toBe(6); expect(s.chacc).not.toContain(id);
+    stageWeeklyCharterEventV1({ draft: s, event: { kind: def.event }, activePlayMs: at + 50 }); expect(s.essence).toBe(def.stardust); // paid once
+    expect(projectWeeklyCharterBoardV1(s, at).rows.find((r) => r.definition.id === id)?.status).toBe('completed');
+    expect(stageWeeklyCharterAcceptV1({ draft: structuredClone(s), id, activePlayMs: at })).toMatchObject({ kind: 'refused' });
+    const later = structuredClone(s); const nextCycle = [...Array(30).keys()].map((k) => k + 3).find((c) => weeklyCharterSlateV1(c).includes(id))!;
+    expect(stageWeeklyCharterAcceptV1({ draft: later, id, activePlayMs: nextCycle * WEEK }).kind).toBe('ready');
+  });
+  it('the board is closed until the five trades are learned; weekly and starter Charters share the three-slot cap; an unrelated event changes nothing', () => {
+    const at = WEEK * 3, id = weeklyCharterSlateV1(3)[0]!;
+    const fresh = state(); expect(projectWeeklyCharterBoardV1(fresh, at).open).toBe(false);
+    expect(stageWeeklyCharterAcceptV1({ draft: fresh, id, activePlayMs: at })).toMatchObject({ kind: 'refused' });
+    const full = veteran(); full.chacc = ['st-mercury', 'st-mars', 'st-giants'];
+    expect(stageWeeklyCharterAcceptV1({ draft: full, id, activePlayMs: at })).toMatchObject({ kind: 'refused', reason: 'three accepted Charters is the exact cap' });
+    const quiet = veteran(); quiet.chWeek = 3; const before = structuredClone(quiet);
+    expect(stageWeeklyCharterEventV1({ draft: quiet, event: { kind: 'scout-set' }, activePlayMs: at })).toMatchObject({ kind: 'ready', facts: { changed: false } }); expect(quiet).toEqual(before);
+    expect(renderWeeklyCharterBoardV1(projectWeeklyCharterBoardV1(veteran(), at))).toMatch(/New board in 4h 0m of play/);
+  });
+  it('the starter event stager counts the weekly board in the SAME transaction when given its active-play snapshot, and is unchanged without one', () => {
+    const cycle = [...Array(50).keys()].find((c) => weeklyCharterSlateV1(c).includes('wk-land'))!, at = WEEK * cycle + 1, id = 'wk-land' as const;
+    const withSnapshot = veteran(); withSnapshot.chWeek = cycle;
+    if (id) { withSnapshot.chacc = [id]; withSnapshot.chProg = { [id]: 0 }; }
+    const without = structuredClone(withSnapshot);
+    const staged = stageStarterCharterEventV1({ draft: withSnapshot, extensions: EXTENSIONS, event: { kind: 'landfall', address: solWorld(134) }, receiptOrdinal: 3, activePlayMs: at });
+    const plain = stageStarterCharterEventV1({ draft: without, extensions: EXTENSIONS, event: { kind: 'landfall', address: solWorld(134) }, receiptOrdinal: 3 });
+    if (id) { expect(staged).toMatchObject({ kind: 'ready', facts: { weekly: { progressIds: [id] } } }); expect(withSnapshot.chProg[id]).toBe(1); }
+    expect(plain.kind).toBe('current'); expect(without.chProg[id ?? 'none']).toBe(id ? 0 : undefined);
+  });
+  it('a weekly accept commits through the audited F4 transaction on ITS OWN active-play snapshot, with an exact-once operation per cycle', async () => {
+    const at = 6 * WEEK + 1234, id = weeklyCharterSlateV1(6)[0]!;
+    const built = await fixtureAt(veteran(), at);
+    const outcome = await commitStarterCharterAcceptV1({ state: built.state, id, codecNow: 10, authority: built.runtime, activePlayMs: at });
+    expect(outcome.kind).toBe('committed'); if (outcome.kind !== 'committed') return;
+    expect(outcome.state.chacc).toContain(id); expect(outcome.state.chWeek).toBe(6);
+    expect(outcome.transaction.plan.operation).toBe(operationForWeeklyCharterAcceptV1(id, 6));
+    publishStarterCharterAcceptFieldsV1(built.state, outcome); expect(built.state.chWeek).toBe(6);
+    expect((await commitStarterCharterAcceptV1({ state: built.state, id, codecNow: 10, authority: built.runtime, activePlayMs: at })).kind).toBe('current');
+    // control: without the live active-play clock a weekly accept refuses instead of guessing
+    expect((await commitStarterCharterAcceptV1({ state: built.state, id: weeklyCharterSlateV1(6)[1]!, codecNow: 10, authority: built.runtime })).kind).toBe('refused');
+    await built.runtime.release();
+  });
+});

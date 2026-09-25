@@ -86,7 +86,6 @@ export const restContext = (): RigPoseContext => Object.freeze({ actionId: 'idle
 export const STANCE_REACH_CAP = 0.5;
 export function createPartsRig(options: PartsRigOptions): PartsRig {
   const { record, rig, card, alphaBox } = options;
-  if (options.jointScale !== undefined) throw new TypeError('Local archetype adapter does not support joint scaling');
   const W = record.geometry.width, H = record.geometry.height;
   if (!(W > 0) || !(H > 0)) throw new TypeError('parts rig: record geometry must be positive');
   if (rig.recipeHash !== record.recipeHash || rig.templateId !== record.template.id) throw new TypeError('parts rig: record/rig identity mismatch');
@@ -99,9 +98,13 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
   // R3 re-merge (2026-09-21): the family solver models the painted support by its observed skin weights
   // (`observedContactSupports(record, binding)`, Codex's R2c″ rule) and owns nothing of the run-up when the context
   // says `travel: 'stage'`.
-  const family = contactMode === 'family' ? createFamilyContactSolver(record, options.contactSupports === 'observed' && options.binding ? observedContactSupports(record, options.binding) : {}) : null;
+  // A record that DECLARES adhesive contact pads (Codex's Tree Frog) is only solvable on its observed painted supports — the
+  // pad contract says so — so it defaults to them; every other record keeps the rest-support default unchanged (2026-09-24,
+  // found when the whole painted library was staged: the Tree Frog was the one archetype that could not load in the arena).
+  const supports = options.contactSupports ?? (record.geometry.contactPads ? 'observed' : 'rest');
+  const family = contactMode === 'family' ? createFamilyContactSolver(record, supports === 'observed' && options.binding ? observedContactSupports(record, options.binding) : {}) : null;
   const compat = contactMode === 'quadruped-compat' ? createQuadrupedContactSolver(record) : null;
-  const program: SkeletonPoseProgram = createSkeletonPoseProgram(familyContractForRecord(record as { template: { id: string } }), record.landmarks);
+  const program: SkeletonPoseProgram = createSkeletonPoseProgram(familyContractForRecord(record as { template: { id: string } }), record.landmarks, options.jointScale ? { jointScale: options.jointScale } : {});
   let pending: RigPose = {}, frame = 0, refused = 0, lastError: string | null = null, applied = 0, last: CreaturePoseV1 | null = null, disposed = false;
   // Source-declared adhesive pads use the same solve result for prepublication
   // mesh admission; old rigs retain the original performance target unchanged.
@@ -153,7 +156,7 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
     travelOwner: 'stage',
     recipeHash: rig.recipeHash, templateId: rig.templateId, parts, root: rig.root, bounds,
     // E1.5 finding: the stage treats `cutout` as the rig's display-unit size; the paint-skin mesh is normalized, so it is 1×1 here.
-    cutout: Object.freeze({ width: 1, height: 1 }), sourceSize: Object.freeze({ width: W, height: H }), foot: Object.freeze({ x: root[0], y: record.geometry.groundLineY }), bodyLength: card.scaleLength, tallestHeight: bounds.height, ...(stanceReach !== undefined ? { stanceReach } : {}), ...((record as { guardian?: BattleRigV1['guardian'] }).guardian ? { guardian: Object.freeze({ ...(record as { guardian?: BattleRigV1['guardian'] }).guardian }) } : {}),
+    cutout: Object.freeze({ width: 1, height: 1 }), sourceSize: Object.freeze({ width: W, height: H }), foot: Object.freeze({ x: root[0], y: record.geometry.groundLineY }), extent: Object.freeze({ left: root[0] - alphaBox.x / W, right: (alphaBox.x + alphaBox.width) / W - root[0], up: record.geometry.groundLineY - alphaBox.y / H }), bodyLength: card.scaleLength, tallestHeight: bounds.height, ...(stanceReach !== undefined ? { stanceReach } : {}), ...((record as { guardian?: BattleRigV1['guardian'] }).guardian ? { guardian: Object.freeze({ ...(record as { guardian?: BattleRigV1['guardian'] }).guardian }) } : {}),
     applyPose(pose: RigPose, context: RigPoseContext = restContext()): void {
       if (disposed) throw new Error('parts rig is disposed');
       pending = pose; frame += 1;

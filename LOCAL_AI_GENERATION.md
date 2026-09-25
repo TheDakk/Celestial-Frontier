@@ -102,6 +102,33 @@ They replay the same saved raw finisher with no inference, preserve source/mask/
 and reproduce E exactly when disabled. Foreground stroke density uses E's numerical sky-pass
 density; it is not an image-based measurement of painted rain. None replaces E until Nick picks.
 
+## Creature finish (R9, desktop tool only) — matches code as of 2026-09-19
+
+`tools/local-image-generation/kit-worker-engine.mjs#finishCreature` runs the same accepted masked
+finisher (strength 0.35, one step, 512-token ceiling) over ONE painted creature master, on the same
+sampler and sessions as the landfall. The class block is the opposite polarity of the landfall's:
+the solid interior (alpha >= 250, eroded 4 px) is editable and the alpha band + outside are
+protected (`kit-contact-math.mjs#latentCreatureMask`, `creatureWorkPlan`, integer-scale resamplers).
+The silhouette is cropped and upscaled (<= 4x, <= 1024 px) for inference and box-filtered back;
+only pixels inside the eroded solid interior take finisher colour, the alpha plane and every other
+pixel stay the painter's byte for byte. Admission is `kit-engine-math.mjs#admitCreatureFinishJob`
+(`cf.creature-finish.v1`); the job is compiled by `landfall-conditioning.ts#compileCreatureFinishV1`
+on the shared `readArtKitBlocksV4` reader (the Earth kit output is byte-identical before/after that
+refactor). Tool-only worker `creature-stage-worker.mjs` and page client `creature-finish-client.mjs`;
+the shipped kit worker is untouched. Runner, gates and sheet:
+
+```sh
+node port/v2/tools/painted-creature/finish-master.mjs NEW_OUTPUT_DIR [--subjects=crab,mud-crab] [--no-triptych] [--allow-dirty] [--prepare-only]
+node port/v2/tools/family-review/prepare-observed-crabs.mjs audits/ANATOMY_COMPLETION_20260917/crab-masks-05 NEW_FITS_DIR --finished=OUTPUT_DIR
+node port/v2/tools/painted-creature/finish-sheet.mjs OUTPUT_DIR NEW_SHEET.png
+```
+
+Gates in `port/v2/tools/painted-creature/finish-conservation.mjs` (alpha/key conservation, structural
+label counts, label-boundary gradient ratio, binding equality; ΔE/SSIM reported). Retention owner
+`apps/game/src/creature-originals.ts` (not yet routed). First evidence:
+[crab-finish-01](audits/ANATOMY_COMPLETION_20260917/crab-finish-01/README.md) — five crabs PASS, quality
+not accepted, findings for Nick recorded there. Phones keep the painter texture (D1).
+
 ## Model installation and phone boundary
 
 Model downloads are explicit and resumable. Invalid installations expose Restart. Preparation

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createAudioRuntime, type AudioContextLike, type AudioNodeLike, type AudioScheduledSourceLike } from '@cf/audio';
-import { parsePilotPcm, pilotPcmVoice, PILOT_PCM_FILE_LIMIT } from '../apps/game/src/pilot-pcm.js';
+import { parsePilotPcm, pilotPcmVoice, pilotPcmBufferDiagnostics, PILOT_PCM_FILE_LIMIT } from '../apps/game/src/pilot-pcm.js';
 
 function wav(samples: readonly number[] = [32767, -32768, 0, 16384, -16384, 8192], channels = 2, frames = samples.length / channels): ArrayBuffer {
   const bytes = new ArrayBuffer(44 + frames * channels * 2);
@@ -149,5 +149,74 @@ describe('pilot PCM graph on the shared finite voice runtime', () => {
     for (const patch of [{ frames: 48_000 * 24 + 1 }, { channels: [new Float32Array(2)] }, { durationMs: 1000 }, { decodedBytes: 1 }]) {
       expect(() => pilotPcmVoice('cf-pilot-test', 'ui', { ...pcm, ...patch }, options)).toThrow();
     }
+  });
+});
+
+describe('K30/K31: single decoded copy and aligned Int16 decode', () => {
+  function lcgSamples(count: number, seed: number): number[] {
+    const out: number[] = []; let x = seed >>> 0;
+    for (let i = 0; i < count; i++) { x = (Math.imul(x, 1103515245) + 12345) >>> 0; out.push(((x >>> 8) & 0xffff) - 32768); }
+    return out;
+  }
+  function reference(bytes: ArrayBuffer, channels: number): Float32Array[] {
+    const view = new DataView(bytes); const frames = (bytes.byteLength - 44) / (channels * 2);
+    const out = Array.from({ length: channels }, () => new Float32Array(frames));
+    for (let frame = 0; frame < frames; frame++) for (let channel = 0; channel < channels; channel++) {
+      out[channel]![frame] = view.getInt16(44 + (frame * channels + channel) * 2, true) / 32768;
+    }
+    return out;
+  }
+
+  it('decodes through one Int16 view exactly as the per-sample DataView reference, for mono and stereo', () => {
+    for (const channels of [1, 2]) {
+      const samples = lcgSamples(4096 * channels, 0x5eed + channels);
+      const bytes = wav(samples, channels);
+      const pcm = parsePilotPcm(bytes);
+      const expected = reference(bytes, channels);
+      expect(pcm.channels).toHaveLength(channels);
+      for (let channel = 0; channel < channels; channel++) {
+        expect(pcm.channels[channel]).toEqual(expected[channel]);
+        expect(pcm.channels[channel]!.buffer).not.toBe(bytes); // planar copies own their memory
+      }
+      // Negative control: byte-swapped samples must decode differently, proving the comparison is live.
+      const swapped = bytes.slice(0); const u8 = new Uint8Array(swapped);
+      for (let at = 44; at + 1 < u8.length; at += 2) { const t = u8[at]!; u8[at] = u8[at + 1]!; u8[at + 1] = t; }
+      expect(parsePilotPcm(swapped).channels[0]).not.toEqual(expected[0]);
+    }
+    expect(new Uint8Array(wav(lcgSamples(8, 1), 2))).toEqual(new Uint8Array(wav(lcgSamples(8, 1), 2)));
+  });
+
+  it('builds each AudioBuffer variant once, reuses it across plays, and releases the planar copies', () => {
+    const pcm = parsePilotPcm(wav()); const context = new Context();
+    const planar = [...pcm.channels];
+    expect(pilotPcmBufferDiagnostics(pcm)).toEqual({ full: false, mono: false, planarReleased: false });
+    const stereo = pilotPcmVoice('cf-pilot-test', 'music', pcm, options);
+    const first = stereo.create(context, reservation);
+    const second = stereo.create(context, reservation);
+    expect(context.buffers).toHaveLength(1);
+    expect((first.source as Source).buffer).toBe(context.buffers[0]);
+    expect((second.source as Source).buffer).toBe(context.buffers[0]);
+    expect(pilotPcmBufferDiagnostics(pcm)).toEqual({ full: true, mono: false, planarReleased: true });
+    // Held once: the PilotPcm now exposes the buffer's own channel views, not the planar copies.
+    expect(pcm.channels[0]).toBe(context.buffers[0]!.getChannelData(0));
+    expect(pcm.channels[1]).toBe(context.buffers[0]!.getChannelData(1));
+    expect(pcm.channels[0]).not.toBe(planar[0]);
+    expect([...pcm.channels[0]!]).toEqual([...planar[0]!]); expect([...pcm.channels[1]!]).toEqual([...planar[1]!]);
+    expect(Object.isFrozen(pcm.channels)).toBe(true);
+    expect(pcm.channels.every((channel) => channel instanceof Float32Array && channel.length === pcm.frames)).toBe(true);
+    const mono = pilotPcmVoice('cf-pilot-mono', 'ui', pcm, { ...options, mono: true });
+    mono.create(context, reservation); mono.create(context, reservation);
+    expect(context.buffers).toHaveLength(2);
+    expect([...context.buffers[1]!.channels[0]!]).toEqual([-1 / 65536, 0.25, -0.125]);
+    expect(pilotPcmBufferDiagnostics(pcm)).toEqual({ full: true, mono: true, planarReleased: true });
+    expect(pilotPcmVoice('cf-pilot-again', 'music', pcm, options).create(context, reservation).source)
+      .toSatisfy((source: unknown) => (source as Source).buffer === context.buffers[0]);
+    expect(context.buffers).toHaveLength(2);
+    // Negative control: a separately decoded cue owns its own slot and allocates again.
+    const other = parsePilotPcm(wav());
+    pilotPcmVoice('cf-pilot-other', 'music', other, options).create(context, reservation);
+    expect(context.buffers).toHaveLength(3);
+    expect(other.channels[0]).not.toBe(pcm.channels[0]);
+    expect(pilotPcmBufferDiagnostics({ ...pcm })).toEqual({ full: false, mono: false, planarReleased: false });
   });
 });

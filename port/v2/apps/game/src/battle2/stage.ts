@@ -9,13 +9,48 @@ import { EMITTER_PRESETS, type EmitterConfig } from '../effects/emitter.js';
 import { EffectSequencePlayer, type EffectPixiHost, type EffectTextureLike } from '../effects/pixi-adapter.js';
 import type { EffectDelivery } from '../effects/sequencer.js';
 import type { BodyCard } from '../motion/body-card.js';
-import { PLATE_ORDER, combatantScale, parallaxOffset, type ArenaLayout, type PlateId } from './arena.js';
+import { PLATE_ORDER, combatantScale, fitCombatantWidth, parallaxOffset, type ArenaLayout, type PlateId } from './arena.js';
 /** D2 G6 — a guardian rig fills the frame (kit GUARDIAN RULE: "fills the battle screen"): its TALLEST pose
  * (`BattleRigV1.tallestHeight`, measured by the parts rig at load) spans this fraction of the frame height, so a rearing
  * melee stays inside the frame and under the HUD band. An option of `combatantScale`, not a species branch. Bear
- * (tallest = 1.38 × rest): rest height 0.70 of the frame at 0.96. Film -01 (rest at 0.9, head leaves the frame when
+ * (tallest = 1.38 × rest): rest height 0.70 of the frame at 0.96 before 2026-09-24; `combatantPresentation`'s top cap
+ * (tallest pose inside the frame ABOVE ITS STAND) now holds it at 0.551. Film -01 (rest at 0.9, head leaves the frame when
  * rearing) is kept beside film -02 for Nick's eye. */
 export const GUARDIAN_FRAME_FILL = 0.96;
+/** The wet arena's depth bands, surface → floor (lit teal to deep blue-green, near-opaque), and its surface line. */
+export const WATER_BANDS: ReadonlyArray<Readonly<{ color: number; alpha: number }>> = Object.freeze([0x1f6272, 0x1c5a6a, 0x1a5262, 0x184b5a, 0x164452, 0x143d4a, 0x123642, 0x10303b, 0x0e2a34, 0x0c252e].map((color, i) => Object.freeze({ color, alpha: 0.9 + i * 0.008 })));
+export const WATER_SURFACE = Object.freeze({ color: 0xa7dcc2, alpha: 0.9 });
+/** Width (frame fraction) over which a half lake's shore fades out toward the ground fighter. */
+export const SHORE_FADE = 0.08;
+/** The stand shift (frame-width fraction) that CENTRES a combatant's painted box on its stand instead of its foot: the stage
+ * places the foot at `stand.x` and mirrors the right side (facing −1), so the box centre sits at
+ * facing × (right − left) / 2 × cut-out width × scale from the foot. Zero for a rig without `extent` (symmetric). */
+export function standCentreShift(rig: Pick<BattleRigV1, 'extent' | 'cutout'>, scale: number, frameWidth: number, facing: 1 | -1): number {
+  if (!rig.extent) return 0;
+  return (-facing * ((rig.extent.right - rig.extent.left) / 2) * rig.cutout.width * scale) / frameWidth;
+}
+/** Top margin (frame fraction) a combatant's TALLEST pose keeps below the frame's top edge. */
+export const COMBATANT_TOP_MARGIN = 0.02;
+/** ONE sizing rule for a combatant's presentation (2026-09-24; the stage's own default, the app wiring, the film harness and
+ * the tests all use it — two copies could disagree): the mass rule (or the guardian's decided tallest-pose fill), then the
+ * arena WIDTH cap for a long body (guardians exempt), then — given the line it stands on — the TOP cap: the tallest pose
+ * (rest reach above the foot + the measured rise) stays COMBATANT_TOP_MARGIN inside the frame. Found by the adversarial
+ * review of 2026-09-24: the guardian fill sized the tallest pose to 0.96 of the WHOLE frame while the Bear stands on the
+ * ground line at 0.78, so its victory rear-up left the top (the E1 test only ever checked turn one). `height` /
+ * `footBelowCentre` are frame fractions at the returned scale; `capped` = the scale differs from the plain mass rule. */
+export function combatantPresentation(rig: Pick<BattleRigV1, 'bounds' | 'cutout' | 'foot' | 'guardian' | 'tallestHeight' | 'extent'>, mass: number, frame: Readonly<{ width: number; height: number }>, standY?: number): Readonly<{ scale: number; capped: boolean; height: number; footBelowCentre: number }> {
+  const k = combatantScale(rig.bounds, rig.cutout.height, mass, frame.height, rig.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(rig.tallestHeight !== undefined ? { tallestHeight: rig.tallestHeight } : {}) } : {});
+  let scale = rig.guardian ? k.scale : fitCombatantWidth(k.scale, rig.bounds, rig.cutout.width, frame.width);
+  if (standY !== undefined && rig.extent?.up !== undefined) {
+    const above = rig.extent.up + Math.max(0, (rig.tallestHeight ?? rig.bounds.height) - rig.bounds.height);
+    if (above > 0) scale = Math.min(scale, ((standY - COMBATANT_TOP_MARGIN) * frame.height) / (above * rig.cutout.height));
+  }
+  const f = scale / k.scale;
+  // the foot's offset below the painted box's centre: from the real alpha box when the rig reports it (review 2026-09-24: assuming the box
+  // centred in the cut-out put the Vent Crab 21 px below its water band's floor), else the old centred assumption
+  const belowCentre = rig.extent?.up !== undefined ? rig.extent.up - rig.bounds.height / 2 : rig.foot.y - 0.5;
+  return Object.freeze({ scale, capped: f < 1, height: k.heightFraction * f, footBelowCentre: (belowCentre * rig.cutout.height * scale) / frame.height });
+}
 import { buildTurnPlan, sampleTurn, type Side, type StageSample, type TurnArena, type TurnAttack, type TurnPlan, type TurnPlanInput } from './choreography.js';
 import { TurnCuePlayer, buildTurnCuePlan, type CueSink, type TurnCuePlan } from './cue-plan.js';
 import type { BattleRigV1, RigNodeLike } from './fixture-rig.js';
@@ -60,6 +95,10 @@ export interface BattleStageOptions {
    * these same values; absent preserves the mass/guardian rule exactly. */
   readonly presentationScales?: Readonly<Record<Side, number>>;
   readonly timing?: BattleStageTiming;
+  /** A WET arena (2026-09-24): when a side fights in water the stage draws a procedural body of water from `surfaceY` (a frame
+   * fraction — the habitat's surface) to the frame bottom BEHIND the combatants (above the mid plate, moving with it) and hides
+   * the dry near plate, so a swimmer is no longer drawn over the forest floor. Depth-banded, no texture, deterministic. */
+  readonly water?: Readonly<{ surfaceY: number; /** a swimmer facing a GROUND fighter: the lake fills only this side (to the midline) and the dry foreground stays, so the ground fighter keeps its floor (review 2026-09-24). Absent = the whole frame. */ side?: Side }>;
 }
 export interface StageFrame { readonly sample: StageSample; readonly done: boolean; readonly label: string; readonly cuesFired: number; }
 export const HUD = Object.freeze({ barX: 16, barY: 12, barH: 8, cursorH: 14 });
@@ -74,6 +113,7 @@ export class BattleStage {
   readonly #fx: StageContainerLike; readonly #flash: StageGraphicsLike; readonly #bar: StageGraphicsLike; readonly #cursor: StageGraphicsLike; readonly #number: StageTextLike;
   #plan: TurnPlan | null = null; #startMs = 0; #player: EffectSequencePlayer | null = null; #fxNodes: object[] = []; #disposed = false;
   #cues: TurnCuePlayer | null = null;
+  readonly #water: StageGraphicsLike | null = null;
 
   constructor(o: BattleStageOptions) {
     if (o.presentationScales && ['left', 'right'].some(side => {
@@ -86,13 +126,26 @@ export class BattleStage {
     const plate = (id: PlateId): StageSpriteLike => { const p = L.plates.find((x) => x.id === id)!, s = f.sprite(o.plates[id]); s.anchor.set(0, 0); s.scale.set(p.scale, p.scale); s.x = p.x; s.y = p.y; return s; };
     this.#plates = { far: plate('far'), mid: plate('mid'), near: plate('near') };
     this.root.addChild(this.#plates.far); this.root.addChild(this.#plates.mid);
+    if (o.water) {
+      if (!(o.water.surfaceY > 0 && o.water.surfaceY < 1)) throw new TypeError('battle2 stage: water surfaceY must lie inside the frame');
+      const g = f.graphics(), H = L.frame.height, top = o.water.surfaceY * H, bands = WATER_BANDS.length;
+      // three frames wide so the parallax run-up never uncovers an edge; banded depth from the lit surface to the dark floor
+      const side = o.water.side, x0 = side === 'right' ? w * 0.5 : -w, span = side === undefined ? 3 * w : 1.5 * w;
+      for (let i = 0; i < bands; i++) { const y0 = top + ((H - top) * i) / bands, y1 = top + ((H - top) * (i + 1)) / bands; g.rect(x0, y0, span, y1 - y0 + 0.5); g.fill(WATER_BANDS[i]!); }
+      g.rect(x0, top - 1, span, 2); g.fill(WATER_SURFACE);
+      // a half lake gets a SHORE: its edge fades out over SHORE_FADE of the frame toward the ground fighter instead of a hard vertical cut
+      if (side !== undefined) { const edge = side === 'left' ? 0.5 * w : 0.5 * w, dir = side === 'left' ? 1 : -1, n = 6, sw = (SHORE_FADE * w) / n;
+        for (let k = 0; k < n; k++) { const x = dir === 1 ? edge + k * sw : edge - (k + 1) * sw; g.rect(x, top, sw + 0.5, H - top); g.fill({ color: WATER_BANDS[Math.floor(WATER_BANDS.length / 2)]!.color, alpha: 0.8 * (1 - (k + 1) / (n + 1)) }); } }
+      this.#water = g; this.root.addChild(g); if (side === undefined) this.#plates.near.visible = false;
+    }
     if (o.worldLife) this.root.addChild(o.worldLife.container);
     const holder = (side: Side): StageContainerLike => {
       const rig = o.rigs[side], h = f.container(), r = rig.root as StageNodeLike;
       r.x = -rig.foot.x * rig.cutout.width; r.y = -rig.foot.y * rig.cutout.height; h.addChild(r as object);
       this.root.addChild(h); return h;
     };
-    this.#scales = o.presentationScales ? { ...o.presentationScales } : { left: combatantScale(o.rigs.left.bounds, o.rigs.left.cutout.height, o.masses.left, L.frame.height, o.rigs.left.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(o.rigs.left.tallestHeight !== undefined ? { tallestHeight: o.rigs.left.tallestHeight } : {}) } : {}).scale, right: combatantScale(o.rigs.right.bounds, o.rigs.right.cutout.height, o.masses.right, L.frame.height, o.rigs.right.guardian ? { frameFill: GUARDIAN_FRAME_FILL, ...(o.rigs.right.tallestHeight !== undefined ? { tallestHeight: o.rigs.right.tallestHeight } : {}) } : {}).scale };
+    // no measured scales given: the ONE presentation rule (mass → width cap → tallest pose inside the frame above its stand)
+    this.#scales = o.presentationScales ? { ...o.presentationScales } : { left: combatantPresentation(o.rigs.left, o.masses.left, L.frame, L.stands.left.y).scale, right: combatantPresentation(o.rigs.right, o.masses.right, L.frame, L.stands.right.y).scale };
     this.#holders = { left: holder('left'), right: holder('right') };
     this.#fx = f.container(); this.root.addChild(this.#fx);
     this.root.addChild(this.#plates.near);
@@ -114,11 +167,20 @@ export class BattleStage {
     return Object.freeze({ left: hw('left'), right: hw('right') });
   }
 
+  /** Each combatant's painted box at rest in frame-height fractions (centre, top), from the rig's extent at the drawn scale — the
+   * choreography aims a flyer's or swimmer's impact at it and the cursor sits above it. Without `extent` the box is assumed centred. */
+  bodies(): Readonly<{ left: Readonly<{ centreY: number; topY: number }>; right: Readonly<{ centreY: number; topY: number }> }> {
+    const L = this.#o.layout, H = L.frame.height;
+    const one = (side: Side) => { const rig = this.#o.rigs[side], k = this.#scales[side], up = rig.extent?.up ?? (rig.foot.y - 0.5 + rig.bounds.height / 2);
+      const topY = L.stands[side].y - (up * rig.cutout.height * k) / H; return Object.freeze({ topY, centreY: topY + (rig.bounds.height * rig.cutout.height * k) / (2 * H) }); };
+    return Object.freeze({ left: one('left'), right: one('right') });
+  }
+
   /** Start a turn now (per the injected clock). Accepts a built plan or its input. */
   play(turn: TurnPlan | TurnPlanInput): TurnPlan {
     this.#assertLive();
     const plan = (turn as TurnPlan).kind === 'turn-plan' ? (turn as TurnPlan) : buildTurnPlan({ ...(turn as TurnPlanInput), attacker: this.#withCadence((turn as TurnPlanInput).attacker), reducedMotion: (turn as TurnPlanInput).reducedMotion === true || this.#o.reducedMotion === true,
-      arena: { ...(turn as TurnPlanInput).arena, halfWidths: (turn as TurnPlanInput).arena.halfWidths ?? this.halfWidths() } });
+      arena: { ...(turn as TurnPlanInput).arena, halfWidths: (turn as TurnPlanInput).arena.halfWidths ?? this.halfWidths(), bodies: (turn as TurnPlanInput).arena.bodies ?? this.bodies() } });
     this.#clearEffect();
     this.#plan = plan; this.#startMs = this.#o.clock();
     // Reduced motion (E1 §1.6): both rigs take the rest pose once per turn here and are never updated per tick.
@@ -153,6 +215,7 @@ export class BattleStage {
     this.root.x = s.camera.shake.x; this.root.y = s.camera.shake.y;
     const off = parallaxOffset(s.runUpX * w);
     for (const id of PLATE_ORDER) this.#plates[id].x = L.plates.find((p) => p.id === id)!.x + off[id];
+    if (this.#water) this.#water.x = off.mid;
     this.#place(plan.attacker.side, s.attacker.displacementX, s.attacker.facing);
     this.#place(plan.target.side, s.target.displacementX, s.target.facing);
     // Reduced motion: both rigs stay at the rest pose applied at construction / the previous turn's end (E1 §1.6); no per-tick update.
@@ -179,7 +242,9 @@ export class BattleStage {
     if (n) { this.#number.text = n.text; this.#number.x = n.x * w; this.#number.y = n.y * h; this.#number.alpha = n.alpha; this.#number.scale.set(n.scale, n.scale); }
     this.#bar.clear(); this.#bar.rect(HUD.barX, HUD.barY, (w - 2 * HUD.barX) * s.timingBar, HUD.barH); this.#bar.fill({ color: s.timingBar >= 1 ? 0xf2e3b6 : 0x8fb7c9, alpha: 0.9 });
     this.#cursor.visible = s.cursor.visible && s.cursor.on;
-    if (this.#cursor.visible) { const st = L.stands[s.cursor.side]; this.#cursor.clear(); this.#cursor.rect(st.x * w - 6, st.y * h - h * 0.5, 12, HUD.cursorH); this.#cursor.fill({ color: 0xffd166, alpha: 1 }); }
+    // the cursor sits half a frame above the stand as before — but never above the frame: a flyer's stand is high, so it then sits just
+    // above the target's painted top (review 2026-09-24: an Eagle target's cursor was drawn at y −26 px, never visible)
+    if (this.#cursor.visible) { const st = L.stands[s.cursor.side], legacy = st.y * h - h * 0.5, y = legacy >= 4 ? legacy : Math.min(h - HUD.cursorH - 4, Math.max(4, this.bodies()[s.cursor.side].topY * h - HUD.cursorH - 6)); this.#cursor.clear(); this.#cursor.rect(st.x * w - 6, y, 12, HUD.cursorH); this.#cursor.fill({ color: 0xffd166, alpha: 1 }); }
     this.#o.worldLife?.update();
     const cues = this.#cues?.tick();
     if (timing && rigMs) timing.sample(Object.freeze({ kind: 'tick', sampleTurnMs, rigMs: Object.freeze(rigMs) }));
@@ -191,6 +256,7 @@ export class BattleStage {
     this.#clearEffect(); this.#o.worldLife?.dispose();
     for (const side of ['left', 'right'] as const) { this.#o.rigs[side].dispose(); this.#holders[side].destroy(); }
     for (const n of [this.#plates.far, this.#plates.mid, this.#plates.near, this.#fx, this.#flash, this.#bar, this.#cursor, this.#number]) n.destroy();
+    this.#water?.destroy();
     this.root.destroy(); this.#plan = null; this.#disposed = true;
   }
 

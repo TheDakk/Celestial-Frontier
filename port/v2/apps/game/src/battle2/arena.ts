@@ -12,12 +12,24 @@ export const PLATE_ORDER: readonly PlateId[] = Object.freeze(['far', 'mid', 'nea
 export const STAND_X = Object.freeze({ left: 1 / 3, right: 2 / 3 });
 /** D2 G6 eye finding (bear-vs-crab-01): a guardian at 0.9 of the frame height is ~0.75 of its width side-on, so on the
  * equal stands its fore paws already overlap the opponent before the lunge. In a guardian battle the guardian's stand
- * moves out and the opponent's to the far third; one pair of constants for Nick's eye. */
-export const GUARDIAN_STANDS = Object.freeze({ guardian: 0.30, opponent: 0.82 });
+ * moves out and the opponent's to the far third; one pair of constants for Nick's eye.
+ * `groundY` (Nick 2026-09-24, audits/BATTLE2_GUARDIAN_SIZE_20260924): a guardian on the ground stands LOWER, in the foreground,
+ * so the tallest-pose top cap leaves it bigger (the Bear rests at 0.67 of the frame instead of 0.55) with its rear-up in frame. */
+export const GUARDIAN_STANDS = Object.freeze({ guardian: 0.30, opponent: 0.82, groundY: 0.95 });
 export interface ComposeArenaOptions { readonly guardianSide?: 'left' | 'right'; }
 /** The attacker closes this fraction of the stand distance on its run-up (kit: "approach, distance-independent"). */
 export const RUN_UP_FRACTION = 0.55;
 export const COMBATANT_HEIGHT_FRACTION = Object.freeze({ min: 1 / 3, max: 1 / 2 });
+/** A combatant's painted WIDTH may fill at most this share of the frame (2026-09-24). The height rule alone made a long low
+ * body enormous lengthwise — the Python ran off the frame and the Centipede spanned half the arena (films -01). 0.36 (films
+ * -02) made the Python a thin worm beside the Tarantula; 0.42 keeps a body on the 0.30 stand inside the frame (0.09–0.51)
+ * and only just past the midline at rest. Guardians keep their own decided fill (D2). */
+export const COMBATANT_WIDTH_FRACTION_MAX = 0.42;
+/** The scale capped so the painted width fits COMBATANT_WIDTH_FRACTION_MAX of the frame (never raises a scale). */
+export function fitCombatantWidth(scale: number, bounds: Readonly<{ width: number }>, cutoutWidthPx: number, frameWidth: number): number {
+  if (!(scale > 0) || !(bounds.width > 0) || !(cutoutWidthPx > 0) || !(frameWidth > 0)) throw new TypeError('combatant width: sizes must be positive');
+  return Math.min(scale, (COMBATANT_WIDTH_FRACTION_MAX * frameWidth) / (bounds.width * cutoutWidthPx));
+}
 
 export interface ArenaTextureLike { readonly width: number; readonly height: number; }
 export interface ArenaRecipeInput {
@@ -51,7 +63,7 @@ export function composeArena(recipe: ArenaRecipeInput, frame: FrameSize, options
   const g = recipe.groundLineNormalized, groundLinePx = g * frame.height;
   const gs = options.guardianSide;
   const sx = gs === 'left' ? { left: GUARDIAN_STANDS.guardian, right: GUARDIAN_STANDS.opponent } : gs === 'right' ? { left: 1 - GUARDIAN_STANDS.opponent, right: 1 - GUARDIAN_STANDS.guardian } : STAND_X;
-  const stands = Object.freeze({ left: Object.freeze({ x: sx.left, y: g }), right: Object.freeze({ x: sx.right, y: g }) });
+  const gy = Math.max(g, GUARDIAN_STANDS.groundY), stands = Object.freeze({ left: Object.freeze({ x: sx.left, y: gs === 'left' ? gy : g }), right: Object.freeze({ x: sx.right, y: gs === 'right' ? gy : g }) });
   const standDistance = sx.right - sx.left, runUp = standDistance * RUN_UP_FRACTION, runUpPx = runUp * frame.width;
   const plates = PLATE_ORDER.map((id): PlateLayout => {
     const tex = recipe.plates[id];

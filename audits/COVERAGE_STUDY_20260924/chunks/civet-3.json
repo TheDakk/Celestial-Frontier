@@ -1,0 +1,382 @@
+{
+ "id": "civet-3",
+ "standIn": "Civet",
+ "template": "quadruped",
+ "accentGroups": [
+  "ears",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/civet-sentinel-input-01/card/master-512.png",
+  "joints": [
+   "earFarTip",
+   "earNearTip",
+   "jaw",
+   "head",
+   "foreNearPaw",
+   "foreNearAnkle",
+   "foreNearKnee",
+   "foreFarPaw",
+   "foreFarAnkle",
+   "foreFarKnee",
+   "hindNearPaw",
+   "hindNearAnkle",
+   "hindNearKnee",
+   "hindFarPaw",
+   "hindFarAnkle",
+   "hindFarKnee",
+   "tail3",
+   "tail2",
+   "tail1",
+   "neck",
+   "chest",
+   "spine"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Panda",
+   "group": "bear",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.29,
+   "eyes": "small",
+   "mustRead": [
+    "black teardrop eye patches on a white face",
+    "black shoulder band joining black forelegs",
+    "round bulky body with a very round head"
+   ],
+   "note": "the tail is short but white and visible; the ears are black and round"
+  },
+  {
+   "name": "Red Panda",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "long bushy tail with pale rings",
+    "white face mask with rust tear-stripes below the eyes",
+    "rusty-red coat with jet-black legs and belly"
+   ],
+   "note": "raccoon-sized, not bear-sized, and unrelated to the giant panda"
+  },
+  {
+   "name": "Asian Elephant",
+   "group": "elephant",
+   "posture": "quadruped",
+   "aspect": 1.4,
+   "headFrac": 0.25,
+   "eyes": "small",
+   "mustRead": [
+    "twin-domed forehead with a dip between",
+    "small triangular ears",
+    "convex arched back and a single-lipped trunk tip"
+   ],
+   "note": "the back is humped/convex where an African elephant's dips, and the ears are far smaller"
+  },
+  {
+   "name": "Takin",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.27,
+   "eyes": "normal",
+   "mustRead": [
+    "horns sweeping outward then back like a wildebeest's",
+    "humped shoulders on short thick legs",
+    "long shaggy golden coat with an arched Roman-nosed muzzle"
+   ],
+   "note": "a goat-antelope built like a small bison - far stockier than any goat"
+  },
+  {
+   "name": "Gecko",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 3,
+   "headFrac": 0.24,
+   "eyes": "prominent",
+   "mustRead": [
+    "huge lidless eyes with vertical pupils",
+    "broad splayed toes with lamellae pads",
+    "soft granular bumpy skin and a plump tail"
+   ],
+   "note": "most geckos cannot blink - the eyes are covered by a fixed clear scale and licked clean"
+  },
+  {
+   "name": "Skink",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 3.5,
+   "headFrac": 0.19,
+   "eyes": "normal",
+   "mustRead": [
+    "smooth glossy overlapping polished scales",
+    "cylindrical body with very small short legs",
+    "tapering tail as long as the body"
+   ],
+   "note": "generic representative: a typical ground skink; it looks polished and almost limbless, not spiky or crested"
+  },
+  {
+   "name": "Black Bear",
+   "group": "bear",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.26,
+   "eyes": "small",
+   "mustRead": [
+    "straight facial profile with a tan muzzle",
+    "rump higher than the shoulders",
+    "tall rounded ears and short curved claws"
+   ],
+   "note": "no shoulder hump - the highest point is the hindquarters, the opposite of a brown bear"
+  },
+  {
+   "name": "Brown Bear",
+   "group": "bear",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.27,
+   "eyes": "small",
+   "mustRead": [
+    "prominent muscular shoulder hump",
+    "dished concave face with a broad forehead",
+    "long straight pale digging claws"
+   ],
+   "note": "the shoulder hump is the diagnostic - it makes the front of the animal the tallest point"
+  },
+  {
+   "name": "Wolf",
+   "group": "canid",
+   "posture": "quadruped",
+   "aspect": 1.8,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "broad blocky head with erect triangular ears",
+    "long legs and a narrow deep chest",
+    "straight bushy tail carried level or low"
+   ],
+   "note": "the tail hangs straight and never curls over the back the way a husky's does"
+  },
+  {
+   "name": "Coyote",
+   "group": "canid",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "narrow pointed muzzle",
+    "large erect triangular ears",
+    "bushy tail carried low"
+   ],
+   "note": "Slighter and leggier than a wolf; tail hangs down rather than out."
+  },
+  {
+   "name": "Bobcat",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "very short bobbed tail",
+    "cheek ruff of side whiskers",
+    "small black ear tufts"
+   ],
+   "note": "Tail is a stub of 3-4 head-widths' worth of body length, not a full cat tail."
+  },
+  {
+   "name": "Lynx",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 1.85,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "long black ear tufts",
+    "flared facial ruff",
+    "oversized snowshoe paws and long hind legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Elk",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "sweeping backswept antler rack",
+    "dark shaggy neck mane",
+    "pale cream rump patch"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Fox",
+   "group": "canid",
+   "posture": "quadruped",
+   "aspect": 2.3,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "huge bushy white-tipped tail",
+    "sharp triangular ears",
+    "low slender body on black stockings"
+   ],
+   "note": "Read as red fox. Body is far lower and lighter than a dog's; the tail is nearly body-length."
+  },
+  {
+   "name": "Raccoon",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.1,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "black bandit mask across the eyes",
+    "ringed banded tail",
+    "hunched arched back with rump higher than shoulders"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Badger",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.4,
+   "headFrac": 0.24,
+   "eyes": "small",
+   "mustRead": [
+    "broad flattened low-slung body",
+    "white stripe running back over the face",
+    "long straight digging foreclaws"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Weasel",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 4,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "extremely long tube-like body",
+    "very short legs",
+    "small flat rounded ears"
+   ],
+   "note": "Body is serpentine, often drawn arched; the head is barely wider than the neck."
+  },
+  {
+   "name": "Stoat",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 4,
+   "headFrac": 0.2,
+   "eyes": "normal",
+   "mustRead": [
+    "black-tipped tail",
+    "long tubular body",
+    "short legs and long neck"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Mink",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 3.6,
+   "headFrac": 0.21,
+   "eyes": "normal",
+   "mustRead": [
+    "glossy dark chocolate fur",
+    "elongate low body",
+    "white chin patch"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Marten",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 3,
+   "headFrac": 0.22,
+   "eyes": "normal",
+   "mustRead": [
+    "bushy full-length tail",
+    "pale orange throat bib",
+    "large rounded ears on a foxy face"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Flying Squirrel",
+   "group": "gliding-mammal",
+   "posture": "quadruped",
+   "aspect": 3,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "loose skin flap stretched from wrist to ankle",
+    "flattened feather-like tail",
+    "enormous black eyes"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Chipmunk",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.4,
+   "headFrac": 0.28,
+   "eyes": "prominent",
+   "mustRead": [
+    "bold dark and pale stripes along back and face",
+    "tail held up behind",
+    "bulging cheek pouches"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Mouse",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.8,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "naked tail as long as the body",
+    "large round thin ears",
+    "pointed twitching snout"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Vole",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.2,
+   "headFrac": 0.28,
+   "eyes": "small",
+   "mustRead": [
+    "stubby short tail",
+    "blunt rounded muzzle",
+    "ears half-buried in fur"
+   ],
+   "note": "Often drawn as a mouse; a vole is fatter, blunter-faced, short-tailed and small-eared."
+  }
+ ]
+}

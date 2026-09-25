@@ -1,0 +1,382 @@
+{
+ "id": "civet-6",
+ "standIn": "Civet",
+ "template": "quadruped",
+ "accentGroups": [
+  "ears",
+  "tail"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/civet-sentinel-input-01/card/master-512.png",
+  "joints": [
+   "earFarTip",
+   "earNearTip",
+   "jaw",
+   "head",
+   "foreNearPaw",
+   "foreNearAnkle",
+   "foreNearKnee",
+   "foreFarPaw",
+   "foreFarAnkle",
+   "foreFarKnee",
+   "hindNearPaw",
+   "hindNearAnkle",
+   "hindNearKnee",
+   "hindFarPaw",
+   "hindFarAnkle",
+   "hindFarKnee",
+   "tail3",
+   "tail2",
+   "tail1",
+   "neck",
+   "chest",
+   "spine"
+  ],
+  "masks": [
+   "striped",
+   "spotted",
+   "banded",
+   "mottled",
+   "marbled",
+   "eye-spotted"
+  ]
+ },
+ "species": [
+  {
+   "name": "Wild Horse",
+   "group": "hoofed-unhorned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.32,
+   "eyes": "normal",
+   "mustRead": [
+    "stiff upright brush mane with no forelock",
+    "stocky barrel body on short legs",
+    "large heavy head"
+   ],
+   "note": "Read as Przewalski's horse: dun coat, erect mane, dark dorsal stripe. Not a slender domestic riding horse with a flowing mane."
+  },
+  {
+   "name": "Wild Ass",
+   "group": "hoofed-unhorned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.32,
+   "eyes": "normal",
+   "mustRead": [
+    "very long upright ears",
+    "erect short mane",
+    "tufted cow-like tail with a bare upper half"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Camel",
+   "group": "hoofed-unhorned",
+   "posture": "quadruped",
+   "aspect": 1.35,
+   "headFrac": 0.24,
+   "eyes": "prominent",
+   "mustRead": [
+    "hump on the back",
+    "long curving neck held high",
+    "very long knobbly-kneed legs"
+   ],
+   "note": "Generic name read as a representative dromedary. Taller than most people draw: the leg mass is roughly half the total height."
+  },
+  {
+   "name": "Yak",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.26,
+   "eyes": "small",
+   "mustRead": [
+    "curtain of long hair hanging to the ground along the flanks",
+    "humped shoulders and low-carried head",
+    "bushy horse-like tail plume"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Hamster",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.33,
+   "eyes": "prominent",
+   "mustRead": [
+    "rounded neckless body",
+    "almost no visible tail",
+    "bulging cheek pouches and blunt short muzzle"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Agama",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 3.4,
+   "headFrac": 0.3,
+   "eyes": "normal",
+   "mustRead": [
+    "large blunt triangular head",
+    "tail about as long as the body",
+    "sprawled legs with the belly held clear of the ground"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Maned Wolf",
+   "group": "canid",
+   "posture": "quadruped",
+   "aspect": 1.15,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "absurdly long stilt legs with black stockings",
+    "very large erect ears",
+    "dark mane along the neck and shoulders"
+   ],
+   "note": "The legs are the whole point: leg length is roughly 60% of standing height, far leggier than any fox or wolf. Body itself is small and slim."
+  },
+  {
+   "name": "Pampas Fox",
+   "group": "canid",
+   "posture": "quadruped",
+   "aspect": 2,
+   "headFrac": 0.27,
+   "eyes": "normal",
+   "mustRead": [
+    "pointed narrow muzzle with large triangular ears",
+    "long bushy dark-tipped tail carried low",
+    "grizzled grey back with tawny legs"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Armadillo",
+   "group": "xenarthran",
+   "posture": "quadruped",
+   "aspect": 2.4,
+   "headFrac": 0.22,
+   "eyes": "small",
+   "mustRead": [
+    "hinged bands of armour across the middle of the back",
+    "long pointed snout with small tubular ears",
+    "tapering armoured tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Agouti",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 1.7,
+   "headFrac": 0.27,
+   "eyes": "prominent",
+   "mustRead": [
+    "arched hunched back rising to the rump",
+    "slender delicate legs with hoof-like claws",
+    "essentially no tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Guinea Pig",
+   "group": "small-clawed-mammal",
+   "posture": "quadruped",
+   "aspect": 2.2,
+   "headFrac": 0.32,
+   "eyes": "prominent",
+   "mustRead": [
+    "tailless loaf-shaped body",
+    "very short legs almost hidden by the belly",
+    "blunt rounded muzzle with drooping petal ears"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Tegu",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 3.6,
+   "headFrac": 0.28,
+   "eyes": "normal",
+   "mustRead": [
+    "massive jowled blocky head",
+    "heavy banded body with beaded scales",
+    "thick tail slightly longer than the body"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cattle",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.26,
+   "eyes": "prominent",
+   "mustRead": [
+    "deep barrel body with a straight level back",
+    "broad blunt muzzle and sideways-set horns",
+    "tufted rope tail hanging to the hocks"
+   ],
+   "note": "Generic name read as a representative domestic cow."
+  },
+  {
+   "name": "Sheep",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.4,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "thick woolly fleece blurring the body outline",
+    "narrow bare face and legs sticking out of the fleece",
+    "short drooping tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Goat",
+   "group": "hoofed-horned",
+   "posture": "quadruped",
+   "aspect": 1.5,
+   "headFrac": 0.27,
+   "eyes": "prominent",
+   "mustRead": [
+    "backward-sweeping horns",
+    "chin beard",
+    "short upright tail flicked up over the rump"
+   ],
+   "note": "Unlike a sheep the tail points up, the coat is flat, and the profile of the face is straighter and narrower."
+  },
+  {
+   "name": "Alpine Salamander",
+   "group": "salamander",
+   "posture": "sprawling",
+   "aspect": 4.5,
+   "headFrac": 0.25,
+   "eyes": "prominent",
+   "mustRead": [
+    "glossy jet-black moist skin",
+    "blunt rounded head with bulging eyes",
+    "short sprawling legs and a rounded tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Wall Lizard",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 4.5,
+   "headFrac": 0.24,
+   "eyes": "normal",
+   "mustRead": [
+    "tail roughly twice the body length",
+    "flattened slender body pressed to the surface",
+    "long splayed toes"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Wild Pony",
+   "group": "hoofed-unhorned",
+   "posture": "quadruped",
+   "aspect": 1.7,
+   "headFrac": 0.31,
+   "eyes": "normal",
+   "mustRead": [
+    "short stocky legs under a deep round barrel",
+    "thick shaggy mane and forelock over the eyes",
+    "small head with a broad forehead"
+   ],
+   "note": "Pony proportions differ from a horse: legs are short relative to body depth, so the silhouette is longer and lower."
+  },
+  {
+   "name": "Lizard",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 4,
+   "headFrac": 0.26,
+   "eyes": "normal",
+   "mustRead": [
+    "tail longer than the body",
+    "four legs splayed sideways with elbows out",
+    "wedge-shaped scaly head"
+   ],
+   "note": "Generic name read as a representative small lacertid lizard. Limbs sprawl out to the side, not underneath the body like a mammal."
+  },
+  {
+   "name": "Whiptail",
+   "group": "lizard",
+   "posture": "sprawling",
+   "aspect": 5.5,
+   "headFrac": 0.25,
+   "eyes": "normal",
+   "mustRead": [
+    "extremely long thin tail two to three times the body",
+    "slender pointed snout",
+    "pale stripes running the length of the back"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Dromedary Camel",
+   "group": "hoofed-unhorned",
+   "posture": "quadruped",
+   "aspect": 1.35,
+   "headFrac": 0.24,
+   "eyes": "prominent",
+   "mustRead": [
+    "single hump",
+    "long curved neck rising from sloped shoulders",
+    "long legs with knobbly knee pads and splayed padded feet"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Fennec Fox",
+   "group": "canid",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.3,
+   "eyes": "prominent",
+   "mustRead": [
+    "gigantic triangular ears nearly as long as the head",
+    "tiny slender pale body",
+    "black-tipped bushy tail"
+   ],
+   "note": "The ears alone can be a third of the standing height; undersized ears turn it into an ordinary fox."
+  },
+  {
+   "name": "Sand Cat",
+   "group": "felid",
+   "posture": "quadruped",
+   "aspect": 1.9,
+   "headFrac": 0.27,
+   "eyes": "prominent",
+   "mustRead": [
+    "broad flattened head with low wide-set ears",
+    "short stocky legs with furred feet",
+    "banded tail with a black tip"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Striped Hyena",
+   "group": "hyena",
+   "posture": "quadruped",
+   "aspect": 1.6,
+   "headFrac": 0.27,
+   "eyes": "normal",
+   "mustRead": [
+    "back sloping steeply down from high shoulders to low hips",
+    "erect crest of long mane hair along the spine",
+    "large pointed ears and a heavy blunt muzzle"
+   ],
+   "note": "Front legs are noticeably longer than the hind legs; the sloping topline is the defining read."
+  }
+ ]
+}

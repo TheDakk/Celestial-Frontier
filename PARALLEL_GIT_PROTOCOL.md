@@ -73,6 +73,18 @@ write, hosted attempt, merge, release or deployment is currently authorized. Exa
 and release authorization requirements below still apply. Audits LFS migration is approved in principle and awaits Nick's explicit go, not a new
 separate decision; do not rewrite history without it.
 
+## Standing run authority — Nick, 2026-09-21 ("let's go with your recommendation")
+
+Each lane's NEXT RUN is written in `ROADMAP.md` under `### Codex (openai lane)` and `### Claude` as the canonical
+instruction (ordered stages, the halt rule, the report). Nick authorizes it by saying **"go"** in that lane's app;
+no relayed prompt is needed. Rules that do not change: S2 (a shared-path red) is the only internal halt; commit
+signed at each stage; no push, PR, merge, release or deploy is authorized by "go" (those stay under
+`GITHUB_ACTIONS_BUDGET.md` and Nick's explicit words); a run that needs a decision writes it under `### Nick` in
+`ROADMAP.md` and stops there. Two laws that shrink the per-creature work: (1) a creature's presence declaration
+(`hidden` / `absent` / `folded`) is written by Codex from the painting or by the painting prompt — never by Nick;
+(2) the roster goes through the intake compiler in one batch once IC-4 passes, and Nick reviews a sheet, not
+creatures one by one.
+
 ## Ownership
 
 | Agent environment | Allowed branch | Allowed folder |

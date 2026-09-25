@@ -48,6 +48,7 @@ const EXPECTED_DOMAIN_FILES = Object.freeze([
   'combatcore/src/guardian-prime.ts',
   'combatcore/src/index.ts',
   'combatcore/src/lineage-codec.ts',
+  'combatcore/src/player-ability.ts',
   'descriptors/src/apphooks.ts',
   'descriptors/src/apphooks.verbatim.js',
   'descriptors/src/describe-pick.ts',

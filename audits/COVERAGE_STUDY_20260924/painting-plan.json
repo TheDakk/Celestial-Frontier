@@ -1,0 +1,2427 @@
+{
+ "archetypes": [
+  {
+   "name": "Monitor/wall lizard",
+   "exemplar": "Wall Lizard",
+   "covers": [
+    "Wall Lizard",
+    "Lizard",
+    "Anole",
+    "Gecko",
+    "Skink",
+    "Alligator Lizard",
+    "Mountain Lizard",
+    "Agama",
+    "Whiptail",
+    "Coastal Lizard",
+    "Tegu",
+    "Monitor Lizard",
+    "Komodo Dragon",
+    "Gila Monster",
+    "Iguana",
+    "Land Iguana",
+    "Marine Iguana"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "legs splayed sideways with elbows out; belly near the ground",
+    "wedge-shaped scaly head",
+    "tail about 1.5x the body (the tail morph then covers skinks through whiptails)",
+    "fine scale texture on a plain unmarked mid-tone base (luminance is kept, so any painted mark shows on every species this stands in for)",
+    "masks: striped = whiptail/skink stripes, banded = tegu/gila bands, spotted, mottled"
+   ],
+   "why": "17 misleading. A scaly sprawling reptile replaces a furry mammal. The heavy lizards (Monitor, Komodo, Tegu, Gila) and the crested iguanas stay caveat. A second, heavy Monitor Lizard painting would lift them later."
+  },
+  {
+   "name": "Cat (felid)",
+   "exemplar": "Cougar",
+   "covers": [
+    "Jaguar",
+    "Leopard",
+    "Tiger",
+    "Cougar",
+    "Lion",
+    "Caracal",
+    "Bobcat",
+    "Lynx",
+    "Cheetah",
+    "Serval",
+    "Clouded Leopard",
+    "Ocelot",
+    "Snow Leopard",
+    "Fishing Cat",
+    "Sand Cat",
+    "Wildcat",
+    "Cat"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "round short-muzzled cat head with upright triangular ears (the Civet's long masked snout is what misleads now)",
+    "long heavy tail at mid length, so tail 0.7 reads as a bobcat or lynx stub and 1.35 as a snow leopard's rope",
+    "deep-chested muscular body on medium legs, stalking pose, big soft paws",
+    "plain unmarked tawny coat: no painted spots, rings or face marks",
+    "full six-mask set: striped = tiger/tabby stripes, spotted = cheetah/serval solid spots, eye-spotted = open rosettes (leopard, jaguar, snow leopard, ocelot), marbled = clouded-leopard blotches, banded = tail rings, mottled = broken patches"
+   ],
+   "why": "10 misleading and 7 caveat cats. Big cats are read by their coat pattern, and only masks on a PLAIN cat can carry it. The Civet's own spots and tail rings show through every tint, so no Civet mask can fix this."
+  },
+  {
+   "name": "Antelope",
+   "exemplar": "Impala",
+   "covers": [
+    "Antelope",
+    "Impala",
+    "Gazelle",
+    "Springbok",
+    "Kudu",
+    "Eland",
+    "Hartebeest",
+    "Oryx",
+    "Saiga",
+    "Pronghorn",
+    "Bongo",
+    "Duiker",
+    "Nilgai",
+    "Gerenuk"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "ringed lyre-shaped horns swept up and back",
+    "deep chest on very fine long legs with small hooves",
+    "short flicking tail; large upright ears on a narrow head",
+    "tan flank over a pale belly as soft shading only, with no stripes or face mask",
+    "masks: striped = kudu/bongo white flank stripes, banded = gazelle/springbok flank band"
+   ],
+   "why": "14 misleading, the biggest hoofed cluster. The horn shape stays wrong for spiral or straight-horned species (Kudu, Eland, Oryx), and Gerenuk's neck is too short, so those are caveat. Every one moves from a spotted small carnivore to a correct horned antelope."
+  },
+  {
+   "name": "Stocky rodent",
+   "exemplar": "Marmot",
+   "covers": [
+    "Marmot",
+    "Prairie Dog",
+    "Gopher",
+    "Ground Squirrel",
+    "Lemming",
+    "Hamster",
+    "Guinea Pig",
+    "Capybara",
+    "Agouti",
+    "Hyrax",
+    "Vole",
+    "Water Vole",
+    "Pika",
+    "Wombat"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "fat barrel body on very short legs",
+    "blunt rounded head with small ears set low in the fur",
+    "SHORT furry tail, so tail 0.7 reads as tailless (guinea pig, capybara, hyrax, pika, wombat)",
+    "plain unmarked brown agouti coat"
+   ],
+   "why": "14 misleading. Includes Pika from the Tree Frog and Wombat. Their shared identity is 'round short-legged body, no real tail', which the Civet's long ringed tail breaks. Gopher (incisors) and Agouti (legs) stay caveat."
+  },
+  {
+   "name": "Perch-like fish",
+   "exemplar": "Bass",
+   "covers": [
+    "Bass",
+    "Tilapia",
+    "Carp",
+    "Cichlid",
+    "Goldfish",
+    "Snapper",
+    "Cardinalfish",
+    "Perch",
+    "Sea Bass",
+    "Grouper",
+    "Walleye",
+    "Tetra",
+    "Archerfish",
+    "Parrotfish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "deep laterally compressed body (aspect about 2.5-2.8; the Salmon is about 3.5)",
+    "spiny front dorsal fin joined to a soft rear one",
+    "big mouth on a sloping face; squared tail; no adipose fin, no kype jaw",
+    "plain olive-silver base with a full six-mask set (striped = perch bars, banded, spotted, mottled, marbled, eye-spotted)"
+   ],
+   "why": "7 misleading and 7 caveat. The salmon's trout body and hooked jaw are wrong for every spiny-rayed fish."
+  },
+  {
+   "name": "Wild cattle",
+   "exemplar": "Cattle",
+   "covers": [
+    "Cattle",
+    "Cow",
+    "Bull",
+    "Gaur",
+    "Banteng",
+    "Water Buffalo",
+    "Buffalo",
+    "Bison",
+    "Yak",
+    "Musk Ox",
+    "Takin",
+    "Wildebeest"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "heavy deep barrel body with a straight back on sturdy legs",
+    "broad blunt wet muzzle; sideways-set curved horns",
+    "tufted rope tail hanging to the hocks",
+    "plain unmarked coat, painted as a wild-type ox (no udder, no patches)"
+   ],
+   "why": "12 misleading. Bison, Yak and Musk Ox keep a caveat (hump, curtain of hair), and so do the buffalo horn shapes. All read as bovines instead of a civet."
+  },
+  {
+   "name": "Monkey",
+   "exemplar": "Capuchin",
+   "covers": [
+    "Capuchin",
+    "Monkey",
+    "Macaque",
+    "Howler Monkey",
+    "Spider Monkey",
+    "Langur",
+    "Proboscis Monkey",
+    "Baboon",
+    "Mandrill",
+    "Lemur",
+    "Tamarin",
+    "Marmoset"
+   ],
+   "bodyPlan": "NEW: primate template + a tail1-3 chain (the primate rig has no tail joints, so a tail can neither scale nor swing)",
+   "mustPaint": [
+    "walking on all fours like the Chimpanzee's pose, but with a slim long-limbed body",
+    "tail about body length in a loose curl (0.7 = macaque, 1.35 = spider monkey or langur)",
+    "flat forward-facing face with round eyes; small ears",
+    "plain unmarked coat, with the cap kept light rather than a hard mark",
+    "masks: banded = Lemur ringed tail"
+   ],
+   "why": "12 misleading. A tailless ape is the wrong answer for every monkey. Baboon and Mandrill (muzzle) and Lemur, Tamarin and Marmoset stay caveat. Aye-Aye still needs its own painting."
+  },
+  {
+   "name": "Reef disc fish",
+   "exemplar": "Tang",
+   "covers": [
+    "Tang",
+    "Surgeonfish",
+    "Butterflyfish",
+    "Angelfish",
+    "Damselfish",
+    "Reef Fish",
+    "Clownfish",
+    "Triggerfish",
+    "Rabbitfish",
+    "Piranha",
+    "Pacu",
+    "Sunfish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "tall round plate-thin disc body (aspect about 1.4)",
+    "small pointed mouth; long low dorsal and anal fins",
+    "crescent tail",
+    "plain base with a full six-mask set (banded = clownfish and butterflyfish bars, eye-spotted = butterflyfish eyespot)"
+   ],
+   "why": "12 misleading. Clownfish (rounded fins) and Piranha/Pacu (jaw) stay caveat."
+  },
+  {
+   "name": "Wolf (canid)",
+   "exemplar": "Wolf",
+   "covers": [
+    "Wolf",
+    "Coyote",
+    "Jackal",
+    "Dingo",
+    "African Wild Dog",
+    "Fox",
+    "Red Fox",
+    "Arctic Fox",
+    "Pampas Fox",
+    "Fennec Fox",
+    "Maned Wolf",
+    "Dog"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "erect triangular ears; narrow pointed muzzle",
+    "long legs under a narrow deep chest",
+    "bushy tail carried low (tail 1.35 gives the fox brush, 0.7 the dingo)",
+    "plain unmarked grizzled grey-tan coat",
+    "masks: mottled = African wild dog patchwork"
+   ],
+   "why": "11 misleading and 1 caveat. Foxes and the Maned Wolf stay caveat (lower body or stilt legs). If foxes matter, a Red Fox painting later lifts five of them to good."
+  },
+  {
+   "name": "Sea/shore gull",
+   "exemplar": "Gull",
+   "covers": [
+    "Gull",
+    "Albatross",
+    "Petrel",
+    "Skua",
+    "Snow Petrel",
+    "Seabird",
+    "Gannet",
+    "Booby",
+    "Tern",
+    "Tropicbird",
+    "Frigatebird"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "standing, with long narrow pointed wings folded to cross beyond the tail",
+    "webbed feet; stout hook-tipped bill",
+    "white body with a grey mantle as shading only",
+    "tail at mid length so 1.35 approximates tern and tropicbird streamers"
+   ],
+   "why": "11 misleading. Seabirds are long-winged web-footed birds, not a hook-billed raptor with talons. Tern, Tropicbird and Frigatebird (forked or streamer tails, pouch) stay caveat."
+  },
+  {
+   "name": "Otter (mustelid)",
+   "exemplar": "River Otter",
+   "covers": [
+    "River Otter",
+    "Otter",
+    "Giant Otter",
+    "Sea Otter",
+    "Weasel",
+    "Stoat",
+    "Mink",
+    "Marten",
+    "Fisher",
+    "Mongoose"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "long low tubular body on short legs",
+    "thick tail tapering to a point",
+    "blunt whiskered head with small ears",
+    "plain unmarked coat"
+   ],
+   "why": "7 misleading and 3 caveat. Weasel, Stoat and Mink stay caveat (slimmer), and so does Sea Otter (floats on its back)."
+  },
+  {
+   "name": "Brown bear (bear)",
+   "exemplar": "Brown Bear",
+   "covers": [
+    "Brown Bear",
+    "Grizzly Bear",
+    "Bear",
+    "Black Bear",
+    "Polar Bear",
+    "Sloth Bear",
+    "Spectacled Bear",
+    "Sun Bear",
+    "Panda"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "muscular shoulder hump; broad dished head with small round ears",
+    "flat-footed plantigrade paws with long claws; stub tail (tail 0.7)",
+    "plain unmarked coat that reads as a polar bear under a white palette",
+    "masks: eye-spotted = eye patches (Panda, Spectacled Bear), banded = chest crescent or shoulder band (Sun Bear, Panda)"
+   ],
+   "why": "9 misleading, the whole bear family. Panda and Spectacled/Sun Bear rely on the mask. Check that their pattern genes select those masks."
+  },
+  {
+   "name": "Goose (waterfowl)",
+   "exemplar": "Goose",
+   "covers": [
+    "Goose",
+    "Duck",
+    "Eider Duck",
+    "Swan",
+    "Screamer",
+    "Loon",
+    "Grebe",
+    "Coot",
+    "Moorhen"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "heavy body on webbed feet set well back",
+    "medium-long upright neck, between duck and swan",
+    "flat rounded bill",
+    "plain grey-brown"
+   ],
+   "why": "9 misleading. Swan (longer neck), Loon/Grebe (dagger bill) and Coot/Moorhen (frontal shield) stay caveat. All of them lose the raptor bill and talons."
+  },
+  {
+   "name": "Slender colubrid",
+   "exemplar": "Racer",
+   "covers": [
+    "Racer",
+    "Whip Snake",
+    "Mamba",
+    "Tree Snake",
+    "Vine Snake",
+    "Garter Snake",
+    "King Snake",
+    "Grass Snake",
+    "Cave Snake"
+   ],
+   "bodyPlan": "serpent",
+   "mustPaint": [
+    "very slender whip body in a fast S-curve",
+    "narrow rounded head with a large round eye",
+    "plain smooth glossy scales (no python net)",
+    "masks: striped = lengthwise garter stripes, banded = king-snake rings"
+   ],
+   "why": "2 misleading and 7 caveat. Replaces the heavy netted python for every slim snake."
+  },
+  {
+   "name": "Heron (long-neck wader)",
+   "exemplar": "Heron",
+   "covers": [
+    "Heron",
+    "Egret",
+    "Bittern",
+    "Stork",
+    "Crane",
+    "Ibis",
+    "Spoonbill",
+    "Flamingo"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "long S-kinked neck; heavy dagger bill",
+    "stilt legs with long toes",
+    "slim upright wader body, plain grey"
+   ],
+   "why": "8 misleading. Neck and leg length cannot be morphed, so waders need their own painting. Ibis, Spoonbill and Flamingo (bill shape) and Crane (bustle) stay caveat."
+  },
+  {
+   "name": "Songbird",
+   "exemplar": "Sparrow",
+   "covers": [
+    "Sparrow",
+    "Finch",
+    "Tanager",
+    "Cardinal",
+    "Weaverbird",
+    "Robin",
+    "Lark",
+    "Starling"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "small round-headed perching bird on thin legs",
+    "stout conical bill; short square tail",
+    "plain brown, only lightly streaked, so colour genes read"
+   ],
+   "why": "8 misleading. Robin and Starling (thin bill) and Cardinal (crest) stay caveat."
+  },
+  {
+   "name": "Gamebird",
+   "exemplar": "Grouse",
+   "covers": [
+    "Grouse",
+    "Ptarmigan",
+    "Quail",
+    "Partridge",
+    "Guineafowl",
+    "Turkey",
+    "Chicken",
+    "Hoatzin"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "plump rounded ground bird on short legs; small head",
+    "short rounded bill; short broad tail (fannable)",
+    "barred but low-contrast plumage; feathered feet"
+   ],
+   "why": "8 misleading. Turkey, Chicken (comb, wattle) and Hoatzin (crest) stay caveat. The long-tailed gamebirds go to the Pheasant painting."
+  },
+  {
+   "name": "Shorebird",
+   "exemplar": "Sandpiper",
+   "covers": [
+    "Sandpiper",
+    "Plover",
+    "Snipe",
+    "Curlew",
+    "Godwit",
+    "Oystercatcher",
+    "Avocet",
+    "Rail"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "horizontal crouched body on long thin legs",
+    "straight probing bill about head length",
+    "plain brown-grey upperparts"
+   ],
+   "why": "8 misleading. Curlew and Avocet (curved bills) and Rail (narrow body, long toes) stay caveat."
+  },
+  {
+   "name": "Bovid goat",
+   "exemplar": "Ibex",
+   "covers": [
+    "Ibex",
+    "Goat",
+    "Mountain Goat",
+    "Chamois",
+    "Tahr",
+    "Serow",
+    "Wild Sheep",
+    "Sheep"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "backward-arcing ridged horns",
+    "chin beard; short upright tail",
+    "stocky muscular body on sturdy legs",
+    "plain unmarked coat"
+   ],
+   "why": "8 misleading. Sheep (fleece), Wild Sheep (curled horns) and Mountain Goat (shaggy white) stay caveat."
+  },
+  {
+   "name": "Shark",
+   "exemplar": "Reef Shark",
+   "covers": [
+    "Reef Shark",
+    "Shark",
+    "Juvenile Shark",
+    "Great White Shark",
+    "Tiger Shark",
+    "Mako Shark",
+    "Whale Shark",
+    "Basking Shark"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "tall triangular first dorsal; asymmetric tail with a long upper lobe",
+    "row of gill slits; crescent mouth under a conical snout",
+    "grey back over a white belly as shading",
+    "masks: striped = tiger-shark bars, spotted = whale-shark checkerboard"
+   ],
+   "why": "8 misleading. Whale and Basking Shark (giant mouths) stay caveat. Hammerhead needs its own head."
+  },
+  {
+   "name": "Pike",
+   "exemplar": "Pike",
+   "covers": [
+    "Pike",
+    "Gar",
+    "Barracuda",
+    "Wahoo",
+    "Remora",
+    "Mudminnow",
+    "Killifish",
+    "Icefish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "elongate torpedo body (aspect about 5)",
+    "long flattened toothy snout; dorsal fin set far back near the tail",
+    "plain mottled green, with no painted bean spots"
+   ],
+   "why": "3 misleading and 5 caveat. Gar (beak) stays caveat."
+  },
+  {
+   "name": "Closed-shell beetle",
+   "exemplar": "Diving Beetle",
+   "covers": [
+    "Diving Beetle",
+    "Water Beetle",
+    "Ladybug",
+    "Dung Beetle",
+    "Carrion Beetle",
+    "Cockroach",
+    "Firefly",
+    "Cold-Adapted Insect"
+   ],
+   "bodyPlan": "insect (wing cases closed, flight wings hidden)",
+   "mustPaint": [
+    "smooth closed domed oval wing cases; head tucked under the pronotum",
+    "walking pose",
+    "masks: spotted = ladybug spots, mottled = carrion beetle blotches, banded = diving beetle rim"
+   ],
+   "why": "Caveat only (8). The Beetle painting holds its wing cases raised in flight. Second tier."
+  },
+  {
+   "name": "Herring",
+   "exemplar": "Herring",
+   "covers": [
+    "Herring",
+    "Sardine",
+    "Anchovy",
+    "Tarpon",
+    "Bonefish",
+    "Whitefish",
+    "Mullet",
+    "Lanternfish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "slim mirror-silver body; a single mid-back dorsal",
+    "deeply forked tail; large eye",
+    "no spots (unlike the Salmon)"
+   ],
+   "why": "Caveat only (8). Second tier."
+  },
+  {
+   "name": "Equid",
+   "exemplar": "Wild Horse",
+   "covers": [
+    "Wild Horse",
+    "Horse",
+    "Wild Pony",
+    "Wild Ass",
+    "Donkey",
+    "Zebra",
+    "Okapi"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "stiff upright brush mane; single hooves on slim legs",
+    "tufted tail; large head on an arched neck",
+    "plain unmarked dun coat",
+    "masks: striped = zebra stripes including the legs (the closest this can get to Okapi's leg stripes)"
+   ],
+   "why": "7 misleading. Zebra relies on the striped mask. Donkey and Wild Ass (long ears) and Okapi stay caveat."
+  },
+  {
+   "name": "Salamander",
+   "exemplar": "Salamander",
+   "covers": [
+    "Salamander",
+    "Newt",
+    "Alpine Salamander",
+    "Giant Salamander",
+    "Axolotl",
+    "Olm",
+    "Blind Salamander"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "moist smooth scaleless skin (which is why a lizard painting will not do)",
+    "blunt rounded head; four short splayed limbs of equal size",
+    "long rounded tail about body length",
+    "plain dark base; masks: spotted = fire-salamander spots"
+   ],
+   "why": "7 misleading. Axolotl, Olm and Blind Salamander stay caveat because nobody painted external gills."
+  },
+  {
+   "name": "Eel",
+   "exemplar": "Eel",
+   "covers": [
+    "Eel",
+    "Moray Eel",
+    "Electric Eel",
+    "Lamprey",
+    "Lungfish",
+    "Knifefish",
+    "Oarfish"
+   ],
+   "bodyPlan": "serpent (the eel profile already lists it; the undulation needs the segment chain)",
+   "mustPaint": [
+    "snake-like body with a continuous fin fringe along back, tail and belly",
+    "blunt-jawed head; no pelvic fins",
+    "plain olive-brown"
+   ],
+   "why": "7 misleading. Lamprey (sucker mouth), Moray (gape) and Oarfish (red crest) stay caveat."
+  },
+  {
+   "name": "Bee",
+   "exemplar": "Honeybee",
+   "covers": [
+    "Honeybee",
+    "Bee",
+    "Bumblebee",
+    "Orchid Bee",
+    "Wasp",
+    "Fly",
+    "Black Fly"
+   ],
+   "bodyPlan": "insect",
+   "mustPaint": [
+    "furry thorax; banded abdomen (shading only; the bands come from the banded mask)",
+    "two pairs of clear wings",
+    "pinched waist"
+   ],
+   "why": "7 misleading. Bumblebee, Wasp, Fly and Black Fly stay caveat."
+  },
+  {
+   "name": "Rat",
+   "exemplar": "Rat",
+   "covers": [
+    "Rat",
+    "Mouse",
+    "Gerbil",
+    "Marsh Rodent",
+    "Shrew",
+    "Possum"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "long naked scaly tail about body length",
+    "pointed whiskered snout; rounded thin ears",
+    "hunched arched back on short legs",
+    "plain unmarked coat"
+   ],
+   "why": "6 misleading. Shrew (proboscis snout) and Possum (white face) stay caveat."
+  },
+  {
+   "name": "Hare",
+   "exemplar": "Hare",
+   "covers": [
+    "Hare",
+    "Jackrabbit",
+    "Snowshoe Hare",
+    "Arctic Hare",
+    "Rabbit",
+    "Mara"
+   ],
+   "bodyPlan": "hopper",
+   "mustPaint": [
+    "very long upright ears, painted hare-long because they only scale slightly with the head",
+    "long rangy hind legs and big hind feet; crouched ready-to-bound pose",
+    "powder-puff tail; plain brown coat"
+   ],
+   "why": "6 misleading, all currently shown as a leaping tree frog. Rabbit (shorter ears) and Mara stay caveat."
+  },
+  {
+   "name": "Pond turtle",
+   "exemplar": "Pond Turtle",
+   "covers": [
+    "Pond Turtle",
+    "Turtle",
+    "Box Turtle",
+    "Snapping Turtle",
+    "Softshell Turtle",
+    "Tortoise"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "domed shell with a scute mosaic over the whole trunk (the shell rides the spine and chest bones)",
+    "head extended on a wrinkled neck; stumpy clawed webbed feet",
+    "short tail"
+   ],
+   "why": "6 misleading. Snapping Turtle (big head, saw tail), Softshell (flat leathery shell) and Tortoise (tall dome) stay caveat."
+  },
+  {
+   "name": "Dolphin",
+   "exemplar": "Dolphin",
+   "covers": [
+    "Dolphin",
+    "Porpoise",
+    "River Dolphin",
+    "Pilot Whale",
+    "Beaked Whale",
+    "Orca"
+   ],
+   "bodyPlan": "fish (the fluke rides the caudal joint; the side view hides its horizontal axis)",
+   "mustPaint": [
+    "sickle dorsal fin; short beak with a smiling jawline",
+    "smooth grey countershaded skin; paddle flippers; tail flukes",
+    "masks: a black-and-white saddle and eye-patch pied mask for Orca, drawn in whichever pattern slot Orca's gene selects"
+   ],
+   "why": "6 misleading. River Dolphin (long beak) and Pilot Whale (melon) stay caveat."
+  },
+  {
+   "name": "Great whale",
+   "exemplar": "Blue Whale",
+   "covers": [
+    "Blue Whale",
+    "Whale",
+    "Gray Whale",
+    "Right Whale",
+    "Humpback Whale",
+    "Beluga"
+   ],
+   "bodyPlan": "fish (as for Dolphin)",
+   "mustPaint": [
+    "huge streamlined body; tiny nub dorsal set far back (reads as 'no dorsal' for Right Whale, Gray Whale and Beluga)",
+    "broad flat rostrum; throat pleats; long flippers; wide flukes",
+    "plain blue-grey"
+   ],
+   "why": "6 misleading. Humpback (long white flippers), Right Whale (callosities) and Beluga (melon) stay caveat. Sperm Whale and Narwhal need their own paintings."
+  },
+  {
+   "name": "Frog (sitting)",
+   "exemplar": "Bullfrog",
+   "covers": [
+    "Bullfrog",
+    "Toad",
+    "Poison Dart Frog",
+    "Wood Frog",
+    "Cave Frog",
+    "Glass Frog"
+   ],
+   "bodyPlan": "hopper",
+   "mustPaint": [
+    "squat sitting crouch with folded hind legs",
+    "wide flat head with an eardrum disc and a wide mouth line",
+    "smooth plain skin (warts would leak onto dart frogs)",
+    "masks: spotted/banded/marbled = dart-frog warning blotches, striped = dorsolateral ridges"
+   ],
+   "why": "1 misleading and 5 caveat. The tree frog's leap, red eye and toe pads are wrong for ground frogs."
+  },
+  {
+   "name": "Pig",
+   "exemplar": "Wild Boar",
+   "covers": [
+    "Wild Boar",
+    "Wild Pig",
+    "Pig",
+    "Peccary",
+    "Warthog"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "wedge snout ending in a flat disc; small upcurved tusks",
+    "high bristly shoulders sloping to a low rump on short legs",
+    "thin tail; plain grey-brown"
+   ],
+   "why": "5 misleading. Warthog (warts, big tusks) stays caveat."
+  },
+  {
+   "name": "Deer",
+   "exemplar": "Deer",
+   "covers": [
+    "Deer",
+    "Elk",
+    "Moose",
+    "Reindeer",
+    "Caribou"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "branched sweeping antlers (rigid on the head bone)",
+    "slender legs, long thin neck, large cupped ears",
+    "plain unmarked coat with the pale rump patch as shading only"
+   ],
+   "why": "5 misleading. Moose (palmate antlers, dewlap) and Reindeer/Caribou (brow shovel, neck ruff) stay caveat."
+  },
+  {
+   "name": "Corvid",
+   "exemplar": "Crow",
+   "covers": [
+    "Crow",
+    "Raven",
+    "Chough",
+    "Jay",
+    "Magpie"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "stout straight pointed bill",
+    "square-to-wedge tail",
+    "paint it mid-grey rather than jet black, so near-grey tinting can colour Jays and Choughs"
+   ],
+   "why": "3 misleading and 2 caveat."
+  },
+  {
+   "name": "Crocodilian",
+   "exemplar": "Crocodile",
+   "covers": [
+    "Crocodile",
+    "Alligator",
+    "Caiman",
+    "Gharial"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "long flat armoured snout; scute rows along back and tail",
+    "low sprawling legs; heavy tail longer than the body"
+   ],
+   "why": "4 misleading. Gharial (needle snout) stays caveat."
+  },
+  {
+   "name": "Elephant",
+   "exemplar": "African Elephant",
+   "covers": [
+    "African Elephant",
+    "Elephant",
+    "Forest Elephant",
+    "Asian Elephant"
+   ],
+   "bodyPlan": "quadruped (trunk and tusks ride the head and jaw; a trunk chain is a later motion upgrade)",
+   "mustPaint": [
+    "trunk reaching the ground; curved tusks",
+    "huge fan ears",
+    "pillar legs; plain grey wrinkled hide"
+   ],
+   "why": "4 misleading. Asian Elephant (small ears, domed head) stays caveat."
+  },
+  {
+   "name": "Parrot",
+   "exemplar": "Parrot",
+   "covers": [
+    "Parrot",
+    "Macaw",
+    "Cockatoo",
+    "Kakapo"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "short deeply hooked beak; zygodactyl feet",
+    "compact body with a mid-length tail (1.35 approximates a macaw)",
+    "plain green base"
+   ],
+   "why": "4 misleading. Cockatoo (crest) and Kakapo stay caveat."
+  },
+  {
+   "name": "Ratite",
+   "exemplar": "Ostrich",
+   "covers": [
+    "Ostrich",
+    "Emu",
+    "Rhea",
+    "Cassowary"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "long bare neck with a small flat head",
+    "long powerful bare legs",
+    "shaggy plumage, no flight wings shown"
+   ],
+   "why": "4 misleading. Cassowary (casque) stays caveat."
+  },
+  {
+   "name": "Pheasant",
+   "exemplar": "Pheasant",
+   "covers": [
+    "Pheasant",
+    "Peacock",
+    "Rooster",
+    "Quetzal"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "long pointed trailing tail (a painted long tail is the only way a bird gets one)",
+    "red bare face wattle; ground-bird body"
+   ],
+   "why": "4 misleading. Peacock (train, crest) and Quetzal stay caveat."
+  },
+  {
+   "name": "Auk",
+   "exemplar": "Guillemot",
+   "covers": [
+    "Guillemot",
+    "Auk",
+    "Puffin",
+    "Penguin"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "fully upright stance on rear-set feet",
+    "small stiff wings held at the sides",
+    "black back over a white front"
+   ],
+   "why": "4 misleading. Puffin (bill) and Penguin (flippers) stay caveat. A Penguin painting is worth doing later because players recognise it instantly."
+  },
+  {
+   "name": "Secretary bird",
+   "exemplar": "Secretary Bird",
+   "covers": [
+    "Secretary Bird",
+    "Seriema",
+    "Bustard",
+    "Roadrunner"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "very long bare legs",
+    "long tail",
+    "crest behind a short hooked head"
+   ],
+   "why": "4 misleading. Bustard and Roadrunner stay caveat."
+  },
+  {
+   "name": "Grasshopper",
+   "exemplar": "Grasshopper",
+   "covers": [
+    "Grasshopper",
+    "Locust",
+    "Cricket",
+    "Cave Cricket"
+   ],
+   "bodyPlan": "insect (wings folded)",
+   "mustPaint": [
+    "huge angled jumping hind legs rising above the back",
+    "wings folded flat along the back",
+    "tall flat-sided head"
+   ],
+   "why": "4 misleading. Cave Cricket (hump, whip antennae) stays caveat."
+  },
+  {
+   "name": "Stonefly",
+   "exemplar": "Stonefly",
+   "covers": [
+    "Stonefly",
+    "Dobsonfly",
+    "Scorpionfly",
+    "Thrips"
+   ],
+   "bodyPlan": "insect",
+   "mustPaint": [
+    "soft elongate body with wings folded flat and overlapping",
+    "long antennae; short tail cerci"
+   ],
+   "why": "4 misleading. All except Stonefly stay caveat."
+  },
+  {
+   "name": "Stingray",
+   "exemplar": "Stingray",
+   "covers": [
+    "Stingray",
+    "Ray",
+    "Eagle Ray",
+    "Manta Ray"
+   ],
+   "bodyPlan": "fish (the pectoral joints drive the wings; a real wing chain is a later motion upgrade)",
+   "mustPaint": [
+    "flat kite disc of fused pectoral wings",
+    "long whip tail",
+    "eyes on top"
+   ],
+   "why": "4 misleading. Manta (cephalic lobes) stays caveat."
+  },
+  {
+   "name": "Viper",
+   "exemplar": "Viper",
+   "covers": [
+    "Viper",
+    "Mountain Viper",
+    "Rattlesnake",
+    "Cottonmouth"
+   ],
+   "bodyPlan": "serpent",
+   "mustPaint": [
+    "broad triangular head on a thin neck",
+    "short thick body coiled, neck in an S",
+    "zigzag dorsal band"
+   ],
+   "why": "3 misleading and 1 caveat. Rattlesnake (rattle) stays caveat."
+  },
+  {
+   "name": "Cod",
+   "exemplar": "Cod",
+   "covers": [
+    "Cod",
+    "Haddock",
+    "Pollock",
+    "Arctic Cod"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "three dorsal fins; chin barbel",
+    "pale lateral line"
+   ],
+   "why": "Caveat only (4). Second tier."
+  },
+  {
+   "name": "Hedgehog (spiny)",
+   "exemplar": "Hedgehog",
+   "covers": [
+    "Hedgehog",
+    "Porcupine",
+    "Echidna"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "dense cape of spines over a loaf-shaped body; short legs",
+    "pointed snout; tiny tail"
+   ],
+   "why": "3 misleading. Porcupine (long quills) and Echidna (beak) stay caveat."
+  },
+  {
+   "name": "Owl",
+   "exemplar": "Owl",
+   "covers": [
+    "Owl",
+    "Snowy Owl",
+    "Desert Owl"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "flat round facial disc with huge forward-facing eyes",
+    "upright barrel body, no visible neck; feathered legs"
+   ],
+   "why": "3 misleading."
+  },
+  {
+   "name": "Pigeon",
+   "exemplar": "Pigeon",
+   "covers": [
+    "Pigeon",
+    "Dove",
+    "Sandgrouse"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "small round head on a deep chest",
+    "short legs; slender bill"
+   ],
+   "why": "3 misleading."
+  },
+  {
+   "name": "Butterfly",
+   "exemplar": "Butterfly",
+   "covers": [
+    "Butterfly",
+    "Moth",
+    "Caddisfly"
+   ],
+   "bodyPlan": "insect",
+   "mustPaint": [
+    "two pairs of broad scaled wings (the accent group, so they take the accent colour)",
+    "clubbed antennae",
+    "masks: eye-spotted = wing eyespots"
+   ],
+   "why": "3 misleading. Moth and Caddisfly stay caveat."
+  },
+  {
+   "name": "Dragonfly",
+   "exemplar": "Dragonfly",
+   "covers": [
+    "Dragonfly",
+    "Damselfly",
+    "Mayfly"
+   ],
+   "bodyPlan": "insect",
+   "mustPaint": [
+    "two pairs of long net-veined wings held flat",
+    "huge globe eyes",
+    "long rod abdomen"
+   ],
+   "why": "3 misleading."
+  },
+  {
+   "name": "Ant",
+   "exemplar": "Ant",
+   "covers": [
+    "Ant",
+    "Leafcutter Ant",
+    "Termite"
+   ],
+   "bodyPlan": "insect (wings absent)",
+   "mustPaint": [
+    "three body lumps pinched at a narrow waist",
+    "elbowed antennae",
+    "no wings"
+   ],
+   "why": "3 misleading. Termite stays caveat."
+  },
+  {
+   "name": "Kangaroo",
+   "exemplar": "Kangaroo",
+   "covers": [
+    "Kangaroo",
+    "Wallaby",
+    "Jerboa"
+   ],
+   "bodyPlan": "NEW: macropod = hopper template + a tail chain (the tail is a third leg; the hopper rig has none)",
+   "mustPaint": [
+    "massive hind legs and long feet in an upright stance",
+    "thick tapering tail resting on the ground",
+    "tiny forearms"
+   ],
+   "why": "3 misleading. Jerboa stays caveat."
+  },
+  {
+   "name": "Sea lion",
+   "exemplar": "Sea Lion",
+   "covers": [
+    "Sea Lion",
+    "Fur Seal",
+    "Seal"
+   ],
+   "bodyPlan": "quadruped (flippers on the leg chains; sea lions walk on all four)",
+   "mustPaint": [
+    "fore-flippers propping the chest up",
+    "small ear flaps; dog-like whiskered muzzle",
+    "smooth wet coat"
+   ],
+   "why": "3 misleading. Seal (no ear flaps, trailing hind flippers) stays caveat."
+  },
+  {
+   "name": "Hyena",
+   "exemplar": "Spotted Hyena",
+   "covers": [
+    "Spotted Hyena",
+    "Hyena",
+    "Striped Hyena"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "back sloping steeply from high shoulders",
+    "thick neck, heavy jaws, round ears",
+    "plain base; masks: spotted, and striped for Striped Hyena"
+   ],
+   "why": "3 misleading."
+  },
+  {
+   "name": "Camel",
+   "exemplar": "Dromedary Camel",
+   "covers": [
+    "Dromedary Camel",
+    "Camel",
+    "Bactrian Camel"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "single hump",
+    "long curved neck",
+    "long knobbly legs"
+   ],
+   "why": "3 misleading. Bactrian (two humps) stays caveat."
+  },
+  {
+   "name": "Gliding mammal",
+   "exemplar": "Flying Squirrel",
+   "covers": [
+    "Flying Squirrel",
+    "Sugar Glider",
+    "Colugo"
+   ],
+   "bodyPlan": "flyer-membrane (forelimbs on the wing chains, hind limbs on the leg chains, the patagium painted between them)",
+   "mustPaint": [
+    "membrane spread from wrist to ankle in a glide",
+    "big black eyes",
+    "flattened furry tail"
+   ],
+   "why": "3 misleading."
+  },
+  {
+   "name": "Billfish",
+   "exemplar": "Marlin",
+   "covers": [
+    "Marlin",
+    "Sailfish",
+    "Swordfish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "long spear bill",
+    "sickle dorsal; stiff crescent tail"
+   ],
+   "why": "3 misleading. Sailfish stays caveat."
+  },
+  {
+   "name": "Jellyfish",
+   "exemplar": "Jellyfish",
+   "covers": [
+    "Jellyfish",
+    "Portuguese Man-of-War",
+    "Comb Jelly"
+   ],
+   "bodyPlan": "radial (the rig already has a bell joint)",
+   "mustPaint": [
+    "translucent domed bell",
+    "long trailing tentacles and frilled oral arms",
+    "emissive glow welcome"
+   ],
+   "why": "3 misleading. Man-of-War and Comb Jelly stay caveat."
+  },
+  {
+   "name": "Coral",
+   "exemplar": "Coral",
+   "covers": [
+    "Coral",
+    "Cold-Water Coral",
+    "Deep-Water Coral"
+   ],
+   "bodyPlan": "plant-woody (branching, anchored colony)",
+   "mustPaint": [
+    "branching stony colony",
+    "cup polyps at the tips",
+    "pale base so white corals read"
+   ],
+   "why": "3 misleading."
+  },
+  {
+   "name": "Squid",
+   "exemplar": "Squid",
+   "covers": [
+    "Squid",
+    "Giant Squid",
+    "Cuttlefish"
+   ],
+   "bodyPlan": "NEW: decapod cephalopod = cephalopod template + two long tentacle chains + mantle fin joints",
+   "mustPaint": [
+    "torpedo mantle with rear fins",
+    "eight arms plus two long clubbed tentacles",
+    "large eye"
+   ],
+   "why": "3 misleading. Cuttlefish stays caveat."
+  },
+  {
+   "name": "Squirrel",
+   "exemplar": "Squirrel",
+   "covers": [
+    "Squirrel",
+    "Chipmunk",
+    "Tree Shrew"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "bushy plumed tail arched over the back",
+    "large dark eye; rounded ears",
+    "masks: striped = chipmunk stripes"
+   ],
+   "why": "2 misleading and 1 caveat."
+  },
+  {
+   "name": "Badger",
+   "exemplar": "Badger",
+   "covers": [
+    "Badger",
+    "Wolverine",
+    "Tasmanian Devil"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "broad flattened low body",
+    "long digging foreclaws",
+    "keep the face stripe faint so Wolverine and Devil are not striped"
+   ],
+   "why": "1 misleading and 2 caveat."
+  },
+  {
+   "name": "Tuna",
+   "exemplar": "Tuna",
+   "covers": [
+    "Tuna",
+    "Mackerel",
+    "Mahi-Mahi"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "stiff crescent tail on a keeled stalk",
+    "finlets to the tail; fat torpedo body"
+   ],
+   "why": "Caveat only (3). Second tier."
+  },
+  {
+   "name": "Armoured insectivore",
+   "exemplar": "Pangolin",
+   "covers": [
+    "Pangolin",
+    "Armadillo"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "overlapping armour scales over body and tail",
+    "small conical head, no teeth"
+   ],
+   "why": "2 misleading. Armadillo stays caveat."
+  },
+  {
+   "name": "Kingfisher",
+   "exemplar": "Kingfisher",
+   "covers": [
+    "Kingfisher",
+    "Kookaburra"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "dagger bill longer than the head",
+    "oversized head with no visible neck; stubby body and very short tail"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Toucan",
+   "exemplar": "Toucan",
+   "covers": [
+    "Toucan",
+    "Hornbill"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "oversized bill nearly as long as the body, left plain so the palette colours it",
+    "long broad tail; bare eye skin"
+   ],
+   "why": "2 misleading. Hornbill (casque) stays caveat."
+  },
+  {
+   "name": "Swallow",
+   "exemplar": "Swallow",
+   "covers": [
+    "Swallow",
+    "Swift"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "long narrow swept-back wings",
+    "deeply forked tail; tiny bill with a wide gape"
+   ],
+   "why": "2 misleading. Swift (scythe wings, no fork) stays caveat."
+  },
+  {
+   "name": "Llama",
+   "exemplar": "Llama",
+   "covers": [
+    "Llama",
+    "Alpaca"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "long upright neck, no hump",
+    "long banana ears"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Tapir",
+   "exemplar": "Tapir",
+   "covers": [
+    "Tapir",
+    "Mountain Tapir"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "short flexible proboscis",
+    "rounded high rump"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Fangtooth",
+   "exemplar": "Fangtooth",
+   "covers": [
+    "Fangtooth",
+    "Deep-Sea Fish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "huge blunt head with oversized fangs",
+    "short dark body; small fins"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Anglerfish",
+   "exemplar": "Anglerfish",
+   "covers": [
+    "Anglerfish",
+    "Monkfish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "glowing lure on a stalk (emissive)",
+    "enormous upturned fanged jaw; globular body"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Dragonfish",
+   "exemplar": "Viperfish",
+   "covers": [
+    "Viperfish",
+    "Dragonfish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "slim black body with photophore rows",
+    "fangs reaching past the eyes"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Flatfish",
+   "exemplar": "Flounder",
+   "covers": [
+    "Flounder",
+    "Halibut"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "flat oval body with a continuous fin skirt",
+    "both eyes on the upper side"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Bonytongue",
+   "exemplar": "Arapaima",
+   "covers": [
+    "Arapaima",
+    "Arowana"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "long body with the dorsal and anal fins set far back",
+    "red-edged armoured scales; upturned mouth"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Catfish",
+   "exemplar": "Catfish",
+   "covers": [
+    "Catfish",
+    "Sculpin"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "broad flat scaleless head",
+    "long barbel whiskers"
+   ],
+   "why": "2 misleading. Sculpin stays caveat."
+  },
+  {
+   "name": "Pufferfish",
+   "exemplar": "Pufferfish",
+   "covers": [
+    "Pufferfish",
+    "Boxfish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "round body; big eyes; beaked mouth",
+    "tiny fins"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Flying fish",
+   "exemplar": "Flying Fish",
+   "covers": [
+    "Flying Fish",
+    "Flying Gurnard"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "huge wing-like pectoral fins spread",
+    "long lower tail lobe"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Manatee",
+   "exemplar": "Manatee",
+   "covers": [
+    "Manatee",
+    "Dugong"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "barrel body, front flippers, paddle tail",
+    "bristly downturned muzzle"
+   ],
+   "why": "2 misleading. Dugong (fluke) stays caveat."
+  },
+  {
+   "name": "Dumbo octopus",
+   "exemplar": "Deep-Sea Octopus",
+   "covers": [
+    "Deep-Sea Octopus",
+    "Vampire Squid"
+   ],
+   "bodyPlan": "cephalopod",
+   "mustPaint": [
+    "webbed umbrella between the eight arms",
+    "ear-like fins on the mantle"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Tick",
+   "exemplar": "Deer Tick",
+   "covers": [
+    "Deer Tick",
+    "Mite"
+   ],
+   "bodyPlan": "arachnid",
+   "mustPaint": [
+    "flat teardrop body",
+    "eight short legs bunched at the front"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Harvestman",
+   "exemplar": "Harvestman",
+   "covers": [
+    "Harvestman",
+    "Sea Spider"
+   ],
+   "bodyPlan": "arachnid",
+   "mustPaint": [
+    "tiny pea body",
+    "eight thread-thin legs many times the body length"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Aphid",
+   "exemplar": "Aphid",
+   "covers": [
+    "Aphid",
+    "Springtail"
+   ],
+   "bodyPlan": "insect (wings absent)",
+   "mustPaint": [
+    "soft pear-shaped body",
+    "short antennae; tiny legs"
+   ],
+   "why": "2 misleading."
+  },
+  {
+   "name": "Scorpion",
+   "exemplar": "Scorpion",
+   "covers": [
+    "Scorpion"
+   ],
+   "bodyPlan": "NEW: arachnid template + a metasoma tail chain (sting) + pedipalp chelae",
+   "mustPaint": [
+    "pincer claws held forward",
+    "segmented tail arched over the back, ending in a sting"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Millipede",
+   "exemplar": "Millipede",
+   "covers": [
+    "Millipede"
+   ],
+   "bodyPlan": "myriapod",
+   "mustPaint": [
+    "cylindrical ringed tube body",
+    "two short legs per segment in a rippling fringe"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Giraffe",
+   "exemplar": "Giraffe",
+   "covers": [
+    "Giraffe"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "enormously long neck; ossicones; steeply sloping back"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Rhinoceros",
+   "exemplar": "Rhinoceros",
+   "covers": [
+    "Rhinoceros"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "nose horn; plated folded hide; stumpy legs"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Hippopotamus",
+   "exemplar": "Hippopotamus",
+   "covers": [
+    "Hippopotamus"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "barrel body; huge square muzzle; eyes and ears on top of the head"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Sloth",
+   "exemplar": "Sloth",
+   "covers": [
+    "Sloth"
+   ],
+   "bodyPlan": "quadruped (hanging pose; limbs on the leg chains)",
+   "mustPaint": [
+    "long hook claws; round smiling face; shaggy fur"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Giant anteater",
+   "exemplar": "Giant Anteater",
+   "covers": [
+    "Giant Anteater"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "long tubular snout; huge flag tail; shoulder wedge"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Aardvark",
+   "exemplar": "Aardvark",
+   "covers": [
+    "Aardvark"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "tubular pig snout; tall rabbit ears; thick tapering tail"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Mole",
+   "exemplar": "Mole",
+   "covers": [
+    "Mole"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "spade forepaws; pink pointed snout; neckless body"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Beaver",
+   "exemplar": "Beaver",
+   "covers": [
+    "Beaver"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "flat scaly paddle tail; orange incisors; humped body"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Koala",
+   "exemplar": "Koala",
+   "covers": [
+    "Koala"
+   ],
+   "bodyPlan": "quadruped (clinging pose)",
+   "mustPaint": [
+    "huge fluffy ears; spoon nose; no tail"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Platypus",
+   "exemplar": "Platypus",
+   "covers": [
+    "Platypus"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "duck bill; flat paddle tail; webbed feet"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Meerkat",
+   "exemplar": "Meerkat",
+   "covers": [
+    "Meerkat"
+   ],
+   "bodyPlan": "quadruped (upright sentinel pose)",
+   "mustPaint": [
+    "standing upright on the hind legs and tail; dark eye rings"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Walrus",
+   "exemplar": "Walrus",
+   "covers": [
+    "Walrus"
+   ],
+   "bodyPlan": "quadruped (flippers on the leg chains)",
+   "mustPaint": [
+    "long tusks; bristle moustache; blubbery body"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Sea turtle",
+   "exemplar": "Sea Turtle",
+   "covers": [
+    "Sea Turtle"
+   ],
+   "bodyPlan": "quadruped (flippers on the leg chains)",
+   "mustPaint": [
+    "teardrop shell; long wing-like front flippers"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Horned lizard",
+   "exemplar": "Horned Lizard",
+   "covers": [
+    "Horned Lizard"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "crown of horns; flat round pancake body"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Chameleon",
+   "exemplar": "Chameleon",
+   "covers": [
+    "Chameleon"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "turret eyes; coiled tail; casque; leaf-flat body"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Frilled lizard",
+   "exemplar": "Frilled Lizard",
+   "covers": [
+    "Frilled Lizard"
+   ],
+   "bodyPlan": "quadruped",
+   "mustPaint": [
+    "huge circular neck frill; gaping mouth"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Aye-aye",
+   "exemplar": "Aye-Aye",
+   "covers": [
+    "Aye-Aye"
+   ],
+   "bodyPlan": "NEW: primate + tail chain (as for Monkey)",
+   "mustPaint": [
+    "huge bare ears; wire-thin middle finger; shaggy tail"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Hummingbird",
+   "exemplar": "Hummingbird",
+   "covers": [
+    "Hummingbird"
+   ],
+   "bodyPlan": "biped-bird (hover pose)",
+   "mustPaint": [
+    "needle bill; blurred narrow wings; iridescent gorget"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Woodpecker",
+   "exemplar": "Woodpecker",
+   "covers": [
+    "Woodpecker"
+   ],
+   "bodyPlan": "biped-bird (clinging vertical pose)",
+   "mustPaint": [
+    "chisel bill; stiff tail braced on the bark"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Cormorant",
+   "exemplar": "Cormorant",
+   "covers": [
+    "Cormorant"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "snaky neck; hooked bill; wings held open"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Pelican",
+   "exemplar": "Pelican",
+   "covers": [
+    "Pelican"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "huge bill with a throat pouch; short legs"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Kiwi",
+   "exemplar": "Kiwi",
+   "covers": [
+    "Kiwi"
+   ],
+   "bodyPlan": "biped-bird",
+   "mustPaint": [
+    "long probing bill; round tailless shaggy body"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Cobra",
+   "exemplar": "Cobra",
+   "covers": [
+    "Cobra"
+   ],
+   "bodyPlan": "serpent",
+   "mustPaint": [
+    "flared hood; front third reared vertically"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Mantis",
+   "exemplar": "Mantis",
+   "covers": [
+    "Mantis"
+   ],
+   "bodyPlan": "insect",
+   "mustPaint": [
+    "folded raptorial forelegs; triangular head on a neck"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Cicada",
+   "exemplar": "Cicada",
+   "covers": [
+    "Cicada"
+   ],
+   "bodyPlan": "insect",
+   "mustPaint": [
+    "tented clear wings; blunt wide head; barrel body"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Stick insect",
+   "exemplar": "Stick Insect",
+   "covers": [
+    "Stick Insect"
+   ],
+   "bodyPlan": "insect",
+   "mustPaint": [
+    "twig-thin body; legs stretched in line with it"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Water strider",
+   "exemplar": "Water Strider",
+   "covers": [
+    "Water Strider"
+   ],
+   "bodyPlan": "insect",
+   "mustPaint": [
+    "extremely long splayed middle and hind legs"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Giant water bug",
+   "exemplar": "Giant Water Bug",
+   "covers": [
+    "Giant Water Bug"
+   ],
+   "bodyPlan": "insect",
+   "mustPaint": [
+    "flat oval leaf-shaped body; raptorial front legs"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Mosquito",
+   "exemplar": "Mosquito",
+   "covers": [
+    "Mosquito"
+   ],
+   "bodyPlan": "insect",
+   "mustPaint": [
+    "needle proboscis; very long dangling legs"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Pseudoscorpion",
+   "exemplar": "Pseudoscorpion",
+   "covers": [
+    "Pseudoscorpion"
+   ],
+   "bodyPlan": "arachnid",
+   "mustPaint": [
+    "oversized pincer arms; teardrop abdomen; NO tail"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Camel spider",
+   "exemplar": "Camel Spider",
+   "covers": [
+    "Camel Spider"
+   ],
+   "bodyPlan": "arachnid",
+   "mustPaint": [
+    "huge forward pincer jaws; leg-like pedipalps"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Hammerhead",
+   "exemplar": "Hammerhead Shark",
+   "covers": [
+    "Hammerhead Shark"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "T-shaped hammer head with the eyes at the tips"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Sperm whale",
+   "exemplar": "Sperm Whale",
+   "covers": [
+    "Sperm Whale"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "huge square head; narrow underslung jaw"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Narwhal",
+   "exemplar": "Narwhal",
+   "covers": [
+    "Narwhal"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "single spiral tusk; no dorsal fin"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Sturgeon",
+   "exemplar": "Sturgeon",
+   "covers": [
+    "Sturgeon"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "bony scute rows; barbels; shark-like tail"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Paddlefish",
+   "exemplar": "Paddlefish",
+   "covers": [
+    "Paddlefish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "long paddle rostrum; gaping mouth"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Seahorse",
+   "exemplar": "Seahorse",
+   "covers": [
+    "Seahorse"
+   ],
+   "bodyPlan": "fish (upright; the tail on the spine chain)",
+   "mustPaint": [
+    "horse head at right angles to the body; curled tail"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Pipefish",
+   "exemplar": "Pipefish",
+   "covers": [
+    "Pipefish"
+   ],
+   "bodyPlan": "serpent",
+   "mustPaint": [
+    "needle-thin ringed body; tube snout"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Lionfish",
+   "exemplar": "Lionfish",
+   "covers": [
+    "Lionfish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "fan of long dorsal spines; feathery pectorals; zebra bands"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Mudskipper",
+   "exemplar": "Mudskipper",
+   "covers": [
+    "Mudskipper"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "periscope eyes; propped up on arm-like pectorals"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Ocean sunfish",
+   "exemplar": "Ocean Sunfish",
+   "covers": [
+    "Ocean Sunfish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "truncated body; towering dorsal and anal fins"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Barreleye",
+   "exemplar": "Barreleye",
+   "covers": [
+    "Barreleye"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "transparent head dome with tubular eyes"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Blobfish",
+   "exemplar": "Blobfish",
+   "covers": [
+    "Blobfish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "slumped gelatinous face; tadpole body"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Gulper eel",
+   "exemplar": "Gulper Eel",
+   "covers": [
+    "Gulper Eel"
+   ],
+   "bodyPlan": "serpent",
+   "mustPaint": [
+    "enormous pouch mouth; whip tail"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Tripod fish",
+   "exemplar": "Tripod Fish",
+   "covers": [
+    "Tripod Fish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "three stilt fin rays holding it off the seabed"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Snailfish",
+   "exemplar": "Snailfish",
+   "covers": [
+    "Snailfish"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "translucent tadpole body; belly sucker"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Lancelet",
+   "exemplar": "Lancelet",
+   "covers": [
+    "Lancelet"
+   ],
+   "bodyPlan": "fish",
+   "mustPaint": [
+    "translucent blade body with V-shaped chevrons"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Sea urchin",
+   "exemplar": "Sea Urchin",
+   "covers": [
+    "Sea Urchin"
+   ],
+   "bodyPlan": "radial",
+   "mustPaint": [
+    "spherical test bristling with long spines"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Sand dollar",
+   "exemplar": "Sand Dollar",
+   "covers": [
+    "Sand Dollar"
+   ],
+   "bodyPlan": "radial",
+   "mustPaint": [
+    "flat coin disc with a five-petal pattern"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Sea cucumber",
+   "exemplar": "Sea Cucumber",
+   "covers": [
+    "Sea Cucumber"
+   ],
+   "bodyPlan": "annelid (specialized template; the soft sausage body on the segment chain)",
+   "mustPaint": [
+    "sausage body; ring of feeding tentacles at the mouth"
+   ],
+   "why": "1 misleading."
+  },
+  {
+   "name": "Nautilus",
+   "exemplar": "Nautilus",
+   "covers": [
+    "Nautilus"
+   ],
+   "bodyPlan": "NEW: shelled cephalopod = rigid coiled shell + a fan of short tentacles",
+   "mustPaint": [
+    "striped coiled shell; many short tentacles; hood"
+   ],
+   "why": "1 misleading."
+  }
+ ],
+ "masks": [
+  {
+   "archetype": "Python",
+   "patterns": [
+    "striped",
+    "spotted",
+    "banded",
+    "mottled",
+    "marbled",
+    "eye-spotted"
+   ],
+   "unlocks": [
+    "Garter Snake",
+    "King Snake",
+    "Boa"
+   ],
+   "why": "The cheapest lift in the plan: these three caveat snakes lack only a pattern. Paint striped as lengthwise dorsal stripes (Garter), banded as full rings (King Snake) and mottled as saddle blotches (Boa). About 15% of the python's net still shows through. If the Racer painting lands first, Garter and King Snake move there, but Boa stays on the Python. Today a pattern gene on the Python renders plain, so this set also makes every patterned serpent genome, bred or alien, show its markings."
+  },
+  {
+   "archetype": "Beetle",
+   "patterns": [
+    "striped",
+    "spotted",
+    "banded",
+    "mottled",
+    "marbled",
+    "eye-spotted"
+   ],
+   "unlocks": [
+    "Carrion Beetle"
+   ],
+   "why": "Carrion Beetle lacks only its black-and-orange blotched wing cases, which the mottled mask restores. Ladybug (spotted) and Diving Beetle (banded rim) gain their pattern but stay caveat, because this painting holds the wing cases raised in flight. Their fix is the Closed-shell beetle painting, which should carry its own copy of this set."
+  },
+  {
+   "archetype": "Tree Frog",
+   "patterns": [
+    "striped",
+    "spotted",
+    "banded",
+    "mottled",
+    "marbled",
+    "eye-spotted"
+   ],
+   "unlocks": [],
+   "why": "Partial only. Poison Dart Frog gets its warning blotches but keeps the red eye and toe pads, so nothing reaches good. Paint the dart-frog masks on the new sitting Bullfrog painting instead. Do this set only so bred and alien hoppers show their pattern gene."
+  },
+  {
+   "archetype": "Eagle",
+   "patterns": [
+    "striped",
+    "spotted",
+    "banded",
+    "mottled",
+    "marbled",
+    "eye-spotted"
+   ],
+   "unlocks": [],
+   "why": "Partial only. Kestrel (spotted back, banded tail) and Harpy Eagle (banded chest) gain a marking but keep the wrong silhouette (pointed falcon wings, split crest). Low value: give the new bird paintings their own sets instead. No new mask is proposed for the Civet either. Its own painted spots and tail rings show under any mask, so its felid caveats are fixed by the plain Cougar painting instead."
+  }
+ ],
+ "noStandInPlans": [
+  {
+   "plan": "Wire the profile first: small-crustacean has candidateTemplates [] even though the template already exists in tools/creature-animation/specialized-templates.mjs. Template: crustacean-small (5 leg pairs, 6 abdomen segments, tail fan). Paint a side-on shrimp with a curved segmented abdomen and a spread tail fan, stalked eyes, a serrated rostrum and very long whip antennae, on a plain translucent base. Cave Shrimp and Vent Shrimp read by palette; Krill, Brine Shrimp, Fairy Shrimp and Amphipod are caveat.",
+   "exemplar": "Shrimp",
+   "covers": [
+    "Shrimp",
+    "Prawn",
+    "Freshwater Shrimp",
+    "Cave Shrimp",
+    "Vent Shrimp",
+    "Krill",
+    "Brine Shrimp",
+    "Fairy Shrimp",
+    "Amphipod"
+   ]
+  },
+  {
+   "plan": "Wire the profile first (annelid-land/annelid-water have candidateTemplates []). Template: annelid (12-segment wave). Paint a ringed smooth tube with a clitellum and no limbs, in plain pink-brown. Ice Worm, Leech and Fly Larvae read by palette; Marine Worm, Polychaete Worm and Scale Worm (bristles, scales) are caveat. Also point Caecilian's profile at annelid: it is misleading on the Python today, and its ringed grooves and eyeless head are closer to the worm.",
+   "exemplar": "Earthworm",
+   "covers": [
+    "Earthworm",
+    "Ice Worm",
+    "Leech",
+    "Marine Worm",
+    "Polychaete Worm",
+    "Scale Worm",
+    "Fly Larvae",
+    "Caecilian"
+   ]
+  },
+  {
+   "plan": "Wire the profile first (land-gastropod/water-gastropod have candidateTemplates []). Template: gastropod (4-joint foot wave, rigid shell, eye stalks). Paint a coiled spiral shell on a gliding foot with two eye tentacles, and keep the shell plain so marine snails recolour. Conch (flared lip) and Cowrie (egg-shaped shell) are caveat.",
+   "exemplar": "Snail",
+   "covers": [
+    "Snail",
+    "Land Snail",
+    "Freshwater Snail",
+    "Water Snail",
+    "Sea Snail",
+    "Conch",
+    "Cowrie"
+   ]
+  },
+  {
+   "plan": "Wire the profile first (bivalve has candidateTemplates []). Template: bivalve (hinge, two valves, mantle, optional siphon and foot). Paint two symmetric hinged valves slightly agape, with concentric growth rings and a pale foot showing. Razor Clam, Scallop and Giant Clam are caveat on shape.",
+   "exemplar": "Clam",
+   "covers": [
+    "Clam",
+    "Mussel",
+    "Oyster",
+    "Razor Clam",
+    "Giant Clam",
+    "Scallop"
+   ]
+  },
+  {
+   "plan": "Wire the profile first. Template: crustacean-small with the optional tail fan omitted. Paint a teardrop body wide at the front, with long outstretched antennae and a forked tail. Water Flea and Tadpole Shrimp are caveat.",
+   "exemplar": "Copepod",
+   "covers": [
+    "Copepod",
+    "Water Flea",
+    "Tadpole Shrimp"
+   ]
+  },
+  {
+   "plan": "Wire the profile first (Flatworm's profile also needs gastropod added). Template: gastropod with the optional shell absent. Paint a shell-less slug on a gliding foot with two tentacle pairs and a mantle saddle. Nudibranch (gill plume) and Flatworm (ribbon body, no tentacles) are caveat.",
+   "exemplar": "Banana Slug",
+   "covers": [
+    "Banana Slug",
+    "Nudibranch",
+    "Flatworm"
+   ]
+  },
+  {
+   "plan": "Wire the profile first. Template: gastropod with the shell drawn as a low uncoiled cone, clamped flat. Paint a ribbed hat-shaped cone flush on rock. Abalone (ear shape, holes) and Chiton (eight plates) are caveat.",
+   "exemplar": "Limpet",
+   "covers": [
+    "Limpet",
+    "Abalone",
+    "Chiton"
+   ]
+  },
+  {
+   "plan": "Wire the profiles first (annelid-water and cnidarian). Template: sessile-filter (anchored base, body, crown, aperture). Paint a squat column fixed by a basal disc under a dense crown of soft tentacles. Also move Sea Anemone off the Starfish, where it is misleading today. Tube Worm and Giant Tube Worm (white tube, red plume) are caveat.",
+   "exemplar": "Sea Anemone",
+   "covers": [
+    "Sea Anemone",
+    "Tube Worm",
+    "Giant Tube Worm"
+   ]
+  },
+  {
+   "plan": "Wire the profile first (clawed-crustacean has candidateTemplates []). Template: crustacean-clawed (claws, 4 leg pairs, abdomen with tail fan, antennae). Paint two big forward pincers, a segmented tail ending in a fan, and long whip antennae.",
+   "exemplar": "Lobster",
+   "covers": [
+    "Lobster",
+    "Crayfish"
+   ]
+  },
+  {
+   "plan": "Wire the profile first. Template: crustacean-small. Paint overlapping armour plates like a pill bug, seven similar leg pairs and two tail uropods.",
+   "exemplar": "Giant Isopod",
+   "covers": [
+    "Giant Isopod",
+    "Isopod"
+   ]
+  },
+  {
+   "plan": "Wire the profile first (sponge/tunicate have candidateTemplates []). Template: sessile-filter. Paint a porous vase or tube with a large osculum and no symmetry. Sea Squirt (two siphons) is caveat.",
+   "exemplar": "Sponge",
+   "covers": [
+    "Sponge",
+    "Sea Squirt"
+   ]
+  },
+  {
+   "plan": "Wire the profile first. Template: colonial-filter (4-segment drift chain plus an aperture). Paint a translucent hollow tube open at one end, pimpled with zooids, with an emissive blue glow. Salp is caveat.",
+   "exemplar": "Pyrosome",
+   "covers": [
+    "Pyrosome",
+    "Salp"
+   ]
+  },
+  {
+   "plan": "Wire the profile first. Template: crustacean-clawed, with a borrowed spiral shell painted rigid over the abdomen, one enlarged claw and stalked eyes.",
+   "exemplar": "Hermit Crab",
+   "covers": [
+    "Hermit Crab"
+   ]
+  },
+  {
+   "plan": "Template: brachyuran, the rig that already carries five painted crabs. Now: move Fiddler Crab's profile from clawed-crustacean to brachyuran, so the painted Crab stands in (caveat: its claws are equal). Later: paint a Fiddler Crab with one oversized claw and tall stalked eyes.",
+   "exemplar": "Fiddler Crab",
+   "covers": [
+    "Fiddler Crab"
+   ]
+  },
+  {
+   "plan": "Wire the profile first. Template: barnacle (anchored cone, trapdoor plates, six cirri). Paint a chalky volcano cone with feathery cirri sweeping out.",
+   "exemplar": "Barnacle",
+   "covers": [
+    "Barnacle"
+   ]
+  },
+  {
+   "plan": "Wire the profile first. Template: xiphosuran. Paint a smooth domed horseshoe carapace with a long rigid spike tail and the legs hidden.",
+   "exemplar": "Horseshoe Crab",
+   "covers": [
+    "Horseshoe Crab"
+   ]
+  },
+  {
+   "plan": "Wire the profile first. Template: lobopod (4 segments, 4 leg pairs). Paint a plump segmented barrel on eight stubby clawed legs, with a tube mouth.",
+   "exemplar": "Tardigrade",
+   "covers": [
+    "Tardigrade"
+   ]
+  }
+ ],
+ "summary": "454 of 631 Earth species are misleading today because each body plan has only one painting, and the Civet (185), Eagle (92) and Salmon (90) are stretched over whole classes. Breadth beats fidelity: the top 10 new paintings (Wall Lizard, Cougar, Impala, Marmot, Bass, Cattle, Capuchin, Tang, Wolf, Gull) fix 120 misleading species, the top 20 fix 195 and the top 35 fix 267, while the last 53 paintings cover one species each. Paint every new archetype on a PLAIN base coat and put its patterns in its own six-mask set: the morph keeps luminance, so the Civet's spots and ringed tail show on everything it stands in for, and that is why no Civet mask can make a tiger. Cheap wins that need no new painting: a mask set on the Python lifts Garter Snake, King Snake and Boa to good, one on the Beetle lifts Carrion Beetle, and moving Fiddler Crab's profile to brachyuran lets the painted Crab stand in. The 53 species with no stand-in need their profiles pointed at specialized templates that already exist but are unused (crustacean-small, annelid, gastropod, bivalve, sessile-filter and others); after that, four paintings (Shrimp, Earthworm, Snail, Clam) cover 29 of them, plus Caecilian. Five archetypes need a rig change before they are painted: primate + tail (Capuchin, Aye-Aye), hopper + tail (Kangaroo), decapod cephalopod (Squid), arachnid + tail (Scorpion) and shelled cephalopod (Nautilus). A mask shows only when the species' own pattern gene selects it, so check the genes before painting a named species' mask (for example Tiger and Zebra on striped, Panda on eye-spotted, Garter Snake on striped). The caveat-only paintings (Closed-shell beetle, Herring, Cod, Tuna) rank high by count but should come after the misleading fixes."
+}

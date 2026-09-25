@@ -1,0 +1,12 @@
+file:///Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-runner.mjs:18
+if (!leftArg || !rightArg || !outArg) throw Error('usage: native-runner.mjs <leftFitDir> <rightFitDir> <outDir> [script.json]');
+                                            ^
+
+Error: usage: native-runner.mjs <leftFitDir> <rightFitDir> <outDir> [script.json]
+    at file:///Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/tools/battle2-proof/native-runner.mjs:18:45
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v26.9.0

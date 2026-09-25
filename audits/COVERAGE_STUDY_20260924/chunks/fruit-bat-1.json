@@ -1,0 +1,76 @@
+{
+ "id": "fruit-bat-1",
+ "standIn": "Fruit Bat",
+ "template": "flyer-membrane",
+ "accentGroups": [
+  "ears",
+  "head"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/fruit-bat/card/master-512.png",
+  "joints": [
+   "earNearTip",
+   "earFarTip",
+   "jaw",
+   "head",
+   "wingNearTip",
+   "wingNearWrist",
+   "wingNearElbow",
+   "wingNearRoot",
+   "legNearFoot",
+   "legNearKnee",
+   "legFarFoot",
+   "legFarKnee",
+   "wingFarTip",
+   "wingFarWrist",
+   "wingFarElbow",
+   "wingFarRoot",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Bat",
+   "group": "bat",
+   "posture": "flying",
+   "aspect": 1.4,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "skin membrane stretched between enormously elongated finger bones",
+    "large ears on a small furry body",
+    "membrane also spanning the hind legs and tail"
+   ],
+   "note": "Generic name read as a representative insectivorous microbat. The wing is a hand, so the finger struts must fan visibly through the membrane; feathered or leathery bird wings are wrong."
+  },
+  {
+   "name": "Insect-Eating Bat",
+   "group": "bat",
+   "posture": "flying",
+   "aspect": 1.4,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "membrane wings stretched over elongated finger bones",
+    "large upright ears with a spike tragus",
+    "tiny hooked clinging feet"
+   ],
+   "note": "Interpreted as a generic vespertilionid microbat. Wing membrane runs to the ankles and encloses the tail; it is not a feathered or bird-like wing."
+  },
+  {
+   "name": "Vampire Bat",
+   "group": "bat",
+   "posture": "flying",
+   "aspect": 1.3,
+   "headFrac": 0.3,
+   "eyes": "small",
+   "mustRead": [
+    "flat pig-like nose pad with no leaf",
+    "large pointed ears and a short conical muzzle",
+    "long thumbs used to walk on folded wrists"
+   ],
+   "note": "Has almost no tail and a very short snout; the fangs are small front incisors, not long protruding canines."
+  }
+ ]
+}

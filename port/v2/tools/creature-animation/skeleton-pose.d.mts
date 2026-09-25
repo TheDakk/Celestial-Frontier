@@ -13,5 +13,6 @@ export interface SkeletonPoseProgram {
   pivot(name: string): Point2;
   evaluate(pose: SkeletonPose): Record<string, Affine2>;
 }
+export interface SkeletonPoseOptions { readonly jointScale?: Readonly<Record<string, number>>; }
 export function createSkeletonPoseProgram(definition: SkeletonDefinition,
-  landmarks: Readonly<Record<string, readonly [number, number]>>): SkeletonPoseProgram;
+  landmarks: Readonly<Record<string, readonly [number, number]>>, options?: SkeletonPoseOptions): SkeletonPoseProgram;

@@ -2,12 +2,24 @@ import fs from 'node:fs';import path from 'node:path';import {createRequire} fro
 import {hashBytes,hashJSON} from './quadruped-template.mjs';import {cutAuthoredParts,cutPainterParts} from './part-masks.mjs';import {packRigAtlas} from './rig-atlas.mjs';
 import {intakeAuthoredPixels} from './authored-intake.mjs';
 const require=createRequire(import.meta.url),sharp=createRequire(require.resolve('free-tex-packer-core'))('sharp');
-export async function buildAuthoredParts({id,recordFile,masterFile,declarationFile,output}){
+/** `textureFile` (R9): an optional finished texture whose alpha must equal the
+ * master's byte for byte; its RGB replaces the master's for every cut part
+ * while admission, labels and geometry keep reading the painter master. */
+export async function buildAuthoredParts({id,recordFile,masterFile,declarationFile,output,textureFile=null}){
  if(fs.existsSync(output))throw Error('Authored parts output must be new');
  const record=JSON.parse(fs.readFileSync(recordFile)),master=fs.readFileSync(masterFile),declaration=JSON.parse(fs.readFileSync(declarationFile));
- const {data,info}=await sharp(master).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+ const {data:masterData,info}=await sharp(master).ensureAlpha().raw().toBuffer({resolveWithObject:true});
  const painter=declaration.schema==='cf.painter-part-intake/v1';
- const keyed=painter?{rgba:new Uint8ClampedArray(data),alpha:Uint8Array.from({length:info.width*info.height},(_,i)=>data[i*4+3]),receipt:{mode:'native painter alpha; no keyer'}}:intakeAuthoredPixels(new Uint8ClampedArray(data),info.width,info.height);
+ let data=masterData,texture=null;
+ if(textureFile){
+  if(!painter)throw Error('Texture substitution needs a painter declaration');
+  const bytes=fs.readFileSync(textureFile),decoded=await sharp(bytes).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+  if(decoded.info.width!==info.width||decoded.info.height!==info.height)throw Error('Texture dimensions differ from master');
+  let differingAlpha=0;for(let i=0;i<info.width*info.height;i++)if(decoded.data[i*4+3]!==masterData[i*4+3])differingAlpha++;
+  if(differingAlpha)throw Error('Texture alpha differs from master: '+differingAlpha);
+  data=decoded.data;texture={file:textureFile,sha256:await hashBytes(bytes),differingAlpha:0};
+ }
+ const keyed=painter?{rgba:new Uint8ClampedArray(data),alpha:Uint8Array.from({length:info.width*info.height},(_,i)=>data[i*4+3]),receipt:{mode:texture?'native painter alpha; finished texture RGB; no keyer':'native painter alpha; no keyer'}}:intakeAuthoredPixels(new Uint8ClampedArray(data),info.width,info.height);
  let result;
  if(painter){
   if(declaration.labelsFile!=='labels.png')throw Error('Painter labels must be adjacent labels.png');
@@ -35,7 +47,7 @@ export async function buildAuthoredParts({id,recordFile,masterFile,declarationFi
  const map=new Uint8ClampedArray(keyed.rgba.length);
  for(let i=0;i<result.labels.length;i++)if(result.labels[i]){const k=result.labels[i];map.set([(k*83)%200+35,(k*137)%200+35,(k*47)%200+35,keyed.alpha[i]],i*4);}
  write('ownership.png',await sharp(Buffer.from(map),{raw:{width:info.width,height:info.height,channels:4}}).png().toBuffer());
- json('receipt.json',{...result.receipt,keyer:keyed.receipt,atlasDifferentChannels:different,masterSha256:await hashBytes(master),masterUnchanged:await hashBytes(fs.readFileSync(masterFile))===await hashBytes(master),jointPatches:'not yet fitted; this atlas proves authored mask coverage only',motionAcceptance:false});
+ json('receipt.json',{...result.receipt,keyer:keyed.receipt,atlasDifferentChannels:different,masterSha256:await hashBytes(master),masterUnchanged:await hashBytes(fs.readFileSync(masterFile))===await hashBytes(master),texture,jointPatches:'not yet fitted; this atlas proves authored mask coverage only',motionAcceptance:false});
  return {id,parts:result.parts.length,atlasSize:body.atlasSize,restDifferentChannels:0,atlasDifferentChannels:different};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){

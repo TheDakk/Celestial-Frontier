@@ -26,6 +26,14 @@ export function kitRuntimeAssets(): Plugin {
         const stream = fs.createReadStream(path.join(tools, name)); stream.on('error', () => res.destroy()); stream.pipe(res);
       });
     },
-    generateBundle() { for (const name of names) this.emitFile({ type: 'asset', fileName: '__local_ai/' + name, source: fs.readFileSync(path.join(tools, name)) }); },
+    // An exact-commit snapshot (the preview producer archives tracked files only) carries the tracked kit modules but never
+    // the tool folder's node_modules: the local-AI runtime files are emitted when installed, otherwise listed in
+    // __local_ai/MISSING.json and warned — the build stays exact and the local AI reports itself unavailable at runtime.
+    generateBundle() {
+      const missing: string[] = [];
+      for (const name of names) { const file = path.join(tools, name); if (!fs.existsSync(file)) { missing.push(name); continue; } this.emitFile({ type: 'asset', fileName: '__local_ai/' + name, source: fs.readFileSync(file) }); }
+      this.emitFile({ type: 'asset', fileName: '__local_ai/MISSING.json', source: JSON.stringify({ schema: 'cf.local-ai-runtime-assets/v1', missing }, null, 1) + '\n' });
+      if (missing.length) this.warn('local-AI runtime assets not installed under tools/local-image-generation (the preview snapshot never carries node_modules): ' + missing.join(', '));
+    },
   };
 }

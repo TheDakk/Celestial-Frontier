@@ -220,7 +220,7 @@ describe('receipt-free checkpoint state projector', () => {
     expect(durable.notifications[0]!.read).toBe(false);
   });
 
-  it('refuses malformed or non-plain notification rows without getters, partial state or unbounded arrays', () => {
+  it('degrades malformed or non-plain notification rows to the durable history without getters, partial state or unbounded arrays, never refusing route or preferences (K22)', () => {
     const row = () => ({ id: 1, tt: 'Title', ms: 'Detail', t: NOW, read: false });
     let getterCalls = 0;
     const accessorRow = row();
@@ -252,20 +252,42 @@ describe('receipt-free checkpoint state projector', () => {
       ['array accessor', accessorArray], ['cyclic row', [cyclicRow]], ['cyclic array', cyclicArray],
       ['custom row prototype', [customRow]], ['custom array prototype', customArray], ['hidden field', [hiddenRow]],
     ];
+    const validEpoch = projected(projectCheckpointState(input(baseState(), baseState()))).state.EPOCH_BASE;
     for (const [label, value] of malformed) {
       const durable = baseState();
+      durable.notifications = [{ id: 3, tt: 'Durable', ms: 'Retained parent row', t: NOW - 3, read: true }];
       const live = baseState();
+      live.explorerName = 'Overlay still applies';
+      live.sndOn = !durable.sndOn;
       (live as unknown as Record<string, unknown>).notifications = value;
       const before = structuredClone(durable);
-      expect(projectCheckpointState(input(durable, live)), label).toEqual({
-        kind: 'refused', detail: 'live-field:notifications:invalid',
-      });
+      /* K22: one malformed presentation row degrades to the durable parent's
+         history with a recorded reason; route, epoch and preferences still
+         project instead of refusing (a refusal forces a convergence reload). */
+      const outcome = projected(projectCheckpointState(input(durable, live)));
+      expect(outcome.droppedFields, label).toEqual([{ field: 'notifications', detail: 'live-field:notifications:invalid' }]);
+      expect(outcome.appliedFields, label + ' applied').not.toContain('notifications');
+      expect(outcome.appliedFields, label + ' applied').toContain('explorerName');
+      expect(outcome.state.notifications, label + ' durable rows retained').toEqual(before.notifications);
+      expect(outcome.state.notifications, label + ' detached').not.toBe(durable.notifications);
+      expect(outcome.state.explorerName, label + ' preferences').toBe('Overlay still applies');
+      expect(outcome.state.sndOn, label + ' preferences').toBe(live.sndOn);
+      expect(outcome.state.EPOCH_BASE, label + ' epoch').toBe(validEpoch);
       expect(durable, label + ' durable unchanged').toEqual(before);
       live.notifications = [row()];
-      expect(projected(projectCheckpointState(input(durable, live))).state.notifications, label + ' restored')
-        .toEqual([row()]);
+      const repaired = projected(projectCheckpointState(input(durable, live)));
+      expect(repaired.state.notifications, label + ' restored').toEqual([row()]);
+      expect(repaired.droppedFields, label + ' restored reason cleared').toEqual([]);
+      expect(repaired.appliedFields, label + ' restored applied').toContain('notifications');
     }
     expect(getterCalls).toBe(0);
+    // Control: a malformed non-notification live field is still a whole-checkpoint refusal.
+    {
+      const durable = baseState();
+      const live = baseState();
+      (live as unknown as Record<string, unknown>).sndOn = 'yes';
+      expect(projectCheckpointState(input(durable, live))).toEqual({ kind: 'refused', detail: 'live-field:sndOn:invalid' });
+    }
     const live = baseState();
     live.notifications = [{ id: -2_147_483_648, tt: 'x'.repeat(200), ms: 'x'.repeat(400), t: 0, read: true },
       { id: 2_147_483_647, tt: '', ms: '', t: 4e12, read: false }];

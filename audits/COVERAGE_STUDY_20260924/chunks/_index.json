@@ -1,0 +1,182 @@
+[
+ {
+  "id": "civet-1",
+  "standIn": "Civet",
+  "template": "quadruped",
+  "n": 24
+ },
+ {
+  "id": "civet-2",
+  "standIn": "Civet",
+  "template": "quadruped",
+  "n": 24
+ },
+ {
+  "id": "civet-3",
+  "standIn": "Civet",
+  "template": "quadruped",
+  "n": 24
+ },
+ {
+  "id": "civet-4",
+  "standIn": "Civet",
+  "template": "quadruped",
+  "n": 24
+ },
+ {
+  "id": "civet-5",
+  "standIn": "Civet",
+  "template": "quadruped",
+  "n": 24
+ },
+ {
+  "id": "civet-6",
+  "standIn": "Civet",
+  "template": "quadruped",
+  "n": 24
+ },
+ {
+  "id": "civet-7",
+  "standIn": "Civet",
+  "template": "quadruped",
+  "n": 24
+ },
+ {
+  "id": "civet-8",
+  "standIn": "Civet",
+  "template": "quadruped",
+  "n": 24
+ },
+ {
+  "id": "civet-9",
+  "standIn": "Civet",
+  "template": "quadruped",
+  "n": 12
+ },
+ {
+  "id": "chimpanzee-1",
+  "standIn": "Chimpanzee",
+  "template": "primate",
+  "n": 16
+ },
+ {
+  "id": "eagle-1",
+  "standIn": "Eagle",
+  "template": "biped-bird",
+  "n": 24
+ },
+ {
+  "id": "eagle-2",
+  "standIn": "Eagle",
+  "template": "biped-bird",
+  "n": 24
+ },
+ {
+  "id": "eagle-3",
+  "standIn": "Eagle",
+  "template": "biped-bird",
+  "n": 24
+ },
+ {
+  "id": "eagle-4",
+  "standIn": "Eagle",
+  "template": "biped-bird",
+  "n": 24
+ },
+ {
+  "id": "eagle-5",
+  "standIn": "Eagle",
+  "template": "biped-bird",
+  "n": 5
+ },
+ {
+  "id": "python-1",
+  "standIn": "Python",
+  "template": "serpent",
+  "n": 21
+ },
+ {
+  "id": "tree-frog-1",
+  "standIn": "Tree Frog",
+  "template": "hopper",
+  "n": 17
+ },
+ {
+  "id": "beetle-1",
+  "standIn": "Beetle",
+  "template": "insect",
+  "n": 24
+ },
+ {
+  "id": "beetle-2",
+  "standIn": "Beetle",
+  "template": "insect",
+  "n": 16
+ },
+ {
+  "id": "tarantula-1",
+  "standIn": "Tarantula",
+  "template": "arachnid",
+  "n": 8
+ },
+ {
+  "id": "salmon-1",
+  "standIn": "Salmon",
+  "template": "fish",
+  "n": 24
+ },
+ {
+  "id": "salmon-2",
+  "standIn": "Salmon",
+  "template": "fish",
+  "n": 24
+ },
+ {
+  "id": "salmon-3",
+  "standIn": "Salmon",
+  "template": "fish",
+  "n": 24
+ },
+ {
+  "id": "salmon-4",
+  "standIn": "Salmon",
+  "template": "fish",
+  "n": 24
+ },
+ {
+  "id": "salmon-5",
+  "standIn": "Salmon",
+  "template": "fish",
+  "n": 24
+ },
+ {
+  "id": "salmon-6",
+  "standIn": "Salmon",
+  "template": "fish",
+  "n": 11
+ },
+ {
+  "id": "fruit-bat-1",
+  "standIn": "Fruit Bat",
+  "template": "flyer-membrane",
+  "n": 3
+ },
+ {
+  "id": "starfish-1",
+  "standIn": "Starfish",
+  "template": "radial",
+  "n": 11
+ },
+ {
+  "id": "octopus-1",
+  "standIn": "Octopus",
+  "template": "cephalopod",
+  "n": 7
+ },
+ {
+  "id": "centipede-1",
+  "standIn": "Centipede",
+  "template": "myriapod",
+  "n": 2
+ }
+]

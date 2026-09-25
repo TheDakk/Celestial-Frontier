@@ -1,0 +1,219 @@
+{
+ "totalMs": 10927.4,
+ "frames": 598,
+ "cpuThrottle": 4,
+ "groups": {
+  "idle": 6030.5,
+  "wasm (orientation / skin kernels)": 2044.6,
+  "other": 1529.6,
+  "skin (ARAP / mesh)": 798,
+  "rig motion + contact": 319.2,
+  "stage + choreography": 55.6,
+  "rig other": 86.2,
+  "garbage collection": 35.4,
+  "effects": 20.4,
+  "pixi render": 7.7
+ },
+ "files": [
+  {
+   "file": "(idle)",
+   "ms": 6030.5,
+   "share": 0.5519
+  },
+  {
+   "file": "wasm:wasm-function[0]",
+   "ms": 2041,
+   "share": 0.1868
+  },
+  {
+   "file": "tools/battle2-proof/native-entry.mjs",
+   "ms": 423.2,
+   "share": 0.0387
+  },
+  {
+   "file": "(program)",
+   "ms": 388.4,
+   "share": 0.0355
+  },
+  {
+   "file": "tools/creature-animation/paint-skin.mjs",
+   "ms": 294.1,
+   "share": 0.0269
+  },
+  {
+   "file": "tools/creature-animation/arap-skin.mjs",
+   "ms": 250.5,
+   "share": 0.0229
+  },
+  {
+   "file": "tools/creature-animation/compiled-skin-field.mjs",
+   "ms": 228.1,
+   "share": 0.0209
+  },
+  {
+   "file": "apps/game/src/creature-rig-contact.ts",
+   "ms": 161.4,
+   "share": 0.0148
+  },
+  {
+   "file": "other-script:RenderTargetSystem-CN3Y2Y0c.js",
+   "ms": 121.8,
+   "share": 0.0111
+  },
+  {
+   "file": "tools/creature-animation/skeleton-pose.mjs",
+   "ms": 103.2,
+   "share": 0.0094
+  },
+  {
+   "file": "native:?",
+   "ms": 99.8,
+   "share": 0.0091
+  },
+  {
+   "file": "other-script:Geometry-BU3enQYN.js",
+   "ms": 91.3,
+   "share": 0.0084
+  },
+  {
+   "file": "tools/creature-animation/orientation-projector.mjs",
+   "ms": 88.8,
+   "share": 0.0081
+  },
+  {
+   "file": "tools/creature-animation/kinematics.ts",
+   "ms": 75.9,
+   "share": 0.0069
+  },
+  {
+   "file": "apps/game/src/motion/timeline.ts",
+   "ms": 75.5,
+   "share": 0.0069
+  },
+  {
+   "file": "apps/game/src/battle2/choreography.ts",
+   "ms": 44.8,
+   "share": 0.0041
+  },
+  {
+   "file": "other-script:CanvasRenderer-DKel0iqG.js",
+   "ms": 42.9,
+   "share": 0.0039
+  },
+  {
+   "file": "apps/game/src/creature-rig.ts",
+   "ms": 41.2,
+   "share": 0.0038
+  },
+  {
+   "file": "other-script:WebGLRenderer-CHyb6njZ.js",
+   "ms": 36.1,
+   "share": 0.0033
+  },
+  {
+   "file": "(gc)",
+   "ms": 35.4,
+   "share": 0.0032
+  },
+  {
+   "file": "native:bufferSubData",
+   "ms": 35.3,
+   "share": 0.0032
+  },
+  {
+   "file": "apps/game/src/creature-rig-performance.ts",
+   "ms": 33.2,
+   "share": 0.003
+  },
+  {
+   "file": "native:btoa",
+   "ms": 15.9,
+   "share": 0.0015
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "ms": 14.6,
+   "share": 0.0013
+  },
+  {
+   "file": "native:drawElements",
+   "ms": 13.6,
+   "share": 0.0012
+  },
+  {
+   "file": "native:requestAnimationFrame",
+   "ms": 12.2,
+   "share": 0.0011
+  },
+  {
+   "file": "apps/game/src/battle2/parts-rig.ts",
+   "ms": 11.8,
+   "share": 0.0011
+  },
+  {
+   "file": "apps/game/src/battle2/stage.ts",
+   "ms": 10.8,
+   "share": 0.001
+  },
+  {
+   "file": "native:uniformMatrix3fv",
+   "ms": 10.1,
+   "share": 0.0009
+  },
+  {
+   "file": "native:bindVertexArray",
+   "ms": 9.7,
+   "share": 0.0009
+  },
+  {
+   "file": "apps/game/src/effects/pixi-adapter.ts",
+   "ms": 8.9,
+   "share": 0.0008
+  },
+  {
+   "file": "native:bindBuffer",
+   "ms": 7.2,
+   "share": 0.0007
+  },
+  {
+   "file": "apps/game/src/effects/sequencer.ts",
+   "ms": 5.7,
+   "share": 0.0005
+  },
+  {
+   "file": "tools/creature-animation/wasm-orientation-active.mjs",
+   "ms": 5.7,
+   "share": 0.0005
+  },
+  {
+   "file": "apps/game/src/motion/gait-phase.ts",
+   "ms": 5.5,
+   "share": 0.0005
+  },
+  {
+   "file": "apps/game/src/effects/emitter.ts",
+   "ms": 5.3,
+   "share": 0.0005
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/mesh/shared/Mesh.mjs",
+   "ms": 5.1,
+   "share": 0.0005
+  },
+  {
+   "file": "native:clear",
+   "ms": 4.4,
+   "share": 0.0004
+  },
+  {
+   "file": "native:bindFramebuffer",
+   "ms": 3.8,
+   "share": 0.0003
+  },
+  {
+   "file": "wasm:js-to-wasm:iiiiiiiiiiiii:i",
+   "ms": 3.6,
+   "share": 0.0003
+  }
+ ]
+}

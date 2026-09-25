@@ -1,0 +1,42 @@
+/** IC-4 — the intake compiler's admission check with both-way controls (PROGRAM §6). For every subject: compile the
+ * master under its template with the species' DECLARED hidden set (declaration is an input; presence is never
+ * inferred), then verdict: ADMIT iff every declared-visible leg slot is filled, every declared-hidden slot is empty,
+ * and no strong (endpoint) leg candidate is left unused. Mutants per subject, built from Codex's label map (comparison
+ * material, never a compiler input): ERASED (one visible leg's pixels removed), DUPLICATED (one leg's pixels copied
+ * beside it), WRONG-TEMPLATE (compiled under the other family's template). Every mutant must REFUSE. Usage:
+ * node ic4.mjs [json]. Landmark accuracy is score.mjs's business; this file is the verdict and its controls. */
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../..')+'/';
+const {readPng}=await import('./png.mjs');
+const {assignLegs}=await import('./assign.mjs');const {alphaOf,detectTips,classifyTips}=await import('./tips.mjs');const {templateRest}=await import('./template-rest.mjs');const {SUBJECTS,truthOf,scoreSubject,declarationOf}=await import('./score.mjs');
+export function verdict(res,template,declaredHidden,positive=null){const T=templateRest(template);const reasons=[];
+  // a mutant's folded slot must carry the SAME loop the unmutated master did (within 0.25 R); any other loop there is a refill
+  const sameLoop=(sl,a)=>{if(!positive)return true;const p=positive.assigned[sl.terminal];if(!p)return false;const R=positive.R/positive.working.scale;return Math.hypot(p.master[0]-a.master[0],p.master[1]-a.master[1])<=0.25*R;};
+  // evidence per slot: an endpoint or a resting tip counts; a LOOP-filled slot is weak evidence (12 false : 1 true in
+  // slice 19's table) and does not count as found when `strict` is set
+  const strict=process.env.IC4_STRICT!=='0';
+  // a declared-FOLDED slot (a leg painted flat against the body: a loop is its expected evidence) accepts a loop
+  const folded=res.declaredFolded??[];
+  for(const side of ['Far','Near'])for(const sl of T.slots[side]){const a=res.assigned[sl.terminal];const filled=!!a&&(!strict||a.kind!=='loop'||(folded.includes(sl.id)&&sameLoop(sl,a))),hid=declaredHidden.includes(sl.id);if(hid&&filled)reasons.push(`declared hidden ${sl.id} was found`);if(!hid&&!filled)reasons.push(`visible ${sl.id} not found`);}
+  const unusedStrong=res.pool.filter(c=>c.kind==='end'&&!c.fork&&!c.used&&!c.claw).length;if(unusedStrong>res.unusedAllowance)reasons.push(`${unusedStrong} unused endpoint leg candidates`);
+  return {verdict:reasons.length?'REFUSE':'ADMIT',reasons,unusedStrong};}
+const legPartIds=(decl,legId)=>{const key=legId.toLowerCase();return decl.parts.map((p,i)=>({p,i})).filter(({p})=>p.id.startsWith(key+'-')).map(({i})=>i+1);};
+export function mutate(png,labels,ids,mode,shift){const out=new Uint8Array(png.data);const W=png.width,H=png.height;
+  for(let i=0;i<W*H;i++){if(!ids.includes(labels[i]))continue;if(mode==='erase'){out[i*4+3]=0;out[i*4]=255;out[i*4+1]=0;out[i*4+2]=255;}
+    else{const x=i%W+shift[0],y=Math.floor(i/W)+shift[1];if(x<0||y<0||x>=W||y>=H)continue;const j=y*W+x;for(let k=0;k<4;k++)out[j*4+k]=png.data[i*4+k];}}
+  return {width:W,height:H,data:out};}
+if(process.argv[1]&&fileURLToPath(import.meta.url)===path.resolve(process.argv[1])){
+  const rows=[];const positives={};const declFoldedOf={};const declAbsentOf={};const run=(id,template,png,declHidden,tag,rec=null)=>{const opts=process.env.ASSIGN_OPTS?JSON.parse(process.env.ASSIGN_OPTS):{};const res=assignLegs(png.data,png.width,png.height,null,{template,declaredHidden:declHidden,declaredFolded:(declFoldedOf[id]??[]),declaredAbsent:(declAbsentOf[id]??[]),...opts});res.unusedAllowance=Number(process.env.IC4_UNUSED??0);const v=verdict(res,template,declHidden,tag==='positive'?null:positives[id]);if(tag==='positive')positives[id]=res;// §6 pass = verdict ADMIT AND (when a hand record exists) every named foot within IC4_BOUND master px of the record
+    let pass=v.verdict==='ADMIT',worst=null;if(tag==='positive'&&rec){const truth=truthOf(JSON.parse(fs.readFileSync(rec,'utf8')));const sc=scoreSubject(res,truth,template,Number(process.env.IC4_BOUND??60));worst=Math.max(0,...sc.perName.map(x=>Number((x.split(':')[1]||'0').split('/')[0])||0));if(sc.named<sc.assigned)pass=false;}
+    rows.push({id,tag,template,...v,hidden:res.hidden,pass:tag==='positive'?pass:undefined,worstNamedPx:worst});const {alpha}=alphaOf(png.data,png.width,png.height);const det=detectTips(alpha,png.width,png.height,{solidAlpha:128});const cls=classifyTips(det,template);const declaredVisible=[...templateRest(template).slots.Far,...templateRest(template).slots.Near].filter(s=>!declHidden.includes(s.id)).length;rows[rows.length-1].tipFeet=cls.counts.feet;rows[rows.length-1].declaredVisible=declaredVisible;const tipCol='tips feet '+cls.counts.feet+'/'+declaredVisible+' pincer '+cls.counts.pincer+' ';const cnt=tipCol+(res.legsBySide?['Far','Near'].map(sd=>{const k=res.legsBySide[sd];const T=templateRest(template);const declared=T.slots[sd].filter(s=>!declHidden.includes(s.id)).length;return sd+' e'+k.filter(x=>x==='end').length+'/l'+k.filter(x=>x==='loop').length+'/t'+k.filter(x=>x==='touch').length+' vs '+declared;}).join(' '):'');const kinds=cnt+' || '+Object.entries(res.assigned).filter(([k])=>/Foot$|Paw$/.test(k)).map(([k,a])=>k.replace(/Foot$|Paw$/,'')+':'+a.kind[0]).join(' ');console.log(id.padEnd(16),tag.padEnd(14),template.padEnd(11),v.verdict.padEnd(7),tag==='positive'?('§6 '+(pass?'PASS':'FAIL')+(worst!==null?' worst '+worst+'px':'')).padEnd(22):''.padEnd(22),'unused',v.unusedStrong,'hidden',JSON.stringify(res.hidden),'|',kinds,'|',v.reasons.join('; '));return res;};
+  for(const [id,template,master,rec,presence] of SUBJECTS){const png=readPng(fs.readFileSync(master));const decl=declarationOf(rec,presence);const declHidden=decl.hidden;declFoldedOf[id]=decl.folded;declAbsentOf[id]=decl.absent;
+    run(id,template,png,declHidden,'positive',rec);
+    const other=template==='brachyuran'?'quadruped':'brachyuran';run(id,other,png,[],'wrong-tmpl');
+    if(!rec)continue;const dir=path.dirname(rec);const declFile=dir+'/declaration.json',labelFile=dir+'/labels.png';if(!fs.existsSync(declFile)||!fs.existsSync(labelFile))continue;
+    const labelDecl=JSON.parse(fs.readFileSync(declFile,'utf8'));const lp=readPng(fs.readFileSync(labelFile));const labels=new Uint16Array(lp.width*lp.height);for(let i=0;i<labels.length;i++)labels[i]=lp.data[i*4];
+    const T=templateRest(template);const visibleLegs=[...T.slots.Far,...T.slots.Near].map(s=>s.id).filter(l=>!declHidden.includes(l));
+    for(const leg of [visibleLegs[0],visibleLegs[visibleLegs.length-1]]){const ids=legPartIds(labelDecl,leg);if(!ids.length){console.log('  no label parts for',leg);continue;}
+      run(id,template,mutate(png,labels,ids,'erase'),declHidden,'erase:'+leg);
+      run(id,template,mutate(png,labels,ids,'dup',[Math.round(png.width*Number(process.env.IC4_DUP_SHIFT??0.15)),Math.round(png.height*0.03)]),declHidden,'dup:'+leg);}}
+  if(process.argv[2]==='json')fs.writeFileSync(process.env.IC4_OUT??'/dev/stdout',JSON.stringify(rows,null,1));
+}

@@ -1,0 +1,3 @@
+{ "readyMs": 600, "commandMs": 300, "themes": { "A": "wild", "B": "stone" },
+  "morph": { "left": { "seed": 21, "color": 12, "accent": 4, "pattern": 1 }, "right": { "seed": 34, "color": 3, "accent": 1, "pattern": 7, "lumin": true } },
+  "rows": [ { "side": "A", "an": "Crab", "dn": "Crab", "dmg": 9, "crit": false, "hpA": 30, "hpB": 21 }, { "an": "Crab", "dn": "Crab", "dodge": true }, { "side": "A", "an": "Crab", "dn": "Crab", "dmg": 21, "crit": true, "hpA": 30, "hpB": 0 } ] }

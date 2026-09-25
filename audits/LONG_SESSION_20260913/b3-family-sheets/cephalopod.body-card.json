@@ -1,0 +1,899 @@
+{
+ "kind": "body-card",
+ "identity": {
+  "speciesVisualKey": "synthetic:cephalopod",
+  "seed": 659722,
+  "ownerId": "synthetic:a11-fixture",
+  "earthName": null
+ },
+ "recipeHash": null,
+ "template": {
+  "id": "cephalopod",
+  "version": 1,
+  "clipSetId": "cephalopod-v1"
+ },
+ "massClass": {
+  "name": "medium",
+  "multiplier": 1
+ },
+ "locomotion": {
+  "loco": "jet-propelled swimmers",
+  "gait": "jet",
+  "templateGait": "jet"
+ },
+ "realm": "aquatic",
+ "materials": {
+  "body": "slick",
+  "head": "slick",
+  "legs": "slick",
+  "tail": "slick",
+  "ears": "slick",
+  "wings": "slick",
+  "fins": "slick",
+  "antennae": "slick",
+  "fronds": "slick",
+  "arms": "slick"
+ },
+ "parts": [
+  {
+   "joint": "mantle",
+   "parent": "root",
+   "group": "body",
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "tip": [
+    0.5,
+    0.32
+   ],
+   "boneLength": 0.18
+  },
+  {
+   "joint": "head",
+   "parent": "root",
+   "group": "head",
+   "pivot": [
+    0.5,
+    0.5
+   ],
+   "tip": [
+    0.5,
+    0.58
+   ],
+   "boneLength": 0.07999999999999996
+  },
+  {
+   "joint": "eyeFar",
+   "parent": "head",
+   "group": "head",
+   "pivot": [
+    0.5,
+    0.58
+   ],
+   "tip": [
+    0.44,
+    0.56
+   ],
+   "boneLength": 0.06324555320336755
+  },
+  {
+   "joint": "eyeNear",
+   "parent": "head",
+   "group": "head",
+   "pivot": [
+    0.5,
+    0.58
+   ],
+   "tip": [
+    0.56,
+    0.56
+   ],
+   "boneLength": 0.06324555320336761
+  },
+  {
+   "joint": "siphon",
+   "parent": "head",
+   "group": "body",
+   "pivot": [
+    0.5,
+    0.58
+   ],
+   "tip": [
+    0.42,
+    0.5
+   ],
+   "boneLength": 0.11313708498984758
+  },
+  {
+   "joint": "finFar",
+   "parent": "mantle",
+   "group": "fins",
+   "pivot": [
+    0.5,
+    0.32
+   ],
+   "tip": [
+    0.42,
+    0.24
+   ],
+   "boneLength": 0.11313708498984763
+  },
+  {
+   "joint": "finNear",
+   "parent": "mantle",
+   "group": "fins",
+   "pivot": [
+    0.5,
+    0.32
+   ],
+   "tip": [
+    0.58,
+    0.24
+   ],
+   "boneLength": 0.11313708498984758
+  },
+  {
+   "joint": "arm0Seg0",
+   "parent": "head",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.58
+   ],
+   "tip": [
+    0.36,
+    0.66
+   ],
+   "boneLength": 0.16124515496597103
+  },
+  {
+   "joint": "arm0Seg1",
+   "parent": "arm0Seg0",
+   "group": "arms",
+   "pivot": [
+    0.36,
+    0.66
+   ],
+   "tip": [
+    0.3,
+    0.76
+   ],
+   "boneLength": 0.11661903789690599
+  },
+  {
+   "joint": "arm0Seg2",
+   "parent": "arm0Seg1",
+   "group": "arms",
+   "pivot": [
+    0.3,
+    0.76
+   ],
+   "tip": [
+    0.26,
+    0.86
+   ],
+   "boneLength": 0.10770329614269004
+  },
+  {
+   "joint": "arm1Seg0",
+   "parent": "head",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.58
+   ],
+   "tip": [
+    0.41,
+    0.68
+   ],
+   "boneLength": 0.1345362404707372
+  },
+  {
+   "joint": "arm1Seg1",
+   "parent": "arm1Seg0",
+   "group": "arms",
+   "pivot": [
+    0.41,
+    0.68
+   ],
+   "tip": [
+    0.37,
+    0.8
+   ],
+   "boneLength": 0.12649110640673514
+  },
+  {
+   "joint": "arm1Seg2",
+   "parent": "arm1Seg1",
+   "group": "arms",
+   "pivot": [
+    0.37,
+    0.8
+   ],
+   "tip": [
+    0.35,
+    0.92
+   ],
+   "boneLength": 0.1216552506059644
+  },
+  {
+   "joint": "arm2Seg0",
+   "parent": "head",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.58
+   ],
+   "tip": [
+    0.45,
+    0.7
+   ],
+   "boneLength": 0.12999999999999998
+  },
+  {
+   "joint": "arm2Seg1",
+   "parent": "arm2Seg0",
+   "group": "arms",
+   "pivot": [
+    0.45,
+    0.7
+   ],
+   "tip": [
+    0.43,
+    0.82
+   ],
+   "boneLength": 0.1216552506059644
+  },
+  {
+   "joint": "arm2Seg2",
+   "parent": "arm2Seg1",
+   "group": "arms",
+   "pivot": [
+    0.43,
+    0.82
+   ],
+   "tip": [
+    0.42,
+    0.94
+   ],
+   "boneLength": 0.12041594578792293
+  },
+  {
+   "joint": "arm3Seg0",
+   "parent": "head",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.58
+   ],
+   "tip": [
+    0.485,
+    0.7
+   ],
+   "boneLength": 0.12093386622447823
+  },
+  {
+   "joint": "arm3Seg1",
+   "parent": "arm3Seg0",
+   "group": "arms",
+   "pivot": [
+    0.485,
+    0.7
+   ],
+   "tip": [
+    0.485,
+    0.83
+   ],
+   "boneLength": 0.13
+  },
+  {
+   "joint": "arm3Seg2",
+   "parent": "arm3Seg1",
+   "group": "arms",
+   "pivot": [
+    0.485,
+    0.83
+   ],
+   "tip": [
+    0.485,
+    0.95
+   ],
+   "boneLength": 0.12
+  },
+  {
+   "joint": "arm4Seg0",
+   "parent": "head",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.58
+   ],
+   "tip": [
+    0.515,
+    0.7
+   ],
+   "boneLength": 0.12093386622447823
+  },
+  {
+   "joint": "arm4Seg1",
+   "parent": "arm4Seg0",
+   "group": "arms",
+   "pivot": [
+    0.515,
+    0.7
+   ],
+   "tip": [
+    0.515,
+    0.83
+   ],
+   "boneLength": 0.13
+  },
+  {
+   "joint": "arm4Seg2",
+   "parent": "arm4Seg1",
+   "group": "arms",
+   "pivot": [
+    0.515,
+    0.83
+   ],
+   "tip": [
+    0.515,
+    0.95
+   ],
+   "boneLength": 0.12
+  },
+  {
+   "joint": "arm5Seg0",
+   "parent": "head",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.58
+   ],
+   "tip": [
+    0.55,
+    0.7
+   ],
+   "boneLength": 0.13
+  },
+  {
+   "joint": "arm5Seg1",
+   "parent": "arm5Seg0",
+   "group": "arms",
+   "pivot": [
+    0.55,
+    0.7
+   ],
+   "tip": [
+    0.57,
+    0.82
+   ],
+   "boneLength": 0.12165525060596437
+  },
+  {
+   "joint": "arm5Seg2",
+   "parent": "arm5Seg1",
+   "group": "arms",
+   "pivot": [
+    0.57,
+    0.82
+   ],
+   "tip": [
+    0.58,
+    0.94
+   ],
+   "boneLength": 0.12041594578792293
+  },
+  {
+   "joint": "arm6Seg0",
+   "parent": "head",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.58
+   ],
+   "tip": [
+    0.59,
+    0.68
+   ],
+   "boneLength": 0.13453624047073715
+  },
+  {
+   "joint": "arm6Seg1",
+   "parent": "arm6Seg0",
+   "group": "arms",
+   "pivot": [
+    0.59,
+    0.68
+   ],
+   "tip": [
+    0.63,
+    0.8
+   ],
+   "boneLength": 0.12649110640673517
+  },
+  {
+   "joint": "arm6Seg2",
+   "parent": "arm6Seg1",
+   "group": "arms",
+   "pivot": [
+    0.63,
+    0.8
+   ],
+   "tip": [
+    0.65,
+    0.92
+   ],
+   "boneLength": 0.1216552506059644
+  },
+  {
+   "joint": "arm7Seg0",
+   "parent": "head",
+   "group": "arms",
+   "pivot": [
+    0.5,
+    0.58
+   ],
+   "tip": [
+    0.64,
+    0.66
+   ],
+   "boneLength": 0.16124515496597103
+  },
+  {
+   "joint": "arm7Seg1",
+   "parent": "arm7Seg0",
+   "group": "arms",
+   "pivot": [
+    0.64,
+    0.66
+   ],
+   "tip": [
+    0.7,
+    0.76
+   ],
+   "boneLength": 0.11661903789690595
+  },
+  {
+   "joint": "arm7Seg2",
+   "parent": "arm7Seg1",
+   "group": "arms",
+   "pivot": [
+    0.7,
+    0.76
+   ],
+   "tip": [
+    0.74,
+    0.86
+   ],
+   "boneLength": 0.10770329614269007
+  }
+ ],
+ "secondaryParts": [
+  {
+   "id": "finFar",
+   "driver": "mantle",
+   "joints": [
+    "finFar"
+   ],
+   "lagOrder": [
+    0
+   ],
+   "material": "slick",
+   "kind": "fin"
+  },
+  {
+   "id": "finNear",
+   "driver": "mantle",
+   "joints": [
+    "finNear"
+   ],
+   "lagOrder": [
+    0
+   ],
+   "material": "slick",
+   "kind": "fin"
+  },
+  {
+   "id": "arm0",
+   "driver": "head",
+   "joints": [
+    "arm0Seg0",
+    "arm0Seg1",
+    "arm0Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "slick",
+   "kind": "tentacle"
+  },
+  {
+   "id": "arm1",
+   "driver": "head",
+   "joints": [
+    "arm1Seg0",
+    "arm1Seg1",
+    "arm1Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "slick",
+   "kind": "tentacle"
+  },
+  {
+   "id": "arm2",
+   "driver": "head",
+   "joints": [
+    "arm2Seg0",
+    "arm2Seg1",
+    "arm2Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "slick",
+   "kind": "tentacle"
+  },
+  {
+   "id": "arm3",
+   "driver": "head",
+   "joints": [
+    "arm3Seg0",
+    "arm3Seg1",
+    "arm3Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "slick",
+   "kind": "tentacle"
+  },
+  {
+   "id": "arm4",
+   "driver": "head",
+   "joints": [
+    "arm4Seg0",
+    "arm4Seg1",
+    "arm4Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "slick",
+   "kind": "tentacle"
+  },
+  {
+   "id": "arm5",
+   "driver": "head",
+   "joints": [
+    "arm5Seg0",
+    "arm5Seg1",
+    "arm5Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "slick",
+   "kind": "tentacle"
+  },
+  {
+   "id": "arm6",
+   "driver": "head",
+   "joints": [
+    "arm6Seg0",
+    "arm6Seg1",
+    "arm6Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "slick",
+   "kind": "tentacle"
+  },
+  {
+   "id": "arm7",
+   "driver": "head",
+   "joints": [
+    "arm7Seg0",
+    "arm7Seg1",
+    "arm7Seg2"
+   ],
+   "lagOrder": [
+    0,
+    1,
+    2
+   ],
+   "material": "slick",
+   "kind": "tentacle"
+  }
+ ],
+ "weapons": [
+  "constrict",
+  "bite"
+ ],
+ "luminous": false,
+ "bodyLength": 0.25999999999999995,
+ "groundLineY": 0.95,
+ "landmarks": {
+  "root": [
+   0.5,
+   0.5
+  ],
+  "mantle": [
+   0.5,
+   0.32
+  ],
+  "head": [
+   0.5,
+   0.58
+  ],
+  "eyeFar": [
+   0.44,
+   0.56
+  ],
+  "eyeNear": [
+   0.56,
+   0.56
+  ],
+  "siphon": [
+   0.42,
+   0.5
+  ],
+  "finFar": [
+   0.42,
+   0.24
+  ],
+  "finNear": [
+   0.58,
+   0.24
+  ],
+  "arm0Seg0": [
+   0.36,
+   0.66
+  ],
+  "arm0Seg1": [
+   0.3,
+   0.76
+  ],
+  "arm0Seg2": [
+   0.26,
+   0.86
+  ],
+  "arm1Seg0": [
+   0.41,
+   0.68
+  ],
+  "arm1Seg1": [
+   0.37,
+   0.8
+  ],
+  "arm1Seg2": [
+   0.35,
+   0.92
+  ],
+  "arm2Seg0": [
+   0.45,
+   0.7
+  ],
+  "arm2Seg1": [
+   0.43,
+   0.82
+  ],
+  "arm2Seg2": [
+   0.42,
+   0.94
+  ],
+  "arm3Seg0": [
+   0.485,
+   0.7
+  ],
+  "arm3Seg1": [
+   0.485,
+   0.83
+  ],
+  "arm3Seg2": [
+   0.485,
+   0.95
+  ],
+  "arm4Seg0": [
+   0.515,
+   0.7
+  ],
+  "arm4Seg1": [
+   0.515,
+   0.83
+  ],
+  "arm4Seg2": [
+   0.515,
+   0.95
+  ],
+  "arm5Seg0": [
+   0.55,
+   0.7
+  ],
+  "arm5Seg1": [
+   0.57,
+   0.82
+  ],
+  "arm5Seg2": [
+   0.58,
+   0.94
+  ],
+  "arm6Seg0": [
+   0.59,
+   0.68
+  ],
+  "arm6Seg1": [
+   0.63,
+   0.8
+  ],
+  "arm6Seg2": [
+   0.65,
+   0.92
+  ],
+  "arm7Seg0": [
+   0.64,
+   0.66
+  ],
+  "arm7Seg1": [
+   0.7,
+   0.76
+  ],
+  "arm7Seg2": [
+   0.74,
+   0.86
+  ]
+ },
+ "bounds": {
+  "inside": true,
+  "clamped": [],
+  "limitsDeg": {
+   "root": {
+    "min": -30,
+    "max": 30
+   },
+   "mantle": {
+    "min": -25,
+    "max": 25
+   },
+   "head": {
+    "min": -30,
+    "max": 30
+   },
+   "eyeFar": {
+    "min": -20,
+    "max": 20
+   },
+   "eyeNear": {
+    "min": -20,
+    "max": 20
+   },
+   "siphon": {
+    "min": -45,
+    "max": 45
+   },
+   "finFar": {
+    "min": -40,
+    "max": 40
+   },
+   "finNear": {
+    "min": -40,
+    "max": 40
+   },
+   "arm0Seg0": {
+    "min": -55,
+    "max": 55
+   },
+   "arm0Seg1": {
+    "min": -70,
+    "max": 70
+   },
+   "arm0Seg2": {
+    "min": -80,
+    "max": 80
+   },
+   "arm1Seg0": {
+    "min": -55,
+    "max": 55
+   },
+   "arm1Seg1": {
+    "min": -70,
+    "max": 70
+   },
+   "arm1Seg2": {
+    "min": -80,
+    "max": 80
+   },
+   "arm2Seg0": {
+    "min": -55,
+    "max": 55
+   },
+   "arm2Seg1": {
+    "min": -70,
+    "max": 70
+   },
+   "arm2Seg2": {
+    "min": -80,
+    "max": 80
+   },
+   "arm3Seg0": {
+    "min": -55,
+    "max": 55
+   },
+   "arm3Seg1": {
+    "min": -70,
+    "max": 70
+   },
+   "arm3Seg2": {
+    "min": -80,
+    "max": 80
+   },
+   "arm4Seg0": {
+    "min": -55,
+    "max": 55
+   },
+   "arm4Seg1": {
+    "min": -70,
+    "max": 70
+   },
+   "arm4Seg2": {
+    "min": -80,
+    "max": 80
+   },
+   "arm5Seg0": {
+    "min": -55,
+    "max": 55
+   },
+   "arm5Seg1": {
+    "min": -70,
+    "max": 70
+   },
+   "arm5Seg2": {
+    "min": -80,
+    "max": 80
+   },
+   "arm6Seg0": {
+    "min": -55,
+    "max": 55
+   },
+   "arm6Seg1": {
+    "min": -70,
+    "max": 70
+   },
+   "arm6Seg2": {
+    "min": -80,
+    "max": 80
+   },
+   "arm7Seg0": {
+    "min": -55,
+    "max": 55
+   },
+   "arm7Seg1": {
+    "min": -70,
+    "max": 70
+   },
+   "arm7Seg2": {
+    "min": -80,
+    "max": 80
+   }
+  }
+ },
+ "notes": []
+}

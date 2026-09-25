@@ -23,9 +23,12 @@ import {
   type CombatCuePlanV1,
 } from '@cf/audio';
 import {
+  COMBAT_CHRONICLE_PACER_MAX_WAIT_MS,
   COMBAT_CHRONICLE_ROW_DELAY_MS,
   COMBAT_CHRONICLE_START_DELAY_MS,
   CombatChronicleController,
+  createCombatChroniclePacerGateV1,
+  type CombatChroniclePacerV1,
   isCombatChronicleV1,
   projectCombatChronicleV1,
   type CombatChronicleCueEmissionV1,
@@ -164,12 +167,15 @@ function startController(options: Readonly<{
   onCue?: (emission: CombatChronicleCueEmissionV1) => void;
   onShare?: (shareText: string) => void;
   onStopVoices?: (reason: CombatChronicleStopReasonV1, generation: number) => void;
+  pacer?: CombatChroniclePacerV1;
 }> = {}) {
   const view = shell();
   const pair = plans();
   const chronicle = projectCombatChronicleV1(pair.settlement, pair.cues);
-  controller = new CombatChronicleController({ root: view.root, ...options });
+  const { pacer, ...controllerOptions } = options;
+  controller = new CombatChronicleController({ root: view.root, ...controllerOptions });
   controller.attach(view.mount);
+  if (pacer) controller.setPacer(pacer);
   const generation = controller.start(chronicle, pair.cues);
   return { ...view, ...pair, chronicle, generation };
 }
@@ -590,6 +596,52 @@ describe('Arc 8 Combat Chronicle detached controller', () => {
     }
     expect(view.mount.querySelector<HTMLButtonElement>('[data-combat-chronicle-share]')!.style.minHeight)
       .toBe('44px');
+  });
+
+  it('with a pacer (the battle2 stage, Nick 2026-09-24) a step appears only when its transcript row is released, in order, whatever the cadence', async () => {
+    vi.useFakeTimers();
+    const gate = createCombatChroniclePacerGateV1(), onCue = vi.fn();
+    const view = startController({ onCue, pacer: gate.pacer });
+    const rows = () => view.mount.querySelectorAll('[data-combat-chronicle-kind]').length, initial = view.chronicle.initialRows.length;
+    const upTo = (n: number) => initial + view.chronicle.steps.slice(0, n).reduce((sum, step) => sum + step.rows.length, 0);
+    expect(view.chronicle.steps.length).toBeGreaterThanOrEqual(3);
+    await vi.advanceTimersByTimeAsync(COMBAT_CHRONICLE_START_DELAY_MS + 10 * COMBAT_CHRONICLE_ROW_DELAY_MS);
+    expect(rows()).toBe(initial); // the fixed cadence no longer reveals anything
+    gate.release(view.chronicle.steps[0]!.transcriptIndex); await vi.advanceTimersByTimeAsync(0);
+    expect(rows()).toBe(upTo(1));
+    await vi.advanceTimersByTimeAsync(5 * COMBAT_CHRONICLE_ROW_DELAY_MS);
+    expect(rows()).toBe(upTo(1));
+    gate.release(view.chronicle.steps[2]!.transcriptIndex); await vi.advanceTimersByTimeAsync(0); // releasing row 2 releases 1 too
+    expect(rows()).toBe(upTo(3));
+    gate.releaseAll(); await vi.runAllTimersAsync();
+    expect(view.mount.querySelector('[data-combat-chronicle-share]')).not.toBeNull();
+    expect(onCue).toHaveBeenCalledTimes(view.cues.cues.length); // every canonical cue still once
+  });
+
+  it('with a pacer that never releases, each row still appears after COMBAT_CHRONICLE_PACER_MAX_WAIT_MS (a stalled stage cannot hold the log); Skip still renders everything at once', async () => {
+    vi.useFakeTimers();
+    const gate = createCombatChroniclePacerGateV1();
+    const view = startController({ pacer: gate.pacer });
+    const rows = () => view.mount.querySelectorAll('[data-combat-chronicle-kind]').length, initial = view.chronicle.initialRows.length;
+    await vi.advanceTimersByTimeAsync(COMBAT_CHRONICLE_START_DELAY_MS + COMBAT_CHRONICLE_PACER_MAX_WAIT_MS - 1);
+    expect(rows()).toBe(initial);
+    await vi.advanceTimersByTimeAsync(1);
+    expect(rows()).toBe(initial + view.chronicle.steps[0]!.rows.length);
+    view.mount.querySelector<HTMLButtonElement>('[data-combat-chronicle-skip]')!.click();
+    const all = initial + view.chronicle.steps.reduce((sum, step) => sum + step.rows.length, 0) + view.chronicle.statisticsRows.length;
+    expect(rows()).toBe(all);
+    gate.releaseAll(); await vi.advanceTimersByTimeAsync(COMBAT_CHRONICLE_PACER_MAX_WAIT_MS * 2); // a late release after Skip changes nothing
+    expect(rows()).toBe(all);
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
+  it('setPacer(null) restores the exact legacy cadence (control for the pacer tests)', async () => {
+    vi.useFakeTimers();
+    const gate = createCombatChroniclePacerGateV1(), view = shell(), pair = plans(), chronicle = projectCombatChronicleV1(pair.settlement, pair.cues);
+    controller = new CombatChronicleController({ root: view.root }); controller.attach(view.mount); controller.setPacer(gate.pacer); controller.setPacer(null);
+    controller.start(chronicle, pair.cues);
+    await vi.advanceTimersByTimeAsync(COMBAT_CHRONICLE_START_DELAY_MS);
+    expect(view.mount.querySelectorAll('[data-combat-chronicle-kind]')).toHaveLength(chronicle.initialRows.length + chronicle.steps[0]!.rows.length);
   });
 
   it('Skip renders every remaining row and the ledger synchronously with zero skipped audio', () => {

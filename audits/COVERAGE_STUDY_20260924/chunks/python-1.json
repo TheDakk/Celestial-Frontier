@@ -1,0 +1,323 @@
+{
+ "id": "python-1",
+ "standIn": "Python",
+ "template": "serpent",
+ "accentGroups": [
+  "head"
+ ],
+ "archetype": {
+  "master": "/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/assets/painted-cards/python/card/master-512.png",
+  "joints": [
+   "jaw",
+   "head",
+   "seg0",
+   "seg1",
+   "seg2",
+   "seg3",
+   "seg4",
+   "seg5",
+   "seg6",
+   "seg7",
+   "seg8",
+   "seg9",
+   "root"
+  ],
+  "masks": []
+ },
+ "species": [
+  {
+   "name": "Anaconda",
+   "group": "constricting-snake",
+   "posture": "coiled",
+   "aspect": 6,
+   "headFrac": 0.05,
+   "eyes": "small",
+   "mustRead": [
+    "massively thick muscular body",
+    "eyes and nostrils set high on top of the head",
+    "dark oval blotches over olive-green skin"
+   ],
+   "note": "the heaviest snake - the body must read as thick as a thigh, not as a rope"
+  },
+  {
+   "name": "Boa",
+   "group": "constricting-snake",
+   "posture": "coiled",
+   "aspect": 7,
+   "headFrac": 0.05,
+   "eyes": "small",
+   "mustRead": [
+    "saddle-shaped dorsal blotches that redden toward the tail",
+    "heavy arrow-shaped head with a dark eye stripe",
+    "thick body tapering to a short tail"
+   ],
+   "note": "generic representative: a boa constrictor"
+  },
+  {
+   "name": "Cobra",
+   "group": "snake",
+   "posture": "coiled",
+   "aspect": 1.1,
+   "headFrac": 0.07,
+   "eyes": "normal",
+   "mustRead": [
+    "flared hood spread behind the head",
+    "front third of the body reared vertically",
+    "coiled base with a fixed lidless stare"
+   ],
+   "note": "the hood is spread ribs, not a collar; the reared cobra is taller than it is wide"
+  },
+  {
+   "name": "Viper",
+   "group": "snake",
+   "posture": "coiled",
+   "aspect": 2,
+   "headFrac": 0.08,
+   "eyes": "normal",
+   "mustRead": [
+    "broad triangular head sharply set off from a thin neck",
+    "short thick heavy body",
+    "zigzag or diamond dorsal chain pattern"
+   ],
+   "note": "generic representative: a European adder / pit-viper type; the pupils are vertical slits and the coil sits low and flat"
+  },
+  {
+   "name": "Tree Snake",
+   "group": "snake",
+   "posture": "coiled",
+   "aspect": 6,
+   "headFrac": 0.05,
+   "eyes": "prominent",
+   "mustRead": [
+    "extremely slender whip-thin body",
+    "large eyes with a long pointed snout",
+    "body draped in loose loops across branches"
+   ],
+   "note": "generic representative: a vine/green tree snake. The body is startlingly thin - pencil-width even at a metre long"
+  },
+  {
+   "name": "Rat Snake",
+   "group": "snake",
+   "posture": "coiled",
+   "aspect": 7,
+   "headFrac": 0.05,
+   "eyes": "normal",
+   "mustRead": [
+    "long slender body with a flat-bottomed loaf cross-section",
+    "blunt rounded head barely wider than the neck",
+    "large round eyes with round pupils"
+   ],
+   "note": "generic representative: a black/corn rat snake; a harmless colubrid with no triangular viper head"
+  },
+  {
+   "name": "Garter Snake",
+   "group": "snake",
+   "posture": "crawling",
+   "aspect": 8,
+   "headFrac": 0.05,
+   "eyes": "normal",
+   "mustRead": [
+    "long pale stripes running the whole body length",
+    "slender limbless body",
+    "small head barely wider than the neck"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cottonmouth",
+   "group": "snake",
+   "posture": "coiled",
+   "aspect": 7,
+   "headFrac": 0.06,
+   "eyes": "normal",
+   "mustRead": [
+    "thick heavy-bodied build",
+    "blocky triangular pit-viper head much wider than the neck",
+    "white mouth lining shown in a gape"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Water Snake",
+   "group": "snake",
+   "posture": "coiled",
+   "aspect": 9,
+   "headFrac": 0.05,
+   "eyes": "normal",
+   "mustRead": [
+    "keeled banded body",
+    "narrow head with eyes set high",
+    "slender tapering tail"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Mamba",
+   "group": "snake",
+   "posture": "crawling",
+   "aspect": 10,
+   "headFrac": 0.05,
+   "eyes": "normal",
+   "mustRead": [
+    "very long slender whip-like body",
+    "narrow coffin-shaped head",
+    "smooth uniform scales with a fixed grin mouthline"
+   ],
+   "note": "Slim and elongate, not thick like a viper; often drawn rearing with the front third raised."
+  },
+  {
+   "name": "Rattlesnake",
+   "group": "snake",
+   "posture": "coiled",
+   "aspect": 1.3,
+   "headFrac": 0.08,
+   "eyes": "normal",
+   "mustRead": [
+    "segmented rattle on the tail tip",
+    "broad triangular arrow-shaped head on a thin neck",
+    "thick body coiled with the neck reared in an S"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Racer",
+   "group": "snake",
+   "posture": "crawling",
+   "aspect": 5,
+   "headFrac": 0.06,
+   "eyes": "prominent",
+   "mustRead": [
+    "very slender whip-thin body in a fast S-curve",
+    "smooth glossy uniform scales",
+    "large eye on a narrow rounded head"
+   ],
+   "note": "Name read as the North American racer snake (Coluber), a slim fast-moving colubrid, not a lizard or a 'racerunner'."
+  },
+  {
+   "name": "Mountain Viper",
+   "group": "snake",
+   "posture": "coiled",
+   "aspect": 1.3,
+   "headFrac": 0.09,
+   "eyes": "normal",
+   "mustRead": [
+    "broad triangular head much wider than the neck",
+    "thick stocky body with a zigzag dorsal band",
+    "vertical slit pupil"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Whip Snake",
+   "group": "snake",
+   "posture": "crawling",
+   "aspect": 6,
+   "headFrac": 0.05,
+   "eyes": "prominent",
+   "mustRead": [
+    "extremely thin whip-like body",
+    "very long tapering tail half the total length",
+    "narrow head with a large round eye"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Grass Snake",
+   "group": "snake",
+   "posture": "crawling",
+   "aspect": 4.5,
+   "headFrac": 0.06,
+   "eyes": "normal",
+   "mustRead": [
+    "pale yellow collar behind the head",
+    "olive-grey body in a loose S-curve",
+    "round pupil in a rounded non-triangular head"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Sand Boa",
+   "group": "constricting-snake",
+   "posture": "crawling",
+   "aspect": 3.5,
+   "headFrac": 0.07,
+   "eyes": "small",
+   "mustRead": [
+    "thick stubby cylindrical body",
+    "blunt wedge snout with tiny upward-facing eyes",
+    "very short abruptly blunt tail"
+   ],
+   "note": "Far shorter and fatter than typical snakes; the tail is a stub, so head and tail ends look almost interchangeable."
+  },
+  {
+   "name": "King Snake",
+   "group": "snake",
+   "posture": "crawling",
+   "aspect": 4,
+   "headFrac": 0.06,
+   "eyes": "normal",
+   "mustRead": [
+    "bold repeating bands or rings of colour around the body",
+    "smooth glossy scales",
+    "narrow head barely wider than the neck"
+   ],
+   "note": ""
+  },
+  {
+   "name": "Cave Snake",
+   "group": "snake",
+   "posture": "coiled",
+   "aspect": 8,
+   "headFrac": 0.05,
+   "eyes": "small",
+   "mustRead": [
+    "limbless coiled rope body",
+    "pale washed-out unpigmented scales",
+    "blunt wedge head with heat-sensing pits"
+   ],
+   "note": "Generic name - interpreted as a pale cave-dwelling ratsnake/pitviper type."
+  },
+  {
+   "name": "Snake",
+   "group": "snake",
+   "posture": "coiled",
+   "aspect": 8,
+   "headFrac": 0.05,
+   "eyes": "normal",
+   "mustRead": [
+    "limbless tapering body in S-curves",
+    "wedge head continuous with the neck",
+    "flicking forked tongue"
+   ],
+   "note": "Generic name - interpreted as a representative colubrid."
+  },
+  {
+   "name": "Caecilian",
+   "group": "caecilian",
+   "posture": "crawling",
+   "aspect": 12,
+   "headFrac": 0.05,
+   "eyes": "hidden",
+   "mustRead": [
+    "limbless worm-like body ringed with annular grooves",
+    "blunt bullet-shaped head with a tiny sensory tentacle",
+    "no visible eyes and no tail fin"
+   ],
+   "note": "An amphibian, not a worm or a snake - the rings are skin folds, and it has slick moist skin with no scales."
+  },
+  {
+   "name": "Vine Snake",
+   "group": "snake",
+   "posture": "crawling",
+   "aspect": 12,
+   "headFrac": 0.04,
+   "eyes": "prominent",
+   "mustRead": [
+    "needle-thin whip-like body",
+    "long pointed dart-shaped snout",
+    "horizontal keyhole-shaped pupils"
+   ],
+   "note": "Extraordinarily thin - roughly pencil-width along its whole length, not a tapering rope like a typical snake."
+  }
+ ]
+}

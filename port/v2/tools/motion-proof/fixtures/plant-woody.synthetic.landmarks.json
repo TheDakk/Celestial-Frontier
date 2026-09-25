@@ -1,0 +1,86 @@
+{
+  "kind": "plant-woody",
+  "identity": {
+    "speciesVisualKey": "synthetic:plant-woody",
+    "seed": 659719,
+    "ownerId": "synthetic:a11-fixture",
+    "earthName": null
+  },
+  "template": {
+    "id": "plant-woody",
+    "version": 1
+  },
+  "family": "tree",
+  "geometry": {
+    "cutoutAssetHash": "synthetic-no-cutout",
+    "width": 1024,
+    "height": 1024,
+    "groundLineY": 0.9,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5,
+      0.9
+    ],
+    "trunk": [
+      0.5,
+      0.55
+    ],
+    "branch0Base": [
+      0.62,
+      0.45
+    ],
+    "branch0Tip": [
+      0.72,
+      0.34
+    ],
+    "leaf0": [
+      0.78,
+      0.26
+    ],
+    "branch1Base": [
+      0.38,
+      0.42
+    ],
+    "branch1Tip": [
+      0.28,
+      0.32
+    ],
+    "leaf1": [
+      0.22,
+      0.24
+    ],
+    "branch2Base": [
+      0.56,
+      0.36
+    ],
+    "branch2Tip": [
+      0.6,
+      0.22
+    ],
+    "leaf2": [
+      0.64,
+      0.12
+    ]
+  },
+  "materials": {
+    "surface": "warty",
+    "sheenTier": "painted",
+    "paletteSource": "synthetic"
+  },
+  "clipSetId": "plant-woody-v1",
+  "habitat": {
+    "realm": "land",
+    "source": "synthetic A11 fixture (not painter output)"
+  }
+}

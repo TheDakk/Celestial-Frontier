@@ -1,3 +1,656 @@
+# Archived integrated Claude handoff, retained verbatim 2026-09-25
+
+## SESSION HANDOFF — September 24, 2026 (evening) · CODEX'S ITEMS MERGED; EVERY CREATURE HAS A VOICE; THE PACKAGE'S WORKER INSTALLS
+Self-contained: either lane can resume from this block alone. Older handoffs are archived verbatim at the top of `ROADMAP_ARCHIVE.md`.
+
+**Where the work stands.** Pushed through `1902329c`. Signed locally since: `c2409c93` (voices), `87f374cd` (picker status), `3e34873a`
+(phone-tier study). The **merge of Codex's `4b56ef82`** (Centipede crawl, 53 species routed, the five `fb1922a0` reds repaired) is resolved and
+STAGED, but 1Password dropped signing again. Run `scratchpad/commit-day3.sh` (session 1c642229) once it answers: it commits the merge, then
+this handoff, then pushes. After that, **the only red is I5** (5,058 pass / 2 expected; typecheck ×3; overridecheck 1014/1014 + controls).
+Codex runs I5 once, on that pushed head.
+
+**Built today (items -77…-83 below).**
+- **The painted arena plays in a BUILT game with the service worker in control.** The builder writes `apps/game/battle2-assets.json`
+  (Codex's `cf-battle2-assets/v1` contract: every shipped arena file pinned by bytes and SHA-256). The worker caches each file on
+  first use. A reload with the arena blocked at the server stages from that cache with zero requests (`picker-smoke-06-sw`).
+- **The arena fits the 128 MiB pack.** The cap counts the lazy arena. The shell is ~47 MiB and the arena was 77.6 MiB, so ~125 of 128
+  MiB was used. Part bindings now ship gzip-compressed and the arena is 48.1 MiB, leaving **~33 MiB of headroom for new paintings**
+  (roughly 8–15 archetypes at today's per-archetype size).
+- **Nick's four battle2 decisions (2026-09-24, "I'll take your best recommendation"):**
+  (1) the guardian stands in the foreground (`GUARDIAN_STANDS.groundY` 0.95), so the Bear rests at 0.67 of the frame;
+  (2) painting order: the Python/Beetle mask sets first, then the ten no-rig-change archetypes (Wall Lizard, Cougar, Impala, Marmot,
+  Bass, Cattle, Tang, Wolf, Gull, River Otter), with Capuchin after its rig; new paintings must fit the pack headroom;
+  (3) portrait phone: a full-width 16:9 stage above the Chronicle log (already the study's layout, so no change);
+  (4) the stage paces the Chronicle log: each row appears at its turn's impact (`?battle2=1` with motion on; 12 s maximum per row;
+  Skip, hide, close and reduced motion unchanged).
+
+**Verified locally on the working tree.** Unit 5,041 pass / 2 expected / **6 red**: I5, plus **five of Codex's that first fail at its
+`fb1922a0`**, bisected in a scratch worktree (`95c97b08` clean):
+- `creature-rig-contact-rigid-refusal` ×2 (`creature-rig-contact.ts`: "Contact: cast@157.58 exceeds scale compression bound"; the refusal
+  no longer carries its cause);
+- `exceptional-crafting-evidence-contract` ×2 and `slicesmoke-sixth-red-contract` ×1 (its one-line `release-content.ts` addition: the
+  rendered release oracle reports `populated: false`).
+
+The freshwater-crab reach red is now green. Typecheck ×3 PASS; `overridecheck` 1014/1014 and `overridecontrol` PASS.
+
+**Signing (blocked again).** Run `scratchpad/commit-day2.sh` of session 1c642229 once 1Password answers. It commits the preview fix and this
+handoff, signed and verified G, then pushes `anthropic/mac`. Then rebuild the playtest package: it is the first whose worker can install, so the
+painted arena works offline in it. Codex's items 5 and 7 are staged unsigned in its lane, blocked by the same error.
+
+**Next, by owner.**
+- **Nick:** play the new package (item -85); keep 1Password approved for Codex's signing; after I5 lands, cycle the label on PR #43.
+- **Codex:** I5, once, on Claude's pushed head after the merge commit (the only red); the Centipede skin's phone-tier cost (item -88). Proposal (item 8): admit the
+  painter master by its pinned hash instead of shipping 13 MB of masters.
+- **Claude:** after signing: rebuild the playtest package on the pushed head and run the controlled-worker duel smoke on it; each new
+  painted archetype joins the card and arena the day it lands.
+
+**Traps (obey them).**
+- A browser smoke must watch a bout to its END and assert zero page errors: a throw inside a ticker callback freezes the whole page
+  while every status still reads "playing" (item -82).
+- A preview/package step that rewrites a built file after `vite build` breaks the worker's pins; stamp inside the build (item -83).
+- `picker-smoke --sw-control` asserts PAINTED rigs from the stage label: "playing" alone also covers the portrait fallback.
+- The gate test in `battle2-wiring.test.ts` mutates the gate ON the import line (`main.ts` now also reads the flag to set the
+  pacer).
+- `stage.play()` stamps each turn from the clock: reset to 0 per turn and require the turn to report `done`.
+- The training-restart fixture is exact capture output.
+- A backtick in a comment in `ui-sheet-style.ts` ends the CSS literal.
+- Never `expect(x).not.toBe(y)` on multi-MB typed arrays.
+- A sealed budget is never re-bound by hand.
+- Run `npm run overridecontrol` and the whole gate list locally before any hosted attempt.
+
+### What Claude owes next
+-94. **Weekly Charters, live on the expedition's own clock (2026-09-25; Nick: "moving the clock must not reset the charter… record the time… don't use V1").**
+`weekly-charters.ts`: a cycle is 4 h of F4 ACTIVE PLAY. That clock is persisted in the save and committed with every action; it accrues from
+`performance.now()` only while the game is visible and answerable, and the device clock never enters it. The save records the cycle the weekly
+state belongs to (`chWeek`); a transaction in a later cycle rolls the board forward once, and only once the board exists (the five trades are
+learned), so an explorer who never saw it gets no Charter writes. The slate is deterministic: three of the live pool (new-world landfall, mining,
+discovering life, fabrication). A Charter counts only after it is accepted, pays Stardust plus one honoured Charter exactly once, and shares the
+cap of three. The accept goes through the SAME audited transaction path as the starters, with an exact-once operation per cycle. Landing, mining,
+fabrication and bioscan stage weekly progress in their own transactions; the single-outcome F4 derive input gained `activePlayMs` (additive).
+Tests: a ±10-year device-clock swing changes nothing; forward-only rollover; legacy normalization; closed-board no-op; the cap; acceptance-only
+counting (control: counting without acceptance fails); paid once; the real F4 commit with a per-cycle operation. Unit 5,076 pass; only I5 is red.
+Codex: C10 (release bullet + pinned inventory), C11 (weekly conquest in Arc 6's settlement).
+-93. **I5 on `fb82c32c` reviewed (2026-09-25, `audits/I5_REVIEW_20260925/README.md`).** Codex's run stopped correctly at the producer gate: all five
+inputs changed with intended work. The gate is single-use by design (any app change moves index and service worker; `--calibrate` refuses under an
+active budget). The review found a real memory regression the certificate would have caught, and fixed it (`ffa1f126`): painted stand-ins could keep
+all 13 decoded archetypes (over 20 MiB) resident, and they are now an LRU of 2. Recommendation for Nick and Codex: one authorized recalibration
+epoch, `compendium-memory-v2` on the integrated head with a growth guard against v1.
+-92. **Playtest package on `fb82c32c` (2026-09-25):** `port/v2/apps/game/smoke/dev-preview-fb82c32cac67-20260925005333/`. `preview:package`, `verify` and `smoke`
+PASS. The controlled-worker smoke on the package (`audits/PAINTED_STAND_INS_20260924/package-smoke-01/`) passes: Alien #12 as a Civet vs Alien #11 as a Tarantula,
+two painted rigs, log paced 2.2 / 6.3 / 10.4 s, offline reload, zero errors. Play: `python3 -m http.server 8080` inside it, then
+`http://127.0.0.1:8080/?battle2=1&vs=alien:12,alien:11&duel=1`; the Compendium shows painted stand-ins. Supersedes `dev-preview-3201cd86834e-20260924200110`.
+-91. **…and on the battle stage (2026-09-24).** `matchRecord` falls back to the painted stand-in, so a fighter without its own painting fights as
+its stand-in's painted rig, morphed by its own genes. The picker takes `alien:<seed>`. Edge real duels with the worker in control: Alien #12
+(4 legs) fights as a Civet against Alien #11 (8 legs) as a Tarantula, and Alien #5 (fish) as a Salmon on the lake against the Octopus;
+painted rigs, paced log, zero errors. Unit 5,067 pass; only I5 is red.
+-90. **The painted art direction on every card (Nick 2026-09-24: "that art style should carry throughout the game";
+`audits/PAINTED_STAND_INS_20260924/README.md`).** `painted-stand-in.ts`: every creature whose anatomy a painting draws gets that painting on
+its card, morphed by its own genes. That is the 17 painted species; about 560 Earth species via their body plan's archetype; and generated
+creatures via the SAME body family the procedural painter draws (drift-tested against hdart's own source; the leg-count law is tested).
+43% of generated creatures are now painted. The uncovered families (jelly, four-winged, sturgeon, flat fish, 0/2/3-leg land bodies,
+lobster, mantis, squid, shark, sessile) are the painting list for the game's own creatures. Also fixed: a grown tail was clipped at the
+card edge (`padForProportionV1`). Unit 5,065 pass; only I5 is red.
+-89. **Codex's three items merged (staged merge of `4b56ef82`).** The Centipede crawl is identical to `f7339401`, so it merged clean. 53 species are routed to
+existing templates (the Fiddler Crab now to brachyuran, so it shares the crab's pinch; `creature-rig-r3` was updated to match, and Crayfish,
+Lobster and Hermit Crab still refuse). The five `fb1922a0` reds are green. Edge on the merged tree (`picker-smoke-11-merged`, worker controlling
+the page, real duels): Chimpanzee vs Centipede and Fruit Bat vs Crab, painted rigs, paced log, cached reload, zero page errors.
+-88. **Phone-tier CPU study (`3e34873a`, `audits/BATTLE2_LIBRARY_20260924/README.md`).** At 4× CPU (Chrome throttle), all seven library pairs hold 60 fps
+with zero refusals; stage CPU p95 is 3.5–6.5 ms, except Chimpanzee vs Centipede at 10.7 ms. The Centipede's skin is the phone-tier budget item
+(Codex). A device probe remains the gate.
+-87. **Picker status follows the study (`87f374cd`).** It reads "finished" or the failure reason instead of "playing" forever.
+-86. **Every painted creature has a voice (`c2409c93`).** Placeholder synthesized sets for all 13 body plans (serpent hiss, insect clicks, fish bubbles,
+bird chirps, crab click-bubble…). The quadruped set is byte-identical; 'brachyuran' is appended last, so no existing seed moves. Edge: Python vs
+Crab real duel, zero page errors. Recorded C3 masters still replace these.
+-85. **Playtest package on `3201cd86`: the first whose worker installs (2026-09-24).** `port/v2/apps/game/smoke/dev-preview-3201cd86834e-20260924200110/`:
+`preview:package`, `preview:verify` and `preview:smoke` PASS, and all 305 worker pins match. `picker-smoke-09-package --sw-control --duel` on the package itself:
+the worker controls the page; a real duel between Salmon and Octopus on the lake has its log paced by the stage (2.0 / 5.7 / 9.5 s); two painted rigs in each
+run; the arena reload uses 0 server requests; cold-pair control; zero page errors. **Play:** serve the folder on loopback (`python3 -m http.server 8080`
+inside it) and open `http://127.0.0.1:8080/?battle2=1&vs=Civet,Python&duel=1`. Supersedes `dev-preview-23e5f4ce5ec9-20260924143808`.
+-84. **Codex's item 5 applied (2026-09-24).** Codex's prepared patch was applied verbatim, and the Centipede's KNOWN pin removed in the same commit: its crawl no longer
+bobs the trunk, and the scale sweep demands zero refusals for all 17 at every scale. Control: the old crawl line reproduces the 0.85× fold. Codex commits the
+same line in `openai/mac`, so the identical change merges clean.
+-83. **Preview packages could never install their service worker; fixed (2026-09-24).** `tools/devpreview.mjs` stamped the four HTML files
+AFTER `vite build`, but the PWA plugin had already pinned their SHA-256, so the worker's install always failed (4 of 305 pins). The arena
+only "worked" in a package because no worker ever controlled the page. The stamp now runs INSIDE the build
+(`apps/game/dev-preview-html-plugin.ts`, the last `transformIndexHtml` step, only under `CF_DEV_PREVIEW_HTML`). The HTML is byte-identical to the
+old rewrite on all 4 pages, and all 309 pins match. The Edge duel smoke with the worker controlling the page passes on the stamped build
+(`picker-smoke-08-stamped`).
+-82. **A non-quadruped fighter FROZE THE WHOLE GAME in the flagged study; fixed (`86c9e3ed`).** The study's creature-voice hook has a source set
+only for the quadruped, so `deriveCue` threw inside `BattleStage.tick` for any other body plan whenever an audio port was supplied (the game
+supplies one). A throw inside a ticker callback stops Pixi's SHARED ticker, so the page stopped animating. Now a body plan without a
+source set gets no voice (labelled), and the study's tick is guarded (a throw fails the study, never the ticker). Both have negative
+controls. Found by the first smoke that watched a bout past 2.5 s and captured page errors.
+-81. **The picker plays a REAL duel with the Chronicle under the stage (`f6ee445f`, `&duel=1` or the checkbox).** `matchupDuel` builds full genomes carrying
+each painting's visual genes, then runs the combat domain's `runDuel`, `planCombatSettlementV1`, the cue plan and the Combat Chronicle, in `main.ts`'s
+order (pacer, start, stage). Every archetype fights a planned duel as champion and as defender and keeps its visual key. Edge with the worker in control:
+Civet vs Python's rows land at 2.4 / 6.1 / 10.0 s (its three hits), and the log completes as the stage finishes. This is the pacing proof
+item -80 was missing.
+-80. **The stage paces the Chronicle log (Nick 2026-09-24, decision 4).** `CombatChronicleController.setPacer(pacer)` (set before `start`):
+each step waits for `pacer.waitFor(transcriptIndex)`, never longer than `COMBAT_CHRONICLE_PACER_MAX_WAIT_MS` (12 s). Skip, hide, close and reduced motion are
+unchanged; without a pacer the 420/240 cadence is byte-identical. `createCombatChroniclePacerGateV1()` is the gate. `main.ts` sets it only under
+`?battle2=1` with motion on; the study releases each staged turn's row at its IMPACT, and everything on finish, failure or dispose. Tests: Chronicle
+(rows only on release and in order, every cue once; the max wait; Skip then a late release changes nothing; `setPacer(null)` restores the cadence;
+a controller that ignores the pacer fails 2) and wiring (release at impact before the turn ends, releaseAll on finish, dispose and failure). No
+real-browser battle run yet.
+-79. **The guardian stands in the foreground (Nick 2026-09-24, decision 1).** `GUARDIAN_STANDS.groundY` = 0.95. A ground fighter stands on its
+composed stand line in `placeCombatants`. The Bear rests at 0.673 of the frame (Edge film `bear-shipped-default`, 0/0 refusals, CPU 2.6 ms); the test
+checks the top and bottom stay in frame through an attack and a victory, and the ground-line control fails 4 of its assertions.
+-78. **The arena fits the pack: bindings gzip-compressed (`92fbe610`).** The builder writes `binding.json.gz`, and the asset source gunzips `.gz`
+(sniffing the bytes). The arena drops from 77.6 to 48.1 MiB; with the ~47 MiB shell that is ~95 of 128 MiB. Test: every gunzipped binding equals its fit's
+binding byte for byte.
+-77. **The painted arena plays in a built game under the service worker (`5229e4f1` merge + `92fbe610`).** `battle2-assets.json` pins every file under
+`public/battle2` for Codex's first-use lane (test: exact inventory, bytes and digests, with a one-byte control). Edge `picker-smoke-06-sw --sw-control`:
+the page is controlled; Tree Frog vs Salmon and Civet vs Centipede stage as two painted rigs; 46 files are fetched on first use; a reload with every
+arena file refused stages both painted rigs with 0 server requests; control: an unstaged pair gets 6 refusals and falls back to portrait rigs.
+-76. **Playtest package rebuilt on `23e5f4ce` (2026-09-24, day):** `port/v2/apps/game/smoke/dev-preview-23e5f4ce5ec9-20260924143808/`. `preview:selftest`,
+`preview:package`, `preview:verify` and `preview:smoke` (Edge 153) all PASS. It carries tonight's card fixes (bodies recolour, card = stage)
+and the slimmer arena. The ARENA inside it still needs an uncontrolled page (item -70); use the dev server for `?battle2=1`.
+Supersedes `dev-preview-c0e852320627-20260924043607`.
+-75. **Picker on an iPhone-class viewport (2026-09-24, `picker-smoke-05-phone/`, `23e5f4ce`).** At 390×844 @3 with touch, both matchups stage (PASS).
+**Look question for Nick:** on a portrait phone the 16:9 stage is a strip about a quarter of the screen high. A portrait battle framing
+(taller frame, or a stage that fills the width and height of the Chronicle mount) is a design decision.
+-74. **Arena files slimmed 97.7 → 81.4 MB (2026-09-24, `1e87a40a`).** The stage reads only the ALPHA of each keyed cut-out; the colour
+comes from the part atlas. So each keyed cut-out now ships as `parts/alpha.png` (RGB zero, alpha byte-identical, same decode path;
+18.2 → 1.8 MB), recorded as `derivedFrom` in `public/battle2/MANIFEST.json`. The test compares every alpha byte to the source for all 17,
+with a mutation control; an Edge build smoke passes (`picker-smoke-04-alpha/`). Measured and not done: the arena plates in lossless WebP
+would save about 5 MB, but `wild-anchors.json` pins each PNG's SHA-256, so it would mean re-sealing. The painter master (13 MB across 16)
+ships only so `admitFamilyRecord` can hash it (Codex's loader: prompt item 8). `MANIFEST.json` already lists every arena file with its
+bytes and SHA-256, which is the pinned list a worker lane needs (prompt item 4).
+-73. **Guardian size, one look for Nick (2026-09-24, `audits/BATTLE2_GUARDIAN_SIZE_20260924/README.md`).** The top cap (-69a) keeps the bear's
+victory rear-up inside the frame, but shrank it at rest from 0.70 to 0.55. The one lever that wins the size back without leaving the frame
+is to stand the guardian lower, in the foreground. Three Edge films on the real stage (bear vs crab, 0 / 0 refusals, CPU p95 2.5–2.6 ms):
+stand line 0.78 (as shipped) → rest **0.550**; 0.87 → **0.615**; 0.95 → **0.673**. The rear-up stays in frame in all three
+(`guardian-size-sheet-01.png`). The harness knob `script.guardianStandY` is for look studies only; its first run was vacuous (placement
+reset the stand) and was caught by the report's `stands`. Nick decides; if he chooses lower, it becomes one constant beside `GUARDIAN_STANDS`, with a test.
+-72. **Reference docs refreshed (2026-09-24).** Six docs now describe the painted card, the morph and the painted library in the arena:
+`ART_DIRECTION.md`, `CREATURE_ANIMATION.md`, `SPECIES_AND_GENOME.md`, `UI_PRESENTATION.md`, `celestial-frontier-codebase-reference.md` and
+`battle2/README.md`, each with a `matches code as of 2026-09-24` marker. A writer drafted each doc from `audits/BATTLE2_LIBRARY_20260924/DOCS_BRIEF.md`,
+then an independent verifier checked every claim against the code and ran the cited tests: 189 claims checked, 76 corrected before they
+landed. Two stale code comments it found are fixed too (the guardian's 0.70 fill; the arena fetch "dev-only").
+-71. **Body-plan coverage study (2026-09-24, `audits/COVERAGE_STUDY_20260924/README.md`).** Question: can one painted archetype stand in
+for its whole body plan? Two independent judges per species (an anatomist and a player, each looking at the stand-in painting and told what
+the morph can and cannot change), a third on disagreement: **14 good, 93 caveat, 454 misleading of 561**. Another 53 have no stand-in at all.
+The Civet is stretched over 204 species, the Salmon 131 and the Eagle 101. The ranked plan proposes 138 new archetypes: the top 10 fix 120 and
+the top 20 fix 195, and each entry carries a `mustPaint` brief. Four rules came out of it: paint on a PLAIN base coat with each painting's own
+six masks; cheap wins without new painting (Python masks → Garter/King Snake/Boa; Beetle → Carrion Beetle; Fiddler Crab's profile to
+brachyuran); 53 species need their profiles pointed at existing unused templates; five archetypes need a rig change first. Model judgements
+rank the work; Nick's eye decides the art. Nothing is wired.
+-70. **Found: the built game's service worker refuses every painted-arena file (2026-09-24).** Once `service-worker.js` controls the page,
+every same-origin GET outside its build marker answers 503. The marker is `Object.keys(bundle)` (`pwa-build.ts`), and `public/battle2/**`
+(133 files, 117 MB) is never in the bundle. Evidence: `picker-smoke-03-sw-503/report.json` (*"battle2 asset keyed/wild-launch.png: HTTP 503"*).
+The same build with the worker refused (`picker-smoke.mjs --no-sw`) passes (`picker-smoke-03/`). Precaching 117 MB is not a phone answer. The
+recommendation to Codex is a SHA-256-pinned lazy lane for `/battle2/` (prompt item 4). **This means the -67 package's arena fails on a
+worker-controlled page; use the dev server (handoff above).**
+-69. **Adversarial review of the whole painted-library batch, and its fixes (2026-09-24).** Six reviewers, then two skeptics per finding, confirmed
+18 findings; each is fixed with an outcome test and a negative control, in two commits:
+(a) **The arena tests only ever played turn one.** The loops rewound the clock, so every later turn ran at negative time. The fix exposed
+the Bear guardian leaving the top of the frame in its victory rear-up. `combatantPresentation` now caps every fighter's tallest pose inside
+the frame above its stand; the bear rests at 0.551 of the frame (a look decision for Nick). It also exposed the Centipede's skin fold: a
+scale sweep (all 17 × 0.85/1/1.15) shows it at 0.85× only, pinned as KNOWN for Codex.
+(b) **The rest:**
+- The torso never took the colour gene on 11 of the 17 archetypes (a part on joint `root` had no group).
+- Card and stage disagreed on nested scaled parts and on the Centipede's head pivot. `cardProportionV1` is now the stage's transform,
+  equal to 1e-9 on every archetype.
+- Emissive did nothing on the Chimpanzee.
+- One card render per host task.
+- A land fighter facing a swimmer stood under water. The lake now fills only the swimmer's half, with a faded shore.
+- Hits on a flyer landed on the ground, and its cursor sat above the frame. Effects now aim at the painted body.
+- The swimmer's box assumption put the Vent Crab 21 px below its band. It now uses the rig's measured extent.
+- Several tests could pass while broken; they are rewritten.
+One placement pipeline (`battle2/placement.ts`) serves the game, the harness and the tests. A new test stages all 17×17 picker pairs on a
+real stage with the real Wild anchors. Its first version passed vacuously. With anchors, its control reproduces the browser's
+"stand point must be normalized" failure on every Salmon pair.
+-68. **Matchup picker (2026-09-24, `0ff8cfd9`).** `?battle2=1&vs=Python,Eagle[&world=lake|land][&seed=N]` puts ANY two painted archetypes on the
+real stage without a battle. Auto world = lake when a side only swims; there is a small overlay to pick again. The first real-browser run
+caught a right-hand Python's tail leaving the frame; each painted body is now centred on its stand (`02d1800e`; smoke `-01`/`-02` PASS).
+-67. **Playtest package rebuilt on `c0e85232` (2026-09-24):** `port/v2/apps/game/smoke/dev-preview-c0e852320627-20260924043607/` — `preview:selftest` PASS, `preview:package` (distributable, origin `https://dev-celestialfrontier.github.io`, not publishable), `preview:verify` PASS, `preview:smoke` PASS in Edge 153; carries all 17 archetypes' arena files. Play: serve the folder on loopback (e.g. `python3 -m http.server 8080` inside it) and open `http://127.0.0.1:8080/?battle2=1`; a battle whose champion or opponent is one of the 17 painted Earth species plays on the painted stage. Supersedes `dev-preview-f27c9052cf82-20260921151144`.
+-66. **The WET arena (2026-09-24).** `BattleStage` `water: { surfaceY }` draws a depth-banded procedural body of water behind the combatants (moving with the mid plate; dry foreground hidden); wired in the app and the film harness whenever a side fights in water. Outcome test negative-controlled. Lake films pass: Salmon vs Octopus, Eagle vs Salmon (air over water), Crab vs Starfish — 0/0 refusals, CPU inside tier. Unit 5,006 pass; reds unchanged (Codex's three). The whole painted library now fights on land, in the air and in water.
+-65. **The painted library in the ARENA (2026-09-24; `audits/BATTLE2_LIBRARY_20260924/README.md`).** All 17 archetypes now fight on the real stage: one generated list drives the card, the arena fit list and the shipped arena files; one shared record-source resolver; the Tree Frog's pad supports; one presentation sizing rule (`combatantPresentation`: mass rule → 0.42 width cap for long bodies → band fit for flyers/swimmers, scaled never clipped). `library-arena.test.ts` (all 17 attack + are attacked at 30 Hz, 0 refusals; all 17 sized to their place) and `battle2-archetypes.test.ts` (every served file present; negative-controlled). Four Edge films pass (Python/Tarantula, Eagle/Beetle, Chimpanzee/Centipede, Tree Frog/Fruit Bat; sheet `library-battles-sheet-03.png`). Unit 5,005 pass; reds unchanged (Codex's three). Next for Claude: a WET arena so the swimmers can fight visibly; for Codex: the Centipede skin fold seen at the -02 scale.
+-64. **One PR, no LFS — done (Nick 2026-09-24: "go: one PR, no LFS").** `anthropic/mac` pushed at `0c858a09` (remote = local; ~100 MB of new objects, no Actions run — every workflow is dispatch- or `labeled`-only, budget `UNFROZEN`). PR #43 retitled "Combined integration: battle stage v2, morph system, 17-archetype painted library (both lanes, supersedes #42)" with a body stating its real scope, the locally verified battery, and the three Codex-owned reds. **PR #42 closed as superseded** (comment on it; `openai/mac` untouched). Next hosted attempt only after Codex clears I5 / the crab-reach regression / its own override gate; then Nick cycles the label once.
+-63. **Nick's answers built in one pass (2026-09-23, latest; "stop stopping").** Commits (signed): merge `5c32a821`, root-tsc fix `cf28c30b`, library on the card `a62de909`, then this batch. **#2 (Codex's `overridecheck`):** Nick approved adopting it with this lane's seal values — but measured, **Codex's gate is red on Codex's own head** (from `d379e61d` the art tree reaches `skeleton-pose`→`fixed-attachments`; *"fixed-attachments.mjs@258 trusted built-in Object member escapes…"*), so this lane keeps its green gate (1014/1014 + controls) and adopts Codex's the moment it passes; handed to Codex with both seal values. **#3 (LFS/integration):** measured — a push of `anthropic/mac` adds only **223 new blobs / 100 MB** (the other ~1 GB of sprint evidence is already on GitHub via `openai/mac` `fe8f6ca1`; largest file 7.6 MB, none near GitHub's 100 MB limit; local pack 4.49 GiB). Recommendation: **no LFS migration** (it rewrites both lanes' history and GitHub LFS on a public repo has its own storage/bandwidth quota) and **one reviewed combined PR (#43)** with PR #42 closed as superseded; then Codex re-measures I5 on that combined head and Nick cycles the label once. Needs Nick's one-line "go". **#4 built** (`audits/MORPH_20260923/README.md` last section; design doc §5 note): per-body-plan `ACCENT_GROUPS` (accent is trim, ≤ 33 % everywhere; primate none), near-grey TINT mode (Salmon/Vent Crab/Chimpanzee), long bodies on the card's diagonal (Python/Centipede/Salmon), card = stage pinned in `morph-library.test.ts`; lumin stays "the painting wins". `library-card-sheet-03.png` is the look. **Sprint mode** written into `CLAUDE.md` + `AGENTS.md` and the Codex prompt (`audits/MOTION_ANATOMY_20260923/CODEX_PROMPT.md`, which now also carries the three merge defects: the `1dfeec2a` crab-reach regression, Codex's red gate, absolute record paths). Battery on this tree: unit 5,000 pass / 2 expected / 2 red (I5, stance-reach — both Codex's); tools 1 red (Codex's gate sentinel); typecheck ×3 + evidence build green.
+-62. **Sprint merged locally; the whole painted library is on the card; motion anatomy handed to Codex (2026-09-23, Nick: "all the sprint work looks great… make sure they're moving appropriately for their anatomy").** (a) **Codex prompt** `audits/MOTION_ANATOMY_20260923/CODEX_PROMPT.md` (signed `6d843f02`): diagnosis read from `family-actions.ts` — every rhythmic gait is `loop4(A, mid, -A)`, so the serpent/fish/myriapod chains are STANDING waves (the S flips in place, zero head→tail phase lag) where the animal needs a travelling wave; legged gaits have the right footfall groups but no duty factor, lift or metachronal ripple. Run: SPEC → instrument with both-way controls → baseline audit of every rig × action → fixes in severity order with every sealed gate unchanged → before/after review page, Python first. (b) **Merge of `openai/mac` `236b9846`** (39 signed commits) reconciled by hand — per-file record in the merge message; staged, **not yet committed: 1Password refused signing ("agent refused operation") twice** — Nick renews approval ("until quit"), then Claude commits the staged merge and the follow-ups below. **Not pushed** (evidence volume waits on the LFS/topology decision). (c) Measured on the merged tree: unit 4,995 pass / 2 expected / 2 red — I5 and `creature-stance-reach` (the freshwater crab's reach 0.072643 vs sealed 0.07165; bisected to Codex's `1dfeec2a` Beetle contact repair — Codex's); tools 1 red — Codex's `override-source-graph` sentinel, because this lane's `overridecheck` was kept (Codex's gate needs its two hdart seal lines set to this lane's committed TypeSafe re-lift values `93d1e…`/`50c43a…`; the auto-mode classifier stopped Claude editing seal hashes — **Nick's word needed**); `overridecheck` 1014/1014 + all controls PASS. (d) **Card:** all 17 archetypes wired through a builder that generates the registry + explicit asset map; **fixed my bug that no painted marking ever reached the in-app card** (outcome test red→green) and **my root-`tsc` red** (a type import dragged Pixi into the node program); `library-card-sheet-01.png` + three look findings (grey paintings barely morph: Salmon 74 % / Vent Crab 73 % / Chimpanzee 63 % near-grey; head/body graft also on Eagle, Beetle, Bat, Chimp; long bodies tiny on a square card: Python 8 % fill). Also for Codex: every sprint record's `source` is an absolute path into its worktree.
+-61. **The SECOND painted archetype's sheets — the Civet on the card (2026-09-23, `audits/MORPH_20260923/`):** step 7 of the morph program, now that Codex's six Civet marking masks (`f25098fa`) are merged and shipped. ONE generator (`archetype-sheet.mjs <EarthName> <slug>`) now serves every registered archetype through the REAL shipped card path, so the crab is re-run as the control: palette sheet (the archetype + 12 morphs), markings sheet (8 patterns × 3 rows), label-role map. Five controls green on both: own genome renders IDENTITY (card composite byte-identical to the sealed master), 12 palette tiles pairwise distinct, every masked pattern differs from plain (**Codex's six Civet masks all land**), the iridescent column (emissive, no mask) differs from plain in every row, the M1 proportion row differs on every pattern. No shipped code changed. **Two findings, both for Nick.** (1) **The base/accent split is right for the crab and wrong for the quadruped** — his own open question (2) of 9/22, now measured: `paletteRoleOfGroup` sends every non-`body`/`legs` group to accent, which is claws only on the crab (**5.6 %** of labelled pixels, reads as trim) but head + jaw + neck + ears + tail on the Civet (**38.1 %**) with a straight seam across the shoulder, so a strong accent grafts a second animal onto the body. `civet-accent-option-sheet-01.png` is the one-page decision: row 0 as shipped, row 1 with the head group on the base coat (ears and tail keep the accent), on the four individuals with the widest base↔accent hue gap (176°/169°/154°/91°); **row 1 reads as one animal in all four**. Both-way control: the variant changes every Civet tile and is a byte-identical NO-OP on the crab (no `head` group), so choosing it cannot disturb the five shipped crab archetypes. Claude recommends row 1; nothing ships until Nick says. (2) **The 9/22 sheet's "lumin (emissive)" row was inert** — byte-identical to the row above it (0 differing bytes of 595,584; the next row differs by 73,057, so the comparison works), because BOTH painted archetypes' own genomes carry `lumin: true` and the lumin gene is therefore an identity channel by the correct, tested "the painting is its own genome" rule. The system is right, the sheet row was not; `MORPH_20260922/README.md` now carries the correction and that sheet is retained as the failing control. The corrected sheets spend the row on M1 proportion and demonstrate M4 through the iridescent column. Product question left for Nick: with both archetypes painted lumin, the gene can neither add nor remove glow, so an individual without it still looks lumin — accept it (the painting wins, as with colour) or have the kit paint non-lumin masters.
+-60. **PR #43 hosted attempt #2 (run `35669457751`, head `cff600cd`): RED at `v2 base-profile static gates`, 4,873 pass / 3 failed (2026-09-23).** Two are HOSTED-ONLY TIMEOUTS at vitest's 5 s default, not logic: `local-model-delivery` "installs actual stream bytes…" and `specialized-anatomy` "all 12 candidate structures agree…" (5.33 s on this Mac — over the default on a slower runner). Both now carry an explicit 30 s timeout with the reason in the file; a timeout is not an assertion and no check was weakened. **The third is I5 and it is the real one:** `current-producer-authorities` demands `budgets/compendium-memory-v1.json`'s `producerAuthority` EQUAL the current build's producer, while `compendium-budget.test.ts` pins the sealed `357ad8db…` and asserts a current-producer mismatch fails CLOSED — so any app change reds this pair until a MEASURED re-seal updates the budget and its historical samples together (my hand re-bind was refused by those pins, correctly). That is Codex's instrument: handed to it with the exact diagnosis. Until it lands, every hosted attempt reds at this step, so no further attempt is spent.
+-59. **PR #43 head made battery-green locally (2026-09-23; pushed):** Codex's Glass fix `6910f2bf` merged (`46b00267`) and its `ui-shell-style.ts` reconciled BY HAND (`4b609fd3`): this lane's K19 (UI_SHEET_CSS owns the desktop panel anchors, the shell owns only the toast edge) and K21 (`#objchip`, the only Charters opener, stays visible under an open card/panel) kept; Codex's portrait-yield CLASSES added; its blanket `@media(min-width:901px),(orientation:landscape)` hide of `#objchip` dropped — it broke K21 at 1280×800 and phone portrait never matched it, so Codex's Glass result is unaffected. Two of my own errors caught by the tests and reverted: the Compendium budget's `producerAuthority` is a SEALED record with pinned tests (hand re-binds broke `compendium-budget.test.ts`; restored to `357ad8db…` — the only honest re-bind is a measured calibration), and a backtick inside a comment in `ui-sheet-style.ts` ended the CSS template literal and broke `vite build --mode evidence` (`55ca0d27`; the law is now written in that file). **State on this head:** unit battery 4,875 pass / 2 expected red / **1 red = I5** (`current-producer-authorities`, the stale Compendium certificate, unchanged since 9/02); Glass large-phone PASS; Glass small-phone PASS ×2 after one flaky `CHARTS_NATIVE_ACTIVATION` finding (native input dispatch landed off `#setcharts` once in three runs on an unchanged tree — an intermittent in Codex's instrument, recorded, not a product red); overridecheck 1014/1014 + 137 controls; legacy gates green; root layout 787/787.
+-58. **Civet marking masks merged and shipped (2026-09-23):** Codex `f25098fa` → merge `f4163450`; `build-card-masters.mjs` mirrors the six masks into `apps/game/assets/painted-cards/civet-sentinel-input-01/markings/` (the card source takes them automatically; card tests 6/6). I5: `compendiummem.mjs --calibrate` is CLOSED while a measured budget is active ("candidate calibration is closed because the measured Compendium budget is active") — the fresh certificate path is the standalone candidate run (`npm run compendiummem`, exact Edge, one attempt, no retry) which reports the observed producer authority; the standalone run refuses when the built producer ≠ the budget's authority ("built index/owner/worker/painter does not match the Compendium calibration authority"), so the re-bind comes first (as on 9/02): `producerAuthority` re-bound from `print-producer-authorities.mjs` (evidence build) — old `357ad8db…` (9/02 producer) → new `9bfcefce…` (index `5167e2f2…`, owner `tame-greeting-audio-de5qrXzU.js`, worker/painter `species-art.worker-BpAtCvTQ.js`, service worker); `producerBudgetMatches` true; then one standalone candidate measurement (`npm run compendiummem`, exact local Edge, no retry) as the fresh certificate — its run id and 78/78 (or its red) recorded here. First candidate `20260921200029298-39691-a134b0c137` INSTRUMENT-FAIL "phone: review screenshot row focus/ring was not visibly contained": U1's `ui-sheet-style.ts` rule `:is(.panel,#survey) :is(button,input,select):focus-visible{outline:2px …;outline-offset:2px}` overrides the global 3 px focus law for every panel control, so the Compendium row's ring measured 2 px; the row's own rule now restates `outline-width:3px` (index.html). Codex: U1's 2 px/+2 px ring for panel and survey controls is below the 3 px law everywhere else too — a U1 item for its next run.
+-57. **Battery reds fixed locally before any second hosted attempt (2026-09-23; Nick: "let's fix it all"):** PR #43's run `35624302186` went red at the legacy gates on `TRAINING RESTART FIXTURE MISMATCH` — the 9/21 re-seal note lived inside the compared fixture object; the fixture is exact capture output again (`28d2504b`, note in `training-restart-fixture.RESEAL.md`); all six legacy gates green locally. Then the v2 stage: `overridecontrol` had been red since Codex's topology-capture restructure of the art resolver (2026-09-16/17; neither lane ran it): the gate now audits `paintOverrideCanvas` as the route-path body (paintWithTopology-wrapped painter calls, `g` + optional `observeTopology`, four-argument procedural fallthrough), hash-seals the `resolveOverrideCanvas` wrapper and `paintWithTopology`, approves ONE reviewed relative escape (`painter-topology.ts` → `creature-animation/repeated-anatomy.mjs` `appendageCounts`, three negative controls), re-blesses the two art-lift hashes (9/21 re-lift), and the control's mutation anchors follow the current text — overridecheck 1014/1014 routes, 137 controls PASS. Browser gates run locally: launcher selftest PASS, root layout 787/787 PASS. **Glass phone preflights RED (both viewports): `MOBILE_CHROME_NOT_YIELDED` — opening a survey on a phone must hide the trail AND the objective chip; since U1 (Codex `d8f40ca0`, 2026-09-06) the chip stays visible (`#objchip` moved into the header grid; develop's `body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}` was dropped).** Two CSS attempts measured and reverted: the broad rule breaks U1's own floating-trail fixture (it needs the chip as the trail's visible predecessor under a panel); the card-only rule collapses the sheet floor in the charters flows (the U1 sheet layout measures the chip; a body-class visibility change is not observed → `CONTROL_OUTSIDE_VIEWPORT`, collision fixture red). This is U1's design vs the older Glass law and belongs to Codex (its layout, its fixture): make the objective chip yield under an open survey on portrait phones through U1's own layout path (the `sheet-guidance-yield` mechanism or an observed body-class toggle) so `survey-chrome-yield`, the floating-trail fixture and the charters flows all pass — evidence logs in Claude's scratch; the check text and the two failing fixture messages are in item -57. I5 calibration still needs a committed clean tree (1Password refused signing for ~2 h tonight).
+-56. **PLAYTEST PACKAGE built, verified and browser-smoked (2026-09-23, this commit):** `port/v2/apps/game/smoke/dev-preview-f27c9052cf82-20260921151144/` from exact head `f27c9052` — `preview:verify` PASS, `preview:smoke` PASS (loopback, Chromium 320×568: trail Milky Way › Sun (Sol), distributable without diagnostic API, Guide identity "Celestial Frontier v2.0 development build f27c9052…"). It carries the battle2 stage with the six shipped fits (arena `?battle2=1` study), morphed individuals, the painted card, the markings; it ships WITHOUT the local-AI runtime (-55). It is a REVIEW ARTIFACT (runs on loopback, refuses remote execution); a publication candidate for the dev origin needs `--approved-publication-candidate` + Nick's publication act per `DEVELOPMENT_PREVIEW.md`. PR #43 waits on Nick's `actions-full-chain-approved` label; its head is `f27c9052`.
+-55. **Preview snapshot vs the local-AI runtime (2026-09-23, this commit):** the exact-commit snapshot can never carry `tools/local-image-generation/node_modules` (ONNX runtime, tokenizers — installed, untracked), so `apps/game/kit-runtime-assets.ts` now emits the local-AI runtime files when installed and otherwise writes `__local_ai/MISSING.json` + a build warning instead of failing the whole build — the playtest package ships WITHOUT the local AI runtime (desktop-only, opt-in track T; everything else is present). Local `vite build` with the runtime installed emits all files and an empty MISSING list. Codex: its file, additive; if the local AI should be in previews, the producer needs an install step for that folder (a decision, not a bug). Snapshot list also carries the tracked `tools/local-image-generation` folder (1.2 MB).
+-54. **The playtest build resolves (2026-09-23, this commit):** the preview producer builds from an exact `git archive` of `port/v2` only, so the app must ship what it fetches. `tools/morph/build-shipped-battle2.mjs` mirrors the battle2 runtime assets into `apps/game/public/battle2/audits/…` (arena recipe/anchors/plates/keyed phases, the six fits' record/binding/keyed/manifest/atlas/markings, the painter masters at their `record.source` paths; 52 files, 31.3 MB, `MANIFEST.json` with sha256s) keeping the proof folders' relative layout, and `battle2-wiring.ts` resolves against `/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json` — no `?url` into evidence; the card archetypes are shipped the same way under `apps/game/assets/painted-cards/` (-53's fix). Two Codex-lane imports outside the subtree (`ART_KIT.md?raw`, `tools/local-image-generation/kit-contact-math.mjs`) are added to the producer's snapshot list. `npx vite build` (distributable) ✓; wiring + card tests green.
+-53. **PR #43 opened — `anthropic/mac` → `develop` (2026-09-23, Nick: "create the PR, get development updated, play test"):** https://github.com/TheDakk/Celestial-Frontier/pull/43 — every commit since PR #41 incl. every Codex packet (openai/mac `3f0607be` is an ancestor; supersedes #42). The harness refused Claude the `actions-full-chain-approved` label (the protocol's Nick-owned act): **Nick applies it** (the full chain's fresh Compendium certificate is what clears the I5 red; the default agent lane would stop short). Then: green → standing merge authority → merge; then the development preview package per `port/DEVELOPMENT_PREVIEW.md` for the playtest (publication of the preview origin stays Nick's).
+-52. **M4 without a marking (2026-09-23, this commit):** a lumin or iridescent individual with no painted mask glows on its ACCENT set (`applyEmissiveAccentV1`, half the marking lift) — on the stage (accent frames) and the card (accent labels); an iridescent plain crab changes only its accent texels, alpha untouched. Law confirmed: the crab archetype's own genome is itself `lumin`, so a lumin crab with its own colours IS the painting (identity) — the glow appears for genes the painting does not already carry. `card-markings-sheet-01.png` regenerated (row 2's plain/iridescent tiles now glow on the claws).
+-51. **Morph texture cache on Codex's borrowed-atlas option (2026-09-23, this commit):** `3f0607be` merged (`50c01248`; the loader's options unified: `borrowedAtlas` + `jointScale` + `atlasPixels`; `decodeMorphedAtlas` exported). `morph-atlas-cache.ts`: one morphed texture per (archetype, genome visual key, marking), produced once and shared by every borrowing rig, ref-counted, LRU-evicted only when unreferenced beyond the cap (8 entries / 96 MB), `clearUnreferenced()` for teardown; the game wiring borrows from the app's cache for every morphed individual and releases its leases when the study is disposed (the archetype itself still takes the loader's own guarded decode). Tests 2/2 incl. two real crab rigs sharing one texture that survives both disposals and dies on eviction; full battery 4,870 pass / 2 expected red / I5 (the known certificate red).
+-50. **M3/M4 — painted markings on the stage and the card (2026-09-23, this commit):** Codex's six crab marking masks merged (`d8a1a8f9`; Nick: "looks good"). `morph-markings.ts`: v1 `FA_PATTERN` names; `markingNameV1` / `emissiveV1` (iridescent or lumin); `masterMaskToAtlasV1` maps a master-space mask into the atlas through the binding's parts, GATED by each part's own atlas alpha (cut-out boxes overlap — ungated, 20,220 marked texels landed on clear atlas); `applyMarkingV1` blends the accent hue (luminance kept; tonal contrast when the accent is the archetype's own) by mask × 0.85, emissive lifts luminance/chroma. Threaded through `individualFromGenomeV1` (mask in master space, mapped inside the remap), the card rasteriser (mask scaled to the card master, applied before proportion), the card source (`markings.json` optional, per-pattern fetch), the game wiring (`loadMarkingMask`, never throws) and the native runner/entry (masks shipped per side). **Law found on the first film:** the fit record's `genome` block carries motion genes only — the archetype's OWN visual genes come from `identity.speciesVisualKey` (`archetypeGenomeV1`); before it, `color 12` on the crab read as a morph and the striped crab filmed teal (`striped-vs-eyespotted-lumin-01`, retained). Tests: morph 58, wiring 11, battle2 84 + 2 expected. Sheets for Nick: `audits/MORPH_20260922/card-markings-sheet-01.png` (crab × eight patterns × three rows: own colour + turquoise accent, the same emissive, crimson/golden). Film `striped-vs-eyespotted-lumin-02`: orange crab with turquoise stripes vs golden crab with crimson emissive eye-spots on the real stage — DIAGNOSTIC_PASS, 0 refusals, **1.70 ms**.
+-49. **Codex's rigid-support IK merged and proven on the stage (2026-09-23, this commit):** `58f81e54` → merge `137c272a` (ROADMAP ours). The bear under OBSERVED painted supports on the real stage: **0/216 refusals** (was 77, item -44); native film `bear-vs-crab-03-observed` DIAGNOSTIC_PASS, claw ×2, 0 refusals, **2.80 ms** — the 5 ms desktop guardian tier is measured and passed (D2 §5). The native film entry takes `script.supports: 'observed'`. Gallop/tail compression remain Codex's independent refusals in the full-library static. Suites: battle2 + morph 108 pass / 2 expected red. The morph + card batch is committed and pushed (`4f175221`, signed).
+-48. **The painted individual on the CARD — built (2026-09-22, late; Nick: option 3, phone included):** `tools/morph/build-card-masters.mjs` seals a ≤512² card master + labels + receipt per archetype (six: five crabs from labels.png/declaration, the Civet's labels derived from its binding's atlas frames; alpha from `parts/keyed.png`); `morph-card.ts` renders the individual Pixi-free (palette exact, proportion by label-region scaling about the sub-tree root's pivot, composited far base → far trees → near base → near trees, alpha-box crop + margin, alpha-weighted downscale to 132/440); `png-encode.ts` (exact, `CompressionStream`) → data URL; `painted-card-source.ts` (archetype registry by `_earthName`, render, LRU cache, in-flight dedupe, lease/request adapters); `SpeciesArtLoader` asks it FIRST for every thumb and portrait and counts its answers (`paintedCardCounts()`), painter tier otherwise; `painted-cards.ts` SHIPS the six archetypes' card masters, labels, receipts and records as app assets (`?url` imports; the evidence build carries them, 14–248 KB each) and wires the source into `main.ts` — the painted card works wherever the app runs, no dev-only fetch. Tests 51/51 in `morph/` (card raster on six archetypes, source cache/dedupe/eviction, loader interposition with the painter producer never asked). Sheet for Nick: `audits/MORPH_20260922/card-sheet-01.png`. **Law found on the first card sheet:** the painting IS its own genome — the crab archetype's genome says `color 12 teal` while its accepted painting is orange, so morphing the archetype's own genome recoloured it; `morphParamsV1(genome, hash, archetypeGenome)` now treats a gene equal to the archetype's as that channel's identity and other genomes morph RELATIVE to the painting (the individual loader and the card source pass `record.genome`; the golden fixture keeps its no-archetype mode). Finding: a low-chroma archetype (the vent crab's pale master) takes no colour morph under the grey rule — markings/accent will be its lever. Honest limits: card rasters are exact per (archetype, genome) on one engine; cross-engine byte parity is not claimed (trig in the hue mean may differ by 1 LSB) — the genome is the truth, the raster a presentation.
+-47. **MORPH step 4 — the individual reaches the game (2026-09-22, this commit):** `png-decode.ts` — exact JS PNG decode to STRAIGHT-alpha RGBA over `DecompressionStream('deflate')` (byte-identical to pngjs on the six atlases + keyed cut-outs, 7/7 with crc/truncation/signature controls) because the loader forbids canvas round-trips on translucent atlases; `loadCreatureRigV1(..., { atlasPixels, jointScale })` additive branch `decodeMorphedAtlas`: decode → the individual's remap → the opaque seam-guard texels written into the same buffer → `BufferImageSource` texture (refuses a remap that touches alpha or size); `morph-individual.ts` `individualFromGenomeV1({record, binding, card, genome})` is the one seam the game wiring (`battle2-wiring.ts` buildRig) and the native film entry (`script.morph[side]`) call — identity genome → the archetype's own path, byte-identical. `morph-individual.test.ts` 3/3: a crimson big-headed crab through the real loader on the node path the browser takes (eye stalks scaled about their pivot, every leg joint within 1e-12 of the archetype's, deterministic). **Filmed:** `audits/MORPH_20260922/crimson-vs-turquoise-01` — two individuals of the crab archetype (crimson big-headed vs turquoise) on the real stage in Edge through the morphed-atlas branch: DIAGNOSTIC_PASS, 0 refusals, **1.80 ms** (remap once at load, no per-tick cost). Suites: morph 31, battle2 84 + 2 expected red, wiring 11, creature-rig — 102 pass. Compendium-card parity is the recorded follow-up (the card renders the painter tier today).
+-46. **MORPH step 3 — M1 proportion on the pose program (2026-09-22, this commit):** `kinematics.scaleAround`; `createSkeletonPoseProgram(def, landmarks, { jointScale })` composes a uniform scale about the joint's own pivot into its local frame (sub-tree inherits; default byte-identical; `skeleton-pose.test.mjs` 5/5); `loadCreatureRigV1(..., decodeAtlas, { jointScale })` additive (Codex's loader, default none — recorded for Codex); `morph-skeleton.ts` `jointScalesV1(card, params)` scales only the head / tail / ears / antennae sub-tree ROOTS (a group joint whose parent is outside the group) — legs and contact chains never. `morph-skeleton.test.ts` 14/14: Civet head 1.2× / tail 1.35× about the parent pivots with every paw exactly in place and a taller `tallestHeight`; all six rigs play a whole turn (attack, hit, dodge, faint) at both envelope corners with zero refusals (M-A). Total morph suite 28/28; battle2 84 pass / 2 expected red.
+-45. **MORPH SYSTEM steps 1–2 built (2026-09-22, this commit; Nick: "critical path, I need that to work"):** design `audits/VISION_PROGRAM_20260920/MORPH_SYSTEM_DESIGN.md` (channels M1 proportion / M2 palette / M3 markings / M4 emissive; determinism; gates M-A…M-E; build order; two Nick decisions). Code `port/v2/apps/game/src/morph/`: `morph-params.ts` — genome → `MorphParamsV1`, a pure function of the genome's v1 integers + the archetype recipe hash via `hashInt` (identity when no visual genes; hue band per `SP_COLOR` name ±12° seeded jitter; low-chroma names desaturate; proportion envelope with recorded clamps); sealed golden (64 seeds × 2 archetypes, `morph-params.golden.json`, `seal-golden.mjs`). `morph-palette.ts` — luminance-preserving atlas remap by part role (base = body/legs, accent = the rest, shadow kept), the archetype's own dominant hue rotated onto the target so the painting's hue relationships survive; `paletteConservationV1` (alpha 0 / outside 0 / luminance ≤ 2/255). Tests 14/14 on the six real atlases with negative controls. **Instrument trap recorded:** `expect(x).not.toBe(y)` on a 16 MB typed array makes vitest pretty-print both eagerly → 4 GB heap death (the Civet); compare identity, never `toBe`, on big buffers. Sheet for Nick: `audits/MORPH_20260922/crab-palette-sheet-01.png` (archetype + 12 seeds, remapped on the painter master by label role; Civet remap 46 ms / 2039² atlas). Finding: the crab body card puts claw palms/tips in group `body`, so the accent hue shows on the arm segments only — an archetype-side base/accent declaration (design §5.2) will fix the grouping without touching the card. `tools/ts-resolve-hook.mjs` runs one-off TS scripts under `node --experimental-strip-types`.
+-44. **Codex's overnight packet merged `d09695f9`; mud/vent walk (2026-09-22, this commit):** with the far legs declared folded the stage's reach probe reads mud/vent at the probe CAP (`STANCE_REACH_CAP` 0.5 per stance = one body length per gait cycle, ×0.9 → 0.45; Codex's helper reads 0.507/0.837 raw) — films `mud-crab-attacks-civet-01` and `vent-crab-attacks-civet-02` DIAGNOSTIC_PASS, one planted cycle each, 0 refusals, 3.10/2.90 ms (`vent-…-01` retained: the runner refused on a source edit mid-run). Freshwater's 0.127 → 0.063 was NOT a solver regression — Codex traced it to this lane's probe change (both half-cycles × 0.9, `1dab84c2`); ROADMAP -39's "regression" wording is withdrawn. Bear: the observed-support residual oscillates at `hindFarAnkle` (0.305 px, endpoint-only ankle fixed point), gallop 0.258 px over compression; Codex proposes ONE Nick decision — an analytic rigid-support IK branch for endpoint-only supports (limits/compression/gate unchanged). REST static: 18/20 rows complete at the solver, painted drift up to 33.9 px in faint (surface planting ≠ solver admission). The R9 finished mud/vent fits are stale by the reseal (receipts bound to the old recipe hash): pinned `it.fails` in `finished-fit.test.ts` until the finisher re-runs on the resealed records. battle2 56 pass / 2 expected red.
+-43. **Bear in the A2 planted-cadence test + Codex's overnight read (2026-09-22, this commit):** `a2-cadence.test.ts` 14/14 — the guardian walks its approach on the guardian stands with stance feet fixed < 0.5 px per window from both sides, zero refusals. Codex's lane (read-only, not yet merged — its run is still writing): `756c366d` bear convergence — the observed-support residual PLATEAUS (pass 0 0.177 → pass 3 0.264 → pass 32 0.305 px; worst support always `hindFarAnkle`, the partly occluded hind-far leg): a geometric conflict at that ankle lock, not slow convergence; `8dd8d42b` rest-support static mode — every row completes on the solver, the painted-surface drift gate reads RED (2–10 px drift on tame/feed/presentation); `99fc32ee` mud/vent far legs declared folded on the crab-fits-03 fits → reach mud 0.040 → **0.507**, vent 0.032 → **0.837** body lengths per stance (freshwater 0.070, no folded legs). Merge + re-film mud/vent when Codex signs its packet.
+-42. **D2 G7 sheet (2026-09-22, this commit):** `audits/VISION_D2_GUARDIAN_20260921/G7_SHEET/brown-bear-review-sheet.png` — one page: the generation-01 master, the compiler's reading, Codex's fit-01 labels (colourised by id), and the three film stills (-01 rest fill / -02 tallest-pose fill / bear as target); `compose.mjs` + `manifest.json` regenerate it. D2 is complete on the automatable side; Nick's eye on the sheet closes it.
+-41. **Guardian as target + in the E1 outcome suite (2026-09-22, this commit):** film `crab-attacks-bear-01` (bear on the right, mirrored stands 0.18/0.70) DIAGNOSTIC_PASS, pinch ×2, 0 refusals, 3.40 ms; `e1-outcomes.test.ts` gains the guardian case — bear attacks (claw), is hit, dodges, wins, faints across seeded turns at 30 Hz on the guardian stands: zero refusals, landmarks inside the frame every tick (9/9). D2 G6 is complete on the automatable side; G7 (one review sheet: master, compiler reading, fit, film row) is the remaining D2 item and waits on Nick's -01/-02 look.
+-40. **Guardian eye findings built + re-filmed (2026-09-22, this commit):** the parts rig measures its TALLEST pose at load through its public path (crab ×1.00, Civet ×1.26, bear ×1.38 of rest; `BattleRigV1.tallestHeight`); the guardian fill sizes that pose (`GUARDIAN_FRAME_FILL` 0.96 → the bear stands at 0.70 of the frame, head under the HUD band when rearing); `composeArena(..., { guardianSide })` moves the stands to `GUARDIAN_STANDS` 0.30/0.82 (game wiring + native entry compose after the rigs). `d2-guardian-fill.test.ts` 9/9 (landmarks inside the frame through the turn, stands clear from both sides), battle2 55/55, wiring 11/11. Film `bear-vs-crab-02` DIAGNOSTIC_PASS 0 refusals 3.00 ms, kept beside `-01` for Nick's choice (bigger bear that leaves the frame vs 0.70 always inside). `combatantScale` without options byte-identical (its test).
+-39. **D2 G6 built and FILMED; Codex's bear fit merged; static RED reviewed (2026-09-22, this commit):** merged Codex `b8829a88` (signed bear comparison fit `1ff30009`, static verdict RED 15/20 rows on the painted-support residual 0.254–0.269 px vs 0.25). Review on the real stage: REST supports (the stage's default) 0 refusals through a full turn on both viewports; OBSERVED supports 77/216 samples refuse — the RED is the observed-support iteration on this fit, handed to Codex with diagnostics (`audits/VISION_D2_GUARDIAN_20260921/G6_CLAUDE_REVIEW.md`). G6: `BattleRigV1.guardian` carries the record's guardian block; `stage.ts` scales a guardian rig with `combatantScale(..., { frameFill: 0.9 })`; `d2-guardian-fill.test.ts` 8/8 (drawn height within 2 % of 0.9 × frame, both viewports, both sides, zero refusals; crab byte-identical), battle2 54/54. Film `audits/BATTLE2_D2_GUARDIAN_FILM_20260922/bear-vs-crab-01`: DIAGNOSTIC_PASS, claw ×2, 0 refusals, **3.10 ms** (guardian gate 5 ms). Two eye findings for Nick: rearing head leaves the frame at 0.9; the stands overlap before the lunge (guardian stand offset). `loadFitDir(dir, contact?, contactSupports?)` loads any fit directory.
+-38. **Quadrupeds on the family solver + A2 on all six rigs (2026-09-22, this commit):** the Civet leaves the compat solver (0.0000 px idle drift, zero refusals, reach 0.27); the reach probe samples both half-cycles with a 10 % margin; `a2-cadence.test.ts` runs five crabs + the Civet from both sides — 12/12, battle2 46/46. Mud and vent walk at 0.040/0.032 body lengths per stance (their far legs are folded — Codex's body-planted-folded-legs item will lift them). Civet-vs-crab re-filmed on the family solver: DIAGNOSTIC_PASS, one planted 869 ms cycle, 0 refusals, 3.20 ms (`audits/BATTLE2_A2_CADENCE_20260922/civet-vs-crab-02`).
+-37. **A2 filmed (2026-09-22, commit `0f762b28`):** crab-attacks on the cadence stage DIAGNOSTIC_PASS (0 refusals, 3.40 ms, two planted cycles then the pinch); the first film's 7 refusals were a facing sign error, fixed (`6c37f8a8`) and locked by a both-sides outcome test. Codex's block (measured reach in its helper, body-planted folded legs, nine-subject rerun, bear fit) is unchanged and waiting for "go".
+-36. **A2 built (2026-09-22, commit `df1c987e`):** cadence-owned approach (whole cycles ≤ 900 ms, feet planted in the arena, lunge to impact), measured `stanceReach` per rig (0.26/0.29/0.13/0.09/0.08), real-stage outcome test green; legacy rigs byte-identical. Codex's helper (`createStrideCadence`) should take the per-cycle travel as an input — its 0.2 constant is now known to be one crab's number.
+-35. **Re-merge of Codex `6279e180` (cadence, S2 halt) + review (2026-09-22, commit `8d61c0cf`):** Codex's cadence helper landed; its native run halted on the freshwater crab at 0.072 body lengths. Claude's solver-level review: stance reach is per subject (0.2/0.2/0.1/0.07/0.07 over the five crabs), set by the far legs; the parts rig now passes Codex's unit unchanged (battle2 36/36). Codex's next block (above) is the measured reach + body-planted folded legs, then the nine-subject rerun and the bear fit.
+-34. **Re-merge of Codex `5c17971f` + third pin green + bear ADMIT (2026-09-21, merge `81ec4411`):** ContactPhase.stageDisplacement consumed by the solver, passed by the parts rig; **all three E1 pins green (battle2 34/34)** under the measured contract: exact planting up to 0.2 body lengths of stage travel per stance, refusal beyond. **Brown Bear generation-01 ADMITs** with four endpoint paws under `tail: absent` (third quadruped, no code change); generation-02 refuses on a body-thick far hind leg (P3 limit on massive animals). Both generations are 1254² — G1's 1536 requirement is red twice with identical prompts (the tool ignores the size). Open for Nick/Codex: the stage's run-up unit vs the solver's 0.2-body-length reach (stride cadence or clamp) before the stage passes the displacement.
+-33. **Bear fixes measured (2026-09-21, commit `ff1cbeda`):** appendage `absent`/`hidden` declarations now remove the slot; with a trial `tail: absent` the bear ADMITs with four endpoint paws at side-view length weight 0.25 (Civet/Wolf/crabs byte-identical at every weight — 0.25 is the default). Codex's bear declaration (tail absent, hindFar folded if it stays occluded) is the data half.
+-32. **Re-merge of Codex `ce237867` + G3 (2026-09-21, merge `0227f411`):** Codex's solver stage-support producer (S2 PASS: crabs bit-identical, Civet ≤ 0.1653 px) merged; it removes the local stride in stage mode and leaves the stage displacement to the caller — the parts rig now passes `stageDisplacement` (RigPoseContext → phase); **one solver ask left for Codex: accept `stageDisplacement` and recede stance targets by it** (third pin stays `it.fails`, 184 px = the stage travel). Coconut's declaration consumed (refuses on the merged finger, recorded). Brown Bear G3: 1254² not 1536 (Codex's size red retained); four paws + tail assigned; refuses on `hindFar` as a loop; the tail slot takes the rear-most foot (stub-tailed species: declare the tail absent) — README slice 33. G6 waits for a bear record.
+-31. **Slice 32 (2026-09-21, commit `a686e0aa`):** fork-aware ridge (local contour cut + gape test) measured three ways and rejected — a closed claw's gape is not an interior contour on these paintings; option kept at 0. Structural levers on seven subjects are exhausted; the next inputs are Codex's solver fixes and the Brown Bear (G3 through the compiler).
+-30. **Re-seal + re-lift under Nick's decision (2026-09-21, commit `86fbaf5a`):** training fixture/test html seal → `a65d5905…`; `lift-hdart.mjs` re-run; speciesportable byte-seal re-blessed; suite 4,770 pass. Decisions 1–4 recorded under "Nick" below.
+-29. **E1 re-filmed on the family solver (2026-09-21, commit `11a45b4c`):** `audits/BATTLE2_E1_PROOF_20260921/` — Civet-vs-crab DIAGNOSTIC_PASS (0 refusals, 3.30 ms p95) and **the crab attacking with a pinch through the stage** (0 refusals, 3.40 ms) on Codex's delivered crab fit. Third pin still red with the solver double-count finding.
+-28. **Re-merge of Codex's R3-S → §8 (2026-09-21, merge `9ee651d2`, signed and pushed):** see Lane state above.
+-27. **Slice 31 (2026-09-21, commit `82c25377`):** `emit.mjs` — the compiler writes Codex-format `labels.png` + `declaration.json` per crab (`audits/INTAKE_COMPILER_20260921/compiled-01/`), with declared gaps (eyes unnamed; arm/palm split first cut; quadruped part vocabulary needed from Codex; no record written). P2 constants in body units are an option (byte-identical at 512); scale is not a lever (thinning topology). After this the Claude list is blocked on Codex's R3-S stop and Nick's D2 decisions.
+-26. **Slice 30 (2026-09-21, commit `f400328e`):** the coconut/freshwater "false endpoints" are the near claw's lone dactyl tips (5–6 px from the record) whose twin merged into one ridge at the 512 px working scale — a P2 graph defect, not a matcher one. Palm, twin-stub, thinness re-sweep and a working-scale sweep measured and rejected; the prerequisite is P2's constants in body units. Codex is running R3-S (authorized 2026-09-21).
+-25. **D2 G6 (2026-09-21, commit `3191d02b`):** `combatantScale` gains a `frameFill` option (guardian frame fill as an option of the scale, not a species branch) with three outcome tests (`arena-frame-fill.test.ts`, 3/3 pass, tsc clean); nothing wired until a guardian record exists (D2 decisions for Nick). After this the Claude list is blocked on others: E1 re-film and the parts-rig family solver wait for Codex's R3 re-merge; D2 G1–G5 wait for Nick's four decisions; R9 (b)/(c)/(e) need the canonical finisher/ownership map/native harness on Codex's lane.
+-24. **Slice 29 — option A done (2026-09-21, commit pending signature):** knees measured across four placements (exit + reference fraction stays; bend-based rejected at median 90 px); tail landmark = farthest leaf near the tuft junction (Civet tail3 65 → 42 px). **§6 PASS 2/7** (Civet, Wolf) on the committed run. D2 first-guardian design written (`audits/VISION_PROGRAM_20260920/D2_FIRST_GUARDIAN_DESIGN.md`: Brown Bear recommended, pipeline G1–G7 with owners/gates, CPU needs a guardian tier — four decisions for Nick). R9 (b) coconut rerun at workCanvasMax 1088: not run — the canonical finisher has no work-canvas flag on this lane and the run needs the browser + local model; recorded, not chased.
+-23. **§6 pass printed honestly (2026-09-21, commit `c4e7fabe`/`753d0cb7`):** `ic4.mjs` PASS = ADMIT + every named landmark within 60 px of the record: **PASS 1/7** (Wolf, verdict only; the Civet fails on `tail3` at 65 px), FAIL 6/7 — corrected from the actual run after `c4e7fabe` shipped a scope error; second-round declarations and the claw-attached test measured and rejected. Levers exhausted on these subjects: rules (slices 18–28), declarations, economics, ordering, interior edges, confidence. What moves it next is not on this lane: the remaining wrong feet are false endpoints beside the claws that every family-free feature measured so far shares with true legs.
+-22. **Slice 28 (2026-09-21, commit `b21789a7`):** per-slot assignment margins implemented and measured against the wrong feet — fails the both-way control (two wrong feet have wide margins, several right feet thin); kept as output, not a gate. The three wrong-foot ADMITs come from false candidates the cost model prefers, not close calls. IC-4 unchanged.
+-21. **IC-4 status report (2026-09-21, commit `e00b19dd`):** `audits/INTAKE_COMPILER_20260921/IC4_STATUS.md` — the verdict passes 5/7 but PROGRAM §6's landmark bar passes 1/7 (Civet at 31 px): three ADMITs carry wrong feet (freshwater leg3Near 206, mud folded leg0Far 158 — the false loop won once the folded waiver dropped the length penalty —, vent leg2/3Near 429/439). Next compiler item: a per-slot confidence in the verdict (cost margin + evidence kind) so a wrong NAME refuses; then the folded-slot rule by expected position, not a waiver.
+-20. **Slice 27 (2026-09-21, commit `0ba7210b`/`657fd938`):** Codex applied the three `folded` declarations to the fits' `presence.json` (`openai/mac`); the compiler now reads declarations from those files (`declarationOf`), proposal map removed; results byte-identical (IC-4 positives 5/7 · 7/7 · 6/10 · 7/10). Open: crab `leg3Far` (finger vs short leg) and the coconut's painted-but-declared-hidden `leg3Far` are fit-declaration calls for Nick; the seven absorbed mutants are named in README slice 26.
+-19. **Slice 26 (2026-09-21, commit `c62abcb8`) — Nick decided: folded legs are DECLARED.** `declaredFolded` is an intake input; proposal for Codex's presence files in `audits/INTAKE_COMPILER_20260921/FOLDED_DECLARATIONS.md` (crab `leg0Far`, mud `leg0Far`, vent `leg0Near`). IC-4 positives 3/7 → **5/7**, wrong-template 7/7; erased/duplicated 6/10 each (the mutants need re-cutting for folded legs — next). Two refusals with recorded causes: crab `leg3Far` read as a claw finger; coconut shows a leg its fit declares hidden. Eight absorbed mutants named in the README (folded slots re-admit any loop; the mutant runner must compare against the positive's own loop).
+-18. **Slice 25 (2026-09-21, commit `3aa3cb14`):** four ordering primitives measured side by side (separation / tip / label-border root / mid-limb / per-depth): all tie at 28–29/38, none moves IC-4; `sep` stays. The remaining near-side errors are a candidate-order swap (coconut) and a loop-evidence shift (vent). State: named 29/38, positions 30/39, IC-4 strict 3/7 · 7/7 · 7/10 · 9/10 over seven subjects.
+-17. **Slice 24 (2026-09-21, commit `d5d3ea52`):** declared-hidden slots are pre-emptied in the assignment (the declaration is an intake input): hidden sets exact by construction; coconut now refuses on an unused endpoint at its declared-hidden leg (correct). Ordering by tip angle measured and rejected (28/38). State: named 29/38, positions 30/39, IC-4 strict 3/7 · 7/7 · 7/10 · 9/10 over seven subjects. Next P6 item: an independent ROOT estimate along the body outline as the ordering primitive.
+-16. **Slice 23 (2026-09-21, commit `3564eafa`):** Codex's Wolf (PROGRAM §6 exception, `openai/mac` `audits/VISION_P1_QUADRUPED_20260921/generation-01/`) through the identical code: ADMIT with tail + four paws after one generic change (an appendage's length counts the body-thick run from the spine — a bushy tail); Civet ADMIT unchanged; crabs unchanged 29/39. **Nick decided the IC-4 verdict is strict.** IC-4 over seven subjects: positives 3/7 (freshwater, Civet, Wolf), wrong-template 7/7 refused, erased 7/10, duplicated 9/10 — still not passing on coconut/crab/mud/vent (true loop-filled rear legs; declared-hidden slot filled on the coconut). Signing law: commits from this session fail at 1Password's approval; Nick commits from Terminal.app with the message file, Claude pushes.
+-15. **Slice 22 (2026-09-21, commit `1f8c4055`):** `touchNotSep` (a touching tip at an endpoint chain's separation point is a junction, not a tip) + `thickMaxLen` 0.7 are the defaults: named **29/39** (from 27/39), positions 30/39; IC-4 strict positives 2/6 · wrong-template 6/6 · erased 7/10 · duplicated 9/10 (lenient 3/6 · 6/10 · 7/10). Naming and verdict now pull against each other on TRUE loop-filled rear legs (crab 68 px, mud 10 px); next lever = the loop candidate's own thin-cross-section test. Sheet regenerated.
+-14. **Sheet + contact refinement (2026-09-21, commit `9145ead1`):** `sheet.mjs` renders the compiler's reading per subject for Nick's eye — `audits/INTAKE_COMPILER_20260921/sheet-01/` (six PNGs + summary); contact-terminal refinement through the contract (Civet paws 18–31 px, named 27/39); appendage-slot candidates count as used (Civet ADMIT); IC-4 now positives 4/6, wrong-template 6/6, erased 7/10, duplicated 8/10. Economics grid and `thickNeedsFork` measured and rejected (README slice 21 addenda).
+-13. **Slice 21 (2026-09-21, commit `e071017c`):** interior-edge stage built as an off-by-default option and measured; slice 19's "no candidate" finding CORRECTED (the folded legs are in the pool, misclassified/weak); strict evidence verdict in `ic4.mjs` (erased 7/10, dup 8/10 refused, positives 3/6); second wrist cut. Bottleneck stated precisely in README slice 21: unused/empty-slot economics + terminal-thickness consistency let two false far-side candidates outbid an empty slot. Defaults unchanged (30/35, 24/34).
+-12. **Slice 20 (2026-09-21, commit `bdddefdb`):** Codex answered the hidden-placement question (`openai/mac` `78dc7dc3`, read-only note): geometric rule, `hidden-anatomy.mjs#inferHiddenLandmarks`, 0 px from the hand roots. Adopted in `assign.mjs` generalized to stations (no leg names); contract axis mapped per view (front → spine top normal). Hidden feet from the compiler's own roots: crab 108, freshwater 112, mud 391, coconut 709/460 (misnamed pair 2). Claw wrist probe: the wrist is on the body ridge between the claw root node and the spine — next P3 step is a body-edge shortest path per claw with the DT minimum as the wrist (unblocks P7 body IoU). Codex's `hidden-anatomy.mjs` is NOT merged here yet; the compiler will call it at the next local merge instead of its own copy.
+-11. **Slice 19 rounds (2026-09-21, commits `16e736a4`, `62f98e48`, this one):** naming-bottleneck rules measured and rejected with numbers (touch junction body-distance bound, loops off, even-spacing prior, gap-consistency prior, P7 leg-seed offset). **Design finding for Nick:** the two legs no rule can name (freshwater/crab `leg0Far`, folded flat over the carapace) have no candidate at all — a limb painted over the body is inside the silhouette and invisible to the alpha-only ridge graph; an interior-edge probe shows its contour is present but texture-noisy. The compiler needs an interior-edge stage (design item) — until then a folded leg is an empty slot and an erased-leg mutant on it is undetectable by construction. Options retained off by default; defaults unchanged (crabs 30/35 positions, 24/34 named).
+-10. **Slice 19 (2026-09-21, commit `5f7b41fd`):** IC-4 absorbed mutants diagnosed — the erase is real; the slot was already filled by a false touching tip in the positive, so the verdict cannot beat the pool; the independent tip-detector count is not usable (10/7, erasing raises it). P7 labels first cut (`labels.mjs`, geodesic nearest ridge, 130–200 ms): body 0.35–0.48 IoU, claws 0.29–0.50, legs 0.6–0.8 where named right, 0 where wrong. Next: naming precision (loop/touch evidence) is the single bottleneck for verdict AND labels; then body-outline seeding for P7; then Codex's hidden rule.
+-9. **Intake compiler slice 18 (2026-09-21, earlier commit `1a72806f`):** the compiler is template-driven end to end — descriptor from the family contract + measured rest ratios (`port/v2/tools/anatomy-verify/template-rest.mjs`), `view`/`facing` conventions, every threshold in body units, spine-ridge axis, contract appendage slots (tail claimed on the Civet), exact side-view station assignment; two graph bugs fixed (duplicate edges in `ridge.mjs`; exponential chain DFS → shortest-path tree). Runner committed (`score.mjs`), gate committed (`ic4.mjs`). Numbers at 25 px: crabs positions 30/35, named 24/34 (from 22/35, 13/25); Civet all four paws + tail in the right slots (20–60 px, paw-pad vs toe). IC-4 first run: positives 4/6, wrong-template 6/6 refused, erased 5/10, duplicated 6/10 refused — **not passing**; the absorbed mutants are the next fix (evidence-per-slot verdict + count check). Knees first cut 7–110 px; hidden placement disagrees with Codex's behind-the-claw rule (165–735 px) — read the record rule from the writer before tuning. P7 labels not started. Everything measured is in README slice 18 with the failed rules (√rest body split, Otsu, rest-angle and rest-length priors, interior/profile touch tests, thick-finger off, far-point refine).
+-8. **Universal intake compiler (Nick, 2026-09-20 night):** design in `audits/VISION_PROGRAM_20260920/INTAKE_COMPILER_DESIGN.md` — no creature or family code, a template-driven graph matcher; crab = instance 1, Civet = instance 2; build order P4 separation point + template-derived body ratio → P5 matcher → P6/P7 → IC-4. Codex delivered all four crab films (geometry green; CPU one-run 3.6–4.0 ms reads recorded, not chased); IC-3 frozen.
+-7. **Decisions recorded (PROGRAM §6, 2026-09-20 night):** painted-tier CPU gate 3.5 ms full-film p95 on desktop, boundary 24 canonical; IC-4 acceptance bar fixed; no new intake or painting until IC-4 passes (one painted quadruped excepted); trust battery after IC-4. Codex: apply the gate, deliver the four crab films/sheets, then hold with writers frozen. Claude: compiler graph queries (count-driven thin cluster, loop limbs, eye knobs) then side/order assignment.
+-6. **IC-1 (intake compiler registration) status, 2026-09-20 evening:** three cuts measured against Codex's hand landmarks — feet-only assignment (6/8 + 3/3 exact), guide similarity (rejected, 200 px residual), root-anchored carapace transform (rejected, roots 170–210 px). Conclusion in `anatomy-verify/README.md` slice 10: build the painting's ridge graph and match it topologically to the template graph; the guide supplies counts/order/directions only. Next Claude slice = the ridge graph. Program §5 unchanged.
+-5. **2026-09-20 midday state:** five painted crabs accepted by Nick (art); coconut rigged with a declared hidden pair to a film (two leaf reds: painted-tier CPU, faint-recovery continuity); vent crab through intake; crab/freshwater/mud await hidden declarations for the claw-occluded front leg; Codex running the boundaryStep CPU series and the continuity ledger. T1: tip detector + same-toe merge sound (`anatomy-verify/README.md` slice 6), class assignment needs the template-graph walk-back (next). T2 first numbers `audits/VISION_PROGRAM_20260920/T2_FIRST_NUMBERS.md`; P2 design `P2_ASSEMBLY_DIRECTION.md`.
+-4. **P1 complete to a film (2026-09-20 morning):** Codex's `hidden-01` — hidden pair declared, 21 visible parts, exact rest, drift 0.001 px, twelve rows + presentation green, film 14.2 s zero refusals; two leaf reds (approach CPU 2.10 ms vs <2 ms; faint-recovery root step 9.10 px vs 8.10 px stride bound). Claude's review `audits/VISION_PROGRAM_20260920/P1_ANIMATION_REVIEW.md`: accepted as built; CPU is a painted-tier budget decision (vertex-budget measurement first); continuity guard to be split gait/non-gait by measurement; the other four crabs may be PAINTED now, rigs wait. Nick's animation verdict on the film is the open item.
+-3. **Vision program authorized 2026-09-20** (`audits/VISION_PROGRAM_20260920/PROGRAM.md`): painted library + morphs (Track P), trust as a funded track (T1 verifier design in `port/v2/tools/anatomy-verify/README.md` with three retained failed slices; T2 battery; T3 contract), anatomy chain through R4 then the roster HOLDS for P1. Claude next: T1 step 2–3 (ridge skeleton + template graph matching) and the P1 compile packet for the coconut crab; Codex after R4: paint P1, admit, rig, film.
+-2. **R9 was built TWICE (2026-09-19 night):** Codex's R3-S single run reached its queued R9/Q1 (`openai/mac` `0cae378e` → `36489e9a`: native-pixel finisher with label-driven editable mask + per-pixel conservation, five finished crabs, native films with numeric equality, IndexedDB round trip, phone fallback, atlas control) while Claude built the addendum's same file set here under Nick's "I want to build it". Both measure the same thing: at the accepted 0.35 × 1 step the finish is subtle (Claude SSIM 0.98–0.997 / ΔE ≈ 1; Codex's crabs through Claude's gates: SSIM 0.983–0.995 / ΔE 0.5–1.2). **Reconciliation at the re-merge: Codex's R9 is canonical** (it sits in the single-run chain with native rows); every same-path file (`creature-originals.ts`, `finish-master.mjs`, `finish-conservation.mjs`, `prepare-observed-crabs --finished`, `landfall-conditioning.ts`, `kit-worker-engine.mjs#finishCreature`) takes Codex's version; Claude keeps only what is additive — the integer work canvas (`creatureWorkPlan` + resamplers) offered as an option, the both-way gate mutants, `finished-fit.test.ts`, and the strength/steps study runner — re-based on Codex's finisher. `crab-finish-01` stays as a retained diagnostic packet, not a second certification.
+-1. **R9 follow-ups (this lane, after Codex's read-only review of `crab-finish-01`):** (a) if Nick authorizes it, a bounded strength/steps study on one crab (0.35/1 · 0.5/2 · 0.65/4) on the same tool; (b) coconut-crab rerun with `workCanvasMax` 1088; (c) the Civet as the sixth subject with its ownership map from the parts build; (d) route `creature-originals.ts` behind a desktop-only load path so the finished atlas replaces the painter atlas as texture source; (e) native rebind rows on Codex's harness at the re-merge.
+0. **Self-finding (review §12):** the E1.5 films used the compat solver, which has no joint-limit check; they are contact/cadence evidence only. The parts rig moves to the family solver at the R3 re-merge (already planned) and the films are re-shot then.
+1. **Re-merge at Codex's signed R2c′/R3 producers**; pass `observedContactSupports(record, binding)` to the parts rig's family solver; then flip the three pins: `ContactPhase.travel:'stage'` in the parts-rig
+   context (drop the interim stride double-count note), crab attacks through the stage, pinch selection; re-run
+   `parts-rig.test.ts` + `e1-outcomes.test.ts`; move crabs from target-only to attacker in outcome 2.
+2. E1.5 is done (above); re-film after the R2c′/R3 re-merge so the packet shows planted feet and crab attacks.
+3. Guardian design (D2) as a document; Chronicle cadence sync stays open.
+4. Merge findings to hand Codex at the stop (recorded in `e86a66ab`): its pose probe hard-codes an absolute path into this
+   worktree and pinned my old adapter bytes (make it repo-relative, re-pin); `creature-blender-export.mjs` must span
+   `paintOverrideCanvas` (one-token edit, identical text applied here); `resolvePhysicalHabitat` never reads `genome.realm`
+   (a habitat-gene-less "drifters" jelly resolves aerial); the I5 stale certificate is the one red on both lanes.
+
+### Codex (openai lane) — next run (standing authority) — I5 is the last red on PR #43
+**2026-09-24 (Claude):** the live prompt is `audits/MOTION_ANATOMY_20260923/CODEX_PROMPT.md`. It keeps the motion-anatomy program and defects 1–3, and adds four items: (4) a lane in the service worker for `/battle2/` so the painted arena stages in a built game (item -70); (5) the Centipede skin fold at 0.85×, pinned as KNOWN in `library-arena.test.ts`, where the pin goes red when you fix it; (6) stance-reach and your override gate, unchanged; (7) the coverage painting plan, for when Nick picks, plus the 53 profiles with `candidateTemplates: []` that you may wire now. I5 stays first for PR #43.
+Your Glass fix `6910f2bf` is merged (`46b00267`) with one reconciliation you should keep in mind: its blanket `@media(min-width:901px),(orientation:landscape){body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}}` broke K21 (`ui-shell-cascade`: `#objchip`, the only Charters opener, must stay visible at 1280×800 with a card open) and reverted K19's anchor ownership; this lane kept K19/K21 and your portrait-yield CLASSES, dropped the media rule (phone portrait never matched it, so your Glass result stands — re-verified here: small-phone PASS ×2, large-phone PASS). Your Civet masks are merged and shipped in the card assets.
+**The one item: I5 — the Compendium memory budget's measured re-seal.** PR #43's hosted battery (run `35669457751`) reds at `v2 base-profile static gates` on `tests/current-producer-authorities.test.ts` → "binds every live memory budget required by the active check profile": `authorityMismatchPaths(compendiumBudget.producerAuthority, current.compendium.producer)` is non-empty (index/owner/worker/painter/service-worker sha256 + the composite). `budgets/compendium-memory-v1.json` still carries the 9/02 producer `357ad8db…`, and `tests/compendium-budget.test.ts` PINS that value ("fails the current producer closed without rebinding historical samples") — so the two only agree after a measured re-seal that updates the budget AND its historical samples together. A hand re-bind was tried here and correctly refused by those pins (reverted). `compendiummem.mjs --calibrate` refuses ("candidate calibration is closed because the measured Compendium budget is active") and the standalone `npm run compendiummem` refuses ("built index/owner/worker/painter does not match the Compendium calibration authority") — the instrument is yours; produce the fresh measured certificate on clean committed source with exact Edge, re-seal the budget and its pinned samples, and report the run id. Until then every hosted attempt reds at that step. Signed commit + packet; no fetch/sync/push/PR/merge.
+(Done: … crab masks `d8a1a8f9`, borrowed atlas `3f0607be`, Civet masks `f25098fa`, Glass survey yield `6910f2bf`.)
+
+### Nick — TWO looks from the second archetype's sheets (2026-09-23, item -61, `audits/MORPH_20260923/`)
+1. **One page, one choice — the base/accent split** (this is Nick's own open question (2) of 9/22, now measured): `civet-accent-option-sheet-01.png`. Row 0 = as shipped (accent = head + jaw + neck + ears + tail, **38.1 %** of the Civet's labelled pixels, straight seam across the shoulder); row 1 = the **head group on the base coat**, ears and tail still accent. Row 1 reads as one animal on all four widest-contrast individuals. Choosing row 1 is a byte-identical no-op on the five crab archetypes (control in the JSON). Say "row 1" (or "keep as shipped") and it is one change; nothing else waits on it.
+2. **The lumin gene is inert on both painted archetypes** — both were painted `lumin: true`, so the gene can neither add glow nor remove it, and the 9/22 sheet's "lumin (emissive)" row was byte-identical to the row above it (retained as the failing control; the system is correct, the sheet row was not). Accept it (the painting wins, as with colour) or have the kit paint non-lumin masters so the gene can add the lift.
+Also worth one glance: `civet-palette-sheet-01.png` — the quadruped's 12 palette morphs with the painted fur, spots and ringed tail intact.
+
+### Nick — DECIDED 2026-09-22 (late), "proceed with your recommendations": markings: CRAB · IK: GO · guardian fill: -02
+(1) Codex paints the first marking-mask set for the crab archetype (the queued block in the Codex section is released); (2) Codex builds the analytic rigid-support IK branch for endpoint-only supports (BEAR_DIAGNOSIS.md's proposal; limits, compression, terminal rule and the 0.25 px gate unchanged; gallop stays separate); (3) `GUARDIAN_FRAME_FILL` 0.96 on the tallest pose and the guardian stands stand as built (film -02).
+
+### Nick — DECIDED 2026-09-22 (late): the Compendium card shows the PAINTED INDIVIDUAL everywhere, phone included (option 3)
+Nick: "I want option 3." The creature the player bred is one painted individual across the card and the arena on every device. This amends D1 for the CARD only: phones load a card-size painted master (a sealed ≤512² downscale of the archetype, derived offline), not a live rig; live painted rigs on phones stay out until the phone-tier item (N5/S5) is decided. BUILT the same night (item -48): card masters, the Pixi-free rasteriser, the species-art loader interposition (painter fallback), tests, sheet. Open: the same individual in the battle ARENA on phones stays behind D1/N5 (the card is done on every device).
+
+### Nick — one look + two small decisions (2026-09-22): the morph system
+Look: `audits/MORPH_20260922/crimson-vs-turquoise-01/turn0-hit-approach-50.png` — two morphed individuals of ONE painted crab fighting on the real stage; and `audits/MORPH_20260922/crab-palette-sheet-01.png` — the crab archetype (top-left) and 12 palette morphs from 12 seeds; the painted finish is preserved (only hue/chroma move), low-chroma colours desaturate. Decisions from `MORPH_SYSTEM_DESIGN.md` §5, neither blocks steps 3–4: (1) marking masks painted first for the crab or the Civet? (2) `color` recolours the base coat (body + legs) with `accent` on head/claws/tail/ears — keep this default or declare base/accent per archetype on the painting side?
+
+### Nick — one decision from Codex's packet (2026-09-22): analytic rigid-support IK
+Codex's `BEAR_DIAGNOSIS.md`: the bear's observed-support refusals are the hind-far ankle's endpoint-offset fixed point oscillating (0.305 px), not skin-weight conflict. Proposed: an analytic rigid-support IK branch for endpoint-only supports, keeping source offsets, lengths, terminal rule, limits, compression and the 0.25 px gate unchanged; mixed-weight supports as-is; gallop's compression stays separate. Say "IK: go" to authorize Codex's build (or "hold"). Nothing else waits on it — the stage plays the bear on rest supports today.
+
+### Nick — one look to choose (2026-09-22): guardian fill
+One page: `audits/VISION_D2_GUARDIAN_20260921/G7_SHEET/brown-bear-review-sheet.png` (bottom row: -01 / -02 / bear as target). Sources: `audits/BATTLE2_D2_GUARDIAN_FILM_20260922/`: `bear-vs-crab-01/turn0-hit-approach-50.png` (bear 0.9 of the frame at rest; rearing head leaves the frame; paws overlap the crab before the lunge) vs `bear-vs-crab-02/turn0-hit-approach-50.png` (the fill sizes the tallest pose → 0.70 at rest, always inside, guardian stands 0.30/0.82). -02 is what the code does now; say "-01", "-02" or a number in between and it is one constant (`GUARDIAN_FRAME_FILL`) — nothing else waits on it.
+
+### Nick — A2 taken (2026-09-22) and built (README slice 36); the table below is the measurement behind it
+Under decision A the approach beat's time is set by distance. Measured on the six rigged subjects at arena scale
+(run-up 0.18 × frame = 184 px; per-cycle travel = 2 × the rig's measured stance reach):
+
+| subject | gait | body on arena | run-up | per cycle | cycles | approach time |
+|---|---|---|---|---|---|---|
+| crab | 420 ms | 119 px | 1.5 bodies | 0.40 | 4 | **1.7 s** |
+| coconut | 420 ms | 114 px | 1.6 | 0.40 | 5 | **2.1 s** |
+| freshwater | 420 ms | 111 px | 1.7 | 0.20 | 9 | **3.8 s** |
+| mud | 420 ms | 132 px | 1.4 | 0.14 | 11 | **4.6 s** |
+| vent | 420 ms | 100 px | 1.8 | 0.14 | 14 | **5.9 s** |
+| Civet | 869 ms | 85 px | 2.2 | 0.40 | 6 | **5.2 s** |
+
+Today's approach beat is 420 ms. The reach that sets these numbers is the RIG's (far legs painted foreshortened
+or folded), not the animal's: a real crab scuttles about a body length per cycle. Options:
+(A1) accept 2–6 s approaches — faithful, slow, and the slowest rigs are the worst-drawn far legs;
+(A2, recommended) **walk whole cycles up to a cap (2 cycles ≈ 0.84 s, feet planted, no slide) and let the attack
+clip's own lunge cover the remaining distance** (a lunge is a committed airborne move, choreographed contact, not
+gait) — the arena distance is preserved, no foot slides, approach ≤ 0.9 s;
+(A3) raise the rigs' reach first (Codex's body-planted folded legs may lift freshwater/mud/vent toward 0.2; crab
+and coconut are already at the compression bound, so A3 alone cannot reach one body length per cycle).
+Until decided: the stage keeps its 420 ms eased run-up without `stageDisplacement` (feet ride with the body, as in
+the films).
+
+### Claude — next run (standing authority: Nick says "go") — MORPH SYSTEM is the critical path (Nick, 2026-09-22)
+Steps 1–4, the card and M3/M4 (items -45/-50) landed. Measured/recorded before the next step: **(4b) Compendium parity** = rendering the painted individual (a rest-pose raster of the paint-skin rig) onto the card, which today draws the painter tier through `SpeciesArtLoader` — desktop only per D1 and a look decision for Nick, not a bug; **texture cache** across battles is blocked by ownership: `loadCreatureRigV1`'s dispose destroys its atlas texture, so a shared cached texture would die with the first rig (a Codex loader change: borrowed vs owned atlas) — until then each battle re-decodes + remaps once (46 ms on the Civet's 2039² atlas). M3/M4 are built on the crab's masks (item -50). Next, in order: (5b) emissive without marking — done (-52); (6) texture cache — done (-51); **(7)** marking masks for the Civet (Codex paints on Nick's word) and the second archetype's sheet; then once Codex has painted the first marking-mask set. Then Codex's next report (bear IK if Nick says go), mud/vent re-finish, and the compiler hold as before.
+
+### Claude — previous block (kept for the record)
+Done this batch: bear merged, static RED reviewed on the stage, G6 built + tested + filmed (items -39/-40; films -01 and -02 await Nick's eye — one constant each). Bear as target filmed and the guardian is in the E1 outcome suite (item -41). G7 sheet composed (item -42) — D2 complete on the automatable side. Next, in order: (1) on Codex's report: re-merge, re-film mud/vent once their reach lifts, re-check the A2 outcome test; (3) the compiler: the two merged near-claw fingers (coconut/freshwater) and crab `leg3Far` remain the only crab defects; every matcher lever and the fork-aware ridge are measured and rejected (README slices 25–32) — the defects are in the paintings' terminals (P2 resolution / painting-side), so the compiler holds at IC-4 strict 5/7 until a painting-side decision; the roster batch runs the moment IC-4 passes on the crabs (one sheet for Nick).
+
+### Nick — decision A taken (2026-09-21, latest): the stage runs up in body lengths with a stride cadence
+Codex's stage/solver work: the run-up distance becomes N stride cycles of the attacker's gait (each ≤ 0.2 body lengths of stage travel per stance), the stage passes `stageDisplacement` per tick, feet plant exactly; Claude re-films and re-pins when it lands.
+
+(Superseded question, kept for the record.) The solver plants exactly within 0.2 body lengths of stage travel per stance and refuses beyond; the battle stage's run-up is 0.18 × frame (≈ 9 body lengths for a crab at arena scale). Choose: (a) the stage runs up in body lengths with a stride cadence (several gait cycles per run-up — the physically right one; Codex's stage/solver work), or (b) the solver clamps to reach instead of refusing (feet slide a little; cheapest). Until then the stage does not pass the displacement and feet ride with the body as in tonight's films.
+
+### Nick — decisions taken 2026-09-21 (late)
+1. **Re-seal**: the v2 `training-checkpoint` fixture and test now seal the TypeSafe html (`a65d5905…`, from `5d0844c4…`; reason recorded in the fixture); the hdart lift was re-run from the tracked source and `speciesportable`'s byte-seal re-blessed to the new `hdart.verbatim.js`. `validate.js` fingerprint identical throughout. port/v2 suite: 4,770 pass, 1 expected fail; the one red file (`current-producer-authorities`) is the direct-`vitest` path — it expects the prepared receipt `CF_UNIT_AUTHORITY_BUILD` that `npm test` (`tools/run-unit-tests.mjs`) builds first; not a code red. The anatomy runners now take ad-hoc subjects via `ANATOMY_SUBJECTS=id:template:master[:record][:presence]` so the Brown Bear is one command (G3).
+2. **D2**: Brown Bear; a guardian CPU tier at 5 ms desktop-only; §6 landmark bound 60 px at 1536; Codex's IC-3 writers released for this one guardian.
+3. **Declarations**: the coconut's `leg3Far` is painted — declare it visible (Codex applies to the fit's presence file); the crab's `leg3Far` stays (a finger-vs-leg call no declaration describes).
+4. **Codex's next run**: the two solver findings (stance-target double count under `travel:'stage'`; observed-support joint drift), then G1–G2 of the Brown Bear. Claude: the fork-aware ridge (the one structural lever left for IC-4).
+**Decision item withdrawn (2026-09-21, slice 21):** the folded legs DO have alpha-only candidates (freshwater: an endpoint 1 px from the record misclassified as a claw finger by ridge thickness; crab: a loop at 68 px); an interior-edge stage was built as an option and measured (README slice 21) — it cleans the ridge but does not change the naming economics that actually lose the slot. Nothing to decide until the stop. R9 addendum's two answers (finisher model = the accepted one; arena-scale crab on the sheet)
+are already in the pre-answered set (§7).
+
+### Still open, unchanged
+N5/S5 phone tier (D1); N7–N10; I5 stale Compendium producer certificate (fresh measured certificate only); 53 of 58 bodies
+unbound; nothing visually qualified; Q1 crab gape candidate only.
+
+### Where to read
+`audits/INTAKE_COMPILER_20260921/sheet-01/` — the compiler's review sheet per subject (look here first); `port/v2/tools/anatomy-verify/README.md` slices 18–21 — every rule and number.
+`audits/ANATOMY_REVIEW_20260917/` (this lane): `CLAUDE_R1BR2B_REVIEW.md` (§1–§8), `R9_ADDENDUM_FINISHED_TEXTURES.md`,
+`E1_BATTLE2_INTEGRATION_DESIGN.md` (§5 status), `MASTER_PROGRAM_20260917.md`, `r1b-r2b-look/`. Code: `port/v2/apps/game/src/battle2/`
+(`README.md` E1 section, `parts-rig.ts`, `habitat-arena.ts`, `e1-outcomes.test.ts`, `parts-rig.test.ts`). Codex lane:
+`audits/ANATOMY_COMPLETION_20260917/` (its evidence folders as the run produces them).
+
+## Live handoff — 2026-09-25 operating model adopted, mailbox active
+
+Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac. Repo signing is now keychain-backed git-ssh-sign-cf with cf_agents_signing.pub; HTTPS origin uses gh. The requested one-time signed throwaway commit check printed G. No configuration/key/credential was changed by Codex. Reuse that proof; never commit unsigned or ask for 1Password on this route.
+
+Read Claude's absolute read-only audits/MAILBOX/TO_CODEX.md at every run start AND batch end. Reply only in local audits/MAILBOX/TO_CLAUDE.md. No Nick relay, no waiting for a push: the shared object store exposes signed anthropic/mac commits immediately. Hand-reconciled --no-ff lane merges and own-branch pushes have standing authority when the required local battery is green. No merge or push occurred in this documentation batch. Current combined I5 remains red; no green combined local battery is claimed. PR/label/hosted/develop/main/release/deploy conditions remain explicit.
+
+Mailbox: C1 DONE with finding, not certification — signed cfd6e7fb instrument and b5ed59a7 outcome, audits/I5_V2_EPOCH_20260925/DIAGNOSIS.md. First calibration on b4f191c3 stopped at painted thumb ownership inventories; zero successful samples and no later calibration/certification. V1 and all thresholds remain unchanged. Claude is asked for painted ownership/resource diagnostics; no new epoch was run. C3 blocked on isolated skin-stage cost/device evidence. C4 decision: keep byte admission today; only add a separate trusted build-pin path with exact alpha/record/binding/atlas guarantees and negative controls.
+
+At batch end Claude's signed2a0eacee decision records D1 yes (painting order, sheet per ten), conditional D5 yes (one daily label cycle only when all local gates including overridecontrol are green), D6 not yet (iPhone probe plus v2 certificate). Acknowledge C2 as authorized/in progress, not completed art. No label eligible now. C7 owners confirmed: Codex A7/A8 art, A9 instruments/budget/skin, A10 economy after N2, and N2 policy proposal; Claude owns its listed A1–A6. The N2 proposal and new paintings remain deliverables, not completion claims.
+
+Packet: audits/OPERATING_MODEL_CODEX_20260925/README.md, signing/config receipt, batch-end mailbox hashes, C3 budget disposition and C4 admission decision. Current AGENTS.md, CLAUDE.md and PARALLEL_GIT_PROTOCOL.md reflect this model. No runtime/test/budget/sample/accepted-binding/solver/S2 changes in this batch. Prior 56 v2 controls/root validation remain in the signed I5 packet; no unchanged battery repeated. .DS_Store untouched. Actions mode UNFROZEN; no hosted spend or write.
+
+Next steps now flow through TO_CLAUDE.md. Claude consumes the signed packets directly and replies in its mailbox; Nick supplies only decisions, art/device review and actual user-only gates. No need to open the other app to relay messages. Existing PR43 remains anthropic/mac→develop; no release/deploy occurred.
+
+
+## Archived 2026-09-24 (evening, Claude) — Codex's "three signed items" handoff, merged in at 4b56ef82, verbatim
+
+## Live handoff — 2026-09-24 three signed items, await Claude integration for I5
+
+Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac, tracking origin/openai/mac. Item5 signed `39e00aa02e50b139fd1dba23885f4a4a15f4dce1` (G); item7 signed `4cfd5584ec232a070a5c0a624710e2198a76c1e0` (G); the enclosing commit signs the five-regression repair separately. Current packet: audits/MOTION_FIVE_REDS_20260924/README.md and SIGNING_HANDOFF.json. No fetch/sync/push/PR/label/hosted/merge/release/deploy by Codex. Claude absolute lane remains read-only. .DS_Store untouched; Node26.9.0 uninterrupted session receipt reused.
+
+Claude resolved actual Centipede motion fix+KNOWN removal together in signed `f73394018950bcb24341008dd5efc6f9634a6a5e` (G). Local family-actions.ts matches its full bytes. Nick reports library-arena8/8 and old-line negative control; Codex's own current-stage overlay records0 refusals at0.85×/1×/1.15×. Item7 routes53 candidate templates while all53 remain explicitly pending painted qualification. No new art.
+
+The five-regression repair restores insect exact-rigid recovery independently of travel while preserving crab/quadruped refusal boundaries. Current86-bullet release inventory has independently measured ordered identity and matching exact/removal controls. Final focused runs pass all60 unique tests, all3 typechecks and root validation;90 protected inputs unchanged. Tested source hashes verified unchanged before signing. Every refusal/rejected trial remains in its packet; no unchanged battery repeated.
+
+Claude integrated item4:133 pinned files total50,426,871 bytes; gzip bindings meet the unchanged128MiB package cap. Its controlled-Edge cached-arena reload evidence is read-only recorded. Preserve signed preview fix `23490db397483ad8b6d0768b559bb079d0e595e9`: devPreviewHtmlPlugin() in vite.config.ts and its corresponding pwa-offline.test.ts plugin-list pin. This local repair does not touch those two files.
+
+Latest I5 instruction is FINAL INTEGRATED anthropic/mac source, once, AFTER Claude merges all three signed results. Earlier local-only next-run choice is superseded. No fresh I5 attempt, historical-authority rewrite or final develop profile ran in this signing batch. Await the exact final clean integrated head; no PR43 green claim from local diagnostics.
+
+Paired next steps: Codex holds signed results and awaits that source identity for I5. Nick opens Claude now with the three commits. Claude merges them, retaining its actual pin removal and preview plugin/pin, then supplies the final clean integrated head. Existing PR43 remains anthropic/mac→develop; no new PR or hosted attempt requested. Original Python-first motion review is audits/MOTION_ANATOMY_20260923/review.html; no new native film/CPU number claimed. Prior 1Password refusals are historical; signing now works through the unchanged wrapper.
+
+## Archived 2026-09-24 (day, Claude) — superseded handoffs: Claude's night-sprint handoff and Codex's "expanded sprint in progress" block (merged in at 1e9f5920), verbatim
+
+## SESSION HANDOFF — September 24, 2026 (night) · CLAUDE'S SPRINT: PICKER, REVIEW FIXES, COVERAGE STUDY, DOCS; THE SERVICE WORKER BLOCKS THE ARENA
+Self-contained: either lane can resume from this block alone. Older handoffs are archived verbatim at the top of `ROADMAP_ARCHIVE.md`.
+
+**Where the work stands.** `anthropic/mac` holds tonight's sprint (items -68…-72 below) on top of `d643fc0e`. PR #43 is the one combined PR
+(both lanes; #42 closed). Every workflow is dispatch- or `labeled`-only, so a push spends no Actions; a hosted attempt needs Nick to
+cycle the label. Remaining reds are all Codex's: I5 (the Compendium memory budget's measured re-seal), the freshwater-crab reach
+regression (`1dfeec2a`) and Codex's own override gate. Codex is running the motion-anatomy program in sprint mode
+(`audits/MOTION_ANATOMY_20260923/CODEX_PROMPT.md`, which now also carries tonight's four new items).
+
+**What is built and proven.**
+- The morph system end to end, on the card and on the stage (items -39…-63).
+- All 17 painted archetypes fight on the real stage: on land, in the air and in water (-65/-66).
+- A matchup picker puts any two of them on the stage: `?battle2=1&vs=Python,Eagle[&world=lake|land][&seed=N]` (-68).
+- Tonight's adversarial review fixes, each with an outcome test and a negative control (-69).
+- One placement pipeline (`battle2/placement.ts` `placeCombatants`), shared by the game, the film harness and the tests.
+
+**The new blocker for playtesting the arena (item -70).** In a BUILT game the service worker refuses every `/battle2/` file (503),
+because they live in `public/` and never enter its build marker. So the painted arena does not stage once the worker controls the
+page, and that includes the -67 playtest packages (the current one is item -76). Until Codex's worker gains a lane for them, play the arena on the dev server:
+`cd port/v2/apps/game && npm run dev`, then open `http://localhost:5173/?battle2=1&vs=Tree%20Frog,Salmon`. The dev server has no
+worker.
+
+**How close the vision is, measured (item -71).** One painting per body plan leaves **454 of 561** Earth species misleading
+(`audits/COVERAGE_STUDY_20260924/README.md`). The morph is right for individuals of one silhouette; the library needs more
+paintings, but far fewer than one per species. The top 10 new paintings fix 120 species and the top 20 fix 195. The painting order
+is Nick's call.
+
+**Next, by owner.**
+- **Nick:** (1) the painting plan: which archetypes, in what order (top 10 in the study's README); (2) the Bear guardian now stands
+  at 0.55 of the frame so its rear-up stays in frame (it was 0.70, and its head left the frame). Keep it, or stand guardians lower
+  in the foreground: at a 0.95 stand line it is 0.67 (`audits/BATTLE2_GUARDIAN_SIZE_20260924/guardian-size-sheet-01.png`, item -73); (3) one look at the half lake's faded shore (`picker-smoke-03/picker-1.png`); (4) after
+  I5 lands, cycle the label on PR #43.
+- **Codex:** the motion-anatomy program plus items 1–7 of its prompt: the SW lane for `/battle2/` and the Centipede fold at 0.85×
+  are new; I5 stays first for the PR.
+- **Claude:** wire the arena into Codex's worker lane once it names the shape (the pinned list already exists: `public/battle2/MANIFEST.json`);
+  add each new archetype to the card and arena the day it lands; rebuild the playtest package once the worker serves the arena.
+- **Two more questions for Nick (battle2):** (a) portrait-phone framing (item -75); (b) turn pacing: today the painted stage plays
+  the whole transcript at its own pace while the Chronicle text log reveals a row every 240 ms. Should the stage pace the log (each
+  row appears at its turn's impact) or stay independent? Pacing the log changes the Chronicle, which owns accessibility and audio,
+  so Claude has not built it.
+
+**Traps this session paid for (obey them).**
+- `stage.play()` stamps a turn's start from the clock. A test loop that rewinds the clock plays every later turn at negative
+  time: reset to 0 before each play and require the end tick to report `done`.
+- A staging test with no effect anchors passes vacuously. Give it the real Wild anchors and make it throw when no effect was
+  placed.
+- A browser smoke test of a built package runs under the service worker; `picker-smoke.mjs --no-sw` separates the arena from
+  the worker.
+- Earlier traps still hold: the training-restart fixture is exact capture output (notes in `.RESEAL.md`). A backtick in a
+  comment inside `ui-sheet-style.ts` ends the CSS literal. Never `expect(x).not.toBe(y)` on a multi-MB typed array. A sealed
+  budget is never re-bound by hand. Run `npm run overridecontrol` and the workflow's whole gate list locally before any hosted
+  attempt.
+
+## Live handoff — 2026-09-24 expanded sprint in progress
+
+Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. Claude’s absolute worktree remains read-only. Nick added items4–7 from Claude’s uncommitted CODEX_PROMPT.md; its exact snapshot and hash are retained at audits/MOTION_FOLLOWUP_20260924. Signedef45f97b records I5 source triage first. PR43 was read-only verified OPEN at anthropic/mac202191a1efe47ca173ce0bbd32809def910b7a45 → develop; it differs from this local source. Standing no-sync/no-merge remains; no certificate attempt or hosted action consumed. I5-FIRST.md explains the exact source gate.
+
+Item4 implemented here: external battle2-assets.json with schema cf-battle2-assets/v1 and files[{path,bytes,sha256}], exact source/final-output inventory validation, digest-verified first-use caching per retained build, no eager arena download. The unchanged128MiB shipped limit includes lazy assets.45 PWA tests,35 release tests and all3 typechecks pass; one local evidence build succeeds. The authority printer then exits2 for stale budget producer, explicitly retained; no rebind. Claude must generate the actual pinned list from its builder and run the integrated controlled-worker picker. Exact shape/next steps: CLAUDE_BATTLE2_MANIFEST.md.
+
+Item5 Centipede0.85× and item7 unused-template wiring are next in this uninterrupted sprint. Item6 remains the signedfb1922a0 stance/override repair, no changed seals or repeated unchanged battery. Existing motion review is audits/MOTION_ANATOMY_20260923/review.html, signedfb1922a0 plus4c23bffc handoff; its unresolved anatomy gates remain explicit.
+
+Codex continues independent work; Claude consumes signed changes and generates the manifest when handed this contract. Nick need not open Claude before this sprint finishes, but may relay the contract now. No push/PR/label/hosted/merge/release/deploy; no new art commissioned. Current Node26.9.0 identity rechecked; startup receipt reused within the same uninterrupted session. Signed commits only through existing wrapper; pre-existing .DS_Store untouched.
+
+## Archived 2026-09-24 (Claude) — ROADMAP hygiene: the 2026-09-19 (night) handoff with its lane-state sub-blocks, and the 2026-09-17…19 batch blocks, verbatim
+
+## SESSION HANDOFF — September 19, 2026 (night) · E1 CODED ON THE MERGED LANE; CODEX RUNNING THE SINGLE-RUN PROGRAM
+
+Self-contained. Either lane can resume from this block alone. Earlier handoffs of the day are archived verbatim at the top of
+`ROADMAP_ARCHIVE.md`.
+
+### Lane state — 2026-09-21 re-merge (this commit merges `openai/mac` `db8858bb` into `anthropic/mac` locally)
+Codex's R3-S → §8 chain (signed, 20 stages verified in its packet `audits/R3S_RESUME_20260921/`) is now in this lane. Resolution
+rule as recorded: Codex's R9/finisher files canonical (`creature-originals.ts`+test, `finish-master.mjs`, `finish-conservation.mjs`+test,
+`prepare-observed-crabs.mjs`, `kit-worker-engine.mjs`, `landfall-conditioning.ts` — the duplicated `compileCreatureFinishV1` resolved to
+Codex's); `ROADMAP.md`/`ROADMAP_ARCHIVE.md` kept from this lane. Test state on the merged tree: `tsc` clean; battle2 33 pass + 1 expected
+fail; the two E1 R3 pins FLIPPED green (crab pinch admitted; a crab attacks through the stage); the parts rig now forwards
+`travel:'stage'` and takes an optional binding for observed supports (off by default). **Two solver findings for Codex, measured:**
+(1) under `travel:'stage'` the family solver zeroes root dx but its stance targets still advance by stride×(completed+step), so feet
+march in body space while the stage moves the body — the double count; arena-planting needs targets that recede by the stage
+displacement (the third pin stays `it.fails` with this reason, 185 px spread); (2) with `observedContactSupports` on the crab, foot
+JOINTS drift up to 5.3 px under hit loading (the surface, not the joint, is what that model pins; a support-position accessor is needed
+to test the true invariant). Three sealed tests are red on the merged tree and none is merge-caused: `biome-vista` (identical bytes on
+both lanes), `training-checkpoint` (this lane's TypeSafe batch `a3bd835d` changed the v1.8.9 html by 8 lines — Codex's html matches the
+seal; Nick decides re-seal vs revert), `current-producer-authorities` (a local `dist/` build artifact). `node tools/validate.js` PASS
+(fingerprint match). Anatomy-verify runners own their PNG helper now (`png.mjs`).
+
+### Lane state (both lanes pushed to origin 2026-09-19 evening under Nick's explicit "push anthropic/mac and openai/mac")
+
+| Lane | HEAD | Note |
+|---|---|---|
+| `openai/mac` (Codex) | `ddb51313` local (origin at `7dd884f0`): R2c-L step 1 ran (crabs zero exceedances, bit-identical) and stopped S2 at the 8 % compression bound on the Civet bite lunge (157 ms). Review §13 maps the whole conflict (every body-moving quadruped row breaks the all-feet-planted solve: lunge/rear-up/hop need 70–297 px of compression vs 28 px; faint needs ±92° elbow) and issues **R3-S** as ONE run without internal stops: report-all ledger → per-template per-action stance contract (quadruped hind-only for melee/cast/victory, none for dodge/kick, all otherwise; brachyuran all) → contactLimitsDeg from planted folds → after ledger → controls → rest of §8 | awaiting the §13 paste + Nick's authorization line |
+| `anthropic/mac` (Claude) | this commit (slice 18, intake compiler; pushed to `origin/anthropic/mac` under Nick's standing lane-push authorization) on top of `13d4406a`: **R9 finished textures delivered** (tooling `8b901e6c`; evidence `audits/ANATOMY_COMPLETION_20260917/crab-finish-01/`, five crabs PASS on every gate, bindings byte-identical in `crab-fits-finished-01/`, offline rebind test 5 PASS; quality not accepted — see the README's findings for Nick: the accepted 0.35 × 1-step finish is subtle; strength/steps study needs Nick's word; coconut-crab at 1×; Civet needs its ownership map; native rebind rows at the R3 re-merge). E1.1–E1.5 coded and filmed; two TypeSafe batteries; tree clean apart from `.DS_Store` |
+
+Pushed as plain branch pushes only (no workflow runs on a branch push per `GITHUB_ACTIONS_BUDGET.md`; `origin/openai/mac` = 140 commits, `origin/anthropic/mac` = 72 first-parent commits, pushed in fast-forward chunks along the first-parent chain — pushing a `rev-list --reverse` order without `--first-parent` rejects at the merge's side commits, which is what the first attempt hit). PR42 parked, no PR opened, no merge to develop, no release. Lanes still read each other by absolute path.
+
+### The program in flight (Nick, 2026-09-19: "most work possible before a stop")
+
+`audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md` §8: ONE Codex run — toolchain → R1c-b/c → R2c → R2d → R3 → R4 →
+re-capture → R9 → R5–R8 → roster by family → PR42 split prepared → ONE stop with an accumulated review packet. S2 (a
+shared-path red: Civet sentinel or any of the five crabs regressing after a solver change) is the only halt. Claude runs E1 in
+parallel on local merges of Codex's signed producers.
+
+### Codex's run stopped at S2 in R2c (its packet `audits/ANATOMY_SINGLE_RUN_20260919/`)
+R2c closes Mud/Vent (five crabs ≤ 0.0094 px) and adds the root accommodation R1c-b proved missing, but the Civet
+sentinel fails idle at 0.2608 px: its support is unpinned and ~85 % paw-weighted, so R2c's rigid-to-endpoint
+correction over-corrects (Claude's derivation in review §9). Direction issued: **R2c′** — model the support by its
+actual skin weights, crabs must reproduce bit-for-bit, Civet must pass unchanged, then resume §8. Codex's R2c
+packet is staged UNSIGNED (1Password refused both lanes tonight; now unlocked) — sign it first. R1c-c attributed
+most cold flora CPU to the declared scale (per-pass cost, `normalPasses` 4 everywhere): leaf red for R8/Q4.
+
+### R2c′ ran, S2 fired again (Codex `R2c-prime/`, signed `dd33865c`) — direction R2c″ issued (review §10)
+Crabs bit-for-bit; Civet idle/approach pass; `melee:bite` 0.266 px = covariance 0.100 + ARAP 0.181. The retained
+samples show the crabs' ARAP residual at their (R1b-pinned) supports is 0.0000 px in every row while the unpinned
+candidate-10 Civet carries 0.02–0.20 px even in passing rows. R2c″: exact per-vertex LBS at the support, and
+regenerate the Civet binding through the current shared split with contact locks (candidate-10 kept as history);
+control: unpinned candidate-10 under the new model must still fail. E1 then loads the regenerated Civet binding.
+
+### E1.5 done — the films exist (`audits/BATTLE2_E1_PROOF_20260919/`)
+`tools/battle2-proof/native-runner.mjs` films two real fits on the real stage in Edge. Five Civet-vs-crab runs pass
+(zero refusals, CPU p95 ≈ 2.2 ms at 60 fps); `review-sheet.png` is the packet row. **The film found what the gates
+could not:** the parts rig was invisible (normalized display units drawn 0.3 px tall — fixed, `cutout` 1×1 +
+`sourceSize`), and the quadruped victory rear-up was refused as a planted stance (fixed, `plantedFor` frees it).
+For Nick's eye: the contact gap stops at a crab's leg tips (silhouette box vs body box — kit question); the fainted
+crab stands back up (V2 on the stage); crabs are raw painter texture until R9.
+
+### TypeSafe tooling live on this lane — both batteries done (log §1–§5)
+Eight tools (`npm run typesafe:rig|reference|judgetag|reference2|biome|text|procedural|universe`), ≈ $0.11 for the
+whole day. Table fixes: 3 regex + 14 fauna postures + 4 flora forms, all gates green. **Findings that need Nick's
+decision, not edits:** (1) "A omnivore" article bug at `main.js:2165` — fix is one line but changes the determinism
+fingerprint (re-baseline decision); (2) 12/60 sampled procedural fauna are swimmers/drifters in dunes/ridges/canopy —
+`loco` and `habitat` roll independently; (3) `climateBand` is orbit-only, so molten/Venusian worlds land in cold/
+temperate bands that seed species; (4) biome atlas family lists are subsets (design or gap?); (5) `tuber`/`rosette`
+conventions in `flora.json`. **Safety:** all three checkouts are worktrees of ONE `.git`; 455 commits (315 + 140) exist
+only on this Mac — bundle backup written to `~/Projects/celestial-frontier-lanes-backup-20260919.bundle`; the plain
+branch push of both lanes Nick then authorized is done (see Lane state), so origin now holds every commit on this Mac.
+
+
+### Codex lane handoff, verbatim at the sprint merge (openai/mac `236b9846`) — 2026-09-23 Python open-pose correction
+
+> Merge note (Claude): in `anthropic/mac` Codex's archetype harness lives at `tools/battle2-proof/archetype-native-{entry,runner}.mjs`; `native-{entry,runner}.mjs` stays the E1.5 morph/guardian harness. The two lanes had written different instruments at one path.
+
+
+OpenAI/Codex on macOS: /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac, upstream origin/openai/mac. Claude’s /Users/nick/Projects/celestial-frontier-anthropic-mac remains read-only. Pre-existing .DS_Store is untouched. Uninterrupted toolchain startup receipt and Node26.9.0 reused. Nick’s latest continue authorized the proposed open-pose repaint and one renewed signed retry.
+
+The prior diagnosis is now signed as4ff2fad720e1d5734ce95a77c8a401cd8884e24e, signature G (e6288e/47fedf). Its old signing-wait statements are historical; recovery receipt is in audits/PYTHON_OPEN_POSE_20260923/diagnosis-signing-recovery.json. Prior reviewfe8f6ca1 was successfully pushed with actual remote equality. No push of4ff2fad7 or this correction is claimed.
+
+**Completed bounded Python correction:** audits/PYTHON_OPEN_POSE_20260923/README.md, result.json and review-sheet.png. One corrected built-in imagegen master, exact kit prompt/genome/reference hashes, manual declaration, candidate02/fit01, all refusals and films retained. Static02 passes12 actions×121 plus968 presentation samples; exact geometry rest and source-pixel rest0. Selected bindinga9524c5a617cf26d01d4697ed0164a07b5dc31ee83e2418a4a4b705195f21c90; recordb287ddc58c565fb9cfaae5f8c474177e38ad9dd07b4bf9ad959dbeb9aecf9b41. Selected topology has12 required joins and zero observation-only cut boundaries.
+
+Native20260923-python-open-native-03: zero left/right rig refusals,602 live/605 encoded frames,1268 dense containment observations, per-rig p950.5/0.5ms and whole-stage1.100000023841858ms. Both identical snakes use scale145.82590780006032. Reviewed stills and decoded movie samples retain connected paint without the old broad gaps. Nick retains final art acceptance: requested margins missed, faint alpha specks/fringe preserved, wide-arena scale small and family poses exaggerated. No further intake or repaint is needed for this bounded correction unless Nick requests art changes.
+
+Harness-only source changes: painted-envelope.mjs fits ground motion to the viewport around its unchanged ground line using measured camera extrema; shared reduction preserves source mass ratios. native-entry.mjs supplies that evidence. Ground-framing controls pass21/21; validate passes with zero boot errors and unchanged50-probe fingerprint. Native01 viewport refusal, native02 unequal role scales, test01 rounding-oracle failure and both mask candidates are preserved. No numerical gate/solver/threshold, accepted binding or S2 input changed; no unrelated battery replay. Source-manifest.json binds the three changed harness source files to predecessor4ff2fad7. This is local diagnostic proof, not a clean committed-source certificate.
+
+Correction to previous narrative: the rejected coiled candidate’s static owner DID run its presentation row, failing after254 successful samples with55 unresolved folded triangles. The raw report always retained this; prior-packet-correction.json records the correction. No native film ran for that rejected candidate.
+
+All13 sprint selections retain their signed technical packets in audits/ARCHETYPE_FINISH_20260923/final-sprint-review-index.md; the Python follow-up above supersedes its art-review hold on broad moving-body gaps, while human appearance acceptance remains open. Integration stays parked: PR42 draft openai/mac→develop; no PR43 green/certification claim. No fetch/sync, PR mutation, label, hosted run, merge, release or deploy. Budget UNFROZEN, last verified PUBLIC, private fallback3,000, zero hosted attempts authorized. Current correction has signed-local-commit authority; no new exact push or hosted attempt is inferred.
+
+I5 certificate20260922-i5-focus-89b5da95c185 certifies only89b5da95c185a1e8f08080ed3f42bab8a0494ec7. Build authoritybd8edd1b570d4bc4e1933a87a9e0552e75208d18ca43c40d2ffcd6712ebc1a5b; measurement6a829fb18eab4c171afaace0f49ad2a987cfcdc520d33dbc05337c379df85ee2. Never rebind it to current head or PR43.
+
+Paired next steps: the correction is signed as 469982364ee6d365806280bedcba7f52bc694f0c, verified G after Nick renewed approval. Signing is resolved; the refusal receipts remain historical. See audits/PYTHON_SIGNED_HANDOFF_20260923/README.md for the Git closure. Codex holds for Nick’s sheet/full-film art review; no art/test work remains for this bounded correction. Claude consumes the signed results under Nick’s integration direction; no manual copying or sync is authorized. Nick does not need to open Claude now. No new PR is requested. The correction and diagnosis remain local; no new push or hosted attempt is authorized by this handoff. Physical phone qualification and develop/main promotion remain separate.
+
+## 2026-09-17 · Claude read-only review of openai/mac (docs-only commit on anthropic/mac)
+
+Nick requested a consolidated review of the Codex worktree at `0426ef4d` plus its staged, unsigned
+September 17 batch (5 crab fits, 3 flora fits, 7 observations, C1–C5 continuation). Two passes are
+committed verbatim in `audits/ANATOMY_REVIEW_20260917/CLAUDE_REVIEW_RESPONSE.md`; the copy-ready
+plan-only prompt for Codex is `CODEX_PLANNING_PROMPT.md` beside it. Headline: input manifest verified
+(1,271/1,275 + 4 declared pointer diffs); five systemic findings (S1 frame-refusal policy, S2 amplitude
+not bone-length-relative, S3 no planted contact outside quadruped, S4 pinch unreachable by resolvers,
+S5 phone budget) plus the Pass 1 register. No lane was edited or synced; no push; PR42 parked.
+Nothing on anthropic/mac changed except this note and the two audit files.
+
+Later the same day: Codex’s approved plan (`9769d299`) and R1/R2 producer (`6b11407d`) were reviewed
+against the eight-subject native evidence (`r1-r2-native-01`, commit `57dfe112`). Review committed as
+`audits/ANATOMY_REVIEW_20260917/CLAUDE_R1R2_REVIEW.md`: tears and floating legs are gone, but motion
+is now unreadable because body-length-relative motion uses a 4 % root→carapace axis (N1); recommended
+a bounded R1b/R2b (N1–N4 + one quadruped sentinel) before R3–R8; Q4 kit paragraph recommended for
+approval. Still no push; PR42 parked.
+
+## 2026-09-17 (later) · vision program approved; E1 design started
+
+Nick restated the full vision and approved the master program's decisions D1–D4
+(`audits/ANATOMY_REVIEW_20260917/MASTER_PROGRAM_20260917.md`): D1 phone tier = delivered finished
+originals with painter-only fallback (no on-device inference); D2 first guardian = Earth-temperate apex
+at 1536 on the same pipeline; D3 arenas by biome family, Earth temperate first; D4 E1 design now, code
+after R3 reaches develop. Track B design is `E1_BATTLE2_INTEGRATION_DESIGN.md` (parts-rig adapter,
+attack-driven turn plan, habitat arena selection, five outcome tests; Codex owes `ContactPhase.travel`
+and the brachyuran attack row in R3). Codex is mid-R1b/R2b (N1 decision + N11/N12 given). No push.
+
+## 2026-09-19 · Claude review of R1b/R2b re-capture; N3 withdrawn; R1c direction; R9 addendum
+
+Read-only review of `openai/mac` evidence `d0437436` on producer `6a58e40e`, committed as
+`audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md` with the contact sheets Claude looked at in
+`r1b-r2b-look/`. Integrity verified (README ↔ JSON, producer diff scope, zero pin deltas). Visual: scuttle
+is readable for the first time (V1); **faint recovers to rest by 75 %** (V2) and **pinch is static** (V3);
+N8 fringes persist (V5). **N3 withdrawn and owned:** the vertex was already rigid; the gate reduces to
+`2·|o|·sin(θ/2)` (rest offset × stance rotation) and the pin receipts' |o| (1.3–3.1 px) are consistent with
+every pass/fail — a derivation, not a proof, so R1c (a) measures it with three negative controls. R1c (b)
+discriminates a Civet adapter artifact from a family-solver gap (hypothesis: no root accommodation) without
+clearance; R1c (c) is a variance floor + 2×2 {harness order × scale reference} attribution, plus the
+persimmon fold ownership dump (the fold pre-exists on `6b11407d`; `normalPasses` unchanged). Gate stays
+0.25 px; no repair chosen. `R9_ADDENDUM_FINISHED_TEXTURES.md` written in the plan's format (desktop only,
+D1). No sync, no push, PR42 parked.
+
+## 2026-09-19 (night) · openai/mac merged locally; E1 battle2 integration coded on the real fits
+
+Nick relaxed D4 ("go"): E1 codes against Codex's signed producer by local merge. `openai/mac` `4cb5f7a3` merged into
+`anthropic/mac` as `e86a66ab` (Codex's nine motion files win; lane docs kept; four merge repairs recorded in the commit —
+Codex's absolute-path pose probe re-pinned, its stale blender span repointed, the battle2 keyer made a static import per the
+Arc 4 law, my motion tests retargeted to Codex's contracts, synthetic fixtures given source habitats). Then E1.1–E1.4:
+`battle2/parts-rig.ts` (Codex's paint-skin rig through its owner + contact solver, refusal policy, joint read-out),
+`TurnAttack` on the turn plan with `impactAtMs` on the effect schedule, `battle2/habitat-arena.ts`, reduced-motion rule,
+`RigPoseContext` hand-over, wiring of the six fits + per-turn `compileAnatomyAttack` + `status().arena/attacks/refusals`.
+Outcome tests run on the REAL fits in vitest: Civet bite pays; no refusal in play (Civet both roles, five crabs as targets);
+habitat refusal visible; reduced motion holds. Three `it.fails` pins flip when R3 lands (travel:'stage', crab attack, pinch).
+Battery: typecheck ×3, 210 tool tests, evidence build, vitest 4,736 pass / 3 expected-fail / 1 red = I5 stale certificate.
+
+## 2026-09-19 · TypeSafe second-opinion tooling landed (from the Windows build, via zip) and its first live battery
+
+The Windows-side batch's own handoff, verbatim (it was written against the Sept-5 roadmap base; the tooling
+arrived here as a zip and was installed after a full read; nothing else from that ROADMAP was taken):
+
+> **What landed:** TypeSafe's Jev model (text-only typed Choice/Noul answers with probabilities) is wired in as
+> **offline audit tooling only** — see `TYPESAFE_START_HERE.md` for the fit decision, the laws, and the
+> copy-ready prompt. It is NOT the art judge (Jev cannot see PNGs) and never enters `main.js` or the v2
+> runtime. `tools/_earthart-load.js` (loaders shared by `rig-audit.js` and `rig-secondopinion.js`),
+> `tools/typesafe-client.js` (key from `TYPESAFE_API_KEY` only, `--dry-run`, gitignored cache),
+> `npm run typesafe:rig` / `typesafe:reference` / `typesafe:judgetag`, `@typesafe-ai/sdk` 0.6.0 dev dependency,
+> `tools/README.md` section. Verified there: `node --check`, `validate.js` PASS, all three tools under `--dry-run`.
+
+**Battery (this lane, Nick's go):** `audits/TYPESAFE_BATTERY_20260919/README.md`. Spend 54 requests /
+1.73 M input tokens (~$0.073). Rig: 8 disagreements → 3 confirmed regex misses fixed in `main.js` (Whale Shark,
+Viperfish → fish; Nudibranch → gastropod) with sentinels (196), 5 model misses left alone. Reference: 272
+disagreements → 14 posture corrections in `fauna.json`, each justified by the row's own text or its family
+convention; eyes untouched (fish-`prominent` is a convention). `rig-audit`, `validate.js`, `referencecheck.mjs`
+PASS. `artlock.mjs` is stale (1250/1250 since 2026-08-06, identical on the pre-change html) — Nick's re-bless
+decision, not this batch. Judgetag skipped (no judge run on this Mac). §4 of the log answers "can it check
+everything?" — yes for text/JSON (flora rows, biomes, procedural records, universe cards), no for art/numbers.
+
+## Archived 2026-09-24 (Claude) — superseded handoff of 2026-09-23
+
+## SESSION HANDOFF — September 23, 2026 · MORPH SYSTEM SHIPPED; PR #43 OPEN; I5 IS THE LAST RED
+Self-contained: either lane can resume from this block alone. Older handoffs are archived verbatim at the top of `ROADMAP_ARCHIVE.md`.
+
+**Where the work stands (2026-09-24).** `anthropic/mac` pushed and equal to origin; PR #43 is the ONE combined PR (both lanes; #42 closed as superseded). Remaining reds are Codex's: I5, the freshwater-crab reach regression (`1dfeec2a`), Codex's own override gate. Codex is running the motion-anatomy program in sprint mode.
+
+**What is built and proven (items -39…-60 below).** The morph system end to end: deterministic params from the genome (`morphParamsV1`, golden-sealed; the archetype's own visual genes come from `identity.speciesVisualKey`), luminance-preserving palette remap, M1 proportion through `jointScale` on the pose program (non-contact sub-trees only), M3/M4 painted markings for the crab and the Civet, a ref-counted morph texture cache on Codex's borrowed-atlas option, and the same individual on the Compendium CARD on every device (Nick's option 3; sealed ≤512² card masters shipped under `apps/game/assets/painted-cards/`). D2's first guardian (Brown Bear) fills the frame by its tallest pose, stands on guardian stands, and films at 2.8–3.1 ms inside its 5 ms tier. A2 planted cadence runs on all seven rigs. The playtest package is built, verified and browser-smoked: `port/v2/apps/game/smoke/dev-preview-f27c9052cf82-20260921151144/` — serve it on loopback and add `?battle2=1` for the arena.
+
+**Verified locally on this head:** unit battery 4,875 pass / 2 expected red / **1 red = I5**; Glass small-phone PASS ×2 and large-phone PASS; `overridecheck` 1014/1014 routes + 137 mutation controls; legacy root gates green; root layout 787/787; `vite build --mode evidence` green.
+
+**The one blocker — I5 (Codex's instrument).** `tests/current-producer-authorities.test.ts` requires `budgets/compendium-memory-v1.json`'s `producerAuthority` to equal the current build's producer; `tests/compendium-budget.test.ts` pins the sealed 2026-09-02 value `357ad8db…` and asserts a mismatch fails closed. They only agree after a MEASURED re-seal that updates the budget and its historical samples together — a hand re-bind was tried here and correctly refused by those pins (reverted). Both entry points refuse by design (`--calibrate`: "candidate calibration is closed because the measured Compendium budget is active"; `npm run compendiummem`: "built index/owner/worker/painter does not match the Compendium calibration authority"). Until it lands, every hosted attempt reds at `v2 base-profile static gates`; PR #43's run `35669457751` is the retained evidence (4,873 pass / 3 failed; the other two were hosted-only 5 s timeouts, now given explicit 30 s limits).
+
+**How close the vision is, measured.** The 631 Earth fauna fall into 13 body plans and **all 13 already have family contracts**; only two have painted archetypes — brachyuran (5 crabs) and quadruped (Civet + the Bear guardian) — covering 218 species. The other eleven cover 413: fish 132, biped-bird 102, insect 41, serpent 26, hopper 18, primate 17, radial 12, arachnid 9, cephalopod 8, flyer-membrane 4, myriapod 3. The multiplier (morphs) is finished; the painted library is the bottleneck, and each new archetype is worth its whole body plan.
+
+**Next, by owner (updated 2026-09-23, late).** Codex's lane head `6910f2bf` is fully merged here — nothing of its overnight sprint has landed yet, so Claude took the one unblocked item on its own list: the SECOND archetype's sheets (item -61; two findings await Nick's eye, one of them his own open question (2)). Codex: I5 first, then one painted archetype per body plan in coverage order (fish/Clownfish, biped-bird/Eagle, insect/Dragonfly) through its proven chain — the overnight sprint prompt is in the Codex block below. Nick: after I5 lands, cycle the label on PR #43 for attempt #3 (the workflow fires only on `labeled`), then the merge to `develop` and, if wanted, the publication-candidate preview for the dev site; the local playtest package is ready now. Claude: merge and verify Codex's packets, re-film what they change, and keep the morph/card path green; the roster batch through the intake compiler still waits on IC-4 passing the crabs (two merged near-claw fingers and the crab's `leg3Far` are painting-side, every matcher lever measured and rejected).
+
+**Traps this session paid for (obey them).** A note placed INSIDE the training-restart fixture broke the hosted battery — that file is exact capture output, notes live in `training-restart-fixture.RESEAL.md`. A backtick inside a comment in `ui-sheet-style.ts` ends the CSS template literal and breaks the evidence build. `expect(x).not.toBe(y)` on a 16 MB typed array makes vitest pretty-print both and kill the worker. A sealed budget is never re-bound by hand. Run `npm run overridecontrol` and the workflow's whole gate list locally before any hosted attempt — `overridecheck` had been silently red since Codex's resolver restructure of 2026-09-16.
+
 ## Archived 2026-09-23 — Python diagnosis before approved open-pose correction
 
 ## Live handoff — 2026-09-25 I5 v2 stopped at first calibration
@@ -712,3665 +1365,249 @@ Sprint item13 Salmon markings: six1254-square masks pass alpha conservation, zer
 
 ## Live handoff — 2026-09-23 Civet markings complete
 
-Verified Codex/macOS in /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. Claude sibling read-only. Nick authorized one Civet marking-mask set; completed and at the signed review stop. Codex HOLDS. No fetch/sync/push/PR/merge/release/deploy. Signed commits only; report actual local HEAD/ahead after signature verification. Continuing Node 26.9.0 anatomy-run receipt reused; .DS_Store untouched.
-
-Packet: audits/MORPH_CIVET_MARKINGS_20260923/README.md. Deliverables: audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/markings/{striped,spotted,banded,mottled,marbled,eye-spotted}.png and sibling markings.json (cf.marking-masks/v1). All 1254², white RGB with alpha, zero outside keyed alpha and zero protected-part pixels. Plain has no mask; iridescent emissive has no mask. Exact retained Civet compiled-prompt prefix + one marking-only block per output, raw PNGs, hashes, full composites and six-mask-sheet.png retained. No resize or registration transform. One mottled revision after visual review; first draft retained, other five unchanged.
-
-There is no labels.png. Existing binding atlas frames map alpha back to source cutouts. Integrated eyes protected through head (no independent eye/shadow parts); head/jaw/ears/paws/tail excluded, body-only marking allowance. Original coat and tail rings untouched. Record/master/keyed/atlas/binding/manifest hashes unchanged. Conservation controls reject outside-alpha and protected-part mutations; changed mottled layer checked alone. Runtime/solver/rig unchanged, so no repeated batteries/S2/native films. Previous BORROWED_ATLAS_20260922/S2_LEDGER.md remains the runtime reference.
-
-Nick reports previous crab masks d8a1a8f9 merged as fddfa5e4 and borrowed-atlas evidence 3f0607be merged as 50c01248 on Claude, with M3/M4 and cache filmed there. No local sync or re-film. Prior loader default ownership and seventh-argument borrowedAtlas contract remain unchanged.
-
-Paired next steps: Codex holds. Claude consumes the Civet masks through its existing atlas mapping. Nick reviews the six-mask sheet; no implementation decision pending. Open Claude when ready to continue integration. No new intake, roster, P2 or third archetype.
-
-Signing blocker: 1Password refused the Civet marking commit with “agent returned an error”, exit 128. Packet and refusal receipt are staged; Nick has been asked to approve/unlock signing. HEAD remains 3f0607be until this commit succeeds. Sign and verify the existing staged packet, then report actual HEAD/ahead and hold; do not rerun conservation or any battery.
-
-Current Git direction: Nick explicitly requests “push openai/mac”. This authorizes one normal branch push after the pending Civet signature; no fetch/sync/merge, PR, label, workflow dispatch, release or deployment. Budget mode UNFROZEN; inspected workflow triggers are labeled-PR/manual only, with no push trigger. Sign and verify the staged packet, push this branch normally, confirm remote HEAD, then hold. Earlier no-push directions remain history for their completed runs.
-
-# Archived handoff — 2026-09-23 Civet markings
-
-## Live handoff — 2026-09-22 crab markings and borrowed atlas complete
-
-Verified Codex/macOS in /Users/nick/Projects/celestial-frontier-openai-mac, branch openai/mac. Claude sibling remains read-only. Nick's two-item run is complete; Codex HOLDS. Signed local commits only. No fetch/sync/push/PR/merge/release/deploy. Continuing-run Node 26.9.0 receipt reused; existing .DS_Store untouched.
-
-Signed/verified marking commit d8a1a8f9941df45241e3ac0bd459fbc1b85932e8; loader producer 5b6f89c7b0d9a2e35f4bc5ed57df33b5eaf363ac. Final evidence commit follows; report actual local HEAD/ahead without fetching. Earlier signing refusals are retained. Prior bear evidence was signed as 88adb919; Nick reports Claude's observed-support bear proof accepted, so no further bear work.
-
-Marking packet: audits/MORPH_CRAB_MARKINGS_20260922/README.md. Six white-alpha masks in audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/markings/, with sibling markings.json mapping patterns to files/hashes/exact sent prompts. All 880², zero pixels outside keyed master alpha; eyes/shadow excluded. Master, record, binding, labels and atlas unchanged. Retained P1 archetype prompt plus one marking-only block; built-in imagegen raw 1254² outputs retained. Registration/resize/clipping receipt and one rejected stripe output retained. Plain no mask; iridescent emissive. six-mask-sheet.png is pending Nick's visual review. No second archetype or intake.
-
-Loader packet: audits/BORROWED_ATLAS_20260922/README.md. Optional seventh argument {borrowedAtlas:true} after the custom decoder preserves a caller-owned atlas Texture and TextureSource on rig disposal and decoded-dimension refusal. Default ownership unchanged. Per-rig objects still release; cache owner releases texture only after every borrower disposes. Ownership captured at load. Hash admission and all solver/skin behavior unchanged.
-
-One focused actual-Pixi both-way ownership control reproduced the old bug, then passed on the change; app typecheck and root validation PASS. One S2 sweep on signed 5b6f89c7 PASS_STATIC: all six complete receipts and decompressed support samples byte-identical to BEAR_RIGID_SUPPORT_IK_20260922/s2; five crabs R2c′-identical; Civet drift 0.16525637288346104 px; exact rest/presentation pass. S2_LEDGER.md and s2/identity.json contain evidence. No retry, native film or new CPU measurement. Do not repeat completed checks.
-
-Paired next steps: Codex holds. Claude consumes signed masks and loader producer for M3/M4 master-to-atlas mapping and the morph texture cache, using the existing custom decoder plus {borrowedAtlas:true}; its integration retains cache lifetime responsibility. Nick reviews the six-mask sheet; no remaining implementation decision. No need to open the other app for a blocker; switch to Claude when ready to continue its integration. Roster/P2/new intake remain held.
-
-# Archived handoff — 2026-09-22 signing resolved
-
-## Live handoff — 2026-09-22 crab markings, loader next
-
-Verified Codex/macOS in /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. Claude sibling read-only. Nick authorized two ordered items: original 880² crab marking masks, then borrowed-atlas loader ownership with focused control/typecheck/one S2 sweep. Signed local commits only; no fetch/sync/push/PR/merge/release/deploy. Continuing-run Node 26.9.0 receipt reused; existing .DS_Store untouched.
-
-Previous evidence signing completed and verified as 88adb919; refusal receipt retained. Nick reports Claude merged rigid-support producer 58f81e54 as 137c272a and measured observed bear 0/216 refusals, 2.80 ms. No further bear work is authorized or needed here; those stage numbers are Claude-reported, not a local rerun.
-
-Marking packet: audits/MORPH_CRAB_MARKINGS_20260922/README.md. Six white-on-transparent masks and markings.json beside crab-fits-03/crab. Master-space 880², zero pixels outside keyed alpha, existing eyes/shadow excluded, all accepted source/record/binding/atlas bytes unchanged. Exact prompts/raw outputs/registration/source hashes retained; six-mask-sheet.png is pending Nick's eye. Plain no mask, iridescent emissive. No second archetype or new intake.
-
-Next authorized item: additive borrowed-atlas option on loadCreatureRigV1, default ownership unchanged. Run one ownership control, app typecheck and one S2 sweep on its signed producer, then hold. Claude integrates masks for M3/M4 and uses caller-owned atlas cache; Nick reviews the sheet. Roster/P2/new intake remain held.
-
-### Authentication blocker and prepared loader
-
-The marking commit was refused twice by 1Password (ordinary and PTY prompt), exit 128 “agent returned an error”; receipt in the marking packet. No unsigned fallback. The prior bear evidence is signed at 88adb919. Marking files and their handoff remain staged separately; loader code and evidence are prepared but not staged into that commit.
-
-Prepared loader changes: optional seventh argument `{borrowedAtlas:true}`, captured at load. Borrowed atlas/source survive disposal and decoded-dimension refusal; default-owned cleanup remains. One focused both-way ownership test reproduced the old bug and passes after the patch. App typecheck and root validation pass. audits/BORROWED_ATLAS_20260922/README.md records these results. The single S2 sweep has NOT run: sign/verify markings first, then sign/verify the loader producer, run the prepared s2-controls.ts once on that signed producer, compare full receipts/support bytes against BEAR_RIGID_SUPPORT_IK_20260922/s2, sign the evidence and hold. Do not repeat completed controls/typecheck/validation. S2 is still the sole quality halt; authentication is an external prerequisite, not a new design decision.
-
-Nick has been asked to approve/unlock the signing prompt. Claude's next work remains M3/M4 integration and borrowed-atlas cache use after signed handoff; Nick reviews the six-mask sheet. No bear work or remote operation.
-
-### Signing resumed
-
-Nick approved 1Password. Marking packet signed/verified as d8a1a8f9941df45241e3ac0bd459fbc1b85932e8; earlier refusal receipts retained. Loader controls/typecheck/validation are unchanged and passed. Sign the prepared loader producer, verify, then run its one pending S2 sweep and retain identity comparison/evidence. No test reruns.
-
-# Archived handoff — 2026-09-22 before crab markings
-
-## Live handoff — 2026-09-22 analytic rigid-support review stop
-
-Verified openai/mac in /Users/nick/Projects/celestial-frontier-openai-mac. Nick authorized the single analytic rigid-support IK proposal. Implemented and at the bounded review stop; Codex HOLDS. Claude sibling read-only. Signed commits only; no fetch/sync/push/PR/merge/release/deploy. Node 26.9.0 continuing-run receipt reused; existing .DS_Store untouched.
-
-Packet: audits/BEAR_RIGID_SUPPORT_IK_20260922/README.md. Signed/verified producer `58f81e545cf7d40798bddbb0592506681c124073`. Existing three-pass output stays byte-identical when accepted. Only after the unchanged 0.25 px support residual fails, and only if every active support is endpoint-only, a lazy cached analytic IK branch solves the rigid support directly and reconstructs the anatomical ankle from its original lower-bone vector. Root accommodation restarts from the authored root under the same 0.08 × scale cap. Mixed-weight path, limits, terminal rule, endpoint 1e-8, source support offsets and original source anatomy remain unchanged. No species/fit/size selector. Earlier reach/compression/limit failures still refuse.
-
-Controls 10/10 PASS: all fifteen retained support-failure samples now solve; anatomical lengths and terminal orientation invariant; exact rest; diffused-support refusal; original gallop compression; existing weighted-support and limit mutants. Pre-fix test failure at 0.26350408495550587 px retained. App typecheck and root validation PASS.
-
-One S2 sweep on the signed producer: all six full subject receipts and decompressed support-sample bytes exactly equal BEAR_CONTACT_DIAGNOSTICS_20260922/s2. Five original crabs R2c′-identical; Civet 0.16525637288346104 px; exact rest/presentation PASS. Same historical signed source-join sampling instrument retained for receipt identity, current runtime sources hash-bound. No S2 halt, unchanged retry or other battery.
-
-One full bear OBSERVED sweep after S2: 18/20 action rows and presentation PASS, no support-iteration refusals. Max published painted drift 0.2495765127496037 px ≤ 0.25; exact rest PASS. Remaining full-library RED: approach:gallop at 180.266667 ms and melee:tail at 247.866667 ms, both independent compression failures. Tail advances beyond the repaired support failure and hits the same compression sample already recorded under REST mode. No further variant or limit/clip change. BEAR_STATIC.md and machine/static source hashes retain every row. Native CPU/film for the changed producer are not yet qualified; no unchanged REST rerun.
-
-Bear fit producer 1ff30009 unchanged, recipe 7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc, binding 869beb8ac0ff2ce32479babf206818d6579225a7f861912152f374cbd89e715a. Source/master/masks/atlas/binding file hashes checked unchanged. Earlier 1254 size and 60 px compiler-comparison findings remain separate. Mud/Vent Far declarations and directional reach from prior packet remain unchanged; backward bounds did not lift. Previous detailed diagnosis and handoff preserved in ROADMAP_ARCHIVE.md.
-
-Paired next steps: Codex holds. Claude re-merges signed 58f81e54 plus the final evidence commit, re-films the selected bear stage turn with OBSERVED supports and measures the 5 ms desktop guardian gate. Gallop/tail remain refused; no authority to loosen those bounds. Nick: no further decision requested for this bounded correction. Other new intake, roster and P2 remain held. Report actual signed local HEAD/ahead after the final evidence commit without fetching.
-
-# Archived handoff — 2026-09-22 analytic rigid-support correction
-
-## Live handoff — 2026-09-22 overnight diagnostics review stop
-
-Verified /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac. Claude sibling read-only. Nick authorized diagnostic-only bear analysis, REST static mode, Freshwater history and original Mud/Vent folded declarations. Ordered run is complete; Codex HOLDS. Signed commits only, no fetch/sync/push/PR/merge/release/deploy. Node26.9.0 continuing-run receipt reused; existing .DS_Store untouched.
-
-Packet: audits/BEAR_CONTACT_DIAGNOSTICS_20260922/README.md. Diagnostic producer5c5c8d78; REST instrument/evidence756c366d; history producer8dd8d42b; declarations/S2 producer99fc32ee. All signatures verified. Final evidence/docs commit follows; report actual HEAD/ahead from cached origin without fetching.
-
-Bear fit and runtime solver1ff30009 unchanged. Fourteen support-refusing rows plus presentation reproduce at the retained first-refusal samples. Diagnostic-only32-pass clone shows hindFarAnkle approaches alternating~0.305154px; other active supports converge within0.000000538px. All four bear models are pure ankle ownership. Gate is absolute native source pixels. Gallop180.266667ms hind-far chain needs40.251735px root compression vs39.994000px,0.257736px over, before correction. BEAR_DIAGNOSIS.md proposes ONE Nick decision: analytic rigid-support IK for endpoint-only supports with unchanged limits/compression/terminal/pixel gate. No fix applied, no production iteration change; gallop remains separate.
-
-fit-01/static.ts now has REST/observed selection. Retained observed5/20 action rows pass,15+presentation refuse. One REST sweep on signed tool756c366d:18/20 action rows and presentation complete at solver; gallop and tail compression refuse. Exact rest PASS. Actual REST paint drift remains RED, up to33.885146px in faint; solver admission is not surface planting. Two tables in fit-01/STATIC_VERDICT.md share unchanged solver/fit producer1ff30009 while retaining distinct historical tool-producer hashes. Claude's selected-turn G6 film/3.10ms is separate; no rerun. Bear source1254 size and60px comparison findings unchanged.
-
-Freshwater: no a817ad64/1ff30009 solver regression. Before/after sampled stage results and refusal traces hash identically for all six subjects, REST+observed. Read-only Claude parts-rig.ts commit1dab84c2 changed one-half probe to both halves plus×0.9:0.126953125 becomes0.0703125×0.9=0.06328125. No fix/decision needed. Source receipts and tables retained.
-
-Applied Nick's original painter Mud/Vent far-side declaration to leg0Far,leg1Far,leg2Far,leg3Far on each (explicit user declaration, not inferred or copied from P1 paintings). Each presence.json matches record.anatomy; record recipe and binding association/hash headers resealed. Old JSONs retained in declaration-before; all landmarks/masks/parts/skin/weights/pins/atlas/pixels/clips unchanged. Shared121-phase helper REST forward: Freshwater0.070494 unchanged, Mud0.046092→0.506777, Vent0.036701→0.837427. Observed forward: Freshwater0.070494 unchanged, Mud0.040753→0.491849, Vent0.034066→0.865524. Backward bounds do NOT lift; direction table in FOLDED_REACH.md.
-
-S2: one sweep on signed99fc32ee, all six full receipts and decompressed support-sample bytes exactly equal prior STAGE_CADENCE_REACH packet. Five crabs R2c′-identical, Civet0.165256373px, exact rest/presentation PASS. Historical signed seam-sampling instrument retained to compare byte identity; current runtime source hashes included. No S2 halt or unchanged retry. Root validation PASS. No new native filming in this run.
-
-Paired next steps: Codex holds; Claude consumes resealed Mud/Vent records, re-films direction-correct cadence, reviews REST surface drift alongside G6 and reads corrected Freshwater history. Nick decides ONLY whether to authorize the proposed analytic rigid-support IK work. No unsigned fallback, other intake, roster or P2. Full fit/producer/file hashes and all retained measurements are in the packet; do not repeat completed batteries.
-
-# Archived handoff — 2026-09-22 overnight bear diagnostics
-
-## Live handoff — 2026-09-22 measured cadence / guardian review stop
-
-Verified openai/mac in /Users/nick/Projects/celestial-frontier-openai-mac. Claude’s sibling is read-only. Nick’s go authorized slice35 measured stance reach, declared folded body planting, nine native subjects, then generation01 guardian comparison fit. Bounded run has reached its review stop; Codex HOLDS. No fetch, sync, push, PR, merge, release or deploy. Node26.9.0 session receipt reused; existing .DS_Store untouched.
-
-Packet: audits/STAGE_CADENCE_REACH_20260922/README.md. Signed/verified producer a817ad64 measures approach stance reach over 121 phases with 24 bisections under the unchanged family solver; createStrideCadence accepts measured reach; declared folded legs remain body-relative in stage mode. No short-bone inference. Seven unit controls, typecheck and validation PASS. Signed/verified evidence38fee9c6: one S2 sweep, all six receipts identical to prior, five original crabs R2c′-identical, Civet0.165256373px, exact rest. Nine native subjects complete without refusal, all six animal stance drift≤0.5px. CPU leaf reds: Persimmon2.5ms, Devil’s Club2.6ms vs unchanged<2ms. Cadence performance only, not a new full-film certificate. No S2 halt or unchanged rerun.
-
-Signed/verified guardian producer1ff30009d9b8cda3a92d72a2ef07a36c8506d91b. Fit: audits/VISION_D2_GUARDIAN_20260921/fit-01. Original1254² generation01 unchanged, absent=[tail], hidden/folded empty. Seventeen independently observed comparison masks;3,540 vertices. Recipe7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc; binding869beb8ac0ff2ce32479babf206818d6579225a7f861912152f374cbd89e715a. SHA256 file digests in file-hashes.json. Comparison record is hand truth, not compiler acceptance. Shared source-join probe now checks adjacent spatial bins after primary candidates to find edges reconstructed across a bin boundary; no geometric/tolerance/runtime-solver changes.8/8 positive/negative probe controls and root validate PASS. Earlier masks and instrument refusal receipts retained. Nick’s renewed1Password readiness resolved signing; initial refusal retained.
-
-One static sweep on signed bear producer: **RED, not animation-admitted**. Exact rest PASS;5/20 action rows complete (hop, dodge, faint, tame, kick),15 action rows plus presentation refuse. Fourteen action rows and presentation fail the unchanged painted-support fixed-point residual gate (first refusal0.253987–0.269002px vs0.25px); gallop hits compression at180.267ms. No corrective variant, gate/clip/limit change or unchanged retry. STATIC_VERDICT.md indexes every row; static.json includes pose/contact failure state and static.sources.json binds the source. The5ms guardian native CPU and60px independent compiler comparison are unmeasured; original1536 size requirement remains red on the retained1254 master. This new-subject leaf finding does not regress the prior six-subject S2 inputs.
-
-Paired next steps: Codex holds. Claude reconciles measured reach with its E1 cadence, re-films/rechecks pins, runs score/ic4 on the bear comparison record for G3, and reviews the static refusals before native G6 frameFill use. Claude’s sibling already records A2 tempo built in slice36; do not override it or copy its modules here. Nick: nothing newly requested to decide. IC3 remains frozen except the completed guardian comparison fit; roster/P2/other intake held. No repeated batteries. Local branch ahead count must be reported after the final signed evidence commit using cached origin, without fetching.
-
-# Archived handoff — 2026-09-22 bear signature resolved
-
-## Live handoff — 2026-09-22 measured cadence / bear signing wait
-
-Verified openai/mac in /Users/nick/Projects/celestial-frontier-openai-mac. Claude’s sibling read-only. Nick’s “Claude and I agree, with go” authorizes slice35’s measured stance reach, declared folded body planting, nine native subjects, then generation01 guardian comparison fit. No fetch/sync/push/PR/merge/release/deploy. Node26.9.0 session receipt reused. Existing .DS_Store untouched.
-
-Packet: audits/STAGE_CADENCE_REACH_20260922/README.md. Signed/verified producer a817ad64 measures approach stance reach over121 phases,24 bisections, existing family solver; createStrideCadence takes measured reach; declared folded legs are body-relative in stage mode. No short-bone inference.7/7 unit controls, typecheck and validate PASS. Signed/verified evidence38fee9c6: one S2 sweep, all six exact preceding receipts, five original crabs R2c′-identical, Civet0.165256373px, exact rest. Nine native subjects complete, zero refusals, all six animal stance drift≤0.5px; no S2 halt. CPU leaf reds Persimmon2.5ms and Devil’s Club2.6ms vs unchanged<2ms, retained without retry. This is cadence performance, not full-film certification. No repeated batteries needed.
-
-Brown Bear fit-01 built but UNSIGNED, staged with shared source-probe bin lookup correction. Path audits/VISION_D2_GUARDIAN_20260921/fit-01. Source gen01 unchanged1254², tail absent, hidden/folded empty;17 new hand comparison masks,3540 vertices, recipe7b86007b758640b5caaf149a423b532fcc1941cc1aa8a096a44c8792b99dcedc, binding869beb8ac0ff2ce32479babf206818d6579225a7f861912152f374cbd89e715a.60px independent compiler comparison/5ms guardian CPU remain unqualified.1536 requirement remains a retained source-size red. Attempt01’s limb-edge torso ownership corrected; attempt02’s boundary-mesh probe refusal diagnosed as spatial-bin rounding, real surface existed. Generic adjacent-bin lookup fixes instrument without changing geometry/tolerances;8/8 two-way controls and root validate pass, negative/failure receipts retained. Accepted sentinel/runtime solver inputs unchanged by the probe correction.
-
-AUTHENTICATION BLOCKER:1Password returned “agent returned an error” on bear producer; no commit created, no unsigned fallback. signing-refusal-01.txt retained. Async readiness question pending. Local HEAD38fee9c6ffa1dc99ef506204143a9336fe4fe0b6,58 ahead cached origin/openai/mac (no fetch). Producer already staged; later index/hash/refusal/handoff docs are unstaged. On Nick readiness, sign and verify staged producer (include receipt/hash docs as appropriate), THEN run once: node audits/ANATOMY_SINGLE_RUN_20260919/R1c/run-offline.mjs audits/VISION_D2_GUARDIAN_20260921/fit-01/static.ts audits/VISION_D2_GUARDIAN_20260921/fit-01/static. It records every family row/presentation with shape/contact/seam gates and exact rest; rows not yet run. Record leaf findings, do not pretend fit acceptance. Sign final evidence/docs, report actual local HEAD/ahead, hold.
-
-Paired next steps: Codex resumes at signature only, no repeated cadence/S2 run; then final evidence and hold. Claude reconciles measured reach with its E1 stage, re-films/rechecks pins, runs bear score/ic4 as G3 with comparison record, and G6 frameFill. Read-only sibling now records A2 tempo built(slice36); do not override it. Nick: approve/unlock1Password only, no new design decision. IC3 remains frozen except this guardian; roster/P2/other intake held.
-
-# Archived handoff — 2026-09-22 measured cadence continuation
-
-## Live handoff — 2026-09-21 cadence S2 STOP
-
-OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`, verified. Claude’s sibling read-only. No fetch, sync, push, PR, merge, release or deploy. Node26.9.0 uninterrupted receipt reused. Existing .DS_Store untouched.
-
-**S2_STOP; do not retry or proceed to the bear fit.** Packet: `audits/STAGE_CADENCE_20260921/README.md`; S2_LEDGER.md, NATIVE_ROWS.md and native-summary.json in that folder.
-
-Signed producer `0072cbdb`: shared createStrideCadence helper in creature-stage-travel.ts preserves composed pixel distance, covers it in whole authored gait cycles, emits separate world pixel travel and stance-local body lengths. Max0.2body lengths per whole cycle/0.1 per half-cycle stance. Native harness exercises actual Pixi rig, sampler, family contact solver and published painted supports. No solver, raw clip, skin, binding or threshold change. Focused2/2, app typecheck and root validation PASS. One solver-mode S2 sweep on the signed producer: all six receipts exactly equal prior ledger, five crab R2c′ rows identical, Civet0.165256373px, exact rest.
-
-Native run: Crab2700frames, drift0.000015325px/p950.4ms; Coconut2040frames, drift0.000016464px/p950.6ms — both PASS. Freshwater refused at154ms (22/2100frames), `Contact: approach:scuttle@154 leg0Far outside accommodatable reach`, stageDisplacement0.07165014577259474 body lengths. Exact rest PASS; partial p951.6ms is not a full cadence certification. Maximum planned per-stance displacement0.0977047442 was below0.2; one-crab reach measurement does not generalize. S2 halted immediately, no retry. Mud, Vent, Persimmon, Cranberry, Devil’s Club, Civet native cadence are unrun. Brown Bear generation01 fit-01 NOT STARTED; no record or binding hashes.
-
-Battle2 modules are absent on this lane. Shared helper/native cadence implementation is present, but full E1 stage wiring was never copied or edited. Claude’s current parts-rig divides stageDisplacement by card.scaleLength; future body-length RigPoseContext must remove that obsolete conversion. Do not integrate the current cadence as universally admitted: Freshwater S2 remains red.
-
-Paired next steps: Codex holds. Claude reviews the retained refusal before another cadence producer or E1 re-film; pin rechecks, bear fit/G3-with-record and G6 frameFill remain pending. Nick: nothing newly requested to decide in this packet. Prior bear originals and presence remain unchanged (generation01 ADMIT on Claude, tail absent; both raw masters1254², size red retained). Roster/P2/other intake remain held. Previous arc context preserved verbatim in ROADMAP_ARCHIVE.md.
-
-## Active authorized continuation — 2026-09-22
-
-Nick says “Claude and I agree, with go”; Claude slice35/next Codex block authorizes measured per-record stance reach and body-relative declared-folded planting, then nine native subjects and generation01 bear fit. New packet audits/STAGE_CADENCE_REACH_20260922. Seven focused controls pass; typecheck correction retains recipeHash in the measurement signature. Previous S2 evidence remains immutable. Sign producer then one S2/static and one native run; S2 remains the halt.
-
-# Archived handoff — 2026-09-21 cadence S2 stop
-
-## Live handoff — 2026-09-21 stage displacement / bear retry
-
-OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, verified. Claude’s sibling is read-only. Ordered run is at its one stop; Codex HOLDS. No fetch, sync, push, PR, merge, release or deploy. Pre-existing .DS_Store left alone. Node26.9.0 uninterrupted-session receipt reused.
-
-Packet: `audits/SOLVER_STAGE_DISPLACEMENT_20260921/README.md`.
-
-1. Signed producer `d8787235`: `ContactPhase.stageDisplacement?:number`, signed measured body-length units. In stage mode planted targets recede by displacement × scaleLength, including painted targets; root dx stays0, swing targets unchanged. Undefined preserves prior path; solver mode ignores the field. Non-finite stage values refuse. No limit/clamp/skin/binding/clip changes. Focused stage/support3/3, stance5/5, app typecheck and root validation PASS. Published-support cancellation tested. Signing refusal retained, resolved by Nick’s unlock.
-2. Signed S2 evidence `96631949`: one six-subject sweep, every subject result exactly equals prior cb1a667d ledger. Five crab rows bit-identical to R2c′, Civet max0.165256373px, exact rest and presentation pass. No S2 halt. `S2_LEDGER.md` and `s2/` contain the evidence. Do not rerun unchanged.
-3. Signed declaration `1268a2f0`: `audits/VISION_D2_GUARDIAN_20260921/generation-01/presence.json`, absent=[tail], hidden=[], folded=[]. hindFar appears partly occluded but weight-bearing with an extended lower leg, not visibly folded flat; left unfolded under Nick’s choice. Four contact chains, no long-tail slot; focused checks pass. Presence SHA25690cf2f6724cac8198eb24d82d7fedff1b33d8f3038c794e394002d4a404f95db. Generation01 original PNG unchanged.
-4. `audits/VISION_D2_GUARDIAN_20260921/generation-02/`: one authorized identical-prompt retry with the same references. **Tool again delivered1254×1254 RGBA; G1 size RED against1536×1536.** Both masters retained byte-for-byte, no resize/third attempt. Exact prompt/request/result/hash retained; four visible paws, separate presence with absent=[tail], hidden/folded empty. No hand landmarks, intake, fit or rig. Guardian5ms desktop-only/60px-at1536 decisions unchanged.
-
-### Paired next steps
-
-Codex holds. Claude must pass actual stageDisplacement in its third-pin context (currently omitted), measure planted intervals within the unchanged reach guards, flip the pin when passing and re-film. A184.32px run-up at quarter scale cannot be one unlimited stance; focused negative control preserves that refusal. This lane did not edit or run the sibling’s pin. Claude runs the1536 bear as G3 when available and builds G6 on its record once fitted; the returned1254 masters cannot establish1536 acceptance. Nick: no new decision requested. IC-3 otherwise frozen; roster/P2/other intake held. Prior R3-S/native/R9/phone/CPU leaves and signed evidence remain indexed by `audits/R3S_RESUME_20260921/README.md`; do not repeat completed work.
-
-## Active cadence / guardian fit run — 2026-09-21
-
-Nick authorized shared stride cadence, nine-subject native proof, then Brown Bear generation01 fit. Producer is prepared in shared creature-stage-travel and native harness; battle2 is absent and sibling read-only, so actual E1 wiring remains explicit Claude integration. Packet: audits/STAGE_CADENCE_20260921. Sign producer, one S2, native subjects in retained order; shared native red halts. Bear fit has not begun.
-
-
-# Archived handoffs — 2026-09-21 stage displacement / bear retry
-
-## SESSION HANDOFF — final canonical delivery complete; IC-3 HOLD/FROZEN
-
-Nick chose painted desktop full-film rig p95≤3.5ms; boundary24/interior56 stays canonical.
-Phone/painter strict2ms unchanged; D1 phones use retained originals. Authority read-only
-anthropic PROGRAM.md§6. Packet: audits/VISION_P1_DESKTOP_DELIVERY_20260920/README.md.
-The five accepted fits and all IC-3 writer files are hashed in frozen-inputs.json.
-Coconut retained split-guard film is reassessed, no new capture. Four final films/sheets:
-Crab intake02fit01; Freshwater intake02fit03; Mud intake02fit01; Vent intake01fit01.
-One native run each completed on signed producer c93ee2e8, all outputs retained. Full-film
-rig p95: Crab4.0ms FAIL / Freshwater2.4ms PASS / Mud3.6ms FAIL / Vent3.6ms FAIL against3.5ms.
-Retained Coconut3.0ms PASS. All geometry/contact/rest/continuity PASS, zero refused frames.
-Four films, four comparison sheets and overview delivered. CPU differences from prior table
-not causally attributed; no unchanged retry, threshold change or optimization authorized.
-310 canonical input/writer files hash-identical; frozen-verification.json PASS.
-Geometry/contact/exact-rest/continuity gates unchanged. Shared crabs+Civet controls and
-root guard already pass; no solver/skin or writer edit in this delivery batch.
-
-Final evidence signing blocked:1Password returned "agent returned an error"; producer
-c93ee2e8 is signed/verified, completed artifacts and freeze handoff are staged. Refusal
-retained in packet. Nick was asked to unlock signing. Resume final signed commit only,
-verify it, then hold; do not rerun captures. Current local HEAD c93ee2e8,41 ahead cached origin.
-
-HOLD ACTIVE: no new intake, painting, P2 or roster until compiler IC-4 passes
-all five accepted fits with zero hand edits and required erased/duplicated/wrong-guide
-mutant refusals. Claude owns IC-1/2; Codex IC-3 remains frozen. No sync or app switch for
-Git required. PR42 parked; signed commits only; no fetch/push/PR/merge/release/deploy.
-Node26.9.0 uninterrupted-session receipt reused. Pre-existing .DS_Store untouched.
-
-## Folded declarations handoff — 2026-09-21
-
-Nick released IC-3 only for explicit folded-leg declarations. Applied v2 `presence.json`
-inputs beside Crab intake-02 fit01 (leg0Far), Mud intake-02 fit01 (leg0Far), and Vent
-intake-01 fit01 (leg0Near). Sealed records, landmarks, masks, bindings and rigs unchanged.
-Optional folded defaults to []; painted and present, disjoint from hidden/absent.
-Focused declaration/geometry controls: 3/3 pass; no batteries or native reruns.
-Receipt and exact paths/hashes: audits/INTAKE_FOLDED_DECLARATIONS_20260921/README.md.
-Codex holds again, writers frozen. Claude reads these presence inputs in score.mjs/ic4.mjs
-and removes its FOLDED proposal map. Nick: nothing to decide. No fetch/push/PR/merge.
-Prior staged four-crab delivery remains separate and retains its signing-refusal receipt.
-
-## R3-S / section8 reconciled review stop — 2026-09-21
-
-The requested sequence already completed in signed history through a94535aa; do not
-repeat its report-all sweep, native captures, R9 finisher or historical roster attempts.
-Accumulated current packet: audits/R3S_RESUME_20260921/README.md; S2-ledger.json retains
-BEFORE/AFTER and later six-subject controls.13,286 samples, zero AFTER classes, exact rest,
-five crab bit identity; Civet max planted drift0.165256373px. No new solver change or S2.
-Twenty stage signatures and833 original media hashes verified;37 films now indexed.
-Previously pending final P1 native films/sheets signed and verified as3e23766d. Historical
-signing refusals remain evidence, no longer blockers. Existing CPU/plant/phone/roster/PR42
-leaves stay open. R9 remains this lane's canonical finish at Claude's later re-merge.
-Folded presence73398486 is preserved; IC-3 frozen for new species, no P2 or roster intake.
-Codex holds. Claude re-merges signed producers on its lane and re-films E1 on the family
-solver with contactJoint/travel:stage/pinch and declared presence inputs. Nick: review only
-at this accumulated stop, no interim decision. No fetch/push/PR/merge/release/deploy here.
-
-## Active ordered solver → coconut → guardian run — 2026-09-21
-
-Step1 producer: minimal stage stride double-count fix and published surface accessor;
-focused tests/typecheck pass. Sign then run fresh S2 sweep before step2. Packet:
-audits/SOLVER_STAGE_SUPPORT_20260921/. Step2 coconut explicit presence removes leg3Far
-from hidden with no record/binding change. Step3 G1/G2 Brown Bear1536 master + presence,
-no hand landmarks. No internal review stops; S2 only, signed stages, no push/sync/merge.
-
-Step 1 signed producer `cb1a667d`: stage gait no longer advances local stride targets; published painted-support accessor available. One S2 sweep PASS for all six; five crab rows bit-identical, Civet <=0.25 px, exact rest. Evidence: `audits/SOLVER_STAGE_SUPPORT_20260921/S2_LEDGER.md`. Proceed to the declaration-only coconut correction, then Brown Bear G1–G2.
-
-Step 2 complete: coconut fit-04 now has an authoritative `presence.json`, hidden=[leg3Near]; leg3Far is painted per Nick. Focused presence PASS; historical sealed fit bytes unchanged. Next: one Brown Bear guardian painting, then hold.
-
-## Fresh-session handoff — 2026-09-21 solver / coconut / D2 run
-
-OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`; sibling Claude lane read-only. **Ordered run stopped; Codex holds.** No fetch, sync, push, PR, merge, release or deploy.
-
-- Step 1: signed producer `cb1a667d` removes local gait stride advance in stage travel and exposes `readCreatureRigContactSupport(rig,joint)` for the actual published mesh support. This is the authorized minimum stage fix, not a claim of arena-space planting. Focused tests/typecheck/root validation PASS. S2 evidence signed `1b3f4454`: all six pass, five crab rows bit-identical to R2c′, exact rest, Civet maximum row drift 0.165256373 px. One sweep only. Packet/index: `audits/SOLVER_STAGE_SUPPORT_20260921/README.md`; S2 table: `S2_LEDGER.md` in that folder.
-- Step 2: signed `20534d6d` adds current `audits/VISION_P1_COCONUT_20260920/hidden-01/fit-04/presence.json` with hidden=[leg3Near]. Nick declares leg3Far painted. Focused presence PASS; all existing sealed record/landmark/mask/binding bytes unchanged. This follows the compiler’s standalone-presence override used for folded declarations. Hash and unchanged-file manifest are in the packet’s `coconut-declaration.json`.
-- Step 3: `audits/VISION_D2_GUARDIAN_20260921/generation-01/`: one Brown Bear master via built-in imagegen, exact prompt, request/result hashes, native side-on painter guide, presence v2 (four visible legs, hidden/absent/folded empty). No hand landmarks/intake/fit/rig. **G1 format RED: tool returned1254×1254 RGBA despite1536×1536 request.** Original bytes and alpha retained, no resize/retry. G2 schema PASS. Guardian5ms desktop and60px-at1536 decisions unchanged; not yet measured or admitted. Source Sol card has no hazard; no invented signature motif. Catalogue headFrac0.27 overrides design-note0.22.
-
-Paired next steps: Codex holds. Claude uses the signed solver changes and coconut declaration; runs bear G3 compiler diagnostics and builds G6 titanic fill, retaining the G1 format red rather than claiming complete D2 acceptance. Nick: no new decision requested. Roster/other intake/P2 remain held. Do not repeat completed S2/tests or regenerate the master from this handoff. 1Password refused the first step1 signature; refusal receipt retained; subsequent signatures verified.
-
-## Active stage-displacement / bear continuation — 2026-09-21
-
-Nick authorizes one ordered run: stageDisplacement producer and S2, bear tail/folded declaration, one identical-prompt generation02 retry. No sibling edits/sync or push. Packet: `audits/SOLVER_STAGE_DISPLACEMENT_20260921/`. S2 is the only halt; no further intake/rig work in this run.
-
-
-# P1 CPU preparation handoff — superseded2026-09-20
-
-## SESSION HANDOFF — P1 CPU table complete; measured root guard; intake compiler next
-
-Producer63b13bff signed/verified exactly as staged after retained1Password refusal.
-Packet: audits/VISION_P1_CONSOLIDATED_20260920/README.md. Node26.9.0 receipt reused.
-Shared controls ran once: five painter crabs bit-identical R2c′; Civet0.165257px; exact rest.
-Native CPU table complete:30 requested entries /17 distinct bindings, aliases retained.
-Boundary48 full-film p95: Coconut1.3 / Crab1.7 / Freshwater1.2 / Mud1.3ms. Vent boundary48
-refuses painted-support convergence; no film timing, no retry or forced green. All rest0/0.
-Freshwater coarse drift0.227328px remains near0.25px. Nick has NOT chosen painted-tier gate.
-Current accepted fits unchanged: Coconut hidden-01fit04; intake-02 Crab01/Freshwater03/Mud01;
-intake-01 Vent01. Earlier masks/failures remain. All static intakes pass.
-
-Root ledger: all12 native rows on five painter crabs + painted Coconut at60Hz, including
-transitions. Coconut reproduces9.10409679px exactly. Shared brachyuran non-gait bound is
-measured max+10%, rounded up1e-6 =0.017603 anatomical motion-scale units. Gaits keep stride
-on both sides of transitions; other templates keep old behavior. All six normal traces
-pass; all six actual doubled faint-recovery keys refuse.6 guard/R3 tests pass; validation
-fingerprint unchanged. Signed guard producer ea998874; native Coconut confirmation passes continuity with
-exact pixel rest0/0 and zero refused frames. Dense-rig CPU leaf retained. Receipts in packet.
-
-NEXT DELIVERABLE: intake compiler, per Nick and read-only sibling PROGRAM.md§5. Claude
-owns IC-1 registration/hidden inference and IC-2 geodesic labels; Codex keeps IC-3 shared
-record/mask/atlas/split/binding writers stable. IC3_HANDOFF.md indexes the existing contracts.
-Five accepted paintings are regression truth; they were manually authored, so automatic
-intake is NOT yet accepted. Any hand step is a compiler defect to fix generically.
-No further painting, P2, archetypes or roster until compiler regression/mutant controls pass.
-Final four native delivery films/sheets also await Nick’s painted-tier CPU decision.
-
-No fetch/sync/push/PR/merge/release/deploy; PR42 parked. Signed commits only, verify each.
-Pre-existing .DS_Store untouched. OpenAI/Codex owns this worktree openai/mac; Claude reads
-packet and implements its compiler inputs on anthropic/mac. No Git app switch or sync is
-needed; Nick can relay writer contract paths. No automatic inference from missing anatomy
-in the writer: explicit generated declarations must arrive from the reviewed compiler.
-
-
-## SESSION HANDOFF — consolidated painted-crab intake and CPU series underway
-
-Authority: Nick September20 consolidated direction; sibling VISION_PROGRAM_20260920
-review addenda read-only, no sync. All five paintings accepted, no repaint. Roster holds.
-Current packet: audits/VISION_P1_CONSOLIDATED_20260920/README.md.
-
-All four painted intakes now pass static rows and presentation. Current fits: intake-02
-Crab01 / Freshwater03 / Mud01, intake-01 Vent01; Coconut hidden-01 fit04 unchanged.
-Nick-declared hidden chain: Crab leg3Near; Freshwater/Mud leg3Far. No hidden paint/contact.
-Mud facial orbs remain T2 body paint. Freshwater mask-fringe repair resolves pose folds;
-earlier masks and failed pin-only repair retained. Expanded measured contact ranges are
-Knee75° / Foot105°, raw35° unchanged. Eighteen targeted runtime tests pass.
-
-Signing currently blocked: 1Password returned "agent returned an error"; no commit written.
-All producer/evidence changes staged. Last signed HEAD4f575f84. Nick has been asked to unlock
-the signing agent. No native measurement or signed-producer shared sweep has started.
-
-CPU candidates prepared: boundary24 interior56/80/128/256; boundary32/48 interior56.
-Identical bindings alias; measure each unique native path once. Producer must be signed and
-six-subject painter/Civet regression controls must pass before timing. After the table,
-Nick chooses painted-tier gate; no threshold change authorized by the measurement request.
-Next independent work: full native-schedule root-step ledger for five painter crabs plus
-Coconut, split gait/non-gait guard and doubled faint-recovery rejection control. Four final
-films/sheets and P2 assembly follow the actual CPU decision and continuity guard.
-
-Node26.9.0 continuous-session receipt reused. Signed commits only; verify every signature.
-No fetch/sync/push/PR/merge/release/deploy. PR42 parked. Pre-existing .DS_Store untouched.
-OpenAI/Codex continues locally; Anthropic/Claude reviews completed packet read-only. Nick
-need not switch apps for Git; no cross-lane synchronization is authorized.
-
-
-## SESSION HANDOFF — four-crab intake partial; three painted chain locations unresolved
-
-Latest Nick direction: intake all four generation01 paintings now, no hidden declaration,
-before painted-tier CPU decision. Native films wait for CPU gate + split continuity guard.
-Read-only authority: anthropic VISION_PROGRAM_20260920/P1-four-crabs-review/README.md.
-Packet: audits/VISION_P1_FOUR_CRABS_20260920/intake-01/README.md.
-
-Vent completed shared intake:25parts,8contacts,3794field vertices at boundary24/interior56.
-All12static rows +10-second presentation pass, exact rest, planted drift0.0226671px,
-seam gap0.00007038px. No native film/pixel-rest or CPU claim; art verdict remains Nick's.
-No hidden/absent override, runtime solver/limits/raw clips or original image changes.
-
-Crab fourth right chain, Freshwater fourth left and Mud fourth left remain unlocated
-in Codex's mask tracing, conflicting with Claude's eight-visible review.23draft masks
-per subject retain all visible pixels; incomplete inventories correctly refuse before
-binding. Do NOT invent foot locations, hidden presence or assign claw/body paint as a leg.
-Nick directed using the tip detector; done read-only from Claude's tips.mjs, with hashes,
-exact parameters and candidate coordinate overlays retained. Raw down-counts9/9/9/11
-match the review but include claw fingers/duplicate positions along toes. Candidate
-ownership comparison in packetREADME does not resolve those three chain locations.
-Next input: actual foot/knee coordinates or labelled paths for those three chains.
-No repaint. Mud facial orbs are a T2 finding only, retained unchanged as body paint.
-
-Current task is PARTIAL: cannot honestly provide four admitted bindings or a five-painted-
-subject CPU table yet. Coconut fit04 remains accepted unchanged; Vent provides the second
-painted binding. Prior CPU candidates80/128/256 at VISION_P1_ANIMATION_20260920 remain
-prepared;80/128 byte-identical. No native timing or root-guard change has run. Complete
-remaining intake after coordinate resolution, then resume authorized CPU/continuity work.
-
-Tool syntax/root validate pass;50-probe fingerprint unchanged. No fetch/sync/push/PR/merge,
-release/deploy. PR42 and roster hold. Node26.9.0 uninterrupted receipt reused. OpenAI/Codex
-on macOS, /Users/nick/Projects/celestial-frontier-openai-mac, branch openai/mac. Signing
-checkpoint status is reported by actual Git HEAD and packet signature receipt; no unsigned
-fallback. Pre-existing .DS_Store untouched. Claude reviews packet/overlays read-only,
-no sibling edits/copies. No GitHub action or app switch for Git required.
-
-
-## SESSION HANDOFF — P1 CPU candidates prepared; signing authentication pending
-
-Nick accepts hidden-01 as built, including the hidden contract and masterIntakeAccepted.
-Latest authority is the sibling read-only VISION_PROGRAM_20260920/P1_ANIMATION_REVIEW.md
-and Nick's September20 task: CPU vertex-budget measurement, then root-continuity ledger
-and split guard; paint the other four packets in parallel, one generation each. No other
-variant. No fetch/sync/push/PR/merge/release/deploy. PR42 and roster hold.
-
-Current work: audits/VISION_P1_ANIMATION_20260920/README.md. Accepted fit04/master/masks
-are untouched. Three isolated CPU candidates rebuild interiorStep80/128/256 with fixed
-boundaryStep24 through the current shared observed split. Field vertices3791/3791/3787
-versus retained baseline3838. 80/128 bindings are byte-identical and must share one native
-measurement, not an unchanged rerun. Candidate input-integrity receipt proves every copied
-record/part/mask/atlas byte matches fit04. Build script syntax and source diff checks pass.
-No native CPU timing yet; no selected replacement binding or painted-tier CPU gate.
-
-The signed producer commit failed with 1Password "agent returned an error". Readiness
-question is pending; there is no unsigned fallback. Candidate files are staged from that
-attempt; subsequent receipts/docs and parallel painting evidence may remain unstaged.
-Current HEAD remains df296fa40c922a0dbad061fda4ae75ab4301f817,35ahead cached origin.
-Do not repeat builds or generations. Sign and verify the CPU producer after authentication,
-then run current animation-completion/native-runner.mjs on distinct cpu80/cpu256 inputs
-with producer port/v2/apps/game/src and melee:pinch, under shared toolchain lock and approved
-out-of-sandbox browser execution. Retain56px baseline from hidden-01/native02. Report vertices,
-approach/full-film p95, seams, planted drift, exact rest. Nick decides CPU gate; unchanged<2ms.
-
-Only after CPU measurement: root maximum-per-sample ledger for all12rows/full presentation
-on five painter crabs plus accepted P1 (six brachyurans), then gait stride bound / measured
-non-gait max+10% rounded bound, doubled faint-recovery-key negative control. No root clip
-keys changed in production; hidden/limits/raw-clip contracts stand. That step is not started.
-
-Four new one-generation paintings and exact prompt/reference/tool/hash receipts are complete
-at audits/VISION_P1_FOUR_CRABS_20260920/README.md (26files, originals1254-square RGBA).
-No resize/channel changes/retries; Mud extra eye-like pair and other trust findings retained.
-Root validate passes,50-probe fingerprint unchanged. Intake and rigs wait. Consult that
-packet for completed image identities and visual findings; never retry a changed prompt.
-Node26.9.0 and uninterrupted September19 toolchain receipt reused. OpenAI/Codex on macOS,
-physical repo /Users/nick/Projects/celestial-frontier-openai-mac, branch openai/mac.
-Pre-existing untracked .DS_Store untouched. Claude reviews read-only; do not copy/sync files.
-No GitHub/app switch needed; only local signing authentication awaits Nick.
-
-# P1 hidden-01 completed handoff — archived 2026-09-20
-
-## SESSION HANDOFF — P1 hidden-pair rig/film delivered; CPU and continuity leaves
-
-Nick accepts P1 Coconut Crab generation01 art. Six visible walking legs are correct; the
-fourth pair is declared hidden, not absent. No new painting. Exact1254-square master and
-RGBA/prompt/tool/hash evidence remain in audits/VISION_P1_COCONUT_20260920/generation-01/.
-Current signed review packet:
-[audits/VISION_P1_COCONUT_20260920/hidden-01/README.md](audits/VISION_P1_COCONUT_20260920/hidden-01/README.md).
-
-Producer580a6ffb implements explicit cf.anatomy-presence/v2.hidden, complete inferred hidden
-joints, no hidden paint/positive skin weights, and six visible contacts. Nick additionally
-authorized measured brachyuran contact limits:12,318 samples across all five painter crabs
-plus P1 give Knee17.1176319° / Foot50.0539666°, hence±30°/±65° by max+10°, round-up-to5°.
-Raw clips and raw±35° limits remain unchanged. Hidden-paint/missing-declaration controls
-refuse, eight-visible painter admits, five-crab static rows bit-identical, Civet green.
-35 runtime tests, Node controls, typecheck and root validate pass.
-
-Current fit04 is on signed/verified mask producer670fe8b6. It corrects873Far-claw-tip pixels
-from body to claw, preserving all landmarks/master/other limbs. Native02 and comparison sheet
-are complete:14.218220s,853encoded frames, all12rows including faint, zero refused frames,
-exact RGBA rest, max planted drift0.00107112px; all contact/seam/fold/limit rows pass.
-**Animation acceptance remains open:** approach p95=2.10ms and recorded rig p95=3.20ms exceed
-strict<2ms; faint recovery root-step continuity is9.10410px vs8.09505px stride bound. Exact
-numbers and diagnoses are in completion-summary.json/CPU.md. No gate/root-key change and
-no unchanged retry. Nick's art acceptance/masterIntakeAccepted stand; animationReady=false.
-
-Codex next: retain fit04 and native02, do not silently start broader CPU/root-continuity
-rework or the other four packets. Claude next: review the signed packet read-only and
-reconcile the hidden-presence contract; no sync. Roster and four queued crab packets hold.
-R4 and earlier anatomy packet remain complete history; Codex R9 canonical at separately
-authorized future re-merge. PR42 parked. Nick need not switch apps for a Git handoff.
-
-Read-only authority: anthropic audits/VISION_PROGRAM_20260920/P1_VERDICT.md, plus Nick's
-explicit in-session contact-limit approval. Branch openai/mac; Node26.9.0 uninterrupted
-receipt reused. No fetch, sync, push, PR, merge, release, deploy, new branch or unsigned
-fallback. Pre-existing untracked .DS_Store untouched. Report actual local HEAD/ahead only
-against cached origin/openai/mac. No hosted action is authorized or needed.
-
-## September20 — P1 implementation/capture handoff (verbatim)
-
-## SESSION HANDOFF — P1 accepted art; hidden-pair implementation and faint finding
-
-Nick accepts P1 generation01 art and corrects the old count-law finding: Coconut Crab has
-six visible walking legs; the fourth pair is present but hidden. No regeneration. Read-only
-anthropic authority `audits/VISION_PROGRAM_20260920/P1_VERDICT.md`; no sibling edits/sync.
-Current packet: [audits/VISION_P1_COCONUT_20260920/hidden-01/README.md](audits/VISION_P1_COCONUT_20260920/hidden-01/README.md).
-Original PNG/prompt/tool evidence remains byte-identical in the parent packet.
-
-`cf.anatomy-presence/v2.hidden` explicitly declares leg3Far/leg3Near. Full inferred skeleton
-inventory retained; hidden joints own no visible part/positive skin weight or contact chain.
-The new P1 fit04 has21 visible parts and unchanged1254-square RGBA, exact atlas reconstruction,
-eleven passing action rows and presentation. Faint hits the unchanged−35° post-IK limit;
-measurement needs−50.0539666° at leg2NearFoot/260ms. No landmark move or limit relaxation.
-Nick authorized the measured contact-limit extension: all six brachyuran subjects,12,318
-samples, give Knee17.1176319° / Foot50.0539666° maxima. Shared contact limits are now±30°/±65°
-by max+10°, round-up-to5°; raw clips and raw±35° limits unchanged. Signed producer580a6ffb
-passes shared controls: five crabs bit-identical, Civet green. P1 all12static rows plus
-presentation pass. Native01 film has exact pixel rest and zero contact/seam/limit refusals;
-CPU and faint root-continuity leaf reds remain. Fit04 corrects873Far-claw tip pixels from
-body ownership without changing master/landmarks/neighbor limbs; final capture is pending.
-
-Codex continues independent hidden-presence controls and signed evidence. Claude reviews
-read-only; Nick's art acceptance already stands. No app switch needed for Git. Roster and
-four further crab packets hold. R4/prior anatomy packet are complete history; Codex R9
-canonical at a separately authorized future re-merge. PR42 stays parked.
-
-Branch openai/mac, Node26.9.0 uninterrupted receipt reused. No fetch, sync, push, PR, merge,
-release, deploy or new branch. All commits signed/verified, no unsigned fallback.
-Pre-existing untracked .DS_Store remains untouched. Report only actual local HEAD/ahead
-against cached origin/openai/mac. No hosted action is authorized or needed.
-
-## September20 — P1 initial count refusal (superseded verdict; verbatim)
-
-## SESSION HANDOFF — P1 generation 01 refused; roster held
-
-P1 was painted once using Claude's supplied compiled prompt verbatim, the read-only anatomy
-guide, and the prompt-required Atlas style reference. Signed evidence is in
-[audits/VISION_P1_COCONUT_20260920/README.md](audits/VISION_P1_COCONUT_20260920/README.md).
-The original PNG hash is `7954331dc3ce80bf3b4e2e3759bd0b5c576d659ff5fcb4d01b8efc536bba8890`.
-Built-in image_gen.imagegen; no exposed seed/model version; no retry or finisher.
-
-**P1 remains incomplete, with a retained anatomy finding:** six visible walking-leg tips,
-eight required. Two chains unresolved; claw pose and stance differ. Existing pixel intake
-preserves all RGBA channels. New diagnostic region masks retain visible paint exactly; they
-are not a complete joint mask set. The current family acceptor refuses incomplete landmark
-inventory. No admitted split/binding, native rows or film. No hidden anatomy invented,
-no masterIntakeAccepted or animationReady. Comparison sheet beside Civet and painter is
-retained for Nick/Claude; it is not visual acceptance. See packet for technical-output
-findings, actual refusal, tests and every blocked downstream stage.
-
-The previous anatomy run remains completed history at a94535aa:
-[audits/ANATOMY_SINGLE_RUN_20260919/README.md](audits/ANATOMY_SINGLE_RUN_20260919/README.md).
-Its 15 films/16 sheets, five retained fits/53 refusals are not new P1 output. R4 is complete;
-**hold further roster work**. Codex R9 is canonical at a separately authorized future
-re-merge; PR42 stays parked. No P2/P3/P4 is begun.
-
-Authority remains the read-only vision program and compiled packet under
-`/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/VISION_PROGRAM_20260920/`.
-No sibling edits or sync. No fetch, push, PR, merge, release, deployment, new branches or
-history rewrite. Commit signed and verify; no unsigned fallback. Branch openai/mac;
-pre-existing untracked .DS_Store untouched. Reuse this uninterrupted Node26.9.0 receipt.
-
-Codex next: retain generation 01 and wait for the review disposition; no changed-prompt
-retry, invented anatomy or roster resumption. Claude next: inspect the P1 packet read-only
-for its Track T finding and Nick's sheet verdict. Nick need not switch apps for Git or sync.
-No PR is needed. Report local HEAD/ahead against cached origin/openai/mac only.
-
-## September20 — P1 queued handoff (verbatim)
-
-## SESSION HANDOFF — vision P1 next; further roster work held
-
-Nick's next direction is the read-only vision program:
-`/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/VISION_PROGRAM_20260920/PROGRAM.md`.
-Read September19/20; not copied or synced. The previous anatomy execution packet is complete
-at signed/verified a94535aa on openai/mac, then 30 commits ahead of cached origin/openai/mac:
-[audits/ANATOMY_SINGLE_RUN_20260919/README.md](audits/ANATOMY_SINGLE_RUN_20260919/README.md).
-Its 15 films,16 sheets, five retained fits and 53 refusals remain history, with all leaf diagnoses.
-R4 is complete. **Hold all further roster work until P1.**
-
-Next Codex deliverable: P1 coconut-crab master, painted from Claude's compiled prompt packet
-with the painter canvas as the anatomy guide, then admitted, rigged and natively filmed through
-the existing Civet anatomy chain. **Compiled prompt packet path has not yet been supplied.**
-Do not invent its prompt or begin painting before reading it. Before queued work, inspect the
-other lane's single-run queue read-only to avoid duplicate ownership; no sync or same-path edits.
-
-Retain the compiled prompt/master hash; use existing key/mask/landmark/split intake and
-masterIntakeAccepted admission. Native contact/rest/seam/limit gates remain unchanged.
-Anatomy drift is a retained finding, not an automatic repaint/retry. Claude owns prompt
-compilation, intake gates and the comparison sheet beside the Civet; Nick's sheet verdict
-remains the visual gate. Codex owns painting and rigging, and reviews Track T read-only.
-No P2/P3/P4 or resumed roster work is started by this handoff.
-
-**R9 reconciliation:** Codex's signed R9 is canonical at the eventual re-merge; Claude's R9
-remains a diagnostic. The finisher stays desktop polish/conservation machinery. P1 obtains
-master quality through the compiled painting prompt, not another unchanged local-finisher run.
-
-Local branch remains openai/mac. No fetch, push, PR, merge, release, deployment, new branches,
-LFS/history rewrite or sibling edit. PR42 stays parked. All new commits must be signed and
-verified. Pre-existing untracked .DS_Store is untouched. Prior 15-film/16-sheet counts describe
-the completed packet, not new vision-program output. No new image or native run has occurred.
-
-Codex: wait for the compiled P1 prompt packet path, then execute the authorized paint/intake/
-rig/film work within that packet. Claude: supply its compiled packet and own gates/sheet;
-no app switch or branch sync is needed now. Future integration still requires separate
-hosted authority; no PR is needed for this handoff.
-
-## SESSION HANDOFF — September19 · R2c-L measurement STOPPED AT S2
-
-## September20 — anatomy completion handoff before vision direction (verbatim)
-
-## SESSION HANDOFF — September19 · one accumulated review stop
-
-The ordered anatomy run is complete as an execution packet, with leaf reds retained:
-[audits/ANATOMY_SINGLE_RUN_20260919/README.md](audits/ANATOMY_SINGLE_RUN_20260919/README.md).
-Source/evidence producer a6afec2e, branch openai/mac, cached upstream origin/openai/mac.
-Final packet metadata follows in a signed commit. No fetch/sync/push/PR/merge/release/deploy.
-No new branches. PR42 stays parked. Pre-existing untracked.DS_Store untouched.
-
-R3-S strict PASS13,286samples/sixsubjects, covariance0, exact rest0, five crabs R2c′bit-identical,
-Civet maxplanted drift0.165257px. Shared stance, authorized stage travel/gait phases and nine-pin
-conflict repair complete. Contact limits100/105/95° measured from planted folds; rawlimits and
-169-action battery unchanged. No new S2 after R3-S. Candidate10/history unchanged.
-
-R2d parent-frame support implemented; missing Persimmon parent attachment refuses. R3 pinch/
-contactJoint/travel and R4 typed pose hold/frame publication complete. One nine-subject full-row
-capture includes faint; five R9finished identity films and one labelled habitat study complete.
-15films/16review sheets total. R9accepted local finisher masked0.35, no new model; immutable PNGs,
-conservation/rebind/retention controls pass. Q1two painted gape candidates remain unadopted.
-
-R5–R7owned fixtures, RGBA/initial-state replay, marks/structure, honest split receipts, Fiddler
-six-leg source, exact attribution and actual moving-root controls complete. Full unit battery
-4520pass/2fail/1skip; corrected roster test4pass. Remaining Compendium producer-authority mismatch
-is a leaf, sealed references unchanged. Rootvalidation/typecheck pass.
-
-R8D1native five retained/fallback PNGpairs identical, zero inference/workers/GPU. Both local phone
-Glass canaries instrument-red; desktop proof is the authorized fallback, no physicalphone claim.
-Roster58exhausted by14families:5retainedfit/bind/films,53explicit fitrefusals,0sourcefailures,15sheets.
-PR42three exact local UI/engine/tools path/tree projections plus copy-ready text prepared.27forward
-dependencies(20absent at cachedbase) mean hunk extraction/independentadmission still blocks promotion.
-
-Open review leaves: CivetT1/CPU; CoconutCPU; flora perclip/filmCPU; Persimmon folds/attachment;
-Cranberryhabitat substrate crossing33.31px and right-edge studyclipping; originalcrab edge/pinch
-readability;53rosterrefusals; phonecanary instruments; poseexporter reservedmissingmodules;
-Compendiumauthority; split forwarddependencies. Every leaf/film/sheet/CPU/refusal is indexed.
-No final visual, phone, fullrosteranimation or productionbattleE1 acceptance inferred.
-
-Codex: STOP for Nick's single accumulated review, no automatic retry or nextvariant. Claude:
-optional read-only packet/interface review; no app switch, sync or copy needed. Future promotion
-base/source develop←openai/mac, UI→engine→tools, normal mergecommits, exact hosted authorization
-and unchanged-source admission required. The current task opens no PR and changes no release.
-
-
-## September19 — completed single-run continuation (verbatim handoff history)
-
-## SESSION HANDOFF — September19 · R3-S active, no intermediate stop
-
-Nick's read-only§13 supersedes the stop-per-gate loop. Report-all BEFORE complete on signed
-6c511261: all six/all rows/presentation; five crabs0classes/bit-identical. Civet1053limit,
-513compression,85publication,54reach,4support,4drift events. Ledger committed before changes.
-Current packet audits/ANATOMY_SINGLE_RUN_20260919/R3-S/README.md. Next shared quadruped
-stance contract (all/hind/none), planted-only measured contactLimitsDeg, AFTER ledger and
-controls. Fix/retain reds within1–5, no stop. Then R2d→R3interfaces→remaining§8. S2 only
-planted drift afterstep4/exactrest/crabnonidentity/or throw class AFTER said empty.
-Raw clips/root keys/input/compression bound unchanged. Node26.9.0 startup reused. Signed
-commits only; no fetch/push/PR/merge. Claude read-only/no app switch/sync; PR42parked.
-
-Stance implementation prepared:34tests including raw169-action battery pass. Test-only TS
-index error corrected. Next signed stance producer and report-all planted-fold ledger.
-
-Nick authorized stage travel/gait-phase extension and shared pin-conflict repair. Stage mode
-zeros solver root dx, stored keys unchanged. New civet-input-01 releases9non-contact pins
-around contact supports; weights/topology/atlas identical.36app/8split tests pass. Next signed
-extension producer, full report-all ledger and native rest, then measured contact limits.
-
-R3-S extension producer4c2f282f signature verified. Native rest0. Corrected travel-scope-03
-clears all classes except raw limits; stage selection now melee-only, gaits solver-owned.
-Measured contact limits Knee100/Ankle105/Paw95, raw limits unchanged. Nick approved x15
-negative control (x3 insensitive retained), then all remaining implementation choices within
-the run; existing S2/gates/local-only boundaries stay.39app tests pass; final AFTER pending.
-
-R3-S signed4b969894 accepted:13,286 strict samples, six subjects zero classes, native rest0,
-Civet worst drift0.165257px, unpinned/diffused negatives fail, crab bit identity. Next R2d
-parent-frame rigid foliage (leaf reds retained) then R3 interfaces and remaining§8.
-
-R2d shared parent-frame part code implemented; two controls/typecheck pass. Persimmon
-leaf red: branch-0-foliage lacks observed nearest painted-parent attachment; no candidate
-written, no invented anchor. Candidate motion proof unrun. Continue R3 after signed
-producer/static sentinel checks. Packet R2d/README.md.
-
-R2d producer7c62a15e signature verified; all six sentinels pass. R3 selector/contactJoint/
-persistent-stage-travel implementation prepared;24tests pass. Next signed producer,
-sentinels/T1 measurement, then R4 and one full-row native capture.
-
-R3 producer2865b017 verified; six sentinels PASS. T1 five crabs PASS; Civet vertical root
-step leaf red0.017142585>stride0.00804873 retained. R4 typed pose refusal/hold and explicit
-frame publication implemented; unit/typecheck pass. Full-row capture tooling includes faint
-and holds/refusal diagnostics. Next signed R4 producer, sentinels, ONE nine-subject native
-recapture; shared Civet/crab geometry/contact/rest red remains the only halt.
-
-Full-row media has its own encoded-duration check against the complete schedule (same
-750ms recorder-padding allowance). Original ten-second certificate unchanged. Output is
-family-full-rows.webm; truncated ten-second and excessive-padding controls fail.
-
-Nine-subject native recapture complete on signed f4c5489a; no S2. Full-row films/stills and
-CPU/refusal/leaf ledger in native/README.md. Civet T1 + film CPU, Coconut film CPU and flora
-CPU/fold reds retained; exact rest/contact pass on all six shared subjects. Next R9/Q1,
-then R5–R8, roster families and local PR42 split; no intermediate review stop.
-
-R9 shared finisher/immutable retention/conservation/texture-only rebind implemented. Fixed
-0.35 one-step existing model; geometry independently rebuilt and compared. Static controls
-passing; signed producer and five-crab native inference next. Evidence R9/README.md.
-
-R9 producer0cae378e verified. All five native finishes PASS conservation/immutable retention;
-Crab repeated inference byte-identical and seed+1 different/discarded. New PNG originals
-in R9/finish-01. Rebinding and native equality next; Q1 candidate-only source projection ready.
-
-R9 finished: five native numeric identities PASS, all exact rest0 and zero refusals;
-Coconut finished film2.00ms is CPU leaf red. Combined review-sheet.png includes all five
-painter/finished pairs, both Q1 painted candidates and accepted arena composite. No visual
-acceptance implied. Next R5/R6/R7 integrity batch, R8 D1, full roster, local split.
-
-R9 evidence36489e9 signed/verified after 1Password unlock. R5/R6/R7 producer prepared:
-owned current fixtures, RGBA/initial replay state, mark counts, honest split receipts,
-Fiddler six-leg source stages, compiler outcomes and exact recording attribution.21app/11tool
-tests pass; native six-owner parity/census and rendered-root controls next after signing.
-
-R5–R7 signed c1a985b7 verified. Native six-owner source parity PASS; 1,250 census complete
-with five compiler admissions, Fiddler incomplete and48unsupported observations. Root control
-input omitted rotation; instrument-only key corrected, fresh proof02 next. No shared S2 red.
-
-R5–R7 root-proof-02 PASS on verified e750bf00. D1 read-only PNG delivery prepared; next signed native retained/fallback proof and both local phone canaries, then roster and local split.
-
-D1 desktop native PASS, five exact retained/fallback pairs, zero inference/workers/GPU. Both local phone Glass attempts retain floating-trail instrument reds; small also has a changing-log source fingerprint. No retry or phone qualification. Roster58 intake producer prepared, including five completed crabs reused.
-
-Roster58 exhausted:5retained/53fitrefused/0sourcefailures;15sheets. Full unit battery4520pass/2fail/1skip: stale53vs58test now corrected to prove exactlyfiveadmissions; Compendium producer-authority mismatch remains a leaf, no sealed rebaseline. Original R3 crab/rooted-plant habitat study tool prepared to finish E2 before final split/index.
-
-R3habitat02 complete with labelledCranberrycontainment/framing leaf, noS2; three exact rests0, crabdrift<0.000026px, rootfixed. Next localPR42review trees/path manifests and one final accumulated README; no branches, push, PR or sync.
-
-
-Nick explicitly authorized§12 measured contact-limit separation. Signed/verified measurement
-producer1523b0b5 changes only the static audit bundle's joint-limit throw to reporting;
-production solver/contracts/raw-clip battery remain byte-identical to c7b4fdfd. Node26.9.0.
-Five crabs complete12rows+601presentation,0limit exceedances, R2c′bit-identical.
-Civet hits a new live gate: bite157.111111ms exceeds unchanged8%scale-compression bound.
-Bound28.107509verticalpx; previous149.255556ms uses24.509773px. Rejected correction unknown
-because throw precedes publication. No replay, compression change or further variant.
-
-Packet: audits/ANATOMY_SINGLE_RUN_20260919/R2c-L/README.md; summary.json; measure/limits.json
-contains15Civet exceedances and partial maxima with root/spine/chest/hip drop.10,527published
-samples retained. Full Civet measurement incomplete, so contactLimitsDeg NOT added, no range
-adopted. Four controls only crabbitidentity/zeroexceedance completed; new-range crouch/fallback
-controls and raw battery rerun unrun. Raw battery unchanged. Current root review index updated.
-
-§10acceptance,R2d,R3 and later§8 remain unrun. Films/sheets0; phoneproof absent; roster0trials/
-0refusals/58remaining. Prior expected missing-module/CPU/fold leaf reds remain indexed.
-Codex stays stopped without new direction. Claude read-only/no app switch/sync. No fetch/push/
-PR/label/merge/release/deploy; PR42parked. Pre-existing.DS_Store untouched. Sign/verify evidence;
-report actual local HEAD/cached ahead only.
-
-## SESSION HANDOFF — September19 · R2c-L measurement authorized
-
-Nick explicitly authorizes read-only reviewer§12: reportLimits static-tool-only sweep first,
-all six/all rows/presentation, crabs0exceedances; then separate contactLimitsDeg for post-IK,
-quadruped legs measured max+10°roundedup5°, other templates defaultlimitsDeg. Raw authored
-limits/battery unchanged. Four controls and§10acceptance, thenR2d→R3; any other shared red S2.
-Current packet: audits/ANATOMY_SINGLE_RUN_20260919/R2c-L/README.md. Measurement producer
-prepared; production solver unchanged. Sign/verify then run explicit--reportLimits once.
-Node26.9.0 uninterrupted startup retained. Previous signed S2c7b4fdfd retained. No fetch/push/
-PR/merge; PR42parked. Claude read-only/no app switch or sync. Pre-existing.DS_Store untouched.
-
-## SESSION HANDOFF — September19 · R2c‴ STOPPED AT S2
-
-Signed/verified producer0dd26298 changes only constructor barycentric sign check to<−1e−8
-under Nick's read-only§11 direction, retaining stored coefficients. Native exact rest passes0
-changed pixels and shifted negative control. Original unpinned candidate10 still fails0.250095px
-at bite70.7ms as required. Five crabs pass all12rows/presentation bit-for-bit with R2c′.
-
-Civet passes idle/approach, then bite102.122222ms fails unchanged joint limit: foreFarAnkle
-61.560489° required versus max60°. Failure occurs after fixed-point solve, before publication;
-no residual for failing frame. Last published Civet sample94.266667ms. No further variant,
-retry, gate/limit/clamp/kit/input change or later stage after S2.
-10,520retained sample records; covariance0 on all six through completed samples. Crab ARAP
-publication floor<=0.000063px; Civet<=0.000088px.779source/input hashes verified unchanged.
-
-Current accumulated index: audits/ANATOMY_SINGLE_RUN_20260919/README.md.
-Detailed packet: R2c-triple-prime/README.md; summary.json; native-rest-proof.json; per-subject
-JSONL.gz samples and static reports. Prior S2/signing/instrument evidence retained.25contact
-tests,TypeScript,rootvalidate pass. Initial pixel-converted1e−12test and TypeScript argument
-typos retained; corrected test checks native normalized prediction units. Pose-export missing
-battle2/effects modules remain expected pending separately authorized re-merge, not retried.
-Node26.9.0 uninterrupted startup reused; no tool changes.
-
-R2d→R3/T1/travel/contactJoint/pinch/profile→R4→fullnative→R9/Q1→R5/R6/R7→R8→roster→PR42split
-unrun. New films/sheets0; phoneproof absent; roster0attempted/0refusals/58remaining. Prior CPU
-and persimmon leaf reds remain indexed. Codex stays stopped without new direction. Claude may
-read if requested; no app switch/sync. No fetch/push/PR/label/merge/release/deploy. PR42parked.
-Pre-existing.DS_Store untouched. Evidence successor signed/verified; use local HEAD and cached
-ahead only, no remote verification.
-
-## SESSION HANDOFF — September19 · R2c‴ constructor correction, acceptance pending
-
-Nick's read-only reviewer§11 diagnoses R2c″ rejection as an instrument defect: preserved
-edge rounding −8.975276662232845e−16 was rejected without the constructor's existing1e−8
-rounding allowance. One authorized runtime change: reject barycentric<−1e−8; use stored
-values unchanged. No other runtime/binding/input/limit/gate change. Prior signed S2 packet8ecb9209
-retained. Node26.9.0 uninterrupted startup receipt reused.
-
-Current evidence: audits/ANATOMY_SINGLE_RUN_20260919/R2c-triple-prime/README.md.
-25contact tests pass including regenerated real-binding constructor, unchanged negative
-coefficient/+0prediction control within1e−12normalized units and −1e−3 rejection with sum1.
-Initial test compared pixels (1.28356e−12px), retained; corrected to API prediction units.
-TypeScript invocation typo retained/corrected; TypeScript and rootvalidate pass.
-Next sign/verify producer, native rest [melee:bite] unchanged inputs, unpinned candidate10
-negative control, six-subject sweep. Shared red halts with no further variant; if green
-continue all§8 without review stops. Existing expected pose-exporter module reds untouched.
-
-No fetch/push/PR/label/merge/release/deploy. PR42parked; Claude read-only/no app switch or sync.
-Pre-existing.DS_Store untouched. Every commit signed and independently verified.
-
-## SESSION HANDOFF — September 19 · R2c″ STOPPED AT S2
-
-Nick's §10 correction was implemented in signed producer766e0917. Tooling fixes are signed
-in dd7909b4. Nick's explicit signing retry resolved the prior1Password block. Audit-only
-Civet presentation correction is signed224086c9; all three signatures independently verified.
-Node26.9.0 receipt reused; no tool update or repeated precheck.
-
-Native-rest-02 rejects regenerated Civet before measurement: Contact: invalid support weights
-foreNearAnkle. The new constructor rejects a preserved barycentric coefficient
-−8.975276662232845e−16 (fore-near-lower vertex112 / field442); weights sum1. This is a runtime
-validation regression, not a measured residual. No coefficient/tolerance change, third variant,
-retry or later stage follows. Native-rest-01 was a retained invocation failure (nonexistent
-quadruped melee:body), fixed by using the recorded bite presentation before the actual S2.
-
-Current packet: audits/ANATOMY_SINGLE_RUN_20260919/README.md.
-Detailed diagnosis/evidence: R2c-double-prime/README.md, summary.json, constructor-diagnosis.json.
-Shared split changes7support weights/adds6pins; other weights/topology/atlas unchanged.
-Candidate10 and761native sources hash-preserved. Native rest remains UNMEASURED. Synthetic
-controls,24contact tests,8split/probe tests,TypeScript/rootvalidate pass; those tests missed
-real-binding constructor rejection. Unpinned control/six-subject sweep UNRUN after S2.
-Tooling leaf reds:2pose-export tests need absent reserved battle2/effects modules. Prior
-R1c CPU/fold reds retained. No new films/sheets/phone proof/roster trials.58roster entries remain.
-
-R2d→R3/T1/travel/contactJoint/pinch/profile→R4→native→R9/Q1→R5/R6/R7→R8→roster→PR42split
-remain unrun. Codex must not resume without new direction; S2 permits no third variant.
-Claude may read the packet if requested; no app switch/sync needed. No fetch/push/PR/label/
-merge/release/deploy. PR42parked. Pre-existing.DS_Store untouched. All commits signed and verified;
-this final evidence successor is identified by local HEAD. Report cached ahead only, no fetch.
-
-## SESSION HANDOFF — September19 · R2c″ signed; acceptance in progress
-
-Nick's new session direction and sibling read-only CLAUDE_R1BR2B_REVIEW.md §10 reopen S2
-for ONE bounded correction: exact triangle LBS; Civet binding regenerated from candidate10
-through shared contact locks, preserving all other weights/source pixels/masks/atlas/record.
-Five crabs must reproduce R2c′ rows bit-for-bit; unpinned candidate10 negative control must
-still fail; covariance<=1e-6px, support ARAP residual reported. All Civet rows/presentation
-must pass0.25px. Failure after both changes is S2: stop, no third variant. If green resume
-all §8 items R2d→R3(+travel/contactJoint/crustacean profile)→R4→one full-row native capture
-→R9/Q1→R5/R6/R7/R8→58roster→localPR42split. Leaf reds continue; gates remain unchanged.
-
-Last prior signed evidence7dd884f0; producerdd33865c; halted R2c evidenc ca851fb6, all retained.
-Current evidence folder: audits/ANATOMY_SINGLE_RUN_20260919/R2c-double-prime/.
-Startup current (Node26.9.0); no tool updates. Requested Blender bridge route fix passes20tests.
-Pose exporter/tests now repo-relative and local GSAP-pinned:5tests pass,2integration leaf reds
-because reserved battle2/effects modules are absent locally. No copy/sync/skip/retry.
-Tooling checkpoint dd7909b4 signed and independently verified. Exact-LBS/contact-lock producer
-prepared: 24 contact tests, 8 split/probe tests, synthetic controls pass; native rest and
-one ordered six-subject gate next. Prior fixture-only test failure is retained.
-
-Signing resolved on Nick's explicit retry: producer766e0917 independently verified. Earlier
-signing errors retained. Native-rest-01 failed before measurement because the invocation
-requested nonexistent quadruped melee:body. Corrected audit presentation uses retained Civet
-attackIds=[melee:bite]; the full static sweep still includes all20 available rows. No solver,
-binding or gate changed. Next corrected native rest-only → unpinned candidate10 control →
-full six-subject static sweep ONCE. Node26.9.0 startup/prechecks remain current.
-
-OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac,openai/mac,
-upstreamorigin/openai/mac. Claude read-only; no app switch/sync. No fetch/push/PR/labels/merge/
-release/deploy. PR42parked. Pre-existing.DS_Store untouched. Sign and verify every commit.
-
-## SESSION HANDOFF — September19 · R2c′ STOPPED AT S2
-
-Nick reopened S2 for one bounded weighted-support correction under sibling read-only
-CLAUDE_R1BR2B_REVIEW.md §9. Halted R2c packet signed/verified ca851fb6 FIRST as evidence,
-not admission. Correction producer signed/verified dd33865c0e60994b37df31364959e89749d277a8.
-Current one-packet index: audits/ANATOMY_SINGLE_RUN_20260919/README.md; detailed verdict
-R2c-prime/README.md and summary.json. Node26.9.0 throughout; startup receipt reused.
-
-R2c′ uses unchanged binding weights in a weighted common-support-point model and corrects
-endpoints in the same <=3passes. Endpoint-only arithmetic is retained. No pin, source pixel,
-landmark, binding, threshold/limit, terminal-rule or kit change. Controls pass: terminal100%
-zero correction;50/50half; diffused mutant fails;23contact tests, independent residual probe,
-app typecheck, syntax, rootvalidate. The prior missing-schema control failure remains history.
-
-ONE actual sweep on signed producer: all5crabs reproduce prior R2c rows BIT-FOR-BIT,
-12rows×121samples +601presentation samples each. Civet idle max0.193336px and approach
-max0.059965px pass. Next melee:bite fails at54.988889ms (sample8), foreNearAnkle0.266107412px
-against0.25px. S2 FIRED; no retry or later stage. The named remaining Civet rows are unrun.
-Failure vectors px: exact-LBS kinematic[-0.0794809574,-0.0606161976] (norm0.0999577210),
-ARAP/publication[-0.1811636228,+0.0069733286] (norm0.1812977814); sum gives failed drift.
-Weighted-point model error8.35e-8px; spatially varying weights cause model/triangle covariance
-0.099957671px. Bone error3.33e-16, no compression/folds at failure. Attribution is measured,
-not a repair authorization. All10,515samples with every support vector retained asJSONL.gz.
-Input/source hashes rechecked without replay. Candidate10 binding remains unchanged.
-
-R1c69CPUtrials and leaf folds/CPU remain as recorded. R2d/R3/R4/native/R9/Q1/integrity/phone/
-58-roster/PR42split remain UNRUN because S2. New films/sheets0; roster0attempted/0refusals,
-58remaining; no phone or visual acceptance. Original films/sheets indexed as historical only.
-
-Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac,openai/mac tracking
-origin/openai/mac. This verdict has a signed evidence successor; git log gives its hash.
-1Password signing resolved; no persistent config/key changes. Pre-existing.DS_Store untouched.
-Codex halted; no retry/resume without new direction. Claude read-only review if requested;
-no sync/merge/app switch required and no R3producer exists. PR42parked. No fetch/push/PR/
-hosted run/merge/release/deploy/LFS/history operation. All original gates remain unchanged.
-
-
-## SESSION HANDOFF — September19 · R2c′ authorized correction active
-
-Nick reopened S2 under read-only sibling CLAUDE_R1BR2B_REVIEW.md §9. First completed:
-halted packet signed/verifiedca851fb6 as evidence, NOT admission. Its prior signing refusals
-remain history. Node26.9.0 retained for this uninterrupted run;00-toolchain receipt reused.
-Current ledger: audits/ANATOMY_SINGLE_RUN_20260919/R2c-prime/README.md.
-
-R2c′ reads actual binding weights, weighted support prediction, and corrects endpoint targets
-inside the existing3passes. Endpoint-only supports keep exact R2c arithmetic. No pins, source
-pixels/landmarks/binding, limit/threshold, terminal rule or kit edits. Per-sample vectors separate
-kinematic error at exact triangle LBS, ARAP publication residual and model/triangle covariance.
-Controls pass: terminal100%zero,50/50half, diffused mutant fails.23contact tests, independent
-probe controls, apptypecheck, syntax and rootvalidate pass. Candidate needs signed producer,
-then ONE static sweep: five crabs must reproduce R2c rows bit-identically; Civet unchanged
-candidate10 binding must pass0.25px. S2 on any shared red means stop with diagnosis, no retry.
-If admitted, resume §8 R2d→R3→R4→one native recapture→R9/Q1→R5/R6/R7/R8→all58roster→local
-PR42UI/engine/tools split. Leaf reds continue; no earlier unrun item is silently skipped.
-
-Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac,openai/mac upstream
-origin/openai/mac. Claude read-only; no sync/app switch required. No fetch/push/PR/hosted run/
-merge/release/deploy/LFS operation. PR42parked. Pre-existing.DS_Store stays untouched.
-
-
-## SESSION HANDOFF — September19 · SINGLE RUN STOPPED AT S2
-
-Nick's single-run contract is read-only sibling audits/ANATOMY_REVIEW_20260917/
-CLAUDE_R1BR2B_REVIEW.md §§6–8 plus September19 chat. No intermediate eye stop; leaf reds
-continue; ONLY shared-path red halts with no retry. That required S2 stop HAS FIRED.
-Self-contained packet: audits/ANATOMY_SINGLE_RUN_20260919/README.md; run-summary.json.
-
-Completed: Node26.9.0 authorized/installed, fresh7capability PASS; whole run stayed on it.
-R1c-b byte-identical Civet adapter reproduces5candidate10planted paw-contour samples.
-Current family alert/walk/dodge upper-reach gap isolated; bounded accommodation required.
-R1c-c69planned CPU trials complete:59diagnostic FAIL/10PASS, all raw evidence retained.
-Median/IQR and leaf folds/CPU are in R1c/CPU_TABLE.md; no production tuning adopted.
-
-R2c candidate implements observed-support target correction, <=3fixed-point steps, exact
-endpoint gate,8% declared-scale root accommodation; existing hip ownership retained.
-Synthetic zero/double offset and actual compiled-field/ARAP diffused mutant controls pass.
-App TypeScript/rootvalidate pass; initial missing-schema control error retained/corrected.
-One actual static sweep: all5crabs pass121samples×12rows +601presentation samples.
-Civet fails idle261.948177ms: foreNearAnkle paint0.260840176px >0.25px. Bone error2.48e-16;
-model paint0.000834862px but published support differs0.260005314px. Vertices444/445 are
-unpinned,79.7–92.1%Paw and7.8–19.8%Ankle weighted. Rigid ankle-offset model is not sufficient
-for this binding. Zero folds at failure. NO replay, repair, next stage or threshold change.
-R2d/R3/R4/native recapture/R9/Q1/R5/R6/R7/R8/roster/PR42split all unrun because S2.
-New films/sheets0; roster0attempted/0refusals/58remaining; no phone proof or visual acceptance.
-
-Git: OpenAI/Codex on macOS owns /Users/nick/Projects/celestial-frontier-openai-mac,
-openai/mac tracking origin/openai/mac. Signed/verified6365167e(toolchain),416b020e(R1c),
-184962789eb2ed82343668a1601cc71e26ed83b6(CPU evidence, currentHEAD).137ahead cached upstream,
-248ahead cached develop; no fetch/freshness claim. R2c and final evidence are staged UNSIGNED:
-1Password helper errored; standard ssh-keygen through same configured1Password socket was
-refused too. Both receipts retained. No further signing attempt without external-state change.
-No persistent signer config/key export. Static candidate hashes retained; no signed producer
-or certification claim for R2c. Pre-existing.DS_Store untouched.
-
-Codex: halted at S2; no retry or resumption without new direction. Claude: read-only packet
-review if Nick requests; no sync/merge/app switch required, no signedR3producer exists.
-PR42parked. No branch/sync/push/PR/hosted attempt/merge/release/deploy/LFS/history operation.
-Gates remain0.25px,<2ms,exact rest; source pixels, records, bindings, joins and limits untouched.
-
-
-## SESSION HANDOFF — September19 · authorized single anatomy run active
-
-Nick superseded all intermediate review stops with one run, one final packet. Contracts:
-read-only sibling audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md §§6–8.
-Current durable ledger: audits/ANATOMY_SINGLE_RUN_20260919/README.md.
-Previous evidence HEAD4cb5f7a3; unchanged game producer6a58e40e. Diagnoses are retained at
-ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md; no need to repeat them.
-
-Item0 completed: Node26.9.0 explicitly authorized, installed with inspected dependencies;
-Homebrew7.0.4; seven capability checks PASS, fresh receipt in ledger. Earlier Node approval
-rejection is resolved by Nick's explicit direction. Whole run stays on26.9.0.
-R1c-b comparison complete: byte-identical adapter; five candidate10 contour samples reproduce;
-current family alert/walk/dodge exceed upper reach while compatibility compression resolves them.
-R1c-c complete:69 retained trials; scale and warm-up both affect CPU, all cells keep4normal
-passes/sample. CPU_TABLE.md owns medians/IQR; leaf folds/CPU remain. R2c candidate implemented;
-synthetic offset controls and app typecheck pass. Signed producer then one actual six-subject
-static sweep is next; first shared red means S2 STOP, no retry or next stage.
-Remaining: R2c → R2d → R3 → R4 → ONE native
-recapture (eight subjects+Civet, full rows including faint) → R9/Q1 sheet → R5/R6/R7/R8 phone
-proof → all58 roster by source family nearest crabs → local PR42 split UI/engine/tools.
-Each item gets signed producer, static checks and evidence, then continue. Leaf reds record
-and continue. ONLY shared-path red (Civet or five crabs after R2c/R2d/R3) halts; no retry.
-Do not change .25px, <2ms, exact rest, limits, kit, landmarks or species to force a pass.
-
-Codex/macOS owns this checkout/openai/mac and continues; Claude read-only, no app switch or
-sync needed. No fetch/push/PR/hosted attempt/merge/release/deploy/LFS operation. PR42 parked.
-Pre-existing.DS_Store stays untouched. Final handoff must index every artifact and leaf red.
-
-
-## SESSION HANDOFF — September19 · all three requested reviews complete
-
-Evidence signing resolved: successor d04374362aaa0a357c5dc2791213fe277b0f4915 and producer
-6a58e40eeb552e925c94e0173d6298c4b05303e3 both independently verified. The original 1Password
-failure receipt is retained as history; no prepared commit remains pending. This review has
-its own signed documentation/evidence successor; git log supplies its exact hash.
-
-Nick requested all three bounded reviews. Complete report:
-audits/ANATOMY_COMPLETION_20260917/review-diagnosis-01/README.md. No game source changed.
-- Mud/Vent: all eight distinct failure samples replay exactly. A2.1–2.5px paint offset rotates
-  around the planted endpoint; rotation predicts the drift within0.000025px. More identical
-  endpoint pins cannot fix it. Shared offset-aware painted-support constraints need repair.
-- Persimmon:84/209 folds replay exactly. Rigid foliage groups3/4 and their shared collars
-  interact; diagnostic removal of either group’s pins clears the sampled fold. This is
-  causal isolation, not an adopted fix or permission to smear foliage/zero motion.
-- Three films:183 samples over complete timelines plus12 exact transition frames reviewed;
- 1,821 frames decoded. All three snap42–57 display pixels at approach→pinch when accumulated
-  root travel disappears. Pinch readability remains weak for Crab/Coconut; Freshwater is
-  clearer. Edge streaks persist. No human visual approval or full-action film claim.
-The diagnostic’s stale rigid-rest scratch read was corrected; original failure retained
-losslessly. All42 shared imported source hashes match the original native report. No native
-rerun or CPU recertification; all original artifacts remain intact.
-
-Fresh-session entry: audits/ANATOMY_COMPLETION_20260917/NEW_SESSION_PROMPT_20260919_REVIEW.md.
-Complete review: r1b-r2b-native-01/README.md and summary.json under the same audit root.
-Producer6a58e40eeb552e925c94e0173d6298c4b05303e3 is signed/verified. All eight subjects plus
-Civet sentinel completed before the conversation interruption; September19 reconciliation
-rehashed800 inputs/132 artifacts. No captures restarted, no source changes or retries.
-Evidence/handoff are signed separately; git log gives that successor's exact hash.
-
-Three numeric passes/films: Crab, Coconut, Freshwater. Five primary failures: Mud/Vent paint
-contact drift, Persimmon folds/CPU, Cranberry CPU, Devil's Club CPU. Civet sentinel also FAILS
-(contact/reach in18/20 rows and incomplete idle CPU). Failures retain reports/rest stills;
-no dependent action still/film after FAIL. R1b/R2b is NOT accepted complete. No new qualification.
-N3 explicit endpoint declarations changed no field weights or pin sets in the five real crabs:
-those supports were already pinned. N4 now names Persimmon disturb at67.1667ms/84folds and
-presentation at1200ms/209folds. Do not waive thresholds or claim the pinned hypothesis fixed it.
-
-Static producer checks:102 regression tests,210 tool tests,three TypeScript projects,
-1,010 renders, all50 baseline probes. No full suite/certification/phone work; stale Compendium
-certificate remains open. No admission repin. Current input bindings: crab-fits-03, persimmon-04,
-cranberry-07, devils-club-06; Civet path adapter preserves candidate10 source assets.
-N1 independent declared scale0.08–0.9 (body-axis bounds untouched), N11 blend-independent travel,
-N12 shared-builder loading implemented. Q4 approved kit paragraph applied, no other kit edit.
-
-Nick-approved D1–D4 and complete next queue are in NEW_SESSION_PROMPT_20260919.md:
-D1 phones use retained finished PNGs, painter cut-out fallback, no inference (R8 scope).
-D2 guardian later: Earth-temperate apex1536 via existing pipeline.
-D3 arena rollout by biome family, Earth temperate first, Nick's eye.
-D4 Claude's E1 design exists; code waits for R3 on develop, no sync/write authority implied.
-After review: R3 → R4 → R9, then remaining integrity/coverage/phone gates. R3 adds travel
-solver/stage mode with zero solver root dx and unchanged planted targets in stage mode, plus
-attack contactJoint(dactyl tip) and explicit strike contact phase. Not implemented here.
-R9 awaits Claude's bounded addendum: five painter masters, masked0.35 desktop finisher,
-silhouette/alpha conservation, masks transfer unchanged, finished PNG rebind/seed retention.
-Q1 open-gape candidates still need3× adoption review; Q3 refusal policy remains future R4;
-Q5 root amendment hash retained. All58 targets unqualified;53 lack bindings. All history kept.
-
-Codex: requested diagnoses/review complete; next is a bounded repair direction, no blind
-repeat or R3 implementation. Claude: optional read-only review/R9 addendum when Nick requests;
-no app switch or sync required. Current session startup PASS: FFmpeg9.0.2, libvmaf3.2.1,
-xz5.8.4 installed; seven capability checks PASS. Managed Node26.9.0 update was blocked by
-automatic approval review;26.8.2 remains pending Nick’s answer. Project pins unchanged.
-Fresh future sessions run the startup runbook; this uninterrupted session has its new receipt.
-No accepted art, source, main.ts, reserved modules, seed/save/version/gameplay changes since
-producer. No push/PR/hosted attempt/merge/release/deploy/LFS/history operation. PR42 parked.
-Record actual local HEAD/ahead only; pre-existing.DS_Store untouched.
-
-
-## September19 — native reconciliation handoff before bounded diagnoses
-
-## SESSION HANDOFF — September19 · native batch reconciled; STOP FOR REVIEW
-
-Evidence commit pending: September19 1Password signer failed to fill whole buffer. The completed
-evidence/handoff is staged; source6a58e40e remains the signed HEAD. See
-audits/ANATOMY_COMPLETION_20260917/R1B_R2B_EVIDENCE_SIGNING_BLOCKER_01.json and finish the
-prepared signed evidence commit before further work. No unsigned fallback or source changes.
-
-Fresh-session entry: audits/ANATOMY_COMPLETION_20260917/NEW_SESSION_PROMPT_20260919.md.
-Complete review: r1b-r2b-native-01/README.md and summary.json under the same audit root.
-Producer6a58e40eeb552e925c94e0173d6298c4b05303e3 is signed/verified. All eight subjects plus
-Civet sentinel completed before the conversation interruption; September19 reconciliation
-rehashed800 inputs/132 artifacts. No captures restarted, no source changes or retries.
-Evidence/handoff are signed separately; git log gives that successor's exact hash.
-
-Three numeric passes/films: Crab, Coconut, Freshwater. Five primary failures: Mud/Vent paint
-contact drift, Persimmon folds/CPU, Cranberry CPU, Devil's Club CPU. Civet sentinel also FAILS
-(contact/reach in18/20 rows and incomplete idle CPU). Failures retain reports/rest stills;
-no dependent action still/film after FAIL. R1b/R2b is NOT accepted complete. No new qualification.
-N3 explicit endpoint declarations changed no field weights or pin sets in the five real crabs:
-those supports were already pinned. N4 now names Persimmon disturb at67.1667ms/84folds and
-presentation at1200ms/209folds. Do not waive thresholds or claim the pinned hypothesis fixed it.
-
-Static producer checks:102 regression tests,210 tool tests,three TypeScript projects,
-1,010 renders, all50 baseline probes. No full suite/certification/phone work; stale Compendium
-certificate remains open. No admission repin. Current input bindings: crab-fits-03, persimmon-04,
-cranberry-07, devils-club-06; Civet path adapter preserves candidate10 source assets.
-N1 independent declared scale0.08–0.9 (body-axis bounds untouched), N11 blend-independent travel,
-N12 shared-builder loading implemented. Q4 approved kit paragraph applied, no other kit edit.
-
-Nick-approved D1–D4 and complete next queue are in NEW_SESSION_PROMPT_20260919.md:
-D1 phones use retained finished PNGs, painter cut-out fallback, no inference (R8 scope).
-D2 guardian later: Earth-temperate apex1536 via existing pipeline.
-D3 arena rollout by biome family, Earth temperate first, Nick's eye.
-D4 Claude's E1 design exists; code waits for R3 on develop, no sync/write authority implied.
-After review: R3 → R4 → R9, then remaining integrity/coverage/phone gates. R3 adds travel
-solver/stage mode with zero solver root dx and unchanged planted targets in stage mode, plus
-attack contactJoint(dactyl tip) and explicit strike contact phase. Not implemented here.
-R9 awaits Claude's bounded addendum: five painter masters, masked0.35 desktop finisher,
-silhouette/alpha conservation, masks transfer unchanged, finished PNG rebind/seed retention.
-Q1 open-gape candidates still need3× adoption review; Q3 refusal policy remains future R4;
-Q5 root amendment hash retained. All58 targets unqualified;53 lack bindings. All history kept.
-
-Codex: STOP for Nick/Claude review, no further repair loop or R3 until new scoped direction.
-Claude: read-only review and R9 addendum when Nick requests; no app switch required merely to
-resume Codex. New coding session must run startup runbook; this recovery was docs/evidence only.
-No accepted art, source, main.ts, reserved modules, seed/save/version/gameplay changes since
-producer. No push/PR/hosted attempt/merge/release/deploy/LFS/history operation. PR42 parked.
-Record actual local HEAD/ahead only; pre-existing.DS_Store untouched.
-
-## September19 — R1b/R2b static handoff superseded by completed capture
-
-## SESSION HANDOFF — September17 · R1b/R2b static complete, native next
-
-Nick resolved N1: independent motion-scale bound0.08–0.9 on declared brachyuran reference;
-body-axis bounds and genuine pivots unchanged. N11 travel is not blend-weighted. N12 faint/hit
-loading now belongs to the shared action builder/single timeline, not the contact solver.
-Full checkpoint: audits/ANATOMY_COMPLETION_20260917/r1b-r2b-static-01/README.md.
-102 regression tests/210 tool tests, all TypeScript projects and50 determinism probes PASS.
-Five new contact-pin candidates: crab-fits-03, exact rest/atlas parity. Flora inputs remain
-persimmon-04/cranberry-07/devils-club-06. Civet uses preserved candidate10 assets via
-civet-sentinel-input-01. Sign/verify source, run these eight subjects plus Civet unchanged,
-retain failures, no unchanged retry, then STOP for Nick before further implementation.
-
-Q4 kit paragraph is explicitly approved and applied; no other kit change. D1–D4 approved:
-phones receive retained finished PNGs with painter-only fallback, no inference (R8 scope);
-first guardian later is Earth-temperate apex1536 via existing pipeline; arena rollout by
-biome family, Earth temperate first; Claude E1 code waits for R3 on develop. Master program
-was read from the anthropic lane by absolute path, without copying/syncing; hash recorded.
-Future queue after review: R3 → R4 → R9. R3 additionally owns ContactPhase.travel solver/stage
-(zero solver root dx in stage, planted stance targets unchanged) and attack contactJoint plus
-strike contact phase for pinch. These additions are recorded, not implemented here.
-R9 addendum comes from Claude after recapture: masked0.35 desktop finisher on five painter
-masters, silhouette/alpha conservation, existing masks transfer, finished PNG rebind/retention.
-No finisher, guardian, arena or reserved battle2 integration work in this tranche.
-
-Prior native R1/R2 evidence is immutable: four numeric passes/four failures; no qualification
-promoted,53of58 remain unbound. Stale Compendium admission remains open. No full suite or chain.
-No accepted paint, main.ts, reserved modules, seed/save/version or gameplay-math edit.
-September17 startup receipt reused; Blender unused. Codex stops after signed native evidence;
-Claude can review read-only, no app switch/sync needed now. PR42 parked; no push/PR/hosted
-attempt/merge/release/LFS/history operation. Report actual local refs only after signing.
-
-## September17 — R1b/R2b preparation before N1 resolution
-
-## SESSION HANDOFF — September 17 · R1b/R2b prepared; N1 bound decision pending
-
-Nick directed the bounded N1–N4 correction plus one N6 quadruped sentinel from Claude's
-read-only review at /Users/nick/Projects/celestial-frontier-anthropic-mac/audits/
-ANATOMY_REVIEW_20260917/CLAUDE_R1R2_REVIEW.md. Q4 kit paragraph explicitly approved and applied;
-no other kit edit. R3–R8 remain closed. No other-lane edit/copy/sync or GitHub operation.
-
-Current prepared work and exact remaining question:
-audits/ANATOMY_COMPLETION_20260917/r1b-r2b-static-01/STATUS.md.
-Shared anatomical scale, readable contact stride/lift/body loading, painted endpoint pins and
-action-first native diagnosis are implemented locally. Five pin candidates are crab-fits-03,
-with exact rest and atlas parity; civet-sentinel-input-01 preserves candidate-10 Civet assets.
-100 regression tests,210 tool tests,three TypeScript projects and root validation pass;
-all50 baseline probes match. Native recapture has NOT run; changes remain unstaged/uncommitted.
-
-Pending Nick question: preserve observed root/carpace pivots and add an independent declared
-leg-root-span admission bound (recommended0.08–0.9), or raise the original body-axis floor and
-refuse incompatible records. Raising that original floor rejects the real Crab's0.041573axis;
-its meaningful leg-root span is0.093745. Do not move observed pivots to force admission.
-Neither alternative has been silently applied. Complete the selected bound and its controls,
-check affected source, sign/verify, then eight-subject capture plus Civet sentinel on unchanged
-producer, preserve all failures, then stop for Nick. No R3–R8 or unbounded repair loop.
-
-HEAD remains57dfe112 (signed R1/R2 evidence), producer6b11407d, plan9769d299. Previous native
-results remain immutable: Crab/Coconut/Freshwater/Cranberry numeric PASS; Mud/Vent paint-contact
-FAIL; Persimmon fold FAIL; Devil's Club CPU FAIL. No qualification promoted;53of58still unbound.
-Old Compendium admission remains unresolved; no full suite, certificate chain or phone probe.
-September17 startup receipt reused; Blender unused/unqualified. Accepted paint, reserved
-modules, main.ts, save/version/seed and gameplay math unchanged; only approved Q4 kit text edited.
-
-Codex: wait for the concrete N1 contract interpretation, then finish the authorized sequence.
-Claude: idle/read-only until recapture; no app switch or sync needed now. PR42 stays parked.
-Local cached ahead counts131(origin/openai/mac)/242(origin/develop); no remote state inferred.
-No push,PR,hosted attempt,merge,release/deploy or LFS/history operation.
-
-## September 17 — R1/R2 native handoff before R1b/R2b
-
-## SESSION HANDOFF — September 17 · R1/R2 captured; STOP for Nick
-
-Approved plan 9769d299 and R1/R2 producer 6b11407d9fd57a8f8d049b21b80e4188ea402d69 are signed
-and independently verified. The configured 1Password retry succeeded after Nick unlocked it;
-the exact staged batch was unchanged. Original failure remains R1_R2_SIGNING_BLOCKER_01.json.
-
-Start audits/ANATOMY_COMPLETION_20260917/r1-r2-native-01/README.md for the complete eight-row
-report, per-action results, film/still links and review stop. summary.json and the artifact
-manifest consolidate the exact source evidence; source-signature.json records verification.
-Static implementation/decisions: r1-r2-static-01/README.md; 94 regression tests, 209 tool tests,
-three TypeScript projects, 1,010 legacy renders and all 50 matching determinism probes.
-No static rerun or source edit occurred after producer 6b11407d.
-
-Eight independent native attempts on unchanged source: Crab, Coconut Crab, Freshwater Crab and
-Cranberry PASS their numeric gates and have ten-second films. Mud Crab FAILS dodge paint drift
-(0.2565 px >0.25); Vent FAILS hit/dodge and presentation paint drift (up to0.3094 px). Persimmon
-FAILS with132 folded triangles before readiness. Devil's Club FAILS clip p95 (2.0/3.4/2.2/2.1 ms
-against strict <2 ms). Failed subjects stopped before dependent films. No retry or relaxed gate.
-All raw reports and earlier failures remain immutable. Crab edge artifacts/subtle faint and
-Cranberry continuous shape/intent remain visual review questions despite numeric passes.
-R1/R2 are implemented, not accepted as complete. No qualified species count is promoted.
-
-R1 shared amplitude/single timeline/secondary-only foliage and rooted grow amendment remain
-as committed; new bindings are persimmon-04, cranberry-07, devils-club-06. R2 source contacts
-run through the performance owner in the capture harness; production scene wiring is deferred.
-All58 targets still await qualification;53 lack bindings. I5 stale Compendium remains open.
-No full suite, certification chain, phone proof, new sentinel captures or admission repin ran.
-
-Nick's decisions remain binding: Q1 later open-gape candidates, adoption after3× comparison;
-Q3 deferred R4 holds last valid pose while clock advances, counted and any normal refusal FAILS;
-Q4 provisional2,000 field vertices and a separately proposed kit paragraph requiring approval
-before R8; Q5 anchored-root library amendment recorded once in library-amendment.json.
-No kits, accepted masters, main.ts, reserved effects/battle2/soundkit/worldlife, save/version/seed
-or gameplay changes. September17 startup receipt remains valid; Blender unused/unqualified.
-
-Codex: STOP for Nick's review; no R3–R8 or further repair loop until scoped direction.
-Claude: optional read-only review of this lane if Nick requests; no app switch or sync required.
-Evidence/documentation successor is signed separately from producer; use git log for its hash.
-No GitHub writes, PR, hosted attempt, merge, release/deploy or LFS/history operation. PR42 parked.
-Report actual local cached ahead state only. Prior C1/C3/C5 and art/media approval gates remain.
-
-## September 17 — R1/R2 static checkpoint before native review
-
-## SESSION HANDOFF — September 17 · approved R1/R2 static checkpoint
-
-Nick approved CODEX_REPAIR_PLAN.md and Q1–Q5 with this narrower sequence: sign the plan,
-implement R1/R2 only, run static checks, sign source, run five crab plus three flora native
-re-captures on that unchanged producer, then STOP for his review before R3–R8.
-Plan commit 9769d299c6b52150a7dcaa1bcd175c07c7fc98bb is signed and independently verified.
-Current checkpoint details, approvals, controls and proposed phone-kit paragraph:
-audits/ANATOMY_COMPLETION_20260917/r1-r2-static-01/README.md.
-
-R1 adds shared geometry-relative amplitude, one ordinary/editor timeline interpreter,
-secondary-only foliage and approved above-root grow/recoil. New source-observed flora bindings
-are persimmon-04, cranberry-07 and devils-club-06 (11/10/11 groups; exact rest). Retain the
-failed devils-club-05 intake and every earlier failed report. No accepted paint changed.
-R2 adds graph-validated family stance/swing contacts through the performance update owner,
-source reach/limit refusals and shared stationary recoil/lowering. Native gates now measure
-published contact paint as well as endpoint coordinates. Production scene wiring is deferred.
-
-Static results: 94 focused regression tests, 209 tool tests, three TypeScript projects, root
-validation with 1,010 renders and 50 matching determinism probes. The shared library amendment
-is recorded once in r1-r2-static-01/library-amendment.json (14 templates, 169 actions).
-This checkpoint precedes native re-capture; no new visual or phone pass is claimed.
-All 58 targets still await qualification; 53 lack bindings. I5 stale Compendium remains open.
-
-Q1 open-gape candidates are authorized later, adoption only after Nick reviews 3× comparisons;
-Q3 hold-last-valid refusal policy belongs to deferred R4. Q4 phone vertex cap is provisional;
-exact proposed kit wording needs separate approval before R8. Kits are unchanged.
-No main.ts, reserved effects/battle2/soundkit/worldlife, save/version/seed or gameplay changes.
-September 17 startup receipt is reused; Blender remains unused/render-unqualified.
-
-Codex: sign the static checkpoint, record all eight independent native outcomes on unchanged
-producer, preserve failures, stop each failed gate before its dependent film, then stop for Nick.
-Claude: no app switch or synchronization needed; read-only review of this lane if Nick requests.
-No GitHub writes, PR, merge, release/deploy or LFS/history operation. PR42 remains parked.
-Record actual local commit/ahead state only. Prior C1/C3/C5 and art/media approval gates remain.
-
-## September 17 — handoff before approved R1/R2 repairs
-
-## SESSION HANDOFF — September 17 · anatomy batch signed and verified
-
-Signed implementation and consolidated review: 0b8857511c133fef36299505c9e6927e4e2d47f4,
-on openai/mac, independently verified against the existing configured public signing key.
-Nick's requested retry succeeded after the two retained failures. At that implementation
-commit the cached ahead counts were 127 versus origin/openai/mac and 238 versus origin/develop.
-This documentation-only successor records the resolution; use git log for its own exact hash.
-No unsigned fallback or persistent signer configuration change. Only the pre-existing untracked
-.DS_Store remains outside the committed work.
-No GitHub writes, branches, merge, release, deployment, history rewrite or LFS migration.
-PR42 remains parked; Nick’s explicit no-hosted-writes instruction controls.
-
-Start audits/ANATOMY_COMPLETION_20260917/README.md, ANATOMY_STATUS.md, coverage-final.json and
-implementation-summary.json. SIGNED_CHECKPOINT.json records success; signing-blocker.json
-retains the historical failures. Consolidated review
-is audits/ANATOMY_COMPLETION_20260917/CLAUDE_REVIEW_REPORT.md, with the copy-ready
-CLAUDE_REVIEW_PROMPT.md and hashed CLAUDE_REVIEW_INPUTS.json beside it. Nick requested the full
-review on September 17; it includes the accumulated C1–C5 work since the incorporated band review
-and the staged continuation. The original FAUNA_FULL_PASS NEW_SESSION_PROMPT gives the
-implementation scope; this handoff supersedes its older counts.
-
-All eleven accepted master hashes have binding artifacts. Persimmon, Cranberry and Devil’s
-Club now have actual 8/7/8 branch groups, bark/foliage ownership and fixed-root motion. They
-remain visually unqualified: native captures exposed cut tears, leaf distortion and CPU
-failures. Cranberry’s boundary repair closes cuts but does not solve shape or performance.
-Original accepted master bytes are unchanged. Preserve all failed evidence.
-
-Five actual crab owners now have 26-part, 44-joint source-stage fits. crab-masks-05 proves
-ordinary pixel parity and exact fresh-prefix RGBA; 03/04 are earlier successful mask snapshots,
-01/02 retain readback failures. crab-fits-02 and the five *-native-02 folders are current-input
-motion diagnostics: 12 actions × 121 samples, 601 presentation samples, exact rest, 60 fps and
-1.0–1.5 ms rig-update p95. Shared pinch uses the painted gape and preserves all eight walking
-contacts. Original and mirrored source-graph outcome tests pass. These are desktop diagnostics,
-not visual, walking-stance, hidden-surface, habitat or phone acceptance. Some retained stills
-omit text annotations; filenames retain their action identity.
-
-Additional observations preserve seven-pair isopods, four-pair tardigrades with variable painted
-folds, four-barrel Salp, single-tube Pyrosome, two-body/four-siphon Sea Squirt and top-view
-Horseshoe Crab with hidden walking legs. Of the 58 target species, 12 are observed, five have
-bindings and none is newly visually qualified. The other 53 still lack bindings. Continue the
-entire remaining roster after saving this batch, not another representative sample.
-
-Native census 01 covers 1,010 Earth entries plus 240 procedural samples: 1,237 nonblank/parity
-passes, 13 explicit legacy fallthroughs and 53 topology emissions. The quadruped observer is
-separate. This finite census does not exhaust seed space or prove universal animation.
-Final checks: 179 regression tests in 29 files, 209 Node tool tests, all three TypeScript
-projects, root validation with 1,010 renders and 50 matching determinism probes. Raw logs keep
-their original whitespace; source/document diff checks exclude those unchanged log bytes.
-The prior full-suite stale Compendium producer certificate remains open; do not repin it.
-
-No version, save, seed, main.ts or reserved effects/battle2/soundkit/worldlife change. Kits
-unchanged; retain first-new-class media review and twelve-new-artwork-per-sheet gates.
-The uninterrupted September 17 startup receipt is reusable: gh 2.101.0, Blender 5.2.2 and
-Homebrew 7.0.3; seven capability checks pass. Updated Blender remains render-unqualified and
-unused. Run its bounded synthetic render before any future Blender job.
-
-C1 final Wild approval remains Nick’s. C3 source coverage remains 203/631 with 428 missing;
-1,617 WAV/Opus pairs, 43 biomes, 484 rendered routes plus two silences. Rain E is active;
-second-weather and phone-finisher decisions remain open. Prior C2/C3 review stays consolidated.
-C5 promotion and LFS still require their exact gates.
-
-OpenAI/Codex: the batch is signed and verified. Reconcile Claude's review, then continue
-source-owned masks/graphs/actions across the remaining targets and repair flora shape/CPU.
-Claude: open now for Nick’s requested consolidated read-only review of this Codex worktree.
-Do not pull, merge or copy source into the other lane. Review the signed 0b885751 implementation
-and this documentation successor; the review manifest preserves its pre-commit snapshot scope.
-No PR is needed at this checkpoint. Report actual local commit/ahead state; infer no remote state.
-
-## September17 — handoff before full catalogue pass
-
-## SESSION HANDOFF — September 17 · flora fitting defects isolated; fauna completion continues
-
-Resume latest signed openai/mac checkpoint after 0426ef4d. Current batch:
-audits/ANATOMY_COMPLETION_20260917/README.md and coverage-flora.json. Consolidated review:
-audits/FAUNA_FULL_PASS_20260916/REVIEW_PROMPT.md; original NEW_SESSION_PROMPT still supplies scope.
-All eleven accepted master hashes have bindings; this is artifact coverage, not acceptance.
-Persimmon/Cranberry/Devil’s Club now have source-bound 8/7/8 branch groups, bark/foliage materials,
-fixed-root all-action motion and native ten-second diagnostics. Captures exposed serious shape
-and CPU defects. Cranberry-06 preserves every alpha ownership boundary, closing cut tears but
-not leaf distortion. Preserve failed evidence; do not promote any flora as visually qualified.
-
-Tests: three-project typecheck; 32 motion tests; five splitter controls; root validation with
-1,010 renders and 50 matching deterministic probes. Earlier full-suite stale Compendium producer
-certificate remains open; do not repin. Native reports are diagnostic source snapshots, not a
-certificate chain or physical phone qualification. Toolchain startup updated idle gh/Blender;
-seven capability checks pass, but new Blender rendering remains unqualified and unused.
-
-Next: complete shared shape/ownership/performance repair, actual source observations/masks and
-variants for all 58 missing fauna, then full native action/contact/habitat qualification. Actual
-isopods have seven leg pairs; tardigrade folds vary; Horseshoe Crab walking legs are hidden.
-The twelve candidates are not completed source rigs. Existing crab alpha admission (five actual
-owners, 44 joints), Skink/Beetle diagnostics and full 1,250-case census remain historical evidence
-in FAUNA_FULL_PASS_20260916. No fauna has been newly qualified. All accepted masters unchanged.
-
-C1 final Wild approval remains Nick’s. C3 authentic source coverage remains203/631 with428missing;
-1,617 WAV/Opus pairs,43biomes,484rendered routes plus2silences. Rain E active; secondweather and
-phonefinisher choices open. Prior C2/C3 review evidence remains linked from consolidated prompt.
-No kit wording change, new model, main.ts or reserved effects/battle2/soundkit/worldlife edit.
-
-No GitHub writes, branches, merge, release, deployment, history rewrite or LFS migration. PR42
-parked. Commit completed work with configured signing; no unsigned fallback. OpenAI continues
-locally. Claude need not open/sync now; future review is read-only from consolidated evidence.
-Report local commit/ahead counts. No PR needed at this checkpoint. The uninterrupted September17
-startup receipt is reusable while this session continues; native work requires both locks.
-
-
-## SESSION HANDOFF — 2026-09-17 · full catalogue pass and signing resolved
-
-Nick requests all painted fits and the 58 missing fauna structures, with one consolidated
-review. Start audits/FAUNA_FULL_PASS_20260916/REVIEW_PROMPT.md and README.md. The current
-coverage-final.json separates source observation, artifact existence and qualification.
-The prompt links all previous C2/C3 evidence. Fixture/template tests are not accepted art.
-Copy-ready restart instructions: audits/FAUNA_FULL_PASS_20260916/NEW_SESSION_PROMPT.md.
-
-Signed, independently verified checkpoints: 423afd62 saved the accumulated 224 files;
-057d9bc2 committed the full catalogue pass and repairs. At 057d9bc2 the cached ahead counts
-were 125 versus origin/openai/mac and 236 versus origin/develop. A documentation-only session
-handoff commit follows it; use git log for the current head. Signing is resolved. Approximately 17.5 million added audit lines versus
-cached develop are committed history, not an uncommitted backlog. No GitHub writes, Actions,
-branches, merge, release, deployment or history rewrite. PR42 is parked; LFS awaits explicit go.
-
-Native census 03 covers 1,010 Earth organisms plus 240 procedural samples. All 1,237 override
-renders are nonblank and pixel-identical with and without observation. The 13 procedural legacy
-fallthroughs are outside this raster check. The 38 topology emissions exclude the separate
-quadruped observer and do not mean 38 completed rigs. Five source-rendered crab PNGs are retained,
-with 44-joint records admitted against real alpha. Freshwater, Mud and Vent owners now emit their
-actual anatomy; Mud paddles are rigid foot surfaces. Source coordinates map through the padded
-ink frame; missing frame metadata refuses. The ledger uses verified native evidence.
-
-Full application tests: 4,457 pass, 1 fails, 1 skips; 388 of 389 files pass. Fixed the exporter's
-optional-signature boundary and split counted-anatomy tests without dropping actions or samples.
-The remaining current-producer-authorities failure is the stale Compendium producer certificate;
-measurement authority matches. Do not repin without fresh measured admission. All 204 Node tool
-tests, TypeScript and root validation pass (1,010 renders; 50 matching deterministic probes).
-Raw logs and negative controls are in the new audit directory.
-
-Prior Skink (17 parts) and Beetle (16 parts) fits retain exact rest, 19/13 actions × 121 samples,
-ten-second native films at 60 fps, and rig-update p95 of 1.2/1.6 ms. These are hashed diagnostic
-snapshots, not final visual/phone acceptance. The hidden Skink leg, folded Beetle wings/open
-flight and out-of-plane views remain unproven. http://127.0.0.1:49816/painted-fits/ serves the
-prior films from /private/tmp/cf-animation-preview-20260916. Accepted masters are unchanged.
-
-Continue C2: source-owned observations/masks and body variants for the 58; fit required painted
-views and contacts; give flora real bark/foliage ownership; complete all-action native visual and
-phone qualification. Twelve candidate structures are not 58 finished species. Eight of eleven
-accepted-master hashes have matching skin-binding artifacts; three flora masters lack fits.
-Keep the 64-joint/40-part/2048-atlas bounds. No source edits during a hash-bound native capture.
-C4 new artwork remains twelve per sheet and stops for Nick's eye. No kit, AI/model or new 3D
-work in this batch. No main.ts or reserved effects/battle2/soundkit/worldlife edits. The local
-motion exception applies; anthropic/mac stays read-only. Uninterrupted startup receipt reused.
-
-C3 b79fd32e remains at 1,669 entries/1,665 originals and 1,617 WAV/Opus pairs; 203 of 631 fauna
-source identities, 428 missing; 43 biomes/486 routes, 484 rendered and two intentional silences.
-This is not completed fauna/listening acceptance. Its 23 review ZIPs are below 30 MB. C1 mechanical
-intake is complete; Nick owns final Wild acceptance. Rain E is active. The second weather pick
-and smaller phone finisher decision remain open; Klein phone probing stopped. C5 prunes openai/mac,
-then UI/engine/tools tiers enter develop through merge commits, followed by a separately authorized
-develop→main release/full chain. No PR step now.
-
-OpenAI/Codex continues locally. Claude need not open or sync now; it can review this worktree
-read-only using the consolidated prompt. Report local commit IDs and cached ahead counts.
-
-
-## SESSION HANDOFF — 2026-09-16 · painted fits and missing structures
-
-Nick requests completion of all painted fits and all 58 missing fauna structures, with the
-whole session ready for review tomorrow. One entry point:
-audits/PAINTED_FITS_AND_58_20260916/REVIEW_PROMPT.md (links all prior C2 and C3 evidence).
-Latest package README and coverage-compact-crab.json distinguish contract, source observation,
-painted fit and human acceptance. Do not count synthetic fixtures as completed species.
-
-Signed starting checkpoint33e0c7a0: cached123ahead origin/openai/mac and234ahead origin/develop.
-This continuation is staged but signing is blocked: two attempts returned1Password agent error,
-including a PTY retry; app/socket are present. Nick has been asked about the signing prompt.
-See checkpoint.json. No new commit yet and no unsigned fallback. No GitHub writes, Actions, new branch, merge, release, deployment or history
-rewrite. PR42 parked; LFS still awaits explicitgo.
-
-New accepted-source fits: Skink17parts, Beetle16parts. Both masters unchanged, exact rest0channels;
-all19/13unique family clips pass121samples each. Native ten-second films60fps, rig-updatep95
-1.2/1.6ms, worst individual sampled clip0.9/1.4ms. Native sources are dirty diagnostic snapshots
-with exact hashes, not final visual or phone qualification. Hidden Skink leg emergence, folded
-Beetle wings/open flight and out-of-plane views remain unproven. Review native action extremes.
-http://127.0.0.1:49816/painted-fits/ adds both to earlier fish/bird/frog/procedural films; earlier
-solver snapshots remain labelled. Scratch server /private/tmp/cf-animation-preview-20260916.
-
-Twelve specialized contracts and component-relative candidate libraries are present, with shared
-rig/motion admission. No empty species profile was promoted. All58 still need qualified painted
-fits. Compact-crab source observation and a44-joint record compiler now preserve actual8legs,
-separate pincer fingers and eyestalks, with no invented lobster abdomen/tail fan/antennae. Other
-crab painter owners and most other structures still need actual observations and masks. Code
-candidates do not override real counted geometry. Broad marine/crust/sessile guesses still refuse.
-Leg slack now follows Root–Knee–Foot and parent–Knee–Foot chains as well as the quadruped chain.
-
-Checks:27focused tests before compact-crab extension;12focused tests of the final extended
-contracts/observer;20rig/admission controls; typecheck-03 and validate-final. Failed fixture and
-observer controls retained. Ledger's old co-located binding index is a failing control; current
-recipe-hash links find8of11accepted cut-out masters with skin-binding artifacts, not8final
-acceptances. Threeflora fits need real bark/foliage ownership, not synthetic warty substitution.
-
-Continue: source-owned observations/masks and body variants for58; qualify all real painted
-views/contacts and procedural variants; complete flora fits; full-action native/visual and phone
-budgets. Keep64joint/40part/2048atlas bounds. No source edits during a native hash-bound capture.
-C4new artwork remains12per sheet and stops for Nick's eye. Kits unchanged. No new image/model run
-in this package. No main.ts or reserved effects/battle2/soundkit/worldlife edits. Local motion
-exception September16 applies; anthropic/mac stays read-only. Startup receipt reused uninterrupted.
-
-C3 b79fd32e remains1,669entries/1,665originals,1,617WAV/Opus pairs;203/631fauna source identities,
-428missing;43biomes/486routes,484rendered,2intentional silences. Not complete species/listening
-acceptance. Its review index has23ZIPs below30MB. C1mechanical intake complete;Nick owns final
-Wild acceptance. RainE active;second weather pick and smaller-phone-finisher decision open;
-Klein phone probes stopped. C5prune openai/mac,then UI/engine/tools tiers via merge commits into
-develop,then separately authorized develop→main release/full chain. No current PR step.
-
-OpenAI/Codex continues locally. Claude does not need to open/sync now; tomorrow it can read this
-worktree and the consolidated prompt without editing it. Report local commit IDs/ahead counts;
-do not push or prepare a PR. Prior handoffs are preserved verbatim in ROADMAP_ARCHIVE.md.
-
-
-## September16 — handoff before counted anatomy
-
-## SESSION HANDOFF — 2026-09-16 · counted anatomy and signed checkpoint
-
-Nick's standing direction: fluid full-body animation for Earth/procedural organisms from
-observed anatomy; no creature-name/seed/hash exceptions in motion or numerical solvers.
-Authored masters keep hash-bound fits; procedural owners emit what they actually paint.
-
-Signing is working: signed checkpoint1e383e1c contains the accumulated preceding C2 work,
-122ahead cached origin/openai/mac and233ahead origin/develop. The previous failure remains
-in its historical receipt. The following counted-anatomy package is the next local batch;
-its final commit/ahead counts are reported at completion. No unsigned fallback.
-
-Current package: audits/COUNTED_ANATOMY_20260916/README.md and REVIEW_PROMPT.md. A shared
-v2anatomy expander preserves actual arm/tentacle counts through body-card compilation,
-family curves and rig admission. Radial/squid observations now publish10arms or8arms+2feeding
-tentacles; drawing commands unchanged. Cephalopod lash contact follows the striking appendage.
-No missing landmarks are synthesized and no species is reassigned to an incorrect body.
-The64-joint and40-part/2048px atlas budgets remain.94supported count combinations,
-1,222compiled actions/147,862synthetic samples PASS;20oversized combinations refuse.
-30focused tests,21existing rig controls,TypeScript and root validation pass. See checks.json.
-
-The prior14default family templates/169actions,32attack rows and631named fauna profiles remain.
-573names have candidate moves;58need new topology. This is not573finished animated masters.
-Current counted observers still lack full body landmarks/part masks; high-count myriapods
-need a measured budget/representation decision, never silent truncation. Next: extend real
-observer geometry and masks, qualify the counted painted fits, then the other missing
-structures. Maintain bounds, exact rest, skin joins/extremes, habitats, attack contact,
-whole moving silhouettes and measured performance. No inherited universal/phone qualification.
-
-Prior review: http://127.0.0.1:49816/animation-library/ ; species-coverage/ serves catalogue-03.
-Scratch server: /private/tmp/cf-animation-preview-20260916 on49816. The new package changes
-compiler/admission, not the existing preview. Earlier fish/frog/procedural native full-clip
-films pass shape/rest gates; bird is an older labelled solver snapshot. Fish film1.4ms,
-frog2.0ms with victory2.2ms,broad film2.2ms rig-update p95; some exceed2ms. Source hashes and
-failed controls remain in ANIMATION_COMPLETION_20260916. GSAP adapter SHA remains
-600e413b90587a5d3b2f40ace148a95e6e692fb82f3b4d2eba2f17b12f0a8660; current producer graph
-hashes are in count-matrix-final.json. Do not repin historical proofs to imply fresh evidence.
-
-References: CREATURE_ANIMATION.md,ATTACK_ANATOMY.md,SPECIES_AND_GENOME.md and codebase-reference.
-No main.ts hunk,kit edit,new art/model run,reserved effects/battle2/soundkit/worldlife edit.
-The September16 narrow motion repair exception applies;anthropic/mac stays read-only.
-Toolchain startup receipt reused within this uninterrupted session; no tool updates.
-
-C3 signed b79fd32e:1,669entries/1,665originals,1,617WAV/Opus pairs;203/631fauna source identities,
-428missing.43biomes/486routes,484rendered,two intentional silences. Not listening/species
-acceptance. Its REVIEW_PROMPT/REVIEW_PACKS identify23ZIPs below30MB. C1mechanical intake
-complete;Nick owns final Wild acceptance. C4 remains12assets per sheet, each stops for review.
-RainE active; second weather pick and smaller-finisher phone decision open;Klein probes stopped.
-C5pruning onopenai/mac,then UI/engine/tools tiers into develop via merge commits; future
-release PRdevelop→main/full chain needs separate authority. LFS awaits explicitgo.
-
-OpenAI/Codex continues locally onopenai/mac. Claude need not open or sync now; it does not
-have these changes through develop. No GitHub write/Actions/branch/merge/release/deploy/history
-rewrite authorized;PR42parked. Supply the consolidated review prompt when Nick resumes review.
-
-
-## SESSION HANDOFF — 2026-09-16 · shared anatomy and full-clip review
-
-Nick's requirement is shared, anatomy-driven animation across all Earth and procedural
-creatures. No species/seed/hash exceptions in the numerical solver or clip code. Authored
-masters retain fitted observations; procedural painters must emit what they draw. See
-CREATURE_ANIMATION.md's universal architecture/variation gates, ATTACK_ANATOMY.md and
-[audits/ANIMATION_COMPLETION_20260916/README.md](audits/ANIMATION_COMPLETION_20260916/README.md).
-
-This batch adds eight physical motions (32 selector rows), expands explicit anatomical
-absence and rejects broad marine/crust/sessile aliases that invented the wrong body graph.
-Post-easing bounds close nine original limit violations; exact secondary sampling fixes
-GSAP/pure mismatch.169 actions/40,729 synthetic samples pass. All631 fauna are catalogued;
-573 have candidate moves,58 need new topology. This is not573 finished animated masters.
-
-Whole-library painted checks found cast/dodge/victory folds missed by four-action proofs.
-The shared solver preserves its previous fast solution and uses bounded active-set repair
-only for unresolved folds. Pins, masters, poses, source-join gates and atomic refusal remain.
-Native current-solver reports: fish-native-04, frog-native-04, broad-native-01; bird-native-02
-is an earlier solver snapshot explicitly labelled in the review. All clips have named frames;
-films are ten seconds. Some timing remains over2ms (frog victory2.2ms; broad film p952.2ms).
-No final visual, full-game combat or iPhone qualification is claimed.
-
-36 motion/anatomy tests,33 skin/solver controls, TypeScript and root validation pass.
-checks.json names the final evidence; failed experiments and raw logs remain for review.
-No main.ts hunk, painting, model run, kit edit or other reserved Claude-module edit.
-The updated GSAP producer SHA is600e413b90587a5d3b2f40ace148a95e6e692fb82f3b4d2eba2f17b12f0a8660;
-historical runners pinned to6a206acd remain historical. Use the new source-hashed diagnostic.
-
-Review: http://127.0.0.1:49816/animation-library/ ; species-coverage/ now serves catalogue-03.
-The combined REVIEW_PROMPT.md here indexes all prior C2 stages and the separate C3 package.
-Preview can be rebuilt with tools/animation-completion/review.mjs from repo root under the
-existing toolchain lock; serve the resulting directory with tools/family-review/review-server.mjs
-(paths under port/v2). The current scratch server serves /private/tmp/cf-animation-preview-20260916.
-
-Next work: qualify remaining full-body poses and timing; extend record-described topology
-and painter observations for variable appendage counts and the58 unmatched bodies; test shared
-repairs on multiple legal shapes and materials. Then fit art, prove contact/media/scene integration
-and qualify the physical phone. Do not declare whole-library/whole-species completion from
-synthetic fixtures or a passing film. Do not reduce a creature's motion just to hide a fold.
-
-Last signed HEAD at batch preparation: fd26b9f8;121 ahead cached origin/openai/mac,232 ahead
-origin/develop. The final signed checkpoint again failed with "1Password: agent returned an error".
-All work is saved/staged; checkpoint.json records exit128. Never use unsigned fallback
-or push the staged candidate.
-
-C3 stays signed b79fd32e: 1,669 source entries/1,665 unique originals,1,662 decode,three
-quarantined;1,617 WAV/Opus pairs and203/631 fauna reference identities,428 missing.43 biome
-recipes/486 routes,484 rendered,two intentional silences. Not listening/species acceptance.
-Audio production REVIEW_PROMPT.md/REVIEW_PACKS.md identify23 ZIPs below30MB. C1 mechanical
-intake complete; Nick owns final Wild acceptance. C4 remains12 assets/sheet. Rain E active;
-second weather pick and smaller-finisher phone decision open. Klein probes stopped.
-C5 pruning on openai/mac, then UI/engine/tools tiers into develop by merge commits; one
-future develop→main release PR/full chain only with separate authorization. No Ready before
-proof/weather/phone decisions. LFS migration awaits Nick's explicit go; no history rewrite.
-
-OpenAI/Codex continues locally. Claude need not open or sync now; Nick can supply the
-consolidated REVIEW_PROMPT.md when ready. No GitHub write, Actions, branch, merge, release,
-deploy or history rewrite. PR42 parked.
-
-## September16 — handoff before shared animation completion review
-
-## SESSION HANDOFF — 2026-09-16 · full fauna presentation register
-
-[Full fauna attack coverage](audits/FULL_SPECIES_ATTACKS_20260916/README.md), matches code
-September 16: all 631 current Earth animal identities now resolve through83 exact-name
-presentation profiles. Named habitat and attack intent replace the small six-name table;
-hoofed animals no longer inherit claws, and uncalibrated Earth swimmers derive gait from
-habitat instead of walking. Conditional horns/stings need record-bound observations.
-This is catalogue/routing coverage:529 identities have candidate library moves,44 need
-additional motion and58 need new topology. None of those counts grants visual acceptance.
-The quadruped painter emits actual foot-branch claw/jaw observations into hashed records;
-three native seeded controls preserve all ordinary painted channels.28 focused tests,
-full TypeScript and root validation pass. See ATTACK_ANATOMY.md and the species audit for
-per-name gaps. Existing painted motion proof, approved masters and kits are unchanged.
-
-Review board: http://127.0.0.1:49816/species-coverage/ (631 searchable rows).
-Current painted battle remains http://127.0.0.1:49816/anatomy-battle/ ; no new painting
-or motion capture was promoted in this batch. Full-species audit is catalogue/routing,
-not631 animated masters. Review prompt: audits/FULL_SPECIES_ATTACKS_20260916/REVIEW_PROMPT.md.
-Native painter-01 reports three unchanged ordinary renders with hash-bound weapon records;
-selection deliberately excludes extra legs, unsupported tails and non-land cases.
-
-Next: work through the report's missing topology/motion and per-species fit notes; finish
-remaining painter observers, then fitted family proofs and cross-medium attack contact.
-Do not feed a whale through a generic fish silhouette, a clam through a jaw, or a hoof through
-claw animation just to increase a coverage count. Freeze source under each native proof.
-Preserve the current three painted rig fits and acceptance boundaries. Body-card mass remains
-uncalibrated for most named fauna and is explicitly noted; time/shape qualification still needed.
-
-Preview restart:
-`node port/v2/tools/family-review/review-server.mjs /private/tmp/cf-animation-preview-20260916 49816`
-Copy FULL_SPECIES_ATTACKS_20260916/catalogue-01 index.html/report.json to species-coverage/;
-copy ANATOMY_ATTACKS_20260916/native-04/preview to anatomy-battle/ when rebuilding scratch.
-
-Signing status at batch preparation: last signed HEAD fd26b9f8,121 ahead cached
-origin/openai/mac and232 ahead origin/develop; prior signing attempts failed through1Password.
-The full-species signed checkpoint also failed immediately with the1Password agent error; all work remains saved/staged. See FULL_SPECIES_ATTACKS_20260916/checkpoint.json. Never use unsigned fallback.
-
-C3 stays signed b79fd32e: 1,669 source entries/1,665 unique originals,1,662 decode,three
-quarantined;1,617 WAV/Opus pairs and203/631 fauna reference identities,428 missing.43 biome
-recipes/486 routes,484 rendered,two intentional silences. Not listening/species acceptance.
-Audio production REVIEW_PROMPT.md/REVIEW_PACKS.md identify23 ZIPs below30MB. C1 mechanical
-intake complete; Nick owns final Wild acceptance. C4 remains12 assets/sheet. Rain E active;
-second weather pick and smaller-finisher phone decision open. Klein probes stopped.
-C5 pruning on openai/mac, then UI/engine/tools tiers into develop by merge commits; one
-future develop→main release PR/full chain only with separate authorization. No Ready before
-proof/weather/phone decisions. LFS migration awaits Nick's explicit go; no history rewrite.
-
-OpenAI/Codex continues locally; Claude need not open or sync now. When Nick requests review,
-give the consolidated prompt/evidence. No main.ts hunk, new branch, GitHub write, Actions,
-merge, release or deploy. PR42 parked.
-
-
-## September 16 — handoff before procedural motion iteration
-
-## SESSION HANDOFF — 2026-09-16 · attacks from anatomy
-
-[Anatomy attack continuation](audits/ANATOMY_ATTACKS_20260916/README.md), matches code
-September 16: the new presentation selector binds all24 existing melee actions across12 fauna
-families to explicit weapons/joints/media; both plant families explicitly have no melee clip.
-Procedural weapons need a declaration bound to the admitted record hash; generic quadruped
-claws are not evidence of actual claws. Known Earth capabilities are a small explicit table.
-The three-creature proof now uses foreclaw/bite/foreclaw, authored contact phase and a fixed
-lunge endpoint. Old dynamic paw-follow-through is retained as a false-green visual defect.
-See ATTACK_ANATOMY.md for the API, table, evidence and remaining universal coverage work.
-Shared curves, originals, kits and gameplay outcomes remain unchanged. The demo adds quiet
-seeded rain ripples and scales the existing labelled Wild effect to the smaller combatant.
-
-Latest review: http://127.0.0.1:49816/anatomy-battle/ . The biome-battle and painted-motion
-pages remain available. Final native-04 report/film/stills/standalone preview live under
-ANATOMY_ATTACKS_20260916. Native-01/02 are intermediate controls, not candidates to promote.
-Use existing rosette approved-05, broad-02 and crystal-02 rigs; do not re-fit or repaint them
-as an incidental restart. Weapon observations are bound to those exact anatomy hashes.
-The scene uses one shared curve library and actual compiled phases, no creature-specific edits.
-
-17 focused Vitest tests plus8 Node controls cover the selector, habitat and capture/contact
-contracts. Native evidence must remain distinguished from visual acceptance and automatic
-procedural coverage. Review prompt in the audit; ATTACK_ANATOMY.md owns current API/table.
-Next: Nick reviews claw/bite attack shape; then source-painter weapon declarations, real
-surface anchors and painted family-specific attack/habitat proofs. Actual Pheasant/ fish
-motion admission is tested, but new aerial contact is not yet visually qualified. Preserve
-abilityOf/CombatCore mechanics. No passive ability name determines a physical attack clip.
-
-Preview restart:
-`node port/v2/tools/family-review/review-server.mjs /private/tmp/cf-animation-preview-20260916 49816`
-Copy native-04/preview into the server root's anatomy-battle/ if the temporary copy is lost.
-
-Signing remains unresolved: the anatomy-attack checkpoint attempt also failed with the 1Password agent error. Work is
-saved/staged; last signed HEAD fd26b9f8 is 121 ahead cached origin/openai/mac and 232 ahead
-origin/develop. No unsigned fallback. Record any later successful checkpoint separately.
-
-C3 stays signed b79fd32e: 1,669 source entries/1,665 unique originals,1,662 decode,three
-quarantined;1,617 WAV/Opus pairs and203/631 fauna reference identities,428 missing.43 biome
-recipes/486 routes,484 rendered,two intentional silences. Not listening/species acceptance.
-Audio production REVIEW_PROMPT.md/REVIEW_PACKS.md identify23 ZIPs below30MB. C1 mechanical
-intake complete; Nick owns final Wild acceptance. C4 remains12 assets/sheet. Rain E active;
-second weather pick and smaller-finisher phone decision open. Klein probes stopped.
-C5 pruning on openai/mac, then UI/engine/tools tiers into develop by merge commits; one
-future develop→main release PR/full chain only with separate authorization. No Ready before
-proof/weather/phone decisions. LFS migration awaits Nick's explicit go; no history rewrite.
-
-OpenAI/Codex continues locally; Claude need not open or sync now. When Nick requests review,
-give the consolidated prompt/evidence. No main.ts hunk, new branch, GitHub write, Actions,
-merge, release or deploy. PR42 parked.
-
-
-## SESSION HANDOFF — 2026-09-16 · three-creature seeded biome battle
-
-[Seeded painted biome encounter](audits/PAINTED_BIOME_ENCOUNTER_20260916/README.md),
-matches code September 16: three painted quadrupeds now share an 18-second, three-turn
-clearing study. The encounter seed selects scenery placement and turn order over the accepted
-Earth temperate FAR/MID/NEAR template and compiled Earth card. All three bodies animate;
-shared hitstop freezes them together. Native-02 passes 3,243 source-join/body-frame samples,
-replay and mouth-contact checks; 60 fps, 0.8/1.0/0.9 ms creature-update p95 on this Mac.
-The ground band now describes space above the registered floor, and mirrored contact uses
-the same source jaw before screen reflection. Negative controls retain the old failures.
-This is seeded painted-template composition, not newly inferred biome art. Damage is scripted
-presentation data, not the combat resolver. Automatic fitting, planted-paw contact, sound,
-ordinary-game squad wiring, other painted families/biomes and physical-phone qualification
-remain separate. No new painting, model run, kit change or original-asset edit.
-
-Latest live review: http://127.0.0.1:49816/biome-battle/ . Clearing 301 and 927 change
-seeded composition and turn order; Replay restarts. Native-02 has the passing 18-second
-film, actual-impact stills, source hashes and self-contained preview. Native-01 remains the
-failed mirrored-contact/duration-instrument control; do not promote it. The previous
-/painted-motion/ review and original masters remain intact. Current rigs are approved-05,
-broad-02 and crystalline-02 under PAINTED_VARIATION_MOTION_20260916; shared curves unchanged.
-
-Nine habitat tests and five encounter tool tests pass, as do typecheck/root validation.
-Source-jaw reflection, full-duration media and large-ground-body controls reject old defects.
-Nick owns visual acceptance; narrow preview at phone width is not phone performance proof.
-Review prompt: audits/PAINTED_BIOME_ENCOUNTER_20260916/REVIEW_PROMPT.md. Next: use the scene
-review to refine visible attack shape/contact, then expand source-derived masks/landmarks and
-painted family/biome coverage under the fourteen-family plan. The three rigs are fitted
-paintings of two genomes, not three independently generated species or automatic rigging.
-
-Preview restart:
-`node port/v2/tools/family-review/review-server.mjs /private/tmp/cf-animation-preview-20260916 49816`
-If its temporary directory is lost, copy native-02/preview to the server root's biome-battle/
-subfolder. That preview is source-hashed, standalone and local; no deployment.
-
-Signing remains unresolved: the new checkpoint attempt also failed with the 1Password agent error. Work is
-saved/staged; last signed HEAD fd26b9f8 is 121 ahead cached origin/openai/mac and 232 ahead
-origin/develop. No unsigned fallback. Record any later successful checkpoint separately.
-
-C3 stays signed b79fd32e: 1,669 source entries/1,665 unique originals,1,662 decode,three
-quarantined;1,617 WAV/Opus pairs and203/631 fauna reference identities,428 missing.43 biome
-recipes/486 routes,484 rendered,two intentional silences. Not listening/species acceptance.
-Audio production REVIEW_PROMPT.md/REVIEW_PACKS.md identify23 ZIPs below30MB. C1 mechanical
-intake complete; Nick owns final Wild acceptance. C4 remains12 assets/sheet. Rain E active;
-second weather pick and smaller-finisher phone decision open. Klein probes stopped.
-C5 pruning on openai/mac, then UI/engine/tools tiers into develop by merge commits; one
-future develop→main release PR/full chain only with separate authorization. No Ready before
-proof/weather/phone decisions. LFS migration awaits Nick's explicit go; no history rewrite.
-
-OpenAI/Codex continues locally; Claude need not open or sync now. When Nick requests review,
-give the consolidated prompt/evidence. No main.ts hunk, new branch, GitHub write, Actions,
-merge, release or deploy. PR42 parked.
-
-
-## SESSION HANDOFF — 2026-09-16 · painted variations in motion
-
-[Painted variation motion review](audits/PAINTED_VARIATION_MOTION_20260916/README.md) now
-animates the approved seed10271 painting, a second10271 painting and crystalline10032.
-Independent hash-bound authored observations feed one shared quadruped template; no creature
-clip overrides. All three pass exact rest/final rest,484individual and601blended pose samples,
-full-motion framing and36connected leg parts. Native captures run about60fps at1.3/1.6/1.7ms
-rig-update p95 on this Mac. Alpha-preserving intake, frame clipping and wrong-limb paint islands
-are repaired with negative controls;12focused tests and root validation pass. New candidate
-art still needs kit intake/visual acceptance. This does not establish automatic fitting,
-planted contact, hidden views, other painted families, ordinary gameplay or phone qualification.
-Kit, accepted originals and the source genomes remain unchanged. Preview uses one player,
-visible still/error fallback and a loopback server with byte-range support.
-
-Checkpoint signing attempt failed:1Password agent returned an error. Batch is saved/staged;
-last signed HEAD fd26b9f8 is121ahead cached origin/openai/mac and232ahead origin/develop.
-Do not use an unsigned fallback; retry the signature after Nick approves the request.
-
-Latest review: http://127.0.0.1:49816/painted-motion/ . Three ten-second films and stills;
-left source, right animated. The former /procedural/ canvas study is mechanical evidence,
-not the visual target. Nick already approved the original10271candidate02direction. New
-candidates await his eye. Full prompts, original outputs, observations, failed controls and
-one consolidated REVIEW_PROMPT.md live in the new audit. No local inference or kit edit.
-
-Final rigs/captures: rig-approved-05/native-approved-05; rig-broad-02/native-broad-03;
-rig-crystalline-02/native-crystalline-02. Do not resume the earlier mask/capture attempts.
-Each has22parts and one lossless atlas; master/record/binding hashes are mandatory. Tests
-preserve the2792-pixel wrong-leg fragment as a failing control. Source seams alone missed
-that defect. Current lookup is authored fitting over generated paint, not an autonomous
-universal painter observer. Shared curves remain unchanged, producer hash6a206acd… .
-
-Next: Nick reviews this painted motion batch; improve contact and visible attack shape from
-that evidence, then qualify actual authored/procedural owners across the fourteen families
-using the recorded universal plan. Preserve material/count/habitat provenance. Finish
-source-derived masks/landmarks before claiming automatic procedural coverage. Continue
-appropriate ground/water/air encounters; bird opponent-facing view, hidden head turns,
-open mouths, physical phone and ordinary-game integration remain separate tasks.
-
-Preview restart if needed:
-`node port/v2/tools/family-review/review-server.mjs /private/tmp/cf-animation-preview-20260916 49816`
-The prior Python server ignored video Range requests. New server returns206for exact byte
-ranges; embedded Play succeeded. The first sandbox curl falsely suggested an outage;
-do not claim that as root cause. A separate still and direct movie link remain available.
-
-C3 remains signed b79fd32e:1,669 source entries/1,665 unique originals,1,662 decode,three quarantined;
-1,617 WAV/Opus pairs and203/631 fauna reference identities,428 missing.43 biome recipes/486 routes,
-484 rendered,two intentional silences. References are not species-behavior/listening acceptance.
-Audio review audio-production/REVIEW_PROMPT.md and REVIEW_PACKS.md;23 ZIPs below30MB.
-C1 mechanical intake complete; Nick owns final Wild acceptance. C4 remains twelve assets/sheet.
-Rain E active; second weather pick and smaller-finisher phone decision open. Klein probes stopped.
-C5: prune on openai/mac, then three merge-commit tiers into develop (UI,engine,tools), followed by
-one develop→main release PR/full chain only when separately authorized. No Ready before required
-proof/weather/phone decisions. Audits LFS approved in principle; perform only on Nick's explicit go.
-
-OpenAI/Codex continues locally on openai/mac. No new branches, kit edits, GitHub writes, Actions,
-merges, release, deployment or history rewrite. PR42 parked. Claude need not open/sync now; when
-Nick requests review, provide the consolidated prompt and named evidence, not an automatic merge.
-Reuse the uninterrupted September15–16 toolchain receipt; do not update tools during evidence jobs.
-
-
-## SESSION HANDOFF — 2026-09-16 · procedural paint quality
-
-[Procedural painted direction](audits/PROCEDURAL_PAINTED_DIRECTION_20260916/README.md): Nick
-rejected the raw procedural canvas look. A bounded authoring adapter now compiles actual
-quadruped identity/proportions/material/palette through the kit interpreter under labelled Earth
-comparison lighting. Nick approved seed10271 candidate02’s painted visual direction for the whole game; framing
-and key uniformity still fail master intake, and it is not yet rigged. New paint needs new fitted parts/landmarks. Pink-purple
-pigment conflicting with the key refuses without recolouring. All fourteen family production
-steps are recorded; contract fixtures do not establish painted animation coverage.23 focused
-tests/typecheck/root validation pass. No local inference, runtime promotion or kit edit.
-
-Latest comparison: http://127.0.0.1:49816/painted-procedural/ . Do not resume the raw
-canvas appearance as the visual target. Candidate02’s direction is now approved; complete intake
-repair before fitting/turnaround. See the package for all fourteen anatomy-family tasks.
-
-### Mechanical proof retained
-
-
-Review http://127.0.0.1:49816/procedural/ and
-[audit/prompt](audits/PROCEDURAL_BATTLE_ITERATION_20260916/README.md).
-Previous /habitats/, /families/ and /impact/ remain. The review page uses one selected video
-at a time after the embedded browser crashed with four players; recovery verification is
-recorded with the package. Three real genomes use the existing canvas painter, not AI paint.
-
-[Procedural motion iteration](audits/PROCEDURAL_BATTLE_ITERATION_20260916/README.md) adds
-three real generated genomes (10032,10052,10271), with painter-emitted landmarks/masks/materials,
-zero observation drift and one lossless atlas each. Shared genome-aware body cards and smooth
-review transitions pass484 individual plus601 assembled native samples per creature, exact rest
-and final rest, and separated-mesh negative controls. All three recorded about60fps/0.4ms rig
-update p95. This covers only current four-leg/banded-tail observation support, not every family.
-The habitat diagnostic now subtracts compiled hitstop from locomotion, poses and body travel;
-both turn roles freeze identically and1,202 source-join/medium-containment samples pass. Its
-latest fish/bird updates are0.9/0.6ms p95.36 focused tests,typecheck/root validation pass. These
-remain diagnostic tools; normal gameplay is not yet wired. Fine silhouette aliasing, source
-shadow deformation, planted contact, other painter owners and phone qualification remain open.
-
-Native proofs: native-1-polished,native-2,native-3 (608/606/607frames,10.117/10.100/10.117s)
-and native-habitat-01 (607frames/10.117s). Source hashes in each report bind dirty diagnostics;
-these are not clean-source certificates. No source art, kit, main.ts, combat or sibling edit.
-The procedural trial scans272 seeds with declared exclusions, no hand fitting or clip edits.
-Do not generalize these results to extra legs, other tails, aquatic/airborne procedural owners.
-
-Next: Nick reviews films. Fix shadow/edge presentation with image-based controls, complete
-other painter masks/records and qualify more anatomical extremes. Bird needs opponent-facing
-flight; Frog ground contact remains open. Then connect admitted encounter/world/record data
-through CreatureRigV1 to ordinary gameplay and separately qualify30fps on the physical phone.
-Preserve8% contact bound, exact rest/source joins and strict<2ms per-creature update requirement.
-
-Signed code/evidence checkpoint73b93592 contains the accumulated continuation and this batch;
-119 ahead cached origin/openai/mac and230 ahead origin/develop at that checkpoint. Signing
-succeeded through the configured1Password helper, without a fallback or configuration change.
-A documentation receipt follows it. Code checks are complete; hosted chain was not run.
-
-C3 remains signed b79fd32e:1,669 source entries/1,665 unique originals,1,662 decode,three quarantined;
-1,617 WAV/Opus pairs and203/631 fauna reference identities,428 missing.43 biome recipes/486 routes,
-484 rendered,two intentional silences. References are not species-behavior/listening acceptance.
-Audio review audio-production/REVIEW_PROMPT.md and REVIEW_PACKS.md;23 ZIPs below30MB.
-C1 mechanical intake complete; Nick owns final Wild acceptance. C4 remains twelve assets/sheet.
-Rain E active; second weather pick and smaller-finisher phone decision open. Klein probes stopped.
-C5: prune on openai/mac, then three merge-commit tiers into develop (UI,engine,tools), followed by
-one develop→main release PR/full chain only when separately authorized. No Ready before required
-proof/weather/phone decisions. Audits LFS approved in principle; perform only on Nick's explicit go.
-
-OpenAI/Codex continues locally on openai/mac. No new branches, kit edits, GitHub writes, Actions,
-merges, release, deployment or history rewrite. PR42 parked. Claude need not open/sync now; when
-Nick requests review, provide the consolidated prompt and named evidence, not an automatic merge.
-Reuse the uninterrupted September15–16 toolchain receipt; do not update tools during evidence jobs.
-
-
-## SESSION HANDOFF — 2026-09-16 · mixed-habitat battle
-
-Review: [habitat package](audits/HABITAT_BATTLE_20260916/README.md),
-[one consolidated prompt](audits/HABITAT_BATTLE_20260916/REVIEW_PROMPT.md),
-http://127.0.0.1:49816/habitats/ (fish/bird film, Frog film, new bird source candidate).
-Previous Civet/Platypus preview remains /impact/, preceding family work /families/.
-
-Physical habitat compiler now uses source ground/air/water capabilities, chemistry and seeded
-home/visitor rules. Unsupported realms/interfaces and unknown named/non-fauna habitats refuse.
-All43 biome identities have routing controls; this does not qualify43 painted arenas. The
-mixed scene keeps full moving bodies in their medium at1,200 sampled poses, with source joins
-passing. Final native-battle-04 is606 encoded frames/10.101600s, about60fps; fish/bird rig update
-p951.1/0.6ms, complete frame1.9ms. Water cross-section and ranged streaks are procedural study
-presentation, not accepted new arena/effect masters. No sound or production integration claim.
-
-The local motion snapshot records every imported source hash. Nick's broad September16 fix
-instruction following the ownership question authorizes this narrow local anatomy/habitat repair;
-PARALLEL_GIT_PROTOCOL records it. Claude's tree is untouched; other reserved modules stay reserved.
-Frog now uses its actual23-joint record, explicit absent tail/external ears, and smooth-skin
-material. Mandatory missing joints refuse. Authored fish uses aquatic/swim. Frontal bird wings
-convert shared rotations into the recorded source plane; curves and root-only dx/dy unchanged.
-Shared skin solver allows64 orientation corrections instead of24; .12 target, positive-triangle
-refusal and4x4/.35 shape profile unchanged. Asset overrides still refuse. Initial failures retained.
-
-Final Frog05/native-frog-02: exact rest/final rest0,484 sampled poses, separated-mesh control,
-607frames/10.117296s/about60fps, rig p951.6ms. Bird05/native-airbird-03 also exact rest0 and484
-poses,606frames/10.102140s/about60fps, rig p950.5ms. New turnaround is pending visual review;
-outer safe margin fails target, padded front derivative is experimental. Accepted masters intact.
-Bird still needs an opponent-facing flight view and natural wing/leg review. Frog ground contact
-and partly hidden hind leg observation remain unqualified. No universal motion acceptance.
-
-Checks:25 focused app/runtime/painter tests,32 tool tests, game typecheck and root validation
-(1,010 Earth draws,43 profiles, unchanged50-probe fingerprint). Dirty diagnostics, not clean-source
-certification. No main.ts or kit hunk. Signed parent at batch start is1a6dd61d,118 ahead cached
-origin/openai/mac and229 ahead origin/develop. The signed checkpoint failed again with
-`1Password: agent returned an error`; all work is staged, no unsigned fallback. See
-[checkpoint status](audits/HABITAT_BATTLE_20260916/CHECKPOINT_STATUS.md).
-
-Next: obtain Nick's visual review; connect actual encounter/world data to habitat admission and
-CreatureRigV1; qualify facing, flight and contact; complete painter masks/records and variable-count
-radial/myriapod/cephalopod contracts. Universal architecture is shared runtime plus actual anatomy,
-not one quadruped fitted to every body. Qualify each real family and procedural extreme; physical
-phone remains a separate30fps test. Preserve previous Civet/fox/procedural shared-skin evidence,
-8% contact bound, exact rest, source joins and strict<2ms per-creature update requirement.
-
-C3 remains signed b79fd32e:1,669 source entries/1,665 unique originals,1,662 decode,three quarantined;
-1,617 WAV/Opus pairs and203/631 fauna reference identities,428 missing.43 biome recipes/486 routes,
-484 rendered,two intentional silences. References are not species-behavior/listening acceptance.
-Audio review audio-production/REVIEW_PROMPT.md and REVIEW_PACKS.md;23 ZIPs below30MB.
-C1 mechanical intake complete; Nick owns final Wild acceptance. C4 remains twelve assets/sheet.
-Rain E active; second weather pick and smaller-finisher phone decision open. Klein probes stopped.
-C5: prune on openai/mac, then three merge-commit tiers into develop (UI,engine,tools), followed by
-one develop→main release PR/full chain only when separately authorized. No Ready before required
-proof/weather/phone decisions. Audits LFS approved in principle; perform only on Nick's explicit go.
-
-OpenAI/Codex continues locally on openai/mac. No new branches, kit edits, GitHub writes, Actions,
-merges, release, deployment or history rewrite. PR42 parked. Claude need not open/sync now; when
-Nick requests review, provide the consolidated prompt and named evidence, not an automatic merge.
-Reuse the uninterrupted September15–16 toolchain receipt; do not update tools during evidence jobs.
-
-
-## September 16 — handoff before mixed-habitat battle
-
-## SESSION HANDOFF — 2026-09-16 · whole-animal animation
-
-Latest review: [real creatures](audits/FAMILY_REAL_CREATURE_REVIEW_20260916/README.md),
-[combined reviewer prompt](audits/FAMILY_REAL_CREATURE_REVIEW_20260916/REVIEW_PROMPT.md),
-local page `http://127.0.0.1:49816/families/`. Fish has a ten-second native family film with
-exact rest and all four action seam/fold checks passing (606 encoded frames / 10.101435 s;
-~60 fps loop, 1.4 ms whole-frame CPU p95). Bird numerical checks pass but visual FAIL stands:
-folded-wing motion distorts the torso. Grounded bird contact and independent wing topology
-are next consumer work. Frog admission is actually reproduced on the accepted master: hopper
-requires eight nonexistent tail/ear landmarks. Await the narrow motion-owner exception; do
-not create dummy anatomy. Fish realm/accessory-fin coverage and count-aware procedural
-contracts remain open. Forty-five focused tool tests, nineteen runtime/painter tests, game
-typecheck and root validation pass. No newly qualified procedural family or phone result.
-All work is still staged/unsigned after `1a6dd61d`; cached ahead counts remain 118/229.
-No main.ts, Claude-owned or kit hunk; no GitHub action. Claude need not open or sync now.
-
-Verified OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`,
-`openai/mac`, tracking `origin/openai/mac`. Signed checkpoint `1a6dd61d` is 118 ahead
-cached upstream and 229 ahead cached `origin/develop`. This is the uninterrupted toolchain
-session; reuse its startup receipt and do not update tools during active evidence jobs.
-
-Nick's animation direction is recorded in
-[audits/C2_CONTINUOUS_SKIN_20260916/UNIVERSAL_ANIMATION_PLAN.md](audits/C2_CONTINUOUS_SKIN_20260916/UNIVERSAL_ANIMATION_PLAN.md).
-Accepted painted creatures must feel alive and attack with anticipation, weight and recovery.
-The delivery architecture is a shared runtime plus anatomy-specific templates driven by actual
-painter-emitted anatomy/material/part records, covering land, air, water and rooted organisms.
-Qualify each family and its procedural extremes; neither a family registry nor the Civet proof
-establishes universal coverage. Hidden surfaces/turning views require actual source coverage.
-Physical iPhone performance remains a separate qualification at the approved 30 fps budget.
-
-Latest visual follow-up: [focused-impact polish](audits/BATTLE_IMPACT_POLISH_20260916/README.md).
-Nick praised the connected-throat preview and requested refinement. The existing flash envelope
-now produces 10% scene white plus a brief 1.45× brightness on the receiving creature. Pooled
-filters are disabled at neutral exposure. Actual target-only and wrong-actor pixel controls pass;
-all body/throat gates remain green. Turn plans and 12 non-flash stills match the prior version
-byte-for-byte. Three new ~60 fps films are in motion-01, review at http://127.0.0.1:49816/impact/.
-Previous liked version remains at /throat/. The new look awaits visual review; no ordinary-game
-promotion or full C2/universal/phone acceptance. No kit/master/curve/Claude-owned/main.ts changes.
-The procedural coverage requirements remain BATTLE_THROAT_JOIN_20260916/UNIVERSAL_COVERAGE_REVIEW.md.
-Signing remains pending; GitHub step none. Codex can continue local work; Claude need not sync now.
-
-Previous batch: [all-family intake and topology](audits/UNIVERSAL_FAMILIES_20260916/README.md).
-All fourteen closed motion inventories now use the actual hashed-record/Pixi/parts intake.
-Contracts agree with the producer over 910 geometry comparisons; fourteen calibration atlases
-repack identically with zero changed source channels. 137 tool tests, 45 focused tests, both
-TypeScript checks and root validation pass. Calibration stripes are not creature artwork.
-Four real painter observers now preserve actual bird visibility, ten radial arms, all myriapod
-segments/leg pairs, and eight cephalopod arms plus the squid's two feeding tentacles. Dispatcher
-callbacks expose incomplete topology honestly; unknown owners return null. Actual masks and
-resolved animation records remain work. These real inventories exceed existing fixed-count
-motion templates. Nick has been asked for a narrow exception to Claude's motion/ ownership;
-do not edit those paths unless he grants it. Finish current native regression on signed source.
-Prior shared-pose evidence remains audits/UNIVERSAL_ANIMATION_20260916: 4,644 sampled poses and
-byte-identical C2 native images, not new-family painted qualification.
-
-Preceding C2 repair replaces stretched seam bands with continuous source-painted skin, split at
-independent limb surfaces and joined at real proximal body attachments. It preserves source
-masters, atlas bytes, part count, depth, bone curves and contact bounds. A fixed local shape
-solver and compiled sparse weights deform the skin; actual rendered paw contours and original
-source joins are measured independently. The current producer is read-only Claude GSAP adapter
-SHA-256 `6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74`.
-
-Current audit: [README](audits/C2_CONTINUOUS_SKIN_20260916/README.md) and
-[review prompt](audits/C2_CONTINUOUS_SKIN_20260916/REVIEW_PROMPT.md). Prior native diagnostics
-are retained, including a timing failure, painted-paw drift, missed face orientation, and source
-attachment gaps that earlier positive-triangle checks did not detect. Candidate10 closes the
-body joins and fixes the intervening Fox fold through consistent shared-socket influence spaces.
-Native12 passes all three on the actual Kernel05 Wasm normal-pass leaf: 1,201 samples each,
-rest/final-rest zero changed channels, inclusive gate-loop CPU p95 0.60/0.70/0.30 ms. Actual normal
-passes are 4,844/4,840/4,840 for Civet/fox/procedural, with zero robust fallbacks. The consumer
-smoothly releases/reacquires support and preserves one idle phase across both turn roles;
-disposable internal sampling guards remove texture-cut hairlines without changing source bytes
-or rest pixels. Kernel05's 117 Node tests, 15 runtime tests, game typecheck and root validation
-pass, including the unchanged 50-probe deterministic fingerprint. Unprofiled Motion06 delivers all three
-ten-second diagnostic films at 60 fps and update p95 1.6/1.7/0.9 ms, meeting the unchanged strict
-<2 ms gate. Earlier red receipts remain retained. Dirty diagnostic evidence is not clean-source
-qualification or visual acceptance. No further optimization loop is planned.
-
-Review: the latest `audits/UNIVERSAL_ANIMATION_20260916/motion-01/*-10s.webm` films and
-byte-identical native pose images for actual
-painted shape and fluid motion; after the signing refusal is resolved, obtain clean signed-source
-native rest/contact/continuity/CPU gates and exact-source ten-second Civet, fox and procedural
-arena films on unchanged source. Require rest/final-rest zero changed channels, no skin tears or
-spikes, planted paint within one native pixel, unchanged 8% contact compression bound, CPU p95
-under 2 ms, and actual 60 fps capture evidence. The same template/curves must serve all three.
-Do not weaken motion or substitute a labelled portrait fallback as completed articulated C2.
-Nick owns visual acceptance. Ordinary-game rig integration and other family qualification follow
-through the agreed CreatureRigV1 contract; Claude's owned modules remain read-only here.
-
-C3 audio remains at signed `b79fd32e`: 1,669 source entries / 1,665 unique originals, 1,662
-fully decode, three quarantined; 1,617 validated WAV/Opus pairs and 203/631 fauna reference
-identities, with 428 still missing. References are not species-behavior/listening acceptance.
-43 biome recipes have 486 routes (484 rendered, two intentional silences). Consolidated audio
-review: `audio-production/REVIEW_PROMPT.md` and `REVIEW_PACKS.md`; 23 ZIPs below30MB. No new
-ordinary-game audio promotion or phone proof. Preserve all authentic/fictional distinctions.
-
-C1 mechanical intake complete; Nick owns final Wild acceptance. C4 stays twelve assets per
-review sheet. Rain E active; second weather pick and smaller-finisher phone decision open.
-Klein phone probes stopped. C5 pruning precedes three merge-commit tiers into develop (UI,
-painted engine, research tools as tools). No PR Ready before recorded prerequisites; LFS only
-on Nick's explicit go. No new branches, kit edits, GitHub writes, Actions, merges or deployment.
-Budget file says UNFROZEN/public, private fallback3,000; Nick's GitHub-step-none still controls.
-
-Signed checkpoint `1a6dd61d` succeeded after Nick unlocked 1Password and its SSH signature
-verified locally. It is 118 ahead cached origin/openai/mac and 229 ahead cached origin/develop.
-The family, two-combatant facing and neck-repair continuations are staged. The September 16
-neck-repair checkpoint attempt was refused by the configured 1Password helper (agent error),
-after earlier helper/SSH-agent refusals. Signing approval is pending; no unsigned fallback. Clean-source native regression was not run. See the package CHECKPOINT_STATUS.md.
-No main.ts or Claude-owned hunk. Codex continues consumer work while the motion ownership
-exception is pending. Claude need not open or sync now; no GitHub write or PR Ready is requested.
-Use audits/UNIVERSAL_FAMILIES_20260916/REVIEW_PROMPT.md with the preceding C2 review when Nick
-requests review. PR42 parked; develop/main/live site unchanged.
-
-
-## September 16 — connected-throat handoff before impact polish
-
-Latest visual follow-up: [chin/throat attachment repair](audits/BATTLE_THROAT_JOIN_20260916/README.md).
-The old body-preservation check missed a notch between surviving neck paint and the replacement
-head. A lower source-view fit closes it. Seventeen actual-mesh attachment ribbons pass native
-alpha checks at 601 times, with the old visible-notch image as a failing control. All visible
-original joins also pass for Civet, fox, procedural and the Platypus opponent in each pairing.
-The post-capture still reset-order defect is repaired; final review clips/stills are motion-02.
-Review http://127.0.0.1:49816/throat/. The evaluator has synthetic controls for all fourteen
-family vocabularies; actual anatomy/count/view coverage is not yet universal. See the package's
-UNIVERSAL_COVERAGE_REVIEW.md and REVIEW_PROMPT.md. No ordinary-game promotion or visual acceptance;
-no kits, original masters, Claude-owned modules, main.ts or GitHub writes. Signing remains pending.
-
-
-## September 16 — neck-preservation handoff superseded by throat attachment review
-
-Latest visual follow-up: [neck/body repair](audits/BATTLE_NECK_REPAIR_20260916/README.md).
-The head-view replacement no longer hides the original neck/chest. Six native rendered poses
-lose zero protected body pixels; the old behavior loses 9,684–15,783 on the same poses. Source-
-backed ears and jaw now follow shared tracks without mesh folds. Three new ~60 fps films and
-1,803 pose samples are in motion-01; compare Before/After at http://127.0.0.1:49816/neck/.
-Head-view transitions, open-mouth interior, rendered Platypus contact/joins and universal family
-coverage remain distinct work. No ordinary-game promotion or final visual acceptance. No kit,
-master, Claude-owned module or main.ts change. GitHub step none; signing status recorded below.
-
-
-
-## 2026-09-16 — superseded facing preview handoff
-
-Latest visual follow-up: [facing/two-rig study](audits/BATTLE_FACING_20260916/README.md).
-Platypus has a hash-bound 17-part rig; both turn roles use shared motion/contact sampling.
-Civet profile comes from its unchanged turnaround and tracks the opponent. Native04 supplies
-three 60 fps diagnostics and 1,803 pose samples; neck/shoulder fitting remains visibly rough,
-replacement-head ear/jaw articulation and head-view transitions remain work. Do not promote
-this as C2 acceptance. Review clips at http://127.0.0.1:49816/facing/ while the local server runs.
-Next: source-backed neck fit, head subdivisions/transitions and rendered Platypus contact/join
-qualification. No Claude-owned edit, model run, kit edit or main.ts hunk. Signing remains pending.
-
-# Archived handoff — before attributed fauna continuation
-
-## Superseded shared-pose/signing handoff — 2026-09-16
-
-Latest bounded batch: [universal pose foundation](audits/UNIVERSAL_ANIMATION_20260916/README.md).
-The actual rig uses `skeleton-pose.mjs`, taking each owner's graph and body axis; asset admission
-remains quadruped-only. Read-only producer interoperability passes 14 templates / 161 actions /
-4,644 samples (13 synthetic family records). The observer refuses extra-leg records instead
-of overwriting fore/hind joints; ordinary drawing is unchanged. 121 tool tests, 20 focused tests,
-game/package types and root validation pass. New native gates preserve all 30 prior C2 PNG bytes;
-films measure 60.003/60.002/59.903 fps and CPU p95 1.4/1.7/0.9 ms. These remain dirty diagnostics.
-Next code package: actual bird painter geometry/part observation, then family asset admission,
-real reuse controls and ordinary two-combatant integration under the existing ownership contract.
-Do not relabel synthetic motion fixtures as real painter coverage. Physical iPhone remains separate.
-The earlier six review ZIPs are unchanged; this batch supplies a separate review addendum.
-
-
-Codex continues C2 locally; no new commit has been created. Three signed-checkpoint attempts
-were refused by the 1Password agent, including a PTY attempt. Nick has been asked to resolve the
-signing refusal; no visible Git-signing prompt is confirmed. A read-only agent check finds the
-configured public key matches one listed identity, but the refusal's cause remains unresolved
-despite Nick's unlocked report. There is no unsigned fallback. Claude need not open or sync now
-and does not have this uncommitted repair. Use the consolidated C2 review prompt when Nick
-requests review. PR42 parked; develop/main/live site unchanged.
-
-
-## SESSION HANDOFF — 2026-09-15 · attributed fauna continuation
-
-Verified OpenAI/Codex on macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac,
-tracking origin/openai/mac. Batch started at signed 358c1ee7 (116 ahead cached upstream,
-227 ahead cached origin/develop). Current task: continue toward the full painted/procedural game.
-Same uninterrupted startup receipt: REAPER7.80, SurgeXT1.3.4, FFmpeg9.0.1. No tool upgrades during
-asset jobs. 1Password signed the prior checkpoint successfully; no unsigned fallback.
-
-The latest fauna continuation adds 90 source entries: 63 individually CC BY 4.0 iNaturalist,
-23 CC0 OpenGameArt animal recordings and four public-domain US FWS recordings. Nick explicitly
-approved CC BY with attribution; exact per-recording attribution, license URL, source URL and
-modifications survive into the audition catalogue and RECORDING_CREDITS.md. No NC/ND/SA license
-is admitted. Originals are unchanged. Wikimedia returned HTTP429 after four acquisitions;
-that source remains blocked and was not retried. Tortoise has no eligible sound in the bounded
-query and remains missing. No imitation or generic fictional voice fills an authentic row.
-
-There are now 1,669 source entries / 1,665 unique originals; 1,662 fully decode and the same
-three damaged originals remain quarantined. The 83 new REAPER excerpts bring totals to 1,617
-validated WAV/Opus pairs, 1,396 distinct decoded PCM treatments and 44 successful editable
-production projects. Seven lossy ZIP alternates were retained as originals but not rendered as
-extra performances. There are still 102 loop derivatives and 49 instrument stems. $0 spent.
-
-Identified reference coverage is 203 / 631 fauna; 428 remain missing. Broader labels retain the
-actual narrower taxon, age and recording context. References do not establish per-behavior calls
-or listening acceptance. All 1,010 Earth identities retain their existing ordinary-game owner;
-379 non-fauna identities remain fictional sonification. All 43 biome profiles retain explicit
-recipes: 486 audited routes, 484 rendered plans and two airless silences, with zero missing
-components. Current evidence: audits/AUDIO_FAUNA_CONTINUATION_20260915/README.md.
-
-All 83 new excerpts actually rendered in two REAPER projects. Fifteen Python controls, native
-play/stop/attribution/seven-codec checks and root validate pass. DEV audition remains separate
-from ordinary gameplay. No main.ts, Claude-owned modules, kit, runtime pack or accepted asset
-changed. Current consolidated review: audio-production/REVIEW_PROMPT.md and REVIEW_PACKS.md.
-Evidence: audits/AUDIO_FAUNA_CONTINUATION_20260915/{README.md,status.json,native-01/report.json}.
-Originals/projects/masters are ignored local assets, not independently backed up. No listening
-acceptance, physical-phone audio proof or new species behavior coverage is claimed.
-
-C2 still fails whole-motion visual quality despite geometric gates: repair cut/stretch while
-preserving rest, anatomy, bounds and actual painter ownership; then Civet/fox/procedural captures.
-The performance/gaze controller lacks actual view declarations and ordinary-game integration.
-See CREATURE_ANIMATION.md and the audit's DELIVERY_PLAN.md for the ordered remaining work.
-C1 mechanical intake complete; Nick owns final Wild acceptance. C4 stays twelve assets per
-review sheet. Rain E active; second weather pick and smaller-finisher phone decision open.
-Klein phone probes stopped. C5 pruning precedes three merge-commit tiers into develop (UI,
-painted engine, research tools as tools). No PR Ready until recorded prerequisites. LFS only
-on Nick's explicit go. No new branches, GitHub writes, Actions, merge, release or deployment.
-Budget file records UNFROZEN/public with private fallback3,000; Nick's later GitHub-step-none
-controls this session and grants no hosted attempt. No remote fetch was needed for local work.
-
-Codex continues local animation and coverage work. Claude does not need to open/sync now;
-use the consolidated review prompt when Nick requests review. PR42 remains parked.
-
-Review delivery: 23 ZIPs below30MB, with225 focused WAVs, all1,617 candidate Opus files
-and102 loop derivatives. Every archived entry and bundled prompt was hash-verified. See
-audits/AUDIO_FAUNA_CONTINUATION_20260915/review-delivery.json. Local signed checkpoint follows.
-
-## SESSION HANDOFF — 2026-09-15 · fauna and biome audio candidates
-
-OpenAI/Codex: /Users/nick/Projects/celestial-frontier-openai-mac, branch openai/mac.
-Batch start HEAD b95c4dc0; 115 ahead cached origin/openai/mac, 226 ahead cached origin/develop.
-Prior signing attempts failed in the 1Password agent; no unsigned fallback. No GitHub writes,
-Actions, branch or history rewrite. PR42 parked. Same uninterrupted toolchain receipt:
-REAPER 7.80 / Surge XT 1.3.4 / FFmpeg 9.0.1; no asset-job maintenance or purchases.
-
-The fauna/biome continuation acquired 487 additional source entries (206 Rocky Mountain NPS,
-254 individually CC0 iNaturalist recordings and 27 inspected NOAA recordings). There are now
-1,579 source entries / 1,575 unique originals; 1,572 fully decode and three damaged originals
-are retained in quarantine. 359 new REAPER renders comprise 321 identified recording-reference
-excerpts and 38 environment components. Totals: 1,534 validated WAV/Opus pairs, 1,313 unique PCM
-treatments, 42 successful editable production projects, 102 retained loop derivatives and 49
-instrument stems. $0 spent. The two failed fauna project versions are retained separately.
-
-Identified source-reference coverage is 154 / 631 fauna; 477 still lack an eligible reference.
-Broad game names may use explicitly disclosed narrower taxa. This establishes neither exact
-behavior calls nor listening approval. All 1,010 Earth identities retain the existing audio owner;
-379 non-fauna identities remain fictional sonification. No generic voice fills a recording gap.
-All 43 biome profiles now have explicit environment recipes, including gas, ice, cave, volcanic,
-underwater and airless profiles. 486 audited routes resolve 484 rendered recipes and two explicit
-silences, with zero missing components. Exotic environments are designed sound, not field claims.
-
-Evidence: audits/AUDIO_FAUNA_BIOMES_20260915/{README.md,status.json,FAUNA_GAPS.md,
-production-controls.json,preservation.json,native-01/report.json}; audio-production/reports/
-functional-coverage-ecology.json. Eight Python controls, 13 focused TS tests, types and root
-validate pass. Prior wider suite: 377 files/4372 passes/one skip, retained in AUDIO_GAME_COVERAGE.
-Native local playback/stop/negative-control, gas-world recipe and WAV/Opus checks pass. Not phone,
-listening or release admission. Three red source-decode results and two failed render versions
-are retained with diagnosis. No assertion/budget or accepted original was weakened/overwritten.
-
-Runtime review remains DEV-only ?audioReview=1, existing audio owner, lazy bounded PCM mixing.
-Body adapter uses actual Civet/fox/procedural record materials (fur/fur/translucent); kingdom,
-acoustic size and propagation medium still require explicit context. Recording previews do not
-promote Earth behavior cues. Current biome mapping fixes the generic gas-world foliage fallback.
-Supplied manifest/kits/Claude-owned modules/player releases/packs unchanged. main.ts hunk from the
-previous audio batch is DEV-only review mount and pagehide cleanup; announce in commit message.
-
-Review prompt: audio-production/REVIEW_PROMPT.md; current ZIP directory ecology-20260915 and
-review-packs/INDEX.md, each ZIP under 30 MB. Prior review packages preserved. Local originals,
-projects/media and audio masters remain ignored and are not independently backed up by Git.
-No listening acceptance or ordinary-game promotion. CC BY expansion was asked but has no answer;
-continue CC0/public domain only until Nick answers. Remaining work: source gaps, context/behavior
-editing, listening decisions, physical iPhone/Safari/PWA/offline proof, then explicit promotion.
-
-C2 remains visually unaccepted: geometric seams/rest pass but motion shows hard cuts/stretch.
-C1 mechanical intake complete, Nick owns Wild image acceptance. C4 remains twelve painted assets
-per eye-review gate. Rain E active; second weather pick and smaller-finisher phone decision open.
-C5 pruning on openai/mac follows prerequisites, then three merge-commit tiers into develop
-(UI, painted engine, research tools as tools) and a later release PR. LFS only on explicit go.
-No PR Ready, push/label/dispatch/merge/release/deploy authorization.
-
-Codex continues the recorded open work without repeating acquisition or overwriting originals.
-Claude does not need to open/sync now; use the one review prompt/ZIP index when Nick requests it.
-
-Review delivery verified: 17 ZIPs, largest 27.94 MB, 2,014 archive entries hash-checked;
-142 focused WAVs and the full candidate/loop Opus set. See audio-production/REVIEW_PACKS.md.
-Final root validation matches the 50-probe baseline and renders all 1,010 Earth species.
-
-Final checkpoint attempt: signed Git commit failed with 1Password agent error (exit128);
-HEAD remains b95c4dc0, 115 ahead cached origin/openai/mac, 226 ahead cached origin/develop.
-All completed work is staged; pre-existing .DS_Store excluded. No unsigned fallback.
-Receipt: audits/AUDIO_FAUNA_BIOMES_20260915/checkpoint.json.
-
-
-# Archived handoff — audio candidate batch before coverage continuation
-
-## SESSION HANDOFF — 2026-09-15 · full audio recipe coverage for review
-
-Verified OpenAI/Codex on macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac.
-Cached upstream origin/openai/mac; source head at batch start b95c4dc0,115 ahead upstream,
-226 ahead cached origin/develop. Work remains local pending signed commit. Last signer failure:
-1Password agent returned error despite matching available/configured keys; cause unconfirmed.
-No unsigned fallback, branch, GitHub write, Actions run or history rewrite. PR42 parked.
-Same uninterrupted toolchain receipt: REAPER7.80/SurgeXT1.3.4; $0 additions.
-
-The September15 coverage continuation produced385 additional candidates:378 phase/material/
-environment/event/life treatments and seven original music arrangements. The local library now
-has1,175 validated WAV/Opus pairs,961 distinct PCM treatments,35 editable production projects,
-102 retained loop derivatives and49 separately rendered instrument stems (28 new four-part score
-stems plus21 earlier). All49 stems also passed full decode/hash/true-peak checks. Original source
-bytes and accepted game assets remain unchanged; additional spending$0.
-
-Functional coverage is now tracked separately from authentic recordings. The new compiler and
-layered player resolve486 audited scenarios:484 to actual rendered components and2 to explicit
-airless silence, with zero missing component routes in that matrix. It includes43 biomes,
-registered weather plus rain/snow/dust/storm, all11 ability themes with cast/impact/sustain/release/
-shield/heal/tick,18 combat cue families,16 audio families,13 material classes,10 surfaces and27
-locomotion mappings. Seven music states and49 transition schedules are described. These are
-unapproved review recipes, not a claim of complete artistic quality or ordinary-game promotion.
-
-All1,010 canonical Earth identities retain the existing procedural audio owner. The631 fauna
-have13 exact common-name recording candidates and618 authentic-source gaps. The379 non-fauna
-identities use explicitly fictional botanical/colony sonification, not animal-recording claims.
-The old1205-row source-assignment ledger remains separate; its1030 unassigned rows are not an
-aggregate functional completeness metric. No generic treatment is relabelled as a species recording.
-
-Resolved sound plans use the painter record's family and material. The hash-bound adapter was
-exercised on the real Civet, candidate-01 fox and native-painter-parts-03 procedural records;
-materials are furred/furred/translucent, with corrupt-record refusal. Existing records lack
-kingdom, acoustic size and propagation medium. These remain explicit caller context; the proof's
-medium/size values are diagnostic declarations, not inferred biological measurements. Named Earth
-voice requests stay exact species/behavior requirements and refuse unrelated family substitutions.
-
-The in-game DEV-only Sound review now auditions layered contact, environment, ability and music
-plans. Independent component selection, bounded sequential loading, source-preserving loop blends,
-linear rate conversion and complementary musical fades create one bounded PCM preview through
-the existing audio owner. Missing components refuse playback. Maximum24s stereo output9.216MB;
-no full-library cache, new AudioContext, third-party playback URL or player-pack change.
-
-Evidence: audits/AUDIO_GAME_COVERAGE_20260915/README.md/status.json/checks/native-03;
-audio-production/reports/functional-coverage-final.json, stem-validation.json and status.json.
-Final unit suite377 files/4372 passes/one existing skip; typecheck, root validate/smoke PASS.
-Native03 is local dirty-source diagnosis, not release admission or phone/listening approval.
-First failed checks are preserved and diagnosed; no test/budget relaxed. Player release bulletin
-is byte-identical to HEAD because this development-only tool is not a shipped player feature.
-main.ts hunk retained from prior batch: DEV-only review startup and pagehide cleanup. Announce
-it in the commit message. Claude's motion/effects/battle2/soundkit/worldlife paths remain read-only.
-
-Review: audio-production/REVIEW_PROMPT.md; ZIPs in audio-production/review-packs/coverage-20260915,
-each below30 MB. Local Vite audition http://127.0.0.1:5178/?audioReview=1 (session94896).
-See audits/AUDIO_GAME_COVERAGE_20260915/FINISH_LINE_PLAN.md for the next bounded steps.
-No automatic sound acceptance or promotion. Authentic animal/source context and subjective
-quality remain human gates; no physical phone/Safari/offline audio proof this batch.
-
-C2 still visually unaccepted despite geometric seams/rest gates: full motion shows cuts/stretch.
-The new sound adapter does not change that. C1 mechanical intake is done; Nick owns final Wild
-acceptance. C4 painted sheets remain12 at a time, with an eye-review stop. Weather E remains
-active; second weather pick and smaller-finisher phone decision remain. C5 starts with pruning
-on openai/mac after prerequisites, then three merge-commit tiers into develop (UI, painted engine,
-research tools as tools), then the future release PR. LFS only on Nick's explicit go.
-
-Codex continues from the recorded gaps without repeating acquisition or overwriting originals.
-Claude need not open/sync its app now; when Nick requests review, use the one prompt and ZIP index.
-No PR Ready, push, label, dispatch, merge, release or deployment is authorized.
-
-
-Final local checkpoint: the new signed commit attempt failed again with 1Password agent error;
-no commit object was written. HEAD remains b95c4dc0,115 ahead cached upstream and226 ahead cached
-develop. Everything completed is staged; .DS_Store is pre-existing and excluded. USB inventory
-listed no iPhone and devicectl is not installed; no physical-device proof is claimed.
-Review delivery is eight ZIPs (largest27.94 MB), indexed at audio-production/review-packs/INDEX.md.
-The one prompt and FINISH_LINE_PLAN.md describe exactly what is completed and what remains.
-
-
-## SESSION HANDOFF — 2026-09-15 · audio candidates and review
-
-OpenAI/Codex, macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac,
-tracking origin/openai/mac. Latest signed head remains b95c4dc0: 115 ahead upstream,
-226 ahead cached origin/develop, zero behind. Work is staged/pending signing. The configured
-public key matches the key 1Password lists, but op-ssh-sign still returns agent error. No
-unsigned fallback, signer change, GitHub write or new branch. PR42 parked; LFS only on Nick's go.
-
-The supplied Celestial-Frontier-Free-Audio-Handoff.zip has been extracted verbatim into
-celestial-frontier-audio-handoff/. SHA receipt: audits/AUDIO_PRODUCTION_20260915/supplied-handoff.json.
-The former missing-input question is resolved. Nick authorized its free sources and installed
-REAPER/Surge/stock-effects workflow with $0 additional spend, beyond a first proof. Kit bytes
-are unchanged. Do not reinstate the old original/commissioned-only execution gate.
-
-Current audio evidence: audio-production/README.md, AUDIO-COVERAGE.md, AUDIO-CREDITS.md,
-manifests/audio-coverage.json and audio-lock.json, reports/status.json, plus
- audits/AUDIO_PRODUCTION_20260915/EXECUTION.md and status-execution.json.
-All 13 approved pack/music downloads are present. The two NPS collections contributed158
-recordings; two human/vehicle subjects are excluded from production. 1,092 source audio entries,
-1,089 unique hashes, all fully decoded without error. Three NPS pages have no exposed audio;
-two archive housekeeping files were not extracted. Originals, credits and license pages retained.
-
-The installed REAPER7.80/SurgeXT1.3.4 produced790 candidate WAV/Opus pairs in19 source-based
-projects,635 distinct decoded PCM treatments,102 corrected deterministic loop copies, and21
-real instrument stems for seven original music sketches. Source media are relative in editable
-RPPs; actual synth states/MIDI/regions are saved. Masters48kHz/24-bit; review WAVs16-bit; no
-accepted asset replaced. Source archives, project media, masters and ZIPs are local/ignored,
-several GB, not independently backed up by this batch or included in a player pack.
-
-The normal game's explicit DEV-only ?audioReview=1 mount uses its existing finite audio owner.
-Source/recipe/credits, search, native Play, Stop and Close are present; hashes/sizes and aborts
-are enforced. Native local diagnosis04 passes real active-voice Stop with a false-green status
-control,390px containment, WAV/Opus frame parity for voice/ambience/music and corrupt-codec
-rejection. It is dirty-worktree development evidence, not admission, phone or listening proof.
-main.ts hunk: DEV-only review startup and pagehide cleanup. Claude-owned paths remain untouched.
-
-Tools: port/v2/tools/audio-production/LOCAL_RUN.md. acquire.py fetch/verify;
-produce.py prepare/render; produce.lua; report.py (use installed Python3.12); loops.mjs;
-music-stems.py; review-probe.mjs. No automatic rerender over an existing output directory.
-First loop failure is retained; fixes cover exact extensible-PCM admission, odd mono RIFF padding
-and Ogg demuxing. The Vite/PWA assertion now includes the audio plugin and proves it absent from
-the actual build graph, with a deliberately build-enabled plugin as the failing control.
-
-Listening/review: audio-production/REVIEW_PROMPT.md. Zero sound approvals/promotions.13 exact
-common-name source matches are separate from generic fictional voices; Civet authenticity is
-still missing. Most named fauna have no authentic recording here. Duplicate phase treatments,
-storm's two distinct takes, morphology/material routing, composed biome beds, contextual event
-promotion and final score/loop listening remain open. Do not call generic candidates complete
-coverage. The first review comparison includes fictional Civet/fox/procedural plus authentic
-Red Fox, bird, aquatic and invertebrate examples. iPhone/Safari/PWA and offline audio are untested.
-No additional delivery engineering or silent replacement of approved sounds is authorized.
-
-C2 remains visually unaccepted:61512b3a closes87 contacts/64 junctions and rest parity, but
-full poses still show cuts/stretch. Whole-action/aim modules and actual-producer controls are
-in C_PACKAGE_COMPLETION_20260915; gaze/view declarations, continuous skin and ten-second captures
-remain. C1 mechanical intake complete; final Wild acceptance is Nick's. C4 sheets twelve at a
-time. Weather E active; second ladder awaits pick. Klein phone probing stopped; up to three
-smaller licensed finishers on Mac before one phone attempt. C5 follows C2/weather/phone decisions,
-pruning first, three merge-commit tiers into develop, research tools as tools; no hosted write.
-
-Codex continues locally from this evidence and the concrete audio review gaps; Claude needs no
-app switch or synchronization now. Reuse this uninterrupted session's startup receipt. Do not
-copy files into Claude's tree or edit motion/, effects/, battle2/, soundkit/, worldlife/.
-
-
-Review delivery: five ZIPs under audio-production/review-packs/20260915, each below30 MB
-(1.45 MB code/evidence,5.51 MB focused listening,27.32/27.94/16.21 MB complete Opus parts).
-The prompt is audio-production/REVIEW_PROMPT.md; reports/review-packs.json binds ZIP hashes.
-Local Vite audition left running at http://127.0.0.1:5178/?audioReview=1 (terminal session94896).
-Enable Master Sound, then Sound review. No automatic playback or promotion. Full suite374
-files/4361 passes/one skip; final focused39 and native04 pass. Work staged, no new signed commit;
-HEAD b95c4dc0 remains115 ahead upstream and226 ahead cached develop. No app switch for Claude
-or GitHub action is needed now. Next user gate is listening/direction review; incomplete coverage
-and C2's visual failure remain explicitly open.
-
-
-## SESSION HANDOFF — 2026-09-15 · audio-production handoff location needed
-
-OpenAI/Codex, macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac.
-Latest signed head b95c4dc0: 115 ahead upstream, 226 ahead cached origin/develop, zero behind.
-The tested whole-action/aim and C3 export batch remains staged after op-ssh-sign failed.
-Do not bypass signing or retry without a ready agent. PR42 parked; GitHub step none.
-
-Nick now requests implementation of celestial-frontier-audio-handoff/CELESTIAL-FRONTIER-AUDIO-HANDOFF.md
-using audio-sources.json in that folder. $0 additional spend; use installed REAPER/Surge/stock
-REAPER effects, approved free packs and public-domain recordings, preserve originals/rights,
-cover the actual game, build editable projects/synth states/Lua scripts/renders/event mappings
-and an in-game audition screen. Continue beyond the first proof. Authentic animal recordings,
-fictional voices and approximations stay separate; placeholders are not species coverage.
-This direct request authorizes its approved sources without the earlier generic rights proposal
-as an execution gate. Kit bytes remain unchanged; don't infer approval of a wording edit.
-
-BLOCKER: the required folder/Markdown/manifest were not found in this worktree, checked Downloads
-or Claude audit/scratch locations. Nick has an outstanding question for its absolute path.
-Read and preserve those files first when located; do not invent their approved download list
-or schema. No pack/wildlife download has been attempted without that manifest.
-
-Unblocked work completed: actual game/audio source inventory (631 Earth fauna; 43 biomes;
-29 weather values; all eleven themes; traits, painter plans and event vocabularies), plus
-actual local REAPER/Surge host qualification. Current evidence:
-audits/AUDIO_PRODUCTION_20260915/README.md, game-inventory-v2.json, status.json and
-reaper-qualification-03/qualification.json. The inventory is not a recording assignment ledger.
-
-New tools in port/v2/tools/audio-production: inventory.mjs, qualify-reaper.lua, qualify-host.mjs
-and LOCAL_RUN.md. The actual installed REAPER 7.80/Surge XT 1.3.4 with stock ReaEQ/ReaComp
-saved editable RPP/MIDI/full synth state/parameters and rendered twice after reopen. Both
-three-second stereo 48 kHz/24-bit WAVs have identical decoded PCM, -33.45 dBTP, zero changed
-samples and a rejected changed-PCM control. All three stages exit zero. The first saved-copy
-exit failure and later random-phase replay difference are retained. Retrigger/zero-drift
-controls correct the latter for this state only. Container metadata can differ. These are
-technical diagnostics, not game voices/music or listening-approved assets. The Mac UI was
-locked, but command-line generation/rendering succeeded; no security/permission changes.
-
-Still pending for this audio request: manifest-approved downloads and license preservation,
-actual authentic/fictional source sets, production job compiler, species/family/theme/biome/
-weather/music coverage, game-event assignments, full audition screen and listening review.
-Existing pilot sample intake accepts 16-bit WAV with 24-second bounds; don't silently feed
-production 24-bit/Opus into it. Reuse the accessible finite-voice owner and preference/route/
-counterpart cleanup. No new gameplay or accepted asset was changed. Root validate/fingerprint
-passes; new CLI tools checked and executed natively. No full browser chain ran.
-
-C2 remains visually unaccepted: 87 contacts/64 junctions and rest parity pass at 61512b3a,
-but full shape still shows cuts/stretch. Whole-action/aim modules and actual-producer controls
-are tested in C_PACKAGE_COMPLETION_20260915; actual gaze/view declarations, continuous skin
-and ten-second captures remain. User's whole-body procedural/named animal goal is unchanged.
-C1 mechanical intake complete; Nick owns final Wild acceptance. C4 library remains twelve per
-sheet with real painter-family coverage. Weather E active; second ladder awaits pick. Klein
-phone probing stopped; up to three smaller licensed finishers on Mac before one phone attempt,
-no delivery engineering first. C5 pruning/three merge-commit tiers/release follow C2/weather/
-phone decisions with exact hosted authorization; LFS only on Nick's go. No new branches.
-
-Claude-owned motion/effects/battle2/soundkit/worldlife and tests remain read-only; no main.ts
-hunks. Reuse the current toolchain receipt; no new software installed for this request. Codex
-continues locally once the handoff is available; Claude needs no action or app switch now.
-
----
-
-## Archived September 15 — before supplied audio handoff preparation
-
-## SESSION HANDOFF — 2026-09-15 · whole-body action and sound source preparation
-
-OpenAI/Codex on macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac.
-The previous staged cross-package changes are now signed b95c4dc0 (115 ahead upstream,
-226 ahead cached origin/develop at that commit). 1Password signing succeeded; earlier
-Secure Enclave failures are historical. No GitHub step; PR42 parked.
-
-Nick's target is a full fluid creature: look forward/back/up/down and act out attacks
-through its whole body, including every generated land/air/aquatic/rooted form. The
-painted pose is the rest reference. Do not declare seam coverage, moved portraits or
-fourteen template names as that result. C2 is still visually unaccepted.
-
-Current batch: complete-frame action playback samples transitions at explicit command
-time and preserves all record-named appendages/root-only displacement. Nine actual
-Civet/fox/procedural idle/melee/hit comparisons match the pinned read-only GSAP producer.
-The new in-view aim solver requires actual painter/authored gaze geometry and ancestry;
-requests another view or body turn when unavailable. No actual view declarations,
-alternate-view rigs, ordinary-game consumer or new native captures are complete.
-The 61512b3a native skin result still has 87 pair/64 junction gates at five poses and
-zero rest changes, but full images show cut edges/overlap/stretch. Preserve the 8% contact,
-2048 atlas and 40 drawable bounds; next qualify continuous skin and full real poses.
-
-C3: voice and ability/battle/bed set export plus declared loop rendering are implemented.
-Source and Opus peaks/frames/budgets are verified; original bytes retained. Weather
-export has no agreed technical profile. Nick has no original/commissioned recordings;
-SOUND_SOURCE_PROPOSAL.md in the current audit contains one exact section 1 rights change
-for verified CC0/public-domain recordings and three source candidates. Await Nick's
-approval before kit adoption/source use. No actual sound acquired or accepted yet.
-
-Checks: 52 Node tool tests, 373 Vitest files / 4357 pass plus one skipped, typecheck and
-root validation/50-probe fingerprint pass. Retained instrument/negative failures explain
-GSAP quantization, corrected eye pivot, bounds refusal, bed byte-budget and ffprobe EPIPE.
-No integrated browser chain, new image, inference or sound production in this batch.
-
-One consolidated review and the complete C1–C5 remaining plan are in
-[audits/C_PACKAGE_COMPLETION_20260915/README.md](audits/C_PACKAGE_COMPLETION_20260915/README.md),
-UPDATED_PLAN.md and REVIEW_PROMPT.md. C1 intake is mechanically complete; Nick owns final
-Wild acceptance. C4 remains after the proof, twelve images per review and actual painter
-adapters in approved order. No visual acceptance is inferred from intake tooling.
-
-Weather E is active; the second deterministic ladder awaits Nick's pick. Klein phone
-probing stopped. Up to three redistributable smaller finishers must qualify on Mac before
-one phone attempt; no delivery engineering before that result. C5 pruning/promotion follows
-C2/weather/phone decisions: three merge-commit tiers into develop (production UI, painted
-landfall engine, research tools as tools), then one authorized develop→main release/full
-chain. No new branches, Ready PR, Actions, push, merge, release or history rewrite now;
-audits LFS migration only on Nick's go.
-
-Claude-owned motion/, effects/, battle2/, soundkit/, worldlife/ and tests stay read-only.
-No main.ts hunks or kit edits in this batch. September 15 toolchain startup complete:
-REAPER 7.80 and Homebrew 7.0.1, capabilities verified; runtime/test pins unchanged.
-Native browser commands require escalation and clean signed source. Codex continues
-local work; Claude needs no action or app switch until Nick elects the consolidated review.
-
-Latest commit attempt for the September 15 code/packet failed in op-ssh-sign with
-“1Password: agent returned an error”; root cause not established. HEAD remains b95c4dc0,
-115 ahead upstream / 226 ahead cached develop, zero behind. Tested changes and docs are
-staged. Nick has pending wording and signing questions; no unsigned bypass. The receipt
-is C_PACKAGE_COMPLETION_20260915/signing-attempt.json. Retry the configured signed commit
-when Nick confirms signing approval; do not redo unchanged tests or native graphics.
-
-## Archived September 15 — before whole-action and audio-export continuation
-
-## SESSION HANDOFF — 2026-09-14 · cross-package coding and consolidated review
-
-Codex works locally on openai/mac. Nick authorizes continued C2 and other C-package coding
-without waiting for Claude. Current signed C2 source is 61512b3a: 114 ahead upstream and
-225 ahead cached origin/develop at its commit. Signing succeeded for C2 through the configured
-1Password agent. The later intake/evidence commit failed at 20:06 UTC: Secure Enclave/system biometric
-authentication failed before key retrieval. All verified changes remain staged. Nick was asked to
-unlock with the account password inside 1Password; no credentials or security changes are requested.
-
-Matches code as of 2026-09-14. C2 source **61512b3a** passes the independently enumerated
-87 pair contacts and 64 three/four-owner junctions at all five native poses. All three masters
-retain zero changed rest channels; CPU update p95 is 0.80/0.90/0.40 ms (Civet/fox/procedural).
-This is coverage and update-time evidence, not whole-motion acceptance. Full posed images still
-show hard cut/overlap edges and stretched paint. No new ten-second articulated capture is qualified.
-See [current evidence](audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03/report.json) and
-[combined review](audits/CROSS_PACKAGE_PROGRESS_20260914/README.md).
-
-C2 next: correct visible ownership/texture transitions with actual anatomy and shared curves,
-then qualify full poses and the ten-second Civet/fox/procedural captures. Do not use zero gap
-counts as a shape waiver. Candidate07 binds original descendant texels at multi-owner junctions;
-rest sockets have zero area. Retain failed candidates, 8% contact limit, atlas/40-drawable budgets,
-masters and named anatomy. The corrected read-only producer SHA is
-6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74.
-The PoseTarget frame adapter is implemented; Claude-owned battle2 adoption is pending.
-FAMILY_COVERAGE.md in the C2 audit records all fourteen template coverage gaps; three quadruped
-records do not qualify the universe.
-
-C3: voice intake and deterministic offline Opus export are implemented. New closed ability/battle
-and first temperate/rain source-set intake checks rights declarations, dry PCM masters and hash-bound
-loop sample ranges. No actual source recordings, legal/listening acceptance, derived voices or
-battle audio integration are complete. Fur-source naming is not invented where the contract is silent.
-C4: one-to-twelve master batch intake and seeded three-plate arena intake are implemented. The
-existing accepted Earth arena passes (1672x941, ground 0.78). No new art or changed acceptance.
-The new tools do not prove that keyed copies came from a particular keyer; visual/lineage review remains.
-
-Checks: 50 Node tool tests, 371 Vitest files / 4351 tests passed (one skipped), typecheck and
-root validation including the 50-probe fingerprint pass. See CROSS_PACKAGE_PROGRESS_20260914
-for checks, current package status and the single REVIEW_PROMPT.md for a later Claude review.
-Earlier batches fixed normal PNG hashing, source/export guards and C5 admission defects;
-those receipts remain in C_SYSTEMS_CONTINUATION and C_LANE_BATCH_REVIEW/REPAIRS audits.
-
-Weather E remains active; the existing second weather ladder awaits Nick's pick. Klein phone
-probing is stopped. At most three redistributable smaller finishers must first qualify on Mac,
-then one phone attempt; no delivery work beforehand. C3 first new sounds and C4 twelve-image
-sheets still stop for Nick's review. C1 mechanical intake is complete; final image acceptance is Nick's.
-
-No kit edits, new paintings, inference, recordings or main.ts changes in this batch. No new branch,
-GitHub write, PR Ready, push, release or history rewrite. PR42 remains parked. C5 follows the
-C2/weather/phone prerequisites: prune openai/mac, three merge-commit tiers into develop (production
-UI; painted landfall engine; research tools as tools), then one develop-to-main release/full chain
-with exact authorization. LFS migration only on Nick's go. Claude-owned motion/, effects/, battle2/,
-soundkit/, worldlife/ and their tests remain read-only. Reuse the uninterrupted toolchain receipt;
-native browser work requires escalation and clean signed source. Codex continues local work;
-Claude needs no action or app switch until Nick chooses to request the consolidated review.
-
-## Archived September 14 — before cross-package intake completion
-
-## SESSION HANDOFF — 2026-09-14 · C2 junction closure qualification
-
-Codex on macOS, openai/mac, celestial-frontier-openai-mac. Nick authorizes continuing C2 fixes
-without Claude. Universal whole-body procedural/Earth animation is the target; actual gaps
-are in audits/C2_DEFORMING_SEAMS_20260914/FAMILY_COVERAGE.md. No generic scope question is pending; signing is awaiting the account-password
-unlock described below. Preserve masters, anatomy,8%contact bound and real Motion Kit curves.
-Claude-owned motion/effects/battle2/soundkit/worldlife and tests remain read-only. Reuse the
-uninterrupted toolchain receipt; native browser commands require escalation/clean signed source.
-
-## September 14 — three-part junction repair, candidate07
-
-1Password signing succeeded: e852a1c0,113ahead upstream/224ahead cached develop. Native-hinges-02
-on that exact source passes all87contact pairs, rest0channels, updatep95 .80/.90/.40ms. Full
-shapes remain unaccepted. Pair coverage cannot close a hole between three different posed
-copies of the same original ownership vertex. The independently retained-frame diagnostic
-(junction-diagnostic/) finds Civet strike839 and fox strike1326 uncovered native pixels at
-such points; all rest counts0. This is a new measured blind spot, not a waiver of old failures.
-
-Candidate07 adds64point sockets (18Civet/25fox/21procedural) to existing Mesh drawables. Each
-requires three/four touching source owners with a common painted ancestor present. The vertices
-follow their unchanged part transforms; the closure uses a touching descendant's original atlas
-texel. Pure sibling crossings and edges along separate limbs remain unstitched. No new ink,
-atlas, drawable, mask, record, clip, bound, kit, main.ts or Claude-owned path change. Rest is
-zero-area. The native gate independently rebuilds the junction inventory from atlas ownership
-and checks full-frame alpha, alongside all87pair gates and preserved ear controls. Forty-six
-tool tests,7runtime tests,typecheck/rootvalidate PASS; candidate-07/checks.json records these.
-Next: sign, native-hinges-03, inspect whole shapes;10second motion only when shape holds.
-
-Native command: node port/v2/tools/quadruped-proof/parts-motion-runner.mjs
- audits/C2_DEFORMING_SEAMS_20260914/native-hinges-03
- /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src --hinge-gates
-GSAP producer SHA6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74.
-If all gates and full shapes hold, --hinge-parts requires this unchanged-source gate report.
-Candidate03/04 remain rejected for folded visible skin triangles. PoseTarget frame collection
-is implemented/tested; its battle2 adoption remains pending. No all-family/C2 completion claim.
-
-Future review: audits/C_SYSTEMS_CONTINUATION_20260914/REVIEW_PROMPT.md plus this C2 audit.
-C3/C4 intake tooling is implemented, actual sound rights/recordings/threevoices and12-image
-sheets remain open. Weather new-lever ladder awaits Nick;E stays active. Phone smaller-finisher
-Mac qualification then1phone attempt remain; no Klein or delivery work before that result.
-C5 only after prerequisites: prune openai/mac,3merge-commit tiers intodevelop including tools,
-then1develop→main release/fullchain under exact authorization. No new branch, GitHub write,
-PRReady, release or history rewrite now; PR42 parked. LFS only on Nick's go.
-Codex continues local C2; Claude no action/app switch needed yet.
-
-## Candidate07 handoff update — signing authentication failure
-
-Candidate07 remains staged, not natively qualified. Final checks:46Node tool tests,7focused
-runtime tests,typecheck and root validate PASS. All64junction sources independently verify as
-fully opaque original atlas texels; the procedural source was corrected before commit to avoid
-one160-alpha pixel (opaque-source-revision.json). Same geometry/curves/masters/atlas budget.
-
-The two commit attempts at16:32:08/16:32:21UTC failed. Relevant local1Password events identify
-Secure Enclave/system biometric authentication failure before key retrieval, not merely a
-missing socket or an unanswered Git question. See signing-authentication.json for sanitized
-facts. Nick has been asked to unlock with his account password inside1Password; no passwords
-are requested in chat and no security settings/signing helper have changed. Do not retry native
-qualification until the configured signed commit succeeds. HEAD e852a1c0:113ahead/0behind
-upstream,224ahead/0behind cacheddevelop. No GitHub writes; Claude needs no action/app switch.
-
-Pair-only native-hinges-02 PASS is not C2 acceptance. The64point-socket repair addresses a
-measured additional defect, but full poses and10second motion still require native review.
-
-## Archived September 14 — before junction repair
-
-## SESSION HANDOFF — 2026-09-14 · C2 ancestral contacts, signature pending
-
-Codex works on openai/mac in celestial-frontier-openai-mac. Nick authorized continued
-repairs without Claude; he wants fluid full-body animation for all generated and Earth
-life in seeded biome arenas. Keep the explicit no-GitHub/no-kit/no-new-painting boundaries.
-Reuse the uninterrupted session's toolchain receipt. Read PARALLEL_GIT_PROTOCOL before edits.
-Claude-owned motion/effects/battle2/soundkit/worldlife and their tests remain read-only.
-
-## C2 current state — matches code as of 2026-09-14
-
-The current candidate06 repairs all recorded ancestral contacts using original descendant
-texture and zero-area resting hinges; unowned pelvis/root ink resolves to the torso.
-Civet has29contacts/5070edges, fox32/5920, procedural26/1924, in the unchanged38/38/35drawables.
-Separate sibling contacts remain independent. Candidate05 on signed9d2dff26 removed duplicate
-ear ink but still shows angular openings: native-hinges-01 has rest0 and62listed cuts PASS,
-p95 .60/.60/.30ms, but is visually unaccepted. The old gate missed entire omitted pairs.
-The new independent ownership inventory requires all87contacts before native sampling;
-all three candidate05 bindings fail that negative control. Candidate06 passes43tool tests,
-7focused runtime tests, typecheck and root validate. Native render/capture is pending signing.
-
-Signed checkpoints this retry:345061d1 and9d2dff26. Current HEAD9d2dff26 is112ahead/0behind
-origin/openai/mac and223ahead/0behind cachedorigin/develop. Two subsequent1Password signing
-requests failed, including a PTY retry; public-key enumeration succeeds. The checked repair
-is staged. Unlocked vault is not proof of a successful signing authorization; do not bypass
-the configured signer or the clean-source native guard. No new10second capture has run.
-The continuous-field candidates03/04 remain rejected for visible triangle foldovers.
-
-Next after signing: runner --hinge-gates to a new native-hinges-02 directory, inspect complete
-poses as well as87cut results, then --hinge-parts with the unchanged-source gate report only
-if shapes hold. Same accepted masters/arena/E, Motion Kit curves and8% contact bound.
-No main.ts hunk, kit edit, painting/inference, 3D, GitHub write or history rewrite.
-Universal family coverage and actual omissions remain in FAMILY_COVERAGE.md. C2 is open.
-
-The full repair evidence is audits/C2_DEFORMING_SEAMS_20260914/README.md, candidate-06/checks.json
-and checks/hinge6-*.log.gz. Run native parts-motion-runner.mjs with the read-only producer
-/Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/apps/game/src; GSAP adapter SHA
-6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74. Browser commands require
-escalation; no lock inside unit workers. Verify signature, do not bypass a failed gate.
-The PoseTarget frame collector is implemented/tested; live battle2 adoption remains pending.
-
-Single future review prompt: audits/C_SYSTEMS_CONTINUATION_20260914/REVIEW_PROMPT.md.
-C3 source/Opus intake and C4 ordered master intake are implemented; actual rights/recordings,
-three voices and remaining12-image sheets are open. Weather S/V/P/SV/SP/SVP awaits Nick;
-E remains active. Phone: up to3redistributable ~1GB candidates onMac, then1phone attempt;
-no more Klein probing or premature delivery engineering. C2/C3/C4/C5 are not complete.
-
-C5 follows prerequisites: prune onopenai/mac; three merge-commit tiers intodevelop (productionUI,
-paintedengine, researchtools as tools), then one develop→main release/fullchain only with exact
-authorization. PR42 parked; no PRReady before Civet/weather/phone decisions. LFS requires Nick's go.
-Codex continues local C2 qualification after signing. Claude: no action or app switch needed now.
-
-
-## Archived September 14 — before candidate06 qualification
-
-## SESSION HANDOFF — 2026-09-14 · C2 cuts pass; whole-shape repair remains
-
-Codex: openai/mac in celestial-frontier-openai-mac. Signed HEAD71e96f97,110ahead/0behind
-origin/openai/mac and221ahead/0behind cachedorigin/develop. Earlier signed checkpoints:
-e649a2e2 strips, ffe0d344 raster crack repair,71e96f97 transparent diagnostic margins.
-No GitHub writes, new branch, main.ts hunk, kit edit, painting/model run or history rewrite.
-PR42 parked. Claude-owned motion/effects/battle2/soundkit/worldlife remain read-only.
-Reuse this uninterrupted session's toolchain receipt; no new tool install in this batch.
-
-Nick authorized repairs across all parts, continuing without Claude review. Target: fluid,
-professional whole-body biome-arena battle animation for all generated and Earth life,
-including limbs/wings/fins/tails/stems, land/air/water. No generic fourth-mechanism scope
-question is pending. Preserve anatomy, original ink/atlas ceilings, seeds, Motion Kit curves
-and8% contact bound. Actual family support gaps: C2_DEFORMING_SEAMS_20260914/FAMILY_COVERAGE.md.
-
-Native gates03 on71e96f97: all62true cuts pass (21Civet/21fox/20procedural), rest0channels;
-updatep95 .60/.60/.30ms. All3dense1200-sample contact scans pass. Earlier ear3pixel controls
-still fail, repaired geometry0. Tests distinguish raster crack and diagnostic clipping.
-BUT full-pose inspection rejects visible duplicate fur/ears and striped broad joints. This
-is not C2 visual acceptance and no new10s capture has completed. Keep all reports verbatim.
-
-A continuous alpha-adaptive parts-field candidate was then implemented and rejected OFFLINE:
-actual unchanged strong poses fold visible source triangles. Candidate03/04 are rejected,
-not a next native run. Runtime paintSkin fold refusal prevents partial publication. Source
-atlas/master and curves are unchanged. Inspect README.md plus offline/candidate-04-shape.json
-and visible-folds.txt in audits/C2_DEFORMING_SEAMS_20260914. Next repair must preserve independent
-overlapping limb surfaces while deforming true joints continuously; no gate/amplitude waiver.
-The capsule scratch comparison also fails and is not adopted. No need to ask Claude for fixes.
-
-A new tested PoseTarget-compatible creature-rig-frame collector applies one complete producer
-sample once, rather than once per joint. Existing immediate adapter stays compatible. Adoption
-in Claude's battle2 owner remains pending; no ownership exception was taken. Its test is not
-proof of live integration. C2 code is not claimed finished by static checks or gap counts.
-
-Current repair/addendum changes are staged/dirty after two1Password signing refusals despite
-successful public-key enumeration. Native runner refused before browser launch. Nick was asked
-to approve the actual signing request; unlocked vault alone has not completed the signature.
-Do not bypass signing. Continue independent code work; recheck actual staging before signing.
-Final verification:371Vitest files/4351passed/1skipped,37tool tests,typecheck and root
-validate PASS; continuation-checks.json and checks/continuation-*.log.gz record them. Use npm --prefix
-port/v2 test: locked standalone authority build, release, then unit workers without lock.
-
-Other lane work/review prompt: audits/C_SYSTEMS_CONTINUATION_20260914/REVIEW_PROMPT.md,
-plus this C2 addendum. C3 source/Opus intake and C4 ordered master intake implemented, but
-original sound recordings/rights/three-voice proof and remaining12-image sheets are open.
-Weather S/V/P/SV/SP/SVP awaits Nick; E remains accepted/active. Phone: up to3redistributable
-~1GB Mac finisher candidates, then1phone attempt; no more Klein or delivery engineering first.
-C4 first-class/sheet media gates remain; no rejected 3D/erosion/variant restart.
-
-C5: prerequisites then prune onopenai/mac; three merge-commit tiers intodevelop (productionUI,
-paintedengine, researchtools as tools); one develop→main release/fullchain only onexactauthorization.
-No PRReady before Civet/weather/phone decisions. LFS only Nick's explicitgo. GitHub step:none.
-Codex continues local repairs when signing/qualification permits. Claude: no action now;
-Nick need not open the other app or sync. Later use the one consolidated review prompt with
-named retained failures and actual captures; do not present current proofs as fully animated.
-
-## September14 retry — textured hinges, candidate05
-
-The previously staged batch is signed345061d1 (111aheadupstream/222aheadcacheddevelop).
-Nick asked Codex to retry C2 and confirmed1Password unlocked. Candidate03/04 remain rejected.
-Candidate05 retains independent rigid base parts and the62cut-qualified swept geometry.
-It disables exposed rigid underlap quads and interpolates each hinge across a contiguous
-run of the descendant's own source pixels, inward along the cut normal within the original
-depth cap. Every run stops before alpha<=8 or source bounds; no repaint, erode, new ink,
-new atlas, anatomy/clip/contact change. Single-pixel fallback only where no inward run
-exists. Civet4492textured/30single-pixel;fox4885/24;procedural1609/164.
-Tests verify source holes/bounds/caps, actual atlas UVs and absence of the duplicate quad,
-with the original constant-UV/visible-quad controls. All39tool tests,7focused runtime tests,
-typecheck and root validate pass. Native rest/cut/shape/timing qualification follows.
-No main.ts hunk, kit edit or GitHub action; same approved toolchain receipt for continued C2.
-
-## September 14 — complete ancestral contact inventory, candidate06
-
-Signed candidate05 source9d2dff26 (112ahead upstream/223ahead cached develop) produced
-native-hinges-01:62cut gates PASS, rest0, p95 .60/.60/.30ms. Full shapes still FAIL:
-angular internal openings remain after duplicate ears were removed. No ten-second capture.
-The compiler had omitted non-immediate ancestral contacts. Candidate06 includes all of
-those actual shared edges: Civet29cuts/5070edges, fox32/5920, procedural26/1924.
-Root/pelvis ink resolves to torso despite its declared spine joint. True sibling contacts
-remain independent; regression controls refuse a foreign leg as ancestor. Same masters,
-38/38/35drawables, atlases, recorded anatomy, curves and8% bound; no main.ts hunk.
-Textured source walks and rest-degenerate hinges are unchanged. Forty Node tool tests,
-7focused runtime tests, typecheck and root validate pass (checks/hinge6-*.log.gz).
-Next: native rest/all87cut gates and full-shape inspection. No visual acceptance inferred.
-
-
-## Archived September 14 C-system continuation handoff (verbatim)
-
-## SESSION HANDOFF — 2026-09-14 · Deforming joints, native qualification next
-
-OpenAI/Codex works on openai/mac in celestial-frontier-openai-mac. Latest signed checkpoint
-before this batch: 88a7b535, 107 ahead / 0 behind origin/openai/mac, 218 ahead / 0 behind
-cached origin/develop. The previous ear-support diagnosis was staged after two signer refusals;
-this batch includes it. Never bypass signing. No GitHub writes; PR42 parked; no new branches,
-kit edits, history rewrite, model run or changes to Claude-owned motion/effects/battle2/soundkit/worldlife.
-Reuse the uninterrupted session's toolchain receipt. No main.ts hunk.
-
-Nick now explicitly authorizes deforming joint repairs across all parts and continued correction
-without intermediate Claude review. Ultimate scope: fluid whole-body arena battles for every
-procedural and named Earth family, land/air/water/plants. Keep actual painter anatomy/material,
-seed determinism and family-specific joints. Quadruped success is not universal coverage.
-No need to ask again for the seam-strip mechanism. Accepted masters/arena/E remain the art basis.
-
-Current implementation and controls: audits/C2_DEFORMING_SEAMS_20260914/README.md.
-Candidate-02 contains sealed Civet, corrected fox candidate-01 and procedural atlas bindings,
-with zero-area-at-rest strips joining true parent/child ownership cuts. Incidental overlaps
-stay rigid. Candidate-01 is a rejected compiler prototype. Existing source ink, atlas ceilings,
-Motion Kit curves and 8% contact bound remain unchanged. 4348 tests pass / 1 skipped,
-typecheck/root validation pass; browser bundle compiles. No native pass claimed yet.
-
-Native attempt01 on e649a2e2 closes both ears and preserves rest0; one hind strike pixel
-is a reproduced GPU subpixel crack. The 1/64px strip-end overlap repair is ready for
-qualification; report retained in native-gates-01. Next: signed checkpoint, --seam-gates with producer at sibling
-anthropic/mac (GSAP SHA 6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74).
-Require native rest0, all actual joint cuts closed, rigid-ear negative controls and p95<2ms.
-Then --seam-parts with the source-bound gate report, ten-second captures and whole-shape review.
-Diagnose actual failures and repair under Nick's latest authorization; do not waive gates.
-Historical fixed-disc false-positive evidence remains, as do old native failures. New cut-local
-coverage is not a whole-shape or visual acceptance. The underlap-support audit proves why deeper
-static source copies cannot close the six old ear samples; it no longer awaits scope approval.
-
-Then audit all family painter record/part-mask coverage against published LOG-A11/LOG-B joints.
-Current procedural mask observation is still limited to qualified four-legged banded-tail geometry;
-other motion templates alone do not prove actual painter support. Extend from real drawn anatomy,
-not invented joint positions. Track unsupported and visually unqualified families explicitly.
-
-Other completed code and consolidated review prompt: audits/C_SYSTEMS_CONTINUATION_20260914/.
-C3 immutable-source voice Opus export, C4 ordered intake and asynchronous PNG verification are
-implemented, not source recordings/library acceptance. Weather S/V/P/SV/SP/SVP awaits Nick's pick;
-E stays active. C3 rights/recordings/voices remain open. Phone: up to3 smaller redistributable
-Mac finisher candidates, then1phone; no more Klein or delivery engineering before result.
-C4 new class/sheet media stops remain. No rejected erosion/3D projection restart.
-
-C5 prune on openai/mac after prerequisites, then three merge-commit tiers into develop:
-production UI, painted engine, research tools as tools; develop→main release/full chain only
-on exact authorization. No PRReady before Civet/weather/phone decisions; LFS only Nick's go.
-Unit tests use npm --prefix port/v2 test: standalone authority build then unlocked Vitest.
-Claude next: no action or app switch now. Later provide the consolidated review prompt plus
-this native evidence. Codex continues code/native repairs locally; report commit/ahead state at stops.
-
-Native attempt02 (ffe0d344) retains rest0 and closes the one hind strike pixel. Nine pairs
-reached; neck/head strike has no gap but leaves the original cut-out canvas, so the diagnostic
-correctly refuses INSTRUMENT_FAIL. Render target now includes half a canvas of transparent
-padding on each side, at original pixel scale, with matching measurement translation. A
-negative-controlled test preserves gap counts under padding and still refuses canvas escape.
-No motion, image, source atlas or coverage threshold change. Continue native qualification.
-
-## Native attempt03: cuts pass, full shape rejected locally
-
-On 71e96f97 all62 true cuts pass (Civet21, fox21, procedural20), rest0 for all;
-update p95 0.60/0.60/0.30ms. All three dense1200-sample contact scans pass under
-the unchanged8% bound. But inspection of full strike/recoil PNGs shows duplicate
-fur/ear contours exposed by static underlaps and strip-like stretching at broad
-joints. This mechanical PASS is explicitly NOT visual acceptance. No10s capture
-was declared complete; Codex continues repair under Nick's authorization.
-
-Candidate04 replaces rigid overlaps and stretched strips with an alpha-adaptive
-conforming mesh shared by all source parts. Refinement follows ink boundaries
-and true cuts; neighbouring cells include the same edge vertices. Each part
-samples only its original atlas frame, clipped to its original bounds. Joint
-weights come from actual ownership/cuts; shared coordinates share deformation.
-No per-creature curve, anatomy, frame count, palette or kit edits. Existing matrix
-and part-composition owners remain. This is not the old fixed Civet-literal grid.
-Candidate03 is the same prototype before duplicate vertex removal, never native
-accepted. Candidate04 deduplicates interpolation vertices: 16097 Civet,18256 fox,
-2621 procedural part vertices. Source atlases unchanged. Native pixel equality
-and timing are pending; full animated shape still needs direct inspection.
-The runtime remains quadruped-qualified only; all-family painter coverage is open.
-
-
-## SESSION HANDOFF — 2026-09-14 · C2 ear support finding
-
-Nick asked Codex to repair failures without waiting for Claude. OpenAI/Codex on macOS,
-/Users/nick/Projects/celestial-frontier-openai-mac, openai/mac; upstream origin/openai/mac.
-No new branches, GitHub writes, PR42 changes, kit edits, history rewrite, model run or
-new native capture. Claude-owned motion/effects/battle2/soundkit/worldlife remain read-only.
-The September12 toolchain receipt is reused in this uninterrupted session.
-
-Signed failure-repair checkpoint: f36cb38d (106 ahead of cached upstream / 217 ahead of
-cached origin/develop at that stop). Current continuation evidence:
-audits/C_SYSTEMS_CONTINUATION_20260914/README.md, checks.json and REVIEW_PROMPT.md.
-Previous repair evidence: audits/C_LANE_REPAIRS_20260914/README.md, checks.json and checks/.
-
-New code: C3 immutable-source voice Opus export with source/encoded true-peak and duration
-checks; C4 complete hash-bound batch intake (one to twelve masters; existing twelve read back);
-P1 native asynchronous PNG content verification, yielding compatibility path, one identity-key
-calculation per operation. Storage format/limits/retention unchanged. Extra temporary buffer
-memory is documented, browser performance unmeasured. No recordings or new images produced.
-Ordinary-game acceptance tests wait for real ready/failed state after native hashing.
-Compendium producer binding follows the changed app bundle; fixed measurement ruler,
-ceilings and historical samples remain unchanged. Binding refresh is not native certification.
-Prior broad register: audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md. Its three red tests
-are historical now: live measurement/producer bindings were repaired after comparing
-actual inputs. Fixed ruler, ceilings, all historical samples, collector/evaluator,
-fixture and browser policy are unchanged. A binding refresh is not a native certificate.
-SceneMemory remains production-only/quarantined, with its stale authority still visible.
-
-Unit tests no longer acquire the checkout lock for the authority build. Use
-npm --prefix port/v2 test -- <Vitest arguments>: Node tools, standalone locked build,
-then Vitest after release. Read-only unit observers refuse missing/stale source/dist
-receipts. Bare Vitest cannot run the authority test without that prepared receipt.
-Final check counts are in checks.json; do not substitute a static pass for the native chain.
-
-C-system continuation is signed in88a7b535,107aheadupstream/218aheadcacheddevelop.
-Nick requested another C2 ear repair attempt using Claude's band method. New evidence:
-audits/C2_EAR_SUPPORT_20260914/README.md and support.json. The ear batch is staged,
-not committed: two1Password signer refusals, despite public-key enumeration succeeding.
-Head remains88a7b535; see signing-attempts.json. Do not bypass the signer. All six saved gap centres map
-to zero-ink neighbourhoods even in the complete descendant image under the head transform.
-Thus no permitted static band depth can close them. No larger band or original was changed.
-Three controlled support tests distinguish missing bands from absent source ink. This is a
-support bound, not a new gate or a native rendering/shape acceptance.
-A concrete far-ear-only two-joint textured strip is proposed in that README; not implemented.
-It requires Nick's scope decision because the band review forbids a fourth mechanism after
-failure. Master/record/curves/rest0/atlas limits stay fixed. No Claude action required.
-
-C2 still stops at head--ear-far. New cut-local diagnostic follows shared ownership edges
-through actual pose matrices, using retained native images and hash-verified inputs.
-Disc-only vs bands: recoil170/0 uncovered pixels; strike0/0; stride91/3 and77/3.
-Three samples at each stride extreme are fully transparent; no rim waiver, crop or erode.
-Original morphological FAIL remains. Rest0channels and atlas38parts/2039x2047 still stand.
-No later pair or Civet/fox/procedural capture ran. Keep candidate01 fox record and the8%
-contact bound. Resolve this seam with the existing ink/cap/rest requirements before any
-new capture; do not call the new diagnostic a full shape gate or acceptance.
-
-Weather ladder S/V/P/SV/SP/SVP is ready in WEATHER_DETAILS_REVIEW_20260913; E remains
-active until Nick picks. C3 original recordings/rights/listening/actual source exports/three-voice proof,
-C4 sheets12at a time and smaller redistributable~1GB finisher qualification remain open.
-Up to3Mac candidates then1phone; no more Kleinphone or delivery engineering before result.
-No pause/variant-generator/3Dprojection/rejectederosion restart.
-
-C5: prune on openai/mac after prerequisites, then three merge-commit tiers into develop:
-productionUI, paintedengine, researchtools as tools. One develop→main release PR/fullchain
-only after exact authorization. No PRReady before Civet/weather/phone decisions. LFS only
-on Nick's explicit go. No hosted work authorized now, regardless of budget-file mode.
-
-Codex next: await the bounded ear-deformation scope decision; independent repairs remain allowed.
-C2 capture remains stopped at the named pair.
-Claude next: no action now. When Nick resumes review, use the consolidated batch plus the
-September14 repair and continuation addenda. The continuation REVIEW_PROMPT.md combines them.
-Nick need not open the other app or sync branches now.
-
-
-## SESSION HANDOFF — 2026-09-14 · independent C-system continuation
-
-Nick asked Codex to repair failures without waiting for Claude. OpenAI/Codex on macOS,
-/Users/nick/Projects/celestial-frontier-openai-mac, openai/mac; upstream origin/openai/mac.
-No new branches, GitHub writes, PR42 changes, kit edits, history rewrite, model run or
-new native capture. Claude-owned motion/effects/battle2/soundkit/worldlife remain read-only.
-The September12 toolchain receipt is reused in this uninterrupted session.
-
-Signed failure-repair checkpoint: f36cb38d (106 ahead of cached upstream / 217 ahead of
-cached origin/develop at that stop). Current continuation evidence:
-audits/C_SYSTEMS_CONTINUATION_20260914/README.md, checks.json and REVIEW_PROMPT.md.
-Previous repair evidence: audits/C_LANE_REPAIRS_20260914/README.md, checks.json and checks/.
-
-New code: C3 immutable-source voice Opus export with source/encoded true-peak and duration
-checks; C4 complete hash-bound batch intake (one to twelve masters; existing twelve read back);
-P1 native asynchronous PNG content verification, yielding compatibility path, one identity-key
-calculation per operation. Storage format/limits/retention unchanged. Extra temporary buffer
-memory is documented, browser performance unmeasured. No recordings or new images produced.
-Ordinary-game acceptance tests wait for real ready/failed state after native hashing.
-Compendium producer binding follows the changed app bundle; fixed measurement ruler,
-ceilings and historical samples remain unchanged. Binding refresh is not native certification.
-Prior broad register: audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md. Its three red tests
-are historical now: live measurement/producer bindings were repaired after comparing
-actual inputs. Fixed ruler, ceilings, all historical samples, collector/evaluator,
-fixture and browser policy are unchanged. A binding refresh is not a native certificate.
-SceneMemory remains production-only/quarantined, with its stale authority still visible.
-
-Unit tests no longer acquire the checkout lock for the authority build. Use
-npm --prefix port/v2 test -- <Vitest arguments>: Node tools, standalone locked build,
-then Vitest after release. Read-only unit observers refuse missing/stale source/dist
-receipts. Bare Vitest cannot run the authority test without that prepared receipt.
-Final check counts are in checks.json; do not substitute a static pass for the native chain.
-
-C2 still stops at head--ear-far. New cut-local diagnostic follows shared ownership edges
-through actual pose matrices, using retained native images and hash-verified inputs.
-Disc-only vs bands: recoil170/0 uncovered pixels; strike0/0; stride91/3 and77/3.
-Three samples at each stride extreme are fully transparent; no rim waiver, crop or erode.
-Original morphological FAIL remains. Rest0channels and atlas38parts/2039x2047 still stand.
-No later pair or Civet/fox/procedural capture ran. Keep candidate01 fox record and the8%
-contact bound. Resolve this seam with the existing ink/cap/rest requirements before any
-new capture; do not call the new diagnostic a full shape gate or acceptance.
-
-Weather ladder S/V/P/SV/SP/SVP is ready in WEATHER_DETAILS_REVIEW_20260913; E remains
-active until Nick picks. C3 original recordings/rights/listening/actual source exports/three-voice proof,
-C4 sheets12at a time and smaller redistributable~1GB finisher qualification remain open.
-Up to3Mac candidates then1phone; no more Kleinphone or delivery engineering before result.
-No pause/variant-generator/3Dprojection/rejectederosion restart.
-
-C5: prune on openai/mac after prerequisites, then three merge-commit tiers into develop:
-productionUI, paintedengine, researchtools as tools. One develop→main release PR/fullchain
-only after exact authorization. No PRReady before Civet/weather/phone decisions. LFS only
-on Nick's explicit go. No hosted work authorized now, regardless of budget-file mode.
-
-Codex next: continue independent local repairs; C2 capture remains stopped at the named pair.
-Claude next: no action now. When Nick resumes review, use the consolidated batch plus the
-September14 repair and continuation addenda. The continuation REVIEW_PROMPT.md combines them.
-Nick need not open the other app or sync branches now.
-
-## Archived September 14 local failure repair handoff (verbatim)
-
-## SESSION HANDOFF — 2026-09-14 · local failure repairs
-
-Nick asked Codex to repair failures without waiting for Claude. OpenAI/Codex on macOS,
-/Users/nick/Projects/celestial-frontier-openai-mac, openai/mac; upstream origin/openai/mac.
-No new branches, GitHub writes, PR42 changes, kit edits, history rewrite, model run or
-new native capture. Claude-owned motion/effects/battle2/soundkit/worldlife remain read-only.
-The September12 toolchain receipt is reused in this uninterrupted session.
-
-Current batch: audits/C_LANE_REPAIRS_20260914/README.md, checks.json and checks/.
-Prior broad register: audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md. Its three red tests
-are historical now: live measurement/producer bindings were repaired after comparing
-actual inputs. Fixed ruler, ceilings, all historical samples, collector/evaluator,
-fixture and browser policy are unchanged. A binding refresh is not a native certificate.
-SceneMemory remains production-only/quarantined, with its stale authority still visible.
-
-Unit tests no longer acquire the checkout lock for the authority build. Use
-npm --prefix port/v2 test -- <Vitest arguments>: Node tools, standalone locked build,
-then Vitest after release. Read-only unit observers refuse missing/stale source/dist
-receipts. Bare Vitest cannot run the authority test without that prepared receipt.
-Final check counts are in checks.json; do not substitute a static pass for the native chain.
-
-C2 still stops at head--ear-far. New cut-local diagnostic follows shared ownership edges
-through actual pose matrices, using retained native images and hash-verified inputs.
-Disc-only vs bands: recoil170/0 uncovered pixels; strike0/0; stride91/3 and77/3.
-Three samples at each stride extreme are fully transparent; no rim waiver, crop or erode.
-Original morphological FAIL remains. Rest0channels and atlas38parts/2039x2047 still stand.
-No later pair or Civet/fox/procedural capture ran. Keep candidate01 fox record and the8%
-contact bound. Resolve this seam with the existing ink/cap/rest requirements before any
-new capture; do not call the new diagnostic a full shape gate or acceptance.
-
-Weather ladder S/V/P/SV/SP/SVP is ready in WEATHER_DETAILS_REVIEW_20260913; E remains
-active until Nick picks. C3 original recordings/rights/listening/Opus/three-voice proof,
-C4 sheets12at a time and smaller redistributable~1GB finisher qualification remain open.
-Up to3Mac candidates then1phone; no more Kleinphone or delivery engineering before result.
-No pause/variant-generator/3Dprojection/rejectederosion restart.
-
-C5: prune on openai/mac after prerequisites, then three merge-commit tiers into develop:
-productionUI, paintedengine, researchtools as tools. One develop→main release PR/fullchain
-only after exact authorization. No PRReady before Civet/weather/phone decisions. LFS only
-on Nick's explicit go. No hosted work authorized now, regardless of budget-file mode.
-
-Codex next: continue independent local repairs; C2 capture remains stopped at the named pair.
-Claude next: no action now. When Nick resumes review, use the consolidated batch plus the
-September14 repair addendum. Nick need not open the other app or sync branches now.
-
-# September13 — Pack6 C2 observation development (verbatim)
-
-## SESSION HANDOFF — 2026-09-13 · consolidated C-lane audit
-
-Nick authorized broad independent coding across all C packages and one combined Claude
-review. openai/mac only; no new branch/GitHub/PR42/kit/history operation. Budget file says
-UNFROZEN, but Nick's current exact GitHub authorization is NONE. No model run or new sound.
-Claude-owned motion/effects/battle2/soundkit/worldlife and tests remain untouched. Existing
-September12 toolchain receipt reused within this uninterrupted session. .DS_Store is unrelated.
-
-Review register: audits/C_LANE_BATCH_REVIEW_20260913/AUDIT.md; copy-ready REVIEW_PROMPT.md,
-final-checks.json and bundle manifest. Starting head b50668b0. Completed independent work:
-C1 hash/dimension recheck, C2 hidden-band packed-pixel verification and ruler counterexample,
-C3 voice intake, C4 master intake, C5 fixture/test-runner/product/instrument/doc repairs.
-Only main.ts hunks: notification recording excludes activePersist; binary companion uses
-same three-stop glow as trinary. No other main wiring or production art default changed.
-
-Latest full Vitest:4338pass,3fail,1skip/4342. Remaining2compendium-budget and1current-producer-
-authorities assertions are genuine admission holds; do not rebaseline ceilings or seals to
-get green. Node tool tests19pass, typecheck/validate/smoke and scoped controls pass (see receipt).
-No integrated native chain or hosted certification. C5 study/pruning candidates15files/11.36MB;
-source imports and precache must change together after phone/visual prerequisites.
-
-C2 remains unaccepted. Native f3c6fe7d firstpair head--ear-far failed; fullrest0RGBA and atlas
-budget passed. Latest oracle counterexample proves rigid motion can become red when an
-existing notch enters the fixed rest-pivot disc (0→140; actualgap94). It does NOT establish
-that Civet has no tear, and the agreed gate is unchanged. Claude should reconcile a posed,
-cut-local ruler before another native capture. Retain old failure, foxcandidate01 record,
-procedural actual-material observer and unchanged8%bound. Other family observers remain unbuilt.
-
-Second weather ladder now ready: audits/WEATHER_DETAILS_REVIEW_20260913/review-sheet.png.
-Sixnew-lever variants S/V/P/SV/SP/SVP from the same raw finisher; no inference, exactEdisabled
-control, unchanged sources/masks/alpha. E stays active until Nick picks. No new kit wording.
-
-Next: one consolidated Claude review and Nick's weather pick; then C2 gates/captures, actual
-C3 original recordings/rights/truepeak/listening/Opus/three-voice proof, C4 sheets12at a time.
-Smaller redistributable~1GBfinisher candidates (up to3Mac, then1phone) remain unqualified;
-no more Kleinphone probe or delivery engineering before that result. Do not resume pause,
-oldvariant generator, 3Dprojection or rejectederosion experiments.
-
-C5 eventually integrates reviewed Claude repairs, prunes on openai/mac, requalifies exact
-source authorities, then three merge-commit tiers into develop: productionUI, paintedengine,
-researchtools as tools; one develop→mainreleasePR/fullchain after explicit authorization.
-No PRReady before Civet/weather/phone decisions. LFS only on Nick's explicit go.
-
-Codex next: keep the consolidated evidence/review bundle current and apply reviewable follow-up
-code within this lane; do not restart blind native retries. Claude next: review the supplied
-REVIEW_PROMPT when Nick opens it; do not sync branches or copy protected modules implicitly.
-Nick does not need the other app open for remaining local checks; the bundle is the handoff.
-
-
-## SESSION HANDOFF — 2026-09-13 · C2 motion failure and authorized fallback
-
-openai/mac, local only. PR42 parked; no GitHub write, Actions, new branch, kit edit, repaint,
-new audio class, history rewrite or main.ts hunk. Claude-owned motion/effects/battle2/soundkit/
-worldlife and tests remain untouched. Read-only producer bundles are temporary and hash-recorded.
-September12 uninterrupted toolchain receipt reused. .DS_Store is unrelated and left untracked.
-
-Interop response/probe committed verbatim e92941cb. Corrected producer SHA
-6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74 matches; root broadcast fixed
-in Claude's lane. No ownership exception needed. Pack6/CONTRACTS/LOG-A11/LOG-B govern.
-C1 mechanically complete; Nick owns final eye. No more Wild intake or generation.
-
-C2 actual Civet32/fox22/procedural21 part atlases all pass pixel-identical native rest, with
-missing-head negative controls. Actual procedural material is translucent; masks emitted by
-winning painter replay without altering original ink. Only four-legged banded-tail observation
-is implemented. Fox has no supplied turnaround. Real Motion cards compile deterministically;
-missing record fields: mass, locomotion, realm, weapons, luminous, numeric rotation/secondary
-limits. Compiler uses named mappings/genome defaults. No manually typed body card.
-
-200e5d17 adds generic two-bone planted contacts and actual GSAP native proof. cd792e1f fixes
-proof-only audio options. proof-01 preserves that initial audio failure. proof-02 records one
-Civet10.22139s clip at60.002fps/0.30ms p95 CPU update, but has a visible head/neck gap; fox live
-capture exceeds unchanged8%body-length compression bound. Procedural was not reached.
-C2 is NOT accepted. Static rest and sparse contacts did not prove moving shape.
-
-NEXT: stop at first pair's failed oracle perauthorization. Review3bc8db0c,implementation
-f3c6fe7d. C2_PAIR_BANDS_20260913/native-gates-01: head--ear-far baseline76; bandsdelta
-+731recoil,+1492strike,+922/+1047stride. Disc-onlycontrols retained. Fullrest0RGBAchanged
-and38parts2039x2047atlas pass. Cause of residual measurement not inferred from countsalone.
-No laterpairs/captures or fox/proceduralsteps ran; no fourthmechanism/thresholdwaiver.
-Ancestry nowaddsall sixmissingcuts; exactlysixtrue siblings unbanded. Depthcappedhalfdescbox.
-29cuts,16groupedbands; diagnosticpairPNGs isolate eachcut's descendantink subset.
-RESULT.json and REVIEW_PROMPT.md with originalnativepairrenders/oracleJSONs are reviewhandoff.
-No masks/pivots/poses/record/8%bound/kit/Claude-lanesource changes.
-
-C3 then original rights-recorded quadruped/Wild/battle/rain/fur48k24bitmono dry WAV +Opus/SHA,
-CONTRACTS1 names; first new sound class stops. Existing proof whoosh/ping is not C3. C4 library
-12at a time after acceptance, every sheet eye. Weather new-lever ladder and up to3redistributable
-~1GBMacfinisher candidates then1phoneattempt remain queued; no further Klein phone probe.
-C5 prune then3merge-commit tiers to develop (UI,painted engine,research as tools), no newbranches.
-LFS migration only on Nick's explicit go. No PRReady until Civet/weather/phone decisions.
-
-Codex next: stop for review of the first failed isolated pair; no later work authorized past that gate. Claude next: review supplied
-motion evidence if Nick requests; corrected producer is already consumed read-only, no app
-switch or routine sync needed. Fullsuite24preexistingfailures remain C5. Rootvalidate/focused
-checks required for this batch; no integrated chain. Signing has succeeded after the generic
-1Password agent errors; those errors did not establish that the app was locked.
-
-
-## Archived September 13 — C2 rest and first motion handoff
-
-## SESSION HANDOFF — 2026-09-13 · Pack6 / C2 rest admission
-
-Pack6 committed verbatim18bd7368 after staged C2 sourcec1452f46.23provided paths verified
-in audits/LONG_SESSION_20260913/pack6-receipt.json; prior Codex LOG retained verbatim in
-LOG-CODEX-PRE-PACK6.md. Pack6 supersedes Pack5. WORK_ORDER/CONTRACTS/LOG-A11/LOG-B govern.
-MOTION_KIT/SOUND_KIT are supplied bytes; their implementation claims describe Claude's lane.
-Nick's delegated decisions are adopted: study audio through decorativeVoicePort(); impact
-image holds240ms after hitstop then fades120ms. No additional kit wording changed.
-
-C1 mechanical intake COMPLETE; Nick owns final image acceptance. Both impact clusters are
-accepted master paint; no further Wild correction, erosion, repaint or generation. Current
-anchors retain targeted impact,second-pass travel,unchanged launch; MID accepted. Art Kit4.3
-and frozen style/4E unchanged. The10unpainted effects remain explicitly procedural until Nick
-schedules4K. No Blender/projection/texture-finisher work.
-
-C2 rest admission: CreatureRigV1 uses record joints/local offsets/body-length units and
-inherited transforms. Civet32parts with10turnaround underlaps,fox22authoredparts,procedural21
-painter-emittedparts all pass native WebGL master comparisons:0changedRGBAchannels each.
-Evidence: audits/C2_PARTS_ATLAS_20260913/native-rest-02 (Civet),native-fox-rest-01,
-native-procedural-rest-01. Missing-head mutants change234525/284037/6832channels respectively;
-mean empty-pose update0.0068/0.0069/0.0066ms. These are NOT60fps,motion,contact or staging gates.
-
-Procedural capture originally perturbed ordinary paint; native-painter-parts-01/02 preserve
-those refusals. Current observation finishes ordinary paint first, then replays the same seeded
-winning owner solely for masks. Original ink stays authoritative; replay anatomy/material and
-full original-alpha coverage must agree. native-painter-parts-03 on782e827a passes0ordinary
-render differences,34714paintedpixels,21parts,31quadrupedjoints,actualsurface translucent.
-Newrecord/master/labels/declaration there. Atlas procedural/ is543x261,0packedpixel changes.
-Only four-legged banded-tail observer capture is implemented; other families must emit actual
-LOG-A11/LOG-B inventories in future, never synthetic records labelled real. Fox has no supplied
-turnaround/patches; no invented asset. Per-creature part data is allowed; clips stay shared.
-
-body-cards-01 contains actual read-only Claude compiler outputs for Civet/fox/procedural and
-idle/melee/hit timelines, source/input hashes. Repeated outputs identical; missing-head controls
-refuse. Civet small0.85/furred,fox medium1.0/furred,procedural huge1.4/translucent. Explicit
-record fields still missing: mass,locomotion,realm,weapons,luminous,numeric rotation/secondary
-limits. Compiler supplies named mappings or procedural genome/template defaults; cards' notes
-are empty. No manually typed card or changed per-creature curves.
-
-NEXT C2: producer gsap-adapter still broadcasts root translation to all joints, compounding
-inherited local offsets. Do not change our contract to hide it. Read-only probe, one-line patch
-and copy-ready Claude prompt at audits/C2_MOTION_INTEROP_20260913/. Nick was asked whether
-Claude should fix or grant a one-time exception; no answer/exception yet. Protected source
-untouched. Once corrected: focused interop, Motion-timed joint/ground/contact qualification,
-Civet–Platypus turn in accepted3platearena,10second Civet/fox/procedural captures for Nick.
-C2 is not complete. Do not invent a GSAP acceptance from static rest or sampled timelines.
-
-C3 follows C2: original rights-recorded quadruped archetype,Wild/battle sets,temperate rain/fur
-impacts. CONTRACTS1 exact filenames,48k24bitmono dry WAV plus Opus/SHA. Placeholder synth is
-not C3; first new sound class stops for Nick. C4 twelve-at-time approved-order library/arenas,
-every sheet Nick's eye. C5 prune openai/mac then3MERGE-COMMITtiers into develop: production UI,
-painted engine,research tools as tools. No new branches; LFS rewrite only on Nick's explicit go.
-No PRReady before Civet/weatherpick/phone-tier. PR42parked. RainE retained/active; secondweather
-ladder,up-to3redistributable~1GBMacfinishers then1phoneattempt queued. Klein stopped; no delivery
-beforephone-tierresult. Future develop→main release separate exact authorization/full chain.
-
-Ownership: OpenAI/Codex on macOS,/Users/nick/Projects/celestial-frontier-openai-mac,openai/mac
-tracksorigin/openai/mac. f5e17fb8=89aheadupstream/200aheadcacheddevelop,0behind; signing works.
-Uninterrupted September12toolchain receipt reused. No Github write/Actions,push,label,dispatch,
-merge,release,deploy or history rewrite. Claude owns motion/,effects/,battle2/,soundkit/,
-worldlife/ and their tests. No main.ts hunk. Claude's next action is the prepared producer fix;
-Nick may pass its review prompt in Claude, no routine branch sync needed. Current targeted
-checks/typecheck/rootvalidate pass;24preexistingfullsuitefailures remain C5,not rerun.
-
-## C2 motion continuation — corrected producer admitted
-
-Interop response/probe committed verbatim e92941cb. ZIP also contains protected source/test
-files; only the two expressly requested audit paths were imported. Corrected source SHA
-6a206acdae092961ca21245c5f00949bcaab53e27bffbac01837210181cf4c74 verified read-only in Claude's
-tree. Nick identifies64bef82e; supplied response mentions45beca27. Exact file hash matches.
-Ownership exception no longer needed; no protected modules changed or merged into this tree.
-
-Record-driven contact solver uses existing two-bone kinematics; planted idle/hit preserves
-actual paw positions/perspective offsets, flight passes through. Family compression cap8%body
-length; unreachable contacts refuse, never slide the paw. Seven focused rig/contact tests pass
-with unconstrained-paw,unreachable-target and wrong-family negatives. Typecheck/rootvalidate
-pass. These are mechanical precursor checks, not motion/shape/60fps acceptance.
-
-parts-motion-runner/entry load the3real atlases, current Wild registered images and accepted
-arena. Compile actual Claude cards/timelines read-only into a temporary browser bundle; no
-source copied into tree. GSAP poses are batched once per frame, constrained by anatomy; same
-curves on every creature. Captures contain an outgoing and incoming turn beside accepted rainE,
-seeded Pixi8 effects,240msimpacthold,kit choreography. Existing whoosh/ping only; C3 pending.
-Native first run is NEW audits/C2_PARTS_MOTION_20260913/proof-01 after commit. All failures kept;
-no automatic retry, no kit/main.ts/GitHub edit. Stop at ten-second captures for Nick's eye.
-
-Native proof-01 on200e5d17 passed all3contact admissions (maximum constrained error below
-3e-13px; bypassed solver drifts11.14/9.99/10.21px). Capture stopped before media recording:
-proof harness called initAudio without required sndOn/sfxVol providers. Corrected to the
-existing isolated-proof options (sound on,volume.35). No audio-owner/game/kit change. Failed
-report and first Civet plan retained. Next run proof-02 uses corrected committed harness;
-no motion image acceptance or encoded video claimed for proof-01.
-
-
-## SESSION HANDOFF — 2026-09-13 · Pack6 / C2 native masks
-
-Pack5 is committed verbatim at0341be68, superseding Pack4. Receipt with19path hashes:
-audits/LONG_SESSION_20260913/pack5-receipt.json. Earlier Codex LOG preserved verbatim in
-LOG-CODEX-PRE-PACK5.md; WORK_ORDER.md, CONTRACTS.md, LOG-A11.md and LOG-B.md bind this lane.
-C1 mechanical intake is COMPLETE per supplied targeted review: both impact clusters accepted,
-rose streak/leaf rim are master paint. Nick owns final image acceptance. No further correction,
-repaint, generation or kit change. Current anchors/receipt use targeted impact, second-pass
-travel and unchanged launch. MID intake accepted. Art Kit4.3 frozen style/4E unchanged.
-
-C2: CreatureRigV1 implemented with local joint rotations/offsets in body-length units and
-inherited transforms. Civet32parts with10turnaround underlaps in one2047x951atlas; native
-rest-02 passed0changedRGBAchannels, missing-head mutant234525changedchannels,0.0068ms mean
-empty-pose update. No motion/60fps/contact acceptance. Fox now has22hash-bound authored parts
-in one2038x1085atlas, offline rest/atlas readback0changedchannels. No fox turnaround exists;
-no invented turnaround or new image generation. Fox native rest is the next bounded check.
-
-Optional painter mask capture reads actual RGBA changes at winning quadruped draw stages;
-Tube subdivisions use its drawn axis. It emits masks alongside the anatomy, preserves the
-ordinary draw path, and refuses unsupported capture anatomy. Current bounded observer is the
-four-legged banded-tail procedural fixture; other family observers remain work, never synthetic
-records labelled real. LOG-A11 plus LOG-B contain all14 Motion family vocabularies, including
-myriapod/cephalopod/flyer-membrane/primate. Material fix9ae342da reads the actual skin routing;
-the next native capture must emit translucent and compare observed versus ordinary pixels.
-Native runner modes: civet(default), fox, painter. NEW output directory, clean committed source,
-shared checkout lock only around native job; never unit tests. Atlas intake never keys native
-procedural alpha and independently reconstructs every visible master pixel.
-
-Motion producer interop remains blocked: Claude gsap-adapter broadcasts root translation to
-every joint; our inherited local offsets compound it. Read-only producer proof, one-line patch
-and review prompt in audits/C2_MOTION_INTEROP_20260913/. Nick was asked who applies the fix;
-no reply yet and no protected path edited. Continue independent C2 masks/atlases meanwhile.
-After corrected producer: Motion Kit body card/timings, contact/motion checks, Civet–Platypus
-turn in accepted arena and10second Civet/fox/procedural captures. Do not call static atlases a
-C2 proof. Missing body-card fields are listed in C2_PARTS_ATLAS README; no manually typed card.
-
-C3 follows proof: rights-recorded original quadruped archetype, Wild/battle sets, temperate
-rain bed and fur impacts, CONTRACTS1 exact names,48k24bitmono dry WAV plus Opus/SHA. Placeholder
-synths in Claude batch are not C3 sources. First sound class stops for Nick. Ten unpainted theme
-effects remain explicitly procedural until Nick schedules Art Kit4K; no new effects painting.
-C4 library twelve at a time in approved order, arenas per biome, each sheet Nick's eye.
-C5 prune openai/mac then three merge-commit tiers into develop: production UI, painted engine,
-research tooling as tools. No new branches. LFS rewrite only on Nick's explicit go, none now.
-No PR Ready before Civet proof, weather pick and phone-tier decision. PR42 parked.
-Rain E retained/active; second weather ladder and up-to3redistributable~1GBMac finishers then
-one phone attempt remain queued. Klein phone probing stopped; delivery waits phone result.
-
-Ownership: OpenAI/Codex on macOS, /Users/nick/Projects/celestial-frontier-openai-mac,
-openai/mac tracks origin/openai/mac. Pack5=83aheadupstream/194aheadcacheddevelop,0behind.
-Uninterrupted September12 toolchain receipt reused. No GitHub write or hosted attempt;
-no push/label/dispatch/merge/release/deploy. Claude owns motion/,effects/,battle2/,soundkit/,
-worldlife/ and tests; do not edit. No main.ts hunk. Nick need not open the other app for routine
-sync; the prepared producer fix is Claude's next coordination item unless Nick grants exception.
-Existing24full-suite failures belong C5; focused negative controls/typecheck/rootvalidate only.
-
-### Current resume — Pack6 committed, fox native rest passed
-
-Signing is resolved: C2 sourcec1452f46, Pack6 verbatim18bd7368 (23paths with SHA/bytes in
-pack6-receipt.json; preoverwrite LOG retained verbatim). Pack6 supersedes Pack5. MOTION_KIT
-and SOUND_KIT supplied implementations describe Claude's lane, not code integrated here.
-Nick's delegated decisions: decorativeVoicePort() owns study audio; impact image holds240ms
-after hitstop, then fades120ms. No additional kit wording changed.
-
-native-fox-rest-01 on18bd7368 passed:22parts,0changedRGBAchannels; missing-head negative
-control284037changedchannels; mean empty-pose update0.0069ms. Evidence and screenshot in
-C2_PARTS_ATLAS_20260913/native-fox-rest-01. No motion/60fps/contact acceptance.
-Next: after committing this evidence, run the NEW native-painter-parts-01 directory in painter
-mode, then construct its procedural atlas from the freshly emitted labels/record. The producer
-GSAP root-broadcast defect is still present read-only in Claude's tree; prepared handoff stands.
-No protected module edits, GitHub action or C3 recording. Continue independent C2 work.
-
-### Native painter mask observation — first refusal retained
-
-native-painter-parts-01 on cee01f47 refused because capture altered ordinary painter pixels;
-no mask/record artifacts admitted. Direct repeated getImageData on the live Canvas2D surface
-is the suspected cause (readbacks can change rendering execution). Capture now copies the
-surface to a separate willReadFrequently canvas before reading; no draw/RNG command changed.
-This hypothesis is not yet native-qualified. The next bounded comparison uses a NEW
-native-painter-parts-02 directory on committed source. It records changed-channel count/max
-on failure and a deliberately corrupted-pixel control. Typecheck,4focusedtests/rootvalidate
-pass. No motion, staging or C3 acceptance. Original refusal remains in report.json.
-
-### Painter readback separation
-
-native-painter-parts-02 on fabfd5e5 still refused370changedchannels,max30. Copying at each
-stage did not establish ordinary-render parity; both refusals retained. The authoring wrapper
-now completes the ordinary render first, then runs the same seeded winning painter separately
-for masks. It returns the original portrait/ink, compares replay anatomy/material, clips mask
-labels only where original alpha is transparent, and refuses any missed visible original pixel.
-No colour/alpha change to the ordinary master is allowed. This is a bounded observation replay,
-not a new creature, model painting, changed parameters or guessed family record. Its native
-check uses NEW native-painter-parts-03 on committed source. No motion acceptance claimed.
-
-### Procedural masks and actual Motion compiler — admitted
-
-native-painter-parts-03 on782e827a PASS: ordinary rendered pixels unchanged (0channels),
-34714paintedpixels,21parts,31quadruped joints,actualsurface translucent. No new genome or
-painting parameters. The separate observation replay supplies labels only; native original
-ink remains authoritative. Its hash-bound record/master/labels/declaration are retained there.
-Procedural atlas is one543x261image,0changedrest/packedRGBAchannels. Native rig rest next.
-
-body-cards-01 uses the actual read-only Claude compiler and retains source/input hashes,
-all3cards and idle/melee/hit timelines. All repeat byte-identically; missing head refuses for
-each. Civet small0.85/furred,fox medium1.0/furred,procedural huge1.4/translucent. No cards or
-per-creature curves typed by hand. Card notes are empty; source records still lack explicit
-mass,locomotion,realm,weapons,luminous and numeric rotation/secondary limits. The compiler
-supplies those via named-Earth mapping or procedural genome/template defaults, not our rig.
-This is compiler interop only, not GSAP/ground-contact/fps/motion acceptance. Prepared producer
-root-offset fix remains blocked by cross-lane ownership. No protected source edited or merged.
-
-# September13 — resolved C2 signing boundary (verbatim)
-
-### Immediate resume — signing agent unavailable
-
-The C2 fox/painter batch is staged and passes3node tests,9focused Vitest tests, v2typecheck
-and root validation. Signed commit attempt failed with `1Password: agent returned an error`;
-no unsigned commit substituted. Latest signed HEAD remains0341be68 (83aheadupstream,
-194aheadcacheddevelop,0behind). Nick has been asked to unlock/approve the signing prompt.
-After signing, native commands (outside sandbox, NEW output) are:
-`node port/v2/tools/quadruped-proof/parts-rest-runner.mjs audits/C2_PARTS_ATLAS_20260913/native-fox-rest-01 fox`
-and then after retaining/committing its result,
-`node port/v2/tools/quadruped-proof/parts-rest-runner.mjs audits/C2_PARTS_ATLAS_20260913/native-painter-parts-01 painter`.
-Stop on a failed native result and diagnose it; no automatic retry. Neither has run yet.
-Then build the procedural atlas from its record/master/declaration using build-authored-parts,
-which dispatches painter intake by schema and preserves native alpha. Producer offset fix and
-motion/contact/staging/three10second captures remain after these admissions. C3 follows.
-
-# September 13 — pre-Pack5 C2 handoff (verbatim)
-
-## SESSION HANDOFF — 2026-09-13 · Pack4 / C2 native rest admission
-
-Nick's cumulative work order and contracts are audits/LONG_SESSION_20260913/WORK_ORDER.md
-and CONTRACTS.md. Pack4 committed verbatim6b574220; nine file hashes in pack4-receipt.json.
-Previous Codex logs preserved verbatim in LOG-CODEX-PRE-PACK3.md and LOG-CODEX-PRE-PACK4.md.
-Pack4 supersedes Pack3 decisions; earlier requirements remain unless explicitly superseded.
-
-C1: Art Kit4.3 approved/adopted, frozen style/4E unchanged. Exactly three Wild generation calls
-previously completed. All masters immutable. Launch/travel, MID and registration accepted by
-Claude; Nick owns final visual acceptance. One authorized targeted impact pass has now run on
-second-pass keyed input, radius8, no erosion. Changed9RGB pixels in the lower-right rectangle;
-top-right rectangle had0eligible targets after exclusions and is shown unchanged. No protected,
-outside-target or alpha change. Travel optional hole touch skipped. No new painting or global
-pass. Current candidates,400%crops, review prompt and receipt are in
- audits/WILD_V43_PROOF_20260913/targeted-pass/.
-Both anchors point to current derived bytes; original fallback image SHA still binds its
-unchanged master, and keyedImageSha256 binds the corrected copy. Registration identical.
-Old110/85totals include intentional paint. Receipt splits pink-band candidates versus excluded
-sheen/pale/umber and retains Claude's distinct44/31visual estimates. Under40 is not a gate.
-No further correction authorized; C1 is not declared visually complete. Review ZIP:
-/private/tmp/cf-wild-pack4-targeted-review-20260913.zip (<30MB), prompt inside.
-
-C2 continues independently. CreatureRigV1 at port/v2/apps/game/src/creature-rig.ts implements
-CONTRACTS§2 with record joint names, child-bone/parent-pivot transforms, radians and dx/dy in
-body-length units, inherited composeAffine, two depth layers, hash/bounds admission and dispose.
-No fixed-grid/continuous-mesh/Blender-projection revival. GSAP3.15.0 and pinned packer remain.
-Actual Civet now has22authored base parts and10turnaround-derived hidden joint patches in
-one32-part2047×951atlas: audits/C2_PARTS_ATLAS_20260913/civet-patched/. v2head mask fixes crest
-ownership. Initial masks/atlas and two refused patch fits remain historical evidence. Original
-Civet and turnaround bytes unchanged. part-masks/joint-patches/build-authored-parts tools own
-intake; parts-rest-runner provides native master comparison with missing-head negative control.
-Next: native rest admission, joint motion/ground checks with Claude Motion timings, authored
-fox and fresh procedural parts/atlases, Civet–Platypus turn, three ten-second review captures.
-Do not call a static atlas a completed C2proof. Missing body-card fields are explicitly listed
-in C2_PARTS_ATLAS README; no hand-typed body card or named-Earth genes overriding anatomy.
-
-Procedural material observer fix9ae342da reads actual spec.alien.skin then painted spec/family
-coat. Freshly emit the procedural record; historical incorrect fur record stays historical.
-Pack4 LOG-A11 lists stable joints for nine more family templates; observers must emit their
-own family vocabulary, never quadruped names for another body plan. Current proof is quadruped.
-Claude's A1–A11 engines are complete per Nick on anthropic/mac but not integrated here. Do not
-copy or edit motion/, effects/, battle2/, soundkit/, worldlife/ or their tests. Runtime contracts
-are binding; announce any main.ts hunk. None changed. Existing24full-suite failures listed in
-incoming LOG predate this work and belong to C5; no new full-chain admission now.
-
-C3 follows C2: original rights-recorded quadruped archetype, Wild set, battle set, temperate
-rain bed and fur impacts; CONTRACTS§1 names/formats (48k24bitmono dry WAV plus Opus, SHA list).
-First sound class stops for Nick; derive Civet/fox/procedural from the one archetype with
-Claude's sound engine. Do not substitute placeholder quadruped recordings for accepted sources.
-C4: library rollout in approved order, twelve at a time, arenas per biome family; every sheet
-stops for Nick's eye. C5: prune on openai/mac first, then three promotion tiers (production UI,
-painted landfall engine, research tooling as tools) into develop with MERGE COMMITS. No branches.
-LFS migration only on Nick's explicit go; none now. No PR Ready before Civet proof/weather pick/
-phone-tier decision. Future develop→main release needs separate exact authorization/full chain.
-
-Rain E remains accepted/active. Retain original/raw finisher, queued second weather ladder and
-phone-tier evaluation (up to3redistributable~1GBfinishers on Mac, then one phone attempt).
-Klein phone probing stopped; no delivery engineering before phone-tier result. These queued
-requirements remain; do not silently discard them under C1–C5. Motion/Sound frozen paragraphs
-approved; supplied PROPOSED labels remain verbatim, no kit editing without explicit approval.
-
-Ownership: OpenAI/Codex, macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
-tracks origin/openai/mac. Packet commit6b574220=79ahead upstream/190ahead cacheddevelop,0behind.
-Uninterrupted September12toolchain receipt reused; Node26.8.2. No remote refresh needed.
-No GitHub write/Actions attempt authorized despite budget file status. PR42 parked. No merge,
-release, deployment, new branch or history rewrite. Claude can continue its disjoint work;
-Nick need not open the other app for manual synchronization. Commit scoped work before handoff.
-
-
-### Immediate resume gate — 1Password signing
-
-Pack4 commit6b574220 is the latest signed HEAD (79aheadupstream/190aheadcacheddevelop).
-The targeted-impact/Civet-patch batch is staged and passes focused tests/typecheck/rootvalidate,
-but signing failed twice with `1Password: agent returned an error`, including the PTY workaround.
-Nick has been asked to unlock1Password/approve its signing prompt. Do not use an unsigned commit.
-After signing the staged batch, run the bounded native rest comparison once, outside the macOS
-sandbox, with a NEW evidence directory:
-`node port/v2/tools/quadruped-proof/parts-rest-runner.mjs audits/C2_PARTS_ATLAS_20260913/native-rest-01`.
-It requires clean committed source (.DS_Store excepted), checks actual Pixi pixels and a missing-head
-negative control, and records source/browser provenance. It has NOT run yet. Then continue C2
-from its actual result. No C3 source or staging has been produced; no GitHub write is needed.
-
-
-Signing unblocked and verified:1b0b5707. Native-rest-01 stopped before browser launch because
-Rolldown produced multiple Pixi chunks but the runner specified output.file. Runner now uses
-output.dir with named entry/chunks. Failure retained in native-rest-01/report.json. Next native
-attempt uses native-rest-02 on the corrected committed runner; no game/asset change.
-
-
-### Current resume boundary — native rest passed, motion interop decision
-
-1Password signing is resolved. Native-rest-02 on signedde9c9a32 passed:32parts,0changedRGBA
-channels; missing-head negative control234,525changedchannels; mean pose update0.0068ms.
-This is not motion/60fps/ground-contact acceptance. First bundle failure remains preserved.
-C2_MOTION_INTEROP_20260913/producer-probe.json proves Claude's actual GSAP adapter sends
-root translation to everyjoint, conflicting with the rig's inherited local-offset semantics.
-A one-line producer.patch and copy-ready CLAUDE_REVIEW_REQUEST.md are prepared. Claude's
-motion/ path remains untouched. Nick has been asked who should apply this bounded producer
-fix (one-time Codex ownership exception versus Claude lane). No kit change is needed.
-After the corrected producer is available, run its focused interop negative control, then
-continue the Motion-timed C2proof. Fox/procedural part emission and three captures still remain.
-C3 follows actual C2proof. No generic proceed needed, GitHub stepnone, PR42parked.
-
-## SESSION HANDOFF — 2026-09-13 · C1 WILD PHASES AWAITING IMAGE REVIEW
-
-Nick authorizes continuation through C1–C5 without repeated proceed questions. Stop for kit
-wording changes, first image/sound of a new class, GitHub writes, history rewrites, or scope
-questions; every C4 sheet also stops for Nick's eye. Report each package with the evidence
-specified in the supplied work order, and log each package in audits/LONG_SESSION_20260913/LOG.md.
-
-Supplied arena review, revised world-life MOTION_KIT.md and SOUND_KIT.md committed verbatim
-in8a2dfdc0. Hash/byte receipt: audits/LONG_SESSION_20260913/supplied-kits-receipt.json. The kits'
-PROPOSED labels are supplied bytes; Nick's existing approval remains authoritative.
-WORK_ORDER.md received September13 from Nick's explicitly attached sibling-worktree file,
-read and retained verbatim at audits/LONG_SESSION_20260913/WORK_ORDER.md. Hash/byte/source
-receipt: work-order-receipt.json beside it. No sibling worktree edit or Git operation.
-Additional long-session zip retained: CONTRACTS.md, LOG-A4.md, LOG-A5.md and the incoming
-LOG.md verbatim as LOG-CLAUDE-PACKET.md, preserving our local chronological log. WORK_ORDER
-is byte-identical. Provenance: long-session-pack-receipt.json. Treat Claude's reported tests
-as reported evidence, not locally reproduced results; no source/evidence media came in the zip.
-Nick approved e89cb621; ART_KIT now4.3 with only the exact requested header/history adoption
-changes beyond that diff. Frozen paragraph/4E and game theme hexes unchanged. Evidence:
-audits/WILD_V43_PROOF_20260913/README.md, adopted-kit.diff, kit-adoption.json, generation.json.
-
-C1: exactly three built-in imagegen calls, one Wild phase each, no rerolls. Warm ochre/earth,
-fur tufts/torn leaves replace the rejected blue palette. Original1254-square masters retained.
-Generator enlarged phases beyond requested bounds; uniform-scale/translation intake copies
-now share1024square, origin(.20,.55), contact(.80,.55). Visually measured active anchors map
-within.5pixel, empty anchors virtual. wild-anchors.json uses registered copies; separate
-wild-anchors-master-fallback.json retains original per-phase anchors. No warp/rotation/crop.
-Review wild-masters-review.png and wild-registered-review.png. Keyer reports89/597/529 unresolved
-fine-edge pixels; do not claim zero fringe or accepted artwork. STOP for Nick's image review
-before staging; this does NOT block independent C2 coding. C2 material observer is fixed and
-parts runtime now implemented/tested; authored/procedural masks, joint patches, real atlases,
-visual proof/captures and C3 remain pending. No new kit wording request. Keep combining incoming feedback; do not drop earlier
-requirements unless a later explicit decision supersedes them.
-
-MID's one-pass exact190 RGB correction from07c93945 reverified, alpha and all arena masters
-unchanged. mid-verification.json references the original completed copy and composite;
-no repeated pass. Arena FAR/MID/NEAR remain accepted templatev1. Rain E remains active.
-
-Earth compiler version guard updated to admit4.3 and retired-v3 test mutant updated. Initial
-pre-adoption guard refusal retained; final3 compiler tests prove deterministic output, retired
-kit/malformed source refusal and unchanged engine prompt. Nine contact/despill controls pass;
-full v2 TypeScript/root validation logs retained. No native inference or scene/finisher run.
-
-C1 review delivery: two ZIPs at /private/tmp/cf-wild-v43-review-part1-20260913.zip (11.9MB)
-and part2 (18.5MB), each below30MB; paths/hashes/file lists in
-WILD_V43_PROOF_20260913/review-packages.json. Send both to Claude with REVIEW_REQUEST.md in
-the packet. It requests per-phase/material/edge/registration/MID verdicts, read-only; Nick
-retains final acceptance. Do not leave Nick without the review artifacts/prompt.
-
-C2 runtime now at apps/game/src/creature-rig.ts: loadCreatureRigV1 admits the existing
-record/master/alpha and a hash-bound cf.creature-parts/v1 single-atlas binding; actual Pixi
-parts, far/near layers, record-joint parent-pivot inherited transforms, normalized cutout
-space, radians/body-length offsets, atomic invalid-pose refusal and disposal. PoseTarget
-adapter supplies setJoint. Reuses existing GRAPH/kinematics/admitRecord; no fixed mesh.
-Five tests include negative controls and 40-part CPU mean<2ms; full TypeScript, root validate
-and pinned packer controls pass. This is not a browser/GPU timing or visual rig proof.
-Next independent C2 work is authored masks/joint patches and painter-emitted procedural masks,
-then real atlases; native proof/staging waits for C1 image review and required asset readiness.
-Evidence: audits/C2_RIG_RUNTIME_20260913/README.md. No main.ts or Claude-module changes.
-
-C2: parts masks per authored master, turnaround joint patches, painter-emitted procedural
-parts, pose application and one deterministic atlas per creature with pinned packer. Compile
-body cards from resolved anatomy using Motion Kit §§3–6; report absent fields. Civet versus
-Platypus in accepted arena with Motion timings; ten-second Civet/fox/procedural captures.
-C2 interface: load parts for a resolved record; apply a pose of joint rotations and offsets;
-expose part display objects and pivots. CONTRACTS.md supplies CreatureRigV1: recipeHash,
-templateId, parts {id,display,pivot,layer}, root, applyPose(joint rotation radians and dx/dy
-in body-length units), normalized bounds {width,height,groundLineY}, dispose. Joint names
-match record landmarks. PoseTarget.setJoint(name,radians,dx,dy) is the same vocabulary;
-rotation names describe child bones pivoting at the parent per A1. Claude's fixture uses
-this same contract until C2 lands. Pack2 CONTRACTS§6 is retained verbatim in6030e636.
-Nick reports motion5d0abd01, effectsc03aad82, world-life50a7fbd2, sound5f22581b committed/green
-on anthropic/mac; none merged/copied as code here. A3/A6 remain in progress there.
-
-C2 observer now emits spec.alien.skin when that painter route is active, otherwise actual
-spec/family coat. Five material routes and named-Earth protection covered by two real-painter
-command-stream tests; pre-fix red preserved. No rendered pixel change intended or native
-capture claimed. Do not rewrite the old procedural capture: freshly emit its corrected record
-for C2. Evidence audits/C2_MATERIAL_OBSERVER_20260913. TypeScript/root validation pass.
-Registered Wild anchor JSON now includes measured alphaBoundsPixels required by A2; all PNG
-hashes unchanged. No repaint/repeated MID despill. Source-set naming/formats in CONTRACTS§1
-remain binding; synthesized placeholders are not C3 source approval.
-Claude owns the body-card compiler (A1), effects sequencer (A2), battle scene adapter (A3), sound
-derivation (A4) and world-life (A5). Codex supplies rig/parts and source assets, without editing
-those modules. Effect anchors schema: cf.effect-sequence-anchors/v1. Missing anatomy fields
-must produce named refusal. No more continuous-mesh repair, Blender projections or texture
-finisher passes. Retain older proof evidence/assets.
-
-C3: quadruped voice archetype, Wild theme set, battle set, temperate rain bed, fur impacts;
-rights recorded; 48kHz WAV masters plus Opus. Derive Civet/fox/procedural voices from one
-archetype. CONTRACTS.md defines quadruped.<cue>.wav and numbered footfall filenames,
-mono48kHz24-bit, <2s cues/<300ms steps, dry, -1dBTP, rights and SHA256 per source; Wild phase
-files, battle cue ids, bed.temperate.wav24–40s with loop sidecar and weather.rain.wav.
-Motion/Sound frozen paragraphs already approved; do not ask again. SOUND_KIT v1
-approved by Nick, frozen text unchanged. Root MOTION_KIT now includes the supplied world-life
-layer. Both retain supplied PROPOSED status labels verbatim. First new-class sounds require
-Nick's review; the parts-rig body-card audit still reports missing record fields.
-
-C4: approved-order library batches of twelve, arenas per biome family; stop at every sheet.
-C5: prune on openai/mac, then promotion tiers into develop with MERGE COMMITS, not squash:
-production UI; painted landfall engine; research tooling merged as tools. No new branches.
-Audits LFS migration approved in principle, performed by Codex on openai/mac only when Nick
-says go; no history rewrite now. No PR Ready before Civet proof/weather pick/phone-tier decision.
-One later develop→main release PR with full chain and separate release authority. PR42 parked.
-
-Claude now works on anthropic/mac, which Nick reports contains Codex history, on new motion/,
-effects/, battle2/, soundkit/, worldlife/ modules and their tests. Codex must not edit those
-paths. Any main.ts hunk must be announced in its commit message. No main.ts change this batch.
-No need to open Claude Code now; continue assigned disjoint work, no synchronization requested.
-
-Prior emitter replacement is local/tested: Pixi8 ParticleContainer, recipe-seeded absolute-time
-updates, no peer override/second renderer; not yet battle-wired. Three emitter and two despill
-tests, v2 TypeScript and root validate passed in07c93945. All approved masters immutable;
-PNG optimization copies-only; GSAP3.15.0 and packer core0.3.9/CLI0.3.0 remain pinned.
-Rain E remains accepted/active; raw finisher and originals retained. Existing weather and phone
-follow-ups remain recorded; the supplied work order does not place weather/phone evaluation
-within C1–C5. Preserve those queued requirements and resolve scope when their order matters.
-Klein phone probing remains stopped; no delivery engineering before phone-tier result.
-
-Ownership verified: OpenAI/Codex, macOS, /Users/nick/Projects/celestial-frontier-openai-mac,
-openai/mac → origin/openai/mac; SSH origin git@github.com:TheDakk/Celestial-Frontier.git.
-Pre-runtime9ae342da:74 ahead upstream/185 ahead cached origin/develop, zero behind. No remote
-refresh needed or performed; .DS_Store excluded. Current budget file says UNFROZEN, but Nick's
-explicit GitHub step NONE controls: no push/label/dispatch/merge/release/deploy or hosted attempt.
-This C1 batch reuses the uninterrupted September12 maintenance receipt; Node26.8.2 verified.
-Latest C2 runtime/test/declaration and review-package documentation remain local; no main.ts hunk.
-
-
-### Pack3 continuation — 2026-09-13
-
-Pack3 verbatim commit56509c0c supersedes incoming packet status; prior local chronological log
-is preserved in audits/LONG_SESSION_20260913/LOG-CODEX-PRE-PACK3.md. CONTRACTS§§1–6 unchanged.
-A11 family joint inventories are binding when their painter observers are added; current C2
-proof targets quadruped first. Claude lane complete per Nick, code not integrated here.
-C1 second intake attempted once (radius8 inward samples then1pxerode); travel110/impact85
-unresolved, targetunder40 FAILED. No automatic repeat. Review images/prompt/receipt in
- audits/WILD_V43_PROOF_20260913/second-pass/.
-Updated anchors identify candidate derived copies; every master, launch and MID unchanged.
-C2 independent coding continues; no effect staging acceptance implied. All24pre-existing full
-suite failures listed in incomingLOG belong to C5; do not run a new full-chain admission now.
-
-
-### Current C2 implementation checkpoint — 2026-09-13
-
-Signed Pack 3 = 56509c0c; signed C1 second intake = 597821d2 (77 ahead origin/openai/mac,
-188 ahead cached origin/develop, 0 behind). C1 still fails the under40 target (110 travel /85 impact).
-Nick has been asked whether to authorize another targeted intake correction or review these
-candidates. Do not automatically rerun second-despill.mjs or generate art. The delivered review prompt is
- audits/WILD_V43_PROOF_20260913/second-pass/REVIEW_REQUEST.md.
-
-C2 now has part-masks.mjs and build-authored-parts.mjs under port/v2/tools/creature-animation:
-hash-bound authored polygons, complete pixel coverage, one pinned atlas and CreatureRigV1 binding.
-The actual Civet22-part /2046×919 atlas preserves visible RGBA offline; see
- audits/C2_PARTS_ATLAS_20260913/README.md, which lists missing Motion Kit body-card fields.
-This is not native or animation acceptance. Next: fit turnaround joint patches, inspect authored
-cuts at Motion extremes, emit fresh procedural masks from the winning painter, fox/procedural
-atlases, native rest/ground/performance checks, and three ten-second captures. C3 follows C2.
-Mask/atlas negative controls, existing five Pixi rig tests, v2 typecheck and root validate pass.
-Claude's A1–A11 code is not integrated here; do not copy or edit its owned modules. No main.ts hunk.
-Nick need not open Claude for manual synchronization now. GitHub step none; PR42 parked; no new
-branch, LFS/history rewrite, develop/main merge, release or deployment.
-
-
-## SESSION HANDOFF — 2026-09-12 · ARENA v1 ACCEPTED; v4.3 REVIEW FILES NEEDED
-
-STOP at the v4.3 proposal/approval boundary. Missing supplied files: ARENA_EFFECTS_REVIEW_20260912.md
-(the eleven-row material table) and revised MOTION_KIT.md including world-life. Neither is in
-this worktree/Downloads; path question is pending. Do not invent the ten unknown theme rows or
-world-life text. Current ART_KIT.md remains v4.2; no repaint. Known Wild row/rules and exact
-remaining order: audits/ARENA_V1_ACCEPTANCE_20260912/V43_PENDING.md.
-
-Arena FAR/MID/NEAR from75a5c4a4 ACCEPTED as template v1. Acceptance manifest and one corrected
-MID copy at audits/ARENA_V1_ACCEPTANCE_20260912/. Exactly190 RGB pixels corrected in one applied
-pass, all alpha and accepted masters unchanged. Initial guard found212 total residual edge
-pixels and wrote nothing; corrected selection reconstructs exactly the original190 unresolved
-cases. It does not recolour the other22. No repaint. Wild shapes/phases ACCEPTED, palette
-REJECTED (reads Frost); retain per-phase anchor JSON as fallback. No current Wild art accepted
-as a complete effect. Active ordinary-game rain E remains unchanged.
-
-v4.3 must be a proposed diff: closed eleven-theme material/shape table in Effects, game hex
-accent only. Wild = claw rake, fur tufts, torn leaves, kicked earth, wind streaks in warm ochre
-and earth tones, #9fb6d6 sheen. Game theme hexes unchanged. Show full diff and stop for Nick.
-After approval repaint Wild launch/travel/impact once with common-canvas registration.
-
-Motion/Sound frozen paragraphs are APPROVED. SOUND_KIT.md status metadata now approved v1,
-frozen text unchanged. Revised Motion Kit commit waits for supplied world-life file; older
-proposed13,236-byte root retained meanwhile. Do not ask for frozen approval again. Compile
-Civet body card from resolved anatomy per Motion §§3–6 and use mass-scaled timings; report
-missing mass/locomotion/realm/per-part materials/secondary order/weapons/luminous/joint limits
-rather than interpreting raw genes for named Earth anatomy. Prior gap audit retained.
-
-First sound work is authorized when the order reaches it: quadruped archetype voice set,
-Wild theme set, battle set, temperate rain bed, fur impacts only. Derive Civet, fox and one
-procedural voice from the one archetype, present all three side by side to listen, and wire
-approach, strike, hitstop, impact, hurt, damage ticks, victory. None recorded/derived/wired
-in this batch. Then Civet–Platypus parts-rig turn in accepted arena v1 with repainted Wild,
-and ten-second Civet/fox/procedural captures. No new 3D/projection/texture-finisher work.
-
-Tooling correction done: @pixi/particle-emitter removed with37 unused transitives; game stays
-Pixi8.19.0. SeededBattleEmitter uses actual Pixi8 ParticleContainer, finite recipe-seeded
-coefficients and absolute elapsed-time updates, <=200 particles, caller-owned texture.
-Three tests: clock/RNG refusal, seed mutation, 30/60Hz and seek equality, real Pixi object
-updates/disposal, budgets/time refusal. No browser/performance or game-wiring claim.
-Tests live in app source beside other Pixi tests: root strict types collide with Pixi's
-bundled WebGPU declarations, already isolated by the existing app tsconfig. No typecheck
-flags weakened. Two targeted-despill tests pass, v2 TypeScript and root validate pass.
-GSAP3.15.0/core0.3.9/CLI0.3.0 remain pinned; deterministic one-atlas tool unchanged. PNG masters
-immutable; optimizers copies-only, approved idle policy unchanged. No unit checkout lock.
-
-After proof: second no-inference weather ladder (sheen/value/foreground rain), then up to3
-~1GB redistribution-permitted finisher candidates on Mac, one best phone attempt. Klein phone
-probing stopped; no delivery work before phone result. iPhone17Pro/iOS26.6.2/USB-C. Retain rain
-E/original/raw finisher, old fallback captures and canid/turnaround assets for later port.
-
-Promotion: prune superseded code/pack assets on openai/mac, three ordered squash tiers to
-develop (UI; landfall engine; research), one develop→main full-chain release. Ready no PR until
-Civet proof/weather pick/phone-tier decision. LFS migration pending Nick; no history rewrite.
-GitHub step NONE, PR42 parked. No hosted write/attempt, release or deployment authorized.
-
-Ownership: OpenAI/Codex macOS, /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac
-tracking origin/openai/mac. Pre-batch1e65e006:65 ahead upstream/176 ahead cached origin/develop,
-zero behind. Local completion commit follows; unrelated .DS_Store excluded. Reuse Sept12
-startup receipt (Node26.8.2). Claude Code need not open/sync; local work is not in develop.
-
+## SESSION HANDOFF — September 19, 2026 (evening) · R1c DIAGNOSTIC DIRECTION ISSUED; R9 ADDENDUM WRITTEN; CODEX'S TURN
+
+Self-contained. Either lane can resume from this block alone. The morning handoff is archived verbatim
+at the top of `ROADMAP_ARCHIVE.md`.
+
+### Lane state (local only; nothing pushed, no remote state inferred)
+
+| Lane | HEAD | Tree |
+|---|---|---|
+| `openai/mac` (Codex) | `d0437436` evidence on signed producer `6a58e40e` | two untracked leftovers (stale signing-blocker JSON, `review-diagnosis-01/`) |
+| `anthropic/mac` (Claude) | this commit (review + R9 addendum + ROADMAP) | clean apart from `.DS_Store` files |
+
+PR42 parked, no GitHub write, no push, no merge, no release. Lanes read each other by absolute path,
+read-only; never sync to fetch a document.
+
+### What Claude decided today (all in `audits/ANATOMY_REVIEW_20260917/CLAUDE_R1BR2B_REVIEW.md`)
+
+1. **N3 is withdrawn.** The Mud/Vent drift is not diffusion; for a rigid vertex the gate equals the
+   nearest painted vertex's rest offset rotated by the lower-leg's stance rotation. Two repair
+   candidates exist (foot landmark onto the painted contact pixel; solver plants the painted vertex);
+   **neither is chosen** until R1c (a) proves or disproves the closed form to ≤ 1e-9 px. The 0.25 px
+   gate is unchanged; it is not noise; pinning is not re-proposed.
+2. **R1c** is the one bounded next direction: measurements only on unchanged `6a58e40e`, two
+   diagnostic-only harness switches, new evidence folders, stop for review. (a) drift closed-form proof
+   + o=0 / |o|×2 / diffused-mutant controls; (b) Civet adapter hash + compat-solver reproduction, then
+   family-vs-compat A/B with reach bounds and compression at the first failing samples — the
+   distinction is a diagnosis aid, never a clearance; (c) variance floor, 2×2 {rows-first |
+   presentation-first} × {declared | legacy scale}, persimmon fold ownership + amplitude sweep, and
+   readability numbers (foot displacement / carapace dy) added to native crab reports.
+3. **Visual findings for Nick:** V2 faint recovers instead of ending down; V3 pinch static (R3 scope);
+   V5 fringes at 1× on Crab. Visual acceptance of the three films remains Nick's.
+4. **R9 addendum** (`R9_ADDENDUM_FINISHED_TEXTURES.md`): finished PNG is a new retained original;
+   alpha copied byte-for-byte; parts/paintSkin must rebuild byte-identical (masks transfer); count
+   preservation by label components + boundary-gradient ratio; rebind must reproduce every geometry
+   number; retention keyed by recipe/cutout/settings/model hashes; phone tier refuses (D1); Nick's
+   sheet is the gate. Two open questions for Nick at its end.
+
+### Amendment (same evening) — Codex's `review-diagnosis-01` (`4cb5f7a3`) landed in parallel
+It proves R1c (a) to Float32 precision (2.5e-5 px), locates the persimmon fold in branch-3/4 foliage
+pins, and finds **T1: a 42–57 px one-frame snap at approach → pinch** (gait travel has no owner across
+transitions — the R3 `travel` contract). Amended order, in §5 of `CLAUDE_R1BR2B_REVIEW.md`:
+**R1c-b/c (Civet A/B, CPU 2×2) → R2c (painted-support contact, offset-aware, landmarks untouched) →
+R3 (+ T1 continuity gate) → one re-capture → Nick's look → R4 → R9.** Persimmon foliage rigidity is
+Nick's decision before any collar design. **Copy-ready block for Codex: review §6; §7 chunking superseded by §8: ONE Codex run — toolchain → R1c-b/c → R2c → R2d → R3 → R4 → re-capture → R9 → R5–R8 → roster by family until exhausted → PR42 split prepared → ONE stop with an accumulated review packet; S2 (shared-path red) is the only halt. Claude codes E1 in parallel on a local merge once Nick says go (D4 relaxation).**
+
+### Who owes what
+
+**Codex (openai lane):** R1c per the copy-ready block in §4 of the review. No solver, clip, record,
+threshold, clamp, kit or binding change; no R3/R4/R9; no unchanged retry; no push. Stop for review.
+R3 still carries `ContactPhase.travel?: 'solver' | 'stage'` and `contactJoint` on `compileAnatomyAttack`.
+
+**Nick:** (1) authorize R1c or amend it; (2) visual verdict on the three films with V2/V3 in view;
+(3) read the R9 addendum and answer its two questions; Q1 crab gape still a candidate only.
+
+**Claude (anthropic lane):** idle until R1c evidence lands; then review it and choose the Mud/Vent
+repair item. Track B E1 code does not start until R3 is on develop; its design is written.
+
+### Still open, unchanged
+N5/S5 phone tier (D1); N7–N10 not closed; I5 stale Compendium producer certificate (fresh measured
+certificate only, never a pin edit); 53 of 58 bodies unbound; 12 observed; nothing visually qualified.
+
+### Where to read
+`audits/ANATOMY_REVIEW_20260917/` (anthropic lane): `CLAUDE_REVIEW_RESPONSE.md` (S1–S5),
+`CLAUDE_R1R2_REVIEW.md` (N1–N12), `CLAUDE_R1BR2B_REVIEW.md` (V1–V6, N3 correction, R1c),
+`R9_ADDENDUM_FINISHED_TEXTURES.md`, `MASTER_PROGRAM_20260917.md` (D1–D4 approved),
+`E1_BATTLE2_INTEGRATION_DESIGN.md`, `r1b-r2b-look/` (contact sheets). `audits/ANATOMY_COMPLETION_20260917/`
+(openai lane): plan, static checkpoints, all native evidence, `NEW_SESSION_PROMPT_20260919.md`.
+
+## SESSION HANDOFF — September 19, 2026 · R1b/R2b RE-CAPTURE IN; 3 PASS / 6 FAIL; CLAUDE OWES THE REVIEW
+
+Self-contained. Either lane can resume from this block alone.
+
+### Lane state (local only; nothing pushed, no remote state inferred)
+
+| Lane | HEAD | Ahead of cached origin | Tree |
+|---|---|---|---|
+| `openai/mac` (Codex) | `d0437436` evidence, on signed producer `6a58e40e` | 133 | two untracked leftovers: `R1B_R2B_EVIDENCE_SIGNING_BLOCKER_01.json` (stale — the retry succeeded as `d0437436`), `review-diagnosis-01/` (toolchain receipts) |
+| `anthropic/mac` (Claude) | `2766db85` | 234 | clean |
+
+Both signing blockers of Sept 17/19 are resolved; every producer and evidence commit named here is
+signed. PR42 parked, no GitHub write, no push, no merge, no release. Lanes read each other by
+absolute path, read-only; never sync to fetch a document.
+
+### What Codex shipped, and what it costs
+
+`6a58e40e` is the bounded R1b/R2b correction Claude directed: **N1** template-declared motion scale
+on the BodyCard (brachyuran independent 0.08–0.9 admission; body-axis bounds and observed pivots
+untouched; plants use the longest observed chain), **N2** source-relative stride/lift with
+readability floors, **N11** blend weight no longer multiplies world travel or stance targets,
+**N12** faint/hit loading moved to the shared specialized action builder, **N3** explicit
+endpoint pin/weight declaration at split time, **N4** action rows before framing, **N6** Civet
+sentinel, **Q4** the approved Motion Kit §8 paragraph (only that). Static: 102 regression tests /
+16 files, 210 tool tests, three TS projects, 1,010 legacy renders, 50 determinism probes.
+
+`d0437436` is the nine-subject native re-capture on that producer — **3 numeric passes, 6 failures**:
+
+| Subject | Outcome | Max clip p95 | Max painted-contact drift |
+|---|---|---:|---:|
+| crab / coconut-crab / freshwater-crab | PASS (numeric), films exist | 0.600 ms | 0.133 / 0.144 / 0.176 px |
+| mud-crab | FAIL hit, dodge, faint, presentation | 0.700 ms | 0.270 px |
+| vent-crab | FAIL scuttle, hit, dodge, presentation | 0.500 ms | 0.348 px |
+| persimmon | FAIL fold: `disturb` @ 67.17 ms, 84 folds; presentation @ 1200 ms, 209 folds | 5.300 ms | n/a (no ground feet) |
+| cranberry | FAIL CPU: disturb 3.3 ms | 3.300 ms | n/a |
+| devils-club | FAIL CPU: all four actions | 4.200 ms | n/a |
+| **civet sentinel** | **FAIL** — 18 of 20 rows stop early; unreachable targets at 5.8 / 6.25 / 29 ms; idle drift 0.258 px | 4.400 ms | 0.392 px |
+
+### Three things the next reviewer must not miss
+
+1. **Claude's N3 diagnosis was wrong, and Codex proved it read-only.** Old-versus-new binding
+   comparison found **zero changed field weights and zero added/removed pins on all five crabs** —
+   those endpoint supports were already rigidly weighted and pinned by the earlier shape owner. The
+   Mud/Vent painted-contact drift therefore has **no established root cause**. Codex's remaining
+   hypothesis (the nearest painted vertex's nonzero rest offset rotating under the endpoint bone) is
+   labelled a hypothesis. Do not loosen 0.25 px, do not call it instrument noise, do not re-propose
+   pinning. Evidence: `summary.json.contactPinComparison`.
+2. **The Civet sentinel failing is the point of having it.** It runs the new family contact resolver
+   against an existing accepted quadruped binding; the preserved quadruped compatibility solver is a
+   separate path. That distinction is a diagnosis aid, not a clearance for the shared path.
+3. **Flora CPU moved the wrong way** (persimmon 2.2 → 5.3, cranberry disturb 1.9 → 3.3, devils-club
+   3.4 → 4.2 ms) — but Codex records honestly that clip sampling now precedes presentation warm-up,
+   so this is **not a controlled attribution** to the scale change. Any next direction must separate
+   the two before blaming either.
+
+### Who owes what
+
+**Claude (anthropic lane) — the open job:** review `audits/ANATOMY_COMPLETION_20260917/r1b-r2b-native-01/`
+(README, summary.json, the nine reports, the three films and their stills), own the N3 correction in
+writing, and issue one bounded next direction covering (a) the unexplained Mud/Vent drift,
+(b) the Civet sentinel failure, (c) flora fold + CPU with a controlled measurement. Then write the
+**R9 addendum** (finished textures for procedural creatures — the five crabs through the accepted
+masked-0.35 finisher on the painter master, silhouette/alpha conservation so painter-stage masks
+transfer unchanged, rebind, seed-bound retention; desktop only per D1), in the approved plan's
+format. Track B **E1 code does not start until R3 is on develop**; its design is already written.
+
+**Codex (openai lane):** stopped for this review by its own handoff. No R3/R4/R9 implementation, no
+unchanged retry, no threshold relaxation. R3 carries two additions Claude specified for E1:
+`ContactPhase.travel?: 'solver' | 'stage'` and `contactJoint` on `compileAnatomyAttack`.
+
+**Nick:** visual acceptance of the three crab films is his and is still open; so are Q1 (crab gape —
+authorized as a *candidate*, not adopted) and the R1b/R2b failures' next direction.
+
+### Still open, unchanged by this batch
+
+N5/S5 phone tier (D1: delivered finished originals, no on-device inference); N7–N10 (dead leg keys,
+edge fringes, plant clamp constants, other-family contact exclusions) explicitly **not** closed;
+I5 stale Compendium producer certificate (fresh measured certificate only, never a pin edit);
+53 of 58 bodies unbound; 12 observed; nothing newly visually qualified.
+
+### Where to read
+
+`audits/ANATOMY_REVIEW_20260917/` (anthropic lane) holds `CLAUDE_REVIEW_RESPONSE.md` (S1–S5 + Pass 1
+register), `CLAUDE_R1R2_REVIEW.md` (N1–N12), `MASTER_PROGRAM_20260917.md` (vision, pillars P1–P10,
+tracks A–E, gates, decisions D1–D4 all approved) and `E1_BATTLE2_INTEGRATION_DESIGN.md`.
+`audits/ANATOMY_COMPLETION_20260917/` (openai lane) holds the plan, static checkpoints and all
+native evidence, plus Codex's own `NEW_SESSION_PROMPT_20260919.md`.
+
+
+## SESSION HANDOFF — 2026-09-13 · LONG SESSION BATCHES 1–4 COMPLETE; C2 PARTS RIG IS THE ONLY BLOCKER
+
+Read this with `audits/LONG_SESSION_20260913/LOG.md` (per-package table), `LOG-B.md`
+(batches 2–4 in detail) and `CONTRACTS.md` (the cross-lane interfaces). Everything below is
+committed on `anthropic/mac` and **never pushed**: 61 commits ahead of `openai/mac`, tree clean.
+GITHUB_ACTIONS_BUDGET gate unchanged; PR42 parked; no hosted write authorized.
+
+### What the game can do now (all under the two study flags, default path untouched)
+
+`?battle2=1` stages a real turn over the Chronicle mount: arena plates with parallax, a rigged
+attacker and a portrait defender, the choreography beats (timing bar, cursor, run-up, hitstop,
+flash, shake, damage number), **per-ability theme effects** (Wild painted; the other ten kit
+themes as labelled procedural emitters in their §4K material colour), **sound cues on the beats**
+(placeholder synth for all 49 ability/battle ids, per-creature derived voices through the A4
+engine, played through the accessible audio owner's `decorativeVoicePort()`), and world life.
+`?worldlife=1` puts rain, drift and **resident idle life** (1–3 fauna from the roster, breathing
+whole-portrait rigs between the vista and the weather) on the landfall.
+
+Every kit §4 motion family has a template library (13 + quadruped). Phones run half particle
+budgets. `MOTION_KIT.md` and `SOUND_KIT.md` are marked matches-code as of 2026-09-13.
+
+### Evidence to look at
+
+- `audits/LONG_SESSION_20260913/b-batch-capture/proof-run-02/` — the current 10 s capture
+  (602 frames, p95 0.30 ms, 0 browser errors), beat frames and mp4-cut frames. Civet joints no
+  longer open black wedges; Wild painted sweep and Tide procedural splash both read.
+- `audits/LONG_SESSION_20260913/b3-family-sheets/`, `a11-family-sheets/` — pose sheets.
+- `audits/C2_BOUNDED_REPAIR_20260913/underlap-demo-01/` — underlap proof on the real Civet master.
+
+### Open decisions for Nick (nothing blocked on them)
+
+1. **K22 part 2** — the import `t:0 → now` asymmetry; fixing it broke v1.8.9 fixture tests
+   (`LOG-A6-defects.md`). Still unfixed by choice.
+2. **Nick's eye** on the B3 family sheets, the proof-run-02 capture and the Wild v4.3 images.
+3. Two batch-2 decisions were **delegated to Claude and already taken**: the audio port
+   (`decorativeVoicePort()`) and the Motion Kit §5 impact hold (240 ms after the hitstop).
+
+### The one blocker: C2 articulated parts rig (Codex's lane)
+
+Codex's parts rig still FAILS the shape gate; the labelled whole-portrait fallback is the
+accepted presentation meanwhile. Four review rounds are recorded, newest last:
+
+| round | audit dir | outcome |
+|---|---|---|
+| interop | `C2_MOTION_INTEROP_20260913/` | Claude's GSAP producer broadcast root dx/dy to every joint; fixed root-only (64bef82e), probe PASS |
+| parts motion | `C2_PARTS_MOTION_20260913/` | civet neck wedge diagnosed; fox refusal = collinear rest chain; fallback clips ACCEPT |
+| bounded repair | `C2_BOUNDED_REPAIR_20260913/` | disc patches can't reach the cut ends; **fox corrected record ACCEPT**; seam oracle replaces the vacated-silhouette ruler; band underlap proposed and proven in Claude's own rig |
+| band underlaps | `C2_BAND_UNDERLAPS_20260913/` | Codex's bands FAILED: ancestry walk misses pelvis-rooted parts (hips/tail unbanded), depth exceeds the descendant's size (ear ghosts), composite oracle over-counts between parallel legs |
+
+**Codex's next step is authorized** (Nick delegated approvals 2026-09-13):
+`audits/C2_BAND_UNDERLAPS_20260913/CLAUDE_REVIEW_RESPONSE.md` §4 plus the amendment in
+`audits/C2_BOUNDED_REPAIR_20260913/AUTHORIZATION_20260913.md` — ancestry from pixel ownership,
+depth capped at half the descendant's box, pair-isolated seam gate (`--disc=0.06`), then the
+civet, fox and procedural captures with no further review stop unless a pair still leaks.
+Still NOT authorized: the 8 % compression bound, clip curves, kit wording, GitHub, history.
+
+### Claude-lane tools a new session should know
+
+- `port/v2/tools/motion-proof/seam-oracle.mjs` — joint-seam ruler (transparent pixels inside the
+  closed body envelope near a joint pivot). Tests in `port/v2/tests/seam-oracle.test.ts`.
+- `port/v2/tools/motion-proof/rig-pose-render.mjs` — browser-free keyed-master cut, pose, render
+  and measure. `port/v2/apps/game/src/battle2/rig-render.ts` is the pure renderer.
+- `port/v2/tools/battle2-proof/runner.mjs <newDir>` — the 10 s capture (**browser-owning: run
+  outside the macOS sandbox**). `tools/motion-proof/pose-sheet.mjs` renders any template.
+
+### Waiting on Codex
+
+C1 Wild v4.3 intake is mechanically complete (three Claude reviews, all accept; Nick owns final
+image acceptance). C2 as above. **C3 recorded sound sources have not begun** — every voice today
+is derived from the labelled placeholder archetype and is not shippable. C5 pruning/PR split/LFS
+is unstarted; the 24 pre-existing full-suite failures belong there (`LOG.md` baseline note).
+
+### Verification commands (all green at handoff)
+
+```
+cd port/v2 && npm run -s typecheck && npx vitest run tests/battle2-*.test.ts tests/effects-*.test.ts tests/motion-*.test.ts tests/soundkit-*.test.ts tests/worldlife-*.test.ts tests/seam-oracle.test.ts
+node tools/validate.js      # from the repo root: FINGERPRINT MATCH
+```
+
+### Protocol reminders
+
+Claude works only on `anthropic/*`, Codex only on `openai/*`; never edit the other worktree, never
+copy source across lanes (Nick carries zips). Commit locally, do not push. Read
+`PARALLEL_GIT_PROTOCOL.md` before every batch. Nick's standing instruction: **work in large
+uninterrupted batches**; stop only for a kit wording change, the first image or sound of a new
+class, a GitHub write, a history rewrite, or a genuine scope question.
 
 ## SESSION HANDOFF — 2026-09-12 · MOTION/SOUND PROPOSALS RETAINED; ART REVIEW PENDING
 
@@ -4457,7 +1694,6 @@ origin/develop, zero behind; proposed-kit/doc commit follows. Unrelated .DS_Stor
 Reuse September12 startup receipt (Node26.8.2). Codex waits for art acceptance; Claude Code
 need not open/sync. Budget UNFROZEN/public assumption/private cap3000; zero hosted writes or
 attempts authorized. No PR now, no release/deployment. Local work is not in develop/main.
-
 
 ## SESSION HANDOFF — 2026-09-12 · v4.2 ART CANDIDATES AWAIT ACCEPTANCE
 

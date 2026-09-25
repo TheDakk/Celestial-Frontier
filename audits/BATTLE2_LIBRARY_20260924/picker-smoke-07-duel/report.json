@@ -1,0 +1,144 @@
+{
+ "package": "dist-duel",
+ "serviceWorker": "served",
+ "viewport": "desktop 1280x800@1",
+ "swControl": true,
+ "runs": [
+  {
+   "from": "url",
+   "vs": "Civet,Python",
+   "status": "playing",
+   "generation": "1",
+   "text": "real duel · Civet vs Lumeoth (Python) · playing · earth-temperate-default (no world context: accepted Earth temperate plates) · left Civet: ground (exact-name Earth fauna presentation profile) · right Lumeoth: ground (exact-name Earth fauna presentation profile) · attacks: claw (foreNearPaw) / constrict (seg2)",
+   "still": "picker-1.png",
+   "controlled": true
+  },
+  {
+   "from": "controls",
+   "vs": "Eagle,Beetle",
+   "status": "playing",
+   "generation": "1",
+   "text": "real duel · Eagle vs Vasheltix (Beetle) · playing · earth-temperate-default (no world context: accepted Earth temperate plates) · left Eagle: air (exact-name Earth fauna presentation profile) · right Vasheltix: ground (exact-name Earth fauna presentation profile) · attacks: peck (beak) / mandible (mandible)",
+   "still": "picker-2.png",
+   "controlled": true,
+   "rigs": {
+    "label": "battle2 stage · left: source paint-skin rig (C2 parts) · contact: family · travel: stage · right: source paint-skin rig (C2 parts) · contact: family · travel: stage",
+    "painted": 2
+   }
+  },
+  {
+   "from": "reload, arena refused by the server",
+   "vs": "Civet,Python",
+   "status": "playing",
+   "controlled": true,
+   "text": "real duel · Civet vs Lumeoth (Python) · playing · earth-temperate-default (no world context: accepted Earth temperate plates) · left Civet: ground (exact-name Earth fauna presentation profile) · right Lumeoth: ground (exact-name Earth fauna presentation profile) · attacks: claw (foreNearPaw) / constrict (seg2)",
+   "still": "picker-3-offline.png",
+   "rigs": {
+    "label": "battle2 stage · left: source paint-skin rig (C2 parts) · contact: family · travel: stage · right: source paint-skin rig (C2 parts) · contact: family · travel: stage",
+    "painted": 2
+   }
+  }
+ ],
+ "browser": {
+  "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+  "product": "Edg/153.0.4234.48",
+  "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+  "js_version": "15.3.12.7",
+  "protocol_version": "1.3"
+ },
+ "pageErrorsDuringDuel": [],
+ "duel": {
+  "trace": [
+   [
+    0,
+    2,
+    "0",
+    null,
+    "playing"
+   ],
+   [
+    2038,
+    2,
+    "0",
+    "120",
+    "playing"
+   ],
+   [
+    4286,
+    3,
+    "1",
+    "240",
+    "playing"
+   ],
+   [
+    6315,
+    5,
+    "1",
+    "360",
+    "playing"
+   ],
+   [
+    8352,
+    5,
+    "2",
+    "480",
+    "playing"
+   ],
+   [
+    10396,
+    8,
+    "2",
+    "600",
+    "playing"
+   ]
+  ],
+  "samples": 58,
+  "increments": [
+   {
+    "ms": 2444,
+    "rows": 3,
+    "stage": "playing"
+   },
+   {
+    "ms": 6112,
+    "rows": 5,
+    "stage": "playing"
+   },
+   {
+    "ms": 9987,
+    "rows": 8,
+    "stage": "playing"
+   },
+   {
+    "ms": 11821,
+    "rows": 11,
+    "stage": "finished"
+   }
+  ],
+  "completed": true,
+  "spreadMs": 9377
+ },
+ "arenaHitsBeforeOffline": {
+  "served": 46,
+  "refused": 0
+ },
+ "arenaHits": {
+  "served": 46,
+  "refused": 0
+ },
+ "coldControl": {
+  "vs": "Starfish,Octopus",
+  "failed": null,
+  "rigs": {
+   "label": "battle2 stage · left: whole-portrait fallback (no landmark record; hit pose approximated by root offsets) · right: whole-portrait fallback (no landmark record; hit pose approximated by root offsets)",
+   "painted": 0
+  },
+  "arenaHits": {
+   "served": 46,
+   "refused": 6
+  }
+ },
+ "pageErrors": [],
+ "status": "PASS"
+}

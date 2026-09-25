@@ -447,7 +447,7 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
       domain: BIOSCAN_ACTION_DOMAIN_V1,
       receiptKind: ARC9_BIOSCAN_RECEIPT_KIND_V1,
       codecNow: captured.codecNow,
-      derive: ({ value, receiptOrdinal, draft, extensions }) => {
+      derive: ({ value, receiptOrdinal, draft, extensions, activePlayMs }) => {
         const loadout = readArc2EngineeringLoadout(extensions);
         const loot = readArc2Loot(extensions);
         const engineering = readArc3Engineering(extensions, SCENE_ENGINEERING_ADDRESS_RESOLVER);
@@ -659,6 +659,7 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
           predecessorWitness: JSON.stringify({ bioscanWitness }),
           event: { kind: 'bioscan', address: captured.address },
           receiptOrdinal,
+          activePlayMs,
         });
         if (starterCharter.kind === 'refused') {
           throw new Error(`bioscan starter Charter ${starterCharter.reason}`);

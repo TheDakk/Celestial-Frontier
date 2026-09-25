@@ -33,7 +33,7 @@ it('all 12 candidate structures agree across intake, compiler, GSAP and skeleton
    }expect(buildTimeline(card,action,51)).toEqual(tl);}finally{player.stop();}
   }
  }expect(n).toBeGreaterThan(110);
-});
+},30_000); // 12 structures x every full action: 5.3 s on this Mac, over the 5 s default on a hosted runner (PR #43 run 35669457751). A timeout is not an assertion; the agreement checks are unchanged.
 it('cannot hide missing geometry, fabricate mandatory absence, reuse wrong hashes, or infer weapons from unrelated genome fields',async()=>{
  for(const id of Object.keys(SPECIALIZED_TEMPLATES)){
   const r=fixture(id),t=familyContractForRecord(r),bad=structuredClone(r) as unknown as {landmarks:Record<string,number[]>};delete bad.landmarks[t.joints.at(-1)!];
