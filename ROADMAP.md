@@ -53,7 +53,9 @@ Sparrow item17 packet audits/ART_BATTLE_FOCUS_20260925/17-sparrow:fit01 static10
 
 Ibex item18 packet audits/ART_BATTLE_FOCUS_20260925/18-ibex:fit02 static19/19 +1,675 presentation/exactrest PASS and six masks. Native01 FAIL26/14 approach-walk refusals,5.60ms stage p95 at4×,931live/935encoded; positive return spacing, no visible detached paint. Do not wire until stage composite/support repair.
 
-Then continue ranked paintings Reef Shark/Pike onward; existing Python/Beetle masks, specialized uncovered templates, complete-stage motion, C12 Centipede orientation cost and C13 pin review remain in the art program. Done only with measured generated coverage≥80%, no misleading ranked top35 Earth, all motion/picker gates and every library pair at60fps4×CPU. No new completion claims yet.
+Reef Shark item19 packet audits/ART_BATTLE_FOCUS_20260925/19-reef-shark:fit06 static13/13/exactrest PASS; fullnative02 0/0,3.40ms p954×,726live/730encoded. Use mask-set02. Return snouts overlap and faint tail breaches water band; Claude stage fixes before publication. Habitat/material/script refusals retained.
+
+Then continue ranked paintings Pike onward; existing Python/Beetle masks, specialized uncovered templates, complete-stage motion, C12 Centipede orientation cost and C13 pin review remain in the art program. Done only with measured generated coverage≥80%, no misleading ranked top35 Earth, all motion/picker gates and every library pair at60fps4×CPU. No new completion claims yet.
 
 C18 prerequisite repair is signed a7f154f8: full develop profile5,080pass, sole historicalI5 red; original lock and v1 samples unchanged. No whole-battery PASS, push or hosted eligibility. Asset batches have their own scoped static/native and root validate evidence; no unchanged full battery retries.
 

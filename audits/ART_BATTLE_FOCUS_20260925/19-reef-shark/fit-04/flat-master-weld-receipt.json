@@ -1,0 +1,48 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "fit-03",
+  "sourceRecordSha256": "c271be3b7ca269d201a19862c1a83a563cb5b35bf6fa340bf2e1e9ef90081dad",
+  "sourceBindingSha256": "3f6aa62aea0e6b529044b25a3e2c36ba53729eba1d8aacf976d2d8954cf354e9",
+  "sourceAtlasSha256": "a7d09dbb6a76929d0b3aeb38ff98b42fa4fe1ac315785b294d353f25f34e734b",
+  "helperSha256": "4add08278d64c0e33b1416ed3c964caa6c253087b8b834b7a84d306f4cd94ae9",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "pectoralNear",
+      "pectoralFar",
+      "dorsal",
+      "jaw",
+      "head",
+      "caudal",
+      "spine5",
+      "spine4",
+      "spine3",
+      "spine2",
+      "spine1",
+      "spine0"
+    ],
+    "contactEndpoints": [],
+    "preservePaintBoundaries": true
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "99b7f32185d7ef472bb0cdd9f49b6f7dfe1ec796f8a393bb1316cd445c197e35",
+    "sourceVertices": 1019,
+    "vertices": 1053,
+    "sharedSupports": 399,
+    "pins": 78,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 9,
+    "excludedOverlaps": 9,
+    "observedExcludedBoundaries": 9,
+    "weldedExcludedBoundaries": 9,
+    "independentExcludedBoundaries": 0,
+    "preservePaintBoundaries": true,
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "83e4921ffe0971761e9d3fe3f256779e0cf007d35420b1e311dfff076dad45ce",
+  "scope": "Only this unadmitted Reef Shark candidate. Existing opt-in preserves observed painted boundaries on a flat master. No solver/gate/limit change; no hidden pixels invented. Prior intake receipts describe inherited fit-03 inputs, this receipt owns the new split."
+}
