@@ -1,0 +1,17 @@
+{
+  "tool": "image_gen.imagegen",
+  "prompt": "prompts/eye-spotted.txt",
+  "promptSha256": "2034f051f3de229cebe4aafc5a2dd4cce26ba7c80508be9795e730368855b08c",
+  "reference": "../master.png",
+  "referenceSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf",
+  "status": "REFUSED_NO_IMAGE",
+  "http": 400,
+  "code": "moderation_blocked",
+  "moderationStage": "output",
+  "categories": [
+    "sexual"
+  ],
+  "requestId": "b99c0e1f-0ff3-446d-a779-9be0a094cd3a",
+  "message": "Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID b99c0e1f-0ff3-446d-a779-9be0a094cd3a. safety_violations=[sexual].",
+  "disposition": "No retry. Benign bear marking correction remains incomplete; rejected cheek mask is not accepted as an eye patch."
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Brown bear (bear)",
+  "exemplar": "Brown Bear",
+  "covers": [
+    "Brown Bear",
+    "Grizzly Bear",
+    "Bear",
+    "Black Bear",
+    "Polar Bear",
+    "Sloth Bear",
+    "Spectacled Bear",
+    "Sun Bear",
+    "Panda"
+  ],
+  "bodyPlan": "quadruped",
+  "mustPaint": [
+    "muscular shoulder hump; broad dished head with small round ears",
+    "flat-footed plantigrade paws with long claws; stub tail (tail 0.7)",
+    "plain unmarked coat that reads as a polar bear under a white palette",
+    "masks: eye-spotted = eye patches (Panda, Spectacled Bear), banded = chest crescent or shoulder band (Sun Bear, Panda)"
+  ],
+  "why": "9 misleading, the whole bear family. Panda and Spectacled/Sun Bear rely on the mask. Check that their pattern genes select those masks."
+}

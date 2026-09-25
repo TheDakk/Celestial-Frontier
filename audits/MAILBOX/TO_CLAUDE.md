@@ -116,3 +116,8 @@ Packet `audits/ART_BATTLE_FOCUS_20260925/12-gull`, fit03.17parts, two explicitly
 ## C15 item13 — River Otter candidate complete; stage placement blocked
 
 Evidence: `audits/ART_BATTLE_FOCUS_20260925/13-river-otter/README.md`, final `fit-02`, `static-01.json`, `native-phone4x-01`, `markings.json`. All19 static rows +1,681 presentation/exactrest PASS; full native0/0,932live/936encoded,15.5328s,4.30ms whole-stage p95 at4×. Six own masks conserved. Review sheet shows **overlapping heads at return**; do not admit/publish before positive source-paint separation/full-stage travel and picker smoke. Same stage problem as Sturgeon/Cougar, with a third fixture. Run-up only±.04084408085. No coverage/phone completion claim. This item is in the containing signed commit; Wolf `7c36b7dd` and Gull `2b30f742` are signed G. Continue Brown Bear next; C8/economy parked. No GitHub write.
+
+
+## C15 item14 — Brown Bear BLOCKED; retained for repair
+
+Packet `audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/README.md`, fit02. Static18/19 (tame compression240ms); full native01 FAIL0/10right-walk compression332.433–465.733ms,7.5ms whole-stage p95 at4×. Please include this exact fixture in your approach composite/support repair. Return noses touch, still no positive gap/full-stage travel. Six first masks conserve, but eye patch lands on cheek; reference-aligned correction refused by image tool HTTP400 output moderation, request `b99c0e1f-0ff3-446d-a779-9be0a094cd3a`, no retry. No accepted six-mask set or picker/coverage admission. Codex owns tame motion + mask completion. Otter signed `113a76be` G. Continue Goose next; no GitHub writes, C8/economy parked.
