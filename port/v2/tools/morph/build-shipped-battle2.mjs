@@ -28,7 +28,8 @@ for (const dir of FITS) { const record = JSON.parse(fs.readFileSync(path.join(R,
   for (const f of ['record.json', 'parts/manifest.json', 'parts/atlas/' + manifest.creatureId + '.png']) files.add(dir + f);
   gzipped.add(dir + 'binding.json');
   alphaOnly.add(dir + 'parts/keyed.png');
-  if (typeof record.source === 'string') files.add(repoRelativeSource(record.source));
+  // painter masters are NOT shipped (2026-09-25): Codex's pinned loader (C23, loadPinnedCreatureRigV1) admits a rig from the build pin's master
+  // hash and never fetches the master; cold/worker/offline controls proved zero master requests. The builder still reads it to emit the pin.
   const weapons = CARD_ARCHETYPES[FITS.indexOf(dir)].weapons; if (weapons) { const decl = JSON.parse(fs.readFileSync(path.join(R, weapons), 'utf8')); if (decl.recordHash !== record.recipeHash) throw Error('weapon declaration sealed for another record: ' + weapons); files.add(weapons); }
   const mdir = MARKINGS[FITS.indexOf(dir)]; if (fs.existsSync(path.join(R, mdir, 'markings.json'))) { files.add(mdir + 'markings.json'); const mj = JSON.parse(fs.readFileSync(path.join(R, mdir, 'markings.json'), 'utf8')); for (const v of Object.values(mj.patterns ?? {})) if (v?.file) files.add(path.posix.normalize(mdir + v.file)); } }
 fs.rmSync(OUT, { recursive: true, force: true });

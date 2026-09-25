@@ -21,14 +21,16 @@ describe('the shipped arena carries every painted archetype', () => {
     expect(BATTLE2_PARTS_FITS.map((f) => f.earthName)).toEqual(CARD_ARCHETYPES.map((a) => a.earthName));
     expect(BATTLE2_PARTS_FITS.length).toBeGreaterThanOrEqual(17);
   });
-  it('every file the wiring fetches exists at its served path, and the painted masks ship where they are bound', () => {
+  it('every file the wiring fetches exists at its served path, the painted masks ship where they are bound, and no painter master ships', () => {
     const missing: string[] = []; let masks = 0;
     for (const fit of BATTLE2_PARTS_FITS) {
       const need = (rel: string) => { if (!existsSync(served(rel))) missing.push(`${fit.earthName}: ${rel}`); };
       for (const f of ['record.json', 'binding.json.gz', 'parts/alpha.png', 'parts/manifest.json']) need(fit.dir + f);
       if (!existsSync(served(fit.dir + 'record.json'))) continue;
       const record = JSON.parse(readFileSync(served(fit.dir + 'record.json'), 'utf8')) as { source: string; recipeHash: string }, manifest = JSON.parse(readFileSync(served(fit.dir + 'parts/manifest.json'), 'utf8')) as { creatureId: string };
-      need(fit.dir + 'parts/atlas/' + manifest.creatureId + '.png'); need(auditAssetPath(repoRelativeSource(record.source)));
+      need(fit.dir + 'parts/atlas/' + manifest.creatureId + '.png');
+      // the painter master is NOT shipped (C23 pinned loader; 2026-09-25): it must be absent, so a regression that re-ships 26 MiB is caught
+      if (auditAssetPath(repoRelativeSource(record.source)) !== BATTLE2_ASSETS.civetMaster /* the landmark-fixture fallback's own image */ && existsSync(served(auditAssetPath(repoRelativeSource(record.source))))) missing.push(`${fit.earthName}: master shipped (${record.source})`);
       const mdir = fit.markingsDir ?? fit.dir;
       if (existsSync(served(mdir + 'markings.json'))) { const mj = JSON.parse(readFileSync(served(mdir + 'markings.json'), 'utf8')) as { recordRecipeHash: string; patterns: Record<string, { file: string }> };
         expect(mj.recordRecipeHash, fit.earthName + ': masks sealed for another record').toBe(record.recipeHash);
