@@ -129,6 +129,14 @@ export const COMBAT_STANCE_LABELS_V1: Readonly<Record<EncounterStanceV1, string>
   balanced: 'Balanced', press: 'Press — hit harder, take more', guard: 'Guard — take less, blunt openers', evade: 'Evade — dodge more, hit softer',
 });
 const PLAN_FORECAST_MEMO = new Map<string, NonNullable<CombatCardReadModelV1['planForecast']>>();
+/** Test seam: empties the plan-forecast memo. */
+export function clearCombatPlanForecastMemoV1(): void { PLAN_FORECAST_MEMO.clear(); }
+/** Key-sorted JSON (objects only; arrays keep order) — a memo key must not depend on property insertion order. */
+function canonicalJson(value: unknown): string {
+  if (value === null || typeof value !== 'object') return JSON.stringify(value) ?? 'undefined';
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
+  return `{${Object.keys(value as Record<string, unknown>).sort().map((k) => `${JSON.stringify(k)}:${canonicalJson((value as Record<string, unknown>)[k])}`).join(',')}}`;
+}
 
 /** The whole plan's Auto odds over deterministic sampled seeds (the same seed variation as the single forecast, across every fighter). */
 export function projectCombatPlanForecastV1(
@@ -140,8 +148,10 @@ export function projectCombatPlanForecastV1(
     const projected = championCombatant(champion);
     return { projected, stance, stats: projected.stats ?? battleStats(projected.genome as Genome) };
   });
-  const key = fighters.map((f) => `${statsSignature(f.projected.genome.seed >>> 0, f.stats)}:${f.stance}`).join('|')
-    + `|${encounter.defender.battleGenome.seed >>> 0}|${sampleSize}`;
+  // The COMPLETE combat identity (S20 finding: a seed-only defender key reused a weaker region's odds for the same Guardian — 44 % shown,
+  // 11 % true): every fighter's genome, stats and stance; the defender's whole battle genome, kind, name and phase; the sample size.
+  const key = canonicalJson({ fighters: fighters.map((f) => ({ genome: f.projected.genome, stats: f.stats, stance: f.stance, sig: statsSignature(f.projected.genome.seed >>> 0, f.stats) })),
+    defender: { genome: encounter.defender.battleGenome, kind: encounter.defender.kind, name: encounter.defender.name, phase: encounterHasGuardianPhaseV1(encounter.defender.kind) }, sampleSize });
   const memo = PLAN_FORECAST_MEMO.get(key);
   if (memo !== undefined) return memo;
   let wins = 0, decisive = 0;
