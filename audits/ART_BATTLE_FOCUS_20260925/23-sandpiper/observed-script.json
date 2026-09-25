@@ -1,0 +1,43 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Sandpiper",
+      "dn": "Sandpiper",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "side": "B",
+      "an": "Sandpiper",
+      "dn": "Sandpiper",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 24,
+      "hpB": 21
+    },
+    {
+      "an": "Sandpiper",
+      "dn": "Sandpiper",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Sandpiper",
+      "dn": "Sandpiper",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 24,
+      "hpB": 0
+    }
+  ],
+  "supports": "observed"
+}

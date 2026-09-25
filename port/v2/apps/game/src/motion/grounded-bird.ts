@@ -39,12 +39,12 @@ export function groundedBirdAction(card:BodyCard,action:MotionAction,base:Motion
   ...p,joints:i===0?{neck0:15,neck1:10,head:5}:{},root:i===0?{dx:-.12*ratio,dy:.06*ratio}:{dx:0,dy:0},
  }:{...p,root:{dx:p.root.dx*ratio,dy:p.root.dy*ratio}})});
  if(fits(compile(candidate)))return finish(candidate,action.id==='dodge'?'grounded-bird:neck-duck':'grounded-bird:leg-span-translation');
- // A short-legged recoil remains readable in its neck/head/tail while the
- // torso stays neutral. This is one authored complete curve, never a per-frame
+ // Recoil and a greeting bow remain readable in neck/head/tail while the
+ // torso stays neutral when its leg-span translation still cannot fit. This is one authored complete curve, never a per-frame
  // clamp, shifted foot target or suppression of a publication refusal.
- if(action.id==='hit'){
+ if(action.id==='hit'||action.id==='tame'){
   const recoil=freezeAction({...candidate,poses:candidate.poses.map(p=>({...p,joints:{...p.joints,root:0,pelvis:0,spine:0,chest:0},root:{dx:0,dy:0}}))});
-  if(fits(compile(recoil)))return finish(recoil,'grounded-bird:neck-recoil');
+  if(fits(compile(recoil)))return finish(recoil,action.id==='tame'?'grounded-bird:neck-bow':'grounded-bird:neck-recoil');
  }
  return finish(action,null);
 }

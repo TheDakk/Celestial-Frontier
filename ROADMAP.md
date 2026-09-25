@@ -81,3 +81,6 @@ Racer item21 (Earth rank14): packet21-racer/fit02 passes12/12static+945presentat
 
 
 Grouse item22: audits/ART_BATTLE_FOCUS_20260925/22-grouse finalfit03/mask-set03 passes14/14+1033presentation/exactrest; nativeobserved02 closes nearwing opening,0/0refusals,p957.4/max28.3ms4×,oneCPUoverbudget finalsettle. OtherlaneVitest23/23samples. Positive headgap; integratedfullstage/picker/phonegatependingClaude. Runtime839cac0b unchanged, no repeatedfull/S2; priorI5+acquisitiontimeout remain. Codex next Sandpiper thenrankedtop35; Capuchinawaitstailed-primate. C8/economyparked, noGitHubwrite.
+
+
+Sandpiper item23 finalfit02:14/14+1028presentation/exactrest; sixownmasks. Canonical tame neck-bow conditionalafter original/legspan refusal preservesexpression/override.10tests,S2six/13286identical,appTS/rootPASS; fullprofile5110pass/soleparkedI5red (earlieracquisitiontimeout didnotrecuronchangedsource). Proposednativeobserved01:0/0,p954.9/max10.6ms4×,zeroCPUoverbudget; otherlane0/22samples. Connectedpaint/positivebillgap. Claudeintegratedfullstage/picker/coveragepending. CodexnextDivingBeetle,Herring,WildHorseandremainingtop35; Capuchintemplateaskoutstanding. C8/economyparked.
