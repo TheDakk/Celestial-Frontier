@@ -1,0 +1,95 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "2d7f2bcc9841722ec7e2d19265462b61d8f844a6",
+  "helperSha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/master.png",
+      "sha256": "5c878a70e83b232ef7aa1d716f6deab99626a8292e2a9714d87d945b1187e2ee"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/authoring.json",
+      "sha256": "0e07ab71a32223646ed685477a13fce6da9c58339f8c114ae46d4565706bfeb6"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/subject-source.json",
+      "sha256": "b6e42cbd3b8967347a2d49bf5563d7ed5ca4a742703f8d5b16fe0f22c4445d54"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/presence.json",
+      "sha256": "8bf62a66eec2898911c649850b0a7d046640e0361b228ff98d3927c4933bf4c8"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "050cddedc732597f195ebed17582e37e1c7e9eaea348bbaaa0375e1554c806e7",
+  "bindingHash": "f4c790bae595ab04b63a039250c2777e5791e413e263238471d0837a573bdf24",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "arm8Seg0",
+    "arm9Seg0",
+    "arm10Seg0",
+    "arm11Seg0",
+    "arm0Seg0",
+    "arm0Seg1",
+    "arm0Seg2",
+    "arm1Seg0",
+    "arm1Seg1",
+    "arm1Seg2",
+    "arm2Seg0",
+    "arm2Seg1",
+    "arm2Seg2",
+    "arm3Seg0",
+    "arm3Seg1",
+    "arm3Seg2",
+    "arm4Seg0",
+    "arm4Seg1",
+    "arm4Seg2",
+    "arm5Seg0",
+    "arm5Seg1",
+    "arm5Seg2",
+    "arm6Seg0",
+    "arm6Seg1",
+    "arm6Seg2",
+    "arm7Seg0",
+    "arm7Seg1",
+    "arm7Seg2",
+    "bell",
+    "centre"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/master.png",
+      "sha256": "5c878a70e83b232ef7aa1d716f6deab99626a8292e2a9714d87d945b1187e2ee",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/authoring.json",
+      "sha256": "0e07ab71a32223646ed685477a13fce6da9c58339f8c114ae46d4565706bfeb6",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/subject-source.json",
+      "sha256": "b6e42cbd3b8967347a2d49bf5563d7ed5ca4a742703f8d5b16fe0f22c4445d54",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/presence.json",
+      "sha256": "8bf62a66eec2898911c649850b0a7d046640e0361b228ff98d3927c4933bf4c8",
+      "unchanged": true
+    }
+  ]
+}

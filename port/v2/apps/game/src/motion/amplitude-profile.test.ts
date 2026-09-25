@@ -59,3 +59,23 @@ it('independent motion-scale admission refuses undersized/oversized references w
  for(const span of [.041573,.079,.901]){const bad={...r,landmarks:{...r.landmarks,leg0FarRoot:[.5-span/2,.5],leg0NearRoot:[.5+span/2,.5]}};expect(()=>measureMotionScale({id:'brachyuran',graph:[]},bad.landmarks)).toThrow('outside');expect(()=>checkFamilyGeometry(bad)).toThrow('outside');expect([bad.landmarks.root,bad.landmarks.carapace]).toEqual(axis);}
  for(const span of [.08,.9])expect(measureMotionScale({id:'brachyuran',graph:[]},{leg0FarRoot:[0,.5],leg0NearRoot:[span,.5]}).length).toBe(span);
 });
+
+it('projects reordered radial arms by attachment side and distributes translucent chain bend',async()=>{
+ const {poseProjectionSigns}=await import('../../../../tools/creature-animation/pose-projection.mjs');
+ const r=structuredClone(fixtures.radial);
+ // Exchange an entire left/right chain. IDs cannot determine source direction.
+ for(let k=0;k<3;k++)[r.landmarks['arm0Seg'+k],r.landmarks['arm1Seg'+k]]=[r.landmarks['arm1Seg'+k],r.landmarks['arm0Seg'+k]];
+ const signs=poseProjectionSigns(r);for(let k=0;k<3;k++){expect(signs['arm0Seg'+k]).toBe(-1);expect(signs['arm1Seg'+k]).toBe(-1);}
+ const c=compileBodyCard({...r,identity:{...r.identity,earthName:null}}),tl=buildTimeline(c,'melee:sting-arms',133);
+ const max=(j:string)=>Math.max(...tl.tracks[j]!.map(k=>Math.abs(k.value)));
+ for(const p of c.parts.filter(p=>p.group==='arms')){expect(max(p.joint)).toBeGreaterThan(0);expect(max(p.joint)).toBeLessThan(.4);}
+ const {amplitudeProfile:ignored,...withoutProfile}=c;
+ const unbounded=buildTimeline(withoutProfile,'melee:sting-arms',133);
+ expect(Math.max(...unbounded.tracks.arm0Seg2!.map(k=>Math.abs(k.value)))).toBeGreaterThan(.9);
+ const projected=tl.tracks.arm0Seg0!.find(k=>k.value!==0)!,wrong=buildTimeline({...c,projectionSigns:{}},'melee:sting-arms',133).tracks.arm0Seg0!.find(k=>k.value!==0)!;
+ expect(projected.value).toBe(-wrong.value);
+ const scaled=compileAmplitudeProfile(c.parts.map(p=>({...p,boneLength:p.boneLength*4})),c.scaleLength*4,c.jointMaterials!);
+ expect(scaled).toEqual(c.amplitudeProfile);
+ const rigid=compileAmplitudeProfile(c.parts,c.scaleLength,Object.fromEntries(c.parts.map(p=>[p.joint,'chitinous'])));
+ expect(c.parts.filter(p=>p.group==='arms').every(p=>rigid.scales[p.joint]===1)).toBe(true);
+});

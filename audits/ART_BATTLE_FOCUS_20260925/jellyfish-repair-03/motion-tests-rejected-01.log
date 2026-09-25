@@ -1,0 +1,28 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ tests/motion-families.test.ts (17 tests | 1 failed) 526ms
+     × routes by family when the record omits template, refuses a family/template disagreement and an unroutable family 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/motion-families.test.ts > A11 synthetic fixtures and body cards > routes by family when the record omits template, refuses a family/template disagreement and an unroutable family
+TypeError: Cannot read properties of undefined (reading 'id')
+ ❯ poseProjectionSigns tools/creature-animation/pose-projection.mjs:5:22
+      3| export function poseProjectionSigns(record){
+      4|  if(record.projection===undefined){
+      5|   if(record.template.id!=='radial')return {};
+       |                      ^
+      6|   // The radial table alternates right/left by index. Authored arm num…
+      7|   // need not: project that convention onto each observed root attachm…
+ ❯ compileBodyCard apps/game/src/motion/body-card.ts:233:212
+ ❯ tests/motion-families.test.ts:92:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 5 passed (6)
+      Tests  1 failed | 66 passed (67)
+   Start at  02:34:24
+   Duration  4.15s (transform 707ms, setup 0ms, import 1.05s, tests 4.76s, environment 0ms)
+

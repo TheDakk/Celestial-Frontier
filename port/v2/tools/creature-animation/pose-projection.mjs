@@ -1,7 +1,19 @@
 /** Convert canonical backward-pointing bird-wing rotations into the authored
  * image plane. This changes coordinate basis, never clip timing or anatomy. */
 export function poseProjectionSigns(record){
- if(record.projection===undefined)return {};
+ if(record.projection===undefined){
+  if((record.template?.id??(record.family==='jelly'?'radial':record.family)??record.kind)!=='radial')return {};
+  // The radial table alternates right/left by index. Authored arm numbering
+  // need not: project that convention onto each observed root attachment.
+  const centre=record.landmarks.centre,signs={};
+  for(const [joint,p]of Object.entries(record.landmarks)){
+   const m=/^arm(\d+)Seg0$/.exec(joint);if(!m)continue;
+   const dx=p[0]-centre[0];if(Math.abs(dx)<1e-8)continue;
+   const canonical=Number(m[1])%2===0?1:-1,observed=dx>0?1:-1;
+   for(let k=0;k<3;k++)signs['arm'+m[1]+'Seg'+k]=observed/canonical;
+  }
+  return signs;
+ }
  if(record.projection==='source-pincers')return Object.fromEntries(pincerBasis(record).map(([j,angle])=>[j,angle<0?1:-1]));
  if(record.projection!=='frontal-wings'||record.template.id!=='biped-bird')throw Error('Pose projection: unsupported source view');
  const signs={};for(const side of['Near','Far']){const a=record.landmarks['wing'+side+'Root'],b=record.landmarks['wing'+side+'Tip'];if(!a||!b||Math.abs(b[0]-a[0])<.04)throw Error('Pose projection: wing has no lateral span');const sign=b[0]>a[0]?-1:1;signs['wing'+side+'Root']=sign;signs['wing'+side+'Tip']=sign;}

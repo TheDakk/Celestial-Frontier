@@ -1,0 +1,3 @@
+Create a transparent 1254 x 1254 PNG marking-mask texture. No creature, silhouette, background, checkerboard, text or labels. Draw only the following white pigment shapes on an otherwise empty alpha-zero canvas. Maintain exact canvas coordinates; no cropping or centering.
+Twenty separate irregular small white oval spots, diameters 10 to 22 pixels, scattered across x=350 to 900, y=150 to 335. Transparent gaps.
+All other pixels must have alpha zero. White is the mark; transparency is a real alpha hole.
