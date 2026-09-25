@@ -359,6 +359,15 @@ ingress code.
 > representative matrix still does not prove every possible bloodline, and formal
 > reset certification remains open under `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
 
+## v2 creature codes: share and friendly duel — matches code as of 2026-09-25
+
+- **Where.** A Compendium species detail you own has the ⚔ Friendly duel control (`friendly-duel.ts`).
+- **Share code.** The control now offers **Share code** for the selected companion (v1.8.9 `shareCreature`). It uses v1's codec verbatim: `encodeCreature({ genome, name })` gives `CFB-…`, named with the companion's nickname or else the species name.
+- **Champion code.** A companion with XP also offers **🏆 Champion code** (v1.6 `shareChampion`). It carries the level and decodes as an exhibition challenger.
+- **Delivery.** The code appears in a read-only box and is also offered to the clipboard; the box reads "Copied ✓" when the copy succeeds. Sharing writes nothing to the save.
+- **Round trip.** A friend pastes the code into their own Duel input. The decoded challenger has the same name, seed and battle stats (injuries and level are stripped unless it is a champion code).
+- **Test:** `tests/d16-cfb-export-outcome.test.ts`.
+
 ## 1. Overview
 Two coupled systems:
 

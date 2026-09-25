@@ -17,6 +17,7 @@
    on the V2 program roadmap. Atlas charting/favorites and rarity stings are live.
    Static deterministic Canvas species portraits and the preserved 43-biome landing vistas are live;
    retained Pixi actors, meshes, and portrait animation remain later work. */
+import { readSurveyFoldPrefV1, surveyRowsHtmlV1, writeSurveyFoldPrefV1 } from './survey-card-folds.js';
 import { createPaintedCardsForApp } from './painted-cards.js';
 import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin, RendererType, MeshPipe, Particle, ParticleContainer } from 'pixi.js';
 import { createSystemStarField } from './system-star-field.js';
@@ -846,6 +847,11 @@ function setAudioAccessibility(next: AudioAccessibilityModes): void {
   audioAccessibility = Object.freeze({ mono: next.mono === true, reducedIntensity: next.reducedIntensity === true });
   writeAudioAccessibilityPrefsV1(deviceAudioAccessibilityStorage(), audioAccessibility);
   tameGreetingAudioOwner?.syncSettings();
+}
+/* D18 folded survey card: a device reading preference (never the save); the folds' open/closed memory is the save's `cardExpand` bits 1/2. */
+let surveyFoldsOn = readSurveyFoldPrefV1(deviceAudioAccessibilityStorage());
+function surveyRowHtml([k, v, cls]: readonly [string, string, string?]): string {
+  return `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" class="survey-row"><span>${esc(k)}</span><br>${esc(v)}</div>`;
 }
 let combatBattleScene: CombatBattleSceneController | null = null;
 let smokeRejectNextArc4ActionStorage = false;
@@ -2203,6 +2209,7 @@ let sz0 = 0.40 * minWH() / SYS_R;
    the dock — the CF1806-02 burial class prevented structurally). esc covers
    quotes: keys/classes land in ATTRIBUTES (2026-08-01 exploit pass). ---- */
 const card = document.createElement('aside');
+if (surveyFoldsOn) card.dataset.surveyFolds = 'on';   /* D18: the device preference rides on the card; the flat card needs nothing else */
 card.id = 'survey';
 card.className = 'glass';
 card.dataset.panelBoundary = '';
@@ -2463,8 +2470,10 @@ function showSurvey(
     `<div data-sel="sub">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
     travelHtml +
     (actionsHtml || '') +   /* the card's ACTION ROW (Land · +Atlas · share) — buttons are trusted markup, never save text */
-    approachEcologyHtml + combatHtml + captureHtml + rarity + rows.map(([k, v, cls]) =>
-      `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" class="survey-row"><span>${esc(k)}</span><br>${esc(v)}</div>`).join('');
+    approachEcologyHtml + combatHtml + captureHtml + rarity + (card.dataset.surveyFolds === 'on'   /* D18: the folded card is an option (off = unchanged flat rows) */
+      ? surveyRowsHtmlV1(rows, { folds: true, cardExpand: save.cardExpand }, surveyRowHtml, esc)
+      : rows.map(([k, v, cls]) =>
+      `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" class="survey-row"><span>${esc(k)}</span><br>${esc(v)}</div>`).join(''));
   const captureMount = card.querySelector<HTMLElement>('[data-capture-card-body]');
   if (captureMount === null) captureCardController.detach();
   else {
@@ -2859,6 +2868,7 @@ function fillSettings(): void {
     `<div class="row"><label>Tooltips</label><button id="settips" aria-label="Tooltips" aria-pressed="${save.tipsOn}" class="${save.tipsOn ? 'on' : ''}" data-sel="set-tips" title="Short hints: hover on a computer, press and hold on a phone.">${save.tipsOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Confirm salvage</label><button id="setsalv" aria-label="Confirm before salvaging" aria-pressed="${save.salvageConfirm}" class="${save.salvageConfirm ? 'on' : ''}" data-sel="set-salvage" title="Ask before breaking gear down into parts.">${save.salvageConfirm ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Battle sounds</label><button id="setcombat" aria-label="Battle sounds" aria-pressed="${save.combatSfxOn}" class="${save.combatSfxOn ? 'on' : ''}" data-sel="set-combat" title="Hits, dodges and effects in battles (creature voices have their own switch).">${save.combatSfxOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Folded survey card</label><button id="setfold" aria-label="Folded survey card" aria-pressed="${surveyFoldsOn}" class="${surveyFoldsOn ? 'on' : ''}" data-sel="set-fold" title="Fold the environment and census rows of the survey card behind remembered toggles">${surveyFoldsOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Mono audio</label><button id="setmono" aria-label="Mono audio" aria-pressed="${audioAccessibility.mono}" class="${audioAccessibility.mono ? 'on' : ''}" data-sel="set-mono" title="Both ears hear every sound (one earbud, one speaker). Saved on this device.">${audioAccessibility.mono ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Reduced intensity</label><button id="setsoft" aria-label="Reduced intensity" aria-pressed="${audioAccessibility.reducedIntensity}" class="${audioAccessibility.reducedIntensity ? 'on' : ''}" data-sel="set-soft" title="Quieter, gentler sound with no sudden loud peaks. Saved on this device.">${audioAccessibility.reducedIntensity ? 'On' : 'Off'}</button></div>` +
     renderArc9ExplorerNameSettingV1(
@@ -3009,6 +3019,11 @@ function fillSettings(): void {
     refillAndFocus('#setcombat'); void persistView();
   });
   /* Device preferences, not save state: no persistView (audio-accessibility-prefs.ts) */
+  el.querySelector('#setfold')!.addEventListener('click', () => {
+    surveyFoldsOn = !surveyFoldsOn; writeSurveyFoldPrefV1(deviceAudioAccessibilityStorage(), surveyFoldsOn);
+    if (surveyFoldsOn) card.dataset.surveyFolds = 'on'; else delete card.dataset.surveyFolds;   /* the next card follows */
+    refillAndFocus('#setfold');
+  });
   el.querySelector('#setmono')!.addEventListener('click', () => {
     setAudioAccessibility({ ...audioAccessibility, mono: !audioAccessibility.mono });
     refillAndFocus('#setmono');
@@ -9076,6 +9091,18 @@ card.addEventListener('click', async (e) => {
     return;
   }
   const act = (e.target as HTMLElement).closest('[data-act]');
+  const foldHead = (e.target as HTMLElement).closest<HTMLElement>('[data-gtoggle]');
+  if (foldHead) {   /* D18: fold/unfold in place (no rebuild, focus stays), remembered in the save's `cardExpand` bits 1/2 like v1 */
+    const bit = Number(foldHead.dataset.gtoggle) | 0;
+    if (bit === 1 || bit === 2) {
+      save.cardExpand = (save.cardExpand ^ bit) & 31;
+      const open = (save.cardExpand & bit) !== 0;
+      foldHead.closest('.grp')?.classList.toggle('open', open);
+      foldHead.setAttribute('aria-expanded', String(open));
+      void persistView();
+    }
+    return;
+  }
   if (!act) return;
   const keyboard = document.activeElement === act;
   const a = (act as HTMLElement).dataset.act;
@@ -9313,14 +9340,15 @@ async function fabricateEngineeringBatch(baseId: string, repeat: number): Promis
    committed active-play clock (friendly-duel.ts). Publication copies only the duel's own fields (counters + the companion's Compendium
    mirror row) and the committed ownership. */
 let lastFriendlyDuelOutcome: string | null = null;
-const friendlyDuelController = new FriendlyDuelController({ onAction: (request) => { void runFriendlyDuel(request); } });
+const friendlyDuelController = new FriendlyDuelController({ onAction: (request) => { void runFriendlyDuel(request); },
+  copy: async (text) => { try { await navigator.clipboard.writeText(text); return true; } catch { return false; } } });
 function projectCurrentFriendlyDuel(row: readonly [string, CodexRecord] | null): FriendlyDuelReadModelV1 | null {
   const ownership = arc5OwnershipState, runtime = f4Runtime;
   if (row === null || compendiumFixtureRows !== null || ownership?.mode !== 'current' || runtime === null
     || arc5OwnershipProtection !== null || row[1].kind !== 'Fauna') return null;
   try {
     return projectFriendlyDuelV1({ ownershipV2: ownership, extensions: runtime.extensions,
-      speciesId: canonicalGenomeIdentityV1(row[1].g as never).speciesId, observedActivePlayMs: runtime.diagnostics().activePlayMs });
+      speciesId: canonicalGenomeIdentityV1(row[1].g as never).speciesId, observedActivePlayMs: runtime.diagnostics().activePlayMs, speciesName: row[1].name });
   } catch {
     return null;
   }
