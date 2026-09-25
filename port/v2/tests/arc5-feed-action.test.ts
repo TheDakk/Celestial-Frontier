@@ -557,4 +557,16 @@ describe('Arc 5 headless durable feed action', () => {
     expect(reads).toBe(0);
     await fixture.runtime.release();
   });
+
+  it('D13: Main passes the active-play clock — the meal still commits (an exact-key capture once refused it as invalid input); a malformed clock is refused before any receipt', async () => {
+    const fixture = await runtimeFixture();
+    const bad = await commitArc5FeedActionV1({ ...actionInput(fixture), activePlayMs: -1 });
+    expect(bad).toMatchObject({ kind: 'refused', detail: 'input:invalid-or-unregistered', transaction: null });
+    expect(fixture.receiptCas()).toBe(0);
+    const outcome = await commitArc5FeedActionV1({ ...actionInput(fixture), activePlayMs: 5_000 });
+    expect(outcome.kind).toBe('committed');
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.settlement.witness).toContain('"activePlayMs"');
+    expect(fixture.receiptCas()).toBe(1);
+  });
 });
