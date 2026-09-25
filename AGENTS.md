@@ -18,6 +18,12 @@ release / deploy (Nick's word, `GITHUB_ACTIONS_BUDGET.md`), a sealed gate or mea
 or re-bound, a signing refusal one retry does not clear, or the work being done. This overrides the older "ask Nick
 before a materially larger loop" line for work inside an authorized program.
 
+**Lane mailboxes — no relay through Nick (2026-09-25, `audits/OPERATING_MODEL_20260925/README.md`).** Each lane writes asks for the other only
+in its own worktree (`audits/MAILBOX/TO_CODEX.md` in `anthropic/mac`, `audits/MAILBOX/TO_CLAUDE.md` in `openai/mac`) and READS the other
+lane's mailbox by absolute path at the start of every run and at every batch end. The worktrees share one object store, so each lane
+merges the other's SIGNED commits straight from `HEAD..openai/mac` / `HEAD..anthropic/mac` without waiting for a push. Nick's open
+questions live in `anthropic/mac` `audits/MAILBOX/DECISIONS.md`, each with a recommended default.
+
 **Agent token conservation:** OpenAI/Codex and Anthropic/Claude Code both use
 concise updates, relevant-only reads, batched checks, and only bounded delegation.
 Do not repeat unchanged status/audits or continue after acceptance is met. Ask
