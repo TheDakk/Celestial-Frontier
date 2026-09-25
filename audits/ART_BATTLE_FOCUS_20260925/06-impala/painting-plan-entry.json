@@ -1,0 +1,29 @@
+{
+  "name": "Antelope",
+  "exemplar": "Impala",
+  "covers": [
+    "Antelope",
+    "Impala",
+    "Gazelle",
+    "Springbok",
+    "Kudu",
+    "Eland",
+    "Hartebeest",
+    "Oryx",
+    "Saiga",
+    "Pronghorn",
+    "Bongo",
+    "Duiker",
+    "Nilgai",
+    "Gerenuk"
+  ],
+  "bodyPlan": "quadruped",
+  "mustPaint": [
+    "ringed lyre-shaped horns swept up and back",
+    "deep chest on very fine long legs with small hooves",
+    "short flicking tail; large upright ears on a narrow head",
+    "tan flank over a pale belly as soft shading only, with no stripes or face mask",
+    "masks: striped = kudu/bongo white flank stripes, banded = gazelle/springbok flank band"
+  ],
+  "why": "14 misleading, the biggest hoofed cluster. The horn shape stays wrong for spiral or straight-horned species (Kudu, Eland, Oryx), and Gerenuk's neck is too short, so those are caveat. Every one moves from a spotted small carnivore to a correct horned antelope."
+}

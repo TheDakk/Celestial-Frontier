@@ -1,0 +1,100 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "fe61a448075bb0c395c74ac939c1fa3da648bfca",
+  "helperSha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/master.png",
+      "sha256": "abad16f380bf27e2a17123882dd1ba027e196f10a180f299dbb470663e2b031a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/authoring.json",
+      "sha256": "3195de14123c30376ee066466497f5c1aed73ec486f636ee78b008296356eb0d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/subject-source.json",
+      "sha256": "d65c1c12400d4548d222da36dff910062cc0535f16bf807f2a93046a446490df"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "67995957626fe39620ab4600fef284c497b07998c5011c6d5a0a4920df823670",
+  "bindingHash": "e347dca4508c73c3b606cce17b153558a19001519da01e0b14a83e5459ba9dfc",
+  "contactEndpoints": [
+    "hindFarAnkle",
+    "foreFarAnkle",
+    "hindNearAnkle",
+    "foreNearAnkle"
+  ],
+  "shapeJoints": [
+    "hindNearAnkle",
+    "hindNearPaw",
+    "hindNearKnee",
+    "hindNearRoot",
+    "foreNearAnkle",
+    "foreNearPaw",
+    "foreNearKnee",
+    "foreNearRoot",
+    "hindFarAnkle",
+    "hindFarPaw",
+    "hindFarKnee",
+    "hindFarRoot",
+    "foreFarAnkle",
+    "foreFarPaw",
+    "foreFarKnee",
+    "foreFarRoot",
+    "earNearTip",
+    "earNearRoot",
+    "earFarTip",
+    "earFarRoot",
+    "jaw",
+    "head",
+    "neck",
+    "chest",
+    "spine",
+    "pelvis",
+    "tail3",
+    "tail2",
+    "tail1",
+    "tail0"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/master.png",
+      "sha256": "abad16f380bf27e2a17123882dd1ba027e196f10a180f299dbb470663e2b031a",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/authoring.json",
+      "sha256": "3195de14123c30376ee066466497f5c1aed73ec486f636ee78b008296356eb0d",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/subject-source.json",
+      "sha256": "d65c1c12400d4548d222da36dff910062cc0535f16bf807f2a93046a446490df",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}
