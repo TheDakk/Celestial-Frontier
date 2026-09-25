@@ -7171,3 +7171,12 @@ all earlier samples after a restriction and the entire prior pass if that check
 restricts again. All3,872 composite poses still admit at the returned displacement;
 rest failures remain fatal. Packet audits/C22_LAYERED_REACH_20260925 retains22
 before/after diagnostic cases, exact admissions and non-monotone mutation controls.
+
+C23 loader (matches code 2026-09-25): `loadPinnedCreatureRigV1` adds an exact
+bundled-pin/bytes entry point; existing byte admission and pinned admission
+share `createAdmittedCreatureRig` privately. `admitFamilyRecordContent` and
+`admitRecordContent` own the shared semantic checks; they alone confer no
+asset authority or allocation permission. The arena preflight precedes mask
+fetch/cache acquisition and its pin failures fail the study without a master
+fallback. Secondary renderer teardown uses `{removeView:true,
+releaseGlobalResources:false}` to preserve the live main renderer's pools.

@@ -43,9 +43,13 @@ export function checkGeometry(record, alpha){
 }
 export async function sealRecord(input){const record=structuredClone(input);record.boundsCheck=checkGeometry(record);record.recipeHash=await hashJSON(record);return record;}
 export async function admitRecord(record,cutoutBytes,alpha){
+  assert(await hashBytes(cutoutBytes)===record.geometry.cutoutAssetHash,'mismatched cut-out hash');
+  return admitRecordContent(record,alpha);
+}
+/** Record semantics shared by byte admission and the private build-pin loader. */
+export async function admitRecordContent(record,alpha){
   const {recipeHash,...body}=record;
   assert(await hashJSON(body)===recipeHash,'corrupted landmark / recipe hash');
-  assert(await hashBytes(cutoutBytes)===record.geometry.cutoutAssetHash,'mismatched cut-out hash');
   assert(typeof record.identity.speciesVisualKey==='string'&&record.identity.speciesVisualKey.length>5&&Number.isInteger(record.identity.seed)&&record.identity.ownerId,'identity');
   assert(stableJSON(checkGeometry(record,alpha))===stableJSON(record.boundsCheck),'stale bounds / lengths');
   return true;

@@ -783,3 +783,14 @@ candidate directly; earlier poses are rechecked at the final candidate, and any
 further restriction invalidates the entire prior pass. No monotonic-contact
 assumption, contact limit, stance cap, reserve or publication guard changes.
 Measured desktop diagnostics and adversarial controls: audits/C22_LAYERED_REACH_20260925.
+
+C23 (2026-09-25): `loadPinnedCreatureRigV1` accepts only a genuine object from
+Claude's private generated pin registry and exact alpha/binding/atlas bytes.
+It snapshots inputs, checks the pin before record access, repeats the byte
+preflight, decodes the pinned alpha and shares semantic record admission plus
+one private binding/skin/seam allocation tail with `loadCreatureRigV1`. The old
+master-byte path remains supported. No caller hash or skip-validation flag.
+Cold/controlled-worker/offline picker controls are in audits/C23_PINNED_LOADER_20260925.
+The secondary battle renderer removes its own view without releasing global
+Pixi resources still owned by the main game renderer. Masters remain packaged
+until Claude applies the removal and remeasures the integrated pack.

@@ -9,7 +9,9 @@ import {createArapScratch,solveArapSkin} from '../../../tools/creature-animation
 import {createCompiledSkinField,applyCompiledSkinField} from '../../../tools/creature-animation/compiled-skin-field.mjs';
 import {createOpaqueSeamSamplingGuard} from '../../../tools/creature-animation/seam-sampling-guard.mjs';
 import {hashBytes, hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
-import {admitFamilyRecord} from '../../../tools/creature-animation/family-record.mjs';
+import {admitFamilyRecord,admitFamilyRecordContent} from '../../../tools/creature-animation/family-record.mjs';
+import {isBattle2MasterPin} from './battle2-master-pins.generated.js';
+import {preflightBattle2PinnedBytesV1,Battle2PinRefusal,type Battle2PinnedBytesV1} from './battle2-master-pin-admission.js';
 import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
 import {decodePng} from './morph/png-decode.js';
 
@@ -128,9 +130,33 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
   cutoutBytes:Uint8Array,cutoutAlpha:Uint8Array,atlasBytes:Uint8Array,
   decodeAtlas:(bytes:Uint8Array)=>Promise<Texture>=decodeAtlasPng,
   options:CreatureRigLoadOptions={}):Promise<CreatureRigV1>{
-  const ownsAtlas=options.borrowedAtlas!==true;
   const record=structuredClone(recordInput),binding=structuredClone(bindingInput);
   const template=await admitFamilyRecord(record,cutoutBytes,cutoutAlpha);
+  return createAdmittedCreatureRig(record,binding,template,atlasBytes,decodeAtlas,options);
+}
+/** The only master-free loader: a genuine bundled pin plus its exact bytes.
+ * Snapshot caller-owned inputs before awaiting; no receipt-shaped object or
+ * caller hash can bypass the preflight, and no alpha array can replace decode. */
+export async function loadPinnedCreatureRigV1(input:Battle2PinnedBytesV1,
+  decodeAtlas:(bytes:Uint8Array)=>Promise<Texture>=decodeAtlasPng,
+  options:CreatureRigLoadOptions={}):Promise<CreatureRigV1>{
+  if(!isBattle2MasterPin(input.pin))throw new Battle2PinRefusal('untrusted-pin-authority','not a bundled build pin');
+  const snapshot={pin:input.pin,creatureId:input.creatureId,record:structuredClone(input.record),
+    alphaPath:input.alphaPath,alpha:input.alpha.slice(),bindingBytes:input.bindingBytes.slice(),
+    atlasPath:input.atlasPath,atlas:input.atlas.slice()};
+  const admitted=await preflightBattle2PinnedBytesV1(snapshot);
+  const decoded=await decodePng(snapshot.alpha);
+  const alpha=new Uint8Array(decoded.width*decoded.height);
+  for(let i=0;i<alpha.length;i++)alpha[i]=decoded.rgba[i*4+3]!;
+  const record=snapshot.record as CreatureRigRecordV1,binding=admitted.binding as CreaturePartsBindingV1;
+  const template=await admitFamilyRecordContent(record,alpha);
+  return createAdmittedCreatureRig(record,binding,template,snapshot.atlas,decodeAtlas,options);
+}
+/** One private allocation/admission tail for both byte and build-pin authority. */
+async function createAdmittedCreatureRig(record:CreatureRigRecordV1,binding:CreaturePartsBindingV1,
+  template:Awaited<ReturnType<typeof admitFamilyRecord>>,atlasBytes:Uint8Array,
+  decodeAtlas:(bytes:Uint8Array)=>Promise<Texture>,options:CreatureRigLoadOptions):Promise<CreatureRigV1>{
+  const ownsAtlas=options.borrowedAtlas!==true;
   const joints=[...template.joints];
   requireValue(binding?.schema==='cf.creature-parts/v1','unsupported parts schema');
   const {bindingHash,...body}=binding;
