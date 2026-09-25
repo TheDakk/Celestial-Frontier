@@ -1,0 +1,7 @@
+{
+  "tool": "image_gen.imagegen",
+  "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-55af645c-f6a8-48e8-8680-892f2cea9704.png",
+  "promptSha256": "30998a76ab0c2ca35af706237a3d93959adaff8d1dccff74b36a72b8c909e4e3",
+  "masterSha256": "cd1a2cd6aecb629019d576abe64b50f549f95a4efa2cb8c58744aa5b0a9601f2",
+  "anatomy": "Manual review: right-facing sturgeon, four snout barbels, two downward pectorals, two pelvic fins, one anal and one posterior dorsal fin, heterocercal tail. All within frame. Fresh image output, not asserted pixel-identical to prior master."
+}
