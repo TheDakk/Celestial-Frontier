@@ -1,0 +1,9 @@
+{
+  "audits/MOTION_ANATOMY_20260923/CODEX_PROMPT.md": "35c8d16adb3ecae5f469de2112fafb7900bc95034040680fa6f3b21a237ae61a",
+  "audits/PAINTED_STAND_INS_20260924/README.md": "e6706282ff0a052b6513da55d0c71e7a5a32aaf22b240b0ee7a3df8848cb8266",
+  "audits/COVERAGE_STUDY_20260924/README.md": "f3ac07d5225d714fbecfb265bd3c0941b2b420cde1d4a234052c423d69a14208",
+  "audits/COVERAGE_STUDY_20260924/painting-plan.json": "e05c97a4cd1ed6f33743dcd83f33a9aa66b6c38270155650df1d72ba0a89acf8",
+  "audits/BATTLE2_LIBRARY_20260924/README.md": "25eb617f878b6e2182bbaf07af0be81300c1a394d66e9af6c41209d83f4b68de",
+  "port/v2/budgets/compendium-memory-v1.json": "c109b5845b12862bbd8fa069b6f8e394b48d9d8568d8537f20565b63c5d907fc",
+  "port/v2/tests/compendium-budget.test.ts": "e6280ccfb7dcd380ea024989a48f020335e93d025f1dde4bdc51f29ec20969cf"
+}
