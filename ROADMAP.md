@@ -109,3 +109,5 @@ Honeybee item28: audits/ART_BATTLE_FOCUS_20260925/28-honeybee fit02 +mask-set02,
 Priority update Nick: after Ratitem29 finish, C26chunkedownbranchpush under2GB, acknowledgeC21, C22cheaperreach, C23pinnedloader+controls, C24roottsc, C25actualintegratedsourcefilms, then§20balancetool. Ratfit03all19static/sixmasks/fullproposed0/0p954.8max11.3ms4×/zeroover; actualsourceheadspacingfilmstillneeded. Hare/thirdtensheetoutstanding, no furtherpaintstarted. C8parked.
 
 C26 DONE: origin/openai/mac nowdae190a5 afterfourmeasured<2GBpushes. Packet audits/C21_C26_HANDOFF_20260925. C21acknowledged; C22reachoptimizationinprogress, thenC23loader,C24types,C25actualsourcefilms,§20balance. NoActions/labels.
+
+C22 reach helper completed: same22 admissions and3,872sample guarantee, fewer rescans; desktop Centipede2878.32→1175.41ms. Audit C22_LAYERED_REACH_20260925. Nick's sequence continues C23pinnedloader, C24roottypes, C25actualClaude-source films,§20balance. C8remainsparked.

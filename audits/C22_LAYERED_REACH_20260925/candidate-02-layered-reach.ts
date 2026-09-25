@@ -2,10 +2,10 @@
  * motion envelope, not a replacement for contact/skin admission at publication.
  * The caller keeps its existing stance cap and reserve. Historical isolated
  * measureStanceReach and all contact/override limits remain unchanged. */
-import type {CreaturePoseV1,CreatureRigRecordV1} from './creature-rig.js';
-import {createFamilyContactSolver,type ContactSupport} from './creature-rig-contact.js';
-import {compileBodyCard,type BodyCard,type ResolvedAnatomyRecord} from './motion/body-card.js';
-import {buildTimeline,sampleTimeline,type MotionTimeline} from './motion/timeline.js';
+import type {CreaturePoseV1,CreatureRigRecordV1} from '/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig.js';
+import {createFamilyContactSolver,type ContactSupport} from '/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/creature-rig-contact.js';
+import {compileBodyCard,type BodyCard,type ResolvedAnatomyRecord} from '/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/body-card.js';
+import {buildTimeline,sampleTimeline,type MotionTimeline} from '/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/src/motion/timeline.js';
 
 const GAIT_STEPS=120,IDLE_STEPS=32,BISECTIONS=8;
 type RecordInput=ResolvedAnatomyRecord&CreatureRigRecordV1&{genome?:Parameters<typeof compileBodyCard>[1]};
@@ -31,28 +31,22 @@ export function measureLayeredStanceReach(record:RecordInput,supports:Readonly<R
  // conservative than testing only the growing displacement of one cadence.
  const checkRow=(row:typeof poses[number],d:number)=>{try{solver.resolve(row.pose,{actionId:gait.actionId,elapsedMs:row.ms,durationMs:gait.durationMs,weight:1,realm:card.realm,travel:'stage',stageDisplacement:d});return null;}catch(e){return{ms:row.ms,idleFraction:row.idleFraction,displacement:d,error:String(e)};}};
  for(const row of poses){const rest=checkRow(row,0);if(rest)throw Error('Layered stance reach: zero-displacement composite refuses '+JSON.stringify(rest));}
- // Preserve the full sample lattice and contact solver; reduce repeated scans.
- const grid=2**BISECTIONS;
- const {gridIndex,firstRefusal}=measureCommonSampleGrid(poses,grid,(row,index)=>checkRow(row,maximumPerStance*index/grid));
- const lo=maximumPerStance*gridIndex/grid;
- return{applicable:true,admitted:lo,poseSamples:poses.length,firstRefusal};
-}
-
-/** A common positive sample grid; earlier passes are not assumed monotone.
- * Exported for adversarial non-monotone controls. */
-export function measureCommonSampleGrid<T,F>(poses:readonly T[],grid:number,checkRow:(row:T,index:number)=>F|null){
- if(!Number.isInteger(grid)||grid<1||poses.length===0)throw Error('Layered stance reach: invalid sample grid');
- let candidate=grid,firstRefusal:F | null=null;
- const restrict=(row:T)=>{
+ // Same 8-bit displacement lattice, all 3,872 poses, unchanged contact solver.
+ // Restrict the candidate at each failing pose instead of rescanning all poses
+ // at every bisection. A final full pass is mandatory: no monotonicity assumption
+ // about earlier rows may turn a smaller displacement into an admission.
+ const grid=2**BISECTIONS;let candidate=grid,firstRefusal:ReturnType<typeof checkRow>=null;
+ const restrict=(row:typeof poses[number])=>{
   let low=0,high=candidate;
-  while(high-low>1){const middle=Math.floor((low+high)/2),failure=checkRow(row,middle);if(failure){high=middle;firstRefusal=failure;}else low=middle;}
+  while(high-low>1){const middle=Math.floor((low+high)/2),failure=checkRow(row,maximumPerStance*middle/grid);if(failure){high=middle;firstRefusal=failure;}else low=middle;}
   candidate=low;if(!candidate)throw Error('Layered stance reach: no positive admitted cadence');
  };
  let earlierRowsThrough=-1;
- for(let i=0;i<poses.length;i++){const row=poses[i]!,failure=checkRow(row,candidate);if(failure){firstRefusal=failure;restrict(row);earlierRowsThrough=i;}}
+ for(let i=0;i<poses.length;i++){const row=poses[i]!,failure=checkRow(row,maximumPerStance*candidate/grid);if(failure){firstRefusal=failure;restrict(row);earlierRowsThrough=i;}}
  // Rows after the last restriction already passed at the final candidate.
  // Revalidate only its earlier prefix. If that changes the candidate again,
  // invalidate the entire prior pass, including its suffix, and restart.
- for(let i=0;i<=earlierRowsThrough;i++){const row=poses[i]!,failure=checkRow(row,candidate);if(failure){firstRefusal=failure;restrict(row);earlierRowsThrough=poses.length-1;i=-1;}}
- return {gridIndex:candidate,firstRefusal};
+ for(let i=0;i<=earlierRowsThrough;i++){const row=poses[i]!,failure=checkRow(row,maximumPerStance*candidate/grid);if(failure){firstRefusal=failure;restrict(row);earlierRowsThrough=poses.length-1;i=-1;}}
+ const lo=maximumPerStance*candidate/grid;
+ return{applicable:true,admitted:lo,poseSamples:poses.length,firstRefusal};
 }

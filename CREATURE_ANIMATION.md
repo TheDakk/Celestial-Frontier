@@ -776,3 +776,10 @@ This applies only to canonical `buildTimeline` selection. The editor's `buildAct
 `motion/grounded-quadruped.ts` selects canonical land/amphibious gallop and cast curves only after the original fails the unchanged REST contact probe. A single constant gain reduces root translation and root/pelvis/spine/chest rotations across the whole authored curve. Limb stride, neck/head expression, secondary motion, phases and duration remain unchanged. It probes the complete candidate, refuses to substitute when even zero torso excursion fails, and retains a ten-percent excursion reserve after bounded gain search. This reserve reduces motion; it does not change any contact or skin allowance. Passing canonical curves remain byte-identical. The weak cache has at most two action entries per card and invalidates on complete card/action/compiled-input changes.
 
 Selection occurs only in `buildTimeline`; reviewed editor `buildActionTimeline` and override gates remain unchanged. Observed painted-support contact and skin publication still determine admission. The Salamander repair packet `audits/ART_BATTLE_FOCUS_20260925/salamander-motion-01/` takes its unchanged fit05 from17/19 to19/19 static actions and1,557 presentation samples with exact rest, while six S2 subjects/13,286 samples remain byte-identical. Its stage spacing/picker/coverage gate is separate and remains open.
+
+C22 (2026-09-25): battle2 layered stance measurement retains the 121 gait ×32
+idle lattice and 8-bit displacement grid. A failing pose now restricts the shared
+candidate directly; earlier poses are rechecked at the final candidate, and any
+further restriction invalidates the entire prior pass. No monotonic-contact
+assumption, contact limit, stance cap, reserve or publication guard changes.
+Measured desktop diagnostics and adversarial controls: audits/C22_LAYERED_REACH_20260925.

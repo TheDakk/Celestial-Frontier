@@ -38,3 +38,25 @@ it.each(['18-ibex/fit-02','11-wolf/fit-03'])('admits independently phased compos
  expect(()=>measureLayeredStanceReach(r,{},.51,card)).toThrow('existing stage cap');
  expect(()=>measureLayeredStanceReach(r,{},.5,{...card,recipeHash:'other'})).toThrow('identity mismatch');
 });
+
+import {measureCommonSampleGrid} from './creature-layered-stance-reach.js';
+it('rechecks earlier poses and invalidates the suffix after another restriction',()=>{
+ const seen=new Map<number,Set<number>>();
+ const check=(row:number,d:number)=>{
+  (seen.get(row)??(seen.set(row,new Set()),seen.get(row)!)).add(d);
+  return (row===0?(d===8||d<=2):row===1?(d===8||d===4||d<=1):d<=4)?null:{row,d};
+ };
+ // row2 reduces8 to4; row0 refuses4 and reduces to2; row1 refuses2.
+ const m=measureCommonSampleGrid([0,1,2],8,check);
+ expect(m.gridIndex).toBe(1);
+ for(const r of[0,1,2])expect(seen.get(r)?.has(1)).toBe(true);
+});
+it('does one candidate pass when all samples accept the cap',()=>{
+ let calls=0;const m=measureCommonSampleGrid([0,1,2],256,()=>{calls++;return null;});
+ expect(m.gridIndex).toBe(256);expect(calls).toBe(3);expect(m.firstRefusal).toBeNull();
+});
+it('refuses a zero-only lattice and malformed/empty grids',()=>{
+ expect(()=>measureCommonSampleGrid([0],8,(_r,d)=>d>0?'refusal':null)).toThrow('no positive');
+ expect(()=>measureCommonSampleGrid([],8,()=>null)).toThrow('invalid sample grid');
+ expect(()=>measureCommonSampleGrid([0],1.5,()=>null)).toThrow('invalid sample grid');
+});

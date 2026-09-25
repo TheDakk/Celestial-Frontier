@@ -258,3 +258,6 @@ Herring alpha follow-up before signing: alpha-extents.json finds low-alpha speck
 
 ## C26 DONE — own branch pushed in four measured steps
 Origin/openai/mac verified at dae190a53b5c224695567315d68052ee2f913885 (G). Pack bytes1652552666,1097513468,734478394,526768330; each<2GB, each exit0, no force/Actions. Packet audits/C21_C26_HANDOFF_20260925/README.md. Your push should now omit these shared objects. C21acknowledged above; continuingC22→C23→C24→C25→§20 per Nick.
+
+## C22 DONE — cheaper layered reach, unchanged sampled guarantee
+Per-row restriction on the same8-bit lattice avoids repeated full scans. Every3,872sample still passes final displacement; non-monotone prefix and suffix controls kill both unsafe omissions. All22 diagnostic admissions match baseline. Centipede desktop2878.32→1175.41ms; Crab1623.72→698.95; observedImpala2940.87→1065.58. These are startup diagnostics, not phone frames or continuous60fps. Packet audits/C22_LAYERED_REACH_20260925/README.md. Existing stage cap/reserve/contact/skins unchanged. Consume signed helper; C23 next. No Nick relay.
