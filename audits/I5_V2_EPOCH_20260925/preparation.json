@@ -1,0 +1,182 @@
+{
+  "sourceHead": "b4f191c3538f78318a183705f89272b38b88118e",
+  "remoteHead": "b4f191c3538f78318a183705f89272b38b88118e",
+  "signature": "G",
+  "includesPaintedBound": "ffa1f126",
+  "checkout": "/private/tmp/cf-i5-v2-b4f191c3",
+  "node": "v26.9.0",
+  "v2LockSha256": "744f7c5079d0892fee85d6d2af20c343955ff0d47bda9cce8368d9babd6d1402",
+  "dependencies": "copied installed dependencies under identical lock; relative workspace symlinks confined to isolated source",
+  "symlinks": [
+    {
+      "path": "port/v2/node_modules/.bin/tldts",
+      "target": "../tldts/bin/cli.js"
+    },
+    {
+      "path": "port/v2/node_modules/.bin/nanoid",
+      "target": "../nanoid/bin/nanoid.cjs"
+    },
+    {
+      "path": "port/v2/node_modules/.bin/acorn",
+      "target": "../acorn/bin/acorn"
+    },
+    {
+      "path": "port/v2/node_modules/.bin/rolldown",
+      "target": "../rolldown/bin/cli.mjs"
+    },
+    {
+      "path": "port/v2/node_modules/.bin/vitest",
+      "target": "../vitest/vitest.mjs"
+    },
+    {
+      "path": "port/v2/node_modules/.bin/tsc",
+      "target": "../typescript/bin/tsc"
+    },
+    {
+      "path": "port/v2/node_modules/.bin/mustache",
+      "target": "../mustache/bin/mustache"
+    },
+    {
+      "path": "port/v2/node_modules/.bin/semver",
+      "target": "../semver/bin/semver.js"
+    },
+    {
+      "path": "port/v2/node_modules/.bin/vite",
+      "target": "../vite/bin/vite.js"
+    },
+    {
+      "path": "port/v2/node_modules/.bin/specificity",
+      "target": "../@bramus/specificity/bin/cli.js"
+    },
+    {
+      "path": "port/v2/node_modules/.bin/mime",
+      "target": "../mime/cli.js"
+    },
+    {
+      "path": "port/v2/node_modules/.bin/why-is-node-running",
+      "target": "../why-is-node-running/cli.js"
+    },
+    {
+      "path": "port/v2/node_modules/.bin/free-tex-packer-cli",
+      "target": "../free-tex-packer-cli/index.js"
+    },
+    {
+      "path": "port/v2/node_modules/.bin/pixelmatch",
+      "target": "../pixelmatch/bin/pixelmatch"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-speciestraits",
+      "target": "../../packages/domain/speciestraits"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-acquisition",
+      "target": "../../packages/domain/acquisition"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-worldidentity",
+      "target": "../../packages/domain/worldidentity"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/art",
+      "target": "../../packages/art"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-rand",
+      "target": "../../packages/domain/rand"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-opportunity",
+      "target": "../../packages/domain/opportunity"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-encutil",
+      "target": "../../packages/domain/encutil"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-biome-profile",
+      "target": "../../packages/domain/biome-profile"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-surveyphrases",
+      "target": "../../packages/domain/surveyphrases"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-combatcore",
+      "target": "../../packages/domain/combatcore"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/game",
+      "target": "../../apps/game"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-worldgen",
+      "target": "../../packages/domain/worldgen"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-planetgen",
+      "target": "../../packages/domain/planetgen"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-progression",
+      "target": "../../packages/domain/progression"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/audio",
+      "target": "../../packages/audio"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-ecology",
+      "target": "../../packages/domain/ecology"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/persistence",
+      "target": "../../packages/persistence"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-naming",
+      "target": "../../packages/domain/naming"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-sessionrng",
+      "target": "../../packages/domain/sessionrng"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-genetics",
+      "target": "../../packages/domain/genetics"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-genome",
+      "target": "../../packages/domain/genome"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-worldconfig",
+      "target": "../../packages/domain/worldconfig"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/scene",
+      "target": "../../packages/scene"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-starcatalog",
+      "target": "../../packages/domain/starcatalog"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-descriptors",
+      "target": "../../packages/domain/descriptors"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-strays",
+      "target": "../../packages/domain/strays"
+    },
+    {
+      "path": "port/v2/node_modules/@cf/domain-loot",
+      "target": "../../packages/domain/loot"
+    }
+  ],
+  "sourceHashes": {
+    "port/v2/budgets/compendium-memory-v1.json": "c109b5845b12862bbd8fa069b6f8e394b48d9d8568d8537f20565b63c5d907fc",
+    "port/v2/tools/compendiummem.mjs": "3ce7ed13c57f7feabc2653b9f7ce5eb323bc3305a19646f2cd93af5032d2dc5e",
+    "port/v2/tools/compendiummem-contract.mjs": "1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692",
+    "audits/I5_REVIEW_20260925/README.md": "9072aa4b71b07f3cd9198c26b8099c32a2ca02451b3841724b4cb503939630a9"
+  }
+}
