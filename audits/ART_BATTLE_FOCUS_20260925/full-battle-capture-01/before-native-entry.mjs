@@ -1,8 +1,7 @@
-import {battleCaptureDuration} from './capture-timeline.mjs';
 /** E1.5 — battle2 native proof (browser side). Two REAL source paint-skin fits on the REAL BattleStage over
  * the accepted Earth-temperate plates: Codex's rigs through the parts-rig adapter (performance owner + contact
  * solver), anatomy attacks from `compileAnatomyAttack`, the Wild painted effect, the habitat-selected stands,
- * a scripted transcript, a manual clock. Films the full script (at least 10 s) and renders stills on demand. Diagnostic study, not visual
+ * a scripted transcript, a manual clock. Films 10 s and renders stills on demand. Diagnostic study, not visual
  * acceptance; every number it reports is read from the live stage. */
 import { Application, Container, Graphics, Particle, ParticleContainer, Sprite, Text, Texture } from 'pixi.js';
 import { compileAnatomyAttack } from 'cf-proof/anatomy-attacks.ts';
@@ -104,12 +103,12 @@ try {
     let started = false, recordError = null; recorder.onstart = () => { started = true; }; recorder.onerror = (e) => { recordError = e.error ?? Error('Recorder failed'); };
     stageAt(0); recorder.start();
     await primeRecorder({ started: () => started, paint: () => stageAt(0), requestFrame: () => track.requestFrame(), schedule: requestAnimationFrame, now: () => performance.now() });
-    const plannedDurationMs=battleCaptureDuration(totalMs),frames = [], refusalLog = []; let start;
-    await new Promise((resolve) => { const step = (t) => { start ??= t; const elapsed = t - start; const cpu = performance.now(); const before = { left: left.rig.refusals(), right: right.rig.refusals() }; const frame = stageAt(Math.min(elapsed, totalMs)); for (const side of ['left', 'right']) { const s = side === 'left' ? left : right; if (s.rig.refusals() !== before[side]) refusalLog.push({ side, turn: current, ms: elapsed, phase: frame?.sample.phase ?? null, context: frame ? (plans[current].attacker.side === side ? frame.sample.attacker.context : frame.sample.target.context) : null, error: s.rig.lastRefusal() }); } frames.push({ ms: elapsed, turn:current, localMs:frame?.sample.ms ?? null, phase:frame?.sample.phase ?? null, cpuMs: performance.now() - cpu, refusals: left.rig.refusals() + right.rig.refusals() }); track.requestFrame(); if (elapsed >= plannedDurationMs) resolve(); else requestAnimationFrame(step); }; requestAnimationFrame(step); });
+    const frames = [], refusalLog = []; let start;
+    await new Promise((resolve) => { const step = (t) => { start ??= t; const elapsed = t - start; const cpu = performance.now(); const before = { left: left.rig.refusals(), right: right.rig.refusals() }; const frame = stageAt(Math.min(elapsed, totalMs)); for (const side of ['left', 'right']) { const s = side === 'left' ? left : right; if (s.rig.refusals() !== before[side]) refusalLog.push({ side, turn: current, ms: elapsed, phase: frame?.sample.phase ?? null, context: frame ? (plans[current].attacker.side === side ? frame.sample.attacker.context : frame.sample.target.context) : null, error: s.rig.lastRefusal() }); } frames.push({ ms: elapsed, cpuMs: performance.now() - cpu, refusals: left.rig.refusals() + right.rig.refusals() }); track.requestFrame(); if (elapsed >= 10000) resolve(); else requestAnimationFrame(step); }; requestAnimationFrame(step); });
     recorder.stop(); await stopped; if (recordError) throw recordError;
     const blob = new Blob(chunks, { type: 'video/webm' }), buffer = new Uint8Array(await blob.arrayBuffer()); let s = ''; for (let i = 0; i < buffer.length; i += 8192) s += String.fromCharCode(...buffer.subarray(i, i + 8192));
     const cpu = frames.map((f) => f.cpuMs).sort((a, b) => a - b), deltas = frames.slice(1).map((f, i) => f.ms - frames[i].ms).sort((a, b) => a - b);
-    return { video: btoa(s), plannedDurationMs, frameSamples:frames, frames: frames.length, durationMs: frames.at(-1)?.ms ?? 0, cpuP95Ms: cpu[Math.floor(cpu.length * 0.95)] ?? null, frameDeltaP95Ms: deltas[Math.floor(deltas.length * 0.95)] ?? null, refusalsAtEnd: { left: left.rig.refusals(), right: right.rig.refusals() }, lastRefusal: { left: left.rig.lastRefusal(), right: right.rig.lastRefusal() }, refusalLog };
+    return { video: btoa(s), frames: frames.length, durationMs: frames.at(-1)?.ms ?? 0, cpuP95Ms: cpu[Math.floor(cpu.length * 0.95)] ?? null, frameDeltaP95Ms: deltas[Math.floor(deltas.length * 0.95)] ?? null, refusalsAtEnd: { left: left.rig.refusals(), right: right.rig.refusals() }, lastRefusal: { left: left.rig.lastRefusal(), right: right.rig.lastRefusal() }, refusalLog: refusalLog.slice(0, 40) };
   }
   window.cfBattle2Proof = { state, gates, still, capture }; state.status = 'READY'; stageAt(0);
 } catch (e) { state.status = 'FAIL'; state.error = String(e?.stack ?? e); }
