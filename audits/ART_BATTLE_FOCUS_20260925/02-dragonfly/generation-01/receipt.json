@@ -1,0 +1,7 @@
+{
+  "tool": "image_gen.imagegen",
+  "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-d1eb9582-c1ed-4d56-a7fe-e9631a7c804e.png",
+  "masterSha256": "9cebb7b9b233156963b81c9acc7c1d61b93b197d620adf6de447ae04d0e4b4ba",
+  "status": "REJECTED",
+  "reason": "Abdomen tip meets/crosses right canvas edge. Six independent leg tips are not distinguishable (five exposed endpoints)."
+}
