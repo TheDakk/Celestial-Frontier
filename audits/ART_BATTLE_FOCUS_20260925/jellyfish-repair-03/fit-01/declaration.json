@@ -1,0 +1,205 @@
+{
+  "schema": "cf.painter-part-intake/v1",
+  "recordRecipeHash": "1ad42abde2335ef6f267b8eea97f6ac0adeace64762b95579c796ee7f9ff2ebe",
+  "cutoutSha256": "5c878a70e83b232ef7aa1d716f6deab99626a8292e2a9714d87d945b1187e2ee",
+  "labelsFile": "labels.png",
+  "labelsSha256": "ebd02f5d71be1e359039afae1c5bff82d25bc6ae5383a0975b1fb67ff482271e",
+  "parts": [
+    {
+      "id": "arm8-seg0",
+      "joint": "arm8Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm8-seg1",
+      "joint": "arm8Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm8-seg2",
+      "joint": "arm8Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm9-seg0",
+      "joint": "arm9Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm9-seg1",
+      "joint": "arm9Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm9-seg2",
+      "joint": "arm9Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm10-seg0",
+      "joint": "arm10Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm10-seg1",
+      "joint": "arm10Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm10-seg2",
+      "joint": "arm10Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm11-seg0",
+      "joint": "arm11Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm11-seg1",
+      "joint": "arm11Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm11-seg2",
+      "joint": "arm11Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm0-seg0",
+      "joint": "arm0Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm0-seg1",
+      "joint": "arm0Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm0-seg2",
+      "joint": "arm0Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm1-seg0",
+      "joint": "arm1Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm1-seg1",
+      "joint": "arm1Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm1-seg2",
+      "joint": "arm1Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm2-seg0",
+      "joint": "arm2Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm2-seg1",
+      "joint": "arm2Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm2-seg2",
+      "joint": "arm2Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm3-seg0",
+      "joint": "arm3Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm3-seg1",
+      "joint": "arm3Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm3-seg2",
+      "joint": "arm3Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm4-seg0",
+      "joint": "arm4Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm4-seg1",
+      "joint": "arm4Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm4-seg2",
+      "joint": "arm4Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm5-seg0",
+      "joint": "arm5Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm5-seg1",
+      "joint": "arm5Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm5-seg2",
+      "joint": "arm5Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm6-seg0",
+      "joint": "arm6Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm6-seg1",
+      "joint": "arm6Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm6-seg2",
+      "joint": "arm6Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "arm7-seg0",
+      "joint": "arm7Seg0",
+      "layer": "near"
+    },
+    {
+      "id": "arm7-seg1",
+      "joint": "arm7Seg1",
+      "layer": "near"
+    },
+    {
+      "id": "arm7-seg2",
+      "joint": "arm7Seg2",
+      "layer": "near"
+    },
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near"
+    },
+    {
+      "id": "bell",
+      "joint": "bell",
+      "layer": "near"
+    },
+    {
+      "id": "centre",
+      "joint": "centre",
+      "layer": "near"
+    }
+  ],
+  "declarationHash": "335f4871a303b026e9c93f6e0f3ce0dce93c40b7ffc2fb519b7bdab4e7d62c5e"
+}

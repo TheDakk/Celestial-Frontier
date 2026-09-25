@@ -1,0 +1,7 @@
+{
+  "status": "VISUAL_FAIL",
+  "finding": "Near pectoral/body opening remains visible in return; label parent halo alone insufficient. Numerical diagnostic pass not acceptance.",
+  "stills": [
+    "turn3-hit-return-end.png"
+  ]
+}

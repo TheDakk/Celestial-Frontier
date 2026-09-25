@@ -1,0 +1,135 @@
+{
+  "schema": "cf.c15-library-phone-diagnostic/v1",
+  "scope": "Three remaining shipped-archetype pairs, current source. Not unadmitted new paintings, all Cartesian pairs, picker smoke or real iPhone acceptance.",
+  "rows": [
+    {
+      "name": "civet-vs-coconut-crab",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "DIAGNOSTIC_PASS",
+      "capture": {
+        "frames": 602,
+        "durationMs": 10016.3,
+        "cpuP95Ms": 5.700000047683716,
+        "frameDeltaP95Ms": 16.799999999999272,
+        "refusalsAtEnd": {
+          "left": 0,
+          "right": 0
+        },
+        "lastRefusal": {
+          "left": null,
+          "right": null
+        },
+        "refusalLog": [],
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.098912"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1024,
+          "height": 576
+        }
+      },
+      "scriptSha256": "c83a10b1051b0498f06a0fcb0c9a715e3e9b7343d88073b2f19c9fac43c258e8"
+    },
+    {
+      "name": "mud-crab-vs-vent-crab",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "DIAGNOSTIC_PASS",
+      "capture": {
+        "frames": 602,
+        "durationMs": 10016.3,
+        "cpuP95Ms": 4.5,
+        "frameDeltaP95Ms": 16.700000000000728,
+        "refusalsAtEnd": {
+          "left": 0,
+          "right": 0
+        },
+        "lastRefusal": {
+          "left": null,
+          "right": null
+        },
+        "refusalLog": [],
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.088553"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1024,
+          "height": 576
+        }
+      },
+      "scriptSha256": "461688b6e168bad53447b8faba0391a077c894a6f9a64b0e90b634c5cbfce6fb"
+    },
+    {
+      "name": "freshwater-crab-vs-civet",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "DIAGNOSTIC_PASS",
+      "capture": {
+        "frames": 602,
+        "durationMs": 10016.2,
+        "cpuP95Ms": 5.5,
+        "frameDeltaP95Ms": 16.799999999999272,
+        "refusalsAtEnd": {
+          "left": 0,
+          "right": 0
+        },
+        "lastRefusal": {
+          "left": null,
+          "right": null
+        },
+        "refusalLog": [],
+        "encodedMedia": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 1024,
+              "height": 576,
+              "nb_read_frames": "606"
+            }
+          ],
+          "format": {
+            "duration": "10.097856"
+          }
+        },
+        "encodedFrames": {
+          "frames": 606,
+          "width": 1024,
+          "height": 576
+        }
+      },
+      "scriptSha256": "68d31077a323f5925f95986ac4588f9d4198729142898d18582c9c1628e94a28"
+    }
+  ]
+}

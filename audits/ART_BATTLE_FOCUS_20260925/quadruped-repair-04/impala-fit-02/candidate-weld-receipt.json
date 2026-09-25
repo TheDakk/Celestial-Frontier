@@ -1,0 +1,128 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/fit-01",
+  "sourceRecordSha256": "fe6acc9301979d0e9abf811eb1ace740530a748243031da872de565138ec3da7",
+  "sourceBindingSha256": "48b13adba9da4fbe0a948e10ded88596422ce9f355b5b4d53f2abb1167fcafe4",
+  "sourceAtlasSha256": "2145b4193715401bc75ffe1693b7ea763cd67e0283f8bc4b0ecf4d6502011c7e",
+  "helperSha256": "722d032b2befa4d6a214723aca94a5b9cbb633190036f5067a21b00d87a8584c",
+  "author": {
+    "pairs": [
+      [
+        "root",
+        "spine"
+      ]
+    ],
+    "reason": "Observed interior torso root patch is continuous with surrounding spine paint; other independent silhouettes stay separate."
+  },
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "hindNearAnkle",
+      "hindNearPaw",
+      "hindNearKnee",
+      "hindNearRoot",
+      "foreNearAnkle",
+      "foreNearPaw",
+      "foreNearKnee",
+      "foreNearRoot",
+      "hindFarAnkle",
+      "hindFarPaw",
+      "hindFarKnee",
+      "hindFarRoot",
+      "foreFarAnkle",
+      "foreFarPaw",
+      "foreFarKnee",
+      "foreFarRoot",
+      "earNearTip",
+      "earNearRoot",
+      "earFarTip",
+      "earFarRoot",
+      "jaw",
+      "head",
+      "neck",
+      "chest",
+      "spine",
+      "pelvis",
+      "tail3",
+      "tail2",
+      "tail1",
+      "tail0"
+    ],
+    "contactEndpoints": [
+      "hindFarAnkle",
+      "foreFarAnkle",
+      "hindNearAnkle",
+      "foreNearAnkle"
+    ],
+    "paintBoundaryPairs": [
+      [
+        "root",
+        "spine"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 47,
+        "distancePx": 7.0000000000000595,
+        "supports": [
+          1019
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 53,
+        "distancePx": 4.527692569068699,
+        "supports": [
+          1279
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 24,
+        "distancePx": 0.9999999999999936,
+        "supports": [
+          18
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 33,
+        "distancePx": 7.01783442380916,
+        "supports": [
+          577
+        ]
+      }
+    ],
+    "sourceBindingHash": "646a7d554b7541babb56e0e028ad73396cb74ceb50e7347d8774062e48819d21",
+    "sourceVertices": 2461,
+    "vertices": 2705,
+    "sharedSupports": 553,
+    "pins": 923,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 38,
+    "excludedOverlaps": 18,
+    "observedExcludedBoundaries": 18,
+    "weldedExcludedBoundaries": 1,
+    "independentExcludedBoundaries": 17,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "root",
+        "spine"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "36bc2b02768c5e3e434d8f72fce906bda0ad1356d4cf740b59b5cd9fb0590384",
+  "scope": "New unadmitted fit, explicit source paint continuity; source pixels and solver unchanged. Inherited receipts remain historical; this receipt owns the new split."
+}

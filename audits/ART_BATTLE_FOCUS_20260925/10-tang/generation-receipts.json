@@ -1,0 +1,11 @@
+[
+  {
+    "tool": "image_gen.imagegen",
+    "prompt": "prompt.txt",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-cfd2e5d5-1772-41f5-9a6b-ec77376e0c7a.png",
+    "output": "master.png",
+    "generation": 1,
+    "promptSha256": "07d216548269ad241c09012c2e31c40a11eb8d3d7f139688880c67ab25a6a906",
+    "outputSha256": "e6970b7e7d2320aca6022ae2b74117f10f7d38e66fc5b81568b0061ce65f8ffe"
+  }
+]

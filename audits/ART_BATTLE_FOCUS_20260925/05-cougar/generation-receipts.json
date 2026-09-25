@@ -1,0 +1,20 @@
+[
+  {
+    "tool": "image_gen.imagegen",
+    "output": "master-generation-01.png",
+    "sha256": "d659b17a4f331153556fbb813ad6cc01b6384bb885b6344e19d3c975aced5308",
+    "prompt": "prompt.txt",
+    "promptSha256": "37be1cb95cd0b24b99c6a51c07bbb78127b857e09811ccafe9d1e60e84eff187",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-c6c92c63-513c-4713-ba58-4560837a295c.png",
+    "finding": "Dark tail pigment violates requested plain coat; retained rejected master"
+  },
+  {
+    "tool": "image_gen.imagegen",
+    "output": "master.png",
+    "sha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635",
+    "prompt": "prompt-correction-02.txt",
+    "promptSha256": "51123a897504e43537a3db148916721aed1d83f6a80bfe7b802a0af55f071eff",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-2effaa0b-8c36-49ab-86d6-806703be30f3.png",
+    "finding": "Tail tip corrected; four visible paws and right-facing complete silhouette. Nick visual acceptance pending"
+  }
+]

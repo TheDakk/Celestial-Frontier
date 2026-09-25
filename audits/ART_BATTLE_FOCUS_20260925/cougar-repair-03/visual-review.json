@@ -1,0 +1,33 @@
+{
+  "schema": "cf.c15-visual-review/v1",
+  "candidate": "fit-03",
+  "nativeRun": "native-phone4x-02",
+  "status": "BLOCKED_STAGE",
+  "reviewer": "Codex",
+  "findings": [
+    {
+      "status": "FIXED",
+      "finding": "Small interior root/spine torso hole visible in native01 faint; absent in native02 corresponding still after explicit continuity weld.",
+      "before": "native-phone4x-01/turn3-hit-reaction-50.png",
+      "after": "native-phone4x-02/turn3-hit-reaction-50.png",
+      "beforeSha256": "cad982fc8a3f8dc2fa0cd8e1e8a05f54c25bfcff0e3bec22fad35f58362ba24c",
+      "afterSha256": "f22717f5cbbd95ee565cc218c56d532c1b8a083bdc1784617c149316482a8722"
+    },
+    {
+      "status": "OPEN",
+      "finding": "Ready/return heads overlap instead of a positive painted-body gap.",
+      "file": "native-phone4x-02/turn0-hit-return-end.png",
+      "fileSha256": "b67aa15d701e8734699bfe144dc0940bb5e60c02e870d22c216f39ca1aa51bcb"
+    },
+    {
+      "status": "OPEN",
+      "finding": "Right walk has11 contact refusals; no smooth native admission.",
+      "file": "native-phone4x-02/report.json",
+      "fileSha256": "d45bf3ea8f6e74513396f48fb4ad661245bb9defa8804c82940a98d200b212c3"
+    },
+    {
+      "status": "LIMIT",
+      "finding": "Live capture is10s; script is15.532667s. Final-turn stills are not continuous faint film."
+    }
+  ]
+}

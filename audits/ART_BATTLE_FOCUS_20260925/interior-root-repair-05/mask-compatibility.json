@@ -1,0 +1,113 @@
+{
+  "schema": "cf.own-mask-compatibility/v1",
+  "rows": [
+    {
+      "name": "impala",
+      "oldManifest": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/fit-01/markings.json",
+      "oldManifestSha256": "ba245f6d0734bd1a3347e04642dcc3a52150fce508ffc860a1d9b2586de63397",
+      "oldRecordRecipeHash": "67995957626fe39620ab4600fef284c497b07998c5011c6d5a0a4920df823670",
+      "newRecordRecipeHash": "58c3ed14e316b21d18ab2e2bac292277bf2caeef26a7d32af9c783ce8e5899d2",
+      "newManifestSha256": "fbe54831a7ca19a1bf81d974fbb75538a194022b0e0b944f84989c0b602dfc9a",
+      "keyedSha256": "88c8a47092017a832447f9abbc57ad4033923eca70cf07a83b34b382bdd2790d",
+      "patterns": [
+        {
+          "kind": "striped",
+          "sha256": "363319f5961632df69e3e44bc4fba16343531364ba22007e8519c5607cb3ac4b",
+          "nonzero": 27482,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "spotted",
+          "sha256": "ad2278c3cf7dd413de3182aaddf5c5693647aed02c0cb5a71ca6ac3b1be1abd1",
+          "nonzero": 12178,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "banded",
+          "sha256": "f81bb965cef65dd6824fc2967bd401249b219f5de8313bf02b01958fb1629f10",
+          "nonzero": 31003,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "mottled",
+          "sha256": "ab33586877863a5f7470880ffeeffcca2c5af2aa64cdb5bd75aea608629b7e9d",
+          "nonzero": 15552,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "marbled",
+          "sha256": "d229cbf5d8dc0eba4697c8df016c87b5a8fdb3187a4a36fa109aede66c98974c",
+          "nonzero": 19260,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "eye-spotted",
+          "sha256": "7a9b7f9712d2190f9a7f84b24bb5cdc57e2913bfe435e13bdb103257d0d2fc39",
+          "nonzero": 15585,
+          "outside": 0,
+          "over": 0
+        }
+      ],
+      "scope": "Same own painting and six mask bytes; fresh conservation check against this fit. Historical generation prompts and old measurements unchanged. Manifest paths relocated and each new recipe explicitly recorded, not claimed as an old certificate."
+    },
+    {
+      "name": "cattle",
+      "oldManifest": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/fit-04/markings.json",
+      "oldManifestSha256": "f41e24e1d26d2a863358bf4a12ae7e6d8ce4a57e563e43d2d63bfc99817ea833",
+      "oldRecordRecipeHash": "33a0a48414c4d96613c64bb85791d32ea2404ffaba939cb96238290447369f5a",
+      "newRecordRecipeHash": "a4ec6183d6394e5181d3aa121afc51e2bf7ecfd88c25d629899f0917d31f2bbc",
+      "newManifestSha256": "8baa42c7baacee70b5c9d92ba4152a2296f1f138b8d5d1dbe5b1e87681464fae",
+      "keyedSha256": "977890154b04f46803bd70b99d70f8e2c79ac0f74211bb52b0ab5f2d794b2a5b",
+      "patterns": [
+        {
+          "kind": "striped",
+          "sha256": "ec0aca4bf783de5484bbb4668ffdefd87a60ef554ce3df4f749b33dad7202fb9",
+          "nonzero": 66519,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "spotted",
+          "sha256": "fadde441633907ad6a6cde44cafff9b3d092c1821d494a10aed680cb5da11fdb",
+          "nonzero": 28810,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "banded",
+          "sha256": "7b81fe7b1edbe5445f6a08923a9016755d07eeacc9bf2ffaae60a443f69578ca",
+          "nonzero": 121836,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "mottled",
+          "sha256": "a6c588f4f11dfd38adfdaa00bbc46b4c8a3832d64b6326997e31e97716b6bb0d",
+          "nonzero": 46384,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "marbled",
+          "sha256": "11d37b9f1efeaac592343896fdd02ce863d38c2e6e421a156c657b0b339e655d",
+          "nonzero": 54961,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "eye-spotted",
+          "sha256": "7ac4e22eca8a0b380ddc44cb8407208748b3c4d4978b63dca12376186717d972",
+          "nonzero": 26972,
+          "outside": 0,
+          "over": 0
+        }
+      ],
+      "scope": "Same own painting and six mask bytes; fresh conservation check against this fit. Historical generation prompts and old measurements unchanged. Manifest paths relocated and each new recipe explicitly recorded, not claimed as an old certificate."
+    }
+  ]
+}

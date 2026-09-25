@@ -1,0 +1,219 @@
+{
+ "totalMs": 10862.1,
+ "frames": 598,
+ "cpuThrottle": 4,
+ "groups": {
+  "idle": 6032.2,
+  "wasm (orientation / skin kernels)": 2050.2,
+  "other": 1491.6,
+  "skin (ARAP / mesh)": 791.5,
+  "rig motion + contact": 306.5,
+  "stage + choreography": 56.1,
+  "garbage collection": 39.9,
+  "rig other": 77.5,
+  "effects": 11.3,
+  "pixi render": 5.3
+ },
+ "files": [
+  {
+   "file": "(idle)",
+   "ms": 6032.2,
+   "share": 0.5553
+  },
+  {
+   "file": "wasm:wasm-function[0]",
+   "ms": 2046.3,
+   "share": 0.1884
+  },
+  {
+   "file": "(program)",
+   "ms": 423.8,
+   "share": 0.039
+  },
+  {
+   "file": "tools/battle2-proof/native-entry.mjs",
+   "ms": 385.8,
+   "share": 0.0355
+  },
+  {
+   "file": "tools/creature-animation/paint-skin.mjs",
+   "ms": 281.5,
+   "share": 0.0259
+  },
+  {
+   "file": "tools/creature-animation/arap-skin.mjs",
+   "ms": 251.9,
+   "share": 0.0232
+  },
+  {
+   "file": "tools/creature-animation/compiled-skin-field.mjs",
+   "ms": 236.5,
+   "share": 0.0218
+  },
+  {
+   "file": "apps/game/src/creature-rig-contact.ts",
+   "ms": 162.7,
+   "share": 0.015
+  },
+  {
+   "file": "other-script:Geometry-DZ_l7nv7.js",
+   "ms": 119.3,
+   "share": 0.011
+  },
+  {
+   "file": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "ms": 104.2,
+   "share": 0.0096
+  },
+  {
+   "file": "tools/creature-animation/skeleton-pose.mjs",
+   "ms": 102.8,
+   "share": 0.0095
+  },
+  {
+   "file": "tools/creature-animation/orientation-projector.mjs",
+   "ms": 84.7,
+   "share": 0.0078
+  },
+  {
+   "file": "tools/creature-animation/kinematics.ts",
+   "ms": 80.9,
+   "share": 0.0075
+  },
+  {
+   "file": "native:?",
+   "ms": 70.6,
+   "share": 0.0065
+  },
+  {
+   "file": "apps/game/src/motion/timeline.ts",
+   "ms": 57.3,
+   "share": 0.0053
+  },
+  {
+   "file": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "ms": 52.5,
+   "share": 0.0048
+  },
+  {
+   "file": "apps/game/src/battle2/choreography.ts",
+   "ms": 42.2,
+   "share": 0.0039
+  },
+  {
+   "file": "(gc)",
+   "ms": 39.9,
+   "share": 0.0037
+  },
+  {
+   "file": "apps/game/src/creature-rig-performance.ts",
+   "ms": 39.5,
+   "share": 0.0036
+  },
+  {
+   "file": "native:bufferSubData",
+   "ms": 37.5,
+   "share": 0.0035
+  },
+  {
+   "file": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "ms": 30.1,
+   "share": 0.0028
+  },
+  {
+   "file": "apps/game/src/creature-rig.ts",
+   "ms": 29.8,
+   "share": 0.0027
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "ms": 15.1,
+   "share": 0.0014
+  },
+  {
+   "file": "apps/game/src/battle2/stage.ts",
+   "ms": 13.9,
+   "share": 0.0013
+  },
+  {
+   "file": "tools/creature-animation/wasm-orientation-active.mjs",
+   "ms": 13.6,
+   "share": 0.0013
+  },
+  {
+   "file": "native:btoa",
+   "ms": 11.6,
+   "share": 0.0011
+  },
+  {
+   "file": "native:uniformMatrix3fv",
+   "ms": 8.9,
+   "share": 0.0008
+  },
+  {
+   "file": "native:requestAnimationFrame",
+   "ms": 8.7,
+   "share": 0.0008
+  },
+  {
+   "file": "apps/game/src/battle2/parts-rig.ts",
+   "ms": 8.2,
+   "share": 0.0008
+  },
+  {
+   "file": "native:clear",
+   "ms": 8,
+   "share": 0.0007
+  },
+  {
+   "file": "native:bindVertexArray",
+   "ms": 6.7,
+   "share": 0.0006
+  },
+  {
+   "file": "apps/game/src/effects/pixi-adapter.ts",
+   "ms": 6.2,
+   "share": 0.0006
+  },
+  {
+   "file": "native:bindBuffer",
+   "ms": 4.9,
+   "share": 0.0005
+  },
+  {
+   "file": "native:drawElements",
+   "ms": 4.5,
+   "share": 0.0004
+  },
+  {
+   "file": "apps/game/src/effects/emitter.ts",
+   "ms": 4.1,
+   "share": 0.0004
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/mesh/shared/BatchableMesh.mjs",
+   "ms": 3.9,
+   "share": 0.0004
+  },
+  {
+   "file": "wasm:js-to-wasm:iiiiiiiiiiiii:i",
+   "ms": 3.9,
+   "share": 0.0004
+  },
+  {
+   "file": "apps/game/src/motion/gait-phase.ts",
+   "ms": 2.8,
+   "share": 0.0003
+  },
+  {
+   "file": "apps/game/src/motion/family-actions.ts",
+   "ms": 2.7,
+   "share": 0.0003
+  },
+  {
+   "file": "native:activeTexture",
+   "ms": 2.6,
+   "share": 0.0002
+  }
+ ]
+}

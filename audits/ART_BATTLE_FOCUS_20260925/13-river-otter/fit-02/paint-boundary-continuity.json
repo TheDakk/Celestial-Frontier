@@ -1,0 +1,13 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "319995acc2303f38f7ea5ea1ae7ebedd09c525234ab97ee2e7510f90e791bb73",
+  "bindingHash": "ffde09ce3f8a847ba5e904e3ef85c92983957272d369c62a4122e39a2845ca30",
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "The manually authored 12x12 root ownership patch lies inside continuous torso paint. Its root/spine cut must not open. Other excluded boundaries are not declared continuous."
+}

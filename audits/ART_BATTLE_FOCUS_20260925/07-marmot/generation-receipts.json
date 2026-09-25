@@ -1,0 +1,20 @@
+[
+  {
+    "tool": "image_gen.imagegen",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-78d6df78-fb3b-4e63-adb5-b14c28d75b27.png",
+    "output": "master-generation-01.png",
+    "sha256": "741c18b618945023b33b0ce03f5120c6aa27cae74724f3ce708ad2e2cc990e05",
+    "prompt": "prompt.txt",
+    "promptSha256": "b17900a50769ff95e2e6df2846fa4acf48a4399b2c876cb4c7ea1976038e6096",
+    "finding": "Far ear fully occluded; unsupported by hidden anatomy contract, retained rejected master"
+  },
+  {
+    "tool": "image_gen.imagegen",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-3c3c6915-472f-4e61-9a4f-dc84241971fe.png",
+    "output": "master.png",
+    "sha256": "39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22",
+    "prompt": "prompt-correction-02.txt",
+    "promptSha256": "c0fcd342e87ec73950f987489269909dbd47189f71cd60dec445d97e7dc5f2d7",
+    "finding": "Far ear visibly exposed, four visible feet and short tail; candidate, Nick pending"
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "tool": "image_gen.imagegen",
+  "authority": "Later Nick fix-everything instruction supersedes original two-failure stop; all variants retained.",
+  "generations": [
+    {
+      "generation": 1,
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-9a383a95-2842-4f89-a49e-8c633c520799.png",
+      "master": "master-generation-01.png",
+      "sha256": "62719011aaeec05c53e1246811363b39bb824d2b076379afc8e4f787bc01a91c",
+      "prompt": "prompt.txt",
+      "verdict": "Rejected short/high trunk, insufficient framing and far ear unreadable."
+    },
+    {
+      "generation": 2,
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-64e60632-7aff-4f3e-b8dd-c90469b3314b.png",
+      "master": "master-generation-02.png",
+      "sha256": "c16c4b30656313760f7f168963d155b56702f9c2ee984a9eec8df1087c496494",
+      "prompt": "prompt-correction-02.txt",
+      "verdict": "Improved long low body; rejected far ear still not separately painted."
+    },
+    {
+      "generation": 3,
+      "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-57416f06-7c27-4278-ba7b-46d2a587e96a.png",
+      "master": "master.png",
+      "sha256": "12b5d7092a86a53c7769a1719c0eda38d5369f3ca3056b80a6275dbf1cd3411e",
+      "prompt": "prompt-correction-03.txt",
+      "verdict": "Candidate visually accepted for intake: two distinct ears, four short legs, low body, complete tail/whiskers. Nick review pending."
+    }
+  ]
+}

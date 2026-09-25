@@ -1,0 +1,39 @@
+{
+  "author": "Codex",
+  "master": "master.png",
+  "masterSha256": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43",
+  "checks": {
+    "rightFacing": true,
+    "fourVisibleLimbs": true,
+    "twoEars": true,
+    "lowBushyTail": true,
+    "plainBaseCoat": true,
+    "sourceRestExact": true,
+    "sourceRestChangedVisibleRgbaChannels": 0,
+    "returnSnoutsSeparated": true,
+    "wholeCreatureInsideViewportInReviewedStills": true,
+    "noTorsoHoleInReviewedFaint": true,
+    "masksOutsideAlphaPixels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "reviewed": [
+    "review-sheet.png",
+    "mask-set-02/six-mask-sheet.png",
+    "native-phone4x-01/turn0-hit-return-end.png",
+    "native-phone4x-01/turn3-hit-idle-90.png"
+  ],
+  "findings": [
+    "Approach run-up is only 0.04470766129032259 stage width, not the requested full-stage traversal. Claude stage owner must resolve this without relaxing stance reach.",
+    "Faint has a sharp raised neck fur edge visible in idle-90; Nick final art/motion review remains necessary.",
+    "4x CPU whole-stage p95=5ms is measured; desktop per-rig 3.5ms and uninterrupted 60fps are not established by this result.",
+    "Not wired into shipped library yet; coverage and picker smoke pending."
+  ],
+  "maskSelection": "mask-set-02/markings.json; parent initial mask set rejected for low eye-spot placement. Five other raws identical.",
+  "status": "LOCAL_RIG_PASS_STAGE_TRAVEL_PENDING"
+}

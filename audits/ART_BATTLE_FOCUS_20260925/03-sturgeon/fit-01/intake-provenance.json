@@ -1,0 +1,77 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "7f8de90b7853a7c6ebd9c8bbaf2265d127956e32",
+  "helperSha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/master.png",
+      "sha256": "d7f7ad90c7813efb3bf9f700d81dbb5acbc8a50d14b504cfc51d9bc85b8f0f14"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/authoring.json",
+      "sha256": "2e2a0be9a77dc6c67f208637945df158ed1fa891c421bfa937eb389bf9249e70"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/subject-source.json",
+      "sha256": "eb2179313088bfb2f67bea7a5fc1a75e73829f6d8098eb171b1487f485169b86"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "a4a4808d50893eadd4b38691b74ba40490c318506f4787d6adf3b003a0c55f79",
+  "bindingHash": "5abaaf2a118d1068d8cfc1ac02af175d1c0b0725347f5b4243b8a3df8d3b6382",
+  "contactEndpoints": [],
+  "shapeJoints": [
+    "pectoralNear",
+    "pectoralFar",
+    "dorsal",
+    "jaw",
+    "head",
+    "caudal",
+    "spine0",
+    "spine1",
+    "spine2",
+    "spine3",
+    "spine4",
+    "spine5"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/master.png",
+      "sha256": "d7f7ad90c7813efb3bf9f700d81dbb5acbc8a50d14b504cfc51d9bc85b8f0f14",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/authoring.json",
+      "sha256": "2e2a0be9a77dc6c67f208637945df158ed1fa891c421bfa937eb389bf9249e70",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/subject-source.json",
+      "sha256": "eb2179313088bfb2f67bea7a5fc1a75e73829f6d8098eb171b1487f485169b86",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/03-sturgeon/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

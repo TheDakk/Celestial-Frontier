@@ -1,0 +1,29 @@
+{
+  "command": "node tools/check-profile.mjs --profile=develop",
+  "log": "develop-profile.log",
+  "exitCode": 1,
+  "testFiles": {
+    "passed": 479,
+    "failed": 1,
+    "skipped": 1
+  },
+  "tests": {
+    "passed": 5082,
+    "failed": 1,
+    "expectedFail": 2,
+    "skipped": 2
+  },
+  "failure": "tests/current-producer-authorities.test.ts: binds every live memory budget required by the active check profile",
+  "mismatches": [
+    "inputs.index.sha256",
+    "inputs.owner.relativePath",
+    "inputs.owner.sha256",
+    "inputs.painter.relativePath",
+    "inputs.painter.sha256",
+    "inputs.serviceWorker.sha256",
+    "inputs.worker.relativePath",
+    "inputs.worker.sha256",
+    "sha256"
+  ],
+  "note": "stdout retained in log; stderr was returned through terminal tool. Sole historical I5 build-authority mismatch. No v1 rebind or epoch attempt."
+}

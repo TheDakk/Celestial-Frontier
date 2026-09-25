@@ -8,10 +8,12 @@ export function compileAmplitudeProfile(parts:readonly BodyPart[],bodyLength:num
  for(const p of parts){
   if(depth[p.parent]===undefined||!Number.isFinite(p.boneLength)||p.boneLength<=0)throw Error('Amplitude: invalid source chain');
   const d=depth[p.parent]!+1;depth[p.joint]=d;
-  const ratio=p.boneLength/bodyLength,plant=materials[p.joint]==='bark'||materials[p.joint]==='foliage';
+  const ratio=p.boneLength/bodyLength,plant=materials[p.joint]==='bark'||materials[p.joint]==='foliage',softArm=p.group==='arms'&&materials[p.joint]==='translucent';
   // Woody chains bend over their whole observed length, not by the same angle
-  // at every canopy-sector pivot. One dimensionless profile for every source.
-  scales[p.joint]=Object.hasOwn(contactScales,p.joint)?1:plant
+  // at every canopy-sector pivot. Long translucent arms likewise distribute
+  // their bend over the observed chain instead of accumulating a full swing
+  // at every pivot. One dimensionless profile, independent of species or pixels.
+  scales[p.joint]=Object.hasOwn(contactScales,p.joint)?1:plant||softArm
    ?Math.max(.08,Math.min(.5,.5/(Math.max(.5,ratio)*(1+.5*d))))
    :p.group==='legs'?Math.min(1,.5/Math.max(.5,ratio)):1;
  }

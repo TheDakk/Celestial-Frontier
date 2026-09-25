@@ -1,0 +1,32 @@
+[
+  {
+    "pattern": "striped",
+    "tool": "image_gen.imagegen",
+    "outputHint": "Generated images are saved to /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc as /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-770835e9-31ae-471d-8f24-206871c79b57.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "pattern": "spotted",
+    "tool": "image_gen.imagegen",
+    "outputHint": "Generated images are saved to /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc as /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-29e31516-bf54-41dd-9f3a-77aa830e3f39.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "pattern": "banded",
+    "tool": "image_gen.imagegen",
+    "outputHint": "Generated images are saved to /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc as /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-7cfd5515-2257-431b-a91b-8f944184bfbc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "pattern": "mottled",
+    "tool": "image_gen.imagegen",
+    "outputHint": "Generated images are saved to /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc as /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-a4ed1dab-9c5d-496d-a4a5-b4afab80bdcc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "pattern": "marbled",
+    "tool": "image_gen.imagegen",
+    "outputHint": "Generated images are saved to /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc as /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-6bcbd455-820c-4c61-a4ac-7a5c31a2f4d2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "pattern": "eye-spotted",
+    "tool": "image_gen.imagegen",
+    "outputHint": "Generated images are saved to /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc as /Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-2f257f81-0d5a-4855-aa0f-f87b8b36de29.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  }
+]

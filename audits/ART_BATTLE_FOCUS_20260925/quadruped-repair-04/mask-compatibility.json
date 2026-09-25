@@ -1,0 +1,221 @@
+{
+  "schema": "cf.own-mask-compatibility/v1",
+  "rows": [
+    {
+      "name": "impala",
+      "oldManifest": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/fit-01/markings.json",
+      "oldManifestSha256": "ba245f6d0734bd1a3347e04642dcc3a52150fce508ffc860a1d9b2586de63397",
+      "oldRecordRecipeHash": "67995957626fe39620ab4600fef284c497b07998c5011c6d5a0a4920df823670",
+      "newRecordRecipeHash": "67995957626fe39620ab4600fef284c497b07998c5011c6d5a0a4920df823670",
+      "newManifestSha256": "1373269661d16b65b88ae59705dab091fada006273ef096ea335e70a9b757d87",
+      "keyedSha256": "88c8a47092017a832447f9abbc57ad4033923eca70cf07a83b34b382bdd2790d",
+      "patterns": [
+        {
+          "kind": "striped",
+          "sha256": "363319f5961632df69e3e44bc4fba16343531364ba22007e8519c5607cb3ac4b",
+          "nonzero": 27482,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "spotted",
+          "sha256": "ad2278c3cf7dd413de3182aaddf5c5693647aed02c0cb5a71ca6ac3b1be1abd1",
+          "nonzero": 12178,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "banded",
+          "sha256": "f81bb965cef65dd6824fc2967bd401249b219f5de8313bf02b01958fb1629f10",
+          "nonzero": 31003,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "mottled",
+          "sha256": "ab33586877863a5f7470880ffeeffcca2c5af2aa64cdb5bd75aea608629b7e9d",
+          "nonzero": 15552,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "marbled",
+          "sha256": "d229cbf5d8dc0eba4697c8df016c87b5a8fdb3187a4a36fa109aede66c98974c",
+          "nonzero": 19260,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "eye-spotted",
+          "sha256": "7a9b7f9712d2190f9a7f84b24bb5cdc57e2913bfe435e13bdb103257d0d2fc39",
+          "nonzero": 15585,
+          "outside": 0,
+          "over": 0
+        }
+      ],
+      "scope": "Same own painting and six mask bytes; fresh conservation check against this fit. Historical generation prompts and old measurements unchanged. Manifest paths relocated and Lizard new recipe explicitly recorded, not claimed as an old certificate."
+    },
+    {
+      "name": "marmot",
+      "oldManifest": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/07-marmot/fit-01/markings.json",
+      "oldManifestSha256": "3c29becab20b4501574bd694f766ed2842abccf8c007b3880f9c95e445e1fd34",
+      "oldRecordRecipeHash": "919d9395c967cd07cd4965dc1bb753916c08a161153504dbb9e41de9e2363307",
+      "newRecordRecipeHash": "919d9395c967cd07cd4965dc1bb753916c08a161153504dbb9e41de9e2363307",
+      "newManifestSha256": "2e252eb1d950f71f601152802b518574fd523045edc72a1a57cb261ed5073087",
+      "keyedSha256": "817005627aafda8573d3514343819080168c5c9404ea2bdf9cbdde3ba4630e00",
+      "patterns": [
+        {
+          "kind": "striped",
+          "sha256": "751d8124ac7503428e261b981ffeb882ce4e678a03425fabf5d4d35f98f76576",
+          "nonzero": 61286,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "spotted",
+          "sha256": "19e2d2ed6bd109ec7e2854704043af558ea0a108fd2fd7bf2b6c2aa0dd0cec3d",
+          "nonzero": 27891,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "banded",
+          "sha256": "29d4b405f645fe8e0cf1d50995c4216154aaaf91cd3c72309f831bc23f208bd0",
+          "nonzero": 58574,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "mottled",
+          "sha256": "45a9fa627eb78eaed87c09d6a1bb6d5bf06731eb7ea6794460c83fb07c064a2a",
+          "nonzero": 46102,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "marbled",
+          "sha256": "1284bf7b4586663d5d75dab78d758ac6db9acfe9ce598e12a7f9d764e49f2e0d",
+          "nonzero": 46173,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "eye-spotted",
+          "sha256": "ecb3289af98b66053962444b24bb3f2ef8caf56e80a6172f4d9ef61d21f69834",
+          "nonzero": 17429,
+          "outside": 0,
+          "over": 0
+        }
+      ],
+      "scope": "Same own painting and six mask bytes; fresh conservation check against this fit. Historical generation prompts and old measurements unchanged. Manifest paths relocated and Lizard new recipe explicitly recorded, not claimed as an old certificate."
+    },
+    {
+      "name": "cattle",
+      "oldManifest": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/fit-04/markings.json",
+      "oldManifestSha256": "f41e24e1d26d2a863358bf4a12ae7e6d8ce4a57e563e43d2d63bfc99817ea833",
+      "oldRecordRecipeHash": "33a0a48414c4d96613c64bb85791d32ea2404ffaba939cb96238290447369f5a",
+      "newRecordRecipeHash": "33a0a48414c4d96613c64bb85791d32ea2404ffaba939cb96238290447369f5a",
+      "newManifestSha256": "4489f3809796dea1bdeb58127f7d07b623f433d2ff4a0b665f02475a08cf282a",
+      "keyedSha256": "977890154b04f46803bd70b99d70f8e2c79ac0f74211bb52b0ab5f2d794b2a5b",
+      "patterns": [
+        {
+          "kind": "striped",
+          "sha256": "ec0aca4bf783de5484bbb4668ffdefd87a60ef554ce3df4f749b33dad7202fb9",
+          "nonzero": 66519,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "spotted",
+          "sha256": "fadde441633907ad6a6cde44cafff9b3d092c1821d494a10aed680cb5da11fdb",
+          "nonzero": 28810,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "banded",
+          "sha256": "7b81fe7b1edbe5445f6a08923a9016755d07eeacc9bf2ffaae60a443f69578ca",
+          "nonzero": 121836,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "mottled",
+          "sha256": "a6c588f4f11dfd38adfdaa00bbc46b4c8a3832d64b6326997e31e97716b6bb0d",
+          "nonzero": 46384,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "marbled",
+          "sha256": "11d37b9f1efeaac592343896fdd02ce863d38c2e6e421a156c657b0b339e655d",
+          "nonzero": 54961,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "eye-spotted",
+          "sha256": "7ac4e22eca8a0b380ddc44cb8407208748b3c4d4978b63dca12376186717d972",
+          "nonzero": 26972,
+          "outside": 0,
+          "over": 0
+        }
+      ],
+      "scope": "Same own painting and six mask bytes; fresh conservation check against this fit. Historical generation prompts and old measurements unchanged. Manifest paths relocated and Lizard new recipe explicitly recorded, not claimed as an old certificate."
+    },
+    {
+      "name": "lizard",
+      "oldManifest": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/fit-06/markings.json",
+      "oldManifestSha256": "8370b5a996ba61e76a68259b7272c43352b5fdce9bb9d9043d8ab5649c88117b",
+      "oldRecordRecipeHash": "93fc9289e302fe56f31250f2b9163d7aa84737a900e1748f85d1609bf43a1606",
+      "newRecordRecipeHash": "d21a8c87db8f91d25bfad6ada673b2e83e50d9d858d3ee39b3c533fd33080179",
+      "newManifestSha256": "1c5774046a71ad129bd13d20d939f08ca4d09d76ddf6f5392c7d5ea63786169b",
+      "keyedSha256": "2ef51fc8475f4a4e5767188fac9afbe000e56e1c68b5d9f9ac8246e08ea7f2dc",
+      "patterns": [
+        {
+          "kind": "striped",
+          "sha256": "e3fbf1bc3a39100103dbf3ff7b93d776176203c231770fb3eeda1f47af5a6649",
+          "nonzero": 26962,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "spotted",
+          "sha256": "42fddc14365a345985c0dd3582a4ef04cbc6d29cda0d4ee2c8c94b0da34c7a6c",
+          "nonzero": 11060,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "banded",
+          "sha256": "3197308fbd767ef2c21c2186c8446f3979ab38346f9da9ed814fe479eeb17111",
+          "nonzero": 35276,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "mottled",
+          "sha256": "8c80c72f2ea2646eed16afcc00c61ef5f2b96d3746f4b36e9ed078cada17c9df",
+          "nonzero": 32130,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "marbled",
+          "sha256": "ed2f865f75573ede195aa6ef9cb2f40fe5b528589a1e55a55f73ef9d9c3335f2",
+          "nonzero": 27544,
+          "outside": 0,
+          "over": 0
+        },
+        {
+          "kind": "eye-spotted",
+          "sha256": "4fd7f34652faa49bd919eb462d674416f7350e34f2aa8420863bc4d182a6a23c",
+          "nonzero": 9061,
+          "outside": 0,
+          "over": 0
+        }
+      ],
+      "scope": "Same own painting and six mask bytes; fresh conservation check against this fit. Historical generation prompts and old measurements unchanged. Manifest paths relocated and Lizard new recipe explicitly recorded, not claimed as an old certificate."
+    }
+  ]
+}

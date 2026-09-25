@@ -1,0 +1,6 @@
+{
+  "tool": "image_gen.imagegen",
+  "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-e5863e11-89d0-4603-8176-e7edbdc8d989.png",
+  "sha256": "4ac3d485c903b46c82165264badf6cb888306a28c98aef489dceabb9def12697",
+  "decision": "rejected: far ear not separately visible; horn top margin too small; exceeds requested compact box"
+}

@@ -1,0 +1,404 @@
+{
+  "id": "sturgeon",
+  "family": "fish",
+  "landmarksPx": {
+    "root": [
+      324,
+      638
+    ],
+    "head": [
+      205,
+      623
+    ],
+    "jaw": [
+      173,
+      662
+    ],
+    "spine0": [
+      400,
+      621
+    ],
+    "spine1": [
+      525,
+      620
+    ],
+    "spine2": [
+      652,
+      626
+    ],
+    "spine3": [
+      775,
+      632
+    ],
+    "spine4": [
+      892,
+      627
+    ],
+    "spine5": [
+      1005,
+      619
+    ],
+    "caudal": [
+      1128,
+      618
+    ],
+    "dorsal": [
+      922,
+      543
+    ],
+    "pectoralNear": [
+      409,
+      757
+    ],
+    "pectoralFar": [
+      326,
+      741
+    ]
+  },
+  "groundLineY": 0.82,
+  "materials": {
+    "surface": "plain steel-grey painted sturgeon scales and bony scutes; no pigment markings"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "polygonPx": [
+        [
+          307,
+          660
+        ],
+        [
+          338,
+          661
+        ],
+        [
+          401,
+          681
+        ],
+        [
+          435,
+          786
+        ],
+        [
+          384,
+          767
+        ],
+        [
+          330,
+          715
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "polygonPx": [
+        [
+          279,
+          679
+        ],
+        [
+          309,
+          682
+        ],
+        [
+          352,
+          732
+        ],
+        [
+          343,
+          772
+        ],
+        [
+          315,
+          756
+        ],
+        [
+          285,
+          708
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "polygonPx": [
+        [
+          845,
+          579
+        ],
+        [
+          898,
+          532
+        ],
+        [
+          948,
+          497
+        ],
+        [
+          952,
+          566
+        ],
+        [
+          982,
+          591
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "polygonPx": [
+        [
+          135,
+          651
+        ],
+        [
+          182,
+          648
+        ],
+        [
+          200,
+          663
+        ],
+        [
+          187,
+          677
+        ],
+        [
+          140,
+          674
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "polygonPx": [
+        [
+          0,
+          475
+        ],
+        [
+          275,
+          525
+        ],
+        [
+          310,
+          582
+        ],
+        [
+          311,
+          642
+        ],
+        [
+          290,
+          692
+        ],
+        [
+          275,
+          728
+        ],
+        [
+          0,
+          742
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "polygonPx": [
+        [
+          1018,
+          580
+        ],
+        [
+          1253,
+          385
+        ],
+        [
+          1253,
+          743
+        ],
+        [
+          1054,
+          704
+        ],
+        [
+          1019,
+          647
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "spine0",
+      "joint": "spine0",
+      "polygonPx": [
+        [
+          350,
+          470
+        ],
+        [
+          460,
+          470
+        ],
+        [
+          460,
+          815
+        ],
+        [
+          350,
+          815
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "spine1",
+      "joint": "spine1",
+      "polygonPx": [
+        [
+          460,
+          470
+        ],
+        [
+          580,
+          470
+        ],
+        [
+          580,
+          815
+        ],
+        [
+          460,
+          815
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "spine2",
+      "joint": "spine2",
+      "polygonPx": [
+        [
+          580,
+          470
+        ],
+        [
+          705,
+          470
+        ],
+        [
+          705,
+          815
+        ],
+        [
+          580,
+          815
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "spine3",
+      "joint": "spine3",
+      "polygonPx": [
+        [
+          705,
+          470
+        ],
+        [
+          835,
+          470
+        ],
+        [
+          835,
+          815
+        ],
+        [
+          705,
+          815
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "spine4",
+      "joint": "spine4",
+      "polygonPx": [
+        [
+          835,
+          470
+        ],
+        [
+          954,
+          470
+        ],
+        [
+          954,
+          815
+        ],
+        [
+          835,
+          815
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "spine5",
+      "joint": "spine5",
+      "polygonPx": [
+        [
+          954,
+          470
+        ],
+        [
+          1035,
+          470
+        ],
+        [
+          1035,
+          815
+        ],
+        [
+          954,
+          815
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "root",
+      "polygonPx": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "layer": "near"
+    }
+  ],
+  "coverage": {
+    "declarations": "All fish-contracted appendages visible. Four visible barbels stay head attached; both pelvic fins and one anal fin stay attached to their respective spine surfaces. Scutes remain body-attached. Far eye occluded by head silhouette; fish contract has no eye joint. No absent or hidden contracted appendage and no folded chain. Landmarks and polygons manually placed on generation-03, never transferred from Salmon.",
+    "visualAcceptance": "Technical candidate; Nick owns art review; requested wide margin was not delivered."
+  }
+}

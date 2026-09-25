@@ -1,0 +1,3 @@
+Create a NEW EMPTY TRANSPARENT 1254 x 1254 PNG canvas. Draw ONLY these sparse white marking shapes at the exact canvas coordinates below. Do NOT draw a fish, silhouette, animal texture, grey background or black background.
+Exactly THREE white oval rings with fully transparent centres, centred at pixel (470,607),(670,627),(870,632), outer radius about 30 pixels, inner radius 17. Three hollow rings only, no other marks.
+Every other pixel must have alpha ZERO. White is marking ink only; transparent is a real alpha hole. No visible boxes, grids, checkerboards, labels, numbers, shadows, scale texture or anatomy. Preserve 1254-square canvas coordinates; do not crop or centre/scale the shape cluster. This is a marking mask texture, not an illustration.

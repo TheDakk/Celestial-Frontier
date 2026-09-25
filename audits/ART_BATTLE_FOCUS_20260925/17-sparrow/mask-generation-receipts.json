@@ -1,0 +1,56 @@
+[
+  {
+    "pattern": "striped",
+    "tool": "image_gen.imagegen",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-948facf0-bd91-416a-a8dd-b53041f86571.png",
+    "retained": "raw/striped.png",
+    "sha256": "55abdcabfe83e6e33a550dbc4ad3ee5d7e4a20c72cb1351c7cf01e79208e76c1",
+    "prompt": "prompts/striped.txt",
+    "promptSha256": "2d7c56b04b0d15548e47f86519a163d2fd399829b2ead0e1475d58aa247fb0c0"
+  },
+  {
+    "pattern": "spotted",
+    "tool": "image_gen.imagegen",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-6eb526a7-d05f-4c24-bc76-73d7541dded3.png",
+    "retained": "raw/spotted.png",
+    "sha256": "8b36b2ca8fedc7b3b722554bc7cd57c145f6791c7862a4304956aea0bc0add21",
+    "prompt": "prompts/spotted.txt",
+    "promptSha256": "d2539c5b62b0a33b047116d0fb3fa41c591c11aa3df0cf323d448b6e38c25b23"
+  },
+  {
+    "pattern": "banded",
+    "tool": "image_gen.imagegen",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-d7e2c30a-8b44-4d70-a60e-1db903be2839.png",
+    "retained": "raw/banded.png",
+    "sha256": "5ed0894120faac994029c59fec73a398d96ae5b9b74bd7d654c656b433d79c1b",
+    "prompt": "prompts/banded.txt",
+    "promptSha256": "e7d58b91cfc81358af7890fbd027589e5891ba216d432dd407b33273c7c1b224"
+  },
+  {
+    "pattern": "mottled",
+    "tool": "image_gen.imagegen",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-f91b38a0-f6b6-4067-8c6b-06daae7378f2.png",
+    "retained": "raw/mottled.png",
+    "sha256": "96a976ae288a023190ec0707c2899cb6d123f7f19367f97cd7592ea08cd69669",
+    "prompt": "prompts/mottled.txt",
+    "promptSha256": "cf8c94a360e2e9d4c8dd2c766a4129e2460abe7942b80f65707bcf0a836e2abb"
+  },
+  {
+    "pattern": "marbled",
+    "tool": "image_gen.imagegen",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-8afbc443-3f39-421e-bfc4-f571f5c2ea5b.png",
+    "retained": "raw/marbled.png",
+    "sha256": "d6e2eaf912f60b86d7e823ad75bb6a9f1bd64b63214425bb83e834e9adf2d554",
+    "prompt": "prompts/marbled.txt",
+    "promptSha256": "18d9712df07c48e0de1521b6122007fb26f950871dfbeab883764dec02c78e5c"
+  },
+  {
+    "pattern": "eye-spotted",
+    "tool": "image_gen.imagegen",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-10c366dd-77cf-4e89-a4b9-0c02c68546c7.png",
+    "retained": "raw/eye-spotted.png",
+    "sha256": "0e57021285193121c16b3b588096090a38789f2a72174310ad2d3e963e4444c6",
+    "prompt": "prompts/eye-spotted.txt",
+    "promptSha256": "4624e946a9abc2abc82ced4a7b2c9bcf01e51be934b03b6640baae5449ddb763"
+  }
+]

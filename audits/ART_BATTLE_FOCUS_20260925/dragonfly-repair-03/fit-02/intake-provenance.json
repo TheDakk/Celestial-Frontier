@@ -1,0 +1,92 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "7f1b3f69ae7f3cd348027409b6210034a2bc5daa",
+  "helperSha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/master.png",
+      "sha256": "8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/authoring.json",
+      "sha256": "d76817c635f0e80b09c2c3f4b69c2801611352e7facbed839c2ccec1f6b7bc46"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/subject-source.json",
+      "sha256": "7e88c5376123e27cc2877d705a2db6963762e8b6ee95b31e568b656d028399a5"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "20cc5903d9d0ac8dcd3714c110d14d3f25ff0ba7ebe33cc968f4fbe9155da9ac",
+  "bindingHash": "d18f7116c4dc4400646752b2e26b7a3e60f5e4164a96fd28b30aa9d80cd48aea",
+  "contactEndpoints": [
+    "legFrontFarFoot",
+    "legFrontNearFoot",
+    "legMidFarFoot",
+    "legMidNearFoot",
+    "legHindFarFoot",
+    "legHindNearFoot"
+  ],
+  "shapeJoints": [
+    "antennaFar",
+    "antennaNear",
+    "mandible",
+    "legFrontFarFoot",
+    "legFrontNearFoot",
+    "legMidFarFoot",
+    "legMidNearFoot",
+    "legHindFarFoot",
+    "legHindNearFoot",
+    "legFrontFarKnee",
+    "legFrontNearKnee",
+    "legMidFarKnee",
+    "legMidNearKnee",
+    "legHindFarKnee",
+    "legHindNearKnee",
+    "wingFar",
+    "wingNear",
+    "head",
+    "abdomen",
+    "thorax"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/master.png",
+      "sha256": "8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/authoring.json",
+      "sha256": "d76817c635f0e80b09c2c3f4b69c2801611352e7facbed839c2ccec1f6b7bc46",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/subject-source.json",
+      "sha256": "7e88c5376123e27cc2877d705a2db6963762e8b6ee95b31e568b656d028399a5",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+✔ compiled solve rows and guarded numerics retain machine-scale agreement across valences and pin partitions (13.869625ms)
+✔ norm scaling fallback retains finite large-scale and near-collapsed targets without changing refusal semantics (0.704959ms)
+✔ actual fish cast uses the admitted active leaf with exact full solver and queue bytes (51.999ms)
+✔ unavailable runtime preserves the actual active fish cast through the original JS path (26.95225ms)
+✔ post-private-active-work runtime trap preserves every live byte before fallback and disables the leaf (33.044542ms)
+✔ real admitted Wasm leaf matches the current JS solver exactly and shares fixed scratch memory (4.357667ms)
+✔ absent Wasm and denied memory use the actual JS fallback with exact outputs (3.44725ms)
+✔ a real add-to-subtract binary mutant is rejected by admission and the runtime falls back (0.682042ms)
+✔ leaf snapshots all invariants and refuses malformed rows instead of silently accepting them (0.27525ms)
+✔ normal-range refusal precedes every position and RHS write, then robust JS preserves exact results (0.579ms)
+✔ strict artifact admission rejects relocation/global/data/table/function-import controls (1.418667ms)
+✔ a late disconnected-component norm refusal cannot publish an earlier component update (0.267125ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 212.916958

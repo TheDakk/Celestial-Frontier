@@ -1,0 +1,14 @@
+{
+  "author": "Codex",
+  "wings": {
+    "near": "present, visible, folded against torso",
+    "far": "present, visible, folded against torso"
+  },
+  "legs": {
+    "near": "present, visible, standing, not folded",
+    "far": "present, visible, standing, not folded"
+  },
+  "absent": [],
+  "hidden": [],
+  "schemaNote": "cf.anatomy-presence/v2 folded is leg-chain-only; wing rest posture explicitly retained in authoring coverage."
+}

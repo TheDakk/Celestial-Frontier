@@ -1,0 +1,1 @@
+{"status":"FAIL","error":"rig refusals in play: {\"left\":0,\"right\":14} {\"left\":null,\"right\":\"Contact: joint limit foreNearKnee faint@1546.033333333334: 100.2485952331375\"}","refusals":{"left":0,"right":14},"attacks":{"left":"tail (tail3)","right":"bite (jaw)"},"capture":{"frames":834,"cpuP95Ms":4,"frameDeltaP95Ms":16.700000000000728}}

@@ -1,0 +1,1 @@
+{"status":"FAIL","error":"rig refusals in play: {\"left\":0,\"right\":11} {\"left\":null,\"right\":\"Contact: approach:walk@465.8333333333335 exceeds scale compression bound\"}","refusals":{"left":0,"right":11},"attacks":{"left":"bite (jaw)","right":"claw (foreNearPaw)"},"capture":{"frames":602,"cpuP95Ms":6.400000095367432,"frameDeltaP95Ms":16.799999999999272}}

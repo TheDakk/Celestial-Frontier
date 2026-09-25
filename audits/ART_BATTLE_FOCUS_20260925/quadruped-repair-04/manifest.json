@@ -1,0 +1,3378 @@
+{
+  "parentHead": "412e2cf284faf1ce0be16f3cfd086075d3173baa",
+  "scope": "working-source hashes; proposed stage transforms retained independently; not integrated certificate",
+  "source": [
+    {
+      "path": "port/v2/apps/game/src/motion/body-card.ts",
+      "sha256": "9b0eb0528ae23a6062df159c04ccb0ae1063e98cfb2e49c9eabd73f9b6035e41"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/contact-envelope.ts",
+      "sha256": "38acf294b81f0cfd04674127dcfc2096351cdde991999e56b81dcee331572e73"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/contact-envelope.test.ts",
+      "sha256": "db35bb0588ba174ceaa55a42f6a82f81bf7c4775450bcda801f0be698a883ec7"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timeline.ts",
+      "sha256": "1a5b20e3808e936acc18f9aae31f5c61e17f8a3c47e45a295772f34b4e94d6a2"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/stance-envelope.ts",
+      "sha256": "e13eeb29ad6bce458013bae2bf3a0a28dc4dab07c776d6b2b1546a636a468db2"
+    }
+  ],
+  "files": [
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/README.md",
+      "bytes": 7632,
+      "sha256": "dac63d4e4a7b162d7789fdd5bd6aade478f00445627d7d7c455e7df27332ab2d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/bear-script.json",
+      "bytes": 656,
+      "sha256": "bdec59ebeb3947894a5039a01a27693178c26ad3daf24b1701e430f6c1ddb1da"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/bear-static-03.json",
+      "bytes": 11229,
+      "sha256": "a3b8b4b7779f418bf03730972fece77b67f68272d5fe7e1770585732f0e619d8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/bear-static-03.json.sources.json",
+      "bytes": 15162,
+      "sha256": "bb80b8f33158b735125d0fb7292fdf49b9106242c85f24682409d3d07c8999aa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/bear-static-03.log",
+      "bytes": 2894,
+      "sha256": "b24052d4a0107dacffc0b055f94c608f667533d41a7b8907e025991b699bbb02"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/boundary-study.json",
+      "bytes": 11586,
+      "sha256": "099c20c11329d89c9c4b66bc2ceaad315bd5bacfe09b922b1bec3007a94707d3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/boundary-study.mjs",
+      "bytes": 1174,
+      "sha256": "eb3a1b24a359a95364e20985a52b458496606e763574c59d80186d77194f34cc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cache-controls.log",
+      "bytes": 245,
+      "sha256": "2aac249e0730e0cd64b60cccdff65c8b9eabfb0a13c85e90a52a0ccdc6d1e39a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/binding.json",
+      "bytes": 3757767,
+      "sha256": "bbaaf3ec4ff0ab973b8eeec88cd1cbdab3a840d9ffbbfeb09f0d1c5b42db252e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/candidate-weld-receipt.json",
+      "bytes": 6518,
+      "sha256": "8d0548bb366353ef57483300b144c3be0cc80c0ff5d41e07f1859949ac5f971b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/declaration.json",
+      "bytes": 3192,
+      "sha256": "6df2e83fde499b2e786ffad3772f105135d445a5d368edd2922c124961a31827"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/flat-master-weld-receipt.json",
+      "bytes": 2926,
+      "sha256": "39386b34d7a78aaa962f21613cae8d7a841fd89f495cc3e963bf2c8b3a57ce5d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/intake-provenance.json",
+      "bytes": 3360,
+      "sha256": "8575b014f28b531b454e099d22defbf2fb2425080a6402f2c6520c36f8a0ab55"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/label-authoring-receipt.json",
+      "bytes": 739,
+      "sha256": "40afa9c78562795e14f324a0e77656e46d92794d1bcd7dd11b29a473df53d18e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/labels.png",
+      "bytes": 56187,
+      "sha256": "fb299745d162b14965601336637feec18261e0dcbed98d846703a85fd782a6f1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/markings-before-path-correction.json",
+      "bytes": 24880,
+      "sha256": "f41e24e1d26d2a863358bf4a12ae7e6d8ce4a57e563e43d2d63bfc99817ea833"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/markings.json",
+      "bytes": 25116,
+      "sha256": "4489f3809796dea1bdeb58127f7d07b623f433d2ff4a0b665f02475a08cf282a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/paint-boundary-continuity-before-schema-correction.json",
+      "bytes": 1264,
+      "sha256": "dd60c1506741a308f27bacfe81ff728d7f026c64ecd0d1a61f04370bd9b302ab"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/paint-boundary-continuity.json",
+      "bytes": 1474,
+      "sha256": "973b7403b0c6101ed81ad2a149e6a61bfe1019caab98f8e5c8d1b87ac908c14a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/atlas/cattle.json",
+      "bytes": 12684,
+      "sha256": "4ca70d3ff820b4104978a0cfcb4477bd812a15c53a4799ef50ab9d258eba174a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/atlas/cattle.png",
+      "bytes": 1200516,
+      "sha256": "cf382d7b5880e0a5ee85c369b94f7fd3bfd17e4bf80250ff6c14033ec4783d71"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/atlas/receipt.json",
+      "bytes": 4726,
+      "sha256": "0b591c2be6af76ab6828a3ac65a24647f439b88463cff4e8aa6d924f14fe90a1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/binding.json",
+      "bytes": 10371,
+      "sha256": "80165880c28b0f96a89d904403a0349652617e3700f5977434e0c196b3a7bfa7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/keyed.png",
+      "bytes": 1593556,
+      "sha256": "977890154b04f46803bd70b99d70f8e2c79ac0f74211bb52b0ab5f2d794b2a5b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/ownership.png",
+      "bytes": 160624,
+      "sha256": "d7706cd10e5d1bb0d545e913e450e6a450247fd2faa6503b2e1edccc34a46a9d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/chest.png",
+      "bytes": 79033,
+      "sha256": "b7bce92131ada7784c49299923bb0d612e76aeaed50d495032ba96c6657f8532"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/ear-far-root.png",
+      "bytes": 4832,
+      "sha256": "409a50882bc43c4f5e9062772530e40f33a924b676670ec2385fcd34d37fb137"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/ear-far-tip.png",
+      "bytes": 1328,
+      "sha256": "4ae37e7b04b5c6b18708eb2b706d5bcc3f10aceaa3f00c641eebc5be17b6026d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/ear-near-root.png",
+      "bytes": 10999,
+      "sha256": "85d7679ccde0903d5034bcdca68e0b0408b015d57f34081d6476416269ec1dff"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/ear-near-tip.png",
+      "bytes": 11585,
+      "sha256": "cb277c5bbbf3ef0d11d299df86bd9349aba3bdf7ec54a777412c64cfaf6174f2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/fore-far-ankle.png",
+      "bytes": 12187,
+      "sha256": "2c204afd03725da0a6f34b7aeed4c2dfe89ae8b3e03d62fbe2194863688ad2c3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/fore-far-knee.png",
+      "bytes": 22291,
+      "sha256": "ba364e34135e8b94f4d2dc2ef9d08435ca5b85670f2a95457581db1e6e6e02be"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/fore-far-paw.png",
+      "bytes": 5460,
+      "sha256": "f4081c2758677a3cd8392afebec6cb939f2db2ad9e75efdefe2bafaa96ba521f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/fore-far-root.png",
+      "bytes": 13523,
+      "sha256": "ede7b76fae40a7f9c939d50c65699cf2560d56552ce6409326be589c3ecefd98"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/fore-near-ankle.png",
+      "bytes": 14318,
+      "sha256": "5f6559042d440898fb81e0c5fa3b01c2068d7047a49a3822d9c1811b29f79632"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/fore-near-knee.png",
+      "bytes": 45064,
+      "sha256": "ac3c233f5f10d8dc3837cc1fae69fd535ceb02a661135023f6b34a075ca039d7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/fore-near-paw.png",
+      "bytes": 9017,
+      "sha256": "e3696199313248b9e39672089e328953a21cabc90f44248d2c31f7998ae790fc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/fore-near-root.png",
+      "bytes": 162412,
+      "sha256": "6c8a28ada1abca096e5eda85737c66bfbe4309856230f9528878e26d1967b3fb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/head.png",
+      "bytes": 97336,
+      "sha256": "d44a854c689fdcb1d6eb6343174bfe10536e9b8e93fcf1c951bc608434e71314"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/hind-far-ankle.png",
+      "bytes": 12803,
+      "sha256": "006a23527533a42fd1d0ca4e7811e559c575cb09ae88d2b14d6e1635635f2105"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/hind-far-knee.png",
+      "bytes": 40041,
+      "sha256": "8bab735fd59bfbaffb16a3b4f7806e75dd79d149d11b056bbd00b4c7f780a223"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/hind-far-paw.png",
+      "bytes": 6380,
+      "sha256": "41cb233627e57e691f701bd14f77a31d515383c677a1ae224fc9f23caf82f920"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/hind-far-root.png",
+      "bytes": 37416,
+      "sha256": "79da8ee3e90e11b97d777a54f7ea7556e373c1166db6c6f8e95d8a62f07d9879"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/hind-near-ankle.png",
+      "bytes": 14228,
+      "sha256": "ab0cd5db555625278af7960f86de80edd69702aac776cb68e9961016cdd67981"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/hind-near-knee.png",
+      "bytes": 56539,
+      "sha256": "63c55e68e571036750d4e632f15041176a7a4c41028a0f767523808efebbf62d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/hind-near-paw.png",
+      "bytes": 6321,
+      "sha256": "3c747b19e73ff9eec410f023ea1d7f305ef1c44faa2c3aac9a0356e4e6d102b1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/hind-near-root.png",
+      "bytes": 131693,
+      "sha256": "1f25f7e9e032253a98d48fa3ee6513c80a2c9871db3fec88815359b0f513336b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/jaw.png",
+      "bytes": 34822,
+      "sha256": "b922c7ace9fbb723c50a62b7cdbeb9e49b60881bc02490622ddc640f80a1304a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/neck.png",
+      "bytes": 121021,
+      "sha256": "72ee7596a33a346f0c7995743c4c44ceb0f02997e8b84bda4fd20f60d71e71dd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/pelvis.png",
+      "bytes": 111417,
+      "sha256": "e9f8893fa1539ba27c70e04938382a36c1d287bbd25f14f265abab76e702b0d4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/root.png",
+      "bytes": 5282,
+      "sha256": "6d754dec41073574b379fe6fb98ac803091cff31bc6bd1e2b5e9a8af3aec8d4b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/spine.png",
+      "bytes": 378340,
+      "sha256": "b70cfafea3ae68b9dd0f4ca3f9f5e3d50f5199d98886b4a17e047df6c3b69b4b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/tail0.png",
+      "bytes": 16234,
+      "sha256": "a81e0a18768b2da3648a0dd8d725f3801562a7f7fbe5f2775897fd6038c61ee9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/tail1.png",
+      "bytes": 29726,
+      "sha256": "0b18fb31216fc39e2e04d005ed9065e2f35e997d4a79a36894b82d2a38da44ec"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/tail2.png",
+      "bytes": 33956,
+      "sha256": "b1e4b78daafe1057fb6118c3b446313d91bc55be701dbd53f1af7f1253c854bf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/parts/tail3.png",
+      "bytes": 37951,
+      "sha256": "f08c59731426804d8421be0b813f8473edd030ee4e3d5f581256f6154aaf589e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/parts/receipt.json",
+      "bytes": 8005,
+      "sha256": "33845b25e0adda76ada2cb5ee18f4baf0c0518a203a8b8bc18979e053224838e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/pre-split-binding.json",
+      "bytes": 2266807,
+      "sha256": "81dbe587a077ce0c6719d11470b904f6321222a7c67dcac7047b07ab2480d044"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/receipt.json",
+      "bytes": 2824,
+      "sha256": "880ca0c6e66ae94d9d623bd40e224e7804b37f93a1fd158ae473a5a3596a65f5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02/record.json",
+      "bytes": 7381,
+      "sha256": "4ffa56659c98bc1cfc39edb170e6035369fd624f64c7f5b6d76b7cd78fe66df1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-paint-boundaries.json",
+      "bytes": 1217,
+      "sha256": "f573cdf1bedfb41ab686576fce8ee644ee9253bc944f77eb8a31f1795f857e8c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-script.json",
+      "bytes": 624,
+      "sha256": "6732e23141053d91e1aaa97646faf6e8e6561138160f54d2e7bda546c341df11"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-static-01.json",
+      "bytes": 10379,
+      "sha256": "756053226ea007f520dc39be9a6b1862a8eabd45156b2ba3f6ec46c9332594f8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-static-01.json.sources.json",
+      "bytes": 14934,
+      "sha256": "2f0316f5914d91d822cbc56e81b82719998d9442c993bd47c8b68a9d591fdcec"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-static-01.log",
+      "bytes": 2889,
+      "sha256": "c54e33ac08cfe40c2eaa35fce219f84c644ec8b6f6c075f0e82698e1dbf473a7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-static-02.json",
+      "bytes": 12416,
+      "sha256": "8e15aa3a6c8c14cbbc5404ef0382a2fe57c65aeff129f2bff50186637b5acb33"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-static-02.json.sources.json",
+      "bytes": 14934,
+      "sha256": "51bd5d890a5255c54916c2d9908262bd77ca0d8cf9618698b20687e0c3d8e2de"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-static-02.log",
+      "bytes": 2882,
+      "sha256": "fe2dd7d981fdfd21ad9747cc8c99a223c2bc32d593d827d66cd7a36d3b8df534"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-weld-02.log",
+      "bytes": 1599,
+      "sha256": "4755a797f544c4037caf329489b47e7437c8193651f525042b304208f3d897e5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/choreography-before.txt",
+      "bytes": 25363,
+      "sha256": "0e2857f94e6943c5fe61349f5aeeab1b18743a1ef2b7f3461be2555c862ed2e3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/choreography-proposal-02.txt",
+      "bytes": 26816,
+      "sha256": "1836d635310ace5a3e356890030a1f61983045fe238a0becdbc67ba07dfe6a3c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/choreography-proposal.txt",
+      "bytes": 25868,
+      "sha256": "b5706ffcd4098ce8237436ce35017afee0393c7396de329afd2d9250d193511b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/develop-profile-01.log",
+      "bytes": 66659,
+      "sha256": "c19c959b09ff1124f0480f3c97ac4eeebc5f2c27888b577cb250d77600311f4b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/develop-profile-cache.log",
+      "bytes": 66646,
+      "sha256": "5bfa52a22b96dceabe6b73db7c01c4520b043b46d5fbb41137909f02ab248705"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/diagnose-lizard-fold.mjs",
+      "bytes": 1890,
+      "sha256": "6dcfb2e5d67cb9f430bbfdb1481b553cbca8e1770feec0a4f77d37ae49a0dd6a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-composition-controls.ts",
+      "bytes": 2429,
+      "sha256": "4adaad2df41060f0435ef6d9c84023709b29b399090f8f855ad8fe03feedf043"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-composition-diagnosis.ts",
+      "bytes": 2834,
+      "sha256": "ccdd8fd6c57370966b3a068bac243fbc36a8dea56893eebbaa080929c63ed14e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-control-02-sources.json",
+      "bytes": 9889,
+      "sha256": "a18928ff65a0a5048f29e71e0fcecd2b3f2d2568662627a708c48afe71ab3e66"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-control-sources.json",
+      "bytes": 9889,
+      "sha256": "15c0e32ecd18157a55ef1ef23167c82c830f62605506720c58f0668c27c95182"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-controls-02.log",
+      "bytes": 709,
+      "sha256": "e20f0762f2eb7e0f411e67463c29995772e7d9ce8b5e6900c5ade020b888aa4a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-controls.log",
+      "bytes": 1580,
+      "sha256": "ac695e195d314a3001702e13612b984021ce0b0f2d8487213a2b3d827cc97d58"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-diagnosis-sources.json",
+      "bytes": 9890,
+      "sha256": "f59d676099dd39ec1e2399e40c6ac0ab4ebdb4efe26028d88802ba625284cad1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-diagnosis.log",
+      "bytes": 1406,
+      "sha256": "37016b82b18c146164c4528fb2598260d082b1bfd0db0cd4bf251d2852d3e1f8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-idle-fade.patch",
+      "bytes": 1698,
+      "sha256": "1310242d67537883af30196c86b18b2f19b2d5b36c4b04c64cea7cc5892c1c7c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-idle-settle.patch",
+      "bytes": 2662,
+      "sha256": "9737274dbc3b38ea2eedf4e3047021cb7d4911557756a0c9a9b55c1e45bbab78"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-original-control-02.json",
+      "bytes": 739668,
+      "sha256": "eb09b035162af42547bdcbea5b70d0a0794760618c21311efc3240285724a6c1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-original-control.json",
+      "bytes": 739668,
+      "sha256": "eb09b035162af42547bdcbea5b70d0a0794760618c21311efc3240285724a6c1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-proposal-control-02.json",
+      "bytes": 739560,
+      "sha256": "ef24823184e40b2367d36ea4b183f0ef1a1db721a8d5d8cb408066cd93e70a30"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-transform-provenance-02.json",
+      "bytes": 571,
+      "sha256": "b5e37609e4f41b208bc4e582a3c5438d2a2cb79ef34bfab66c61289ba07c4dfe"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/faint-transform-provenance.json",
+      "bytes": 526,
+      "sha256": "323e3296819a785d412bafaea53950d219665b1081c8184f952df0373234ec4e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/final-candidates.json",
+      "bytes": 3017,
+      "sha256": "e722178a0ca6ea79204e8e9c81389dd79d81176f6f4abd2f4243d34ade6341fc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/binding.json",
+      "bytes": 3019377,
+      "sha256": "5ffd9d46b712b33abd839d14e6dbb156658708e29b7a6f6d8ea87c5970156934"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/candidate-weld-receipt.json",
+      "bytes": 3286,
+      "sha256": "e500ceb87914006c4469c36654261bfda14a37c6cf928f3b10ebf7ee0654c093"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/declaration.json",
+      "bytes": 3192,
+      "sha256": "d4a419519bf46d2cbcb74acda24925d21ccd7eb502df4f403533ff55e78bf1ae"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/intake-provenance.json",
+      "bytes": 3360,
+      "sha256": "31b958233a94e7dc0ffe581487686fe32424c4e18b69105f3d79419191ccd440"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/label-authoring-receipt.json",
+      "bytes": 731,
+      "sha256": "42abd7844b8a11226a616a0dd8c4ee28b5dfd59b5a6f8528db64e8601fbc13a9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/labels.png",
+      "bytes": 57643,
+      "sha256": "c5ada957566f29534c44117ef477c14ab8851ac42a75f55ffc9b1c4c3fdb8053"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/markings-before-path-correction.json",
+      "bytes": 25104,
+      "sha256": "ba245f6d0734bd1a3347e04642dcc3a52150fce508ffc860a1d9b2586de63397"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/markings.json",
+      "bytes": 25364,
+      "sha256": "1373269661d16b65b88ae59705dab091fada006273ef096ea335e70a9b757d87"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/paint-boundary-continuity-before-schema-correction.json",
+      "bytes": 247,
+      "sha256": "b4d0429e000eaa20d7ff8b17433948f8504aa76f696bd3a6e423527d9a068c4c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/paint-boundary-continuity.json",
+      "bytes": 457,
+      "sha256": "7a3a4019a4e3d811fcc79e58b857de82b5b851a6044a6996cf42f7d5f1f40e6e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/atlas/impala.json",
+      "bytes": 12697,
+      "sha256": "aeecb2fc2065a08f3da63bbaf947644b97076bdc46c5522b8ebdfe6b04a0d08b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/atlas/impala.png",
+      "bytes": 1000147,
+      "sha256": "2145b4193715401bc75ffe1693b7ea763cd67e0283f8bc4b0ecf4d6502011c7e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/atlas/receipt.json",
+      "bytes": 4726,
+      "sha256": "53607343478a2e68931f16458142fd0c69a7772b89c49fb74280ce0b7d172644"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/binding.json",
+      "bytes": 10382,
+      "sha256": "92fb079d22cff839f46f7ac40df86bffdde20063e0c8705b02f661bba8e662a4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/keyed.png",
+      "bytes": 1189938,
+      "sha256": "88c8a47092017a832447f9abbc57ad4033923eca70cf07a83b34b382bdd2790d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/ownership.png",
+      "bytes": 146389,
+      "sha256": "1441165876cd79de8ddc3dc97b67fa5328c132d2bf9615e7ec3c7aa0acd9e64f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/chest.png",
+      "bytes": 41061,
+      "sha256": "a2335fff91d7a27f47889744ce27ed8c634ec186d5758c8f5769fb1c1bed27ed"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/ear-far-root.png",
+      "bytes": 7189,
+      "sha256": "4ed5d33d6727b21df8b96df8ed3af891e9809f150eaf279fd36897d59ae25643"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/ear-far-tip.png",
+      "bytes": 3582,
+      "sha256": "5a33bc7356d02e8b37e4e26b30d97686f1b7cfb89cabdf3d929d7c1f9ead2c81"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/ear-near-root.png",
+      "bytes": 12083,
+      "sha256": "e6f08c32fb7a634f3909defa5b17a5c6ec4dea3a6faa2550d05f01dee59f4fd4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/ear-near-tip.png",
+      "bytes": 15104,
+      "sha256": "d89fdeab72ce0a15be69517983432045c041f2564b7e16adc3a3c1753970b302"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/fore-far-ankle.png",
+      "bytes": 16260,
+      "sha256": "f09d88ebe1a6d0e988114013beaf01a2f6cce9b591cf7873a4310e72ff2af75b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/fore-far-knee.png",
+      "bytes": 12263,
+      "sha256": "38ffdda1e2b7775a02d8dd9dabfe16549d3c4f70e8dadee47936b90e37582f93"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/fore-far-paw.png",
+      "bytes": 20665,
+      "sha256": "24cd8fb3c43d0d3023a31f231cc366ff394890dbfdabb1aeb75e8e49d2215b7a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/fore-far-root.png",
+      "bytes": 678,
+      "sha256": "291225b9982068a0b8f2df4b6ec53bcd83b886d0fa26895f6cd4aca84d3344b1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/fore-near-ankle.png",
+      "bytes": 19984,
+      "sha256": "e42b9e3126f7baa1da7fca5587d5582b4eaca9b34d79cc2f775da356fbb2b09a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/fore-near-knee.png",
+      "bytes": 64795,
+      "sha256": "9c1aefcb6f4190099f1b5e584fb588b3bc42ecc734e817d4f84ee243ce605205"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/fore-near-paw.png",
+      "bytes": 26407,
+      "sha256": "a626288ec3620b514aab1bc30207a5b34e8e1bf99a7963e89625427ec92b6e3a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/fore-near-root.png",
+      "bytes": 100419,
+      "sha256": "4b1f475a5274eda72a48b1fa043cd506e822f304f4c04d6e99626aaa5bf480c6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/head.png",
+      "bytes": 135087,
+      "sha256": "8b1b1388b39352ad2a76e756ec9e4f38115b6e422f4169a6edeae8882b7bf3df"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/hind-far-ankle.png",
+      "bytes": 26408,
+      "sha256": "631d6d5a240bacd30a3a384979f402e5aca5d1bd9b321c937407e806dc172458"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/hind-far-knee.png",
+      "bytes": 15967,
+      "sha256": "5fd659d4c83bdfd2291b87a7e676ce3d5664be02476a01b34296ad9539996209"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/hind-far-paw.png",
+      "bytes": 32398,
+      "sha256": "f21ac667f568333615d964ef1bf76abe9604addc6a9a0c7fc574032caefd1bb6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/hind-far-root.png",
+      "bytes": 632,
+      "sha256": "69f3b1f4933a3cd56b9999bf760849c0753d21a2cd57325c124cb420ec388d80"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/hind-near-ankle.png",
+      "bytes": 31924,
+      "sha256": "d523d73ea9e8024fd99f24bc1589225c870479d3face37ac7c3f06488f05d707"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/hind-near-knee.png",
+      "bytes": 88531,
+      "sha256": "daf479d3ca2efb13a1d8e232350bdb38f10f53ffb5420e397c6bd7d36cb3f1cf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/hind-near-paw.png",
+      "bytes": 36038,
+      "sha256": "c8e1cbd3fa6c41cafdc0181c2d9e040975065126aae70f22e4974b8a243c9fa5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/hind-near-root.png",
+      "bytes": 131752,
+      "sha256": "6668dcb38fe79fe34cff46c9d57b0a3b41af66aee87455edfb74c2279dd3bb63"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/jaw.png",
+      "bytes": 16572,
+      "sha256": "a802023c475f478da327d313f568699b44d1e6364e567911058be0329a31c3ae"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/neck.png",
+      "bytes": 103330,
+      "sha256": "8191ab2bda992a293b26e3650ed7722ccc1e3ae7955889f0804885d1955e8af5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/pelvis.png",
+      "bytes": 3685,
+      "sha256": "e5eb68bc97759de76425b774e0cfeb9321b1264601d54fdc97ee1e8cb3a7a16f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/root.png",
+      "bytes": 12357,
+      "sha256": "4a6e3139a721f9ae646b57ccaedf02cb4ea519607e2f868bbbff19954d6d0f7f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/spine.png",
+      "bytes": 168561,
+      "sha256": "3517819b6a50434c0312d169b31244a31beec68e07d4517750b40e4ca688eff7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/tail0.png",
+      "bytes": 3025,
+      "sha256": "5666e1bdf97e61ee24815be31daaebdccfa52d0d589536471f4af869cd624f1a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/tail1.png",
+      "bytes": 6753,
+      "sha256": "6fd93d773126b6ddcd199d0adca77f61aaa8815028468fbefc9d4eac799e9fa3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/tail2.png",
+      "bytes": 7799,
+      "sha256": "2ceffa601e3a0d864671094ed86cacbbf44ae93e9d10601b6d93c5ffc0a35c81"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/parts/tail3.png",
+      "bytes": 5169,
+      "sha256": "8270230a5db71881a95414472fc6ea22c7394dc210e490be4b6ec69769e63295"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/parts/receipt.json",
+      "bytes": 8003,
+      "sha256": "1634fee92c863e8024e25a950fbb764e3378808290c1e685a9ff512ff790e255"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/pre-split-binding.json",
+      "bytes": 1901573,
+      "sha256": "48b13adba9da4fbe0a948e10ded88596422ce9f355b5b4d53f2abb1167fcafe4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/receipt.json",
+      "bytes": 2826,
+      "sha256": "3524d56645e063be7a6b524b6a67e5787a783f84691a6319bd6b478318cfc747"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02/record.json",
+      "bytes": 7552,
+      "sha256": "fe6acc9301979d0e9abf811eb1ace740530a748243031da872de565138ec3da7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-paint-boundaries.json",
+      "bytes": 200,
+      "sha256": "e2b536477961bd3ef9ee7b69bf44c71f7dd747001f3d8572ecee84216b67e229"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-script.json",
+      "bytes": 624,
+      "sha256": "2d48c06bc0724f1a646e967c4c3e6026844a4e6c94bcefe9e441bf3a94231da0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-static-01.json",
+      "bytes": 10415,
+      "sha256": "aafb6391ac32142d2fe3c3e18cf8652d757d9e311ff8d118b2261843549bb5cd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-static-01.json.sources.json",
+      "bytes": 14934,
+      "sha256": "f89705ed5ed141bfc9656f1074dfc2f1c6da5af7982cb2c980a44a1c687e98e3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-static-01.log",
+      "bytes": 2921,
+      "sha256": "69ed5ea39827859b0970b307ffd48b6c3819d5492ab3553ee59c9b47cdfe3d10"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-static-02.json",
+      "bytes": 11297,
+      "sha256": "ddab86c8289a1601caeed4cba438b73bec0fa26da3de58a93d8f03948b9f2bc8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-static-02.json.sources.json",
+      "bytes": 14934,
+      "sha256": "4f1d0102cf42618e7da687fddc33e52e0801d947b31b25a9f43518355fbd616b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-static-02.log",
+      "bytes": 2920,
+      "sha256": "05aa924273d14528b1b8e18c29ffa6ab4e7c85a14f0741b0e90516d08011193d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-weld-02.log",
+      "bytes": 1140,
+      "sha256": "c02cb8a875d7dfa19374b195e897642a13991889e9704a004a7b0f396ba005d0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/binding.json",
+      "bytes": 1555866,
+      "sha256": "93f042875172285c8a07646ff6881b468da934ed12e9deaae4eb5dfdb474d248"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/declaration.json",
+      "bytes": 2826,
+      "sha256": "cc89d96f02e26cc13d34371d5d9ddd9dfe6e2d53635acf4ed4c72f7e4a9bb487"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/intake-provenance.json",
+      "bytes": 3496,
+      "sha256": "242db191851495c51b798476a0e59d7856d7c20da79f16374671c4d7ae23f1c1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/label-authoring-receipt.json",
+      "bytes": 682,
+      "sha256": "45e4902349118ee1763c277f3019ef2e24c9d32e5dbff61f2ace7a78ce7eeb28"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/labels.png",
+      "bytes": 44064,
+      "sha256": "45db669c40b134630df60fc99ff33b50233d715727b93f6f2fc9dcaec2caaf98"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/atlas/receipt.json",
+      "bytes": 4211,
+      "sha256": "57720208b0d19aa38977f0cde7cb6ebe5758751f8f6cd34ca1a1f3fd5a9e8683"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/atlas/wall-lizard.json",
+      "bytes": 11036,
+      "sha256": "dcdfa7553c98880358c05322a6c05ad3f260c12f2e89f4eb4e0a0bc69c773837"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/atlas/wall-lizard.png",
+      "bytes": 385648,
+      "sha256": "d524998b70a7ff5cb485f2b073e4a8adbb627935461d641764db0178e0406c1c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/binding.json",
+      "bytes": 9053,
+      "sha256": "e08ee96d3ea6dfa9d6762c33a7aa9d25480e4c8da249f3ae62db8d0d3daa691f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/keyed.png",
+      "bytes": 404965,
+      "sha256": "2ef51fc8475f4a4e5767188fac9afbe000e56e1c68b5d9f9ac8246e08ea7f2dc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/ownership.png",
+      "bytes": 68454,
+      "sha256": "02c7202f640a6cd059e6383ec025c61e5cd6ddbfa567f9b438db6daa35cff699"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/chest.png",
+      "bytes": 26768,
+      "sha256": "6a3dc23d6c6fcb4222bbd829e9e8268c9ff1b03b04df7d6a4bbd12dea57bbe27"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/fore-far-ankle.png",
+      "bytes": 8542,
+      "sha256": "66485784c6dd570979636a6c20408e84b238d904e1368a00a3e3134f3715f6d3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/fore-far-knee.png",
+      "bytes": 2553,
+      "sha256": "7d59dbf3397c069537935430d5b8cd0502fc4feabb995f870cc77567fb403fe5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/fore-far-paw.png",
+      "bytes": 4826,
+      "sha256": "70d7dbe54e138dff44f12ba20f6f60832b20ecd55c28a89c3076a122ef9136b2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/fore-far-root.png",
+      "bytes": 3657,
+      "sha256": "16ffbc543920b4762228ec0cc8b44f09aa7f5dfd1e52827b47e255a7f8940290"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/fore-near-ankle.png",
+      "bytes": 12973,
+      "sha256": "a55aad5da294f4e94963bd1919cac07b55dffa729af6a548ab2b5b64041b5c75"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/fore-near-knee.png",
+      "bytes": 4618,
+      "sha256": "3e76087c1ba22a130751ac8f32ad8bc89b3d8353841b9a11ac3968964578895a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/fore-near-paw.png",
+      "bytes": 10623,
+      "sha256": "3c72058c093ae940e773a6fc33a7543e263b3a57eca8db88b9bdd9ad4edd741d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/fore-near-root.png",
+      "bytes": 11019,
+      "sha256": "11e3df8d8f2e4898f42cbceb409ab9882a1806456c44d8100534dc97b1cd7b08"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/head.png",
+      "bytes": 27262,
+      "sha256": "e6df9f85508651e366f0e0e4ac74b1d0a43fe0fb3fa19ee1a027b13eefadfbe4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/hind-far-ankle.png",
+      "bytes": 3375,
+      "sha256": "69c910f3a33d6d0c0a3fcedce5fd073be9cdc90be5b87e49f38e020119b9360d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/hind-far-knee.png",
+      "bytes": 3735,
+      "sha256": "ffbcd5909d28363f3454d552c71926407ff8aae1e5ecf9ab6b69ffa7549a7129"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/hind-far-paw.png",
+      "bytes": 4657,
+      "sha256": "299eeb32a67ab6501a7491339475c15d0a7fa7bc9c58b3e77222718ec343d660"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/hind-far-root.png",
+      "bytes": 2344,
+      "sha256": "cb4efa0890343df3356fd039d878d2e130f6cfcb1a6eb37deeb33a1b6af8dbad"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/hind-near-ankle.png",
+      "bytes": 4349,
+      "sha256": "ecddba3b4b9bf023342dfec29d26c43ad8fa238842130edd6a2da551db2f63e0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/hind-near-knee.png",
+      "bytes": 4347,
+      "sha256": "f67ba590312e8b45821680af4379c04420b6bd5bd4f5aa3ee4df34ccaae541e4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/hind-near-paw.png",
+      "bytes": 17624,
+      "sha256": "dfb9cecd34c8c7a3efd052efdff8fe6f460542e78564b8be63727ad8b66fba94"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/hind-near-root.png",
+      "bytes": 14372,
+      "sha256": "a85a945a63a1f8275a39591cebf0e782a23b210eefad8a9caa4cc4e989c22b84"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/jaw.png",
+      "bytes": 15803,
+      "sha256": "370e3e9c36fbce405bc5d73ecca328f03582a73af5b84b89c9604cb499766d6a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/neck.png",
+      "bytes": 25355,
+      "sha256": "c7ab41ec85a3eb41700016609be1b60020ced870ced7c4e00d3ecc8aa96c3897"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/pelvis.png",
+      "bytes": 14382,
+      "sha256": "ec10c0729e83609231d98a96f61982518e51a875cb7cc864086b6b67359fc077"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/root.png",
+      "bytes": 603,
+      "sha256": "b230dfecd2122804277879ab7771875f4b14e567f81872ee1ac43933ad3f641e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/spine.png",
+      "bytes": 97160,
+      "sha256": "9ff42a2d8b279d0921faa8a5084313ce23a7775babe45e4e4e07f2342255b2cc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/tail0.png",
+      "bytes": 30218,
+      "sha256": "ed91abc5418c71db12d37e1899c4147d3d80408406ddc72982d32e065509a299"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/tail1.png",
+      "bytes": 26589,
+      "sha256": "83e7f835673210fea645597037d0ac246efb13a7d18a7f549903236f9eca0ae6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/tail2.png",
+      "bytes": 16921,
+      "sha256": "d0397fc6d49937ee66bc2093c73d00c0b3d879a05fa8b46ff9383d92bfd1354e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/parts/tail3.png",
+      "bytes": 14887,
+      "sha256": "4f63409269afed817b9a817c873e5147f34bd410754e7b9a30ab105d94629fd0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/parts/receipt.json",
+      "bytes": 7033,
+      "sha256": "0ec0da14111245725b23170cd2e549070e25db87b1dfb0f9c1680ccb3d66cabf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/pre-split-binding.json",
+      "bytes": 935535,
+      "sha256": "96e4ffeec78a652dffb758de4a4c1e83f68661ccf55872bace7a0dfd1f21209e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/receipt.json",
+      "bytes": 2827,
+      "sha256": "ff379e4491ad3187487522adfde09bbba02f1954258c3ee885182b941b4969d3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-02/record.json",
+      "bytes": 7745,
+      "sha256": "b05f90d7f729c163b9f10dfde31626ef4bc79f5ab4403371a21284027c79e5a9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/binding.json",
+      "bytes": 1557426,
+      "sha256": "aac2d89a80939c348b5f92833ef3674d100ea7eec975f2c44bf093bf5658cfe9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/candidate-weld-receipt.json",
+      "bytes": 3231,
+      "sha256": "c23db1f2e849ef64eb9d4b64c224975666c422c11ab5c2986c199959ca76db3f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/declaration.json",
+      "bytes": 2826,
+      "sha256": "cc89d96f02e26cc13d34371d5d9ddd9dfe6e2d53635acf4ed4c72f7e4a9bb487"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/intake-provenance.json",
+      "bytes": 3496,
+      "sha256": "242db191851495c51b798476a0e59d7856d7c20da79f16374671c4d7ae23f1c1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/label-authoring-receipt.json",
+      "bytes": 682,
+      "sha256": "45e4902349118ee1763c277f3019ef2e24c9d32e5dbff61f2ace7a78ce7eeb28"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/labels.png",
+      "bytes": 44064,
+      "sha256": "45db669c40b134630df60fc99ff33b50233d715727b93f6f2fc9dcaec2caaf98"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/markings.json",
+      "bytes": 25263,
+      "sha256": "1c5774046a71ad129bd13d20d939f08ca4d09d76ddf6f5392c7d5ea63786169b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/paint-boundary-continuity-before-schema-correction.json",
+      "bytes": 258,
+      "sha256": "86ae8e2d150ad1b531c19e4313d29e788f98c102d6d218cfbdf113eecb2afc99"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/paint-boundary-continuity.json",
+      "bytes": 468,
+      "sha256": "a65af1bd035e898c49f2e9bc7018f3b099bcade11dc4a57796d904d91a618aff"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/atlas/receipt.json",
+      "bytes": 4211,
+      "sha256": "57720208b0d19aa38977f0cde7cb6ebe5758751f8f6cd34ca1a1f3fd5a9e8683"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/atlas/wall-lizard.json",
+      "bytes": 11036,
+      "sha256": "dcdfa7553c98880358c05322a6c05ad3f260c12f2e89f4eb4e0a0bc69c773837"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/atlas/wall-lizard.png",
+      "bytes": 385648,
+      "sha256": "d524998b70a7ff5cb485f2b073e4a8adbb627935461d641764db0178e0406c1c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/binding.json",
+      "bytes": 9053,
+      "sha256": "e08ee96d3ea6dfa9d6762c33a7aa9d25480e4c8da249f3ae62db8d0d3daa691f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/keyed.png",
+      "bytes": 404965,
+      "sha256": "2ef51fc8475f4a4e5767188fac9afbe000e56e1c68b5d9f9ac8246e08ea7f2dc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/ownership.png",
+      "bytes": 68454,
+      "sha256": "02c7202f640a6cd059e6383ec025c61e5cd6ddbfa567f9b438db6daa35cff699"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/chest.png",
+      "bytes": 26768,
+      "sha256": "6a3dc23d6c6fcb4222bbd829e9e8268c9ff1b03b04df7d6a4bbd12dea57bbe27"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/fore-far-ankle.png",
+      "bytes": 8542,
+      "sha256": "66485784c6dd570979636a6c20408e84b238d904e1368a00a3e3134f3715f6d3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/fore-far-knee.png",
+      "bytes": 2553,
+      "sha256": "7d59dbf3397c069537935430d5b8cd0502fc4feabb995f870cc77567fb403fe5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/fore-far-paw.png",
+      "bytes": 4826,
+      "sha256": "70d7dbe54e138dff44f12ba20f6f60832b20ecd55c28a89c3076a122ef9136b2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/fore-far-root.png",
+      "bytes": 3657,
+      "sha256": "16ffbc543920b4762228ec0cc8b44f09aa7f5dfd1e52827b47e255a7f8940290"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/fore-near-ankle.png",
+      "bytes": 12973,
+      "sha256": "a55aad5da294f4e94963bd1919cac07b55dffa729af6a548ab2b5b64041b5c75"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/fore-near-knee.png",
+      "bytes": 4618,
+      "sha256": "3e76087c1ba22a130751ac8f32ad8bc89b3d8353841b9a11ac3968964578895a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/fore-near-paw.png",
+      "bytes": 10623,
+      "sha256": "3c72058c093ae940e773a6fc33a7543e263b3a57eca8db88b9bdd9ad4edd741d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/fore-near-root.png",
+      "bytes": 11019,
+      "sha256": "11e3df8d8f2e4898f42cbceb409ab9882a1806456c44d8100534dc97b1cd7b08"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/head.png",
+      "bytes": 27262,
+      "sha256": "e6df9f85508651e366f0e0e4ac74b1d0a43fe0fb3fa19ee1a027b13eefadfbe4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/hind-far-ankle.png",
+      "bytes": 3375,
+      "sha256": "69c910f3a33d6d0c0a3fcedce5fd073be9cdc90be5b87e49f38e020119b9360d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/hind-far-knee.png",
+      "bytes": 3735,
+      "sha256": "ffbcd5909d28363f3454d552c71926407ff8aae1e5ecf9ab6b69ffa7549a7129"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/hind-far-paw.png",
+      "bytes": 4657,
+      "sha256": "299eeb32a67ab6501a7491339475c15d0a7fa7bc9c58b3e77222718ec343d660"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/hind-far-root.png",
+      "bytes": 2344,
+      "sha256": "cb4efa0890343df3356fd039d878d2e130f6cfcb1a6eb37deeb33a1b6af8dbad"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/hind-near-ankle.png",
+      "bytes": 4349,
+      "sha256": "ecddba3b4b9bf023342dfec29d26c43ad8fa238842130edd6a2da551db2f63e0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/hind-near-knee.png",
+      "bytes": 4347,
+      "sha256": "f67ba590312e8b45821680af4379c04420b6bd5bd4f5aa3ee4df34ccaae541e4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/hind-near-paw.png",
+      "bytes": 17624,
+      "sha256": "dfb9cecd34c8c7a3efd052efdff8fe6f460542e78564b8be63727ad8b66fba94"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/hind-near-root.png",
+      "bytes": 14372,
+      "sha256": "a85a945a63a1f8275a39591cebf0e782a23b210eefad8a9caa4cc4e989c22b84"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/jaw.png",
+      "bytes": 15803,
+      "sha256": "370e3e9c36fbce405bc5d73ecca328f03582a73af5b84b89c9604cb499766d6a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/neck.png",
+      "bytes": 25355,
+      "sha256": "c7ab41ec85a3eb41700016609be1b60020ced870ced7c4e00d3ecc8aa96c3897"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/pelvis.png",
+      "bytes": 14382,
+      "sha256": "ec10c0729e83609231d98a96f61982518e51a875cb7cc864086b6b67359fc077"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/root.png",
+      "bytes": 603,
+      "sha256": "b230dfecd2122804277879ab7771875f4b14e567f81872ee1ac43933ad3f641e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/spine.png",
+      "bytes": 97160,
+      "sha256": "9ff42a2d8b279d0921faa8a5084313ce23a7775babe45e4e4e07f2342255b2cc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/tail0.png",
+      "bytes": 30218,
+      "sha256": "ed91abc5418c71db12d37e1899c4147d3d80408406ddc72982d32e065509a299"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/tail1.png",
+      "bytes": 26589,
+      "sha256": "83e7f835673210fea645597037d0ac246efb13a7d18a7f549903236f9eca0ae6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/tail2.png",
+      "bytes": 16921,
+      "sha256": "d0397fc6d49937ee66bc2093c73d00c0b3d879a05fa8b46ff9383d92bfd1354e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/parts/tail3.png",
+      "bytes": 14887,
+      "sha256": "4f63409269afed817b9a817c873e5147f34bd410754e7b9a30ab105d94629fd0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/parts/receipt.json",
+      "bytes": 7033,
+      "sha256": "0ec0da14111245725b23170cd2e549070e25db87b1dfb0f9c1680ccb3d66cabf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/pre-split-binding.json",
+      "bytes": 935535,
+      "sha256": "96e4ffeec78a652dffb758de4a4c1e83f68661ccf55872bace7a0dfd1f21209e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/receipt.json",
+      "bytes": 2827,
+      "sha256": "ff379e4491ad3187487522adfde09bbba02f1954258c3ee885182b941b4969d3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/record.json",
+      "bytes": 7745,
+      "sha256": "b05f90d7f729c163b9f10dfde31626ef4bc79f5ab4403371a21284027c79e5a9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fold-diagnosis-01.json",
+      "bytes": 7050,
+      "sha256": "270628725b5e98bde116e1725a24b063ca813762de84ae7c2fceb7ce9e6537cc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fold-diagnosis-01.log",
+      "bytes": 6350,
+      "sha256": "d5e49f80f09d323e6e13818f5e5ab40a836dbf4df00937b0b003990537b6ecc8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/authoring.json",
+      "bytes": 12891,
+      "sha256": "b7712b89ef575ea595b63d801914f88283316a6e146391c57f26bf98ae14afde"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/master.png",
+      "bytes": 376505,
+      "sha256": "7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/presence.json",
+      "bytes": 112,
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/source-inheritance.json",
+      "bytes": 703,
+      "sha256": "828d814502bf89ee57b342e617bebfa32994e1f8c3dbbd65ac23bb7002b6dd73"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-input-02/subject-source.json",
+      "bytes": 10437,
+      "sha256": "ccd978ba613eca27cd02eaa0666e91ca9ea11b9b339c63d65eecfef1e8ddebed"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-intake-02.log",
+      "bytes": 330,
+      "sha256": "dd903021e3c1745b84b48f0d3b830a8fe575af2f5ac143d35b459bc6a78d3fd6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-paint-boundaries.json",
+      "bytes": 211,
+      "sha256": "513ba28a95ce248f3fa13bc6bd981feb2f5d1ac72d4342abda8d5636aecdd46d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-script.json",
+      "bytes": 664,
+      "sha256": "8a3c22fab1e62611058176c600491568ddb84b951bdcf5f0c594d4d04c78c8a3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-01.json",
+      "bytes": 31305,
+      "sha256": "1a4ccb0de29fd9fcc49b9dd292d5b30580e77fd0a843009669cc13cfea00afef"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-01.json.sources.json",
+      "bytes": 14934,
+      "sha256": "afa27540d6c07da4e8ca42337429f4ef803a8018a2ea4c741c565c7645b3070a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-01.log",
+      "bytes": 3152,
+      "sha256": "0359d6e4f7985f693bc88a5e138dfab189cde32720b20b06f235254ce4295179"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-02.json",
+      "bytes": 23366,
+      "sha256": "dc666f6f943ccf11821cbda4adba17d9905f1a97c6f3f0c259a3ca4ccca17201"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-02.json.sources.json",
+      "bytes": 14934,
+      "sha256": "569fb3e402682b792a5634c51ce0cdfe2edb452e632ef014fea493cb0801f8cb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-02.log",
+      "bytes": 3051,
+      "sha256": "b55a6dc942c90f4585b982503f293e1b93e5d906bf179cf7d830275df68d0062"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-03.json",
+      "bytes": 11248,
+      "sha256": "02d362d25274148e76fcf02d2f24bbeaf6a83ee028602f4807bb12462d344115"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-03.json.sources.json",
+      "bytes": 15162,
+      "sha256": "acd07db8c534bb1d58d83df9c7000654de4e038ca9699f17c4b05370ba7b0db1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-static-03.log",
+      "bytes": 2880,
+      "sha256": "89266651355819d81fd95891a8fcc450598d499aa2fe74cbdb67a721758fa3d0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-weld-03.log",
+      "bytes": 1137,
+      "sha256": "e14e990731f74cf0879229f71c43c558d37f815b495857ab652923bc0f422111"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/mailbox-end.json",
+      "bytes": 2367,
+      "sha256": "881f9c9a6cc9f15fe4f5044db25caf70780d59bc2bdae5ac4423a4ac754a4b0a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/make-review.py",
+      "bytes": 2181,
+      "sha256": "fe27f48d4fd35279476df00a00769dffbb858358ef5c35c4441d22d1fbc8d0cf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/binding.json",
+      "bytes": 3274793,
+      "sha256": "761e4dc8548341c4d9420791745ff4c25084944e9b28b9ea86bacbaeb5e5a7de"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/candidate-weld-receipt.json",
+      "bytes": 3954,
+      "sha256": "7fe340fc9302f3b2c83b09b5c06f14605a2b302f71b36f7d057f2acf8cf64b8f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/declaration.json",
+      "bytes": 3192,
+      "sha256": "5a4ea0d29a4ef1ab91e051ff4832c17e55fad2d7718e36d604ba9cb0aabfef06"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/intake-provenance.json",
+      "bytes": 3360,
+      "sha256": "33e6e290d32f2813ba08db03f0146995a6c1765e87c836a9d2c4e35160964439"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/label-authoring-receipt.json",
+      "bytes": 736,
+      "sha256": "73a14d9b2cd102a82b481cf1ef2d16718528e886ed96f5a9739f720fea9f1772"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/labels.png",
+      "bytes": 49244,
+      "sha256": "18366bee7fb2829c3def587db9be787b70081f66dd8cc1bf07f323a5e0c2382d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/markings-before-path-correction.json",
+      "bytes": 24695,
+      "sha256": "3c29becab20b4501574bd694f766ed2842abccf8c007b3880f9c95e445e1fd34"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/markings.json",
+      "bytes": 24955,
+      "sha256": "2e252eb1d950f71f601152802b518574fd523045edc72a1a57cb261ed5073087"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/paint-boundary-continuity-before-schema-correction.json",
+      "bytes": 466,
+      "sha256": "e09ab0144ec82563f69d61e5ef003d24894cc05ed2f7e36dd141a7572f7416e0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/paint-boundary-continuity.json",
+      "bytes": 676,
+      "sha256": "4458d0b9d8f8564ab51a9db246c181eff7003eea416077df0de296fb3c752c3b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/atlas/marmot.json",
+      "bytes": 12677,
+      "sha256": "6b9962f71f6b1842da13b4b60467c31a4b88c7860a328a11901a8ff584a542ce"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/atlas/marmot.png",
+      "bytes": 1254824,
+      "sha256": "b6cafb130de63a4830593e093bd8ac484d7b84a0ee8d75210fcb5ce196d9428e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/atlas/receipt.json",
+      "bytes": 4726,
+      "sha256": "9cc29b9a75e1b72ab99cd497bd4136094d840a1cdf6bd1a4116feba9771ee937"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/binding.json",
+      "bytes": 10367,
+      "sha256": "432f24fef887d71dd64819951160ed41f6b94101a6d070b9c6cae05fe78fa6f5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/keyed.png",
+      "bytes": 1477846,
+      "sha256": "817005627aafda8573d3514343819080168c5c9404ea2bdf9cbdde3ba4630e00"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/ownership.png",
+      "bytes": 112768,
+      "sha256": "3ee784f78fa00c68150df742469cc05e7d8232fdfe94ce3b1b15f29a9c5f3344"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/chest.png",
+      "bytes": 58870,
+      "sha256": "68a7eba89b2b7941a6c80c7f541c1d6c0aae58a9ee5a98f00b71eab95dcffb7e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/ear-far-root.png",
+      "bytes": 4232,
+      "sha256": "f16b74e628a0af3e4bda44ca2d20ef412478f9c8f56018e5a608de702026ee40"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/ear-far-tip.png",
+      "bytes": 3086,
+      "sha256": "332484fec7d40dba751b8516277acf8e51fa3d170cecc2049e4a12f839e663c7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/ear-near-root.png",
+      "bytes": 15154,
+      "sha256": "3e8029b7c65e25c233ea1818b7d988e000ce33b1a64aa2da0394264c7d78e956"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/ear-near-tip.png",
+      "bytes": 14060,
+      "sha256": "eeeb20e6a4d699eb465f643e9e46a4b5a572ddb134c77a0a5f2c2dc75e912d99"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/fore-far-ankle.png",
+      "bytes": 20744,
+      "sha256": "5e7d9daefcf3748d41455035ab9579c271611bc0ee8567df64439675e7e1adc6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/fore-far-knee.png",
+      "bytes": 36895,
+      "sha256": "05c0cd1c0676b424ead6f9cec862c2bb34ef66a9d00a4993b7c67724b527a079"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/fore-far-paw.png",
+      "bytes": 5817,
+      "sha256": "4f625a901c8d6707da2b0a6423e15304d797e451c7ee0360c5298d0c562af873"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/fore-far-root.png",
+      "bytes": 27378,
+      "sha256": "0f129d396aa1a7d5ea91b3072be608ba78be71baa0ffc9d15773acaf4056f67c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/fore-near-ankle.png",
+      "bytes": 27714,
+      "sha256": "db7ccba3aad53f5801644c3527fe80f3d418c5b0cfa9a6eb5a8a9f1aae52ada1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/fore-near-knee.png",
+      "bytes": 83764,
+      "sha256": "b9e3cf7e7d87510eefccec41f6b48c5be513cc6532da21b0128433ddc77ef73e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/fore-near-paw.png",
+      "bytes": 9735,
+      "sha256": "4a37fc3100286037436b20ab0d5ec59bd28136dda2b6aeb8fee232a16d17e007"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/fore-near-root.png",
+      "bytes": 132763,
+      "sha256": "2dcd4d5cb1d8691469330e8e850964c6e8b19445c026bce9f250c7b8389b90cf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/head.png",
+      "bytes": 80420,
+      "sha256": "5edb10b34128641fdd5e75e02bf27b1204bdf3b405ab06b8e555215b3033218b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/hind-far-ankle.png",
+      "bytes": 16641,
+      "sha256": "7aa1540bfdc4b4376fa5c64494ae31c3587109200fed2747b966c5409592e146"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/hind-far-knee.png",
+      "bytes": 23293,
+      "sha256": "085e603933b50c42288b3e106d16b17b3b39bde54f2832e40b910254e2ca92fd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/hind-far-paw.png",
+      "bytes": 12173,
+      "sha256": "13e3cb484e76a97d48d7a080512c78733800b6c60eae5d3540671a4d9d6c689c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/hind-far-root.png",
+      "bytes": 29469,
+      "sha256": "a715048efade63e8183c78b9e0c73711f90a00bef7cbca6fc23ae3f9dc819eee"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/hind-near-ankle.png",
+      "bytes": 22449,
+      "sha256": "f610ee15638e701bc460d9f514aaec8c36ad146af84459f95363f78e201c631e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/hind-near-knee.png",
+      "bytes": 73819,
+      "sha256": "74abe7aeef0727a4678d56b8d661503eda80bfde499f106e77d5a5766076b099"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/hind-near-paw.png",
+      "bytes": 13268,
+      "sha256": "d0c8e375f18e236e8e20ee52bb045da7b29d75eef976c4052c0c25d297465f84"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/hind-near-root.png",
+      "bytes": 165755,
+      "sha256": "6f040d77ff41e7e25f6040cd9529c24a061c03d69e3830407eb2afe1debd9eb7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/jaw.png",
+      "bytes": 52688,
+      "sha256": "684600171ce27e66c993d793f67a8523ac9107900b13ad82ebb5fc8fcf0f3c67"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/neck.png",
+      "bytes": 58931,
+      "sha256": "62582f4f2b780a5300e392cc93d60ca7b5050ab21377e5072d659a6986c8cf37"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/pelvis.png",
+      "bytes": 78334,
+      "sha256": "9cb6f88a6ac12aa7192ab2e8b4cbf54b6301dbe0e24a2f8e10e356878f913e1a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/root.png",
+      "bytes": 6102,
+      "sha256": "c64a64f74f121c53cd64fd02ec4297734b6ff92460a63b2c7448bead9f7dac41"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/spine.png",
+      "bytes": 307529,
+      "sha256": "b6e17f44c63ba16613e88c2a15a7d706936de6a56569802f91603b2e19e099b9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/tail0.png",
+      "bytes": 762,
+      "sha256": "69ba1643e6db2a016a8ab2516509594a907222285aa34247c5c9ac4cf89ed415"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/tail1.png",
+      "bytes": 21328,
+      "sha256": "a89fae6bf629733d38634e5f4b792089e76ffa563b8aa27e210b667896a98b87"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/tail2.png",
+      "bytes": 32674,
+      "sha256": "b6f4f5e621cef0a86788bed9514b6879f11637d1ffdf326a50697ec65aaa762a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/parts/tail3.png",
+      "bytes": 31918,
+      "sha256": "ecdff70f9ac39190699a07b67ddad9c6e65936b9d1afa5a97467acce5f358aa2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/parts/receipt.json",
+      "bytes": 8005,
+      "sha256": "76a295bf1672c51a9eac242d36945fca150fb17c92beaea3c122e42c12a4e4fd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/pre-split-binding.json",
+      "bytes": 1934449,
+      "sha256": "a746204acbc8381fcd5d69d33dc620f517767fa66168b66e4d765a19b4b47d6d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/receipt.json",
+      "bytes": 2823,
+      "sha256": "38de1be97879abdfd2e4f630a4a964a11a2717b39e32f78af1642b92b7137201"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/record.json",
+      "bytes": 7422,
+      "sha256": "30849c158873308156df12bfd6ddf21ef734df679367da6ec9ef277f04462e00"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-paint-boundaries.json",
+      "bytes": 419,
+      "sha256": "c2ac347c5699e06b6809285d4cfca5048db13fc0cc8212844ec8d80ed7ac8776"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-script.json",
+      "bytes": 624,
+      "sha256": "82e5104fad937e0b84e9dd4fa24953a948abf04e5d683fe2bd526cd9e2323f7e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-static-01.json",
+      "bytes": 10415,
+      "sha256": "102d1aef2336c9792dbfd3beeb50b881611a280a6ffeb87a893f01091ec422ff"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-static-01.json.sources.json",
+      "bytes": 14934,
+      "sha256": "15f95aaa41e1e164c619d0dc983d03d9a35322acf0ccd5720a364206ec8bf02e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-static-01.log",
+      "bytes": 2910,
+      "sha256": "9c6eac8349e3b9d7c0975ed6b7ee92f0c6ba535ffe99db3878fb47108b2c4735"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-static-02.json",
+      "bytes": 11549,
+      "sha256": "ec1d9ca6eaec9cc6926e1d86567c3bea16bc32cfa95c3a7dd594d5ddf7074052"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-static-02.json.sources.json",
+      "bytes": 14934,
+      "sha256": "21d38dba60765c04f399a0488c0d50a7bd5331a4ee546482e38de0bf731014ab"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-static-02.log",
+      "bytes": 2910,
+      "sha256": "df1876ed2b86330fcc66ebfba12049a01ddbf794e93c4e7280aab591f3b63bca"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-weld-02.log",
+      "bytes": 1220,
+      "sha256": "2857128c4e68a830b68784a1ece8533a4ed31b04f126d28b3c4d6b0e096c0dc6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/mask-compatibility.json",
+      "bytes": 8880,
+      "sha256": "eb056e96ae53c0cb204d6359fa86ddef58198121de1149b97c91f3ee26aff2d0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-03-results.json",
+      "bytes": 4023,
+      "sha256": "ba2735c4cd7f0668bb96878a8adcffdacaae8e4cd688baa2ce2bd081b4cda1b8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-03.mjs",
+      "bytes": 1533,
+      "sha256": "839b622a03a06818b6c1bba10c574da043cae1077f5a30f84719e720b32e188c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-04-results.json",
+      "bytes": 4478,
+      "sha256": "1d314d2fb6d0a75a6ce9be0ff77ad33a1b3247c696bff28e4fd754dbf1b4f165"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-04.mjs",
+      "bytes": 1521,
+      "sha256": "943867b7c067215659d678f8a0f3eb071106eeb21a74456322735261692bd074"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-05-results.json",
+      "bytes": 1790,
+      "sha256": "c8f57f7045c3db35198e4387afd6dddfee0d979c5e785eaca146a73d359d4a79"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-05.mjs",
+      "bytes": 1395,
+      "sha256": "e4bc460030acf8702ba49f8f7df87cc2b194b6994b7bd384afe44d6dbb476144"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch-results.json",
+      "bytes": 2545,
+      "sha256": "ec5ca98f7c2aa5e8162efdbc593e8cbdf754f632b5e2439c3f7000b7ca904dac"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-batch.mjs",
+      "bytes": 1400,
+      "sha256": "344d9fcc0cbf914319c792c00135a397d451d0b10fd6cd5bdab306035403fb3d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/battle-full.webm",
+      "bytes": 11169992,
+      "sha256": "4ea994d9300e16a4cc5234f01c03c1d9946ea1acd941847fa1e66b351228ac78"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/report.json",
+      "bytes": 388627,
+      "sha256": "f898331e08a655e999079fdfd5612c1260689438faa56671387bcb5ae91be404"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn0-hit-approach-50.png",
+      "bytes": 1551069,
+      "sha256": "e692c9eff91f6817931ed7a9c108af5e4b049b5bd3695ad49151d0abecbbd7b0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn0-hit-impact.png",
+      "bytes": 995007,
+      "sha256": "2927b98bd3567bf70f6ef320ecd5608cdf180ef038f2f1ee6444bbdc70c2cf75"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn0-hit-reaction-50.png",
+      "bytes": 1551675,
+      "sha256": "e21af19121894b8d317941b8edbab92390163fbb75aad819d8b08486e7289a79"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn0-hit-return-end.png",
+      "bytes": 1552122,
+      "sha256": "a2e3d3b3c19b3735f5b56e6d935dfef903a727b9049858e1c3b2e2c874ec8b93"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn1-hit-approach-50.png",
+      "bytes": 1551296,
+      "sha256": "976d1bf1b85e5d418368cff699b4624b0fb8d692a5698059097324a583bde892"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn1-hit-impact.png",
+      "bytes": 1555956,
+      "sha256": "69848467885127a16b80938347fccb3e9f1d89e8b397cf4f3d5c5d611a1176cf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn1-hit-reaction-50.png",
+      "bytes": 1552109,
+      "sha256": "8b7bfcdf841de3bba25c76589c181b547f983ef37d210cd8c1ee87244cce4f40"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn1-hit-return-end.png",
+      "bytes": 1552410,
+      "sha256": "93f10651b4b9de0021ab70ec568f416c56528011ace9a6552e4f98c4749494c5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn2-dodge-approach-50.png",
+      "bytes": 1551226,
+      "sha256": "cf3a73a4d6c57465d3dc0a6f01dfef01c3b603f59224239f4c0b3feca66c6338"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn2-dodge-impact.png",
+      "bytes": 1561172,
+      "sha256": "bea19d1e0a31017fef2e986dcf9e168f3c69545e8551593aa593c1d2e3c0e401"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn2-dodge-reaction-50.png",
+      "bytes": 1558697,
+      "sha256": "be4420ebd4cc5b7414a6e04f09126242ba40e6c886a7eac5d8f852d356d9faf9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn2-dodge-return-end.png",
+      "bytes": 1552221,
+      "sha256": "d97493b15750dfe88b1fb6ec52fffee16307a48420128e0ae41d82b487d2c1a6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn3-hit-approach-50.png",
+      "bytes": 1551069,
+      "sha256": "e692c9eff91f6817931ed7a9c108af5e4b049b5bd3695ad49151d0abecbbd7b0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn3-hit-idle-50.png",
+      "bytes": 1563233,
+      "sha256": "e3bb86e14be2696a2b5f500cae397c4fd43d7d1b5bf0b31b2d7cf51f6ffb285c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn3-hit-idle-90.png",
+      "bytes": 1547049,
+      "sha256": "c1f28eba7f1f961b3d74858d8cd92a60ec12e6f4bdcf0fa47cad8010f7f4de85"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn3-hit-impact.png",
+      "bytes": 1552922,
+      "sha256": "693dcda6c358d27b9c638d9fe93eb1fea6a59d2d409aa11044db42ec8865fa49"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn3-hit-reaction-50.png",
+      "bytes": 1547703,
+      "sha256": "9b8de6b754b8efea84daf2db9ad964a67256573533f4b0bade2bc4eea24e0cee"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03/turn3-hit-return-end.png",
+      "bytes": 1547297,
+      "sha256": "aa357b519989295105160ceefcd8d7402598ec5e6e39001914c097d5f90b0c38"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03.log",
+      "bytes": 213,
+      "sha256": "24c4b5845d790d48b27776a6984a56b8ae407de73df6d53fe82fcde4cf5d0eb2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/battle-full.webm",
+      "bytes": 11211200,
+      "sha256": "406943a6177619c8ad124f230b40fd5f90ca9604522b7df2f5fa5ecbb9b94abb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/report.json",
+      "bytes": 390509,
+      "sha256": "597580b0a844549f2f120c95f39f8b2eba7a507e38febe182bf2822b38e5cb0f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn0-hit-approach-50.png",
+      "bytes": 1551069,
+      "sha256": "e692c9eff91f6817931ed7a9c108af5e4b049b5bd3695ad49151d0abecbbd7b0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn0-hit-impact.png",
+      "bytes": 995007,
+      "sha256": "2927b98bd3567bf70f6ef320ecd5608cdf180ef038f2f1ee6444bbdc70c2cf75"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn0-hit-reaction-50.png",
+      "bytes": 1551675,
+      "sha256": "e21af19121894b8d317941b8edbab92390163fbb75aad819d8b08486e7289a79"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn0-hit-return-end.png",
+      "bytes": 1552122,
+      "sha256": "a2e3d3b3c19b3735f5b56e6d935dfef903a727b9049858e1c3b2e2c874ec8b93"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn1-hit-approach-50.png",
+      "bytes": 1551296,
+      "sha256": "976d1bf1b85e5d418368cff699b4624b0fb8d692a5698059097324a583bde892"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn1-hit-impact.png",
+      "bytes": 1555956,
+      "sha256": "69848467885127a16b80938347fccb3e9f1d89e8b397cf4f3d5c5d611a1176cf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn1-hit-reaction-50.png",
+      "bytes": 1552109,
+      "sha256": "8b7bfcdf841de3bba25c76589c181b547f983ef37d210cd8c1ee87244cce4f40"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn1-hit-return-end.png",
+      "bytes": 1552410,
+      "sha256": "93f10651b4b9de0021ab70ec568f416c56528011ace9a6552e4f98c4749494c5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn2-dodge-approach-50.png",
+      "bytes": 1551226,
+      "sha256": "cf3a73a4d6c57465d3dc0a6f01dfef01c3b603f59224239f4c0b3feca66c6338"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn2-dodge-impact.png",
+      "bytes": 1561172,
+      "sha256": "bea19d1e0a31017fef2e986dcf9e168f3c69545e8551593aa593c1d2e3c0e401"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn2-dodge-reaction-50.png",
+      "bytes": 1558697,
+      "sha256": "be4420ebd4cc5b7414a6e04f09126242ba40e6c886a7eac5d8f852d356d9faf9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn2-dodge-return-end.png",
+      "bytes": 1552221,
+      "sha256": "d97493b15750dfe88b1fb6ec52fffee16307a48420128e0ae41d82b487d2c1a6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn3-hit-approach-50.png",
+      "bytes": 1551069,
+      "sha256": "e692c9eff91f6817931ed7a9c108af5e4b049b5bd3695ad49151d0abecbbd7b0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn3-hit-idle-50.png",
+      "bytes": 1563196,
+      "sha256": "154606f1ff803c9ed10f96fbc92eb7b3e7847fdc576a8c0ba3281ef129233653"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn3-hit-idle-90.png",
+      "bytes": 1546448,
+      "sha256": "2ee314f100e4ea254426e9ca123f8dd454883dabb3b44bc2cf3a2433d5c9da3a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn3-hit-impact.png",
+      "bytes": 1552922,
+      "sha256": "693dcda6c358d27b9c638d9fe93eb1fea6a59d2d409aa11044db42ec8865fa49"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn3-hit-reaction-50.png",
+      "bytes": 1547718,
+      "sha256": "5e05412ef73081fa011384a338d000ef52d0dcdff24ea48fce7510fd90e503a5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04/turn3-hit-return-end.png",
+      "bytes": 1547413,
+      "sha256": "16e99f9f27517f1b6a8e7f78ba9fb96092f79bee12099bcb146f8d7f2de5fa34"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04.log",
+      "bytes": 213,
+      "sha256": "29a97f398c88b57c00cf71f2453210f44f716fa5b1b3915f2b5f9ce97e011d75"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cache-timing-review.json",
+      "bytes": 5423,
+      "sha256": "1073077b5a182cd3f671e7781661e42b47c6bb680089ecb1239a33f6f87ca1a2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/battle-full.webm",
+      "bytes": 10985850,
+      "sha256": "b272a5f0931adf8da516d3c9b8853a625e30e8a2a2f41ce3dfdd76b2b65698d9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/report.json",
+      "bytes": 375795,
+      "sha256": "b191f2bdc8e094ba258f0b73f7849cd2a10bb5294176226c204e43cd510349b9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn0-hit-approach-50.png",
+      "bytes": 1531280,
+      "sha256": "608d71d7abe36f9a9e2ade5d204e83839b6bf0a6a6d3177571814a9adae2eae1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn0-hit-impact.png",
+      "bytes": 965357,
+      "sha256": "2a3792c14f17849267e75e9b91e58b8229e01e6b8b000c2e3c03c18d781e8779"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn0-hit-reaction-50.png",
+      "bytes": 1531372,
+      "sha256": "5cd919d6bdc051db486bb2fee75216f06d2c0bf1dcc2f138bd82e4e7cc2b2a30"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn0-hit-return-end.png",
+      "bytes": 1532269,
+      "sha256": "7660347d3dd84cc1f29d2c84b462f024ad0b646a874e0de6661613125165b811"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn1-hit-approach-50.png",
+      "bytes": 1531583,
+      "sha256": "31f14b21aa46d497409d782411d3e54b290eacd3d4cd3276ca06c1f504274adf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn1-hit-impact.png",
+      "bytes": 964932,
+      "sha256": "29c57ca6a2e3971617c1de1ffddcda111e19825bd189057b39a31729a6b5a890"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn1-hit-reaction-50.png",
+      "bytes": 1532055,
+      "sha256": "47642d524d255a6f0093bac2dd2ee1314ff0abee006437ff34f1a03ff82db5b7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn1-hit-return-end.png",
+      "bytes": 1532147,
+      "sha256": "9f2b8735e364438d3dce5dac4769c97268e58a77017f4af43a537642078b4c15"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn2-dodge-approach-50.png",
+      "bytes": 1531176,
+      "sha256": "836e9f28ba707a6791f10bade1b43fb4ed9991c4433e7cfbbd0e0234c2734472"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn2-dodge-impact.png",
+      "bytes": 1543803,
+      "sha256": "e52c777fdedff416c53d9773e4b51d933ab98ccca7aa57871134c10937c01380"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn2-dodge-reaction-50.png",
+      "bytes": 1544014,
+      "sha256": "393a8bc7f51956ad8773b795c5965510b7b80078992b96343231b03d894602a9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn2-dodge-return-end.png",
+      "bytes": 1532532,
+      "sha256": "76f9b2388b2b5d0dd58ae76c18a27947906e40ac09622b131f836595718fc6ea"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn3-hit-approach-50.png",
+      "bytes": 1531280,
+      "sha256": "608d71d7abe36f9a9e2ade5d204e83839b6bf0a6a6d3177571814a9adae2eae1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn3-hit-idle-50.png",
+      "bytes": 1541777,
+      "sha256": "20295dc6ebd7f493cd34819f3a8a25b05eaa6ccb930288c18362b8b81980d26a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn3-hit-idle-90.png",
+      "bytes": 1525459,
+      "sha256": "9574f5aa5f98cec647e9800782c5800550961f0ff638d59ce1420351fe836e9e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn3-hit-impact.png",
+      "bytes": 1532787,
+      "sha256": "463e7efd7ea738a7184f5fb4a189ad921fa84d06c87a60aaf3910ae9c0db60aa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn3-hit-reaction-50.png",
+      "bytes": 1525781,
+      "sha256": "ac8895efb296198b486df2420991b416c8987d2dafed13a2a5786adad702e9c0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01/turn3-hit-return-end.png",
+      "bytes": 1526175,
+      "sha256": "24a6050fa426844544e5ac95e9938896184624bdc376746029ae743923627e40"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-01.log",
+      "bytes": 691,
+      "sha256": "c451fbbf72ea106d6166a86211bb83fe96f2bf1c354cd07290b64e4c664177a1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-03/report.json",
+      "bytes": 201152,
+      "sha256": "17b00e13a04141fbfd9bcbb49c86bd84cf0b1a5255f82903e53cd201634abb8a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-03.log",
+      "bytes": 606,
+      "sha256": "12e0b7b4d2290937ceb6495b018494b8029c9f0ac73d3eb4418cc1561df582da"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/battle-full.webm",
+      "bytes": 11174712,
+      "sha256": "c02685aa42a00cf03d5a6173fade28bcf184b061b958b59814edad80a294470e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/report.json",
+      "bytes": 386148,
+      "sha256": "c36f4d24c8eb533fa891c85a76ed1fb2df7d900092a238f4139f56980fbbdb28"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn0-hit-approach-50.png",
+      "bytes": 1531493,
+      "sha256": "fb079b5ee6008805abae021a9f5aabbe1b42462653668624004ea436acd6c0a7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn0-hit-impact.png",
+      "bytes": 965634,
+      "sha256": "8d9b18a3e7b9fcd23b42d752ab1053058f8167fef9ceae08aebdf7e9e0dc9440"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn0-hit-reaction-50.png",
+      "bytes": 1531455,
+      "sha256": "f686068352152a69b2256b45a61228add9b4387377c3a83bc27cda5640798386"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn0-hit-return-end.png",
+      "bytes": 1532327,
+      "sha256": "2dc801faf75e8b7846853d97cb1255cf1f8746060dbd301d1e0b2ca2b2ece753"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn1-hit-approach-50.png",
+      "bytes": 1531776,
+      "sha256": "37c6f3de16a7daba63aaa66355dcc58cfa6b77a81aee97b8968b7e1efc78d983"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn1-hit-impact.png",
+      "bytes": 965173,
+      "sha256": "a9a2a24df8755b88db78f954cc71b701f7487397e7a34e816b3992885e03fabb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn1-hit-reaction-50.png",
+      "bytes": 1532098,
+      "sha256": "5c82b7b0277e93fd575dbfe5d334854b01b16217ffcc122cb58b790905bf7be0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn1-hit-return-end.png",
+      "bytes": 1532232,
+      "sha256": "1c9c628ee776b6eb05347af00f5d549fc2478ff54c356b711a040ed815c50acd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn2-dodge-approach-50.png",
+      "bytes": 1531331,
+      "sha256": "b9b2a49513711ee0427ad1707c97987729ce8239a4ef112eae24a71fa41ba813"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn2-dodge-impact.png",
+      "bytes": 1544217,
+      "sha256": "4c2051d9f598ec5b7fff6a9324286981ea8c1049035dae0722d69c033b203413"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn2-dodge-reaction-50.png",
+      "bytes": 1544039,
+      "sha256": "d7d53184f2966ab569b5350f497b67237444c25f437fa6aeeb9caf188994959d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn2-dodge-return-end.png",
+      "bytes": 1532478,
+      "sha256": "85d0971ab51c8d7eb85df966035fc15cb75f38c15f0b4595c1d7475895484b11"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn3-hit-approach-50.png",
+      "bytes": 1531493,
+      "sha256": "fb079b5ee6008805abae021a9f5aabbe1b42462653668624004ea436acd6c0a7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn3-hit-idle-50.png",
+      "bytes": 1542018,
+      "sha256": "1941c98a55f82f30200ff365ff0b595c8722d79c5c25bdd944a08605b8e75200"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn3-hit-idle-90.png",
+      "bytes": 1525450,
+      "sha256": "336c52c2c5d210c2b595a0fc3895995ade37402ec7ff40918443a2bf525b4a29"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn3-hit-impact.png",
+      "bytes": 1533575,
+      "sha256": "7cdf15def8d97b244caddc6ffafacfe3febf1843f77358108e779643e8c69df3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn3-hit-reaction-50.png",
+      "bytes": 1525776,
+      "sha256": "44648df9b41333aeb559c93dfba86e5239621e3a2e6c4098cd6531e09fc4ec2f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04/turn3-hit-return-end.png",
+      "bytes": 1526375,
+      "sha256": "87231521cdd300245dc1f2820c90ab0e3a768e6b4bf456c484947805eaf9bc73"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04.log",
+      "bytes": 219,
+      "sha256": "96cf540f4d28b3530344990cc2e9c7a19175e53f16fd6fc88c65f0094a90babc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/battle-full.webm",
+      "bytes": 11356784,
+      "sha256": "e1134e74cd9cba260b9301311ddae494ebbc637f80b1c03c632c5e121bff6aee"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/report.json",
+      "bytes": 388514,
+      "sha256": "6a6233a18a0e2b47550f73dc5c49b6f5862cf8f04bd321904aff11e9907d4e26"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn0-hit-approach-50.png",
+      "bytes": 1531493,
+      "sha256": "fb079b5ee6008805abae021a9f5aabbe1b42462653668624004ea436acd6c0a7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn0-hit-impact.png",
+      "bytes": 965634,
+      "sha256": "8d9b18a3e7b9fcd23b42d752ab1053058f8167fef9ceae08aebdf7e9e0dc9440"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn0-hit-reaction-50.png",
+      "bytes": 1531455,
+      "sha256": "f686068352152a69b2256b45a61228add9b4387377c3a83bc27cda5640798386"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn0-hit-return-end.png",
+      "bytes": 1532327,
+      "sha256": "2dc801faf75e8b7846853d97cb1255cf1f8746060dbd301d1e0b2ca2b2ece753"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn1-hit-approach-50.png",
+      "bytes": 1531776,
+      "sha256": "37c6f3de16a7daba63aaa66355dcc58cfa6b77a81aee97b8968b7e1efc78d983"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn1-hit-impact.png",
+      "bytes": 965173,
+      "sha256": "a9a2a24df8755b88db78f954cc71b701f7487397e7a34e816b3992885e03fabb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn1-hit-reaction-50.png",
+      "bytes": 1532098,
+      "sha256": "5c82b7b0277e93fd575dbfe5d334854b01b16217ffcc122cb58b790905bf7be0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn1-hit-return-end.png",
+      "bytes": 1532232,
+      "sha256": "1c9c628ee776b6eb05347af00f5d549fc2478ff54c356b711a040ed815c50acd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn2-dodge-approach-50.png",
+      "bytes": 1531331,
+      "sha256": "b9b2a49513711ee0427ad1707c97987729ce8239a4ef112eae24a71fa41ba813"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn2-dodge-impact.png",
+      "bytes": 1544217,
+      "sha256": "4c2051d9f598ec5b7fff6a9324286981ea8c1049035dae0722d69c033b203413"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn2-dodge-reaction-50.png",
+      "bytes": 1544039,
+      "sha256": "d7d53184f2966ab569b5350f497b67237444c25f437fa6aeeb9caf188994959d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn2-dodge-return-end.png",
+      "bytes": 1532478,
+      "sha256": "85d0971ab51c8d7eb85df966035fc15cb75f38c15f0b4595c1d7475895484b11"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn3-hit-approach-50.png",
+      "bytes": 1531493,
+      "sha256": "fb079b5ee6008805abae021a9f5aabbe1b42462653668624004ea436acd6c0a7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn3-hit-idle-50.png",
+      "bytes": 1542018,
+      "sha256": "1941c98a55f82f30200ff365ff0b595c8722d79c5c25bdd944a08605b8e75200"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn3-hit-idle-90.png",
+      "bytes": 1525450,
+      "sha256": "336c52c2c5d210c2b595a0fc3895995ade37402ec7ff40918443a2bf525b4a29"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn3-hit-impact.png",
+      "bytes": 1533575,
+      "sha256": "7cdf15def8d97b244caddc6ffafacfe3febf1843f77358108e779643e8c69df3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn3-hit-reaction-50.png",
+      "bytes": 1525776,
+      "sha256": "44648df9b41333aeb559c93dfba86e5239621e3a2e6c4098cd6531e09fc4ec2f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05/turn3-hit-return-end.png",
+      "bytes": 1526375,
+      "sha256": "87231521cdd300245dc1f2820c90ab0e3a768e6b4bf456c484947805eaf9bc73"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-05.log",
+      "bytes": 203,
+      "sha256": "a7a2a705bc2817785c420ef1afa301484ba927b142e81be39869295f37284f46"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/battle-full.webm",
+      "bytes": 10877121,
+      "sha256": "5c3bc35a3b074b2a7de71d377de05c8343973b49f0d591acd5bbafb374928c0a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/cpu-breakdown.json",
+      "bytes": 212133,
+      "sha256": "7d808ce68c4fd06f0c174e165dc03afdc1c5573b2f73b59d09555ba0dca9d710"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/cpu-profile.json",
+      "bytes": 365235,
+      "sha256": "27c93b4c2608a7fcc1f08ee9e8478f0d02da41946961da40972a75f4d34103d6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/report.json",
+      "bytes": 375665,
+      "sha256": "10852132deda84eb9708547f7ecbdefa5787eb92d92a62bccc5dada1591ee11f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn0-hit-approach-50.png",
+      "bytes": 1531280,
+      "sha256": "608d71d7abe36f9a9e2ade5d204e83839b6bf0a6a6d3177571814a9adae2eae1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn0-hit-impact.png",
+      "bytes": 965357,
+      "sha256": "2a3792c14f17849267e75e9b91e58b8229e01e6b8b000c2e3c03c18d781e8779"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn0-hit-reaction-50.png",
+      "bytes": 1531372,
+      "sha256": "5cd919d6bdc051db486bb2fee75216f06d2c0bf1dcc2f138bd82e4e7cc2b2a30"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn0-hit-return-end.png",
+      "bytes": 1532269,
+      "sha256": "7660347d3dd84cc1f29d2c84b462f024ad0b646a874e0de6661613125165b811"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn1-hit-approach-50.png",
+      "bytes": 1531583,
+      "sha256": "31f14b21aa46d497409d782411d3e54b290eacd3d4cd3276ca06c1f504274adf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn1-hit-impact.png",
+      "bytes": 964932,
+      "sha256": "29c57ca6a2e3971617c1de1ffddcda111e19825bd189057b39a31729a6b5a890"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn1-hit-reaction-50.png",
+      "bytes": 1532055,
+      "sha256": "47642d524d255a6f0093bac2dd2ee1314ff0abee006437ff34f1a03ff82db5b7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn1-hit-return-end.png",
+      "bytes": 1532147,
+      "sha256": "9f2b8735e364438d3dce5dac4769c97268e58a77017f4af43a537642078b4c15"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn2-dodge-approach-50.png",
+      "bytes": 1531176,
+      "sha256": "836e9f28ba707a6791f10bade1b43fb4ed9991c4433e7cfbbd0e0234c2734472"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn2-dodge-impact.png",
+      "bytes": 1543803,
+      "sha256": "e52c777fdedff416c53d9773e4b51d933ab98ccca7aa57871134c10937c01380"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn2-dodge-reaction-50.png",
+      "bytes": 1544014,
+      "sha256": "393a8bc7f51956ad8773b795c5965510b7b80078992b96343231b03d894602a9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn2-dodge-return-end.png",
+      "bytes": 1532532,
+      "sha256": "76f9b2388b2b5d0dd58ae76c18a27947906e40ac09622b131f836595718fc6ea"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn3-hit-approach-50.png",
+      "bytes": 1531280,
+      "sha256": "608d71d7abe36f9a9e2ade5d204e83839b6bf0a6a6d3177571814a9adae2eae1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn3-hit-idle-50.png",
+      "bytes": 1541777,
+      "sha256": "20295dc6ebd7f493cd34819f3a8a25b05eaa6ccb930288c18362b8b81980d26a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn3-hit-idle-90.png",
+      "bytes": 1525459,
+      "sha256": "9574f5aa5f98cec647e9800782c5800550961f0ff638d59ce1420351fe836e9e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn3-hit-impact.png",
+      "bytes": 1532787,
+      "sha256": "463e7efd7ea738a7184f5fb4a189ad921fa84d06c87a60aaf3910ae9c0db60aa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn3-hit-reaction-50.png",
+      "bytes": 1525781,
+      "sha256": "ac8895efb296198b486df2420991b416c8987d2dafed13a2a5786adad702e9c0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02/turn3-hit-return-end.png",
+      "bytes": 1526175,
+      "sha256": "24a6050fa426844544e5ac95e9938896184624bdc376746029ae743923627e40"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-profile-02.log",
+      "bytes": 691,
+      "sha256": "a879d4ec9f7f748f881c03407978a3c332296ca688c2abb19a45b0096113b2bd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-composed-proposal-02-runner.mjs",
+      "bytes": 14728,
+      "sha256": "c07ef05eebb1f0a4e2d39370c8d3e0891e8d8d21c02816b79cfb77a6bd8a5086"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-composed-proposal-runner.mjs",
+      "bytes": 14719,
+      "sha256": "5f73e9defd126a30d90e845492c376215d7984260726fc145414bc4a88efad3a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/battle-full.webm",
+      "bytes": 11468401,
+      "sha256": "e1e8e0b9da150271294a6b1a39fa18a20f5f017d68c9f7597a81859d8e6c8553"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/report.json",
+      "bytes": 391437,
+      "sha256": "55c2fc7bea78c0138d05611daf430687c66b00a29721411dd047e001df9f242a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn0-hit-approach-50.png",
+      "bytes": 1540394,
+      "sha256": "611bb8c12e87c049d9a18a867ae824e4057a8bf12eed2cdcbcd372edb903377a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn0-hit-impact.png",
+      "bytes": 972707,
+      "sha256": "827647b98c8cdad218b33b2ea72597893acfaf9b7b9c5c26a34a2f39ef2bbd75"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn0-hit-reaction-50.png",
+      "bytes": 1541413,
+      "sha256": "e7a4804ab24443f9566fd51f16bbf4888f43579e0985856ea0b20c6838872111"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn0-hit-return-end.png",
+      "bytes": 1540153,
+      "sha256": "7c937a7803b035f0098ccdb790ed0faf2369af08305f4dcf03a3af03cc6981cb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn1-hit-approach-50.png",
+      "bytes": 1540423,
+      "sha256": "9f68d5be43aa874cd42aefe3cf4577321e620bbf4a0b3a6df36e9ffd9929e407"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn1-hit-impact.png",
+      "bytes": 970723,
+      "sha256": "1ae4845c67a2ff085b5e5bc71a60254e2d6b53ddd0edbe26431bebf41d98f14d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn1-hit-reaction-50.png",
+      "bytes": 1540167,
+      "sha256": "099b83d202c2bf7fc6f5cb936e7f337d9d8ad11f0442efb7e9bcd0df186e7ded"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn1-hit-return-end.png",
+      "bytes": 1540120,
+      "sha256": "db0720c9a2a47784e80fe10e4c506dcf675b3fdf0dbb19b3f051480eb9310454"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn2-dodge-approach-50.png",
+      "bytes": 1540347,
+      "sha256": "9d1f912d5bef8f9a255effd80bbbf563e1aa391eab1154b1dc34d675775d6b10"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn2-dodge-impact.png",
+      "bytes": 1544541,
+      "sha256": "d48ae8fd435b240f3b5582d26fdf09b439ad06d5be955c26e7bcf5dcbceb39e8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn2-dodge-reaction-50.png",
+      "bytes": 1545158,
+      "sha256": "587ebb361a5d4f994d094e31fdda899d08b3427a97b62f398b5825c9f63532a1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn2-dodge-return-end.png",
+      "bytes": 1540252,
+      "sha256": "a42e6576a9ed874ae8a7fb415d1648c402092eae5e2e59db3b7885017de5a0f6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn3-hit-approach-50.png",
+      "bytes": 1540394,
+      "sha256": "611bb8c12e87c049d9a18a867ae824e4057a8bf12eed2cdcbcd372edb903377a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn3-hit-idle-50.png",
+      "bytes": 1543122,
+      "sha256": "ababf55d447efb2a5384dcf2f3b8aa4cb29a78141f4bdc6d2e43d3af4f351298"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn3-hit-idle-90.png",
+      "bytes": 1536554,
+      "sha256": "5e6698fe7de9f1e8e33491d0a1ec471109547d21d9891abe15ad6e096eef46ca"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn3-hit-impact.png",
+      "bytes": 1542287,
+      "sha256": "665147afa899bc88757d9730d3b9b2c7ec9f1769c5a1acc1cb0c46844a78c0f5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn3-hit-reaction-50.png",
+      "bytes": 1538719,
+      "sha256": "968fa199f0924e93865aa499924e1be1d68ff7ec58477ba7d4b40d9eaffb462f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01/turn3-hit-return-end.png",
+      "bytes": 1536955,
+      "sha256": "a567d29e3b9a14a8664f1b5cc7cfabf6b77c21b2db53824d690ff2b0b5302e19"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-01.log",
+      "bytes": 202,
+      "sha256": "547934e0574a6ff7d71eb39e3edff5692c781ee36c2a07777c45ef65e3dbe156"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-03/report.json",
+      "bytes": 201152,
+      "sha256": "c266f0593efe3a1d79482cc3fcdb06cd8759ebb33722e7b810d49f5545719e62"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-03.log",
+      "bytes": 606,
+      "sha256": "12e0b7b4d2290937ceb6495b018494b8029c9f0ac73d3eb4418cc1561df582da"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/battle-full.webm",
+      "bytes": 11557019,
+      "sha256": "560c7f39d29fa63976166af18941d819ffafe50e22a4005709597f7ab0259929"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/report.json",
+      "bytes": 391680,
+      "sha256": "9b947484a14cf41271e9ec46381bb27b01255d84a214048532caa34824858f0f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn0-hit-approach-50.png",
+      "bytes": 1540305,
+      "sha256": "d6c05fb9f476f28123837f051d31fc58dc263ee1db23ad1816dea85973b3065d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn0-hit-impact.png",
+      "bytes": 972636,
+      "sha256": "7e10eca3d451fadb517e2a84d062e622f5405cff5f1e77c4554d0da4ceda26e9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn0-hit-reaction-50.png",
+      "bytes": 1541438,
+      "sha256": "defe6e64e255d095a3bbdd5113567da76f494481148d401762803ba71cd72a52"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn0-hit-return-end.png",
+      "bytes": 1540170,
+      "sha256": "51a04a1c8d34d0fb24a3e28f3cea4a9cab43f23849d6bf984214a6c5d05db009"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn1-hit-approach-50.png",
+      "bytes": 1540409,
+      "sha256": "2031e417180d9002f74cc60598b4fcbc0631c7cc867bf0d4f9c1160a2593ba15"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn1-hit-impact.png",
+      "bytes": 970610,
+      "sha256": "c5599c96620e6b0b66b7df98edb676b0a474e637c2d626a6396ce88a9449b43b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn1-hit-reaction-50.png",
+      "bytes": 1540221,
+      "sha256": "5a40992e32cd4c39eb4659ff7fa72f9df2fa091c2a1094b46115983aeaaeebb4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn1-hit-return-end.png",
+      "bytes": 1540111,
+      "sha256": "057e6216eb23e35dd0a369157dcfed964590e6dfb7877a531c44f3a4395c4fc9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn2-dodge-approach-50.png",
+      "bytes": 1540304,
+      "sha256": "0a6246ae5ad5bddc675321ab3171ccc9c880f330591ad4cf5c8b77abf2617af6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn2-dodge-impact.png",
+      "bytes": 1544499,
+      "sha256": "3a0746ae16b13103e51e2b0cb20617ae7242a290e25bc3d20fbd09d608174b78"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn2-dodge-reaction-50.png",
+      "bytes": 1545163,
+      "sha256": "92cc401c4849a466ece467fe89529a7df992e4341f17b07177693d359f41f811"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn2-dodge-return-end.png",
+      "bytes": 1540257,
+      "sha256": "2e71e79320432c0aaa6338b92b5b2c61bd2a5e5cba55de5bb22ea366366fb275"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn3-hit-approach-50.png",
+      "bytes": 1540305,
+      "sha256": "d6c05fb9f476f28123837f051d31fc58dc263ee1db23ad1816dea85973b3065d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn3-hit-idle-50.png",
+      "bytes": 1543043,
+      "sha256": "24dcbf151dab5e3e74127019e6f095aefd3ffcd790eb23b15e60aa8bb7c3b6e8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn3-hit-idle-90.png",
+      "bytes": 1536321,
+      "sha256": "ae9d99e9d9903101c6db601018f41254e8db8a20b329fe51f941fe9eb33314a7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn3-hit-impact.png",
+      "bytes": 1542293,
+      "sha256": "2c39e5d7cb8f03bcda13e1430006a3c9f4f6aa8004c5d176eb83716e647fb3f6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn3-hit-reaction-50.png",
+      "bytes": 1538584,
+      "sha256": "cc17f90e442b996cac402beaf8ed4cb2038b22afd08abcba716938d39cac8f65"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04/turn3-hit-return-end.png",
+      "bytes": 1536850,
+      "sha256": "bafc5fe97b9a4f6e75d364c287b4e13db9b85fa6f3a62fc408de972d06c33061"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04.log",
+      "bytes": 218,
+      "sha256": "e6a20a444dce55b337e7b1b774affe42373e84fe119fa169bd5d6c7dbb3cb110"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/battle-full.webm",
+      "bytes": 9685739,
+      "sha256": "98e459d437f135194841d6c08d92aaba44a6628c27d17f436f086c6d65b8367f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/report.json",
+      "bytes": 377618,
+      "sha256": "1067a28247ee1ed6abba73db0b4eec28685f00a4ddecd4b201b2e9b64995986b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn0-hit-approach-50.png",
+      "bytes": 1540102,
+      "sha256": "267546de3fdb717d58ade82bf86667767d4c2981c7a457b344ac6c2fb7455224"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn0-hit-impact.png",
+      "bytes": 977506,
+      "sha256": "634fc7690f739a10d435cefe8bb27353835aef9bd402a008acd3d88415dca4a6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn0-hit-reaction-50.png",
+      "bytes": 1540866,
+      "sha256": "af85f9868dcbb887a43ff3ccb66237fb51374290ceafdf2506155a1d72c9d424"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn0-hit-return-end.png",
+      "bytes": 1540068,
+      "sha256": "4993d8adb8bf508ac7d9b20ae12a96d84b8544af3faca0747b83dec35ef97e93"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn1-hit-approach-50.png",
+      "bytes": 1540221,
+      "sha256": "dea5f9e2e497881eed7715b04c476bfe1903753d1cc544729825405b2ea6cbd4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn1-hit-impact.png",
+      "bytes": 1540453,
+      "sha256": "a7f5a699836f19a1efb52bbd5bfb0ee20916ab49c225f9021bb7dda276bed730"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn1-hit-reaction-50.png",
+      "bytes": 1540037,
+      "sha256": "7aa444a85d40b885e256602b3340282462d846532ae7d54479fd1e4522a4a10b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn1-hit-return-end.png",
+      "bytes": 1540268,
+      "sha256": "6527f0999e5fd521dc062870a42e175392b4de225ec5c6464f8c5cb170f82f89"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn2-dodge-approach-50.png",
+      "bytes": 1539952,
+      "sha256": "0049713e9ae4bbb94f4726a19144260ffcc1515defd29ee66793a2fb428df743"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn2-dodge-impact.png",
+      "bytes": 1542487,
+      "sha256": "8203dd75c2aef69eb59013ab116ee9ebf4c701750ca22853a1c8355db118f937"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn2-dodge-reaction-50.png",
+      "bytes": 1545913,
+      "sha256": "cdc0505356452ddf28e93ecd58c498b0055979191937cb7cb3169c6f5254bad1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn2-dodge-return-end.png",
+      "bytes": 1540093,
+      "sha256": "3bbe47355328859d66b43b55f89b6c2a91cc2a82e4ae7aac1b288343552001ef"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn3-hit-approach-50.png",
+      "bytes": 1540102,
+      "sha256": "267546de3fdb717d58ade82bf86667767d4c2981c7a457b344ac6c2fb7455224"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn3-hit-idle-50.png",
+      "bytes": 1543602,
+      "sha256": "2a038e52dcbe35fbdc1748d965049adbf1ab75f76fb548b1d990647ba18e45f9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn3-hit-idle-90.png",
+      "bytes": 1540337,
+      "sha256": "55f22122d5ec073053d8e9bfa5ad9d96a99e4ddbd05c54925e6dbe0fe5f241f1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn3-hit-impact.png",
+      "bytes": 1540754,
+      "sha256": "d8d010801010e1a4af188748acc7311f1fdfa4d67a5399ad989f7a054666349e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn3-hit-reaction-50.png",
+      "bytes": 1541013,
+      "sha256": "b81ae22cc018961f9e35f2ab031a4fc470cfefd44b8960f8fb48abf648e4c700"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03/turn3-hit-return-end.png",
+      "bytes": 1540095,
+      "sha256": "4f917c2c664cd21270b66a2dc6329390d5a79167c2a1d89f4779457dfb8f3840"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03.log",
+      "bytes": 346,
+      "sha256": "bda86aca18a894a84e9bc6d425d1301044be2cc6b7899b0336e5575126f0e64b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/battle-full.webm",
+      "bytes": 9597319,
+      "sha256": "61d642432738183d3ffc6f6d51e88b6ca6afcc4da150c6c145ac11ffd581b695"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/report.json",
+      "bytes": 372383,
+      "sha256": "6b096cbecb74c57bf52b588ad72ecf7348a971cc63e4847a3869abafbdd6d243"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn0-hit-approach-50.png",
+      "bytes": 1540102,
+      "sha256": "267546de3fdb717d58ade82bf86667767d4c2981c7a457b344ac6c2fb7455224"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn0-hit-impact.png",
+      "bytes": 977506,
+      "sha256": "634fc7690f739a10d435cefe8bb27353835aef9bd402a008acd3d88415dca4a6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn0-hit-reaction-50.png",
+      "bytes": 1540866,
+      "sha256": "af85f9868dcbb887a43ff3ccb66237fb51374290ceafdf2506155a1d72c9d424"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn0-hit-return-end.png",
+      "bytes": 1540068,
+      "sha256": "4993d8adb8bf508ac7d9b20ae12a96d84b8544af3faca0747b83dec35ef97e93"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn1-hit-approach-50.png",
+      "bytes": 1540221,
+      "sha256": "dea5f9e2e497881eed7715b04c476bfe1903753d1cc544729825405b2ea6cbd4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn1-hit-impact.png",
+      "bytes": 1540453,
+      "sha256": "a7f5a699836f19a1efb52bbd5bfb0ee20916ab49c225f9021bb7dda276bed730"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn1-hit-reaction-50.png",
+      "bytes": 1540037,
+      "sha256": "7aa444a85d40b885e256602b3340282462d846532ae7d54479fd1e4522a4a10b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn1-hit-return-end.png",
+      "bytes": 1540268,
+      "sha256": "6527f0999e5fd521dc062870a42e175392b4de225ec5c6464f8c5cb170f82f89"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn2-dodge-approach-50.png",
+      "bytes": 1539952,
+      "sha256": "0049713e9ae4bbb94f4726a19144260ffcc1515defd29ee66793a2fb428df743"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn2-dodge-impact.png",
+      "bytes": 1542487,
+      "sha256": "8203dd75c2aef69eb59013ab116ee9ebf4c701750ca22853a1c8355db118f937"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn2-dodge-reaction-50.png",
+      "bytes": 1545913,
+      "sha256": "cdc0505356452ddf28e93ecd58c498b0055979191937cb7cb3169c6f5254bad1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn2-dodge-return-end.png",
+      "bytes": 1540093,
+      "sha256": "3bbe47355328859d66b43b55f89b6c2a91cc2a82e4ae7aac1b288343552001ef"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn3-hit-approach-50.png",
+      "bytes": 1540102,
+      "sha256": "267546de3fdb717d58ade82bf86667767d4c2981c7a457b344ac6c2fb7455224"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn3-hit-idle-50.png",
+      "bytes": 1543429,
+      "sha256": "14d05c0bde0f68cb1d2698729b3ef357e714d4e46808a944e6860dd7165c6312"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn3-hit-idle-90.png",
+      "bytes": 1540148,
+      "sha256": "f78e0acc7b9344c47af1eec3434d32182c9b3f2810a761f56698dd7a493eaff0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn3-hit-impact.png",
+      "bytes": 1540754,
+      "sha256": "d8d010801010e1a4af188748acc7311f1fdfa4d67a5399ad989f7a054666349e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn3-hit-reaction-50.png",
+      "bytes": 1541087,
+      "sha256": "6728093a2561029c237347391139d26f4829d07fa27a9234610fa2c0b00d58f1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04/turn3-hit-return-end.png",
+      "bytes": 1540002,
+      "sha256": "71c73ccf7b6449f1a05edc4c48f6d8bf32c72b2efed2ff62f80f5b02a8268dad"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04.log",
+      "bytes": 208,
+      "sha256": "8a5b56364c76cac6b5a7cf0643298923b7096eabe4ece4f39bcf8060cb1891c5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/battle-full.webm",
+      "bytes": 9609267,
+      "sha256": "7c923778b34e56bec6fdf2d5f553aed72986bc5db04d8408735de21affcf87e8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/report.json",
+      "bytes": 375362,
+      "sha256": "3dc8b570f30ef98a3d6169fae0ba85bb756a9d587ac7ade579bb56fbd86cc0e8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn0-hit-approach-50.png",
+      "bytes": 1540102,
+      "sha256": "267546de3fdb717d58ade82bf86667767d4c2981c7a457b344ac6c2fb7455224"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn0-hit-impact.png",
+      "bytes": 977506,
+      "sha256": "634fc7690f739a10d435cefe8bb27353835aef9bd402a008acd3d88415dca4a6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn0-hit-reaction-50.png",
+      "bytes": 1540866,
+      "sha256": "af85f9868dcbb887a43ff3ccb66237fb51374290ceafdf2506155a1d72c9d424"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn0-hit-return-end.png",
+      "bytes": 1540068,
+      "sha256": "4993d8adb8bf508ac7d9b20ae12a96d84b8544af3faca0747b83dec35ef97e93"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn1-hit-approach-50.png",
+      "bytes": 1540221,
+      "sha256": "dea5f9e2e497881eed7715b04c476bfe1903753d1cc544729825405b2ea6cbd4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn1-hit-impact.png",
+      "bytes": 1540453,
+      "sha256": "a7f5a699836f19a1efb52bbd5bfb0ee20916ab49c225f9021bb7dda276bed730"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn1-hit-reaction-50.png",
+      "bytes": 1540037,
+      "sha256": "7aa444a85d40b885e256602b3340282462d846532ae7d54479fd1e4522a4a10b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn1-hit-return-end.png",
+      "bytes": 1540268,
+      "sha256": "6527f0999e5fd521dc062870a42e175392b4de225ec5c6464f8c5cb170f82f89"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn2-dodge-approach-50.png",
+      "bytes": 1539952,
+      "sha256": "0049713e9ae4bbb94f4726a19144260ffcc1515defd29ee66793a2fb428df743"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn2-dodge-impact.png",
+      "bytes": 1542487,
+      "sha256": "8203dd75c2aef69eb59013ab116ee9ebf4c701750ca22853a1c8355db118f937"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn2-dodge-reaction-50.png",
+      "bytes": 1545913,
+      "sha256": "cdc0505356452ddf28e93ecd58c498b0055979191937cb7cb3169c6f5254bad1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn2-dodge-return-end.png",
+      "bytes": 1540093,
+      "sha256": "3bbe47355328859d66b43b55f89b6c2a91cc2a82e4ae7aac1b288343552001ef"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn3-hit-approach-50.png",
+      "bytes": 1540102,
+      "sha256": "267546de3fdb717d58ade82bf86667767d4c2981c7a457b344ac6c2fb7455224"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn3-hit-idle-50.png",
+      "bytes": 1543429,
+      "sha256": "14d05c0bde0f68cb1d2698729b3ef357e714d4e46808a944e6860dd7165c6312"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn3-hit-idle-90.png",
+      "bytes": 1540148,
+      "sha256": "f78e0acc7b9344c47af1eec3434d32182c9b3f2810a761f56698dd7a493eaff0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn3-hit-impact.png",
+      "bytes": 1540754,
+      "sha256": "d8d010801010e1a4af188748acc7311f1fdfa4d67a5399ad989f7a054666349e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn3-hit-reaction-50.png",
+      "bytes": 1541087,
+      "sha256": "6728093a2561029c237347391139d26f4829d07fa27a9234610fa2c0b00d58f1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05/turn3-hit-return-end.png",
+      "bytes": 1540002,
+      "sha256": "71c73ccf7b6449f1a05edc4c48f6d8bf32c72b2efed2ff62f80f5b02a8268dad"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-05.log",
+      "bytes": 207,
+      "sha256": "fb1c0c78bf72534c7635e923dc34b5568c019980d1a66e9672e9cecf97242bc1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/battle-full.webm",
+      "bytes": 11076845,
+      "sha256": "76b0b8d3b6fc9af05379e1c937c31661e4c8f7b3d4ba2fd2d4926d523dfee745"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/report.json",
+      "bytes": 390153,
+      "sha256": "78c011d7f8228e3cb7c3866ff84ddf3c2e1bb6c11435676531f526831c57ca7e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn0-hit-approach-50.png",
+      "bytes": 1558773,
+      "sha256": "b7c2c166e30bf94f3604b49a067db724192de3b55d83c6dda59757ef8df09c5f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn0-hit-impact.png",
+      "bytes": 989587,
+      "sha256": "906d3455720d175309cf3e7eb075c188be587172a46b1b1adc31b172031c5c1d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn0-hit-reaction-50.png",
+      "bytes": 1558026,
+      "sha256": "aaeaab9e7ac4acfafb02fb42ecd0a436b529d859ee0d8f336a0e66dca350562f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn0-hit-return-end.png",
+      "bytes": 1560304,
+      "sha256": "694665f952f095717299e13de05d98e822b477f7caff281ab9b0ed30e19dd401"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn1-hit-approach-50.png",
+      "bytes": 1560730,
+      "sha256": "b74bb9e75a2925c4d2c0f71269021599e88c57f3eeffe71d756c54e6ee2f44b3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn1-hit-impact.png",
+      "bytes": 989509,
+      "sha256": "96df36e22d9e3f9b2c12c17668954df0fd978e4cc22f50b272c02c8cb634e43b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn1-hit-reaction-50.png",
+      "bytes": 1558908,
+      "sha256": "ff88f6f407283fc772acf374da94125d4de63ddca49ffff18cc9328fddc2ab85"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn1-hit-return-end.png",
+      "bytes": 1560213,
+      "sha256": "bbf23d46775308a24b71b9090ccf68202069f9ace33e94cb821203b6e592da2f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn2-dodge-approach-50.png",
+      "bytes": 1559920,
+      "sha256": "23b707c46ce0f4b76b7f47f4d2a83ff4bdfe769bcf47bc75a7e37daf87d8f28d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn2-dodge-impact.png",
+      "bytes": 1567370,
+      "sha256": "53e42577b2a280f2c80ce7920d20b50a782fdb42110cd9a931520c10b9eb7a80"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn2-dodge-reaction-50.png",
+      "bytes": 1563384,
+      "sha256": "692db26b43c3023f00d4353ec753787eb5e45b6e3e98b092f5b2e7c41d5ed7de"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn2-dodge-return-end.png",
+      "bytes": 1560484,
+      "sha256": "ed848b434632f9f58a9c1dc312e3569316ab0fbba17ae36eff537d1f822d93dd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn3-hit-approach-50.png",
+      "bytes": 1558773,
+      "sha256": "b7c2c166e30bf94f3604b49a067db724192de3b55d83c6dda59757ef8df09c5f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn3-hit-idle-50.png",
+      "bytes": 1568751,
+      "sha256": "f37df4933028653d78e6785d0ab5887cc0b508217abe48b853faafe39be9b144"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn3-hit-idle-90.png",
+      "bytes": 1553845,
+      "sha256": "9e906911a6b6c502a5ada6ef96378d43851c251a384e524ee783da8b2c0ea5be"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn3-hit-impact.png",
+      "bytes": 1000933,
+      "sha256": "ea6e82a6e83d255255f66b8c478c5d7058fb4ebae2558c94a7e7a8864dc75ec5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn3-hit-reaction-50.png",
+      "bytes": 1556081,
+      "sha256": "ea02a45f990b185d21080d95412caaec6263110be799db099e4884cfde0d856e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01/turn3-hit-return-end.png",
+      "bytes": 1555128,
+      "sha256": "1ee62d53b7816402c64634124534cf2e6e0e80886ea34054b162e21dd1968f27"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-01.log",
+      "bytes": 213,
+      "sha256": "217ef3e5a0a829277385d96b5afb479f51a4653d88048e9f9cdacfb06085d7d0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-03/report.json",
+      "bytes": 201152,
+      "sha256": "016b6a080ec10e131c2e8775b57794cd27284180b5a2a07eab5171928530c153"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-03.log",
+      "bytes": 606,
+      "sha256": "12e0b7b4d2290937ceb6495b018494b8029c9f0ac73d3eb4418cc1561df582da"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/battle-full.webm",
+      "bytes": 11041348,
+      "sha256": "bcee1468450eea767ccdacdb9d6837f48f650328f61397645786f6da7dc2bc5a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/report.json",
+      "bytes": 392227,
+      "sha256": "51db57ec19cd43a1ac77869a5db12cf44a4a02aeef1a8f08d3cf52d5756d07eb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn0-hit-approach-50.png",
+      "bytes": 1558382,
+      "sha256": "da951b06d9f04ec960a5bab78f295381a8c2e639b130cda0d01af74d22e59365"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn0-hit-impact.png",
+      "bytes": 990189,
+      "sha256": "8a3011c2a845ec6328bc205c8af1ed4430f11d710facd4a376ad6e987860e056"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn0-hit-reaction-50.png",
+      "bytes": 1558032,
+      "sha256": "04114f952095a9c29a405a15eecc5d51b9c3a89a525cd67d3218429a9c38a182"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn0-hit-return-end.png",
+      "bytes": 1560263,
+      "sha256": "ff8522c2c54d41c77caf8edaaf4ebc563bc22caa2d4353a4a258e1e8e7fa2dff"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn1-hit-approach-50.png",
+      "bytes": 1560711,
+      "sha256": "5eb02c2cbf58920089c892e4a42b0ccf69caac231d7a35fcb021070670a480fc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn1-hit-impact.png",
+      "bytes": 989675,
+      "sha256": "60e9477f5e166bb61ffa613cb3ba122909f101704ca32296cda61da80dfe8625"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn1-hit-reaction-50.png",
+      "bytes": 1558895,
+      "sha256": "85c52dfce2a60cecadc2e80e86323ce19581d87f76b02676e369308dee462f8e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn1-hit-return-end.png",
+      "bytes": 1560171,
+      "sha256": "6c716db25428689de1c4accbfcfb15a0730a27c899229c9e6908abfba187611d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn2-dodge-approach-50.png",
+      "bytes": 1559781,
+      "sha256": "fe35f5cd0fd8056b3d321bbc0b90b94bf9fb5beef1cdf00c63345ceab51f8ea1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn2-dodge-impact.png",
+      "bytes": 1566878,
+      "sha256": "c57085f821c4757afc632fb45a67191497687f5f38036b6a9d2ddff9ad0b06e1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn2-dodge-reaction-50.png",
+      "bytes": 1563376,
+      "sha256": "2c04e2e7b326a4c20492f600121b11cdfe5a9815c137be3862990dd99808894f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn2-dodge-return-end.png",
+      "bytes": 1560397,
+      "sha256": "ded359e10552d67767afd6dd3b6a752498e82f0d7ad3caea5923edc180543d53"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn3-hit-approach-50.png",
+      "bytes": 1558382,
+      "sha256": "da951b06d9f04ec960a5bab78f295381a8c2e639b130cda0d01af74d22e59365"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn3-hit-idle-50.png",
+      "bytes": 1569476,
+      "sha256": "140dc851d43fb85327a410ab568670b41e895d2b8dd249f7e72710266414873c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn3-hit-idle-90.png",
+      "bytes": 1553336,
+      "sha256": "8366d4a28570991d7d0dbdeb798755924df2092c8fc67e88a486686d18513eda"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn3-hit-impact.png",
+      "bytes": 1000811,
+      "sha256": "b639810b7256a08c7bd5402eb5e554be1a522219dba3b32cde76bbcbe51d797d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn3-hit-reaction-50.png",
+      "bytes": 1555733,
+      "sha256": "411f909f29cef23cac687fae4b4c31b8c8f8adb1fe61181d6831f07871bc72ba"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04/turn3-hit-return-end.png",
+      "bytes": 1555560,
+      "sha256": "eb7e1563350790db2a9d4f259153d933521768cefb7c4b39380016b337f1f258"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04.log",
+      "bytes": 213,
+      "sha256": "4ea6f40fe2ddacdb77f614d9c5dba7150461bc2ba4818ba19db9a675f59de811"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-timing-review.json",
+      "bytes": 9301,
+      "sha256": "6a141248de849db1a1a18dea2db63d9f56695b40e366ad956e5675db43240231"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/relocate-mask-manifests.mjs",
+      "bytes": 3095,
+      "sha256": "8e0109d27fba4894214b3a421ec393e15e01e47eebc9d2355bd9b33d0e58d77a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/review-sheet.png",
+      "bytes": 2822081,
+      "sha256": "64c0c759396bd7954f75347f3a4ceb88ad0fc5eabdae65c48b11fe6f9714c80f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/root-validate.log",
+      "bytes": 1093,
+      "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/run-faint-controls-02.mjs",
+      "bytes": 1810,
+      "sha256": "a379f80902430fdb469f3dfc3b55b6b2b7a41d9a11e79d388341ec47d6f80f3d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/run-faint-controls.mjs",
+      "bytes": 1795,
+      "sha256": "06d050a86b01d76c2ac7bf3c117ad156a8236532d278a183a410efbd906b5aac"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/run-faint-diagnosis.mjs",
+      "bytes": 1789,
+      "sha256": "9f523e7c281464dde4d241906f98602afa293aee9ed29764cd8a6ac0dcc09e69"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/run-stationary.mjs",
+      "bytes": 1080,
+      "sha256": "bb2b16f995d9fd61a7c2b0aa4182501814aa4d89992fd00a115c8795226769ea"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/run.mjs",
+      "bytes": 8684,
+      "sha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/civet-static.json",
+      "bytes": 7400,
+      "sha256": "452fa278586993592c7f171e93dd64cbc9dd5bbf5e3fc7f4897c6553e07b8396"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/civet-support-samples.jsonl.gz",
+      "bytes": 540573,
+      "sha256": "c8deace40f822ac707b337c16ee63cf73ca6838ee094ef80324093ab08ab2d2f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/coconut-crab-static.json",
+      "bytes": 8541,
+      "sha256": "2ce886550c98d4586e3a446dd1576f6552e6f58ca1b7b37d0b5656ea1c06debc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/coconut-crab-support-samples.jsonl.gz",
+      "bytes": 450159,
+      "sha256": "031446c269052b8a91d89e4244f190fa65c7f60c64cb2056e8b5f2351e01d32b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/crab-static.json",
+      "bytes": 8478,
+      "sha256": "ee3f133ed6137a12ea21fa5c2f318c3c74d9e8117544bacd58b2dc8fb72dc565"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/crab-support-samples.jsonl.gz",
+      "bytes": 472712,
+      "sha256": "258aa03be580be6fcb1e07658ecd5a903db050f2cd63e0c297f3ff8d1fb4b1b8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/freshwater-crab-static.json",
+      "bytes": 8449,
+      "sha256": "9da3890b44693cfc1a3977415c408c4b3e5fba8287af206d3fb8492c0c5376a9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/freshwater-crab-support-samples.jsonl.gz",
+      "bytes": 455397,
+      "sha256": "84e207fd9353806843dee605d7937f4fd99d7a9e4dd3c4c865b92abcc660b127"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/identity.json",
+      "bytes": 2960,
+      "sha256": "7364c70a865ccfd9d229dce53f1cf6378bc306da5cad306f52eba1bc9ef7dbf2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/mud-crab-static.json",
+      "bytes": 8269,
+      "sha256": "6e1b2ec0792f524e730e7624e0a4112b1741f747645625629175c50c6e5cb9aa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/mud-crab-support-samples.jsonl.gz",
+      "bytes": 463241,
+      "sha256": "fe6b52249ff1391607394571ca0b3693c88439f61f6c9f9bdf7c6763daec6e41"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/sources.json",
+      "bytes": 27137,
+      "sha256": "29a8d5b2cbf800363ab29c3da6a1f2a769de6376e59355fe954a0e6df81aae29"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/static.json",
+      "bytes": 61950,
+      "sha256": "7cb7375100d14475693ce817adc95d7375fa9685f904f5dec78e4082364997ce"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/vent-crab-static.json",
+      "bytes": 8384,
+      "sha256": "9b8278daf85ce4902c6e74c544a61665f0550a09d3ca6bd8cbcd609afc051a4e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2/vent-crab-support-samples.jsonl.gz",
+      "bytes": 475748,
+      "sha256": "1b6588bbd35d7f75ea8c31b301508243a80d725bd75a9cfe297b48176137d7a2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2-execution.json",
+      "bytes": 94153,
+      "sha256": "3f728b32f9b3c88c02902ff1ea119db0903d651c072ccd5d002e693fa056905b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache/s2-run.log",
+      "bytes": 5147,
+      "sha256": "6046632ae7a68e89ea8b68a104de96f8b6674d04bfee1b92f1fb8a7c1489f6ac"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-cache.log",
+      "bytes": 5402,
+      "sha256": "dcdc9020ff9f782841f3b32140e0f5b09245a7500b228fad13f2659c174c8c6c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/run.mjs",
+      "bytes": 8684,
+      "sha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/civet-static.json",
+      "bytes": 7400,
+      "sha256": "452fa278586993592c7f171e93dd64cbc9dd5bbf5e3fc7f4897c6553e07b8396"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/civet-support-samples.jsonl.gz",
+      "bytes": 540573,
+      "sha256": "c8deace40f822ac707b337c16ee63cf73ca6838ee094ef80324093ab08ab2d2f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/coconut-crab-static.json",
+      "bytes": 8541,
+      "sha256": "2ce886550c98d4586e3a446dd1576f6552e6f58ca1b7b37d0b5656ea1c06debc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/coconut-crab-support-samples.jsonl.gz",
+      "bytes": 450159,
+      "sha256": "031446c269052b8a91d89e4244f190fa65c7f60c64cb2056e8b5f2351e01d32b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/crab-static.json",
+      "bytes": 8478,
+      "sha256": "ee3f133ed6137a12ea21fa5c2f318c3c74d9e8117544bacd58b2dc8fb72dc565"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/crab-support-samples.jsonl.gz",
+      "bytes": 472712,
+      "sha256": "258aa03be580be6fcb1e07658ecd5a903db050f2cd63e0c297f3ff8d1fb4b1b8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/freshwater-crab-static.json",
+      "bytes": 8449,
+      "sha256": "9da3890b44693cfc1a3977415c408c4b3e5fba8287af206d3fb8492c0c5376a9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/freshwater-crab-support-samples.jsonl.gz",
+      "bytes": 455397,
+      "sha256": "84e207fd9353806843dee605d7937f4fd99d7a9e4dd3c4c865b92abcc660b127"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/identity.json",
+      "bytes": 2960,
+      "sha256": "7364c70a865ccfd9d229dce53f1cf6378bc306da5cad306f52eba1bc9ef7dbf2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/mud-crab-static.json",
+      "bytes": 8269,
+      "sha256": "6e1b2ec0792f524e730e7624e0a4112b1741f747645625629175c50c6e5cb9aa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/mud-crab-support-samples.jsonl.gz",
+      "bytes": 463241,
+      "sha256": "fe6b52249ff1391607394571ca0b3693c88439f61f6c9f9bdf7c6763daec6e41"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/sources.json",
+      "bytes": 27138,
+      "sha256": "c4a28afebb541fdcecd0bf620cd02d4436a6e8ecfb68202063672adcc9306828"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/static.json",
+      "bytes": 61950,
+      "sha256": "7cb7375100d14475693ce817adc95d7375fa9685f904f5dec78e4082364997ce"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/vent-crab-static.json",
+      "bytes": 8384,
+      "sha256": "9b8278daf85ce4902c6e74c544a61665f0550a09d3ca6bd8cbcd609afc051a4e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2/vent-crab-support-samples.jsonl.gz",
+      "bytes": 475748,
+      "sha256": "1b6588bbd35d7f75ea8c31b301508243a80d725bd75a9cfe297b48176137d7a2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2-execution.json",
+      "bytes": 72446,
+      "sha256": "f3f7eb9425e55293f8a949e078be45b49f8d3283bd50be71099e10aae1fa84a8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2-checks/s2-run.log",
+      "bytes": 5147,
+      "sha256": "6046632ae7a68e89ea8b68a104de96f8b6674d04bfee1b92f1fb8a7c1489f6ac"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/s2.log",
+      "bytes": 5403,
+      "sha256": "dac0ed8d78d4216729a93b67079976df772e58ac344bef95c1442aa78d91798c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/stationary-study-sources.json",
+      "bytes": 8683,
+      "sha256": "3d030ab874dcf5cbac12452c7fd804e49a0d87791558487643803d256f89a4d3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/stationary-study.json",
+      "bytes": 12667,
+      "sha256": "7a98c727d184bfa19fb15f07ee8655767975148de0f8dab9e7e129b23f5e5afb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/stationary-study.log",
+      "bytes": 6136,
+      "sha256": "c7c9f33e231f91481f74c7c69771d13101bfd8ceda64bbe80792b41356acda4c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/stationary-study.ts",
+      "bytes": 2360,
+      "sha256": "e69cb3c67ddd178af8c128b07bd49cd53c5d722bcc850fcea63a144f03ed4ed4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/timeline-before-envelope-cache.ts",
+      "bytes": 10631,
+      "sha256": "443194ed3781df42ba0fc38222345e795e716eeb51119d77350cc722650efee4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/types-01.log",
+      "bytes": 260,
+      "sha256": "3b83a3d067851bf51fef61c400ff9a9db608951ef13770d10e4335605fdc8953"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/types-02.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/types-cache.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/types-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/weld-candidate.mjs",
+      "bytes": 2614,
+      "sha256": "722d032b2befa4d6a214723aca94a5b9cbb633190036f5067a21b00d87a8584c"
+    }
+  ]
+}

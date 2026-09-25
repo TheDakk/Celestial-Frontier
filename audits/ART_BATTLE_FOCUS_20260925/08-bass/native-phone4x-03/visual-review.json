@@ -1,0 +1,15 @@
+{
+  "status": "PASS_SCOPED_VISUAL_REVIEW",
+  "fit": "fit-05",
+  "inspected": [
+    "approach-50.png",
+    "turn1-hit-impact.png",
+    "turn3-hit-return-end.png"
+  ],
+  "findings": [
+    "Both fish face inward in water.",
+    "No open pectoral seam in inspected impact and return poses.",
+    "Numerically green films 01 and 02 remain visual failures."
+  ],
+  "limits": "Picker integration and Nick art/device review remain pending."
+}

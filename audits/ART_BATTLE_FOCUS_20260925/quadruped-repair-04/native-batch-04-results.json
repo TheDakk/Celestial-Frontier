@@ -1,0 +1,97 @@
+[
+  {
+    "name": "impala",
+    "command": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-composed-proposal-02-runner.mjs",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-04",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-script.json"
+    ],
+    "exit": 0,
+    "error": null,
+    "status": "DIAGNOSTIC_PASS",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "frames": 931,
+    "cpuP95Ms": 5.899999976158142
+  },
+  {
+    "name": "marmot",
+    "command": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-composed-proposal-02-runner.mjs",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-04",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-script.json"
+    ],
+    "exit": 0,
+    "error": null,
+    "status": "DIAGNOSTIC_PASS",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "frames": 932,
+    "cpuP95Ms": 6.399999976158142
+  },
+  {
+    "name": "cattle",
+    "command": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-composed-proposal-02-runner.mjs",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-04",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-script.json"
+    ],
+    "exit": 0,
+    "error": null,
+    "status": "DIAGNOSTIC_PASS",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "frames": 909,
+    "cpuP95Ms": 15.100000023841858
+  },
+  {
+    "name": "lizard",
+    "command": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-composed-proposal-02-runner.mjs",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-04",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-script.json"
+    ],
+    "exit": 0,
+    "error": null,
+    "status": "DIAGNOSTIC_PASS",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "frames": 834,
+    "cpuP95Ms": 3.8000000715255737
+  },
+  {
+    "name": "bear",
+    "command": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-composed-proposal-02-runner.mjs",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-04",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/bear-script.json"
+    ],
+    "exit": 0,
+    "error": null,
+    "status": "DIAGNOSTIC_PASS",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "frames": 932,
+    "cpuP95Ms": 7.399999976158142
+  }
+]

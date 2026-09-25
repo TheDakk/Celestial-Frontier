@@ -1,0 +1,20 @@
+[
+  {
+    "tool": "image_gen.imagegen",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-5835d70b-fe08-4969-b8c6-fa5d835f5a42.png",
+    "output": "master-generation-01.png",
+    "sha256": "b30eb2c8541c3d6dc08c3042f62be163293cf7e7a0d7ca7e5778031420f5f03a",
+    "prompt": "prompt.txt",
+    "promptSha256": "42daaee4e08ba3bf90bf9821a0d67b229bd933274d38fae97b5846ea41d7e17b",
+    "finding": "Far pectoral not visible; retained rejected master"
+  },
+  {
+    "tool": "image_gen.imagegen",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-0c492d9d-3c73-4c19-aad3-97a506a9712d.png",
+    "output": "master.png",
+    "sha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8",
+    "prompt": "prompt-correction-02.txt",
+    "promptSha256": "1b49657be61ef74a8fcf6f1c0c4105c80133d8643464dc2dcbf08d732bd133f0",
+    "finding": "Far pectoral visible below gill, two pelvic fins retained, right-facing; Nick pending"
+  }
+]

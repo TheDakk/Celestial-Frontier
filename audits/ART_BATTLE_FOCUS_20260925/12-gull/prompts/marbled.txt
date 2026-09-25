@@ -1,0 +1,3 @@
+Create a transparent 1254 x 1254 PNG marking-mask texture. Draw ONLY white pigment shapes on a genuinely empty alpha-zero canvas. Keep the FULL canvas, no cropping, no creature or silhouette, no background, labels or shadow.
+Fine broken swirling white pigment veins, 5 to 9 pixels thick, in the CENTER rectangle x=490..850,y=570..735, around broad transparent islands. No solid fill.
+The entire lower half below y=750 and upper half above y=550 must stay empty transparent. The marks occupy only the CENTRAL flank-sized patch. White marks, true alpha holes.

@@ -1,0 +1,76 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "fit-01",
+  "sourceRecordSha256": "7f7a1d10d7a58f722b48ee3e6ab033c71ce84eb8d46320aca62a07cfb9530c48",
+  "sourceBindingSha256": "c059f6f216ea1d18081d1d1279d653a54c774767989ee44d308e622df5ac025e",
+  "sourceAtlasSha256": "95775e5b9dc0614d3033480742553debb9fe93b9a32aac1b88efbea15d6e670d",
+  "helperSha256": "807001f0b26bb421aa3599ba7d889c180bea331a8b51b72324fcbd06b488c291",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "legNearFoot",
+      "legFarFoot",
+      "legNearAnkle",
+      "legFarAnkle",
+      "legNearKnee",
+      "legFarKnee",
+      "beak",
+      "head",
+      "neck1",
+      "neck0",
+      "wingNearRoot",
+      "wingNearTip",
+      "wingFarRoot",
+      "wingFarTip",
+      "tailFan",
+      "chest"
+    ],
+    "contactEndpoints": [
+      "legFarAnkle",
+      "legNearAnkle"
+    ],
+    "preservePaintBoundaries": true
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 45,
+        "distancePx": 8.897694930107031,
+        "supports": [
+          64,
+          65
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 50,
+        "distancePx": 12.041594578792338,
+        "supports": [
+          6,
+          141
+        ]
+      }
+    ],
+    "sourceBindingHash": "7c99075a5f6bc2e2e5dbd82ed112fca896d2cbab5fa9da9ce6f2cf382b2e937e",
+    "sourceVertices": 1382,
+    "vertices": 1488,
+    "sharedSupports": 607,
+    "pins": 616,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 19,
+    "observedExcludedBoundaries": 19,
+    "weldedExcludedBoundaries": 19,
+    "independentExcludedBoundaries": 0,
+    "preservePaintBoundaries": true,
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "3ecf98b68c0454eb8303d1e409130a1fb9fb779a8dcc813ad04cd6156d783d29",
+  "scope": "Only this unadmitted Gull candidate. Existing opt-in preserves observed painted boundaries on a flat master. No solver/gate/limit change; no hidden pixels invented. Prior intake receipts describe inherited fit-01 inputs, this receipt owns the new split."
+}

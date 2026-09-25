@@ -1,0 +1,84 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "FIT_COMPILED",
+  "sourceHead": "27ef92ff3109b6a1709abe487fab07fefdde9934",
+  "helperSha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/master.png",
+      "sha256": "15618869db6ea85407c2566b5dacd469513bffd1db2fa0a76247918cb51c491c"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/authoring.json",
+      "sha256": "c35735a7c145d14e334211c06dc937b8b07f9116f9aff9be2d8b98586d07330d"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/subject-source.json",
+      "sha256": "5eecda3718f23ba7d32c1e713029f75adffc2eeffc2a1c4d1a4bb8c45bdbd1e9"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "recordRecipeHash": "cf60db301065dbb0147b3ba91650fbaa7b0447cf8fac40250a2b758d2cdb5982",
+  "bindingHash": "73d241f5ee53ffe4a533d9bc7511240f93193fe12731f754010d590ec10739bb",
+  "contactEndpoints": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "shapeJoints": [
+    "legNearFoot",
+    "legFarFoot",
+    "legNearAnkle",
+    "legFarAnkle",
+    "legNearKnee",
+    "legFarKnee",
+    "beak",
+    "head",
+    "neck1",
+    "neck0",
+    "wingNearRoot",
+    "wingNearTip",
+    "wingFarRoot",
+    "wingFarTip",
+    "tailFan",
+    "chest"
+  ],
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/master.png",
+      "sha256": "15618869db6ea85407c2566b5dacd469513bffd1db2fa0a76247918cb51c491c",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/authoring.json",
+      "sha256": "c35735a7c145d14e334211c06dc937b8b07f9116f9aff9be2d8b98586d07330d",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/subject-source.json",
+      "sha256": "5eecda3718f23ba7d32c1e713029f75adffc2eeffc2a1c4d1a4bb8c45bdbd1e9",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/16-heron/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ]
+}

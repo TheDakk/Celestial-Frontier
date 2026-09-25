@@ -1,0 +1,79 @@
+[
+  {
+    "name": "impala",
+    "command": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/approach-envelope-01/native-proposal-runner.mjs",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-impala-03",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/impala-script.json"
+    ],
+    "exit": 1,
+    "error": null,
+    "status": "FAIL"
+  },
+  {
+    "name": "marmot",
+    "command": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/approach-envelope-01/native-proposal-runner.mjs",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-marmot-03",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-script.json"
+    ],
+    "exit": 1,
+    "error": null,
+    "status": "FAIL"
+  },
+  {
+    "name": "cattle",
+    "command": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/approach-envelope-01/native-proposal-runner.mjs",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-cattle-03",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/cattle-script.json"
+    ],
+    "exit": 1,
+    "error": null,
+    "status": "FAIL"
+  },
+  {
+    "name": "lizard",
+    "command": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/approach-envelope-01/native-proposal-runner.mjs",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-lizard-03",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-script.json"
+    ],
+    "exit": 0,
+    "error": null,
+    "status": "FAIL",
+    "refusals": {
+      "left": 0,
+      "right": 14
+    },
+    "frames": 834,
+    "cpuP95Ms": 4
+  },
+  {
+    "name": "bear",
+    "command": [
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/approach-envelope-01/native-proposal-runner.mjs",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/fit-02",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/native-bear-03",
+      "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/bear-script.json"
+    ],
+    "exit": 0,
+    "error": null,
+    "status": "DIAGNOSTIC_PASS",
+    "refusals": {
+      "left": 0,
+      "right": 0
+    },
+    "frames": 930,
+    "cpuP95Ms": 7.799999952316284
+  }
+]

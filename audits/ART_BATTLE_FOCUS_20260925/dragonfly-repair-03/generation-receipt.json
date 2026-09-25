@@ -1,0 +1,12 @@
+{
+  "tool": "image_gen.imagegen",
+  "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-9fa26464-92f6-438e-812e-f3bd0ccdaf49.png",
+  "promptSha256": "0d80f9be74412f090be58e69d342ed1ef653d80541b5e04cd55cc76d316746ce",
+  "masterSha256": "8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "status": "ANATOMY_REVIEW_PASS",
+  "finding": "Six independently traceable legs/feet, four spread wings, complete abdomen, right-facing. All explicitly present; no hidden/absent/folded declarations."
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "67995957626fe39620ab4600fef284c497b07998c5011c6d5a0a4920df823670",
+  "bindingHash": "36bc2b02768c5e3e434d8f72fce906bda0ad1356d4cf740b59b5cd9fb0590384",
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "Observed interior torso root patch is continuous with surrounding spine paint; other independent silhouettes stay separate."
+}

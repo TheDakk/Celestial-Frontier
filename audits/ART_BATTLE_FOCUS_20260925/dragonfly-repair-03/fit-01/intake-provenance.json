@@ -1,0 +1,63 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "REFUSED",
+  "sourceHead": "7f1b3f69ae7f3cd348027409b6210034a2bc5daa",
+  "helperSha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/master.png",
+      "sha256": "8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/authoring.json",
+      "sha256": "4d60e27af10f3d4ed9a7f0d9952d2358dbff59b007453e6a098fbb6c4a8a1a04"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/subject-source.json",
+      "sha256": "7e88c5376123e27cc2877d705a2db6963762e8b6ee95b31e568b656d028399a5"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/master.png",
+      "sha256": "8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/authoring.json",
+      "sha256": "4d60e27af10f3d4ed9a7f0d9952d2358dbff59b007453e6a098fbb6c4a8a1a04",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/subject-source.json",
+      "sha256": "7e88c5376123e27cc2877d705a2db6963762e8b6ee95b31e568b656d028399a5",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "unchanged": true
+    }
+  ],
+  "refusal": {
+    "stage": "family-record",
+    "error": "Error: Family admission: ground line\n    at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:10:39)\n    at checkFamilyGeometry (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:30:2)\n    at sealFamilyRecord (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/family-record.mjs:48:36)\n    at sealPortableFamilyRecord (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/portable-record-writer.mjs:20:75)\n    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/intake-authored.mjs:67:22"
+  }
+}

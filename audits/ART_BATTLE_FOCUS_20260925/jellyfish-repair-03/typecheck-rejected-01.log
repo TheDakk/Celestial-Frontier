@@ -1,0 +1,7 @@
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/motion/amplitude-profile.test.ts(72,32): error TS2379: Argument of type '{ kind: 'body-card'; anatomy?: AnatomyPresence; projectionSigns?: Readonly<Record<string, number>>; projectionScales?: Readonly<Record<string, number>>; identity: ResolvedAnatomyRecord['identity']; ... 18 more ...; amplitudeProfile: undefined; }' is not assignable to parameter of type 'BodyCard' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'amplitudeProfile' are incompatible.
+    Type 'undefined' is not assignable to type 'AmplitudeProfile'.

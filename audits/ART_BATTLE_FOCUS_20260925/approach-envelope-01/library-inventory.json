@@ -1,0 +1,92 @@
+{
+  "source": "port/v2/tools/morph/build-card-masters.mjs",
+  "sha256": "9d378543b57a1378062554bbe4f578c93aac71d7e014a69891b367356b173058",
+  "archetypes": [
+    {
+      "earthName": "Crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/",
+      "key": "crab"
+    },
+    {
+      "earthName": "Coconut Crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/",
+      "key": "coconut-crab"
+    },
+    {
+      "earthName": "Freshwater Crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/",
+      "key": "freshwater-crab"
+    },
+    {
+      "earthName": "Mud Crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/",
+      "key": "mud-crab"
+    },
+    {
+      "earthName": "Vent Crab",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/",
+      "key": "vent-crab"
+    },
+    {
+      "earthName": "Civet",
+      "dir": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/",
+      "key": "civet-sentinel-input-01"
+    },
+    {
+      "earthName": "Salmon",
+      "dir": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/",
+      "key": "salmon",
+      "markings": "audits/ARCHETYPE_SPRINT_20260922/13-fish-markings/"
+    },
+    {
+      "earthName": "Eagle",
+      "dir": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/",
+      "key": "eagle"
+    },
+    {
+      "earthName": "Beetle",
+      "dir": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/",
+      "key": "beetle"
+    },
+    {
+      "earthName": "Python",
+      "dir": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/",
+      "key": "python"
+    },
+    {
+      "earthName": "Tree Frog",
+      "dir": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/",
+      "key": "tree-frog"
+    },
+    {
+      "earthName": "Chimpanzee",
+      "dir": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/",
+      "key": "chimpanzee"
+    },
+    {
+      "earthName": "Starfish",
+      "dir": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/",
+      "key": "starfish"
+    },
+    {
+      "earthName": "Tarantula",
+      "dir": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/",
+      "key": "tarantula"
+    },
+    {
+      "earthName": "Octopus",
+      "dir": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/",
+      "key": "octopus"
+    },
+    {
+      "earthName": "Fruit Bat",
+      "dir": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/",
+      "key": "fruit-bat"
+    },
+    {
+      "earthName": "Centipede",
+      "dir": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/",
+      "key": "centipede"
+    }
+  ]
+}

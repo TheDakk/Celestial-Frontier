@@ -1,0 +1,10 @@
+{
+  "tool": "image_gen.imagegen",
+  "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-13e90721-de4f-449e-a028-7f06ca1e6c04.png",
+  "sha256": "c3d4a67f11764fb5fe7a9f98d2fa44b85fc63cd40b17b8d9ae934557fa6ebb46",
+  "promptFile": "correction-prompt-02.txt",
+  "promptSha256": "08a3b36a7dd6ab9e2c7f435ef7325a1f6221a142e3735c109e91784c0b44c10f",
+  "reference": "generation-01/master.png",
+  "referenceSha256": "fd1d78d2335994d7c50750d424580a50c1bda638f9379acde167ccba36023024",
+  "decision": "candidate: complete right-facing shark with both pectorals/pelvics visible, safe transparent margins; Nick review pending"
+}

@@ -1,0 +1,310 @@
+{
+  "schema": "cf.audit-packet-manifest/v1",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4109,
+      "sha256": "852f479f262da7bd499e9befedba629e05f9e5ee060464c9ac993fc709666d2a"
+    },
+    {
+      "path": "after-capture-timeline.mjs",
+      "bytes": 3499,
+      "sha256": "ce556b6d691f98fc195450da6e4ca91080c071b6dcc28cc66812e8a97041cdda"
+    },
+    {
+      "path": "after-capture-timeline.test.mjs",
+      "bytes": 3472,
+      "sha256": "a0b8485c75d9e1cb9ede4ea5354ee573e1907e54e3205963498078ed5aa08b90"
+    },
+    {
+      "path": "after-native-entry.mjs",
+      "bytes": 17047,
+      "sha256": "3c50f1b60163153abd2c132b8df97b3a2ab2b52ac15fcb220ecc5c6331c4e0ab"
+    },
+    {
+      "path": "after-native-runner.mjs",
+      "bytes": 12665,
+      "sha256": "913749b824a0350ff1df59482b12cca6a6ec775acf47a19d3e0a89aa321b5be3"
+    },
+    {
+      "path": "batch-end-mailbox.json",
+      "bytes": 250,
+      "sha256": "9489d5ce8600e3334bf7173e5628bb8d384e3471f6540ef62e69d6fcee306f1d"
+    },
+    {
+      "path": "before-native-entry.mjs",
+      "bytes": 16799,
+      "sha256": "1fa7d38f624db09f29ce880d3527371b38dc05fffe9e95caea59b9966973d5f7"
+    },
+    {
+      "path": "before-native-runner.mjs",
+      "bytes": 12373,
+      "sha256": "47362c5c4a052555f4bdb827ef1d3824c7bec6b1976fa92e6bf4a489dc93f7be"
+    },
+    {
+      "path": "civet-native-01/battle-full.webm",
+      "bytes": 10171262,
+      "sha256": "ec595d22315e8746a370deed7a0376a4ab577db737178ec72fa9ad2fc1acea13"
+    },
+    {
+      "path": "civet-native-01/encoded-final-frame.png",
+      "bytes": 1029588,
+      "sha256": "7af8c45605147eb2071b199c9dce937fa76f3f928bb7f4fc09f0516dc2edf393"
+    },
+    {
+      "path": "civet-native-01/report.json",
+      "bytes": 378709,
+      "sha256": "8609bd183471f93091312e7ac3c4bd55ed3d1db891d25742428c5ca748e0638f"
+    },
+    {
+      "path": "civet-native-01/turn0-hit-approach-50.png",
+      "bytes": 1549653,
+      "sha256": "c92beb6c494c1a0a978875f0fdde22efb45b71f111c5982cb9cae589e979cc67"
+    },
+    {
+      "path": "civet-native-01/turn0-hit-impact.png",
+      "bytes": 990543,
+      "sha256": "bdd03965f04a6592049cd64f6f658c0a5660b7c59018835a7c6605475f12aca7"
+    },
+    {
+      "path": "civet-native-01/turn0-hit-reaction-50.png",
+      "bytes": 1550130,
+      "sha256": "2e96efa97059cc44858d4d70376790cf7845a15400edcf716266e8f43ecdb9a1"
+    },
+    {
+      "path": "civet-native-01/turn0-hit-return-end.png",
+      "bytes": 1548947,
+      "sha256": "9ccdafb04b757d627d5dc008b3786dbfbe4313663fd783cd0cfa673b71793601"
+    },
+    {
+      "path": "civet-native-01/turn1-hit-approach-50.png",
+      "bytes": 1549781,
+      "sha256": "4c131379eec3738373b5dfc90748bcf87d8f5f6418f030a2c00e41f8a13f5516"
+    },
+    {
+      "path": "civet-native-01/turn1-hit-impact.png",
+      "bytes": 1551448,
+      "sha256": "f172f8e7e970f2fc236e30109ab3ec07fd535030e3e48ed8f632628704985262"
+    },
+    {
+      "path": "civet-native-01/turn1-hit-reaction-50.png",
+      "bytes": 1550558,
+      "sha256": "cd06062e08ce4f87b6539742eb0d7399ad5f805d60859d42b1c57c5059f950e2"
+    },
+    {
+      "path": "civet-native-01/turn1-hit-return-end.png",
+      "bytes": 1548925,
+      "sha256": "d3158dd4e99640a462d78b777dd3dc42e564f72ff55bda510539b019aa654943"
+    },
+    {
+      "path": "civet-native-01/turn2-dodge-approach-50.png",
+      "bytes": 1549597,
+      "sha256": "50b2f1d9ddd6435491b11f84d5ea265dc0a45779ddffb96b421a8045b31147ab"
+    },
+    {
+      "path": "civet-native-01/turn2-dodge-impact.png",
+      "bytes": 1554170,
+      "sha256": "2b288e29c40856fdd24556203ee8b362dd8ada7b139b39bbd475f9464a87bb85"
+    },
+    {
+      "path": "civet-native-01/turn2-dodge-reaction-50.png",
+      "bytes": 1555196,
+      "sha256": "1d4b83a36303c6b27047a2cb72af2c2b26711dce2fd6737deff3071ed44b9ead"
+    },
+    {
+      "path": "civet-native-01/turn2-dodge-return-end.png",
+      "bytes": 1549731,
+      "sha256": "ccc401edde72faab3a2927e2e6d8feea1b4b4bd628d50fe6f06a40978c385cc3"
+    },
+    {
+      "path": "civet-native-01/turn3-hit-approach-50.png",
+      "bytes": 1549653,
+      "sha256": "c92beb6c494c1a0a978875f0fdde22efb45b71f111c5982cb9cae589e979cc67"
+    },
+    {
+      "path": "civet-native-01/turn3-hit-idle-50.png",
+      "bytes": 1554008,
+      "sha256": "942908bd08df6b3008b65ba8fd02a0312715ac8180a01d6a132fffef46ab7302"
+    },
+    {
+      "path": "civet-native-01/turn3-hit-idle-90.png",
+      "bytes": 1545041,
+      "sha256": "4f22c9c8618e27eae012b078a2b27bcc7b1d3a54508df3240b52749c05e1b7d4"
+    },
+    {
+      "path": "civet-native-01/turn3-hit-impact.png",
+      "bytes": 992129,
+      "sha256": "1d76ba3c62cb248ffe7061912bf86cd562af7b7144808c21d0caffda6034b5bc"
+    },
+    {
+      "path": "civet-native-01/turn3-hit-reaction-50.png",
+      "bytes": 1545550,
+      "sha256": "19fedb07de8b1b17f81412bb9cf8395e348398031cd7aa8259b22f4113302c92"
+    },
+    {
+      "path": "civet-native-01/turn3-hit-return-end.png",
+      "bytes": 1544457,
+      "sha256": "d7fc5857dfea704f015e7f0d968859de7b0ca4d1e13799268517d2fa5c7c52f9"
+    },
+    {
+      "path": "civet-native-01.log",
+      "bytes": 213,
+      "sha256": "7d82028da0b84f5b55c655ad6b84d231295722671e5f96f48ea14b2db583a059"
+    },
+    {
+      "path": "civet-script.json",
+      "bytes": 616,
+      "sha256": "966202781393d3520f12e1159b8613049e66e160fb34cbcfb2811f5d1c1d173c"
+    },
+    {
+      "path": "contract-tests-01.log",
+      "bytes": 453,
+      "sha256": "fba51b37652cfe3c4c2162ceb15a7cfd7837f88f0d49cf99df5e280e02037266"
+    },
+    {
+      "path": "cougar-native-02/battle-full.webm",
+      "bytes": 11077806,
+      "sha256": "9a233b782bc919e3858d0a7ea2337ec1d6860234a66ce871d607674b0bcea283"
+    },
+    {
+      "path": "cougar-native-02/encoded-final-frame.png",
+      "bytes": 1002321,
+      "sha256": "d7e82888ed40f8fb3eede1de5253f8a4ddcd6d61fb3adf0f8cfe5efd5df631b6"
+    },
+    {
+      "path": "cougar-native-02/report.json",
+      "bytes": 393030,
+      "sha256": "eefa54cf47bc5dfe23e0a04187b07aa79be950a022e7b2647348728fcafa7ae8"
+    },
+    {
+      "path": "cougar-native-02/turn0-hit-approach-50.png",
+      "bytes": 1535643,
+      "sha256": "87e816e0b59a51951f4f767b4599cb15efe70d6918a68dc5964510ef67bbf11d"
+    },
+    {
+      "path": "cougar-native-02/turn0-hit-impact.png",
+      "bytes": 983777,
+      "sha256": "faa9f96575c6bf542b0d44bb07764950f71105f711c43b19e80990b4a95c1ad2"
+    },
+    {
+      "path": "cougar-native-02/turn0-hit-reaction-50.png",
+      "bytes": 1538783,
+      "sha256": "458758dd05a608736ca5911cbc85a18838dddcb1a9fb2dfb6fbe61b782fb99b3"
+    },
+    {
+      "path": "cougar-native-02/turn0-hit-return-end.png",
+      "bytes": 1537865,
+      "sha256": "b67aa15d701e8734699bfe144dc0940bb5e60c02e870d22c216f39ca1aa51bcb"
+    },
+    {
+      "path": "cougar-native-02/turn1-hit-approach-50.png",
+      "bytes": 1537481,
+      "sha256": "1d0c59db7f11b8a574e8a8fc491691a8911d489bcb8246dfd8f6ffc4555b87ac"
+    },
+    {
+      "path": "cougar-native-02/turn1-hit-impact.png",
+      "bytes": 1544172,
+      "sha256": "ef685b1afc7f0ebd6eabf433a44f7b39491fca82a5746f5e9c888749778c1f3d"
+    },
+    {
+      "path": "cougar-native-02/turn1-hit-reaction-50.png",
+      "bytes": 1539116,
+      "sha256": "18be0ff6f80e930cbab682385e388bdba4b2cfb27000750260589fce2299d639"
+    },
+    {
+      "path": "cougar-native-02/turn1-hit-return-end.png",
+      "bytes": 1537764,
+      "sha256": "51aa3b2e235c9df99d366f86892dc44968816c3d5fff17c158b03f07c1e9a1e0"
+    },
+    {
+      "path": "cougar-native-02/turn2-dodge-approach-50.png",
+      "bytes": 1535498,
+      "sha256": "5ace6841d92ead73449bef7db2fa48e9f7bbd281bb7d14cc92aa05e7a4da5f09"
+    },
+    {
+      "path": "cougar-native-02/turn2-dodge-impact.png",
+      "bytes": 1547876,
+      "sha256": "43e7b10cdba94ee2b32774eff98da7623c2978015e76a4d2ac566606b0f13d3e"
+    },
+    {
+      "path": "cougar-native-02/turn2-dodge-reaction-50.png",
+      "bytes": 1546889,
+      "sha256": "04ea5c081474dac3cceb83676fe493f0157c4d17ccbb79a9d46cbb4c7d5073f8"
+    },
+    {
+      "path": "cougar-native-02/turn2-dodge-return-end.png",
+      "bytes": 1537713,
+      "sha256": "3dfdbee4efa2b2c09b968aade2a8f7f6a623bd160539340c39616b4012948f27"
+    },
+    {
+      "path": "cougar-native-02/turn3-hit-approach-50.png",
+      "bytes": 1535643,
+      "sha256": "87e816e0b59a51951f4f767b4599cb15efe70d6918a68dc5964510ef67bbf11d"
+    },
+    {
+      "path": "cougar-native-02/turn3-hit-idle-50.png",
+      "bytes": 1549382,
+      "sha256": "38dde8c528c021b910bf9e7eac48ae0bdebfeaeb7c15f350aabccf1067076309"
+    },
+    {
+      "path": "cougar-native-02/turn3-hit-idle-90.png",
+      "bytes": 1533746,
+      "sha256": "c5a4b392c9446d17021d87bd62dbc96e4f422dfd04aa7af258443f4a4ae1ce8d"
+    },
+    {
+      "path": "cougar-native-02/turn3-hit-impact.png",
+      "bytes": 1540971,
+      "sha256": "328c840f305dc66e25407486d29640d8a6ab425c722f8afeee4b875ed2eb12ef"
+    },
+    {
+      "path": "cougar-native-02/turn3-hit-reaction-50.png",
+      "bytes": 1535746,
+      "sha256": "f22717f5cbbd95ee565cc218c56d532c1b8a083bdc1784617c149316482a8722"
+    },
+    {
+      "path": "cougar-native-02/turn3-hit-return-end.png",
+      "bytes": 1533533,
+      "sha256": "35598b650447f005ec92e5ffc3e2155abadfaf328f19fe4af6a96034f84b5ce6"
+    },
+    {
+      "path": "cougar-native-02.log",
+      "bytes": 364,
+      "sha256": "9b8137a930b79fe7a95a6e32c7ded8d9f585830db2f4c7ec02ff9519a5524182"
+    },
+    {
+      "path": "cougar-script.json",
+      "bytes": 624,
+      "sha256": "affd02e44bb42a877c56bf34b18122ad77478e40192def1f38f8fe45dfc15885"
+    },
+    {
+      "path": "develop-profile-01.log",
+      "bytes": 66662,
+      "sha256": "c1d1fdc63d3c79f8bf19f6c4d7226dd84ed30c47c446f1625897d88bbbf05f20"
+    },
+    {
+      "path": "instrument-sources.json",
+      "bytes": 890,
+      "sha256": "b5a2fba87b641444417c5add30761d8ab9c754974082b3a0043939c44180c801"
+    },
+    {
+      "path": "old-media-negative.json",
+      "bytes": 348,
+      "sha256": "59f6cc30e2546a809d0d67ee126575ed0c02c646e22b215c9c12ad097031cc02"
+    },
+    {
+      "path": "preparation-note.txt",
+      "bytes": 198,
+      "sha256": "b94bae2be8a70bf203ddf4baeb2b907145de233661dd5a5ccda0eeca3d6ff41b"
+    },
+    {
+      "path": "review-sheet.mjs",
+      "bytes": 1140,
+      "sha256": "81330cf64fc430d4389dd3e6c02fa59c6fa6c612ad99a019dc8958d1230d28d2"
+    },
+    {
+      "path": "review-sheet.png",
+      "bytes": 2645978,
+      "sha256": "852328f4da92e3b40f6022824ad6d2c807d56a23519800af14ea37ed2c0f6443"
+    }
+  ]
+}

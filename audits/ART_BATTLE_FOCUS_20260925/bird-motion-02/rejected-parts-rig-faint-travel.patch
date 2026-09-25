@@ -1,0 +1,11 @@
+--- a/port/v2/apps/game/src/battle2/parts-rig.ts
++++ b/port/v2/apps/game/src/battle2/parts-rig.ts
+@@ -170,7 +170,7 @@
+   out.applyPose({}, restContext()); const restTop = topOf(); let rise = 0;
+   for (const tl of timelines) for (let i = 0; i <= 12; i++) {
+     const ms = tl.durationMs * (i / 12);
+-    out.applyPose(sampleClip({ source: 'timeline', timeline: tl }, ms), { actionId: tl.actionId, elapsedMs: ms, durationMs: tl.durationMs, weight: 1, planted: plantedFor(tl.actionId), travel: 'stage' });
++    out.applyPose(sampleClip({ source: 'timeline', timeline: tl }, ms), { actionId: tl.actionId, elapsedMs: ms, durationMs: tl.durationMs, weight: 1, planted: plantedFor(tl.actionId), travel: tl.actionId === 'faint' ? 'solver' : 'stage' });
+     const r = restTop - topOf(); if (r > rise) rise = r;
+   }
+   out.applyPose({}, restContext()); refused = 0; applied = 0; lastError = null; last = null;
