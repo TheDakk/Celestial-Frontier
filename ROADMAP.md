@@ -25,9 +25,7 @@ release inventory) and `cd2a7109` (Weekly Conquest) are merged. Signing uses the
 `gh`. The lanes talk through the mailboxes (`audits/MAILBOX/TO_CODEX.md` here, `TO_CLAUDE.md` in `openai/mac`). Nick's queue is
 `audits/MAILBOX/DECISIONS.md`: D1/D5/D9 yes, D6 not yet, D8/D10/D11 defaults applied (no change), and **D12–D15 wait for his word** (the N1/N3/N4/N5
 proposals in `audits/PROPOSALS_20260925/`). The gate command, the same one Codex uses, is `node tools/check-profile.mjs --profile=develop`
-(from `port/v2`). Its reds on this head: I5 (`current-producer-authorities`, Codex's v2 epoch), plus 3 from Codex's merged C10/C11
-commits (a stale 86 pin in `evidence-chain-tools`, and a `packageLock`-only drift of the sealed Compendium measurement authority in
-`compendium-budget` ×2). They are Codex's to fix (mailbox C18). The total is 5,092 passing.
+(from `port/v2`). **Its only red is I5** (`current-producer-authorities`, Codex's v2 epoch; C8). Codex fixed its three C18 reds in `a7f154f8`, and the total is 5,141 passing.
 
 **This batch (items -97…-101).**
 - **C15 priority reset (Nick): the art + battle vision is Codex's ONE focus** until generated coverage is ≥ 80% painted, no top-35 Earth
