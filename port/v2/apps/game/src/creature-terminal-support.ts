@@ -1,6 +1,6 @@
 /** An explicitly authored adhesive pad, interpolated on its actual rendered
  * terminal part. No pad detection, nearest eligible replacement or mesh edits. */
-import type {CreatureRigRecordV1,CreaturePartsBindingV1} from './creature-rig.js';
+import type {CreatureRigRecordV1,CreaturePartsBindingV1} from './creature-rig-types.js';
 import type {WeightedContactSupport} from './creature-rig-contact.js';
 import type {ContactChain} from '../../../tools/creature-animation/family-contracts.mjs';
 export function terminalPaintedSupport(record:CreatureRigRecordV1,binding:CreaturePartsBindingV1,chain:ContactChain,pad:readonly [number,number]):WeightedContactSupport{

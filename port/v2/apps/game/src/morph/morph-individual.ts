@@ -1,7 +1,7 @@
 // The morph system, step 4: ONE place that turns (accepted archetype, genome) into what the loaders need — the
 // palette remap over the atlas (M2) and the joint scales (M1). The wiring and the native film entry both call it; an
 // identity genome yields nothing, so the archetype loads exactly as before (byte-identical path).
-import type { CreaturePartsBindingV1 } from '../creature-rig.js';
+import type { CreaturePartsBindingV1 } from '../creature-rig-types.js';
 import type { BodyCard } from '../motion/body-card.js';
 import { archetypeGenomeV1, morphParamsV1, type MorphGenome, type MorphParamsV1 } from './morph-params.js';
 import { emissiveRoleV1, paletteRoleOfPart, remapAtlasPaletteV1, type PaletteFrame } from './morph-palette.js';

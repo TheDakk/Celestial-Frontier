@@ -51,7 +51,7 @@ export interface BodyCard {
   readonly amplitudeProfile?:import('./amplitude-profile.js').AmplitudeProfile;
   readonly kind: 'body-card';
   /** Original normalized contact geometry and pixel scale for pure motion authoring probes. */
-  readonly contactGeometry?: import('../creature-rig.js').CreatureRigRecordV1['geometry'];
+  readonly contactGeometry?: import('../creature-rig-types.js').CreatureRigRecordV1['geometry'];
   /** Explicit observed life-stage habitat; species defaults never synthesize it. */
   readonly habitat?:NonNullable<ResolvedAnatomyRecord['habitat']>;
   readonly anatomy?:AnatomyPresence;

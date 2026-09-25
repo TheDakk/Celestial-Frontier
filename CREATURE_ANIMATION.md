@@ -794,3 +794,9 @@ Cold/controlled-worker/offline picker controls are in audits/C23_PINNED_LOADER_2
 The secondary battle renderer removes its own view without releasing global
 Pixi resources still owned by the main game renderer. Masters remain packaged
 until Claude applies the removal and remeasures the integrated pack.
+
+C24 (2026-09-25): renderer-free `creature-rig-types.ts` owns pose, contact,
+record, binding and seam shapes. Motion/contact/marking helpers import those
+structural types directly; the Pixi loader re-exports existing public names for
+compatibility. Strict root typechecking no longer reaches Pixi/WebGPU through
+motion. Runtime output is unchanged (13-module parity receipt in C24 audit).

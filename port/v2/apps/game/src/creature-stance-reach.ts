@@ -2,7 +2,7 @@
  * limits. Resolve the record's authored approach at 121 phases; bisect the
  * contiguous admitted displacement interval against the existing solver.
  * This is sampled admission, not a proof for arbitrary clips between samples. */
-import type {CreaturePoseV1,CreatureRigRecordV1} from './creature-rig.js';
+import type {CreaturePoseV1,CreatureRigRecordV1} from './creature-rig-types.js';
 import {createFamilyContactSolver,type ContactSupport} from './creature-rig-contact.js';
 import {compileBodyCard,type ResolvedAnatomyRecord} from './motion/body-card.js';
 import {buildTimeline} from './motion/timeline.js';
