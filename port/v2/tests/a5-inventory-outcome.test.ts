@@ -321,8 +321,8 @@ async function slotPickerScenario(mutations: readonly MainMutation[] = [], deliv
     expect(picker, 'the Inventory panel renders its slot picker').not.toBeNull();
     picker!.value = 'suit';
     if (deliverPick) {
-      picker!.dispatchEvent(new h.dom.window.Event('change', { bubbles: true }));
-      picker!.dispatchEvent(new h.dom.window.Event('input', { bubbles: true }));
+      picker!.dispatchEvent(new (h.dom.window as unknown as { Event: typeof Event }).Event('change', { bubbles: true }));
+      picker!.dispatchEvent(new (h.dom.window as unknown as { Event: typeof Event }).Event('input', { bubbles: true }));
     }
     expect(rows(), 'inventory #73: the picked slot lists only its exact items').toHaveLength(1);
     await pressAction(h, 'equip');

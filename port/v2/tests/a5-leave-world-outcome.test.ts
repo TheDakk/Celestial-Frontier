@@ -18,7 +18,7 @@ import {
   V4_PRIMARY_KEY, createMemoryBackend, createRevisionedRepository, importSaveV2, migrateStoredV4ToV5, prepareF4AuthorityUpdate, prepareV5SaveWrite,
   readF4Authority, readSaveV5, type ContentRegistry, type SaveStateV2, type StorageBackend,
 } from '@cf/persistence';
-import { NAV_HOME, ascend, getProvenPlanetKey, navFromCanonicalCF1Address, navToView, resolveCF1WorldAddress } from '@cf/scene';
+import { ascend, getProvenPlanetKey, navFromCanonicalCF1Address, navToView, resolveCF1WorldAddress } from '@cf/scene';
 import { projectCheckpointState } from '../apps/game/src/checkpoint-state.js';
 import { createEcologyEpochEdgeAuthority } from '../apps/game/src/ecology-epoch-edge.js';
 import { createF4RuntimeAuthority, type F4RuntimeAuthority } from '../apps/game/src/f4-runtime-authority.js';
