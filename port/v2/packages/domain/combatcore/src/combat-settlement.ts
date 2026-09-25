@@ -723,9 +723,11 @@ export function planCombatPartySettlementV1(input: PlanCombatPartySettlementInpu
   } catch {
     return refused('input-invalid');
   }
-  if (result.status !== 'finished' || result.outcome === 'withdrawn' || result.decisionsUsed !== decisions.length) {
-    return refused('input-invalid');
-  }
+  if (result.status !== 'finished' || result.decisionsUsed !== decisions.length) return refused('input-invalid');
+  /* §20 Command Withdraw: the party leaves at a Break. It settles like any fight that was not won: the decisive leg is the one the
+     party left from (a Break has no winner, so it settles as a draw; after a fallen fighter, as the defender's leg win). Auto never
+     withdraws, and withdrawing forfeits the win, so it can never beat Auto's own play. */
+  if (result.outcome === 'withdrawn' && input.mode !== 'command') return refused('input-invalid');
   const decisive = result.legs[result.legs.length - 1]!;
   const engineLeg = { A: decisive.A, B: decisive.B, log: decisive.log, winner: decisive.winner, hpA: decisive.hpA, hpB: decisive.hpB,
     maxA: decisive.maxA, maxB: decisive.maxB, turnA0: decisive.turnA0 } as unknown as DuelResult;
@@ -736,7 +738,9 @@ export function planCombatPartySettlementV1(input: PlanCombatPartySettlementInpu
       : leg.end === 'swapped' ? 'swapped' : leg.end === 'fighter-fell' ? 'fighter-fell' : 'cap';
     return Object.freeze({ ...member, legEnd });
   });
-  const outcome: CombatSettlementOutcomeV1 = result.outcome === 'party' ? 'champion-win' : result.outcome === 'draw' ? 'draw' : 'defender-win';
+  const outcome: CombatSettlementOutcomeV1 = result.outcome === 'withdrawn'
+    ? (decisive.winner === 'A' ? 'champion-win' : decisive.winner === 'B' ? 'defender-win' : 'draw')
+    : result.outcome === 'party' ? 'champion-win' : result.outcome === 'draw' ? 'draw' : 'defender-win';
   return planCombatSettlementCore({ ...input, champion: input.party[decisive.fighterIndex]!.champion, transcript: engineLeg, outcome }, {
     engineLeg, mode: input.mode, decisions: Object.freeze([...decisions]), decisiveIndex: decisive.fighterIndex, members,
     encounterFingerprint: fingerprint(canonicalJson({ mode: input.mode, decisions, stances: input.party.map((m) => m.stance), legs: result.legs.map((l) => [l.fighterIndex, l.end, l.hpA, l.hpB]) })),

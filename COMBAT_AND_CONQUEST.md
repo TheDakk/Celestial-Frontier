@@ -242,8 +242,24 @@ share one helper and the fingerprint held.
 >     CAS. Every owned fighter must be on exactly one carrier and free at the committed clock, and the explorer binds wherever it
 >     fights.
 >   - **Chronicle:** it names every earlier fighter before the decisive leg.
->   - **Still to come:** Command (Breaks), which needs the open-encounter record; Codex's S4 balance numbers; friendly duels; and the
->     Guardian phase change.
+>   - **Still to come:** Codex's S4 balance numbers; see the Command block below for what landed after this.
+> - **Command: the open-encounter record (2026-09-25, `packages/persistence/src/combat-open-encounter.ts`; matches code).**
+>   - **Open** (`combat-open-encounter` receipt): the sealed plan — battle id, encounter digest, defender genome, every fighter's exact
+>     settlement champion + stance in relay order — is written to `player/combat.open-encounter` in its own deterministic F4 receipt.
+>     Nothing else changes (no Recovery, XP or counter). A fight that never reaches a Break is refused (`no-break`) and settles directly.
+>   - **Decide** (`combat-encounter-decision` receipt): one Hold/Swap/Withdraw appended per receipt, CAS on the revision AND on the
+>     decision count the player saw (`decision-count-stale`), and it must be an answer the pending Break offers.
+>   - **Settle:** the ordinary combat settlement consumes the record in its one CAS — the plan must be the sealed party (seal digest
+>     over battle id + encounter + defender + party + stances) with exactly the appended answers plus at most the final one, and the
+>     record closes (`open: null`; carriers are replaced, never deleted). Verification re-reads the closed record.
+>   - **No escape:** while a record is open, any other settlement (Auto included) refuses, the app refuses another fight, and Breed
+>     refuses a held parent before any draw (`open-encounter:parent-in-command-fight`). A corrupt/foreign/forged carrier reads as
+>     PROTECTED, never as "no fight". Withdraw is always offered.
+>   - **Withdraw** settles like a fight not won (a Break has no winner: a draw; after a fallen fighter, the defender's leg). Auto never
+>     withdraws. Rewards are identical to Auto for the same outcome (Command earns nothing extra).
+>   - **Reload:** `simulateCombatOpenEncounterV1(record)` re-runs `runEncounterV1(sealed, decisions)` and lands on the same Break.
+>   - **The explorer fights Guardians in Auto only:** the settlement binds the explorer's exact health, which moves between Breaks, so a
+>     sealed explorer could strand the record (even Withdraw settles through that binding). `openArc6CommandEncounterV1` refuses it.
 
 The current landed-Surface card implements the minimum honest combat decision: select the explorer,
 one eligible ordinary owned-fauna champion or one live captured Guardian/Titan after reading the exact defender, abilities, deterministic

@@ -29,6 +29,10 @@ import {
   arc5BreedSpeciesPairXpKeyV1,
 } from '@cf/domain-acquisition/breed-internal';
 import { createSessionRNG, DOMAINS } from '@cf/domain-sessionrng';
+import { projectGuardianPrimeEncounterV1 } from '@cf/domain-combatcore';
+import { projectWorldOpportunity } from '@cf/domain-opportunity';
+import { resolveCF1WorldAddress } from '@cf/scene';
+import { installCaptureHooks } from '@cf/domain-descriptors';
 import { MAX_UNLOCKED_ACHIEVEMENT_IDS } from '@cf/domain-progression';
 import {
   ARC4_OWNERSHIP_EXTENSION_TARGETS,
@@ -51,6 +55,8 @@ import {
   readF4Authority,
   readLegacyXpFirstsAuthority,
   readSaveV5,
+  COMBAT_OPEN_ENCOUNTER_NAMESPACE_V1,
+  deriveCombatOpenEncounterOpenV1,
   type ContentRegistry,
   type SaveStateV2,
   type StorageBackend,
@@ -228,6 +234,31 @@ function authorityExtensions(
   });
 }
 
+/** A REAL sealed open Command fight (the persistence owner's own derive), found by searching defenders until one pauses. */
+function withOpenFight(extensions: V5Extensions, holding: 'left' | 'other' | 'corrupt', leftId: CreatureInstanceId): V5Extensions {
+  if (holding === 'corrupt') {
+    return applyV5ExtensionWrites(extensions, [{ segment: 'player', namespace: COMBAT_OPEN_ENCOUNTER_NAMESPACE_V1, carrier: { version: 1, json: '{}' } }]).extensions;
+  }
+  installCaptureHooks();
+  const resolved = resolveCF1WorldAddress({ galaxy: { seed: 1594395733, x: -5501.81, y: -11753.64 },
+    star: { seed: 4077594722, x: -271.54, y: -67.36 }, planet: { seed: 488332735 } });
+  if (!resolved.ok) throw new Error('open fight world');
+  const opportunity = projectWorldOpportunity(resolved.address);
+  const creatureId = holding === 'left' ? leftId : ownershipContentId('creature', 'breed-action-bystander');
+  for (let seed = 900; seed < 1_400; seed++) {
+    const encounter = projectGuardianPrimeEncounterV1({ world: resolved.address, descriptor: { worldType: opportunity.source.planetType },
+      regionIndex: 0, faunaRoster: [{ speciesId: 'breed-open-fight-defender', genome: makeGenome(seed, 'fauna', 0.5) }],
+      claimedSignatureIds: [], conquered: false });
+    if (encounter === null) continue;
+    try {
+      const derived = deriveCombatOpenEncounterOpenV1({ draft: {} as SaveStateV2, extensions, receiptOrdinal: 0, battleId: `breed-open-${seed}`,
+        encounter, party: [{ champion: { kind: 'owned-fauna', creatureId, name: 'Held', genome: makeGenome(11, 'fauna', 0.45), legacyBredLineage: false }, stance: 'balanced' }] });
+      return applyV5ExtensionWrites(extensions, derived.extensionWrites!).extensions;
+    } catch { /* this defender never opens a Break */ }
+  }
+  throw new Error('no open-fight fixture');
+}
+
 interface RuntimeFixtureOptions extends OwnershipFixtureOptions {
   readonly sessionSeed?: number;
   readonly activePlayMs?: number;
@@ -238,6 +269,8 @@ interface RuntimeFixtureOptions extends OwnershipFixtureOptions {
   readonly xpFirsts?: readonly string[];
   readonly xpFirstClaims?: readonly string[];
   readonly xpCarrierWithoutBinding?: boolean;
+  /** §20 Command: seed an open Command fight holding the left parent ('left'), another creature ('other') or a corrupt carrier. */
+  readonly openFight?: 'left' | 'other' | 'corrupt';
 }
 
 async function runtimeFixture(options: RuntimeFixtureOptions = {}) {
@@ -252,6 +285,7 @@ async function runtimeFixture(options: RuntimeFixtureOptions = {}) {
       carrier: { version: 2, json: '{}' },
     }]).extensions
     : prepared.extensions;
+  if (options.openFight !== undefined) initialExtensions = withOpenFight(initialExtensions, options.openFight, ownership.leftId);
   let state: SaveStateV2 = {
     ...baseState(options.earnedStardust, options.unlocked),
     xpFirsts: [...(options.xpFirsts ?? [])],
@@ -788,6 +822,23 @@ describe('Arc 5 headless durable Breed + Recovery action', () => {
         .toBe(JSON.stringify(savedBefore));
       await fixture.runtime.release();
     }
+  });
+
+  it('§20 Command: a parent held by an open Command fight is refused before any draw; an unrelated open fight does not block', async () => {
+    for (const [holding, reason] of [['left', 'open-encounter:parent-in-command-fight'], ['corrupt', 'open-encounter:carrier-protected']] as const) {
+      const fixture = await runtimeFixture({ openFight: holding });
+      const savedBefore = await readSaveV5(fixture.backend, REGISTRY, NOW);
+      const outcome = await commitArc5BreedActionV1(actionInput(fixture));
+      expect(outcome).toMatchObject({ kind: 'refused', durability: 'none', detail: reason, transaction: { kind: 'pre-draw-refused', reason } });
+      expect(fixture.receiptCas()).toBe(0);
+      expect(await fixture.repository.revision()).toBe(0);
+      expect(JSON.stringify(await readSaveV5(fixture.backend, REGISTRY, NOW))).toBe(JSON.stringify(savedBefore));
+      await fixture.runtime.release();
+    }
+    // control: the same fixture with a fight holding a different creature breeds normally
+    const free = await runtimeFixture({ openFight: 'other' });
+    expect((await commitArc5BreedActionV1(actionInput(free))).kind).toBe('committed');
+    await free.runtime.release();
   });
 
   it('fails stale without retry, receipt, Recovery publication, or RNG advance', async () => {
