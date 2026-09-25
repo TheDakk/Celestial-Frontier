@@ -280,8 +280,10 @@ describe('Arc 6 player-live combat wiring', () => {
     ])).toBe(true);
   });
 
-  it('settles only the exact starter Charter while keeping unresolved reward policies explicit', () => {
-    expect(action).toContain('accepted weekly conquest Charter has no v2 weekly lifecycle owner');
+  it('settles starter and weekly conquest Charters while keeping unresolved reward policies explicit', () => {
+    expect(action).not.toContain('accepted weekly conquest Charter has no v2 weekly lifecycle owner');
+    expect(persistence).toContain("stageWeeklyCharterEventV1({ draft, event: { kind: 'conquest' }, activePlayMs: input.activePlayMs })");
+    expect(persistence).toContain("return mismatch('weekly-conquest-charter-mismatch')");
     expect(persistence).toContain("COMBAT_STARTER_CONQUEST_CHARTER_ID_V1 = 'st-conq'");
     expect(persistence).toContain('settleAcceptedStarterConquestCharter(draft)');
     const outcomeCopy = functionBody(

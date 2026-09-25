@@ -403,9 +403,6 @@ export function arc6CombatOpenPolicyReasonV1(
   state: SaveStateV2,
   opportunity: WorldOpportunitySnapshot,
 ): string | null {
-  if (state.chacc.includes('wk-conq')) {
-    return 'accepted weekly conquest Charter has no v2 weekly lifecycle owner';
-  }
   try {
     const equipped = Object.entries(state.equip)
       .filter((entry): entry is [string, string] => typeof entry[1] === 'string' && entry[1].length > 0)
