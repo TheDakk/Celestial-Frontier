@@ -489,7 +489,7 @@ describe('§20 party settlement (S2b step 1): one receipt for a Guardian party',
     expect(JSON.stringify(plan.transcript)).not.toBe(JSON.stringify(duel(champion, titan())));
   });
 
-  it('refuses duplicates, more than three, an unfinished Command fight and a withdrawal', () => {
+  it('refuses duplicates, more than three and an unfinished Command fight; a Command Withdraw settles as a fight not won', () => {
     const a = owned(11, { creatureId: 'dup' });
     expect(planCombatPartySettlementV1({ ...base(titan(), 'dup'), mode: 'auto', party: [{ champion: a, stance: 'balanced' }, { champion: a, stance: 'press' }] }))
       .toEqual({ status: 'refused', reason: 'input-invalid' });
@@ -502,7 +502,16 @@ describe('§20 party settlement (S2b step 1): one receipt for a Guardian party',
         party: party.map((m) => ({ name: m.champion.name, genome: (m.champion as unknown as { genome: never }).genome, stance: m.stance })) });
       if (probe.status !== 'paused') continue;
       expect(planCombatPartySettlementV1({ ...base(titan(), `open-${seed}`), mode: 'command', party })).toEqual({ status: 'refused', reason: 'input-invalid' });
-      expect(planCombatPartySettlementV1({ ...base(titan(), `wd-${seed}`), mode: 'command', party, decisions: ['withdraw'] })).toEqual({ status: 'refused', reason: 'input-invalid' });
+      /* §20 Command (step 4): Withdraw is always offered and settles — never as a win, never with more than a loss would give */
+      const withdrawn = planCombatPartySettlementV1({ ...base(titan(), `wd-${seed}`), mode: 'command', party, decisions: ['withdraw'] });
+      if (withdrawn.status !== 'planned') throw new Error('withdraw refused');
+      expect(withdrawn.outcome).not.toBe('champion-win');
+      expect(withdrawn.conquest.status).toBe('unchanged');
+      expect(withdrawn.rewards.stardust.amount).toBe(0);
+      expect(withdrawn.party!.decisions).toEqual(['withdraw']);
+      expect(withdrawn.party!.members[withdrawn.party!.decisiveIndex]!.legEnd).toBe('decisive');
+      // control: Auto can never withdraw — the same decision under Auto refuses
+      expect(planCombatPartySettlementV1({ ...base(titan(), `wd-auto-${seed}`), mode: 'auto', party, decisions: ['withdraw'] })).toEqual({ status: 'refused', reason: 'input-invalid' });
       return;
     }
     throw new Error('no Command fixture paused');

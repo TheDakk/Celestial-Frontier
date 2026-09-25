@@ -46,6 +46,14 @@ import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignatures
 import { freshExpeditionPayloadV1 } from './expedition-reset.js';
 import { TooltipOwnerV1 } from './tooltips.js';
 import {
+  FriendlyDuelController,
+  commitFriendlyDuelActionV1,
+  friendlyDuelResultCopyV1,
+  projectFriendlyDuelV1,
+  type FriendlyDuelReadModelV1,
+  type FriendlyDuelRequestV1,
+} from './friendly-duel.js';
+import {
   deviceAudioAccessibilityStorage,
   readAudioAccessibilityPrefsV1,
   writeAudioAccessibilityPrefsV1,
@@ -320,6 +328,7 @@ import {
   COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   PRIME_SIGNATURE_IDS_V1,
   PRIME_SIGNATURES_V1,
+  type EncounterDecisionV1,
   type EncounterStanceV1,
   battleStats,
   projectGuardianPrimeEncounterV1,
@@ -483,7 +492,12 @@ import {
 } from './f4-runtime-authority.js';
 import {
   arc6CombatOpenPolicyReasonV1,
+  arc6CommandAnswerFinishesV1,
   commitArc6CombatActionV1,
+  decideArc6CommandEncounterV1,
+  openArc6CommandEncounterV1,
+  projectArc6CommandBreakV1,
+  type Arc6CommandActionOutcomeV1,
   projectArc6CombatChampionAvailabilityV1,
   projectArc6CombatChampionRosterV1,
   type Arc6CombatActionOutcomeV1,
@@ -492,6 +506,7 @@ import {
 import {
   COMBAT_CARD_OUTCOME_SCHEMA,
   CombatCardController,
+  combatCardCommandBreakV1,
   projectCombatCardReadModelV1,
   type CombatCardActionOutcomeV1,
   type CombatCardActionRequestV1,
@@ -2235,8 +2250,8 @@ let currentArc6CombatProjection: Arc6CombatSurfaceProjection | null = null;
 let currentArc6ChampionId: string | null = null;
 /* §20 (Nick 2026-09-25) plan state for the current fight: a stance per slot (lead = 0) and the extra Guardian party slots (1, 2). Main
    owns it; the card renders from it and the challenge commits it. Reset when the fight's context changes. */
-let currentArc6Plan: { contextKey: string | null; stances: EncounterStanceV1[]; partyIds: (string | null)[] } = {
-  contextKey: null, stances: ['balanced', 'balanced', 'balanced'], partyIds: [null, null, null],
+let currentArc6Plan: { contextKey: string | null; stances: EncounterStanceV1[]; partyIds: (string | null)[]; mode: 'auto' | 'command' } = {
+  contextKey: null, stances: ['balanced', 'balanced', 'balanced'], partyIds: [null, null, null], mode: 'auto',
 };
 let currentArc6CardModel: CombatCardReadModelV1 | null = null;
 let lastArc6CombatOutcome: string | null = null;
@@ -2273,6 +2288,11 @@ const combatCardController = new CombatCardController({
     }
     if (request.kind === 'party-slot') {
       currentArc6Plan.partyIds[request.index] = request.championId;
+      refreshCombatCardState();
+      return;
+    }
+    if (request.kind === 'mode') {
+      currentArc6Plan.mode = request.mode;
       refreshCombatCardState();
       return;
     }
@@ -3923,6 +3943,7 @@ function fillCodexDetail(idx: number): void {
   const showRename = renameModel !== null
     && renameModel.availability !== 'non-fauna'
     && renameModel.availability !== 'fixture';
+  const duelModel = projectCurrentFriendlyDuel(row);
   const showScout = scoutModel !== null
     && scoutModel.surface.speciesId !== null
     && scoutModel.availability !== 'non-fauna'
@@ -3953,7 +3974,7 @@ function fillCodexDetail(idx: number): void {
   } catch {
     body = '<div class="empty">This record did not decode — the genome may predate the Compendium.</div>';
   }
-  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}</div>`);
+  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}${duelModel !== null ? '<section class="compendium-feed" data-friendly-duel-body aria-label="Friendly duel"></section>' : ''}</div>`);
   compendiumCreatureProgressionSurface.attach(
     document.querySelector<HTMLElement>('#codexpanel [data-sel="codex-detail"]')!,
   );
@@ -3992,6 +4013,10 @@ function fillCodexDetail(idx: number): void {
     compendiumBreedController.attach(
       document.querySelector<HTMLElement>('#codexpanel [data-arc5-breed-body]')!,
     );
+  }
+  if (duelModel !== null) {
+    friendlyDuelController.setState(duelModel);
+    friendlyDuelController.attach(document.querySelector<HTMLElement>('#codexpanel [data-friendly-duel-body]')!);
   }
   const portrait = document.querySelector<HTMLImageElement>('#codexpanel [data-sel="detail-portrait"]');
   if (portrait) {
@@ -9276,6 +9301,185 @@ async function fabricateEngineeringBatch(baseId: string, repeat: number): Promis
   })).outcome;
 }
 
+/* Friendly duel (v1.8.9 parity; §20 order item 2): the Compendium detail control, one receipt per duel, the credit decided at the
+   committed active-play clock (friendly-duel.ts). Publication copies only the duel's own fields (counters + the companion's Compendium
+   mirror row) and the committed ownership. */
+let lastFriendlyDuelOutcome: string | null = null;
+const friendlyDuelController = new FriendlyDuelController({ onAction: (request) => { void runFriendlyDuel(request); } });
+function projectCurrentFriendlyDuel(row: readonly [string, CodexRecord] | null): FriendlyDuelReadModelV1 | null {
+  const ownership = arc5OwnershipState, runtime = f4Runtime;
+  if (row === null || compendiumFixtureRows !== null || ownership?.mode !== 'current' || runtime === null
+    || arc5OwnershipProtection !== null || row[1].kind !== 'Fauna') return null;
+  try {
+    return projectFriendlyDuelV1({ ownershipV2: ownership, extensions: runtime.extensions,
+      speciesId: canonicalGenomeIdentityV1(row[1].g as never).speciesId, observedActivePlayMs: runtime.diagnostics().activePlayMs });
+  } catch {
+    return null;
+  }
+}
+async function runFriendlyDuel(request: FriendlyDuelRequestV1): Promise<void> {
+  const runtime = f4Runtime;
+  const parent = arc5OwnershipState;
+  const settleWith = (title: string, detail: string): void => { friendlyDuelController.settle({ title, detail }); };
+  if (!f4RuntimeMayMutate(runtime) || parent?.mode !== 'current' || arc5OwnershipProtection !== null || activePersist
+    || importWriteInFlight || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    lastFriendlyDuelOutcome = 'unavailable:write-authority';
+    settleWith('Duel unavailable.', 'Finish the current expedition save, then try again. Nothing changed.');
+    return;
+  }
+  const actionClaim = productActionCoordinator.tryClaim('companion.friendly-duel');
+  if (actionClaim === null) { lastFriendlyDuelOutcome = 'unavailable:product-action-pending'; settleWith('Duel unavailable.', 'Another expedition action is still settling.'); return; }
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  lastFriendlyDuelOutcome = 'pending';
+  let durable = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (!f4RuntimeMayMutate(runtime) || arc5OwnershipState !== parent) {
+      lastFriendlyDuelOutcome = 'refused:authority-changed';
+      settleWith('Duel unavailable.', 'Save authority changed. Nothing changed.');
+      return;
+    }
+    const outcome = await commitFriendlyDuelActionV1({ runtime, state: save, extensions: runtime.extensions, ownershipV2: parent,
+      creatureId: request.creatureId, code: request.code, codecNow: Date.now() });
+    if (outcome.kind === 'refused') {
+      lastFriendlyDuelOutcome = `refused:${outcome.detail}`;
+      if (outcome.convergence === 'read-only-reload') scheduleF4AuthorityConvergenceReload(runtime, `friendly duel ${outcome.detail}`);
+      settleWith(outcome.detail === 'code:invalid' ? 'That doesn’t look like a creature code.' : 'Duel unavailable.',
+        outcome.detail === 'code:invalid' ? 'Codes start with CFB-. Nothing changed.' : `Nothing changed (${outcome.detail}).`);
+      return;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    const loaded = readArc5OwnershipMigration(runtime.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    if (runtime.revision !== outcome.revision || loaded.kind !== 'loaded') {
+      lastFriendlyDuelOutcome = 'committed-publication-reload';
+      scheduleF4AuthorityConvergenceReload(runtime, 'friendly duel committed; publication fixed point');
+      return;
+    }
+    // publish exactly the duel's fields: the counters and the one companion's Compendium mirror row
+    const liveStats = save.stats as Record<string, number | undefined>, committedStats = outcome.state.stats as Record<string, number | undefined>;
+    liveStats.duels = committedStats.duels; liveStats.duelwins = committedStats.duelwins;
+    save.codex = save.codex.map(([id, entry]) => {
+      const committed = outcome.state.codex.find(([rowId]) => rowId === id)?.[1];
+      return committed !== undefined && committed.g?.xp !== entry.g?.xp ? [id, { ...entry, g: { ...entry.g, xp: committed.g.xp } }] : [id, entry];
+    });
+    arc5OwnershipState = loaded.state;
+    arc5OwnershipEvidence = loaded.evidence;
+    lastPersistenceOutcome = `friendly-duel-committed:${outcome.revision}`;
+    lastFriendlyDuelOutcome = `committed:${outcome.plan.winner ?? 'draw'}:${outcome.credit}:${outcome.xp}`;
+    const copy = friendlyDuelResultCopyV1(outcome);
+    settleWith(copy.title, copy.detail);
+    friendlyDuelController.setState(projectCurrentFriendlyDuel(currentCompendiumDetailRow()));
+    toast('⚔ Friendly duel', `${copy.title} ${copy.detail}`, true);
+  } catch (error) {
+    lastFriendlyDuelOutcome = `${durable ? 'committed-' : ''}fault`;
+    if (durable && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `friendly duel ${error instanceof Error ? error.message : String(error)}`);
+    else settleWith('Duel unavailable.', 'Nothing changed.');
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
+  }
+}
+/* §20 Command (Nick 2026-09-25): the Break loop. A Command challenge SEALS the fight (its own receipt, nothing else changes), each
+   non-final answer is appended by CAS on the count the card showed, and the answer that finishes the fight rides the ordinary
+   settlement (runArc6CombatCardAction with the answers), so a finished fight always settles in one receipt. A reload lands on the
+   same Break: the card re-simulates it from the durable record (refreshCombatCardState). */
+let lastArc6CommandOutcome: string | null = null;
+async function runArc6CommandCardAction(request: CombatCardActionRequestV1): Promise<void> {
+  const runtime = f4Runtime;
+  const projection = currentArc6CombatProjection;
+  const parent = arc5OwnershipState;
+  const done = (outcome: string, title: string | null, detail: string, convergence = false): void => {
+    lastArc6CommandOutcome = outcome;
+    if (convergence && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `Arc 6 Command ${outcome}`);
+    combatCardController.clearPending();
+    refreshCombatCardState();
+    if (title !== null) toast(title, detail, true);
+  };
+  if (!f4RuntimeMayMutate(runtime) || projection === null || parent?.mode !== 'current' || activePersist || importWriteInFlight
+    || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld || ecologyEpochBlocksActions()) {
+    done('unavailable:write-authority', 'Command unavailable', 'Finish the current expedition save, then try again. Nothing changed.');
+    return;
+  }
+  const view = projectArc6CommandBreakV1(runtime.extensions, projection.encounter);
+  let finalAnswers: readonly EncounterDecisionV1[] | null = null;
+  let leadId = request.kind === 'challenge' ? request.championId : '';
+  if (request.kind === 'break') {
+    if (view.kind !== 'pending' || view.battleId !== request.battleId || view.decisionsSoFar !== request.expectedDecisions) {
+      done('refused:break-changed', 'Command', 'That Break was already answered. The card shows the current one.');
+      return;
+    }
+    leadId = view.leadId;
+    if (request.decision === null) {
+      if (view.breakKind !== null) { done('refused:break-open', null, ''); return; }
+      finalAnswers = view.record.decisions;
+    } else if (arc6CommandAnswerFinishesV1(view.record, request.decision)) {
+      finalAnswers = [...view.record.decisions, request.decision];
+    }
+  } else if (request.kind !== 'challenge' || view.kind !== 'none') {
+    done('refused:command-already-open', 'Command', 'A Command fight is already waiting for your answer.');
+    return;
+  }
+  if (finalAnswers === null) {
+    const actionClaim = productActionCoordinator.tryClaim('arc6.combat-command');
+    if (actionClaim === null) { done('unavailable:product-action-pending', 'Command unavailable', 'Another expedition action is still settling.'); return; }
+    const actionBarrier = actionClaim.barrier;
+    productActionInFlight = true;
+    activePersist = actionBarrier;
+    let durable = false;
+    let step: Arc6CommandActionOutcomeV1;
+    try {
+      await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+      await settleF4Heartbeat();
+      const observedActivePlayMs = runtime.diagnostics().activePlayMs;
+      const current = projectCurrentArc6CombatSurface(null, observedActivePlayMs);
+      if (!f4RuntimeMayMutate(runtime) || arc5OwnershipState !== parent || current === null
+        || current.authorityKey !== projection.authorityKey || current.encounter.witness !== projection.encounter.witness) {
+        step = Object.freeze({ kind: 'refused', detail: 'authority-changed', convergence: 'none' });
+      } else if (request.kind === 'challenge') {
+        const cardModel = currentArc6CardModel;
+        const plan = cardModel !== null && cardModel.party[0]?.id === request.championId
+          ? cardModel.party.map((m) => Object.freeze({ championId: m.id, stance: m.stance })) : null;
+        step = await openArc6CommandEncounterV1({
+          runtime, state: save, extensions: runtime.extensions, encounter: current.encounter, opportunity: current.opportunity,
+          ownershipV2: parent, championId: request.championId, championRosterAuthorityKey: current.championRoster.authorityKey,
+          observedActivePlayMs: current.observedActivePlayMs, codecNow: Date.now(), ...(plan === null ? {} : { party: plan }),
+        });
+      } else {
+        step = await decideArc6CommandEncounterV1({
+          runtime, state: save, extensions: runtime.extensions, battleId: request.battleId,
+          expectedDecisions: request.expectedDecisions, decision: request.decision!, codecNow: Date.now(),
+        });
+      }
+      durable = step.kind === 'committed';
+      if (durable) f4LastCheckpointAt = performance.now();
+    } catch (error) {
+      step = Object.freeze({ kind: 'refused', detail: error instanceof Error ? error.message : String(error), convergence: 'read-only-reload' });
+    } finally {
+      productActionInFlight = false;
+      actionClaim.settle(durable);
+      if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+      if (activePersist === actionBarrier) activePersist = null;
+    }
+    if (step.kind === 'committed') {
+      done(`committed:${step.revision}:${step.record.decisions.length}`, null, '');
+      return;
+    }
+    if (step.kind === 'refused') {
+      done(`refused:${step.detail}`, 'Command unavailable', `Nothing changed (${step.detail}).`, step.convergence === 'read-only-reload');
+      return;
+    }
+    finalAnswers = [];   // no Break: the Command fight settles at once, with no answers
+  }
+  lastArc6CommandOutcome = `settling:${finalAnswers.length}`;
+  /* the card's own press latch stays set: the ordinary settlement below settles it with the verified outcome */
+  await runArc6CombatCardAction(Object.freeze({ kind: 'challenge', championId: leadId }), Object.freeze({ decisions: finalAnswers }));
+}
 const sideEl = document.createElement('div');
 sideEl.id = 'planetside';
 sideEl.className = 'glass';
@@ -16009,8 +16213,15 @@ function refreshCombatCardState(
           ? `Combat is preserved but cannot settle yet: ${policyReason}. No duel was started.`
           : null;
   if (currentArc6Plan.contextKey !== projection.contextKey) {
-    currentArc6Plan = { contextKey: projection.contextKey, stances: ['balanced', 'balanced', 'balanced'], partyIds: [null, null, null] };
+    currentArc6Plan = { contextKey: projection.contextKey, stances: ['balanced', 'balanced', 'balanced'], partyIds: [null, null, null], mode: 'auto' };
   }
+  /* §20 Command: an open Command fight is re-simulated from its durable record; on its own world the card shows the pending Break
+     (the lead is the sealed one), anywhere else every other fight waits for it */
+  const commandView = runtime === null ? null : projectArc6CommandBreakV1(runtime.extensions, projection.encounter);
+  if (commandView?.kind === 'pending') currentArc6ChampionId = commandView.leadId;
+  const commandReason = commandView?.kind === 'elsewhere'
+    ? `Your Command fight against ${commandView.defenderName} is waiting on another world. Answer it there first (Withdraw is always offered).`
+    : commandView?.kind === 'protected' ? 'Combat is unavailable while the open Command fight record is protected.' : null;
   const model = projectCombatCardReadModelV1({
     contextKey: projection.contextKey,
     encounter: projection.encounter,
@@ -16019,8 +16230,10 @@ function refreshCombatCardState(
     championRoster: projection.championRoster,
     observedActivePlayMs: projection.observedActivePlayMs,
     selectedChampionId: currentArc6ChampionId,
-    unavailableReason,
+    unavailableReason: unavailableReason ?? commandReason,
     plan: { stances: currentArc6Plan.stances, partyIds: currentArc6Plan.partyIds },
+    mode: currentArc6Plan.mode,
+    commandBreak: commandView === null ? null : combatCardCommandBreakV1(commandView),
   });
   if (model === null) {
     currentArc6CombatProjection = null;
@@ -16491,6 +16704,8 @@ function protectArc6CombatAfterDurability(
 
 async function commitCurrentArc6Combat(
   request: Extract<CombatCardActionRequestV1, { readonly kind: 'challenge' }>,
+  /** §20 Command: settle the sealed fight with these answers (the action reads the sealed party from the record). */
+  command: Readonly<{ decisions: readonly EncounterDecisionV1[] }> | null = null,
 ): Promise<Arc6CombatActionOutcomeV1> {
   const refused = (
     detail: string,
@@ -16582,6 +16797,7 @@ async function commitCurrentArc6Combat(
       codecNow: Date.now(),
       /* §20: the plan the card showed (lead + stances + Guardian party); a lone Balanced lead commits exactly as before */
       ...(challengePlan === null ? {} : { party: challengePlan }),
+      ...(command === null ? {} : { command }),
     });
     lastArc6CombatOutcome = `${attempt.kind}:${attempt.kind === 'refused'
       ? attempt.detail : attempt.convergence}`;
@@ -16772,10 +16988,19 @@ async function playCombatChronicleCue(
   }
 }
 
-async function runArc6CombatCardAction(request: CombatCardActionRequestV1): Promise<void> {
+async function runArc6CombatCardAction(
+  request: CombatCardActionRequestV1,
+  command: Readonly<{ decisions: readonly EncounterDecisionV1[] }> | null = null,
+): Promise<void> {
+  /* §20 Command: a Break answer, or a Command challenge, goes through the Break loop (which comes back here to settle) */
+  if (request.kind === 'break' || (request.kind === 'challenge' && command === null
+    && currentArc6Plan.mode === 'command' && currentArc6CardModel?.partyEnabled === true)) {
+    await runArc6CommandCardAction(request);
+    return;
+  }
   if (request.kind !== 'challenge') return;
   let outcome: Arc6CombatActionOutcomeV1;
-  try { outcome = await commitCurrentArc6Combat(request); }
+  try { outcome = await commitCurrentArc6Combat(request, command); }
   catch (error) {
     outcome = Object.freeze({
       kind: 'refused', durability: 'none', convergence: 'none',

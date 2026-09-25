@@ -8,6 +8,7 @@
 import {
   isCombatSettlementPlanV1,
   runEncounterV1,
+  encounterHasGuardianPhaseV1,
   type CombatSettlementPlanV1,
 } from '@cf/domain-combatcore';
 import { hashInt, mulberry32 } from '@cf/domain-rand';
@@ -234,7 +235,7 @@ function partyPreludeRows(settlement: CombatSettlementPlanV1): CombatChronicleRo
   const defender = settlement.encounter.defender;
   const result = runEncounterV1({
     mode: party.mode,
-    defender: { name: defender.name, genome: defender.battleGenome as never },
+    defender: { name: defender.name, genome: defender.battleGenome as never, phase: encounterHasGuardianPhaseV1(defender.kind) },
     party: party.members.map((member) => (member.champion.kind === 'player'
       ? { name: member.champion.name, genome: { seed: member.champion.genomeSeed }, stats: member.champion.stats as never, stance: member.stance }
       : { name: member.champion.name, genome: member.champion.genome as never, stance: member.stance })),
