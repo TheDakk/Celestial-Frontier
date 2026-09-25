@@ -50,6 +50,8 @@ export interface ClampedBound { readonly id: string; readonly measured: number; 
 export interface BodyCard {
   readonly amplitudeProfile?:import('./amplitude-profile.js').AmplitudeProfile;
   readonly kind: 'body-card';
+  /** Explicit observed life-stage habitat; species defaults never synthesize it. */
+  readonly habitat?:NonNullable<ResolvedAnatomyRecord['habitat']>;
   readonly anatomy?:AnatomyPresence;
   readonly projectionSigns?:Readonly<Record<string,number>>;
   readonly projectionScales?:Readonly<Record<string,number>>;
@@ -230,7 +232,7 @@ export function compileBodyCard(record: ResolvedAnatomyRecord, genome?: MotionGe
   const straight = Object.entries(slackBL).filter(([, v]) => v < LEG_SLACK_MIN_BL).map(([leg, v]) => `${leg} ${(v * 100).toFixed(1)}%`);
   if (straight.length) notes.push(`leg slack under ${LEG_SLACK_MIN_BL * 100}% of body length (near-collinear rest chain; a planted paw cannot absorb lifts): ${straight.join(', ')}`);
   return {
-    kind: 'body-card', amplitudeProfile:compileAmplitudeProfile(parts,scale.length,jointMaterials,poseProjectionScales(record)), ...(record.anatomy?{anatomy:structuredClone(record.anatomy)}:{}), projectionSigns:poseProjectionSigns(record), projectionScales:poseProjectionScales(record), identity: record.identity, recipeHash: record.recipeHash ?? null,
+    kind: 'body-card', ...(record.habitat?{habitat:Object.freeze({...record.habitat})}:{}), amplitudeProfile:compileAmplitudeProfile(parts,scale.length,jointMaterials,poseProjectionScales(record)), ...(record.anatomy?{anatomy:structuredClone(record.anatomy)}:{}), projectionSigns:poseProjectionSigns(record), projectionScales:poseProjectionScales(record), identity: record.identity, recipeHash: record.recipeHash ?? null,
     template: { id: resolved.id, version: resolved.version, clipSetId: resolved.clipSetId },
     massClass: { name: massName, multiplier: MASS_CLASS[massName] },
     locomotion: { loco: locoName, gait, templateGait }, realm, materials, jointMaterials:Object.freeze(jointMaterials), parts, secondaryParts, weapons, luminous,
