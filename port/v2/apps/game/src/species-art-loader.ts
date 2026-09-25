@@ -2,7 +2,7 @@
    producer. The broker is cheap and safe at boot; the sealed Worker graph is
    constructed only after a real owner exists AND the app explicitly activates
    background work after its first serviced turn. */
-import { PaintedCardSource, paintedPortraitRequest, paintedThumbLease } from './morph/painted-card-source.js';
+import { PaintedCardSource, paintedPortraitRequest, paintedThumbLease, type PaintedCardOwnershipV1 } from './morph/painted-card-source.js';
 import { speciesVisualKey } from '@cf/art/species-identity';
 import {
   SpeciesArtBroker,
@@ -702,12 +702,17 @@ export class SpeciesArtLoader {
     }) : null;
   }
 
+  /** The painted card path's ownership (a SIBLING of artDiagnostics: never merged into the broker's inventory); null when unused. */
+  paintedDiagnostics(): PaintedCardOwnershipV1 | null { return this.paintedCards && this.paintedThumbs0 + this.paintedPortraits0 > 0 ? this.paintedCards.ownership() : null; }
+
   activate(): void { this.broker.activate(); }
 
   leaseThumb(genome: Record<string, unknown>): ThumbLease {
     this.requested = true;
     const painted = this.paintedCards?.card(genome, 'thumb');
-    if (painted) { this.paintedThumbs0++; return paintedThumbLease(speciesVisualKey(genome), painted, (a): Thumb132 => ({ key: a.key as SpeciesVisualKey, url: a.url, width: 132, height: 132, encodedBytes: a.encodedBytes, decodedPixels: a.decodedPixels })); }
+    if (painted) { this.paintedThumbs0++; const key = speciesVisualKey(genome), close = this.paintedCards!.openLease('thumb', key);
+      const lease = paintedThumbLease(key, painted, (a): Thumb132 => ({ key: a.key as SpeciesVisualKey, url: a.url, width: 132, height: 132, encodedBytes: a.encodedBytes, decodedPixels: a.decodedPixels }));
+      return { key: lease.key, get current() { return lease.current; }, subscribe: (l) => lease.subscribe(l), release: () => { lease.release(); close(); } } as ThumbLease; }
     return this.broker.leaseThumb(genome);
   }
 
@@ -718,13 +723,16 @@ export class SpeciesArtLoader {
   ): PortraitRequest {
     this.requested = true;
     const painted = this.paintedCards?.card(genome, 'portrait');
-    if (painted) { this.paintedPortraits0++; return paintedPortraitRequest(speciesVisualKey(genome), painted, (a): Portrait440 => ({ key: a.key as SpeciesVisualKey, url: a.url, width: 440, height: 440, encodedBytes: a.encodedBytes, decodedPixels: a.decodedPixels }), listener); }
+    if (painted) { this.paintedPortraits0++; const key = speciesVisualKey(genome), close = this.paintedCards!.openLease('portrait', key);
+      const req = paintedPortraitRequest(key, painted, (a): Portrait440 => ({ key: a.key as SpeciesVisualKey, url: a.url, width: 440, height: 440, encodedBytes: a.encodedBytes, decodedPixels: a.decodedPixels }), (asset, error) => { close(); listener(asset as Portrait440, error); });
+      return { key: req.key, get current() { return req.current; }, cancel: () => { req.cancel(); close(); } } as PortraitRequest; }
     return this.broker.requestPortrait(owner, genome, listener);
   }
 
   releaseUnownedCachedArt(
     options: SpeciesArtUnownedCacheReleaseOptions = {},
   ): SpeciesArtUnownedCacheReleaseV1 {
+    this.paintedCards?.releaseUnowned(); // the painted path's unleased cards go too (reported in paintedDiagnostics().totals)
     return this.broker.releaseUnownedCachedArt(options);
   }
 

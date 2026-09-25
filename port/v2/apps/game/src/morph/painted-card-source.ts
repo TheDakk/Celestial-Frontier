@@ -23,6 +23,13 @@ export interface PaintedCardSourceOptions { readonly assets: PaintedCardAssets; 
   readonly yieldToHost?: () => Promise<void>; }
 const macrotask = (): Promise<void> => new Promise((resolve) => { if (typeof MessageChannel === 'function') { const c = new MessageChannel(); c.port1.onmessage = () => { c.port1.close(); resolve(); }; c.port2.postMessage(0); } else setTimeout(resolve, 0); });
 export const CARD_SIZES = Object.freeze({ thumb: 132, portrait: 440 } as const);
+export interface PaintedCardOwnershipV1 {
+  readonly schema: 'cf-v2-painted-card-ownership/v1'; readonly leases: number;
+  readonly keys: Readonly<{ leasedThumbs: readonly string[]; leasedPortraits: readonly string[]; cachedThumbs: readonly string[]; cachedPortraits: readonly string[]; pendingThumbs: readonly string[]; pendingPortraits: readonly string[] }>;
+  readonly cacheEntries: number; readonly encodedBytes: number; readonly decodedPixels: number;
+  readonly residentArchetypes: Readonly<{ count: number; bytes: number; names: readonly string[] }>;
+  readonly totals: Readonly<{ renders: number; capEvictions: number; releasedUnowned: number }>;
+}
 /** Painted archetypes kept decoded at once (each: its ≤512² master + label map, ~2 MiB). */
 export const ARCHETYPE_RESIDENT_DEFAULT = 2;
 export type CardKind = keyof typeof CARD_SIZES;
@@ -30,7 +37,7 @@ interface Archetype { readonly master: CardMasterV1; readonly receipt: CardRecei
 export class PaintedCardSource {
   readonly #o: PaintedCardSourceOptions; readonly #byName: Map<string, PaintedCardArchetype>; readonly #archetypes = new Map<string, Promise<Archetype>>(); readonly #archetypeBytes = new Map<string, number>();
   readonly #cache: Record<CardKind, Map<string, PaintedCardAsset>> = { thumb: new Map(), portrait: new Map() }; readonly #pending = new Map<string, Promise<PaintedCardAsset>>();
-  #renders = 0; #tail: Promise<unknown> = Promise.resolve();
+  #renders = 0; #evicted = 0; #released = 0; readonly #leases = new Map<string, number>(); #tail: Promise<unknown> = Promise.resolve();
   /** One render per host task: each waits for the previous one and a yield, so the page can paint between cards. */
   #slot<T>(render: () => T | Promise<T>): Promise<T> { const run = this.#tail.then(() => (this.#o.yieldToHost ?? macrotask)()).then(render); this.#tail = run.then(() => undefined, () => undefined); return run; }
   readonly #names: ReadonlySet<string>;
@@ -72,6 +79,29 @@ export class PaintedCardSource {
     p = (async () => { try { const png = await decodePng(await this.#o.assets.bytes(dir + file)); return scaleMaskV1(maskAlphaOf(png.rgba, png.width, png.height), arch.master.width, arch.master.height); } catch { arch.masks.delete(name); return null; } })();
     arch.masks.set(name, p); return p;
   }
+  /** A live lease on a painted card (the loader opens one per thumb lease / portrait request, and closes it on release, settle or
+   * cancel): the ownership report counts these so a ready painted card is never an unowned image (I5 v2 diagnosis 2026-09-25). */
+  openLease(kind: CardKind, key: string): () => void {
+    const k = kind + ':' + key; this.#leases.set(k, (this.#leases.get(k) ?? 0) + 1); let open = true;
+    return () => { if (!open) return; open = false; const n = (this.#leases.get(k) ?? 1) - 1; if (n > 0) this.#leases.set(k, n); else this.#leases.delete(k); };
+  }
+  /** Drop every cached card no live lease holds (the loader's releaseUnownedCachedArt calls this); returns how many were dropped. */
+  releaseUnowned(): number {
+    let dropped = 0;
+    for (const kind of ['thumb', 'portrait'] as const) for (const key of [...this.#cache[kind].keys()]) if (!this.#leases.has(kind + ':' + key)) { this.#cache[kind].delete(key); dropped++; }
+    this.#released += dropped; return dropped;
+  }
+  /** The painted path's truthful ownership and resources — a sibling of the broker's diagnostics, never merged into it. */
+  ownership(): PaintedCardOwnershipV1 {
+    const keys = (kind: CardKind) => Object.freeze([...this.#cache[kind].keys()].sort()), leased = (kind: CardKind) => Object.freeze([...this.#leases.keys()].filter((k) => k.startsWith(kind + ':')).map((k) => k.slice(kind.length + 1)).sort());
+    const pending = (kind: CardKind) => Object.freeze([...this.#pending.keys()].filter((k) => k.startsWith(kind + ':')).map((k) => k.slice(kind.length + 1)).sort());
+    let encodedBytes = 0, decodedPixels = 0; for (const kind of ['thumb', 'portrait'] as const) for (const a of this.#cache[kind].values()) { encodedBytes += a.encodedBytes; decodedPixels += a.decodedPixels; }
+    let leases = 0; for (const n of this.#leases.values()) leases += n;
+    const r = this.residentArchetypes();
+    return Object.freeze({ schema: 'cf-v2-painted-card-ownership/v1' as const, leases, keys: Object.freeze({ leasedThumbs: leased('thumb'), leasedPortraits: leased('portrait'), cachedThumbs: keys('thumb'), cachedPortraits: keys('portrait'), pendingThumbs: pending('thumb'), pendingPortraits: pending('portrait') }),
+      cacheEntries: this.#cache.thumb.size + this.#cache.portrait.size, encodedBytes, decodedPixels, residentArchetypes: Object.freeze({ count: r.count, bytes: r.bytes, names: Object.freeze([...this.#archetypes.keys()]) }),
+      totals: Object.freeze({ renders: this.#renders, capEvictions: this.#evicted, releasedUnowned: this.#released }) });
+  }
   /** Render (or serve from cache) the individual's card of `kind` for this genome; null when no archetype matches. */
   card(genome: Readonly<Record<string, unknown>>, kind: CardKind): Promise<PaintedCardAsset> | null {
     const a = this.archetypeFor(genome); if (!a) return null;
@@ -81,7 +111,7 @@ export class PaintedCardSource {
       const params = morphParamsV1(genome as MorphGenome, arch.record.recipeHash, archetypeGenomeV1(arch.record as { genome?: MorphGenome; identity?: { speciesVisualKey?: string } })), marking = markingNameV1(params), markingMask = marking ? await this.#mask(a, arch, marking) : null;
       const size = CARD_SIZES[kind], rgba = renderCardIndividualV1({ master: arch.master, receipt: arch.receipt, card, params, size, markingMask }); this.#renders++;
       const png = await encodePng(rgba, size, size); const asset: PaintedCardAsset = Object.freeze({ key, url: pngDataUrl(png), width: size, height: size, encodedBytes: png.length, decodedPixels: size * size });
-      const cache = this.#cache[kind], cap = this.#o.cacheEntries?.[kind] ?? (kind === 'thumb' ? 64 : 8); cache.set(key, asset); while (cache.size > cap) { const oldest = cache.keys().next().value!; cache.delete(oldest); }
+      const cache = this.#cache[kind], cap = this.#o.cacheEntries?.[kind] ?? (kind === 'thumb' ? 64 : 8); cache.set(key, asset); while (cache.size > cap) { const oldest = cache.keys().next().value!; cache.delete(oldest); this.#evicted++; }
       return asset; }); })().finally(() => { this.#pending.delete(cacheKey); });
     this.#pending.set(cacheKey, p); return p;
   }
