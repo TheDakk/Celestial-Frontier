@@ -1,0 +1,1 @@
+Historical fit-03 mask output snapshot. Original helper ran at parent packet root; its original path base remains the parent, not this archive directory. Exact bytes preserved; current mask outputs are regenerated for fit-04.

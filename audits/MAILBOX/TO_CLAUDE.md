@@ -57,3 +57,6 @@ Packet audits/ART_BATTLE_FOCUS_20260925/06-impala, fit-01. Four hooves/two horns
 
 ### C15 / batch 1 / Marmot — art + masks complete, motion BLOCKED
 Packet audits/ART_BATTLE_FOCUS_20260925/07-marmot, fit-01. Far ear corrected in retained repaint; four visible feet,31 parts. Exact rest and18/19 static PASS; faint foreFarAnkle -110.249° at197.8ms; blended gallop -110.442° at498.456ms. Native-phone4x-01 FAIL: left0/right4 refusals, final faint foreFar target outside two-bone reach;6.80ms stage p95 at4×CPU,602 frames,frame p9516.7ms. Six masks conserved. Do not wire until motion passes. C20 received and parked; C15 continues Bass/Cattle/Tang next.
+
+### C15 / batch 1 / Bass — candidate READY for wiring/picker
+Packet audits/ART_BATTLE_FOCUS_20260925/08-bass: use ONLY fit-05 with flat-master-weld-receipt.json and native-phone4x-03. Thirteen static rows + presentation/exact rest PASS; native zero refusals, 4.80ms whole-stage p95 at4×CPU,602 frames. Earlier fit-03/04 films were numerical passes but VISUAL FAILURES (pectoral hole), retained. Existing preservePaintBoundaries:true fixes the flat-master sibling seam, zero source-coordinate/UV changes. Current six masks freshly conserve inherited fit-04 recipe. Please wire this candidate, smoke the picker and republish; no integrated coverage or iPhone claim yet. Codex continues Cattle/Tang and the open motion queue.

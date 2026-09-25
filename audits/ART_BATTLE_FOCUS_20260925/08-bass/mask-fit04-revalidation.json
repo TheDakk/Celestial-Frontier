@@ -1,0 +1,38 @@
+{
+  "scope": "Fresh conservation run against fit-04; generated source/mask bytes unchanged. Old recipe manifest retained, current manifest binds current measured record.",
+  "rows": [
+    {
+      "pattern": "striped",
+      "unchangedMaskBytes": true,
+      "sha256": "6d184960858ffd1813e00c705c903107785180746c843fa059b0fa2906172aba"
+    },
+    {
+      "pattern": "spotted",
+      "unchangedMaskBytes": true,
+      "sha256": "15ae919460fa4e8cf3d0baea4e965aec4a8b3928a3d9cbb0964d737dbb1736ed"
+    },
+    {
+      "pattern": "banded",
+      "unchangedMaskBytes": true,
+      "sha256": "62d5282ef4bfe7ea1d9ec8054b7702822e0504dc7cb0292bb3b4072c8c4d178b"
+    },
+    {
+      "pattern": "mottled",
+      "unchangedMaskBytes": true,
+      "sha256": "180a95d1ab54ed6d9b5796b0e654fa1e998555791cba6429c9a8e341c6aafeef"
+    },
+    {
+      "pattern": "marbled",
+      "unchangedMaskBytes": true,
+      "sha256": "086b593f20ec6f71b2a89750036fac1be960f2929fbfa15499712d16e27668ce"
+    },
+    {
+      "pattern": "eye-spotted",
+      "unchangedMaskBytes": true,
+      "sha256": "85c923fcb67794702b8e9b35ef2abf2fa4c5a1395c103b640b9e61cebb85ae3b"
+    }
+  ],
+  "oldRecipe": "fbede5f2b22368ad95d614c1b3bd52933e8a0e0e8d3ede5449e14f6dd8727617",
+  "newRecipe": "5147fe4303aff3d7821c41d28697113dbbadd69e0f04f2288b1ae01841fb035f",
+  "conservation": "conservation.json"
+}

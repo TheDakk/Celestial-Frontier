@@ -1,0 +1,8 @@
+{
+  "status": "VISUAL_FAIL",
+  "finding": "Background-visible hole above near pectoral during return and approach; no rig refusals does not imply complete painted surface",
+  "stills": [
+    "turn3-hit-return-end.png",
+    "approach-50.png"
+  ]
+}
