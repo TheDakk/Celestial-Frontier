@@ -1,0 +1,24 @@
+node:internal/modules/cjs/loader:1591
+  const err = new Error(message);
+              ^
+
+Error: Cannot find module 'pngjs'
+Require stack:
+- /private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-body-study-cS2wG8/run.mjs
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1591:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1145:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1169:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1196:12)
+    at Module._load (node:internal/modules/cjs/loader:1368:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.require (node:internal/modules/cjs/loader:1701:12)
+    at require (node:internal/modules/helpers:316:16)
+    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-body-study-cS2wG8/run.mjs:22:41
+    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-body-study-cS2wG8/run.mjs:9:23 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-body-study-cS2wG8/run.mjs'
+  ]
+}
+
+Node.js v26.9.0
