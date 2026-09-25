@@ -3,6 +3,7 @@
  * evaluates it at any millisecond with the frozen easing family. No clock, no
  * randomness beyond the seeded idle period, no renderer. */
 import { DEG, type Ease, type MotionAction } from './actions.js';
+import {groundedBirdAction} from './grounded-bird.js';
 import {faintStanceEnvelope,applyStanceEnvelope,type StanceEnvelope} from './stance-envelope.js';
 import {stationaryContactEnvelope,type ContactStanceEnvelope} from './contact-envelope.js';
 import { actionsFor, MELEE_ALIAS, templateMelees } from './family-actions.js';
@@ -85,7 +86,10 @@ export function buildTimeline(card: BodyCard, actionId: string, seed: number): M
   const resolved = resolveActionId(card, actionId);
   const action: MotionAction | undefined = actionsFor(card.template.id,card.anatomy)?.[resolved.id];
   if (!action) throw new Error(`motion: ${card.template.id} has no action "${resolved.id}"`);
-  return buildActionTimeline(card,action,seed,resolved.note?[...card.notes,resolved.note]:card.notes);
+  const notes=resolved.note?[...card.notes,resolved.note]:card.notes;
+  const base=buildActionTimeline(card,action,seed,notes);
+  const selected=groundedBirdAction(card,action,base,sampleTimeline,a=>buildActionTimeline(card,a,seed,notes));
+  return selected.action===action?base:buildActionTimeline(card,selected.action,seed,[...notes,selected.note!]);
 }
 /** Shared constructor for ordinary playback and reviewed editor overlays. */
 export function buildActionTimeline(card:BodyCard,action:MotionAction,seed:number,notesIn:readonly string[]=card.notes):MotionTimeline {

@@ -1,0 +1,132 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/15-goose/fit-02",
+  "sourceRecordSha256": "01b649a3999f9ce27d7dc05050711db5a5e8006eafc1b22a1065c67f1700b5a0",
+  "sourceBindingSha256": "3414cd365559e0cfbd38eefc8e4a1946ced9369a928ac9ffd74bf8ae2eae6b4a",
+  "sourceAtlasSha256": "d97cb07ab477784d24779e13b10bc5a5fadb62beefff35882d9befe91c7c12ea",
+  "helperSha256": "959dc01a6f721f15a1b1ca20dda4f52a1cf7f4380e77ce320ad9e96147d4edaa",
+  "author": {
+    "author": "Codex",
+    "pairs": [
+      [
+        "body",
+        "near-wing-shoulder"
+      ],
+      [
+        "body",
+        "far-wing-shoulder"
+      ],
+      [
+        "far-wing-shoulder",
+        "neck-lower"
+      ],
+      [
+        "near-wing-shoulder",
+        "neck-lower"
+      ]
+    ],
+    "reason": "The four proximal shoulder/body/neck feather junctions are connected paint in this single master. Native impact shows small openings here. Distal wing overlap edges, near/far wings and legs remain independent. This declaration is authored from the retained master and film, not inferred from the excluded-adjacency list."
+  },
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "legNearFoot",
+      "legFarFoot",
+      "legNearAnkle",
+      "legFarAnkle",
+      "legNearKnee",
+      "legFarKnee",
+      "beak",
+      "head",
+      "neck1",
+      "neck0",
+      "wingNearRoot",
+      "wingNearTip",
+      "wingFarRoot",
+      "wingFarTip",
+      "tailFan",
+      "chest"
+    ],
+    "contactEndpoints": [
+      "legFarAnkle",
+      "legNearAnkle"
+    ],
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "near-wing-shoulder"
+      ],
+      [
+        "body",
+        "far-wing-shoulder"
+      ],
+      [
+        "far-wing-shoulder",
+        "neck-lower"
+      ],
+      [
+        "near-wing-shoulder",
+        "neck-lower"
+      ]
+    ]
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "legFarAnkle",
+        "part": "far-shin",
+        "vertex": 17,
+        "distancePx": 9.219544457292953,
+        "supports": [
+          69
+        ]
+      },
+      {
+        "joint": "legNearAnkle",
+        "part": "near-shin",
+        "vertex": 32,
+        "distancePx": 11.661903789690609,
+        "supports": [
+          10,
+          2
+        ]
+      }
+    ],
+    "sourceBindingHash": "5ebf7952163dddc722ad744b07794585d125168e194a06e48eed8755ce0708e7",
+    "sourceVertices": 1893,
+    "vertices": 2260,
+    "sharedSupports": 380,
+    "pins": 1550,
+    "independentSurfaceParts": 17,
+    "sourceJoins": 15,
+    "excludedOverlaps": 17,
+    "observedExcludedBoundaries": 17,
+    "weldedExcludedBoundaries": 4,
+    "independentExcludedBoundaries": 13,
+    "preservePaintBoundaries": false,
+    "paintBoundaryPairs": [
+      [
+        "body",
+        "near-wing-shoulder"
+      ],
+      [
+        "body",
+        "far-wing-shoulder"
+      ],
+      [
+        "far-wing-shoulder",
+        "neck-lower"
+      ],
+      [
+        "near-wing-shoulder",
+        "neck-lower"
+      ]
+    ],
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "e3ddc0b37d13e12a8527dcdf18c3464abc2e00aade24765cbaf266729ecb9e7b",
+  "scope": "New unadmitted fit, explicit source paint continuity; source pixels and solver unchanged. Inherited receipts remain historical; this receipt owns the new split."
+}
