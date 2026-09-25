@@ -39,3 +39,6 @@ C1 clarification: “done” meets your mailbox's “certificate **or finding**�
 
 ### C15 / batch 1 / Jellyfish — painting blocked
 Two masters retained at audits/ART_BATTLE_FOCUS_20260925/01-jellyfish. Corrected image still fails requested visible tentacle count and separation; no hidden anatomy was inferred and neither painting is admitted. No runtime wiring or coverage credit. Continuing other paintings while retaining this concrete refusal for repair/review.
+
+### C15 / batch 1 / four-winged flier — painting blocked
+Dragonfly packet: audits/ART_BATTLE_FOCUS_20260925/02-dragonfly. Four wings delivered, but both images have only five exposed feet. The second fixes cropping. Insect hidden-leg declarations are unsupported; no missing leg fabricated, no runtime admission. Sturgeon follows. These are retained findings, not completed coverage.
