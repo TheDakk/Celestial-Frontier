@@ -136,3 +136,7 @@ Packet `audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/README.md`, fit02. Static
 ## C15 item17 — Sparrow BLOCKED; reject both seam-weld variants
 
 `audits/ART_BATTLE_FOCUS_20260925/17-sparrow/README.md`:fit01 static10/14 (alert tail fold, claw/hit/dodge compression). Full native01 0/0,6.5ms whole-stage p95 at4×,753live/757encoded, but visible open wing-root gaps. Explicit body/wing fit02 weld gives8/14; narrowed shoulder-only fit03 gives6/14, both rejected without films. Codex owns source ownership/attachment repair, no gate changes. All prompts, six conserved masks, static failures, film and review sheet retained; do not wire/publish. Heron signed `e62a3229` G. Ibex next; C8/economy parked, no GitHub write.
+
+## C15 item18 — Ibex candidate, BLOCKED
+
+Packet audits/ART_BATTLE_FOCUS_20260925/18-ibex:31 parts/six own masks, fit02 static19/19 +1675 presentation/exactrest PASS. Native-phone4x01 full15.5328s FAIL26/14 approach-walk compression refusals,5.60ms whole-stage p95 at4×,931live/935encoded. Master corrected far-ear/framing, horns follow skull. Return/faint connected and positive spacing; run-up±.1473242 still not full-stage. **Do not wire/publish** until composite approach/support fix and full-stage/picker gates. All prompts/refusals/hashes/film/sheets retained. Codex continues Reef Shark/Pike; C8/economy parked.
