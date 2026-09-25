@@ -31,9 +31,11 @@ import {
   type OwnershipStateV2,
 } from '../src/model-v2.js';
 import { sha256Hex } from '../src/canonical.js';
+import { COMPANION_FEED_POLICY_V2 } from '../src/companion-care.js';
+/** Feed policy v2 (D13): the taste decides the gain (loved +2, +3 at flora tier ≥ 4; neutral +1; disliked 0). */
+const policyGain = (t: { preference: 'loved' | 'neutral' | 'disliked'; floraTier: number }): number => { const r = COMPANION_FEED_POLICY_V2[t.preference]; return t.floraTier >= r.rareTier ? r.fedRare : r.fed; };
 import {
   ARC5_FEED_ACTION_KIND_V1,
-  ARC5_FEED_INCREMENT_V1,
   preflightArc5FeedV1,
   settleArc5FeedV1,
 } from '../src/feed.js';
@@ -175,15 +177,14 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     const parentSource = ownershipSourceStateV1(f.state);
     const before = f.state.creatures.find((row) => row.creatureId === f.leftId)!;
     const twinBefore = f.state.creatures.find((row) => row.creatureId === f.twinId)!;
-    const settlement = settleArc5FeedV1(ready(f), 9);
+    const pre = ready(f), settlement = settleArc5FeedV1(pre, 9);
 
     expect(settlement.successor.revision).toBe(f.state.revision + 1);
     expect(ownershipSourceStateV1(settlement.successor)).toBe(parentSource);
     expect(settlement.creatureBefore).toBe(before);
     expect(settlement.creatureAfter).toMatchObject({
       creatureId: f.leftId,
-      fed: 20,
-      hurt: before.hurt,
+      fed: 19 + policyGain(pre.taste),
       assignment: null,
     });
     expect(settlement.successor.creatures.find((row) => row.creatureId === f.twinId))
@@ -225,7 +226,7 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     expect(left.witness).toBe(right.witness);
     expect(left.receiptEvidence).toEqual(right.receiptEvidence);
     expect(ownershipStateDigestV2(left.successor)).toBe(ownershipStateDigestV2(right.successor));
-    expect(left.preflight.fedAfter - left.preflight.fedBefore).toBe(ARC5_FEED_INCREMENT_V1);
+    expect(left.preflight.fedAfter - left.preflight.fedBefore).toBe(policyGain(left.preflight.taste));
   });
 
   it('preserves one-time bred-child inheritance while later feeding targets only that child', () => {
@@ -269,7 +270,7 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     });
     if (preflight.kind !== 'ready') throw new Error(preflight.reason);
     const fed = settleArc5FeedV1(preflight.preflight, 41);
-    expect(fed.creatureAfter.fed).toBe(16);
+    expect(fed.creatureAfter.fed).toBe(15 + policyGain(preflight.preflight.taste));
     expect(fed.successor.creatures.find((row) => row.creatureId === f.leftId)?.fed).toBe(80);
     expect(fed.successor.creatures.find((row) => row.creatureId === f.rightId)?.fed).toBe(30);
   });
@@ -350,5 +351,25 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
   it('contains no ambient entropy, clock, or mutable-global dependency', () => {
     const source = readFileSync(new URL('../src/feed.ts', import.meta.url), 'utf8');
     expect(source).not.toMatch(/Math\.random|Date\.|performance\.|globalThis|window\.|document\./u);
+  });
+
+  it('D13 Feed policy v2: a meal mends by taste, pays first-time XP once and stamps its bond memories with the committed active-play time; a repeat pays nothing', () => {
+    const f = fixture();
+    const before = f.state.creatures.find((row) => row.creatureId === f.leftId)!;
+    const pre = ready(f), first = settleArc5FeedV1(pre, 9, 42_000);
+    const mend = COMPANION_FEED_POLICY_V2[pre.taste.preference].mend;
+    expect(first.creatureAfter.hurt).toBeCloseTo(Math.max(0, (before.hurt ?? 0) - mend), 6);
+    expect(first.creatureAfter.xp).toBe((before.xp ?? 0) + 3); // +1 first meal, +2 first taste of this flavour
+    expect(first.creatureAfter.bond?.memories.map((m) => [m.id, m.atActivePlayMs])).toEqual([['meal:first', 42_000], [`taste:${pre.taste.flavour}`, 42_000]]);
+    expect(first.witness).toContain('"activePlayMs":42000');
+    // the same flavour again: no XP, no new memory, bond unchanged
+    const again = preflightArc5FeedV1(first.successor, { creatureId: f.leftId, foodLotId: f.floraLotId });
+    if (again.kind !== 'ready') throw new Error(again.reason);
+    const second = settleArc5FeedV1(again.preflight, 10, 99_000);
+    expect(second.creatureAfter.xp).toBe(first.creatureAfter.xp);
+    expect(second.creatureAfter.bond).toEqual(first.creatureAfter.bond);
+    // control: a companion AWAY on a mission is still refused
+    const away = fixture({ assignment: { kind: 'mission', missionId: 'm-1' } });
+    expect(preflightArc5FeedV1(away.state, { creatureId: away.leftId, foodLotId: away.floraLotId })).toEqual({ kind: 'refused', reason: 'creature-assigned' });
   });
 });

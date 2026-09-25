@@ -43,6 +43,8 @@ export interface Arc5FeedActionInputV1 {
   readonly creatureId: CreatureInstanceId;
   readonly foodLotId: SpecimenLotId;
   readonly codecNow: number;
+  /** D13: the current active-play clock, so a finished Rest no longer blocks the meal (absent = the stored assignment). */
+  readonly activePlayMs?: number;
 }
 
 export type Arc5FeedActionRefusalDetailV1 =
@@ -241,7 +243,7 @@ export async function commitArc5FeedActionV1(
   const preflight = preflightArc5FeedV1(captured.ownershipV2, {
     creatureId: captured.creatureId,
     foodLotId: captured.foodLotId,
-  });
+  }, typeof input.activePlayMs === 'number' ? input.activePlayMs : undefined);
   if (preflight.kind !== 'ready') {
     return Object.freeze({
       kind: 'refused',
@@ -265,8 +267,8 @@ export async function commitArc5FeedActionV1(
       operation: ARC5_FEED_ACTION_KIND_V1,
       receiptKind: ARC5_FEED_RECEIPT_KIND_V1,
       codecNow: captured.codecNow,
-      derive: ({ receiptOrdinal, draft, extensions }) => {
-        const settlement = settleArc5FeedV1(preflight.preflight, receiptOrdinal);
+      derive: ({ receiptOrdinal, draft, extensions, activePlayMs }) => {
+        const settlement = settleArc5FeedV1(preflight.preflight, receiptOrdinal, activePlayMs);
         const prepared = prepareArc5OwnershipV2Successor({
           baseExtensions: extensions,
           parent: captured.ownershipV2,
