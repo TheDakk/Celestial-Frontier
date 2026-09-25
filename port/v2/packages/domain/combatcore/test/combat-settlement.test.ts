@@ -3,6 +3,8 @@ import { installCaptureHooks } from '@cf/domain-descriptors';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import { resolveCF1WorldAddress, type CanonicalCF1WorldAddress } from '@cf/scene';
 import {
+  planCombatPartySettlementV1,
+  runEncounterV1,
   COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   COMBAT_DEFEAT_WOUND_STEP_V1,
   COMBAT_SETTLEMENT_SCOPE_V1,
@@ -438,3 +440,72 @@ describe('conquest-loss XP correction', () => {
     });
   });
 });
+
+describe('§20 party settlement (S2b step 1): one receipt for a Guardian party', () => {
+  const base = (enc: GuardianPrimeEncounterV1, battleId: string) => ({
+    battleId, receiptOrdinal: 21, encounter: enc, worldTier: 4,
+    authority: { worldConquered: false, claimedPrimeSignatureIds: [] as PrimeSignatureIdV1[], lossXp: { kind: 'known-target', awardedTarget: 0 } as const, activePlayMs: 5_000 },
+  });
+  const titan = () => encounter({ world: 'flame', worldType: 'lava' });
+
+  it('PARITY: a lone Balanced Auto fighter plans byte-identically to the single-champion planner (no party block)', () => {
+    const champion = owned(7, { creatureId: 'solo' });
+    const party = planCombatPartySettlementV1({ ...base(titan(), 'solo'), mode: 'auto', party: [{ champion, stance: 'balanced' }] });
+    const single = planned({ champion, encounter: titan(), battleId: 'solo', receiptOrdinal: 21, activePlayMs: 5_000 });
+    if (party.status !== 'planned') throw new Error(party.reason);
+    expect(party.party).toBeUndefined();
+    expect(party.witness).toBe(single.witness);
+    expect(party.receipt).toEqual(single.receipt);
+  });
+
+  it('a three-member party: the decisive leg is the top-level plan; every other fighter who fought enters Recovery; the witness fits one receipt', () => {
+    let checked = 0;
+    for (let seed = 10; seed < 80 && checked < 3; seed++) {
+      const members = [owned(seed, { creatureId: `m${seed}a` }), owned(seed + 100, { creatureId: `m${seed}b` }), owned(seed + 200, { creatureId: `m${seed}c` })]
+        .map((champion) => ({ champion, stance: 'balanced' as const }));
+      const plan = planCombatPartySettlementV1({ ...base(titan(), `party-${seed}`), mode: 'auto', party: members });
+      if (plan.status !== 'planned' || !plan.party) continue;
+      const fought = plan.party.members.filter((m) => m.legEnd !== 'not-fought' && m.legEnd !== 'decisive');
+      if (fought.length === 0) continue;
+      checked++;
+      expect(plan.champion).toEqual(plan.party.members[plan.party.decisiveIndex]!.champion);
+      for (const m of fought) {
+        expect(m.injury).toMatchObject({ status: 'set-recovery', readyAtActivePlayMs: 5_000 + COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1 });
+        expect((m.injury as { hurtAfter: number }).hurtAfter).toBe((m.injury as { hurtBefore: number }).hurtBefore);   // §20: no extra wound
+      }
+      for (const m of plan.party.members.filter((row) => row.legEnd === 'not-fought')) expect(m.injury).toEqual({ status: 'none', reason: 'not-fought' });
+      expect(plan.witness.length).toBeLessThanOrEqual(4_096);
+      expect(plan.witness).toContain('"party"');
+    }
+    expect(checked).toBeGreaterThan(0);
+  });
+
+  it('a stanced single fight settles through the engine: its transcript is the engine leg, not runDuel', () => {
+    const champion = owned(9, { creatureId: 'stanced' });
+    const plan = planCombatPartySettlementV1({ ...base(titan(), 'stanced'), mode: 'auto', party: [{ champion, stance: 'guard' }] });
+    if (plan.status !== 'planned') throw new Error(plan.reason);
+    expect(plan.party?.members).toHaveLength(1);
+    expect(plan.party?.members[0]).toMatchObject({ legEnd: 'decisive', stance: 'guard', injury: null });
+    expect(JSON.stringify(plan.transcript)).not.toBe(JSON.stringify(duel(champion, titan())));
+  });
+
+  it('refuses duplicates, more than three, an unfinished Command fight and a withdrawal', () => {
+    const a = owned(11, { creatureId: 'dup' });
+    expect(planCombatPartySettlementV1({ ...base(titan(), 'dup'), mode: 'auto', party: [{ champion: a, stance: 'balanced' }, { champion: a, stance: 'press' }] }))
+      .toEqual({ status: 'refused', reason: 'input-invalid' });
+    const four = [1, 2, 3, 4].map((i) => ({ champion: owned(40 + i, { creatureId: `q${i}` }), stance: 'balanced' as const }));
+    expect(planCombatPartySettlementV1({ ...base(titan(), 'four'), mode: 'auto', party: four })).toEqual({ status: 'refused', reason: 'input-invalid' });
+    // find a Command fight that pauses, then prove an unanswered Break and a Withdraw both refuse
+    for (let seed = 60; seed < 160; seed++) {
+      const party = [owned(seed, { creatureId: `c${seed}a` }), owned(seed + 300, { creatureId: `c${seed}b` })].map((champion) => ({ champion, stance: 'balanced' as const }));
+      const probe = runEncounterV1({ mode: 'command', defender: { name: titan().defender.name, genome: titan().defender.battleGenome as never },
+        party: party.map((m) => ({ name: m.champion.name, genome: (m.champion as { genome: never }).genome, stance: m.stance })) });
+      if (probe.status !== 'paused') continue;
+      expect(planCombatPartySettlementV1({ ...base(titan(), `open-${seed}`), mode: 'command', party })).toEqual({ status: 'refused', reason: 'input-invalid' });
+      expect(planCombatPartySettlementV1({ ...base(titan(), `wd-${seed}`), mode: 'command', party, decisions: ['withdraw'] })).toEqual({ status: 'refused', reason: 'input-invalid' });
+      return;
+    }
+    throw new Error('no Command fixture paused');
+  });
+});
+
