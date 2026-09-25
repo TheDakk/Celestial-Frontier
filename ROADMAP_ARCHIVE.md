@@ -1,3 +1,37 @@
+## Archived 2026-09-25 (late, Claude) — the 'art + battle is Codex's one focus' handoff, superseded by the §20 combat handoff, verbatim
+
+### SESSION HANDOFF — September 25, 2026 (night) · ART + BATTLE IS CODEX'S ONE FOCUS; AUDIO ACCESSIBILITY; FOUR PROPOSALS AWAIT NICK
+Self-contained: either lane can resume from this block alone. Older handoffs are archived verbatim at the top of `ROADMAP_ARCHIVE.md`.
+
+**Where the work stands.** `anthropic/mac` carries both lanes: Codex's `0e3225b7` (override sentinel kept byte for byte), `45e0bd10` (87-bullet
+release inventory) and `cd2a7109` (Weekly Conquest) are merged. Signing uses the repo keychain key (`git-ssh-sign-cf`) and `origin` is HTTPS via
+`gh`. The lanes talk through the mailboxes (`audits/MAILBOX/TO_CODEX.md` here, `TO_CLAUDE.md` in `openai/mac`). Nick's queue is
+`audits/MAILBOX/DECISIONS.md`: D1/D5/D9 yes, D6 not yet, D8/D10/D11 defaults applied (no change), and **D12–D15 wait for his word** (the N1/N3/N4/N5
+proposals in `audits/PROPOSALS_20260925/`). The gate command, the same one Codex uses, is `node tools/check-profile.mjs --profile=develop`
+(from `port/v2`). **Its only red is I5** (`current-producer-authorities`, Codex's v2 epoch; C8). Codex fixed its three C18 reds in `a7f154f8`, and the total is 5,141 passing.
+
+**This batch (items -97…-101).**
+- **C15 priority reset (Nick): the art + battle vision is Codex's ONE focus** until generated coverage is ≥ 80% painted, no top-35 Earth
+  species is misleading, every rig passes the motion gates and the picker smoke, and the phone tier is green
+  (`audits/MAILBOX/C15_ART_BATTLE_FOCUS.md`).
+- **A3: Mono audio + Reduced intensity** in Settings, applied at the master of the one shared runtime. They are device preferences, never
+  the save (`AUDIO.md` top section).
+- **Feed fix:** Recovery never blocks a meal. Before, a recovered parent stayed unfeedable until it bred again (N3's finding).
+- **paintedArt diagnostics** now split bytes by card kind and count retained marking masks (Codex's C8 resume asks, mailbox C16).
+- **A2 and the two dormant events turned out to be decisions, not engineering:** D10 and D11, both keeping v1 (no change).
+
+**Next, by owner.**
+- **Nick:** answer D12–D15 in one line each. Play the dev URL on the iPhone (H1; D6 waits on it): `?battle2=1`, and `&duel=1` for a real
+  duel. The new Settings toggles are Mono audio and Reduced intensity.
+- **Codex:** C15 in order: paint + rig in batches of ten (jelly, four-winged flier, sturgeon, then the Earth ranking), mask sets, the 53
+  with no stand-in, motion quality, the Centipede kernel (C12), then review C13. C8 (the I5 epoch) resumes after that.
+- **Claude:**
+  - Wire each new painting into cards, stand-ins and the arena the day it lands, then republish the dev site
+    (`node tools/deploy-dev.mjs` from `port/v2`, out of the sandbox, on a clean signed head).
+  - A5 outcome tests (inventory: `audits/A5_OUTCOME_TESTS_20260925/INVENTORY.md`).
+  - Release bullets for A3 and the Feed fix, batched into one inventory update with Codex (its instruments pin the count).
+  - Engineering for D12–D15 once Nick answers. Unifying battle and Compendium voices is N5's Stage 0.
+
 ## Archived 2026-09-25 (night, Claude) — ROADMAP items -76 and older ("What Claude owes next"), aged out at the 400-line hygiene bound, verbatim
 
 -76. **Playtest package rebuilt on `23e5f4ce` (2026-09-24, day):** `port/v2/apps/game/smoke/dev-preview-23e5f4ce5ec9-20260924143808/`. `preview:selftest`,

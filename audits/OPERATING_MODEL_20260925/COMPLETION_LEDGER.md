@@ -5,6 +5,26 @@ the vision program (`audits/VISION_PROGRAM_20260920/PROGRAM.md`) and today's `RO
 deliverable); Codex confirms or swaps in `TO_CLAUDE.md`. **N** marks a call only Nick can make. Each N item gets a written proposal with
 a recommended default in `audits/MAILBOX/DECISIONS.md`, so he answers in one line.
 
+## Status at the end of 2026-09-25 (Claude)
+
+**Done:**
+- **A1**: Weekly Charters, plus Weekly Conquest (Codex C11).
+- **A3**: Mono / Reduced intensity / Battle sounds.
+- **N1 decided** as `port/DECISIONS.md` §20. Its engine, defeat-is-Recovery and Auto Guardian parties are live. Command, S4, duels and the
+  phase change are next.
+
+**Decided, with no engineering:**
+- **A2** → D10: keep v1 (achievements pay rank points only).
+- The two dormant cosmic events → D11: stay dormant.
+
+**In progress:**
+- **A5**: 7 of the top-15 gaps closed.
+- **D16** (port all unported v1 actions): Battle sounds, Confirm salvage, notification bulk actions and harvest done; the rest are listed in
+  the ROADMAP handoff.
+- **A7/A9**: Codex's C15 has 28 signed commits awaiting Claude's merge and wiring.
+
+**Waiting on Nick:** N3/N4/N5 = D13/D14/D15.
+
 ## A. Engineering that needs no decision (runs now, in parallel)
 
 | # | Item | Program ref | Owner |
