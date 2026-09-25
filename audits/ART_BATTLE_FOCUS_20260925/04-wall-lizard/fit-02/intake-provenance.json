@@ -1,0 +1,64 @@
+{
+  "schema": "cf.sprint-authored-intake/v1",
+  "status": "REFUSED",
+  "sourceHead": "3d1b493bb2cb4bafda4e8c64366a5e34d7d64dbf",
+  "helperSha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/master.png",
+      "sha256": "7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/authoring.json",
+      "sha256": "6f88bf33223d73e17dbff81e56ea93168f52913fce90b60f5fda8662fe1f3600"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/subject-source.json",
+      "sha256": "ccd978ba613eca27cd02eaa0666e91ca9ea11b9b339c63d65eecfef1e8ddebed"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25"
+    }
+  ],
+  "manualAuthoring": true,
+  "sourceLabelsReused": false,
+  "sourceLandmarksReused": false,
+  "hiddenInference": false,
+  "options": {
+    "boundaryStep": 24,
+    "interiorStep": 56,
+    "includeTopology": true,
+    "fixedJoints": [
+      "root"
+    ]
+  },
+  "nativeAcceptance": false,
+  "maskMode": "authored polygons rasterized onto unchanged delivered positive alpha; cf.painter-part-intake/v1",
+  "unchangedInputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/master.png",
+      "sha256": "7490cbe04da1e945b33dd2fcb693454e2e0c07a0347df31e2ddcede20d8eedff",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/authoring.json",
+      "sha256": "6f88bf33223d73e17dbff81e56ea93168f52913fce90b60f5fda8662fe1f3600",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/subject-source.json",
+      "sha256": "ccd978ba613eca27cd02eaa0666e91ca9ea11b9b339c63d65eecfef1e8ddebed",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/presence.json",
+      "sha256": "3d3f55021f7d0a8ca6ff62a059e7e91087560172e25815b42aa410dbd2775f25",
+      "unchanged": true
+    }
+  ],
+  "refusal": {
+    "stage": "observed-split",
+    "error": "Error: Observed surfaces: contact conflicts with fixed owner\n    at need (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs:6:36)\n    at splitObservedSurfaces (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/split-observed-surfaces.mjs:68:68)\n    at async file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/creature-animation/intake-authored.mjs:121:15"
+  }
+}
