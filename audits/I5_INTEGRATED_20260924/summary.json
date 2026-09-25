@@ -1,0 +1,189 @@
+{
+  "runId": "20260924-i5-integrated-fb82c32cac67",
+  "status": "instrument-fail",
+  "startedAt": "2026-09-25T00:55:54.315Z",
+  "endedAt": "2026-09-25T00:55:58.347Z",
+  "durationMs": 4032,
+  "source": {
+    "begin": {
+      "commit": "fb82c32cac67f8d980fe1752ae92d9a1f0eb729c",
+      "branch": "detached",
+      "state": "committed",
+      "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+    },
+    "end": {
+      "commit": "fb82c32cac67f8d980fe1752ae92d9a1f0eb729c",
+      "branch": "detached",
+      "state": "committed",
+      "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+    }
+  },
+  "policy": {
+    "attemptCount": 1,
+    "automaticRetries": 0,
+    "commandTimeoutMs": 2000,
+    "targetTimeoutMs": 2000,
+    "heartbeatTimeoutMs": 2000,
+    "transportTimeoutMs": 5000
+  },
+  "lifecycle": {
+    "schema": "cf-v2-compendium-report-lifecycle/v1",
+    "status": "complete"
+  },
+  "budget": {
+    "status": "active",
+    "path": "budgets/compendium-memory-v1.json",
+    "sha256": "c109b5845b12862bbd8fa069b6f8e394b48d9d8568d8537f20565b63c5d907fc",
+    "browserAuthority": {
+      "schema": "cf-v2-compendium-browser-authority/v2",
+      "scope": "arc1a-compendium-memory-only",
+      "family": "microsoft-edge",
+      "protocolVersion": "1.3",
+      "capabilityContract": "cf-v2-compendium-cdp-capabilities/v1",
+      "capabilityContractSha256": "35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341"
+    },
+    "browserAuthorityMatch": null,
+    "producerAuthority": {
+      "schema": "cf-v2-compendium-producer-authority/v2",
+      "sha256": "bd8edd1b570d4bc4e1933a87a9e0552e75208d18ca43c40d2ffcd6712ebc1a5b",
+      "inputs": {
+        "index": {
+          "relativePath": "index.html",
+          "sha256": "55e439ce77ee0440e0038de9802d4cb8746504438e8e97224c8a6dd7b4e7c79e"
+        },
+        "owner": {
+          "relativePath": "assets/tame-greeting-audio-CYnzTOVq.js",
+          "sha256": "565e33887fa37e962a95a6cfa2ab0ef5d28fc2baa5cdde4b1e770f2cd20ab800"
+        },
+        "worker": {
+          "relativePath": "assets/species-art.worker-BtRvoDhH.js",
+          "sha256": "efb212d2336903157a32e998096c4b4fc4adf728dcee2fd89719574daa48d0ef"
+        },
+        "painter": {
+          "relativePath": "assets/species-art.worker-BtRvoDhH.js",
+          "sha256": "efb212d2336903157a32e998096c4b4fc4adf728dcee2fd89719574daa48d0ef"
+        },
+        "serviceWorker": {
+          "relativePath": "service-worker.js",
+          "sha256": "a514f038dab983359e0e5f9d0d7e3d9fc719815a1ef938eff3c834d8e3405ebf"
+        }
+      }
+    },
+    "observedProducerAuthority": {
+      "schema": "cf-v2-compendium-producer-authority/v2",
+      "sha256": "f8f1aab67cde6826301320f404faba93757f8f22bb19048fbe3e8d97f5d259e9",
+      "inputs": {
+        "index": {
+          "relativePath": "index.html",
+          "sha256": "3a5446bcd92dc414477c57cfac4cbb9fdac8ff7ab3e074c4e2b7eff647211448"
+        },
+        "owner": {
+          "relativePath": "assets/tame-greeting-audio-Wp-SCecm.js",
+          "sha256": "715493ab96112284974fb3bede5b85a649742429fb5361155a40af60f694631f"
+        },
+        "worker": {
+          "relativePath": "assets/species-art.worker-SHcKR5tI.js",
+          "sha256": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62"
+        },
+        "painter": {
+          "relativePath": "assets/species-art.worker-SHcKR5tI.js",
+          "sha256": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62"
+        },
+        "serviceWorker": {
+          "relativePath": "service-worker.js",
+          "sha256": "ccdc8038854ad4389828535febadd4ec44951ca2e0ca0541c1a24670a0334231"
+        }
+      }
+    },
+    "producerAuthorityMatch": false
+  },
+  "findings": [
+    "instrument: built index/owner/worker/painter does not match the Compendium calibration authority"
+  ],
+  "blockedOutcomes": [
+    "phone/input-fixture-1500-distinct",
+    "phone/lazy-art-not-eager",
+    "phone/list-populated",
+    "phone/list-source-count-1500",
+    "phone/first-row-reached",
+    "phone/middle-row-reached",
+    "phone/last-row-reached",
+    "phone/filter-result",
+    "phone/detail-opened",
+    "phone/back-restores-focus",
+    "phone/close-restores-focus",
+    "phone/close-dom-cleanup",
+    "phone/focus-row-pinned",
+    "phone/planetside-bounded",
+    "phone/planetside-hide-release-reacquire",
+    "phone/mounted-window-bounded",
+    "phone/mounted-natural-dimensions",
+    "phone/list-source-132",
+    "phone/art-release",
+    "phone/art-disposal",
+    "phone/art-dedupe",
+    "phone/full-identity-key",
+    "phone/generation-guard",
+    "phone/error-contained",
+    "phone/error-recoverable",
+    "phone/cap-shrink",
+    "phone/canvas-thumb-path",
+    "phone/no-full-portrait-thumb-path",
+    "phone/settled-jobs",
+    "phone/resource-live-limits",
+    "phone/warm-precondition",
+    "phone/warm-plateau",
+    "phone/heap-ceiling",
+    "phone/dom-ceiling",
+    "phone/byte-ceiling",
+    "phone/target-answerable-first",
+    "phone/heartbeat-first",
+    "phone/target-answerable-last",
+    "phone/heartbeat-last",
+    "desktop/input-fixture-1500-distinct",
+    "desktop/lazy-art-not-eager",
+    "desktop/list-populated",
+    "desktop/list-source-count-1500",
+    "desktop/first-row-reached",
+    "desktop/middle-row-reached",
+    "desktop/last-row-reached",
+    "desktop/filter-result",
+    "desktop/detail-opened",
+    "desktop/back-restores-focus",
+    "desktop/close-restores-focus",
+    "desktop/close-dom-cleanup",
+    "desktop/focus-row-pinned",
+    "desktop/planetside-bounded",
+    "desktop/planetside-hide-release-reacquire",
+    "desktop/mounted-window-bounded",
+    "desktop/mounted-natural-dimensions",
+    "desktop/list-source-132",
+    "desktop/art-release",
+    "desktop/art-disposal",
+    "desktop/art-dedupe",
+    "desktop/full-identity-key",
+    "desktop/generation-guard",
+    "desktop/error-contained",
+    "desktop/error-recoverable",
+    "desktop/cap-shrink",
+    "desktop/canvas-thumb-path",
+    "desktop/no-full-portrait-thumb-path",
+    "desktop/settled-jobs",
+    "desktop/resource-live-limits",
+    "desktop/warm-precondition",
+    "desktop/warm-plateau",
+    "desktop/heap-ceiling",
+    "desktop/dom-ceiling",
+    "desktop/byte-ceiling",
+    "desktop/target-answerable-first",
+    "desktop/heartbeat-first",
+    "desktop/target-answerable-last",
+    "desktop/heartbeat-last"
+  ],
+  "measurementAuthoritySha256": "6a829fb18eab4c171afaace0f49ad2a987cfcdc520d33dbc05337c379df85ee2",
+  "productOutcomesMeasured": 0,
+  "browserPreflight": "Edg/153.0.4234.48; CDP 1.3",
+  "candidateBrowserLaunched": false
+}
