@@ -1,0 +1,258 @@
+[
+  {
+    "name": "gull",
+    "id": "melee:claw",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "melee:claw",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "melee:claw",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "melee:claw",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "melee:claw",
+    "variant": "level-strike",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "gull",
+    "id": "melee:claw",
+    "variant": "level-strike",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "goose",
+    "id": "melee:claw",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "goose",
+    "id": "melee:claw",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "goose",
+    "id": "melee:claw",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "goose",
+    "id": "melee:claw",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "goose",
+    "id": "melee:claw",
+    "variant": "level-strike",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "goose",
+    "id": "melee:claw",
+    "variant": "level-strike",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "melee:claw",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "melee:claw",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "melee:claw",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "melee:claw",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "melee:claw",
+    "variant": "level-strike",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "heron",
+    "id": "melee:claw",
+    "variant": "level-strike",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "sparrow",
+    "id": "melee:claw",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 118,
+    "first": {
+      "i": 43,
+      "ms": 238.88888888888886,
+      "error": "Error: Contact: melee:claw@238.88888888888886 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "sparrow",
+    "id": "melee:claw",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 118,
+    "first": {
+      "i": 43,
+      "ms": 238.88888888888886,
+      "error": "Error: Contact: melee:claw@238.88888888888886 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "sparrow",
+    "id": "melee:claw",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 120,
+    "first": {
+      "i": 44,
+      "ms": 244.44444444444443,
+      "error": "Error: Contact: melee:claw@244.44444444444443 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "sparrow",
+    "id": "melee:claw",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 120,
+    "first": {
+      "i": 44,
+      "ms": 244.44444444444443,
+      "error": "Error: Contact: melee:claw@244.44444444444443 exceeds scale compression bound"
+    }
+  },
+  {
+    "name": "sparrow",
+    "id": "melee:claw",
+    "variant": "level-strike",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "sparrow",
+    "id": "melee:claw",
+    "variant": "level-strike",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "melee:claw",
+    "variant": "original",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "melee:claw",
+    "variant": "original",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "melee:claw",
+    "variant": "leg-scale-translation",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "melee:claw",
+    "variant": "leg-scale-translation",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "melee:claw",
+    "variant": "level-strike",
+    "mode": "rest",
+    "passes": 121,
+    "first": null
+  },
+  {
+    "name": "eagle",
+    "id": "melee:claw",
+    "variant": "level-strike",
+    "mode": "observed",
+    "passes": 121,
+    "first": null
+  }
+]

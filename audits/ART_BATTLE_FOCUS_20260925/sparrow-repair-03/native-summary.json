@@ -1,0 +1,148 @@
+{
+  "runId": "native-observed-01",
+  "scope": "PROPOSED BUNDLE ONLY, not HEAD certification. E1.5 battle2 native proof: two real paint-skin fits on the real stage over the accepted Earth-temperate plates; diagnostic study, not visual acceptance.",
+  "status": "DIAGNOSTIC_PASS",
+  "cpuP95Ms": 7.199999928474426,
+  "cpuMaxMs": 29.699999928474426,
+  "overBudgetFrames": [
+    {
+      "ms": 12232.9,
+      "turn": 3,
+      "localMs": 2712.8999999999996,
+      "phase": "idle",
+      "cpuMs": 17.700000047683716,
+      "refusals": 0
+    },
+    {
+      "ms": 12249.499999999998,
+      "turn": 3,
+      "localMs": 2729.499999999998,
+      "phase": "idle",
+      "cpuMs": 19.600000023841858,
+      "refusals": 0
+    },
+    {
+      "ms": 12266.199999999999,
+      "turn": 3,
+      "localMs": 2746.199999999999,
+      "phase": "idle",
+      "cpuMs": 23.59999990463257,
+      "refusals": 0
+    },
+    {
+      "ms": 12282.800000000001,
+      "turn": 3,
+      "localMs": 2762.800000000001,
+      "phase": "idle",
+      "cpuMs": 29.699999928474426,
+      "refusals": 0
+    },
+    {
+      "ms": 12316.199999999999,
+      "turn": 3,
+      "localMs": 2796.199999999999,
+      "phase": "idle",
+      "cpuMs": 22.699999928474426,
+      "refusals": 0
+    },
+    {
+      "ms": 12332.800000000001,
+      "turn": 3,
+      "localMs": 2812.800000000001,
+      "phase": "idle",
+      "cpuMs": 23.600000023841858,
+      "refusals": 0
+    },
+    {
+      "ms": 12366.199999999999,
+      "turn": 3,
+      "localMs": 2846.199999999999,
+      "phase": "idle",
+      "cpuMs": 21.299999952316284,
+      "refusals": 0
+    },
+    {
+      "ms": 12382.800000000001,
+      "turn": 3,
+      "localMs": 2862.800000000001,
+      "phase": "idle",
+      "cpuMs": 22.300000071525574,
+      "refusals": 0
+    },
+    {
+      "ms": 12416.199999999999,
+      "turn": 3,
+      "localMs": 2896.199999999999,
+      "phase": "idle",
+      "cpuMs": 23.40000009536743,
+      "refusals": 0
+    },
+    {
+      "ms": 12432.9,
+      "turn": 3,
+      "localMs": 2912.8999999999996,
+      "phase": "idle",
+      "cpuMs": 23.100000023841858,
+      "refusals": 0
+    },
+    {
+      "ms": 12466.199999999999,
+      "turn": 3,
+      "localMs": 2946.199999999999,
+      "phase": "idle",
+      "cpuMs": 25.799999952316284,
+      "refusals": 0
+    },
+    {
+      "ms": 12482.9,
+      "turn": 3,
+      "localMs": 2962.8999999999996,
+      "phase": "idle",
+      "cpuMs": 25.399999976158142,
+      "refusals": 0
+    },
+    {
+      "ms": 12516.199999999999,
+      "turn": 3,
+      "localMs": 2996.199999999999,
+      "phase": "idle",
+      "cpuMs": 22.700000047683716,
+      "refusals": 0
+    },
+    {
+      "ms": 12532.800000000001,
+      "turn": 3,
+      "localMs": 3012.800000000001,
+      "phase": "idle",
+      "cpuMs": 21.5,
+      "refusals": 0
+    },
+    {
+      "ms": 12549.499999999998,
+      "turn": 3,
+      "localMs": 3029.499999999998,
+      "phase": "idle",
+      "cpuMs": 20,
+      "refusals": 0
+    }
+  ],
+  "intervalsAtLeast25Ms": 6,
+  "maxFrameIntervalMs": 33.39999999999782,
+  "liveFrames": 759,
+  "durationMs": 12732.800000000001,
+  "encoded": {
+    "frames": 763,
+    "width": 1024,
+    "height": 576,
+    "durationSeconds": 12.823268,
+    "minimumFrames": 725
+  },
+  "refusals": {
+    "left": 0,
+    "right": 0
+  },
+  "reportSha256": "aceed7f9e22ac20efe668703a4acd94568b37c6cb6a33e2d3e5a4e807d923ff5",
+  "filmSha256": "9f66196231c4a385ed1195c33b41f65df051e255afa50af71958e184abb86e38",
+  "recipeHash": "2d5c2c9c57d689a2859006fe73857905ffe3bac54ff101c3cafc4278bf806d28",
+  "bindingHash": "441dd0d18b6112cc27e93272e20d5ab1187e378639288aa385a6b020043433d7"
+}

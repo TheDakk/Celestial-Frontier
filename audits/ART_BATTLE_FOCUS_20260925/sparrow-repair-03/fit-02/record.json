@@ -1,0 +1,202 @@
+{
+  "kind": "biped-bird",
+  "identity": {
+    "speciesVisualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Sparrow\"]],[\"accent\",[\"number\",\"9\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"13\"]],[\"color\",[\"number\",\"8\"]],[\"detail\",[\"number\",\"4\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"10\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"13\"]],[\"head\",[\"number\",\"8\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"4\"]],[\"loco\",[\"number\",\"7\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"5\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"4188265330\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"1\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"16\"]]]]",
+    "seed": 4188265330,
+    "ownerId": "authored:archetype-sprint/sparrow",
+    "earthName": "Sparrow"
+  },
+  "template": {
+    "id": "biped-bird",
+    "version": 1
+  },
+  "clipSetId": "biped-bird-v1",
+  "anatomy": {
+    "schema": "cf.anatomy-presence/v2",
+    "absent": [],
+    "hidden": [],
+    "folded": []
+  },
+  "genome": {
+    "seed": 4188265330,
+    "kingdom": "fauna",
+    "color": 8,
+    "form": 10,
+    "body": 13,
+    "loco": 7,
+    "trait": 16,
+    "size": 1,
+    "diet": 0,
+    "head": 8,
+    "limbs": 4,
+    "skin": 6,
+    "tail": 0,
+    "pattern": 4,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 13,
+    "detail": 4,
+    "accent": 9,
+    "temper": 9,
+    "sense": 8,
+    "repro": 1,
+    "life": 5,
+    "metab": 5,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Sparrow"
+  },
+  "geometry": {
+    "cutoutAssetHash": "29dd709f2aef49d3675a482f2e9b2c0ea6433bb120353686d4529f4379288c91",
+    "width": 1254,
+    "height": 1254,
+    "groundLineY": 0.8532695374800638,
+    "depthLayers": [
+      {
+        "id": "far",
+        "order": 0
+      },
+      {
+        "id": "near",
+        "order": 1
+      }
+    ]
+  },
+  "landmarks": {
+    "root": [
+      0.5303030303030303,
+      0.5980861244019139
+    ],
+    "pelvis": [
+      0.47527910685805425,
+      0.6818181818181818
+    ],
+    "spine": [
+      0.5980861244019139,
+      0.5566188197767146
+    ],
+    "chest": [
+      0.689792663476874,
+      0.5853269537480064
+    ],
+    "neck0": [
+      0.6961722488038278,
+      0.5063795853269537
+    ],
+    "neck1": [
+      0.7001594896331739,
+      0.45933014354066987
+    ],
+    "head": [
+      0.7503987240829346,
+      0.4130781499202552
+    ],
+    "beak": [
+      0.8373205741626795,
+      0.44019138755980863
+    ],
+    "legNearKnee": [
+      0.40669856459330145,
+      0.7352472089314195
+    ],
+    "legNearAnkle": [
+      0.4274322169059011,
+      0.803030303030303
+    ],
+    "legNearFoot": [
+      0.4696969696969697,
+      0.8317384370015949
+    ],
+    "legFarKnee": [
+      0.5342902711323764,
+      0.7424242424242424
+    ],
+    "legFarAnkle": [
+      0.5964912280701754,
+      0.7870813397129187
+    ],
+    "legFarFoot": [
+      0.6578947368421053,
+      0.8070175438596491
+    ],
+    "wingNearRoot": [
+      0.5590111642743222,
+      0.49681020733652315
+    ],
+    "wingNearTip": [
+      0.2025518341307815,
+      0.37559808612440193
+    ],
+    "wingFarRoot": [
+      0.5590111642743222,
+      0.40271132376395535
+    ],
+    "wingFarTip": [
+      0.3189792663476874,
+      0.16427432216905902
+    ],
+    "tailFan": [
+      0.31100478468899523,
+      0.5940988835725678
+    ]
+  },
+  "materials": {
+    "surface": "plain warm brown painted songbird feathers with softly lighter form shading, horn conical bill and natural scaled toes"
+  },
+  "source": "audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/authoring-01/master.png",
+  "habitat": {
+    "realm": "land",
+    "source": "Manually declared standing Sparrow with two visible perching feet and both spread wings. Ground battle pose; no unseen underside or airborne support inferred."
+  },
+  "coverage": {
+    "scope": "One manually observed sprint painting; no family-wide visual acceptance",
+    "declarations": "Two thin leg chains and toe groups, two spread wing surfaces, short square tail, round head/conical bill present. No absent/hidden/folded anatomy. Fresh hand-authored source-pixel labels and joints.",
+    "sourceFacing": "right",
+    "wingPose": "Both visibly spread; hidden undersides not supplied.",
+    "visualAcceptance": "Nick pending, no family-wide or flight acceptance",
+    "repair": "New unadmitted candidate: small interior fixed root patch; torso remainder follows existing spine joint; tail pivot moved from feather tip to visible tail attachment. Original painted pixels, presence and all other joints unchanged.",
+    "nativeAcceptance": false
+  },
+  "provenance": {
+    "authoringSha256": "4647d794cf3df4e847e95b2cd68884419c6948174287dc5a3a020418eda49337",
+    "subjectSourceSha256": "3588bbdfde56faf6a8f9db297c67f600adbe78f6f4542fa5513600e73e078b6a",
+    "presenceSha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+    "sourceLabelsReused": false,
+    "sourceLandmarksReused": false,
+    "hiddenInference": false
+  },
+  "boundsCheck": {
+    "inside": true,
+    "clamped": [],
+    "boneLengths": {
+      "pelvis": 0.1001932612027364,
+      "spine": 0.1753751516424383,
+      "chest": 0.09609498564035908,
+      "neck0": 0.07920471002126898,
+      "neck1": 0.047218090408572395,
+      "head": 0.06828782901777523,
+      "beak": 0.09105237875302619,
+      "legFarKnee": 0.08458966893892261,
+      "legFarAnkle": 0.07657163562461121,
+      "legFarFoot": 0.06455883460289986,
+      "legNearKnee": 0.0869364809248375,
+      "legNearAnkle": 0.07088322921423561,
+      "legNearFoot": 0.05109272242309844,
+      "wingFarRoot": 0.22461582501715874,
+      "wingFarTip": 0.33833048303667085,
+      "wingNearRoot": 0.15792091352617574,
+      "wingNearTip": 0.3765044918392392,
+      "tailFan": 0.18622762471987547
+    },
+    "measures": {
+      "body": 0.23521611991474176,
+      "bone-min": 0.047218090408572395,
+      "bone-max": 0.3765044918392392,
+      "leg/torso:legFar": 0.9596286991225343,
+      "leg/torso:legNear": 0.8881722589331698,
+      "wing/torso": 2.393315170141738
+    }
+  },
+  "recipeHash": "2d5c2c9c57d689a2859006fe73857905ffe3bac54ff101c3cafc4278bf806d28"
+}

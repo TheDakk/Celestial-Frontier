@@ -1,0 +1,66 @@
+{
+  "schema": "cf.sprint-static/v1",
+  "status": "REFUSED",
+  "sourceHead": "e1cc95140f91cae154f9d58b37bf913e6d88e44f",
+  "scope": "Actual GSAP/performance/contact/compiled-field/ARAP published Float32 geometry and exact source-pixel reconstruction; no GPU-rendered rest, native film, CPU or visual acceptance.",
+  "settings": {
+    "samplesPerAction": 121,
+    "presentationHz": 60,
+    "paintContactTolerancePx": 0.25,
+    "endpointTolerance": 1e-8
+  },
+  "rows": [],
+  "exactRest": false,
+  "sourcePixelRest": {
+    "status": "PASS",
+    "changedVisibleRgbaChannels": 0,
+    "scope": "Exact independent atlas-part reconstruction of keyed source at authored cutout rectangles; not GPU rendering"
+  },
+  "cpuP95Ms": null,
+  "recordRecipeHash": "2d5c2c9c57d689a2859006fe73857905ffe3bac54ff101c3cafc4278bf806d28",
+  "bindingHash": "441dd0d18b6112cc27e93272e20d5ab1187e378639288aa385a6b020043433d7",
+  "family": "biped-bird",
+  "contacts": [
+    "legFarAnkle",
+    "legNearAnkle"
+  ],
+  "realm": "land",
+  "refusal": {
+    "stage": "fixture",
+    "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'cf.authored-paint-boundary-continuity/v1'\n\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-s6lrpk/run.mjs:26864:11\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-s6lrpk/run.mjs:16:49\n    at file:///private/var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T/cf-sprint-static-s6lrpk/run.mjs:27127:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+    "contact": null,
+    "pose": null
+  },
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/record.json",
+      "sha256": "baac98479c4c01f4bece97e4643278332d69d3defa74aac7cc61f3cb8588dec5",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/binding.json",
+      "sha256": "021fda5d9441cfee27f6bdb92f807000dcc9ea45099ad6a8ad4e041576c1b665",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/manifest.json",
+      "sha256": "f67fbc4c80d3d106c06d023d237616b831f25263832b7e7512da1b6e8e0722d8",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/atlas/sparrow.png",
+      "sha256": "9476f5fbc49e5ad30c771dcc40cc17fb306eb12d200f90cfa6fc95a404cbad13",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/parts/keyed.png",
+      "sha256": "98872f0a246f2c7e28720f25ec3ce2d24f51fca4cb98a103bb391545b70ddd3a",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/sparrow-repair-03/fit-02/paint-boundary-continuity.json",
+      "sha256": "3342ac997f203c3afc5ab4a5d6dcd7ba5454c3d01dc0bf8a6d62d2962f88cdd6",
+      "unchanged": true
+    }
+  ]
+}
