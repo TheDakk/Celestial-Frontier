@@ -466,6 +466,12 @@ while save writes are held. Opening does not mark read; explicit Mark read uses 
 checkpoint path with pending/failed status and rollback. The existing 50-entry new-history
 capacity and 60-entry import allowance remain. Passive history never joins an in-flight product
 snapshot; no new timer, schema, import door or competing persistence writer is introduced.
+
+**Pop-up notifications switch (matches code as of 2026-09-25, D16 parity with v1 `notif`):** Settings → Pop-up notifications
+(`#setnotif`, saved `notif`, absent ⇒ on). Off keeps every message in the tray and still writes it into the toast's live region
+(screen readers still hear it), but the toast is not painted (`opacity 0`, `data-quiet`). A creature voice that binds the toast
+as its VISIBLE audio counterpart (`bindTameToastCounterpart`) reveals that one toast, so the cue still fires; Feed's supplemental
+toast stays hidden because its inline status is the counterpart. Outcome test: `tests/d16-notification-popups-outcome.test.ts`.
 The bottom bell reads this history; its old duplicate shelf button is hidden.
 
 Nick accepted the U1 layout **for UAT** on 2026-09-06 at product

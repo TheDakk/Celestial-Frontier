@@ -2832,6 +2832,7 @@ function fillSettings(): void {
     `<div class="row"><label>Sound</label><button id="setsnd" aria-label="Sound" aria-pressed="${save.sndOn}" class="${save.sndOn ? 'on' : ''}" data-sel="set-sound">${save.sndOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Volume</label><input id="setvol" data-sel="set-vol" aria-label="Sound volume" type="range" min="0" max="100" value="${Math.round(save.sfxVol * 100)}"></div>` +
     `<div class="row"><label>Creature voices</label><button id="setvoice" aria-label="Creature voices" aria-pressed="${save.voiceOn}" class="${save.voiceOn ? 'on' : ''}" data-sel="set-voice">${save.voiceOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Pop-up notifications</label><button id="setnotif" aria-label="Pop-up notifications" aria-pressed="${save.notifOn}" class="${save.notifOn ? 'on' : ''}" data-sel="set-notif" title="Off keeps every message in the 🔔 tray without popping it up (creature sounds still show their card).">${save.notifOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Confirm salvage</label><button id="setsalv" aria-label="Confirm before salvaging" aria-pressed="${save.salvageConfirm}" class="${save.salvageConfirm ? 'on' : ''}" data-sel="set-salvage" title="Ask before breaking gear down into parts.">${save.salvageConfirm ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Battle sounds</label><button id="setcombat" aria-label="Battle sounds" aria-pressed="${save.combatSfxOn}" class="${save.combatSfxOn ? 'on' : ''}" data-sel="set-combat" title="Hits, dodges and effects in battles (creature voices have their own switch).">${save.combatSfxOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Mono audio</label><button id="setmono" aria-label="Mono audio" aria-pressed="${audioAccessibility.mono}" class="${audioAccessibility.mono ? 'on' : ''}" data-sel="set-mono" title="Both ears hear every sound (one earbud, one speaker). Saved on this device.">${audioAccessibility.mono ? 'On' : 'Off'}</button></div>` +
@@ -2964,6 +2965,10 @@ function fillSettings(): void {
     save.voiceOn = !save.voiceOn;
     tameGreetingAudioOwner?.syncSettings();
     refillAndFocus('#setvoice'); void persistView();
+  });
+  el.querySelector('#setnotif')!.addEventListener('click', () => {
+    save.notifOn = !save.notifOn;   /* v1.8.9 parity: the saved `notif` switch (absent ⇒ on) */
+    refillAndFocus('#setnotif'); void persistView();
   });
   el.querySelector('#setsalv')!.addEventListener('click', () => {
     save.salvageConfirm = !save.salvageConfirm;   /* v1.8.9 parity: the saved `sv` switch the Inventory reads */
@@ -5239,7 +5244,10 @@ function showToast(title: string, msg: string, assertive: boolean): void {
   toastEl.removeAttribute('aria-hidden');
   toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><span data-sel="toast-message"><br>${esc(msg)}</span>`;   /* every sink escapes (audit #6) */
   _toastSerial++;
-  toastEl.style.opacity = '1';
+  /* D16 parity (v1 `notif`): with pop-ups off the toast stays in the tray and is still ANNOUNCED (the live region keeps its
+     text), but it is not painted. A sound that needs this carrier as its visible counterpart reveals it (bindTameToastCounterpart). */
+  toastEl.style.opacity = save.notifOn ? '1' : '0';
+  toastEl.dataset.quiet = String(!save.notifOn);
   clearTimeout(_toastHide);
   _toastHide = window.setTimeout(() => {
     invalidateTameToastCounterpart();
@@ -5258,7 +5266,9 @@ function showCompendiumFeedVisualToast(title: string, msg: string): void {
   toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><span data-sel="toast-message"><br>${esc(msg)}</span>`;
   _toastT = performance.now();
   _toastSerial++;
-  toastEl.style.opacity = '1';
+  /* supplemental visual only (Feed's inline status is the accessible result and the audio counterpart): pop-ups off hides it */
+  toastEl.style.opacity = save.notifOn ? '1' : '0';
+  toastEl.dataset.quiet = String(!save.notifOn);
   clearTimeout(_toastHide);
   _toastHide = window.setTimeout(() => { toastEl.style.opacity = '0'; }, 3600);
 }
@@ -5486,6 +5496,8 @@ function bindTameToastCounterpart(
     generation: _toastSerial,
   });
   tameToastCounterpart = Object.freeze({ receipt, title, detail });
+  /* The creature's voice needs a VISIBLE counterpart: with pop-ups off, this one toast is revealed rather than the sound lost. */
+  if (toastEl.dataset.quiet === 'true' && toastEl.style.opacity === '0') { toastEl.style.opacity = '1'; toastEl.dataset.quiet = 'revealed-for-counterpart'; }
   if (tameToastCounterpartIsCurrent(receipt)) return receipt;
   tameToastCounterpart = null;
   return null;
@@ -17077,7 +17089,7 @@ let lastMutationBlockWitness: Readonly<{
 }> | null = null;
 const READ_ONLY_MUTATION_SELECTOR = [
   '#dockcharts', '#setsnd', '#setvol', '#setvoice', '[data-pref]', '[data-motion]',
-  '#setcharts', '#setfx', '#setshake', '#setglass', '#setrestart', '#setresetyes',
+  '#setcharts', '#setfx', '#setshake', '#setglass', '#setrestart', '#setresetyes', '#setnotif',
   '[data-arc9-nameplate-choice]',
   '[data-frontier-ending-id]',
   '[data-starter-charter-accept]',
