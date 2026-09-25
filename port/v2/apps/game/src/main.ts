@@ -53,6 +53,8 @@ import {
   type FriendlyDuelReadModelV1,
   type FriendlyDuelRequestV1,
 } from './friendly-duel.js';
+import { CompanionCareController, projectCompanionCareV1, type CompanionCareReadModelV1 } from './companion-care-panel.js';
+import { commitArc5RestActionV1 } from './arc5-rest-action.js';
 import {
   deviceAudioAccessibilityStorage,
   readAudioAccessibilityPrefsV1,
@@ -3945,6 +3947,7 @@ function fillCodexDetail(idx: number): void {
     && renameModel.availability !== 'non-fauna'
     && renameModel.availability !== 'fixture';
   const duelModel = projectCurrentFriendlyDuel(row);
+  const careModel = projectCurrentCompanionCare(row);
   const showScout = scoutModel !== null
     && scoutModel.surface.speciesId !== null
     && scoutModel.availability !== 'non-fauna'
@@ -3975,7 +3978,7 @@ function fillCodexDetail(idx: number): void {
   } catch {
     body = '<div class="empty">This record did not decode — the genome may predate the Compendium.</div>';
   }
-  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}${duelModel !== null ? '<section class="compendium-feed" data-friendly-duel-body aria-label="Friendly duel"></section>' : ''}</div>`);
+  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}${duelModel !== null ? '<section class="compendium-feed" data-friendly-duel-body aria-label="Friendly duel"></section>' : ''}${careModel !== null ? '<section class="compendium-feed" data-companion-care-body aria-label="Care and bond"></section>' : ''}</div>`);
   compendiumCreatureProgressionSurface.attach(
     document.querySelector<HTMLElement>('#codexpanel [data-sel="codex-detail"]')!,
   );
@@ -4018,6 +4021,10 @@ function fillCodexDetail(idx: number): void {
   if (duelModel !== null) {
     friendlyDuelController.setState(duelModel);
     friendlyDuelController.attach(document.querySelector<HTMLElement>('#codexpanel [data-friendly-duel-body]')!);
+  }
+  if (careModel !== null) {
+    companionCareController.setState(careModel);
+    companionCareController.attach(document.querySelector<HTMLElement>('#codexpanel [data-companion-care-body]')!);
   }
   const portrait = document.querySelector<HTMLImageElement>('#codexpanel [data-sel="detail-portrait"]');
   if (portrait) {
@@ -9390,6 +9397,64 @@ async function runFriendlyDuel(request: FriendlyDuelRequestV1): Promise<void> {
    non-final answer is appended by CAS on the count the card showed, and the answer that finishes the fight rides the ordinary
    settlement (runArc6CombatCardAction with the answers), so a finished fight always settles in one receipt. A reload lands on the
    same Break: the card re-simulates it from the durable record (refreshCombatCardState). */
+/* D13 companion care (N3 stage 1): the Compendium detail's condition/Rest/tastes/bond panel. Rest is one receipt on the
+   active-play clock (arc5-rest-action.ts); publication copies only the committed ownership. */
+let lastCompanionRestOutcome: string | null = null;
+const companionCareController = new CompanionCareController({ onRest: (creatureId) => { void runCompanionRest(creatureId); } });
+function projectCurrentCompanionCare(row: readonly [string, CodexRecord] | null): CompanionCareReadModelV1 | null {
+  const runtime = f4Runtime;
+  if (row === null || compendiumFixtureRows !== null || runtime === null || row[1].kind !== 'Fauna') return null;
+  try {
+    return projectCompanionCareV1({ record: { name: String(row[1].name ?? 'Companion'), g: row[1].g as Record<string, unknown> }, ownership: arc5OwnershipState,
+      activePlayMs: runtime.diagnostics().activePlayMs, writable: arc5OwnershipProtection === null && f4RuntimeMayMutate(runtime) });
+  } catch { return null; }
+}
+async function runCompanionRest(creatureId: Parameters<typeof commitArc5RestActionV1>[0]['creatureId']): Promise<void> {
+  const runtime = f4Runtime, parent = arc5OwnershipState;
+  if (!f4RuntimeMayMutate(runtime) || parent?.mode !== 'current' || arc5OwnershipProtection !== null || activePersist
+    || importWriteInFlight || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    lastCompanionRestOutcome = 'unavailable:write-authority'; companionCareController.settle('Rest unavailable. Finish the current save, then try again. Nothing changed.'); return;
+  }
+  const actionClaim = productActionCoordinator.tryClaim('companion.rest');
+  if (actionClaim === null) { lastCompanionRestOutcome = 'unavailable:product-action-pending'; companionCareController.settle('Rest unavailable — another action is still settling.'); return; }
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true; activePersist = actionBarrier; lastCompanionRestOutcome = 'pending';
+  let durable = false;
+  try {
+    await settleF4Heartbeat();
+    if (!f4RuntimeMayMutate(runtime) || arc5OwnershipState !== parent) { lastCompanionRestOutcome = 'refused:authority-changed'; companionCareController.settle('Rest unavailable. Nothing changed.'); return; }
+    const outcome = await commitArc5RestActionV1({ runtime, ownershipV2: parent, state: save, creatureId, codecNow: Date.now(), activePlayMs: runtime.diagnostics().activePlayMs });
+    if (outcome.kind === 'refused') {
+      lastCompanionRestOutcome = `refused:${outcome.detail}`;
+      if (outcome.convergence === 'read-only-reload') scheduleF4AuthorityConvergenceReload(runtime, `companion rest ${outcome.detail}`);
+      companionCareController.settle(outcome.detail === 'preflight:creature-healthy' ? 'Already healthy — nothing to rest.' : `Rest unavailable. Nothing changed (${outcome.detail}).`);
+      return;
+    }
+    durable = true; f4LastCheckpointAt = performance.now();
+    const loaded = readArc5OwnershipMigration(runtime.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    if (outcome.kind !== 'committed' || runtime.revision !== outcome.transaction.revision || loaded.kind !== 'loaded'
+      || ownershipStateDigestV2(loaded.state) !== ownershipStateDigestV2(outcome.ownershipV2)) {
+      lastCompanionRestOutcome = 'committed-publication-reload';
+      scheduleF4AuthorityConvergenceReload(runtime, 'companion rest committed; publication fixed point');
+      return;
+    }
+    arc5OwnershipState = loaded.state; arc5OwnershipEvidence = loaded.evidence;
+    lastPersistenceOutcome = `companion-rest-committed:${outcome.transaction.revision}`;
+    const minutes = outcome.settlement.preflight.durationActivePlayMs / 60_000;
+    lastCompanionRestOutcome = `committed:${outcome.settlement.readyAtActivePlayMs}`;
+    companionCareController.settle(`Resting — healed in ${minutes} min of play. It stays home until then.`);
+    companionCareController.setState(projectCurrentCompanionCare(currentCompendiumDetailRow()));
+  } catch (error) {
+    lastCompanionRestOutcome = `${durable ? 'committed-' : ''}fault`;
+    if (durable && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `companion rest ${error instanceof Error ? error.message : String(error)}`);
+    else companionCareController.settle('Rest unavailable. Nothing changed.');
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
+  }
+}
 let lastArc6CommandOutcome: string | null = null;
 async function runArc6CommandCardAction(request: CombatCardActionRequestV1): Promise<void> {
   const runtime = f4Runtime;
