@@ -1,0 +1,182 @@
+[
+  {
+    "id": "approach:gallop",
+    "gain": 1,
+    "supportName": "rest",
+    "failures": 5,
+    "first": {
+      "ms": 75.375,
+      "error": "Error: Contact: approach:gallop@75.375 foreNear RangeError: target outside two-bone reach"
+    }
+  },
+  {
+    "id": "approach:gallop",
+    "gain": 1,
+    "supportName": "observed",
+    "failures": 5,
+    "first": {
+      "ms": 75.375,
+      "error": "Error: Contact: approach:gallop@75.375 foreNear RangeError: target outside two-bone reach"
+    }
+  },
+  {
+    "id": "approach:gallop",
+    "gain": 0.75,
+    "supportName": "rest",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "approach:gallop",
+    "gain": 0.75,
+    "supportName": "observed",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "approach:gallop",
+    "gain": 0.5,
+    "supportName": "rest",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "approach:gallop",
+    "gain": 0.5,
+    "supportName": "observed",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "approach:gallop",
+    "gain": 0.25,
+    "supportName": "rest",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "approach:gallop",
+    "gain": 0.25,
+    "supportName": "observed",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "approach:gallop",
+    "gain": 0.1,
+    "supportName": "rest",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "approach:gallop",
+    "gain": 0.1,
+    "supportName": "observed",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "approach:gallop",
+    "gain": 0,
+    "supportName": "rest",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "approach:gallop",
+    "gain": 0,
+    "supportName": "observed",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "cast",
+    "gain": 1,
+    "supportName": "rest",
+    "failures": 2,
+    "first": {
+      "ms": 380.515625,
+      "error": "Error: Contact: cast@380.515625 exceeds scale compression bound"
+    }
+  },
+  {
+    "id": "cast",
+    "gain": 1,
+    "supportName": "observed",
+    "failures": 3,
+    "first": {
+      "ms": 372.75,
+      "error": "Error: Contact: cast@372.75 exceeds scale compression bound"
+    }
+  },
+  {
+    "id": "cast",
+    "gain": 0.75,
+    "supportName": "rest",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "cast",
+    "gain": 0.75,
+    "supportName": "observed",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "cast",
+    "gain": 0.5,
+    "supportName": "rest",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "cast",
+    "gain": 0.5,
+    "supportName": "observed",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "cast",
+    "gain": 0.25,
+    "supportName": "rest",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "cast",
+    "gain": 0.25,
+    "supportName": "observed",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "cast",
+    "gain": 0.1,
+    "supportName": "rest",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "cast",
+    "gain": 0.1,
+    "supportName": "observed",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "cast",
+    "gain": 0,
+    "supportName": "rest",
+    "failures": 0,
+    "first": null
+  },
+  {
+    "id": "cast",
+    "gain": 0,
+    "supportName": "observed",
+    "failures": 0,
+    "first": null
+  }
+]

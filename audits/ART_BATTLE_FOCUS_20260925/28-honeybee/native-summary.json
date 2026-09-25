@@ -1,0 +1,231 @@
+{
+  "runId": "native-observed-01",
+  "scope": "PROPOSED BUNDLE ONLY, not HEAD certification. E1.5 battle2 native proof: two real paint-skin fits on the real stage over the accepted Earth-temperate plates; diagnostic study, not visual acceptance.",
+  "status": "DIAGNOSTIC_PASS",
+  "cpuP95Ms": 5.800000071525574,
+  "cpuMaxMs": 37.10000002384186,
+  "overBudgetFrames": [
+    {
+      "ms": 1183.1999999999998,
+      "turn": 0,
+      "localMs": 1183.1999999999998,
+      "phase": "approach",
+      "cpuMs": 29.199999928474426,
+      "refusals": 0
+    },
+    {
+      "ms": 1200,
+      "turn": 0,
+      "localMs": 1200,
+      "phase": "approach",
+      "cpuMs": 37.10000002384186,
+      "refusals": 0
+    },
+    {
+      "ms": 1249.9,
+      "turn": 0,
+      "localMs": 1249.9,
+      "phase": "approach",
+      "cpuMs": 17.5,
+      "refusals": 0
+    },
+    {
+      "ms": 2283.2000000000003,
+      "turn": 0,
+      "localMs": 2283.2000000000003,
+      "phase": "return",
+      "cpuMs": 27.600000023841858,
+      "refusals": 0
+    },
+    {
+      "ms": 2299.9,
+      "turn": 0,
+      "localMs": 2299.9,
+      "phase": "return",
+      "cpuMs": 34,
+      "refusals": 0
+    },
+    {
+      "ms": 2333.2000000000003,
+      "turn": 0,
+      "localMs": 2333.2000000000003,
+      "phase": "return",
+      "cpuMs": 24.699999928474426,
+      "refusals": 0
+    },
+    {
+      "ms": 4183.200000000001,
+      "turn": 1,
+      "localMs": 1178.5333333333342,
+      "phase": "approach",
+      "cpuMs": 23.799999952316284,
+      "refusals": 0
+    },
+    {
+      "ms": 4199.799999999999,
+      "turn": 1,
+      "localMs": 1195.1333333333328,
+      "phase": "approach",
+      "cpuMs": 31.5,
+      "refusals": 0
+    },
+    {
+      "ms": 4233.200000000001,
+      "turn": 1,
+      "localMs": 1228.5333333333342,
+      "phase": "approach",
+      "cpuMs": 29.800000071525574,
+      "refusals": 0
+    },
+    {
+      "ms": 5283.1,
+      "turn": 1,
+      "localMs": 2278.433333333334,
+      "phase": "return",
+      "cpuMs": 25.300000071525574,
+      "refusals": 0
+    },
+    {
+      "ms": 5299.700000000001,
+      "turn": 1,
+      "localMs": 2295.033333333334,
+      "phase": "return",
+      "cpuMs": 35.89999997615814,
+      "refusals": 0
+    },
+    {
+      "ms": 5333.1,
+      "turn": 1,
+      "localMs": 2328.433333333334,
+      "phase": "return",
+      "cpuMs": 27.100000023841858,
+      "refusals": 0
+    },
+    {
+      "ms": 7183,
+      "turn": 2,
+      "localMs": 1173.666666666667,
+      "phase": "approach",
+      "cpuMs": 18.59999990463257,
+      "refusals": 0
+    },
+    {
+      "ms": 7199.700000000001,
+      "turn": 2,
+      "localMs": 1190.3666666666677,
+      "phase": "approach",
+      "cpuMs": 29,
+      "refusals": 0
+    },
+    {
+      "ms": 7216.4,
+      "turn": 2,
+      "localMs": 1207.0666666666666,
+      "phase": "approach",
+      "cpuMs": 31.699999928474426,
+      "refusals": 0
+    },
+    {
+      "ms": 8216.300000000001,
+      "turn": 2,
+      "localMs": 2206.966666666668,
+      "phase": "return",
+      "cpuMs": 20.5,
+      "refusals": 0
+    },
+    {
+      "ms": 8233,
+      "turn": 2,
+      "localMs": 2223.666666666667,
+      "phase": "return",
+      "cpuMs": 30.09999990463257,
+      "refusals": 0
+    },
+    {
+      "ms": 8266.300000000001,
+      "turn": 2,
+      "localMs": 2256.966666666668,
+      "phase": "return",
+      "cpuMs": 25.200000047683716,
+      "refusals": 0
+    },
+    {
+      "ms": 10132.9,
+      "turn": 3,
+      "localMs": 1188.8999999999996,
+      "phase": "approach",
+      "cpuMs": 32.799999952316284,
+      "refusals": 0
+    },
+    {
+      "ms": 10166.2,
+      "turn": 3,
+      "localMs": 1222.2000000000007,
+      "phase": "approach",
+      "cpuMs": 28.199999928474426,
+      "refusals": 0
+    },
+    {
+      "ms": 10182.9,
+      "turn": 3,
+      "localMs": 1238.8999999999996,
+      "phase": "approach",
+      "cpuMs": 26,
+      "refusals": 0
+    },
+    {
+      "ms": 11216.2,
+      "turn": 3,
+      "localMs": 2272.2000000000007,
+      "phase": "return",
+      "cpuMs": 17.399999976158142,
+      "refusals": 0
+    },
+    {
+      "ms": 11232.9,
+      "turn": 3,
+      "localMs": 2288.8999999999996,
+      "phase": "return",
+      "cpuMs": 33.799999952316284,
+      "refusals": 0
+    },
+    {
+      "ms": 11266.2,
+      "turn": 3,
+      "localMs": 2322.2000000000007,
+      "phase": "return",
+      "cpuMs": 25.90000009536743,
+      "refusals": 0
+    },
+    {
+      "ms": 11282.800000000001,
+      "turn": 3,
+      "localMs": 2338.800000000001,
+      "phase": "return",
+      "cpuMs": 18.09999990463257,
+      "refusals": 0
+    }
+  ],
+  "intervalsAtLeast25Ms": 13,
+  "maxFrameIntervalMs": 50.0,
+  "liveFrames": 703,
+  "durationMs": 11949.4,
+  "encoded": {
+    "frames": 707,
+    "width": 1024,
+    "height": 576,
+    "durationSeconds": 12.036948,
+    "minimumFrames": 682
+  },
+  "refusals": {
+    "left": 0,
+    "right": 0
+  },
+  "reportSha256": "796d80fccfab99365a5b124df4e526d99dce638a1d8d4434e996a78c96ccb930",
+  "filmSha256": "dfcc20b5701485746f79510ac5e4146d2a65d9ae07fc1e15199956cec87efc74",
+  "otherLaneActiveSamples": 0,
+  "hostSamples": 19,
+  "recipeHash": "1184f02774f474323b2bf77b191f3811b8656cb3861f31715e21a86cf37b0693",
+  "bindingHash": "a81065dfd73237e89051e9d38dbe64f334c8e92f1418a3c7aba40056d9cb7d9d",
+  "masterSha256": "0caa257567bef63fe3d66308e565bddb84175b47696315a3781e5a6994c876e6"
+}

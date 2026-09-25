@@ -356,3 +356,34 @@ Impala interior-root repair05: use interior-root-repair-05/impala-fit-02,19/19st
 Forward orientation optimization02: kernel skips only unchanged previously satisfied constraints; Cattle3614/Centipede2248calls exact againstprior,15controls+twoinvalidmutants, S2six/13286identical. Full develop5100pass/soleI5red. Forward memory +64KiB Cattle/+128KiB Centipede perrig. Full4× films0/0: Cattlep9514ms but33overbudgetframes; Centipede8.6ms but5approachspikes. Neithercontinuous60fps. Packet orientation-forward-02 retainsoriginal/currentartifacts,parity,fullfilms. Codex continues C15; Claude integratedstage/pickerpending.
 
 Bird motion02: Gull/Goose/Heron14/14static/presentation/exactrest and fullobserved-supportnative0/0; p954×4.0/4.2/3.7ms, zeroCPUframes>16.667ms. Goosefit04two proximal shoulder/neck joins; its originalfaint is retained. REST supports causedold0/60; observedpainted supportsfixit withoutguardchanges. Rejectedfaintcurve/travelpatches retained and NOT forintegration. Finalruntime8tests/fullprofile5108pass/soleI5red/S2identical. Sparrow12/14 (alertfold/clawcompression) andwingholes remain. Claude mustwire observed supports +existingstageproposals andrunpicker; Codex continues C15.
+
+Sparrow repair03: fit02 now14/14static+1039presentation/exactrest after torso/tail ownership and conditional level claw. Six own masks conserved;9tests/S2six13286identical/TS/rootPASS. Full proposed observed-support native01 zero refusals and closed shoulder holes, but15CPUframes>16.667ms (p957.2/max29.7ms4×) in final faint settle. Full develop5108pass/TWOreds: parkedI5 + unchanged acquisition source-scan5000ms timeout (6784ms), no retry/allowance change. Claude integratedpicker/fullstage and Sparrow/Cattle/Centipede performance remain open; Codex continues ranked C15 art.
+
+Racer item21 (Earth rank14): packet21-racer/fit02 passes12/12static+945presentation/exactrest, six own masks. Proposed observed native01 0/0, p952.6/max9.9ms4×, zeroCPUoverbudget/longintervals; other-lane work15/21hostsamples disclosed. Heads overlap atreturn; Claude stage/picker/coveragepending. Three masterattempts, two framingrejects retained; exact maskpromptLFserialization reconciled without changing old receipts. Runtimeunchanged839cac0b; rootvalidatePASS, no unchangedbattery. NextGrouse/Sandpiper, thenranking; Capuchinnewtailedtemplate remainsdependency.
+
+
+Grouse item22: audits/ART_BATTLE_FOCUS_20260925/22-grouse finalfit03/mask-set03 passes14/14+1033presentation/exactrest; nativeobserved02 closes nearwing opening,0/0refusals,p957.4/max28.3ms4×,oneCPUoverbudget finalsettle. OtherlaneVitest23/23samples. Positive headgap; integratedfullstage/picker/phonegatependingClaude. Runtime839cac0b unchanged, no repeatedfull/S2; priorI5+acquisitiontimeout remain. Codex next Sandpiper thenrankedtop35; Capuchinawaitstailed-primate. C8/economyparked, noGitHubwrite.
+
+
+Sandpiper item23 finalfit02:14/14+1028presentation/exactrest; sixownmasks. Canonical tame neck-bow conditionalafter original/legspan refusal preservesexpression/override.10tests,S2six/13286identical,appTS/rootPASS; fullprofile5110pass/soleparkedI5red (earlieracquisitiontimeout didnotrecuronchangedsource). Proposednativeobserved01:0/0,p954.9/max10.6ms4×,zeroCPUoverbudget; otherlane0/22samples. Connectedpaint/positivebillgap. Claudeintegratedfullstage/picker/coveragepending. CodexnextDivingBeetle,Herring,WildHorseandremainingtop35; Capuchintemplateaskoutstanding. C8/economyparked.
+
+
+Rank22 DivingBeetle prepaintblocked: explicit hidden flightwings unsupported (onlycrab hiddenlegs currently). Exactrefusal/sourcehashes in closed-beetle-intake-01; Clauderequest forclosedwing support preservingopenbeetles/flightgate/S2. Noabsentlie orpaintingattempt. CodexcontinuesHerring, returnswhencontractavailable. Sandpiper signed0e9fcf18G.
+
+
+Herring item24 /Earthrank23 finalfit02+sixmasks:13/13+949presentation/exactrest; waternative0/0,p953/max8.6ms4×,zeroCPUoverbudget. Heads overlapreturn and fainttailcrosseswaterband—Claude stagefixbeforepublication. Runtimeunchanged0e9fcf18,no repeatedfull/S2; rootPASS. CodexnextWildHorse thenSalamander/Eel/Honeybee/Rat/Hare/Turtle/Dolphin/Whale/Bullfrog/Boar/Deer. ClosedBeetlecapabilityrefusal signedc132cf40G; nofalseadmission. C8/economyparked.
+
+Herring also retains low-alpha fringe/specks outside visible silhouette; alpha-extents.json and README explicitly keep master cleanup open, noalphaerase/raisedthreshold. Do not count it as visually admitted.
+
+
+Wild Horse item25 /Earthrank24 finalfit05:19/19static+1680presentation/exactrest, six own masks incl. zebra legbands. Material-wording refusal and native01 neck/body seam retained; fit05 explicit neck/spine join closesseam. Proposednative02 0/0,p955.8/max14.2ms4×,zeroCPUoverbudget,positive headgap. Runtimeunchanged0e9fcf18,no repeatedfull/S2;rootPASS. Claudeintegratedfullstage/picker/coveragepending. CodexnextSalamander/Eel andremainingranked; C8/economyparked.
+
+
+Salamander item26/Earthrank25:27parts finalfit05,sixmasks,17/19static/exactrest. Gallop foreNearreach73.7ms/castcompression372.75ms; presentationforefootlimit7700ms, allretained. Nativeobserved01 0/0,p954.1/max9.8ms4×zeroCPUover, butheadsoverlapreturn. NO pickeradmission. Fourmasterattempts retained; finalopaquekeycleanbounds. Codexrepairs shortlegmotion thenEel/ranking; Claude stagespacing/integrationpending. Runtimeunchanged0e9fcf18/rootPASS/no repeatedfull/S2.
+
+
+Salamander motion01 repairscanonical gallop/cast by conditionalwhole-torsogain underunchangedcontact. Samefit05 now19/19+1557presentation/exactrest. Sevennew+18existingtests/appTS/rootPASS; S2six/13286identical; fullprofile5117pass/soleparkedI5red. Freshproposednative0/0,p954.1/max11.8ms4×zeroCPUover; heads stilloverlapreturn,Claude stage/picker/coveragepending. CodexcontinuesEel/ranking; C8/economyparked; nohostedwrite.
+
+Eel item27: audits/ART_BATTLE_FOCUS_20260925/27-eel, fit02 +mask-set03/markings.json,13parts,12/12static+1015presentation/exactrest, sixownmasks. Proposed waterfilm0/0,p952.3/max7ms4×,zeroCPUoverbudget,757live761encoded; returnheads overlap, integrated admission pendingClaude spacing/fulltravel/picker. Two rejectedmottled generations retained. Runtime6d195114 unchanged, no repeatedfull/S2. NextHoneybee/Rat/Hare and thirdten sheet; C8/economyparked.
+
+Honeybee item28: audits/ART_BATTLE_FOCUS_20260925/28-honeybee fit02 +mask-set02,21owners,13/13static+953presentation/exactrest, six explicitly abdomen-only masks. Proposedflight0/0p955.8max37.1ms4×;25overbudgetapproach/return frames,13longintervals →phoneRED. Positiveheadgap/connectedpaint reviewed. Codex phase-transition performance repair pending; Claude no picker admission yet. NextRat/Hare for thirdten sheet. C8/economyparked.

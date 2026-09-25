@@ -1,0 +1,179 @@
+{
+  "schema": "cf.marking-masks/v1",
+  "space": "master",
+  "width": 1254,
+  "height": 1254,
+  "source": "../master.png",
+  "sourceSha256": "712072ae73b0cc55cbffc990bdc202a11871cc1b264ab98d9a13927bbda146c8",
+  "keyedAlphaFile": "../fit-03/parts/keyed.png",
+  "keyedSha256": "24e0dbf2893dc4819279027d1902973bc3b2fa4dfa7400c1c643324a3dcd0875",
+  "recordRecipeHash": "daa68241ea47298267bdec89e076321856f4c6550309e1f8c30188fd68113312",
+  "compiledPrompt": {
+    "file": "../prompt.txt",
+    "sha256": "b9891eb5e1f72333837e10797c88061a16ef119e5d62181b27f7dbbb4c33d047",
+    "bytesBase64": "UGFzdGUgaW4gZXZlcnkgcHJvbXB0LiBBdHRhY2ggdGhlIE9ORSByZWZlcmVuY2UgdGhlIGNsYXNzIGNhbGxzIGZvciwgbmV2ZXIgYm90aC4KCkZvciBjdXQtb3V0IGNsYXNzZXMgKG9yYml0YWwgcGxhbmV0cywgZmxvcmEsIGZhdW5hLCBzaGlwcywgbGFuZG1hcmtzLCBpdGVtcywKZW1ibGVtcywgRWZmZWN0czsgaW5hY3RpdmUgcGVvcGxlIGV4Y2x1ZGVkOyBBcmVuYSBNSUQvTkVBUiB1c2UgdGhlIHJ1bGUgYmVsb3cpOgogIE1hdGNoIHRoZSBleGFjdCB2aXN1YWwgbGFuZ3VhZ2Ugb2YgdGhlIGF0dGFjaGVkIGFwcHJvdmVkIERpc2NvdmVyeSBBdGxhcywKICBhdWRpdHMvTUlER0FNRV9BUlRfRElSRUNUSU9OXzIwMjYwOTA4LzAxLWRpc2NvdmVyeS1hdGxhcy5wbmcsCiAgc3R5bGVfaWQgImZyb250aWVyIi4gRG8gbm90IHJlZGVzaWduIG9yIHJlaW50ZXJwcmV0IHRoZSBzdHlsZS4gVGhlIGF0bGFzIGlzCiAgYSByZWZlcmVuY2Ugb25seTogbmV2ZXIgY3JvcCBhcnR3b3JrIG91dCBvZiBpdC4gSXRzIGJhY2tncm91bmQsIGxldHRlcmluZwogIGFuZCBkaXZpZGVkIGxheW91dCBhcmUgbm90IHRoZSBvdXRwdXQgbGF5b3V0OyB1c2UgdGhpcyBjbGFzcydzIG93biBsYXlvdXQuCiAgU0hBLTI1NjogYzUzYWRkMjk5M2NhYmEzOWI2ZGMxMmRjNzVkNWQ3NjdiZTg2ODk2YTdjNDFjZmFhNmM5NGYzNTZlOGQ5MmE2MgoKRm9yIHNjZW5lIGNsYXNzZXMgKHVuaXZlcnNlLCBzdGFycywgcGxhbmV0IGJpb21lcywgQXJlbmEgRkFSKSwgYW5kIEFyZW5hCk1JRC9ORUFSIGtleS1wYWludGVkIHRlcnJhaW4gc28gYWxsIGFyZW5hIGxheWVycyBtYXRjaCB0aGUgc2FtZSBiaW9tZSBoYW5kOgogIE1hdGNoIHRoZSBleGFjdCB2aXN1YWwgbGFuZ3VhZ2Ugb2YgdGhlIGF0dGFjaGVkIGFwcHJvdmVkIExpdmluZyBXb3JsZHMKICB0cmlwdHljaCwgYXVkaXRzL01JREdBTUVfQVJUX0RJUkVDVElPTl8yMDI2MDkwOC8wMi1pbmhhYml0ZWQtd29ybGRzLnBuZywKICBzdHlsZV9pZCAiZnJvbnRpZXIiLiBEbyBub3QgcmVkZXNpZ24gb3IgcmVpbnRlcnByZXQgdGhlIHN0eWxlLiBUaGUgdHJpcHR5Y2gKICBpcyBhIHJlZmVyZW5jZSBvbmx5OiBuZXZlciBjcm9wIGFydHdvcmsgb3V0IG9mIGl0LiBJdHMgbGV0dGVyaW5nIGFuZCBwYW5lbAogIGRpdmlzaW9ucyBhcmUgbm90IHRoZSBvdXRwdXQgbGF5b3V0OyB1c2UgdGhpcyBjbGFzcydzIG93biBsYXlvdXQuCiAgU0hBLTI1NjogNjhmMDNmMDIzM2VjMmNhODlkZGYzOTIzOGNmYWYxYTMwYjgzMDI3YTU4YmVhZWE5ZmJiMTczNTI3MzcyMGEzOAoKVGhlIGZvdXIgYXBwcm92ZWQgaW1hZ2VzIGluIGF1ZGl0cy9NSURHQU1FX0FSVF9ESVJFQ1RJT05fMjAyNjA5MDggZGVmaW5lIHRoZQphcnQgZGlyZWN0aW9uOiAwMS1kaXNjb3ZlcnktYXRsYXMucG5nLCAwMi1pbmhhYml0ZWQtd29ybGRzLnBuZywKMDMtZWFydGgtZnVsbC1sYW5kZmFsbC5wbmcgYW5kIDA0LWFsaWVuLWZ1bGwtbGFuZGZhbGwucG5nLiBUaGUgZXhpc3RpbmcgYXRsYXMKYW5kIHRyaXB0eWNoIGFib3ZlIGFyZSB0aGUgcHJvZHVjdGlvbiByZWZlcmVuY2UgbG9ja3M7IGRvIG5vdCBwYWludCBuZXcgbG9ja3MuClZlcmlmeSB0aGVpciBvcmlnaW5hbCBieXRlcyBhZ2FpbnN0IHRoZXNlIFNIQS0yNTYgdmFsdWVzIGJlZm9yZSB1c2UuClRoZSBsb2NhbCBtb2RlbCdzIGN1cnJlbnQgcml2ZXJiYW5rIG91dHB1dCBpcyBhIGdhcCB0byBjbG9zZSwgbm90IGEgcmVmZXJlbmNlLgoKUGFzdGUgdGhpcyBwYXJhZ3JhcGggdmVyYmF0aW0gaW4gZXZlcnkgcHJvbXB0LiBBcHByb3ZlZCBieSBOaWNrIGF0IDZmNWMzOTZlLgpDaGFuZ2VzIHRvIHRoZSBwYXJhZ3JhcGggcmVxdWlyZSBhIG5ldyBraXQgdmVyc2lvbjsgbmV2ZXIgcmV2aXNlIGl0IGF0IHNlbmQgdGltZS4KCiAgUmljaCBuYXR1cmFsLWhpc3RvcnkgZmFudGFzeSBwYWludGluZywgb25lIGhhbmQgYWNyb3NzIGV2ZXJ5IHN1YmplY3QsCiAgdGFjdGlsZSBkaXJlY3Rpb25hbCBicnVzaHdvcmssIGJlbGlldmFibGUgY29ubmVjdGVkIGFuYXRvbXksIHdlYXRoZXJlZCByb2NrLAogIGluZGl2aWR1YWwgYnV0IGdyb3VwZWQgZm9saWFnZSwgZGVlcCBhdG1vc3BoZXJpYyBsYXllcnMsIHJlYWRhYmxlIHNpbGhvdWV0dGVzLAogIHNlbGVjdGl2ZSBoaWdoIGRldGFpbCwgc29mdCBuYXR1cmFsIGxpZ2h0IHNoYXJlZCBieSBldmVyeSBzdWJqZWN0LCBob25lc3QKICBncm91bmQgYW5kIHdhdGVyIGNvbnRhY3QsIHN1YnRsZSBmb3JlZ3JvdW5kIG9jY2x1c2lvbiwgcHJlbWl1bSBwYWludGVkCiAgc2NpZW5jZS1maWN0aW9uIHdpdGggZGlzY292ZXJ5IGFuZCBjaGFyYWN0ZXI7IEVhcnRoIHNwZWNpZXMga2VlcCByZWFsCiAgYW5hdG9teSwgZnVyLCBmZWF0aGVyIGFuZCBib3Rhbnk7IGFsaWVuIGxpZmUga2VlcHMgaXRzIGRhdGEtZHJpdmVuIGZvcm0gYW5kCiAgcGFsZXR0ZSBpbiB0aGUgc2FtZSBoYW5kOyBub3QgcGxhc3RpYyBDR0ksIG5vdCBwaG90b2dyYXBoeSwgbm90IGNhcnRvb24sCiAgbm90IG92ZXJzaGFycGVuZWQsIG5vIGdsb3dpbmcgb3V0bGluZXMuCgpUaGUgc2NlbmUtY29udGFjdCBhbmQgb2NjbHVzaW9uIGxhbmd1YWdlIGdvdmVybnMgY29tcG9zZWQgc2NlbmVzLiBBIGN1dC1vdXQKcmV0YWlucyB0aGUgc2FtZSBoYW5kIGFuZCBhbmF0b215IHdoaWxlIG9iZXlpbmcgaXRzIG5vLWdyb3VuZC9uby1zaGFkb3cgbGF5b3V0Owpjb250YWN0IGFuZCBzaGFyZWQgYXRtb3NwaGVyZSBhcmUgcmVzb2x2ZWQgd2hlbiBjb21wb3NlZCBhbmQgZmluaXNoZWQgb24gYSBwbGF0ZS4KVGhlIGNvbXBhbmlvbiBydWxlIGluIHNlY3Rpb24gNEUgaXMgcmV0YWluZWQgZm9yIGNvbXBhbmlvbi1mbGFnZ2VkIGdhbWUgZGF0YTsKaXQgZG9lcyBub3QgY2hhbmdlIGNvdW50cyBvciB0aGUgdW5kZXJseWluZyBnZW5vbWUuCgpTWVNURU0gQ0FSRCAtIFNvbCAvIEVhcnRoOyBDRjF8Zzo5OTlAOTAsLTYwfHM6NDI0MjQyQDU2MCwxNzB8cDoxMzMjMgogIFN0YXI6IEc7IGEgeWVsbG93IHN1bi1saWtlIHN0YXI7ICNmZmY0ZDg7IHJhZGl1cyAyNi4gI2ZmZjRkOCAgeWVsbG93IHN1bi1saWtlIHN0YXI7IFNvbCBwaW5uZWQuIFBpZ21lbnQ6IGl2b3J5LCB3YXJtIHdoaXRlLgogICAgICAgICBMaWdodDogbmVhci1uZXV0cmFsIHllbGxvdy13aGl0ZSwgbmF0dXJhbCBkaWZmdXNlIGZpbGwuCiAgTGlnaHQ6IGRheTsgcmFpbjsgb25lIHByaW1hcnksIG5vIGNvbXBhbmlvbnM7IGRpZmZ1c2UgY2xvdWQtZmlsdGVyZWQgbGlnaHQsIHNvZnQgbmV1dHJhbCBjb250YWN0IHNoYWRvd3M7IGRpcmVjdGlvbmFsIHN1biBwb3NpdGlvbiBhYnNlbnQgZnJvbSBzb3VyY2UsIGRvIG5vdCBpbnZlbnQgYSB2aXNpYmxlIHNlY29uZCBsaWdodC4KICBNaW5lcmFsIHBhbGV0dGU6IHRlcnJhbjsgc2VhSHVlIDIxMCwgbGFuZEh1ZSAxMTUsIGljZUFtdCAwLjU7IGJsdWUgd2F0ZXIsIGdyZWVuIGxhbmQsIHBhbGUgaWNlOyBodWUgYWJzZW50IGZyb20gc291cmNlLgogIEF0bW9zcGhlcmU6IHZpc3RhIHBhbGV0dGUgcmFpbiwgY2xpbWF0ZSB0ZW1wZXJhdGUsIHdlYXRoZXIgcmFpbiwgd2F0ZXIgbGlxdWlkOyByYWluIHNvZnRlbnMgZGlzdGFudCBibHVlLWdyZXkgbGF5ZXJzLgogIEZsb3JhIHBpZ21lbnQ6IHRlbXBlcmF0ZTsgZm9ybXMgdHJlZSwgc2hydWIsIGZsb3dlciwgZ3Jhc3MsIGZlcm47IFBlcnNpbW1vbjogZ3JlZW4gbGVhdmVzLCBvcmFuZ2UgZnJ1aXQsIGJyb3duIHdvb2Q7IERldmlsJ3MgQ2x1YjogZ3JlZW4gbGVhdmVzIGFuZCByZWQgYmVycnkgY29uZXM7IENyYW5iZXJyeTogZ3JlZW4gbGVhdmVzIGFuZCByZWQgYmVycmllcy4KICBGYXVuYSBhZGFwdGF0aW9uOiBFYXJ0aCBHcm91c2U7IHJlYWwgbmFtZWQgYW5hdG9teSBhbmQgbmF0dXJhbCBtYXRlcmlhbHMgdGFrZSBwcmlvcml0eSBvdmVyIHJhdyBwcm9jZWR1cmFsIGdlbmVzLiBwbHVtcCBjaGlja2VuLWxpa2UgYm9keTsgc2hvcnQgcm91bmRlZCBiaWxsOyBicm9hZCBmYW5uYWJsZSBiYXJyZWQgdGFpbCBhbmQgZmVhdGhlcmVkIGxlZ3MuIElzb2xhdGVkIGxpYnJhcnkgYXJjaGV0eXBlLCBub3QgYSBsYW5kaW5nIHJlc2lkZW50IGNsYWltLgogIE9uZSBzaWduYXR1cmU6IG5vIGJpb21lIGhhemFyZCBpbiBzb3VyY2U7IG5vIGFkZGVkIGhhemFyZCBtb3RpZi4KClNVQkpFQ1QKT25lIEVhcnRoIEdyb3VzZS4gcGx1bXAgY2hpY2tlbi1saWtlIGJvZHk7IHNob3J0IHJvdW5kZWQgYmlsbDsgYnJvYWQgZmFubmFibGUgYmFycmVkIHRhaWwgYW5kIGZlYXRoZXJlZCBsZWdzLiAKR2Vub21pYyBpZGVudGl0eSBhbmQgdHJhaXRzIChFYXJ0aCBhbmF0b215IHRha2VzIHByaW9yaXR5KTogeyJzZWVkIjozNTg1ODA5MDIzLCJraW5nZG9tIjoiZmF1bmEiLCJjb2xvciI6MiwiZm9ybSI6OSwiYm9keSI6MTIsImxvY28iOjMsInRyYWl0IjoyMiwic2l6ZSI6MSwiZGlldCI6MywiaGVhZCI6MywibGltYnMiOjUsInNraW4iOjIsInRhaWwiOjMsInBhdHRlcm4iOjEsImV5ZXMiOjAsImJlaGF2aW9yIjowLCJoYWJpdGF0IjoxNSwiZGV0YWlsIjo0LCJhY2NlbnQiOjQsInRlbXBlciI6OCwic2Vuc2UiOjMsInJlcHJvIjo2LCJsaWZlIjoyLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjEsIl9lYXJ0aE5hbWUiOiJHcm91c2UifQpGYW1pbHkgY29udHJhY3QgYmlwZWQtYmlyZCwgY2xpcCBzZXQgYmlwZWQtYmlyZC12MS4gUmVxdWlyZWQgcmlnIGpvaW50L3BhcnQgaW52ZW50b3J5OiByb290LCBwZWx2aXMsIHNwaW5lLCBjaGVzdCwgbmVjazAsIG5lY2sxLCBoZWFkLCBiZWFrLCBsZWdGYXJLbmVlLCBsZWdGYXJBbmtsZSwgbGVnRmFyRm9vdCwgbGVnTmVhcktuZWUsIGxlZ05lYXJBbmtsZSwgbGVnTmVhckZvb3QsIHdpbmdGYXJSb290LCB3aW5nRmFyVGlwLCB3aW5nTmVhclJvb3QsIHdpbmdOZWFyVGlwLCB0YWlsRmFuLiBDb25uZWN0ZWQgb3JnYW5pYyBwYWludGVkIHN1YmplY3QsIG5vIGVxdWlwbWVudCwgbm8gZmFudGFzeSBhZGRlZCBsaW1icy4KUmlnaHQtZmFjaW5nIHNpZGUtb24gcGx1bXAgR3JvdXNlIGluIGEgZ3JvdW5kZWQgZGlzcGxheSBzdGFuY2UuIFNtYWxsIHJvdW5kIGhlYWQgd2l0aCBhIHNob3J0IHJvdW5kZWQgYmlsbDsgc2hvcnQgYnJvYWQgcm91bmRlZCBmYW4gdGFpbCwgZmVhdGhlcmVkIGZlZXQgb24gc2hvcnQgc3R1cmR5IGxlZ3MsIGJvdGggZmVldCBzZXBhcmF0ZWx5IHZpc2libGUgd2l0aCBmYXIgZm9vdCBvZmZzZXQuIFR3byBzaG9ydCByb3VuZGVkIHdpbmdzIGdlbnRseSBoYWxmLXNwcmVhZCBhd2F5IGZyb20gdGhlIGJvZHksIGZhciB3aW5nIHJhaXNlZCBzbGlnaHRseSBoaWdoZXIgc28gYm90aCBjb21wbGV0ZSB3aW5ncyBjYW4gYmUgYXNzaWduZWQgaW5kZXBlbmRlbnQgcmlnIHN1cmZhY2VzLiBQbGFpbiB3YXJtIHVtYmVyLWJyb3duIGJhc2UgY29hdCB3aXRoIGZlYXRoZXIgdGV4dHVyZSBhbmQgc29mdCBmb3JtIHNoYWRpbmcsIE5PIHBpZ21lbnQgYmFycywgc3BvdHMsIHN0cmlwZXMsIG5lY2sgcmluZ3Mgb3IgcGF0Y2hlczsgc2VwYXJhdGUgbWFza3Mgc3VwcGx5IHRob3NlIGxhdGVyLiBLZWVwIHRoZSBXSE9MRSBiaXJkIGNvbXBhY3QgaW5zaWRlIGE3NTBweC13aWRlIGJ5ODAwcHgtaGlnaCBjZW50ZXJlZCBib3ggb24gdGhlMTI1NC1zcXVhcmUgdHJhbnNwYXJlbnQgY2FudmFzLCBhdCBsZWFzdDIwMHB4IHRyYW5zcGFyZW50IGJvcmRlciBhdCBldmVyeSBzaWRlLiBOYXR1cmFsIGdyb3VuZGVkIGdhbWViaXJkIHNpbGhvdWV0dGUsIG5ldmVyIGEgbG9uZy1uZWNrIGJpcmQgb3IgcmFwdG9yLgoKQUNDVVJBQ1kKICBDb21wbGV0ZSByZWFsIEdyb3VzZSwgb25lIGNyZWF0dXJlLCBhbmF0b21pY2FsbHkgYWNjdXJhdGUgc3BlY2llcyBwcm9wb3J0aW9ucy4KICBBbGwgbm9ybWFsbHkgdmlzaWJsZSBsaW1icyBzZXBhcmF0ZWx5IHJlYWRhYmxlIHdpdGggZmFyIGFwcGVuZGFnZXMgdmlzaWJseSBvZmZzZXQgd2hlcmUgdGhlIHZpZXcgcGVybWl0czsgbmV2ZXIgaW52ZW50IGV4dHJhIGFuYXRvbXkuCiAgTm8gc2NlbmVyeSwgZ3JvdW5kLCBzaGFkb3csIHRleHQsIGR1cGxpY2F0ZSBjcmVhdHVyZSwgY3JvcHBlZCBhbmF0b215LgogIAoKTEFZT1VUCiAgUmlnaHQtZmFjaW5nIHNpZGUtb24gcGx1bXAgR3JvdXNlIGluIGEgZ3JvdW5kZWQgZGlzcGxheSBzdGFuY2UuIFNtYWxsIHJvdW5kIGhlYWQgd2l0aCBhIHNob3J0IHJvdW5kZWQgYmlsbDsgc2hvcnQgYnJvYWQgcm91bmRlZCBmYW4gdGFpbCwgZmVhdGhlcmVkIGZlZXQgb24gc2hvcnQgc3R1cmR5IGxlZ3MsIGJvdGggZmVldCBzZXBhcmF0ZWx5IHZpc2libGUgd2l0aCBmYXIgZm9vdCBvZmZzZXQuIFR3byBzaG9ydCByb3VuZGVkIHdpbmdzIGdlbnRseSBoYWxmLXNwcmVhZCBhd2F5IGZyb20gdGhlIGJvZHksIGZhciB3aW5nIHJhaXNlZCBzbGlnaHRseSBoaWdoZXIgc28gYm90aCBjb21wbGV0ZSB3aW5ncyBjYW4gYmUgYXNzaWduZWQgaW5kZXBlbmRlbnQgcmlnIHN1cmZhY2VzLiBQbGFpbiB3YXJtIHVtYmVyLWJyb3duIGJhc2UgY29hdCB3aXRoIGZlYXRoZXIgdGV4dHVyZSBhbmQgc29mdCBmb3JtIHNoYWRpbmcsIE5PIHBpZ21lbnQgYmFycywgc3BvdHMsIHN0cmlwZXMsIG5lY2sgcmluZ3Mgb3IgcGF0Y2hlczsgc2VwYXJhdGUgbWFza3Mgc3VwcGx5IHRob3NlIGxhdGVyLiBLZWVwIHRoZSBXSE9MRSBiaXJkIGNvbXBhY3QgaW5zaWRlIGE3NTBweC13aWRlIGJ5ODAwcHgtaGlnaCBjZW50ZXJlZCBib3ggb24gdGhlMTI1NC1zcXVhcmUgdHJhbnNwYXJlbnQgY2FudmFzLCBhdCBsZWFzdDIwMHB4IHRyYW5zcGFyZW50IGJvcmRlciBhdCBldmVyeSBzaWRlLiBOYXR1cmFsIGdyb3VuZGVkIGdhbWViaXJkIHNpbGhvdWV0dGUsIG5ldmVyIGEgbG9uZy1uZWNrIGJpcmQgb3IgcmFwdG9yLgogIE9uZSB3aG9sZSBjcmVhdHVyZSBjZW50ZXJlZCwgZW50aXJlIGFuYXRvbXkgaW4gZnJhbWUsIGF0IGxlYXN0IDggcGVyY2VudCBzYWZlIG1hcmdpbi4gTm8gZmxvb3IgcGxhbmUuCgpURUNITklDQUwgT1VUUFVUCiAgQ3JlYXRlIGEgc3F1YXJlIDEyNTQgeCAxMjU0IFBORy4gRXZlcnkgcGl4ZWwgdGhhdCBpcyBub3QgdGhlIHN1YmplY3QgaXMgb25lCiAgZmxhdCwgdW5pZm9ybSwgcHVyZSBtYWdlbnRhIGZpbGwgKCNGRjAwRkYpOiBubyBncmFkaWVudCwgdmlnbmV0dGUsIHRleHR1cmUsCiAgbm9pc2UsIGNoZWNrZXJib2FyZCBvciB0cmFuc3BhcmVuY3kgcGF0dGVybiwgYW5kIG5vIGdyb3VuZCwgYmFzZSwgZnJhbWUsCiAgc2NlbmVyeSBvciBjYXN0IHNoYWRvdy4gVGhlIHN1YmplY3QncyBvdXRsaW5lIGlzIGNyaXNwIGFuZCBmdWxseSBvcGFxdWUKICBhZ2FpbnN0IHRoZSBtYWdlbnRhLCB3aXRoIG5vIGdsb3csIGhhemUsIHNtb2tlIG9yIHNvZnQgZmVhdGhlcmluZyBibGVlZGluZwogIGludG8gaXQsIGFuZCBub3RoaW5nIG9uIHRoZSBzdWJqZWN0IGlzIG1hZ2VudGEgb3IgcGluay4gVGhlIG1hZ2VudGEgaXMga2V5ZWQKICBvdXQgYWZ0ZXJ3YXJkcyB0byBwcm9kdWNlIHRoZSB0cmFuc3BhcmVudCBhc3NldC4KCk5FR0FUSVZFCiAgTm8gdGV4dCwgbGV0dGVycywgbnVtYmVycywgd2F0ZXJtYXJrLCBzaWduYXR1cmUsIGJvcmRlciwgZnJhbWUsIGdyaWQsIFVJCiAgZWxlbWVudCwgaGVhbHRoIGJhciwgbWluaW1hcCwgd2F5cG9pbnQsIHRva2VuIHJpbmcsIGJhc2UsIHBlZGVzdGFsLAogIHBob3RvcmVhbGlzbSwgYW5pbWUsIGNoaWJpIHN0eWxpbmcsIGNlbCBzaGFkaW5nLCAzRCByZW5kZXIsIHBsYXN0aWMgdG95CiAgc2hlZW4sIGFpcmJydXNoZWQgZ3JhZGllbnRzLCBkdXBsaWNhdGUgc3ViamVjdCwgdW5pbnRlbmRlZCBjb21wYW5pb24sIGV4dHJhCiAgbGltYnMsIG1pc3NpbmcgbGltYnMsIG1hbGZvcm1lZCBoYW5kcywgY3JvcHBlZCBhbmF0b215LCBvciBjb250YWN0LXNoZWV0CiAgbGF5b3V0LiBObyBsZW5zIGZsYXJlLCBubyBjaHJvbWF0aWMgYWJlcnJhdGlvbiwgbm8gaG9sb2dyYXBoaWMgVUkKICBwcm9qZWN0aW9ucywgbm8gZ2xvd2luZyBvdXRsaW5lcyBvciByaW0gbGlnaHQgdXNlZCBhcyBhbiBlZmZlY3QuCiAgTm8gc2NlbmVyeSwgbm8gZmxvb3IgcGxhbmUsIG5vIGNhc3Qgc2hhZG93LCBubyBkcm9wIHNoYWRvdywgbm8gd2hpdGUKICBiYWNrZ3JvdW5kLCBubyBjaGVja2VyZWQgYmFja2dyb3VuZCwgbm8gYmFrZWQgdHJhbnNwYXJlbmN5IHBhdHRlcm4uCiAgQmFja2dyb3VuZCBtdXN0IGJlIG9uZSBmbGF0IHVuaWZvcm0gbWFnZW50YSBmaWxsIGFuZCBub3RoaW5nIGVsc2UuCiAgTm8gZGVmYXVsdCBiaXBlZGFsIGh1bWFub2lkIHN0YW5jZSB1bmxlc3MgbmFtZWQsIG5vIGFybW91ciBwbGF0aW5nIHRoZSBicmllZiBkaWQKICBub3QgYXNrIGZvciwgbm8gaHVtYW4gZXllcywgbm8gd2VhcG9ucyBoZWxkIGluIGhhbmRzIHVubGVzcyBuYW1lZCwgbm8gcmlkZXIsCiAgbm8gc2Vjb25kIGNyZWF0dXJlLgogIERvIG5vdCBhZGQgYSBibGFua2V0IG92ZXJzaXplZC1oZWFkIGJhbiB0aGF0IHdvdWxkIGZpZ2h0IGEgZGF0YS1vd25lZAogIGNvbXBhbmlvbiBicmllZi4="
+  },
+  "plain": null,
+  "iridescent": {
+    "mode": "emissive",
+    "mask": null
+  },
+  "patterns": {
+    "striped": {
+      "file": "markings/striped.png",
+      "sha256": "0a7c497898a1639e58b4d3aaf9524ffbcdf27b33d9ad962faa19438c0d6f138e",
+      "promptFile": "prompts/striped.txt",
+      "promptSha256": "8b592bbfccae80df70d0f601962464dc97440687c06721b24d3b01664353c6e2",
+      "prompt": "Use case: scientific-educational. Produce a sparse 2D shader DATA MASK, not an illustration. EXACT1254 x 1254 PNG with genuine alpha, unchanged registration to the attached Grouse reference. The reference is ONLY for coordinates; DO NOT paint its feathers, body surface, silhouette, shading or texture. EVERY pixel except the specified white shapes must be fully transparent, including between shapes and inside rings. Exactly FOUR slender vertical white strokes, each only6 pixels wide and90 pixels long, centred at x=805,840,875,910 and y=680. At least25 fully transparent pixels separate neighboring strokes. White means solid flat RGB255,255,255 with antialiasing only at the shape edge. NO white or grey base layer, NO halo connecting shapes, NO cast shadow, NO creature pixels, NO text, NO resizing or recentering. Keep the mask SMALL in the lower-right central breast region, all marks strictly inside x=780..940,y=590..770. Keep head, wings, tail and feet empty. The previous attempt incorrectly filled a large white body patch; this correction must show isolated small marks surrounded by empty transparency.\n",
+      "promptBytesBase64": "VXNlIGNhc2U6IHNjaWVudGlmaWMtZWR1Y2F0aW9uYWwuIFByb2R1Y2UgYSBzcGFyc2UgMkQgc2hhZGVyIERBVEEgTUFTSywgbm90IGFuIGlsbHVzdHJhdGlvbi4gRVhBQ1QxMjU0IHggMTI1NCBQTkcgd2l0aCBnZW51aW5lIGFscGhhLCB1bmNoYW5nZWQgcmVnaXN0cmF0aW9uIHRvIHRoZSBhdHRhY2hlZCBHcm91c2UgcmVmZXJlbmNlLiBUaGUgcmVmZXJlbmNlIGlzIE9OTFkgZm9yIGNvb3JkaW5hdGVzOyBETyBOT1QgcGFpbnQgaXRzIGZlYXRoZXJzLCBib2R5IHN1cmZhY2UsIHNpbGhvdWV0dGUsIHNoYWRpbmcgb3IgdGV4dHVyZS4gRVZFUlkgcGl4ZWwgZXhjZXB0IHRoZSBzcGVjaWZpZWQgd2hpdGUgc2hhcGVzIG11c3QgYmUgZnVsbHkgdHJhbnNwYXJlbnQsIGluY2x1ZGluZyBiZXR3ZWVuIHNoYXBlcyBhbmQgaW5zaWRlIHJpbmdzLiBFeGFjdGx5IEZPVVIgc2xlbmRlciB2ZXJ0aWNhbCB3aGl0ZSBzdHJva2VzLCBlYWNoIG9ubHk2IHBpeGVscyB3aWRlIGFuZDkwIHBpeGVscyBsb25nLCBjZW50cmVkIGF0IHg9ODA1LDg0MCw4NzUsOTEwIGFuZCB5PTY4MC4gQXQgbGVhc3QyNSBmdWxseSB0cmFuc3BhcmVudCBwaXhlbHMgc2VwYXJhdGUgbmVpZ2hib3Jpbmcgc3Ryb2tlcy4gV2hpdGUgbWVhbnMgc29saWQgZmxhdCBSR0IyNTUsMjU1LDI1NSB3aXRoIGFudGlhbGlhc2luZyBvbmx5IGF0IHRoZSBzaGFwZSBlZGdlLiBOTyB3aGl0ZSBvciBncmV5IGJhc2UgbGF5ZXIsIE5PIGhhbG8gY29ubmVjdGluZyBzaGFwZXMsIE5PIGNhc3Qgc2hhZG93LCBOTyBjcmVhdHVyZSBwaXhlbHMsIE5PIHRleHQsIE5PIHJlc2l6aW5nIG9yIHJlY2VudGVyaW5nLiBLZWVwIHRoZSBtYXNrIFNNQUxMIGluIHRoZSBsb3dlci1yaWdodCBjZW50cmFsIGJyZWFzdCByZWdpb24sIGFsbCBtYXJrcyBzdHJpY3RseSBpbnNpZGUgeD03ODAuLjk0MCx5PTU5MC4uNzcwLiBLZWVwIGhlYWQsIHdpbmdzLCB0YWlsIGFuZCBmZWV0IGVtcHR5LiBUaGUgcHJldmlvdXMgYXR0ZW1wdCBpbmNvcnJlY3RseSBmaWxsZWQgYSBsYXJnZSB3aGl0ZSBib2R5IHBhdGNoOyB0aGlzIGNvcnJlY3Rpb24gbXVzdCBzaG93IGlzb2xhdGVkIHNtYWxsIG1hcmtzIHN1cnJvdW5kZWQgYnkgZW1wdHkgdHJhbnNwYXJlbmN5Lgo=",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/striped.png",
+      "rawSha256": "1ff21eba711b00d0a8d7370ba036f75309205911a97348c8a1324af4ef9038a2",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded; no anatomical exclusions"
+      }
+    },
+    "spotted": {
+      "file": "markings/spotted.png",
+      "sha256": "9e461e9ba41db898158d82a227a9ac47682ba22f233659d2ad0606887d7d2d03",
+      "promptFile": "prompts/spotted.txt",
+      "promptSha256": "9a54a752b9d34c02a045f521081f19123e33e0620b1563510e0747958e63c7c2",
+      "prompt": "Use case: scientific-educational. Produce a sparse 2D shader DATA MASK, not an illustration. EXACT1254 x 1254 PNG with genuine alpha, unchanged registration to the attached Grouse reference. The reference is ONLY for coordinates; DO NOT paint its feathers, body surface, silhouette, shading or texture. EVERY pixel except the specified white shapes must be fully transparent, including between shapes and inside rings. Exactly EIGHT separate small white circles, each radius9 pixels: centers (800,630),(850,620),(900,630),(815,675),(865,675),(915,685),(830,725),(885,730). At least25 fully transparent pixels around every circle. White means solid flat RGB255,255,255 with antialiasing only at the shape edge. NO white or grey base layer, NO halo connecting shapes, NO cast shadow, NO creature pixels, NO text, NO resizing or recentering. Keep the mask SMALL in the lower-right central breast region, all marks strictly inside x=780..940,y=590..770. Keep head, wings, tail and feet empty. The previous attempt incorrectly filled a large white body patch; this correction must show isolated small marks surrounded by empty transparency.\n",
+      "promptBytesBase64": "VXNlIGNhc2U6IHNjaWVudGlmaWMtZWR1Y2F0aW9uYWwuIFByb2R1Y2UgYSBzcGFyc2UgMkQgc2hhZGVyIERBVEEgTUFTSywgbm90IGFuIGlsbHVzdHJhdGlvbi4gRVhBQ1QxMjU0IHggMTI1NCBQTkcgd2l0aCBnZW51aW5lIGFscGhhLCB1bmNoYW5nZWQgcmVnaXN0cmF0aW9uIHRvIHRoZSBhdHRhY2hlZCBHcm91c2UgcmVmZXJlbmNlLiBUaGUgcmVmZXJlbmNlIGlzIE9OTFkgZm9yIGNvb3JkaW5hdGVzOyBETyBOT1QgcGFpbnQgaXRzIGZlYXRoZXJzLCBib2R5IHN1cmZhY2UsIHNpbGhvdWV0dGUsIHNoYWRpbmcgb3IgdGV4dHVyZS4gRVZFUlkgcGl4ZWwgZXhjZXB0IHRoZSBzcGVjaWZpZWQgd2hpdGUgc2hhcGVzIG11c3QgYmUgZnVsbHkgdHJhbnNwYXJlbnQsIGluY2x1ZGluZyBiZXR3ZWVuIHNoYXBlcyBhbmQgaW5zaWRlIHJpbmdzLiBFeGFjdGx5IEVJR0hUIHNlcGFyYXRlIHNtYWxsIHdoaXRlIGNpcmNsZXMsIGVhY2ggcmFkaXVzOSBwaXhlbHM6IGNlbnRlcnMgKDgwMCw2MzApLCg4NTAsNjIwKSwoOTAwLDYzMCksKDgxNSw2NzUpLCg4NjUsNjc1KSwoOTE1LDY4NSksKDgzMCw3MjUpLCg4ODUsNzMwKS4gQXQgbGVhc3QyNSBmdWxseSB0cmFuc3BhcmVudCBwaXhlbHMgYXJvdW5kIGV2ZXJ5IGNpcmNsZS4gV2hpdGUgbWVhbnMgc29saWQgZmxhdCBSR0IyNTUsMjU1LDI1NSB3aXRoIGFudGlhbGlhc2luZyBvbmx5IGF0IHRoZSBzaGFwZSBlZGdlLiBOTyB3aGl0ZSBvciBncmV5IGJhc2UgbGF5ZXIsIE5PIGhhbG8gY29ubmVjdGluZyBzaGFwZXMsIE5PIGNhc3Qgc2hhZG93LCBOTyBjcmVhdHVyZSBwaXhlbHMsIE5PIHRleHQsIE5PIHJlc2l6aW5nIG9yIHJlY2VudGVyaW5nLiBLZWVwIHRoZSBtYXNrIFNNQUxMIGluIHRoZSBsb3dlci1yaWdodCBjZW50cmFsIGJyZWFzdCByZWdpb24sIGFsbCBtYXJrcyBzdHJpY3RseSBpbnNpZGUgeD03ODAuLjk0MCx5PTU5MC4uNzcwLiBLZWVwIGhlYWQsIHdpbmdzLCB0YWlsIGFuZCBmZWV0IGVtcHR5LiBUaGUgcHJldmlvdXMgYXR0ZW1wdCBpbmNvcnJlY3RseSBmaWxsZWQgYSBsYXJnZSB3aGl0ZSBib2R5IHBhdGNoOyB0aGlzIGNvcnJlY3Rpb24gbXVzdCBzaG93IGlzb2xhdGVkIHNtYWxsIG1hcmtzIHN1cnJvdW5kZWQgYnkgZW1wdHkgdHJhbnNwYXJlbmN5Lgo=",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/spotted.png",
+      "rawSha256": "a2f75df46314425064bb68a38b01e762ca092b2c84e164376c8c67cb6ac61aad",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded; no anatomical exclusions"
+      }
+    },
+    "banded": {
+      "file": "markings/banded.png",
+      "sha256": "830685cbd1ef97a009ebfb04f63c71ce4e5375a9b83b6f33b9cb77e9f34373d3",
+      "promptFile": "prompts/banded.txt",
+      "promptSha256": "a72d4e4376c78fba3377cb6a8ed87f3d32cf839ea40966893998d619d2036cfb",
+      "prompt": "Use case: scientific-educational. Produce a sparse 2D shader DATA MASK, not an illustration. EXACT1254 x 1254 PNG with genuine alpha, unchanged registration to the attached Grouse reference. The reference is ONLY for coordinates; DO NOT paint its feathers, body surface, silhouette, shading or texture. EVERY pixel except the specified white shapes must be fully transparent, including between shapes and inside rings. Exactly FIVE thin horizontal white bars, each100 pixels wide and8 pixels high, centered at x=860 and y=615,645,675,705,735. Fully transparent22-pixel gaps between bars. White means solid flat RGB255,255,255 with antialiasing only at the shape edge. NO white or grey base layer, NO halo connecting shapes, NO cast shadow, NO creature pixels, NO text, NO resizing or recentering. Keep the mask SMALL in the lower-right central breast region, all marks strictly inside x=780..940,y=590..770. Keep head, wings, tail and feet empty. The previous attempt incorrectly filled a large white body patch; this correction must show isolated small marks surrounded by empty transparency.\n",
+      "promptBytesBase64": "VXNlIGNhc2U6IHNjaWVudGlmaWMtZWR1Y2F0aW9uYWwuIFByb2R1Y2UgYSBzcGFyc2UgMkQgc2hhZGVyIERBVEEgTUFTSywgbm90IGFuIGlsbHVzdHJhdGlvbi4gRVhBQ1QxMjU0IHggMTI1NCBQTkcgd2l0aCBnZW51aW5lIGFscGhhLCB1bmNoYW5nZWQgcmVnaXN0cmF0aW9uIHRvIHRoZSBhdHRhY2hlZCBHcm91c2UgcmVmZXJlbmNlLiBUaGUgcmVmZXJlbmNlIGlzIE9OTFkgZm9yIGNvb3JkaW5hdGVzOyBETyBOT1QgcGFpbnQgaXRzIGZlYXRoZXJzLCBib2R5IHN1cmZhY2UsIHNpbGhvdWV0dGUsIHNoYWRpbmcgb3IgdGV4dHVyZS4gRVZFUlkgcGl4ZWwgZXhjZXB0IHRoZSBzcGVjaWZpZWQgd2hpdGUgc2hhcGVzIG11c3QgYmUgZnVsbHkgdHJhbnNwYXJlbnQsIGluY2x1ZGluZyBiZXR3ZWVuIHNoYXBlcyBhbmQgaW5zaWRlIHJpbmdzLiBFeGFjdGx5IEZJVkUgdGhpbiBob3Jpem9udGFsIHdoaXRlIGJhcnMsIGVhY2gxMDAgcGl4ZWxzIHdpZGUgYW5kOCBwaXhlbHMgaGlnaCwgY2VudGVyZWQgYXQgeD04NjAgYW5kIHk9NjE1LDY0NSw2NzUsNzA1LDczNS4gRnVsbHkgdHJhbnNwYXJlbnQyMi1waXhlbCBnYXBzIGJldHdlZW4gYmFycy4gV2hpdGUgbWVhbnMgc29saWQgZmxhdCBSR0IyNTUsMjU1LDI1NSB3aXRoIGFudGlhbGlhc2luZyBvbmx5IGF0IHRoZSBzaGFwZSBlZGdlLiBOTyB3aGl0ZSBvciBncmV5IGJhc2UgbGF5ZXIsIE5PIGhhbG8gY29ubmVjdGluZyBzaGFwZXMsIE5PIGNhc3Qgc2hhZG93LCBOTyBjcmVhdHVyZSBwaXhlbHMsIE5PIHRleHQsIE5PIHJlc2l6aW5nIG9yIHJlY2VudGVyaW5nLiBLZWVwIHRoZSBtYXNrIFNNQUxMIGluIHRoZSBsb3dlci1yaWdodCBjZW50cmFsIGJyZWFzdCByZWdpb24sIGFsbCBtYXJrcyBzdHJpY3RseSBpbnNpZGUgeD03ODAuLjk0MCx5PTU5MC4uNzcwLiBLZWVwIGhlYWQsIHdpbmdzLCB0YWlsIGFuZCBmZWV0IGVtcHR5LiBUaGUgcHJldmlvdXMgYXR0ZW1wdCBpbmNvcnJlY3RseSBmaWxsZWQgYSBsYXJnZSB3aGl0ZSBib2R5IHBhdGNoOyB0aGlzIGNvcnJlY3Rpb24gbXVzdCBzaG93IGlzb2xhdGVkIHNtYWxsIG1hcmtzIHN1cnJvdW5kZWQgYnkgZW1wdHkgdHJhbnNwYXJlbmN5Lgo=",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/banded.png",
+      "rawSha256": "3333e7bd88d45692ba253b0a1eb02dab7af60c98d507986c1ee9840406ab9a62",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded; no anatomical exclusions"
+      }
+    },
+    "mottled": {
+      "file": "markings/mottled.png",
+      "sha256": "c3c133d35ea3b60c8c1e8909152bb058ddf76e1142080006aef9fa1671b2dd60",
+      "promptFile": "prompts/mottled.txt",
+      "promptSha256": "6287f7047d0035d1b70ba45aa1b96750ab9462ba1d021fbd1c6bd727420b4733",
+      "prompt": "EXACT 1254 x 1254 PNG with genuine transparent background. This is an isolated game shader mask, not a creature illustration. Draw exactly FOUR separate white jagged ink blots. Each blot has three or four deeply indented lobes and a torn irregular perimeter like small splashed ink, not round circles. Blot centers: (760,610), (835,630), (765,700), (850,725). Each blot fits inside a 40 by 40 pixel square. All other pixels everywhere fully transparent. Large transparent gaps between the FOUR blots. Pure white RGB with solid alpha only inside blots, antialias the edge. No surrounding object, rectangle, wash, feathers, shadow, base layer, texture, text or halo. Preserve these canvas coordinates precisely. The entire image has only FOUR tiny disconnected ragged white islands on empty transparency.\n",
+      "promptBytesBase64": "RVhBQ1QgMTI1NCB4IDEyNTQgUE5HIHdpdGggZ2VudWluZSB0cmFuc3BhcmVudCBiYWNrZ3JvdW5kLiBUaGlzIGlzIGFuIGlzb2xhdGVkIGdhbWUgc2hhZGVyIG1hc2ssIG5vdCBhIGNyZWF0dXJlIGlsbHVzdHJhdGlvbi4gRHJhdyBleGFjdGx5IEZPVVIgc2VwYXJhdGUgd2hpdGUgamFnZ2VkIGluayBibG90cy4gRWFjaCBibG90IGhhcyB0aHJlZSBvciBmb3VyIGRlZXBseSBpbmRlbnRlZCBsb2JlcyBhbmQgYSB0b3JuIGlycmVndWxhciBwZXJpbWV0ZXIgbGlrZSBzbWFsbCBzcGxhc2hlZCBpbmssIG5vdCByb3VuZCBjaXJjbGVzLiBCbG90IGNlbnRlcnM6ICg3NjAsNjEwKSwgKDgzNSw2MzApLCAoNzY1LDcwMCksICg4NTAsNzI1KS4gRWFjaCBibG90IGZpdHMgaW5zaWRlIGEgNDAgYnkgNDAgcGl4ZWwgc3F1YXJlLiBBbGwgb3RoZXIgcGl4ZWxzIGV2ZXJ5d2hlcmUgZnVsbHkgdHJhbnNwYXJlbnQuIExhcmdlIHRyYW5zcGFyZW50IGdhcHMgYmV0d2VlbiB0aGUgRk9VUiBibG90cy4gUHVyZSB3aGl0ZSBSR0Igd2l0aCBzb2xpZCBhbHBoYSBvbmx5IGluc2lkZSBibG90cywgYW50aWFsaWFzIHRoZSBlZGdlLiBObyBzdXJyb3VuZGluZyBvYmplY3QsIHJlY3RhbmdsZSwgd2FzaCwgZmVhdGhlcnMsIHNoYWRvdywgYmFzZSBsYXllciwgdGV4dHVyZSwgdGV4dCBvciBoYWxvLiBQcmVzZXJ2ZSB0aGVzZSBjYW52YXMgY29vcmRpbmF0ZXMgcHJlY2lzZWx5LiBUaGUgZW50aXJlIGltYWdlIGhhcyBvbmx5IEZPVVIgdGlueSBkaXNjb25uZWN0ZWQgcmFnZ2VkIHdoaXRlIGlzbGFuZHMgb24gZW1wdHkgdHJhbnNwYXJlbmN5Lgo=",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/mottled.png",
+      "rawSha256": "5bb672abfe665a41bf2c552dacb25d4b11c9cf0d58ef87e6e72bfec2deaea689",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded; no anatomical exclusions"
+      }
+    },
+    "marbled": {
+      "file": "markings/marbled.png",
+      "sha256": "bc3e17bcb65491f9541cc385862c5175051f985ff0883bb9e9dc0174a0ec5526",
+      "promptFile": "prompts/marbled.txt",
+      "promptSha256": "078b5af6c040b48b40c1a3c81c515bd1d8a6b98bb1aec917bb78f6cff04702d0",
+      "prompt": "Use case: scientific-educational. Produce a sparse 2D shader DATA MASK, not an illustration. EXACT1254 x 1254 PNG with genuine alpha, unchanged registration to the attached Grouse reference. The reference is ONLY for coordinates; DO NOT paint its feathers, body surface, silhouette, shading or texture. EVERY pixel except the specified white shapes must be fully transparent, including between shapes and inside rings. A sparse thin white branching vein network only within x=800..915,y=615..745; stroke width4 pixels maximum, at least75 percent of that rectangle FULLY TRANSPARENT. Organic asymmetric branches, not a filled patch. White means solid flat RGB255,255,255 with antialiasing only at the shape edge. NO white or grey base layer, NO halo connecting shapes, NO cast shadow, NO creature pixels, NO text, NO resizing or recentering. Keep the mask SMALL in the lower-right central breast region, all marks strictly inside x=780..940,y=590..770. Keep head, wings, tail and feet empty. The previous attempt incorrectly filled a large white body patch; this correction must show isolated small marks surrounded by empty transparency.\n",
+      "promptBytesBase64": "VXNlIGNhc2U6IHNjaWVudGlmaWMtZWR1Y2F0aW9uYWwuIFByb2R1Y2UgYSBzcGFyc2UgMkQgc2hhZGVyIERBVEEgTUFTSywgbm90IGFuIGlsbHVzdHJhdGlvbi4gRVhBQ1QxMjU0IHggMTI1NCBQTkcgd2l0aCBnZW51aW5lIGFscGhhLCB1bmNoYW5nZWQgcmVnaXN0cmF0aW9uIHRvIHRoZSBhdHRhY2hlZCBHcm91c2UgcmVmZXJlbmNlLiBUaGUgcmVmZXJlbmNlIGlzIE9OTFkgZm9yIGNvb3JkaW5hdGVzOyBETyBOT1QgcGFpbnQgaXRzIGZlYXRoZXJzLCBib2R5IHN1cmZhY2UsIHNpbGhvdWV0dGUsIHNoYWRpbmcgb3IgdGV4dHVyZS4gRVZFUlkgcGl4ZWwgZXhjZXB0IHRoZSBzcGVjaWZpZWQgd2hpdGUgc2hhcGVzIG11c3QgYmUgZnVsbHkgdHJhbnNwYXJlbnQsIGluY2x1ZGluZyBiZXR3ZWVuIHNoYXBlcyBhbmQgaW5zaWRlIHJpbmdzLiBBIHNwYXJzZSB0aGluIHdoaXRlIGJyYW5jaGluZyB2ZWluIG5ldHdvcmsgb25seSB3aXRoaW4geD04MDAuLjkxNSx5PTYxNS4uNzQ1OyBzdHJva2Ugd2lkdGg0IHBpeGVscyBtYXhpbXVtLCBhdCBsZWFzdDc1IHBlcmNlbnQgb2YgdGhhdCByZWN0YW5nbGUgRlVMTFkgVFJBTlNQQVJFTlQuIE9yZ2FuaWMgYXN5bW1ldHJpYyBicmFuY2hlcywgbm90IGEgZmlsbGVkIHBhdGNoLiBXaGl0ZSBtZWFucyBzb2xpZCBmbGF0IFJHQjI1NSwyNTUsMjU1IHdpdGggYW50aWFsaWFzaW5nIG9ubHkgYXQgdGhlIHNoYXBlIGVkZ2UuIE5PIHdoaXRlIG9yIGdyZXkgYmFzZSBsYXllciwgTk8gaGFsbyBjb25uZWN0aW5nIHNoYXBlcywgTk8gY2FzdCBzaGFkb3csIE5PIGNyZWF0dXJlIHBpeGVscywgTk8gdGV4dCwgTk8gcmVzaXppbmcgb3IgcmVjZW50ZXJpbmcuIEtlZXAgdGhlIG1hc2sgU01BTEwgaW4gdGhlIGxvd2VyLXJpZ2h0IGNlbnRyYWwgYnJlYXN0IHJlZ2lvbiwgYWxsIG1hcmtzIHN0cmljdGx5IGluc2lkZSB4PTc4MC4uOTQwLHk9NTkwLi43NzAuIEtlZXAgaGVhZCwgd2luZ3MsIHRhaWwgYW5kIGZlZXQgZW1wdHkuIFRoZSBwcmV2aW91cyBhdHRlbXB0IGluY29ycmVjdGx5IGZpbGxlZCBhIGxhcmdlIHdoaXRlIGJvZHkgcGF0Y2g7IHRoaXMgY29ycmVjdGlvbiBtdXN0IHNob3cgaXNvbGF0ZWQgc21hbGwgbWFya3Mgc3Vycm91bmRlZCBieSBlbXB0eSB0cmFuc3BhcmVuY3kuCg==",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/marbled.png",
+      "rawSha256": "6b069903254c75fe654beb02ab863cd501c36673abde9f07426fb2e9ceb6e97b",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded; no anatomical exclusions"
+      }
+    },
+    "eye-spotted": {
+      "file": "markings/eye-spotted.png",
+      "sha256": "81d4e41dcdcf7e8108549a828fc825d6d97f8d5eea4e4e19e21f13856ad93d1a",
+      "promptFile": "prompts/eye-spotted.txt",
+      "promptSha256": "ed9c457b56fce90dbf6a4ac692923fbd44062e068f8c8c31d957e630d60500be",
+      "prompt": "Use case: scientific-educational. Produce a sparse 2D shader DATA MASK, not an illustration. EXACT1254 x 1254 PNG with genuine alpha, unchanged registration to the attached Grouse reference. The reference is ONLY for coordinates; DO NOT paint its feathers, body surface, silhouette, shading or texture. EVERY pixel except the specified white shapes must be fully transparent, including between shapes and inside rings. Exactly THREE small white oval RINGS centered at (830,635),(890,680),(840,735). Each oval30 pixels wide,20 pixels high, ring wall only3 pixels thick. The entire center of every ring is FULLY TRANSPARENT. Large transparent gaps between all rings. White means solid flat RGB255,255,255 with antialiasing only at the shape edge. NO white or grey base layer, NO halo connecting shapes, NO cast shadow, NO creature pixels, NO text, NO resizing or recentering. Keep the mask SMALL in the lower-right central breast region, all marks strictly inside x=780..940,y=590..770. Keep head, wings, tail and feet empty. The previous attempt incorrectly filled a large white body patch; this correction must show isolated small marks surrounded by empty transparency.\n",
+      "promptBytesBase64": "VXNlIGNhc2U6IHNjaWVudGlmaWMtZWR1Y2F0aW9uYWwuIFByb2R1Y2UgYSBzcGFyc2UgMkQgc2hhZGVyIERBVEEgTUFTSywgbm90IGFuIGlsbHVzdHJhdGlvbi4gRVhBQ1QxMjU0IHggMTI1NCBQTkcgd2l0aCBnZW51aW5lIGFscGhhLCB1bmNoYW5nZWQgcmVnaXN0cmF0aW9uIHRvIHRoZSBhdHRhY2hlZCBHcm91c2UgcmVmZXJlbmNlLiBUaGUgcmVmZXJlbmNlIGlzIE9OTFkgZm9yIGNvb3JkaW5hdGVzOyBETyBOT1QgcGFpbnQgaXRzIGZlYXRoZXJzLCBib2R5IHN1cmZhY2UsIHNpbGhvdWV0dGUsIHNoYWRpbmcgb3IgdGV4dHVyZS4gRVZFUlkgcGl4ZWwgZXhjZXB0IHRoZSBzcGVjaWZpZWQgd2hpdGUgc2hhcGVzIG11c3QgYmUgZnVsbHkgdHJhbnNwYXJlbnQsIGluY2x1ZGluZyBiZXR3ZWVuIHNoYXBlcyBhbmQgaW5zaWRlIHJpbmdzLiBFeGFjdGx5IFRIUkVFIHNtYWxsIHdoaXRlIG92YWwgUklOR1MgY2VudGVyZWQgYXQgKDgzMCw2MzUpLCg4OTAsNjgwKSwoODQwLDczNSkuIEVhY2ggb3ZhbDMwIHBpeGVscyB3aWRlLDIwIHBpeGVscyBoaWdoLCByaW5nIHdhbGwgb25seTMgcGl4ZWxzIHRoaWNrLiBUaGUgZW50aXJlIGNlbnRlciBvZiBldmVyeSByaW5nIGlzIEZVTExZIFRSQU5TUEFSRU5ULiBMYXJnZSB0cmFuc3BhcmVudCBnYXBzIGJldHdlZW4gYWxsIHJpbmdzLiBXaGl0ZSBtZWFucyBzb2xpZCBmbGF0IFJHQjI1NSwyNTUsMjU1IHdpdGggYW50aWFsaWFzaW5nIG9ubHkgYXQgdGhlIHNoYXBlIGVkZ2UuIE5PIHdoaXRlIG9yIGdyZXkgYmFzZSBsYXllciwgTk8gaGFsbyBjb25uZWN0aW5nIHNoYXBlcywgTk8gY2FzdCBzaGFkb3csIE5PIGNyZWF0dXJlIHBpeGVscywgTk8gdGV4dCwgTk8gcmVzaXppbmcgb3IgcmVjZW50ZXJpbmcuIEtlZXAgdGhlIG1hc2sgU01BTEwgaW4gdGhlIGxvd2VyLXJpZ2h0IGNlbnRyYWwgYnJlYXN0IHJlZ2lvbiwgYWxsIG1hcmtzIHN0cmljdGx5IGluc2lkZSB4PTc4MC4uOTQwLHk9NTkwLi43NzAuIEtlZXAgaGVhZCwgd2luZ3MsIHRhaWwgYW5kIGZlZXQgZW1wdHkuIFRoZSBwcmV2aW91cyBhdHRlbXB0IGluY29ycmVjdGx5IGZpbGxlZCBhIGxhcmdlIHdoaXRlIGJvZHkgcGF0Y2g7IHRoaXMgY29ycmVjdGlvbiBtdXN0IHNob3cgaXNvbGF0ZWQgc21hbGwgbWFya3Mgc3Vycm91bmRlZCBieSBlbXB0eSB0cmFuc3BhcmVuY3kuCg==",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/eye-spotted.png",
+      "rawSha256": "c4f4236489daf3f032f21fe865a203a2500e6a28a4f86fa47b79500e5bf45b61",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded; no anatomical exclusions"
+      }
+    }
+  }
+}

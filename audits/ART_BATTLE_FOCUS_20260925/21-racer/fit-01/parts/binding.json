@@ -1,0 +1,246 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "e9dcb7f05109bf5d758eb6d7053792ea93ffc677f05978c2764fd3df5dda9335",
+  "atlasSha256": "0a84839efb0850384cfed4527eb45945de805e9f482a1b9d0bfbe8d690421fe3",
+  "atlasSize": {
+    "width": 629,
+    "height": 2047
+  },
+  "parts": [
+    {
+      "id": "root-patch",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 2034,
+        "width": 8,
+        "height": 8
+      },
+      "cutout": {
+        "x": 896,
+        "y": 592,
+        "width": 8,
+        "height": 8
+      }
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 390,
+        "y": 1956,
+        "width": 122,
+        "height": 45
+      },
+      "cutout": {
+        "x": 908,
+        "y": 586,
+        "width": 122,
+        "height": 45
+      }
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 522,
+        "y": 1956,
+        "width": 102,
+        "height": 44
+      },
+      "cutout": {
+        "x": 888,
+        "y": 576,
+        "width": 102,
+        "height": 44
+      }
+    },
+    {
+      "id": "segment-0",
+      "joint": "seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 334,
+        "height": 966
+      },
+      "cutout": {
+        "x": 858,
+        "y": 232,
+        "width": 334,
+        "height": 966
+      }
+    },
+    {
+      "id": "segment-1",
+      "joint": "seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1858,
+        "width": 55,
+        "height": 97
+      },
+      "cutout": {
+        "x": 803,
+        "y": 603,
+        "width": 55,
+        "height": 97
+      }
+    },
+    {
+      "id": "segment-2",
+      "joint": "seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 234,
+        "y": 1956,
+        "width": 63,
+        "height": 53
+      },
+      "cutout": {
+        "x": 740,
+        "y": 654,
+        "width": 63,
+        "height": 53
+      }
+    },
+    {
+      "id": "segment-3",
+      "joint": "seg3",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 70,
+        "y": 1858,
+        "width": 64,
+        "height": 88
+      },
+      "cutout": {
+        "x": 676,
+        "y": 613,
+        "width": 64,
+        "height": 88
+      }
+    },
+    {
+      "id": "segment-4",
+      "joint": "seg4",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1965,
+        "width": 68,
+        "height": 59
+      },
+      "cutout": {
+        "x": 608,
+        "y": 605,
+        "width": 68,
+        "height": 59
+      }
+    },
+    {
+      "id": "segment-5",
+      "joint": "seg5",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 83,
+        "y": 1956,
+        "width": 67,
+        "height": 84
+      },
+      "cutout": {
+        "x": 541,
+        "y": 607,
+        "width": 67,
+        "height": 84
+      }
+    },
+    {
+      "id": "segment-6",
+      "joint": "seg6",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 981,
+        "width": 66,
+        "height": 572
+      },
+      "cutout": {
+        "x": 475,
+        "y": 144,
+        "width": 66,
+        "height": 572
+      }
+    },
+    {
+      "id": "segment-7",
+      "joint": "seg7",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 307,
+        "y": 1956,
+        "width": 73,
+        "height": 49
+      },
+      "cutout": {
+        "x": 402,
+        "y": 673,
+        "width": 73,
+        "height": 49
+      }
+    },
+    {
+      "id": "segment-8",
+      "joint": "seg8",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 160,
+        "y": 1956,
+        "width": 64,
+        "height": 59
+      },
+      "cutout": {
+        "x": 338,
+        "y": 657,
+        "width": 64,
+        "height": 59
+      }
+    },
+    {
+      "id": "segment-9",
+      "joint": "seg9",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1563,
+        "width": 128,
+        "height": 285
+      },
+      "cutout": {
+        "x": 210,
+        "y": 406,
+        "width": 128,
+        "height": 285
+      }
+    }
+  ],
+  "bindingHash": "4f8c3dcc41c40905ca04226ddcc3fdf19c8a3348d942cf8fde3df04b98ae5ea8"
+}

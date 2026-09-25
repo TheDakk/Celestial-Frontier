@@ -1,0 +1,179 @@
+{
+  "schema": "cf.marking-masks/v1",
+  "space": "master",
+  "width": 1254,
+  "height": 1254,
+  "source": "../master.png",
+  "sourceSha256": "0caa257567bef63fe3d66308e565bddb84175b47696315a3781e5a6994c876e6",
+  "keyedAlphaFile": "../fit-02/parts/keyed.png",
+  "keyedSha256": "026d7a6c89b4af246357ff40e3729a9e023ff273284bf35961cec3353bdb842a",
+  "recordRecipeHash": "1184f02774f474323b2bf77b191f3811b8656cb3861f31715e21a86cf37b0693",
+  "compiledPrompt": {
+    "file": "../prompt.txt",
+    "sha256": "1151d91278850ef6d91e9fe546e940d4fe696d2677f0325bea06038d63d05506",
+    "bytesBase64": "UGFzdGUgaW4gZXZlcnkgcHJvbXB0LiBBdHRhY2ggdGhlIE9ORSByZWZlcmVuY2UgdGhlIGNsYXNzIGNhbGxzIGZvciwgbmV2ZXIgYm90aC4KCkZvciBjdXQtb3V0IGNsYXNzZXMgKG9yYml0YWwgcGxhbmV0cywgZmxvcmEsIGZhdW5hLCBzaGlwcywgbGFuZG1hcmtzLCBpdGVtcywKZW1ibGVtcywgRWZmZWN0czsgaW5hY3RpdmUgcGVvcGxlIGV4Y2x1ZGVkOyBBcmVuYSBNSUQvTkVBUiB1c2UgdGhlIHJ1bGUgYmVsb3cpOgogIE1hdGNoIHRoZSBleGFjdCB2aXN1YWwgbGFuZ3VhZ2Ugb2YgdGhlIGF0dGFjaGVkIGFwcHJvdmVkIERpc2NvdmVyeSBBdGxhcywKICBhdWRpdHMvTUlER0FNRV9BUlRfRElSRUNUSU9OXzIwMjYwOTA4LzAxLWRpc2NvdmVyeS1hdGxhcy5wbmcsCiAgc3R5bGVfaWQgImZyb250aWVyIi4gRG8gbm90IHJlZGVzaWduIG9yIHJlaW50ZXJwcmV0IHRoZSBzdHlsZS4gVGhlIGF0bGFzIGlzCiAgYSByZWZlcmVuY2Ugb25seTogbmV2ZXIgY3JvcCBhcnR3b3JrIG91dCBvZiBpdC4gSXRzIGJhY2tncm91bmQsIGxldHRlcmluZwogIGFuZCBkaXZpZGVkIGxheW91dCBhcmUgbm90IHRoZSBvdXRwdXQgbGF5b3V0OyB1c2UgdGhpcyBjbGFzcydzIG93biBsYXlvdXQuCiAgU0hBLTI1NjogYzUzYWRkMjk5M2NhYmEzOWI2ZGMxMmRjNzVkNWQ3NjdiZTg2ODk2YTdjNDFjZmFhNmM5NGYzNTZlOGQ5MmE2MgoKRm9yIHNjZW5lIGNsYXNzZXMgKHVuaXZlcnNlLCBzdGFycywgcGxhbmV0IGJpb21lcywgQXJlbmEgRkFSKSwgYW5kIEFyZW5hCk1JRC9ORUFSIGtleS1wYWludGVkIHRlcnJhaW4gc28gYWxsIGFyZW5hIGxheWVycyBtYXRjaCB0aGUgc2FtZSBiaW9tZSBoYW5kOgogIE1hdGNoIHRoZSBleGFjdCB2aXN1YWwgbGFuZ3VhZ2Ugb2YgdGhlIGF0dGFjaGVkIGFwcHJvdmVkIExpdmluZyBXb3JsZHMKICB0cmlwdHljaCwgYXVkaXRzL01JREdBTUVfQVJUX0RJUkVDVElPTl8yMDI2MDkwOC8wMi1pbmhhYml0ZWQtd29ybGRzLnBuZywKICBzdHlsZV9pZCAiZnJvbnRpZXIiLiBEbyBub3QgcmVkZXNpZ24gb3IgcmVpbnRlcnByZXQgdGhlIHN0eWxlLiBUaGUgdHJpcHR5Y2gKICBpcyBhIHJlZmVyZW5jZSBvbmx5OiBuZXZlciBjcm9wIGFydHdvcmsgb3V0IG9mIGl0LiBJdHMgbGV0dGVyaW5nIGFuZCBwYW5lbAogIGRpdmlzaW9ucyBhcmUgbm90IHRoZSBvdXRwdXQgbGF5b3V0OyB1c2UgdGhpcyBjbGFzcydzIG93biBsYXlvdXQuCiAgU0hBLTI1NjogNjhmMDNmMDIzM2VjMmNhODlkZGYzOTIzOGNmYWYxYTMwYjgzMDI3YTU4YmVhZWE5ZmJiMTczNTI3MzcyMGEzOAoKVGhlIGZvdXIgYXBwcm92ZWQgaW1hZ2VzIGluIGF1ZGl0cy9NSURHQU1FX0FSVF9ESVJFQ1RJT05fMjAyNjA5MDggZGVmaW5lIHRoZQphcnQgZGlyZWN0aW9uOiAwMS1kaXNjb3ZlcnktYXRsYXMucG5nLCAwMi1pbmhhYml0ZWQtd29ybGRzLnBuZywKMDMtZWFydGgtZnVsbC1sYW5kZmFsbC5wbmcgYW5kIDA0LWFsaWVuLWZ1bGwtbGFuZGZhbGwucG5nLiBUaGUgZXhpc3RpbmcgYXRsYXMKYW5kIHRyaXB0eWNoIGFib3ZlIGFyZSB0aGUgcHJvZHVjdGlvbiByZWZlcmVuY2UgbG9ja3M7IGRvIG5vdCBwYWludCBuZXcgbG9ja3MuClZlcmlmeSB0aGVpciBvcmlnaW5hbCBieXRlcyBhZ2FpbnN0IHRoZXNlIFNIQS0yNTYgdmFsdWVzIGJlZm9yZSB1c2UuClRoZSBsb2NhbCBtb2RlbCdzIGN1cnJlbnQgcml2ZXJiYW5rIG91dHB1dCBpcyBhIGdhcCB0byBjbG9zZSwgbm90IGEgcmVmZXJlbmNlLgoKUGFzdGUgdGhpcyBwYXJhZ3JhcGggdmVyYmF0aW0gaW4gZXZlcnkgcHJvbXB0LiBBcHByb3ZlZCBieSBOaWNrIGF0IDZmNWMzOTZlLgpDaGFuZ2VzIHRvIHRoZSBwYXJhZ3JhcGggcmVxdWlyZSBhIG5ldyBraXQgdmVyc2lvbjsgbmV2ZXIgcmV2aXNlIGl0IGF0IHNlbmQgdGltZS4KCiAgUmljaCBuYXR1cmFsLWhpc3RvcnkgZmFudGFzeSBwYWludGluZywgb25lIGhhbmQgYWNyb3NzIGV2ZXJ5IHN1YmplY3QsCiAgdGFjdGlsZSBkaXJlY3Rpb25hbCBicnVzaHdvcmssIGJlbGlldmFibGUgY29ubmVjdGVkIGFuYXRvbXksIHdlYXRoZXJlZCByb2NrLAogIGluZGl2aWR1YWwgYnV0IGdyb3VwZWQgZm9saWFnZSwgZGVlcCBhdG1vc3BoZXJpYyBsYXllcnMsIHJlYWRhYmxlIHNpbGhvdWV0dGVzLAogIHNlbGVjdGl2ZSBoaWdoIGRldGFpbCwgc29mdCBuYXR1cmFsIGxpZ2h0IHNoYXJlZCBieSBldmVyeSBzdWJqZWN0LCBob25lc3QKICBncm91bmQgYW5kIHdhdGVyIGNvbnRhY3QsIHN1YnRsZSBmb3JlZ3JvdW5kIG9jY2x1c2lvbiwgcHJlbWl1bSBwYWludGVkCiAgc2NpZW5jZS1maWN0aW9uIHdpdGggZGlzY292ZXJ5IGFuZCBjaGFyYWN0ZXI7IEVhcnRoIHNwZWNpZXMga2VlcCByZWFsCiAgYW5hdG9teSwgZnVyLCBmZWF0aGVyIGFuZCBib3Rhbnk7IGFsaWVuIGxpZmUga2VlcHMgaXRzIGRhdGEtZHJpdmVuIGZvcm0gYW5kCiAgcGFsZXR0ZSBpbiB0aGUgc2FtZSBoYW5kOyBub3QgcGxhc3RpYyBDR0ksIG5vdCBwaG90b2dyYXBoeSwgbm90IGNhcnRvb24sCiAgbm90IG92ZXJzaGFycGVuZWQsIG5vIGdsb3dpbmcgb3V0bGluZXMuCgpUaGUgc2NlbmUtY29udGFjdCBhbmQgb2NjbHVzaW9uIGxhbmd1YWdlIGdvdmVybnMgY29tcG9zZWQgc2NlbmVzLiBBIGN1dC1vdXQKcmV0YWlucyB0aGUgc2FtZSBoYW5kIGFuZCBhbmF0b215IHdoaWxlIG9iZXlpbmcgaXRzIG5vLWdyb3VuZC9uby1zaGFkb3cgbGF5b3V0Owpjb250YWN0IGFuZCBzaGFyZWQgYXRtb3NwaGVyZSBhcmUgcmVzb2x2ZWQgd2hlbiBjb21wb3NlZCBhbmQgZmluaXNoZWQgb24gYSBwbGF0ZS4KVGhlIGNvbXBhbmlvbiBydWxlIGluIHNlY3Rpb24gNEUgaXMgcmV0YWluZWQgZm9yIGNvbXBhbmlvbi1mbGFnZ2VkIGdhbWUgZGF0YTsKaXQgZG9lcyBub3QgY2hhbmdlIGNvdW50cyBvciB0aGUgdW5kZXJseWluZyBnZW5vbWUuCgpTWVNURU0gQ0FSRCAtIFNvbCAvIEVhcnRoOyBDRjF8Zzo5OTlAOTAsLTYwfHM6NDI0MjQyQDU2MCwxNzB8cDoxMzMjMgogIFN0YXI6IEc7IGEgeWVsbG93IHN1bi1saWtlIHN0YXI7ICNmZmY0ZDg7IHJhZGl1cyAyNi4gI2ZmZjRkOCAgeWVsbG93IHN1bi1saWtlIHN0YXI7IFNvbCBwaW5uZWQuIFBpZ21lbnQ6IGl2b3J5LCB3YXJtIHdoaXRlLgogICAgICAgICBMaWdodDogbmVhci1uZXV0cmFsIHllbGxvdy13aGl0ZSwgbmF0dXJhbCBkaWZmdXNlIGZpbGwuCiAgTGlnaHQ6IGRheTsgcmFpbjsgb25lIHByaW1hcnksIG5vIGNvbXBhbmlvbnM7IGRpZmZ1c2UgY2xvdWQtZmlsdGVyZWQgbGlnaHQsIHNvZnQgbmV1dHJhbCBjb250YWN0IHNoYWRvd3M7IGRpcmVjdGlvbmFsIHN1biBwb3NpdGlvbiBhYnNlbnQgZnJvbSBzb3VyY2UsIGRvIG5vdCBpbnZlbnQgYSB2aXNpYmxlIHNlY29uZCBsaWdodC4KICBNaW5lcmFsIHBhbGV0dGU6IHRlcnJhbjsgc2VhSHVlIDIxMCwgbGFuZEh1ZSAxMTUsIGljZUFtdCAwLjU7IGJsdWUgd2F0ZXIsIGdyZWVuIGxhbmQsIHBhbGUgaWNlOyBodWUgYWJzZW50IGZyb20gc291cmNlLgogIEF0bW9zcGhlcmU6IHZpc3RhIHBhbGV0dGUgcmFpbiwgY2xpbWF0ZSB0ZW1wZXJhdGUsIHdlYXRoZXIgcmFpbiwgd2F0ZXIgbGlxdWlkOyByYWluIHNvZnRlbnMgZGlzdGFudCBibHVlLWdyZXkgbGF5ZXJzLgogIEZsb3JhIHBpZ21lbnQ6IHRlbXBlcmF0ZTsgZm9ybXMgdHJlZSwgc2hydWIsIGZsb3dlciwgZ3Jhc3MsIGZlcm47IFBlcnNpbW1vbjogZ3JlZW4gbGVhdmVzLCBvcmFuZ2UgZnJ1aXQsIGJyb3duIHdvb2Q7IERldmlsJ3MgQ2x1YjogZ3JlZW4gbGVhdmVzIGFuZCByZWQgYmVycnkgY29uZXM7IENyYW5iZXJyeTogZ3JlZW4gbGVhdmVzIGFuZCByZWQgYmVycmllcy4KICBGYXVuYSBhZGFwdGF0aW9uOiBFYXJ0aCBIb25leWJlZTsgcmVhbCBuYW1lZCBhbmF0b215IGFuZCBuYXR1cmFsIG1hdGVyaWFscyB0YWtlIHByaW9yaXR5IG92ZXIgcmF3IHByb2NlZHVyYWwgZ2VuZXMuIGZ1cnJ5IHRob3JheCB3aXRoIGEgYmFuZGVkIGFtYmVyLWFuZC1ibGFjayBhYmRvbWVuOyB0d28gcGFpcnMgb2YgY2xlYXIgdmVpbmVkIHdpbmdzOyBwb2xsZW4gYmFza2V0cyBvbiB0aGUgaGluZCBsZWdzLiBJc29sYXRlZCBsaWJyYXJ5IGFyY2hldHlwZSwgbm90IGEgbGFuZGluZyByZXNpZGVudCBjbGFpbS4KICBPbmUgc2lnbmF0dXJlOiBubyBiaW9tZSBoYXphcmQgaW4gc291cmNlOyBubyBhZGRlZCBoYXphcmQgbW90aWYuCgpTVUJKRUNUCk9uZSBFYXJ0aCBIb25leWJlZS4gZnVycnkgdGhvcmF4IHdpdGggYSBiYW5kZWQgYW1iZXItYW5kLWJsYWNrIGFiZG9tZW47IHR3byBwYWlycyBvZiBjbGVhciB2ZWluZWQgd2luZ3M7IHBvbGxlbiBiYXNrZXRzIG9uIHRoZSBoaW5kIGxlZ3MuIApHZW5vbWljIGlkZW50aXR5IGFuZCB0cmFpdHMgKEVhcnRoIGFuYXRvbXkgdGFrZXMgcHJpb3JpdHkpOiB7InNlZWQiOjE3ODMxMTE5NDUsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjoxNiwiZm9ybSI6NCwiYm9keSI6NywibG9jbyI6NSwidHJhaXQiOjEzLCJzaXplIjo0LCJkaWV0IjozLCJoZWFkIjo2LCJsaW1icyI6NCwic2tpbiI6MywidGFpbCI6MSwicGF0dGVybiI6MCwiZXllcyI6MSwiYmVoYXZpb3IiOjMsImhhYml0YXQiOjE0LCJkZXRhaWwiOjksImFjY2VudCI6MTYsInRlbXBlciI6OCwic2Vuc2UiOjIsInJlcHJvIjo3LCJsaWZlIjo1LCJtZXRhYiI6MSwibHVtaW4iOnRydWUsImdlbiI6MCwiaGVhdCI6MSwiX2VhcnRoTmFtZSI6IkhvbmV5YmVlIn0KRmFtaWx5IGNvbnRyYWN0IGluc2VjdCwgY2xpcCBzZXQgaW5zZWN0LXYxLiBSZXF1aXJlZCByaWcgam9pbnQvcGFydCBpbnZlbnRvcnk6IHJvb3QsIHRob3JheCwgaGVhZCwgbWFuZGlibGUsIGFiZG9tZW4sIGxlZ0Zyb250RmFyS25lZSwgbGVnRnJvbnRGYXJGb290LCBsZWdGcm9udE5lYXJLbmVlLCBsZWdGcm9udE5lYXJGb290LCBsZWdNaWRGYXJLbmVlLCBsZWdNaWRGYXJGb290LCBsZWdNaWROZWFyS25lZSwgbGVnTWlkTmVhckZvb3QsIGxlZ0hpbmRGYXJLbmVlLCBsZWdIaW5kRmFyRm9vdCwgbGVnSGluZE5lYXJLbmVlLCBsZWdIaW5kTmVhckZvb3QsIGFudGVubmFGYXIsIGFudGVubmFOZWFyLCB3aW5nRmFyLCB3aW5nTmVhci4gQ29ubmVjdGVkIG9yZ2FuaWMgcGFpbnRlZCBzdWJqZWN0LCBubyBlcXVpcG1lbnQsIG5vIGZhbnRhc3kgYWRkZWQgbGltYnMuClJpZ2h0LWZhY2luZyBsYXRlcmFsIHZpZXcsIGhlYWQgdG93YXJkIHJpZ2h0LiBFbnRpcmUgYmVlIHgxNjDigJMxMDkwIHkxNzDigJMxMDQwIG9uIG9wYXF1ZSBSR0IyNTUsMCwyNTUgbWFnZW50YS4gUGxhaW4gdW5tYXJrZWQgdGF3bnkgZnVycnkgdGhvcmF4IGFuZCBnb2xkZW4tYnJvd24gYWJkb21lbiwgbm8gc3RyaXBlcy9iYW5kcy9zcG90cy4gU2l4IHNlcGFyYXRlIGJlbnQgbGVncyBzdGFnZ2VyZWQgYW5kIGNvdW50YWJsZTsgdHdvIG5lYXIgYW5kIHR3byBmYXIgdHJhbnNsdWNlbnQgY2xlYXIgdmVpbmVkIHdpbmdzIHJhaXNlZCBzZXBhcmF0ZWx5IHNvIGFsbCBGT1VSIHdpbmcgc2lsaG91ZXR0ZXMgY2FuIGJlIGNvdW50ZWQuIEZhciBmb3JlL2hpbmQgd2luZyBhcmUgc21hbGxlciBidXQgdmlzaWJsZTsgaGluZCB3aW5ncyBzaG9ydGVyIHRoYW4gZm9yZXdpbmdzLCBjb3VwbGVkIHBhaXJzIHJvb3RlZCB0b2dldGhlciBhdCB0aG9yYXguIFBpbmNoZWQgd2Fpc3QsIHJvdW5kZWQgZnVycnkgdGhvcmF4LCByb3VuZGVkIHNlZ21lbnRlZCBhYmRvbWVuIHRhcGVyaW5nIGF0IHJlYXIsIGVsYm93ZWQgYW50ZW5uYWUsIHR3byBsYXJnZSBjb21wb3VuZCBleWVzLiBTaWRlLW9uIGFuYXRvbXksIHNsaWdodGx5IG9mZnNldCBmYXIgbGltYnMgZm9yIHNlcGFyYXRpb247IGRvIG5vdCB1c2UgYSB0b3AtZG93biBidXR0ZXJmbHkgbGF5b3V0LiBObyB3aW5ncyBjcm9zc2luZyBvciBmdXNlZCB3aXRoIGFub3RoZXIgd2luZy4gT3duIHNpeCBtYXNrcyBjYXJyeSBhbGwgbWFya2luZ3MgbGF0ZXIuIFNvZnQgcGFpbnRlcmx5IG5hdHVyYWwtaGlzdG9yeSBicnVzaHdvcmsgbWF0Y2hpbmcgcmV0YWluZWQgYXRsYXMgc3R5bGU7IG5vIHBob3RvcmVhbGlzdGljIG1hY3JvIGJhY2tncm91bmQuCgpBQ0NVUkFDWQogIENvbXBsZXRlIHJlYWwgSG9uZXliZWUsIG9uZSBjcmVhdHVyZSwgYW5hdG9taWNhbGx5IGFjY3VyYXRlIHNwZWNpZXMgcHJvcG9ydGlvbnMuCiAgQWxsIG5vcm1hbGx5IHZpc2libGUgbGltYnMgc2VwYXJhdGVseSByZWFkYWJsZSB3aXRoIGZhciBhcHBlbmRhZ2VzIHZpc2libHkgb2Zmc2V0IHdoZXJlIHRoZSB2aWV3IHBlcm1pdHM7IG5ldmVyIGludmVudCBleHRyYSBhbmF0b215LgogIE5vIHNjZW5lcnksIGdyb3VuZCwgc2hhZG93LCB0ZXh0LCBkdXBsaWNhdGUgY3JlYXR1cmUsIGNyb3BwZWQgYW5hdG9teS4KICAKCkxBWU9VVAogIFJpZ2h0LWZhY2luZyBsYXRlcmFsIHZpZXcsIGhlYWQgdG93YXJkIHJpZ2h0LiBFbnRpcmUgYmVlIHgxNjDigJMxMDkwIHkxNzDigJMxMDQwIG9uIG9wYXF1ZSBSR0IyNTUsMCwyNTUgbWFnZW50YS4gUGxhaW4gdW5tYXJrZWQgdGF3bnkgZnVycnkgdGhvcmF4IGFuZCBnb2xkZW4tYnJvd24gYWJkb21lbiwgbm8gc3RyaXBlcy9iYW5kcy9zcG90cy4gU2l4IHNlcGFyYXRlIGJlbnQgbGVncyBzdGFnZ2VyZWQgYW5kIGNvdW50YWJsZTsgdHdvIG5lYXIgYW5kIHR3byBmYXIgdHJhbnNsdWNlbnQgY2xlYXIgdmVpbmVkIHdpbmdzIHJhaXNlZCBzZXBhcmF0ZWx5IHNvIGFsbCBGT1VSIHdpbmcgc2lsaG91ZXR0ZXMgY2FuIGJlIGNvdW50ZWQuIEZhciBmb3JlL2hpbmQgd2luZyBhcmUgc21hbGxlciBidXQgdmlzaWJsZTsgaGluZCB3aW5ncyBzaG9ydGVyIHRoYW4gZm9yZXdpbmdzLCBjb3VwbGVkIHBhaXJzIHJvb3RlZCB0b2dldGhlciBhdCB0aG9yYXguIFBpbmNoZWQgd2Fpc3QsIHJvdW5kZWQgZnVycnkgdGhvcmF4LCByb3VuZGVkIHNlZ21lbnRlZCBhYmRvbWVuIHRhcGVyaW5nIGF0IHJlYXIsIGVsYm93ZWQgYW50ZW5uYWUsIHR3byBsYXJnZSBjb21wb3VuZCBleWVzLiBTaWRlLW9uIGFuYXRvbXksIHNsaWdodGx5IG9mZnNldCBmYXIgbGltYnMgZm9yIHNlcGFyYXRpb247IGRvIG5vdCB1c2UgYSB0b3AtZG93biBidXR0ZXJmbHkgbGF5b3V0LiBObyB3aW5ncyBjcm9zc2luZyBvciBmdXNlZCB3aXRoIGFub3RoZXIgd2luZy4gT3duIHNpeCBtYXNrcyBjYXJyeSBhbGwgbWFya2luZ3MgbGF0ZXIuIFNvZnQgcGFpbnRlcmx5IG5hdHVyYWwtaGlzdG9yeSBicnVzaHdvcmsgbWF0Y2hpbmcgcmV0YWluZWQgYXRsYXMgc3R5bGU7IG5vIHBob3RvcmVhbGlzdGljIG1hY3JvIGJhY2tncm91bmQuCiAgT25lIHdob2xlIGNyZWF0dXJlIGNlbnRlcmVkLCBlbnRpcmUgYW5hdG9teSBpbiBmcmFtZSwgYXQgbGVhc3QgOCBwZXJjZW50IHNhZmUgbWFyZ2luLiBObyBmbG9vciBwbGFuZS4KClRFQ0hOSUNBTCBPVVRQVVQKICBDcmVhdGUgYSBzcXVhcmUgMTI1NCB4IDEyNTQgUE5HLiBFdmVyeSBwaXhlbCB0aGF0IGlzIG5vdCB0aGUgc3ViamVjdCBpcyBvbmUKICBmbGF0LCB1bmlmb3JtLCBwdXJlIG1hZ2VudGEgZmlsbCAoI0ZGMDBGRik6IG5vIGdyYWRpZW50LCB2aWduZXR0ZSwgdGV4dHVyZSwKICBub2lzZSwgY2hlY2tlcmJvYXJkIG9yIHRyYW5zcGFyZW5jeSBwYXR0ZXJuLCBhbmQgbm8gZ3JvdW5kLCBiYXNlLCBmcmFtZSwKICBzY2VuZXJ5IG9yIGNhc3Qgc2hhZG93LiBUaGUgc3ViamVjdCdzIG91dGxpbmUgaXMgY3Jpc3AgYW5kIGZ1bGx5IG9wYXF1ZQogIGFnYWluc3QgdGhlIG1hZ2VudGEsIHdpdGggbm8gZ2xvdywgaGF6ZSwgc21va2Ugb3Igc29mdCBmZWF0aGVyaW5nIGJsZWVkaW5nCiAgaW50byBpdCwgYW5kIG5vdGhpbmcgb24gdGhlIHN1YmplY3QgaXMgbWFnZW50YSBvciBwaW5rLiBUaGUgbWFnZW50YSBpcyBrZXllZAogIG91dCBhZnRlcndhcmRzIHRvIHByb2R1Y2UgdGhlIHRyYW5zcGFyZW50IGFzc2V0LgoKTkVHQVRJVkUKICBObyB0ZXh0LCBsZXR0ZXJzLCBudW1iZXJzLCB3YXRlcm1hcmssIHNpZ25hdHVyZSwgYm9yZGVyLCBmcmFtZSwgZ3JpZCwgVUkKICBlbGVtZW50LCBoZWFsdGggYmFyLCBtaW5pbWFwLCB3YXlwb2ludCwgdG9rZW4gcmluZywgYmFzZSwgcGVkZXN0YWwsCiAgcGhvdG9yZWFsaXNtLCBhbmltZSwgY2hpYmkgc3R5bGluZywgY2VsIHNoYWRpbmcsIDNEIHJlbmRlciwgcGxhc3RpYyB0b3kKICBzaGVlbiwgYWlyYnJ1c2hlZCBncmFkaWVudHMsIGR1cGxpY2F0ZSBzdWJqZWN0LCB1bmludGVuZGVkIGNvbXBhbmlvbiwgZXh0cmEKICBsaW1icywgbWlzc2luZyBsaW1icywgbWFsZm9ybWVkIGhhbmRzLCBjcm9wcGVkIGFuYXRvbXksIG9yIGNvbnRhY3Qtc2hlZXQKICBsYXlvdXQuIE5vIGxlbnMgZmxhcmUsIG5vIGNocm9tYXRpYyBhYmVycmF0aW9uLCBubyBob2xvZ3JhcGhpYyBVSQogIHByb2plY3Rpb25zLCBubyBnbG93aW5nIG91dGxpbmVzIG9yIHJpbSBsaWdodCB1c2VkIGFzIGFuIGVmZmVjdC4KICBObyBzY2VuZXJ5LCBubyBmbG9vciBwbGFuZSwgbm8gY2FzdCBzaGFkb3csIG5vIGRyb3Agc2hhZG93LCBubyB3aGl0ZQogIGJhY2tncm91bmQsIG5vIGNoZWNrZXJlZCBiYWNrZ3JvdW5kLCBubyBiYWtlZCB0cmFuc3BhcmVuY3kgcGF0dGVybi4KICBCYWNrZ3JvdW5kIG11c3QgYmUgb25lIGZsYXQgdW5pZm9ybSBtYWdlbnRhIGZpbGwgYW5kIG5vdGhpbmcgZWxzZS4KICBObyBkZWZhdWx0IGJpcGVkYWwgaHVtYW5vaWQgc3RhbmNlIHVubGVzcyBuYW1lZCwgbm8gYXJtb3VyIHBsYXRpbmcgdGhlIGJyaWVmIGRpZAogIG5vdCBhc2sgZm9yLCBubyBodW1hbiBleWVzLCBubyB3ZWFwb25zIGhlbGQgaW4gaGFuZHMgdW5sZXNzIG5hbWVkLCBubyByaWRlciwKICBubyBzZWNvbmQgY3JlYXR1cmUuCiAgRG8gbm90IGFkZCBhIGJsYW5rZXQgb3ZlcnNpemVkLWhlYWQgYmFuIHRoYXQgd291bGQgZmlnaHQgYSBkYXRhLW93bmVkCiAgY29tcGFuaW9uIGJyaWVmLg=="
+  },
+  "plain": null,
+  "iridescent": {
+    "mode": "emissive",
+    "mask": null
+  },
+  "patterns": {
+    "striped": {
+      "file": "markings/striped.png",
+      "sha256": "0670861b60b4114ee9ad53c9c42349af9b1c6e1f41b296c2f168dd9657122c98",
+      "promptFile": "prompts/striped.txt",
+      "promptSha256": "0cf0a6c13f88e7a91199928dc347851d15836f6eea2ac3a39816687e1d3406f5",
+      "prompt": "Use case: stylized-concept. Create a fresh standalone Honeybee marking mask: EXACT 1254 x 1254 PNG, pure white marks on truly TRANSPARENT background. No animal, outline, silhouette, colored paint, shadow, text or checkerboard. Marks only in rectangle x200..625, y535..815: this is the bee abdomen; all other pixels transparent, especially wings/head/legs. Sparse marks on transparent gaps, not a solid white rectangle. Coordinates are fixed master pixel space, no later resizing. Eight narrow diagonal white stripes rising from lower-left to upper-right, with 8px widths and 35px gaps, confined to abdomen rectangle.\n",
+      "promptBytesBase64": "VXNlIGNhc2U6IHN0eWxpemVkLWNvbmNlcHQuIENyZWF0ZSBhIGZyZXNoIHN0YW5kYWxvbmUgSG9uZXliZWUgbWFya2luZyBtYXNrOiBFWEFDVCAxMjU0IHggMTI1NCBQTkcsIHB1cmUgd2hpdGUgbWFya3Mgb24gdHJ1bHkgVFJBTlNQQVJFTlQgYmFja2dyb3VuZC4gTm8gYW5pbWFsLCBvdXRsaW5lLCBzaWxob3VldHRlLCBjb2xvcmVkIHBhaW50LCBzaGFkb3csIHRleHQgb3IgY2hlY2tlcmJvYXJkLiBNYXJrcyBvbmx5IGluIHJlY3RhbmdsZSB4MjAwLi42MjUsIHk1MzUuLjgxNTogdGhpcyBpcyB0aGUgYmVlIGFiZG9tZW47IGFsbCBvdGhlciBwaXhlbHMgdHJhbnNwYXJlbnQsIGVzcGVjaWFsbHkgd2luZ3MvaGVhZC9sZWdzLiBTcGFyc2UgbWFya3Mgb24gdHJhbnNwYXJlbnQgZ2Fwcywgbm90IGEgc29saWQgd2hpdGUgcmVjdGFuZ2xlLiBDb29yZGluYXRlcyBhcmUgZml4ZWQgbWFzdGVyIHBpeGVsIHNwYWNlLCBubyBsYXRlciByZXNpemluZy4gRWlnaHQgbmFycm93IGRpYWdvbmFsIHdoaXRlIHN0cmlwZXMgcmlzaW5nIGZyb20gbG93ZXItbGVmdCB0byB1cHBlci1yaWdodCwgd2l0aCA4cHggd2lkdGhzIGFuZCAzNXB4IGdhcHMsIGNvbmZpbmVkIHRvIGFiZG9tZW4gcmVjdGFuZ2xlLgo=",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/striped.png",
+      "rawSha256": "b1d094ed93ed8a5f306c2c6056f41318e3c982cfc015e082ba9236da97fdd94d",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded, then explicitly declared abdomen owner only; no automatic inference"
+      }
+    },
+    "spotted": {
+      "file": "markings/spotted.png",
+      "sha256": "64ef6ec209b1061aee06bd662f139fa70abf2bcb7c4c596ff5430093ab7139e5",
+      "promptFile": "prompts/spotted.txt",
+      "promptSha256": "35c7aaf67314c0d53d8c551f7267535262f147992336595b469c1da467eb2683",
+      "prompt": "Use case: stylized-concept. Create a fresh standalone Honeybee marking mask: EXACT 1254 x 1254 PNG, pure white marks on truly TRANSPARENT background. No animal, outline, silhouette, colored paint, shadow, text or checkerboard. Marks only in rectangle x200..625, y535..815: this is the bee abdomen; all other pixels transparent, especially wings/head/legs. Sparse marks on transparent gaps, not a solid white rectangle. Coordinates are fixed master pixel space, no later resizing. Fifteen separate uneven rounded white spots, diameters20–40px, distributed across abdomen rectangle, broad transparent spaces between.\n",
+      "promptBytesBase64": "VXNlIGNhc2U6IHN0eWxpemVkLWNvbmNlcHQuIENyZWF0ZSBhIGZyZXNoIHN0YW5kYWxvbmUgSG9uZXliZWUgbWFya2luZyBtYXNrOiBFWEFDVCAxMjU0IHggMTI1NCBQTkcsIHB1cmUgd2hpdGUgbWFya3Mgb24gdHJ1bHkgVFJBTlNQQVJFTlQgYmFja2dyb3VuZC4gTm8gYW5pbWFsLCBvdXRsaW5lLCBzaWxob3VldHRlLCBjb2xvcmVkIHBhaW50LCBzaGFkb3csIHRleHQgb3IgY2hlY2tlcmJvYXJkLiBNYXJrcyBvbmx5IGluIHJlY3RhbmdsZSB4MjAwLi42MjUsIHk1MzUuLjgxNTogdGhpcyBpcyB0aGUgYmVlIGFiZG9tZW47IGFsbCBvdGhlciBwaXhlbHMgdHJhbnNwYXJlbnQsIGVzcGVjaWFsbHkgd2luZ3MvaGVhZC9sZWdzLiBTcGFyc2UgbWFya3Mgb24gdHJhbnNwYXJlbnQgZ2Fwcywgbm90IGEgc29saWQgd2hpdGUgcmVjdGFuZ2xlLiBDb29yZGluYXRlcyBhcmUgZml4ZWQgbWFzdGVyIHBpeGVsIHNwYWNlLCBubyBsYXRlciByZXNpemluZy4gRmlmdGVlbiBzZXBhcmF0ZSB1bmV2ZW4gcm91bmRlZCB3aGl0ZSBzcG90cywgZGlhbWV0ZXJzMjDigJM0MHB4LCBkaXN0cmlidXRlZCBhY3Jvc3MgYWJkb21lbiByZWN0YW5nbGUsIGJyb2FkIHRyYW5zcGFyZW50IHNwYWNlcyBiZXR3ZWVuLgo=",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/spotted.png",
+      "rawSha256": "0ac14cb47770ff8024495f0660e0e73970ac26079b36de73820105b546b0578a",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded, then explicitly declared abdomen owner only; no automatic inference"
+      }
+    },
+    "banded": {
+      "file": "markings/banded.png",
+      "sha256": "c2f69c835f0c6d09ee338e9202a705f1857711a36222dac238df49000efd0068",
+      "promptFile": "prompts/banded.txt",
+      "promptSha256": "e19aaa435ab78b31ea29ad6ee25a9df6057bbbba5f7263b32c1c0e6a697dfb6f",
+      "prompt": "Use case: stylized-concept. Create a fresh standalone Honeybee marking mask: EXACT 1254 x 1254 PNG, pure white marks on truly TRANSPARENT background. No animal, outline, silhouette, colored paint, shadow, text or checkerboard. Marks only in rectangle x200..625, y535..815: this is the bee abdomen; all other pixels transparent, especially wings/head/legs. Sparse marks on transparent gaps, not a solid white rectangle. Coordinates are fixed master pixel space, no later resizing. Five broad diagonal white bands crossing the abdomen, slope from upper-left to lower-right, each about40px wide, transparent gaps about40px. They follow the transverse segmentation of a right-facing bee whose abdomen extends down-left. Bands are untextured and separate.\n",
+      "promptBytesBase64": "VXNlIGNhc2U6IHN0eWxpemVkLWNvbmNlcHQuIENyZWF0ZSBhIGZyZXNoIHN0YW5kYWxvbmUgSG9uZXliZWUgbWFya2luZyBtYXNrOiBFWEFDVCAxMjU0IHggMTI1NCBQTkcsIHB1cmUgd2hpdGUgbWFya3Mgb24gdHJ1bHkgVFJBTlNQQVJFTlQgYmFja2dyb3VuZC4gTm8gYW5pbWFsLCBvdXRsaW5lLCBzaWxob3VldHRlLCBjb2xvcmVkIHBhaW50LCBzaGFkb3csIHRleHQgb3IgY2hlY2tlcmJvYXJkLiBNYXJrcyBvbmx5IGluIHJlY3RhbmdsZSB4MjAwLi42MjUsIHk1MzUuLjgxNTogdGhpcyBpcyB0aGUgYmVlIGFiZG9tZW47IGFsbCBvdGhlciBwaXhlbHMgdHJhbnNwYXJlbnQsIGVzcGVjaWFsbHkgd2luZ3MvaGVhZC9sZWdzLiBTcGFyc2UgbWFya3Mgb24gdHJhbnNwYXJlbnQgZ2Fwcywgbm90IGEgc29saWQgd2hpdGUgcmVjdGFuZ2xlLiBDb29yZGluYXRlcyBhcmUgZml4ZWQgbWFzdGVyIHBpeGVsIHNwYWNlLCBubyBsYXRlciByZXNpemluZy4gRml2ZSBicm9hZCBkaWFnb25hbCB3aGl0ZSBiYW5kcyBjcm9zc2luZyB0aGUgYWJkb21lbiwgc2xvcGUgZnJvbSB1cHBlci1sZWZ0IHRvIGxvd2VyLXJpZ2h0LCBlYWNoIGFib3V0NDBweCB3aWRlLCB0cmFuc3BhcmVudCBnYXBzIGFib3V0NDBweC4gVGhleSBmb2xsb3cgdGhlIHRyYW5zdmVyc2Ugc2VnbWVudGF0aW9uIG9mIGEgcmlnaHQtZmFjaW5nIGJlZSB3aG9zZSBhYmRvbWVuIGV4dGVuZHMgZG93bi1sZWZ0LiBCYW5kcyBhcmUgdW50ZXh0dXJlZCBhbmQgc2VwYXJhdGUuCg==",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/banded.png",
+      "rawSha256": "d4abe632cdb5452ff04025fe895d05bd1c134290d41159f92c7365c1e140fa6f",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded, then explicitly declared abdomen owner only; no automatic inference"
+      }
+    },
+    "mottled": {
+      "file": "markings/mottled.png",
+      "sha256": "6a4d431a55b4c322c21432bf62e06dceadae4edc08540ae932c2317a98a39ada",
+      "promptFile": "prompts/mottled.txt",
+      "promptSha256": "6f42836a1edbbb4468557f4b74c3626f2c78734046be83564558e74d1eb86f4b",
+      "prompt": "Use case: stylized-concept. Create a fresh standalone Honeybee marking mask: EXACT 1254 x 1254 PNG, pure white marks on truly TRANSPARENT background. No animal, outline, silhouette, colored paint, shadow, text or checkerboard. Marks only in rectangle x200..625, y535..815: this is the bee abdomen; all other pixels transparent, especially wings/head/legs. Sparse marks on transparent gaps, not a solid white rectangle. Coordinates are fixed master pixel space, no later resizing. About eighteen medium organic ragged white patches, irregular lobed edges, 25–60px across, spread throughout abdomen rectangle with about50percent transparent gaps.\n",
+      "promptBytesBase64": "VXNlIGNhc2U6IHN0eWxpemVkLWNvbmNlcHQuIENyZWF0ZSBhIGZyZXNoIHN0YW5kYWxvbmUgSG9uZXliZWUgbWFya2luZyBtYXNrOiBFWEFDVCAxMjU0IHggMTI1NCBQTkcsIHB1cmUgd2hpdGUgbWFya3Mgb24gdHJ1bHkgVFJBTlNQQVJFTlQgYmFja2dyb3VuZC4gTm8gYW5pbWFsLCBvdXRsaW5lLCBzaWxob3VldHRlLCBjb2xvcmVkIHBhaW50LCBzaGFkb3csIHRleHQgb3IgY2hlY2tlcmJvYXJkLiBNYXJrcyBvbmx5IGluIHJlY3RhbmdsZSB4MjAwLi42MjUsIHk1MzUuLjgxNTogdGhpcyBpcyB0aGUgYmVlIGFiZG9tZW47IGFsbCBvdGhlciBwaXhlbHMgdHJhbnNwYXJlbnQsIGVzcGVjaWFsbHkgd2luZ3MvaGVhZC9sZWdzLiBTcGFyc2UgbWFya3Mgb24gdHJhbnNwYXJlbnQgZ2Fwcywgbm90IGEgc29saWQgd2hpdGUgcmVjdGFuZ2xlLiBDb29yZGluYXRlcyBhcmUgZml4ZWQgbWFzdGVyIHBpeGVsIHNwYWNlLCBubyBsYXRlciByZXNpemluZy4gQWJvdXQgZWlnaHRlZW4gbWVkaXVtIG9yZ2FuaWMgcmFnZ2VkIHdoaXRlIHBhdGNoZXMsIGlycmVndWxhciBsb2JlZCBlZGdlcywgMjXigJM2MHB4IGFjcm9zcywgc3ByZWFkIHRocm91Z2hvdXQgYWJkb21lbiByZWN0YW5nbGUgd2l0aCBhYm91dDUwcGVyY2VudCB0cmFuc3BhcmVudCBnYXBzLgo=",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/mottled.png",
+      "rawSha256": "261511e2d3067db5f46c9447871e41480574dcd03203fc4f3ad36a69eb567f28",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded, then explicitly declared abdomen owner only; no automatic inference"
+      }
+    },
+    "marbled": {
+      "file": "markings/marbled.png",
+      "sha256": "0d9c94de550ba3d1467c8519dafc3a1b3a9a25cac5c216f84aa3484614a68038",
+      "promptFile": "prompts/marbled.txt",
+      "promptSha256": "c0a35044d4b29631d36834f9768182e7bbcf3c4488aa222b95077837ef44a0b4",
+      "prompt": "Use case: stylized-concept. Create a fresh standalone Honeybee marking mask: EXACT 1254 x 1254 PNG, pure white marks on truly TRANSPARENT background. No animal, outline, silhouette, colored paint, shadow, text or checkerboard. Marks only in rectangle x200..625, y535..815: this is the bee abdomen; all other pixels transparent, especially wings/head/legs. Sparse marks on transparent gaps, not a solid white rectangle. Coordinates are fixed master pixel space, no later resizing. Fine branching white marble veins with looping irregular paths, only 4–8px thick, spreading over abdomen rectangle, mostly transparent gaps.\n",
+      "promptBytesBase64": "VXNlIGNhc2U6IHN0eWxpemVkLWNvbmNlcHQuIENyZWF0ZSBhIGZyZXNoIHN0YW5kYWxvbmUgSG9uZXliZWUgbWFya2luZyBtYXNrOiBFWEFDVCAxMjU0IHggMTI1NCBQTkcsIHB1cmUgd2hpdGUgbWFya3Mgb24gdHJ1bHkgVFJBTlNQQVJFTlQgYmFja2dyb3VuZC4gTm8gYW5pbWFsLCBvdXRsaW5lLCBzaWxob3VldHRlLCBjb2xvcmVkIHBhaW50LCBzaGFkb3csIHRleHQgb3IgY2hlY2tlcmJvYXJkLiBNYXJrcyBvbmx5IGluIHJlY3RhbmdsZSB4MjAwLi42MjUsIHk1MzUuLjgxNTogdGhpcyBpcyB0aGUgYmVlIGFiZG9tZW47IGFsbCBvdGhlciBwaXhlbHMgdHJhbnNwYXJlbnQsIGVzcGVjaWFsbHkgd2luZ3MvaGVhZC9sZWdzLiBTcGFyc2UgbWFya3Mgb24gdHJhbnNwYXJlbnQgZ2Fwcywgbm90IGEgc29saWQgd2hpdGUgcmVjdGFuZ2xlLiBDb29yZGluYXRlcyBhcmUgZml4ZWQgbWFzdGVyIHBpeGVsIHNwYWNlLCBubyBsYXRlciByZXNpemluZy4gRmluZSBicmFuY2hpbmcgd2hpdGUgbWFyYmxlIHZlaW5zIHdpdGggbG9vcGluZyBpcnJlZ3VsYXIgcGF0aHMsIG9ubHkgNOKAkzhweCB0aGljaywgc3ByZWFkaW5nIG92ZXIgYWJkb21lbiByZWN0YW5nbGUsIG1vc3RseSB0cmFuc3BhcmVudCBnYXBzLgo=",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/marbled.png",
+      "rawSha256": "6680614df04719ed02f503a8b8350547a4172131ed97f916fbfebfaae8332543",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded, then explicitly declared abdomen owner only; no automatic inference"
+      }
+    },
+    "eye-spotted": {
+      "file": "markings/eye-spotted.png",
+      "sha256": "0273e7990f705bae5d082ba024b4abb9179db3ccbe4a41fa8b4efd722a7ad763",
+      "promptFile": "prompts/eye-spotted.txt",
+      "promptSha256": "b2abd39640099e47636687f2e5bb166dcf7471051386b6802573f02b2a930789",
+      "prompt": "Use case: stylized-concept. Create a fresh standalone Honeybee marking mask: EXACT 1254 x 1254 PNG, pure white marks on truly TRANSPARENT background. No animal, outline, silhouette, colored paint, shadow, text or checkerboard. Marks only in rectangle x200..625, y535..815: this is the bee abdomen; all other pixels transparent, especially wings/head/legs. Sparse marks on transparent gaps, not a solid white rectangle. Coordinates are fixed master pixel space, no later resizing. Six white open rings, diameters40–60px with 7px rims and fully transparent centers, distributed in two staggered rows in abdomen rectangle.\n",
+      "promptBytesBase64": "VXNlIGNhc2U6IHN0eWxpemVkLWNvbmNlcHQuIENyZWF0ZSBhIGZyZXNoIHN0YW5kYWxvbmUgSG9uZXliZWUgbWFya2luZyBtYXNrOiBFWEFDVCAxMjU0IHggMTI1NCBQTkcsIHB1cmUgd2hpdGUgbWFya3Mgb24gdHJ1bHkgVFJBTlNQQVJFTlQgYmFja2dyb3VuZC4gTm8gYW5pbWFsLCBvdXRsaW5lLCBzaWxob3VldHRlLCBjb2xvcmVkIHBhaW50LCBzaGFkb3csIHRleHQgb3IgY2hlY2tlcmJvYXJkLiBNYXJrcyBvbmx5IGluIHJlY3RhbmdsZSB4MjAwLi42MjUsIHk1MzUuLjgxNTogdGhpcyBpcyB0aGUgYmVlIGFiZG9tZW47IGFsbCBvdGhlciBwaXhlbHMgdHJhbnNwYXJlbnQsIGVzcGVjaWFsbHkgd2luZ3MvaGVhZC9sZWdzLiBTcGFyc2UgbWFya3Mgb24gdHJhbnNwYXJlbnQgZ2Fwcywgbm90IGEgc29saWQgd2hpdGUgcmVjdGFuZ2xlLiBDb29yZGluYXRlcyBhcmUgZml4ZWQgbWFzdGVyIHBpeGVsIHNwYWNlLCBubyBsYXRlciByZXNpemluZy4gU2l4IHdoaXRlIG9wZW4gcmluZ3MsIGRpYW1ldGVyczQw4oCTNjBweCB3aXRoIDdweCByaW1zIGFuZCBmdWxseSB0cmFuc3BhcmVudCBjZW50ZXJzLCBkaXN0cmlidXRlZCBpbiB0d28gc3RhZ2dlcmVkIHJvd3MgaW4gYWJkb21lbiByZWN0YW5nbGUuCg==",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/eye-spotted.png",
+      "rawSha256": "733e7ee1524b464813998a9a195688c1c33f1e600f5d47cdf0b9a52266b830e1",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded, then explicitly declared abdomen owner only; no automatic inference"
+      }
+    }
+  }
+}
