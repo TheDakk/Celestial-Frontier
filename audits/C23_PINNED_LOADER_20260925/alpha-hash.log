@@ -1,0 +1,25 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-pinned.test.ts (4 tests | 1 failed) 406ms
+   × rejects every changed byte authority before atlas decode, with genuine controls on both sides 109ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  12:40:01
+   Duration  806ms (transform 155ms, setup 0ms, import 288ms, tests 406ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-pinned.test.ts > rejects every changed byte authority before atlas decode, with genuine controls on both sides
+AssertionError: expected [Function] to throw error including 'battle2 pin refused' but got 'png: crc mismatch in IDAT'
+
+Expected: "battle2 pin refused"
+Received: "png: crc mismatch in IDAT"
+
+ ❯ apps/game/src/creature-rig-pinned.test.ts:31:70
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

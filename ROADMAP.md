@@ -111,3 +111,5 @@ Priority update Nick: after Ratitem29 finish, C26chunkedownbranchpush under2GB, 
 C26 DONE: origin/openai/mac nowdae190a5 afterfourmeasured<2GBpushes. Packet audits/C21_C26_HANDOFF_20260925. C21acknowledged; C22reachoptimizationinprogress, thenC23loader,C24types,C25actualsourcefilms,§20balance. NoActions/labels.
 
 C22 reach helper completed: same22 admissions and3,872sample guarantee, fewer rescans; desktop Centipede2878.32→1175.41ms. Audit C22_LAYERED_REACH_20260925. Nick's sequence continues C23pinnedloader, C24roottypes, C25actualClaude-source films,§20balance. C8remainsparked.
+
+C23 loader+checks completed: genuine frozenpin/bytes entry shares old semantic/binding/skin tail; no master fallback. Cold02/worker-offline02 zero master fetches and page errors, two paintedrigs each; uncachedofflinecontrolrefuses. C23 packet also fixes secondary-renderer globalpool teardown; S2six/13286identical. Claude owns integrated masterpack removal/bytes measurement+heldfits before republish. C24roottypes next, C25actualbranchfilms,§20balance; C8parked.

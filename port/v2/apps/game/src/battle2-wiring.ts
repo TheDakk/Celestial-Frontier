@@ -32,6 +32,7 @@
 import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-contact-math.mjs';
 /** The shipped battle2 assets (`apps/game/public/battle2/…`, mirrored by `tools/morph/build-shipped-battle2.mjs`) keep the
  * proof folders' relative layout, so every path below resolves against this recipe URL unchanged. */
+export const repoPathOfAsset = (assetPath:string):string => assetPath.startsWith('../') ? 'audits/'+assetPath.slice(3) : assetPath;
 const arenaRecipeUrl = '/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/arena-recipe.json';
 import { speciesVisualKey } from '@cf/art/species-identity';
 import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShift, combatantScale, composeArena, createFixtureRig, createPortraitRig, cutFixtureParts, lakeArenaWorld, selectHabitatArena, turnPlanInputFromTranscriptEvent,
@@ -49,7 +50,7 @@ import { archetypeGenomeV1, morphParamsV1 } from './morph/morph-params.js';
 import { decodePng } from './morph/png-decode.js';
 import { paintedStandInV1 } from './morph/painted-stand-in.js';
 import type { CombatChroniclePacerGateV1 } from './combat-chronicle.js';
-import { decodeMorphedAtlas, loadCreatureRigV1, type CreaturePartsBindingV1, type CreatureRigRecordV1, type CreatureRigV1 } from './creature-rig.js';
+import { decodeMorphedAtlas, loadPinnedCreatureRigV1, type CreaturePartsBindingV1, type CreatureRigRecordV1, type CreatureRigV1 } from './creature-rig.js';
 import { abilityTheme } from '@cf/domain-combatcore';
 import { parseEffectSequenceAnchors, type EffectSequenceAnchors } from './effects/anchors.js';
 import { EffectThemeLibrary, isEffectTheme, isProceduralImage } from './effects/theme-library.js';
@@ -61,7 +62,8 @@ import { createCreatureVoiceHook, type CreatureVoiceHook } from './soundkit/crea
 import { synthesizePlaceholderLibrary } from './soundkit/placeholder-archetype.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
 import { placeCombatants } from './battle2/placement.js';
-import { repoRelativeSource } from '../../../tools/creature-animation/record-source.mjs';
+import {getBattle2MasterPin} from './battle2-master-pins.generated.js';
+import {preflightBattle2PinnedBytesV1,gunzipTransportBytes,Battle2PinRefusal} from './battle2-master-pin-admission.js';
 import { MASS_BY_SIZE_INDEX, MASS_CLASS } from './motion/timing.js';
 import type { SpeciesArtLoader } from './species-art-loader.js';
 import { loaderPortrait } from './species-portrait.js';
@@ -299,7 +301,9 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     win.removeEventListener('pagehide', onPageHide); win.removeEventListener('pageshow', onPageShow); observer?.disconnect();
     try { stage?.dispose(); } catch { /* total teardown continues */ }
     for (const lease of atlasLeases.splice(0)) { try { lease.release(); } catch { /* teardown continues */ } }
-    try { app?.destroy(true, { children: true }); } catch { /* the second renderer is gone either way */ }
+    // The main game renderer still owns shared Pixi resources. Boolean true
+    // would release its live pooled batches when this secondary renderer closes.
+    try { app?.destroy({ removeView: true, releaseGlobalResources: false }, { children: true }); } catch { /* the second renderer is gone either way */ }
     stage = null; app = null; section.remove(); setPhase('disposed', why); if (current === handle) current = null;
   };
   const build = async (): Promise<Battle2Status> => {
@@ -337,12 +341,18 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
         if (fit && assets.bytes) {
           try {
             const card = compileBodyCard(record, (genome ?? undefined) as MotionGenomeFields | undefined);
-            const [binding, keyed, manifest] = await Promise.all([assets.json(fit.dir + 'binding.json.gz') as Promise<CreaturePartsBindingV1>, assets.image(fit.dir + 'parts/alpha.png'), assets.json(fit.dir + 'parts/manifest.json') as Promise<{ creatureId?: string }>]);
+            const manifest = await assets.json(fit.dir + 'parts/manifest.json') as { creatureId?: string };
             if (typeof manifest.creatureId !== 'string') throw new Error('parts manifest lacks creatureId');
-            const source = (record as { source?: unknown }).source;
-            if (typeof source !== 'string') throw new Error('record has no painter master source');
-            const [master, atlas] = await Promise.all([assets.bytes(auditAssetPath(repoRelativeSource(source))), assets.bytes(fit.dir + 'parts/atlas/' + manifest.creatureId + '.png')]);
-            const pixels = keyed.pixels(), alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = pixels[i * 4 + 3] ?? 0;
+            const pin = getBattle2MasterPin(manifest.creatureId);
+            if (!pin) throw new Battle2PinRefusal('missing-pin', `no bundled build pin for ${manifest.creatureId}`);
+            const alphaAsset = fit.dir + 'parts/alpha.png', atlasAsset = fit.dir + 'parts/atlas/' + manifest.creatureId + '.png';
+            const [alphaBytes, bindingTransport, atlas] = await Promise.all([assets.bytes(alphaAsset), assets.bytes(fit.dir + 'binding.json.gz'), assets.bytes(atlasAsset)]);
+            const pinnedInput = { pin, creatureId: manifest.creatureId, record, alphaPath: repoPathOfAsset(alphaAsset), alpha: alphaBytes,
+              bindingBytes: await gunzipTransportBytes(bindingTransport), atlasPath: repoPathOfAsset(atlasAsset), atlas };
+            const admitted = await preflightBattle2PinnedBytesV1(pinnedInput);
+            const binding = admitted.binding as CreaturePartsBindingV1;
+            const keyed = await decodePng(alphaBytes);
+            const pixels = new Uint8ClampedArray(keyed.rgba.buffer, keyed.rgba.byteOffset, keyed.rgba.length);
             if (keyed.width !== record.geometry.width || keyed.height !== record.geometry.height) throw new Error('alpha cut-out size disagrees with the record geometry');
             // the morph system: this genome's individual on the accepted archetype (identity genome → the archetype's own path)
             const markingMask = await loadMarkingMask(assets, fit.markingsDir ?? fit.dir, record as unknown as { recipeHash: string; genome?: Record<string, unknown> | null; identity?: { speciesVisualKey?: string }; geometry: { width: number; height: number } }, genome);
@@ -351,11 +361,11 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
             // released when this study is disposed); the archetype itself takes the loader's own guarded decode as before
             let paintRig: CreatureRigV1;
             if (morph.atlasPixels) { const lease = await morphAtlasCache.acquire(morphAtlasKey(record.recipeHash ?? record.identity.speciesVisualKey, speciesVisualKey(genome as Record<string, unknown>), morph.marking), async () => (await decodeMorphedAtlas(atlas, record as unknown as CreatureRigRecordV1, binding, morph.atlasPixels!)).texture); atlasLeases.push(lease);
-              paintRig = await loadCreatureRigV1(record as unknown as CreatureRigRecordV1, binding, master, alpha, atlas, async () => lease.texture, { borrowedAtlas: true, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) }); }
-            else paintRig = await loadCreatureRigV1(record as unknown as CreatureRigRecordV1, binding, master, alpha, atlas, undefined, morph.jointScale ? { jointScale: morph.jointScale } : {});
+              paintRig = await loadPinnedCreatureRigV1(pinnedInput, async () => lease.texture, { borrowedAtlas: true, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) }); }
+            else paintRig = await loadPinnedCreatureRigV1(pinnedInput, undefined, morph.jointScale ? { jointScale: morph.jointScale } : {});
             const rig = createPartsRig({ record: record as unknown as CreatureRigRecordV1, rig: paintRig, card, alphaBox: alphaBox(pixels, keyed.width, keyed.height), binding, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) });
             return { rig, card, mass: card.massClass.multiplier, seed };
-          } catch (error) { skipped.push(`${name}: parts rig unavailable (${error instanceof Error ? error.message : String(error)}); fixture fallback`); }
+          } catch (error) { throw new Error(`${name}: pinned parts rig unavailable (${error instanceof Error ? error.message : String(error)})`); }
         } else if (fit) skipped.push(`${name}: parts rig needs raw asset bytes; fixture fallback`);
         try {
           const card = compileBodyCard(record, (genome ?? undefined) as MotionGenomeFields | undefined);
@@ -433,7 +443,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     if (turns.length === 0) { built.dispose(); throw new Error('battle2: the transcript has no stageable turn'); }
     const application = new pixi.Application();
     await application.init({ width: BATTLE2_FRAME.width, height: BATTLE2_FRAME.height, resolution: input.deviceTier === 'high' ? 2 : 1, autoDensity: false, background: '#141d22', antialias: true, autoStart: false, sharedTicker: false });
-    if (disposed) { built.dispose(); application.destroy(true, { children: true }); throw new Error('disposed while initialising the renderer'); }
+    if (disposed) { built.dispose(); application.destroy({ removeView: true, releaseGlobalResources: false }, { children: true }); throw new Error('disposed while initialising the renderer'); }
     application.canvas.style.cssText = 'display:block;width:100%;height:100%'; section.append(application.canvas);
     application.stage.addChild(built.root); app = application; stage = built; label = built.label; section.dataset.battle2Label = built.label;
     setPhase('playing'); startTicking(); tick();

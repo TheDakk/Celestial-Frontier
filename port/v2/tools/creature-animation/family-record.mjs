@@ -6,7 +6,7 @@ import {resolveFixedAttachments,validateFixedPivots} from './fixed-attachments.m
 import {familyContractForRecord,familyContactChains} from './family-contracts.mjs';
 import {validateTerminalContactPads} from './terminal-contact-pads.mjs';
 import {createSkeletonPoseProgram} from './skeleton-pose.mjs';
-import {checkGeometry as checkQuadruped,admitRecord as admitQuadruped,hashBytes,hashJSON,stableJSON} from './quadruped-template.mjs';
+import {checkGeometry as checkQuadruped,admitRecordContent as admitQuadrupedContent,hashBytes,hashJSON,stableJSON} from './quadruped-template.mjs';
 const need=(ok,reason)=>{if(!ok)throw Error('Family admission: '+reason);};
 const distance=(j,axis)=>Math.hypot(j[axis[1]][0]-j[axis[0]][0],j[axis[1]][1]-j[axis[0]][1]);
 export function measureFamilyBounds(template,landmarks){
@@ -49,11 +49,15 @@ export async function sealFamilyRecord(input){
  return {...record,recipeHash:await hashJSON(record)};
 }
 export async function admitFamilyRecord(record,cutoutBytes,alpha){
+ need(await hashBytes(cutoutBytes)===record.geometry?.cutoutAssetHash,'mismatched cut-out hash');
+ return admitFamilyRecordContent(record,alpha);
+}
+/** Shared semantic admission. A caller still needs byte or bundled-pin authority. */
+export async function admitFamilyRecordContent(record,alpha){
  const template=familyContractForRecord(record);
- if(template.id==='quadruped'&&!record.anatomy){need(!Object.hasOwn(record.geometry??{},'contactPads'),'terminal pads require family anatomy admission');need(!Object.hasOwn(record.geometry??{},'fixedAttachments'),'fixed attachments require compact myriapod admission');await admitQuadruped(record,cutoutBytes,alpha);return template;}
+ if(template.id==='quadruped'&&!record.anatomy){need(!Object.hasOwn(record.geometry??{},'contactPads'),'terminal pads require family anatomy admission');need(!Object.hasOwn(record.geometry??{},'fixedAttachments'),'fixed attachments require compact myriapod admission');await admitQuadrupedContent(record,alpha);return template;}
  const {recipeHash,...body}=record;
  need(typeof recipeHash==='string'&&await hashJSON(body)===recipeHash,'corrupted landmark / recipe hash');
- need(await hashBytes(cutoutBytes)===record.geometry?.cutoutAssetHash,'mismatched cut-out hash');
  const identity=record.identity;
  need(identity&&typeof identity.speciesVisualKey==='string'&&identity.speciesVisualKey.length>5&&Number.isInteger(identity.seed)
   &&typeof identity.ownerId==='string'&&identity.ownerId.length>0,'identity');

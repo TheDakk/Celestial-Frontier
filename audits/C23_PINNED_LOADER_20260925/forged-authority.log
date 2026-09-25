@@ -1,0 +1,30 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-pinned.test.ts (4 tests | 1 failed) 479ms
+   × rejects forged authority before reading caller record or decoding 7ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  12:40:00
+   Duration  941ms (transform 158ms, setup 0ms, import 331ms, tests 479ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-pinned.test.ts > rejects forged authority before reading caller record or decoding
+AssertionError: expected [Function] to throw error including 'untrusted-pin-authority' but got 'read'
+
+Expected: "untrusted-pin-authority"
+Received: "read"
+
+ ❯ apps/game/src/creature-rig-pinned.test.ts:24:107
+     22|  const i=input(),decode=decoder();let reads=0;
+     23|  for(const fake of[{...pin},JSON.parse(JSON.stringify(pin)),Object.cre…
+     24|   await expect(loadPinnedCreatureRigV1({...i,pin:fake,get record(){rea…
+       |                                                                                                           ^
+     25|  }expect(reads).toBe(0);expect(decode).not.toHaveBeenCalled();
+     26| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
