@@ -384,6 +384,38 @@ new GitHub/release authority remain separate.
 
 ---
 
+## Decided 2026-09-25 (Nick) — the combat decision model (Arc 5.5 gate; N1 / D12)
+
+### 20. Guardian parties, Auto or Command — **SWAP IS NEVER NECESSARY; DEFEAT IS RECOVERY**
+
+Nick, 2026-09-25: "I do like the party idea for fighting guardians… can we have the player auto combat versus decision based if they
+wanted to? The decisions should feel meaningful…" then "I don't want them to feel the swap is necessary, I like the idea of the party
+of 3 for guardians only. That's great."
+
+- **Party of up to 3 for Guardian and Titan fights ONLY**, fighting as a relay: one on stage at a time, and the defender's lost HP carries
+  over. Ordinary wild conquest stays one fighter, as in v1, with an optional pre-fight stance and no Breaks.
+- **Auto or Command, chosen per fight.**
+  - Auto is v1's one press. It uses the player's saved plan (order and stances) when there is one, otherwise Balanced. It resolves every
+    Break itself, including the sensible swap.
+  - Command pauses at the Breaks (a fighter first at ⅓ HP; the Guardian's telegraphed phase change) for Hold, Swap or Withdraw.
+    Nothing is timed.
+- **Rewards are identical in both modes.** Command earns no extra loot.
+- **Swap is never necessary.** A fighter who falls and one who is swapped out enter the SAME Recovery, so swapping is never a way to
+  dodge a penalty. Auto makes the sensible swap too. The balance instrument (Codex) enforces that Command's best swap adds at most a
+  small edge over Auto's own play with the same plan. The planning edge comes from the choices made BEFORE the fight (order and stances
+  read from the threat dossier), not from mid-fight chores.
+- **Meaningful choices:**
+  - Every threat on the dossier has one clearly right stance, and a wrong stance does worse than Balanced. No stance is best everywhere.
+  - Target gaps between Auto (Balanced) and the best plan: easy wild fights < 5 points of win rate, normal conquest ~10–20, and
+    Guardians/Titans ~25–40, measured and tuned by the instrument.
+  - The forecast shows both, e.g. "Auto: Even · With your plan: Favored".
+- **Defeat is Recovery, never loss.** A defeated companion is wounded and enters active-play Recovery (§16 carrier), with the length set
+  by Codex's economy. Companions already lost in old saves stay lost. The explorer keeps the 1 HP mercy floor.
+- **No rerolls:** the same plan always gives the same fight, and a reload cannot reroll it.
+- **Parity:** one fighter + Balanced + Auto reproduces v1's `runDuel` exactly.
+- **Order:** Guardian parties first, then v1's friendly duel (+8 XP), then the Guardian phase change.
+- Engineering plan: `audits/PROPOSALS_20260925/N1_COMBAT_MODEL.md` §5 (S0–S7), as amended here.
+
 ## Open implementation decisions exposed 2026-08-29 — Arc 6 reward carriers
 
 These are not new requests for numeric tuning. Source review proved the legacy inputs but found no

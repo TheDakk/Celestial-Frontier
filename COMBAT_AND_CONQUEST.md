@@ -219,6 +219,10 @@ share one helper and the fingerprint held.
 
 ## 0. v2 combat decision and counterplay contract (bounded champion slice implemented)
 
+> **Decided next model (2026-09-25, `port/DECISIONS.md` §20; not yet implemented):** Guardian/Titan fights take a relay party of up to 3,
+> in Auto or Command. Ordinary conquest stays one fighter. Defeat becomes active-play Recovery, and Swap is never necessary. The
+> contract below describes the shipped single-champion slice until the §20 engine lands.
+
 The current landed-Surface card implements the minimum honest combat decision: select the explorer,
 one eligible ordinary owned-fauna champion or one live captured Guardian/Titan after reading the exact defender, abilities, deterministic
 forecast, stakes and supported reward family. That selected identity changes the sealed settlement;

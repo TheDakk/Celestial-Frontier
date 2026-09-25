@@ -1,5 +1,9 @@
 # N1 — the combat decision model (Arc 5.5 [HUMAN] gate)
 
+> **DECIDED 2026-09-25 (Nick), amended:** see `port/DECISIONS.md` §20. The party is for Guardians/Titans ONLY. Auto or Command is chosen per
+> fight, and rewards are identical. Swap is never necessary (fallen and swapped-out fighters get the same Recovery; Auto swaps sensibly).
+> The planning edge comes from pre-fight order and stances. Where this document differs, §20 wins.
+
 Proposal by Claude, 2026-09-25. Writing only; no code changed. Ledger item N1
 (`audits/OPERATING_MODEL_20260925/COMPLETION_LEDGER.md:27`). Nick answers in one line (§6).
 
