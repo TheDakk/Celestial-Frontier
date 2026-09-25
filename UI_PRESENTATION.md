@@ -472,6 +472,12 @@ snapshot; no new timer, schema, import door or competing persistence writer is i
 (screen readers still hear it), but the toast is not painted (`opacity 0`, `data-quiet`). A creature voice that binds the toast
 as its VISIBLE audio counterpart (`bindTameToastCounterpart`) reveals that one toast, so the cue still fires; Feed's supplemental
 toast stays hidden because its inline status is the counterpart. Outcome test: `tests/d16-notification-popups-outcome.test.ts`.
+
+**Tooltips (matches code as of 2026-09-25, D16 parity with v1 `@section tooltips` / `tips`):** `tooltips.ts` owns one
+`#tipbubble` (display only, `pointer-events:none`). Desktop: 650 ms hover or keyboard focus on `[data-tip]` (native `title`
+stays the browser's). Touch: a 600 ms long-press on `[data-tip]` or any native `[title]` (phones never show titles), cancelled
+by a 12 px drag; the click that ends a long-press is swallowed so inspecting never acts. Quiet during Field Training and when
+Settings → Tooltips (`#settips`, saved `tips`, absent ⇒ on) is off. Outcome test: `tests/d16-tooltips-outcome.test.ts`.
 The bottom bell reads this history; its old duplicate shelf button is hidden.
 
 Nick accepted the U1 layout **for UAT** on 2026-09-06 at product
