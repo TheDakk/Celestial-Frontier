@@ -76,6 +76,17 @@ painted arena works offline in it. Codex's items 5 and 7 are staged unsigned in 
 - Run `npm run overridecontrol` and the whole gate list locally before any hosted attempt.
 
 ### What Claude owes next
+-94. **Weekly Charters, live on the expedition's own clock (2026-09-25; Nick: "moving the clock must not reset the charter… record the time… don't use V1").**
+`weekly-charters.ts`: a cycle is 4 h of F4 ACTIVE PLAY. That clock is persisted in the save and committed with every action; it accrues from
+`performance.now()` only while the game is visible and answerable, and the device clock never enters it. The save records the cycle the weekly
+state belongs to (`chWeek`); a transaction in a later cycle rolls the board forward once, and only once the board exists (the five trades are
+learned), so an explorer who never saw it gets no Charter writes. The slate is deterministic: three of the live pool (new-world landfall, mining,
+discovering life, fabrication). A Charter counts only after it is accepted, pays Stardust plus one honoured Charter exactly once, and shares the
+cap of three. The accept goes through the SAME audited transaction path as the starters, with an exact-once operation per cycle. Landing, mining,
+fabrication and bioscan stage weekly progress in their own transactions; the single-outcome F4 derive input gained `activePlayMs` (additive).
+Tests: a ±10-year device-clock swing changes nothing; forward-only rollover; legacy normalization; closed-board no-op; the cap; acceptance-only
+counting (control: counting without acceptance fails); paid once; the real F4 commit with a per-cycle operation. Unit 5,076 pass; only I5 is red.
+Codex: C10 (release bullet + pinned inventory), C11 (weekly conquest in Arc 6's settlement).
 -93. **I5 on `fb82c32c` reviewed (2026-09-25, `audits/I5_REVIEW_20260925/README.md`).** Codex's run stopped correctly at the producer gate: all five
 inputs changed with intended work. The gate is single-use by design (any app change moves index and service worker; `--calibrate` refuses under an
 active budget). The review found a real memory regression the certificate would have caught, and fixed it (`ffa1f126`): painted stand-ins could keep

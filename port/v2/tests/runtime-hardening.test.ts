@@ -313,6 +313,7 @@ describe('synchronous semantic panel refill focus', () => {
       projectStarterCharterBoardV1: () => ({ kind: 'projected', board: { acceptedCount: 0, cap: 3 } }),
       renderStarterCharterBoardV1: () => '<button data-starter-charter-accept="st">Accept</button>',
       starterCharterPanelStatus: () => null, starterCharterAcceptPendingId: null, arc9BinderClaimPendingId: null,
+      liveActivePlayMs: () => null, projectWeeklyCharterBoardV1: () => null, renderWeeklyCharterBoardV1: () => '', // no F4 runtime here: no weekly board
       syncBoundedCollectionButtons: (_root: HTMLElement, selector: string) => {
         for (const button of root.querySelectorAll<HTMLButtonElement>(selector)) button.disabled = disabled;
       },

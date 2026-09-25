@@ -512,12 +512,16 @@ import {
   STARTER_CHARTER_IDS_V1,
   commitStarterCharterAcceptV1,
   operationForStarterCharterAcceptV1,
+  operationForWeeklyCharterAcceptV1,
+  isWeeklyCharterIdV1,
+  type CharterAcceptIdV1,
   projectStarterCharterBoardV1,
   publishStarterCharterAcceptFieldsV1,
   renderStarterCharterBoardV1,
   type StarterCharterAcceptActionOutcomeV1,
   type StarterCharterIdV1,
 } from './starter-charters.js';
+import { projectWeeklyCharterBoardV1, renderWeeklyCharterBoardV1, weeklyCharterCycleV1 } from './weekly-charters.js';
 import {
   ARC9_BINDER_CLAIMABLE_SET_IDS_V1,
   commitArc9BinderSetClaimV1,
@@ -3933,7 +3937,7 @@ function binderClaimPanelStatus(): string | null {
 }
 function syncBoundedCollectionButtons(
   root: HTMLElement,
-  selector: '[data-starter-charter-accept]' | '[data-binder-claim]',
+  selector: '[data-starter-charter-accept]' | '[data-weekly-charter-accept]' | '[data-binder-claim]',
   pending: boolean,
   unavailable = false,
 ): void {
@@ -4245,8 +4249,11 @@ function fillCharters(): void {
     ? renderStarterCharterBoardV1(starterProjection.board)
     : '<section data-starter-charter-board-protected><h3>Starter Charters</h3>'
       + '<div class="empty">Starter Charters are protected because their saved authority could not be verified. Nothing was changed.</div></section>';
+  const weeklyActivePlayMs = liveActivePlayMs();
+  const weeklyBoard = weeklyActivePlayMs === null ? null : projectWeeklyCharterBoardV1(save, weeklyActivePlayMs);
+  const weekly = weeklyBoard === null ? '' : renderWeeklyCharterBoardV1(weeklyBoard);
   const starterStatus = starterCharterPanelStatus();
-  fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter + starter
+  fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter + starter + weekly
     + (starterStatus === null ? ''
       : `<p class="starter-charter-status" role="status" aria-live="polite" aria-atomic="true">${esc(starterStatus)}</p>`));
   syncBoundedCollectionButtons(
@@ -4256,11 +4263,23 @@ function fillCharters(): void {
     starterProjection.kind !== 'projected'
       || starterProjection.board.acceptedCount >= starterProjection.board.cap,
   );
+  syncBoundedCollectionButtons(
+    document.getElementById('chpanel')!,
+    '[data-weekly-charter-accept]',
+    starterCharterAcceptPendingId !== null,
+    weeklyBoard === null || weeklyBoard.acceptedCount >= weeklyBoard.cap,
+  );
   restoreFocus();
 }
 registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('objchip')], onOpen: fillCharters });
 document.getElementById('chpanel')!.addEventListener('click', (event) => {
   if (!(event.target instanceof Element)) return;
+  const weeklyButton = event.target.closest<HTMLButtonElement>('[data-weekly-charter-accept]');
+  if (weeklyButton !== null && !weeklyButton.disabled) {
+    const weeklyId = weeklyButton.dataset.weeklyCharterAccept ?? '';
+    if (isWeeklyCharterIdV1(weeklyId)) void acceptStarterCharterWithPilot(weeklyId, event.isTrusted);
+    return;
+  }
   const button = event.target.closest<HTMLButtonElement>('[data-starter-charter-accept]');
   if (button === null || button.disabled) return;
   const id = STARTER_CHARTER_IDS_V1.find(
@@ -8090,6 +8109,7 @@ function publishArc0LandingFields(
     save.chacc = committed.chacc.slice();
     save.chDone = committed.chDone.slice();
     save.chProg = { ...committed.chProg };
+    save.chWeek = committed.chWeek;
     save.items = committed.items.map(([baseId, count]) => [baseId, count]);
     save.equip = { ...committed.equip };
     save.equipAff = Object.fromEntries(Object.entries(committed.equipAff).map(([slot, affix]) => [
@@ -8184,6 +8204,7 @@ async function doLand(): Promise<boolean> {
     chacc: save.chacc,
     chDone: save.chDone,
     chProg: save.chProg,
+    chWeek: save.chWeek,
     cargo: save.cargo,
     essence: save.essence,
     stats: save.stats,
@@ -8208,6 +8229,7 @@ async function doLand(): Promise<boolean> {
     save.chacc = priorLandingPublication.chacc;
     save.chDone = priorLandingPublication.chDone;
     save.chProg = priorLandingPublication.chProg;
+    save.chWeek = priorLandingPublication.chWeek;
     save.cargo = priorLandingPublication.cargo;
     save.essence = priorLandingPublication.essence;
     save.stats = priorLandingPublication.stats;
@@ -10190,7 +10212,7 @@ let arc9NameplateChoicePending = false;
 let lastArc9NameplateOutcome: string | null = null;
 let arc9FrontierEndingPending = false;
 let lastArc9FrontierEndingOutcome: string | null = null;
-let starterCharterAcceptPendingId: StarterCharterIdV1 | null = null;
+let starterCharterAcceptPendingId: CharterAcceptIdV1 | null = null;
 let lastStarterCharterAcceptOutcome: string | null = null;
 let lastStarterCharterAcceptStatus: string | null = null;
 let arc9BinderClaimPendingId: Arc9BinderClaimableSetIdV1 | null = null;
@@ -10229,7 +10251,11 @@ function boundedCollectionRefusalNeedsReload(outcome: BoundedCollectionRefusalV1
     || kind === 'storage-error';
 }
 
-async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean> {
+/** The expedition's own active-play clock (F4), live; null before the runtime exists. Never the device clock. */
+function liveActivePlayMs(): number | null {
+  try { const ms = f4Runtime?.diagnostics().activePlayMs; return typeof ms === 'number' && Number.isSafeInteger(ms) && ms >= 0 ? ms : null; } catch { return null; }
+}
+async function runStarterCharterAccept(id: CharterAcceptIdV1): Promise<boolean> {
   const runtime = f4Runtime;
   if (starterCharterAcceptPendingId !== null || smokeForceReadOnly
     || !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
@@ -10241,6 +10267,9 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
     toast('Charter acceptance unavailable', 'Finish the current expedition save, then try again.');
     return false;
   }
+  const weeklyAtClick = isWeeklyCharterIdV1(id) ? liveActivePlayMs() : null;
+  const weeklyRow = isWeeklyCharterIdV1(id) && weeklyAtClick !== null
+    ? projectWeeklyCharterBoardV1(save, weeklyAtClick).rows.find(({ definition }) => definition.id === id) : undefined;
   const projection = projectStarterCharterBoardV1(save);
   if (projection.kind !== 'projected') {
     lastStarterCharterAcceptOutcome = `refused:protected:${projection.reason}`;
@@ -10249,13 +10278,14 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
     toast('Starter Charters protected', 'Nothing changed. Reload after restoring save authority.', true);
     return false;
   }
-  if (save.chacc.includes(id) || save.chDone.includes(id)) {
+  if (save.chacc.includes(id) || save.chDone.includes(id) || weeklyRow?.status === 'completed') {
     lastStarterCharterAcceptOutcome = `current:${id}`;
     lastStarterCharterAcceptStatus = 'That Starter Charter is already accepted or complete.';
     if (openPanelId() === 'ch') fillCharters();
     return false;
   }
-  const row = projection.board.rows.find(({ definition }) => definition.id === id);
+  // the starter board's acceptedCount counts every accepted Charter, weekly included: one shared cap
+  const row = isWeeklyCharterIdV1(id) ? weeklyRow : projection.board.rows.find(({ definition }) => definition.id === id);
   if (row === undefined || row.status !== 'available'
     || projection.board.acceptedCount >= projection.board.cap) {
     lastStarterCharterAcceptOutcome = `refused:locked:${id}`;
@@ -10264,7 +10294,9 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
     toast('Charter unavailable', row?.lockedReason ?? 'Three accepted Charters is the exact active cap.');
     return false;
   }
-  const operation = operationForStarterCharterAcceptV1(id);
+  const operation = isWeeklyCharterIdV1(id)
+    ? operationForWeeklyCharterAcceptV1(id, weeklyCharterCycleV1(weeklyAtClick!))
+    : operationForStarterCharterAcceptV1(id);
   const actionClaim = productActionCoordinator.tryClaim(operation);
   if (actionClaim === null) {
     lastStarterCharterAcceptOutcome = 'unavailable:product-action-pending';
@@ -10280,6 +10312,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
     chacc: sourceState.chacc,
     chDone: sourceState.chDone,
     chProg: sourceState.chProg,
+    chWeek: sourceState.chWeek,
     essence: sourceState.essence,
     stats: sourceState.stats,
     items: sourceState.items,
@@ -10293,6 +10326,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
     sourceState.chacc = prior.chacc;
     sourceState.chDone = prior.chDone;
     sourceState.chProg = prior.chProg;
+    sourceState.chWeek = prior.chWeek;
     sourceState.essence = prior.essence;
     sourceState.stats = prior.stats;
     sourceState.items = prior.items;
@@ -10332,6 +10366,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
       state: sourceState,
       id,
       codecNow: Date.now(),
+      ...(weeklyAtClick !== null ? { activePlayMs: weeklyAtClick } : {}),
     });
     if (outcome.kind === 'current') {
       lastStarterCharterAcceptOutcome = `current:${outcome.id}`;
@@ -10378,6 +10413,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
         || JSON.stringify(checkpoint.chacc) !== JSON.stringify(successor.chacc)
         || JSON.stringify(checkpoint.chDone) !== JSON.stringify(successor.chDone)
         || JSON.stringify(checkpoint.chProg) !== JSON.stringify(successor.chProg)
+        || checkpoint.chWeek !== successor.chWeek
         || checkpoint.essence !== successor.essence
         || JSON.stringify(checkpoint.stats) !== JSON.stringify(successor.stats)
         || JSON.stringify(checkpoint.items) !== JSON.stringify(successor.items)
@@ -10480,7 +10516,7 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<boolean>
     && !replacementTransaction && !replacementReloadPending && !importWriteInFlight;
 }
 
-async function acceptStarterCharterWithPilot(id: StarterCharterIdV1, trusted: boolean): Promise<void> {
+async function acceptStarterCharterWithPilot(id: CharterAcceptIdV1, trusted: boolean): Promise<void> {
   const pilot = audiovisualPilot;
   let presentation: ReturnType<AudiovisualPilot['beginSettlement']> = null;
   try { presentation = pilot?.beginSettlement(trusted) ?? null; }
@@ -11526,6 +11562,7 @@ async function runArc9Bioscan(): Promise<boolean> {
     chacc: save.chacc,
     chDone: save.chDone,
     chProg: save.chProg,
+    chWeek: save.chWeek,
     essence: save.essence,
     items: save.items,
     equip: save.equip,
@@ -11553,6 +11590,7 @@ async function runArc9Bioscan(): Promise<boolean> {
     sourceState.chacc = priorPublication.chacc;
     sourceState.chDone = priorPublication.chDone;
     sourceState.chProg = priorPublication.chProg;
+    sourceState.chWeek = priorPublication.chWeek;
     sourceState.essence = priorPublication.essence;
     sourceState.items = priorPublication.items;
     sourceState.equip = priorPublication.equip;
@@ -14775,6 +14813,7 @@ async function commitCompendiumScoutAction(
     chacc: sourceState.chacc,
     chDone: sourceState.chDone,
     chProg: sourceState.chProg,
+    chWeek: sourceState.chWeek,
     essence: sourceState.essence,
     stats: sourceState.stats,
     items: sourceState.items,
@@ -14788,6 +14827,7 @@ async function commitCompendiumScoutAction(
     sourceState.chacc = priorScoutCharterPublication.chacc;
     sourceState.chDone = priorScoutCharterPublication.chDone;
     sourceState.chProg = priorScoutCharterPublication.chProg;
+    sourceState.chWeek = priorScoutCharterPublication.chWeek;
     sourceState.essence = priorScoutCharterPublication.essence;
     sourceState.stats = priorScoutCharterPublication.stats;
     sourceState.items = priorScoutCharterPublication.items;
