@@ -37,7 +37,9 @@ C13 contract review DONE in audits/ART_BATTLE_FOCUS_20260925/master-pin-review-0
 
 Next Codex: continue Wall Lizard/Cougar/Impala/Marmot/Cattle motion and the next ten while Claude handles stage contacts and the pin generator; do not relabel retained failures as completion. Preserve accepted bindings, S2, contracts, gates and limits. New candidate boundary ownership repairs have fixed folds; existing preservePaintBoundaries:true closed flat-master fin seams without changing any source pixel or UV. A numeric native PASS alone missed visible Bass holes, so inspect impact/return stills.
 
-Then continue ranked paintings Wolf/Gull/River Otter/Brown Bear/Goose/Heron/Sparrow/Ibex/Reef Shark onward; existing Python/Beetle masks, specialized uncovered templates, complete-stage motion, C12 Centipede orientation cost and C13 pin review remain in the art program. Done only with measured generated coverage≥80%, no misleading ranked top35 Earth, all motion/picker gates and every library pair at60fps4×CPU. No new completion claims yet.
+Wolf item11 now has31 parts, final fit03 and mask-set02,19/19 static +1,688 presentation/exactrest PASS, full15.5327s native0/0refusals with5.0ms stage p95 at4×. Packet audits/ART_BATTLE_FOCUS_20260925/11-wolf. Ready/return has a visible snout gap; full-stage travel remains pending (run-up only±.0447076613). Claude must wire/picker/coverage after stage check. No coverage gain claimed.
+
+Then continue ranked paintings Gull/River Otter/Brown Bear/Goose/Heron/Sparrow/Ibex/Reef Shark onward; existing Python/Beetle masks, specialized uncovered templates, complete-stage motion, C12 Centipede orientation cost and C13 pin review remain in the art program. Done only with measured generated coverage≥80%, no misleading ranked top35 Earth, all motion/picker gates and every library pair at60fps4×CPU. No new completion claims yet.
 
 C18 prerequisite repair is signed a7f154f8: full develop profile5,080pass, sole historicalI5 red; original lock and v1 samples unchanged. No whole-battery PASS, push or hosted eligibility. Asset batches have their own scoped static/native and root validate evidence; no unchanged full battery retries.
 
