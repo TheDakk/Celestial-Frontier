@@ -8,6 +8,17 @@ const assets: PaintedCardAssets = { json: async (p) => JSON.parse(readFileSync(n
 const REGISTRY = [{ earthName: 'Crab', dir: 'audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/' }, { earthName: 'Civet', dir: 'audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/' }];
 const crabGenome = (over: Record<string, unknown> = {}) => ({ _earthName: 'Crab', kingdom: 'fauna', seed: 5, color: 12, accent: 3, size: 0, head: 0, tail: 1, pattern: 0, ...over });
 describe('painted card source — the individual on the card', () => {
+  it('OWNERSHIP (I5 v2 diagnosis 2026-09-25): a painted card\'s leases, cache, pending renders and resident archetypes are reported truthfully; release and releaseUnowned trim exactly the unleased cards', async () => {
+    const s = new PaintedCardSource({ assets, registry: REGISTRY, yieldToHost: () => Promise.resolve() }), g = crabGenome(), key = (await import('@cf/art/species-identity')).speciesVisualKey(g as Record<string, unknown>);
+    const closeThumb = s.openLease('thumb', key), p = s.card(g, 'thumb')!;
+    expect(s.ownership().keys.pendingThumbs).toEqual([key]); expect(s.ownership().keys.leasedThumbs).toEqual([key]);
+    await p; const o = s.ownership();
+    expect(o.schema).toBe('cf-v2-painted-card-ownership/v1'); expect(o.leases).toBe(1); expect(o.keys.cachedThumbs).toEqual([key]); expect(o.keys.pendingThumbs).toEqual([]);
+    expect(o.cacheEntries).toBe(1); expect(o.decodedPixels).toBe(132 * 132); expect(o.encodedBytes).toBeGreaterThan(0); expect(o.residentArchetypes.names).toEqual(['Crab']);
+    expect(s.releaseUnowned()).toBe(0); expect(s.ownership().keys.cachedThumbs).toEqual([key]); // leased → kept
+    closeThumb(); closeThumb(); // idempotent
+    expect(s.ownership().leases).toBe(0); expect(s.releaseUnowned()).toBe(1); expect(s.ownership().keys.cachedThumbs).toEqual([]); expect(s.ownership().totals.releasedUnowned).toBe(1);
+  });
   it('MEMORY (I5 review 2026-09-24): at most ARCHETYPE_RESIDENT_DEFAULT decoded archetypes stay resident while cards of all of them render; eviction never changes a card; control: an unbounded source keeps them all', async () => {
     const one = (name: string) => ({ _earthName: name, kingdom: 'fauna', seed: 11, color: 4, accent: 9, size: 2, head: 3, tail: 2, pattern: 0 });
     const names = [...new Set(CARD_ARCHETYPES.map((a) => a.earthName))], now = () => Promise.resolve();

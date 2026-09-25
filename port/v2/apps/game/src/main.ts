@@ -9464,6 +9464,8 @@ function compendiumDiagnostics(): unknown {
     explorerMeal: compendiumExplorerMealController.diagnostics(),
     lazyArt: speciesArtLoader.diagnostics(),
     art: speciesArtLoader.artDiagnostics(),
+    // the painted card path (stand-ins, 2026-09-24): its own leases/cache/pending/resident archetypes, beside the broker's `art`
+    paintedArt: speciesArtLoader.paintedDiagnostics(),
   });
 }
 function drawSurface(
