@@ -1,0 +1,11 @@
+{
+  "tool": "image_gen.imagegen",
+  "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-fcace113-432d-43eb-ab5d-36f499e4b914.png",
+  "retained": "master.png",
+  "masterSha256": "712072ae73b0cc55cbffc990bdc202a11871cc1b264ab98d9a13927bbda146c8",
+  "promptFile": "sent-prompt-01.txt",
+  "promptSha256": "8649c680c0e64b25010f6fe1129cf6a266c511194beb4ac07556d973fa41319e",
+  "model": "not exposed",
+  "seed": null,
+  "decision": "selected for intake; full source retained, no master manipulation"
+}

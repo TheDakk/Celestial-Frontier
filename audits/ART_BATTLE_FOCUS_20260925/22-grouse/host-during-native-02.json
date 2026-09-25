@@ -1,0 +1,166 @@
+{
+  "scope": "Once-per-second process observations of this game's other lane only; does not measure all host work or certify idle host.",
+  "rows": [
+    {
+      "at": "2026-09-25T13:44:03.981Z",
+      "processes": [
+        "81700 81621   0.0       02:09 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700  99.3       02:08 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:05.016Z",
+      "processes": [
+        "81700 81621   0.0       02:11 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 110.5       02:10 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:06.017Z",
+      "processes": [
+        "81700 81621   0.0       02:12 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700  99.4       02:11 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:07.019Z",
+      "processes": [
+        "81700 81621   0.0       02:13 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 102.8       02:12 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:08.019Z",
+      "processes": [
+        "81700 81621   0.0       02:14 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 101.5       02:13 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:09.020Z",
+      "processes": [
+        "81700 81621   0.0       02:15 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 101.8       02:14 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:10.024Z",
+      "processes": [
+        "81700 81621   0.0       02:16 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700  97.4       02:15 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:11.026Z",
+      "processes": [
+        "81700 81621   0.0       02:17 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 102.3       02:16 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:12.029Z",
+      "processes": [
+        "81700 81621   0.0       02:18 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 101.2       02:17 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:13.028Z",
+      "processes": [
+        "81700 81621   0.0       02:19 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 107.7       02:18 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:14.031Z",
+      "processes": [
+        "81700 81621   0.0       02:20 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 103.6       02:19 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:15.032Z",
+      "processes": [
+        "81700 81621   0.0       02:21 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 109.8       02:20 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:16.035Z",
+      "processes": [
+        "81700 81621   0.0       02:22 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 103.6       02:21 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:17.037Z",
+      "processes": [
+        "81700 81621   0.0       02:23 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 104.7       02:22 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:18.037Z",
+      "processes": [
+        "81700 81621   0.0       02:24 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 104.5       02:23 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:19.037Z",
+      "processes": [
+        "81700 81621   0.0       02:25 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 114.5       02:24 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:20.038Z",
+      "processes": [
+        "81700 81621   0.0       02:26 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 104.9       02:25 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:21.041Z",
+      "processes": [
+        "81700 81621   0.0       02:27 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 102.2       02:26 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:22.043Z",
+      "processes": [
+        "81700 81621   0.0       02:28 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 101.5       02:27 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:23.044Z",
+      "processes": [
+        "81700 81621   0.0       02:29 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 104.4       02:28 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:24.046Z",
+      "processes": [
+        "81700 81621   0.0       02:30 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 103.5       02:29 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:25.049Z",
+      "processes": [
+        "81700 81621   0.0       02:31 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 110.1       02:30 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:44:25.100Z",
+      "processes": [
+        "81700 81621   0.0       02:31 /opt/homebrew/Cellar/node/26.9.0/bin/node /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/vitest.mjs run apps/game/src/battle2 apps/game/src/morph apps/game/src/painted apps/game/src/battle2-archetypes.test.ts apps/game/src/battle2-wiring.test.ts apps/game/src/battle2-matchup.test.ts",
+        "81702 81700 110.1       02:30 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    }
+  ]
+}

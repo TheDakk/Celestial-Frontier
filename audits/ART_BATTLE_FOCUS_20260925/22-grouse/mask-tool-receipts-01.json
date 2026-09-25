@@ -1,0 +1,62 @@
+[
+  {
+    "kind": "striped",
+    "tool": "image_gen.imagegen",
+    "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-1e30147a-aaaf-40fb-b315-12a88477942f.png",
+    "retained": "raw/striped.png",
+    "promptFile": "prompts/striped.txt",
+    "decision": "REJECT: oversized crowded alpha patch; insufficient transparent gaps and some patterns extend towards feet",
+    "seed": null,
+    "model": "not exposed"
+  },
+  {
+    "kind": "spotted",
+    "tool": "image_gen.imagegen",
+    "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-6919bf61-a262-4103-85af-9037b1100650.png",
+    "retained": "raw/spotted.png",
+    "promptFile": "prompts/spotted.txt",
+    "decision": "REJECT: oversized crowded alpha patch; insufficient transparent gaps and some patterns extend towards feet",
+    "seed": null,
+    "model": "not exposed"
+  },
+  {
+    "kind": "banded",
+    "tool": "image_gen.imagegen",
+    "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-759217c5-57f3-4403-a9de-237714256067.png",
+    "retained": "raw/banded.png",
+    "promptFile": "prompts/banded.txt",
+    "decision": "REJECT: oversized crowded alpha patch; insufficient transparent gaps and some patterns extend towards feet",
+    "seed": null,
+    "model": "not exposed"
+  },
+  {
+    "kind": "mottled",
+    "tool": "image_gen.imagegen",
+    "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-935788fc-8348-4dcb-8041-458fa739ccd2.png",
+    "retained": "raw/mottled.png",
+    "promptFile": "prompts/mottled.txt",
+    "decision": "REJECT: oversized crowded alpha patch; insufficient transparent gaps and some patterns extend towards feet",
+    "seed": null,
+    "model": "not exposed"
+  },
+  {
+    "kind": "marbled",
+    "tool": "image_gen.imagegen",
+    "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-658c57e9-0d84-4be6-b06d-10229209d649.png",
+    "retained": "raw/marbled.png",
+    "promptFile": "prompts/marbled.txt",
+    "decision": "REJECT: oversized crowded alpha patch; insufficient transparent gaps and some patterns extend towards feet",
+    "seed": null,
+    "model": "not exposed"
+  },
+  {
+    "kind": "eye-spotted",
+    "tool": "image_gen.imagegen",
+    "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-b80b9117-98c5-4176-88fb-e9f25209a79a.png",
+    "retained": "raw/eye-spotted.png",
+    "promptFile": "prompts/eye-spotted.txt",
+    "decision": "REJECT: oversized crowded alpha patch; insufficient transparent gaps and some patterns extend towards feet",
+    "seed": null,
+    "model": "not exposed"
+  }
+]

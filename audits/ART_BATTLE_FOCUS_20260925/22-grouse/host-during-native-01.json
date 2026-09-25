@@ -1,0 +1,143 @@
+{
+  "scope": "Once-per-second process observations of this game's other lane only; does not measure all host work or certify idle host.",
+  "rows": [
+    {
+      "at": "2026-09-25T13:39:12.944Z",
+      "processes": [
+        "70288 70273 107.8       03:17 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:13.979Z",
+      "processes": [
+        "70288 70273 108.6       03:18 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:14.982Z",
+      "processes": [
+        "70288 70273 100.2       03:19 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:15.983Z",
+      "processes": [
+        "70288 70273  98.6       03:20 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:16.988Z",
+      "processes": [
+        "70288 70273 101.0       03:21 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:17.985Z",
+      "processes": [
+        "70288 70273 103.3       03:22 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:18.990Z",
+      "processes": [
+        "70288 70273 102.0       03:23 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:19.997Z",
+      "processes": [
+        "70288 70273 101.5       03:24 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:20.993Z",
+      "processes": [
+        "70288 70273 111.7       03:25 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:21.995Z",
+      "processes": [
+        "70288 70273  97.8       03:26 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:22.996Z",
+      "processes": [
+        "70288 70273 105.0       03:27 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:23.997Z",
+      "processes": [
+        "70288 70273 114.0       03:28 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:25.005Z",
+      "processes": [
+        "70288 70273  99.3       03:30 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:25.998Z",
+      "processes": [
+        "70288 70273 104.9       03:30 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:27.001Z",
+      "processes": [
+        "70288 70273 111.7       03:31 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:28.001Z",
+      "processes": [
+        "70288 70273 100.7       03:32 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:29.003Z",
+      "processes": [
+        "70288 70273 103.7       03:34 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:30.005Z",
+      "processes": [
+        "70288 70273 100.6       03:35 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:31.005Z",
+      "processes": [
+        "70288 70273  99.5       03:36 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:32.005Z",
+      "processes": [
+        "70288 70273 102.1       03:37 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:33.008Z",
+      "processes": [
+        "70288 70273 105.9       03:38 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:34.017Z",
+      "processes": [
+        "70288 70273  94.9       03:39 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    },
+    {
+      "at": "2026-09-25T13:39:34.062Z",
+      "processes": [
+        "70288 70273  94.9       03:39 /opt/homebrew/Cellar/node/26.9.0/bin/node --experimental-import-meta-resolve --require /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/suppress-warnings.cjs --conditions node --conditions development /Users/nick/Projects/celestial-frontier-anthropic-mac/port/v2/node_modules/vitest/dist/workers/forks.js"
+      ]
+    }
+  ]
+}
