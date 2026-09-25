@@ -6,6 +6,7 @@
    An absent overlay means every captured Guardian/Titan is still live in its
    acquisition-state form; no row may create a creature without that source. */
 import {
+  COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   COMBAT_SETTLEMENT_RECEIPT_KIND_V1,
   isCombatSettlementPlanV1,
   type CombatSettlementPlanV1,
@@ -269,8 +270,18 @@ function sameImmutableSource(
     && candidate.nickname === creature.nickname
     && candidate.fed === creature.fed
     && candidate.brood === creature.brood
-    && candidate.assignment === creature.assignment
+    && (candidate.assignment === creature.assignment
+      /* §20 (2026-09-25): a defeated captured Guardian enters active-play Recovery — the one assignment the overlay may add */
+      || (creature.assignment === null && isRecoveryAssignment(candidate.assignment)))
     && candidate.bond === creature.bond;
+}
+
+function isRecoveryAssignment(value: unknown): boolean {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  const keys = Object.keys(value);
+  const row = value as { kind?: unknown; readyAtActivePlayMs?: unknown };
+  return keys.length === 2 && row.kind === 'recovery'
+    && Number.isSafeInteger(row.readyAtActivePlayMs) && (row.readyAtActivePlayMs as number) >= 0;
 }
 
 function protectedProjection(
@@ -490,18 +501,25 @@ export function prepareGuardianCompanionCombatV1(input: Readonly<{
     return refused('champion-xp-unrepresentable');
   }
   let hurtAfter = creature.hurt;
-  let remove = false;
+  const remove = false;   // §20 retired permanent loss; kept so the successor/tombstone shape below stays the audited one
+  let recoveryReadyAt: number | null = null;
   if (input.plan.injury.status === 'set-hurt') {
     if (input.plan.injury.creatureId !== creature.creatureId
       || input.plan.injury.hurtBefore !== (creature.hurt ?? 0)) {
       return refused('settlement-shape-mismatch');
     }
     hurtAfter = input.plan.injury.hurtAfter;
-  } else if (input.plan.injury.status === 'remove-creature') {
-    if (input.plan.injury.creatureId !== creature.creatureId) {
+  } else if (input.plan.injury.status === 'set-recovery') {
+    /* §20: a defeated companion is wounded and enters active-play Recovery — never removed */
+    if (input.plan.injury.creatureId !== creature.creatureId
+      || input.plan.injury.hurtBefore !== (creature.hurt ?? 0)
+      /* only a FINISHED Recovery may be replaced (it stays on the row until the next companion action); anything else is busy */
+      || (creature.assignment !== null && !(creature.assignment.kind === 'recovery'
+        && creature.assignment.readyAtActivePlayMs <= input.plan.injury.readyAtActivePlayMs - COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1))) {
       return refused('settlement-shape-mismatch');
     }
-    remove = true;
+    hurtAfter = input.plan.injury.hurtAfter;
+    recoveryReadyAt = input.plan.injury.readyAtActivePlayMs;
   } else if (input.plan.injury.status !== 'none') {
     return refused('settlement-shape-mismatch');
   }
@@ -523,6 +541,7 @@ export function prepareGuardianCompanionCombatV1(input: Readonly<{
       ...creature,
       xp: xpAfter,
       hurt: hurtAfter,
+      ...(recoveryReadyAt === null ? {} : { assignment: { kind: 'recovery' as const, readyAtActivePlayMs: recoveryReadyAt } }),
     });
     const creatureTombstone = remove
       ? createCreatureTombstoneV2(creature, receiptEvidence)

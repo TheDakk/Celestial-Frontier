@@ -562,6 +562,7 @@ export async function commitArc6CombatActionV1(
       worldConquered: false,
       claimedPrimeSignatureIds: input.encounter.identity.claimedSignatureIds,
       lossXp: lossXp?.kind === 'ready' ? lossXp.authority : null,
+      activePlayMs: availability.activePlayMs,   // §20: a defeat's Recovery ends on the active-play clock
     }),
   });
   if (plan.status !== 'planned') {

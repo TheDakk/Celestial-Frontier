@@ -7,6 +7,7 @@
    acquisition carrier; this bridge remains responsible only for the current
    champion's XP, injury, or tombstone. */
 import {
+  COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   COMBAT_SETTLEMENT_RECEIPT_KIND_V1,
   isCombatSettlementPlanV1,
   type CombatSettlementPlanV1,
@@ -133,18 +134,25 @@ export function prepareArc6CombatOwnershipV1(
   }
 
   let hurtAfter = creature.hurt;
-  let remove = false;
+  const remove = false;   // §20 retired permanent loss; kept so the successor/tombstone shape below stays the audited one
+  let recoveryReadyAt: number | null = null;
   if (plan.injury.status === 'set-hurt') {
     if (plan.injury.creatureId !== creature.creatureId
       || plan.injury.hurtBefore !== (creature.hurt ?? 0)) {
       return refused('settlement-shape-mismatch');
     }
     hurtAfter = plan.injury.hurtAfter;
-  } else if (plan.injury.status === 'remove-creature') {
-    if (plan.injury.creatureId !== creature.creatureId) {
+  } else if (plan.injury.status === 'set-recovery') {
+    /* §20: a defeated companion is wounded and enters active-play Recovery — never removed */
+    if (plan.injury.creatureId !== creature.creatureId
+      || plan.injury.hurtBefore !== (creature.hurt ?? 0)
+      /* only a FINISHED Recovery may be replaced (it stays on the row until the next companion action); anything else is busy */
+      || (creature.assignment !== null && !(creature.assignment.kind === 'recovery'
+        && creature.assignment.readyAtActivePlayMs <= plan.injury.readyAtActivePlayMs - COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1))) {
       return refused('settlement-shape-mismatch');
     }
-    remove = true;
+    hurtAfter = plan.injury.hurtAfter;
+    recoveryReadyAt = plan.injury.readyAtActivePlayMs;
   } else if (plan.injury.status !== 'none') {
     return refused('settlement-shape-mismatch');
   }
@@ -168,6 +176,7 @@ export function prepareArc6CombatOwnershipV1(
       ...creature,
       xp: xpAfter,
       hurt: hurtAfter,
+      ...(recoveryReadyAt === null ? {} : { assignment: { kind: 'recovery' as const, readyAtActivePlayMs: recoveryReadyAt } }),
     });
     const creatureTombstone = remove
       ? createCreatureTombstoneV2(creature, receiptEvidence)

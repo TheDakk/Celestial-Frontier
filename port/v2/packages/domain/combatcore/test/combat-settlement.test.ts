@@ -3,6 +3,8 @@ import { installCaptureHooks } from '@cf/domain-descriptors';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import { resolveCF1WorldAddress, type CanonicalCF1WorldAddress } from '@cf/scene';
 import {
+  COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
+  COMBAT_DEFEAT_WOUND_STEP_V1,
   COMBAT_SETTLEMENT_SCOPE_V1,
   battleStats,
   isCombatSettlementPlanV1,
@@ -121,6 +123,7 @@ function planned(options: Readonly<{
   declaredOutcome?: CombatSettlementOutcomeV1;
   conquered?: boolean;
   claimed?: readonly PrimeSignatureIdV1[];
+  activePlayMs?: number;
 }>): CombatSettlementPlanV1 {
   const transcript = options.transcript ?? duel(options.champion, options.encounter);
   const result = planCombatSettlementV1({
@@ -137,6 +140,7 @@ function planned(options: Readonly<{
       lossXp: options.champion.kind === 'player'
         ? null
         : (options.lossXp ?? { kind: 'known-target', awardedTarget: 0 }),
+      ...(options.activePlayMs === undefined ? {} : { activePlayMs: options.activePlayMs }),
     },
   });
   expect(result.status).toBe('planned');
@@ -308,7 +312,7 @@ describe('legacy conquest outcome preservation', () => {
     expect(titanPlan.rewards.stardust).toEqual({ status: 'award', amount: 73, lifetimeEarnedDelta: 73 });
   });
 
-  it('preserves player mercy damage and owned-creature crawl-home/death outcomes', () => {
+  it('preserves player mercy damage; §20: EVERY defeated companion (bred, unbred, already Critical) is wounded and recovers, never removed', () => {
     const titan = encounter({ world: 'flame', worldType: 'lava' });
     const weakGenome = makeGenome(1, 'fauna', 0.5);
     const weakStats = { ...battleStats(weakGenome), vit: 1, fer: 1, res: 1, agi: 1, ins: 1, total: 5 };
@@ -329,21 +333,27 @@ describe('legacy conquest outcome preservation', () => {
       world: 'ordinary', worldType: 'airless', defenderGenome: makeGenome(999, 'fauna', 0.5),
     });
     const loss = findLossFixtures(ordinary).ordinaryLoss;
-    const bredPlan = planned({ champion: loss, encounter: ordinary });
-    expect(bredPlan.injury).toMatchObject({
-      status: 'set-hurt', reason: 'bred-crawl-home', hurtBefore: 0, hurtAfter: 0.85,
+    const clock = 3_600_000;
+    const bredPlan = planned({ champion: loss, encounter: ordinary, activePlayMs: clock });
+    expect(bredPlan.injury).toEqual({
+      status: 'set-recovery', reason: 'defeat-recovery', creatureId: (loss as { creatureId: string }).creatureId,
+      hurtBefore: 0, hurtAfter: COMBAT_DEFEAT_WOUND_STEP_V1, readyAtActivePlayMs: clock + COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
     });
     const unbred = { ...loss, legacyBredLineage: false } as CombatSettlementChampionV1;
-    expect(planned({ champion: unbred, encounter: ordinary }).injury).toMatchObject({
-      status: 'remove-creature', reason: 'wild-or-unbred-defeat',
+    expect(planned({ champion: unbred, encounter: ordinary, activePlayMs: clock }).injury).toMatchObject({
+      status: 'set-recovery', reason: 'defeat-recovery', readyAtActivePlayMs: clock + COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
     });
     const critical = owned(
       (loss as { genome: Genome }).genome.seed,
       { creatureId: 'ordered-loss-companion', hurt: 0.85, bred: true },
     );
-    expect(planned({ champion: critical, encounter: ordinary }).injury).toMatchObject({
-      status: 'remove-creature', reason: 'critical-repeat-defeat',
+    expect(planned({ champion: critical, encounter: ordinary, activePlayMs: clock }).injury).toMatchObject({
+      status: 'set-recovery', hurtBefore: 0.85, hurtAfter: 0.85,   // the wound never exceeds Critical, and nothing is removed
     });
+    // no plan in any defeat branch can remove a creature
+    for (const champion of [loss, unbred, critical]) {
+      expect(JSON.stringify(planned({ champion, encounter: ordinary }).injury)).not.toMatch(/remove/);
+    }
   });
 });
 

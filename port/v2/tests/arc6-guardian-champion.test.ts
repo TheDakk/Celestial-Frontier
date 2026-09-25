@@ -309,9 +309,9 @@ describe('Arc 6 captured Guardian champion admission', () => {
     expect(card?.championOptions.find((row) => (
       row.id === captured.guardian.creature.creatureId
     ))).toMatchObject({ kind: 'owned-fauna', disabled: false, disabledReason: null });
-    expect(card?.stakes).toBe(
-      'Defeat: this wild or unbred champion is permanently lost.',
-    );
+    // §20: defeat is Recovery, never loss — the card must say so, and must never promise permanent loss
+    expect(card?.stakes).toBe('Defeat wounds this champion and it rests for about 10 minutes of play. It is never lost.');
+    expect(card?.stakes).not.toMatch(/permanently lost|lost forever/);
   });
 
   it('plans a Guardian as existing owned-fauna through Guardian loss-XP authority and the writer seam', async () => {

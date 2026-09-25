@@ -389,9 +389,7 @@ export function projectCombatChronicleV1(
     ? `🏴 World settled! ${championName} triumphs — bioscans here are safe and ☄ Stardust awaits.`
     : settlement.champion.kind === 'player'
       ? '💀 You were overpowered. The world holds.'
-      : settlement.injury.status === 'set-hurt' && settlement.injury.reason === 'bred-crawl-home'
-        ? `🩸 ${championName} was broken — it crawls home Critical. The world holds.`
-        : `💀 ${championName} fell — lost forever. The world holds.`;
+      : `🩸 ${championName} fell and limps home to recover. The world holds.`;   /* §20: defeat is Recovery, never loss */
   const classLine = (name: string, statsBlock: CombatSettlementPlanV1['transcript']['A']): string => {
     const cls = statsBlock.cls;
     return name + (cls ? ` (${cls} Lv${statsBlock.lvl})` : '');

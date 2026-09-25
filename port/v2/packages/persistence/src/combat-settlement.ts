@@ -762,7 +762,8 @@ function changeCodexChampion(
     if (plan.xp.status === 'award' || (plan.xp.status === 'loss-target' && plan.xp.totalDelta > 0)) {
       genome.xp = settlement.creatureAfter!.xp ?? 0;
     }
-    if (plan.injury.status === 'set-hurt') genome.hurt = plan.injury.hurtAfter;
+    /* §20: a defeat's wound mirrors like any other (its Recovery assignment lives in the v2 ownership carrier) */
+    if (plan.injury.status === 'set-hurt' || plan.injury.status === 'set-recovery') genome.hurt = plan.injury.hurtAfter;
     return [rowId, { ...entry, g: genome }];
   });
 }
@@ -788,7 +789,8 @@ function changeCodexGuardianChampion(
       || (plan.xp.status === 'loss-target' && plan.xp.totalDelta > 0)) {
       genome.xp = settlement.creatureAfter!.xp ?? 0;
     }
-    if (plan.injury.status === 'set-hurt') genome.hurt = plan.injury.hurtAfter;
+    /* §20: a defeat's wound mirrors like any other (its Recovery assignment lives in the v2 ownership carrier) */
+    if (plan.injury.status === 'set-hurt' || plan.injury.status === 'set-recovery') genome.hurt = plan.injury.hurtAfter;
     return [rowId, { ...entry, g: genome }];
   });
 }
