@@ -258,6 +258,17 @@ share one helper and the fingerprint held.
 >   - **Withdraw** settles like a fight not won (a Break has no winner: a draw; after a fallen fighter, the defender's leg). Auto never
 >     withdraws. Rewards are identical to Auto for the same outcome (Command earns nothing extra).
 >   - **Reload:** `simulateCombatOpenEncounterV1(record)` re-runs `runEncounterV1(sealed, decisions)` and lands on the same Break.
+> - **Command on the card (same date; matches code).** Guardians/Titans get a **Play: Auto / Command** picker. A Command Challenge seals the
+>   fight (no Break → it settles at once). While a Break waits, the card replaces Challenge with the Break panel: a headline (who is
+>   down to what, the Guardian's health, who is ready) and one full-width button per offered answer — *Hold — X fights on*, *Swap —
+>   send in Y*, *Continue — send in Y* (after a fall), *Withdraw — leave the fight* — or *Settle the fight* when every answer is in.
+>   A non-final answer is appended (`decideArc6CommandEncounterV1`); the answer that finishes the fight rides the ordinary settlement
+>   (`runArc6CombatCardAction` → `commitCurrentArc6Combat(request, { decisions })`), so a finished fight settles in one receipt and
+>   plays the normal Chronicle. On another world the card says the Command fight is waiting there. Outcome test:
+>   `tests/a5-command-break-outcome.test.ts` (real selects + buttons, reboot, durable read-back, 3 Main mutants).
+> - **battle2 relay beats (same date).** Before the decisive leg the painted stage holds one captioned beat per earlier fighter
+>   (`battle2/swap-beats.ts`: "↻ X steps back — Guardian 62% · Y steps in", 1.1 s each, 0.7 s reduced motion), re-derived from the
+>   plan's party + decisions like the Chronicle prelude. The earlier fighters' rigs are not staged (caption only).
 >   - **The explorer fights Guardians in Auto only:** the settlement binds the explorer's exact health, which moves between Breaks, so a
 >     sealed explorer could strand the record (even Withdraw settles through that binding). `openArc6CommandEncounterV1` refuses it.
 
