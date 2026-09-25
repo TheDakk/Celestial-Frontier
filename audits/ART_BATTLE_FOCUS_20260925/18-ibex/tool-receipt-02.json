@@ -1,0 +1,10 @@
+{
+  "tool": "image_gen.imagegen",
+  "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-333c6dee-773a-4eee-a69a-72f7844c5743.png",
+  "masterSha256": "97dde355ce484eaa944a58ecb67674fb08fa2d36299904d4e1b0d539b27c988a",
+  "promptFile": "correction-prompt-02.txt",
+  "promptSha256": "2cfddd441f6c6d955422c448d44e325e7954beb1ff455c3850e3f8696a42b526",
+  "reference": "generation-01/master.png",
+  "referenceSha256": "4ac3d485c903b46c82165264badf6cb888306a28c98aef489dceabb9def12697",
+  "decision": "candidate: two visible ears, full horns and all four hooves, generous margin; Nick art review pending"
+}
