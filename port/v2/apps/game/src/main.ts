@@ -314,6 +314,7 @@ import { describeSpecies } from '@cf/domain-genome';
 import {
   COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   PRIME_SIGNATURE_IDS_V1,
+  type EncounterStanceV1,
   battleStats,
   projectGuardianPrimeEncounterV1,
   STAT_NAMES,
@@ -488,6 +489,7 @@ import {
   projectCombatCardReadModelV1,
   type CombatCardActionOutcomeV1,
   type CombatCardActionRequestV1,
+  type CombatCardReadModelV1,
 } from './combat-card.js';
 import {
   CombatChronicleController,
@@ -2223,6 +2225,12 @@ interface Arc6CombatSurfaceProjection {
 }
 let currentArc6CombatProjection: Arc6CombatSurfaceProjection | null = null;
 let currentArc6ChampionId: string | null = null;
+/* §20 (Nick 2026-09-25) plan state for the current fight: a stance per slot (lead = 0) and the extra Guardian party slots (1, 2). Main
+   owns it; the card renders from it and the challenge commits it. Reset when the fight's context changes. */
+let currentArc6Plan: { contextKey: string | null; stances: EncounterStanceV1[]; partyIds: (string | null)[] } = {
+  contextKey: null, stances: ['balanced', 'balanced', 'balanced'], partyIds: [null, null, null],
+};
+let currentArc6CardModel: CombatCardReadModelV1 | null = null;
 let lastArc6CombatOutcome: string | null = null;
 const captureCardController = new CaptureCardController({
   root: card,
@@ -2247,6 +2255,16 @@ const combatCardController = new CombatCardController({
   onAction: (request) => {
     if (request.kind === 'select') {
       currentArc6ChampionId = request.championId;
+      refreshCombatCardState();
+      return;
+    }
+    if (request.kind === 'stance') {
+      currentArc6Plan.stances[request.index] = request.stance;
+      refreshCombatCardState();
+      return;
+    }
+    if (request.kind === 'party-slot') {
+      currentArc6Plan.partyIds[request.index] = request.championId;
       refreshCombatCardState();
       return;
     }
@@ -15874,6 +15892,9 @@ function refreshCombatCardState(
         : policyReason !== null
           ? `Combat is preserved but cannot settle yet: ${policyReason}. No duel was started.`
           : null;
+  if (currentArc6Plan.contextKey !== projection.contextKey) {
+    currentArc6Plan = { contextKey: projection.contextKey, stances: ['balanced', 'balanced', 'balanced'], partyIds: [null, null, null] };
+  }
   const model = projectCombatCardReadModelV1({
     contextKey: projection.contextKey,
     encounter: projection.encounter,
@@ -15883,13 +15904,16 @@ function refreshCombatCardState(
     observedActivePlayMs: projection.observedActivePlayMs,
     selectedChampionId: currentArc6ChampionId,
     unavailableReason,
+    plan: { stances: currentArc6Plan.stances, partyIds: currentArc6Plan.partyIds },
   });
   if (model === null) {
     currentArc6CombatProjection = null;
+    currentArc6CardModel = null;
     combatCardController.setState(null);
     return;
   }
   currentArc6CombatProjection = projection;
+  currentArc6CardModel = model;
   currentArc6ChampionId = model.selectedChampionId;
   combatCardController.setState(model);
 }
@@ -16362,6 +16386,11 @@ async function commitCurrentArc6Combat(
   const intendedSurface = nav;
   const intendedProjection = currentArc6CombatProjection;
   const parent = arc5OwnershipState;
+  /* §20: the plan the card showed for exactly this lead; the action re-validates every member */
+  const cardModel = currentArc6CardModel;
+  const challengePlan = cardModel !== null && cardModel.party[0]?.id === request.championId
+    && !(cardModel.party.length === 1 && cardModel.party[0]!.stance === 'balanced')
+    ? cardModel.party.map((m) => Object.freeze({ championId: m.id, stance: m.stance })) : null;
   const parentEvidence = arc5OwnershipEvidence;
   if (intendedSurface.mode !== 'surface' || intendedProjection === null) {
     return refused('surface-presentation-authority-unavailable');
@@ -16435,6 +16464,8 @@ async function commitCurrentArc6Combat(
       championRosterAuthorityKey: currentProjection.championRoster.authorityKey,
       observedActivePlayMs: currentProjection.observedActivePlayMs,
       codecNow: Date.now(),
+      /* §20: the plan the card showed (lead + stances + Guardian party); a lone Balanced lead commits exactly as before */
+      ...(challengePlan === null ? {} : { party: challengePlan }),
     });
     lastArc6CombatOutcome = `${attempt.kind}:${attempt.kind === 'refused'
       ? attempt.detail : attempt.convergence}`;

@@ -298,7 +298,10 @@ describe('Arc 6 player-live combat wiring', () => {
     expect(ordered(silentCharterMutant, [charterFact, 'if (starterCharter !== null)', charterCopy])).toBe(false);
     expect(action).toContain('this conquest would imbue equipped gear');
     expect(main).toContain('No extra Guardian Gear reward was invented; that authored table remains open.');
-    expect(card).toContain('Party roles and retreat remain a named design gate');
+    // §20 decided (2026-09-25): the card states the real party rule and that Auto takes every choice, with identical rewards;
+    // it must not promise mid-fight commands before the Command open-encounter record lands
+    expect(card).toContain('Auto plays every choice for you; rewards are the same either way.');
+    expect(card).not.toMatch(/Hold, Swap or Withdraw|command window/i);
   });
 
   it('arms combat audio only in the trusted Challenge seam and retires the prior Main sidecar first', () => {
@@ -460,3 +463,30 @@ describe('Arc 6 player-live combat wiring', () => {
     expect(achievementMutant).toContain("gameEvent('share'");
   });
 });
+
+describe('§20 plan wiring in Main', () => {
+  const audit = (text: string): string[] => {
+    const f: string[] = [];
+    const wiring = functionBody(text, 'const combatCardController = new CombatCardController({', 'interface ApproachEcologyPresentation');
+    if (!wiring.includes('currentArc6Plan.stances[request.index] = request.stance;')) f.push('a stance change is dropped');
+    if (!wiring.includes('currentArc6Plan.partyIds[request.index] = request.championId;')) f.push('a party-slot choice is dropped');
+    const commit = functionBody(text, 'async function commitCurrentArc6Combat(', 'function presentCommittedCombatChronicle(');
+    if (!commit.includes('...(challengePlan === null ? {} : { party: challengePlan }),')) f.push('the challenge does not commit the plan the card showed');
+    if (!commit.includes('cardModel.party[0]?.id === request.championId')) f.push('the plan is not bound to the challenged lead');
+    const refresh = functionBody(text, 'function refreshCombatCardState(', '\n}\n');
+    if (!refresh.includes('plan: { stances: currentArc6Plan.stances, partyIds: currentArc6Plan.partyIds },')) f.push('the card is not rendered from the plan');
+    return f;
+  };
+  it('the plan state flows card → Main → the committed fight', () => { expect(audit(main)).toEqual([]); });
+  it('negative controls', () => {
+    for (const [needle, expected] of [
+      ['...(challengePlan === null ? {} : { party: challengePlan }),', /does not commit the plan/],
+      ['currentArc6Plan.stances[request.index] = request.stance;', /stance change is dropped/],
+      ['plan: { stances: currentArc6Plan.stances, partyIds: currentArc6Plan.partyIds },', /not rendered from the plan/],
+    ] as [string, RegExp][]) {
+      expect(main.split(needle).length, needle).toBe(2);
+      expect(audit(main.replace(needle, '')).join(' | '), needle).toMatch(expected);
+    }
+  });
+});
+
