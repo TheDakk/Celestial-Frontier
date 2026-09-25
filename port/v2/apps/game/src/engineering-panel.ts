@@ -171,6 +171,15 @@ export interface EngineeringPanelControllerOptions {
   readonly openers?: readonly (HTMLElement | null)[];
   /** Called synchronously. Any returned promise is deliberately ignored. */
   readonly onAction?: (request: EngineeringPanelActionRequest) => void;
+  /** v1.8.9 parity (D16, the Fabricator's 📌): the pinned recipe is VIEW state (save `pin`), never an Engineering action, so
+   * its press is not latched by a pending action. Absent = no pin buttons. */
+  readonly recipePin?: EngineeringRecipePinPort;
+}
+
+export interface EngineeringRecipePinPort {
+  pinned(): string | null;
+  /** Pin `baseId`, or unpin it when it is already the pinned recipe (v1: one pin at a time). */
+  toggle(baseId: string): void;
 }
 
 const SHIP_CHASSIS = Object.freeze([
@@ -402,6 +411,7 @@ export class EngineeringPanelController {
   readonly #document: Document;
   readonly #openers: readonly (HTMLElement | null)[];
   readonly #onAction: EngineeringPanelControllerOptions['onAction'] | null;
+  readonly #recipePin: EngineeringRecipePinPort | null;
   #view: EngineeringPanelView | null = null;
   #presentation: EngineeringPanelPresentation | null = null;
   #pending: EngineeringPanelActionRequest | null = null;
@@ -421,6 +431,7 @@ export class EngineeringPanelController {
     this.#document = options.panel.ownerDocument;
     this.#openers = Object.freeze([...(options.openers ?? [])]);
     this.#onAction = options.onAction ?? null;
+    this.#recipePin = options.recipePin ?? null;
     const bodies = [...this.#panel.querySelectorAll<HTMLElement>('[data-engineering-panel-body]')];
     if (options.body !== undefined) {
       if (bodies.length !== 1 || bodies[0] !== options.body || options.body.parentElement !== this.#panel) {
@@ -582,6 +593,7 @@ export class EngineeringPanelController {
   };
 
   readonly #onClick = (event: Event): void => {
+    if (this.#onRecipePin(event)) return;
     if (this.#disposed || this.#isBusy()) return;
     const view = this.#document.defaultView;
     const target = event.target;
@@ -867,6 +879,7 @@ export class EngineeringPanelController {
             forcedReason ?? 'Fabrication is available.',
           ),
         );
+        if (this.#recipePin !== null && row.status !== 'owned') article.append(this.#recipePinButton(row.baseId, row.name));
         if (fabricationBatchOffered(row)) {
           const batch = this.#actionButton(
             'fabricate',
@@ -1015,6 +1028,34 @@ export class EngineeringPanelController {
       ? COORDINATOR_UNAVAILABLE_REASON
       : disabledReason;
     return button;
+  }
+
+  #recipePinButton(baseId: string, name: string): HTMLButtonElement {
+    const button = this.#node('button', 'engineering-pin', '📌');
+    button.type = 'button';
+    button.dataset.recipePin = baseId;
+    this.#paintRecipePin(button, name);
+    return button;
+  }
+
+  #paintRecipePin(button: HTMLButtonElement, name = button.closest<HTMLElement>('[data-recipe-id]')?.querySelector('h5')?.textContent ?? ''): void {
+    const on = this.#recipePin?.pinned() === button.dataset.recipePin;
+    button.classList.toggle('on', on);
+    button.setAttribute('aria-pressed', String(on));
+    button.setAttribute('aria-label', on ? `Unpin ${name}` : `Pin ${name}`);
+    button.title = on ? 'Unpin this recipe' : 'Pin — a chip tracks the missing materials while you explore';
+  }
+
+  /** The 📌 press: view state only, never latched by a pending Engineering action. */
+  #onRecipePin(event: Event): boolean {
+    const view = this.#document.defaultView;
+    const target = event.target;
+    if (this.#disposed || this.#recipePin === null || !view || !(target instanceof view.Element)) return false;
+    const button = target.closest<HTMLButtonElement>('button[data-recipe-pin]');
+    if (!button || !this.#body.contains(button)) return false;
+    this.#recipePin.toggle(button.dataset.recipePin!);
+    for (const pin of this.#body.querySelectorAll<HTMLButtonElement>('button[data-recipe-pin]')) this.#paintRecipePin(pin);
+    return true;
   }
 
   #pendingStatus(): HTMLElement {

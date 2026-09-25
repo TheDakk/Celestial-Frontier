@@ -115,6 +115,14 @@ function quantityMap(rows: readonly (readonly [string, number])[], label: string
 function labelFor(id: string): string {
   return MATERIAL_NAMES[id] ?? DEFINITION_BY_ID.get(id)?.name ?? id;
 }
+/** The same player-facing name the panel paints for a material, part or recipe (the pinned-recipe chip reuses it). */
+export function engineeringLabelV1(id: string): string {
+  return labelFor(id);
+}
+/** A Signature blueprint's player-facing name, as the panel's cost line paints it. */
+export function engineeringSignatureLabelV1(id: string): string {
+  return `${SIGNATURE_NAMES[id] ?? id} Signature`;
+}
 
 export interface OrbitalMineralSurveyRow {
   readonly key: 'Mineral veins';

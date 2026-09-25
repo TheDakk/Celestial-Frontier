@@ -511,6 +511,12 @@ without adding item tables, random-loot policy or measurement authority.
   own F4 receipt, stopping at the first press that does not commit (materials ran out) or at a converging outcome (kept as-is so the
   pending latch holds until the reload). The toast names the count ("Fabricated ×N"). Outcome test:
   `tests/d16-craft-batch-outcome.test.ts` (real button, five receipts, reboot, the shortage stop, two mutation controls).
+- **Pin a recipe** (v1 `data-pin`, `_pinChip`, save `pin`): one recipe at a time; a chip tracks the missing costs (first three)
+  and flips to READY; tapping it opens the Shipyard. **v2 (matches code as of 2026-09-25, D16 parity):** every not-yet-built
+  Fabricator row carries a 📌 (`recipePin` port on `EngineeringPanelController`; view state, never latched by a pending action).
+  The press sets `save.pinnedRecipe` (exported as `pin`, dropped on load unless it names a catalogue recipe) and checkpoints through
+  `persistView`. `recipe-pin.ts` quotes the canonical fixed recipe against the live save, so `updateChips` keeps the `#pinchip`
+  current from any material source; a built permanent system hides it. Outcome test: `tests/d16-recipe-pin-outcome.test.ts`.
 
 ### Signature Relics — the Pathfinders' Trail
 - Nine `cat:'relic'` items (`rl-stone`…`rl-prism`), one per socket, each `sig`-gated on `primeFill` (mastering that element recovers the blueprint). Endgame-tier gear whose **power is decoupled from rarity** — effects live inside the wired `eff` keys, same as any gear.
