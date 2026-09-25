@@ -690,10 +690,21 @@ describe('audio accessibility modes reach the shared runtime (Mono audio / Reduc
     expect(h.owner.diagnostics().runtime.gains.effectiveMaster).toBeCloseTo(0.64, 12);
   });
 
+  it('Battle sounds (save cbx) gates only the combat-gameplay category; creature voices keep their own switch', () => {
+    const h = harness({ combatSoundsOn: false });
+    h.owner.syncSettings();
+    expect(h.owner.diagnostics().runtime.gains.categories['combat-gameplay']).toBe(0);
+    expect(h.owner.diagnostics().runtime.gains.categories.creature).toBe(1);
+    h.policy.combatSoundsOn = true;
+    h.owner.syncSettings();
+    expect(h.owner.diagnostics().runtime.gains.categories['combat-gameplay']).toBe(1);
+  });
+
   it('a policy without the fields (older callers) plays the unchanged mix', () => {
     const h = harness();
     h.owner.syncSettings();
     expect(h.owner.diagnostics().runtime.accessibility).toEqual({ mono: false, reducedIntensity: false });
+    expect(h.owner.diagnostics().runtime.gains.categories['combat-gameplay']).toBe(1); // absent = on (older callers)
   });
 });
 

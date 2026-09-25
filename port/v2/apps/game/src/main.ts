@@ -2800,6 +2800,7 @@ function fillSettings(): void {
     `<div class="row"><label>Sound</label><button id="setsnd" aria-label="Sound" aria-pressed="${save.sndOn}" class="${save.sndOn ? 'on' : ''}" data-sel="set-sound">${save.sndOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Volume</label><input id="setvol" data-sel="set-vol" aria-label="Sound volume" type="range" min="0" max="100" value="${Math.round(save.sfxVol * 100)}"></div>` +
     `<div class="row"><label>Creature voices</label><button id="setvoice" aria-label="Creature voices" aria-pressed="${save.voiceOn}" class="${save.voiceOn ? 'on' : ''}" data-sel="set-voice">${save.voiceOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Battle sounds</label><button id="setcombat" aria-label="Battle sounds" aria-pressed="${save.combatSfxOn}" class="${save.combatSfxOn ? 'on' : ''}" data-sel="set-combat" title="Hits, dodges and effects in battles (creature voices have their own switch).">${save.combatSfxOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Mono audio</label><button id="setmono" aria-label="Mono audio" aria-pressed="${audioAccessibility.mono}" class="${audioAccessibility.mono ? 'on' : ''}" data-sel="set-mono" title="Both ears hear every sound (one earbud, one speaker). Saved on this device.">${audioAccessibility.mono ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Reduced intensity</label><button id="setsoft" aria-label="Reduced intensity" aria-pressed="${audioAccessibility.reducedIntensity}" class="${audioAccessibility.reducedIntensity ? 'on' : ''}" data-sel="set-soft" title="Quieter, gentler sound with no sudden loud peaks. Saved on this device.">${audioAccessibility.reducedIntensity ? 'On' : 'Off'}</button></div>` +
     renderArc9ExplorerNameSettingV1(
@@ -2926,6 +2927,11 @@ function fillSettings(): void {
     save.voiceOn = !save.voiceOn;
     tameGreetingAudioOwner?.syncSettings();
     refillAndFocus('#setvoice'); void persistView();
+  });
+  el.querySelector('#setcombat')!.addEventListener('click', () => {
+    save.combatSfxOn = !save.combatSfxOn;   /* v1.8.9 parity: the saved `cbx` Battle sounds switch */
+    tameGreetingAudioOwner?.syncSettings();
+    refillAndFocus('#setcombat'); void persistView();
   });
   /* Device preferences, not save state: no persistView (audio-accessibility-prefs.ts) */
   el.querySelector('#setmono')!.addEventListener('click', () => {
@@ -5454,6 +5460,7 @@ tameGreetingAudioOwner = createTameGreetingAudioOwner({
       && !replacementTransaction
       && !replacementReloadPending,
     masterGain: save.sfxVol * save.sfxVol,
+    combatSoundsOn: save.combatSfxOn,
     mono: audioAccessibility.mono,
     reducedIntensity: audioAccessibility.reducedIntensity,
     routeKey: currentTameGreetingRouteKey(),

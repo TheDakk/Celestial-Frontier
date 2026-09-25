@@ -53,6 +53,8 @@ export interface TameGreetingAudioPolicy {
   readonly visible: boolean;
   readonly answerable: boolean;
   readonly masterGain: number;
+  /** Settings → Battle sounds (save `cbx`; absent = on): the combat-gameplay category (impacts, effects). */
+  readonly combatSoundsOn?: boolean;
   /** Settings → Mono audio (absent = off): every category downmixed at the master. */
   readonly mono?: boolean;
   /** Settings → Reduced intensity (absent = off): quieter master through a gentle compressor. */
@@ -353,6 +355,7 @@ function safePolicy(readPolicy: () => TameGreetingAudioPolicy): TameGreetingAudi
       masterGain: safeGain(value.masterGain),
       mono: value.mono === true,
       reducedIntensity: value.reducedIntensity === true,
+      combatSoundsOn: value.combatSoundsOn !== false,
     });
   } catch {
     return null;
@@ -670,7 +673,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     this.#runtime.setMasterGain(policy.masterGain);
     this.#runtime.setAccessibility({ mono: policy.mono === true, reducedIntensity: policy.reducedIntensity === true });
     this.#runtime.setCategoryGain('creature', policy.creatureVoicesOn ? 1 : 0);
-    this.#runtime.setCategoryGain('combat-gameplay', 1);
+    this.#runtime.setCategoryGain('combat-gameplay', policy.combatSoundsOn === false ? 0 : 1);
     void this.#runtime.setMuted(false);
     const activation = this.#runtime.activate();
     this.#arm = Object.freeze({
@@ -1305,7 +1308,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     this.#runtime.setMasterGain(policy?.masterGain ?? 0);
     if (policy) this.#runtime.setAccessibility({ mono: policy.mono === true, reducedIntensity: policy.reducedIntensity === true });
     this.#runtime.setCategoryGain('creature', policy?.creatureVoicesOn ? 1 : 0);
-    this.#runtime.setCategoryGain('combat-gameplay', 1);
+    this.#runtime.setCategoryGain('combat-gameplay', policy?.combatSoundsOn === false ? 0 : 1);
     if (!enabledMasterPolicy(policy) || !this.#answerable || this.#hidden) {
       this.cancelPilotPlayback();
       this.#arm = null;
