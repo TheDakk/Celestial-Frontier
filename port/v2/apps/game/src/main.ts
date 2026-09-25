@@ -41,6 +41,14 @@ import {
   publishWorldHarvestFieldsV1,
 } from './world-harvest.js';
 import {
+  FriendlyDuelController,
+  commitFriendlyDuelActionV1,
+  friendlyDuelResultCopyV1,
+  projectFriendlyDuelV1,
+  type FriendlyDuelReadModelV1,
+  type FriendlyDuelRequestV1,
+} from './friendly-duel.js';
+import {
   deviceAudioAccessibilityStorage,
   readAudioAccessibilityPrefsV1,
   writeAudioAccessibilityPrefsV1,
@@ -3892,6 +3900,7 @@ function fillCodexDetail(idx: number): void {
   const showRename = renameModel !== null
     && renameModel.availability !== 'non-fauna'
     && renameModel.availability !== 'fixture';
+  const duelModel = projectCurrentFriendlyDuel(row);
   const showScout = scoutModel !== null
     && scoutModel.surface.speciesId !== null
     && scoutModel.availability !== 'non-fauna'
@@ -3922,7 +3931,7 @@ function fillCodexDetail(idx: number): void {
   } catch {
     body = '<div class="empty">This record did not decode — the genome may predate the Compendium.</div>';
   }
-  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}</div>`);
+  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}${duelModel !== null ? '<section class="compendium-feed" data-friendly-duel-body aria-label="Friendly duel"></section>' : ''}</div>`);
   compendiumCreatureProgressionSurface.attach(
     document.querySelector<HTMLElement>('#codexpanel [data-sel="codex-detail"]')!,
   );
@@ -3961,6 +3970,10 @@ function fillCodexDetail(idx: number): void {
     compendiumBreedController.attach(
       document.querySelector<HTMLElement>('#codexpanel [data-arc5-breed-body]')!,
     );
+  }
+  if (duelModel !== null) {
+    friendlyDuelController.setState(duelModel);
+    friendlyDuelController.attach(document.querySelector<HTMLElement>('#codexpanel [data-friendly-duel-body]')!);
   }
   const portrait = document.querySelector<HTMLImageElement>('#codexpanel [data-sel="detail-portrait"]');
   if (portrait) {
@@ -9170,6 +9183,90 @@ async function runWorldHarvest(planetSeed: number): Promise<void> {
     if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
     if (activePersist === actionBarrier) activePersist = null;
     if (!convergence) refreshPlanetSurveyCard();
+  }
+}
+/* Friendly duel (v1.8.9 parity; §20 order item 2): the Compendium detail control, one receipt per duel, the credit decided at the
+   committed active-play clock (friendly-duel.ts). Publication copies only the duel's own fields (counters + the companion's Compendium
+   mirror row) and the committed ownership. */
+let lastFriendlyDuelOutcome: string | null = null;
+const friendlyDuelController = new FriendlyDuelController({ onAction: (request) => { void runFriendlyDuel(request); } });
+function projectCurrentFriendlyDuel(row: readonly [string, CodexRecord] | null): FriendlyDuelReadModelV1 | null {
+  const ownership = arc5OwnershipState, runtime = f4Runtime;
+  if (row === null || compendiumFixtureRows !== null || ownership?.mode !== 'current' || runtime === null
+    || arc5OwnershipProtection !== null || row[1].kind !== 'Fauna') return null;
+  try {
+    return projectFriendlyDuelV1({ ownershipV2: ownership, extensions: runtime.extensions,
+      speciesId: canonicalGenomeIdentityV1(row[1].g as never).speciesId, observedActivePlayMs: runtime.diagnostics().activePlayMs });
+  } catch {
+    return null;
+  }
+}
+async function runFriendlyDuel(request: FriendlyDuelRequestV1): Promise<void> {
+  const runtime = f4Runtime;
+  const parent = arc5OwnershipState;
+  const settleWith = (title: string, detail: string): void => { friendlyDuelController.settle({ title, detail }); };
+  if (!f4RuntimeMayMutate(runtime) || parent?.mode !== 'current' || arc5OwnershipProtection !== null || activePersist
+    || importWriteInFlight || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    lastFriendlyDuelOutcome = 'unavailable:write-authority';
+    settleWith('Duel unavailable.', 'Finish the current expedition save, then try again. Nothing changed.');
+    return;
+  }
+  const actionClaim = productActionCoordinator.tryClaim('companion.friendly-duel');
+  if (actionClaim === null) { lastFriendlyDuelOutcome = 'unavailable:product-action-pending'; settleWith('Duel unavailable.', 'Another expedition action is still settling.'); return; }
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  lastFriendlyDuelOutcome = 'pending';
+  let durable = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (!f4RuntimeMayMutate(runtime) || arc5OwnershipState !== parent) {
+      lastFriendlyDuelOutcome = 'refused:authority-changed';
+      settleWith('Duel unavailable.', 'Save authority changed. Nothing changed.');
+      return;
+    }
+    const outcome = await commitFriendlyDuelActionV1({ runtime, state: save, extensions: runtime.extensions, ownershipV2: parent,
+      creatureId: request.creatureId, code: request.code, codecNow: Date.now() });
+    if (outcome.kind === 'refused') {
+      lastFriendlyDuelOutcome = `refused:${outcome.detail}`;
+      if (outcome.convergence === 'read-only-reload') scheduleF4AuthorityConvergenceReload(runtime, `friendly duel ${outcome.detail}`);
+      settleWith(outcome.detail === 'code:invalid' ? 'That doesn’t look like a creature code.' : 'Duel unavailable.',
+        outcome.detail === 'code:invalid' ? 'Codes start with CFB-. Nothing changed.' : `Nothing changed (${outcome.detail}).`);
+      return;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    const loaded = readArc5OwnershipMigration(runtime.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    if (runtime.revision !== outcome.revision || loaded.kind !== 'loaded') {
+      lastFriendlyDuelOutcome = 'committed-publication-reload';
+      scheduleF4AuthorityConvergenceReload(runtime, 'friendly duel committed; publication fixed point');
+      return;
+    }
+    // publish exactly the duel's fields: the counters and the one companion's Compendium mirror row
+    const liveStats = save.stats as Record<string, number | undefined>, committedStats = outcome.state.stats as Record<string, number | undefined>;
+    liveStats.duels = committedStats.duels; liveStats.duelwins = committedStats.duelwins;
+    save.codex = save.codex.map(([id, entry]) => {
+      const committed = outcome.state.codex.find(([rowId]) => rowId === id)?.[1];
+      return committed !== undefined && committed.g?.xp !== entry.g?.xp ? [id, { ...entry, g: { ...entry.g, xp: committed.g.xp } }] : [id, entry];
+    });
+    arc5OwnershipState = loaded.state;
+    arc5OwnershipEvidence = loaded.evidence;
+    lastPersistenceOutcome = `friendly-duel-committed:${outcome.revision}`;
+    lastFriendlyDuelOutcome = `committed:${outcome.plan.winner ?? 'draw'}:${outcome.credit}:${outcome.xp}`;
+    const copy = friendlyDuelResultCopyV1(outcome);
+    settleWith(copy.title, copy.detail);
+    friendlyDuelController.setState(projectCurrentFriendlyDuel(currentCompendiumDetailRow()));
+    toast('⚔ Friendly duel', `${copy.title} ${copy.detail}`, true);
+  } catch (error) {
+    lastFriendlyDuelOutcome = `${durable ? 'committed-' : ''}fault`;
+    if (durable && runtime !== null) scheduleF4AuthorityConvergenceReload(runtime, `friendly duel ${error instanceof Error ? error.message : String(error)}`);
+    else settleWith('Duel unavailable.', 'Nothing changed.');
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
   }
 }
 /* §20 Command (Nick 2026-09-25): the Break loop. A Command challenge SEALS the fight (its own receipt, nothing else changes), each
