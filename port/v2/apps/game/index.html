@@ -132,6 +132,11 @@
     [data-combat-champion] { width: 100%; min-height: 44px; box-sizing: border-box;
       padding: 8px 34px 8px 10px; border: 1px solid #647ba4; border-radius: 10px;
       background: #101c30; color: #eef6ff; font: 12px var(--ui); }
+    /* §20 plan pickers (stance, Guardian party slots): the same phone touch target and look as the champion picker */
+    [data-combat-stance], [data-combat-party-slot] { width: 100%; min-height: 44px; box-sizing: border-box; margin: 4px 0;
+      padding: 8px 34px 8px 10px; border: 1px solid #647ba4; border-radius: 10px;
+      background: #101c30; color: #eef6ff; font: 12px var(--ui); }
+    [data-combat-stance]:focus-visible, [data-combat-party-slot]:focus-visible { outline: 3px solid #f3d58b; outline-offset: 2px; }
     [data-combat-champion]:focus-visible,
     [data-combat-challenge]:focus-visible { outline: 3px solid #f3d58b; outline-offset: 2px; }
     .combat-card-forecast { margin: 8px 0 2px; color: var(--combat-odds-color, #dce9fa); }

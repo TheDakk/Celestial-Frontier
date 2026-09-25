@@ -6,8 +6,11 @@
    audio, or publish an unverified combat result. */
 import {
   COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
+  ENCOUNTER_STANCES_V1,
   battleStats,
   runDuel,
+  runEncounterV1,
+  type EncounterStanceV1,
   type BattleStats,
   type CombatSettlementChampionV1,
   type GuardianPrimeEncounterV1,
@@ -64,6 +67,11 @@ export interface CombatCardReadModelV1 {
   readonly championOptions: readonly CombatCardChampionOptionV1[];
   readonly selectedChampionId: string;
   readonly forecast: CombatCardForecastV1;
+  /** §20: a party (Guardians/Titans only) of up to 3 in relay order, lead first, each with a stance. */
+  readonly partyEnabled: boolean;
+  readonly party: readonly Readonly<{ id: string; stance: EncounterStanceV1 }>[];
+  /** The whole plan's odds (Auto), shown beside the lead's Balanced-alone odds when the plan differs from it; null when it does not. */
+  readonly planForecast: Readonly<{ probability: number; percent: string; band: CombatOddsBandV1; color: string; sampleSize: number }> | null;
   readonly stakes: string;
   readonly reward: string;
   readonly policy: string;
@@ -72,7 +80,47 @@ export interface CombatCardReadModelV1 {
 
 export type CombatCardActionRequestV1 =
   | Readonly<{ readonly kind: 'select'; readonly championId: string }>
+  | Readonly<{ readonly kind: 'stance'; readonly index: number; readonly stance: EncounterStanceV1 }>
+  | Readonly<{ readonly kind: 'party-slot'; readonly index: number; readonly championId: string | null }>
   | Readonly<{ readonly kind: 'challenge'; readonly championId: string }>;
+
+export const COMBAT_PARTY_SLOTS_V1 = 3;
+export const COMBAT_STANCE_LABELS_V1: Readonly<Record<EncounterStanceV1, string>> = Object.freeze({
+  balanced: 'Balanced', press: 'Press — hit harder, take more', guard: 'Guard — take less, blunt openers', evade: 'Evade — dodge more, hit softer',
+});
+const PLAN_FORECAST_MEMO = new Map<string, NonNullable<CombatCardReadModelV1['planForecast']>>();
+
+/** The whole plan's Auto odds over deterministic sampled seeds (the same seed variation as the single forecast, across every fighter). */
+export function projectCombatPlanForecastV1(
+  members: readonly Readonly<{ champion: CombatSettlementChampionV1; stance: EncounterStanceV1 }>[],
+  encounter: GuardianPrimeEncounterV1,
+  sampleSize = 160,
+): NonNullable<CombatCardReadModelV1['planForecast']> {
+  const fighters = members.map(({ champion, stance }) => {
+    const projected = championCombatant(champion);
+    return { projected, stance, stats: projected.stats ?? battleStats(projected.genome as Genome) };
+  });
+  const key = fighters.map((f) => `${statsSignature(f.projected.genome.seed >>> 0, f.stats)}:${f.stance}`).join('|')
+    + `|${encounter.defender.battleGenome.seed >>> 0}|${sampleSize}`;
+  const memo = PLAN_FORECAST_MEMO.get(key);
+  if (memo !== undefined) return memo;
+  let wins = 0, decisive = 0;
+  for (let index = 0; index < sampleSize; index++) {
+    const result = runEncounterV1({ mode: 'auto',
+      defender: { name: encounter.defender.name, genome: encounter.defender.battleGenome as never },
+      party: fighters.map((f) => ({ name: f.projected.name, stance: f.stance, stats: f.stats,
+        genome: { ...f.projected.genome, seed: hashInt(f.projected.genome.seed >>> 0, index, 0x51ee) >>> 0 } as never })) });
+    if (result.status !== 'finished' || result.outcome === 'draw' || result.outcome === 'withdrawn') continue;
+    decisive++;
+    if (result.outcome === 'party') wins++;
+  }
+  const probability = decisive > 0 ? wins / decisive : 0.5;
+  const band = oddsBand(probability);
+  const out = Object.freeze({ probability, percent: oddsPercent(probability), band: band.band, color: band.color, sampleSize });
+  if (PLAN_FORECAST_MEMO.size > 200) PLAN_FORECAST_MEMO.clear();
+  PLAN_FORECAST_MEMO.set(key, out);
+  return out;
+}
 
 export interface CombatCardActionOutcomeV1 {
   readonly schema: typeof COMBAT_CARD_OUTCOME_SCHEMA;
@@ -255,6 +303,8 @@ export function projectCombatCardReadModelV1(input: Readonly<{
   readonly observedActivePlayMs: number;
   readonly selectedChampionId: string | null;
   readonly unavailableReason: string | null;
+  /** §20 plan: stances by slot (lead = 0) and the extra party slots (1, 2) chosen on the card; absent = lead alone, Balanced. */
+  readonly plan?: Readonly<{ stances: readonly EncounterStanceV1[]; partyIds: readonly (string | null)[] }>;
 }>): CombatCardReadModelV1 | null {
   const champions: Array<Readonly<{
     champion: CombatSettlementChampionV1;
@@ -305,6 +355,22 @@ export function projectCombatCardReadModelV1(input: Readonly<{
   const selectedIndex = requested >= 0 ? requested : firstEnabled >= 0 ? firstEnabled : 0;
   const selected = champions[selectedIndex]!.champion;
   const selectedOption = options[selectedIndex]!;
+  const partyEnabled = input.encounter.defender.kind === 'guardian' || input.encounter.defender.kind === 'titan';
+  const stanceAt = (slot: number): EncounterStanceV1 => {
+    const chosen = input.plan?.stances[slot];
+    return chosen !== undefined && (ENCOUNTER_STANCES_V1 as readonly string[]).includes(chosen) ? chosen : 'balanced';
+  };
+  const party: { id: string; stance: EncounterStanceV1 }[] = [{ id: selectedOption.id, stance: stanceAt(0) }];
+  if (partyEnabled) {
+    for (let slot = 1; slot < COMBAT_PARTY_SLOTS_V1; slot++) {
+      const id = input.plan?.partyIds[slot] ?? null;
+      if (id === null || party.some((m) => m.id === id)) continue;
+      const option = options.find((row) => row.id === id && !row.disabled);
+      if (option) party.push({ id: option.id, stance: stanceAt(slot) });
+    }
+  }
+  const members = party.map((m) => ({ champion: champions[options.findIndex((row) => row.id === m.id)]!.champion, stance: m.stance }));
+  const planDiffers = members.length > 1 || members[0]!.stance !== 'balanced';
   const defenderStats = battleStats(input.encounter.defender.battleGenome as Genome);
   const defenderLabel = input.encounter.defender.kind === 'titan'
     ? 'Elemental Titan' : input.encounter.defender.kind === 'guardian'
@@ -324,13 +390,18 @@ export function projectCombatCardReadModelV1(input: Readonly<{
     championOptions: Object.freeze(options),
     selectedChampionId: selectedOption.id,
     forecast: projectCombatCardForecastV1(selected, input.encounter),
+    partyEnabled,
+    party: Object.freeze(party.map((m) => Object.freeze(m))),
+    planForecast: planDiffers ? projectCombatPlanForecastV1(members, input.encounter) : null,
     stakes: stakesFor(selected),
     reward: input.encounter.defender.kind === 'titan'
       ? 'Win: conquer the world, capture the Titan, claim its Prime Signature, earn exact Stardust and champion XP.'
       : input.encounter.defender.kind === 'guardian'
         ? 'Win: conquer the world, capture its Guardian, and earn exact Stardust and champion XP.'
         : 'Win: conquer the world and earn exact Stardust and champion XP.',
-    policy: 'Current conquest fields one champion. Party roles and retreat remain a named design gate; no hidden tactics are implied.',
+    policy: partyEnabled
+      ? 'Bring up to 3 fighters: they enter one at a time and the Guardian keeps its wounds between them. Auto plays every choice for you; rewards are the same either way.'
+      : 'One champion fights this world. A stance trades damage for safety; Balanced is the classic fight.',
     unavailableReason: input.unavailableReason ?? selectedOption.disabledReason,
   });
 }
@@ -354,7 +425,21 @@ export class CombatCardController {
   #disposed = false;
   #onChange = (event: Event): void => {
     const target = event.target;
-    if (!(target instanceof HTMLSelectElement) || !target.matches('[data-combat-champion]')) return;
+    if (!(target instanceof HTMLSelectElement) || this.#pending !== null || this.#convergence) return;
+    if (target.matches('[data-combat-stance]')) {
+      const index = Number(target.dataset.combatStance), stance = target.value as EncounterStanceV1;
+      if (!Number.isSafeInteger(index) || index < 0 || index >= COMBAT_PARTY_SLOTS_V1 || !(ENCOUNTER_STANCES_V1 as readonly string[]).includes(stance)) return;
+      this.#onAction(Object.freeze({ kind: 'stance', index, stance }));
+      return;
+    }
+    if (target.matches('[data-combat-party-slot]')) {
+      const index = Number(target.dataset.combatPartySlot), id = target.value === '' ? null : target.value;
+      if (!Number.isSafeInteger(index) || index < 1 || index >= COMBAT_PARTY_SLOTS_V1 || !this.#model?.partyEnabled) return;
+      if (id !== null && !this.#model.championOptions.some((row) => row.id === id && !row.disabled)) return;
+      this.#onAction(Object.freeze({ kind: 'party-slot', index, championId: id }));
+      return;
+    }
+    if (!target.matches('[data-combat-champion]')) return;
     const championId = target.value;
     if (!this.#model?.championOptions.some((row) => (
       row.id === championId && !row.disabled
@@ -377,6 +462,7 @@ export class CombatCardController {
     });
     this.#outcome = null;
     this.#render();
+    /* the party and stances are Main's plan state (every 'stance'/'party-slot' change went to Main, which rendered this card from it) */
     this.#onAction(Object.freeze({ kind: 'challenge', championId: option.id }));
   };
 
@@ -454,6 +540,26 @@ export class CombatCardController {
     this.#listenersInstalled = false;
   }
 
+  #planHtml(model: CombatCardReadModelV1, pending: boolean): string {
+    const lock = pending || this.#convergence ? ' disabled' : '';
+    const stanceSelect = (slot: number, current: EncounterStanceV1): string =>
+      `<select data-combat-stance="${slot}" aria-label="Stance for fighter ${slot + 1}"${lock}>${ENCOUNTER_STANCES_V1.map((stance) =>
+        `<option value="${stance}"${stance === current ? ' selected' : ''}>${esc(COMBAT_STANCE_LABELS_V1[stance])}</option>`).join('')}</select>`;
+    let html = `<div class="combat-card-plan" data-combat-plan><label class="combat-card-label">Stance</label>${stanceSelect(0, model.party[0]?.stance ?? 'balanced')}`;
+    if (model.partyEnabled) {
+      for (let slot = 1; slot < COMBAT_PARTY_SLOTS_V1; slot++) {
+        const member = model.party[slot];
+        const taken = new Set(model.party.filter((_, i) => i !== slot).map((m) => m.id));
+        const opts = model.championOptions.filter((row) => !row.disabled && !taken.has(row.id))
+          .map((row) => `<option value="${esc(row.id)}"${member?.id === row.id ? ' selected' : ''}>${esc(row.label)} · ${row.power} power</option>`).join('');
+        html += `<label class="combat-card-label">Fighter ${slot + 1} (enters when the one before falls)</label>` +
+          `<select data-combat-party-slot="${slot}" aria-label="Party fighter ${slot + 1}"${lock}><option value="">— none —</option>${opts}</select>` +
+          (member ? stanceSelect(slot, member.stance) : '');
+      }
+    }
+    return `${html}</div>`;
+  }
+
   #render(): void {
     if (this.#mount === null) return;
     const model = this.#model;
@@ -478,7 +584,9 @@ export class CombatCardController {
       `<p class="combat-card-defender"><b>${esc(model.defender.label)}:</b> ${esc(model.defender.name)} · tier ${model.defender.tier} · ${model.defender.power} power · ✧ ${esc(model.defender.ability)}</p>` +
       '<label class="combat-card-label" for="combat-champion-select">Choose your champion</label>' +
       `<select id="combat-champion-select" data-combat-champion data-focus-key="combat-champion"${pending || this.#convergence ? ' disabled' : ''}>${options}</select>` +
-      `<div class="combat-card-forecast" style="--combat-odds-color:${esc(model.forecast.color)}"><b>${esc(model.forecast.band)} · ${esc(model.forecast.percent)}</b> over ${model.forecast.sampleSize} deterministic simulations</div>` +
+      this.#planHtml(model, pending) +
+      `<div class="combat-card-forecast" style="--combat-odds-color:${esc(model.forecast.color)}"><b>${esc(model.forecast.band)} · ${esc(model.forecast.percent)}</b> ${model.planForecast === null ? '' : 'Balanced alone '}over ${model.forecast.sampleSize} deterministic simulations</div>` +
+      (model.planForecast === null ? '' : `<div class="combat-card-forecast" data-combat-plan-forecast style="--combat-odds-color:${esc(model.planForecast.color)}"><b>Your plan: ${esc(model.planForecast.band)} · ${esc(model.planForecast.percent)}</b> (Auto) over ${model.planForecast.sampleSize} simulations</div>`) +
       `<p class="combat-card-why">${esc(model.forecast.why)}</p>` +
       `<p class="combat-card-stakes"><b>Risk:</b> ${esc(model.stakes)}</p>` +
       `<p class="combat-card-reward"><b>Outcome:</b> ${esc(model.reward)}</p>` +
