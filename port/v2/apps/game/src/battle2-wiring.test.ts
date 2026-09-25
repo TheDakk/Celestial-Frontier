@@ -370,3 +370,46 @@ describe('battle2 wiring: master-pin preflight order (C13)', { timeout: 60_000 }
     expect(r.log.bytes.some(p=>p.includes('/parts/atlas/'))).toBe(true);
   });
 });
+
+/* D15 Stage 0 — ONE voice per creature. OUTCOME through the real study and the real Compendium read model over one registered ownership
+ * state: the owned champion's voice card on the painted stage is BYTE-IDENTICAL to the card its Compendium row carries, and it does not
+ * change with the battle. Controls: without the ownership state the stage cannot resolve the owned individual (a bred lineage would differ);
+ * a different companion gets a different voice; and the legacy per-battle path gives a different card seed from the identity one. */
+describe('battle2 wiring: one voice per creature (D15 Stage 0)', { timeout: 60_000 }, () => {
+  afterEach(() => { vi.restoreAllMocks(); FakeApp.made = []; });
+  async function ownedFixture() {
+    const acq = await import('@cf/domain-acquisition');
+    const identity = acq.canonicalGenomeIdentityV1(makeGenome(68, 'fauna', 1));
+    const discoveries = [0, 1].map((index) => acq.createLegacyDiscoveryRecordV1({ recordId: acq.ownershipContentId('discovery', `voice-${index}`) as never, speciesId: identity.speciesId,
+      legacyCodexId: `codex-voice-${index}`, legacySourceIndex: index, from: 'Legacy', legacyLocation: null, firstForSpecies: index === 0 }));
+    const creatureIds = ['voice-left', 'voice-right'].map((k) => acq.ownershipContentId('creature', k) as never);
+    const creatures = creatureIds.map((creatureId, index) => acq.createCreatureInstanceV1({ creatureId, speciesId: identity.speciesId, genomeIdentity: identity.genomeIdentity,
+      genome: identity.genome, nickname: null, origin: 'legacy', acquisitionRecordId: discoveries[index]!.recordId,
+      lineage: { kind: 'none', generation: 0 }, xp: 0, hurt: null, fed: 11, brood: null, assignment: null, bond: null }));
+    const ownership = acq.migrateOwnershipStateV1ToV2(acq.createInitialOwnershipStateV1({ catalogSpecies: [acq.createCatalogSpeciesV1({ identity, alias: null, firstObservationId: discoveries[0]!.recordId })],
+      discoveries, creatures, specimenLots: [], biosphereProgress: [], legacyBioX: [], scoutCreatureId: null }));
+    return { identity, ownership, creatureIds, genome: identity.genome as unknown as Record<string, unknown> };
+  }
+  it('the owned champion speaks with the SAME voice card on the stage as on its Compendium row, in every battle', async () => {
+    const f = await ownedFixture(), { projectCompendiumAuditionV1 } = await import('./compendium-audition.js');
+    const model = projectCompendiumAuditionV1({ generation: 7, logicalId: 'codex-voice', record: { id: 'codex-voice', name: 'Voice', g: f.identity.genome as never }, ownership: f.ownership, fixture: false }) as unknown as { availability: string; creatures?: readonly { creatureId: string; voice: unknown }[] };
+    expect(model.availability).toBe('ready');
+    const row = model.creatures!.find((c) => c.creatureId === f.creatureIds[0])!, other = model.creatures!.find((c) => c.creatureId === f.creatureIds[1])!;
+    expect(row.voice, 'the Compendium carries a voice card').not.toBeNull();
+    const cardOn = async (battleId: string, ownership: unknown) => { const h = harness({ ownership: ownership as never, settlement: { battleId, champion: { kind: 'owned-fauna', creatureId: f.creatureIds[0], name: 'Voice', genome: f.genome } as never,
+      encounter: { defender: { battleGenome: makeGenome(424242, 'fauna', 0.5) as unknown as Record<string, unknown> } }, transcript: { log: LOG } } as Battle2StudyInput['settlement'] });
+      const handle = mountBattle2Study(h.input); await handle.ready; const s = handle.status(); handle.dispose('test'); return s.voiceCards; };
+    const first = await cardOn('battle-A', f.ownership), second = await cardOn('battle-B', f.ownership);
+    expect(first.left).toEqual(row.voice); // byte-identical parameters on the stage and in the Compendium
+    expect(second.left).toEqual(first.left); // and the same in another battle
+    expect(first.right, 'the wild defender resolves its own identity voice').not.toBeNull();
+    // an unbred companion with the SAME genome is the same identity, so the same voice (the signature is genome + lineage, never a row id)
+    expect(other.voice).toEqual(row.voice);
+    // controls: another genome has another voice; the legacy per-record card (no identity) seeds differently
+    const { creatureVoiceCardV1 } = await import('./soundkit/voice-identity.js'), another = creatureVoiceCardV1(makeGenome(69, 'fauna', 1) as unknown as Record<string, unknown>);
+    expect(another.ok && another.card).not.toEqual(row.voice);
+    const { compileVoiceCard } = await import('./soundkit/voice-card.js');
+    const legacy = compileVoiceCard({ template: { id: (row.voice as { archetype: string }).archetype }, identity: {} }, f.genome as never);
+    expect(legacy.ok && legacy.card.seed).not.toBe((row.voice as { seed: number }).seed);
+  });
+});

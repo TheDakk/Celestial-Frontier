@@ -8,7 +8,7 @@ import type { TurnCue } from '../battle2/cue-plan.js';
 import type { RenderedCue } from './browser-adapter.js';
 import { CREATURE_CUES, parseCueId } from './cues.js';
 import { deriveCue, type SourceLibrary } from './derive.js';
-import { compileVoiceCard, type AnatomyRecordLike, type SystemCardLike, type VoiceCard } from './voice-card.js';
+import { compileVoiceCard, type AnatomyRecordLike, type SystemCardLike, type VoiceCard, type VoiceCardResult } from './voice-card.js';
 
 export interface CreatureVoiceSide {
   readonly record: AnatomyRecordLike | null;
@@ -16,6 +16,9 @@ export interface CreatureVoiceSide {
   readonly genome: Readonly<Record<string, unknown>> | null;
   readonly seed: number;
   readonly label: string;
+  /** D15 Stage 0: the creature's ONE voice card (voice-identity.ts), or its refusal. When present it is used as is and every cue is
+   * derived from the card's own seed — the same creature sounds the same in every fight and on every surface. */
+  readonly card?: VoiceCardResult;
 }
 export interface CreatureVoiceOptions {
   readonly sides: Readonly<{ left: CreatureVoiceSide; right: CreatureVoiceSide }>;
@@ -39,8 +42,8 @@ export function genomeOnlyRecord(genome: Readonly<Record<string, unknown>>, seed
 export function createCreatureVoiceHook(options: CreatureVoiceOptions): CreatureVoiceHook {
   const compile = (side: CreatureVoiceSide): { card: VoiceCard | null; status: string } => {
     const record = side.record ?? (side.genome ? genomeOnlyRecord(side.genome, side.seed) : null);
-    if (!record) return { card: null, status: `${side.label}: no voice (no record and no genome)` };
-    const result = compileVoiceCard(record, (side.genome ?? null) as Parameters<typeof compileVoiceCard>[1], options.systemCard ?? null);
+    if (!record && !side.card) return { card: null, status: `${side.label}: no voice (no record and no genome)` };
+    const result = side.card ?? compileVoiceCard(record!, (side.genome ?? null) as Parameters<typeof compileVoiceCard>[1], options.systemCard ?? null);
     if (!result.ok) return { card: null, status: `${side.label}: no voice (${result.reason})` };
     // a body plan with no source set yet has no voice (labelled): deriveCue would throw INSIDE the stage's tick, and a throw in a
     // ticker callback stops Pixi's shared ticker — the whole game froze on a Python in a real browser (2026-09-24)
@@ -57,7 +60,8 @@ export function createCreatureVoiceHook(options: CreatureVoiceOptions): Creature
     if (!card) return null;
     const key = `${cue.source}:${parsed.key}`;
     const hit = cache.get(key); if (hit) return hit;
-    const derived = deriveCue(card, parsed.key, options.sources, (options.seed ^ options.sides[cue.source].seed) >>> 0);
+    // an identity card derives from its own seed only (one voice per creature); a legacy side keeps the per-battle mix
+    const derived = deriveCue(card, parsed.key, options.sources, options.sides[cue.source].card ? card.seed >>> 0 : (options.seed ^ options.sides[cue.source].seed) >>> 0);
     cache.set(key, derived);
     return derived;
   }) as CreatureVoiceHook;

@@ -59,6 +59,9 @@ import { createPixiEffectHost, type EffectParticleLike, type EffectSpriteLike, t
 import { compileBodyCard, MotionCompileError, type BodyCard, type MotionGenomeFields, type ResolvedAnatomyRecord } from './motion/body-card.js';
 import { createTurnCueSink, type TurnAudioRuntime, type TurnCueSink } from './soundkit/turn-audio.js';
 import { createCreatureVoiceHook, type CreatureVoiceHook } from './soundkit/creature-voices.js';
+import { creatureVoiceCardV1, ownedCreatureVoiceCardV1 } from './soundkit/voice-identity.js';
+import type { VoiceCard } from './soundkit/voice-card.js';
+import type { CreatureInstanceId, OwnershipStateV2 } from '@cf/domain-acquisition';
 import { synthesizePlaceholderLibrary } from './soundkit/placeholder-archetype.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
 import { BATTLE2_SWAP_BEAT_MS_V1, BATTLE2_SWAP_BEAT_REDUCED_MS_V1, battle2SwapBeatsV1, type Battle2SwapBeatV1 } from './battle2/swap-beats.js';
@@ -147,6 +150,8 @@ export interface Battle2StudyInput {
   /** Nick 2026-09-24: the stage paces the Chronicle log — each transcript row is released at its turn's impact (every row on
    * finish, failure or dispose). main.ts passes a gate only when motion is on; absent = the log keeps its own cadence. */
   readonly pacer?: CombatChroniclePacerGateV1 | null;
+  /** D15 Stage 0: the live ownership state, so an owned champion speaks with the voice its own AudioSignature gives it everywhere else. */
+  readonly ownership?: OwnershipStateV2 | null;
   readonly records?: readonly ResolvedAnatomyRecord[];
   /** Portrait art for combatants without a landmark record (default: the species art loader's 132 px thumb). */
   readonly portrait?: (genome: Readonly<Record<string, unknown>>) => Promise<Battle2Image>;
@@ -169,6 +174,8 @@ export interface Battle2Status {
   readonly audio: string;
   /** Per-side creature voice (B5): archetype, material and pitch, or why the side is silent. */
   readonly voices: Readonly<{ left: string | null; right: string | null }>;
+  /** D15 Stage 0 diagnostics: each side's ONE voice card as the stage voices it (null = no voice). */
+  readonly voiceCards: Readonly<{ left: VoiceCard | null; right: VoiceCard | null }>;
   /** §20: relay beats before the decisive leg (one per earlier fighter) and the one showing (-1 before, = beats when done). */
   readonly beats?: Readonly<{ count: number; index: number; text: string | null }>;
   /** E1: the habitat arena selection (world, medium per side, source), or null before it ran / when it refused. */
@@ -277,7 +284,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   let voices: CreatureVoiceHook | null = null;
   let beats: readonly Battle2SwapBeatV1[] = [], beatIndex = -1, beatStart = 0, beatCaption: StageTextLike | null = null;
   const beatMs = input.reducedMotion ? BATTLE2_SWAP_BEAT_REDUCED_MS_V1 : BATTLE2_SWAP_BEAT_MS_V1;
-  const status = (): Battle2Status => Object.freeze({ beats: Object.freeze({ count: beats.length, index: beatIndex, text: beatIndex >= 0 && beatIndex < beats.length ? beats[beatIndex]!.text : null }), phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }) });
+  const status = (): Battle2Status => Object.freeze({ beats: Object.freeze({ count: beats.length, index: beatIndex, text: beatIndex >= 0 && beatIndex < beats.length ? beats[beatIndex]!.text : null }), phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }), voiceCards: Object.freeze({ left: voices?.cards.left ?? null, right: voices?.cards.right ?? null }) });
   const setPhase = (next: Battle2Phase, why: string | null = null): void => { phase = next; reason = why; section.dataset.battle2Status = next; if (why) section.dataset.battle2Reason = why; };
   const tickUnguarded = (): void => {
     if (disposed || !stage || !app) return;
@@ -450,9 +457,16 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const style = { fontFamily: 'system-ui', fontSize: 34, fontWeight: '700', fill: '#fff2c8', stroke: { color: '#2a1a0a', width: 4 } };
     const factory: BattleStageFactory = { container: () => new pixi.Container(), sprite: (t) => new pixi.Sprite(t), text: (t) => new pixi.Text({ text: t, style, anchor: 0.5 }), graphics: () => new pixi.Graphics() };
     // B5: one voice per side from its record (or genome), derived through the A4 engine from the labelled placeholder archetype until C3 lands.
+    // D15 Stage 0: each side's ONE voice card (voice-identity.ts) — an owned champion through its exact ownership projection (the
+    // AudioSignature Tame, Feed and the Compendium resolve), anyone else from its genome-only signature; a player has no creature voice
+    const championId = (champion as { creatureId?: unknown }).creatureId;
+    const championVoice = champion.kind === 'owned-fauna' && typeof championId === 'string' && input.ownership
+      ? ownedCreatureVoiceCardV1(input.ownership, championId as CreatureInstanceId) : championGenome ? creatureVoiceCardV1(championGenome) : undefined;
+    // a combatant with no resolvable AudioSignature (a partial genome) keeps the record-based voice rather than falling silent
+    const defenderVoice = creatureVoiceCardV1(input.settlement.encounter.defender.battleGenome);
     voices = createCreatureVoiceHook({ sources: synthesizePlaceholderLibrary().sources, seed: recipe.seed ^ fnv1a32(input.settlement.battleId),
-      sides: { left: { record: matchRecord(records, championGenome), genome: championGenome, seed: left.seed, label: input.chronicle.championName },
-        right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, seed: right.seed, label: input.chronicle.defenderName } } });
+      sides: { left: { record: matchRecord(records, championGenome), genome: championGenome, seed: left.seed, label: input.chronicle.championName, ...(championVoice?.ok ? { card: championVoice } : {}) },
+        right: { record: matchRecord(records, input.settlement.encounter.defender.battleGenome), genome: input.settlement.encounter.defender.battleGenome, seed: right.seed, label: input.chronicle.defenderName, ...(defenderVoice.ok ? { card: defenderVoice } : {}) } } });
     cueSink = input.audio ? createTurnCueSink({ runtime: input.audio, seed: recipe.seed ^ fnv1a32(input.settlement.battleId), phone: input.deviceTier === 'low', creatureVoice: voices }) : null;
     const built = new BattleStage({ factory, clock: input.clock, layout: stagedLayout, plates: { far: texture(far), mid: texture(mid), near: texture(near) }, rigs: { left: left.rig, right: right.rig }, masses: { left: left.mass, right: right.mass }, ...(placed.presentationScales ? { presentationScales: placed.presentationScales } : {}), ...(placed.water ? { water: placed.water } : {}),
       worldLife, reducedMotion: input.reducedMotion, cues: cueSink ? { sink: cueSink, phone: input.deviceTier === 'low' } : null, effects: input.reducedMotion ? null : { host: createPixiEffectHost({ Sprite: pixi.Sprite, Particle: pixi.Particle, ParticleContainer: pixi.ParticleContainer } as unknown as Parameters<typeof createPixiEffectHost>[0]),
