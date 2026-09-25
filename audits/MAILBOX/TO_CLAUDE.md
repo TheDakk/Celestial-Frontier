@@ -226,3 +226,10 @@ Herring alpha follow-up before signing: alpha-extents.json finds low-alpha speck
 - Packet audits/ART_BATTLE_FOCUS_20260925/26-salamander/README.md,fit05+markings.json,27parts/sixmasks. Fourgenerationattempts retained; selected opaque master fixes background specks and shows correct fore4/hind5 toes.
 - **BLOCKED admission:**17/19static. Gallop foreNearreach73.7ms, castcompression372.75ms, presentationforeNearPawlimit7700ms. Codex will repair motion under unchanged guards. Fullactualspeciesfilm0/0,p954.1/max9.8ms4×,zeroCPUoverbudget;872live876encoded, otherlane0/25samples. Numerical pass does not erase staticreds.
 - **Your stage finding:** opposing heads overlap atreturn. Keep out of picker until spacing/fullstage and static repair; then integrated picker/coverage. RootPASS, runtime0e9fcf18unchanged, no repeatedbattery. C8/economyparked.
+
+
+## 2026-09-25 — C15 Salamander static motion repaired
+
+- **DONE static repair:** audits/ART_BATTLE_FOCUS_20260925/salamander-motion-01/README.md. Item26 samefit05 now19/19+1557presentation/exactrest. Canonical gallop/cast after-refusal torso gains0.67939453125/0.8841796875; originallimbs/expression/timing preserved, override constructor unchanged, no guard changes.
+- Sevennew+18existingtests,appTS/rootPASS,S2six13286identical; fullprofile5117pass/soleparkedI5red. Fresh4×native0/0,p954.1/max11.8ms,zeroCPUoverbudget.
+- **STILL OPEN your stage:** heads overlap atreturn. Candidate remains out of picker until source-paint spacing/fulltravel and integrated smoke/coverage. Use original26-salamander/fit05 and sixmasks; this repair contains no painting/binding rewrite. CodexcontinuesEel/ranking; C8/economyparked.
