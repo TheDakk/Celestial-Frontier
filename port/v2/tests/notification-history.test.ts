@@ -436,4 +436,71 @@ it('the actual recording admission refuses a live checkpoint without mutating it
  const check=(source:string)=>{const h=harness();h.setRecordable(admit(source,Promise.resolve()));const before=h.history();h.controller.record('During checkpoint','must not mutate',NOW);expect(h.history()).toEqual(before);};
  expect(()=>check(expression)).not.toThrow();expect(()=>check(expression.replace('activePersist === null && ',''))).toThrow();
  expect(admit(expression,null)).toBe(true);
+
+});
+
+describe('v1.8.9 parity: Mark all read and armed Clear all (2026-09-25)', () => {
+  const bulk = (h: ReturnType<typeof harness>, action: 'read-all' | 'clear') =>
+    h.panel.querySelector<HTMLButtonElement>(`[data-notification-bulk="${action}"]`);
+
+  it('Mark all read reads every saved and session message through one saved write, and survives export/import', async () => {
+    const h = harness([notice(9), notice(8), notice(7, true)]);
+    h.setWritable(false); h.controller.record('Session notice', 'kept for this session', NOW); h.setWritable(true);
+    h.open(); h.expectBadge(3);
+    bulk(h, 'read-all')!.click(); await turn();
+    expect(h.persist).toHaveBeenCalledTimes(1);
+    expect(h.history().every((entry) => entry.read)).toBe(true);
+    h.expectBadge(0);
+    expect(bulk(h, 'read-all')).toBeNull(); // nothing unread → no button
+    const imported = importSaveV2('{}', REGISTRY, NOW);
+    if (!imported.ok) throw new Error(imported.reason);
+    const round = importSaveV2(exportSaveV2({ ...imported.state, notifications: h.history() }, NOW), REGISTRY, NOW);
+    if (!round.ok) throw new Error(round.reason);
+    expect(round.state.notifications.every((entry) => entry.read)).toBe(true);
+  });
+
+  it('a refused Mark all read restores exactly those unread flags and keeps a notice that arrived during the write', async () => {
+    const h = harness([notice(9), notice(8, true)]);
+    let settle!: (ok: boolean) => void;
+    h.persist.mockImplementationOnce(() => new Promise<boolean>((resolve) => { settle = resolve; }));
+    h.open(); bulk(h, 'read-all')!.click();
+    expect(h.history().find((entry) => entry.id === 9)!.read).toBe(true);
+    h.controller.record('Arrived meanwhile', 'during the write', NOW + 1);
+    settle(false); await turn();
+    expect(h.history().find((entry) => entry.id === 9)!.read).toBe(false);
+    expect(h.history().find((entry) => entry.id === 8)!.read).toBe(true);
+    expect(h.history().some((entry) => entry.tt === 'Arrived meanwhile')).toBe(true);
+    expect(h.panel.textContent).toContain('Messages remain unread');
+  });
+
+  it('Clear all arms on the first tap, fires on the second, and disarms by itself', async () => {
+    vi.useFakeTimers();
+    try {
+      const h = harness([notice(9), notice(8, true)]);
+      h.open();
+      bulk(h, 'clear')!.click();
+      expect(h.persist).not.toHaveBeenCalled();
+      expect(bulk(h, 'clear')!.textContent).toBe('Clear all? — confirm');
+      vi.advanceTimersByTime(4100);
+      expect(bulk(h, 'clear')!.textContent).toBe('Clear all'); // disarmed: a lone tap never destroys
+      bulk(h, 'clear')!.click(); bulk(h, 'clear')!.click();
+      await vi.runAllTimersAsync();
+      expect(h.persist).toHaveBeenCalledTimes(1);
+      expect(h.history()).toEqual([]);
+      expect(h.panel.querySelector('.notification-empty')).not.toBeNull();
+      h.expectBadge(0);
+    } finally { vi.useRealTimers(); }
+  });
+
+  it('a refused Clear all restores the removed messages (new arrivals kept first); read-only authority clears nothing saved', async () => {
+    const h = harness([notice(9), notice(8, true)]);
+    h.persist.mockImplementationOnce(async () => false);
+    h.open(); bulk(h, 'clear')!.click(); bulk(h, 'clear')!.click(); await turn();
+    expect(h.history().map((entry) => entry.id)).toEqual([9, 8]);
+    expect(h.panel.textContent).toContain('Messages were not cleared');
+    h.setWritable(false); h.setRecordable(false); h.controller.render();
+    bulk(h, 'clear')!.click(); bulk(h, 'clear')!.click(); await turn();
+    expect(h.history().map((entry) => entry.id)).toEqual([9, 8]);
+    expect(h.panel.textContent).toContain('read-only');
+  });
 });
