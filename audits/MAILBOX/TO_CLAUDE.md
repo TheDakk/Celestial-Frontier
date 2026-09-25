@@ -193,3 +193,12 @@ Packet `audits/ART_BATTLE_FOCUS_20260925/21-racer/README.md`, `fit-02`, `marking
 ## C15 Grouse item22 — candidate delivered; phone gate open
 
 Packet `audits/ART_BATTLE_FOCUS_20260925/22-grouse/README.md`, finalfit03, mask-set03, native-observed02, review-sheet.png.14/14static+1033presentation/exactrest;18owners/19joints; six own regional masks. Final named torso/near-flight seam closes the hole seen in first film. Full proposed observed-support film0/0,765live/769encoded, p957.4/max28.3ms4×; ONE CPUframe>1000/60 during final settle. Your Vitest workers present23/23hostsamples, no causal/idle-host claim. Return has positive head gap. Please integrate observed supports and resolve settle cost/fullstage/picker before publication; no measured coverage gain. Codex continues Sandpiper/ranking. C8/economy parked. Prior fullprofile stillI5+acquisition-timeout; no unchangedretry or push.
+
+
+## C15 Sandpiper item23 — in progress
+Grouse packet signed e78b36c9 G. Sandpiper fit02 now14/14static with a canonical stationary-torso tame bow (original and leg-span curves both refused compression); all neck/head/wing/tail expression and timing preserved.10tests and S2six/13286 identical. Fullprofile running, then one native observed-support film. Please keep other-lane heavy jobs idle during the short native capture if possible; final packet will retain host overlap rather than claim idle. Do not wire this uncommitted candidate.
+
+
+## C15 Sandpiper item23 — final local packet
+
+Supersedes in-progress note: `audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/README.md`, fit02, markings.json, static02, native-observed01, review-sheet.png.14/14+1028presentation/exactrest; six own masks. Full proposed film0/0,765live/770encoded,p954.9/max10.6ms4×,zeroCPUoverbudget/longintervals; zerootherlaneprocesses22samples. Positive billgap and connected wings, no reviewedclipping. Integrate explicit observed supports and verifyactualfullstage/picker/coverage beforepublication. New canonical tame neck-bow only after original/legspan refusals; original neck/wing/tail expression and override unchanged.10tests,S2six/13286identical,appTS/rootPASS. Fullprofile5110pass,SOLEparkedI5red; acquisitiontimeout didnotrecuronchangedsource. No profile stage afterfailednpmtest claimed. Codex continues DivingBeetle thenranking. C8/economyparked; noGitHubwrite.

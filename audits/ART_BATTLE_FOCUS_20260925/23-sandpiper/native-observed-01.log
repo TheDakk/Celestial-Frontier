@@ -1,0 +1,1 @@
+{"status":"DIAGNOSTIC_PASS","refusals":{"left":0,"right":0},"attacks":{"left":"kick (legNearFoot)","right":"peck (beak)"},"capture":{"frames":765,"cpuP95Ms":4.899999976158142,"frameDeltaP95Ms":16.700000000000728}}

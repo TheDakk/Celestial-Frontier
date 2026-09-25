@@ -26,3 +26,14 @@ it('keeps a short-legged grounded claw level without changing the limb strike, t
  expect(buildActionTimeline(card,a,card.identity.seed)).toEqual(before);
  for(const fit of [base+'12-gull/fit-03',base+'15-goose/fit-02',base+'16-heron/fit-01','audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12']){const r=read(fit,'record.json'),c=compileBodyCard(r,r.genome),a=actionsFor(c.template.id,c.anatomy)!['melee:claw']!;expect(buildTimeline(c,a.id,c.identity.seed)).toEqual(buildActionTimeline(c,a,c.identity.seed));}
 });
+
+
+it('bows a long-legged Sandpiper without compressing planted feet or altering the override',()=>{
+ const r=read(base+'23-sandpiper/fit-01','record.json'),b=read(base+'23-sandpiper/fit-01','binding.json'),card=compileBodyCard(r,r.genome),a=actionsFor(card.template.id,card.anatomy)!.tame!,before=buildActionTimeline(card,a,card.identity.seed),after=buildTimeline(card,'tame',card.identity.seed);
+ expect(after.notes).toContain('grounded-bird:neck-bow');expect(after.phases).toEqual(before.phases);expect(after.durationMs).toBe(before.durationMs);
+ for(const joint of ['neck0','neck1','head','tailFan','wingNearRoot','wingFarRoot'])expect(after.tracks[joint]).toEqual(before.tracks[joint]);
+ expect(Math.max(...after.tracks.neck0!.map(k=>Math.abs(k.value)))).toBeGreaterThan(.1);
+ for(const mode of ['rest','observed']){expect(refusals(r,b,before,mode)).toBeGreaterThan(0);expect(refusals(r,b,after,mode)).toBe(0);}
+ expect(buildActionTimeline(card,a,card.identity.seed)).toEqual(before);
+ expect(buildTimeline(JSON.parse(JSON.stringify(card)),'tame',card.identity.seed)).toEqual(after);
+});

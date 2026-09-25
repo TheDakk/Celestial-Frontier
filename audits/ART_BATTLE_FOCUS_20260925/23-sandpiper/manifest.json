@@ -1,0 +1,879 @@
+{
+  "schema": "cf.audit-packet/v1",
+  "parentHead": "e78b36c9b784e91f04c9c6f4c987fa555c330017",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "120799dece98edd3be888797d4094876c3fe803bce79aac852717ab7d69a032e",
+      "bytes": 5741
+    },
+    {
+      "path": "authoring-tests-01.log",
+      "sha256": "14fec8497394a5f207c0e542dec415f44830cb38bfe9f7529198acf882a228fa",
+      "bytes": 245
+    },
+    {
+      "path": "authoring.json",
+      "sha256": "89c6757c60836802b2bdff47b05e24d544512015299e12bebce246950ab8c52e",
+      "bytes": 11471
+    },
+    {
+      "path": "boundaries-01.json",
+      "sha256": "475984cf6570d8df8bd9ebe1d96acaede3fa01ef29793ffd0a1485e5a476e74c",
+      "bytes": 2181
+    },
+    {
+      "path": "composites/banded.png",
+      "sha256": "51b49cf4cffe0fb57d76840ffb4d37e48c7759c359c1f4f54247a6651261655c",
+      "bytes": 774299
+    },
+    {
+      "path": "composites/eye-spotted.png",
+      "sha256": "f4890b5b17f6b26277e541ec2b194c14ea23a1d5fe688e9b035444793ab0d317",
+      "bytes": 773705
+    },
+    {
+      "path": "composites/marbled.png",
+      "sha256": "e2d56f76a95a16257f2965064c9339dec2dca1e77ebbc1f205478e97ae800ac5",
+      "bytes": 775665
+    },
+    {
+      "path": "composites/mottled.png",
+      "sha256": "de860def93fbe8752898497bc2d747f69f7d6a13e608b5131cea1cfd5a3c8920",
+      "bytes": 772460
+    },
+    {
+      "path": "composites/spotted.png",
+      "sha256": "fcad845cdbac186dd2e8e0ddc49c4cc8273d4ef84a36191fc8658c672735e973",
+      "bytes": 773315
+    },
+    {
+      "path": "composites/striped.png",
+      "sha256": "9306b33af8033ace0a45499d678765277337fd7d87c4d5aaa0c257b0847543cd",
+      "bytes": 772225
+    },
+    {
+      "path": "conservation.json",
+      "sha256": "6d37c54ced314afc19484d6a884ec3ecff9e9225cd70e723d36f3b58bfe4a6c4",
+      "bytes": 5965
+    },
+    {
+      "path": "develop-profile.log",
+      "sha256": "6fe7fa41656f503ca4f64f7ea872d3f5414712ccbb601c364c9c6f444290281c",
+      "bytes": 66649
+    },
+    {
+      "path": "finish-masks.mjs",
+      "sha256": "4a26d06e79cbbb1a07ffd137f3050a4e6cbd2b2fa1bd6b3ad801b67af3e9d85e",
+      "bytes": 7610
+    },
+    {
+      "path": "fit-01/binding.json",
+      "sha256": "99a8fb8b3fa81335a5ca1966f2b52b229c1cb640ac801f13e024f2ff5c7dfc7d",
+      "bytes": 2072070
+    },
+    {
+      "path": "fit-01/declaration.json",
+      "sha256": "94f406c2da5a16b9aed5e0e237d2b64e75739b5f36fb540c0c164f648bd3d327",
+      "bytes": 2016
+    },
+    {
+      "path": "fit-01/intake-provenance.json",
+      "sha256": "2f2f2e75739f59d0cbf91969affdcef69f6756c1f0f9ccb2e8f7418699fc8b53",
+      "bytes": 3110
+    },
+    {
+      "path": "fit-01/label-authoring-receipt.json",
+      "sha256": "dbefb1273f7bf36e4768e88a061b3510ddbd15008d5298300dfb0d0f3c11b994",
+      "bytes": 602
+    },
+    {
+      "path": "fit-01/labels.png",
+      "sha256": "285ac8ae51ddc3b493de7d497841853a4108103916efa5d27773230c294a6191",
+      "bytes": 49677
+    },
+    {
+      "path": "fit-01/parts/atlas/receipt.json",
+      "sha256": "1f4de560c3cd09be6b14b2de76e0d2443e330066af13e0f21a52e1ace6c11715",
+      "bytes": 3051
+    },
+    {
+      "path": "fit-01/parts/atlas/sandpiper.json",
+      "sha256": "8b201e0b631b689ffcc40d11a27e52e77e20b086f6a3244357ba29ada104cbcc",
+      "bytes": 7459
+    },
+    {
+      "path": "fit-01/parts/atlas/sandpiper.png",
+      "sha256": "beebd483ec2eefc46cebe2a70007681f0eb860a5cf628b043fa89472a347f941",
+      "bytes": 840836
+    },
+    {
+      "path": "fit-01/parts/binding.json",
+      "sha256": "f4737cd30c57804745fcdf3bd61aa06ecacb19aa77c84ebc29e0968aeaddda23",
+      "bytes": 6177
+    },
+    {
+      "path": "fit-01/parts/keyed.png",
+      "sha256": "097e1b90e3bc4cfa6f1940bd5c150f802b4a2a79c2ebc0a5eba3a661c71a5220",
+      "bytes": 937047
+    },
+    {
+      "path": "fit-01/parts/manifest.json",
+      "sha256": "2b2aa131a78037c4ae6e7d6b7b137938b56fe28b50be1af372ae95f3598129dd",
+      "bytes": 3019
+    },
+    {
+      "path": "fit-01/parts/ownership.png",
+      "sha256": "01d33acfb5141a8d740d1c4589bd0159ee20b8af7c2de57005a439c091f7c103",
+      "bytes": 117972
+    },
+    {
+      "path": "fit-01/parts/parts/beak.png",
+      "sha256": "cfc3f77c7ac3edc8605f3e8533a9f0494370795c3dd5656e7f42e41065e88ba6",
+      "bytes": 23585
+    },
+    {
+      "path": "fit-01/parts/parts/chest.png",
+      "sha256": "bd026c0dcffbad7b52b69618499ff167226f3c7eb2f53e5d6569fa7a1c6ef12c",
+      "bytes": 48116
+    },
+    {
+      "path": "fit-01/parts/parts/far-foot.png",
+      "sha256": "25ec487ff439f9067ad974ba34c1eac7f6eb26c4659928f8be498e3f892bd48e",
+      "bytes": 20622
+    },
+    {
+      "path": "fit-01/parts/parts/far-shin.png",
+      "sha256": "adc1a05bc72b891d55799203d5498481f90e8b02bf68ff000e62bda930196491",
+      "bytes": 10565
+    },
+    {
+      "path": "fit-01/parts/parts/far-thigh.png",
+      "sha256": "ee44bf7c8bdf4c25620f5aad8fc59dd24b336e957974448ca46f8b73d985ff71",
+      "bytes": 10949
+    },
+    {
+      "path": "fit-01/parts/parts/far-wing-flight.png",
+      "sha256": "da63852c3f28aacbda4fb4ac51d658bc9dca9585fa34ccae847a3a05b27706d0",
+      "bytes": 58714
+    },
+    {
+      "path": "fit-01/parts/parts/far-wing-shoulder.png",
+      "sha256": "b515af221c06828e7617a8f256d9d57561bb05a9aef3199569b3dbb4d517a449",
+      "bytes": 32912
+    },
+    {
+      "path": "fit-01/parts/parts/head.png",
+      "sha256": "41c96217ac526631832a5f472988e1bc7205725c03b52b6da20bf8b7906cf888",
+      "bytes": 41706
+    },
+    {
+      "path": "fit-01/parts/parts/near-foot.png",
+      "sha256": "bc18d6456cc847d6434b93d8734bee99505ed3bf3f8b9a8f0f7f8a6824e80c05",
+      "bytes": 22067
+    },
+    {
+      "path": "fit-01/parts/parts/near-shin.png",
+      "sha256": "c1516bb050e83672ad372e73559fbd01c2e1c1c3f2efc6c54e7aa65c7c0fb6a2",
+      "bytes": 14237
+    },
+    {
+      "path": "fit-01/parts/parts/near-thigh.png",
+      "sha256": "ae206d32a82ab862e4e64dedca7b3e260755810272b7d23baf2e4ddf409d988a",
+      "bytes": 18214
+    },
+    {
+      "path": "fit-01/parts/parts/near-wing-flight.png",
+      "sha256": "8a989e2607c949f3d9c826f73cd233be28bff35e03418d7ea6c80a567c055f67",
+      "bytes": 269234
+    },
+    {
+      "path": "fit-01/parts/parts/near-wing-shoulder.png",
+      "sha256": "3de3cadfe34b61289188ca15ab12a8279d754d86b889489d22019c80167e485f",
+      "bytes": 84818
+    },
+    {
+      "path": "fit-01/parts/parts/neck-lower.png",
+      "sha256": "ccb7e4f6f5d8ebeb3f4efa7f85ca1859ca5969142d8e512009bb592c10374ca9",
+      "bytes": 38336
+    },
+    {
+      "path": "fit-01/parts/parts/neck-upper.png",
+      "sha256": "34d0ee269a80a0405fa3a71db9c919f1939f59f30d8475fc821c1a4e291b6d43",
+      "bytes": 13532
+    },
+    {
+      "path": "fit-01/parts/parts/root-patch.png",
+      "sha256": "585a70b94445cc9125ff4f79364375694db9e295e33b107297074d0c4540f956",
+      "bytes": 567
+    },
+    {
+      "path": "fit-01/parts/parts/tail.png",
+      "sha256": "da9eac51b86ea0ed6598d2c5c125cd1191ec77829f848d6984d5e6176029498c",
+      "bytes": 43498
+    },
+    {
+      "path": "fit-01/parts/parts/torso.png",
+      "sha256": "edb25c05922d80f33aca2f60d4bd14ed88bdbb3c3f429612168a97345cc4e21a",
+      "bytes": 158215
+    },
+    {
+      "path": "fit-01/parts/receipt.json",
+      "sha256": "f56339433902dad1a1708fb9e574a1a3887cc0fd02c1e7c8954c561b5eb9d08d",
+      "bytes": 4925
+    },
+    {
+      "path": "fit-01/pre-split-binding.json",
+      "sha256": "20ae445b703f792c61de6caca2922a28375458945bf804ce03fcc83b9a4ae0c7",
+      "bytes": 1458266
+    },
+    {
+      "path": "fit-01/receipt.json",
+      "sha256": "7f270c1184481dd9198798c254eb9718a65b556b914b178a5f778dcb9dd63995",
+      "bytes": 2425
+    },
+    {
+      "path": "fit-01/record.json",
+      "sha256": "f8ee83b913a497ce829f7cd92853772cea0565963c55896703dccf88812fb880",
+      "bytes": 6043
+    },
+    {
+      "path": "fit-02/binding.json",
+      "sha256": "afa18ff5a3ac72a025f14e214124aaf8ce069f8f86a6789add5bce9ae041579c",
+      "bytes": 2286690
+    },
+    {
+      "path": "fit-02/declaration.json",
+      "sha256": "94f406c2da5a16b9aed5e0e237d2b64e75739b5f36fb540c0c164f648bd3d327",
+      "bytes": 2016
+    },
+    {
+      "path": "fit-02/flat-master-weld-receipt.json",
+      "sha256": "59d3960a068328a58ba3c80a23b8202a80ddcc20c243db96378ecc05a45b1099",
+      "bytes": 3494
+    },
+    {
+      "path": "fit-02/intake-provenance.json",
+      "sha256": "2f2f2e75739f59d0cbf91969affdcef69f6756c1f0f9ccb2e8f7418699fc8b53",
+      "bytes": 3110
+    },
+    {
+      "path": "fit-02/label-authoring-receipt.json",
+      "sha256": "dbefb1273f7bf36e4768e88a061b3510ddbd15008d5298300dfb0d0f3c11b994",
+      "bytes": 602
+    },
+    {
+      "path": "fit-02/labels.png",
+      "sha256": "285ac8ae51ddc3b493de7d497841853a4108103916efa5d27773230c294a6191",
+      "bytes": 49677
+    },
+    {
+      "path": "fit-02/paint-boundary-continuity.json",
+      "sha256": "1ed5071fb17a441cd40958b9c8e0d57a9a67f307ef96a743b496da6ed6cc917b",
+      "bytes": 735
+    },
+    {
+      "path": "fit-02/parts/atlas/receipt.json",
+      "sha256": "1f4de560c3cd09be6b14b2de76e0d2443e330066af13e0f21a52e1ace6c11715",
+      "bytes": 3051
+    },
+    {
+      "path": "fit-02/parts/atlas/sandpiper.json",
+      "sha256": "8b201e0b631b689ffcc40d11a27e52e77e20b086f6a3244357ba29ada104cbcc",
+      "bytes": 7459
+    },
+    {
+      "path": "fit-02/parts/atlas/sandpiper.png",
+      "sha256": "beebd483ec2eefc46cebe2a70007681f0eb860a5cf628b043fa89472a347f941",
+      "bytes": 840836
+    },
+    {
+      "path": "fit-02/parts/binding.json",
+      "sha256": "f4737cd30c57804745fcdf3bd61aa06ecacb19aa77c84ebc29e0968aeaddda23",
+      "bytes": 6177
+    },
+    {
+      "path": "fit-02/parts/keyed.png",
+      "sha256": "097e1b90e3bc4cfa6f1940bd5c150f802b4a2a79c2ebc0a5eba3a661c71a5220",
+      "bytes": 937047
+    },
+    {
+      "path": "fit-02/parts/manifest.json",
+      "sha256": "2b2aa131a78037c4ae6e7d6b7b137938b56fe28b50be1af372ae95f3598129dd",
+      "bytes": 3019
+    },
+    {
+      "path": "fit-02/parts/ownership.png",
+      "sha256": "01d33acfb5141a8d740d1c4589bd0159ee20b8af7c2de57005a439c091f7c103",
+      "bytes": 117972
+    },
+    {
+      "path": "fit-02/parts/parts/beak.png",
+      "sha256": "cfc3f77c7ac3edc8605f3e8533a9f0494370795c3dd5656e7f42e41065e88ba6",
+      "bytes": 23585
+    },
+    {
+      "path": "fit-02/parts/parts/chest.png",
+      "sha256": "bd026c0dcffbad7b52b69618499ff167226f3c7eb2f53e5d6569fa7a1c6ef12c",
+      "bytes": 48116
+    },
+    {
+      "path": "fit-02/parts/parts/far-foot.png",
+      "sha256": "25ec487ff439f9067ad974ba34c1eac7f6eb26c4659928f8be498e3f892bd48e",
+      "bytes": 20622
+    },
+    {
+      "path": "fit-02/parts/parts/far-shin.png",
+      "sha256": "adc1a05bc72b891d55799203d5498481f90e8b02bf68ff000e62bda930196491",
+      "bytes": 10565
+    },
+    {
+      "path": "fit-02/parts/parts/far-thigh.png",
+      "sha256": "ee44bf7c8bdf4c25620f5aad8fc59dd24b336e957974448ca46f8b73d985ff71",
+      "bytes": 10949
+    },
+    {
+      "path": "fit-02/parts/parts/far-wing-flight.png",
+      "sha256": "da63852c3f28aacbda4fb4ac51d658bc9dca9585fa34ccae847a3a05b27706d0",
+      "bytes": 58714
+    },
+    {
+      "path": "fit-02/parts/parts/far-wing-shoulder.png",
+      "sha256": "b515af221c06828e7617a8f256d9d57561bb05a9aef3199569b3dbb4d517a449",
+      "bytes": 32912
+    },
+    {
+      "path": "fit-02/parts/parts/head.png",
+      "sha256": "41c96217ac526631832a5f472988e1bc7205725c03b52b6da20bf8b7906cf888",
+      "bytes": 41706
+    },
+    {
+      "path": "fit-02/parts/parts/near-foot.png",
+      "sha256": "bc18d6456cc847d6434b93d8734bee99505ed3bf3f8b9a8f0f7f8a6824e80c05",
+      "bytes": 22067
+    },
+    {
+      "path": "fit-02/parts/parts/near-shin.png",
+      "sha256": "c1516bb050e83672ad372e73559fbd01c2e1c1c3f2efc6c54e7aa65c7c0fb6a2",
+      "bytes": 14237
+    },
+    {
+      "path": "fit-02/parts/parts/near-thigh.png",
+      "sha256": "ae206d32a82ab862e4e64dedca7b3e260755810272b7d23baf2e4ddf409d988a",
+      "bytes": 18214
+    },
+    {
+      "path": "fit-02/parts/parts/near-wing-flight.png",
+      "sha256": "8a989e2607c949f3d9c826f73cd233be28bff35e03418d7ea6c80a567c055f67",
+      "bytes": 269234
+    },
+    {
+      "path": "fit-02/parts/parts/near-wing-shoulder.png",
+      "sha256": "3de3cadfe34b61289188ca15ab12a8279d754d86b889489d22019c80167e485f",
+      "bytes": 84818
+    },
+    {
+      "path": "fit-02/parts/parts/neck-lower.png",
+      "sha256": "ccb7e4f6f5d8ebeb3f4efa7f85ca1859ca5969142d8e512009bb592c10374ca9",
+      "bytes": 38336
+    },
+    {
+      "path": "fit-02/parts/parts/neck-upper.png",
+      "sha256": "34d0ee269a80a0405fa3a71db9c919f1939f59f30d8475fc821c1a4e291b6d43",
+      "bytes": 13532
+    },
+    {
+      "path": "fit-02/parts/parts/root-patch.png",
+      "sha256": "585a70b94445cc9125ff4f79364375694db9e295e33b107297074d0c4540f956",
+      "bytes": 567
+    },
+    {
+      "path": "fit-02/parts/parts/tail.png",
+      "sha256": "da9eac51b86ea0ed6598d2c5c125cd1191ec77829f848d6984d5e6176029498c",
+      "bytes": 43498
+    },
+    {
+      "path": "fit-02/parts/parts/torso.png",
+      "sha256": "edb25c05922d80f33aca2f60d4bd14ed88bdbb3c3f429612168a97345cc4e21a",
+      "bytes": 158215
+    },
+    {
+      "path": "fit-02/parts/receipt.json",
+      "sha256": "f56339433902dad1a1708fb9e574a1a3887cc0fd02c1e7c8954c561b5eb9d08d",
+      "bytes": 4925
+    },
+    {
+      "path": "fit-02/pre-split-binding.json",
+      "sha256": "20ae445b703f792c61de6caca2922a28375458945bf804ce03fcc83b9a4ae0c7",
+      "bytes": 1458266
+    },
+    {
+      "path": "fit-02/receipt.json",
+      "sha256": "7f270c1184481dd9198798c254eb9718a65b556b914b178a5f778dcb9dd63995",
+      "bytes": 2425
+    },
+    {
+      "path": "fit-02/record.json",
+      "sha256": "f8ee83b913a497ce829f7cd92853772cea0565963c55896703dccf88812fb880",
+      "bytes": 6043
+    },
+    {
+      "path": "host-during-native-01.json",
+      "sha256": "a417672d0fad0e3cc01f93dc491e37d108cfdc05653e5bfbdc88aa21d34482fe",
+      "bytes": 1805
+    },
+    {
+      "path": "inspect-boundaries.mjs",
+      "sha256": "98ffc33d596317d2a6bdf51028f0cee76f787c55c5efec585d07b7b1f58df325",
+      "bytes": 1611
+    },
+    {
+      "path": "intake-01.log",
+      "sha256": "3585234a777f7bdfaebbf564558b0bb1bf9b99927fc02f190d7f011863be47df",
+      "bytes": 316
+    },
+    {
+      "path": "mailbox-read-end.json",
+      "sha256": "f59390c73a578403f42cd44cff3fb8981cdc7727030853c3eba33beaccf1c995",
+      "bytes": 1383
+    },
+    {
+      "path": "make-review.py",
+      "sha256": "b5a968b3c61519f3df6313df46e45c6f1d3d52a9d820bac50d8ee59dad5d3cc9",
+      "bytes": 2018
+    },
+    {
+      "path": "markings/banded.png",
+      "sha256": "34cd39f7dc6729ba4bd9d0a240f04009e4196202e3a97a326bc0d7fb156ff1ea",
+      "bytes": 21312
+    },
+    {
+      "path": "markings/eye-spotted.png",
+      "sha256": "874abb58eacc2c2a586b23c5f675f2f14347ab3969871d2e2e6afe0af3cddbc6",
+      "bytes": 12312
+    },
+    {
+      "path": "markings/marbled.png",
+      "sha256": "7d2c9c45bbb459b20e98739e79663521c6af063dc90ec3f8c5be526250bd9689",
+      "bytes": 21574
+    },
+    {
+      "path": "markings/mottled.png",
+      "sha256": "4cf7621e7ade39fa2d86a0e3e714782149736f55d06601d409b4031813290969",
+      "bytes": 15070
+    },
+    {
+      "path": "markings/spotted.png",
+      "sha256": "b7eb15f27bcba5c61ce7be254e3beec5c5eebef13accb824fab6f3bec2aa911a",
+      "bytes": 15091
+    },
+    {
+      "path": "markings/striped.png",
+      "sha256": "a8b0a18cabacd8118cc49600ff374d7b7ff550278f887a139c48892007398358",
+      "bytes": 21142
+    },
+    {
+      "path": "markings.json",
+      "sha256": "7fe1ccab84f8ba21802622400b64bc56d2235434e96b325d800c87761a7c2f08",
+      "bytes": 28172
+    },
+    {
+      "path": "mask-conservation.log",
+      "sha256": "08bf40a87898b7a45cc09cb96655c390d692708335722a43b8e033c55a844dce",
+      "bytes": 2768
+    },
+    {
+      "path": "mask-tool-receipts.json",
+      "sha256": "19bb1a3817b3b62957bc732c4b46d975184c745e45e8b12b72ef65b538a5676f",
+      "bytes": 4412
+    },
+    {
+      "path": "master.png",
+      "sha256": "c315307102aed608563c8caa0ed7af9a15e24f807570ac2c03a92ee496cd4358",
+      "bytes": 794795
+    },
+    {
+      "path": "native-observed-01/battle-full.webm",
+      "sha256": "df20c0c57ee579a593b21324e2b068fc2424dd16cf899b05224fbf82415bfca6",
+      "bytes": 8746750
+    },
+    {
+      "path": "native-observed-01/report.json",
+      "sha256": "1fc57ed02419b2fad25facd6c4c3ec8e5baa78e10b58380c5a2cfa458c716b03",
+      "bytes": 359622
+    },
+    {
+      "path": "native-observed-01/turn0-hit-approach-50.png",
+      "sha256": "3c4216c935e97cc78eeb9337d3db202fc59098663ea8bc8a1c072cdc384c88f0",
+      "bytes": 1546199
+    },
+    {
+      "path": "native-observed-01/turn0-hit-impact.png",
+      "sha256": "e88d37b4d707eb7c7d9703755018922cb264db70133f9b053f41e8e6cd137d2c",
+      "bytes": 982932
+    },
+    {
+      "path": "native-observed-01/turn0-hit-reaction-50.png",
+      "sha256": "9243a66bd2a988322d8fd4eda758845623040343be89efd3665a495a83d3f9db",
+      "bytes": 1546382
+    },
+    {
+      "path": "native-observed-01/turn0-hit-return-end.png",
+      "sha256": "6ecffda87b6b87c69ac0f377184a20d80c0d06cc0b2dcbb9688aa1f477a736e6",
+      "bytes": 1546408
+    },
+    {
+      "path": "native-observed-01/turn1-hit-approach-50.png",
+      "sha256": "194cb2a07d03c56f1842cc533d089d04f7e37e75e76ab7ac19e2c944d3047a87",
+      "bytes": 1546853
+    },
+    {
+      "path": "native-observed-01/turn1-hit-impact.png",
+      "sha256": "827305a707dd335e670fd2f3edb7e1186377f006f952a3ffd90879319d3d8da5",
+      "bytes": 1548134
+    },
+    {
+      "path": "native-observed-01/turn1-hit-reaction-50.png",
+      "sha256": "5e7fcf715536bee2347009f9ac74bb1149e7cd378fd2abf9e81015b2a6bd8ec6",
+      "bytes": 1546355
+    },
+    {
+      "path": "native-observed-01/turn1-hit-return-end.png",
+      "sha256": "a361316d81cae5b3a3399563219a0b2787a32e6b15825c78cb7eead12d79f0b5",
+      "bytes": 1546282
+    },
+    {
+      "path": "native-observed-01/turn2-dodge-approach-50.png",
+      "sha256": "3c4216c935e97cc78eeb9337d3db202fc59098663ea8bc8a1c072cdc384c88f0",
+      "bytes": 1546199
+    },
+    {
+      "path": "native-observed-01/turn2-dodge-impact.png",
+      "sha256": "bf5e90310db6256ab961f28dd5991e6daf806809f1ef1d81dcab16c59355665c",
+      "bytes": 1549798
+    },
+    {
+      "path": "native-observed-01/turn2-dodge-reaction-50.png",
+      "sha256": "3fc80cae5ace31c5adf1d538fc6e92daa11bf0454a3c5b3d5d1e3753c64cd731",
+      "bytes": 1550270
+    },
+    {
+      "path": "native-observed-01/turn2-dodge-return-end.png",
+      "sha256": "6ecffda87b6b87c69ac0f377184a20d80c0d06cc0b2dcbb9688aa1f477a736e6",
+      "bytes": 1546408
+    },
+    {
+      "path": "native-observed-01/turn3-hit-approach-50.png",
+      "sha256": "3c4216c935e97cc78eeb9337d3db202fc59098663ea8bc8a1c072cdc384c88f0",
+      "bytes": 1546199
+    },
+    {
+      "path": "native-observed-01/turn3-hit-idle-50.png",
+      "sha256": "4691e545a5705ab79a03c8c2d33d6278e48dfc2a3edffaeaf3f7718e10114171",
+      "bytes": 1547150
+    },
+    {
+      "path": "native-observed-01/turn3-hit-idle-90.png",
+      "sha256": "0c02c4d3a6730b21eaf9379232726f797784db2b9cbac568362e6160a328c699",
+      "bytes": 1545649
+    },
+    {
+      "path": "native-observed-01/turn3-hit-impact.png",
+      "sha256": "d7edf4bd2af50d3900685feebd2138694ac800400e3820f26f980fd460c7ef7d",
+      "bytes": 1547171
+    },
+    {
+      "path": "native-observed-01/turn3-hit-reaction-50.png",
+      "sha256": "f13ae162fbca2e1d48aa4835c69d29200f758edf30199594b6c7c7387ce3fcab",
+      "bytes": 1545460
+    },
+    {
+      "path": "native-observed-01/turn3-hit-return-end.png",
+      "sha256": "ac30471e66bd6bec565643607ed1ba705468d19dda34d7489ac8adde200c7cbd",
+      "bytes": 1546522
+    },
+    {
+      "path": "native-observed-01.log",
+      "sha256": "e24947093dd1cea1a8d5c92ff06341430446563554f95b59bcaba50a479ac627",
+      "bytes": 214
+    },
+    {
+      "path": "native-summary.json",
+      "sha256": "0d55650cf119136634ffc4b16e0991dd1847319e45dbab8f4cd349c6858b3d29",
+      "bytes": 1155
+    },
+    {
+      "path": "native-with-host-receipt.mjs",
+      "sha256": "095ccc98e48aa78bc84799b16b03b62ac6a9d5a02e84c286d0e266ae0324112b",
+      "bytes": 1365
+    },
+    {
+      "path": "observed-script.json",
+      "sha256": "7f173e95e230cafe4029d1ae68ccc997dc7585fe39c29a7fa44c152654f3629c",
+      "bytes": 674
+    },
+    {
+      "path": "painting-plan-source.json",
+      "sha256": "7edec4864e46a70dcb5564004bb3531880fe3bacbe405aeebcdfd6f279a4b6e9",
+      "bytes": 741
+    },
+    {
+      "path": "presence.json",
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa",
+      "bytes": 89
+    },
+    {
+      "path": "prompt.txt",
+      "sha256": "20ac5daa3b23374cfe6bd4fe8da3a4ccf7ff07b29613197d24fd84ede67d5da2",
+      "bytes": 8521
+    },
+    {
+      "path": "prompts/banded.txt",
+      "sha256": "f6a1854ec7ad5d5eec8382256cbac1e8a353760f3e0e490412f191dc29825787",
+      "bytes": 762
+    },
+    {
+      "path": "prompts/eye-spotted.txt",
+      "sha256": "873e73a432d3ad37329177b6d44ffe7b4ba0e2b21725e6a7da9408f203d2ccc8",
+      "bytes": 791
+    },
+    {
+      "path": "prompts/marbled.txt",
+      "sha256": "ab61bc74a60b723878ba73f9fd8a675f7fa0118fc11aa7971dcfb0a30c2f30a7",
+      "bytes": 824
+    },
+    {
+      "path": "prompts/mottled.txt",
+      "sha256": "3dceac994dcb44fef5cd9c0afa4a0ee1a76c57a2c067dec50b15d1422bc496af",
+      "bytes": 882
+    },
+    {
+      "path": "prompts/spotted.txt",
+      "sha256": "4cbb531bf9a889e5020ac7727255e242a799849bfdacb6595388348df6bca2d5",
+      "bytes": 765
+    },
+    {
+      "path": "prompts/striped.txt",
+      "sha256": "6927dcbfd9166ff1ba02e5c31917731a1c26a5b2aef4ff65223410c05bd87fcf",
+      "bytes": 773
+    },
+    {
+      "path": "raw/banded.png",
+      "sha256": "f0b10f706ff903b47173bd944432ff12bdc5bdbf24e0e3d7bc3b3208889a3130",
+      "bytes": 56251
+    },
+    {
+      "path": "raw/eye-spotted.png",
+      "sha256": "248caf274adfdf37512274beef17e419a9aa15dd909a628640e2a083fc3ce4ac",
+      "bytes": 45942
+    },
+    {
+      "path": "raw/marbled.png",
+      "sha256": "cd3546897b9612c9494e35fcfaf55e1601c5a3bf65d886dee28a768f08d5cede",
+      "bytes": 80931
+    },
+    {
+      "path": "raw/mottled.png",
+      "sha256": "71c65c6db74ace5b57e239243a550e22a18aa71c0ae1043ce61d6fe067a8de95",
+      "bytes": 54952
+    },
+    {
+      "path": "raw/spotted.png",
+      "sha256": "1d9aa3faa814a0ce7bd2177d95cf72a24e57683cc3ad9a39dad5a0db4f738b56",
+      "bytes": 48842
+    },
+    {
+      "path": "raw/striped.png",
+      "sha256": "00cd6dfe1df8ab3d240bf030a4933a1d46139e5d0882cea976a481dc18d6065e",
+      "bytes": 66108
+    },
+    {
+      "path": "request.json",
+      "sha256": "a340ad79b27f50e3a2f9ec05e19459dae964585c76aa47dea7466f46b106a3c5",
+      "bytes": 641
+    },
+    {
+      "path": "review-sheet.png",
+      "sha256": "e28cc1ba31ba990fac17a392d4dc45f66d5a440afae9ab5ccbc2ef37d1a6c9cb",
+      "bytes": 942566
+    },
+    {
+      "path": "root-validate.log",
+      "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750",
+      "bytes": 1093
+    },
+    {
+      "path": "s2-checks/run.mjs",
+      "sha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe",
+      "bytes": 8684
+    },
+    {
+      "path": "s2-checks/s2/civet-static.json",
+      "sha256": "452fa278586993592c7f171e93dd64cbc9dd5bbf5e3fc7f4897c6553e07b8396",
+      "bytes": 7400
+    },
+    {
+      "path": "s2-checks/s2/civet-support-samples.jsonl.gz",
+      "sha256": "c8deace40f822ac707b337c16ee63cf73ca6838ee094ef80324093ab08ab2d2f",
+      "bytes": 540573
+    },
+    {
+      "path": "s2-checks/s2/coconut-crab-static.json",
+      "sha256": "2ce886550c98d4586e3a446dd1576f6552e6f58ca1b7b37d0b5656ea1c06debc",
+      "bytes": 8541
+    },
+    {
+      "path": "s2-checks/s2/coconut-crab-support-samples.jsonl.gz",
+      "sha256": "031446c269052b8a91d89e4244f190fa65c7f60c64cb2056e8b5f2351e01d32b",
+      "bytes": 450159
+    },
+    {
+      "path": "s2-checks/s2/crab-static.json",
+      "sha256": "ee3f133ed6137a12ea21fa5c2f318c3c74d9e8117544bacd58b2dc8fb72dc565",
+      "bytes": 8478
+    },
+    {
+      "path": "s2-checks/s2/crab-support-samples.jsonl.gz",
+      "sha256": "258aa03be580be6fcb1e07658ecd5a903db050f2cd63e0c297f3ff8d1fb4b1b8",
+      "bytes": 472712
+    },
+    {
+      "path": "s2-checks/s2/freshwater-crab-static.json",
+      "sha256": "9da3890b44693cfc1a3977415c408c4b3e5fba8287af206d3fb8492c0c5376a9",
+      "bytes": 8449
+    },
+    {
+      "path": "s2-checks/s2/freshwater-crab-support-samples.jsonl.gz",
+      "sha256": "84e207fd9353806843dee605d7937f4fd99d7a9e4dd3c4c865b92abcc660b127",
+      "bytes": 455397
+    },
+    {
+      "path": "s2-checks/s2/identity.json",
+      "sha256": "7364c70a865ccfd9d229dce53f1cf6378bc306da5cad306f52eba1bc9ef7dbf2",
+      "bytes": 2960
+    },
+    {
+      "path": "s2-checks/s2/mud-crab-static.json",
+      "sha256": "6e1b2ec0792f524e730e7624e0a4112b1741f747645625629175c50c6e5cb9aa",
+      "bytes": 8269
+    },
+    {
+      "path": "s2-checks/s2/mud-crab-support-samples.jsonl.gz",
+      "sha256": "fe6b52249ff1391607394571ca0b3693c88439f61f6c9f9bdf7c6763daec6e41",
+      "bytes": 463241
+    },
+    {
+      "path": "s2-checks/s2/sources.json",
+      "sha256": "f5fda20ef3cb0a4e384278172f204cea483ddfa9df24de97bf17494f12590e00",
+      "bytes": 27420
+    },
+    {
+      "path": "s2-checks/s2/static.json",
+      "sha256": "0615eb3f7beb07d8270b2a71e89e5c7d4a15a7b33c630b40f08ea33114d3ac6c",
+      "bytes": 61950
+    },
+    {
+      "path": "s2-checks/s2/vent-crab-static.json",
+      "sha256": "9b8278daf85ce4902c6e74c544a61665f0550a09d3ca6bd8cbcd609afc051a4e",
+      "bytes": 8384
+    },
+    {
+      "path": "s2-checks/s2/vent-crab-support-samples.jsonl.gz",
+      "sha256": "1b6588bbd35d7f75ea8c31b301508243a80d725bd75a9cfe297b48176137d7a2",
+      "bytes": 475748
+    },
+    {
+      "path": "s2-checks/s2-execution.json",
+      "sha256": "1b6dd26069f8db0416da00b97191023a45e94d98cd48e983a158a51c7098e744",
+      "bytes": 42060
+    },
+    {
+      "path": "s2-checks/s2-run.log",
+      "sha256": "6046632ae7a68e89ea8b68a104de96f8b6674d04bfee1b92f1fb8a7c1489f6ac",
+      "bytes": 5147
+    },
+    {
+      "path": "s2-execution.log",
+      "sha256": "fb6b2df8d0beb222f021ed89f818762d065a1e74b5a3c47fdae5b848f2b64ffd",
+      "bytes": 5396
+    },
+    {
+      "path": "sent-prompt-01.txt",
+      "sha256": "ef9b48180f206b38d40761376c072edcf6a6855018fb510f8444165b50fca7e1",
+      "bytes": 8965
+    },
+    {
+      "path": "six-mask-sheet.png",
+      "sha256": "5554846b8a9d847efb430295b647c9c34ef4d95cc36eef2fb584d048bcb55457",
+      "bytes": 1224189
+    },
+    {
+      "path": "static-01.json",
+      "sha256": "43b2c4a02e21d5cf29769bc78d4e8a6ce0c93d3895a4539ff520b655f3fdd9f2",
+      "bytes": 15122
+    },
+    {
+      "path": "static-01.json.sources.json",
+      "sha256": "a8d22a4f90371e1ae0a0fde5502802400ef057e087c504650a2002e25bc8895d",
+      "bytes": 15387
+    },
+    {
+      "path": "static-01.log",
+      "sha256": "29bd0c88383937c2ac4c39a4548d2535f3f1dd3810a751360512b53016d3eb51",
+      "bytes": 2313
+    },
+    {
+      "path": "static-02.json",
+      "sha256": "00d0969f3d6f4f2028ac0a482f6118e9f69fe4661aaff5f07b47e8c73b69e2d1",
+      "bytes": 9426
+    },
+    {
+      "path": "static-02.json.sources.json",
+      "sha256": "c04f133eef8a38f626d3afc44991c25f8c97297c41dfb75d83d60ea104ac974d",
+      "bytes": 15387
+    },
+    {
+      "path": "static-02.log",
+      "sha256": "49a996932a447bcfdca691ac58529aac6f8cdfce1f16f4bb6486b434b37484fd",
+      "bytes": 2202
+    },
+    {
+      "path": "subject-source.json",
+      "sha256": "8378816208ccdac0a98644427494e1e88a478f0b73b77c78f6c86708a6903dc6",
+      "bytes": 6036
+    },
+    {
+      "path": "tool-receipt-01.json",
+      "sha256": "7c31d4e07175c3d92fcf91b19f85c0eb496ec84ba3bb65f7aef8af2276b69cf7",
+      "bytes": 870
+    },
+    {
+      "path": "types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "weld-02.log",
+      "sha256": "ed5446641b6e84cfdb776eae38d2160198834c2638e2b1fcbf50f5d2b67d5ed3",
+      "bytes": 1008
+    },
+    {
+      "path": "weld-02.mjs",
+      "sha256": "273d01a74c5e4237ee92ac3dbcdef3d07af98816febbc3e179f86c68b2b930f6",
+      "bytes": 3015
+    },
+    {
+      "path": "write-native-summary.py",
+      "sha256": "afef2965f2b143dd67566b0e02f0cb4203173e863961901c5ee0bee019e22a3b",
+      "bytes": 1241
+    }
+  ],
+  "sourceAndHandoff": {
+    "port/v2/apps/game/src/motion/grounded-bird.ts": "8f6813d9310377f0f756a140dfd7daba5322bb437c8a3295df4d91eaf329ec97",
+    "port/v2/apps/game/src/motion/grounded-bird.test.ts": "6fb57384a9408a769031824742ee7a2b58402d898b937cadce50231a1d7c5c63",
+    "CREATURE_ANIMATION.md": "5278b857b87ea8b40f10124f2808fcdc60a2621efe502982a955e257d6c87631",
+    "celestial-frontier-codebase-reference.md": "921e092dca01c7394a423404ad332619cefb7f21d8fc0355ecbb7f559e3fca3b",
+    "ROADMAP.md": "524f33a3afeba727256d7db8bd33ca68a874a2a0fbac3f055a5f351ea351043f",
+    "audits/MAILBOX/TO_CLAUDE.md": "5faa25d2794ba649baccec39a024442eeb99c7e1d877901b37b391e19319b47d"
+  }
+}
