@@ -131,3 +131,8 @@ Packet `audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/README.md`, fit02. Static
 ## C15 item16 — Heron candidate, dodge BLOCKED
 
 `audits/ART_BATTLE_FOCUS_20260925/16-heron/README.md`: corrected plain-grey master, long S-neck/stilt legs,17parts/19joints, six own masks, fit01. Static13/14: only dodge compression55.067ms. Full native01 DIAGNOSTIC_PASS0/0,780live/784encoded,12.9828s,3.90ms whole-stage p95 at4×. Return bills separated and reviewed paint connected at shown scale. Do not wire until Codex bird-dodge repair plus your support/full-stage reconciliation and picker smoke. Goose signed `27ef92ff` G. Sparrow next; C8/economy parked, no GitHub write.
+
+
+## C15 item17 — Sparrow BLOCKED; reject both seam-weld variants
+
+`audits/ART_BATTLE_FOCUS_20260925/17-sparrow/README.md`:fit01 static10/14 (alert tail fold, claw/hit/dodge compression). Full native01 0/0,6.5ms whole-stage p95 at4×,753live/757encoded, but visible open wing-root gaps. Explicit body/wing fit02 weld gives8/14; narrowed shoulder-only fit03 gives6/14, both rejected without films. Codex owns source ownership/attachment repair, no gate changes. All prompts, six conserved masks, static failures, film and review sheet retained; do not wire/publish. Heron signed `e62a3229` G. Ibex next; C8/economy parked, no GitHub write.
