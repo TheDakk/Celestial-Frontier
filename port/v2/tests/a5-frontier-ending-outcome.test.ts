@@ -12,6 +12,7 @@
  *
  * Stubbed externals: the panel manager (fillPanel → innerHTML; openPanelId →
  * 'prime'), toast, the heartbeat settle and the reload scheduler. */
+import { primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from '../apps/game/src/prime-travel.js';
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
@@ -173,6 +174,9 @@ function mainFrontierHarness(f: DurableFixture, mutations: readonly MainMutation
   const env: Record<string, unknown> & { save: SaveStateV2; activePersist: unknown; productActionInFlight: boolean } = {
     document,
     Element: dom.window.Element,
+    trackablePrimeSignaturesV1,
+    ascStage: () => 0 as const, // the fixture explorer's ship is at chassis stage 0 (Titan tracking is out of this test's scope)
+    primeClaimWorldAddressV1, // D16 Prime travel (merged 2026-09-25) reads each claim's world in fillPrimeCodex
     Date: Object.freeze({ now: () => NOW }),
     performance: Object.freeze({ now: () => 17 }),
     save: f.state,

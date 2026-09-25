@@ -40,7 +40,7 @@ const SECTIONS = (): string => [
   section('async function runPrimeCodexTravel(', '\n/** The Fabricator'),
 ].join('\n');
 
-let MARS: ReturnType<typeof resolveCF1WorldAddress> = { ok: false, reason: 'not-yet' } as ReturnType<typeof resolveCF1WorldAddress>;
+let MARS: ReturnType<typeof resolveCF1WorldAddress> = { ok: false, reason: 'not-yet' } as unknown as ReturnType<typeof resolveCF1WorldAddress>;
 beforeAll(() => {
   installCaptureHooks();
   MARS = resolveCF1WorldAddress({ galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 424242, x: 560, y: 170 }, planet: { seed: 134 } });
@@ -63,7 +63,7 @@ function mount(save: SaveStateV2, stage: number, sections = SECTIONS()) {
   const doc = dom.window.document;
   const jumps: CanonicalCF1WorldAddress[] = [];
   const env: Record<string, unknown> = {
-    document: doc, Element: dom.window.Element, save, PRIME_SIGNATURES_V1,
+    document: doc, Element: (dom.window as unknown as { Element: typeof Element }).Element, save, PRIME_SIGNATURES_V1,
     fillPanel: (id: string, html: string) => { if (id === 'prime') doc.getElementById('primepanel')!.innerHTML = html; },
     projectPrimeCodexV1, renderPrimeCodexPanelV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1, nearestTitanWorldV1,
     smokeForceReadOnly: false, f4RuntimeMayMutate: () => true, activePersist: null, importWriteInFlight: false,

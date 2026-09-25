@@ -58,7 +58,7 @@ export const ENGINEERING_SECTIONS = (): string => [
   section('function refreshRecipePinChip(): void {', '\n/** The Fabricator\'s ×5 (D16 parity)'),
   section('const engineeringPanelController = new EngineeringPanelController({', '\nlet engineeringPanelReleased'),
   section('function refreshEngineeringPanelState(): void {', '\nfunction updateChips(): void {'),
-  section('async function fabricateEngineeringBatch(', '\nconst sideEl = '),
+  section('async function fabricateEngineeringBatch(', '\n/* Friendly duel (v1.8.9 parity'), // ends at the next top-level block (the §20 friendly duel, merged 2026-09-25)
   section('async function commitArc3EngineeringAction(', '\nasync function mineCurrentSurface('),
   section('async function fabricateFixedEngineeringRecipe(', '\ntype Arc5FeedCommitOutcome'),
   section('function engineeringOutcomeConverges(', '\nasync function smokeCommitF4Outcome('),
@@ -178,7 +178,7 @@ export async function durableState(backend: ReturnType<typeof createMemoryBacken
 /** Reboot a fresh document from the durable save (the old one releases its lease first). */
 export async function reboot(booted: Booted): Promise<{ state: SaveStateV2; booted: Booted }> {
   await booted.runtime.release();
-  const state = await durableState(booted.backend);
+  await durableState(booted.backend); // the durable read must succeed before the reload
   const loaded = await readSaveV5(booted.backend, REGISTRY, NOW);
   if (loaded.kind !== 'loaded') throw new Error(loaded.kind);
   return { state: loaded.state, booted: await boot(loaded.state, loaded.extensions, booted.backend, false) };

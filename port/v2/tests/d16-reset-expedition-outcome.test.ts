@@ -53,7 +53,7 @@ async function fixture() {
 function mount(f: Awaited<ReturnType<typeof fixture>>, source = settingsSource()) {
   const dom = new JSDOM('<!doctype html><html><body><aside id="setpanel"></aside></body></html>');
   const doc = dom.window.document;
-  const importBlob = vi.fn(async (raw: string) => {
+  const importBlob = vi.fn(async (raw: string): Promise<string | null> => { // main.ts importBlob resolves an error message or null
     const prepared = prepareV5Replacement(raw.trim(), REGISTRY, NOW);
     if (prepared.kind !== 'prepared') return 'invalid';
     return (await f.runtime.replace(prepared.operations)).kind === 'committed' ? null : 'refused';
