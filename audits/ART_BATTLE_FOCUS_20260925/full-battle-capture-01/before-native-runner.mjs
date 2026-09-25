@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /** E1.5 — battle2 native proof runner. Bundles `native-entry.mjs` against THIS lane's `apps/game/src`, serves the
  * two fits + arena proof assets flat, drives Microsoft Edge over the shared CDP launcher, writes report.json, per-turn
- * stills (approach 50 %, impact, reaction 50 %) and a complete-script webm (at least 10 s), and hashes every source it read. Diagnostic study.
+ * stills (approach 50 %, impact, reaction 50 %) and a 10 s webm, and hashes every source it read. Diagnostic study.
  * Usage: node tools/battle2-proof/native-runner.mjs <leftFitDir> <rightFitDir> <outDir> [script.json]
  * A fit dir holds record.json, binding.json, parts/keyed.png, parts/manifest.json, parts/atlas/<id>.png; the painter
  * master is `record.source` (repo-relative). Browser-owning: on macOS run with approved out-of-sandbox execution. */
@@ -11,7 +11,8 @@ import { repoRelativeSource } from '../creature-animation/record-source.mjs';
 import { CARD_ARCHETYPES } from '../morph/build-card-masters.mjs';
 import { openChromiumCdp } from '../browsercdp.mjs';
 import { acquireWorkspaceLock } from '../workspacelock.mjs';
-import {requireBattleCaptureTimeline,requireBattleCaptureMedia} from './capture-timeline.mjs';
+import { requireTenSecondMedia } from '../quadruped-proof/capture-contract.mjs';
+import { inspectEncodedFrames } from '../quadruped-proof/motion-proof-contract.mjs';
 import { summarizeCpuProfile } from './cpu-profile.mjs';
 
 const [leftArg, rightArg, outArg, scriptArg] = process.argv.slice(2);
@@ -60,9 +61,6 @@ try {
   // ORIGINAL source file of each sample through the bundle's source map, then written as cpu-breakdown.json (per file and per group)
   const profiling = process.env.CF_CPU_PROFILE === '1';
   if (profiling) { await send('Profiler.enable'); await send('Profiler.setSamplingInterval', { interval: 200 }); await send('Profiler.start'); }
-  remember(path.join(import.meta.dirname,'capture-timeline.mjs'));
-  remember(path.resolve(import.meta.dirname,'../animation-completion/review-schedule.mjs'));
-  remember(path.resolve(import.meta.dirname,'../quadruped-proof/motion-proof-contract.mjs'));
   report.capture = await evaluate('window.cfBattle2Proof.capture()');
   if (profiling) {
     const { profile } = await send('Profiler.stop');
@@ -78,11 +76,9 @@ try {
     const breakdown = summarizeCpuProfile(profile, resolveSource, {frames: report.capture.frames, cpuThrottle: report.cpuThrottle});
     fs.writeFileSync(path.join(out, 'cpu-profile.json'), JSON.stringify(profile) + '\n');
     fs.writeFileSync(path.join(out, 'cpu-breakdown.json'), JSON.stringify(breakdown, null, 1) + '\n');
-  } fs.writeFileSync(path.join(out, 'battle-full.webm'), Buffer.from(report.capture.video, 'base64')); delete report.capture.video;
-  const media = JSON.parse(execFileSync('/opt/homebrew/bin/ffprobe', ['-v', 'error', '-count_frames', '-show_entries', 'format=duration:stream=codec_type,nb_read_frames,width,height', '-of', 'json', path.join(out, 'battle-full.webm')], { encoding: 'utf8' }));
-  report.capture.encodedMedia = media; save();
-  report.capture.timelineProof=requireBattleCaptureTimeline(report.gates,report.capture);
-  report.capture.encodedFrames=requireBattleCaptureMedia(media,report.capture.timelineProof.plannedDurationMs);
+  } fs.writeFileSync(path.join(out, 'battle-10s.webm'), Buffer.from(report.capture.video, 'base64')); delete report.capture.video;
+  const media = JSON.parse(execFileSync('/opt/homebrew/bin/ffprobe', ['-v', 'error', '-count_frames', '-show_entries', 'format=duration:stream=codec_type,nb_read_frames,width,height', '-of', 'json', path.join(out, 'battle-10s.webm')], { encoding: 'utf8' }));
+  report.capture.encodedMedia = media; save(); requireTenSecondMedia(Number(media.format.duration)); report.capture.encodedFrames = inspectEncodedFrames(media.streams);
   const refusals = report.capture.refusalsAtEnd; report.status = refusals.left === 0 && refusals.right === 0 ? 'DIAGNOSTIC_PASS' : 'FAIL'; if (report.status === 'FAIL') report.error = 'rig refusals in play: ' + JSON.stringify(refusals) + ' ' + JSON.stringify(report.capture.lastRefusal);
 } catch (e) { report.status = 'FAIL'; report.error = String(e.stack ?? e); process.exitCode = 1; }
 finally { report.sources = [...sources.values()]; for (const r of report.sources) if (sha(fs.readFileSync(r.path)) !== r.sha256) { report.status = 'FAIL'; report.error = 'source changed: ' + r.path; process.exitCode = 1; } save(); await browser?.close(); if (server) await new Promise((r) => server.close(r)); release?.(); fs.rmSync(scratch, { recursive: true, force: true }); }
