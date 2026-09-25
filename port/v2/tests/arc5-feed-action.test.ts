@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import { COMPANION_FEED_POLICY_V2 } from '@cf/domain-acquisition/companion-care';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -600,7 +601,7 @@ describe('D13 companion care — outcomes through the real controls', () => {
   };
 
   it('Use 1 on the real Feed controller: the meal follows the taste table (fed, mend, +3 first-time XP), is read back durably, and the same flavour again pays no XP', async () => {
-    const { JSDOM } = await import('jsdom');
+    const { JSDOM } = createRequire(import.meta.url)('jsdom') as { JSDOM: new (html: string) => { window: { document: Document } } };
     const { CompendiumFeedController, projectCompendiumFeedV1 } = await import('../apps/game/src/compendium-feed.js');
     const fixture = await runtimeFixture();
     const fauna = fixture.ownershipV2.catalogSpecies.find((row) => row.kingdom === 'fauna')!;
@@ -638,7 +639,7 @@ describe('D13 companion care — outcomes through the real controls', () => {
   });
 
   it('Rest from the care panel: Injured → Resting; moving the DEVICE clock ±1 day releases nothing — only active play does (clock-skew guard)', async () => {
-    const { JSDOM } = await import('jsdom');
+    const { JSDOM } = createRequire(import.meta.url)('jsdom') as { JSDOM: new (html: string) => { window: { document: Document } } };
     const { CompanionCareController, projectCompanionCareV1 } = await import('../apps/game/src/companion-care-panel.js');
     const { commitArc5RestActionV1 } = await import('../apps/game/src/arc5-rest-action.js');
     const fixture = await runtimeFixture();
@@ -646,7 +647,7 @@ describe('D13 companion care — outcomes through the real controls', () => {
     const record = { name: 'Grazer', g: fauna.genome as unknown as Record<string, unknown> };
     const dom = new JSDOM('<!doctype html><body><section data-care></section></body>');
     const mount = dom.window.document.querySelector('[data-care]') as HTMLElement;
-    let ownership = fixture.ownershipV2, pressed: Promise<unknown> | null = null;
+    let ownership = fixture.ownershipV2, pressed: Promise<unknown> | null = null as Promise<unknown> | null;
     const controller = new CompanionCareController({ onRest: (creatureId) => { pressed = commitArc5RestActionV1({ runtime: fixture.runtime, ownershipV2: ownership, state: fixture.state, creatureId, codecNow: NOW, activePlayMs: fixture.runtime.diagnostics().activePlayMs }); } });
     controller.setState(projectCompanionCareV1({ record, ownership, activePlayMs: 0, writable: true })); controller.attach(mount);
     const row = `[data-companion-care-row="${fixture.ownership.creatureId}"]`;
@@ -656,7 +657,7 @@ describe('D13 companion care — outcomes through the real controls', () => {
     expect(mount.querySelector(`${row} [data-companion-care-tastes]`)?.textContent).toBe('♥ Favors ?, ? · ⊘ Dislikes ?');
     button.click();
     expect(pressed).not.toBeNull();
-    const outcome = await pressed as Awaited<ReturnType<typeof commitArc5RestActionV1>>;
+    const outcome = (await (pressed as unknown as Promise<unknown>)) as Awaited<ReturnType<typeof commitArc5RestActionV1>>;
     if (outcome.kind !== 'committed') throw new Error(outcome.kind);
     ownership = outcome.ownershipV2;
     const durable = await readBack(fixture);
