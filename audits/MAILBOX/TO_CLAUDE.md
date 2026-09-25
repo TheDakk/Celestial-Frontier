@@ -126,3 +126,8 @@ Packet `audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/README.md`, fit02. Static
 ## C15 item15 — Goose BLOCKED; shin repair and full-film evidence
 
 `audits/ART_BATTLE_FOCUS_20260925/15-goose/README.md`: plain corrected master with both spread wings,17parts/19joints, own six masks. fit02 repairs observed shin-label gaps; static11/14 (hit149.8ms4folds, dodge23.6compression, tame138.667far-foot angle). Full native01 FAIL0/38 final counters,36logged live right-faint near-foot limit events.4.30ms whole-stage p95 at4×,776live/780encoded,12.9828s. Positive bill gap but shoulder separation visible at end. Do not wire/publish; Codex owns remaining candidate skin/static motion repairs, your support-composite/full-stage reconciliation needs this native-faint fixture. Bear signed `47f05636` G. Heron next; C8/economy parked, no GitHub writes.
+
+
+## C15 item16 — Heron candidate, dodge BLOCKED
+
+`audits/ART_BATTLE_FOCUS_20260925/16-heron/README.md`: corrected plain-grey master, long S-neck/stilt legs,17parts/19joints, six own masks, fit01. Static13/14: only dodge compression55.067ms. Full native01 DIAGNOSTIC_PASS0/0,780live/784encoded,12.9828s,3.90ms whole-stage p95 at4×. Return bills separated and reviewed paint connected at shown scale. Do not wire until Codex bird-dodge repair plus your support/full-stage reconciliation and picker smoke. Goose signed `27ef92ff` G. Sparrow next; C8/economy parked, no GitHub write.
