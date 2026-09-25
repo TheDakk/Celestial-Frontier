@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Wild cattle",
+    "exemplar": "Cattle",
+    "covers": [
+      "Cattle",
+      "Cow",
+      "Bull",
+      "Gaur",
+      "Banteng",
+      "Water Buffalo",
+      "Buffalo",
+      "Bison",
+      "Yak",
+      "Musk Ox",
+      "Takin",
+      "Wildebeest"
+    ],
+    "bodyPlan": "quadruped",
+    "mustPaint": [
+      "heavy deep barrel body with a straight back on sturdy legs",
+      "broad blunt wet muzzle; sideways-set curved horns",
+      "tufted rope tail hanging to the hocks",
+      "plain unmarked coat, painted as a wild-type ox (no udder, no patches)"
+    ],
+    "why": "12 misleading. Bison, Yak and Musk Ox keep a caveat (hump, curtain of hair), and so do the buffalo horn shapes. All read as bovines instead of a civet."
+  }
+]
