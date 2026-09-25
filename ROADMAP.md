@@ -17,103 +17,66 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — September 25, 2026 (late) · §20 AUTO GUARDIAN PARTIES LIVE; CODEX'S C15 PAINTINGS WAIT TO BE MERGED AND WIRED
-Self-contained: either lane can resume from this block alone. Older handoffs are archived verbatim at the top of `ROADMAP_ARCHIVE.md`.
+## SESSION HANDOFF — September 25, 2026 (night) · C15 WIRED (9 PAINTED CREATURES), STAGE SPACING + FULL TRAVEL, §20 COMMAND/DUELS/PHASE, D16 ×7, A5 ×8, C13 PINS
+This block is self-contained: either lane can resume from it alone. Older handoffs are archived verbatim at the top of `ROADMAP_ARCHIVE.md`.
 
 **State of the branches.**
-- `anthropic/mac` is pushed through this handoff's commit. Every commit is signed with the repo keychain key (`git-ssh-sign-cf`,
-  `~/.ssh/cf_agents_signing.pub`), and `origin` is HTTPS via `gh`.
-- **`openai/mac` has 28 signed commits NOT yet merged here** (`HEAD..openai/mac`, newest `c936ea5d`): Codex's C15 paintings and repairs,
-  C12 kernel work, and the C13 pin review. Merging them is the FIRST task of the next session (`--no-ff`, hand-reconciled).
-- `develop` is still `c1791e21` (2026-09-05). PR #43 (`anthropic/mac` → `develop`) is open with `actions-full-chain-approved`. No hosted
-  attempt is eligible while I5 is red (D5: one label cycle per day, and only with the whole local gate list green).
-- **The dev site** https://dev-celestialfrontier.github.io serves `76c8b2f8`, which has everything below. Republish with
-  `node tools/deploy-dev.mjs` (from `port/v2`, out of the sandbox, clean signed head); `audits/DEV_PUBLISH/audio-settings-smoke.mjs` is the
-  live Settings smoke.
-- **The gate** (the same command Codex runs): `node tools/check-profile.mjs --profile=develop` from `port/v2`. Its **only red is I5**
-  (`current-producer-authorities`, Codex's v2 epoch C8, parked behind C15). The last run had 5,218 passing.
+- **`anthropic/mac`:** pushed through this handoff's commit, every commit signed G with the repo keychain key (`git-ssh-sign-cf`). `origin` is HTTPS via `gh`.
+  - It merged `openai/mac` at `e1cc9514` (Codex's 30 C15 commits; `d1dbb979`).
+  - It also merged four isolated agent branches from this session: A5 tests, D16 ports, §20 Command, and C13 pins. They were reconciled by hand in `96eb2e2c`.
+- **`develop`:** still `c1791e21`. PR #43 is still open. No hosted attempt is eligible (D5): I5 is red, and so is the hidden root typecheck below.
+- **The dev site:** republished from this session's head. The exact commit is in the site's `version.json`, and the evidence is in `audits/DEV_PUBLISH/<head>/`.
+- **The gate:** `node tools/check-profile.mjs --profile=develop` from `port/v2`.
+  - Result: **5,373 pass, and the only red is I5.** The app and worker typechecks show 0 errors. artaudit, overridecheck, speccheck and overridecontrol all exit 0 when run one by one.
+  - **Hidden red:** the profile stops at the first failure, so while I5 is red the root `tsc --noEmit --noUnusedLocals` never runs. It has 185 errors that were already there, all in Codex's motion → pixi/@webgpu path plus `motion/overlay.ts`. See mailbox C24.
 
 **What this session delivered.**
-- **Combat, `port/DECISIONS.md` §20** (Nick's decision: a party of up to 3 for Guardians/Titans only, Auto or Command, identical rewards, Swap
-  never necessary, defeat is Recovery):
-  - **The S1 engine,** `runEncounterV1` (`packages/domain/combatcore/src/encounter.ts`). It is parity-locked: one Balanced Auto fighter
-    equals `runDuel` byte for byte, over the golden probe and 400 pairs.
-  - **Defeat is Recovery, never loss,** for every companion and captured Guardian: `set-recovery` with a 10-minute active-play placeholder.
-    **It adds no wound** (§20 applied: a wound on the fallen alone would make Swap necessary).
-  - **The party planner,** `planCombatPartySettlementV1`: one receipt, the decisive leg as the top-level plan, plus a `party` block.
-  - **The Recovery helpers,** `prepareArc6PartyOwnershipV1` (Arc 5 ownership) and `prepareGuardianPartyCompanionV1` (captured-Guardian
-    overlay), with the persistence routing and verification. Every owned fighter must be on exactly one carrier and free at the
-    committed clock.
-  - **The card:** a stance for every fight; two more relay slots for Guardians/Titans; a "Your plan (Auto)" forecast. Main owns the plan
-    state. The Chronicle names the earlier fighters.
-  - Design `audits/COMBAT_S2_PARTY_20260925/DESIGN.md`; end-to-end test `packages/persistence/test/combat-party-settlement.test.ts`.
-- **A3 audio:** Mono audio + Reduced intensity (device preferences, applied at the one runtime's master), proven live.
-- **v1 parity (D16):** Battle sounds (`cbx`), Confirm salvage (`sv`), Mark all read + two-tap Clear all, and play-time Stardust harvest
-  (`world-harvest.ts`, published active-play epochs).
-- **Fixes:**
-  - Recovery never blocks Feed.
-  - `paintedArt` diagnostics by kind, with masks counted (C16).
-- **A5 browser-free UI outcome tests** (real presses, durable read-back, reboot, mutation controls) for Charter accept, Binder claim,
-  Settings identity, Discover Life, Scavenge, Breed and Rename/Scout. That is 7 of the top-15 gaps (`audits/A5_OUTCOME_TESTS_20260925/INVENTORY.md`).
-- **The four proposals** `audits/PROPOSALS_20260925/` N1/N3/N4/N5 (N1 is now decided as §20).
-- **The dev publisher** (D9) and the C4 pin proposal.
+- **C15 wiring** (`audits/C15_WIRING_20260925/README.md`):
+  - Nine new painted creatures on the card, the stand-ins and the arena: Bass, Tang, Jellyfish (hash-bound sting declaration, proven before play), Dragonfly, Sturgeon, Wolf, Impala (interior-05), River Otter, and Heron (observed supports). The library is now 26.
+  - Procedural jellies draw as the Jellyfish.
+  - Two family-level accent plans: a swimming-bell radial is one coat, and a flying insect's accent is its antennae only.
+  - Held, though they pass the integrated check (`tools/morph/budget-held-archetypes.json`): Pike, Goose, Ibex, Cougar, Marmot and Wall Lizard by the 128 MiB pack cap, and the Gull by CARD = STAGE.
+- **Stage** (Claude's):
+  - Codex's layered-reach and faint-idle-settle patches are applied, and the layered reach is cached by complete input.
+  - READY spacing: a 0.10 frame gap between the painted boxes.
+  - The run-up goes box to box, all the way to contact.
+  - The high-flyer damage number stays inside the frame.
+  - Tests: `ready-spacing.test.ts`, and the library test with each fit's declaration and supports.
+- **§20 step 4** (`audits/COMBAT_S20_COMMAND_20260925/README.md`):
+  - The Command open-encounter record: sealed plan, CAS decisions, one-receipt settlement, reload to the pending Break.
+  - The Break UI (Hold / Swap / Continue / Withdraw / Settle) and battle2 relay beats.
+  - Friendly duels: CFB paste, +8 XP on a win, a play-time window.
+  - The Guardian phase change at half health (placeholder numbers for S4).
+- **D16** (`audits/D16_PARITY_20260925/README.md`): craft ×5, pin recipe, salvage-all + "don't ask again", Prime travel + Titan tracking, reset expedition, the pop-up switch (audio still fires with pop-ups off) and tooltips + switch.
+- **A5 outcome tests:** Guardian combat through the card, notification read on a real backend, the Atlas verbs, the frontier ending, card travel, the inventory transaction, and the PWA update with a write in flight. 44 tests, no product bugs.
+- **C13** (`audits/C13_PIN_GENERATOR_20260925/README.md`): the generated master pins (26) behind a private frozen registry, with pre-decode admission. The masters still ship.
 
 **Next, by owner.**
-- **Claude, in order:**
-  1. **Merge `openai/mac`** (28 commits). Then act on Codex's C15 asks in its `TO_CLAUDE.md` (read it by absolute path):
-     - wire **Bass fit-05** and **Tang fit-06** (READY);
-     - wire the **Jellyfish repair-03 fit-06**, passing its hash-bound sting `weapon-declaration.json` through `compileAnatomyAttack`;
-     - **Dragonfly repair-03**: clamp the damage-overlay labels for air-band actors first;
-     - **Sturgeon facing-04**: enforce a positive ready/return gap from the actual painted intervals first;
-     - reconcile Codex's stage patches (`412e2cf2` layered approach and `faint-idle-settle.patch`);
-     - the Impala interior repair-05 and the Tree Frog orange patches / Eagle overlap asks;
-     - keep the five unrepaired quadrupeds out of the picker (`QUADRUPED_HANDOFF.md`).
+- **Claude:**
+  1. A single CARD = STAGE tint decision. Measure it once, share it with the stage, then un-hold the Gull.
+  2. When Codex's C13 overload is green, remove the masters from the pack and un-hold the six budget-held creatures (re-add the rows from the JSON, rebuild, then run the library test and picker smoke).
+  3. The CFB export (sharing your own creature). The rest of D16: card fold/More/vista/postcard (D18), the Guide tour (D19), and the Compendium tools (they touch the I5 scene).
+  4. The remaining A5 gaps: #57 Titan through the card, #73 the doll slot picker, #81 passive Charter banking, the XP ledger after Land/capture/Feed, and #11/#92.
+  5. Keep merging Codex's signed C15 commits and wiring the passed candidates.
+- **Codex:**
+  - C21: acknowledge.
+  - C22: make the layered reach cheaper (the phone load stall).
+  - C23: the C13 loader overload and zero-master-fetch controls.
+  - C24: clean the root typecheck.
+  - Then the S4 instrument (the stance, phase and Recovery numbers; the party XP split; a review of the two new save carriers), then C8/I5.
+- **Nick:** answer D13–D15 and D17–D19, one line each, in `audits/MAILBOX/DECISIONS.md`. Play the dev URL on the iPhone (the H1 probe gates D6): `?battle2=1&vs=Bass,Tang`, `vs=Wolf,Impala`, `vs=Dragonfly,Heron`, `vs=Jellyfish,Sturgeon`.
 
-     Picker-smoke each one, then republish.
-  2. **The C13 master-pin generator**, with Codex's amendments: `getBattle2MasterPin(id)`/`isBattle2MasterPin` backed by a PRIVATE frozen
-     registry; admission before any image/cache/Pixi allocation; canonical POSIX paths. Masters stay shipped until Codex's loader controls
-     pass.
-  3. **§20 step 4: Command.** The open-encounter record (the plan sealed in its own receipt, decisions appended by CAS, the final
-     settlement consuming it) plus the Break UI, and battle2 swap beats. Then the friendly duels (+8 XP) and the Guardian phase change.
-  4. **The rest of D16:** tooltips (needs the tooltip system), the notification pop-up switch (toasts are audio counterparts: care),
-     Compendium filters/groups/origin travel/reveal queue (coordinate with Codex's I5-measured Compendium), craft ×5, pin recipe,
-     salvage-all, Prime slot travel + Titan tracking, reset expedition, the Guide tour, card fold/"More"/vista/postcard, and the salvage
-     dialog's "don't ask again".
-  5. **The remaining A5 gaps:** combat/Guardian through the card, the Atlas verbs, the XP ledger after a UI action, the frontier ending,
-     the inventory transaction, and the PWA update with a write in flight.
-- **Codex:** C15 (paint + rig + motion repairs); then C19/C20, the §20 S4 balance instrument (stance numbers, gap targets, Recovery
-  lengths) and a review of the persistence party path; C8 (the I5 epoch) after that. C17 (release bullets for A3, Feed, parity) is batched
-  with one inventory re-measure.
-- **Nick:**
-  - answer **D13** (companions), **D14** (projects) and **D15** (audio), one line each in `audits/MAILBOX/DECISIONS.md`;
-  - play the dev URL on the iPhone (H1 gates D6);
-  - review Codex's first-ten painting sheet (`audits/ART_BATTLE_FOCUS_20260925/batch01-review-sheet.png`) under D1.
-
-**Traps (obey them).**
-- **Main.ts sections are executed by tests.** The A5 and wiring tests slice exact `main.ts` regions by start/end markers (e.g.
-  `surveyPlanet → buildCardActions` and `runArc9BinderSetClaim → arc9TravelInspectionOnly`). Put new top-level code where no slice
-  spans it (the harvest runner sits just before `const sideEl`), and keep typed `let`s out of executed regions.
-- **Inserting CSS after "the line that starts a rule"** can land INSIDE a multi-line block. Check the braces balance.
-- **A finished Recovery stays on the row** until the next companion action. Every availability check must use the active-play
-  projection (`projectCompanionAvailabilityV1`), never `assignment !== null` (the Feed bug, and the party "busy" rule).
-- **Codex's instruments pin exact source lines,** for example the single challenge emission in `combat-card.ts`. Keep the pinned line and
-  move new behavior elsewhere (the plan state lives in Main).
-- **A test that clones an ownership state is refused as unregistered BEFORE the rule under test.** Build real fixtures, or the test passes
-  vacuously.
-- A browser smoke must watch a bout to its END and assert zero page errors: a throw inside a ticker callback freezes the whole page
-  while every status still reads "playing" (item -82).
-- A preview/package step that rewrites a built file after `vite build` breaks the worker's pins; stamp inside the build (item -83).
-- `picker-smoke --sw-control` asserts PAINTED rigs from the stage label: "playing" alone also covers the portrait fallback.
-- The gate test in `battle2-wiring.test.ts` mutates the gate ON the import line (`main.ts` now also reads the flag to set the
-  pacer).
-- `stage.play()` stamps each turn from the clock: reset to 0 per turn and require the turn to report `done`.
-- The training-restart fixture is exact capture output.
-- A backtick in a comment in `ui-sheet-style.ts` ends the CSS literal.
-- Never `expect(x).not.toBe(y)` on multi-MB typed arrays.
-- A sealed budget is never re-bound by hand.
-- Run `npm run overridecontrol` and the whole gate list locally before any hosted attempt.
+**Traps (obey them; the earlier list is still in force, archived).**
+- **Agent worktrees are cut from `develop`, not from your branch.** Rebase them first, and give `port/v2/node_modules` a copy-on-write copy (`cp -cR`), not a symlink: a symlink makes `@cf/*` resolve into the parent tree.
+- **`check-profile` stops at the first red.** "Sole red I5" hides the typechecks, artaudit, overridecheck and speccheck, so run them by hand.
+- **Slice-executing tests** (A5, D16, arc6) run exact `main.ts` regions with a `with(env)`. New code placed inside another test's slice fails with a `ReferenceError`. Add the real function to that env, or end the slice at its own block.
+- **`run-unit-tests.mjs` builds the PWA pack first.** Over 128 MiB, every test run dies with `RangeError`, so check the pack before adding art (non-arena ≈ 54.5 MiB).
+- **The card builder's registry test counts `earthName` literals in `build-card-masters.mjs`.** Keep data such as held rows in JSON.
+- **A mask set with `../` file paths** ships at `markings/<name>`; only the shipped copy is rewritten.
+- **Rig loads now take seconds** (the layered reach). Tests that load rigs need explicit timeouts.
 
 ### What Claude owes next
+-111. **C15 wired + stage spacing + four merged lanes (2026-09-25 night).** See this block's summary and `audits/C15_WIRING_20260925/`. Nine creatures wired; seven held with reasons. READY_GAP 0.10, box-to-box run-up to contact, layered reach cached. §20 Command/duels/phase, D16 ×7, A5 ×8 and C13 pins merged. 5,373 pass; only I5 is red (plus the hidden root tsc, which is Codex's).
 -110. **§20 Auto Guardian parties live end to end:**
 - the engine (S1, parity-locked);
 - the party planner (one receipt);

@@ -218,6 +218,14 @@ sits just above the target's painted top, clamped inside the frame.
 - The study's tick is guarded: a throw fails the study (labelled) and never reaches the game's shared Pixi ticker. A body plan without a
   voice source set has no creature voice (labelled). `data-battle2-turn` and `data-battle2-ticks` on the section are smoke diagnostics.
 
+### C15 wiring: READY spacing, full travel, declared weapons (matches code as of 2026-09-25)
+- **`placement.readySpacing`**: the two painted boxes at rest keep `READY_GAP` (0.10 of the frame) between them and stay `EDGE_MARGIN` (0.02) from the sides. The stands spread first; the non-guardian bodies scale down only when the frame cannot hold both.
+- **Run-up**: `stage.centresX()` feeds `arena.centresX`, so the run-up is measured box to box and travels to `CONTACT_GAP`. The old root-distance rule (capped at 0.55 of the stand distance) applies only when the centres are absent.
+- **Reach**: `parts-rig` measures Codex's layered idle+approach reach (`creature-layered-stance-reach.ts`) and caches it by complete input (`layeredReachKey`).
+- **Damage number**: a flyer's number starts at `NUMBER_TOP_MIN + NUMBER_RISE` or lower, so its whole pop and rise stay inside the frame.
+- **Per-archetype fields**: `BATTLE2_PARTS_FITS` entries may carry `weaponDeclaration` (hash-bound, proven before play) and `contactSupports: 'observed'`.
+- **Held rows**: `tools/morph/budget-held-archetypes.json`. Evidence: `audits/C15_WIRING_20260925/`.
+
 ### Known limits
 - The Centipede's ARAP skin folds a triangle at 0.85× its default presentation scale (Codex's anatomy chain). The
   `SCALE SWEEP` in `library-arena.test.ts` pins it by its reason (`Centipede ×0.85` → `ARAP skin: unresolved folded
