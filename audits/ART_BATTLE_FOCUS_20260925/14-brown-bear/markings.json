@@ -1,0 +1,179 @@
+{
+  "schema": "cf.marking-masks/v1",
+  "space": "master",
+  "width": 1254,
+  "height": 1254,
+  "source": "master.png",
+  "sourceSha256": "ed8d4296078398a1a039412ae36ab2628a1b225c4591f6ea5f5e5b9b892c2faf",
+  "keyedAlphaFile": "fit-02/parts/keyed.png",
+  "keyedSha256": "134923f7a8c317d5f2c3136001ec1648af6156b0928940b75e8954b24664dbb7",
+  "recordRecipeHash": "a2d4471fe511a1a6eea2987e8c63d63021b3c682b260dade9c16eb5167f78153",
+  "compiledPrompt": {
+    "file": "prompt.txt",
+    "sha256": "044a93fde1b7718e596d4200eec16e615e31401b72d8efce2f882ffe148a15a8",
+    "bytesBase64": "UGFzdGUgaW4gZXZlcnkgcHJvbXB0LiBBdHRhY2ggdGhlIE9ORSByZWZlcmVuY2UgdGhlIGNsYXNzIGNhbGxzIGZvciwgbmV2ZXIgYm90aC4KCkZvciBjdXQtb3V0IGNsYXNzZXMgKG9yYml0YWwgcGxhbmV0cywgZmxvcmEsIGZhdW5hLCBzaGlwcywgbGFuZG1hcmtzLCBpdGVtcywKZW1ibGVtcywgRWZmZWN0czsgaW5hY3RpdmUgcGVvcGxlIGV4Y2x1ZGVkOyBBcmVuYSBNSUQvTkVBUiB1c2UgdGhlIHJ1bGUgYmVsb3cpOgogIE1hdGNoIHRoZSBleGFjdCB2aXN1YWwgbGFuZ3VhZ2Ugb2YgdGhlIGF0dGFjaGVkIGFwcHJvdmVkIERpc2NvdmVyeSBBdGxhcywKICBhdWRpdHMvTUlER0FNRV9BUlRfRElSRUNUSU9OXzIwMjYwOTA4LzAxLWRpc2NvdmVyeS1hdGxhcy5wbmcsCiAgc3R5bGVfaWQgImZyb250aWVyIi4gRG8gbm90IHJlZGVzaWduIG9yIHJlaW50ZXJwcmV0IHRoZSBzdHlsZS4gVGhlIGF0bGFzIGlzCiAgYSByZWZlcmVuY2Ugb25seTogbmV2ZXIgY3JvcCBhcnR3b3JrIG91dCBvZiBpdC4gSXRzIGJhY2tncm91bmQsIGxldHRlcmluZwogIGFuZCBkaXZpZGVkIGxheW91dCBhcmUgbm90IHRoZSBvdXRwdXQgbGF5b3V0OyB1c2UgdGhpcyBjbGFzcydzIG93biBsYXlvdXQuCiAgU0hBLTI1NjogYzUzYWRkMjk5M2NhYmEzOWI2ZGMxMmRjNzVkNWQ3NjdiZTg2ODk2YTdjNDFjZmFhNmM5NGYzNTZlOGQ5MmE2MgoKRm9yIHNjZW5lIGNsYXNzZXMgKHVuaXZlcnNlLCBzdGFycywgcGxhbmV0IGJpb21lcywgQXJlbmEgRkFSKSwgYW5kIEFyZW5hCk1JRC9ORUFSIGtleS1wYWludGVkIHRlcnJhaW4gc28gYWxsIGFyZW5hIGxheWVycyBtYXRjaCB0aGUgc2FtZSBiaW9tZSBoYW5kOgogIE1hdGNoIHRoZSBleGFjdCB2aXN1YWwgbGFuZ3VhZ2Ugb2YgdGhlIGF0dGFjaGVkIGFwcHJvdmVkIExpdmluZyBXb3JsZHMKICB0cmlwdHljaCwgYXVkaXRzL01JREdBTUVfQVJUX0RJUkVDVElPTl8yMDI2MDkwOC8wMi1pbmhhYml0ZWQtd29ybGRzLnBuZywKICBzdHlsZV9pZCAiZnJvbnRpZXIiLiBEbyBub3QgcmVkZXNpZ24gb3IgcmVpbnRlcnByZXQgdGhlIHN0eWxlLiBUaGUgdHJpcHR5Y2gKICBpcyBhIHJlZmVyZW5jZSBvbmx5OiBuZXZlciBjcm9wIGFydHdvcmsgb3V0IG9mIGl0LiBJdHMgbGV0dGVyaW5nIGFuZCBwYW5lbAogIGRpdmlzaW9ucyBhcmUgbm90IHRoZSBvdXRwdXQgbGF5b3V0OyB1c2UgdGhpcyBjbGFzcydzIG93biBsYXlvdXQuCiAgU0hBLTI1NjogNjhmMDNmMDIzM2VjMmNhODlkZGYzOTIzOGNmYWYxYTMwYjgzMDI3YTU4YmVhZWE5ZmJiMTczNTI3MzcyMGEzOAoKVGhlIGZvdXIgYXBwcm92ZWQgaW1hZ2VzIGluIGF1ZGl0cy9NSURHQU1FX0FSVF9ESVJFQ1RJT05fMjAyNjA5MDggZGVmaW5lIHRoZQphcnQgZGlyZWN0aW9uOiAwMS1kaXNjb3ZlcnktYXRsYXMucG5nLCAwMi1pbmhhYml0ZWQtd29ybGRzLnBuZywKMDMtZWFydGgtZnVsbC1sYW5kZmFsbC5wbmcgYW5kIDA0LWFsaWVuLWZ1bGwtbGFuZGZhbGwucG5nLiBUaGUgZXhpc3RpbmcgYXRsYXMKYW5kIHRyaXB0eWNoIGFib3ZlIGFyZSB0aGUgcHJvZHVjdGlvbiByZWZlcmVuY2UgbG9ja3M7IGRvIG5vdCBwYWludCBuZXcgbG9ja3MuClZlcmlmeSB0aGVpciBvcmlnaW5hbCBieXRlcyBhZ2FpbnN0IHRoZXNlIFNIQS0yNTYgdmFsdWVzIGJlZm9yZSB1c2UuClRoZSBsb2NhbCBtb2RlbCdzIGN1cnJlbnQgcml2ZXJiYW5rIG91dHB1dCBpcyBhIGdhcCB0byBjbG9zZSwgbm90IGEgcmVmZXJlbmNlLgoKUGFzdGUgdGhpcyBwYXJhZ3JhcGggdmVyYmF0aW0gaW4gZXZlcnkgcHJvbXB0LiBBcHByb3ZlZCBieSBOaWNrIGF0IDZmNWMzOTZlLgpDaGFuZ2VzIHRvIHRoZSBwYXJhZ3JhcGggcmVxdWlyZSBhIG5ldyBraXQgdmVyc2lvbjsgbmV2ZXIgcmV2aXNlIGl0IGF0IHNlbmQgdGltZS4KCiAgUmljaCBuYXR1cmFsLWhpc3RvcnkgZmFudGFzeSBwYWludGluZywgb25lIGhhbmQgYWNyb3NzIGV2ZXJ5IHN1YmplY3QsCiAgdGFjdGlsZSBkaXJlY3Rpb25hbCBicnVzaHdvcmssIGJlbGlldmFibGUgY29ubmVjdGVkIGFuYXRvbXksIHdlYXRoZXJlZCByb2NrLAogIGluZGl2aWR1YWwgYnV0IGdyb3VwZWQgZm9saWFnZSwgZGVlcCBhdG1vc3BoZXJpYyBsYXllcnMsIHJlYWRhYmxlIHNpbGhvdWV0dGVzLAogIHNlbGVjdGl2ZSBoaWdoIGRldGFpbCwgc29mdCBuYXR1cmFsIGxpZ2h0IHNoYXJlZCBieSBldmVyeSBzdWJqZWN0LCBob25lc3QKICBncm91bmQgYW5kIHdhdGVyIGNvbnRhY3QsIHN1YnRsZSBmb3JlZ3JvdW5kIG9jY2x1c2lvbiwgcHJlbWl1bSBwYWludGVkCiAgc2NpZW5jZS1maWN0aW9uIHdpdGggZGlzY292ZXJ5IGFuZCBjaGFyYWN0ZXI7IEVhcnRoIHNwZWNpZXMga2VlcCByZWFsCiAgYW5hdG9teSwgZnVyLCBmZWF0aGVyIGFuZCBib3Rhbnk7IGFsaWVuIGxpZmUga2VlcHMgaXRzIGRhdGEtZHJpdmVuIGZvcm0gYW5kCiAgcGFsZXR0ZSBpbiB0aGUgc2FtZSBoYW5kOyBub3QgcGxhc3RpYyBDR0ksIG5vdCBwaG90b2dyYXBoeSwgbm90IGNhcnRvb24sCiAgbm90IG92ZXJzaGFycGVuZWQsIG5vIGdsb3dpbmcgb3V0bGluZXMuCgpUaGUgc2NlbmUtY29udGFjdCBhbmQgb2NjbHVzaW9uIGxhbmd1YWdlIGdvdmVybnMgY29tcG9zZWQgc2NlbmVzLiBBIGN1dC1vdXQKcmV0YWlucyB0aGUgc2FtZSBoYW5kIGFuZCBhbmF0b215IHdoaWxlIG9iZXlpbmcgaXRzIG5vLWdyb3VuZC9uby1zaGFkb3cgbGF5b3V0Owpjb250YWN0IGFuZCBzaGFyZWQgYXRtb3NwaGVyZSBhcmUgcmVzb2x2ZWQgd2hlbiBjb21wb3NlZCBhbmQgZmluaXNoZWQgb24gYSBwbGF0ZS4KVGhlIGNvbXBhbmlvbiBydWxlIGluIHNlY3Rpb24gNEUgaXMgcmV0YWluZWQgZm9yIGNvbXBhbmlvbi1mbGFnZ2VkIGdhbWUgZGF0YTsKaXQgZG9lcyBub3QgY2hhbmdlIGNvdW50cyBvciB0aGUgdW5kZXJseWluZyBnZW5vbWUuCgpTWVNURU0gQ0FSRCAtIFNvbCAvIEVhcnRoOyBDRjF8Zzo5OTlAOTAsLTYwfHM6NDI0MjQyQDU2MCwxNzB8cDoxMzMjMgogIFN0YXI6IEc7IGEgeWVsbG93IHN1bi1saWtlIHN0YXI7ICNmZmY0ZDg7IHJhZGl1cyAyNi4gI2ZmZjRkOCAgeWVsbG93IHN1bi1saWtlIHN0YXI7IFNvbCBwaW5uZWQuIFBpZ21lbnQ6IGl2b3J5LCB3YXJtIHdoaXRlLgogICAgICAgICBMaWdodDogbmVhci1uZXV0cmFsIHllbGxvdy13aGl0ZSwgbmF0dXJhbCBkaWZmdXNlIGZpbGwuCiAgTGlnaHQ6IGRheTsgcmFpbjsgb25lIHByaW1hcnksIG5vIGNvbXBhbmlvbnM7IGRpZmZ1c2UgY2xvdWQtZmlsdGVyZWQgbGlnaHQsIHNvZnQgbmV1dHJhbCBjb250YWN0IHNoYWRvd3M7IGRpcmVjdGlvbmFsIHN1biBwb3NpdGlvbiBhYnNlbnQgZnJvbSBzb3VyY2UsIGRvIG5vdCBpbnZlbnQgYSB2aXNpYmxlIHNlY29uZCBsaWdodC4KICBNaW5lcmFsIHBhbGV0dGU6IHRlcnJhbjsgc2VhSHVlIDIxMCwgbGFuZEh1ZSAxMTUsIGljZUFtdCAwLjU7IGJsdWUgd2F0ZXIsIGdyZWVuIGxhbmQsIHBhbGUgaWNlOyBodWUgYWJzZW50IGZyb20gc291cmNlLgogIEF0bW9zcGhlcmU6IHZpc3RhIHBhbGV0dGUgcmFpbiwgY2xpbWF0ZSB0ZW1wZXJhdGUsIHdlYXRoZXIgcmFpbiwgd2F0ZXIgbGlxdWlkOyByYWluIHNvZnRlbnMgZGlzdGFudCBibHVlLWdyZXkgbGF5ZXJzLgogIEZsb3JhIHBpZ21lbnQ6IHRlbXBlcmF0ZTsgZm9ybXMgdHJlZSwgc2hydWIsIGZsb3dlciwgZ3Jhc3MsIGZlcm47IFBlcnNpbW1vbjogZ3JlZW4gbGVhdmVzLCBvcmFuZ2UgZnJ1aXQsIGJyb3duIHdvb2Q7IERldmlsJ3MgQ2x1YjogZ3JlZW4gbGVhdmVzIGFuZCByZWQgYmVycnkgY29uZXM7IENyYW5iZXJyeTogZ3JlZW4gbGVhdmVzIGFuZCByZWQgYmVycmllcy4KICBGYXVuYSBhZGFwdGF0aW9uOiBFYXJ0aCBCcm93biBCZWFyOyByZWFsIG5hbWVkIGFuYXRvbXkgYW5kIG5hdHVyYWwgbWF0ZXJpYWxzIHRha2UgcHJpb3JpdHkgb3ZlciByYXcgcHJvY2VkdXJhbCBnZW5lcy4gcHJvbWluZW50IG11c2N1bGFyIHNob3VsZGVyIGh1bXA7IGRpc2hlZCBjb25jYXZlIGZhY2Ugd2l0aCBhIGJyb2FkIGZvcmVoZWFkOyBsb25nIHN0cmFpZ2h0IHBhbGUgZGlnZ2luZyBjbGF3cy4gSXNvbGF0ZWQgbGlicmFyeSBhcmNoZXR5cGUsIG5vdCBhIGxhbmRpbmcgcmVzaWRlbnQgY2xhaW0uCiAgT25lIHNpZ25hdHVyZTogbm8gYmlvbWUgaGF6YXJkIGluIHNvdXJjZTsgbm8gYWRkZWQgaGF6YXJkIG1vdGlmLgoKU1VCSkVDVApPbmUgRWFydGggQnJvd24gQmVhci4gcHJvbWluZW50IG11c2N1bGFyIHNob3VsZGVyIGh1bXA7IGRpc2hlZCBjb25jYXZlIGZhY2Ugd2l0aCBhIGJyb2FkIGZvcmVoZWFkOyBsb25nIHN0cmFpZ2h0IHBhbGUgZGlnZ2luZyBjbGF3cy4gdGhlIHNob3VsZGVyIGh1bXAgaXMgdGhlIGRpYWdub3N0aWMgLSBpdCBtYWtlcyB0aGUgZnJvbnQgb2YgdGhlIGFuaW1hbCB0aGUgdGFsbGVzdCBwb2ludApHZW5vbWljIGlkZW50aXR5IGFuZCB0cmFpdHMgKEVhcnRoIGFuYXRvbXkgdGFrZXMgcHJpb3JpdHkpOiB7InNlZWQiOjIxMzkwMTA1MTcsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjoxMiwiZm9ybSI6OSwiYm9keSI6MywibG9jbyI6MTIsInRyYWl0IjoxMCwic2l6ZSI6NCwiZGlldCI6MCwiaGVhZCI6NywibGltYnMiOjUsInNraW4iOjcsInRhaWwiOjEsInBhdHRlcm4iOjcsImV5ZXMiOjIsImJlaGF2aW9yIjo4LCJoYWJpdGF0IjoxNywiZGV0YWlsIjowLCJhY2NlbnQiOjEzLCJ0ZW1wZXIiOjMsInNlbnNlIjo4LCJyZXBybyI6NywibGlmZSI6MSwibWV0YWIiOjAsImx1bWluIjp0cnVlLCJnZW4iOjAsImhlYXQiOjEsIl9lYXJ0aE5hbWUiOiJCcm93biBCZWFyIn0KRmFtaWx5IGNvbnRyYWN0IHF1YWRydXBlZCwgY2xpcCBzZXQgcXVhZHJ1cGVkLWxhbmQtdjEuIFJlcXVpcmVkIHJpZyBqb2ludC9wYXJ0IGludmVudG9yeTogcm9vdCwgcGVsdmlzLCBzcGluZSwgY2hlc3QsIG5lY2ssIGhlYWQsIGphdywgaGluZEZhclJvb3QsIGhpbmRGYXJLbmVlLCBoaW5kRmFyQW5rbGUsIGhpbmRGYXJQYXcsIGZvcmVGYXJSb290LCBmb3JlRmFyS25lZSwgZm9yZUZhckFua2xlLCBmb3JlRmFyUGF3LCBoaW5kTmVhclJvb3QsIGhpbmROZWFyS25lZSwgaGluZE5lYXJBbmtsZSwgaGluZE5lYXJQYXcsIGZvcmVOZWFyUm9vdCwgZm9yZU5lYXJLbmVlLCBmb3JlTmVhckFua2xlLCBmb3JlTmVhclBhdywgdGFpbDAsIHRhaWwxLCB0YWlsMiwgdGFpbDMsIGVhckZhclJvb3QsIGVhckZhclRpcCwgZWFyTmVhclJvb3QsIGVhck5lYXJUaXAuIENvbm5lY3RlZCBvcmdhbmljIHBhaW50ZWQgc3ViamVjdCwgbm8gZXF1aXBtZW50LCBubyBmYW50YXN5IGFkZGVkIGxpbWJzLgpTdHJpY3QgU0lERSBQUk9GSUxFIGZhY2luZyBSSUdIVC4gT25lIGFkdWx0IEJyb3duIEJlYXIsIG1hc3NpdmUgYmFycmVsLXNoYXBlZCBib2R5IGFuZCBoaWdoIG11c2N1bGFyIHNob3VsZGVyIGh1bXAsIHN0b3V0IHNob3J0IHBvd2VyZnVsIGxlZ3MgYW5kIGJyb2FkIGZsYXQgcGxhbnRpZ3JhZGUgcGF3cyB3aXRoIGxvbmcgbmF0dXJhbCBiZWFyIGNsYXdzLiBTbWFsbCByb3VuZGVkIGVhcnMgQk9USCBzZXBhcmF0ZWx5IHZpc2libGU7IGhlYXZ5IGJyb2FkIGhlYWQgd2l0aCBlbG9uZ2F0ZWQgYmx1bnQgbXV6emxlLCBzaG9ydCB0aGljayBuZWNrLCBhIG5hdHVyYWxseSB0aW55IGZ1cnJ5IHRhaWwgdmlzaWJseSBwcm9qZWN0aW5nIGF0IHJ1bXAgb24gTEVGVC4gQWxsIEZPVVIgbGVncyBhbmQgcGF3cyBzZXBhcmF0ZWx5IHJlYWRhYmxlLCBmYXIgbGVncyBvZmZzZXQgaG9yaXpvbnRhbGx5IGZyb20gbmVhciBvbmVzLCBzb2Z0bHkgYmVudCByZWxheGVkIGxpbWIgam9pbnRzLiBQbGFpbiB1bm1hcmtlZCBtZWRpdW0gd2FybSBicm93biBjb2F0LCBzaGFnZ3kgcGFpbnRlZCBmdXIsIG5vIHN0cmlwZXMsIHNwb3RzLCByaW5ncyBvciBwYXRjaGVzOyBzY3VscHRlZCBzaGFkaW5nIG9ubHkuIENvbXBsZXRlIGJvZHkgU01BTEwgYW5kIGNlbnRlcmVkLCBub3NlIHRvIHRpbnkgdGFpbCB3aXRoaW4geD0yMjAuLjEwMzAgb24gdGhlIDEyNTQtc3F1YXJlIGNhbnZhczsgZ2VuZXJvdXMgZW1wdHkgcGFkZGluZyBvbiBldmVyeSBzaWRlLiBHcm91bmRlZCBzdGFuZGluZyBwb3NlIHdpdGggYmVsbHkgd2VsbCBhYm92ZSBncm91bmQsIG5vdCBhIGRvZyBvciBjYXQgc2hhcGUuIE5vIHNjZW5lcnksIGdyb3VuZCwgc2hhZG93LCB0ZXh0IG9yIGdlYXIuIEltYWdlIDEgaXMgT05MWSB0aGUgZXN0YWJsaXNoZWQgcGFpbnRlZCBzdHlsZSByZWZlcmVuY2UuCgpBQ0NVUkFDWQogIENvbXBsZXRlIHJlYWwgQnJvd24gQmVhciwgb25lIGNyZWF0dXJlLCBhbmF0b21pY2FsbHkgYWNjdXJhdGUgc3BlY2llcyBwcm9wb3J0aW9ucy4KICBBbGwgbm9ybWFsbHkgdmlzaWJsZSBsaW1icyBzZXBhcmF0ZWx5IHJlYWRhYmxlIHdpdGggZmFyIGFwcGVuZGFnZXMgdmlzaWJseSBvZmZzZXQgd2hlcmUgdGhlIHZpZXcgcGVybWl0czsgbmV2ZXIgaW52ZW50IGV4dHJhIGFuYXRvbXkuCiAgTm8gc2NlbmVyeSwgZ3JvdW5kLCBzaGFkb3csIHRleHQsIGR1cGxpY2F0ZSBjcmVhdHVyZSwgY3JvcHBlZCBhbmF0b215LgogIHRoZSBzaG91bGRlciBodW1wIGlzIHRoZSBkaWFnbm9zdGljIC0gaXQgbWFrZXMgdGhlIGZyb250IG9mIHRoZSBhbmltYWwgdGhlIHRhbGxlc3QgcG9pbnQKCkxBWU9VVAogIFN0cmljdCBTSURFIFBST0ZJTEUgZmFjaW5nIFJJR0hULiBPbmUgYWR1bHQgQnJvd24gQmVhciwgbWFzc2l2ZSBiYXJyZWwtc2hhcGVkIGJvZHkgYW5kIGhpZ2ggbXVzY3VsYXIgc2hvdWxkZXIgaHVtcCwgc3RvdXQgc2hvcnQgcG93ZXJmdWwgbGVncyBhbmQgYnJvYWQgZmxhdCBwbGFudGlncmFkZSBwYXdzIHdpdGggbG9uZyBuYXR1cmFsIGJlYXIgY2xhd3MuIFNtYWxsIHJvdW5kZWQgZWFycyBCT1RIIHNlcGFyYXRlbHkgdmlzaWJsZTsgaGVhdnkgYnJvYWQgaGVhZCB3aXRoIGVsb25nYXRlZCBibHVudCBtdXp6bGUsIHNob3J0IHRoaWNrIG5lY2ssIGEgbmF0dXJhbGx5IHRpbnkgZnVycnkgdGFpbCB2aXNpYmx5IHByb2plY3RpbmcgYXQgcnVtcCBvbiBMRUZULiBBbGwgRk9VUiBsZWdzIGFuZCBwYXdzIHNlcGFyYXRlbHkgcmVhZGFibGUsIGZhciBsZWdzIG9mZnNldCBob3Jpem9udGFsbHkgZnJvbSBuZWFyIG9uZXMsIHNvZnRseSBiZW50IHJlbGF4ZWQgbGltYiBqb2ludHMuIFBsYWluIHVubWFya2VkIG1lZGl1bSB3YXJtIGJyb3duIGNvYXQsIHNoYWdneSBwYWludGVkIGZ1ciwgbm8gc3RyaXBlcywgc3BvdHMsIHJpbmdzIG9yIHBhdGNoZXM7IHNjdWxwdGVkIHNoYWRpbmcgb25seS4gQ29tcGxldGUgYm9keSBTTUFMTCBhbmQgY2VudGVyZWQsIG5vc2UgdG8gdGlueSB0YWlsIHdpdGhpbiB4PTIyMC4uMTAzMCBvbiB0aGUgMTI1NC1zcXVhcmUgY2FudmFzOyBnZW5lcm91cyBlbXB0eSBwYWRkaW5nIG9uIGV2ZXJ5IHNpZGUuIEdyb3VuZGVkIHN0YW5kaW5nIHBvc2Ugd2l0aCBiZWxseSB3ZWxsIGFib3ZlIGdyb3VuZCwgbm90IGEgZG9nIG9yIGNhdCBzaGFwZS4gTm8gc2NlbmVyeSwgZ3JvdW5kLCBzaGFkb3csIHRleHQgb3IgZ2Vhci4gSW1hZ2UgMSBpcyBPTkxZIHRoZSBlc3RhYmxpc2hlZCBwYWludGVkIHN0eWxlIHJlZmVyZW5jZS4KICBPbmUgd2hvbGUgY3JlYXR1cmUgY2VudGVyZWQsIGVudGlyZSBhbmF0b215IGluIGZyYW1lLCBhdCBsZWFzdCA4IHBlcmNlbnQgc2FmZSBtYXJnaW4uIE5vIGZsb29yIHBsYW5lLgoKVEVDSE5JQ0FMIE9VVFBVVAogIENyZWF0ZSBhIHNxdWFyZSAxMjU0IHggMTI1NCBQTkcuIEV2ZXJ5IHBpeGVsIHRoYXQgaXMgbm90IHRoZSBzdWJqZWN0IGlzIG9uZQogIGZsYXQsIHVuaWZvcm0sIHB1cmUgbWFnZW50YSBmaWxsICgjRkYwMEZGKTogbm8gZ3JhZGllbnQsIHZpZ25ldHRlLCB0ZXh0dXJlLAogIG5vaXNlLCBjaGVja2VyYm9hcmQgb3IgdHJhbnNwYXJlbmN5IHBhdHRlcm4sIGFuZCBubyBncm91bmQsIGJhc2UsIGZyYW1lLAogIHNjZW5lcnkgb3IgY2FzdCBzaGFkb3cuIFRoZSBzdWJqZWN0J3Mgb3V0bGluZSBpcyBjcmlzcCBhbmQgZnVsbHkgb3BhcXVlCiAgYWdhaW5zdCB0aGUgbWFnZW50YSwgd2l0aCBubyBnbG93LCBoYXplLCBzbW9rZSBvciBzb2Z0IGZlYXRoZXJpbmcgYmxlZWRpbmcKICBpbnRvIGl0LCBhbmQgbm90aGluZyBvbiB0aGUgc3ViamVjdCBpcyBtYWdlbnRhIG9yIHBpbmsuIFRoZSBtYWdlbnRhIGlzIGtleWVkCiAgb3V0IGFmdGVyd2FyZHMgdG8gcHJvZHVjZSB0aGUgdHJhbnNwYXJlbnQgYXNzZXQuCgpORUdBVElWRQogIE5vIHRleHQsIGxldHRlcnMsIG51bWJlcnMsIHdhdGVybWFyaywgc2lnbmF0dXJlLCBib3JkZXIsIGZyYW1lLCBncmlkLCBVSQogIGVsZW1lbnQsIGhlYWx0aCBiYXIsIG1pbmltYXAsIHdheXBvaW50LCB0b2tlbiByaW5nLCBiYXNlLCBwZWRlc3RhbCwKICBwaG90b3JlYWxpc20sIGFuaW1lLCBjaGliaSBzdHlsaW5nLCBjZWwgc2hhZGluZywgM0QgcmVuZGVyLCBwbGFzdGljIHRveQogIHNoZWVuLCBhaXJicnVzaGVkIGdyYWRpZW50cywgZHVwbGljYXRlIHN1YmplY3QsIHVuaW50ZW5kZWQgY29tcGFuaW9uLCBleHRyYQogIGxpbWJzLCBtaXNzaW5nIGxpbWJzLCBtYWxmb3JtZWQgaGFuZHMsIGNyb3BwZWQgYW5hdG9teSwgb3IgY29udGFjdC1zaGVldAogIGxheW91dC4gTm8gbGVucyBmbGFyZSwgbm8gY2hyb21hdGljIGFiZXJyYXRpb24sIG5vIGhvbG9ncmFwaGljIFVJCiAgcHJvamVjdGlvbnMsIG5vIGdsb3dpbmcgb3V0bGluZXMgb3IgcmltIGxpZ2h0IHVzZWQgYXMgYW4gZWZmZWN0LgogIE5vIHNjZW5lcnksIG5vIGZsb29yIHBsYW5lLCBubyBjYXN0IHNoYWRvdywgbm8gZHJvcCBzaGFkb3csIG5vIHdoaXRlCiAgYmFja2dyb3VuZCwgbm8gY2hlY2tlcmVkIGJhY2tncm91bmQsIG5vIGJha2VkIHRyYW5zcGFyZW5jeSBwYXR0ZXJuLgogIEJhY2tncm91bmQgbXVzdCBiZSBvbmUgZmxhdCB1bmlmb3JtIG1hZ2VudGEgZmlsbCBhbmQgbm90aGluZyBlbHNlLgogIE5vIGRlZmF1bHQgYmlwZWRhbCBodW1hbm9pZCBzdGFuY2UgdW5sZXNzIG5hbWVkLCBubyBhcm1vdXIgcGxhdGluZyB0aGUgYnJpZWYgZGlkCiAgbm90IGFzayBmb3IsIG5vIGh1bWFuIGV5ZXMsIG5vIHdlYXBvbnMgaGVsZCBpbiBoYW5kcyB1bmxlc3MgbmFtZWQsIG5vIHJpZGVyLAogIG5vIHNlY29uZCBjcmVhdHVyZS4KICBEbyBub3QgYWRkIGEgYmxhbmtldCBvdmVyc2l6ZWQtaGVhZCBiYW4gdGhhdCB3b3VsZCBmaWdodCBhIGRhdGEtb3duZWQKICBjb21wYW5pb24gYnJpZWYu"
+  },
+  "plain": null,
+  "iridescent": {
+    "mode": "emissive",
+    "mask": null
+  },
+  "patterns": {
+    "striped": {
+      "file": "markings/striped.png",
+      "sha256": "c47856f189923def0abc3dbddcd44396e25c0431159fe9aaeb2fcd275a26af8e",
+      "promptFile": "prompts/striped.txt",
+      "promptSha256": "8d7bdb550099add124eba01b14f85fa7741718f8975d8d8122827dee9ea068a3",
+      "prompt": "Create exactly one 1254 by 1254 PNG marking-mask texture, transparent RGBA canvas, for a side-profile painted Brown Bear. Output ONLY pure white marking strokes or shapes on genuine zero-alpha transparency. No animal, no brown fur, no backdrop, no checkerboard pixels, no text, no border. Coordinates are absolute master pixels with top-left origin (0,0); do not crop, center, enlarge, rotate or shift the requested area. Pattern: Five narrow irregular gently curved vertical stripes, all in rectangle x=420..645 and y=450..620. Ends taper softly. Everything outside the specified small region must remain fully transparent. Preserve the full empty 1254-square canvas. Antialiased white-alpha edges. This is a functional mask, not a preview or illustration.\n",
+      "promptBytesBase64": "Q3JlYXRlIGV4YWN0bHkgb25lIDEyNTQgYnkgMTI1NCBQTkcgbWFya2luZy1tYXNrIHRleHR1cmUsIHRyYW5zcGFyZW50IFJHQkEgY2FudmFzLCBmb3IgYSBzaWRlLXByb2ZpbGUgcGFpbnRlZCBCcm93biBCZWFyLiBPdXRwdXQgT05MWSBwdXJlIHdoaXRlIG1hcmtpbmcgc3Ryb2tlcyBvciBzaGFwZXMgb24gZ2VudWluZSB6ZXJvLWFscGhhIHRyYW5zcGFyZW5jeS4gTm8gYW5pbWFsLCBubyBicm93biBmdXIsIG5vIGJhY2tkcm9wLCBubyBjaGVja2VyYm9hcmQgcGl4ZWxzLCBubyB0ZXh0LCBubyBib3JkZXIuIENvb3JkaW5hdGVzIGFyZSBhYnNvbHV0ZSBtYXN0ZXIgcGl4ZWxzIHdpdGggdG9wLWxlZnQgb3JpZ2luICgwLDApOyBkbyBub3QgY3JvcCwgY2VudGVyLCBlbmxhcmdlLCByb3RhdGUgb3Igc2hpZnQgdGhlIHJlcXVlc3RlZCBhcmVhLiBQYXR0ZXJuOiBGaXZlIG5hcnJvdyBpcnJlZ3VsYXIgZ2VudGx5IGN1cnZlZCB2ZXJ0aWNhbCBzdHJpcGVzLCBhbGwgaW4gcmVjdGFuZ2xlIHg9NDIwLi42NDUgYW5kIHk9NDUwLi42MjAuIEVuZHMgdGFwZXIgc29mdGx5LiBFdmVyeXRoaW5nIG91dHNpZGUgdGhlIHNwZWNpZmllZCBzbWFsbCByZWdpb24gbXVzdCByZW1haW4gZnVsbHkgdHJhbnNwYXJlbnQuIFByZXNlcnZlIHRoZSBmdWxsIGVtcHR5IDEyNTQtc3F1YXJlIGNhbnZhcy4gQW50aWFsaWFzZWQgd2hpdGUtYWxwaGEgZWRnZXMuIFRoaXMgaXMgYSBmdW5jdGlvbmFsIG1hc2ssIG5vdCBhIHByZXZpZXcgb3IgaWxsdXN0cmF0aW9uLgo=",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/striped.png",
+      "rawSha256": "74aeb556ebde06b86e567141dfd4943bdfe8d9446ce1d0053627622b59874099",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded; no anatomical exclusions"
+      }
+    },
+    "spotted": {
+      "file": "markings/spotted.png",
+      "sha256": "8765ebdf51424a404c07b67fd8f8336726b92c72046bb1eaf0a116f47d1a3217",
+      "promptFile": "prompts/spotted.txt",
+      "promptSha256": "425818bba3cd2e86d1a7ed5f25e787e115de047220e6853e357b4ed2522390cd",
+      "prompt": "Create exactly one 1254 by 1254 PNG marking-mask texture, transparent RGBA canvas, for a side-profile painted Brown Bear. Output ONLY pure white marking strokes or shapes on genuine zero-alpha transparency. No animal, no brown fur, no backdrop, no checkerboard pixels, no text, no border. Coordinates are absolute master pixels with top-left origin (0,0); do not crop, center, enlarge, rotate or shift the requested area. Pattern: Around twenty irregular small solid spots on the flank, all in rectangle x=420..645 and y=440..620. Everything outside the specified small region must remain fully transparent. Preserve the full empty 1254-square canvas. Antialiased white-alpha edges. This is a functional mask, not a preview or illustration.\n",
+      "promptBytesBase64": "Q3JlYXRlIGV4YWN0bHkgb25lIDEyNTQgYnkgMTI1NCBQTkcgbWFya2luZy1tYXNrIHRleHR1cmUsIHRyYW5zcGFyZW50IFJHQkEgY2FudmFzLCBmb3IgYSBzaWRlLXByb2ZpbGUgcGFpbnRlZCBCcm93biBCZWFyLiBPdXRwdXQgT05MWSBwdXJlIHdoaXRlIG1hcmtpbmcgc3Ryb2tlcyBvciBzaGFwZXMgb24gZ2VudWluZSB6ZXJvLWFscGhhIHRyYW5zcGFyZW5jeS4gTm8gYW5pbWFsLCBubyBicm93biBmdXIsIG5vIGJhY2tkcm9wLCBubyBjaGVja2VyYm9hcmQgcGl4ZWxzLCBubyB0ZXh0LCBubyBib3JkZXIuIENvb3JkaW5hdGVzIGFyZSBhYnNvbHV0ZSBtYXN0ZXIgcGl4ZWxzIHdpdGggdG9wLWxlZnQgb3JpZ2luICgwLDApOyBkbyBub3QgY3JvcCwgY2VudGVyLCBlbmxhcmdlLCByb3RhdGUgb3Igc2hpZnQgdGhlIHJlcXVlc3RlZCBhcmVhLiBQYXR0ZXJuOiBBcm91bmQgdHdlbnR5IGlycmVndWxhciBzbWFsbCBzb2xpZCBzcG90cyBvbiB0aGUgZmxhbmssIGFsbCBpbiByZWN0YW5nbGUgeD00MjAuLjY0NSBhbmQgeT00NDAuLjYyMC4gRXZlcnl0aGluZyBvdXRzaWRlIHRoZSBzcGVjaWZpZWQgc21hbGwgcmVnaW9uIG11c3QgcmVtYWluIGZ1bGx5IHRyYW5zcGFyZW50LiBQcmVzZXJ2ZSB0aGUgZnVsbCBlbXB0eSAxMjU0LXNxdWFyZSBjYW52YXMuIEFudGlhbGlhc2VkIHdoaXRlLWFscGhhIGVkZ2VzLiBUaGlzIGlzIGEgZnVuY3Rpb25hbCBtYXNrLCBub3QgYSBwcmV2aWV3IG9yIGlsbHVzdHJhdGlvbi4K",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/spotted.png",
+      "rawSha256": "08f95a3787509ec1c831d38d7c9f7df2edc857bcf854c618fa44719a0cfabf1f",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded; no anatomical exclusions"
+      }
+    },
+    "banded": {
+      "file": "markings/banded.png",
+      "sha256": "5768eb7723e695829c3b3d161e1c2079000a9e7b5286509996a8e192053ffb98",
+      "promptFile": "prompts/banded.txt",
+      "promptSha256": "be1d7d5f23d5f0f262910bf4517c31e1eb59ed9e377d72ad879efd8eb82611e3",
+      "prompt": "Create exactly one 1254 by 1254 PNG marking-mask texture, transparent RGBA canvas, for a side-profile painted Brown Bear. Output ONLY pure white marking strokes or shapes on genuine zero-alpha transparency. No animal, no brown fur, no backdrop, no checkerboard pixels, no text, no border. Coordinates are absolute master pixels with top-left origin (0,0); do not crop, center, enlarge, rotate or shift the requested area. Pattern: One broad gently curved vertical SHOULDER BAND at x=760..825, y=410..630, subtly wider in middle and tapering at ends. This is the bear shoulder-band marking, not a set of horizontal flank stripes. Everything outside the specified small region must remain fully transparent. Preserve the full empty 1254-square canvas. Antialiased white-alpha edges. This is a functional mask, not a preview or illustration.\n",
+      "promptBytesBase64": "Q3JlYXRlIGV4YWN0bHkgb25lIDEyNTQgYnkgMTI1NCBQTkcgbWFya2luZy1tYXNrIHRleHR1cmUsIHRyYW5zcGFyZW50IFJHQkEgY2FudmFzLCBmb3IgYSBzaWRlLXByb2ZpbGUgcGFpbnRlZCBCcm93biBCZWFyLiBPdXRwdXQgT05MWSBwdXJlIHdoaXRlIG1hcmtpbmcgc3Ryb2tlcyBvciBzaGFwZXMgb24gZ2VudWluZSB6ZXJvLWFscGhhIHRyYW5zcGFyZW5jeS4gTm8gYW5pbWFsLCBubyBicm93biBmdXIsIG5vIGJhY2tkcm9wLCBubyBjaGVja2VyYm9hcmQgcGl4ZWxzLCBubyB0ZXh0LCBubyBib3JkZXIuIENvb3JkaW5hdGVzIGFyZSBhYnNvbHV0ZSBtYXN0ZXIgcGl4ZWxzIHdpdGggdG9wLWxlZnQgb3JpZ2luICgwLDApOyBkbyBub3QgY3JvcCwgY2VudGVyLCBlbmxhcmdlLCByb3RhdGUgb3Igc2hpZnQgdGhlIHJlcXVlc3RlZCBhcmVhLiBQYXR0ZXJuOiBPbmUgYnJvYWQgZ2VudGx5IGN1cnZlZCB2ZXJ0aWNhbCBTSE9VTERFUiBCQU5EIGF0IHg9NzYwLi44MjUsIHk9NDEwLi42MzAsIHN1YnRseSB3aWRlciBpbiBtaWRkbGUgYW5kIHRhcGVyaW5nIGF0IGVuZHMuIFRoaXMgaXMgdGhlIGJlYXIgc2hvdWxkZXItYmFuZCBtYXJraW5nLCBub3QgYSBzZXQgb2YgaG9yaXpvbnRhbCBmbGFuayBzdHJpcGVzLiBFdmVyeXRoaW5nIG91dHNpZGUgdGhlIHNwZWNpZmllZCBzbWFsbCByZWdpb24gbXVzdCByZW1haW4gZnVsbHkgdHJhbnNwYXJlbnQuIFByZXNlcnZlIHRoZSBmdWxsIGVtcHR5IDEyNTQtc3F1YXJlIGNhbnZhcy4gQW50aWFsaWFzZWQgd2hpdGUtYWxwaGEgZWRnZXMuIFRoaXMgaXMgYSBmdW5jdGlvbmFsIG1hc2ssIG5vdCBhIHByZXZpZXcgb3IgaWxsdXN0cmF0aW9uLgo=",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/banded.png",
+      "rawSha256": "fcd9711396aef56180181e2f15c033aec7afc2ace6bef850d0e3d53ac7011a0a",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded; no anatomical exclusions"
+      }
+    },
+    "mottled": {
+      "file": "markings/mottled.png",
+      "sha256": "9e805124849b49f564a2deca85a490d6efb877c1039f8043e7d1b872d4db570e",
+      "promptFile": "prompts/mottled.txt",
+      "promptSha256": "b5b08c3d7089059e075176d2ddf6f67b30c1d7b628a6dc1b326d30fbafe3b27b",
+      "prompt": "Create exactly one 1254 by 1254 PNG marking-mask texture, transparent RGBA canvas, for a side-profile painted Brown Bear. Output ONLY pure white marking strokes or shapes on genuine zero-alpha transparency. No animal, no brown fur, no backdrop, no checkerboard pixels, no text, no border. Coordinates are absolute master pixels with top-left origin (0,0); do not crop, center, enlarge, rotate or shift the requested area. Pattern: Seven small soft-edged irregular mottled blotches on the flank, all in rectangle x=420..645 and y=450..620. Everything outside the specified small region must remain fully transparent. Preserve the full empty 1254-square canvas. Antialiased white-alpha edges. This is a functional mask, not a preview or illustration.\n",
+      "promptBytesBase64": "Q3JlYXRlIGV4YWN0bHkgb25lIDEyNTQgYnkgMTI1NCBQTkcgbWFya2luZy1tYXNrIHRleHR1cmUsIHRyYW5zcGFyZW50IFJHQkEgY2FudmFzLCBmb3IgYSBzaWRlLXByb2ZpbGUgcGFpbnRlZCBCcm93biBCZWFyLiBPdXRwdXQgT05MWSBwdXJlIHdoaXRlIG1hcmtpbmcgc3Ryb2tlcyBvciBzaGFwZXMgb24gZ2VudWluZSB6ZXJvLWFscGhhIHRyYW5zcGFyZW5jeS4gTm8gYW5pbWFsLCBubyBicm93biBmdXIsIG5vIGJhY2tkcm9wLCBubyBjaGVja2VyYm9hcmQgcGl4ZWxzLCBubyB0ZXh0LCBubyBib3JkZXIuIENvb3JkaW5hdGVzIGFyZSBhYnNvbHV0ZSBtYXN0ZXIgcGl4ZWxzIHdpdGggdG9wLWxlZnQgb3JpZ2luICgwLDApOyBkbyBub3QgY3JvcCwgY2VudGVyLCBlbmxhcmdlLCByb3RhdGUgb3Igc2hpZnQgdGhlIHJlcXVlc3RlZCBhcmVhLiBQYXR0ZXJuOiBTZXZlbiBzbWFsbCBzb2Z0LWVkZ2VkIGlycmVndWxhciBtb3R0bGVkIGJsb3RjaGVzIG9uIHRoZSBmbGFuaywgYWxsIGluIHJlY3RhbmdsZSB4PTQyMC4uNjQ1IGFuZCB5PTQ1MC4uNjIwLiBFdmVyeXRoaW5nIG91dHNpZGUgdGhlIHNwZWNpZmllZCBzbWFsbCByZWdpb24gbXVzdCByZW1haW4gZnVsbHkgdHJhbnNwYXJlbnQuIFByZXNlcnZlIHRoZSBmdWxsIGVtcHR5IDEyNTQtc3F1YXJlIGNhbnZhcy4gQW50aWFsaWFzZWQgd2hpdGUtYWxwaGEgZWRnZXMuIFRoaXMgaXMgYSBmdW5jdGlvbmFsIG1hc2ssIG5vdCBhIHByZXZpZXcgb3IgaWxsdXN0cmF0aW9uLgo=",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/mottled.png",
+      "rawSha256": "6886888bb7f825ddb52788c305e97b996d09103eb1ead5c78c267ff1f7a87877",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded; no anatomical exclusions"
+      }
+    },
+    "marbled": {
+      "file": "markings/marbled.png",
+      "sha256": "67c35e053a8c4db515278334b59abcc076fbf9c5e5ee4507be380d1461de2533",
+      "promptFile": "prompts/marbled.txt",
+      "promptSha256": "f463a6845b64219a7224ca9eab4f6cc115e13c53f239f96628f6f85ab868af83",
+      "prompt": "Create exactly one 1254 by 1254 PNG marking-mask texture, transparent RGBA canvas, for a side-profile painted Brown Bear. Output ONLY pure white marking strokes or shapes on genuine zero-alpha transparency. No animal, no brown fur, no backdrop, no checkerboard pixels, no text, no border. Coordinates are absolute master pixels with top-left origin (0,0); do not crop, center, enlarge, rotate or shift the requested area. Pattern: Thin meandering branching marble veins, connected organic pattern, entirely in rectangle x=420..645 and y=450..620. Everything outside the specified small region must remain fully transparent. Preserve the full empty 1254-square canvas. Antialiased white-alpha edges. This is a functional mask, not a preview or illustration.\n",
+      "promptBytesBase64": "Q3JlYXRlIGV4YWN0bHkgb25lIDEyNTQgYnkgMTI1NCBQTkcgbWFya2luZy1tYXNrIHRleHR1cmUsIHRyYW5zcGFyZW50IFJHQkEgY2FudmFzLCBmb3IgYSBzaWRlLXByb2ZpbGUgcGFpbnRlZCBCcm93biBCZWFyLiBPdXRwdXQgT05MWSBwdXJlIHdoaXRlIG1hcmtpbmcgc3Ryb2tlcyBvciBzaGFwZXMgb24gZ2VudWluZSB6ZXJvLWFscGhhIHRyYW5zcGFyZW5jeS4gTm8gYW5pbWFsLCBubyBicm93biBmdXIsIG5vIGJhY2tkcm9wLCBubyBjaGVja2VyYm9hcmQgcGl4ZWxzLCBubyB0ZXh0LCBubyBib3JkZXIuIENvb3JkaW5hdGVzIGFyZSBhYnNvbHV0ZSBtYXN0ZXIgcGl4ZWxzIHdpdGggdG9wLWxlZnQgb3JpZ2luICgwLDApOyBkbyBub3QgY3JvcCwgY2VudGVyLCBlbmxhcmdlLCByb3RhdGUgb3Igc2hpZnQgdGhlIHJlcXVlc3RlZCBhcmVhLiBQYXR0ZXJuOiBUaGluIG1lYW5kZXJpbmcgYnJhbmNoaW5nIG1hcmJsZSB2ZWlucywgY29ubmVjdGVkIG9yZ2FuaWMgcGF0dGVybiwgZW50aXJlbHkgaW4gcmVjdGFuZ2xlIHg9NDIwLi42NDUgYW5kIHk9NDUwLi42MjAuIEV2ZXJ5dGhpbmcgb3V0c2lkZSB0aGUgc3BlY2lmaWVkIHNtYWxsIHJlZ2lvbiBtdXN0IHJlbWFpbiBmdWxseSB0cmFuc3BhcmVudC4gUHJlc2VydmUgdGhlIGZ1bGwgZW1wdHkgMTI1NC1zcXVhcmUgY2FudmFzLiBBbnRpYWxpYXNlZCB3aGl0ZS1hbHBoYSBlZGdlcy4gVGhpcyBpcyBhIGZ1bmN0aW9uYWwgbWFzaywgbm90IGEgcHJldmlldyBvciBpbGx1c3RyYXRpb24uCg==",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/marbled.png",
+      "rawSha256": "39193b7166d9265fa4193d31404eb4ddbb648e72069cc13bf6f22fb3f9f12315",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded; no anatomical exclusions"
+      }
+    },
+    "eye-spotted": {
+      "file": "markings/eye-spotted.png",
+      "sha256": "610142b5385276daa90e0dcc1ba25898e399c7ba61833cddbfb27fc1ad86a8df",
+      "promptFile": "prompts/eye-spotted.txt",
+      "promptSha256": "9bcd5df8c3ceb065706a9624df0199b0ba071f88cf7c790b39ce653e94f77b43",
+      "prompt": "Create exactly one 1254 by 1254 PNG marking-mask texture, transparent RGBA canvas, for a side-profile painted Brown Bear. Output ONLY pure white marking strokes or shapes on genuine zero-alpha transparency. No animal, no brown fur, no backdrop, no checkerboard pixels, no text, no border. Coordinates are absolute master pixels with top-left origin (0,0); do not crop, center, enlarge, rotate or shift the requested area. Pattern: One soft-edged slightly irregular OVAL EYE PATCH centered precisely at pixel x=1054,y=447, horizontal radius 37 and vertical radius 29. Only this single eye patch; no rings elsewhere. This is a SIDE PROFILE bear with one visible eye; do not invent a second visible patch. Everything outside the specified small region must remain fully transparent. Preserve the full empty 1254-square canvas. Antialiased white-alpha edges. This is a functional mask, not a preview or illustration.\n",
+      "promptBytesBase64": "Q3JlYXRlIGV4YWN0bHkgb25lIDEyNTQgYnkgMTI1NCBQTkcgbWFya2luZy1tYXNrIHRleHR1cmUsIHRyYW5zcGFyZW50IFJHQkEgY2FudmFzLCBmb3IgYSBzaWRlLXByb2ZpbGUgcGFpbnRlZCBCcm93biBCZWFyLiBPdXRwdXQgT05MWSBwdXJlIHdoaXRlIG1hcmtpbmcgc3Ryb2tlcyBvciBzaGFwZXMgb24gZ2VudWluZSB6ZXJvLWFscGhhIHRyYW5zcGFyZW5jeS4gTm8gYW5pbWFsLCBubyBicm93biBmdXIsIG5vIGJhY2tkcm9wLCBubyBjaGVja2VyYm9hcmQgcGl4ZWxzLCBubyB0ZXh0LCBubyBib3JkZXIuIENvb3JkaW5hdGVzIGFyZSBhYnNvbHV0ZSBtYXN0ZXIgcGl4ZWxzIHdpdGggdG9wLWxlZnQgb3JpZ2luICgwLDApOyBkbyBub3QgY3JvcCwgY2VudGVyLCBlbmxhcmdlLCByb3RhdGUgb3Igc2hpZnQgdGhlIHJlcXVlc3RlZCBhcmVhLiBQYXR0ZXJuOiBPbmUgc29mdC1lZGdlZCBzbGlnaHRseSBpcnJlZ3VsYXIgT1ZBTCBFWUUgUEFUQ0ggY2VudGVyZWQgcHJlY2lzZWx5IGF0IHBpeGVsIHg9MTA1NCx5PTQ0NywgaG9yaXpvbnRhbCByYWRpdXMgMzcgYW5kIHZlcnRpY2FsIHJhZGl1cyAyOS4gT25seSB0aGlzIHNpbmdsZSBleWUgcGF0Y2g7IG5vIHJpbmdzIGVsc2V3aGVyZS4gVGhpcyBpcyBhIFNJREUgUFJPRklMRSBiZWFyIHdpdGggb25lIHZpc2libGUgZXllOyBkbyBub3QgaW52ZW50IGEgc2Vjb25kIHZpc2libGUgcGF0Y2guIEV2ZXJ5dGhpbmcgb3V0c2lkZSB0aGUgc3BlY2lmaWVkIHNtYWxsIHJlZ2lvbiBtdXN0IHJlbWFpbiBmdWxseSB0cmFuc3BhcmVudC4gUHJlc2VydmUgdGhlIGZ1bGwgZW1wdHkgMTI1NC1zcXVhcmUgY2FudmFzLiBBbnRpYWxpYXNlZCB3aGl0ZS1hbHBoYSBlZGdlcy4gVGhpcyBpcyBhIGZ1bmN0aW9uYWwgbWFzaywgbm90IGEgcHJldmlldyBvciBpbGx1c3RyYXRpb24uCg==",
+      "tool": "image_gen.imagegen",
+      "seed": null,
+      "rawFile": "raw/eye-spotted.png",
+      "rawSha256": "cfad7224f204d2293a483edb6e9b90359d0e15d70d33847b1696dde24dff8325",
+      "transform": {
+        "resize": null,
+        "translationPx": [
+          0,
+          0
+        ],
+        "registration": null,
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": "generated alpha × keyed alpha / 255, rounded; no anatomical exclusions"
+      }
+    }
+  }
+}
