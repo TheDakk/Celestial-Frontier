@@ -24,19 +24,12 @@ cd /Users/nick/Projects/celestial-frontier-anthropic-mac && git remote set-url o
 ```
 Revert with `git remote set-url origin git@github.com:TheDakk/Celestial-Frontier.git`.
 
-**Sign: one dedicated agent signing key in the macOS keychain (Nick: yes; still SIGNED and Verified; 1Password keeps everything else).** Run once in Terminal: `bash audits/OPERATING_MODEL_20260925/setup-agent-signing.sh` (it adds a reboot-proof wrapper and proves a signed commit). The steps it performs:
-```sh
-ssh-keygen -t ed25519 -C "celestial-frontier agents (signing)" -f ~/.ssh/cf_agents_signing        # set a passphrase
-ssh-add --apple-use-keychain ~/.ssh/cf_agents_signing                                              # the passphrase goes into the login keychain
-printf '%s namespaces="git" %s\n' "nick@nicholaspatel.com" "$(cat ~/.ssh/cf_agents_signing.pub)" >> ~/.config/git/allowed_signers
-git -C /Users/nick/Projects/celestial-frontier-anthropic-mac config user.signingkey ~/.ssh/cf_agents_signing.pub
-git -C /Users/nick/Projects/celestial-frontier-anthropic-mac config gpg.ssh.program /usr/bin/ssh-keygen
-gh auth refresh -s admin:ssh_signing_key && gh ssh-key add ~/.ssh/cf_agents_signing.pub --type signing --title "CF agents signing"
-```
-These commands set the repo-level config (shared by both worktrees), so only this project changes; the global 1Password setup stays for
-everything else. Add `UseKeychain yes` / `AddKeysToAgent yes` under a `Host *` block before the 1Password `IdentityAgent` line if the key
-should survive reboots without `ssh-add`. **Or, with no new key:** in 1Password → Settings → Security, set Auto-lock to a long interval and
-turn off "lock when the computer sleeps"; in Developer → SSH agent, approve "until 1Password quits". That fixes most stops, not all.
+**Sign: one dedicated agent signing key in the macOS keychain (Nick: yes; still SIGNED and Verified; 1Password keeps everything else).** Run once in Terminal: `bash audits/OPERATING_MODEL_20260925/setup-agent-signing.sh` (it adds a reboot-proof wrapper and proves a signed commit). The script is the canonical version. It creates the key (you set a passphrase) and stores the passphrase in the login keychain. It
+installs `~/.local/bin/git-ssh-sign-cf`, which always signs through the macOS agent and reloads the key from the keychain after a
+reboot. It adds the key to `~/.config/git/allowed_signers` for the committer email, sets THIS repo's `user.signingkey` and
+`gpg.ssh.program`, registers the key on GitHub as a signing key (one browser prompt), and proves it with a signed throwaway commit.
+The global 1Password setup is untouched. **Fallback with no new key:** in 1Password → Settings → Security, set Auto-lock to a long
+interval and turn off "lock when the computer sleeps"; in Developer → SSH agent, approve "until 1Password quits". That fixes most stops.
 
 ## 2. Lanes talk directly (no relay through Nick)
 
