@@ -1,0 +1,34 @@
+[
+  {
+    "base": "fe8f6ca1a8c5a934897fbf0711319e17cc5cf388",
+    "head": "2d7f2bcc9841722ec7e2d19265462b61d8f844a6",
+    "packBytes": 1652552666,
+    "under2GB": true,
+    "measurement": "git pack-objects --revs --stdout --thin, counted streamed bytes",
+    "seconds": 8.239
+  },
+  {
+    "base": "2d7f2bcc9841722ec7e2d19265462b61d8f844a6",
+    "head": "09537c6c390eac15568669f04414707be4f271ad",
+    "packBytes": 1097513468,
+    "under2GB": true,
+    "measurement": "git pack-objects --revs --stdout --thin, counted streamed bytes",
+    "seconds": 2.197
+  },
+  {
+    "base": "09537c6c390eac15568669f04414707be4f271ad",
+    "head": "e1cc95140f91cae154f9d58b37bf913e6d88e44f",
+    "packBytes": 734478394,
+    "under2GB": true,
+    "measurement": "git pack-objects --revs --stdout --thin, counted streamed bytes",
+    "seconds": 1.816
+  },
+  {
+    "base": "e1cc95140f91cae154f9d58b37bf913e6d88e44f",
+    "head": "dae190a53b5c224695567315d68052ee2f913885",
+    "packBytes": 526768330,
+    "under2GB": true,
+    "measurement": "git pack-objects --revs --stdout --thin, counted streamed bytes",
+    "seconds": 1.356
+  }
+]
