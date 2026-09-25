@@ -1,0 +1,17 @@
+node:fs:620
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open '[["root","spine"],["neck","spine"]]'
+    at Object.readFileSync (node:fs:620:20)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/weld-candidate.mjs:6:85
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '[["root","spine"],["neck","spine"]]'
+}
+
+Node.js v26.9.0

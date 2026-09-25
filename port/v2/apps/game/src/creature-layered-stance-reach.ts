@@ -2,7 +2,7 @@
  * motion envelope, not a replacement for contact/skin admission at publication.
  * The caller keeps its existing stance cap and reserve. Historical isolated
  * measureStanceReach and all contact/override limits remain unchanged. */
-import type {CreaturePoseV1,CreatureRigRecordV1} from './creature-rig.js';
+import type {CreaturePoseV1,CreatureRigRecordV1} from './creature-rig-types.js';
 import {createFamilyContactSolver,type ContactSupport} from './creature-rig-contact.js';
 import {compileBodyCard,type BodyCard,type ResolvedAnatomyRecord} from './motion/body-card.js';
 import {buildTimeline,sampleTimeline,type MotionTimeline} from './motion/timeline.js';
@@ -29,11 +29,30 @@ export function measureLayeredStanceReach(record:RecordInput,supports:Readonly<R
  const poses=Array.from({length:GAIT_STEPS+1},(_,i)=>{const ms=gait.durationMs*i/GAIT_STEPS;return{ms,pose:poseAt(gait,ms)};}).flatMap(({ms,pose})=>idlePoses.map((p,k)=>({ms,idleFraction:k/IDLE_STEPS,pose:layered(p,pose)})));
  // Test a full constant displacement at every gait/idle phase. This is more
  // conservative than testing only the growing displacement of one cadence.
- const check=(d:number)=>{for(const row of poses){try{solver.resolve(row.pose,{actionId:gait.actionId,elapsedMs:row.ms,durationMs:gait.durationMs,weight:1,realm:card.realm,travel:'stage',stageDisplacement:d});}catch(e){return{ms:row.ms,idleFraction:row.idleFraction,displacement:d,error:String(e)};}}return null;};
- const rest=check(0);if(rest)throw Error('Layered stance reach: zero-displacement composite refuses '+JSON.stringify(rest));
- let lo=0,hi=maximumPerStance,firstRefusal=check(hi);
- if(!firstRefusal)lo=hi;
- else for(let i=0;i<BISECTIONS;i++){const mid=(lo+hi)/2,refusal=check(mid);if(refusal){hi=mid;firstRefusal=refusal;}else lo=mid;}
- if(!(lo>0))throw Error('Layered stance reach: no positive admitted cadence');
+ const checkRow=(row:typeof poses[number],d:number)=>{try{solver.resolve(row.pose,{actionId:gait.actionId,elapsedMs:row.ms,durationMs:gait.durationMs,weight:1,realm:card.realm,travel:'stage',stageDisplacement:d});return null;}catch(e){return{ms:row.ms,idleFraction:row.idleFraction,displacement:d,error:String(e)};}};
+ for(const row of poses){const rest=checkRow(row,0);if(rest)throw Error('Layered stance reach: zero-displacement composite refuses '+JSON.stringify(rest));}
+ // Preserve the full sample lattice and contact solver; reduce repeated scans.
+ const grid=2**BISECTIONS;
+ const {gridIndex,firstRefusal}=measureCommonSampleGrid(poses,grid,(row,index)=>checkRow(row,maximumPerStance*index/grid));
+ const lo=maximumPerStance*gridIndex/grid;
  return{applicable:true,admitted:lo,poseSamples:poses.length,firstRefusal};
+}
+
+/** A common positive sample grid; earlier passes are not assumed monotone.
+ * Exported for adversarial non-monotone controls. */
+export function measureCommonSampleGrid<T,F>(poses:readonly T[],grid:number,checkRow:(row:T,index:number)=>F|null){
+ if(!Number.isInteger(grid)||grid<1||poses.length===0)throw Error('Layered stance reach: invalid sample grid');
+ let candidate=grid,firstRefusal:F | null=null;
+ const restrict=(row:T)=>{
+  let low=0,high=candidate;
+  while(high-low>1){const middle=Math.floor((low+high)/2),failure=checkRow(row,middle);if(failure){high=middle;firstRefusal=failure;}else low=middle;}
+  candidate=low;if(!candidate)throw Error('Layered stance reach: no positive admitted cadence');
+ };
+ let earlierRowsThrough=-1;
+ for(let i=0;i<poses.length;i++){const row=poses[i]!,failure=checkRow(row,candidate);if(failure){firstRefusal=failure;restrict(row);earlierRowsThrough=i;}}
+ // Rows after the last restriction already passed at the final candidate.
+ // Revalidate only its earlier prefix. If that changes the candidate again,
+ // invalidate the entire prior pass, including its suffix, and restart.
+ for(let i=0;i<=earlierRowsThrough;i++){const row=poses[i]!,failure=checkRow(row,candidate);if(failure){firstRefusal=failure;restrict(row);earlierRowsThrough=poses.length-1;i=-1;}}
+ return {gridIndex:candidate,firstRefusal};
 }

@@ -7169,3 +7169,35 @@ This applies only to canonical `buildTimeline` selection. The editor's `buildAct
 `motion/grounded-quadruped.ts` selects canonical land/amphibious gallop and cast curves only after the original fails the unchanged REST contact probe. A single constant gain reduces root translation and root/pelvis/spine/chest rotations across the whole authored curve. Limb stride, neck/head expression, secondary motion, phases and duration remain unchanged. It probes the complete candidate, refuses to substitute when even zero torso excursion fails, and retains a ten-percent excursion reserve after bounded gain search. This reserve reduces motion; it does not change any contact or skin allowance. Passing canonical curves remain byte-identical. The weak cache has at most two action entries per card and invalidates on complete card/action/compiled-input changes.
 
 Selection occurs only in `buildTimeline`; reviewed editor `buildActionTimeline` and override gates remain unchanged. Observed painted-support contact and skin publication still determine admission. The Salamander repair packet `audits/ART_BATTLE_FOCUS_20260925/salamander-motion-01/` takes its unchanged fit05 from17/19 to19/19 static actions and1,557 presentation samples with exact rest, while six S2 subjects/13,286 samples remain byte-identical. Its stage spacing/picker/coverage gate is separate and remains open.
+
+C22 implementation note (matches code 2026-09-25): creature-layered-stance-reach.ts
+searches the unchanged common displacement grid per failing sample, revalidating
+all earlier samples after a restriction and the entire prior pass if that check
+restricts again. All3,872 composite poses still admit at the returned displacement;
+rest failures remain fatal. Packet audits/C22_LAYERED_REACH_20260925 retains22
+before/after diagnostic cases, exact admissions and non-monotone mutation controls.
+
+C23 loader (matches code 2026-09-25): `loadPinnedCreatureRigV1` adds an exact
+bundled-pin/bytes entry point; existing byte admission and pinned admission
+share `createAdmittedCreatureRig` privately. `admitFamilyRecordContent` and
+`admitRecordContent` own the shared semantic checks; they alone confer no
+asset authority or allocation permission. The arena preflight precedes mask
+fetch/cache acquisition and its pin failures fail the study without a master
+fallback. Secondary renderer teardown uses `{removeView:true,
+releaseGlobalResources:false}` to preserve the live main renderer's pools.
+
+C24 type boundary (matches code 2026-09-25): creature-rig-types.ts has no renderer
+import. Pure motion/contact/morph helpers use it instead of a type import from
+the allocation owner. creature-rig.ts re-exports the previous contract names.
+Root `tsc --noEmit --noUnusedLocals`, app and worker programs pass without any
+compiler-setting change. Thirteen edited modules emit identical runtime code.
+
+## §20 balance measurement tooling — 2026-09-25
+
+`port/v2/tools/s20-balance.mjs` and `s20-balance-contract.mjs` are browser-free,
+read-only-source instruments; `s20-balance.test.mjs` belongs to the existing Node
+tools owner. They retain committed source hashes, declared power-selected corpora,
+training-only policy selection and exhaustive Command trees on held-out cases.
+[audits/S20_BALANCE_20260925](audits/S20_BALANCE_20260925/README.md) owns measured
+RED findings, negative controls, invalid historical fixture attempts and the actual
+forecast-cache reproduction. This adds no game tuning or admission certificate.

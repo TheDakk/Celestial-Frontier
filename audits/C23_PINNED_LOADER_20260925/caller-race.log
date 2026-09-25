@@ -1,0 +1,29 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ❯ apps/game/src/creature-rig-pinned.test.ts (4 tests | 1 failed) 416ms
+   × snapshots mutable bytes and record before an asynchronous hash can race the caller 7ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  12:40:03
+   Duration  819ms (transform 156ms, setup 0ms, import 290ms, tests 416ms, environment 0ms)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  apps/game/src/creature-rig-pinned.test.ts > snapshots mutable bytes and record before an asynchronous hash can race the caller
+Battle2PinRefusal: battle2 pin refused (record-mismatch): recipe hash differs from the pin
+ ❯ refuse apps/game/src/battle2-master-pin-admission.ts:39:80
+     37| export interface Battle2PinAdmissionV1 { readonly pin: Battle2MasterPi…
+     38|
+     39| const refuse = (code: Battle2PinRefusalCode, detail: string): never =>…
+       |                                                                                ^
+     40|
+     41| /** A shipped `.gz` body as its decompressed bytes. The bytes are snif…
+ ❯ preflightBattle2PinnedBytesV1 apps/game/src/battle2-master-pin-admission.ts:58:45
+ ❯ loadPinnedCreatureRigV1 apps/game/src/creature-rig.ts:147:18
+ ❯ apps/game/src/creature-rig-pinned.test.ts:37:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

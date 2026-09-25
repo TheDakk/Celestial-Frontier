@@ -1,0 +1,17 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "93a34fe91c56f8f64ed72223a5e101380065fb312d06d57f3923d815466ce9b0",
+  "bindingHash": "7155858cafb45af198ce10349a148d9c342584d2452a5a5980870878f0696d13",
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ],
+    [
+      "neck",
+      "spine"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "Explicit observed continuous fur at tiny root patch and neck/spine source boundary; new candidate only."
+}

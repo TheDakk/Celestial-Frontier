@@ -1,0 +1,22 @@
+[
+  {
+    "path": "port/v2/apps/game/src/battle2-master-pins.generated.ts",
+    "sourceCommit": "4093ebca",
+    "sha256": "fe2ff60780ac4a1b8725ff9db846349b7281c4ae015b65dd2f7eb94a265e93a5"
+  },
+  {
+    "path": "port/v2/apps/game/src/battle2-master-pin-admission.ts",
+    "sourceCommit": "4093ebca",
+    "sha256": "75e73afacf38ad9492625b91735e145793af89ea846e264be2a9f40b3de166fa"
+  },
+  {
+    "path": "port/v2/tools/morph/battle2-pin-contract.mjs",
+    "sourceCommit": "4093ebca",
+    "sha256": "ebcd4885cce32e0e897b5f91a2638b86389a12be6c21e3e96351822fa1f63d9c"
+  },
+  {
+    "path": "port/v2/tools/morph/battle2-pin-contract.d.mts",
+    "sourceCommit": "4093ebca",
+    "sha256": "7dcaf6115b4f534ac6c6035b9ac198c4d7b09aab1a37bdc520b8c220d5a59001"
+  }
+]

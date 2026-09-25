@@ -776,3 +776,27 @@ This applies only to canonical `buildTimeline` selection. The editor's `buildAct
 `motion/grounded-quadruped.ts` selects canonical land/amphibious gallop and cast curves only after the original fails the unchanged REST contact probe. A single constant gain reduces root translation and root/pelvis/spine/chest rotations across the whole authored curve. Limb stride, neck/head expression, secondary motion, phases and duration remain unchanged. It probes the complete candidate, refuses to substitute when even zero torso excursion fails, and retains a ten-percent excursion reserve after bounded gain search. This reserve reduces motion; it does not change any contact or skin allowance. Passing canonical curves remain byte-identical. The weak cache has at most two action entries per card and invalidates on complete card/action/compiled-input changes.
 
 Selection occurs only in `buildTimeline`; reviewed editor `buildActionTimeline` and override gates remain unchanged. Observed painted-support contact and skin publication still determine admission. The Salamander repair packet `audits/ART_BATTLE_FOCUS_20260925/salamander-motion-01/` takes its unchanged fit05 from17/19 to19/19 static actions and1,557 presentation samples with exact rest, while six S2 subjects/13,286 samples remain byte-identical. Its stage spacing/picker/coverage gate is separate and remains open.
+
+C22 (2026-09-25): battle2 layered stance measurement retains the 121 gait ×32
+idle lattice and 8-bit displacement grid. A failing pose now restricts the shared
+candidate directly; earlier poses are rechecked at the final candidate, and any
+further restriction invalidates the entire prior pass. No monotonic-contact
+assumption, contact limit, stance cap, reserve or publication guard changes.
+Measured desktop diagnostics and adversarial controls: audits/C22_LAYERED_REACH_20260925.
+
+C23 (2026-09-25): `loadPinnedCreatureRigV1` accepts only a genuine object from
+Claude's private generated pin registry and exact alpha/binding/atlas bytes.
+It snapshots inputs, checks the pin before record access, repeats the byte
+preflight, decodes the pinned alpha and shares semantic record admission plus
+one private binding/skin/seam allocation tail with `loadCreatureRigV1`. The old
+master-byte path remains supported. No caller hash or skip-validation flag.
+Cold/controlled-worker/offline picker controls are in audits/C23_PINNED_LOADER_20260925.
+The secondary battle renderer removes its own view without releasing global
+Pixi resources still owned by the main game renderer. Masters remain packaged
+until Claude applies the removal and remeasures the integrated pack.
+
+C24 (2026-09-25): renderer-free `creature-rig-types.ts` owns pose, contact,
+record, binding and seam shapes. Motion/contact/marking helpers import those
+structural types directly; the Pixi loader re-exports existing public names for
+compatibility. Strict root typechecking no longer reaches Pixi/WebGPU through
+motion. Runtime output is unchanged (13-module parity receipt in C24 audit).

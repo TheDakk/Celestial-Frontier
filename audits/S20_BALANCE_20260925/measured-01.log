@@ -1,0 +1,8 @@
+file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/s20-balance.mjs:51
+ if(e?.defender.kind!==kind)throw Error('fixture kind changed');
+                                  ^
+
+Error: fixture kind changed
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/s20-balance.mjs:51:35
+
+Node.js v26.9.0

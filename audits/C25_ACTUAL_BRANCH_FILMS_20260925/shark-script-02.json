@@ -1,0 +1,49 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Reef Shark",
+      "dn": "Reef Shark",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "side": "B",
+      "an": "Reef Shark",
+      "dn": "Reef Shark",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 24,
+      "hpB": 21
+    },
+    {
+      "an": "Reef Shark",
+      "dn": "Reef Shark",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Reef Shark",
+      "dn": "Reef Shark",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 24,
+      "hpB": 0
+    }
+  ],
+  "world": {
+    "key": "lake",
+    "liquid": "water",
+    "surfaceWater": true,
+    "cardHash": "lake-1"
+  },
+  "supports": "observed"
+}

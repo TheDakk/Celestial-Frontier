@@ -8,9 +8,9 @@
  *   3. the master identity: the record's cut-out hash and canonical `source` path (and dimensions) equal the pin's;
  *   4. the alpha: requested path canonical and equal, exact bytes hash, PNG header dimensions = pin = record geometry;
  *   5. the binding (exact DECOMPRESSED bytes) and the atlas (exact bytes; header dimensions = the binding's atlas size).
- * Only after all of that is the binding parsed — from the very bytes that were hashed. The loader's unchanged full admission
- * (`loadCreatureRigV1`: record admission against the master bytes, binding hash, parts, skin/seam) still follows; masters stay
- * shipped until Codex's narrow pin overload and the cold/worker/offline/picker checks are green (C4 §5). The hash definitions
+ * Only after all of that is the binding parsed — from the very bytes that were hashed. `loadPinnedCreatureRigV1` snapshots
+ * and preflights these inputs, decodes the pinned alpha, runs the shared semantic record admission and enters the same private
+ * binding/parts/skin/seam tail as byte admission. Only the master-byte hash is supplied by the bundled build pin. The hash definitions
  * are the ONE shared contract `tools/morph/battle2-pin-contract.mjs`. */
 import { isBattle2MasterPin, type Battle2MasterPinV1 } from './battle2-master-pins.generated.js';
 import { canonicalRepoPath, pinRecordSha256, pngHeaderSize } from '../../../tools/morph/battle2-pin-contract.mjs';

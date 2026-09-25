@@ -1,0 +1,697 @@
+{
+  "scope": "One host diagnostic per implementation/fit; same record/support and source dependencies. Not native phone timing.",
+  "rows": [
+    {
+      "name": "Crab",
+      "fit": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.263671875,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 210,
+            "idleFraction": 0,
+            "displacement": 0.265625,
+            "error": "Error: Contact: approach:scuttle@210 exceeds scale compression bound"
+          }
+        },
+        "ms": 1623.715375
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.263671875,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 210,
+            "idleFraction": 0,
+            "displacement": 0.265625,
+            "error": "Error: Contact: approach:scuttle@210 exceeds scale compression bound"
+          }
+        },
+        "ms": 861.2744579999999
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Coconut Crab",
+      "fit": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/coconut-crab/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.291015625,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 0,
+            "idleFraction": 0,
+            "displacement": 0.29296875,
+            "error": "Error: Contact: approach:scuttle@0 exceeds scale compression bound"
+          }
+        },
+        "ms": 1375.5762920000002
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.291015625,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 0,
+            "idleFraction": 0,
+            "displacement": 0.29296875,
+            "error": "Error: Contact: approach:scuttle@0 exceeds scale compression bound"
+          }
+        },
+        "ms": 846.0690419999996
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Freshwater Crab",
+      "fit": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/freshwater-crab/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.0703125,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 0,
+            "idleFraction": 0,
+            "displacement": 0.072265625,
+            "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+          }
+        },
+        "ms": 724.5285830000003
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.0703125,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 0,
+            "idleFraction": 0,
+            "displacement": 0.072265625,
+            "error": "Error: Contact: approach:scuttle@0 leg0Far outside accommodatable reach"
+          }
+        },
+        "ms": 713.1257500000002
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Mud Crab",
+      "fit": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/mud-crab/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.5,
+          "poseSamples": 3872,
+          "firstRefusal": null
+        },
+        "ms": 485.4317920000003
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.5,
+          "poseSamples": 3872,
+          "firstRefusal": null
+        },
+        "ms": 696.6899169999997
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Vent Crab",
+      "fit": "audits/ANATOMY_COMPLETION_20260917/crab-fits-03/vent-crab/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.5,
+          "poseSamples": 3872,
+          "firstRefusal": null
+        },
+        "ms": 467.5356670000001
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.5,
+          "poseSamples": 3872,
+          "firstRefusal": null
+        },
+        "ms": 696.3668340000004
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Civet",
+      "fit": "audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.251953125,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 434.5,
+            "idleFraction": 0.46875,
+            "displacement": 0.25390625,
+            "error": "Error: Contact: approach:walk@434.5 exceeds scale compression bound"
+          }
+        },
+        "ms": 886.1065829999989
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.251953125,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 434.5,
+            "idleFraction": 0.46875,
+            "displacement": 0.25390625,
+            "error": "Error: Contact: approach:walk@434.5 exceeds scale compression bound"
+          }
+        },
+        "ms": 538.7456249999996
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Salmon",
+      "fit": "audits/ARCHETYPE_SPRINT_20260922/02-fish/fit-01/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.30941600000005565
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.09987499999988358
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Eagle",
+      "fit": "audits/ARCHETYPE_REPAIRS_20260922/03-biped-bird/fit-12/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.22929199999998673
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.08400000000074215
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Beetle",
+      "fit": "audits/ARCHETYPE_FINISH_20260923/04-insect/fit-04/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.052734375,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 87.5,
+            "idleFraction": 0.5,
+            "displacement": 0.0546875,
+            "error": "Error: Contact: approach:crawl@87.5 exceeds scale compression bound"
+          }
+        },
+        "ms": 736.1854999999996
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.052734375,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 87.5,
+            "idleFraction": 0.5,
+            "displacement": 0.0546875,
+            "error": "Error: Contact: approach:crawl@87.5 exceeds scale compression bound"
+          }
+        },
+        "ms": 390.1972080000014
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Python",
+      "fit": "audits/PYTHON_OPEN_POSE_20260923/candidate-02/fit-01/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.13583400000061374
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.0605409999989206
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Tree Frog",
+      "fit": "audits/ARCHETYPE_FINISH_20260923/06-hopper/fit-05/",
+      "supports": "observed",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.5,
+          "poseSamples": 3872,
+          "firstRefusal": null
+        },
+        "ms": 78.34904199999983
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.5,
+          "poseSamples": 3872,
+          "firstRefusal": null
+        },
+        "ms": 111.6274169999997
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Chimpanzee",
+      "fit": "audits/ARCHETYPE_FINISH_20260923/07-primate/fit-02/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.19140625,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 315,
+            "idleFraction": 0.5,
+            "displacement": 0.193359375,
+            "error": "Error: Contact: approach:walk@315 exceeds scale compression bound"
+          }
+        },
+        "ms": 694.834417
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.19140625,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 315,
+            "idleFraction": 0.5,
+            "displacement": 0.193359375,
+            "error": "Error: Contact: approach:walk@315 exceeds scale compression bound"
+          }
+        },
+        "ms": 310.0580829999999
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Starfish",
+      "fit": "audits/ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.5336659999993572
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.182875000000422
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Tarantula",
+      "fit": "audits/ARCHETYPE_FINISH_20260923/09-arachnid/fit-03/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.07421875,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 59.5,
+            "idleFraction": 0.5,
+            "displacement": 0.076171875,
+            "error": "Error: Contact: approach:scuttle@59.5 exceeds scale compression bound"
+          }
+        },
+        "ms": 653.4555
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.07421875,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 59.5,
+            "idleFraction": 0.5,
+            "displacement": 0.076171875,
+            "error": "Error: Contact: approach:scuttle@59.5 exceeds scale compression bound"
+          }
+        },
+        "ms": 426.98433300000033
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Octopus",
+      "fit": "audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.3605420000003505
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.16525000000001455
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Fruit Bat",
+      "fit": "audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.21595799999886367
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.13091700000040873
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Centipede",
+      "fit": "audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/",
+      "supports": "rest",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.111328125,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 0,
+            "idleFraction": 0,
+            "displacement": 0.11328125,
+            "error": "Error: Contact: approach:crawl@0 leg3Far RangeError: target outside two-bone reach"
+          }
+        },
+        "ms": 2878.3194170000006
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.111328125,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 0,
+            "idleFraction": 0,
+            "displacement": 0.11328125,
+            "error": "Error: Contact: approach:crawl@0 leg3Far RangeError: target outside two-bone reach"
+          }
+        },
+        "ms": 1658.6806250000009
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Impala",
+      "fit": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02",
+      "supports": "observed",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.115234375,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 466,
+            "idleFraction": 0.5,
+            "displacement": 0.1171875,
+            "error": "Error: Contact: approach:walk@466 exceeds scale compression bound"
+          }
+        },
+        "ms": 2940.8690000000024
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.115234375,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 466,
+            "idleFraction": 0.5,
+            "displacement": 0.1171875,
+            "error": "Error: Contact: approach:walk@466 exceeds scale compression bound"
+          }
+        },
+        "ms": 1291.5482499999998
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Cougar",
+      "fit": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03",
+      "supports": "observed",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.072265625,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 100.96666666666667,
+            "idleFraction": 0.5,
+            "displacement": 0.07421875,
+            "error": "Error: Contact: approach:walk@100.96666666666667 exceeds scale compression bound"
+          }
+        },
+        "ms": 1948.0282920000027
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.072265625,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 100.96666666666667,
+            "idleFraction": 0.5,
+            "displacement": 0.07421875,
+            "error": "Error: Contact: approach:walk@100.96666666666667 exceeds scale compression bound"
+          }
+        },
+        "ms": 1389.4095830000006
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Rat",
+      "fit": "audits/ART_BATTLE_FOCUS_20260925/29-rat/fit-03",
+      "supports": "observed",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.0703125,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 85.43333333333334,
+            "idleFraction": 0.25,
+            "displacement": 0.072265625,
+            "error": "Error: Contact: approach:walk@85.43333333333334 exceeds scale compression bound"
+          }
+        },
+        "ms": 1402.3844580000004
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.0703125,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 85.43333333333334,
+            "idleFraction": 0.25,
+            "displacement": 0.072265625,
+            "error": "Error: Contact: approach:walk@85.43333333333334 exceeds scale compression bound"
+          }
+        },
+        "ms": 1372.7799589999995
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Heron",
+      "fit": "audits/ART_BATTLE_FOCUS_20260925/16-heron/fit-01",
+      "supports": "observed",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.2265625,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 81.6,
+            "idleFraction": 0.5,
+            "displacement": 0.228515625,
+            "error": "Error: Contact: approach:walk@81.6 exceeds scale compression bound"
+          }
+        },
+        "ms": 1392.4749159999992
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": true,
+          "admitted": 0.2265625,
+          "poseSamples": 3872,
+          "firstRefusal": {
+            "ms": 81.6,
+            "idleFraction": 0.5,
+            "displacement": 0.228515625,
+            "error": "Error: Contact: approach:walk@81.6 exceeds scale compression bound"
+          }
+        },
+        "ms": 786.6335419999996
+      },
+      "equalAdmission": true
+    },
+    {
+      "name": "Honeybee",
+      "fit": "audits/ART_BATTLE_FOCUS_20260925/28-honeybee/fit-02",
+      "supports": "observed",
+      "before": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.1839170000021113
+      },
+      "after": {
+        "status": "PASS",
+        "value": {
+          "applicable": false,
+          "admitted": 0,
+          "poseSamples": 0,
+          "firstRefusal": null
+        },
+        "ms": 0.11041699999987031
+      },
+      "equalAdmission": true
+    }
+  ]
+}

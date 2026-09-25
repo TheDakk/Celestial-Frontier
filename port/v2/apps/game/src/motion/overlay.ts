@@ -8,7 +8,6 @@
  * NOT imported by the game (index.ts does not re-export it) — the production
  * bundle is unchanged; tests and tools/pose-editor import it directly. */
 import { EASES, QUADRUPED_ACTIONS, type Ease, type KeyPose, type MotionAction } from './actions.js';
-import type { BodyCard } from './body-card.js';
 import { isMotionFallback, resolveTemplate, type MotionTemplate } from './templates.js';
 import { fnv1a } from './timeline.js';
 

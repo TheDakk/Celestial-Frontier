@@ -1,0 +1,348 @@
+{
+  "schema": "cf-s20-balance/v1",
+  "sourceHead": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b",
+  "policyHash": "a60f3f5d0b99aa8fd0eb17367f3d1ca2eaae5afc9dea60542f55dc91367db072",
+  "expectedPolicyHash": "a60f3f5d0b99aa8fd0eb17367f3d1ca2eaae5afc9dea60542f55dc91367db072",
+  "trainSeedBase": 100000,
+  "evaluateSeedBase": 10000000,
+  "trainCount": 128,
+  "evaluateCount": 512,
+  "cohorts": [
+    {
+      "id": "easy",
+      "selected": {
+        "order": [
+          0
+        ],
+        "stances": [
+          "press"
+        ]
+      },
+      "policies": 4,
+      "trainWins": 71,
+      "baselineWins": 259,
+      "plannedWins": 264,
+      "commandWins": 264,
+      "phaseNodes": 0,
+      "withdrawnTerminals": 0,
+      "swapEdges": 0,
+      "commandNodes": 0,
+      "draws": 1,
+      "planningGapPp": 0.9765625,
+      "commandEdgePp": 0
+    },
+    {
+      "id": "normal",
+      "selected": {
+        "order": [
+          0
+        ],
+        "stances": [
+          "press"
+        ]
+      },
+      "policies": 4,
+      "trainWins": 71,
+      "baselineWins": 259,
+      "plannedWins": 264,
+      "commandWins": 264,
+      "phaseNodes": 0,
+      "withdrawnTerminals": 0,
+      "swapEdges": 0,
+      "commandNodes": 0,
+      "draws": 1,
+      "planningGapPp": 0.9765625,
+      "commandEdgePp": 0
+    },
+    {
+      "id": "guardian",
+      "selected": {
+        "order": [
+          0,
+          1,
+          2
+        ],
+        "stances": [
+          "balanced",
+          "balanced",
+          "balanced"
+        ]
+      },
+      "policies": 384,
+      "trainWins": 0,
+      "baselineWins": 1,
+      "plannedWins": 1,
+      "commandWins": 1,
+      "phaseNodes": 32,
+      "withdrawnTerminals": 1937,
+      "swapEdges": 411,
+      "commandNodes": 4797,
+      "draws": 0,
+      "planningGapPp": 0,
+      "commandEdgePp": 0
+    },
+    {
+      "id": "titan",
+      "selected": {
+        "order": [
+          0,
+          1,
+          2
+        ],
+        "stances": [
+          "balanced",
+          "balanced",
+          "balanced"
+        ]
+      },
+      "policies": 384,
+      "trainWins": 0,
+      "baselineWins": 0,
+      "plannedWins": 0,
+      "commandWins": 0,
+      "phaseNodes": 6,
+      "withdrawnTerminals": 1779,
+      "swapEdges": 346,
+      "commandNodes": 4416,
+      "draws": 0,
+      "planningGapPp": 0,
+      "commandEdgePp": 0
+    }
+  ],
+  "threats": [
+    {
+      "id": "smite",
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 32,
+        "press": 60,
+        "guard": 72,
+        "evade": 48
+      }
+    },
+    {
+      "id": "aegis",
+      "right": "press",
+      "wrong": "guard",
+      "wins": {
+        "balanced": 41,
+        "press": 109,
+        "guard": 74,
+        "evade": 86
+      }
+    },
+    {
+      "id": "dot",
+      "right": "press",
+      "wrong": "evade",
+      "wins": {
+        "balanced": 29,
+        "press": 83,
+        "guard": 22,
+        "evade": 28
+      }
+    },
+    {
+      "id": "fury",
+      "right": "press",
+      "wrong": "guard",
+      "wins": {
+        "balanced": 45,
+        "press": 134,
+        "guard": 100,
+        "evade": 60
+      }
+    },
+    {
+      "id": "ambush",
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 63,
+        "press": 114,
+        "guard": 240,
+        "evade": 85
+      }
+    },
+    {
+      "id": "eye",
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 72,
+        "press": 127,
+        "guard": 123,
+        "evade": 86
+      }
+    },
+    {
+      "id": "veil",
+      "right": "press",
+      "wrong": "guard",
+      "wins": {
+        "balanced": 75,
+        "press": 103,
+        "guard": 102,
+        "evade": 136
+      }
+    },
+    {
+      "id": "mend",
+      "right": "press",
+      "wrong": "guard",
+      "wins": {
+        "balanced": 12,
+        "press": 21,
+        "guard": 7,
+        "evade": 20
+      }
+    },
+    {
+      "id": "echo",
+      "right": "evade",
+      "wrong": "press",
+      "wins": {
+        "balanced": 106,
+        "press": 117,
+        "guard": 165,
+        "evade": 132
+      }
+    },
+    {
+      "id": "thirst",
+      "right": "press",
+      "wrong": "guard",
+      "wins": {
+        "balanced": 139,
+        "press": 228,
+        "guard": 154,
+        "evade": 146
+      }
+    },
+    {
+      "id": "thorns",
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 57,
+        "press": 94,
+        "guard": 106,
+        "evade": 73
+      }
+    },
+    {
+      "id": "rend",
+      "right": "press",
+      "wrong": "guard",
+      "wins": {
+        "balanced": 30,
+        "press": 100,
+        "guard": 64,
+        "evade": 64
+      }
+    },
+    {
+      "id": "reck",
+      "right": "guard",
+      "wrong": "press",
+      "wins": {
+        "balanced": 62,
+        "press": 131,
+        "guard": 119,
+        "evade": 90
+      }
+    },
+    {
+      "id": "bulwark",
+      "right": "evade",
+      "wrong": "press",
+      "wins": {
+        "balanced": 207,
+        "press": 246,
+        "guard": 318,
+        "evade": 208
+      }
+    },
+    {
+      "id": "shock",
+      "right": "evade",
+      "wrong": "press",
+      "wins": {
+        "balanced": 106,
+        "press": 108,
+        "guard": 184,
+        "evade": 152
+      }
+    },
+    {
+      "id": "roulette",
+      "right": "evade",
+      "wrong": "press",
+      "wins": {
+        "balanced": 93,
+        "press": 122,
+        "guard": 132,
+        "evade": 164
+      }
+    },
+    {
+      "id": "enrage",
+      "right": "press",
+      "wrong": "guard",
+      "wins": {
+        "balanced": 95,
+        "press": 170,
+        "guard": 120,
+        "evade": 99
+      }
+    }
+  ],
+  "replayCases": 2048,
+  "replayMismatches": 0,
+  "parityCases": 1024,
+  "parityMismatches": 0,
+  "recovery": {
+    "defeatActiveMs": 600000,
+    "defeatWoundStep": 0
+  },
+  "scope": {
+    "guardianWorlds": 1,
+    "titanWorlds": 1,
+    "region": 0,
+    "partySize": 3,
+    "command": "exact clairvoyant tree for the training-selected plan; upper bound, not human win rate",
+    "planning": "exhaustive 4 stances for wild; 6 orders × 4^3 stances for the same full party; one fixed policy learned on training, never chosen per evaluation outcome",
+    "threat": "isolated magnitude-III hook hypotheses; no binding to a shipped dossier inventory",
+    "campaignCertificate": false
+  },
+  "measurement": {
+    "status": "RED",
+    "failures": [
+      "normal: planning gap 0.9765625 pp",
+      "guardian: planning gap 0 pp",
+      "titan: planning gap 0 pp",
+      "smite: right/wrong trade-off",
+      "aegis: right/wrong trade-off",
+      "fury: right/wrong trade-off",
+      "ambush: right/wrong trade-off",
+      "eye: right/wrong trade-off",
+      "veil: right/wrong trade-off",
+      "echo: right/wrong trade-off",
+      "thirst: right/wrong trade-off",
+      "thorns: right/wrong trade-off",
+      "rend: right/wrong trade-off",
+      "reck: right/wrong trade-off",
+      "bulwark: right/wrong trade-off",
+      "shock: right/wrong trade-off",
+      "roulette: right/wrong trade-off",
+      "enrage: right/wrong trade-off"
+    ]
+  },
+  "status": "RED",
+  "openCoverage": [
+    "Bind all shipped dossier threats to fixed response cohorts before certification.",
+    "Broaden registered worlds/regions, ownership/equipment and partial parties before campaign-level claims.",
+    "Command bound currently covers each cohort training-selected plan, not every possible plan."
+  ]
+}
