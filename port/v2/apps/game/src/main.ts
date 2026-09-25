@@ -42,6 +42,7 @@ import {
 } from './world-harvest.js';
 import { engineeringCommittedCopy, runFabricationBatchV1 } from './fabrication-batch.js';
 import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './recipe-pin.js';
+import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
 import {
   deviceAudioAccessibilityStorage,
   readAudioAccessibilityPrefsV1,
@@ -316,6 +317,7 @@ import { describeSpecies } from '@cf/domain-genome';
 import {
   COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   PRIME_SIGNATURE_IDS_V1,
+  PRIME_SIGNATURES_V1,
   type EncounterStanceV1,
   battleStats,
   projectGuardianPrimeEncounterV1,
@@ -4087,10 +4089,13 @@ function fillPrimeCodex(): void {
     && replacementTransaction === null && !replacementReloadPending
     && !trainingCheckpointWriteHeld && !trainingActive()
     && !ecologyEpochBlocksActions();
+  const claimedIds = Object.keys(save.primeFill);
   fillPanel('prime', renderPrimeCodexPanelV1(projectPrimeCodexV1(save), {
     pending: arc9FrontierEndingPending,
     writable,
     status: frontierEndingPanelStatus(),
+    travel: new Set(claimedIds.filter((id) => primeClaimWorldAddressV1(save.primeFill[id]?.where) !== null)),
+    track: trackablePrimeSignaturesV1({ ascentStage: ascStage(), claimedIds }),
   }));
 }
 /* THE STAR ATLAS ('log' in the game): every charted place, tap to TRAVEL
@@ -4359,6 +4364,8 @@ registerPanel({
 });
 document.getElementById('primepanel')!.addEventListener('click', (event) => {
   if (!(event.target instanceof Element)) return;
+  const travel = event.target.closest<HTMLButtonElement>('[data-prime-travel],[data-prime-track]');
+  if (travel !== null) { void runPrimeCodexTravel(travel); return; }
   const button = event.target.closest<HTMLButtonElement>('[data-frontier-ending-id]');
   if (button?.dataset.frontierEndingId === undefined) return;
   void runArc9FrontierEndingChoice(button.dataset.frontierEndingId);
@@ -9168,6 +9175,32 @@ async function runWorldHarvest(planetSeed: number): Promise<void> {
     if (!convergence) refreshPlanetSurveyCard();
   }
 }
+/** Prime Codex travel (D16 parity, prime-travel.ts): a claimed Signature flies to its world; an in-reach Titan is tracked to the
+ * nearest world it waits on. Both go through the one proven-route owner, so the charter gates are unchanged. */
+async function runPrimeCodexTravel(button: HTMLButtonElement): Promise<boolean> {
+  const claimedIds = Object.keys(save.primeFill);
+  const trackId = button.dataset.primeTrack;
+  const definition = PRIME_SIGNATURES_V1.find(({ id }) => id === (trackId ?? button.dataset.primeTravel));
+  if (definition === undefined) return false;
+  let address: CanonicalCF1WorldAddress | null;
+  if (trackId !== undefined) {
+    if (!trackablePrimeSignaturesV1({ ascentStage: ascStage(), claimedIds }).has(definition.id)) return false;
+    address = nearestTitanWorldV1(definition.id, { ascentStage: ascStage(), claimedIds });
+    if (address === null) {
+      toast(`📡 ${definition.element} Resonance`, `The signal scatters — press your reach farther out and it will sharpen. Hunt ${definition.hunt}.`, true);
+      return false;
+    }
+  } else address = primeClaimWorldAddressV1(save.primeFill[definition.id]?.where);
+  if (address === null) return false;
+  const moved = await searchTravel.jumpToCanonicalAddress(address);
+  if (!moved) return false;
+  closePanels();
+  if (trackId !== undefined) {
+    toast(`📡 Tracking ${definition.element} Titan`, `The resonance sharpens — bearing set for ${definition.guardianName}. Land and survey where it leads.`, true);
+  }
+  return true;
+}
+
 /** The Fabricator's 📌 (D16 parity, recipe-pin.ts): one pinned recipe, saved as view state; the chip tracks what is missing. */
 function refreshRecipePinChip(): void {
   recipePinChip ??= new RecipePinChipV1(document, () => openPanel('shipyard'));
