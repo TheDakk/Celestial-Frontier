@@ -1,0 +1,8 @@
+{
+ "schema": "cf.shipped-card-archetype/v1",
+ "earthName": "Jellyfish",
+ "fitDir": "audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/",
+ "markingsDir": "audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/",
+ "mirroredBy": "tools/morph/build-card-masters.mjs",
+ "recordRecipeHash": "050cddedc732597f195ebed17582e37e1c7e9eaea348bbaaa0375e1554c806e7"
+}

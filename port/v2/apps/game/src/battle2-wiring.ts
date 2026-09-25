@@ -40,7 +40,7 @@ import { BattleStage, GUARDIAN_FRAME_FILL, combatantPresentation, standCentreShi
 // parts-rig (and Codex's pixi-backed creature-rig behind it) is imported by path, not through battle2/index: the root
 // test program must stay free of pixi.js types (see apps/game/tsconfig.json _skipLibCheckReason).
 import { createPartsRig } from './battle2/parts-rig.js';
-import { compileAnatomyAttack } from './anatomy-attacks.js';
+import { attackRepertoire, compileAnatomyAttack, type WeaponDeclaration } from './anatomy-attacks.js';
 import type { ArenaWorld } from './battle-habitat.js';
 import { individualFromGenomeV1 } from './morph/morph-individual.js';
 import { morphAtlasCache, morphAtlasKey, type MorphAtlasLease } from './morph/morph-atlas-cache.js';
@@ -328,7 +328,7 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const texture = (img: Battle2Image): EffectTextureLike => pixi.Texture.from(img.source);
     const champion = input.settlement.champion, championGenome = champion.kind === 'owned-fauna' && champion.genome ? champion.genome : null;
     const rigContainer = (): RigContainerLike => new pixi.Container();
-    const buildRig = async (side: 'left' | 'right', name: string, genome: Readonly<Record<string, unknown>> | null): Promise<{ rig: BattleRigV1; card: BodyCard | null; mass: number; seed: number }> => {
+    const buildRig = async (side: 'left' | 'right', name: string, genome: Readonly<Record<string, unknown>> | null): Promise<{ rig: BattleRigV1; card: BodyCard | null; mass: number; seed: number; declaration?: WeaponDeclaration }> => {
       const seed = genomeSeed(genome, `${input.settlement.battleId}:${side}:${name}`);
       const record = matchRecord(records, genome);
       if (record) {
@@ -354,7 +354,9 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
               paintRig = await loadCreatureRigV1(record as unknown as CreatureRigRecordV1, binding, master, alpha, atlas, async () => lease.texture, { borrowedAtlas: true, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) }); }
             else paintRig = await loadCreatureRigV1(record as unknown as CreatureRigRecordV1, binding, master, alpha, atlas, undefined, morph.jointScale ? { jointScale: morph.jointScale } : {});
             const rig = createPartsRig({ record: record as unknown as CreatureRigRecordV1, rig: paintRig, card, alphaBox: alphaBox(pixels, keyed.width, keyed.height), binding, ...(morph.jointScale ? { jointScale: morph.jointScale } : {}) });
-            return { rig, card, mass: card.massClass.multiplier, seed };
+            // C15: a painter weapon declaration (hash-bound to this record) rides with its fit into compileAnatomyAttack
+            const declaration = fit.weaponDeclaration ? await assets.json(fit.weaponDeclaration) as WeaponDeclaration : undefined;
+            return { rig, card, mass: card.massClass.multiplier, seed, ...(declaration ? { declaration } : {}) };
           } catch (error) { skipped.push(`${name}: parts rig unavailable (${error instanceof Error ? error.message : String(error)}); fixture fallback`); }
         } else if (fit) skipped.push(`${name}: parts rig needs raw asset bytes; fixture fallback`);
         try {
@@ -397,9 +399,15 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     const stagedLayout = placed.layout;
     const mediums = { A: placed.habitat.stands.left.medium, B: placed.habitat.stands.right.medium } as const;
     // E1 §1.2: one anatomy attack per staged attack, chosen deterministically by Codex's compiler; a refusal leaves the family delivery clip and is labelled once.
+    // A DECLARED weapon fails closed (Codex's native harness law): the declared repertoire is proven here, before play, so a refusal
+    // keeps the Chronicle path with its reason instead of silently staging the generic family clip (and never throws inside the ticker).
+    for (const [s, built] of [['A', left], ['B', right]] as const) if (built.declaration && built.card) {
+      const rep = attackRepertoire(built.card, mediums[s], built.declaration);
+      if (rep.status !== 'READY') { left.rig.dispose(); right.rig.dispose(); throw new Error(`battle2: declared weapons refused for ${built.card.identity.earthName ?? 'a painted record'} (${rep.rejected.map((r) => `${r.verb}: ${r.reason}`).join(', ')})`); }
+    }
     const attackFor = (side: 'A' | 'B', ordinal: number): TurnAttack | null => {
       const card = side === 'A' ? left.card : right.card, key = side === 'A' ? 'left' : 'right'; if (!card) return null;
-      try { const r = compileAnatomyAttack(card, mediums[side], ordinal); attackLabels[key] = `${r.attack.verb} (${r.attack.contactJoint})`; return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; }
+      try { const r = compileAnatomyAttack(card, mediums[side], ordinal, undefined, (side === 'A' ? left : right).declaration); attackLabels[key] = `${r.attack.verb} (${r.attack.contactJoint})`; return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; }
       catch (error) { attackLabels[key] ??= `family delivery clip (no admitted anatomy move: ${error instanceof Error ? error.message : String(error)})`; return null; }
     };
     const phaseTextures = new Map<string, Promise<EffectTextureLike>>();

@@ -2,6 +2,7 @@
 // PRESERVED — the painted finish (shading, edges, fur/chitin structure) survives; only hue and chroma move. Applied
 // once per individual at load; never per tick. Alpha is never touched; pixels outside every frame are never touched.
 import type { MorphParamsV1, PaletteParamsV1 } from './morph-params.js';
+import { earthFaunaProfile } from '../earth-fauna-profiles.js';
 export type PaletteRole = 'base' | 'accent' | 'keep';
 /** Pixel index (y·width + x) → whether it belongs to the role being remapped. */
 export type PixelSelect = (pixel: number) => boolean;
@@ -87,7 +88,22 @@ export const ACCENT_GROUPS: Readonly<Record<string, readonly string[]>> = Object
   // primate: none — a primate's head in a second colour read as a graft on library sheet 02; one coat
   serpent: ['head'], hopper: ['head'], primate: [], radial: ['body'], arachnid: ['tail'], cephalopod: ['head'],
   'flyer-membrane': ['ears', 'head'], myriapod: ['head'],
+  // a SWIMMING-BELL radial (cnidarian: the Jellyfish, C15 2026-09-25): its `body` group is the whole bell (36.5 % of the paint, where the
+  // Starfish's is a 1.9 % disc) and its arms are the other 63 % — no group is trim, so one coat, like the primate (emissive = whole body)
+  'radial-bell': [],
+  // a FLYING insect with both unfolded wings (the Dragonfly, C15 2026-09-25): four spread wings are 67 % of its paint, not trim — antennae only
+  'insect-flight': ['antennae'],
 });
+/** The accent plan of a card: its template, except a radial whose Earth profile is the cnidarian family (a swimming bell) — a
+ * family-level split of one template, never a species branch (procedural jellies draw as the Jellyfish record, so they follow). */
+export function accentPlanOfCard(card: { readonly template?: Readonly<{ id: string }>; readonly identity?: Readonly<{ earthName?: string | null }>;
+  readonly habitat?: Readonly<{ realm?: string; gait?: string }>; readonly parts?: readonly Readonly<{ joint: string }>[] }): string | undefined {
+  const id = card.template?.id;
+  if (id === 'radial') { const earth = card.identity?.earthName; return earth && earthFaunaProfile(earth)?.id === 'cnidarian' ? 'radial-bell' : id; }
+  // the same evidence the attack selector requires for adult flight: an explicit aerial fly/glide habitat and both unfolded wing owners
+  if (id === 'insect' && card.habitat?.realm === 'aerial' && ['fly', 'glide'].includes(card.habitat.gait ?? '') && ['wingNear', 'wingFar'].every((j) => card.parts?.some((p) => p.joint === j))) return 'insect-flight';
+  return id;
+}
 /** Where an emissive individual (lumin gene / iridescent pattern, no painted mask) glows: its accent set, or — for a body plan whose
  * accent set is EMPTY (the primate, one coat) — its base coat (2026-09-24, review finding: a lumin Chimpanzee changed 0 pixels). */
 export function emissiveRoleV1(roles: Iterable<PaletteRole>): 'accent' | 'base' { for (const r of roles) if (r === 'accent') return 'accent'; return 'base'; }

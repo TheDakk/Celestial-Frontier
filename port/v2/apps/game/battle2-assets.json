@@ -3,8 +3,8 @@
  "files": [
   {
    "path": "battle2/MANIFEST.json",
-   "bytes": 32963,
-   "sha256": "38dd2fc97c29c70093346cf41676f8eeab16188a64c5a4df21d7bb63072c15c3"
+   "bytes": 44770,
+   "sha256": "4d670f006c643fa96652abde35be52672d28da932f72d7694fac6f596e76ca57"
   },
   {
    "path": "battle2/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json.gz",
@@ -625,6 +625,271 @@
    "path": "battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/wild-anchors.json",
    "bytes": 2800,
    "sha256": "efe2405f0168299d429debc35ed72ee0dbbca7f602ee03f957a8bec3f49e26c2"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/fit-05/binding.json.gz",
+   "bytes": 208278,
+   "sha256": "901eefe6f166766e9b94b26470757c82a798c19754e1f6aead9058eb54679d0b"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/fit-05/parts/alpha.png",
+   "bytes": 63881,
+   "sha256": "4ded7d35f09248effdb884e7976143ed6e44f227b07b70b80b01ab508c917026"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/fit-05/parts/atlas/bass.png",
+   "bytes": 1143634,
+   "sha256": "ae063590ba4b573f1b1fbf1b5b58a53216d66f1d6f27f7dc73f40c50635739c1"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/fit-05/parts/manifest.json",
+   "bytes": 2110,
+   "sha256": "ef2c38ff8765898ae51c1d2b55effc2be7ba99d83af551ad7317605ec6ce5ee8"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/fit-05/record.json",
+   "bytes": 5761,
+   "sha256": "8af4a5f98a2b3ed947f010ec48869056401de1043602f637355b939f4cc5ce85"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/markings.json",
+   "bytes": 24327,
+   "sha256": "85ac554cc48cb4015453a4c89df2d7ac48300e50ab547347467ee86d4d2d2f41"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/markings/banded.png",
+   "bytes": 37587,
+   "sha256": "62d5282ef4bfe7ea1d9ec8054b7702822e0504dc7cb0292bb3b4072c8c4d178b"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/markings/eye-spotted.png",
+   "bytes": 29047,
+   "sha256": "85c923fcb67794702b8e9b35ef2abf2fa4c5a1395c103b640b9e61cebb85ae3b"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/markings/marbled.png",
+   "bytes": 56983,
+   "sha256": "086b593f20ec6f71b2a89750036fac1be960f2929fbfa15499712d16e27668ce"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/markings/mottled.png",
+   "bytes": 31201,
+   "sha256": "180a95d1ab54ed6d9b5796b0e654fa1e998555791cba6429c9a8e341c6aafeef"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/markings/spotted.png",
+   "bytes": 23601,
+   "sha256": "15ae919460fa4e8cf3d0baea4e965aec4a8b3928a3d9cbb0964d737dbb1736ed"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/markings/striped.png",
+   "bytes": 47739,
+   "sha256": "6d184960858ffd1813e00c705c903107785180746c843fa059b0fa2906172aba"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/08-bass/master.png",
+   "bytes": 1111759,
+   "sha256": "8e3ff13f2dd2b8b65e775e9a720760725eaf0087b2fecb9caa3ce9736ea1d1e8"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/binding.json.gz",
+   "bytes": 288539,
+   "sha256": "d130e49ee363d628228d11fec7946b62cd8befb27e2b9b8877b54a506beecf5a"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/parts/alpha.png",
+   "bytes": 133872,
+   "sha256": "8abe5a96835d8be04f9d6d5bab911a012a8580222bdfd47c214fc9ff76df7927"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/parts/atlas/tang.png",
+   "bytes": 1373291,
+   "sha256": "fec9e0c26ab84e500b9b2ab4fab4c9466e2e32db9f6eb716bbacdb51950a9f85"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/parts/manifest.json",
+   "bytes": 2110,
+   "sha256": "0426e1828f766e2191bc08ea50d96c010bad3267267b675a84c13fed46da3bdd"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/record.json",
+   "bytes": 5303,
+   "sha256": "330ffbca96f9a8bc6a379af0e5aa32cab5a314e2085a3d431c29cbeb75d13edb"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/markings.json",
+   "bytes": 24464,
+   "sha256": "30fe4f21dbbf300223721c201c6f133b57e441019854b986b46f6265f0012ca7"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/markings/banded.png",
+   "bytes": 64632,
+   "sha256": "a05f96ba652058139ee3abebc2cdcc55d356e6b692a184d27e0714688e99056c"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/markings/eye-spotted.png",
+   "bytes": 29828,
+   "sha256": "a111fa26851cd5aa0f9a61fdb153d08403bcd143494cd07173fa4ffb1370d4f6"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/markings/marbled.png",
+   "bytes": 74335,
+   "sha256": "d476bfe841b05c5621b2d931a34bec810fd1007cfe282651d503af57ca521bae"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/markings/mottled.png",
+   "bytes": 70298,
+   "sha256": "81c7ec9738da0264bfc4a5abb8237e6b8af05c3bf7a1f3a72b49d299ff66702c"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/markings/spotted.png",
+   "bytes": 35417,
+   "sha256": "76828bf3b3602c2f6cc11720f69e460af864da20f2aec82a24bc8081e8d5b269"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/markings/striped.png",
+   "bytes": 64165,
+   "sha256": "6b5bdb78662db4bbe2cbc0073ef5e58957602dd4a330ddbb1eb98ac5c76c907c"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/10-tang/master.png",
+   "bytes": 1319605,
+   "sha256": "e6970b7e7d2320aca6022ae2b74117f10f7d38e66fc5b81568b0061ce65f8ffe"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/fit-03/binding.json.gz",
+   "bytes": 256543,
+   "sha256": "573376130db33b015b5f032901b5344e0fd91892e4e00edc37c36ce191a323da"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/fit-03/parts/alpha.png",
+   "bytes": 139689,
+   "sha256": "d45b7bee9170815d22c37d4d27ae5f00ca280d9bb44c0080786856c1cb7e5a02"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/fit-03/parts/atlas/dragonfly.png",
+   "bytes": 1020282,
+   "sha256": "63b70c5c7b4dc673f190d9f495eacd31f91f7c33d49f41d8c4200b840ec51c1e"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/fit-03/parts/manifest.json",
+   "bytes": 3673,
+   "sha256": "a349d836050607e244f6c8eb2244fda8d6bf8b56174d0318daa44f4ed6055c8a"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/fit-03/record.json",
+   "bytes": 6496,
+   "sha256": "4a38dfd1dcf05b66a06e774e54b1ffa1fc5e66c08adfdfc0273a4e785b34fa7f"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/markings.json",
+   "bytes": 27591,
+   "sha256": "c0c7c05cd0fcfd24bbbbd317f680712d41f5764ee8d2b37551f7eff8426e8a7e"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/markings/banded.png",
+   "bytes": 44329,
+   "sha256": "18f35c0fda157169a8bf2faa4de55d192551ea4c9419e1b0686ddabca7568c7f"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/markings/eye-spotted.png",
+   "bytes": 21827,
+   "sha256": "f49054fee9996ea676a4e5cccd0bbe287b13fb477bc3e1b6b9c3aab9495e01bc"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/markings/marbled.png",
+   "bytes": 96348,
+   "sha256": "79ced4da6fcbb09e38766993f6d1a41ea2764a3d48d48b5a0072a4a5f3ccc86b"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/markings/mottled.png",
+   "bytes": 59228,
+   "sha256": "aeb9f9c29a4a2d31d8a11af4fa0af8e5a8aa92887ef42981092b645269734f70"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/markings/spotted.png",
+   "bytes": 26776,
+   "sha256": "a8678410aa9083b16928733297a959310b051eb8bbc40bbb3514fd4faa1b8980"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/markings/striped.png",
+   "bytes": 57877,
+   "sha256": "f8fb8b68d2de927a8cec600174955c59822d04940a57a46334c961102a8c4d21"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/master.png",
+   "bytes": 975776,
+   "sha256": "8b09ab3ef579a7860bec17e3fdaa82040b748d9541d2429c84d8f5e7f0d1383a"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/binding.json.gz",
+   "bytes": 388374,
+   "sha256": "944f771f6b7012593fb099fc0daacf84e02a63b14a7ec9b3d2f9581bfc5a2c56"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/parts/alpha.png",
+   "bytes": 185916,
+   "sha256": "f1231bef744eba546645de746619f3461054c4c38de9a06e68cbf247063b56fc"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/parts/atlas/jellyfish.png",
+   "bytes": 997528,
+   "sha256": "7e21aa49d9b42a8580d792455806a8ae6b2969f267318826aadf745fb52b87cb"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/parts/manifest.json",
+   "bytes": 5111,
+   "sha256": "e9482dfc8fb75f8bfde25f97fda6045bfe1e73b2b94dcd795e63a3745027ab25"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/record.json",
+   "bytes": 8931,
+   "sha256": "7731a1b9050637d4552062b925e00a02ebf74bdce875097429d399629a193046"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/markings.json",
+   "bytes": 26558,
+   "sha256": "45655c87902db65565641faf37a8c2e2d1020a2e3adb79bb818a1cbf77e5ed8e"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/markings/banded.png",
+   "bytes": 42164,
+   "sha256": "9e7e831af755c862cb40029df91789c45c729436aa26690e30af08dcc1c2a5fc"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/markings/eye-spotted.png",
+   "bytes": 25785,
+   "sha256": "79d998d1244bd916ef536149f261e2094e546b3eaee4fee30a8109d117343cc8"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/markings/marbled.png",
+   "bytes": 44659,
+   "sha256": "7478113b72dff30b9b2437a4bc03ea6172fdea37b5575e890c007efa7bb08313"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/markings/mottled.png",
+   "bytes": 75179,
+   "sha256": "4afcc83639ca1ed54f7fd96f9998e395d23f7c5198adc75def84713cd746fe58"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/markings/spotted.png",
+   "bytes": 19131,
+   "sha256": "188a54b6cedd1b7603d2af93459b881629c8914f39a535f33a710cb079550d01"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/markings/striped.png",
+   "bytes": 36778,
+   "sha256": "5595f76e112592875bb87eee446427181ba5c070f309ec9688967f5a8e2089ef"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/master.png",
+   "bytes": 950211,
+   "sha256": "5c878a70e83b232ef7aa1d716f6deab99626a8292e2a9714d87d945b1187e2ee"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/weapon-declaration.json",
+   "bytes": 450,
+   "sha256": "0a8c29b926576ff1ccfada6c249963f245154cfb9928979f4ea0ab9f546f26d8"
   },
   {
    "path": "battle2/audits/ART_KIT_ENGINE_FIRST_20260912/masters/civet.png",

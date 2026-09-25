@@ -16,6 +16,10 @@ import { RUN_UP_FRACTION } from './arena.js';
 export const APPROACH_CAP_MS = 500, RETURN_CAP_MS = 500, IDLE_TAIL_MS = 600, CURSOR_BLINK_MS = 250;
 /** A2: the approach walks at most this long in whole gait cycles (≈ 2 crab cycles); the lunge covers the rest. */
 export const APPROACH_CADENCE_CAP_MS = 900;
+/** The damage number's highest allowed CENTRE (normalized frame height): the 34 px glyph at its back-out pop overshoot plus its 4 px stroke is
+ * ~23 px above its centre on the 576 px frame, plus a margin. A high flyer's number starts low enough that its whole rise stays inside
+ * (C15 2026-09-25: the Dragonfly's damage 9 was clipped above the viewport — dragonfly-repair-03 turn0-hit-reaction-50.png). */
+export const NUMBER_TOP_MIN = 0.05;
 export const NUMBER_RISE = 0.07, NUMBER_LIFT = 0.30, DODGE_LEAD_MS = 120, CONTACT_GAP = 0.02, RUN_UP_MIN_FRACTION = 0.15;
 export type Side = 'left' | 'right';
 export type TurnOutcome = 'hit' | 'dodge' | 'miss';
@@ -151,7 +155,7 @@ export function buildTurnPlan(input: TurnPlanInput): TurnPlan {
   const bodyPoint = (side: Side, stand: NormalizedPoint): NormalizedPoint => { const b = input.arena.bodies?.[side]; return b && Math.abs(stand.y - input.arena.groundLineY) >= 1e-9 ? { x: stand.x, y: Math.min(0.98, Math.max(0.02, b.centreY)) } : stand; };
   const targetBody = input.arena.bodies?.[T.side], grounded = !targetBody || Math.abs(standT.y - input.arena.groundLineY) < 1e-9;
   const impactY = grounded ? input.arena.groundLineY : Math.min(0.98, Math.max(0.02, targetBody.centreY));
-  const numberY = grounded ? input.arena.groundLineY - NUMBER_LIFT : Math.max(0.04, targetBody.topY - 0.04);
+  const numberY = grounded ? input.arena.groundLineY - NUMBER_LIFT : Math.max(NUMBER_TOP_MIN + NUMBER_RISE, targetBody.topY - 0.04);
   // A2 cadence: whole gait cycles (unmodified gait duration) up to the cap; feet planted; the lunge does the rest
   let cadence: TurnCadence | null = null;
   if (A.cadence) {
