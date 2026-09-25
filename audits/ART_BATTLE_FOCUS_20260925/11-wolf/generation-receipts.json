@@ -1,0 +1,22 @@
+{
+  "tool": "image_gen.imagegen",
+  "generation01": {
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-1eb80db0-abd0-4297-91df-33eb159ca3db.png",
+    "sha256": "d2f72a9ab07494f3c6ba63c9fe23823a2c58bab7af92d5807d7ad291e9f15cee",
+    "verdict": "Rejected framing: nose and tail violate requested 8% safe margin; correction also asks a gentler neutral foreleg bend. Four legs, both ears and tail visible.",
+    "prompt": "prompt.txt"
+  },
+  "generation02": {
+    "prompt": "prompt-correction-02.txt",
+    "status": "Rejected framing: main silhouette still inside requested 8% margin. Explicit larger transparent border requested.",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-ab722842-bb8c-45cc-8a0f-0c4c7869bd7c.png",
+    "sha256": "7ada69dff2649c92616957c4b0f287492171292175c53920c594cc295c479660"
+  },
+  "generation03": {
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-f918cf77-4e45-4dd8-b7d8-06fe641ea7af.png",
+    "sha256": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43",
+    "prompt": "prompt-correction-03.txt",
+    "verdict": "Visually accepted for intake: whole silhouette padded, four legs/two ears/low tail visible, plain base coat. Nick final art review pending.",
+    "authority": "Nick later instruction to fix everything overrides former two-failure stop; all rejected masters retained."
+  }
+}
