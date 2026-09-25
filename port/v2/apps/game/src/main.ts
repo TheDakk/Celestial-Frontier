@@ -9332,14 +9332,15 @@ async function fabricateEngineeringBatch(baseId: string, repeat: number): Promis
    committed active-play clock (friendly-duel.ts). Publication copies only the duel's own fields (counters + the companion's Compendium
    mirror row) and the committed ownership. */
 let lastFriendlyDuelOutcome: string | null = null;
-const friendlyDuelController = new FriendlyDuelController({ onAction: (request) => { void runFriendlyDuel(request); } });
+const friendlyDuelController = new FriendlyDuelController({ onAction: (request) => { void runFriendlyDuel(request); },
+  copy: async (text) => { try { await navigator.clipboard.writeText(text); return true; } catch { return false; } } });
 function projectCurrentFriendlyDuel(row: readonly [string, CodexRecord] | null): FriendlyDuelReadModelV1 | null {
   const ownership = arc5OwnershipState, runtime = f4Runtime;
   if (row === null || compendiumFixtureRows !== null || ownership?.mode !== 'current' || runtime === null
     || arc5OwnershipProtection !== null || row[1].kind !== 'Fauna') return null;
   try {
     return projectFriendlyDuelV1({ ownershipV2: ownership, extensions: runtime.extensions,
-      speciesId: canonicalGenomeIdentityV1(row[1].g as never).speciesId, observedActivePlayMs: runtime.diagnostics().activePlayMs });
+      speciesId: canonicalGenomeIdentityV1(row[1].g as never).speciesId, observedActivePlayMs: runtime.diagnostics().activePlayMs, speciesName: row[1].name });
   } catch {
     return null;
   }
