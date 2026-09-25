@@ -1,0 +1,25 @@
+{
+  "scope": "The same six masks bind the identical record recipe, master, keyed alpha and atlas. conservation.json retains its measured fit01 binding input; no old sample rebind. Only paint-surface embedding changed.",
+  "files": {
+    "record.json": {
+      "priorSha256": "77595449583b8877f9f0ef1ea10f1de8ed5369c77bc8e3c251797d31326b4fcd",
+      "currentSha256": "77595449583b8877f9f0ef1ea10f1de8ed5369c77bc8e3c251797d31326b4fcd",
+      "identical": true
+    },
+    "parts/keyed.png": {
+      "priorSha256": "5d2ad2f37eb59469e567e793350a55dec56cd6b12b015323a99b245b82cb6201",
+      "currentSha256": "5d2ad2f37eb59469e567e793350a55dec56cd6b12b015323a99b245b82cb6201",
+      "identical": true
+    },
+    "parts/atlas/cougar.png": {
+      "priorSha256": "cb2be21a26aa37efc196c9cc576f353ea8b9f2ab5da94d18654c5783a1b8b420",
+      "currentSha256": "cb2be21a26aa37efc196c9cc576f353ea8b9f2ab5da94d18654c5783a1b8b420",
+      "identical": true
+    },
+    "parts/manifest.json": {
+      "priorSha256": "ed0cdf7844684963faf940122f62a68f10a06e71e1e7d30a839028b894a5de55",
+      "currentSha256": "ed0cdf7844684963faf940122f62a68f10a06e71e1e7d30a839028b894a5de55",
+      "identical": true
+    }
+  }
+}

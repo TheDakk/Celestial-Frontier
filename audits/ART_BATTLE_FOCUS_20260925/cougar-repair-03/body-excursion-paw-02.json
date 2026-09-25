@@ -1,0 +1,1223 @@
+{
+  "scope": "Contact-only diagnostic on altered poses, no skin/presentation/native/acceptance claim; no runtime changes. Torso gain scales root offsets and root/pelvis/spine/chest angles only. No per-creature curve is written.",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/record.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/binding.json",
+      "sha256": "d8e0035d35d3cdaf853da64de308bee06819ef92b43fd9985ac2b54756538909"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/fit-06/record.json",
+      "sha256": "b2dffcc709116ef6cad2cf0a7dff86673b3fbf9121f232ef25cd97b8dc6fdf55"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/fit-06/binding.json",
+      "sha256": "1a25d1bdfa27517c0678d873fc8309b5f3ca2f8296c45783a98a1e801a22d9a8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-01/record.json",
+      "sha256": "77595449583b8877f9f0ef1ea10f1de8ed5369c77bc8e3c251797d31326b4fcd"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-01/binding.json",
+      "sha256": "a4b2e0ebd38f237a1fe090ee666c1600a97a82fc9974401444ef125f54cdb9c6"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/fit-01/record.json",
+      "sha256": "fe6acc9301979d0e9abf811eb1ace740530a748243031da872de565138ec3da7"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/fit-01/binding.json",
+      "sha256": "59545ef50b4161b7679fea88235546b8d35bcf57a556b6bd8ebc60e79c79463c"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/07-marmot/fit-01/record.json",
+      "sha256": "30849c158873308156df12bfd6ddf21ef734df679367da6ec9ef277f04462e00"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/07-marmot/fit-01/binding.json",
+      "sha256": "e964b5067403863abdc6ec2ded706ff57c29e2ecf6a20ad52465af4251cad774"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/fit-04/record.json",
+      "sha256": "4ffa56659c98bc1cfc39edb170e6035369fd624f64c7f5b6d76b7cd78fe66df1"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/fit-04/binding.json",
+      "sha256": "82260220613765b0c6bb9a68ff5b112a90b893f07576e00ba784784888e06db8"
+    }
+  ],
+  "subjects": [
+    {
+      "name": "Civet",
+      "modes": [
+        {
+          "mode": "paw",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 100,
+                  "first": {
+                    "sample": 17,
+                    "ms": 123.10833333333333,
+                    "error": "Error: Contact: approach:gallop@123.10833333333333 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 106,
+                  "first": {
+                    "sample": 19,
+                    "ms": 137.59166666666667,
+                    "error": "Error: Contact: approach:gallop@137.59166666666667 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wall Lizard",
+      "modes": [
+        {
+          "mode": "paw",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 25,
+                  "first": {
+                    "sample": 25,
+                    "ms": 175,
+                    "error": "Error: Contact: faint@175 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 29,
+                  "first": {
+                    "sample": 29,
+                    "ms": 203,
+                    "error": "Error: Contact: faint@203 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 36,
+                  "first": {
+                    "sample": 36,
+                    "ms": 252,
+                    "error": "Error: Contact: faint@252 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 85,
+                  "first": {
+                    "sample": 19,
+                    "ms": 117.16666666666667,
+                    "error": "Error: Contact: approach:gallop@117.16666666666667 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 89,
+                  "first": {
+                    "sample": 20,
+                    "ms": 123.33333333333333,
+                    "error": "Error: Contact: approach:gallop@123.33333333333333 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 99,
+                  "first": {
+                    "sample": 23,
+                    "ms": 141.83333333333334,
+                    "error": "Error: Contact: approach:gallop@141.83333333333334 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 78,
+                  "first": {
+                    "sample": 4,
+                    "ms": 25.666666666666668,
+                    "error": "Error: Contact: hit@25.666666666666668 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 87,
+                  "first": {
+                    "sample": 14,
+                    "ms": 89.83333333333333,
+                    "error": "Error: Contact: hit@89.83333333333333 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 100,
+                  "first": {
+                    "sample": 9,
+                    "ms": 57.75,
+                    "error": "Error: Contact: hit@57.75 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 97,
+                  "first": {
+                    "sample": 21,
+                    "ms": 134.75,
+                    "error": "Error: Contact: hit@134.75 exceeds scale compression bound"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 4,
+                  "first": {
+                    "sample": 4,
+                    "ms": 32,
+                    "error": "Error: Contact: tame@32 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 5,
+                  "first": {
+                    "sample": 5,
+                    "ms": 40,
+                    "error": "Error: Contact: tame@40 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 8,
+                  "first": {
+                    "sample": 8,
+                    "ms": 64,
+                    "error": "Error: Contact: tame@64 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 24,
+                  "first": {
+                    "sample": 20,
+                    "ms": 160,
+                    "error": "Error: Contact: tame@160 exceeds scale compression bound"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cougar",
+      "modes": [
+        {
+          "mode": "paw",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 40,
+                  "first": {
+                    "sample": 40,
+                    "ms": 344,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@344: -105.36563360845338"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 98,
+                  "first": {
+                    "sample": 17,
+                    "ms": 132.03333333333333,
+                    "error": "Error: Contact: approach:gallop@132.03333333333333 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 106,
+                  "first": {
+                    "sample": 20,
+                    "ms": 155.33333333333334,
+                    "error": "Error: Contact: approach:gallop@155.33333333333334 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Impala",
+      "modes": [
+        {
+          "mode": "paw",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 12,
+                  "first": {
+                    "sample": 12,
+                    "ms": 103.2,
+                    "error": "Error: Contact: faint@103.2 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 13,
+                  "first": {
+                    "sample": 13,
+                    "ms": 111.8,
+                    "error": "Error: Contact: faint@111.8 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 16,
+                  "first": {
+                    "sample": 16,
+                    "ms": 137.6,
+                    "error": "Error: Contact: faint@137.6 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 23,
+                  "first": {
+                    "sample": 23,
+                    "ms": 197.8,
+                    "error": "Error: Contact: faint@197.8 exceeds scale compression bound"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 74,
+                  "first": {
+                    "sample": 5,
+                    "ms": 38.833333333333336,
+                    "error": "Error: Contact: approach:gallop@38.833333333333336 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 79,
+                  "first": {
+                    "sample": 6,
+                    "ms": 46.6,
+                    "error": "Error: Contact: approach:gallop@46.6 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 90,
+                  "first": {
+                    "sample": 8,
+                    "ms": 62.13333333333333,
+                    "error": "Error: Contact: approach:gallop@62.13333333333333 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 116,
+                  "first": {
+                    "sample": 11,
+                    "ms": 85.43333333333334,
+                    "error": "Error: Contact: approach:gallop@85.43333333333334 exceeds scale compression bound"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 100,
+                  "first": {
+                    "sample": 15,
+                    "ms": 120.25,
+                    "error": "Error: Contact: hit@120.25 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 108,
+                  "first": {
+                    "sample": 22,
+                    "ms": 176.36666666666667,
+                    "error": "Error: Contact: hit@176.36666666666667 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Marmot",
+      "modes": [
+        {
+          "mode": "paw",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 5,
+                  "first": {
+                    "sample": 5,
+                    "ms": 43,
+                    "error": "Error: Contact: faint@43 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 5,
+                  "first": {
+                    "sample": 5,
+                    "ms": 43,
+                    "error": "Error: Contact: faint@43 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 6,
+                  "first": {
+                    "sample": 6,
+                    "ms": 51.6,
+                    "error": "Error: Contact: faint@51.6 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 9,
+                  "first": {
+                    "sample": 9,
+                    "ms": 77.4,
+                    "error": "Error: Contact: faint@77.4 exceeds scale compression bound"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 114,
+                  "first": {
+                    "sample": 24,
+                    "ms": 186.4,
+                    "error": "Error: Contact: approach:walk@186.4 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 116,
+                  "first": {
+                    "sample": 25,
+                    "ms": 194.16666666666666,
+                    "error": "Error: Contact: approach:walk@194.16666666666666 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 100,
+                  "first": {
+                    "sample": 10,
+                    "ms": 77.66666666666667,
+                    "error": "Error: Contact: approach:trot@77.66666666666667 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 115,
+                  "first": {
+                    "sample": 25,
+                    "ms": 194.16666666666666,
+                    "error": "Error: Contact: approach:trot@194.16666666666666 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 116,
+                  "first": {
+                    "sample": 25,
+                    "ms": 194.16666666666666,
+                    "error": "Error: Contact: approach:trot@194.16666666666666 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 83,
+                  "first": {
+                    "sample": 4,
+                    "ms": 31.066666666666666,
+                    "error": "Error: Contact: approach:gallop@31.066666666666666 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 89,
+                  "first": {
+                    "sample": 5,
+                    "ms": 38.833333333333336,
+                    "error": "Error: Contact: approach:gallop@38.833333333333336 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 112,
+                  "first": {
+                    "sample": 6,
+                    "ms": 46.6,
+                    "error": "Error: Contact: approach:gallop@46.6 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 116,
+                  "first": {
+                    "sample": 8,
+                    "ms": 62.13333333333333,
+                    "error": "Error: Contact: approach:gallop@62.13333333333333 exceeds scale compression bound"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 88,
+                  "first": {
+                    "sample": 1,
+                    "ms": 8.016666666666667,
+                    "error": "Error: Contact: hit@8.016666666666667 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 92,
+                  "first": {
+                    "sample": 1,
+                    "ms": 8.016666666666667,
+                    "error": "Error: Contact: hit@8.016666666666667 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 101,
+                  "first": {
+                    "sample": 1,
+                    "ms": 8.016666666666667,
+                    "error": "Error: Contact: hit@8.016666666666667 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 102,
+                  "first": {
+                    "sample": 2,
+                    "ms": 16.033333333333335,
+                    "error": "Error: Contact: hit@16.033333333333335 exceeds scale compression bound"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 120,
+                  "first": {
+                    "sample": 5,
+                    "ms": 48,
+                    "error": "Error: Contact: tame@48 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 119,
+                  "first": {
+                    "sample": 3,
+                    "ms": 28.8,
+                    "error": "Error: Contact: tame@28.8 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 109,
+                  "first": {
+                    "sample": 5,
+                    "ms": 48,
+                    "error": "Error: Contact: tame@48 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 98,
+                  "first": {
+                    "sample": 10,
+                    "ms": 96,
+                    "error": "Error: Contact: tame@96 exceeds scale compression bound"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cattle",
+      "modes": [
+        {
+          "mode": "paw",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 42,
+                  "first": {
+                    "sample": 42,
+                    "ms": 361.2,
+                    "error": "Error: Contact: joint limit foreNearAnkle faint@361.2: -105.12947224272804"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 119,
+                  "first": {
+                    "sample": 24,
+                    "ms": 186.4,
+                    "error": "Error: Contact: approach:gallop@186.4 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

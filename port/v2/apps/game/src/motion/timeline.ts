@@ -3,6 +3,7 @@
  * evaluates it at any millisecond with the frozen easing family. No clock, no
  * randomness beyond the seeded idle period, no renderer. */
 import { DEG, type Ease, type MotionAction } from './actions.js';
+import {faintStanceEnvelope,applyStanceEnvelope,type StanceEnvelope} from './stance-envelope.js';
 import { actionsFor, MELEE_ALIAS, templateMelees } from './family-actions.js';
 import type { BodyCard, Weapon } from './body-card.js';
 import { secondaryParams, type SecondaryParams } from './secondary.js';
@@ -12,6 +13,7 @@ export interface Keyframe { readonly ms: number; readonly t: number; readonly va
 export interface SecondaryTrack extends SecondaryParams { readonly keys: readonly Keyframe[]; }
 export interface MotionTimeline {
   readonly kind: 'motion-timeline';
+  readonly stanceEnvelope?:StanceEnvelope;
   readonly actionId: string; readonly family: string; readonly loop: boolean;
   readonly seed: number; readonly recipeHash: string | null; readonly massClass: MassClassName;
   readonly bodyMs: number; readonly durationMs: number;
@@ -119,7 +121,11 @@ export function buildActionTimeline(card:BodyCard,action:MotionAction,seed:numbe
     deform: { squash: rule?.squash ?? 0, stretch: rule?.stretch ?? 0 },
     hitstopMs: action.family === 'melee' ? hitstopMs(mass) : 0, luminousPulseMs: card.luminous ? 1800 : 0, clamped, notes,
   };
-  return { ...body, hash: fnv1a(JSON.stringify(body)) };
+  const base:MotionTimeline={...body,hash:fnv1a(JSON.stringify(body))};
+  const envelope=faintStanceEnvelope(card,base,ms=>sampleTimeline(base,ms));
+  if(!envelope)return base;
+  const adapted=applyStanceEnvelope(base,envelope);
+  return {...adapted,hash:fnv1a(JSON.stringify(adapted))};
 }
 const wrap = (tl: MotionTimeline, ms: number): number => tl.loop ? ((ms % tl.bodyMs) + tl.bodyMs) % tl.bodyMs : Math.min(Math.max(ms, 0), tl.durationMs);
 /** Limits apply after easing and material overshoot, in the projected joint basis. */

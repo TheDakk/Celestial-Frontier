@@ -42,3 +42,22 @@ test('contact conflict repair releases only neighbouring non-contact pins withou
  const ordinary=await splitObservedSurfaces(f.binding,f.record,f.probe,{fixedJoints:[],preserveExistingWeights:true,contactEndpoints:['b']}),repaired=await splitObservedSurfaces(f.binding,f.record,f.probe,{fixedJoints:[],preserveExistingWeights:true,releaseContactConflicts:true,contactEndpoints:['b']});
  assert.deepEqual(repaired.binding.paintSkin.vertices,ordinary.binding.paintSkin.vertices);assert.deepEqual(repaired.binding.paintSkin.parts,ordinary.binding.paintSkin.parts);assert.deepEqual(repaired.binding.paintSkin.triangles,ordinary.binding.paintSkin.triangles);const locked=new Set(repaired.receipt.contactPins.flatMap(p=>p.supports));assert(repaired.receipt.releasedContactPins.length>0);for(const p of repaired.receipt.releasedContactPins){assert(!locked.has(p.vertex));assert(!repaired.binding.paintSkin.solver.pins.includes(p.vertex));assert(ordinary.binding.paintSkin.solver.pins.includes(p.vertex));}for(const i of locked)assert(repaired.binding.paintSkin.solver.pins.includes(i));
 });
+
+
+test('named continuous paint welds an observed boundary without silently welding other surfaces',async()=>{
+ const f=await fixture(true);f.probe.excluded=f.probe.joins;f.probe.joins=[];
+ const separate=await splitObservedSurfaces(f.binding,f.record,f.probe),selected=await splitObservedSurfaces(f.binding,f.record,f.probe,{paintBoundaryPairs:[['a','b']]}),all=await splitObservedSurfaces(f.binding,f.record,f.probe,{preservePaintBoundaries:true});
+ assert.equal(separate.binding.paintSkin.vertices.length,6);assert.equal(selected.binding.paintSkin.vertices.length,3);assert.deepEqual(selected.binding,all.binding);assert.deepEqual(selected.receipt.paintBoundaryPairs,[['a','b']]);assert.equal(selected.receipt.weldedExcludedBoundaries,1);
+ for(const pairs of [[['a','missing']],[['a','a']],[['a','b'],['b','a']],['a']])await assert.rejects(()=>splitObservedSurfaces(f.binding,f.record,f.probe,{paintBoundaryPairs:pairs}),/paint boundary/);
+ await assert.rejects(()=>splitObservedSurfaces(f.binding,f.record,{...f.probe,excluded:[]},{paintBoundaryPairs:[['a','b']]}),/one observed/);
+ await assert.rejects(()=>splitObservedSurfaces(f.binding,f.record,f.probe,{paintBoundaryPairs:[['a','b']],preservePaintBoundaries:true}),/all or named/);
+ await assert.rejects(()=>splitObservedSurfaces(f.binding,f.record,f.probe,{paintBoundaryPairs:[['a','b']],fixedJoints:[],preserveExistingWeights:true}),/cannot change other owners/);
+});
+
+test('one authored weld leaves an adjacent undeclared surface independent',async()=>{
+ const f=await fixture(true),recipe={landmarks:{...f.record.landmarks,c:[.5,.5]}};f.record={...recipe,recipeHash:await hashJSON(recipe)};
+ const {bindingHash,...body}=f.binding;body.recordRecipeHash=f.record.recipeHash;body.parts=[...body.parts,{id:'c',joint:'c',kind:'part'}];body.paintSkin.parts=[...body.paintSkin.parts,{...structuredClone(body.paintSkin.parts[1]),id:'c'}];f.binding={...body,bindingHash:await hashJSON(body)};
+ const ab=f.probe.joins[0],bc={...structuredClone(ab),ancestorPart:'b',descendantPart:'c'},probe={recordRecipeHash:f.record.recipeHash,bindingHash:f.binding.bindingHash,joins:[],excluded:[ab,bc]};
+ const r=await splitObservedSurfaces(f.binding,f.record,probe,{paintBoundaryPairs:[['a','b']],fixedJoints:[]}),[a,b,c]=r.binding.paintSkin.parts;
+ assert.equal(r.binding.paintSkin.vertices.length,6);assert.deepEqual(a.fieldTriangles,b.fieldTriangles);assert(a.fieldTriangles.every(i=>!c.fieldTriangles.includes(i)));assert.equal(r.receipt.weldedExcludedBoundaries,1);assert.equal(r.receipt.independentExcludedBoundaries,1);
+});

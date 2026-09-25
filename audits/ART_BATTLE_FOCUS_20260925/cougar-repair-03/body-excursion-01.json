@@ -1,0 +1,2053 @@
+{
+  "scope": "Contact-only diagnostic on altered poses, no skin/presentation/native/acceptance claim; no runtime changes. Torso gain scales root offsets and root/pelvis/spine/chest angles only. No per-creature curve is written.",
+  "inputs": [
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/record.json",
+      "sha256": "b38684ec741e22cb44016b4bce18ca95701d1d2f0535bfcbf51746d0e1120cc8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ANATOMY_SINGLE_RUN_20260919/R3-S/civet-input-01/binding.json",
+      "sha256": "d8e0035d35d3cdaf853da64de308bee06819ef92b43fd9985ac2b54756538909"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/fit-06/record.json",
+      "sha256": "b2dffcc709116ef6cad2cf0a7dff86673b3fbf9121f232ef25cd97b8dc6fdf55"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/04-wall-lizard/fit-06/binding.json",
+      "sha256": "1a25d1bdfa27517c0678d873fc8309b5f3ca2f8296c45783a98a1e801a22d9a8"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-01/record.json",
+      "sha256": "77595449583b8877f9f0ef1ea10f1de8ed5369c77bc8e3c251797d31326b4fcd"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-01/binding.json",
+      "sha256": "a4b2e0ebd38f237a1fe090ee666c1600a97a82fc9974401444ef125f54cdb9c6"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/fit-01/record.json",
+      "sha256": "fe6acc9301979d0e9abf811eb1ace740530a748243031da872de565138ec3da7"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/06-impala/fit-01/binding.json",
+      "sha256": "59545ef50b4161b7679fea88235546b8d35bcf57a556b6bd8ebc60e79c79463c"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/07-marmot/fit-01/record.json",
+      "sha256": "30849c158873308156df12bfd6ddf21ef734df679367da6ec9ef277f04462e00"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/07-marmot/fit-01/binding.json",
+      "sha256": "e964b5067403863abdc6ec2ded706ff57c29e2ecf6a20ad52465af4251cad774"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/fit-04/record.json",
+      "sha256": "4ffa56659c98bc1cfc39edb170e6035369fd624f64c7f5b6d76b7cd78fe66df1"
+    },
+    {
+      "path": "/Users/nick/Projects/celestial-frontier-openai-mac/audits/ART_BATTLE_FOCUS_20260925/09-cattle/fit-04/binding.json",
+      "sha256": "82260220613765b0c6bb9a68ff5b112a90b893f07576e00ba784784888e06db8"
+    }
+  ],
+  "subjects": [
+    {
+      "name": "Civet",
+      "modes": [
+        {
+          "mode": "rest",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "observed",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wall Lizard",
+      "modes": [
+        {
+          "mode": "rest",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 36,
+                  "first": {
+                    "sample": 36,
+                    "ms": 252,
+                    "error": "Error: Contact: joint limit foreNearKnee faint@252: 102.0256254892362"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 48,
+                  "first": {
+                    "sample": 48,
+                    "ms": 336,
+                    "error": "Error: Contact: joint limit foreNearKnee faint@336: 102.43073123477139"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 84,
+                  "first": {
+                    "sample": 9,
+                    "ms": 57.75,
+                    "error": "Error: Contact: hit@57.75 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 92,
+                  "first": {
+                    "sample": 16,
+                    "ms": 102.66666666666667,
+                    "error": "Error: Contact: hit@102.66666666666667 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 16,
+                  "first": {
+                    "sample": 16,
+                    "ms": 128,
+                    "error": "Error: Contact: tame@128 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 109,
+                  "first": {
+                    "sample": 26,
+                    "ms": 208,
+                    "error": "Error: Contact: tame@208 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "observed",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 33,
+                  "first": {
+                    "sample": 33,
+                    "ms": 231,
+                    "error": "Error: Contact: joint limit foreFarPaw faint@231: 96.99603536736818"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 50,
+                  "first": {
+                    "sample": 50,
+                    "ms": 350,
+                    "error": "Error: Contact: joint limit foreNearKnee faint@350: 103.20373551074209"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 84,
+                  "first": {
+                    "sample": 9,
+                    "ms": 57.75,
+                    "error": "Error: Contact: hit@57.75 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 92,
+                  "first": {
+                    "sample": 16,
+                    "ms": 102.66666666666667,
+                    "error": "Error: Contact: hit@102.66666666666667 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 16,
+                  "first": {
+                    "sample": 16,
+                    "ms": 128,
+                    "error": "Error: Contact: tame@128 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 109,
+                  "first": {
+                    "sample": 26,
+                    "ms": 208,
+                    "error": "Error: Contact: tame@208 exceeds scale compression bound"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cougar",
+      "modes": [
+        {
+          "mode": "rest",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 27,
+                  "first": {
+                    "sample": 27,
+                    "ms": 232.2,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@232.2: -105.93841204162854"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 41,
+                  "first": {
+                    "sample": 41,
+                    "ms": 352.6,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@352.6: -105.238048015419"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "observed",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 27,
+                  "first": {
+                    "sample": 27,
+                    "ms": 232.2,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@232.2: -107.1182468199604"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 40,
+                  "first": {
+                    "sample": 40,
+                    "ms": 344,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@344: -105.67399497456533"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Impala",
+      "modes": [
+        {
+          "mode": "rest",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 39,
+                  "first": {
+                    "sample": 39,
+                    "ms": 335.4,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@335.4: -105.79063250312986"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "observed",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 40,
+                  "first": {
+                    "sample": 40,
+                    "ms": 344,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@344: -105.44503724592258"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Marmot",
+      "modes": [
+        {
+          "mode": "rest",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 24,
+                  "first": {
+                    "sample": 24,
+                    "ms": 206.4,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@206.4: -109.48034918350798"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 27,
+                  "first": {
+                    "sample": 27,
+                    "ms": 232.2,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@232.2: -105.4461127169044"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "observed",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 23,
+                  "first": {
+                    "sample": 23,
+                    "ms": 197.8,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@197.8: -110.24865409070934"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 26,
+                  "first": {
+                    "sample": 26,
+                    "ms": 223.6,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@223.6: -106.80814942858467"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 45,
+                  "first": {
+                    "sample": 45,
+                    "ms": 387,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@387: -105.01457695729694"
+                  }
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cattle",
+      "modes": [
+        {
+          "mode": "rest",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 25,
+                  "first": {
+                    "sample": 25,
+                    "ms": 215,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@215: -107.29303918070347"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 32,
+                  "first": {
+                    "sample": 32,
+                    "ms": 275.2,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@275.2: -105.82458817090581"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "observed",
+          "actions": [
+            {
+              "id": "faint",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 25,
+                  "first": {
+                    "sample": 25,
+                    "ms": 215,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@215: -108.97268153490748"
+                  }
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 30,
+                  "first": {
+                    "sample": 30,
+                    "ms": 258,
+                    "error": "Error: Contact: joint limit foreFarAnkle faint@258: -105.34915116082826"
+                  }
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:walk",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:trot",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "approach:gallop",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "hit",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            },
+            {
+              "id": "tame",
+              "gains": [
+                {
+                  "gain": 1,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.75,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.5,
+                  "passes": 121,
+                  "first": null
+                },
+                {
+                  "gain": 0.25,
+                  "passes": 121,
+                  "first": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

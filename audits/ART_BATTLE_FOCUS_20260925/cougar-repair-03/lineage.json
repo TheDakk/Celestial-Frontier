@@ -1,0 +1,25 @@
+{
+  "schema": "cf.c15-cougar-repair-lineage/v1",
+  "retainedSource": "audits/ART_BATTLE_FOCUS_20260925/05-cougar",
+  "masterSha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635",
+  "priorAuthoringSha256": "4db8e62bd3b900435ef5ba5160ce39a7e39a91fa6ae35194d7090ca92c14069d",
+  "landmarksReused": true,
+  "landmarksChanged": false,
+  "presenceReusedExplicitDeclaration": true,
+  "sourceLabelsReused": false,
+  "change": "Only small 20x20 central root polygon first in priority, and spine as fallback; rest of prior manual polygons retained. No source-pixel change.",
+  "intakeAdapter": {
+    "originalSha256": "f9e296daceb85fe132a611b555c391353f42d1e54ec88b1a2f2ac9bb9629ec3a",
+    "landmarkReuseFieldsChanged": 3,
+    "solverGateChanges": false
+  },
+  "preparationFailure": "First script expected2 provenance spans, actual3; guard stopped before adapter creation. intake-01.log is MODULE_NOT_FOUND, no intake ran.",
+  "masks": {
+    "rawReusedFrom": "../05-cougar/raw",
+    "source": "Same creature and exact same corrected master; fresh conservation against new record recipe and unchanged keyed alpha. No other creature mask reused.",
+    "masterPrompts": [
+      "prompt.txt",
+      "prompt-correction-02.txt"
+    ]
+  }
+}
