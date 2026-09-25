@@ -54,10 +54,10 @@ describe('the painted library on the card — outcomes', () => {
       const L = (a: Uint8Array) => (Math.max(a[i * 4]!, a[i * 4 + 1]!, a[i * 4 + 2]!) + Math.min(a[i * 4]!, a[i * 4 + 1]!, a[i * 4 + 2]!)) / 2; lMax = Math.max(lMax, Math.abs(L(before) - L(after))); }
     expect(sb / n).toBeLessThan(LOW_CHROMA_ROLE); expect(sa / n - sb / n).toBeGreaterThan(0.1); expect(lMax).toBeLessThanOrEqual(2);
   }, 60_000);
-  it('a LONG body turns onto the diagonal and is larger on the card — exactly the Python, the Centipede and the Salmon; every other card is byte-identical with the rotation switched off', async () => {
+  it('a LONG body turns onto the diagonal and is larger on the card — exactly the Python, the Centipede, the Salmon, the Sturgeon and the River Otter; every other card is byte-identical with the rotation switched off', async () => {
     // Rewritten 2026-09-24 (review: the old test derived "long" from the production threshold and compared against a proxy — LONG_BODY_ASPECT = 0
     // passed). Now: an explicit list, and the real renderer against itself with the diagonal switched off.
-    const TURNS = ['Python', 'Centipede', 'Salmon'], turned: string[] = [];
+    const TURNS = ['Python', 'Centipede', 'Salmon', 'Sturgeon', 'River Otter'], turned: string[] = []; // + the two long C15 bodies (2026-09-25)
     const fill = (rgba: Uint8Array) => { let o = 0; for (let i = 3; i < rgba.length; i += 4) if (rgba[i]! > 128) o++; return o / (rgba.length / 4); };
     for (const a of CARD_ARCHETYPES) { const f = await load(a.dir), id = morphParamsV1({}, f.record.recipeHash);
       const on = renderCardIndividualV1({ ...f, params: id, size: 132 }), off = renderCardIndividualV1({ ...f, params: id, size: 132, diagonal: false });

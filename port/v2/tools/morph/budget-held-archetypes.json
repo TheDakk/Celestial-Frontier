@@ -1,0 +1,49 @@
+{
+ "schema": "cf.budget-held-archetypes/v1",
+ "reason": "pass the integrated library check (2026-09-25) but held by the 128 MiB shipped-pack cap until the masters leave the pack (C13)",
+ "rows": [
+  {
+   "earthName": "Marmot",
+   "dir": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/marmot-fit-02/",
+   "key": "marmot"
+  },
+  {
+   "earthName": "Wall Lizard",
+   "dir": "audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/lizard-fit-03/",
+   "key": "wall-lizard"
+  },
+  {
+   "earthName": "Cougar",
+   "dir": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/fit-03/",
+   "key": "cougar",
+   "markings": "audits/ART_BATTLE_FOCUS_20260925/cougar-repair-03/"
+  },
+  {
+   "earthName": "Ibex",
+   "dir": "audits/ART_BATTLE_FOCUS_20260925/18-ibex/fit-02/",
+   "key": "ibex",
+   "markings": "audits/ART_BATTLE_FOCUS_20260925/18-ibex/"
+  },
+  {
+   "earthName": "Pike",
+   "dir": "audits/ART_BATTLE_FOCUS_20260925/20-pike/fit-02/",
+   "key": "pike",
+   "markings": "audits/ART_BATTLE_FOCUS_20260925/20-pike/"
+  },
+  {
+   "earthName": "Goose",
+   "dir": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/",
+   "key": "goose",
+   "markings": "audits/ART_BATTLE_FOCUS_20260925/15-goose/",
+   "contactSupports": "observed"
+  },
+  {
+   "earthName": "Gull",
+   "dir": "audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/",
+   "key": "gull",
+   "markings": "audits/ART_BATTLE_FOCUS_20260925/12-gull/",
+   "contactSupports": "observed",
+   "heldBy": "CARD = STAGE: accent mean saturation 0.183 on the stage atlas vs 0.176 on the 512 card master straddles LOW_CHROMA_ROLE 0.18 \u2014 needs ONE tint decision shared by card and stage"
+  }
+ ]
+}

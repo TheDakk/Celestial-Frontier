@@ -24,7 +24,7 @@ describe('the card masters ship with the app', () => {
     // the archetypes that SHOULD ship masks come from the source of truth (the builder list and each fit's markings), not from the shipped dirs
     const shouldShip = BUILD_LIST.filter((b) => existsSync(fileURLToPath(new URL((b.markings ?? b.dir) + 'markings.json', REPO_ROOT)))).map((b) => b.earthName).sort();
     const src = createPaintedCardsForApp(fetchFromDisk), shipsMasks = CARD_ARCHETYPES.filter((a) => shouldShip.includes(a.earthName));
-    expect(shouldShip).toEqual(['Bass', 'Civet', 'Crab', 'Dragonfly', 'Jellyfish', 'Salmon', 'Tang']); expect(shipsMasks.map((a) => a.earthName).sort()).toEqual(shouldShip);
+    expect(shouldShip).toEqual(['Bass', 'Civet', 'Crab', 'Dragonfly', 'Heron', 'Impala', 'Jellyfish', 'River Otter', 'Salmon', 'Sturgeon', 'Tang', 'Wolf']); expect(shipsMasks.map((a) => a.earthName).sort()).toEqual(shouldShip);
     for (const a of shipsMasks) {
       // a pattern gene EQUAL to the archetype's own is its identity (no marking): the Dragonfly's own painted genome is striped (pattern 1),
       // so each archetype is marked with the first MASKED pattern that is not its own, and its own pattern is the plain control

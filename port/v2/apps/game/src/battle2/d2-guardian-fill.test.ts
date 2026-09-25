@@ -47,7 +47,7 @@ const ctxFor = (layout: ReturnType<typeof layoutFor>, attacker: 'A' | 'B', name:
 });
 const runFull = (stage: BattleStage, plan: ReturnType<BattleStage['play']>, tick: (ms: number) => void) => { for (let ms = 0; ms <= plan.beats.end + 1; ms += 1000 / 60) { tick(ms); stage.tick(); } };
 
-describe('D2 G6 — a guardian fills the frame; everything else is untouched', () => {
+describe('D2 G6 — a guardian fills the frame; everything else is untouched', { timeout: 60_000 }, () => { // rig loads measure the layered reach (seconds under a parallel run)
   it('the bear record carries the guardian block through the parts rig (desktop-only, 5 ms CPU tier, 60 px bound)', async () => {
     const { rig, record } = await loadFitDir(BEAR);
     expect(rig.guardian).toMatchObject({ desktopOnly: true, cpuP95GateMs: 5, landmarkComparisonBoundPx: 60, requestedMasterSize: 1536, actualMasterSize: 1254 });
@@ -57,7 +57,7 @@ describe('D2 G6 — a guardian fills the frame; everything else is untouched', (
     expect(rig.tallestHeight! / rig.bounds.height).toBeGreaterThan(1.3); expect(rig.tallestHeight! / rig.bounds.height).toBeLessThan(1.5);
     expect(rig.refusals?.()).toBe(0); // probe refusals are not the stage's
     const crab = await loadFit('crab'); expect(crab.rig.guardian).toBeUndefined(); expect(crab.rig.tallestHeight).toBe(crab.rig.bounds.height);
-  });
+  }, 60_000); // rig load now measures the layered idle+approach reach (Codex 412e2cf2) — seconds under a parallel run
   for (const frame of VIEWPORTS) for (const side of ['left', 'right'] as const) it(`bear on the ${side} at ${frame.width}×${frame.height}: its tallest pose fills the frame ABOVE ITS STAND (the one presentation rule), the landmarks never leave the frame through an attack AND a victory, zero refusals`, async () => {
     const { rig, card, record } = await loadFitDir(BEAR);
     const layout = layoutFor(frame, { guardianSide: side }); const { f, nodes } = stageFactory(); let now = 0;
