@@ -44,6 +44,7 @@ import { engineeringCommittedCopy, runFabricationBatchV1 } from './fabrication-b
 import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './recipe-pin.js';
 import { nearestTitanWorldV1, primeClaimWorldAddressV1, trackablePrimeSignaturesV1 } from './prime-travel.js';
 import { freshExpeditionPayloadV1 } from './expedition-reset.js';
+import { TooltipOwnerV1 } from './tooltips.js';
 import {
   deviceAudioAccessibilityStorage,
   readAudioAccessibilityPrefsV1,
@@ -2833,6 +2834,7 @@ function fillSettings(): void {
     `<div class="row"><label>Volume</label><input id="setvol" data-sel="set-vol" aria-label="Sound volume" type="range" min="0" max="100" value="${Math.round(save.sfxVol * 100)}"></div>` +
     `<div class="row"><label>Creature voices</label><button id="setvoice" aria-label="Creature voices" aria-pressed="${save.voiceOn}" class="${save.voiceOn ? 'on' : ''}" data-sel="set-voice">${save.voiceOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Pop-up notifications</label><button id="setnotif" aria-label="Pop-up notifications" aria-pressed="${save.notifOn}" class="${save.notifOn ? 'on' : ''}" data-sel="set-notif" title="Off keeps every message in the 🔔 tray without popping it up (creature sounds still show their card).">${save.notifOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Tooltips</label><button id="settips" aria-label="Tooltips" aria-pressed="${save.tipsOn}" class="${save.tipsOn ? 'on' : ''}" data-sel="set-tips" title="Short hints: hover on a computer, press and hold on a phone.">${save.tipsOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Confirm salvage</label><button id="setsalv" aria-label="Confirm before salvaging" aria-pressed="${save.salvageConfirm}" class="${save.salvageConfirm ? 'on' : ''}" data-sel="set-salvage" title="Ask before breaking gear down into parts.">${save.salvageConfirm ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Battle sounds</label><button id="setcombat" aria-label="Battle sounds" aria-pressed="${save.combatSfxOn}" class="${save.combatSfxOn ? 'on' : ''}" data-sel="set-combat" title="Hits, dodges and effects in battles (creature voices have their own switch).">${save.combatSfxOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Mono audio</label><button id="setmono" aria-label="Mono audio" aria-pressed="${audioAccessibility.mono}" class="${audioAccessibility.mono ? 'on' : ''}" data-sel="set-mono" title="Both ears hear every sound (one earbud, one speaker). Saved on this device.">${audioAccessibility.mono ? 'On' : 'Off'}</button></div>` +
@@ -2969,6 +2971,11 @@ function fillSettings(): void {
   el.querySelector('#setnotif')!.addEventListener('click', () => {
     save.notifOn = !save.notifOn;   /* v1.8.9 parity: the saved `notif` switch (absent ⇒ on) */
     refillAndFocus('#setnotif'); void persistView();
+  });
+  el.querySelector('#settips')!.addEventListener('click', () => {
+    save.tipsOn = !save.tipsOn;   /* v1.8.9 parity: the saved `tips` switch (absent ⇒ on) */
+    if (!save.tipsOn) tooltipOwner.hide();
+    refillAndFocus('#settips'); void persistView();
   });
   el.querySelector('#setsalv')!.addEventListener('click', () => {
     save.salvageConfirm = !save.salvageConfirm;   /* v1.8.9 parity: the saved `sv` switch the Inventory reads */
@@ -9212,6 +9219,13 @@ async function runWorldHarvest(planetSeed: number): Promise<void> {
     if (!convergence) refreshPlanetSurveyCard();
   }
 }
+/** The hint bubble (D16 parity, tooltips.ts; v1 `tips`): hover/focus on desktop, long-press on touch (native titles too). */
+const tooltipOwner = new TooltipOwnerV1({
+  document, touch: TOUCH_DPR,
+  enabled: () => save?.tipsOn !== false,
+  blocked: () => trainingActive(),
+});
+
 /** Prime Codex travel (D16 parity, prime-travel.ts): a claimed Signature flies to its world; an in-reach Titan is tracked to the
  * nearest world it waits on. Both go through the one proven-route owner, so the charter gates are unchanged. */
 async function runPrimeCodexTravel(button: HTMLButtonElement): Promise<boolean> {
@@ -17089,7 +17103,7 @@ let lastMutationBlockWitness: Readonly<{
 }> | null = null;
 const READ_ONLY_MUTATION_SELECTOR = [
   '#dockcharts', '#setsnd', '#setvol', '#setvoice', '[data-pref]', '[data-motion]',
-  '#setcharts', '#setfx', '#setshake', '#setglass', '#setrestart', '#setresetyes', '#setnotif',
+  '#setcharts', '#setfx', '#setshake', '#setglass', '#setrestart', '#setresetyes', '#setnotif', '#settips',
   '[data-arc9-nameplate-choice]',
   '[data-frontier-ending-id]',
   '[data-starter-charter-accept]',
