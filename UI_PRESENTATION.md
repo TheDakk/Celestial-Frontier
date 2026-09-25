@@ -4,6 +4,17 @@ Each section dates itself (most with a `matches code as of` marker; a section wi
 description). Refreshed in place September 24, 2026: the painted Compendium card and matchup picker section only; the
 rest of this doc was not re-verified in that refresh.
 
+## v2 folded survey card (D18) — matches code as of 2026-09-25
+
+- **An option, off by default.** Settings → "Folded survey card" (`#setfold`). Nick decided on 2026-09-25 that the default stays the flat card, which is the card uilayout and the Slice/Glass instruments measure.
+- **Stored on the device, never in the save.** The choice is a device preference (`cf-v2-survey-folds/v1`, guarded localStorage, like Mono audio). It rides on the card element as `data-survey-folds="on"`.
+- **Flat when off.** `showSurvey` keeps its original flat row expression and only calls `surveyRowsHtmlV1` (`survey-card-folds.ts`) when the flag is set.
+- **Two folds when on,** matching v1.8.9:
+  - the environment rows (Made of, Atmosphere, Climate, Water, Gravity, Magnetism, Weather, Seasons) become one **Environment** fold. Its header shows the climate's first clause and the gravity.
+  - a civilization with census detail (Tech era, Local year, Population) becomes one fold headed by its `Civilization` row, which keeps its `data-row`.
+- **Remembered open/closed state.** Pressing a header toggles it in place without a rebuild. The open/closed state is the save's existing `cardExpand` bits 1 and 2, as in v1, so there is no save-shape change.
+- **Test:** `tests/d18-survey-folds-outcome.test.ts`.
+
 ## Painted Compendium card and the matchup picker — matches code as of 2026-09-24 (anthropic/mac working copy over d643fc0e, including uncommitted changes)
 
 Scope: the card path of the morph system and the study-only matchup picker, both Claude-lane code under
