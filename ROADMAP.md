@@ -87,3 +87,8 @@ Sandpiper item23 finalfit02:14/14+1028presentation/exactrest; sixownmasks. Canon
 
 
 Rank22 DivingBeetle prepaintblocked: explicit hidden flightwings unsupported (onlycrab hiddenlegs currently). Exactrefusal/sourcehashes in closed-beetle-intake-01; Clauderequest forclosedwing support preservingopenbeetles/flightgate/S2. Noabsentlie orpaintingattempt. CodexcontinuesHerring, returnswhencontractavailable. Sandpiper signed0e9fcf18G.
+
+
+Herring item24 /Earthrank23 finalfit02+sixmasks:13/13+949presentation/exactrest; waternative0/0,p953/max8.6ms4×,zeroCPUoverbudget. Heads overlapreturn and fainttailcrosseswaterband—Claude stagefixbeforepublication. Runtimeunchanged0e9fcf18,no repeatedfull/S2; rootPASS. CodexnextWildHorse thenSalamander/Eel/Honeybee/Rat/Hare/Turtle/Dolphin/Whale/Bullfrog/Boar/Deer. ClosedBeetlecapabilityrefusal signedc132cf40G; nofalseadmission. C8/economyparked.
+
+Herring also retains low-alpha fringe/specks outside visible silhouette; alpha-extents.json and README explicitly keep master cleanup open, noalphaerase/raisedthreshold. Do not count it as visually admitted.

@@ -206,3 +206,9 @@ Supersedes in-progress note: `audits/ART_BATTLE_FOCUS_20260925/23-sandpiper/READ
 
 ## C15 closed-shell Beetle capability request — BLOCKED before painting
 Sandpiper signed0e9fcf18 G. Ranked22 Diving Beetle requires closed elytra with hidden flight membranes. Current explicit hidden:[wings] declaration refuses `Hidden anatomy: unsupported hidden chain`; only crab leg3 is supported. Packet `audits/ART_BATTLE_FOCUS_20260925/closed-beetle-intake-01/README.md` retains executed refusal/source hashes. Please supply/review explicit closed-wing support or a separate template, refusing flight requiring unseen paint and preserving open Beetle/Dragonfly/S2/limits. Hidden must never mean absent. Codex continues Herring while this dependency is addressed; no misleading admission or painting count claimed.
+
+
+## C15 Herring item24 — candidate delivered; stage visual gate blocked
+`audits/ART_BATTLE_FOCUS_20260925/24-herring/README.md`, fit02, markings.json, static01, native-observed01 and review-sheet.13/13+949presentation/exactrest,13parts and sixownmasks. Fullproposedwaterfilm0/0,p953/max8.6ms4×,zeroCPUoverbudget/longintervals; otherlane0/18samples. **Returnheads overlap and fainttail crossesabove waterband.** Please resolve actualpaintspacing/fulltravel/liquidcontainment beforepicker/publication. Runtimeunchanged0e9fcf18; nofull/S2repeat. Twoanatomy/framingrejectsretained; selectedfreshHerringusesPikeonlyfinvisibilityreference. CodexcontinuesWildHorse. Closedbeetlecapabilityrefusal signedc132cf40G; C8/economyparked.
+
+Herring alpha follow-up before signing: alpha-extents.json finds low-alpha specks beyond the visible silhouette (nonzero bounds107,53–1192,941; alpha>127 bounds111,485–1134,789). Do not call its master margin clean or publish before art cleanup. No alpha threshold/erase applied. This additional art finding is retained alongside stage overlap/liquid containment.
