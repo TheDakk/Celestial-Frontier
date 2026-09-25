@@ -117,11 +117,13 @@ describe('Arc 6 player-live combat wiring', () => {
   });
 
   it('publishes no combat fact until the registered commit independently verifies its exact receipt and save', () => {
+    /* since §20 Command the member checks live in the shared prep, which immediately precedes the commit and is its first call */
     const settle = functionBody(
       action,
-      'export async function commitArc6CombatActionV1(',
+      'function prepareArc6CombatPartyV1(',
       '',
     );
+    expect(functionBody(action, 'export async function commitArc6CombatActionV1(', '')).toContain('const prepared = prepareArc6CombatPartyV1(');
     expect(ordered(settle, [
       'projectArc6CombatChampionAvailabilityV1({',
       "if (availability.kind !== 'available')",
@@ -231,7 +233,7 @@ describe('Arc 6 player-live combat wiring', () => {
 
     const actionCommit = functionBody(
       action,
-      'export async function commitArc6CombatActionV1(',
+      'function prepareArc6CombatPartyV1(',
       '',
     );
     expect(ordered(actionCommit, [
