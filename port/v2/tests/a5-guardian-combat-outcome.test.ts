@@ -92,11 +92,13 @@ import {
   commitArc6CombatActionV1,
   projectArc6CombatChampionAvailabilityV1,
   projectArc6CombatChampionRosterV1,
+  projectArc6CommandBreakV1,
 } from '../apps/game/src/arc6-combat-action.js';
 import {
   COMBAT_CARD_OUTCOME_SCHEMA,
   CombatCardController,
   projectCombatCardReadModelV1,
+  combatCardCommandBreakV1,
 } from '../apps/game/src/combat-card.js';
 import { createF4RuntimeAuthority, type F4RuntimeAuthority } from '../apps/game/src/f4-runtime-authority.js';
 import {
@@ -377,6 +379,8 @@ function mainCombatHarness(f: DurableFixture, mutations: readonly MainMutation[]
     document,
     Element: dom.window.Element,
     card,
+    combatCardCommandBreakV1,
+    projectArc6CommandBreakV1, // §20 Command (merged 2026-09-25): the card asks whether a Break is waiting
     Date: Object.freeze({ now: () => NOW }),
     performance: Object.freeze({ now: () => 17 }),
     // the durable authorities, exactly as boot published them

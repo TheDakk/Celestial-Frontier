@@ -28,9 +28,7 @@ import { createSessionRNG } from '@cf/domain-sessionrng';
 import {
   COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   planCombatPartySettlementV1,
-  planCombatSettlementV1,
   projectGuardianPrimeEncounterV1,
-  runDuel,
   runEncounterV1,
   autoEncounterDecisionV1,
   type CombatSettlementPlanV1,
@@ -139,46 +137,12 @@ function championFor(seed: number, hurt = 0) {
   });
 }
 
-function partyPlan(seeds: readonly number[], battleId: string, activePlayMs = CLOCK, receiptOrdinal = 0): Plan {
-  const planned = planCombatPartySettlementV1({
-    battleId,
-    receiptOrdinal,
-    encounter: ENCOUNTER,
-    worldTier: OPPORTUNITY.effectiveTier,
-    mode: 'auto',
-    party: seeds.map((seed) => ({ champion: championFor(seed), stance: 'balanced' as const })),
-    authority: {
-      worldConquered: false,
-      claimedPrimeSignatureIds: [],
-      lossXp: { kind: 'known-target', awardedTarget: 0 },
-      activePlayMs,
-    },
-  });
-  if (planned.status !== 'planned') throw new Error(`combat party plan refused ${planned.reason}`);
-  return planned;
-}
 
 function idOf(member: PartyBlock['members'][number]): string {
   if (member.champion.kind !== 'owned-fauna') throw new Error('party fixture holds only owned fauna');
   return member.champion.creatureId;
 }
 
-/** Deterministic seed search (like the domain tests): the first `size`-member party whose plan satisfies `accept`. */
-function findParty(label: string, accept: (plan: Plan) => boolean, size: 2 | 3 = 3): readonly number[] {
-  for (let base = 3; base < 3_000; base += 7) {
-    const seeds = Array.from({ length: size }, (_, index) => base + index * 1_000);
-    let plan: Plan;
-    try {
-      plan = partyPlan(seeds, `party-search-${base}`);
-    } catch {
-      continue;
-    }
-    if (plan.party !== undefined && accept(plan)) return seeds;
-  }
-  throw new Error(`no party fixture: ${label}`);
-}
-const someoneFell = (plan: Plan): boolean => plan.party!.members.some((m) => m.injury?.status === 'set-recovery');
-const someoneIdle = (plan: Plan): boolean => plan.party!.members.some((m) => m.legEnd === 'not-fought');
 
 interface PartyHarness {
   readonly backend: StorageBackend;
@@ -317,19 +281,6 @@ async function partyHarness(
   });
 }
 
-async function commit(fixture: PartyHarness, plan: Plan, activePlayMs = CLOCK, expectedRevision = 1) {
-  return createCombatSettlementPersistenceOwnerV1(createRevisionedRepository(fixture.backend), REGISTRY).commit({
-    expectedRevision,
-    grant: fixture.grant,
-    writable: fixture.writable,
-    snapshot: { activePlayMs },
-    now: NOW,
-    plan,
-    opportunity: OPPORTUNITY,
-    ownershipV2: fixture.ownership,
-    brinkAchievementJoin: null,
-  });
-}
 
 async function reload(fixture: PartyHarness) {
   const loaded = await readRevisionedSaveV5WithRecovery(fixture.backend, REGISTRY, NOW);
