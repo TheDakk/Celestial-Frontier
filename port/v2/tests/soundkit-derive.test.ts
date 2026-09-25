@@ -1,3 +1,4 @@
+import { admitLoudnessV1 } from '../apps/game/src/soundkit/loudness.js';
 import { describe, expect, it, vi } from 'vitest';
 import { compileVoiceCard, type VoiceCard } from '../apps/game/src/soundkit/voice-card.js';
 import { deriveCue, sha256Hex, stableJson } from '../apps/game/src/soundkit/derive.js';
@@ -93,7 +94,8 @@ describe('soundkit derivation', () => {
     expect(faint.flags).toContain('length-capped-2s');
     let peak = 0;
     for (const v of faint.samples) peak = Math.max(peak, Math.abs(v));
-    expect(peak).toBeCloseTo(0.891, 3);
+    // D15 Stage 0: peak-normalised to -1 dBFS, then the measured loudness stage may only ATTENUATE (short-term ≤ -14 LUFS, true peak ≤ -1 dBTP)
+    expect(peak).toBeLessThanOrEqual(0.891 + 1e-6); expect(admitLoudnessV1(faint.samples, faint.sampleRate, 'creature')).toMatchObject({ ok: true });
     expect(faint.flags).toContain('texture-missing:scaled');
   });
 
