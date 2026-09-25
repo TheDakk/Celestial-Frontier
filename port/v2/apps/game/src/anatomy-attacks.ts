@@ -57,7 +57,14 @@ export function attackRepertoire(card:BodyCard,medium:BattleMedium,declaration?:
  if(!earth&&(!declaration||declaration.recordHash!==card.recipeHash||!card.recipeHash||!declaration.source.trim()||!Array.isArray(declaration.weapons)||new Set(declaration.weapons).size!==declaration.weapons.length||declaration.weapons.some(w=>!['bite','claw','gore','tail','sting','peck','headbutt','constrict','spit','kick','body'].includes(w))))throw Error('Attack anatomy: hash-bound painter weapon declaration required');
  if(earth&&!profile)throw Error('Attack anatomy: named Earth capability declaration required for '+earth);
  if(profile&&!profile.candidateTemplates.includes(card.template.id))throw Error('Attack anatomy: species/template mismatch for '+earth);
- if(profile&&!profile.media.includes(medium))throw Error('Attack anatomy: incompatible species medium');
+ // The mandibulate-insect profile defaults to ground because castes/larvae
+ // differ. Its documented adult-flight path requires explicit source habitat
+ // AND observed unfolded wings; a family/species name supplies neither.
+ const sourceFlight=medium==='air'&&profile?.id==='mandibulate-insect'&&card.template.id==='insect'
+  &&card.habitat?.realm==='aerial'&&['fly','glide'].includes(card.habitat.gait??'')&&Boolean(card.habitat.source.trim())
+  &&card.locomotion.templateGait==='flight'&&['wingNear','wingFar'].every(j=>card.parts.some(p=>p.joint===j))
+  &&!(card.anatomy?.schema==='cf.anatomy-presence/v2'&&card.anatomy.folded?.some(j=>/wing/i.test(j)));
+ if(profile&&!profile.media.includes(medium)&&!sourceFlight)throw Error('Attack anatomy: incompatible species medium');
  const observed=(weapon:Weapon)=>declaration?.recordHash===card.recipeHash&&Boolean(card.recipeHash)&&Boolean(declaration?.source.trim())&&declaration?.weapons.includes(weapon);
  const joints=new Set(card.parts.map(p=>p.joint)),library=actionsFor(card.template.id,card.anatomy);
  const counts=appendageCounts(card.template.id,card.anatomy);
