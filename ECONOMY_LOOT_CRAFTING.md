@@ -392,6 +392,13 @@ an acceptance contract rather than current capability.
   deterministic output preview, explicit protection/favorite guards and a
   revision-checked destruction receipt. There is no bulk action that silently eats
   a unique, equipped, locked or pending-reward item.
+- **Salvage all + "don't ask again" (v2, matches code as of 2026-09-25, D16 parity with v1 `data-salvall` / `data-salvoff`):**
+  the Inventory list shows `♺ Salvage all Common/Uncommon (N)` while junk exists — `salvageAllCandidatesV1`: unequipped,
+  unfavorited, unlocked gear (never a relic or pending reward) at rarity tier ≤ 1. With Confirm salvage on, the first tap ARMS
+  (`Confirm — salvage N items`) and the second runs; a filter edit disarms. It is ordinary exact-instance salvages in sequence,
+  each its own receipt, stopping at the first that does not commit, then `♺ Salvaged N items.` The single-item confirmation
+  adds `Salvage — don't ask again`: it turns `save.salvageConfirm` off (the flag rides the salvage's own commit; `persistSoon`
+  covers a refusal) and proceeds. Outcome test: `tests/d16-salvage-all-outcome.test.ts`.
 - Targeted crafting names the desired base and allowed tag/family, fixed costs,
   possible tier/range and any drawback **before** spending. Its result is derived
   from the craft `sourceActionId` and ordinal. It is not an infinite paid reroll or
