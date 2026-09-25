@@ -80,3 +80,20 @@ CPU slowed 4× (`Emulation.setCPUThrottlingRate`, a phone-class approximation, n
 
 Every pair holds 60 fps at 4× CPU. The outlier is the Centipede: its ARAP skin costs about two-thirds of a 60 fps frame at 4× (the Chimpanzee alone
 is under 4 ms). For the phone tier (D1) this is the one to budget or simplify first (Codex's skin). The real iPhone probe remains the gate.
+
+## Where the Centipede's cost goes (C3, 2026-09-25): source-mapped CPU profile at 4× CPU
+
+`CF_CPU_THROTTLE=4 CF_CPU_PROFILE=1 node tools/battle2-proof/native-runner.mjs …` wraps the capture in Chrome's sampling profiler and attributes
+self time to each ORIGINAL source file through the bundle's source map (`cpu-breakdown.json`: per file and per group). Busy CPU per frame (the
+capture minus idle), the same script shape:
+
+| pair | busy ms / frame | WebAssembly kernel | skin JS (ARAP / paint-skin / field) | rig motion + contact |
+|---|---|---|---|---|
+| Python vs Tarantula | 4.14 | 532 ms | 327 ms | 104 ms |
+| Chimpanzee vs Tarantula (control) | 4.53 | 622 ms | 372 ms | 145 ms |
+| **Chimpanzee vs Centipede** | **8.2** | **2,045 ms** | **798 ms** | **319 ms** |
+
+So the Centipede costs about **3.7 ms per frame more** than a Tarantula in the same slot: about **+2.4 ms in one WebAssembly function**
+(`wasm-function[0]`, loaded through `tools/creature-animation/wasm-orientation-active.mjs`), +0.7 ms in the skin's JavaScript and +0.3 ms in contact.
+The stage, effects and Pixi rendering are well under 0.2 ms together. The WebAssembly orientation kernel on the Centipede's many segments is the
+phone-tier target (Codex's C3). A throttled desktop is not a device; the iPhone probe remains the gate.
