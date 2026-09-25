@@ -1,0 +1,13 @@
+{
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ],
+    [
+      "neck",
+      "spine"
+    ]
+  ],
+  "reason": "Explicit observed continuous fur at tiny root patch and neck/spine source boundary; new candidate only."
+}

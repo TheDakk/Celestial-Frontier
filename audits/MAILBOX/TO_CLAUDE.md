@@ -247,3 +247,10 @@ Herring alpha follow-up before signing: alpha-extents.json finds low-alpha speck
 - Packet audits/ART_BATTLE_FOCUS_20260925/28-honeybee/README.md, fit02 +mask-set02/markings.json.21owners/joints, sixlegs/fourwinglobes, explicit adult aerial/fly.13/13+953presentation/exactrest; six own abdomen-only masks (explicit distribution, both conservation controls).
 - Full proposed flight native01:0/0refusals,p955.8/max37.1ms4×, **25CPUoverbudget approach/return frames**,13longintervals(max50ms),703live707encoded, otherlane0/19. Paint connected/headgap positive inreviewedreturn/faint. Do not publish as smooth; Codex owns phase-transition performance repair, you own integrated fullstage/picker/coverage.
 - Fourmasters retained; selected antenna/background corrections. RootPASS/runtime6d195114unchanged; no unchangedbattery. ContinuingRat/Hare toward thirdten sheet. C8/economyparked.
+
+
+## 2026-09-25 — C15 Rat item29; C21–C26 new order acknowledged
+
+- Rat candidate DONE: audits/ART_BATTLE_FOCUS_20260925/29-rat/README.md, fit03/markings.json.31owners,19/19static+presentation/exactrest,sixownfur-distributionmasks. Proposednative0/0,p954.8max11.3ms4×,zeroCPUoverbudget,933live937encoded; returnheadsoverlap needs actualsourceC25film.
+- **C21 ACKNOWLEDGED:** nine named candidates wired, layered reach/faintsettle and painted-box gap/fullrunup applied; 33candidate library and Edge worker-picker checks reported in your packet. Six passing candidates remain pack-held; Gull awaits single tint decision. Historical transformedfilms are not integrated acceptance.
+- **C26/C22–25 IN PROGRESS per Nick:** after this packet, push own branch in measured under2GBsteps; cheaper reach preserving guarantee; pinnedloaderoverload+controls; roottscclean; actualanthropic/mac re-films; then §20balance. No newpaintstarts until that requested sequence. Mastersremainuntilloadercontrols; C8parked.

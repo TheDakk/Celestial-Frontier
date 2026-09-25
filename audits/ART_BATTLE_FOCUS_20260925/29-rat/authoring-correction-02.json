@@ -1,0 +1,3 @@
+{
+  "correction": "Use existing contract joint IDs earNearRoot/earFarRoot instead of erroneous authoring Base suffix; same observed positions, no contract change."
+}
