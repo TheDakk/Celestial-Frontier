@@ -1,0 +1,16 @@
+
+ RUN  v4.1.10 /Users/nick/Projects/celestial-frontier-openai-mac/port/v2
+
+ ✓ apps/game/src/morph/painted-card-source.test.ts > painted card source — the individual on the card > OWNERSHIP (I5 v2 diagnosis 2026-09-25): a painted card's leases, cache, pending renders and resident archetypes are reported truthfully; release and releaseUnowned trim exactly the unleased cards 27ms
+ ✓ apps/game/src/morph/painted-card-source.test.ts > painted card source — the individual on the card > MEMORY (I5 review 2026-09-24): at most ARCHETYPE_RESIDENT_DEFAULT decoded archetypes stay resident while cards of all of them render; eviction never changes a card; control: an unbounded source keeps them all 1426ms
+ ✓ apps/game/src/morph/painted-card-source.test.ts > painted card source — the individual on the card > a creature whose anatomy no painting draws → null (the painter tier answers); an Earth species of a painted body plan takes its stand-in (Nick 2026-09-24), and standIns:false restores painted-species-only 1ms
+ ✓ apps/game/src/morph/painted-card-source.test.ts > painted card source — the individual on the card > a crab genome renders a 132 thumb and a 440 portrait as PNG data URLs (decodable, right size, alpha present); two genomes differing in colour give different bytes; the same genome is served from cache (one render) 33ms
+ ✓ apps/game/src/morph/painted-card-source.test.ts > painted card source — the individual on the card > M3/M4 on the card: a striped crab differs from the plain one; an eye-spotted lumin crab (emissive) differs again; iridescent (no painted mask) glows on the accent set only 61ms
+ ✓ apps/game/src/morph/painted-card-source.test.ts > painted card source — the individual on the card > the Civet archetype (labels derived from its binding) renders too; the cache cap evicts the oldest 28ms
+ ✓ apps/game/src/morph/painted-card-source.test.ts > painted card source — the individual on the card > renders ONE card per host task: five simultaneous requests yield before each render, so a grid never freezes the page (review 2026-09-24: all renders ran in one task) 78ms
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  23:44:21
+   Duration  2.17s (transform 202ms, setup 0ms, import 410ms, tests 1.66s, environment 0ms)
+

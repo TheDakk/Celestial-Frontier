@@ -14,6 +14,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { parseAst } from 'rolldown/parseAst';
+import { discoverRelativeSourceClosure } from './override-source-graph.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..');
@@ -191,7 +192,9 @@ function literalRouteKeys(literal, label, validateValue) {
 
 function parseTypeScript(source, label) {
   try {
-    return parseAst(source, { lang: label.endsWith('.tsx') ? 'tsx' : 'ts' }, label);
+    const lang = label.endsWith('.tsx') ? 'tsx' : label.endsWith('.jsx') ? 'jsx'
+      : /\.(?:js|mjs|cjs)$/.test(label) ? 'js' : 'ts';
+    return parseAst(source, { lang }, label);
   } catch (error) {
     throw new ParserError(`${label} ${String(error?.message || error)}`);
   }
@@ -238,17 +241,6 @@ const APPROVED_BARE_IMPORTS = new Map([
   ['@cf/domain-rand', new Set(['mulberry32', 'TAU'])],
   ['@cf/domain-speciestraits', new Set(['SP_COLOR', 'SP_HEX'])],
 ]);
-/* One reviewed relative ESCAPE from the art tree: painter-topology.ts (Codex's world-life topology, 2026-09) reads the
-   anatomy contract's appendage counts from the shared creature-animation tool. Exact importer, exact specifier, exact
-   named import — any other file, path or name is parser damage. Nothing else may leave recursive discovery. */
-const APPROVED_RELATIVE_ESCAPES = new Map([
-  ['painter-topology.ts\u0000../../../tools/creature-animation/repeated-anatomy.mjs', new Set(['appendageCounts'])],
-]);
-function approvedRelativeEscape(label, node) {
-  const allowed = APPROVED_RELATIVE_ESCAPES.get(`${label}\u0000${node.source?.value}`);
-  return Boolean(allowed) && node.specifiers.length > 0 && node.specifiers.every((specifier) => specifier.type === 'ImportSpecifier'
-    && allowed.has(exportedName(specifier.imported)) && exportedName(specifier.imported) === specifier.local.name);
-}
 /* Bare re-exports are a smaller surface than imports: the compatibility file
    may expose only these exact domain names, aliases, declaration kinds, and
    declaration count. A package-wide allowlist would let an unrelated art
@@ -514,7 +506,11 @@ function auditRouteTableReferences(program, label, source) {
       if (object?.type === 'Identifier' && object.name === 'Object') {
         const method = propertyName(node);
         if (!(parent?.type === 'CallExpression' && parent.callee === node
-            && !node.computed && APPROVED_OBJECT_CALLS.has(method))
+            && !node.computed && (APPROVED_OBJECT_CALLS.has(method)
+              // A fresh null-prototype dictionary cannot mutate an existing
+              // route/prototype; descriptors and arbitrary prototypes stay refused.
+              || (method === 'create' && parent.arguments.length === 1
+                && parent.arguments[0]?.type === 'Literal' && parent.arguments[0].value === null)))
             && !earthSnapshotMembers.has(node)) {
           parserError(label, node, 'trusted built-in Object member escapes its approved direct-call context');
         }
@@ -529,7 +525,7 @@ function auditRouteTableReferences(program, label, source) {
     if (node.type === 'ImportDefaultSpecifier') {
       parserError(label, node, 'default imports are unsupported in route-table sources');
     }
-    if (node.type === 'ImportDeclaration' && !knownRelativeImport(label, node.source?.value) && !approvedRelativeEscape(label, node)) {
+    if (node.type === 'ImportDeclaration' && !knownRelativeImport(label, node.source?.value)) {
       parserError(label, node, `relative import ${JSON.stringify(node.source?.value)} is outside recursive art-source discovery`);
     }
     if (node.type === 'ImportDeclaration' && typeof node.source?.value === 'string'
@@ -612,9 +608,7 @@ function auditRouteTableReferences(program, label, source) {
         && node.computed && root !== 'FLORA_DUPES'
         && (root === 'CANON' ? isCanonIndex(node.property) : isNameIndex(node.property))
         && label === 'speciesoverrides.ts'
-        // paintOverrideCanvas: the original resolver body, renamed when resolveOverrideCanvas became the topology-capture
-        // wrapper (Codex, 2026-09); the exact-index reads live there now — a named consumer, reviewed 2026-09-23
-        && (functionScope === 'hasNamedRoute' || functionScope === 'resolveOverrideCanvas' || functionScope === 'paintOverrideCanvas');
+        && (functionScope === 'hasNamedRoute' || functionScope === 'paintOverrideCanvas');
       if (root && !legalIncludes && !legalIndex && !earthResidentMembers.has(node)) {
         const member = node.computed ? 'computed member' : `member ${namedProperty}`;
         parserError(label, node, `${root} route table uses unsupported ${member}`);
@@ -666,8 +660,8 @@ const ART_SOURCE_ROOT = path.join(root, 'packages/art/src');
 const KNOWN_VERBATIM_JS_HASHES = new Map([
   ['artextras.verbatim.js', 'dadfd860bc21b4472efb80f91399ddb89b704bc2b0396fe848aa8628b21cc2c7'],
   ['galaxyart.verbatim.js', '789a9f4e326896f6e8f9f142a6128ac8ec48a5388e2304afd4114a981ff14d27'],
-  ['hdart.verbatim.js', '93d1e79292e68cd2cceab14617005900b1ccf649d2284a83f0ec497ec8e34bcd'], // re-blessed 2026-09-23: re-lifted 2026-09-21 from the TypeSafe-fixed tracked source (lift-hdart.mjs, deterministic)
-  ['hdportrait.worker.verbatim.js', '50c43aa81272cc3e7950b85cf957d0e5657b3fd2c174fa38b16dd11cdc1b67e3'], // re-blessed 2026-09-23 with hdart (same re-lift)
+  ['hdart.verbatim.js', '93d1e79292e68cd2cceab14617005900b1ccf649d2284a83f0ec497ec8e34bcd'],
+  ['hdportrait.worker.verbatim.js', '50c43aa81272cc3e7950b85cf957d0e5657b3fd2c174fa38b16dd11cdc1b67e3'],
   ['thumbart.verbatim.js', '85b54edf7f32a174da90f6f68ea474dcebe8d31997dad683c6f5b88cb5587544'],
   /* Generator/source-slice contracts and forbidden-owner negative controls
      live in the paired biome-vista tests; these whole-file hashes make the
@@ -777,7 +771,18 @@ function discoverArtSources(directory = ART_SOURCE_ROOT, relative = '') {
   }
   return files;
 }
-const FILES = discoverArtSources().sort();
+const ART_FILES = discoverArtSources().sort();
+let sourceGraph;
+try {
+  sourceGraph = discoverRelativeSourceClosure({
+    sourceRoot: ART_SOURCE_ROOT, boundaryRoot: root, seeds: ART_FILES,
+    sealed: KNOWN_VERBATIM_JS, parse: parseTypeScript,
+  });
+} catch (error) {
+  console.error(`overridecheck: ${error.message} — the PARSER is broken`);
+  process.exit(2);
+}
+const FILES = sourceGraph.files;
 const FILE_SET = new Set(FILES);
 try {
   auditGeneratedHdArt(src('packages/art/src/hdart.verbatim.js'), 'hdart.verbatim.js');
@@ -793,26 +798,19 @@ for (const [label, expected] of KNOWN_VERBATIM_JS_HASHES) {
     process.exit(2);
   }
 }
-const programCache = new Map();
+const programCache = sourceGraph.programs;
 const bindingCache = new Map();
 const exportCache = new Map();
 const writtenNameCache = new Map();
 
 function normalizedModuleTarget(label, specifier) {
-  if (typeof specifier !== 'string' || !specifier.startsWith('.')) return null;
-  const target = specifier.replace(/\.mjs$/, '.mts').replace(/\.cjs$/, '.cts')
-    .replace(/\.jsx$/, '.tsx').replace(/\.js$/, '.ts');
-  const normalized = path.posix.normalize(path.posix.join(path.posix.dirname(label), target));
-  if (path.posix.isAbsolute(normalized) || normalized === '..' || normalized.startsWith('../')) return null;
-  return normalized;
+  return sourceGraph.resolve(label, specifier);
 }
 
 function knownRelativeImport(label, specifier) {
   if (typeof specifier !== 'string' || !specifier.startsWith('.')) return true;
-  const typed = normalizedModuleTarget(label, specifier);
-  if (typed && FILE_SET.has(typed)) return true;
-  const raw = path.posix.normalize(path.posix.join(path.posix.dirname(label), specifier));
-  return !path.posix.isAbsolute(raw) && raw !== '..' && !raw.startsWith('../') && KNOWN_VERBATIM_JS.has(raw);
+  const target = normalizedModuleTarget(label, specifier);
+  return target !== null && (FILE_SET.has(target) || KNOWN_VERBATIM_JS.has(target));
 }
 
 function cachedProgram(label) {
@@ -1095,12 +1093,6 @@ function routeTables(source, label) {
   return tables;
 }
 
-/* Codex's topology-capture restructure (2026-09-16/17): the audited route path (selectors, kingdom branches, painter
-   calls, fitInk, returned canvas) lives in paintOverrideCanvas(g, observeTopology?); the exported
-   resolveOverrideCanvas is a thin wrapper (masks capture replay) audited by exact implementation hash below. Each
-   painter call is wrapped as paintWithTopology(ink, () => <exact audited call>, observeTopology). Re-audited 2026-09-23. */
-const RESOLVER_BODY = 'paintOverrideCanvas';
-const RESOLVER_WRAPPER = 'resolveOverrideCanvas';
 function routerWiring(source, label, functionName, compatibilitySource = source) {
   const program = parseTypeScript(source, label);
   const matches = [];
@@ -1265,12 +1257,6 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
     return statement?.kind === 'const' && declarator?.init?.type === 'CallExpression'
       && identifier(declarator.init.callee, 'newInk') && declarator.init.arguments.length === 0;
   };
-  /* paintWithTopology(ink, () => CALL, observeTopology): the exact wrapper shape; anything else is not the audited route path */
-  const topologyWrapped = (call) => call?.type === 'CallExpression' && identifier(call.callee, 'paintWithTopology')
-    && call.arguments.length === 3 && identifier(call.arguments[0], 'ink') && identifier(call.arguments[2], 'observeTopology')
-    && call.arguments[1]?.type === 'ArrowFunctionExpression' && call.arguments[1].params.length === 0 && !call.arguments[1].async;
-  const wrappedPaint = (statement) => { const call = callStatement(statement); if (!topologyWrapped(call)) return null; const body = call.arguments[1].body; return body?.type === 'CallExpression' ? body : null; };
-  const wrappedBlock = (statement) => { const call = callStatement(statement); if (!topologyWrapped(call)) return null; const body = call.arguments[1].body; return body?.type === 'BlockStatement' && body.body.length === 1 ? body.body[0] : null; };
   const paintsInk = (call) => call?.type === 'CallExpression'
     && call.arguments.length > 0 && exactMember(call.arguments[0], 'ink', 'c');
   const fitsInkToCanvas = (statement) => {
@@ -1281,6 +1267,19 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
   const exactCall = (statement, expected) => {
     const call = callStatement(statement);
     return call && source.slice(call.start, call.end) === expected;
+  };
+  const topologyPaintBody = (statement, kind) => {
+    const call = callStatement(statement), callback = call?.arguments?.[1];
+    if (!(identifier(call?.callee, 'paintWithTopology') && call.arguments.length === 3
+        && identifier(call.arguments[0], 'ink') && identifier(call.arguments[2], 'observeTopology')
+        && callback?.type === 'ArrowFunctionExpression' && !callback.async
+        && callback.params.length === 0)) {
+      contractError(statement, 'topology observation must synchronously wrap the same ink and exact zero-argument painter');
+    }
+    if (kind === 'expression' && callback.body?.type === 'CallExpression') return callback.body;
+    if (kind === 'dispatch' && callback.body?.type === 'BlockStatement'
+        && callback.body.body.length === 1 && callback.body.body[0].type === 'IfStatement') return callback.body.body[0];
+    contractError(callback, 'topology callback changed the audited painter/dispatch shape');
   };
   const exactFit = (statement, tag) => fitsInkToCanvas(statement)
     && source.slice(callStatement(statement).arguments[2].start, callStatement(statement).arguments[2].end) === tag;
@@ -1300,9 +1299,9 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
   };
 
   const body = matches[0].body.body;
-  const optionalObserver = (param) => param?.type === 'Identifier' && param.name === 'observeTopology' && param.optional === true;
-  if (!(matches[0].params.length === 2 && identifier(matches[0].params[0], 'g') && optionalObserver(matches[0].params[1]))) {
-    contractError(matches[0], 'resolveOverrideCanvas must have only its audited g parameter');
+  if (!(matches[0].params.length === 2 && identifier(matches[0].params[0], 'g')
+      && identifier(matches[0].params[1], 'observeTopology') && matches[0].params[1].optional)) {
+    contractError(matches[0], 'paintOverrideCanvas must have only its audited g and optional observeTopology parameters');
   }
   for (const globalName of ['Object', 'String', 'Boolean', 'Set', 'Number', 'Math']) {
     if (writtenNames(label).has(globalName) || moduleBindings(label).has(globalName)) {
@@ -1310,6 +1309,9 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
     }
   }
   const helperProvenance = new Map([
+    ['resolveOverrideCanvas', ['speciesoverrides.ts', 'resolveOverrideCanvas']],
+    ['paintOverrideCanvas', ['speciesoverrides.ts', 'paintOverrideCanvas']],
+    ['paintWithTopology', ['speciesoverrides.ts', 'paintWithTopology']],
     ['isEarthKingdom', ['speciesoverrides.ts', 'isEarthKingdom']],
     ['hasNamedRoute', ['speciesoverrides.ts', 'hasNamedRoute']],
     ['lineageRenderKingdom', ['speciesoverrides.ts', 'lineageRenderKingdom']],
@@ -1324,17 +1326,18 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
     ['floorFade', ['speciesoverrides.ts', 'floorFade']],
     ['floraLadder', ['floraoverrides.ts', 'floraLadder']],
     ['faunaQuadruped', ['quadrupedoverrides.ts', 'faunaQuadruped']],
-    ['paintWithTopology', ['speciesoverrides.ts', 'paintWithTopology']],
-    [RESOLVER_WRAPPER, ['speciesoverrides.ts', RESOLVER_WRAPPER]],
   ]);
   const exactHelperImplementations = new Map([
+    // The public observer/replay wrapper must return the original ordinary
+    // canvas; the topology helper must synchronously execute the exact callback.
+    // These seals supplement (never replace) the live inner routing contract.
+    ['resolveOverrideCanvas', 'f93499566b46c29011e3a76cad149045bd459d10d8d8e39d0c70dc28e81cf0ff'],
+    ['paintWithTopology', '4af543414a2f37ecf8a7d5df9a56a8952b085c51ff5f75787d7df21fe30551e4'],
     ['newCanvas', 'a195d1f082fb8c24f8012bc48431c75427120f776161b8f35a98b0da08112ee8'],
     ['newInk', '83693e4187095ae9826d32fc18d72f0516cf2faeb4f44b4460d93a561e1eea85'],
     ['fitInk', '5fd7fc8bbea71d5cc392d681608d8835ce0e9a95683f9caa5b52e0c0f777ed02'],
     ['isReviewedFaunaLineage', '8bf404cff6320fc56c0f5621773250fc36352a4a903f4be868bf586264093df3'],
     ['applyReviewedFaunaLineageDrift', '860df1e0c650e36ab009ac9b58551ed5082a8ef45d4f59e0e58ff5010a3bf7a1'],
-    ['paintWithTopology', '4af543414a2f37ecf8a7d5df9a56a8952b085c51ff5f75787d7df21fe30551e4'],
-    [RESOLVER_WRAPPER, 'f93499566b46c29011e3a76cad149045bd459d10d8d8e39d0c70dc28e81cf0ff'],
   ]);
   const exactCanvasDependencies = new Map([
     ['S', '440'],
@@ -1400,11 +1403,8 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
   if (!(notIdentifier(body[7].test, 'name') && body[7].consequent?.type === 'ReturnStatement'
       && body[7].consequent.argument?.type === 'CallExpression'
       && identifier(body[7].consequent.argument.callee, 'resolveProceduralCanvas')
-      // the procedural fallthrough hands the topology observer on: resolveProceduralCanvas(g, undefined, false, observeTopology)
-      && body[7].consequent.argument.arguments.length === 4
-      && identifier(body[7].consequent.argument.arguments[0], 'g') && identifier(body[7].consequent.argument.arguments[1], 'undefined')
-      && literal(body[7].consequent.argument.arguments[2], false) && identifier(body[7].consequent.argument.arguments[3], 'observeTopology')
-      && !body[7].alternate)) {
+      && source.slice(body[7].consequent.argument.start, body[7].consequent.argument.end)
+        === 'resolveProceduralCanvas(g,undefined,false,observeTopology)' && !body[7].alternate)) {
     contractError(body[7], 'procedural fallthrough guard changed');
   }
 
@@ -1571,13 +1571,12 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
     }
   };
   auditResolverAccesses(matches[0].body);
-  { const wrapper = bindingFor(label, RESOLVER_WRAPPER); if (wrapper?.node) auditResolverAccesses(wrapper.node.body); }
 
   exactTypes(canonIf.consequent?.body || [], [
     'VariableDeclaration', 'ExpressionStatement', 'ExpressionStatement', 'VariableDeclaration',
     'ExpressionStatement', 'ExpressionStatement', 'ExpressionStatement', 'ReturnStatement',
   ], 'canon consumer');
-  const canonCall = wrappedPaint(canonIf.consequent.body[4]);
+  const canonCall = topologyPaintBody(canonIf.consequent.body[4], 'expression');
   if (!(identifier(canonIf.test, 'canon') && !canonIf.alternate
       && canvasDeclaration(canonIf.consequent.body[0])
       && exactCall(canonIf.consequent.body[1], "vignette(c, kingdom === 'fungi')")
@@ -1597,7 +1596,7 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
     'ExpressionStatement', 'ExpressionStatement', 'VariableDeclaration', 'ExpressionStatement',
     'ExpressionStatement', 'ReturnStatement',
   ], 'flora consumer');
-  const floraCall = wrappedPaint(floraBody[7]);
+  const floraCall = topologyPaintBody(floraBody[7], 'expression');
   if (!(andNot(floraBody[2].test, 'iconic', 'dupe') && returnNull(floraBody[2].consequent)
       && !floraBody[2].alternate
       && floraCall?.callee?.type === 'LogicalExpression' && floraCall.callee.operator === '||'
@@ -1616,7 +1615,7 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
     'ExpressionStatement', 'ExpressionStatement', 'VariableDeclaration', 'ExpressionStatement',
     'ExpressionStatement', 'ExpressionStatement', 'ReturnStatement',
   ], 'fauna consumer');
-  const faunaDispatch = wrappedBlock(faunaBody[7]);
+  const faunaDispatch = topologyPaintBody(faunaBody[7], 'dispatch');
   const fpCall = faunaDispatch.consequent?.type === 'ExpressionStatement'
     ? faunaDispatch.consequent.expression : null;
   const quadCall = faunaDispatch.alternate?.type === 'ExpressionStatement'
@@ -1624,7 +1623,7 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
   const quadArgument = quadCall?.arguments?.[3];
   if (!(andNot(faunaBody[2].test, 'fp', 'quad') && returnNull(faunaBody[2].consequent)
       && !faunaBody[2].alternate
-      && faunaDispatch?.type === 'IfStatement' && identifier(faunaDispatch.test, 'fp') && fpCall?.type === 'CallExpression'
+      && identifier(faunaDispatch.test, 'fp') && fpCall?.type === 'CallExpression'
       && identifier(fpCall.callee, 'fp') && paintsInk(fpCall) && quadCall?.type === 'CallExpression'
       && identifier(quadCall.callee, 'faunaQuadruped')
       && paintsInk(quadCall)
@@ -1645,7 +1644,7 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
     'ExpressionStatement', 'VariableDeclaration', 'ExpressionStatement', 'ExpressionStatement',
     'ReturnStatement',
   ], 'fungi/microbe consumer');
-  const painterCall = wrappedPaint(tail[6]);
+  const painterCall = topologyPaintBody(tail[6], 'expression');
   if (!(notIdentifier(tail[1].test, 'painter') && returnNull(tail[1].consequent)
       && !tail[1].alternate && canvasDeclaration(tail[2])
       && exactCall(tail[3], "vignette(c, kingdom === 'fungi')") && exactCall(tail[4], 'floorFade(c)')
@@ -1684,6 +1683,7 @@ function routerWiring(source, label, functionName, compatibilitySource = source)
   return { tableReads, imports };
 }
 
+console.log(`overridecheck: source graph ${ART_FILES.length} art + ${FILES.length - ART_FILES.length} transitive modules`);
 const tableOwners = new Map();
 for (const f of FILES) {
   const t = src('packages/art/src/' + f);
@@ -1790,7 +1790,7 @@ for (const f of FILES) {
   const compatibility = src('packages/art/src/speciescompat.ts');
   let wiring;
   try {
-    wiring = routerWiring(router, 'speciesoverrides.ts', RESOLVER_BODY, compatibility);
+    wiring = routerWiring(router, 'speciesoverrides.ts', 'paintOverrideCanvas', compatibility);
   } catch (error) {
     if (!(error instanceof ParserError)) throw error;
     console.error(`overridecheck: ${error.message} — the PARSER is broken`);
