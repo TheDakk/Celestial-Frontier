@@ -588,3 +588,89 @@ describe('Arc 5 headless durable feed action', () => {
     expect(fixture.receiptCas()).toBe(1);
   });
 });
+
+/* D13 stage 1e: OUTCOMES through the real controls — the real Compendium Feed controller and the care panel, the real F4
+   transaction, and a durable read-back from the runtime's committed extensions. */
+describe('D13 companion care — outcomes through the real controls', () => {
+  const readBack = async (fixture: Awaited<ReturnType<typeof runtimeFixture>>) => {
+    const { readArc5OwnershipMigration } = await import('@cf/persistence'); const { SCENE_OWNERSHIP_ADDRESS_RESOLVER } = await import('@cf/domain-acquisition');
+    const loaded = readArc5OwnershipMigration(fixture.runtime.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    if (loaded.kind !== 'loaded') throw new Error(`durable ownership ${loaded.kind}`);
+    return loaded.state.creatures.find((c) => c.creatureId === fixture.ownership.creatureId)!;
+  };
+
+  it('Use 1 on the real Feed controller: the meal follows the taste table (fed, mend, +3 first-time XP), is read back durably, and the same flavour again pays no XP', async () => {
+    const { JSDOM } = await import('jsdom');
+    const { CompendiumFeedController, projectCompendiumFeedV1 } = await import('../apps/game/src/compendium-feed.js');
+    const fixture = await runtimeFixture();
+    const fauna = fixture.ownershipV2.catalogSpecies.find((row) => row.kingdom === 'fauna')!;
+    const dom = new JSDOM('<!doctype html><body><aside id="codexpanel"><div data-arc5-feed-body></div></aside></body>');
+    const root = dom.window.document.getElementById('codexpanel') as HTMLElement, mount = dom.window.document.querySelector('[data-arc5-feed-body]') as HTMLElement;
+    const requests: { creatureId: string; foodLotId: string; fedAfter: number }[] = [];
+    const controller = new CompendiumFeedController({ root, isCurrent: () => true, onAction: (request) => { requests.push(request); } });
+    const press = (ownership: typeof fixture.ownershipV2) => {
+      controller.setState(projectCompendiumFeedV1({ generation: 1, logicalId: 'row-1', record: { id: 'row-1', name: 'Grazer', g: fauna.genome as unknown as Record<string, unknown> }, ownership, protected: false, fixture: false, activePlayMs: 0 }));
+      controller.attach(mount);
+      mount.querySelector<HTMLInputElement>(`input[data-arc5-feed-creature-id="${fixture.ownership.creatureId}"]`)!.click();
+      mount.querySelector<HTMLInputElement>(`input[data-arc5-feed-food-lot-id="${fixture.ownership.foodLotId}"]`)!.click();
+      mount.querySelector<HTMLButtonElement>('[data-arc5-feed-confirm]')!.click();
+    };
+    const before = fixture.ownershipV2.creatures.find((c) => c.creatureId === fixture.ownership.creatureId)!;
+    press(fixture.ownershipV2);
+    expect(requests).toHaveLength(1);
+    const first = await commitArc5FeedActionV1({ ...actionInput(fixture), creatureId: requests[0]!.creatureId as never, foodLotId: requests[0]!.foodLotId as never, activePlayMs: 0 });
+    if (first.kind !== 'committed') throw new Error(first.kind);
+    const pre = first.settlement.preflight, mend = COMPANION_FEED_POLICY_V2[pre.taste.preference].mend;
+    expect(requests[0]!.fedAfter).toBe(pre.fedAfter); // the preview the player confirmed is exactly what committed
+    const durable = await readBack(fixture);
+    expect(durable.fed).toBe(19 + policyGain(pre.taste));
+    expect(durable.hurt).toBeCloseTo(Math.max(0, (before.hurt ?? 0) - mend), 6);
+    expect(pre.taste.preference === 'disliked' ? durable.hurt === before.hurt : (durable.hurt ?? 0) < (before.hurt ?? 0)).toBe(true); // disliked is harmless; any other mends
+    expect(durable.xp).toBe((before.xp ?? 0) + 3);
+    expect(durable.bond?.memories.map((m) => m.id)).toEqual(['meal:first', `taste:${pre.taste.flavour}`]);
+    // the taste is now known on the preview; a second meal of the same flavour pays no XP
+    controller.detach(); press(first.ownershipV2);
+    expect(mount.querySelector('[data-arc5-feed-summary]')?.textContent).not.toMatch(/A new taste/u);
+    const second = await commitArc5FeedActionV1({ runtime: fixture.runtime, ownershipV2: first.ownershipV2, state: first.transaction.state, creatureId: fixture.ownership.creatureId, foodLotId: fixture.ownership.foodLotId, codecNow: NOW, activePlayMs: 0 });
+    if (second.kind !== 'committed') throw new Error(second.kind);
+    expect((await readBack(fixture)).xp).toBe(durable.xp);
+    controller.detach();
+  });
+
+  it('Rest from the care panel: Injured → Resting; moving the DEVICE clock ±1 day releases nothing — only active play does (clock-skew guard)', async () => {
+    const { JSDOM } = await import('jsdom');
+    const { CompanionCareController, projectCompanionCareV1 } = await import('../apps/game/src/companion-care-panel.js');
+    const { commitArc5RestActionV1 } = await import('../apps/game/src/arc5-rest-action.js');
+    const fixture = await runtimeFixture();
+    const fauna = fixture.ownershipV2.catalogSpecies.find((row) => row.kingdom === 'fauna')!;
+    const record = { name: 'Grazer', g: fauna.genome as unknown as Record<string, unknown> };
+    const dom = new JSDOM('<!doctype html><body><section data-care></section></body>');
+    const mount = dom.window.document.querySelector('[data-care]') as HTMLElement;
+    let ownership = fixture.ownershipV2, pressed: Promise<unknown> | null = null;
+    const controller = new CompanionCareController({ onRest: (creatureId) => { pressed = commitArc5RestActionV1({ runtime: fixture.runtime, ownershipV2: ownership, state: fixture.state, creatureId, codecNow: NOW, activePlayMs: fixture.runtime.diagnostics().activePlayMs }); } });
+    controller.setState(projectCompanionCareV1({ record, ownership, activePlayMs: 0, writable: true })); controller.attach(mount);
+    const row = `[data-companion-care-row="${fixture.ownership.creatureId}"]`;
+    const button = mount.querySelector<HTMLButtonElement>(`[data-companion-care-rest="${fixture.ownership.creatureId}"]`)!;
+    expect(mount.querySelector(`${row} [data-companion-care-condition]`)?.getAttribute('data-companion-care-condition')).toBe('Injured');
+    expect(button.textContent).toBe('Rest (8 min of play)'); expect(button.disabled).toBe(false);
+    expect(mount.querySelector(`${row} [data-companion-care-tastes]`)?.textContent).toBe('♥ Favors ?, ? · ⊘ Dislikes ?');
+    button.click();
+    expect(pressed).not.toBeNull();
+    const outcome = await pressed as Awaited<ReturnType<typeof commitArc5RestActionV1>>;
+    if (outcome.kind !== 'committed') throw new Error(outcome.kind);
+    ownership = outcome.ownershipV2;
+    const durable = await readBack(fixture);
+    expect(durable.hurt).toBe(0); expect(durable.assignment).toEqual({ kind: 'mission', missionId: `rest:${outcome.settlement.readyAtActivePlayMs}` });
+    const shown = (activePlayMs: number) => { controller.setState(projectCompanionCareV1({ record, ownership, activePlayMs, writable: true })); return mount.querySelector(`${row} [data-companion-care-condition]`)?.getAttribute('data-companion-care-condition'); };
+    expect(shown(fixture.runtime.diagnostics().activePlayMs)).toBe('Resting');
+    // the device clock a day forward and a day back: the active-play clock does not move, the lock holds, a meal is refused
+    for (const codecNow of [NOW + 86_400_000, NOW - 86_400_000]) {
+      const meal = await commitArc5FeedActionV1({ runtime: fixture.runtime, ownershipV2: ownership, state: outcome.transaction.state, creatureId: fixture.ownership.creatureId, foodLotId: fixture.ownership.foodLotId, codecNow, activePlayMs: fixture.runtime.diagnostics().activePlayMs });
+      expect(meal).toMatchObject({ kind: 'refused', detail: 'preflight:creature-assigned' });
+      expect(shown(fixture.runtime.diagnostics().activePlayMs)).toBe('Resting');
+    }
+    // control: reaching the ACTIVE-PLAY boundary releases it, healed, with nothing left to rest
+    expect(shown(outcome.settlement.readyAtActivePlayMs)).toBe('Healthy');
+    expect(mount.querySelector<HTMLButtonElement>(`[data-companion-care-rest="${fixture.ownership.creatureId}"]`)!.disabled).toBe(true);
+  });
+});
