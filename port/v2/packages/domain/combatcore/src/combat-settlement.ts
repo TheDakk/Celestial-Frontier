@@ -20,6 +20,13 @@ import {
   type BattleStats,
   type DuelResult,
 } from './combatcore.verbatim.js';
+import {
+  runEncounterV1,
+  type EncounterDecisionV1,
+  type EncounterFighterV1,
+  type EncounterModeV1,
+  type EncounterStanceV1,
+} from './encounter.js';
 
 export const COMBAT_SETTLEMENT_PLAN_SCHEMA_V1 = 'cf-v2-combat-settlement-plan/v1' as const;
 export const COMBAT_SETTLEMENT_WITNESS_SCHEMA_V1 = 'cf-v2-combat-settlement-witness/v1' as const;
@@ -245,8 +252,34 @@ export interface CombatSettlementPlanV1 {
   readonly guardianCapture: GuardianCapturePlanV1;
   readonly primeClaim: PrimeClaimPlanV1;
   readonly rewards: CombatRewardPlanV1;
+  /** §20 Guardian party (absent for a one-fighter fight, whose plan is byte-identical to the single-champion plan). The top-level
+   *  champion/transcript/outcome/xp/injury describe the DECISIVE leg; this block carries the rest of the party. */
+  readonly party?: CombatPartyPlanV1;
   readonly witness: string;
   readonly receipt: CombatSettlementReceiptV1;
+}
+
+export const COMBAT_PARTY_PLAN_SCHEMA_V1 = 'cf-v2-combat-party/v1' as const;
+export interface CombatPartyMemberPlanV1 {
+  readonly index: number;
+  readonly champion: CombatSettlementChampionV1;
+  readonly stance: EncounterStanceV1;
+  /** How this member's part ended: the decisive leg (settled by the top-level plan), fell, swapped out, yielded at the cap, or never fought. */
+  readonly legEnd: 'decisive' | 'fighter-fell' | 'swapped' | 'cap' | 'not-fought';
+  /** §20: a non-decisive companion that fought enters Recovery; the explorer and anyone who never fought take nothing. */
+  readonly injury: Extract<CombatInjuryPlanV1, { status: 'set-recovery' }> | Readonly<{ status: 'none'; reason: 'not-fought' | 'explorer-left-stage' }> | null;
+}
+export interface CombatPartyPlanV1 {
+  readonly schema: typeof COMBAT_PARTY_PLAN_SCHEMA_V1;
+  readonly mode: EncounterModeV1;
+  readonly decisions: readonly EncounterDecisionV1[];
+  readonly decisiveIndex: number;
+  readonly members: readonly CombatPartyMemberPlanV1[];
+  readonly encounterFingerprint: string;
+}
+export interface CombatPartyMemberInputV1 {
+  readonly champion: CombatSettlementChampionV1;
+  readonly stance: EncounterStanceV1;
 }
 
 export type CombatSettlementRefusalReasonV1 =
@@ -439,11 +472,13 @@ function buildTranscript(
   champion: CombatSettlementChampionV1,
   encounter: GuardianPrimeEncounterV1,
   supplied: DuelResult,
+  /** §20 party/stance fights: the decisive leg the encounter engine resolved (the legacy path re-runs runDuel). */
+  engineLeg: DuelResult | null = null,
 ): { readonly transcript: SettledDuelTranscriptV1; readonly fingerprint: string } | null {
   const mine = champion.kind === 'player'
     ? { name: champion.name, genome: { seed: champion.genomeSeed }, stats: champion.stats as BattleStats }
     : { name: champion.name, genome: champion.genome as Genome };
-  const expected = runDuel(mine, {
+  const expected = engineLeg ?? runDuel(mine, {
     name: encounter.defender.name,
     genome: encounter.defender.battleGenome as Genome,
   });
@@ -635,6 +670,83 @@ function rewardPlan(
 export function planCombatSettlementV1(
   input: PlanCombatSettlementInputV1,
 ): CombatSettlementPlanningOutcomeV1 {
+  return planCombatSettlementCore(input, null);
+}
+
+interface CombatPartyContextV1 {
+  readonly engineLeg: DuelResult;
+  readonly mode: EncounterModeV1;
+  readonly decisions: readonly EncounterDecisionV1[];
+  readonly decisiveIndex: number;
+  readonly members: readonly (CombatPartyMemberInputV1 & { readonly legEnd: CombatPartyMemberPlanV1['legEnd'] })[];
+  readonly encounterFingerprint: string;
+}
+
+export interface PlanCombatPartySettlementInputV1 extends Omit<PlanCombatSettlementInputV1, 'champion' | 'transcript' | 'outcome'> {
+  /** 1–3 fighters in relay order (§20: a party of more than one is for Guardians/Titans only; the app enforces who may bring one). */
+  readonly party: readonly CombatPartyMemberInputV1[];
+  readonly mode: EncounterModeV1;
+  /** Command decisions in Break order (Auto takes none). The fight must be FINISHED; withdrawing settles through another path. */
+  readonly decisions?: readonly EncounterDecisionV1[];
+}
+
+function encounterFighter(member: CombatPartyMemberInputV1): EncounterFighterV1 {
+  const c = member.champion;
+  return c.kind === 'player'
+    ? { name: c.name, genome: { seed: c.genomeSeed }, stats: c.stats as BattleStats, stance: member.stance }
+    : { name: c.name, genome: c.genome as unknown as EncounterFighterV1['genome'], stance: member.stance };
+}
+
+/** §20: plan a Guardian party fight (or a stanced single fight) as ONE settlement. A lone Balanced Auto fighter takes the legacy path,
+ *  so its plan is byte-identical to `planCombatSettlementV1`. Otherwise the encounter engine resolves the fight, the DECISIVE leg becomes
+ *  the top-level champion/transcript/outcome, and the `party` block carries every other member's Recovery. */
+export function planCombatPartySettlementV1(input: PlanCombatPartySettlementInputV1): CombatSettlementPlanningOutcomeV1 {
+  if (!input || typeof input !== 'object' || !Array.isArray(input.party) || input.party.length < 1 || input.party.length > 3) {
+    return refused('input-invalid');
+  }
+  if (!isGuardianPrimeEncounterV1(input.encounter)) return refused('encounter-unregistered');
+  const decisions = input.decisions ?? [];
+  const ids = input.party.map(({ champion }) => (champion.kind === 'player' ? `player:${champion.explorerId}` : champion.creatureId));
+  if (new Set(ids).size !== ids.length) return refused('input-invalid');
+  const defender = { name: input.encounter.defender.name, genome: input.encounter.defender.battleGenome as unknown as EncounterFighterV1['genome'] };
+  const legacy = input.party.length === 1 && input.party[0]!.stance === 'balanced' && input.mode === 'auto' && decisions.length === 0;
+  if (legacy) {
+    const champion = input.party[0]!.champion;
+    const mine = encounterFighter(input.party[0]!);
+    const transcript = runDuel({ name: mine.name, genome: mine.genome as never, ...(mine.stats ? { stats: mine.stats } : {}) }, defender as never);
+    const outcome: CombatSettlementOutcomeV1 = transcript.winner === 'A' ? 'champion-win' : transcript.winner === 'B' ? 'defender-win' : 'draw';
+    return planCombatSettlementCore({ ...input, champion, transcript, outcome }, null);
+  }
+  let result: ReturnType<typeof runEncounterV1>;
+  try {
+    result = runEncounterV1({ mode: input.mode, defender, party: input.party.map(encounterFighter) }, decisions);
+  } catch {
+    return refused('input-invalid');
+  }
+  if (result.status !== 'finished' || result.outcome === 'withdrawn' || result.decisionsUsed !== decisions.length) {
+    return refused('input-invalid');
+  }
+  const decisive = result.legs[result.legs.length - 1]!;
+  const engineLeg = { A: decisive.A, B: decisive.B, log: decisive.log, winner: decisive.winner, hpA: decisive.hpA, hpB: decisive.hpB,
+    maxA: decisive.maxA, maxB: decisive.maxB, turnA0: decisive.turnA0 } as unknown as DuelResult;
+  const members = input.party.map((member, index) => {
+    const leg = result.legs.find((row) => row.fighterIndex === index);
+    const legEnd: CombatPartyMemberPlanV1['legEnd'] = index === decisive.fighterIndex ? 'decisive'
+      : leg === undefined ? 'not-fought'
+      : leg.end === 'swapped' ? 'swapped' : leg.end === 'fighter-fell' ? 'fighter-fell' : 'cap';
+    return Object.freeze({ ...member, legEnd });
+  });
+  const outcome: CombatSettlementOutcomeV1 = result.outcome === 'party' ? 'champion-win' : result.outcome === 'draw' ? 'draw' : 'defender-win';
+  return planCombatSettlementCore({ ...input, champion: input.party[decisive.fighterIndex]!.champion, transcript: engineLeg, outcome }, {
+    engineLeg, mode: input.mode, decisions: Object.freeze([...decisions]), decisiveIndex: decisive.fighterIndex, members,
+    encounterFingerprint: fingerprint(canonicalJson({ mode: input.mode, decisions, stances: input.party.map((m) => m.stance), legs: result.legs.map((l) => [l.fighterIndex, l.end, l.hpA, l.hpB]) })),
+  });
+}
+
+function planCombatSettlementCore(
+  input: PlanCombatSettlementInputV1,
+  party: CombatPartyContextV1 | null,
+): CombatSettlementPlanningOutcomeV1 {
   if (!input || typeof input !== 'object') return refused('input-invalid');
   if (!isGuardianPrimeEncounterV1(input.encounter)) return refused('encounter-unregistered');
   try {
@@ -668,7 +780,7 @@ export function planCombatSettlementV1(
       lossXp,
       activePlayMs,
     });
-    const settled = buildTranscript(champion, input.encounter, input.transcript);
+    const settled = buildTranscript(champion, input.encounter, input.transcript, party?.engineLeg ?? null);
     if (settled === null) return refused('transcript-mismatch');
     const derivedOutcome = outcomeOf(settled.transcript);
     if (input.outcome !== derivedOutcome) return refused('outcome-mismatch');
@@ -689,6 +801,25 @@ export function planCombatSettlementV1(
       lossXp,
     );
     const injury = injuryPlan(champion, input.encounter, settled.transcript, derivedOutcome, activePlayMs);
+    const partyPlan: CombatPartyPlanV1 | null = party === null ? null : Object.freeze({
+      schema: COMBAT_PARTY_PLAN_SCHEMA_V1,
+      mode: party.mode,
+      decisions: party.decisions,
+      decisiveIndex: party.decisiveIndex,
+      encounterFingerprint: party.encounterFingerprint,
+      members: Object.freeze(party.members.map((member, index): CombatPartyMemberPlanV1 => {
+        const memberChampion = checkedChampion(member.champion);
+        const memberInjury: CombatPartyMemberPlanV1['injury'] = member.legEnd === 'decisive' ? null
+          : member.legEnd === 'not-fought' ? Object.freeze({ status: 'none' as const, reason: 'not-fought' as const })
+          : memberChampion.kind === 'player' ? Object.freeze({ status: 'none' as const, reason: 'explorer-left-stage' as const })
+          : Object.freeze({
+            status: 'set-recovery' as const, reason: 'defeat-recovery' as const, creatureId: memberChampion.creatureId,
+            hurtBefore: hurtOf(memberChampion.genome), hurtAfter: hurtOf(memberChampion.genome),
+            readyAtActivePlayMs: activePlayMs + COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
+          });
+        return Object.freeze({ index, champion: memberChampion, stance: member.stance, legEnd: member.legEnd, injury: memberInjury });
+      })),
+    });
     const conquest: CombatConquestPlanV1 = derivedOutcome === 'champion-win'
       ? Object.freeze({
         status: 'settle',
@@ -724,6 +855,12 @@ export function planCombatSettlementV1(
         ? { ...primeClaim, world: primeClaim.world.key }
         : primeClaim,
       rewards,
+      ...(partyPlan === null ? {} : { party: {
+        mode: partyPlan.mode, decisions: partyPlan.decisions, decisiveIndex: partyPlan.decisiveIndex,
+        encounterFingerprint: partyPlan.encounterFingerprint,
+        members: partyPlan.members.map((m) => [m.index, m.champion.kind === 'player' ? 'player' : fingerprint(m.champion.creatureId), m.stance, m.legEnd,
+          m.injury === null ? 'decisive' : m.injury.status === 'set-recovery' ? m.injury.readyAtActivePlayMs : m.injury.reason]),
+      } }),
     });
     if (witness.length > 4_096) throw new RangeError('combat settlement witness exceeds F3 receipt capacity');
     const receipt: CombatSettlementReceiptV1 = Object.freeze({
@@ -751,6 +888,7 @@ export function planCombatSettlementV1(
       guardianCapture,
       primeClaim,
       rewards,
+      ...(partyPlan === null ? {} : { party: partyPlan }),
       witness,
       receipt,
     });
