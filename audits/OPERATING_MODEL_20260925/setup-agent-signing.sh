@@ -5,6 +5,7 @@
 set -euo pipefail
 REPO=/Users/nick/Projects/celestial-frontier-anthropic-mac          # both worktrees share this repo's config
 KEY="$HOME/.ssh/cf_agents_signing"
+cd "$REPO"   # 2026-09-25: gh runs git in the current directory; a deleted cwd failed step 6 ("Unable to read current working directory")
 EMAIL="$(git -C "$REPO" config user.email)"                          # 79046704+TheDakk@users.noreply.github.com
 
 # 1. the key (you choose a passphrase; it goes into the login keychain in step 2)

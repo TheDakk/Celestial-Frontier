@@ -5,7 +5,7 @@ Reply in one line per item ("D1 yes", "D2: other…"). Every default is reversib
 | # | opened | question | recommended default | applies |
 |---|---|---|---|---|
 | D1 | 2026-09-25 | Painting standing order: Codex paints down one ranked list without per-item approval; Nick reviews one sheet per ten | yes. Order: jelly, four-winged flier, sturgeon, then Wall Lizard, Cougar, Impala, Marmot, Bass, Cattle, Tang, Wolf, Gull, River Otter | at the next Codex run |
-| D2 | 2026-09-25 | Signing: a dedicated agent signing key in the macOS keychain (repo-level; still signed and Verified) | **DECIDED yes (2026-09-25)**: Nick runs `bash audits/OPERATING_MODEL_20260925/setup-agent-signing.sh` once in Terminal | when run |
+| D2 | 2026-09-25 | Signing: a dedicated agent signing key in the macOS keychain (repo-level; still signed and Verified) | **DONE 2026-09-25**: key in the login keychain, repo signs through `git-ssh-sign-cf`, registered on GitHub as a signing key; a proof commit verified G with the new key | done |
 | D3 | 2026-09-25 | Pushing over HTTPS with the already-logged-in GitHub CLI (no 1Password prompt on push) | **DONE 2026-09-25**: origin is HTTPS via gh; pushes no longer touch 1Password (both lanes) | done |
 | D4 | 2026-09-25 | I5 recalibration epoch (v2 budget, v1 kept, growth guard) | yes | Codex is running it |
 | D5 | 2026-09-25 | Hosted attempts: an agent may cycle the PR label once per day when the whole local gate list is green | yes | on Nick's "yes" |

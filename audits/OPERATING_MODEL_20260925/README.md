@@ -24,7 +24,7 @@ cd /Users/nick/Projects/celestial-frontier-anthropic-mac && git remote set-url o
 ```
 Revert with `git remote set-url origin git@github.com:TheDakk/Celestial-Frontier.git`.
 
-**Sign: one dedicated agent signing key in the macOS keychain (Nick: yes; still SIGNED and Verified; 1Password keeps everything else).** Run once in Terminal: `bash audits/OPERATING_MODEL_20260925/setup-agent-signing.sh` (it adds a reboot-proof wrapper and proves a signed commit). The script is the canonical version. It creates the key (you set a passphrase) and stores the passphrase in the login keychain. It
+**Sign: DONE 2026-09-25: one dedicated agent signing key in the macOS keychain (Nick: yes; still SIGNED and Verified; 1Password keeps everything else).** Run once in Terminal: `bash audits/OPERATING_MODEL_20260925/setup-agent-signing.sh` (it adds a reboot-proof wrapper and proves a signed commit). The script is the canonical version. It creates the key (you set a passphrase) and stores the passphrase in the login keychain. It
 installs `~/.local/bin/git-ssh-sign-cf`, which always signs through the macOS agent and reloads the key from the keychain after a
 reboot. It adds the key to `~/.config/git/allowed_signers` for the committer email, sets THIS repo's `user.signingkey` and
 `gpg.ssh.program`, registers the key on GitHub as a signing key (one browser prompt), and proves it with a signed throwaway commit.
