@@ -10,8 +10,10 @@ const action = fs.readFileSync(path.join(here, '../apps/game/src/arc6-combat-act
    pre-§20 fixtures keep compiling), which makes this pin the only thing stopping the live fight from silently planning at clock 0. */
 function audit(source: string): string[] {
   const f: string[] = [];
-  const planCall = source.slice(source.indexOf('const plan = planCombatSettlementV1({'), source.indexOf('if (plan.status !== \'planned\')'));
-  if (!planCall.includes('activePlayMs: availability.activePlayMs,')) f.push('the live fight does not plan its settlement on the validated active-play clock');
+  const authority = source.slice(source.indexOf('const settlementAuthority = Object.freeze({'), source.indexOf('const battleId = '));
+  if (!authority.includes('activePlayMs: availability.activePlayMs,')) f.push('the live fight does not plan its settlement on the validated active-play clock');
+  // both planning paths (the legacy single fight and the §20 party) must use that one authority
+  if ((source.match(/authority: settlementAuthority,/g) ?? []).length !== 2) f.push('a planning path bypasses the active-play settlement authority');
   if (!source.includes("if (availability.kind !== 'available') {")) f.push('the champion availability (Recovery) check is gone');
   return f;
 }
