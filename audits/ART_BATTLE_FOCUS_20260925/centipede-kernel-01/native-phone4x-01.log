@@ -1,0 +1,1 @@
+{"status":"DIAGNOSTIC_PASS","refusals":{"left":0,"right":0},"attacks":{"left":"punch (armNearHand)","right":"mandible (mandible)"},"capture":{"frames":598,"cpuP95Ms":10.700000047683716,"frameDeltaP95Ms":16.799999999999272}}

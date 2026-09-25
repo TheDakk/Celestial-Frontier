@@ -1,0 +1,7266 @@
+{
+ "schema": "cf.battle-cpu-profile/v2",
+ "totalUs": 10883530,
+ "totalMs": 10883.53,
+ "samples": 18934,
+ "frames": 602,
+ "cpuThrottle": 4,
+ "groups": {
+  "other": 1337.217,
+  "rig motion + contact": 103.015,
+  "pixi render": 6.027,
+  "skin (ARAP / mesh)": 637.35,
+  "wasm (orientation / skin kernels)": 1441.906,
+  "stage + choreography": 26.594,
+  "rig other": 49.56,
+  "idle": 7242.295,
+  "garbage collection": 30.084,
+  "effects": 9.482
+ },
+ "wasmCallers": [
+  {
+   "file": "tools/creature-animation/arap-skin.mjs",
+   "us": 1296045,
+   "ms": 1296.045,
+   "share": 0.11908314673639894
+  },
+  {
+   "file": "tools/creature-animation/orientation-projector.mjs",
+   "us": 144965,
+   "ms": 144.965,
+   "share": 0.013319667424080238
+  },
+  {
+   "file": "tools/creature-animation/wasm-orientation-active.mjs",
+   "us": 896,
+   "ms": 0.896,
+   "share": 0.00008232623055203597
+  }
+ ],
+ "files": [
+  {
+   "file": "(idle)",
+   "us": 7242295,
+   "ms": 7242.295,
+   "share": 0.6654362141694836
+  },
+  {
+   "file": "wasm:wasm://wasm/206b454a#wasm-function[0] via tools/creature-animation/arap-skin.mjs",
+   "us": 1292478,
+   "ms": 1292.478,
+   "share": 0.1187554038074044
+  },
+  {
+   "file": "(program)",
+   "us": 470155,
+   "ms": 470.155,
+   "share": 0.04319875996115231
+  },
+  {
+   "file": "tools/battle2-proof/native-entry.mjs",
+   "us": 328277,
+   "ms": 328.277,
+   "share": 0.03016273212827088
+  },
+  {
+   "file": "tools/creature-animation/arap-skin.mjs",
+   "us": 259458,
+   "ms": 259.458,
+   "share": 0.023839507953761326
+  },
+  {
+   "file": "tools/creature-animation/paint-skin.mjs",
+   "us": 208959,
+   "ms": 208.959,
+   "share": 0.019199561171788934
+  },
+  {
+   "file": "tools/creature-animation/compiled-skin-field.mjs",
+   "us": 148063,
+   "ms": 148.063,
+   "share": 0.013604317716770202
+  },
+  {
+   "file": "wasm:wasm://wasm/a184d116#wasm-function[0] via tools/creature-animation/orientation-projector.mjs",
+   "us": 143226,
+   "ms": 143.226,
+   "share": 0.013159884706524445
+  },
+  {
+   "file": "tools/creature-animation/skeleton-pose.mjs",
+   "us": 102810,
+   "ms": 102.81,
+   "share": 0.00944638366412368
+  },
+  {
+   "file": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "us": 89891,
+   "ms": 89.891,
+   "share": 0.008259360703742261
+  },
+  {
+   "file": "other-script:Geometry-DZ_l7nv7.js",
+   "us": 73974,
+   "ms": 73.974,
+   "share": 0.0067968756460449874
+  },
+  {
+   "file": "native:?",
+   "us": 62150,
+   "ms": 62.15,
+   "share": 0.005710463425010084
+  },
+  {
+   "file": "tools/creature-animation/orientation-projector.mjs",
+   "us": 51283,
+   "ms": 51.283,
+   "share": 0.004711982233705425
+  },
+  {
+   "file": "apps/game/src/motion/timeline.ts",
+   "us": 36545,
+   "ms": 36.545,
+   "share": 0.003357825999468922
+  },
+  {
+   "file": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "us": 35429,
+   "ms": 35.429,
+   "share": 0.003255285739093842
+  },
+  {
+   "file": "apps/game/src/creature-rig-contact.ts",
+   "us": 32619,
+   "ms": 32.619,
+   "share": 0.0029970974490813184
+  },
+  {
+   "file": "(gc)",
+   "us": 30084,
+   "ms": 30.084,
+   "share": 0.0027641766963476004
+  },
+  {
+   "file": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "us": 29645,
+   "ms": 29.645,
+   "share": 0.0027238405186552524
+  },
+  {
+   "file": "native:bufferSubData",
+   "us": 26455,
+   "ms": 26.455,
+   "share": 0.0024307370862211067
+  },
+  {
+   "file": "tools/creature-animation/kinematics.ts",
+   "us": 26142,
+   "ms": 26.142,
+   "share": 0.0024019780347001385
+  },
+  {
+   "file": "apps/game/src/creature-rig-performance.ts",
+   "us": 23985,
+   "ms": 23.985,
+   "share": 0.002203788660480561
+  },
+  {
+   "file": "apps/game/src/battle2/choreography.ts",
+   "us": 22317,
+   "ms": 22.317,
+   "share": 0.0020505295616403867
+  },
+  {
+   "file": "apps/game/src/creature-rig.ts",
+   "us": 16384,
+   "ms": 16.384,
+   "share": 0.001505393930094372
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "us": 14000,
+   "ms": 14,
+   "share": 0.001286347352375562
+  },
+  {
+   "file": "native:uniformMatrix3fv",
+   "us": 11807,
+   "ms": 11.807,
+   "share": 0.0010848502278213044
+  },
+  {
+   "file": "native:btoa",
+   "us": 10349,
+   "ms": 10.349,
+   "share": 0.0009508863392667636
+  },
+  {
+   "file": "apps/game/src/battle2/parts-rig.ts",
+   "us": 9191,
+   "ms": 9.191,
+   "share": 0.0008444870368345564
+  },
+  {
+   "file": "native:bindBuffer",
+   "us": 8553,
+   "ms": 8.553,
+   "share": 0.0007858663503477273
+  },
+  {
+   "file": "native:clear",
+   "us": 7058,
+   "ms": 7.058,
+   "share": 0.0006485028295047655
+  },
+  {
+   "file": "native:drawElements",
+   "us": 5888,
+   "ms": 5.888,
+   "share": 0.000541000943627665
+  },
+  {
+   "file": "native:requestAnimationFrame",
+   "us": 5342,
+   "ms": 5.342,
+   "share": 0.000490833396885018
+  },
+  {
+   "file": "apps/game/src/effects/pixi-adapter.ts",
+   "us": 4462,
+   "ms": 4.462,
+   "share": 0.00040997727759283984
+  },
+  {
+   "file": "apps/game/src/battle2/stage.ts",
+   "us": 4277,
+   "ms": 4.277,
+   "share": 0.00039297911615073417
+  },
+  {
+   "file": "native:bindVertexArray",
+   "us": 4261,
+   "ms": 4.261,
+   "share": 0.0003915090048908764
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/mesh/shared/Mesh.mjs",
+   "us": 3940,
+   "ms": 3.94,
+   "share": 0.0003620148977399796
+  },
+  {
+   "file": "apps/game/src/motion/specialized-actions.ts",
+   "us": 3698,
+   "ms": 3.698,
+   "share": 0.0003397794649346306
+  },
+  {
+   "file": "wasm:wasm://wasm/48512bc6#js-to-wasm:iiiiiiiiiiiii:i via tools/creature-animation/arap-skin.mjs",
+   "us": 3567,
+   "ms": 3.567,
+   "share": 0.000327742928994545
+  },
+  {
+   "file": "native:bindFramebuffer",
+   "us": 3201,
+   "ms": 3.201,
+   "share": 0.00029411413392529815
+  },
+  {
+   "file": "apps/game/src/effects/emitter.ts",
+   "us": 3001,
+   "ms": 3.001,
+   "share": 0.00027573774317707583
+  },
+  {
+   "file": "apps/game/src/motion/family-actions.ts",
+   "us": 2875,
+   "ms": 2.875,
+   "share": 0.00026416061700569577
+  },
+  {
+   "file": "native:bufferData",
+   "us": 2132,
+   "ms": 2.132,
+   "share": 0.00019589232537604986
+  },
+  {
+   "file": "apps/game/src/effects/sequencer.ts",
+   "us": 2019,
+   "ms": 2.019,
+   "share": 0.00018550966460330426
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainer.mjs",
+   "us": 2005,
+   "ms": 2.005,
+   "share": 0.0001842233172509287
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/mesh/shared/BatchableMesh.mjs",
+   "us": 1945,
+   "ms": 1.945,
+   "share": 0.000178710400026462
+  },
+  {
+   "file": "wasm:wasm://wasm/48512bc6#js-to-wasm:iiiiiiiiiiiii:i via tools/creature-animation/orientation-projector.mjs",
+   "us": 1739,
+   "ms": 1.739,
+   "share": 0.00015978271755579302
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainerPipe.mjs",
+   "us": 1554,
+   "ms": 1.554,
+   "share": 0.00014278455611368737
+  },
+  {
+   "file": "tools/creature-animation/wasm-orientation-active.mjs",
+   "us": 1554,
+   "ms": 1.554,
+   "share": 0.00014278455611368737
+  },
+  {
+   "file": "native:useProgram",
+   "us": 1423,
+   "ms": 1.423,
+   "share": 0.00013074802017360175
+  },
+  {
+   "file": "native:texSubImage2D",
+   "us": 1376,
+   "ms": 1.376,
+   "share": 0.00012642956834776951
+  },
+  {
+   "file": "apps/game/src/motion/gait-phase.ts",
+   "us": 1136,
+   "ms": 1.136,
+   "share": 0.00010437789944990275
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/mesh/shared/MeshGeometry.mjs",
+   "us": 985,
+   "ms": 0.985,
+   "share": 0.0000905037244349949
+  },
+  {
+   "file": "native:captureStream",
+   "us": 918,
+   "ms": 0.918,
+   "share": 0.00008434763353434042
+  },
+  {
+   "file": "wasm:wasm://wasm/48512bc6#wasm-function[0] via tools/creature-animation/wasm-orientation-active.mjs",
+   "us": 896,
+   "ms": 0.896,
+   "share": 0.00008232623055203597
+  },
+  {
+   "file": "native:bindTexture",
+   "us": 892,
+   "ms": 0.892,
+   "share": 0.00008195870273707151
+  },
+  {
+   "file": "other-script:getPo2TextureFromSource-Dy05Fxdk.js",
+   "us": 883,
+   "ms": 0.883,
+   "share": 0.00008113176515340151
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleBuffer.mjs",
+   "us": 785,
+   "ms": 0.785,
+   "share": 0.00007212733368677259
+  },
+  {
+   "file": "packages/domain/rand/src/index.ts",
+   "us": 686,
+   "ms": 0.686,
+   "share": 0.00006303102026640254
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/text/canvas/CanvasTextGenerator.mjs",
+   "us": 645,
+   "ms": 0.645,
+   "share": 0.00005926386016301696
+  },
+  {
+   "file": "other-script:browserAll-Bonzs0oc.js",
+   "us": 623,
+   "ms": 0.623,
+   "share": 0.00005724245718071251
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/particle-container/gl/GlParticleContainerAdaptor.mjs",
+   "us": 549,
+   "ms": 0.549,
+   "share": 0.00005044319260387025
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/particle-container/shared/Particle.mjs",
+   "us": 367,
+   "ms": 0.367,
+   "share": 0.00003372067702298795
+  },
+  {
+   "file": "native:now",
+   "us": 138,
+   "ms": 0.138,
+   "share": 0.000012679709616273396
+  },
+  {
+   "file": "node_modules/pixi.js/lib/scene/particle-container/shared/utils/createIndicesForQuads.mjs",
+   "us": 122,
+   "ms": 0.122,
+   "share": 0.000011209598356415611
+  },
+  {
+   "file": "tools/creature-animation/family-contracts.mjs",
+   "us": 64,
+   "ms": 0.064,
+   "share": 0.000005880445039431141
+  }
+ ],
+ "nodes": [
+  {
+   "id": 1,
+   "parent": null,
+   "callFrame": {
+    "functionName": "(root)",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:(root)",
+   "selfUs": 0
+  },
+  {
+   "id": 2,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "(program)",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "(program)",
+   "selfUs": 470155
+  },
+  {
+   "id": 3,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "50",
+    "url": "",
+    "lineNumber": 0,
+    "columnNumber": 0
+   },
+   "mappedSource": "native:?",
+   "selfUs": 203
+  },
+  {
+   "id": 4,
+   "parent": 3,
+   "callFrame": {
+    "functionName": "capture",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 34861,
+    "columnNumber": 23
+   },
+   "mappedSource": "tools/battle2-proof/native-entry.mjs",
+   "selfUs": 2054
+  },
+  {
+   "id": 5,
+   "parent": 4,
+   "callFrame": {
+    "functionName": "captureStream",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:captureStream",
+   "selfUs": 918
+  },
+  {
+   "id": 6,
+   "parent": 4,
+   "callFrame": {
+    "functionName": "stageAt",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 34754,
+    "columnNumber": 17
+   },
+   "mappedSource": "tools/battle2-proof/native-entry.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 7,
+   "parent": 6,
+   "callFrame": {
+    "functionName": "play",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 16392,
+    "columnNumber": 5
+   },
+   "mappedSource": "apps/game/src/battle2/stage.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 8,
+   "parent": 7,
+   "callFrame": {
+    "functionName": "buildTurnPlan",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12684,
+    "columnNumber": 22
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 9,
+   "parent": 8,
+   "callFrame": {
+    "functionName": "makeClip",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12642,
+    "columnNumber": 17
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 10,
+   "parent": 9,
+   "callFrame": {
+    "functionName": "buildTimeline",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9628,
+    "columnNumber": 22
+   },
+   "mappedSource": "apps/game/src/motion/timeline.ts",
+   "selfUs": 703
+  },
+  {
+   "id": 11,
+   "parent": 10,
+   "callFrame": {
+    "functionName": "actionsFor",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9353,
+    "columnNumber": 19
+   },
+   "mappedSource": "apps/game/src/motion/family-actions.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 12,
+   "parent": 11,
+   "callFrame": {
+    "functionName": "specializedActions",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 6470,
+    "columnNumber": 27
+   },
+   "mappedSource": "apps/game/src/motion/specialized-actions.ts",
+   "selfUs": 1237
+  },
+  {
+   "id": 14,
+   "parent": 11,
+   "callFrame": {
+    "functionName": "radialActions",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 8129,
+    "columnNumber": 22
+   },
+   "mappedSource": "apps/game/src/motion/family-actions.ts",
+   "selfUs": 1370
+  },
+  {
+   "id": 13,
+   "parent": 10,
+   "callFrame": {
+    "functionName": "buildActionTimeline",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9635,
+    "columnNumber": 28
+   },
+   "mappedSource": "apps/game/src/motion/timeline.ts",
+   "selfUs": 2463
+  },
+  {
+   "id": 15,
+   "parent": 7,
+   "callFrame": {
+    "functionName": "EffectSequencePlayer",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12454,
+    "columnNumber": 12
+   },
+   "mappedSource": "apps/game/src/effects/pixi-adapter.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 16,
+   "parent": 15,
+   "callFrame": {
+    "functionName": "createParticleContainer",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12428,
+    "columnNumber": 27
+   },
+   "mappedSource": "apps/game/src/effects/pixi-adapter.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 17,
+   "parent": 16,
+   "callFrame": {
+    "functionName": "_ParticleContainer",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4653,
+    "columnNumber": 12
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainer.mjs",
+   "selfUs": 818
+  },
+  {
+   "id": 18,
+   "parent": 7,
+   "callFrame": {
+    "functionName": "tick",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 16439,
+    "columnNumber": 5
+   },
+   "mappedSource": "apps/game/src/battle2/stage.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 19,
+   "parent": 18,
+   "callFrame": {
+    "functionName": "applyPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23317,
+    "columnNumber": 11
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 20,
+   "parent": 19,
+   "callFrame": {
+    "functionName": "update",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23090,
+    "columnNumber": 8
+   },
+   "mappedSource": "apps/game/src/creature-rig-performance.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 21,
+   "parent": 20,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23322,
+    "columnNumber": 31
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 22,
+   "parent": 21,
+   "callFrame": {
+    "functionName": "resolve",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23208,
+    "columnNumber": 17
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 23,
+   "parent": 22,
+   "callFrame": {
+    "functionName": "resolve",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22693,
+    "columnNumber": 9
+   },
+   "mappedSource": "apps/game/src/creature-rig-contact.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 24,
+   "parent": 23,
+   "callFrame": {
+    "functionName": "evaluate",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5311,
+    "columnNumber": 10
+   },
+   "mappedSource": "tools/creature-animation/skeleton-pose.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 25,
+   "parent": 24,
+   "callFrame": {
+    "functionName": "composeAffine",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5076,
+    "columnNumber": 22
+   },
+   "mappedSource": "tools/creature-animation/kinematics.ts",
+   "selfUs": 93
+  },
+  {
+   "id": 26,
+   "parent": 20,
+   "callFrame": {
+    "functionName": "applyPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33900,
+    "columnNumber": 11
+   },
+   "mappedSource": "apps/game/src/creature-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 27,
+   "parent": 26,
+   "callFrame": {
+    "functionName": "publishPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33841,
+    "columnNumber": 21
+   },
+   "mappedSource": "apps/game/src/creature-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 28,
+   "parent": 27,
+   "callFrame": {
+    "functionName": "applyCompiledSkinField",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33252,
+    "columnNumber": 31
+   },
+   "mappedSource": "tools/creature-animation/compiled-skin-field.mjs",
+   "selfUs": 967
+  },
+  {
+   "id": 29,
+   "parent": 27,
+   "callFrame": {
+    "functionName": "solveArapSkin",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33014,
+    "columnNumber": 22
+   },
+   "mappedSource": "tools/creature-animation/arap-skin.mjs",
+   "selfUs": 552
+  },
+  {
+   "id": 30,
+   "parent": 29,
+   "callFrame": {
+    "functionName": "js-to-wasm:iiiiiiiiiiiii:i",
+    "scriptId": "20",
+    "url": "wasm://wasm/48512bc6",
+    "lineNumber": 0,
+    "columnNumber": 76
+   },
+   "mappedSource": "other-script:48512bc6",
+   "selfUs": 0
+  },
+  {
+   "id": 31,
+   "parent": 30,
+   "callFrame": {
+    "functionName": "wasm-function[0]",
+    "scriptId": "18",
+    "url": "wasm://wasm/206b454a",
+    "lineNumber": 0,
+    "columnNumber": 74
+   },
+   "mappedSource": "other-script:206b454a",
+   "selfUs": 1516
+  },
+  {
+   "id": 32,
+   "parent": 6,
+   "callFrame": {
+    "functionName": "tick",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 16439,
+    "columnNumber": 5
+   },
+   "mappedSource": "apps/game/src/battle2/stage.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 33,
+   "parent": 32,
+   "callFrame": {
+    "functionName": "applyPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23317,
+    "columnNumber": 11
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 34,
+   "parent": 33,
+   "callFrame": {
+    "functionName": "update",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23090,
+    "columnNumber": 8
+   },
+   "mappedSource": "apps/game/src/creature-rig-performance.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 35,
+   "parent": 34,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23322,
+    "columnNumber": 31
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 36,
+   "parent": 35,
+   "callFrame": {
+    "functionName": "resolve",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23208,
+    "columnNumber": 17
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 37,
+   "parent": 36,
+   "callFrame": {
+    "functionName": "resolve",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22693,
+    "columnNumber": 9
+   },
+   "mappedSource": "apps/game/src/creature-rig-contact.ts",
+   "selfUs": 824
+  },
+  {
+   "id": 38,
+   "parent": 34,
+   "callFrame": {
+    "functionName": "applyPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33900,
+    "columnNumber": 11
+   },
+   "mappedSource": "apps/game/src/creature-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 39,
+   "parent": 38,
+   "callFrame": {
+    "functionName": "publishPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33841,
+    "columnNumber": 21
+   },
+   "mappedSource": "apps/game/src/creature-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 40,
+   "parent": 39,
+   "callFrame": {
+    "functionName": "applyCompiledSkinField",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33252,
+    "columnNumber": 31
+   },
+   "mappedSource": "tools/creature-animation/compiled-skin-field.mjs",
+   "selfUs": 86
+  },
+  {
+   "id": 41,
+   "parent": 39,
+   "callFrame": {
+    "functionName": "solveArapSkin",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33014,
+    "columnNumber": 22
+   },
+   "mappedSource": "tools/creature-animation/arap-skin.mjs",
+   "selfUs": 708
+  },
+  {
+   "id": 42,
+   "parent": 41,
+   "callFrame": {
+    "functionName": "js-to-wasm:iiiiiiiiiiiii:i",
+    "scriptId": "20",
+    "url": "wasm://wasm/48512bc6",
+    "lineNumber": 0,
+    "columnNumber": 76
+   },
+   "mappedSource": "other-script:48512bc6",
+   "selfUs": 0
+  },
+  {
+   "id": 43,
+   "parent": 42,
+   "callFrame": {
+    "functionName": "wasm-function[0]",
+    "scriptId": "18",
+    "url": "wasm://wasm/206b454a",
+    "lineNumber": 0,
+    "columnNumber": 74
+   },
+   "mappedSource": "other-script:206b454a",
+   "selfUs": 1860
+  },
+  {
+   "id": 44,
+   "parent": 39,
+   "callFrame": {
+    "functionName": "applyPaintPart",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 24173,
+    "columnNumber": 23
+   },
+   "mappedSource": "tools/creature-animation/paint-skin.mjs",
+   "selfUs": 82
+  },
+  {
+   "id": 45,
+   "parent": 32,
+   "callFrame": {
+    "functionName": "clear",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 6519,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 304
+  },
+  {
+   "id": 46,
+   "parent": 6,
+   "callFrame": {
+    "functionName": "render",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 185,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 47,
+   "parent": 46,
+   "callFrame": {
+    "functionName": "emit",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 53,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 48,
+   "parent": 47,
+   "callFrame": {
+    "functionName": "render",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2581,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 49,
+   "parent": 48,
+   "callFrame": {
+    "functionName": "executeInstructions",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2213,
+    "columnNumber": 28
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 50,
+   "parent": 49,
+   "callFrame": {
+    "functionName": "execute",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1846,
+    "columnNumber": 8
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 304
+  },
+  {
+   "id": 51,
+   "parent": 50,
+   "callFrame": {
+    "functionName": "execute",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 35,
+    "columnNumber": 8
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 52,
+   "parent": 51,
+   "callFrame": {
+    "functionName": "draw",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 803,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 53,
+   "parent": 52,
+   "callFrame": {
+    "functionName": "drawElements",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:drawElements",
+   "selfUs": 434
+  },
+  {
+   "id": 54,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "tick",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 34420,
+    "columnNumber": 15
+   },
+   "mappedSource": "tools/quadruped-proof/capture-contract.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 55,
+   "parent": 54,
+   "callFrame": {
+    "functionName": "paint",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 34880,
+    "columnNumber": 10
+   },
+   "mappedSource": "tools/battle2-proof/native-entry.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 56,
+   "parent": 55,
+   "callFrame": {
+    "functionName": "stageAt",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 34754,
+    "columnNumber": 17
+   },
+   "mappedSource": "tools/battle2-proof/native-entry.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 57,
+   "parent": 56,
+   "callFrame": {
+    "functionName": "tick",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 16439,
+    "columnNumber": 5
+   },
+   "mappedSource": "apps/game/src/battle2/stage.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 58,
+   "parent": 57,
+   "callFrame": {
+    "functionName": "applyPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23317,
+    "columnNumber": 11
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 59,
+   "parent": 58,
+   "callFrame": {
+    "functionName": "update",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23090,
+    "columnNumber": 8
+   },
+   "mappedSource": "apps/game/src/creature-rig-performance.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 60,
+   "parent": 59,
+   "callFrame": {
+    "functionName": "applyPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33900,
+    "columnNumber": 11
+   },
+   "mappedSource": "apps/game/src/creature-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 61,
+   "parent": 60,
+   "callFrame": {
+    "functionName": "publishPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33841,
+    "columnNumber": 21
+   },
+   "mappedSource": "apps/game/src/creature-rig.ts",
+   "selfUs": 53
+  },
+  {
+   "id": 62,
+   "parent": 61,
+   "callFrame": {
+    "functionName": "applyPaintPart",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 24173,
+    "columnNumber": 23
+   },
+   "mappedSource": "tools/creature-animation/paint-skin.mjs",
+   "selfUs": 3279
+  },
+  {
+   "id": 63,
+   "parent": 61,
+   "callFrame": {
+    "functionName": "solveArapSkin",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33014,
+    "columnNumber": 22
+   },
+   "mappedSource": "tools/creature-animation/arap-skin.mjs",
+   "selfUs": 707
+  },
+  {
+   "id": 64,
+   "parent": 63,
+   "callFrame": {
+    "functionName": "js-to-wasm:iiiiiiiiiiiii:i",
+    "scriptId": "20",
+    "url": "wasm://wasm/48512bc6",
+    "lineNumber": 0,
+    "columnNumber": 76
+   },
+   "mappedSource": "other-script:48512bc6",
+   "selfUs": 0
+  },
+  {
+   "id": 65,
+   "parent": 64,
+   "callFrame": {
+    "functionName": "wasm-function[0]",
+    "scriptId": "18",
+    "url": "wasm://wasm/206b454a",
+    "lineNumber": 0,
+    "columnNumber": 74
+   },
+   "mappedSource": "other-script:206b454a",
+   "selfUs": 7282
+  },
+  {
+   "id": 84,
+   "parent": 61,
+   "callFrame": {
+    "functionName": "applyCompiledSkinField",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33252,
+    "columnNumber": 31
+   },
+   "mappedSource": "tools/creature-animation/compiled-skin-field.mjs",
+   "selfUs": 719
+  },
+  {
+   "id": 101,
+   "parent": 61,
+   "callFrame": {
+    "functionName": "evaluate",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5311,
+    "columnNumber": 10
+   },
+   "mappedSource": "tools/creature-animation/skeleton-pose.mjs",
+   "selfUs": 1116
+  },
+  {
+   "id": 102,
+   "parent": 61,
+   "callFrame": {
+    "functionName": "assertPaintPartShape",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 24245,
+    "columnNumber": 29
+   },
+   "mappedSource": "tools/creature-animation/paint-skin.mjs",
+   "selfUs": 459
+  },
+  {
+   "id": 110,
+   "parent": 61,
+   "callFrame": {
+    "functionName": "update",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 10439,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 435
+  },
+  {
+   "id": 106,
+   "parent": 59,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23322,
+    "columnNumber": 31
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 107,
+   "parent": 106,
+   "callFrame": {
+    "functionName": "resolve",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23208,
+    "columnNumber": 17
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 108,
+   "parent": 107,
+   "callFrame": {
+    "functionName": "resolve",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22693,
+    "columnNumber": 9
+   },
+   "mappedSource": "apps/game/src/creature-rig-contact.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 109,
+   "parent": 108,
+   "callFrame": {
+    "functionName": "evaluate",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5311,
+    "columnNumber": 10
+   },
+   "mappedSource": "tools/creature-animation/skeleton-pose.mjs",
+   "selfUs": 670
+  },
+  {
+   "id": 83,
+   "parent": 57,
+   "callFrame": {
+    "functionName": "sampleTurn",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12898,
+    "columnNumber": 19
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 566
+  },
+  {
+   "id": 98,
+   "parent": 83,
+   "callFrame": {
+    "functionName": "sampleClip",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12652,
+    "columnNumber": 19
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 99,
+   "parent": 98,
+   "callFrame": {
+    "functionName": "sampleTimeline",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9758,
+    "columnNumber": 23
+   },
+   "mappedSource": "apps/game/src/motion/timeline.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 100,
+   "parent": 99,
+   "callFrame": {
+    "functionName": "boundedJoint",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9753,
+    "columnNumber": 21
+   },
+   "mappedSource": "apps/game/src/motion/timeline.ts",
+   "selfUs": 453
+  },
+  {
+   "id": 66,
+   "parent": 56,
+   "callFrame": {
+    "functionName": "render",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 185,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 67,
+   "parent": 66,
+   "callFrame": {
+    "functionName": "emit",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 53,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 68,
+   "parent": 67,
+   "callFrame": {
+    "functionName": "render",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2581,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 69,
+   "parent": 68,
+   "callFrame": {
+    "functionName": "_updateRenderGroups",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2640,
+    "columnNumber": 20
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 70,
+   "parent": 69,
+   "callFrame": {
+    "functionName": "_buildInstructions",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2665,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 71,
+   "parent": 70,
+   "callFrame": {
+    "functionName": "collectRenderablesWithEffects",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5970,
+    "columnNumber": 30
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 72,
+   "parent": 71,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5965,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 73,
+   "parent": 72,
+   "callFrame": {
+    "functionName": "collectRenderables",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5958,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 74,
+   "parent": 73,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5965,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 75,
+   "parent": 74,
+   "callFrame": {
+    "functionName": "collectRenderables",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5958,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 76,
+   "parent": 75,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5965,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 77,
+   "parent": 76,
+   "callFrame": {
+    "functionName": "collectRenderables",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5958,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 78,
+   "parent": 77,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5965,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 79,
+   "parent": 78,
+   "callFrame": {
+    "functionName": "collectRenderables",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5958,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 80,
+   "parent": 79,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5965,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 118
+  },
+  {
+   "id": 85,
+   "parent": 80,
+   "callFrame": {
+    "functionName": "collectRenderables",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5958,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 86,
+   "parent": 85,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5965,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 87,
+   "parent": 86,
+   "callFrame": {
+    "functionName": "collectRenderables",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5958,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 88,
+   "parent": 87,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 8006,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 89,
+   "parent": 88,
+   "callFrame": {
+    "functionName": "addRenderable",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 726,
+    "columnNumber": 14
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "selfUs": 865
+  },
+  {
+   "id": 90,
+   "parent": 89,
+   "callFrame": {
+    "functionName": "break",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 754,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 91,
+   "parent": 90,
+   "callFrame": {
+    "functionName": "packAttributes",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1523,
+    "columnNumber": 15
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1121
+  },
+  {
+   "id": 81,
+   "parent": 70,
+   "callFrame": {
+    "functionName": "buildEnd",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1825,
+    "columnNumber": 9
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 82,
+   "parent": 81,
+   "callFrame": {
+    "functionName": "setDataWithSize",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 10411,
+    "columnNumber": 16
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 430
+  },
+  {
+   "id": 92,
+   "parent": 68,
+   "callFrame": {
+    "functionName": "executeInstructions",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2213,
+    "columnNumber": 28
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 93,
+   "parent": 92,
+   "callFrame": {
+    "functionName": "execute",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 751,
+    "columnNumber": 8
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 94,
+   "parent": 93,
+   "callFrame": {
+    "functionName": "execute",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 3337,
+    "columnNumber": 8
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 95,
+   "parent": 94,
+   "callFrame": {
+    "functionName": "draw",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 981,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 96,
+   "parent": 95,
+   "callFrame": {
+    "functionName": "bind",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 652,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 97,
+   "parent": 96,
+   "callFrame": {
+    "functionName": "updateBuffers",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 667,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 283
+  },
+  {
+   "id": 103,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "(idle)",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "(idle)",
+   "selfUs": 7242295
+  },
+  {
+   "id": 104,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "_tick",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 8617,
+    "columnNumber": 15
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 9199
+  },
+  {
+   "id": 105,
+   "parent": 104,
+   "callFrame": {
+    "functionName": "requestAnimationFrame",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:requestAnimationFrame",
+   "selfUs": 1619
+  },
+  {
+   "id": 261,
+   "parent": 104,
+   "callFrame": {
+    "functionName": "update",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 8894,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 180
+  },
+  {
+   "id": 287,
+   "parent": 261,
+   "callFrame": {
+    "functionName": "emit",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 8461,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 681
+  },
+  {
+   "id": 288,
+   "parent": 287,
+   "callFrame": {
+    "functionName": "_update",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 3735,
+    "columnNumber": 8
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 785
+  },
+  {
+   "id": 516,
+   "parent": 288,
+   "callFrame": {
+    "functionName": "now",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:now",
+   "selfUs": 138
+  },
+  {
+   "id": 325,
+   "parent": 261,
+   "callFrame": {
+    "functionName": "_update",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 3735,
+    "columnNumber": 8
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 496
+  },
+  {
+   "id": 111,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "step",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 34888,
+    "columnNumber": 16
+   },
+   "mappedSource": "tools/battle2-proof/native-entry.mjs",
+   "selfUs": 3715
+  },
+  {
+   "id": 112,
+   "parent": 111,
+   "callFrame": {
+    "functionName": "stageAt",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 34754,
+    "columnNumber": 17
+   },
+   "mappedSource": "tools/battle2-proof/native-entry.mjs",
+   "selfUs": 5546
+  },
+  {
+   "id": 113,
+   "parent": 112,
+   "callFrame": {
+    "functionName": "tick",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 16439,
+    "columnNumber": 5
+   },
+   "mappedSource": "apps/game/src/battle2/stage.ts",
+   "selfUs": 3733
+  },
+  {
+   "id": 114,
+   "parent": 113,
+   "callFrame": {
+    "functionName": "applyPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23317,
+    "columnNumber": 11
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 494
+  },
+  {
+   "id": 115,
+   "parent": 114,
+   "callFrame": {
+    "functionName": "update",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23090,
+    "columnNumber": 8
+   },
+   "mappedSource": "apps/game/src/creature-rig-performance.ts",
+   "selfUs": 7973
+  },
+  {
+   "id": 116,
+   "parent": 115,
+   "callFrame": {
+    "functionName": "applyPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33900,
+    "columnNumber": 11
+   },
+   "mappedSource": "apps/game/src/creature-rig.ts",
+   "selfUs": 1948
+  },
+  {
+   "id": 117,
+   "parent": 116,
+   "callFrame": {
+    "functionName": "publishPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33841,
+    "columnNumber": 21
+   },
+   "mappedSource": "apps/game/src/creature-rig.ts",
+   "selfUs": 14383
+  },
+  {
+   "id": 118,
+   "parent": 117,
+   "callFrame": {
+    "functionName": "solveArapSkin",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33014,
+    "columnNumber": 22
+   },
+   "mappedSource": "tools/creature-animation/arap-skin.mjs",
+   "selfUs": 256093
+  },
+  {
+   "id": 119,
+   "parent": 118,
+   "callFrame": {
+    "functionName": "js-to-wasm:iiiiiiiiiiiii:i",
+    "scriptId": "20",
+    "url": "wasm://wasm/48512bc6",
+    "lineNumber": 0,
+    "columnNumber": 76
+   },
+   "mappedSource": "other-script:48512bc6",
+   "selfUs": 3567
+  },
+  {
+   "id": 120,
+   "parent": 119,
+   "callFrame": {
+    "functionName": "wasm-function[0]",
+    "scriptId": "18",
+    "url": "wasm://wasm/206b454a",
+    "lineNumber": 0,
+    "columnNumber": 74
+   },
+   "mappedSource": "other-script:206b454a",
+   "selfUs": 357042
+  },
+  {
+   "id": 121,
+   "parent": 118,
+   "callFrame": {
+    "functionName": "projectOrientations",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 32761,
+    "columnNumber": 28
+   },
+   "mappedSource": "tools/creature-animation/orientation-projector.mjs",
+   "selfUs": 50807
+  },
+  {
+   "id": 165,
+   "parent": 121,
+   "callFrame": {
+    "functionName": "js-to-wasm:iiiiiiiiiiiii:i",
+    "scriptId": "20",
+    "url": "wasm://wasm/48512bc6",
+    "lineNumber": 0,
+    "columnNumber": 76
+   },
+   "mappedSource": "other-script:48512bc6",
+   "selfUs": 1739
+  },
+  {
+   "id": 166,
+   "parent": 165,
+   "callFrame": {
+    "functionName": "wasm-function[0]",
+    "scriptId": "19",
+    "url": "wasm://wasm/a184d116",
+    "lineNumber": 0,
+    "columnNumber": 71
+   },
+   "mappedSource": "other-script:a184d116",
+   "selfUs": 143226
+  },
+  {
+   "id": 445,
+   "parent": 121,
+   "callFrame": {
+    "functionName": "run",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 32573,
+    "columnNumber": 14
+   },
+   "mappedSource": "tools/creature-animation/wasm-orientation-active.mjs",
+   "selfUs": 1362
+  },
+  {
+   "id": 446,
+   "parent": 445,
+   "callFrame": {
+    "functionName": "js-to-wasm:iiiiiiiiiiiii:i",
+    "scriptId": "20",
+    "url": "wasm://wasm/48512bc6",
+    "lineNumber": 0,
+    "columnNumber": 76
+   },
+   "mappedSource": "other-script:48512bc6",
+   "selfUs": 0
+  },
+  {
+   "id": 447,
+   "parent": 446,
+   "callFrame": {
+    "functionName": "wasm-function[0]",
+    "scriptId": "20",
+    "url": "wasm://wasm/48512bc6",
+    "lineNumber": 0,
+    "columnNumber": 76
+   },
+   "mappedSource": "other-script:48512bc6",
+   "selfUs": 896
+  },
+  {
+   "id": 509,
+   "parent": 445,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 32577,
+    "columnNumber": 100
+   },
+   "mappedSource": "tools/creature-animation/wasm-orientation-active.mjs",
+   "selfUs": 192
+  },
+  {
+   "id": 371,
+   "parent": 118,
+   "callFrame": {
+    "functionName": "js-to-wasm:iiiiiiiiiiiii:i",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:js-to-wasm:iiiiiiiiiiiii:i",
+   "selfUs": 0
+  },
+  {
+   "id": 372,
+   "parent": 371,
+   "callFrame": {
+    "functionName": "wasm-function[0]",
+    "scriptId": "18",
+    "url": "wasm://wasm/206b454a",
+    "lineNumber": 0,
+    "columnNumber": 74
+   },
+   "mappedSource": "other-script:206b454a",
+   "selfUs": 920783
+  },
+  {
+   "id": 448,
+   "parent": 118,
+   "callFrame": {
+    "functionName": "wasm-function[0]",
+    "scriptId": "18",
+    "url": "wasm://wasm/206b454a",
+    "lineNumber": 0,
+    "columnNumber": 74
+   },
+   "mappedSource": "other-script:206b454a",
+   "selfUs": 303
+  },
+  {
+   "id": 156,
+   "parent": 117,
+   "callFrame": {
+    "functionName": "evaluate",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5311,
+    "columnNumber": 10
+   },
+   "mappedSource": "tools/creature-animation/skeleton-pose.mjs",
+   "selfUs": 30877
+  },
+  {
+   "id": 170,
+   "parent": 156,
+   "callFrame": {
+    "functionName": "composeAffine",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5076,
+    "columnNumber": 22
+   },
+   "mappedSource": "tools/creature-animation/kinematics.ts",
+   "selfUs": 6214
+  },
+  {
+   "id": 157,
+   "parent": 117,
+   "callFrame": {
+    "functionName": "applyPaintPart",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 24173,
+    "columnNumber": 23
+   },
+   "mappedSource": "tools/creature-animation/paint-skin.mjs",
+   "selfUs": 137567
+  },
+  {
+   "id": 158,
+   "parent": 117,
+   "callFrame": {
+    "functionName": "applyCompiledSkinField",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33252,
+    "columnNumber": 31
+   },
+   "mappedSource": "tools/creature-animation/compiled-skin-field.mjs",
+   "selfUs": 145680
+  },
+  {
+   "id": 161,
+   "parent": 117,
+   "callFrame": {
+    "functionName": "assertPaintPartShape",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 24245,
+    "columnNumber": 29
+   },
+   "mappedSource": "tools/creature-animation/paint-skin.mjs",
+   "selfUs": 67446
+  },
+  {
+   "id": 187,
+   "parent": 117,
+   "callFrame": {
+    "functionName": "update",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 10439,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 2802
+  },
+  {
+   "id": 188,
+   "parent": 187,
+   "callFrame": {
+    "functionName": "emit",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 565,
+    "columnNumber": 44
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 4289
+  },
+  {
+   "id": 189,
+   "parent": 188,
+   "callFrame": {
+    "functionName": "onBufferUpdate",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 10554,
+    "columnNumber": 15
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 7352
+  },
+  {
+   "id": 190,
+   "parent": 189,
+   "callFrame": {
+    "functionName": "emit",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 565,
+    "columnNumber": 44
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 2979
+  },
+  {
+   "id": 211,
+   "parent": 190,
+   "callFrame": {
+    "functionName": "onViewUpdate",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 7979,
+    "columnNumber": 13
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 2620
+  },
+  {
+   "id": 426,
+   "parent": 211,
+   "callFrame": {
+    "functionName": "onChildViewUpdate",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 6782,
+    "columnNumber": 18
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 26
+  },
+  {
+   "id": 425,
+   "parent": 189,
+   "callFrame": {
+    "functionName": "onViewUpdate",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 7979,
+    "columnNumber": 13
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 619
+  },
+  {
+   "id": 479,
+   "parent": 116,
+   "callFrame": {
+    "functionName": "applyCompiledSkinField",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33252,
+    "columnNumber": 31
+   },
+   "mappedSource": "tools/creature-animation/compiled-skin-field.mjs",
+   "selfUs": 183
+  },
+  {
+   "id": 517,
+   "parent": 116,
+   "callFrame": {
+    "functionName": "solveArapSkin",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33014,
+    "columnNumber": 22
+   },
+   "mappedSource": "tools/creature-animation/arap-skin.mjs",
+   "selfUs": 818
+  },
+  {
+   "id": 162,
+   "parent": 115,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23322,
+    "columnNumber": 31
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 163,
+   "parent": 162,
+   "callFrame": {
+    "functionName": "resolve",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23208,
+    "columnNumber": 17
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 3932
+  },
+  {
+   "id": 164,
+   "parent": 163,
+   "callFrame": {
+    "functionName": "resolve",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22693,
+    "columnNumber": 9
+   },
+   "mappedSource": "apps/game/src/creature-rig-contact.ts",
+   "selfUs": 20151
+  },
+  {
+   "id": 172,
+   "parent": 164,
+   "callFrame": {
+    "functionName": "evaluate",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5311,
+    "columnNumber": 10
+   },
+   "mappedSource": "tools/creature-animation/skeleton-pose.mjs",
+   "selfUs": 70147
+  },
+  {
+   "id": 214,
+   "parent": 172,
+   "callFrame": {
+    "functionName": "composeAffine",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5076,
+    "columnNumber": 22
+   },
+   "mappedSource": "tools/creature-animation/kinematics.ts",
+   "selfUs": 15373
+  },
+  {
+   "id": 180,
+   "parent": 164,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22706,
+    "columnNumber": 126
+   },
+   "mappedSource": "apps/game/src/creature-rig-contact.ts",
+   "selfUs": 321
+  },
+  {
+   "id": 210,
+   "parent": 164,
+   "callFrame": {
+    "functionName": "measure",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22893,
+    "columnNumber": 19
+   },
+   "mappedSource": "apps/game/src/creature-rig-contact.ts",
+   "selfUs": 4743
+  },
+  {
+   "id": 235,
+   "parent": 164,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22735,
+    "columnNumber": 61
+   },
+   "mappedSource": "apps/game/src/creature-rig-contact.ts",
+   "selfUs": 1537
+  },
+  {
+   "id": 263,
+   "parent": 164,
+   "callFrame": {
+    "functionName": "solve",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5152,
+    "columnNumber": 7
+   },
+   "mappedSource": "tools/creature-animation/kinematics.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 264,
+   "parent": 263,
+   "callFrame": {
+    "functionName": "rotationAround",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5090,
+    "columnNumber": 23
+   },
+   "mappedSource": "tools/creature-animation/kinematics.ts",
+   "selfUs": 699
+  },
+  {
+   "id": 470,
+   "parent": 263,
+   "callFrame": {
+    "functionName": "same",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5122,
+    "columnNumber": 13
+   },
+   "mappedSource": "tools/creature-animation/kinematics.ts",
+   "selfUs": 1181
+  },
+  {
+   "id": 500,
+   "parent": 263,
+   "callFrame": {
+    "functionName": "point$2",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5054,
+    "columnNumber": 16
+   },
+   "mappedSource": "tools/creature-animation/kinematics.ts",
+   "selfUs": 377
+  },
+  {
+   "id": 284,
+   "parent": 164,
+   "callFrame": {
+    "functionName": "transformPoint",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5068,
+    "columnNumber": 23
+   },
+   "mappedSource": "tools/creature-animation/kinematics.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 285,
+   "parent": 284,
+   "callFrame": {
+    "functionName": "point$2",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5054,
+    "columnNumber": 16
+   },
+   "mappedSource": "tools/creature-animation/kinematics.ts",
+   "selfUs": 1451
+  },
+  {
+   "id": 382,
+   "parent": 164,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22744,
+    "columnNumber": 37
+   },
+   "mappedSource": "apps/game/src/creature-rig-contact.ts",
+   "selfUs": 2999
+  },
+  {
+   "id": 386,
+   "parent": 164,
+   "callFrame": {
+    "functionName": "contactStanceForAction",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 20066,
+    "columnNumber": 31
+   },
+   "mappedSource": "tools/creature-animation/family-contracts.mjs",
+   "selfUs": 64
+  },
+  {
+   "id": 440,
+   "parent": 164,
+   "callFrame": {
+    "functionName": "wrapped",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22460,
+    "columnNumber": 16
+   },
+   "mappedSource": "apps/game/src/creature-rig-contact.ts",
+   "selfUs": 876
+  },
+  {
+   "id": 499,
+   "parent": 164,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22736,
+    "columnNumber": 56
+   },
+   "mappedSource": "apps/game/src/creature-rig-contact.ts",
+   "selfUs": 318
+  },
+  {
+   "id": 422,
+   "parent": 163,
+   "callFrame": {
+    "functionName": "gaitTiming",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22114,
+    "columnNumber": 19
+   },
+   "mappedSource": "apps/game/src/motion/gait-phase.ts",
+   "selfUs": 1136
+  },
+  {
+   "id": 351,
+   "parent": 162,
+   "callFrame": {
+    "functionName": "resolve",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22693,
+    "columnNumber": 9
+   },
+   "mappedSource": "apps/game/src/creature-rig-contact.ts",
+   "selfUs": 593
+  },
+  {
+   "id": 192,
+   "parent": 115,
+   "callFrame": {
+    "functionName": "evaluate",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23058,
+    "columnNumber": 18
+   },
+   "mappedSource": "apps/game/src/creature-rig-performance.ts",
+   "selfUs": 203
+  },
+  {
+   "id": 193,
+   "parent": 192,
+   "callFrame": {
+    "functionName": "read",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23035,
+    "columnNumber": 14
+   },
+   "mappedSource": "apps/game/src/creature-rig-performance.ts",
+   "selfUs": 2275
+  },
+  {
+   "id": 194,
+   "parent": 193,
+   "callFrame": {
+    "functionName": "seek",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23203,
+    "columnNumber": 6
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 4753
+  },
+  {
+   "id": 224,
+   "parent": 194,
+   "callFrame": {
+    "functionName": "setJoint",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23037,
+    "columnNumber": 76
+   },
+   "mappedSource": "apps/game/src/creature-rig-performance.ts",
+   "selfUs": 8204
+  },
+  {
+   "id": 208,
+   "parent": 115,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23100,
+    "columnNumber": 78
+   },
+   "mappedSource": "apps/game/src/creature-rig-performance.ts",
+   "selfUs": 5330
+  },
+  {
+   "id": 323,
+   "parent": 115,
+   "callFrame": {
+    "functionName": "resolve",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23208,
+    "columnNumber": 17
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 12
+  },
+  {
+   "id": 173,
+   "parent": 113,
+   "callFrame": {
+    "functionName": "sampleTurn",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12898,
+    "columnNumber": 19
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 4707
+  },
+  {
+   "id": 174,
+   "parent": 173,
+   "callFrame": {
+    "functionName": "sampleClip",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12652,
+    "columnNumber": 19
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 4808
+  },
+  {
+   "id": 175,
+   "parent": 174,
+   "callFrame": {
+    "functionName": "sampleTimeline",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9758,
+    "columnNumber": 23
+   },
+   "mappedSource": "apps/game/src/motion/timeline.ts",
+   "selfUs": 17008
+  },
+  {
+   "id": 269,
+   "parent": 175,
+   "callFrame": {
+    "functionName": "sampleKeys",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9607,
+    "columnNumber": 19
+   },
+   "mappedSource": "apps/game/src/motion/timeline.ts",
+   "selfUs": 4020
+  },
+  {
+   "id": 474,
+   "parent": 269,
+   "callFrame": {
+    "functionName": "sine-in-out",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9577,
+    "columnNumber": 16
+   },
+   "mappedSource": "apps/game/src/motion/timeline.ts",
+   "selfUs": 602
+  },
+  {
+   "id": 362,
+   "parent": 175,
+   "callFrame": {
+    "functionName": "wrap$1",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9751,
+    "columnNumber": 15
+   },
+   "mappedSource": "apps/game/src/motion/timeline.ts",
+   "selfUs": 150
+  },
+  {
+   "id": 454,
+   "parent": 175,
+   "callFrame": {
+    "functionName": "boundedJoint",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9753,
+    "columnNumber": 21
+   },
+   "mappedSource": "apps/game/src/motion/timeline.ts",
+   "selfUs": 2365
+  },
+  {
+   "id": 514,
+   "parent": 175,
+   "callFrame": {
+    "functionName": "sine-in-out",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9577,
+    "columnNumber": 16
+   },
+   "mappedSource": "apps/game/src/motion/timeline.ts",
+   "selfUs": 300
+  },
+  {
+   "id": 240,
+   "parent": 173,
+   "callFrame": {
+    "functionName": "phaseAt",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12892,
+    "columnNumber": 16
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 1715
+  },
+  {
+   "id": 248,
+   "parent": 240,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12894,
+    "columnNumber": 25
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 150
+  },
+  {
+   "id": 265,
+   "parent": 173,
+   "callFrame": {
+    "functionName": "contextOf",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12631,
+    "columnNumber": 18
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 266,
+   "parent": 265,
+   "callFrame": {
+    "functionName": "plantedFor",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12630,
+    "columnNumber": 19
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 266
+  },
+  {
+   "id": 268,
+   "parent": 173,
+   "callFrame": {
+    "functionName": "addPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12664,
+    "columnNumber": 16
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 8688
+  },
+  {
+   "id": 308,
+   "parent": 173,
+   "callFrame": {
+    "functionName": "sampleSchedule",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12398,
+    "columnNumber": 23
+   },
+   "mappedSource": "apps/game/src/effects/sequencer.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 309,
+   "parent": 308,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12400,
+    "columnNumber": 50
+   },
+   "mappedSource": "apps/game/src/effects/sequencer.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 310,
+   "parent": 309,
+   "callFrame": {
+    "functionName": "sampleTrack",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12373,
+    "columnNumber": 20
+   },
+   "mappedSource": "apps/game/src/effects/sequencer.ts",
+   "selfUs": 2019
+  },
+  {
+   "id": 430,
+   "parent": 173,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 13017,
+    "columnNumber": 40
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 314
+  },
+  {
+   "id": 195,
+   "parent": 113,
+   "callFrame": {
+    "functionName": "clear",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 6519,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 23
+  },
+  {
+   "id": 196,
+   "parent": 195,
+   "callFrame": {
+    "functionName": "_callContextMethod",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 6088,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 197,
+   "parent": 196,
+   "callFrame": {
+    "functionName": "clear",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5479,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 908
+  },
+  {
+   "id": 198,
+   "parent": 197,
+   "callFrame": {
+    "functionName": "clear",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 4130,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 1187
+  },
+  {
+   "id": 417,
+   "parent": 197,
+   "callFrame": {
+    "functionName": "onUpdate",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5486,
+    "columnNumber": 9
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 418,
+   "parent": 417,
+   "callFrame": {
+    "functionName": "emit",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 565,
+    "columnNumber": 44
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 2064
+  },
+  {
+   "id": 230,
+   "parent": 113,
+   "callFrame": {
+    "functionName": "fill",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 6195,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 307
+  },
+  {
+   "id": 231,
+   "parent": 230,
+   "callFrame": {
+    "functionName": "_callContextMethod",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 6088,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 1137
+  },
+  {
+   "id": 232,
+   "parent": 231,
+   "callFrame": {
+    "functionName": "fill",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 4998,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 2717
+  },
+  {
+   "id": 237,
+   "parent": 232,
+   "callFrame": {
+    "functionName": "toFillStyle",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 4810,
+    "columnNumber": 20
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 915
+  },
+  {
+   "id": 238,
+   "parent": 237,
+   "callFrame": {
+    "functionName": "setValue",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 4905,
+    "columnNumber": 9
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 1081
+  },
+  {
+   "id": 243,
+   "parent": 237,
+   "callFrame": {
+    "functionName": "isTexture",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 4757,
+    "columnNumber": 18
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 984
+  },
+  {
+   "id": 244,
+   "parent": 237,
+   "callFrame": {
+    "functionName": "handleFillObject",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 4800,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 245,
+   "parent": 244,
+   "callFrame": {
+    "functionName": "setValue",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 4905,
+    "columnNumber": 9
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 246,
+   "parent": 245,
+   "callFrame": {
+    "functionName": "set value",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 4946,
+    "columnNumber": 10
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 247,
+   "parent": 246,
+   "callFrame": {
+    "functionName": "_normalize",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5434,
+    "columnNumber": 11
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 839
+  },
+  {
+   "id": 286,
+   "parent": 237,
+   "callFrame": {
+    "functionName": "isColorLike",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5549,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 934
+  },
+  {
+   "id": 311,
+   "parent": 237,
+   "callFrame": {
+    "functionName": "isColorLike",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 4748,
+    "columnNumber": 20
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 1049
+  },
+  {
+   "id": 312,
+   "parent": 311,
+   "callFrame": {
+    "functionName": "isColorLike",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5549,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 1996
+  },
+  {
+   "id": 324,
+   "parent": 232,
+   "callFrame": {
+    "functionName": "_initNextPathLocation",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5026,
+    "columnNumber": 22
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 591
+  },
+  {
+   "id": 330,
+   "parent": 232,
+   "callFrame": {
+    "functionName": "clone",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 4117,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 597
+  },
+  {
+   "id": 424,
+   "parent": 330,
+   "callFrame": {
+    "functionName": "GraphicsPath",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 3787,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 840
+  },
+  {
+   "id": 369,
+   "parent": 232,
+   "callFrame": {
+    "functionName": "isColorLike",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 4748,
+    "columnNumber": 20
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 501
+  },
+  {
+   "id": 493,
+   "parent": 232,
+   "callFrame": {
+    "functionName": "isColorLike",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5549,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 653
+  },
+  {
+   "id": 297,
+   "parent": 113,
+   "callFrame": {
+    "functionName": "tick",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12478,
+    "columnNumber": 5
+   },
+   "mappedSource": "apps/game/src/effects/pixi-adapter.ts",
+   "selfUs": 2998
+  },
+  {
+   "id": 299,
+   "parent": 297,
+   "callFrame": {
+    "functionName": "#mirror",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12526,
+    "columnNumber": 8
+   },
+   "mappedSource": "apps/game/src/effects/pixi-adapter.ts",
+   "selfUs": 847
+  },
+  {
+   "id": 356,
+   "parent": 299,
+   "callFrame": {
+    "functionName": "removeParticle",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4741,
+    "columnNumber": 15
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainer.mjs",
+   "selfUs": 283
+  },
+  {
+   "id": 453,
+   "parent": 299,
+   "callFrame": {
+    "functionName": "addParticle",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4719,
+    "columnNumber": 12
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainer.mjs",
+   "selfUs": 107
+  },
+  {
+   "id": 460,
+   "parent": 299,
+   "callFrame": {
+    "functionName": "createParticle",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12427,
+    "columnNumber": 18
+   },
+   "mappedSource": "apps/game/src/effects/pixi-adapter.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 461,
+   "parent": 460,
+   "callFrame": {
+    "functionName": "_Particle",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4400,
+    "columnNumber": 12
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/shared/Particle.mjs",
+   "selfUs": 367
+  },
+  {
+   "id": 321,
+   "parent": 297,
+   "callFrame": {
+    "functionName": "stepEmitter",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12208,
+    "columnNumber": 20
+   },
+   "mappedSource": "apps/game/src/effects/emitter.ts",
+   "selfUs": 3001
+  },
+  {
+   "id": 471,
+   "parent": 321,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5532,
+    "columnNumber": 16
+   },
+   "mappedSource": "packages/domain/rand/src/index.ts",
+   "selfUs": 686
+  },
+  {
+   "id": 378,
+   "parent": 297,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12508,
+    "columnNumber": 24
+   },
+   "mappedSource": "apps/game/src/effects/pixi-adapter.ts",
+   "selfUs": 303
+  },
+  {
+   "id": 520,
+   "parent": 297,
+   "callFrame": {
+    "functionName": "set visible",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 7811,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 699
+  },
+  {
+   "id": 326,
+   "parent": 113,
+   "callFrame": {
+    "functionName": "rect",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 6345,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 80
+  },
+  {
+   "id": 327,
+   "parent": 326,
+   "callFrame": {
+    "functionName": "_callContextMethod",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 6088,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 328,
+   "parent": 327,
+   "callFrame": {
+    "functionName": "rect",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5249,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 1124
+  },
+  {
+   "id": 329,
+   "parent": 328,
+   "callFrame": {
+    "functionName": "rect",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 3986,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 191
+  },
+  {
+   "id": 379,
+   "parent": 328,
+   "callFrame": {
+    "functionName": "clone",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 1531,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 994
+  },
+  {
+   "id": 449,
+   "parent": 326,
+   "callFrame": {
+    "functionName": "rect",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5249,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 462
+  },
+  {
+   "id": 350,
+   "parent": 113,
+   "callFrame": {
+    "functionName": "_callContextMethod",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 6088,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 750
+  },
+  {
+   "id": 357,
+   "parent": 113,
+   "callFrame": {
+    "functionName": "set y",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 7318,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 358,
+   "parent": 357,
+   "callFrame": {
+    "functionName": "set y",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 440,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 877
+  },
+  {
+   "id": 482,
+   "parent": 113,
+   "callFrame": {
+    "functionName": "set x",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 417,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 162
+  },
+  {
+   "id": 515,
+   "parent": 113,
+   "callFrame": {
+    "functionName": "clamp01",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12624,
+    "columnNumber": 16
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 427
+  },
+  {
+   "id": 122,
+   "parent": 112,
+   "callFrame": {
+    "functionName": "render",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 185,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1680
+  },
+  {
+   "id": 123,
+   "parent": 122,
+   "callFrame": {
+    "functionName": "emit",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 53,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 2990
+  },
+  {
+   "id": 124,
+   "parent": 123,
+   "callFrame": {
+    "functionName": "render",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2581,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 405
+  },
+  {
+   "id": 125,
+   "parent": 124,
+   "callFrame": {
+    "functionName": "_updateRenderGroups",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2640,
+    "columnNumber": 20
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 3034
+  },
+  {
+   "id": 126,
+   "parent": 125,
+   "callFrame": {
+    "functionName": "_buildInstructions",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2665,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1122
+  },
+  {
+   "id": 127,
+   "parent": 126,
+   "callFrame": {
+    "functionName": "collectRenderablesWithEffects",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5970,
+    "columnNumber": 30
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 128,
+   "parent": 127,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5965,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 263
+  },
+  {
+   "id": 129,
+   "parent": 128,
+   "callFrame": {
+    "functionName": "collectRenderables",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5958,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 605
+  },
+  {
+   "id": 130,
+   "parent": 129,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5965,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 131,
+   "parent": 130,
+   "callFrame": {
+    "functionName": "collectRenderables",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5958,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 2331
+  },
+  {
+   "id": 132,
+   "parent": 131,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5965,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 133,
+   "parent": 132,
+   "callFrame": {
+    "functionName": "collectRenderables",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5958,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 1018
+  },
+  {
+   "id": 134,
+   "parent": 133,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5965,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 135,
+   "parent": 134,
+   "callFrame": {
+    "functionName": "collectRenderables",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5958,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 1373
+  },
+  {
+   "id": 136,
+   "parent": 135,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5965,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 2651
+  },
+  {
+   "id": 137,
+   "parent": 136,
+   "callFrame": {
+    "functionName": "collectRenderables",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5958,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 1972
+  },
+  {
+   "id": 138,
+   "parent": 137,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5965,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 3206
+  },
+  {
+   "id": 139,
+   "parent": 138,
+   "callFrame": {
+    "functionName": "collectRenderables",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5958,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 3133
+  },
+  {
+   "id": 140,
+   "parent": 139,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 8006,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 439
+  },
+  {
+   "id": 141,
+   "parent": 140,
+   "callFrame": {
+    "functionName": "addRenderable",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 726,
+    "columnNumber": 14
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "selfUs": 5079
+  },
+  {
+   "id": 142,
+   "parent": 141,
+   "callFrame": {
+    "functionName": "addToBatch",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1810,
+    "columnNumber": 11
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 296
+  },
+  {
+   "id": 495,
+   "parent": 142,
+   "callFrame": {
+    "functionName": "add",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 728,
+    "columnNumber": 4
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 5
+  },
+  {
+   "id": 167,
+   "parent": 141,
+   "callFrame": {
+    "functionName": "_getBatchableMesh",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 774,
+    "columnNumber": 18
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "selfUs": 696
+  },
+  {
+   "id": 168,
+   "parent": 141,
+   "callFrame": {
+    "functionName": "break",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 754,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 3767
+  },
+  {
+   "id": 169,
+   "parent": 168,
+   "callFrame": {
+    "functionName": "packAttributes",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1523,
+    "columnNumber": 15
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 7815
+  },
+  {
+   "id": 191,
+   "parent": 168,
+   "callFrame": {
+    "functionName": "packIndex",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 885,
+    "columnNumber": 10
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 7805
+  },
+  {
+   "id": 213,
+   "parent": 168,
+   "callFrame": {
+    "functionName": "get blendMode",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 612,
+    "columnNumber": 14
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/BatchableMesh.mjs",
+   "selfUs": 539
+  },
+  {
+   "id": 289,
+   "parent": 168,
+   "callFrame": {
+    "functionName": "clear",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 646,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 700
+  },
+  {
+   "id": 290,
+   "parent": 168,
+   "callFrame": {
+    "functionName": "packQuadAttributes",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1556,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 577
+  },
+  {
+   "id": 428,
+   "parent": 168,
+   "callFrame": {
+    "functionName": "getBatchFromPool",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 685,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 643
+  },
+  {
+   "id": 212,
+   "parent": 141,
+   "callFrame": {
+    "functionName": "getBatchFromPool",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 685,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 906
+  },
+  {
+   "id": 256,
+   "parent": 141,
+   "callFrame": {
+    "functionName": "setTexture",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 636,
+    "columnNumber": 11
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/BatchableMesh.mjs",
+   "selfUs": 822
+  },
+  {
+   "id": 313,
+   "parent": 141,
+   "callFrame": {
+    "functionName": "_getMeshData",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 761,
+    "columnNumber": 13
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "selfUs": 303
+  },
+  {
+   "id": 421,
+   "parent": 141,
+   "callFrame": {
+    "functionName": "packIndex",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 885,
+    "columnNumber": 10
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 138
+  },
+  {
+   "id": 475,
+   "parent": 141,
+   "callFrame": {
+    "functionName": "break",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1822,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1956
+  },
+  {
+   "id": 476,
+   "parent": 475,
+   "callFrame": {
+    "functionName": "break",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 754,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1161
+  },
+  {
+   "id": 477,
+   "parent": 476,
+   "callFrame": {
+    "functionName": "packIndex",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 885,
+    "columnNumber": 10
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 2138
+  },
+  {
+   "id": 481,
+   "parent": 476,
+   "callFrame": {
+    "functionName": "packAttributes",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1523,
+    "columnNumber": 15
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 3248
+  },
+  {
+   "id": 510,
+   "parent": 481,
+   "callFrame": {
+    "functionName": "get color",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 1817,
+    "columnNumber": 10
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 303
+  },
+  {
+   "id": 459,
+   "parent": 140,
+   "callFrame": {
+    "functionName": "break",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 754,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 160
+  },
+  {
+   "id": 364,
+   "parent": 139,
+   "callFrame": {
+    "functionName": "addRenderable",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 726,
+    "columnNumber": 14
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "selfUs": 332
+  },
+  {
+   "id": 317,
+   "parent": 133,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 8006,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 841
+  },
+  {
+   "id": 318,
+   "parent": 317,
+   "callFrame": {
+    "functionName": "addRenderable",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2302,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 319,
+   "parent": 318,
+   "callFrame": {
+    "functionName": "_getGpuSprite",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2320,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 320,
+   "parent": 319,
+   "callFrame": {
+    "functionName": "_initGPUSprite",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2323,
+    "columnNumber": 15
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 927
+  },
+  {
+   "id": 383,
+   "parent": 317,
+   "callFrame": {
+    "functionName": "addRenderable",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4272,
+    "columnNumber": 14
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainerPipe.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 384,
+   "parent": 383,
+   "callFrame": {
+    "functionName": "add",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 6519,
+    "columnNumber": 4
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 868
+  },
+  {
+   "id": 415,
+   "parent": 317,
+   "callFrame": {
+    "functionName": "break",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1822,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 186
+  },
+  {
+   "id": 225,
+   "parent": 131,
+   "callFrame": {
+    "functionName": "collectRenderablesSimple",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 8006,
+    "columnNumber": 25
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 226,
+   "parent": 225,
+   "callFrame": {
+    "functionName": "addRenderable",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2302,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 2057
+  },
+  {
+   "id": 257,
+   "parent": 225,
+   "callFrame": {
+    "functionName": "setBlendMode",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2394,
+    "columnNumber": 13
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 809
+  },
+  {
+   "id": 332,
+   "parent": 225,
+   "callFrame": {
+    "functionName": "addRenderable",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 3687,
+    "columnNumber": 14
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/text/canvas/CanvasTextPipe.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 333,
+   "parent": 332,
+   "callFrame": {
+    "functionName": "_updateGpuText",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 3701,
+    "columnNumber": 15
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/text/canvas/CanvasTextPipe.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 334,
+   "parent": 333,
+   "callFrame": {
+    "functionName": "getManagedTexture",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 3831,
+    "columnNumber": 18
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/text/shared/AbstractTextSystem.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 335,
+   "parent": 334,
+   "callFrame": {
+    "functionName": "getTexture",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 3756,
+    "columnNumber": 11
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/text/shared/AbstractTextSystem.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 336,
+   "parent": 335,
+   "callFrame": {
+    "functionName": "getPo2TextureFromSource",
+    "scriptId": "6",
+    "url": "http://127.0.0.1:53616/getPo2TextureFromSource-Dy05Fxdk.js",
+    "lineNumber": 1944,
+    "columnNumber": 32
+   },
+   "mappedSource": "other-script:getPo2TextureFromSource-Dy05Fxdk.js",
+   "selfUs": 883
+  },
+  {
+   "id": 337,
+   "parent": 336,
+   "callFrame": {
+    "functionName": "emit",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 565,
+    "columnNumber": 44
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 338,
+   "parent": 337,
+   "callFrame": {
+    "functionName": "onSourceUpdate",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 3093,
+    "columnNumber": 15
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 339,
+   "parent": 338,
+   "callFrame": {
+    "functionName": "upload",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 2600,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 340,
+   "parent": 339,
+   "callFrame": {
+    "functionName": "uploadImageWebGL2",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 2615,
+    "columnNumber": 26
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 341,
+   "parent": 340,
+   "callFrame": {
+    "functionName": "texSubImage2D",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:texSubImage2D",
+   "selfUs": 1376
+  },
+  {
+   "id": 464,
+   "parent": 335,
+   "callFrame": {
+    "functionName": "getCanvasAndContext",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 2751,
+    "columnNumber": 20
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/text/canvas/CanvasTextGenerator.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 465,
+   "parent": 464,
+   "callFrame": {
+    "functionName": "_renderTextToCanvas",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 2788,
+    "columnNumber": 20
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/text/canvas/CanvasTextGenerator.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 466,
+   "parent": 465,
+   "callFrame": {
+    "functionName": "_setFillAndStrokeStyles",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 2985,
+    "columnNumber": 24
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/text/canvas/CanvasTextGenerator.mjs",
+   "selfUs": 645
+  },
+  {
+   "id": 467,
+   "parent": 466,
+   "callFrame": {
+    "functionName": "getCanvasFillStyle",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 2676,
+    "columnNumber": 27
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/text/canvas/utils/getCanvasFillStyle.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 468,
+   "parent": 467,
+   "callFrame": {
+    "functionName": "toHexa",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5396,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 207
+  },
+  {
+   "id": 352,
+   "parent": 225,
+   "callFrame": {
+    "functionName": "addRenderable",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5855,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 353,
+   "parent": 352,
+   "callFrame": {
+    "functionName": "_rebuild",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5884,
+    "columnNumber": 9
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 354,
+   "parent": 353,
+   "callFrame": {
+    "functionName": "_updateBatchesForRenderable",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5907,
+    "columnNumber": 28
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 640
+  },
+  {
+   "id": 480,
+   "parent": 354,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5911,
+    "columnNumber": 43
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 1056
+  },
+  {
+   "id": 387,
+   "parent": 353,
+   "callFrame": {
+    "functionName": "destroy",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5825,
+    "columnNumber": 8
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 619
+  },
+  {
+   "id": 388,
+   "parent": 387,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5826,
+    "columnNumber": 23
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 1414
+  },
+  {
+   "id": 434,
+   "parent": 352,
+   "callFrame": {
+    "functionName": "_addToBatcher",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5890,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 351
+  },
+  {
+   "id": 450,
+   "parent": 434,
+   "callFrame": {
+    "functionName": "addToBatch",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1810,
+    "columnNumber": 11
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 258
+  },
+  {
+   "id": 429,
+   "parent": 131,
+   "callFrame": {
+    "functionName": "addRenderable",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5855,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 1748
+  },
+  {
+   "id": 159,
+   "parent": 126,
+   "callFrame": {
+    "functionName": "buildEnd",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1825,
+    "columnNumber": 9
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 4607
+  },
+  {
+   "id": 160,
+   "parent": 159,
+   "callFrame": {
+    "functionName": "setDataWithSize",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 10411,
+    "columnNumber": 16
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 735
+  },
+  {
+   "id": 377,
+   "parent": 160,
+   "callFrame": {
+    "functionName": "emit",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 565,
+    "columnNumber": 44
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 620
+  },
+  {
+   "id": 273,
+   "parent": 159,
+   "callFrame": {
+    "functionName": "break",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 754,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 30
+  },
+  {
+   "id": 274,
+   "parent": 273,
+   "callFrame": {
+    "functionName": "clear",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 646,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1116
+  },
+  {
+   "id": 272,
+   "parent": 126,
+   "callFrame": {
+    "functionName": "buildStart",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1800,
+    "columnNumber": 11
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 33
+  },
+  {
+   "id": 423,
+   "parent": 126,
+   "callFrame": {
+    "functionName": "break",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 754,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 302
+  },
+  {
+   "id": 441,
+   "parent": 126,
+   "callFrame": {
+    "functionName": "setDataWithSize",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 10411,
+    "columnNumber": 16
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 696
+  },
+  {
+   "id": 171,
+   "parent": 125,
+   "callFrame": {
+    "functionName": "updateRenderGroupTransforms",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2489,
+    "columnNumber": 36
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 2673
+  },
+  {
+   "id": 276,
+   "parent": 171,
+   "callFrame": {
+    "functionName": "updateTransformAndChildren",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2524,
+    "columnNumber": 35
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 277,
+   "parent": 276,
+   "callFrame": {
+    "functionName": "updateTransformAndChildren",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2524,
+    "columnNumber": 35
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 236
+  },
+  {
+   "id": 278,
+   "parent": 277,
+   "callFrame": {
+    "functionName": "updateTransformAndChildren",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2524,
+    "columnNumber": 35
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1648
+  },
+  {
+   "id": 279,
+   "parent": 278,
+   "callFrame": {
+    "functionName": "updateTransformAndChildren",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2524,
+    "columnNumber": 35
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 3261
+  },
+  {
+   "id": 348,
+   "parent": 279,
+   "callFrame": {
+    "functionName": "updateTransformAndChildren",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2524,
+    "columnNumber": 35
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1685
+  },
+  {
+   "id": 469,
+   "parent": 277,
+   "callFrame": {
+    "functionName": "updateColorBlendVisibility",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2549,
+    "columnNumber": 35
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 784
+  },
+  {
+   "id": 202,
+   "parent": 125,
+   "callFrame": {
+    "functionName": "validateRenderables",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2563,
+    "columnNumber": 28
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1496
+  },
+  {
+   "id": 203,
+   "parent": 202,
+   "callFrame": {
+    "functionName": "validateRenderable",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5848,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 305
+  },
+  {
+   "id": 204,
+   "parent": 203,
+   "callFrame": {
+    "functionName": "updateGpuContext",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 2876,
+    "columnNumber": 17
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 1468
+  },
+  {
+   "id": 205,
+   "parent": 204,
+   "callFrame": {
+    "functionName": "buildContextBatches",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 2685,
+    "columnNumber": 28
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 176
+  },
+  {
+   "id": 206,
+   "parent": 205,
+   "callFrame": {
+    "functionName": "addShapePathToGeometryData",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 2734,
+    "columnNumber": 35
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 2701
+  },
+  {
+   "id": 242,
+   "parent": 206,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 2736,
+    "columnNumber": 35
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 1968
+  },
+  {
+   "id": 342,
+   "parent": 242,
+   "callFrame": {
+    "functionName": "transformVertices",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 1772,
+    "columnNumber": 26
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 480
+  },
+  {
+   "id": 346,
+   "parent": 242,
+   "callFrame": {
+    "functionName": "build",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 2324,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 536
+  },
+  {
+   "id": 511,
+   "parent": 242,
+   "callFrame": {
+    "functionName": "triangulate",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 2341,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 245
+  },
+  {
+   "id": 365,
+   "parent": 205,
+   "callFrame": {
+    "functionName": "get shapePath",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 3800,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 530
+  },
+  {
+   "id": 366,
+   "parent": 365,
+   "callFrame": {
+    "functionName": "buildPath",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 3755,
+    "columnNumber": 10
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 367,
+   "parent": 366,
+   "callFrame": {
+    "functionName": "rect",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 3496,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 1224
+  },
+  {
+   "id": 439,
+   "parent": 365,
+   "callFrame": {
+    "functionName": "ShapePath",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 3317,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 1263
+  },
+  {
+   "id": 292,
+   "parent": 204,
+   "callFrame": {
+    "functionName": "reset",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 2801,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 780
+  },
+  {
+   "id": 271,
+   "parent": 203,
+   "callFrame": {
+    "functionName": "buildContextBatches",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 2685,
+    "columnNumber": 28
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 877
+  },
+  {
+   "id": 227,
+   "parent": 202,
+   "callFrame": {
+    "functionName": "validateRenderable",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 707,
+    "columnNumber": 19
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "selfUs": 1936
+  },
+  {
+   "id": 228,
+   "parent": 227,
+   "callFrame": {
+    "functionName": "get batched",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 883,
+    "columnNumber": 12
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/Mesh.mjs",
+   "selfUs": 2120
+  },
+  {
+   "id": 438,
+   "parent": 228,
+   "callFrame": {
+    "functionName": "get positions",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 560,
+    "columnNumber": 14
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshGeometry.mjs",
+   "selfUs": 985
+  },
+  {
+   "id": 291,
+   "parent": 227,
+   "callFrame": {
+    "functionName": "_getMeshData",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 761,
+    "columnNumber": 13
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "selfUs": 1180
+  },
+  {
+   "id": 512,
+   "parent": 291,
+   "callFrame": {
+    "functionName": "_initMeshData",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 766,
+    "columnNumber": 14
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 513,
+   "parent": 512,
+   "callFrame": {
+    "functionName": "get batched",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 883,
+    "columnNumber": 12
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/Mesh.mjs",
+   "selfUs": 661
+  },
+  {
+   "id": 442,
+   "parent": 227,
+   "callFrame": {
+    "functionName": "_getBatchableMesh",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 774,
+    "columnNumber": 18
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "selfUs": 756
+  },
+  {
+   "id": 270,
+   "parent": 202,
+   "callFrame": {
+    "functionName": "_getBatchableMesh",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 774,
+    "columnNumber": 18
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "selfUs": 1008
+  },
+  {
+   "id": 455,
+   "parent": 202,
+   "callFrame": {
+    "functionName": "_getMeshData",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 761,
+    "columnNumber": 13
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "selfUs": 743
+  },
+  {
+   "id": 458,
+   "parent": 202,
+   "callFrame": {
+    "functionName": "updateGpuContext",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 2876,
+    "columnNumber": 17
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 305
+  },
+  {
+   "id": 521,
+   "parent": 202,
+   "callFrame": {
+    "functionName": "validateRenderable",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4269,
+    "columnNumber": 19
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainerPipe.mjs",
+   "selfUs": 1252
+  },
+  {
+   "id": 234,
+   "parent": 125,
+   "callFrame": {
+    "functionName": "validateRenderable",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 5848,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 875
+  },
+  {
+   "id": 143,
+   "parent": 124,
+   "callFrame": {
+    "functionName": "executeInstructions",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2213,
+    "columnNumber": 28
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 721
+  },
+  {
+   "id": 144,
+   "parent": 143,
+   "callFrame": {
+    "functionName": "execute",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 751,
+    "columnNumber": 8
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/MeshPipe.mjs",
+   "selfUs": 1102
+  },
+  {
+   "id": 145,
+   "parent": 144,
+   "callFrame": {
+    "functionName": "execute",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 3337,
+    "columnNumber": 8
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 1261
+  },
+  {
+   "id": 146,
+   "parent": 145,
+   "callFrame": {
+    "functionName": "draw",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 981,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 1993
+  },
+  {
+   "id": 147,
+   "parent": 146,
+   "callFrame": {
+    "functionName": "bind",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 1858,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 571
+  },
+  {
+   "id": 148,
+   "parent": 147,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "24",
+    "url": "",
+    "lineNumber": 0,
+    "columnNumber": 19
+   },
+   "mappedSource": "native:?",
+   "selfUs": 3466
+  },
+  {
+   "id": 149,
+   "parent": 148,
+   "callFrame": {
+    "functionName": "updateUniformGroup",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 2128,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 150,
+   "parent": 149,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "25",
+    "url": "",
+    "lineNumber": 0,
+    "columnNumber": 19
+   },
+   "mappedSource": "native:?",
+   "selfUs": 549
+  },
+  {
+   "id": 151,
+   "parent": 150,
+   "callFrame": {
+    "functionName": "uniformMatrix3fv",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:uniformMatrix3fv",
+   "selfUs": 2010
+  },
+  {
+   "id": 473,
+   "parent": 150,
+   "callFrame": {
+    "functionName": "toArray",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 1018,
+    "columnNumber": 8
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 302
+  },
+  {
+   "id": 253,
+   "parent": 149,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "26",
+    "url": "",
+    "lineNumber": 0,
+    "columnNumber": 19
+   },
+   "mappedSource": "native:?",
+   "selfUs": 0
+  },
+  {
+   "id": 254,
+   "parent": 253,
+   "callFrame": {
+    "functionName": "uniformMatrix3fv",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:uniformMatrix3fv",
+   "selfUs": 6836
+  },
+  {
+   "id": 462,
+   "parent": 148,
+   "callFrame": {
+    "functionName": "bindSource",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 3006,
+    "columnNumber": 11
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 1167
+  },
+  {
+   "id": 258,
+   "parent": 147,
+   "callFrame": {
+    "functionName": "_setProgram",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 1899,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 513
+  },
+  {
+   "id": 498,
+   "parent": 258,
+   "callFrame": {
+    "functionName": "useProgram",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:useProgram",
+   "selfUs": 1423
+  },
+  {
+   "id": 152,
+   "parent": 146,
+   "callFrame": {
+    "functionName": "bind",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 652,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 149
+  },
+  {
+   "id": 153,
+   "parent": 152,
+   "callFrame": {
+    "functionName": "updateBuffers",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 667,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 913
+  },
+  {
+   "id": 154,
+   "parent": 153,
+   "callFrame": {
+    "functionName": "updateBuffer",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 198,
+    "columnNumber": 13
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 3863
+  },
+  {
+   "id": 155,
+   "parent": 154,
+   "callFrame": {
+    "functionName": "bufferSubData",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:bufferSubData",
+   "selfUs": 17074
+  },
+  {
+   "id": 186,
+   "parent": 154,
+   "callFrame": {
+    "functionName": "bindBuffer",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:bindBuffer",
+   "selfUs": 7104
+  },
+  {
+   "id": 436,
+   "parent": 154,
+   "callFrame": {
+    "functionName": "getGlBuffer",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 110,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 192
+  },
+  {
+   "id": 267,
+   "parent": 152,
+   "callFrame": {
+    "functionName": "bindVertexArray",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:bindVertexArray",
+   "selfUs": 3628
+  },
+  {
+   "id": 207,
+   "parent": 146,
+   "callFrame": {
+    "functionName": "draw",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 803,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 4769
+  },
+  {
+   "id": 322,
+   "parent": 207,
+   "callFrame": {
+    "functionName": "drawElements",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:drawElements",
+   "selfUs": 3781
+  },
+  {
+   "id": 249,
+   "parent": 146,
+   "callFrame": {
+    "functionName": "set",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 2305,
+    "columnNumber": 4
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 250,
+   "parent": 249,
+   "callFrame": {
+    "functionName": "setBlendMode",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 2385,
+    "columnNumber": 13
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 291
+  },
+  {
+   "id": 293,
+   "parent": 145,
+   "callFrame": {
+    "functionName": "set",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 10033,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 828
+  },
+  {
+   "id": 294,
+   "parent": 293,
+   "callFrame": {
+    "functionName": "setResource",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 9871,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 1146
+  },
+  {
+   "id": 298,
+   "parent": 294,
+   "callFrame": {
+    "functionName": "on",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 615,
+    "columnNumber": 40
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 1049
+  },
+  {
+   "id": 420,
+   "parent": 298,
+   "callFrame": {
+    "functionName": "addListener",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 487,
+    "columnNumber": 21
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 520
+  },
+  {
+   "id": 296,
+   "parent": 145,
+   "callFrame": {
+    "functionName": "removeListener",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 640,
+    "columnNumber": 64
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 919
+  },
+  {
+   "id": 492,
+   "parent": 145,
+   "callFrame": {
+    "functionName": "get",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 10030,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 78
+  },
+  {
+   "id": 251,
+   "parent": 144,
+   "callFrame": {
+    "functionName": "set blendMode",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 10182,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 850
+  },
+  {
+   "id": 181,
+   "parent": 143,
+   "callFrame": {
+    "functionName": "execute",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1846,
+    "columnNumber": 8
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 2922
+  },
+  {
+   "id": 182,
+   "parent": 181,
+   "callFrame": {
+    "functionName": "execute",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 35,
+    "columnNumber": 8
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 1150
+  },
+  {
+   "id": 183,
+   "parent": 182,
+   "callFrame": {
+    "functionName": "bind",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 2996,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 184,
+   "parent": 183,
+   "callFrame": {
+    "functionName": "bindSource",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 3006,
+    "columnNumber": 11
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 534
+  },
+  {
+   "id": 185,
+   "parent": 184,
+   "callFrame": {
+    "functionName": "bindTexture",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:bindTexture",
+   "selfUs": 892
+  },
+  {
+   "id": 295,
+   "parent": 183,
+   "callFrame": {
+    "functionName": "get source",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 2988,
+    "columnNumber": 11
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 961
+  },
+  {
+   "id": 233,
+   "parent": 182,
+   "callFrame": {
+    "functionName": "draw",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 803,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 456
+  },
+  {
+   "id": 241,
+   "parent": 233,
+   "callFrame": {
+    "functionName": "drawElements",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:drawElements",
+   "selfUs": 1673
+  },
+  {
+   "id": 215,
+   "parent": 181,
+   "callFrame": {
+    "functionName": "start",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 27,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 216,
+   "parent": 215,
+   "callFrame": {
+    "functionName": "updateUniformGroup",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 1872,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 150
+  },
+  {
+   "id": 217,
+   "parent": 216,
+   "callFrame": {
+    "functionName": "updateUniformGroup",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 2128,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 1810
+  },
+  {
+   "id": 218,
+   "parent": 217,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "23",
+    "url": "",
+    "lineNumber": 0,
+    "columnNumber": 19
+   },
+   "mappedSource": "native:?",
+   "selfUs": 0
+  },
+  {
+   "id": 219,
+   "parent": 218,
+   "callFrame": {
+    "functionName": "uniformMatrix3fv",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:uniformMatrix3fv",
+   "selfUs": 2961
+  },
+  {
+   "id": 349,
+   "parent": 216,
+   "callFrame": {
+    "functionName": "_getUniformSyncFunction",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 2140,
+    "columnNumber": 24
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 58
+  },
+  {
+   "id": 220,
+   "parent": 215,
+   "callFrame": {
+    "functionName": "bind",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 652,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 974
+  },
+  {
+   "id": 221,
+   "parent": 220,
+   "callFrame": {
+    "functionName": "updateBuffers",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 667,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 222,
+   "parent": 221,
+   "callFrame": {
+    "functionName": "updateBuffer",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 198,
+    "columnNumber": 13
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 806
+  },
+  {
+   "id": 223,
+   "parent": 222,
+   "callFrame": {
+    "functionName": "bufferSubData",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:bufferSubData",
+   "selfUs": 9381
+  },
+  {
+   "id": 283,
+   "parent": 222,
+   "callFrame": {
+    "functionName": "bindBuffer",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:bindBuffer",
+   "selfUs": 1449
+  },
+  {
+   "id": 370,
+   "parent": 222,
+   "callFrame": {
+    "functionName": "getGlBuffer",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 110,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 302
+  },
+  {
+   "id": 255,
+   "parent": 220,
+   "callFrame": {
+    "functionName": "bindVertexArray",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:bindVertexArray",
+   "selfUs": 633
+  },
+  {
+   "id": 522,
+   "parent": 220,
+   "callFrame": {
+    "functionName": "getVao",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 699,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 66
+  },
+  {
+   "id": 456,
+   "parent": 215,
+   "callFrame": {
+    "functionName": "bind",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 1858,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 457,
+   "parent": 456,
+   "callFrame": {
+    "functionName": "_setProgram",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 1899,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 218
+  },
+  {
+   "id": 419,
+   "parent": 181,
+   "callFrame": {
+    "functionName": "set blendMode",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 10182,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 20
+  },
+  {
+   "id": 300,
+   "parent": 143,
+   "callFrame": {
+    "functionName": "execute",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4288,
+    "columnNumber": 8
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainerPipe.mjs",
+   "selfUs": 302
+  },
+  {
+   "id": 301,
+   "parent": 300,
+   "callFrame": {
+    "functionName": "execute",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4340,
+    "columnNumber": 8
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/gl/GlParticleContainerAdaptor.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 302,
+   "parent": 301,
+   "callFrame": {
+    "functionName": "bind",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 652,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 303,
+   "parent": 302,
+   "callFrame": {
+    "functionName": "getVao",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 699,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 304,
+   "parent": 303,
+   "callFrame": {
+    "functionName": "checkCompatibility",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 681,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 198
+  },
+  {
+   "id": 305,
+   "parent": 303,
+   "callFrame": {
+    "functionName": "initGeometryVao",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 710,
+    "columnNumber": 16
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 61
+  },
+  {
+   "id": 306,
+   "parent": 305,
+   "callFrame": {
+    "functionName": "getSignature",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 692,
+    "columnNumber": 13
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 846
+  },
+  {
+   "id": 359,
+   "parent": 302,
+   "callFrame": {
+    "functionName": "updateBuffers",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 667,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 360,
+   "parent": 359,
+   "callFrame": {
+    "functionName": "updateBuffer",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 198,
+    "columnNumber": 13
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 361,
+   "parent": 360,
+   "callFrame": {
+    "functionName": "getGlBuffer",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 110,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 992
+  },
+  {
+   "id": 508,
+   "parent": 360,
+   "callFrame": {
+    "functionName": "bufferData",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:bufferData",
+   "selfUs": 2132
+  },
+  {
+   "id": 315,
+   "parent": 301,
+   "callFrame": {
+    "functionName": "bind",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 1858,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 316,
+   "parent": 315,
+   "callFrame": {
+    "functionName": "bind",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 2996,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 321
+  },
+  {
+   "id": 343,
+   "parent": 300,
+   "callFrame": {
+    "functionName": "update",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4143,
+    "columnNumber": 7
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleBuffer.mjs",
+   "selfUs": 785
+  },
+  {
+   "id": 344,
+   "parent": 343,
+   "callFrame": {
+    "functionName": "createIndicesForQuads",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4018,
+    "columnNumber": 30
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/shared/utils/createIndicesForQuads.mjs",
+   "selfUs": 122
+  },
+  {
+   "id": 345,
+   "parent": 343,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "28",
+    "url": "",
+    "lineNumber": 0,
+    "columnNumber": 19
+   },
+   "mappedSource": "native:?",
+   "selfUs": 1536
+  },
+  {
+   "id": 347,
+   "parent": 343,
+   "callFrame": {
+    "functionName": "ViewableBuffer",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 477,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 995
+  },
+  {
+   "id": 355,
+   "parent": 343,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "29",
+    "url": "",
+    "lineNumber": 0,
+    "columnNumber": 19
+   },
+   "mappedSource": "native:?",
+   "selfUs": 284
+  },
+  {
+   "id": 501,
+   "parent": 300,
+   "callFrame": {
+    "functionName": "getBuffers",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4276,
+    "columnNumber": 11
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainerPipe.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 502,
+   "parent": 501,
+   "callFrame": {
+    "functionName": "_initBuffer",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4279,
+    "columnNumber": 12
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainerPipe.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 503,
+   "parent": 502,
+   "callFrame": {
+    "functionName": "ParticleBuffer",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4074,
+    "columnNumber": 12
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleBuffer.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 504,
+   "parent": 503,
+   "callFrame": {
+    "functionName": "ViewableBuffer",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 477,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1194
+  },
+  {
+   "id": 505,
+   "parent": 503,
+   "callFrame": {
+    "functionName": "Geometry",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 10526,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 506,
+   "parent": 505,
+   "callFrame": {
+    "functionName": "EventEmitter",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 513,
+    "columnNumber": 22
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 21
+  },
+  {
+   "id": 307,
+   "parent": 143,
+   "callFrame": {
+    "functionName": "set blendMode",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 10182,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 939
+  },
+  {
+   "id": 472,
+   "parent": 143,
+   "callFrame": {
+    "functionName": "execute",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4340,
+    "columnNumber": 8
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/gl/GlParticleContainerAdaptor.mjs",
+   "selfUs": 549
+  },
+  {
+   "id": 280,
+   "parent": 124,
+   "callFrame": {
+    "functionName": "start",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 3587,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 281,
+   "parent": 280,
+   "callFrame": {
+    "functionName": "push",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 3627,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1141
+  },
+  {
+   "id": 282,
+   "parent": 281,
+   "callFrame": {
+    "functionName": "bind",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 3591,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 185
+  },
+  {
+   "id": 380,
+   "parent": 282,
+   "callFrame": {
+    "functionName": "get size",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 4079,
+    "columnNumber": 9
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 0
+  },
+  {
+   "id": 381,
+   "parent": 380,
+   "callFrame": {
+    "functionName": "get pixelWidth",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 4091,
+    "columnNumber": 15
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 354
+  },
+  {
+   "id": 452,
+   "parent": 281,
+   "callFrame": {
+    "functionName": "update",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 9821,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 267
+  },
+  {
+   "id": 314,
+   "parent": 280,
+   "callFrame": {
+    "functionName": "reset",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 3580,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1149
+  },
+  {
+   "id": 432,
+   "parent": 124,
+   "callFrame": {
+    "functionName": "validateRenderables",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2563,
+    "columnNumber": 28
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 27
+  },
+  {
+   "id": 444,
+   "parent": 124,
+   "callFrame": {
+    "functionName": "copyFrom",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 1589,
+    "columnNumber": 9
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 476
+  },
+  {
+   "id": 176,
+   "parent": 123,
+   "callFrame": {
+    "functionName": "renderStart",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 4383,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1657
+  },
+  {
+   "id": 177,
+   "parent": 176,
+   "callFrame": {
+    "functionName": "push",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 4488,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 280
+  },
+  {
+   "id": 178,
+   "parent": 177,
+   "callFrame": {
+    "functionName": "bind",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 4419,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 4199
+  },
+  {
+   "id": 179,
+   "parent": 178,
+   "callFrame": {
+    "functionName": "get pixelWidth",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 4091,
+    "columnNumber": 15
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1161
+  },
+  {
+   "id": 199,
+   "parent": 178,
+   "callFrame": {
+    "functionName": "startRenderPass",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 1250,
+    "columnNumber": 16
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 3119
+  },
+  {
+   "id": 200,
+   "parent": 199,
+   "callFrame": {
+    "functionName": "clear",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 1337,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 303
+  },
+  {
+   "id": 201,
+   "parent": 200,
+   "callFrame": {
+    "functionName": "clear",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:clear",
+   "selfUs": 7058
+  },
+  {
+   "id": 252,
+   "parent": 199,
+   "callFrame": {
+    "functionName": "bindFramebuffer",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:bindFramebuffer",
+   "selfUs": 3201
+  },
+  {
+   "id": 443,
+   "parent": 178,
+   "callFrame": {
+    "functionName": "get pixelHeight",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 4094,
+    "columnNumber": 16
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 856
+  },
+  {
+   "id": 385,
+   "parent": 176,
+   "callFrame": {
+    "functionName": "copyFrom",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 2260,
+    "columnNumber": 9
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 248
+  },
+  {
+   "id": 431,
+   "parent": 176,
+   "callFrame": {
+    "functionName": "isRenderingToScreen",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 4322,
+    "columnNumber": 28
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1289
+  },
+  {
+   "id": 209,
+   "parent": 123,
+   "callFrame": {
+    "functionName": "prerender",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 3358,
+    "columnNumber": 10
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1128
+  },
+  {
+   "id": 229,
+   "parent": 123,
+   "callFrame": {
+    "functionName": "copyFrom",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 1589,
+    "columnNumber": 9
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 1220
+  },
+  {
+   "id": 262,
+   "parent": 123,
+   "callFrame": {
+    "functionName": "push",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 4488,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 919
+  },
+  {
+   "id": 373,
+   "parent": 123,
+   "callFrame": {
+    "functionName": "renderEnd",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 908,
+    "columnNumber": 10
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 374,
+   "parent": 373,
+   "callFrame": {
+    "functionName": "_presentBackBuffer",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 911,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 0
+  },
+  {
+   "id": 375,
+   "parent": 374,
+   "callFrame": {
+    "functionName": "finishRenderPass",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 4369,
+    "columnNumber": 17
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 908
+  },
+  {
+   "id": 427,
+   "parent": 123,
+   "callFrame": {
+    "functionName": "postrender",
+    "scriptId": "16",
+    "url": "http://127.0.0.1:53616/browserAll-Bonzs0oc.js",
+    "lineNumber": 916,
+    "columnNumber": 11
+   },
+   "mappedSource": "other-script:browserAll-Bonzs0oc.js",
+   "selfUs": 317
+  },
+  {
+   "id": 518,
+   "parent": 123,
+   "callFrame": {
+    "functionName": "renderStart",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 899,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 112
+  },
+  {
+   "id": 239,
+   "parent": 122,
+   "callFrame": {
+    "functionName": "get colorRgba",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 2728,
+    "columnNumber": 14
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 421
+  },
+  {
+   "id": 331,
+   "parent": 239,
+   "callFrame": {
+    "functionName": "toArray",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 5117,
+    "columnNumber": 8
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 852
+  },
+  {
+   "id": 259,
+   "parent": 122,
+   "callFrame": {
+    "functionName": "prerender",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 3358,
+    "columnNumber": 10
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 1463
+  },
+  {
+   "id": 275,
+   "parent": 122,
+   "callFrame": {
+    "functionName": "postrender",
+    "scriptId": "16",
+    "url": "http://127.0.0.1:53616/browserAll-Bonzs0oc.js",
+    "lineNumber": 916,
+    "columnNumber": 11
+   },
+   "mappedSource": "other-script:browserAll-Bonzs0oc.js",
+   "selfUs": 306
+  },
+  {
+   "id": 363,
+   "parent": 122,
+   "callFrame": {
+    "functionName": "postrender",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 3364,
+    "columnNumber": 11
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 488
+  },
+  {
+   "id": 437,
+   "parent": 122,
+   "callFrame": {
+    "functionName": "renderEnd",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 908,
+    "columnNumber": 10
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 138
+  },
+  {
+   "id": 236,
+   "parent": 112,
+   "callFrame": {
+    "functionName": "#assertLive",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 16592,
+    "columnNumber": 12
+   },
+   "mappedSource": "apps/game/src/battle2/stage.ts",
+   "selfUs": 544
+  },
+  {
+   "id": 389,
+   "parent": 112,
+   "callFrame": {
+    "functionName": "play",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 16392,
+    "columnNumber": 5
+   },
+   "mappedSource": "apps/game/src/battle2/stage.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 390,
+   "parent": 389,
+   "callFrame": {
+    "functionName": "buildTurnPlan",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12684,
+    "columnNumber": 22
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 676
+  },
+  {
+   "id": 391,
+   "parent": 390,
+   "callFrame": {
+    "functionName": "makeClip",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12642,
+    "columnNumber": 17
+   },
+   "mappedSource": "apps/game/src/battle2/choreography.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 392,
+   "parent": 391,
+   "callFrame": {
+    "functionName": "buildTimeline",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9628,
+    "columnNumber": 22
+   },
+   "mappedSource": "apps/game/src/motion/timeline.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 393,
+   "parent": 392,
+   "callFrame": {
+    "functionName": "buildActionTimeline",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9635,
+    "columnNumber": 28
+   },
+   "mappedSource": "apps/game/src/motion/timeline.ts",
+   "selfUs": 8481
+  },
+  {
+   "id": 394,
+   "parent": 392,
+   "callFrame": {
+    "functionName": "actionsFor",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 9353,
+    "columnNumber": 19
+   },
+   "mappedSource": "apps/game/src/motion/family-actions.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 395,
+   "parent": 394,
+   "callFrame": {
+    "functionName": "radialActions",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 8129,
+    "columnNumber": 22
+   },
+   "mappedSource": "apps/game/src/motion/family-actions.ts",
+   "selfUs": 493
+  },
+  {
+   "id": 486,
+   "parent": 395,
+   "callFrame": {
+    "functionName": "splay",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 8130,
+    "columnNumber": 15
+   },
+   "mappedSource": "apps/game/src/motion/family-actions.ts",
+   "selfUs": 1012
+  },
+  {
+   "id": 483,
+   "parent": 394,
+   "callFrame": {
+    "functionName": "specializedActions",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 6470,
+    "columnNumber": 27
+   },
+   "mappedSource": "apps/game/src/motion/specialized-actions.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 484,
+   "parent": 483,
+   "callFrame": {
+    "functionName": "action",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 6479,
+    "columnNumber": 16
+   },
+   "mappedSource": "apps/game/src/motion/specialized-actions.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 485,
+   "parent": 484,
+   "callFrame": {
+    "functionName": "loaded",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 6497,
+    "columnNumber": 17
+   },
+   "mappedSource": "apps/game/src/motion/specialized-actions.ts",
+   "selfUs": 2461
+  },
+  {
+   "id": 396,
+   "parent": 389,
+   "callFrame": {
+    "functionName": "EffectSequencePlayer",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12454,
+    "columnNumber": 12
+   },
+   "mappedSource": "apps/game/src/effects/pixi-adapter.ts",
+   "selfUs": 314
+  },
+  {
+   "id": 397,
+   "parent": 396,
+   "callFrame": {
+    "functionName": "createParticleContainer",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12428,
+    "columnNumber": 27
+   },
+   "mappedSource": "apps/game/src/effects/pixi-adapter.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 398,
+   "parent": 397,
+   "callFrame": {
+    "functionName": "_ParticleContainer",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 4653,
+    "columnNumber": 12
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/particle-container/shared/ParticleContainer.mjs",
+   "selfUs": 797
+  },
+  {
+   "id": 487,
+   "parent": 396,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12459,
+    "columnNumber": 58
+   },
+   "mappedSource": "apps/game/src/effects/pixi-adapter.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 488,
+   "parent": 487,
+   "callFrame": {
+    "functionName": "createSprite",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 12426,
+    "columnNumber": 16
+   },
+   "mappedSource": "apps/game/src/effects/pixi-adapter.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 489,
+   "parent": 488,
+   "callFrame": {
+    "functionName": "Sprite",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 8024,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 490,
+   "parent": 489,
+   "callFrame": {
+    "functionName": "ViewContainer",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 7904,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 0
+  },
+  {
+   "id": 491,
+   "parent": 490,
+   "callFrame": {
+    "functionName": "Container",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 6886,
+    "columnNumber": 12
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 98
+  },
+  {
+   "id": 399,
+   "parent": 389,
+   "callFrame": {
+    "functionName": "tick",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 16439,
+    "columnNumber": 5
+   },
+   "mappedSource": "apps/game/src/battle2/stage.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 400,
+   "parent": 399,
+   "callFrame": {
+    "functionName": "applyPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23317,
+    "columnNumber": 11
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 401,
+   "parent": 400,
+   "callFrame": {
+    "functionName": "update",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23090,
+    "columnNumber": 8
+   },
+   "mappedSource": "apps/game/src/creature-rig-performance.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 402,
+   "parent": 401,
+   "callFrame": {
+    "functionName": "applyPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33900,
+    "columnNumber": 11
+   },
+   "mappedSource": "apps/game/src/creature-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 403,
+   "parent": 402,
+   "callFrame": {
+    "functionName": "publishPose",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33841,
+    "columnNumber": 21
+   },
+   "mappedSource": "apps/game/src/creature-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 404,
+   "parent": 403,
+   "callFrame": {
+    "functionName": "applyCompiledSkinField",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33252,
+    "columnNumber": 31
+   },
+   "mappedSource": "tools/creature-animation/compiled-skin-field.mjs",
+   "selfUs": 428
+  },
+  {
+   "id": 405,
+   "parent": 403,
+   "callFrame": {
+    "functionName": "solveArapSkin",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 33014,
+    "columnNumber": 22
+   },
+   "mappedSource": "tools/creature-animation/arap-skin.mjs",
+   "selfUs": 580
+  },
+  {
+   "id": 406,
+   "parent": 405,
+   "callFrame": {
+    "functionName": "js-to-wasm:iiiiiiiiiiiii:i",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:js-to-wasm:iiiiiiiiiiiii:i",
+   "selfUs": 0
+  },
+  {
+   "id": 407,
+   "parent": 406,
+   "callFrame": {
+    "functionName": "wasm-function[0]",
+    "scriptId": "18",
+    "url": "wasm://wasm/206b454a",
+    "lineNumber": 0,
+    "columnNumber": 74
+   },
+   "mappedSource": "other-script:206b454a",
+   "selfUs": 3692
+  },
+  {
+   "id": 409,
+   "parent": 405,
+   "callFrame": {
+    "functionName": "projectOrientations",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 32761,
+    "columnNumber": 28
+   },
+   "mappedSource": "tools/creature-animation/orientation-projector.mjs",
+   "selfUs": 365
+  },
+  {
+   "id": 408,
+   "parent": 403,
+   "callFrame": {
+    "functionName": "projectOrientations",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 32761,
+    "columnNumber": 28
+   },
+   "mappedSource": "tools/creature-animation/orientation-projector.mjs",
+   "selfUs": 111
+  },
+  {
+   "id": 413,
+   "parent": 403,
+   "callFrame": {
+    "functionName": "evaluate",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5311,
+    "columnNumber": 10
+   },
+   "mappedSource": "tools/creature-animation/skeleton-pose.mjs",
+   "selfUs": 0
+  },
+  {
+   "id": 414,
+   "parent": 413,
+   "callFrame": {
+    "functionName": "composeAffine",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 5076,
+    "columnNumber": 22
+   },
+   "mappedSource": "tools/creature-animation/kinematics.ts",
+   "selfUs": 754
+  },
+  {
+   "id": 410,
+   "parent": 401,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23322,
+    "columnNumber": 31
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 411,
+   "parent": 410,
+   "callFrame": {
+    "functionName": "resolve",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 23208,
+    "columnNumber": 17
+   },
+   "mappedSource": "apps/game/src/battle2/parts-rig.ts",
+   "selfUs": 0
+  },
+  {
+   "id": 412,
+   "parent": 411,
+   "callFrame": {
+    "functionName": "resolve",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22693,
+    "columnNumber": 9
+   },
+   "mappedSource": "apps/game/src/creature-rig-contact.ts",
+   "selfUs": 238
+  },
+  {
+   "id": 433,
+   "parent": 112,
+   "callFrame": {
+    "functionName": "enableRenderGroup",
+    "scriptId": "5",
+    "url": "http://127.0.0.1:53616/Geometry-DZ_l7nv7.js",
+    "lineNumber": 7243,
+    "columnNumber": 18
+   },
+   "mappedSource": "other-script:Geometry-DZ_l7nv7.js",
+   "selfUs": 193
+  },
+  {
+   "id": 494,
+   "parent": 112,
+   "callFrame": {
+    "functionName": "clear",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 6519,
+    "columnNumber": 6
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 301
+  },
+  {
+   "id": 507,
+   "parent": 112,
+   "callFrame": {
+    "functionName": "fill",
+    "scriptId": "9",
+    "url": "http://127.0.0.1:53616/CanvasRenderer-D-DU8Uq-.js",
+    "lineNumber": 6195,
+    "columnNumber": 5
+   },
+   "mappedSource": "other-script:CanvasRenderer-D-DU8Uq-.js",
+   "selfUs": 597
+  },
+  {
+   "id": 416,
+   "parent": 111,
+   "callFrame": {
+    "functionName": "requestAnimationFrame",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:requestAnimationFrame",
+   "selfUs": 3723
+  },
+  {
+   "id": 519,
+   "parent": 111,
+   "callFrame": {
+    "functionName": "render",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 185,
+    "columnNumber": 7
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 856
+  },
+  {
+   "id": 260,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "(garbage collector)",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "(gc)",
+   "selfUs": 30084
+  },
+  {
+   "id": 368,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "addToBatch",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 1810,
+    "columnNumber": 11
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 45
+  },
+  {
+   "id": 376,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "setTexture",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 636,
+    "columnNumber": 11
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/BatchableMesh.mjs",
+   "selfUs": 584
+  },
+  {
+   "id": 435,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "get pixelHeight",
+    "scriptId": "8",
+    "url": "http://127.0.0.1:53616/RenderTargetSystem-pR7slLqL.js",
+    "lineNumber": 4094,
+    "columnNumber": 16
+   },
+   "mappedSource": "other-script:RenderTargetSystem-pR7slLqL.js",
+   "selfUs": 173
+  },
+  {
+   "id": 451,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "get batched",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 883,
+    "columnNumber": 12
+   },
+   "mappedSource": "node_modules/pixi.js/lib/scene/mesh/shared/Mesh.mjs",
+   "selfUs": 1159
+  },
+  {
+   "id": 463,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "applyPaintPart",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 24173,
+    "columnNumber": 23
+   },
+   "mappedSource": "tools/creature-animation/paint-skin.mjs",
+   "selfUs": 126
+  },
+  {
+   "id": 478,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 22735,
+    "columnNumber": 61
+   },
+   "mappedSource": "apps/game/src/creature-rig-contact.ts",
+   "selfUs": 19
+  },
+  {
+   "id": 496,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "setBlendMode",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 2385,
+    "columnNumber": 13
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 1004
+  },
+  {
+   "id": 497,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "updateUniformGroup",
+    "scriptId": "13",
+    "url": "http://127.0.0.1:53616/WebGLRenderer-Bz_S8aQ-.js",
+    "lineNumber": 2128,
+    "columnNumber": 19
+   },
+   "mappedSource": "other-script:WebGLRenderer-Bz_S8aQ-.js",
+   "selfUs": 62
+  },
+  {
+   "id": 523,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "capture",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 34861,
+    "columnNumber": 23
+   },
+   "mappedSource": "tools/battle2-proof/native-entry.mjs",
+   "selfUs": 315766
+  },
+  {
+   "id": 524,
+   "parent": 523,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "3",
+    "url": "http://127.0.0.1:53616/bundle.js",
+    "lineNumber": 34925,
+    "columnNumber": 129
+   },
+   "mappedSource": "tools/battle2-proof/native-entry.mjs",
+   "selfUs": 1196
+  },
+  {
+   "id": 525,
+   "parent": 523,
+   "callFrame": {
+    "functionName": "btoa",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:btoa",
+   "selfUs": 10349
+  },
+  {
+   "id": 526,
+   "parent": 1,
+   "callFrame": {
+    "functionName": "",
+    "scriptId": "0",
+    "url": "",
+    "lineNumber": -1,
+    "columnNumber": -1
+   },
+   "mappedSource": "native:?",
+   "selfUs": 56112
+  }
+ ]
+}

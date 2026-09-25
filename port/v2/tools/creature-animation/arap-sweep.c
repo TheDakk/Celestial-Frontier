@@ -1,36 +1,38 @@
 /* Only guarded local rotation/RHS and ordered symmetric sweeps. No allocation, imports,
  * globals, stack arrays, motion, projection, relaxation or fused arithmetic. */
+#include <wasm_simd128.h>
+/* The lanes are independent x/y coordinates. Every neighbor is added in its
+ * original order; there is no horizontal sum, relaxed SIMD or reassociation. */
 static __attribute__((always_inline)) inline void row_sweep(
     unsigned row, const unsigned *rows, const unsigned *neighbours,
     const double *reciprocals, double *position, const double *rhs) {
   const unsigned base = row * 11, ii = rows[base], degree = rows[base + 1];
-  double x = rhs[ii], y = rhs[ii + 1];
+  v128_t xy = wasm_v128_load(rhs + ii);
   unsigned k = 0;
   if (degree >= 4) {
     const unsigned a = rows[base + 3], b = rows[base + 4];
     const unsigned c = rows[base + 5], d = rows[base + 6];
-    x += position[a]; y += position[a + 1];
-    x += position[b]; y += position[b + 1];
-    x += position[c]; y += position[c + 1];
-    x += position[d]; y += position[d + 1];
+    xy = wasm_f64x2_add(xy, wasm_v128_load(position + a));
+    xy = wasm_f64x2_add(xy, wasm_v128_load(position + b));
+    xy = wasm_f64x2_add(xy, wasm_v128_load(position + c));
+    xy = wasm_f64x2_add(xy, wasm_v128_load(position + d));
     k = 4;
   }
   if (degree >= 8) {
     const unsigned a = rows[base + 7], b = rows[base + 8];
     const unsigned c = rows[base + 9], d = rows[base + 10];
-    x += position[a]; y += position[a + 1];
-    x += position[b]; y += position[b + 1];
-    x += position[c]; y += position[c + 1];
-    x += position[d]; y += position[d + 1];
+    xy = wasm_f64x2_add(xy, wasm_v128_load(position + a));
+    xy = wasm_f64x2_add(xy, wasm_v128_load(position + b));
+    xy = wasm_f64x2_add(xy, wasm_v128_load(position + c));
+    xy = wasm_f64x2_add(xy, wasm_v128_load(position + d));
     k = 8;
   }
   const unsigned start = rows[base + 2];
   for (; k < degree; ++k) {
     const unsigned j = neighbours[start + k];
-    x += position[j]; y += position[j + 1];
+    xy = wasm_f64x2_add(xy, wasm_v128_load(position + j));
   }
-  position[ii] = x * reciprocals[row];
-  position[ii + 1] = y * reciprocals[row];
+  wasm_v128_store(position + ii, wasm_f64x2_mul(xy, wasm_f64x2_splat(reciprocals[row])));
 }
 /* Return 0 before any position write if robust JS norm scaling is required.
  * Rotation scratch may be partially written; the fallback recomputes it all. */
