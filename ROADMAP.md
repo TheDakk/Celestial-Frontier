@@ -66,6 +66,22 @@ commits (a stale 86 pin in `evidence-chain-tools`, and a `packageLock`-only drif
 - Run `npm run overridecontrol` and the whole gate list locally before any hosted attempt.
 
 ### What Claude owes next
+-106. **Play-time harvest ported (v1.8.9 parity, `9e4c5959`):** `world-harvest.ts`, conquered-world card button, active-play epochs (see
+`ECONOMY_LOOT_CRAFTING.md` v2 note). Owner and wiring tests include THE CLOCK LAW. Trap: an unpublished epoch is refused (the save clamps
+`e` to `EPOCH_BASE`), and the runner lives just before `const sideEl`, because tests execute the `surveyPlanet → buildCardActions` region
+and the Binder slice runs up to `arc9TravelInspectionOnly`.
+-105. **Parity Settings + notifications:** Battle sounds (`cbx`), Confirm salvage (`sv`), Mark all read, and a two-tap Clear all with exact
+rollback. v1's open-marks-read stays dropped by design (v2 leaves unread unread).
+-104. **A5 outcome tests (browser-free, real controls, durable read-back, mutation controls):** Charter accept (9), Binder claim (9),
+Settings identity (13). No product bugs found. Inventory: `audits/A5_OUTCOME_TESTS_20260925/INVENTORY.md`; remaining top gaps: combat/Guardian
+via the card, bioscan, breed, scavenge, rename/scout, the Atlas verbs, the XP/achievement ledger after a UI action, the frontier ending,
+card travel durable read, the inventory transaction, notification mark-read on a real backend, and the PWA update with a write in flight.
+-103. **D16:** port all 36 unported v1 actions except death → wipe. Still to port: the tooltip system + switch, the notification pop-up switch
+(toasts carry audio-counterpart duties; needs care), Compendium filters/groups/origin travel/reveal queue (touches Codex's I5-measured
+Compendium: coordinate), craft ×5, pin recipe, salvage-all, friendly duels + CFB, Prime slot travel + Titan tracking, card fold/"More"/vista
+zoom/postcard, reset expedition, the Guide browse tour, and the salvage dialog's "don't ask again".
+-102. **Live Settings smoke on the dev URL:** `audits/DEV_PUBLISH/audio-settings-smoke.mjs` (skips Training through its real Skip,
+then presses the switches, reloads and checks the device store). PASS on `7aaea99f`.
 -101. **paintedArt accounting (C16):** `byKind.{thumb,portrait}` and `residentArchetypes.{masterLabelBytes, maskBytes, masks}`, where `bytes`
 now includes the masks. Test ACCOUNTING in `painted-card-source.test.ts`.
 -100. **Feed during Recovery fixed:** `preflightArc5FeedV1` and the Compendium Feed read model refused ANY assignment. The spec (`BREEDING_AND_SHARING.md`)
