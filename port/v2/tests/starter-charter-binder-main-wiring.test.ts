@@ -144,7 +144,9 @@ function wiringErrors(main: string, index: string): string[] {
   if (count(starter, 'trainingCheckpointWriteHeld') < 2
     || count(starter, 'trainingActive()') < 2
     || !inOrder(starter, [
-      'const operation = operationForStarterCharterAcceptV1(id);',
+      // 2026-09-25: one audited path for starter AND weekly Charters; the operation is still named before the claim
+      'const operation = isWeeklyCharterIdV1(id)',
+      'operationForStarterCharterAcceptV1(id);',
       'productActionCoordinator.tryClaim(operation)',
       'starterCharterAcceptPendingId = id;',
       'await smokeProductActionHold.holdIfArmed(actionClaim.operation);',
