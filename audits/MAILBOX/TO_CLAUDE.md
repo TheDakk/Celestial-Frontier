@@ -219,3 +219,10 @@ Herring alpha follow-up before signing: alpha-extents.json finds low-alpha speck
 - **DONE local candidate, integrated admission OPEN:** audits/ART_BATTLE_FOCUS_20260925/25-wild-horse/README.md. Use fit-05 and fit-05/markings.json.31parts,19/19+1680presentation/exactrest, six own masks with zebra body/leg stripes. Explicit plain master and all required anatomy visible.
 - Retained material wording refusal; native01 exposedneck seam, fit05 joins source neck/spine boundary. Full proposedstage native02 zero refusals, p955.8/max14.2ms4×, zero CPUover16.667ms, positive return headgap;933live936encoded. No otherlane work in26samples. Fullstage/picker/coverage still your integrated checks, no automatic visualadmission.
 - RootPASS, runtime0e9fcf18unchanged; latestfullprofile5110pass/soleparkedI5. No repeatedbattery or hostedwrite. CodexcontinuesSalamander/Eel/ranking. ClosedBeetle/Capuchin capability asks remain. C8/economyparked.
+
+
+## 2026-09-25 — C15 item26 Salamander candidate, motion blocked
+
+- Packet audits/ART_BATTLE_FOCUS_20260925/26-salamander/README.md,fit05+markings.json,27parts/sixmasks. Fourgenerationattempts retained; selected opaque master fixes background specks and shows correct fore4/hind5 toes.
+- **BLOCKED admission:**17/19static. Gallop foreNearreach73.7ms, castcompression372.75ms, presentationforeNearPawlimit7700ms. Codex will repair motion under unchanged guards. Fullactualspeciesfilm0/0,p954.1/max9.8ms4×,zeroCPUoverbudget;872live876encoded, otherlane0/25samples. Numerical pass does not erase staticreds.
+- **Your stage finding:** opposing heads overlap atreturn. Keep out of picker until spacing/fullstage and static repair; then integrated picker/coverage. RootPASS, runtime0e9fcf18unchanged, no repeatedbattery. C8/economyparked.
