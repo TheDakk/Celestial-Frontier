@@ -1,0 +1,38 @@
+[
+  {
+    "kind": "striped",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-f0396f58-8a55-4f7f-a821-f822518012fc.png",
+    "prompt": "Create a fresh marking-only mask for an Eel master: EXACT 1254 x 1254 PNG, WHITE marks with TRANSPARENT background and open gaps. No animal, outline, silhouette, color, backdrop, shadow or text. Draw the requested pattern across the full fixed canvas; later it is clipped to the eel's exact alpha in master pixel coordinates without resizing. Sixteen thin organic white vertical wavy stripes from top to bottom, width8\u201315px, wide clear transparent gaps. Slightly irregular taper and curvature. No broad bands, dots, rings or fill.\n",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "kind": "spotted",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-20e72afb-5baa-41a5-9088-d3e63c094d49.png",
+    "prompt": "Create a fresh marking-only mask for an Eel master: EXACT 1254 x 1254 PNG, WHITE marks with TRANSPARENT background and open gaps. No animal, outline, silhouette, color, backdrop, shadow or text. Draw the requested pattern across the full fixed canvas; later it is clipped to the eel's exact alpha in master pixel coordinates without resizing. Scatter small irregular rounded white spots across the entire canvas, varied8\u201320px radius, spaced45\u201375px apart. Mostly transparent empty space. No rings, connected mottling or tiny speckle noise.\n",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "kind": "banded",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-9de49916-16da-4dde-8d81-3c5977b32210.png",
+    "prompt": "Create a fresh marking-only mask for an Eel master: EXACT 1254 x 1254 PNG, WHITE marks with TRANSPARENT background and open gaps. No animal, outline, silhouette, color, backdrop, shadow or text. Draw the requested pattern across the full fixed canvas; later it is clipped to the eel's exact alpha in master pixel coordinates without resizing. Eight broad smooth white vertical bands spanning the canvas height,30\u201345px wide, gentle curves, broad transparent spaces between. No extra fine stripes, texture, dots or rings.\n",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "kind": "mottled",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-acd9d7f8-9c92-464f-81e4-43758ebe36dc.png",
+    "prompt": "Create a fresh marking-only mask for an Eel master: EXACT 1254 x 1254 PNG, WHITE marks with TRANSPARENT background and open gaps. No animal, outline, silhouette, color, backdrop, shadow or text. Draw the requested pattern across the full fixed canvas; later it is clipped to the eel's exact alpha in master pixel coordinates without resizing. Irregular ragged asymmetric lobed white patches40\u201370px across, scattered with large transparent gaps throughout the canvas. Around20percent white coverage, distinct noncircular islands, no straight bands or veins.\n",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "kind": "marbled",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-568e6963-ab09-46c2-b791-9eeddc21d500.png",
+    "prompt": "Create a fresh marking-only mask for an Eel master: EXACT 1254 x 1254 PNG, WHITE marks with TRANSPARENT background and open gaps. No animal, outline, silhouette, color, backdrop, shadow or text. Draw the requested pattern across the full fixed canvas; later it is clipped to the eel's exact alpha in master pixel coordinates without resizing. Fine branching flowing white marble veins3\u20136px wide across full canvas, sparse organic connected paths, mostly transparent spaces. No filled areas, circles, spots or bands.\n",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "kind": "eye-spotted",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-a35da0dc-2651-4c5b-8195-801f73264696.png",
+    "prompt": "Create a fresh marking-only mask for an Eel master: EXACT 1254 x 1254 PNG, WHITE marks with TRANSPARENT background and open gaps. No animal, outline, silhouette, color, backdrop, shadow or text. Draw the requested pattern across the full fixed canvas; later it is clipped to the eel's exact alpha in master pixel coordinates without resizing. White thin oval rings spread across full canvas,25\u201350px diameters,4\u20136px strokes and fully transparent open centers. About35 separated rings, no filled dots, eye pupils, noise or connecting bridges.\n",
+    "tool": "image_gen.imagegen"
+  }
+]

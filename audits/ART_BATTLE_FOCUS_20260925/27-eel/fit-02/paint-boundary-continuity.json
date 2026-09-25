@@ -1,0 +1,15 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "9b55893072b7c53f8bc5ae4f9ccb7cb89974743bfcd7bd3297a030553741e37c",
+  "bindingHash": "1f5e0c0499a7d78a4722424d3bd6beb9b433f162cca9afa2588e6c028b763f49",
+  "pairs": [
+    [
+      "head",
+      "segment-0"
+    ],
+    [
+      "jaw",
+      "segment-0"
+    ]
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "tool": "image_gen.imagegen",
+  "selectedMottledOutput": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-b29b8799-734c-4051-ab0f-ccd8061d4e9a.png",
+  "promptSha256": "fec72cdac36f63ba847153a9fb3db556d14e483c54fbda72da43fabd5f3e1837",
+  "rawSha256": "0aedea38129adc514ff7da4aa8be7f6592d3ba798d693c10e09b84100d48b063",
+  "otherPatterns": "Unchanged parent raw/prompts/tool receipts."
+}

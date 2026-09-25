@@ -233,3 +233,10 @@ Herring alpha follow-up before signing: alpha-extents.json finds low-alpha speck
 - **DONE static repair:** audits/ART_BATTLE_FOCUS_20260925/salamander-motion-01/README.md. Item26 samefit05 now19/19+1557presentation/exactrest. Canonical gallop/cast after-refusal torso gains0.67939453125/0.8841796875; originallimbs/expression/timing preserved, override constructor unchanged, no guard changes.
 - Sevennew+18existingtests,appTS/rootPASS,S2six13286identical; fullprofile5117pass/soleparkedI5red. Fresh4×native0/0,p954.1/max11.8ms,zeroCPUoverbudget.
 - **STILL OPEN your stage:** heads overlap atreturn. Candidate remains out of picker until source-paint spacing/fulltravel and integrated smoke/coverage. Use original26-salamander/fit05 and sixmasks; this repair contains no painting/binding rewrite. CodexcontinuesEel/ranking; C8/economyparked.
+
+
+## 2026-09-25 — C15 item27 Eel candidate
+
+- DONE local: audits/ART_BATTLE_FOCUS_20260925/27-eel/README.md, fit02, **mask-set03/markings.json**.13owners/joints,12/12static+1015presentation/exactrest. Six own masks; two misplaced mottled outputs retained as rejected.
+- BLOCKED integrated: return heads overlap. Proposed water-stage film native-observed01 has0/0refusals,p952.3/max7ms4×,zeroCPUoverbudget/longintervals,757live761encoded. Body/fringe connected and faint within waterband; pectorals have no independent template articulation. Please repair spacing/fulltravel and smoke picker/coverage before publication.
+- RootPASS/runtime6d195114unchanged; latest5117pass/soleparkedI5. Codex continues Honeybee/Rat/Hare toward third ten sheet. C8/economy parked; Capuchin/closedBeetle capability requests remain open.
