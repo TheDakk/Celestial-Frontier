@@ -1,0 +1,136 @@
+{
+  "schema": "cf.marking-conservation/v1",
+  "status": "PASS",
+  "createdAt": "2026-09-25T14:55:46.792Z",
+  "sourceHashes": {
+    "master.png": "9a9701c7b127da311b031082f29c66b8c5b01cd94d3fae4f154275a95d5f6235",
+    "fit-05/record.json": "39aa1ef6fe787a79ea3492a7db46cfb4b2ec63df66a6aef1e391f9256dd0f2f0",
+    "fit-05/binding.json": "db731fe504b30ed0ac48e127559ed2a28238c812ae13946a8ba15bed95758aff",
+    "fit-05/parts/keyed.png": "30b59b3181b1d232f815d1e8f6c6dfad7ee66d461077d3dcec5c7f7b4d222dfb",
+    "fit-05/parts/atlas/salamander.png": "35a2660949a0dffb50d467105ba9d64d020c8c1f31fe2a78431cdb30732a3f70",
+    "fit-05/parts/manifest.json": "81788318483b00e8ece4355c24fb3ef3eb674140b930b6a78474fd08bd285798",
+    "prompt.txt": "3843ead5ed66a1aec560d6fd08ad1d7a41a21b152e4ad58391f5df73b0e22b71",
+    "raw/striped.png": "28e094fdc402a0b5d0785b4de8587717e477589510565c4bceb3ad9e1d46b4ea",
+    "prompts/striped.txt": "016e5f2aab5bc4f3cf3e35fb75a602021dda3fa0acda6a6ec2573cc00e3f7a82",
+    "raw/spotted.png": "8a5aa7f61e3bba70ca84c6c9b1f948e22dd5fa721cf1830243ee1fac493eed8a",
+    "prompts/spotted.txt": "12333b95e92fb74421626a0d8d2890be72061c1ee2cf0056dbdf19e33f33be0a",
+    "raw/banded.png": "eb033b60b78ec08a33d89320b11aa96997ff6fe8251e1aa8490e4a0d5e1f4c2d",
+    "prompts/banded.txt": "0915797acf0beff7c9a17a6e150d6474fdc378b56969d23f641c6da873930851",
+    "raw/mottled.png": "f1a31f9bb36e24fb989bf52fb9a04ff9ae8d00b3b1d0dba91f367a31291de0fd",
+    "prompts/mottled.txt": "579f4d5ed66b05574163600be13bd678e651b9264b61b64f498745552649ffdd",
+    "raw/marbled.png": "98f33a66e6ec9d1e84c5f34c61599111c9d24c25435690494eba5b968b2c5f78",
+    "prompts/marbled.txt": "2c5fabb527afbf735c8dc52fa2736b1f26a4f4d147a47e1fa5bd88c3178d9b76",
+    "raw/eye-spotted.png": "3b9f1f0af589da178f2226a6d3f6998cb5a80cc8e2c6ff50878cf4690e7b58a8",
+    "prompts/eye-spotted.txt": "408b2e489a113648f4f0f0cda64cdbc7526774862082d0a891619b87bedd3ae6"
+  },
+  "helperSha256": "7e446e0b92d3503ada4217e503e1d3623533a105ff61eaccd1a8dd44faf3d479",
+  "exclusion": {
+    "method": "none; every keyed-alpha pixel is eligible",
+    "excludedParts": []
+  },
+  "rows": [
+    {
+      "pattern": "striped",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 93738,
+      "opaqueEquivalentPixels": 22593.250980392157,
+      "rawOutsideAlphaPixels": 698573,
+      "sha256": "0b0b33506d397cdfbddef8155fb371c0836dc33dae6fac1f43274a484628d78c",
+      "compositeFile": "composites/striped.png",
+      "compositeSha256": "fc9fc1d230302715d55dc0bd5c3ec785a7d4a961c25d51962ca4de3f9b85d6c3"
+    },
+    {
+      "pattern": "spotted",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 66114,
+      "opaqueEquivalentPixels": 14027.121568627452,
+      "rawOutsideAlphaPixels": 432081,
+      "sha256": "c2d585776aca1092a5ca78e308ad32ff6136d8caca11485d4caa3979f1994b72",
+      "compositeFile": "composites/spotted.png",
+      "compositeSha256": "643c4c0a21d6a08e32ac1b3b507e9380374ac5cf85d84516c2a2998f22b7a173"
+    },
+    {
+      "pattern": "banded",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 82808,
+      "opaqueEquivalentPixels": 64228.09019607843,
+      "rawOutsideAlphaPixels": 767276,
+      "sha256": "26ca4a4fa612686bcf0ec894179ef19ddffeaed45af6adb387e620921a835d90",
+      "compositeFile": "composites/banded.png",
+      "compositeSha256": "eb9fdba2dfd24cdff9113f0694bf553145e99ebfad59cac8a397daa2b26ce4ee"
+    },
+    {
+      "pattern": "mottled",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 53888,
+      "opaqueEquivalentPixels": 12861.137254901962,
+      "rawOutsideAlphaPixels": 564434,
+      "sha256": "e2fd7c54a4fac9aa6620397787c5b207bd056cf89d041c036930f774495ed411",
+      "compositeFile": "composites/mottled.png",
+      "compositeSha256": "0dcb9bb4ea09fdf7212535f25170543732850957249ebe1c8c0070ccdbdf05b2"
+    },
+    {
+      "pattern": "marbled",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 46972,
+      "opaqueEquivalentPixels": 3133.070588235294,
+      "rawOutsideAlphaPixels": 342483,
+      "sha256": "414dc1865147358e74fe7ae7402d5786d199132be207b9e991bfbd6920608b5b",
+      "compositeFile": "composites/marbled.png",
+      "compositeSha256": "969b613c2b6c83cb2b45621d96c0d2dba794abdbc4668b4762fa115634e5f6cb"
+    },
+    {
+      "pattern": "eye-spotted",
+      "width": 1254,
+      "height": 1254,
+      "outsideAlphaPixels": 0,
+      "alphaExceedsKeyedPixels": 0,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 14549,
+      "opaqueEquivalentPixels": 4115.478431372549,
+      "rawOutsideAlphaPixels": 141268,
+      "sha256": "533e1150fbe98baff63eb94d1c9d97d0aaabcdbbae42faef7d9a75400ee07f49",
+      "compositeFile": "composites/eye-spotted.png",
+      "compositeSha256": "6deabb308a28fffe799eb13a4f1b648058d4bac2e7a42f15c496fb0d6014ab76"
+    }
+  ],
+  "controls": {
+    "validAccepted": true,
+    "outsidePixelMutantRefused": true,
+    "outsidePixel": [
+      0,
+      0
+    ],
+    "mutantAssessment": {
+      "outsideAlphaPixels": 1,
+      "alphaExceedsKeyedPixels": 1,
+      "nonWhiteRgbPixels": 0,
+      "nonzeroAlphaPixels": 93739
+    }
+  },
+  "node": "v26.9.0",
+  "imageMagick": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org",
+  "sheetFile": "six-mask-sheet.png",
+  "sheetSha256": "ef6e2b7a1a5a6b23f2ede9559641ca052c11ff98f675e934094a8ac490b1e956",
+  "previewOnly": "Sheet cells are thumbnails; masks and composites remain unchanged 1254-square master coordinates."
+}

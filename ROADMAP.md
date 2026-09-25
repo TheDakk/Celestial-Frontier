@@ -95,3 +95,6 @@ Herring also retains low-alpha fringe/specks outside visible silhouette; alpha-e
 
 
 Wild Horse item25 /Earthrank24 finalfit05:19/19static+1680presentation/exactrest, six own masks incl. zebra legbands. Material-wording refusal and native01 neck/body seam retained; fit05 explicit neck/spine join closesseam. Proposednative02 0/0,p955.8/max14.2ms4×,zeroCPUoverbudget,positive headgap. Runtimeunchanged0e9fcf18,no repeatedfull/S2;rootPASS. Claudeintegratedfullstage/picker/coveragepending. CodexnextSalamander/Eel andremainingranked; C8/economyparked.
+
+
+Salamander item26/Earthrank25:27parts finalfit05,sixmasks,17/19static/exactrest. Gallop foreNearreach73.7ms/castcompression372.75ms; presentationforefootlimit7700ms, allretained. Nativeobserved01 0/0,p954.1/max9.8ms4×zeroCPUover, butheadsoverlapreturn. NO pickeradmission. Fourmasterattempts retained; finalopaquekeycleanbounds. Codexrepairs shortlegmotion thenEel/ranking; Claude stagespacing/integrationpending. Runtimeunchanged0e9fcf18/rootPASS/no repeatedfull/S2.

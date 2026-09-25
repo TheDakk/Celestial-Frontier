@@ -1,0 +1,38 @@
+[
+  {
+    "kind": "striped",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-27e31562-b748-47b2-89f6-c09284456a0f.png",
+    "prompt": "Generate ONLY a white marking mask on transparent background, EXACT 1254 x 1254 PNG. No animal, no silhouette, no base fill, no color, no text, no shadow, no black background. Opaque white marks with clean antialiased edges and truly transparent spaces. Coordinates cover the full fixed canvas; later we will clip it to one Salamander's exact painted alpha without resizing. Draw 16 irregular slender curved vertical white stripes spanning y=0..1254, spaced across x=0..1254. Each 9\u201318px thick, tapering at turns; mostly transparent gaps. These transverse body/tail stripes must be distinct from the sparse wide bands. No speckles or spots.\n",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "kind": "spotted",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-cf1c3a0c-ad02-4c1d-9476-bd857f7d6569.png",
+    "prompt": "Generate ONLY a white marking mask on transparent background, EXACT 1254 x 1254 PNG. No animal, no silhouette, no base fill, no color, no text, no shadow, no black background. Opaque white marks with clean antialiased edges and truly transparent spaces. Coordinates cover the full fixed canvas; later we will clip it to one Salamander's exact painted alpha without resizing. Fire-salamander spot mask: scatter 70 rounded irregular solid white islands across the entire canvas, each 12\u201328px radius, variable shape and size, separated by large transparent gaps. No tiny dots or rings. The final dark salamander will show discrete contrasting spots on its torso and tail. At least80% canvas transparent.\n",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "kind": "banded",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-9d354944-23d1-4c72-99b6-fc2c8133b4ed.png",
+    "prompt": "Generate ONLY a white marking mask on transparent background, EXACT 1254 x 1254 PNG. No animal, no silhouette, no base fill, no color, no text, no shadow, no black background. Opaque white marks with clean antialiased edges and truly transparent spaces. Coordinates cover the full fixed canvas; later we will clip it to one Salamander's exact painted alpha without resizing. Draw EIGHT wide softly curved vertical white bands spanning canvas top to bottom, widths25\u201338px, separated by broad transparent gaps, slightly irregular organic edges. No narrow extra stripes, spots, rings or textures.\n",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "kind": "mottled",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-5076aaad-46f0-4180-8d3e-128b26bbe230.png",
+    "prompt": "Generate ONLY a white marking mask on transparent background, EXACT 1254 x 1254 PNG. No animal, no silhouette, no base fill, no color, no text, no shadow, no black background. Opaque white marks with clean antialiased edges and truly transparent spaces. Coordinates cover the full fixed canvas; later we will clip it to one Salamander's exact painted alpha without resizing. Scatter irregular ragged lobed white patches over entire canvas, each40\u201385px across. At least75% transparent. Shape each as a loose asymmetric 3\u20135lobed island rather than round dots, rings, stripes or one connected blanket. Separate white islands.\n",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "kind": "marbled",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-bc49b802-ffd5-482d-be70-fef213cf26d4.png",
+    "prompt": "Generate ONLY a white marking mask on transparent background, EXACT 1254 x 1254 PNG. No animal, no silhouette, no base fill, no color, no text, no shadow, no black background. Opaque white marks with clean antialiased edges and truly transparent spaces. Coordinates cover the full fixed canvas; later we will clip it to one Salamander's exact painted alpha without resizing. Fine branching white marble veins across the full canvas: 3\u20136px meandering lines, sparse branching, predominantly transparent gaps. No broad islands, filled fields, stripes, circles or noise. One delicate organic vein network.\n",
+    "tool": "image_gen.imagegen"
+  },
+  {
+    "kind": "eye-spotted",
+    "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-053688c2-696a-47c1-a620-946ac304d514.png",
+    "prompt": "Generate ONLY a white marking mask on transparent background, EXACT 1254 x 1254 PNG. No animal, no silhouette, no base fill, no color, no text, no shadow, no black background. Opaque white marks with clean antialiased edges and truly transparent spaces. Coordinates cover the full fixed canvas; later we will clip it to one Salamander's exact painted alpha without resizing. Spread 30 isolated oval white RINGS across the full canvas, diameters30\u201360px, line thickness4\u20137px, fully transparent open centers. No inner dots, filled spots, connected bridges, noise or animal eyes. Space rings at least55px apart.\n",
+    "tool": "image_gen.imagegen"
+  }
+]
