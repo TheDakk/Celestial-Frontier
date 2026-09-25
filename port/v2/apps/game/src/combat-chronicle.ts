@@ -7,6 +7,7 @@
    exclusively so combatant/ability names are never interpreted as markup. */
 import {
   isCombatSettlementPlanV1,
+  runEncounterV1,
   type CombatSettlementPlanV1,
 } from '@cf/domain-combatcore';
 import { hashInt, mulberry32 } from '@cf/domain-rand';
@@ -224,6 +225,32 @@ function statisticsLine(name: string, stats: ChronicleTally): string {
 }
 
 /** Exact v1.8.9 Chronicle projection over one already-settled duel. */
+/* §20 Guardian party: one line for every fighter before the decisive one (how it left the stage and where it left the Guardian's
+   health), re-derived from the plan's own party + decisions by the pure encounter engine. The decisive leg then plays row by row as
+   before, so the transcript rows, cues and the painted stage stay aligned. */
+function partyPreludeRows(settlement: CombatSettlementPlanV1): CombatChronicleRowV1[] {
+  const party = settlement.party;
+  if (party === undefined || party.members.length < 2) return [];
+  const defender = settlement.encounter.defender;
+  const result = runEncounterV1({
+    mode: party.mode,
+    defender: { name: defender.name, genome: defender.battleGenome as never },
+    party: party.members.map((member) => (member.champion.kind === 'player'
+      ? { name: member.champion.name, genome: { seed: member.champion.genomeSeed }, stats: member.champion.stats as never, stance: member.stance }
+      : { name: member.champion.name, genome: member.champion.genome as never, stance: member.stance })),
+  }, party.decisions);
+  if (result.status !== 'finished') throw new TypeError('registered party settlement does not resolve');
+  return result.legs.filter((leg) => leg.fighterIndex !== party.decisiveIndex).map((leg, order) => {
+    const name = party.members[leg.fighterIndex]!.champion.name;
+    const left = Math.max(0, Math.round((leg.hpB / Math.max(1, leg.maxB)) * 100));
+    const how = leg.end === 'swapped' ? 'steps back to let the next fighter in'
+      : leg.end === 'fighter-fell' ? 'falls' : 'is worn out';
+    const text = `${order === 0 ? '⚔' : '↻'} ${name} ${how} — ${defender.name} is down to ${left}%.`;
+    return row({ kind: 'intro', tone: 'faint', displayText: text, shareText: text, transcriptIndex: null,
+      actorSide: null, targetSide: null, damageCue: null });
+  });
+}
+
 export function projectCombatChronicleV1(
   settlement: CombatSettlementPlanV1,
   cuePlan: CombatCuePlanV1,
@@ -255,6 +282,7 @@ export function projectCombatChronicleV1(
       shareText: 'The duel begins.', transcriptIndex: null,
       actorSide: null, targetSide: null, damageCue: null,
     }),
+    ...partyPreludeRows(settlement),
     row({
       kind: 'initiative', tone: 'faint',
       displayText: `Initiative: ${settlement.transcript.turnA0 ? championName : defenderName} moves first (AGI ${

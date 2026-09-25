@@ -7,6 +7,7 @@ import { makeGenome, type Genome } from '@cf/domain-genome';
 import { resolveCF1WorldAddress } from '@cf/scene';
 import {
   battleStats,
+  planCombatPartySettlementV1,
   planCombatSettlementV1,
   projectGuardianPrimeEncounterV1,
   runDuel,
@@ -784,3 +785,27 @@ describe('Arc 8 Combat Chronicle detached controller', () => {
     expect(controller!.counterpartIsCurrent(old)).toBe(false);
   });
 });
+
+describe('§20 party prelude in the Combat Chronicle', () => {
+  it('a Guardian party names every earlier fighter before the decisive leg plays; a single fight is unchanged', () => {
+    const encounter = target('guardian');
+    for (let seed = 5; seed < 200; seed++) {
+      const party = [owned(seed, 'First'), owned(seed + 400, 'Second'), owned(seed + 800, 'Third')].map((champion) => ({ champion, stance: 'balanced' as const }));
+      const settlement = planCombatPartySettlementV1({ battleId: `chronicle-party-${seed}`, receiptOrdinal: 47, encounter, worldTier: 5, mode: 'auto', party,
+        authority: { worldConquered: false, claimedPrimeSignatureIds: [], lossXp: { kind: 'known-target', awardedTarget: 0 } } });
+      if (settlement.status !== 'planned' || !settlement.party || settlement.party.decisiveIndex === 0) continue;
+      const chronicle = projectCombatChronicleV1(settlement, combatCuePlan(settlement, projectCombatCueParticipantsV1(settlement)));
+      const texts = chronicle.initialRows.map((r) => r.displayText);
+      const earlier = settlement.party.members.filter((m) => m.index !== settlement.party!.decisiveIndex && m.legEnd !== 'not-fought');
+      expect(earlier.length).toBeGreaterThan(0);
+      for (const member of earlier) expect(texts.some((t) => t.includes(member.champion.name) && /%\.$/.test(t))).toBe(true);
+      // the decisive leg still narrates the decisive champion
+      expect(chronicle.championName).toBe(settlement.champion.name);
+      const single = plans({ encounter });
+      expect(projectCombatChronicleV1(single.settlement, single.cues).initialRows).toHaveLength(2);   // intro + initiative, no prelude
+      return;
+    }
+    throw new Error('no party fixture reached a second fighter');
+  });
+});
+
