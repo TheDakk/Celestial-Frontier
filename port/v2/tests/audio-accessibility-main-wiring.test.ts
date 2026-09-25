@@ -62,3 +62,35 @@ describe('Settings → Mono audio / Reduced intensity wiring', () => {
     }
   });
 });
+
+/* Battle sounds (v1.8.9 parity, 2026-09-25): the saved `cbx` switch, persisted like Creature voices, reaching the audio policy. */
+function auditCombat(source: string): string[] {
+  const findings: string[] = [];
+  const settings = between(source, "fillPanel('set',", 'const refillAndFocus');
+  if (!settings.includes('id="setcombat"') || !settings.includes('aria-pressed="${save.combatSfxOn}"')) findings.push('Settings lacks the Battle sounds toggle bound to save.combatSfxOn');
+  const handler = between(source, "el.querySelector('#setcombat')!.addEventListener('click', () => {", "refillAndFocus('#setcombat');");
+  if (!handler.includes('save.combatSfxOn = !save.combatSfxOn')) findings.push('#setcombat does not flip save.combatSfxOn');
+  if (!handler.includes('tameGreetingAudioOwner?.syncSettings()')) findings.push('#setcombat does not apply live');
+  if (!between(source, "el.querySelector('#setcombat')!.addEventListener('click', () => {", '});').concat(between(source, "refillAndFocus('#setcombat');", '\n')).includes('persistView')) findings.push('#setcombat does not persist the save');
+  const policy = between(source, 'readPolicy: () => ({', '}),');
+  if (!policy.includes('combatSoundsOn: save.combatSfxOn')) findings.push('the audio policy does not carry Battle sounds');
+  return findings;
+}
+
+describe('Settings → Battle sounds wiring', () => {
+  it('the shipped main.ts wires the saved switch to the live policy and persists it', () => {
+    expect(auditCombat(mainSource)).toEqual([]);
+  });
+  it('negative controls', () => {
+    const cases: [string, string, RegExp][] = [
+      ['combatSoundsOn: save.combatSfxOn,', '', /policy does not carry Battle sounds/],
+      ['save.combatSfxOn = !save.combatSfxOn;', 'void 0;', /does not flip/],
+      ["refillAndFocus('#setcombat'); void persistView();", "refillAndFocus('#setcombat');", /does not persist/],
+    ];
+    for (const [needle, replacement, expected] of cases) {
+      expect(mainSource.split(needle).length, needle).toBe(2);
+      expect(auditCombat(mainSource.replace(needle, replacement)).join(' | '), needle).toMatch(expected);
+    }
+  });
+});
+
