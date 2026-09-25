@@ -1,0 +1,1 @@
+{"status":"FAIL","error":"rig refusals in play: {\"left\":0,\"right\":4} {\"left\":null,\"right\":\"Contact: faint@1708.666666666666 foreFar RangeError: target outside two-bone reach\"}","refusals":{"left":0,"right":4},"attacks":{"left":"claw (foreNearPaw)","right":"bite (jaw)"},"capture":{"frames":602,"cpuP95Ms":6.799999952316284,"frameDeltaP95Ms":16.700000000000728}}
