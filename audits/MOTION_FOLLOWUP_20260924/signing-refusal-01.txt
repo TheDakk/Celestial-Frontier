@@ -1,0 +1,5 @@
+Centipede commit attempt1, outside sandbox, approved wrapper, exited128:
+error: Signing file /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmpCbvdNg
+Couldn't sign message (signer): communication with agent failed?
+Signing /var/folders/0t/t0n1rpg946v17b0dc3drx2rr0000gn/T//.git_signing_buffer_tmpCbvdNg failed: communication with agent failed?
+fatal: failed to write commit object

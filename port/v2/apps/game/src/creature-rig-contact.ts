@@ -237,9 +237,10 @@ export function createFamilyContactSolver(record:CreatureRigRecordV1,paintedSupp
   const uncompressedRoot=pose.root;
   let compression=0,final=program.evaluate(pose);
   const rigidEligible=hasOffset&&activeChains.every(c=>c.endpointOnly),candidateEligible=hasOffset;
-  // Recovery from an iterative refusal is scoped to explicit source-step families.
-  // Legacy crab/quadruped reach refusals keep their pre-sprint boundary.
-  const recoverIterativeRefusal=candidateEligible&&!!template.contactStance?.travel;
+  // Insect rigid-support recovery is independent of its action stance/travel.
+  // Other recovery remains scoped to explicit source-step families: rigidity
+  // alone must not expand legacy crab/quadruped iterative-refusal boundaries.
+  const recoverIterativeRefusal=candidateEligible&&(!!template.contactStance?.travel||(template.id==='insect'&&rigidEligible));
   // Mixed skin weights stay mixed. Keep the complete authored/travel-adjusted
   // pose for one geometric candidate after failure, not an exact rigid claim.
   const candidateBaseline=rigidEligible?null:{...pose};

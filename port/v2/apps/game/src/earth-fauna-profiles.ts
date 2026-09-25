@@ -1,4 +1,4 @@
-/** Exact-name Earth fauna presentation profiles, matches catalogue September 16.
+/** Exact-name Earth fauna presentation profiles, matches catalogue September 24.
  * This is a gameplay authoring register, not proof of a fitted/painted species.
  * candidateTemplates and intendedMoves expose work still needed. No profile
  * supplies landmarks, paint, damage, genes or a conditional weapon. */
@@ -7,8 +7,10 @@ export interface EarthFaunaProfile {
  readonly id:string; readonly names:readonly string[];
  readonly candidateTemplates:readonly string[]; readonly media:readonly FaunaMedium[];
  readonly intendedMoves:readonly string[]; readonly notes:string;
+ /** Candidate routing is present, but source-bound painted admission is still pending. */
+ readonly needsObservedFit?:true;
 }
-const group=(id:string,names:string[],candidateTemplates:string[],media:FaunaMedium[],intendedMoves:string[],notes:string):EarthFaunaProfile=>Object.freeze({id,names:Object.freeze(names),candidateTemplates:Object.freeze(candidateTemplates),media:Object.freeze(media),intendedMoves:Object.freeze(intendedMoves),notes});
+const group=(id:string,names:string[],candidateTemplates:string[],media:FaunaMedium[],intendedMoves:string[],notes:string,needsObservedFit=false):EarthFaunaProfile=>Object.freeze({...(needsObservedFit?{needsObservedFit:true as const}:{}),id,names:Object.freeze(names),candidateTemplates:Object.freeze(candidateTemplates),media:Object.freeze(media),intendedMoves:Object.freeze(intendedMoves),notes});
 export const EARTH_FAUNA_PROFILES:readonly EarthFaunaProfile[]=Object.freeze([
  group("felid",["Jaguar", "Leopard", "Tiger", "Clouded Leopard", "Ocelot", "Lion", "Cougar", "Snow Leopard", "Bobcat", "Lynx", "Caracal", "Fishing Cat", "Cheetah", "Serval", "Sand Cat", "Wildcat", "Cat"],["quadruped"],["ground"],["claw", "bite"],""),
  group("canid",["Jackal", "Wolf", "Coyote", "Fox", "Red Fox", "Arctic Fox", "African Wild Dog", "Maned Wolf", "Pampas Fox", "Fennec Fox", "Dog", "Dingo"],["quadruped"],["ground"],["bite", "claw"],""),
@@ -69,18 +71,20 @@ export const EARTH_FAUNA_PROFILES:readonly EarthFaunaProfile[]=Object.freeze([
  group("cnidarian",["Jellyfish", "Portuguese Man-of-War", "Sea Anemone", "Coral", "Cold-Water Coral", "Deep-Water Coral"],["radial"],["water"],["sting-arms"],"Colony/sessile forms need anchored topology, not swimming-bell motion."),
  group("comb-jelly",["Comb Jelly"],["radial"],["water"],["body"],"No cnidarian sting inferred."),
  group("echinoderm",["Starfish", "Sea Urchin", "Sea Cucumber", "Sand Dollar", "Brittle Star"],["radial"],["water"],["body"],"No universal sting, jaw or jellyfish bell."),
- group("sponge",["Sponge"],[],["water"],[],"Sessile filtration; effect-only combat needs a verified root/colony anchor."),
- group("tunicate",["Sea Squirt", "Salp", "Pyrosome"],[],["water"],[],"Sessile or colonial suspension feeders; no invented jaws, legs or arms."),
- group("bivalve",["Mussel", "Oyster", "Clam", "Razor Clam", "Giant Clam", "Scallop"],[],["water"],[],"Valve closure/jet escape needs a valve rig; do not call it a bite."),
- group("land-gastropod",["Land Snail", "Banana Slug", "Snail"],[],["ground"],[],"Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution."),
- group("water-gastropod",["Freshwater Snail", "Water Snail", "Sea Snail", "Limpet", "Chiton", "Nudibranch", "Cowrie", "Conch", "Abalone"],[],["water"],[],"Radula/mantle/foot are not a fish bite or jellyfish arms."),
- group("annelid-land",["Earthworm", "Ice Worm"],[],["ground"],[],"Segmented body compression needs observed source geometry."),
- group("annelid-water",["Leech", "Marine Worm", "Tube Worm", "Polychaete Worm", "Giant Tube Worm", "Scale Worm", "Flatworm"],[],["water"],[],"Different feeding structures; no universal jaw or venom."),
+ group("sponge",["Sponge"],["sessile-filter"],["water"],[],"Sessile filtration; effect-only combat needs a verified root/colony anchor.",true),
+ group("sessile-tunicate",["Sea Squirt"],["sessile-filter"],["water"],[],"Sessile or colonial suspension feeders; no invented jaws, legs or arms.",true),
+ group("tunicate",["Salp", "Pyrosome"],["colonial-filter"],["water"],[],"Sessile or colonial suspension feeders; no invented jaws, legs or arms.",true),
+ group("bivalve",["Mussel", "Oyster", "Clam", "Razor Clam", "Giant Clam", "Scallop"],["bivalve"],["water"],[],"Valve closure/jet escape needs a valve rig; do not call it a bite.",true),
+ group("land-gastropod",["Land Snail", "Banana Slug", "Snail"],["gastropod"],["ground"],[],"Foot-wave/retraction needs a gastropod body; no leg or snake-jaw substitution.",true),
+ group("water-gastropod",["Freshwater Snail", "Water Snail", "Sea Snail", "Limpet", "Chiton", "Nudibranch", "Cowrie", "Conch", "Abalone"],["gastropod"],["water"],[],"Radula/mantle/foot are not a fish bite or jellyfish arms.",true),
+ group("annelid-land",["Earthworm", "Ice Worm"],["annelid"],["ground"],[],"Segmented body compression needs observed source geometry.",true),
+ group("annelid-water",["Leech", "Marine Worm", "Tube Worm", "Polychaete Worm", "Giant Tube Worm", "Scale Worm", "Flatworm"],["annelid"],["water"],[],"Different feeding structures; no universal jaw or venom.",true),
  group("observed-crab",["Freshwater Crab", "Crab", "Mud Crab", "Vent Crab"],["brachyuran"],["water", "ground"],["pinch"],"Observed palm/fixed finger/dactyl and contact landmark required; profile alone is not admission."),
- group("clawed-crustacean",["Crayfish", "Hermit Crab", "Fiddler Crab", "Lobster"],[],["water", "ground"],["pinch"],"Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae."),
- group("small-crustacean",["Brine Shrimp", "Water Flea", "Krill", "Copepod", "Amphipod", "Cave Shrimp", "Freshwater Shrimp", "Shrimp", "Prawn", "Giant Isopod", "Isopod", "Vent Shrimp", "Fairy Shrimp", "Tadpole Shrimp"],[],["water"],[],"Observed segmented swimming/crawling appendages; no generic stinger."),
- group("barnacle",["Barnacle"],[],["water"],[],"Anchored feeding cirri, no locomotor leap."),
- group("horseshoe-crab",["Horseshoe Crab"],[],["water", "ground"],[],"Telson is not a venomous stinger; dedicated topology needed."),
+ group("fiddler-crab",["Fiddler Crab"],["brachyuran"],["water", "ground"],["pinch"],"Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",true),
+ group("clawed-crustacean",["Crayfish", "Hermit Crab", "Lobster"],["crustacean-clawed"],["water", "ground"],["pinch"],"Pincer, walking-leg and abdomen counts need a crustacean topology; do not substitute spider chelicerae.",true),
+ group("small-crustacean",["Brine Shrimp", "Water Flea", "Krill", "Copepod", "Amphipod", "Cave Shrimp", "Freshwater Shrimp", "Shrimp", "Prawn", "Giant Isopod", "Isopod", "Vent Shrimp", "Fairy Shrimp", "Tadpole Shrimp"],["crustacean-small"],["water"],[],"Observed segmented swimming/crawling appendages; no generic stinger.",true),
+ group("barnacle",["Barnacle"],["barnacle"],["water"],[],"Anchored feeding cirri, no locomotor leap.",true),
+ group("horseshoe-crab",["Horseshoe Crab"],["xiphosuran"],["water", "ground"],[],"Telson is not a venomous stinger; dedicated topology needed.",true),
  group("spider",["Tarantula", "Spider"],["arachnid"],["ground"],["bite"],"No scorpion stinger."),
  group("scorpion",["Scorpion"],["arachnid"],["ground"],["sting", "bite"],""),
  group("other-arachnid",["Deer Tick", "Camel Spider", "Harvestman", "Pseudoscorpion", "Mite", "Sea Spider"],["arachnid"],["ground"],["body"],"Distinct mouth/palp/pincer inventories; no scorpion tail assigned."),
@@ -89,9 +93,9 @@ export const EARTH_FAUNA_PROFILES:readonly EarthFaunaProfile[]=Object.freeze([
  group("mandibulate-insect",["Leafcutter Ant", "Termite", "Mantis", "Locust", "Dung Beetle", "Beetle", "Grasshopper", "Cricket", "Ant", "Honeybee", "Bumblebee", "Ladybug", "Bee", "Orchid Bee", "Water Beetle", "Caddisfly", "Stonefly", "Dragonfly", "Damselfly", "Diving Beetle", "Cave Cricket", "Cockroach", "Wasp", "Carrion Beetle", "Stick Insect", "Firefly", "Dobsonfly"],["insect"],["ground"],["mandible"],"Wings/stings are conditional; ant/termite castes and aquatic larvae must retain their actual stage. Flight requires a source habitat declaration for the observed stage."),
  group("soft-mouth-insect",["Butterfly", "Cicada", "Mosquito", "Black Fly", "Moth", "Aphid", "Fly", "Cold-Adapted Insect", "Mayfly", "Scorpionfly", "Thrips"],["insect"],["air", "ground"],["body"],"Proboscis/stylet/body/effect motion; no chewing mandible or scorpion sting inferred."),
  group("aquatic-insect",["Water Strider", "Giant Water Bug"],["insect"],["water", "ground", "air"],["body"],"Surface/piercing mouthparts need observation; no submerged fish pose."),
- group("larva",["Fly Larvae"],[],["water", "ground"],[],"Life stage cannot inherit adult wings or adult six-leg graph."),
+ group("larva",["Fly Larvae"],["larva"],["water", "ground"],[],"Life stage cannot inherit adult wings or adult six-leg graph.",true),
  group("springtail",["Springtail"],["insect"],["ground"],["body"],"Furcula jump needs observed spring organ, not a stinger."),
- group("tardigrade",["Tardigrade"],[],["water", "ground"],[],"Eight lobopod legs and stylets require exact topology; no arachnid fangs."),
+ group("tardigrade",["Tardigrade"],["lobopod"],["water", "ground"],[],"Eight lobopod legs and stylets require exact topology; no arachnid fangs.",true),
  group("pheasant",["Pheasant"],["biped-bird"],["air", "ground"],["peck", "claw"],"Foot rake on the observed foot, not an inferred raptor talon."),
  group("terrestrial-crab",["Coconut Crab"],["brachyuran"],["ground"],["pinch"],"Observed pincer/leg topology required; adult is not a submerged aquatic fighter."),
  ]);
