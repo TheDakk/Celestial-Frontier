@@ -41,7 +41,9 @@ Wolf item11 now has31 parts, final fit03 and mask-set02,19/19 static +1,688 pres
 
 Gull item12 packet audits/ART_BATTLE_FOCUS_20260925/12-gull:17parts and six masks; named shoulder seams close native holes and fix faint, finalfit03static13/14/exactrestPASS. Dodge compression remains blocked; tiny2.6% excursion substitute explicitly rejected. Full native02 has0/0refusals,4.0ms stage p95 at4×,765live/769encoded,12.7328s, but cannot supersede observed-support static red. Keep Gull out of picker; full-flight art is not supplied by folded wings.
 
-Then continue ranked paintings River Otter/Brown Bear/Goose/Heron/Sparrow/Ibex/Reef Shark onward; existing Python/Beetle masks, specialized uncovered templates, complete-stage motion, C12 Centipede orientation cost and C13 pin review remain in the art program. Done only with measured generated coverage≥80%, no misleading ranked top35 Earth, all motion/picker gates and every library pair at60fps4×CPU. No new completion claims yet.
+River Otter item13 packet audits/ART_BATTLE_FOCUS_20260925/13-river-otter:31parts, fit02, six own masks;19/19 static +1,681 presentation/exactrest PASS. Full native01 has0/0refusals,4.30ms stage p95 at4×,932live/936encoded over15.5328s. Rest/return heads overlap; Claude spacing/full-travel and picker gate remain before admission.
+
+Then continue ranked paintings Brown Bear/Goose/Heron/Sparrow/Ibex/Reef Shark onward; existing Python/Beetle masks, specialized uncovered templates, complete-stage motion, C12 Centipede orientation cost and C13 pin review remain in the art program. Done only with measured generated coverage≥80%, no misleading ranked top35 Earth, all motion/picker gates and every library pair at60fps4×CPU. No new completion claims yet.
 
 C18 prerequisite repair is signed a7f154f8: full develop profile5,080pass, sole historicalI5 red; original lock and v1 samples unchanged. No whole-battery PASS, push or hosted eligibility. Asset batches have their own scoped static/native and root validate evidence; no unchanged full battery retries.
 

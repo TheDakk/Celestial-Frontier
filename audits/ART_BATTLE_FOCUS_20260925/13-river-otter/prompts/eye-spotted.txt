@@ -1,0 +1,3 @@
+Create a transparent 1254 x 1254 PNG marking-mask texture. Draw ONLY the requested white pigment marks on an otherwise empty alpha-zero canvas. Full canvas, no cropping, no animal or silhouette, no background, shadow, grid or labels.
+Six separated white pigment rings in two staggered rows, 25 pixels diameter with 5-pixel rims and transparent holes, only within x=500..840,y=610..720. No actual eyes or other shapes.
+Keep all pixels below y=735 and above y=590 blank transparent. The marks are a SMALL central horizontal patch, never fill the image. White marks and real transparent holes.
