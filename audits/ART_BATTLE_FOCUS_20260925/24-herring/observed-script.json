@@ -1,0 +1,48 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "world": {
+    "key": "lake",
+    "liquid": "water",
+    "surfaceWater": true,
+    "cardHash": "lake-1"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Herring",
+      "dn": "Herring",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "side": "B",
+      "an": "Herring",
+      "dn": "Herring",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 24,
+      "hpB": 21
+    },
+    {
+      "an": "Herring",
+      "dn": "Herring",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Herring",
+      "dn": "Herring",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 24,
+      "hpB": 0
+    }
+  ]
+}

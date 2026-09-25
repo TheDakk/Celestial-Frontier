@@ -1,0 +1,70 @@
+{
+  "creatureId": "herring",
+  "parts": [
+    {
+      "name": "near-pectoral.png",
+      "path": "parts/near-pectoral.png",
+      "sha256": "de32a9dd356f28558a28106eb5549dbcd06b8b214a987275e919dc2525aafa04"
+    },
+    {
+      "name": "far-pectoral.png",
+      "path": "parts/far-pectoral.png",
+      "sha256": "0ea6724983bcf476b3fe0a1b99614add5dfdce1c07b536fdafded4163cc4210f"
+    },
+    {
+      "name": "dorsal.png",
+      "path": "parts/dorsal.png",
+      "sha256": "623695a33418e13adeb7a4a12c27947547aa57c0152387b1b399465cbb825b30"
+    },
+    {
+      "name": "jaw.png",
+      "path": "parts/jaw.png",
+      "sha256": "1de531c83ecc4c585a4cdaf1b09436fdb1e65eb7a145608f601bf7f1cf79ff3e"
+    },
+    {
+      "name": "head.png",
+      "path": "parts/head.png",
+      "sha256": "18c39fe201b44bf4ced4f1acc7b40be817bae11b13eb8ae9061f48e266db6db7"
+    },
+    {
+      "name": "caudal.png",
+      "path": "parts/caudal.png",
+      "sha256": "5b036d4ba01902b86f90af0cccfaa69056db9425e68725823d0da53969df2e9f"
+    },
+    {
+      "name": "root.png",
+      "path": "parts/root.png",
+      "sha256": "d592ea4dce81772ae91d1a9fd56f3020e0b9c29abe0ac1f8f179fa1163753b94"
+    },
+    {
+      "name": "tail-peduncle.png",
+      "path": "parts/tail-peduncle.png",
+      "sha256": "a2f7631a34552a3890b653b749bd53a3363d652ae05ecd235b64970ec2cd6ad1"
+    },
+    {
+      "name": "rear-body.png",
+      "path": "parts/rear-body.png",
+      "sha256": "6312a861f364990c3a9789d32935ada2cdac7373c2df6957de20ef99bb30b598"
+    },
+    {
+      "name": "pelvic-body.png",
+      "path": "parts/pelvic-body.png",
+      "sha256": "b1cf305218938463383f1e2603cf3eceaef1565bddbe6b572a1504b8049650b8"
+    },
+    {
+      "name": "mid-body.png",
+      "path": "parts/mid-body.png",
+      "sha256": "e7a66f16e5f2d3da2067d8a84160a753f5d03d6c74a8c93201c858548f09a6f7"
+    },
+    {
+      "name": "front-body.png",
+      "path": "parts/front-body.png",
+      "sha256": "73ae695b14eb10b409923d46a162976246393a671feb76d0ddda176841ec0935"
+    },
+    {
+      "name": "body.png",
+      "path": "parts/body.png",
+      "sha256": "65e738f0126ba282a245f96a216af3756aec44c770e9b1ac1c25881d6a7accf3"
+    }
+  ]
+}
