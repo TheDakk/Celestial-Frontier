@@ -86,6 +86,7 @@ interface CapturedArc5FeedActionInputV1 {
   readonly creatureId: CreatureInstanceId;
   readonly foodLotId: SpecimenLotId;
   readonly codecNow: number;
+  readonly activePlayMs: number | undefined;
 }
 
 const INPUT_FIELDS = Object.freeze([
@@ -160,7 +161,9 @@ function capturedInput(input: Arc5FeedActionInputV1): CapturedArc5FeedActionInpu
     if (prototype !== Object.prototype && prototype !== null) return null;
     const keys = Reflect.ownKeys(input);
     const names = keys.filter((key): key is string => typeof key === 'string').sort();
-    const expected = [...INPUT_FIELDS].sort();
+    /* D13: `activePlayMs` is the one optional field (a finished Rest no longer blocks a meal) */
+    const withClock = names.includes('activePlayMs');
+    const expected = [...INPUT_FIELDS, ...(withClock ? ['activePlayMs'] : [])].sort();
     if (keys.length !== expected.length
       || names.some((name, index) => name !== expected[index])) return null;
     const values: Record<string, unknown> = Object.create(null) as Record<string, unknown>;
@@ -176,6 +179,12 @@ function capturedInput(input: Arc5FeedActionInputV1): CapturedArc5FeedActionInpu
     if (!isOwnershipStateV2(values.ownershipV2)) return null;
     if (!values.state || typeof values.state !== 'object' || Array.isArray(values.state)) return null;
     if (typeof values.codecNow !== 'number' || !Number.isFinite(values.codecNow)) return null;
+    let activePlayMs: number | undefined;
+    if (withClock) {
+      const clock = Object.getOwnPropertyDescriptor(input, 'activePlayMs');
+      if (!clock || !('value' in clock) || clock.enumerable !== true || !Number.isSafeInteger(clock.value) || clock.value < 0) return null;
+      activePlayMs = clock.value as number;
+    }
     return Object.freeze({
       commit: commit.value.bind(runtime) as F4RuntimeAuthority['commitAction'],
       ownershipV2: values.ownershipV2,
@@ -188,6 +197,7 @@ function capturedInput(input: Arc5FeedActionInputV1): CapturedArc5FeedActionInpu
       creatureId: values.creatureId as CreatureInstanceId,
       foodLotId: values.foodLotId as SpecimenLotId,
       codecNow: values.codecNow,
+      activePlayMs,
     });
   } catch {
     return null;
@@ -243,7 +253,7 @@ export async function commitArc5FeedActionV1(
   const preflight = preflightArc5FeedV1(captured.ownershipV2, {
     creatureId: captured.creatureId,
     foodLotId: captured.foodLotId,
-  }, typeof input.activePlayMs === 'number' ? input.activePlayMs : undefined);
+  }, captured.activePlayMs);
   if (preflight.kind !== 'ready') {
     return Object.freeze({
       kind: 'refused',
