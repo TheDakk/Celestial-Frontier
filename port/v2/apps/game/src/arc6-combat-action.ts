@@ -9,8 +9,11 @@
    retry, or newly-authored reward policy. */
 import {
   isGuardianPrimeEncounterV1,
+  planCombatPartySettlementV1,
   planCombatSettlementV1,
   runDuel,
+  runEncounterV1,
+  type EncounterStanceV1,
   type CombatSettlementChampionV1,
   type CombatSettlementOutcomeV1,
   type GuardianPrimeEncounterV1,
@@ -188,7 +191,12 @@ export interface Arc6CombatActionInputV1 {
   readonly championRosterAuthorityKey: string;
   readonly observedActivePlayMs: number;
   readonly codecNow: number;
+  /** §20 (Nick 2026-09-25): the fighters in relay order with their stances, first = `championId`. Absent = today's single Balanced
+   *  champion. More than one fighter is for Guardians and Titans only. Auto only until the Command open-encounter record lands. */
+  readonly party?: readonly Readonly<{ championId: string; stance: EncounterStanceV1 }>[];
 }
+
+export const ARC6_PARTY_MAX_V1 = 3;
 
 export type Arc6CombatActionOutcomeV1 =
   | Readonly<{
@@ -492,12 +500,56 @@ export async function commitArc6CombatActionV1(
     });
   }
 
+  /* §20 party: every member is validated like the champion; the engine then names the DECISIVE fighter, whose loss-XP authority plans */
+  const partyInput = input.party ?? [{ championId: input.championId, stance: 'balanced' as const }];
+  if (!Array.isArray(partyInput) || partyInput.length < 1 || partyInput.length > ARC6_PARTY_MAX_V1
+    || partyInput[0]!.championId !== input.championId
+    || new Set(partyInput.map((m) => m.championId)).size !== partyInput.length) {
+    return Object.freeze({ kind: 'refused', durability: 'none', convergence: 'none', detail: 'party:invalid', transaction: null });
+  }
+  if (partyInput.length > 1 && input.encounter.defender.kind !== 'guardian' && input.encounter.defender.kind !== 'titan') {
+    return Object.freeze({ kind: 'refused', durability: 'none', convergence: 'none', detail: 'party:guardians-and-titans-only', transaction: null });
+  }
+  const partyChampions: CombatSettlementChampionV1[] = [champion];
+  for (const member of partyInput.slice(1)) {
+    const memberAvailability = projectArc6CombatChampionAvailabilityV1({
+      ownershipV2: input.ownershipV2, guardianRoster: championRoster, championId: member.championId, observedActivePlayMs: input.observedActivePlayMs,
+    });
+    if (memberAvailability.kind !== 'available') {
+      return Object.freeze({ kind: 'refused', durability: 'none', convergence: 'none', detail: `party-member:${memberAvailability.reason}`, transaction: null });
+    }
+    const memberChampion = projectArc6CombatChampionV1({ state: input.state, ownershipV2: input.ownershipV2, guardianRoster: championRoster, championId: member.championId });
+    if (memberChampion === null) {
+      return Object.freeze({ kind: 'refused', durability: 'none', convergence: 'none', detail: 'party-member:missing-or-stale', transaction: null });
+    }
+    if (memberChampion.kind === 'player' && memberChampion.currentHp < Math.ceil(input.state.HP_MAX * 0.25)) {
+      return Object.freeze({ kind: 'refused', durability: 'none', convergence: 'none', detail: 'party-member:player-below-quarter-health', transaction: null });
+    }
+    partyChampions.push(memberChampion);
+  }
+  const partyMembers = partyChampions.map((c, index) => Object.freeze({ champion: c, stance: partyInput[index]!.stance }));
+  const legacySingle = partyMembers.length === 1 && partyMembers[0]!.stance === 'balanced';
+  let decisiveIndex = 0;
+  if (!legacySingle) {
+    try {
+      const probe = runEncounterV1({ mode: 'auto', defender: { name: input.encounter.defender.name, genome: input.encounter.defender.battleGenome as never },
+        party: partyMembers.map((m) => (m.champion.kind === 'player'
+          ? { name: m.champion.name, genome: { seed: m.champion.genomeSeed }, stats: m.champion.stats as never, stance: m.stance }
+          : { name: m.champion.name, genome: m.champion.genome as never, stance: m.stance })) });
+      if (probe.status !== 'finished') throw new Error('auto encounter paused');
+      decisiveIndex = probe.legs[probe.legs.length - 1]!.fighterIndex;
+    } catch {
+      return Object.freeze({ kind: 'refused', durability: 'none', convergence: 'none', detail: 'party:encounter-invalid', transaction: null });
+    }
+  }
+  const decisiveChampion = partyChampions[decisiveIndex]!;
+
   let lossXp: ReturnType<typeof projectCombatLossXpAuthorityV1> | null = null;
-  if (champion.kind === 'owned-fauna') {
+  if (decisiveChampion.kind === 'owned-fauna') {
     const row = championRosterRow(
       input.ownershipV2,
       championRoster,
-      champion.creatureId,
+      decisiveChampion.creatureId,
     );
     if (row === null) {
       return Object.freeze({
@@ -542,29 +594,44 @@ export async function commitArc6CombatActionV1(
     });
   }
 
-  const mine = champion.kind === 'player'
-    ? { name: champion.name, genome: { seed: champion.genomeSeed }, stats: champion.stats }
-    : { name: champion.name, genome: champion.genome as Genome };
-  const transcript = runDuel(mine, {
-    name: input.encounter.defender.name,
-    genome: input.encounter.defender.battleGenome as Genome,
+  const settlementAuthority = Object.freeze({
+    worldConquered: false,
+    claimedPrimeSignatureIds: input.encounter.identity.claimedSignatureIds,
+    lossXp: lossXp?.kind === 'ready' ? lossXp.authority : null,
+    activePlayMs: availability.activePlayMs,   // §20: a defeat's Recovery ends on the active-play clock
   });
-  const outcome = settledOutcome(transcript);
-  const plan = planCombatSettlementV1({
-    battleId: `arc6:${sha256Hex(input.encounter.witness)}:${receipt.plan.receiptOrdinal}`,
-    receiptOrdinal: receipt.plan.receiptOrdinal,
-    encounter: input.encounter,
-    champion,
-    transcript,
-    outcome,
-    worldTier: input.opportunity.effectiveTier,
-    authority: Object.freeze({
-      worldConquered: false,
-      claimedPrimeSignatureIds: input.encounter.identity.claimedSignatureIds,
-      lossXp: lossXp?.kind === 'ready' ? lossXp.authority : null,
-      activePlayMs: availability.activePlayMs,   // §20: a defeat's Recovery ends on the active-play clock
-    }),
-  });
+  const battleId = `arc6:${sha256Hex(input.encounter.witness)}:${receipt.plan.receiptOrdinal}`;
+  let plan: ReturnType<typeof planCombatSettlementV1>;
+  if (legacySingle) {
+    const mine = champion.kind === 'player'
+      ? { name: champion.name, genome: { seed: champion.genomeSeed }, stats: champion.stats }
+      : { name: champion.name, genome: champion.genome as Genome };
+    const transcript = runDuel(mine, {
+      name: input.encounter.defender.name,
+      genome: input.encounter.defender.battleGenome as Genome,
+    });
+    const outcome = settledOutcome(transcript);
+    plan = planCombatSettlementV1({
+      battleId,
+      receiptOrdinal: receipt.plan.receiptOrdinal,
+      encounter: input.encounter,
+      champion,
+      transcript,
+      outcome,
+      worldTier: input.opportunity.effectiveTier,
+      authority: settlementAuthority,
+    });
+  } else {
+    plan = planCombatPartySettlementV1({
+      battleId,
+      receiptOrdinal: receipt.plan.receiptOrdinal,
+      encounter: input.encounter,
+      worldTier: input.opportunity.effectiveTier,
+      authority: settlementAuthority,
+      mode: 'auto',
+      party: partyMembers,
+    });
+  }
   if (plan.status !== 'planned') {
     return Object.freeze({
       kind: 'refused', durability: 'none', convergence: 'none',
@@ -608,7 +675,7 @@ export async function commitArc6CombatActionV1(
       codecNow: input.codecNow,
       plan,
       opportunity: input.opportunity,
-      ownershipV2: champion.kind === 'owned-fauna'
+      ownershipV2: partyChampions.some((c) => c.kind === 'owned-fauna')
         || plan.guardianCapture.status === 'ownership-writer-required'
         ? input.ownershipV2 : null,
       brinkAchievementJoin,
