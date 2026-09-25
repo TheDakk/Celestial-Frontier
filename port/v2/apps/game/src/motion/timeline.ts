@@ -4,6 +4,7 @@
  * randomness beyond the seeded idle period, no renderer. */
 import { DEG, type Ease, type MotionAction } from './actions.js';
 import {faintStanceEnvelope,applyStanceEnvelope,type StanceEnvelope} from './stance-envelope.js';
+import {stationaryContactEnvelope,type ContactStanceEnvelope} from './contact-envelope.js';
 import { actionsFor, MELEE_ALIAS, templateMelees } from './family-actions.js';
 import type { BodyCard, Weapon } from './body-card.js';
 import { secondaryParams, type SecondaryParams } from './secondary.js';
@@ -13,7 +14,7 @@ export interface Keyframe { readonly ms: number; readonly t: number; readonly va
 export interface SecondaryTrack extends SecondaryParams { readonly keys: readonly Keyframe[]; }
 export interface MotionTimeline {
   readonly kind: 'motion-timeline';
-  readonly stanceEnvelope?:StanceEnvelope;
+  readonly stanceEnvelope?:StanceEnvelope|ContactStanceEnvelope;
   readonly actionId: string; readonly family: string; readonly loop: boolean;
   readonly seed: number; readonly recipeHash: string | null; readonly massClass: MassClassName;
   readonly bodyMs: number; readonly durationMs: number;
@@ -28,6 +29,20 @@ export interface MotionTimeline {
   readonly hash: string;
 }
 export interface MotionPose { readonly ms: number; readonly joints: Readonly<Record<string, number>>; readonly root: { readonly dx: number; readonly dy: number; readonly rotation: number }; readonly scale: { readonly x: number; readonly y: number }; }
+
+type Envelope=StanceEnvelope|ContactStanceEnvelope|null;
+// At most three authoring results per live card; no strong card ownership. The
+// complete card and sampled timeline inputs invalidate a changed geometry or
+// curve. Seed is provenance here: its already-compiled durations/keys remain
+// in the key, while returned timelines keep their actual seed and hash.
+const envelopeCache=new WeakMap<BodyCard,Map<string,{key:string;value:Envelope}>>();
+function envelopeFor(card:BodyCard,base:MotionTimeline):Envelope {
+  if(card.template.id!=='quadruped'||!['hit','tame','faint'].includes(base.actionId))return null;
+  const key=JSON.stringify({card,timeline:{...base,seed:0,hash:''}}),cache=envelopeCache.get(card)??new Map<string,{key:string;value:Envelope}>(),prior=cache.get(base.actionId);
+  if(prior?.key===key)return prior.value;
+  const value=faintStanceEnvelope(card,base,ms=>sampleTimeline(base,ms))??stationaryContactEnvelope(card,base,ms=>sampleTimeline(base,ms));
+  cache.set(base.actionId,{key,value});envelopeCache.set(card,cache);return value;
+}
 
 /** The frozen easing family; numerically identical to gsap power1.out / power1.in / back.out(1.70158) / sine.inOut. */
 export const EASE_FN: Readonly<Record<Ease, (t: number) => number>> = Object.freeze({
@@ -122,7 +137,7 @@ export function buildActionTimeline(card:BodyCard,action:MotionAction,seed:numbe
     hitstopMs: action.family === 'melee' ? hitstopMs(mass) : 0, luminousPulseMs: card.luminous ? 1800 : 0, clamped, notes,
   };
   const base:MotionTimeline={...body,hash:fnv1a(JSON.stringify(body))};
-  const envelope=faintStanceEnvelope(card,base,ms=>sampleTimeline(base,ms));
+  const envelope=envelopeFor(card,base);
   if(!envelope)return base;
   const adapted=applyStanceEnvelope(base,envelope);
   return {...adapted,hash:fnv1a(JSON.stringify(adapted))};

@@ -1,0 +1,338 @@
+{
+  "scope": "Analysis of existing retained frame traces;25ms is an attribution bin for long intervals, not a raised acceptance allowance. CPU work budget remains1000/60ms; no new native run.",
+  "rows": [
+    {
+      "name": "impala",
+      "runId": "native-impala-04",
+      "status": "DIAGNOSTIC_PASS",
+      "cpuP95Ms": 5.899999976158142,
+      "maxCpuMs": 58.199999928474426,
+      "cpuFramesOver16_6667Ms": 2,
+      "overBudgetByPhase": {
+        "ready": 2
+      },
+      "longFrameIntervalsAtLeast25Ms": 1,
+      "longIntervals": [
+        {
+          "ms": 11682.9,
+          "delta": 50.0,
+          "priorCpuMs": 58.199999928474426,
+          "phase": "ready"
+        }
+      ],
+      "maxFrameDeltaMs": 50.0,
+      "liveFrames": 931,
+      "encoded": {
+        "frames": 935,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 15.615248,
+        "minimumFrames": 886
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "timeline": {
+        "schema": "cf.battle-capture-timeline/v1",
+        "plannedDurationMs": 15532.666666666666,
+        "totalScriptMs": 15532.666666666666,
+        "firstMs": 0,
+        "lastMs": 15532.699999999999,
+        "frames": 931
+      },
+      "reportSha256": "9b947484a14cf41271e9ec46381bb27b01255d84a214048532caa34824858f0f",
+      "filmSha256": "560c7f39d29fa63976166af18941d819ffafe50e22a4005709597f7ab0259929"
+    },
+    {
+      "name": "marmot",
+      "runId": "native-marmot-04",
+      "status": "DIAGNOSTIC_PASS",
+      "cpuP95Ms": 6.399999976158142,
+      "maxCpuMs": 47.60000002384186,
+      "cpuFramesOver16_6667Ms": 2,
+      "overBudgetByPhase": {
+        "ready": 2
+      },
+      "longFrameIntervalsAtLeast25Ms": 1,
+      "longIntervals": [
+        {
+          "ms": 11666.2,
+          "delta": 33.30000000000109,
+          "priorCpuMs": 47.60000002384186,
+          "phase": "ready"
+        }
+      ],
+      "maxFrameDeltaMs": 33.30000000000109,
+      "liveFrames": 932,
+      "encoded": {
+        "frames": 936,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 15.612537,
+        "minimumFrames": 886
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "timeline": {
+        "schema": "cf.battle-capture-timeline/v1",
+        "plannedDurationMs": 15532.666666666666,
+        "totalScriptMs": 15532.666666666666,
+        "firstMs": 0,
+        "lastMs": 15532.699999999999,
+        "frames": 932
+      },
+      "reportSha256": "51db57ec19cd43a1ac77869a5db12cf44a4a02aeef1a8f08d3cf52d5756d07eb",
+      "filmSha256": "bcee1468450eea767ccdacdb9d6837f48f650328f61397645786f6da7dc2bc5a"
+    },
+    {
+      "name": "cattle",
+      "runId": "native-cattle-04",
+      "status": "DIAGNOSTIC_PASS",
+      "cpuP95Ms": 15.100000023841858,
+      "maxCpuMs": 53.700000047683716,
+      "cpuFramesOver16_6667Ms": 36,
+      "overBudgetByPhase": {
+        "action": 5,
+        "hitstop": 5,
+        "idle": 12,
+        "impact": 12,
+        "ready": 2
+      },
+      "longFrameIntervalsAtLeast25Ms": 19,
+      "longIntervals": [
+        {
+          "ms": 2150,
+          "delta": 33.399999999999636,
+          "priorCpuMs": 19.700000047683716,
+          "phase": "hitstop"
+        },
+        {
+          "ms": 2299.8999999999996,
+          "delta": 33.29999999999927,
+          "priorCpuMs": 30.899999976158142,
+          "phase": "impact"
+        },
+        {
+          "ms": 5983.1,
+          "delta": 33.30000000000109,
+          "priorCpuMs": 31.200000047683716,
+          "phase": "action"
+        },
+        {
+          "ms": 6016.5,
+          "delta": 33.399999999999636,
+          "priorCpuMs": 32.10000002384186,
+          "phase": "hitstop"
+        },
+        {
+          "ms": 6049.700000000001,
+          "delta": 33.20000000000073,
+          "priorCpuMs": 32.699999928474426,
+          "phase": "hitstop"
+        },
+        {
+          "ms": 6083,
+          "delta": 33.29999999999927,
+          "priorCpuMs": 27,
+          "phase": "impact"
+        },
+        {
+          "ms": 6116.5,
+          "delta": 33.5,
+          "priorCpuMs": 27,
+          "phase": "impact"
+        },
+        {
+          "ms": 6216.4,
+          "delta": 50.0,
+          "priorCpuMs": 35.699999928474426,
+          "phase": "impact"
+        },
+        {
+          "ms": 11682.9,
+          "delta": 50.0,
+          "priorCpuMs": 53.700000047683716,
+          "phase": "ready"
+        },
+        {
+          "ms": 15116.099999999999,
+          "delta": 33.29999999999927,
+          "priorCpuMs": 26.5,
+          "phase": "idle"
+        },
+        {
+          "ms": 15149.400000000001,
+          "delta": 33.30000000000291,
+          "priorCpuMs": 32.699999928474426,
+          "phase": "idle"
+        },
+        {
+          "ms": 15199.400000000001,
+          "delta": 50.0,
+          "priorCpuMs": 42,
+          "phase": "idle"
+        },
+        {
+          "ms": 15232.7,
+          "delta": 33.29999999999927,
+          "priorCpuMs": 44.89999997615814,
+          "phase": "idle"
+        },
+        {
+          "ms": 15282.8,
+          "delta": 50.099999999998545,
+          "priorCpuMs": 40.10000002384186,
+          "phase": "idle"
+        },
+        {
+          "ms": 15316,
+          "delta": 33.20000000000073,
+          "priorCpuMs": 40.09999990463257,
+          "phase": "idle"
+        },
+        {
+          "ms": 15349.400000000001,
+          "delta": 33.400000000001455,
+          "priorCpuMs": 30.200000047683716,
+          "phase": "idle"
+        },
+        {
+          "ms": 15382.8,
+          "delta": 33.39999999999782,
+          "priorCpuMs": 32.39999997615814,
+          "phase": "idle"
+        },
+        {
+          "ms": 15416.099999999999,
+          "delta": 33.29999999999927,
+          "priorCpuMs": 35.60000002384186,
+          "phase": "idle"
+        },
+        {
+          "ms": 15466,
+          "delta": 49.900000000001455,
+          "priorCpuMs": 44.39999997615814,
+          "phase": "idle"
+        }
+      ],
+      "maxFrameDeltaMs": 50.099999999998545,
+      "liveFrames": 909,
+      "encoded": {
+        "frames": 910,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 15.573422,
+        "minimumFrames": 886
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "timeline": {
+        "schema": "cf.battle-capture-timeline/v1",
+        "plannedDurationMs": 15532.666666666666,
+        "totalScriptMs": 15532.666666666666,
+        "firstMs": 0,
+        "lastMs": 15532.8,
+        "frames": 909
+      },
+      "reportSha256": "c36f4d24c8eb533fa891c85a76ed1fb2df7d900092a238f4139f56980fbbdb28",
+      "filmSha256": "c02685aa42a00cf03d5a6173fade28bcf184b061b958b59814edad80a294470e"
+    },
+    {
+      "name": "lizard",
+      "runId": "native-lizard-04",
+      "status": "DIAGNOSTIC_PASS",
+      "cpuP95Ms": 3.8000000715255737,
+      "maxCpuMs": 121.5,
+      "cpuFramesOver16_6667Ms": 2,
+      "overBudgetByPhase": {
+        "ready": 2
+      },
+      "longFrameIntervalsAtLeast25Ms": 2,
+      "longIntervals": [
+        {
+          "ms": 3649.8999999999996,
+          "delta": 116.69999999999982,
+          "priorCpuMs": 121.5,
+          "phase": "ready"
+        },
+        {
+          "ms": 10516.3,
+          "delta": 33.29999999999927,
+          "priorCpuMs": 42.89999997615814,
+          "phase": "ready"
+        }
+      ],
+      "maxFrameDeltaMs": 116.69999999999982,
+      "liveFrames": 834,
+      "encoded": {
+        "frames": 838,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 14.082419,
+        "minimumFrames": 798
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "timeline": {
+        "schema": "cf.battle-capture-timeline/v1",
+        "plannedDurationMs": 13996.666666666666,
+        "totalScriptMs": 13996.666666666666,
+        "firstMs": 0,
+        "lastMs": 13999.5,
+        "frames": 834
+      },
+      "reportSha256": "6b096cbecb74c57bf52b588ad72ecf7348a971cc63e4847a3869abafbdd6d243",
+      "filmSha256": "61d642432738183d3ffc6f6d51e88b6ca6afcc4da150c6c145ac11ffd581b695"
+    },
+    {
+      "name": "bear",
+      "runId": "native-bear-04",
+      "status": "DIAGNOSTIC_PASS",
+      "cpuP95Ms": 7.399999976158142,
+      "maxCpuMs": 46.800000071525574,
+      "cpuFramesOver16_6667Ms": 2,
+      "overBudgetByPhase": {
+        "ready": 2
+      },
+      "longFrameIntervalsAtLeast25Ms": 1,
+      "longIntervals": [
+        {
+          "ms": 11666.2,
+          "delta": 33.400000000001455,
+          "priorCpuMs": 46.800000071525574,
+          "phase": "ready"
+        }
+      ],
+      "maxFrameDeltaMs": 33.400000000001455,
+      "liveFrames": 932,
+      "encoded": {
+        "frames": 936,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 15.615366,
+        "minimumFrames": 886
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "timeline": {
+        "schema": "cf.battle-capture-timeline/v1",
+        "plannedDurationMs": 15532.666666666666,
+        "totalScriptMs": 15532.666666666666,
+        "firstMs": 0,
+        "lastMs": 15532.7,
+        "frames": 932
+      },
+      "reportSha256": "597580b0a844549f2f120c95f39f8b2eba7a507e38febe182bf2822b38e5cb0f",
+      "filmSha256": "406943a6177619c8ad124f230b40fd5f90ca9604522b7df2f5fa5ecbb9b94abb"
+    }
+  ]
+}

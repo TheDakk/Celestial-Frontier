@@ -4,6 +4,7 @@
  * No species lookup, per-creature clip, changed foot target or relaxed limit. */
 import type {BodyCard} from './body-card.js';
 import type {MotionPose,MotionTimeline} from './timeline.js';
+import type {ContactStanceEnvelope} from './contact-envelope.js';
 import {familyContract} from '../../../../tools/creature-animation/family-contracts.mjs';
 import {createSkeletonPoseProgram} from '../../../../tools/creature-animation/skeleton-pose.mjs';
 import {createTwoBoneChain,transformPoint,type Point2} from '../../../../tools/creature-animation/kinematics.js';
@@ -64,7 +65,7 @@ export function faintStanceEnvelope(card:BodyCard,tl:MotionTimeline,sample:(ms:n
  return Object.freeze({schema:'cf.motion.stance-envelope/v1',torsoGain:low,angleReserve:ANGLE_RESERVE,samples:SAMPLES+1});
 }
 /** Scaling a complete curve preserves its timing/easing and continuity. */
-export function applyStanceEnvelope(tl:MotionTimeline,envelope:StanceEnvelope):Omit<MotionTimeline,'hash'> {
+export function applyStanceEnvelope(tl:MotionTimeline,envelope:StanceEnvelope|ContactStanceEnvelope):Omit<MotionTimeline,'hash'> {
  const {hash:_,...body}=tl,gain=envelope.torsoGain;
  return {...body,stanceEnvelope:envelope,
   tracks:Object.fromEntries(Object.entries(tl.tracks).map(([j,keys])=>[j,TORSO.has(j)?keys.map(k=>({...k,value:k.value*gain})):keys])),
