@@ -40,6 +40,7 @@ import {
   projectWorldHarvestV1,
   publishWorldHarvestFieldsV1,
 } from './world-harvest.js';
+import { engineeringCommittedCopy, runFabricationBatchV1 } from './fabrication-batch.js';
 import {
   deviceAudioAccessibilityStorage,
   readAudioAccessibilityPrefsV1,
@@ -9160,6 +9161,16 @@ async function runWorldHarvest(planetSeed: number): Promise<void> {
     if (!convergence) refreshPlanetSurveyCard();
   }
 }
+/** The Fabricator's ×5 (D16 parity): ordinary single fabrications in sequence, each its own receipt (fabrication-batch.ts). */
+async function fabricateEngineeringBatch(baseId: string, repeat: number): Promise<Arc3AppActionOutcome> {
+  return (await runFabricationBatchV1({
+    repeat,
+    fabricate: () => fabricateFixedEngineeringRecipe(baseId),
+    converges: engineeringOutcomeConverges,
+    released: () => engineeringPanelReleased,
+  })).outcome;
+}
+
 const sideEl = document.createElement('div');
 sideEl.id = 'planetside';
 sideEl.className = 'glass';
@@ -16736,7 +16747,7 @@ async function runEngineeringPanelAction(request: EngineeringPanelActionRequest)
         : request.operation === 'research' && request.id !== undefined
           ? await purchaseEngineeringResearch(request.id)
           : request.operation === 'fabricate' && request.id !== undefined
-            ? await fabricateFixedEngineeringRecipe(request.id)
+            ? await (request.repeat === undefined ? fabricateFixedEngineeringRecipe(request.id) : fabricateEngineeringBatch(request.id, request.repeat))
             : Object.freeze({
               kind: 'unavailable',
               operation: request.operation === 'research' ? 'purchase-research' : 'fabricate-fixed',
@@ -16771,7 +16782,7 @@ async function runEngineeringPanelAction(request: EngineeringPanelActionRequest)
     updateChips();
     if (outcome.operation === 'purchase-research') refreshPlanetSurveyCard();
     if (openPanelId() === 'ch') fillCharters();
-    toast('Engineering committed', 'The durable expedition record now reflects this action.', true);
+    toast('Engineering committed', engineeringCommittedCopy(outcome.detail), true);
   } else if (outcome.kind !== 'committed' && !converging) {
     toast('Engineering unavailable', outcome.detail, true);
   }
