@@ -42,8 +42,13 @@ export function readySpacing(cL: number, cR: number, hwL: number, hwR: number, g
 export function placeCombatants(input: PlacementInput): Placement {
   const { layout } = input, frame = layout.frame;
   const pl = combatantPresentation(input.left.rig, input.left.mass, frame, layout.stands.left.y), pr = combatantPresentation(input.right.rig, input.right.mass, frame, layout.stands.right.y);
+  // BAND CONTAINMENT IN MOTION (C25, Codex's actual-branch films: Herring/Sturgeon/Reef Shark tails rose above the water in the final faint, the
+  // Eel's tail in approach): an air/water body is fitted and centred on its MOTION ENVELOPE — the rest box plus the largest upward rise its
+  // own rig measured across the clips the stage plays (`tallestHeight`) — not the rest box alone. Ground fighters are unaffected.
+  const envelope = (rig: BattleRigV1, p: typeof pl) => { const rise = Math.max(0, (rig.tallestHeight ?? rig.bounds.height) - rig.bounds.height) * rig.cutout.height * p.scale / frame.height;
+    return rise > 0 ? { ...p, height: p.height + rise, footBelowCentre: p.footBelowCentre + rise / 2 } : p; };
   const habitat = selectHabitatArena({ contextId: input.contextId, seed: input.seed, round: 0, kind: 'wild', worlds: input.worlds, groundLineY: layout.groundLineY, fitToBand: true,
-    left: { record: input.left.record, genome: input.left.genome, label: input.left.label, painted: pl }, right: { record: input.right.record, genome: input.right.genome, label: input.right.label, painted: pr } });
+    left: { record: input.left.record, genome: input.left.genome, label: input.left.label, painted: envelope(input.left.rig, pl) }, right: { record: input.right.record, genome: input.right.genome, label: input.right.label, painted: envelope(input.right.rig, pr) } });
   if (habitat.status === 'UNSUPPORTED') return Object.freeze({ status: 'UNSUPPORTED', habitat });
   const L = habitat.stands.left, R = habitat.stands.right;
   const hw0 = (rig: BattleRigV1, k: number) => (rig.bounds.width * rig.cutout.width * k) / (2 * frame.width);
