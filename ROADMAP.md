@@ -76,6 +76,13 @@ painted arena works offline in it. Codex's items 5 and 7 are staged unsigned in 
 - Run `npm run overridecontrol` and the whole gate list locally before any hosted attempt.
 
 ### What Claude owes next
+-90. **The painted art direction on every card (Nick 2026-09-24: "that art style should carry throughout the game";
+`audits/PAINTED_STAND_INS_20260924/README.md`).** `painted-stand-in.ts`: every creature whose anatomy a painting draws gets that painting on
+its card, morphed by its own genes. That is the 17 painted species; about 560 Earth species via their body plan's archetype; and generated
+creatures via the SAME body family the procedural painter draws (drift-tested against hdart's own source; the leg-count law is tested).
+43% of generated creatures are now painted. The uncovered families (jelly, four-winged, sturgeon, flat fish, 0/2/3-leg land bodies,
+lobster, mantis, squid, shark, sessile) are the painting list for the game's own creatures. Also fixed: a grown tail was clipped at the
+card edge (`padForProportionV1`). Unit 5,065 pass; only I5 is red.
 -89. **Codex's three items merged (staged merge of `4b56ef82`).** The Centipede crawl is identical to `f7339401`, so it merged clean. 53 species are routed to
 existing templates (the Fiddler Crab now to brachyuran, so it shares the crab's pinch; `creature-rig-r3` was updated to match, and Crayfish,
 Lobster and Hermit Crab still refuse). The five `fb1922a0` reds are green. Edge on the merged tree (`picker-smoke-11-merged`, worker controlling

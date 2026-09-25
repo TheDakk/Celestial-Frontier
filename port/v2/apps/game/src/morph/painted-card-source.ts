@@ -3,6 +3,7 @@
 // rendered from the sealed card master (`renderCardIndividualV1`) as a PNG data URL — on every device, phone included
 // (a 512² master, one render per individual, cached). Otherwise `null` and the painter tier answers as before.
 import { speciesVisualKey } from '@cf/art/species-identity';
+import { paintedStandInV1, type PaintedStandIn } from './painted-stand-in.js';
 import { compileBodyCard, type BodyCard, type MotionGenomeFields, type ResolvedAnatomyRecord } from '../motion/body-card.js';
 import { renderCardIndividualV1, type CardMasterV1, type CardReceiptV1 } from './morph-card.js';
 import { archetypeGenomeV1, morphParamsV1, type MorphGenome } from './morph-params.js';
@@ -12,7 +13,9 @@ import { encodePng, pngDataUrl } from './png-encode.js';
 export interface PaintedCardArchetype { readonly earthName: string; readonly dir: string; }
 export interface PaintedCardAssets { json(path: string): Promise<unknown>; bytes(path: string): Promise<Uint8Array>; }
 export interface PaintedCardAsset { readonly key: string; readonly url: string; readonly width: number; readonly height: number; readonly encodedBytes: number; readonly decodedPixels: number; }
-export interface PaintedCardSourceOptions { readonly assets: PaintedCardAssets; readonly registry: readonly PaintedCardArchetype[]; readonly cacheEntries?: { thumb: number; portrait: number };
+export interface PaintedCardSourceOptions { readonly assets: PaintedCardAssets; readonly registry: readonly PaintedCardArchetype[];
+  /** Painted stand-ins for every creature whose anatomy a painting draws (default ON, Nick 2026-09-24); false = painted species only. */
+  readonly standIns?: boolean; readonly cacheEntries?: { thumb: number; portrait: number };
   /** Hand the thread back to the host between two renders (2026-09-24, review finding: a grid asking for 20 painted cards rendered them all
    * in ONE task — ~20–40 ms each on a desktop, several times that on a phone). Default: a macrotask. Output is unaffected. */
   readonly yieldToHost?: () => Promise<void>; }
@@ -26,9 +29,17 @@ export class PaintedCardSource {
   #renders = 0; #tail: Promise<unknown> = Promise.resolve();
   /** One render per host task: each waits for the previous one and a yield, so the page can paint between cards. */
   #slot<T>(render: () => T | Promise<T>): Promise<T> { const run = this.#tail.then(() => (this.#o.yieldToHost ?? macrotask)()).then(render); this.#tail = run.then(() => undefined, () => undefined); return run; }
-  constructor(o: PaintedCardSourceOptions) { this.#o = o; this.#byName = new Map(o.registry.map((a) => [a.earthName, a])); }
+  readonly #names: ReadonlySet<string>;
+  constructor(o: PaintedCardSourceOptions) { this.#o = o; this.#byName = new Map(o.registry.map((a) => [a.earthName, a])); this.#names = new Set(this.#byName.keys()); }
   /** The archetype for a genome, or null (procedural species and Earth species without a painted archetype). */
-  archetypeFor(genome: Readonly<Record<string, unknown>> | null | undefined): PaintedCardArchetype | null { const n = genome?._earthName; return typeof n === 'string' ? this.#byName.get(n) ?? null : null; }
+  /** Which painted archetype draws this genome, and why (painted-stand-in.ts): the species' own painting, its body plan's
+   * archetype (Earth stand-in), or the painting of the body family the procedural painter already draws (procedural stand-in).
+   * `standIns: false` restores the painted-species-only card (null for everything else). */
+  standInFor(genome: Readonly<Record<string, unknown>> | null | undefined): PaintedStandIn | null {
+    const s = paintedStandInV1(genome, this.#names); return s && (s.kind === 'painted' || this.#o.standIns !== false) ? s : null;
+  }
+  /** The archetype for a genome, or null (keep the procedural art). */
+  archetypeFor(genome: Readonly<Record<string, unknown>> | null | undefined): PaintedCardArchetype | null { const s = this.standInFor(genome); return s ? this.#byName.get(s.earthName) ?? null : null; }
   get renders(): number { return this.#renders; }
   async #archetype(a: PaintedCardArchetype): Promise<Archetype> {
     let p = this.#archetypes.get(a.earthName); if (p) return p;

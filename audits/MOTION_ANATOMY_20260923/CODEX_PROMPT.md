@@ -92,6 +92,15 @@ Nick is tired of "stop, generate something, stop." For this run and every run af
    left ~3 MiB, so the bindings now ship gzip-compressed (arena 48.1 MiB, ~33 MiB headroom). Edge with the worker controlling the page:
    first use, then a cached reload with 0 server requests, plus a cold-pair control (`audits/BATTLE2_LIBRARY_20260924/picker-smoke-06-sw/`).
 
+## Added 2026-09-24 (evening)
+
+11. **The painted art direction now carries to every card (Nick's direction).** Painted stand-ins draw about 560 Earth species and 43% of
+   generated creatures (`audits/PAINTED_STAND_INS_20260924/README.md`). Two consequences for you: (a) your I5 Compendium memory
+   measurement now sees painted cards for most creatures (bounded caches of 64 thumbs and 8 portraits, plus up to 13 archetype
+   card masters); measure it as it is, never rebind. (b) The generated creatures' uncovered body families form a painting list:
+   jelly 6.5%, four-winged 6.2%, sturgeon 5.7%, flat fish 4.6%, legless/biped/tripod land bodies 13.3%, lobster 3.3%, mantis, squid,
+   cuttlefish, shark, angler and four sessile forms. Weigh it against the Earth plan when Nick orders paintings.
+
 **Nick accepted the archetype sprint art (all thirteen selections).** His direction: *"Animations can be fine-tuned
 more. The snake doesn't move exactly like a snake — we need to double-check all the animals and make sure they're
 moving appropriately for their anatomy."* This run is **MOTION ANATOMY**: every rigged animal must move the way its

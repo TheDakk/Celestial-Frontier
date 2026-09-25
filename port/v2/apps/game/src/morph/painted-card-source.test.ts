@@ -8,9 +8,13 @@ const assets: PaintedCardAssets = { json: async (p) => JSON.parse(readFileSync(n
 const REGISTRY = [{ earthName: 'Crab', dir: 'audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/' }, { earthName: 'Civet', dir: 'audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/' }];
 const crabGenome = (over: Record<string, unknown> = {}) => ({ _earthName: 'Crab', kingdom: 'fauna', seed: 5, color: 12, accent: 3, size: 0, head: 0, tail: 1, pattern: 0, ...over });
 describe('painted card source — the individual on the card', () => {
-  it('a procedural genome or an Earth species without an archetype → null (the painter tier answers)', () => {
+  it('a creature whose anatomy no painting draws → null (the painter tier answers); an Earth species of a painted body plan takes its stand-in (Nick 2026-09-24), and standIns:false restores painted-species-only', () => {
     const s = new PaintedCardSource({ assets, registry: REGISTRY });
-    expect(s.card({ kingdom: 'fauna', seed: 9, color: 1 }, 'thumb')).toBeNull(); expect(s.card({ _earthName: 'Brown Bear', seed: 1 }, 'portrait')).toBeNull(); expect(s.renders).toBe(0);
+    expect(s.card({ kingdom: 'fauna', seed: 9, color: 1 }, 'thumb')).toBeNull(); // body 0, limbs gene 0 → a two-legged land body: no painting
+    expect(s.standInFor({ _earthName: 'Brown Bear', seed: 1 })).toEqual({ earthName: 'Civet', kind: 'earth-stand-in', family: 'quadruped' });
+    const off = new PaintedCardSource({ assets, registry: REGISTRY, standIns: false });
+    expect(off.card({ _earthName: 'Brown Bear', seed: 1 }, 'portrait')).toBeNull(); expect(off.standInFor({ _earthName: 'Crab', seed: 1 })?.kind).toBe('painted');
+    expect(s.renders).toBe(0);
   });
   it('a crab genome renders a 132 thumb and a 440 portrait as PNG data URLs (decodable, right size, alpha present); two genomes differing in colour give different bytes; the same genome is served from cache (one render)', async () => {
     const s = new PaintedCardSource({ assets, registry: REGISTRY });

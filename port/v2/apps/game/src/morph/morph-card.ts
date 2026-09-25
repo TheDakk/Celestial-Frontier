@@ -106,7 +106,27 @@ export function diagonalLongBodyV1(px: Uint8Array, W: number, H: number, headX: 
     if (a > 0) { const o = (Y * S + X) * 4; out[o] = Math.round(r / a); out[o + 1] = Math.round(g / a); out[o + 2] = Math.round(bl / a); out[o + 3] = Math.round(a); } }
   return Object.freeze({ px: out, width: S, height: S, rotated: true });
 }
-export function renderCardIndividualV1(input: CardRenderInput): Uint8Array {
+/** Room for a proportion morph (2026-09-24, the stand-in sheet: a Civet stand-in with a long-tail gene lost its tail tip at the
+ * card edge — the composite is drawn on the painting's own canvas, and a grown sub-tree ran off it before the crop). When the
+ * genome scales any sub-tree, the master and labels get a transparent border of CARD_PROPORTION_PAD of the longer side and every
+ * normalized receipt coordinate is remapped; with no scaled sub-tree the input is returned untouched (identity stays byte-exact). */
+export const CARD_PROPORTION_PAD = 0.25;
+export function padForProportionV1(input: CardRenderInput): CardRenderInput {
+  if (cardProportionV1(input.receipt, input.card, input.params).trees.length === 0) return input;
+  const { width: W, height: H } = input.master, p = Math.ceil(CARD_PROPORTION_PAD * Math.max(W, H)), W2 = W + 2 * p, H2 = H + 2 * p;
+  const pad = (src: Uint8Array) => { const out = new Uint8Array(W2 * H2 * 4); for (let y = 0; y < H; y++) out.set(src.subarray(y * W * 4, (y + 1) * W * 4), ((y + p) * W2 + p) * 4); return out; };
+  const at = ([x, y]: readonly [number, number]) => [(x * W + p) / W2, (y * H + p) / H2] as const;
+  const map = (r: Readonly<Record<string, readonly [number, number]>>) => Object.fromEntries(Object.entries(r).map(([k, v]) => [k, at(v)]));
+  const receipt: CardReceiptV1 = { ...input.receipt, landmarks: map(input.receipt.landmarks), ...(input.receipt.fixedPivots ? { fixedPivots: map(input.receipt.fixedPivots) } : {}) };
+  return { ...input, master: { width: W2, height: H2, master: pad(input.master.master), labels: pad(input.master.labels) }, receipt, ...(input.markingMask ? { markingMask: padMask(input.markingMask, W, H, p) } : {}) };
+}
+function padMask(m: AlphaMask, W: number, H: number, p: number): AlphaMask {
+  if (m.width !== W || m.height !== H) return m; // a mask of another size is refused downstream exactly as before
+  const W2 = W + 2 * p, out = new Uint8Array(W2 * (H + 2 * p)); for (let y = 0; y < H; y++) out.set(m.alpha.subarray(y * W, (y + 1) * W), (y + p) * W2 + p);
+  return { alpha: out, width: W2, height: H + 2 * p };
+}
+export function renderCardIndividualV1(raw: CardRenderInput): Uint8Array {
+  const input = padForProportionV1(raw);
   const { size } = input; if (!(size > 0 && Number.isInteger(size))) throw new TypeError('card: size');
   const head = input.receipt.landmarks['head'] ?? null;
   const composite = cardCompositeV1(input), turned = input.diagonal === false ? Object.freeze({ px: composite, width: input.master.width, height: input.master.height, rotated: false }) : diagonalLongBodyV1(composite, input.master.width, input.master.height, head ? head[0] * input.master.width : null);
