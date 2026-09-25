@@ -1,0 +1,24 @@
+✔ accounts first and last sample deltas and separates same-named Wasm leaves by module/caller (0.778333ms)
+✔ refuses missing/foreign samples, deltas and malformed capture metadata (0.247166ms)
+✔ all pin masks/signs retain exact positions and the entire queue at multiple budgets (4.503ms)
+✔ shared-vertex incident traversal preserves duplicates, heap order and repeated seeks (5.286958ms)
+✔ shared triangles respect every moved-corner mask without skipping a first incident update (1.407375ms)
+✔ equal priorities use triangle ID order and preserve stale unused heap entries (0.122333ms)
+✔ half-floor stopping retains nonempty queue; degenerate removal and full budget retain original counters (0.285417ms)
+✔ signed-zero-only progress, underflow and overflowing finite coordinates preserve Object.is semantics (0.214416ms)
+✔ shared-corner fixture exercises both unchanged and changed queued priorities and rejects overbroad skipping (2.095417ms)
+✔ equal-priority mutant is rejected by full queue parity even when coordinates do not change (0.487625ms)
+✔ mixed finite/overflowing shared triangles preserve the original unordered-priority behavior (1.155667ms)
+✔ private topology is snapshotted; runtime absence and denied memory give null without caller changes (0.22625ms)
+✔ valid arithmetic mutant and no-op export fail admission before touching caller state (0.3455ms)
+✔ post-admission trap, invalid result, invalid counters and invalid heap are transactional (0.445541ms)
+✔ malformed topology, reset state and call budgets fail closed (0.180667ms)
+✔ artifact admits exactly one thirteen-i32 memory-only leaf and rejects linker inputs (6.13825ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.0335

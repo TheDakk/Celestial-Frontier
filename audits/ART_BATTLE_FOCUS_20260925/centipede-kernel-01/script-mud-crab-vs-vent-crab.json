@@ -1,0 +1,42 @@
+{
+  "readyMs": 600,
+  "commandMs": 300,
+  "themes": {
+    "A": "wild",
+    "B": "stone"
+  },
+  "rows": [
+    {
+      "side": "A",
+      "an": "Mud Crab",
+      "dn": "Vent Crab",
+      "dmg": 9,
+      "crit": false,
+      "hpA": 30,
+      "hpB": 21
+    },
+    {
+      "side": "B",
+      "an": "Vent Crab",
+      "dn": "Mud Crab",
+      "dmg": 6,
+      "crit": false,
+      "hpA": 24,
+      "hpB": 21
+    },
+    {
+      "an": "Mud Crab",
+      "dn": "Vent Crab",
+      "dodge": true
+    },
+    {
+      "side": "A",
+      "an": "Mud Crab",
+      "dn": "Vent Crab",
+      "dmg": 21,
+      "crit": true,
+      "hpA": 24,
+      "hpB": 0
+    }
+  ]
+}

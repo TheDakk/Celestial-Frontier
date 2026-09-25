@@ -13,6 +13,7 @@ import { openChromiumCdp } from '../browsercdp.mjs';
 import { acquireWorkspaceLock } from '../workspacelock.mjs';
 import { requireTenSecondMedia } from '../quadruped-proof/capture-contract.mjs';
 import { inspectEncodedFrames } from '../quadruped-proof/motion-proof-contract.mjs';
+import { summarizeCpuProfile } from './cpu-profile.mjs';
 
 const [leftArg, rightArg, outArg, scriptArg] = process.argv.slice(2);
 if (!leftArg || !rightArg || !outArg) throw Error('usage: native-runner.mjs <leftFitDir> <rightFitDir> <outDir> [script.json]');
@@ -65,14 +66,16 @@ try {
     const { profile } = await send('Profiler.stop');
     const { SourceMapConsumer } = await import('source-map-js');
     const consumer = new SourceMapConsumer(JSON.parse(fs.readFileSync(path.join(scratch, 'bundle.js.map'), 'utf8')));
-    const byId = new Map(profile.nodes.map((n) => [n.id, n])), selfUs = new Map(), total = { us: 0 };
-    const dt = profile.timeDeltas ?? []; for (let i = 0; i < profile.samples.length; i++) { const n = byId.get(profile.samples[i]); const us = dt[i + 1] ?? 0; total.us += us;
-      const cf = n.callFrame; let file = cf.url && cf.url.endsWith('bundle.js') && cf.lineNumber >= 0 ? (consumer.originalPositionFor({ line: cf.lineNumber + 1, column: Math.max(0, cf.columnNumber) }).source ?? 'bundle?') : (cf.functionName === '(idle)' ? '(idle)' : cf.functionName === '(program)' ? '(program)' : cf.functionName === '(garbage collector)' ? '(gc)' : (cf.url ? (cf.url.startsWith('wasm://') ? 'wasm:' + (cf.functionName || '?').replace(/^\$?/, '').slice(0, 40) : 'other-script:' + cf.url.split('/').pop()) : 'native:' + (cf.functionName || '?')));
-      file = String(file).replace(/^.*?\/(apps|packages|tools|node_modules)\//, '$1/'); selfUs.set(file, (selfUs.get(file) ?? 0) + us); }
-    const group = (f) => /^wasm:/.test(f) ? 'wasm (orientation / skin kernels)' : /arap|skin|paint-skin|mesh/i.test(f) ? 'skin (ARAP / mesh)' : /contact|stance|support|ik|kinemat|solver|gait|motion\//i.test(f) ? 'rig motion + contact' : /creature-rig|parts-rig|fixture-rig/i.test(f) ? 'rig other' : /battle2\//i.test(f) ? 'stage + choreography' : /effects\//i.test(f) ? 'effects' : /pixi/i.test(f) ? 'pixi render' : /\(idle\)/.test(f) ? 'idle' : /\(gc\)/.test(f) ? 'garbage collection' : 'other';
-    const files = [...selfUs.entries()].sort((a, b) => b[1] - a[1]).map(([file, us]) => ({ file, ms: +(us / 1000).toFixed(1), share: +(us / total.us).toFixed(4) }));
-    const groups = {}; for (const f of files) groups[group(f.file)] = +((groups[group(f.file)] ?? 0) + f.ms).toFixed(1);
-    fs.writeFileSync(path.join(out, 'cpu-breakdown.json'), JSON.stringify({ totalMs: +(total.us / 1000).toFixed(1), frames: report.capture.frames, cpuThrottle: report.cpuThrottle, groups, files: files.slice(0, 40) }, null, 1) + '\n');
+    remember(path.join(import.meta.dirname, 'cpu-profile.mjs'));
+    const resolveSource = cf => {
+      if (cf.url?.endsWith('bundle.js') && cf.lineNumber >= 0) return String(consumer.originalPositionFor({ line: cf.lineNumber + 1, column: Math.max(0, cf.columnNumber) }).source ?? 'bundle?').replace(/^.*?\/(apps|packages|tools|node_modules)\//, '$1/');
+      if (cf.functionName === '(idle)' || cf.functionName === '(program)') return cf.functionName;
+      if (cf.functionName === '(garbage collector)') return '(gc)';
+      return cf.url ? 'other-script:' + cf.url.split('/').pop() : 'native:' + (cf.functionName || '?');
+    };
+    const breakdown = summarizeCpuProfile(profile, resolveSource, {frames: report.capture.frames, cpuThrottle: report.cpuThrottle});
+    fs.writeFileSync(path.join(out, 'cpu-profile.json'), JSON.stringify(profile) + '\n');
+    fs.writeFileSync(path.join(out, 'cpu-breakdown.json'), JSON.stringify(breakdown, null, 1) + '\n');
   } fs.writeFileSync(path.join(out, 'battle-10s.webm'), Buffer.from(report.capture.video, 'base64')); delete report.capture.video;
   const media = JSON.parse(execFileSync('/opt/homebrew/bin/ffprobe', ['-v', 'error', '-count_frames', '-show_entries', 'format=duration:stream=codec_type,nb_read_frames,width,height', '-of', 'json', path.join(out, 'battle-10s.webm')], { encoding: 'utf8' }));
   report.capture.encodedMedia = media; save(); requireTenSecondMedia(Number(media.format.duration)); report.capture.encodedFrames = inspectEncodedFrames(media.streams);
