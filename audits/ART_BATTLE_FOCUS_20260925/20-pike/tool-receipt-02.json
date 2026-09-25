@@ -1,0 +1,10 @@
+{
+  "tool": "image_gen.imagegen",
+  "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-a3897f9a-87fe-470c-a999-25cab803c3c8.png",
+  "sha256": "964a23d815434e6f36196eb71c3574951ca74d9d08998d8f40d458fcc7e24468",
+  "promptFile": "correction-prompt-02.txt",
+  "promptSha256": "c9c82616d0056529a882f7a89da9d83438ad1e5eab566b2f3e4de2ff2bc2ccd6",
+  "reference": "generation-01/master.png",
+  "referenceSha256": "7276340149df2b4923473ff2ab697b7f0775ea7d30c13c48da73e85e49841b44",
+  "decision": "candidate: complete plain olive Pike, fine low-contrast scales and fin rays, no bean spots; separate paired fins; safe margins. Nick review pending"
+}

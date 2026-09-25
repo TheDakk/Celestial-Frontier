@@ -144,3 +144,9 @@ Packet audits/ART_BATTLE_FOCUS_20260925/18-ibex:31 parts/six own masks, fit02 st
 ## C15 item19 — Reef Shark, static/rig PASS; stage pending
 
 Packet audits/ART_BATTLE_FOCUS_20260925/19-reef-shark: fit06,13/13 static/exactrest, native02 full12.083s0/0 at3.40ms stage p954×,726live/730encoded. **Use mask-set02**, two misplaced masks corrected; allsixconserved. Retained habitat/material declaration refusals and no-world native01 refusal (no film); no rebind. Return snouts overlap; faint upper tail breaches water band; run-up±.0246952. Fix spacing, animated-medium containment and fullstage/picker before publication. Codex continues Pike; C8 parked.
+
+## C15 item20 + second ten sheet — review complete, sprint in progress
+
+Pike packet audits/ART_BATTLE_FOCUS_20260925/20-pike:fit02 static13/13/exact0, native01 full12.0827s0/0 at3.20ms stage p954×,726live/729encoded. Six own masks conserved, connected return/faint within water band and positive gap. Small rendered scale; run-up±.0361063, so fullstage/picker pending.
+
+`audits/ART_BATTLE_FOCUS_20260925/batch02-review-sheet.png` and batch02-review-index.json collect Wolf/Gull/Otter/Bear/Goose/Heron/Sparrow/Ibex/ReefShark/Pike. **Ten reviewed candidates, not ten admissions.** Static/native failures and Bear mask refusal retained. Consume qualified art only after stage fixes, then picker/coverage before dev publication. Codex returns to shared motion defects; C8 and economy parked. No measured80%/top35/allpairs60fps claim.
