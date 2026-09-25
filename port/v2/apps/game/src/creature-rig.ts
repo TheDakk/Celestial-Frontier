@@ -1,19 +1,22 @@
+import type {CreaturePoseV1,CreaturePaintContact,CreatureRigRecordV1,CreaturePartsBindingV1,Box} from './creature-rig-types.js';
+export type {CreaturePoseV1,CreaturePaintContact,CreatureRigRecordV1,CreaturePartsBindingV1,CreatureSeamGroupV1} from './creature-rig-types.js';
 import {requireVisiblePaintOwner} from '../../../tools/creature-animation/hidden-anatomy.mjs';
 import {observedContactSupports} from './creature-rig-contact.js';
 import{createCreatureRigFrameTarget}from'./creature-rig-frame.js';
 import {compileRigidParentFrames,applyRigidParentFrames} from '../../../tools/creature-animation/rigid-parent-frame.mjs';
 import {BufferImageSource,Container, Matrix, Rectangle, Sprite, Texture, Mesh, MeshGeometry} from 'pixi.js';
-import {applyPaintPart,paintPartAreas,assertPaintPartShape,validatePaintSkin,type PaintSkin} from '../../../tools/creature-animation/paint-skin.mjs';
+import {applyPaintPart,paintPartAreas,assertPaintPartShape,validatePaintSkin} from '../../../tools/creature-animation/paint-skin.mjs';
 import {validateSeamBridges,createSeamGeometry,writeSeamPose} from '../../../tools/creature-animation/seam-bridge.mjs';
 import {createArapScratch,solveArapSkin} from '../../../tools/creature-animation/arap-skin.mjs';
 import {createCompiledSkinField,applyCompiledSkinField} from '../../../tools/creature-animation/compiled-skin-field.mjs';
 import {createOpaqueSeamSamplingGuard} from '../../../tools/creature-animation/seam-sampling-guard.mjs';
 import {hashBytes, hashJSON} from '../../../tools/creature-animation/quadruped-template.mjs';
-import {admitFamilyRecord} from '../../../tools/creature-animation/family-record.mjs';
+import {admitFamilyRecord,admitFamilyRecordContent} from '../../../tools/creature-animation/family-record.mjs';
+import {isBattle2MasterPin} from './battle2-master-pins.generated.js';
+import {preflightBattle2PinnedBytesV1,Battle2PinRefusal,type Battle2PinnedBytesV1} from './battle2-master-pin-admission.js';
 import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
 import {decodePng} from './morph/png-decode.js';
 
-export type CreaturePoseV1 = Readonly<Record<string, {rotation:number; dx?:number; dy?:number}>>;
 export interface CreatureRigV1 {
   readonly recipeHash:string;
   readonly templateId:string;
@@ -25,7 +28,6 @@ export interface CreatureRigV1 {
   readonly bounds:{width:number;height:number;groundLineY:number};
   dispose():void;
 }
-export interface CreaturePaintContact {readonly joint:string;readonly paintedTarget:{readonly x:number;readonly y:number};readonly stance:boolean;}
 const rigContactEvidence=new WeakMap<CreatureRigV1,{samples:number;maxPaintDriftPx:number}>();
 export function readCreatureRigContactEvidence(rig:CreatureRigV1){const e=rigContactEvidence.get(rig);return e?Object.freeze({...e,scope:'Actual pending Float32 rendered pad interpolation, admitted before publication; adhesive point anchors, no terrain-clearance claim'}):null;}
 interface CreatureRigRuntimeDiagnostics {readonly schema:'cf.creature-rig-runtime/v1';readonly sweepBackend:'wasm'|'js'|'none';readonly fieldVertices:number;readonly normalPasses:number;readonly robustFallbacks:number;}
@@ -37,34 +39,6 @@ const rigSupportReaders=new WeakMap<CreatureRigV1,(joint:string)=>Readonly<{x:nu
 export function readCreatureRigContactSupport(rig:CreatureRigV1,joint:string){return rigSupportReaders.get(rig)?.(joint)??null;}
 /** Read the admitted backend and live pass counters for this actual loaded rig. */
 export function readCreatureRigRuntimeDiagnostics(rig:CreatureRigV1){return rigRuntimeDiagnostics.get(rig)??null;}
-export interface CreatureRigRecordV1 {
-  readonly anatomy?:import('../../../tools/creature-animation/anatomy-inventory.mjs').AnatomyPresence;
-  readonly recipeHash:string;
-  readonly template:{id:string;version:number};
-  readonly geometry:{width:number;height:number;groundLineY:number;cutoutAssetHash:string;fixedAttachments?:Readonly<Record<string,readonly [number,number]>>;contactPads?:{readonly schema:'cf.terminal-pad-support/v1';readonly kind:'adhesive';readonly points:Readonly<Record<string,readonly [number,number]>>}};
-  readonly landmarks:Readonly<Record<string,readonly [number,number]>>;
-}
-interface Box {readonly x:number;readonly y:number;readonly width:number;readonly height:number;}
-export interface CreatureSeamGroupV1 {
- readonly id:string;readonly ancestorJoint:string;readonly layer:'far'|'near';readonly rigidUnderlap?:boolean;
- readonly junctions?:ReadonlyArray<{readonly point:readonly [number,number];readonly ancestorPart:string;readonly parts:ReadonlyArray<string>;readonly joints:ReadonlyArray<string>;readonly sourcePart:string;readonly sourcePixel:readonly [number,number]}>;
- readonly edges:ReadonlyArray<{readonly ancestorPart:string;readonly sourcePart:string;readonly descendantJoint:string;readonly ancestorOverlap?:boolean;
- readonly edge:readonly [readonly [number,number],readonly [number,number]];readonly sourcePixel:readonly [number,number];readonly interiorPixel?:readonly [number,number];readonly sourceDepthPx:number}>;
-}
-/** Produced offline from masks/joint patches and the pinned, unrotated atlas.
- * No anatomy, poses, genes or clip tuning may be supplied by this binding. */
-export interface CreaturePartsBindingV1 {
-  readonly schema:'cf.creature-parts/v1';
-  readonly bindingHash:string;
-  readonly recordRecipeHash:string;
-  readonly atlasSha256:string;
-  readonly atlasSize:{width:number;height:number};
-  readonly paintSkin?:PaintSkin;
-  /** Hash-bound source owner for root/pelvis ink on non-quadruped skins. */
-  readonly sourceJoinTopology?:{readonly remainderPartId:string};
-  readonly seamBridges?:{readonly schema:'cf.seam-bridges/v1';readonly groups:ReadonlyArray<CreatureSeamGroupV1>};
-  readonly parts:ReadonlyArray<{id:string;joint:string;layer:'far'|'near';frame:Box;cutout:Box;kind:'part'|'joint-patch'}>;
-}
 const requireValue=(ok:unknown,reason:string):void=>{if(!ok)throw Error('Creature rig: '+reason);};
 
 const validBox=(box:Box,w:number,h:number)=>box&&[box.x,box.y,box.width,box.height].every(Number.isInteger)
@@ -128,9 +102,33 @@ export async function loadCreatureRigV1(recordInput:CreatureRigRecordV1,bindingI
   cutoutBytes:Uint8Array,cutoutAlpha:Uint8Array,atlasBytes:Uint8Array,
   decodeAtlas:(bytes:Uint8Array)=>Promise<Texture>=decodeAtlasPng,
   options:CreatureRigLoadOptions={}):Promise<CreatureRigV1>{
-  const ownsAtlas=options.borrowedAtlas!==true;
   const record=structuredClone(recordInput),binding=structuredClone(bindingInput);
   const template=await admitFamilyRecord(record,cutoutBytes,cutoutAlpha);
+  return createAdmittedCreatureRig(record,binding,template,atlasBytes,decodeAtlas,options);
+}
+/** The only master-free loader: a genuine bundled pin plus its exact bytes.
+ * Snapshot caller-owned inputs before awaiting; no receipt-shaped object or
+ * caller hash can bypass the preflight, and no alpha array can replace decode. */
+export async function loadPinnedCreatureRigV1(input:Battle2PinnedBytesV1,
+  decodeAtlas:(bytes:Uint8Array)=>Promise<Texture>=decodeAtlasPng,
+  options:CreatureRigLoadOptions={}):Promise<CreatureRigV1>{
+  if(!isBattle2MasterPin(input.pin))throw new Battle2PinRefusal('untrusted-pin-authority','not a bundled build pin');
+  const snapshot={pin:input.pin,creatureId:input.creatureId,record:structuredClone(input.record),
+    alphaPath:input.alphaPath,alpha:input.alpha.slice(),bindingBytes:input.bindingBytes.slice(),
+    atlasPath:input.atlasPath,atlas:input.atlas.slice()};
+  const admitted=await preflightBattle2PinnedBytesV1(snapshot);
+  const decoded=await decodePng(snapshot.alpha);
+  const alpha=new Uint8Array(decoded.width*decoded.height);
+  for(let i=0;i<alpha.length;i++)alpha[i]=decoded.rgba[i*4+3]!;
+  const record=snapshot.record as CreatureRigRecordV1,binding=admitted.binding as CreaturePartsBindingV1;
+  const template=await admitFamilyRecordContent(record,alpha);
+  return createAdmittedCreatureRig(record,binding,template,snapshot.atlas,decodeAtlas,options);
+}
+/** One private allocation/admission tail for both byte and build-pin authority. */
+async function createAdmittedCreatureRig(record:CreatureRigRecordV1,binding:CreaturePartsBindingV1,
+  template:Awaited<ReturnType<typeof admitFamilyRecord>>,atlasBytes:Uint8Array,
+  decodeAtlas:(bytes:Uint8Array)=>Promise<Texture>,options:CreatureRigLoadOptions):Promise<CreatureRigV1>{
+  const ownsAtlas=options.borrowedAtlas!==true;
   const joints=[...template.joints];
   requireValue(binding?.schema==='cf.creature-parts/v1','unsupported parts schema');
   const {bindingHash,...body}=binding;

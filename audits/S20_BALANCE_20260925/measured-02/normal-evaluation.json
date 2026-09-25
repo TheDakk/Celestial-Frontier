@@ -1,0 +1,3074 @@
+[
+  {
+    "index": 0,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "e8c98b5cb39bf58aeb030be2e5edcedf3ff4bd71b01fec9e9b7d2feac1e51dfd"
+  },
+  {
+    "index": 1,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "5f47e37d91d49d72748233f162cf5e5b12e4f8389eb59f346a5988e6031d25a2"
+  },
+  {
+    "index": 2,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "05c6f6599e38cc17e0ab17fb92f452bdd9b23e9fd60cb32cbd69a1ec847875e7"
+  },
+  {
+    "index": 3,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "6ee114f8ea8d806374555ca767792d6b0b8c8a8abb0845f92627b7c9325a92a9"
+  },
+  {
+    "index": 4,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "9db65e16d28bed28d3d058c63e9accf478d9dd134d5bb24aa162284fbdb18aa0"
+  },
+  {
+    "index": 5,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "5c3ab1923721976000ac1882cadd541833559c492edcae2592e888ac99446b8c"
+  },
+  {
+    "index": 6,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "5254b28222e34313daf46c48ab3f0b1a64390bbcc374045ca338394ef20ac8d1"
+  },
+  {
+    "index": 7,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "f109f918a11e9b33f98a3d21aa39f70a51bc5b65178e3d25e89322d76e693e41"
+  },
+  {
+    "index": 8,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "e35d074a0de1cdb0d4796f39d9cf2c3cfd4af3733d456ac934e11626524912be"
+  },
+  {
+    "index": 9,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "8d0f5a277c5195e5d774da8eef9de0cb5423d43b5fba64969da3305c97aad11e"
+  },
+  {
+    "index": 10,
+    "baseline": "draw",
+    "planned": "party",
+    "transcriptHash": "e51b44e8d15a0b591dc68a7b4ed0f0c50e04f17791291f7426e59539311e1feb"
+  },
+  {
+    "index": 11,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "d65bc03422f93f982d3d6d7ee752f915b684b3909f73b8e17b58b3ff6384c811"
+  },
+  {
+    "index": 12,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "a9e3bd6621e6d6a1d30e642163e1a5e44c0a52638deec1b4ca917aa14dd59b8c"
+  },
+  {
+    "index": 13,
+    "baseline": "draw",
+    "planned": "defender",
+    "transcriptHash": "ca3d509a30523d3fefaaeba49549ccc970c44c224348a4deb3b4734a433559a4"
+  },
+  {
+    "index": 14,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "ba230e52f262d0b3bae077f070e1a792a37e7f56faff4c04865c4dc2a2e37edd"
+  },
+  {
+    "index": 15,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e6a320b72a5731d7c9af9b68aee61e4825bab32dca643fa82919a7ee1453fc8c"
+  },
+  {
+    "index": 16,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "d3ca9a5a95869a647ce196075c48947bf3c808348ec40415566d12b8b88bf692"
+  },
+  {
+    "index": 17,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "7e1568b3a46ab0e004ff6712cecb59fc648d3e38b3233bb1a5bb650c3b31870c"
+  },
+  {
+    "index": 18,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "4aa0b36a9c3e453c72fb82c16eeab8ef02736bfed422baeb30832b5b7fbb6234"
+  },
+  {
+    "index": 19,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c883f46146da1549225e36601057c9318f4e051015b45f3f644ae39e80dd2a55"
+  },
+  {
+    "index": 20,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "683d3cd808685aa4c73459304ef52708fdf9cef91815cf46a1ebfae053411f24"
+  },
+  {
+    "index": 21,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "b34ffb8e3c116a5c38d30ab2ef77b5dc1525b79848f975d51149df1892c3eb3f"
+  },
+  {
+    "index": 22,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "9166864b51346e80a7843bc04f9fab3a7cf5edbcbdd5c4657a05479e5166f7d7"
+  },
+  {
+    "index": 23,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1602b45e0eaa6fc328d50f28f13aada72fb65a8ed691ab47d37697f9f5421500"
+  },
+  {
+    "index": 24,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "bdf1a05635e3c719f0ff1df4f2f7a55ba2f762adf2dfaacb1c2f5269e23e7625"
+  },
+  {
+    "index": 25,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "b6d4bb1bf0ae66a2df0b9ad806a2277361c119828dcd8111d7d53d9e981d2a4f"
+  },
+  {
+    "index": 26,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "7ea831f8375f6ce193763aafc2c501cc277fee4a5260f118c79634f8a47e9e0a"
+  },
+  {
+    "index": 27,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e4777a9419a9ad9bdb006dca5e2608409dbf3f697cdd1e793219c209187a1baf"
+  },
+  {
+    "index": 28,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "30622e46e050e631eb53a786f81047a28118a34f7c8fcc94fc29cea6d8a04b8a"
+  },
+  {
+    "index": 29,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "548e638b0f667f463156a33013fc4293e0b2766cc7d2c9d53c6938c40073cebd"
+  },
+  {
+    "index": 30,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "066051ecae67d70a8f1c947d53e76e3545818c2b1295b1490685dabf86f12f78"
+  },
+  {
+    "index": 31,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "6f560b1d7e1e7942af22cc8b87cba3d0990f54e38140055ee3a10be0735a4f13"
+  },
+  {
+    "index": 32,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "2eba295fc4d1570cf7997bcbf7cabfedba59e442933d346c3b84afae55560d71"
+  },
+  {
+    "index": 33,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "e7e711eccb9c3e56b46caa211235c29715dccd9a6f9ecfb3c1ba0ff475f67b0d"
+  },
+  {
+    "index": 34,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "0443afba0fe6a536fac0e6c4b704aef7f0d729ccdd24fbe23bfd8859d3aec21c"
+  },
+  {
+    "index": 35,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "41bb78d93829f74ab98e800b4793f79a5952681781ab4d83af6ae0c48dd0b8de"
+  },
+  {
+    "index": 36,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "d49b401ed33593998ba6396182660fab3b226b775f88e19880b47f5bb259ee9d"
+  },
+  {
+    "index": 37,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "176fffc66b544dc42726a08239ee4fcd3cc4774512b48c0a051f4266b968dad4"
+  },
+  {
+    "index": 38,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "4b74a59b13f033f74a532c21414918052360ff41bec920646bd6a02ac13f6fd9"
+  },
+  {
+    "index": 39,
+    "baseline": "party",
+    "planned": "defender",
+    "transcriptHash": "46dd43e08af9843636c7acd6dd89c1c52e27d0954e5967d186f45f4d83133acd"
+  },
+  {
+    "index": 40,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "08ea1236d4aea08b1fbc7ec7ed319bd489550b90bad548b6682d992ba8c7af3c"
+  },
+  {
+    "index": 41,
+    "baseline": "draw",
+    "planned": "party",
+    "transcriptHash": "a91207fba8f3db7d0530d2c1e4d3ecccfd41ec75ebf646f21866e70095782aed"
+  },
+  {
+    "index": 42,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "2729b0ee96f970c21580317ce9265affb249188ec3050362d8643880536fb3ac"
+  },
+  {
+    "index": 43,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "ebb2fadf20d26dfa1ebce01dc81808ab595bade9cc64481b67ecfc357ff4b1d3"
+  },
+  {
+    "index": 44,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "d363d362b214b054146f3e6efcb40b5253f4c1d6c171a1375f21010c0aa32165"
+  },
+  {
+    "index": 45,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1d8f5fc992e4f80a54a06a01a6b66c8e9099abf5a6e5e3e5758cc87e8a1a8f48"
+  },
+  {
+    "index": 46,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "992244152c1979fce2aa432e6cf1508424fac3bd7f21a00e05251c027b2371f3"
+  },
+  {
+    "index": 47,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "d19de0c3b2248a1216ae66e8eb16f375baf14deacf2c081acd9524f3014fca36"
+  },
+  {
+    "index": 48,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "b5960a083b87c58a3c95a6f20828183667538ca42aaa5494e8e115ad882056a7"
+  },
+  {
+    "index": 49,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "847bfc35275f766ffed69f0dc5316e481829977f92a0652d0d47b13c0ebfc1d0"
+  },
+  {
+    "index": 50,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "a393010d097e4f09a608f9bc5d43d8b0000ef168b581a70a756911e7b7a7a729"
+  },
+  {
+    "index": 51,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "39fe1cbd16cc45557104d153034631b1f0ec15dda98d81c1eaa89719d450f454"
+  },
+  {
+    "index": 52,
+    "baseline": "party",
+    "planned": "defender",
+    "transcriptHash": "bfe9a92dd2f68bd8ec4644d449a37c16263ff108f649152e3ff2bfa12533c985"
+  },
+  {
+    "index": 53,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "f22cfe3eb49190ad86da67797a131bee5978073c4a4470c76432b5112a9ee5f3"
+  },
+  {
+    "index": 54,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "3eac70986a7d83d88b0645035a9c056292c6d8860829633a6ae13353b6bb53d4"
+  },
+  {
+    "index": 55,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c9a8489dca0a2cde895492bae4a1437ac86e626a5c0dac15471c70ce9e9721ae"
+  },
+  {
+    "index": 56,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "af4dd84152a6f4284b3ac91ee7cb060be03b735a24938ea14857a852c9691c56"
+  },
+  {
+    "index": 57,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "675a367531339c674653f9fc8ed98d2dc344bdcaae8ec2d03a085c924c33f07f"
+  },
+  {
+    "index": 58,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "94762becbd3507bbc3b29d3ba8f3b3d87266cbed8681efd799912655d8d0c148"
+  },
+  {
+    "index": 59,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1d58953fd43cb0c60301f207d216756d4ed5cd7928ecb54dc2b8c5f617612441"
+  },
+  {
+    "index": 60,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "4e8040538d5fb7fc80849eefa0d63b166ad870bbda46421ac058d13aafbe2101"
+  },
+  {
+    "index": 61,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0aa441267bc17f97fbe6091b3020a2c87ae7ec8bfc2c89a7ef9d09d5b8e47764"
+  },
+  {
+    "index": 62,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c4cc8f86334b921a12995632ee7a0745bd21e4d1629b37d4c71c7cc5c2a5694c"
+  },
+  {
+    "index": 63,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e0a3ac91b5786b7d1c4bf8a3137522de80b65eb5214ec1f9945ba580e35154aa"
+  },
+  {
+    "index": 64,
+    "baseline": "defender",
+    "planned": "draw",
+    "transcriptHash": "4ebfaf011535af66c42948c30b97fcf8341558df131a5e09d6e58533026d0b67"
+  },
+  {
+    "index": 65,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "c35043f6ff1c8a02f8b19af10a042b24c2da4acb417a40ac2eb63e5c2c139a32"
+  },
+  {
+    "index": 66,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "d2cebe9b17ab3bed47a18a8ac827946d635d58ea94c079372f993b97c5b0bf81"
+  },
+  {
+    "index": 67,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "b85d42e33dc197f61f997b8aa972ef3086fb9b88028d99044683368edf26545b"
+  },
+  {
+    "index": 68,
+    "baseline": "party",
+    "planned": "defender",
+    "transcriptHash": "0e5dc155dccf43e80bd7636064980ce8e8cd27167d4814cec18027936749b0f0"
+  },
+  {
+    "index": 69,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "11714c5f5c2fa1a2e84e06144d624871596950b002b7bd600a82cad37a3bac07"
+  },
+  {
+    "index": 70,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "7b086c13726a4ccb065415e3dbbc6ebcd088477bf8a5a07b2e198b2247778558"
+  },
+  {
+    "index": 71,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "3f97fdac58e1adc11924ab5f6ca823da0b3cfa36ecab0b4b0cf849092a3de775"
+  },
+  {
+    "index": 72,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "2750f05bddd62219581f12ab60e3dbdfa6d3b7d6ddbb4440a49d02ef768949f9"
+  },
+  {
+    "index": 73,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "678143c601338958988488c154b2812b292836b3a0315ac978464a812dc11281"
+  },
+  {
+    "index": 74,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "f5975a46c8a176e29fb25c2b61392e943e2e420999474203d9f823b019ff61c7"
+  },
+  {
+    "index": 75,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "94c2da4af06dad86cb595f03787c12540f214224dccc02153335d5419b7f6a53"
+  },
+  {
+    "index": 76,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "9db6dacc5953e78f7bea27fde928b69a806ff4d8ce8e0c9391c8ab805fa2b8be"
+  },
+  {
+    "index": 77,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "2020928f52d14970591a2bd2bcd1d09e6295550a20bc475c845b55386bb5ce74"
+  },
+  {
+    "index": 78,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "32383e7cf6e3b8af35b13f7abccf8c2999c1f2fd21ab62818b99c17e2a0f5f26"
+  },
+  {
+    "index": 79,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "c9b33bce9672389111a05809a0a76c062ca2aa827098850325ae27fedf4dbbbb"
+  },
+  {
+    "index": 80,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "23c73b6dfe9b0b5241c4103b4511d615148a86cfa84c28a9d91489ac175a13b7"
+  },
+  {
+    "index": 81,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "b504634bbe2dc9f2f6e1af94f86430e65f596acd2c4f95c527b3fccbb2a05560"
+  },
+  {
+    "index": 82,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "a7db8d7f9fd616a3bf3c9ca474898ccda25e1405a1fc9e21c614a10f31fba585"
+  },
+  {
+    "index": 83,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "68e93f9c97abe09229d582654668bbab0e06cb36f61f88c2829ce8b95ea02d36"
+  },
+  {
+    "index": 84,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "cc499ab568b68fd50eeb02decbc1baafecf0e0f108f33492e04c64348e5440d0"
+  },
+  {
+    "index": 85,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "7dec30d1f0f53a7fce2d6aacbd736ff1d3ea3e6dd708b49ec3a4d850c865d5bb"
+  },
+  {
+    "index": 86,
+    "baseline": "party",
+    "planned": "defender",
+    "transcriptHash": "2253f558eb62ae120129864a803b885e5827fb15dd78f948d623313e907a254c"
+  },
+  {
+    "index": 87,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "b5ee73987319640ee7de9f0b811376ddd8e372a0858db7085bfdeb68bd6e33b4"
+  },
+  {
+    "index": 88,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "2314fdcbe327f1c12c08fd133b008cbefd67058067c12bbbaba19c2df9b014fd"
+  },
+  {
+    "index": 89,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "d14cf8153541fd25f99aba4c63db4b3ab1d1c0c14de8a34f0967ed4c725d3769"
+  },
+  {
+    "index": 90,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "f67b35dced878f8914503a01ddabb61317820880b9099f2e8b7eb33bb2d7015d"
+  },
+  {
+    "index": 91,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "9e228af597b9fda8e7af918c7c16014b9415e5aa66be7c5c05d9b1da02ae5f76"
+  },
+  {
+    "index": 92,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "0f6cf4a9086e8c9dc6c72117c1b9b7ec32ce6699eeb0ffbffac462e334e50dbb"
+  },
+  {
+    "index": 93,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "c2cf2108cf898612e6288e2421ffc7b636bdfc9ec0b26bd1e89b745e92aa1d48"
+  },
+  {
+    "index": 94,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "a4dbf8b10f7a1188bda4ca4e32379b52cd8be0463ebbb0526b88e3944c0af526"
+  },
+  {
+    "index": 95,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "7e6000e77b3b8af9e6f9e15f31114255ec56384130c174cd9bd49100bf1e5d3b"
+  },
+  {
+    "index": 96,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e960e428207ff2a91715cbad53daa6282eda73605e8367384e012817bdb2f240"
+  },
+  {
+    "index": 97,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "cf387aad8ebd24ad6115c646c6d24b253fb803c06ecff541bb6cd45bd4d2209a"
+  },
+  {
+    "index": 98,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e5218a4eabd67061c8d22e835a4afc83b26c5e16bdba8feee6eb7a2e33cc0e74"
+  },
+  {
+    "index": 99,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "6a0b5406bfb69ff7acb33ff1769506b1601f760f05a7b22a098d7d0e52c5a5cb"
+  },
+  {
+    "index": 100,
+    "baseline": "party",
+    "planned": "defender",
+    "transcriptHash": "6c28a6df34104600520ed1d38b69fe9b0f16a9b3cfd8b0e20b7bd8020577dfca"
+  },
+  {
+    "index": 101,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "411da38600802c89e746c70c78591ce48bec26b1d0b2d02762ff03e3b14160b7"
+  },
+  {
+    "index": 102,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "8fa8961f5d55164a2ead4a9f45235ab24065521450fca4ad244515d1585df9c5"
+  },
+  {
+    "index": 103,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c53c3aa7824a746f4e6a667372a03777efe1f356fda7bc05cbd6104a03932d98"
+  },
+  {
+    "index": 104,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "665096752fb97f88e1383ebad0eac5668243a21da421f1d08351106bd0c38c90"
+  },
+  {
+    "index": 105,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1d915586a4c88f9578bda47b1b24daea2b77cce62f4c9f9b034df34de807c867"
+  },
+  {
+    "index": 106,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "3bcee45491c2c18f61afaf768631b325d37e35434f88739baca30f686090198b"
+  },
+  {
+    "index": 107,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "90a79dd18cbbe31f3fbf4f4a708d1a289a060ae24728c94912f6c98a177b1ecf"
+  },
+  {
+    "index": 108,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "e1a11402d2375be52f0a8237981ff30fd7054ae37c87e6db6b672be543059186"
+  },
+  {
+    "index": 109,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "70e28b189c7d3ff9b3c9b1cb919e61baabd08408ff2ef21155870b748297da8e"
+  },
+  {
+    "index": 110,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "4aa7f791a642193a7742fac130e0c73414772e98e0d9e5800c45e0a081f7fe16"
+  },
+  {
+    "index": 111,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "5f25c67e908cabe2f2a876301fa8790f203964284ec18c9847da0223b83556c5"
+  },
+  {
+    "index": 112,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "7f40883327de4719b2e9930f6cf79e9233234603bbc58968e03413310b55c8c1"
+  },
+  {
+    "index": 113,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "656ef58123ca4adf29dbdc82f8aad9cf6a87a8f6378ac1bd5a00e942f09a6411"
+  },
+  {
+    "index": 114,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "8460e9f44974a4c970e171fba701b73c2bb328788f7ebd8ee6b49b2b1419454b"
+  },
+  {
+    "index": 115,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "1f68fba4d501b016231245e2c7ddcdfd44da5a494486f5c7eb29a64d27c810b9"
+  },
+  {
+    "index": 116,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "bedeeed5bc0167c220c85b771a422e3d618ca5a9537cdf578bfbda31d620fec4"
+  },
+  {
+    "index": 117,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "105599e0e76db6760984379f61628f77b4d3fafa4d517f8b77eecc61f8fabb14"
+  },
+  {
+    "index": 118,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "bbdaccd7898623b4281256176f3a38dd1cb89d0c2e41f2f81e45e4778e517072"
+  },
+  {
+    "index": 119,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "42749b129ed9a508efee75f92b57376d04c5bca3da63ae108a73b4e891903642"
+  },
+  {
+    "index": 120,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "f97ba5dcb3cc3035cbfdb1efcf0ca96c8e7160c6492623fdf3ef7351d9c4b900"
+  },
+  {
+    "index": 121,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "266e12c5a4debbea2d94b36d171a507892194c990d078abf68c7c3b81681ecdd"
+  },
+  {
+    "index": 122,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "f1e9167e3cdd43a568162f553f69e58efc128fa9015d5f3c3c9e01749ec485e3"
+  },
+  {
+    "index": 123,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "c0044c2986c69c9c6d7b2956aaf89dcdd38477294b3064b9d8c3f700e24cc66f"
+  },
+  {
+    "index": 124,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "717b4441edc52898e1893cef45b8c86768b553ae267fc4d566cb4cb684683dbd"
+  },
+  {
+    "index": 125,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "5a59afd20ab4eb4b75e75f0f9e6bdf26426ef94f645ec689efdbda9d8a8c4485"
+  },
+  {
+    "index": 126,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "7e2d3db2140679aa806b1759c8c5565971f5227c90bd0036012fd20474a449f3"
+  },
+  {
+    "index": 127,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "7c18da2041a0dbb46bfe2a4cad66c3339325c70893729ba67e1d38fd59e693a1"
+  },
+  {
+    "index": 128,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "22aa0fb21c7caa17a195989dc129f662d9fddb95619fe45804ab73a04e80a2b3"
+  },
+  {
+    "index": 129,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e510a18f3ff68e48d765063ee77f203d4f9df908ce6b67b25a220e73d63591ba"
+  },
+  {
+    "index": 130,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "59c2c5d29809bdd4ae6fd78d09ab70f667a46d98d3099cc78aa3a5e18d9c064e"
+  },
+  {
+    "index": 131,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "29bf678f6983624152fc494e056c8f7c6a1165565f97c34ef2b993146026e23d"
+  },
+  {
+    "index": 132,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "e1e12b47b03fb21a63d0567ae6dce12f430ad4354a67e471f51ba0dfbdf0f3a9"
+  },
+  {
+    "index": 133,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "4ed304ca21708085920e40ab45ec71aae20318ab93f9aa8f18de5232a554ae62"
+  },
+  {
+    "index": 134,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "b6052f34a043d5ea5acc1bb8e52e5d6c518d7414d0dbccffc6d9f1f5de6f0eef"
+  },
+  {
+    "index": 135,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "6486007a1ac671d683772f82510961128c057a9df631872bfbab06a25bfdd4d0"
+  },
+  {
+    "index": 136,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "9c9cd1d1233340f8b5a80c4818cb6adcb0e936a660be9bb0a49f78af398bae96"
+  },
+  {
+    "index": 137,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "a42a1c6985fde3da69f25b803d845d3ababb5865a512a6fa45d928c8a8772968"
+  },
+  {
+    "index": 138,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "66858fcf4e1212ab4b6ae9d99c0b6a263604330da1027507ab0f900e8b363a9b"
+  },
+  {
+    "index": 139,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "b9e3f326f511d42cf460c2c173b3b9b77cb999d598eed5e413b122246dc85d3c"
+  },
+  {
+    "index": 140,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "d8d46a8d14d493a996ec06784561efcb5fc2cc8553267334b3af44cc20b57199"
+  },
+  {
+    "index": 141,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "4556ebc1bc18a1ee9b48e0fdd06192f2c471d0eebb5cf2500ab7270d843010b5"
+  },
+  {
+    "index": 142,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0c9df5a7afe6cae88a704ac79a588d5510e80dd53a761488f3878f82a9f60caa"
+  },
+  {
+    "index": 143,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "94acc6648a84734a1717a31514a5266dde17cab8e11489c0d9c937faa7dff09b"
+  },
+  {
+    "index": 144,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "c727d713c609b0719688b95a7e8c41c7fb9c73d8d14570f60b43f07afe80d670"
+  },
+  {
+    "index": 145,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "f0475837b7863468b6cd789d313cc844ffe3314b74448c231a3938cc42ddeb64"
+  },
+  {
+    "index": 146,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "22d55c821d3bc22e5f8cb3d810bdbb4899914e7c32d2d3dc2c74384947fe6c95"
+  },
+  {
+    "index": 147,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "c05f68abe32c899582fe8610f4a31d0a85d077db355bc026406a77a51518ced8"
+  },
+  {
+    "index": 148,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "5a76a288a98bf6a09f56d2297f1fe7e48c579a85a1f093a919eb5d501b9fc984"
+  },
+  {
+    "index": 149,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "96e200c35d8c78fa8937b533ae66893e4c4c3fbba8e998607d709741f883d4c0"
+  },
+  {
+    "index": 150,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "b9a2d3e9fa0a319d73190a33aaf483b20670989c2742d5cb2e73b8812f0ec78c"
+  },
+  {
+    "index": 151,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "9d48a44a799fa6b46c2fda991c12f5d991ec4e8e27377d36ed9a17a678e89adc"
+  },
+  {
+    "index": 152,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "02ffcbc1511a51a20ef726358d7cf649b1880072fd084c3a00fbc109b9a492d4"
+  },
+  {
+    "index": 153,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "bf4b920690681be0bae70455069af6c65b6ed03fa0b9fec98c66bd357a5015de"
+  },
+  {
+    "index": 154,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "79ec690b32038a96b79b353e3e217808399dfed07c94840b885bddef4afd7e46"
+  },
+  {
+    "index": 155,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0e016a8d294539eda4d5042f68e613f4d1e0515f7b6d9f4c439528cdd812a07d"
+  },
+  {
+    "index": 156,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1ba107d065284aa8319c90b3a526fb4479842c272962f834a9b5c9159c0fe42f"
+  },
+  {
+    "index": 157,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "acca309cf5d68198e178efd5811d2c5532d5d085fb3bdfb6d9058813ea1b28ff"
+  },
+  {
+    "index": 158,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "764bb906c6e6255ff0c6fc1d467f51eab30357c01fabf197a5f6358d4793ec67"
+  },
+  {
+    "index": 159,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "92788236c541dcb03c62f7afe698c267fd49ba3e2ad374b0ecba6ac225516221"
+  },
+  {
+    "index": 160,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "cd86f5c9e47aa378d706c87f3d73c5290fd88231c225c551a6fa97967066a045"
+  },
+  {
+    "index": 161,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "2e80e6a3574c6c3260fee325399cbf83c323f0080dd4e380bebfcee608f512c5"
+  },
+  {
+    "index": 162,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "a3531e57c4aac8a35509c03d2cfad27cd0eb43c5abd385eadf83f7ac443c5014"
+  },
+  {
+    "index": 163,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0541ed221b84e4a9b04f3656986302d94c1e11f2a45160fe6260648690a7ea9f"
+  },
+  {
+    "index": 164,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "4728a296d38e404e435afec4dbd9b9efde49c31d05b65d9b8fe9fe8c3088343f"
+  },
+  {
+    "index": 165,
+    "baseline": "party",
+    "planned": "defender",
+    "transcriptHash": "6155e281b8f639b33f834d904a81f3a21cd9827ea5ce6c23fad795a8de8801bc"
+  },
+  {
+    "index": 166,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0d21f0e9b3cea90c593c9f972f3fc85ddfdf1d38e17f8d7d0c02bbb9a11e0abd"
+  },
+  {
+    "index": 167,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "2ae9bde4ca7641efbcaadc0e4563c87950f71a97471400f5ee3ba12329d6391a"
+  },
+  {
+    "index": 168,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "d269b564164518bf999252c53976af6ccb2b94722c5797280905714e4665f7b1"
+  },
+  {
+    "index": 169,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "323e86ae98aaf1c86755199cc8d08e77b623c1da2695758935da1efff03725dd"
+  },
+  {
+    "index": 170,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c79e3e8d02dab55bfd02b6101c27886c7bc26b3598db130438cfe03e36768e69"
+  },
+  {
+    "index": 171,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "36de565716783f80e3587ceabc2ea21f818f3de3f092bc9e0e361914a28d42f0"
+  },
+  {
+    "index": 172,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "ee16bbe95e979d11d35e15861b36c32eb7b0fb2dc790672d9d419b2d450a4e62"
+  },
+  {
+    "index": 173,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "8cf9e4aaf7123381b08b2f4631cfaef3d9153d0a3481e9cab1e82518846d9e8e"
+  },
+  {
+    "index": 174,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "8a10ea8680f8e0843c9c89d60ea1b28347caeeb317cc7240535bb1ea006546e7"
+  },
+  {
+    "index": 175,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "f98412fa4a465be5f136ed66fe7aba1d43ec938f54e09aa2c43a3673c18150bb"
+  },
+  {
+    "index": 176,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "412366a4e914abc2fbe4545f2d69e9c46d5a100cff4dc274f3019de1b024dc90"
+  },
+  {
+    "index": 177,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "19a60645dcb0584256126a3953574b8e93236f6f08b08db0926113d8af8d3790"
+  },
+  {
+    "index": 178,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "2ed95289bc9d30e35bb8db1a31a7db3958b9737a756dbc3f341b410f25ec7c4e"
+  },
+  {
+    "index": 179,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e4a8099acf549bdbbaddf6e244e19f30846d0ff34e2f38a345cf21f73ed3d73b"
+  },
+  {
+    "index": 180,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "b681436f92d9b9403f58abf27007ccd8dce1f3c5dee9c93071ef1fd74cca0f63"
+  },
+  {
+    "index": 181,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "bfc7253509888adbd4d5520c407532a8c0d5a07ed122aada9dd4b917fdff01f4"
+  },
+  {
+    "index": 182,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "6d87e70e356e3ca63ffe2d18fe0504ab8789d85d655e0d7589f5fdbf2bb18005"
+  },
+  {
+    "index": 183,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "8d30746c5183b14e1f49b13fa25d4e9e8bdb12e61ad6274e9227022533412b74"
+  },
+  {
+    "index": 184,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "ef015cd39970eb2f34a560d22022e67474900458dd61fccaf6a9dc7b7c59c30c"
+  },
+  {
+    "index": 185,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "43f441c7e1afb352aee6e1a0ad4943ade2a4320a849089de8d23676b1fdf3b4a"
+  },
+  {
+    "index": 186,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e7b88b40c4ff5c586168999f6a7f0ff5b526ae3603b6dd314d40b35a1ef79ad6"
+  },
+  {
+    "index": 187,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e8009d39d814dc97610238390d8f2bda737b309efcd3cfc837c5dd1ff26a9389"
+  },
+  {
+    "index": 188,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "b6848cc1a106f156f51b0ad7bc358167e80221d79e50a9e92807d64bc6af6a72"
+  },
+  {
+    "index": 189,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "7b42c7b83e2e17c828e43ddd06de43043c118828607462268842729d38514d22"
+  },
+  {
+    "index": 190,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "8365d2cc354ac0e03a3fd54353f37a7d7a9083dc4df439bc5f81c76ddaef0aea"
+  },
+  {
+    "index": 191,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "205637964a143f4d657bc02c57a8ed746919792d9f1e6c8e826e9baf9e5e875b"
+  },
+  {
+    "index": 192,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e6d4934b6a88e18f062261e703b879cf3b28b265003f0cd8408b599d94205913"
+  },
+  {
+    "index": 193,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "bb860897fea058cbefef758e84f914393531a12849245882c5c756bbaa6d9558"
+  },
+  {
+    "index": 194,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "0b1b9206dad00cbf59c7fecf0e18d587f22306fbe60d11f4fdf546ae87d87d61"
+  },
+  {
+    "index": 195,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "b495e6b634965ba3a9f2c885fb83c86ea2dbe0f2706658a25f38366c1545a10c"
+  },
+  {
+    "index": 196,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "900bb578af54a0395edb6ad17008c4cfdfed446f16f933a52c80db02bdf85a1b"
+  },
+  {
+    "index": 197,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "d8b61ba60b8cd28d41b60ba9bd9b18f7126d5a6caa54dbe8409d83b003244fe2"
+  },
+  {
+    "index": 198,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "2a2f4d83ca5372495b5f402fc83f3bfe4b4eef7f8c0493d6d1aaf22a4aaeb0d1"
+  },
+  {
+    "index": 199,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "dc2916ffb22340386086876ebe133538b8e8a773d2d956f594f07003dd7cc207"
+  },
+  {
+    "index": 200,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "ed81a92a4604ef9dc2ca7762a0b49e16b415fc7700c2c52d64cbf799e184d35e"
+  },
+  {
+    "index": 201,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c28c70d5d8943e5618052a8fae4fe3e451f808956c96ea37d2d1b21132a0724c"
+  },
+  {
+    "index": 202,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c7a867db3c746f74676a76a3d9ca2f8fb666aba35d2a379923527e0a08c5eef6"
+  },
+  {
+    "index": 203,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "029d50ed6b516e46c20685e82d07b672ba9921e1f47a5077a81dc8ca2ed2a37d"
+  },
+  {
+    "index": 204,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "756f771bd6e39a837bf76c11730ee9694e929e3b8a90017e84715f659d3d56c3"
+  },
+  {
+    "index": 205,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1adc367cebe4d49edaa40bec97cf65621bb895b39b9ff741230ff574461bee70"
+  },
+  {
+    "index": 206,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "caf2b91766d40bfacd1280b3b9d8c7e698021b749df7f98358dddf61a102d50f"
+  },
+  {
+    "index": 207,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "d00002a04ad56c944181ae30d2cb85a1f9afb8acd5b3967cf8526aec1ea28147"
+  },
+  {
+    "index": 208,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "3c6e1e8f812f6353ce389e09fade12e669e29ef76eaba03a61504f8768e6289f"
+  },
+  {
+    "index": 209,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "fa422d72cb42a1243faf508b5f91f35b8365f81765a9328fa1e0a3108225f808"
+  },
+  {
+    "index": 210,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "01fa3c85749438fb8243e86a3c9b1aa19ff92cd6aa3cb1c0ce3549c047ce9fb5"
+  },
+  {
+    "index": 211,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "c52d4d23e681bbbe0d7b9be21a8c9aa9ce0a91ba7b690d0e84ebd6a12724c681"
+  },
+  {
+    "index": 212,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "863ad58cc1b2e3af9a5c162eadacca974da1e761dcef8e27303a2bfcd804de00"
+  },
+  {
+    "index": 213,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "3d0435ae6e3237ddac2a3efda6938cdb69ed5fa8d9116da234fe33f3c6ed632f"
+  },
+  {
+    "index": 214,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "88090254067bed957edffe93f776b08eb8ef7f0a6ff63acb93c5ee1e412fd8d9"
+  },
+  {
+    "index": 215,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "dcf7b14b1ea6ed2f89d604b8626dff597e170ca05e85a8a740bcbab32ebd7e58"
+  },
+  {
+    "index": 216,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "5403c7c03c1cd1ee23c256925bab081f6d992b58d14da182c42beaace0f6f8fe"
+  },
+  {
+    "index": 217,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "63588770288f908bcdb6311c7467dcd02b3f1928b9b6aab20a3542706c4e3cbf"
+  },
+  {
+    "index": 218,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "226cc42a4410a0ce5f216faf2e0289f9d36663a1aea8e64795f8a96f44a0a25a"
+  },
+  {
+    "index": 219,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "7e0097d725d1a6fba5d04d27c206592b79b4de45831ef9ffbdf8be184a5dddb1"
+  },
+  {
+    "index": 220,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "728a0efd9faaf92be8a477ff359a8cfebda4165178104af3ec8902d527022e2c"
+  },
+  {
+    "index": 221,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c96389e59aac4391a466f4f462b1ce801cabe84e29a1f221d361b87f63b9de68"
+  },
+  {
+    "index": 222,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "79b37844f737d7db1f84b7d4d2442f75071e98a0a1ae03639669b358da64ecb7"
+  },
+  {
+    "index": 223,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c98d48c96bbadd5b288f2dbf65efd6f79240caa664f750514b6845c67551e3b5"
+  },
+  {
+    "index": 224,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "d6895fb537787883edf182ed5eade800e8a4fd7e4492494f4522030d27dac519"
+  },
+  {
+    "index": 225,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1d2c15ac0ea3e3609ed94e86d80682de3234d8f29d506ed125b01f3b598eab7e"
+  },
+  {
+    "index": 226,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "dd1cf1065edb652b6271d411b3f91f4b9205441a8b776cdcfdef0ff3abf6ab72"
+  },
+  {
+    "index": 227,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0d5796a16c90a5b157ef043fa1dc6ee388819da47d15f8bf4bd6847daa3a1715"
+  },
+  {
+    "index": 228,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "ed94dbe478862b5907c726420929b1846e44f73ee96623740faf2fc6b9bbbba4"
+  },
+  {
+    "index": 229,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "decf00f382bf2d3943e438c105c7dd8af1cbbac4a24b0fd26a2b92a472cc7b2a"
+  },
+  {
+    "index": 230,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e0c89aa667ba2dee629d61976a73139015320e2364ef7060486f35015c2093a3"
+  },
+  {
+    "index": 231,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "646ac6861671163d160badec4ff76073feb6bf5c3a7c748a544fd793ae586cd1"
+  },
+  {
+    "index": 232,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "850b71e8e4133e4f27e54c53d2cd76c690f5aac792ec02c11eb6d20688c98c2e"
+  },
+  {
+    "index": 233,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "2d8345acb45a87284b4eaa65bbc0cd52567da8a7f9227b2ee420cde7452ad002"
+  },
+  {
+    "index": 234,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0ee23b4a6be43792dacb216c1826233985a3b70a13052b08840c002c5e0066e7"
+  },
+  {
+    "index": 235,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1bede65cb032db9836aee9f775154b556b47b55ac81c1a534ad1b7b5a55ed966"
+  },
+  {
+    "index": 236,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "10d994d4021558b4dbc621324c2b4d18ebf0ede82f7900bbe444ea4ee7fc8a70"
+  },
+  {
+    "index": 237,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "560ad98d856031815a0415bebac81987a264795c48aaf284851db7667d4fcddb"
+  },
+  {
+    "index": 238,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "ab5d22c564963816e0b1911cd786b220b375219bf0385e23ecf28700cbdac15f"
+  },
+  {
+    "index": 239,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "966c685e3932be3e4397b40187457730e7f07ccfcf77ba1e7ff97b2c0e22d5fc"
+  },
+  {
+    "index": 240,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "fe3860c7792d21c9e3231611ff8e45ed7f081076277931a23ffab7d83b0cfe29"
+  },
+  {
+    "index": 241,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "909b35fde7d181df52d543500e91919a4f6584d5bc0e815be53a5a9333452a04"
+  },
+  {
+    "index": 242,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "55b4673a7a1531cfcd569eaf4e212dfd7a2dd5f5c633885422e183e7e89d65e3"
+  },
+  {
+    "index": 243,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "71ca6119ceec297ff3ef41a9edea46109e62398811f3b9963315fedd1149174a"
+  },
+  {
+    "index": 244,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "0731d3a5f11717817b7720cc24044ac3594d9e3144e71796bf374a1b7acc172a"
+  },
+  {
+    "index": 245,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "95b9373d1f4c933461c4e6a865d2c3884e9509dc4648f0614a17a0b26bf42314"
+  },
+  {
+    "index": 246,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "4562840423f0c15cc332b5029691a324547cb1e0a87b1847b1b78142625a99bc"
+  },
+  {
+    "index": 247,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "abbaca5d8c6af93d4bbf3d10a8f9552bc3e681e8a1df9beab1ae66463b61a96b"
+  },
+  {
+    "index": 248,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "9e6c5bd649910b093d883d97bb03801b448631a32dbc67bd4f236e90bc5ffdaf"
+  },
+  {
+    "index": 249,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "0f1a55825ed0e5c187c1d9aca98bdcc84a3cbded835685cb6603f70c7668a22c"
+  },
+  {
+    "index": 250,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "b4a45bf6ddfcd21a85f695891bbab39ac5ee1fbd10b5a244d5f65a3fd316d975"
+  },
+  {
+    "index": 251,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "23039eba89adf052782ccc0da55a42a2d3ee5a6cc024593ba0a68bccff35ea2f"
+  },
+  {
+    "index": 252,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1d757994c0f8a296c6c63bb2cfb7285f0bd3b60af1efbb40c710428188e27db5"
+  },
+  {
+    "index": 253,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "54eb618026f93dafc753f67bb6ec07d73c6360fc42a6c1cec18df3017596c0ab"
+  },
+  {
+    "index": 254,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "8d25e40d6f14c5061f520b6fed6fef43d8062b9d410e160636caa88b273116fe"
+  },
+  {
+    "index": 255,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "35eb10c0207bac34c19925ee078b969694b7eb02f36a7850d14b0d6ea8291c49"
+  },
+  {
+    "index": 256,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "60b6795449a2abc77fda44dfb26a235e71ff0312533c0935951e747252e1cc6f"
+  },
+  {
+    "index": 257,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "ce6db8a677ddd831b68c410d1a744134c4a25652dbf0678610d0a4a0a85bf848"
+  },
+  {
+    "index": 258,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "a3b357d3c4ac34beb25e78a687f6599474e3f9481556e8325e6491351611ea3b"
+  },
+  {
+    "index": 259,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "fde7bb41973693cc255e397fc99eaac8ccfcfef5e9eecd8d03b41992b0991bfc"
+  },
+  {
+    "index": 260,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "fba4b7b0c01411d6bb365145fd92d8eccd26a813a4ea01ddeb3abf17c28532c5"
+  },
+  {
+    "index": 261,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "03d5c9ae1fc8f40ef0b73cc72ded361835420c24dbd51f38d66959805f6b3941"
+  },
+  {
+    "index": 262,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "da67f8b76e58b83056a45d1a7381974378f9802d436c1452f1862f467ad6a472"
+  },
+  {
+    "index": 263,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "30518ccca78b288475c4c9acffe715d449f5dba4dd1ee400831ed6f31598a47f"
+  },
+  {
+    "index": 264,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "642faa98c7ef20576e805e71bbe2ba89bab74a373050fdbe3719a03f72c56ca1"
+  },
+  {
+    "index": 265,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "a07e1526f823eec0ae35e37b0ef9bef56b4a4dc617e54c790caed09d655aa55c"
+  },
+  {
+    "index": 266,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "0b784e8c18301cc867fb68e37e16f0cfcbf0dff1d112a2321be77572483a4474"
+  },
+  {
+    "index": 267,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "61d62d05942c7510ee9f4fd4f7ae845e5bdfc78743679e508b3f35ee43f0214b"
+  },
+  {
+    "index": 268,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "fee67dadbb7ab1b7961d80643dfaaf2e57a14e3b89f7112d030e8d6d5a521bef"
+  },
+  {
+    "index": 269,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "203b6265b8bb109e05c5cd7a24632e69b77104c2ebf25f3b0cb3840175057e57"
+  },
+  {
+    "index": 270,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "8964e072bd3d1a106655e8502c0dc6e84bb789c3dcc067e2d0e56ce20fabd14a"
+  },
+  {
+    "index": 271,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "30b18583bf831196fb3a881eaeee9fcbfab125fd48e8c176f86a01cc04f353de"
+  },
+  {
+    "index": 272,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "920793861569e612bfef23266547dbb075174dea28e8ceb8691b32befacdaa62"
+  },
+  {
+    "index": 273,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "b40872f7bba916e7f41d7ceb457c9b4495879d60add0ed90c1820efabd9f7bc5"
+  },
+  {
+    "index": 274,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1568b75121dab3266cb28c227ca3555256b710c41db1e10d1db8653b978417b8"
+  },
+  {
+    "index": 275,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "54021abf72ef9fdcb4406c2f62fc26e5e081092b536482653e4ac52798041668"
+  },
+  {
+    "index": 276,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0f6f35615a7c337443ca1d7e4e820773963ef9ab468f1fb4c1c71247b3fbf318"
+  },
+  {
+    "index": 277,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "ab0f477c4559c3e359722b350ef17f8e59a1c43db6d8a6b9e529cf5654bc2bfd"
+  },
+  {
+    "index": 278,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "7b0223c293c4af96bb6bf68787d0ee103c6ffae936b74528c31bc8d3f42995ac"
+  },
+  {
+    "index": 279,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "f19eb8a4b986ae241bd377e0d26b56298fbcd3964129a30ce77d448b40ae033d"
+  },
+  {
+    "index": 280,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "40d756f78b6b843f88eaf1b56457738be0251df578efb5128ffe6509867dd4e0"
+  },
+  {
+    "index": 281,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e6b0fb0407435f7007973121a9c846a33dc68518f0a14a3cb7858e451d274a9b"
+  },
+  {
+    "index": 282,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "f1720801bbc1c03c65f9c158918f8cd79a1ea6617e9cac16b9f86b3f6e36df1a"
+  },
+  {
+    "index": 283,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "f5f5d8d5f56f7acf801fd640244225b80dd9cce80748f34fd955634b56b2f4df"
+  },
+  {
+    "index": 284,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "ab9e1db07f127740770e54797390749dc5356c70b6061bef8e9b73f0c65e500e"
+  },
+  {
+    "index": 285,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "66543ad83c988589a23185018bdbe2d1d6c0ca001b354e23381ea5739b2554c1"
+  },
+  {
+    "index": 286,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "4c4bdbd6406675dac4e6e2fc9ee1edc632d7592bf9bafccd9571d1ada2e2465a"
+  },
+  {
+    "index": 287,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c19bee55519978a01420b165e4ad0c2c59fa41b6c2049101f1af6697261c9fc4"
+  },
+  {
+    "index": 288,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "81953c4232a7589480768d6c22eed5d036f6d6a218ae5ebb7e30b0354b3de408"
+  },
+  {
+    "index": 289,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "ec70d2ae0e75c9f802e83263e2c42f08b5957409a4953b090d5159bdd4d56812"
+  },
+  {
+    "index": 290,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "0d4eaf2b828650d0466750385f570dd7723d22211c98b47d04e1681555244a32"
+  },
+  {
+    "index": 291,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1aad2a9a2ffc9ade21051a3bf49481513b418ec55d9193c454791fc7b69a2907"
+  },
+  {
+    "index": 292,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "7eaca3d1d55d720c8531356b85b8242fd9da475a1c404cb09bb7985ca6507a1b"
+  },
+  {
+    "index": 293,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "02c369cc1b64363cd2244fbd30148e6fca2d949cd3f984a16526126a5e6b46b0"
+  },
+  {
+    "index": 294,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "7de773b3d01c533ee48a0ac76300e04afc9af4e5a8d681d0a8c09bddb57462a4"
+  },
+  {
+    "index": 295,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "caf4783d659771c92d7c0ee03d4da71d4f048168d71334892ab5dadca98d4fc1"
+  },
+  {
+    "index": 296,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "b0ddb1e75835f757bab38521971fcdee2d38d7dbb9f07229c54d4c97fe11f215"
+  },
+  {
+    "index": 297,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "8402f25e4988d531966dd00db543a0e97c155d4e5426e99a132a7dc0e4ffcf3a"
+  },
+  {
+    "index": 298,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "e26fb5f6ca316e1184b66d4b570081d6d6853eda0178f0be1e323788e3858ee3"
+  },
+  {
+    "index": 299,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "cd047afed35ac2618aa4cd2dfb085193feca4b2b6822515dd3379a34899fbd33"
+  },
+  {
+    "index": 300,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "a22cc653a5cf58d536523deb67523cfb7bd54fcba0b1096c7244e9863117f7fe"
+  },
+  {
+    "index": 301,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "ef3273db94e3bdd68214b8a05aedabe3a15239d05742efd7a77d0317956168ff"
+  },
+  {
+    "index": 302,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "6504136ebf854e621264d46e811bb7e656786a7e34616be230bc14c8ae6b844b"
+  },
+  {
+    "index": 303,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "66297e93ee88c889fa905ef5d6699aeb00ca3740d86f8b3a0848d9bf919d23db"
+  },
+  {
+    "index": 304,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "a0cae6d0ae201f753f5f231110d7ee06d7f3ee43cc3d30a3d6db95caf64dd8dd"
+  },
+  {
+    "index": 305,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "632effe3eaae27aaefbee7865845d600d8c129999d18fbba39007158afe5d188"
+  },
+  {
+    "index": 306,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "f67902ce0c4cecfaedbebaac56398fb3c7572edafddc68cc552028f1b6e13947"
+  },
+  {
+    "index": 307,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "8ad7dc817f901d8b6ec3ae2a4f8e1e8decd5442a8469d94be7ca3fe8fe0c65b6"
+  },
+  {
+    "index": 308,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "cf78d247c47d77377b202258c13fcd03387abb01dc3ff7bb78f89cca73a93cb9"
+  },
+  {
+    "index": 309,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0501176cbf5f2cf8d3f28b61a2aee9372f9a2b1361841b54d89e1474567c1025"
+  },
+  {
+    "index": 310,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "ab5317b7f825c431eb20b6298b5400d81e456d0ebb533ad6248cf9ea0e6d185f"
+  },
+  {
+    "index": 311,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "25c490b5ca371ec4222277babac9c26abbb6d346d69f4d6ea4d51a2d540ffaec"
+  },
+  {
+    "index": 312,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "5e8c46c338851091a370d7905752745b8fd942d5d259a97554c9e605227f8aa6"
+  },
+  {
+    "index": 313,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "056eae51a69866b8f453812e184279ee1aff77c7d6a13f1bfa21e220495c9233"
+  },
+  {
+    "index": 314,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "847d553f0519dd42c402cd752828884816d7e8ec5f20e4ccd2520b8b8d0d1e46"
+  },
+  {
+    "index": 315,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e68dbea049c5f595845e2512e880f021514e9ef77b95eaa83f47475b7cdaf865"
+  },
+  {
+    "index": 316,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "8d0a1b3cc980972b74204217b27af7f4e6509f9a5d1888a3160b79488a604f84"
+  },
+  {
+    "index": 317,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "41f67c69acc7f38ad89071d991ed19bbc24f2a80cbe81bf504cc727c2bced73c"
+  },
+  {
+    "index": 318,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "4eeeb4283165eb2552d7297d7cdfa9912ac8007cbd3b01c908fed3c1bf3e18ea"
+  },
+  {
+    "index": 319,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "2f8eed534ab35b95b5229239aa710cc355ccb7fae48faffb86607bab9c5e1f57"
+  },
+  {
+    "index": 320,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "47355ea051e419044f7317e75176c48039e7eb58b361e3d251d9185fd71349cb"
+  },
+  {
+    "index": 321,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e6a57459e21f43eedd23c655339d918479f9318d5da6c4aeb26d508bb1356b5f"
+  },
+  {
+    "index": 322,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "287ac2d3eacf19a32aa222bcbed268853120d485fa1d2fbbd4332284ff774e4a"
+  },
+  {
+    "index": 323,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "6846e3600cfdfbb7046ab1f83c664fbec5ffc2f321e6873cf68e1a5aa1cf09bd"
+  },
+  {
+    "index": 324,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "af646a03b6df091c9fcd27b8511f293b8676847df8cccde478f1c24f6f75d8a9"
+  },
+  {
+    "index": 325,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "4bba51730ab7582886a9eaad7ffe34ee35d20eeb13727b93247bc282a7660a63"
+  },
+  {
+    "index": 326,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "57e6b4da05464dd1fb6f2182a05f91b270a7da6ee9996982775cf3ea06fbbd11"
+  },
+  {
+    "index": 327,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "45779672245217a90b02d6f02f8e5656fa98c315d38b728ef868acb0b6967bbf"
+  },
+  {
+    "index": 328,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c252649b594dbeb2e1e4457d7f9fd794a4a8f5e91b1393fc70b49629bdbc118e"
+  },
+  {
+    "index": 329,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "d762c96bb245163c3b8354ae0fed6f9a111aa817a179706418f1a359bfd0e1da"
+  },
+  {
+    "index": 330,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "94cabe5aa8444d88224badc4817cbee4825fca5d55cbaff470df6ab3ecf40887"
+  },
+  {
+    "index": 331,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "800c58d9a5973e6eace504bdf9cc7d32b030040327c801d61ee13f3e8b2ae076"
+  },
+  {
+    "index": 332,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "3226075ac5f2c04138baa761d8c9a79549c36ce2690121899dadb7975714b989"
+  },
+  {
+    "index": 333,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "ca933494b84d3b8a716179a724b59c29cffc304736f3358bfa75f9462af92bac"
+  },
+  {
+    "index": 334,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c922c9cbb9d65bb0e0ce204a2630457201d217a27e7681fc5cbe91350e6583e1"
+  },
+  {
+    "index": 335,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "23f8354513642be85d2c0c094049f24cfd41ca676ac93c822ac90946bee2d5ef"
+  },
+  {
+    "index": 336,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "ba62d81c9b190ccbb1ecac4c196ba4ac3b87c5f72c6b9ba98ed78c7aed419594"
+  },
+  {
+    "index": 337,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "b5a871680590b90cc8d1431c0fc5ac22f7da835bfd888860b7732827b0b7c689"
+  },
+  {
+    "index": 338,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "fabf6fbb1afb49136b7832e6ed0de9f2cc172ca3afd44125029869070d703016"
+  },
+  {
+    "index": 339,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "9025140759054f5afea0be37f516c8f23bfb75f558a5ae81170189e8365cdeb0"
+  },
+  {
+    "index": 340,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "02647efc5a1429efde9d8ed7e1f576920813e14d169af3868f20095b51d0f74c"
+  },
+  {
+    "index": 341,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "7f84df0ef6fdc273bd684868c106d101e600b1a95dd4083ab15583b143787c1b"
+  },
+  {
+    "index": 342,
+    "baseline": "party",
+    "planned": "defender",
+    "transcriptHash": "a6b115db8c66492ba1e7235f5438e012d10b8e6a9c04233f8939477ba31d0619"
+  },
+  {
+    "index": 343,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "5b371550739f87697978dfb620e0b38951f9efce38c834facbdada1051352c94"
+  },
+  {
+    "index": 344,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "8e6913cbf7b5e05e1d8bf146ca643caaef35d5499747a0fd9e7fac7314428f97"
+  },
+  {
+    "index": 345,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0bd89775de30e37d8865efa1abe263a3532da0b9eced471b1bd7e98eed553ebd"
+  },
+  {
+    "index": 346,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "59236dfb3e5c9f0e1f681346ea49b43cd3552d3a84be8129c4640f4f932fee3e"
+  },
+  {
+    "index": 347,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "d799d2b25b2ac35fa619e44937fc8c6bda894242e822acb4cd63fedf816a644f"
+  },
+  {
+    "index": 348,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "a14848f7555445a5d36b15f0d8c91f108c3150f810c44631a6d170dd9c40cae5"
+  },
+  {
+    "index": 349,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "84ad5e26a7c2dbbdc30cdd1c11eb1e4779fae7b850782128e17c3b26f187e167"
+  },
+  {
+    "index": 350,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "ecb329efc80d49cd6c351176f44077ef1970e84e06ffc6a6872ff0e188c1f4c6"
+  },
+  {
+    "index": 351,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "c362fed22889198f827f27d3f21685b98e1a91d3fca01ac5b4a2ef8897c90b08"
+  },
+  {
+    "index": 352,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "cbaf746cbcce1898a0613b636986ed8af24fe95bb15bada23f541aebf27d912c"
+  },
+  {
+    "index": 353,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "e169467d6e2cba5a5e707fc0379db52af3ce97716683820a8de61857f77d6166"
+  },
+  {
+    "index": 354,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "8b462deacf7005d72df22c4ad50a84359ecd2cb04bd8143490556d728fa71fa2"
+  },
+  {
+    "index": 355,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "de6a09634493235a04848c6a11a39179d3d1785c971e7fc0fb88e45c780eae01"
+  },
+  {
+    "index": 356,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e65d2432da21337536ce6246aa82d28a9423a8f281532175265e7c3388bc6a19"
+  },
+  {
+    "index": 357,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "63471117c5d872cf5503937f42ea29ff59798e8bcba9d1bf984ecd7579fb69ea"
+  },
+  {
+    "index": 358,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "eaf5d1dd076595756284ae968d54a81c2e5c85b64105bba21aa237d8f567067e"
+  },
+  {
+    "index": 359,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "868d213ef0e24d4ccee2025da8439f43e3573c2195eac31501978e45727b265f"
+  },
+  {
+    "index": 360,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "f6cdf6fc007e6051c9c02eb614e8c298e34ec4debaf4d5f99b8d920ba8a01aa0"
+  },
+  {
+    "index": 361,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "992000a67cc5f82edc16ee0e2ef54e447d48d27a6b2ab4a7218aec27cb9c09a2"
+  },
+  {
+    "index": 362,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "8f09b589344fc4f1c3c3d06e73a8230f393cca7889aa3ed905f8b8ccf52bc373"
+  },
+  {
+    "index": 363,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "b683f8b9ebf3a62e891eccbe78310ca3e4e01f8cb3a6e347afcae34fe38588a1"
+  },
+  {
+    "index": 364,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "44767eb6ea21274f9f844d9b2921773ad041c3ef1244496001b3b14e84a7eedb"
+  },
+  {
+    "index": 365,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "0076b1da06a3297f71f659841df06c34adc7ef6f84cea2e7955526bd4fd11b19"
+  },
+  {
+    "index": 366,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "cbc7bc9778cf82f4ce9b4829a721484b14db4c3d66bbe26f6f5b1d948f4f8713"
+  },
+  {
+    "index": 367,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "4a463ffca098abdcda52cfd8469cde2cce0a8b33898b738dff83645f43f9a88c"
+  },
+  {
+    "index": 368,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "90293e1bde4680a04e70254545305a04c1d958822c2f4de1bb6575f88382b828"
+  },
+  {
+    "index": 369,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "b52c3cdd9a948c6ad59ccaf78c0a44d053351182abc88d3f6329ac23c633f512"
+  },
+  {
+    "index": 370,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1588883223a78f96d55e0ebde61564c63884a09795c02b3ccdc3b7aca0a0508a"
+  },
+  {
+    "index": 371,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "e0098b4afa791212e6355d73c9c979f3334c1fe0edb58d60b96c131382547960"
+  },
+  {
+    "index": 372,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "2674e60e4534ea0724372a59fee69e966dfe2da4a733e4b81177b0582e4ff1bc"
+  },
+  {
+    "index": 373,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "d277e96f2c668963cdc83b33a8b5f0369ea3bc3ab80067a3d98cf72ad1289d8b"
+  },
+  {
+    "index": 374,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "33f2c5e24694e33c4b766463f3f6e8327cd011166bf6f16f85750143340cbec1"
+  },
+  {
+    "index": 375,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "92ed7abec4dba4c1c3457791c0c6aba58b9a109a61aa0c81c454f50b46e6aa87"
+  },
+  {
+    "index": 376,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "efa94128db9128fe2be0a337578172d845df6d7a18e5fc9d1cb60c1a676ef1ab"
+  },
+  {
+    "index": 377,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "31a0c7a34a1b331f3a79653e51499f2a2967283da302cc612cdaa70c23da3fda"
+  },
+  {
+    "index": 378,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0609a91465449249ff6419ab04a6d84f5ec3267ab11e58b7123841547ca6a12e"
+  },
+  {
+    "index": 379,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "d9021acede482c847883e419f1407317d0742194d6071f8c7c352435eaca5423"
+  },
+  {
+    "index": 380,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "b9b0672661a3232f64b3629b72c69c219ded4f7f31001553cef1785cb70746d5"
+  },
+  {
+    "index": 381,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "34e6f25dc18e1b3a1376cb023c37de89fcc87a021143007fd123aea06315d081"
+  },
+  {
+    "index": 382,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "4e28ed04dd8095fea792698a4769e070b9419ea12216bad39e03d56862167862"
+  },
+  {
+    "index": 383,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "cec649effcdbb8ea5a249aa381abb8800252e67307fbf6e6926c071a4aedfe87"
+  },
+  {
+    "index": 384,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "9568bf6e0681ba380107d7a37a2122fd460d2a1a367ca71916859754b1887e2e"
+  },
+  {
+    "index": 385,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "2baad77043c00368b0b079073f70ebfec6b3e7e0688e4b90df8b955f3aa365ed"
+  },
+  {
+    "index": 386,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "5cf922791cec5689953e9d88e90f34465956a4880f2090b10508fb771dfb7da6"
+  },
+  {
+    "index": 387,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "6ecfd648bdd766515e8ac26f7d64ac20d166fd3c85f1781216111aa64dbcb209"
+  },
+  {
+    "index": 388,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "3828c03c159008c370a9be090215e0ee86a9ef837f4cdc33f6ca75dfe7542728"
+  },
+  {
+    "index": 389,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e399a8ad52070aa3c58c140caca1c6ecffb957d7b57de980a2e3c2eca65aff82"
+  },
+  {
+    "index": 390,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "49f2c2ccbae5be375a1e5e4f1354a2ad4c0a82510e5e84d1e5d63de8d0344733"
+  },
+  {
+    "index": 391,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "22b0af0b26882cdf81fe9cd7d3e81741fbd4812004d71575efaf0fb5b4d81e78"
+  },
+  {
+    "index": 392,
+    "baseline": "party",
+    "planned": "defender",
+    "transcriptHash": "6517da1273de439d39747b7faabf41daf83291ee30c6ae19503b932f6a7c4655"
+  },
+  {
+    "index": 393,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "d3f1ac6cf03d78967dbef209e6ffeed2c49cf50640339671ed3f3ef05ab9c014"
+  },
+  {
+    "index": 394,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "0aeab0484abe7554078efd4dd8f28be67e4617765ac9c9b13e217e2759f3697a"
+  },
+  {
+    "index": 395,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "4c087a28bbd877e9675db351b8e983dc27972e66e416e555055da783319d1aeb"
+  },
+  {
+    "index": 396,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "1086e9de6fc824eb2c756e3335896161683207ba18279f30ad0ef3d1cc60d994"
+  },
+  {
+    "index": 397,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "3066a57b6f1b6123feda684b0358238b080afadb4336097f9a1f77132b7c35cd"
+  },
+  {
+    "index": 398,
+    "baseline": "party",
+    "planned": "defender",
+    "transcriptHash": "f7f33c4e148b6e0ed6e77909314e4a6f0f96372e967ed10d5ac98d7b4f6af702"
+  },
+  {
+    "index": 399,
+    "baseline": "party",
+    "planned": "defender",
+    "transcriptHash": "7863532f2f54a24e8376178fd7997b5da0eafd15a754833044576e68acc94760"
+  },
+  {
+    "index": 400,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c0e2fee7100e0d7a606e48b360474bc81df1fe922374494470ec33476ebb0b3b"
+  },
+  {
+    "index": 401,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "d5733f6f854ac1ebd5614563a24252fc0ddd1efde244b426bdee6b249fb9d671"
+  },
+  {
+    "index": 402,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "8afaf9ddb91c77bb69d4a2d921e28a6e6af8f2d09b61f018de09eed1cb97df66"
+  },
+  {
+    "index": 403,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "7c09d84d1fa7e7f18a218838ced671d5abbacacda32189211784fa8ec60b9f13"
+  },
+  {
+    "index": 404,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0eeb0c6be06e3c80f835868aa1ac4a611af4e3ba677b03c961c13d0decc4a866"
+  },
+  {
+    "index": 405,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "6396753e0f5aab297a42e677c67f175743015a2f9cd01fcfeb451d20d0a9c649"
+  },
+  {
+    "index": 406,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "8d8de6c0d18e7de8b697ca09495ab594d06ce4eb785b7d8c520e30aca86a7dd9"
+  },
+  {
+    "index": 407,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "66f8cc92d317054c50a90d828671dbd3426442afd51995a40b7af57915b89023"
+  },
+  {
+    "index": 408,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "0b97ef4c57b97c74b73a17f852acb70c4fb8469c4d5df367ba72e09da213f6d5"
+  },
+  {
+    "index": 409,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "e2f6bb53ac909a4a69736c6c928e349c9d922308c0bb70d27c25cc5802cdfa1b"
+  },
+  {
+    "index": 410,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "8aa9d309821e5e3a222305dd96d12b4bbab99e2ca167611b44adee79aa0870c0"
+  },
+  {
+    "index": 411,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "a0df3c9f020f4f078130df0d7fca76bc29a03c1cf947f07a34dc9cd9ecea20d0"
+  },
+  {
+    "index": 412,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "025b9e33e9a289b9b7eb09d9b0c3edea402fd317a4789505657b7ff66245d672"
+  },
+  {
+    "index": 413,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "b9e86875a8d335bb4c3b147bc3ec51e97af9c6af38645cbf7e7d173cf9fedbd2"
+  },
+  {
+    "index": 414,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "9781a671bd2bf711fb421af0e48abc14f3f161968311ccfb153f4ff05f352638"
+  },
+  {
+    "index": 415,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "06dbe9621a13c29a33dcdc08e6030ba6cc80d87c53d5e9bc7c130f6c5fde2541"
+  },
+  {
+    "index": 416,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "9987fa751340d32606a45163818b0bbb2dd79550bc0f1790e81648c9eff08414"
+  },
+  {
+    "index": 417,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "bd5dcb363f6756387efe53ae97d455478bcd3aa85e2162ba0b110b8dff41710e"
+  },
+  {
+    "index": 418,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "28bfaa0e6b686057ad1bd1448df9a40dab8bcc4724a088e4752bd238454585e6"
+  },
+  {
+    "index": 419,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1d373c3aa266030500dc2da506d4a0bf3b3e62380933eeac94e711167e640677"
+  },
+  {
+    "index": 420,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "039268f7881c45161fda11c23cfde6a696f19fcd8d3d763360e685714f694a1b"
+  },
+  {
+    "index": 421,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "6b31bc2c52d9a3876a4dd0fc90b7802785439036513462c5b4cd2e8e8137603a"
+  },
+  {
+    "index": 422,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "9757a6e408aba85ac8fb77b36c45a885576c2292914fcd643020cb43ffcda82a"
+  },
+  {
+    "index": 423,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "383048c2a896a3e27eacb501595fc14ebf7b257ee9ebe8676fe19f2358a1dd05"
+  },
+  {
+    "index": 424,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "2a40d85bb0e2d4b79f1c75404093eed4da13fbe3a5f9b5d51089d958e131125f"
+  },
+  {
+    "index": 425,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "34646a90ece6c72fdd1c63070fb75a50fd8c2d171bd2834b85afb68b21fa0801"
+  },
+  {
+    "index": 426,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0f041bf376eaf3ae4aedf73a7194a3f59f5a94ca780942f26e5264f51a34b9d2"
+  },
+  {
+    "index": 427,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "df23117edf35546b271c31dd11aa089fff9bbb71d5e3ae5dd5bfc12c5f766d9b"
+  },
+  {
+    "index": 428,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "4782dd2417a8e4b09cfcc891bca7208ac03b0adb1c02aea984ad0e702cd23893"
+  },
+  {
+    "index": 429,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "db0b824ac9f7a465d990b85ea15ac9d476b041e517c7b9436cc6b33e7853c90b"
+  },
+  {
+    "index": 430,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "afff08e728075f984afba8432ae2af886d7f228a0627454b8a028b7f8c4e3727"
+  },
+  {
+    "index": 431,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "6cb298ae7335a658c7543b1cff0b5e912391db759238354033f2fdb01f915f13"
+  },
+  {
+    "index": 432,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0c370fb24c7826fc9518c7b25eaa873d61dcd9536f249ed722ca5b3c1e5ed7c2"
+  },
+  {
+    "index": 433,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e789412642b3ed695af48ec9d3527b40303a12a64d47c3fd1467b3931f6e772a"
+  },
+  {
+    "index": 434,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "356c92c7c370f1b43ecbb315443ecb0d3b8273cb7181dd6a2a1864e5befd5c97"
+  },
+  {
+    "index": 435,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "dba65b354f77b4bf2445a7d7a9f7fa7f046c0767596ec065c17c8bf04da5b98c"
+  },
+  {
+    "index": 436,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "62861f3ad43d766b4b8ce3cb210fb004667e4608599d506861006dcb288bbc67"
+  },
+  {
+    "index": 437,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "ab1de3510197952474ee7beda2b7bde9e3f487123de894164a81f87472723ed1"
+  },
+  {
+    "index": 438,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "3158f71ce453be99b41b37ba9c5cbf16696a2cb421e32bffc8a5da5ab04ed3a4"
+  },
+  {
+    "index": 439,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "8c5f3fdcde923111cb5880899b208cebd4159e328eb06e11f2f391df59e35966"
+  },
+  {
+    "index": 440,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "502023e0a97e79e3a988ddb9b83eeef2f10dd224bf4c55da227b858df0d90498"
+  },
+  {
+    "index": 441,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "6a385980c6b29ad923bec9388188eb16d446c47d91f2bf37c463da0d937cd917"
+  },
+  {
+    "index": 442,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "a802d46166e6f919a5535435b3a02887522ea216d7bb85c498f491e8106ff91d"
+  },
+  {
+    "index": 443,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "0249fd48e7b930bc63f28fe95e002d27fe034d270e419377ca505d4bc9ff5897"
+  },
+  {
+    "index": 444,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "a4dd54116a887c18c1943e509768e42792c1cbc9b52cdc19ad026c1dc602bd2b"
+  },
+  {
+    "index": 445,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "ccbee5bbaba08513a5b7edb38d9d003f0850988e5bd6b5caacc2570ce02f9167"
+  },
+  {
+    "index": 446,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "67151d3d40e555a0d70261729d85345f1c898b12c0cb41e81c1b296920c3c5aa"
+  },
+  {
+    "index": 447,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "058b1c9b00bad38a6b3a0eecb123f551406a16f465e658dfa21e947189dea826"
+  },
+  {
+    "index": 448,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "8a8ca63aaae4510219ab8db08e48a20f4397b8de4290541267bd3cfae1f684a6"
+  },
+  {
+    "index": 449,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "dcec8853bee21260f58df53ffaaf966809b623b3f6e512e8fc11670e6e544b32"
+  },
+  {
+    "index": 450,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "7b6d87d15a87e9d0b0205bbc819103cbf550b9080f7376c86c71963dce691474"
+  },
+  {
+    "index": 451,
+    "baseline": "party",
+    "planned": "defender",
+    "transcriptHash": "6c33f6e59b3a19332983e5137316d2a91f58e1d30777bd7597c720b8ce388b0e"
+  },
+  {
+    "index": 452,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "75ed079ed35f9b81a5af51d2bc273bf398f0f1008e6cce3e11df9249dd588f0f"
+  },
+  {
+    "index": 453,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "3f182239286ee48884cd7a185568b2cf430eb7e01e990055ea0732a86d5a6d30"
+  },
+  {
+    "index": 454,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "f81fb6e4ce65582e333d2f70960d35029937c8e8bd5185b62804b653d9f757ff"
+  },
+  {
+    "index": 455,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "e43de164a36041813c5a9c6ad65932e214c175349a484584f30007bbe5b6eb5d"
+  },
+  {
+    "index": 456,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "8180a3995292a9ccea6d3cee1fb6759fcff7c11ee3184bda6a54ad81b6973f57"
+  },
+  {
+    "index": 457,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "0427e4fb0daa4cb87affa4dc534ba1baf63e21743e50bdb1f798b875263411dd"
+  },
+  {
+    "index": 458,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "19c871d44e9644c0e779645c6e88c91fb18df4e0ea33e786b6302adff2f54b77"
+  },
+  {
+    "index": 459,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "fc018ce05d0cb8ed6f653a08886c5e8c1983e9c3a4f341c8b1670fe995d3090a"
+  },
+  {
+    "index": 460,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "dad033b952b32d895a28b067d4e21234bdbe68946f036ab625800a4ce249e078"
+  },
+  {
+    "index": 461,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "bb7d4cca51b087aac5eb9d4da74cda178c4ca037ffac8e9aef182058f463a7ce"
+  },
+  {
+    "index": 462,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "5ad0c1659877e006355b8711bd9d67959411b943a2441772e6cf5e3e8677040e"
+  },
+  {
+    "index": 463,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "550c2f05dbffdb276a72988b503e07d1936ba6ea27cd47e37ff8709fafd19128"
+  },
+  {
+    "index": 464,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "1d0e36cff3ec81a563ce8b64a4624fec5240cecada60713ead7d7ba99cc237ad"
+  },
+  {
+    "index": 465,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "3783d5a2530aaa70d208f9074ecd6afc78d7220bf0c776794e0f9d7d933e77dd"
+  },
+  {
+    "index": 466,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1055d63ce6e08c52c37ed211c34b5afb681b1e833753ec4b9e4b51c78e5f8f9c"
+  },
+  {
+    "index": 467,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "db5e3e3dc115b48584be0bebac70ba40db2787dbd92fbdd95fe7bc53ccb7897c"
+  },
+  {
+    "index": 468,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "ac650ea3d0945b6df1a3528d17c704bb1b3d06014902c2583ec83f8f830c9597"
+  },
+  {
+    "index": 469,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "652108df62ad448b523c0c86a578eef974223b4019b0ee888fa4f87bf9c73e0d"
+  },
+  {
+    "index": 470,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "83b5f4e427941116515793fa89135d489bc55acf58c4b89506e226886cc3bc33"
+  },
+  {
+    "index": 471,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "111c896d8aa1990ff19a3c3bc15332524938fc697b7772ee43a21e1427cc5c72"
+  },
+  {
+    "index": 472,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "04e0bb1302cd0fc044dd486be67f9475752d3b3097e0c2f75356aacfdde821fc"
+  },
+  {
+    "index": 473,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "a56fd98fe3b6b19e306859a0290e7d1acda1dfaaab708e09798666345cd71ad3"
+  },
+  {
+    "index": 474,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "c1edb5b94820da9c661b8bd0560dbf56ad451dbeb9af2f11a1b331b594a0057b"
+  },
+  {
+    "index": 475,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "1aec47eb00ffb75c9a352c9447ca18964d9636dd0dd00aab83bc32354fdb4bd0"
+  },
+  {
+    "index": 476,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "2dbbb4bacc6cfe168c555778daaca8343b510429d28b20a81ebf50f6ce2e85e9"
+  },
+  {
+    "index": 477,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "4e56f793a85f7ba4c8d925eebf799ca7522c2c37537a250cc28ab492a4f11e8f"
+  },
+  {
+    "index": 478,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "fc22ad1b8bb8f70b24bed9f921ee7fb9d4ca312969c55be807e4bd39d16ffe3b"
+  },
+  {
+    "index": 479,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "b6fafda707309915710ed579c3a4d7412e54dc5bc526ab2f004eabaacd2d25ea"
+  },
+  {
+    "index": 480,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "b88cdf1e8259ebd1e0a0737ef9413a641dee70ba9925dfd5312222dcc14d1a7f"
+  },
+  {
+    "index": 481,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "6cff278ccb143d0c2a5a1fe1202e3e4bc1b3b779a8902c0dff169df871d233d7"
+  },
+  {
+    "index": 482,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "4804258d5108fc0ecf534d3d124a897ecbe82705bf79ddb4a9337f874a1f8d7f"
+  },
+  {
+    "index": 483,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "6a0fb5e5d7e20cd9f0589eb175733628946da5deffe245f86bb78b8fd7322ceb"
+  },
+  {
+    "index": 484,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "7ebd417e101a0c899f3e99b93ad5d3502bf68ed3e254f45de9dbfd4b7b632303"
+  },
+  {
+    "index": 485,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "4bc67693a073e37ca5bb991fb8cae7379b61257e3e1e6df883e9edcfedb4384d"
+  },
+  {
+    "index": 486,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "ea0bd7f3f346b3d9bfff421d5abe09ee884c9ee283a153e6498e71d788e735ca"
+  },
+  {
+    "index": 487,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "856f3b851865db50cef30031f70879fa4c388cd9117733254a8d106e35f547f3"
+  },
+  {
+    "index": 488,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "7bd7732793e43181c4471407e8148d1f991875f68147631454bee8c7b8155efb"
+  },
+  {
+    "index": 489,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "663fd2ebdc48fac1bafdb5467df1097c4b0fb94b66fbb4adcdf48afab5d8423a"
+  },
+  {
+    "index": 490,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "69f376a5fd497351e3f50767eb3f2e2c2f8c9e28f226225ffa7dca9b7c2e62b6"
+  },
+  {
+    "index": 491,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "ff3278279f94380b0fdabd2a55ad24ec3915c6ded1c7e2aa91aed36eef296b35"
+  },
+  {
+    "index": 492,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "989571f26d70a8adbb7d21bfc15913cb7cbe6bc903cdad5f4daeb2e3bfe608e0"
+  },
+  {
+    "index": 493,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "017c95319564a0430c7512d9d27769fe12fdfb58ce819ed6e9b712bf4176fe00"
+  },
+  {
+    "index": 494,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "28529650281fb60a79ec468ef446b73c11bcf4e28dab6a53b8bb48ee94bb3708"
+  },
+  {
+    "index": 495,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "7e076cc28bc9a4538e9ac094a8df37c5eb9c50411644aae3cc63f1d4fcc47f44"
+  },
+  {
+    "index": 496,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "efb9a0110bb92d9d524402cfcce87d31c2fe90399d5e5e50a7ed96903327262b"
+  },
+  {
+    "index": 497,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "c781a77a84b08b13475922ee186654364c7a10e946bff1d35385ac73616b3d95"
+  },
+  {
+    "index": 498,
+    "baseline": "defender",
+    "planned": "party",
+    "transcriptHash": "789d3bc17d8cc0a4aeab28d7a73686c74d40e473345529670e35f52d3490751a"
+  },
+  {
+    "index": 499,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "e92217d64fd606f34ba333ae272762ace2e7f4839d86c85d5079631bebb0cfe3"
+  },
+  {
+    "index": 500,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "e2f9c6158fc64fb1e193b27b61ab3c99d97c689bbb1c7af9e45d0eb247c9dbec"
+  },
+  {
+    "index": 501,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "b776777b61913f5f3fd743c74e6524c79da9cd43fb45b619f4286690a7ed4b23"
+  },
+  {
+    "index": 502,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "7d9c3623d272e44934b337462db51c67de70eac8d1f2682e81dad3040227502d"
+  },
+  {
+    "index": 503,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "f33d33177bd0173b6fc3aa0905a8a64fc1c2cac1f9fcc6dfa2dbd8eed69c3b94"
+  },
+  {
+    "index": 504,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "d7d697bb46262fb481ab707b345d2125bf0cce41ca80f9a9022d530aebbdede1"
+  },
+  {
+    "index": 505,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "61cf4cad5ab874eca38ed2b33c863e4e2baa171e892d1dedfe5b1a26f73617c4"
+  },
+  {
+    "index": 506,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "28cc74653e87023872977e6dc65f01e1f44cbc49baebdb74a4a5b0c8a4e75032"
+  },
+  {
+    "index": 507,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "4414cdbd256dc717aa0fdda744e6d1165c46c5731aa8e7b1e0682555cf347a3d"
+  },
+  {
+    "index": 508,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "2c5ca3dbd38b20534a7da9dee865235231b907b0a0839d7edb73a3a2971e02d3"
+  },
+  {
+    "index": 509,
+    "baseline": "defender",
+    "planned": "defender",
+    "transcriptHash": "f25f053596c931490c8ef1533da4a61c01466d208be9106e4ac41d59ea166045"
+  },
+  {
+    "index": 510,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "3d2e69273b4464711933ad617efb7bc0e8ac221b5b4d3a2c892eab47aa9ce4ee"
+  },
+  {
+    "index": 511,
+    "baseline": "party",
+    "planned": "party",
+    "transcriptHash": "4c79a40db9968b30664d7855ff973cb511d0454036e4890f39edfcfde558e01d"
+  }
+]

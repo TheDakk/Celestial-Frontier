@@ -1,0 +1,114 @@
+[
+  {
+    "path": "audits/C24_ROOT_TYPES_20260925/runtime-parity.json",
+    "sha256": "c68a0d4d5d6965328199a4742278ee23e46d0004a8ca9b5443d6ef2203638f22"
+  },
+  {
+    "path": "audits/C24_ROOT_TYPES_20260925/runtime-parity.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "audits/C24_ROOT_TYPES_20260925/app-after-01.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "audits/C24_ROOT_TYPES_20260925/root-validate.log",
+    "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750"
+  },
+  {
+    "path": "audits/C24_ROOT_TYPES_20260925/worker-after-01.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "audits/C24_ROOT_TYPES_20260925/README.md",
+    "sha256": "5451013e03a45b76726a0544cd9b831dff2110952734d0241eb142321e9334b6"
+  },
+  {
+    "path": "audits/C24_ROOT_TYPES_20260925/root-after-01.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "audits/C24_ROOT_TYPES_20260925/verify-runtime-failed-ts-api.mjs",
+    "sha256": "0551dec8a7497e5bde70b18fe6568c7f2ebd28ffe23e1e1333d7908b7db7ef3c"
+  },
+  {
+    "path": "audits/C24_ROOT_TYPES_20260925/verify-runtime.mjs",
+    "sha256": "e5d4494d78d6a23849a98bab4b9f55d85d2411aa29344808387f0195f58ff5c6"
+  },
+  {
+    "path": "audits/C24_ROOT_TYPES_20260925/before.log",
+    "sha256": "eb837d67a33bdb201a509b9360111211e55767d0b1fcacdda0074722a9a56819"
+  },
+  {
+    "path": "CREATURE_ANIMATION.md",
+    "sha256": "6c40c06520f402a2384a1b6a4c0704b799102454ab210da42b8566b1fc8d4ee3"
+  },
+  {
+    "path": "ROADMAP.md",
+    "sha256": "10311704cc110a602ae848767a242694f42ede773f0a81feac50f871a2a5c420"
+  },
+  {
+    "path": "audits/MAILBOX/TO_CLAUDE.md",
+    "sha256": "8909cb50e5b7e805c916db0a42f8734ee2bdc70fa60d68882287986db034bff3"
+  },
+  {
+    "path": "celestial-frontier-codebase-reference.md",
+    "sha256": "e971dbfc21ee9add67d090c3431d7cd145192e81b0ddad81b93cbd64fb49b054"
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-layered-stance-reach.ts",
+    "sha256": "58a7b2dfa3d8bd1a0a3322a91258289f6393f1f69a1836896ef92b401f8184f2"
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-aim.ts",
+    "sha256": "226f55eacb577487b4564149fe369107eda6ccb7af54912bcae23912666fc278"
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+    "sha256": "de40e70a607712d17d5cbd1f3b50870fa1dd617ecdc5632b15f8323a5c3ac985"
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig.ts",
+    "sha256": "9e67cb64b60979116e56e474f5b1906fa0b4203d294f49e7292ce3bcf83658c3"
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-stance-reach.ts",
+    "sha256": "60393f3c75506b64f5c6a8b668f592cdca6f49c1b627798efc27760ad41cd279"
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-terminal-support.ts",
+    "sha256": "5196b9fa4d6e8f0f5eafd22233a6400989454b3810473de3604905de403c2d0f"
+  },
+  {
+    "path": "port/v2/apps/game/src/morph/morph-individual.ts",
+    "sha256": "2e3e82260a14f79349f4ddfbfafeaba525db23d1970105c8f1b61b6f934f6cd5"
+  },
+  {
+    "path": "port/v2/apps/game/src/motion-pose-blend.ts",
+    "sha256": "e9b5326a9081feda2c2f017dbce15ff81480d4e191f67c911dfeda92a8354d96"
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/body-card.ts",
+    "sha256": "1429cb476e49ac2fed6dbcf81c2f215d02e93f6faf146b80102beae8325316cf"
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/contact-envelope.ts",
+    "sha256": "017a37dd320a2f0150949dba04f279a1009b3b1f9fd36740cae0671b10ae9942"
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/grounded-bird.ts",
+    "sha256": "124df09188fd36ad584578750bab53a9387b07149963701654a5e8e77c30d3f5"
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/grounded-quadruped.ts",
+    "sha256": "04a69912932c6eb854e6e9597b640472c556d2495edd15ce3d977570bb92dd8f"
+  },
+  {
+    "path": "port/v2/apps/game/src/motion/overlay.ts",
+    "sha256": "e1d4ce8b4ee82318d3c25d50fd935a917e4ad9e6687756517aae73c891187dec"
+  },
+  {
+    "path": "port/v2/apps/game/src/creature-rig-types.ts",
+    "sha256": "2b8836fb61d96134cf3287543cf11014a4d85889be9b7d3d8bb77c37773dac0d"
+  }
+]

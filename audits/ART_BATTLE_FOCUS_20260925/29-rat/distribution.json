@@ -1,0 +1,19 @@
+{
+  "schema": "cf.authored-marking-distribution/v1",
+  "allowedPartIds": [
+    "root",
+    "spine",
+    "pelvis",
+    "chest",
+    "neck",
+    "hind-near-root",
+    "hind-near-knee",
+    "hind-far-root",
+    "hind-far-knee",
+    "fore-near-root",
+    "fore-near-knee",
+    "fore-far-root"
+  ],
+  "decision": "Codex manual artistic declaration: patterns on torso/neck and selected fur-covered upper limbs. Face/ears, naked tail and distal bare limbs/feet remain plain. Far fore knee is partly bare and excluded. No automatic anatomy inference.",
+  "source": "fit-03/parts/binding.json"
+}

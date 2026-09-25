@@ -1,0 +1,12 @@
+{
+  "files": {
+    "push-01.log": "86df9add7a2fe4f6eff428ab4c6830b2e6eb9f9099eb5258fec3fbaf1c8456e2",
+    "push-pack-measurements.json": "10bb9854b1899fa2612222aa67cd43a3123d77b031e80fa1c6735c2ec27b5ac8",
+    "push-02.log": "ea84ac4f39be1fa7e7f3a6c507fb1944f3a90ef1c5484bd8a0e4c9b7bfd971b8",
+    "push-03.log": "f0755c9def7a0325184e9ebd655d0e6b96443d287c53d97298486a870dc171e5",
+    "push-04.log": "82063fa7a3a384c2e2b655fee4e83acd7e779b50a58f559f39832b69c1c5c4c3",
+    "README.md": "f3eeecd064a351d920493734c32fed21fdba723d444c394196fad9cdcfd799a6"
+  },
+  "remoteVerifiedHead": "dae190a53b5c224695567315d68052ee2f913885",
+  "claudeHeadAtRead": "4093ebca66d80d4ef3bd73d19dbe82c330264d6b"
+}

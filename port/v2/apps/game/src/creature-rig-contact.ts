@@ -1,7 +1,7 @@
 /** Record-driven planted contact constraint, separate from clip authoring.
  * Preserves each authored paw's perspective offset. No creature names/genes,
  * clocks, curve edits, or nearest-bone fitting. Flight passes through unchanged. */
-import type {CreaturePoseV1,CreatureRigRecordV1,CreaturePartsBindingV1} from './creature-rig.js';
+import type {CreaturePoseV1,CreatureRigRecordV1,CreaturePartsBindingV1} from './creature-rig-types.js';
 import {selectPaintedContactVertex} from '../../../tools/creature-animation/painted-contact-selector.mjs';
 import {measureMotionScale} from '../../../tools/creature-animation/motion-scale.mjs';
 import {familyContractForRecord,familyContactChains,contactStanceForAction} from '../../../tools/creature-animation/family-contracts.mjs';
