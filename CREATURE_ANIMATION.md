@@ -728,6 +728,16 @@ Evidence: audits/SOLVER_STAGE_SUPPORT_20260921/README.md.
 Cadence qualification is **S2 RED** on the retained Freshwater Crab at0.0716501458 body lengths (154ms, leg0Far reach refusal). Crab/Coconut native passes do not generalize the0.2 ceiling into a universal capacity. The helper is not admitted for E1 integration. Packet: `audits/STAGE_CADENCE_20260921/NATIVE_ROWS.md`. No production solver defaults or thresholds changed.
 
 
+
+### Conditional stationary contact authoring — matches code 2026-09-25
+
+The body card retains a plain-JSON copy of its original contact geometry. `motion/contact-envelope.ts` uses that actual geometry to check fixed-support quadruped hit/tame curves against the existing REST contact solver at129 phases. A completely admitted original curve is returned byte-identically. Only a refused curve receives one constant torso gain, found by12 bisections with a0.9authoring reserve; head, limb and secondary keys and all timing remain unchanged. It never changes a contact/skin limit, moves a support point or bypasses actual observed-support publication. A missing/invalid source or an impossible torso-only repair retains the old preview and its eventual admission refusal. JSON-roundtripped cards compile identically.
+
+The hit/tame/faint envelope cache is bounded to three entries per weakly held body card, keyed by the complete card and compiled curves. Provenance seed/hash are normalized only in that cache key; returned timelines preserve them. Geometry/curve changes invalidate the entry. Quadruped repair04 records15 targeted passes and unchanged S2. Proposed-stage Lizard05 removes turn-boundary stalls (max9.700000048ms at4×); Cattle05 still has34 CPU frames over1000/60ms despite15ms p95 and is not60fps. Stage faint settling is a retained Claude patch, not an edit to his reserved source.
+
+
+Wall Lizard and Brown Bear now pass19/19 static actions plus presentation and exact rest in `audits/ART_BATTLE_FOCUS_20260925/quadruped-repair-04/`. Existing Civet/Impala/Marmot/Cattle hit/tame curves are byte-identical. All six S2 controls and13286support samples remain byte-identical. The same packet owns new unadmitted Lizard root-surface and Impala/Marmot/Cattle continuity candidates, unchanged source-paint mask compatibility receipts, and a separate proposed Claude choreography patch. Runtime stage integration, native/visual status and timing are stated per run in its README; static acceptance alone is not picker admission.
+
 ### Layered stage approach reach — matches code 2026-09-25
 
 `measureLayeredStanceReach(record, supports, maximumPerStance, card)` is a separate sampled caller instrument. It combines the actual card's approach with its additive idle across 121 gait phases ×32 idle phases, checks zero displacement first, and bisects the existing stage cap eight times. The caller retains its existing0.5-body-length cap and0.9 reserve. Refusals propagate; no silent fallback grants unmeasured travel. Non-ground/chainless families return not-applicable. The old isolated `measureStanceReach`, contact/override limits, S2 inputs and accepted bindings are unchanged.

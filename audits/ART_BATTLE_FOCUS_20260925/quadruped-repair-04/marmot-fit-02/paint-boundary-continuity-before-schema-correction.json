@@ -1,0 +1,26 @@
+{
+  "schema": "cf.paint-boundary-continuity/v1",
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ],
+    [
+      "ear-near-root",
+      "neck"
+    ],
+    [
+      "ear-near-tip",
+      "spine"
+    ],
+    [
+      "jaw",
+      "neck"
+    ],
+    [
+      "jaw",
+      "spine"
+    ]
+  ],
+  "source": "Observed torso patch and side-on head/neck fur form one continuous surface; the triangular upper-neck hole is not anatomy. Opposite ears and legs remain independent."
+}
