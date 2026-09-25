@@ -1,4 +1,4 @@
-import type {CreaturePoseV1,CreatureRigRecordV1} from './creature-rig.js';
+import type {CreaturePoseV1,CreatureRigRecordV1} from './creature-rig-types.js';
 import {composeAffine,rotationAround,transformPoint,IDENTITY_AFFINE,type Affine2} from '../../../tools/creature-animation/kinematics.js';
 /** Geometry must be emitted by the painter or declared against an authored
  * master. No head direction, eye point, turn coverage or chain is guessed. */

@@ -2,7 +2,7 @@
  * motion envelope, not a replacement for contact/skin admission at publication.
  * The caller keeps its existing stance cap and reserve. Historical isolated
  * measureStanceReach and all contact/override limits remain unchanged. */
-import type {CreaturePoseV1,CreatureRigRecordV1} from './creature-rig.js';
+import type {CreaturePoseV1,CreatureRigRecordV1} from './creature-rig-types.js';
 import {createFamilyContactSolver,type ContactSupport} from './creature-rig-contact.js';
 import {compileBodyCard,type BodyCard,type ResolvedAnatomyRecord} from './motion/body-card.js';
 import {buildTimeline,sampleTimeline,type MotionTimeline} from './motion/timeline.js';

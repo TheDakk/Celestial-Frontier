@@ -1,9 +1,11 @@
+import type {CreaturePoseV1,CreaturePaintContact,CreatureRigRecordV1,CreaturePartsBindingV1,Box} from './creature-rig-types.js';
+export type {CreaturePoseV1,CreaturePaintContact,CreatureRigRecordV1,CreaturePartsBindingV1,CreatureSeamGroupV1} from './creature-rig-types.js';
 import {requireVisiblePaintOwner} from '../../../tools/creature-animation/hidden-anatomy.mjs';
 import {observedContactSupports} from './creature-rig-contact.js';
 import{createCreatureRigFrameTarget}from'./creature-rig-frame.js';
 import {compileRigidParentFrames,applyRigidParentFrames} from '../../../tools/creature-animation/rigid-parent-frame.mjs';
 import {BufferImageSource,Container, Matrix, Rectangle, Sprite, Texture, Mesh, MeshGeometry} from 'pixi.js';
-import {applyPaintPart,paintPartAreas,assertPaintPartShape,validatePaintSkin,type PaintSkin} from '../../../tools/creature-animation/paint-skin.mjs';
+import {applyPaintPart,paintPartAreas,assertPaintPartShape,validatePaintSkin} from '../../../tools/creature-animation/paint-skin.mjs';
 import {validateSeamBridges,createSeamGeometry,writeSeamPose} from '../../../tools/creature-animation/seam-bridge.mjs';
 import {createArapScratch,solveArapSkin} from '../../../tools/creature-animation/arap-skin.mjs';
 import {createCompiledSkinField,applyCompiledSkinField} from '../../../tools/creature-animation/compiled-skin-field.mjs';
@@ -15,7 +17,6 @@ import {preflightBattle2PinnedBytesV1,Battle2PinRefusal,type Battle2PinnedBytesV
 import {createSkeletonPoseProgram} from '../../../tools/creature-animation/skeleton-pose.mjs';
 import {decodePng} from './morph/png-decode.js';
 
-export type CreaturePoseV1 = Readonly<Record<string, {rotation:number; dx?:number; dy?:number}>>;
 export interface CreatureRigV1 {
   readonly recipeHash:string;
   readonly templateId:string;
@@ -27,7 +28,6 @@ export interface CreatureRigV1 {
   readonly bounds:{width:number;height:number;groundLineY:number};
   dispose():void;
 }
-export interface CreaturePaintContact {readonly joint:string;readonly paintedTarget:{readonly x:number;readonly y:number};readonly stance:boolean;}
 const rigContactEvidence=new WeakMap<CreatureRigV1,{samples:number;maxPaintDriftPx:number}>();
 export function readCreatureRigContactEvidence(rig:CreatureRigV1){const e=rigContactEvidence.get(rig);return e?Object.freeze({...e,scope:'Actual pending Float32 rendered pad interpolation, admitted before publication; adhesive point anchors, no terrain-clearance claim'}):null;}
 interface CreatureRigRuntimeDiagnostics {readonly schema:'cf.creature-rig-runtime/v1';readonly sweepBackend:'wasm'|'js'|'none';readonly fieldVertices:number;readonly normalPasses:number;readonly robustFallbacks:number;}
@@ -39,34 +39,6 @@ const rigSupportReaders=new WeakMap<CreatureRigV1,(joint:string)=>Readonly<{x:nu
 export function readCreatureRigContactSupport(rig:CreatureRigV1,joint:string){return rigSupportReaders.get(rig)?.(joint)??null;}
 /** Read the admitted backend and live pass counters for this actual loaded rig. */
 export function readCreatureRigRuntimeDiagnostics(rig:CreatureRigV1){return rigRuntimeDiagnostics.get(rig)??null;}
-export interface CreatureRigRecordV1 {
-  readonly anatomy?:import('../../../tools/creature-animation/anatomy-inventory.mjs').AnatomyPresence;
-  readonly recipeHash:string;
-  readonly template:{id:string;version:number};
-  readonly geometry:{width:number;height:number;groundLineY:number;cutoutAssetHash:string;fixedAttachments?:Readonly<Record<string,readonly [number,number]>>;contactPads?:{readonly schema:'cf.terminal-pad-support/v1';readonly kind:'adhesive';readonly points:Readonly<Record<string,readonly [number,number]>>}};
-  readonly landmarks:Readonly<Record<string,readonly [number,number]>>;
-}
-interface Box {readonly x:number;readonly y:number;readonly width:number;readonly height:number;}
-export interface CreatureSeamGroupV1 {
- readonly id:string;readonly ancestorJoint:string;readonly layer:'far'|'near';readonly rigidUnderlap?:boolean;
- readonly junctions?:ReadonlyArray<{readonly point:readonly [number,number];readonly ancestorPart:string;readonly parts:ReadonlyArray<string>;readonly joints:ReadonlyArray<string>;readonly sourcePart:string;readonly sourcePixel:readonly [number,number]}>;
- readonly edges:ReadonlyArray<{readonly ancestorPart:string;readonly sourcePart:string;readonly descendantJoint:string;readonly ancestorOverlap?:boolean;
- readonly edge:readonly [readonly [number,number],readonly [number,number]];readonly sourcePixel:readonly [number,number];readonly interiorPixel?:readonly [number,number];readonly sourceDepthPx:number}>;
-}
-/** Produced offline from masks/joint patches and the pinned, unrotated atlas.
- * No anatomy, poses, genes or clip tuning may be supplied by this binding. */
-export interface CreaturePartsBindingV1 {
-  readonly schema:'cf.creature-parts/v1';
-  readonly bindingHash:string;
-  readonly recordRecipeHash:string;
-  readonly atlasSha256:string;
-  readonly atlasSize:{width:number;height:number};
-  readonly paintSkin?:PaintSkin;
-  /** Hash-bound source owner for root/pelvis ink on non-quadruped skins. */
-  readonly sourceJoinTopology?:{readonly remainderPartId:string};
-  readonly seamBridges?:{readonly schema:'cf.seam-bridges/v1';readonly groups:ReadonlyArray<CreatureSeamGroupV1>};
-  readonly parts:ReadonlyArray<{id:string;joint:string;layer:'far'|'near';frame:Box;cutout:Box;kind:'part'|'joint-patch'}>;
-}
 const requireValue=(ok:unknown,reason:string):void=>{if(!ok)throw Error('Creature rig: '+reason);};
 
 const validBox=(box:Box,w:number,h:number)=>box&&[box.x,box.y,box.width,box.height].every(Number.isInteger)

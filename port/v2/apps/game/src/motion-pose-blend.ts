@@ -1,4 +1,4 @@
-import type {CreaturePoseV1}from'./creature-rig.js';
+import type {CreaturePoseV1}from'./creature-rig-types.js';
 /** Presentation-only continuity. Inputs are sampled shared motion curves;
  * interpolation never changes world seeds, combat, anatomy or clip assets. */
 export function blendCreaturePoses(a:CreaturePoseV1,b:CreaturePoseV1,weight:number):CreaturePoseV1{

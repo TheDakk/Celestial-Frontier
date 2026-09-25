@@ -4,7 +4,7 @@
 import type {BodyCard} from './body-card.js';
 import type {MotionAction} from './actions.js';
 import type {MotionTimeline,MotionPose} from './timeline.js';
-import type {CreatureRigRecordV1,CreaturePoseV1} from '../creature-rig.js';
+import type {CreatureRigRecordV1,CreaturePoseV1} from '../creature-rig-types.js';
 import {createFamilyContactSolver} from '../creature-rig-contact.js';
 import {familyContract,familyContactChains} from '../../../../tools/creature-animation/family-contracts.mjs';
 const cache=new WeakMap<BodyCard,Map<string,{key:string;action:MotionAction;note:string|null}>>();

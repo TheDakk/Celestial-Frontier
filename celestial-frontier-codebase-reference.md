@@ -7180,3 +7180,9 @@ asset authority or allocation permission. The arena preflight precedes mask
 fetch/cache acquisition and its pin failures fail the study without a master
 fallback. Secondary renderer teardown uses `{removeView:true,
 releaseGlobalResources:false}` to preserve the live main renderer's pools.
+
+C24 type boundary (matches code 2026-09-25): creature-rig-types.ts has no renderer
+import. Pure motion/contact/morph helpers use it instead of a type import from
+the allocation owner. creature-rig.ts re-exports the previous contract names.
+Root `tsc --noEmit --noUnusedLocals`, app and worker programs pass without any
+compiler-setting change. Thirteen edited modules emit identical runtime code.

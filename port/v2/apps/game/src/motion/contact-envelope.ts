@@ -4,7 +4,7 @@
  * unchanged contact and skin guards with the actual painted supports. */
 import type {BodyCard} from './body-card.js';
 import type {MotionPose,MotionTimeline} from './timeline.js';
-import type {CreaturePoseV1,CreatureRigRecordV1} from '../creature-rig.js';
+import type {CreaturePoseV1,CreatureRigRecordV1} from '../creature-rig-types.js';
 import {createFamilyContactSolver} from '../creature-rig-contact.js';
 import {familyContract} from '../../../../tools/creature-animation/family-contracts.mjs';
 
