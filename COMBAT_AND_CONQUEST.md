@@ -120,8 +120,11 @@ static test-source checking after 3,494 passing tests, before any browser stage.
 > **1–19 HP** appends event achievement `brink` inside that same CAS; 20 HP, creature injury and
 > non-damage outcomes do not. A successful conquest with the one accepted starter `st-conq`
 > Charter completes and removes that acceptance, pays **+25 Stardust** to both current and lifetime
-> totals, and increments honored Charters by one. The weekly `wk-conq` remains fail-closed because
-> its wall-week/slate/acceptance lifecycle is not yet owned by v2.
+> totals, and increments honored Charters by one. As of 2026-09-25, the same conquest CAS also
+> stages the accepted weekly `wk-conq` on its exact active-play snapshot: one new conquest pays
+> 30 Stardust and one honored Charter, once that cycle. Expired acceptances pay nothing. The
+> verified reload binds cycle, acceptance, progress, Stardust and honored count; stale/duplicate
+> receipts, malformed accepted progress and saturated counters cannot publish a partial payout.
 >
 > The authored one-time Guardian Gear/material reward table is still absent and remains explicitly
 > `unsupported-open`; no reward was invented. The exact legacy 40% conquest gate, worn-slot choice,
@@ -209,7 +212,7 @@ landed-Surface challenge flow match the local candidate as of 2026-08-29. Exact 
 `st-conq` joins, post-settlement accessible Combat Chronicle and its complete already-modelled
 registered combat/Guardian cue set are live in that settlement. Authored Guardian reward,
 post-construction conquest-
-affix coexistence, weekly conquest-Charter lifecycle, broader Guardian care/breeding/mission/Recovery
+affix coexistence, broader Guardian care/breeding/mission/Recovery
 and expanded party/tactics/retreat presentation remain unimplemented. The
 `size` arc CLOSED in v1.8.9 — see the 2026-07-31 addendum; all six readers now
 share one helper and the fingerprint held.

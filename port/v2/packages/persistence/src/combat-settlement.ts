@@ -6,6 +6,7 @@
    v4/v5 replacement on detached data, and delegates the sole write to the
    existing F4 deterministic-product/F3 CAS owner. No retry, reroll, or
    optimistic publication exists here. */
+import { stageWeeklyCharterEventV1, weeklyCharterBoardOpenV1, type WeeklyCharterStageFactsV1 } from './weekly-charters.js';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   canonicalJson,
@@ -421,9 +422,8 @@ function checkedCounter(stats: Record<string, number>, key: string, delta: numbe
   stats[key] = before + delta;
 }
 
-/** Settle only the source-authored one-time starter conquest Charter. Weekly
- * validity depends on the separate wall-week/slate lifecycle and is therefore
- * deliberately excluded from this transaction owner. */
+/** Settle the source-authored starter Charter; the shared weekly lifecycle joins
+ * separately using this transaction's exact active-play snapshot. */
 function settleAcceptedStarterConquestCharter(
   draft: SaveStateV2,
 ): CombatSettlementStarterConquestCharterFactV1 | null {
@@ -808,6 +808,14 @@ function changedExtensionWrites(base: V5Extensions, target: V5Extensions): reado
   return Object.freeze(writes);
 }
 
+export interface CombatSettlementWeeklyCharterFactV1 {
+  readonly stage: WeeklyCharterStageFactsV1;
+  readonly stardustBefore: number; readonly stardustAfter: number;
+  readonly honoredBefore: number; readonly honoredAfter: number;
+  readonly chWeek: number; readonly chacc: readonly string[];
+  readonly chProg: Readonly<Record<string, number>>;
+}
+
 interface DerivedCombatSettlementV1 {
   readonly state: SaveStateV2;
   readonly extensions: V5Extensions;
@@ -815,6 +823,7 @@ interface DerivedCombatSettlementV1 {
   readonly battle: CombatBattleEvidenceV1;
   readonly brinkAchievement: CombatSettlementBrinkAchievementFactV1 | null;
   readonly starterConquestCharter: CombatSettlementStarterConquestCharterFactV1 | null;
+  readonly weeklyConquestCharter: CombatSettlementWeeklyCharterFactV1 | null;
   readonly ownershipSettlement: Arc6CombatOwnershipSettlementV1 | null;
   readonly ownershipPrepared: ReturnType<typeof prepareArc5OwnershipV2Successor> | null;
   readonly guardianPreparation: GuardianAcquisitionPreparationV1 | null;
@@ -829,6 +838,7 @@ function deriveCombatSettlement(input: Readonly<{
   readonly ownershipV2: OwnershipStateV2 | null;
   readonly brinkAchievementJoin: CombatSettlementBrinkAchievementJoinV1 | null;
   readonly sourceRevision: number;
+  readonly activePlayMs: number;
   readonly draft: SaveStateV2;
   readonly extensions: V5Extensions;
 }>): DerivedCombatSettlementV1 {
@@ -862,8 +872,8 @@ function deriveCombatSettlement(input: Readonly<{
   }
 
   const draft = input.draft;
-  if (plan.conquest.status === 'settle' && draft.chacc.includes('wk-conq')) {
-    throw new Error('combat conquest has an accepted weekly Charter without a v2 weekly lifecycle owner');
+  if (draft.chacc.includes('wk-conq') && !weeklyCharterBoardOpenV1(draft)) {
+    throw new Error('weekly conquest Charter requires the five learned trades');
   }
   const baseExtensions = input.extensions;
   let workingExtensions = baseExtensions;
@@ -1119,6 +1129,20 @@ function deriveCombatSettlement(input: Readonly<{
     ? settleAcceptedStarterConquestCharter(draft)
     : null;
 
+  let weeklyConquestCharter: CombatSettlementWeeklyCharterFactV1 | null = null;
+  if (plan.conquest.status === 'settle') {
+    const stardustBefore = draft.essence, honoredBefore = draft.stats.charters ?? 0;
+    const staged = stageWeeklyCharterEventV1({ draft, event: { kind: 'conquest' }, activePlayMs: input.activePlayMs });
+    if (staged.kind !== 'ready') throw new Error(staged.reason);
+    if (!Number.isSafeInteger(draft.essence) || draft.essence < 0 || draft.essence > COUNTER_MAX
+      || !Number.isSafeInteger(draft.stats.charters ?? 0) || (draft.stats.charters ?? 0) > COUNTER_MAX) {
+      throw new RangeError('weekly conquest Charter exceeds its compatibility capacity');
+    }
+    weeklyConquestCharter = Object.freeze({ stage: staged.facts, stardustBefore, stardustAfter: draft.essence,
+      honoredBefore, honoredAfter: draft.stats.charters ?? 0, chWeek: draft.chWeek,
+      chacc: Object.freeze([...draft.chacc]), chProg: Object.freeze({ ...draft.chProg }) });
+  }
+
   const nextAuthority: CombatSettlementAuthorityV1 = Object.freeze({
     schema: COMBAT_SETTLEMENT_AUTHORITY_SCHEMA_V1,
     version: COMBAT_SETTLEMENT_AUTHORITY_VERSION_V1,
@@ -1142,6 +1166,7 @@ function deriveCombatSettlement(input: Readonly<{
     battle,
     brinkAchievement,
     starterConquestCharter,
+    weeklyConquestCharter,
     ownershipSettlement,
     ownershipPrepared,
     guardianPreparation,
@@ -1285,6 +1310,7 @@ export function createCombatSettlementPersistenceOwnerV1(
             ownershipV2: input.ownershipV2,
             brinkAchievementJoin: input.brinkAchievementJoin,
             sourceRevision: input.expectedRevision,
+            activePlayMs: input.snapshot.activePlayMs,
             draft,
             extensions,
           });
@@ -1323,6 +1349,7 @@ export type CombatSettlementVerificationOutcomeV1 =
     readonly guardianCompanions: GuardianCompanionStateV1 | null;
     readonly brinkAchievement: CombatSettlementBrinkAchievementFactV1 | null;
     readonly starterConquestCharter: CombatSettlementStarterConquestCharterFactV1 | null;
+    readonly weeklyConquestCharter: CombatSettlementWeeklyCharterFactV1 | null;
   }>
   | Readonly<{
     readonly kind: 'mismatch';
@@ -1337,7 +1364,8 @@ export type CombatSettlementVerificationOutcomeV1 =
       | 'guardian-acquisition-mismatch'
       | 'guardian-companion-mismatch'
       | 'brink-achievement-mismatch'
-      | 'starter-conquest-charter-mismatch';
+      | 'starter-conquest-charter-mismatch'
+      | 'weekly-conquest-charter-mismatch';
   }>;
 
 function mismatch(
@@ -1453,6 +1481,17 @@ export function verifyCommittedCombatSettlementV1(input: Readonly<{
       return mismatch('brink-achievement-mismatch');
     }
   }
+  const weeklyConquestCharter = registered.derived.weeklyConquestCharter;
+  if (weeklyConquestCharter !== null) {
+    const fact = weeklyConquestCharter, state = input.writable.state;
+    const reward = fact.stage.completions.reduce((total, row) => total + row.stardust, 0);
+    if (state.essence !== fact.stardustAfter || (state.stats.charters ?? 0) !== fact.honoredAfter
+      || state.chWeek !== fact.chWeek || !sameJson(state.chacc, fact.chacc) || !sameJson(state.chProg, fact.chProg)
+      || fact.stardustBefore + reward !== fact.stardustAfter
+      || fact.honoredBefore + fact.stage.completions.length !== fact.honoredAfter) {
+      return mismatch('weekly-conquest-charter-mismatch');
+    }
+  }
   const starterConquestCharter = registered.derived.starterConquestCharter;
   if (starterConquestCharter !== null) {
     const state = input.writable.state;
@@ -1473,6 +1512,6 @@ export function verifyCommittedCombatSettlementV1(input: Readonly<{
   return Object.freeze({
     kind: 'verified', convergence: 'none', revision: input.revision,
     plan: registered.plan, state: input.writable.state, ownershipV2,
-    guardianAcquisitions, guardianCompanions, brinkAchievement, starterConquestCharter,
+    guardianAcquisitions, guardianCompanions, brinkAchievement, starterConquestCharter, weeklyConquestCharter,
   });
 }

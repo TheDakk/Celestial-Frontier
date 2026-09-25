@@ -582,6 +582,13 @@ async function fixtureAt(save: SaveStateV2, activePlayMs: number) {
 }
 
 describe('weekly Charters — the expedition keeps its own clock', () => {
+  it('refuses a duplicated accepted Charter before it can issue two rewards', () => {
+    const cycle = Array.from({ length: 40 }, (_, c) => c).find(c => weeklyCharterSlateV1(c).includes('wk-conq'))!;
+    const s = veteran(); s.chWeek = cycle; s.chacc = ['wk-conq', 'wk-conq']; s.chProg = { 'wk-conq': 0 };
+    const before = structuredClone(s);
+    expect(stageWeeklyCharterEventV1({ draft: s, event: { kind: 'conquest' }, activePlayMs: cycle * WEEK }).kind).toBe('refused');
+    expect(s).toEqual(before);
+  });
   it('cycles are whole blocks of ACTIVE PLAY; the slate is deterministic, three distinct live Charters, and varies between cycles', () => {
     expect(weeklyCharterCycleV1(0)).toBe(0); expect(weeklyCharterCycleV1(WEEK - 1)).toBe(0); expect(weeklyCharterCycleV1(WEEK)).toBe(1);
     expect(() => weeklyCharterCycleV1(-1)).toThrow(); expect(() => weeklyCharterCycleV1(1.5)).toThrow();
