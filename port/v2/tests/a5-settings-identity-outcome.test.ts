@@ -178,6 +178,7 @@ function harness(f: Fixture, mutations: readonly Mutation[] = []) {
     document,
     save: f.live,
     audioAccessibility: Object.freeze({ mono: false, reducedIntensity: false }),
+    surveyFoldsOn: false, // D18: the folded survey card option (device preference; default off)
     pwaUpdateControl: null,
     /* panels.ts fillPanel minus the sticky close seat: a true DOM external. */
     fillPanel: (id: string, html: string) => {

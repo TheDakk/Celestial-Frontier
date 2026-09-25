@@ -112,10 +112,10 @@ interface DurableFixture {
   readonly state: SaveStateV2;
 }
 
-async function freshFixture(): Promise<DurableFixture> {
+async function freshFixture(items: SaveStateV2['items'] = [['rig1', 1]]): Promise<DurableFixture> {
   const imported = importSaveV2('{}', REGISTRY, NOW);
   if (!imported.ok) throw new Error(imported.reason);
-  const state: SaveStateV2 = { ...imported.state, items: [['rig1', 1]], equip: {}, equipAff: {}, salvageConfirm: true };
+  const state: SaveStateV2 = { ...imported.state, items, equip: {}, equipAff: {}, salvageConfirm: true };
   const arc2 = prepareArc2LootLegacyMigration({
     extensions: {}, legacy: { items: state.items, equip: state.equip, equipAff: state.equipAff }, capacity: 6,
   });
@@ -305,6 +305,47 @@ async function inventoryScenario(mutations: readonly MainMutation[] = []): Promi
     await f.runtime.release();
   }
 }
+
+/* A5 #73 (2026-09-25): v1's explorer-doll slot picker is the Inventory panel's slot <select> in v2 (no doll was ported): pick a slot,
+ * the list narrows to that slot's exact items, and Equip from it lands in THAT slot durably. Mutation control: a picker that ignores the
+ * choice leaves both rows listed, so the first row (the Mining Rig, tool slot) would be equipped instead. */
+async function slotPickerScenario(mutations: readonly MainMutation[] = [], deliverPick = true): Promise<void> {
+  const f = await freshFixture([['rig1', 1], ['fieldsuit', 1]]);
+  const h = mainInventoryHarness(f, mutations);
+  try {
+    const start = await durable(f);
+    expect(start.loot.inventory.entries, 'two exact items in two slots').toHaveLength(2);
+    const rows = () => [...h.dom.window.document.querySelectorAll<HTMLButtonElement>('[data-inventory-row="exact"]')];
+    expect(rows()).toHaveLength(2);
+    const picker = h.dom.window.document.querySelector<HTMLSelectElement>('[data-inventory-slot]');
+    expect(picker, 'the Inventory panel renders its slot picker').not.toBeNull();
+    picker!.value = 'suit';
+    if (deliverPick) {
+      picker!.dispatchEvent(new (h.dom.window as unknown as { Event: typeof Event }).Event('change', { bubbles: true }));
+      picker!.dispatchEvent(new (h.dom.window as unknown as { Event: typeof Event }).Event('input', { bubbles: true }));
+    }
+    expect(rows(), 'inventory #73: the picked slot lists only its exact items').toHaveLength(1);
+    await pressAction(h, 'equip');
+    const after = await durable(f);
+    expect(after.revision, 'inventory #73: Equip from the picked slot commits one revision').toBe(start.revision + 1);
+    const suit = start.loot.inventory.entries.find((e) => e.instance.baseId === 'fieldsuit')!.instance.instanceId;
+    expect(after.loot.inventory.equipped.map((row) => row.instanceId), 'inventory #73: the PICKED slot\'s item is durably equipped').toEqual([suit]);
+    expect(Object.values(after.state.equip), 'the legacy mirror names the suit').toEqual(['fieldsuit']);
+    expect(JSON.stringify(h.env.save.equip)).toBe(JSON.stringify(after.state.equip));
+  } finally {
+    h.restore();
+    await f.runtime.release();
+  }
+}
+
+describe('A5 #73 — the slot picker (v1 explorer doll) as a durable UI outcome', () => {
+  it('picking the suit slot narrows the list and Equip lands the suit durably', async () => {
+    await slotPickerScenario();
+  }, 30_000);
+  it('negative control — a picker whose choice never reaches the panel: the list is not narrowed and the outcome test fails', async () => {
+    await expect(slotPickerScenario([], false)).rejects.toThrow(/inventory #73: the picked slot lists only its exact items/u);
+  }, 30_000);
+});
 
 describe('A5 #72-74 — the Inventory transaction as browser-free UI outcomes', () => {
   it('Equip, Unequip and a confirmed Salvage each commit exactly once through the real panel, publish the durable mirrors, and survive reboot', async () => {

@@ -63,7 +63,7 @@ Notes on the table:
 | 8 | "More" opens the Compendium from the card | V | 11834 | none found | — → **UNPORTED** | — |
 | 9 | Vista reshow, fullscreen, tap-to-zoom | V | 11790, 10253, 10285 | none (the v2 vista is automatic) | — → **UNPORTED** | — |
 | 10 | Save postcard | V | 10260, 10204 | none | — → **UNPORTED** | — |
-| 11 | Depart / leave world | D (nav) | 11798 | main.ts:8938 `leaveworld`, then `goUp` | S:24097 CDP Enter and S:25330 touch read live mode only → **CODE** (UI-live) | Add a durable route read after the press |
+| 11 | Depart / leave world | D (nav) | 11798 | main.ts:8938 `leaveworld`, then `goUp` | S:24097 CDP Enter and S:25330 touch read live mode only → **CODE** (UI-live) | **Closed 2026-09-25:** `tests/a5-leave-world-outcome.test.ts` presses the card's Leave world and runs goUp, rerender and the real persistView over a real F4 runtime. It reads the durable `savedView` (the ascended system) twice and after a reboot. Mutation controls: the press never ascends; the ascent never checkpoints |
 | 12 | Land (card `landcta`) | D | 11862, 11180, 11007 | `doLand` 8128, arc0-landing-action.ts | S:28935 CDP mouse, then S:28937 `arc0-land` receipt and S:28993 reload; phone S:25267 → **UI** | — |
 | 13 | Wave-off (failed descent) | D | 10980 | arc0-landing-action.ts | S:28957, then S:28951 `assessBoundedDescentWaveOff` → **UI** | — |
 | 14 | Descent confirm "Stay" (decline) | V | 11199, 11167 | none (Land is direct) | — → **UNPORTED** | — |
@@ -145,7 +145,7 @@ Notes on the table:
 | 70 | Press a shortfall "Need…" button | V | 20571 | engineering-panel.ts disabled reason | tests/engineering-panel.test.ts:710 → **CODE** | — |
 | 71 | Open an item or material card | V | 20398, 20296 | inventory-panel.ts | S:11918 → **UI** (view) | — |
 | 72 | Equip / unequip (item card) | D | 20379, 20855 | inventory-panel.ts, `commitArc2InventoryAction` 12659 | S:11918/11935 → S:11953 and S:12232 → S:12286; also G:13325 → G:13499 → **UI** | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-inventory-outcome.test.ts` — the inline main.ts transaction now runs in `npm test` |
-| 73 | Equip via the explorer doll slot picker | D | 24317 | same owner, inventory panel | as #72 → **UI** | — |
+| 73 | Equip via the explorer doll slot picker | D | 24317 | same owner, inventory panel | as #72 → **UI** | **Closed 2026-09-25 (v2 form):** v2 has no doll; the Inventory panel's slot `<select>` is the picker. `tests/a5-inventory-outcome.test.ts` (#73 block) picks `suit`, the list narrows, and Equip lands the Field Suit durably. Control: a pick that never reaches the panel fails |
 | 74 | Salvage with confirm | D | 20389 | same | S:12232 press, S:12246 confirm, then S:12280 → **UI** | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-inventory-outcome.test.ts` — first tap confirms, second commits |
 | 75 | Salvage "don't ask again" | D | 20391 | none (`save.salvageConfirm` is read at main.ts:4461 but has no control) | — → **UNPORTED** | — |
 | 76 | Salvage all junk (armed) | D | 20400, 20359 | none | — → **UNPORTED** | — |
@@ -158,8 +158,8 @@ Notes on the table:
 | 78 | Open the Charter board, chip, quest log | V | 22732, 22572, 22634 | `fillCharters` 4226, objective chip | S:23773 in-page `objchip.click()`, DOM only → **UI** (view) | — |
 | 79 | Accept a starter Charter | D | 22730, 22420 | `runStarterCharterAccept` 10258 | tests/starter-charters.test.ts:330 (no `readSaveV5` reload) → **DIRECT** | **Top gap** |
 | 80 | Accept a weekly Charter (v2 design of the hunt board) | D | 22730 | same path, weekly-charters.ts | tests/starter-charters.test.ts:647 (`fixtureAt(save, activePlayMs)` :569) → **DIRECT** | UI press |
-| 81 | Charter / Ascent goal banking and completion (passive) | D | 22407 | inside each action transaction | tests/arc3-app-backend.test.ts:709; arc5-scout :317; arc0-landing facts → **DIRECT** | Assert after a UI action |
-| 82 | Achievements, rank, XP awards (passive) | D | 14005, 15766 | arc9-progression-action.ts | tests/arc9-progression.test.ts:335 (`readSaveV5` :377) → **DIRECT** | **Closed for the combat path 2026-09-25:** `tests/a5-guardian-combat-outcome.test.ts` reads XP, Stardust, `unlocked` and the ceremony input durably after a conquest press. Land / capture / Feed ledger reads remain open |
+| 81 | Charter / Ascent goal banking and completion (passive) | D | 22407 | inside each action transaction | tests/arc3-app-backend.test.ts:709; arc5-scout :317; arc0-landing facts → **DIRECT** | **Closed for Land 2026-09-25:** `tests/a5-land-ledger-outcome.test.ts` presses Land on Earth (card → landWithPilotPresentation → doLand → the real Arc 0 transaction). It checks the durable ascent Charter goal was banked by exactly the receipt's delta, read twice and after a reboot; live equals durable. Mutation controls: never lands; never publishes. Capture and Feed banking: see #82 |
+| 82 | Achievements, rank, XP awards (passive) | D | 14005, 15766 | arc9-progression-action.ts | tests/arc9-progression.test.ts:335 (`readSaveV5` :377) → **DIRECT** | **Closed for combat (2026-09-25, Guardian test) and for Land (2026-09-25, `a5-land-ledger-outcome`).** **Capture:** the only pressed capture fixture (Scavenge) pays 0 Stardust and moves no Charter goal, so a ledger read there would be vacuous. It needs a rare-find tame fixture. **Feed:** v2 Feed writes only fed and the specimen (no XP); its first-award XP is D13's work, whose own tests will carry the ledger read |
 | 83 | Open Records, tabs, achievement group fold | V | 24195, 24200 | records-rank-panel.ts | S:28854 CDP, then reload DOM count S:29002 → **UI** (view) | — |
 | 84 | Binder set claim | D | 13073 | `runArc9BinderSetClaim` 10535 | tests/binder-sets.test.ts:149 (no reload) → **DIRECT** | **Top gap** |
 | 85 | Binder Paragon: open or track travel | D (travel) | 13056 | main.ts:4386, paragon-finder.ts | tests/paragon-finder.test.ts:74 (pure) → **CODE** | — |
@@ -174,7 +174,7 @@ Notes on the table:
 | # | Action | Kind | v1 anchor | v2 owner | Best existing test → class | Gap |
 |---|---|---|---|---|---|---|
 | 91 | Type a search (discoveries) | V | 14751, 14717 | search-travel.ts | tests/search-travel.test.ts:266 (stub seam) → **CODE** | — |
-| 92 | Pick a search result → travel or card | D | 14773 | `commitArc9AcceptedSearchRoute` 4636 | S:9961-10030 reads live `persistence.lastOutcome` only; durable proof in arc9-travel-action.test.ts:429 → **DIRECT** | Read IndexedDB after the press |
+| 92 | Pick a search result → travel or card | D | 14773 | `commitArc9AcceptedSearchRoute` 4636 | S:9961-10030 reads live `persistence.lastOutcome` only; durable proof in arc9-travel-action.test.ts:429 → **DIRECT** | **Closed 2026-09-25:** `tests/a5-search-pick-outcome.test.ts` runs the real search controller on #searchbox with a public CF1 share code and Enter, then Main's commit port and the Arc 9 Follow transaction. It checks: exactly one receipt; durable `savedView` = the picked system (read twice); the Follow counter; live equals durable; reboot. Mutation controls: the port never follows; the Follow is never published |
 | 93 | Paste a CF1 code → follow | D | 14768, 14676 | `commitArc9FollowedSearchRoute` 4675, arc9-sharing-action.ts | S:28774 `driveControlSearch`, then S:28885 `arc9-share-follow-v1` receipt, reload S:29119 → **UI** | — |
 | 94 | Name a world carried by the code | D | 13094 `goTo` | `commitArc0WorldNameForSearch` 4500 | same run, `arc0-world-name` receipt S:28885 → **UI** | — |
 | 95 | Paste a CFB code → duel | D | 14768, 15992 | none | — → **UNPORTED** | — |
@@ -285,10 +285,12 @@ and carries mutation controls that break the WIRING (not the assertion) and fail
 | 15 PWA update reload with a write in flight | #129 | `tests/a5-pwa-update-outcome.test.ts` | 6 (3) |
 | 2-7, 11 (earlier today) | #16, #42, #43-44, #53, #79-80, #84, #118-119 | `tests/a5-{bioscan,breed,rename-scout,scavenge,charter-accept,binder-claim,settings-identity}-outcome.test.ts` | 70 |
 
-**Still open (not closed here):** #57 Titan → Prime Signature through the card (the fixture needs a Titan world plus a
-champion strong enough to win; the Guardian harness above is the template); #73 the explorer-doll slot picker; #81
-passive Charter banking; the XP ledger after Land / capture / Feed presses; #11 and #92 (leave-world and search-pick
-durable reads, same pattern as the card-travel file). No product bug was found by any of these tests.
+**Still open (not closed here):**
+- **#57 Titan → Prime Signature through the card.** Its fixture needs a Titan placed within reach at the fixture's ascent stage, plus a champion strong enough to win. Use the Guardian harness as the template.
+- **The capture ledger.** It needs a rare-find tame fixture whose reward is above 0.
+- **The Feed ledger.** It lands with D13's first-award XP.
+
+(#11, #73, #81/82 for Land, and #92 were closed on 2026-09-25 by the A5/CFB/D18 fork.)
 
 **Harness findings worth keeping:** (1) after a committed fight the combat card is refreshed only by the next F4 heartbeat
 — a re-press in between is refused (the projection was consumed) and commits nothing; the test asserts both. (2) The Atlas

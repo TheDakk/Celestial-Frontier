@@ -88,6 +88,12 @@
     .survey-row { margin: 0; padding: 7px 0; border-bottom: 1px solid rgba(64,84,119,.42); }
     .survey-row:last-child { border-bottom: 0; padding-bottom: 0; }
     .survey-row > span { color: var(--dim); }
+    /* D18 folded survey card (a Settings option; off = the flat card) */
+    .grp > .ghead { cursor: pointer; min-height: 44px; box-sizing: border-box; position: relative; padding-right: 22px; }
+    .grp > .ghead .chev { position: absolute; right: 4px; top: 50%; width: 7px; height: 7px; border-right: 2px solid var(--dim); border-bottom: 2px solid var(--dim); transform: translateY(-70%) rotate(45deg); }
+    .grp.open > .ghead .chev { transform: translateY(-30%) rotate(-135deg); }
+    .grp > .gbody { display: none; padding-left: 10px; }
+    .grp.open > .gbody { display: block; }
     [data-capture-card-body] { margin: 10px 0; padding: 10px 0;
       border-top: 1px solid rgba(88,112,154,.72); border-bottom: 1px solid rgba(88,112,154,.72); }
     .capture-card-title { margin: 0 0 6px; color: #f3d58b; font-size: 12px;

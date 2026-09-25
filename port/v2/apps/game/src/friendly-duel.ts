@@ -8,6 +8,7 @@
    This file owns the pure read model, the app action (plan → commit → exact read-back) and one small DOM controller. Main owns the
    guards, the write barrier and publication. */
 import {
+  encodeCreature,
   FRIENDLY_DUEL_BOUT_XP_V1,
   FRIENDLY_DUEL_CLOSE_XP_V1,
   FRIENDLY_DUEL_WIN_XP_V1,
@@ -34,6 +35,10 @@ export interface FriendlyDuelCompanionOptionV1 {
   readonly label: string;
   readonly disabled: boolean;
   readonly reason: string | null;
+  /** D16 CFB export (v1.8.9 `shareCreature`): this companion's battle-ready creature code — a friend pastes it into their duel. */
+  readonly shareCode: string;
+  /** v1.6 champion code (`shareChampion`): the same creature at its earned level, an exhibition challenger; null until it has XP. */
+  readonly championCode: string | null;
 }
 export interface FriendlyDuelReadModelV1 {
   readonly schema: typeof FRIENDLY_DUEL_READ_MODEL_SCHEMA_V1;
@@ -51,6 +56,8 @@ export function projectFriendlyDuelV1(input: Readonly<{
   extensions: V5Extensions;
   speciesId: string;
   observedActivePlayMs: number;
+  /** The species' display name — a shared code is named like v1's (the companion's nickname, else the species). */
+  speciesName?: string;
 }>): FriendlyDuelReadModelV1 | null {
   const held = combatOpenEncounterMemberIdsV1(input.extensions) ?? [];
   const rows = input.ownershipV2.creatures.filter((row) => row.speciesId === input.speciesId && row.genome.exhibit !== true);
@@ -63,7 +70,11 @@ export function projectFriendlyDuelV1(input: Readonly<{
       else if (availability.blocks.combat) reason = 'Recovering; it can duel again once Recovery ends.';
     } catch { reason = 'Its availability could not be verified.'; }
     if (reason === null && held.includes(row.creatureId)) reason = 'Held by your open Command fight.';
-    return Object.freeze({ id: row.creatureId, label: companionLabel(row), disabled: reason !== null, reason });
+    // v1's codec verbatim: the code carries the genome and name; decode strips injuries and level (the champion code keeps the level)
+    const name = row.nickname ?? input.speciesName ?? 'Companion', xp = row.xp ?? 0;
+    const shareCode = encodeCreature({ genome: row.genome, name } as never);
+    const championCode = xp > 0 ? encodeCreature({ genome: { ...row.genome, xp }, name } as never, true) : null;
+    return Object.freeze({ id: row.creatureId, label: companionLabel(row), disabled: reason !== null, reason, shareCode, championCode });
   });
   return Object.freeze({ schema: FRIENDLY_DUEL_READ_MODEL_SCHEMA_V1, speciesId: input.speciesId, companions: Object.freeze(companions) });
 }
@@ -136,6 +147,8 @@ function esc(value: unknown): string {
 /** One delegated control inside the Compendium detail. It owns only the companion choice, the pasted code and its press latch. */
 export class FriendlyDuelController {
   readonly #onAction: (request: FriendlyDuelRequestV1) => void;
+  readonly #copy: ((text: string) => Promise<boolean>) | null;
+  #shared: Readonly<{ code: string; champion: boolean; copied: boolean }> | null = null;
   #mount: HTMLElement | null = null;
   #model: FriendlyDuelReadModelV1 | null = null;
   #selected: string | null = null;
@@ -144,6 +157,8 @@ export class FriendlyDuelController {
   #status: Readonly<{ title: string; detail: string }> | null = null;
   #onClick = (event: Event): void => {
     const target = event.target as Element | null;
+    const share = target?.closest?.('[data-friendly-duel-share]') as HTMLButtonElement | null;
+    if (share && !share.disabled) { this.#share(share.dataset.friendlyDuelShare === 'champion'); return; }
     const button = target?.closest?.('[data-friendly-duel-fight]') as HTMLButtonElement | null;
     if (!button || this.#pending || this.#model === null || button.disabled) return;
     const choice = this.#model.companions.find((c) => c.id === this.#selected && !c.disabled);
@@ -156,7 +171,7 @@ export class FriendlyDuelController {
   #onInput = (event: Event): void => {
     const target = event.target as HTMLInputElement | HTMLSelectElement | null;
     if (!target || this.#pending) return;
-    if (target.matches('[data-friendly-duel-companion]')) { this.#selected = target.value; this.#render(); return; }
+    if (target.matches('[data-friendly-duel-companion]')) { this.#selected = target.value; this.#shared = null; this.#render(); return; }
     if (target.matches('[data-friendly-duel-code]')) {
       this.#code = target.value;
       const fight = this.#mount?.querySelector<HTMLButtonElement>('[data-friendly-duel-fight]');
@@ -164,7 +179,17 @@ export class FriendlyDuelController {
     }
   };
 
-  constructor(options: Readonly<{ onAction: (request: FriendlyDuelRequestV1) => void }>) { this.#onAction = options.onAction; }
+  constructor(options: Readonly<{ onAction: (request: FriendlyDuelRequestV1) => void; copy?: (text: string) => Promise<boolean> }>) { this.#onAction = options.onAction; this.#copy = options.copy ?? null; }
+
+  /** Show the selected companion's code (always selectable in a read-only box) and try the clipboard. Sharing writes nothing. */
+  #share(champion: boolean): void {
+    const choice = this.#model?.companions.find((c) => c.id === this.#selected);
+    const code = choice ? (champion ? choice.championCode : choice.shareCode) : null;
+    if (!code) return;
+    this.#shared = Object.freeze({ code, champion, copied: false });
+    this.#render();
+    void this.#copy?.(code).then((ok) => { if (ok && this.#shared?.code === code) { this.#shared = Object.freeze({ code, champion, copied: true }); this.#render(); } }).catch(() => {});
+  }
 
   attach(mount: HTMLElement): void {
     this.#mount?.removeEventListener('click', this.#onClick);
@@ -178,7 +203,7 @@ export class FriendlyDuelController {
   }
 
   setState(model: FriendlyDuelReadModelV1 | null): void {
-    if (model !== null && model.speciesId !== this.#model?.speciesId) { this.#status = null; this.#code = ''; }
+    if (model !== null && model.speciesId !== this.#model?.speciesId) { this.#status = null; this.#code = ''; this.#shared = null; }
     this.#model = model;
     if (model !== null && !model.companions.some((c) => c.id === this.#selected && !c.disabled)) {
       this.#selected = model.companions.find((c) => !c.disabled)?.id ?? null;
@@ -193,6 +218,17 @@ export class FriendlyDuelController {
   }
 
   diagnostics(): Readonly<{ pending: boolean; selected: string | null }> { return Object.freeze({ pending: this.#pending, selected: this.#selected }); }
+
+  #shareHtml(model: FriendlyDuelReadModelV1): string {
+    const choice = model.companions.find((c) => c.id === this.#selected);
+    if (!choice) return '';
+    const shared = this.#shared;
+    return '<p class="compendium-feed-note">Share yours: a friend pastes the code into their duel. Same code, same creature, same stats — everywhere.</p>' +
+      `<button type="button" data-friendly-duel-share="plain">Share code</button>` +
+      (choice.championCode ? `<button type="button" data-friendly-duel-share="champion">🏆 Champion code</button>` : '') +
+      (shared ? `<input data-friendly-duel-share-code type="text" readonly aria-label="${shared.champion ? 'Champion code' : 'Creature code'}" value="${esc(shared.code)}">`
+        + `<p class="compendium-feed-status" data-friendly-duel-share-status role="status" aria-live="polite">${shared.copied ? 'Copied ✓' : 'Code ready — copy it from the box.'}</p>` : '');
+  }
 
   #ready(): boolean {
     return !this.#pending && this.#code.trim().length > 0 && (this.#model?.companions.some((c) => c.id === this.#selected && !c.disabled) ?? false);
@@ -209,7 +245,8 @@ export class FriendlyDuelController {
       `<select data-friendly-duel-companion aria-label="Your companion"${lock}>${options}</select>` +
       `<input data-friendly-duel-code type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="CFB-…" aria-label="Challenger code" value="${esc(this.#code)}"${lock}>` +
       `<button type="button" data-friendly-duel-fight${this.#ready() ? '' : ' disabled'}>${this.#pending ? 'Settling duel…' : 'Duel'}</button>` +
-      `<p class="compendium-feed-status" data-friendly-duel-status role="status" aria-live="polite">${this.#status ? `${esc(this.#status.title)} ${esc(this.#status.detail)}` : ''}</p>`;
+      `<p class="compendium-feed-status" data-friendly-duel-status role="status" aria-live="polite">${this.#status ? `${esc(this.#status.title)} ${esc(this.#status.detail)}` : ''}</p>` +
+      this.#shareHtml(model);
     this.#mount.setAttribute('aria-busy', this.#pending ? 'true' : 'false');
   }
 }
