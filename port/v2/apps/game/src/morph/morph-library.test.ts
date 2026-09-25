@@ -12,6 +12,7 @@ import { createSkeletonPoseProgram } from '../../../../tools/creature-animation/
 import { familyContractForRecord } from '../../../../tools/creature-animation/family-contracts.mjs';
 import { transformPoint } from '../../../../tools/creature-animation/kinematics.js';
 import { paletteFramesV1 } from './morph-individual.js';
+import { CARD_TINT_V1 } from './card-tint.generated.js';
 import { LOW_CHROMA_ROLE, meanSaturation, paletteRoleOfGroup, paletteRoleOfPart, rgbToHsl, type PaletteFrame } from './morph-palette.js';
 import { archetypeGenomeV1, morphParamsV1 } from './morph-params.js';
 import { decodePng } from './png-decode.js';
@@ -66,7 +67,7 @@ describe('the painted library on the card — outcomes', () => {
     expect(turned.sort()).toEqual([...TURNS].sort()); expect(LONG_BODY_ASPECT).toBeGreaterThan(0);
   }, 120_000);
   it('CARD = STAGE: per role, the card master and the real atlas make the same grey/tint decision on every archetype', async () => {
-    let compared = 0, tinted = 0;
+    let compared = 0, tinted = 0; const straddles: string[] = [];
     for (const a of CARD_ARCHETYPES) {
       const f = await load(a.dir), src = json<{ fitDir: string }>(a.dir + 'SOURCE.json'), binding = json<{ parts: { id: string; joint: string; kind: 'part' | 'joint-patch'; layer: 'far' | 'near'; frame: PaletteFrame; cutout: PaletteFrame }[] }>(src.fitDir + 'binding.json');
       const manifest = json<{ creatureId: string }>(src.fitDir + 'parts/manifest.json'), atlas = await decodePng(new Uint8Array(read(src.fitDir + 'parts/atlas/' + manifest.creatureId + '.png')));
@@ -75,11 +76,17 @@ describe('the painted library on the card — outcomes', () => {
       for (const r of ['base', 'accent'] as const) {
         if (!frames.some((x) => x.role === r)) continue;
         const stage = meanSaturation(atlas.rgba, atlas.width, frames, r), card = meanSaturation(f.master.master, f.master.width, whole.map((w) => ({ ...w, role: r })), r, (p) => role.get(f.master.labels[p * 4]!) === r);
-        expect(stage < LOW_CHROMA_ROLE, `${a.earthName} ${r}: stage ${stage.toFixed(3)} vs card ${card.toFixed(3)}`).toBe(card < LOW_CHROMA_ROLE);
+        // the decision BOTH sides use (remapAtlasPaletteV1 reads CARD_TINT_V1 by params.archetype); independent measurements may straddle
+        const decided = CARD_TINT_V1[f.record.recipeHash]?.[r]; expect(decided, `${a.earthName} ${r}: no tint decision in the table`).toBeDefined();
+        const effStage = decided ?? stage < LOW_CHROMA_ROLE, effCard = decided ?? card < LOW_CHROMA_ROLE;
+        expect(effStage, `${a.earthName} ${r}: stage ${stage.toFixed(3)} vs card ${card.toFixed(3)}`).toBe(effCard);
+        if (stage < LOW_CHROMA_ROLE !== card < LOW_CHROMA_ROLE) straddles.push(`${a.earthName} ${r}`);
         expect(stage).toBeGreaterThan(0); expect(card).toBeGreaterThan(0); compared++; if (card < LOW_CHROMA_ROLE) tinted++;
       }
     }
-    expect(compared).toBeGreaterThanOrEqual(CARD_ARCHETYPES.length); expect(tinted).toBeGreaterThanOrEqual(2); // not vacuous: every archetype compared, and the tint branch is actually exercised
+    expect(compared).toBeGreaterThanOrEqual(CARD_ARCHETYPES.length); expect(tinted).toBeGreaterThanOrEqual(2);
+    // control: without the table the Gull's accent is decided differently by the two measurements — the table is load-bearing
+    expect(straddles).toContain('Gull accent'); // not vacuous: every archetype compared, and the tint branch is actually exercised
   }, 300_000);
   it('the BODY takes the colour gene on every archetype (a part on joint root was never recoloured on the eleven sprint archetypes — found by the review 2026-09-24); a crab\'s painted SHADOW stays exactly as painted', async () => {
     const report: string[] = [];
