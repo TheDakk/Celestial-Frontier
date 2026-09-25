@@ -49,7 +49,9 @@ Goose item15 packet audits/ART_BATTLE_FOCUS_20260925/15-goose:plain corrected ma
 
 Heron item16 packet audits/ART_BATTLE_FOCUS_20260925/16-heron:17parts/19joints, fit01, six masks;13/14static, dodge compression55.067ms only. Full native01 0/0,3.90ms stage p95 at4×,780live/784encoded over12.9828s. Keep out of picker until static dodge/support reconciliation and full-stage motion.
 
-Then continue ranked paintings Sparrow/Ibex/Reef Shark onward; existing Python/Beetle masks, specialized uncovered templates, complete-stage motion, C12 Centipede orientation cost and C13 pin review remain in the art program. Done only with measured generated coverage≥80%, no misleading ranked top35 Earth, all motion/picker gates and every library pair at60fps4×CPU. No new completion claims yet.
+Sparrow item17 packet audits/ART_BATTLE_FOCUS_20260925/17-sparrow:fit01 static10/14; alert tail fold plus claw/hit/dodge compression. Full native01 0/0,6.5ms stage p95 at4×,753live/757encoded, but large wing-root gaps. Four-boundary fit02 and two-shoulder fit03 welds rejected with extra folds; retain all. Six masks conserve on fit01. Do not wire.
+
+Then continue ranked paintings Ibex/Reef Shark onward; existing Python/Beetle masks, specialized uncovered templates, complete-stage motion, C12 Centipede orientation cost and C13 pin review remain in the art program. Done only with measured generated coverage≥80%, no misleading ranked top35 Earth, all motion/picker gates and every library pair at60fps4×CPU. No new completion claims yet.
 
 C18 prerequisite repair is signed a7f154f8: full develop profile5,080pass, sole historicalI5 red; original lock and v1 samples unchanged. No whole-battery PASS, push or hosted eligibility. Asset batches have their own scoped static/native and root validate evidence; no unchanged full battery retries.
 
