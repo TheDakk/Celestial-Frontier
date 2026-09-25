@@ -151,7 +151,7 @@ const genomeOf = (seed: number) => {
 };
 const idOf = (seed: number) => ownershipContentId('creature', `command-break-${seed}`) as CreatureInstanceId;
 const simulate = (seeds: readonly number[], decisions: readonly EncounterDecisionV1[]) => runEncounterV1({
-  mode: 'command', defender: { name: ENCOUNTER.defender.name, genome: ENCOUNTER.defender.battleGenome as never },
+  mode: 'command', defender: { name: ENCOUNTER.defender.name, genome: ENCOUNTER.defender.battleGenome as never, phase: true },   // a Guardian: §20 phase
   party: seeds.map((seed) => ({ name: `Companion ${seed}`, genome: { ...genomeOf(seed).genome, xp: 0, hurt: 0 } as never, stance: 'balanced' as const })),
 }, decisions);
 function autoAnswers(seeds: readonly number[]): readonly EncounterDecisionV1[] {
