@@ -1,0 +1,24 @@
+{
+  "name": "Otter (mustelid)",
+  "exemplar": "River Otter",
+  "covers": [
+    "River Otter",
+    "Otter",
+    "Giant Otter",
+    "Sea Otter",
+    "Weasel",
+    "Stoat",
+    "Mink",
+    "Marten",
+    "Fisher",
+    "Mongoose"
+  ],
+  "bodyPlan": "quadruped",
+  "mustPaint": [
+    "long low tubular body on short legs",
+    "thick tail tapering to a point",
+    "blunt whiskered head with small ears",
+    "plain unmarked coat"
+  ],
+  "why": "7 misleading and 3 caveat. Weasel, Stoat and Mink stay caveat (slimmer), and so does Sea Otter (floats on its back)."
+}
