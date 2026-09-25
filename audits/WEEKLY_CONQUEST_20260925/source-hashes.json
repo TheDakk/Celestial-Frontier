@@ -1,0 +1,14 @@
+{
+  "COMBAT_AND_CONQUEST.md": "0294518355478655f6120512b8e3508632fb47819ee99ad6bd129562f5a8036f",
+  "QUESTS_AND_CHAPTERS.md": "703e88d9a22c9e2f4548e0f3437adae4ba85ad23042e24991b9c0721a6a8d296",
+  "celestial-frontier-codebase-reference.md": "6fef30af8394bd9d86d93e49ee45a4ef21cc840bbca107463010421420eac861",
+  "port/v2/apps/game/src/arc6-combat-action.ts": "86bffed66b122680e6b6ea57f8b2941ea9385f204b393866bb3be801726ad018",
+  "port/v2/apps/game/src/weekly-charters.ts": "81d864e090bb2616e6578119e05a20b586e390ea431fc17809b17965585de1fb",
+  "port/v2/package-lock.json": "9a620a2df3a055f767014ecc09a03461a8bb4f49c289c2cd52cda49804620239",
+  "port/v2/packages/persistence/package.json": "bc3144156991a76ad1befe64cad6170b5c7f13c0985c7e4c8d2f1f3b9eb26afb",
+  "port/v2/packages/persistence/src/combat-settlement.ts": "46364811ce12ea859c321fbdc922eb38b5ad7a86af5d0468665bd040581a5c58",
+  "port/v2/packages/persistence/test/combat-settlement.test.ts": "b92ab67722e7f5c83bcace58c3e685a7a5bf595c1fcb2efde050b83959e928e3",
+  "port/v2/tests/arc6-combat-main-wiring.test.ts": "3f9bf8dbc363c158458e6df3b090b889d12af485e43a86e281245a4a12db366a",
+  "port/v2/tests/starter-charters.test.ts": "6048ff5f7b099e21ed3d6ee401db74d0fb3276766d50e1bd01418f174db7f5fc",
+  "port/v2/packages/persistence/src/weekly-charters.ts": "3d3c883c8450e9d9701c4195f90f292e14c9dbacdc99844d2465ac4ec1877ed5"
+}
