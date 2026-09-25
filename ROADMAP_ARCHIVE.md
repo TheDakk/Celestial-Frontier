@@ -275,6 +275,61 @@ Self-contained: either lane can resume from this block alone. Older handoffs are
 
 ## Archived 2026-09-23 — Python diagnosis before approved open-pose correction
 
+## Live handoff — 2026-09-25 I5 v2 stopped at first calibration
+
+Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac. Signed instrument cfd6e7fb7428460a42691ab03ea8d7c2ae17a955 (G) adds a separate v2 epoch with zero growth allowance for every v1 counter. 56 focused controls and root validation passed. V1 budget, samples, collector/contract and tests remain unchanged. No source or instrument edits occurred during the epoch.
+
+Nick authorized three independent calibrations plus one certification on exact integrated source, with no retries. The read-only remote check and clean Claude source matched signed b4f191c3538f78318a183705f89272b38b88118e, including ffa1f126. Detached measurement checkout /private/tmp/cf-i5-v2-b4f191c3 preserved Claude's read-only lane and both branch identities.
+
+Run i5-v2-b4f191c3538f-calibration-1 is INSTRUMENT-FAIL after39,339ms: phone middle-scroll-list thumb settlement sees ready132×132 rows cmem-0748 and cmem-0752 absent from broker leased/cached key inventories. Exact-run verification validated the terminal refusal. Lifecycle complete,0 completed outcomes/78 blocked,2 partial phone screenshots,0 successful calibration samples. Runs2–3 and certification did not run. No active v2 budget was emitted and no memory/PR43 PASS is claimed.
+
+The new producer authority matched7b7285aa54eb674deb0a32e967cc346faac3197d7b6e2e6bcc2270f902cd0839; v2 measurement authority de50d47c26fbc084415bef528cd5a06f487b7829e14d149c824f2d2e73fb1767. Edge153.0.4234.48/CDP1.3 matched. V1 budget SHA c109b5845b12862bbd8fa069b6f8e394b48d9d8568d8537f20565b63c5d907fc is unchanged; no historical rebinding. Product source stayed clean at begin/end.
+
+Packet: audits/I5_V2_EPOCH_20260925/README.md and DIAGNOSIS.md, full lossless raw report/generated instrument, command logs, images, hashes and monotonic execution ledger. Source inspection identifies paintedThumbLease bypassing the broker while artDiagnostics exposes only broker inventories. That coverage gap is the leading explanation, not a memory measurement. Keep the gate: provide truthful painted ownership/resource counters and negative controls, including release/trim behavior.
+
+Paired next steps: Codex holds the signed instrument/outcome; Nick can open Claude with DIAGNOSIS.md. Claude supplies the painted diagnostic surface; Codex can adapt the v2 observer without weakening growth/ownership gates. The stopped epoch is not resumed; any new epoch requires explicit authorization after changed source/instrument. No fetch/sync/push/PR/label/hosted/merge/release/deploy. Mode UNFROZEN but no hosted authority used. Existing PR43 remains anthropic/mac→develop. Art priority and phone-cost findings remain recorded; no painting work began. .DS_Store untouched.
+
+
+## Live handoff — 2026-09-25 authorized guarded I5 v2 epoch
+
+Nick authorized a separate v2 budget epoch and explicitly confirmed three independent calibration runs plus one certification, no retries, on the same exact integrated anthropic/mac source. Zero growth allowance is declared for every v1 counter. Existing v1 budget, samples, collector/contract and tests remain untouched. A regression is never converted into a larger limit.
+
+The read-only remote lookup and clean Claude source agree on signed b4f191c3538f78318a183705f89272b38b88118e, including painted-card memory bound ffa1f126. Codex's ownership remains macOS /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac; Claude's lane stays read-only. Detached isolated product checkout: /private/tmp/cf-i5-v2-b4f191c3. Instrument is the enclosing signed preparation commit, with separate source provenance; no instrument files are installed into the product source.
+
+Packet: audits/I5_V2_EPOCH_20260925/README.md. Standalone compendiummem-v2.mjs binds the exact producer before collecting, materializes a separately hashed v2 instrument without altering v1, evaluates calibration under guarded finite limits, activates only after three independent raw-reducible green runs, and certifies the same source once. 56 focused controls and root validation pass. No browser attempt consumed in preparation. Prior failed I5 and its full packet remain historical, unchanged.
+
+Paired next steps: Codex signs the instrument, runs the authorized epoch once, and signs the measured outcome/refusal. Claude holds the chosen source and then consumes that result. No fresh generic permission is needed. No fetch/sync/push/PR/label/hosted/merge/release/deploy; mode UNFROZEN but no hosted authority used. Nick's painting order remains pending. Existing PR43 remains anthropic/mac→develop; v2 measurement is not hosted admission.
+
+
+## Live handoff — 2026-09-24 integrated I5 attempt retained
+
+Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. Prior signed repairs 39e00aa0 (item5), 4cfd5584 (item7) and 4b56ef82 (five reds) are integrated by Claude, per Nick. Claude also reconciled the Fiddler Crab pinch expectation; the other three decapod refusals remain. Prior handoff is archived verbatim.
+
+Nick directed one I5 attempt on Claude's pushed head as it stands, never rebinding. Read-only remote lookup and clean Claude source both identified signed fb82c32cac67f8d980fe1752ae92d9a1f0eb729c. Isolated detached measurement source preserved Claude's read-only lane and both branches. Run 20260924-i5-integrated-fb82c32cac67 is INSTRUMENT-FAIL: built producer f8f1aab67cde6826301320f404faba93757f8f22bb19048fbe3e8d97f5d259e9 differs from unchanged budget producer bd8edd1b570d4bc4e1933a87a9e0552e75208d18ca43c40d2ffcd6712ebc1a5b. Measurement authority remains 6a829fb18eab4c171afaace0f49ad2a987cfcdc520d33dbc05337c379df85ee2. Edge153.0.4234.48/CDP1.3 preflight passed. Candidate browser never launched: zero measured outcomes,78 blocked; exact-run verifier also refused. No memory or PR43 PASS claim. No retry/rebind/downstream battery.
+
+Packet: audits/I5_INTEGRATED_20260924/README.md, complete report/logs, exact commands, source/dependency receipts, authorities and SHA256SUMS. This evidence-only commit changes no runtime, test, binding, budget, threshold or S2 sentinel. .DS_Store untouched; Node26.9.0 uninterrupted-session startup receipt reused.
+
+Painting direction retained for Nick's next order: weigh generated-family coverage against the Earth plan, including rig prerequisites and recognition, not only Earth species count. Item11 and the source-hashed studies are indexed in the packet. No paintings ordered or generated. Phone-cost issue remains Chimpanzee/Centipede pair10.70ms p95 at4× CPU, not a physical-iPhone measurement; no threshold change.
+
+Paired next steps: Codex holds the signed refusal and awaits a resolved source/authority plan plus new attempt authority. Nick can open Claude with this packet; Claude consumes the observed mismatch and preserves historical provenance. No fetch/sync/push/PR/label/hosted/merge/release/deploy by Codex. Actions mode UNFROZEN; no exact hosted authority used, zero hosted cost. Existing PR43 is anthropic/mac→develop. Original Python-first review remains audits/MOTION_ANATOMY_20260923/review.html in Claude's source.
+
+
+
+## Live handoff — 2026-09-24 three signed items, await Claude integration for I5
+
+Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac, tracking origin/openai/mac. Item5 signed `39e00aa02e50b139fd1dba23885f4a4a15f4dce1` (G); item7 signed `4cfd5584ec232a070a5c0a624710e2198a76c1e0` (G); the enclosing commit signs the five-regression repair separately. Current packet: audits/MOTION_FIVE_REDS_20260924/README.md and SIGNING_HANDOFF.json. No fetch/sync/push/PR/label/hosted/merge/release/deploy by Codex. Claude absolute lane remains read-only. .DS_Store untouched; Node26.9.0 uninterrupted session receipt reused.
+
+Claude resolved actual Centipede motion fix+KNOWN removal together in signed `f73394018950bcb24341008dd5efc6f9634a6a5e` (G). Local family-actions.ts matches its full bytes. Nick reports library-arena8/8 and old-line negative control; Codex's own current-stage overlay records0 refusals at0.85×/1×/1.15×. Item7 routes53 candidate templates while all53 remain explicitly pending painted qualification. No new art.
+
+The five-regression repair restores insect exact-rigid recovery independently of travel while preserving crab/quadruped refusal boundaries. Current86-bullet release inventory has independently measured ordered identity and matching exact/removal controls. Final focused runs pass all60 unique tests, all3 typechecks and root validation;90 protected inputs unchanged. Tested source hashes verified unchanged before signing. Every refusal/rejected trial remains in its packet; no unchanged battery repeated.
+
+Claude integrated item4:133 pinned files total50,426,871 bytes; gzip bindings meet the unchanged128MiB package cap. Its controlled-Edge cached-arena reload evidence is read-only recorded. Preserve signed preview fix `23490db397483ad8b6d0768b559bb079d0e595e9`: devPreviewHtmlPlugin() in vite.config.ts and its corresponding pwa-offline.test.ts plugin-list pin. This local repair does not touch those two files.
+
+Latest I5 instruction is FINAL INTEGRATED anthropic/mac source, once, AFTER Claude merges all three signed results. Earlier local-only next-run choice is superseded. No fresh I5 attempt, historical-authority rewrite or final develop profile ran in this signing batch. Await the exact final clean integrated head; no PR43 green claim from local diagnostics.
+
+Paired next steps: Codex holds signed results and awaits that source identity for I5. Nick opens Claude now with the three commits. Claude merges them, retaining its actual pin removal and preview plugin/pin, then supplies the final clean integrated head. Existing PR43 remains anthropic/mac→develop; no new PR or hosted attempt requested. Original Python-first motion review is audits/MOTION_ANATOMY_20260923/review.html; no new native film/CPU number claimed. Prior 1Password refusals are historical; signing now works through the unchanged wrapper.
+
+
 ## Live handoff — 2026-09-24 five regressions repaired, source/signing gates pending
 
 Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac; tracks origin/openai/mac (cached0 behind/9 ahead, no fetch). Last signed HEAD1e9f5920 G. Claude absolute lane read-only, observed clean signed4c2bd1ec6d052ef3081bd6aa0848e33b15db010f. No GitHub write, sync, merge, release or deployment. .DS_Store untouched; existing Node26.9.0 session receipt reused.

@@ -6,6 +6,37 @@ prepare their own work and publish it only through the budget-authorized path,
 with the standing green-PR authorization defined below; no release authority is
 implied.
 
+## Current operating model — Nick, 2026-09-25 (supersedes older lane handoffs below)
+
+This reference matches the explicitly adopted operating model in Claude's
+`audits/OPERATING_MODEL_20260925/README.md`. Each lane writes only its own
+worktree. At EVERY run start and batch end, Codex reads the absolute read-only
+`/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/MAILBOX/TO_CODEX.md`
+and replies in its own `audits/MAILBOX/TO_CLAUDE.md`; Claude does the reverse.
+State done, blocked, or in-progress delivery truthfully, with evidence paths and
+concrete requests. Nick is not the message courier.
+
+The shared Git object store exposes signed commits immediately. Use
+`git log HEAD..anthropic/mac` from Codex's lane (Claude uses `HEAD..openai/mac`).
+Merge signed lane results `--no-ff`, hand-reconcile, and retain both histories
+when the required local battery stays green; do not wait for a push or Nick's
+relay. Finish and sign local work before merging. Never edit the other worktree.
+Push only the owned branch to its matching origin branch after the required
+local battery is green and the budget/workflow-trigger check permits it.
+These standing lane merge/push permissions supersede older no-sync/no-push and
+PR-before-cross-lane-sync descriptions in this reference for this sprint.
+
+Large batches continue through local work. Questions are batched into the end
+report. PRs, labels, hosted attempts, merges to develop/main, releases and
+deployments remain explicit gates. Claude's signed mailbox decision records D5
+as at most one label cycle per day per PR only with the WHOLE local gate list
+green (including overridecontrol); no red, stale, missing or ambiguous evidence
+may be bypassed, and the exact budget authorization/attempt record remains
+required. D6 keeps battle2 flagged until the iPhone probe and v2 certificate.
+D1's later signed decision authorizes the ranked painting order with one sheet
+per ten, not per-paint approval; delivered paintings still need their evidence.
+A mailbox acknowledgment never claims a pending delivery or certificate passed.
+
 ## Long-session decision override — Nick, 2026-09-13
 
 No new branches. Prune on openai/mac first; the three promotion tiers into develop use merge
@@ -99,65 +130,38 @@ identify the host OS, and match exactly one ownership row above.
 5. The preflight and final handoff record the verified row verbatim. “Correct
    repository” without the app/OS-qualified folder and branch is insufficient.
 
-## Commit signing
+## Commit signing and GitHub transport
 
-Nick’s macOS setup and rules, verified 2026-09-22, apply to both agents on this Mac:
-`~/.gitconfig` sets `gpg.format=ssh`, `commit.gpgsign=true`, and
-`gpg.ssh.program=/Users/nick/.local/bin/git-ssh-sign`. The wrapper sets
-`SSH_AUTH_SOCK` to
-`~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock` and executes
-`/usr/bin/ssh-keygen`. Verify the active configuration with
-`git config --show-origin --get gpg.ssh.program` and a commit’s signature with
-`git log -1 --format='%h %G?'`; `G` means a good signature.
+Verified September25 on this Mac: shared REPOSITORY config uses SSH commit
+signatures with `user.signingkey=~/.ssh/cf_agents_signing.pub` and
+`gpg.ssh.program=~/.local/bin/git-ssh-sign-cf`. The dedicated agent key is loaded
+from the macOS login keychain; it no longer depends on 1Password. Nick reports
+that GitHub has the public key registered for signing. Global 1Password config
+is untouched. Do not recreate keys, modify either signing wrapper, reveal key
+material or credentials, or revert the repository to the old wrapper.
 
-- Never change `gpg.ssh.program` back to 1Password’s `op-ssh-sign`; Nick reports
-  that it fails inside agent sandboxes. Use the configured wrapper.
-- Never commit unsigned: no `--no-gpg-sign` or `-c commit.gpgsign=false`.
-  Do not edit `~/.gitconfig` or `~/.local/bin/git-ssh-sign`.
-- The agent sandbox keeps `.git` read-only. Run `git commit` outside the sandbox
-  with approval. The wrapper reaches the agent socket there, or in a sandbox
-  that explicitly allows that exact socket path. Do not enable sandbox
-  `network_access` for commit signing.
-- If signing fails with “agent refused”, “no private key”, or “Operation not
-  permitted”, retry at most once, then stop. Tell Nick the 1Password approval
-  probably lapsed and ask him to approve the prompt with **“until quit”**.
-  After his approval, retry once; never loop or use an unsigned fallback.
+Never commit unsigned. No `--no-gpg-sign` or `commit.gpgsign=false`. Verify
+configuration with `git config --show-origin --get gpg.ssh.program` and
+`git config --show-origin --get user.signingkey`. The one-time throwaway proof is:
 
-## GitHub SSH authentication
+```sh
+git log -1 --format='%G?' "$(git commit-tree -S -m check "$(git rev-parse 'HEAD^{tree}')")"
+```
 
-All four agent worktrees use the SSH origin
-`git@github.com:TheDakk/Celestial-Frontier.git`. The private key stays in the
-local 1Password SSH Agent; never export it into a worktree, copy it between
-machines, print its public-key blob in a handoff, or silently fall back to an
-HTTPS credential or personal access token.
+It must print G; quote the format for zsh. The completed Codex proof is recorded
+in audits/OPERATING_MODEL_CODEX_20260925/verification.json; do not repeat it every
+message. Signed commits still require approved execution outside Codex's
+read-only .git sandbox. If signing fails, diagnose the keychain/macOS-agent
+path and exact error; do not ask Nick to unlock 1Password or silently fall back
+to unsigned commits. Do not enable sandbox network access just for signing.
 
-Each Mac and Windows environment must pass this fail-closed preflight before
-its first GitHub write, and repeat it after an OS, OpenSSH, 1Password, SSH-key,
-or Git remote change:
-
-1. Confirm `git remote get-url origin` is the exact SSH URL above.
-2. Verify GitHub's presented host-key fingerprint against
-   <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints>
-   before accepting a new or changed host key. A changed unverified key stops
-   the batch.
-3. Run `ssh -T -o BatchMode=yes git@github.com`. Success is GitHub's exact
-   authenticated-account message followed by its intentional exit status `1`
-   because GitHub provides no shell; an authentication, agent, account, or
-   host-key error is red.
-4. Run `git ls-remote origin HEAD`. It must return one full commit and exit
-   zero, proving that the same SSH path can read this repository.
-5. A normal `git fetch origin` then serves as the batch's repository-level SSH
-   read check. Before an authorized push, re-run the two explicit probes only
-   when the agent/socket/config changed or the fetch exposed an SSH error.
-
-`ssh-add -l` is diagnostic, not the decisive test: on macOS it can query
-Apple's default `SSH_AUTH_SOCK` even while OpenSSH correctly follows a
-per-host `IdentityAgent` entry for 1Password. Inspect the effective
-`ssh -G git@github.com` configuration or query the explicit 1Password socket
-when diagnosing that mismatch. On Windows, use the 1Password/OpenSSH agent
-integration configured on that machine; do not assume the Mac socket path.
-Record only the account name, pass/fail result, remote URL, and repository SHA
-in the handoff—never private-key material.
+`origin` is `https://github.com/TheDakk/Celestial-Frontier.git`, using the
+already-logged-in GitHub CLI credential helper and macOS keychain. No SSH
+1Password authentication probe is needed for this transport. Verify the remote
+and read access as needed before an authorized write; never print/export tokens
+or silently switch transport/credentials. The canonical setup instructions are
+Claude's audits/OPERATING_MODEL_20260925/setup-agent-signing.sh; setup has already
+been completed and is not a recurring task. Do not reinstall it on every run.
 
 ## GitHub Actions budget gate
 
@@ -216,8 +220,8 @@ Before every new coding batch:
 1. Pass the exact app × OS × physical-root × branch check in the fail-closed
    workspace identity section. Stop and reopen the correct workspace if any
    element does not match; never continue from another agent's folder.
-2. Verify the worktree's SSH origin and authentication under the GitHub SSH
-   section above when this environment has not yet established that proof.
+2. Verify the repository signing wrapper and HTTPS origin under Commit signing
+   and GitHub transport above; reuse the completed one-time signature proof.
 3. Read `GITHUB_ACTIONS_BUDGET.md`, record its current mode, then read
    `ROADMAP.md`, including its live session handoff, then
    `PROCESS_LAWS.md` and the agent's normal instructions (`AGENTS.md` for
@@ -252,8 +256,8 @@ states:
 
 1. The exact verified ownership row: app, OS, physical folder, branch, and
    matching upstream branch.
-2. The exact SSH origin plus the last Mac/Windows authentication and repository
-   read result for the environment performing the work.
+2. The configured origin/transport, active signing wrapper and relevant repository
+   read result; never expose credential or key material.
 3. Whether the worktree is clean and synchronized with its upstream and the
    latest `origin/develop`.
 4. Which core and task-relevant Markdown files it read.
@@ -321,72 +325,30 @@ conflicts by discarding work, bypassing a red/unfinished check, force pushes,
 manual Pages writes, new external targets/secrets, version changes, releases,
 or production deployment decisions.
 
-## Required paired handoff reminder
+## Required paired handoff through mailboxes
 
-After every completed batch, push, pull-request update, merge check, or
-conflict report, both OpenAI/Codex and Anthropic/Claude Code must tell Nick
-what happens on **both** sides. Use this short format in plain language:
+At batch end, reread the opposite mailbox by its absolute read-only path and
+reply in the current lane's mailbox with item status, evidence paths, signed
+commits and precise next requests. New decisions can arrive during the batch;
+reconcile them before signing the handoff. Each lane consumes the other's signed
+commits directly from the shared store, under the current green-battery merge
+rule. Nick need not open the other app or relay the packet.
 
-```text
-Current side: <OpenAI/Codex or Anthropic/Claude Code> — <what was committed,
-pushed, or is still pending>.
-GitHub step: <the exact action Nick must take now, or "none">.
-PR details: <base branch, source branch, exact copy-ready title, and exact
-copy-ready description; or "not needed">.
-Other side: <the exact safe synchronization step and when to do it>.
-Release status: <develop/main/live-site status; normally "no release or
-deployment performed">.
-Actions budget: <mode, repository visibility/billing assumption, standing private
-cap, exact authorized run count and attempts, or "FROZEN — no GitHub
-write/workflow authorized">.
-```
-
-The reminder must apply these rules:
-
-1. Name both environments explicitly; never say only "the other branch."
-2. If the current change has not been merged into `develop`, say that the
-   other environment does not have it yet. It may continue unrelated work,
-   but must not expect the new change or copy files manually.
-3. If a pull request is ready, tell Nick to review and merge that pull request
-   into `develop`. Always provide all four copy-ready PR fields: base branch,
-   source branch, title, and description. The description must summarize the
-   change, list verification performed, state the cross-agent synchronization
-   effect, and state that no release or deployment is included. Do not imply
-   that saving, committing, or pushing merged it.
-   Before a PR receives its one-run label or is marked Ready, its title and
-   description must be refreshed to cover the accumulated exact head: player or
-   technical purpose, root cause when repairing a defect, bounded scope,
-   completed and pending verification, retained evidence/authority where
-   relevant, base/head, cross-agent synchronization, and release boundary.
-   After terminal merge, update that same description with the exact run result
-   and merge commit. A stale description from an earlier partial batch is not a
-   complete PR description.
-4. Only after the pull request is merged may the other agent bring in the
-   change. At its next coding batch, that agent must fetch and merge the latest
-   `origin/develop` into its own clean agent branch under the startup procedure.
-5. If the other worktree has uncommitted changes, tell Nick not to pull,
-   switch, or merge there. The other agent must inspect and safely finish or
-   commit its own work first.
-6. State clearly whether Nick needs to open the other application now. In the
-   normal case, synchronization can wait until that agent's next coding batch.
-7. Never describe `develop`, `main`, or the live site as updated unless that
-   specific merge or deployment has been verified.
-8. Provide the PR fields every time a new PR is needed, including in follow-up
-   status messages. If a PR already exists, provide its number or link and say
-   whether its existing title or description needs to change.
+The end report states the current lane result, what the other lane needs next,
+any true user-only gate, and whether a GitHub write occurred. Never claim that
+another lane, develop/main or the live site contains a change merely because it
+was committed locally. For an actual proposed PR, include exact base/source,
+copy-ready title/description and tested source identity. Update stale PR text
+before any approved hosted attempt. No new PR is implied by a mailbox exchange.
 
 ## How changes move between agents
 
-```text
-agent branch → budget-authorized push → pull request → develop
-                                              ↓
-                         other clean agent branch merges origin/develop
-```
-
-Do not copy files manually between worktrees. If the two agents change the
-same lines, Git stops with a conflict rather than silently losing either
-change. Resolve that conflict on the agent branch, test, push, and let the
-pull request update.
+Machine lanes merge signed commits from the shared local object store directly,
+with --no-ff and hand reconciliation, after local validation. A remote push is
+not a prerequisite for local visibility. The owned branch can then be pushed
+under standing green-battery authority. Integration into develop/main and any
+release still follow their separate explicit gates. Each agent remains solely
+responsible for edits and merges in its own worktree.
 
 ## Resumable batch and human-preview record
 

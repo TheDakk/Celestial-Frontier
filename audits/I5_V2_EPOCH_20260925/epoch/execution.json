@@ -1,0 +1,77 @@
+{
+  "epoch": "i5-v2-b4f191c3538f",
+  "head": "b4f191c3538f78318a183705f89272b38b88118e",
+  "source": "/private/tmp/cf-i5-v2-b4f191c3",
+  "instrument": {
+    "commit": "cfd6e7fb7428460a42691ab03ea8d7c2ae17a955",
+    "sha256": "085ec0461168160a422adabb8d829350f4b0e686ea58a91ea1b69280a78ae489"
+  },
+  "v1Sha256": "c109b5845b12862bbd8fa069b6f8e394b48d9d8568d8537f20565b63c5d907fc",
+  "automaticRetries": 0,
+  "steps": [
+    {
+      "phase": "calibration-1",
+      "exitCode": 1,
+      "runId": "i5-v2-b4f191c3538f-calibration-1",
+      "verificationExitCode": 1
+    }
+  ],
+  "commands": [
+    {
+      "name": "prepare-build",
+      "executable": "npx",
+      "args": [
+        "vite",
+        "build",
+        "--mode",
+        "evidence"
+      ],
+      "startedAt": "2026-09-25T02:37:47.536Z",
+      "durationMs": 2876.2451669999996,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "edge-preflight",
+      "executable": "node",
+      "args": [
+        "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/compendiummem-browser-preflight.mjs"
+      ],
+      "startedAt": "2026-09-25T02:37:51.297Z",
+      "durationMs": 3087.4412089999996,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "name": "calibration-1",
+      "executable": "node",
+      "args": [
+        "/private/tmp/cf-i5-v2-epoch-b4f191c3/instrument/collector.mjs",
+        "--calibrate"
+      ],
+      "startedAt": "2026-09-25T02:37:54.572Z",
+      "durationMs": 39453.178084,
+      "exitCode": 2,
+      "error": null
+    },
+    {
+      "name": "calibration-1-verify",
+      "executable": "node",
+      "args": [
+        "/private/tmp/cf-i5-v2-epoch-b4f191c3/instrument/collector.mjs",
+        "--verify-run=i5-v2-b4f191c3538f-calibration-1"
+      ],
+      "startedAt": "2026-09-25T02:38:34.220Z",
+      "durationMs": 917.5662909999955,
+      "exitCode": 1,
+      "error": null
+    }
+  ],
+  "status": "stopped",
+  "finding": "calibration-1 refused; epoch stops without retry",
+  "finalSource": {
+    "head": "b4f191c3538f78318a183705f89272b38b88118e",
+    "status": ""
+  },
+  "v1Unchanged": true
+}

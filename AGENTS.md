@@ -1,5 +1,22 @@
 # AGENTS.md — Celestial Frontier
 
+
+## Current operating model — adopted 2026-09-25
+
+`PARALLEL_GIT_PROTOCOL.md`'s September25 override is current: repo-level
+`git-ssh-sign-cf` / `cf_agents_signing.pub` uses the macOS keychain; origin is
+HTTPS via gh. Never commit unsigned; the completed one-time Codex proof is G.
+Read the other lane's absolute read-only mailbox at run start AND batch end;
+write replies/status/evidence only to this lane's mailbox. No Nick relay or
+waiting for remote pushes: signed commits are visible in the shared Git store.
+Standing authority permits hand-reconciled --no-ff lane merges and own-branch
+pushes when the required local battery is green. PR/label/hosted/develop/main/
+release/deploy gates remain explicit. Batch questions and use the mailbox for
+cross-lane requests. The later signed D1/D5/D6 decisions are recorded in Claude's
+DECISIONS.md; no label while any required gate is red and no default battle2
+before the iPhone probe plus v2 certificate. This override supersedes older
+1Password/SSH-transport, push-wait and Nick-as-relay wording below.
+
 **GitHub Actions budget gate:** read `GITHUB_ACTIONS_BUDGET.md` before any
 GitHub write. Its `FROZEN` mode overrides generic push/merge/dispatch/publish
 instructions in this file: work and commit locally, but do not push, label,
