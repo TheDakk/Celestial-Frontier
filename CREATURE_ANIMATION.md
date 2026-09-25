@@ -727,6 +727,13 @@ Evidence: audits/SOLVER_STAGE_SUPPORT_20260921/README.md.
 
 Cadence qualification is **S2 RED** on the retained Freshwater Crab at0.0716501458 body lengths (154ms, leg0Far reach refusal). Crab/Coconut native passes do not generalize the0.2 ceiling into a universal capacity. The helper is not admitted for E1 integration. Packet: `audits/STAGE_CADENCE_20260921/NATIVE_ROWS.md`. No production solver defaults or thresholds changed.
 
+
+### Layered stage approach reach — matches code 2026-09-25
+
+`measureLayeredStanceReach(record, supports, maximumPerStance, card)` is a separate sampled caller instrument. It combines the actual card's approach with its additive idle across 121 gait phases ×32 idle phases, checks zero displacement first, and bisects the existing stage cap eight times. The caller retains its existing0.5-body-length cap and0.9 reserve. Refusals propagate; no silent fallback grants unmeasured travel. Non-ground/chainless families return not-applicable. The old isolated `measureStanceReach`, contact/override limits, S2 inputs and accepted bindings are unchanged.
+
+This helper is not yet wired into Claude-owned battle2. The explicit proposed adapter patch and transformed-bundle native proof live in `audits/ART_BATTLE_FOCUS_20260925/approach-envelope-01/`. Ibex's full proposed battle has0/0refusals instead of the retained26/14; this is proposal evidence, not a certificate of unmodified HEAD. Existing-library contact survey admits every applicable case, with six non-applicable; native skin/picker and full-stage travel still require integration checks. The helper's measured local initialization cost on five new quadrupeds is0.67–0.82seconds per call; it is a load-time instrument, never a per-frame function. Sampling plus reserve does not replace runtime publication guards or prove continuous-time admission.
+
 ### Reach-derived cadence — matches code 2026-09-22
 
 `measureStanceReach(record, supports)` in creature-stance-reach.ts measures the authored approach at121 phases in both travel directions against the unchanged family solver,24 bisections to the first sampled refusal, rounded down to1e-6 body lengths. The result is computed once and passed as `stanceReachBodyLengths` to createStrideCadence; each full cycle advances at most twice that bound. It is sampled admission, not arbitrary-pose certification; native proof remains required. In stage mode only, declared folded legs use body-relative targets and report `space:body`; arena measurement excludes holder translation for those contacts. No fold inference from bone length or undeclared loop evidence. Solver-mode arithmetic, thresholds, masks and bindings unchanged.
