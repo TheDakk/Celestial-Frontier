@@ -60,6 +60,8 @@ import { createTurnCueSink, type TurnAudioRuntime, type TurnCueSink } from './so
 import { createCreatureVoiceHook, type CreatureVoiceHook } from './soundkit/creature-voices.js';
 import { synthesizePlaceholderLibrary } from './soundkit/placeholder-archetype.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
+import { BATTLE2_SWAP_BEAT_MS_V1, BATTLE2_SWAP_BEAT_REDUCED_MS_V1, battle2SwapBeatsV1, type Battle2SwapBeatV1 } from './battle2/swap-beats.js';
+import type { CombatSettlementPlanV1 } from '@cf/domain-combatcore';
 import { placeCombatants } from './battle2/placement.js';
 import { repoRelativeSource } from '../../../tools/creature-animation/record-source.mjs';
 import { MASS_BY_SIZE_INDEX, MASS_CLASS } from './motion/timing.js';
@@ -118,6 +120,8 @@ export interface Battle2SettlementLike {
   readonly champion: Battle2Champion;
   readonly encounter: { readonly defender: { readonly battleGenome: Readonly<Record<string, unknown>> } };
   readonly transcript: { readonly log: readonly Readonly<Record<string, unknown>>[] };
+  /** §20 Guardian party: the settled plan's party block; the stage plays one relay beat per earlier fighter first. */
+  readonly party?: CombatSettlementPlanV1['party'];
 }
 export interface Battle2StudyInput {
   readonly mount: HTMLElement;
@@ -160,6 +164,8 @@ export interface Battle2Status {
   readonly audio: string;
   /** Per-side creature voice (B5): archetype, material and pitch, or why the side is silent. */
   readonly voices: Readonly<{ left: string | null; right: string | null }>;
+  /** §20: relay beats before the decisive leg (one per earlier fighter) and the one showing (-1 before, = beats when done). */
+  readonly beats?: Readonly<{ count: number; index: number; text: string | null }>;
   /** E1: the habitat arena selection (world, medium per side, source), or null before it ran / when it refused. */
   readonly arena: string | null;
   /** E1: per side, the anatomy attack in play (`verb (contactJoint)`) or why the family delivery clip is used. */
@@ -264,13 +270,24 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
   let app: Battle2AppLike | null = null, stage: BattleStage | null = null, ticking = false, disposed = false, cueSink: TurnCueSink | null = null;
   const audioSummary = (): string => (cueSink ? `${cueSink.log.length} cues: ${cueSink.log.map((e) => `${e.cueId}=${e.result}`).join(', ')}` : 'none');
   let voices: CreatureVoiceHook | null = null;
-  const status = (): Battle2Status => Object.freeze({ phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }) });
+  let beats: readonly Battle2SwapBeatV1[] = [], beatIndex = -1, beatStart = 0, beatCaption: StageTextLike | null = null;
+  const beatMs = input.reducedMotion ? BATTLE2_SWAP_BEAT_REDUCED_MS_V1 : BATTLE2_SWAP_BEAT_MS_V1;
+  const status = (): Battle2Status => Object.freeze({ beats: Object.freeze({ count: beats.length, index: beatIndex, text: beatIndex >= 0 && beatIndex < beats.length ? beats[beatIndex]!.text : null }), phase, reason, label, turns: turns.length, turnIndex, skipped: Object.freeze([...skipped]), rigs: Object.freeze({ ...rigLabels }), ticks, effects: Object.freeze({ ...effectLabels }), arena: arenaLabel, attacks: Object.freeze({ ...attackLabels }), refusals: refusalsOf(), audio: audioSummary(), voices: Object.freeze({ left: voices?.status.left ?? null, right: voices?.status.right ?? null }) });
   const setPhase = (next: Battle2Phase, why: string | null = null): void => { phase = next; reason = why; section.dataset.battle2Status = next; if (why) section.dataset.battle2Reason = why; };
   const tickUnguarded = (): void => {
     if (disposed || !stage || !app) return;
     if (!input.mount.isConnected || section.parentElement !== input.mount) { dispose('mount left the document'); return; }
     ticks++;
     const play = (i: number): void => { turnStart = input.clock(); impactAt = stage!.play(turns[i]!).beats.impactAt; section.dataset.battle2Turn = String(i); };
+    // §20 relay beats: each earlier party fighter's exit holds a captioned beat before the decisive leg's first turn
+    if (turnIndex < 0 && beatIndex < beats.length) {
+      if (beatIndex < 0 || input.clock() - beatStart >= beatMs) {
+        beatIndex++; beatStart = input.clock();
+        if (beatIndex < beats.length && beatCaption) { beatCaption.text = beats[beatIndex]!.text; section.dataset.battle2Beat = String(beatIndex); }
+      }
+      if (beatIndex < beats.length) { stage.tick(); app.renderer.render(app.stage); return; }
+      if (beatCaption) beatCaption.visible = false;
+    }
     if (turnIndex < 0) { turnIndex = 0; play(0); }
     const frame = stage.tick();
     if (ticks % 30 === 0) section.dataset.battle2Ticks = String(ticks); // smoke diagnostics (cheap)
@@ -436,6 +453,11 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
     if (disposed) { built.dispose(); application.destroy(true, { children: true }); throw new Error('disposed while initialising the renderer'); }
     application.canvas.style.cssText = 'display:block;width:100%;height:100%'; section.append(application.canvas);
     application.stage.addChild(built.root); app = application; stage = built; label = built.label; section.dataset.battle2Label = built.label;
+    beats = battle2SwapBeatsV1(input.settlement.party, { name: input.chronicle.defenderName, battleGenome: input.settlement.encounter.defender.battleGenome });
+    if (beats.length > 0) {
+      beatCaption = new pixi.Text({ text: '', style: { ...style, fontSize: 28 }, anchor: 0.5 });
+      beatCaption.x = BATTLE2_FRAME.width / 2; beatCaption.y = 56; application.stage.addChild(beatCaption as unknown as object);
+    }
     setPhase('playing'); startTicking(); tick();
     return status();
   };

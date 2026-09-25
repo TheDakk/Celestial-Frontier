@@ -133,10 +133,10 @@
       padding: 8px 34px 8px 10px; border: 1px solid #647ba4; border-radius: 10px;
       background: #101c30; color: #eef6ff; font: 12px var(--ui); }
     /* §20 plan pickers (stance, Guardian party slots): the same phone touch target and look as the champion picker */
-    [data-combat-stance], [data-combat-party-slot] { width: 100%; min-height: 44px; box-sizing: border-box; margin: 4px 0;
+    [data-combat-stance], [data-combat-party-slot], [data-combat-mode] { width: 100%; min-height: 44px; box-sizing: border-box; margin: 4px 0;
       padding: 8px 34px 8px 10px; border: 1px solid #647ba4; border-radius: 10px;
       background: #101c30; color: #eef6ff; font: 12px var(--ui); }
-    [data-combat-stance]:focus-visible, [data-combat-party-slot]:focus-visible { outline: 3px solid #f3d58b; outline-offset: 2px; }
+    [data-combat-stance]:focus-visible, [data-combat-party-slot]:focus-visible, [data-combat-mode]:focus-visible { outline: 3px solid #f3d58b; outline-offset: 2px; }
     [data-combat-champion]:focus-visible,
     [data-combat-challenge]:focus-visible { outline: 3px solid #f3d58b; outline-offset: 2px; }
     .combat-card-forecast { margin: 8px 0 2px; color: var(--combat-odds-color, #dce9fa); }
@@ -149,6 +149,12 @@
       background: rgba(67,39,99,.92); color: #f8efff; font: 700 12px var(--ui);
       cursor: pointer; touch-action: manipulation; }
     [data-combat-challenge]:hover:not(:disabled) { border-color: #d3adff; background: rgba(87,51,127,.96); }
+    /* §20 Command Break: each answer is a full-width phone touch target, like Challenge */
+    .combat-card-break-headline { margin: 8px 0 2px; color: #f3d58b; font-weight: 700; line-height: 1.42; }
+    [data-combat-break] { display: block; width: 100%; min-height: 44px; box-sizing: border-box; margin-top: 6px; padding: 8px 12px;
+      border: 1px solid #956fc7; border-radius: 10px; background: rgba(67,39,99,.92); color: #f8efff; font: 700 12px var(--ui);
+      cursor: pointer; touch-action: manipulation; }
+    [data-combat-break]:focus-visible { outline: 3px solid #f3d58b; outline-offset: 2px; }
     [data-combat-challenge]:disabled, [data-combat-champion]:disabled {
       cursor: not-allowed; color: #8394ab; border-color: #39495f;
       background: rgba(18,26,39,.72); opacity: .82; }

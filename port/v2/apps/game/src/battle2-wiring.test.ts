@@ -14,6 +14,8 @@ import { BATTLE2_ASSETS, PLAYER_PLACEHOLDER_LABEL, alphaBox, battle2Enabled, fnv
   type Battle2AssetSource, type Battle2Image, type Battle2Keyer, type Battle2PixiBindings, type Battle2Raster, type Battle2StudyInput } from './battle2-wiring.js';
 import type { ResolvedAnatomyRecord } from './motion/body-card.js';
 import { civetRecord } from '../../../tools/motion-proof/fixtures.js';
+import { makeGenome } from '@cf/domain-genome';
+import { runEncounterV1 } from '@cf/domain-combatcore';
 
 const { JSDOM } = createRequire(import.meta.url)('jsdom') as { JSDOM: new (html: string) => { window: Window & typeof globalThis } };
 const mainSource = readFileSync(new URL('./main.ts', import.meta.url), 'utf8');
@@ -196,6 +198,40 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
     // a build that fails releases everything so the log is never held
     let failedAll = 0; const empty = harness({ pacer: { ...pacer, releaseAll: () => { failedAll++; } }, settlement: { ...h.input.settlement, transcript: { log: [] } } as Battle2StudyInput['settlement'] });
     expect((await mountBattle2Study(empty.input).ready).phase).toBe('failed'); expect(failedAll).toBe(1);
+  });
+
+  it('§20 RELAY BEATS: a party settlement holds one captioned beat per earlier fighter before the decisive leg; a lone fighter starts at once', async () => {
+    const defenderGenome = makeGenome(424242, 'fauna', 0.5) as unknown as Record<string, unknown>;
+    let party: unknown = null;
+    for (let base = 5; base < 6_000 && party === null; base += 11) {
+      const members = [base, base + 1_000, base + 2_000].map((seed) => ({ champion: { kind: 'owned-fauna', creatureId: `c${seed}`, name: `Fighter ${seed}`, genome: makeGenome(seed, 'fauna', 0.5) }, stance: 'balanced' as const }));
+      const r = runEncounterV1({ mode: 'auto', defender: { name: 'Platypus', genome: defenderGenome as never }, party: members.map((m) => ({ name: m.champion.name, genome: m.champion.genome as never, stance: m.stance })) });
+      if (r.status === 'finished' && r.legs.length >= 2) party = { schema: 'cf-v2-combat-party/v1', mode: 'auto', decisions: [], decisiveIndex: r.legs[r.legs.length - 1]!.fighterIndex, members, encounterFingerprint: 'x' };
+    }
+    expect(party).not.toBeNull();
+    const h = harness();
+    const settlement = { ...h.input.settlement, encounter: { defender: { battleGenome: defenderGenome } }, party } as unknown as Battle2StudyInput['settlement'];
+    const handle = mountBattle2Study({ ...h.input, settlement });
+    expect((await handle.ready).phase).toBe('playing');
+    const app = FakeApp.made[FakeApp.made.length - 1]!;
+    expect(app.stage.children, 'the stage root plus the relay caption').toHaveLength(2);
+    const count = handle.status().beats!.count;
+    expect(count).toBeGreaterThanOrEqual(1);
+    h.setNow(10); h.ticker.step();
+    expect(handle.status().beats).toMatchObject({ index: 0, text: expect.stringMatching(/^↻ Fighter \d+ /u) });
+    expect(handle.status().turnIndex, 'the decisive leg waits for the beats').toBe(-1);
+    let t = 10;
+    for (let i = 1; i < count; i++) { t += 1_100; h.setNow(t); h.ticker.step(); expect(handle.status().beats!.index).toBe(i); expect(handle.status().turnIndex).toBe(-1); }
+    t += 1_100; h.setNow(t); h.ticker.step();
+    expect(handle.status().turnIndex, 'after the last beat the decisive leg plays').toBe(0);
+    expect((app.stage.children[1] as { visible: boolean }).visible).toBe(false);
+    handle.dispose('test');
+    // control: the same study without a party starts its first turn on the first tick, with no caption
+    const lone = harness(); const loneHandle = mountBattle2Study(lone.input); await loneHandle.ready;
+    lone.setNow(10); lone.ticker.step();
+    expect(loneHandle.status().turnIndex).toBe(0); expect(loneHandle.status().beats).toMatchObject({ count: 0 });
+    expect(FakeApp.made[FakeApp.made.length - 1]!.stage.children).toHaveLength(1);
+    loneHandle.dispose('test');
   });
 
   it('a throw inside the stage tick fails the STUDY (labelled) and never escapes into the game\'s shared ticker (a throw there stops Pixi\'s ticker and freezes the game, 2026-09-24)', async () => {
