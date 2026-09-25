@@ -164,7 +164,8 @@ export type SpeciesArtWorkerFactory = () => SpeciesArtWorkerLike;
 
 export interface SpeciesArtLoaderOptions {
   /** The painted individual on the card (morph system, Nick 2026-09-22 option 3): asked first for every thumb and
-   * portrait; answers only for genomes whose Earth species has a painted archetype, otherwise the painter tier. */
+   * portrait; answers for every genome a painting draws — its own archetype or its painted stand-in (Nick 2026-09-24,
+   * painted-stand-in.ts) — and the painter tier answers the rest. */
   readonly paintedCards?: PaintedCardSource;
   readonly createProducer?: SpeciesArtProducerFactory;
   readonly workerFactory?: SpeciesArtWorkerFactory;

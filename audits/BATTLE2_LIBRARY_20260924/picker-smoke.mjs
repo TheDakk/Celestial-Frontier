@@ -71,6 +71,7 @@ try {
     if (!(report.duel.spreadMs > 3000) || increments.length < 3) throw Error('duel: the log was not paced by the stage ' + JSON.stringify(report.duel.increments));
   } else await sleep(2500);
   report.runs.push({ from: 'url', vs: firstArg, status: s1.status, generation: s1.generation, text: await evaluate(`document.querySelector('[data-battle2-matchup] output').textContent`), still: await shot('picker-1.png') });
+  { const l = await evaluate(`document.querySelector('[data-battle2-matchup] section[data-battle2-stage]')?.dataset.battle2Label ?? ''`); report.runs[0].rigs = { label: l, painted: (l.match(/contact: /g) ?? []).length }; }
   // run 2: through the picker's own controls
   const [l2, r2] = secondArg.split(',');
   await evaluate(`(() => { const root = document.querySelector('[data-battle2-matchup]'); const [a, b] = root.querySelectorAll('select'); a.value = ${JSON.stringify(l2)}; b.value = ${JSON.stringify(r2)}; root.querySelector('button').click(); return true; })()`);

@@ -47,6 +47,7 @@ import { morphAtlasCache, morphAtlasKey, type MorphAtlasLease } from './morph/mo
 import { markingNameV1, maskAlphaOf, type AlphaMask } from './morph/morph-markings.js';
 import { archetypeGenomeV1, morphParamsV1 } from './morph/morph-params.js';
 import { decodePng } from './morph/png-decode.js';
+import { paintedStandInV1 } from './morph/painted-stand-in.js';
 import type { CombatChroniclePacerGateV1 } from './combat-chronicle.js';
 import { decodeMorphedAtlas, loadCreatureRigV1, type CreaturePartsBindingV1, type CreatureRigRecordV1, type CreatureRigV1 } from './creature-rig.js';
 import { abilityTheme } from '@cf/domain-combatcore';
@@ -196,7 +197,12 @@ export function matchRecord(records: readonly ResolvedAnatomyRecord[], genome: R
   if (!genome) return null;
   let key: string | null = null; try { key = speciesVisualKey(genome as Record<string, unknown>); } catch { key = null; }
   const earth = typeof genome._earthName === 'string' ? genome._earthName : null;
-  return records.find((r) => (key !== null && r.identity.speciesVisualKey === key) || (earth !== null && r.identity.earthName === earth)) ?? null;
+  const exact = records.find((r) => (key !== null && r.identity.speciesVisualKey === key) || (earth !== null && r.identity.earthName === earth));
+  if (exact) return exact;
+  // Nick 2026-09-24 ("that art style should carry throughout the game"): no painting of its own → the painted STAND-IN for its body
+  // (painted-stand-in.ts: its body plan's archetype, or the body family the procedural painter draws), morphed by its own genes
+  const painted = new Set(BATTLE2_ASSETS.partsFits.map((f) => f.earthName)), stand = paintedStandInV1(genome, painted);
+  return stand ? records.find((r) => r.identity.earthName === stand.earthName) ?? null : null;
 }
 export function alphaBox(rgba: Uint8ClampedArray, width: number, height: number): { x: number; y: number; width: number; height: number } {
   let x0 = width, y0 = height, x1 = -1, y1 = -1;

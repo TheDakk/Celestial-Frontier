@@ -242,6 +242,18 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
     expect(gone.status()).toMatchObject({ phase: 'disposed', reason: 'mount left the document' });
   });
 
+  it('STAND-INS on the stage (Nick 2026-09-24): no record of its own → the painted stand-in\'s record (Earth body plan, or the procedural body family); exact still wins; an unpainted family stays null', async () => {
+    const { matchRecord } = await import('./battle2-wiring.js'); const { makeGenome } = await import('@cf/domain-genome'); const { paintedStandInV1, proceduralFamilyV1 } = await import('./morph/painted-stand-in.js');
+    const rec = (earthName: string) => ({ identity: { earthName, speciesVisualKey: `key:${earthName}` } }) as never;
+    const records = ['Civet', 'Python', 'Salmon', 'Beetle', 'Tarantula', 'Crab', 'Octopus', 'Fruit Bat', 'Tree Frog', 'Eagle', 'Chimpanzee'].map(rec);
+    expect((matchRecord(records, { _earthName: 'Brown Bear', seed: 1 }) as unknown as { identity: { earthName: string } }).identity.earthName).toBe('Civet');
+    expect((matchRecord(records, { _earthName: 'Civet', seed: 1 }) as unknown as { identity: { earthName: string } }).identity.earthName).toBe('Civet');
+    const painted = new Set(['Civet', 'Python', 'Salmon', 'Beetle', 'Tarantula', 'Crab', 'Octopus', 'Fruit Bat', 'Tree Frog', 'Eagle', 'Chimpanzee']);
+    let checked = 0, none = 0;
+    for (let i = 0; i < 400; i++) { const g = makeGenome(3000 + i * 7919, 'fauna', 0.5) as unknown as Record<string, unknown>, s = paintedStandInV1(g, painted), r = matchRecord(records, g) as unknown as { identity: { earthName: string } } | null;
+      if (s) { expect(r?.identity.earthName, proceduralFamilyV1(g)).toBe(s.earthName); checked++; } else { expect(r, proceduralFamilyV1(g)).toBeNull(); none++; } }
+    expect(checked).toBeGreaterThan(100); expect(none).toBeGreaterThan(100);
+  });
   it('pure helpers: record matching by visual key or Earth name, genome mass/seed, alpha box, fnv', () => {
     const rec = civetRecord(), genome = genomeFromVisualKey(rec.identity.speciesVisualKey);
     expect(speciesVisualKey(genome)).toBe(rec.identity.speciesVisualKey);

@@ -9,6 +9,7 @@ import { resolvePhysicalHabitat } from './battle-habitat.js';
 import { devAssetSource, mountBattle2Study, type Battle2AssetSource, type Battle2StudyHandle, type Battle2StudyInput, type Battle2Status } from './battle2-wiring.js';
 import { archetypeGenomeV1, type MorphGenome } from './morph/morph-params.js';
 import { resolveCF1WorldAddress } from '@cf/scene';
+import { paintedStandInV1 } from './morph/painted-stand-in.js';
 import { makeGenome, type Genome } from '@cf/domain-genome';
 import { planCombatSettlementV1, projectGuardianPrimeEncounterV1, runDuel, type CombatSettlementPlanV1 } from '@cf/domain-combatcore';
 import { combatCuePlan, projectCombatCueParticipantsV1, type CombatCuePlanV1 } from '@cf/audio';
@@ -21,6 +22,10 @@ export type MatchupWorld = 'auto' | 'land' | 'lake';
 export interface MatchupChoice { readonly left: string; readonly right: string; readonly world: MatchupWorld; readonly seed: number | null; readonly duel: boolean; }
 /** Every painted archetype that can fight, in the library's order. */
 export const MATCHUP_NAMES: readonly string[] = Object.freeze(BATTLE2_PARTS_FITS.map((f) => f.earthName));
+/** `alien:<seed>` — a GENERATED creature (makeGenome), no Earth name: it fights as its painted stand-in (painted-stand-in.ts), or as
+ * the procedural portrait when no painting draws its body. Shows Nick's "that art style should carry throughout the game" on the stage. */
+export function alienSeed(name: string): number | null { const m = /^alien:(\d{1,9})$/.exec(name); return m ? Number(m[1]) : null; }
+export function alienGenome(seed: number): Readonly<Record<string, unknown>> { return Object.freeze({ ...(makeGenome(seed, 'fauna', 0.5) as unknown as Record<string, unknown>) }); }
 
 /** The picker opens only under the study flag AND the `vs` parameter. */
 export function matchupEnabled(search: string): boolean { const q = new URLSearchParams(search); return q.get('battle2') === '1' && q.get(MATCHUP_PARAM) !== null; }
@@ -29,7 +34,7 @@ export function matchupEnabled(search: string): boolean { const q = new URLSearc
 export function parseMatchup(search: string, names: readonly string[] = MATCHUP_NAMES): MatchupChoice & { readonly notes: readonly string[] } {
   if (names.length === 0) throw new Error('matchup: no painted archetypes');
   const q = new URLSearchParams(search), notes: string[] = [];
-  const find = (raw: string | undefined): string | null => { const t = (raw ?? '').trim().toLowerCase(); return t ? names.find((n) => n.toLowerCase() === t) ?? null : null; };
+  const find = (raw: string | undefined): string | null => { const t = (raw ?? '').trim().toLowerCase(); const alien = /^alien:(\d{1,9})$/.exec(t); if (alien) return `alien:${Number(alien[1])}`; return t ? names.find((n) => n.toLowerCase() === t) ?? null : null; };
   const [rawL, rawR] = (q.get(MATCHUP_PARAM) ?? '').split(',');
   let left = find(rawL), right = find(rawR);
   if (!left) { if (rawL?.trim()) notes.push(`unknown creature "${rawL.trim()}"`); left = names[0]!; }
@@ -43,6 +48,7 @@ export function parseMatchup(search: string, names: readonly string[] = MATCHUP_
 
 /** A creature that can ONLY swim (its Earth presentation profile allows water and not ground or air). */
 export function swimsOnly(earthName: string): boolean {
+  const alien = alienSeed(earthName); if (alien !== null) { const s = paintedStandInV1(alienGenome(alien), new Set(MATCHUP_NAMES)); return s !== null && swimsOnly(s.earthName); }
   try { const h = resolvePhysicalHabitat({ template: { id: 'matchup' }, identity: { earthName } }); return h.allowed.includes('water') && !h.allowed.includes('ground') && !h.allowed.includes('air'); }
   catch { return false; }
 }
@@ -67,7 +73,7 @@ export function matchupGenome(record: { readonly genome?: MorphGenome | null; re
 export const MATCHUP_DUEL_WORLD = Object.freeze({ galaxy: { seed: 1594395733, x: -5501.81, y: -11753.64 }, star: { seed: 4077594722, x: -271.54, y: -67.36 }, planet: { seed: 488332735 } });
 export function matchupDuel(lr: Parameters<typeof matchupGenome>[0], rr: Parameters<typeof matchupGenome>[0], choice: Pick<MatchupChoice, 'left' | 'right' | 'seed'>):
   Readonly<{ settlement: CombatSettlementPlanV1; cues: CombatCuePlanV1; chronicle: CombatChronicleV1 }> {
-  const full = (record: Parameters<typeof matchupGenome>[0], name: string, side: 'left' | 'right', base: number): Genome =>
+  const full = (record: Parameters<typeof matchupGenome>[0], name: string, side: 'left' | 'right', base: number): Genome => alienSeed(name) !== null ? alienGenome(alienSeed(name)!) as unknown as Genome :
     ({ ...makeGenome((choice.seed ?? base) * 2 + (side === 'right' ? 1 : 0), 'fauna', 0.5), ...matchupGenome(record, name, choice.seed, side) }) as unknown as Genome;
   const left = full(lr, choice.left, 'left', 3), right = full(rr, choice.right, 'right', 3);
   const world = resolveCF1WorldAddress(MATCHUP_DUEL_WORLD); if (!world.ok) throw new Error(`matchup duel world: ${world.reason}`);
@@ -83,6 +89,7 @@ export function matchupDuel(lr: Parameters<typeof matchupGenome>[0], rr: Paramet
   return Object.freeze({ settlement, cues, chronicle: projectCombatChronicleV1(settlement, cues) });
 }
 
+const fighterGenome = (record: Parameters<typeof matchupGenome>[0], name: string, seed: number | null, side: 'left' | 'right') => (alienSeed(name) !== null ? alienGenome(alienSeed(name)!) : matchupGenome(record, name, seed, side));
 /** A short scripted bout (the film scripts' shape): the left fighter hits, the right hits back, the right dodges, the right hits,
  * the left wins. Every row is stageable by `turnPlanInputFromTranscriptEvent`. */
 export function matchupTranscript(left: string, right: string): readonly Readonly<Record<string, unknown>>[] {
@@ -121,6 +128,8 @@ export function mountBattle2Matchup(input: MatchupMountInput): MatchupHandle {
   const bar = el('div', 'display:flex;flex-wrap:wrap;align-items:center;gap:8px');
   const pick = (label: string, value: string): HTMLSelectElement => { const s = el('select', 'min-height:44px;font:inherit;padding:0 8px;border-radius:8px'); s.setAttribute('aria-label', label); for (const n of MATCHUP_NAMES) { const o = el('option', '', n); o.value = n; s.append(o); } s.value = value; return s; };
   const leftSel = pick('Left creature', choice.left), rightSel = pick('Right creature', choice.right);
+  const ensure = (sel: HTMLSelectElement, name: string) => { if (alienSeed(name) !== null && ![...sel.options].some((o) => o.value === name)) { const o = el('option', '', `Alien #${alienSeed(name)}`); o.value = name; sel.append(o); } };
+  ensure(leftSel, choice.left); ensure(rightSel, choice.right); leftSel.value = choice.left; rightSel.value = choice.right;
   const worldSel = el('select', 'min-height:44px;font:inherit;padding:0 8px;border-radius:8px'); worldSel.setAttribute('aria-label', 'World');
   for (const [v, t] of [['auto', 'World: auto'], ['land', 'World: land'], ['lake', 'World: lake']] as const) { const o = el('option', '', t); o.value = v; worldSel.append(o); } worldSel.value = choice.world;
   const seedIn = el('input', 'min-height:44px;width:9em;font:inherit;padding:0 8px;border-radius:8px'); seedIn.type = 'number'; seedIn.min = '0'; seedIn.placeholder = 'seed'; seedIn.title = 'Empty = the archetypes in their own colours; a number = two morphed individuals'; seedIn.setAttribute('aria-label', 'Individual seed'); if (choice.seed !== null) seedIn.value = String(choice.seed);
@@ -137,10 +146,10 @@ export function mountBattle2Matchup(input: MatchupMountInput): MatchupHandle {
   let study: Battle2StudyHandle | null = null, generation = 0, disposed = false, chronicleController: CombatChronicleController | null = null;
   const play = async (next: Partial<MatchupChoice> = {}): Promise<Battle2Status> => {
     if (disposed) throw new Error('matchup picker is closed');
-    choice = { ...choice, ...next }; leftSel.value = choice.left; rightSel.value = choice.right; worldSel.value = choice.world; seedIn.value = choice.seed === null ? '' : String(choice.seed); duelBox.checked = choice.duel;
+    choice = { ...choice, ...next }; ensure(leftSel, choice.left); ensure(rightSel, choice.right); leftSel.value = choice.left; rightSel.value = choice.right; worldSel.value = choice.world; seedIn.value = choice.seed === null ? '' : String(choice.seed); duelBox.checked = choice.duel;
     const world = matchupWorld(choice), gen = ++generation;
     status.textContent = `loading ${choice.left} vs ${choice.right} (${world})…`;
-    const [lr, rr] = await Promise.all([recordOf(choice.left), recordOf(choice.right)]);
+    const [lr, rr] = await Promise.all([alienSeed(choice.left) !== null ? {} : recordOf(choice.left), alienSeed(choice.right) !== null ? {} : recordOf(choice.right)]);
     if (disposed || gen !== generation) throw new Error('superseded by a newer matchup');
     study?.dispose('matchup replaced'); chronicleController?.dispose(); chronicleController = null; arena.replaceChildren();
     if (choice.duel) {
@@ -159,8 +168,8 @@ export function mountBattle2Matchup(input: MatchupMountInput): MatchupHandle {
     study = mountStudy({ mount: arena, generation: gen, ticker: input.ticker, clock: input.clock, reducedMotion: input.reducedMotion, deviceTier: input.deviceTier, pixi: input.pixi, artLoader: input.artLoader, assets,
       ...(input.audio !== undefined ? { audio: input.audio } : {}), ...(input.win ? { win: input.win } : {}), ...(input.keyer ? { keyer: input.keyer } : {}), ...(input.raster ? { raster: input.raster } : {}), ...(world === 'lake' ? { worldPreset: 'lake' as const } : {}),
       chronicle: { championName: choice.left, defenderName: choice.right },
-      settlement: { battleId: `matchup:${choice.left}:${choice.right}:${world}:${choice.seed ?? 'own'}`, champion: { kind: 'owned-fauna', name: choice.left, genome: matchupGenome(lr, choice.left, choice.seed, 'left') },
-        encounter: { defender: { battleGenome: matchupGenome(rr, choice.right, choice.seed, 'right') } }, transcript: { log: matchupTranscript(choice.left, choice.right) } } });
+      settlement: { battleId: `matchup:${choice.left}:${choice.right}:${world}:${choice.seed ?? 'own'}`, champion: { kind: 'owned-fauna', name: choice.left, genome: fighterGenome(lr, choice.left, choice.seed, 'left') },
+        encounter: { defender: { battleGenome: fighterGenome(rr, choice.right, choice.seed, 'right') } }, transcript: { log: matchupTranscript(choice.left, choice.right) } } });
     lead = '';
     const st = await study.ready; if (gen === generation) status.textContent = summary(st); return st;
   };

@@ -76,6 +76,10 @@ painted arena works offline in it. Codex's items 5 and 7 are staged unsigned in 
 - Run `npm run overridecontrol` and the whole gate list locally before any hosted attempt.
 
 ### What Claude owes next
+-91. **…and on the battle stage (2026-09-24).** `matchRecord` falls back to the painted stand-in, so a fighter without its own painting fights as
+its stand-in's painted rig, morphed by its own genes. The picker takes `alien:<seed>`. Edge real duels with the worker in control: Alien #12
+(4 legs) fights as a Civet against Alien #11 (8 legs) as a Tarantula, and Alien #5 (fish) as a Salmon on the lake against the Octopus;
+painted rigs, paced log, zero errors. Unit 5,067 pass; only I5 is red.
 -90. **The painted art direction on every card (Nick 2026-09-24: "that art style should carry throughout the game";
 `audits/PAINTED_STAND_INS_20260924/README.md`).** `painted-stand-in.ts`: every creature whose anatomy a painting draws gets that painting on
 its card, morphed by its own genes. That is the 17 painted species; about 560 Earth species via their body plan's archetype; and generated
