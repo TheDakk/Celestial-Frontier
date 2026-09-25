@@ -1,5 +1,16 @@
 ## Archived 2026-09-23 — Python diagnosis before approved open-pose correction
 
+## Live handoff — 2026-09-25 authorized guarded I5 v2 epoch
+
+Nick authorized a separate v2 budget epoch and explicitly confirmed three independent calibration runs plus one certification, no retries, on the same exact integrated anthropic/mac source. Zero growth allowance is declared for every v1 counter. Existing v1 budget, samples, collector/contract and tests remain untouched. A regression is never converted into a larger limit.
+
+The read-only remote lookup and clean Claude source agree on signed b4f191c3538f78318a183705f89272b38b88118e, including painted-card memory bound ffa1f126. Codex's ownership remains macOS /Users/nick/Projects/celestial-frontier-openai-mac, openai/mac; Claude's lane stays read-only. Detached isolated product checkout: /private/tmp/cf-i5-v2-b4f191c3. Instrument is the enclosing signed preparation commit, with separate source provenance; no instrument files are installed into the product source.
+
+Packet: audits/I5_V2_EPOCH_20260925/README.md. Standalone compendiummem-v2.mjs binds the exact producer before collecting, materializes a separately hashed v2 instrument without altering v1, evaluates calibration under guarded finite limits, activates only after three independent raw-reducible green runs, and certifies the same source once. 56 focused controls and root validation pass. No browser attempt consumed in preparation. Prior failed I5 and its full packet remain historical, unchanged.
+
+Paired next steps: Codex signs the instrument, runs the authorized epoch once, and signs the measured outcome/refusal. Claude holds the chosen source and then consumes that result. No fresh generic permission is needed. No fetch/sync/push/PR/label/hosted/merge/release/deploy; mode UNFROZEN but no hosted authority used. Nick's painting order remains pending. Existing PR43 remains anthropic/mac→develop; v2 measurement is not hosted admission.
+
+
 ## Live handoff — 2026-09-24 integrated I5 attempt retained
 
 Codex/macOS owns /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. Prior signed repairs 39e00aa0 (item5), 4cfd5584 (item7) and 4b56ef82 (five reds) are integrated by Claude, per Nick. Claude also reconciled the Fiddler Crab pinch expectation; the other three decapod refusals remain. Prior handoff is archived verbatim.

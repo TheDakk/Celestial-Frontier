@@ -1,0 +1,148 @@
+{
+  "runId": "i5-v2-b4f191c3538f-calibration-1",
+  "status": "instrument-fail",
+  "startedAt": "2026-09-25T02:37:54.669Z",
+  "endedAt": "2026-09-25T02:38:34.008Z",
+  "durationMs": 39339,
+  "lifecycle": {
+    "schema": "cf-v2-compendium-report-lifecycle/v1",
+    "status": "complete"
+  },
+  "source": {
+    "begin": {
+      "commit": "b4f191c3538f78318a183705f89272b38b88118e",
+      "branch": "detached",
+      "state": "committed",
+      "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+    },
+    "end": {
+      "commit": "b4f191c3538f78318a183705f89272b38b88118e",
+      "branch": "detached",
+      "state": "committed",
+      "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "workingTreeSha256": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a"
+    }
+  },
+  "browser": {
+    "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "product": "Edg/153.0.4234.48",
+    "revision": "@cf31d6623d8718e7a3c3e181e55e59c1aae57a73",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+    "js_version": "15.3.12.7",
+    "protocol_version": "1.3"
+  },
+  "budget": {
+    "status": "calibration-required",
+    "path": "apps/game/smoke/compendium-memory-v2.json",
+    "sha256": "206a60450f35cc900a04d1381d2231b8711382ee3ac9f920f9ff5a4a3125bf6a",
+    "browserAuthority": {
+      "schema": "cf-v2-compendium-browser-authority/v2",
+      "scope": "arc1a-compendium-memory-only",
+      "family": "microsoft-edge",
+      "protocolVersion": "1.3",
+      "capabilityContract": "cf-v2-compendium-cdp-capabilities/v1",
+      "capabilityContractSha256": "35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341"
+    },
+    "browserAuthorityMatch": true,
+    "producerAuthority": {
+      "schema": "cf-v2-compendium-producer-authority/v2",
+      "sha256": "7b7285aa54eb674deb0a32e967cc346faac3197d7b6e2e6bcc2270f902cd0839",
+      "inputs": {
+        "index": {
+          "relativePath": "index.html",
+          "sha256": "abbcfbeeabf11e2c31a8c937a81eea8e992c40afe9e7a428fcbce81c7c17c128"
+        },
+        "owner": {
+          "relativePath": "assets/tame-greeting-audio-BnHC7qvo.js",
+          "sha256": "d6dd59987d58cfb97faa704aaafb34458a117f1ef5526072d9991217cc54e423"
+        },
+        "worker": {
+          "relativePath": "assets/species-art.worker-SHcKR5tI.js",
+          "sha256": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62"
+        },
+        "painter": {
+          "relativePath": "assets/species-art.worker-SHcKR5tI.js",
+          "sha256": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62"
+        },
+        "serviceWorker": {
+          "relativePath": "service-worker.js",
+          "sha256": "26d73bd7907dbad41fc5825ea25de53a49e5bdcf789e3e43e9d7228c2fdd9ac7"
+        }
+      }
+    },
+    "observedProducerAuthority": {
+      "schema": "cf-v2-compendium-producer-authority/v2",
+      "sha256": "7b7285aa54eb674deb0a32e967cc346faac3197d7b6e2e6bcc2270f902cd0839",
+      "inputs": {
+        "index": {
+          "relativePath": "index.html",
+          "sha256": "abbcfbeeabf11e2c31a8c937a81eea8e992c40afe9e7a428fcbce81c7c17c128"
+        },
+        "owner": {
+          "relativePath": "assets/tame-greeting-audio-BnHC7qvo.js",
+          "sha256": "d6dd59987d58cfb97faa704aaafb34458a117f1ef5526072d9991217cc54e423"
+        },
+        "worker": {
+          "relativePath": "assets/species-art.worker-SHcKR5tI.js",
+          "sha256": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62"
+        },
+        "painter": {
+          "relativePath": "assets/species-art.worker-SHcKR5tI.js",
+          "sha256": "5f518d162af388de514acb3a641aeee75a7e68bd115241d24c05c6021e904f62"
+        },
+        "serviceWorker": {
+          "relativePath": "service-worker.js",
+          "sha256": "26d73bd7907dbad41fc5825ea25de53a49e5bdcf789e3e43e9d7228c2fdd9ac7"
+        }
+      }
+    },
+    "producerAuthorityMatch": true
+  },
+  "measurementAuthority": {
+    "schema": "cf-v2-compendium-measurement-authority/v1",
+    "sha256": "de50d47c26fbc084415bef528cd5a06f487b7829e14d149c824f2d2e73fb1767",
+    "inputs": {
+      "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
+      "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+      "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
+      "budgetSchema": "d0a4c693bf03cd23cadbdc0d336329bc42cf06484d4314a9621e2c5462c47b6f",
+      "outcomeContract": "66602b49b641d049f383e9a7926c20a94fa568c0a81fbb58a408f0cfb41e2648",
+      "collector": "fd0e3b85f42fffd43c68b21bf61ecf913d872acf914c0cea4ae2718081e1b915",
+      "browserCdp": "4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca",
+      "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
+      "workspaceLock": "ceb20c120f1c2a889124f5e90050cf0df44768cd9c5a61cb1558ca5373371ae8",
+      "package": "c55abed7f6669694d53e2e756e6f743ecf9a88228eb8a1702d19e9ebc732efc0",
+      "packageLock": "744f7c5079d0892fee85d6d2af20c343955ff0d47bda9cce8368d9babd6d1402",
+      "appPackage": "282354469f5a4b5bfac27bd33b0d6d1605ff15c3309c09f0b3d25a794cbb1513",
+      "baselineSaveFixtures": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+      "speciesArtBuildGraph": "e591551391f3ed31a494c94d7e1f659633daa460f0571b973bc81cd6888a9c66",
+      "outcomeInventory": "bd4f8a9ef37538b09582c316837dae05b1bc682cf6cb5f6df0fee4a2621929b0"
+    }
+  },
+  "instrument": {
+    "commit": "cfd6e7fb7428460a42691ab03ea8d7c2ae17a955",
+    "sha256": "085ec0461168160a422adabb8d829350f4b0e686ea58a91ea1b69280a78ae489"
+  },
+  "calibrationAttempts": 1,
+  "successfulCalibrationSamples": 0,
+  "certificationAttempts": 0,
+  "blockedOutcomes": 78,
+  "diagnosis": "phone middle-scroll-list thumb settlement timed out; cmem-0748 and cmem-0752 were ready 132x132 images with visual keys missing from broker lease/cache inventories",
+  "partialReviewImages": [
+    {
+      "profile": "phone",
+      "state": "list",
+      "file": "apps/game/smoke/compendiummem-i5-v2-b4f191c3538f-calibration-1-phone-list.png",
+      "bytes": 834506,
+      "sha256": "2af704182fe1e8b9c04133616ceccb70943d276d0359449c97a853ad464b6b66"
+    },
+    {
+      "profile": "phone",
+      "state": "focus-pinned",
+      "file": "apps/game/smoke/compendiummem-i5-v2-b4f191c3538f-calibration-1-phone-focus-pinned.png",
+      "bytes": 790211,
+      "sha256": "f8ec6c9cb032884b7765f451cecbd34790c57f8c48d337756c3532094170ed4e"
+    }
+  ]
+}

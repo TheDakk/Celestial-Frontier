@@ -1,5 +1,13 @@
 # I5 v2 guarded recalibration epoch — September 25, 2026
 
+**EPOCH STOPPED — calibration 1 is INSTRUMENT-FAIL.** The authorized run began on exact pushed product `b4f191c3538f78318a183705f89272b38b88118e` using signed instrument `cfd6e7fb7428460a42691ab03ea8d7c2ae17a955` (G). Run `i5-v2-b4f191c3538f-calibration-1` crossed producer/browser authority checks, then stopped after 39,339 ms at phone middle-scroll thumbnail settlement: ready rows cmem-0748 and cmem-0752 are absent from broker lease/cache inventories. Exact-run verification validated the terminal refusal (exit1); collector exit2. Zero successful calibration samples; runs2–3 and certification did not run. No retry, activation, memory PASS or ceiling change.
+
+Measured producer `7b7285aa54eb674deb0a32e967cc346faac3197d7b6e2e6bcc2270f902cd0839`; v2 measurement authority `de50d47c26fbc084415bef528cd5a06f487b7829e14d149c824f2d2e73fb1767`. Edge153.0.4234.48/CDP1.3. Product source is clean and unchanged at both ends; v1 history remains byte-identical. See outcome-summary.json, DIAGNOSIS.md and epoch/ for the complete raw report, two partial phone images, exact generated instrument, command logs and execution ledger. Compressed artifacts are losslessly linked to original bytes by retained-artifacts.json.
+
+Codex holds the signed instrument and this outcome packet. Claude should consume DIAGNOSIS.md: its painted thumb path bypasses the broker inventory exposed to the instrument. The next change needs truthful painted ownership/resource diagnostics plus v2 controls, not deletion of the inventory gate. Nick can open Claude with this packet. No new epoch is authorized by this refusal. No push or hosted run occurred.
+
+## Historical preparation record (the invocation below has now been consumed; do not rerun)
+
 Nick authorized one recalibration epoch after Claude's I5 review and confirmed **three independent calibration runs plus one certification**, all without retry and on the same exact integrated source. No per-counter allowance was requested; this epoch declares **zero growth allowance for every v1 counter**. A breach is a regression and stops the epoch. No measurements are claimed by this preparation commit.
 
 ## Source and instrument
