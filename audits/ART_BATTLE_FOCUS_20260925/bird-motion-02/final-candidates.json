@@ -1,0 +1,54 @@
+[
+  {
+    "name": "gull",
+    "fit": "../12-gull/fit-03",
+    "recordRecipeHash": "d4d0f9974c19f3ed15bce209e68dd35614f221f445e04a8a3225691195da5f3f",
+    "bindingHash": "7a5cc081e76e7ff2cdb72f8f03bb5777456fe9c1fe82189608bc5fb638c85f99",
+    "report": "gull-static-01.json",
+    "status": "PASS_STATIC",
+    "rowsPassed": 14,
+    "rowsTotal": 14,
+    "presentationStatus": "PASS",
+    "presentationSamples": 1047,
+    "exactRest": true
+  },
+  {
+    "name": "goose",
+    "fit": "goose-fit-04",
+    "recordRecipeHash": "887857dd7213d86fe5278ab6dd4ef3ebbf5a06a86f12a9f241b56c4e14eb26a0",
+    "bindingHash": "2c7a3db72a6ed19ea067c90ba5156cdf00fdd675a618bdb02201f1634318f005",
+    "report": "goose-static-04.json",
+    "status": "PASS_STATIC",
+    "rowsPassed": 14,
+    "rowsTotal": 14,
+    "presentationStatus": "PASS",
+    "presentationSamples": 1052,
+    "exactRest": true
+  },
+  {
+    "name": "heron",
+    "fit": "../16-heron/fit-01",
+    "recordRecipeHash": "cf60db301065dbb0147b3ba91650fbaa7b0447cf8fac40250a2b758d2cdb5982",
+    "bindingHash": "73d241f5ee53ffe4a533d9bc7511240f93193fe12731f754010d590ec10739bb",
+    "report": "heron-static-01.json",
+    "status": "PASS_STATIC",
+    "rowsPassed": 14,
+    "rowsTotal": 14,
+    "presentationStatus": "PASS",
+    "presentationSamples": 1067,
+    "exactRest": true
+  },
+  {
+    "name": "sparrow",
+    "fit": "../17-sparrow/fit-01",
+    "recordRecipeHash": "f92a0fe45ea5517a2246f72081ad5a4f793c84a6a901e4e55b55876acd9c0b8b",
+    "bindingHash": "2091ed328c8208fb2dae04d8b06b2e06585b2cb95fa1f425ee05b2b7ea7f1fdb",
+    "report": "sparrow-static-01.json",
+    "status": "RED",
+    "rowsPassed": 12,
+    "rowsTotal": 14,
+    "presentationStatus": "PASS",
+    "presentationSamples": 1039,
+    "exactRest": true
+  }
+]
