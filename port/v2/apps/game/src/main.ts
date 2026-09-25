@@ -35,6 +35,12 @@ import {
 } from '@cf/audio';
 import type { AudioAccessibilityModes, AudioContextLike, AudioCounterpartReceipt } from '@cf/audio';
 import {
+  commitWorldHarvestV1,
+  operationForWorldHarvestV1,
+  projectWorldHarvestV1,
+  publishWorldHarvestFieldsV1,
+} from './world-harvest.js';
+import {
   deviceAudioAccessibilityStorage,
   readAudioAccessibilityPrefsV1,
   writeAudioAccessibilityPrefsV1,
@@ -7872,6 +7878,7 @@ function buildCardActions(p: PlanetNode, bioscanState: BioscanCardStateV1): stri
       : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">' +
         (charted ? '★ Confirm in Star Atlas' : '+ Add to Star Atlas') + '</button>') +
     bioscanCardActionHtml(bioscanState) +
+    harvestCardActionHtml(p) +
     '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">⧉ share code</button>' +
     (onThisSurface && mountedLocalAiOriginal && surfaceVistaArtVariant === LOCAL_AI_LANDFALL_ID
       && !localAiGame?.snapshot().some(job => job.status === 'ready' && job.originalId === mountedLocalAiOriginal?.originalId)
@@ -8998,7 +9005,142 @@ card.addEventListener('click', async (e) => {
     const code = cardShareCode();
     if (code) await commitArc9ShareSend(code);
   }
+  else if (a === 'harvest') {
+    const seed = Number((act as HTMLElement).dataset.harvestWorld);
+    if (!Number.isSafeInteger(seed) || (act as HTMLButtonElement).disabled || cardCtx?.p.seed !== seed) return;
+    await runWorldHarvest(seed);
+    if (keyboard) (card.querySelector<HTMLElement>('[data-act="harvest"]') || surveyDockEl).focus();
+  }
 });
+/* Play-time harvest (v1.8.9 parity, D16): only on a world you conquered; readiness is the published active-play epoch. */
+let worldHarvestPendingSeed: number | null = null;
+let lastWorldHarvestOutcome: string | null = null;
+function harvestCardActionHtml(p: PlanetNode): string {
+  if (!save || trainingActive()) return '';
+  const h = projectWorldHarvestV1(save, p.seed, currentEcologyEpoch());
+  if (h.kind === 'not-conquered') return '';
+  const style = 'border-radius:9px;padding:8px 14px;min-height:44px;font:12px system-ui';
+  if (h.kind === 'ready') {
+    return `<button type="button" data-act="harvest" data-harvest-world="${p.seed}"${worldHarvestPendingSeed !== null ? ' disabled' : ''} title="Collect this world's Stardust. It replenishes after about 40 minutes of play." style="background:rgba(255,217,160,0.14);color:#ffd9a0;border:1px solid #caa24f;cursor:pointer;${style}">⛏ Harvest +${h.yield} ☄</button>`;
+  }
+  return `<button type="button" data-act="harvest" data-harvest-world="${p.seed}" disabled title="This world is still replenishing." style="background:#14233c;color:var(--dim);border:1px solid #2a3c5e;${style}">⛏ Replenishing · ~${h.minutesLeft} min of play</button>`;
+}
+async function runWorldHarvest(planetSeed: number): Promise<void> {
+  const runtime = f4Runtime;
+  if (worldHarvestPendingSeed !== null || smokeForceReadOnly
+    || !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
+    || replacementTransaction || replacementReloadPending
+    || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()) {
+    lastWorldHarvestOutcome = 'unavailable:write-authority';
+    toast('Harvest unavailable', 'Finish the current expedition save, then try again.');
+    return;
+  }
+  const epoch = currentEcologyEpoch();
+  const projection = projectWorldHarvestV1(save, planetSeed, epoch);
+  if (projection.kind !== 'ready') {
+    lastWorldHarvestOutcome = `refused:${projection.kind}`;
+    if (projection.kind === 'replenishing') toast('Harvest', `This world is still replenishing — about ${projection.minutesLeft} more minutes of exploring.`);
+    return;
+  }
+  const actionClaim = productActionCoordinator.tryClaim(operationForWorldHarvestV1(planetSeed, epoch));
+  if (actionClaim === null) {
+    lastWorldHarvestOutcome = 'unavailable:product-action-pending';
+    toast('Harvest unavailable', 'Another expedition action is still settling.');
+    return;
+  }
+  const actionBarrier = actionClaim.barrier;
+  const sourceState = save;
+  const sourceAuthorityJson = JSON.stringify(sourceState);
+  const prior = Object.freeze({ conquered: sourceState.conquered, essence: sourceState.essence, stats: sourceState.stats, unlocked: sourceState.unlocked });
+  const restoreLiveParent = (): void => {
+    if (save !== sourceState) return;
+    sourceState.conquered = prior.conquered; sourceState.essence = prior.essence;
+    sourceState.stats = prior.stats; sourceState.unlocked = prior.unlocked;
+  };
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  worldHarvestPendingSeed = planetSeed;
+  lastWorldHarvestOutcome = 'pending';
+  refreshPlanetSurveyCard();
+  let durable = false;
+  let convergence = false;
+  let writeAttempted = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime)
+      || importWriteInFlight || replacementTransaction || replacementReloadPending
+      || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()
+      || save !== sourceState || JSON.stringify(sourceState) !== sourceAuthorityJson
+      || currentEcologyEpoch() !== epoch || worldHarvestPendingSeed !== planetSeed) {
+      lastWorldHarvestOutcome = 'refused:authority-changed';
+      return;
+    }
+    writeAttempted = true;
+    const outcome = await commitWorldHarvestV1({ authority: runtime, state: sourceState, planetSeed, epoch, codecNow: Date.now() });
+    if (outcome.kind === 'not-ready') { lastWorldHarvestOutcome = 'refused:replenishing'; return; }
+    if (outcome.kind === 'refused') {
+      lastWorldHarvestOutcome = `refused:${outcome.detail}`;
+      if (boundedCollectionRefusalNeedsReload(outcome)) {
+        convergence = true;
+        scheduleF4AuthorityConvergenceReload(runtime, `Arc 6 harvest authority ${outcome.detail}`);
+      } else toast('Harvest unavailable', 'Nothing changed. Try again after save authority settles.');
+      return;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    lastPersistenceOutcome = `arc6-world-harvest-committed:${outcome.transaction.revision}`;
+    if (outcome.kind === 'committed-convergence') {
+      convergence = true;
+      lastWorldHarvestOutcome = `committed-convergence:${outcome.detail}`;
+      scheduleF4AuthorityConvergenceReload(runtime, `Arc 6 harvest committed; ${outcome.detail}`);
+      return;
+    }
+    try {
+      const checkpoint = runtime.checkpointParent();
+      if (runtime !== f4Runtime || save !== sourceState
+        || runtime.revision !== outcome.transaction.revision || checkpoint === null
+        || JSON.stringify(checkpoint.conquered) !== JSON.stringify(outcome.state.conquered)
+        || checkpoint.essence !== outcome.state.essence
+        || JSON.stringify(checkpoint.stats) !== JSON.stringify(outcome.state.stats)
+        || JSON.stringify(checkpoint.unlocked) !== JSON.stringify(outcome.state.unlocked)) {
+        throw new Error('harvest runtime did not retain its exact durable fixed point');
+      }
+      publishWorldHarvestFieldsV1(sourceState, outcome);
+      updateChips();
+      lastWorldHarvestOutcome = `committed:${planetSeed}:${outcome.facts.receiptOrdinal}`;
+      toast('⛏ Harvest', `+${outcome.facts.stardust} ☄ Stardust from ${lastCard?.title ?? 'your world'}. Total: ${outcome.facts.essenceAfter}. Stardust passively raises your breeding odds.`, true);
+      presentProgressionCeremony({
+        revision: outcome.transaction.revision,
+        disposition: 'committed-publication',
+        priorUnlockedIds: outcome.facts.priorUnlockedIds,
+        nextUnlockedIds: outcome.facts.nextUnlockedIds,
+        addedAchievementIds: outcome.facts.addedAchievementIds,
+        priorBestRankIndex: outcome.facts.priorBestRankIndex,
+        nextBestRankIndex: outcome.facts.nextBestRankIndex,
+      });
+    } catch (error) {
+      restoreLiveParent();
+      convergence = true;
+      lastWorldHarvestOutcome = 'committed-publication-reload';
+      scheduleF4AuthorityConvergenceReload(runtime, `Arc 6 harvest committed; publication ${error instanceof Error ? error.message : String(error)}`);
+    }
+  } catch (error) {
+    if (durable) restoreLiveParent();
+    lastWorldHarvestOutcome = `${durable ? 'committed-' : ''}fault`;
+    if (durable || writeAttempted) {
+      convergence = true;
+      scheduleF4AuthorityConvergenceReload(runtime, `Arc 6 harvest ${lastWorldHarvestOutcome}: ${error instanceof Error ? error.message : String(error)}`);
+    } else toast('Harvest unavailable', 'Nothing changed. Try again after save authority settles.');
+  } finally {
+    worldHarvestPendingSeed = null;
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
+    if (!convergence) refreshPlanetSurveyCard();
+  }
+}
 const sideEl = document.createElement('div');
 sideEl.id = 'planetside';
 sideEl.className = 'glass';
@@ -16822,7 +16964,7 @@ const READ_ONLY_MUTATION_SELECTOR = [
   '[data-binder-claim]',
   '[data-arc9-explorer-name-save]',
   '[data-atlas-favorite]', '[data-atlas-home]', '[data-atlas-remove]', '[data-atlas-undo]',
-  '[data-act="landcta"]', '[data-act="add"]', '[data-act="bioscan"]', '[data-act="share"]',
+  '[data-act="landcta"]', '[data-act="add"]', '[data-act="bioscan"]', '[data-act="share"]', '[data-act="harvest"]',
   '[data-capture-action]',
   '[data-arc5-feed-confirm]',
   '[data-arc5-explorer-meal-confirm]',

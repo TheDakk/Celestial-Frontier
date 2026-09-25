@@ -474,6 +474,11 @@ the collection side in `PROGRESSION.md`).
   minutes of active play. `_harvestReady` is the one predicate used by the card,
   button, cache key and award path. An absent `e` is ready once for migration;
   claiming stores the current `COSMIC_EPOCH`. `HARVEST_CD` gates nothing.
+- **v2 (matches code as of 2026-09-25, D16 parity):** `apps/game/src/world-harvest.ts` owns it with the same numbers and one
+  F4 receipt/CAS per (world, epoch). The operation is `arc6.world-harvest:<seed>@<epoch>`, and achievements/rank refresh in the
+  same transaction. The epoch is the app's **published** COSMIC_EPOCH (F4 active play). An epoch the save has not yet published
+  (`> EPOCH_BASE`) is refused, because the save clamps `e` to it. The conquered world's card shows `⛏ Harvest +N ☄`, or
+  `⛏ Replenishing · ~M min of play`. Moving the device clock grants nothing (`tests/world-harvest.test.ts`, THE CLOCK LAW).
 
 ### Shipyard: Research + Fabricator
 - One panel (right-rail 🛠) holds the ship portrait, the **Research Bench**, and the **Fabricator**, recipes **folded by category**.
