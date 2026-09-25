@@ -809,6 +809,7 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
       './guardian-companion-internal': './src/guardian-companion.ts',
       './companion-availability': './src/companion-availability.ts',
       './scout-internal': './src/scout.ts',
+      './friendly-duel-internal': './src/friendly-duel.ts',
     });
   });
 

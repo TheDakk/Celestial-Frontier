@@ -117,11 +117,13 @@ describe('Arc 6 player-live combat wiring', () => {
   });
 
   it('publishes no combat fact until the registered commit independently verifies its exact receipt and save', () => {
+    /* since §20 Command the member checks live in the shared prep, which immediately precedes the commit and is its first call */
     const settle = functionBody(
       action,
-      'export async function commitArc6CombatActionV1(',
+      'function prepareArc6CombatPartyV1(',
       '',
     );
+    expect(functionBody(action, 'export async function commitArc6CombatActionV1(', '')).toContain('const prepared = prepareArc6CombatPartyV1(');
     expect(ordered(settle, [
       'projectArc6CombatChampionAvailabilityV1({',
       "if (availability.kind !== 'available')",
@@ -160,7 +162,7 @@ describe('Arc 6 player-live combat wiring', () => {
       'function engineeringOutcomeConverges(',
     );
     expect(ordered(mainPublication, [
-      'await commitCurrentArc6Combat(request)',
+      'await commitCurrentArc6Combat(request, command)',   // §20 Command: the settling answers ride the same one publication path
       'combatCardController.settle(copy);',
       "if (outcome.kind === 'committed')",
       "gameEvent('conquest'",
@@ -231,7 +233,7 @@ describe('Arc 6 player-live combat wiring', () => {
 
     const actionCommit = functionBody(
       action,
-      'export async function commitArc6CombatActionV1(',
+      'function prepareArc6CombatPartyV1(',
       '',
     );
     expect(ordered(actionCommit, [
@@ -298,10 +300,13 @@ describe('Arc 6 player-live combat wiring', () => {
     expect(ordered(silentCharterMutant, [charterFact, 'if (starterCharter !== null)', charterCopy])).toBe(false);
     expect(action).toContain('this conquest would imbue equipped gear');
     expect(main).toContain('No extra Guardian Gear reward was invented; that authored table remains open.');
-    // §20 decided (2026-09-25): the card states the real party rule and that Auto takes every choice, with identical rewards;
-    // it must not promise mid-fight commands before the Command open-encounter record lands
+    // §20 decided (2026-09-25): the card states the real party rule and that Auto takes every choice, with identical rewards.
+    // Since the Command open-encounter record landed (step 4) it may offer Hold/Swap/Withdraw — and only because the Break controls
+    // exist: the promise and the real buttons must travel together
     expect(card).toContain('Auto plays every choice for you; rewards are the same either way.');
-    expect(card).not.toMatch(/Hold, Swap or Withdraw|command window/i);
+    expect(card).toContain('Command pauses at each Break for Hold, Swap or Withdraw, and Swap is never necessary.');
+    expect(card).toContain('data-combat-break="${o.decision}"');
+    expect(action).toContain('export async function decideArc6CommandEncounterV1(');
   });
 
   it('arms combat audio only in the trusted Challenge seam and retires the prior Main sidecar first', () => {

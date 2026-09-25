@@ -6,6 +6,7 @@
    v4/v5 replacement on detached data, and delegates the sole write to the
    existing F4 deterministic-product/F3 CAS owner. No retry, reroll, or
    optimistic publication exists here. */
+import { consumeCombatOpenEncounterV1, readCombatOpenEncounterV1 } from './combat-open-encounter.js';
 import { stageWeeklyCharterEventV1, weeklyCharterBoardOpenV1, type WeeklyCharterStageFactsV1 } from './weekly-charters.js';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
@@ -902,6 +903,10 @@ function deriveCombatSettlement(input: Readonly<{
   let championLegacyCodexId: string | null = null;
   let ownershipSuccessorDigest: string | null = null;
   let guardianPartyCreaturesAfter: readonly CreatureInstanceV1[] | null = null;
+  /* §20 Command: an open-encounter record is consumed (closed) by exactly the settlement it sealed, in this same CAS; while one is
+     open no other fight settles (combat-open-encounter.ts). */
+  const openEncounterClose = consumeCombatOpenEncounterV1(baseExtensions, plan);
+  if (openEncounterClose !== null) workingExtensions = applyV5ExtensionWrites(workingExtensions, [openEncounterClose]).extensions;
   const guardianCaptureRequired = plan.guardianCapture.status === 'ownership-writer-required';
   const partyHasOwned = plan.party?.members.some((member) => member.champion.kind === 'owned-fauna') === true;
   const guardianRead = readGuardianAcquisitionCarrierV1(
@@ -1458,7 +1463,8 @@ export type CombatSettlementVerificationOutcomeV1 =
       | 'guardian-companion-mismatch'
       | 'brink-achievement-mismatch'
       | 'starter-conquest-charter-mismatch'
-      | 'weekly-conquest-charter-mismatch';
+      | 'weekly-conquest-charter-mismatch'
+      | 'open-encounter-mismatch';
   }>;
 
 function mismatch(
@@ -1496,6 +1502,11 @@ export function verifyCommittedCombatSettlementV1(input: Readonly<{
   ));
   if (!battle || !sameJson(battle, registered.derived.battle)) {
     return mismatch('combat-authority-mismatch');
+  }
+  /* §20 Command: the reloaded save must hold no open encounter after a Command settlement (it consumed the record) */
+  const openAfter = readCombatOpenEncounterV1(input.writable.extensions);
+  if (openAfter.kind !== 'loaded' || (registered.plan.party?.mode === 'command' && openAfter.record !== null)) {
+    return mismatch('open-encounter-mismatch');
   }
   let ownershipV2: OwnershipStateV2 | null = null;
   if (registered.derived.ownershipSuccessorDigest !== null) {

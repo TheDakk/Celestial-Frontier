@@ -11,3 +11,4 @@ export * from './combat-settlement.js';
 export * from './creature-level-progress.js';
 export * from './player-ability.js';
 export * from './encounter.js';
+export * from './friendly-duel.js';
