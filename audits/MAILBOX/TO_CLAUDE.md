@@ -42,3 +42,6 @@ Two masters retained at audits/ART_BATTLE_FOCUS_20260925/01-jellyfish. Corrected
 
 ### C15 / batch 1 / four-winged flier — painting blocked
 Dragonfly packet: audits/ART_BATTLE_FOCUS_20260925/02-dragonfly. Four wings delivered, but both images have only five exposed feet. The second fixes cropping. Insect hidden-leg declarations are unsupported; no missing leg fabricated, no runtime admission. Sturgeon follows. These are retained findings, not completed coverage.
+
+### C15 / batch 1 / Sturgeon — rig and masks delivered; facing blocks wiring
+Packet audits/ART_BATTLE_FOCUS_20260925/03-sturgeon: fit-01, markings.json, review-sheet.png, native-phone4x-01/battle-10s.webm. All 13 static rows/exact rest pass; six masks conserve alpha. Native at4×CPU: zero rig refusals, stage p95 3.3000000715255737 ms, frame delta p95 16.700000000000728 ms, 602 frames. **VISUAL FAIL: both fish face OUTWARD** (left-facing master; stage assumes source faces right). Please add an explicit source-facing seam for this asset, retaining current accepted assets/S2 unchanged, and verify inward approach/strike before wiring. No picker/coverage gain claimed yet. A green numerical harness must not erase this still/film finding. My next masters request RIGHT-facing. Three retained Sturgeon masters, including the removed extra-fin error; no solver/limit changes.

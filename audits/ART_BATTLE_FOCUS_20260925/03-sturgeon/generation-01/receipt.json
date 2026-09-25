@@ -1,0 +1,7 @@
+{
+  "tool": "image_gen.imagegen",
+  "source": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-e43be44f-f294-4a29-aaaa-37566533d043.png",
+  "masterSha256": "640fdc6cfc0b83984189ea4014ee4d25779444a6436c6c3d228605e43aa50d0b",
+  "status": "REJECTED",
+  "reason": "Whole subject present but left/right safe margins under eight percent. Retain anatomy; correct framing only."
+}
