@@ -19,14 +19,22 @@ describe('painted stand-ins', () => {
     for (const a of CARD_ARCHETYPES) {
       const record = JSON.parse(readFileSync(new URL(a.dir + 'record.json', REPO), 'utf8')) as { template: { id: string } };
       const mapped = TEMPLATE_PAINTING[record.template.id]!; expect(mapped, `${a.earthName} (${record.template.id})`).toBeDefined(); expect(PAINTED.has(mapped)).toBe(true);
-      if (!/Crab$/.test(a.earthName)) expect(mapped, a.earthName).toBe(a.earthName); // one painting per body plan; the five crabs share the brachyuran plan
+      // a plan may have several paintings (five crabs; Salmon/Bass/Tang fish; Starfish/Jellyfish radial) — the map names ONE of them
+      if (mapped === a.earthName) continue; const own = JSON.parse(readFileSync(new URL(CARD_ARCHETYPES.find((x) => x.earthName === mapped)!.dir + 'record.json', REPO), 'utf8')) as { template: { id: string } };
+      expect(own.template.id, `${a.earthName}: the plan's painting ${mapped} must carry the same plan`).toBe(record.template.id);
     }
+    // the inverse direction: every mapped painting's own record carries the plan it is mapped from (the map cannot drift)
+    for (const [template, name] of Object.entries(TEMPLATE_PAINTING)) { const a = CARD_ARCHETYPES.find((x) => x.earthName === name)!; expect(a, name).toBeDefined();
+      expect((JSON.parse(readFileSync(new URL(a.dir + 'record.json', REPO), 'utf8')) as { template: { id: string } }).template.id, name).toBe(template); }
   });
   it('route 1: a painted Earth species is itself; route 2: an Earth species takes its body plan\'s painting; no profile or no painted template → null; non-fauna → null', () => {
     expect(paintedStandInV1({ _earthName: 'Python', seed: 1 }, PAINTED)).toEqual({ earthName: 'Python', kind: 'painted', family: 'self' });
     expect(paintedStandInV1({ _earthName: 'Brown Bear', seed: 1 }, PAINTED)).toEqual({ earthName: 'Civet', kind: 'earth-stand-in', family: 'quadruped' });
     expect(paintedStandInV1({ _earthName: 'Garter Snake', seed: 1 }, PAINTED)?.earthName).toBe('Python');
     expect(paintedStandInV1({ _earthName: 'Fiddler Crab', seed: 1 }, PAINTED)?.earthName).toBe('Crab');
+    // C15: a procedural jelly (body plan 9) draws as the painted Jellyfish; without the Jellyfish in the painted set it keeps procedural art
+    expect(paintedStandInV1({ kingdom: 'fauna', body: 9, seed: 1 }, PAINTED)).toEqual({ earthName: 'Jellyfish', kind: 'procedural-stand-in', family: 'jelly' });
+    expect(paintedStandInV1({ kingdom: 'fauna', body: 9, seed: 1 }, new Set([...PAINTED].filter((n) => n !== 'Jellyfish')))).toBeNull();
     expect(paintedStandInV1({ _earthName: 'No Such Creature', seed: 1 }, PAINTED)).toBeNull();
     expect(paintedStandInV1({ kingdom: 'flora', seed: 1 }, PAINTED)).toBeNull();
     // every profile with a painted template resolves; every one without resolves to null

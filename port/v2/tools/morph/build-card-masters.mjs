@@ -36,6 +36,12 @@ export const CARD_ARCHETYPES = Object.freeze([
   { earthName: 'Octopus', dir: 'audits/ARCHETYPE_REPAIRS_20260922/10-cephalopod/fit-02/', key: 'octopus' },
   { earthName: 'Fruit Bat', dir: 'audits/ARCHETYPE_FINISH_20260923/11-flyer-membrane/fit-02/', key: 'fruit-bat' },
   { earthName: 'Centipede', dir: 'audits/ARCHETYPE_FINISH_20260923/12-myriapod/fit-11/', key: 'centipede' },
+  // C15 (Codex, signed 2026-09-25; D1 standing order): candidates Codex marked READY — only the named fits, masks bound to the
+  // same recipe at the packet root. `weapons` is a hash-bound painter weapon declaration the arena passes to compileAnatomyAttack.
+  { earthName: 'Bass', dir: 'audits/ART_BATTLE_FOCUS_20260925/08-bass/fit-05/', key: 'bass', markings: 'audits/ART_BATTLE_FOCUS_20260925/08-bass/' },
+  { earthName: 'Tang', dir: 'audits/ART_BATTLE_FOCUS_20260925/10-tang/fit-06/', key: 'tang', markings: 'audits/ART_BATTLE_FOCUS_20260925/10-tang/' },
+  { earthName: 'Dragonfly', dir: 'audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/fit-03/', key: 'dragonfly', markings: 'audits/ART_BATTLE_FOCUS_20260925/dragonfly-repair-03/' },
+  { earthName: 'Jellyfish', dir: 'audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/', key: 'jellyfish', markings: 'audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/', weapons: 'audits/ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/weapon-declaration.json' },
 ]);
 const sha = (b) => createHash('sha256').update(b).digest('hex');
 const box = (img, dw, dh) => { const o = new Uint8Array(dw * dh * 4), sx = img.width / dw, sy = img.height / dh;
@@ -64,9 +70,9 @@ export function generatedSources(archetypes, markingsFilesOf) {
   // masks live outside the fit (the Salmon) — the same archetypes, so a creature on the card can always fight
   const rel = (repo) => '../' + repo.slice('audits/'.length);
   const arena = head + "/** One entry per painted archetype that can FIGHT: its source paint-skin fit (and its painted masks' folder when they\n * live outside the fit), relative to the arena proof directory the battle2 wiring resolves against. */\n"
-    + 'export interface Battle2PartsFit { readonly earthName: string; readonly dir: string; readonly markingsDir?: string; }\n'
+    + 'export interface Battle2PartsFit { readonly earthName: string; readonly dir: string; readonly markingsDir?: string; readonly weaponDeclaration?: string; }\n'
     + 'export const BATTLE2_PARTS_FITS: readonly Battle2PartsFit[] = Object.freeze([\n'
-    + archetypes.map((a) => `  Object.freeze({ ${field('earthName', a.earthName)}, ${field('dir', rel(a.dir))}${a.markings ? ', ' + field('markingsDir', rel(a.markings)) : ''} }),\n`).join('') + ']);\n';
+    + archetypes.map((a) => `  Object.freeze({ ${field('earthName', a.earthName)}, ${field('dir', rel(a.dir))}${a.markings ? ', ' + field('markingsDir', rel(a.markings)) : ''}${a.weapons ? ', ' + field('weaponDeclaration', rel(a.weapons)) : ''} }),\n`).join('') + ']);\n';
   return { registry, assets, arena };
 }
 if (import.meta.url === new URL(process.argv[1], 'file:').href) {

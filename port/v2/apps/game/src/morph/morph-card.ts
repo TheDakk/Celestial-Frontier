@@ -5,7 +5,7 @@
 // RGBA raster of `size` px, alpha-weighted box downscale of the alpha-box crop. Deterministic per (archetype, genome).
 import type { BodyCard } from '../motion/body-card.js';
 import type { MorphParamsV1 } from './morph-params.js';
-import { emissiveRoleV1, paletteRoleOfPart, remapAtlasPaletteV1, type PaletteFrame, type PaletteRole } from './morph-palette.js';
+import { accentPlanOfCard, emissiveRoleV1, paletteRoleOfPart, remapAtlasPaletteV1, type PaletteFrame, type PaletteRole } from './morph-palette.js';
 import { jointScalesV1 } from './morph-skeleton.js';
 import { applyEmissiveAccentV1, applyMarkingV1, emissiveV1, type AlphaMask } from './morph-markings.js';
 export interface CardMasterV1 { readonly width: number; readonly height: number; readonly master: Uint8Array; readonly labels: Uint8Array; }
@@ -14,16 +14,16 @@ export interface CardReceiptV1 { readonly labels: ReadonlyArray<Readonly<{ label
    * stage's skeleton program pivots these joints here, not at the parent landmark — the card must too. Absent = none. */
   readonly fixedPivots?: Readonly<Record<string, readonly [number, number]>>; }
 export const CARD_MARGIN = 0.06;
-export interface CardRenderInput { readonly master: CardMasterV1; readonly receipt: CardReceiptV1; readonly card: Pick<BodyCard, 'parts'> & { readonly template?: Readonly<{ id: string }> }; readonly params: MorphParamsV1; readonly size: number; /** the painted marking in CARD-master space (scaled from the master-space mask), when the archetype has one for this pattern */ readonly markingMask?: AlphaMask | null; /** false = never turn a long body onto the diagonal (tests/diagnostics compare against it); default on */ readonly diagonal?: boolean; }
+export interface CardRenderInput { readonly master: CardMasterV1; readonly receipt: CardReceiptV1; readonly card: Pick<BodyCard, 'parts'> & { readonly template?: Readonly<{ id: string }>; readonly identity?: Readonly<{ earthName?: string | null }>; readonly habitat?: Readonly<{ realm?: string; gait?: string }> }; readonly params: MorphParamsV1; readonly size: number; /** the painted marking in CARD-master space (scaled from the master-space mask), when the archetype has one for this pattern */ readonly markingMask?: AlphaMask | null; /** false = never turn a long body onto the diagonal (tests/diagnostics compare against it); default on */ readonly diagonal?: boolean; }
 /** Sub-tree membership from the body card's parent links: every joint under (and including) each scaled root. */
 function subtreesOf(card: Pick<BodyCard, 'parts'>, scales: Readonly<Record<string, number>>): ReadonlyArray<Readonly<{ root: string; scale: number; joints: ReadonlySet<string> }>> {
   const children = new Map<string, string[]>(); for (const p of card.parts) { const list = children.get(p.parent) ?? []; list.push(p.joint); children.set(p.parent, list); }
   return Object.entries(scales).map(([root, scale]) => { const joints = new Set<string>(); const stack = [root]; while (stack.length) { const j = stack.pop()!; if (joints.has(j)) continue; joints.add(j); for (const c of children.get(j) ?? []) stack.push(c); } return Object.freeze({ root, scale, joints }); });
 }
 /** The card's palette role per label — the production map cardCompositeV1 uses (exported so tests never re-derive it). */
-export function cardRolesV1(receipt: Pick<CardReceiptV1, 'labels'>, card: Pick<BodyCard, 'parts'> & { readonly template?: Readonly<{ id: string }> }): ReadonlyMap<number, PaletteRole> {
+export function cardRolesV1(receipt: Pick<CardReceiptV1, 'labels'>, card: Pick<BodyCard, 'parts'> & { readonly template?: Readonly<{ id: string }>; readonly identity?: Readonly<{ earthName?: string | null }>; readonly habitat?: Readonly<{ realm?: string; gait?: string }> }): ReadonlyMap<number, PaletteRole> {
   const groupOf = new Map(card.parts.map((p) => [p.joint, p.group] as const));
-  return new Map<number, PaletteRole>(receipt.labels.map((l) => [l.label, paletteRoleOfPart(l, groupOf.get(l.joint), card.template?.id)] as const));
+  return new Map<number, PaletteRole>(receipt.labels.map((l) => [l.label, paletteRoleOfPart(l, groupOf.get(l.joint), accentPlanOfCard(card))] as const));
 }
 type ScaledTree = Readonly<{ root: string; scale: number; joints: ReadonlySet<string> }>;
 /** The card's proportion transform (M1), the SAME one the stage's skeleton program applies: scaled sub-trees, each pivoting at its fixed

@@ -25,14 +25,27 @@ async function load(dir: string) {
 }
 const roleShare = (a: Awaited<ReturnType<typeof load>>) => { const role = cardRolesV1(a.receipt, a.card); let acc = 0, n = 0; for (let i = 0; i < a.master.width * a.master.height; i++) { const r = role.get(a.master.labels[i * 4]!); if (!r || r === 'keep') continue; n++; if (r === 'accent') acc++; } return acc / n; }; // the PRODUCTION role map
 describe('the painted library on the card — outcomes', () => {
-  it('the accent is TRIM on every archetype (≤ 33 % of labelled pixels — measured max: the Beetle\'s elytra 31 %); the crab keeps its claws-only split', async () => {
-    for (const a of CARD_ARCHETYPES) { const f = await load(a.dir), share = roleShare(f); expect(share, a.earthName + ' accent share').toBeLessThanOrEqual(0.33); }
+  // 35 % (was 33 % until the Bass, 2026-09-25: a bass's spiny + soft dorsal, square tail and paired fins are 33.9 % of its paint — honest
+  // trim for a fish). The negative control below is bound to the SAME constant: the pre-2026-09-23 default (~38 %) must still fail it.
+  const ACCENT_TRIM_MAX = 0.35;
+  it('the accent is TRIM on every archetype (≤ 35 % of labelled pixels — measured max: the Bass\'s fins 33.9 %, the Beetle\'s elytra 31 %); the crab keeps its claws-only split', async () => {
+    for (const a of CARD_ARCHETYPES) { const f = await load(a.dir), share = roleShare(f); expect(share, a.earthName + ' accent share').toBeLessThanOrEqual(ACCENT_TRIM_MAX); }
     const crab = await load(CARD_ARCHETYPES.find((a) => a.earthName === 'Crab')!.dir), g = new Map(crab.card.parts.map((p) => [p.joint, p.group] as const));
     expect(crab.receipt.labels.filter((l) => paletteRoleOfGroup(g.get(l.joint), crab.card.template.id) === 'accent').every((l) => g.get(l.joint) === 'arms')).toBe(true);
     // the negative control: the pre-2026-09-23 default (no template) puts ~38 % of the Civet in the accent
     const civet = await load(CARD_ARCHETYPES.find((a) => a.earthName === 'Civet')!.dir), cg = new Map(civet.card.parts.map((p) => [p.joint, p.group] as const)); let acc = 0, n = 0;
     for (let i = 0; i < civet.master.width * civet.master.height; i++) { const l = civet.receipt.labels.find((x) => x.label === civet.master.labels[i * 4]); if (!l) continue; const r = paletteRoleOfGroup(cg.get(l.joint)); if (r === 'keep') continue; n++; if (r === 'accent') acc++; }
-    expect(acc / n).toBeGreaterThan(0.33);
+    expect(acc / n).toBeGreaterThan(ACCENT_TRIM_MAX);
+    // the swimming-bell control: the Jellyfish under the plain radial plan (its bell = `body`) is NOT trim; the cnidarian split is what passes it
+    const jelly = await load(CARD_ARCHETYPES.find((a) => a.earthName === 'Jellyfish')!.dir), jg = new Map(jelly.card.parts.map((p) => [p.joint, p.group] as const)); let ja = 0, jn = 0;
+    for (let i = 0; i < jelly.master.width * jelly.master.height; i++) { const l = jelly.receipt.labels.find((x) => x.label === jelly.master.labels[i * 4]); if (!l) continue; const r = paletteRoleOfPart(l, jg.get(l.joint), 'radial'); if (r === 'keep') continue; jn++; if (r === 'accent') ja++; }
+    expect(ja / jn).toBeGreaterThan(ACCENT_TRIM_MAX); expect(roleShare(jelly)).toBe(0);
+    const star = await load(CARD_ARCHETYPES.find((a) => a.earthName === 'Starfish')!.dir); expect(roleShare(star)).toBeGreaterThan(0); // the Starfish keeps its disc accent
+    // the flying-insect control: the Dragonfly under the plain insect plan (wings = accent) is NOT trim; the Beetle keeps its elytra accent
+    const fly = await load(CARD_ARCHETYPES.find((a) => a.earthName === 'Dragonfly')!.dir), fg = new Map(fly.card.parts.map((p) => [p.joint, p.group] as const)); let fa = 0, fn = 0;
+    for (let i = 0; i < fly.master.width * fly.master.height; i++) { const l = fly.receipt.labels.find((x) => x.label === fly.master.labels[i * 4]); if (!l) continue; const r = paletteRoleOfPart(l, fg.get(l.joint), 'insect'); if (r === 'keep') continue; fn++; if (r === 'accent') fa++; }
+    expect(fa / fn).toBeGreaterThan(ACCENT_TRIM_MAX); expect(roleShare(fly)).toBeLessThanOrEqual(ACCENT_TRIM_MAX);
+    const beetle = await load(CARD_ARCHETYPES.find((a) => a.earthName === 'Beetle')!.dir); expect(roleShare(beetle)).toBeGreaterThan(0.2);
   }, 60_000);
   it('a NEAR-GREY painting takes a visible tint (the Salmon), luminance exact; a coloured one still rotates its own hue', async () => {
     const salmon = await load(CARD_ARCHETYPES.find((a) => a.earthName === 'Salmon')!.dir), g = { seed: 5, color: 2, accent: 11 };

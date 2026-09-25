@@ -31,6 +31,7 @@ for (const dir of FITS) { const record = JSON.parse(fs.readFileSync(path.join(R,
   gzipped.add(dir + 'binding.json');
   alphaOnly.add(dir + 'parts/keyed.png');
   if (typeof record.source === 'string') files.add(repoRelativeSource(record.source));
+  const weapons = CARD_ARCHETYPES[FITS.indexOf(dir)].weapons; if (weapons) { const decl = JSON.parse(fs.readFileSync(path.join(R, weapons), 'utf8')); if (decl.recordHash !== record.recipeHash) throw Error('weapon declaration sealed for another record: ' + weapons); files.add(weapons); }
   const mdir = MARKINGS[FITS.indexOf(dir)]; if (fs.existsSync(path.join(R, mdir, 'markings.json'))) { files.add(mdir + 'markings.json'); const mj = JSON.parse(fs.readFileSync(path.join(R, mdir, 'markings.json'), 'utf8')); for (const v of Object.values(mj.patterns ?? {})) if (v?.file) files.add(mdir + v.file); } }
 fs.rmSync(OUT, { recursive: true, force: true });
 const manifest = []; let bytes = 0;

@@ -88,6 +88,50 @@ import a16_0 from '../assets/painted-cards/centipede/card/card.json?url';
 import a16_1 from '../assets/painted-cards/centipede/record.json?url';
 import a16_2 from '../assets/painted-cards/centipede/card/master-512.png?url';
 import a16_3 from '../assets/painted-cards/centipede/card/labels-512.png?url';
+import a17_0 from '../assets/painted-cards/bass/card/card.json?url';
+import a17_1 from '../assets/painted-cards/bass/record.json?url';
+import a17_2 from '../assets/painted-cards/bass/card/master-512.png?url';
+import a17_3 from '../assets/painted-cards/bass/card/labels-512.png?url';
+import a17_4 from '../assets/painted-cards/bass/markings.json?url';
+import a17_5 from '../assets/painted-cards/bass/markings/striped.png?url';
+import a17_6 from '../assets/painted-cards/bass/markings/spotted.png?url';
+import a17_7 from '../assets/painted-cards/bass/markings/banded.png?url';
+import a17_8 from '../assets/painted-cards/bass/markings/mottled.png?url';
+import a17_9 from '../assets/painted-cards/bass/markings/marbled.png?url';
+import a17_10 from '../assets/painted-cards/bass/markings/eye-spotted.png?url';
+import a18_0 from '../assets/painted-cards/tang/card/card.json?url';
+import a18_1 from '../assets/painted-cards/tang/record.json?url';
+import a18_2 from '../assets/painted-cards/tang/card/master-512.png?url';
+import a18_3 from '../assets/painted-cards/tang/card/labels-512.png?url';
+import a18_4 from '../assets/painted-cards/tang/markings.json?url';
+import a18_5 from '../assets/painted-cards/tang/markings/striped.png?url';
+import a18_6 from '../assets/painted-cards/tang/markings/spotted.png?url';
+import a18_7 from '../assets/painted-cards/tang/markings/banded.png?url';
+import a18_8 from '../assets/painted-cards/tang/markings/mottled.png?url';
+import a18_9 from '../assets/painted-cards/tang/markings/marbled.png?url';
+import a18_10 from '../assets/painted-cards/tang/markings/eye-spotted.png?url';
+import a19_0 from '../assets/painted-cards/dragonfly/card/card.json?url';
+import a19_1 from '../assets/painted-cards/dragonfly/record.json?url';
+import a19_2 from '../assets/painted-cards/dragonfly/card/master-512.png?url';
+import a19_3 from '../assets/painted-cards/dragonfly/card/labels-512.png?url';
+import a19_4 from '../assets/painted-cards/dragonfly/markings.json?url';
+import a19_5 from '../assets/painted-cards/dragonfly/markings/striped.png?url';
+import a19_6 from '../assets/painted-cards/dragonfly/markings/spotted.png?url';
+import a19_7 from '../assets/painted-cards/dragonfly/markings/banded.png?url';
+import a19_8 from '../assets/painted-cards/dragonfly/markings/mottled.png?url';
+import a19_9 from '../assets/painted-cards/dragonfly/markings/marbled.png?url';
+import a19_10 from '../assets/painted-cards/dragonfly/markings/eye-spotted.png?url';
+import a20_0 from '../assets/painted-cards/jellyfish/card/card.json?url';
+import a20_1 from '../assets/painted-cards/jellyfish/record.json?url';
+import a20_2 from '../assets/painted-cards/jellyfish/card/master-512.png?url';
+import a20_3 from '../assets/painted-cards/jellyfish/card/labels-512.png?url';
+import a20_4 from '../assets/painted-cards/jellyfish/markings.json?url';
+import a20_5 from '../assets/painted-cards/jellyfish/markings/striped.png?url';
+import a20_6 from '../assets/painted-cards/jellyfish/markings/spotted.png?url';
+import a20_7 from '../assets/painted-cards/jellyfish/markings/banded.png?url';
+import a20_8 from '../assets/painted-cards/jellyfish/markings/mottled.png?url';
+import a20_9 from '../assets/painted-cards/jellyfish/markings/marbled.png?url';
+import a20_10 from '../assets/painted-cards/jellyfish/markings/eye-spotted.png?url';
 /** Repo-relative shipped archetype dir → its shipped asset URLs by file (card, record, and the painted masks when it has them). */
 export const CARD_ASSET_URLS: ReadonlyMap<string, Readonly<Record<string, string>>> = new Map([
   ['port/v2/apps/game/assets/painted-cards/crab/', { 'card/card.json': a0_0, 'record.json': a0_1, 'card/master-512.png': a0_2, 'card/labels-512.png': a0_3, 'markings.json': a0_4, 'markings/striped.png': a0_5, 'markings/spotted.png': a0_6, 'markings/banded.png': a0_7, 'markings/mottled.png': a0_8, 'markings/marbled.png': a0_9, 'markings/eye-spotted.png': a0_10 }],
@@ -107,4 +151,8 @@ export const CARD_ASSET_URLS: ReadonlyMap<string, Readonly<Record<string, string
   ['port/v2/apps/game/assets/painted-cards/octopus/', { 'card/card.json': a14_0, 'record.json': a14_1, 'card/master-512.png': a14_2, 'card/labels-512.png': a14_3 }],
   ['port/v2/apps/game/assets/painted-cards/fruit-bat/', { 'card/card.json': a15_0, 'record.json': a15_1, 'card/master-512.png': a15_2, 'card/labels-512.png': a15_3 }],
   ['port/v2/apps/game/assets/painted-cards/centipede/', { 'card/card.json': a16_0, 'record.json': a16_1, 'card/master-512.png': a16_2, 'card/labels-512.png': a16_3 }],
+  ['port/v2/apps/game/assets/painted-cards/bass/', { 'card/card.json': a17_0, 'record.json': a17_1, 'card/master-512.png': a17_2, 'card/labels-512.png': a17_3, 'markings.json': a17_4, 'markings/striped.png': a17_5, 'markings/spotted.png': a17_6, 'markings/banded.png': a17_7, 'markings/mottled.png': a17_8, 'markings/marbled.png': a17_9, 'markings/eye-spotted.png': a17_10 }],
+  ['port/v2/apps/game/assets/painted-cards/tang/', { 'card/card.json': a18_0, 'record.json': a18_1, 'card/master-512.png': a18_2, 'card/labels-512.png': a18_3, 'markings.json': a18_4, 'markings/striped.png': a18_5, 'markings/spotted.png': a18_6, 'markings/banded.png': a18_7, 'markings/mottled.png': a18_8, 'markings/marbled.png': a18_9, 'markings/eye-spotted.png': a18_10 }],
+  ['port/v2/apps/game/assets/painted-cards/dragonfly/', { 'card/card.json': a19_0, 'record.json': a19_1, 'card/master-512.png': a19_2, 'card/labels-512.png': a19_3, 'markings.json': a19_4, 'markings/striped.png': a19_5, 'markings/spotted.png': a19_6, 'markings/banded.png': a19_7, 'markings/mottled.png': a19_8, 'markings/marbled.png': a19_9, 'markings/eye-spotted.png': a19_10 }],
+  ['port/v2/apps/game/assets/painted-cards/jellyfish/', { 'card/card.json': a20_0, 'record.json': a20_1, 'card/master-512.png': a20_2, 'card/labels-512.png': a20_3, 'markings.json': a20_4, 'markings/striped.png': a20_5, 'markings/spotted.png': a20_6, 'markings/banded.png': a20_7, 'markings/mottled.png': a20_8, 'markings/marbled.png': a20_9, 'markings/eye-spotted.png': a20_10 }],
 ]);
