@@ -73,7 +73,7 @@ Notes on the table:
 | 18 | Card fav, home, del | D | 11886-11899 | moved to Atlas rows (§B) | see #30-33 | — |
 | 19 | Share this world (CF1) and copy code | D (share receipt) | 11869, 14651, 14670 | `commitArc9ShareSend` 7978, `copyShareCode` 7928 | S:28907 CDP mouse, then S:28909 `assessArc9ShareSendSettlement` (C:4509); copied code checked S:28908 → **UI** | — |
 | 20 | Close the share box | V | 14673 | v2 has no share modal | — → **UNPORTED** | — |
-| 21 | Card travel (`data-act="travel"`) | D | 13147 `travelTo` | main.ts:8927, `settleArc9DirectTravel` | tests/arc9-travel-action.test.ts:429 (`readSaveV5` :469) → **DIRECT**. The UI presses at S:6193, S:25155 and S:24017 read F4 writable plus live route only (UI-live) | Assert the receipt kind after the press |
+| 21 | Card travel (`data-act="travel"`) | D | 13147 `travelTo` | main.ts:8927, `settleArc9DirectTravel` | tests/arc9-travel-action.test.ts:429 (`readSaveV5` :469) → **DIRECT**. The UI presses at S:6193, S:25155 and S:24017 read F4 writable plus live route only (UI-live) | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-card-travel-outcome.test.ts` — press → one `arc9-galaxy-arrival-v1` receipt, durable savedView, reboot |
 
 ### B. Star Atlas
 
@@ -87,10 +87,10 @@ Notes on the table:
 | 27 | Row travel | D | 12181 | main.ts:4206 `jumpToProvenNav` | S:29087 CDP mouse, then S:29097 `arc9-galaxy-arrival-v1` receipt → **UI** | — |
 | 28 | Row travel refusal (outer or unavailable route) | D (no write) | — | same | S:10567 and S:23563, then save bytes checked unchanged → **UI** | — |
 | 29 | Cluster drill (v2 only; the v1 list was flat) | V | — | `data-atlas-cluster` 4158 | — → **NONE** | — |
-| 30 | Favorite toggle (+`curator`) | D | 12148, 11891 | `runArc9AtlasFavoriteChange` 11319 | tests/arc9-atlas-favorite-action.test.ts:301 (`readSaveV5` :336) → **DIRECT** | UI press |
-| 31 | Set or clear home | D | 12150, 11897 | `runArc9AtlasHomeChange` 10914 | tests/arc9-atlas-row-actions.test.ts:283 → **DIRECT** | UI press |
-| 32 | Remove | D | 12162 | `runArc9AtlasRemove` 11040 | tests/arc9-atlas-row-actions.test.ts:349 (reload :405) → **DIRECT** | UI press |
-| 33 | Undo remove (timed) | D | 12160, 13369 | `runArc9AtlasUndo` 11188 | same file, reload :461 → **DIRECT** | UI press inside the undo window |
+| 30 | Favorite toggle (+`curator`) | D | 12148, 11891 | `runArc9AtlasFavoriteChange` 11319 | tests/arc9-atlas-favorite-action.test.ts:301 (`readSaveV5` :336) → **DIRECT** | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-atlas-verbs-outcome.test.ts` |
+| 31 | Set or clear home | D | 12150, 11897 | `runArc9AtlasHomeChange` 10914 | tests/arc9-atlas-row-actions.test.ts:283 → **DIRECT** | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-atlas-verbs-outcome.test.ts` |
+| 32 | Remove | D | 12162 | `runArc9AtlasRemove` 11040 | tests/arc9-atlas-row-actions.test.ts:349 (reload :405) → **DIRECT** | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-atlas-verbs-outcome.test.ts` |
+| 33 | Undo remove (timed) | D | 12160, 13369 | `runArc9AtlasUndo` 11188 | same file, reload :461 → **DIRECT** | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-atlas-verbs-outcome.test.ts` — inside the 8 s window, a repaint at 8 s, and main.ts's own expiry timer |
 
 ### C. Compendium and specimen card
 
@@ -122,8 +122,8 @@ Notes on the table:
 | 52 | Sample | D | 11878 | same | S:17650 `pressArc4Keyboard`, then S:17692 durable read (arc4-browser-contract.mjs:1963) → **UI** | — |
 | 53 | Scavenge | D | 11877 | same | tests/arc4-capture-action.test.ts:353 (receipt and ownership, but no `readSaveV5` reload) → **DIRECT** | **Top gap**: the only verb never pressed |
 | 54 | Capture disabled-button suppression | D (no write) | — | capture-card.ts | S:15604, then S:15673 save unchanged → **UI** | — |
-| 55 | Conquer a world: choose champion and fight | D | 11872, 18543, 16664, 18583 | combat-card.ts, arc6-combat-action.ts, `runArc6CombatCardAction` 16450 | packages/persistence/test/combat-settlement.test.ts:801 (real writer, reload) → **DIRECT**. The app-level tests/arc6-guardian-champion.test.ts:317 uses a stub writer | **Top gap #1** |
-| 56 | Guardian battle | D | 18583 | arc6 guardian | combat-settlement.test.ts:1201, :1292 → **DIRECT** | UI press |
+| 55 | Conquer a world: choose champion and fight | D | 11872, 18543, 16664, 18583 | combat-card.ts, arc6-combat-action.ts, `runArc6CombatCardAction` 16450 | packages/persistence/test/combat-settlement.test.ts:801 (real writer, reload) → **DIRECT**. The app-level tests/arc6-guardian-champion.test.ts:317 uses a stub writer | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-guardian-combat-outcome.test.ts` — real champion select + Challenge on Earth: conquest, XP, Stardust, settle1, reboot |
+| 56 | Guardian battle | D | 18583 | arc6 guardian | combat-settlement.test.ts:1201, :1292 → **DIRECT** | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-guardian-combat-outcome.test.ts` — a real Guardian world; defeat = durable Recovery (no wound) on the active-play clock, reboot |
 | 57 | Titan felled → Prime Signature claim | D | 18662, 21975 | arc6 titan plus prime | combat-settlement.test.ts:1421, :1636 → **DIRECT** | UI press |
 | 58 | Lead a conquest yourself (mercy law, <25% HP refused) | D | 16668 | combat-card.ts `player` champion | tests/arc6-combat-card.test.ts:386 (stub) → **CODE** | — |
 | 59 | Play-time stardust harvest | D | 11873, 18754 | none (only the `harvests` counter survives) | — → **UNPORTED** | — |
@@ -144,9 +144,9 @@ Notes on the table:
 | 69 | Pin recipe | D | 20557 | none | — → **UNPORTED** | — |
 | 70 | Press a shortfall "Need…" button | V | 20571 | engineering-panel.ts disabled reason | tests/engineering-panel.test.ts:710 → **CODE** | — |
 | 71 | Open an item or material card | V | 20398, 20296 | inventory-panel.ts | S:11918 → **UI** (view) | — |
-| 72 | Equip / unequip (item card) | D | 20379, 20855 | inventory-panel.ts, `commitArc2InventoryAction` 12659 | S:11918/11935 → S:11953 and S:12232 → S:12286; also G:13325 → G:13499 → **UI** | Browser-only; no vitest runs the inline transaction (main.ts ~12703) |
+| 72 | Equip / unequip (item card) | D | 20379, 20855 | inventory-panel.ts, `commitArc2InventoryAction` 12659 | S:11918/11935 → S:11953 and S:12232 → S:12286; also G:13325 → G:13499 → **UI** | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-inventory-outcome.test.ts` — the inline main.ts transaction now runs in `npm test` |
 | 73 | Equip via the explorer doll slot picker | D | 24317 | same owner, inventory panel | as #72 → **UI** | — |
-| 74 | Salvage with confirm | D | 20389 | same | S:12232 press, S:12246 confirm, then S:12280 → **UI** | — |
+| 74 | Salvage with confirm | D | 20389 | same | S:12232 press, S:12246 confirm, then S:12280 → **UI** | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-inventory-outcome.test.ts` — first tap confirms, second commits |
 | 75 | Salvage "don't ask again" | D | 20391 | none (`save.salvageConfirm` is read at main.ts:4461 but has no control) | — → **UNPORTED** | — |
 | 76 | Salvage all junk (armed) | D | 20400, 20359 | none | — → **UNPORTED** | — |
 | 77 | Claim pending loot (v2 carrier) | D | — | inventory `pending-claim` | S:12325, then S:12286 → **UI** | — |
@@ -159,7 +159,7 @@ Notes on the table:
 | 79 | Accept a starter Charter | D | 22730, 22420 | `runStarterCharterAccept` 10258 | tests/starter-charters.test.ts:330 (no `readSaveV5` reload) → **DIRECT** | **Top gap** |
 | 80 | Accept a weekly Charter (v2 design of the hunt board) | D | 22730 | same path, weekly-charters.ts | tests/starter-charters.test.ts:647 (`fixtureAt(save, activePlayMs)` :569) → **DIRECT** | UI press |
 | 81 | Charter / Ascent goal banking and completion (passive) | D | 22407 | inside each action transaction | tests/arc3-app-backend.test.ts:709; arc5-scout :317; arc0-landing facts → **DIRECT** | Assert after a UI action |
-| 82 | Achievements, rank, XP awards (passive) | D | 14005, 15766 | arc9-progression-action.ts | tests/arc9-progression.test.ts:335 (`readSaveV5` :377) → **DIRECT** | The rule-7 lesson: no test reads the ledger after a UI action |
+| 82 | Achievements, rank, XP awards (passive) | D | 14005, 15766 | arc9-progression-action.ts | tests/arc9-progression.test.ts:335 (`readSaveV5` :377) → **DIRECT** | **Closed for the combat path 2026-09-25:** `tests/a5-guardian-combat-outcome.test.ts` reads XP, Stardust, `unlocked` and the ceremony input durably after a conquest press. Land / capture / Feed ledger reads remain open |
 | 83 | Open Records, tabs, achievement group fold | V | 24195, 24200 | records-rank-panel.ts | S:28854 CDP, then reload DOM count S:29002 → **UI** (view) | — |
 | 84 | Binder set claim | D | 13073 | `runArc9BinderSetClaim` 10535 | tests/binder-sets.test.ts:149 (no reload) → **DIRECT** | **Top gap** |
 | 85 | Binder Paragon: open or track travel | D (travel) | 13056 | main.ts:4386, paragon-finder.ts | tests/paragon-finder.test.ts:74 (pure) → **CODE** | — |
@@ -167,7 +167,7 @@ Notes on the table:
 | 87 | Open Prime Codex | V | 18253 | prime-codex-panel.ts | tests/prime-codex-panel.test.ts:54 (pure) → **CODE** | — |
 | 88 | Travel to a filled signature slot (`data-pgo`) | D | 18260 | none | — → **UNPORTED** | — |
 | 89 | Track an unclaimed Titan (`data-tgo`) | D | 18264 | none | — → **UNPORTED** | — |
-| 90 | Choose a Frontier ending | D | 18272, 18274, 22082 | `runArc9FrontierEndingChoice` 12171 | tests/arc9-frontier-ending-action.test.ts:190 (`readSaveV5` :222) → **DIRECT** | UI press |
+| 90 | Choose a Frontier ending | D | 18272, 18274, 22082 | `runArc9FrontierEndingChoice` 12171 | tests/arc9-frontier-ending-action.test.ts:190 (`readSaveV5` :222) → **DIRECT** | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-frontier-ending-outcome.test.ts` — locked Balance never writes; the choice cannot be overwritten, before or after reboot |
 
 ### G. Search, share codes, duel
 
@@ -191,7 +191,7 @@ Notes on the table:
 | # | Action | Kind | v1 anchor | v2 owner | Best existing test → class | Gap |
 |---|---|---|---|---|---|---|
 | 103 | Bell open (marks all read after 900 ms) | D | 13472 | notification panel (no auto-read) | — → **UNPORTED** (behavior) | — |
-| 104 | Toggle one entry read | D | 13482 | notification-history.ts:98 `data-notification-read` | tests/notification-history.test.ts:97 (real button, real checkpoint codec, no StorageBackend or F4) → **DIRECT** | Real backend, UI press |
+| 104 | Toggle one entry read | D | 13482 | notification-history.ts:98 `data-notification-read` | tests/notification-history.test.ts:97 (real button, real checkpoint codec, no StorageBackend or F4) → **DIRECT** | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-notification-read-outcome.test.ts` — Mark read / Mark all read / Clear all over a real backend + F4 checkpoint |
 | 105 | Mark all read | D | 13488 | none | — → **UNPORTED** | — |
 | 106 | Clear all (armed) | D | 13492 | none | — → **UNPORTED** | — |
 | 107 | Toast tap → go to surface | V | 13359, 13381 | none found | — → **UNPORTED** | — |
@@ -221,7 +221,7 @@ Notes on the table:
 | 126 | Guide browse tour (`brnext`, `brquit`) | V | 17106 | none | — → **UNPORTED** | — |
 | 127 | Release notes history | V | 18182, 18139 | `renderReleaseHistory` 3182 | S:23798 `showReleaseFixture` hook, then S:23819 reads `meta.save.rn` → **DIRECT** | — |
 | 128 | Update popup dismiss (`rnSeen`) | D | 18174 | `showUnseenV2Release` 3258 | same S:23819 → **DIRECT** | — |
-| 129 | Update pill → reload to the new build | D (reload safety) | 18208 | pwa-update.ts, `reloadForPwaUpdate` 16737 | tests/pwa-offline.test.ts (code path) → **NONE** | Reload with a pending write must not lose it |
+| 129 | Update pill → reload to the new build | D (reload safety) | 18208 | pwa-update.ts, `reloadForPwaUpdate` 16737 | tests/pwa-offline.test.ts (code path) → **NONE** | **Closed 2026-09-25 (UI, browser-free):** `tests/a5-pwa-update-outcome.test.ts` — the pending save is durable at the instant the reload is scheduled; a failed in-flight write refuses it and re-arms the save |
 | 130 | Panel ✕ close, outside-tap close, cinematic dismiss | V | 24042, 16318 | panels.ts | G:10486 CDP → **UI** (view) | — |
 | 131 | Ecology "listen" (v2 only) | V | — | main.ts:9247 | — → **NONE** | — |
 
@@ -266,6 +266,36 @@ Counting rule: rows #5, 28, 29, 54, 77 and 131 are v2-only, and #18 is a cross-r
 4. **JSDOM component tests.** These include compendium-feed/breed/rename/scout, inventory-panel, engineering-panel, capture-card, combat-card and training.
    - Each builds its own `new JSDOM` (58 files). None uses a `@vitest-environment` pragma, and the config defaults to node.
    - They already press real component controls with stub `onAction`s. Wiring `onAction` to the real owner plus harness 3 turns each into a component-level outcome test. That is below the main.ts slice, but far above CODE.
+
+## Closed by browser-free UI outcome tests (A5, 2026-09-25)
+
+Every test below executes the exact shipped `main.ts` sections in JSDOM (the explorer-meal pattern), presses the real
+controls, reads the committed save back from a real memory backend with `readSaveV5`, reboots a fresh F4 runtime from it,
+and carries mutation controls that break the WIRING (not the assertion) and fail on a named message. All run in `npm test`.
+
+| Gap | Rows | Test file | Tests (mutants) |
+|---|---|---|---|
+| 1 Conquest / Guardian through the card | #55, #56 | `tests/a5-guardian-combat-outcome.test.ts` | 12 (7) |
+| 9 XP / achievement ledger after a UI action (combat) | #82 | same file (conquest scenario) | included above |
+| 8 Atlas verbs incl. the timed Undo | #30-33 | `tests/a5-atlas-verbs-outcome.test.ts` | 7 (6) |
+| 10 Frontier ending | #90 | `tests/a5-frontier-ending-outcome.test.ts` | 4 (3) |
+| 12 Card travel durable read | #21 | `tests/a5-card-travel-outcome.test.ts` | 5 (3) |
+| 13 Inventory transaction in vitest | #72, #74 | `tests/a5-inventory-outcome.test.ts` | 5 (3) |
+| 14 Notification mark-read on a real backend | #104 (+ ported #105/#106) | `tests/a5-notification-read-outcome.test.ts` | 5 (3) |
+| 15 PWA update reload with a write in flight | #129 | `tests/a5-pwa-update-outcome.test.ts` | 6 (3) |
+| 2-7, 11 (earlier today) | #16, #42, #43-44, #53, #79-80, #84, #118-119 | `tests/a5-{bioscan,breed,rename-scout,scavenge,charter-accept,binder-claim,settings-identity}-outcome.test.ts` | 70 |
+
+**Still open (not closed here):** #57 Titan → Prime Signature through the card (the fixture needs a Titan world plus a
+champion strong enough to win; the Guardian harness above is the template); #73 the explorer-doll slot picker; #81
+passive Charter banking; the XP ledger after Land / capture / Feed presses; #11 and #92 (leave-world and search-pick
+durable reads, same pattern as the card-travel file). No product bug was found by any of these tests.
+
+**Harness findings worth keeping:** (1) after a committed fight the combat card is refreshed only by the next F4 heartbeat
+— a re-press in between is refused (the projection was consumed) and commits nothing; the test asserts both. (2) The Atlas
+Undo window is guarded three times (render check, the 8.05 s expiry timer, and a post-await re-check); a single mutant of
+the render check or the timer is caught, the post-await guard is masked by the pre-check (defence in depth, no mutant).
+(3) A new outcome harness that forgets an owner the runner calls (e.g. the Favorite `curator` ceremony) shows up as a
+convergence reload, so every file asserts that no reload was scheduled.
 
 ## Top 15 gaps to close first
 
