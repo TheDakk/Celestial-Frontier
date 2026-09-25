@@ -9,6 +9,8 @@ import {
   captureAudioLabSample,
   createAudioRuntime,
   createAudioVoiceMixIntentV1,
+  AUDIO_LIMITER_SETTINGS,
+  AUDIO_REDUCED_INTENSITY_GAIN,
   type AudioCounterpartReceipt,
   type AudioAnalyserNodeLike,
   type AudioContextLike,
@@ -1757,7 +1759,7 @@ describe('Arc 7 injected audio runtime', () => {
     const runtime = createAudioRuntime(options);
     expect([...optionReads.entries()]).toEqual([
       ['createContext', 1], ['nowMs', 1], ['verifyCounterpart', 1], ['scheduleVoiceDeadline', 1], ['budgets', 1],
-      ['initialMuted', 1], ['initialMasterGain', 1], ['categoryGains', 1],
+      ['initialMuted', 1], ['initialMasterGain', 1], ['initialAccessibility', 1], ['categoryGains', 1],
     ]);
     await runtime.activate();
 
@@ -2922,9 +2924,9 @@ describe('Arc 7 injected audio runtime', () => {
     expect(audit.settingsAccessibility).toMatchObject({
       meaningfulCounterpart: 'runtime-verifier-required',
       captions: 'app-integration-required',
-      mono: 'not-implemented',
-      dynamicRange: 'not-implemented',
-      reducedIntensity: 'not-implemented',
+      mono: 'runtime-implemented',
+      dynamicRange: 'runtime-implemented',
+      reducedIntensity: 'runtime-implemented',
     });
     expect(audit.resourceMeasurement).toEqual({
       encodedBytes: 'measurement-required',
@@ -3152,5 +3154,96 @@ describe('Arc 7 injected audio runtime', () => {
       };
     });
     expect(() => auditAudioLabLifecycleTrace(regressing)).toThrow(/cumulative diagnostics regressed/);
+  });
+});
+
+describe('audio accessibility modes at the master (mono, reduced intensity; 2026-09-25)', () => {
+  const limiterValues = (limiter: FakeLimiter) => ({
+    threshold: limiter.threshold.value, knee: limiter.knee.value, ratio: limiter.ratio.value,
+    attack: limiter.attack.value, release: limiter.release.value,
+  });
+
+  it('default is the unchanged stereo brick-wall mix (control)', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: contextFactory([context]).create, nowMs: () => 0, initialMasterGain: 0.8 });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    const master = context.gains[0]! as FakeGain & { channelCount?: number; channelCountMode?: string };
+    expect(master.channelCount).toBe(2);
+    expect(master.channelCountMode).toBe('max');
+    expect(master.gain.value).toBe(0.8);
+    expect(limiterValues(context.limiters[0]!)).toEqual(AUDIO_LIMITER_SETTINGS.standard);
+    expect(runtime.diagnostics().accessibility).toEqual({ mono: false, reducedIntensity: false });
+    expect(runtime.diagnostics().gains).toMatchObject({ master: 0.8, effectiveMaster: 0.8 });
+  });
+
+  it('mono downmixes every category at the master, live, and restores stereo', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: contextFactory([context]).create, nowMs: () => 0 });
+    await runtime.activate();
+    const master = context.gains[0]! as FakeGain & { channelCount?: number; channelCountMode?: string; channelInterpretation?: string };
+    runtime.setAccessibility({ mono: true, reducedIntensity: false });
+    expect([master.channelCount, master.channelCountMode, master.channelInterpretation]).toEqual([1, 'explicit', 'speakers']);
+    // every category bus feeds the master (through its meter), so one downmix covers all of them
+    for (let index = 0; index < AUDIO_CATEGORIES.length; index++) {
+      expect(context.analysers[index + 1]!.connections).toEqual([master]);
+    }
+    expect(master.gain.value).toBe(1); // mono alone never changes loudness
+    runtime.setAccessibility({ mono: false, reducedIntensity: false });
+    expect([master.channelCount, master.channelCountMode]).toEqual([2, 'max']);
+  });
+
+  it('reduced intensity lowers the master and swaps the brick wall for a gentle compressor, live and reversibly', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: contextFactory([context]).create, nowMs: () => 0, initialMasterGain: 0.5 });
+    await runtime.activate();
+    runtime.setAccessibility({ mono: false, reducedIntensity: true });
+    expect(context.gains[0]!.gain.value).toBeCloseTo(0.5 * AUDIO_REDUCED_INTENSITY_GAIN, 12);
+    expect(limiterValues(context.limiters[0]!)).toEqual(AUDIO_LIMITER_SETTINGS.reducedIntensity);
+    expect(runtime.diagnostics().gains.effectiveMaster).toBeCloseTo(0.275, 12);
+    runtime.setMasterGain(1); // a later volume change keeps the reduction
+    expect(context.gains[0]!.gain.value).toBeCloseTo(AUDIO_REDUCED_INTENSITY_GAIN, 12);
+    runtime.setAccessibility({ mono: false, reducedIntensity: false });
+    expect(context.gains[0]!.gain.value).toBe(1);
+    expect(limiterValues(context.limiters[0]!)).toEqual(AUDIO_LIMITER_SETTINGS.standard);
+  });
+
+  it('modes set before activation, or while muted, apply to the graph that is built later; mute still wins', async () => {
+    const first = new FakeContext(), second = new FakeContext();
+    const runtime = createAudioRuntime({
+      createContext: contextFactory([first, second]).create, nowMs: () => 0, initialMasterGain: 1,
+      initialAccessibility: { mono: true, reducedIntensity: true },
+    });
+    await runtime.activate();
+    expect((first.gains[0]! as FakeGain & { channelCount?: number }).channelCount).toBe(1);
+    expect(first.gains[0]!.gain.value).toBeCloseTo(AUDIO_REDUCED_INTENSITY_GAIN, 12);
+    await runtime.setMuted(true);
+    expect(runtime.diagnostics().gains.effectiveMaster).toBe(0);
+    runtime.setAccessibility({ mono: false, reducedIntensity: true });
+    await runtime.setMuted(false);
+    await runtime.activate();
+    expect((second.gains[0]! as FakeGain & { channelCount?: number }).channelCount).toBe(2);
+    expect(second.gains[0]!.gain.value).toBeCloseTo(AUDIO_REDUCED_INTENSITY_GAIN, 12);
+    expect(limiterValues(second.limiters[0]!)).toEqual(AUDIO_LIMITER_SETTINGS.reducedIntensity);
+  });
+
+  it('the lab canonicalizer accepts real reduced-intensity diagnostics and refuses a contradicting effective master', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: contextFactory([context]).create, nowMs: () => 0, initialMasterGain: 0.5 });
+    await runtime.activate();
+    runtime.setAccessibility({ mono: true, reducedIntensity: true });
+    const sample = captureAudioLabSample('running-loaded', runtime);
+    expect(sample.diagnostics.accessibility).toEqual({ mono: true, reducedIntensity: true });
+    const forged = { ...runtime.diagnostics(), gains: { ...runtime.diagnostics().gains, effectiveMaster: 0.5 } };
+    expect(() => captureAudioLabSample('running-loaded', { diagnostics: () => forged } as never)).toThrow(/reduced-intensity/);
+  });
+
+  it('refuses malformed modes without changing the mix', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: contextFactory([context]).create, nowMs: () => 0 });
+    await runtime.activate();
+    expect(() => runtime.setAccessibility({ mono: 1, reducedIntensity: false } as never)).toThrow(TypeError);
+    expect(() => runtime.setAccessibility(null as never)).toThrow(TypeError);
+    expect(runtime.diagnostics().accessibility).toEqual({ mono: false, reducedIntensity: false });
+    expect(() => createAudioRuntime({ createContext: contextFactory([]).create, nowMs: () => 0, initialAccessibility: {} as never })).toThrow(TypeError);
   });
 });

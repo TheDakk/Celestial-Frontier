@@ -50,7 +50,8 @@ interface Fixture {
 function fixture(input: Readonly<{
   fed?: number | null;
   quantity?: number;
-  assignment?: { readonly kind: 'mission'; readonly missionId: string } | null;
+  assignment?: { readonly kind: 'mission'; readonly missionId: string }
+    | { readonly kind: 'recovery'; readonly readyAtActivePlayMs: number } | null;
 }> = {}): Fixture {
   const leftIdentity = canonicalGenomeIdentityV1({ seed: 11, kingdom: 'fauna', form: 3 });
   const rightIdentity = canonicalGenomeIdentityV1({ seed: 22, kingdom: 'fauna', form: 7 });
@@ -81,7 +82,8 @@ function fixture(input: Readonly<{
     identity: typeof leftIdentity,
     discoveryIndex: number,
     fed: number | null,
-    assignment: { readonly kind: 'mission'; readonly missionId: string } | null = null,
+    assignment: { readonly kind: 'mission'; readonly missionId: string }
+      | { readonly kind: 'recovery'; readonly readyAtActivePlayMs: number } | null = null,
   ) => createCreatureInstanceV1({
     creatureId,
     speciesId: identity.speciesId,
@@ -281,6 +283,16 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     expect(preflightArc5FeedV1(assigned.state, {
       creatureId: assigned.leftId, foodLotId: assigned.floraLotId,
     })).toEqual({ kind: 'refused', reason: 'creature-assigned' });
+    // Recovery locks breed/combat/dispatch only: a recovering (or recovered) parent eats and keeps its Recovery
+    for (const readyAtActivePlayMs of [0, 480_000]) {
+      const recovering = fixture({ assignment: { kind: 'recovery', readyAtActivePlayMs } });
+      const meal = preflightArc5FeedV1(recovering.state, {
+        creatureId: recovering.leftId, foodLotId: recovering.floraLotId,
+      });
+      if (meal.kind !== 'ready') throw new Error(`recovery refused a meal: ${meal.reason}`);
+      expect(settleArc5FeedV1(meal.preflight, 41).creatureAfter.assignment)
+        .toEqual({ kind: 'recovery', readyAtActivePlayMs });
+    }
     const ordinary = fixture();
     expect(preflightArc5FeedV1(ordinary.state, {
       creatureId: ownershipContentId('creature', 'absent') as CreatureInstanceId,

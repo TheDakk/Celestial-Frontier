@@ -53,6 +53,10 @@ export interface TameGreetingAudioPolicy {
   readonly visible: boolean;
   readonly answerable: boolean;
   readonly masterGain: number;
+  /** Settings → Mono audio (absent = off): every category downmixed at the master. */
+  readonly mono?: boolean;
+  /** Settings → Reduced intensity (absent = off): quieter master through a gentle compressor. */
+  readonly reducedIntensity?: boolean;
   /** Stable app route key; Tame retains the exact canonical surface-world key. */
   readonly routeKey: string | null;
 }
@@ -344,7 +348,12 @@ function safePolicy(readPolicy: () => TameGreetingAudioPolicy): TameGreetingAudi
       || typeof value.answerable !== 'boolean'
       || (value.routeKey !== null && (typeof value.routeKey !== 'string'
         || value.routeKey.length === 0 || value.routeKey.length > 512))) return null;
-    return Object.freeze({ ...value, masterGain: safeGain(value.masterGain) });
+    return Object.freeze({
+      ...value,
+      masterGain: safeGain(value.masterGain),
+      mono: value.mono === true,
+      reducedIntensity: value.reducedIntensity === true,
+    });
   } catch {
     return null;
   }
@@ -463,6 +472,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     const policy = safePolicy(this.#readPolicy);
     if (!enabledMasterPolicy(policy) || !this.#answerable || this.#hidden) return false;
     this.#runtime.setMasterGain(policy.masterGain);
+    this.#runtime.setAccessibility({ mono: policy.mono === true, reducedIntensity: policy.reducedIntensity === true });
     this.#runtime.setCategoryGain('creature', policy.creatureVoicesOn ? 1 : 0);
     void this.#runtime.setMuted(false);
     this.#pilotArm = Object.freeze({
@@ -485,6 +495,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     this.#cancelGamePlayback('pilot-landing', false);
     this.#armSerial++; // Consumed, awaiting game voices also lose this scene's ownership.
     this.#runtime.setMasterGain(policy.masterGain);
+    this.#runtime.setAccessibility({ mono: policy.mono === true, reducedIntensity: policy.reducedIntensity === true });
     this.#runtime.setCategoryGain('creature', policy.creatureVoicesOn ? 1 : 0);
     void this.#runtime.setMuted(false);
     const pending: PendingPilotLandingAudio = {
@@ -503,6 +514,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
         // Reconcile the accepted destination policy without asking the browser
         // for a new post-await activation or creating a second context.
         this.#runtime.setMasterGain(current.masterGain);
+        this.#runtime.setAccessibility({ mono: current.mono === true, reducedIntensity: current.reducedIntensity === true });
         this.#runtime.setCategoryGain('creature', current.creatureVoicesOn ? 1 : 0);
         void this.#runtime.setMuted(false);
         promoted = Object.freeze({ routeKey: pending.destinationRouteKey, activation: pending.activation });
@@ -526,6 +538,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     this.#cancelGamePlayback('pilot-settlement', false);
     this.#armSerial++;
     this.#runtime.setMasterGain(policy.masterGain);
+    this.#runtime.setAccessibility({ mono: policy.mono === true, reducedIntensity: policy.reducedIntensity === true });
     this.#runtime.setCategoryGain('creature', policy.creatureVoicesOn ? 1 : 0);
     void this.#runtime.setMuted(false);
     const pending = Object.freeze({ routeKey: policy.routeKey, activation: this.#runtime.activate() });
@@ -539,6 +552,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
         if (this.#disposed || this.#hidden || !this.#answerable || !enabledMasterPolicy(current)
           || current.routeKey !== pending.routeKey) return false;
         this.#runtime.setMasterGain(current.masterGain);
+        this.#runtime.setAccessibility({ mono: current.mono === true, reducedIntensity: current.reducedIntensity === true });
         this.#runtime.setCategoryGain('creature', current.creatureVoicesOn ? 1 : 0);
         void this.#runtime.setMuted(false);
         this.#pilotArm = pending;
@@ -654,6 +668,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     if (this.#activeCombatClaim !== null) this.#endCombatSession('arm-replaced', false);
     if (this.#activeVoiceId !== null) this.#stopActiveVoice();
     this.#runtime.setMasterGain(policy.masterGain);
+    this.#runtime.setAccessibility({ mono: policy.mono === true, reducedIntensity: policy.reducedIntensity === true });
     this.#runtime.setCategoryGain('creature', policy.creatureVoicesOn ? 1 : 0);
     this.#runtime.setCategoryGain('combat-gameplay', 1);
     void this.#runtime.setMuted(false);
@@ -1288,6 +1303,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     if (this.#disposed) return;
     const policy = safePolicy(this.#readPolicy);
     this.#runtime.setMasterGain(policy?.masterGain ?? 0);
+    if (policy) this.#runtime.setAccessibility({ mono: policy.mono === true, reducedIntensity: policy.reducedIntensity === true });
     this.#runtime.setCategoryGain('creature', policy?.creatureVoicesOn ? 1 : 0);
     this.#runtime.setCategoryGain('combat-gameplay', 1);
     if (!enabledMasterPolicy(policy) || !this.#answerable || this.#hidden) {

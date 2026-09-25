@@ -1,5 +1,23 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
+## Accessibility modes: Mono audio and Reduced intensity (matches code as of 2026-09-25)
+
+Settings has two toggles under Creature voices, and both are applied once at the master of the ONE shared runtime (`@cf/audio`
+`runtime.ts`: `setAccessibility`, `AUDIO_LIMITER_SETTINGS`, `AUDIO_REDUCED_INTENSITY_GAIN`), so they cover every category and voice.
+
+- **Mono audio:** the master gain node is set to an explicit single channel with `speakers` interpretation, so stereo is downmixed
+  as (L+R)/2 and both speakers play the same signal. Loudness is unchanged. Turning it off restores `max`/2.
+- **Reduced intensity:** the master plays at 0.55 × its saved gain (the pilot PCM player's existing level). The brick-wall limiter
+  (−1 dB, 20:1) is swapped for a gentle full-range compressor (−24 dB, knee 12, 4:1, release 0.25 s). This covers the lab's former
+  `dynamicRange` gap.
+- **Where the choice lives:** it is a **device preference, never the save** (`apps/game/src/audio-accessibility-prefs.ts`, key
+  `cf-v2-audio-accessibility/v1` in this device's storage). There is no save-shape change, no v5 settings segment and no
+  migration, and an imported save never changes how another device sounds. Storage that is absent or throws reads as off.
+- **How it applies:** changes apply live through the audio owner's `syncSettings`, and to every later context.
+- **Diagnostics:** `diagnostics().accessibility` reports both modes, and `effectiveMaster` includes the reduction. The lab
+  canonicalizer refuses a contradicting effective master.
+- **Still open:** captions beyond the listed counterparts, device evidence and human listening.
+
 ## September 15 audio production — matches code as of 2026-09-15
 
 The supplied handoff is now present verbatim in celestial-frontier-audio-handoff/. Nick's direct
@@ -462,8 +480,7 @@ by persistence rather than offered as a live v2 control; master Sound governs th
 package owns per-voice category-mix intent and restoration. Combat now requests a restrained
 music/ambience reduction with native gain transitions; the current implementation is not a human
 listening or physical-device acceptance result. Captions beyond the exact Tame toast, Feed status, Compendium audition status, generic
-biosphere status and Combat Chronicle counterparts, mono, dynamic range,
-reduced intensity, real-browser/physical-device audio-graph/heat/battery evidence and all HUMAN
+biosphere status and Combat Chronicle counterparts, real-browser/physical-device audio-graph/heat/battery evidence and all HUMAN
 listening/appeal/comfort judgments remain open. Arc 7/8 and Gate G are therefore **partial**, not
 closed.
 

@@ -296,13 +296,12 @@ export function projectCompendiumFeedV1(
       && row.genomeIdentity === identity.genomeIdentity)
     .map((row): CompendiumFeedCreatureReadModelV1 => {
       const fedBefore = row.fed ?? 0;
-      const status: CompendiumFeedCreatureStatus = row.assignment !== null
+      /* the same rule as preflightArc5FeedV1: only a mission blocks a meal; Recovery never does */
+      const status: CompendiumFeedCreatureStatus = row.assignment?.kind === 'mission'
         ? 'assigned'
         : fedBefore >= ARC5_FED_MAX_V1 ? 'capped' : 'ready';
       const disabledReason = status === 'assigned'
-        ? row.assignment!.kind === 'mission'
-          ? 'This companion is away on a mission.'
-          : 'This companion is recovering.'
+        ? 'This companion is away on a mission.'
         : status === 'capped' ? `Meals are already at ${ARC5_FED_MAX_V1}.` : null;
       return Object.freeze({
         creatureId: row.creatureId,
