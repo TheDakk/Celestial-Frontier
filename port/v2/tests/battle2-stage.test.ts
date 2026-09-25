@@ -81,7 +81,9 @@ describe('BattleStage (structural Pixi 8, injected clock)', () => {
     if (adapted.kind !== 'turn') throw new Error(adapted.reason);
     const plan = stage.play(adapted.input), b = plan.beats, root = stage.root as Node;
     const hw = stage.halfWidths(); expect(hw.left).toBeCloseTo((rigs.left.bounds.width * W * (576 * (1 / 3 + (1 / 6) * (0.15 / 0.9))) / (rigs.left.bounds.height * W)) / 2048, 9); expect(plan.arena.halfWidths).toEqual(hw);
-    expect(Math.abs(plan.runUp)).toBeCloseTo(Math.min(0.55 / 3, Math.max(0.15 / 3, 1 / 3 - hw.left - hw.right - 0.02)), 9);
+    // C15 (2026-09-25): the run-up is measured between the painted BOX centres and travels all the way to contact (no 0.55 cap)
+    const cx = stage.centresX(); expect(plan.arena.centresX).toEqual(cx);
+    expect(Math.abs(plan.runUp)).toBeCloseTo(Math.max(0.15 / 3, Math.abs(cx.right - cx.left) - hw.left - hw.right - 0.02), 9);
     const holders = root.children.filter((c) => (c as Node).children.some((g) => g === rigs.left.root || g === rigs.right.root)) as Node[];
     const holderOf = (rig: BattleRigV1) => holders.find((h) => h.children.includes(rig.root as object))!;
     const left = holderOf(rigs.left), right = holderOf(rigs.right), plates = root.children.slice(0, 2) as Node[];

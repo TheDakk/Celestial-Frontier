@@ -43,7 +43,7 @@ describe('the painted library in the arena', () => {
     for (const a of CARD_ARCHETYPES) {
       const row: Row = { earthName: a.earthName, template: '', medium: '', attack: '', ticks: 0, refusals: 0, last: null, error: null }; rows.push(row);
       try {
-        const { rig, record, card } = await loadFitDir(fitDirOf(a.dir)); row.template = card.template.id;
+        const { rig, record, card } = await loadFitDir(fitDirOf(a.dir), undefined, BATTLE2_PARTS_FITS.find((f) => f.earthName === a.earthName)?.contactSupports); row.template = card.template.id;
         const medium = resolvePhysicalHabitat(record as never).preferred; row.medium = medium;
         let attackError: string | null = null;
         const attackFor = (side: 'A' | 'B', ordinal: number): TurnAttack | null => { if (side !== 'A') return null; try { const r = compileAnatomyAttack(card, medium, ordinal, undefined, declarationOf(a.earthName)); row.attack = `${r.attack.verb} (${r.attack.contactJoint})`; return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; } catch (e) { attackError = e instanceof Error ? e.message : String(e); return null; } };
@@ -58,7 +58,7 @@ describe('the painted library in the arena', () => {
         if (attackError) row.attack = 'REFUSED: ' + attackError;
         row.refusals += rig.refusals(); row.last = rig.lastRefusal();
         // as TARGET — a FRESH rig: disposing a stage disposes its rigs (a reused rig is an instrument bug, found on the first run)
-        const target = (await loadFitDir(fitDirOf(a.dir))).rig;
+        const target = (await loadFitDir(fitDirOf(a.dir), undefined, BATTLE2_PARTS_FITS.find((f) => f.earthName === a.earthName)?.contactSupports)).rig;
         now = 0; stage = new BattleStage({ factory, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: portraitRig(), right: target }, masses: { left: 0.85, right: mass } });
         const asB = [{ side: 'A', an: 'Platypus', dn: a.earthName, dmg: 7, crit: false, hpA: 30, hpB: 20 }, { an: a.earthName, dn: 'Platypus', dodge: true }, { side: 'A', an: 'Platypus', dn: a.earthName, dmg: 20, crit: false, hpA: 30, hpB: 0 }];
         for (const [i, r] of asB.entries()) { now = 0; const plan = stage.play(turn(ctx('B', a.earthName, mass, card, undefined, (0xB22 + i * 7919) >>> 0), r, i)); for (let ms = 0; ms < plan.beats.end; ms += 1000 / 30) { now = ms; if (!stage.tick()) throw new Error('no frame'); row.ticks++; } now = plan.beats.end; if (!stage.tick()?.done) throw new Error('turn never reached its end'); row.ticks++; }
@@ -75,7 +75,7 @@ describe('the painted library in the arena', () => {
     const lake: ArenaWorld = { ...defaultArenaWorld(layout.groundLineY), key: 'lake', liquid: 'water', surfaceWater: true, cardHash: 'lake-1' };
     const report: string[] = []; let flyers = 0, swimmers = 0;
     for (const a of CARD_ARCHETYPES) {
-      const { rig, record, card } = await loadFitDir(fitDirOf(a.dir)), p = combatantPresentation(rig, card.massClass.multiplier, FRAME);
+      const { rig, record, card } = await loadFitDir(fitDirOf(a.dir), undefined, BATTLE2_PARTS_FITS.find((f) => f.earthName === a.earthName)?.contactSupports), p = combatantPresentation(rig, card.massClass.multiplier, FRAME);
       const widthFraction = (p.scale * rig.bounds.width * rig.cutout.width) / FRAME.width;
       expect(widthFraction, a.earthName + ' width').toBeLessThanOrEqual(COMBATANT_WIDTH_FRACTION_MAX + 1e-9);
       const vs = (worlds: { home: ArenaWorld; visitor: ArenaWorld } | null) => selectHabitatArena({ contextId: 'lib', seed: 7, round: 0, kind: 'wild', worlds, groundLineY: layout.groundLineY, fitToBand: true,
@@ -124,7 +124,7 @@ describe('the painted library in the arena', () => {
   it('every archetype stands INSIDE the frame on BOTH sides: its painted box is centred on its stand, not hung off its foot (the picker filmed a right-hand Python whose tail left the frame) — the uncentred control reproduces that exit', async () => {
     const EDGE = 0.01, out: string[] = [], uncentredExits: string[] = [];
     for (const a of CARD_ARCHETYPES) {
-      const { rig, card } = await loadFitDir(fitDirOf(a.dir)), p = combatantPresentation(rig, card.massClass.multiplier, FRAME);
+      const { rig, card } = await loadFitDir(fitDirOf(a.dir), undefined, BATTLE2_PARTS_FITS.find((f) => f.earthName === a.earthName)?.contactSupports), p = combatantPresentation(rig, card.massClass.multiplier, FRAME);
       expect(rig.extent, a.earthName + ' extent').toBeDefined();
       for (const [side, facing] of [['left', 1], ['right', -1]] as const) {
         const box = (shift: number) => { const x = layout.stands[side].x + shift, px = (u: number) => (u * rig.cutout.width * p.scale) / FRAME.width;
@@ -143,7 +143,7 @@ describe('the painted library in the arena', () => {
   it('SCALE SWEEP: every archetype attacks through a full bout at 0.85×, 1× and 1.15× its default presentation scale (the stage cadence follows the scale, so a latent skin fold can hide at one size) — refusals reported per archetype and scale', async () => {
     const found: string[] = [], lines: string[] = [];
     for (const a of CARD_ARCHETYPES) for (const k of [0.85, 1, 1.15]) {
-      const { rig, card } = await loadFitDir(fitDirOf(a.dir)), mass = card.massClass.multiplier, medium = resolvePhysicalHabitat((await loadFitDir(fitDirOf(a.dir))).record as never).preferred;
+      const { rig, card } = await loadFitDir(fitDirOf(a.dir), undefined, BATTLE2_PARTS_FITS.find((f) => f.earthName === a.earthName)?.contactSupports), mass = card.massClass.multiplier, medium = resolvePhysicalHabitat((await loadFitDir(fitDirOf(a.dir), undefined, BATTLE2_PARTS_FITS.find((f) => f.earthName === a.earthName)?.contactSupports)).record as never).preferred;
       const base = combatantPresentation(rig, mass, FRAME, layout.stands.left.y).scale;
       const attackFor = (side: 'A' | 'B', ordinal: number): TurnAttack | null => { if (side !== 'A') return null; try { const r = compileAnatomyAttack(card, medium, ordinal); return { verb: r.attack.verb, timeline: r.timeline, contactMs: r.contactMs, contactJoint: r.attack.contactJoint }; } catch { return null; } };
       let now = 0; const stage = new BattleStage({ factory, clock: () => now, layout, plates: { far: TEX, mid: TEX, near: TEX }, rigs: { left: rig, right: portraitRig() }, masses: { left: mass, right: 0.85 }, presentationScales: { left: base * k, right: combatantPresentation(portraitRig(), 0.85, FRAME, layout.stands.right.y).scale } });
@@ -207,7 +207,7 @@ describe('the painted library in the arena', () => {
   it('BAND CONTAINMENT from the real alpha box: on a lake world every archetype that swims or flies has its WHOLE painted box inside its band — the box taken from the rig\'s measured extent, not from the placement formula (review 2026-09-24: the Vent Crab sat 21 px below the water band floor)', async () => {
     const lake: ArenaWorld = { ...defaultArenaWorld(layout.groundLineY), key: 'lake', liquid: 'water', surfaceWater: true, cardHash: 'lake-1' }, H = FRAME.height, out: string[] = []; let checked = 0, centredWouldFail = 0;
     for (const a of CARD_ARCHETYPES) {
-      const { rig, record, card } = await loadFitDir(fitDirOf(a.dir)), p = combatantPresentation(rig, card.massClass.multiplier, FRAME, layout.stands.left.y);
+      const { rig, record, card } = await loadFitDir(fitDirOf(a.dir), undefined, BATTLE2_PARTS_FITS.find((f) => f.earthName === a.earthName)?.contactSupports), p = combatantPresentation(rig, card.massClass.multiplier, FRAME, layout.stands.left.y);
       const r = selectHabitatArena({ contextId: 'band', seed: 7, round: 0, kind: 'wild', worlds: { home: lake, visitor: lake }, groundLineY: layout.groundLineY, fitToBand: true, left: { record: record as never, genome: null, label: a.earthName, painted: p }, right: { record: null, genome: null, label: 'Portrait', painted: { height: 0.4, footBelowCentre: 0.05 } } });
       if (r.status !== 'READY' || r.stands.left.medium === 'ground') continue;
       const st = r.stands.left, k = p.scale * st.fit, top = st.y - (rig.extent!.up! * rig.cutout.height * k) / H, bottom = top + (rig.bounds.height * rig.cutout.height * k) / H; checked++;

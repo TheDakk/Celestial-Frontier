@@ -1,3 +1,4 @@
+import { measureLayeredStanceReach } from '../creature-layered-stance-reach.js';
 /** @module battle2/parts-rig [app] — BattleRigV1 kind `'parts'`: the adapter that puts Codex's
  * source paint-skin rig (`creature-rig.ts`, C2) on the battle stage (E1 design §1.1).
  *
@@ -25,7 +26,7 @@ import { familyContractForRecord } from '../../../../tools/creature-animation/fa
 import { transformPoint } from '../../../../tools/creature-animation/kinematics.js';
 import { createSkeletonPoseProgram, type SkeletonPoseProgram } from '../../../../tools/creature-animation/skeleton-pose.mjs';
 import { createFamilyContactSolver, createQuadrupedContactSolver, observedContactSupports } from '../creature-rig-contact.js';
-import { buildTimeline } from '../motion/timeline.js';
+import { buildTimeline, fnv1a, sampleTimeline } from '../motion/timeline.js';
 import { sampleClip } from './choreography.js';
 import { compileAnatomyAttack } from '../anatomy-attacks.js';
 import type { MotionTimeline } from '../motion/timeline.js';
@@ -125,29 +126,16 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
     if(record.geometry.contactPads)resolvedPads=solved;
     return solved.pose;
   };
-  // A2: the rig's stance reach — the largest stage displacement (body lengths) the family solver accepts at three
-  // stance samples of the approach gait (binary search to 1/256 body length); the caller-side measurement until
-  // Codex's `measureStanceReach(record)` lands. Measured 2026-09-22: crab/coconut 0.2, freshwater 0.1, mud/vent 0.07.
-  let stanceReach: number | undefined;
-  if (family) {
-    try {
-      const approach = buildTimeline(card, 'approach', 5), clip = { source: 'timeline' as const, timeline: approach };
-      // cap: one body length per gait cycle (0.5 per stance) — a choreography bound, not a measurement limit. Codex's
-      // 121-phase helper reads the declared-folded mud/vent fits at 0.507/0.837 forward (2026-09-22); the stage walks them
-      // at the cap (0.45 after the margin) so a crab never crosses more than a body length per cycle.
-      let reach = STANCE_REACH_CAP;
-      // both half-cycles: each half is the other leg group's stance (the far legs that bound the reach stand in one of
-      // them), then a 10 % margin — the first probe sampled one half and the freshwater/mud/vent rigs refused 14–20×
-      for (const frac of [0.05, 0.25, 0.45, 0.55, 0.75, 0.95]) {
-        const ms = approach.durationMs * frac, pose = sampleClip(clip, ms);
-        const ok = (d: number): boolean => { try { family.resolve(pose, { actionId: approach.actionId, elapsedMs: ms, durationMs: approach.durationMs, weight: 1, realm: card.realm, travel: 'stage', stageDisplacement: d }); return true; } catch { return false; } };
-        let lo = 0, hi = reach; if (ok(hi)) { reach = hi; continue; }
-        for (let i = 0; i < 8; i++) { const mid = (lo + hi) / 2; if (ok(mid)) lo = mid; else hi = mid; }
-        reach = Math.min(reach, lo);
-      }
-      stanceReach = reach * 0.9;
-    } catch { stanceReach = undefined; }
-  }
+  // Measure the same additive idle + approach that choreography publishes.
+  // Preserve the 0.5 stage cap and existing 10% reserve; a refusal must not
+  // silently remove cadence and enable the old unmeasured run-up fallback.
+  // The measurement is 0.5–2.7 s per legged rig on desktop (3,872 composite samples; 2026-09-25) and a pure function of its inputs, so it
+  // is cached by the COMPLETE input: record recipe, support mode + the binding it was observed from, the cap, and the exact sampled idle +
+  // approach timelines it composes (a morphed individual whose timing differs gets its own entry). A repeat fight re-uses it.
+  const measured = family ? layeredReachCached(record, supports === 'observed' && options.binding ? options.binding : null, card, () => measureLayeredStanceReach(record as Parameters<typeof measureLayeredStanceReach>[0],
+    supports === 'observed' && options.binding ? observedContactSupports(record, options.binding) : {},
+    STANCE_REACH_CAP, card)) : null;
+  const stanceReach = measured?.applicable ? measured.admitted * 0.9 : undefined;
   const bounds = Object.freeze({ width: alphaBox.width / W, height: alphaBox.height / H, groundLineY: record.geometry.groundLineY });
   const parts: readonly RigPartV1[] = Object.freeze(rig.parts.map((p) => Object.freeze({ id: p.id, display: p.display, pivot: Object.freeze({ x: p.pivot.x, y: p.pivot.y }), layer: p.layer })));
   if (!(bounds.height > 0) || bounds.height > 1 || !(bounds.width > 0) || bounds.width > 1) throw new TypeError('parts rig: alpha box must lie inside the cut-out');
@@ -191,4 +179,22 @@ export function createPartsRig(options: PartsRigOptions): PartsRig {
   out.applyPose({}, restContext()); refused = 0; applied = 0; lastError = null; last = null;
   Object.assign(out, { tallestHeight: bounds.height + rise });
   return out;
+}
+
+type LayeredReach = ReturnType<typeof measureLayeredStanceReach>;
+const LAYERED_REACH_CACHE = new Map<string, LayeredReach>(), LAYERED_REACH_CACHE_MAX = 64;
+/** The complete-input key: the same record/support/cap and the same sampled idle + approach poses (the helper's own fixed seed 5 and
+ * sampling) measure the same envelope. Exported for the cache test. */
+export function layeredReachKey(record: Readonly<{ recipeHash?: string }>, binding: Readonly<{ recordRecipeHash?: string; parts?: readonly unknown[] }> | null, card: BodyCard): string {
+  const gait = buildTimeline(card, 'approach', 5), idle = buildTimeline(card, 'idle', 5), samples: unknown[] = [];
+  for (let i = 0; i <= 120; i++) samples.push(sampleTimeline(gait, (gait.durationMs * i) / 120));
+  for (let i = 0; i < 32; i++) samples.push(sampleTimeline(idle, (idle.durationMs * i) / 32));
+  return [record.recipeHash ?? '', binding ? `observed:${binding.recordRecipeHash ?? ''}:${binding.parts?.length ?? 0}` : 'rest', STANCE_REACH_CAP, card.realm, gait.durationMs, idle.durationMs, fnv1a(JSON.stringify(samples))].join('|');
+}
+function layeredReachCached(record: Readonly<{ recipeHash?: string }>, binding: Readonly<{ recordRecipeHash?: string; parts?: readonly unknown[] }> | null, card: BodyCard, measure: () => LayeredReach): LayeredReach {
+  const key = layeredReachKey(record, binding, card), hit = LAYERED_REACH_CACHE.get(key);
+  if (hit) { LAYERED_REACH_CACHE.delete(key); LAYERED_REACH_CACHE.set(key, hit); return hit; }
+  const value = measure(); LAYERED_REACH_CACHE.set(key, value);
+  if (LAYERED_REACH_CACHE.size > LAYERED_REACH_CACHE_MAX) LAYERED_REACH_CACHE.delete(LAYERED_REACH_CACHE.keys().next().value!);
+  return value;
 }
