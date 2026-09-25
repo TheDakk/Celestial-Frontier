@@ -544,14 +544,20 @@ export function projectLegacyPlayerSettlementChampionV1(
 }
 
 function bindPlayer(plan: CombatSettlementPlanV1, state: SaveStateV2): void {
-  if (plan.champion.kind !== 'player') return;
+  /* §20: the explorer may fight as any party member, not only as the decisive champion; every appearance binds to the save */
+  const players = [plan.champion, ...(plan.party?.members.map((member) => member.champion) ?? [])]
+    .filter((champion) => champion.kind === 'player');
+  if (players.length === 0) return;
   const authority = projectLegacyPlayerSettlementChampionV1(state);
-  if (plan.champion.genomeSeed !== authority.genomeSeed
-    || plan.champion.name !== authority.name
-    || plan.champion.explorerId !== authority.explorerId
-    || plan.champion.currentHp !== authority.currentHp
-    || !sameJson(plan.champion.stats, authority.stats)) {
-    throw new Error('combat player champion does not match persisted player authority');
+  for (const player of players) {
+    if (player.kind !== 'player') continue;
+    if (player.genomeSeed !== authority.genomeSeed
+      || player.name !== authority.name
+      || player.explorerId !== authority.explorerId
+      || player.currentHp !== authority.currentHp
+      || !sameJson(player.stats, authority.stats)) {
+      throw new Error('combat player champion does not match persisted player authority');
+    }
   }
 }
 
@@ -915,6 +921,24 @@ function deriveCombatSettlement(input: Readonly<{
   });
   if (guardianCompanions.kind !== 'projected') {
     throw new Error(`Guardian companion projection is ${guardianCompanions.reason}`);
+  }
+  /* Every owned fighter this plan names — the decisive champion and, for a §20 party, every member (fought or not) — must live on
+     exactly ONE carrier and be free to fight at the committed active-play clock. Captured Guardians can carry Recovery since §20 too. */
+  const ownedFighterIds = [...new Set([plan.champion, ...(plan.party?.members.map((member) => member.champion) ?? [])]
+    .flatMap((champion) => (champion.kind === 'owned-fauna' ? [champion.creatureId] : [])))];
+  for (const fighterId of ownedFighterIds) {
+    const arc5Row = ownershipV2?.creatures.find((row) => row.creatureId === fighterId);
+    const guardianRow = guardianCompanions.creatures.find((row) => row.creatureId === fighterId);
+    if ((arc5Row === undefined) === (guardianRow === undefined)) {
+      throw new Error('combat fighter is not owned or collides across carriers');
+    }
+    let blocked: boolean;
+    try {
+      blocked = projectCompanionAvailabilityV1((arc5Row ?? guardianRow)!, input.activePlayMs).blocks.combat;
+    } catch {
+      throw new Error('combat fighter availability is invalid');
+    }
+    if (blocked) throw new Error('combat fighter is still on assignment');
   }
   if (guardianCaptureRequired || plan.champion.kind === 'owned-fauna' || partyHasOwned) {
     if (ownershipV2 === null || !isOwnershipStateV2(ownershipV2)) {
