@@ -38,6 +38,8 @@ import {
   type GuardianPrimeEncounterV1,
 } from '@cf/domain-combatcore';
 import { projectWorldOpportunity } from '@cf/domain-opportunity';
+import { guardianAcquisitionStateDigestV1 } from '@cf/domain-acquisition/guardian-acquisition-internal';
+import { guardianCompanionStateDigestV1 } from '@cf/domain-acquisition/guardian-companion-internal';
 import { resolveCF1WorldAddress } from '@cf/scene';
 import { createSessionRNG } from '@cf/domain-sessionrng';
 import {
@@ -47,8 +49,6 @@ import {
   createMemoryBackend,
   createRevisionedRepository,
   encodeArc4Ownership,
-  guardianAcquisitionStateDigestV1,
-  guardianCompanionStateDigestV1,
   guardianLegacyCompanionSliceMatchesV1,
   importSaveV2,
   migrateStoredV4ToV5,

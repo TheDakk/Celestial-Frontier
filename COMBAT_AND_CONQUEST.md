@@ -269,6 +269,16 @@ share one helper and the fingerprint held.
 > - **battle2 relay beats (same date).** Before the decisive leg the painted stage holds one captioned beat per earlier fighter
 >   (`battle2/swap-beats.ts`: "↻ X steps back — Guardian 62% · Y steps in", 1.1 s each, 0.7 s reduced motion), re-derived from the
 >   plan's party + decisions like the Chronicle prelude. The earlier fighters' rigs are not staged (caption only).
+> - **Friendly duels, v1.8.9 parity (same date; matches code).** A fauna Compendium detail you own shows **⚔ Friendly duel**: choose one of
+>   your companions of that species, paste a friend's `CFB-` code (v1's own decoder: normalised genome, no injuries or levels travel, a
+>   Champion code is exhibit-only), press Duel. One `friendly-duel` receipt: `stats.duels` +1; a counted win pays `duelwins` +1 and
+>   **+8 XP**; a loss/draw pays **2 XP**, or **3** when the challenger ended below 25% ("taken to the wire"). Each credit has its own
+>   **30 s window on the ACTIVE-PLAY clock** (v1 used 30 s of wall clock; the device clock never pays in v2), persisted in
+>   `player/combat.friendly-duels`. Nobody is wounded, nothing is lost; a companion in Recovery, away or held by an open Command fight
+>   cannot duel. Pure plan `packages/domain/combatcore/src/friendly-duel.ts`; ownership `@cf/domain-acquisition/friendly-duel-internal`;
+>   persistence `packages/persistence/src/friendly-duel.ts`; app `apps/game/src/friendly-duel.ts`. Outcome test
+>   `tests/a5-friendly-duel-outcome.test.ts` (real paste + press, durable XP + mirror, device-clock swing, 2 Main mutants). CFB *export*
+>   (sharing your own code) is not ported yet.
 >   - **The explorer fights Guardians in Auto only:** the settlement binds the explorer's exact health, which moves between Breaks, so a
 >     sealed explorer could strand the record (even Withdraw settles through that binding). `openArc6CommandEncounterV1` refuses it.
 
