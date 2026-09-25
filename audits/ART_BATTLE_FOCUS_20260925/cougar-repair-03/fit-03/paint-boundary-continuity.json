@@ -1,0 +1,13 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "680e013221829e01699fb4e9f165446270f3bff9e022e871d96d6112206dc0d7",
+  "bindingHash": "40cd719178b31f04941ef1d4a06edac76e142000b732b0e358a4e8a670d6754b",
+  "pairs": [
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "The 20x20 root label is an interior ownership patch inside the same continuous painted torso. Its root/spine cut is not an anatomical opening or independently moving surface. Other excluded boundaries are not declared continuous."
+}
