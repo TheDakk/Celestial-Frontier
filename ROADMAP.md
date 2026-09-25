@@ -76,6 +76,24 @@ This block is self-contained: either lane can resume from it alone. Older handof
 - **Rig loads now take seconds** (the layered reach). Tests that load rigs need explicit timeouts.
 
 ### What Claude owes next
+-112. **Night 2 (2026-09-25/26).**
+- Merged Codex's C22–C25 and S4 work (`bbd24a75`). Codex's pinned loader is in; the wiring was reconciled by hand.
+- **Forecast memo fixed:** it keys the complete combat identity.
+- **Masters out of the pack:** the arena went from 67.8 to 48.2 MiB. The six budget-held creatures and the Gull are back, the Gull via the one CARD = STAGE tint table (`morph/card-tint.generated.ts`).
+- **Air and water bodies** are fitted to their band on the motion envelope.
+- **Five more C25 passes wired** (Racer, Eel, Salamander, Rat, Reef Shark): 38 archetypes, arena 59.8 MiB.
+- **The Lizard faint refuses only with observed supports.** The game uses rest supports, which give 0 refusals; mailbox C28(e).
+- **Merged three isolated agent branches:**
+  - D15 audio Stage 0: the loudness gate, one voice card per creature, and the 12 MiB audio section.
+  - D13 care + bond stage 1: taste Feed, Rest on the active-play clock, bond levels 0–5, and the Care & bond panel.
+  - A5 #11/#92/#81-Land/#73, the CFB export, and the D18 fold option (default unchanged).
+- **Gate:** 5,440 pass. Reds: I5 and Codex's release-SHA pin. Every later step is clean.
+- **Next for Claude:**
+  - Care XP also updates the Compendium row's `g.xp` (my call, for parity with duels).
+  - The D15 iPhone codec probe and the `?audioReview=1` Listening page.
+  - A5 #57 (Titan) and the capture/Feed ledger tests.
+  - Then N4 Outposts once Codex's P0 cost table lands. Wire new candidates as Codex films them on this branch.
+- Codex's queue is in mailbox C27–C30.
 -111. **C15 wired + stage spacing + four merged lanes (2026-09-25 night).** See this block's summary and `audits/C15_WIRING_20260925/`. Nine creatures wired; seven held with reasons. READY_GAP 0.10, box-to-box run-up to contact, layered reach cached. §20 Command/duels/phase, D16 ×7, A5 ×8 and C13 pins merged. 5,373 pass; only I5 is red (plus the hidden root tsc, which is Codex's).
 -110. **§20 Auto Guardian parties live end to end:**
 - the engine (S1, parity-locked);
