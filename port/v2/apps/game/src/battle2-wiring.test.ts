@@ -14,6 +14,7 @@ import { BATTLE2_ASSETS, PLAYER_PLACEHOLDER_LABEL, alphaBox, battle2Enabled, fnv
   type Battle2AssetSource, type Battle2Image, type Battle2Keyer, type Battle2PixiBindings, type Battle2Raster, type Battle2StudyInput } from './battle2-wiring.js';
 import type { ResolvedAnatomyRecord } from './motion/body-card.js';
 import { civetRecord } from '../../../tools/motion-proof/fixtures.js';
+import { morphAtlasCache } from './morph/morph-atlas-cache.js';
 
 const { JSDOM } = createRequire(import.meta.url)('jsdom') as { JSDOM: new (html: string) => { window: Window & typeof globalThis } };
 const mainSource = readFileSync(new URL('./main.ts', import.meta.url), 'utf8');
@@ -288,6 +289,48 @@ describe('battle2 wiring (fake pixi, assets, ticker, clock)', () => {
     // control: the gzip bytes are not JSON, so the .gz path really decompressed
     expect(() => JSON.parse(new TextDecoder().decode(gz))).toThrow();
     fetchSpy.mockRestore();
+  });
+});
+
+/* C13 (2026-09-25): the build-pin preflight runs BEFORE any decode, marking-mask fetch, morph-cache lease or master fetch.
+ * OUTCOME through the real study with the Civet's SERVED shipped bytes: a tampered atlas or a missing pin refuses by name with
+ * zero master/alpha/mask fetches and no cache lease; the genuine bytes pass the preflight (the master IS then fetched). */
+describe('battle2 wiring: master-pin preflight order (C13)', { timeout: 60_000 }, () => {
+  afterEach(() => { vi.restoreAllMocks(); FakeApp.made = []; });
+  const SERVED = new URL('../public/battle2/audits/ARENA_EFFECTS_V42_PROOF_20260912/', import.meta.url);
+  const civetFit = BATTLE2_ASSETS.partsFits.find((f) => f.earthName === 'Civet')!;
+  const fitRecord = JSON.parse(readFileSync(new URL(civetFit.dir + 'record.json', SERVED), 'utf8')) as ResolvedAnatomyRecord & { source: string };
+  const masterAsset = '../' + fitRecord.source.slice('audits/'.length);
+  async function runWith(opts: { tamperAtlas?: boolean; creatureId?: string }) {
+    const base = harness(), log = { json: [] as string[], bytes: [] as string[], image: [] as string[] };
+    const assets: Battle2AssetSource = {
+      json: async (p) => { log.json.push(p); if (p === civetFit.dir + 'parts/manifest.json' && opts.creatureId) return { creatureId: opts.creatureId }; return p.startsWith(civetFit.dir) ? JSON.parse(readFileSync(new URL(p, SERVED), 'utf8')) : base.assets.json(p); },
+      bytes: async (p) => { log.bytes.push(p); const b = new Uint8Array(readFileSync(new URL(p, SERVED))); if (opts.tamperAtlas && p.includes('/parts/atlas/')) b[b.length >> 1] = b[b.length >> 1]! ^ 1; return b; },
+      image: async (p) => { log.image.push(p); return base.assets.image(p); },
+    };
+    const acquire = vi.spyOn(morphAtlasCache, 'acquire');
+    const genome = genomeFromVisualKey(fitRecord.identity.speciesVisualKey);
+    const h = harness({ assets, records: [fitRecord], settlement: { ...base.input.settlement, champion: { kind: 'owned-fauna', name: 'Civet', genome } } });
+    const handle = mountBattle2Study(h.input), ready = await handle.ready; handle.dispose();
+    return { ready, log, acquires: acquire.mock.calls.length };
+  }
+  const beforeDecode = (log: { json: string[]; bytes: string[]; image: string[] }) => ({
+    master: log.bytes.includes(masterAsset), alphaImage: log.image.some((p) => p.endsWith('parts/alpha.png')), masks: log.json.some((p) => p.endsWith('markings.json')) || log.bytes.some((p) => p.includes('/markings/')) });
+  it('a tampered atlas refuses by name before any master fetch, alpha decode, mask fetch or cache lease', async () => {
+    const r = await runWith({ tamperAtlas: true });
+    expect(r.ready.skipped.find((s) => s.includes('pin refused'))).toMatch(/battle2 pin refused \(atlas-mismatch\)/);
+    expect(beforeDecode(r.log)).toEqual({ master: false, alphaImage: false, masks: false }); expect(r.acquires).toBe(0);
+  });
+  it('a creature with no bundled pin is a named refusal, never a master-download fallback', async () => {
+    const r = await runWith({ creatureId: 'ghost-creature' });
+    expect(r.ready.skipped.find((s) => s.includes('pin refused'))).toMatch(/\(missing-pin\): no bundled build pin for ghost-creature/);
+    expect(r.log.bytes).toEqual([]); expect(beforeDecode(r.log)).toEqual({ master: false, alphaImage: false, masks: false }); expect(r.acquires).toBe(0);
+  });
+  it('control: the genuine served bytes pass the preflight and only then fetch the master', async () => {
+    const r = await runWith({});
+    expect(r.ready.skipped.filter((s) => s.includes('pin refused'))).toEqual([]);
+    expect(r.log.bytes).toContain(masterAsset);
+    expect(r.log.bytes.indexOf(masterAsset)).toBeGreaterThan(r.log.bytes.findIndex((p) => p.includes('/parts/atlas/')));
   });
 });
 
