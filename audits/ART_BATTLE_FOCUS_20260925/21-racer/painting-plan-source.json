@@ -1,0 +1,28 @@
+{
+  "path": "/Users/nick/Projects/celestial-frontier-anthropic-mac/audits/COVERAGE_STUDY_20260924/painting-plan.json",
+  "sha256": "e05c97a4cd1ed6f33743dcd83f33a9aa66b6c38270155650df1d72ba0a89acf8",
+  "rank": 14,
+  "row": {
+    "name": "Slender colubrid",
+    "exemplar": "Racer",
+    "covers": [
+      "Racer",
+      "Whip Snake",
+      "Mamba",
+      "Tree Snake",
+      "Vine Snake",
+      "Garter Snake",
+      "King Snake",
+      "Grass Snake",
+      "Cave Snake"
+    ],
+    "bodyPlan": "serpent",
+    "mustPaint": [
+      "very slender whip body in a fast S-curve",
+      "narrow rounded head with a large round eye",
+      "plain smooth glossy scales (no python net)",
+      "masks: striped = lengthwise garter stripes, banded = king-snake rings"
+    ],
+    "why": "2 misleading and 7 caveat. Replaces the heavy netted python for every slim snake."
+  }
+}

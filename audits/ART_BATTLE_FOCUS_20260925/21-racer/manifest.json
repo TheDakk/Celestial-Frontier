@@ -1,0 +1,765 @@
+{
+  "parentHead": "839cac0b8743d18e372a82328953da31ce63f450",
+  "files": [
+    {
+      "path": "ROADMAP.md",
+      "bytes": 15153,
+      "sha256": "647e972b8beed9d78fff4e73d4fac9c017624fcff9fda652df037e2f5c4088bb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/README.md",
+      "bytes": 5319,
+      "sha256": "347e6cf7b191941a26d369e7591374b48552d0b0d08c71b80859f3a6f9196797"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/authoring.json",
+      "bytes": 5965,
+      "sha256": "f0fb8315150b859dddccd6d485421844b65ee6363a0ec27e2d81c3641743f8dc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/composites/banded.png",
+      "bytes": 106205,
+      "sha256": "5fe57d7b4d5d0125f78961188990a2c22e08f81a39905da4a97873c67acdec60"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/composites/eye-spotted.png",
+      "bytes": 107124,
+      "sha256": "d8de8d1cfdaec1036781d5dff5d09c4886b0e7003ce8e17289931a5e3e5ab4dc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/composites/marbled.png",
+      "bytes": 109765,
+      "sha256": "0d97c6a0915a575bdb16b854643a375381f8f5ce4e0e4ab60fc70ac7b1ec6676"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/composites/mottled.png",
+      "bytes": 105158,
+      "sha256": "1b51592dbdd53e24c6fbf80c2d415f0393ef03bd949f7767abd6d46d411447ce"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/composites/spotted.png",
+      "bytes": 108942,
+      "sha256": "341903c2bec59c31ecdd3eec4c30646e0e4e81a289eac192c34035956db815f0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/composites/striped.png",
+      "bytes": 106981,
+      "sha256": "5914c1ffbfad6f19a19ac672d70855a3dbb178af3fe9d679fc85b03f8bcfe024"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/conservation.json",
+      "bytes": 5960,
+      "sha256": "78967378686d1455d738a47793383fcf37a1704bdc0a7e29040ecb2546aa1203"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/correction-prompt-02.txt",
+      "bytes": 878,
+      "sha256": "060502a37e3e8a4c5d701748b9ba712b74614fcae64ce000a7dcb205967d703f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/correction-prompt-03.txt",
+      "bytes": 1019,
+      "sha256": "ff93e54305782173c34862e24f217d44bce6f2a4ab4703dc57e74ab7a34ed26b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/exact-prompt-byte-reconciliation.json",
+      "bytes": 2985,
+      "sha256": "596dc9448a34db4c5e774a93784403412ce4f095c63c1e114b047d94c851077a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/finish-masks.log",
+      "bytes": 2767,
+      "sha256": "0d692d76e45d39cb50131b8d37a6fe9c3405e6c0598d98c68308af7b81700c37"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/finish-masks.mjs",
+      "bytes": 7606,
+      "sha256": "f1cbf6bc122164ac56e7f58b77094fb21792e967dc125a55103c8798e9c7285f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/binding.json",
+      "bytes": 515239,
+      "sha256": "070c72edd657bed7cbcc0707f28a1be316fa478b696ac2073f3720eeee1ebde8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/declaration.json",
+      "bytes": 1510,
+      "sha256": "d74d845c9aa4fa858e0b11435db8431df41e0ae5681fe8141282ab3c71bf6690"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/intake-provenance.json",
+      "bytes": 2900,
+      "sha256": "648e828029dba7a8560eb36709835cf38c9515a27f06d58af6d59877672de110"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/label-authoring-receipt.json",
+      "bytes": 547,
+      "sha256": "2b05c04188ffdd6390856dc0688c4842536cbf702b1587d079222fb9314f4200"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/labels.png",
+      "bytes": 37933,
+      "sha256": "5c6d2b215392ce97b6a0f9fa004f17a68d5b3ef0923c26f66340aaed9f2b33cc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/atlas/racer.json",
+      "bytes": 5347,
+      "sha256": "de6466f9cbeab8d0a3d93d14e962106103b0bf9c8858bcdb8caa9164ee8ffcfa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/atlas/racer.png",
+      "bytes": 117766,
+      "sha256": "0a84839efb0850384cfed4527eb45945de805e9f482a1b9d0bfbe8d690421fe3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/atlas/receipt.json",
+      "bytes": 2393,
+      "sha256": "1b8128657a0b3cfceff3f9119c2188c24fe3cecd2de9b7d9801ca4131947bcc6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/binding.json",
+      "bytes": 4451,
+      "sha256": "7f5d04a20e2b250de22fa763f06605dad76b3089dd722b7853721347bb623ebc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/keyed.png",
+      "bytes": 118741,
+      "sha256": "16d9e16cf1a894fbc23aedf6d42842db98855ffa3bf289b90292d4da82204539"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/ownership.png",
+      "bytes": 31427,
+      "sha256": "c7b1abd14918646e87efd09fc1d7c46507a225d8676b745001112cb9e3150e65"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/parts/head.png",
+      "bytes": 4915,
+      "sha256": "3bc13b306c03f9672cfd0c2ead458c5b48b0c7dc02f402aa950973166c81023a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/parts/jaw.png",
+      "bytes": 9792,
+      "sha256": "623eedd9354a6d47dbac0f1d103e619380a066a7a5e8ba8246fd47617a74f887"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/parts/root-patch.png",
+      "bytes": 346,
+      "sha256": "5e3e0d8ee75f5fe1b456fee3afb6d8f908e87f3607120389b2cebf3813f79ab1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/parts/segment-0.png",
+      "bytes": 8147,
+      "sha256": "497e2ad2420e882632dc774763fb899229913204d93b3f3f73b636038990d9c5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/parts/segment-1.png",
+      "bytes": 10485,
+      "sha256": "3d3637da35ae306a8066ff132d5cc1acec4440280b83f571c32ac8b3b754e7b5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/parts/segment-2.png",
+      "bytes": 9009,
+      "sha256": "3327d0282d943f5b1f2a392becff067e4fe141256c2547fb9f000e39b70d11b2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/parts/segment-3.png",
+      "bytes": 11565,
+      "sha256": "a731783ef790be7440fa3a952555e1f9ae69842c2d08af9d0c7545dce3c46b34"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/parts/segment-4.png",
+      "bytes": 10716,
+      "sha256": "8702811fc1a5e950689519433db8e97dbcdd5cb151b87d10f7e0257680dfc9c8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/parts/segment-5.png",
+      "bytes": 11513,
+      "sha256": "e169b811b49524d8d9ecd49acbffb38b86738a08f72e3d3398cc58b11e7e6dd1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/parts/segment-6.png",
+      "bytes": 11569,
+      "sha256": "252c540c204179b87e978dc57fdef186e93b0c3cb9b6ae8d8e934e9b9c90993f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/parts/segment-7.png",
+      "bytes": 9094,
+      "sha256": "3ab0601c414d9eda737307d4d059d14e3f0d3f8b8089f30213e0028a73cdfb7a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/parts/segment-8.png",
+      "bytes": 7441,
+      "sha256": "a707d3cea3654f1edb640b807ee9903a7baeca3ec6234b699bf2ef851435d6b2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/parts/segment-9.png",
+      "bytes": 9171,
+      "sha256": "d787ffcccc08940e976b090867b867efe50c6731a98ce3aa12622f8af8b5a56c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/parts/receipt.json",
+      "bytes": 3654,
+      "sha256": "f60109c8204a79faecb5e84863fc1c699fc4d7bc919be634d04c2e092b31a8cb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/pre-split-binding.json",
+      "bytes": 332548,
+      "sha256": "904570ab99fdf9ee6861016ad127e2895267bdfb00feec6b98ea868bfd27dd38"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/receipt.json",
+      "bytes": 2031,
+      "sha256": "4d5337e37ec7d9e6abd13c541040f66d2b965eabb16a12709c8a1b7ab4b7951d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-01/record.json",
+      "bytes": 5097,
+      "sha256": "031738b8c7c663c691de8bba5d904440fa8d3cf0aa84fa423b8edb0fd14bb807"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/binding.json",
+      "bytes": 527605,
+      "sha256": "fa62fbfe9ca3da76ebd7dbb019f84dde0397f522b9680a4f305b6852229d9801"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/declaration.json",
+      "bytes": 1510,
+      "sha256": "d74d845c9aa4fa858e0b11435db8431df41e0ae5681fe8141282ab3c71bf6690"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/flat-master-weld-receipt.json",
+      "bytes": 1909,
+      "sha256": "cc4edaca78843bd5797d400faee290ccba93aecd1a3027b8e41578b118842baf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/intake-provenance.json",
+      "bytes": 2900,
+      "sha256": "648e828029dba7a8560eb36709835cf38c9515a27f06d58af6d59877672de110"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/label-authoring-receipt.json",
+      "bytes": 547,
+      "sha256": "2b05c04188ffdd6390856dc0688c4842536cbf702b1587d079222fb9314f4200"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/labels.png",
+      "bytes": 37933,
+      "sha256": "5c6d2b215392ce97b6a0f9fa004f17a68d5b3ef0923c26f66340aaed9f2b33cc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/paint-boundary-continuity.json",
+      "bytes": 340,
+      "sha256": "7e2f9853985c0a6dcb0fdf03e2e22e46d93cf94564cbfa8107a720ae239d9467"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/atlas/racer.json",
+      "bytes": 5347,
+      "sha256": "de6466f9cbeab8d0a3d93d14e962106103b0bf9c8858bcdb8caa9164ee8ffcfa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/atlas/racer.png",
+      "bytes": 117766,
+      "sha256": "0a84839efb0850384cfed4527eb45945de805e9f482a1b9d0bfbe8d690421fe3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/atlas/receipt.json",
+      "bytes": 2393,
+      "sha256": "1b8128657a0b3cfceff3f9119c2188c24fe3cecd2de9b7d9801ca4131947bcc6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/binding.json",
+      "bytes": 4451,
+      "sha256": "7f5d04a20e2b250de22fa763f06605dad76b3089dd722b7853721347bb623ebc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/keyed.png",
+      "bytes": 118741,
+      "sha256": "16d9e16cf1a894fbc23aedf6d42842db98855ffa3bf289b90292d4da82204539"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/ownership.png",
+      "bytes": 31427,
+      "sha256": "c7b1abd14918646e87efd09fc1d7c46507a225d8676b745001112cb9e3150e65"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/parts/head.png",
+      "bytes": 4915,
+      "sha256": "3bc13b306c03f9672cfd0c2ead458c5b48b0c7dc02f402aa950973166c81023a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/parts/jaw.png",
+      "bytes": 9792,
+      "sha256": "623eedd9354a6d47dbac0f1d103e619380a066a7a5e8ba8246fd47617a74f887"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/parts/root-patch.png",
+      "bytes": 346,
+      "sha256": "5e3e0d8ee75f5fe1b456fee3afb6d8f908e87f3607120389b2cebf3813f79ab1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/parts/segment-0.png",
+      "bytes": 8147,
+      "sha256": "497e2ad2420e882632dc774763fb899229913204d93b3f3f73b636038990d9c5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/parts/segment-1.png",
+      "bytes": 10485,
+      "sha256": "3d3637da35ae306a8066ff132d5cc1acec4440280b83f571c32ac8b3b754e7b5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/parts/segment-2.png",
+      "bytes": 9009,
+      "sha256": "3327d0282d943f5b1f2a392becff067e4fe141256c2547fb9f000e39b70d11b2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/parts/segment-3.png",
+      "bytes": 11565,
+      "sha256": "a731783ef790be7440fa3a952555e1f9ae69842c2d08af9d0c7545dce3c46b34"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/parts/segment-4.png",
+      "bytes": 10716,
+      "sha256": "8702811fc1a5e950689519433db8e97dbcdd5cb151b87d10f7e0257680dfc9c8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/parts/segment-5.png",
+      "bytes": 11513,
+      "sha256": "e169b811b49524d8d9ecd49acbffb38b86738a08f72e3d3398cc58b11e7e6dd1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/parts/segment-6.png",
+      "bytes": 11569,
+      "sha256": "252c540c204179b87e978dc57fdef186e93b0c3cb9b6ae8d8e934e9b9c90993f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/parts/segment-7.png",
+      "bytes": 9094,
+      "sha256": "3ab0601c414d9eda737307d4d059d14e3f0d3f8b8089f30213e0028a73cdfb7a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/parts/segment-8.png",
+      "bytes": 7441,
+      "sha256": "a707d3cea3654f1edb640b807ee9903a7baeca3ec6234b699bf2ef851435d6b2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/parts/segment-9.png",
+      "bytes": 9171,
+      "sha256": "d787ffcccc08940e976b090867b867efe50c6731a98ce3aa12622f8af8b5a56c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/parts/receipt.json",
+      "bytes": 3654,
+      "sha256": "f60109c8204a79faecb5e84863fc1c699fc4d7bc919be634d04c2e092b31a8cb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/pre-split-binding.json",
+      "bytes": 332548,
+      "sha256": "904570ab99fdf9ee6861016ad127e2895267bdfb00feec6b98ea868bfd27dd38"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/receipt.json",
+      "bytes": 2031,
+      "sha256": "4d5337e37ec7d9e6abd13c541040f66d2b965eabb16a12709c8a1b7ab4b7951d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/fit-02/record.json",
+      "bytes": 5097,
+      "sha256": "031738b8c7c663c691de8bba5d904440fa8d3cf0aa84fa423b8edb0fd14bb807"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/framing-refusals.json",
+      "bytes": 833,
+      "sha256": "4589a8329e21c2ef37c69f0bf6d08e049181f95d45bccfe51c053572bb1d5599"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/generation-01.png",
+      "bytes": 257841,
+      "sha256": "d2ed73d1e674ee9cce44f79c30a72510bc3477b1b53b1640b8478c819a25ce8d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/generation-02.png",
+      "bytes": 228475,
+      "sha256": "25951330361e8c108485245e3f323c4f2a002157e1b0a1aecd77cb20dfe09b8d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/host-during-native-01.json",
+      "bytes": 11381,
+      "sha256": "fddf8e6133035ac5a8cb5a65f29bd9239daddb5888396e429cfbc732cb440bab"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/intake-01.log",
+      "bytes": 312,
+      "sha256": "ba3f4b5f504f00c057b579feb34153a381791756540ea1b54c535074690994ec"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/mailbox-end.json",
+      "bytes": 13789,
+      "sha256": "38472e744e72e2d8a269cec399d576d19b1b276c3585080fc3ff33dc140a30c0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/make-review.py",
+      "bytes": 2046,
+      "sha256": "d3456df7b4cdfa9880edd604d27e7144335a4f32ac7e4035ee39bc5c4afc95c4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/markings/banded.png",
+      "bytes": 17915,
+      "sha256": "45769a78d2ac462d713465cb1bede37f92b22f7666784236188729c7be298bef"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/markings/eye-spotted.png",
+      "bytes": 21760,
+      "sha256": "53586ca32022bce9ff0e33cb3f9d6b070cf4edce9fb47d7d81e34f8bb266b181"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/markings/marbled.png",
+      "bytes": 28286,
+      "sha256": "4768809011aeb07c9a16ca709679cc1572fc145d1920f8182e6ea9817eb9ad6c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/markings/mottled.png",
+      "bytes": 33099,
+      "sha256": "5d564ba51f760bec786950963d0aa769e3a81f689c3ff6323b969f8f6f8cbc2e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/markings/spotted.png",
+      "bytes": 23213,
+      "sha256": "74b563164f0de1924f6d56300f5b6746779f645fa9814879ecafe0962f533d98"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/markings/striped.png",
+      "bytes": 36061,
+      "sha256": "dc49b6f1d0e1b4c65c5cb57754a810e969b16bbe653b7ad8ad13168aa8eae6b6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/markings-serialized-prompts-01.json",
+      "bytes": 28194,
+      "sha256": "a6b1039819b0c281f1e447effad0ed6e03e6f57dbd7ef9e77a5db6739dc32514"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/markings.json",
+      "bytes": 28224,
+      "sha256": "0c00a8c3091d8a2a1890e95c835a0398a3fb63666f989612fd0a713946ccf22d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/mask-tool-receipts.json",
+      "bytes": 1914,
+      "sha256": "f90eba048286922909b016f4652c8df1c88e2498621f284779095db6d2d3ee7c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/master.png",
+      "bytes": 129394,
+      "sha256": "650d3a5d2fe3fe0b5fc986448a3a7818f89975642af68b51d27dac1366bc958e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/battle-full.webm",
+      "bytes": 8655646,
+      "sha256": "6fe9a508e012583af740b9026304818b151090eb4bfdf1b2895b13261b22d4e4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/report.json",
+      "bytes": 354580,
+      "sha256": "573f90eea25d58fa024648702aa3eb02097abcfda495a172b2e8bfa0410e3c39"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn0-hit-approach-50.png",
+      "bytes": 1537160,
+      "sha256": "f6a3ce9371edfbc703b5c30ac14c752a741cd45457e7852c384a88a700d1be65"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn0-hit-impact.png",
+      "bytes": 971232,
+      "sha256": "96404811cb499dc0491552f13b85e2baf6560a2d9e8bc2ebe6dc8dadfb53767a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn0-hit-reaction-50.png",
+      "bytes": 1537661,
+      "sha256": "2a0d961c81bd287d2c2e5c96d4d4c7a05b6670007f2a97d069c4b890fffd5458"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn0-hit-return-end.png",
+      "bytes": 1537066,
+      "sha256": "aeafa32729a8bafce3fec93f12a809e084e745cb8178d7ec80d1419a91cf869b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn1-hit-approach-50.png",
+      "bytes": 1537080,
+      "sha256": "8d1509fb449cc7f82f16917d92895672beea64524a19637039e41bf85d9be5d8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn1-hit-impact.png",
+      "bytes": 1537510,
+      "sha256": "15a122b2f825e265802fd17aef34942fe06db19a1ea68bcc4d852e33c0c0e918"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn1-hit-reaction-50.png",
+      "bytes": 1537062,
+      "sha256": "0c7bf3e148c555565b24438625fa8330c0b34e7b6bb6f0c74731e5b72a9e5e4e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn1-hit-return-end.png",
+      "bytes": 1537107,
+      "sha256": "b94d377f4f9ccff2cb210606df56ea100892bf8c12e82776e5bf6caa5b60c5fa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn2-dodge-approach-50.png",
+      "bytes": 1537160,
+      "sha256": "f6a3ce9371edfbc703b5c30ac14c752a741cd45457e7852c384a88a700d1be65"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn2-dodge-impact.png",
+      "bytes": 1539641,
+      "sha256": "c38edb21f6bebaf4be2d5787d9b8a4678b0b2331d9e68365aae603c628e50b7d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn2-dodge-reaction-50.png",
+      "bytes": 1540209,
+      "sha256": "5db8153d1338d43da3e6e22449c4e7103139efcd3e0ec1ca4cb730b95f5717aa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn2-dodge-return-end.png",
+      "bytes": 1537066,
+      "sha256": "aeafa32729a8bafce3fec93f12a809e084e745cb8178d7ec80d1419a91cf869b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn3-hit-approach-50.png",
+      "bytes": 1537160,
+      "sha256": "f6a3ce9371edfbc703b5c30ac14c752a741cd45457e7852c384a88a700d1be65"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn3-hit-idle-50.png",
+      "bytes": 1537611,
+      "sha256": "0a9e280000ee924abc8e4077a7ae1c9945e975a68a9538da16b22094dc835b58"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn3-hit-idle-90.png",
+      "bytes": 1537672,
+      "sha256": "1acffad28b5124f21feccbdf47853f7bcf0b481e1465aa900756e941af5d0390"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn3-hit-impact.png",
+      "bytes": 1537078,
+      "sha256": "51cc70876f4a2a9944bc4388ff22c3e80fc1dbf8d2be62e69d4777e6849747b4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn3-hit-reaction-50.png",
+      "bytes": 1537974,
+      "sha256": "e63e3675381736c356abff3b068c858b7fb23bde4420ab2411b39e5507f2e957"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01/turn3-hit-return-end.png",
+      "bytes": 1537535,
+      "sha256": "9be86431a26c3d2086773bb435c76aa0e01dd750055212605708e79c31851f5d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-observed-01.log",
+      "bytes": 210,
+      "sha256": "b458db0aa27d173098c0ff41739d757bbce8210523bfceb09e6e179af8225b09"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-summary.json",
+      "bytes": 1070,
+      "sha256": "40baee5c41906bd27aa124c229d3eff4330328416151df6f2b5ebbfb8dacfa53"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/native-with-host-receipt.mjs",
+      "bytes": 1365,
+      "sha256": "095ccc98e48aa78bc84799b16b03b62ac6a9d5a02e84c286d0e266ae0324112b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/observed-script.json",
+      "bytes": 642,
+      "sha256": "41ae7b8a8eb2ecd921befb0469bc0289332fb69c49aabdb020fa2eba193a32ed"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/painting-plan-source.json",
+      "bytes": 862,
+      "sha256": "617370d2ff0b7229d87fcb0774fd3efd86e26b8deec784628e0c0ee567bfdd77"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/prompt.txt",
+      "bytes": 8049,
+      "sha256": "2398da6036937d97498f234c0622da58622adaaf742e63317d3680d0b8b1d2ff"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/prompts/banded.txt",
+      "bytes": 873,
+      "sha256": "565d111169b3c5aa91cae7b0024cd2d21d3daf5b7e1ed55a1628e2dcdaa6d5c5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/prompts/eye-spotted.txt",
+      "bytes": 845,
+      "sha256": "a1e2962a219185f386aa706d3a3dac851b49bad93bc8dfdc2ab368d171ee748f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/prompts/marbled.txt",
+      "bytes": 819,
+      "sha256": "d009647ea159b3178c7852e1a9cb9c83b7adc8c008cd15616292b8c9d10d6016"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/prompts/mottled.txt",
+      "bytes": 826,
+      "sha256": "0dc2b6b03f5522009e76602c4cf2d1f6dc97480dc47a7285b1eef22e8f0be28b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/prompts/spotted.txt",
+      "bytes": 835,
+      "sha256": "6119a889ce25d3e8ff0f74a6f5420035be5c739c4e106916bb03b47ac8105b44"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/prompts/striped.txt",
+      "bytes": 877,
+      "sha256": "efcf7a2bf2a6ec46540d6ee049a764275b8b6415b99fe988f3cc5e7341d022f6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/prompts-sent/banded.txt",
+      "bytes": 872,
+      "sha256": "b7baf08bcbda9dfb642da3a1eea88b7cf4003f6928890abaeb0f1d8d93734f6d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/prompts-sent/eye-spotted.txt",
+      "bytes": 844,
+      "sha256": "b971694e57f1d32ac70a32e6b788ea1f5dfb7818022aa853d85ba58e5e47e9f5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/prompts-sent/marbled.txt",
+      "bytes": 818,
+      "sha256": "ab38ae7a4d8ff416cd680817a316f45aa7b668ca38ca223ca572b67155cc9400"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/prompts-sent/mottled.txt",
+      "bytes": 825,
+      "sha256": "ed458336c5cd31f191df9ab5412837bfe674e39f7e15e2d016e57f75653a3f78"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/prompts-sent/spotted.txt",
+      "bytes": 834,
+      "sha256": "2ee51612d96a54835240af4c741c55b704900ce37bf1f9659854c818dd590807"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/prompts-sent/striped.txt",
+      "bytes": 876,
+      "sha256": "44493d8b24ffff5531f54c1667601a59ea2f7792965c87b69bde5e6c1567d758"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/raw/banded.png",
+      "bytes": 52882,
+      "sha256": "f8896c5cc8f2dc49fa9f979a4a91441cf03842dd10cb54cdbaab864c312ac83c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/raw/eye-spotted.png",
+      "bytes": 61023,
+      "sha256": "93d97ecb1fc06bc4ba35118609014a26a49f79fbacf257c5225c6329b713ca2a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/raw/marbled.png",
+      "bytes": 78489,
+      "sha256": "2e11c783eb7df019d7080018bb95b7b95d6af3b717fed522a086669e1b7132fa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/raw/mottled.png",
+      "bytes": 84913,
+      "sha256": "80c307cc6812abe58338f1fa9c50e450d68d55a8f48f9760763f08483b33512d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/raw/spotted.png",
+      "bytes": 63670,
+      "sha256": "fa49f879edf471d990b3d96ab198f3e7602831ea10ad786826073acf4fced9e8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/raw/striped.png",
+      "bytes": 85032,
+      "sha256": "c3f8a5072d06face1b3fb5fe34bbf18bd5208068b22dd96150d0f18f3d5b5df6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/request-01.json",
+      "bytes": 769,
+      "sha256": "9a63a1ac3e1731eca396145e628767e140e7a8fa8610e0c57aa6baf124ac0627"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/request.json",
+      "bytes": 641,
+      "sha256": "6ead260e4470a9ca578638e150c19414be225b408e90c5e166d9081d5bbdd0cf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/review-sheet.png",
+      "bytes": 794556,
+      "sha256": "160dee88f06106ef9c24c28375be2026863961dba4a76ad7ff1772fa7bc2bf72"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/root-validate.log",
+      "bytes": 1093,
+      "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/sent-prompt-01.txt",
+      "bytes": 8818,
+      "sha256": "8a1e74b2e66307a9f2559fc83bf4c0abb4b11cab7b3af1116242f9040652e1ed"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/six-mask-sheet.png",
+      "bytes": 368328,
+      "sha256": "0ac9d2219a5e267b416616559f4130c91124040c6d57a823e47951606e84ba8e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/static-01.json",
+      "bytes": 6983,
+      "sha256": "659e137cb081b85340ea0b6c3e438cdd6a3e79be06bbb154c50f8b9d87a3eae5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/static-01.json.sources.json",
+      "bytes": 15387,
+      "sha256": "86638b7320494cffa06d02bcd1b4a592651de3c1c92ce7c3bce871ecfaa9fc23"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/static-01.log",
+      "bytes": 1712,
+      "sha256": "7e8596b1f130a5b0f396d7c76e89ab5d3b4fcdfdc6ab887b22891bec06598f43"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/static-02.json",
+      "bytes": 7652,
+      "sha256": "fc05b697b48582fca52c70c85a8ceb983dd1ffb879e2148d8c04b334eed6aee9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/static-02.json.sources.json",
+      "bytes": 15387,
+      "sha256": "30a614c60583a09bbe458840d6f00087f94fa90a219fa51fd86d864ac6114a41"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/static-02.log",
+      "bytes": 1714,
+      "sha256": "046fe6e755b740706944b826e13abadcb2d8416139f6e47964396fbf1c558088"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/subject-source.json",
+      "bytes": 4464,
+      "sha256": "640a6e7e91979e4309fdedd8d52294eca5d70794d10012196f1279852a350011"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/tool-receipts.json",
+      "bytes": 2099,
+      "sha256": "bda65578e85d05b95cca397787da0687dd770a0bd092e94d48bb4d11c44edfad"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/weld-02.log",
+      "bytes": 594,
+      "sha256": "e05eb6989cf7f108a6e6b580db77fadde0e5caddd511c3fc7efd674ee6b63f05"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/21-racer/weld-02.mjs",
+      "bytes": 2733,
+      "sha256": "2f663c8ca77fe7c0d934a1770f66549db805daa00cec1645a3c9135d559f1904"
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "bytes": 40248,
+      "sha256": "ba5edfbf247086f17d6162299075fc4d12dd5a10f568bdb968e4f120f5e55325"
+    }
+  ]
+}

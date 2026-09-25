@@ -1,0 +1,42 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "tool": "image_gen.imagegen",
+      "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-e09e17e6-3c0d-4baa-ad0c-ae7e7171633e.png",
+      "retained": "generation-01.png",
+      "sha256": "d2ed73d1e674ee9cce44f79c30a72510bc3477b1b53b1640b8478c819a25ce8d",
+      "promptFile": "sent-prompt-01.txt",
+      "promptSha256": "8a1e74b2e66307a9f2559fc83bf4c0abb4b11cab7b3af1116242f9040652e1ed",
+      "seed": null,
+      "model": "not exposed",
+      "decision": "rejected framing"
+    },
+    {
+      "attempt": 2,
+      "tool": "image_gen.imagegen",
+      "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-f9d654eb-bc7b-4a50-af30-cd78cf94ecfe.png",
+      "retained": "generation-02.png",
+      "sha256": "25951330361e8c108485245e3f323c4f2a002157e1b0a1aecd77cb20dfe09b8d",
+      "promptFile": "correction-prompt-02.txt",
+      "promptSha256": "060502a37e3e8a4c5d701748b9ba712b74614fcae64ce000a7dcb205967d703f",
+      "seed": null,
+      "model": "not exposed",
+      "decision": "rejected framing"
+    },
+    {
+      "attempt": 3,
+      "tool": "image_gen.imagegen",
+      "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-f1ef89d8-a38e-45fd-8faf-e5c105892a7a.png",
+      "retained": "master.png",
+      "sha256": "650d3a5d2fe3fe0b5fc986448a3a7818f89975642af68b51d27dac1366bc958e",
+      "promptFile": "correction-prompt-03.txt",
+      "promptSha256": "ff93e54305782173c34862e24f217d44bce6f2a4ab4703dc57e74ab7a34ed26b",
+      "seed": null,
+      "model": "not exposed",
+      "decision": "selected for intake; no rig/visual acceptance yet"
+    }
+  ],
+  "extraCorrectionAuthority": "Nick later instructed ignore my stop rules for now and complete the sprint; both earlier framing refusals remain retained. No gate or threshold loosened.",
+  "preparationError": "An incidental system-python Pillow import failed; no image mutation or intake was attempted by that command. Bundled Python is the qualified image-inspection runtime."
+}

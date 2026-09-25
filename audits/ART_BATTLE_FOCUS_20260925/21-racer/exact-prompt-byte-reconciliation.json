@@ -1,0 +1,55 @@
+{
+  "scope": "Exact sent prompt bytes recovered from the tool-call strings. Original serialized files, first manifest and conservation input hashes retained unchanged. Pixel masks and their measured conservation are unchanged. This corrected current manifest never claims the old conservation run consumed these corrected prompt files.",
+  "rows": [
+    {
+      "kind": "striped",
+      "originalSerializedFile": "prompts/striped.txt",
+      "serializedSha256": "efcf7a2bf2a6ec46540d6ee049a764275b8b6415b99fe988f3cc5e7341d022f6",
+      "exactSentFile": "prompts-sent/striped.txt",
+      "exactSentSha256": "44493d8b24ffff5531f54c1667601a59ea2f7792965c87b69bde5e6c1567d758",
+      "difference": "one file-writer-added trailing LF; not sent to tool"
+    },
+    {
+      "kind": "spotted",
+      "originalSerializedFile": "prompts/spotted.txt",
+      "serializedSha256": "6119a889ce25d3e8ff0f74a6f5420035be5c739c4e106916bb03b47ac8105b44",
+      "exactSentFile": "prompts-sent/spotted.txt",
+      "exactSentSha256": "2ee51612d96a54835240af4c741c55b704900ce37bf1f9659854c818dd590807",
+      "difference": "one file-writer-added trailing LF; not sent to tool"
+    },
+    {
+      "kind": "banded",
+      "originalSerializedFile": "prompts/banded.txt",
+      "serializedSha256": "565d111169b3c5aa91cae7b0024cd2d21d3daf5b7e1ed55a1628e2dcdaa6d5c5",
+      "exactSentFile": "prompts-sent/banded.txt",
+      "exactSentSha256": "b7baf08bcbda9dfb642da3a1eea88b7cf4003f6928890abaeb0f1d8d93734f6d",
+      "difference": "one file-writer-added trailing LF; not sent to tool"
+    },
+    {
+      "kind": "mottled",
+      "originalSerializedFile": "prompts/mottled.txt",
+      "serializedSha256": "0dc2b6b03f5522009e76602c4cf2d1f6dc97480dc47a7285b1eef22e8f0be28b",
+      "exactSentFile": "prompts-sent/mottled.txt",
+      "exactSentSha256": "ed458336c5cd31f191df9ab5412837bfe674e39f7e15e2d016e57f75653a3f78",
+      "difference": "one file-writer-added trailing LF; not sent to tool"
+    },
+    {
+      "kind": "marbled",
+      "originalSerializedFile": "prompts/marbled.txt",
+      "serializedSha256": "d009647ea159b3178c7852e1a9cb9c83b7adc8c008cd15616292b8c9d10d6016",
+      "exactSentFile": "prompts-sent/marbled.txt",
+      "exactSentSha256": "ab38ae7a4d8ff416cd680817a316f45aa7b668ca38ca223ca572b67155cc9400",
+      "difference": "one file-writer-added trailing LF; not sent to tool"
+    },
+    {
+      "kind": "eye-spotted",
+      "originalSerializedFile": "prompts/eye-spotted.txt",
+      "serializedSha256": "a1e2962a219185f386aa706d3a3dac851b49bad93bc8dfdc2ab368d171ee748f",
+      "exactSentFile": "prompts-sent/eye-spotted.txt",
+      "exactSentSha256": "b971694e57f1d32ac70a32e6b788ea1f5dfb7818022aa853d85ba58e5e47e9f5",
+      "difference": "one file-writer-added trailing LF; not sent to tool"
+    }
+  ],
+  "originalManifestSha256": "a6b1039819b0c281f1e447effad0ed6e03e6f57dbd7ef9e77a5db6739dc32514",
+  "currentManifestSha256": "0c00a8c3091d8a2a1890e95c835a0398a3fb63666f989612fd0a713946ccf22d"
+}
