@@ -1,0 +1,50 @@
+[
+  {
+    "pattern": "striped",
+    "tool": "image_gen.imagegen",
+    "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-e0abe46b-4a80-4833-8bf2-69725ddb2c09.png",
+    "sha256": "343ece94f0e2e71599170d2eb4bdb2358022aae4fb4dd4c23f7d6901f2c9ea83",
+    "promptSha256": "1d270cbeafd5e83e8a9fe422a27e8350f619d92d59953f71246db2a2a26140a2",
+    "reference": "master.png"
+  },
+  {
+    "pattern": "spotted",
+    "tool": "image_gen.imagegen",
+    "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-92fd1e57-d4ca-45fe-bf6c-c2392ffe6bb0.png",
+    "sha256": "024da17820f7dc96783ea8f83da90f73d859158301eefd79240923640633a1f9",
+    "promptSha256": "939e2a997fd79ce00770d7fecc6a265360c5613e6cb6c61399a0c61133184236",
+    "reference": "master.png"
+  },
+  {
+    "pattern": "banded",
+    "tool": "image_gen.imagegen",
+    "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-536e4af3-2305-44f9-8f1b-6882baf3f9f7.png",
+    "sha256": "0d0f858fbfbfb5400b7f2aa7a5463a1b7ef55c34fd5ca285702e459230ca9e6b",
+    "promptSha256": "3df082e57c94b9b4e920b5f7d7afbf7a02ef89ccc0dac14ae8101e976a0f66fa",
+    "reference": "master.png"
+  },
+  {
+    "pattern": "mottled",
+    "tool": "image_gen.imagegen",
+    "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-0d21ce35-796c-4461-972f-b4d4e2a38736.png",
+    "sha256": "45c5a2699b8b8bce7f24a43f9760bafb06bacc12b99b683cd50478e657878364",
+    "promptSha256": "064d67f1b80d7ce9c44e39c3851f3ffb409b4038cbfe6a0f9705ce17d7ac281a",
+    "reference": "master.png"
+  },
+  {
+    "pattern": "marbled",
+    "tool": "image_gen.imagegen",
+    "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-eac4bd74-7c2f-41b3-85de-f9ba273af76c.png",
+    "sha256": "dd40de524f95e054d16ed9b3078333a38e5e1e4188b41650cadcd1d18db708f2",
+    "promptSha256": "ec65d2cd93d5771920eb6d3e699bd8cecfb4dc47452ad2fb0c9de7289426f5a7",
+    "reference": "master.png"
+  },
+  {
+    "pattern": "eye-spotted",
+    "tool": "image_gen.imagegen",
+    "outputPath": "/Users/nick/.codex/generated_images/01a0c73f-5f04-7592-8681-402a4e887ffc/exec-7a29733e-6873-4717-82a4-ad60ac36ac94.png",
+    "sha256": "36d85bfaea8fce71fc519fb012aeffa963bead268f4b7ec3221df5c434b2afc0",
+    "promptSha256": "63953a7c96f2e59a198769ca375adf791dde56734e4b37ce31bbea8cdf63bcc7",
+    "reference": "master.png"
+  }
+]

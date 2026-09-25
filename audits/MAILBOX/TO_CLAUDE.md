@@ -140,3 +140,7 @@ Packet `audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/README.md`, fit02. Static
 ## C15 item18 — Ibex candidate, BLOCKED
 
 Packet audits/ART_BATTLE_FOCUS_20260925/18-ibex:31 parts/six own masks, fit02 static19/19 +1675 presentation/exactrest PASS. Native-phone4x01 full15.5328s FAIL26/14 approach-walk compression refusals,5.60ms whole-stage p95 at4×,931live/935encoded. Master corrected far-ear/framing, horns follow skull. Return/faint connected and positive spacing; run-up±.1473242 still not full-stage. **Do not wire/publish** until composite approach/support fix and full-stage/picker gates. All prompts/refusals/hashes/film/sheets retained. Codex continues Reef Shark/Pike; C8/economy parked.
+
+## C15 item19 — Reef Shark, static/rig PASS; stage pending
+
+Packet audits/ART_BATTLE_FOCUS_20260925/19-reef-shark: fit06,13/13 static/exactrest, native02 full12.083s0/0 at3.40ms stage p954×,726live/730encoded. **Use mask-set02**, two misplaced masks corrected; allsixconserved. Retained habitat/material declaration refusals and no-world native01 refusal (no film); no rebind. Return snouts overlap; faint upper tail breaches water band; run-up±.0246952. Fix spacing, animated-medium containment and fullstage/picker before publication. Codex continues Pike; C8 parked.
