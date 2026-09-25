@@ -15,7 +15,7 @@ import { resolvePhysicalHabitat } from './battle-habitat.js';
 import type { TurnAttack } from './battle2/choreography.js';
 import { parseEffectSequenceAnchors } from './effects/anchors.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
-import { MATCHUP_NAMES, matchupDuel, matchupEnabled, matchupGenome, matchupTranscript, matchupWorld, mountBattle2Matchup, parseMatchup, swimsOnly } from './battle2-matchup.js';
+import { MATCHUP_NAMES, alienGenome, alienSeed, matchupDuel, matchupEnabled, matchupGenome, matchupTranscript, matchupWorld, mountBattle2Matchup, parseMatchup, swimsOnly } from './battle2-matchup.js';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import { speciesVisualKey } from '@cf/art/species-identity';
 import { CombatChronicleController } from './combat-chronicle.js';
@@ -123,6 +123,19 @@ describe('matchup picker — DOM', () => {
     (doc.querySelectorAll('button')[1] as HTMLButtonElement).click();
     expect(doc.querySelector('[data-battle2-matchup]')).toBeNull(); expect(disposed.at(-1)).toBe('Eagle:matchup closed');
     await expect(h.play()).rejects.toThrow(/closed/);
+  });
+});
+
+describe('matchup picker — generated creatures (alien:<seed>) fight as their painted stand-in', () => {
+  it('parses alien:N on either side; a swimming alien picks the lake; a real duel with an alien plans; its genome is the generator\'s own', async () => {
+    installCaptureHooks();
+    const { paintedStandInV1 } = await import('./morph/painted-stand-in.js'), painted = new Set(MATCHUP_NAMES);
+    expect(parseMatchup('?battle2=1&vs=alien:12345,Civet').left).toBe('alien:12345'); expect(alienSeed('alien:7')).toBe(7); expect(alienSeed('Civet')).toBeNull();
+    let fishSeed = -1, landSeed = -1; for (let n = 1; n < 5000 && (fishSeed < 0 || landSeed < 0); n++) { const s = paintedStandInV1(alienGenome(n), painted); if (s?.earthName === 'Salmon' && fishSeed < 0) fishSeed = n; if (s?.earthName === 'Civet' && landSeed < 0) landSeed = n; }
+    expect(swimsOnly(`alien:${fishSeed}`)).toBe(true); expect(swimsOnly(`alien:${landSeed}`)).toBe(false);
+    expect(matchupWorld({ left: `alien:${fishSeed}`, right: 'Octopus', world: 'auto' })).toBe('lake');
+    const d = matchupDuel({}, recordOf('Python'), { left: `alien:${landSeed}`, right: 'Python', seed: null });
+    expect(d.settlement.status).toBe('planned'); expect((d.settlement.champion as { genome: Record<string, unknown> }).genome.seed).toBe(alienGenome(landSeed).seed);
   });
 });
 

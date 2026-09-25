@@ -40,3 +40,13 @@ composite does clip.
 **Known limits:** a species' fine features come from the stand-in painting (a tiger is a spotted civet) until its own archetype is
 painted (the coverage study's ranked plan). Plants, fungi and microbes have no painted library yet. `standIns: false` on
 `PaintedCardSource` restores painted-species-only cards.
+
+## On the battle stage too
+
+`battle2-wiring.ts` `matchRecord` falls back to the same stand-in. A fighter with no painting of its own fights as its stand-in's
+painted rig, morphed by its own genes. Its habitat and voice come from the stand-in's anatomy. The picker takes `alien:<seed>` for a
+generated creature (`?battle2=1&vs=alien:12,alien:11&duel=1`). Edge, with the worker controlling the page and real duels
+(`picker-alien-alien-12-alien-11/`, `picker-alien-alien-5-Octopus/`):
+- Alien #12 (four legs) fights as a Civet and Alien #11 (eight legs) as a Tarantula; both are painted rigs.
+- Alien #5 (fish) fights as a Salmon against the Octopus, and the picker chose the lake itself.
+- Every log is paced by the hits, with zero page errors.
