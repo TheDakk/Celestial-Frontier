@@ -504,6 +504,13 @@ without adding item tables, random-loot policy or measurement authority.
 - `_canCraft(it)`: passes only if the Signature blueprint is held (`it.sig && !primeFill[it.sig]` fails), the `req` rung below is owned, `essence ≥ it.sd`, and every `cost` (elements) and `parts` (items) is in stock.
 - `craftItem(id)`: spends cost/parts/sd, mints the item, fires the right sting/toast, and **auto-equips into an empty matching socket** (`it.slot && !equip[it.slot]`). Systems build once (guarded). Crafting `autoext` restamps every mined world's timestamp so it doesn't pay a retroactive windfall.
 - **Recipes are fixed and identical for every explorer**; nothing waits on a timer.
+- **Craft ×5** (v1 `data-craft5`): parts and components only (`cat` part/comp), "craft up to five in one press", looping while
+  `_canCraft` holds. **v2 (matches code as of 2026-09-25, D16 parity):** the Shipyard Fabricator row shows a `×5` button beside
+  Fabricate for stackable part/comp recipes (`fabricationBatchOffered`, `engineering-panel.ts`). The press runs
+  `fabricateEngineeringBatch` → `runFabricationBatchV1` (`fabrication-batch.ts`): ordinary single fabrications in sequence, EACH its
+  own F4 receipt, stopping at the first press that does not commit (materials ran out) or at a converging outcome (kept as-is so the
+  pending latch holds until the reload). The toast names the count ("Fabricated ×N"). Outcome test:
+  `tests/d16-craft-batch-outcome.test.ts` (real button, five receipts, reboot, the shortage stop, two mutation controls).
 
 ### Signature Relics — the Pathfinders' Trail
 - Nine `cat:'relic'` items (`rl-stone`…`rl-prism`), one per socket, each `sig`-gated on `primeFill` (mastering that element recovers the blueprint). Endgame-tier gear whose **power is decoupled from rarity** — effects live inside the wired `eff` keys, same as any gear.

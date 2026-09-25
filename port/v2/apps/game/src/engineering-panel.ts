@@ -22,6 +22,16 @@ export type EngineeringPanelOperation = 'mine' | 'skim' | 'research' | 'fabricat
 export interface EngineeringPanelActionRequest {
   readonly operation: EngineeringPanelOperation;
   readonly id?: string;
+  /** v1.8.9 parity (D16, the Fabricator's ×5): fabricate this recipe up to N times in one press, each its own receipt,
+   * stopping at the first press that does not commit. Only `fabricate` may carry it; absent = once. */
+  readonly repeat?: typeof ENGINEERING_FABRICATE_BATCH;
+}
+
+/** v1.8.9 `data-craft5`: "Craft up to five in one press", offered only for stackable parts and components. */
+export const ENGINEERING_FABRICATE_BATCH = 5 as const;
+/** The v1 rule: the ×5 press exists only for `part` and `comp` recipes (never gear or a permanent system). */
+export function fabricationBatchOffered(row: Pick<EngineeringFabricationRowReadModel, 'category' | 'outputKind'>): boolean {
+  return (row.category === 'part' || row.category === 'comp') && row.outputKind === 'stackable';
 }
 
 export interface EngineeringCostQuantity {
@@ -362,7 +372,7 @@ function assertView(view: EngineeringPanelView): void {
 }
 
 function sameRequest(left: EngineeringPanelActionRequest, right: EngineeringPanelActionRequest): boolean {
-  return left.operation === right.operation && left.id === right.id;
+  return left.operation === right.operation && left.id === right.id && left.repeat === right.repeat;
 }
 
 function copyRequest(request: EngineeringPanelActionRequest): EngineeringPanelActionRequest {
@@ -376,9 +386,14 @@ function copyRequest(request: EngineeringPanelActionRequest): EngineeringPanelAc
   if ((request.operation === 'mine' || request.operation === 'skim') && request.id !== undefined) {
     throw new TypeError(`${request.operation} request must not carry an id`);
   }
+  if (request.repeat !== undefined && (request.operation !== 'fabricate' || request.repeat !== ENGINEERING_FABRICATE_BATCH)) {
+    throw new TypeError('only a fabricate request may repeat, and only ×' + ENGINEERING_FABRICATE_BATCH);
+  }
   return request.id === undefined
     ? Object.freeze({ operation: request.operation })
-    : Object.freeze({ operation: request.operation, id: request.id });
+    : request.repeat === undefined
+      ? Object.freeze({ operation: request.operation, id: request.id })
+      : Object.freeze({ operation: request.operation, id: request.id, repeat: request.repeat });
 }
 
 export class EngineeringPanelController {
@@ -576,7 +591,8 @@ export class EngineeringPanelController {
     const operation = button.dataset.engineeringAction as EngineeringPanelOperation | undefined;
     if (!operation) return;
     const id = button.dataset.actionId;
-    const request = copyRequest(id === undefined ? { operation } : { operation, id });
+    const repeat = button.dataset.actionRepeat === String(ENGINEERING_FABRICATE_BATCH) ? ENGINEERING_FABRICATE_BATCH : undefined;
+    const request = copyRequest(id === undefined ? { operation } : repeat === undefined ? { operation, id } : { operation, id, repeat });
     this.#retainSettlementFocus(request);
     this.#emissionLocked = true;
     this.#lastRequest = request;
@@ -851,6 +867,19 @@ export class EngineeringPanelController {
             forcedReason ?? 'Fabrication is available.',
           ),
         );
+        if (fabricationBatchOffered(row)) {
+          const batch = this.#actionButton(
+            'fabricate',
+            row.baseId,
+            `×${ENGINEERING_FABRICATE_BATCH}`,
+            row.status === 'available' && row.effectSupport === 'live',
+            forcedReason ?? 'Fabrication is available.',
+            ENGINEERING_FABRICATE_BATCH,
+          );
+          batch.setAttribute('aria-label', `Fabricate up to ${ENGINEERING_FABRICATE_BATCH} ${row.name}`);
+          batch.title = `Craft up to ${ENGINEERING_FABRICATE_BATCH} in one press`;
+          article.append(batch);
+        }
         rows.append(article);
       }
       if (group.recipes.length === 0) rows.append(this.#node('p', 'engineering-empty', 'No recipes in this group.'));
@@ -973,12 +1002,14 @@ export class EngineeringPanelController {
     label: string,
     available: boolean,
     disabledReason: string,
+    repeat?: typeof ENGINEERING_FABRICATE_BATCH,
   ): HTMLButtonElement {
     const button = this.#node('button', 'engineering-action', label);
     button.type = 'button';
     button.dataset.engineeringAction = operation;
     if (id !== undefined) button.dataset.actionId = id;
-    button.dataset.focusKey = id === undefined ? `action:${operation}` : `action:${operation}:${id}`;
+    if (repeat !== undefined) button.dataset.actionRepeat = String(repeat);
+    button.dataset.focusKey = (id === undefined ? `action:${operation}` : `action:${operation}:${id}`) + (repeat === undefined ? '' : `:x${repeat}`);
     button.dataset.modelEnabled = String(available && this.#onAction !== null);
     button.dataset.disabledReason = available && this.#onAction === null
       ? COORDINATOR_UNAVAILABLE_REASON
@@ -1058,9 +1089,9 @@ export class EngineeringPanelController {
 
   #retainSettlementFocus(request: EngineeringPanelActionRequest): void {
     const receipt = this.#captureView();
-    const focusKey = request.id === undefined
+    const focusKey = (request.id === undefined
       ? `action:${request.operation}`
-      : `action:${request.operation}:${request.id}`;
+      : `action:${request.operation}:${request.id}`) + (request.repeat === undefined ? '' : `:x${request.repeat}`);
     const semanticKey = request.operation === 'research'
       ? `research:${request.id}`
       : request.operation === 'fabricate'
