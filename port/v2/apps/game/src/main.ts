@@ -41,6 +41,7 @@ import {
   publishWorldHarvestFieldsV1,
 } from './world-harvest.js';
 import { engineeringCommittedCopy, runFabricationBatchV1 } from './fabrication-batch.js';
+import { RecipePinChipV1, projectRecipePinChipV1, sanitizeRecipePinV1 } from './recipe-pin.js';
 import {
   deviceAudioAccessibilityStorage,
   readAudioAccessibilityPrefsV1,
@@ -858,6 +859,8 @@ let smokeF4LeaseReadCount = 0;
 let smokeF4RevisionReadCount = 0;
 /* Even an unarmed evidence hold is async. Keep that same await boundary in
    ordinary play without constructing any armable gate or retained latch. */
+/* Declared before any chip refresh can run (updateChips is reachable during boot): the pinned-recipe chip (recipe-pin.ts). */
+let recipePinChip: RecipePinChipV1 | null = null;
 const inactiveEvidenceHold: ReturnType<typeof createProductActionDiagnosticHold> = Object.freeze({
   arm: () => false,
   async holdIfArmed(_operation: string): Promise<void> {},
@@ -4506,6 +4509,7 @@ const engineeringPanelController = new EngineeringPanelController({
     engineeringPanelController.setPending(request);
     void runEngineeringPanelAction(request);
   },
+  recipePin: { pinned: () => save.pinnedRecipe, toggle: toggleRecipePin },
 });
 let engineeringPanelReleased = false;
 const engineeringPanelRegistration = engineeringPanelController.registration();
@@ -5629,6 +5633,7 @@ function updateChips(): void {
         ? { kind: 'boundary', name: projection.name }
         : null,
   });
+  refreshRecipePinChip();
 }
 function hudText(): void {
   /* the chrome per mode: trail (setTrail), hint pill, the caption line
@@ -9161,6 +9166,20 @@ async function runWorldHarvest(planetSeed: number): Promise<void> {
     if (!convergence) refreshPlanetSurveyCard();
   }
 }
+/** The Fabricator's 📌 (D16 parity, recipe-pin.ts): one pinned recipe, saved as view state; the chip tracks what is missing. */
+function refreshRecipePinChip(): void {
+  recipePinChip ??= new RecipePinChipV1(document, () => openPanel('shipyard'));
+  recipePinChip.render(projectRecipePinChipV1(save.pinnedRecipe, {
+    cargo: save.cargo, items: save.items, stardust: save.essence, signatureIds: Object.keys(save.primeFill),
+  }));
+}
+function toggleRecipePin(baseId: string): void {
+  const next = sanitizeRecipePinV1(baseId);
+  save.pinnedRecipe = next === null || save.pinnedRecipe === next ? null : next;
+  refreshRecipePinChip();
+  void persistView();
+}
+
 /** The Fabricator's ×5 (D16 parity): ordinary single fabrications in sequence, each its own receipt (fabrication-batch.ts). */
 async function fabricateEngineeringBatch(baseId: string, repeat: number): Promise<Arc3AppActionOutcome> {
   return (await runFabricationBatchV1({

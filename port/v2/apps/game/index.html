@@ -443,6 +443,18 @@
       border: 1px solid #405477; border-radius: 10px; background: rgba(22,34,57,.9);
       color: #dcecff; cursor: pointer; font: 700 12px var(--ui); white-space: normal; }
     #shipyardpanel button.engineering-action:disabled { opacity: .58; cursor: default; }
+    /* D16 parity: the Fabricator's 📌 pin and its tracking chip (v1 #pinchip; hidden unless a recipe is pinned) */
+    #shipyardpanel button.engineering-pin { display: inline-flex; align-items: center; justify-content: center;
+      min-width: 44px; min-height: 44px; box-sizing: border-box; margin: 5px 0 9px 6px; padding: 7px 10px;
+      border: 1px solid #405477; border-radius: 10px; background: rgba(22,34,57,.9); color: #dcecff; cursor: pointer;
+      font: 700 12px var(--ui); opacity: .72; }
+    #shipyardpanel button.engineering-pin.on { opacity: 1; border-color: #e0b85a; background: rgba(90,70,22,.5); }
+    #pinchip { position: fixed; z-index: 40; left: max(8px, env(safe-area-inset-left)); top: calc(var(--topbar-h, 56px) + 8px);
+      max-width: min(360px, calc(100vw - 16px)); min-height: 44px; box-sizing: border-box; display: flex; align-items: center;
+      gap: 6px; padding: 6px 10px; border: 1px solid #405477; border-radius: 10px; background: rgba(8,14,27,.88);
+      color: #dcecff; font: 600 12px var(--ui); cursor: pointer; text-align: left; }
+    #pinchip[hidden] { display: none !important; }
+    #pinchip.ready { border-color: #7fe6a0; color: #c9f5d8; }
     .engineering-pending-status { padding: 9px; border: 1px solid #a87939;
       border-radius: 9px; color: #ffe0a0; background: rgba(90,55,22,.28); }
     .engineering-pending-status[hidden] { display: none !important; }
