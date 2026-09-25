@@ -27,7 +27,7 @@ let release, server, browser;
 try {
   release = acquireWorkspaceLock('battle2 E1 native proof');
   const bundle = await rolldown({ input: path.join(import.meta.dirname, 'native-entry.mjs'), platform: 'browser', plugins: [{ name: 'read-only-producer', resolveId(id) { if (id.startsWith('cf-proof/')) return path.resolve(producer, id.slice(9)); }, transform(_, id) { if (path.isAbsolute(id) && fs.existsSync(id) && fs.statSync(id).isFile()) remember(id); } }] });
-  try { await bundle.write({ dir: scratch, format: 'es', entryFileNames: 'bundle.js' }); } finally { await bundle.close(); }
+  try { await bundle.write({ dir: scratch, format: 'es', entryFileNames: 'bundle.js', sourcemap: true }); } finally { await bundle.close(); } // the map attributes CF_CPU_PROFILE samples to source files
   const side = (dir, name) => { const record = JSON.parse(fs.readFileSync(path.join(dir, 'record.json'))), id = JSON.parse(fs.readFileSync(path.join(dir, 'parts/manifest.json'))).creatureId;
     // the painted masks live in the fit, or in the archetype's registered markings folder (the Salmon's are their own packet)
     const reg = CARD_ARCHETYPES.find((a) => path.resolve(repo, a.dir) === path.resolve(dir)), mdir = reg?.markings ? path.resolve(repo, reg.markings) : dir;
@@ -56,7 +56,24 @@ try {
   // CF_CPU_THROTTLE=N (optional, phone-tier studies): Chrome slows the page's CPU N× for the capture (CDP Emulation.setCPUThrottlingRate)
   const throttle = Number(process.env.CF_CPU_THROTTLE ?? '1'); if (!(throttle >= 1 && throttle <= 20)) throw Error('CF_CPU_THROTTLE must be 1..20');
   if (throttle > 1) await send('Emulation.setCPUThrottlingRate', { rate: throttle }); report.cpuThrottle = throttle;
-  report.capture = await evaluate('window.cfBattle2Proof.capture()'); fs.writeFileSync(path.join(out, 'battle-10s.webm'), Buffer.from(report.capture.video, 'base64')); delete report.capture.video;
+  // CF_CPU_PROFILE=1 (optional, cost breakdowns): Chrome's sampling profiler around the capture; self time is attributed to the
+  // ORIGINAL source file of each sample through the bundle's source map, then written as cpu-breakdown.json (per file and per group)
+  const profiling = process.env.CF_CPU_PROFILE === '1';
+  if (profiling) { await send('Profiler.enable'); await send('Profiler.setSamplingInterval', { interval: 200 }); await send('Profiler.start'); }
+  report.capture = await evaluate('window.cfBattle2Proof.capture()');
+  if (profiling) {
+    const { profile } = await send('Profiler.stop');
+    const { SourceMapConsumer } = await import('source-map-js');
+    const consumer = new SourceMapConsumer(JSON.parse(fs.readFileSync(path.join(scratch, 'bundle.js.map'), 'utf8')));
+    const byId = new Map(profile.nodes.map((n) => [n.id, n])), selfUs = new Map(), total = { us: 0 };
+    const dt = profile.timeDeltas ?? []; for (let i = 0; i < profile.samples.length; i++) { const n = byId.get(profile.samples[i]); const us = dt[i + 1] ?? 0; total.us += us;
+      const cf = n.callFrame; let file = cf.url && cf.url.endsWith('bundle.js') && cf.lineNumber >= 0 ? (consumer.originalPositionFor({ line: cf.lineNumber + 1, column: Math.max(0, cf.columnNumber) }).source ?? 'bundle?') : (cf.functionName === '(idle)' ? '(idle)' : cf.functionName === '(program)' ? '(program)' : cf.functionName === '(garbage collector)' ? '(gc)' : (cf.url ? (cf.url.startsWith('wasm://') ? 'wasm:' + (cf.functionName || '?').replace(/^\$?/, '').slice(0, 40) : 'other-script:' + cf.url.split('/').pop()) : 'native:' + (cf.functionName || '?')));
+      file = String(file).replace(/^.*?\/(apps|packages|tools|node_modules)\//, '$1/'); selfUs.set(file, (selfUs.get(file) ?? 0) + us); }
+    const group = (f) => /^wasm:/.test(f) ? 'wasm (orientation / skin kernels)' : /arap|skin|paint-skin|mesh/i.test(f) ? 'skin (ARAP / mesh)' : /contact|stance|support|ik|kinemat|solver|gait|motion\//i.test(f) ? 'rig motion + contact' : /creature-rig|parts-rig|fixture-rig/i.test(f) ? 'rig other' : /battle2\//i.test(f) ? 'stage + choreography' : /effects\//i.test(f) ? 'effects' : /pixi/i.test(f) ? 'pixi render' : /\(idle\)/.test(f) ? 'idle' : /\(gc\)/.test(f) ? 'garbage collection' : 'other';
+    const files = [...selfUs.entries()].sort((a, b) => b[1] - a[1]).map(([file, us]) => ({ file, ms: +(us / 1000).toFixed(1), share: +(us / total.us).toFixed(4) }));
+    const groups = {}; for (const f of files) groups[group(f.file)] = +((groups[group(f.file)] ?? 0) + f.ms).toFixed(1);
+    fs.writeFileSync(path.join(out, 'cpu-breakdown.json'), JSON.stringify({ totalMs: +(total.us / 1000).toFixed(1), frames: report.capture.frames, cpuThrottle: report.cpuThrottle, groups, files: files.slice(0, 40) }, null, 1) + '\n');
+  } fs.writeFileSync(path.join(out, 'battle-10s.webm'), Buffer.from(report.capture.video, 'base64')); delete report.capture.video;
   const media = JSON.parse(execFileSync('/opt/homebrew/bin/ffprobe', ['-v', 'error', '-count_frames', '-show_entries', 'format=duration:stream=codec_type,nb_read_frames,width,height', '-of', 'json', path.join(out, 'battle-10s.webm')], { encoding: 'utf8' }));
   report.capture.encodedMedia = media; save(); requireTenSecondMedia(Number(media.format.duration)); report.capture.encodedFrames = inspectEncodedFrames(media.streams);
   const refusals = report.capture.refusalsAtEnd; report.status = refusals.left === 0 && refusals.right === 0 ? 'DIAGNOSTIC_PASS' : 'FAIL'; if (report.status === 'FAIL') report.error = 'rig refusals in play: ' + JSON.stringify(refusals) + ' ' + JSON.stringify(report.capture.lastRefusal);
