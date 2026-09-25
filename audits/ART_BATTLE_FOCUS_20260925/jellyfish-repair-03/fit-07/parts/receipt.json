@@ -1,0 +1,422 @@
+{
+  "schema": "cf.part-mask-intake/v1",
+  "owner": "winning painter draw-stage RGBA changes",
+  "recordRecipeHash": "050cddedc732597f195ebed17582e37e1c7e9eaea348bbaaa0375e1554c806e7",
+  "declarationHash": "beb3500ea2e9730d3f77df995feae2ebb3f808ab3f7e273760fdc7812ad57f20",
+  "paintedPixels": 399548,
+  "parts": [
+    {
+      "id": "arm8-oral",
+      "joint": "arm8Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 479,
+        "y": 328,
+        "width": 117,
+        "height": 387
+      },
+      "pixels": 21343
+    },
+    {
+      "id": "arm9-oral",
+      "joint": "arm9Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 550,
+        "y": 321,
+        "width": 95,
+        "height": 458
+      },
+      "pixels": 23670
+    },
+    {
+      "id": "arm10-oral",
+      "joint": "arm10Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 627,
+        "y": 327,
+        "width": 96,
+        "height": 432
+      },
+      "pixels": 23488
+    },
+    {
+      "id": "arm11-oral",
+      "joint": "arm11Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 684,
+        "y": 335,
+        "width": 89,
+        "height": 365
+      },
+      "pixels": 15608
+    },
+    {
+      "id": "arm0-seg0",
+      "joint": "arm0Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 223,
+        "y": 319,
+        "width": 136,
+        "height": 281
+      },
+      "pixels": 7438
+    },
+    {
+      "id": "arm0-seg1",
+      "joint": "arm0Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 212,
+        "y": 600,
+        "width": 72,
+        "height": 297
+      },
+      "pixels": 7452
+    },
+    {
+      "id": "arm0-seg2",
+      "joint": "arm0Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 196,
+        "y": 897,
+        "width": 58,
+        "height": 230
+      },
+      "pixels": 4889
+    },
+    {
+      "id": "arm1-seg0",
+      "joint": "arm1Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 294,
+        "y": 307,
+        "width": 107,
+        "height": 304
+      },
+      "pixels": 7858
+    },
+    {
+      "id": "arm1-seg1",
+      "joint": "arm1Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 284,
+        "y": 611,
+        "width": 87,
+        "height": 322
+      },
+      "pixels": 9012
+    },
+    {
+      "id": "arm1-seg2",
+      "joint": "arm1Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 286,
+        "y": 933,
+        "width": 56,
+        "height": 245
+      },
+      "pixels": 5334
+    },
+    {
+      "id": "arm2-seg0",
+      "joint": "arm2Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 369,
+        "y": 295,
+        "width": 81,
+        "height": 315
+      },
+      "pixels": 9390
+    },
+    {
+      "id": "arm2-seg1",
+      "joint": "arm2Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 367,
+        "y": 610,
+        "width": 79,
+        "height": 334
+      },
+      "pixels": 7955
+    },
+    {
+      "id": "arm2-seg2",
+      "joint": "arm2Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 367,
+        "y": 944,
+        "width": 64,
+        "height": 260
+      },
+      "pixels": 5842
+    },
+    {
+      "id": "arm3-seg0",
+      "joint": "arm3Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 431,
+        "y": 297,
+        "width": 68,
+        "height": 299
+      },
+      "pixels": 9364
+    },
+    {
+      "id": "arm3-seg1",
+      "joint": "arm3Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 437,
+        "y": 596,
+        "width": 111,
+        "height": 317
+      },
+      "pixels": 8258
+    },
+    {
+      "id": "arm3-seg2",
+      "joint": "arm3Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 465,
+        "y": 913,
+        "width": 64,
+        "height": 249
+      },
+      "pixels": 5615
+    },
+    {
+      "id": "arm4-seg0",
+      "joint": "arm4Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 724,
+        "y": 366,
+        "width": 49,
+        "height": 286
+      },
+      "pixels": 2829
+    },
+    {
+      "id": "arm4-seg1",
+      "joint": "arm4Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 697,
+        "y": 652,
+        "width": 75,
+        "height": 301
+      },
+      "pixels": 6701
+    },
+    {
+      "id": "arm4-seg2",
+      "joint": "arm4Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 695,
+        "y": 953,
+        "width": 66,
+        "height": 220
+      },
+      "pixels": 4531
+    },
+    {
+      "id": "arm5-seg0",
+      "joint": "arm5Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 741,
+        "y": 316,
+        "width": 80,
+        "height": 311
+      },
+      "pixels": 8964
+    },
+    {
+      "id": "arm5-seg1",
+      "joint": "arm5Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 787,
+        "y": 627,
+        "width": 83,
+        "height": 330
+      },
+      "pixels": 8700
+    },
+    {
+      "id": "arm5-seg2",
+      "joint": "arm5Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 803,
+        "y": 957,
+        "width": 65,
+        "height": 250
+      },
+      "pixels": 6029
+    },
+    {
+      "id": "arm6-seg0",
+      "joint": "arm6Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 806,
+        "y": 334,
+        "width": 99,
+        "height": 299
+      },
+      "pixels": 8177
+    },
+    {
+      "id": "arm6-seg1",
+      "joint": "arm6Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 861,
+        "y": 633,
+        "width": 86,
+        "height": 317
+      },
+      "pixels": 7982
+    },
+    {
+      "id": "arm6-seg2",
+      "joint": "arm6Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 885,
+        "y": 950,
+        "width": 64,
+        "height": 242
+      },
+      "pixels": 5522
+    },
+    {
+      "id": "arm7-seg0",
+      "joint": "arm7Seg0",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 858,
+        "y": 348,
+        "width": 138,
+        "height": 273
+      },
+      "pixels": 8405
+    },
+    {
+      "id": "arm7-seg1",
+      "joint": "arm7Seg1",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 935,
+        "y": 621,
+        "width": 83,
+        "height": 287
+      },
+      "pixels": 7385
+    },
+    {
+      "id": "arm7-seg2",
+      "joint": "arm7Seg2",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 962,
+        "y": 908,
+        "width": 60,
+        "height": 218
+      },
+      "pixels": 4440
+    },
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 605,
+        "y": 240,
+        "width": 42,
+        "height": 40
+      },
+      "pixels": 1680
+    },
+    {
+      "id": "bell",
+      "joint": "bell",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 308,
+        "y": 70,
+        "width": 627,
+        "height": 245
+      },
+      "pixels": 103146
+    },
+    {
+      "id": "centre",
+      "joint": "centre",
+      "layer": "near",
+      "kind": "part",
+      "box": {
+        "x": 0,
+        "y": 315,
+        "width": 1107,
+        "height": 939
+      },
+      "pixels": 42541
+    }
+  ],
+  "restDifferentChannels": 0,
+  "keyer": {
+    "mode": "native painter alpha; no keyer"
+  },
+  "atlasDifferentChannels": 0,
+  "masterSha256": "5c878a70e83b232ef7aa1d716f6deab99626a8292e2a9714d87d945b1187e2ee",
+  "masterUnchanged": true,
+  "texture": null,
+  "jointPatches": "not yet fitted; this atlas proves authored mask coverage only",
+  "motionAcceptance": false
+}

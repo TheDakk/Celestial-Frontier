@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "scope": "Conservation05 remains against identical recipe/atlas/alpha; only skin weights/topology differ. No new generated mask claim.",
+  "rows": [
+    {
+      "path": "record.json",
+      "fit05Sha256": "7731a1b9050637d4552062b925e00a02ebf74bdce875097429d399629a193046",
+      "fit06Sha256": "7731a1b9050637d4552062b925e00a02ebf74bdce875097429d399629a193046"
+    },
+    {
+      "path": "parts/keyed.png",
+      "fit05Sha256": "ecfb60dd5bbe4efe07fc91db638b341e486d29db0989927077d2d44491f61d32",
+      "fit06Sha256": "ecfb60dd5bbe4efe07fc91db638b341e486d29db0989927077d2d44491f61d32"
+    },
+    {
+      "path": "parts/atlas/jellyfish.png",
+      "fit05Sha256": "7e21aa49d9b42a8580d792455806a8ae6b2969f267318826aadf745fb52b87cb",
+      "fit06Sha256": "7e21aa49d9b42a8580d792455806a8ae6b2969f267318826aadf745fb52b87cb"
+    }
+  ]
+}
