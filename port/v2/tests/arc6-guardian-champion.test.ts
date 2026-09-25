@@ -310,7 +310,7 @@ describe('Arc 6 captured Guardian champion admission', () => {
       row.id === captured.guardian.creature.creatureId
     ))).toMatchObject({ kind: 'owned-fauna', disabled: false, disabledReason: null });
     // §20: defeat is Recovery, never loss — the card must say so, and must never promise permanent loss
-    expect(card?.stakes).toBe('Defeat wounds this champion and it rests for about 10 minutes of play. It is never lost.');
+    expect(card?.stakes).toBe('Defeat sends this champion home to rest for about 10 minutes of play. It is never lost.');
     expect(card?.stakes).not.toMatch(/permanently lost|lost forever/);
   });
 
