@@ -32,6 +32,8 @@ import {
 } from '../src/model-v2.js';
 import { sha256Hex } from '../src/canonical.js';
 import { COMPANION_FEED_POLICY_V2 } from '../src/companion-care.js';
+import { preflightArc5RestV1, settleArc5RestV1 } from '../src/rest.js';
+import { projectCompanionAvailabilityV1 } from '../src/companion-availability.js';
 /** Feed policy v2 (D13): the taste decides the gain (loved +2, +3 at flora tier ≥ 4; neutral +1; disliked 0). */
 const policyGain = (t: { preference: 'loved' | 'neutral' | 'disliked'; floraTier: number }): number => { const r = COMPANION_FEED_POLICY_V2[t.preference]; return t.floraTier >= r.rareTier ? r.fedRare : r.fed; };
 import {
@@ -371,5 +373,34 @@ describe('@cf/domain-acquisition — Arc 5 feed authority', () => {
     // control: a companion AWAY on a mission is still refused
     const away = fixture({ assignment: { kind: 'mission', missionId: 'm-1' } });
     expect(preflightArc5FeedV1(away.state, { creatureId: away.leftId, foodLotId: away.floraLotId })).toEqual({ kind: 'refused', reason: 'creature-assigned' });
+  });
+});
+
+describe('D13 Rest — heals on the active-play clock (sealed heal, locked until the exact boundary)', () => {
+  it('a wounded companion rests 2 active minutes per 0.1 hurt: healed now, locked until readyAt, the first recovery from Injured is a memory', () => {
+    const f = fixture();
+    const pre = preflightArc5RestV1(f.state, { creatureId: f.leftId }, 1_000);
+    if (pre.kind !== 'ready') throw new Error(pre.reason);
+    expect(pre.preflight.durationActivePlayMs).toBe(8 * 60_000); // hurt 0.4 → 4 tenths → 8 minutes
+    const rest = settleArc5RestV1(pre.preflight, 3, 1_000);
+    expect(rest.readyAtActivePlayMs).toBe(481_000);
+    expect(rest.creatureAfter).toMatchObject({ hurt: 0, assignment: { kind: 'mission', missionId: 'rest:481000' } });
+    expect(rest.creatureAfter.bond?.memories.map((m) => [m.id, m.atActivePlayMs])).toEqual([['recovered:injured', 1_000]]);
+    const row = rest.successor.creatures.find((c) => c.creatureId === f.leftId)!;
+    expect(projectCompanionAvailabilityV1(row, 480_999)).toMatchObject({ rested: false, restRemainingActivePlayMs: 1, blocks: { breed: true, combat: true, dispatch: true } });
+    expect(projectCompanionAvailabilityV1(row, 481_000)).toMatchObject({ rested: true, assignment: null, blocks: { breed: false, combat: false, dispatch: false } });
+    // Feed obeys the same boundary: refused one ms early, eaten at the boundary; without a clock the stored lock holds
+    const food = { creatureId: f.leftId, foodLotId: f.floraLotId };
+    expect(preflightArc5FeedV1(rest.successor, food, 480_999)).toEqual({ kind: 'refused', reason: 'creature-assigned' });
+    expect(preflightArc5FeedV1(rest.successor, food, 481_000).kind).toBe('ready');
+    expect(preflightArc5FeedV1(rest.successor, food)).toEqual({ kind: 'refused', reason: 'creature-assigned' });
+    // resting again while resting is refused; once rested and healthy there is nothing to rest
+    expect(preflightArc5RestV1(rest.successor, { creatureId: f.leftId }, 2_000)).toEqual({ kind: 'refused', reason: 'creature-assigned' });
+    expect(preflightArc5RestV1(rest.successor, { creatureId: f.leftId }, 481_000)).toEqual({ kind: 'refused', reason: 'creature-healthy' });
+  });
+  it('control: an ordinary mission never expires through the projector, and a malformed rest id is an ordinary mission', () => {
+    for (const missionId of ['m-1', 'rest:', 'rest:1e3', 'rest:-5']) {
+      expect(projectCompanionAvailabilityV1({ assignment: { kind: 'mission', missionId } }, 9_000_000)).toMatchObject({ rested: false, blocks: { breed: true } });
+    }
   });
 });
