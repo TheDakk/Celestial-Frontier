@@ -35,5 +35,10 @@ export const BATTLE2_PARTS_FITS: readonly Battle2PartsFit[] = Object.freeze([
   Object.freeze({ earthName: 'Pike', dir: '../ART_BATTLE_FOCUS_20260925/20-pike/fit-02/', markingsDir: '../ART_BATTLE_FOCUS_20260925/20-pike/' }),
   Object.freeze({ earthName: 'Goose', dir: '../ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/', markingsDir: '../ART_BATTLE_FOCUS_20260925/15-goose/', contactSupports: 'observed' }),
   Object.freeze({ earthName: 'Gull', dir: '../ART_BATTLE_FOCUS_20260925/12-gull/fit-03/', markingsDir: '../ART_BATTLE_FOCUS_20260925/12-gull/', contactSupports: 'observed' }),
+  Object.freeze({ earthName: 'Racer', dir: '../ART_BATTLE_FOCUS_20260925/21-racer/fit-02/', markingsDir: '../ART_BATTLE_FOCUS_20260925/21-racer/' }),
+  Object.freeze({ earthName: 'Eel', dir: '../ART_BATTLE_FOCUS_20260925/27-eel/fit-02/', markingsDir: '../ART_BATTLE_FOCUS_20260925/27-eel/mask-set-03/' }),
+  Object.freeze({ earthName: 'Salamander', dir: '../ART_BATTLE_FOCUS_20260925/26-salamander/fit-05/', markingsDir: '../ART_BATTLE_FOCUS_20260925/26-salamander/' }),
+  Object.freeze({ earthName: 'Rat', dir: '../ART_BATTLE_FOCUS_20260925/29-rat/fit-03/', markingsDir: '../ART_BATTLE_FOCUS_20260925/29-rat/' }),
+  Object.freeze({ earthName: 'Reef Shark', dir: '../ART_BATTLE_FOCUS_20260925/19-reef-shark/fit-06/', markingsDir: '../ART_BATTLE_FOCUS_20260925/19-reef-shark/mask-set-02/' }),
   Object.freeze({ earthName: 'Jellyfish', dir: '../ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/', markingsDir: '../ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/', weaponDeclaration: '../ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/weapon-declaration.json' }),
 ]);

@@ -253,17 +253,72 @@ import a31_7 from '../assets/painted-cards/gull/markings/banded.png?url';
 import a31_8 from '../assets/painted-cards/gull/markings/mottled.png?url';
 import a31_9 from '../assets/painted-cards/gull/markings/marbled.png?url';
 import a31_10 from '../assets/painted-cards/gull/markings/eye-spotted.png?url';
-import a32_0 from '../assets/painted-cards/jellyfish/card/card.json?url';
-import a32_1 from '../assets/painted-cards/jellyfish/record.json?url';
-import a32_2 from '../assets/painted-cards/jellyfish/card/master-512.png?url';
-import a32_3 from '../assets/painted-cards/jellyfish/card/labels-512.png?url';
-import a32_4 from '../assets/painted-cards/jellyfish/markings.json?url';
-import a32_5 from '../assets/painted-cards/jellyfish/markings/striped.png?url';
-import a32_6 from '../assets/painted-cards/jellyfish/markings/spotted.png?url';
-import a32_7 from '../assets/painted-cards/jellyfish/markings/banded.png?url';
-import a32_8 from '../assets/painted-cards/jellyfish/markings/mottled.png?url';
-import a32_9 from '../assets/painted-cards/jellyfish/markings/marbled.png?url';
-import a32_10 from '../assets/painted-cards/jellyfish/markings/eye-spotted.png?url';
+import a32_0 from '../assets/painted-cards/racer/card/card.json?url';
+import a32_1 from '../assets/painted-cards/racer/record.json?url';
+import a32_2 from '../assets/painted-cards/racer/card/master-512.png?url';
+import a32_3 from '../assets/painted-cards/racer/card/labels-512.png?url';
+import a32_4 from '../assets/painted-cards/racer/markings.json?url';
+import a32_5 from '../assets/painted-cards/racer/markings/striped.png?url';
+import a32_6 from '../assets/painted-cards/racer/markings/spotted.png?url';
+import a32_7 from '../assets/painted-cards/racer/markings/banded.png?url';
+import a32_8 from '../assets/painted-cards/racer/markings/mottled.png?url';
+import a32_9 from '../assets/painted-cards/racer/markings/marbled.png?url';
+import a32_10 from '../assets/painted-cards/racer/markings/eye-spotted.png?url';
+import a33_0 from '../assets/painted-cards/eel/card/card.json?url';
+import a33_1 from '../assets/painted-cards/eel/record.json?url';
+import a33_2 from '../assets/painted-cards/eel/card/master-512.png?url';
+import a33_3 from '../assets/painted-cards/eel/card/labels-512.png?url';
+import a33_4 from '../assets/painted-cards/eel/markings.json?url';
+import a33_5 from '../assets/painted-cards/eel/markings/striped.png?url';
+import a33_6 from '../assets/painted-cards/eel/markings/spotted.png?url';
+import a33_7 from '../assets/painted-cards/eel/markings/banded.png?url';
+import a33_8 from '../assets/painted-cards/eel/markings/mottled.png?url';
+import a33_9 from '../assets/painted-cards/eel/markings/marbled.png?url';
+import a33_10 from '../assets/painted-cards/eel/markings/eye-spotted.png?url';
+import a34_0 from '../assets/painted-cards/salamander/card/card.json?url';
+import a34_1 from '../assets/painted-cards/salamander/record.json?url';
+import a34_2 from '../assets/painted-cards/salamander/card/master-512.png?url';
+import a34_3 from '../assets/painted-cards/salamander/card/labels-512.png?url';
+import a34_4 from '../assets/painted-cards/salamander/markings.json?url';
+import a34_5 from '../assets/painted-cards/salamander/markings/striped.png?url';
+import a34_6 from '../assets/painted-cards/salamander/markings/spotted.png?url';
+import a34_7 from '../assets/painted-cards/salamander/markings/banded.png?url';
+import a34_8 from '../assets/painted-cards/salamander/markings/mottled.png?url';
+import a34_9 from '../assets/painted-cards/salamander/markings/marbled.png?url';
+import a34_10 from '../assets/painted-cards/salamander/markings/eye-spotted.png?url';
+import a35_0 from '../assets/painted-cards/rat/card/card.json?url';
+import a35_1 from '../assets/painted-cards/rat/record.json?url';
+import a35_2 from '../assets/painted-cards/rat/card/master-512.png?url';
+import a35_3 from '../assets/painted-cards/rat/card/labels-512.png?url';
+import a35_4 from '../assets/painted-cards/rat/markings.json?url';
+import a35_5 from '../assets/painted-cards/rat/markings/striped.png?url';
+import a35_6 from '../assets/painted-cards/rat/markings/spotted.png?url';
+import a35_7 from '../assets/painted-cards/rat/markings/banded.png?url';
+import a35_8 from '../assets/painted-cards/rat/markings/mottled.png?url';
+import a35_9 from '../assets/painted-cards/rat/markings/marbled.png?url';
+import a35_10 from '../assets/painted-cards/rat/markings/eye-spotted.png?url';
+import a36_0 from '../assets/painted-cards/reef-shark/card/card.json?url';
+import a36_1 from '../assets/painted-cards/reef-shark/record.json?url';
+import a36_2 from '../assets/painted-cards/reef-shark/card/master-512.png?url';
+import a36_3 from '../assets/painted-cards/reef-shark/card/labels-512.png?url';
+import a36_4 from '../assets/painted-cards/reef-shark/markings.json?url';
+import a36_5 from '../assets/painted-cards/reef-shark/markings/striped.png?url';
+import a36_6 from '../assets/painted-cards/reef-shark/markings/spotted.png?url';
+import a36_7 from '../assets/painted-cards/reef-shark/markings/banded.png?url';
+import a36_8 from '../assets/painted-cards/reef-shark/markings/mottled.png?url';
+import a36_9 from '../assets/painted-cards/reef-shark/markings/marbled.png?url';
+import a36_10 from '../assets/painted-cards/reef-shark/markings/eye-spotted.png?url';
+import a37_0 from '../assets/painted-cards/jellyfish/card/card.json?url';
+import a37_1 from '../assets/painted-cards/jellyfish/record.json?url';
+import a37_2 from '../assets/painted-cards/jellyfish/card/master-512.png?url';
+import a37_3 from '../assets/painted-cards/jellyfish/card/labels-512.png?url';
+import a37_4 from '../assets/painted-cards/jellyfish/markings.json?url';
+import a37_5 from '../assets/painted-cards/jellyfish/markings/striped.png?url';
+import a37_6 from '../assets/painted-cards/jellyfish/markings/spotted.png?url';
+import a37_7 from '../assets/painted-cards/jellyfish/markings/banded.png?url';
+import a37_8 from '../assets/painted-cards/jellyfish/markings/mottled.png?url';
+import a37_9 from '../assets/painted-cards/jellyfish/markings/marbled.png?url';
+import a37_10 from '../assets/painted-cards/jellyfish/markings/eye-spotted.png?url';
 /** Repo-relative shipped archetype dir → its shipped asset URLs by file (card, record, and the painted masks when it has them). */
 export const CARD_ASSET_URLS: ReadonlyMap<string, Readonly<Record<string, string>>> = new Map([
   ['port/v2/apps/game/assets/painted-cards/crab/', { 'card/card.json': a0_0, 'record.json': a0_1, 'card/master-512.png': a0_2, 'card/labels-512.png': a0_3, 'markings.json': a0_4, 'markings/striped.png': a0_5, 'markings/spotted.png': a0_6, 'markings/banded.png': a0_7, 'markings/mottled.png': a0_8, 'markings/marbled.png': a0_9, 'markings/eye-spotted.png': a0_10 }],
@@ -298,5 +353,10 @@ export const CARD_ASSET_URLS: ReadonlyMap<string, Readonly<Record<string, string
   ['port/v2/apps/game/assets/painted-cards/pike/', { 'card/card.json': a29_0, 'record.json': a29_1, 'card/master-512.png': a29_2, 'card/labels-512.png': a29_3, 'markings.json': a29_4, 'markings/striped.png': a29_5, 'markings/spotted.png': a29_6, 'markings/banded.png': a29_7, 'markings/mottled.png': a29_8, 'markings/marbled.png': a29_9, 'markings/eye-spotted.png': a29_10 }],
   ['port/v2/apps/game/assets/painted-cards/goose/', { 'card/card.json': a30_0, 'record.json': a30_1, 'card/master-512.png': a30_2, 'card/labels-512.png': a30_3, 'markings.json': a30_4, 'markings/striped.png': a30_5, 'markings/spotted.png': a30_6, 'markings/banded.png': a30_7, 'markings/mottled.png': a30_8, 'markings/marbled.png': a30_9, 'markings/eye-spotted.png': a30_10 }],
   ['port/v2/apps/game/assets/painted-cards/gull/', { 'card/card.json': a31_0, 'record.json': a31_1, 'card/master-512.png': a31_2, 'card/labels-512.png': a31_3, 'markings.json': a31_4, 'markings/striped.png': a31_5, 'markings/spotted.png': a31_6, 'markings/banded.png': a31_7, 'markings/mottled.png': a31_8, 'markings/marbled.png': a31_9, 'markings/eye-spotted.png': a31_10 }],
-  ['port/v2/apps/game/assets/painted-cards/jellyfish/', { 'card/card.json': a32_0, 'record.json': a32_1, 'card/master-512.png': a32_2, 'card/labels-512.png': a32_3, 'markings.json': a32_4, 'markings/striped.png': a32_5, 'markings/spotted.png': a32_6, 'markings/banded.png': a32_7, 'markings/mottled.png': a32_8, 'markings/marbled.png': a32_9, 'markings/eye-spotted.png': a32_10 }],
+  ['port/v2/apps/game/assets/painted-cards/racer/', { 'card/card.json': a32_0, 'record.json': a32_1, 'card/master-512.png': a32_2, 'card/labels-512.png': a32_3, 'markings.json': a32_4, 'markings/striped.png': a32_5, 'markings/spotted.png': a32_6, 'markings/banded.png': a32_7, 'markings/mottled.png': a32_8, 'markings/marbled.png': a32_9, 'markings/eye-spotted.png': a32_10 }],
+  ['port/v2/apps/game/assets/painted-cards/eel/', { 'card/card.json': a33_0, 'record.json': a33_1, 'card/master-512.png': a33_2, 'card/labels-512.png': a33_3, 'markings.json': a33_4, 'markings/striped.png': a33_5, 'markings/spotted.png': a33_6, 'markings/banded.png': a33_7, 'markings/mottled.png': a33_8, 'markings/marbled.png': a33_9, 'markings/eye-spotted.png': a33_10 }],
+  ['port/v2/apps/game/assets/painted-cards/salamander/', { 'card/card.json': a34_0, 'record.json': a34_1, 'card/master-512.png': a34_2, 'card/labels-512.png': a34_3, 'markings.json': a34_4, 'markings/striped.png': a34_5, 'markings/spotted.png': a34_6, 'markings/banded.png': a34_7, 'markings/mottled.png': a34_8, 'markings/marbled.png': a34_9, 'markings/eye-spotted.png': a34_10 }],
+  ['port/v2/apps/game/assets/painted-cards/rat/', { 'card/card.json': a35_0, 'record.json': a35_1, 'card/master-512.png': a35_2, 'card/labels-512.png': a35_3, 'markings.json': a35_4, 'markings/striped.png': a35_5, 'markings/spotted.png': a35_6, 'markings/banded.png': a35_7, 'markings/mottled.png': a35_8, 'markings/marbled.png': a35_9, 'markings/eye-spotted.png': a35_10 }],
+  ['port/v2/apps/game/assets/painted-cards/reef-shark/', { 'card/card.json': a36_0, 'record.json': a36_1, 'card/master-512.png': a36_2, 'card/labels-512.png': a36_3, 'markings.json': a36_4, 'markings/striped.png': a36_5, 'markings/spotted.png': a36_6, 'markings/banded.png': a36_7, 'markings/mottled.png': a36_8, 'markings/marbled.png': a36_9, 'markings/eye-spotted.png': a36_10 }],
+  ['port/v2/apps/game/assets/painted-cards/jellyfish/', { 'card/card.json': a37_0, 'record.json': a37_1, 'card/master-512.png': a37_2, 'card/labels-512.png': a37_3, 'markings.json': a37_4, 'markings/striped.png': a37_5, 'markings/spotted.png': a37_6, 'markings/banded.png': a37_7, 'markings/mottled.png': a37_8, 'markings/marbled.png': a37_9, 'markings/eye-spotted.png': a37_10 }],
 ]);
