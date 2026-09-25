@@ -499,7 +499,7 @@ describe('§20 party settlement (S2b step 1): one receipt for a Guardian party',
     for (let seed = 60; seed < 160; seed++) {
       const party = [owned(seed, { creatureId: `c${seed}a` }), owned(seed + 300, { creatureId: `c${seed}b` })].map((champion) => ({ champion, stance: 'balanced' as const }));
       const probe = runEncounterV1({ mode: 'command', defender: { name: titan().defender.name, genome: titan().defender.battleGenome as never },
-        party: party.map((m) => ({ name: m.champion.name, genome: (m.champion as { genome: never }).genome, stance: m.stance })) });
+        party: party.map((m) => ({ name: m.champion.name, genome: (m.champion as unknown as { genome: never }).genome, stance: m.stance })) });
       if (probe.status !== 'paused') continue;
       expect(planCombatPartySettlementV1({ ...base(titan(), `open-${seed}`), mode: 'command', party })).toEqual({ status: 'refused', reason: 'input-invalid' });
       expect(planCombatPartySettlementV1({ ...base(titan(), `wd-${seed}`), mode: 'command', party, decisions: ['withdraw'] })).toEqual({ status: 'refused', reason: 'input-invalid' });
