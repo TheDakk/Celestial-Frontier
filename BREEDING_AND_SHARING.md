@@ -11,7 +11,12 @@ Nick decided D13 (N3 Option B) on 2026-09-25. Owner module: `packages/domain/acq
   flavour (≤ 11 per companion for life). The 200 `fed` cap is unchanged. Explorer meals keep their own poison.
 - **Bond** levels 0–5 (Wary 0, Familiar 3, Trusted 8, Devoted 15, Kindred 25, Soulbound 40 memories) count distinct firsts, never decay, and
   unlock sidegrades only — never combat stats. `bond: null` is level 0.
-- **Rest** heals on the active-play clock: 2 active minutes per 0.1 `hurt`, rounded up, at most 20.
+- **Rest** heals on the active-play clock: 2 active minutes per 0.1 `hurt`, rounded up, at most 20. One receipt (`arc5-companion-rest`) SEALS the
+  heal (`hurt` → 0) and assigns `{kind:'mission', missionId:'rest:<readyAt>'}` with `readyAt` = the committed active-play snapshot + the duration.
+  `projectCompanionAvailabilityV1` releases it at that exact boundary, like Recovery; until then it locks breed, combat, dispatch and Feed. So every
+  reader of `hurt` agrees at every moment and there is no deferred writer (a deliberate refinement of N3's "applied by the next receipt write").
+  Nothing heals while the game is closed; the device clock never enters. The first recovery from Injured or worse is the bond memory
+  `recovered:injured`. Owners: `rest.ts` (domain), `arc5-rest-action.ts` (app).
 
 ## Requested time-aware art and sharing — source reviewed 2026-09-08
 

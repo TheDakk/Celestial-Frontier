@@ -96,7 +96,8 @@ const FEED_STATE_CLONE_LIMIT = 1_500_000;
 
 interface FeedCloneBudget { count: number; }
 
-function cloneFeedPlainData(
+/** Detach caller state into exact plain data (shared with the D13 Rest action). */
+export function cloneFeedPlainData(
   value: unknown,
   ancestors: Set<object>,
   budget: FeedCloneBudget,

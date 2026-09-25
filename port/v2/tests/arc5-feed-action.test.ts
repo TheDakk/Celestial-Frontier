@@ -569,4 +569,22 @@ describe('Arc 5 headless durable feed action', () => {
     expect(outcome.settlement.witness).toContain('"activePlayMs"');
     expect(fixture.receiptCas()).toBe(1);
   });
+
+  it('D13 Rest through the real F4 transaction: one receipt seals the heal and the boundary (the committed snapshot + 8 active minutes for hurt 0.35); a second Rest while resting is refused before any receipt', async () => {
+    const fixture = await runtimeFixture();
+    const { commitArc5RestActionV1 } = await import('../apps/game/src/arc5-rest-action.js');
+    const rest = await commitArc5RestActionV1({ runtime: fixture.runtime, ownershipV2: fixture.ownershipV2, state: fixture.state, creatureId: fixture.ownership.creatureId, codecNow: NOW, activePlayMs: 0 });
+    expect(rest.kind).toBe('committed');
+    if (rest.kind !== 'committed') return;
+    const row = rest.ownershipV2.creatures.find((c) => c.creatureId === fixture.ownership.creatureId)!;
+    expect(row.hurt).toBe(0);
+    expect(row.assignment).toEqual({ kind: 'mission', missionId: `rest:${rest.settlement.readyAtActivePlayMs}` });
+    expect(rest.settlement.readyAtActivePlayMs - rest.settlement.preflight.durationActivePlayMs).toBeGreaterThanOrEqual(0);
+    expect(rest.settlement.preflight.durationActivePlayMs).toBe(8 * 60_000);
+    expect(rest.transaction.receipt.kind).toBe('arc5-companion-rest');
+    expect(fixture.receiptCas()).toBe(1);
+    const again = await commitArc5RestActionV1({ runtime: fixture.runtime, ownershipV2: rest.ownershipV2, state: rest.transaction.state, creatureId: fixture.ownership.creatureId, codecNow: NOW, activePlayMs: 1_000 });
+    expect(again).toMatchObject({ kind: 'refused', detail: 'preflight:creature-assigned' });
+    expect(fixture.receiptCas()).toBe(1);
+  });
 });
