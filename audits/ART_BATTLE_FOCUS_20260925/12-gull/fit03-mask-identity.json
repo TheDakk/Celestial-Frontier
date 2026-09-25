@@ -1,0 +1,30 @@
+{
+  "schema": "cf.mask-fit-identity/v1",
+  "rows": [
+    {
+      "file": "record.json",
+      "fit01Sha256": "7f7a1d10d7a58f722b48ee3e6ab033c71ce84eb8d46320aca62a07cfb9530c48",
+      "fit03Sha256": "7f7a1d10d7a58f722b48ee3e6ab033c71ce84eb8d46320aca62a07cfb9530c48",
+      "identical": true
+    },
+    {
+      "file": "parts/keyed.png",
+      "fit01Sha256": "6f7e997a5b11b994ca27ca184f7797ef2b36248bb650595c8bc99708011bb28a",
+      "fit03Sha256": "6f7e997a5b11b994ca27ca184f7797ef2b36248bb650595c8bc99708011bb28a",
+      "identical": true
+    },
+    {
+      "file": "parts/atlas/gull.png",
+      "fit01Sha256": "95775e5b9dc0614d3033480742553debb9fe93b9a32aac1b88efbea15d6e670d",
+      "fit03Sha256": "95775e5b9dc0614d3033480742553debb9fe93b9a32aac1b88efbea15d6e670d",
+      "identical": true
+    },
+    {
+      "file": "parts/manifest.json",
+      "fit01Sha256": "23295f90e84407e45d59d4c8c14bf72bfbaaf9573d5301d82bb397356425fd99",
+      "fit03Sha256": "23295f90e84407e45d59d4c8c14bf72bfbaaf9573d5301d82bb397356425fd99",
+      "identical": true
+    }
+  ],
+  "scope": "Own raw masks conserve against fit01 keyed alpha. Final candidate fit03 uses exactly the same record, alpha, atlas and manifest. Prior conservation binding input remains identified as fit01; not re-bound to unmeasured bytes."
+}

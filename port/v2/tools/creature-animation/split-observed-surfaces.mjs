@@ -13,7 +13,7 @@ function observedContactPins(input,record,skin,contactEndpoints){
   contactPins.push({joint,part:part.id,vertex:best.vertexIndex,distancePx:best.distancePx,supports});
  }return contactPins;
 }
-export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['root'],shapeJoints=[],preservePaintBoundaries=false,contactEndpoints=[],preserveExistingWeights=false,releaseContactConflicts=false}={}){
+export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['root'],shapeJoints=[],preservePaintBoundaries=false,paintBoundaryPairs=[],contactEndpoints=[],preserveExistingWeights=false,releaseContactConflicts=false}={}){
  const {recipeHash,...recipe}=record;need(await hashJSON(recipe)===recipeHash,'record hash');
  const {bindingHash,...body}=input;need(await hashJSON(body)===bindingHash,'binding hash');
  need(input.recordRecipeHash===recipeHash,'record binding');
@@ -21,10 +21,13 @@ export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['ro
  const skin=input.paintSkin,source=skin.vertices,owners=new Map(input.parts.map(p=>[p.id,p])),fields=new Map(skin.parts.map(p=>[p.id,p]));
  need(source.length<=40000&&owners.size===input.parts.length&&fields.size===skin.parts.length&&owners.size===fields.size,'source inventory');
  need(input.parts.every(p=>Object.hasOwn(record.landmarks,p.joint))&&[...fixedJoints,...shapeJoints,...contactEndpoints].every(j=>Object.hasOwn(record.landmarks,j)),'unknown joint');
+ need(Array.isArray(paintBoundaryPairs)&&paintBoundaryPairs.every(p=>Array.isArray(p)&&p.length===2&&p[0]!==p[1]&&p.every(id=>typeof id==='string'&&owners.has(id))),'paint boundary part pairs');
+ need(new Set(paintBoundaryPairs.map(p=>p.slice().sort().join('\0'))).size===paintBoundaryPairs.length,'duplicate paint boundary pair');
+ need(!preservePaintBoundaries||paintBoundaryPairs.length===0,'choose all or named paint boundaries');
  // A previously split certified field can receive the current shared contact
  // locks without remeshing or re-diffusing its unrelated authored weights.
  if(preserveExistingWeights){
-  need(fixedJoints.length===0&&shapeJoints.length===0&&!preservePaintBoundaries,'contact-only preservation cannot change other owners');
+  need(fixedJoints.length===0&&shapeJoints.length===0&&!preservePaintBoundaries&&paintBoundaryPairs.length===0,'contact-only preservation cannot change other owners');
   need(skin.parts.every(p=>p.fieldTriangles?.length===p.indices.length),'part/face provenance');
   const result=structuredClone(skin),contactPins=observedContactPins(input,record,result,contactEndpoints),locks=new Map(),pins=new Set(result.solver.pins);
   for(const {joint,supports}of contactPins)for(const i of supports){need(!locks.has(i)||locks.get(i)===joint,'conflicting contact owners');locks.set(i,joint);result.vertices[i].weights=[[joint,1]];pins.add(i);}
@@ -42,7 +45,9 @@ export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['ro
  const jointSupports=new Set();
  // A flat master has no hidden paint behind a cut. Preserve every observed ink
  // boundary when explicitly requested; this never invents a reverse surface.
- const joins=preservePaintBoundaries?[...probe.joins,...probe.excluded]:probe.joins;
+ const selected=paintBoundaryPairs.map(pair=>{const found=probe.excluded.filter(j=>[j.ancestorPart,j.descendantPart].sort().join('\0')===pair.slice().sort().join('\0'));need(found.length===1,'declared paint boundary must match one observed excluded adjacency');return found[0];});
+ const welded=preservePaintBoundaries?probe.excluded:selected;
+ const joins=welded.length?[...probe.joins,...welded]:probe.joins;
  for(const join of joins)for(const s of join.samples){
   const supports=(id,p)=>{const field=fields.get(id);need(field&&p.triangle?.length===3&&p.triangle.every(i=>Number.isInteger(i)&&field.vertices[i]),'probe surface');return new Set(p.triangle.flatMap(i=>field.vertices[i].triangle));};
   const a=supports(join.ancestorPart,s.ancestor),b=supports(join.descendantPart,s.descendant);
@@ -69,5 +74,5 @@ export async function splitObservedSurfaces(input,record,probe,{fixedJoints=['ro
  const result=smoothSkinWeights({...skin,vertices,parts,triangles});for(const[i,j]of locked)result.vertices[i].weights=[[j,1]];
  result.solver={iterations:4,globalIterations:4,targetWeight:.35,pins:[...locked.keys()].sort((a,b)=>a-b)};
  need(result.vertices.length<=40000,'vertex budget');
- const output={...body,paintSkin:result};return {binding:{...output,bindingHash:await hashJSON(output)},receipt:{schema:'cf.observed-surface-split/v1',contactPins,sourceBindingHash:bindingHash,sourceVertices:source.length,vertices:vertices.length,sharedSupports:boundary.size,pins:locked.size,independentSurfaceParts:parts.length,sourceJoins:probe.joins.length,excludedOverlaps:probe.excluded.length,observedExcludedBoundaries:probe.excluded.length,weldedExcludedBoundaries:preservePaintBoundaries?probe.excluded.length:0,independentExcludedBoundaries:preservePaintBoundaries?0:probe.excluded.length,preservePaintBoundaries,sourceCoordinateChanges:0}};
+ const output={...body,paintSkin:result};return {binding:{...output,bindingHash:await hashJSON(output)},receipt:{schema:'cf.observed-surface-split/v1',contactPins,sourceBindingHash:bindingHash,sourceVertices:source.length,vertices:vertices.length,sharedSupports:boundary.size,pins:locked.size,independentSurfaceParts:parts.length,sourceJoins:probe.joins.length,excludedOverlaps:probe.excluded.length,observedExcludedBoundaries:probe.excluded.length,weldedExcludedBoundaries:welded.length,independentExcludedBoundaries:probe.excluded.length-welded.length,preservePaintBoundaries,...paintBoundaryPairs.length?{paintBoundaryPairs:paintBoundaryPairs.map(p=>p.slice())}:{},sourceCoordinateChanges:0}};
 }

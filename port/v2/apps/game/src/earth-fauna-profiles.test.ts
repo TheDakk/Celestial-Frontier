@@ -91,3 +91,16 @@ it('wires exactly the 53 previously empty identities without claiming fits or ch
  expect(()=>attackRepertoire(card('fish','Clam'),'water')).toThrow('mismatch');
  const broken=specialty('lobopod');delete broken.landmarks.leg0NearFoot;expect(()=>compileBodyCard({...broken,identity:{...broken.identity,earthName:'Tardigrade'}})).toThrow('landmark');
 });
+
+it('admits observed adult insect flight only with explicit stage habitat and both unfolded wings',()=>{
+ const r={...fixtures.insect,identity:{...fixtures.insect.identity,earthName:'Dragonfly'},recipeHash:'synthetic-adult-stage',habitat:{realm:'aerial' as const,gait:'fly' as const,source:'observed adult with four spread wings'}};
+ const c=compileBodyCard(r);expect(c.habitat).toEqual(r.habitat);expect(c.locomotion.templateGait).toBe('flight');
+ expect(attackRepertoire(c,'air').attacks.map(a=>a.verb)).toEqual(['mandible']);
+ // The previously shipped default is still a ground organism until declared.
+ const ground=card('insect','Dragonfly');expect(ground.realm).toBe('land');expect(()=>attackRepertoire(ground,'air')).toThrow('physical medium');
+ const {habitat:ignored,...noDeclaration}=c;expect(()=>attackRepertoire(noDeclaration,'air')).toThrow('species medium');
+ for(const joint of ['wingNear','wingFar'])expect(()=>attackRepertoire({...c,parts:c.parts.filter(p=>p.joint!==joint)},'air')).toThrow('species medium');
+ expect(()=>attackRepertoire({...c,anatomy:{schema:'cf.anatomy-presence/v2',absent:[],hidden:[],folded:['wingNear']}},'air')).toThrow('species medium');
+ expect(()=>attackRepertoire({...c,habitat:{realm:'aerial',gait:'fly',source:''}},'air')).toThrow('species medium');
+ const penguin=card('biped-bird','Penguin');expect(()=>attackRepertoire({...penguin,realm:'aerial',habitat:r.habitat},'air')).toThrow('species medium');
+});

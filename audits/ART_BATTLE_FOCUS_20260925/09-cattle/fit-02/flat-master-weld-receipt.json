@@ -1,0 +1,108 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "fit-01",
+  "sourceRecordSha256": "dde0f3a42c81a862350c56709ab051d8a5d98b0651651ba8d7e58ad31eb13925",
+  "sourceBindingSha256": "5b270a2ef1e65c4eea1aec9897762f9cea2d961e495bbaf1a289cb25c3a0dc0d",
+  "sourceAtlasSha256": "cf382d7b5880e0a5ee85c369b94f7fd3bfd17e4bf80250ff6c14033ec4783d71",
+  "helperSha256": "364d05a9ec54d108ba6f393f58a831e687ca778a30f4fdba2e124a44a23322fe",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "tail3",
+      "tail2",
+      "tail1",
+      "tail0",
+      "hindNearAnkle",
+      "hindNearPaw",
+      "hindFarAnkle",
+      "hindFarPaw",
+      "foreNearAnkle",
+      "foreNearPaw",
+      "foreFarAnkle",
+      "foreFarPaw",
+      "hindNearKnee",
+      "hindNearRoot",
+      "foreNearKnee",
+      "foreNearRoot",
+      "hindFarKnee",
+      "hindFarRoot",
+      "foreFarKnee",
+      "foreFarRoot",
+      "earNearTip",
+      "earNearRoot",
+      "earFarTip",
+      "earFarRoot",
+      "jaw",
+      "head",
+      "neck",
+      "chest",
+      "pelvis",
+      "spine"
+    ],
+    "contactEndpoints": [
+      "hindFarAnkle",
+      "foreFarAnkle",
+      "hindNearAnkle",
+      "foreNearAnkle"
+    ],
+    "preservePaintBoundaries": true
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [
+      {
+        "joint": "hindFarAnkle",
+        "part": "hind-far-ankle",
+        "vertex": 25,
+        "distancePx": 1.0000000000000284,
+        "supports": [
+          399
+        ]
+      },
+      {
+        "joint": "foreFarAnkle",
+        "part": "fore-far-ankle",
+        "vertex": 14,
+        "distancePx": 6.708203932499374,
+        "supports": [
+          524
+        ]
+      },
+      {
+        "joint": "hindNearAnkle",
+        "part": "hind-near-ankle",
+        "vertex": 25,
+        "distancePx": 5.59016994374948,
+        "supports": [
+          340
+        ]
+      },
+      {
+        "joint": "foreNearAnkle",
+        "part": "fore-near-ankle",
+        "vertex": 30,
+        "distancePx": 6.403124237432834,
+        "supports": [
+          461
+        ]
+      }
+    ],
+    "sourceBindingHash": "456056616223e33c72669c9f34f1392b135d2490cb1ddf578fcc2f198ad645aa",
+    "sourceVertices": 2866,
+    "vertices": 2953,
+    "sharedSupports": 914,
+    "pins": 611,
+    "independentSurfaceParts": 31,
+    "sourceJoins": 38,
+    "excludedOverlaps": 30,
+    "observedExcludedBoundaries": 30,
+    "weldedExcludedBoundaries": 30,
+    "independentExcludedBoundaries": 0,
+    "preservePaintBoundaries": true,
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "2c7d9884ecc1590f967967e2157538387046c08cf8b903aa9899b145f65439b1",
+  "scope": "Only this unadmitted Cattle candidate. Existing opt-in preserves observed painted boundaries on a flat master. No solver/gate/limit change; no hidden pixels invented. Prior intake receipts describe inherited fit-01 inputs, this receipt owns the new split."
+}

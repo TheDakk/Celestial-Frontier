@@ -1,0 +1,1 @@
+First script-copy preparation ran from port/v2 with root-relative paths and stopped before writing. Corrected to absolute root. No native attempt was consumed. The independent profile ran normally.

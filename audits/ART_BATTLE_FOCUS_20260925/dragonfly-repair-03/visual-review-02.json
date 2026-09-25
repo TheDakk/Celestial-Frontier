@@ -1,0 +1,48 @@
+{
+  "schema": "cf.manual-visual-review/v1",
+  "nativeRunId": "native-phone4x-02",
+  "fit": "fit-03",
+  "reviewed": [
+    "turn0-hit-approach-50.png",
+    "turn0-hit-reaction-50.png",
+    "turn0-hit-return-end.png"
+  ],
+  "rigFinding": "Six legs/four wings, inward-facing flight, no observed mesh hole or creature clipping. Zero rig refusals.",
+  "stageFinding": "Damage number9 is partially outside the top of turn0-hit-reaction-50.png; Claude stage-overlay repair/picker required before complete-stage acceptance.",
+  "reportSha256": "c3a744be0a91d2144914bbd9aa8246d19c9d05cd6fe0c0ed86ca37309638df09",
+  "capture": {
+    "frames": 602,
+    "durationMs": 10016.3,
+    "cpuP95Ms": 10.400000095367432,
+    "frameDeltaP95Ms": 16.700000000000728,
+    "refusalsAtEnd": {
+      "left": 0,
+      "right": 0
+    },
+    "lastRefusal": {
+      "left": null,
+      "right": null
+    },
+    "refusalLog": [],
+    "encodedMedia": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1024,
+          "height": 576,
+          "nb_read_frames": "606"
+        }
+      ],
+      "format": {
+        "duration": "10.093974"
+      }
+    },
+    "encodedFrames": {
+      "frames": 606,
+      "width": 1024,
+      "height": 576
+    }
+  }
+}

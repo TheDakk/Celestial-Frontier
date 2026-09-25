@@ -1,0 +1,495 @@
+{
+  "parentHead": "c936ea5d20625c123cc03009ac767d36d16c50fb",
+  "files": [
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/README.md",
+      "bytes": 4781,
+      "sha256": "465c57b04530aa21111aa779d2156605fb57f1b9a780d4f1f21ab164225bb852"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/before/build-orientation-forward.mjs",
+      "bytes": 4805,
+      "sha256": "54ca2a439b8e701c7f94f5f32e7ecd0528e5aeaecb2b29521767baf375a4bba1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/before/orientation-forward-build.json",
+      "bytes": 948,
+      "sha256": "b558984c0955ed075463831ab95f22baddd80a61cb49fb5833318475af1ff705"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/before/orientation-forward-bytes.mjs",
+      "bytes": 2926,
+      "sha256": "435ed949f6347e6169dfd929e5b57f059c533aa3741229efdbaf8e89dfb608ab"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/before/orientation-forward.c",
+      "bytes": 2570,
+      "sha256": "8ddd29120496c9e1135131d88c9eed4da7b3692752df0ead7b657cd76964eb4f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/before/orientation-forward.wasm",
+      "bytes": 980,
+      "sha256": "fb02bc17b6b18e6bc412faa24b80e4677e0bc0a9d5ee80b03138fdb11c6bfadf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/before/wasm-orientation-forward.mjs",
+      "bytes": 5603,
+      "sha256": "ba4760f6817de9c63b0508167ad0623f784b1983b71006c2e024356fe8d65da3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/build.log",
+      "bytes": 950,
+      "sha256": "54399647e3db7b50497e30d88ba2226a70946de098ff6031d209944b7b7c98a4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/cattle-kernel-parity.json",
+      "bytes": 1203858,
+      "sha256": "ec254a8055b2bfb04a071e52ba32efa65315f48f7c72188ef8b3f42ca9256045"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/cattle-parity-sources.json",
+      "bytes": 15958,
+      "sha256": "96bcae31803d3e5cc325ece76be5b5b00c53224017a9b0786fc312c71b36f707"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/cattle-parity.log",
+      "bytes": 2882,
+      "sha256": "fe2dd7d981fdfd21ad9747cc8c99a223c2bc32d593d827d66cd7a36d3b8df534"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/cattle-static-parity.json",
+      "bytes": 12416,
+      "sha256": "73748fe815b18c8206c4b6be8179681aa5b6816df689a787b02b0e4ce5e6f94b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/centipede-kernel-parity.json",
+      "bytes": 748250,
+      "sha256": "1a8c0b3dabb42b4af501e74a98be811ef63ddaf181c10d51af99c0b45c34918c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/centipede-parity-sources.json",
+      "bytes": 15958,
+      "sha256": "c7e55b75088eee17b95cf304ec7457c280c5854f536925418a9dbf624afa8759"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/centipede-parity.log",
+      "bytes": 1945,
+      "sha256": "45b2e9bca1e9ef1511e14ea348b436d644bf87bc232f8e03d2f47d908c99da77"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/centipede-static-parity.json",
+      "bytes": 8072,
+      "sha256": "fe632d55574bb055b445a32cfe9d96dc59b10b3eebcca982c8615d7fd0a4f1e7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/develop-profile.log",
+      "bytes": 66680,
+      "sha256": "0d60f08555eb3c808d5ca1afea81ef2a94d3cce06e6f2edd0cc75007850a643a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/kernel-parity.mjs",
+      "bytes": 2598,
+      "sha256": "e0666479dc00d3669974a93261e59aeb5b55da33af3236b3c9d428a9557096a0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/kernel-tests.log",
+      "bytes": 1676,
+      "sha256": "7ad0219e77bd7781325184e0b0d6332c7d981a13cd317fa0c227e7532619bdc6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/mailbox-end.json",
+      "bytes": 120,
+      "sha256": "c645e4aea81c4b2ecfb393c2c1b8a0786d9e1ed7dfe63ef36f09146101fee32e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/memory-cost.json",
+      "bytes": 519,
+      "sha256": "be48558457fd0cd09955fc72c53af8ca8bcb4635ac3e6a9af70c4c24f32e5607"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/memory-cost.log",
+      "bytes": 276,
+      "sha256": "732cb13758764f96f4d6ef09bcf349f77e4b05d4c9d6cb34512ea2b7353ca14c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/memory-cost.mjs",
+      "bytes": 1338,
+      "sha256": "205751ccd8810a244d554fcee07f41063c5640d1d3a63e98acf4015f025fd0f5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/mutant-missing-invalidation/orientation-forward-build.json",
+      "bytes": 950,
+      "sha256": "86221542a466527643f695f036b6baea4fff9f24e5fccc00ace424b4f1ec0f76"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/mutant-missing-invalidation/orientation-forward-bytes.mjs",
+      "bytes": 3953,
+      "sha256": "ecca551fc927356dff6f7951cd166bc489ae7d9c5d949cbd430e7720768e341d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/mutant-missing-invalidation/orientation-forward.c",
+      "bytes": 3395,
+      "sha256": "cf86934945941997744fa17425ee7f041b4c411fa7b23810b46c44b5d97d5abc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/mutant-missing-invalidation/orientation-forward.wasm",
+      "bytes": 1334,
+      "sha256": "7f3b1d83567ca51c9319979ac3ca04de99da9b1cf8fb8e4688b6f4b58604f835"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/mutant-missing-reset/orientation-forward-build.json",
+      "bytes": 950,
+      "sha256": "669d735320044085293c4c55d84cd2a51d604d2ad57249cbfcc938cdf074cdee"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/mutant-missing-reset/orientation-forward-bytes.mjs",
+      "bytes": 3643,
+      "sha256": "bab54a5122a5ff3034f5f9a8b360899c6f3bd3db75353b9e381e91746b4187a8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/mutant-missing-reset/orientation-forward.c",
+      "bytes": 3381,
+      "sha256": "b4f7068f6eb769e7e0f1e327d297394c166d121b00b8bac915c09e50588d5cae"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/mutant-missing-reset/orientation-forward.wasm",
+      "bytes": 1228,
+      "sha256": "074bc1cfcb9b6549c9524957f942cc2305083f769cbf9e78d7e3291ea91aa552"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/mutation-controls.json",
+      "bytes": 574,
+      "sha256": "b2853afec0e3c69d234c3c456912492e43d919cfd381bb00f0aa0088a426e971"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/mutation-controls.log",
+      "bytes": 473,
+      "sha256": "67ebbaf7707638debd1551fb7dd3ce5c090a80403097dcf2fbdff4f6503baf76"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/mutation-controls.mjs",
+      "bytes": 1987,
+      "sha256": "7e99e02bc524ffc8e56799c747107aac6381b58ff75ec9c13e00e29dff4195e9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/battle-full.webm",
+      "bytes": 11287316,
+      "sha256": "eeb07923075b582724e8e00ae9b4ef2e63708b294193371f7ee2597ff84bdc71"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/report.json",
+      "bytes": 388070,
+      "sha256": "5ea8f7166a9819175d62e45bc54fd6c97a8d55bc30166b3df439c562498e9789"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn0-hit-approach-50.png",
+      "bytes": 1531493,
+      "sha256": "fb079b5ee6008805abae021a9f5aabbe1b42462653668624004ea436acd6c0a7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn0-hit-impact.png",
+      "bytes": 965634,
+      "sha256": "8d9b18a3e7b9fcd23b42d752ab1053058f8167fef9ceae08aebdf7e9e0dc9440"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn0-hit-reaction-50.png",
+      "bytes": 1531455,
+      "sha256": "f686068352152a69b2256b45a61228add9b4387377c3a83bc27cda5640798386"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn0-hit-return-end.png",
+      "bytes": 1532327,
+      "sha256": "2dc801faf75e8b7846853d97cb1255cf1f8746060dbd301d1e0b2ca2b2ece753"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn1-hit-approach-50.png",
+      "bytes": 1531776,
+      "sha256": "37c6f3de16a7daba63aaa66355dcc58cfa6b77a81aee97b8968b7e1efc78d983"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn1-hit-impact.png",
+      "bytes": 965173,
+      "sha256": "a9a2a24df8755b88db78f954cc71b701f7487397e7a34e816b3992885e03fabb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn1-hit-reaction-50.png",
+      "bytes": 1532098,
+      "sha256": "5c82b7b0277e93fd575dbfe5d334854b01b16217ffcc122cb58b790905bf7be0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn1-hit-return-end.png",
+      "bytes": 1532232,
+      "sha256": "1c9c628ee776b6eb05347af00f5d549fc2478ff54c356b711a040ed815c50acd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn2-dodge-approach-50.png",
+      "bytes": 1531331,
+      "sha256": "b9b2a49513711ee0427ad1707c97987729ce8239a4ef112eae24a71fa41ba813"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn2-dodge-impact.png",
+      "bytes": 1544217,
+      "sha256": "4c2051d9f598ec5b7fff6a9324286981ea8c1049035dae0722d69c033b203413"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn2-dodge-reaction-50.png",
+      "bytes": 1544039,
+      "sha256": "d7d53184f2966ab569b5350f497b67237444c25f437fa6aeeb9caf188994959d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn2-dodge-return-end.png",
+      "bytes": 1532478,
+      "sha256": "85d0971ab51c8d7eb85df966035fc15cb75f38c15f0b4595c1d7475895484b11"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn3-hit-approach-50.png",
+      "bytes": 1531493,
+      "sha256": "fb079b5ee6008805abae021a9f5aabbe1b42462653668624004ea436acd6c0a7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn3-hit-idle-50.png",
+      "bytes": 1542018,
+      "sha256": "1941c98a55f82f30200ff365ff0b595c8722d79c5c25bdd944a08605b8e75200"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn3-hit-idle-90.png",
+      "bytes": 1525450,
+      "sha256": "336c52c2c5d210c2b595a0fc3895995ade37402ec7ff40918443a2bf525b4a29"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn3-hit-impact.png",
+      "bytes": 1533575,
+      "sha256": "7cdf15def8d97b244caddc6ffafacfe3febf1843f77358108e779643e8c69df3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn3-hit-reaction-50.png",
+      "bytes": 1525776,
+      "sha256": "44648df9b41333aeb559c93dfba86e5239621e3a2e6c4098cd6531e09fc4ec2f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01/turn3-hit-return-end.png",
+      "bytes": 1526375,
+      "sha256": "87231521cdd300245dc1f2820c90ab0e3a768e6b4bf456c484947805eaf9bc73"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-cattle-01.log",
+      "bytes": 203,
+      "sha256": "24d72fadd1470766b6b3a44a83d0da512aec14317e9b525b50c4871034122f32"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/battle-full.webm",
+      "bytes": 10319142,
+      "sha256": "b0af57e51f36d823e8800695e7631cc0c324ebf28f61fbe5020118f4161ad53e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/report.json",
+      "bytes": 361665,
+      "sha256": "5e6a646fb801e668deaec560a591b92986b3c452b5d93e9c40dfb5a67e90d455"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn0-hit-approach-50.png",
+      "bytes": 1546573,
+      "sha256": "b4d34b501ab2a1156aa8a9484306114b7e75ebc4068918275d37c589455dad9f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn0-hit-impact.png",
+      "bytes": 984612,
+      "sha256": "8b3c44f498b73ace6860dcbff278055ce0227fad9b731475514a72fa2bafbbe7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn0-hit-reaction-50.png",
+      "bytes": 1552124,
+      "sha256": "a2653770315d53c8fd493300065292f1798489cc1013d6e5b1fc8fffb7cd7682"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn0-hit-return-end.png",
+      "bytes": 1546190,
+      "sha256": "5fce12c2cc45f771a7978c20609453c46663ec4acb3751ac60f124ba3b181ee5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn1-hit-approach-50.png",
+      "bytes": 1546282,
+      "sha256": "c91d1473425642546a0480d549edf8548359faab86b3f2f161d380b4815040ac"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn1-hit-impact.png",
+      "bytes": 1546316,
+      "sha256": "4f8ff4d76b82c5db473317183fd013c63731dbe7d06c5a44b2bb09d83a69f732"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn1-hit-reaction-50.png",
+      "bytes": 1544022,
+      "sha256": "034d861cc3edf3431bb7ccdf125c162dec632782e4e450699eb38fbe16b86a81"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn1-hit-return-end.png",
+      "bytes": 1546263,
+      "sha256": "71975ee7afe68f5b3e77e3ba65b7f4b637437e8f3152a157c6d0a76b151b1e44"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn2-dodge-approach-50.png",
+      "bytes": 1546573,
+      "sha256": "b4d34b501ab2a1156aa8a9484306114b7e75ebc4068918275d37c589455dad9f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn2-dodge-impact.png",
+      "bytes": 1548125,
+      "sha256": "c7cb0efe283de55d6e7271cd63908adb626b1c63ec967d6e9350ad082c60ca63"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn2-dodge-reaction-50.png",
+      "bytes": 1550244,
+      "sha256": "7df16e6d5630fd3651c18250429e6803247a58724b6886be25a277987cf9a9c0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn2-dodge-return-end.png",
+      "bytes": 1546190,
+      "sha256": "5fce12c2cc45f771a7978c20609453c46663ec4acb3751ac60f124ba3b181ee5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn3-hit-approach-50.png",
+      "bytes": 1546573,
+      "sha256": "b4d34b501ab2a1156aa8a9484306114b7e75ebc4068918275d37c589455dad9f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn3-hit-idle-50.png",
+      "bytes": 1552205,
+      "sha256": "198841606575b95df04533774490dde8574e6b4575f68ce85442dfa7fe5e5207"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn3-hit-idle-90.png",
+      "bytes": 1546177,
+      "sha256": "2abf6ad0fd978666cb9263fb951193241a6180990fa5cc9edda24391cc9dfad6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn3-hit-impact.png",
+      "bytes": 1546284,
+      "sha256": "bff3a202a81b0b0fb6f286472e24e5c504ca08df04c9493140b2dd7148bc5f87"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn3-hit-reaction-50.png",
+      "bytes": 1550371,
+      "sha256": "b067c200d532f46e28d0d8b80d062ca651c03dccfb30386860714e13eef6ae50"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01/turn3-hit-return-end.png",
+      "bytes": 1546048,
+      "sha256": "cfaa2589356bbc523f62c761bff71b657ae10d9db19c4808cf982e7756383353"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-centipede-01.log",
+      "bytes": 223,
+      "sha256": "cd61bbd051dd5c2ab186852821de6795d88bfacaefcc3ce7ca0e12e4406b4dd8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/native-summary.json",
+      "bytes": 1869,
+      "sha256": "a01709d9abc658a53b6950975d4f8f323deda3aa7dbeff46cb784e11f35ad032"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/root-validate.log",
+      "bytes": 1093,
+      "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/run-parity.mjs",
+      "bytes": 2238,
+      "sha256": "46212f4aacddbb4b69bc0ef671e74aac3ae36bb5d31133af66ccaf07af6d196f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/run.mjs",
+      "bytes": 8684,
+      "sha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/civet-static.json",
+      "bytes": 7400,
+      "sha256": "452fa278586993592c7f171e93dd64cbc9dd5bbf5e3fc7f4897c6553e07b8396"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/civet-support-samples.jsonl.gz",
+      "bytes": 540573,
+      "sha256": "c8deace40f822ac707b337c16ee63cf73ca6838ee094ef80324093ab08ab2d2f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/coconut-crab-static.json",
+      "bytes": 8541,
+      "sha256": "2ce886550c98d4586e3a446dd1576f6552e6f58ca1b7b37d0b5656ea1c06debc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/coconut-crab-support-samples.jsonl.gz",
+      "bytes": 450159,
+      "sha256": "031446c269052b8a91d89e4244f190fa65c7f60c64cb2056e8b5f2351e01d32b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/crab-static.json",
+      "bytes": 8478,
+      "sha256": "ee3f133ed6137a12ea21fa5c2f318c3c74d9e8117544bacd58b2dc8fb72dc565"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/crab-support-samples.jsonl.gz",
+      "bytes": 472712,
+      "sha256": "258aa03be580be6fcb1e07658ecd5a903db050f2cd63e0c297f3ff8d1fb4b1b8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/freshwater-crab-static.json",
+      "bytes": 8449,
+      "sha256": "9da3890b44693cfc1a3977415c408c4b3e5fba8287af206d3fb8492c0c5376a9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/freshwater-crab-support-samples.jsonl.gz",
+      "bytes": 455397,
+      "sha256": "84e207fd9353806843dee605d7937f4fd99d7a9e4dd3c4c865b92abcc660b127"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/identity.json",
+      "bytes": 2960,
+      "sha256": "7364c70a865ccfd9d229dce53f1cf6378bc306da5cad306f52eba1bc9ef7dbf2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/mud-crab-static.json",
+      "bytes": 8269,
+      "sha256": "6e1b2ec0792f524e730e7624e0a4112b1741f747645625629175c50c6e5cb9aa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/mud-crab-support-samples.jsonl.gz",
+      "bytes": 463241,
+      "sha256": "fe6b52249ff1391607394571ca0b3693c88439f61f6c9f9bdf7c6763daec6e41"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/sources.json",
+      "bytes": 27141,
+      "sha256": "e47b4ed508229ee34d93a3e4655a25d1cf35cb2c4b076be0f83ec428d53ff40a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/static.json",
+      "bytes": 61950,
+      "sha256": "6a325cc24ffcdb541aa714eac1a04f249206b55dc0023f4f553f45e57744411c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/vent-crab-static.json",
+      "bytes": 8384,
+      "sha256": "9b8278daf85ce4902c6e74c544a61665f0550a09d3ca6bd8cbcd609afc051a4e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2/vent-crab-support-samples.jsonl.gz",
+      "bytes": 475748,
+      "sha256": "1b6588bbd35d7f75ea8c31b301508243a80d725bd75a9cfe297b48176137d7a2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2-execution.json",
+      "bytes": 36841,
+      "sha256": "0b635c963934cadeb7b451a093fe8b8a6e35d7b46c30dd3f86cb9821ed94f13b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2-checks/s2-run.log",
+      "bytes": 5147,
+      "sha256": "6046632ae7a68e89ea8b68a104de96f8b6674d04bfee1b92f1fb8a7c1489f6ac"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/orientation-forward-02/s2.log",
+      "bytes": 5406,
+      "sha256": "ca6ec17970944e3163c1d71969f4b9d223dfd202c53952aed69a03ceec6ba0f7"
+    }
+  ]
+}

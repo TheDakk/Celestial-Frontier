@@ -1,0 +1,1690 @@
+{
+  "parentHead": "46ec92e5559b919c901a83023d52c5a92cbbdf1c",
+  "files": [
+    {
+      "path": "CREATURE_ANIMATION.md",
+      "bytes": 89959,
+      "sha256": "829a14ec248453217758faba7fcb7ca4399e9179f55d0c401e33190266a59d18"
+    },
+    {
+      "path": "ROADMAP.md",
+      "bytes": 14001,
+      "sha256": "53a73e321ba99639b580f832423329c63df0db1acf5fe03509a162b188c9eded"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/README.md",
+      "bytes": 7371,
+      "sha256": "78a60cdbceabdac3c67a8011a06ecbe97262c141e50c97be94dd3b40acaaad4b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/authoring-tests-02.log",
+      "bytes": 243,
+      "sha256": "bc9e137febcbf75be4797305b7fab2e99bb9045222e1d75dcf4562dc037f43ef"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/authoring-tests-03.log",
+      "bytes": 243,
+      "sha256": "4781156241033c24b5e6fb2a1b9d61e10715abcf6affb60ea52d1854c9450538"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/authoring-tests.log",
+      "bytes": 869,
+      "sha256": "25571fc42056b6a85f677d9298f0fc970d889769f0b83125044372b381b52eb6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/boundary-study.json",
+      "bytes": 4787,
+      "sha256": "e62f6c12023244fccb2e332f630bbaf5111358fb8eae5851066cf845a2560e83"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/boundary-study.mjs",
+      "bytes": 1155,
+      "sha256": "725e4a5fa6c8b0b07634062a90873e9638e8fb25256821aeef0a4bf382f29385"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/choreography-faint-owned.txt",
+      "bytes": 26859,
+      "sha256": "d3f5df1ff3791c993734372ac469a013aeaad6929d583af542423a5ecccc74be"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/contact-study-02-sources.json",
+      "bytes": 10054,
+      "sha256": "25c54cdf251a69616d2c4a9a7662428248ff88daf7d5bd3f64560a9daf65bbd0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/contact-study-02.json",
+      "bytes": 25253,
+      "sha256": "2f2fa8619488a280341ff7a83f9fc3887c2c322d2a60da55cbb315fae3dde0db"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/contact-study-02.log",
+      "bytes": 12928,
+      "sha256": "5fd663260a1d6e47ce3efbf73916e2dfbee6660b482c97765ae372ca556763bd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/contact-study-02.ts",
+      "bytes": 3186,
+      "sha256": "af39afcf59cc9de4675043b7bd080c0c94f0385b22eec4f99a5987e1f0a7983e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/contact-study-sources.json",
+      "bytes": 10051,
+      "sha256": "a30fd797bf3683945e090a70312935f84508ade60353d13e3adecd0e69106f9a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/contact-study.log",
+      "bytes": 1260,
+      "sha256": "accb3e03690cf683799460d6b6665efc345bca6bfa8fe34b192f4f102cf65832"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/contact-study.ts",
+      "bytes": 3185,
+      "sha256": "1a4ee7b7964b3298bd59e3c1a1b2faabda66f9c85fc56befd57335e75fe6a2ee"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/develop-profile.log",
+      "bytes": 66655,
+      "sha256": "dbe6d24d9bd8202059f32582d81b3cc845cbe907ad982f578fd788f54c2c01d8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-selection-sources.json",
+      "bytes": 10255,
+      "sha256": "35a829eaa5bd02f89072fd35825fb644d6e0a4812270b4344b2c4aa72553311c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-selection.json",
+      "bytes": 374,
+      "sha256": "2d8b56bfca38980c726eb20273b5fcc69ad6452f5c8d55c6d0737a3911431329"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-selection.log",
+      "bytes": 265,
+      "sha256": "297c6cbba2dcc63971a891eb55f7836e549adf1dc28be0770908a72e25f72b97"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-selection.ts",
+      "bytes": 1307,
+      "sha256": "74ee4f219c80e5b8dae65f8cb807b5121238144ca455455e141baa22826239f7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-controls.log",
+      "bytes": 1530,
+      "sha256": "1b147681127d32bb07249dff0a4c6132491ac56a58b6b476f00f145dde8e33e8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-controls.ts",
+      "bytes": 2086,
+      "sha256": "401b91f6ef29094f5dd39c7e8398f3ad30b657fd0354b5cedbc66b51327a19bc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-diagnosis-proposal.json",
+      "bytes": 925523,
+      "sha256": "a8f2cda5267e23eb65d7f16da4df2667205b98b990dd814b259d9a1b6671734d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-diagnosis-sources.json",
+      "bytes": 10082,
+      "sha256": "d76655fa79a90c47142f45adf5649020b4e6846cad9cd6a2cd24af69918b5c6a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-diagnosis.log",
+      "bytes": 234,
+      "sha256": "35f19f12e194d99d66b6db5e09f04107c56b585b45bd83e15dd7c63274330ace"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-diagnosis.ts",
+      "bytes": 1985,
+      "sha256": "50ff8e4e600bb904ad7c72552c1509b2052b784e28f5733ad1db11fb5c611931"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-original.json",
+      "bytes": 925523,
+      "sha256": "14634aa62771f41a69f7c05afea3ca380ada5e841a3dd3d4d29e7320ffc2ab3b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/faint-travel-sources.json",
+      "bytes": 10081,
+      "sha256": "c0c039e5a71e50728181a284540aa765ea6dfecc56108d576096304b2e713d82"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/final-candidates.json",
+      "bytes": 1756,
+      "sha256": "1f7b42fcc367b466775fe1a7783bc3a2134ca41a033d695f4a3a75dcb36bd714"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-boundaries-04.json",
+      "bytes": 411,
+      "sha256": "5d066780c40e6cbcbad0da7892c5ee3d60474150e66c3d49478ab2def026d09f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-boundaries.json",
+      "bytes": 498,
+      "sha256": "72132d3baf4914632f8d65b92af74f48bad3bd9624fe6a7b325400a619284a55"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/binding.json",
+      "bytes": 1970915,
+      "sha256": "a2c2a31b2f92c60cd41b41e750f723f2c5f3c93a4cbfb4575bf84addb28d33c3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/candidate-weld-receipt.json",
+      "bytes": 3422,
+      "sha256": "ebb7ad13ed0fed3cd5098d549e10b7db7a38d3632b8ff1346b746db55dff3a25"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/declaration.json",
+      "bytes": 1930,
+      "sha256": "f79685f0ae51dbe2759848b9ea595a7b93f46e1b9f400b07a1d235fe04bc5189"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/intake-provenance.json",
+      "bytes": 3065,
+      "sha256": "81c942ed593f4ee9732bec48f33b17d33a4c7dffa2906aa4bb2d07f7d6a1dde4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/label-authoring-receipt.json",
+      "bytes": 592,
+      "sha256": "43477a405aeac76a38701c65da44c14b9f016b1f24c9e47df043bdb3ea0b710b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/labels.png",
+      "bytes": 49773,
+      "sha256": "169735e054c8d410a9d31fcb4ba8d35e411af90fab13c004d643d26e6d8d59ef"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/markings.json",
+      "bytes": 27339,
+      "sha256": "ee3f890ae11697cbf60382b5846b2c0fb98a95f97050d0f6b1e25f5d092d1498"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/paint-boundary-continuity.json",
+      "bytes": 839,
+      "sha256": "3c6f4f40e5f89c102e60886769017c128aa00c2c25a923f42a71754840f3df74"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/atlas/goose.json",
+      "bytes": 7025,
+      "sha256": "b79495e3958f02d80371cd2712c13698240980991851d8430ce0b4eafd851fa7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/atlas/goose.png",
+      "bytes": 928893,
+      "sha256": "d97cb07ab477784d24779e13b10bc5a5fadb62beefff35882d9befe91c7c12ea"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "72bd23acf8794a37f9d0b509696b8862717b9b4a27b54df8ffcb6407ebb2e4d3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/binding.json",
+      "bytes": 5841,
+      "sha256": "76b3d94af892105669bd8f291b651c9068c132fc64f43fbddd14bde13774c2a3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/keyed.png",
+      "bytes": 1059500,
+      "sha256": "486a2bab390c2615e3a42e49a6c0688f40e9b94c9dc440d67fe49ff74996985f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/ownership.png",
+      "bytes": 94868,
+      "sha256": "f2580921ecffd354d8068171abed33c112e97f46510d02a7fb376e374e437d61"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/beak.png",
+      "bytes": 13683,
+      "sha256": "df40cb5e3feac6d45fa39a184cb2995265aed56a3b7e52767d1340c1af6d4cc7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/body.png",
+      "bytes": 219234,
+      "sha256": "af4ba5fb2fc6e7d8e9ea9d03fe2940a12062d88cfa498857bf4a2a976beef4d3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/chest.png",
+      "bytes": 61298,
+      "sha256": "9a84dba099a20a619ed959580dfe081bbe31168125d6257e6ca6f5559b200925"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/far-foot.png",
+      "bytes": 14693,
+      "sha256": "fde48a0e99ab84611d11adac916262e0b98ac11690b790547c64553b6fd7ddf9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/far-shin.png",
+      "bytes": 4198,
+      "sha256": "3c254a00e07022cdc45427dbbeb0318d7c4a6f9676ca764cb536abcc11328f9e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/far-thigh.png",
+      "bytes": 7785,
+      "sha256": "3450f8faaad61331cf13251af01fb854e833e972e748234e74bc11e783c6057f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/far-wing-flight.png",
+      "bytes": 92461,
+      "sha256": "e65b69c7db05b6f494f6e0826497625d6f23656f4378815c4ca2706bede244ce"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/far-wing-shoulder.png",
+      "bytes": 27282,
+      "sha256": "2a60c655016fc39666091b34536d506cd4d6354d4aabb5686024807e8326a282"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/head.png",
+      "bytes": 23768,
+      "sha256": "1a09486fbef302c389657c4dd857209a762646b32effdbb906ebf07447c23ac4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/near-foot.png",
+      "bytes": 18443,
+      "sha256": "a84babafbfddb2d8199cd04780cfd6a745b370218b385526a7df34741a6d3e5e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/near-shin.png",
+      "bytes": 4201,
+      "sha256": "75f62d4b1d8251380c3251b674a1b9a719aa165b45cd05128d994843ca4f603e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/near-thigh.png",
+      "bytes": 8253,
+      "sha256": "fc6880dcd30dec772413ea12d612a6ec2ae6a6c2a49b573014801f96e0eb31db"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/near-wing-flight.png",
+      "bytes": 368807,
+      "sha256": "a048f0d4b3a8f7133fd93ad9600e6898128ed42bdb8515be55831c51b6eee5a2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/near-wing-shoulder.png",
+      "bytes": 50234,
+      "sha256": "80a22f120f3963d6f60b704e411b9bc9e436499ee75420cdbb5176a75146e836"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/neck-lower.png",
+      "bytes": 43281,
+      "sha256": "ce6bd4586e848e0950b77f254e454c36b8ffca1a4e2c9728d333196f3e60814b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/neck-upper.png",
+      "bytes": 21855,
+      "sha256": "46682294ea67f342c2005e0f25eb6eae9c4b0afb9c310f61fa2db387d86cc7ee"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/parts/tail.png",
+      "bytes": 47066,
+      "sha256": "12bf263beb422e3d4b55d7048874cf3aa672feb2d54f6cd805d4509e0c3f3a0c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/parts/receipt.json",
+      "bytes": 4684,
+      "sha256": "e15d4dd7c30bdb640efb2a59c9d3d308b35e2739222b349adbd59f9d89d97a1b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/pre-split-binding.json",
+      "bytes": 1459633,
+      "sha256": "3414cd365559e0cfbd38eefc8e4a1946ced9369a928ac9ffd74bf8ae2eae6b4a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/receipt.json",
+      "bytes": 2433,
+      "sha256": "d0f208d2481707332cb6db75c024a08e985d9d02545848dd2f7405699ed6fadd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-03/record.json",
+      "bytes": 6169,
+      "sha256": "01b649a3999f9ce27d7dc05050711db5a5e8006eafc1b22a1065c67f1700b5a0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/binding.json",
+      "bytes": 2003162,
+      "sha256": "83b81ab6050ed80e9cbd978b60af9446689b9cd713cf653772fcfd421d33c620"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/candidate-weld-receipt.json",
+      "bytes": 2968,
+      "sha256": "63efff49b7be91da430b6fa2f57b0166c1afbd767ab10ff0608ac001d6d69bab"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/declaration.json",
+      "bytes": 1930,
+      "sha256": "f79685f0ae51dbe2759848b9ea595a7b93f46e1b9f400b07a1d235fe04bc5189"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/intake-provenance.json",
+      "bytes": 3065,
+      "sha256": "81c942ed593f4ee9732bec48f33b17d33a4c7dffa2906aa4bb2d07f7d6a1dde4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/label-authoring-receipt.json",
+      "bytes": 592,
+      "sha256": "43477a405aeac76a38701c65da44c14b9f016b1f24c9e47df043bdb3ea0b710b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/labels.png",
+      "bytes": 49773,
+      "sha256": "169735e054c8d410a9d31fcb4ba8d35e411af90fab13c004d643d26e6d8d59ef"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/markings.json",
+      "bytes": 27339,
+      "sha256": "ee3f890ae11697cbf60382b5846b2c0fb98a95f97050d0f6b1e25f5d092d1498"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/paint-boundary-continuity.json",
+      "bytes": 647,
+      "sha256": "779b08231ebf6870f73aa285a6f4e4d83e2faa535321e85a82de6580a4d5df3d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/atlas/goose.json",
+      "bytes": 7025,
+      "sha256": "b79495e3958f02d80371cd2712c13698240980991851d8430ce0b4eafd851fa7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/atlas/goose.png",
+      "bytes": 928893,
+      "sha256": "d97cb07ab477784d24779e13b10bc5a5fadb62beefff35882d9befe91c7c12ea"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/atlas/receipt.json",
+      "bytes": 2918,
+      "sha256": "72bd23acf8794a37f9d0b509696b8862717b9b4a27b54df8ffcb6407ebb2e4d3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/binding.json",
+      "bytes": 5841,
+      "sha256": "76b3d94af892105669bd8f291b651c9068c132fc64f43fbddd14bde13774c2a3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/keyed.png",
+      "bytes": 1059500,
+      "sha256": "486a2bab390c2615e3a42e49a6c0688f40e9b94c9dc440d67fe49ff74996985f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/ownership.png",
+      "bytes": 94868,
+      "sha256": "f2580921ecffd354d8068171abed33c112e97f46510d02a7fb376e374e437d61"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/beak.png",
+      "bytes": 13683,
+      "sha256": "df40cb5e3feac6d45fa39a184cb2995265aed56a3b7e52767d1340c1af6d4cc7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/body.png",
+      "bytes": 219234,
+      "sha256": "af4ba5fb2fc6e7d8e9ea9d03fe2940a12062d88cfa498857bf4a2a976beef4d3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/chest.png",
+      "bytes": 61298,
+      "sha256": "9a84dba099a20a619ed959580dfe081bbe31168125d6257e6ca6f5559b200925"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/far-foot.png",
+      "bytes": 14693,
+      "sha256": "fde48a0e99ab84611d11adac916262e0b98ac11690b790547c64553b6fd7ddf9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/far-shin.png",
+      "bytes": 4198,
+      "sha256": "3c254a00e07022cdc45427dbbeb0318d7c4a6f9676ca764cb536abcc11328f9e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/far-thigh.png",
+      "bytes": 7785,
+      "sha256": "3450f8faaad61331cf13251af01fb854e833e972e748234e74bc11e783c6057f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/far-wing-flight.png",
+      "bytes": 92461,
+      "sha256": "e65b69c7db05b6f494f6e0826497625d6f23656f4378815c4ca2706bede244ce"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/far-wing-shoulder.png",
+      "bytes": 27282,
+      "sha256": "2a60c655016fc39666091b34536d506cd4d6354d4aabb5686024807e8326a282"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/head.png",
+      "bytes": 23768,
+      "sha256": "1a09486fbef302c389657c4dd857209a762646b32effdbb906ebf07447c23ac4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/near-foot.png",
+      "bytes": 18443,
+      "sha256": "a84babafbfddb2d8199cd04780cfd6a745b370218b385526a7df34741a6d3e5e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/near-shin.png",
+      "bytes": 4201,
+      "sha256": "75f62d4b1d8251380c3251b674a1b9a719aa165b45cd05128d994843ca4f603e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/near-thigh.png",
+      "bytes": 8253,
+      "sha256": "fc6880dcd30dec772413ea12d612a6ec2ae6a6c2a49b573014801f96e0eb31db"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/near-wing-flight.png",
+      "bytes": 368807,
+      "sha256": "a048f0d4b3a8f7133fd93ad9600e6898128ed42bdb8515be55831c51b6eee5a2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/near-wing-shoulder.png",
+      "bytes": 50234,
+      "sha256": "80a22f120f3963d6f60b704e411b9bc9e436499ee75420cdbb5176a75146e836"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/neck-lower.png",
+      "bytes": 43281,
+      "sha256": "ce6bd4586e848e0950b77f254e454c36b8ffca1a4e2c9728d333196f3e60814b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/neck-upper.png",
+      "bytes": 21855,
+      "sha256": "46682294ea67f342c2005e0f25eb6eae9c4b0afb9c310f61fa2db387d86cc7ee"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/parts/tail.png",
+      "bytes": 47066,
+      "sha256": "12bf263beb422e3d4b55d7048874cf3aa672feb2d54f6cd805d4509e0c3f3a0c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/parts/receipt.json",
+      "bytes": 4684,
+      "sha256": "e15d4dd7c30bdb640efb2a59c9d3d308b35e2739222b349adbd59f9d89d97a1b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/pre-split-binding.json",
+      "bytes": 1459633,
+      "sha256": "3414cd365559e0cfbd38eefc8e4a1946ced9369a928ac9ffd74bf8ae2eae6b4a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/receipt.json",
+      "bytes": 2433,
+      "sha256": "d0f208d2481707332cb6db75c024a08e985d9d02545848dd2f7405699ed6fadd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/record.json",
+      "bytes": 6169,
+      "sha256": "01b649a3999f9ce27d7dc05050711db5a5e8006eafc1b22a1065c67f1700b5a0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-mask-conservation-04.mjs",
+      "bytes": 2950,
+      "sha256": "179b3e592c50677f2c3b64dc2bfe867d1c4849b217c5c61a5b32b2aea1e12af4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-mask-conservation.mjs",
+      "bytes": 2947,
+      "sha256": "2107931bec0095cc01d2f57b881fe4bb2188acf982cc6bf0d3da99b0aa19f05b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-observed-script.json",
+      "bytes": 642,
+      "sha256": "f48ff435f7f95ef54026e8412c0d0b0d41aebd1948ccaf7187184012ca218526"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-original-binding-static-07.json",
+      "bytes": 14901,
+      "sha256": "273732ddfbfde331f4fc85b27bba0c829e13d17faa68b0251d7529de90a0b49d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-original-binding-static-07.json.sources.json",
+      "bytes": 15387,
+      "sha256": "a3eac3c9904386e146433214bf6cd4080ea049347619e9d71c5e4084d8a1f6d2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-original-binding-static-07.log",
+      "bytes": 2174,
+      "sha256": "e90da3d908aa2b80509ae9ca2e32ca05d0966d955ec3da5b45ab51da3b4720d0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-01.json",
+      "bytes": 8273,
+      "sha256": "2ea297e516ed58f8d972b964c4be6bc76d96e39b24bba0679b0ddb1a90275de1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-01.json.sources.json",
+      "bytes": 15387,
+      "sha256": "5bdc6d447614c2fcd1e73d9b4cf005874e42a00a117bc58227ee7782db196579"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-01.log",
+      "bytes": 2180,
+      "sha256": "cba11de56dfc4f14cfc599380472701b48977759c4e40ba64a1a6e7788b37a53"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-03.json",
+      "bytes": 48498,
+      "sha256": "5b75a92abe500216b1dd2f39d72456fe9f1b5160a42744c882690246fd5c3bde"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-03.json.sources.json",
+      "bytes": 15387,
+      "sha256": "32bc43fde9883c74526f31f75d9b56b6d6a7c499c84b32bc2262c2c924547969"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-03.log",
+      "bytes": 2688,
+      "sha256": "120fbe1403be299a9dea6db4d978b3dcf2be74206e6d161b80ad170278b83ce1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-04.json",
+      "bytes": 9313,
+      "sha256": "6b6b1a7c4a0a82bb5a38ec6d793b01f5ebe508c4b385418e92efef3d8c69ba97"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-04.json.sources.json",
+      "bytes": 15387,
+      "sha256": "e610684565e0b3f52bfca557bd4056d86e98742124b4d385f3f9224e5f5fb577"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-04.log",
+      "bytes": 2173,
+      "sha256": "46f920116f99afac0c77d48e15d4e55ca34bc9b9d5619cbd2819da012b1db84f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-05.json",
+      "bytes": 22774,
+      "sha256": "71a58feff2c39fcee380bcf091a78298d229efc053ca34a1a22d9c15ac51ea92"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-05.json.sources.json",
+      "bytes": 15387,
+      "sha256": "9f9790f365ec9e05bd08e19c432cb8344bb3159e7c07818afe99b742b70fb879"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-05.log",
+      "bytes": 2277,
+      "sha256": "727319252da417c28330baa445917c1cb9bcd4900d299e4479ca8a3f89d5c55d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-06.json",
+      "bytes": 15943,
+      "sha256": "9c6439fad4551149d3a4379903885a7cc88c0a8a400de25d00819dd4dc4d592a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-06.json.sources.json",
+      "bytes": 15387,
+      "sha256": "1a8ad521884aafb76b6566b0b3fb1ef53315b2486498b569c2137a102f4a2877"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-static-06.log",
+      "bytes": 2167,
+      "sha256": "10925f7babd71ef9a73f29f4f6c4f10c8f81472e1cdafe2d378b017f3e2695b6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-weld-03.log",
+      "bytes": 1013,
+      "sha256": "0336cfaab50291aa1a10af4eebf7d6e683e8ad855230e0bf94991c11b9bc4f94"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-weld-04.log",
+      "bytes": 954,
+      "sha256": "a231c667811e1136fed0c5a13ab9609bbed2a617d5e620a37f77dd12511633b9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/grounded-bird-before-stage-faint.ts",
+      "bytes": 3962,
+      "sha256": "fa67d23664f924e12b6b9c62a38a510690df72412b60111089e3cc1740795583"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/grounded-bird-before-stationary-recoil.ts",
+      "bytes": 3945,
+      "sha256": "076018a52c99210023bbe9aa9100bb2a107a889e20826584e7991fe278de6b66"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/grounded-bird-faint-candidate-01.ts",
+      "bytes": 5040,
+      "sha256": "acf8404cd544e8ccd4a938a5c0d133559f44cda6bfae26bb47420590f361f830"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/grounded-bird-faint-candidate-02.ts",
+      "bytes": 5041,
+      "sha256": "393c13b21d64e0f05314b0e79afd425cbc9eec9121456107d2b9b71c5eda6095"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/grounded-bird-faint-candidate.test.ts",
+      "bytes": 4185,
+      "sha256": "3c2fa61c157dee0991328bd953fae7d0d6171c0a5742f2b3732d3e01aa011d34"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/gull-observed-script.json",
+      "bytes": 634,
+      "sha256": "99f68b26345ea3611192a7d0fef60f0bf9e600d2747891d14d1fe316160f8071"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/gull-static-01.json",
+      "bytes": 9265,
+      "sha256": "ca6d8661bc47467a9345e7cb3d9c4db31eeaed40ff8371240ba5e9c0d890958c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/gull-static-01.json.sources.json",
+      "bytes": 15387,
+      "sha256": "ee66b64058d7941e37b439144ced95222f9e48c4a08682ec26b7a8489ad52bca"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/gull-static-01.log",
+      "bytes": 2175,
+      "sha256": "98ab7e82d148b6ba8e97fd6e9aafa2bcba435056df4e2d3e6aefc81587906617"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/heron-observed-script.json",
+      "bytes": 642,
+      "sha256": "bdb3272999db296209f5f686fbd2c933ceec6a2b1900f6b345bab87c6e8c9a60"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/heron-static-01.json",
+      "bytes": 8293,
+      "sha256": "752967a63d2ca1fb091e08309b1f709017f624829b64c72f126ba85ec2cae853"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/heron-static-01.json.sources.json",
+      "bytes": 15387,
+      "sha256": "89591d7509bcb68bd83fcebed7057d84578075823ff332c8b44d25ca84cc3e1d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/heron-static-01.log",
+      "bytes": 2201,
+      "sha256": "b5f7f738d08cbbefbfda0129d82983805b6d90229f602ef6121d785c89afd8a7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/mailbox-end.json",
+      "bytes": 120,
+      "sha256": "c645e4aea81c4b2ecfb393c2c1b8a0786d9e1ed7dfe63ef36f09146101fee32e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/make-review.py",
+      "bytes": 1163,
+      "sha256": "7e57ede69e5f566590a2bd1786f7e8aed2091693ff95be0c97cecfc1a95faf50"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/mask-compatibility-04.json",
+      "bytes": 2251,
+      "sha256": "2292c26f43dd266d0079948408c5b6033f09a97d6f44ce655e4d5c65aa7b8bb2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/mask-compatibility.json",
+      "bytes": 2251,
+      "sha256": "2292c26f43dd266d0079948408c5b6033f09a97d6f44ce655e4d5c65aa7b8bb2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-batch-results.json",
+      "bytes": 2610,
+      "sha256": "bd8da0d4395abfce6d69443f9a92ae0b525b3cbedb14930f1f5ca4ac9d348d96"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-batch.mjs",
+      "bytes": 1323,
+      "sha256": "d04ad01088391ca5f501f18f8dfcafd9603b056cf3f6fdbb816704c689ce5e9b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-faint-owned-runner.mjs",
+      "bytes": 15113,
+      "sha256": "c0e610ae456e733517d6b8715d04528fca1de50d86f5c1e80bab4b7a68c5c77c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/battle-full.webm",
+      "bytes": 8978046,
+      "sha256": "d7bd92dd87b613b743aa736f56cb6923c6cc45d9b3b3b149c3a7b1b35f43cbc7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/report.json",
+      "bytes": 388047,
+      "sha256": "67e2ada6deb8c7cc57e1422c6555719b9072323994bd03a0804d3d21440e15d7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn0-hit-approach-50.png",
+      "bytes": 1547537,
+      "sha256": "8054c5f95aa8884517f7ee6c7051412daf5a1aa5350931ec7f119f7629055e31"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn0-hit-impact.png",
+      "bytes": 984473,
+      "sha256": "7788902a1ce405cd25811c3ac1c806537817586958fe086b0b83b915d70e8335"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn0-hit-reaction-50.png",
+      "bytes": 1548277,
+      "sha256": "1d522ae1ac525bca62415968bbcd8f3bf1ed0c56f50129a97bb0196b4f5df76e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn0-hit-return-end.png",
+      "bytes": 1546874,
+      "sha256": "dbf411b33aa990379bf419be3d3c8ef098173a6d1eac4c1999152db3699f0974"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn1-hit-approach-50.png",
+      "bytes": 1547111,
+      "sha256": "248552132b753420ad624d41d3c98d8071ce67febb4ffed68f5b4ff4962572cc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn1-hit-impact.png",
+      "bytes": 1548868,
+      "sha256": "4e50da98de2c552691dc736b72e3c54009e63fea9f6e9a7534fe5af6948554dc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn1-hit-reaction-50.png",
+      "bytes": 1549172,
+      "sha256": "2abab6390adf77f1269eb098b3a140e8eb2ed27cad6eb4401bf43683773470bd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn1-hit-return-end.png",
+      "bytes": 1546974,
+      "sha256": "1551667312ec4c4a6c0ee3fe93a7e5fa726d25aa1660d23a182cf7305e8a8a26"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn2-dodge-approach-50.png",
+      "bytes": 1547537,
+      "sha256": "8054c5f95aa8884517f7ee6c7051412daf5a1aa5350931ec7f119f7629055e31"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn2-dodge-impact.png",
+      "bytes": 1553473,
+      "sha256": "e8f44549ee7cd14dc9e48b4abdfa390455877f028b867e6b09e338c6c47f8819"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn2-dodge-reaction-50.png",
+      "bytes": 1552996,
+      "sha256": "d32e38341cdbe0a5949ac4882ccdf56c0161392b8961a9b35e71487057bd9352"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn2-dodge-return-end.png",
+      "bytes": 1546874,
+      "sha256": "dbf411b33aa990379bf419be3d3c8ef098173a6d1eac4c1999152db3699f0974"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn3-hit-approach-50.png",
+      "bytes": 1547537,
+      "sha256": "8054c5f95aa8884517f7ee6c7051412daf5a1aa5350931ec7f119f7629055e31"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn3-hit-idle-50.png",
+      "bytes": 1544083,
+      "sha256": "6bb6909fe3dcdd28e57ecd7a8a896ba85731d19b681c427fd5749082a2452829"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn3-hit-idle-90.png",
+      "bytes": 1545108,
+      "sha256": "927cf668a2f5b2b48f92f03d86b57c08c2b4152831253e7d6f88963e166232c6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn3-hit-impact.png",
+      "bytes": 1550321,
+      "sha256": "b3b2f3ad105f60869c22c52b3e1f1c3ee6aee5979e016c9b6a2db34e94508ec3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn3-hit-reaction-50.png",
+      "bytes": 1543624,
+      "sha256": "1ddc7e85dab8660eec3b8e909f420ac2a6a4e089ecb7ea0caa0db16fad1d5a47"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01/turn3-hit-return-end.png",
+      "bytes": 1543379,
+      "sha256": "39f4a3f18d939552bfcdf34ec1627e9b5f673da1b1c573fb05257e05eb9faebd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-01.log",
+      "bytes": 369,
+      "sha256": "1bf6550d2c4e1d28d7f388d71951c46cfcb8480872d3b84b2d9c701c3d4aa1bb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/battle-full.webm",
+      "bytes": 8881627,
+      "sha256": "2b9e10a4504c1edd7809e0d8bf4eff5f0fd14277027bbef405eb0524062b2ddc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/report.json",
+      "bytes": 362840,
+      "sha256": "da64916779ba9329ecfdcf139430947a24d733acbc9b87b621f8acdc6030536f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn0-hit-approach-50.png",
+      "bytes": 1547537,
+      "sha256": "8054c5f95aa8884517f7ee6c7051412daf5a1aa5350931ec7f119f7629055e31"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn0-hit-impact.png",
+      "bytes": 984473,
+      "sha256": "7788902a1ce405cd25811c3ac1c806537817586958fe086b0b83b915d70e8335"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn0-hit-reaction-50.png",
+      "bytes": 1548277,
+      "sha256": "1d522ae1ac525bca62415968bbcd8f3bf1ed0c56f50129a97bb0196b4f5df76e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn0-hit-return-end.png",
+      "bytes": 1546874,
+      "sha256": "dbf411b33aa990379bf419be3d3c8ef098173a6d1eac4c1999152db3699f0974"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn1-hit-approach-50.png",
+      "bytes": 1547111,
+      "sha256": "248552132b753420ad624d41d3c98d8071ce67febb4ffed68f5b4ff4962572cc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn1-hit-impact.png",
+      "bytes": 1548868,
+      "sha256": "4e50da98de2c552691dc736b72e3c54009e63fea9f6e9a7534fe5af6948554dc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn1-hit-reaction-50.png",
+      "bytes": 1549172,
+      "sha256": "2abab6390adf77f1269eb098b3a140e8eb2ed27cad6eb4401bf43683773470bd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn1-hit-return-end.png",
+      "bytes": 1546974,
+      "sha256": "1551667312ec4c4a6c0ee3fe93a7e5fa726d25aa1660d23a182cf7305e8a8a26"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn2-dodge-approach-50.png",
+      "bytes": 1547537,
+      "sha256": "8054c5f95aa8884517f7ee6c7051412daf5a1aa5350931ec7f119f7629055e31"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn2-dodge-impact.png",
+      "bytes": 1553473,
+      "sha256": "e8f44549ee7cd14dc9e48b4abdfa390455877f028b867e6b09e338c6c47f8819"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn2-dodge-reaction-50.png",
+      "bytes": 1552996,
+      "sha256": "d32e38341cdbe0a5949ac4882ccdf56c0161392b8961a9b35e71487057bd9352"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn2-dodge-return-end.png",
+      "bytes": 1546874,
+      "sha256": "dbf411b33aa990379bf419be3d3c8ef098173a6d1eac4c1999152db3699f0974"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn3-hit-approach-50.png",
+      "bytes": 1547537,
+      "sha256": "8054c5f95aa8884517f7ee6c7051412daf5a1aa5350931ec7f119f7629055e31"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn3-hit-idle-50.png",
+      "bytes": 1546620,
+      "sha256": "70d62983e2e4ef4e2a61cea23a8ca36343970c534be97073c72cb57ef671cdf9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn3-hit-idle-90.png",
+      "bytes": 1547350,
+      "sha256": "4637b66d3a9d50752bfb05edd48fc6af76f398c9043d12ac0d2837c0b49ba899"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn3-hit-impact.png",
+      "bytes": 1550321,
+      "sha256": "b3b2f3ad105f60869c22c52b3e1f1c3ee6aee5979e016c9b6a2db34e94508ec3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn3-hit-reaction-50.png",
+      "bytes": 1543534,
+      "sha256": "355d55c97e0d38f414a27f2e2502b99877e25938b62a3f571dfb6cbfe22e4bda"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02/turn3-hit-return-end.png",
+      "bytes": 1545778,
+      "sha256": "5cda4e4ee4702385cd0ea785d1e675c326bf61c996e062edc5edfde86c5aed7b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-02.log",
+      "bytes": 214,
+      "sha256": "d68b605f600ae133286e657afc16dc704726d29682289b12aa500343cf35c9ff"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/battle-full.webm",
+      "bytes": 8803550,
+      "sha256": "523bc41afcd8f37eefa328806e978f4c6b4b353ad21941882facdf8ec0b092df"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/report.json",
+      "bytes": 362602,
+      "sha256": "905e30676dcb2032ff09e8f77f4ff1915d2a5b6dd55d88f65b0a053e9f90ee55"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn0-hit-approach-50.png",
+      "bytes": 1547553,
+      "sha256": "dca89dcd9349d54573afaaef285823dafa451a311564f97db7a332e8362ce61a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn0-hit-impact.png",
+      "bytes": 984462,
+      "sha256": "8bf6146bee43b9c17d5f385b840338e7b8b3cb1d809f5a7ecb2eeb305ebe4a78"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn0-hit-reaction-50.png",
+      "bytes": 1548283,
+      "sha256": "c12272c362786cf06f943445d94e6655e7b86b7a38615340d1f800774a6f63c6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn0-hit-return-end.png",
+      "bytes": 1546890,
+      "sha256": "93a20b83fc2ac13627be2b1c0c2e8e693ab8e30d3f90438092de86546c9b9894"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn1-hit-approach-50.png",
+      "bytes": 1547512,
+      "sha256": "74cb8cf098921964508ab71a1456db43c7424ea48c4ffe878322d906b62bc52e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn1-hit-impact.png",
+      "bytes": 1548859,
+      "sha256": "fe4fa29a4a30a21565b093cf93aff5ba5f629ac2ceeddbf7cb04708e062c7d2d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn1-hit-reaction-50.png",
+      "bytes": 1549157,
+      "sha256": "ba21d47232799541dd867cbb9a28d4606181519a31e8abf23b05445963749ff0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn1-hit-return-end.png",
+      "bytes": 1546974,
+      "sha256": "890257656a9a199a94d65ef1871d47d9c83ac5f63b2549292119c671fcc8c01b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn2-dodge-approach-50.png",
+      "bytes": 1547553,
+      "sha256": "dca89dcd9349d54573afaaef285823dafa451a311564f97db7a332e8362ce61a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn2-dodge-impact.png",
+      "bytes": 1553482,
+      "sha256": "4c3ee892b4e91871da35aa1806b70b2a7343cdefbe005cf1f896eb934f421554"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn2-dodge-reaction-50.png",
+      "bytes": 1553002,
+      "sha256": "3a61f1a66adab9d80d386ad51e9a86e57484d8573e5374ee833ca769510f3875"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn2-dodge-return-end.png",
+      "bytes": 1546890,
+      "sha256": "93a20b83fc2ac13627be2b1c0c2e8e693ab8e30d3f90438092de86546c9b9894"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn3-hit-approach-50.png",
+      "bytes": 1547553,
+      "sha256": "dca89dcd9349d54573afaaef285823dafa451a311564f97db7a332e8362ce61a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn3-hit-idle-50.png",
+      "bytes": 1546673,
+      "sha256": "be2ec23924e40a49ffaca55726ebc4abbcf33621906ea4f2ed658effb29bdcc1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn3-hit-idle-90.png",
+      "bytes": 1547467,
+      "sha256": "0909349efaacb69c09e537cef44ee731fb31e48de945d888afc01769b74d9f51"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn3-hit-impact.png",
+      "bytes": 1550313,
+      "sha256": "cb333cdf7958423423977574dc4c862e3cbc7da3b200cfd63b4e3d0ce39b22b5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn3-hit-reaction-50.png",
+      "bytes": 1543614,
+      "sha256": "87e895c1bbfb399ac8db418c9f5de472a7649bdb23ae837f096db9e4c452e5fe"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03/turn3-hit-return-end.png",
+      "bytes": 1545848,
+      "sha256": "47a56dba64c7031bcc1ca9b8da46e44cf698bc25f61952f83f2459c4975f74c5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-goose-observed-03.log",
+      "bytes": 214,
+      "sha256": "5122cf84d0d2bf4a2f25772b6614f264adc8d47446ce418b27e64e6cccb37f47"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/battle-full.webm",
+      "bytes": 8682287,
+      "sha256": "b77d5a55f3e328868697f2cb293cfc064c4aa43c7bcbcb6c68cad13eebba7a61"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/report.json",
+      "bytes": 359125,
+      "sha256": "143008eb42f4122c786af89e06844f8024a3db6d6997e54311020a421ec5bf7f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn0-hit-approach-50.png",
+      "bytes": 1539320,
+      "sha256": "94b1fba53038568ff00c20a1a1cc613fb85d74035c2fa661d4ab71bfa88ab3d7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn0-hit-impact.png",
+      "bytes": 983529,
+      "sha256": "ce4ba31730860d76d9bdeafac967ddf462595ec101140ffb60db84702c2c4138"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn0-hit-reaction-50.png",
+      "bytes": 1540410,
+      "sha256": "7169bcaa1257a9322baedf644c190df32c4b18f943e5ee3d4ba455f6cddbd249"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn0-hit-return-end.png",
+      "bytes": 1539311,
+      "sha256": "4cab9f83a337dbae410ae773b7ab82e65910d5aef70450441042c9f59b6029ed"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn1-hit-approach-50.png",
+      "bytes": 1539051,
+      "sha256": "75e13deda23e4de419ba5c8d7f6ddbab0b32ef9e08c862be28b834054458bfaf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn1-hit-impact.png",
+      "bytes": 1547144,
+      "sha256": "b0f8cd14fbbdb8bf73d930503003ad53d4b68a3c23009faa5f4fbb0f32edde71"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn1-hit-reaction-50.png",
+      "bytes": 1540717,
+      "sha256": "197849b3e7c84919c27916ded647d806f1cf8ddc9c4ad96562be4e65d3ae4389"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn1-hit-return-end.png",
+      "bytes": 1539297,
+      "sha256": "ff10fde8cdadfe9eb546ae573d088d04047f5adeaec0009b36aac6d80429aff3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn2-dodge-approach-50.png",
+      "bytes": 1539320,
+      "sha256": "94b1fba53038568ff00c20a1a1cc613fb85d74035c2fa661d4ab71bfa88ab3d7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn2-dodge-impact.png",
+      "bytes": 1550162,
+      "sha256": "699e3c0dfccfa1e27550c99014d7f22dfeed13d2d3bb42b908a9f1e9a782dc3c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn2-dodge-reaction-50.png",
+      "bytes": 1545121,
+      "sha256": "4a0924500002e45edcb5d4e015a32be8244d3dc153b63a39a374bd1e6dedad04"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn2-dodge-return-end.png",
+      "bytes": 1539311,
+      "sha256": "4cab9f83a337dbae410ae773b7ab82e65910d5aef70450441042c9f59b6029ed"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn3-hit-approach-50.png",
+      "bytes": 1539320,
+      "sha256": "94b1fba53038568ff00c20a1a1cc613fb85d74035c2fa661d4ab71bfa88ab3d7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn3-hit-idle-50.png",
+      "bytes": 1542312,
+      "sha256": "869455b065b879cc8afb547e2450280087050e2d1d521ec80d9a031313aa3347"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn3-hit-idle-90.png",
+      "bytes": 1540424,
+      "sha256": "e51b8c6c3e175c48590fbbf3d2aac24edb5e7f95cacd3d8b0292c962de2b14e8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn3-hit-impact.png",
+      "bytes": 1547779,
+      "sha256": "014d96eb5acf22c8489ee6c959c8fa02308a307b1256426dfd4f5d849c82de73"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn3-hit-reaction-50.png",
+      "bytes": 1537583,
+      "sha256": "8907919def142eb0fab368be91d528a72d1b908f805f8edb27cf04354a91338d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01/turn3-hit-return-end.png",
+      "bytes": 1535654,
+      "sha256": "787862725399c2756c32d3c5e4c313dad80276d91c19eb77590af21b51e6f2e1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-01.log",
+      "bytes": 207,
+      "sha256": "e8054d589c050bf53ea83c606bffc1d7d9554f94ea4a8ec252ca65e0b3e8ff07"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/battle-full.webm",
+      "bytes": 8654133,
+      "sha256": "db4970279964ca604f5dea1d64532697b23e96b276618d085d9949a13e58cfea"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/report.json",
+      "bytes": 359926,
+      "sha256": "85750ce17bb4aac6ec7b1897019813f47c40a83fdb6d63dfd3ccd16640304497"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn0-hit-approach-50.png",
+      "bytes": 1539580,
+      "sha256": "780d53e444f15d48ca4ed608bb3633e8deaf494ba1e61aa28234af9316eed4cf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn0-hit-impact.png",
+      "bytes": 983341,
+      "sha256": "abb2c519ccfc9863b36e56b7ac8a5d499c02cafddd98d55dadff5cd36886509b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn0-hit-reaction-50.png",
+      "bytes": 1540242,
+      "sha256": "8636f472959f342067b69a7cabd869de97705ad4cae39c0b91383542f5152db6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn0-hit-return-end.png",
+      "bytes": 1539254,
+      "sha256": "65db8549109838ad0e8d163905402738484415878970526184d1b191d1b4e91e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn1-hit-approach-50.png",
+      "bytes": 1539001,
+      "sha256": "7bcd52eeca1fb2301f90761f82ba5a0bd29a57310eb8eba2510c6bc845ec5078"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn1-hit-impact.png",
+      "bytes": 1546891,
+      "sha256": "90be43a03f4fd2083e0b7878d0b29e777c87e1a9b7b54b04d14db7ec8b46ab86"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn1-hit-reaction-50.png",
+      "bytes": 1540621,
+      "sha256": "256c76bdded09975fee98499bef54a84706c821adae2b7e2caf8957898fd2970"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn1-hit-return-end.png",
+      "bytes": 1539255,
+      "sha256": "cf7f8f3c90259b2b8db03918eb17732885f2c52cee03c5cd09e6a2986e544aac"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn2-dodge-approach-50.png",
+      "bytes": 1539580,
+      "sha256": "780d53e444f15d48ca4ed608bb3633e8deaf494ba1e61aa28234af9316eed4cf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn2-dodge-impact.png",
+      "bytes": 1550135,
+      "sha256": "f22fb2bbf3696de64c72d65122615eb282ab9c5698dda0d8789a63e40fa0e817"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn2-dodge-reaction-50.png",
+      "bytes": 1545080,
+      "sha256": "9ed73254f4d44b8557772e0fd70a4c492e6a7b04e6e4a53b1ea8ba84ac14d847"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn2-dodge-return-end.png",
+      "bytes": 1539254,
+      "sha256": "65db8549109838ad0e8d163905402738484415878970526184d1b191d1b4e91e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn3-hit-approach-50.png",
+      "bytes": 1539580,
+      "sha256": "780d53e444f15d48ca4ed608bb3633e8deaf494ba1e61aa28234af9316eed4cf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn3-hit-idle-50.png",
+      "bytes": 1542426,
+      "sha256": "65755ddd31c48e4d7c635facd20ad0007c6af22306d35611d985865c825a574f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn3-hit-idle-90.png",
+      "bytes": 1540416,
+      "sha256": "46501d3ed666b7c7608464f6450521f58633b3657dd2354ab82caa6d884f0282"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn3-hit-impact.png",
+      "bytes": 1547565,
+      "sha256": "0ae9c2ce3bae0bb3e3da88e0180b0d332f9fe5af2e244833384d409265d93017"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn3-hit-reaction-50.png",
+      "bytes": 1537621,
+      "sha256": "77c2bed7fe8fe35fcce9d65b6bed5d9f21621794f068ce2efb499618327bcb19"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03/turn3-hit-return-end.png",
+      "bytes": 1535619,
+      "sha256": "f25a9c2ee03d87e36e7318923114d65cc478d78543a5c88e343564536ba49f8a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-gull-observed-03.log",
+      "bytes": 191,
+      "sha256": "8ef7509f905a9d75ae7ba8d066f3fd4417704aba03410c250e0328def612947d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/battle-full.webm",
+      "bytes": 8986797,
+      "sha256": "ed20370e24b381e1946bc92ec602620d4879ef87988e6fc70a316580c39f1add"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/report.json",
+      "bytes": 361791,
+      "sha256": "18cd6c3297fb861c1f28c784170b5725351af5a086ac6de47089e9dcf04e008d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn0-hit-approach-50.png",
+      "bytes": 1549970,
+      "sha256": "90cd8e5efba7981cb1c647777d93a47834dff8b28dc153465ed9b37710b182bf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn0-hit-impact.png",
+      "bytes": 984009,
+      "sha256": "002078468d726eaa9c07df840416cb7fcc1286ba0d35a24cff6497ac8943a333"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn0-hit-reaction-50.png",
+      "bytes": 1549762,
+      "sha256": "45f9bff4e4868c01f5d749368a94ae83017971ac8fb15c90ed0acea3d6074b66"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn0-hit-return-end.png",
+      "bytes": 1549265,
+      "sha256": "84e9a5ac6b9a06cf3d447693aae68e9e095cbcc6b7bedf9cd1622b3ce219444f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn1-hit-approach-50.png",
+      "bytes": 1549568,
+      "sha256": "380dc020129472837becde9f90f29a3529cd8c9eb3dc0b80451614726ff4add9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn1-hit-impact.png",
+      "bytes": 1550282,
+      "sha256": "746b026713a631ce7494ceb334c38bbdf0a8e6981df5574e5cd1991636fcc70a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn1-hit-reaction-50.png",
+      "bytes": 1550474,
+      "sha256": "74a746d7afe4905a7ea966b27f784d2f5e2b08889e479492aa6e6f330b18dbef"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn1-hit-return-end.png",
+      "bytes": 1549311,
+      "sha256": "d8c954cfdb6f164a31f0d32a4e33351de7b8d696fa82531dec92d1b6a762ecef"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn2-dodge-approach-50.png",
+      "bytes": 1549970,
+      "sha256": "90cd8e5efba7981cb1c647777d93a47834dff8b28dc153465ed9b37710b182bf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn2-dodge-impact.png",
+      "bytes": 1552200,
+      "sha256": "330451b463e8728dcaa37b0ce3c147d1758bd30d357a30a7e54ee1912cdacf57"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn2-dodge-reaction-50.png",
+      "bytes": 1552598,
+      "sha256": "f9fce4bc0cb4dbd020df5a32bf7da17d527c40f41a2cefd3452a2543bf53800c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn2-dodge-return-end.png",
+      "bytes": 1549265,
+      "sha256": "84e9a5ac6b9a06cf3d447693aae68e9e095cbcc6b7bedf9cd1622b3ce219444f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn3-hit-approach-50.png",
+      "bytes": 1549970,
+      "sha256": "90cd8e5efba7981cb1c647777d93a47834dff8b28dc153465ed9b37710b182bf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn3-hit-idle-50.png",
+      "bytes": 1548190,
+      "sha256": "2547f0edaf822bcf30d275538476ebf7e37b8224c2eac68df23c99f26b7f0080"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn3-hit-idle-90.png",
+      "bytes": 1548855,
+      "sha256": "7a13d7aea33ac14e78f510afed1e3a7dd4b7133c8682cf82570a928f4b8a3912"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn3-hit-impact.png",
+      "bytes": 1551128,
+      "sha256": "71ac27960c8e933a259af263f7d7dcad842f987a144f7d471d10c50f0d8ca828"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn3-hit-reaction-50.png",
+      "bytes": 1547064,
+      "sha256": "fadbad0cc8a67f2d012739df20652d147eec6aea1ed40595004da849d2f7a62a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01/turn3-hit-return-end.png",
+      "bytes": 1548280,
+      "sha256": "9113dba8d6d75eb008a8da6868c438d7fdb4ceecf560ed23327fbd0e1689173b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-01.log",
+      "bytes": 214,
+      "sha256": "b9635b7b04afab6afa2095829a67ba48298fc9613990c1ca65bb5ee65c5dd535"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/battle-full.webm",
+      "bytes": 8986875,
+      "sha256": "b5740ca19cb174d4c849da9bb9f226db534163063667844a2cf31769d630deaf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/report.json",
+      "bytes": 362046,
+      "sha256": "44a8875d2440d2a98408d4a374ea9f94e1fbcb43be784e63bf1f773f8afd8931"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn0-hit-approach-50.png",
+      "bytes": 1549947,
+      "sha256": "9bffa0feb3f6a4e366528795a3a40770b272d619bf1eb31eae40d9e6ce1cee5d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn0-hit-impact.png",
+      "bytes": 983996,
+      "sha256": "d39c22d8ab60ed0588af60eb5524e52ed22b4742d30e5f295cfe7f7552f71201"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn0-hit-reaction-50.png",
+      "bytes": 1549759,
+      "sha256": "bcc446a426842950a22581027c06e0da5dad735b1b787614ada9ff2d7c7b4b5e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn0-hit-return-end.png",
+      "bytes": 1549257,
+      "sha256": "c9413172a44426da7550fa788c74688fecd91f6a7701a06783aa5c0c97e0f6dd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn1-hit-approach-50.png",
+      "bytes": 1549554,
+      "sha256": "ddd10b98b603caa1caf03b837707ad0bea7d3e049a4a8a86ab44ef9824b886e1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn1-hit-impact.png",
+      "bytes": 1550298,
+      "sha256": "5a06b4b04c465d4fa27132026f5e550ab61a9a609b3db423df788ded059a9928"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn1-hit-reaction-50.png",
+      "bytes": 1550493,
+      "sha256": "dac64392ac535778516cfd4d3261250bc867c78f5b666508f60d0dcd5dfb585e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn1-hit-return-end.png",
+      "bytes": 1549332,
+      "sha256": "94c022467d762ccdfe69040e9ccdb2173a6b9db66ccacf8125ae64a138d954d8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn2-dodge-approach-50.png",
+      "bytes": 1549947,
+      "sha256": "9bffa0feb3f6a4e366528795a3a40770b272d619bf1eb31eae40d9e6ce1cee5d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn2-dodge-impact.png",
+      "bytes": 1552207,
+      "sha256": "256ee1fd6eb1c9d5ee81fb14c8377cf295b37c5ca4fab2ac64d79acc12afc6ca"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn2-dodge-reaction-50.png",
+      "bytes": 1552626,
+      "sha256": "26b600d9472b6f0c59be5a8031fe619b2675a6c8436957e89a1aa098cbbaae55"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn2-dodge-return-end.png",
+      "bytes": 1549257,
+      "sha256": "c9413172a44426da7550fa788c74688fecd91f6a7701a06783aa5c0c97e0f6dd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn3-hit-approach-50.png",
+      "bytes": 1549947,
+      "sha256": "9bffa0feb3f6a4e366528795a3a40770b272d619bf1eb31eae40d9e6ce1cee5d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn3-hit-idle-50.png",
+      "bytes": 1548131,
+      "sha256": "effe4bc01b4bed9c287d35b274b50d55c2a96bccb51cf0383a966a4b3c0f3a26"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn3-hit-idle-90.png",
+      "bytes": 1548812,
+      "sha256": "0c0f950104e6c2fe510dd8de6b914f72189c86fc8a275561b791581629b30fec"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn3-hit-impact.png",
+      "bytes": 1551112,
+      "sha256": "03e514097f13ffbed6be4782620c93e52c6f77179e956df6718f6a49f319e8af"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn3-hit-reaction-50.png",
+      "bytes": 1547052,
+      "sha256": "83e47e60b0f3a4d890d76c02cf718ab541b5f2e4de8be7228a652154b967a9a7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03/turn3-hit-return-end.png",
+      "bytes": 1548232,
+      "sha256": "86370a554b6b6583ee08c422d1d561caeb0ceef35d1973b4dc5ff302e8e55ca8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-heron-observed-03.log",
+      "bytes": 214,
+      "sha256": "a9e51888443752fb6c4542df77fc1ba574752410ca8e3818d123a8813f35645b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-observed-batch.mjs",
+      "bytes": 1332,
+      "sha256": "a325a0ef7590e63fb70ddae86b44fb305b27af7c8d320aebd9dcd77f64dc0b3b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-observed-results.json",
+      "bytes": 2502,
+      "sha256": "2e0511dd33adcc6b4d4f21935394dca075f73b1b7c56cb5a9c296136a722b998"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-summary-01.json",
+      "bytes": 2386,
+      "sha256": "998361ca2d2e856075b40e7f720cd953d4ac458f6ab6fd93ff31b9288eba972e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/native-summary-final.json",
+      "bytes": 2505,
+      "sha256": "4b4dcbbfd8101f2ebdeb5d0876b6f6550c9762fad1c60bde1f6ed9d40d7bd982"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/parts-rig-faint-owned.txt",
+      "bytes": 15280,
+      "sha256": "7a64c3b7e410f75adf6fdfb0cd51e18f9e863d43d812c69e23f7dc413b4506bf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/rejected-choreography-faint-travel.patch",
+      "bytes": 1378,
+      "sha256": "3cef8457b52b67d6e7ba45b8e473046a4adb975ca7503974aff2ad74deb2f909"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/rejected-parts-rig-faint-travel.patch",
+      "bytes": 903,
+      "sha256": "6e16c51c704492e92515ca635298810dfa011c56cb9b907a134a14ad68e65eb8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/restored-source-identity.json",
+      "bytes": 31462,
+      "sha256": "9d13d101340f5640551f51e11ae02e0d82ee06b2dfa458d45a8e69e24bcbe7c3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/review-sheet.png",
+      "bytes": 1824692,
+      "sha256": "65c3c23e911987f5bb79ec2720aeda540686385ebb24c3c1b9763092ddaab9df"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/root-validate.log",
+      "bytes": 1093,
+      "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/run-faint-selection.mjs",
+      "bytes": 1026,
+      "sha256": "c6edbf357464bb3a3c76e69cc0cd5f0ad5425746f1c29ac1e819c46c2e401850"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/run-faint-travel-controls.mjs",
+      "bytes": 1875,
+      "sha256": "aa179253137cfe263981dccc09f8c56af14cfff539d0fac587436f0714764419"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/run-faint-travel-diagnosis.mjs",
+      "bytes": 1524,
+      "sha256": "48d720f1ab6d791fabf056b83b3bff366eb2bd778f7cf7750bf6b0e656751dd0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/run-study-02.mjs",
+      "bytes": 1029,
+      "sha256": "843e4ec8f90fe99ef5d7e5b441c76767288d564b8bf838768a9071c2f3a20183"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/run-study.mjs",
+      "bytes": 1020,
+      "sha256": "7c50ce24b1679d5127e0eff2ef87ab57675606dfea37a7a1b175dbb848f6a8fe"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/run.mjs",
+      "bytes": 8684,
+      "sha256": "0768b68cf6b9fc03b79ad88d05a1028b24b14b24879f90cfe0dc3d160c15cfbe"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/civet-static.json",
+      "bytes": 7400,
+      "sha256": "452fa278586993592c7f171e93dd64cbc9dd5bbf5e3fc7f4897c6553e07b8396"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/civet-support-samples.jsonl.gz",
+      "bytes": 540573,
+      "sha256": "c8deace40f822ac707b337c16ee63cf73ca6838ee094ef80324093ab08ab2d2f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/coconut-crab-static.json",
+      "bytes": 8541,
+      "sha256": "2ce886550c98d4586e3a446dd1576f6552e6f58ca1b7b37d0b5656ea1c06debc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/coconut-crab-support-samples.jsonl.gz",
+      "bytes": 450159,
+      "sha256": "031446c269052b8a91d89e4244f190fa65c7f60c64cb2056e8b5f2351e01d32b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/crab-static.json",
+      "bytes": 8478,
+      "sha256": "ee3f133ed6137a12ea21fa5c2f318c3c74d9e8117544bacd58b2dc8fb72dc565"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/crab-support-samples.jsonl.gz",
+      "bytes": 472712,
+      "sha256": "258aa03be580be6fcb1e07658ecd5a903db050f2cd63e0c297f3ff8d1fb4b1b8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/freshwater-crab-static.json",
+      "bytes": 8449,
+      "sha256": "9da3890b44693cfc1a3977415c408c4b3e5fba8287af206d3fb8492c0c5376a9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/freshwater-crab-support-samples.jsonl.gz",
+      "bytes": 455397,
+      "sha256": "84e207fd9353806843dee605d7937f4fd99d7a9e4dd3c4c865b92abcc660b127"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/identity.json",
+      "bytes": 2960,
+      "sha256": "7364c70a865ccfd9d229dce53f1cf6378bc306da5cad306f52eba1bc9ef7dbf2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/mud-crab-static.json",
+      "bytes": 8269,
+      "sha256": "6e1b2ec0792f524e730e7624e0a4112b1741f747645625629175c50c6e5cb9aa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/mud-crab-support-samples.jsonl.gz",
+      "bytes": 463241,
+      "sha256": "fe6b52249ff1391607394571ca0b3693c88439f61f6c9f9bdf7c6763daec6e41"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/sources.json",
+      "bytes": 27422,
+      "sha256": "a3d88f608201bf11d07c0a1b7d6d45d8fb746262f4ef09f9fa969e08131b2399"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/static.json",
+      "bytes": 61950,
+      "sha256": "ba1dd73a2e66599f4e2759b05a92241d64f7a37ef47b971e57270947c0a899d1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/vent-crab-static.json",
+      "bytes": 8384,
+      "sha256": "9b8278daf85ce4902c6e74c544a61665f0550a09d3ca6bd8cbcd609afc051a4e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2/vent-crab-support-samples.jsonl.gz",
+      "bytes": 475748,
+      "sha256": "1b6588bbd35d7f75ea8c31b301508243a80d725bd75a9cfe297b48176137d7a2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2-execution.json",
+      "bytes": 36012,
+      "sha256": "848cecb64c615e236731d7a2e4e3daafd4488e7abfbbc8a8d3ae586e4dc0b806"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2-checks/s2-run.log",
+      "bytes": 5147,
+      "sha256": "6046632ae7a68e89ea8b68a104de96f8b6674d04bfee1b92f1fb8a7c1489f6ac"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/s2.log",
+      "bytes": 5398,
+      "sha256": "04fd061f7ff6438967475aeec356659e76f7f7009519afb6177bc73dcda57732"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/sparrow-static-01.json",
+      "bytes": 18728,
+      "sha256": "21c84c190f58b5053ff4efc387d265cb1d90c9f404ad4b5e944bd40144e310bb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/sparrow-static-01.json.sources.json",
+      "bytes": 15387,
+      "sha256": "92a47c6cef50c5fb028b3d2f6e2b79f3b7d54971de042c2bc39b4d4f57758929"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/sparrow-static-01.log",
+      "bytes": 2409,
+      "sha256": "dca4ebcdb7031255a39eef1b5101dbc5ae225eb7c3e7e1de4afff8a483aa43e9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/summarize-native.py",
+      "bytes": 1120,
+      "sha256": "a44c2cfefe8be4b9f65255d0d3994a956e00e60d7d8c5142933daa9cf553dcd5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/types-02.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/bird-motion-02/types-03.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audits/MAILBOX/TO_CLAUDE.md",
+      "bytes": 37144,
+      "sha256": "90d6360002e9f849689a411a8c9f012a27706fe3cb2df840ee9c7d31b9f7f9c7"
+    },
+    {
+      "path": "celestial-frontier-codebase-reference.md",
+      "bytes": 603349,
+      "sha256": "6e0ebe17f8f44ccc4eed90c73c8d6a8a16e64d570313db7ceae06fea6127dd2a"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-bird.test.ts",
+      "bytes": 2913,
+      "sha256": "be6079ec2d2a3eb6f81bae09985e36e1dff53d07b7c9dbe7796cc566a54414c3"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/grounded-bird.ts",
+      "bytes": 3962,
+      "sha256": "fa67d23664f924e12b6b9c62a38a510690df72412b60111089e3cc1740795583"
+    },
+    {
+      "path": "port/v2/apps/game/src/motion/timeline.ts",
+      "bytes": 11896,
+      "sha256": "3c40c65e4ec5ef962d0043636f4381ec91bc074ed98fd76247571bafc0734bea"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "scope": "Post-run hashes of unchanged instrument bytes used by both retained native runs; working tools have not changed between those runs and this measurement. Reports separately retain loaded producer/source hashes.",
+  "files": [
+    {
+      "path": "port/v2/tools/battle2-proof/native-entry.mjs",
+      "sha256": "3c50f1b60163153abd2c132b8df97b3a2ab2b52ac15fcb220ecc5c6331c4e0ab"
+    },
+    {
+      "path": "port/v2/tools/battle2-proof/native-runner.mjs",
+      "sha256": "913749b824a0350ff1df59482b12cca6a6ec775acf47a19d3e0a89aa321b5be3"
+    },
+    {
+      "path": "port/v2/tools/battle2-proof/capture-timeline.mjs",
+      "sha256": "ce556b6d691f98fc195450da6e4ca91080c071b6dcc28cc66812e8a97041cdda"
+    },
+    {
+      "path": "port/v2/tools/battle2-proof/capture-timeline.test.mjs",
+      "sha256": "a0b8485c75d9e1cb9ede4ea5354ee573e1907e54e3205963498078ed5aa08b90"
+    }
+  ]
+}

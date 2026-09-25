@@ -1,0 +1,49 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "fa92dcff65635213e21d7d0ed48de6794c2a6aad26ad37988e539d47a5109bc5",
+  "bindingHash": "0523adcfa9a5982ed7c81a7baef321cc0d294894b2e0a9fbed832c3f30d069c7",
+  "pairs": [
+    [
+      "body",
+      "dorsal"
+    ],
+    [
+      "body",
+      "far-pectoral"
+    ],
+    [
+      "body",
+      "head"
+    ],
+    [
+      "body",
+      "mid-body"
+    ],
+    [
+      "body",
+      "near-pectoral"
+    ],
+    [
+      "body",
+      "pelvic-body"
+    ],
+    [
+      "body",
+      "tail-peduncle"
+    ],
+    [
+      "dorsal",
+      "rear-body"
+    ],
+    [
+      "dorsal",
+      "tail-peduncle"
+    ],
+    [
+      "far-pectoral",
+      "near-pectoral"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "This flat connected Pike master shows continuous paint across these enumerated ownership cuts and body-assigned fringe. Each is manually declared continuous; no hidden surfaces/pixels invented. Existing fish joint articulation remains."
+}

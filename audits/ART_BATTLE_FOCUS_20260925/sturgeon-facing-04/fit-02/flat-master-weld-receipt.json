@@ -1,0 +1,48 @@
+{
+  "schema": "cf.flat-master-weld/v1",
+  "sourceFit": "fit-01",
+  "sourceRecordSha256": "aaafbf96bc0dd7e6a8f5708b69dbcddac0a519a4d5f085e3e1973e86968e7a6c",
+  "sourceBindingSha256": "c4b35641c707a9c4078ba83603a9c675400f78be27000b0528d4a1537dc1043b",
+  "sourceAtlasSha256": "6158e30a1b37f1d55bf2d46689b261303052a2e2a7777a06b372eadc2280a65a",
+  "helperSha256": "8db3dd984d9078ed3a2b19c48b36e296db48165fb26a9ba56571b5cca5fa6b1f",
+  "options": {
+    "fixedJoints": [
+      "root"
+    ],
+    "shapeJoints": [
+      "pectoralNear",
+      "pectoralFar",
+      "dorsal",
+      "jaw",
+      "head",
+      "caudal",
+      "spine5",
+      "spine4",
+      "spine3",
+      "spine2",
+      "spine1",
+      "spine0"
+    ],
+    "contactEndpoints": [],
+    "preservePaintBoundaries": true
+  },
+  "receipt": {
+    "schema": "cf.observed-surface-split/v1",
+    "contactPins": [],
+    "sourceBindingHash": "4f11c9ce61b5674aca347b08b656320a63bc3268caf956f35da9132991666e17",
+    "sourceVertices": 1249,
+    "vertices": 1277,
+    "sharedSupports": 325,
+    "pins": 294,
+    "independentSurfaceParts": 13,
+    "sourceJoins": 8,
+    "excludedOverlaps": 8,
+    "observedExcludedBoundaries": 8,
+    "weldedExcludedBoundaries": 8,
+    "independentExcludedBoundaries": 0,
+    "preservePaintBoundaries": true,
+    "sourceCoordinateChanges": 0
+  },
+  "bindingHash": "b268824d575c1a47835914c850edeb85e0b1b919363cd5d309e9decf9a1413b3",
+  "scope": "Only this unadmitted Sturgeon candidate. Existing opt-in preserves observed painted boundaries on a flat master. No solver/gate/limit change; no hidden pixels invented. Prior intake receipts describe inherited fit-01 inputs, this receipt owns the new split."
+}

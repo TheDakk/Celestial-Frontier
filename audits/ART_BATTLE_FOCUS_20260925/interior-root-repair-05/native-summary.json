@@ -1,0 +1,25 @@
+{
+  "runId": "native-impala-01",
+  "status": "DIAGNOSTIC_PASS",
+  "scope": "proposed stage transforms, not unmodified HEAD",
+  "cpuP95Ms": 5.900000095367432,
+  "cpuMaxMs": 14.299999952316284,
+  "cpuFramesOver1000div60": 0,
+  "maximumIntervalMs": 16.80000000000291,
+  "intervalsAtLeast25Ms": 0,
+  "refusals": {
+    "left": 0,
+    "right": 0
+  },
+  "frames": 933,
+  "durationMs": 15532.7,
+  "encoded": {
+    "frames": 937,
+    "width": 1024,
+    "height": 576,
+    "durationSeconds": 15.620319,
+    "minimumFrames": 886
+  },
+  "reportSha256": "d1d72c5e22e6a8ccee9ff2af39929031ba85825e15d18989ab11a2477bb1e172",
+  "filmSha256": "a48f1a05d795533fcf763870c87e157bec9a711db9b27b71236a3c5283ea1142"
+}

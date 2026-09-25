@@ -1,0 +1,11 @@
+✔ accounts first and last sample deltas and separates same-named Wasm leaves by module/caller (0.739417ms)
+✔ refuses missing/foreign samples, deltas and malformed capture metadata (0.48975ms)
+✔ native js-to-wasm trampolines are skipped when locating the actual caller (0.164333ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 84.756917

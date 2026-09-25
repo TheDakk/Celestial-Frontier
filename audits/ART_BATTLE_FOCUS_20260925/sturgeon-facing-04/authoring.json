@@ -1,0 +1,416 @@
+{
+  "id": "sturgeon",
+  "family": "fish",
+  "landmarksPx": {
+    "root": [
+      930,
+      637
+    ],
+    "head": [
+      1050,
+      632
+    ],
+    "jaw": [
+      1088,
+      674
+    ],
+    "spine0": [
+      854,
+      633
+    ],
+    "spine1": [
+      730,
+      635
+    ],
+    "spine2": [
+      600,
+      644
+    ],
+    "spine3": [
+      472,
+      644
+    ],
+    "spine4": [
+      356,
+      638
+    ],
+    "spine5": [
+      240,
+      630
+    ],
+    "caudal": [
+      127,
+      626
+    ],
+    "dorsal": [
+      343,
+      558
+    ],
+    "pectoralNear": [
+      873,
+      751
+    ],
+    "pectoralFar": [
+      930,
+      748
+    ]
+  },
+  "groundLineY": 0.82,
+  "materials": {
+    "surface": "plain steel-grey painted sturgeon scales and bony scutes; no pigment markings"
+  },
+  "remainderPart": "body",
+  "parts": [
+    {
+      "id": "near-pectoral",
+      "joint": "pectoralNear",
+      "polygonPx": [
+        [
+          954,
+          674
+        ],
+        [
+          941,
+          702
+        ],
+        [
+          879,
+          764
+        ],
+        [
+          842,
+          795
+        ],
+        [
+          821,
+          800
+        ],
+        [
+          821,
+          741
+        ],
+        [
+          835,
+          697
+        ],
+        [
+          922,
+          676
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "far-pectoral",
+      "joint": "pectoralFar",
+      "polygonPx": [
+        [
+          957,
+          692
+        ],
+        [
+          972,
+          704
+        ],
+        [
+          962,
+          747
+        ],
+        [
+          938,
+          777
+        ],
+        [
+          908,
+          786
+        ],
+        [
+          906,
+          752
+        ],
+        [
+          926,
+          723
+        ]
+      ],
+      "layer": "far"
+    },
+    {
+      "id": "dorsal",
+      "joint": "dorsal",
+      "polygonPx": [
+        [
+          286,
+          607
+        ],
+        [
+          325,
+          503
+        ],
+        [
+          343,
+          506
+        ],
+        [
+          426,
+          587
+        ],
+        [
+          430,
+          612
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "jaw",
+      "joint": "jaw",
+      "polygonPx": [
+        [
+          1082,
+          670
+        ],
+        [
+          1129,
+          666
+        ],
+        [
+          1248,
+          655
+        ],
+        [
+          1253,
+          740
+        ],
+        [
+          1092,
+          738
+        ],
+        [
+          1076,
+          687
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "head",
+      "joint": "head",
+      "polygonPx": [
+        [
+          958,
+          480
+        ],
+        [
+          1253,
+          480
+        ],
+        [
+          1253,
+          770
+        ],
+        [
+          961,
+          770
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "caudal",
+      "joint": "caudal",
+      "polygonPx": [
+        [
+          0,
+          390
+        ],
+        [
+          228,
+          390
+        ],
+        [
+          228,
+          635
+        ],
+        [
+          199,
+          656
+        ],
+        [
+          192,
+          676
+        ],
+        [
+          0,
+          770
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "root",
+      "joint": "root",
+      "polygonPx": [
+        [
+          923,
+          628
+        ],
+        [
+          939,
+          628
+        ],
+        [
+          939,
+          644
+        ],
+        [
+          923,
+          644
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "tail-peduncle",
+      "joint": "spine5",
+      "polygonPx": [
+        [
+          190,
+          480
+        ],
+        [
+          299,
+          480
+        ],
+        [
+          299,
+          830
+        ],
+        [
+          190,
+          830
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "rear-body",
+      "joint": "spine4",
+      "polygonPx": [
+        [
+          299,
+          480
+        ],
+        [
+          414,
+          480
+        ],
+        [
+          414,
+          830
+        ],
+        [
+          299,
+          830
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "pelvic-body",
+      "joint": "spine3",
+      "polygonPx": [
+        [
+          414,
+          480
+        ],
+        [
+          535,
+          480
+        ],
+        [
+          535,
+          830
+        ],
+        [
+          414,
+          830
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "mid-body",
+      "joint": "spine2",
+      "polygonPx": [
+        [
+          535,
+          480
+        ],
+        [
+          665,
+          480
+        ],
+        [
+          665,
+          830
+        ],
+        [
+          535,
+          830
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "front-body",
+      "joint": "spine1",
+      "polygonPx": [
+        [
+          665,
+          480
+        ],
+        [
+          790,
+          480
+        ],
+        [
+          790,
+          830
+        ],
+        [
+          665,
+          830
+        ]
+      ],
+      "layer": "near"
+    },
+    {
+      "id": "body",
+      "joint": "spine0",
+      "polygonPx": [
+        [
+          790,
+          480
+        ],
+        [
+          966,
+          480
+        ],
+        [
+          966,
+          816
+        ],
+        [
+          790,
+          816
+        ]
+      ],
+      "layer": "near"
+    }
+  ],
+  "coverage": {
+    "scope": "Manual observation of right-facing generation04, all visible fins/barbels retained. Prior left-facing records and bindings remain unchanged.",
+    "notes": "Thirteen existing fish joints; small pelvic/anal painted areas follow their observed axial region. No source pixels excluded."
+  }
+}

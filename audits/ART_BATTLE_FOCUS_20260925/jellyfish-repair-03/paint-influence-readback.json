@@ -1,0 +1,201 @@
+{
+  "joints": {
+    "bell": {
+      "vertices": 1012,
+      "sumWeight": 365.9715481837829,
+      "maxWeight": 1
+    },
+    "arm8Seg0": {
+      "vertices": 459,
+      "sumWeight": 31.047413015057906,
+      "maxWeight": 0.4700602528486032
+    },
+    "centre": {
+      "vertices": 3305,
+      "sumWeight": 1071.8593580629915,
+      "maxWeight": 1
+    },
+    "arm3Seg0": {
+      "vertices": 838,
+      "sumWeight": 62.14514049616585,
+      "maxWeight": 0.7575642322133502
+    },
+    "arm9Seg0": {
+      "vertices": 392,
+      "sumWeight": 28.616105962437114,
+      "maxWeight": 0.4209874739039783
+    },
+    "root": {
+      "vertices": 316,
+      "sumWeight": 38.57255382732311,
+      "maxWeight": 1
+    },
+    "arm2Seg0": {
+      "vertices": 1077,
+      "sumWeight": 69.78467092331617,
+      "maxWeight": 0.8304653399664125
+    },
+    "arm10Seg0": {
+      "vertices": 455,
+      "sumWeight": 33.014264151730984,
+      "maxWeight": 0.480330675000829
+    },
+    "arm8Seg1": {
+      "vertices": 554,
+      "sumWeight": 55.91875426271273,
+      "maxWeight": 0.5885978303766631
+    },
+    "arm9Seg1": {
+      "vertices": 680,
+      "sumWeight": 58.33765598999868,
+      "maxWeight": 0.5501480513412536
+    },
+    "arm11Seg0": {
+      "vertices": 335,
+      "sumWeight": 17.667260129700985,
+      "maxWeight": 0.31476754137529633
+    },
+    "arm10Seg1": {
+      "vertices": 667,
+      "sumWeight": 58.664735108216895,
+      "maxWeight": 0.5600799129801532
+    },
+    "arm3Seg1": {
+      "vertices": 406,
+      "sumWeight": 77.8962725768966,
+      "maxWeight": 0.7513740464560489
+    },
+    "arm8Seg2": {
+      "vertices": 602,
+      "sumWeight": 31.496070867130022,
+      "maxWeight": 0.5757970914502604
+    },
+    "arm9Seg2": {
+      "vertices": 675,
+      "sumWeight": 31.135302740556643,
+      "maxWeight": 0.6029389881260963
+    },
+    "arm10Seg2": {
+      "vertices": 683,
+      "sumWeight": 29.660895506814914,
+      "maxWeight": 0.6385296109847861
+    },
+    "arm11Seg1": {
+      "vertices": 493,
+      "sumWeight": 40.481184306347274,
+      "maxWeight": 0.4926645517470549
+    },
+    "arm5Seg0": {
+      "vertices": 727,
+      "sumWeight": 56.10710812945312,
+      "maxWeight": 0.6553139654718881
+    },
+    "arm4Seg0": {
+      "vertices": 839,
+      "sumWeight": 30.773805771087105,
+      "maxWeight": 0.48750390111121966
+    },
+    "arm11Seg2": {
+      "vertices": 598,
+      "sumWeight": 22.809692741470595,
+      "maxWeight": 0.3776559478773934
+    },
+    "arm4Seg1": {
+      "vertices": 314,
+      "sumWeight": 73.25542420001254,
+      "maxWeight": 0.8159568710364077
+    },
+    "arm4Seg2": {
+      "vertices": 162,
+      "sumWeight": 55.83066773165053,
+      "maxWeight": 1
+    },
+    "arm6Seg0": {
+      "vertices": 858,
+      "sumWeight": 69.8924122057534,
+      "maxWeight": 0.7969931652552077
+    },
+    "arm0Seg0": {
+      "vertices": 905,
+      "sumWeight": 69.33497229217605,
+      "maxWeight": 0.7715364478691895
+    },
+    "arm1Seg0": {
+      "vertices": 1000,
+      "sumWeight": 67.35149318546226,
+      "maxWeight": 0.683927998099388
+    },
+    "arm0Seg1": {
+      "vertices": 379,
+      "sumWeight": 71.37778915723774,
+      "maxWeight": 0.8273675976535646
+    },
+    "arm1Seg1": {
+      "vertices": 730,
+      "sumWeight": 83.76588140405708,
+      "maxWeight": 0.883591623812039
+    },
+    "arm2Seg1": {
+      "vertices": 704,
+      "sumWeight": 81.2952206671598,
+      "maxWeight": 0.7887046270402241
+    },
+    "arm0Seg2": {
+      "vertices": 185,
+      "sumWeight": 65.17714137424427,
+      "maxWeight": 1
+    },
+    "arm1Seg2": {
+      "vertices": 411,
+      "sumWeight": 83.64248281407525,
+      "maxWeight": 1
+    },
+    "arm2Seg2": {
+      "vertices": 363,
+      "sumWeight": 65.88386611941962,
+      "maxWeight": 1
+    },
+    "arm3Seg2": {
+      "vertices": 174,
+      "sumWeight": 75.8496052182298,
+      "maxWeight": 1
+    },
+    "arm7Seg0": {
+      "vertices": 538,
+      "sumWeight": 68.7403185910022,
+      "maxWeight": 0.7542443429601964
+    },
+    "arm5Seg1": {
+      "vertices": 715,
+      "sumWeight": 91.96664387059754,
+      "maxWeight": 1
+    },
+    "arm6Seg1": {
+      "vertices": 750,
+      "sumWeight": 71.88942496791887,
+      "maxWeight": 0.7614280000691735
+    },
+    "arm7Seg1": {
+      "vertices": 723,
+      "sumWeight": 76.80019734155185,
+      "maxWeight": 0.8877592227046973
+    },
+    "arm5Seg2": {
+      "vertices": 441,
+      "sumWeight": 68.54102241020072,
+      "maxWeight": 0.8951852266626671
+    },
+    "arm6Seg2": {
+      "vertices": 478,
+      "sumWeight": 62.70287709881107,
+      "maxWeight": 1
+    },
+    "arm7Seg2": {
+      "vertices": 527,
+      "sumWeight": 59.74276659724994,
+      "maxWeight": 0.8849189813002972
+    }
+  },
+  "count": 39,
+  "minJointMaximumWeight": 0.31476754137529633
+}

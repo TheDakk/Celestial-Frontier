@@ -1,0 +1,570 @@
+{
+  "schema": "cf.creature-parts/v1",
+  "recordRecipeHash": "050cddedc732597f195ebed17582e37e1c7e9eaea348bbaaa0375e1554c806e7",
+  "atlasSha256": "7e21aa49d9b42a8580d792455806a8ae6b2969f267318826aadf745fb52b87cb",
+  "atlasSize": {
+    "width": 2048,
+    "height": 1920
+  },
+  "parts": [
+    {
+      "id": "arm8-oral",
+      "joint": "arm8Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1122,
+        "y": 260,
+        "width": 117,
+        "height": 387
+      },
+      "cutout": {
+        "x": 479,
+        "y": 328,
+        "width": 117,
+        "height": 387
+      }
+    },
+    {
+      "id": "arm9-oral",
+      "joint": "arm9Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1487,
+        "y": 569,
+        "width": 95,
+        "height": 458
+      },
+      "cutout": {
+        "x": 550,
+        "y": 321,
+        "width": 95,
+        "height": 458
+      }
+    },
+    {
+      "id": "arm10-oral",
+      "joint": "arm10Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1596,
+        "y": 260,
+        "width": 96,
+        "height": 432
+      },
+      "cutout": {
+        "x": 627,
+        "y": 327,
+        "width": 96,
+        "height": 432
+      }
+    },
+    {
+      "id": "arm11-oral",
+      "joint": "arm11Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1370,
+        "y": 574,
+        "width": 89,
+        "height": 365
+      },
+      "cutout": {
+        "x": 684,
+        "y": 335,
+        "width": 89,
+        "height": 365
+      }
+    },
+    {
+      "id": "arm0-seg0",
+      "joint": "arm0Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1907,
+        "y": 5,
+        "width": 136,
+        "height": 281
+      },
+      "cutout": {
+        "x": 223,
+        "y": 319,
+        "width": 136,
+        "height": 281
+      }
+    },
+    {
+      "id": "arm0-seg1",
+      "joint": "arm0Seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1463,
+        "y": 1348,
+        "width": 72,
+        "height": 297
+      },
+      "cutout": {
+        "x": 212,
+        "y": 600,
+        "width": 72,
+        "height": 297
+      }
+    },
+    {
+      "id": "arm0-seg2",
+      "joint": "arm0Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1681,
+        "y": 930,
+        "width": 58,
+        "height": 230
+      },
+      "cutout": {
+        "x": 196,
+        "y": 897,
+        "width": 58,
+        "height": 230
+      }
+    },
+    {
+      "id": "arm1-seg0",
+      "joint": "arm1Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1370,
+        "y": 260,
+        "width": 107,
+        "height": 304
+      },
+      "cutout": {
+        "x": 294,
+        "y": 307,
+        "width": 107,
+        "height": 304
+      }
+    },
+    {
+      "id": "arm1-seg1",
+      "joint": "arm1Seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1249,
+        "y": 587,
+        "width": 87,
+        "height": 322
+      },
+      "cutout": {
+        "x": 284,
+        "y": 611,
+        "width": 87,
+        "height": 322
+      }
+    },
+    {
+      "id": "arm1-seg2",
+      "joint": "arm1Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1919,
+        "y": 548,
+        "width": 56,
+        "height": 245
+      },
+      "cutout": {
+        "x": 286,
+        "y": 933,
+        "width": 56,
+        "height": 245
+      }
+    },
+    {
+      "id": "arm2-seg0",
+      "joint": "arm2Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1754,
+        "y": 288,
+        "width": 81,
+        "height": 315
+      },
+      "cutout": {
+        "x": 369,
+        "y": 295,
+        "width": 81,
+        "height": 315
+      }
+    },
+    {
+      "id": "arm2-seg1",
+      "joint": "arm2Seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1592,
+        "y": 702,
+        "width": 79,
+        "height": 334
+      },
+      "cutout": {
+        "x": 367,
+        "y": 610,
+        "width": 79,
+        "height": 334
+      }
+    },
+    {
+      "id": "arm2-seg2",
+      "joint": "arm2Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 1655,
+        "width": 64,
+        "height": 260
+      },
+      "cutout": {
+        "x": 367,
+        "y": 944,
+        "width": 64,
+        "height": 260
+      }
+    },
+    {
+      "id": "arm3-seg0",
+      "joint": "arm3Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1548,
+        "y": 1046,
+        "width": 68,
+        "height": 299
+      },
+      "cutout": {
+        "x": 431,
+        "y": 297,
+        "width": 68,
+        "height": 299
+      }
+    },
+    {
+      "id": "arm3-seg1",
+      "joint": "arm3Seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1249,
+        "y": 260,
+        "width": 111,
+        "height": 317
+      },
+      "cutout": {
+        "x": 437,
+        "y": 596,
+        "width": 111,
+        "height": 317
+      }
+    },
+    {
+      "id": "arm3-seg2",
+      "joint": "arm3Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1845,
+        "y": 296,
+        "width": 64,
+        "height": 249
+      },
+      "cutout": {
+        "x": 465,
+        "y": 913,
+        "width": 64,
+        "height": 249
+      }
+    },
+    {
+      "id": "arm4-seg0",
+      "joint": "arm4Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1311,
+        "y": 919,
+        "width": 49,
+        "height": 286
+      },
+      "cutout": {
+        "x": 724,
+        "y": 366,
+        "width": 49,
+        "height": 286
+      }
+    },
+    {
+      "id": "arm4-seg1",
+      "joint": "arm4Seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1463,
+        "y": 1037,
+        "width": 75,
+        "height": 301
+      },
+      "cutout": {
+        "x": 697,
+        "y": 652,
+        "width": 75,
+        "height": 301
+      }
+    },
+    {
+      "id": "arm4-seg2",
+      "joint": "arm4Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1311,
+        "y": 1246,
+        "width": 66,
+        "height": 220
+      },
+      "cutout": {
+        "x": 695,
+        "y": 953,
+        "width": 66,
+        "height": 220
+      }
+    },
+    {
+      "id": "arm5-seg0",
+      "joint": "arm5Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1754,
+        "y": 613,
+        "width": 80,
+        "height": 311
+      },
+      "cutout": {
+        "x": 741,
+        "y": 316,
+        "width": 80,
+        "height": 311
+      }
+    },
+    {
+      "id": "arm5-seg1",
+      "joint": "arm5Seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1218,
+        "y": 919,
+        "width": 83,
+        "height": 330
+      },
+      "cutout": {
+        "x": 787,
+        "y": 627,
+        "width": 83,
+        "height": 330
+      }
+    },
+    {
+      "id": "arm5-seg2",
+      "joint": "arm5Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1387,
+        "y": 1246,
+        "width": 65,
+        "height": 250
+      },
+      "cutout": {
+        "x": 803,
+        "y": 957,
+        "width": 65,
+        "height": 250
+      }
+    },
+    {
+      "id": "arm6-seg0",
+      "joint": "arm6Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1487,
+        "y": 260,
+        "width": 99,
+        "height": 299
+      },
+      "cutout": {
+        "x": 806,
+        "y": 334,
+        "width": 99,
+        "height": 299
+      }
+    },
+    {
+      "id": "arm6-seg1",
+      "joint": "arm6Seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1122,
+        "y": 657,
+        "width": 86,
+        "height": 317
+      },
+      "cutout": {
+        "x": 861,
+        "y": 633,
+        "width": 86,
+        "height": 317
+      }
+    },
+    {
+      "id": "arm6-seg2",
+      "joint": "arm6Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1919,
+        "y": 296,
+        "width": 64,
+        "height": 242
+      },
+      "cutout": {
+        "x": 885,
+        "y": 950,
+        "width": 64,
+        "height": 242
+      }
+    },
+    {
+      "id": "arm7-seg0",
+      "joint": "arm7Seg0",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1759,
+        "y": 5,
+        "width": 138,
+        "height": 273
+      },
+      "cutout": {
+        "x": 858,
+        "y": 348,
+        "width": 138,
+        "height": 273
+      }
+    },
+    {
+      "id": "arm7-seg1",
+      "joint": "arm7Seg1",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1370,
+        "y": 949,
+        "width": 83,
+        "height": 287
+      },
+      "cutout": {
+        "x": 935,
+        "y": 621,
+        "width": 83,
+        "height": 287
+      }
+    },
+    {
+      "id": "arm7-seg2",
+      "joint": "arm7Seg2",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1681,
+        "y": 702,
+        "width": 60,
+        "height": 218
+      },
+      "cutout": {
+        "x": 962,
+        "y": 908,
+        "width": 60,
+        "height": 218
+      }
+    },
+    {
+      "id": "root",
+      "joint": "root",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1702,
+        "y": 260,
+        "width": 42,
+        "height": 40
+      },
+      "cutout": {
+        "x": 605,
+        "y": 240,
+        "width": 42,
+        "height": 40
+      }
+    },
+    {
+      "id": "bell",
+      "joint": "bell",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 1122,
+        "y": 5,
+        "width": 627,
+        "height": 245
+      },
+      "cutout": {
+        "x": 308,
+        "y": 70,
+        "width": 627,
+        "height": 245
+      }
+    },
+    {
+      "id": "centre",
+      "joint": "centre",
+      "layer": "near",
+      "kind": "part",
+      "frame": {
+        "x": 5,
+        "y": 5,
+        "width": 1107,
+        "height": 939
+      },
+      "cutout": {
+        "x": 0,
+        "y": 315,
+        "width": 1107,
+        "height": 939
+      }
+    }
+  ],
+  "bindingHash": "7216553747030a25587ff56d7592e34c323be4dca14d37a2df2775a01f63b61e"
+}

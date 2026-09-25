@@ -1,0 +1,86 @@
+{
+  "schema": "cf.manual-visual-review/v1",
+  "fit": "fit-02",
+  "nativeRunId": "native-phone4x-01",
+  "reportSha256": "f2790b3adbcdfe30806a62e4fdfa3f5ed3a291b6ee43d00c4f839d70b22eb946",
+  "rigFinding": "Right-facing source now faces inward on both stage sides. No observed fin seam hole; zero rig refusals.",
+  "stageFinding": "Snouts overlap before strike and after return to rest; do not publish as complete-stage acceptance. See turn0-hit-approach-50.png and turn0-hit-return-end.png.",
+  "stageData": {
+    "stands": {
+      "left": {
+        "x": 0.4390286975717439,
+        "y": 0.9701399558498895
+      },
+      "right": {
+        "x": 0.5609713024282561,
+        "y": 0.9701399558498895
+      }
+    },
+    "fit": {
+      "left": 1,
+      "right": 1
+    },
+    "widthCapped": {
+      "left": true,
+      "right": true
+    },
+    "restFill": {
+      "left": 0.36547108167770415,
+      "right": 0.36547108167770415
+    }
+  },
+  "runUpByTurn": [
+    {
+      "turn": 0,
+      "runUp": 0.01829139072847683
+    },
+    {
+      "turn": 1,
+      "runUp": -0.01829139072847683
+    },
+    {
+      "turn": 2,
+      "runUp": 0.01829139072847683
+    },
+    {
+      "turn": 3,
+      "runUp": 0.01829139072847683
+    }
+  ],
+  "capture": {
+    "frames": 602,
+    "durationMs": 10016.3,
+    "cpuP95Ms": 3.600000023841858,
+    "frameDeltaP95Ms": 16.799999999999272,
+    "refusalsAtEnd": {
+      "left": 0,
+      "right": 0
+    },
+    "lastRefusal": {
+      "left": null,
+      "right": null
+    },
+    "refusalLog": [],
+    "encodedMedia": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1024,
+          "height": 576,
+          "nb_read_frames": "606"
+        }
+      ],
+      "format": {
+        "duration": "10.097849"
+      }
+    },
+    "encodedFrames": {
+      "frames": 606,
+      "width": 1024,
+      "height": 576
+    }
+  },
+  "request": "Claude: use actual painted horizontal intervals to enforce a positive ready/return gap and recompute travel/reach consistently after stand centering; inspect long-bodied pair and protected controls. This is a placement diagnosis, not permission to raise a motion or budget allowance."
+}

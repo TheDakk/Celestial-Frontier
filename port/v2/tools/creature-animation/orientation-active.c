@@ -1,5 +1,5 @@
 /* Exact ordered active-set orientation projection. Memory-only leaf; no
- * allocation, imports, relaxed arithmetic, deduplication or changed budgets. */
+ * allocation, imports, relaxed arithmetic or changed budgets. */
 #define INLINE static __attribute__((always_inline)) inline
 INLINE int same_number(double a, double b) {
   if (a == b) {
@@ -113,8 +113,20 @@ unsigned cf_orientation_active(double *p, const unsigned *d,
     for (unsigned corner = 0; corner < 3; ++corner) {
       if (!(mask & (1u << corner))) continue;
       const unsigned v = d[k + corner] / 2;
-      for (unsigned i = starts[v]; i < starts[v + 1]; ++i)
-        update(p, d, signs, floors, movable, heap, location, priority, state, &unordered, incident[i]);
+      for (unsigned i = starts[v]; i < starts[v + 1]; ++i) {
+        const unsigned neighbor = incident[i], nk = neighbor * 3;
+        /* All moved positions were published before this traversal. A shared
+         * triangle already visited through an earlier moved corner has the
+         * identical priority; its second ordered update is a strict no-op.
+         * Retain the original repeated repairs after any unordered priority. */
+        if (!unordered) {
+          if (corner > 0 && (mask & 1) &&
+              (d[nk] == a || d[nk + 1] == a || d[nk + 2] == a)) continue;
+          if (corner > 1 && (mask & 2) &&
+              (d[nk] == b || d[nk + 1] == b || d[nk + 2] == b)) continue;
+        }
+        update(p, d, signs, floors, movable, heap, location, priority, state, &unordered, neighbor);
+      }
     }
   }
   return (state[2] + count - 1) / count;

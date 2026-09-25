@@ -1,0 +1,17 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "887857dd7213d86fe5278ab6dd4ef3ebbf5a06a86f12a9f241b56c4e14eb26a0",
+  "bindingHash": "2c7a3db72a6ed19ea067c90ba5156cdf00fdd675a618bdb02201f1634318f005",
+  "pairs": [
+    [
+      "far-wing-shoulder",
+      "neck-lower"
+    ],
+    [
+      "near-wing-shoulder",
+      "neck-lower"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "Retain only the two proximal shoulder/neck feather junctions; body/wing welds in fit03 overconstrained flap/peck/claw/hit/victory and are explicitly rejected. Distal wing overlap edges and broad body/wing interfaces remain independent."
+}

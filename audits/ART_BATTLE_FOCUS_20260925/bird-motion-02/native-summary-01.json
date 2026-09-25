@@ -1,0 +1,80 @@
+{
+  "scope": "Proposed stage bundle; not integrated source, cold loading, every pair or iPhone. 25ms bins only diagnose intervals.",
+  "rows": [
+    {
+      "name": "gull",
+      "runId": "native-gull-01",
+      "status": "DIAGNOSTIC_PASS",
+      "cpuP95Ms": 3.700000047683716,
+      "cpuMaxMs": 9.100000023841858,
+      "overBudgetFrames": 0,
+      "intervalsAtLeast25Ms": 0,
+      "maxFrameIntervalMs": 16.80000000000109,
+      "liveFrames": 765,
+      "durationMs": 12732.800000000001,
+      "encoded": {
+        "frames": 770,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 12.823173,
+        "minimumFrames": 725
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "reportSha256": "143008eb42f4122c786af89e06844f8024a3db6d6997e54311020a421ec5bf7f",
+      "filmSha256": "b77d5a55f3e328868697f2cb293cfc064c4aa43c7bcbcb6c68cad13eebba7a61"
+    },
+    {
+      "name": "goose",
+      "runId": "native-goose-01",
+      "status": "FAIL",
+      "cpuP95Ms": 3.8000000715255737,
+      "cpuMaxMs": 45.10000002384186,
+      "overBudgetFrames": 1,
+      "intervalsAtLeast25Ms": 1,
+      "maxFrameIntervalMs": 33.29999999999927,
+      "liveFrames": 779,
+      "durationMs": 12982.9,
+      "encoded": {
+        "frames": 783,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 13.062055,
+        "minimumFrames": 740
+      },
+      "refusals": {
+        "left": 0,
+        "right": 60
+      },
+      "reportSha256": "67e2ada6deb8c7cc57e1422c6555719b9072323994bd03a0804d3d21440e15d7",
+      "filmSha256": "d7bd92dd87b613b743aa736f56cb6923c6cc45d9b3b3b149c3a7b1b35f43cbc7"
+    },
+    {
+      "name": "heron",
+      "runId": "native-heron-01",
+      "status": "DIAGNOSTIC_PASS",
+      "cpuP95Ms": 3.799999952316284,
+      "cpuMaxMs": 8.5,
+      "overBudgetFrames": 0,
+      "intervalsAtLeast25Ms": 0,
+      "maxFrameIntervalMs": 16.80000000000109,
+      "liveFrames": 780,
+      "durationMs": 12982.9,
+      "encoded": {
+        "frames": 784,
+        "width": 1024,
+        "height": 576,
+        "durationSeconds": 13.064305,
+        "minimumFrames": 740
+      },
+      "refusals": {
+        "left": 0,
+        "right": 0
+      },
+      "reportSha256": "18cd6c3297fb861c1f28c784170b5725351af5a086ac6de47089e9dcf04e008d",
+      "filmSha256": "ed20370e24b381e1946bc92ec602620d4879ef87988e6fc70a316580c39f1add"
+    }
+  ]
+}

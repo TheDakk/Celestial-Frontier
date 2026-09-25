@@ -1,5 +1,6 @@
-/** Optional exact active-set leaf. Fixed private topology, original incident
- * update order (including duplicates), and transactional mutable-state copies. */
+/** Optional exact active-set leaf. Fixed private topology, original observable
+ * update order, and transactional mutable-state copies. Ordered repeated
+ * incident no-ops may be skipped; unordered priorities retain every update. */
 import {ORIENTATION_ACTIVE_BYTES} from './orientation-active-bytes.mjs';
 import {runOrientationActiveReference} from './orientation-active-reference.mjs';
 const modules=new WeakMap(),need=(ok,why)=>{if(!ok)throw Error('Orientation active Wasm: '+why);};

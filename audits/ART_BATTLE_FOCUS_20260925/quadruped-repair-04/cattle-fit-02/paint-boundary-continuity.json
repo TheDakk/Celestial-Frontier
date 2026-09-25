@@ -1,0 +1,85 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "33a0a48414c4d96613c64bb85791d32ea2404ffaba939cb96238290447369f5a",
+  "bindingHash": "3271762031e3aa825630d82a1e50cd1c3c20847c2664fbb137d85cc38d3ebe1d",
+  "pairs": [
+    [
+      "ear-far-tip",
+      "head"
+    ],
+    [
+      "ear-near-tip",
+      "head"
+    ],
+    [
+      "ear-near-tip",
+      "neck"
+    ],
+    [
+      "fore-far-ankle",
+      "spine"
+    ],
+    [
+      "fore-far-knee",
+      "fore-far-paw"
+    ],
+    [
+      "fore-far-paw",
+      "spine"
+    ],
+    [
+      "fore-near-ankle",
+      "spine"
+    ],
+    [
+      "fore-near-knee",
+      "fore-near-paw"
+    ],
+    [
+      "fore-near-paw",
+      "spine"
+    ],
+    [
+      "hind-far-ankle",
+      "spine"
+    ],
+    [
+      "hind-far-knee",
+      "hind-far-paw"
+    ],
+    [
+      "hind-far-paw",
+      "spine"
+    ],
+    [
+      "hind-near-ankle",
+      "spine"
+    ],
+    [
+      "hind-near-knee",
+      "hind-near-paw"
+    ],
+    [
+      "jaw",
+      "neck"
+    ],
+    [
+      "jaw",
+      "spine"
+    ],
+    [
+      "neck",
+      "spine"
+    ],
+    [
+      "pelvis",
+      "tail1"
+    ],
+    [
+      "root",
+      "spine"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "Keep the observed connected within-limb and axial paint boundaries. Release only opposite-limb and independent tail/leg silhouette adjacency previously joined by blanket all-boundary welding; no pixel removal, no source coordinate or solver change."
+}

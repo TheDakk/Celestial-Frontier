@@ -1,0 +1,50 @@
+{
+  "schema": "cf.manual-visual-review/v1",
+  "selectedNativeRun": "native-phone4x-04",
+  "selectedFit": "fit-06",
+  "reviewed": [
+    "turn0-hit-approach-50.png",
+    "turn0-hit-impact.png",
+    "turn0-hit-reaction-50.png",
+    "turn0-hit-return-end.png",
+    "turn1-hit-approach-50.png",
+    "turn3-hit-return-end.png"
+  ],
+  "finding": "Continuous hanging appendages; no observed holes or clipping. Impact starburst is an effect. Picker/integrated coverage pending.",
+  "capture": {
+    "frames": 602,
+    "durationMs": 10016.3,
+    "cpuP95Ms": 9.200000047683716,
+    "frameDeltaP95Ms": 16.700000000000728,
+    "refusalsAtEnd": {
+      "left": 0,
+      "right": 0
+    },
+    "lastRefusal": {
+      "left": null,
+      "right": null
+    },
+    "refusalLog": [],
+    "encodedMedia": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1024,
+          "height": 576,
+          "nb_read_frames": "606"
+        }
+      ],
+      "format": {
+        "duration": "10.097751"
+      }
+    },
+    "encodedFrames": {
+      "frames": 606,
+      "width": 1024,
+      "height": 576
+    }
+  },
+  "reportSha256": "4fe23d4e4e782a120f4f12616509e6e84e5eb671f10f695eb93906858b932a0f"
+}

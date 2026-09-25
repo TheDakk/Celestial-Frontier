@@ -1,0 +1,1210 @@
+{
+  "parentHead": "8ca08a178b4b9cc005c988b7873a52fdeaf948bb",
+  "files": [
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/README.md",
+      "bytes": 3187,
+      "sha256": "bc7807e2622d79deee2f87763a0fa5af3feb6ca61517e72a8e5a8548014832e6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/authored-change.json",
+      "bytes": 1783,
+      "sha256": "0ba7335add7f116c5933a97f08cb32abbe31f707ccab0f08ef85ea464b83ab7e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/binding.json",
+      "bytes": 3766236,
+      "sha256": "e7c0226723dbcd03dc67d34c59281d3d450523f95fa6af343b95cd1e09349594"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/declaration.json",
+      "bytes": 3192,
+      "sha256": "2ed66502334829928e2a79c1894b8febbc8e17f1ef1f86604f2f0899c34f4564"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/intake-provenance.json",
+      "bytes": 3600,
+      "sha256": "663eb056425f9bcc519f3386a2e0ddd51a122b3022efffb2f485bdef799204f5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/label-authoring-receipt.json",
+      "bytes": 738,
+      "sha256": "9d476fb681039604912dfad464526f11882eed11fb6132dca332c29425c5aaf2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/labels.png",
+      "bytes": 56114,
+      "sha256": "8821e7a2be638f3b4ca4de85664bdfe9963e7b9b95388c27c3d01a71e6b50d01"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/atlas/cattle.json",
+      "bytes": 12683,
+      "sha256": "edaea5726b7e764c6be159e2dfb357967c144ed8fa77fac7dd1158d87b45a93c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/atlas/cattle.png",
+      "bytes": 1199029,
+      "sha256": "afa89c5075a7d23a74f5e19693b0c5feb161e968ad14a4ed31faee12f5bd780c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/atlas/receipt.json",
+      "bytes": 4726,
+      "sha256": "9f9a405b4677744e57f48b47b77362c7967421f0dd14a7f77d164a5990e4a915"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/binding.json",
+      "bytes": 10370,
+      "sha256": "abe14822a7442a797fb5057217c62a1bc2898b23d09480f4de233d7c715bfced"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/keyed.png",
+      "bytes": 1593556,
+      "sha256": "977890154b04f46803bd70b99d70f8e2c79ac0f74211bb52b0ab5f2d794b2a5b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/ownership.png",
+      "bytes": 160679,
+      "sha256": "910b4c7ac57b3a9ab1c02679a36575afdc3c749080855b55c86260cf9af30b43"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/chest.png",
+      "bytes": 79033,
+      "sha256": "b7bce92131ada7784c49299923bb0d612e76aeaed50d495032ba96c6657f8532"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/ear-far-root.png",
+      "bytes": 4832,
+      "sha256": "409a50882bc43c4f5e9062772530e40f33a924b676670ec2385fcd34d37fb137"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/ear-far-tip.png",
+      "bytes": 1328,
+      "sha256": "4ae37e7b04b5c6b18708eb2b706d5bcc3f10aceaa3f00c641eebc5be17b6026d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/ear-near-root.png",
+      "bytes": 10999,
+      "sha256": "85d7679ccde0903d5034bcdca68e0b0408b015d57f34081d6476416269ec1dff"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/ear-near-tip.png",
+      "bytes": 11585,
+      "sha256": "cb277c5bbbf3ef0d11d299df86bd9349aba3bdf7ec54a777412c64cfaf6174f2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/fore-far-ankle.png",
+      "bytes": 12187,
+      "sha256": "2c204afd03725da0a6f34b7aeed4c2dfe89ae8b3e03d62fbe2194863688ad2c3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/fore-far-knee.png",
+      "bytes": 22291,
+      "sha256": "ba364e34135e8b94f4d2dc2ef9d08435ca5b85670f2a95457581db1e6e6e02be"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/fore-far-paw.png",
+      "bytes": 5460,
+      "sha256": "f4081c2758677a3cd8392afebec6cb939f2db2ad9e75efdefe2bafaa96ba521f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/fore-far-root.png",
+      "bytes": 13523,
+      "sha256": "ede7b76fae40a7f9c939d50c65699cf2560d56552ce6409326be589c3ecefd98"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/fore-near-ankle.png",
+      "bytes": 14318,
+      "sha256": "5f6559042d440898fb81e0c5fa3b01c2068d7047a49a3822d9c1811b29f79632"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/fore-near-knee.png",
+      "bytes": 45064,
+      "sha256": "ac3c233f5f10d8dc3837cc1fae69fd535ceb02a661135023f6b34a075ca039d7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/fore-near-paw.png",
+      "bytes": 9017,
+      "sha256": "e3696199313248b9e39672089e328953a21cabc90f44248d2c31f7998ae790fc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/fore-near-root.png",
+      "bytes": 162412,
+      "sha256": "6c8a28ada1abca096e5eda85737c66bfbe4309856230f9528878e26d1967b3fb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/head.png",
+      "bytes": 97336,
+      "sha256": "d44a854c689fdcb1d6eb6343174bfe10536e9b8e93fcf1c951bc608434e71314"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/hind-far-ankle.png",
+      "bytes": 12803,
+      "sha256": "006a23527533a42fd1d0ca4e7811e559c575cb09ae88d2b14d6e1635635f2105"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/hind-far-knee.png",
+      "bytes": 40041,
+      "sha256": "8bab735fd59bfbaffb16a3b4f7806e75dd79d149d11b056bbd00b4c7f780a223"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/hind-far-paw.png",
+      "bytes": 6380,
+      "sha256": "41cb233627e57e691f701bd14f77a31d515383c677a1ae224fc9f23caf82f920"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/hind-far-root.png",
+      "bytes": 37416,
+      "sha256": "79da8ee3e90e11b97d777a54f7ea7556e373c1166db6c6f8e95d8a62f07d9879"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/hind-near-ankle.png",
+      "bytes": 14228,
+      "sha256": "ab0cd5db555625278af7960f86de80edd69702aac776cb68e9961016cdd67981"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/hind-near-knee.png",
+      "bytes": 56539,
+      "sha256": "63c55e68e571036750d4e632f15041176a7a4c41028a0f767523808efebbf62d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/hind-near-paw.png",
+      "bytes": 6321,
+      "sha256": "3c747b19e73ff9eec410f023ea1d7f305ef1c44faa2c3aac9a0356e4e6d102b1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/hind-near-root.png",
+      "bytes": 131693,
+      "sha256": "1f25f7e9e032253a98d48fa3ee6513c80a2c9871db3fec88815359b0f513336b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/jaw.png",
+      "bytes": 34822,
+      "sha256": "b922c7ace9fbb723c50a62b7cdbeb9e49b60881bc02490622ddc640f80a1304a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/neck.png",
+      "bytes": 121021,
+      "sha256": "72ee7596a33a346f0c7995743c4c44ceb0f02997e8b84bda4fd20f60d71e71dd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/pelvis.png",
+      "bytes": 111417,
+      "sha256": "e9f8893fa1539ba27c70e04938382a36c1d287bbd25f14f265abab76e702b0d4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/root.png",
+      "bytes": 550,
+      "sha256": "47207c774bb394e478cbf4721c63d5be03cb1e0eb9e2bbc99e539a57c4fcf164"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/spine.png",
+      "bytes": 382681,
+      "sha256": "dd609ac85fd02247ee5eff5b27e048cf46c1d01ba7273e627f6d4b4bb79f7859"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/tail0.png",
+      "bytes": 16234,
+      "sha256": "a81e0a18768b2da3648a0dd8d725f3801562a7f7fbe5f2775897fd6038c61ee9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/tail1.png",
+      "bytes": 29726,
+      "sha256": "0b18fb31216fc39e2e04d005ed9065e2f35e997d4a79a36894b82d2a38da44ec"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/tail2.png",
+      "bytes": 33956,
+      "sha256": "b1e4b78daafe1057fb6118c3b446313d91bc55be701dbd53f1af7f1253c854bf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/parts/tail3.png",
+      "bytes": 37951,
+      "sha256": "f08c59731426804d8421be0b813f8473edd030ee4e3d5f581256f6154aaf589e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/parts/receipt.json",
+      "bytes": 8004,
+      "sha256": "06481aed1e0814541a511e9067dbc34084a03c2d751ed03c4e3c8976400f8ed3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/pre-split-binding.json",
+      "bytes": 2250880,
+      "sha256": "3afb173b017af04d6945cc47c3b7933ff32a0c80d21addc7d88faddff9399ba0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/receipt.json",
+      "bytes": 2824,
+      "sha256": "49774e46be1d7f246e68b552517d7462e9b4dd8ba2e05a19418cc82ca14660a1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-01/record.json",
+      "bytes": 7411,
+      "sha256": "1634caf66f5aa75383fe563620371c298aafc085205b79a211a0ecf52583ea6a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/binding.json",
+      "bytes": 3738305,
+      "sha256": "a75aba0ee05ff916c18e08d5137bb04d3d70804c5e4ab31909683e0beec816b4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/candidate-weld-receipt.json",
+      "bytes": 6539,
+      "sha256": "a3377d4e643b4bfa76308bb512fd2dfe0ac68d9d0106109fd4d8ade315d4b481"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/declaration.json",
+      "bytes": 3192,
+      "sha256": "2ed66502334829928e2a79c1894b8febbc8e17f1ef1f86604f2f0899c34f4564"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/intake-provenance.json",
+      "bytes": 3600,
+      "sha256": "663eb056425f9bcc519f3386a2e0ddd51a122b3022efffb2f485bdef799204f5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/label-authoring-receipt.json",
+      "bytes": 738,
+      "sha256": "9d476fb681039604912dfad464526f11882eed11fb6132dca332c29425c5aaf2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/labels.png",
+      "bytes": 56114,
+      "sha256": "8821e7a2be638f3b4ca4de85664bdfe9963e7b9b95388c27c3d01a71e6b50d01"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/markings.json",
+      "bytes": 25116,
+      "sha256": "8baa42c7baacee70b5c9d92ba4152a2296f1f138b8d5d1dbe5b1e87681464fae"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/paint-boundary-continuity.json",
+      "bytes": 1474,
+      "sha256": "63e6851529a6a16636d7dc5be43cd8be6f8e1bdf3a9ce5d60ef9fefafeba9539"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/atlas/cattle.json",
+      "bytes": 12683,
+      "sha256": "edaea5726b7e764c6be159e2dfb357967c144ed8fa77fac7dd1158d87b45a93c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/atlas/cattle.png",
+      "bytes": 1199029,
+      "sha256": "afa89c5075a7d23a74f5e19693b0c5feb161e968ad14a4ed31faee12f5bd780c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/atlas/receipt.json",
+      "bytes": 4726,
+      "sha256": "9f9a405b4677744e57f48b47b77362c7967421f0dd14a7f77d164a5990e4a915"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/binding.json",
+      "bytes": 10370,
+      "sha256": "abe14822a7442a797fb5057217c62a1bc2898b23d09480f4de233d7c715bfced"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/keyed.png",
+      "bytes": 1593556,
+      "sha256": "977890154b04f46803bd70b99d70f8e2c79ac0f74211bb52b0ab5f2d794b2a5b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/ownership.png",
+      "bytes": 160679,
+      "sha256": "910b4c7ac57b3a9ab1c02679a36575afdc3c749080855b55c86260cf9af30b43"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/chest.png",
+      "bytes": 79033,
+      "sha256": "b7bce92131ada7784c49299923bb0d612e76aeaed50d495032ba96c6657f8532"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/ear-far-root.png",
+      "bytes": 4832,
+      "sha256": "409a50882bc43c4f5e9062772530e40f33a924b676670ec2385fcd34d37fb137"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/ear-far-tip.png",
+      "bytes": 1328,
+      "sha256": "4ae37e7b04b5c6b18708eb2b706d5bcc3f10aceaa3f00c641eebc5be17b6026d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/ear-near-root.png",
+      "bytes": 10999,
+      "sha256": "85d7679ccde0903d5034bcdca68e0b0408b015d57f34081d6476416269ec1dff"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/ear-near-tip.png",
+      "bytes": 11585,
+      "sha256": "cb277c5bbbf3ef0d11d299df86bd9349aba3bdf7ec54a777412c64cfaf6174f2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/fore-far-ankle.png",
+      "bytes": 12187,
+      "sha256": "2c204afd03725da0a6f34b7aeed4c2dfe89ae8b3e03d62fbe2194863688ad2c3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/fore-far-knee.png",
+      "bytes": 22291,
+      "sha256": "ba364e34135e8b94f4d2dc2ef9d08435ca5b85670f2a95457581db1e6e6e02be"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/fore-far-paw.png",
+      "bytes": 5460,
+      "sha256": "f4081c2758677a3cd8392afebec6cb939f2db2ad9e75efdefe2bafaa96ba521f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/fore-far-root.png",
+      "bytes": 13523,
+      "sha256": "ede7b76fae40a7f9c939d50c65699cf2560d56552ce6409326be589c3ecefd98"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/fore-near-ankle.png",
+      "bytes": 14318,
+      "sha256": "5f6559042d440898fb81e0c5fa3b01c2068d7047a49a3822d9c1811b29f79632"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/fore-near-knee.png",
+      "bytes": 45064,
+      "sha256": "ac3c233f5f10d8dc3837cc1fae69fd535ceb02a661135023f6b34a075ca039d7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/fore-near-paw.png",
+      "bytes": 9017,
+      "sha256": "e3696199313248b9e39672089e328953a21cabc90f44248d2c31f7998ae790fc"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/fore-near-root.png",
+      "bytes": 162412,
+      "sha256": "6c8a28ada1abca096e5eda85737c66bfbe4309856230f9528878e26d1967b3fb"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/head.png",
+      "bytes": 97336,
+      "sha256": "d44a854c689fdcb1d6eb6343174bfe10536e9b8e93fcf1c951bc608434e71314"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/hind-far-ankle.png",
+      "bytes": 12803,
+      "sha256": "006a23527533a42fd1d0ca4e7811e559c575cb09ae88d2b14d6e1635635f2105"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/hind-far-knee.png",
+      "bytes": 40041,
+      "sha256": "8bab735fd59bfbaffb16a3b4f7806e75dd79d149d11b056bbd00b4c7f780a223"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/hind-far-paw.png",
+      "bytes": 6380,
+      "sha256": "41cb233627e57e691f701bd14f77a31d515383c677a1ae224fc9f23caf82f920"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/hind-far-root.png",
+      "bytes": 37416,
+      "sha256": "79da8ee3e90e11b97d777a54f7ea7556e373c1166db6c6f8e95d8a62f07d9879"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/hind-near-ankle.png",
+      "bytes": 14228,
+      "sha256": "ab0cd5db555625278af7960f86de80edd69702aac776cb68e9961016cdd67981"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/hind-near-knee.png",
+      "bytes": 56539,
+      "sha256": "63c55e68e571036750d4e632f15041176a7a4c41028a0f767523808efebbf62d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/hind-near-paw.png",
+      "bytes": 6321,
+      "sha256": "3c747b19e73ff9eec410f023ea1d7f305ef1c44faa2c3aac9a0356e4e6d102b1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/hind-near-root.png",
+      "bytes": 131693,
+      "sha256": "1f25f7e9e032253a98d48fa3ee6513c80a2c9871db3fec88815359b0f513336b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/jaw.png",
+      "bytes": 34822,
+      "sha256": "b922c7ace9fbb723c50a62b7cdbeb9e49b60881bc02490622ddc640f80a1304a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/neck.png",
+      "bytes": 121021,
+      "sha256": "72ee7596a33a346f0c7995743c4c44ceb0f02997e8b84bda4fd20f60d71e71dd"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/pelvis.png",
+      "bytes": 111417,
+      "sha256": "e9f8893fa1539ba27c70e04938382a36c1d287bbd25f14f265abab76e702b0d4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/root.png",
+      "bytes": 550,
+      "sha256": "47207c774bb394e478cbf4721c63d5be03cb1e0eb9e2bbc99e539a57c4fcf164"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/spine.png",
+      "bytes": 382681,
+      "sha256": "dd609ac85fd02247ee5eff5b27e048cf46c1d01ba7273e627f6d4b4bb79f7859"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/tail0.png",
+      "bytes": 16234,
+      "sha256": "a81e0a18768b2da3648a0dd8d725f3801562a7f7fbe5f2775897fd6038c61ee9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/tail1.png",
+      "bytes": 29726,
+      "sha256": "0b18fb31216fc39e2e04d005ed9065e2f35e997d4a79a36894b82d2a38da44ec"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/tail2.png",
+      "bytes": 33956,
+      "sha256": "b1e4b78daafe1057fb6118c3b446313d91bc55be701dbd53f1af7f1253c854bf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/parts/tail3.png",
+      "bytes": 37951,
+      "sha256": "f08c59731426804d8421be0b813f8473edd030ee4e3d5f581256f6154aaf589e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/parts/receipt.json",
+      "bytes": 8004,
+      "sha256": "06481aed1e0814541a511e9067dbc34084a03c2d751ed03c4e3c8976400f8ed3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/pre-split-binding.json",
+      "bytes": 2250880,
+      "sha256": "3afb173b017af04d6945cc47c3b7933ff32a0c80d21addc7d88faddff9399ba0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/receipt.json",
+      "bytes": 2824,
+      "sha256": "49774e46be1d7f246e68b552517d7462e9b4dd8ba2e05a19418cc82ca14660a1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-fit-02/record.json",
+      "bytes": 7411,
+      "sha256": "1634caf66f5aa75383fe563620371c298aafc085205b79a211a0ecf52583ea6a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-input-01/authoring.json",
+      "bytes": 13297,
+      "sha256": "2824d3a267d47d98c334101ca0915f826e50f558cf70c25563ebf08410e98228"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-input-01/master.png",
+      "bytes": 1134291,
+      "sha256": "0510920919b791b9186d0d1dafeed17625074ee2a6c586d9ddcb703f2005f590"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-input-01/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-input-01/subject-source.json",
+      "bytes": 11352,
+      "sha256": "414e11a152a04fa931bce39c8bc3accc188630b49064b6f1b4831f2f5cea4ad0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-intake-01.log",
+      "bytes": 334,
+      "sha256": "02355db4baf8568cc04eac9d40f4e3ac473b09072273e03fb4ec3e211e0ec926"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-paint-boundaries.json",
+      "bytes": 1217,
+      "sha256": "f573cdf1bedfb41ab686576fce8ee644ee9253bc944f77eb8a31f1795f857e8c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-static-02.json",
+      "bytes": 40098,
+      "sha256": "0978c4fb48a570b8278a03ddbdcb4f89a795fede78e9ff957b1b543c8e2aadaf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-static-02.json.sources.json",
+      "bytes": 15162,
+      "sha256": "d192ce73d44e56f73f2eb5b2487af91cbf8c7ba9024eaab8b97bb7e1d9652540"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-static-02.log",
+      "bytes": 3074,
+      "sha256": "9516eff0663da8a140be64473ffd5c36b665e97f9a600b11168b7162df3cc01c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/cattle-weld-02.log",
+      "bytes": 1603,
+      "sha256": "5b07cba94a4fd014aec33607ce3c9bab753347422ef9abf44af6d18517e9fd48"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/binding.json",
+      "bytes": 2998764,
+      "sha256": "a0a77a25cb7e730623fb370c143f962db9cdb0a0d12d11ab2294659b65a816c0"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/declaration.json",
+      "bytes": 3192,
+      "sha256": "b203f13bda1ff5fe0afe6e7445db3aa6f66a4069db3ea3b35d658a3ab6476e03"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/intake-provenance.json",
+      "bytes": 3600,
+      "sha256": "f97dfd39e141f5523bbc5e93b9652122ddcb309be1d2a17e62b5923a1037cab7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/label-authoring-receipt.json",
+      "bytes": 730,
+      "sha256": "8a16940ab83fd314aa9e09f2c36686e7b21585efb9c10ab4951259268184cfcf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/labels.png",
+      "bytes": 57367,
+      "sha256": "5c3af48c71510d30ccad33d15d8b6eda279b0ee3ce4f1a2395fdd8c4786e88af"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/atlas/impala.json",
+      "bytes": 12693,
+      "sha256": "efa3a151c9e129dcf0ab79ad6ed2581731c9a924be6aa9b3dd020fe826bb3d54"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/atlas/impala.png",
+      "bytes": 995777,
+      "sha256": "c09bdef8a344c344d57dd2092b2a8ecc24668f99d643ca04c0d32ca2d0c9ae95"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/atlas/receipt.json",
+      "bytes": 4726,
+      "sha256": "a568eebd1ed53f878e2df9934f61057b0f8142fc96126e8a42d678728141aade"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/binding.json",
+      "bytes": 10378,
+      "sha256": "d13ff486b296ed99f2581cdda98d6d68a567a8b499d00ec83a1b714e5a1e24be"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/keyed.png",
+      "bytes": 1189938,
+      "sha256": "88c8a47092017a832447f9abbc57ad4033923eca70cf07a83b34b382bdd2790d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/ownership.png",
+      "bytes": 146300,
+      "sha256": "0d819f2e101cae522e72cb12fe793c32586d5e24027b8eb2ea6209f2a9ed5477"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/chest.png",
+      "bytes": 41061,
+      "sha256": "a2335fff91d7a27f47889744ce27ed8c634ec186d5758c8f5769fb1c1bed27ed"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/ear-far-root.png",
+      "bytes": 7189,
+      "sha256": "4ed5d33d6727b21df8b96df8ed3af891e9809f150eaf279fd36897d59ae25643"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/ear-far-tip.png",
+      "bytes": 3582,
+      "sha256": "5a33bc7356d02e8b37e4e26b30d97686f1b7cfb89cabdf3d929d7c1f9ead2c81"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/ear-near-root.png",
+      "bytes": 12083,
+      "sha256": "e6f08c32fb7a634f3909defa5b17a5c6ec4dea3a6faa2550d05f01dee59f4fd4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/ear-near-tip.png",
+      "bytes": 15104,
+      "sha256": "d89fdeab72ce0a15be69517983432045c041f2564b7e16adc3a3c1753970b302"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/fore-far-ankle.png",
+      "bytes": 16260,
+      "sha256": "f09d88ebe1a6d0e988114013beaf01a2f6cce9b591cf7873a4310e72ff2af75b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/fore-far-knee.png",
+      "bytes": 12263,
+      "sha256": "38ffdda1e2b7775a02d8dd9dabfe16549d3c4f70e8dadee47936b90e37582f93"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/fore-far-paw.png",
+      "bytes": 20665,
+      "sha256": "24cd8fb3c43d0d3023a31f231cc366ff394890dbfdabb1aeb75e8e49d2215b7a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/fore-far-root.png",
+      "bytes": 678,
+      "sha256": "291225b9982068a0b8f2df4b6ec53bcd83b886d0fa26895f6cd4aca84d3344b1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/fore-near-ankle.png",
+      "bytes": 19984,
+      "sha256": "e42b9e3126f7baa1da7fca5587d5582b4eaca9b34d79cc2f775da356fbb2b09a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/fore-near-knee.png",
+      "bytes": 64795,
+      "sha256": "9c1aefcb6f4190099f1b5e584fb588b3bc42ecc734e817d4f84ee243ce605205"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/fore-near-paw.png",
+      "bytes": 26407,
+      "sha256": "a626288ec3620b514aab1bc30207a5b34e8e1bf99a7963e89625427ec92b6e3a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/fore-near-root.png",
+      "bytes": 100419,
+      "sha256": "4b1f475a5274eda72a48b1fa043cd506e822f304f4c04d6e99626aaa5bf480c6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/head.png",
+      "bytes": 135087,
+      "sha256": "8b1b1388b39352ad2a76e756ec9e4f38115b6e422f4169a6edeae8882b7bf3df"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/hind-far-ankle.png",
+      "bytes": 26408,
+      "sha256": "631d6d5a240bacd30a3a384979f402e5aca5d1bd9b321c937407e806dc172458"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/hind-far-knee.png",
+      "bytes": 15967,
+      "sha256": "5fd659d4c83bdfd2291b87a7e676ce3d5664be02476a01b34296ad9539996209"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/hind-far-paw.png",
+      "bytes": 32398,
+      "sha256": "f21ac667f568333615d964ef1bf76abe9604addc6a9a0c7fc574032caefd1bb6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/hind-far-root.png",
+      "bytes": 632,
+      "sha256": "69f3b1f4933a3cd56b9999bf760849c0753d21a2cd57325c124cb420ec388d80"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/hind-near-ankle.png",
+      "bytes": 31924,
+      "sha256": "d523d73ea9e8024fd99f24bc1589225c870479d3face37ac7c3f06488f05d707"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/hind-near-knee.png",
+      "bytes": 88531,
+      "sha256": "daf479d3ca2efb13a1d8e232350bdb38f10f53ffb5420e397c6bd7d36cb3f1cf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/hind-near-paw.png",
+      "bytes": 36038,
+      "sha256": "c8e1cbd3fa6c41cafdc0181c2d9e040975065126aae70f22e4974b8a243c9fa5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/hind-near-root.png",
+      "bytes": 131752,
+      "sha256": "6668dcb38fe79fe34cff46c9d57b0a3b41af66aee87455edfb74c2279dd3bb63"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/jaw.png",
+      "bytes": 16572,
+      "sha256": "a802023c475f478da327d313f568699b44d1e6364e567911058be0329a31c3ae"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/neck.png",
+      "bytes": 103330,
+      "sha256": "8191ab2bda992a293b26e3650ed7722ccc1e3ae7955889f0804885d1955e8af5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/pelvis.png",
+      "bytes": 3685,
+      "sha256": "e5eb68bc97759de76425b774e0cfeb9321b1264601d54fdc97ee1e8cb3a7a16f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/root.png",
+      "bytes": 589,
+      "sha256": "3310a47f60558071b077b905fae50f70e2ee292a8f9355823c45c7e2da924115"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/spine.png",
+      "bytes": 179983,
+      "sha256": "3d4e7ee87c215dbd561918c79f5a515bff3934befa18cd64f04aa666c121e96d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/tail0.png",
+      "bytes": 3025,
+      "sha256": "5666e1bdf97e61ee24815be31daaebdccfa52d0d589536471f4af869cd624f1a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/tail1.png",
+      "bytes": 6753,
+      "sha256": "6fd93d773126b6ddcd199d0adca77f61aaa8815028468fbefc9d4eac799e9fa3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/tail2.png",
+      "bytes": 7799,
+      "sha256": "2ceffa601e3a0d864671094ed86cacbbf44ae93e9d10601b6d93c5ffc0a35c81"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/parts/tail3.png",
+      "bytes": 5169,
+      "sha256": "8270230a5db71881a95414472fc6ea22c7394dc210e490be4b6ec69769e63295"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/parts/receipt.json",
+      "bytes": 8002,
+      "sha256": "ecb3142356b1ee4c4cba6456c7a6c68f469bba8f3a2ea17c3892cc08afa20b55"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/pre-split-binding.json",
+      "bytes": 1871133,
+      "sha256": "f6ebf8eaab6bc468d57fe5f7e7111cdf3d67a4af089c539ef0f590fc19cef719"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/receipt.json",
+      "bytes": 2826,
+      "sha256": "02c00f9cb5a0ad16e5afd252e5fd797e7f73b9253961ee6ffb0764fd54316f38"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-01/record.json",
+      "bytes": 7582,
+      "sha256": "e41b53418ccd6ac0875c98a0abd166df27afbe06e1f258ef05bad42b3c089000"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/binding.json",
+      "bytes": 2991013,
+      "sha256": "8350613f2d881e2e514b5771a522ed583284034f8cebe7c23cba40e4497991e8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/candidate-weld-receipt.json",
+      "bytes": 3307,
+      "sha256": "ea9590235512039b201a251b66e7182cc9959c734e5961766a9246d29e8ae812"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/declaration.json",
+      "bytes": 3192,
+      "sha256": "b203f13bda1ff5fe0afe6e7445db3aa6f66a4069db3ea3b35d658a3ab6476e03"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/intake-provenance.json",
+      "bytes": 3600,
+      "sha256": "f97dfd39e141f5523bbc5e93b9652122ddcb309be1d2a17e62b5923a1037cab7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/label-authoring-receipt.json",
+      "bytes": 730,
+      "sha256": "8a16940ab83fd314aa9e09f2c36686e7b21585efb9c10ab4951259268184cfcf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/labels.png",
+      "bytes": 57367,
+      "sha256": "5c3af48c71510d30ccad33d15d8b6eda279b0ee3ce4f1a2395fdd8c4786e88af"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/markings.json",
+      "bytes": 25364,
+      "sha256": "fbe54831a7ca19a1bf81d974fbb75538a194022b0e0b944f84989c0b602dfc9a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/paint-boundary-continuity.json",
+      "bytes": 457,
+      "sha256": "4807f804e7587ad2389b51c40a161ef76bb058c32d2851e32135b82d8ad7c12c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/atlas/impala.json",
+      "bytes": 12693,
+      "sha256": "efa3a151c9e129dcf0ab79ad6ed2581731c9a924be6aa9b3dd020fe826bb3d54"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/atlas/impala.png",
+      "bytes": 995777,
+      "sha256": "c09bdef8a344c344d57dd2092b2a8ecc24668f99d643ca04c0d32ca2d0c9ae95"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/atlas/receipt.json",
+      "bytes": 4726,
+      "sha256": "a568eebd1ed53f878e2df9934f61057b0f8142fc96126e8a42d678728141aade"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/binding.json",
+      "bytes": 10378,
+      "sha256": "d13ff486b296ed99f2581cdda98d6d68a567a8b499d00ec83a1b714e5a1e24be"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/keyed.png",
+      "bytes": 1189938,
+      "sha256": "88c8a47092017a832447f9abbc57ad4033923eca70cf07a83b34b382bdd2790d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/ownership.png",
+      "bytes": 146300,
+      "sha256": "0d819f2e101cae522e72cb12fe793c32586d5e24027b8eb2ea6209f2a9ed5477"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/chest.png",
+      "bytes": 41061,
+      "sha256": "a2335fff91d7a27f47889744ce27ed8c634ec186d5758c8f5769fb1c1bed27ed"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/ear-far-root.png",
+      "bytes": 7189,
+      "sha256": "4ed5d33d6727b21df8b96df8ed3af891e9809f150eaf279fd36897d59ae25643"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/ear-far-tip.png",
+      "bytes": 3582,
+      "sha256": "5a33bc7356d02e8b37e4e26b30d97686f1b7cfb89cabdf3d929d7c1f9ead2c81"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/ear-near-root.png",
+      "bytes": 12083,
+      "sha256": "e6f08c32fb7a634f3909defa5b17a5c6ec4dea3a6faa2550d05f01dee59f4fd4"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/ear-near-tip.png",
+      "bytes": 15104,
+      "sha256": "d89fdeab72ce0a15be69517983432045c041f2564b7e16adc3a3c1753970b302"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/fore-far-ankle.png",
+      "bytes": 16260,
+      "sha256": "f09d88ebe1a6d0e988114013beaf01a2f6cce9b591cf7873a4310e72ff2af75b"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/fore-far-knee.png",
+      "bytes": 12263,
+      "sha256": "38ffdda1e2b7775a02d8dd9dabfe16549d3c4f70e8dadee47936b90e37582f93"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/fore-far-paw.png",
+      "bytes": 20665,
+      "sha256": "24cd8fb3c43d0d3023a31f231cc366ff394890dbfdabb1aeb75e8e49d2215b7a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/fore-far-root.png",
+      "bytes": 678,
+      "sha256": "291225b9982068a0b8f2df4b6ec53bcd83b886d0fa26895f6cd4aca84d3344b1"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/fore-near-ankle.png",
+      "bytes": 19984,
+      "sha256": "e42b9e3126f7baa1da7fca5587d5582b4eaca9b34d79cc2f775da356fbb2b09a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/fore-near-knee.png",
+      "bytes": 64795,
+      "sha256": "9c1aefcb6f4190099f1b5e584fb588b3bc42ecc734e817d4f84ee243ce605205"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/fore-near-paw.png",
+      "bytes": 26407,
+      "sha256": "a626288ec3620b514aab1bc30207a5b34e8e1bf99a7963e89625427ec92b6e3a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/fore-near-root.png",
+      "bytes": 100419,
+      "sha256": "4b1f475a5274eda72a48b1fa043cd506e822f304f4c04d6e99626aaa5bf480c6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/head.png",
+      "bytes": 135087,
+      "sha256": "8b1b1388b39352ad2a76e756ec9e4f38115b6e422f4169a6edeae8882b7bf3df"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/hind-far-ankle.png",
+      "bytes": 26408,
+      "sha256": "631d6d5a240bacd30a3a384979f402e5aca5d1bd9b321c937407e806dc172458"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/hind-far-knee.png",
+      "bytes": 15967,
+      "sha256": "5fd659d4c83bdfd2291b87a7e676ce3d5664be02476a01b34296ad9539996209"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/hind-far-paw.png",
+      "bytes": 32398,
+      "sha256": "f21ac667f568333615d964ef1bf76abe9604addc6a9a0c7fc574032caefd1bb6"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/hind-far-root.png",
+      "bytes": 632,
+      "sha256": "69f3b1f4933a3cd56b9999bf760849c0753d21a2cd57325c124cb420ec388d80"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/hind-near-ankle.png",
+      "bytes": 31924,
+      "sha256": "d523d73ea9e8024fd99f24bc1589225c870479d3face37ac7c3f06488f05d707"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/hind-near-knee.png",
+      "bytes": 88531,
+      "sha256": "daf479d3ca2efb13a1d8e232350bdb38f10f53ffb5420e397c6bd7d36cb3f1cf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/hind-near-paw.png",
+      "bytes": 36038,
+      "sha256": "c8e1cbd3fa6c41cafdc0181c2d9e040975065126aae70f22e4974b8a243c9fa5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/hind-near-root.png",
+      "bytes": 131752,
+      "sha256": "6668dcb38fe79fe34cff46c9d57b0a3b41af66aee87455edfb74c2279dd3bb63"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/jaw.png",
+      "bytes": 16572,
+      "sha256": "a802023c475f478da327d313f568699b44d1e6364e567911058be0329a31c3ae"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/neck.png",
+      "bytes": 103330,
+      "sha256": "8191ab2bda992a293b26e3650ed7722ccc1e3ae7955889f0804885d1955e8af5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/pelvis.png",
+      "bytes": 3685,
+      "sha256": "e5eb68bc97759de76425b774e0cfeb9321b1264601d54fdc97ee1e8cb3a7a16f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/root.png",
+      "bytes": 589,
+      "sha256": "3310a47f60558071b077b905fae50f70e2ee292a8f9355823c45c7e2da924115"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/spine.png",
+      "bytes": 179983,
+      "sha256": "3d4e7ee87c215dbd561918c79f5a515bff3934befa18cd64f04aa666c121e96d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/tail0.png",
+      "bytes": 3025,
+      "sha256": "5666e1bdf97e61ee24815be31daaebdccfa52d0d589536471f4af869cd624f1a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/tail1.png",
+      "bytes": 6753,
+      "sha256": "6fd93d773126b6ddcd199d0adca77f61aaa8815028468fbefc9d4eac799e9fa3"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/tail2.png",
+      "bytes": 7799,
+      "sha256": "2ceffa601e3a0d864671094ed86cacbbf44ae93e9d10601b6d93c5ffc0a35c81"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/parts/tail3.png",
+      "bytes": 5169,
+      "sha256": "8270230a5db71881a95414472fc6ea22c7394dc210e490be4b6ec69769e63295"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/parts/receipt.json",
+      "bytes": 8002,
+      "sha256": "ecb3142356b1ee4c4cba6456c7a6c68f469bba8f3a2ea17c3892cc08afa20b55"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/pre-split-binding.json",
+      "bytes": 1871133,
+      "sha256": "f6ebf8eaab6bc468d57fe5f7e7111cdf3d67a4af089c539ef0f590fc19cef719"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/receipt.json",
+      "bytes": 2826,
+      "sha256": "02c00f9cb5a0ad16e5afd252e5fd797e7f73b9253961ee6ffb0764fd54316f38"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-fit-02/record.json",
+      "bytes": 7582,
+      "sha256": "e41b53418ccd6ac0875c98a0abd166df27afbe06e1f258ef05bad42b3c089000"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-input-01/authoring.json",
+      "bytes": 13811,
+      "sha256": "838e9b1a2859c5dffe31381e31def92dd77f77baa00dad872ce83c6a933ccaac"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-input-01/master.png",
+      "bytes": 971622,
+      "sha256": "abad16f380bf27e2a17123882dd1ba027e196f10a180f299dbb470663e2b031a"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-input-01/presence.json",
+      "bytes": 89,
+      "sha256": "87470cdb432e53322bf6b85c040101fa8a47703ecd9baccd8e69e1604e54d0aa"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-input-01/subject-source.json",
+      "bytes": 11314,
+      "sha256": "d65c1c12400d4548d222da36dff910062cc0535f16bf807f2a93046a446490df"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-intake-01.log",
+      "bytes": 334,
+      "sha256": "e0a0f2c1885c4962bb573b3d860634fb9575a488865804140789099a6a37144d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-paint-boundaries.json",
+      "bytes": 200,
+      "sha256": "e2b536477961bd3ef9ee7b69bf44c71f7dd747001f3d8572ecee84216b67e229"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-static-02.json",
+      "bytes": 11323,
+      "sha256": "ace800bf616c8a10050d8525c2f5c63167cf7192db0afdfa70138f9f8ff5bf91"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-static-02.json.sources.json",
+      "bytes": 15162,
+      "sha256": "bcc7b9d664184fea2d5fc0428c2af30607d786c98511f69367b0bcebc28c742f"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-static-02.log",
+      "bytes": 2922,
+      "sha256": "807a2ad3a38d54cd08f16f17ef81b92ca2df1a18b3485a189c1edcbd62b36649"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/impala-weld-02.log",
+      "bytes": 1144,
+      "sha256": "cb79b1946aa021e242f2001a254f971989928390fd96de883ee0ca539374eab5"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/mailbox-end.json",
+      "bytes": 120,
+      "sha256": "c645e4aea81c4b2ecfb393c2c1b8a0786d9e1ed7dfe63ef36f09146101fee32e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/make-review.py",
+      "bytes": 1233,
+      "sha256": "416583c9828de554008b9be450770666386b7f6ec4a3cb4dc95d44177fb4f179"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/mask-compatibility.json",
+      "bytes": 4466,
+      "sha256": "9fbad94a1dc894153e068179979c7e8d456b745fde1f929be16394a79b281e66"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/battle-full.webm",
+      "bytes": 11453194,
+      "sha256": "a48f1a05d795533fcf763870c87e157bec9a711db9b27b71236a3c5283ea1142"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/report.json",
+      "bytes": 390591,
+      "sha256": "d1d72c5e22e6a8ccee9ff2af39929031ba85825e15d18989ab11a2477bb1e172"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn0-hit-approach-50.png",
+      "bytes": 1540281,
+      "sha256": "d6b82449a9c986caa9e8eb35a531662a2ec5a06c179b90c3044903e590239240"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn0-hit-impact.png",
+      "bytes": 972665,
+      "sha256": "2c1150dc2f84c213d22ebd6fd1fc15ecb513bab7f6213d043f5a5571ec8812e2"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn0-hit-reaction-50.png",
+      "bytes": 1541464,
+      "sha256": "e2bb5a54ef4540cd39969d47648f6b87808adabd761e22ea6499334a76808380"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn0-hit-return-end.png",
+      "bytes": 1540150,
+      "sha256": "34168ab6242812eb28627a26e2189323ec7cc8620041c35c7f855034c08d06a7"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn1-hit-approach-50.png",
+      "bytes": 1540422,
+      "sha256": "ff5f5a69180b42de5a15657c96410c5a5ce7d55ea03a144344344dfe7bfc4b71"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn1-hit-impact.png",
+      "bytes": 970540,
+      "sha256": "f407eda31d25252641719566a7ee008549c8841666cf214b6a1a1c0d47e08133"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn1-hit-reaction-50.png",
+      "bytes": 1540136,
+      "sha256": "21ff2bc92cd56941e526e9d15f95770ce9c6f70815d8784e3b7349bfc6a5038d"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn1-hit-return-end.png",
+      "bytes": 1540096,
+      "sha256": "073d29b0b9d64d1455ce7eadb07fae6b1d0fce512fa02c0ec3edf2a6181a3812"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn2-dodge-approach-50.png",
+      "bytes": 1540281,
+      "sha256": "3727768f4d2e98fd27609693ecc6ceb1a4ce27f828f9cf680754206e85b5c016"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn2-dodge-impact.png",
+      "bytes": 1544538,
+      "sha256": "178bf06645523a02e4eae79cf248cd299cd8021cedb1e4a3ef727d14205c4b41"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn2-dodge-reaction-50.png",
+      "bytes": 1545125,
+      "sha256": "21fa33e9a126ea4beafc28b7e65ea1449ec5256eb14bcff24477e6a43a1d4bac"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn2-dodge-return-end.png",
+      "bytes": 1540245,
+      "sha256": "c8df9fc0d088ebb4725b8fabc25b296ebd13456252eccd797335452d320b8544"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn3-hit-approach-50.png",
+      "bytes": 1540281,
+      "sha256": "d6b82449a9c986caa9e8eb35a531662a2ec5a06c179b90c3044903e590239240"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn3-hit-idle-50.png",
+      "bytes": 1543146,
+      "sha256": "2ad5a13a46c88ddb0c568e2b6876522598b3e899cceaaf9bf37ea638656ee541"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn3-hit-idle-90.png",
+      "bytes": 1536411,
+      "sha256": "3302c58cfa9c1289173740b4b179c8f86c6b17375a39e7738b2d93d1f9fe3eaf"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn3-hit-impact.png",
+      "bytes": 1542304,
+      "sha256": "e51f6fd0bcfb972514b3809a8c4f811dd0d3fad2e91cf67dcb88fcefa5b18d84"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn3-hit-reaction-50.png",
+      "bytes": 1538563,
+      "sha256": "2cdb36b348f8d240db14b06ac1d283335f8ba256ee51f89679a235028a58f3e9"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01/turn3-hit-return-end.png",
+      "bytes": 1536867,
+      "sha256": "bcac129e75cbc43da0f699e1d2c34809f0331e4704486a35fbde6a3362357234"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-impala-01.log",
+      "bytes": 218,
+      "sha256": "55ec2df55ad4ae002bc7e9c967661bafa018a303c489b414f82d4338121cddc8"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/native-summary.json",
+      "bytes": 694,
+      "sha256": "3ee329de1a5cdb7257abdd96ac0bf08760c45af81dd6b34b90a6475232d9405c"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/own-mask-conservation.mjs",
+      "bytes": 2996,
+      "sha256": "b830a30d9e2c0367e4be2d6cddcd79bd38497700f6a14e4413ace8678e31534e"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/review-sheet.png",
+      "bytes": 1971065,
+      "sha256": "2486cb2238e0f145fade989d345ff8a4df76ec5e6107d40fb0abea762d363d62"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/root-validate.log",
+      "bytes": 1093,
+      "sha256": "23caa173609d73ae459a29b35dcb0badbf991463d516d5bb8cd0c1571ed4a750"
+    },
+    {
+      "path": "audits/ART_BATTLE_FOCUS_20260925/interior-root-repair-05/weld-candidate.mjs",
+      "bytes": 2716,
+      "sha256": "959dc01a6f721f15a1b1ca20dda4f52a1cf7f4380e77ce320ad9e96147d4edaa"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "cf.authored-paint-boundary-continuity/v1",
+  "recordRecipeHash": "d4d0f9974c19f3ed15bce209e68dd35614f221f445e04a8a3225691195da5f3f",
+  "bindingHash": "7a5cc081e76e7ff2cdb72f8f03bb5777456fe9c1fe82189608bc5fb638c85f99",
+  "pairs": [
+    [
+      "far-wing-shoulder",
+      "neck-lower"
+    ],
+    [
+      "far-wing-shoulder",
+      "neck-upper"
+    ],
+    [
+      "near-wing-shoulder",
+      "neck-lower"
+    ]
+  ],
+  "author": "Codex",
+  "declaration": "The shoulder/neck boundaries are continuous painted feather junctions. They must not open the angular holes visible in native01. Distal wing overlap edges and leg gaps remain independent."
+}

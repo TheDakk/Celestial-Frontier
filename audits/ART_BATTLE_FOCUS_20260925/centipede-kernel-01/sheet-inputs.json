@@ -1,0 +1,93 @@
+{
+  "note": "Diagnostic layout only; source assets untouched. Approach/return images from each distinct final-source capture.",
+  "inputs": [
+    {
+      "path": "library-phone4x-03/summary.json",
+      "sha256": "3f44b82cbcc4cfcf99605d1eaaffa3d2ac818c58a2964f29f4efcf4d47870bdc"
+    },
+    {
+      "path": "remaining-phone4x-04/summary.json",
+      "sha256": "45e107d617175c3ef8e1dbe46801e41efec2eec888e24edf1f66c0d682347c4f"
+    },
+    {
+      "path": "library-phone4x-03/python-vs-tarantula/turn0-hit-approach-50.png",
+      "sha256": "50a6062eb42bf9c5f8289644d3d1c82f47e1905e7a39d5cf23aeddd6aab5b0fd"
+    },
+    {
+      "path": "library-phone4x-03/python-vs-tarantula/turn1-hit-return-end.png",
+      "sha256": "975ef6526b5b6f4f642e11c10d3dae39ca03a7bc82545ede088ab5eff7b1ed05"
+    },
+    {
+      "path": "library-phone4x-03/eagle-vs-beetle/turn0-hit-approach-50.png",
+      "sha256": "24e1c84be1240313541f2352716cac9f79b75b1ab8caae7a4dd9f0fa0af38e23"
+    },
+    {
+      "path": "library-phone4x-03/eagle-vs-beetle/turn1-hit-return-end.png",
+      "sha256": "4058570cddcf099c4d56ad5be9bdb28af116ed9dd22ce5e93a085119336cf192"
+    },
+    {
+      "path": "library-phone4x-03/chimpanzee-vs-centipede/turn0-hit-approach-50.png",
+      "sha256": "b4d34b501ab2a1156aa8a9484306114b7e75ebc4068918275d37c589455dad9f"
+    },
+    {
+      "path": "library-phone4x-03/chimpanzee-vs-centipede/turn1-hit-return-end.png",
+      "sha256": "71975ee7afe68f5b3e77e3ba65b7f4b637437e8f3152a157c6d0a76b151b1e44"
+    },
+    {
+      "path": "library-phone4x-03/treefrog-vs-fruitbat/turn0-hit-approach-50.png",
+      "sha256": "0596fe71dfe24ab38bdd79e71915cf6be415ee0f5ce202f06f5b28274f440c3a"
+    },
+    {
+      "path": "library-phone4x-03/treefrog-vs-fruitbat/turn1-hit-return-end.png",
+      "sha256": "9e0f93fa821d2794516fc8862182cb6bda8445cddc2374c14b52a5b9ff09818f"
+    },
+    {
+      "path": "library-phone4x-03/salmon-vs-octopus/turn0-hit-approach-50.png",
+      "sha256": "7eb3068f01d4afb9c51b89b881a3cf9590b6748cd807fc456485d318b999add4"
+    },
+    {
+      "path": "library-phone4x-03/salmon-vs-octopus/turn1-hit-return-end.png",
+      "sha256": "8936ba80532bde961035d53c34de601674a9c6329d43740092eac3517d853555"
+    },
+    {
+      "path": "library-phone4x-03/eagle-vs-salmon/turn0-hit-approach-50.png",
+      "sha256": "76b7ca2be98aae1b54c40f9778189d4b073397b385581956715f35a91f346b22"
+    },
+    {
+      "path": "library-phone4x-03/eagle-vs-salmon/turn1-hit-return-end.png",
+      "sha256": "a87207e856e36c97c073e60920ad601ead71f1e5b6b7e03a50aa8cfaf22be17b"
+    },
+    {
+      "path": "library-phone4x-03/crab-vs-starfish/turn0-hit-approach-50.png",
+      "sha256": "220ef8e4cb4bc8530c477419b98600652a264ff98e07ad6477c306bd28ff9fa6"
+    },
+    {
+      "path": "library-phone4x-03/crab-vs-starfish/turn1-hit-return-end.png",
+      "sha256": "0b04e51bb31cd313fa36363b16e4f42f3f972103773d39e49ddbd2485e3e02b0"
+    },
+    {
+      "path": "remaining-phone4x-04/civet-vs-coconut-crab/turn0-hit-approach-50.png",
+      "sha256": "a99ab8e09b6784c6deef6c37818a14e216f803d3d1cdc29a03181db1c983f838"
+    },
+    {
+      "path": "remaining-phone4x-04/civet-vs-coconut-crab/turn1-hit-return-end.png",
+      "sha256": "aaca2cc091551f5160de3118eb87667e3965afa920178b02c855925531f630c4"
+    },
+    {
+      "path": "remaining-phone4x-04/mud-crab-vs-vent-crab/turn0-hit-approach-50.png",
+      "sha256": "b897ea6986fa14a73968c2cdbe0b3a6de91016c6667f1cd761545e3eb40089e5"
+    },
+    {
+      "path": "remaining-phone4x-04/mud-crab-vs-vent-crab/turn1-hit-return-end.png",
+      "sha256": "4ee9b0a84280b7520ce95264e057694c38efa3ed1f75bdc36d14133b9f907b98"
+    },
+    {
+      "path": "remaining-phone4x-04/freshwater-crab-vs-civet/turn0-hit-approach-50.png",
+      "sha256": "23b1d92ee932a4f4c889c75ba62c862cfa8963b023ce7cbb3377b5bf307a2124"
+    },
+    {
+      "path": "remaining-phone4x-04/freshwater-crab-vs-civet/turn1-hit-return-end.png",
+      "sha256": "cbf284fe6cd1561689ca60b0e1b8fde0f8d1d36245f795b2de7a5d56faf6a55c"
+    }
+  ]
+}
