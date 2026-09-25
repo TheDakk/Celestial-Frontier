@@ -5,6 +5,7 @@
    durable action. The controller cannot plan a fight, mutate a save, play
    audio, or publish an unverified combat result. */
 import {
+  COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   battleStats,
   runDuel,
   type BattleStats,
@@ -239,13 +240,8 @@ function stakesFor(champion: CombatSettlementChampionV1): string {
   if (champion.kind === 'player') {
     return 'Loss wounds you but never kills you; your HP stops at 1.';
   }
-  const hurt = typeof champion.genome.hurt === 'number' ? champion.genome.hurt : 0;
-  if (champion.legacyBredLineage && hurt < 0.85) {
-    return 'First bred-line defeat: crawls home Critical. Fielding it Critical risks permanent loss.';
-  }
-  return champion.legacyBredLineage
-    ? 'Critical repeat defeat: this champion is permanently lost.'
-    : 'Defeat: this wild or unbred champion is permanently lost.';
+  /* §20 (Nick 2026-09-25): defeat is Recovery, never loss */
+  return `Defeat wounds this champion and it rests for about ${Math.round(COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1 / 60_000)} minutes of play. It is never lost.`;
 }
 
 /** Project one truthful current card. No candidate other than the selected

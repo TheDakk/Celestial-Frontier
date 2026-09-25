@@ -312,6 +312,7 @@ import {
 import { cleanName, encodeWhere, regionAt } from '@cf/domain-strays';
 import { describeSpecies } from '@cf/domain-genome';
 import {
+  COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   PRIME_SIGNATURE_IDS_V1,
   battleStats,
   projectGuardianPrimeEncounterV1,
@@ -16286,11 +16287,9 @@ function arc6CombatOutcomeCopy(outcome: Arc6CombatActionOutcomeV1): CombatCardAc
       parts.push(`Champion learned ${plan.xp.totalDelta} XP from the defeat.`);
     }
     if (plan.injury.status === 'set-hurt') {
-      parts.push(plan.injury.reason === 'bred-crawl-home'
-        ? 'The bred champion crawled home Critical.'
-        : 'The champion returned wounded.');
-    } else if (plan.injury.status === 'remove-creature') {
-      parts.push('The champion was permanently lost.');
+      parts.push('The champion returned wounded.');
+    } else if (plan.injury.status === 'set-recovery') {
+      parts.push(`The champion was defeated and is recovering (about ${Math.round(COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1 / 60_000)} minutes of play).`);
     } else if (plan.injury.status === 'damage-player') {
       parts.push(`You lost ${plan.injury.damage} HP and remain at ${plan.injury.hpAfter}.`);
     }

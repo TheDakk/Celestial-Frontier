@@ -220,29 +220,28 @@ describe('captured Guardian companion overlay', () => {
     }
   });
 
-  it('records the exact last-live snapshot and cannot resurrect an unbred permanent loss', () => {
+  it('§20: a defeated captured Guardian is KEPT — wounded and in active-play Recovery, no tombstone; its overlay round-trips', () => {
     const source = capturedSource();
     const plan = combatPlan(source, 'defender-win', 43);
-    expect(plan.injury).toMatchObject({
-      status: 'remove-creature', reason: 'wild-or-unbred-defeat',
-    });
+    expect(plan.injury).toMatchObject({ status: 'set-recovery', reason: 'defeat-recovery' });
     const prepared = prepareGuardianCompanionCombatV1({
       source, parent: createEmptyGuardianCompanionStateV1(), plan,
     });
     if (prepared.kind === 'refused') throw new Error(prepared.reason);
     expect(prepared.kind).toBe('prepared');
     if (prepared.kind !== 'prepared') return;
-    expect(prepared.settlement.creatureAfter).toBeNull();
-    expect(prepared.settlement.creatureTombstone?.snapshot)
-      .toEqual(source.entries[0]!.creature);
-    const projected = projectGuardianCompanionsV1({
-      source, overlay: prepared.settlement.successor,
+    expect(prepared.settlement.creatureTombstone).toBeNull();
+    expect(prepared.settlement.creatureAfter).toMatchObject({
+      creatureId: source.entries[0]!.creature.creatureId, assignment: { kind: 'recovery' },
     });
-    expect(projected).toMatchObject({ kind: 'projected', creatures: [] });
-    expect(projected.kind === 'projected' ? projected.tombstones : []).toHaveLength(1);
-    expect(prepareGuardianCompanionCombatV1({
-      source, parent: prepared.settlement.successor, plan,
-    })).toEqual({ kind: 'refused', reason: 'champion-not-live' });
+    const projected = projectGuardianCompanionsV1({ source, overlay: prepared.settlement.successor });
+    expect(projected.kind).toBe('projected');
+    if (projected.kind !== 'projected') return;
+    expect(projected.creatures.map((row) => row.creatureId)).toEqual([source.entries[0]!.creature.creatureId]);
+    expect(projected.tombstones).toHaveLength(0);
+    // the saved overlay keeps the Recovery through its own codec
+    const reread = decodeGuardianCompanionStateV1(encodeGuardianCompanionStateV1(prepared.settlement.successor));
+    expect(JSON.stringify(reread)).toContain('"recovery"');
   });
 
   it('rejects cloned plans/states and protects overlay rows detached from their source', () => {

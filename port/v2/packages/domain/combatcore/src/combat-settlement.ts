@@ -40,8 +40,8 @@ export interface OwnedFaunaSettlementChampionV1 {
   readonly creatureId: string;
   readonly name: string;
   readonly genome: Readonly<Genome>;
-  /** Exact mature-v1 lineage fact: only `(bred)` creatures receive the first
-   * crawl-home mercy. Future non-punitive recovery remains a HUMAN gate. */
+  /** Exact mature-v1 lineage fact (verified by the ownership writers). Since §20 (2026-09-25) every defeated companion, bred or
+   * not, is wounded and enters active-play Recovery; the v1 permanent loss is retired. */
   readonly legacyBredLineage: boolean;
 }
 
@@ -68,7 +68,15 @@ export interface CombatSettlementAuthorityV1 {
   /** Null for the player. Owned fauna require either the authoritative v2
    * target maximum or an explicit protected legacy-ambiguity marker. */
   readonly lossXp: CombatLossXpAuthorityV1 | null;
+  /** The committed F4 active-play clock at settlement: a defeat's Recovery ends at this + COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1.
+   * The app MUST pass it (tests/arc6-combat-main-wiring pins the call site); absent reads 0 for pre-§20 fixtures. */
+  readonly activePlayMs?: number;
 }
+
+/** Recovery after a defeat, in ACTIVE-PLAY milliseconds (placeholder: Codex's S4/economy owns the number; §20). */
+export const COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1 = 10 * 60 * 1000;
+/** A defeat wounds like a hard-won win at 0 HP (0.55 × 0.7), capped at the legacy Critical 0.85. */
+export const COMBAT_DEFEAT_WOUND_STEP_V1 = 0.385;
 
 export interface PlanCombatSettlementInputV1 {
   readonly battleId: string;
@@ -132,16 +140,21 @@ export type CombatInjuryPlanV1 =
   | Readonly<{ readonly status: 'none'; readonly reason: 'healthy-win' | 'player-win' }>
   | Readonly<{
     readonly status: 'set-hurt';
-    readonly reason: 'hard-won-conquest' | 'bred-crawl-home';
+    readonly reason: 'hard-won-conquest';
     readonly creatureId: string;
     readonly hurtBefore: number;
     readonly hurtAfter: number;
     readonly winningHpFraction: number | null;
   }>
   | Readonly<{
-    readonly status: 'remove-creature';
-    readonly reason: 'wild-or-unbred-defeat' | 'critical-repeat-defeat';
+    /** Nick 2026-09-25 (port/DECISIONS.md §20): a defeated companion is NEVER removed. It is wounded and enters active-play
+     * Recovery (the §16 carrier), which blocks breed, combat and dispatch until `readyAtActivePlayMs`. */
+    readonly status: 'set-recovery';
+    readonly reason: 'defeat-recovery';
     readonly creatureId: string;
+    readonly hurtBefore: number;
+    readonly hurtAfter: number;
+    readonly readyAtActivePlayMs: number;
   }>
   | Readonly<{
     readonly status: 'damage-player';
@@ -501,6 +514,7 @@ function injuryPlan(
   encounter: GuardianPrimeEncounterV1,
   transcript: SettledDuelTranscriptV1,
   outcome: CombatSettlementOutcomeV1,
+  activePlayMs: number,
 ): CombatInjuryPlanV1 {
   if (outcome === 'champion-win') {
     if (champion.kind === 'player') return Object.freeze({ status: 'none', reason: 'player-win' });
@@ -535,19 +549,15 @@ function injuryPlan(
       mercyFloor: 1,
     });
   }
+  /* §20: defeat is Recovery, never loss — for every companion, bred or wild (v1's permanent loss and one-time bred crawl-home retire). */
   const before = hurtOf(champion.genome);
-  if (champion.legacyBredLineage && before < 0.85) return Object.freeze({
-    status: 'set-hurt',
-    reason: 'bred-crawl-home',
+  return Object.freeze({
+    status: 'set-recovery',
+    reason: 'defeat-recovery',
     creatureId: champion.creatureId,
     hurtBefore: before,
-    hurtAfter: 0.85,
-    winningHpFraction: null,
-  });
-  return Object.freeze({
-    status: 'remove-creature',
-    reason: champion.legacyBredLineage ? 'critical-repeat-defeat' : 'wild-or-unbred-defeat',
-    creatureId: champion.creatureId,
+    hurtAfter: Math.min(0.85, Math.max(before, before + COMBAT_DEFEAT_WOUND_STEP_V1)),
+    readyAtActivePlayMs: activePlayMs + COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1,
   });
 }
 
@@ -650,10 +660,12 @@ export function planCombatSettlementV1(
     }
     const champion = checkedChampion(input.champion);
     const lossXp = checkedLossXp(input.authority.lossXp, champion.kind);
+    const activePlayMs = integer(input.authority.activePlayMs ?? 0, 'combat active-play clock', Number.MAX_SAFE_INTEGER - COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1);
     const authority: CombatSettlementAuthorityV1 = Object.freeze({
       worldConquered: false,
       claimedPrimeSignatureIds,
       lossXp,
+      activePlayMs,
     });
     const settled = buildTranscript(champion, input.encounter, input.transcript);
     if (settled === null) return refused('transcript-mismatch');
@@ -675,7 +687,7 @@ export function planCombatSettlementV1(
       worldTier,
       lossXp,
     );
-    const injury = injuryPlan(champion, input.encounter, settled.transcript, derivedOutcome);
+    const injury = injuryPlan(champion, input.encounter, settled.transcript, derivedOutcome, activePlayMs);
     const conquest: CombatConquestPlanV1 = derivedOutcome === 'champion-win'
       ? Object.freeze({
         status: 'settle',

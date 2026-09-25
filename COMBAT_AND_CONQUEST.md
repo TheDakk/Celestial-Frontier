@@ -222,6 +222,17 @@ share one helper and the fingerprint held.
 > **Decided next model (2026-09-25, `port/DECISIONS.md` §20; not yet implemented):** Guardian/Titan fights take a relay party of up to 3,
 > in Auto or Command. Ordinary conquest stays one fighter. Defeat becomes active-play Recovery, and Swap is never necessary. The
 > contract below describes the shipped single-champion slice until the §20 engine lands.
+>
+> **Implemented 2026-09-25 (matches code):**
+> - **Defeat is Recovery.** Every defeated companion, bred or wild, including a captured Guardian, gets the `set-recovery` injury: its
+>   wound rises by `COMBAT_DEFEAT_WOUND_STEP_V1` (0.385, capped at 0.85), and it enters active-play Recovery for
+>   `COMBAT_DEFEAT_RECOVERY_ACTIVE_MS_V1` (10 min placeholder). It is never removed. v1's permanent loss and one-time bred crawl-home
+>   are retired.
+> - **Save carriers.** The Recovery lives on the v2 ownership row and on the captured-Guardian overlay (the only assignment that
+>   overlay may add). The wound is mirrored into v4. A finished Recovery can be replaced by the next defeat; an unfinished one refuses.
+>   The persistence owner refuses a champion in Recovery.
+> - **The engine.** `runEncounterV1` (relay, stances, Breaks, Auto/Command) is built and parity-locked to `runDuel`. It is not yet
+>   wired to the card.
 
 The current landed-Surface card implements the minimum honest combat decision: select the explorer,
 one eligible ordinary owned-fauna champion or one live captured Guardian/Titan after reading the exact defender, abilities, deterministic

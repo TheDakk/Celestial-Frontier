@@ -499,20 +499,21 @@ describe('Arc 8 Combat Chronicle projection', () => {
     expect(projectCombatChronicleV1(playerLoss.settlement, playerLoss.cues).resultText)
       .toBe('💀 You were overpowered. The world holds.');
 
+    // §20: bred and wild losers alike limp home to recover; nothing is lost forever
     const bredLoss = plans({ champion: owned(2, 'Bred Copy'), battleId: 'copy-bred-loss' });
-    expect(bredLoss.settlement.injury).toMatchObject({ status: 'set-hurt', reason: 'bred-crawl-home' });
+    expect(bredLoss.settlement.injury).toMatchObject({ status: 'set-recovery', reason: 'defeat-recovery' });
     expect(projectCombatChronicleV1(bredLoss.settlement, bredLoss.cues).resultText)
-      .toBe('🩸 Bred Copy was broken — it crawls home Critical. The world holds.');
+      .toBe('🩸 Bred Copy fell and limps home to recover. The world holds.');
 
     const wildGenome = makeGenome(2, 'fauna', 0.5);
     const wild: CombatSettlementChampionV1 = {
       kind: 'owned-fauna', creatureId: 'copy-wild', name: 'Wild Copy', genome: wildGenome,
       legacyBredLineage: false,
     };
-    const permanentLoss = plans({ champion: wild, battleId: 'copy-permanent-loss' });
-    expect(permanentLoss.settlement.injury.status).toBe('remove-creature');
-    expect(projectCombatChronicleV1(permanentLoss.settlement, permanentLoss.cues).resultText)
-      .toBe('💀 Wild Copy fell — lost forever. The world holds.');
+    const wildLoss = plans({ champion: wild, battleId: 'copy-permanent-loss' });
+    expect(wildLoss.settlement.injury.status).toBe('set-recovery');
+    expect(projectCombatChronicleV1(wildLoss.settlement, wildLoss.cues).resultText)
+      .toBe('🩸 Wild Copy fell and limps home to recover. The world holds.');
   });
 });
 
