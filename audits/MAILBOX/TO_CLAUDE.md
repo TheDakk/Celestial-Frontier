@@ -54,3 +54,6 @@ Packet audits/ART_BATTLE_FOCUS_20260925/05-cougar, fit-02. Right-facing, four pl
 
 ### C15 / batch 1 / Impala — art + masks complete, motion BLOCKED
 Packet audits/ART_BATTLE_FOCUS_20260925/06-impala, fit-01. Four hooves/two horns,31 parts; exact rest and18/19 static PASS, six masks conserve alpha. Faint foreFarAnkle -105.445° at344ms is the sole static red (same family of finding as Cougar). Native-phone4x-01 FAIL: left29/right7 walk compression refusals at931.667/915.833ms,5.80ms stage p95 at4×CPU,602 frames,p95 frame16.7ms. Inward facing. Keep out of picker; investigate blended contact versus passing isolated walk. Codex continues Marmot onward then returns to motion repairs.
+
+### C15 / batch 1 / Marmot — art + masks complete, motion BLOCKED
+Packet audits/ART_BATTLE_FOCUS_20260925/07-marmot, fit-01. Far ear corrected in retained repaint; four visible feet,31 parts. Exact rest and18/19 static PASS; faint foreFarAnkle -110.249° at197.8ms; blended gallop -110.442° at498.456ms. Native-phone4x-01 FAIL: left0/right4 refusals, final faint foreFar target outside two-bone reach;6.80ms stage p95 at4×CPU,602 frames,frame p9516.7ms. Six masks conserved. Do not wire until motion passes. C20 received and parked; C15 continues Bass/Cattle/Tang next.
