@@ -27,7 +27,8 @@
  * paint-skin fits (Civet + five crabs) stage as parts rigs through Codex's owner and contact solver; the habitat picks each
  * side's medium/band on the battle's worlds (labelled dry Earth-temperate default without world context; UNSUPPORTED keeps
  * the Chronicle path with the reason); each staged attack is Codex's `compileAnatomyAttack` when admitted, else the family
- * delivery clip, labelled. Not yet done here: synchronising turns to the Chronicle cue cadence (the study plays the
+ * delivery clip, labelled. C13 (2026-09-25): each parts fit's raw bytes pass the bundled build pin's preflight
+ * (`battle2-master-pin-admission.ts`) before any decode, mask fetch, morph-cache lease or master fetch. Not yet done here: synchronising turns to the Chronicle cue cadence (the study plays the
  * transcript through at its own pace); a crab cannot attack until R3 admits pinch (labelled per side in `status().attacks`). */
 import { keyAndDespill } from '../../../../../tools/local-image-generation/kit-contact-math.mjs';
 /** The shipped battle2 assets (`apps/game/public/battle2/…`, mirrored by `tools/morph/build-shipped-battle2.mjs`) keep the
@@ -60,6 +61,8 @@ import { createTurnCueSink, type TurnAudioRuntime, type TurnCueSink } from './so
 import { createCreatureVoiceHook, type CreatureVoiceHook } from './soundkit/creature-voices.js';
 import { synthesizePlaceholderLibrary } from './soundkit/placeholder-archetype.js';
 import { BATTLE2_PARTS_FITS } from './battle2-archetypes.js';
+import { getBattle2MasterPin } from './battle2-master-pins.generated.js';
+import { Battle2PinRefusal, gunzipTransportBytes, preflightBattle2PinnedBytesV1 } from './battle2-master-pin-admission.js';
 import { placeCombatants } from './battle2/placement.js';
 import { repoRelativeSource } from '../../../tools/creature-animation/record-source.mjs';
 import { MASS_BY_SIZE_INDEX, MASS_CLASS } from './motion/timing.js';
@@ -83,6 +86,9 @@ export const BATTLE2_ASSETS = Object.freeze({
 });
 /** A repo-relative `record.source` (e.g. `audits/X/master.png`) as an asset path relative to the arena proof directory. */
 export const auditAssetPath = (repoRelative: string): string => { if (!repoRelative.startsWith('audits/')) throw new Error(`battle2: record source ${repoRelative} is not under audits/`); return '../' + repoRelative.slice('audits/'.length); };
+/** The inverse (C13 pin paths): an arena-relative `../X` asset path as its repo-relative `audits/X`; anything else is returned
+ * unchanged and therefore fails the pin's canonical-path equality (fail closed, never resolved). */
+export const repoPathOfAsset = (assetPath: string): string => (assetPath.startsWith('../') ? 'audits/' + assetPath.slice(3) : assetPath);
 export const PLAYER_PLACEHOLDER_LABEL = 'player champion placeholder (nameplate; no creature art)' as const;
 
 /** The gate main.ts tests in source text; kept here so the wiring and its test agree on the spelling. */
@@ -337,12 +343,23 @@ export function mountBattle2Study(input: Battle2StudyInput): Battle2StudyHandle 
         if (fit && assets.bytes) {
           try {
             const card = compileBodyCard(record, (genome ?? undefined) as MotionGenomeFields | undefined);
-            const [binding, keyed, manifest] = await Promise.all([assets.json(fit.dir + 'binding.json.gz') as Promise<CreaturePartsBindingV1>, assets.image(fit.dir + 'parts/alpha.png'), assets.json(fit.dir + 'parts/manifest.json') as Promise<{ creatureId?: string }>]);
+            // C13: raw bytes, then the bundled build pin's preflight — BEFORE any image decode, marking-mask fetch, morph-cache
+            // lease, master fetch or Pixi allocation. A missing pin is a named refusal, never a master-download fallback.
+            const manifest = await assets.json(fit.dir + 'parts/manifest.json') as { creatureId?: string };
             if (typeof manifest.creatureId !== 'string') throw new Error('parts manifest lacks creatureId');
+            const pin = getBattle2MasterPin(manifest.creatureId);
+            if (!pin) throw new Battle2PinRefusal('missing-pin', `no bundled build pin for ${manifest.creatureId}`);
+            const alphaAsset = fit.dir + 'parts/alpha.png', atlasAsset = fit.dir + 'parts/atlas/' + manifest.creatureId + '.png';
+            const [alphaBytes, bindingTransport, atlas] = await Promise.all([assets.bytes(alphaAsset), assets.bytes(fit.dir + 'binding.json.gz'), assets.bytes(atlasAsset)]);
+            const admitted = await preflightBattle2PinnedBytesV1({ pin, creatureId: manifest.creatureId, record, alphaPath: repoPathOfAsset(alphaAsset), alpha: alphaBytes,
+              bindingBytes: await gunzipTransportBytes(bindingTransport), atlasPath: repoPathOfAsset(atlasAsset), atlas });
+            const binding = admitted.binding as CreaturePartsBindingV1;
             const source = (record as { source?: unknown }).source;
             if (typeof source !== 'string') throw new Error('record has no painter master source');
-            const [master, atlas] = await Promise.all([assets.bytes(auditAssetPath(repoRelativeSource(source))), assets.bytes(fit.dir + 'parts/atlas/' + manifest.creatureId + '.png')]);
-            const pixels = keyed.pixels(), alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = pixels[i * 4 + 3] ?? 0;
+            // masters stay shipped (C4 §5): the loader's unchanged byte admission still hashes the master until Codex's pin overload lands
+            const master = await assets.bytes(auditAssetPath(repoRelativeSource(source)));
+            const keyed = await decodePng(alphaBytes);
+            const pixels = new Uint8ClampedArray(keyed.rgba.buffer, keyed.rgba.byteOffset, keyed.rgba.length), alpha = new Uint8Array(keyed.width * keyed.height); for (let i = 0; i < alpha.length; i++) alpha[i] = pixels[i * 4 + 3] ?? 0;
             if (keyed.width !== record.geometry.width || keyed.height !== record.geometry.height) throw new Error('alpha cut-out size disagrees with the record geometry');
             // the morph system: this genome's individual on the accepted archetype (identity genome → the archetype's own path)
             const markingMask = await loadMarkingMask(assets, fit.markingsDir ?? fit.dir, record as unknown as { recipeHash: string; genome?: Record<string, unknown> | null; identity?: { speciesVisualKey?: string }; geometry: { width: number; height: number } }, genome);
