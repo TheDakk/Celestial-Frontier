@@ -1,0 +1,25 @@
+{
+  "name": "Sea/shore gull",
+  "exemplar": "Gull",
+  "covers": [
+    "Gull",
+    "Albatross",
+    "Petrel",
+    "Skua",
+    "Snow Petrel",
+    "Seabird",
+    "Gannet",
+    "Booby",
+    "Tern",
+    "Tropicbird",
+    "Frigatebird"
+  ],
+  "bodyPlan": "biped-bird",
+  "mustPaint": [
+    "standing, with long narrow pointed wings folded to cross beyond the tail",
+    "webbed feet; stout hook-tipped bill",
+    "white body with a grey mantle as shading only",
+    "tail at mid length so 1.35 approximates tern and tropicbird streamers"
+  ],
+  "why": "11 misleading. Seabirds are long-winged web-footed birds, not a hook-billed raptor with talons. Tern, Tropicbird and Frigatebird (forked or streamer tails, pouch) stay caveat."
+}
