@@ -1,13 +1,26 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { REPO_ROOT } from '../battle2/parts-rig.fixtures.js';
-import { CARD_SIZES, PaintedCardSource, type PaintedCardAssets } from './painted-card-source.js';
+import { ARCHETYPE_RESIDENT_DEFAULT, CARD_SIZES, PaintedCardSource, type PaintedCardAssets } from './painted-card-source.js';
 import { CARD_ARCHETYPES } from './card-archetypes.js';
 import { decodePng } from './png-decode.js';
 const assets: PaintedCardAssets = { json: async (p) => JSON.parse(readFileSync(new URL(p, REPO_ROOT), 'utf8')), bytes: async (p) => new Uint8Array(readFileSync(new URL(p, REPO_ROOT))) };
 const REGISTRY = [{ earthName: 'Crab', dir: 'audits/ANATOMY_COMPLETION_20260917/crab-fits-03/crab/' }, { earthName: 'Civet', dir: 'audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/' }];
 const crabGenome = (over: Record<string, unknown> = {}) => ({ _earthName: 'Crab', kingdom: 'fauna', seed: 5, color: 12, accent: 3, size: 0, head: 0, tail: 1, pattern: 0, ...over });
 describe('painted card source — the individual on the card', () => {
+  it('MEMORY (I5 review 2026-09-24): at most ARCHETYPE_RESIDENT_DEFAULT decoded archetypes stay resident while cards of all of them render; eviction never changes a card; control: an unbounded source keeps them all', async () => {
+    const one = (name: string) => ({ _earthName: name, kingdom: 'fauna', seed: 11, color: 4, accent: 9, size: 2, head: 3, tail: 2, pattern: 0 });
+    const names = [...new Set(CARD_ARCHETYPES.map((a) => a.earthName))], now = () => Promise.resolve();
+    const bounded = new PaintedCardSource({ assets, registry: CARD_ARCHETYPES, yieldToHost: now }), open = new PaintedCardSource({ assets, registry: CARD_ARCHETYPES, yieldToHost: now, archetypeEntries: 100 });
+    let peak = 0; for (const n of names) { await bounded.card(one(n), 'thumb'); await open.card(one(n), 'thumb'); peak = Math.max(peak, bounded.residentArchetypes().count); }
+    expect(peak).toBeLessThanOrEqual(ARCHETYPE_RESIDENT_DEFAULT); expect(bounded.residentArchetypes().bytes).toBeLessThanOrEqual(ARCHETYPE_RESIDENT_DEFAULT * 512 * 512 * 4 * 2);
+    expect(open.residentArchetypes().count).toBe(names.length); expect(open.residentArchetypes().bytes).toBeGreaterThan(20 * 1024 * 1024); // what the bound prevents
+    // an evicted archetype re-reads to the same card, byte for byte
+    const again = new PaintedCardSource({ assets, registry: CARD_ARCHETYPES, yieldToHost: now, archetypeEntries: 1 });
+    const first = await again.card(one('Crab'), 'thumb')!; await again.card(one('Civet'), 'thumb'); const civetGone = again.residentArchetypes().count; 
+    const fresh = new PaintedCardSource({ assets, registry: CARD_ARCHETYPES, yieldToHost: now, archetypeEntries: 1 }); await fresh.card(one('Civet'), 'thumb'); const crab2 = await fresh.card(one('Crab'), 'thumb')!;
+    expect(civetGone).toBe(1); expect(crab2.url).toBe(first.url);
+  }, 600_000);
   it('a creature whose anatomy no painting draws → null (the painter tier answers); an Earth species of a painted body plan takes its stand-in (Nick 2026-09-24), and standIns:false restores painted-species-only', () => {
     const s = new PaintedCardSource({ assets, registry: REGISTRY });
     expect(s.card({ kingdom: 'fauna', seed: 9, color: 1 }, 'thumb')).toBeNull(); // body 0, limbs gene 0 → a two-legged land body: no painting

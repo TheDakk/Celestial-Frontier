@@ -15,16 +15,20 @@ export interface PaintedCardAssets { json(path: string): Promise<unknown>; bytes
 export interface PaintedCardAsset { readonly key: string; readonly url: string; readonly width: number; readonly height: number; readonly encodedBytes: number; readonly decodedPixels: number; }
 export interface PaintedCardSourceOptions { readonly assets: PaintedCardAssets; readonly registry: readonly PaintedCardArchetype[];
   /** Painted stand-ins for every creature whose anatomy a painting draws (default ON, Nick 2026-09-24); false = painted species only. */
-  readonly standIns?: boolean; readonly cacheEntries?: { thumb: number; portrait: number };
+  readonly standIns?: boolean;
+  /** How many decoded archetypes stay resident (LRU); default ARCHETYPE_RESIDENT_DEFAULT. */
+  readonly archetypeEntries?: number; readonly cacheEntries?: { thumb: number; portrait: number };
   /** Hand the thread back to the host between two renders (2026-09-24, review finding: a grid asking for 20 painted cards rendered them all
    * in ONE task — ~20–40 ms each on a desktop, several times that on a phone). Default: a macrotask. Output is unaffected. */
   readonly yieldToHost?: () => Promise<void>; }
 const macrotask = (): Promise<void> => new Promise((resolve) => { if (typeof MessageChannel === 'function') { const c = new MessageChannel(); c.port1.onmessage = () => { c.port1.close(); resolve(); }; c.port2.postMessage(0); } else setTimeout(resolve, 0); });
 export const CARD_SIZES = Object.freeze({ thumb: 132, portrait: 440 } as const);
+/** Painted archetypes kept decoded at once (each: its ≤512² master + label map, ~2 MiB). */
+export const ARCHETYPE_RESIDENT_DEFAULT = 2;
 export type CardKind = keyof typeof CARD_SIZES;
 interface Archetype { readonly master: CardMasterV1; readonly receipt: CardReceiptV1 & { recordRecipeHash: string }; readonly record: ResolvedAnatomyRecord & { recipeHash: string }; readonly markings: Readonly<Record<string, string>> | null; readonly masks: Map<string, Promise<AlphaMask | null>>; }
 export class PaintedCardSource {
-  readonly #o: PaintedCardSourceOptions; readonly #byName: Map<string, PaintedCardArchetype>; readonly #archetypes = new Map<string, Promise<Archetype>>();
+  readonly #o: PaintedCardSourceOptions; readonly #byName: Map<string, PaintedCardArchetype>; readonly #archetypes = new Map<string, Promise<Archetype>>(); readonly #archetypeBytes = new Map<string, number>();
   readonly #cache: Record<CardKind, Map<string, PaintedCardAsset>> = { thumb: new Map(), portrait: new Map() }; readonly #pending = new Map<string, Promise<PaintedCardAsset>>();
   #renders = 0; #tail: Promise<unknown> = Promise.resolve();
   /** One render per host task: each waits for the previous one and a yield, so the page can paint between cards. */
@@ -41,8 +45,12 @@ export class PaintedCardSource {
   /** The archetype for a genome, or null (keep the procedural art). */
   archetypeFor(genome: Readonly<Record<string, unknown>> | null | undefined): PaintedCardArchetype | null { const s = this.standInFor(genome); return s ? this.#byName.get(s.earthName) ?? null : null; }
   get renders(): number { return this.#renders; }
+  /** Resident archetypes (review of I5 2026-09-24: with painted stand-ins most Compendium rows use a painting, and an unbounded cache
+   * would keep all 13 archetypes' 512² master + labels, ~2 MiB each, resident at once — over the phone Compendium budget). LRU of
+   * `archetypeEntries` (default ARCHETYPE_RESIDENT_DEFAULT); an evicted archetype is re-read from the network/HTTP cache when needed. */
+  residentArchetypes(): Readonly<{ count: number; bytes: number }> { let bytes = 0; for (const b of this.#archetypeBytes.values()) bytes += b; return Object.freeze({ count: this.#archetypes.size, bytes }); }
   async #archetype(a: PaintedCardArchetype): Promise<Archetype> {
-    let p = this.#archetypes.get(a.earthName); if (p) return p;
+    let p = this.#archetypes.get(a.earthName); if (p) { this.#archetypes.delete(a.earthName); this.#archetypes.set(a.earthName, p); return p; }
     p = (async () => { const dir = a.dir.endsWith('/') ? a.dir : a.dir + '/';
       const [receipt, record, masterBytes, labelsBytes] = await Promise.all([this.#o.assets.json(dir + 'card/card.json') as Promise<Archetype['receipt']>, this.#o.assets.json(dir + 'record.json') as Promise<Archetype['record']>, this.#o.assets.bytes(dir + 'card/master-512.png'), this.#o.assets.bytes(dir + 'card/labels-512.png')]);
       const [m, l] = await Promise.all([decodePng(masterBytes), decodePng(labelsBytes)]);
@@ -51,7 +59,11 @@ export class PaintedCardSource {
       // the archetype's painted marking masks (optional: `markings.json` beside the fit, pattern → file); fetched per pattern on demand
       let markings: Readonly<Record<string, string>> | null = null; try { const mj = await this.#o.assets.json(dir + 'markings.json') as { patterns?: Record<string, { file?: string }> }; if (mj?.patterns) { const map: Record<string, string> = {}; for (const [k, v] of Object.entries(mj.patterns)) if (typeof v?.file === 'string') map[k] = v.file; markings = Object.freeze(map); } } catch { markings = null; }
       return { master: { width: m.width, height: m.height, master: m.rgba, labels: l.rgba }, receipt, record, markings, masks: new Map() }; })();
-    this.#archetypes.set(a.earthName, p); return p;
+    this.#archetypes.set(a.earthName, p);
+    const limit = Math.max(1, this.#o.archetypeEntries ?? ARCHETYPE_RESIDENT_DEFAULT);
+    while (this.#archetypes.size > limit) { const oldest = this.#archetypes.keys().next().value as string; this.#archetypes.delete(oldest); this.#archetypeBytes.delete(oldest); }
+    const name = a.earthName; void p.then((arch) => { if (this.#archetypes.get(name) === p) this.#archetypeBytes.set(name, arch.master.master.byteLength + arch.master.labels.byteLength); }, () => { if (this.#archetypes.get(name) === p) this.#archetypes.delete(name); });
+    return p;
   }
   async #mask(a: PaintedCardArchetype, arch: Archetype, name: string): Promise<AlphaMask | null> {
     const file = arch.markings?.[name]; if (!file) return null; let p = arch.masks.get(name); if (p) return p;
