@@ -1,14 +1,5 @@
 {
  "schema": "cf.budget-held-archetypes/v1",
- "reason": "held until card and stage share one tint decision",
- "rows": [
-  {
-   "earthName": "Gull",
-   "dir": "audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/",
-   "key": "gull",
-   "markings": "audits/ART_BATTLE_FOCUS_20260925/12-gull/",
-   "contactSupports": "observed",
-   "heldBy": "CARD = STAGE: accent mean saturation 0.183 on the stage atlas vs 0.176 on the 512 card master straddles LOW_CHROMA_ROLE 0.18 \u2014 needs ONE tint decision shared by card and stage"
-  }
- ]
+ "reason": "none held (2026-09-25): masters left the pack; the Gull returned with the tint table",
+ "rows": []
 }

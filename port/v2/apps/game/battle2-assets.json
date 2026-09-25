@@ -3,8 +3,8 @@
  "files": [
   {
    "path": "battle2/MANIFEST.json",
-   "bytes": 71148,
-   "sha256": "8a41dce4e32ae6a890c2785deab8697a7016e211d02f873ad6ef1da08a57f9a1"
+   "bytes": 73781,
+   "sha256": "62f6cc307433df714c8f468ffad861eb7c4ef5f47bc2c37e91eaeedd5d768e90"
   },
   {
    "path": "battle2/audits/ANATOMY_COMPLETION_20260917/civet-sentinel-input-01/binding.json.gz",
@@ -820,6 +820,66 @@
    "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/11-wolf/mask-set-02/markings/striped.png",
    "bytes": 29532,
    "sha256": "f0e905f76aff8adf8fdb0c9ef3ddfbb6496126019b5b96ac95f5cff32da17d14"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/binding.json.gz",
+   "bytes": 155697,
+   "sha256": "0f1dd4f9553f0fb0e601c8cbce9218250dce03d5a995172cfa0aa15554818bc3"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/parts/alpha.png",
+   "bytes": 60675,
+   "sha256": "9dd1acfffe7f8ae213d60b73dd8d3d2a29da2f6e0e0cbbff9bb09fcdf85ed2b2"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/parts/atlas/gull.png",
+   "bytes": 529896,
+   "sha256": "95775e5b9dc0614d3033480742553debb9fe93b9a32aac1b88efbea15d6e670d"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/parts/manifest.json",
+   "bytes": 2846,
+   "sha256": "23295f90e84407e45d59d4c8c14bf72bfbaaf9573d5301d82bb397356425fd99"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/fit-03/record.json",
+   "bytes": 6329,
+   "sha256": "7f7a1d10d7a58f722b48ee3e6ab033c71ce84eb8d46320aca62a07cfb9530c48"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/markings.json",
+   "bytes": 25913,
+   "sha256": "317c2d299fa5f5f4cf4af61d62eb531c9b839e5ae709dfbea48e19d6b987b462"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/markings/banded.png",
+   "bytes": 28991,
+   "sha256": "7c0c0c7297385b88fbe527500fa28a0fc15a0567b7349f8dbcfb36a3cde0d8d7"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/markings/eye-spotted.png",
+   "bytes": 27823,
+   "sha256": "a387a9c0d9dff4ea416efb32c20e73f91485b5d2e7da3ccfaf020834967323de"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/markings/marbled.png",
+   "bytes": 47690,
+   "sha256": "9b731d47854002ffa9cb01346b886f842ce05952bbf08845cb7fe7ea68d5ca65"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/markings/mottled.png",
+   "bytes": 34146,
+   "sha256": "174eec7577a9d3dfcfe2631d2cb315536cff0b007d75e8c9a6f0ed9d2426e465"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/markings/spotted.png",
+   "bytes": 18573,
+   "sha256": "e5f3c59fd072c015add13136cc32bbcb7549723385afa0b4caf098da485609f2"
+  },
+  {
+   "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/12-gull/markings/striped.png",
+   "bytes": 25361,
+   "sha256": "483fe021ad0b6e1d6bf3b17a840f24c6be8c134bbd3c89b5bccbca39ea5a704b"
   },
   {
    "path": "battle2/audits/ART_BATTLE_FOCUS_20260925/13-river-otter/fit-02/binding.json.gz",

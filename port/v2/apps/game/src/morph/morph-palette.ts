@@ -3,6 +3,7 @@
 // once per individual at load; never per tick. Alpha is never touched; pixels outside every frame are never touched.
 import type { MorphParamsV1, PaletteParamsV1 } from './morph-params.js';
 import { earthFaunaProfile } from '../earth-fauna-profiles.js';
+import { CARD_TINT_V1 } from './card-tint.generated.js';
 export type PaletteRole = 'base' | 'accent' | 'keep';
 /** Pixel index (y·width + x) → whether it belongs to the role being remapped. */
 export type PixelSelect = (pixel: number) => boolean;
@@ -56,7 +57,10 @@ export function remapAtlasPaletteV1(rgba: Uint8Array, width: number, height: num
     // LOW_CHROMA_ROLE, every pixel takes the target hue at a saturation floor — luminance still exact, so the painted
     // finish survives; a hue-less colour (obsidian, bone, glass) still only desaturates.
     const pick = select?.(role);
-    const tint = p.hue !== null && meanSaturation(rgba, width, frames, role, pick) < LOW_CHROMA_ROLE;
+    // ONE decision per archetype and role (CARD = STAGE, 2026-09-25): the generated table measured once on the card master; a stage atlas and
+    // a 512 card of the same painting could otherwise straddle the threshold (the Gull's accent: 0.183 vs 0.176). Measured only when absent.
+    const decided = CARD_TINT_V1[params.archetype]?.[role];
+    const tint = p.hue !== null && (decided ?? meanSaturation(rgba, width, frames, role, pick) < LOW_CHROMA_ROLE);
     const from = p.hue === null || tint ? null : dominantHue(rgba, width, frames, role, pick); const delta = p.hue === null || from === null ? 0 : p.hue - from;
     for (const f of frames) { if (f.role !== role) continue; for (let y = f.y; y < f.y + f.height; y++) for (let x = f.x; x < f.x + f.width; x++) {
       const i = (y * width + x) * 4; if (!rgba[i + 3] || (pick && !pick(i / 4))) continue; const hsl = rgbToHsl(rgba[i]!, rgba[i + 1]!, rgba[i + 2]!), h = hsl[0]!, s = hsl[1]!, l = hsl[2]!;

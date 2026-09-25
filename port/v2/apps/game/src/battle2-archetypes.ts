@@ -34,5 +34,6 @@ export const BATTLE2_PARTS_FITS: readonly Battle2PartsFit[] = Object.freeze([
   Object.freeze({ earthName: 'Ibex', dir: '../ART_BATTLE_FOCUS_20260925/18-ibex/fit-02/', markingsDir: '../ART_BATTLE_FOCUS_20260925/18-ibex/' }),
   Object.freeze({ earthName: 'Pike', dir: '../ART_BATTLE_FOCUS_20260925/20-pike/fit-02/', markingsDir: '../ART_BATTLE_FOCUS_20260925/20-pike/' }),
   Object.freeze({ earthName: 'Goose', dir: '../ART_BATTLE_FOCUS_20260925/bird-motion-02/goose-fit-04/', markingsDir: '../ART_BATTLE_FOCUS_20260925/15-goose/', contactSupports: 'observed' }),
+  Object.freeze({ earthName: 'Gull', dir: '../ART_BATTLE_FOCUS_20260925/12-gull/fit-03/', markingsDir: '../ART_BATTLE_FOCUS_20260925/12-gull/', contactSupports: 'observed' }),
   Object.freeze({ earthName: 'Jellyfish', dir: '../ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/fit-06/', markingsDir: '../ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/', weaponDeclaration: '../ART_BATTLE_FOCUS_20260925/jellyfish-repair-03/weapon-declaration.json' }),
 ]);

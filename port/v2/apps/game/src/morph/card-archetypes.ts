@@ -32,5 +32,6 @@ export const CARD_ARCHETYPES: readonly PaintedCardArchetype[] = Object.freeze([
   { earthName: 'Ibex', dir: 'port/v2/apps/game/assets/painted-cards/ibex/' },
   { earthName: 'Pike', dir: 'port/v2/apps/game/assets/painted-cards/pike/' },
   { earthName: 'Goose', dir: 'port/v2/apps/game/assets/painted-cards/goose/' },
+  { earthName: 'Gull', dir: 'port/v2/apps/game/assets/painted-cards/gull/' },
   { earthName: 'Jellyfish', dir: 'port/v2/apps/game/assets/painted-cards/jellyfish/' },
 ]);
