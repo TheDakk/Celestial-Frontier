@@ -658,6 +658,12 @@
       padding-top: 12px; }
     .inventory-action-controls { display: flex; flex-wrap: wrap; gap: 8px; }
     .inventory-action-controls button { min-height: 44px; }
+    /* D16 parity: Salvage all (v1 data-salvall) — armed state reads as a warning */
+    .inventory-salvage-all { display: grid; gap: 6px; margin: 6px 0 10px; }
+    #inventorypanel .inventory-salvage-all button { min-height: 44px; width: 100%; box-sizing: border-box; padding: 8px 12px;
+      border: 1px solid #405477; border-radius: 10px; background: rgba(22,34,57,.9); color: #dcecff; font: 700 12px var(--ui); cursor: pointer; }
+    #inventorypanel .inventory-salvage-all button[data-inventory-salvage-all="armed"] { border-color: #e0a04a; background: rgba(90,55,22,.55); color: #ffe0a0; }
+    #inventorypanel .inventory-salvage-all button:disabled { opacity: .58; cursor: default; }
     .inventory-action-status { min-height: 20px; margin: 0; color: var(--dim); }
     .inventory-action-status[data-kind="committed"] { color: #9ee49d; }
     .inventory-action-status[data-kind="refused"],

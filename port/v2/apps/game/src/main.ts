@@ -4499,6 +4499,8 @@ const inventoryPanelController = new InventoryPanelController({
   openers: [document.getElementById('dockinventory'), document.getElementById('railinventory')],
   onAction: ({ operation, instanceId }) => commitArc2InventoryAction(operation, instanceId),
   requiresSalvageConfirmation: () => save.salvageConfirm,
+  /* v1 data-salvoff ("don't ask again"): the flag rides the salvage's own commit (its draft is the live save); persistSoon covers a refusal */
+  disableSalvageConfirmation: () => { save.salvageConfirm = false; persistSoon(); },
   deferWhileClosed: true,
 });
 registerPanel(inventoryPanelController.registration());
