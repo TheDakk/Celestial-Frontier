@@ -19,7 +19,9 @@
     "./guardian-acquisition-internal": "./src/guardian-acquisition.ts",
     "./guardian-companion-internal": "./src/guardian-companion.ts",
     "./companion-availability": "./src/companion-availability.ts",
-    "./friendly-duel-internal": "./src/friendly-duel.ts"
+    "./friendly-duel-internal": "./src/friendly-duel.ts",
+    "./companion-care": "./src/companion-care.ts",
+    "./rest-internal": "./src/rest.ts"
   },
   "dependencies": {
     "@cf/domain-genetics": "*",

@@ -1,5 +1,23 @@
 # Celestial Frontier — Breeding & Sharing
 
+## v2 companion care and bond — D13 stage 1 (matches code as of 2026-09-25)
+
+Nick decided D13 (N3 Option B) on 2026-09-25. Owner module: `packages/domain/acquisition/src/companion-care.ts` (pure, deterministic).
+- **Tastes** are v1.8.9 `faunaTastes`, lifted verbatim (parity-tested against the tracked legacy script): two liked flavours and one disliked,
+  seeded by the genome. A flora's flavour is v1 `floraStat`. A flavour stays **hidden** on the card until this companion has eaten a flora
+  of it (its `taste:<flavour>` bond memory).
+- **Feed policy v2** — no roll, no companion poison: Loved +2 `fed` (+3 for flora tier ≥ 4) and mends 0.25 `hurt`; Neutral +1 and 0.10;
+  Disliked 0 and harmless (the flora is still eaten). First-time care XP is keyed on bond memories: +1 for the first meal, +2 per newly tasted
+  flavour (≤ 11 per companion for life). The 200 `fed` cap is unchanged. Explorer meals keep their own poison.
+- **Bond** levels 0–5 (Wary 0, Familiar 3, Trusted 8, Devoted 15, Kindred 25, Soulbound 40 memories) count distinct firsts, never decay, and
+  unlock sidegrades only — never combat stats. `bond: null` is level 0.
+- **Rest** heals on the active-play clock: 2 active minutes per 0.1 `hurt`, rounded up, at most 20. One receipt (`arc5-companion-rest`) SEALS the
+  heal (`hurt` → 0) and assigns `{kind:'mission', missionId:'rest:<readyAt>'}` with `readyAt` = the committed active-play snapshot + the duration.
+  `projectCompanionAvailabilityV1` releases it at that exact boundary, like Recovery; until then it locks breed, combat, dispatch and Feed. So every
+  reader of `hurt` agrees at every moment and there is no deferred writer (a deliberate refinement of N3's "applied by the next receipt write").
+  Nothing heals while the game is closed; the device clock never enters. The first recovery from Injured or worse is the bond memory
+  `recovered:injured`. Owners: `rest.ts` (domain), `arc5-rest-action.ts` (app).
+
 ## Requested time-aware art and sharing — source reviewed 2026-09-08
 
 Nick approves the full landfall painting direction and requests procedural coverage, planetary
