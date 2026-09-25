@@ -1,5 +1,18 @@
 # Celestial Frontier — Breeding & Sharing
 
+## v2 companion care and bond — D13 stage 1 (matches code as of 2026-09-25)
+
+Nick decided D13 (N3 Option B) on 2026-09-25. Owner module: `packages/domain/acquisition/src/companion-care.ts` (pure, deterministic).
+- **Tastes** are v1.8.9 `faunaTastes`, lifted verbatim (parity-tested against the tracked legacy script): two liked flavours and one disliked,
+  seeded by the genome. A flora's flavour is v1 `floraStat`. A flavour stays **hidden** on the card until this companion has eaten a flora
+  of it (its `taste:<flavour>` bond memory).
+- **Feed policy v2** — no roll, no companion poison: Loved +2 `fed` (+3 for flora tier ≥ 4) and mends 0.25 `hurt`; Neutral +1 and 0.10;
+  Disliked 0 and harmless (the flora is still eaten). First-time care XP is keyed on bond memories: +1 for the first meal, +2 per newly tasted
+  flavour (≤ 11 per companion for life). The 200 `fed` cap is unchanged. Explorer meals keep their own poison.
+- **Bond** levels 0–5 (Wary 0, Familiar 3, Trusted 8, Devoted 15, Kindred 25, Soulbound 40 memories) count distinct firsts, never decay, and
+  unlock sidegrades only — never combat stats. `bond: null` is level 0.
+- **Rest** heals on the active-play clock: 2 active minutes per 0.1 `hurt`, rounded up, at most 20.
+
 ## Requested time-aware art and sharing — source reviewed 2026-09-08
 
 Nick approves the full landfall painting direction and requests procedural coverage, planetary
