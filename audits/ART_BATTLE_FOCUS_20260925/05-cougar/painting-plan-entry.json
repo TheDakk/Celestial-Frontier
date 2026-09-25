@@ -1,0 +1,32 @@
+{
+  "name": "Cat (felid)",
+  "exemplar": "Cougar",
+  "covers": [
+    "Jaguar",
+    "Leopard",
+    "Tiger",
+    "Cougar",
+    "Lion",
+    "Caracal",
+    "Bobcat",
+    "Lynx",
+    "Cheetah",
+    "Serval",
+    "Clouded Leopard",
+    "Ocelot",
+    "Snow Leopard",
+    "Fishing Cat",
+    "Sand Cat",
+    "Wildcat",
+    "Cat"
+  ],
+  "bodyPlan": "quadruped",
+  "mustPaint": [
+    "round short-muzzled cat head with upright triangular ears (the Civet's long masked snout is what misleads now)",
+    "long heavy tail at mid length, so tail 0.7 reads as a bobcat or lynx stub and 1.35 as a snow leopard's rope",
+    "deep-chested muscular body on medium legs, stalking pose, big soft paws",
+    "plain unmarked tawny coat: no painted spots, rings or face marks",
+    "full six-mask set: striped = tiger/tabby stripes, spotted = cheetah/serval solid spots, eye-spotted = open rosettes (leopard, jaguar, snow leopard, ocelot), marbled = clouded-leopard blotches, banded = tail rings, mottled = broken patches"
+  ],
+  "why": "10 misleading and 7 caveat cats. Big cats are read by their coat pattern, and only masks on a PLAIN cat can carry it. The Civet's own spots and tail rings show through every tint, so no Civet mask can fix this."
+}
