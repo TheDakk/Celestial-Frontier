@@ -22,7 +22,7 @@ This block is self-contained: either lane can resume from it alone. Older handof
 
 **State of the branches.**
 - **`anthropic/mac`:** pushed through this handoff's commit, every commit signed G with the repo keychain key (`git-ssh-sign-cf`). `origin` is HTTPS via `gh`.
-  - It merged `openai/mac` at `e1cc9514` (Codex's 30 C15 commits; `d1dbb979`).
+  - It merged `openai/mac` at `e1cc9514` (Codex's 30 C15 commits; `d1dbb979`), then again at `7f88590c` (11 more: Racer, Grouse, Sandpiper, Herring, Wild Horse, Salamander, Eel, Honeybee and a gallop contact fix; `70a0f776`; 5,382 pass, only I5 red). Those new candidates wait on pack room (mailbox C25).
   - It also merged four isolated agent branches from this session: A5 tests, D16 ports, §20 Command, and C13 pins. They were reconciled by hand in `96eb2e2c`.
 - **`develop`:** still `c1791e21`. PR #43 is still open. No hosted attempt is eligible (D5): I5 is red, and so is the hidden root typecheck below.
 - **The dev site:** republished from this session's head. The exact commit is in the site's `version.json`, and the evidence is in `audits/DEV_PUBLISH/<head>/`.
