@@ -1,5 +1,28 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
+## D15 Stage 0 — audio plumbing (matches code as of 2026-09-25)
+Nick decided D15 (the in-house $0 plan, `audits/PROPOSALS_20260925/N5_AUDIO.md`). Stage 0 lands the plumbing; no new sound source ships.
+- **Measured loudness gate** (`port/v2/apps/game/src/soundkit/loudness.ts`):
+  - ITU-R BS.1770 K-weighting (libebur128's bilinear design, pinned to the standard's 48 kHz coefficients).
+  - Momentary (400 ms), short-term (3 s) and gated integrated loudness, plus 4× oversampled true peak.
+  - The kit's targets are one table, `LOUDNESS_TARGETS_V1`: creature and combat cues −14 LUFS short-term, music −18 integrated, ambience −22, UI −20, every class ≤ −1 dBTP.
+  - `admitLoudnessV1` returns a named refusal: silent, non-finite, too loud, too quiet (judged on the loudest 400 ms block for cues) or over the true-peak ceiling.
+  - Creature-cue derivation now ends with `limitToLoudnessV1`, which only ever ATTENUATES. Before, only sample peak was enforced, and a 0.891 sample peak overshot −1 dBTP between samples.
+  - Tests: `tests/soundkit-loudness.test.ts` (the standard's 997 Hz calibration, K-weighting, gating, inter-sample peak, the gate in both directions, and every derivable creature cue).
+- **The shipped pack's audio section and its 12 MiB cap** (`port/v2/apps/game/pwa-build.ts`, `SHIPPED_AUDIO_BYTE_LIMIT`).
+  - It is computed at `writeBundle` from the exact shipped inventory (runtime assets plus battle2 files), beside the 128 MiB pack gate. The worker and the emitted files are unchanged.
+  - Audio is any .opus/.ogg/.oga/.m4a/.aac/.mp3/.wav/.flac/.weba/.caf file.
+  - Exactly 12 MiB passes; one byte over fails the build with a named error. The cap grows only on Nick's word. Today the pack ships 0 audio bytes: the pilot cues are opt-in only.
+  - Test: `tests/pwa-audio-section.test.ts`.
+- **One voice per creature** (`port/v2/apps/game/src/soundkit/voice-identity.ts`): every path derives a creature's voice card here.
+  - The SEED comes from its resolver-v1 `AudioSignature`: the owned individual's exact projection, or `projectGenomeAudioSignatureV1` for a non-owned combatant. The two are identical for an unbred genome.
+  - The voice TEMPLATE comes from the genome (its Earth profile, or the procedural body family), never from the painting.
+  - The painted battle voices an owned champion through its ownership projection (`main.ts` passes `ownership`). Every cue derives from the card's own seed, so it sounds the same in every fight.
+  - The Compendium audition rows carry the same card (`voice`).
+  - A combatant with no resolvable signature (a partial genome) keeps the record-based voice.
+  - The oscillator Tame/Feed/Compendium call plans already key on the same signature; they become articulations of this card in Stage 4.
+  - Test: `battle2-wiring.test.ts` "one voice per creature". The stage card equals the Compendium card byte for byte, in two battles. Control: with the identity card switched off it fails.
+
 ## Accessibility modes: Mono audio and Reduced intensity (matches code as of 2026-09-25)
 
 Settings has two toggles under Creature voices, and both are applied once at the master of the ONE shared runtime (`@cf/audio`
