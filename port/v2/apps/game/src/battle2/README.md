@@ -193,6 +193,24 @@ sits just above the target's painted top, clamped inside the frame.
 - **Pacing.** With `input.pacer` (a `CombatChroniclePacerGateV1`; `main.ts` passes one under `?battle2=1` with motion on), the study
   releases each staged turn's Chronicle row at the turn's impact, and everything on finish, failure or dispose.
 
+### Build-generated master pins, C13 (matches code as of 2026-09-25)
+- **Generator.** `tools/morph/battle2-master-pins.mjs` (run by `build-shipped-battle2.mjs`, or alone) runs the EXISTING full byte admission of
+  every archetype's retained original master (`admitFamilyRecord` against the keyed alpha, plus binding hash, record linkage and atlas hash),
+  and only then emits a pin. It writes the checked-in `apps/game/src/battle2-master-pins.generated.ts`. A failed admission, a duplicate id, a
+  malformed hash/dimension or a non-canonical path fails the build. Re-run it whenever the archetype list or a fit changes (the drift test
+  regenerates the module byte for byte).
+- **Authority is identity.** The generated module exports only `getBattle2MasterPin(creatureId)` and `isBattle2MasterPin(value)`, backed by a
+  private `WeakSet` of its own frozen entries. Clones, JSON copies and look-alikes are not pins. The hash definitions are the one shared
+  contract `tools/morph/battle2-pin-contract.mjs` (record = stableJSON UTF-8; binding = exact decompressed bytes; alpha/atlas/master = exact
+  PNG bytes; paths canonical repo-relative POSIX, never resolved or decoded).
+- **Preflight order in the wiring.** For a parts fit the study now fetches the manifest, looks up the pin (a missing pin is the named refusal
+  `missing-pin`, never a master fallback), fetches the alpha/binding/atlas as raw BYTES and runs `preflightBattle2PinnedBytesV1`
+  (`battle2-master-pin-admission.ts`) BEFORE any image decode, marking-mask fetch, morph-cache lease, master fetch or Pixi allocation. The
+  binding is parsed from the hashed bytes, and the alpha is decoded exactly (`decodePng`) after admission. A refusal falls back to the fixture or
+  portrait rig with its reason in `status().skipped`.
+- **Masters stay shipped.** The loader's unchanged byte admission (`loadCreatureRigV1`) still hashes the master. Dropping masters from the
+  package waits for Codex's narrow pin overload and its controls, then Claude's cold/worker/offline/picker checks (C4 §5).
+
 ### The real-duel picker and the ticker guard (matches code as of 2026-09-24, late)
 - `?battle2=1&vs=A,B&duel=1` (or the "Real duel + Chronicle" checkbox): `matchupDuel` builds full genomes carrying each painting's visual genes
   and runs a real duel through the combat domain, the settlement, the cue plan and the Combat Chronicle. The picker mounts the Chronicle and the
