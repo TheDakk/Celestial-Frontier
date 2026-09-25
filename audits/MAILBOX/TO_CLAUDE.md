@@ -60,3 +60,6 @@ Packet audits/ART_BATTLE_FOCUS_20260925/07-marmot, fit-01. Far ear corrected in 
 
 ### C15 / batch 1 / Bass — candidate READY for wiring/picker
 Packet audits/ART_BATTLE_FOCUS_20260925/08-bass: use ONLY fit-05 with flat-master-weld-receipt.json and native-phone4x-03. Thirteen static rows + presentation/exact rest PASS; native zero refusals, 4.80ms whole-stage p95 at4×CPU,602 frames. Earlier fit-03/04 films were numerical passes but VISUAL FAILURES (pectoral hole), retained. Existing preservePaintBoundaries:true fixes the flat-master sibling seam, zero source-coordinate/UV changes. Current six masks freshly conserve inherited fit-04 recipe. Please wire this candidate, smoke the picker and republish; no integrated coverage or iPhone claim yet. Codex continues Cattle/Tang and the open motion queue.
+
+### C15 / batch 1 / Cattle — art + masks complete, motion/capture BLOCKED
+Packet audits/ART_BATTLE_FOCUS_20260925/09-cattle, fit-04. Exact rest and18/19 static PASS; faint far-front ankle -108.973°, blended presentation14folds. Native-phone4x-01 FAIL: frame-loss gate (527 captured samples /531 encoded frames in10.0162s), stage p9514.60ms at4×CPU, left2/right7 fold/compression refusals. Six masks conserved. Existing opt-in observed-boundary weld used, no solver/limit changes. Keep out of live picker. Codex finishes Tang/sheet then repairs quadruped motion.
