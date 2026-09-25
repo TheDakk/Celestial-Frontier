@@ -94,3 +94,27 @@ describe('Settings → Battle sounds wiring', () => {
   });
 });
 
+/* Confirm salvage (v1.8.9 parity, 2026-09-25): the saved `sv` switch the Inventory's salvage confirmation reads. */
+describe('Settings → Confirm salvage wiring', () => {
+  const audit = (source: string): string[] => {
+    const findings: string[] = [];
+    const settings = between(source, "fillPanel('set',", 'const refillAndFocus');
+    if (!settings.includes('id="setsalv"') || !settings.includes('aria-pressed="${save.salvageConfirm}"')) findings.push('Settings lacks Confirm salvage bound to save.salvageConfirm');
+    const handler = between(source, "el.querySelector('#setsalv')!.addEventListener('click', () => {", "refillAndFocus('#setsalv');");
+    if (!handler.includes('save.salvageConfirm = !save.salvageConfirm')) findings.push('#setsalv does not flip save.salvageConfirm');
+    if (!source.includes("refillAndFocus('#setsalv'); void persistView();")) findings.push('#setsalv does not persist the save');
+    if (!source.includes('requiresSalvageConfirmation: () => save.salvageConfirm')) findings.push('the Inventory no longer reads the switch');
+    return findings;
+  };
+  it('the shipped main.ts wires the switch the Inventory reads, and persists it', () => { expect(audit(mainSource)).toEqual([]); });
+  it('negative controls', () => {
+    for (const [needle, replacement, expected] of [
+      ['save.salvageConfirm = !save.salvageConfirm;', 'void 0;', /does not flip/],
+      ["refillAndFocus('#setsalv'); void persistView();", "refillAndFocus('#setsalv');", /does not persist/],
+      ['requiresSalvageConfirmation: () => save.salvageConfirm', 'requiresSalvageConfirmation: () => true', /no longer reads/],
+    ] as [string, string, RegExp][]) {
+      expect(mainSource.split(needle).length, needle).toBe(2);
+      expect(audit(mainSource.replace(needle, replacement)).join(' | '), needle).toMatch(expected);
+    }
+  });
+});
