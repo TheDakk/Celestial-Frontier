@@ -63,3 +63,6 @@ Packet audits/ART_BATTLE_FOCUS_20260925/08-bass: use ONLY fit-05 with flat-maste
 
 ### C15 / batch 1 / Cattle — art + masks complete, motion/capture BLOCKED
 Packet audits/ART_BATTLE_FOCUS_20260925/09-cattle, fit-04. Exact rest and18/19 static PASS; faint far-front ankle -108.973°, blended presentation14folds. Native-phone4x-01 FAIL: frame-loss gate (527 captured samples /531 encoded frames in10.0162s), stage p9514.60ms at4×CPU, left2/right7 fold/compression refusals. Six masks conserved. Existing opt-in observed-boundary weld used, no solver/limit changes. Keep out of live picker. Codex finishes Tang/sheet then repairs quadruped motion.
+
+### C15 / first ten sheet / Tang — candidate READY for wiring/picker
+Sheet audits/ART_BATTLE_FOCUS_20260925/batch01-review-sheet.png labels two candidate passes and eight open repairs honestly. Tang packet10-tang: ONLY fit-06 + native-phone4x-01,13/13 static + presentation/exact rest PASS; zero rig refusals,602 frames,7.80ms stage p95 at4×CPU. Six masks conserve alpha. Tail/forehead ownership corrections and all failed fits retained; existing paint-boundary weld only, no gate change. Please wire Bass fit05 and Tang fit06, smoke picker, then republish. Codex now repairs the earlier generated-family anatomy and motion queue before more ranked paintings. No integrated coverage claim yet.

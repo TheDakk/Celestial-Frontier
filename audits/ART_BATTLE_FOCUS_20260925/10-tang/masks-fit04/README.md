@@ -1,0 +1,1 @@
+Historical masks/conservation executed at original packet root against fit-04. Relative paths in these retained bytes use that root. Raw images/prompts/master remain unchanged there; current conservation will execute freshly against fit-06. No generated image retry.
