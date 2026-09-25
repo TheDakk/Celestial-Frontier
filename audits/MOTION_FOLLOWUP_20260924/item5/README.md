@@ -1,0 +1,7 @@
+# Item 5 — Centipede
+
+Current resolution: Nick reports Claude applied the prepared fix and actual KNOWN-pin removal verbatim in one signed commit, `f73394018950bcb24341008dd5efc6f9634a6a5e` (G). Read-only verification confirms both changes and byte-identical local family-actions.ts. Its library-arena sweep8/8 and old-line negative control are Nick-reported, not a repeated local run. The local item5 commit now contains the same crawl change. Earlier pending/signing notes below remain historical checkpoints. I5 now waits for the final integrated anthropic/mac head after Claude merges all three signed local items.
+
+Implementation and full findings: [ITEM5.md](../ITEM5.md). Exact before/after source hashes are in centipede-*.sources.json. Retained before runs refuse at 0.85×; level-crawl-01 completes all three scales with zero refusals. Eight compact tests and root validation pass; all 90 protected inputs remain identical. Films/review: ../../MOTION_ANATOMY_20260923/review.html (historical; no new film/timing claimed).
+
+Signed commit is blocked: two SSH agent communication failures, both retained. Local motion change and exact Claude test-pin removal patch are staged for review; Claude's read-only test was not edited. Claude must integrate the motion fix and removal together in one commit and run the full actual scale sweep. Codex holds pending signing; Nick must renew approval until quit before another attempt. Hash inventory: ../SHA256SUMS.json.

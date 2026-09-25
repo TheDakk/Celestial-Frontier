@@ -1,0 +1,30 @@
+{
+  "scope": "Final working repair bytes; no clean-commit certificate",
+  "head": "1e9f5920fc6a6899b558fea3eb9d40dbc5c4e033",
+  "sources": [
+    {
+      "path": "port/v2/apps/game/src/creature-rig-contact.ts",
+      "sha256": "dae186c0bdc2be158962efb93175589005bb96a0f6dce79b10b7a93b956ce847"
+    },
+    {
+      "path": "port/v2/tests/evidence-chain-tools.test.ts",
+      "sha256": "2b43c9ed688bba46e48e48df3011893d573ff4b9a54365343a2282ebaf0ddfda"
+    },
+    {
+      "path": "port/v2/tests/exceptional-crafting-evidence-contract.test.ts",
+      "sha256": "9852f25b50a5a148cf0628c506061c58749c3cb2382bdb9d25e0ac1a086e6677"
+    },
+    {
+      "path": "port/v2/tests/slicesmoke-sixth-red-contract.test.ts",
+      "sha256": "d727fe1b553e6e364dd9e122aefb77a66200d040ad62ce8878730d85fd6c173a"
+    },
+    {
+      "path": "port/v2/tools/glassmatrix.mjs",
+      "sha256": "ca660f4b8498bd907a87ebdb9e597c745cee02ce8c9802bf2c8ac7bfb4f565ad"
+    },
+    {
+      "path": "port/v2/tools/slicesmoke.mjs",
+      "sha256": "603bdddc330bd715cce1adb0f4880bf2f626ace7ae4abb4f94fc642887866c0d"
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+[
+  {
+    "factor": 1,
+    "error": "RecoverablePoseError: ARAP skin: unresolved folded triangles: 2",
+    "folds": [
+      {
+        "triangle": 1224,
+        "vertices": [
+          {
+            "id": 839,
+            "x": 1000.5,
+            "y": 624.5,
+            "weights": [
+              [
+                "root",
+                0.604433569596432
+              ],
+              [
+                "leg0FarFoot",
+                0.3430466828052235
+              ],
+              [
+                "leg0FarKnee",
+                0.04481548152066398
+              ],
+              [
+                "leg1FarFoot",
+                0.006636048064732597
+              ],
+              [
+                "head",
+                0.001047718709489132
+              ],
+              [
+                "leg1NearFoot",
+                0.000010282878372945167
+              ],
+              [
+                "leg0NearFoot",
+                0.000009681563280770569
+              ],
+              [
+                "leg2NearFoot",
+                5.348618049425293e-7
+              ]
+            ]
+          },
+          {
+            "id": 835,
+            "x": 1003,
+            "y": 622,
+            "weights": [
+              [
+                "leg0FarFoot",
+                0.4812275656071917
+              ],
+              [
+                "root",
+                0.43077081675942713
+              ],
+              [
+                "leg0FarKnee",
+                0.08294391666093451
+              ],
+              [
+                "leg1FarFoot",
+                0.003799251523261686
+              ],
+              [
+                "head",
+                0.0012438030201466141
+              ],
+              [
+                "leg1NearFoot",
+                0.000007121144846999828
+              ],
+              [
+                "leg0NearFoot",
+                0.000006984945942156681
+              ],
+              [
+                "leg2NearFoot",
+                5.403382490148011e-7
+              ]
+            ]
+          },
+          {
+            "id": 840,
+            "x": 1003,
+            "y": 627,
+            "weights": [
+              [
+                "root",
+                1
+              ]
+            ]
+          }
+        ],
+        "before": 12.5,
+        "after": -0.277349487467757
+      },
+      {
+        "triangle": 1426,
+        "vertices": [
+          {
+            "id": 837,
+            "x": 1005.5,
+            "y": 619.5,
+            "weights": [
+              [
+                "leg0FarFoot",
+                0.5567169927388955
+              ],
+              [
+                "root",
+                0.2807121530345265
+              ],
+              [
+                "leg0FarKnee",
+                0.15904596181018021
+              ],
+              [
+                "leg1FarFoot",
+                0.002137133181766766
+              ],
+              [
+                "head",
+                0.0013770646190827776
+              ],
+              [
+                "leg0NearFoot",
+                0.0000052087333699218124
+              ],
+              [
+                "leg1NearFoot",
+                0.000005077657257148961
+              ],
+              [
+                "leg2NearFoot",
+                4.0822492107574253e-7
+              ]
+            ]
+          },
+          {
+            "id": 835,
+            "x": 1003,
+            "y": 622,
+            "weights": [
+              [
+                "leg0FarFoot",
+                0.4812275656071917
+              ],
+              [
+                "root",
+                0.43077081675942713
+              ],
+              [
+                "leg0FarKnee",
+                0.08294391666093451
+              ],
+              [
+                "leg1FarFoot",
+                0.003799251523261686
+              ],
+              [
+                "head",
+                0.0012438030201466141
+              ],
+              [
+                "leg1NearFoot",
+                0.000007121144846999828
+              ],
+              [
+                "leg0NearFoot",
+                0.000006984945942156681
+              ],
+              [
+                "leg2NearFoot",
+                5.403382490148011e-7
+              ]
+            ]
+          },
+          {
+            "id": 827,
+            "x": 1003,
+            "y": 617,
+            "weights": [
+              [
+                "leg0FarFoot",
+                0.610981046326854
+              ],
+              [
+                "root",
+                0.24196377932160817
+              ],
+              [
+                "leg0FarKnee",
+                0.14426564799890698
+              ],
+              [
+                "leg1FarFoot",
+                0.001985017928808328
+              ],
+              [
+                "head",
+                0.0007980600545086699
+              ],
+              [
+                "leg1NearFoot",
+                0.000003153245684124957
+              ],
+              [
+                "leg0NearFoot",
+                0.0000030648823379778075
+              ],
+              [
+                "leg2NearFoot",
+                2.3024129179993005e-7
+              ]
+            ]
+          }
+        ],
+        "before": 12.5,
+        "after": -0.0381068009766185
+      }
+    ],
+    "stats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 18.821124955732863,
+      "rmsTargetErrorPx": 0.7565655921011563,
+      "maximumProjectionPx": 17.497804764211345,
+      "flippedTriangles": 2,
+      "minimumAreaRatio": -0.02218795899742056,
+      "orientationPasses": 128
+    }
+  },
+  {
+    "factor": 0.75,
+    "error": null,
+    "folds": [],
+    "stats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 16.296318401162633,
+      "rmsTargetErrorPx": 0.6707647421763987,
+      "maximumProjectionPx": 15.018737788533826,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.061882000268639575,
+      "orientationPasses": 65
+    }
+  },
+  {
+    "factor": 0.5,
+    "error": null,
+    "folds": [],
+    "stats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 15.379756994594286,
+      "rmsTargetErrorPx": 0.6464329449110722,
+      "maximumProjectionPx": 14.146983409699526,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.06327818098240848,
+      "orientationPasses": 65
+    }
+  },
+  {
+    "factor": 0,
+    "error": null,
+    "folds": [],
+    "stats": {
+      "rigid": false,
+      "maximumTargetErrorPx": 9.717026522596967,
+      "rmsTargetErrorPx": 0.4931243268911959,
+      "maximumProjectionPx": 8.574603224260423,
+      "flippedTriangles": 0,
+      "minimumAreaRatio": 0.06240201157531296,
+      "orientationPasses": 65
+    }
+  }
+]

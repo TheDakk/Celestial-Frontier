@@ -1,6 +1,9 @@
 # Celestial Frontier — Species & Genome System
 
-> Current roster intake, 2026-09-19: the historical58 inventory is explicit in `tools/fauna-coverage/roster-inventory.json`. Five admitted crabs retain existing fit/bind/film evidence; the remaining53 are attempted in source-family order and incomplete source fits refuse. Current missing-profile census counts53/8observed, not the historical58/13. Partial source features do not grant animation qualification. Evidence: `audits/ANATOMY_SINGLE_RUN_20260919/roster/README.md`.
+**Candidate body routing — matches code 2026-09-24.** All 53 previously empty Earth-fauna presentation profiles now reference existing specialized templates. Sea Squirt uses sessile-filter, Salp/Pyrosome colonial-filter and Fiddler Crab brachyuran; all other routes follow the existing target register. Explicit `needsObservedFit` retains all 53 in the coverage ledger: zero new painted admissions. Habitat, weapons, accepted bindings, anatomical counts and solver limits are unchanged. Packet: `audits/MOTION_FOLLOWUP_20260924/ITEM7.md`. No new art was commissioned.
+
+
+> Current roster intake, 2026-09-19: the historical58 inventory is explicit in `tools/fauna-coverage/roster-inventory.json`. Five admitted crabs retain existing fit/bind/film evidence; the remaining53 are attempted in source-family order and incomplete source fits refuse. That 2026-09-19 census recorded53/8observed versus the earlier58/13; candidate routing is now present for those53, with painted qualification still pending. Partial source features do not grant animation qualification. Evidence: `audits/ANATOMY_SINGLE_RUN_20260919/roster/README.md`.
 
 Current anatomy implementation — matches code as of September 19, 2026. The canonical
 contract and live limits are in [CREATURE_ANIMATION.md](CREATURE_ANIMATION.md); the current

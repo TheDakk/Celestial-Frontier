@@ -1,5 +1,7 @@
 # I5 first — source gate checked before new implementation
 
+Latest explicit source instruction: run I5 once on the final clean integrated anthropic/mac head AFTER Claude merges signed local item5, item7 and the five-regression repair. This supersedes the earlier local-only next-run plan below. No fresh attempt consumed. Historical certificates/calibration remain bound to their original bytes.
+
 PR43 read-only API observation: OPEN, anthropic/mac202191a1efe47ca173ce0bbd32809def910b7a45 → develop. Local openai/mac4c23bffcb6df6f2e79a6b70301a39538183235b3 is a different source. The PR commit object is present locally, but the standing no-sync/no-merge restriction does not authorize replacing/integrating it into this checkout. Claude’s lane remains read-only. No certificate attempt has been consumed in this follow-up.
 
 Prior local I5 evidence remains historical, never bound to the PR producer. New service-worker changes also alter producer authority, so a certificate taken before those bytes join the integrated source would not certify the resulting worker. Do not rewrite budget/test producer fields or old measurements merely to make the authority test green.
@@ -7,3 +9,7 @@ Prior local I5 evidence remains historical, never bound to the PR producer. New 
 Required next source step: Nick authorizes exact local integration of the chosen PR/Claude source into openai/mac, or the owning Claude lane measures the final clean committed integrated source itself using the exact Edge certificate chain. The budget and contract test must be reconciled together from that measurement, then the targeted authority/budget tests and develop profile run once. No hosted attempt/label is authorized here.
 
 Sprint mode continues independent items4–7 while this source gate remains explicit. Item6 is already repaired in signedfb1922a0; adoption by Claude remains a separate integration action.
+
+## End-of-batch distinction
+
+Nick's earlier explicit source choice was local openai/mac only, with no PR43 certification claim. That remains authority for a local-only measurement; mentioning PR43 is not permission to merge or to relabel local results as integrated results. The first source check above records the separate PR43 provenance problem. The new worker/motion/profile bytes still need a final clean committed source before any fresh local-only certificate. Signing failed twice after item4, so that source prerequisite is currently unmet. No fresh attempt was consumed. After signed completion, local I5 can proceed under the existing local-only authority; certification of PR43 itself belongs to its final integrated source owner. No budget/test provenance was rewritten.

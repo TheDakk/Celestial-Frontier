@@ -1,0 +1,86 @@
+{
+  "status": "Superseded pending state: item5 and item7 signed; five-red repair is enclosing commit. Wait for final integrated anthropic/mac source before I5.",
+  "order": [
+    {
+      "item": 5,
+      "message": "fix(motion): keep compact centipede crawl trunk level",
+      "paths": [
+        "port/v2/apps/game/src/motion/family-actions.ts",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-claude-01.json.sources.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-claude-01.log",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-claude-02.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-claude-02.json.sources.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-claude-02.log",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe-01.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe-01.log",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe-02.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe-02.log",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe-03.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe-03.log",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-fold-probe.ts",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-known-patch-authority.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-level-crawl-01.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-level-crawl-01.json.sources.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-level-crawl-01.log",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-local-motion-01.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-local-motion-01.json.sources.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-local-motion-01.log",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-observed-01.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-observed-01.json.sources.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-observed-01.log",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-protected-inputs.json",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-remove-known.patch",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-scale-original.txt",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-scale.ts",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-tests-01.log",
+        "audits/MOTION_FOLLOWUP_20260924/centipede-validate.log",
+        "audits/MOTION_FOLLOWUP_20260924/run-centipede-scale.mjs",
+        "audits/MOTION_FOLLOWUP_20260924/ITEM5.md",
+        "audits/MOTION_FOLLOWUP_20260924/item5/README.md",
+        "audits/MOTION_FOLLOWUP_20260924/signing-refusal-01.txt",
+        "audits/MOTION_FOLLOWUP_20260924/signing-refusal-02.txt"
+      ]
+    },
+    {
+      "item": 7,
+      "message": "feat(anatomy): route 53 Earth species to existing templates",
+      "paths": [
+        "port/v2/apps/game/src/earth-fauna-profiles.ts",
+        "port/v2/apps/game/src/earth-fauna-profiles.test.ts",
+        "port/v2/apps/game/src/missing-body-structures.ts",
+        "port/v2/apps/game/src/motion/specialized-anatomy.test.ts"
+      ],
+      "remainingPacketAndReferenceDocs": "Include after item5; remaining staged packet files and updated reference/roadmap handoff."
+    },
+    {
+      "item": 9,
+      "message": "fix(evidence): preserve insect recovery and reconcile rendered draft inventory",
+      "paths": [
+        "port/v2/apps/game/src/creature-rig-contact.ts",
+        "port/v2/tests/evidence-chain-tools.test.ts",
+        "port/v2/tests/exceptional-crafting-evidence-contract.test.ts",
+        "port/v2/tests/slicesmoke-sixth-red-contract.test.ts",
+        "port/v2/tools/glassmatrix.mjs",
+        "port/v2/tools/slicesmoke.mjs"
+      ],
+      "packet": "audits/MOTION_FIVE_REDS_20260924",
+      "references": [
+        "CREATURE_ANIMATION.md",
+        "celestial-frontier-codebase-reference.md",
+        "SAVE_SYSTEM.md",
+        "UI_PRESENTATION.md",
+        "ROADMAP.md",
+        "ROADMAP_ARCHIVE.md"
+      ],
+      "prerequisites": "After items5/7; actual item5 pin removal requires approved integration route; signing approval remains pending."
+    }
+  ],
+  "rule": "Use explicit item path lists; never unsigned. Do not include pre-existing .DS_Store.",
+  "historicalPlan": true,
+  "completed": {
+    "item5": "39e00aa02e50b139fd1dba23885f4a4a15f4dce1",
+    "item7": "4cfd5584ec232a070a5c0a624710e2198a76c1e0",
+    "fiveRedRepair": "enclosing commit"
+  },
+  "pinResolution": "f73394018950bcb24341008dd5efc6f9634a6a5e"
+}

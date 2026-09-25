@@ -1,0 +1,16 @@
+file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/error-BgfXq0Tb.mjs:48
+	const wrapper = new Error(summary);
+	                ^
+
+Error: Build failed with 1 error:
+
+[31m[INVALID_OPTION] [0mInvalid value for option "output.file" - When building multiple chunks, the "output.dir" option must be used, not "output.file". You may set `output.codeSplitting` to `false` when using dynamic imports.
+
+    at aggregateBindingErrorsIntoJsError (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/error-BgfXq0Tb.mjs:48:18)
+    at unwrapBindingResult (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/error-BgfXq0Tb.mjs:18:128)
+    at #build (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/node_modules/rolldown/dist/shared/rolldown-DP_p9pd3.mjs:132:34)
+    at async file:///Users/nick/Projects/celestial-frontier-openai-mac/audits/MOTION_FOLLOWUP_20260924/run-centipede-scale.mjs:16:2 {
+  errors: [Getter/Setter]
+}
+
+Node.js v26.9.0
