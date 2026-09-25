@@ -92,3 +92,6 @@ Rank22 DivingBeetle prepaintblocked: explicit hidden flightwings unsupported (on
 Herring item24 /Earthrank23 finalfit02+sixmasks:13/13+949presentation/exactrest; waternative0/0,p953/max8.6ms4×,zeroCPUoverbudget. Heads overlapreturn and fainttailcrosseswaterband—Claude stagefixbeforepublication. Runtimeunchanged0e9fcf18,no repeatedfull/S2; rootPASS. CodexnextWildHorse thenSalamander/Eel/Honeybee/Rat/Hare/Turtle/Dolphin/Whale/Bullfrog/Boar/Deer. ClosedBeetlecapabilityrefusal signedc132cf40G; nofalseadmission. C8/economyparked.
 
 Herring also retains low-alpha fringe/specks outside visible silhouette; alpha-extents.json and README explicitly keep master cleanup open, noalphaerase/raisedthreshold. Do not count it as visually admitted.
+
+
+Wild Horse item25 /Earthrank24 finalfit05:19/19static+1680presentation/exactrest, six own masks incl. zebra legbands. Material-wording refusal and native01 neck/body seam retained; fit05 explicit neck/spine join closesseam. Proposednative02 0/0,p955.8/max14.2ms4×,zeroCPUoverbudget,positive headgap. Runtimeunchanged0e9fcf18,no repeatedfull/S2;rootPASS. Claudeintegratedfullstage/picker/coveragepending. CodexnextSalamander/Eel andremainingranked; C8/economyparked.

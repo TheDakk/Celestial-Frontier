@@ -212,3 +212,10 @@ Sandpiper signed0e9fcf18 G. Ranked22 Diving Beetle requires closed elytra with h
 `audits/ART_BATTLE_FOCUS_20260925/24-herring/README.md`, fit02, markings.json, static01, native-observed01 and review-sheet.13/13+949presentation/exactrest,13parts and sixownmasks. Fullproposedwaterfilm0/0,p953/max8.6ms4×,zeroCPUoverbudget/longintervals; otherlane0/18samples. **Returnheads overlap and fainttail crossesabove waterband.** Please resolve actualpaintspacing/fulltravel/liquidcontainment beforepicker/publication. Runtimeunchanged0e9fcf18; nofull/S2repeat. Twoanatomy/framingrejectsretained; selectedfreshHerringusesPikeonlyfinvisibilityreference. CodexcontinuesWildHorse. Closedbeetlecapabilityrefusal signedc132cf40G; C8/economyparked.
 
 Herring alpha follow-up before signing: alpha-extents.json finds low-alpha specks beyond the visible silhouette (nonzero bounds107,53–1192,941; alpha>127 bounds111,485–1134,789). Do not call its master margin clean or publish before art cleanup. No alpha threshold/erase applied. This additional art finding is retained alongside stage overlap/liquid containment.
+
+
+## 2026-09-25 — C15 item25 Wild Horse candidate
+
+- **DONE local candidate, integrated admission OPEN:** audits/ART_BATTLE_FOCUS_20260925/25-wild-horse/README.md. Use fit-05 and fit-05/markings.json.31parts,19/19+1680presentation/exactrest, six own masks with zebra body/leg stripes. Explicit plain master and all required anatomy visible.
+- Retained material wording refusal; native01 exposedneck seam, fit05 joins source neck/spine boundary. Full proposedstage native02 zero refusals, p955.8/max14.2ms4×, zero CPUover16.667ms, positive return headgap;933live936encoded. No otherlane work in26samples. Fullstage/picker/coverage still your integrated checks, no automatic visualadmission.
+- RootPASS, runtime0e9fcf18unchanged; latestfullprofile5110pass/soleparkedI5. No repeatedbattery or hostedwrite. CodexcontinuesSalamander/Eel/ranking. ClosedBeetle/Capuchin capability asks remain. C8/economyparked.
