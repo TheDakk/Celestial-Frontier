@@ -10,7 +10,7 @@
    The slate for cycle k is deterministic (the same three Charters for every explorer in cycle k; no reroll exists). A weekly Charter
    counts only deeds done AFTER it is accepted; completion pays Stardust and one honoured Charter exactly once per cycle. Weekly and
    starter Charters share the three-slot cap. The board opens when the five trades are learned. Pure: no Date.now, no Math.random. */
-import { hashInt } from '@cf/domain-rand';
+import { weeklyCharterRankV1 } from '@cf/domain-progression';
 import type { SaveStateV2 } from './import-v2.js';
 
 /** One Charter week = four hours of active play (decisions queue D8; one constant). */
@@ -48,7 +48,7 @@ export function weeklyCharterRemainingActiveMsV1(activePlayMs: number): number {
 /** The deterministic slate of cycle k: the pool ordered by a per-cycle hash, first WEEKLY_CHARTER_SLATE_SIZE. */
 export function weeklyCharterSlateV1(cycle: number): readonly WeeklyCharterIdV1[] {
   if (!Number.isSafeInteger(cycle) || cycle < 0) throw new RangeError('weekly Charter cycle must be a non-negative safe integer');
-  const ranked = WEEKLY_CHARTER_DEFINITIONS_V1.map((d, i) => ({ id: d.id, rank: hashInt(cycle >>> 0, 0x57EE0 + i, 0xC4A7) >>> 0, i }))
+  const ranked = WEEKLY_CHARTER_DEFINITIONS_V1.map((d, i) => ({ id: d.id, rank: weeklyCharterRankV1(cycle, i), i }))
     .sort((a, b) => a.rank - b.rank || a.i - b.i);
   return Object.freeze(ranked.slice(0, WEEKLY_CHARTER_SLATE_SIZE).map((r) => r.id));
 }
