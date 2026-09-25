@@ -45,7 +45,9 @@ River Otter item13 packet audits/ART_BATTLE_FOCUS_20260925/13-river-otter:31part
 
 Brown Bear item14 packet audits/ART_BATTLE_FOCUS_20260925/14-brown-bear:31parts, fit02;18/19static, tame compression240ms. Full native01 FAIL0/10right-walk refusals,7.5ms stage p95 at4×,932live/936encoded. Five usable masks; eye patch misplaced and correction tool-refused (request b99c0e1f-0ff3-446d-a779-9be0a094cd3a), all retained. Keep out of picker.
 
-Then continue ranked paintings Goose/Heron/Sparrow/Ibex/Reef Shark onward; existing Python/Beetle masks, specialized uncovered templates, complete-stage motion, C12 Centipede orientation cost and C13 pin review remain in the art program. Done only with measured generated coverage≥80%, no misleading ranked top35 Earth, all motion/picker gates and every library pair at60fps4×CPU. No new completion claims yet.
+Goose item15 packet audits/ART_BATTLE_FOCUS_20260925/15-goose:plain corrected master,17parts, fit02, six masks. Shin ownership repair improves7/14 to11/14static; hit/dodge/tame still red. Native01 FAIL0/38 final counters (36logged live faint events),4.30ms stage p95 at4×,776live/780encoded. Shoulder gaps visible; keep out of picker.
+
+Then continue ranked paintings Heron/Sparrow/Ibex/Reef Shark onward; existing Python/Beetle masks, specialized uncovered templates, complete-stage motion, C12 Centipede orientation cost and C13 pin review remain in the art program. Done only with measured generated coverage≥80%, no misleading ranked top35 Earth, all motion/picker gates and every library pair at60fps4×CPU. No new completion claims yet.
 
 C18 prerequisite repair is signed a7f154f8: full develop profile5,080pass, sole historicalI5 red; original lock and v1 samples unchanged. No whole-battery PASS, push or hosted eligibility. Asset batches have their own scoped static/native and root validate evidence; no unchanged full battery retries.
 

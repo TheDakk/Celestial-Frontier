@@ -121,3 +121,8 @@ Evidence: `audits/ART_BATTLE_FOCUS_20260925/13-river-otter/README.md`, final `fi
 ## C15 item14 — Brown Bear BLOCKED; retained for repair
 
 Packet `audits/ART_BATTLE_FOCUS_20260925/14-brown-bear/README.md`, fit02. Static18/19 (tame compression240ms); full native01 FAIL0/10right-walk compression332.433–465.733ms,7.5ms whole-stage p95 at4×. Please include this exact fixture in your approach composite/support repair. Return noses touch, still no positive gap/full-stage travel. Six first masks conserve, but eye patch lands on cheek; reference-aligned correction refused by image tool HTTP400 output moderation, request `b99c0e1f-0ff3-446d-a779-9be0a094cd3a`, no retry. No accepted six-mask set or picker/coverage admission. Codex owns tame motion + mask completion. Otter signed `113a76be` G. Continue Goose next; no GitHub writes, C8/economy parked.
+
+
+## C15 item15 — Goose BLOCKED; shin repair and full-film evidence
+
+`audits/ART_BATTLE_FOCUS_20260925/15-goose/README.md`: plain corrected master with both spread wings,17parts/19joints, own six masks. fit02 repairs observed shin-label gaps; static11/14 (hit149.8ms4folds, dodge23.6compression, tame138.667far-foot angle). Full native01 FAIL0/38 final counters,36logged live right-faint near-foot limit events.4.30ms whole-stage p95 at4×,776live/780encoded,12.9828s. Positive bill gap but shoulder separation visible at end. Do not wire/publish; Codex owns remaining candidate skin/static motion repairs, your support-composite/full-stage reconciliation needs this native-faint fixture. Bear signed `47f05636` G. Heron next; C8/economy parked, no GitHub writes.
