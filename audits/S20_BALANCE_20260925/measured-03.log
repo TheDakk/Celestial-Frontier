@@ -1,0 +1,14 @@
+file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/s20-balance.mjs:64
+ const eligible=cachedEligible.get(key);if(eligible.length<3)throw Error('insufficient power-matched corpus');
+                                                                   ^
+
+Error: insufficient power-matched corpus
+    at choose (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/s20-balance.mjs:64:68)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/s20-balance.mjs:76:51
+    at Array.map (<anonymous>)
+    at fixture (file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/s20-balance.mjs:76:20)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/s20-balance.mjs:87:54
+    at Array.from (<anonymous>)
+    at file:///Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/s20-balance.mjs:87:20
+
+Node.js v26.9.0

@@ -602,3 +602,16 @@ would have computed anyway.
 > The general shape is worth keeping: **a cache key derived from expensive values cannot short-circuit
 > the work that produces them.** If the key needs the stats, the stats must be hoisted to the caller
 > or the memo saves nothing on the hit path.
+
+## §20 balance instrument — matches tooling 2026-09-25
+
+`port/v2/tools/s20-balance.mjs` measures exact committed encounter source without
+editing it. Its declared power cohorts, disjoint training/evaluation, exhaustive
+full-party plan search and selected-plan Command upper bound are documented in
+[audits/S20_BALANCE_20260925](audits/S20_BALANCE_20260925/README.md).
+Current results on Claude4093ebca miss the normal/Guardian/Titan planning targets;
+only2/17 isolated hook hypotheses meet the right/ wrong stance ordering. These probes
+are not yet the shipped dossier inventory or a campaign-wide readiness distribution.
+No gameplay constants changed. A reproduced forecast memo defect omits defender
+stats from its seed-based identity (region0/1 can incorrectly retain44% versus11%);
+Claude's card owner has the source-hashed reproduction in that packet.

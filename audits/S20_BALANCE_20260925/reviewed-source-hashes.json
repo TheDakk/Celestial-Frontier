@@ -1,0 +1,7 @@
+{
+  "port/v2/packages/persistence/src/combat-open-encounter.ts": "e1cf98b62437780011f828818663c712158b444effb30b55b765c73bd7a49d06",
+  "port/v2/packages/persistence/src/friendly-duel.ts": "c1e561295d8abeb9bec36b92c8e8f6838fb91b75dd3194461cd6d07f4885971d",
+  "port/v2/packages/persistence/src/combat-settlement.ts": "338a9f251c8ac853253c0c6c6b64199e640286709a7c7a49387155b1c94bed47",
+  "port/v2/packages/domain/combatcore/src/combat-settlement.ts": "b4438b9cf5d6dd6d8b7fbd70982045461801e24bbf8e8a784fdd54fb88c9eb2e",
+  "port/v2/apps/game/src/combat-card.ts": "3a47b7311e268141261a9f5c618acf58496172426d0de69c7d6d5df97eebb393"
+}
