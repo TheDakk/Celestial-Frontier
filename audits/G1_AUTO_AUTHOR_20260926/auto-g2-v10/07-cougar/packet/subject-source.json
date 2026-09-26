@@ -1,0 +1,49 @@
+{
+  "name": "Cougar",
+  "family": "quadruped",
+  "species": {
+    "name": "Cougar",
+    "aspect": 2.2,
+    "headFrac": 0.22,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "very long heavy black-tipped tail",
+      "completely plain unmarked tawny coat",
+      "small round head with black muzzle bars"
+    ],
+    "note": "no spots, no mane, no rosettes - the plainness is the identity; the hindquarters sit higher than the shoulders"
+  },
+  "genome": {
+    "seed": 2512776288,
+    "kingdom": "fauna",
+    "color": 16,
+    "form": 7,
+    "body": 2,
+    "loco": 6,
+    "trait": 14,
+    "size": 0,
+    "diet": 0,
+    "head": 2,
+    "limbs": 2,
+    "skin": 2,
+    "tail": 5,
+    "pattern": 4,
+    "eyes": 5,
+    "behavior": 11,
+    "habitat": 14,
+    "detail": 6,
+    "accent": 11,
+    "temper": 7,
+    "sense": 2,
+    "repro": 4,
+    "life": 1,
+    "metab": 4,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Cougar"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Cougar\"]],[\"accent\",[\"number\",\"11\"]],[\"behavior\",[\"number\",\"11\"]],[\"body\",[\"number\",\"2\"]],[\"color\",[\"number\",\"16\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"14\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"6\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"2512776288\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"2\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"14\"]]]]",
+  "index": 84
+}

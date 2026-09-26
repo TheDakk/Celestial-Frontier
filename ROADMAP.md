@@ -52,8 +52,7 @@ Self-contained for a fresh Claude session. Codex's own block follows below. Olde
 
 **Next, in order (Claude)**
 1. Read Codex's answers to C41 (loader admission, phone delivery) and C43 (worker size + transport); merge its signed commits. Re-score G1 on any new G2 families as they land (`run-auto.mjs --targets=<pilot.json>`).
-2. **G1:** Codex's second review is closed in the runner (v8: canonical identity; presence narrowed with a RESOLVED/UNRESOLVED semantic status). Every quadruped/bird ADMIT is UNRESOLVED only because of overlapped near/far limbs. **The next lever is a near/far limb separator:** it closes semantic presence AND the thin-part false refusals.
-   Then build a far-limb detector, so thin-part placement can relax without leaking erased far legs. Target: the corpus above 12 AND G2 above 10/20, with the battery ≥ 90 % and no flip/wrong-family loss.
+2. **G1:** Codex's second review is closed in the runner (v8). Four author levers were tried in v9–v11: the separator is a dead end; the remainder-marker bug is fixed; the Eagle's red is its tail outline (handed to Codex); paint-grown parts are net zero. **The author-side levers are exhausted.** Next gains come from the G2 paintings: limbs posed apart and true tails (C44). Re-score each new G2 family with `run-auto.mjs --targets=`.
 3. **G5, next steps:**
    - the desktop `createInfer` adapter: **blocked on Codex C43** (the worker refuses 1254² masters, 33 of 38, and requires `/inputs/*.rgba` paths). The stage projection `projectFinishedToAtlasV1` has landed
    - `main.ts` wiring behind `?finish=1`: the route plus the card `finished` hook, and an enqueue on discovery or when a portrait opens. Default off until Nick's quality review;

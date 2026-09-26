@@ -1,0 +1,49 @@
+{
+  "name": "Brown Bear",
+  "family": "quadruped",
+  "species": {
+    "name": "Brown Bear",
+    "aspect": 1.5,
+    "headFrac": 0.27,
+    "eyes": "small",
+    "posture": "quadruped",
+    "mustRead": [
+      "prominent muscular shoulder hump",
+      "dished concave face with a broad forehead",
+      "long straight pale digging claws"
+    ],
+    "note": "the shoulder hump is the diagnostic - it makes the front of the animal the tallest point"
+  },
+  "genome": {
+    "seed": 2139010517,
+    "kingdom": "fauna",
+    "color": 12,
+    "form": 9,
+    "body": 3,
+    "loco": 12,
+    "trait": 10,
+    "size": 4,
+    "diet": 0,
+    "head": 7,
+    "limbs": 5,
+    "skin": 7,
+    "tail": 1,
+    "pattern": 7,
+    "eyes": 2,
+    "behavior": 8,
+    "habitat": 17,
+    "detail": 0,
+    "accent": 13,
+    "temper": 3,
+    "sense": 8,
+    "repro": 7,
+    "life": 1,
+    "metab": 0,
+    "lumin": true,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Brown Bear"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Brown Bear\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2139010517\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "index": 104
+}
