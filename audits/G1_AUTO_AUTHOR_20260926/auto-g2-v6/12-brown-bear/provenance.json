@@ -1,0 +1,100 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "12-brown-bear",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "fd9e23b0f2c79d2a3000648e723a2e9750aa6e358de680405fd81b7e713fdd5f",
+ "subjectSourceSha256": "b1879d17467fec4c938c88eff82a6747046951c42720db78db0c39060ddba364",
+ "identity": {
+  "name": "Brown Bear",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Brown Bear\"]],[\"accent\",[\"number\",\"13\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"3\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"0\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"9\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"17\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"5\"]],[\"loco\",[\"number\",\"12\"]],[\"lumin\",[\"boolean\",true]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"7\"]],[\"seed\",[\"number\",\"2139010517\"]],[\"sense\",[\"number\",\"8\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"3\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "seed": 2139010517,
+  "checks": "PASS"
+ },
+ "reference": {
+  "subject": "cattle",
+  "authoringSha256": "d9c23635c440d69a21b69a8644bb559d83db17b559150cd40dcfa997054f2563",
+  "masterSha256": "0510920919b791b9186d0d1dafeed17625074ee2a6c586d9ddcb703f2005f590"
+ },
+ "habitat": {
+  "profileId": "bear",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "dc168bf7eefdb33399c3400982f888a515b8d65c58ffb8fc163223f39c6570ea",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group bear (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0077,
+     "class": "top",
+     "attach": {
+      "x": 263,
+      "y": 84,
+      "relX": 0.62,
+      "relY": 0
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0954,
+     "class": "limb-down",
+     "attach": {
+      "x": 67.1,
+      "y": 277.7,
+      "relX": 0.14,
+      "relY": 0.76
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0394,
+     "class": "limb-down",
+     "attach": {
+      "x": 304.9,
+      "y": 271.9,
+      "relX": 0.73,
+      "relY": 0.74
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0504,
+     "class": "limb-down",
+     "attach": {
+      "x": 244.5,
+      "y": 277,
+      "relX": 0.58,
+      "relY": 0.76
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "limb-down": 3
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "cattle",
+   "byClass": {
+    "top": 1,
+    "limb-down": 3
+   },
+   "detached": 0
+  }
+ },
+ "presence": "all-visible, backed by the measured visible inventory above; nothing declared absent, hidden or folded"
+}

@@ -1,0 +1,25 @@
+{
+ "id": "starfish",
+ "family": "radial",
+ "verdict": "REFUSE",
+ "reasons": [
+  "wrong-family: serpent matches clearly better (0.0173 < 0.0826)",
+  "extra-anatomy (unassigned): a rear appendage of 9.3% paint that no reference appendage lands on",
+  "missing-anatomy (ground): 2 ground contact(s); every same-family reference shows at least 3",
+  "missing-anatomy: part arm4-seg2 (arm4Seg2) covers 0% paint (reference 30%)",
+  "missing-anatomy: part arm6-seg1 (arm6Seg1) covers 13% paint (reference 46%)",
+  "missing-anatomy: part arm6-seg2 (arm6Seg2) covers 2% paint (reference 32%)",
+  "missing-anatomy: part bell (bell) covers 13% paint (reference 50%)",
+  "unexplained-anatomy: 24.6% of the paint lies away from the body and in no part (reference 5.1%)"
+ ],
+ "bodyLengthPx": 1263.6,
+ "landmarkMedian": 0.1596,
+ "landmarkMax": 0.6284,
+ "worst": [
+  "arm2Seg2 0.628",
+  "arm4Seg2 0.581",
+  "arm0Seg2 0.503"
+ ],
+ "labelAgreement": 0,
+ "missingJoints": []
+}

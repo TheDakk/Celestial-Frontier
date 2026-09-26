@@ -1,0 +1,48 @@
+{
+  "name": "Caracal",
+  "family": "quadruped",
+  "species": {
+    "name": "Caracal",
+    "aspect": 1.9,
+    "headFrac": 0.23,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "long black tufts trailing from the ear tips",
+      "plain unmarked reddish-tan coat",
+      "long powerful hind legs with a short tail"
+    ]
+  },
+  "genome": {
+    "seed": 3328056987,
+    "kingdom": "fauna",
+    "color": 14,
+    "form": 12,
+    "body": 14,
+    "loco": 2,
+    "trait": 8,
+    "size": 5,
+    "diet": 2,
+    "head": 6,
+    "limbs": 3,
+    "skin": 5,
+    "tail": 0,
+    "pattern": 1,
+    "eyes": 1,
+    "behavior": 6,
+    "habitat": 18,
+    "detail": 2,
+    "accent": 0,
+    "temper": 0,
+    "sense": 7,
+    "repro": 5,
+    "life": 2,
+    "metab": 0,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Caracal"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Caracal\"]],[\"accent\",[\"number\",\"0\"]],[\"behavior\",[\"number\",\"6\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"14\"]],[\"detail\",[\"number\",\"2\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"1\"]],[\"form\",[\"number\",\"12\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"6\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"0\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"5\"]],[\"seed\",[\"number\",\"3328056987\"]],[\"sense\",[\"number\",\"7\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"5\"]],[\"tail\",[\"number\",\"0\"]],[\"temper\",[\"number\",\"0\"]],[\"trait\",[\"number\",\"8\"]]]]",
+  "index": 74
+}

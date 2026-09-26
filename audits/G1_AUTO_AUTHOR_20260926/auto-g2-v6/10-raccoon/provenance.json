@@ -1,0 +1,133 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "10-raccoon",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "bc48bbea647c1cc879732724fd4faf8765764ca6a335b0871c93e585f0a6d5be",
+ "subjectSourceSha256": "ea67c71e6f3564ddaa09dcbcb3b04e0276ecdd2706df43b15eb1efeb54926fbf",
+ "identity": {
+  "name": "Raccoon",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Raccoon\"]],[\"accent\",[\"number\",\"12\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"12\"]],[\"color\",[\"number\",\"15\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"5\"]],[\"form\",[\"number\",\"17\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"0\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"3\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"6\"]],[\"repro\",[\"number\",\"2\"]],[\"seed\",[\"number\",\"2338628088\"]],[\"sense\",[\"number\",\"9\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"17\"]]]]",
+  "seed": 2338628088,
+  "checks": "PASS"
+ },
+ "reference": {
+  "subject": "cougar",
+  "authoringSha256": "421e0390baa8cc50c90902c54167a9b29e1b8da02192b4fbb358a335e1f66a54",
+  "masterSha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0058,
+     "class": "top",
+     "attach": {
+      "x": 201.5,
+      "y": 108,
+      "relX": 0.48,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0677,
+     "class": "top",
+     "attach": {
+      "x": 350.7,
+      "y": 153,
+      "relX": 0.86,
+      "relY": 0.23
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.133,
+     "class": "limb-down",
+     "attach": {
+      "x": 74.8,
+      "y": 235.4,
+      "relX": 0.16,
+      "relY": 0.65
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0378,
+     "class": "limb-down",
+     "attach": {
+      "x": 145.4,
+      "y": 261.1,
+      "relX": 0.34,
+      "relY": 0.78
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.034,
+     "class": "limb-down",
+     "attach": {
+      "x": 278.5,
+      "y": 263,
+      "relX": 0.67,
+      "relY": 0.79
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0276,
+     "class": "limb-down",
+     "attach": {
+      "x": 315,
+      "y": 263,
+      "relX": 0.77,
+      "relY": 0.79
+     }
+    },
+    {
+     "k": 6,
+     "frac": 0.0305,
+     "class": "limb-down",
+     "attach": {
+      "x": 197.5,
+      "y": 266,
+      "relX": 0.47,
+      "relY": 0.81
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 2,
+    "limb-down": 5
+   },
+   "ground": 4
+  },
+  "reference": {
+   "subject": "cougar",
+   "byClass": {
+    "top": 2,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": "all-visible, backed by the measured visible inventory above; nothing declared absent, hidden or folded"
+}

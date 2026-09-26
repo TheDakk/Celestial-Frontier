@@ -1,0 +1,10 @@
+{
+ "id": "19-wild-boar",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "static": "RED",
+ "staticFails": [
+  "melee:tail"
+ ]
+}

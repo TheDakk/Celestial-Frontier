@@ -1,0 +1,8 @@
+{
+ "id": "16-wild-horse",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

@@ -1,0 +1,8 @@
+{
+ "id": "09-badger",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "static": "RED",
+ "staticFails": []
+}

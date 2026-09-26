@@ -1,0 +1,49 @@
+{
+  "name": "Coyote",
+  "family": "quadruped",
+  "species": {
+    "name": "Coyote",
+    "aspect": 1.9,
+    "headFrac": 0.24,
+    "eyes": "normal",
+    "posture": "quadruped",
+    "mustRead": [
+      "narrow pointed muzzle",
+      "large erect triangular ears",
+      "bushy tail carried low"
+    ],
+    "note": "Slighter and leggier than a wolf; tail hangs down rather than out."
+  },
+  "genome": {
+    "seed": 3133276098,
+    "kingdom": "fauna",
+    "color": 10,
+    "form": 14,
+    "body": 14,
+    "loco": 1,
+    "trait": 19,
+    "size": 0,
+    "diet": 1,
+    "head": 4,
+    "limbs": 0,
+    "skin": 1,
+    "tail": 5,
+    "pattern": 4,
+    "eyes": 0,
+    "behavior": 7,
+    "habitat": 2,
+    "detail": 9,
+    "accent": 2,
+    "temper": 4,
+    "sense": 3,
+    "repro": 1,
+    "life": 3,
+    "metab": 2,
+    "lumin": false,
+    "gen": 0,
+    "heat": 1,
+    "_earthName": "Coyote"
+  },
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Coyote\"]],[\"accent\",[\"number\",\"2\"]],[\"behavior\",[\"number\",\"7\"]],[\"body\",[\"number\",\"14\"]],[\"color\",[\"number\",\"10\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"14\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"2\"]],[\"head\",[\"number\",\"4\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"3\"]],[\"limbs\",[\"number\",\"0\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"4\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3133276098\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"5\"]],[\"temper\",[\"number\",\"4\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "index": 106
+}

@@ -1,0 +1,32 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "centipede",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "e8173ea57501d604451cde79ec04715f28b683393c5de423750b4403abe4246e",
+ "subjectSourceSha256": "7accbde462405ba22a1d799bff1a7bcafc7a201d16c763e1a7d10b7279760a67",
+ "identity": {
+  "name": "Centipede",
+  "family": "myriapod",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Centipede\"]],[\"accent\",[\"number\",\"10\"]],[\"behavior\",[\"number\",\"2\"]],[\"body\",[\"number\",\"0\"]],[\"color\",[\"number\",\"1\"]],[\"detail\",[\"number\",\"6\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"0\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"18\"]],[\"head\",[\"number\",\"2\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"2\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"0\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"7\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"3894424807\"]],[\"sense\",[\"number\",\"6\"]],[\"size\",[\"number\",\"0\"]],[\"skin\",[\"number\",\"7\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"9\"]],[\"trait\",[\"number\",\"18\"]]]]",
+  "seed": 3894424807,
+  "checks": "PASS"
+ },
+ "reference": null,
+ "habitat": {
+  "profileId": "centipede",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "a3707562d6c89af98dc7b242290e8f9fb224727877f9d09bbc3cd9c5fc2052f3",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "chitin",
+  "source": "species group centipede (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": "unmeasured",
+ "presence": "not asserted (refused)"
+}

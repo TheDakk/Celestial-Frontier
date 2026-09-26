@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {createRequire} from 'node:module';
-import {autoAuthor, prepareSubject, mirrorSubject, referenceStats} from '../../port/v2/tools/anatomy-verify/auto-author.mjs';
+import {autoAuthor, autoAuthorShop, prepareSubject, mirrorSubject, referenceStats} from '../../port/v2/tools/anatomy-verify/auto-author.mjs';
 const HERE = import.meta.dirname, ROOT = path.resolve(HERE, '../..');
 const require = createRequire(path.join(ROOT, 'port/v2/package.json'));
 const sharp = createRequire(require.resolve('free-tex-packer-core'))('sharp');
@@ -14,6 +14,7 @@ const ridgeArg = args.find((x) => x.startsWith('--ridge=')), ridgeFrac = ridgeAr
 const nudgeArg = args.find((x) => x.startsWith('--nudge=')), nudgeFrac = nudgeArg ? Number(nudgeArg.slice(8)) : 0;
 const useCounter = args.includes('--counter'), thinArg = args.find((x) => x.startsWith('--nudge-thin=')), nudgeThinFrac = thinArg ? Number(thinArg.slice(13)) : null;
 const nudgeSkipChains = args.includes('--nudge-skip-chains');
+const shopArg = args.find((x) => x.startsWith('--shop=')), shopN = shopArg ? Number(shopArg.slice(7)) : 0;
 const terminalsOf = (f) => { try { return new Set(familyContactChains(familyContract(f)).map((c) => c.terminal).filter(Boolean)); } catch { return new Set(); } };
 const corpus = JSON.parse(fs.readFileSync(path.join(HERE, 'corpus.json'), 'utf8')).subjects;
 const subjects = [];
@@ -36,7 +37,7 @@ function limbMask(s) {
   return { m, n, ids };
 }
 const ev = (r) => ({ chains: r.evidence?.chains ?? null, inv: r.evidence?.inventory ? { assign: r.evidence.inventory.assign, tByClass: r.evidence.inventory.target.byClass, tApp: r.evidence.inventory.target.appendages, ground: r.evidence.inventory.target.ground, det: r.evidence.inventory.target.detached.length, ref: r.evidence.inventory.reference } : null, reasonsAll: r.reasons, v: r.verdict, cost: r.evidence ? +(r.evidence.costs?.[0]?.cost ?? 0).toFixed(4) : null, dT: r.evidence?.detour?.target ?? null, dR: r.evidence?.detour?.ref ?? null, unclaimed: r.evidence?.unclaimedFrac ?? null, why: (r.reasons?.[0] ?? '').slice(0, 60) });
-const author = (s, target, family, mirrored) => autoAuthor({ topK: 1, nudgeFrac, nudgeThinFrac, nudgeSkipChains, counter: useCounter ? {} : null, chains: (() => { try { return familyContactChains(familyContract(family)); } catch { return null; } })(), target, mirrored, family, id: s.id, refs: subjects.filter((o) => o.id !== s.id).map(refOf), materials: { surface: 'x' }, habitat: null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(family) } : null });
+const author = (s, target, family, mirrored) => autoAuthorShop({ shop: shopN, topK: 1, nudgeFrac, nudgeThinFrac, nudgeSkipChains, counter: useCounter ? {} : null, chains: (() => { try { return familyContactChains(familyContract(family)); } catch { return null; } })(), target, mirrored, family, id: s.id, refs: subjects.filter((o) => o.id !== s.id).map(refOf), materials: { surface: 'x' }, habitat: null, ridge: ridgeFrac > 0 ? { radiusFrac: ridgeFrac, keep: terminalsOf(family) } : null });
 const rows = [];
 for (const s of subjects) {
   if (only.length && !only.includes(s.id)) continue;

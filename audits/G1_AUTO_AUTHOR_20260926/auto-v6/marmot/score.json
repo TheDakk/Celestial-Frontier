@@ -1,0 +1,18 @@
+{
+ "id": "marmot",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "bodyLengthPx": 1088.6,
+ "landmarkMedian": 0.0544,
+ "landmarkMax": 0.2096,
+ "worst": [
+  "hindNearPaw 0.210",
+  "hindNearAnkle 0.200",
+  "hindFarAnkle 0.167"
+ ],
+ "labelAgreement": 0.4649,
+ "missingJoints": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

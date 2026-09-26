@@ -1,0 +1,122 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "09-badger",
+ "verdict": "REFUSE",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "35c2bc9d8623bfc0335f60ce15cfeccf4d1f7acac275ded5875e6d6b31eb2210",
+ "subjectSourceSha256": "a5d13c4dd3e9b39a6f83c8f4e9fa80be604626e991919308afa7eba37f4bbf0f",
+ "identity": {
+  "name": "Badger",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Badger\"]],[\"accent\",[\"number\",\"15\"]],[\"behavior\",[\"number\",\"5\"]],[\"body\",[\"number\",\"4\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"0\"]],[\"diet\",[\"number\",\"2\"]],[\"eyes\",[\"number\",\"4\"]],[\"form\",[\"number\",\"7\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"5\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"5\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"1\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"2\"]],[\"pattern\",[\"number\",\"1\"]],[\"repro\",[\"number\",\"4\"]],[\"seed\",[\"number\",\"633435082\"]],[\"sense\",[\"number\",\"3\"]],[\"size\",[\"number\",\"5\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"1\"]],[\"temper\",[\"number\",\"7\"]],[\"trait\",[\"number\",\"10\"]]]]",
+  "seed": 633435082,
+  "checks": "PASS"
+ },
+ "reference": {
+  "subject": "wolf",
+  "authoringSha256": "d7904228473f2b860116b8f91d2a42717721287e86534025f6b765121aa52abc",
+  "masterSha256": "ab7a9c80a6b5ea2344f88d7d14038ad1df0fe9d5cf942fae59a5860543bb1e43"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0638,
+     "class": "front",
+     "attach": {
+      "x": 346.1,
+      "y": 153.1,
+      "relX": 0.84,
+      "relY": 0.16
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0756,
+     "class": "limb-down",
+     "attach": {
+      "x": 60.8,
+      "y": 224.2,
+      "relX": 0.12,
+      "relY": 0.64
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.0351,
+     "class": "limb-down",
+     "attach": {
+      "x": 304.9,
+      "y": 252.9,
+      "relX": 0.74,
+      "relY": 0.83
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0363,
+     "class": "limb-down",
+     "attach": {
+      "x": 110.8,
+      "y": 254.7,
+      "relX": 0.25,
+      "relY": 0.84
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0427,
+     "class": "limb-down",
+     "attach": {
+      "x": 257.5,
+      "y": 255,
+      "relX": 0.62,
+      "relY": 0.85
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.029,
+     "class": "limb-down",
+     "attach": {
+      "x": 160,
+      "y": 256,
+      "relX": 0.37,
+      "relY": 0.85
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "front": 1,
+    "limb-down": 5
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "wolf",
+   "byClass": {
+    "top": 1,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": "not asserted (refused)"
+}

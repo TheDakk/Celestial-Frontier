@@ -1,0 +1,19 @@
+{
+ "id": "honeybee",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy (family floor): the largest rear appendage is 3.8% of the paint; every same-family reference shows at least 6.3%",
+  "unexplained-anatomy: 6.3% of the paint lies away from the body and in no part (reference 1.0%)"
+ ],
+ "bodyLengthPx": 893.2,
+ "landmarkMedian": 0.1256,
+ "landmarkMax": 0.2665,
+ "worst": [
+  "legFrontNearFoot 0.267",
+  "wingNear 0.247",
+  "legMidNearFoot 0.238"
+ ],
+ "labelAgreement": 0.1468,
+ "missingJoints": []
+}

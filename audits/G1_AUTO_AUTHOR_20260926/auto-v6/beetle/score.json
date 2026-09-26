@@ -1,0 +1,19 @@
+{
+ "id": "beetle",
+ "family": "insect",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part leg-hind-far (legHindFarKnee) covers 0% paint (reference 98%)",
+  "unexplained-anatomy: 6.5% of the paint lies away from the body and in no part (reference 1.6%)"
+ ],
+ "bodyLengthPx": 1041.4,
+ "landmarkMedian": 0.1394,
+ "landmarkMax": 0.2682,
+ "worst": [
+  "legHindFarFoot 0.268",
+  "wingFar 0.255",
+  "legMidNearFoot 0.253"
+ ],
+ "labelAgreement": 0.0999,
+ "missingJoints": []
+}

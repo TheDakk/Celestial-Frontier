@@ -1,0 +1,116 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "eagle",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "78ad63443cf8a1a3e48ac89ef320db995697a798be56366164999814ae61b50a",
+ "subjectSourceSha256": "3e3483e93129a8d505d59c9d5b9cb2767fc0e38a0267184230eae79f9f868e67",
+ "identity": {
+  "name": "Eagle",
+  "family": "biped-bird",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Eagle\"]],[\"accent\",[\"number\",\"16\"]],[\"behavior\",[\"number\",\"9\"]],[\"body\",[\"number\",\"7\"]],[\"color\",[\"number\",\"3\"]],[\"detail\",[\"number\",\"9\"]],[\"diet\",[\"number\",\"1\"]],[\"eyes\",[\"number\",\"0\"]],[\"form\",[\"number\",\"15\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"3\"]],[\"head\",[\"number\",\"7\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"4\"]],[\"limbs\",[\"number\",\"3\"]],[\"loco\",[\"number\",\"17\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"4\"]],[\"pattern\",[\"number\",\"5\"]],[\"repro\",[\"number\",\"6\"]],[\"seed\",[\"number\",\"3837331972\"]],[\"sense\",[\"number\",\"1\"]],[\"size\",[\"number\",\"3\"]],[\"skin\",[\"number\",\"1\"]],[\"tail\",[\"number\",\"2\"]],[\"temper\",[\"number\",\"1\"]],[\"trait\",[\"number\",\"5\"]]]]",
+  "seed": 3837331972,
+  "checks": "PASS"
+ },
+ "reference": {
+  "subject": "gull",
+  "authoringSha256": "9d5ce3cc7a41cf6a139848982114319c2374828a04e313c38619d8dce938aa73",
+  "masterSha256": "27a5d97e9058cde243f1ad8964871b09b0b888870ea767bb367fb8ad1d9199c9"
+ },
+ "habitat": {
+  "profileId": "raptor",
+  "media": [
+   "air",
+   "ground"
+  ],
+  "profileSha256": "7011678195bf832a2d56ee05a700aad9366431298b6899e9b709267e5931ce9c",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "feathers",
+  "source": "species group raptor (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.033,
+     "class": "top",
+     "attach": {
+      "x": 353.5,
+      "y": 90.1,
+      "relX": 0.88,
+      "relY": 0.06
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0064,
+     "class": "front",
+     "attach": {
+      "x": 234.4,
+      "y": 88.1,
+      "relX": 0.57,
+      "relY": 0.05
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.047,
+     "class": "rear",
+     "attach": {
+      "x": 77.5,
+      "y": 175,
+      "relX": 0.17,
+      "relY": 0.41
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.07,
+     "class": "limb-down",
+     "attach": {
+      "x": 84.3,
+      "y": 264.2,
+      "relX": 0.19,
+      "relY": 0.79
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.1268,
+     "class": "limb-down",
+     "attach": {
+      "x": 256.2,
+      "y": 274.6,
+      "relX": 0.63,
+      "relY": 0.83
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 2
+   },
+   "ground": 3
+  },
+  "reference": {
+   "subject": "gull",
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "rear": 1,
+    "limb-down": 1
+   },
+   "detached": 0
+  }
+ },
+ "presence": "all-visible, backed by the measured visible inventory above; nothing declared absent, hidden or folded"
+}

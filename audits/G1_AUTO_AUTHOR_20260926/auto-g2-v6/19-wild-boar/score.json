@@ -1,0 +1,31 @@
+{
+ "id": "19-wild-boar",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "static": "RED",
+ "staticFails": [
+  "melee:tail"
+ ],
+ "candidates": [
+  {
+   "rank": 0,
+   "verdict": "ADMIT",
+   "static": "RED"
+  },
+  {
+   "rank": 1,
+   "verdict": "ADMIT",
+   "static": "RED",
+   "reasons": []
+  },
+  {
+   "rank": 2,
+   "verdict": "REFUSE",
+   "static": null,
+   "reasons": [
+    "missing-anatomy: part tail3 (tail3) covers 12% paint (reference 39%)"
+   ]
+  }
+ ]
+}

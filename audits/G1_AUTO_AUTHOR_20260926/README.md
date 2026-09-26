@@ -1,8 +1,95 @@
 # G1 auto-author — painting + family → authoring.json (Generated Creature Pipeline, 2026-09-26)
 
-Program: `audits/GENERATION_PIPELINE_20260926/PROGRAM.md` (Nick D22/D23). Owner: Claude. Status: **built and measured; the gate (≥ 30/38
-admitted with zero hand edits) is NOT met.** Best result: **12/40 admitted and PASS_STATIC with zero hand edits** (v2), and a mutation
-battery that refuses wrong families 34/34 and flipped facing 33/34, but **erased limbs only 23/34 and duplicated limbs only 23/27**.
+Program: `audits/GENERATION_PIPELINE_20260926/PROGRAM.md` (Nick D22/D23). Owner: Claude.
+
+**Status (end of session 2, 2026-09-26): the corpus gate (≥ 30/40 admitted with zero hand edits) is NOT met.**
+- Adopted author **v5:**
+  - **12/40** on the leave-one-subject-out corpus;
+  - **10/20** on Codex's independent G2 quadruped pilot (new generated paintings, no hand authoring anywhere).
+- The mutation battery meets its target: erased limbs refused **31/34 (91 %)**, duplicated **26/27 (96 %)**, wrong family **34/34**, flipped facing **34/34**.
+- Codex's five blocking review findings are fixed (see "Session 2").
+- The gate's denominator needs Nick's decision (**D24**). By construction this corpus cannot reach 30:
+  - 6 subjects have no same-family reference;
+  - the radial, serpent and insect families have 2–3 dissimilar members each;
+  - the hand-authored control itself scores 30/40 on this harness.
+
+## Session 2 (2026-09-26): v3 → v6
+
+| Run | Author | Corpus ADMIT + PASS_STATIC | G2 pilot ADMIT + PASS_STATIC | Mutants: erased / dup / flip / wrong |
+|---|---|---:|---:|---|
+| v2 | best reference + chains | 12/40 | — | 23/34 · 23/27 · 33/34 · 34/34 |
+| v3 (= limb-counter branch, v3d rules) | + independent visible-appendage counter (`limb-counter.mjs`) | 12/40 | — | **31/34 · 26/27 · 34/34 · 34/34** |
+| v4 | + Codex review fixes, polygon untangle, labelled fallback | *instrument failure* (below) | — | unchanged (summary-v4) |
+| **v5 (adopted)** | + species-group materials | **12/40** | **10/20** | 31/34 · 26/27 · 34/34 · 34/34 |
+| v6 (rejected default) | + reference shopping (`--shop=2`) | 15/40 (+marmot, river-otter, herring) | 12/20 (+brown-bear, wild-horse) | **29/34 · 24/27 · 33/34** · 34/34 |
+| v7 (salamander, grouse only) | + canvas clamp | salamander: intake now PASSES, static RED (its hand control is RED too); grouse: intake still refused | — | — |
+
+**The limb counter (branch `claude/t1-limb-counter`, merged).**
+- It reads paint only:
+  - detached islands;
+  - protrusions outside an eroded body core (with attachment, extent and a geometric class);
+  - separate ground contacts in the bottom band.
+- The admission rules are:
+  - an extra detached island;
+  - an unassigned target appendage ≥ 6 % of the paint;
+  - the family floor on the rear class;
+  - the ground floor: at least as many ground contacts as the fewest any same-family reference shows.
+- The v3d battery reproduced exactly this session (`summary-v3d-repro.json`).
+
+**Adopted fixes (v4/v5), each retained in evidence:**
+- **Presence is measured** (Codex finding). Without the counter's visible inventory, the author refuses (`presence-unmeasured`); the skeleton mode is diagnostic only. Nothing is ever declared absent, hidden or folded. A species absence (the lynx's bobtail, a tail-less primate) therefore REFUSES; it is never guessed.
+- **id from the corpus row** (never the target's authoring). Identity checks cover subject-source family, profile, genome seed and visualKey.
+- **Materials.** Codex's neutral string cannot pass any gate: the motion kit REFUSES an unclassified surface (`body-card` `unsupported-materials`, pinned by `body-card-presence.test.ts`). v4's static therefore refused every subject (the instrument failure above).
+  - v5 uses the species group's integument, keyed by the pinned Earth profile id (`SPECIES_MATERIAL` in `run-auto.mjs`): felid → fur, lizard → scales, eel/salamander/frog → smooth skin, cnidarian → translucent.
+  - An unmapped group refuses (`materials-unknown`).
+  - Side finding for Codex: the Honeybee hand material "chitinous shell with short thoracic fur" maps to *furred*, because `materialFromSkinName` tests `/fur/` first.
+- **Outer provenance envelope** (`auto-*/<id>/provenance.json`). It records:
+  - automatic transfer;
+  - the reference's authoring and master hashes;
+  - the target master and subject-source hashes;
+  - the profile id, media and hash;
+  - the material source;
+  - the measured visible inventory.
+
+  It also states that intake's `manualAuthoring=true` / `sourceLandmarksReused=false` are NOT an automatic-origin attestation. Intake itself is unchanged.
+- **Geometry-only repairs,** logged per part in evidence:
+  - `untanglePolygon` (a self-crossing warped polygon keeps its larger loop);
+  - the canvas clamp (vertices past the canvas edge, where there is no paint).
+- **`--fallback=N`:** only when an ADMITTED packet is refused by intake/static, try the next-ranked references; each candidate must earn its own ADMIT. It rescued nothing on the corpus (bird ARAP folds and the grouse surface split persist at every rank). It is kept, labelled.
+- **`--targets=`:** independent paintings with leave-one-SPECIES-out references (a corpus packet of the same species is never a reference).
+
+**Rejected, with numbers:**
+- **Reference shopping** (a verdict-refused author retries ranks 1–2). It admits 3 more corpus subjects and 2 more G2 subjects, but under the identical policy the battery loses erased 31→29, duplicated 26→24 and flip 34→33. It is kept as the option `--shop=N`, off by default (D25).
+- **Thin-part nudging** (the v3e family). It admits marmot, river-otter and herring. But their erased far-hind-leg mutants are refused ONLY by the same false ear/tail-tip refusal that rejects the positive: the far hind leg sits behind the near leg, so neither part coverage nor the counter sees it erased. Fixing the thin-part false refusal therefore exposes those erasures. The honest fix is a better far-limb detector, not a looser threshold.
+- **Terminal snap distance as an erased-leg signal** (`summary-snapdiag.json`). It is ~0 for erased legs: the spline warp carries the feet onto the warped contour. A dead end.
+
+**G2 quadruped pilot** (`auto-g2-v5/`; Codex's 20 generated masters in the controlled layout; references = the 40 corpus packets, leave-one-species-out; ADMIT + PASS_STATIC is not acceptance: native, finish and Nick's review still apply):
+
+| Species | Verdict | Static | Reference | First reason / static reds |
+|---|---|---|---|---|
+| Coyote, Red Fox, Arctic Fox, Fennec Fox, Caracal, Cougar, Marmot | ADMIT | PASS_STATIC | Wolf | |
+| Raccoon | ADMIT | PASS_STATIC | Cougar | |
+| Cattle, Donkey | ADMIT | PASS_STATIC | Wild Horse | |
+| Mongoose | ADMIT | RED | River Otter | |
+| Tapir | ADMIT | RED | Brown Bear | melee:tail, faint |
+| Lynx | REFUSE | — | Wolf | tail1 covers 26 % paint (reference 95 %): bobtail |
+| Brown Bear, Bison, Camel, Wild Boar | REFUSE | — | Wild Horse | tail3 covers 0–12 % (reference 38 %): short tails |
+| Badger | REFUSE | — | Cougar | far ear tip covers 10 % |
+| Wild Horse | REFUSE | — | Cattle | an unassigned limb-down appendage of 7.5 % |
+| Goat | REFUSE | — | Ibex | near ear tip covers 0 % |
+
+The dominant G2 refusal is the **short tail**: the reference's tail chain has no paint. It is correctly refused, because presence never declares an absence. The levers, in order:
+1. G2 prompts that paint the species' true tail clearly;
+2. a short-tailed reference in the pool (only via admitted, independently accepted packets; never bootstrapped unchecked, per Codex's review);
+3. a measured-absence declaration: truncating a tail chain whose paint is measured absent. This needs Codex's intake/presence contract review first.
+
+**Corpus identity (Codex asked):**
+- The PROGRAM's "38" was the number of shipped painted archetypes.
+- The G1 corpus is the **40** subjects that have a hand-authored `authoring.json`.
+- **32** of those are shipped archetypes.
+- The **8** extra are hand-authored but not in the card set: Cattle, Brown Bear, Sparrow, Grouse, Sandpiper, Herring, Wild Horse, Honeybee.
+- **6** shipped archetypes have NO `authoring.json` and cannot be evaluated by construction. These are the five crabs and Civet, which came from the earlier labelled-parts rigs.
+- **On the shipped-32 subset,** v5 admits + passes **10** (salmon, sturgeon, cougar, impala, bass, tang, wolf, gull, reef-shark, pike).
 
 ## What it is
 
@@ -123,6 +210,10 @@ node audits/G1_AUTO_AUTHOR_20260926/run-control.mjs                             
 node audits/G1_AUTO_AUTHOR_20260926/run-auto.mjs --tag=v2 --topk=1 --chains          # the v2 author
 node audits/G1_AUTO_AUTHOR_20260926/run-mutants.mjs --tag=v2                         # mutation battery (verdict only)
 node audits/G1_AUTO_AUTHOR_20260926/report.mjs auto-v2                               # per-subject table
+node audits/G1_AUTO_AUTHOR_20260926/run-auto.mjs --tag=v5 --topk=1 --chains --counter --fallback=2          # adopted author (corpus)
+node audits/G1_AUTO_AUTHOR_20260926/run-auto.mjs --tag=g2-v5 --topk=1 --chains --counter --fallback=2 --targets=audits/G2_QUADRUPED_PILOT_20260926/pilot.json
+node audits/G1_AUTO_AUTHOR_20260926/run-mutants.mjs --tag=v4 --counter                                      # battery for the adopted author
+node audits/G1_AUTO_AUTHOR_20260926/run-mutants.mjs --tag=v6-shop2 --counter --shop=2                        # the rejected shopping policy
 ```
 
 Fits and master copies are regenerable and git-ignored (`.gitignore`). Scores, evidence, generated authoring and presence, and static reports are committed.
