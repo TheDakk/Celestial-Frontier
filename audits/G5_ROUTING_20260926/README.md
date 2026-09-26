@@ -39,6 +39,16 @@ This is Stage G5 of the Generated Creature Pipeline (`audits/GENERATION_PIPELINE
   - `Math.floor` in the box kernel fails the kernel and end-to-end tests;
   - dropping the record-ownership check in the hook fails the hook test.
 
+## Shipped desktop path in a real browser (`finish-smoke/run-03-shipped`: PASS, after Codex's C50 fixes `e12a3786`)
+
+- **Setup:** `--phases=control,shipped`: no identity rewrite, and no helper served by the smoke (the process-local `maxBuffer` shim is moot now that the source is fixed).
+- **Control (no flag):** nothing retained, no finish worker, the portrait unchanged (`244c677f`).
+- **Shipped (`?finish=1`):**
+  - the finish worker is constructed and runs the job, and one original is retained (`2b131d1d…`, the same bytes as the earlier worked-around run: deterministic);
+  - reopening the portrait shows the finished image (`244c677f` → `0765a7b8`, again identical to the earlier run);
+  - 0 page errors.
+- G5 now works end to end, unmodified, on the desktop tier (with the local model), the phone tier (delivered originals) and the stage.
+
 ## Stage in a real browser (`stage-smoke/`, run-01: PASS)
 
 - **Setup:** built package 7710c91d at 390×844@3 touch; `?battle2=1&vs=Crab,Mud Crab`, plain then `&finish=1`. The matchup picker now forwards the finish provider, and the stage publishes `data-battle2-finished`.
