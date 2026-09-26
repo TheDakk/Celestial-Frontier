@@ -1,0 +1,77 @@
+{
+ "package": "dev-preview-5a2ac12f6edb-20260926043111",
+ "serviceWorker": "served",
+ "viewport": "desktop 1280x800@1",
+ "swControl": true,
+ "runs": [
+  {
+   "from": "url",
+   "vs": "Wolf,Racer",
+   "status": "playing",
+   "generation": "1",
+   "text": "playing · earth-temperate-default (no world context: accepted Earth temperate plates) · left Wolf: ground (Manually declared Earth Wolf terrestrial locomotion; side-on standing land canid master, not procedural raw habitat gene.) · right Racer: ground (Manually observed terrestrial Racer, shallow separated S curves and narrow right-facing head. No hidden segment or limb inferred.) · attacks: bite (jaw) / strike (jaw)",
+   "still": "picker-1.png",
+   "rigs": {
+    "label": "battle2 stage · left: source paint-skin rig (C2 parts) · contact: family · travel: stage · right: source paint-skin rig (C2 parts) · contact: family · travel: stage",
+    "painted": 2
+   },
+   "controlled": true
+  },
+  {
+   "from": "controls",
+   "vs": "Ibex,Civet",
+   "status": "playing",
+   "generation": "2",
+   "text": "playing · earth-temperate-default (no world context: accepted Earth temperate plates) · left Ibex: ground (Manually declared Earth Ibex standing on land, sturdy cloven-hoof quadruped; no airborne or swimming source.) · right Civet: ground (exact-name Earth fauna presentation profile) · attacks: headbutt (head) / claw (foreNearPaw)",
+   "still": "picker-2.png",
+   "controlled": true,
+   "rigs": {
+    "label": "battle2 stage · left: source paint-skin rig (C2 parts) · contact: family · travel: stage · right: source paint-skin rig (C2 parts) · contact: family · travel: stage",
+    "painted": 2
+   }
+  },
+  {
+   "from": "reload, arena refused by the server",
+   "vs": "Wolf,Racer",
+   "status": "playing",
+   "controlled": true,
+   "text": "playing · earth-temperate-default (no world context: accepted Earth temperate plates) · left Wolf: ground (Manually declared Earth Wolf terrestrial locomotion; side-on standing land canid master, not procedural raw habitat gene.) · right Racer: ground (Manually observed terrestrial Racer, shallow separated S curves and narrow right-facing head. No hidden segment or limb inferred.) · attacks: bite (jaw) / strike (jaw)",
+   "still": "picker-3-offline.png",
+   "rigs": {
+    "label": "battle2 stage · left: source paint-skin rig (C2 parts) · contact: family · travel: stage · right: source paint-skin rig (C2 parts) · contact: family · travel: stage",
+    "painted": 2
+   }
+  }
+ ],
+ "browser": {
+  "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+  "product": "Edg/154.0.4258.37",
+  "revision": "@f6ddc7bb8d2ad05a6979ebc09b83893c2d128a62",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36 Edg/154.0.0.0",
+  "js_version": "15.4.11.5",
+  "protocol_version": "1.3"
+ },
+ "arenaHitsBeforeOffline": {
+  "served": 64,
+  "refused": 0
+ },
+ "arenaHits": {
+  "served": 64,
+  "refused": 0
+ },
+ "libraryHits": {
+  "served": 37,
+  "refused": 0
+ },
+ "coldControl": {
+  "vs": "Starfish,Octopus",
+  "failed": "cold control: study failed — Starfish: pinned parts rig unavailable (battle2 asset ../ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/manifest.json: HTTP 503) (could not stage: Starfish: pinned parts rig unavailable (battle2 asset ../ARCHETYPE_REPAIRS_20260922/08-radial/fit-02/parts/manifest.json:",
+  "rigs": null,
+  "arenaHits": {
+   "served": 64,
+   "refused": 1
+  }
+ },
+ "pageErrors": [],
+ "status": "PASS"
+}
