@@ -5,6 +5,7 @@
  ],
  "schema": "cf.g1-auto-author/v1",
  "remainderMarker": false,
+ "grown": null,
  "chains": [
   {
    "chain": "hindFar",

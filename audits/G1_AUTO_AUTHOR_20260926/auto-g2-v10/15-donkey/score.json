@@ -6,6 +6,7 @@
  "semanticPresence": "UNRESOLVED",
  "static": "PASS_STATIC",
  "staticFails": [],
+ "staticRefusals": [],
  "fallbackFrom": "RED",
  "candidates": [
   {

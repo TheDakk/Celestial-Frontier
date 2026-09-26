@@ -104,6 +104,15 @@ The dominant G2 refusal is the **short tail**: the reference's tail chain has no
     - **Perch, Cod and Carp look clean:** no holes or cracks in the frames that showed them before. They are the FIRST fully automatic creatures ready for Dakk's review (generated painting → automatic authoring → intake → selective weld → static → native, zero hand edits).
     - **Trout and Herring (from the Salmon reference):** the extra welds close the cracks but deform the silhouette (a lumpy back and belly on the Herring, a floating dorsal on the Trout). The single-weld versions (`pairs/*-A5`) still crack. Not acceptable yet.
   - Nothing here is play admission: Dakk's visual review and the library/registry admission remain.
+- **The G2 quadrupeds through the native harness** (`native-g2-quad/`, v10 author, the Cougar land script, CPU ×4):
+  - 9/10 DIAGNOSTIC_PASS with 0/0 refusals. The Red Fox fails "Layered stance reach: zero-displacement composite" (a stage motion refusal, fit side).
+  - **Claude's visual notes** (`review-sheet.jpg`, standing plus attack/reaction):
+    - Coyote, Fennec, Caracal, Cougar, Raccoon and Donkey look plausible at sheet size;
+    - Arctic Fox: black blotches at the tail tip and rump (likely the tail-joint fault);
+    - Marmot: the head crumples in the crouch;
+    - Cattle: the back humps when rearing.
+  - These await Dakk's full-size review (he plans a full visual pass at the end).
+- **Fish packets REJECTED by Dakk** (tail stalk crunchy/pinched). The tail joint is the top rig priority (C54).
 - **All G2 so far** (quadrupeds + families): **15/40**, with fish 5/5 and quadrupeds 10/20.
 - **The pattern:** where the generated painting shares the references' controlled layout (fish; most quadrupeds), the automatic author works with zero hand edits. Where the layout drifts (diagonal snakes, raised bird legs, slender insects), it refuses, correctly. Asked of the G2 prompts in C47.
 
