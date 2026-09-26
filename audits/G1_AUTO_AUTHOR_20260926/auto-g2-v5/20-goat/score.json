@@ -1,0 +1,8 @@
+{
+ "id": "20-goat",
+ "family": "quadruped",
+ "verdict": "REFUSE",
+ "reasons": [
+  "missing-anatomy: part ear-near-tip (earNearTip) covers 0% paint (reference 19%)"
+ ]
+}

@@ -279,6 +279,19 @@ export function untanglePolygon(P) {
   return { polygon: ring, repairs };
 }
 
+/** Reference shopping (labelled, `shop` = how many further ranks): when the best reference's author REFUSES on anatomy evidence only
+ * (missing / extra / unexplained), author again from the next-ranked references and return the first that earns its own ADMIT.
+ * Facing, wrong-family, no-reference and presence refusals are properties of the painting and are never shopped. The mutation
+ * battery must run with the SAME policy (run-mutants --shop), so any extra chance it gives a mutant is measured. */
+export function autoAuthorShop(opts) {
+  const r0 = autoAuthor({ ...opts, refRank: 0 }); if (r0.verdict === 'ADMIT' || !(opts.shop > 0)) return r0;
+  if (r0.reasons.some((r) => /^(facing|wrong-family|no-reference|presence-unmeasured|identity)/.test(r))) return r0;
+  const tried = [{ rank: 0, reference: r0.evidence?.bestReference ?? null, reasons: r0.reasons.slice(0, 3) }];
+  for (let k = 1; k <= opts.shop; k++) { const rk = autoAuthor({ ...opts, refRank: k }); if (!rk.evidence) break; tried.push({ rank: k, reference: rk.evidence.bestReference, reasons: rk.reasons.slice(0, 3) });
+    if (rk.verdict === 'ADMIT') return { ...rk, evidence: { ...rk.evidence, shopped: tried } }; }
+  return { ...r0, evidence: r0.evidence ? { ...r0.evidence, shopped: tried } : r0.evidence };
+}
+
 /** Author one target from same-family references (and, for the verdict, the other families' references and the mirrored target).
  * `refs`: [{family, subjectId, rgba?, prepared, authoring, h}] ; returns {verdict, reasons, authoring, presence, evidence}. */
 export function autoAuthor({ target, mirrored, family, id, refs, materials, habitat, topK = 3, minPartPaint = 0.08, unexplainedFrac = 0.06, ridge = null, skeleton = null, chains = null, nudgeFrac = 0, counter = null, nudgeThinFrac = null, nudgeSkipChains = false, requireCount = true, refRank = 0 }) {
@@ -322,6 +335,9 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
       for (let dy = -Rn; dy <= Rn + 1e-9; dy += stepN) for (let dx = -Rn; dx <= Rn + 1e-9; dx += stepN) { if (!dx && !dy) continue; const c = paintCoverage(target.mask, target.w, target.h, p.polygonPx.map(([x, y]) => [x + dx, y + dy])); if (c > bestC + 0.05) { bestC = c; bd = [dx, dy]; } }
       if (bd[0] || bd[1]) { nudged.push({ id: p.id, dx: Math.round(bd[0]), dy: Math.round(bd[1]), from: +base.toFixed(2), to: +bestC.toFixed(2) }); return { ...p, polygonPx: p.polygonPx.map(([x, y]) => [Math.round((x + bd[0]) * 10) / 10, Math.round((y + bd[1]) * 10) / 10]) }; }
       return p; }); }
+  // canvas clamp (geometry only): the spline can carry a vertex past the canvas edge, where there is no paint; intake refuses a
+  // polygon outside the normalised [0, 1] canvas, so vertices are clamped to it before the untangle
+  const clamped = []; parts = parts.map((p) => { let n = 0; const poly = p.polygonPx.map(([x, y]) => { const cx = Math.min(target.w, Math.max(0, x)), cy = Math.min(target.h, Math.max(0, y)); if (cx !== x || cy !== y) n++; return [cx, cy]; }); if (n) clamped.push({ id: p.id, vertices: n }); return n ? { ...p, polygonPx: poly } : p; });
   const untangled = []; parts = parts.map((p) => { const u = untanglePolygon(p.polygonPx); if (u.repairs > 0) { untangled.push({ id: p.id, repairs: u.repairs }); return { ...p, polygonPx: u.polygon }; } return p; });
   // evidence from visible paint: every part must sit on paint; no large unclaimed painted region away from the body
   const coverage = parts.map((p) => ({ id: p.id, joint: p.joint, paint: paintCoverage(target.mask, target.w, target.h, p.polygonPx), area: polyArea(p.polygonPx) }));
@@ -340,7 +356,7 @@ export function autoAuthor({ target, mirrored, family, id, refs, materials, habi
   const authoring = { id, family, ...(habitat ? { habitat } : {}), landmarksPx, groundLineY: Math.min(0.999, Math.max(0.05, best.groundLineY)), materials, remainderPart: best.ref.authoring.remainderPart, parts,
     coverage: { declarations: `G1 automatic authoring (automatic transfer, not observed): landmarks transferred from ${top.length === 1 ? 'the single best registered reference' : `the median of ${top.length} registered references`}; parts from ${best.ref.subjectId}. No hidden/folded inference; nothing declared absent; visible counts measured by the limb counter.`, sourceFacing: 'right', visualAcceptance: 'none — automatic' } };
   return { verdict: reasons.length ? 'REFUSE' : 'ADMIT', reasons, authoring, presence: { schema: 'cf.anatomy-presence/v2', absent: [], hidden: [], folded: [] },
-    evidence: { schema: AUTO_AUTHOR_SCHEMA, chains: chainLog, nudged, untangled, inventory, detour: { target: +best.detourTarget.toFixed(4), ref: +best.detourRef.toFixed(4) }, bestReference: best.ref.subjectId, refRank, costs: trAll.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
+    evidence: { schema: AUTO_AUTHOR_SCHEMA, chains: chainLog, nudged, clamped, untangled, inventory, detour: { target: +best.detourTarget.toFixed(4), ref: +best.detourRef.toFixed(4) }, bestReference: best.ref.subjectId, refRank, costs: trAll.map((t) => ({ ref: t.ref.subjectId, cost: +t.cost.toFixed(5) })), mirrorBest: +mirrorBest.toFixed(5), otherFamilyBest: otherBest ? { family: otherBest.f, cost: +otherBest.c.toFixed(5) } : null, coverage, unclaimedFrac: +(unclaimed / Math.max(1, paint)).toFixed(4) } };
 }
 
 /** Skeleton mode: parts grown from the TARGET's own paint by nearest bone of the placed skeleton, traced to polygons; the verdict is

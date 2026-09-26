@@ -1,0 +1,8 @@
+{
+ "id": "07-cougar",
+ "family": "quadruped",
+ "verdict": "ADMIT",
+ "reasons": [],
+ "static": "PASS_STATIC",
+ "staticFails": []
+}

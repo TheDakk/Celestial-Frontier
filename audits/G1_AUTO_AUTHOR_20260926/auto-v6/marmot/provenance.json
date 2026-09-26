@@ -1,0 +1,123 @@
+{
+ "schema": "cf.g1-auto-provenance/v1",
+ "subject": "marmot",
+ "verdict": "ADMIT",
+ "origin": "automatic transfer (G1 auto-author): landmarks and part polygons transferred from a registered same-family reference; no manual observation",
+ "intakeLegacyFields": "intake-authored.mjs writes manualAuthoring=true and sourceLandmarksReused=false unconditionally; for this packet they are NOT an automatic-origin attestation. Landmarks ARE transferred from the reference below.",
+ "targetMasterSha256": "39b6d615a11ddd0d351521bf15ac68b07f80b7ef8f7b32c80a7c312576aadd22",
+ "subjectSourceSha256": "c06f28a30699a13f25d2704286c6b571be056bf6d133fdca99550e253124a07e",
+ "identity": {
+  "name": "Marmot",
+  "family": "quadruped",
+  "visualKey": "[\"object\",[[\"_earthName\",[\"string\",\"Marmot\"]],[\"accent\",[\"number\",\"5\"]],[\"behavior\",[\"number\",\"8\"]],[\"body\",[\"number\",\"5\"]],[\"color\",[\"number\",\"12\"]],[\"detail\",[\"number\",\"8\"]],[\"diet\",[\"number\",\"5\"]],[\"eyes\",[\"number\",\"2\"]],[\"form\",[\"number\",\"3\"]],[\"gen\",[\"number\",\"0\"]],[\"habitat\",[\"number\",\"1\"]],[\"head\",[\"number\",\"3\"]],[\"heat\",[\"number\",\"1\"]],[\"kingdom\",[\"string\",\"fauna\"]],[\"life\",[\"number\",\"1\"]],[\"limbs\",[\"number\",\"2\"]],[\"loco\",[\"number\",\"2\"]],[\"lumin\",[\"boolean\",false]],[\"metab\",[\"number\",\"3\"]],[\"pattern\",[\"number\",\"0\"]],[\"repro\",[\"number\",\"1\"]],[\"seed\",[\"number\",\"1242552574\"]],[\"sense\",[\"number\",\"2\"]],[\"size\",[\"number\",\"4\"]],[\"skin\",[\"number\",\"6\"]],[\"tail\",[\"number\",\"3\"]],[\"temper\",[\"number\",\"8\"]],[\"trait\",[\"number\",\"19\"]]]]",
+  "seed": 1242552574,
+  "checks": "PASS"
+ },
+ "reference": {
+  "subject": "cougar",
+  "authoringSha256": "421e0390baa8cc50c90902c54167a9b29e1b8da02192b4fbb358a335e1f66a54",
+  "masterSha256": "cd461892faff7baa42817bfad28226b2e2d527d8ae5cc0a8a1d0e22dc0be5635"
+ },
+ "habitat": {
+  "profileId": "small-clawed-mammal",
+  "media": [
+   "ground"
+  ],
+  "profileSha256": "340b992dd3cf6a19129d73921b8882fd7510c7e5349249b1e26208d42682882d",
+  "meaning": "capability, not painted pose or observed supports"
+ },
+ "materials": {
+  "surface": "fur",
+  "source": "species group small-clawed-mammal (Earth fauna profile)",
+  "meaning": "the species group's integument; not an observation of the painting, not a finisher permission"
+ },
+ "visibleInventory": {
+  "measuredBy": "limb-counter.mjs (paint only)",
+  "target": {
+   "appendages": [
+    {
+     "k": 0,
+     "frac": 0.0067,
+     "class": "top",
+     "attach": {
+      "x": 328.5,
+      "y": 114,
+      "relX": 0.81,
+      "relY": -0.01
+     }
+    },
+    {
+     "k": 1,
+     "frac": 0.0165,
+     "class": "front",
+     "attach": {
+      "x": 378.5,
+      "y": 151.5,
+      "relX": 0.94,
+      "relY": 0.22
+     }
+    },
+    {
+     "k": 2,
+     "frac": 0.052,
+     "class": "limb-down",
+     "attach": {
+      "x": 64.7,
+      "y": 237.8,
+      "relX": 0.13,
+      "relY": 0.73
+     }
+    },
+    {
+     "k": 3,
+     "frac": 0.0308,
+     "class": "limb-down",
+     "attach": {
+      "x": 114.1,
+      "y": 278.9,
+      "relX": 0.26,
+      "relY": 0.97
+     }
+    },
+    {
+     "k": 4,
+     "frac": 0.0173,
+     "class": "limb-down",
+     "attach": {
+      "x": 175.5,
+      "y": 281,
+      "relX": 0.42,
+      "relY": 0.98
+     }
+    },
+    {
+     "k": 5,
+     "frac": 0.0414,
+     "class": "limb-down",
+     "attach": {
+      "x": 293.9,
+      "y": 285,
+      "relX": 0.72,
+      "relY": 1.01
+     }
+    }
+   ],
+   "detached": [],
+   "byClass": {
+    "top": 1,
+    "front": 1,
+    "limb-down": 4
+   },
+   "ground": 2
+  },
+  "reference": {
+   "subject": "cougar",
+   "byClass": {
+    "top": 2,
+    "limb-down": 4
+   },
+   "detached": 0
+  }
+ },
+ "presence": "all-visible, backed by the measured visible inventory above; nothing declared absent, hidden or folded"
+}
