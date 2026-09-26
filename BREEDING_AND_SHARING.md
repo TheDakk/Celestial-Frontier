@@ -42,6 +42,7 @@ Owners: `packages/domain/acquisition/src/companion-missions.ts` (pure), `package
   - A second claim of the same mission finds it gone and commits nothing, whether it comes from a double press, a second tab or a reload.
 - **Recall** (`arc5-companion-mission-recall`) works at any time. The companion comes home unhurt with nothing, and the sealed result is discarded unseen.
 - **Carrier** `player/arc5.missions` v1: at most 2 active missions plus a return log (the mission Chronicle) of the latest 24. When absent, nothing is away. A malformed carrier is protected, never read as empty.
+- **Board** (`apps/game/src/mission-board.ts`, beside Care & bond in the Compendium detail): field slots, Away (minutes of play left) / Ready badges, the disclosure before dispatch, two-tap Recall, the return reveal as a `role=status` line (the text counterpart; the voiced return expression is a follow-up), and the latest returns as the mission Chronicle. No timers, polling or notifications. Main's `runCompanionMission` owns the transactions; a claim publishes only the hold, Stardust and the Compendium mirror XP.
 
 ## Requested time-aware art and sharing — source reviewed 2026-09-08
 
