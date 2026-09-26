@@ -108,6 +108,8 @@ export interface MatchupMountInput extends Pick<Battle2StudyInput, 'ticker' | 'c
   readonly assets?: Battle2AssetSource;
   /** Injected for tests; the real study otherwise. */
   readonly mountStudy?: (input: Battle2StudyInput) => Battle2StudyHandle;
+  /** G5 (?finish=1): forwarded to every study this picker mounts (Battle2StudyInput.finish). */
+  readonly finish?: Battle2StudyInput['finish'];
 }
 export interface MatchupHandle { readonly root: HTMLElement; current(): MatchupChoice; play(next?: Partial<MatchupChoice>): Promise<Battle2Status>; dispose(): void; }
 
@@ -159,13 +161,13 @@ export function mountBattle2Matchup(input: MatchupMountInput): MatchupHandle {
       const controller = new CombatChronicleController({ root: panel }); controller.attach(mount); chronicleController = controller;
       const gate = input.reducedMotion ? null : createCombatChroniclePacerGateV1(); controller.setPacer(gate?.pacer ?? null);
       const chronicleGeneration = controller.start(chronicle, cues);
-      study = mountStudy({ mount, generation: chronicleGeneration, pacer: gate, ticker: input.ticker, clock: input.clock, reducedMotion: input.reducedMotion, deviceTier: input.deviceTier, pixi: input.pixi, artLoader: input.artLoader, assets,
+      study = mountStudy({ ...(input.finish ? { finish: input.finish } : {}), mount, generation: chronicleGeneration, pacer: gate, ticker: input.ticker, clock: input.clock, reducedMotion: input.reducedMotion, deviceTier: input.deviceTier, pixi: input.pixi, artLoader: input.artLoader, assets,
         ...(input.audio !== undefined ? { audio: input.audio } : {}), ...(input.win ? { win: input.win } : {}), ...(input.keyer ? { keyer: input.keyer } : {}), ...(input.raster ? { raster: input.raster } : {}), ...(world === 'lake' ? { worldPreset: 'lake' as const } : {}),
         chronicle: { championName: chronicle.championName, defenderName: chronicle.defenderName }, settlement: settlement as unknown as Battle2StudyInput['settlement'] });
       lead = `real duel · ${chronicle.championName} vs ${chronicle.defenderName} (${choice.right}) · `;
       const st = await study.ready; if (gen === generation) status.textContent = `${lead}${summary(st)}`; return st;
     }
-    study = mountStudy({ mount: arena, generation: gen, ticker: input.ticker, clock: input.clock, reducedMotion: input.reducedMotion, deviceTier: input.deviceTier, pixi: input.pixi, artLoader: input.artLoader, assets,
+    study = mountStudy({ ...(input.finish ? { finish: input.finish } : {}), mount: arena, generation: gen, ticker: input.ticker, clock: input.clock, reducedMotion: input.reducedMotion, deviceTier: input.deviceTier, pixi: input.pixi, artLoader: input.artLoader, assets,
       ...(input.audio !== undefined ? { audio: input.audio } : {}), ...(input.win ? { win: input.win } : {}), ...(input.keyer ? { keyer: input.keyer } : {}), ...(input.raster ? { raster: input.raster } : {}), ...(world === 'lake' ? { worldPreset: 'lake' as const } : {}),
       chronicle: { championName: choice.left, defenderName: choice.right },
       settlement: { battleId: `matchup:${choice.left}:${choice.right}:${world}:${choice.seed ?? 'own'}`, champion: { kind: 'owned-fauna', name: choice.left, genome: fighterGenome(lr, choice.left, choice.seed, 'left') },
